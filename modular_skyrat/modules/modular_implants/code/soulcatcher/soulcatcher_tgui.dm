@@ -27,6 +27,8 @@
 				"internal_sight" = soul.internal_sight,
 				"outside_hearing" = soul.outside_hearing,
 				"outside_sight" = soul.outside_sight,
+				"able_to_emote" = soul.able_to_emote,
+				"able_to_speak" = soul.able_to_speak,
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -134,6 +136,14 @@
 			else
 				target_soul.internal_sight = !target_soul.internal_sight
 
+			return TRUE
+
+		if("toggle_soul_communication")
+			if(params["communication_type"] == "emote")
+				target_soul.able_to_emote = !target_soul.able_to_emote
+				return TRUE
+
+			target_soul.able_to_speak = !target_soul.able_to_speak
 			return TRUE
 
 		if("send_message")

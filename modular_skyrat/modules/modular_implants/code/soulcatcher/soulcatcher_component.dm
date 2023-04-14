@@ -1,30 +1,6 @@
 ///Global list containing any and all soulcatchers
 GLOBAL_LIST_EMPTY(soulcatchers)
 
-/datum/nifsoft/soulcatcher
-	name = "Soulcatcher"
-	program_desc = "Holds souls"
-	/// What is the linked soulcatcher datum used by this NIFSoft?
-	var/datum/linked_soulcatcher
-
-/obj/item/soulcatcher_item
-	name = "soulcatcher item"
-	icon = 'icons/obj/wizard.dmi'
-	icon_state = "soulstone"
-	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	/// What soulcatcher datum is associated with this item?
-	var/datum/component/soulcatcher/linked_soulcatcher
-
-/obj/item/soulcatcher_item/attack_self(mob/user, modifiers)
-	. = ..()
-	linked_soulcatcher.ui_interact(user)
-
-/obj/item/soulcatcher_item/New(loc, ...)
-	. = ..()
-	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
-
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
@@ -95,7 +71,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(!ghost.mind)
 		ghost.mind = new /datum/mind(ghost.key)
-		ghost.mind.name = name
+		ghost.mind.name = ghost.name
 		ghost.mind.active = TRUE
 
 	if(!add_soul(ghost.mind))
@@ -114,10 +90,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
+	new_soul.name = mind_to_add.name
+
 	if(mind_to_add.current)
 		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
 		body_component.soulcatcher_soul = WEAKREF(new_soul)
+		body_component.body_scan_needed = TRUE
+
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
+		new_soul.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
 
 	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
@@ -218,7 +199,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/internal_sight = TRUE
 	/// Is the soul able to "hear" things from inside of the soulcatcher?
 	var/internal_hearing = TRUE
+	/// Is the soul able to emote inside the soulcatcher room?
+	var/able_to_emote = TRUE
+	/// Is the soul able to speak inside the soulcatcher room?
+	var/able_to_speak = TRUE
 
+	/// Is the soul able to leave the soulcatcher?
+	var/able_to_leave = TRUE
 
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
@@ -248,6 +235,72 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return outside_sight
 
+/// Attemp to leave the soulcatcher.
+/mob/living/soulcatcher_soul/verb/leave_soulcatcher()
+	set name = "Enter soulcatcher"
+	set category = "Ghost"
+
+	if(!able_to_leave)
+		to_chat(src, span_warning("You are unable to leave the soulcatcher."))
+		return FALSE
+
+	if(tgui_alert(src, "Are you sure you wish to leave the soulcatcher?", "Soulcatcher", list("Yes", "No")) != "Yes")
+		return FALSE
+
+	qdel(src)
+
+/mob/living/soulcatcher_soul/ghost()
+	. = ..()
+	qdel(src)
+
+/mob/living/soulcatcher_soul/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof, message_range, datum/saymode/saymode)
+	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	if(!message || message == "")
+		return
+
+	if(!able_to_speak)
+		to_chat(src, span_warning("You are unable to speak!"))
+		return FALSE
+
+	var/datum/soulcatcher_room/room = current_room.resolve()
+	if(!room)
+		return FALSE
+
+	room.send_message(message, src, FALSE)
+	return TRUE
+
+/mob/living/soulcatcher_soul/me_verb(message as text)
+	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+	if(!message)
+		return FALSE
+
+	if(!able_to_emote)
+		to_chat(src, span_warning("You are unable to speak!"))
+		return FALSE
+
+	var/datum/soulcatcher_room/room = current_room.resolve()
+	if(!room)
+		return FALSE
+
+	room.send_message(message, src, TRUE)
+	return TRUE
+
+/mob/living/soulcatcher_soul/subtle()
+	set hidden = TRUE
+	return FALSE
+
+/mob/living/soulcatcher_soul/subtler()
+	set hidden = TRUE
+	return FALSE
+
+/mob/living/soulcatcher_soul/whisper_verb()
+	set hidden = TRUE
+	return FALSE
+
+/mob/living/soulcatcher_soul/container_emote()
+	set hidden = TRUE
+	return FALSE
+
 /mob/living/soulcatcher_soul/Destroy()
 	if(previous_body && mind)
 		var/mob/target_body = previous_body.resolve()
@@ -267,6 +320,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/weakref/soulcatcher_soul
 	/// Do we want to try and restore the mind when this is destroyed?
 	var/restore_mind = TRUE
+	/// Does the body need scanned? This is made so that soulcatcher souls don't see their own bodies
+	var/body_scan_needed = FALSE
 
 /datum/component/previous_body/Initialize(...)
 	. = ..()
