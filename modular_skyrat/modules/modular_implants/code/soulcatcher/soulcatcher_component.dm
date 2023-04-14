@@ -1,6 +1,9 @@
 ///Global list containing any and all soulcatchers
 GLOBAL_LIST_EMPTY(soulcatchers)
 
+#define SOULCATCHER_EMOTE_COLOR "#4ba1c9"
+#define SOULCATCHER_SAY_COLOR "#75D5E1"
+
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
@@ -48,7 +51,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(istype(parent, /obj/item))
 		var/obj/item/parent_item = parent
-		parent_item.visible_message(span_notice(message_to_recieve))
+		parent_item.visible_message(message_to_recieve)
 
 /datum/soulcatcher_room
 	/// What is the name of the room?
@@ -149,20 +152,28 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
-	var/message = ""
-
+	var/name = ""
 	if(message_sender)
-		message += "[message_sender] "
-	if(!emote)
-		message += "says, "
+		name = "[message_sender] "
 
-	message += message_to_send
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+	var/tag = sheet.icon_tag("nif-soulcatcher")
+	var/soulcatcher_icon = ""
+
+	if(tag)
+		soulcatcher_icon = tag
+
+	var/message = ""
+	if(!emote)
+		message = "<font color=[SOULCATCHER_SAY_COLOR]>\ [soulcatcher_icon] <b>[name]</b>says, \"[message_to_send]\"</font>"
+	else
+		message = "<font color=[SOULCATCHER_EMOTE_COLOR]>\ [soulcatcher_icon] <b>[name]</b>[message_to_send]</font>"
 
 	for(var/mob/living/soulcatcher_soul/soul in current_souls)
 		if((emote && !soul.internal_sight) || (!emote && !soul.internal_hearing))
 			continue
 
-		to_chat(soul, span_blue(message))
+		to_chat(soul, message)
 
 	relay_message_to_soulcatcher(message)
 	return TRUE
