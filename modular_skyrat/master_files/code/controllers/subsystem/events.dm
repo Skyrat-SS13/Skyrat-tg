@@ -4,11 +4,13 @@
 		if(SSautotransfer.can_fire == TRUE)
 			if((SSautotransfer.targettime - world.realtime) - (world.timeofday - SSticker.real_round_start_time) <= 15 MINUTES + CONFIG_GET(number/vote_period))
 				log_game("ICES: Event cancelled, pending autotransfer vote.")
+				log_game("ICES: Timer info: RT [(world.timeofday - SSticker.real_round_start_time)] | AT [(SSautotransfer.targettime - world.realtime)] | VP [(15 MINUTES + CONFIG_GET(number/vote_period))]")
 				message_admins("ICES: Event cancelled, pending autotransfer vote.")
 				reschedule()
 				return
 		if(world.time - SSticker.round_start_time > CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
 			log_game("ICES: Event cancelled, station is evacuating.")
+			log_game("ICES: Timer info: RT [(world.timeofday - SSticker.real_round_start_time)] | SD [CONFIG_GET(number/shuttle_refuel_delay)] | EV [SSshuttle.canEvac()]")
 			message_admins("ICES: Event cancelled, station is evacuating.")
 			reschedule()
 			return
