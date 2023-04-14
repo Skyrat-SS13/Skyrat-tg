@@ -20,7 +20,7 @@
 	icon_state = "vic_dresscoat"
 	greyscale_config = /datum/greyscale_config/vic_dresscoat
 	greyscale_config_worn = /datum/greyscale_config/vic_dresscoat/worn
-	greyscale_colors = "#8b2c2c#222227"
+	greyscale_colors = "#9b1619#fecb38"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 

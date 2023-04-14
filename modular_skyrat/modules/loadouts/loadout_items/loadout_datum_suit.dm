@@ -381,6 +381,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Fancy Black Coat"
 	item_path = /obj/item/clothing/suit/blackfurrich
 
+/datum/loadout_item/suit/victorian_dresscoat
+	name = "Victorian Dresscoat"
+	item_path = /obj/item/clothing/suit/costume/skyrat/vic_dresscoat
+
 /datum/loadout_item/suit/dutchjacket
 	name = "Western Jacket"
 	item_path = /obj/item/clothing/suit/dutchjacketsr
