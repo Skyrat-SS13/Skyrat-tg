@@ -18,8 +18,8 @@
 /datum/controller/subsystem/events/proc/change_intensity_credits(credit_action = 0, credit_amount = 0, check_timer = FALSE, reset_timer = FALSE, notify_admins = TRUE)
 	if(check_timer && world.time - intensity_credit_last_time < intensity_credit_rate)
 		if(notify_admins)
-			message_admins("ICES: Request for Intensity Credit rejected due to precondition check. [world.time - intensity_credit_last_time] is less than [intensity_credit_rate]. Current intensity credits: [GLOB.intense_event_credits]")
-		log_game("ICES: Request for Intensity Credit rejected due to precondition check. [world.time - intensity_credit_last_time] is less than [intensity_credit_rate]. Current intensity credits: [GLOB.intense_event_credits]")
+			message_admins("ICES: Request for Intensity Credit rejected due to precondition check. Reason: [world.time - intensity_credit_last_time] is less than [intensity_credit_rate]. Current intensity credits: [GLOB.intense_event_credits]")
+		log_game("ICES: Request for Intensity Credit rejected due to precondition check. Reason: [world.time - intensity_credit_last_time] is less than [intensity_credit_rate]. Current intensity credits: [GLOB.intense_event_credits]")
 		return FALSE
 
 	switch(credit_action)
