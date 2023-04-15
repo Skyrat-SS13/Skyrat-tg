@@ -1,6 +1,9 @@
 /mob/living/soulcatcher_soul
 	/// What does our soul look like?
 	var/soul_desc = "It's a soul"
+	/// What are the ooc notes for the soul?
+	var/ooc_notes = ""
+
 	/// Assuming we died inside of the round? What is our previous body?
 	var/datum/weakref/previous_body
 	/// What is the weakref of the soulcatcher room are we currently in?

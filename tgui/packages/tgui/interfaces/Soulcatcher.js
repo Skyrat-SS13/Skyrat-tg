@@ -124,7 +124,17 @@ export const Soulcatcher = (props, context) => {
                             }
                           />
                         }>
+                        <Box textAlign="center" fontSize="13px" opacity={0.8}>
+                          <b>Flavor Text</b>
+                        </Box>
+                        <Divider />
                         <BlockQuote>{soul.description}</BlockQuote>
+                        <br />
+                        <Box textAlign="center" fontSize="13px" opacity={0.8}>
+                          <b>OOC Notes</b>
+                        </Box>
+                        <Divider />
+                        <BlockQuote>{soul.ooc_notes}</BlockQuote>
                         <br />
                         <LabeledList>
                           <LabeledList.Item label="Outside Hearing">

@@ -115,10 +115,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
 		new_soul.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
+		new_soul.soul_desc = "[new_soul] lacks a discernible form."
 
 	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
 	new_soul.current_room = WEAKREF(src)
+
+	var/datum/preferences/preferences = new_soul.client?.prefs
+	if(preferences)
+		new_soul.ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
+		if(!new_soul.body_scan_needed)
+			new_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	to_chat(new_soul, span_notice("You find yourself now inside of: [name]"))
 	to_chat(new_soul, span_notice("[room_description]"))

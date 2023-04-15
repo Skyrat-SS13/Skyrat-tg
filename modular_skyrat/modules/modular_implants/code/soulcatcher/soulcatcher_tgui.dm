@@ -29,6 +29,7 @@
 				"outside_sight" = soul.outside_sight,
 				"able_to_emote" = soul.able_to_emote,
 				"able_to_speak" = soul.able_to_speak,
+				"ooc_notes" = soul.ooc_notes
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -114,12 +115,29 @@
 			var/list/available_rooms = soulcatcher_rooms.Copy()
 			available_rooms -= target_room
 
+			if(ishuman(usr))
+				var/mob/living/carbon/human/human_user = usr
+				var/datum/nifsoft/soulcatcher/soulcatcher_nifsoft = human_user.find_nifsoft(/datum/nifsoft/soulcatcher)
+				if(soulcatcher_nifsoft && (parent != soulcatcher_nifsoft))
+					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher
+					available_rooms.Add(nifsoft_soulcatcher.soulcatcher_rooms)
+
+				for(var/obj/item/held_item in human_user.held_items)
+					if(parent == held_item)
+						continue
+
+					var/datum/component/soulcatcher/soulcatcher_component = held_item.GetComponent(/datum/component/soulcatcher)
+					if(!soulcatcher_component)
+						continue
+
+					for(var/datum/soulcatcher_room/room in soulcatcher_component.soulcatcher_rooms)
+						available_rooms += room
+
 			var/datum/soulcatcher_room/transfer_room = tgui_input_list(usr, "Chose a room to transfer to", name, available_rooms)
-			if(!(transfer_room in soulcatcher_rooms))
+			if(!(transfer_room in available_rooms))
 				return FALSE
 
 			target_room.transfer_soul(target_soul, transfer_room)
-
 			return TRUE
 
 		if("toggle_soul_outside_sense")
@@ -160,4 +178,3 @@
 
 			target_room.send_message(message_to_send, message_sender, emote)
 			return TRUE
-

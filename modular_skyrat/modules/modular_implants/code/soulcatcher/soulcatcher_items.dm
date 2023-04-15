@@ -23,7 +23,6 @@
 	var/datum/component/previous_body/body_component = target_mob.GetComponent(/datum/component/previous_body)
 	if(body_component)
 		scan_body(body_component, user)
-		to_chat(user, span_warning("[target_mob]'s soul is already in a soulcatcher"))
 		return TRUE
 
 	if(!target_mob.mind || !target_mob.ckey)
@@ -102,7 +101,7 @@
 	visible_message(span_notice("[src] beeps: Body transfer complete."))
 	qdel(chosen_soul)
 
-	return TRUE
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /// Attemps to scan the body for the `previous_body component`
 /obj/item/soulcatcher_item/proc/scan_body(datum/component/previous_body/body_to_scan, mob/living/user)
@@ -121,6 +120,10 @@
 
 	to_chat(target_soul, span_blue("Your body has scanned, revealing your true identity."))
 	target_soul.name = parent_body.real_name
+
+	var/datum/preferences/preferences = target_soul.client?.prefs
+	if(preferences)
+		target_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	return TRUE
 
