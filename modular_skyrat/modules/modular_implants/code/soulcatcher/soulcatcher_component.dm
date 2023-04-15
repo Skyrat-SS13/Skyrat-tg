@@ -185,8 +185,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(tag)
 		soulcatcher_icon = tag
 
-
-
 	var/message = ""
 	if(!emote)
 		message = "<font color=[SOULCATCHER_SAY_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
