@@ -3,6 +3,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 #define SOULCATCHER_EMOTE_COLOR "#4ba1c9"
 #define SOULCATCHER_SAY_COLOR "#75D5E1"
+#define SOULCATCHER_WARNING_MESSAGE "You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."
 
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
@@ -127,8 +128,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		if(!new_soul.body_scan_needed)
 			new_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
-	to_chat(new_soul, span_notice("You find yourself now inside of: [name]"))
+	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(new_soul, span_notice("[room_description]"))
+	to_chat(new_soul, span_boldwarning("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
+	log_admin("[new_soul] entered the soulcatcher room, [src]")
 
 	return TRUE
 
@@ -171,9 +174,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
-	var/name = ""
+	var/sender_name = ""
 	if(message_sender)
-		name = "[message_sender] "
+		sender_name = "[message_sender] "
 
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/tag = sheet.icon_tag("nif-soulcatcher")
@@ -182,11 +185,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(tag)
 		soulcatcher_icon = tag
 
+
+
 	var/message = ""
 	if(!emote)
-		message = "<font color=[SOULCATCHER_SAY_COLOR]>\ [soulcatcher_icon] <b>[name]</b>says, \"[message_to_send]\"</font>"
+		message = "<font color=[SOULCATCHER_SAY_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
+		log_say("[sender_name] in [name] soulcatcher room said: [message_to_send]")
 	else
-		message = "<font color=[SOULCATCHER_EMOTE_COLOR]>\ [soulcatcher_icon] <b>[name]</b>[message_to_send]</font>"
+		message = "<font color=[SOULCATCHER_EMOTE_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
+		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soulcatcher_soul/soul in current_souls)
 		if((emote && !soul.internal_sight) || (!emote && !soul.internal_hearing))

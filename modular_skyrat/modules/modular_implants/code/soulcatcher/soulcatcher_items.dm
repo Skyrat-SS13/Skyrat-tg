@@ -40,7 +40,7 @@
 			return FALSE
 
 		if(tgui_alert(target_ghost, "[user] wants to transfer you to a soulcatcher, do you accept?", name, list("Yes", "No"), autofocus = TRUE) != "Yes")
-			to_chat(user, span_warning("[target_mob]'s doesn't seem to want to enter."))
+			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 
 		if(target_room.add_soul_from_ghost(target_ghost))
 			return FALSE
@@ -49,6 +49,7 @@
 		if(!body_component)
 			return FALSE
 
+		log_admin("[user] used [src] to put [target_mob]'s mind into a soulcatcher.")
 		scan_body(body_component, user)
 		return TRUE
 
@@ -57,6 +58,7 @@
 		return FALSE
 
 	if(tgui_alert(target_mob, "Do you wish to enter [target_room]?", name, list("Yes", "No")) != "Yes")
+		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE
 
 	target_room.add_soul(target_mob.mind, TRUE)
@@ -65,6 +67,7 @@
 
 	body_component = target_mob.GetComponent(/datum/component/previous_body)
 	scan_body(body_component, user)
+	log_admin("[user] used [src] to put [target_mob]'s mind into a soulcatcher while [target_mob] was still alive.")
 
 	return TRUE
 
@@ -100,6 +103,7 @@
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: Body transfer complete."))
+	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob].")
 	qdel(chosen_soul)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

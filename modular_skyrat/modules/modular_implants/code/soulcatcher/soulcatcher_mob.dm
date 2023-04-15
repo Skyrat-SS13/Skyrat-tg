@@ -133,6 +133,7 @@
 /mob/living/soulcatcher_soul/Destroy()
 	if(current_room)
 		var/datum/soulcatcher_room/room = current_room.resolve()
+		log_admin("[src] left the soulcatcher room, [room].")
 		room.current_souls -= src
 
 	if(previous_body && mind)
