@@ -74,6 +74,12 @@
 	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
+/datum/armament_entry/company_import/donk/merch/sticker_box
+	item_type = /obj/item/storage/box/stickers
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+
 /datum/armament_entry/company_import/donk/merch/donkfish
 	item_type = /obj/item/storage/fish_case/donkfish
 	lower_cost = PAYCHECK_CREW * 0.75
