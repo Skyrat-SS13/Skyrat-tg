@@ -44,7 +44,7 @@
 /obj/physics_rocket/update_overlays()
 	. = ..()
 	if(engine_on)
-		. += "thrust_overlay"
+		. += "[icon_state]_thrust_overlay"
 
 /obj/physics_rocket/Bumped(atom/movable/bumped_atom)
 	. = ..()

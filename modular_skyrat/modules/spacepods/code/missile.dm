@@ -120,7 +120,7 @@
 /obj/physics_missile/update_overlays()
 	. = ..()
 	if(thruster_on)
-		. += "thrust_overlay"
+		. += "[icon_state]_thrust_overlay"
 
 
 /obj/physics_missile/proc/explode()

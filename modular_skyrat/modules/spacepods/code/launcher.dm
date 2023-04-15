@@ -48,7 +48,7 @@
 /obj/structure/launcher/proc/process_target()
 	if(!target)
 		return
-	if(get_dist(src, target) > detection_range)
+	if(get_dist(src, target) > detection_range || !target_check(target))
 		lose_target()
 		return
 	angle_to_target = get_angle(src, target)
