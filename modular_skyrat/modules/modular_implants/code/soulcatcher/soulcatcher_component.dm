@@ -258,3 +258,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		qdel(old_body)
 
 	return ..()
+
+/mob/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)
+	var/datum/component/previous_body/old_body = GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?
+	if(old_body)
+		return TRUE
+
+	return ..()

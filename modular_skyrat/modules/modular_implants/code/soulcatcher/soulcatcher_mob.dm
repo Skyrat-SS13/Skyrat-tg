@@ -169,4 +169,7 @@
 			if(mind_to_tranfer)
 				mind_to_tranfer.transfer_to(original_body)
 
+			soul.previous_body = FALSE
+			qdel(soul)
+
 	return ..()

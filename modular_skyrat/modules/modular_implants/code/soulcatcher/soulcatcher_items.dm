@@ -29,6 +29,7 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 
 	if(target_mob.stat == DEAD) //We can temporarily store souls of dead mobs.
+		target_mob.ghostize(TRUE) //Incase they are staying in the body.
 		var/mob/dead/observer/target_ghost = target_mob.get_ghost(TRUE, TRUE)
 		if(!target_ghost)
 			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
