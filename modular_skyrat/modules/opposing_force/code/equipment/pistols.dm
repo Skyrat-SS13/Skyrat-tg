@@ -5,10 +5,6 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
 
-/datum/opposing_force_equipment/pistol/luger
-	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
-	description = "An iconic semi-automatic pistol chambered in 9mm. It takes makarov magazines."
-
 /datum/opposing_force_equipment/pistol/makarov
 	item_type = /obj/item/gun/ballistic/automatic/pistol
 

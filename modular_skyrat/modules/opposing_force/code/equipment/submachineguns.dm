@@ -1,13 +1,9 @@
 /datum/opposing_force_equipment/submachine_gun
 	category = OPFOR_EQUIPMENT_CATEGORY_SUBMACHINE_GUNS
 
-/datum/opposing_force_equipment/submachine_gun/mp40
-	item_type = /obj/item/gun/ballistic/automatic/mp40
-	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 30 damage bullets."
-
-/datum/opposing_force_equipment/submachine_gun/fg42
-	item_type = /obj/item/gun/ballistic/automatic/fg42
-	admin_note = "WARNING: !Extremely Strong! This weapon is extremely powerful, firing a 2 round burst of 45 damage bullets."
+/datum/opposing_force_equipment/submachine_gun/9mm_smg
+	item_type = /obj/item/gun/ballistic/automatic/proto/unrestricted
+	admin_note = "WARNING: This weapon is decently powerful, fully automatic and firing 30 damage bullets."
 
 /datum/opposing_force_equipment/submachine_gun/uzi
 	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
