@@ -661,3 +661,85 @@
   softcerv:
   - qol: NIFs can now be manually removed from a player file.
   - bugfix: NIFs now delete when broken for two shifts
+2023-04-15:
+  ? Cheshify, Fikou, Blue-Berry, Zytolg, InfiniteGalaxies, Striders, Sylphet, Riggle,
+    Soal, Andry, Crit, Deranging, and Pumpkin0.
+  : - rscadd: Nanotrasen's Newest Exploratory Vessel is now available! Meet the North
+        Star!
+    - rscadd: More landmines, and a landmine random spawner.
+    - rscadd: energy barriers now have a regenerative subtype, fit for permanent installations.
+    - code_imp: Raised the number of possible level render to 4, check your preferences
+        if needed to be reduced.
+  Gandalf2k15:
+  - balance: Wall mushrooms will now spread more slowly.
+  - admin: Wall mushroom planting is now logged.
+  Hatterhat:
+  - bugfix: Fun fact - Smartgun rounds weren't meant to be ammo-bench printed. Now
+      they're not, because the ammo workbench checks if a round is flagged to be printable
+      or not.
+  - bugfix: .244 Acia (7.62 but differently named) clips can now actually receive
+      rubber rounds from the ammo workbench.
+  - spellcheck: Leftover 10mm Auto ammo (rubber/IHDF) is now just named 10mm, to preserve
+      parity with every other 10mm round.
+  - bugfix: Unrestricted shotgun shell magazines (e.g. the IGE-340 magazine) can no
+      longer print techshells nor prefilled bioterror shell darts when inserted into
+      an ammo workbench.
+  LT3:
+  - admin: Events system logs info about why an event was cancelled
+  - balance: Mood buff/duration from eating breakfast increased to 30 minutes
+  - config: '''Breakfast'' is now from 6am-12pm at the start of the shift'
+  - code_imp: Lights will now enter power saving mode before shutting off equipment
+  - code_imp: You get less total reserve time, but more equipment reserve time
+  - code_imp: APCs, air alarms, and fire alarms all use the same RGB lighting values
+      for consistency
+  - code_imp: Second pass of lighting updates, less dark spots!
+  - bugfix: Lights go into emergency mode when the fire alarm is active
+  - rscadd: 'Tajaran now have their own native language: Siik''tajr'
+  - bugfix: Fixed forcing night shift lighting on/off
+  - config: Station shift start time can now be set in the server config
+  Melbert:
+  - bugfix: Omen Component door crush works
+  - bugfix: Omen Component vendors will no longer double dip (double tip)
+  - bugfix: Fixed Hydrogen Peroxide and Acetone Oxide not dealing damage until you
+      take damage again
+  Rhials:
+  - code_imp: Adds two new super-duper helpful helper procs for finding a maintenance/space
+      spawn location, for all of your event/midround/whatever needs!
+  - code_imp: Moves all midrounds/ghost_role events that hinged on maintenance/space
+      carp spawns to the aforementioned helpers.
+  - code_imp: The ghost_role event module file is now autodoced.
+  SkyratBot:
+  - bugfix: Removes the spectral trombone from the lavaland pizza party ruin.
+  - balance: Returns the anomaly detonation timer from 75 seconds (40 seconds from
+      announcement for dangerous anomalies) back to 99 seconds (75 seconds from announcement
+      for dangerous).
+  - qol: Gives nuke ops three free health analyzers in their shuttle, advanced health
+      analyzers in both medic kits, and a bonus health analyzer MODule in the premium
+      medical kit.
+  - bugfix: AI's now can see into the HoP Office and Pod bay.
+  - bugfix: Vault piping and wiring is now connected to the station.
+  - bugfix: Monkeys and some other mobs no longer drop items they've grabbed from
+      storage onto the ground.
+  - bugfix: The HFR screen should be fixed, let me know if you see glitches
+  - bugfix: The HFR screen should now also select recipes properly
+  - admin: Added clever DNA injector to admin spawn options.
+  - bugfix: Added clever DNA injector.
+  - qol: Add contextual screentips, balloon alerts, and examine hints to lockers
+  - rscadd: Burning structures spawn smoke particles. Sick.
+  - bugfix: fixes a runtime that can occur if a circuit floor gets changed into something
+      else.
+  - rscadd: adds pie-flavored pie
+  - bugfix: Deltastation supermatter windows now properly rotated.
+  Zonespace27:
+  - bugfix: Ghosts can no longer use the interaction menu on the living
+  softcerv:
+  - refactor: refactors the milking machine
+  tf-4:
+  - balance: The plasma thrower is now an energy gun, meaning it has to be recharged
+      in a charger rather than reloaded with magazines.
+  vinylspiders:
+  - bugfix: fixes staff access issues with the Twin Nexus airlocks
+  - bugfix: fixed a bug where Neruwhine could give temporary lewd quirks
+  - bugfix: fixes a potential runtime with the hypno goggles.
+  - bugfix: black mesa lockers are now unlockable by black mesa security officers
+      and tactical squad members
