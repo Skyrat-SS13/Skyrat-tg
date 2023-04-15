@@ -120,8 +120,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	current_souls += new_soul
 	new_soul.current_room = WEAKREF(src)
 
-	to_chat(new_soul, span_warning(name))
-	to_chat(new_soul, span_notice(room_description))
+	to_chat(new_soul, span_notice("You find yourself now inside of: [name]"))
+	to_chat(new_soul, span_notice("[room_description]"))
 
 	return TRUE
 
@@ -208,7 +208,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return ..()
 
 /mob/dead/observer/verb/join_soulcatcher()
-	set name = "Enter soulcatcher"
+	set name = "Enter Soulcatcher"
 	set category = "Ghost"
 
 	var/list/joinable_soulcatchers = GLOB.soulcatchers.Copy()

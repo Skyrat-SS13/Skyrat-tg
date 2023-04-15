@@ -57,8 +57,8 @@
 
 /// Attemp to leave the soulcatcher.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
-	set name = "Enter soulcatcher"
-	set category = "Ghost"
+	set name = "Leave Soulcatcher"
+	set category = "IC"
 
 	if(!able_to_leave)
 		to_chat(src, span_warning("You are unable to leave the soulcatcher."))
@@ -124,6 +124,10 @@
 /mob/living/soulcatcher_soul/Move()
 
 /mob/living/soulcatcher_soul/Destroy()
+	if(current_room)
+		var/datum/soulcatcher_room/room = current_room.resolve()
+		room.current_souls -= src
+
 	if(previous_body && mind)
 		var/mob/target_body = previous_body.resolve()
 		mind.transfer_to(target_body)

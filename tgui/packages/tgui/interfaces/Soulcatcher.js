@@ -187,9 +187,48 @@ export const Soulcatcher = (props, context) => {
                               {soul.internal_sight ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
+                          <LabeledList.Item label="Speech">
+                            <Button
+                              color={soul.able_to_speak ? 'green' : 'red'}
+                              fluid
+                              tooltip="Is the soul able to speak?"
+                              onClick={() =>
+                                act('toggle_soul_communication', {
+                                  target_soul: soul.reference,
+                                  communication_type: 'speech',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_speak ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
+                          <LabeledList.Item label="Sight">
+                            <Button
+                              color={soul.able_to_emote ? 'green' : 'red'}
+                              fluid
+                              tooltip="Is the soul able to emote?"
+                              onClick={() =>
+                                act('toggle_soul_communication', {
+                                  target_soul: soul.reference,
+                                  communication_type: 'emote',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_emote ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
                         </LabeledList>
                         <br />
-                        <Button fluid icon="eject" color="red">
+                        <Button
+                          fluid
+                          icon="eject"
+                          color="red"
+                          onClick={() =>
+                            act('remove_soul', {
+                              target_soul: soul.reference,
+                              room_ref: room.reference,
+                            })
+                          }>
                           Remove Soul
                         </Button>
                       </Collapsible>

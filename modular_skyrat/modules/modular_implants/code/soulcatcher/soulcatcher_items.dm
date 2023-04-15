@@ -27,16 +27,7 @@
 		return TRUE
 
 	if(!target_mob.mind || !target_mob.ckey)
-		var/list/soul_list = list()
-		for(var/datum/soulcatcher_room/room in linked_soulcatcher.soulcatcher_rooms)
-			for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
-				if(!soul.round_participant)
-					continue
-
-				soul_list += soul
-
-		if(length(soul_list) == 0)
-			to_chat(user, span_warning("There are no souls that can be transfered to [target_mob]"))
+		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 
 	if(target_mob.stat == DEAD) //We can temporarily store souls of dead mobs.
 		var/mob/dead/observer/target_ghost = target_mob.get_ghost(TRUE, TRUE)
@@ -72,6 +63,9 @@
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
+	body_component = target_mob.GetComponent(/datum/component/previous_body)
+	scan_body(body_component, user)
+
 	return TRUE
 
 /obj/item/soulcatcher_item/attack_secondary(mob/living/target_mob, mob/living/user, params)
@@ -99,13 +93,14 @@
 
 	if(chosen_soul.previous_body)
 		var/mob/living/old_body = chosen_soul.previous_body.resolve()
-		var/datum/component/previous_body/body_component = old_body.GetComponent()
+		var/datum/component/previous_body/body_component = old_body.GetComponent(/datum/component/previous_body)
 		body_component.restore_mind = FALSE
 		qdel(body_component)
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: Body transfer complete."))
+	qdel(chosen_soul)
 
 	return TRUE
 
@@ -124,7 +119,7 @@
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [parent_body] is now scanned."))
 
-	to_chat(target_soul, span_blue("Your body has scanned, revealing  your true identity."))
+	to_chat(target_soul, span_blue("Your body has scanned, revealing your true identity."))
 	target_soul.name = parent_body.real_name
 
 	return TRUE
