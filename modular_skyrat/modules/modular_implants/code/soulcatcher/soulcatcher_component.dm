@@ -109,7 +109,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(mind_to_add.current)
 		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
 		body_component.soulcatcher_soul = WEAKREF(new_soul)
-		body_component.body_scan_needed = TRUE
+
+		new_soul.round_participant = TRUE
+		new_soul.body_scan_needed = TRUE
 
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
 		new_soul.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.

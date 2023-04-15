@@ -21,6 +21,11 @@
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
+	/// Did the soul live within the round? This is checked if we want to transfer the soul to another body.
+	var/round_participant = FALSE
+	/// Does the body need scanned?
+	var/body_scan_needed = FALSE
+
 
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
@@ -137,8 +142,6 @@
 	var/datum/weakref/soulcatcher_soul
 	/// Do we want to try and restore the mind when this is destroyed?
 	var/restore_mind = TRUE
-	/// Does the body need scanned? This is made so that soulcatcher souls don't see their own bodies
-	var/body_scan_needed = FALSE
 
 /datum/component/previous_body/Initialize(...)
 	. = ..()
