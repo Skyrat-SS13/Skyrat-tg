@@ -60,6 +60,8 @@
 	var/last_failed_dirs = NONE
 	/// Is the component currently sleeping, and not processing?
 	var/sleeping = FALSE
+	/// DO we take damage while in an atmosphere?
+	var/takes_atmos_damage = TRUE
 
 
 /datum/component/physics/Initialize(
@@ -75,7 +77,8 @@
 	_skip_angular_calculations = FALSE,
 	starting_angle,
 	starting_velocity_x,
-	starting_velocity_y
+	starting_velocity_y,
+	_takes_atmos_damage = TRUE
 	)
 
 	// We can only control movable atoms.
@@ -101,6 +104,7 @@
 	skip_angular_calculations = _skip_angular_calculations
 	velocity_x = starting_velocity_x
 	velocity_y = starting_velocity_x
+	takes_atmos_damage = _takes_atmos_damage
 
 	parent_atom = parent
 
@@ -331,12 +335,11 @@
 				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
 				// If atom is going too fast, make it lose floor tiles and take damage
-				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(our_turf))
+				if(takes_atmos_damage && velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(our_turf))
 					var/turf/open/floor/floor = our_turf
 					floor.make_plating()
 					parent_atom.take_damage(3, BRUTE, "melee", FALSE)
 					playsound(parent_atom, 'sound/effects/clang.ogg', 50, TRUE)
-					parent_atom.visible_message(span_warning("[src] is hit by floortiles as they are ripped up"))
 
 		// Calculate the drag based on the pressure in the environment
 		var/datum/gas_mixture/env = our_turf.return_air()

@@ -18,7 +18,7 @@
 
 /obj/physics_decoy_flare/Initialize(mapload, start_angle, start_velocity_x, start_velocity_y)
 	. = ..()
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, starting_angle = -start_angle, _thrust_check_required = FALSE, _forward_maxthrust = 10)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, starting_angle = -start_angle, _thrust_check_required = FALSE, _forward_maxthrust = 20, _takes_atmos_damage = FALSE)
 	physics_component.velocity_x = start_velocity_x
 	physics_component.velocity_y = start_velocity_y
 

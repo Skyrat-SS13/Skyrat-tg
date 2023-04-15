@@ -28,7 +28,7 @@
 	. = ..()
 	rocket_sound = new(src)
 	// Attach the physics component to the physics_missile
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _forward_maxthrust = max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle, starting_velocity_x = start_velocity_x, starting_velocity_y = start_velocity_y)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _forward_maxthrust = max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle, starting_velocity_x = start_velocity_x, starting_velocity_y = start_velocity_y, _takes_atmos_damage = FALSE)
 
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(explode))
