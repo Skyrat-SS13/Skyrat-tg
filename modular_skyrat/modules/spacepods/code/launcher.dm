@@ -71,10 +71,9 @@
 		return
 
 	// it's go time baby
-	new launch_type(get_turf(src), angle_to_target, target)
+	new launch_type(get_turf(src), angle_to_target, 0, 0, target)
 
 	COOLDOWN_START(src, reload_time_cooldown, reload_time)
-
 
 /**
  * find_target

@@ -58,9 +58,26 @@
 	var/skip_angular_calculations = FALSE
 	/// What directions did we fail to move in last cycle?
 	var/last_failed_dirs = NONE
+	/// Is the component currently sleeping, and not processing?
+	var/sleeping = FALSE
 
 
-/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y, _thrust_check_required = TRUE, _stabilisation_check_required = TRUE, _reset_thrust_dir = TRUE, _skip_angular_calculations = FALSE, starting_angle)
+/datum/component/physics/Initialize(
+	_forward_maxthrust,
+	_backward_maxthrust,
+	_side_maxthrust,
+	_max_angular_acceleration,
+	_max_velocity_x,
+	_max_velocity_y,
+	_thrust_check_required = TRUE,
+	_stabilisation_check_required = TRUE,
+	_reset_thrust_dir = TRUE,
+	_skip_angular_calculations = FALSE,
+	starting_angle,
+	starting_velocity_x,
+	starting_velocity_y
+	)
+
 	// We can only control movable atoms.
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -82,6 +99,8 @@
 	stabilisation_check_required = _stabilisation_check_required
 	reset_thrust_dir = _reset_thrust_dir
 	skip_angular_calculations = _skip_angular_calculations
+	velocity_x = starting_velocity_x
+	velocity_y = starting_velocity_x
 
 	parent_atom = parent
 
@@ -126,10 +145,11 @@
 	parent_atom = null
 	return ..()
 
-
 /datum/component/physics/process(seconds_per_tick)
-	if(!parent_atom)
+	if(QDELETED(parent_atom))
 		STOP_PROCESSING(SSphysics, src)
+		return
+	if(sleeping)
 		return
 	// Initialization of variables for position and angle calculations
 	var/last_offset_x = offset_x
@@ -157,7 +177,7 @@
 
 	// alright so now we reconcile the offsets with the in-world position.
 	while((offset_x > 0.5 && velocity_x > 0) || (offset_y > 0.5 && velocity_y > 0) || (offset_x < -0.5 && velocity_x < 0) || (offset_y < -0.5 && velocity_y < 0))
-		if(!parent_atom)
+		if(QDELETED(parent_atom))
 			STOP_PROCESSING(SSphysics, src)
 			return
 		var/failed_x = FALSE
@@ -220,10 +240,15 @@
 
 	update_sprite(seconds_per_tick, last_angle, last_offset_x, last_offset_y)
 
-	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
-
 	if(reset_thrust_dir)
 		desired_thrust_dir = 0
+
+	if(!velocity_x && !velocity_y && !angular_velocity)
+		last_thrust_forward = 0
+		last_thrust_right = 0
+		pause()
+
+	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
 
 /**
  * update_sprite
@@ -242,15 +267,14 @@
 	parent_atom.transform = mat_from
 	parent_atom.pixel_x = parent_atom.base_pixel_x + last_offset_x * 32
 	parent_atom.pixel_y = parent_atom.base_pixel_y + last_offset_y * 32
-	animate(parent_atom, transform = mat_to, pixel_x = parent_atom.base_pixel_x + offset_x * 32, pixel_y = parent_atom.base_pixel_y + offset_y * 32, time = seconds_per_tick * 10, flags = ANIMATION_END_NOW)
-	var/list/possible_smooth_viewers = parent_atom.contents | parent_atom | parent_atom.get_all_orbiters()
-	for(var/mob/iterating_mob in possible_smooth_viewers)
+	animate(parent_atom, transform = mat_to, pixel_x = parent_atom.base_pixel_x + offset_x * 32, pixel_y = parent_atom.base_pixel_y + offset_y * 32, time = seconds_per_tick SECONDS, flags = ANIMATION_END_NOW)
+	for(var/mob/iterating_mob in parent_atom.contents)
 		var/client/mob_client = iterating_mob.client
 		if(!mob_client)
 			continue
 		mob_client.pixel_x = last_offset_x * 32
 		mob_client.pixel_y = last_offset_y * 32
-		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = seconds_per_tick * 10, flags = ANIMATION_END_NOW)
+		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = seconds_per_tick SECONDS, flags = ANIMATION_END_NOW)
 
 // PHYSICS CALCULATION PROCS
 
@@ -292,37 +316,33 @@
 
 	if(velocity_mag || angular_velocity)
 		var/drag = 0
-		var/floating = FALSE
 
+
+		var/turf/our_turf = get_turf(parent_atom)
 		// Iterate through the turfs the atom is currently in
-		for(var/turf/iterating_turf in parent_atom.locs)
-			// Ignore space turfs (no drag in space)
-			if(isspaceturf(iterating_turf))
-				continue
-
+		// Ignore space turfs (no drag in space)
+		if(!isspaceturf(our_turf))
 			// Add a small amount of drag for each turf
 			drag += 0.001
 
-			// Check if the atom is floating (not auto-stabilized) and has a significant velocity
-			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABILISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION) && velocity_mag > 0.1)
-				floating = TRUE // Flying on the station drains the battery
-
-			// Apply drag based on gravity and auto-stabilization
-			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABILISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
+			// Apply drag based on gravity and floating and has a significant velocity
+			if(our_turf.has_gravity() && velocity_mag > 0.1)
 				// Adjust drag based on the mining level (less gravity on lavaland)
 				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
 				// If atom is going too fast, make it lose floor tiles and take damage
-				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
-					var/turf/open/floor/floor = iterating_turf
+				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(our_turf))
+					var/turf/open/floor/floor = our_turf
 					floor.make_plating()
 					parent_atom.take_damage(3, BRUTE, "melee", FALSE)
+					playsound(parent_atom, 'sound/effects/clang.ogg', 50, TRUE)
+					parent_atom.visible_message(span_warning("[src] is hit by floortiles as they are ripped up"))
 
-			// Calculate the drag based on the pressure in the environment
-			var/datum/gas_mixture/env = iterating_turf.return_air()
-			if(env)
-				var/pressure = env.return_pressure()
-				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
+		// Calculate the drag based on the pressure in the environment
+		var/datum/gas_mixture/env = our_turf.return_air()
+		if(env)
+			var/pressure = env.return_pressure()
+			drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
 
 		// Limit the drag at high velocities
 		if(velocity_mag > 20)
@@ -406,23 +426,29 @@
 
 /datum/component/physics/proc/set_desired_angle(datum/source, new_angle)
 	SIGNAL_HANDLER
+	wake_up()
 	desired_angle = new_angle
 
 /datum/component/physics/proc/set_angle(datum/source, new_angle)
 	SIGNAL_HANDLER
+	wake_up()
 	angle = new_angle
 
 /datum/component/physics/proc/set_thrust_dir(datum/source, new_thrust_dir)
 	SIGNAL_HANDLER
+	wake_up()
 	desired_thrust_dir = new_thrust_dir
+
 
 /datum/component/physics/proc/set_velocity(datum/source, new_velocity_x, new_velocity_y)
 	SIGNAL_HANDLER
+	wake_up()
 	velocity_x = new_velocity_x
 	velocity_y = new_velocity_y
 
 /datum/component/physics/proc/process_bumped(datum/source, atom/movable/hit_object)
 	SIGNAL_HANDLER
+	wake_up()
 	if(hit_object.dir & NORTH)
 		velocity_y += bump_impulse
 	if(hit_object.dir & SOUTH)
@@ -434,6 +460,7 @@
 
 /datum/component/physics/proc/process_bump(datum/source, atom/bumped_atom)
 	SIGNAL_HANDLER
+	wake_up()
 	var/bump_velocity = 0
 	if(parent_atom.dir & (NORTH|SOUTH))
 		bump_velocity = abs(velocity_y) + (abs(velocity_x) / 15)
@@ -446,6 +473,29 @@
 		step(bumped_movable_atom, parent_atom.dir)
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_PROCESSED_BUMP, bump_velocity, bumped_atom)
+
+
+/**
+ * wake_up
+ *
+ * Wakes the system up and starts processing agian.
+ */
+/datum/component/physics/proc/wake_up()
+	SIGNAL_HANDLER
+	if(sleeping)
+		sleeping = FALSE
+		START_PROCESSING(SSphysics, src)
+
+/**
+ * Pause
+ *
+ * Pauses the system and stops calculating until it's woken up.
+ */
+/datum/component/physics/proc/pause()
+	SIGNAL_HANDLER
+	if(!sleeping)
+		sleeping = TRUE
+		STOP_PROCESSING(SSphysics, src)
 
 /**
  * BYOND returns a floating point error on certain trigonometric calculations, so we need to correct this.

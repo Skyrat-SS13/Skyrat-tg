@@ -241,7 +241,7 @@
 	shot_cost = 300
 	burst_fire = 3
 	fire_sound = 'sound/weapons/taser2.ogg'
-	fire_delay = 30
+	fire_delay = 3 SECONDS
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_disabler"
 
@@ -273,6 +273,7 @@
 	icon_state = "weapon_pulse"
 	projectile_type = /obj/projectile/beam/pulse
 	shot_cost = 1000
+	fire_delay = 2 SECONDS
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_pulse"
@@ -284,7 +285,7 @@
 	icon_state = "pod_taser"
 	projectile_type = /obj/projectile/kinetic/pod
 	shot_cost = 50
-	fire_delay = 14
+	fire_delay = 1.4 SECONDS
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 
 /obj/item/spacepod_equipment/weaponry/pod_ka
@@ -293,7 +294,7 @@
 	icon_state = "pod_m_laser"
 	projectile_type = /obj/projectile/kinetic/pod/regular
 	shot_cost = 50
-	fire_delay = 10
+	fire_delay = 1 SECONDS
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 
 /obj/projectile/kinetic/pod
@@ -309,7 +310,7 @@
 	icon_state = "pod_p_cutter"
 	projectile_type = /obj/projectile/plasma
 	shot_cost = 150
-	fire_delay = 10
+	fire_delay = 1 SECONDS
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_plasma"
@@ -320,7 +321,43 @@
 	icon_state = "pod_ap_cutter"
 	projectile_type = /obj/projectile/plasma/adv
 	shot_cost = 50
-	fire_delay = 5
+	fire_delay = 0.5 SECONDS
+
+
+/obj/item/spacepod_equipment/weaponry/railgun
+	name = "\improper Armadyne R-44 'Penetrator' Railgun"
+	desc = "A magnetic acceleration apparatus capable of firing projectiles at insane speeds."
+	icon_state = "weapon_railgun"
+	projectile_type = /obj/projectile/railgun
+	shot_cost = 1000
+	fire_delay = 10 SECONDS
+	fire_sound = 'modular_skyrat/modules/spacepods/sound/railgun.ogg'
+
+/obj/projectile/railgun
+	name = "railgun projectile"
+
+/obj/item/spacepod_equipment/weaponry/rocket_launcher
+	name = "\improper Armadyne 'STRATOS' Rocket Launcher"
+	desc = "A basic rocket launcher that fires basic rockets."
+	icon_state = "weapon_launcher"
+	projectile_type = /obj/physics_rocket
+	shot_cost = 2000
+	fire_delay = 10 SECONDS
+	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
+
+/obj/item/spacepod_equipment/weaponry/rocket_launcher/fire_weapon(target, x_offset, y_offset)
+	var/turf/our_turf = get_turf(spacepod)
+	new projectile_type(our_turf, spacepod.component_angle, spacepod.component_velocity_x, spacepod.component_velocity_x, target, spacepod)
+
+/obj/item/spacepod_equipment/weaponry/rocket_launcher
+	name = "\improper Armadyne 'STRATOS' Missile Launcher"
+	desc = "A basic rocket launcher that fires basic rockets."
+	icon_state = "pod_launcher"
+	projectile_type = /obj/physics_missile
+	shot_cost = 3000
+	fire_delay = 12 SECONDS
+	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
+
 
 /**
  * Thruster Types

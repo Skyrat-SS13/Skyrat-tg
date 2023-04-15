@@ -21,17 +21,18 @@
 	/// How much fuel the rocket has.
 	var/fuel = 10
 	/// How big the payload size is. EX calculations used for the list.
-	var/list/payload_size = list(0, 0, 3, 4)
+	var/list/payload_size = list(0, 2, 3, 4)
 	var/engine_on = FALSE
 
-/obj/physics_rocket/Initialize(mapload, start_angle)
+/obj/physics_rocket/Initialize(mapload, start_angle, start_velocity_x, start_velocity_y)
 	. = ..()
 	rocket_sound = new(src)
 	// Attach the physics component to the physics_missile
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _forward_maxthrust = max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle, starting_velocity_x = start_velocity_x, starting_velocity_y = start_velocity_y)
 
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(explode))
+
 
 	ignite_engine()
 
