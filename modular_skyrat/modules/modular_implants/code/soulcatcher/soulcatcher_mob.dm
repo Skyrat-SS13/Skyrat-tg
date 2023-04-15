@@ -124,6 +124,10 @@
 	set hidden = TRUE
 	return FALSE
 
+/mob/living/soulcatcher_soul/resist()
+	set hidden = TRUE
+	return FALSE
+
 /mob/living/soulcatcher_soul/Move()
 
 /mob/living/soulcatcher_soul/Destroy()
