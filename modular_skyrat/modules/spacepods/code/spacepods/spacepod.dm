@@ -40,8 +40,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/weapon_safety = FALSE
 	/// A list of our weapon slots, the association is the offset for pixel shooting.
 	var/list/weapon_slots = list(
-		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 16),
-		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 16),
+		SPACEPOD_WEAPON_SLOT_LEFT = list(16, 16),
+		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, -16),
 	)
 	/// A list of installed cargo bays
 	var/list/cargo_bays = list()
@@ -472,12 +472,23 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
 			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
 			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
-				var/weapon_offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
-				if(weapon_offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
+				var/weapon_offset_y = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][2]
+				if(weapon_offset_y < 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
 			add_overlay(weapon_overlay)
+
+
+	// Now do actual equipment overlays
+
+	for(var/key_type in equipment)
+		if(key_type == SPACEPOD_SLOT_WEAPON)
+			continue
+		for(var/obj/item/spacepod_equipment/iterating_equipment as anything in equipment[key_type])
+			if(iterating_equipment.overlay_icon && iterating_equipment.overlay_icon_state)
+				add_overlay(mutable_appearance(iterating_equipment.overlay_icon, iterating_equipment.overlay_icon_state))
+
 
 	// Damage overlays
 	var/obj_integrity = get_integrity()

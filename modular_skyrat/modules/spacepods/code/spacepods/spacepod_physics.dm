@@ -62,57 +62,41 @@
  *
  * Fires a projectile from the spacepod.
  */
-/obj/spacepod/proc/fire_projectile(projectile_type, target, override_offset_x, override_offset_y)
-	// Calculate the direction factors using the angle of the spacepod
-	var/factor_x = cos(90 - component_angle)
-	var/factor_y = sin(90 - component_angle)
+/obj/spacepod/proc/fire_projectile(projectile_type, target, custom_offset_x, custom_offset_y)
+	var/dir_x = cos(90 - component_angle)
+	var/dir_y = sin(90 - component_angle)
 
-	// Calculate the shift factors for projectile's starting position
-	var/shift_x = factor_y
-	var/shift_y = -factor_x
+	var/perp_x = -dir_y
+	var/perp_y = dir_x
 
-	// Calculate the pixel offset for the projectile's starting position
-	var/offset_pixel_x = (component_offset_x * 32)
-	var/offset_pixel_y = (component_offset_y * 32)
+	var/start_x = (component_offset_x * 32) + dir_x * custom_offset_x + perp_x * custom_offset_y
+	var/start_y = (component_offset_y * 32) + dir_y * custom_offset_x + perp_y * custom_offset_y
 
-	// Calculate the projectile's starting position based on the spacepod's position
-	var/calculated_x = offset_pixel_x + factor_x * override_offset_x + shift_x * override_offset_x
-	var/calculated_y = offset_pixel_y + factor_y * override_offset_y + shift_y * override_offset_y
+	var/turf/our_turf = get_turf(src)
+	while(start_x > 16)
+		our_turf = get_step(our_turf, EAST)
+		start_x -= 32
+	while(start_x < -16)
+		our_turf = get_step(our_turf, WEST)
+		start_x += 32
+	while(start_y > 16)
+		our_turf = get_step(our_turf, NORTH)
+		start_y -= 32
+	while(start_y < -16)
+		our_turf = get_step(our_turf, SOUTH)
+		start_y += 32
+	if(!our_turf)
+		return
 
-	// Get the turf where the spacepod is currently located
-	var/turf/iterating_turf = get_turf(src)
+	var/obj/projectile/projectile = new projectile_type(our_turf)
+	projectile.starting = our_turf
+	projectile.firer = src
+	projectile.def_zone = CHEST
+	projectile.original = target
+	projectile.pixel_x = round(start_x)
+	projectile.pixel_y = round(start_y)
 
-	// Adjust the iterating_turf in the EAST/WEST direction based on calculated_x
-	while(calculated_x > 16)
-		iterating_turf = get_step(iterating_turf, EAST)
-		calculated_x -= 32
-	while(calculated_x < -16)
-		iterating_turf = get_step(iterating_turf, WEST)
-		calculated_x += 32
-
-	// Adjust the iterating_turf in the NORTH/SOUTH direction based on calculated_y
-	while(calculated_y > 16)
-		iterating_turf = get_step(iterating_turf, NORTH)
-		calculated_y -= 32
-	while(calculated_y < -16)
-		iterating_turf = get_step(iterating_turf, SOUTH)
-		calculated_y += 32
-
-	// If iterating_turf is valid, create and fire the projectile
-	if(iterating_turf)
-		// Create the projectile object
-		var/obj/projectile/projectile = new projectile_type(iterating_turf)
-
-		// Set the projectile's properties
-		projectile.starting = iterating_turf
-		projectile.firer = src
-		projectile.def_zone = "chest"
-		projectile.original = target
-		projectile.pixel_x = round(calculated_x)
-		projectile.pixel_y = round(calculated_y)
-
-		// Fire the projectile at the given angle
-		projectile.fire(component_angle)
+	projectile.fire(component_angle)
 
 /**
  * set_angle
