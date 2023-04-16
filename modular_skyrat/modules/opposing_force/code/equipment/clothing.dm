@@ -107,6 +107,17 @@
 	item_type = /obj/item/mod/control/pre_equipped/elite
 	description = "An elite suit upgraded by Cybersun Industries, offering upgraded armor values."
 
+/datum/opposing_force_equipment/clothing/nripolicemod
+	name = "NRI Police MODsuit"
+	item_type = /obj/item/mod/control/pre_equipped/policing
+	description = "A run-of-the-mil suit designed for the NRI IAC, offering innate armor and BLINKERS!"
+
+/datum/opposing_force_equipment/clothing/nrimilitarymod
+	name = "NRI Military MODsuit"
+	item_type = /obj/item/mod/control/pre_equipped/frontline/ert
+	description = "A suit made for the NRI military forces, with nigh-invulnerable innate armor and regenerative abilities."
+	admin_note = "WARNING: This armor is nigh-impenetrable against bullets and is capable of healing its user's injuries thanks to the autodoc module."
+
 /datum/opposing_force_equipment/clothing/infiltratormod
 	name = "Infiltrator MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/infiltrator

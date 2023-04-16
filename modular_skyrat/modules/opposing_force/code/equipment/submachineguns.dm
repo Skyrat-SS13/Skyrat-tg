@@ -1,7 +1,7 @@
 /datum/opposing_force_equipment/submachine_gun
 	category = OPFOR_EQUIPMENT_CATEGORY_SUBMACHINE_GUNS
 
-/datum/opposing_force_equipment/submachine_gun/9mm_smg
+/datum/opposing_force_equipment/submachine_gun/ninemilsmg
 	item_type = /obj/item/gun/ballistic/automatic/proto/unrestricted
 	admin_note = "WARNING: This weapon is decently powerful, fully automatic and firing 30 damage bullets."
 
