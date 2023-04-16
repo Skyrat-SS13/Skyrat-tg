@@ -18,3 +18,13 @@
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
+/datum/design/soulcatcher_device
+	name = "Soulcatcher device"
+	desc = "PLACEHOLDER TEXT"
+	id = "soulcatcher_device"
+	build_type = PROTOLATHE | AWAY_LATHE
+	build_path = /obj/item/soulcatcher_item
+	materials = list(/datum/material/iron = 6000, /datum/material/silver = 2000, /datum/material/bluespace = 2000)
+	category = list(RND_CATEGORY_EQUIPMENT)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
