@@ -27,7 +27,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
 
-
 	return ..()
 
 /**
@@ -62,6 +61,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
 		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
 		to_chat(target_nif.linked_mob, message_to_recieve)
+		return TRUE
 
 	return FALSE
 
@@ -256,6 +256,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	room_to_join.add_soul_from_ghost(src)
+	return TRUE
 
 /mob/grab_ghost(force)
 	var/datum/component/previous_body/old_body = GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?

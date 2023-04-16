@@ -150,7 +150,7 @@
 
 		if("toggle_soul_sense")
 			if(params["sense_to_change"] == "hearing")
-				target_soul.internal_hearing = !target_soul.internal_hearing
+				target_soul.toggle_hearing()
 			else
 				target_soul.internal_sight = !target_soul.internal_sight
 
@@ -159,9 +159,9 @@
 		if("toggle_soul_communication")
 			if(params["communication_type"] == "emote")
 				target_soul.able_to_emote = !target_soul.able_to_emote
-				return TRUE
+			else
+				target_soul.able_to_speak = !target_soul.able_to_speak
 
-			target_soul.able_to_speak = !target_soul.able_to_speak
 			return TRUE
 
 		if("send_message")

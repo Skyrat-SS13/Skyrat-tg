@@ -4,7 +4,7 @@
 
 /datum/nifsoft/soulcatcher
 	name = "Soulcatcher"
-	program_desc = "Holds souls"
+	program_desc = "Holds souls" // PLACEHOLDER
 	purchase_price = 150 //RP tool
 	persistence = TRUE
 	/// What is the linked soulcatcher datum used by this NIFSoft?
@@ -84,4 +84,3 @@
 		return FALSE
 
 	soulcatcher_nifsoft.activate()
-

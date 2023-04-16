@@ -9,12 +9,17 @@
 	var/datum/component/soulcatcher/linked_soulcatcher
 
 /obj/item/soulcatcher_item/attack_self(mob/user, modifiers)
-	. = ..()
 	linked_soulcatcher.ui_interact(user)
 
 /obj/item/soulcatcher_item/New(loc, ...)
 	. = ..()
 	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
+
+/obj/item/soulcatcher_item/Destroy(force)
+	if(linked_soulcatcher)
+		qdel(linked_soulcatcher)
+
+	return ..()
 
 /obj/item/soulcatcher_item/attack(mob/living/target_mob, mob/living/user, params)
 	if(!target_mob)
@@ -27,6 +32,7 @@
 
 	if(!target_mob.mind || !target_mob.ckey)
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
+		return FALSE
 
 	if(target_mob.stat == DEAD) //We can temporarily store souls of dead mobs.
 		target_mob.ghostize(TRUE) //Incase they are staying in the body.
@@ -41,6 +47,7 @@
 
 		if(tgui_alert(target_ghost, "[user] wants to transfer you to a soulcatcher, do you accept?", name, list("Yes", "No"), autofocus = TRUE) != "Yes")
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
+			return FALSE
 
 		if(target_room.add_soul_from_ghost(target_ghost))
 			return FALSE
@@ -77,6 +84,7 @@
 
 	if(target_mob.mind || target_mob.ckey || !ishuman(target_mob))
 		to_chat(user, span_warning("[target_mob] is not able to recieve a soul"))
+		return FALSE
 
 	var/list/soul_list = list()
 	for(var/datum/soulcatcher_room/room in linked_soulcatcher.soulcatcher_rooms)

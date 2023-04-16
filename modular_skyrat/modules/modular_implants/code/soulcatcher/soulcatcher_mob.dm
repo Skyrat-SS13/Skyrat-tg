@@ -29,7 +29,6 @@
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
 
-
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
 	if(!outside_sight)
@@ -127,8 +126,6 @@
 /mob/living/soulcatcher_soul/resist()
 	set hidden = TRUE
 	return FALSE
-
-/mob/living/soulcatcher_soul/Move()
 
 /mob/living/soulcatcher_soul/Destroy()
 	if(current_room)
