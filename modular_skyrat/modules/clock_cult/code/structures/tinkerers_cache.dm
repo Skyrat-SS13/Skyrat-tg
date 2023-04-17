@@ -41,12 +41,20 @@
 		to_chat(user, span_brass("[src] is still warming up, it will be ready in [DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]."))
 		return
 
-	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", craft_possibilities)
+	var/list/real_possibilities = craft_possibilities.Copy()
+
+	for(var/datum/tinker_cache_item/path as anything in real_possibilities)
+		if((path in GLOB.clockwork_research_unlocked_recipes) || !initial(path.research_locked))
+			continue
+
+		real_possibilities -= path
+
+	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", real_possibilities)
 
 	if(!selection)
 		return
 
-	var/datum/tinker_cache_item/chosen_item = craft_possibilities[selection]
+	var/datum/tinker_cache_item/chosen_item = real_possibilities[selection]
 
 	if(!can_interact(user) || !anchored || depowered || !chosen_item || !COOLDOWN_FINISHED(src, use_cooldown))
 		return
@@ -86,6 +94,8 @@
 	var/power_use = 0
 	/// Multiplier for time delay (default 4m) after producing this item
 	var/time_delay_mult = 1
+	/// If this is locked behind research
+	var/research_locked = FALSE
 
 /datum/tinker_cache_item/speed_robes
 	name = "Robes Of Divinity"
@@ -116,12 +126,14 @@
 	name = "Clockwork Rifle"
 	item_path = /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 	power_use = 500
+	research_locked = TRUE
 
 /datum/tinker_cache_item/clockwork_rifle_ammo
 	name = "Clockwork Rifle Ammunition"
 	item_path = /obj/item/ammo_box/a762/lionhunter/clock
 	power_use = 200
 	time_delay_mult = 0.5
+	research_locked = TRUE
 
 /datum/tinker_cache_item/tools
 	name = "Equipped Toolbelt"

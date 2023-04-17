@@ -13,7 +13,7 @@
 	if(reebe_began_spawning)
 		return
 
-	GLOB.reebe_began_spawning = TRUE
+	reebe_began_spawning = TRUE
 
 	var/turf/atom_turf = get_turf(target_atom) // Protection in case this gets deleted
 	var/area/atom_area = get_area(target_atom)
