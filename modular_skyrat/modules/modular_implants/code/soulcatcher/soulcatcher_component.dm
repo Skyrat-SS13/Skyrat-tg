@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	target_room.current_souls += target_soul
 
 	to_chat(target_soul, span_notice("you've been transfered to [target_room]!"))
-	to_chat(target_soul, span_notice(room_description))
+	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE
 
