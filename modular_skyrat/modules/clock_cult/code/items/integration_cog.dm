@@ -52,7 +52,7 @@
 
 /// Finish setting up the cog 5 minutes after insertion
 /obj/item/clockwork/integration_cog/proc/finish_setup(obj/machinery/power/apc/cogger_apc)
-	if(!cogger_apc || !cogger_apc.integration_cog)
+	if(!cogger_apc?.integration_cog)
 		return
 
 	set_up = TRUE
