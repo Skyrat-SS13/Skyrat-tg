@@ -347,14 +347,14 @@
 
 /obj/item/spacepod_equipment/weaponry/rocket_launcher/fire_weapon(target, x_offset, y_offset)
 	var/turf/our_turf = get_turf(spacepod)
-	new projectile_type(our_turf, spacepod.component_angle, spacepod.component_velocity_x, spacepod.component_velocity_x, target, spacepod)
+	new projectile_type(our_turf, start_angle = spacepod.component_angle, start_velocity_x = spacepod.component_velocity_x, start_velocity_y = spacepod.component_velocity_x, start_offset_x = x_offset, start_offset_y = y_offset, target_to_set = target, incoming_firer = spacepod)
 
-/obj/item/spacepod_equipment/weaponry/rocket_launcher
-	name = "\improper Armadyne 'STRATOS' Missile Launcher"
-	desc = "A basic rocket launcher that fires basic rockets."
+/obj/item/spacepod_equipment/weaponry/missile_launcher
+	name = "\improper Armadyne 'ANGELFALL' Missile Launcher"
+	desc = "A target locking missile launcher."
 	icon_state = "pod_launcher"
 	projectile_type = /obj/physics_missile
-	shot_cost = 3000
+	shot_cost = 4000
 	fire_delay = 12 SECONDS
 	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 

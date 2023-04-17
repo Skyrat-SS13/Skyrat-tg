@@ -149,6 +149,15 @@
 	parent_atom = null
 	return ..()
 
+/**
+ * precheck_dir
+ *
+ * Checks if the pod can move in a certain direction without moving in said direction.
+ */
+/datum/component/physics/proc/precheck_dir(dir_to_check)
+	var/turf/target_turf = get_step(parent_atom, dir_to_check)
+	return target_turf.Enter(parent_atom)
+
 /datum/component/physics/process(seconds_per_tick)
 	if(QDELETED(parent_atom))
 		STOP_PROCESSING(SSphysics, src)
@@ -174,12 +183,12 @@
 	velocity_y = clamp(velocity_y, -max_velocity_y, max_velocity_y)
 
 	// Update the offsets
-	offset_x += (last_failed_dirs & EAST && velocity_x > 0) ? 0 : ((last_failed_dirs & WEST && velocity_x < 0) ? 0 : velocity_x * seconds_per_tick)
-	offset_y += (last_failed_dirs & NORTH && velocity_y > 0) ? 0 : ((last_failed_dirs & SOUTH && velocity_y < 0) ? 0 : velocity_y * seconds_per_tick)
+	offset_x += velocity_x * seconds_per_tick
+	offset_y += velocity_y * seconds_per_tick
 
 	last_failed_dirs = NONE
 
-	// alright so now we reconcile the offsets with the in-world position.
+	// Here we move the TILE
 	while((offset_x > 0.5 && velocity_x > 0) || (offset_y > 0.5 && velocity_y > 0) || (offset_x < -0.5 && velocity_x < 0) || (offset_y < -0.5 && velocity_y < 0))
 		if(QDELETED(parent_atom))
 			STOP_PROCESSING(SSphysics, src)
@@ -193,7 +202,7 @@
 				last_offset_x -= 1
 				last_failed_dirs &= ~EAST
 			else
-				offset_x = 0
+				offset_x = 0.5
 				failed_x = TRUE
 				velocity_x *= -bounce_factor
 				velocity_y *= lateral_bounce_factor
@@ -205,7 +214,7 @@
 				last_offset_x += 1
 				last_failed_dirs &= ~WEST
 			else
-				offset_x = 0
+				offset_x = -0.5
 				failed_x = TRUE
 				velocity_x *= -bounce_factor
 				velocity_y *= lateral_bounce_factor
@@ -218,7 +227,7 @@
 				last_offset_y -= 1
 				last_failed_dirs &= ~NORTH
 			else
-				offset_y = 0
+				offset_y = 0.5
 				failed_y = TRUE
 				velocity_y *= -bounce_factor
 				velocity_x *= lateral_bounce_factor
@@ -231,7 +240,7 @@
 				last_offset_y += 1
 				last_failed_dirs &= ~SOUTH
 			else
-				offset_y = 0
+				offset_y = -0.5
 				failed_y = TRUE
 				velocity_y *= -bounce_factor
 				velocity_x *= lateral_bounce_factor

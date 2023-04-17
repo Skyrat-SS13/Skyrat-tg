@@ -60,7 +60,7 @@
 	var/rocket_type = /obj/physics_rocket
 
 /obj/item/ammo_casing/caseless/physics_rocket/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
-	new rocket_type(get_turf(src), get_angle(get_turf(fired_from), target), 0, 0, target, ignition_time)
+	new rocket_type(get_turf(src), start_angle = get_angle(get_turf(fired_from), target), target_to_set = target, ignition_time = ignition_time)
 	QDEL_NULL(loaded_projectile)
 	return TRUE
 
@@ -79,6 +79,6 @@
 	ignition_time = 0.5 SECONDS
 
 /obj/item/ammo_casing/caseless/physics_rocket/missile/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
-	new rocket_type(get_turf(src), get_angle(get_turf(fired_from), target), 0, 0, target, ignition_time, user)
+	new rocket_type(get_turf(src), start_angle = get_angle(get_turf(fired_from), target), target_to_set = target, ignition_time = ignition_time, incoming_firer = user)
 	QDEL_NULL(loaded_projectile)
 	return TRUE

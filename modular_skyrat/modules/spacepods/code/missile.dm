@@ -41,7 +41,7 @@
 	/// Is this the first time we have launched, play a sound effect.
 	var/first_launch = TRUE
 	/// How big the payload size is. EX calculations used for the list.
-	var/list/payload_size = list(0, 2, 3, 4)
+	var/list/payload_size = list(0, 0, 3, 4)
 	/// How much time do we push forwards before ignition?
 	var/initial_forwards_time = 0.1 SECONDS
 	/// Who fired us, used for targeting checks
@@ -53,7 +53,7 @@
 	/// Have we completed our ignition?
 	var/initial_ignition_complete = TRUE
 
-/obj/physics_missile/Initialize(mapload, start_angle, start_velocity_x, start_velocity_y, target_to_set, ignition_time, incoming_firer, incoming_faction_check, list/incoming_factions)
+/obj/physics_missile/Initialize(mapload, start_angle, start_velocity_x, start_velocity_y, start_offset_x, start_offset_y, target_to_set, ignition_time, incoming_firer, incoming_faction_check, list/incoming_factions)
 	. = ..()
 	rocket_sound = new(src)
 	// Attach the physics component to the physics_missile
@@ -62,6 +62,9 @@
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(explode))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_update_movement))
+
+	physics_component.offset_x = start_offset_x
+	physics_component.offset_y = start_offset_y
 
 	check_factions = incoming_faction_check
 
@@ -251,6 +254,7 @@
 /obj/physics_missile/lead_angle
 	name = "lead angle targeting missile"
 	icon_state = "medium_missile"
+	payload_size = list(0, 2, 3, 4)
 
 /**
  * lead angle calculation
@@ -296,3 +300,4 @@
 	name = "auto targeting missile"
 	auto_target = TRUE
 	icon_state = "small_missile"
+	payload_size = list(0, 0, 3, 4)
