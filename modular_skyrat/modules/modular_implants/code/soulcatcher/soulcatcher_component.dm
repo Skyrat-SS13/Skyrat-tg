@@ -129,8 +129,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 			new_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
-	to_chat(new_soul, span_notice("[room_description]"))
-	to_chat(new_soul, span_boldwarning("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
+	to_chat(new_soul, span_notice(room_description))
+	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
 	log_admin("[new_soul] entered the soulcatcher room, [src]")
 
 	return TRUE
@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	current_souls -= target_soul
 	target_room.current_souls += target_soul
 
-	to_chat(target_soul, span_notice("you've been transfered to [target_room]!"))
+	to_chat(target_soul, span_cyan("you've been transfered to [target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE
