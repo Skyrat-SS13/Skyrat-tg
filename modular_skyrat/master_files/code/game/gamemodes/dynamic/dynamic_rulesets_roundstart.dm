@@ -28,6 +28,7 @@
 		candidate.mind.special_role = ROLE_OPFOR_CANDIDATE
 		candidate.mind.restricted_roles = restricted_roles
 		GLOB.pre_setup_antags += candidate.mind
+		candidate.mind.add_antag_datum(/datum/antagonist/opfor_candidate)
 	return TRUE
 
 /datum/dynamic_ruleset/roundstart/quiet/trim_candidates()
