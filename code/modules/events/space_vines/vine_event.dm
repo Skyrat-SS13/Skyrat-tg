@@ -47,10 +47,6 @@
 
 	if(length(turfs)) //Pick a turf to spawn at if we can
 		var/turf/floor = pick(turfs)
-<<<<<<< HEAD
-		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(50,100), rand(1,4), src) //spawn a controller at turf with randomized stats and a single random mutation
-*/
-=======
 		var/list/selected_mutations = list()
 
 		if(mutations_overridden == FALSE)
@@ -69,7 +65,7 @@
 
 /datum/event_admin_setup/set_location/spacevine/apply_to_event(datum/round_event/spacevine/event)
 	event.override_turf = chosen_turf
-	
+
 /datum/event_admin_setup/multiple_choice/spacevine
 	input_text = "Select starting mutations."
 	min_choices = 0
@@ -93,7 +89,7 @@
 		type_choices += text2path(choice)
 	event.mutations_overridden = TRUE
 	event.override_mutations = type_choices
-	
+
 /datum/event_admin_setup/input_number/spacevine_potency
 	input_text = "Set vine's potency (effects mutation frequency + max severity)"
 	max_value = 100
@@ -116,4 +112,4 @@
 
 /datum/event_admin_setup/input_number/spacevine_production/apply_to_event(datum/round_event/spacevine/event)
 	event.production = chosen_value
->>>>>>> 0c0803817a1 (Admins can now customize the space vines event. Also fixes a space vine event bugs. (#74704))
+*/

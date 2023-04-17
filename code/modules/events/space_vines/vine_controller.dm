@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL
-=======
+/// SKYRAT EDIT REMOVAL BEGIN
+/*
 ///A list of the possible mutations for a vine
 GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 
@@ -11,7 +10,6 @@ GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 		mutation_list[mutation] = IDEAL_MAX_SEVERITY - mutation.severity // the ideal maximum potency is used for weighting
 	return mutation_list
 
->>>>>>> 0c0803817a1 (Admins can now customize the space vines event. Also fixes a space vine event bugs. (#74704))
 /datum/spacevine_controller
 	///Canonical list of all the vines we "own"
 	var/list/obj/structure/spacevine/vines
@@ -163,3 +161,4 @@ GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 			return TRUE
 	return FALSE
 */
+/// SKYRAT EDIT REMOVAL END
