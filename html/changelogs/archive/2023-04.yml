@@ -757,3 +757,40 @@
   - refactor: removes single letter variable names
   - refactor: uses datum/ui component to get user for to_chat() instead of usr
   - qol: Set default IV transfer rate to maximum (5) instead of 0.
+2023-04-17:
+  SkyratBot:
+  - bugfix: fixes hostile mobs sometimes being able to target an atom that has been
+      marked for deletion and then becoming confused, and in a similar vein fixes
+      mobs sometimes still running their AI while being marked for deletion.
+  - bugfix: Fixed warning messages
+  - bugfix: slapper is visible in-hand again.
+  - rscadd: Added a nukeops victory state for failing to nuke the station, but somehow
+      hijacking the shuttle.
+  - bugfix: Renault and other simple animals are now correctly fireproof.
+  - bugfix: death squad officer outfit works
+  - bugfix: The North Star is no longer missing it's commission plaque or the QM's
+      request console.
+  - bugfix: 'icebox: patched up some holes underneath the vent doors in science burn
+      room'
+  - bugfix: fixes lava not cleaning up the permanently on fire trait
+  - qol: text that appears when you dont have an uplink in the traitor panel now tells
+      you the codes for your replacement uplink
+  - bugfix: null client error for balloon alert when toggling the electrolyser on/off
+      via the UI
+  - balance: Nitrous oxide, the reagent, increases bleed rate from wounds rather than
+      directly subtracting blood. It can be counteracted using coagulants (such as
+      those in epipens).
+  - balance: Heparin purges coagulants. You have to remove heparin from someone's
+      system before you can use coagulants.
+  - bugfix: HFR should now allow you to select input/moderator rates
+  - bugfix: Crystallizer ui should now properly show input gases
+  - bugfix: a pirate shipmate aboard the pirate cutter has found their lost energy
+      cutlass
+  - admin: Added a SpinAnimation option for all atoms in the View-Variables drop-down
+      menu
+  - admin: Added a button to stop all animations right next to the SpinAnimation option
+      in the View-Variables drop-down menu
+  - qol: Ghosts are now notified and given an orbit popup for the Stray Cargo Pod
+      random event.
+  - bugfix: Interdyne and Syn-C Brutus ruins no longer runtime on initializing.
+  - bugfix: Interdyne's smes is now properly wired to the apc.
