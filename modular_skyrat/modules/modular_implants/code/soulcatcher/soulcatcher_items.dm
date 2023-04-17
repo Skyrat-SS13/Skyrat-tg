@@ -49,7 +49,7 @@
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 			return FALSE
 
-		if(target_room.add_soul_from_ghost(target_ghost))
+		if(!target_room.add_soul_from_ghost(target_ghost))
 			return FALSE
 
 		body_component = target_mob.GetComponent(/datum/component/previous_body)
