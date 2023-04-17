@@ -19,8 +19,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/soulcatcher_device
-	name = "Soulcatcher device"
-	desc = "PLACEHOLDER TEXT"
+	name = "'Evoker'-Type RSD"
+	desc = "An RSD instrument that lets the user pull the consciousness from a body and store it virtually."
 	id = "soulcatcher_device"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/soulcatcher_item
