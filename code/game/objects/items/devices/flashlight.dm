@@ -55,8 +55,6 @@
 
 	return NONE
 
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
-/*
 /obj/item/flashlight/proc/update_brightness()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
@@ -70,6 +68,8 @@
 	if(light_system == STATIC_LIGHT)
 		update_light()
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
+/*
 /obj/item/flashlight/proc/toggle_light()
 	on = !on
 	playsound(src, on ? sound_on : sound_off, 40, TRUE)
@@ -443,9 +443,7 @@
 	randomize_fuel = FALSE
 	trash_type = /obj/item/trash/candle
 	can_be_extinguished = TRUE
-<<<<<<< HEAD
 	var/scented_type //SKYRAT EDIT ADDITION /// Pollutant type for scented candles
-=======
 	/// The current wax level, used for drawing the correct icon
 	var/current_wax_level = 1
 	/// The previous wax level, remembered so we only have to make 3 update_appearance calls total as opposed to every tick
@@ -468,11 +466,10 @@
 			current_wax_level = 2
 		if(0 to 15 MINUTES)
 			current_wax_level = 3
-			
+
 	if(last_wax_level != current_wax_level)
 		last_wax_level = current_wax_level
 		update_appearance(UPDATE_ICON | UPDATE_NAME)
->>>>>>> 1125b5a55b0 (Let there be (held) light! Adds directional flashlight sprites, and many new inhand icons for various light objects (#74482))
 
 /obj/item/flashlight/flare/candle/update_icon_state()
 	. = ..()
@@ -522,7 +519,7 @@
 /obj/item/flashlight/flare/candle/attackby(obj/item/attacking_item, mob/user, params)
 	if(try_light_candle(attacking_item, user, silent = istype(attacking_item, src.type))) // so we don't double balloon alerts when a candle is used to light another candle
 		return COMPONENT_CANCEL_ATTACK_CHAIN
-	else 
+	else
 		return ..()
 
 // allows lighting an unlit candle from some fire source by left clicking the source with the candle
@@ -700,12 +697,8 @@
 /* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
-<<<<<<< HEAD
-	update_appearance()
-*/
-=======
 	update_appearance(UPDATE_ICON)
->>>>>>> 1125b5a55b0 (Let there be (held) light! Adds directional flashlight sprites, and many new inhand icons for various light objects (#74482))
+*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()
@@ -844,7 +837,7 @@
 	light_range = 1
 	light_power = 0.07
 
-#undef FAILURE 
-#undef SUCCESS 
-#undef NO_FUEL 
-#undef ALREADY_LIT 
+#undef FAILURE
+#undef SUCCESS
+#undef NO_FUEL
+#undef ALREADY_LIT
