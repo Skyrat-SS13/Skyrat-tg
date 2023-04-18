@@ -135,15 +135,21 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			//var/area/local_area = get_area(src) SKYRAT EDIT REMOVAL
-			// SKYRAT EDIT ADDITION BEGIN
-			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
-			else if(major_emergency)
+			var/area/local_area = get_area(src)
+			//SKYRAT EDIT BEGIN - Original
+			/*
+			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
-			// SKYRAT EDIT ADDITION END
 			else
 				icon_state = "[base_state]"
+			*/
+			if(low_power_mode)
+				icon_state = "[base_state]_lpower"
+			else if(major_emergency || (local_area?.fire))
+				icon_state = "[base_state]_emergency"
+			else
+				icon_state = "[base_state]"
+			// SKYRAT EDIT END
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -161,7 +167,8 @@
 	var/area/local_area = get_area(src)
 	if(emergency_mode || (local_area?.fire))
 	*/
-	if(low_power_mode || major_emergency) // SKYRAT EDIT END
+	var/area/local_area = get_area(src)
+	if(low_power_mode || major_emergency || (local_area?.fire)) // SKYRAT EDIT END
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
@@ -195,7 +202,7 @@
 
 /obj/machinery/light/proc/handle_fire(area/source, new_fire)
 	SIGNAL_HANDLER
-	update()
+	update(instant = TRUE, play_sound = FALSE) //SKYRAT EDIT CHANGE
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SKYRAT EDIT CHANGE
@@ -292,14 +299,14 @@
 		var/delay = rand(BROKEN_SPARKS_MIN, BROKEN_SPARKS_MAX)
 		addtimer(CALLBACK(src, PROC_REF(broken_sparks)), delay, TIMER_UNIQUE | TIMER_NO_HASH_WAIT)
 
-/obj/machinery/light/process(delta_time)
+/obj/machinery/light/process(seconds_per_tick)
 	if(has_power()) //If the light is being powered by the station.
 		if(cell)
 			if(cell.charge == cell.maxcharge && !reagents) //If the cell is done mooching station power, and reagents don't need processing, stop processing
 				return PROCESS_KILL
 			cell.charge = min(cell.maxcharge, cell.charge + LIGHT_EMERGENCY_POWER_USE) //Recharge emergency power automatically while not using it
 	if(reagents) //with most reagents coming out at 300, and with most meaningful reactions coming at 370+, this rate gives a few seconds of time to place it in and get out of dodge regardless of input.
-		reagents.adjust_thermal_energy(8 * reagents.total_volume * SPECIFIC_HEAT_DEFAULT * delta_time)
+		reagents.adjust_thermal_energy(8 * reagents.total_volume * SPECIFIC_HEAT_DEFAULT * seconds_per_tick)
 		reagents.handle_reactions()
 	if(low_power_mode && !use_emergency_power(LIGHT_EMERGENCY_POWER_USE))
 		update(FALSE) //Disables emergency mode and sets the color to normal
@@ -626,7 +633,7 @@
 	light_object.switchcount = switchcount
 	switchcount = 0
 
-	light_object.update()
+	light_object.update_appearance()
 	light_object.forceMove(loc)
 
 	if(user) //puts it in our active hand

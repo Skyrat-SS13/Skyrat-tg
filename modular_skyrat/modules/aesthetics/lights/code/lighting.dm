@@ -8,20 +8,23 @@
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
-	brightness = 5.5
+	brightness = 6.5
+	fire_brightness = 4.5
+	fire_colour = "#D47F9B"
 	bulb_colour = LIGHT_COLOR_FAINT_BLUE
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
-	bulb_low_power_brightness_mul = 0.45
+	bulb_low_power_brightness_mul = 0.4
 	bulb_low_power_pow_min = 0.4
-	bulb_major_emergency_brightness_mul = 1 // don't dim in an emergency, why is that a thing
+	bulb_emergency_colour = LIGHT_COLOR_INTENSE_RED
+	bulb_major_emergency_brightness_mul = 0.7
+	power_consumption_rate = 5.62
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
 	var/constant_flickering = FALSE // Are we always flickering?
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
-	var/firealarm = FALSE
 
 /obj/machinery/light/proc/turn_on(trigger, play_sound = TRUE)
 	if(QDELETED(src))
@@ -29,13 +32,15 @@
 	turning_on = FALSE
 	if(!on)
 		return
+	var/area/local_area  = get_room_area(src)
 	var/new_brightness = brightness
 	var/new_power = bulb_power
 	var/new_color = bulb_colour
-	if(color)
+	if (local_area?.fire)
+		new_color = fire_colour
+		new_brightness = fire_brightness
+	else if(color)
 		new_color = color
-	if (firealarm)
-		new_color = bulb_emergency_colour
 	else if (nightshift_enabled)
 		new_brightness -= new_brightness * NIGHTSHIFT_LIGHT_MODIFIER
 		new_power -= new_power * NIGHTSHIFT_LIGHT_MODIFIER
@@ -100,18 +105,6 @@
 	alter_flicker(FALSE)
 	flicker_timer = addtimer(CALLBACK(src, PROC_REF(flicker_on)), rand(5, 50))
 
-/obj/machinery/light/proc/firealarm_on()
-	SIGNAL_HANDLER
-
-	firealarm = TRUE
-	update()
-
-/obj/machinery/light/proc/firealarm_off()
-	SIGNAL_HANDLER
-
-	firealarm = FALSE
-	update()
-
 /obj/machinery/light/Initialize(mapload = TRUE)
 	. = ..()
 	if(on)
@@ -122,6 +115,9 @@
 
 /obj/item/light/tube
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_righthand.dmi'
+	
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)

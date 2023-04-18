@@ -329,6 +329,9 @@
  */
 /datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
 	var/list/key_list = alterer.dna.mutant_bodyparts
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/erp_part in ORGAN_ERP_LIST)
+			key_list -= erp_part
 	var/chosen_key = tgui_input_list(
 		alterer,
 		"Select the part you want to alter",
