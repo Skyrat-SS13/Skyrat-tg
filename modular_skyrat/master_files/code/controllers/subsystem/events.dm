@@ -10,8 +10,8 @@
 				return
 		if(world.time - SSticker.round_start_time >= CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
 			log_game("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac() ? "shuttle refuelling" : "[SSshuttle.canEvac()]"]")
-			log_game("ICES: Info: RT [(world.timeofday - SSticker.round_start_time)] | SD [CONFIG_GET(number/shuttle_refuel_delay)]")
-			message_admins("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac()]")
+			log_game("ICES: Info: RT [(world.time - SSticker.round_start_time)] | SD [CONFIG_GET(number/shuttle_refuel_delay)]")
+			message_admins("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac() ? "shuttle refuelling" : "[SSshuttle.canEvac()]"]")
 			reschedule()
 			return
 		spawnEvent()
