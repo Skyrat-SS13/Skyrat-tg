@@ -273,6 +273,12 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
 	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
 
+<<<<<<< HEAD
+=======
+/obj/item/stack/sheet/plastitaniumglass/fifty
+	amount = 50
+
+>>>>>>> 1eccff1eb77 (Fixes Plastitanium glass duplication (#74804))
 /datum/armor/sheet_plastitaniumglass
 	fire = 80
 	acid = 100
