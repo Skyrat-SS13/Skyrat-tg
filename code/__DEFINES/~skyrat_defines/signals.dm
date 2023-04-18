@@ -100,6 +100,9 @@
 /// Sets the velocity of a physics component. (new_velocity_x, new_velocity_y)
 #define COMSIG_PHYSICS_SET_VELOCITY "physics_set_velocity"
 
+/// Sets the MAX velocity of a physics component. (new_max_velocity_x, new_max_velocity_y)
+#define COMSIG_PHYSICS_SET_MAX_VELOCITY "physics_set_max_velocity"
+
 /// Sent when a physics component processes and updates itself. (updated_angle, updated_velocity_x, updated_velocity_y, updated_offset_x, updated_offset_y)
 #define COMSIG_PHYSICS_UPDATE_MOVEMENT "physics_update_movement"
 

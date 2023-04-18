@@ -126,6 +126,7 @@
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_DESIRED_ANGLE, PROC_REF(set_desired_angle))
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_ANGLE, PROC_REF(set_angle))
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_VELOCITY, PROC_REF(set_velocity))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_MAX_VELOCITY, PROC_REF(set_max_velocity))
 	RegisterSignal(parent, COMSIG_ATOM_BUMPED, PROC_REF(process_bumped))
 	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, PROC_REF(process_bump))
 	RegisterSignal(parent, COMSIG_MOVABLE_SPACEMOVE, PROC_REF(spacemove_react))
@@ -138,6 +139,7 @@
 		COMSIG_PHYSICS_SET_DESIRED_ANGLE,
 		COMSIG_PHYSICS_SET_ANGLE,
 		COMSIG_PHYSICS_SET_VELOCITY,
+		COMSIG_PHYSICS_SET_MAX_VELOCITY,
 		COMSIG_ATOM_BUMPED,
 		COMSIG_MOVABLE_BUMP,
 		COMSIG_MOVABLE_SPACEMOVE,
@@ -457,6 +459,12 @@
 	wake_up()
 	velocity_x = new_velocity_x
 	velocity_y = new_velocity_y
+
+/datum/component/physics/proc/set_max_velocity(datum/source, new_max_velocity_x, new_max_velocity_y)
+	SIGNAL_HANDLER
+	wake_up()
+	max_velocity_x = new_max_velocity_x
+	max_velocity_y = new_max_velocity_y
 
 /datum/component/physics/proc/process_bumped(datum/source, atom/movable/hit_object)
 	SIGNAL_HANDLER

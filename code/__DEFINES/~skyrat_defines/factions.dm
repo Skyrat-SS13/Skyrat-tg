@@ -12,3 +12,6 @@
 #define FACTION_CLOCK "clock"
 
 #define FACTION_RAIDER "raider"
+
+// Space overhaul stuff
+#define FACTION_ROGUE_DRONE "rogue drone"
