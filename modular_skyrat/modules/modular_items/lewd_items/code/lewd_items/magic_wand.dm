@@ -69,20 +69,20 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/magic_wand/process(delta_time)
+/obj/item/clothing/sextoy/magic_wand/process(seconds_per_tick)
 	var/mob/living/carbon/human/vibrated = loc
 	if(!istype(vibrated))
 		return
 	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(vibration_mode == "low" && vibrated.arousal < 30)
-		vibrated.adjust_arousal(0.6 * delta_time)
-		vibrated.adjust_pleasure(0.7 * delta_time)
+		vibrated.adjust_arousal(0.6 * seconds_per_tick)
+		vibrated.adjust_pleasure(0.7 * seconds_per_tick)
 	else if(vibration_mode == "medium" && vibrated.arousal < 60)
-		vibrated.adjust_arousal(0.8 * delta_time)
-		vibrated.adjust_pleasure(0.8 * delta_time)
+		vibrated.adjust_arousal(0.8 * seconds_per_tick)
+		vibrated.adjust_pleasure(0.8 * seconds_per_tick)
 	else if(vibration_mode == "hard")
-		vibrated.adjust_arousal(1 * delta_time)
-		vibrated.adjust_pleasure(1 * delta_time)
+		vibrated.adjust_arousal(1 * seconds_per_tick)
+		vibrated.adjust_pleasure(1 * seconds_per_tick)
 
 /obj/item/clothing/sextoy/magic_wand/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()

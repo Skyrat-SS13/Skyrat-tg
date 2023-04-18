@@ -109,7 +109,7 @@
 		open_machine()
 		return
 
-/obj/machinery/self_actualization_device/process(delta_time)
+/obj/machinery/self_actualization_device/process(seconds_per_tick)
 	if(!processing)
 		return
 	if(!powered() || !occupant || !iscarbon(occupant))
