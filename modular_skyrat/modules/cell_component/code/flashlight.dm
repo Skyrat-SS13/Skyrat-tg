@@ -26,12 +26,6 @@
 	if(uses_battery)
 		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(turn_off)))
 
-/obj/item/flashlight/proc/update_brightness()
-	set_light_on(on)
-	if(light_system == STATIC_LIGHT)
-		update_light()
-	update_appearance()
-
 /obj/item/flashlight/examine(mob/user)
 	. = ..()
 	if(has_modes)
