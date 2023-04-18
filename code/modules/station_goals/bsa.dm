@@ -391,12 +391,10 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	QDEL_NULL(centerpiece.back_ref)
 	qdel(centerpiece)
 	return cannon
-<<<<<<< HEAD
-*/
-=======
+
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
 	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out."))
->>>>>>> 81f309073ba (adds new emag feature to the BSA  (#74783))
+*/
