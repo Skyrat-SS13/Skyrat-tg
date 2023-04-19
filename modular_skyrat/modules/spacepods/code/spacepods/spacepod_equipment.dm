@@ -28,7 +28,7 @@
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
 	SHOULD_CALL_PARENT(TRUE)
 	spacepod = attaching_spacepod
-	attaching_spacepod.update_overlays()
+	attaching_spacepod.update_appearance()
 
 /**
  * on uninstall
@@ -43,7 +43,7 @@
 		to_chat(user, span_warning("Unable to uninstall [src]!"))
 		return
 	spacepod = null
-	detatching_spacepod.update_overlays()
+	detatching_spacepod.update_appearance()
 
 /**
  * can_install
@@ -198,7 +198,7 @@
 	if(!override_slot)
 		override_slot = pick(attaching_spacepod.get_free_weapon_slots())
 	attaching_spacepod.equipment[SPACEPOD_SLOT_WEAPON][src] = override_slot
-	attaching_spacepod.update_overlays()
+	attaching_spacepod.update_appearance()
 
 
 /obj/item/spacepod_equipment/weaponry/proc/fire_weapon(target, x_offset, y_offset)
@@ -273,7 +273,7 @@
 	icon_state = "weapon_pulse"
 	projectile_type = /obj/projectile/beam/pulse
 	shot_cost = 1000
-	fire_delay = 2 SECONDS
+	fire_delay = 0.2 SECONDS
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_pulse"
@@ -371,39 +371,39 @@
 	icon_state = "thrusters"
 	slot = SPACEPOD_SLOT_THRUSTER
 	/// The max speed that the pod can move forwards. In tiles per second.
-	var/max_forward_speed = 2
+	var/thrust_power_forwards = 2
 	/// The max speed that the pod can move backwards. In tiles per second.
-	var/max_backwards_speed = 1
+	var/thrust_power_backwards = 1
 	/// The max speed that the pod can move sidways. In tiles per second.
-	var/max_sideways_speed = 0.5
+	var/thrust_power_sideways = 0.5
+	/// The max velocity we can go at. In tiles per second.
+	var/max_velocity = 6
 
 /obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	var/datum/component/physics/physics_component = attaching_spacepod.GetComponent(/datum/component/physics)
-	physics_component.forward_maxthrust = max_forward_speed
-	physics_component.backward_maxthrust = max_backwards_speed
-	physics_component.side_maxthrust = max_sideways_speed
+	SEND_SIGNAL(attaching_spacepod, COMSIG_PHYSICS_SET_MAX_THRUST, thrust_power_forwards, thrust_power_backwards, thrust_power_sideways)
+	SEND_SIGNAL(attaching_spacepod, COMSIG_PHYSICS_SET_MAX_THRUST_VELOCITY, max_velocity)
 
 /obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
-	var/datum/component/physics/physics_component = detatching_spacepod.GetComponent(/datum/component/physics)
-	physics_component.forward_maxthrust = 0
-	physics_component.backward_maxthrust = 0
-	physics_component.side_maxthrust = 0
+	SEND_SIGNAL(detatching_spacepod, COMSIG_PHYSICS_SET_MAX_THRUST, 0, 0, 0)
+	SEND_SIGNAL(detatching_spacepod, COMSIG_PHYSICS_SET_MAX_THRUST_VELOCITY, 0)
 
 /obj/item/spacepod_equipment/thruster/upgraded
 	name = "\improper Rolls-Royce RS-400 Sublight Thrusters"
 	desc = "The R-400 series of sublight thrusters provide a slightly better power output of the smaller R-200 series."
-	max_forward_speed = 4
-	max_backwards_speed = 2
-	max_sideways_speed = 1
+	thrust_power_forwards = 4
+	thrust_power_backwards = 2
+	thrust_power_sideways = 1
+	max_velocity = 8
 
 /obj/item/spacepod_equipment/thruster/mk9
 	name = "\improper SAB-R Mark 9 Superlight Impulse Thrust System"
 	desc = "These bad boys make your shuttle go really really fast."
-	max_forward_speed = 6
-	max_backwards_speed = 3
-	max_sideways_speed = 2
+	thrust_power_forwards = 6
+	thrust_power_backwards = 3
+	thrust_power_sideways = 2
+	max_velocity = 10
 
 /**
  * Lights

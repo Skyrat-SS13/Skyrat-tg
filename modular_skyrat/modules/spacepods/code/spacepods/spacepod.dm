@@ -158,6 +158,16 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/flare_reload_time = 10 SECONDS
 	COOLDOWN_DECLARE(flare_reload_cooldown)
 
+	var/static/list/explosion_sounds = list(
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_1.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_2.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_3.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_4.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_5.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_6.ogg',
+		'modular_skyrat/modules/spacepods/sound/explosion_medium_7.ogg',
+	)
+
 /obj/spacepod/Initialize()
 	. = ..()
 	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics)
@@ -167,14 +177,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABILISE_CHECK, PROC_REF(check_autostabilisation))
 	RegisterSignal(src, COMSIG_MISSILE_LOCK, PROC_REF(missile_lock))
 	RegisterSignal(src, COMSIG_MISSILE_LOCK_LOST, PROC_REF(missile_lock_lost))
-
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSobj, src)
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
 	alarm_sound = new(src)
 	thrust_sound = new(src)
 	missile_lock_sound = new(src)
@@ -296,7 +305,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			to_chat(user, span_notice("You start cleaning the pod..."))
 			if(do_after(soap.cleanspeed))
 				dirty = FALSE
-				update_overlays()
+				update_appearance()
 				to_chat(user, span_notice("You clean the pod."))
 			return TRUE
 		if(attacking_item.tool_behaviour == TOOL_WELDER)
@@ -312,7 +321,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(attacking_item.use_tool(src, user, 50, amount = 3, volume = 50))
 				if(repairing)
 					update_integrity(min(max_integrity, obj_integrity + 10))
-					update_overlays()
+					update_appearance()
 					to_chat(user, span_notice("You mend some [pick("dents","bumps","damage")] with [attacking_item]"))
 				else if(!cell && !internal_tank && !equipment.len && !LAZYLEN(occupants) && construction_state == SPACEPOD_ARMOR_WELDED)
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
@@ -351,7 +360,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
-	update_overlays()
+	update_appearance()
 
 /obj/spacepod/return_air()
 	return cabin_air
@@ -372,100 +381,104 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(prob(40))
 				take_damage(40, BRUTE, BOMB)
 
-/**
- * We handle our own atom breaking.
- * This is because we have unique damage overlays and destruction phases.
- */
-/obj/spacepod/atom_break(damage_flag)
-	if(get_integrity() <= 0)
-		return ..()
+/obj/spacepod/deconstruct(disassembled = FALSE)
+	if(!get_turf(src))
+		qdel(src)
+		return
+
 	play_alarm(FALSE)
 	missile_lock_sound.stop()
-	if(construction_state < SPACEPOD_ARMOR_LOOSE)
-		return
-	if(pod_armor)
-		remove_armor()
-		QDEL_NULL(pod_armor)
-		if(prob(40))
-			new /obj/item/stack/sheet/iron/five(get_turf(src))
-	if(prob(40))
-		new /obj/item/stack/sheet/iron/five(get_turf(src))
-	construction_state = SPACEPOD_CORE_SECURED
+
+	if(disassembled)
+		handle_disassembly()
+	else
+		handle_destruction()
+
+/obj/spacepod/proc/handle_destruction()
+	spacepod_hud.icon_state = "eject"
+	spacepod_hud.invisibility = 0
+
 	if(cabin_air)
 		var/datum/gas_mixture/gas_mixture = cabin_air.remove_ratio(1)
 		var/turf/our_turf = get_turf(src)
 		if(gas_mixture && our_turf)
 			our_turf.assume_air(gas_mixture)
-	cell = null
-	internal_tank = null
-	// Remove everything inside us.
-	detach_all_equipment()
-	remove_all_riders()
-	for(var/atom/movable/iterating_movable_atom in contents)
-		if(prob(60))
-			iterating_movable_atom.forceMove(loc)
-		else if(isitem(iterating_movable_atom) || !isobj(iterating_movable_atom))
-			qdel(iterating_movable_atom)
-		else
-			var/obj/object = iterating_movable_atom
-			object.forceMove(loc)
-			object.deconstruct()
+	playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm_death.ogg', 100, TRUE, pressure_affected = FALSE)
+	addtimer(CALLBACK(src, PROC_REF(destruction)), 5 SECONDS)
+	for(var/i in 1 to 5)
+		addtimer(CALLBACK(src, PROC_REF(popcorn)), i SECONDS)
 
-/obj/spacepod/deconstruct(disassembled = FALSE)
-	if(!get_turf(src))
-		qdel(src)
-		return
+/obj/spacepod/proc/destruction()
+	if(pod_armor)
+		remove_armor()
+		QDEL_NULL(pod_armor)
+		if(prob(40))
+			new /obj/item/stack/sheet/iron/five(get_turf(src))
 	remove_all_riders(forced = TRUE)
-	if(disassembled)
-		// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		// alright fine fine you can have the frame pieces back
-		var/clamped_angle = (round(component_angle, 90) % 360 + 360) % 360
-		var/target_dir = NORTH
-		switch(clamped_angle)
-			if(0)
-				target_dir = NORTH
-			if(90)
-				target_dir = EAST
-			if(180)
-				target_dir = SOUTH
-			if(270)
-				target_dir = WEST
+	playsound(src, 'modular_skyrat/modules/spacepods/sound/explosion_big.ogg', 100, TRUE, pressure_affected = FALSE)
+	explosion(src, 0, 2, 3, 4)
+	qdel(src)
 
-		var/list/frame_piece_types = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
-		var/obj/item/pod_parts/pod_frame/current_piece = null
-		var/turf/our_turf = get_turf(src)
-		var/list/frame_pieces = list()
-		for(var/frame_type in frame_piece_types)
-			var/obj/item/pod_parts/pod_frame/frame_to_drop = new frame_type
-			frame_to_drop.dir = target_dir
-			frame_to_drop.anchored = TRUE
-			if(1 == turn(frame_to_drop.dir, -frame_to_drop.link_angle))
-				current_piece = frame_to_drop
-			frame_pieces += frame_to_drop
-		while(current_piece && !current_piece.loc)
-			if(!our_turf)
-				break
-			current_piece.forceMove(our_turf)
-			our_turf = get_step(our_turf, turn(current_piece.dir, -current_piece.link_angle))
-			current_piece = locate(current_piece.link_to) in frame_pieces
-		// there here's your frame pieces back, happy?
+/obj/spacepod/proc/popcorn()
+	playsound(src, pick(explosion_sounds), 100, TRUE, pressure_affected = FALSE)
+
+/obj/spacepod/proc/handle_disassembly()
+	// First remove all the riders safely.
+	remove_all_riders(forced = TRUE)
+	// Now we remove all the bits and bobs from the bod.
+	detach_all_equipment()
+	// remove any other stray stuff.
+	for(var/atom/movable/iterating_movable_atom in contents)
+		iterating_movable_atom.forceMove(get_turf(src))
+
+	// Now we deconstruct the pod and place the bits.
+	var/clamped_angle = (round(component_angle, 90) % 360 + 360) % 360
+	var/target_dir = NORTH
+	switch(clamped_angle)
+		if(0)
+			target_dir = NORTH
+		if(90)
+			target_dir = EAST
+		if(180)
+			target_dir = SOUTH
+		if(270)
+			target_dir = WEST
+
+	var/list/frame_piece_types = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
+	var/obj/item/pod_parts/pod_frame/current_piece = null
+	var/turf/our_turf = get_turf(src)
+	var/list/frame_pieces = list()
+	for(var/frame_type in frame_piece_types)
+		var/obj/item/pod_parts/pod_frame/frame_to_drop = new frame_type
+		frame_to_drop.dir = target_dir
+		frame_to_drop.anchored = TRUE
+		if(1 == turn(frame_to_drop.dir, -frame_to_drop.link_angle))
+			current_piece = frame_to_drop
+		frame_pieces += frame_to_drop
+	while(current_piece && !current_piece.loc)
+		if(!our_turf)
+			break
+		current_piece.forceMove(our_turf)
+		our_turf = get_step(our_turf, turn(current_piece.dir, -current_piece.link_angle))
+		current_piece = locate(current_piece.link_to) in frame_pieces
+
+	// Now we delete ourselves.
 	qdel(src)
 
 /obj/spacepod/update_overlays()
 	. = ..()
-	cut_overlays()
 	if(construction_state != SPACEPOD_ARMOR_WELDED && pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
 		var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 		var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
 		armor.blend_mode = BLEND_MULTIPLY
 		masked_armor.overlays = list(armor)
 		masked_armor.appearance_flags = KEEP_TOGETHER
-		add_overlay(masked_armor)
+		. += masked_armor
 		return
 
 	// Dirt overlays
 	if(dirty)
-		add_overlay(image(overlay_file, dirt_overlay))
+		. += dirt_overlay
 
 	// Weapon overlays
 	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
@@ -477,7 +490,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
-			add_overlay(weapon_overlay)
+			. += weapon_overlay
 
 
 	// Now do actual equipment overlays
@@ -487,15 +500,20 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			continue
 		for(var/obj/item/spacepod_equipment/iterating_equipment as anything in equipment[key_type])
 			if(iterating_equipment.overlay_icon && iterating_equipment.overlay_icon_state)
-				add_overlay(mutable_appearance(iterating_equipment.overlay_icon, iterating_equipment.overlay_icon_state))
+				. += mutable_appearance(iterating_equipment.overlay_icon, iterating_equipment.overlay_icon_state)
 
 
 	// Damage overlays
 	var/obj_integrity = get_integrity()
-	if(obj_integrity <= max_integrity / 2)
-		add_overlay(image(overlay_file, "pod_damage"))
-		if(obj_integrity <= max_integrity / 4)
-			add_overlay(image(overlay_file, "pod_fire"))
+	var/obj_integrity_percent = (obj_integrity / max_integrity) * 100
+	if(obj_integrity_percent < 50)
+		. += "pod_damage"
+	if(obj_integrity_percent < 25)
+		. += "pod_critical_damage"
+	if(obj_integrity_percent < 10)
+		. += "pod_fire"
+	if(obj_integrity <= 0)
+		. += "explosion_overlay"
 
 
 /obj/spacepod/update_icon()
@@ -716,11 +734,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * This is used for any unique behaviour as the pod is damaged, so far it is used for alarms.
  */
 /obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
-	if(new_value < (max_integrity / 4)) // Less than a quarter health.
+	SIGNAL_HANDLER
+	var/obj_integrity_percent = (new_value / max_integrity) * 100
+	if(obj_integrity_percent < 25) // Less than a quarter health.
 		play_alarm(TRUE)
 	else
 		play_alarm(FALSE)
-	update_overlays()
+	update_appearance()
 
 
 

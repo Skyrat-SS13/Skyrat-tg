@@ -45,9 +45,11 @@
 	/// Last rotation value for the atom
 	var/last_rotate = 0
 	/// Our maximum velocity_x in tiles per second
-	var/max_velocity_x = INFINITY
+	var/max_velocity_x = DEFAULT_MAX_VELOCITY
 	/// Our maximum velocity_y in tiles per second
-	var/max_velocity_y = INFINITY
+	var/max_velocity_y = DEFAULT_MAX_VELOCITY
+	/// The maximum velocity the thrusters can push us to, this does not prevent the atom going faster through other means though.
+	var/max_thrust_velocity = DEFAULT_MAX_THRUST_VELOCITY
 	/// Do we require a thrust check?
 	var/thrust_check_required = TRUE
 	/// Do we require a stabilistaion check?
@@ -127,6 +129,8 @@
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_ANGLE, PROC_REF(set_angle))
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_VELOCITY, PROC_REF(set_velocity))
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_MAX_VELOCITY, PROC_REF(set_max_velocity))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_MAX_THRUST, PROC_REF(set_max_thrust))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_MAX_THRUST_VELOCITY, PROC_REF(set_max_thrust_velocity))
 	RegisterSignal(parent, COMSIG_ATOM_BUMPED, PROC_REF(process_bumped))
 	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, PROC_REF(process_bump))
 	RegisterSignal(parent, COMSIG_MOVABLE_SPACEMOVE, PROC_REF(spacemove_react))
@@ -140,6 +144,8 @@
 		COMSIG_PHYSICS_SET_ANGLE,
 		COMSIG_PHYSICS_SET_VELOCITY,
 		COMSIG_PHYSICS_SET_MAX_VELOCITY,
+		COMSIG_PHYSICS_SET_MAX_THRUST,
+		COMSIG_PHYSICS_SET_MAX_THRUST_VELOCITY,
 		COMSIG_ATOM_BUMPED,
 		COMSIG_MOVABLE_BUMP,
 		COMSIG_MOVABLE_SPACEMOVE,
@@ -423,9 +429,9 @@
 		last_thrust_right = 0
 		last_thrust_forward = 0
 	else
-		// Update the velocities
-		velocity_x += total_thrust_x * seconds_per_tick
-		velocity_y += total_thrust_y * seconds_per_tick
+		// Calculate the adjusted thrust for both X and Y axes and clamp it within the maximum and minimum allowed limits
+		velocity_x = min(max(velocity_x + (total_thrust_x * seconds_per_tick), -max_thrust_velocity), max_thrust_velocity)
+		velocity_y = min(max(velocity_y + (total_thrust_y * seconds_per_tick), -max_thrust_velocity), max_thrust_velocity)
 
 // Due to the fact spacemove exists and we move ourselves, we must override this.
 /datum/component/physics/proc/spacemove_react(mob/user, movement_dir, continuous_move)
@@ -465,6 +471,18 @@
 	wake_up()
 	max_velocity_x = new_max_velocity_x
 	max_velocity_y = new_max_velocity_y
+
+/datum/component/physics/proc/set_max_thrust(datum/source, new_forward_maxthrust, new_backward_maxthrust, new_side_maxthrust)
+	SIGNAL_HANDLER
+	wake_up()
+	forward_maxthrust = new_forward_maxthrust
+	backward_maxthrust = new_backward_maxthrust
+	side_maxthrust = new_side_maxthrust
+
+/datum/component/physics/proc/set_max_thrust_velocity(datum/source, new_max_thrust_velocity)
+	SIGNAL_HANDLER
+	wake_up()
+	max_thrust_velocity = new_max_thrust_velocity
 
 /datum/component/physics/proc/process_bumped(datum/source, atom/movable/hit_object)
 	SIGNAL_HANDLER

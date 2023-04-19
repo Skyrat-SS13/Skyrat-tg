@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 #define DRONE_MODE_ATTACK "attack"
 #define DRONE_MODE_IDLE "idle"
 #define DRONE_MODE_AVOIDING "avoiding"
+#define DRONE_MODE_DISABLED "disabled"
 
 /**
  * Drones
@@ -49,11 +50,13 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	/// The projectile we fire.
 	var/obj/projectile/projectile_type = /obj/projectile/beam/laser
 	/// The sound we play when we fire.
-	var/fire_sound = 'sound/weapons/pulse3.ogg'
+	var/fire_sound = 'modular_skyrat/modules/spacepods/sound/drone/drone_shot_laser.ogg'
 	/// Our reload time.
 	var/reload_time = 2 SECONDS
 	/// The minimum distance at which we can fire at a target.
-	var/min_fire_distance = 3
+	var/min_fire_distance = 10
+	/// The min angle that we can fire at a target.
+	var/fire_angle_tolerance = 10
 
 	COOLDOWN_DECLARE(reload_cooldown)
 
@@ -68,10 +71,16 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	var/mode = DRONE_MODE_IDLE
 
 	/// What is our target distance from the target?
-	var/engage_distance = 3
+	var/engage_distance = 5
 
 	/// Our follow trail
 	var/datum/effect_system/trail_follow/ion/grav_allowed/trail
+	/// Are we in the process of melting down and about to explode?
+	var/exploding = FALSE
+
+	var/dying_sound = 'modular_skyrat/modules/spacepods/sound/drone/drone_dying.ogg'
+	var/death_sound = 'modular_skyrat/modules/spacepods/sound/drone/drone_death.ogg'
+	var/target_acquired_sound = 'modular_skyrat/modules/spacepods/sound/drone/drone_spot.ogg'
 
 
 /obj/drone/Initialize()
@@ -83,7 +92,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_bump))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_update_movement))
-	// Start the movement loop if the drone has a target
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(on_integrity_changed))
 
 	START_PROCESSING(SSphysics, src)
 
@@ -102,6 +111,9 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 
 /obj/drone/process()
 	switch(mode)
+		if(DRONE_MODE_DISABLED)
+			return
+
 		if(DRONE_MODE_AVOIDING) // We are avoiding an obstacle
 			return
 
@@ -115,11 +127,6 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		if(DRONE_MODE_PATROL) // We are patrolling
 			if(!find_target(detection_range) && patrol_enabled)
 				process_patrol()
-
-
-/obj/drone/atom_break(damage_flag)
-	. = ..()
-	explosion(src, 0, 0, 2, 3)
 
 /**
  * process_attack
@@ -145,12 +152,11 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, get_angle(src, target_atom))
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_STOP)
 
-	if(distance_to_target <= min_fire_distance && COOLDOWN_FINISHED(src, reload_cooldown))
+	if(distance_to_target <= min_fire_distance && COOLDOWN_FINISHED(src, reload_cooldown) && check_angle_tolerance(target_atom))
 		// We are in range, so we can shoot
 		shoot_at(target_atom)
 		COOLDOWN_START(src, reload_cooldown, reload_time)
 
-	go_to(target_atom)
 
 /**
  * shoot_at
@@ -169,6 +175,23 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	playsound(src, fire_sound, 50, TRUE)
 
 /**
+ * check_angle_tolerance
+ *
+ * Checks if the drone is within the angle tolerance of the target.
+ */
+/obj/drone/proc/check_angle_tolerance(atom/movable/target)
+	var/new_angle = get_angle(src, target)
+	var/angle_diff = abs(new_angle - component_angle)
+
+	if(angle_diff > 180)
+		angle_diff = 360 - angle_diff
+
+	if(angle_diff > fire_angle_tolerance)
+		return FALSE
+
+	return TRUE
+
+/**
  * go_to
  *
  * Automatically paths the drone to a select atom.
@@ -185,6 +208,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 /obj/drone/proc/start_patrol()
 	switch_mode(DRONE_MODE_PATROL)
 	balloon_alert_to_viewers("PATROL MODE: Engaging.")
+	current_node = null
 	process_patrol()
 
 /**
@@ -194,7 +218,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
  */
 /obj/drone/proc/switch_mode(new_mode)
 	mode = new_mode
-	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_MAX_VELOCITY, mode_speeds[mode], mode_speeds[mode])
+	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_MAX_THRUST_VELOCITY, mode_speeds[mode], mode_speeds[mode])
 
 /**
  * process_patrol
@@ -207,7 +231,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		return
 
 	if(!current_node)
-		current_node = control_node.get_random_node()
+		current_node = control_node.get_closest_node(src)
 		return
 
 	if(get_dist(src, current_node) < 1) // We are on top of it
@@ -242,7 +266,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		switch_mode(DRONE_MODE_AVOIDING)
 		var/opposite_angle = (component_angle + 180) % 360
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, opposite_angle)
-		addtimer(CALLBACK(src, PROC_REF(finish_avoiding_obstacle)), 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(finish_avoiding_obstacle)), 1 SECONDS)
 		balloon_alert_to_viewers("AVOIDING OBSTACLE")
 
 /**
@@ -263,6 +287,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	target_atom = target_to_set
 	switch_mode(DRONE_MODE_ATTACK)
 	balloon_alert_to_viewers("TARGET ACQUIRED: [target_to_set.name]")
+	playsound(src, target_acquired_sound, 100, TRUE)
 	RegisterSignal(target_to_set, COMSIG_PARENT_QDELETING, PROC_REF(lose_target))
 
 /**
@@ -347,162 +372,39 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 
 	return TRUE
 
-// PATROL SYSTEMS
 
-/**
- * Drone patrol paths
- *
- * These are used to create a sort of "patrol path" for the drones to follow.
- * To create a patrol path, you must place a drone patrol node on the map,
- * and then set the patrol_id of the node to the same value as the other nodes in the patrol path.
- *
- * They must be within 5 tiles of eachother.
- *
- * A drone control node must be placed on the map, and the patrol_id of the node must be set to the same value as the patrol nodes to create a full patrol path.
- */
-
-
-/**
- * Control Node
- *
- * A control node must be placed nearby other patrol nodes. This control node will initate and create the patrol path.
- */
-/obj/effect/abstract/drone_control_node
-	name = "drone control node"
-	icon_state = "m_shield"
-	color = COLOR_RED
-	var/patrol_id = "default"
-	var/list/patrol_nodes = list()
-	var/obj/effect/abstract/drone_patrol_node/next_node
-	var/node_connection_range = 20
-
-/obj/effect/abstract/drone_control_node/Initialize(mapload)
-	. = ..()
-	setup_patrol_path()
-	GLOB.drone_control_nodes += src
-	if(!LAZYLEN(patrol_nodes))
-		stack_trace("No patrol nodes found for control node [src] with patrol_id [patrol_id]!")
-		return INITIALIZE_HINT_QDEL
-
-/obj/effect/abstract/drone_control_node/Destroy()
-	QDEL_LIST(patrol_nodes)
-	next_node = null
-	GLOB.drone_control_nodes -= src
-	return ..()
-
-
-/**
- * connect_node
- *
- * Connects a node to the control node.
- */
-/obj/effect/abstract/drone_control_node/proc/connect_node(obj/effect/abstract/drone_patrol_node/node_to_connect)
-	LAZYADD(patrol_nodes, node_to_connect)
-	node_to_connect.control_node = src
-	RegisterSignal(node_to_connect, COMSIG_PARENT_QDELETING, PROC_REF(disconnect_node))
-
-/**
- * disconnect_node
- *
- * Disconnects a node from the control node.
- */
-/obj/effect/abstract/drone_control_node/proc/disconnect_node(obj/effect/abstract/drone_patrol_node/node_to_disconnect)
+/obj/drone/proc/on_integrity_changed(datum/source, new_integrity, old_integrity)
 	SIGNAL_HANDLER
-	patrol_nodes -= node_to_disconnect
+	update_appearance()
 
-/**
- * setup_patrol_path
- *
- * Sets up the patrol path for the control node.
- */
-/obj/effect/abstract/drone_control_node/proc/setup_patrol_path()
-	var/min_distance = INFINITY
-	var/obj/effect/abstract/drone_patrol_node/closest_node
-	for(var/obj/effect/abstract/drone_patrol_node/iterating_node in range(node_connection_range, src))
-		if(iterating_node.patrol_id != patrol_id)
-			continue
-		var/distance = get_dist(src, iterating_node)
-		if(distance < min_distance)
-			min_distance = distance
-			closest_node = iterating_node
-	if(closest_node)
-		set_start_node(closest_node)
+// Destruction seqence
+/obj/drone/deconstruct(disassembled)
+	switch_mode(DRONE_MODE_DISABLED)
+	exploding = TRUE
+	lose_target()
+	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_STOP)
+	playsound(src, dying_sound, 100)
+	addtimer(CALLBACK(src, PROC_REF(final_death), disassembled), 1 SECONDS)
+	update_appearance()
 
+/obj/drone/proc/final_death(disassembled)
+	playsound(src, death_sound, 100)
+	explosion(src, 0, 0, 2, 3)
+	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
+	qdel(src)
 
-/**
- * set_start_node
- *
- * Sets the starting node for the patrol path.
- */
-/obj/effect/abstract/drone_control_node/proc/set_start_node(obj/effect/abstract/drone_patrol_node/starting_node)
-	connect_node(starting_node)
-	next_node = starting_node
-	next_node.control_node = src
-	next_node.find_closest_node()
+/obj/drone/update_overlays()
+	. = ..()
+	if(exploding)
+		. += "explosion_overlay"
 
-/**
- * get_random_node
- *
- * Returns a random node from the patrol path.
- */
-/obj/effect/abstract/drone_control_node/proc/get_random_node()
-	return pick(patrol_nodes)
+	if(get_integrity() < 50 % max_integrity)
+		. += "fire"
 
+/obj/drone_parts
 
-/**
- * Patrol Node
- *
- * A patrol node is a node that the drone will move to.
- */
-/obj/effect/abstract/drone_patrol_node
-	name = "drone patrol node"
-	icon_state = "m_shield"
-	var/patrol_id = "default"
-	/// The control node that this node is connected to.
-	var/obj/effect/abstract/drone_control_node/control_node
-	/// The next node in the patrol path.
-	var/obj/effect/abstract/drone_patrol_node/next_node
-
-	var/node_connection_range = 20
-
-/**
- * find_closest_node
- *
- * Finds the closest node to the current node.
- */
-/obj/effect/abstract/drone_patrol_node/proc/find_closest_node()
-	var/min_distance = INFINITY
-	var/obj/effect/abstract/drone_patrol_node/closest_node
-	for(var/obj/effect/abstract/drone_patrol_node/iterating_node in range(node_connection_range, src))
-		if(iterating_node == src)
-			continue
-		if(iterating_node in control_node.patrol_nodes)
-			continue
-		if(iterating_node.patrol_id != patrol_id)
-			continue
-		var/distance = get_dist(src, iterating_node)
-		if(distance < min_distance)
-			min_distance = distance
-			closest_node = iterating_node
-	if(closest_node)
-		set_next_node(closest_node)
-	else
-		next_node = control_node // OK, we seem to be at the end of our nodes, so we'll just go back to the control node.
-		color = COLOR_GREEN
-		Beam(control_node)
-
-/**
- * set_next_node
- *
- * Sets the next node to the given node.
- */
-/obj/effect/abstract/drone_patrol_node/proc/set_next_node(obj/effect/abstract/drone_patrol_node/node_to_set)
-	next_node = node_to_set
-	control_node.connect_node(node_to_set)
-	node_to_set.find_closest_node()
-	color = COLOR_GREEN
-	Beam(node_to_set)
-
-
-
-
+#undef DRONE_MODE_PATROL
+#undef DRONE_MODE_ATTACK
+#undef DRONE_MODE_IDLE
+#undef DRONE_MODE_AVOIDING
+#undef DRONE_MODE_DISABLED

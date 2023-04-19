@@ -25,6 +25,7 @@
 		/mob/living,
 		/obj/spacepod,
 		/obj/vehicle,
+		/obj/drone,
 	)
 	/// Our target, if any.
 	var/atom/target
@@ -49,7 +50,7 @@
 	/// Do we check factions when firing?
 	var/check_factions = FALSE
 	/// A list of factions we ignore for targeting.
-	var/list/friendly_factions
+	var/list/friendly_factions = list()
 	/// Have we completed our ignition?
 	var/initial_ignition_complete = TRUE
 
@@ -240,7 +241,12 @@
 
 	if(isspacepod(target) && check_factions)
 		var/obj/spacepod/target_spacepod = target
-		if(faction_check(target_spacepod.get_factions(), target))
+		if(faction_check(target_spacepod.get_factions(), friendly_factions))
+			return FALSE
+
+	if(istype(target, /obj/drone) && check_factions)
+		var/obj/drone/target_drone = target
+		if(faction_check(target_drone.friendly_factions, friendly_factions))
 			return FALSE
 
 	return TRUE
@@ -255,6 +261,11 @@
 	name = "lead angle targeting missile"
 	icon_state = "medium_missile"
 	payload_size = list(0, 2, 3, 4)
+	auto_target_targets = list(
+		/obj/spacepod,
+		/obj/drone,
+	)
+
 
 /**
  * lead angle calculation
