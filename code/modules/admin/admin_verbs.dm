@@ -138,11 +138,9 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
-
 	/client/proc/admin_change_title_screen, 	/*SKYRAT EDIT ADDITION*/
 	/client/proc/change_title_screen_html, 		/*SKYRAT EDIT ADDITION*/
 	/client/proc/change_title_screen_notice, 	/*SKYRAT EDIT ADDITION*/
-	/client/proc/event_panel, 					/*SKYRAT EDIT ADDITION*/
 	/client/proc/fix_say, 						/*SKYRAT EDIT ADDITION*/
 	/client/proc/one_click_antag,				/*ONE CLICK ANTAG - SKYRAT EDIT ADDITION*/
 	/client/proc/request_more_opfor,			/*SKYRAT EDIT ADDITION*/
@@ -150,6 +148,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_mob_spawner,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_pollution,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
+	/client/proc/intensity_credits_panel,		/*SKYRAT EDIT ADDITION*/
+	/client/proc/toggle_bsa,					/*SKYRAT EDIT ADDITION*/
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -1011,8 +1011,8 @@ GLOBAL_PROTECT(admin_verbs_poll)
 			real_reqs += "Must have a mind"
 		if(reqs & SPELL_REQUIRES_NO_ANTIMAGIC)
 			real_reqs += "Must have no antimagic"
-		if(reqs & SPELL_REQUIRES_OFF_CENTCOM)
-			real_reqs += "Must be off central command z-level"
+		if(reqs & SPELL_REQUIRES_STATION)
+			real_reqs += "Must be on the station z-level"
 		if(reqs & SPELL_REQUIRES_WIZARD_GARB)
 			real_reqs += "Must have wizard clothes"
 

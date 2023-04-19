@@ -48,7 +48,6 @@
 	belt = /obj/item/modular_computer/pda/science
 	ears = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/science // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science

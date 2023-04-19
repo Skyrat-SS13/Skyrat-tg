@@ -55,7 +55,6 @@
 
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/engineering // SKYRAT EDIT ADD
 
 /datum/outfit/job/atmos/mod
 	name = "Atmospheric Technician (MODsuit)"

@@ -1,3 +1,8 @@
+/obj/effect/mob_spawn/ghost_role/
+	/// set this to make the spawner use the outfit.name instead of its name var for things like cryo announcements and ghost records
+	/// modifying the actual name during the game will cause issues with the GLOB.mob_spawners associative list
+	var/use_outfit_name
+
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/load_prefs = FALSE
 	//if we can load our own appearance and its not restricted, try

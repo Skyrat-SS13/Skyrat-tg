@@ -149,6 +149,8 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
+	else
+		gametime_offset = (CONFIG_GET(number/shift_time_start_hour) HOURS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
@@ -164,7 +166,7 @@ SUBSYSTEM_DEF(ticker)
 			*/ // SKYRAT EDIT START - DISCORD SPAM PREVENTION
 			if(!discord_alerted)
 				discord_alerted = TRUE
-				send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/channel_announce_new_game))) // SKYRAT EDIT - Role ping and round ID in game-alert
+				send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles."), CONFIG_GET(string/channel_announce_new_game)) // SKYRAT EDIT - Role ping and round ID in game-alert
 			// SKYRAT EDIT END
 			current_state = GAME_STATE_PREGAME
 			SStitle.change_title_screen() //SKYRAT EDIT ADDITION - Title screen

@@ -40,7 +40,6 @@
 	jobtype = /datum/job/quartermaster
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/cargo = 1, // SKYRAT EDIT ADD
 	)
 	id_trim = /datum/id_trim/job/quartermaster
 	id = /obj/item/card/id/advanced/silver

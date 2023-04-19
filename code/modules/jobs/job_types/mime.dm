@@ -55,7 +55,6 @@
 		/obj/item/book/mimery = 1,
 		/obj/item/reagent_containers/cup/glass/bottle/bottleofnothing = 1,
 		/obj/item/stamp/mime = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/mime
 	ears = /obj/item/radio/headset/headset_srv

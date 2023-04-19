@@ -41,7 +41,6 @@
 		/obj/item/mining_voucher = 1,
 		/obj/item/suit_voucher = 1,
 		/obj/item/stack/marker_beacon/ten = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/cargo = 1, // SKYRAT EDIT ADD
 		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
 	belt = /obj/item/modular_computer/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining

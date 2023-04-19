@@ -382,7 +382,7 @@
 
 /obj/machinery/disposal/bin/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(isitem(AM) && AM.CanEnterDisposals())
-		if(HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM) || prob(75))
+		if((throwingdatum.thrower && HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM)) || prob(75))
 			AM.forceMove(src)
 			visible_message(span_notice("[AM] lands in [src]."))
 			update_appearance()
@@ -438,7 +438,7 @@
 
 //timed process
 //charge the gas reservoir and perform flush if ready
-/obj/machinery/disposal/bin/process(delta_time)
+/obj/machinery/disposal/bin/process(seconds_per_tick)
 	if(machine_stat & BROKEN) //nothing can happen if broken
 		return
 
@@ -470,7 +470,7 @@
 		return
 	var/pressure_delta = (SEND_PRESSURE*1.01) - air_contents.return_pressure()
 
-	var/transfer_moles = 0.05 * delta_time * (pressure_delta*air_contents.volume)/(env.temperature * R_IDEAL_GAS_EQUATION)
+	var/transfer_moles = 0.05 * seconds_per_tick * (pressure_delta*air_contents.volume)/(env.temperature * R_IDEAL_GAS_EQUATION)
 
 	//Actually transfer the gas
 	var/datum/gas_mixture/removed = env.remove(transfer_moles)

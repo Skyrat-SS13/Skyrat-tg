@@ -209,7 +209,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/sec = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
