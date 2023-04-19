@@ -35,7 +35,6 @@
 	if(used)
 		return
 	for(var/obj/physics_missile/iterating_missile in view(12, src))
-		iterating_missile.lose_target()
 		iterating_missile.set_target(src)
 		used = TRUE
 		STOP_PROCESSING(SSphysics, src)

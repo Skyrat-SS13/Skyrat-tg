@@ -36,6 +36,12 @@
 		for(var/thing in equipment[slot])
 			detachable_equipment += thing
 
+	if(cell)
+		detachable_equipment += cell
+
+	if(internal_tank)
+		detachable_equipment += internal_tank
+
 	if(!LAZYLEN(detachable_equipment))
 		return
 
@@ -123,6 +129,12 @@
 
 		spacepod_equipment.on_uninstall(src, forced)
 
+	if(cell == equipment_to_detach)
+		cell = null
+
+	if(internal_tank == equipment_to_detach)
+		internal_tank = null
+
 	equipment_to_detach.forceMove(get_turf(src))
 
 	if(user && isitem(equipment_to_detach))
@@ -160,13 +172,12 @@
  * Removes armor from the spacepod...
  */
 /obj/spacepod/proc/remove_armor()
-	if(!pod_armor)
-		equipment_slot_limits = SPACEPOD_DEFAULT_EQUIPMENT_LIMITS_LIST
-		update_integrity(min(integrity_failure, get_integrity()))
-		max_integrity = integrity_failure
-		desc = initial(desc)
-		pod_armor = null
-		update_appearance()
+	equipment_slot_limits = SPACEPOD_DEFAULT_EQUIPMENT_LIMITS_LIST
+	update_integrity(min(integrity_failure, get_integrity()))
+	max_integrity = integrity_failure
+	desc = initial(desc)
+	pod_armor = null
+	update_appearance()
 
 // WEAPON PROCS
 

@@ -32,10 +32,10 @@
 /obj/effect/abstract/drone_control_node/Initialize(mapload)
 	. = ..()
 	setup_patrol_path()
+	for(var/obj/effect/abstract/drone_control_node/iterating_control_node as anything in GLOB.drone_control_nodes)
+		if(iterating_control_node.patrol_id == patrol_id)
+			stack_trace("Duplicate patrol ID found for control node [src] with patrol_id [patrol_id]!")
 	GLOB.drone_control_nodes += src
-	if(!LAZYLEN(patrol_nodes))
-		stack_trace("No patrol nodes found for control node [src] with patrol_id [patrol_id]!")
-		return INITIALIZE_HINT_QDEL
 
 /obj/effect/abstract/drone_control_node/Destroy()
 	QDEL_LIST(patrol_nodes)

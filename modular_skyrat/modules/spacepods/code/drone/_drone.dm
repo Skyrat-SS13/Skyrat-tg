@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 #define DRONE_MODE_ATTACK "attack"
 #define DRONE_MODE_IDLE "idle"
 #define DRONE_MODE_AVOIDING "avoiding"
-#define DRONE_MODE_DISABLED "disabled"
+#define DRONE_MODE_EXPLODING "exploding"
 
 /**
  * Drones
@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		DRONE_MODE_ATTACK = 3,
 		DRONE_MODE_IDLE = 1,
 		DRONE_MODE_AVOIDING = 2,
+		DRONE_MODE_EXPLODING = 5,
 	)
 	/// What is our current mode?
 	var/mode = DRONE_MODE_IDLE
@@ -86,7 +87,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 /obj/drone/Initialize()
 	. = ..()
 	// Attach the physics component to the drone
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _max_velocity_x = mode_speeds[mode], _max_velocity_y = mode_speeds[mode], _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _max_thrust_velocity = mode_speeds[mode], _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE)
 	// Set the desired thrust direction to forward
 	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_FORWARD)
 	// Register the signal to trigger the process_bump() proc
@@ -111,7 +112,10 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 
 /obj/drone/process()
 	switch(mode)
-		if(DRONE_MODE_DISABLED)
+		if(DRONE_MODE_EXPLODING)
+			SEND_SIGNAL(src, COMSIG_PHYSICS_SET_MAX_THRUST, 10, 10, 10)
+			SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_FORWARD)
+			SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, rand(0, 360))
 			return
 
 		if(DRONE_MODE_AVOIDING) // We are avoiding an obstacle
@@ -135,19 +139,18 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
  */
 /obj/drone/proc/process_attack()
 	if(!target_atom)
-		lose_target()
 		return
 
 	var/distance_to_target = get_dist(src, target_atom)
 	if(distance_to_target > detection_range || !check_target(target_atom))
-		lose_target()
+		lose_target(target_atom)
 		return
 
 	if(distance_to_target > engage_distance)
 		go_to(target_atom)
 	else if(distance_to_target < engage_distance)
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, get_angle(src, target_atom))
-		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_BACKWARDS)
+		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_BACKWARD)
 	else
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, get_angle(src, target_atom))
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_STOP)
@@ -284,10 +287,12 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
  * Sets the target that the drone will move towards.
  */
 /obj/drone/proc/set_target(atom/movable/target_to_set)
+	if(target_atom)
+		lose_target(target_atom)
 	target_atom = target_to_set
 	switch_mode(DRONE_MODE_ATTACK)
 	balloon_alert_to_viewers("TARGET ACQUIRED: [target_to_set.name]")
-	playsound(src, target_acquired_sound, 100, TRUE)
+	playsound(src, target_acquired_sound, 30, TRUE, pressure_affected = FALSE)
 	RegisterSignal(target_to_set, COMSIG_PARENT_QDELETING, PROC_REF(lose_target))
 
 /**
@@ -295,10 +300,13 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
  *
  * Removes the target from the drone.
  */
-/obj/drone/proc/lose_target()
+/obj/drone/proc/lose_target(atom/movable/target_to_lose)
+	SIGNAL_HANDLER
+	UnregisterSignal(target_to_lose, COMSIG_PARENT_QDELETING)
 	target_atom = null
 	switch_mode(DRONE_MODE_IDLE)
 	balloon_alert_to_viewers("TARGET LOST")
+
 
 /**
  * physics_update_movement
@@ -379,10 +387,9 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 
 // Destruction seqence
 /obj/drone/deconstruct(disassembled)
-	switch_mode(DRONE_MODE_DISABLED)
+	lose_target(target_atom)
+	switch_mode(DRONE_MODE_EXPLODING)
 	exploding = TRUE
-	lose_target()
-	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_STOP)
 	playsound(src, dying_sound, 100)
 	addtimer(CALLBACK(src, PROC_REF(final_death), disassembled), 1 SECONDS)
 	update_appearance()
@@ -398,8 +405,13 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	if(exploding)
 		. += "explosion_overlay"
 
-	if(get_integrity() < 50 % max_integrity)
+	if((get_integrity() / max_integrity) * 100 < 30)
 		. += "fire"
+
+/obj/drone/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
+	if(atom_integrity <= 0)
+		return
+	. = ..()
 
 /obj/drone_parts
 
@@ -407,4 +419,4 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 #undef DRONE_MODE_ATTACK
 #undef DRONE_MODE_IDLE
 #undef DRONE_MODE_AVOIDING
-#undef DRONE_MODE_DISABLED
+#undef DRONE_MODE_EXPLODING

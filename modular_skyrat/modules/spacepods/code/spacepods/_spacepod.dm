@@ -21,6 +21,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	base_pixel_y = -16
 	pixel_x = -16
 	pixel_y = -16
+
 	max_integrity = 50
 	integrity_failure = 0.1
 	light_system = MOVABLE_LIGHT
@@ -167,6 +168,34 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		'modular_skyrat/modules/spacepods/sound/explosion_medium_6.ogg',
 		'modular_skyrat/modules/spacepods/sound/explosion_medium_7.ogg',
 	)
+
+
+/**
+ * Okay so
+ *
+ * BYOND doesn't do collision detection properly for bound_ overrides, so we have to do it ourselves. Nice.
+ */
+/obj/spacepod/Move(atom/newloc, direct, glide_size_override, update_dir)
+	var/turf/turf_one = get_step(newloc, dir)
+	new /obj/effect/temp_visual/turf_visual(turf_one)
+	var/turf/turf_two
+
+	switch(dir)
+		if(NORTH, SOUTH)
+			turf_two = get_step(turf_one, (component_offset_x > 0) ? EAST : WEST)
+
+		if(EAST, WEST)
+			turf_two = get_step(turf_one, (component_offset_y > 0) ? NORTH : SOUTH)
+
+	new /obj/effect/temp_visual/turf_visual(turf_two)
+
+	if(!turf_one || !turf_two || !turf_one.Enter(src) || !turf_two.Enter(src))
+		if(turf_one)
+			Bump(turf_one)
+		if(turf_two)
+			Bump(turf_two)
+		return FALSE
+	. = ..()
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -530,6 +559,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	else
 		icon = initial(icon)
 		icon_state = initial(icon_state)
+
+/obj/spacepod/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
+	if(atom_integrity <= 0)
+		return
+	. = ..()
 
 
 /obj/spacepod/proc/handle_thruster_effects()

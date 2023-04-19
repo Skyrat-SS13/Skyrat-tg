@@ -80,7 +80,8 @@
 	starting_angle,
 	starting_velocity_x,
 	starting_velocity_y,
-	_takes_atmos_damage = TRUE
+	_takes_atmos_damage = TRUE,
+	_max_thrust_velocity,
 	)
 
 	// We can only control movable atoms.
@@ -99,6 +100,8 @@
 		max_velocity_x = max_velocity_x
 	if(_max_velocity_y)
 		max_velocity_y = _max_velocity_y
+	if(_max_thrust_velocity)
+		max_thrust_velocity = _max_thrust_velocity
 
 	thrust_check_required = _thrust_check_required
 	stabilisation_check_required = _stabilisation_check_required
@@ -165,6 +168,11 @@
 /datum/component/physics/proc/precheck_dir(dir_to_check)
 	var/turf/target_turf = get_step(parent_atom, dir_to_check)
 	return target_turf.Enter(parent_atom)
+
+/obj/effect/temp_visual/turf_visual
+	icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi'
+	icon_state = "turf_test"
+	duration = 0.5 SECONDS
 
 /datum/component/physics/process(seconds_per_tick)
 	if(QDELETED(parent_atom))
@@ -270,6 +278,9 @@
 		pause()
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
+
+	for(var/turf/iterating_turf as anything in parent_atom.locs)
+		new /obj/effect/temp_visual/turf_visual(iterating_turf)
 
 /**
  * update_sprite

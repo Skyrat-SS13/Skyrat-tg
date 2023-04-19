@@ -15,7 +15,7 @@
 	dir = NORTH
 	max_integrity = 10
 	/// The amount of thrust power we have.
-	var/max_forward_thrust = 10
+	var/max_forward_thrust = 12
 	var/component_angle = 0
 	var/component_velocity_x = 0
 	var/component_velocity_y = 0
@@ -58,7 +58,7 @@
 	. = ..()
 	rocket_sound = new(src)
 	// Attach the physics component to the physics_missile
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle, starting_velocity_x = start_velocity_x, starting_velocity_y = start_velocity_y, _takes_atmos_damage = FALSE)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle, starting_velocity_x = start_velocity_x, starting_velocity_y = start_velocity_y, _takes_atmos_damage = FALSE, _max_thrust_velocity = max_forward_thrust)
 
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(explode))
@@ -104,10 +104,11 @@
 	initial_ignition_complete = TRUE
 
 /obj/physics_missile/Destroy()
-	rocket_sound.stop()
 	QDEL_NULL(rocket_sound)
 	// Stop the movement loop when the physics_missile is destroyed
 	STOP_PROCESSING(SSphysics, src)
+	if(firer)
+		clear_firer()
 	if(target)
 		lose_target(target)
 	return ..()
@@ -133,18 +134,18 @@
 	qdel(src)
 
 /obj/physics_missile/proc/set_target(atom/target_to_set)
-	if(!target_to_set)
-		return
+	if(target)
+		lose_target(target)
 	target = target_to_set
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(lose_target))
 	SEND_SIGNAL(target, COMSIG_MISSILE_LOCK, src)
 
-/obj/physics_missile/proc/lose_target(atom/lost_target)
+/obj/physics_missile/proc/lose_target(datum/lost_target)
 	SIGNAL_HANDLER
-	if(target)
-		SEND_SIGNAL(target, COMSIG_MISSILE_LOCK_LOST, src)
-		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-		target = null
+	if(lost_target)
+		SEND_SIGNAL(lost_target, COMSIG_MISSILE_LOCK_LOST, src)
+		UnregisterSignal(lost_target, COMSIG_PARENT_QDELETING)
+	target = null
 
 /**
  * physics_update_movement

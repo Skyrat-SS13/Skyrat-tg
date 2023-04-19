@@ -7,7 +7,7 @@
 	patrol_id = DRONE_PATROL_ID_ASGARD
 	friendly_factions = list(FACTION_ASGARD)
 	max_integrity = 300
-	projectile_type = /obj/projectile/beam/xray
+	projectile_type = /obj/projectile/beam/emitter/hitscan
 
 
 /obj/effect/abstract/drone_control_node/asgard

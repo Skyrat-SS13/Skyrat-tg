@@ -85,7 +85,7 @@
 	while(start_y < -16)
 		our_turf = get_step(our_turf, SOUTH)
 		start_y += 32
-	if(!our_turf)
+	if(!our_turf || !our_turf.Enter(src)) // Edge case prevention for shooting INSIDE walls.
 		return
 
 	var/obj/projectile/projectile = new projectile_type(our_turf)
