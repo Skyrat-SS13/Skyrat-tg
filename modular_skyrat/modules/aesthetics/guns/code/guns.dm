@@ -389,13 +389,16 @@
 	name = "shotgun slug"
 	desc = "A 12 gauge tungsten slug."
 
+// THE BELOW TWO SLUGS ARE NOTED AS ADMINONLY AND HAVE ***EIGHTY*** WOUND BONUS. NOT BARE WOUND BONUS. FLAT WOUND BONUS.
 /obj/item/ammo_casing/shotgun/executioner
 	name = "expanding shotgun slug"
 	desc = "A 12 gauge fragmenting slug purpose-built to annihilate flesh on impact."
+	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm.
 
 /obj/item/ammo_casing/shotgun/pulverizer
 	name = "pulverizer shotgun slug"
 	desc = "A 12 gauge uranium slug purpose-built to break bones on impact."
+	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm
 
 /obj/item/ammo_casing/shotgun/incendiary
 	name = "incendiary slug"
@@ -403,27 +406,56 @@
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 
+/obj/item/ammo_casing/shotgun/techshell
+	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
+
+/obj/item/ammo_casing/shotgun/improvised
+	can_be_printed = FALSE // this is literally made out of scrap why would you use this if you have a perfectly good ammolathe
+
+/obj/item/ammo_casing/shotgun/dart/bioterror
+	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
+
+/obj/item/ammo_casing/shotgun/dragonsbreath
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
 /obj/item/ammo_casing/shotgun/stunslug
 	name = "taser slug"
 	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
+	can_be_printed = FALSE // comment out if you want rocket tag shotgun ammo being printable
 
 /obj/item/ammo_casing/shotgun/meteorslug
 	name = "meteor slug"
 	desc = "A 12 gauge shell rigged with CMC technology which launches a heap of matter with great force when fired.\
 	<br><br>\
 	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
 
 /obj/item/ammo_casing/shotgun/frag12
 	name = "FRAG-12 slug"
 	desc = "A 12 gauge shell containing high explosives designed for defeating some barriers and light vehicles, disrupting IEDs, or intercepting assistants.\
 	<br><br>\
 	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/pulseslug
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/laserslug
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/ion
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
 
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "hornet's nest shell"
-	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets.\
+	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets, \
+	sacrificing individual pellet strength for sheer stopping power in what's best described as \"spitting distance\".\
 	<br><br>\
 	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
+	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
+
+// i'd've put more can_be_printed overrides for the cargo shells but, like... some of them actually do have defined materials so you can't just shit them out with metal?
+// kinda weird that none of these others do but, whatever??
 
 /obj/item/ammo_casing/p50
 	name = ".416 Stabilis polymer casing"

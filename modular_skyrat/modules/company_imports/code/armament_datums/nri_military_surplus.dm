@@ -106,7 +106,7 @@
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nri_surplus/firearm/plasma_thrower
-	item_type = /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
+	item_type = /obj/item/gun/energy/laser/plasma_thrower
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
 	interest_required = COMPANY_SOME_INTEREST
