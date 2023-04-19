@@ -67,9 +67,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /datum/soulcatcher_room
 	/// What is the name of the room?
-	var/name = "Test Room"
+	var/name = "Default Room"
 	/// What is the description of the room?
-	var/room_description = "It sure is a room."
+	var/room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
 	/// What souls are currently inside of the room?
 	var/list/current_souls = list()
 	/// Weakref for the master soulcatcher datum
