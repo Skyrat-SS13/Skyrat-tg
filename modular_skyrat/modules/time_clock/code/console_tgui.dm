@@ -100,9 +100,9 @@
 		if("clock_in_or_out")
 			if(off_duty_check())
 				clock_in()
-				log_admin("[key_name(usr)] clocked in as a [inserted_id.assignment]")
+				log_admin("[key_name(usr)] clocked in as \an [inserted_id.assignment].")
 			else
-				log_admin("[key_name(usr)] clocked out as a [inserted_id.assignment]")
+				log_admin("[key_name(usr)] clocked out as \an [inserted_id.assignment].")
 				clock_out()
 				var/mob/living/carbon/human/human_user = usr
 				if(human_user)

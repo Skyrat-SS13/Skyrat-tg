@@ -49,7 +49,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	inserted_id = used_item
 	icon_state = "timeclock_card"
 	update_static_data_for_all_viewers()
-	to_chat(user, span_boldwarning("Before clocking out, please return any piece of job gear that is important or limted to your workplace."))
+	to_chat(user, span_boldwarning("Before clocking out, please return any piece of job gear that is important or limited to your workplace."))
 
 	if(important_job_check())
 		if(SSsecurity_level.get_current_level_as_number() >= job_check_alert_level)
@@ -159,10 +159,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
-	if(id_component && id_component.hop_locked)
+	if(!id_component)
+		return FALSE
+		
+	if(id_component.hop_locked)
 		return TRUE
 
-	if(!id_component || !id_component.on_cooldown)
+	if(!id_component.on_cooldown)
 		return FALSE
 
 	return TRUE
