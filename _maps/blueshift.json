@@ -1,0 +1,32 @@
+{
+	"version": 1,
+	"map_name": "Blueshift",
+	"map_path": "map_files/NSVBlueshift",
+	"map_file": "Blueshift.dmm",
+	"shuttles": {
+		"cargo": "cargo_skyrat",
+		"ferry": "ferry_skyrat",
+		"whiteship": "whiteship_blueshift",
+		"emergency": "emergency_skyrat"
+	},
+	"traits": [
+		{
+			"Up": 1,
+			"Baseturf": "/turf/open/space/basic",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/kitchen/diner"]
+		},
+		"Captain": {
+			"special_charter": "ship"
+		}
+	}
+}
