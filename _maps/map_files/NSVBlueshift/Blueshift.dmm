@@ -310,7 +310,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/machinery/door/window/elevator/right/directional/west,
 /obj/machinery/button/elevator{
 	id = "publicElevator";
 	pixel_y = 32
@@ -319,6 +318,11 @@
 	linked_elevator_id = "publicElevator"
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "publicElevator";
+	elevator_mode = 1;
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central)
 "adQ" = (
@@ -5908,6 +5912,15 @@
 /obj/item/circular_saw,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/department/security/prison_upper)
+"bco" = (
+/obj/structure/fluff/metalpole/end/left{
+	dir = 4
+	},
+/obj/structure/fluff/metalpole{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "bcu" = (
 /obj/machinery/door/airlock/vault{
 	name = "Vault Door"
@@ -6315,6 +6328,12 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/lower)
+"bfP" = (
+/obj/structure/fluff/metalpole/end/left{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "bfQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -15666,9 +15685,9 @@
 	dir = 8;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
-	width = 35
+	width = 35;
+	shuttle_id = "whiteship_home"
 	},
 /turf/open/space/openspace,
 /area/space)
@@ -24938,12 +24957,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/science/lab)
-"epQ" = (
-/obj/item/reagent_containers/pill/adminordrazine,
-/turf/open/floor/iron/airless{
-	icon_state = "dark_large"
-	},
-/area/space/nearstation)
 "epU" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/cable,
@@ -27414,6 +27427,20 @@
 /obj/structure/inflatable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"eKd" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 5;
+	height = 7;
+	name = "Cargo Bay";
+	shuttle_id = "cargo_home";
+	width = 12
+	},
+/turf/open/floor/plating,
+/area/station/cargo/storage)
 "eKe" = (
 /obj/effect/turf_decal/bot,
 /obj/item/kirbyplants/random,
@@ -35042,6 +35069,15 @@
 	dir = 1
 	},
 /area/station/maintenance/xenobio_disposals)
+"gbj" = (
+/obj/docking_port/stationary/random{
+	name = "lavaland";
+	shuttle_id = "pod_lavaland"
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "dark_large"
+	},
+/area/space/nearstation)
 "gbv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/disposal/bin,
@@ -44546,13 +44582,17 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/machinery/door/window/elevator/right/directional/west,
 /obj/machinery/button/elevator{
 	id = "publicElevator";
 	pixel_y = 32
 	},
 /obj/machinery/lift_indicator/directional/north{
 	linked_elevator_id = "publicElevator"
+	},
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "publicElevator";
+	elevator_mode = 1;
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/upper)
@@ -62546,10 +62586,10 @@
 	dir = 8;
 	dwidth = 2;
 	height = 5;
-	id = "laborcamp_home";
 	name = "fore bay 1";
 	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
-	width = 9
+	width = 9;
+	shuttle_id = "laborcamp_home"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
@@ -64657,11 +64697,11 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
 	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
 	width = 7;
-	dir = 4
+	dir = 4;
+	shuttle_id = "commonmining_home"
 	},
 /turf/open/floor/iron/airless{
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi';
@@ -65481,9 +65521,9 @@
 	dir = 8;
 	dwidth = 12;
 	height = 18;
-	id = "emergency_home";
 	name = "Blueshift emergency evac bay";
-	width = 32
+	width = 32;
+	shuttle_id = "emergency_home"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -87713,8 +87753,8 @@
 /area/station/maintenance/solars/starboard/aft)
 "pru" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland";
-	name = "lavaland"
+	name = "lavaland";
+	shuttle_id = "pod_lavaland"
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -89927,6 +89967,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"pMk" = (
+/obj/structure/fluff/metalpole/end/right{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "pMq" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -95865,6 +95911,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/ai_monitored/command/storage/eva)
+"qLU" = (
+/obj/structure/fluff/metalpole{
+	dir = 8
+	},
+/obj/structure/fluff/metalpole{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "qLW" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/cable,
@@ -97035,6 +97090,10 @@
 /obj/docking_port/stationary/random{
 	id = "pod_lavaland";
 	name = "lavaland"
+	},
+/obj/docking_port/stationary/random{
+	name = "lavaland";
+	shuttle_id = "pod_lavaland"
 	},
 /turf/open/floor/iron/airless{
 	icon_state = "dark_large"
@@ -98405,8 +98464,8 @@
 /area/station/medical/cryo)
 "rjb" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland";
 	name = "lavaland";
+	shuttle_id = "pod_lavaland";
 	dir = 2
 	},
 /turf/open/space/basic,
@@ -102528,6 +102587,10 @@
 /obj/machinery/light_switch/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/construction)
+"rUE" = (
+/obj/item/reagent_containers/pill/adminordrazine,
+/turf/open/floor/plating,
+/area/station/maintenance/console_room)
 "rUF" = (
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 4
@@ -108803,9 +108866,9 @@
 /obj/docking_port/stationary{
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
 	name = "arrivals";
-	width = 5
+	width = 5;
+	shuttle_id = "arrivals_stationary"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -112210,13 +112273,13 @@
 "tCm" = (
 /obj/docking_port/stationary{
 	dheight = 4;
-	dir = 8;
 	dwidth = 4;
 	height = 9;
-	id = "aux_base_zone";
-	name = "aux base zone";
+	name = "Aux Base Zone";
 	roundstart_template = /datum/map_template/shuttle/aux_base/default;
-	width = 9
+	shuttle_id = "aux_base_zone";
+	width = 9;
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/station/construction/mining/aux_base)
@@ -113622,6 +113685,15 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
+"tPk" = (
+/obj/structure/fluff/metalpole/end/right{
+	dir = 4
+	},
+/obj/structure/fluff/metalpole{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "tPm" = (
 /obj/item/stock_parts/scanning_module{
 	pixel_x = -5;
@@ -122110,9 +122182,9 @@
 	dir = 4;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
 	name = "Port Bay 2";
-	width = 20
+	width = 20;
+	shuttle_id = "ferry_home"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -131375,6 +131447,15 @@
 /obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
+"wQY" = (
+/obj/structure/fluff/metalpole{
+	dir = 4
+	},
+/obj/structure/fluff/metalpole{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "wRb" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -181201,7 +181282,7 @@ lcm
 dXR
 dXR
 dXR
-dXR
+eKd
 dXR
 dXR
 dXR
@@ -183681,16 +183762,16 @@ fZI
 fZI
 fZI
 fZI
-fZI
-fZI
+pMk
+bco
 iqz
-xJH
-xJH
-xJH
-xJH
-xJH
-xJH
-xJH
+wQY
+qLU
+qLU
+iqz
+qLU
+qLU
+qLU
 xJH
 xJH
 xJH
@@ -184201,10 +184282,10 @@ fZI
 fZI
 fZI
 fZI
-fZI
-fZI
+bfP
+tPk
 iqz
-xJH
+wQY
 xJH
 xJH
 xJH
@@ -184817,7 +184898,7 @@ plJ
 pxb
 plJ
 plJ
-epQ
+pxb
 plJ
 plJ
 ahn
@@ -185233,12 +185314,12 @@ fZI
 fZI
 fZI
 fZI
-fZI
-fZI
+pMk
+bco
 iqz
-xJH
-xJH
-xJH
+wQY
+qLU
+qLU
 xJH
 xJH
 soz
@@ -185330,7 +185411,7 @@ pxb
 pxb
 pxb
 pxb
-qWs
+gbj
 pxb
 pxb
 pxb
@@ -185745,14 +185826,14 @@ fZI
 fZI
 fZI
 fZI
-fZI
-fZI
+bfP
+tPk
 iqz
-xJH
-xJH
-xJH
-xJH
-xJH
+wQY
+qLU
+qLU
+qLU
+qLU
 xJH
 xJH
 xJH
@@ -187073,11 +187154,11 @@ fZI
 fZI
 fZI
 fZI
-fZI
-fZI
+pMk
+bco
 iqz
-xJH
-xJH
+wQY
+qLU
 xJH
 xJH
 xJH
@@ -230222,7 +230303,7 @@ fbm
 fbm
 fbm
 emO
-szq
+rUE
 rZJ
 dyi
 qNt
