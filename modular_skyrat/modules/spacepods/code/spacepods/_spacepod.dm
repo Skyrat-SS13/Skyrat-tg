@@ -446,6 +446,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	remove_all_riders(forced = TRUE)
 	playsound(src, 'modular_skyrat/modules/spacepods/sound/explosion_big.ogg', 100, TRUE, pressure_affected = FALSE)
 	explosion(src, 0, 2, 3, 4)
+	var/list/possible_parts = subtypesof(/obj/item/pod_parts/pod_frame)
+	var/list/possible_dirs = list(NORTH, EAST, SOUTH, WEST)
+	for(var/i in 1 to rand(2, 4))
+		var/obj/item/pod_parts/pod_frame/pod_frame = pick_n_take(possible_parts)
+		var/dir = pick_n_take(possible_dirs)
+		new pod_frame(get_step(src, dir))
+		pod_frame.anchored = TRUE
 	qdel(src)
 
 /obj/spacepod/proc/popcorn()
@@ -497,12 +504,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/update_overlays()
 	. = ..()
 	if(construction_state != SPACEPOD_ARMOR_WELDED && pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
-		var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 		var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
-		armor.blend_mode = BLEND_MULTIPLY
-		masked_armor.overlays = list(armor)
-		masked_armor.appearance_flags = KEEP_TOGETHER
-		. += masked_armor
+		. += armor
 		return
 
 	// Dirt overlays

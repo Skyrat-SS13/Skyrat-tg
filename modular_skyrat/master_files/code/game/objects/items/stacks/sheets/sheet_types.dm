@@ -29,6 +29,10 @@ GLOBAL_LIST_INIT(skyrat_metal_recipes, list(
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
+	new/datum/stack_recipe("pod frame: fore port", /obj/item/pod_parts/pod_frame/fore_port, 10, time = 10 SECONDS, one_per_turf = TRUE, category = CAT_MISC),
+	new/datum/stack_recipe("pod frame: fore starboard", /obj/item/pod_parts/pod_frame/fore_starboard, 10, time = 10 SECONDS, one_per_turf = TRUE, category = CAT_MISC),
+	new/datum/stack_recipe("pod frame: aft port", /obj/item/pod_parts/pod_frame/aft_port, 10, time = 10 SECONDS, one_per_turf = TRUE, category = CAT_MISC),
+	new/datum/stack_recipe("pod frame: aft starboard", /obj/item/pod_parts/pod_frame/aft_starboard, 10, time = 10 SECONDS, one_per_turf = TRUE, category = CAT_MISC),
 ))
 
 GLOBAL_LIST_INIT(skyrat_metal_airlock_recipes, list(

@@ -368,7 +368,7 @@
 /obj/item/spacepod_equipment/thruster
 	name = "\improper Rolls-Royce RS-200 Sublight Thrusters"
 	desc = "The R-200 series of sublight thrusters are as basic as you can get, they aren't very fast."
-	icon_state = "thrusters"
+	icon_state = "engine_basic"
 	slot = SPACEPOD_SLOT_THRUSTER
 	/// The max speed that the pod can move forwards. In tiles per second.
 	var/thrust_power_forwards = 2
@@ -392,18 +392,29 @@
 /obj/item/spacepod_equipment/thruster/upgraded
 	name = "\improper Rolls-Royce RS-400 Sublight Thrusters"
 	desc = "The R-400 series of sublight thrusters provide a slightly better power output of the smaller R-200 series."
+	icon_state = "engine_upgraded"
 	thrust_power_forwards = 4
 	thrust_power_backwards = 2
 	thrust_power_sideways = 1
 	max_velocity = 8
 
-/obj/item/spacepod_equipment/thruster/mk9
+/obj/item/spacepod_equipment/thruster/advanced
 	name = "\improper SAB-R Mark 9 Superlight Impulse Thrust System"
 	desc = "These bad boys make your shuttle go really really fast."
+	icon_state = "engine_advanced"
 	thrust_power_forwards = 6
 	thrust_power_backwards = 3
 	thrust_power_sideways = 2
 	max_velocity = 10
+
+/obj/item/spacepod_equipment/thruster/ultimate
+	name = "\improper Valkyrie Mark X Bluespace Thruster System"
+	desc = "These bad boys make your shuttle go STUPIDLY FAST."
+	icon_state = "engine_bluespace"
+	thrust_power_forwards = 8
+	thrust_power_backwards = 4
+	thrust_power_sideways = 4
+	max_velocity = 20
 
 /**
  * Lights
