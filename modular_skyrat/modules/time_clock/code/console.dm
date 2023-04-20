@@ -159,10 +159,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
-	if(id_component && id_component.hop_locked)
+	if(!id_component)
+		return FALSE
+		
+	if(id_component.hop_locked)
 		return TRUE
 
-	if(!id_component || !id_component.on_cooldown)
+	if(!id_component.on_cooldown)
 		return FALSE
 
 	return TRUE
