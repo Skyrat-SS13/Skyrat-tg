@@ -13,14 +13,13 @@
 #define ORGAN_SYNTHETIC_EMP (1<<5)
 // //Can't be removed using surgery
 #define ORGAN_UNREMOVABLE (1<<6)
-<<<<<<< HEAD
-// SKYRAT EDIT START - Customization
-/// Synthetic organ granted by a species (for use for organ replacements between species)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<7)
-// SKYRAT EDIT END
-=======
 /// Can't be seen by scanners, doesn't anger body purists
 #define ORGAN_HIDDEN (1<<7)
+// SKYRAT EDIT START - Customization
+/// Synthetic organ granted by a species (for use for organ replacements between species)
+#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<8)
+// SKYRAT EDIT END
+
 
 // Flags for the bodypart_flags var on /obj/item/bodypart
 /// Bodypart cannot be dismembered or amputated
@@ -33,7 +32,6 @@
 // Bodypart change blocking flags
 ///Bodypart does not get replaced during set_species()
 #define BP_BLOCK_CHANGE_SPECIES (1<<0)
->>>>>>> 5c1c0ca6825 (Fixes body purist headrevs from getting mad at their implant by making them unaware of it (#74346))
 
 /// When the surgery step fails :(
 #define SURGERY_STEP_FAIL -1
