@@ -844,11 +844,7 @@
 /turf/open/floor/plating,
 /area/station/security/checkpoint/science/research)
 "aiu" = (
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/security/prison/garden)
 "aiC" = (
@@ -19659,10 +19655,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "doY" = (
-/obj/machinery/door/airlock/research{
-	name = "Bomb Assembly";
-	req_access_txt = "8"
-	},
 /obj/machinery/door/firedoor/heavy,
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /obj/structure/cable,
@@ -19671,6 +19663,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	name = "Bomb Assembly"
 	},
 /turf/open/floor/iron,
 /area/station/science/ordnance)
@@ -35034,7 +35029,8 @@
 /obj/machinery/light/directional/west,
 /obj/machinery/camera/directional/east{
 	c_tag = "Bar - Fore";
-	name = "service camera"
+	name = "service camera";
+	dir = 8
 	},
 /obj/machinery/status_display/ai/directional/west,
 /turf/open/floor/wood,
@@ -61362,7 +61358,6 @@
 /area/station/hallway/primary/central/aft)
 "kDA" = (
 /obj/item/flashlight/flare/candle/infinite{
-	lit = 1;
 	pixel_x = 14;
 	pixel_y = -11
 	},
@@ -70560,6 +70555,15 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plating,
 /area/station/maintenance/abandon_holding_cell)
+"mmc" = (
+/obj/docking_port/stationary/random{
+	name = "lavaland";
+	shuttle_id = "pod_2_lavaland"
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "dark_large"
+	},
+/area/space/nearstation)
 "mme" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -87507,15 +87511,14 @@
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "piZ" = (
-/obj/machinery/door/airlock/research{
-	name = "Bomb Assembly";
-	req_access_txt = "8"
-	},
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /obj/structure/cable,
+/obj/machinery/door/airlock/research{
+	name = "Bomb Assembly"
+	},
 /turf/open/floor/iron,
 /area/station/science/ordnance)
 "pja" = (
@@ -88374,7 +88377,7 @@
 "pru" = (
 /obj/docking_port/stationary/random{
 	name = "lavaland";
-	shuttle_id = "pod_lavaland"
+	shuttle_id = "pod_3_lavaland"
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -94981,13 +94984,12 @@
 /area/station/security/detectives_office)
 "qyp" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/airlock/research/glass{
-	name = "Cooling Room";
-	req_access_txt = "8"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/layer4{
 	dir = 8
+	},
+/obj/machinery/door/airlock/research/glass{
+	name = "Cooling Room"
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/freezerchamber)
@@ -96979,9 +96981,7 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "qPH" = (
-/obj/item/flashlight/flare/candle/infinite{
-	lit = 1
-	},
+/obj/item/flashlight/flare/candle/infinite,
 /turf/open/floor/material/meat,
 /area/station/maintenance/department/science/xenobiology)
 "qPM" = (
@@ -97725,19 +97725,6 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
-"qWs" = (
-/obj/docking_port/stationary/random{
-	id = "pod_lavaland";
-	name = "lavaland"
-	},
-/obj/docking_port/stationary/random{
-	name = "lavaland";
-	shuttle_id = "pod_lavaland"
-	},
-/turf/open/floor/iron/airless{
-	icon_state = "dark_large"
-	},
-/area/space/nearstation)
 "qWx" = (
 /obj/structure/table,
 /obj/item/folder/yellow,
@@ -99110,9 +99097,9 @@
 /area/station/medical/cryo)
 "rjb" = (
 /obj/docking_port/stationary/random{
+	dir = 2;
 	name = "lavaland";
-	shuttle_id = "pod_lavaland";
-	dir = 2
+	shuttle_id = "pod_4_lavaland"
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -113646,8 +113633,8 @@
 /area/station/service/library/artgallery)
 "tIN" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/dark/visible,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
-	dir = 8
+/obj/machinery/atmospherics/pipe/bridge_pipe/supply/hidden{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
@@ -114344,7 +114331,6 @@
 /area/station/medical/aslyum)
 "tOP" = (
 /obj/item/flashlight/flare/candle/infinite{
-	lit = 1;
 	pixel_y = -11;
 	pixel_x = -15
 	},
@@ -128328,7 +128314,6 @@
 /area/station/hallway/primary/upper)
 "wiN" = (
 /obj/item/flashlight/flare/candle/infinite{
-	lit = 1;
 	pixel_y = -11
 	},
 /turf/open/floor/material/meat,
@@ -185180,7 +185165,7 @@ pxb
 pxb
 pxb
 pxb
-qWs
+gbj
 pxb
 pxb
 pxb
@@ -186208,7 +186193,7 @@ pxb
 pxb
 pxb
 pxb
-gbj
+mmc
 pxb
 pxb
 pxb
