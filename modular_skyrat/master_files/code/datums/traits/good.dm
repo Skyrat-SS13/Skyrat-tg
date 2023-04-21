@@ -8,7 +8,7 @@
 	gain_text = span_notice("The ground doesn't feel so rough on your feet anymore.")
 	lose_text = span_danger("You start feeling the ridges and imperfections on the ground.")
 	medical_record_text = "Patient's feet are more resilient against traction."
-	icon = FA_ICON_SHOE_PRINTS
+	icon = FA_ICON_SHAPES
 
 /datum/quirk/linguist
 	name = "Linguist"
@@ -39,7 +39,7 @@
 	gain_text = span_notice("You could easily spin a web.")
 	lose_text = span_danger("Somehow, you've lost your ability to weave.")
 	medical_record_text = "Patient has the ability to weave webs with naturally synthesized silk."
-	icon = FA_ICON_SPIDER
+	icon = FA_ICON_STICKY_NOTE
 
 /datum/quirk/floral_aspect
 	name = "Floral aspect (Emotes)"

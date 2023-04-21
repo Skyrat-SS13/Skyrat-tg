@@ -5,7 +5,7 @@
 	gain_text = span_danger("You suddenly can't raise a hand to hurt others!")
 	lose_text = span_notice("You think you can defend yourself again.")
 	medical_record_text = "Patient is nerve stapled and is unable to harm others."
-	icon = FA_ICON_PEACE
+	icon = FA_ICON_FACE_ANGRY
 	forced_items = list(/obj/item/clothing/glasses/nerve_staple = list(ITEM_SLOT_EYES))
 	/// The nerve staple attached to the quirk
 	var/obj/item/clothing/glasses/nerve_staple/staple
