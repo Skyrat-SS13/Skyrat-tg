@@ -26,7 +26,7 @@
 
 /datum/antagonist/clock_cultist/on_gain()
 	. = ..()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/magic/clockwork/scripture_tier_up.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/clock_cult/sound/scripture_tier_up.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 
 /datum/antagonist/clock_cultist/apply_innate_effects(mob/living/mob_override)
