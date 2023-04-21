@@ -116,7 +116,7 @@
 /obj/item/clothing/suit/clockwork/cloak/proc/enable()
 	shroud_active = TRUE
 	previous_alpha = wearer.alpha
-	animate(wearer, alpha = 140, time = 3 SECONDS)
+	animate(wearer, alpha = 90, time = 3 SECONDS)
 	apply_wibbly_filters(wearer)
 	ADD_TRAIT(wearer, TRAIT_UNKNOWN, CLOTHING_TRAIT)
 

@@ -1,4 +1,5 @@
 #define BRASS_POWER_COST 10
+#define REGULAR_POWER_COST (BRASS_POWER_COST / 2)
 
 /obj/item/clockwork/replica_fabricator
 	name = "replica fabricator"
@@ -9,6 +10,8 @@
 	icon_state = "replica_fabricator"
 	/// How much power this has. 5 generated per sheet inserted, one sheet of bronze costs 10, one floor tile costs 15, one wall costs 20
 	var/power = 0
+	/// How much power this can contain at most. By default, is 2 stacks of regular materials or 1 stack of brass
+	var/max_power = 500
 	/// List of things that the fabricator can build for the radial menu
 	var/static/list/crafting_possibilities = list(
 		"floor" = image(icon = 'icons/turf/floors.dmi', icon_state = "clockwork_floor"),
@@ -36,7 +39,7 @@
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
-		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W.")]"
+		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W / ")][span_clockyellow("[max_power]")] [span_brass("W.")]"
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
 		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
@@ -107,7 +110,8 @@
 
 	power -= sheets * BRASS_POWER_COST
 
-	new /obj/item/stack/sheet/bronze(get_turf(src), sheets)
+	var/obj/item/stack/sheet/bronze/sheet_stack = new(null, sheets)
+	user.put_in_hands(sheet_stack)
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
 	to_chat(user, span_clockyellow("You fabricate [sheets] bronze."))
 
@@ -134,27 +138,52 @@
 
 /// Attempt to convert the targeted item into power, if it's a sheet item
 /obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/attacking_item, mob/user)
+	if(power >= max_power)
+		to_chat(user, span_clockyellow("[src] is already at maximum power!"))
+		return
+
 	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
 		var/obj/item/stack/bronze_stack = attacking_item
 
-		power += bronze_stack.amount * BRASS_POWER_COST
+		if((power + bronze_stack.amount * BRASS_POWER_COST) > max_power)
+			var/amount_to_take = clamp(round((max_power - power) / BRASS_POWER_COST), 0, bronze_stack.amount)
+
+			if(!amount_to_take)
+				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				return
+
+			bronze_stack.use(amount_to_take)
+			power += amount_to_take * BRASS_POWER_COST
+
+		else
+			power += bronze_stack.amount * BRASS_POWER_COST
+			qdel(bronze_stack)
 
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, span_clockyellow("You convert [bronze_stack.amount] bronze into [bronze_stack.amount * BRASS_POWER_COST] watts of power."))
 
-		qdel(bronze_stack)
 		return TRUE
 
 	else if(istype(attacking_item, /obj/item/stack/sheet))
 		var/obj/item/stack/stack = attacking_item
 
-		var/power_to_generate = round(stack.amount * BRASS_POWER_COST / 2)
-		power += power_to_generate
+		if((power + stack.amount * REGULAR_POWER_COST) > max_power)
+			var/amount_to_take = clamp(round((max_power - power) / REGULAR_POWER_COST), 0, stack.amount)
+
+			if(!amount_to_take)
+				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				return
+
+			stack.use(amount_to_take)
+			power += amount_to_take * REGULAR_POWER_COST
+
+		else
+			power += stack.amount * REGULAR_POWER_COST
+			qdel(stack)
 
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [power_to_generate] watts of power."))
+		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [stack.amount * REGULAR_POWER_COST] watts of power."))
 
-		qdel(attacking_item)
 		return TRUE
 
 	return FALSE
@@ -180,7 +209,7 @@
 /// Any extra actions that need to be taken when an object is created
 /datum/replica_fabricator_output/proc/on_create(atom/created_atom, turf/creation_turf, mob/creator)
 	SHOULD_CALL_PARENT(TRUE)
-	playsound(created_atom, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1) // better sound?
+	playsound(creation_turf, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1) // better sound?
 	to_chat(creator, span_clockyellow("You create \an [name] for [cost]W of power."))
 
 
@@ -256,3 +285,4 @@
 
 
 #undef BRASS_POWER_COST
+#undef REGULAR_POWER_COST

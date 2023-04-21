@@ -115,7 +115,7 @@
 	new_hemophage.set_safe_hunger_level()
 
 
-/datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, delta_time, times_fired)
+/datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, seconds_per_tick, times_fired)
 	. = ..()
 	if(hemophage.stat >= DEAD)
 		return
@@ -128,7 +128,7 @@
 			if(!affected_organ || !(affected_organ.organ_flags & ORGAN_TUMOR_CORRUPTED))
 				continue
 
-			hemophage.adjustOrganLoss(organ_slot, TUMORLESS_ORGAN_DAMAGE * delta_time, TUMORLESS_ORGAN_DAMAGE_MAX)
+			hemophage.adjustOrganLoss(organ_slot, TUMORLESS_ORGAN_DAMAGE * seconds_per_tick, TUMORLESS_ORGAN_DAMAGE_MAX)
 
 		return // We don't actually want to do any healing or blood loss without a tumor, y'know.
 
@@ -143,7 +143,7 @@
 
 		// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
 		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, required_bodytype = BODYTYPE_ORGANIC)))
-			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
+			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * seconds_per_tick)
 			blood_used += brutes_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
 
@@ -151,7 +151,7 @@
 		var/burn_damage = hemophage.getFireLoss()
 
 		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, required_bodytype = BODYTYPE_ORGANIC)))
-			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
+			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * seconds_per_tick)
 			blood_used += burns_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
 
@@ -161,7 +161,7 @@
 		var/toxin_damage = hemophage.getToxLoss()
 
 		if(toxin_damage && max_blood_for_regen > NONE)
-			var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * delta_time)
+			var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * seconds_per_tick)
 			blood_used += toxins_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= toxins_to_heal * blood_to_health_multiplier
 			hemophage.adjustToxLoss(-toxins_to_heal)
@@ -169,7 +169,7 @@
 		var/cellular_damage = hemophage.getCloneLoss()
 
 		if(cellular_damage && max_blood_for_regen > NONE)
-			var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * delta_time)
+			var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * seconds_per_tick)
 			blood_used += cells_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= cells_to_heal * blood_to_health_multiplier
 			hemophage.adjustCloneLoss(-cells_to_heal)
@@ -185,7 +185,7 @@
 	if(in_closet(hemophage)) // No regular bloodloss if you're in a closet
 		return
 
-	hemophage.blood_volume = (hemophage.blood_volume * FLOATING_POINT_ERROR_AVOIDING_FACTOR - NORMAL_BLOOD_DRAIN * delta_time * bloodloss_speed_multiplier * FLOATING_POINT_ERROR_AVOIDING_FACTOR) / FLOATING_POINT_ERROR_AVOIDING_FACTOR
+	hemophage.blood_volume = (hemophage.blood_volume * FLOATING_POINT_ERROR_AVOIDING_FACTOR - NORMAL_BLOOD_DRAIN * seconds_per_tick * bloodloss_speed_multiplier * FLOATING_POINT_ERROR_AVOIDING_FACTOR) / FLOATING_POINT_ERROR_AVOIDING_FACTOR
 
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
@@ -474,7 +474,7 @@
 	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
 	return ..()
 
-/obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
+/obj/item/organ/internal/stomach/hemophage/on_life(seconds_per_tick, times_fired)
 	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
 	if(blood)
 		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
