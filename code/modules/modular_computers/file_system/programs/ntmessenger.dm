@@ -294,8 +294,11 @@
 
 	if (!string_targets.len)
 		return FALSE
-
-	if (prob(1))
+	var/sent_prob = 1
+	if(ishuman(user))
+		var/mob/living/carbon/human/old_person = user
+		sent_prob = old_person.age >= 30 ? 25 : sent_prob
+	if (prob(sent_prob))
 		message += " Sent from my PDA"
 	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
 	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE)
