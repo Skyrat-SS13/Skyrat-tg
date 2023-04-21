@@ -451,7 +451,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	for(var/i in 1 to rand(2, 4))
 		var/obj/item/pod_parts/pod_frame/pod_frame = pick_n_take(possible_parts)
 		var/dir = pick_n_take(possible_dirs)
-		new pod_frame(get_step(src, dir))
+		pod_frame = new pod_frame(get_step(src, dir))
 		pod_frame.anchored = TRUE
 	qdel(src)
 

@@ -163,3 +163,8 @@
 		/obj/spacepod,
 		/obj/drone,
 	)
+
+/obj/structure/launcher/CanAllowThrough(atom/movable/mover, border_dir)
+	if(istype(mover, launch_type))
+		return TRUE
+	return ..()
