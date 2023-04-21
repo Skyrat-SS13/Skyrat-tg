@@ -14,6 +14,7 @@
 	message = null
 
 #define EXME_MAX_LOC_RECURSION 80 //no infinite loops
+
 /datum/emote/container_emote/run_emote(mob/living/user, params, type_override = null, intentional = TRUE)
 	/// The message that will be sent from the container emote.
 	var/container_message
@@ -34,12 +35,17 @@
 	var/list/locs_we_can_use = list()
 	if (current_loc != null && !isturf(current_loc))
 		locs_we_can_use += current_loc
-		while (times_searched++ < EXME_MAX_LOC_RECURSION)
+
+		while (times_searched < EXME_MAX_LOC_RECURSION)
+			times_searched++
 			var/atom/recursive_loc = current_loc.loc
+
 			if (recursive_loc == null || (isarea(recursive_loc))) // if youre in something already, its fair to say you might be in, say, a pipe. you cant use that for emoting, so the floor will have to do
 				break
+
 			locs_we_can_use += recursive_loc
 			current_loc = recursive_loc
+
 	else
 		can_use = FALSE
 
@@ -81,20 +87,24 @@
 	var/atom/picked_loc
 	if (locs_we_can_use.len == 0)
 		return FALSE
+
 	if (locs_we_can_use.len == 1)
 		picked_loc = pick(locs_we_can_use)
 	else
 		picked_loc = tgui_input_list(user, "Which container would you like your emote to originate from?", "Container emote", locs_we_can_use, FALSE)
+
 	// Since the tgui input sleeps, we can no longer trust the status of any variable after this point
 	// Ex. we cannot assume the user exists anymore
 	if(!can_run_emote(user))
 		return FALSE
+
 	if ((!picked_loc) || (isarea(picked_loc)) || QDELETED(picked_loc) || user.IsUnconscious() || QDELETED(user)) //one last sanity check
 		to_chat(user, span_danger("Either you are unconcious, are not within anything, or you/the object you picked don't exist anymore!")) // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
 		return FALSE
 
 	if(emote_type == EMOTE_AUDIBLE)
 		picked_loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separation = space)
+
 	else if (emote_type == EMOTE_VISIBLE)
 		picked_loc.visible_message(message = container_message, self_message = container_message, visible_message_flags = EMOTE_MESSAGE, separation = space)
 
