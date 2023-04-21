@@ -13,9 +13,11 @@
 #define ORGAN_SYNTHETIC_EMP (1<<5)
 ///Can't be removed using surgery
 #define ORGAN_UNREMOVABLE (1<<6)
+/// Can't be seen by scanners, doesn't anger body purists
+#define ORGAN_HIDDEN (1<<7)
 // SKYRAT EDIT START - Customization
 /// Synthetic organ granted by a species (for use for organ replacements between species)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<7)
+#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<8)
 // SKYRAT EDIT END
 
 // Flags for the bodypart_flags var on /obj/item/bodypart
