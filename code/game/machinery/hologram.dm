@@ -540,34 +540,17 @@ Possible to do for anyone motivated enough:
 		hologram.makeHologram()
 
 		if(AI)
-<<<<<<< HEAD
-			Hologram.icon = AI.holo_icon
-			Hologram.Impersonation = AI //SKYRAT EDIT -- ADDITION -- Customization; puts the AI core as the impersonated mob so that the examine proc can be redirected
-=======
->>>>>>> 2b2cb3dff6d (Hologram Touchup (Init savings edition) (#74793))
 			AI.eyeobj.setLoc(get_turf(src)) //ensure the AI camera moves to the holopad
+			hologram.Impersonation = AI //SKYRAT EDIT -- ADDITION -- Customization; puts the AI core as the impersonated mob so that the examine proc can be redirected
 		else //make it like real life
 			hologram.Impersonation = user
-		hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
+		//Hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it. //SKYRAT EDIT -- Customization; Making holograms clickable/examinable
 		hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
 		SET_PLANE_EXPLICIT(hologram, ABOVE_GAME_PLANE, src)
 		hologram.set_anchored(TRUE)//So space wind cannot drag it.
-		hologram.name = "[user.name] (Hologram)"//If someone decides to right click.
+		hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
 
-<<<<<<< HEAD
-		//Hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it. //SKYRAT EDIT -- Customization; Making holograms clickable/examinable
-		Hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
-		SET_PLANE_EXPLICIT(Hologram, ABOVE_GAME_PLANE, src)
-		Hologram.set_anchored(TRUE)//So space wind cannot drag it.
-		// Hologram.name = "[user.name] (Hologram)"//If someone decides to right click. //SKYRAT EDIT -- ORIGINAL
-		Hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
-		Hologram.set_light(2) //hologram lighting
-		move_hologram()
-
-		set_holo(user, Hologram)
-=======
 		set_holo(user, hologram)
->>>>>>> 2b2cb3dff6d (Hologram Touchup (Init savings edition) (#74793))
 		visible_message(span_notice("A holographic image of [user] flickers to life before your eyes!"))
 
 		return hologram
