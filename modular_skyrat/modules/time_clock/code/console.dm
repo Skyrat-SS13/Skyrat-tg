@@ -122,9 +122,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
+	if(!id_component)
+		return FALSE
 
 	var/datum/job/clocked_in_job = id_component.stored_trim.job
-	if(clocked_in_job.total_positions <= clocked_in_job.current_positions)
+	if(!clocked_in_job || (clocked_in_job.total_positions <= clocked_in_job.current_positions))
 		return FALSE
 
 	clocked_in_job.current_positions++
@@ -161,7 +163,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
 	if(!id_component)
 		return FALSE
-		
+
 	if(id_component.hop_locked)
 		return TRUE
 
