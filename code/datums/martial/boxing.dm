@@ -30,30 +30,21 @@
 		return FALSE
 
 
-<<<<<<< HEAD
-	var/obj/item/bodypart/affecting = D.get_bodypart(D.get_random_valid_zone(A.zone_selected))
-	var/armor_block = D.run_armor_check(affecting, MELEE)
+	var/obj/item/bodypart/affecting = defender.get_bodypart(defender.get_random_valid_zone(attacker.zone_selected))
+	var/armor_block = defender.run_armor_check(affecting, MELEE)
+
 	// SKYRAT EDIT CHANGE
 	var/sound/attack_sound
 	if(!active_arm.unarmed_attack_sound)
 		attack_sound = get_sfx("punch")
 	else
 		attack_sound = active_arm.unarmed_attack_sound
-	playsound(D.loc, attack_sound, 25, TRUE, -1)
+	playsound(defender.loc, attack_sound, 25, TRUE, -1)
 	//SKYRAT EDIT END
-	D.visible_message(span_danger("[A] [atk_verb]ed [D]!"), \
-					span_userdanger("You're [atk_verb]ed by [A]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, A)
-	to_chat(A, span_danger("You [atk_verb]ed [D]!"))
-=======
-	var/obj/item/bodypart/affecting = defender.get_bodypart(defender.get_random_valid_zone(attacker.zone_selected))
-	var/armor_block = defender.run_armor_check(affecting, MELEE)
-
-	playsound(defender.loc, active_arm.unarmed_attack_sound, 25, TRUE, -1)
 
 	defender.visible_message(span_danger("[attacker] [atk_verb]ed [defender]!"), \
 					span_userdanger("You're [atk_verb]ed by [attacker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
 	to_chat(attacker, span_danger("You [atk_verb]ed [defender]!"))
->>>>>>> 065eb27f9bb (Cleanup 1 letter var names in martial arts files (#74723))
 
 	defender.apply_damage(damage, STAMINA, affecting, armor_block)
 	log_combat(attacker, defender, "punched (boxing) ")
