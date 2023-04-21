@@ -1167,6 +1167,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(SEND_SIGNAL(target, COMSIG_CARBON_PRE_HELP, user, attacker_style) & COMPONENT_BLOCK_HELP_ACT)
 		return TRUE
 
+	if(attacker_style?.help_act(user, target) == MARTIAL_ATTACK_SUCCESS)
+		return TRUE
+
 	if(target.body_position == STANDING_UP || target.appears_alive())
 		target.help_shake_act(user)
 		if(target != user)
@@ -1174,7 +1177,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return TRUE
 
 	user.do_cpr(target)
-
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
@@ -1184,9 +1186,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return FALSE
 	if(attacker_style?.grab_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
-	else
-		target.grabbedby(user)
-		return TRUE
+	target.grabbedby(user)
+	return TRUE
 
 ///This proc handles punching damage. IMPORTANT: Our owner is the TARGET and not the USER in this proc. For whatever reason...
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
@@ -2308,7 +2309,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		// SKYRAT EDIT END
 
 	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
-		if(old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES)
+		if((old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES) || (old_part.bodypart_flags & BODYPART_IMPLANTED))
 			continue
 
 		var/path = new_species.bodypart_overrides?[old_part.body_zone]
@@ -2317,7 +2318,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			new_part = new path()
 			new_part.replace_limb(target, TRUE)
 			new_part.update_limb(is_creating = TRUE)
-			qdel(old_part)
+		qdel(old_part)
 
 /// Creates body parts for the target completely from scratch based on the species
 /datum/species/proc/create_fresh_body(mob/living/carbon/target)
