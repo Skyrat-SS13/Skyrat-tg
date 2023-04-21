@@ -1,6 +1,7 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+	icon = FA_ICON_BOX_OPEN
 	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
 	var/list/items = list()
 	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
@@ -51,6 +52,7 @@
 
 /datum/quirk/equipping/lungs
 	abstract_parent_type = /datum/quirk/equipping/lungs
+	icon = FA_ICON_LUNGS
 	var/obj/item/organ/internal/lungs/lungs_holding
 	var/obj/item/organ/internal/lungs/lungs_added
 	var/lungs_typepath = /obj/item/organ/internal/lungs
@@ -118,7 +120,7 @@
 /datum/quirk/equipping/lungs/nitrogen
 	name = "Nitrogen Breather"
 	desc = "You breathe nitrogen, even if you might not normally breathe it. Oxygen is poisonous."
-	icon = "lungs"
+	icon = FA_ICON_LUNGS_VIRUS
 	medical_record_text = "Patient can only breathe nitrogen."
 	gain_text = "<span class='danger'>You suddenly have a hard time breathing anything but nitrogen."
 	lose_text = "<span class='notice'>You suddenly feel like you aren't bound to nitrogen anymore."
