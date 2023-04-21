@@ -495,10 +495,12 @@
 			visible_message("<span class='danger'>[src.name] briefly twitches; before falling limp - their breathing irratic and chest spasming violently!</span>", \
 								"<span class='danger'>You feel your heart thump eratically; before ceasing to beat, a violent twitch overcoming your form!</span>", ignored_mobs=src)
 	//SKYRAT EDIT END
-	//Note we both check that the user is in cardiac arrest and can actually heartattack
-	//If they can't, they're missing their heart and this would runtime
-	if(undergoing_cardiac_arrest() && can_heartattack() && !(flags & SHOCK_ILLUSION))
-		if(shock_damage * siemens_coeff >= 1 && prob(25))
+	if(!(flags & SHOCK_ILLUSION))
+		if(shock_damage * siemens_coeff >= 5)
+			force_say()
+		//Note we both check that the user is in cardiac arrest and can actually heartattack
+		//If they can't, they're missing their heart and this would runtime
+		if(undergoing_cardiac_arrest() && can_heartattack() && (shock_damage * siemens_coeff >= 1) && prob(25))
 			var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 			if(heart.Restart() && stat == CONSCIOUS)
 				to_chat(src, span_notice("You feel your heart beating again!"))
@@ -883,13 +885,13 @@
  * Used by fire code to damage worn items.
  *
  * Arguments:
- * - delta_time
+ * - seconds_per_tick
  * - times_fired
  * - stacks: Current amount of firestacks
  *
  */
 
-/mob/living/carbon/human/proc/burn_clothing(delta_time, times_fired, stacks)
+/mob/living/carbon/human/proc/burn_clothing(seconds_per_tick, times_fired, stacks)
 	var/list/burning_items = list()
 	var/obscured = check_obscured_slots(TRUE)
 	//HEAD//
@@ -934,13 +936,12 @@
 		burning_items |= leg_clothes
 
 	for(var/obj/item/burning in burning_items)
-		burning.fire_act((stacks * 25 * delta_time)) //damage taken is reduced to 2% of this value by fire_act()
+		burning.fire_act((stacks * 25 * seconds_per_tick)) //damage taken is reduced to 2% of this value by fire_act()
 
-/mob/living/carbon/human/on_fire_stack(delta_time, times_fired, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+/mob/living/carbon/human/on_fire_stack(seconds_per_tick, times_fired, datum/status_effect/fire_handler/fire_stacks/fire_handler)
 	SEND_SIGNAL(src, COMSIG_HUMAN_BURNING)
-	burn_clothing(delta_time, times_fired, fire_handler.stacks)
+	burn_clothing(seconds_per_tick, times_fired, fire_handler.stacks)
 	var/no_protection = FALSE
 	if(dna && dna.species)
-		no_protection = dna.species.handle_fire(src, delta_time, times_fired, no_protection)
-	fire_handler.harm_human(delta_time, times_fired, no_protection)
-
+		no_protection = dna.species.handle_fire(src, seconds_per_tick, times_fired, no_protection)
+	fire_handler.harm_human(seconds_per_tick, times_fired, no_protection)

@@ -524,7 +524,7 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 15 && long_term_power < 0) // <15%, turn off lighting & equipment
+		else if(cell.percent() < 7 && long_term_power < 0) // SKYRAT EDIT CHANGE - orig: 15
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_OFF)
 			environ = autoset(environ, AUTOSET_ON)
@@ -532,9 +532,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 30 && long_term_power < 0) // <30%, turn off equipment
-			equipment = autoset(equipment, AUTOSET_OFF)
-			lighting = autoset(lighting, AUTOSET_ON)
+		else if(cell.percent() < 17 && long_term_power < 0) // SKYRAT EDIT CHANGE - orig: 30
+			equipment = autoset(equipment, AUTOSET_ON) // SKYRAT EDIT CHANGE - orig: AUTOSET_OFF
+			lighting = autoset(lighting, AUTOSET_OFF) // SKYRAT EDIT CHANGE - orig: AUTOSET_ON
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -589,8 +589,8 @@
 		if(integration_cog)
 			var/power_delta = clamp(cell.charge - 50, 0, 50)
 			GLOB.clock_power = min(round(GLOB.clock_power + (power_delta / 2.5)) , GLOB.max_clock_power) // Will continue to siphon even if full just so the APCs aren't completely silent about having an issue (since power will regularly be full)
-			cell.charge -= power_delta
-			add_load(power_delta)
+			cell.charge -= power_delta * (integration_cog.set_up ? 1 : 2)
+			add_load(power_delta * (integration_cog.set_up ? 1 : 2)) // Twice the drained power if not set up yet
 			charging = APC_NOT_CHARGING
 			chargecount = 0
 			if(cell.charge <= 50)

@@ -33,7 +33,7 @@ PROCESSING_SUBSYSTEM_DEF(pollution_emitters)
 	if(!affected.len)
 		STOP_PROCESSING(SSpollution_emitters, src)
 
-/datum/element/pollution_emitter/process(delta_time)
+/datum/element/pollution_emitter/process(seconds_per_tick)
 	for(var/atom/affected_atom as anything in affected)
 		var/turf/my_turf = get_turf(affected_atom)
 		my_turf.pollute_turf(pollutant_type, pollutant_amount)

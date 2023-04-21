@@ -43,6 +43,7 @@
 	if(do_after(user, 5 SECONDS, target_wall))
 		target_wall.AddComponent(/datum/component/wall_fungus)
 		target_wall.balloon_alert(user, "planted!")
+		user.log_message("planted [name] on [target_wall.name].", LOG_ATTACK)
 		qdel(src)
 		return
 	return ..()
