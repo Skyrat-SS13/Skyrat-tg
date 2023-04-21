@@ -83,7 +83,7 @@
 	spacepod_armor_type = /obj/item/pod_parts/armor/security
 	cell_type = /obj/item/stock_parts/cell/bluespace
 	equipment_types = list(
-		/obj/item/spacepod_equipment/thruster/mk9,
+		/obj/item/spacepod_equipment/thruster/ultimate,
 		/obj/item/spacepod_equipment/rcs_upgrade,
 		/obj/item/spacepod_equipment/weaponry/burst_laser,
 		/obj/item/spacepod_equipment/weaponry/pulse,
