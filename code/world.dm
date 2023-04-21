@@ -19,7 +19,7 @@
 	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "/tg/ Station 13"
 	fps = 20
-	map_format = SIDE_MAP
+	//map_format = SIDE_MAP // SKYRAT EDIT - TODO: WALLENING - REMOVE THIS (hopefully the visual z-fighting issues will have been ironed out by then)
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif
