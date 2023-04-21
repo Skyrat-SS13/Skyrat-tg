@@ -11,7 +11,7 @@
 	medical_record_text = "Patient is abnormally tall."
 	value = 0
 	mob_trait = TRAIT_OVERSIZED
-	icon = "expand-arrows-alt"
+	icon = FA_ICON_EXPAND_ARROWS_ALT
 	veteran_only = TRUE
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 

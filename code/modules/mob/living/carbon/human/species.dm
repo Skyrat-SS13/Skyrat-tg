@@ -1184,7 +1184,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						span_userdanger("You block [user]'s grab!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_warning("Your grab at [target] was blocked!"))
 		return FALSE
-	if(attacker_style?.grab_act(user,target) == MARTIAL_ATTACK_SUCCESS)
+	if(attacker_style?.grab_act(user, target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 	target.grabbedby(user)
 	return TRUE
@@ -2309,7 +2309,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		// SKYRAT EDIT END
 
 	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
-		if(old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES)
+		if((old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES) || (old_part.bodypart_flags & BODYPART_IMPLANTED))
 			continue
 
 		var/path = new_species.bodypart_overrides?[old_part.body_zone]
@@ -2318,7 +2318,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			new_part = new path()
 			new_part.replace_limb(target, TRUE)
 			new_part.update_limb(is_creating = TRUE)
-			qdel(old_part)
+		qdel(old_part)
 
 /// Creates body parts for the target completely from scratch based on the species
 /datum/species/proc/create_fresh_body(mob/living/carbon/target)

@@ -9,7 +9,7 @@
 	medical_record_text = "Patient seems to get excited easily."
 	value = 0
 	mob_trait = TRAIT_EXCITABLE
-	icon = "laugh-beam"
+	icon = FA_ICON_LAUGH_BEAM
 
 /datum/quirk/personalspace
 	name = "Personal Space"
@@ -19,7 +19,7 @@
 	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
 	mob_trait = TRAIT_PERSONALSPACE
-	icon = "hand-paper"
+	icon = FA_ICON_HAND_PAPER
 
 /datum/quirk/dnr
 	name = "Do Not Revive"
@@ -29,7 +29,7 @@
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
-	icon = "skull-crossbones"
+	icon = FA_ICON_SKULL_CROSSBONES
 
 // uncontrollable laughter
 /datum/quirk/item_quirk/joker
@@ -40,7 +40,7 @@
 	medical_record_text = "Patient suffers with sudden and uncontrollable bursts of laughter."
 	var/pcooldown = 0
 	var/pcooldown_time = 60 SECONDS
-	icon = "grin-squint-tears"
+	icon = FA_ICON_GRIN_TEARS
 
 /datum/quirk/item_quirk/joker/add_unique(client/client_source)
 	give_item_to_holder(/obj/item/paper/joker, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
@@ -173,12 +173,12 @@
 	lose_text = span_notice("You feel less attracted to lasers.")
 	medical_record_text = "Patient seems to possess behavior much like a feline."
 	mob_trait = TRAIT_FELINE
-	icon = "cat"
+	icon = FA_ICON_CAT
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"
 	desc = "Bark. You seem to act like a canine for whatever reason."
-	icon = "canine"
+	icon = FA_ICON_DOG
 	value = 0
 	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."
 
@@ -199,4 +199,4 @@
 	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
 	value = 0
 	mob_trait = TRAIT_SENSITIVESNOUT
-	icon = "fingerprint"
+	icon = FA_ICON_FINGERPRINT
