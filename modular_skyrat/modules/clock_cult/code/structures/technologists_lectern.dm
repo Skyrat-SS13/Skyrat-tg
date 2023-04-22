@@ -447,7 +447,7 @@
 			priority_announce("An extreme power surge has been detected in on-board APCs. Surge will subside in [rand(3, 8)] minutes.") // Not always accurate, are we?
 
 			force_apc_arcing(TRUE)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(force_apc_arcing), FALSE), 5 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(force_apc_arcing), FALSE), 4 MINUTES)
 
 
 /obj/effect/lectern_light
