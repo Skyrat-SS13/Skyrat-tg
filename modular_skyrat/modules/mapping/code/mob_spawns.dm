@@ -640,9 +640,11 @@
 
 /datum/id_trim/away/hotel
 	assignment = "Hotel Staff"
+	access = list(ACCESS_TWIN_NEXUS_STAFF)
 
 /datum/id_trim/away/hotel/manager
 	assignment = "Hotel Manager"
+	access = list(ACCESS_TWIN_NEXUS_STAFF, ACCESS_TWIN_NEXUS_MANAGER)
 
 /datum/id_trim/away/hotel/security
 	assignment = "Hotel Security"
