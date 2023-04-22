@@ -315,10 +315,6 @@
 	name = "Teshari Feathers Upright"
 	icon_state = "teshari_feathers_upright"
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_mane
-	name = "Teshari Feathers Mane"
-	icon_state = "teshari_feathers_mane"
-
 /datum/sprite_accessory/ears/mutant/teshari/feathers_droopy
 	name = "Teshari Feathers Droopy"
 	icon_state = "teshari_feathers_droopy"
