@@ -5,4 +5,3 @@ GLOBAL_LIST_INIT(first_names_male_taj, world.file2list("modular_skyrat/modules/c
 GLOBAL_LIST_INIT(first_names_female_taj, world.file2list("modular_skyrat/modules/customization/strings/names/first_female_taj.txt"))
 GLOBAL_LIST_INIT(last_names_taj, world.file2list("modular_skyrat/modules/customization/strings/names/last_taj.txt"))
 GLOBAL_LIST_INIT(callsigns_nri, world.file2list("modular_skyrat/modules/customization/strings/names/callsigns_nri.txt"))
-GLOBAL_LIST_INIT(phonetic_alphabet_numbers, world.file2list("modular_skyrat/modules/customization/strings/names/phonetic_alphabet_numbers.txt"))
