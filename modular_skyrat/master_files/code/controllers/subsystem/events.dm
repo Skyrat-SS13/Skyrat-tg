@@ -1,17 +1,16 @@
 /// Check if we have an upcoming transfer vote, or we're already evacuating.
 /datum/controller/subsystem/events/checkEvent()
 	if(scheduled <= world.time)
-		if(SSautotransfer.can_fire == TRUE)
-			if((SSautotransfer.targettime - world.realtime) - (world.timeofday - SSticker.real_round_start_time) <= 15 MINUTES + CONFIG_GET(number/vote_period))
-				log_game("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
-				log_game("ICES: Info: RT [(world.timeofday - SSticker.real_round_start_time)] | AT [(SSautotransfer.targettime - world.realtime)] | VP [(15 MINUTES + CONFIG_GET(number/vote_period))]")
-				message_admins("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
-				reschedule()
-				return
-		if(world.time - SSticker.round_start_time > CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
-			log_game("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac()]")
-			log_game("ICES: Info: RT [(world.timeofday - SSticker.real_round_start_time)] | SD [CONFIG_GET(number/shuttle_refuel_delay)]")
-			message_admins("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac()]")
+		if(SSautotransfer.can_fire == TRUE && ((SSautotransfer.targettime - world.realtime) <= 15 MINUTES + CONFIG_GET(number/vote_period)))
+			log_game("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
+			log_game("ICES: Info: AT [(SSautotransfer.targettime - world.realtime)] | VP [(15 MINUTES + CONFIG_GET(number/vote_period))]")
+			message_admins("ICES: Event cancelled due to precondition check. Reason: Pending autotransfer vote.")
+			reschedule()
+			return
+		if(world.time - SSticker.round_start_time >= CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
+			log_game("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac() ? "shuttle refuelling" : "[SSshuttle.canEvac()]"]")
+			log_game("ICES: Info: RT [(world.time - SSticker.round_start_time)] | SD [CONFIG_GET(number/shuttle_refuel_delay)]")
+			message_admins("ICES: Event cancelled due to precondition check. Reason: [SSshuttle.canEvac() ? "shuttle refuelling" : "[SSshuttle.canEvac()]"]")
 			reschedule()
 			return
 		spawnEvent()
