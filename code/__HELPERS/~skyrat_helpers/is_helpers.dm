@@ -30,3 +30,6 @@
 
 // Xen mobs
 #define isxenmob(A) (istype(A, /mob/living/simple_animal/hostile/blackmesa/xen))
+
+#define isspacepod(A) (istype(A, /obj/spacepod))
+#define isspacepodequipment(A) (istype(A, /obj/item/spacepod_equipment))

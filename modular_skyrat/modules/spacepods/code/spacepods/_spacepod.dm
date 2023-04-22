@@ -423,84 +423,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	else
 		handle_destruction()
 
-/obj/spacepod/proc/handle_destruction()
-	spacepod_hud.icon_state = "eject"
-	spacepod_hud.invisibility = 0
-
-	if(cabin_air)
-		var/datum/gas_mixture/gas_mixture = cabin_air.remove_ratio(1)
-		var/turf/our_turf = get_turf(src)
-		if(gas_mixture && our_turf)
-			our_turf.assume_air(gas_mixture)
-	playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm_death.ogg', 100, TRUE, pressure_affected = FALSE)
-	addtimer(CALLBACK(src, PROC_REF(destruction)), 5 SECONDS)
-	for(var/i in 1 to 5)
-		addtimer(CALLBACK(src, PROC_REF(popcorn)), i SECONDS)
-
-/obj/spacepod/proc/destruction()
-	if(pod_armor)
-		remove_armor()
-		QDEL_NULL(pod_armor)
-		if(prob(40))
-			new /obj/item/stack/sheet/iron/five(get_turf(src))
-	remove_all_riders(forced = TRUE)
-	playsound(src, 'modular_skyrat/modules/spacepods/sound/explosion_big.ogg', 100, TRUE, pressure_affected = FALSE)
-	explosion(src, 0, 2, 3, 4)
-	var/list/possible_parts = subtypesof(/obj/item/pod_parts/pod_frame)
-	var/list/possible_dirs = list(NORTH, EAST, SOUTH, WEST)
-	for(var/i in 1 to rand(2, 4))
-		var/obj/item/pod_parts/pod_frame/pod_frame = pick_n_take(possible_parts)
-		var/dir = pick_n_take(possible_dirs)
-		pod_frame = new pod_frame(get_step(src, dir))
-		pod_frame.anchored = TRUE
-	qdel(src)
-
-/obj/spacepod/proc/popcorn()
-	playsound(src, pick(explosion_sounds), 100, TRUE, pressure_affected = FALSE)
-
-/obj/spacepod/proc/handle_disassembly()
-	// First remove all the riders safely.
-	remove_all_riders(forced = TRUE)
-	// Now we remove all the bits and bobs from the bod.
-	detach_all_equipment()
-	// remove any other stray stuff.
-	for(var/atom/movable/iterating_movable_atom in contents)
-		iterating_movable_atom.forceMove(get_turf(src))
-
-	// Now we deconstruct the pod and place the bits.
-	var/clamped_angle = (round(component_angle, 90) % 360 + 360) % 360
-	var/target_dir = NORTH
-	switch(clamped_angle)
-		if(0)
-			target_dir = NORTH
-		if(90)
-			target_dir = EAST
-		if(180)
-			target_dir = SOUTH
-		if(270)
-			target_dir = WEST
-
-	var/list/frame_piece_types = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
-	var/obj/item/pod_parts/pod_frame/current_piece = null
-	var/turf/our_turf = get_turf(src)
-	var/list/frame_pieces = list()
-	for(var/frame_type in frame_piece_types)
-		var/obj/item/pod_parts/pod_frame/frame_to_drop = new frame_type
-		frame_to_drop.dir = target_dir
-		frame_to_drop.anchored = TRUE
-		if(1 == turn(frame_to_drop.dir, -frame_to_drop.link_angle))
-			current_piece = frame_to_drop
-		frame_pieces += frame_to_drop
-	while(current_piece && !current_piece.loc)
-		if(!our_turf)
-			break
-		current_piece.forceMove(our_turf)
-		our_turf = get_step(our_turf, turn(current_piece.dir, -current_piece.link_angle))
-		current_piece = locate(current_piece.link_to) in frame_pieces
-
-	// Now we delete ourselves.
-	qdel(src)
-
 /obj/spacepod/update_overlays()
 	. = ..()
 	if(construction_state != SPACEPOD_ARMOR_WELDED && pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
@@ -605,7 +527,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			right_thrust_overlay.dir = cardinal_direction
 			add_overlay(right_thrust_overlay)
 
-	// Update back thrust overlay and play thrust sound if back_thrust is not 0
+	// Update back thrust overlay and play thrust sound if back_thrust is not 0b
 	if(back_thrust)
 		if(!back_thrust_overlay)
 			back_thrust_overlay = image(icon = overlay_file, icon_state = "thrust")
@@ -721,6 +643,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
 	SIGNAL_HANDLER
 
+	if(!gyroscope_enabled)
+		return
+
 	// Parse the input parameters
 	var/list/modifiers = params2list(params)
 
@@ -748,6 +673,102 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, 90 - ATAN2(delta_x, delta_y))
 	else
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, null)
+
+/**
+ * handle_destruction
+ *
+ * Handles the destruction of the spacepod, ejecting all occupants and deleting the spacepod.
+ */
+/obj/spacepod/proc/handle_destruction()
+	spacepod_hud.icon_state = "eject"
+	spacepod_hud.invisibility = 0
+
+	if(cabin_air)
+		var/datum/gas_mixture/gas_mixture = cabin_air.remove_ratio(1)
+		var/turf/our_turf = get_turf(src)
+		if(gas_mixture && our_turf)
+			our_turf.assume_air(gas_mixture)
+	playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm_death.ogg', 100, TRUE, pressure_affected = FALSE)
+	addtimer(CALLBACK(src, PROC_REF(destruction)), 5 SECONDS)
+	for(var/i in 1 to 5)
+		addtimer(CALLBACK(src, PROC_REF(popcorn)), i SECONDS)
+
+/**
+ * After all that cinematic stuff has played, we actually delete the spacepod.
+ */
+/obj/spacepod/proc/destruction()
+	if(pod_armor)
+		remove_armor()
+		QDEL_NULL(pod_armor)
+		if(prob(40))
+			new /obj/item/stack/sheet/iron/five(get_turf(src))
+	remove_all_riders(forced = TRUE)
+	playsound(src, 'modular_skyrat/modules/spacepods/sound/explosion_big.ogg', 100, TRUE, pressure_affected = FALSE)
+	explosion(src, 0, 2, 3, 4)
+	var/list/possible_parts = subtypesof(/obj/item/pod_parts/pod_frame)
+	var/list/possible_dirs = list(NORTH, EAST, SOUTH, WEST)
+	for(var/i in 1 to rand(2, 4))
+		var/obj/item/pod_parts/pod_frame/pod_frame = pick_n_take(possible_parts)
+		var/dir = pick_n_take(possible_dirs)
+		pod_frame = new pod_frame(get_step(src, dir))
+		pod_frame.anchored = TRUE
+	qdel(src)
+
+/**
+ * popcorn
+ *
+ * pop pop pop
+ */
+/obj/spacepod/proc/popcorn()
+	playsound(src, pick(explosion_sounds), 100, TRUE, pressure_affected = FALSE)
+
+/**
+ * handle_disassembly
+ *
+ * Handles the non-destructive dissasembly process.
+ */
+/obj/spacepod/proc/handle_disassembly()
+	// First remove all the riders safely.
+	remove_all_riders(forced = TRUE)
+	// Now we remove all the bits and bobs from the bod.
+	detach_all_equipment()
+	// remove any other stray stuff.
+	for(var/atom/movable/iterating_movable_atom in contents)
+		iterating_movable_atom.forceMove(get_turf(src))
+
+	// Now we deconstruct the pod and place the bits.
+	var/clamped_angle = (round(component_angle, 90) % 360 + 360) % 360
+	var/target_dir = NORTH
+	switch(clamped_angle)
+		if(0)
+			target_dir = NORTH
+		if(90)
+			target_dir = EAST
+		if(180)
+			target_dir = SOUTH
+		if(270)
+			target_dir = WEST
+
+	var/list/frame_piece_types = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
+	var/obj/item/pod_parts/pod_frame/current_piece = null
+	var/turf/our_turf = get_turf(src)
+	var/list/frame_pieces = list()
+	for(var/frame_type in frame_piece_types)
+		var/obj/item/pod_parts/pod_frame/frame_to_drop = new frame_type
+		frame_to_drop.dir = target_dir
+		frame_to_drop.anchored = TRUE
+		if(1 == turn(frame_to_drop.dir, -frame_to_drop.link_angle))
+			current_piece = frame_to_drop
+		frame_pieces += frame_to_drop
+	while(current_piece && !current_piece.loc)
+		if(!our_turf)
+			break
+		current_piece.forceMove(our_turf)
+		our_turf = get_step(our_turf, turn(current_piece.dir, -current_piece.link_angle))
+		current_piece = locate(current_piece.link_to) in frame_pieces
+
+	// Now we delete ourselves.
+	qdel(src)
 
 /**
  * Play alarm
