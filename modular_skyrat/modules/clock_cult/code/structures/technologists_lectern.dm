@@ -18,6 +18,8 @@
 	var/datum/clockwork_research/selected_research
 	/// If there is a research ritual already occurring
 	var/static/researching = FALSE
+	/// If we are the lectern actively doing the researching
+	var/primary_researcher = FALSE
 	/// The highest tier researched
 	var/static/highest_tier_researched = 0
 	/// Ref to the research sigil this created
@@ -57,9 +59,10 @@
 
 
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/deconstruct(disassembled)
-	if(researching)
+	if(primary_researcher)
 		deltimer(research_timer_id)
 		researching = FALSE
+		primary_researcher = FALSE
 		log_game("A research ritual of [selected_research] was cancelled by deconstruction of [src].")
 		send_clock_message(null, "A research ritual has been disrupted in [get_area(src)]! All research data has been lost.", msg_ghosts = FALSE)
 		notify_ghosts("A research ritual was disrupted in [get_area(src)]", source = get_turf(src), action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Research ritual cancelled")
@@ -285,6 +288,7 @@
 		return FALSE
 
 	researching = TRUE
+	primary_researcher = TRUE
 
 	AddComponent(/datum/component/brass_spreader, range = 6)
 
@@ -332,6 +336,7 @@
 	log_game("Finished a research ritual of [selected_research.name] in [get_area(src)].")
 
 	researching = FALSE
+	primary_researcher = FALSE
 
 	var/datum/component/spreader = GetComponent(/datum/component/brass_spreader)
 	if(spreader)
