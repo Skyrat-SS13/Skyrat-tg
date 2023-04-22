@@ -80,7 +80,7 @@
 
 /// Called when a research datum is fully researched
 /datum/clockwork_research/proc/on_research()
-	GLOB.researched_tinkerers_cache_recipes += unlocked_recipes
+	GLOB.clockwork_research_unlocked_recipes += unlocked_recipes
 	GLOB.clockwork_research_unlocked_scriptures += unlocked_scriptures
 	researched = TRUE
 

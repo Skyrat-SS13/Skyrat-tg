@@ -46,7 +46,7 @@
 	for(var/name in real_possibilities)
 		var/datum/tinker_cache_item/path = real_possibilities[name]
 		if(initial(path.research_locked) && !(path in GLOB.clockwork_research_unlocked_recipes))
-			real_possibilities -= path
+			real_possibilities -= name
 
 	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", real_possibilities)
 
