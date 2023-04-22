@@ -117,9 +117,9 @@
 /datum/sprite_accessory/fluff/moth/teshari
 	name = "Teshari Mane"
 	icon_state = "teshmane"
-	color_src = DEFAULT_TERTIARY
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/fluff/moth/teshari/front
 	name = "Teshari Mane (Top)"
 	icon_state = "teshmane"
-	color_src = DEFAULT_TERTIARY
+	color_src = USE_MATRIXED_COLORS
