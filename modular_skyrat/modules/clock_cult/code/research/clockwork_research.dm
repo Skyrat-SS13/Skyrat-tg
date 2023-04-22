@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(clockwork_research_unlocked_scriptures)
 		set_new_area()
 
 
+/// Pick an an area for this research to take place in
 /datum/clockwork_research/proc/set_new_area()
 	var/list/possible_areas = GLOB.the_station_areas.Copy()
 	for(var/area/possible_area as anything in possible_areas)
@@ -74,6 +75,7 @@ GLOBAL_LIST_EMPTY(clockwork_research_unlocked_scriptures)
 	validate_area()
 
 
+/// Makes sure the selected area is correct, and regenerates it if not. Potentially dangerous if there are no station areas, somehow.
 /datum/clockwork_research/proc/validate_area()
 	if(!selected_area || !length(get_area_turfs(selected_area)))
 		set_new_area()
@@ -81,12 +83,14 @@ GLOBAL_LIST_EMPTY(clockwork_research_unlocked_scriptures)
 	return TRUE
 
 
+/// Makes sure the researching place is the correct area
 /datum/clockwork_research/proc/check_is_place_good(atom/researcher)
 	if(!istype(get_area(researcher), selected_area))
 		return FALSE
 	return TRUE
 
 
+/// Called when a research datum is fully researched
 /datum/clockwork_research/proc/on_research()
 	GLOB.researched_tinkerers_cache_recipes += unlocked_recipes
 	GLOB.clockwork_research_unlocked_scriptures += unlocked_scriptures

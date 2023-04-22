@@ -68,6 +68,11 @@
 	return ..()
 
 
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern/examine(mob/user)
+	. = ..()
+	if(researching && IS_CLOCK(user))
+		. += span_brass("The researching of [selected_research.name] will take another [DisplayTimeText(timeleft(research_timer_id))]")
+
 
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/process(seconds_per_tick)
 	if(researching)
@@ -75,7 +80,7 @@
 			new /obj/effect/temp_visual/steam_release(get_turf(src))
 
 		if(SPT_PROB(2, seconds_per_tick))
-
+			visible_message(pick("[src]'s book flips a page as it hums away.", "[src] makes a creaking noise.", "[src] whirrs lightly.", "A faint clank is heard from inside [src]."))
 
 	var/mob_nearby = FALSE
 	for(var/mob/living/person in viewers(BOOK_OPEN_RANGE, get_turf(src)))
@@ -360,7 +365,7 @@
 
 		if(11 to 20) // Cult-ify everything nearby
 			playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/ark_scream.ogg', 100, FALSE, pressure_affected = FALSE)
-			for(var/atom/nearby_atom in range(8)) // Figure out if I'm sane or not later
+			for(var/atom/nearby_atom in range(8))
 				if(istype(nearby_atom, /turf/open/floor))
 					var/turf/floor_tile = nearby_atom
 					floor_tile.ChangeTurf(/turf/open/floor/bronze)
