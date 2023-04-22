@@ -343,8 +343,8 @@
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
-	name = "Teshari Feathers Thin Mane"
-	icon_state = "teshari_feathers_thinmane"
+	name = "Teshari Feathers Thin"
+	icon_state = "teshari_feathers_thin"
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/deer2
