@@ -1,18 +1,32 @@
-import { useBackend } from '../backend';
-import { Box, Stack } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Section, Stack, Divider, Flex } from '../components';
 import { Window } from '../layouts';
-import { BooleanLike } from '../../common/react';
+import { BooleanLike, classes } from '../../common/react';
 
 type Data = {
-  research: Array<Research>;
+  research_tiers: Array<Array<Research>>;
+  starting_research: Research;
+  focused_research: Research;
+  in_area: BooleanLike;
 };
 
 type Research = {
   name: string;
   desc: string;
+  lore: string;
   starting: BooleanLike;
   researched: BooleanLike;
-  tier: number;
+  can_research: BooleanLike;
+  research_location: string;
+  research_designs: Array<DesignInfo>;
+  research_scriptures: Array<DesignInfo>;
+  type: string;
+};
+
+type DesignInfo = {
+  name: string;
+  icon: string;
+  icon2: string;
 };
 
 const brassColor = '#DFC69C';
@@ -20,68 +34,159 @@ const tinkerCache = '#B5FD9D';
 const replicaFab = '#DED09F';
 const clockMarauder = '#FF9D9D';
 
-let starting_research: Research;
-let research_tiers: Map<number, Array<string>>;
-
-const convertPower = (power_in) => {
-  const units = ['W', 'kW', 'MW', 'GW'];
-  let power = 0;
-  let value = power_in;
-  while (value >= 1000 && power < units.length) {
-    power++;
-    value /= 1000;
-  }
-  return Math.round((value + Number.EPSILON) * 100) / 100 + units[power];
-};
-
-const Connections = (research_list) => {
-  research_list.forEach((research: Research) => {
-    if (research.starting) {
-      starting_research = research;
-      return; /* Check if this does what it says */
-    }
-
-    if (research.tier.toString() in research_tiers) {
-      research_tiers[research.tier.toString()] += research;
-    } else {
-      research_tiers[research.tier.toString()] = [research];
-    }
-  });
-};
-
 const MainData = () => {
   return (
-    <Stack>
-      <Stack.Item>{ResearchNode(starting_research)}</Stack.Item>
-      {Object.keys(research_tiers).forEach((tier_num: any) => {
-        {
-          research_tiers[tier_num].map((single_research: Research) => (
-            <Stack.Item key={single_research.name}>
-              {ResearchNode(single_research)}
-            </Stack.Item>
-          ));
-        }
-      })}
-    </Stack>
+    <>
+      <Section>
+        <div className="Selection">
+          <SelectedSection />
+        </div>
+        <br />
+      </Section>
+      <Section height="100%">
+        <div className="Research">
+          <ResearchSection />
+        </div>
+      </Section>
+    </>
   );
 };
 
-const ResearchNode = (research: Research) => {
+const SelectedSection = (props, context) => {
+  const { act, data } = useBackend<Data>(context);
   return (
     <Box>
+      <div style={{ 'text-align': 'center' }}>
+        <Box color="good" bold fontSize="16px">
+          {'Selected Research'}
+        </Box>
+        <Divider />
+        <Box bold fontSize="14px">
+          {data.focused_research.name}
+        </Box>
+        <Box>{data.focused_research.desc}</Box>
+        <div style="padding-top: 5px">
+          <Box>
+            <i>{data.focused_research.lore}</i>
+          </Box>
+        </div>
+        <br />
+        {data.focused_research.starting ? (
+          <Box>This does not need to be researched.</Box>
+        ) : data.focused_research.researched ? (
+          <Box>
+            This ritual occurred in the{' '}
+            <b>{data.focused_research.research_location}</b>.
+          </Box>
+        ) : (
+          <Box>
+            This ritual must occur in the{' '}
+            <b>{data.focused_research.research_location}</b>.
+          </Box>
+        )}
+        <br />
+        <Box fontSize="18px">
+          <Button
+            disabled={!data.in_area || data.focused_research.researched}
+            content={
+              data.focused_research.researched
+                ? 'Ritual Completed'
+                : 'Begin Ritual'
+            }
+            onClick={() => act('start_research')}
+          />
+        </Box>
+      </div>
+    </Box>
+  );
+};
+
+const ResearchSection = (props, context) => {
+  const { act, data } = useBackend<Data>(context);
+  return (
+    <>
       <Stack vertical>
-        <Stack.Item bold>{research.name}</Stack.Item>
-        <Stack.Item>{research.desc}</Stack.Item>
+        <Stack.Item fill>
+          <Section fill title="Basic Research">
+            <div style={{ 'text-align': 'center' }}>
+              {ResearchNode(data.starting_research, act, context)}
+            </div>
+          </Section>
+        </Stack.Item>
+        {data.research_tiers.map((inside_array: Array<Research>) => (
+          <Stack vertical fill>
+            <Section
+              title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
+              {inside_array.map((single_research: Research) => (
+                <Stack.Item key={single_research.name}>
+                  <Section fill>
+                    <div style={{ 'text-align': 'center' }}>
+                      {ResearchNode(single_research, act, context)}
+                    </div>
+                  </Section>
+                </Stack.Item>
+              ))}
+            </Section>
+          </Stack>
+        ))}
       </Stack>
+    </>
+  );
+};
+
+const ResearchNode = (research: Research, act: any, context: any) => {
+  return (
+    <Box>
+      <Stack.Item bold fontSize="15px">
+        <Button
+          disabled={!research.can_research}
+          content={research.name}
+          icon={research.researched ? 'check' : ''}
+          iconPosition="right"
+          onClick={() => act('select_research', { path: research.type })}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <div style="padding-top: 6px">{research.desc}</div>
+      </Stack.Item>
+      <br />
+      <Stack.Item>
+        <Box>
+          <Flex className="ClockResearch__IconContent">
+            {research.research_designs.map(
+              (design_data: DesignInfo, i: number) => (
+                <div className="ClockResearch__Icon">
+                  <Button
+                    key={design_data.name}
+                    className={classes([`design32x32`, design_data.icon2])} // swap back to clockresearch when it's not absolutely broken
+                    tooltip={`${design_data.name} (Tinker's Design)`}
+                    tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
+                  />
+                </div>
+              )
+            )}
+            {research.research_scriptures.map(
+              (scripture_data: DesignInfo, i: number) => (
+                <div className="ClockResearch__Icon">
+                  <Button
+                    key={scripture_data.name}
+                    className={classes([`design32x32`, scripture_data.icon2])} // swap back to clockresearch when it's not absolutely broken
+                    tooltip={`${scripture_data.name} (Scripture)`}
+                    tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
+                  />
+                </div>
+              )
+            )}
+          </Flex>
+        </Box>
+      </Stack.Item>
     </Box>
   );
 };
 
 export const ClockworkResearch = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
-  Connections(data.research);
   return (
-    <Window theme="clockwork">
+    <Window theme="clockwork" width={400} height={750}>
       <Window.Content>{MainData()}</Window.Content>
     </Window>
   );

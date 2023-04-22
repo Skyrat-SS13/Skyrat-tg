@@ -29,6 +29,8 @@
 	var/looping = FALSE
 	/// FALSE if the rune can affect non-living atoms
 	var/living_only = TRUE
+	/// If this can be dispelled by being hit with an empty hand
+	var/can_dispel_by_hand = TRUE
 
 /obj/structure/destructible/clockwork/sigil/Initialize(mapload)
 	. = ..()
@@ -50,7 +52,8 @@
 
 /obj/structure/destructible/clockwork/sigil/attack_hand(mob/user)
 	. = ..()
-	dispel()
+	if(can_dispel_by_hand)
+		dispel()
 
 
 /// For trap sigils and similar; applies effects when someone/something walks over

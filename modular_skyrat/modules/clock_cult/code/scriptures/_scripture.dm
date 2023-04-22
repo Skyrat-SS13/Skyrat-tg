@@ -36,11 +36,16 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 	var/invocation_chant_timer = null
 	/// Sound to play on finish
 	var/sound/recital_sound = null
+	/// If this scripture requires research to be unlocked
+	var/research_required = FALSE
 
 /datum/scripture/New()
 	. = ..()
 	if(invokers_required > 1)
 		desc += " Requires [invokers_required] invokers, should you be in a group."
+	if(research_required)
+		desc += " Requires research to unlock."
+
 
 /datum/scripture/Destroy(force, ...)
 	invoker = null

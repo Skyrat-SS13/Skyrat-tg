@@ -202,7 +202,7 @@
 		var/turf/cardinal_step = get_step(src, cardinal)
 		new/obj/effect/temp_visual/steam(cardinal_step, cardinal)
 
-	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 30)
+	playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/steam_whoosh.ogg', 30)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/temp_visual/ratvar/constructing_effect

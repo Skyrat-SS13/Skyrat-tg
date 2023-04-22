@@ -1,6 +1,8 @@
 /obj/machinery/power/apc
 	/// Has the APC been protected against arcing?
 	var/arc_shielded = FALSE
+	/// Should we be forcing arcing, assuming there isn't arc shielding?
+	var/force_arcing = FALSE
 
 /obj/machinery/power/apc/examine()
 	. = ..()
@@ -16,7 +18,7 @@
 	var/excess = surplus()
 	if(!cell || shorted)
 		return
-	if(!(excess >= APC_ARC_LOWERLIMIT) || arc_shielded)
+	if(((excess < APC_ARC_LOWERLIMIT) && !force_arcing) || arc_shielded)
 		return
 	var/shock_chance = 5
 	if(excess >= APC_ARC_UPPERLIMIT)
@@ -52,3 +54,8 @@
 		balloon_alert(user, "arc shielding removed")
 		arc_shielded = FALSE
 		tool.play_tool_sound(src, 50)
+
+/// Set all APCs to start (or stop) arcing
+/proc/force_apc_arcing(force_mode = FALSE)
+	for(var/obj/machinery/power/apc/controller as anything in GLOB.apcs_list)
+		controller.force_arcing = force_mode

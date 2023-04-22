@@ -118,6 +118,13 @@
 	name = "Clock Cultist"
 	outfit = /datum/outfit/clock
 
+/obj/effect/mob_spawn/corpse/human/clock_cultist/armored
+	name = "Armored Clock Cultist"
+	outfit = /datum/outfit/clock/armor
+
+/obj/effect/mob_spawn/corpse/human/clock_cultist/support
+	name = "Support Clock Cultist"
+	outfit = /datum/outfit/clock/support
 
 /obj/effect/landmark/late_cog_portals
 	name = "late cog portal spawn"

@@ -209,7 +209,7 @@
 /// Any extra actions that need to be taken when an object is created
 /datum/replica_fabricator_output/proc/on_create(atom/created_atom, turf/creation_turf, mob/creator)
 	SHOULD_CALL_PARENT(TRUE)
-	playsound(creation_turf, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1) // better sound?
+	playsound(creation_turf, 'modular_skyrat/modules/clock_cult/sound/machinery/integration_cog_install.ogg', 50, 1) // better sound?
 	to_chat(creator, span_clockyellow("You create \an [name] for [cost]W of power."))
 
 

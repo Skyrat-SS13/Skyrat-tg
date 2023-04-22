@@ -200,8 +200,13 @@ const ClockworkSpellList = (props, context) => {
                       ? 'Invoke ' + convertPower(script.cost)
                       : script.cog_cost + ' Cogs'
                   }
-                  tooltip={script.tip}
-                  disabled={false}
+                  tooltip={
+                    /*fixme*/
+                    script.research_required
+                      ? 'Research is required to unlock this.'
+                      : script.tip
+                  }
+                  disabled={script.research_required}
                   onClick={() =>
                     act('invoke', {
                       scriptureType: script.typepath,
