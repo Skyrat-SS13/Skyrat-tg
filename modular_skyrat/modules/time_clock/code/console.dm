@@ -34,6 +34,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	if(radio)
 		QDEL_NULL(radio)
 
+/obj/machinery/time_clock/update_overlays()
+	. = ..()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return FALSE
+
+	if(!inserted_id)
+		. += "[icon_state]_r_idle"
+		. += "[icon_state]_l_idle"
+
+	else
+		. += "[icon_state]_r_card"
+		. += "[icon_state]_l_card"
+
 /obj/machinery/time_clock/attackby(obj/item/used_item, mob/user)
 	if(!istype(used_item, /obj/item/card/id))
 		return ..()
@@ -47,7 +60,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	inserted_id = used_item
-	icon_state = "timeclock_card"
+	update_appearance()
 	update_static_data_for_all_viewers()
 	to_chat(user, span_boldwarning("Before clocking out, please return any piece of job gear that is important or limited to your workplace."))
 
@@ -82,7 +95,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	recepient.put_in_hands(inserted_id)
 
 	inserted_id = FALSE
-	icon_state = "timeclock"
+	update_appearance()
 	update_static_data_for_all_viewers()
 	playsound(src, 'sound/machines/terminal_eject.ogg', 50, FALSE)
 
