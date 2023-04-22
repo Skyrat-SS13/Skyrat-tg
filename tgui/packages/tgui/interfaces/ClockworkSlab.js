@@ -104,6 +104,23 @@ const ClockworkHelp = (props, context) => {
           <br />
         </Section>
       </Collapsible>
+      <Collapsible title="Research" color="average">
+        <Section>
+          Some scriptures and equipment take more than simply cogs to unlock.
+          <br />
+          The&nbsp;
+          <font color={brassColor}>
+            <b>Technologist's Lectern&nbsp;</b>
+          </font>
+          can be used to research normally-locked equipment and abilities, but
+          not easily.
+          <br />
+          Each individual piece of research can only be done in a specific
+          location, and will take time to finish. In that time, your presence
+          will be exceedingly obvious.
+          <br />
+        </Section>
+      </Collapsible>
       <Collapsible title="Defense" color="average">
         <Section>
           <b>
@@ -201,7 +218,6 @@ const ClockworkSpellList = (props, context) => {
                       : script.cog_cost + ' Cogs'
                   }
                   tooltip={
-                    /*fixme*/
                     script.research_required
                       ? 'Research is required to unlock this.'
                       : script.tip

@@ -44,10 +44,8 @@
 	var/list/real_possibilities = craft_possibilities.Copy()
 
 	for(var/datum/tinker_cache_item/path as anything in real_possibilities)
-		if((path in GLOB.clockwork_research_unlocked_recipes) || !initial(path.research_locked))
-			continue
-
-		real_possibilities -= path
+		if(initial(path.research_locked) && !(path in GLOB.clockwork_research_unlocked_recipes))
+			real_possibilities -= path
 
 	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", real_possibilities)
 
