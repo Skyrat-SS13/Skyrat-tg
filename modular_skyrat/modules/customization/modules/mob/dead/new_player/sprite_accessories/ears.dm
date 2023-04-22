@@ -323,7 +323,7 @@
 	name = "Teshari Feathers Longway"
 	icon_state = "teshari_feathers_longway"
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_tree
+/datum/sprite_accessory/ears/mutant/teshari/feathers_ponytail
 	name = "Teshari Feathers Ponytail"
 	icon_state = "teshari_feathers_ponytail"
 
@@ -342,7 +342,7 @@
 	icon_state = "teshari_feathers_thinmohawk"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thin
 	name = "Teshari Feathers Thin"
 	icon_state = "teshari_feathers_thin"
 	color_src = USE_ONE_COLOR
