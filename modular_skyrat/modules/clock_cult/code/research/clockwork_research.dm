@@ -1,15 +1,3 @@
-GLOBAL_LIST_EMPTY(clockwork_research)
-GLOBAL_LIST_EMPTY(clockwork_research_unlocked_recipes)
-GLOBAL_LIST_EMPTY(clockwork_research_unlocked_scriptures)
-
-/proc/setup_clockwork_research()
-	. = list()
-	for(var/path in subtypesof(/datum/clockwork_research))
-		. += new path
-
-	return .
-
-
 /datum/clockwork_research
 	/// Name of the research node
 	var/name = ""

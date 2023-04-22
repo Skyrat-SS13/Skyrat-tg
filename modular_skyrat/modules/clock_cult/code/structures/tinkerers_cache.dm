@@ -43,7 +43,8 @@
 
 	var/list/real_possibilities = craft_possibilities.Copy()
 
-	for(var/datum/tinker_cache_item/path as anything in real_possibilities)
+	for(var/name in real_possibilities)
+		var/datum/tinker_cache_item/path = real_possibilities[name]
 		if(initial(path.research_locked) && !(path in GLOB.clockwork_research_unlocked_recipes))
 			real_possibilities -= path
 
