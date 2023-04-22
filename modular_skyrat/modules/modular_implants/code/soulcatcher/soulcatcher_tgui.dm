@@ -76,7 +76,7 @@
 			return TRUE
 
 		if("rename_room")
-			var/new_room_name = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.name)
+			var/new_room_name = tgui_input_text(usr,"Chose a new name for the room", name, target_room.name)
 			if(!new_room_name)
 				return FALSE
 
@@ -84,7 +84,7 @@
 			return TRUE
 
 		if("redescribe_room")
-			var/new_room_desc = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.room_description, multiline = TRUE)
+			var/new_room_desc = tgui_input_text(usr,"Chose a new description for the room", name, target_room.room_description, multiline = TRUE)
 			if(!new_room_desc)
 				return FALSE
 
@@ -100,7 +100,7 @@
 			return TRUE
 
 		if("modify_name")
-			var/new_name = tgui_input_text(usr,"Chose a new name to send messages as.", name, target_room.room_description, multiline = TRUE)
+			var/new_name = tgui_input_text(usr,"Chose a new name to send messages as", name, target_room.room_description, multiline = TRUE)
 			if(!new_name)
 				return FALSE
 

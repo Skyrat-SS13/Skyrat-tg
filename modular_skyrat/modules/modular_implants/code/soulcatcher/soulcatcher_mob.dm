@@ -1,6 +1,6 @@
 /mob/living/soulcatcher_soul
 	/// What does our soul look like?
-	var/soul_desc = "It's a soul"
+	var/soul_desc = "It's a soul."
 	/// What are the ooc notes for the soul?
 	var/ooc_notes = ""
 
@@ -37,7 +37,7 @@
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
-/// Toggles whether or not the soul inside the soulcatcher can see the outside world. returns the state of the `outside_sight` variable.
+/// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
 	outside_sight = !outside_sight
 	if(outside_sight)
@@ -47,7 +47,7 @@
 
 	return outside_sight
 
-/// Toggles whether or not the soul inside the soulcatcher can see the outside world. returns the state of the `outside_sight` variable.
+/// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_hearing` variable.
 /mob/living/soulcatcher_soul/proc/toggle_hearing()
 	outside_hearing = !outside_hearing
 	if(outside_hearing)
@@ -55,7 +55,7 @@
 	else
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
-	return outside_sight
+	return outside_hearing
 
 /// Attemp to leave the soulcatcher.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
@@ -130,7 +130,7 @@
 /mob/living/soulcatcher_soul/Destroy()
 	if(current_room)
 		var/datum/soulcatcher_room/room = current_room.resolve()
-		log_admin("[src] left the soulcatcher room, [room].")
+		log_admin("[src] left the following soulcatcher room: [room].")
 		room.current_souls -= src
 
 	if(previous_body && mind)

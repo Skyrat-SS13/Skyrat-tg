@@ -104,7 +104,7 @@ export const Soulcatcher = (props, context) => {
               <>
                 <br />
                 <Box textAlign="center" fontSize="15px" opacity={0.8}>
-                  <b>Curent Souls</b>
+                  <b>Current Souls</b>
                 </Box>
                 <Divider />
                 <Flex direction="column">
@@ -212,7 +212,7 @@ export const Soulcatcher = (props, context) => {
                               {soul.able_to_speak ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
-                          <LabeledList.Item label="Sight">
+                          <LabeledList.Item label="Emote">
                             <Button
                               color={soul.able_to_emote ? 'green' : 'red'}
                               fluid
@@ -263,7 +263,7 @@ export const Soulcatcher = (props, context) => {
           color={ghost_joinable ? 'green' : 'red'}
           icon={ghost_joinable ? 'door-open' : 'door-closed'}
           onClick={() => act('toggle_joinable', {})}>
-          {ghost_joinable ? 'Ghost joinable' : 'Ghost unjoinable'}
+          {ghost_joinable ? 'Opened' : 'Closed'} to ghosts
         </Button>
       </Window.Content>
     </Window>
