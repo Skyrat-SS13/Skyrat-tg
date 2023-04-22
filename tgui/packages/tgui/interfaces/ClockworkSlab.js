@@ -100,7 +100,9 @@ const ClockworkHelp = (props, context) => {
           <b>APC&nbsp;</b>
           with the&nbsp;
           <b>Integration Cog&nbsp;</b>
-          and then insert it in to begin siphoning power.
+          and then insert it in to begin siphoning power. However, you will only
+          gain a cog after the Integration Cog has been inside the APC for 5
+          minutes.
           <br />
         </Section>
       </Collapsible>

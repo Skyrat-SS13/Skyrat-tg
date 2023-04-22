@@ -563,6 +563,27 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
 	//ckeywhitelist = list("october23") // Asked it to be public.
 
+/datum/loadout_item/suit/elofy
+	name = "Solar Admiral Coat"
+	item_path = /obj/item/clothing/suit/armor/hos/elofy
+	ckeywhitelist = list("october23")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/gloves/elofy
+	name = "Solar Admiral Gloves"
+	item_path = /obj/item/clothing/gloves/elofy
+	ckeywhitelist = list("october23")
+
+/datum/loadout_item/shoes/elofy
+	name = "Solar Admiral Boots"
+	item_path = /obj/item/clothing/shoes/jackboots/elofy
+	ckeywhitelist = list("october23")
+
+/datum/loadout_item/pocket_items/transponder
+	name = "Broken Helian Transponder"
+	item_path = /obj/item/donator/transponder
+	ckeywhitelist = list("glacii")
+
 /datum/loadout_item/glasses/goldaviator
 	name = "Purple and Gold Aviators"
 	item_path = /obj/item/clothing/glasses/gold_aviators
