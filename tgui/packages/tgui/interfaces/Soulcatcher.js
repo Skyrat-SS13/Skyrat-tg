@@ -263,7 +263,7 @@ export const Soulcatcher = (props, context) => {
           color={ghost_joinable ? 'green' : 'red'}
           icon={ghost_joinable ? 'door-open' : 'door-closed'}
           onClick={() => act('toggle_joinable', {})}>
-          {ghost_joinable ? 'Opened' : 'Closed' to ghosts}
+          {ghost_joinable ? 'Opened' : 'Closed'} to ghosts
         </Button>
       </Window.Content>
     </Window>
