@@ -86,7 +86,7 @@
 	if(!target_mob)
 		return FALSE
 
-	if(target_mob.mind || target_mob.ckey || !ishuman(target_mob))
+	if(target_mob.mind || target_mob.ckey || !ishuman(target_mob) || GetComponent(/datum/component/previous_body))
 		to_chat(user, span_warning("[target_mob] is not able to recieve a soul"))
 		return FALSE
 
