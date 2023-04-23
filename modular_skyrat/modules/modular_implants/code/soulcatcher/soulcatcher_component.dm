@@ -5,6 +5,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 #define SOULCATCHER_SAY_COLOR "#75D5E1"
 #define SOULCATCHER_WARNING_MESSAGE "You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."
 
+/**
+ * Soulcatcher Component
+ *
+ * This component functions as a bridge between the `soulcatcher_room` attached to itself and the parented datum.
+ * It handles the creation of new soulcatcher rooms, TGUI, and relaying messages to the parent datum.
+ * If the component is deleted, any soulcatcher rooms inside of `soulcatcher_rooms` will be deleted.
+ */
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
@@ -23,7 +30,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
-	for(var/datum/soulcatcher_room in soulcatcher_rooms)
+	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
 
@@ -52,7 +59,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(istype(parent, /obj/item))
 		var/obj/item/parent_item = parent
 		var/mob/living/holder = parent_item.loc
-		if(!holder)
+		if(!istype(holder))
 			return FALSE
 
 		to_chat(holder, message_to_recieve)
@@ -135,7 +142,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Removes a soul from a soulcatcher room, leaving it as a ghost.
+/// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `soul_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
 /datum/soulcatcher_room/proc/remove_soul(mob/living/soulcatcher_soul/soul_to_remove)
 	if(!soul_to_remove || !(soul_to_remove in current_souls))
 		return FALSE
@@ -143,7 +150,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	qdel(soul_to_remove)
 	return TRUE
 
-/// Transfers a soul from a soulcatcher room to another soulcatcher room.
+/// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
 /datum/soulcatcher_room/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
 	if(!(target_soul in current_souls) || !target_room)
 		return FALSE
@@ -162,7 +169,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /**
- * Sends a message or emote to all of the souls currently located inside of the soulcatcher room.
+ * Sends a message or emote to all of the souls currently located inside of the soulcatcher room. Returns `FALSE` if a message cannot be sent, otherwise returns `TRUE`.
  *
  * Arguments
  * * message_to_send - The message we want to send to the occupants of the room
@@ -193,7 +200,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		message = "<font color=[SOULCATCHER_EMOTE_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
 		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
-	for(var/mob/living/soulcatcher_soul/soul in current_souls)
+	for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
 		if((emote && !soul.internal_sight) || (!emote && !soul.internal_hearing))
 			continue
 
@@ -212,7 +219,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /datum/soulcatcher_room/Destroy(force, ...)
-	for(var/mob/living/soulcatcher_soul in current_souls)
+	for(var/mob/living/soulcatcher_soul as anything in current_souls)
 		qdel(soulcatcher_soul)
 		current_souls -= soulcatcher_soul
 
@@ -255,6 +262,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		room_to_join = tgui_input_list(src, "Chose a room to enter", "Enter a room", rooms_to_join)
 
 	if(!room_to_join)
+		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE
 
 	room_to_join.add_soul_from_ghost(src)
