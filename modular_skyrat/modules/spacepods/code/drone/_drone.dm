@@ -425,7 +425,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	/// What can we spawn when clicked.
 	var/list/possible_salvage = list(
 		/obj/item/stack/sheet/iron/ten,
-		/obj/item/stack/sheet/glass/ten,
+		/obj/item/stack/sheet/glass/fifty,
 		/obj/item/stack/sheet/mineral/diamond,
 		/obj/item/stack/sheet/bluespace_crystal,
 		/obj/item/circuitboard/mecha/pod,
