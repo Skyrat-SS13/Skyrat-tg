@@ -57,7 +57,8 @@
 		if(!body_component)
 			return FALSE
 
-		log_admin("[user] used [src] to put [target_mob]'s mind into a soulcatcher.")
+		var/turf/source_turf = get_turf(user)
+		log_admin("[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]")
 		linked_soulcatcher.scan_body(body_component, user)
 		return TRUE
 
@@ -75,7 +76,9 @@
 
 	body_component = target_mob.GetComponent(/datum/component/previous_body)
 	linked_soulcatcher.scan_body(body_component, user)
-	log_admin("[user] used [src] to put [target_mob]'s mind into a soulcatcher while [target_mob] was still alive.")
+
+	var/turf/source_turf = get_turf(user)
+	log_admin("[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher while they were still alive at [AREACOORD(source_turf)]")
 
 	return TRUE
 
@@ -112,7 +115,9 @@
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: Body transfer complete."))
-	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob].")
+
+	var/turf/source_turf = get_turf(user)
+	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob] at [AREACOORD(source_turf)]")
 	qdel(chosen_soul)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
