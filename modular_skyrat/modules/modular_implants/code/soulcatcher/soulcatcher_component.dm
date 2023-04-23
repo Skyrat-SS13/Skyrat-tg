@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(new_soul, span_notice(room_description))
 	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
-	log_admin("[new_soul] entered the soulcatcher room, [src]")
+	log_admin("[new_soul] entered the following soulcatcher room: [src].")
 
 	return TRUE
 
@@ -222,11 +222,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	set name = "Enter Soulcatcher"
 	set category = "Ghost"
 
-	var/list/joinable_soulcatchers = GLOB.soulcatchers.Copy()
-	for(var/datum/component/soulcatcher/soulcatcher in joinable_soulcatchers)
-		if(soulcatcher.ghost_joinable)
+	var/list/joinable_soulcatchers = list()
+	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
+		if(!soulcatcher.ghost_joinable)
 			continue
-		joinable_soulcatchers -= (soulcatcher)
+
+		joinable_soulcatchers += soulcatcher
 
 	if(!length(joinable_soulcatchers))
 		to_chat(src, span_warning("No soulcatchers are joinable."))
@@ -236,11 +237,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
-	var/list/rooms_to_join = soulcatcher_to_join.soulcatcher_rooms.Copy()
-	for(var/datum/soulcatcher_room/room in rooms_to_join)
-		if(room.joinable)
+	var/list/rooms_to_join = list()
+	for(var/datum/soulcatcher_room/room in soulcatcher_to_join.soulcatcher_rooms)
+		if(!room.joinable)
 			continue
-		rooms_to_join -= room
+
+		rooms_to_join += room
 
 	var/datum/soulcatcher_room/room_to_join
 	if(length(rooms_to_join) < 1)

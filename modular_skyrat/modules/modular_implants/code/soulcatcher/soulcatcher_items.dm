@@ -1,6 +1,6 @@
 /obj/item/soulcatcher_item
-	name = "'Evoker'-Type RSD"
-	desc = "The 'Evoker'-Type RSD, or Resonance Simulation Device, is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
+	name = "\improper Evoker-type RSD"
+	desc = "The Evoker-Type Resonance Simulation Device is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
@@ -42,7 +42,7 @@
 			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 
-		var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Chose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms)
+		var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms)
 		if(!target_room)
 			return FALSE
 
@@ -95,8 +95,8 @@
 
 			soul_list += soul
 
-	if(length(soul_list) == 0)
-		to_chat(user, span_warning("There are no souls that can be transfered to [target_mob]"))
+	if(!length(soul_list))
+		to_chat(user, span_warning("There are no souls that can be transfered to [target_mob]."))
 		return FALSE
 
 	var/mob/living/soulcatcher_soul/chosen_soul = tgui_input_list(user, "Chose a soul to transfer into the body", name, soul_list)
