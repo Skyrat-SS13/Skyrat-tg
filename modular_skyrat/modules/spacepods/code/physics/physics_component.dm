@@ -279,8 +279,6 @@
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
 
-	for(var/turf/iterating_turf as anything in parent_atom.locs)
-		new /obj/effect/temp_visual/turf_visual(iterating_turf)
 
 /**
  * update_sprite

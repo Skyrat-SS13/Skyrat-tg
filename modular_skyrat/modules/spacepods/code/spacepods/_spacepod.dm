@@ -180,7 +180,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  */
 /obj/spacepod/Move(atom/newloc, direct, glide_size_override, update_dir)
 	var/turf/turf_one = get_step(newloc, dir)
-	new /obj/effect/temp_visual/turf_visual(turf_one)
 	var/turf/turf_two
 
 	switch(dir)
@@ -189,8 +188,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 		if(EAST, WEST)
 			turf_two = get_step(turf_one, (component_offset_y > 0) ? NORTH : SOUTH)
-
-	new /obj/effect/temp_visual/turf_visual(turf_two)
 
 	if(!turf_one || !turf_two || !turf_one.Enter(src) || !turf_two.Enter(src))
 		if(turf_one)

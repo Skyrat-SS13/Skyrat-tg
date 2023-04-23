@@ -273,10 +273,24 @@
 	icon_state = "weapon_pulse"
 	projectile_type = /obj/projectile/beam/pulse
 	shot_cost = 1000
-	fire_delay = 0.2 SECONDS
+	fire_delay = 2 SECONDS
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_pulse"
+
+/obj/item/spacepod_equipment/weaponry/pulse/adminbuse
+	fire_delay = 0.1 SECONDS
+
+/obj/item/spacepod_equipment/weaponry/fiftycal
+	name = "\improper 50 Caliber Machine Gun"
+	desc = "It shoots really fucking big rounds."
+	icon_state = "weapon_railgun"
+	projectile_type = /obj/projectile/bullet/a50ae
+	shot_cost = 1000
+	fire_delay = 0.5 SECONDS
+	fire_sound = 'modular_skyrat/modules/spacepods/sound/fiftycal.ogg'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	overlay_icon_state = "pod_weapon_railgun"
 
 // MINING LASERS
 /obj/item/spacepod_equipment/weaponry/basic_pod_ka
