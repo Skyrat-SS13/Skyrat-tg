@@ -48,6 +48,12 @@
 /// The trait that determines if someone has the oversized quirk.
 #define TRAIT_OVERSIZED "trait_oversized"
 
+/// Trait source for traits given by soulcatchers.
+#define SOULCATCHER_TRAIT "soulcatcher_trait"
+
+/// The trait given to the bodies of mobs that have their mind currently inside of soulcatchers.
+#define TRAIT_SOULCATCHER_INHABITANT "trait_soulcatcher_inhabitant"
+
 /// Caninid trait
 #define TRAIT_CANINE "trait_canine"
 

@@ -10,6 +10,8 @@
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 
+	ADD_TRAIT(parent, TRAIT_SOULCATCHER_INHABITANT, SOULCATCHER_TRAIT)
+
 /// Attemps to transfer the mind of the soul back to the original body.
 /datum/component/previous_body/Destroy(force, silent)
 	if(restore_mind)
@@ -23,4 +25,5 @@
 			soul.previous_body = FALSE
 			qdel(soul)
 
+	REMOVE_TRAIT(parent, TRAIT_SOULCATCHER_INHABITANT, SOULCATCHER_TRAIT)
 	return ..()
