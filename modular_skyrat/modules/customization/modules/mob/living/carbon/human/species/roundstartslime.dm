@@ -42,7 +42,7 @@
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime/roundstart,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime/roundstart,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstarte,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstart,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime/roundstart,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime/roundstart,
 	)
