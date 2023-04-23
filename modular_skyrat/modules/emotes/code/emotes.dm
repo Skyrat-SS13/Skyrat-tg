@@ -551,7 +551,7 @@
 	. = ..()
 
 	if (!.)
-		return .
+		return
 
 	if (delay > 0)
 		addtimer(CALLBACK(src, PROC_REF(try_vomit), user, intentional), delay)
@@ -562,7 +562,7 @@
 	. = ..()
 
 	if (!.)
-		return .
+		return
 
 	if (user.is_mouth_covered())
 		to_chat(user, span_warning("You can't stick your fingers down your throat with an obscured mouth!"))
