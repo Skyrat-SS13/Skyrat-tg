@@ -522,3 +522,69 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
+
+/datum/emote/living/carbon/vomit
+	key = "vomit"
+	key_third_person = "vomits"
+	emote_type = EMOTE_VISIBLE
+	muzzle_ignore = TRUE
+	stat_allowed = HARD_CRIT
+	/// Time in seconds it will take for vomit() to be called.
+	var/delay = 0 SECONDS
+	// Will this emote stun the user for 8 seconds/20 on a dry heave?
+	// Useful, because it gives a reason for people to use forcevomit instead of vomit.
+	// I anticipated people using *vomit out of convenience of typing for roleplay purposes.
+	// This will give them a push to use the proper emote in proper circumstances.
+	var/stun = TRUE
+
+/datum/emote/living/carbon/vomit/forced
+	key = "forcevomit"
+	key_third_person = "forcevomits"
+	message = "sticks their fingers down their throat!"
+	muzzle_ignore = FALSE
+	hands_use_check = TRUE
+	stat_allowed = CONSCIOUS
+	delay = 2 SECONDS
+	stun = FALSE
+
+/datum/emote/living/carbon/vomit/run_emote(mob/living/carbon/user, params, type_override, intentional)
+	. = ..()
+
+	if (!.)
+		return .
+
+	if (delay > 0)
+		addtimer(CALLBACK(src, PROC_REF(try_vomit), user, intentional), delay)
+	else
+		try_vomit(user, intentional)
+
+/datum/emote/living/carbon/vomit/forced/can_run_emote(mob/living/carbon/user, status_check, intentional)
+	. = ..()
+
+	if (!.)
+		return .
+
+	if (user.is_mouth_covered())
+		to_chat(user, span_warning("You can't stick your fingers down your throat with an obscured mouth!"))
+		return FALSE
+
+#define VOMIT_DEFAULT_NUTRITION_LOSS 10
+
+/datum/emote/living/carbon/vomit/proc/try_vomit(mob/living/carbon/user, intentional)
+
+	if (!user || QDELETED(user))
+		return FALSE
+
+	if (user.stat == DEAD)
+		return FALSE
+
+	var/obj/item/organ/internal/stomach/user_stomach = user.get_organ_slot(ORGAN_SLOT_STOMACH)
+
+	var/stomach_malfunctioning = (!user_stomach || user_stomach.organ_flags & ORGAN_FAILING)
+	var/lost_nutrition_value = (stomach_malfunctioning ? 0 : VOMIT_DEFAULT_NUTRITION_LOSS)
+
+	var/distance = (isflyperson(user) ? 2 : 1) //Fly people, when eating food, vomit 2 tiles ahead. I thought it would be fun to reflect that here
+
+	user.vomit(lost_nutrition_value, stomach_malfunctioning, src.stun, purge_ratio = 0)
+
+#undef VOMIT_DEFAULT_NUTRITION_LOSS
