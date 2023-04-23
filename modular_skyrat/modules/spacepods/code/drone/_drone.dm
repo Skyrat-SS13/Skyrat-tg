@@ -397,6 +397,7 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 /obj/drone/proc/final_death(disassembled)
 	playsound(src, death_sound, 100)
 	explosion(src, 0, 0, 2, 3)
+	new /obj/structure/drone_wreckage(get_turf(src))
 	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
 	qdel(src)
 
@@ -413,7 +414,52 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 		return
 	. = ..()
 
-/obj/drone_parts
+/obj/structure/drone_wreckage
+	name = "drone wreckage"
+	desc = "A pile of scrap metal and circuitry."
+	icon = 'modular_skyrat/modules/spacepods/icons/pod1x1.dmi'
+	icon_state = "drone_wreckage"
+	max_integrity = 50
+	anchored = FALSE
+	density = TRUE
+	/// What can we spawn when clicked.
+	var/list/possible_salvage = list(
+		/obj/item/stack/sheet/iron/ten,
+		/obj/item/stack/sheet/glass/ten,
+		/obj/item/stack/sheet/mineral/diamond,
+		/obj/item/stack/sheet/bluespace_crystal,
+		/obj/item/circuitboard/mecha/pod,
+		/obj/item/ammo_box/c9mm,
+		/obj/item/stock_parts/cell/upgraded,
+		/obj/item/stock_parts/cell/high,
+		/obj/item/gun/energy/e_gun/old,
+	)
+	/// How many times someone can press us and get salvage before we break.
+	var/amount_of_salvage = 1
+
+/obj/structure/drone_wreckage/Initialize(mapload)
+	. = ..()
+	amount_of_salvage = rand(1, 3)
+
+/obj/structure/drone_wreckage/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
+
+	to_chat(user, span_notice("You start to salvage [src]..."))
+
+	if(!do_after(user, 2 SECONDS, target = src))
+		return
+
+	if(amount_of_salvage <= 0)
+		to_chat(user, span_warning("There's nothing left to salvage!"))
+		return
+
+	var/salvage_type = pick(possible_salvage)
+	var/obj/salvage = new salvage_type(get_turf(src))
+	user.put_in_hands(salvage)
+	amount_of_salvage--
+
 
 #undef DRONE_MODE_PATROL
 #undef DRONE_MODE_ATTACK

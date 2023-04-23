@@ -169,6 +169,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		'modular_skyrat/modules/spacepods/sound/explosion_medium_7.ogg',
 	)
 
+	/// How much fuel we have to jump to deep space levels.
+	var/jump_fuel = 0
+
 
 /**
  * Okay so
@@ -356,6 +359,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
 					construction_state = SPACEPOD_ARMOR_SECURED
 					update_icon()
+			return TRUE
+		if(istype(attacking_item, /obj/item/fuel_cell))
+			jump_fuel++
+			to_chat(user, span_notice("Fuel cell loaded. [src] now has [jump_fuel] fuel cells installed."))
+			qdel(attacking_item)
 			return TRUE
 	return ..()
 
