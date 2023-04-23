@@ -15,7 +15,7 @@
 #define HEMOPHAGE_SPAWN_TEXT "You are an [span_danger("Hemophage")]. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, or in pure darkness, you will slowly heal, at the cost of blood. You may gain more blood by grabbing a live victim and using your drain ability."
 
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_BRUTE_AMOUNT 1
+#define BLOOD_REGEN_BRUTE_AMOUNT 0.75
 /// How much burn damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_BURN_AMOUNT 0.75
 /// How much toxin damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
@@ -55,7 +55,7 @@
 /// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
 /// The multiplier for blood received by Hemophages out of humans with ckeys.
-#define BLOOD_DRAIN_MULTIPLIER 2
+#define BLOOD_DRAIN_MULTIPLIER_CKEY 1.5
 /// The rate at which blood metabolizes in a Hemophage's stomach subtype.
 #define BLOOD_METABOLIZATION_RATE (0.1 * REAGENTS_METABOLISM)
 
