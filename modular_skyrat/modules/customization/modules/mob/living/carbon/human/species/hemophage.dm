@@ -562,7 +562,7 @@
 
 	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
 	// if you drained from a human w/ a client, congrats
-	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER : 1)
+	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER_CKEY : 1)
 
 	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * drained_multiplier), 0, BLOOD_VOLUME_MAXIMUM)
@@ -779,5 +779,5 @@
 #undef TUMOR_DISLIKED_FOOD_DISGUST
 #undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
 
-#undef BLOOD_DRAIN_MULTIPLIER
+#undef BLOOD_DRAIN_MULTIPLIER_CKEY
 #undef BLOOD_METABOLIZATION_RATE
