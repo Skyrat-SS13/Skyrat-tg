@@ -701,8 +701,9 @@
 /datum/reagent/mutationtoxin/jelly/on_mob_life(mob/living/carbon/human/affected_mob, seconds_per_tick, times_fired)
 	if(isjellyperson(affected_mob))
 		to_chat(affected_mob, span_warning("Your jelly shifts and morphs, turning you into another subspecies!"))
-		var/species_type = pick(subtypesof(/datum/species/jelly) - list(/datum/species/jelly/roundstartslime)) //SKYRAT EDIT CHANGE - CUSTOMIZATION : var/species_type = pick(subtypesof(/datum/species/jelly) //ORIGINAL
-		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION : affected_mob.set_species(species_type) //ORIGINAL
+		var/species_type = pick(subtypesof(/datum/species/jelly))
+		//affected_mob.set_species(species_type) //ORIGINAL
+		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
