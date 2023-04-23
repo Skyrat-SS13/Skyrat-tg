@@ -135,11 +135,11 @@
 
 	if(previous_body && mind)
 		var/mob/target_body = previous_body.resolve()
+		if(!target_body)
+			return FALSE
+
 		mind.transfer_to(target_body)
-		var/datum/component/previous_body/body_component = target_body.GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?
-		if(body_component)
-			body_component.restore_mind = FALSE
-			qdel(body_component)
+		SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_RETURN_SOUL, src, FALSE)
 
 		if(target_body.stat != DEAD)
 			target_body.grab_ghost(TRUE)

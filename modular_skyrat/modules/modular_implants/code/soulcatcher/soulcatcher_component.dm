@@ -303,15 +303,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /mob/grab_ghost(force)
-	var/datum/component/previous_body/old_body = GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?
-	if(old_body)
-		qdel(old_body)
-
+	SEND_SIGNAL(src, COMSIG_SOULCATCHER_RETURN_SOUL, src)
 	return ..()
 
 /mob/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)
-	var/datum/component/previous_body/old_body = GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?
-	if(old_body)
+	if(GetComponent(/datum/component/previous_body)) //Is the soul currently within a soulcatcher?
 		return TRUE
 
 	return ..()

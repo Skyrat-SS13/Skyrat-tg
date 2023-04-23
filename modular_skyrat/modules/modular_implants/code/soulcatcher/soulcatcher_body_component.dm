@@ -10,10 +10,19 @@
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	ADD_TRAIT(parent, TRAIT_SOULCATCHER_INHABITANT, SOULCATCHER_TRAIT)
+	RegisterSignal(parent, COMSIG_SOULCATCHER_RETURN_SOUL, .proc/signal_destroy)
 
-/// Attemps to transfer the mind of the soul back to the original body.
+/// Destroys the source component through a signal. `mind_restored` controls whether or not the mind will be grabbed upon deletion.
+/datum/component/previous_body/proc/signal_destroy(mob/source_mob, mind_restored = TRUE)
+	SIGNAL_HANDLER
+	qdel(src)
+
+	return TRUE
+
+/// Attempts to destroy the component. If `restore_mind` is true, it will attempt to place the mind back inside of the body and delete the soulcatcher soul.
 /datum/component/previous_body/Destroy(force, silent)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_RETURN_SOUL)
+
 	if(restore_mind)
 		var/mob/living/original_body = parent
 		var/mob/living/soulcatcher_soul/soul = soulcatcher_soul.resolve()
@@ -25,5 +34,4 @@
 			soul.previous_body = FALSE
 			qdel(soul)
 
-	REMOVE_TRAIT(parent, TRAIT_SOULCATCHER_INHABITANT, SOULCATCHER_TRAIT)
 	return ..()

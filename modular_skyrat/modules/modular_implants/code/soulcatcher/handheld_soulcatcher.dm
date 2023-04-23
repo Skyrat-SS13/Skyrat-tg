@@ -108,9 +108,11 @@
 
 	if(chosen_soul.previous_body)
 		var/mob/living/old_body = chosen_soul.previous_body.resolve()
-		var/datum/component/previous_body/body_component = old_body.GetComponent(/datum/component/previous_body)
-		body_component.restore_mind = FALSE
-		qdel(body_component)
+		if(!old_body)
+			return FALSE
+
+		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_RETURN_SOUL, src, FALSE)
+
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
