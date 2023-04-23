@@ -529,6 +529,7 @@
 	emote_type = EMOTE_VISIBLE
 	muzzle_ignore = TRUE
 	stat_allowed = HARD_CRIT
+	cooldown = 15 SECONDS
 	/// Time in seconds it will take for vomit() to be called.
 	var/delay = 0 SECONDS
 	// Will this emote stun the user for 8 seconds/20 on a dry heave?
@@ -536,6 +537,7 @@
 	// I anticipated people using *vomit out of convenience of typing for roleplay purposes.
 	// This will give them a push to use the proper emote in proper circumstances.
 	var/stun = TRUE
+
 
 /datum/emote/living/carbon/vomit/forced
 	key = "forcevomit"
@@ -578,13 +580,15 @@
 	if (user.stat == DEAD)
 		return FALSE
 
+	var/vomit_distance = (isflyperson(user) ? 2 : 1) //Fly people, when eating food, vomit 2 tiles ahead. I thought it would be fun to reflect that here
+
 	var/obj/item/organ/internal/stomach/user_stomach = user.get_organ_slot(ORGAN_SLOT_STOMACH)
 
 	var/stomach_malfunctioning = (!user_stomach || user_stomach.organ_flags & ORGAN_FAILING)
-	var/lost_nutrition_value = (stomach_malfunctioning ? 0 : VOMIT_DEFAULT_NUTRITION_LOSS)
+	var/lost_nutrition_value = ((stomach_malfunctioning ? 0 : VOMIT_DEFAULT_NUTRITION_LOSS)*vomit_distance)
 
-	var/distance = (isflyperson(user) ? 2 : 1) //Fly people, when eating food, vomit 2 tiles ahead. I thought it would be fun to reflect that here
+	var/should_stun = (stun || user.nutrition < 100) // This is to allow forcevomits to still hardstun if the person is dry heaving
 
-	user.vomit(lost_nutrition_value, stomach_malfunctioning, src.stun, purge_ratio = 0)
+	user.vomit(lost_nutrition_value, stomach_malfunctioning, should_stun, vomit_distance, purge_ratio = 0)
 
 #undef VOMIT_DEFAULT_NUTRITION_LOSS
