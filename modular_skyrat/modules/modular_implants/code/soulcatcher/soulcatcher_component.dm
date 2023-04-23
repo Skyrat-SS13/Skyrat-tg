@@ -72,6 +72,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return FALSE
 
+/**
+ * Soulcatcher Room
+ *
+ * This datum is where souls are sent to when joining soulcatchers.
+ * It handles sending messages to souls from the outside along with adding new souls, transfering, and removing souls.
+ *
+ */
+
 /datum/soulcatcher_room
 	/// What is the name of the room?
 	var/name = "Default Room"
