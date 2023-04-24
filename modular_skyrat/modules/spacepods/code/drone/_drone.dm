@@ -88,8 +88,6 @@ GLOBAL_LIST_EMPTY(drone_control_nodes)
 	. = ..()
 	// Attach the physics component to the drone
 	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, _max_thrust_velocity = mode_speeds[mode], _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE)
-	// Set the desired thrust direction to forward
-	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, THRUST_DIR_FORWARD)
 	// Register the signal to trigger the process_bump() proc
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_bump))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_update_movement))
