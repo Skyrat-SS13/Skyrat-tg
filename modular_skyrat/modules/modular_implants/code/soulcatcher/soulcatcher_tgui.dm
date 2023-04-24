@@ -5,6 +5,10 @@
 		ui = new(usr, src, "Soulcatcher", name)
 		ui.open()
 
+/datum/component/soulcatcher/operating/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
+
+
 /datum/component/soulcatcher/ui_data(mob/user)
 	var/list/data = list()
 
@@ -150,7 +154,7 @@
 
 		if("toggle_soul_sense")
 			if(params["sense_to_change"] == "hearing")
-				target_soul.toggle_hearing()
+				target_soul.internal_hearing = !target_soul.internal_hearing
 			else
 				target_soul.internal_sight = !target_soul.internal_sight
 

@@ -46,7 +46,7 @@
 		if(!target_room)
 			return FALSE
 
-		if(tgui_alert(target_ghost, "[user] wants to transfer you to a soulcatcher, do you accept?", name, list("Yes", "No"), autofocus = TRUE) != "Yes")
+		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), autofocus = TRUE) != "Yes", 30 SECONDS)
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 			return FALSE
 
@@ -66,8 +66,11 @@
 	if(!target_room)
 		return FALSE
 
-	if(tgui_alert(target_mob, "Do you wish to enter [target_room]?", name, list("Yes", "No")) != "Yes")
+	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) != "Yes"))
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
+		return FALSE
+
+	if(!target_mob.mind)
 		return FALSE
 
 	target_room.add_soul(target_mob.mind, TRUE)

@@ -66,7 +66,10 @@
 		to_chat(src, span_warning("You are unable to leave the soulcatcher."))
 		return FALSE
 
-	if(tgui_alert(src, "Are you sure you wish to leave the soulcatcher?", "Soulcatcher", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Are you sure you wish to leave the soulcatcher? IF you had a body, this will return you to your body", "Soulcatcher", list("Yes", "No")) != "Yes")
+		return FALSE
+
+	if(tgui_alert(src, "Are you really sure about this?", "Soulcatcher", list("Yes", "No")) != "Yes")
 		return FALSE
 
 	qdel(src)

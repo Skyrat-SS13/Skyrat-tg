@@ -173,6 +173,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_notice(room_description))
 	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
 	log_admin("[new_soul] entered the following soulcatcher room: [src].")
+	to_chat(new_soul, span_notice("While inside of a soulcatcher, you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
 
 	return TRUE
 
@@ -253,9 +254,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /datum/soulcatcher_room/Destroy(force, ...)
-	for(var/mob/living/soulcatcher_soul as anything in current_souls)
-		qdel(soulcatcher_soul)
-		current_souls -= soulcatcher_soul
+	for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
+		remove_soul(soul)
 
 	return ..()
 
