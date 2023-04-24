@@ -128,8 +128,8 @@
 	return FALSE
 
 /mob/living/soulcatcher_soul/Destroy()
-	if(current_room)
-		var/datum/soulcatcher_room/room = current_room.resolve()
+	var/datum/soulcatcher_room/room = current_room.resolve()
+	if(istype(room))
 		log_admin("[src] left the following soulcatcher room: [room].")
 		room.current_souls -= src
 
