@@ -42,7 +42,7 @@
 			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 
-		var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms)
+		var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, timeout = 30 SECONDS)
 		if(!target_room)
 			return FALSE
 
@@ -62,7 +62,7 @@
 		linked_soulcatcher.scan_body(body_component, user)
 		return TRUE
 
-	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Chose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms)
+	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Chose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, timeout = 30 SECONDS)
 	if(!target_room)
 		return FALSE
 
