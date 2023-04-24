@@ -111,7 +111,7 @@
 		if(!old_body)
 			return FALSE
 
-		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_RETURN_SOUL, src, FALSE)
+		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_RETURN_SOUL, FALSE)
 
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)

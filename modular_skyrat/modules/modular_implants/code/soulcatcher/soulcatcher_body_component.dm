@@ -15,6 +15,9 @@
 /// Destroys the source component through a signal. `mind_restored` controls whether or not the mind will be grabbed upon deletion.
 /datum/component/previous_body/proc/signal_destroy(mob/source_mob, mind_restored = TRUE)
 	SIGNAL_HANDLER
+	if(!mind_restored)
+		restore_mind = FALSE
+
 	qdel(src)
 
 	return TRUE

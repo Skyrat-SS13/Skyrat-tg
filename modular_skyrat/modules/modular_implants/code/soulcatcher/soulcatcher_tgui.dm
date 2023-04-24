@@ -12,8 +12,8 @@
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
 		var/list/room_data = list(
-		"name" = room.name,
-		"description" = room.room_description,
+		"name" = html_decode(room.name),
+		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
 		)

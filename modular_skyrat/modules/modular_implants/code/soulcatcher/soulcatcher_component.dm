@@ -303,7 +303,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /mob/grab_ghost(force)
-	SEND_SIGNAL(src, COMSIG_SOULCATCHER_RETURN_SOUL, src)
+	SEND_SIGNAL(src, COMSIG_SOULCATCHER_RETURN_SOUL)
 	return ..()
 
 /mob/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)

@@ -34,7 +34,7 @@ export const Soulcatcher = (props, context) => {
                 </Button>
               </>
             }>
-            <BlockQuote> {room.description}</BlockQuote>
+            <BlockQuote preserveWhitespace> {room.description}</BlockQuote>
             <Box>
               <Button
                 icon="scroll"
@@ -128,13 +128,17 @@ export const Soulcatcher = (props, context) => {
                           <b>Flavor Text</b>
                         </Box>
                         <Divider />
-                        <BlockQuote>{soul.description}</BlockQuote>
+                        <BlockQuote preserveWhitespace>
+                          {soul.description}
+                        </BlockQuote>
                         <br />
                         <Box textAlign="center" fontSize="13px" opacity={0.8}>
                           <b>OOC Notes</b>
                         </Box>
                         <Divider />
-                        <BlockQuote>{soul.ooc_notes}</BlockQuote>
+                        <BlockQuote preserveWhitespace>
+                          {soul.ooc_notes}
+                        </BlockQuote>
                         <br />
                         <LabeledList>
                           <LabeledList.Item label="Outside Hearing">
