@@ -46,7 +46,7 @@
 		if(!target_room)
 			return FALSE
 
-		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), autofocus = TRUE) != "Yes", 30 SECONDS)
+		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), 30 SECONDS, autofocus = TRUE) != "Yes")
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 			return FALSE
 
