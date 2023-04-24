@@ -2,7 +2,7 @@
 	title = JOB_SECURITY_MEDIC
 	description = "Patch up officers and prisoners, realize you don't have the tools to Tend Wounds, barge into Medbay and tell them how to do their jobs"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list(JOB_HEAD_OF_SECURITY)
+	department_head = list(JOB_HEAD_OF_SECURITY, JOB_CHIEF_MEDICAL_OFFICER)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -42,6 +42,12 @@
 	)
 	rpg_title = "Battle Cleric"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+
+
+/datum/job/security_medic/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	to_chat(player_client, span_doyourjobidiot("As a Security Medic your primary focus is to keep prisoners and officers alive. This means you should not be focusing on civilian type medical duties, leave that to the paramedic and medical. Do not make a mini-medical center within security, always take people that need indepth medical attention to medbay. If you are in medbay, you report to the CMO!"))
+
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"
