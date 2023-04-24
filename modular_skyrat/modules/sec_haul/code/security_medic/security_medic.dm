@@ -13,7 +13,6 @@
 	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "SECURITY_MEDIC"
-
 	outfit = /datum/outfit/job/security_medic
 	plasmaman_outfit = /datum/outfit/plasmaman/security
 
@@ -44,11 +43,6 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 	veteran_only = TRUE
-
-/datum/job/security_medic/after_spawn(mob/living/spawned, client/player_client)
-	. = ..()
-	to_chat(player_client, span_doyourjobidiot("As a Security Medic your primary focus is to keep prisoners and officers alive. This means you should not be focusing on civilian type medical duties, leave that to the paramedic and medical. Do not make a mini-medical center within security, always take people that need in-depth medical attention to medbay. If you are in medbay, you report to the CMO!"))
-
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"
