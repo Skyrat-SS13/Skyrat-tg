@@ -47,7 +47,7 @@
 
 /datum/job/security_medic/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
-	to_chat(player_client, span_doyourjobidiot("As a Security Medic your primary focus is to keep prisoners and officers alive. This means you should not be focusing on civilian type medical duties, leave that to the paramedic and medical. Do not make a mini-medical center within security, always take people that need indepth medical attention to medbay. If you are in medbay, you report to the CMO!"))
+	to_chat(player_client, span_doyourjobidiot("As a Security Medic your primary focus is to keep prisoners and officers alive. This means you should not be focusing on civilian type medical duties, leave that to the paramedic and medical. Do not make a mini-medical center within security, always take people that need in-depth medical attention to medbay. If you are in medbay, you report to the CMO!"))
 
 
 /datum/outfit/job/security_medic
