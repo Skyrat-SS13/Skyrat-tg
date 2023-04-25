@@ -1,5 +1,5 @@
 /datum/job/junior_officer
-	title = "Civil Disputes Officer"
+	title = JOB_JUNIOR_OFFICER
 	description = "Deal with low-level crimes and civil disputes, and assist the Security Officers in their duties"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")
@@ -76,3 +76,8 @@
 	. = ..()
 	if(prob(1))
 		ADD_TRAIT(equipped, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
+
+/datum/job/junior_officer/get_roundstart_spawn_point()
+	if(length(GLOB.jobspawn_overrides[JOB_SECURITY_OFFICER]))
+		return pick(GLOB.jobspawn_overrides[JOB_SECURITY_OFFICER])
+	return ..()
