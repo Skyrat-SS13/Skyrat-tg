@@ -53,7 +53,14 @@
 
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 
-	backpack_contents = list(/obj/item/clothing/gloves/tackler/offbrand, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable = 2, /obj/item/modular_computer/pda/security)
+	backpack_contents = list(
+		/obj/item/clothing/gloves/tackler/offbrand,
+		/obj/item/storage/box/gunset/pepperball,
+		/obj/item/restraints/handcuffs/cable = 2,
+		/obj/item/modular_computer/pda/security,
+		/obj/item/paper = 2,
+		/obj/item/pen,
+		)
 
 	l_pocket = /obj/item/flashlight
 
