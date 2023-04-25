@@ -103,7 +103,7 @@
 
 	triggering = TRUE
 
-	// We sleep HERE, in pre-event setup (because there's no sense doing it in runEvent() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
+	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
 	// SKYRAT EDIT REMOVAL BEGIN - Event notification
 	/**
 	if(alert_observers)
