@@ -174,6 +174,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
 	log_admin("[new_soul] entered the following soulcatcher room: [src].")
 	to_chat(new_soul, span_notice("While inside of a soulcatcher, you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
+to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
 
 	return TRUE
 
@@ -274,7 +275,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		to_chat(src, span_warning("No soulcatchers are joinable."))
 		return FALSE
 
-	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Chose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
+	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
@@ -293,7 +294,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		room_to_join = rooms_to_join[1]
 
 	else
-		room_to_join = tgui_input_list(src, "Chose a room to enter", "Enter a room", rooms_to_join)
+		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
 
 	if(!room_to_join)
 		to_chat(src, span_warning("There no rooms that you can join."))
