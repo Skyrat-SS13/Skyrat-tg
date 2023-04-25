@@ -15,6 +15,11 @@
 	force = 25 //SKYRAT EDIT - ORIGINAL: 17
 	armour_penetration = 15 // SKYRAT EDIT - ADDITION
 	throwforce = 10
+<<<<<<< HEAD
+=======
+	toolspeed = 0.375
+	demolition_mod = 0.8
+>>>>>>> c806d89ba80 (Changes speed of butchering for sickly blades to 3 seconds. (#74777))
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "rend")
