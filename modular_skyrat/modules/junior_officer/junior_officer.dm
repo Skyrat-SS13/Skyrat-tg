@@ -45,13 +45,13 @@
 
 	belt = /obj/item/storage/belt/security/redsec
 	ears = /obj/item/radio/headset/headset_sec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/sol/junior_officer
 	shoes = /obj/item/clothing/shoes/sneakers/black/tactical
 	glasses = /obj/item/clothing/glasses/hud/ar/aviator/security
-	head = /obj/item/clothing/head/soft/junior_officer
+	head = /obj/item/clothing/head/hats/sec/peacekeeper/sol
 	gloves = /obj/item/clothing/gloves/fingerless
 
-	suit = /obj/item/clothing/suit/toggle/labcoat/junior_officer
+	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 
 	backpack_contents = list(/obj/item/clothing/gloves/tackler/offbrand, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable = 2, /obj/item/modular_computer/pda/security)
 

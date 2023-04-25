@@ -11,9 +11,6 @@
 		ACCESS_SECURITY,
 		ACCESS_WEAPONS,
 		)
-	extra_access = list(
-		ACCESS_BRIG,
-		)
 	template_access = list(
 		ACCESS_CAPTAIN,
 		ACCESS_CHANGE_IDS,
