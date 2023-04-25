@@ -183,6 +183,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soul_to_remove || !(soul_to_remove in current_souls))
 		return FALSE
 
+	current_souls -= soul_to_remove
 	qdel(soul_to_remove)
 	return TRUE
 
