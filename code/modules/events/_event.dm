@@ -103,13 +103,9 @@
 
 	triggering = TRUE
 
-<<<<<<< HEAD
 	// We sleep HERE, in pre-event setup (because there's no sense doing it in runEvent() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
 	// SKYRAT EDIT REMOVAL BEGIN - Event notification
 	/**
-=======
-	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
->>>>>>> 40873e0a986 (Non-random events now provide a cause in their deadchat broadcast (#74904))
 	if(alert_observers)
 		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
