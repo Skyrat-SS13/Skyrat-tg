@@ -973,3 +973,102 @@
   vinylspiders:
   - bugfix: wooden half-barricades and other constructed barricades (e.g. snow) may
       now be constructed in the same turf like directional windows/railings
+2023-04-23:
+  Melbert:
+  - bugfix: Ingredients which fail to react in soup reactions drop when the reaction
+      finishes as intended
+  SkyratBot:
+  - bugfix: Removed extra messaging server in North Star tcomms
+  - bugfix: Things that block glow will now like, do that again
+  Tattle:
+  - qol: basicmobs can now make sounds when their speech is triggered
+  - qol: pigs will now make sounds and emote on their own
+  - sound: cows, pigs, and sheep have new sound effects!
+  vinylspiders:
+  - bugfix: cafe roles will now retain their name after ghosting instead of just being
+      called 'a cafe visitor'
+  - bugfix: buttplugs if inserted too hastily will no longer cause the victim to redirect
+      their pain to the server by spamming it with runtime errors.
+2023-04-24:
+  LT3:
+  - code_imp: Added TGUI mobility check bypass
+  - qol: You can now use your PDA while laying down
+  Nerev4r:
+  - balance: Hemophages now get 1.5x the blood when bite-draining people with ckeys
+  - balance: The Satiated Thirst effect now lasts 30 minutes, up from 20.
+  Ryll/Shaps:
+  - bugfix: Yawning will now have a chance of making people near you yawn as well,
+      and is guaranteed to make them yawn if they examined you in the last 2 seconds.
+      It was supposed to already do that, but now it'll actually do that
+  SkyratBot:
+  - balance: Bulldogs now hit 20% harder with their projectiles!
+  - bugfix: Anti-glow actually bringing some darkness instead of just a light glow.
+  - qol: rewords "Total Cost" to just "Total" so text does not overflow to the next
+      line and improves readability
+  - qol: just one failure message if you don't have enough credits for cargo/express
+      mode to keep it consistent
+  - refactor: rounds the total cost of your produce console order so you don't have
+      decimal values left in your bank account
+  - qol: telecomms is quieter and less ear-damaging.
+  - sound: modified tcomms sound to remove high-tones.
+  - bugfix: the telecomms sound only comes from the server hub machine.
+  - rscadd: If you ever happen upon a wild deer, try not to ride your fancy vehicles
+      too close to it as it'll freeze up like a... you know where I'm going with this.
+  Wallem, Imaginos:
+  - image: Updates the IV drip sprites
+2023-04-25:
+  GoldenAlpharex, ChatGPT for the first changelog entry (slightly edited):
+  - qol: Zipped and unzipped through alt-click, winter coats can now be. Hmm, stylishly
+      warm, you shall be. Feel like a Spaceman, you will. Use the Force, to zip and
+      unzip, you must. Look cool, you will. Yes, hmmm.
+  - image: Winter coats no longer have their hood baked into their jacket's sprite,
+      both in item form and when worn.
+  - bugfix: Updated the Icebox EVA winter coats (the Endotherm winter coats) to use
+      the same sprites as the regular winter coats.
+  Hatterhat:
+  - balance: The CIN surplus crate is now an import crate, meaning that it's no longer
+      buyable through Security's department order console and has no lock.
+  - bugfix: The Mosin/Sportiv ammo box that appears in the CIN surplus crate now comes
+      with actual clips suitable for the Sportiv.
+  - bugfix: The 7.62 ammo box was renamed to .244 Acia ammo box, because lore parity.
+  Melbert:
+  - balance: Cameras can only see vertically upwards if the turf above them is transparent.
+      But hey, the North Star (and other multi-z maps) will now perform wayyy better
+      (less time dilation)
+  Rhials:
+  - rscadd: New event weight station trait -- Dust Stormfront.
+  - balance: Space Weather Forecast -- Expect more frequent Major Space Dust storms
+      in the foreseeable future.
+  - code_imp: The Major Space Dust event is once again returned to being a meteor_wave
+      event instead of a Space Dust subtype.
+  SkyratBot:
+  - bugfix: Adds prisoner ID's inside the gen pop lockers on the Northstar. Also renames
+      the holding cells to Gen Pop.
+  - bugfix: balloon alert adding timer on deleted mod core after construction causing
+      runtime.
+  - bugfix: The mafia early vote counter will now properly display.
+  - rscdel: prisoner spawns from the north star asylum
+  - spellcheck: Fixes Explosive Holoparasite description mentioning a removed ability
+  - bugfix: Maps now spawn the correct amount of space levels. The bug caused them
+      to spawn 1 less in each category
+  - code_imp: The space ruins budget is now proportional to the amount of ruin levels.
+      This has no effect on the current default maps, but added maps with less than
+      the default amount of ruin levels will see less ruins.
+  - bugfix: fixes produce console bluescreening when viewing it as ghost
+  - qol: When failing to teleport with the veil shifter it tells you with text and
+      spooky ghost sfx, and doesn't use up a charge or have any unintended vfx.
+  - rscadd: Books can now be burned just like any other paper item.
+  - rscadd: You can cut pages out of books with any sharp item, not just knives or
+      wirecutters.
+  - balance: removes fov from the SWAT mask
+  - rscadd: You can make a tactical turtleneck or turtleskirt by putting a telecrystal
+      and a tactiCOOL varient of the turtleneck into a washing machine. Watch it change
+      before your eyes!
+  - rscadd: A few map specific lunar objects have been added related to Konsu 19 (Moon
+      Outpost 19).
+  - rscadd: New fluff objects were added related to xenoflora and mining.
+  - rscadd: New loot, puzzles, and challenges await you on Konsu 19. Are you prepared?
+  - bugfix: Restores ability for borgs to adjust reflector angles. This is now a left-click
+      with nothing selected, similar to humans' left-click with an empty hand.
+  softcerv:
+  - rscadd: Adds in a time clock, allowing workers to clock out during a shift.
