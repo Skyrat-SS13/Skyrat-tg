@@ -24,7 +24,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "juniorjacket"
-	inhand_icon_state = "jacket"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|ARMS
 	allowed = list(/obj/item/gun/ballistic/automatic/pistol/pepperball, /obj/item/melee/baton)
