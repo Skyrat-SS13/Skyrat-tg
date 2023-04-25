@@ -43,13 +43,13 @@
 	name = "Civil Disputes Officer"
 	jobtype = /datum/job/junior_officer
 
-	belt = /obj/item/storage/belt/security
+	belt = /obj/item/storage/belt/security/redsec
 	ears = /obj/item/radio/headset/headset_sec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior
 	shoes = /obj/item/clothing/shoes/sneakers/black/tactical
 	glasses = /obj/item/clothing/glasses/hud/ar/aviator/security
-	head = /obj/item/clothing/head/soft/black/junior_officer
-	gloves = /obj/item/clothing/gloves/cut
+	head = /obj/item/clothing/head/soft/junior_officer
+	gloves = /obj/item/clothing/gloves/fingerless
 
 	suit = /obj/item/clothing/suit/toggle/labcoat/junior_officer
 

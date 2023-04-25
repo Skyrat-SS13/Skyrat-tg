@@ -3,17 +3,16 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_juniorofficer"
 	minimal_access = list(
-		ACCESS_BRIG,
 		ACCESS_BRIG_ENTRANCE,
 		ACCESS_COURT,
 		ACCESS_MECH_SECURITY,
 		ACCESS_MINERAL_STOREROOM,
-		ACCESS_BRIG_ENTRANCE,
-		ACCESS_BRIG,
+		ACCESS_MORGUE,
+		ACCESS_SECURITY,
 		ACCESS_WEAPONS,
 		)
 	extra_access = list(
-		ACCESS_MAINT_TUNNELS,
+		ACCESS_BRIG,
 		)
 	template_access = list(
 		ACCESS_CAPTAIN,
