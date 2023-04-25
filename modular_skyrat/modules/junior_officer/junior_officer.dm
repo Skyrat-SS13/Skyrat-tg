@@ -58,8 +58,7 @@
 		/obj/item/storage/box/gunset/pepperball,
 		/obj/item/restraints/handcuffs/cable = 2,
 		/obj/item/modular_computer/pda/security,
-		/obj/item/paper = 2,
-		/obj/item/pen,
+		/obj/item/clipboard,
 		)
 
 	l_pocket = /obj/item/flashlight
