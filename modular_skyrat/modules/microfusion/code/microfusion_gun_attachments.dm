@@ -531,11 +531,13 @@ The gun can fire PULSE shots.
 
 /obj/item/microfusion_gun_attachment/pulse/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
+	microfusion_gun.fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
 	microfusion_gun.burst_size += added_burst_size
 	microfusion_gun.fire_delay += added_fire_delay
 
 /obj/item/microfusion_gun_attachment/pulse/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
+	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 	microfusion_gun.burst_size -= added_burst_size
 	microfusion_gun.fire_delay -= added_fire_delay
 
