@@ -102,9 +102,6 @@
 	else
 		phase_emitter = new(src)
 	phase_emitter.parent_gun = src
-	for(var/type in attachments)
-		var/obj/item/microfusion_gun_attachment/attachment = new(src)
-		add_attachment(attachment)
 	update_microfusion_lens()
 	recharge_newshot(TRUE)
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -112,6 +109,10 @@
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
+	for(var/type in attachments)
+		attachments -= type
+		var/obj/item/microfusion_gun_attachment/attachment = new type(src)
+		add_attachment(attachment)
 
 /obj/item/gun/microfusion/give_gun_safeties()
 	AddComponent(/datum/component/gun_safety)
