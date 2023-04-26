@@ -82,14 +82,10 @@
 	init_species_list()
 	init_hair_gradients()
 	init_keybindings()
-<<<<<<< HEAD
 
-	GLOB.emote_list = init_emote_list()
+	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
 
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
-=======
-	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
->>>>>>> 3ceee2aab49 (World Initialization Refactor (#74808))
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
 
