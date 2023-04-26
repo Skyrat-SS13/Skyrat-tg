@@ -73,8 +73,6 @@
 #define LOG_CATEGORY_NOT_FOUND "invalid_category"
 #define LOG_CATEGORY_TARGET_ZONE_SWITCH "target_zone_switch"
 
-<<<<<<< HEAD
-=======
 // Log header keys
 #define LOG_HEADER_CATEGORY "category"
 #define LOG_HEADER_INIT_TIMESTAMP "timestamp"
@@ -95,7 +93,6 @@
 #define LOG_CATEGORY_TARGET_ZONE_SWITCH "target_zone_switch"
 #define LOG_CATEGORY_SILO "silo"
 
->>>>>>> a8457b91f3f (Fixes silo logging + add log file based logging to silo (#74806))
 //wrapper macros for easier grepping
 #define DIRECT_OUTPUT(A, B) A << B
 #define DIRECT_INPUT(A, B) A >> B
