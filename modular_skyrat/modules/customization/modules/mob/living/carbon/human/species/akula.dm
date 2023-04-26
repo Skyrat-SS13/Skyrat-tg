@@ -68,7 +68,7 @@
 	var/main_color
 	var/secondary_color
 	var/tertiary_color
-	var/random = rand(1,4)
+	var/random = rand(1, 4)
 	switch(random)
 		if(1)
 			main_color = "#1CD3E5"
@@ -100,6 +100,7 @@
 	akula.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
 	akula.dna.features["legs"] = "Normal Legs"
 	regenerate_organs(akula, src, visual_only = TRUE)
+	akula.update_body(TRUE)
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
@@ -139,6 +140,7 @@
 	// Apply the slippery trait if its not there yet
 	if(!HAS_TRAIT(akula, TRAIT_SLIPPERY))
 		ADD_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
+
 	// Relieve the negative moodlet
 	akula.clear_mood_event("dry_skin")
 	// The timer which will initiate above 10 wet_stacks, and call dried() once the timer runs out

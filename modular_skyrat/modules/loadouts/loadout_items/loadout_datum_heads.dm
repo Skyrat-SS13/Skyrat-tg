@@ -534,16 +534,16 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/azulea_oldblood
-	name = "Oldblood's royal cap"
+	name = "Oldblood's Royal cap"
 	item_path = /obj/item/clothing/head/hats/caphat/azulean/old_blood
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /datum/loadout_item/head/azulea_upstart
-	name = "Upstart's noble cap"
+	name = "Upstart's Noble cap"
 	item_path = /obj/item/clothing/head/hats/caphat/azulean/upstart
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /*
 *	JOB BERETS

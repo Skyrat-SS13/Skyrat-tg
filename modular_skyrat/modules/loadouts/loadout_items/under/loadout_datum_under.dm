@@ -865,28 +865,28 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/suit/skyrat/pencil/green
 
 /datum/loadout_item/under/formal/azulea_oldblood
-	name = " Oldblood's royal regalia"
+	name = " Oldblood's Royal regalia"
 	item_path = /obj/item/clothing/under/rank/azulean/old_blood
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /datum/loadout_item/under/formal/azulea_oldblood/skirt
-	name = " Oldblood's royal regalia (skirt)"
+	name = " Oldblood's Royal regalia (Skirt)"
 	item_path = /obj/item/clothing/under/rank/azulean/old_blood/skirt
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /datum/loadout_item/under/formal/azulea_upstart
-	name = "Upstart's noble getup"
+	name = "Upstart's Noble Getup"
 	item_path = /obj/item/clothing/under/rank/azulean/upstart
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /datum/loadout_item/under/formal/azulea_upstart/skirt
-	name = "Upstart's noble getup (skirt)"
+	name = "Upstart's Noble Getup (Skirt)"
 	item_path = /obj/item/clothing/under/rank/azulean/upstart/skirt
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
-	restricted_species = list("Akula")
+	restricted_species = list(SPECIES_AKULA)
 
 /// DONATOR
 /datum/loadout_item/under/donator

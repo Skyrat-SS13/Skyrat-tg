@@ -232,8 +232,9 @@
 
 	to_chat(owner, examine_block(composed_message))
 
+/// If only a certain species is allowed to equip this loadout item, display which
 /datum/loadout_manager/proc/display_species_restrictions(datum/loadout_item/item)
-	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following species: <br>")
+	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
 	for(var/species_type in item.restricted_species)
 		composed_message += span_green("[species_type] <br>")
 

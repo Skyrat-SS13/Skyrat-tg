@@ -45,7 +45,7 @@
 				continue
 			if(item.restricted_species && !(dna.species.name in item.restricted_species))
 				if(client)
-					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to species restrictions!"))
+					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
 				continue
 
 			new item.item_path(briefcase)
@@ -61,7 +61,7 @@
 				continue
 			if(item.restricted_species && !(dna.species.name in item.restricted_species))
 				if(client)
-					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to species restrictions!"))
+					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
 				continue
 
 			// Make sure the item is not overriding an important for life outfit item

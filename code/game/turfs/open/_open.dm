@@ -240,7 +240,7 @@
 	if(HAS_TRAIT(slipper, TRAIT_SLIPPERY))
 		if(!(lube & SLIDE_ICE))
 			lube |= SLIDE
-		slide_distance = rand(5, 9)
+		slide_distance = rand(SLIPPERY_MIN, SLIPPERY_MAX)
 	// SKYRAT EDIT END
 
 	var/obj/buckled_obj
