@@ -1,10 +1,10 @@
 
 /datum/armament_entry/company_import/micron
-	category = MICROSTAR_ENERGY_NAME
+	category = MICRON_CONTROL_SYSTEMS_NAME
 	company_bitflag = COMPANY_MICRON
 
 /datum/armament_entry/company_import/micron/rifle
-	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
 
 /datum/armament_entry/company_import/micron/rifle/mcr
 	item_type = /obj/item/gun/microfusion/mcr01
