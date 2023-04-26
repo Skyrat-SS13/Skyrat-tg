@@ -365,8 +365,6 @@
 	special_screen_obj = "birthday"
 	special_screen_replace = FALSE
 
-<<<<<<< HEAD
-=======
 /datum/mood_event/basketball_score
 	description = "Swish! Nothing but net."
 	mood_change = 2
@@ -376,4 +374,3 @@
 	description = "Slam dunk! Boom, shakalaka!"
 	mood_change = 2
 	timeout = 5 MINUTES
->>>>>>> f08dcefcf78 (Add basketball mood events for shooting and dunking (#74700))
