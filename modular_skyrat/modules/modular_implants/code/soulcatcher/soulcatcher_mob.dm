@@ -137,7 +137,7 @@
 			return FALSE
 
 		mind.transfer_to(target_body)
-		SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_RETURN_SOUL, FALSE)
+		SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
 
 		if(target_body.stat != DEAD)
 			target_body.grab_ghost(TRUE)

@@ -73,28 +73,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return FALSE
 
 /// Attemps to scan the body for the `previous_body component`, returns FALSE if the body is unable to be scanned, otherwise returns TRUE
-/datum/component/soulcatcher/proc/scan_body(datum/component/previous_body/body_to_scan, mob/living/user)
-	var/mob/living/parent_body = body_to_scan.parent
-	var/mob/living/soulcatcher_soul/target_soul = body_to_scan.soulcatcher_soul.resolve()
-	if(!body_to_scan || !target_soul)
+/datum/component/soulcatcher/proc/scan_body(mob/living/parent_body, mob/living/user)
+	if(!parent_body || !user)
 		return FALSE
 
-	if(!target_soul.body_scan_needed)
-		to_chat(user, span_cyan("[parent_body] has already been scanned!"))
+	var/signal_result = SEND_SIGNAL(parent_body, COMSIG_SOULCATCHER_SCAN_BODY, parent_body)
+	if(!signal_result)
+		to_chat(user, span_warning("[parent_body] has already been scanned!"))
 		return FALSE
 
-	target_soul.body_scan_needed = FALSE
 	if(istype(parent, /obj/item/handheld_soulcatcher))
 		var/obj/item/handheld_soulcatcher/parent_device = parent
 		playsound(parent_device, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-		parent_device.visible_message(span_notice("[src] beeps: [parent_body] is now scanned."))
-
-	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
-	target_soul.name = parent_body.real_name
-
-	var/datum/preferences/preferences = target_soul.client?.prefs
-	if(preferences)
-		target_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
+		parent_device.visible_message(span_notice("[parent_device] beeps: [parent_body] is now scanned."))
 
 	return TRUE
 
@@ -305,7 +296,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /mob/grab_ghost(force)
-	SEND_SIGNAL(src, COMSIG_SOULCATCHER_RETURN_SOUL)
+	SEND_SIGNAL(src, COMSIG_SOULCATCHER_CHECK_SOUL)
 	return ..()
 
 /mob/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)

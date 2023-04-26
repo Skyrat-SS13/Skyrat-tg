@@ -26,9 +26,8 @@
 	if(!target_mob)
 		return ..()
 
-	var/datum/component/previous_body/body_component = target_mob.GetComponent(/datum/component/previous_body)
-	if(body_component)
-		linked_soulcatcher.scan_body(body_component, user)
+	if(target_mob.GetComponent(/datum/component/previous_body))
+		linked_soulcatcher.scan_body(target_mob, user)
 		return TRUE
 
 	if(!target_mob.mind || !target_mob.ckey)
@@ -53,13 +52,12 @@
 		if(!target_room.add_soul_from_ghost(target_ghost))
 			return FALSE
 
-		body_component = target_mob.GetComponent(/datum/component/previous_body)
-		if(!body_component)
+		if(!target_mob.GetComponent(/datum/component/previous_body))
 			return FALSE
 
 		var/turf/source_turf = get_turf(user)
 		log_admin("[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]")
-		linked_soulcatcher.scan_body(body_component, user)
+		linked_soulcatcher.scan_body(target_mob, user)
 		return TRUE
 
 	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, timeout = 30 SECONDS)
@@ -77,8 +75,10 @@
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
-	body_component = target_mob.GetComponent(/datum/component/previous_body)
-	linked_soulcatcher.scan_body(body_component, user)
+	if(!target_mob.GetComponent(/datum/component/previous_body))
+		return FALSE
+
+	linked_soulcatcher.scan_body(target_mob, user)
 
 	var/turf/source_turf = get_turf(user)
 	log_admin("[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher while they were still alive at [AREACOORD(source_turf)]")
@@ -114,7 +114,7 @@
 		if(!old_body)
 			return FALSE
 
-		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_RETURN_SOUL, FALSE)
+		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
 
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
