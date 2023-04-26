@@ -243,19 +243,16 @@
 	locked = 0;
 	name = "The GOOD Stuff"
 	},
+/obj/machinery/power/apc/auto_name/directional/north{
+	coverlocked = 0;
+	start_charge = 60
+	},
+/obj/effect/mapping_helpers/apc/unlocked,
+/obj/structure/cable,
 /obj/item/paper/fluff/spaceruins/lizardsgas/memorandum,
 /obj/effect/spawner/random/contraband/cannabis/lizardsgas,
 /obj/effect/spawner/random/contraband/cannabis/lizardsgas,
 /obj/effect/spawner/random/contraband/cannabis/lizardsgas,
-/obj/structure/cable,
-/obj/effect/spawner/random/contraband/cannabis/lizardsgas,
-/obj/effect/spawner/random/contraband/cannabis/lizardsgas,
-/obj/effect/spawner/random/contraband/cannabis/lizardsgas,
-/obj/machinery/power/apc/auto_name/directional/north{
-	coverlocked = 0;
-	locked = 0;
-	start_charge = 60
-	},
 /turf/open/floor/iron/dark/smooth_corner,
 /area/ruin/space/has_grav/thelizardsgas)
 "Bi" = (
@@ -309,7 +306,7 @@
 /area/ruin/space/has_grav/thelizardsgas)
 "FJ" = (
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("lizardgas"="Plasma Supply");
+	atmos_chambers = list("lizardgas" = "Plasma Supply");
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_edge{

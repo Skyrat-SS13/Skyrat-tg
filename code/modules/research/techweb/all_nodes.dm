@@ -1182,6 +1182,7 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
+		"time_clock_frame", //SKYRAT EDIT ADDITION - TIME CLOCKS
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
