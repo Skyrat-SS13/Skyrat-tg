@@ -126,6 +126,7 @@
 		/obj/item/spear,
 		/obj/item/tank/internals,
 		)
+	resistance_flags = FIRE_PROOF
 	armor_type = /datum/armor/cloak_goliath
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -171,9 +172,13 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
+<<<<<<< HEAD
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	//SKYRAT ADDITION END
+=======
+	resistance_flags = FIRE_PROOF
+>>>>>>> 71ef04efa06 (Fire Proof Goliath Cloak (#74954))
 
 /datum/armor/cloakhood_goliath
 	melee = 35
