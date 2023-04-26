@@ -101,14 +101,9 @@
 	. = ..()
 	if((resistance_flags & UNACIDABLE) || (acid_volume <= 0) || (acidpwr <= 0))
 		return FALSE
-<<<<<<< HEAD
 	if(QDELETED(src)) //skyrat edit: fix createanddestroy
 		return FALSE
-	AddComponent(/datum/component/acid, acidpwr, acid_volume)
-=======
-
 	AddComponent(/datum/component/acid, acidpwr, acid_volume, custom_acid_overlay || GLOB.acid_overlay)
->>>>>>> b093b12e03d (Burning and acid components fixes and improvements (#74803))
 	return TRUE
 
 ///called when the obj is destroyed by acid.
