@@ -331,11 +331,7 @@
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof suits designed in a joint \
 		effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, \
-<<<<<<< HEAD
-		and combat gloves. Requires Armory access to open."
-=======
 		and gorilla gloves."
->>>>>>> aae0ce35eb3 (Adjusts the SWAT crate description to be more accurate (#74943))
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/clothing/head/helmet/swat/nanotrasen = 2,
 					/obj/item/clothing/suit/armor/swat = 2,
