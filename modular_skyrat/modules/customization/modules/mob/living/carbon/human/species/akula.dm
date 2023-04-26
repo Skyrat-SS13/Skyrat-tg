@@ -159,6 +159,7 @@
 		return
 	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= 10)
 		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
+
 	if(HAS_TRAIT(owner, TRAIT_SLIPPERY) && stacks <= 0.5)
 		REMOVE_TRAIT(owner, TRAIT_SLIPPERY, SPECIES_TRAIT)
 

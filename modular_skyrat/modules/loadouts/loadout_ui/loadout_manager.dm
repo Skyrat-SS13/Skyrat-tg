@@ -226,6 +226,8 @@
 			owner.prefs.loadout_list[item.item_path] -= INFO_NAMED
 
 /datum/loadout_manager/proc/display_job_restrictions(datum/loadout_item/item)
+	if(!length(item.restricted_roles))
+		return
 	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following roles: <br>")
 	for(var/job_type in item.restricted_roles)
 		composed_message += span_green("[job_type] <br>")
@@ -234,6 +236,8 @@
 
 /// If only a certain species is allowed to equip this loadout item, display which
 /datum/loadout_manager/proc/display_species_restrictions(datum/loadout_item/item)
+	if(!length(item.restricted_species))
+		return
 	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
 	for(var/species_type in item.restricted_species)
 		composed_message += span_green("[species_type] <br>")

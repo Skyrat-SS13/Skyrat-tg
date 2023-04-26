@@ -236,10 +236,11 @@
 		// Stops sliding
 		slide_distance = 0
 
-	// SKYRAT EDIT - Akula species
+	// SKYRAT EDIT START - Akula species
 	if(HAS_TRAIT(slipper, TRAIT_SLIPPERY))
 		if(!(lube & SLIDE_ICE))
 			lube |= SLIDE
+
 		slide_distance = rand(SLIPPERY_MIN, SLIPPERY_MAX)
 	// SKYRAT EDIT END
 

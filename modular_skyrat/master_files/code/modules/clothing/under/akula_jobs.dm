@@ -1,46 +1,7 @@
-/// How many wetstacks does the clothing's status effect apply to its wearer
-#define STATUS_EFFECT_STACKS 15
 /// The DMI containing the tail overlay sprites
 #define TAIL_OVERLAY_DMI 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
 /// The proper layer to render the tail overlays onto
 #define TAIL_OVERLAY_LAYER 5.9
-
-/datum/component/wetsuit
-	dupe_mode = COMPONENT_DUPE_UNIQUE
-
-/datum/component/wetsuit/RegisterWithParent()
-	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(apply_wetsuit_status_effect))
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(remove_wetsuit_status_effect))
-
-/datum/component/wetsuit/UnregisterFromParent()
-	. = ..()
-	UnregisterSignal(parent, list(
-		COMSIG_ITEM_EQUIPPED,
-		COMSIG_ITEM_DROPPED,
-	))
-
-/// A proc for all akula clothing which has the 'special tech' to keep their wearers slippery
-/datum/component/wetsuit/proc/apply_wetsuit_status_effect(obj/item/source, mob/living/user, slot)
-	if(slot == ITEM_SLOT_HANDS)
-		return FALSE
-	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
-		return FALSE
-
-	user.apply_status_effect(/datum/status_effect/grouped/wetsuit, REF(source))
-
-/// A proc to remove the wetsuit status effect
-/datum/component/wetsuit/proc/remove_wetsuit_status_effect(obj/item/source, mob/living/user, slot)
-	user.remove_status_effect(/datum/status_effect/grouped/wetsuit, REF(source))
-
-/// The status effect which `apply_wetsuit_status_effect` gives
-/datum/status_effect/grouped/wetsuit
-	id = "wetsuit"
-	alert_type = null
-	tick_interval = 10 SECONDS
-
-/datum/status_effect/grouped/wetsuit/tick()
-	owner.set_wet_stacks(STATUS_EFFECT_STACKS)
 
 /obj/item/clothing/under/akula_wetsuit
 	name = "Shoredress wetsuit"
@@ -319,6 +280,5 @@
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-#undef STATUS_EFFECT_STACKS
 #undef TAIL_OVERLAY_DMI
 #undef TAIL_OVERLAY_LAYER
