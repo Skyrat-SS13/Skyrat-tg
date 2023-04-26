@@ -20,7 +20,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "match_unlit"
-	var/smoketime = 10 SECONDS
 	w_class = WEIGHT_CLASS_TINY
 	heat = 1000
 	grind_results = list(/datum/reagent/phosphorus = 2)
@@ -29,9 +28,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// Whether this match has burnt out.
 	var/burnt = FALSE
 	/// How long the match lasts in seconds
+	var/smoketime = 10 SECONDS
 
-/obj/item/match/process(delta_time)
-	smoketime -= delta_time * (1 SECONDS)
+/obj/item/match/process(seconds_per_tick)
+	smoketime -= seconds_per_tick * (1 SECONDS)
 	if(smoketime <= 0)
 		matchburnout()
 	else
@@ -78,6 +78,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/match/extinguish()
+	. = ..()
 	matchburnout()
 
 /obj/item/match/dropped(mob/user)
@@ -304,6 +305,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_held_items()
 
 /obj/item/clothing/mask/cigarette/extinguish()
+	. = ..()
 	if(!lit)
 		return
 	attack_verb_continuous = null
@@ -343,7 +345,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!reagents.trans_to(smoker, to_smoke, methods = INGEST, ignore_stomach = TRUE))
 		reagents.remove_any(to_smoke)
 
-/obj/item/clothing/mask/cigarette/process(delta_time)
+/obj/item/clothing/mask/cigarette/process(seconds_per_tick)
 	var/mob/living/user = isliving(loc) ? loc : null
 	user?.ignite_mob()
 	if(!reagents.has_reagent(/datum/reagent/oxygen)) //cigarettes need oxygen
@@ -357,7 +359,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	location.pollute_turf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	// SKYRAT EDIT END
 
-	smoketime -= delta_time * (1 SECONDS)
+	smoketime -= seconds_per_tick * (1 SECONDS)
 	if(smoketime <= 0)
 		put_out(user)
 		return
@@ -792,6 +794,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_appearance()
 
 /obj/item/lighter/extinguish()
+	. = ..()
 	set_lit(FALSE)
 
 /obj/item/lighter/attack_self(mob/living/user)
@@ -1140,7 +1143,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!reagents.trans_to(vaper, REAGENTS_METABOLISM, methods = INGEST, ignore_stomach = TRUE))
 		reagents.remove_any(REAGENTS_METABOLISM)
 
-/obj/item/clothing/mask/vape/process(delta_time)
+/obj/item/clothing/mask/vape/process(seconds_per_tick)
 	var/mob/living/M = loc
 
 	if(isliving(loc))

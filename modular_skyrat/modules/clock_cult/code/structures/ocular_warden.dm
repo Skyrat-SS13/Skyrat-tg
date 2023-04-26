@@ -29,7 +29,7 @@
 	bomb = 20
 	bio = 0
 
-/obj/structure/destructible/clockwork/gear_base/powered/ocular_warden/process(delta_time)
+/obj/structure/destructible/clockwork/gear_base/powered/ocular_warden/process(seconds_per_tick)
 	. = ..()
 	if(!.)
 		return
@@ -52,7 +52,7 @@
 	if(!use_power(SHOOT_POWER_USE))
 		return
 
-	playsound(src, 'sound/machines/clockcult/ocularwarden-target.ogg', 60, TRUE)
+	playsound(src, 'modular_skyrat/modules/clock_cult/sound/ocularwarden-target.ogg', 60, TRUE)
 
 	var/mob/living/target = pick(valid_targets)
 	if(!target)
@@ -61,12 +61,12 @@
 	dir = get_dir(get_turf(src), get_turf(target))
 
 	// Apply 15 damage (- 1 for each tile away they are), or 7.5, whichever is larger
-	target.apply_damage(max(BASE_DAMAGE - (get_dist(src, target) * DAMAGE_FALLOFF), MINIMUM_DAMAGE) * delta_time, BURN)
+	target.apply_damage(max(BASE_DAMAGE - (get_dist(src, target) * DAMAGE_FALLOFF), MINIMUM_DAMAGE) * seconds_per_tick, BURN)
 
 	new /obj/effect/temp_visual/ratvar/ocular_warden(get_turf(target))
 	new /obj/effect/temp_visual/ratvar/ocular_warden(get_turf(src))
 
-	playsound(target, 'sound/machines/clockcult/ocularwarden-dot1.ogg', 60, TRUE)
+	playsound(target, 'modular_skyrat/modules/clock_cult/sound/ocularwarden-dot1.ogg', 60, TRUE)
 
 	COOLDOWN_START(src, fire_cooldown, FIRE_DELAY)
 
