@@ -12,9 +12,17 @@ export const Soulcatcher = (props, context) => {
         {current_rooms.map((room) => (
           <Section
             key={room.key}
-            title={room.name}
+            title={<span style={{ color: room.color }}>{room.name}</span>}
             buttons={
               <>
+                <Button
+                  icon="palette"
+                  tooltip="Change the color of the room"
+                  onClick={() =>
+                    act('change_room_color', { room_ref: room.reference })
+                  }>
+                  Recolor
+                </Button>
                 <Button
                   icon="pen"
                   tooltip="Change the name of the room"

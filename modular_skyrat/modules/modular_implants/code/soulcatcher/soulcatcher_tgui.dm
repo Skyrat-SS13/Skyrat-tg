@@ -20,6 +20,7 @@
 		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
+		"color" = room.room_color,
 		)
 
 		for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
@@ -143,6 +144,13 @@
 
 			target_room.transfer_soul(target_soul, transfer_room)
 			return TRUE
+
+		if("change_room_color")
+			var/new_room_color = input(usr, "", "Choose Color", SOULCATCHER_DEFAULT_COLOR) as color
+			if(!new_room_color)
+				return FALSE
+
+			target_room.room_color = new_room_color
 
 		if("toggle_soul_outside_sense")
 			if(params["sense_to_change"] == "hearing")

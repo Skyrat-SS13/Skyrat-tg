@@ -1,8 +1,7 @@
 ///Global list containing any and all soulcatchers
 GLOBAL_LIST_EMPTY(soulcatchers)
 
-#define SOULCATCHER_EMOTE_COLOR "#4ba1c9"
-#define SOULCATCHER_SAY_COLOR "#75D5E1"
+#define SOULCATCHER_DEFAULT_COLOR "#75D5E1"
 #define SOULCATCHER_WARNING_MESSAGE "You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."
 
 /**
@@ -110,6 +109,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/outside_voice = "Host"
 	/// Can the room be joined at all?
 	var/joinable = TRUE
+	/// What is the color of chat messages sent by the room?
+	var/room_color = SOULCATCHER_DEFAULT_COLOR
 
 /// Attemps to add a ghost to the soulcatcher room.
 /datum/soulcatcher_room/proc/add_soul_from_ghost(mob/dead/observer/ghost)
@@ -220,12 +221,16 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(tag)
 		soulcatcher_icon = tag
 
+	var/first_room_name_word = splittext(name, " ")
 	var/message = ""
+	var/owner_message = ""
 	if(!emote)
-		message = "<font color=[SOULCATCHER_SAY_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
+		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
+		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
 		log_say("[sender_name] in [name] soulcatcher room said: [message_to_send]")
 	else
-		message = "<font color=[SOULCATCHER_EMOTE_COLOR]>\ [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
+		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
+		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
 		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
@@ -234,7 +239,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		to_chat(soul, message)
 
-	relay_message_to_soulcatcher(message)
+	relay_message_to_soulcatcher(owner_message)
 	return TRUE
 
 /// Relays a message sent from the send_message proc to the parent soulcatcher datum
