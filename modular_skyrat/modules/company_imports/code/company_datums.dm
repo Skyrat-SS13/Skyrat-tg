@@ -91,8 +91,8 @@
 
 // Micron control systems and allstar's weapons together, all your energy guns in one place!
 /datum/cargo_company/microstar_energy_weapons
-	name = MICROSTAR_ENERGY_NAME
-	company_flag = CARGO_COMPANY_MICROSTAR
+	name = MICRON_CONTROL_SYSTEMS_NAME
+	company_flag = CARGO_COMPANY_MICRON
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000

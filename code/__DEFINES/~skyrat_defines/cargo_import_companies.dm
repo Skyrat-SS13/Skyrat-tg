@@ -7,7 +7,7 @@
 #define CARGO_COMPANY_KAHRAMAN (1<<5)
 #define CARGO_COMPANY_NAKAMURA_TOOLING (1<<6)
 #define CARGO_COMPANY_BOLT_NANOTRASEN (1<<7)
-#define CARGO_COMPANY_MICROSTAR (1<<8)
+#define CARGO_COMPANY_MICRON (1<<8)
 #define CARGO_COMPANY_VITEZSTVI_AMMO (1<<9)
 
 // Company names, because the armament category and company name need to be the exact same, so use defines like this

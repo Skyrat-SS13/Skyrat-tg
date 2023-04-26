@@ -42,9 +42,9 @@
 	/// The microfusion lens used for generating the beams.
 	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
-	var/reload_time = 4 SECONDS
+	var/tactical_reload_time = 4 SECONDS
 	/// The time it takes for someone to normally reload this gun. In deciseconds.
-	var/reload_time_slow = 2 SECONDS
+	var/normal_reload_time = 2 SECONDS
 	/// The sound played when you insert a cell.
 	var/sound_cell_insert = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
@@ -566,13 +566,13 @@
 /obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
 	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
 	var/obj/item/stock_parts/cell/old_cell = cell
-	reload_time_slow = inserting_cell.reloading_time
-	reload_time = inserting_cell.reloading_time_tactical
+	normal_reload_time = inserting_cell.reloading_time
+	tactical_reload_time = inserting_cell.reloading_time_tactical
 	if(cell)
-		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
+		if(tactical_reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
 				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-			if(!do_after(user, reload_time, src, IGNORE_USER_LOC_CHANGE))
+			if(!do_after(user, tactical_reload_time, src, IGNORE_USER_LOC_CHANGE))
 				if(display_message)
 					to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
 				return FALSE
@@ -583,7 +583,7 @@
 	else
 		if(display_message)
 			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-		if(!do_after(user, reload_time_slow, src, IGNORE_USER_LOC_CHANGE))
+		if(!do_after(user, normal_reload_time, src, IGNORE_USER_LOC_CHANGE))
 			if(display_message)
 				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
 			return FALSE

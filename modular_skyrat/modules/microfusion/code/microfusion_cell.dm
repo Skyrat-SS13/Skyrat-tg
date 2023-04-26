@@ -18,6 +18,7 @@ These are basically advanced cells.
 	maxcharge = 1200 //12 shots
 	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 	microfusion_readout = TRUE
+	charge_light_type = "microfusion"
 
 	/// A hard referenced list of upgrades currently attached to the weapon.
 	var/list/attachments = list()
@@ -97,6 +98,8 @@ These are basically advanced cells.
 	. = ..()
 	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
 		. += microfusion_cell_attachment.attachment_overlay_icon_state
+	if(!(charge < 0.01))
+		. += mutable_appearance(icon, "cell-[charge_light_type]-o[(percent() >= 99.5) ? 2 : 1]")
 
 /obj/item/stock_parts/cell/microfusion/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!attachments.len)
