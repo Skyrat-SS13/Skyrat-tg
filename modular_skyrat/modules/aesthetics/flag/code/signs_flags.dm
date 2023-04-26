@@ -72,7 +72,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
 /obj/structure/sign/flag/azulea
 	name = "flag of the Azulean Nation"
-	desc = ""
+	desc = "The foundations of this banner stretch back almost a millennium, devised by the first King among the Azulean people to unite them under it. \n\
+		Dark blue, representing the seas of Azulean worlds, and light blue, representing the seas inbetween. \
+		Both make waves on each other, but both are pulled in and swallowed by all of the people of Agurkrral coming together as one; as one violent, restless maelstrom. \n\n\
+		It's common to see this banner just about everywhere in both the Old and New Principalities, reminding all of their purpose and unity."
 	icon_state = "flag_azulea"
 	item_flag = /obj/item/sign/flag/azulea
 

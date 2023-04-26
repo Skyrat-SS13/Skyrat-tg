@@ -20,16 +20,13 @@
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/skinsuit/equipped(mob/user, slot)
+/obj/item/clothing/under/skinsuit/Initialize(mapload)
 	. = ..()
-	if(slot != ITEM_SLOT_ICLOTHING)
-		return
+	AddComponent(/datum/component/wetsuit)
 
-	apply_wetsuit_status_effect(user)
-
-/obj/item/clothing/under/skinsuit/dropped(mob/user)
+/obj/item/clothing/under/skinsuit/Destroy()
 	. = ..()
-	remove_wetsuit_status_effect(user)
+	qdel(GetComponent(/datum/component/wetsuit))
 
 /obj/item/clothing/head/helmet/space/skinsuit_helmet
 	name = "\improper Stardress helm"
@@ -42,24 +39,13 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
 	icon_state = "skinsuithelmet"
 
-/obj/item/clothing/head/helmet/space/skinsuit_helmet/equipped(mob/user, slot)
+/obj/item/clothing/head/helmet/space/skinsuit_helmet/Initialize(mapload)
 	. = ..()
-	if(slot != ITEM_SLOT_ICLOTHING)
-		return
-
-	apply_wetsuit_status_effect(user)
-
-/obj/item/clothing/head/helmet/space/skinsuit_helmet/dropped(mob/user)
-	. = ..()
-	remove_wetsuit_status_effect(user)
+	AddComponent(/datum/component/wetsuit)
 
 /obj/item/clothing/head/helmet/space/skinsuit_helmet/Destroy()
 	. = ..()
-	var/mob/user = loc
-	if(!istype(user))
-		return
-
-	remove_wetsuit_status_effect(user)
+	qdel(GetComponent(/datum/component/wetsuit))
 
 /obj/item/clothing/suit/armor/riot/skinsuit_armor
 	name = "\improper Shorebreaker plating"
@@ -86,14 +72,6 @@
 	. = ..()
 	check_tail(user)
 	update_appearance()
-
-/obj/item/clothing/suit/armor/riot/skinsuit_armor/Destroy()
-	. = ..()
-	var/mob/user = loc
-	if(!istype(user))
-		return
-
-	remove_wetsuit_status_effect(user)
 
 /// Pick an icon_state that matches nicer with tails if one is found on the wearer
 /obj/item/clothing/suit/armor/riot/skinsuit_armor/proc/check_tail(mob/living/carbon/human/user)

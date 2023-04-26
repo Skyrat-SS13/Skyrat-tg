@@ -5,28 +5,41 @@
 /// The proper layer to render the tail overlays onto
 #define TAIL_OVERLAY_LAYER 5.9
 
-/// A proc to be used in `equipped()` for all akula clothing which has the 'special tech' to keep their wearers slippery
-/obj/item/clothing/proc/apply_wetsuit_status_effect(mob/living/carbon/human/user)
+/datum/component/wetsuit
+	dupe_mode = COMPONENT_DUPE_UNIQUE
+
+/datum/component/wetsuit/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(apply_wetsuit_status_effect))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(remove_wetsuit_status_effect))
+
+/datum/component/wetsuit/UnregisterFromParent()
+	. = ..()
+	UnregisterSignal(parent, list(
+		COMSIG_ITEM_EQUIPPED,
+		COMSIG_ITEM_DROPPED,
+	))
+
+/// A proc for all akula clothing which has the 'special tech' to keep their wearers slippery
+/datum/component/wetsuit/proc/apply_wetsuit_status_effect(obj/item/source, mob/living/user, slot)
+	if(slot == ITEM_SLOT_HANDS)
+		return FALSE
 	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
 		return FALSE
 
-	user.apply_status_effect(/datum/status_effect/wetsuit)
+	user.apply_status_effect(/datum/status_effect/grouped/wetsuit, REF(source))
 
-/// A proc to remove the wetsuit status effect, used with the `dropped()` proc
-/obj/item/clothing/proc/remove_wetsuit_status_effect(mob/living/carbon/human/user)
-//	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
-//___TraitRemove		return FALSE
-
-	user.remove_status_effect(/datum/status_effect/wetsuit)
+/// A proc to remove the wetsuit status effect
+/datum/component/wetsuit/proc/remove_wetsuit_status_effect(obj/item/source, mob/living/user, slot)
+	user.remove_status_effect(/datum/status_effect/grouped/wetsuit, REF(source))
 
 /// The status effect which `apply_wetsuit_status_effect` gives
-/datum/status_effect/wetsuit
+/datum/status_effect/grouped/wetsuit
 	id = "wetsuit"
-	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = null
 	tick_interval = 10 SECONDS
 
-/datum/status_effect/wetsuit/tick()
+/datum/status_effect/grouped/wetsuit/tick()
 	owner.set_wet_stacks(STATUS_EFFECT_STACKS)
 
 /obj/item/clothing/under/akula_wetsuit
@@ -54,6 +67,7 @@
 
 /obj/item/clothing/under/akula_wetsuit/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/wetsuit)
 	update_appearance()
 
 /obj/item/clothing/under/akula_wetsuit/Destroy()
@@ -66,7 +80,7 @@
 		user.cut_overlay(tail_overlay)
 		tail_overlay = null
 
-	remove_wetsuit_status_effect(user)
+	qdel(GetComponent(/datum/component/wetsuit))
 
 /obj/item/clothing/under/akula_wetsuit/equipped(mob/user, slot)
 	. = ..()
@@ -75,7 +89,6 @@
 
 	check_physique(user)
 	add_tail_overlay(user)
-	apply_wetsuit_status_effect(user)
 	update_appearance()
 
 /obj/item/clothing/under/akula_wetsuit/dropped(mob/user)
@@ -84,7 +97,6 @@
 		user.cut_overlay(tail_overlay)
 		tail_overlay = null
 
-	remove_wetsuit_status_effect(user)
 	update_appearance()
 
 /// This will check the wearer's bodytype and change the wetsuit worn sprite according to if its male/female
@@ -244,6 +256,7 @@
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/wetsuit)
 	update_appearance()
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit/Destroy()
@@ -255,15 +268,7 @@
 	if(!istype(user))
 		return
 
-	remove_wetsuit_status_effect(user)
-
-/obj/item/clothing/head/helmet/space/akula_wetsuit/equipped(mob/user, slot)
-	. = ..()
-	apply_wetsuit_status_effect(user)
-
-/obj/item/clothing/head/helmet/space/akula_wetsuit/dropped(mob/user)
-	. = ..()
-	remove_wetsuit_status_effect(user)
+	qdel(GetComponent(/datum/component/wetsuit))
 
 // Wearing hats inside the wetworks helmet
 /obj/item/clothing/head/helmet/space/akula_wetsuit/examine()
