@@ -12,15 +12,12 @@
 	flags_1 = CONDUCT_1
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 25 //SKYRAT EDIT - ORIGINAL: 17
-	armour_penetration = 15 // SKYRAT EDIT - ADDITION
+	force = 20
 	throwforce = 10
-<<<<<<< HEAD
-=======
 	toolspeed = 0.375
 	demolition_mod = 0.8
->>>>>>> c806d89ba80 (Changes speed of butchering for sickly blades to 3 seconds. (#74777))
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	armour_penetration = 35
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "rend")
 	var/after_use_message = ""
@@ -80,6 +77,7 @@
 	icon_state = "ash_blade"
 	inhand_icon_state = "ash_blade"
 	after_use_message = "The Nightwatcher hears your call..."
+	resistance_flags = FIRE_PROOF
 
 // Path of Flesh's blade
 /obj/item/melee/sickly_blade/flesh

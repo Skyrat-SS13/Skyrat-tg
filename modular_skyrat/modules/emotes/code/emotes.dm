@@ -17,6 +17,11 @@
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
 	return TRUE
 
+
+/datum/emote/imaginary_friend/custom/check_cooldown(mob/user, intentional)
+	return TRUE
+
+
 /datum/emote/living/blush
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg'
 

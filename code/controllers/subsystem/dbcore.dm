@@ -281,7 +281,9 @@ SUBSYSTEM_DEF(dbcore)
 	else
 		log_sql("Database is not enabled in configuration.")
 
-/datum/controller/subsystem/dbcore/proc/SetRoundID()
+/datum/controller/subsystem/dbcore/proc/InitializeRound()
+	CheckSchemaVersion()
+
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */
