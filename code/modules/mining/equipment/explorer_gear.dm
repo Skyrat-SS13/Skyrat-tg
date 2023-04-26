@@ -133,6 +133,7 @@
 	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	//SKYRAT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/goliath/AltClick(mob/user)
 	. = ..()
@@ -172,13 +173,11 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
-<<<<<<< HEAD
+	resistance_flags = FIRE_PROOF
+	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	//SKYRAT ADDITION END
-=======
-	resistance_flags = FIRE_PROOF
->>>>>>> 71ef04efa06 (Fire Proof Goliath Cloak (#74954))
 
 /datum/armor/cloakhood_goliath
 	melee = 35
