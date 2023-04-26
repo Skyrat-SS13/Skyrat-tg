@@ -133,6 +133,7 @@ GLOBAL_VAR(restart_counter)
 		GLOB.picture_logging_prefix = "O_[override_dir]_"
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
+	GLOB.logger.init_logging()
 	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
 	GLOB.dynamic_log = "[GLOB.log_directory]/dynamic.log"
 	GLOB.filter_log = "[GLOB.log_directory]/filters.log"
@@ -305,12 +306,12 @@ GLOBAL_VAR(restart_counter)
 			TgsEndProcess()
 
 	log_world("World rebooted at [time_stamp()]")
-	
+
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	auxcleanup()
-	
+
 	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
-	
+
 	..()
 
 /world/proc/auxcleanup()

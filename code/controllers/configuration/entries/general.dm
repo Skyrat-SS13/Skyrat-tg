@@ -106,6 +106,9 @@
 /// log voting
 /datum/config_entry/flag/log_vote
 
+/// log manual zone switching
+/datum/config_entry/flag/log_zone_switch
+
 /// log client whisper
 /datum/config_entry/flag/log_whisper
 
@@ -653,6 +656,9 @@
 
 /datum/config_entry/flag/cache_assets
 	default = TRUE
+
+/datum/config_entry/flag/save_spritesheets
+	default = FALSE
 
 /datum/config_entry/flag/station_name_in_hub_entry
 	default = FALSE
