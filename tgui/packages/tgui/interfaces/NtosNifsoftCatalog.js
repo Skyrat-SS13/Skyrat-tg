@@ -1,6 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
 import { NtosWindow } from '../layouts';
-import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, LabeledList, Box } from '../components';
+import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, LabeledList, Box, Icon } from '../components';
 
 export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);
@@ -55,7 +55,14 @@ const ProductCategory = (props, context) => {
       <Flex direction="Column">
         {products.map((product) => (
           <Flex.Item key={product.key}>
-            <Section title={product.name} fill={false}>
+            <Section
+              title={
+                <span>
+                  {<Icon name={product.ui_icon} />}
+                  {' ' + product.name}
+                </span>
+              }
+              fill={false}>
               <Collapsible title="Product Notes">
                 <BlockQuote>{product.desc}</BlockQuote>
               </Collapsible>
