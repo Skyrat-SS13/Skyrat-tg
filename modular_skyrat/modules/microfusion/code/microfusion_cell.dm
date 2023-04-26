@@ -38,6 +38,8 @@ These are basically advanced cells.
 	var/reloading_time = 4 SECONDS
 	/// We use this to edit the tactical reload time of the gun
 	var/reloading_time_tactical = 6 SECONDS
+	/// The probability of the cell failing, either through being makeshift or being used in something it shouldn't
+	var/fail_prob = 10
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabilised? (used in microfusion guns)
@@ -65,6 +67,9 @@ These are basically advanced cells.
 		process_instability()
 
 /obj/item/stock_parts/cell/microfusion/use(amount)
+	if(!parent_gun) // If an MCR cell is used in anything that's not an MCR, you might have problems
+		if(prob(fail_prob))
+			process_instability()
 	if(charge >= amount)
 		var/check_if_empty = charge - amount
 		if(check_if_empty < amount && empty_alarm && !self_charging)
@@ -74,7 +79,7 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/proc/process_instability()
 	var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
 	meltdown = TRUE
-	say("Malfunction in [seconds_to_explode] seconds!")
+	say("Malfunction in [seconds_to_explode / 10] seconds!")
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
 	add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
 	addtimer(CALLBACK(src, PROC_REF(process_failure)), seconds_to_explode)
@@ -98,8 +103,6 @@ These are basically advanced cells.
 	. = ..()
 	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
 		. += microfusion_cell_attachment.attachment_overlay_icon_state
-	if(!(charge < 0.01))
-		. += mutable_appearance(icon, "cell-[charge_light_type]-o[(percent() >= 99.5) ? 2 : 1]")
 
 /obj/item/stock_parts/cell/microfusion/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!attachments.len)
@@ -116,6 +119,7 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/examine(mob/user)
 	. = ..()
 	. += span_notice("It can hold [max_attachments] attachment(s).")
+	. += span_warning("Inserting this into anything other than a microfusion rifle might be a terrible idea.")
 	if(attachments.len)
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
@@ -147,9 +151,11 @@ These are basically advanced cells.
 	name = "Makeshift Microfusion Cell"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
 	result = /obj/item/stock_parts/cell/microfusion/makeshift
-	reqs = list(/obj/item/trash/can = 1,
-				/obj/item/stack/sheet/iron = 1,
-				/obj/item/stack/cable_coil = 1)
+	reqs = list(
+		/obj/item/trash/can = 1,
+		/obj/item/stack/sheet/iron = 1,
+		/obj/item/stack/cable_coil = 1,
+		)
 	time = 12 SECONDS
 	category = CAT_MISC
 
@@ -160,8 +166,6 @@ These are basically advanced cells.
 	icon_state = "microfusion_makeshift"
 	maxcharge = 600
 	max_attachments = 0
-	/// The probability of the cell failing
-	var/fail_prob = 10
 
 /obj/item/stock_parts/cell/microfusion/makeshift/use(amount)
 	if(prob(fail_prob))

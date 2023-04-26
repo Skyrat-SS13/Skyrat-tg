@@ -102,6 +102,9 @@
 	else
 		phase_emitter = new(src)
 	phase_emitter.parent_gun = src
+	for(var/type in attachments)
+		var/obj/item/microfusion_gun_attachment/attachment = new(src)
+		add_attachment(attachment)
 	update_microfusion_lens()
 	recharge_newshot(TRUE)
 	AddElement(/datum/element/update_icon_updates_onmob)
