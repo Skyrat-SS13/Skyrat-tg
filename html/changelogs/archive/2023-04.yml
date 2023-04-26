@@ -1016,3 +1016,94 @@
       too close to it as it'll freeze up like a... you know where I'm going with this.
   Wallem, Imaginos:
   - image: Updates the IV drip sprites
+2023-04-25:
+  GoldenAlpharex, ChatGPT for the first changelog entry (slightly edited):
+  - qol: Zipped and unzipped through alt-click, winter coats can now be. Hmm, stylishly
+      warm, you shall be. Feel like a Spaceman, you will. Use the Force, to zip and
+      unzip, you must. Look cool, you will. Yes, hmmm.
+  - image: Winter coats no longer have their hood baked into their jacket's sprite,
+      both in item form and when worn.
+  - bugfix: Updated the Icebox EVA winter coats (the Endotherm winter coats) to use
+      the same sprites as the regular winter coats.
+  Hatterhat:
+  - balance: The CIN surplus crate is now an import crate, meaning that it's no longer
+      buyable through Security's department order console and has no lock.
+  - bugfix: The Mosin/Sportiv ammo box that appears in the CIN surplus crate now comes
+      with actual clips suitable for the Sportiv.
+  - bugfix: The 7.62 ammo box was renamed to .244 Acia ammo box, because lore parity.
+  Melbert:
+  - balance: Cameras can only see vertically upwards if the turf above them is transparent.
+      But hey, the North Star (and other multi-z maps) will now perform wayyy better
+      (less time dilation)
+  Rhials:
+  - rscadd: New event weight station trait -- Dust Stormfront.
+  - balance: Space Weather Forecast -- Expect more frequent Major Space Dust storms
+      in the foreseeable future.
+  - code_imp: The Major Space Dust event is once again returned to being a meteor_wave
+      event instead of a Space Dust subtype.
+  SkyratBot:
+  - bugfix: Adds prisoner ID's inside the gen pop lockers on the Northstar. Also renames
+      the holding cells to Gen Pop.
+  - bugfix: balloon alert adding timer on deleted mod core after construction causing
+      runtime.
+  - bugfix: The mafia early vote counter will now properly display.
+  - rscdel: prisoner spawns from the north star asylum
+  - spellcheck: Fixes Explosive Holoparasite description mentioning a removed ability
+  - bugfix: Maps now spawn the correct amount of space levels. The bug caused them
+      to spawn 1 less in each category
+  - code_imp: The space ruins budget is now proportional to the amount of ruin levels.
+      This has no effect on the current default maps, but added maps with less than
+      the default amount of ruin levels will see less ruins.
+  - bugfix: fixes produce console bluescreening when viewing it as ghost
+  - qol: When failing to teleport with the veil shifter it tells you with text and
+      spooky ghost sfx, and doesn't use up a charge or have any unintended vfx.
+  - rscadd: Books can now be burned just like any other paper item.
+  - rscadd: You can cut pages out of books with any sharp item, not just knives or
+      wirecutters.
+  - balance: removes fov from the SWAT mask
+  - rscadd: You can make a tactical turtleneck or turtleskirt by putting a telecrystal
+      and a tactiCOOL varient of the turtleneck into a washing machine. Watch it change
+      before your eyes!
+  - rscadd: A few map specific lunar objects have been added related to Konsu 19 (Moon
+      Outpost 19).
+  - rscadd: New fluff objects were added related to xenoflora and mining.
+  - rscadd: New loot, puzzles, and challenges await you on Konsu 19. Are you prepared?
+  - bugfix: Restores ability for borgs to adjust reflector angles. This is now a left-click
+      with nothing selected, similar to humans' left-click with an empty hand.
+  softcerv:
+  - rscadd: Adds in a time clock, allowing workers to clock out during a shift.
+2023-04-26:
+  Gandalf2k15:
+  - balance: 'The shotgun revolver has been balanced: It now shakes the screen and
+      has an accuracy debuff. It also requires you to hold it in both hands to shoot.'
+  GoldenAlpharex:
+  - bugfix: Biogenerators now display the accurate price of their products after having
+      been upgraded, as they no longer visually apply the efficiency discount twice.
+  - bugfix: Dwarves are no longer affected by the body size preference.
+  Rhials:
+  - bugfix: Falling down one of the stage hazard chasms on the medisim shuttle will
+      now properly kill you on Icebox, instead of dropping you into the z-level below.
+  SkyratBot:
+  - rscadd: A new venture by Nanotrasen has put phonebooths in space.
+  - bugfix: crafting lizard skin cowboy boots no longer places a spawner object over
+      the created boot item
+  - bugfix: flood light now shines with their object color
+  - sound: Disablers and lasers have a new deeper sound to them
+  - sound: Sound of lasers hitting a person now are giving more of a punch
+  - rscadd: Say emote prefixes are no longer forced to be lowercase. This includes
+      radio emotes!
+  - balance: '[Mafia] Notes are no longer written out for you.'
+  - qol: '[Mafia] You can now send your notes to chat whenever.'
+  - qol: '[Mafia] Roundend has changed. Solos will win over others in a 1v1, but a
+      HoP can keep a round going in case they can solo lynch.'
+  - refactor: removed duplicate `pre_attack()` & redundant `attackby()` procs which
+      did the same thing
+  - bugfix: unnecessary crash when unwrenching pipes/devices with the RPD
+  - rscadd: Added hostile spawn tag to rats
+  Zergspower:
+  - balance: Port Tarkon - Replaces the ARCD with the MM to get rid of the infinite
+      charges
+  - bugfix: Port Tarkon - Defcon 3 ruin now has proper door access markers that are
+      present in all other ones
+  vinylspiders:
+  - bugfix: the bluespace miner's machine board item now has the correct name
