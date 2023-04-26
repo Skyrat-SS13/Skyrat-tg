@@ -19,7 +19,7 @@
 #define KAHRAMAN_INDUSTRIES_NAME "Kahraman Heavy Industries"
 #define NAKAMURA_ENGINEERING_TOOLING_NAME "Nakamura Engineering Tooling Divison"
 #define BOLT_NANOTRASEN_DEFENSE_NAME "Nanotrasen-Bolt Personal Defense Coalition"
-#define MICROSTAR_ENERGY_NAME "MicroStar Energy Weapon Coalition"
+#define MICROSTAR_ENERGY_NAME "Micron Control Systems"
 #define VITEZSTVI_AMMO_NAME "Vitezstvi Ammo & Weapon Accessories"
 
 #define COMPANY_INTEREST_GAIN_BIG 10

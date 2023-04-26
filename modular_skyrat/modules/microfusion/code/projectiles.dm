@@ -40,6 +40,7 @@
 	color = LIGHT_COLOR_FIRE
 	light_color = LIGHT_COLOR_FIRE
 
+
 /obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked)
 	. = ..()
 	if(isliving(target))
@@ -51,19 +52,22 @@
 	name = "hellfire microfusion laser"
 	icon_state = "laser_greyscale"
 	wound_bonus = 0
-	damage = 15 // You are trading damage for a significant wound bonus and speed increase
+	damage = 25 // Basically a hellfire beam
 	speed = 0.6
 	color = LIGHT_COLOR_FLARE
 	light_color = LIGHT_COLOR_FLARE
 
 /obj/projectile/beam/laser/microfusion/scatter
 	name = "scatter microfusion laser"
+	damage = 30 // This damage is split into pellet amount
 
 /obj/projectile/beam/laser/microfusion/scattermax
 	name = "scatter microfusion laser"
+	damage = 45 // This damage is split into pellet amount
 
 /obj/projectile/beam/laser/microfusion/repeater
-	damage = 10
+	name = "scatter microfusion laser"
+	damage = 15 // No more a x2 damage buff
 
 /obj/projectile/beam/laser/microfusion/penetrator
 	name = "scatter microfusion laser"
