@@ -69,7 +69,10 @@ DECLARE_LOG_NAMED(world_virus_log, "virus", DONT_START_LOG)
 /// Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.
 DECLARE_LOG_NAMED(world_suspicious_login_log, "suspicious_logins", DONT_START_LOG)
 
-
+// SKYRAT EDIT ADDITION
+DECLARE_LOG_NAMED(event_vote_log, "event_vote", START_LOG)
+DECLARE_LOG_NAMED(character_creation_log, "character_creation", START_LOG)
+// SKYRAT EDIT END
 
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
