@@ -266,7 +266,7 @@
 	atom_storage.max_total_storage = 16
 	atom_storage.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
 		/obj/item/ammo_box/magazine/toy/pistol,
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
