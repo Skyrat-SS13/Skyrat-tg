@@ -575,24 +575,24 @@
 	if(cell)
 		if(tactical_reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
-				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
+				balloon_alert(user, "inserting cell...")
 			if(!do_after(user, tactical_reload_time, src, IGNORE_USER_LOC_CHANGE))
 				if(display_message)
-					to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
+					balloon_alert(user, "cell insertion failed!")
 				return FALSE
 		if(display_message)
-			to_chat(user, span_notice("You tactically reload [src], replacing [cell] inside!"))
+			balloon_alert(user, "tactically reloaded!")
 		tactical_reload = TRUE
 		eject_cell(user, FALSE, FALSE)
 	else
 		if(display_message)
-			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
+			balloon_alert(user, "inserting cell...")
 		if(!do_after(user, normal_reload_time, src, IGNORE_USER_LOC_CHANGE))
 			if(display_message)
-				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
+				balloon_alert(user, "cell insertion failed!")
 			return FALSE
 		if(display_message)
-			to_chat(user, span_notice("You insert [inserting_cell] into [src]!"))
+			balloon_alert(user, "cell inserted!")
 	if(sound_cell_insert)
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
@@ -623,23 +623,28 @@
 /// Attatching an upgrade.
 /obj/item/gun/microfusion/proc/add_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
 	if(is_type_in_list(microfusion_gun_attachment, attachments))
-		balloon_alert(user, "already has one!")
+		if(user)
+			balloon_alert(user, "already has one!")
 		return FALSE
 	if(!(microfusion_gun_attachment.slot in attachment_slots))
-		balloon_alert(user, "can't install!")
+		if(user)
+			balloon_alert(user, "can't install!")
 		return FALSE
 	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attachments)
 		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
-			balloon_alert(user, "not compatible with [iterating_attachment]!")
+			if(user)
+				balloon_alert(user, "not compatible with [iterating_attachment]!")
 			return FALSE
 		if(iterating_attachment.slot != GUN_SLOT_UNIQUE && iterating_attachment.slot == microfusion_gun_attachment.slot)
-			balloon_alert(user, "slot full!")
+			if(user)
+				balloon_alert(user, "slot full!")
 			return FALSE
 	attachments += microfusion_gun_attachment
 	microfusion_gun_attachment.forceMove(src)
 	microfusion_gun_attachment.run_attachment(src)
-	balloon_alert(user, "installed attachment")
-	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
+	if(user)
+		balloon_alert(user, "installed attachment")
+		playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	return TRUE
 
 /obj/item/gun/microfusion/proc/remove_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
