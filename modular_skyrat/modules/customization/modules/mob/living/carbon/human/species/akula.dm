@@ -7,11 +7,11 @@
 	name = "Akula"
 	id = SPECIES_AKULA
 	offset_features = list(
-		OFFSET_GLASSES = list(0,1),
-		OFFSET_EARS = list(0,2),
-		OFFSET_FACEMASK = list(0,2),
-		OFFSET_HEAD = list(0,1),
-		OFFSET_HAIR = list(0,1),
+		OFFSET_GLASSES = list(0, 1),
+		OFFSET_EARS = list(0, 2),
+		OFFSET_FACEMASK = list(0, 2),
+		OFFSET_HEAD = list(0, 1),
+		OFFSET_HAIR = list(0, 1),
 	)
 	eyes_icon = 'modular_skyrat/modules/organs/icons/akula_eyes.dmi'
 	mutanteyes = /obj/item/organ/internal/eyes/akula
@@ -62,7 +62,8 @@
 	"The Old Principalities, coreward around their Homeworld, are a burgeoning place slowly falling victim to stagnation. The core worlds still cling to ancient traditions, ceremonies and expectation; old aristocratic houses, tracing their power from ancient ancestors placed to protect and shepherd their assigned lands, still thrive; and the King still rules over many systems of old. Constant reforms and false shake-ups of the status quo demand more and more. Longer bouts of service to achieve citizenship, reformation camps to 'iron out' those with physical and mental defects, and high reliance on exams, education, and pomp to create a hierarchy within its society.",
 	"The New Principalities, created and commandeered by edgerunning 'border princes' dwelling around the furthest reaches of the Kingdom, embody the Azulean spirit of opportunism and adventurism. Warlord-style nobles reign free, able to outswim any checks meant to control their power and influence. A laissez-faire approach is taken here, where anyone can do anything to become somebody; ambition and self-evolution valued far more than any birthright. Sprawling casino cities, pirate ports, and even luxurious resorts are known to be built up overnight, anyone being able to make money and become wealthy and even command naval ships on charisma and strength alone; fear being the second state currency right behind credits. Even some SolFed citizens are known to come here and profit as mercenaries, investors, gamblers, or even 'border princes.'",
 	"These generations split apart by distance are known for their animosity towards the other. To those in the New Principalities, their coreward cousins have lost the 'Azulean spirit;' rotting apart in their palaces, sitting in waters choked with ennui. Their forever expansion into the frontier colonies, their use of every useful material and lifeform is what they believe their Kingdom is fueled by. But to those in the Old Principalities, their edgeward descendants have lost their minds. They believe the spiritual and societal importance of their Homeworld has fallen on deaf ears, and the lackadaisical attitude about the core mechanisms and noble structures holding the Kingdom together has become nothing short of infuriating. It is the belief of many high-ranking members of the Monarchy that the ongoing terraforming processes in the frontiers are proof of the arrogance of the 'border princes' controlling them; each and every world made in the image of a planet the King himself is meant to protect.",
-	"Yet, despite their differences, all Agurkrral citizens swim freely in their kingdom's waters. Even the most controlling border princes, even those in the Old Principalities working the slave trade, know better than to openly erode a citizen's right to life, property, and speech. Any alien species can become an Agurkrral citizen, and even non-citizens enjoy the right to life, with executions outright banned. The aristocracy remains well-educated, even the edgerunner warlords of the New Principalities, and the Kingdom as a whole enjoys its status as a nation that's now a true rival to Sol. Larger, more populated, and better developed; though, having to 'integrate' Solarian technologies, goods, and peoples to fully succeed. The Azuleans are even known as an environmentally-focused people; although they hold no care for lands they cannot make use of, modern nobles are still in charge of maintaining the biosphere of lands they control, to allow their strangely engineered flora and fauna to thrive, and for the people to have healthy and clean waters to live in.")
+	"Yet, despite their differences, all Agurkrral citizens swim freely in their kingdom's waters. Even the most controlling border princes, even those in the Old Principalities working the slave trade, know better than to openly erode a citizen's right to life, property, and speech. Any alien species can become an Agurkrral citizen, and even non-citizens enjoy the right to life, with executions outright banned. The aristocracy remains well-educated, even the edgerunner warlords of the New Principalities, and the Kingdom as a whole enjoys its status as a nation that's now a true rival to Sol. Larger, more populated, and better developed; though, having to 'integrate' Solarian technologies, goods, and peoples to fully succeed. The Azuleans are even known as an environmentally-focused people; although they hold no care for lands they cannot make use of, modern nobles are still in charge of maintaining the biosphere of lands they control, to allow their strangely engineered flora and fauna to thrive, and for the people to have healthy and clean waters to live in.",
+	)
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
