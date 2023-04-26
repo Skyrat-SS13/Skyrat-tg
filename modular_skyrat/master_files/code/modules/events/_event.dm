@@ -4,7 +4,7 @@
 	if(intensity_restriction && !GLOB.intense_event_credits)
 		return FALSE
 
-/datum/round_event_control/runEvent(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
+/datum/round_event_control/run_event(random = FALSE, announce_chance_override = null, admin_forced = FALSE, event_cause)
 	. = ..()
 	log_game("ICES: [src.name] is our next event.")
 	if(intensity_restriction && GLOB.intense_event_credits)
