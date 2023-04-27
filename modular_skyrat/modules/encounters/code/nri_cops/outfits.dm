@@ -29,7 +29,13 @@
 
 	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack/raider = 1,
+		/obj/item/ammo_box/magazine/m9mm_aps = 3,
+		obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1,
+		/obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1,
+		/obj/item/modular_computer/pda/security = 1,
+	)
 	l_pocket = /obj/item/folder/blue/nri_cop
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -56,7 +62,13 @@
 
 	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack/raider = 1,
+		/obj/item/crucifix = 1,
+		/obj/item/ammo_box/magazine/m9mm = 3,
+		/obj/item/clothing/mask/gas/hecu2 = 1,
+		/obj/item/modular_computer/pda/security = 1,
+	)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/storage/bag/ammo
 

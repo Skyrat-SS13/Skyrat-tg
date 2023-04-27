@@ -3,14 +3,18 @@
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/flashbang = 1,
-	),src)
+		),
+		src,
+	)
 
 /obj/item/storage/belt/security/nri/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/flashbang = 1,
-	),src)
+		),
+		src,
+	)
 
 /obj/item/storage/box/nri_survival_pack/raider
 	desc = "A box filled with useful emergency items, supplied by the NRI. It feels particularily light."

@@ -11,12 +11,14 @@
 	forced_ambience = TRUE
 	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/amb_ship_01.ogg'
 	ambient_buzz_vol = 15
-	ambientsounds = list('modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
-						'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
-						'modular_skyrat/modules/encounters/sounds/gear_loop.ogg',
-						'modular_skyrat/modules/encounters/sounds/gear_start.ogg',
-						'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
-						'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg')
+	ambientsounds = list(
+		'modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
+		'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
+		'modular_skyrat/modules/encounters/sounds/gear_loop.ogg',
+		'modular_skyrat/modules/encounters/sounds/gear_start.ogg',
+		'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
+		'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg',
+	)
 
 /obj/machinery/computer/shuttle/pirate/nri
 	name = "police shuttle console"
