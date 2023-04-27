@@ -9,7 +9,7 @@
 	purchase_price = 150 //RP tool
 	persistence = TRUE
 	/// What is the linked soulcatcher datum used by this NIFSoft?
-	var/datum/component/soulcatcher/linked_soulcatcher
+	var/datum/weakref/linked_soulcatcher
 	/// What action to bring up the soulcatcher is linked with this NIFSoft?
 	var/datum/action/innate/soulcatcher/soulcatcher_action
 	/// a list containing saved soulcatcher rooms
@@ -22,17 +22,34 @@
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent_nif
-	linked_soulcatcher = target_nif.AddComponent(/datum/component/soulcatcher)
+	var/datum/component/soulcatcher/new_soulcatcher = target_nif.AddComponent(/datum/component/soulcatcher)
 
 	for(var/room in saved_soulcatcher_rooms)
-		linked_soulcatcher.create_room(room, saved_soulcatcher_rooms[room])
+		new_soulcatcher.create_room(room, saved_soulcatcher_rooms[room])
 
-	if(length(linked_soulcatcher.soulcatcher_rooms) > 1) //We don't need the default room anymore.
-		linked_soulcatcher.soulcatcher_rooms -= linked_soulcatcher.soulcatcher_rooms[1]
+	if(length(new_soulcatcher.soulcatcher_rooms) > 1) //We don't need the default room anymore.
+		new_soulcatcher.soulcatcher_rooms -= new_soulcatcher.soulcatcher_rooms[1]
+
+	RegisterSignal(new_soulcatcher, COMSIG_PARENT_QDELETING, .proc/no_soulcatcher_component)
+	linked_soulcatcher = WEAKREF(new_soulcatcher)
 
 /datum/nifsoft/soulcatcher/activate()
 	. = ..()
-	linked_soulcatcher.ui_interact(linked_mob)
+	if(!linked_soulcatcher)
+		return FALSE
+
+	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	if(!current_soulcatcher)
+		return FALSE
+
+	current_soulcatcher.ui_interact(linked_mob)
+	return TRUE
+
+/// If the linked soulcatcher is being deleted we want to set the current linked soulcatcher to `FALSE`
+/datum/nifsoft/soulcatcher/proc/no_soulcatcher_component()
+	SIGNAL_HANDLER
+
+	linked_soulcatcher = null
 
 /datum/nifsoft/soulcatcher/Destroy()
 	if(soulcatcher_action)
@@ -40,7 +57,9 @@
 		qdel(soulcatcher_action)
 
 	if(linked_soulcatcher)
-		qdel(linked_soulcatcher)
+		var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+		if(current_soulcatcher)
+			qdel(current_soulcatcher)
 
 	return ..()
 
@@ -59,7 +78,8 @@
 		return FALSE
 
 	var/list/room_list = list()
-	for(var/datum/soulcatcher_room/room in linked_soulcatcher.soulcatcher_rooms)
+	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	for(var/datum/soulcatcher_room/room in current_soulcatcher.soulcatcher_rooms)
 		room_list[room.name] = room.room_description
 
 	persistence.nif_soulcatcher_rooms = list2params(room_list)
