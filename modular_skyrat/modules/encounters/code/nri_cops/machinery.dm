@@ -64,7 +64,10 @@
 
 
 /obj/machinery/shuttle_scrambler/nri/send_notification()
-	if(active)
-		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
-	else
-		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+	priority_announce(active ?
+		"We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be." :
+		"We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.",
+		"NRI IAC HQ",
+		ANNOUNCER_NRI_RAIDERS,
+		"Priority"
+	)
