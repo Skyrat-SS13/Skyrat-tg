@@ -179,7 +179,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
 
-//PEACEKEEPER BELTS + SHOULDER HOLSTER CHANGES
+//PEACEKEEPER BELTS 
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
 	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
@@ -257,45 +257,6 @@
 		/obj/item/holosign_creator/security
 		))
 		
-/obj/item/storage/belt/holster
-	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
-	
-/obj/item/storage/belt/holster/Initialize(mapload)
-	. = ..()
-	atom_storage.max_slots = 3
-	atom_storage.max_total_storage = 16
-	atom_storage.set_holdable(list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
-		/obj/item/ammo_box/magazine/toy/pistol,
-		/obj/item/gun/energy/e_gun/mini,
-		/obj/item/gun/energy/disabler,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/food/grown/banana,
-		/obj/item/gun/energy/dueling,
-		/obj/item/gun/energy/laser/thermal,
-		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
-		))
-	
-/obj/item/storage/belt/holster/detective
-	name = "detective's holster"
-	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
-
-/obj/item/storage/belt/holster/detective/Initialize(mapload)
-	. = ..()
-	atom_storage.max_slots = 4
-	atom_storage.set_holdable(list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
-		/obj/item/ammo_box/magazine/toy/pistol,
-		/obj/item/gun/energy/e_gun/mini,
-		/obj/item/gun/energy/disabler,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/food/grown/banana,
-		/obj/item/gun/energy/dueling,
-		/obj/item/gun/energy/laser/thermal,
-		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
-		))
 
 //BOOTS
 /obj/item/clothing/shoes/jackboots/peacekeeper
