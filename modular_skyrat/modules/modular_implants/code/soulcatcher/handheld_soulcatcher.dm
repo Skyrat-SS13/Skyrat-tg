@@ -162,7 +162,7 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-  ui_interact(user, target = target_mob)
+	ui_interact(user, target = target_mob)
 	return TRUE
 
 /obj/item/handheld_soulcatcher/proc/room_selected(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
