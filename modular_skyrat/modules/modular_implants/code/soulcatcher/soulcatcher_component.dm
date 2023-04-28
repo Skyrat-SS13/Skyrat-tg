@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/mob/living/soulcatcher_owner = get_current_holder()
 
-	if(!soulcatcher_owner)
+	if(!soulcatcher_owner || !soulcatcher_owner.client) // no client = runtime on a tgui alert
 		return FALSE
 
 	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No")) != "Yes")
@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable)
+		if (!can_join_soulcatcher(soulcatcher))
 			continue
 
 		joinable_soulcatchers += soulcatcher
@@ -297,12 +297,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
-	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
+	// you can no longer trust that the soulcatcher is open due to the list wait
+	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers) || !can_join_soulcatcher(soulcatcher_to_join))
 		return FALSE
 
 	var/list/rooms_to_join = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_to_join.soulcatcher_rooms)
-		if(!room.joinable)
+		if(!can_join_soulcatcher_room(room, FALSE)) // no need to check parent since we are now certain this soulcatcher is open
 			continue
 
 		rooms_to_join += room
@@ -315,7 +316,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		room_to_join = rooms_to_join[1]
 
 	else
+		// you cannot trust the state of any variable after a tgui_input_list, meaning both room AND soulcatcher
 		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
+		// we check both parent and room to see if either will let us in since. who knows maybe the parent closed?
+		if (!can_join_soulcatcher_room(room_to_join, check_parent = TRUE))
+			to_chat(src, span_warning("This room can no longer be joined!"))
+			return FALSE
 
 	if(!room_to_join)
 		to_chat(src, span_warning("There no rooms that you can join."))
@@ -333,6 +339,32 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	room_to_join.add_soul_from_ghost(src)
 	return TRUE
 
+/mob/proc/can_join_soulcatcher(datum/component/soulcatcher/catcher)
+	return TRUE
+
+/mob/dead/observer/can_join_soulcatcher(datum/component/soulcatcher/catcher)
+	. = ..()
+
+	if (!.)
+		return
+
+	if (!catcher.ghost_joinable)
+		return FALSE
+
+/mob/proc/can_join_soulcatcher_room(datum/soulcatcher_room/room, check_parent = TRUE, datum/component/soulcatcher/catcher)
+	if (check_parent)
+		if (!catcher)
+			catcher = room.master_soulcatcher.resolve()
+			if (!catcher)
+				return FALSE
+		if (!can_join_soulcatcher(catcher))
+			return FALSE
+
+	if (!room.joinable)
+		return FALSE
+
+	return TRUE
+
 /mob/grab_ghost(force)
 	SEND_SIGNAL(src, COMSIG_SOULCATCHER_CHECK_SOUL)
 	return ..()
@@ -342,3 +374,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return TRUE
 
 	return ..()
+
+/// Returns a list of all soulcatcher rooms beholden to this soulcatcher that user can join. Returns an empty list if user.can_join_soulcatcher is false.
+/datum/component/soulcatcher/proc/get_open_rooms(mob/user)
+	var/list/datum/soulcatcher_room/rooms = list()
+
+	if (!user.can_join_soulcatcher(src))
+		return rooms
+
+	for (var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		if (user.can_join_soulcatcher_room(room, FALSE))
+			rooms += room
+			continue
+
+	return rooms
