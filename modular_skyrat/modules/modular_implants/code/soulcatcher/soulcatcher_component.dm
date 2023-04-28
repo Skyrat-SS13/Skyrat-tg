@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_owner || !soulcatcher_owner.client) // no client = runtime on a tgui alert
 		return FALSE
 
-	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No")) != "Yes")
+	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
 
 	return TRUE

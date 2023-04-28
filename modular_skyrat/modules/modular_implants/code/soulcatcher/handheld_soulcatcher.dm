@@ -162,7 +162,7 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-	ui_interact(user, target = target_mob)
+  ui_interact(user, target = target_mob)
 	return TRUE
 
 /obj/item/handheld_soulcatcher/proc/room_selected(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
@@ -233,6 +233,8 @@
 
 	confirming_entry += real_target
 	RegisterSignal(real_target, COMSIG_PARENT_QDELETING, PROC_REF(handle_confirming_soul_del))
+	SEND_SOUND(real_target, 'sound/misc/notice2.ogg')
+	window_flash(real_target.client)
 	var/invitation_results = (((tgui_alert(real_target, message, name, list("Yes", "No"), 30 SECONDS) == "Yes") && (tgui_alert(real_target, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) == "Yes")))
 	UnregisterSignal(real_target, COMSIG_PARENT_QDELETING)
 	confirming_entry -= real_target
