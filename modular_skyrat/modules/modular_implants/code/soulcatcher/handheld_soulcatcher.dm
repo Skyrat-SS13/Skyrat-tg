@@ -245,5 +245,6 @@
 	SIGNAL_HANDLER
 
 	confirming_entry -= soul
+	UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
 
 #undef SOULCATCHER_CATCH_TIME_LIMIT
