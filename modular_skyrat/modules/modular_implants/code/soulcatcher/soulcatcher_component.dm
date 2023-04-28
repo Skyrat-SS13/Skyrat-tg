@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/soulcatcher_rooms = list()
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
+	/// Do we want to ask the user permission before the ghost joins?
+	var/require_approval = TRUE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -50,28 +52,50 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	created_room.master_soulcatcher = WEAKREF(src)
 
-///Recieves a message from a soulcatcher room.
+/// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
+/datum/component/soulcatcher/proc/get_current_holder()
+	var/mob/living/holder
+	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
+		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
+		holder = target_nif.linked_mob
+
+	else if(istype(parent, /obj/item))
+		var/obj/item/parent_item = parent
+		holder = parent_item.loc
+
+	if(!istype(holder))
+		return FALSE
+
+	return holder
+
+/// Recieves a message from a soulcatcher room.
 /datum/component/soulcatcher/proc/recieve_message(message_to_recieve)
 	if(!message_to_recieve)
 		return FALSE
 
-	if(istype(parent, /obj/item))
-		var/obj/item/parent_item = parent
-		var/mob/living/holder = parent_item.loc
-		if(!istype(holder))
-			return FALSE
+	var/mob/living/soulcatcher_owner = get_current_holder()
+	if(!soulcatcher_owner)
+		return FALSE
 
-		to_chat(holder, message_to_recieve)
+	to_chat(soulcatcher_owner, message_to_recieve)
+	return TRUE
+
+/// Attempts to ping the current user of the soulcatcher, asking them if `joiner_name` is allowed in. If they are, the proc returns `TRUE`, otherwise returns FALSE
+/datum/component/soulcatcher/proc/get_approval(joiner_name)
+	if(!require_approval)
 		return TRUE
 
-	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
-		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
-		to_chat(target_nif.linked_mob, message_to_recieve)
-		return TRUE
+	var/mob/living/soulcatcher_owner = get_current_holder()
 
-	return FALSE
+	if(!soulcatcher_owner)
+		return FALSE
 
-/// Attemps to scan the body for the `previous_body component`, returns FALSE if the body is unable to be scanned, otherwise returns TRUE
+	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No")) != "Yes")
+		return FALSE
+
+	return TRUE
+
+/// Attempts to scan the body for the `previous_body component`, returns FALSE if the body is unable to be scanned, otherwise returns TRUE
 /datum/component/soulcatcher/proc/scan_body(mob/living/parent_body, mob/living/user)
 	if(!parent_body || !user)
 		return FALSE
@@ -296,6 +320,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!room_to_join)
 		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE
+
+	if(soulcatcher_to_join.require_approval)
+		var/ghost_name = name
+		if(mind?.current)
+			ghost_name = "unknown"
+
+		if(!soulcatcher_to_join.get_approval(ghost_name))
+			to_chat(src, span_warning("The owner of [soulcatcher_to_join.name] declined your request to join."))
+			return FALSE
 
 	room_to_join.add_soul_from_ghost(src)
 	return TRUE

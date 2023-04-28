@@ -13,6 +13,8 @@
 	var/list/data = list()
 
 	data["ghost_joinable"] = ghost_joinable
+	data["require_approval"] = require_approval
+
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
 		var/list/room_data = list(
@@ -102,6 +104,10 @@
 
 		if("toggle_joinable")
 			ghost_joinable = !ghost_joinable
+			return TRUE
+
+		if("toggle_approval")
+			require_approval = !require_approval
 			return TRUE
 
 		if("modify_name")

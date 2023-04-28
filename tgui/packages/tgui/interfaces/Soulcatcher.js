@@ -4,7 +4,7 @@ import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledLi
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_vessel, current_rooms = [], ghost_joinable } = data;
+  const { require_approval, current_rooms = [], ghost_joinable } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -276,6 +276,13 @@ export const Soulcatcher = (props, context) => {
           icon={ghost_joinable ? 'door-open' : 'door-closed'}
           onClick={() => act('toggle_joinable', {})}>
           {ghost_joinable ? 'Opened' : 'Closed'} to ghosts
+        </Button>
+        <Button
+          fluid
+          color={require_approval ? 'green' : 'red'}
+          icon={require_approval ? 'lock' : 'lock-open'}
+          onClick={() => act('toggle_approval', {})}>
+          Approval is {require_approval ? '' : 'not'} required to join
         </Button>
       </Window.Content>
     </Window>

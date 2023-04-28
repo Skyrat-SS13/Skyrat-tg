@@ -1,3 +1,5 @@
+#define RSD_ATTEMPT_COOLDOWN 2 MINUTES
+
 /obj/item/handheld_soulcatcher
 	name = "\improper Evoker-type RSD"
 	desc = "The Evoker-Type Resonance Simulation Device is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
@@ -8,6 +10,8 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	/// What soulcatcher datum is associated with this item?
 	var/datum/component/soulcatcher/linked_soulcatcher
+	/// The cooldown for the RSD on scanning a body if the ghost refuses. This is here to prevent spamming.
+	COOLDOWN_DECLARE(rsd_scan_cooldown)
 
 /obj/item/handheld_soulcatcher/attack_self(mob/user, modifiers)
 	linked_soulcatcher.ui_interact(user)
@@ -31,8 +35,13 @@
 		linked_soulcatcher.scan_body(target_mob, user)
 		return TRUE
 
-	if(!target_mob.mind || !target_mob.ckey)
+	if(!target_mob.mind)
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
+		return FALSE
+
+	if(!COOLDOWN_FINISHED(src, rsd_scan_cooldown))
+		var/time_left = round((COOLDOWN_TIMELEFT(src, rsd_scan_cooldown)) / (1 MINUTES), 0.01)
+		to_chat(user, span_warning("You are currently unable to grab the soul of [target_mob], please wait [time_left] minutes before trying again."))
 		return FALSE
 
 	if(target_mob.stat == DEAD) //We can temporarily store souls of dead mobs.
@@ -48,6 +57,7 @@
 
 		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), 30 SECONDS, autofocus = TRUE) != "Yes")
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
+			COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 			return FALSE
 
 		if(!target_room.add_soul_from_ghost(target_ghost))
@@ -66,6 +76,7 @@
 		return FALSE
 
 	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) != "Yes"))
+		COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE
 
@@ -85,3 +96,5 @@
 	log_admin("[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher while they were still alive at [AREACOORD(source_turf)]")
 
 	return TRUE
+
+#undef RSD_ATTEMPT_COOLDOWN
