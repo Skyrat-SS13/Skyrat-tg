@@ -63,3 +63,6 @@
 
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
+
+/// trait that lets you do xenoarch magnification
+#define TRAIT_XENOARCH_QUALIFIED "trait_xenoarch_qualified"

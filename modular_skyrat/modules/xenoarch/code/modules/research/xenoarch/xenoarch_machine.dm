@@ -63,7 +63,7 @@
 	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
 	icon_state = "researcher"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
-	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns an anomalous crystal.
+	///A variable that goes from 0 to 150. Depending on what is processed, increases the value. Once at or above 150, spawns an anomalous crystal.
 	var/current_research = 0
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)
