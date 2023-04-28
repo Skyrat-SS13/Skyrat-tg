@@ -545,12 +545,9 @@ Possible to do for anyone motivated enough:
 		hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
 		SET_PLANE_EXPLICIT(hologram, ABOVE_GAME_PLANE, src)
 		hologram.set_anchored(TRUE)//So space wind cannot drag it.
-<<<<<<< HEAD
+		//hologram.name = "[user.name] (Hologram)"//If someone decides to right click. // ORIGINAL
 		hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
-=======
-		hologram.name = "[user.name] (Hologram)"//If someone decides to right click.
 		set_holo(user, hologram)
->>>>>>> 88fcbad2813 (Fixes holorecords not getting the color filter properly (#74999))
 
 		set_holo(user, hologram)
 		visible_message(span_notice("A holographic image of [user] flickers to life before your eyes!"))
