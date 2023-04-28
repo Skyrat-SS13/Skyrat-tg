@@ -512,8 +512,8 @@
 	. = ..()
 	if(. & EMP_PROTECT_CONTENTS)
 		return
-	var/informed = FALSE
 	for(var/obj/item/bodypart/L as anything in src.bodyparts)
+<<<<<<< HEAD
 		if(!IS_ORGANIC_LIMB(L))
 			if(!informed)
 				to_chat(src, span_userdanger("You feel a sharp pain as your robotic limbs overload."))
@@ -527,6 +527,9 @@
 					Paralyze(100)
 */
 //SKYRAT EDIT REMOVAL END
+=======
+		L.emp_act()
+>>>>>>> 129c74c945a (EMPs on robotic limbs will now disable them for 4-8 seconds rather than causing a 10-20 second full stun (#74570))
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit) //todo: update this to utilize check_obscured_slots() //and make sure it's check_obscured_slots(TRUE) to stop aciding through visors etc
 	var/list/damaged = list()
