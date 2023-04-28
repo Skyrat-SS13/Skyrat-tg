@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_owner)
 		return FALSE
 
-	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No")) != "Yes", autofocus = FALSE)
+	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
 
 	return TRUE
