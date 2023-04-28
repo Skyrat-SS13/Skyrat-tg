@@ -9,8 +9,6 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	/// If the toy is on or off
-	var/toy_on = FALSE
 	/// What mode the vibrator is on
 	var/vibration_mode = "off"
 	/// Assoc list of modes, used to shift between them
@@ -60,7 +58,7 @@
 
 /obj/item/clothing/sextoy/magic_wand/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!toy_on || !istype(user))
+	if(vibration_mode == "off" || !istype(user))
 		return
 	if(src == user.penis || src == user.vagina)
 		START_PROCESSING(SSobj, src)
@@ -90,7 +88,7 @@
 		return
 
 	var/message = ""
-	if(!toy_on)
+	if(vibration_mode == "off")
 		to_chat(user, span_notice("You must turn on the toy, to use it!"))
 		return
 	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
@@ -159,8 +157,9 @@
 
 /// Toggle between toy modes in a specific order
 /obj/item/clothing/sextoy/magic_wand/proc/toggle_mode()
-	toy_on = TRUE
-	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+	if(vibration_mode != "high")
+		playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+
 	switch(vibration_mode)
 		if("off")
 			soundloop1.start()
@@ -174,7 +173,6 @@
 			soundloop3.start()
 			vibration_mode = "high"
 		if("high")
-			toy_on = FALSE
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
 			vibration_mode = "off"
