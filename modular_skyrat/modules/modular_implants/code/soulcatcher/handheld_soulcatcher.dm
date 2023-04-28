@@ -55,7 +55,10 @@
 		if(!target_room)
 			return FALSE
 
-		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), 30 SECONDS, autofocus = TRUE) != "Yes")
+		SEND_SOUND(target_ghost, 'sound/misc/notice2.ogg')
+		window_flash(target_ghost.client)
+
+		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), 30 SECONDS, autofocus = FALSE) != "Yes")
 			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 			COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 			return FALSE
@@ -75,7 +78,10 @@
 	if(!target_room)
 		return FALSE
 
-	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) != "Yes"))
+	SEND_SOUND(target_mob, 'sound/misc/notice2.ogg')
+	window_flash(target_mob.client)
+
+	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes"))
 		COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE
