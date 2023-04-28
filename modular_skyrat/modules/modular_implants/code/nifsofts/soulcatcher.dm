@@ -30,6 +30,8 @@
 	if(length(new_soulcatcher.soulcatcher_rooms) > 1) //We don't need the default room anymore.
 		new_soulcatcher.soulcatcher_rooms -= new_soulcatcher.soulcatcher_rooms[1]
 
+	new_soulcatcher.name = "[linked_mob]'s soulcatcher"
+
 	RegisterSignal(new_soulcatcher, COMSIG_PARENT_QDELETING, .proc/no_soulcatcher_component)
 	linked_soulcatcher = WEAKREF(new_soulcatcher)
 
