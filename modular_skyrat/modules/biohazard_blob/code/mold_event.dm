@@ -2,7 +2,7 @@
 #define MOLDIES_SPAWN_LOWPOP_MAX 1
 #define MOLDIES_SPAWN_HIGHPOP_MIN 1
 #define MOLDIES_SPAWN_HIGHPOP_MAX 2
-#define MOLDIES_LOWPOP_THRESHOLD 25
+#define MOLDIES_LOWPOP_THRESHOLD 45
 #define MOLDIES_MIDPOP_THRESHOLD 75
 #define MOLDIES_HIGHPOP_THRESHOLD 115
 
@@ -35,7 +35,7 @@
 
 /datum/round_event/mold/announce(fake)
 	if(!fake)
-		event_minimum_security_level(SEC_LEVEL_VIOLET, FALSE, FALSE)
+		INVOKE_ASYNC(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level/, minimum_security_level), SEC_LEVEL_VIOLET, FALSE, FALSE)
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
 
 /datum/round_event/mold/start()

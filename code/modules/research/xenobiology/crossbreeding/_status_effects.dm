@@ -258,7 +258,7 @@
 	duration = 100
 
 /datum/status_effect/watercookie/on_apply()
-	ADD_TRAIT(owner, TRAIT_NOSLIPWATER,"watercookie")
+	ADD_TRAIT(owner, TRAIT_NO_SLIP_WATER,"watercookie")
 	return ..()
 
 /datum/status_effect/watercookie/tick()
@@ -266,7 +266,7 @@
 		T.MakeSlippery(TURF_WET_WATER, min_wet_time = 10, wet_time_to_add = 5)
 
 /datum/status_effect/watercookie/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_NOSLIPWATER,"watercookie")
+	REMOVE_TRAIT(owner, TRAIT_NO_SLIP_WATER,"watercookie")
 
 /datum/status_effect/metalcookie
 	id = "metalcookie"
@@ -536,11 +536,11 @@
 	colour = "blue"
 
 /datum/status_effect/stabilized/blue/on_apply()
-	ADD_TRAIT(owner, TRAIT_NOSLIPWATER, "slimestatus")
+	ADD_TRAIT(owner, TRAIT_NO_SLIP_WATER, "slimestatus")
 	return ..()
 
 /datum/status_effect/stabilized/blue/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_NOSLIPWATER, "slimestatus")
+	REMOVE_TRAIT(owner, TRAIT_NO_SLIP_WATER, "slimestatus")
 
 /datum/status_effect/stabilized/metal
 	id = "stabilizedmetal"
@@ -920,6 +920,7 @@
 /datum/status_effect/stabilized/oil/tick()
 	if(owner.stat == DEAD)
 		explosion(owner, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 4, flame_range = 5, explosion_cause = src)
+		qdel(linked_extract)
 	return ..()
 
 /datum/status_effect/stabilized/oil/get_examine_text()

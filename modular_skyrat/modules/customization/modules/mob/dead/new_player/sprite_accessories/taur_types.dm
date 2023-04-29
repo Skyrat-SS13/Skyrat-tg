@@ -33,7 +33,7 @@
 
 /datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target)
 	var/obj/item/clothing/suit/worn_suit = target.wear_suit
-	if(istype(worn_suit) && (worn_suit.flags_inv & HIDEJUMPSUIT) && !worn_suit.gets_cropped_on_taurs)
+	if(istype(worn_suit) && (worn_suit.flags_inv & HIDETAIL) && !worn_suit.gets_cropped_on_taurs)
 		return TRUE
 	if(target.owned_turf)
 		var/list/used_in_turf = list("tail")
@@ -126,5 +126,11 @@
 /datum/sprite_accessory/taur/goop
 	name = "Goop"
 	icon_state = "goop"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/taur/slime
+	name = "Slime"
+	icon_state = "slime"
 	taur_mode = STYLE_TAUR_SNAKE
 	color_src = USE_ONE_COLOR

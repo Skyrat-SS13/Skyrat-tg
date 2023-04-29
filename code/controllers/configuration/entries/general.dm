@@ -76,6 +76,9 @@
 /// log prayers
 /datum/config_entry/flag/log_prayer
 
+///Log Music Requests
+/datum/config_entry/flag/log_internet_request
+
 /// log silicons
 /datum/config_entry/flag/log_silicon
 
@@ -102,6 +105,9 @@
 
 /// log voting
 /datum/config_entry/flag/log_vote
+
+/// log manual zone switching
+/datum/config_entry/flag/log_zone_switch
 
 /// log client whisper
 /datum/config_entry/flag/log_whisper
@@ -355,6 +361,11 @@
 /datum/config_entry/string/invoke_youtubedl
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/flag/request_internet_sound
+
+/datum/config_entry/string/request_internet_allowed
+	protection = CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/flag/show_irc_name
 
 /datum/config_entry/flag/no_default_techweb_link
@@ -522,7 +533,7 @@
 	integer = FALSE
 
 /datum/config_entry/flag/irc_announce_new_game
-	deprecated_by = /datum/config_entry/string/chat_announce_new_game
+	deprecated_by = /datum/config_entry/string/channel_announce_new_game
 
 /datum/config_entry/flag/irc_announce_new_game/DeprecationUpdate(value)
 	return "" //default broadcast
@@ -645,6 +656,9 @@
 
 /datum/config_entry/flag/cache_assets
 	default = TRUE
+
+/datum/config_entry/flag/save_spritesheets
+	default = FALSE
 
 /datum/config_entry/flag/station_name_in_hub_entry
 	default = FALSE

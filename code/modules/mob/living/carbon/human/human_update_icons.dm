@@ -159,10 +159,8 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-		/* SKYRAT EDIT START - PDA-B-GONE
 		var/icon_file = 'icons/mob/clothing/id.dmi'
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
-		*/ //SKYRAT EDIT END - PDA-B-GONE
 		if(!id_overlay)
 			return
 		if(OFFSET_ID in dna.species.offset_features)
@@ -927,7 +925,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 		// eyes
 		if(!(NOEYESPRITES in dna.species.species_traits))
-			var/obj/item/organ/internal/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/parent_eyes = get_organ_slot(ORGAN_SLOT_EYES)
 			if(parent_eyes)
 				add_overlay(parent_eyes.generate_body_overlay(src))
 			else

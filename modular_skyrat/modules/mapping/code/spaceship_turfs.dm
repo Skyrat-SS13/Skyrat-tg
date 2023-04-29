@@ -54,6 +54,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS + SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_SHIPWALLS
 	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE
+	obj_flags = CAN_BE_HIT
 
 /obj/structure/window/reinforced/shuttle/spaceship/tinted
 	opacity = TRUE

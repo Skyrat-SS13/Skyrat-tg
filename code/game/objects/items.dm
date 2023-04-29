@@ -1,10 +1,9 @@
-GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/effects/fire.dmi', "fire", appearance_flags = RESET_COLOR))
-
 /// Anything you can pick up and hold.
 /obj/item
 	name = "item"
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/objects.dmi'
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	burning_particles = /particles/smoke/burning/small
 	pass_flags_self = PASSITEM
 
 	/* !!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!
@@ -466,7 +465,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/item/ui_act(action, list/params)
+/obj/item/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	add_fingerprint(usr)
 	return ..()
 
@@ -610,7 +609,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return
 
 	//If the item is in a storage item, take it out
-	if(loc.atom_storage?.remove_single(user, src, user.loc, silent = TRUE))
+	if(loc.atom_storage && !loc.atom_storage.remove_single(user, src, user.loc, silent = TRUE))
 		return
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
 		return
@@ -713,6 +712,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  */
 /obj/item/proc/equipped(mob/user, slot, initial = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(user, COMSIG_HUMAN_EQUIPPING_ITEM, src, slot)
 	visual_equipped(user, slot, initial)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 	SEND_SIGNAL(user, COMSIG_MOB_EQUIPPED_ITEM, src, slot)
@@ -814,7 +814,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		var/mob/living/L = hit_atom
 		L.ignite_mob()
 	var/itempush = 1
-	if(w_class < 4)
+	if(w_class < WEIGHT_CLASS_BULKY)
 		itempush = 0 //too light to push anything
 	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
@@ -902,6 +902,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 ///Returns the temperature of src. If you want to know if an item is hot use this proc.
 /obj/item/proc/get_temperature()
+	if(resistance_flags & ON_FIRE)
+		return max(heat, BURNING_ITEM_MINIMUM_TEMPERATURE)
 	return heat
 
 ///Returns the sharpness of src. If you want to get the sharpness of an item use this.
@@ -1610,11 +1612,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * This proc calls at the begining of anytime an item is being equiped to a target by another mob.
  * It handles initial messages, AFK stripping, and initial logging.
  */
-/obj/item/proc/item_start_equip(atom/target, obj/item/equipping, mob/user, warn_dangerous = TRUE)
+/obj/item/proc/item_start_equip(atom/target, obj/item/equipping, mob/user, show_visible_message = TRUE)
 
-	if(warn_dangerous && isclothing(equipping))
-		var/obj/item/clothing/clothing = equipping
-		if(clothing.clothing_flags & DANGEROUS_OBJECT)
+	if(show_visible_message)
+		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_OBJECT))
 			target.visible_message(
 				span_danger("[user] tries to put [equipping] on [target]."),
 				span_userdanger("[user] tries to put [equipping] on you."),

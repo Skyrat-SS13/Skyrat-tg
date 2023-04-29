@@ -112,6 +112,7 @@
 	return total_burn_power
 
 /obj/effect/abstract/liquid_turf/extinguish()
+	. = ..()
 	if(fire_state)
 		set_fire_state(LIQUID_FIRE_STATE_NONE)
 
@@ -409,7 +410,7 @@
 					if(!AM.anchored && !AM.pulledby && !isobserver(AM) && (AM.move_resist < INFINITY))
 						if(iscarbon(AM))
 							var/mob/living/carbon/C = AM
-							if(!(C.shoes && C.shoes.clothing_flags & NOSLIP))
+							if(!(C.shoes && C.shoes.clothing_flags))
 								step(C, dir)
 								if(prob(60) && C.body_position != LYING_DOWN)
 									to_chat(C, span_userdanger("The current knocks you down!"))

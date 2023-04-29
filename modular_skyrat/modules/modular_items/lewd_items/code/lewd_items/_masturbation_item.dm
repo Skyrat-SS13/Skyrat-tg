@@ -19,8 +19,8 @@
 		return
 
 	var/mob/living/carbon/human/affected_human = user
-	var/obj/item/organ/external/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/external/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/testicles = affected_human.get_organ_slot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/penis/penis = affected_human.get_organ_slot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/penis_sprite = GLOB.sprite_accessories[ORGAN_SLOT_PENIS][affected_human.dna.species.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME]]
 	if(penis_sprite.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))

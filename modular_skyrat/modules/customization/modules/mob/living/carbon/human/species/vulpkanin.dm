@@ -25,6 +25,7 @@
 	liked_food = RAW | MEAT
 	disliked_food = CLOTH
 	toxic_food = TOXIC
+	species_language_holder = /datum/language_holder/vulpkanin
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_MAMMAL

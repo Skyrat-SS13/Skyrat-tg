@@ -60,6 +60,7 @@
 	burst_size = 3
 	fire_delay = 2.10
 	spread = 8
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	projectile_damage_multiplier = 0.5
@@ -183,6 +184,7 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 5
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
 	name = "\improper PDH-6M magazine"
@@ -213,6 +215,7 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 9
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	name = "\improper PDH-6M magazine"
@@ -465,6 +468,7 @@
 	burst_size = 3
 	fire_delay = 2.10
 	spread = 25
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 
@@ -509,6 +513,7 @@
 	mag_display_ammo = FALSE
 	burst_size = 2
 	fire_delay = 1.90
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -892,6 +897,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	burst_size = 1
 	fire_delay = 10
+	actions_types = list()
 
 /obj/item/gun/ballistic/automatic/norwind/Initialize(mapload)
 	. = ..()
@@ -1059,6 +1065,7 @@
 	can_suppress = FALSE
 	burst_size = 3
 	spread = 15
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
@@ -1121,6 +1128,7 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 2
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'

@@ -1180,3 +1180,357 @@
       runtiming.
   - code_imp: the parented_struct variable, now turned into a weakref, now only applies
       to adult furniture.
+2023-03-26:
+  123Neok321:
+  - rscadd: Side swept back horns tyle, reptile slim tail.
+  LT3:
+  - code_imp: Latejoin janitors now also get access keys, to a maximum of 3
+  PositiveEntropy:
+  - imageadd: Redoes The Safes!
+  SkyratBot:
+  - bugfix: The intern who was recording Etheral crewmembers' bloodtypes as random
+      human bloodtypes has been replaced with an intern who has seen the example made
+      of the previous one.
+  - bugfix: Removing a storage implant from someone will dump the items on the ground
+      rather than inside the mob.
+  - bugfix: Wizard Apprentices can no longer draw their own ritual circles.
+  - imageadd: prettified all RTD icons
+  - imageadd: prettified in hand RLD icons
+  - imageadd: subtly improved the RSF icons
+  - rscadd: Bioscrambler anomalies will once again swap your organs with other organs.
+  - balance: Bioscrambler anomalies no longer affect synthetic parts.
+  - rscadd: Wirebrush is now avalaible at janivend, for janiborg and you can put it
+      in the janibelt.
+  - bugfix: Circuit-based bluespace launchpads now work again!
+  - bugfix: You can no longer use Pocket Protectors to pull items out of nullspace
+  - bugfix: drawing from an empty tarot card deck no longer causes runtimes
+  - bugfix: broken sprites in RCD UI
+  - bugfix: Thrown reagent containers (beakers, molotovs) hitting mobs no longer fully
+      splash their target with their contents, as this was unintended behavior. The
+      intended behavior was 0-50% of the splashed reagents being ignored. Throwing
+      stuff at floors/walls is unaffected.
+  - rscadd: Added skirt variants of the galaxy suits
+2023-03-27:
+  HWSensum:
+  - bugfix: Energy gun holster now will contain termal pistols rather be empty.
+  Jolly:
+  - bugfix: The directional states for the toppled wooden chair sprites are now consistent.
+      You really can't tell visually, but its been fixed.
+  - imageadd: Using the new wooden chair sprites, there's now new toppled wooden chair
+      sprites. Go wild. Have a ballroom brawl or something.
+  LT3:
+  - imageadd: Solo benches are no longer invisible when facing east/west
+  - imageadd: Fire alarm sprites are directional again
+  Melbert:
+  - balance: Magboots will now protect you from sliding on ice. It will not stop the
+      slip, though.
+  - bugfix: '"Ice sliding" (from patches of permafrost ice) will now correctly slide
+      you until you reach a non-ice patch.'
+  - bugfix: Speed potioned magboots maintain their speed booster after toggling them
+  - refactor: Refactored magboots.
+  - refactor: Refactored noslip mechanics.
+  SkyratBot:
+  - bugfix: Plasmamen don't have hearts, again
+  - bugfix: aux construction console RCD works again
+  - balance: Putting a non-clothing item onto someone else creates a visible message
+      the same way a clothing item would.
+  - refactor: Stickers use a component and an element now to do their sticking
+  - rscadd: I made circuit floors brighter and more vivid.
+  - rscadd: Made air alarms, vending machines, newscasters, request consoles, status
+      displays and keycard machines slightly "brighter" (larger light range, tho I
+      did make air alarms a bit brighter too)
+  - rscadd: Tweaked desklamps. Lower range, and each type gets its own coloring instead
+      of just fullwhite.
+  - bugfix: AI displays are no longer always emissive, they'll stop doing it if they
+      aren't displaying anything. Hopefully this'll look nicer
+  - qol: guillotine description tips are now span_notices (blue text) instead of just
+      a bunch of grey text.
+  - bugfix: fixed a bug that if you try to behead body without a head with guillotine
+      it just stops working.
+  - balance: midwife spider eggs now spawn in separate locations. Divide and conquer!
+  - bugfix: midwife spider eggs can no longer generate in atmos-hazardous areas.
+  - bugfix: area machinery from breaking after creating & modifying areas via the
+      station blueprints.
+  - refactor: turfs are cannonized from areas during creation/editing operations &
+      empty areas are deleted
+  - refactor: removed duplicate Initialize() from light switch
+  - refactor: arcd has all upgrades installed
+  - bugfix: vents & scrubbers getting assigned twice to an area when it's merged with
+      another area via station blueprints
+  - refactor: merged` Initialize()` & `New()` of vents & scrubbers into just `Initialize()`
+  - bugfix: Fixes decals layering weird in some cases
+  - bugfix: the jobs columns in the View Crew Manifest window are now uniformly aligned
+      across department headers
+  - bugfix: extremely long crewmember names are now truncated in the default view
+      for the Crew Manifest window
+2023-03-28:
+  ATHATH:
+  - spellcheck: Tweaked an outdated doctor tip to reflect that fact that salbutamol
+      can't heal plasmamen (outside of very specific edge cases).
+  Azlier:
+  - bugfix: fixed gear harnesses incorrectly covering body parts
+  CMDR-Gungnir:
+  - bugfix: The 'automatic failure' tool for Synthetic Brain Surgery is no longer
+      the same as the tool to close the surgery! Roboticists (and their victims) rejoice!
+  GoldenAlpharex:
+  - rscadd: Added an option to polarize windows, so that they can be toggled between
+      tinted and clear at will in-round. To do so, simply slap a capacitor on any
+      kind of window, except windoors.
+  - rscadd: To control the polarized windows, you can use a window polarization remote
+      controller, which can be printed from any autolathe and from engineering techfabs
+      at roundstart. Use it in-hand to set its channel ID, and then slap it against
+      windows with polarization controllers installed to link them to it. Place it
+      in a button, or put it together with other assemblies, in order to have a way
+      to activate it, and toggle all connected windows at once.
+  - rscadd: Added support for mappers to create polarized windows with custom IDs,
+      look at https://github.com/Skyrat-SS13/Skyrat-tg/pull/19907 for more details
+      on how to use them.
+  JohnFulpWillard, GoldenAlpharex for the fixes:
+  - config: There's now a config-optional announcer for a round ending.
+  LT3:
+  - rscadd: Industrial RCD refill box
+  - balance: The SolFed subcontractor for 811 Breach Control has been fired due to
+      poor performance. SolFed has in turn procured a new contract with another third
+      party company to provide disaster response services. More expensive, but better
+      equipped.
+  OrionTheFox:
+  - bugfix: fixed Overalls not correctly having a Digi variant
+  - imageadd: updated the colors of modular Berets to better match the current uniforms
+  - rscdel: Removed CE Alt/White Beret (their base beret is now white)
+  - imageadd: updated the sprites for Federation Caps (now just called Officer Caps)
+      and the Knee-High Jackboots
+  - imageadd: updated digi sprites for all out of date shoes to match the object/plantigrade
+      versions
+  - imagedel: deleted unused shoe icons while sorting the files
+  Paxilmaniac:
+  - bugfix: Guns that should not have had a burst fire selector no longer have one
+  Rhials:
+  - code_imp: splits up spacevine.dm into four files in the events folder, and a __defines
+      file.
+  SkyratBot:
+  - bugfix: Xenomorphs will now be properly teamed together again, and will show up
+      together on the roundend report.
+  - bugfix: A bunch of invisible magazine sprites are visible now
+  - imageadd: Bullpup shotgun magazines for buckshot and slugs are now indicated with
+      a red or white dot, respectively.
+  - admin: Fixed admin lua scripting on Windows-hosted servers running on beta version
+      515.1602 (the latest version as of this change)
+  - refactor: Some aspects of how we track suicides from your living mob to your observer
+      have changed- please do let us know if anything has broken via a GitHub Issue
+      Report.
+  - bugfix: machines can now be pried open more than once.
+  - bugfix: machines now have the correct density when pried open.
+  - bugfix: Anomalies will no longer spawn at the bomb testing range satellite.
+  - bugfix: Cyborg recharge stations should be much more usable again.
+  - bugfix: plasmamen will now be given their internals upon being kidnapped and upon
+      being returned.
+  - bugfix: If you buckle a dog to a bed, it will no longer drag its bed as it goes
+      to bark at the mailman. It will instead be comfy and chilling, as expected.
+  - qol: Human gravity will react to changes instantly, instead of waiting for the
+      next process tick. Hopefully this feels better and not worse
+  - bugfix: Having your severed, brain-filled head reattached to a body no longer
+      teleports your brain to the mythical Gem Room.
+  - balance: Changes the universal click cooldown of the tendril hammer from the goliath
+      infusion into an internal cooldown just for the special heavy attack.
+  - qol: adjusted the blood deficiency quirk for slimepeople to not cause excessive
+      hunger as long as blood volume is kept above 550 via an IV drip (or other means
+      of getting welding fluid/some other toxin etc into the bloodstream, e.g. ingestion)
+  - qol: speciees with exotic blood types will now receive the correct blood bag in
+      the mail from having the blood deficiency perk
+  - rscadd: 'adds new blood bag types: TOX (slimepeople), H2O (podpeople), S (snail)'
+  - bugfix: fixed blood deficiency quirk causing wild fluctuations in blood volume
+      on the analyzer, giving more accurate readings
+  - bugfix: Moved the tank compressor and some tables and the anomaly refinery so
+      that the tank compressor could actually be usable again on Tramstation.
+  - rscadd: Add crafting recipe for basketballs (leather sheets) and basketball hoops
+      (metal, rods, and durathread)
+  - rscadd: Add new basketball minigame for 2-7 players.  There are 4 different courts
+      and teams by default with more planned to be added later.
+  - rscadd: New basketball mechanics that uses stamina.  Shoot with RMB, pass with
+      LMB, and dunk by clicking the hoop while adjacent.  Spinning while holding the
+      ball decreases the chance for someone to steal the ball, but it decreases your
+      shooting accuracy.  Shooting from 2 tiles away lets you score 3 points.
+  - qol: Basketballs now play a buzzer sound when someone scores. CtrlClick will reset
+      the scorecard and AltClick with a wrench will rotate the hoop.
+  - qol: Dunking and shooting animations for basketball.
+  - soundadd: Added basketball bounce sound with credits attribution
+  - imageadd: Added basketball icon to minigames. Move baseball and dodgeball icons
+      to toy/balls.dmi
+  - bugfix: DNA Scanners, Sleepers, Abductor Experimentors, Skill Stations and Mod
+      Installers now appropriately release their contents when opened, fixing an issue
+      where they could permanently absorb players and items until admins intervened.
+  - bugfix: Computers are now properly connected to Ethernet, and can use Ntos when
+      Relays are down.
+  - refactor: Removes Ntnet and Ntnet interfaces, which was only used by Ntnet circuits
+      (which now directly checks for a Relay to work) and MULEbots, which did nothing
+      with it.
+  - balance: Wirecarp no longer tells you what ruins spawned in a round, instead it's
+      limited to PDA logs, and tells you the source too. This means the RD can catch
+      someone running illegal programs if they don't make any attempt at hiding it.
+  - qol: Wirecarp logs is now set to save 300 at once, instead of 100 and being increased
+      to 300 by the RD during the round. This is pretty insignificant, since there's
+      no reason to NOT want as many logs as possible.
+  - balance: No-slip mod module and no slip shoes no longer have a reputation lock.
+  Stalkeros:
+  - bugfix: Fixes the lack of Pan-Slavic for the NRI cops midround.
+  Stalkeros, nzzy for the SMG and AR sprites:
+  - rscadd: New NRI SMG
+  - rscadd: Adds the NRI pistol, NRI SMG and Lynx to the OpFor's weapon selection.
+  - rscdel: NRI Bisons (Bizons)
+  - balance: A slight buff to the NRI cops' equipment; won't do anything as they're
+      not meant to use it unless super necessary lol.
+  - bugfix: Fixes the NRI AR's lacking sprite removed by some maintainer.
+  YakumoChen:
+  - rscadd: Speedbike crate, 1,000,000 credits in cargo
+  - rscdel: Medibeam crate, bicycle crate
+  softcerv:
+  - bugfix: removes pillows from Grimoire Purpura, preventing infinite free cloth.
+  - rscdel: Structures added by the organic interface update no longer require tools
+      to construct or modify.
+  - refactor: construction kits for adult furniture are now children of a new construction
+      kit item.
+  - bugfix: Fixes cards and Dice summoned by Grimoire Caeruleam lingering after the
+      item is deleted.
+  - code_imp: NIF flavor text now uses onChange rather than onInput, hopefully preventing
+      high volumes of messages being sent to admins whenever someone changes their
+      NIF flavor text.
+  - code_imp: Hivemind no longer preforms unnecessary sanitization.
+  sqnztb:
+  - qol: rearranged DS-2 botany and kitchen
+  - bugfix: fixed access on a few of the APCs in DS-2
+  - rscadd: ammo bench, cryotube, secdrobe, and some extra handcuffs added to Interdyne
+2023-03-30:
+  LT3:
+  - qol: Janitor access keys now show up on the Custodial Locator tablet app
+  - bugfix: Reduced lighting range for idle fire alarms
+  - rscadd: Tram signs will now malfunction when the tram is malfunctioning
+  - code_imp: Tram tiles adjusted for upstream change
+  Melbert:
+  - rscdel: Revert elevator panel UI theme change
+  OrionTheFox:
+  - rscdel: Removed the obsolete Microfusion Cell Containers that spawned in the armory.
+  Rhials:
+  - rscadd: You can now vote to start a Mafia game early. If over half of the current
+      signups vote (And you have three or more players) you will immediately start
+      a game with a slightly adjusted set of roles.
+  - admin: You can now force a mafia game to start in the admin options panel.
+  SkyratBot:
+  - balance: The pirate gangs have been split into two subcategories, one which can
+      spawn earlier in a shift and one that spawns later as they currently do. While
+      skeleton pirates will still be only seen later into the shift, expect to see
+      the other pirate gangs earlier on.
+  - bugfix: Prevented the pirate event from runtiming when no possible pirate gangs
+      were available.
+  - bugfix: Pirates can no longer be selected by Dynamic if there are no more pirates
+      gangs that can be used.
+  - qol: you can choose your default paint color for the "Tagger" quirk from prefs.
+  - bugfix: fixed disposals on the starfury
+  - bugfix: fixed flooring on the starfury
+  - bugfix: fixed missing air alarm on the starfury
+  - bugfix: fixed air turfs exposed to space on the starfury
+  - bugfix: ' Redesigns "the_arena" ( the bubblegum shuttle deathmatch area )'
+  - balance: You can no longer print Technology data disks. You can still print Tech
+      disks, which hold techweb information on it, just not the one that holds up
+      to 5 nodes.
+  - balance: ^ Because of this, there's no way to download nodes from an RD console
+      and upload them to an Autolathe to bypass departmental restrictions, you have
+      to go through a Techfab/Circuit imprinter for your needs.
+  - balance: Ones that are found cannot have anything uploaded/deleted off of them
+      either, you can only upload them to the Web.
+  - code_imp: Every individual Bepis disk no longer create an entire techweb
+  - imageadd: Resprites the Wirebrush
+  - imagedel: Removes the sprite for the Advanced Wirebrush
+  - rscadd: re-added normal doors to qm's office on tram.
+  - bugfix: fixed hos' shutters not being existant on tram.
+  - rscadd: The Nanotrasen Costuming Department has released specifications for how
+      to convert the Head of Security's cap into a shako.
+  - bugfix: 'The Syndicate have gotten their hands on the most dangerous weapon: A
+      photocopier that doesn''t require any money. God save us all.'
+  - rscadd: remakes the old escape pod shuttle
+  - bugfix: Kilo's arrivals port will no longer be space colored
+  - bugfix: admin respawn character verb works properly
+  - rscadd: Added a new emergency shuttle, the emergency_tranquility
+  - code_imp: adds IS_TRAITOR macro
+  - balance: Increased Bonus Reward for kidnapping alive targets
+  - balance: Changed Virologist and Scientist into Common objectives for kidnapping
+  - balance: Changed Paramedic into Uncommon objectives for kidnapping
+  - balance: Curators/HoP can now manage Newscaster D-Notices (previously was Warden/HoS).
+  - balance: Security Officers/Detectives can now issue Wanted notices on Newscasters.
+  - balance: Ntos Newscaster now requires Library access only to download, not to
+      run.
+  - bugfix: Fixes a bunch of minor gravity bugs, report em if you see more yeah?
+  - bugfix: Experimentors can connect to techwebs that have at least one RD server
+      on the level.
+  - server: The starlight config has been removed, as it is enabled by default
+  - bugfix: Pirates finally realized that they shouldn't risk life and limb attacking
+      stations if they had already paid them off.
+  - qol: Cult Roundend Report no longer lists post-summon cultists. No more 30 random
+      Harvesters clogging up the roundend report
+  - bugfix: the roboticist in the prey pod now has clothes as intended
+  - bugfix: mafia games only grant role win achievements when played with a full 12-player
+      setup.
+  - rscadd: Bacteria rich moldy food (like breadslices and pizzaslices) now spawn
+      in trashcarts, trashbags and randomly on the floor.
+  - rscadd: Damp rag now spawns in the trashcarts and etc.
+  - rscdel: removes being cremated from high burn damage and being on fire (yes this
+      was in the game but has been broken for probably a very long time)
+  - rscadd: the pod_crash.dmm ruin
+  - balance: Reduced the reputation cost of most non-murderbone orientated uplink
+      items like hypnotic flash and emag.
+  - balance: Reduced the amount of assassinate/kidnap/eyesnatch objectives that'll
+      appear at once.
+  Stalkeros, Lukaster42:
+  - bugfix: fixes lack of a proper arrival message for the NRI event.
+  - spellcheck: replaced a bunch of military mentions with police mentions for the
+      NRI event.
+  - rscadd: NRI police fully IC SOPs.
+  - rscadd: NRI police shuttle blocker.
+  Syrox25:
+  - rscadd: 'Adds new Taur variant: "Slime"'
+  Tattle:
+  - spellcheck: fixed a few typos, mostly around breathing
+  Wallem:
+  - balance: Fixes a glaring oversight with the entrenching tool's balancing.
+  dawsonkeyes:
+  - bugfix: prescription mesons and engineering scanner goggles now protect from supermatter-induced
+      madness as they should
+  vinylspiders:
+  - bugfix: synth heart sprite is no longer invisible
+  - bugfix: DS2/Interdyne ranks will now display properly during announcements and
+      in the ghost records.
+  - bugfix: sleepers on DS-2 will now properly announce when someone has woken from
+      cryo sleep.
+  - bugfix: Microfusion rifles will no longer ignore the weapon safety. MicroStar
+      Energy Weapon Coalition is not to be held responsible for any damage incurred
+      to property or person during this temporary firmware malfunction.
+  - bugfix: hats that are supposed to hide the ears slot will now actually hide the
+      ears slot when the hat is equipped, without having to take it off and put it
+      back on again.
+  - bugfix: fixes runtime with modular persistence when a mob enters cryosleep
+  - qol: chaplains who are already on the station may now be chosen as successor to
+      the high priest if the high priest enters cryosleep, and they will be given
+      full control to change the station religion.
+  - bugfix: the snouted version of knight helmets will no longer be mismatched when
+      facing east/west
+2023-03-31:
+  Nerev4r:
+  - bugfix: Restores the Shamshir sheath filled sprite.
+  SkyratBot:
+  - qol: You can rename and change the description of nanite/thermal pistols.
+  - bugfix: Fix Greytide Worldwide basketball stadium being able to explode from a
+      fuel tank
+  - rscadd: The dark matt-eor
+  - rscadd: Summon a dark matt-eor final traitor objective
+  - rscadd: Dark matter singularity variant, which can't grow as big as a regular
+      singularity but hungers for blood
+  - code_imp: cleaned up/sorted meteor shield code, satellite control, and more
+  - qol: added a lot of feedback to interacting with meteor shields
+  - balance: emagging a lot of meteor shields warns the station, but emagging enough
+      of them summons a Dark Matt-eor.
+  - rscadd: "Ask your local bartender for the hottest drink of the year, the \"Pi\xF1\
+      a Olivada\"!"
+  - rscadd: Adds a new space ruin, A Waystation under attack!
+  - bugfix: The hermit of the Icemoon has decided to build their hut in some deeper
+      caves for a bit more protection from the local fauna.
+  - bugfix: cycler shotguns' inhand sprites will no longer float ominously by their
+      wielder's side

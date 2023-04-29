@@ -7,6 +7,7 @@ $include resources.txt
 $include skyrat/skyrat_config.txt
 $include interviews.txt
 $include lua.txt
+$include auxtools.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -116,6 +117,9 @@ LOG_GAME
 ## log player votes
 LOG_VOTE
 
+## log manual target zone switching
+LOG_ZONE_SWITCH
+
 ## log client Whisper
 LOG_WHISPER
 
@@ -136,6 +140,9 @@ LOG_TELECOMMS
 
 ## log prayers
 LOG_PRAYER
+
+## Log Music requests
+LOG_INTERNET_REQUEST
 
 ## log silicons
 LOG_SILICON
@@ -301,6 +308,14 @@ CHECK_RANDOMIZER
 ## or your package manager
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
+
+## Comment this out to disable users ability to use the request internet sounds to be played.
+REQUEST_INTERNET_SOUND
+
+## Request Internet Sound Allowed URL'S comma separated, urls here are the only sites allowed through Request Internet Sound, Add more to allow more, or remove to disallow.
+## The Defaults here are all supported by youtube-dl
+## Ensure . and / are escaped with \
+REQUEST_INTERNET_ALLOWED youtube\.com\/watch?v=,youtu\.be\/,soundcloud\.com\/,bandcamp\.com\/track\/
 
 ## In-game features
 
@@ -500,10 +515,13 @@ MINUTE_CLICK_LIMIT 400
 ## Various messages to be sent to connected chat channels.
 ## Uncommenting these will enable them, by default they will be broadcast to Game chat channels on TGS3 or non-admin channels on TGS4.
 ## If using TGS4, the string option can be set as one of more chat channel tags (separated by ','s) to limit the message to channels with that tag name (case-sensitive). This will have no effect on TGS3.
-## i.e. CHAT_ANNOUNCE_NEW_GAME chat_channel_tag
+## i.e. CHANNEL_ANNOUNCE_NEW_GAME chat_channel_tag
 
-## Send a message with the station name starting a new game.
-#CHAT_ANNOUNCE_NEW_GAME
+## Which channel will have a message about a new game starting, message includes the station name.
+#CHANNEL_ANNOUNCE_NEW_GAME
+
+## Which channel will have a message about a new game starting, message includes the round ID of the game that has just ended.
+#CHANNEL_ANNOUNCE_END_GAME
 
 ## Ping users who use the `notify` command when a new game starts.
 #CHAT_NEW_GAME_NOTIFICATIONS
@@ -617,6 +635,11 @@ MOTD motd.txt
 ## This should be disabled (through `CACHE_ASSETS 0`) on development,
 ## but enabled on production (the default).
 CACHE_ASSETS 0
+
+## If this is uncommented, we will save all associated spritesheet PNGs and CSS files to a folder in the round-specific logs folder.
+## Useful for developers to debug potential spritesheet issues to determine where the issue is cropping up (either in DM-side sprite generation or in the TGUI-side display of said spritesheet).
+## Will only seek to waste disk space if ran on production.
+#SAVE_SPRITESHEETS
 
 ## Uncomment to allow the station name to be in the hub entry.
 ## You should only enable this if you can guarantee a station name doesn't break BYOND's TOS.
