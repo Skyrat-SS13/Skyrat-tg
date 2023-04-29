@@ -1,10 +1,11 @@
 
 /obj/item/gun/ballistic/bow
-	name = "longbow"
-	desc = "While pretty finely crafted, surely you can find something better to use in the current year."
-	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+	icon = 'icons/obj/weapons/guns/bows/bows.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/bows_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/bows_righthand.dmi'
 	icon_state = "bow"
 	inhand_icon_state = "bow"
+	base_icon_state = "bow"
 	load_sound = null
 	fire_sound = null
 	mag_type = /obj/item/ammo_box/magazine/internal/bow
@@ -16,11 +17,12 @@
 	internal_magazine = TRUE
 	cartridge_wording = "arrow"
 	bolt_type = BOLT_TYPE_NO_BOLT
+	/// whether the bow is drawn back
 	var/drawn = FALSE
 
 /obj/item/gun/ballistic/bow/update_icon_state()
 	. = ..()
-	icon_state = chambered ? "bow_[drawn]" : "bow"
+	icon_state = chambered ? "[base_icon_state]_[drawn ? "drawn" : "nocked"]" : "[base_icon_state]"
 
 /obj/item/gun/ballistic/bow/proc/drop_arrow()
 	drawn = FALSE
@@ -38,7 +40,9 @@
 		chambered.forceMove(src)
 
 /obj/item/gun/ballistic/bow/attack_self(mob/user)
-	if(chambered)
+	if(!chambered)
+		balloon_alert(user, "no arrow nocked!")
+	else
 		balloon_alert(user, "[drawn ? "string released" : "string drawn"]")
 		drawn = !drawn
 	update_appearance()
@@ -56,8 +60,16 @@
 	. = ..() //fires, removing the arrow
 	update_appearance()
 
+/obj/item/gun/ballistic/bow/equipped(mob/user, slot, initial)
+	. = ..()
+	if(slot == ITEM_SLOT_BACK && chambered)
+		balloon_alert(user, "the arrow falls out!")
+		drop_arrow()
+		drawn = FALSE
+		update_appearance()
+
 /obj/item/gun/ballistic/bow/shoot_with_empty_chamber(mob/living/user)
-	return //so clicking sounds please
+	return //no clicking sounds please
 
 /obj/item/ammo_box/magazine/internal/bow
 	name = "bowstring"
@@ -65,6 +77,7 @@
 	max_ammo = 1
 	start_empty = TRUE
 	caliber = CALIBER_ARROW
+<<<<<<< HEAD:code/modules/projectiles/guns/ballistic/bow.dm
 
 /obj/item/ammo_casing/caseless/arrow
 	name = "arrow"
@@ -120,3 +133,5 @@
 
 /obj/item/storage/bag/quiver/despawning
 	arrow_path = /obj/item/ammo_casing/caseless/arrow/despawning
+=======
+>>>>>>> bc813ab93db (Cleans up + Improves bows, Sorts files, Adds the Divine Archer clothing, weapon, rite (#74811)):code/modules/projectiles/guns/ballistic/bows/_bow.dm
