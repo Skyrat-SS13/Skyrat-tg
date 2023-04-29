@@ -9,7 +9,7 @@
 
 
 /datum/component/brass_spreader/Initialize(range, cooldown)
-	if (!ismovable(parent))
+	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	START_PROCESSING(SSobj, src)
