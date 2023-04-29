@@ -1,5 +1,8 @@
 #define TRANSLATE_EXTRA_SWING_ARMOR(armor) (1 - armor)
 
+// VERY IMPORTANT TO NOTE: Armor with batons is averaged across all limbs, meaning
+// A helmet of melee 2 won't be as effective as a jumpsuit with melee 1.
+
 // god i love subtypes so much i love subtypes police batons are the base type ahAAAA
 /obj/item/melee/baton
 	var/swings_to_knockdown = 1
