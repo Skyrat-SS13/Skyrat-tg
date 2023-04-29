@@ -53,6 +53,25 @@
 	result = /obj/item/food/canned/tuna
 	category = CAT_SEAFOOD
 
+/datum/crafting_recipe/food/weddingcake
+	name = "Wedding cake"
+	reqs = list(
+		/obj/item/food/cake/plain = 4,
+		/datum/reagent/consumable/sugar = 120
+	)
+	result = /obj/item/food/cake/wedding
+	category = CAT_CAKE
+
+/datum/crafting_recipe/food/weddingcake_hemo
+	name = "Bloody wedding cake"
+	reqs = list(
+		/obj/item/food/cake/plain = 4,
+		/datum/reagent/consumable/sugar = 30,
+		/datum/reagent/blood = 90
+	)
+	result = /obj/item/food/cake/wedding_hemo
+	category = CAT_CAKE
+
 // Recipes that provide crafting instructions and don't yield any result
 
 /datum/crafting_recipe/food/grill/battered_sausage
