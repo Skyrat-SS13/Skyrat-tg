@@ -21,8 +21,8 @@
 	armor_for_extra_swing_needed_for_knockdown = 0.20
 
 /// Slow decently-damaging attacks that knockdown for a long period of time after a delay.
-// No armor: Resist first knockdown, then knockdown, until 5th hit, which is crit.
-// Security officer: Surprisingly, the only change is that it takes 6 hits to crit.
+// No armor: Resist first knockdown, then knockdown, until 4th hit, which is crit.
+// Security officer: Surprisingly, the only change is that it takes 5 hits to crit.
 // Riot armor: Resist first two hits, knockdowno n third and later, crit on 9th.
 // Contractor MODsuit: Resist first two, knockdown on third, crit on 7th.
 // Fully kitted-out miner with full ash drake armor, talisman, gas mask, etc: Resist first six, crit on 13th.
