@@ -63,3 +63,6 @@
 
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
+
+/// Trait that was granted by a NIFSoft
+#define NIFSOFT_TRAIT "nifsoft"
