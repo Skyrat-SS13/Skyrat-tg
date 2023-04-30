@@ -11,7 +11,7 @@
 #define MODULE_ANOMALY_UPPER 9
 
 /datum/armament_entry/company_import/nakamura_modsuits
-	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
+	category = COMPANY_NAME_NAKAMURA_ENGINEERING_MODSUITS
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
@@ -264,7 +264,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
 	interest_required = COMPANY_SOME_INTEREST
 	contraband = TRUE
-	
+
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/rave
 	item_type = /obj/item/mod/module/visor/rave
 	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER

@@ -8,12 +8,12 @@
 #define PRICE_CHEM_CHEAP_LOWER 5.7
 #define PRICE_CHEM_CHEAP_HIGHER 4.8
 #define PRICE_CHEM_MEDIUM_LOWER 4.4
-#define PRICE_CHEM_MEDIUM_HIGHER 4 
+#define PRICE_CHEM_MEDIUM_HIGHER 4
 #define PRICE_CHEM_PREMIUM_LOWER 3.5
 #define PRICE_CHEM_PREMIUM_HIGHER 3
 
 /datum/armament_entry/company_import/deforest
-	category = DEFOREST_MEDICAL_NAME
+	category = COMPANY_NAME_DEFOREST_MEDICAL
 	company_bitflag = CARGO_COMPANY_DEFOREST
 
 // Basic first aid supplies like gauze, sutures, mesh, so on

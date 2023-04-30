@@ -9,18 +9,20 @@
 #define CARGO_COMPANY_BOLT_NANOTRASEN (1<<7)
 #define CARGO_COMPANY_MICRON (1<<8)
 #define CARGO_COMPANY_VITEZSTVI_AMMO (1<<9)
+#define CARGO_COMPANY_ALLSTAR_ENERGY (1<<10)
 
 // Company names, because the armament category and company name need to be the exact same, so use defines like this
-#define NAKAMURA_ENGINEERING_MODSUITS_NAME "Nakamura Engineering MOD Divison"
-#define BLACKSTEEL_FOUNDATION_NAME "Jarnsmiour Blacksteel Foundation"
-#define NRI_SURPLUS_COMPANY_NAME "Izlishek Company Military Supplier"
-#define DEFOREST_MEDICAL_NAME "DeForest Medical Corporation"
-#define DONK_CO_NAME "Donk Corporation"
-#define KAHRAMAN_INDUSTRIES_NAME "Kahraman Heavy Industries"
-#define NAKAMURA_ENGINEERING_TOOLING_NAME "Nakamura Engineering Tooling Divison"
-#define BOLT_NANOTRASEN_DEFENSE_NAME "Nanotrasen-Bolt Personal Defense Coalition"
-#define MICRON_CONTROL_SYSTEMS_NAME "Micron Control Systems"
-#define VITEZSTVI_AMMO_NAME "Vitezstvi Ammo & Weapon Accessories"
+#define COMPANY_NAME_NAKAMURA_ENGINEERING_MODSUITS "Nakamura Engineering MOD Divison"
+#define COMPANY_NAME_BLACKSTEEL_FOUNDATION "Jarnsmiour Blacksteel Foundation"
+#define COMPANY_NAME_NRI_SURPLUS_COMPANY "Izlishek Company Military Supplier"
+#define COMPANY_NAME_DEFOREST_MEDICAL "DeForest Medical Corporation"
+#define COMPANY_NAME_DONK_CO "Donk Corporation"
+#define COMPANY_NAME_KAHRAMAN_INDUSTRIES "Kahraman Heavy Industries"
+#define COMPANY_NAME_NAKAMURA_ENGINEERING_TOOLING "Nakamura Engineering Tooling Divison"
+#define COMPANY_NAME_BOLT_NANOTRASEN_DEFENSE "Nanotrasen-Bolt Personal Defense Coalition"
+#define COMPANY_NAME_MICRON_CONTROL_SYSTEMS "Micron Control Systems"
+#define COMPANY_NAME_VITEZSTVI_AMMO "Vitezstvi Ammo & Weapon Accessories"
+#define COMPANY_NAME_ALLSTAR_ENERGY "Allstar Energy Incorporated"
 
 #define COMPANY_INTEREST_GAIN_BIG 10
 #define COMPANY_INTEREST_GAIN_AVERAGE 5

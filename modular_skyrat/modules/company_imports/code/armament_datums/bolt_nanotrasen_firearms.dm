@@ -1,5 +1,5 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons
-	category = BOLT_NANOTRASEN_DEFENSE_NAME
+	category = COMPANY_NAME_BOLT_NANOTRASEN_DEFENSE
 	company_bitflag = CARGO_COMPANY_BOLT_NANOTRASEN
 
 // Basic armor vests

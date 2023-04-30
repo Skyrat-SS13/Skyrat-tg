@@ -5,7 +5,7 @@
 #define PRICE_EXPERIMENTALTOOL_HIGH 3.8
 
 /datum/armament_entry/company_import/nakamura_tooling
-	category = NAKAMURA_ENGINEERING_TOOLING_NAME
+	category = COMPANY_NAME_NAKAMURA_ENGINEERING_TOOLING
 	company_bitflag = CARGO_COMPANY_NAKAMURA_TOOLING
 
 // Basic, non-power tools, as well as other related equipment
