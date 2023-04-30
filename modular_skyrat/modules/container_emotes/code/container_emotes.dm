@@ -33,14 +33,14 @@
 	var/can_use = TRUE
 	var/atom/current_loc = user.loc
 	var/list/locs_we_can_use = list()
-	if (current_loc != null && !isturf(current_loc))
+	if (current_loc && !isturf(current_loc))
 		locs_we_can_use += current_loc
 
 		while (times_searched < EXME_MAX_LOC_RECURSION)
 			times_searched++
 			var/atom/recursive_loc = current_loc.loc
 
-			if (recursive_loc == null || (isarea(recursive_loc))) // if youre in something already, its fair to say you might be in, say, a pipe. you cant use that for emoting, so the floor will have to do
+			if (!recursive_loc || isarea(recursive_loc)) // if youre in something already, its fair to say you might be in, say, a pipe. you cant use that for emoting, so the floor will have to do
 				break
 
 			locs_we_can_use += recursive_loc
@@ -85,10 +85,10 @@
 	container_message = ("[user.say_emphasis(container_message)]")
 
 	var/atom/picked_loc
-	if (locs_we_can_use.len == 0)
+	if (!length(locs_we_can_use))
 		return FALSE
 
-	if (locs_we_can_use.len == 1)
+	if (length(locs_we_can_use) == 1)
 		picked_loc = pick(locs_we_can_use)
 	else
 		picked_loc = tgui_input_list(user, "Which container would you like your emote to originate from?", "Container emote", locs_we_can_use, FALSE)
