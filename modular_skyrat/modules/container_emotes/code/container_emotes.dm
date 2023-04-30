@@ -1,4 +1,4 @@
-#define EXME_MAX_LOC_RECURSION 80 //no infinite loops
+#define EXME_MAX_LOC_RECURSION 10 //no infinite loops
 
 /mob/living/verb/container_emote()
 	set name = "Emote Using Vehicle/Container"
