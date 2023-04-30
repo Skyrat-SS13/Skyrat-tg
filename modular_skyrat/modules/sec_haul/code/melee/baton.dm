@@ -80,7 +80,7 @@
 
 /obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target)
 	var/stamina_damage_threshold_for_knockdown = ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown))
-	if (target.staminaloss > stamina_damage_threshold_for_knockdown)
+	if(target.staminaloss > stamina_damage_threshold_for_knockdown)
 		var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 		if(!target.IsKnockdown())
 			to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
