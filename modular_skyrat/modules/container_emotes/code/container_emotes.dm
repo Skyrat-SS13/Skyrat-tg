@@ -1,3 +1,5 @@
+#define EXME_MAX_LOC_RECURSION 80 //no infinite loops
+
 /mob/living/verb/container_emote()
 	set name = "Emote Using Vehicle/Container"
 	set category = "IC"
@@ -12,8 +14,6 @@
 	key = "exme"
 	key_third_person = "exme"
 	message = null
-
-#define EXME_MAX_LOC_RECURSION 80 //no infinite loops
 
 /datum/emote/container_emote/run_emote(mob/living/user, params, type_override = null, intentional = TRUE)
 	/// The message that will be sent from the container emote.
@@ -99,7 +99,6 @@
 		return FALSE
 
 	if ((!picked_loc) || (isarea(picked_loc)) || QDELETED(picked_loc) || user.IsUnconscious() || QDELETED(user)) //one last sanity check
-		to_chat(user, span_danger("Either you are unconcious, are not within anything, or you/the object you picked don't exist anymore!")) // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
 		return FALSE
 
 	if(emote_type == EMOTE_AUDIBLE)
