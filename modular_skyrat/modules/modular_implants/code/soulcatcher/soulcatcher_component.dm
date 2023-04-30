@@ -112,6 +112,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
+
 /**
  * Soulcatcher Room
  *
@@ -119,7 +120,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * It handles sending messages to souls from the outside along with adding new souls, transfering, and removing souls.
  *
  */
-
 /datum/soulcatcher_room
 	/// What is the name of the room?
 	var/name = "Default Room"
