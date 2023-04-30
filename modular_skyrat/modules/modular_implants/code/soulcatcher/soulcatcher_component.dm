@@ -229,7 +229,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * message_sender - The person that is sending the message. This is not required.
  * * emote - Is the message sent an emote or not?
  */
-
 /datum/soulcatcher_room/proc/send_message(message_to_send, message_sender, emote = FALSE)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
