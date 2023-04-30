@@ -30,7 +30,7 @@
 // Fully kitted-out miner with full ash drake armor, talisman, gas mask, etc: Resist first six, crit on 13th.
 /obj/item/melee/baton/security
 	swings_to_knockdown = 2
-	armor_for_extra_swing_needed_for_knockdown = 0.20
+	armor_for_extra_swing_needed_for_knockdown = 0.25
 
 	//stun_armor_flag = ENERGY // These variables are commented out because I'm unsure of what the implications of using energy would be.
 
@@ -70,15 +70,13 @@
 				human_target.force_say()
 		target.apply_damage(stamina_damage, STAMINA, blocked = target.run_armor_check(attack_flag = stun_armor_flag, armour_penetration = src.armour_penetration, weak_against_armour = src.weak_against_armour))
 		if(!trait_check)
-			var/stamina_damage_threshold_for_knockdown = ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown))
-			if (target.staminaloss > stamina_damage_threshold_for_knockdown)
+			if (target.staminaloss > ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
 				target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
 		additional_effects_non_cyborg(target, user)
 	return TRUE
 
 /obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target)
-	var/stamina_damage_threshold_for_knockdown = ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown))
-	if(target.staminaloss > stamina_damage_threshold_for_knockdown)
+	if(target.staminaloss > ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
 		var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 		if(!target.IsKnockdown())
 			to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
