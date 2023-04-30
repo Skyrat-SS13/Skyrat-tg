@@ -9,9 +9,7 @@
 	var/swings_to_knockdown = 1
 	/// If the target has melee armor equal or above this, it will take an extra swing to knock them down.
 	/// The threshold for knockdown is multiplied by (1 - this), so be careful of the values you enter.
-	// (35*2)*(1-0.2) = 56, the same as the final damage dealt with 0.2 melee armor = 56
-	// By default, the police baton is less effective against armor
-	var/armor_for_extra_swing_needed_for_knockdown = 0.10 // Even a firesuit is enough to prevent instant knockdown
+	var/armor_for_extra_swing_needed_for_knockdown = 0.10 // By default, the police baton is less effective against armor
 
 	/// The armor flag used when we use our stun function, AKA our left click.
 	var/stun_armor_flag = MELEE
