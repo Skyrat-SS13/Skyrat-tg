@@ -98,8 +98,7 @@
 
 	RegisterSignal(src, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL), PROC_REF(on_parent_multitool))
 
-	// skyrat edit: allows style meter chads to do flips
-	ADD_TRAIT(mob_parent, TRAIT_STYLISH, src)
+	ADD_TRAIT(mob_parent, TRAIT_STYLISH, src) // SKYRAT EDIT ADD - allows style meter chads to do flips
 
 /datum/component/style/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK, PROC_REF(hotswap))
@@ -152,8 +151,7 @@
 	if(mob_parent.hud_used)
 		mob_parent.hud_used.static_inventory -= meter
 		mob_parent.hud_used.show_hud(mob_parent.hud_used.hud_version)
-	// skyrat edit: allows style meter chads to do flips
-	REMOVE_TRAIT(mob_parent, TRAIT_STYLISH, src)
+	REMOVE_TRAIT(mob_parent, TRAIT_STYLISH, src) // SKYRAT EDIT ADD - allows style meter chads to do flips
 	return ..()
 
 
