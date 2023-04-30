@@ -12,6 +12,8 @@
 	// By default, the police baton is less effective against armor
 	var/armor_for_extra_swing_needed_for_knockdown = 0.10 // Even a firesuit is enough to prevent instant knockdown
 
+	var/stun_armor_flag = MELEE
+
 // Fast, low-damage attacks, but with the same overall effectiveness as the police baton
 /obj/item/melee/baton/telescopic // change made for no particular reason other than "this seems cool", feel free to revert
 	swings_to_knockdown = 6
@@ -30,6 +32,8 @@
 	swings_to_knockdown = 2
 	armor_for_extra_swing_needed_for_knockdown = 0.20
 
+	//stun_armor_flag = ENERGY
+
 /// Very slow high-damage attacks that instantly knock down anyone without an armor value of .15, which is surprisingly difficult to get as, say, an assistant.
 /// Compared to the stun baton, the contractor baton crits faster, knocks down faster, but is less flexible given it's cooldown. Still objectively better, but
 /// not egregiously. You could absolutely win a baton duel against this, you just have to be good.
@@ -41,6 +45,12 @@
 	cooldown = 4 SECONDS
 	knockdown_time = 2.5 SECONDS
 	armor_for_extra_swing_needed_for_knockdown = 0.15
+
+	//stun_armor_flag = ENERGY
+
+/obj/item/melee/baton/abductor
+
+	//stun_armor_flag = ENERGY
 
 // Override to make batons respect armor and delay knockdown
 /obj/item/melee/baton/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override)
@@ -56,7 +66,7 @@
 			var/mob/living/carbon/human/human_target = target
 			if(prob(force_say_chance))
 				human_target.force_say()
-		target.apply_damage(stamina_damage, STAMINA, blocked = target.run_armor_check(attack_flag = MELEE, armour_penetration = src.armour_penetration, weak_against_armour = src.weak_against_armour))
+		target.apply_damage(stamina_damage, STAMINA, blocked = target.run_armor_check(attack_flag = stun_armor_flag, armour_penetration = src.armour_penetration, weak_against_armour = src.weak_against_armour))
 		if(!trait_check)
 			var/stamina_damage_threshold_for_knockdown = ((stamina_damage * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown))
 			if (target.staminaloss > stamina_damage_threshold_for_knockdown)
