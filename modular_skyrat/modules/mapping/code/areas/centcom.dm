@@ -33,3 +33,11 @@
 
 /area/centcom/interlink
 	name = "The Interlink"
+
+/*
+creating an event subtype of the interlink area, so it follows the same logic and can be renamed
+without renaming the interlink itself
+*/
+
+/area/centcom/interlink/event
+	name = "Event Venue"

@@ -21,7 +21,7 @@
 
 /obj/item/food/cake/wedding_hemo
 	name = "bloody wedding cake"
-	desc = "An expensive, multi-tiered cake, baked with blood instead of milk, to served hemophages."
+	desc = "An expensive, multi-tiered cake, baked with blood instead of milk, to be served to hemophages."
 	icon = 'modular_skyrat/master_files/icons/obj/food/wedding.dmi'
 	icon_state = "weddingcake"
 	food_reagents = list(
