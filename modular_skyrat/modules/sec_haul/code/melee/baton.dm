@@ -5,6 +5,7 @@
 
 // god i love subtypes so much i love subtypes police batons are the base type ahAAAA
 /obj/item/melee/baton
+	/// The amount of swings we will ideally cause a knockdown with. Affected by armor_for_extra_swing_needed_for_knockdown.
 	var/swings_to_knockdown = 1
 	/// If the target has melee armor equal or above this, it will take an extra swing to knock them down.
 	/// The threshold for knockdown is multiplied by (1 - this), so be careful of the values you enter.
@@ -12,6 +13,7 @@
 	// By default, the police baton is less effective against armor
 	var/armor_for_extra_swing_needed_for_knockdown = 0.10 // Even a firesuit is enough to prevent instant knockdown
 
+	/// The armor flag used when we use our stun function, AKA our left click.
 	var/stun_armor_flag = MELEE
 
 // Fast, low-damage attacks, but with the same overall effectiveness as the police baton
@@ -32,11 +34,13 @@
 	swings_to_knockdown = 2
 	armor_for_extra_swing_needed_for_knockdown = 0.20
 
-	//stun_armor_flag = ENERGY
+	//stun_armor_flag = ENERGY // These variables are commented out because I'm unsure of what the implications of using energy would be.
 
-/// Very slow high-damage attacks that instantly knock down anyone without an armor value of .15, which is surprisingly difficult to get as, say, an assistant.
-/// Compared to the stun baton, the contractor baton crits faster, knocks down faster, but is less flexible given it's cooldown. Still objectively better, but
-/// not egregiously. You could absolutely win a baton duel against this, you just have to be good.
+/**
+ * Very slow high-damage attacks that instantly knock down anyone without an armor value of .15, which is surprisingly difficult to get as, say, an assistant.
+ * Compared to the stun baton, the contractor baton crits faster, knocks down faster, but is less flexible given it's cooldown. Still objectively better, but
+ * not egregiously. You could absolutely win a baton duel against this, you just have to be good.
+ */
 // No armor: Knockdown, then crit. Security officer: Resist first knockdown, weakly crawl up on second hit, crit on third.
 // Riot armor: Resist first knockdown, knockdown on second, weakly crawl up on third hit, crit on fourth.
 /obj/item/melee/baton/telescopic/contractor_baton
@@ -83,3 +87,5 @@
 
 		if(!trait_check)
 			target.Knockdown(knockdown_time)
+
+#undef TRANSLATE_EXTRA_SWING_ARMOR
