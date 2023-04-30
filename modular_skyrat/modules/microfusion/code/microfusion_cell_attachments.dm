@@ -35,11 +35,11 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 */
 /obj/item/microfusion_cell_attachment/rechargeable
 	name = "rechargeable microfusion cell attachment"
-	desc = "An adapter meant to be plugged into a microfusion cell, allowing the cell to be recharged at recharge stations for both weapons and civilian-grade batteries. Neither Allstar Lasers Incorporated or Micron Control Systems Incorporated suggest licking the prongs."
+	desc = "An adapter meant to be plugged into a microfusion cell, allowing the cell to be recharged at recharge stations for both weapons and civilian-grade batteries."
 	icon_state = "attachment_rechargeable"
 	attachment_overlay_icon_state = "microfusion_rechargeable"
 	/// The bonus charge rate by adding this attachment.
-	var/bonus_charge_rate = 300
+	var/bonus_charge_rate = 250
 
 /obj/item/microfusion_cell_attachment/rechargeable/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
