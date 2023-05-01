@@ -582,7 +582,12 @@ SUBSYSTEM_DEF(job)
 		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 
 		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
-			equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
+			// SKYRAT EDIT CHANGE START - Lizards
+			if(islizard(equipping))
+				equipping.equip_to_slot_or_del(new /obj/item/food/breadslice/root(equipping), ITEM_SLOT_MASK)
+			else
+				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
+			// SKYRAT EDIT CHANGE END - Lizards
 
 	job.after_spawn(equipping, player_client)
 
