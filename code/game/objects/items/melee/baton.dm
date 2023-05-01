@@ -586,7 +586,7 @@
  * After a target is hit, we apply some status effects.
  * After a period of time, we then check to see what stun duration we give.
  */
-/obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
+/obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user) // moved to modules/sec_haul/melee/baton.dm
 	target.set_jitter_if_lower(40 SECONDS)
 	// target.set_confusion_if_lower(10 SECONDS) // SKYRAT EDIT REMOVAL
 	target.set_stutter_if_lower(16 SECONDS)
@@ -595,7 +595,7 @@
 	addtimer(CALLBACK(src, PROC_REF(apply_stun_effect_end), target), 2 SECONDS)
 
 /// After the initial stun period, we check to see if the target needs to have the stun applied.
-/obj/item/melee/baton/security/proc/apply_stun_effect_end(mob/living/target)
+/obj/item/melee/baton/security/proc/apply_stun_effect_end(mob/living/target) // moved to modules/sec_haul/melee/baton.dm
 	var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 	if(!target.IsKnockdown())
 		to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
