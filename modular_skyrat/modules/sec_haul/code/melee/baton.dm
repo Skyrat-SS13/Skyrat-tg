@@ -1,3 +1,16 @@
+// Dev notes
+// If knockdown resist is given to all for the first hit basic cells will need to be able to overcharge for at least one hit
+// Would create a tradeoff of "Do I want to expend my entire baton on this one hit, or just go for it normally"
+
+// Other batons need some loving to let them work against armor better (but not really exceed the stun baton)
+// Thinking: Make one of the other batons (police/tele) have good knockdown on first hit but only okay armor pen
+// Or both? It would be best if they were distinct but who knows honestly first-hit knockdown is really strong,
+// and both primarily serve as self-defense for a job (police baton is easily acquirable though)
+// They dont need the capability to stamcrit through armor
+
+// Contractor baton definitely needs a nerf, should respect armor more and just get a damage decrease
+// Alternatively, just make it act like a stronger perma-overcharged baton?
+
 // VERY IMPORTANT TO NOTE: Armor with batons is averaged across all limbs, meaning
 // A helmet of melee 2 won't be as effective as a jumpsuit with melee 1.
 
