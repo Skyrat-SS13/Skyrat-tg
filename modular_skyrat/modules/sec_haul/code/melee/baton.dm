@@ -14,18 +14,7 @@
 // VERY IMPORTANT TO NOTE: Armor with batons is averaged across all limbs, meaning
 // A helmet of melee 2 won't be as effective as a jumpsuit with melee 1.
 
-/obj/item/melee/baton
-	/// The armor flag used when we use our stun function, AKA our left click.
-	var/stun_armor_flag = MELEE
-	/// The armor penetration used for our stun function. Flat.
-	var/stun_armor_flat_penetration = 0
-	/// The armor penetration used for our stun function. Percentage, 0 to 1 scale. but can go higher.
-	var/stun_armor_percent_penetration = 0
-
-/datum/action/item_action/stun_baton/toggle_overcharge
-	name = "Toggle overcharge"
-	desc = "Disable/Enable current limiters, switching between the standard armor-respecting mode \
-	and an inefficient high-power mode, which boasts impressive armor penetration but with extreme power cost/passive discharge."
+#define TRANSLATE_EXTRA_SWING_ARMOR(armor) (1 - armor)
 
 /// The default armor penetration of a baton in overcharge mode. Percentage-based.
 #define BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT 0.85 // keep armor SOMEWHAT effective, at least 15%
@@ -34,7 +23,46 @@
 /// The volume of the extra sound played on overcharged baton impact, for extra "oomph" factor
 #define BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME 20
 
+// Police baton - very hard to not get knocked down by it, though its low attack rate limits its effectiveness
+/obj/item/melee/baton
+	/// The armor flag used when we use our stun function, AKA our left click.
+	var/stun_armor_flag = MELEE
+	/// The armor penetration used for our stun function. Flat.
+	var/stun_armor_flat_penetration = 0
+	/// The armor penetration used for our stun function. Percentage, 0 to 1 scale. but can go higher.
+	var/stun_armor_percent_penetration = 0
+
+	/// The amount of swings we will ideally cause a knockdown with. Affected by armor_for_extra_swing_needed_for_knockdown.
+	/// Multiplied by our initial stun damage value to determine the stamina damage needed to knockdown. 
+	/// Set to 0 for guaranteed knockdown on every hit.
+	var/swings_to_knockdown = 1
+	/// If the target has stun_armor_flag armor equal or above this, it will take an extra swing to knock them down.
+	/// The threshold for knockdown is multiplied by (1 - this), so be careful of the values you enter.
+	/// Affected by stun_armor_penetration in the way you would assume. 50% pen = 50% effective armor.
+	var/armor_for_extra_swing_needed_for_knockdown = 0.75
+
+/obj/item/melee/baton/telescopic
+	// todo: rebalance
+
+// Contractor baton: Generally just really good, although it falters somewhat against armor in terms of stamina damage
+// (knockdown is nearly always guaranteed)
+/obj/item/melee/baton/telescopic/contractor_baton
+	stamina_damage = 95 //todo: adjust
+	swings_to_knockdown = 1
+	armor_for_extra_swing_needed_for_knockdown = 0.45 //sufficient armor, like riot gear, grants a small resistance
+
+/datum/action/item_action/stun_baton/toggle_overcharge
+	name = "Toggle overcharge"
+	desc = "Disable/Enable current limiters, switching between the standard armor-respecting mode \
+	and an inefficient high-power mode, which boasts impressive armor penetration but with extreme power cost/passive discharge."
+
+// Stun baton - Trades off it's ability to instantly knockdown enemies with more stamina DPS than police/telebaton, though
+// with the downside of having a cell and mediocre armor performance
+// A alternate mode, overcharge, can be toggled, which massively increases anti-armor abilities while draining massive chunks of power
 /obj/item/melee/baton/security
+	swings_to_knockdown = 2 // when not overcharged, you must swing twice to knockdown someone
+	armor_for_extra_swing_needed_for_knockdown = 0.25 // remember: overcharge massively increases penetration
+
 	/// Is this baton currently overcharged, granting armor penetration at the cost of extra cell usage?
 	var/overcharged = FALSE
 	/// Is this baton currently in the process of charging into an overcharge? If true, disallows
@@ -44,7 +72,7 @@
 	var/overcharge_time = 1.5 SECONDS
 
 	/// How much stun cost will be multiplied when a baton is overcharged.
-	var/overcharge_cell_cost_mult = 10.1 // default cells have 10000 charge, and cell_hit_cost is 1000
+	var/overcharge_cell_cost_mult = 9.3 // default cells have 10000 charge, and cell_hit_cost is 1000
 	/// How much power will be deducted from an overcharged baton's cell every process tick.
 	var/overcharge_passive_power_loss = 400
 
@@ -90,7 +118,7 @@
 	add_item_action(/datum/action/item_action/stun_baton/toggle_overcharge)
 
 /obj/item/melee/baton/security/ui_action_click(mob/user, actiontype)
-	if(istype(actiontype, /datum/action/item_action/stun_baton/toggle_overcharge))
+	if (istype(actiontype, /datum/action/item_action/stun_baton/toggle_overcharge))
 		if (!charging)
 			toggle_overcharge(user)
 			return
@@ -319,7 +347,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-// Override to make batons respect armor
+// Override to make batons respect armor and respect knockdown resistance
 /obj/item/melee/baton/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override)
 	var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE)
 	if(iscyborg(target))
@@ -335,10 +363,22 @@
 				human_target.force_say()
 		target.apply_damage(stamina_damage, STAMINA, blocked = (target.run_armor_check(attack_flag = stun_armor_flag, armour_penetration = stun_armor_flat_penetration, weak_against_armour = src.weak_against_armour))*(1-stun_armor_percent_penetration))
 		if(!trait_check)
-			target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
+			if (target.staminaloss > ((initial(src.stamina_damage) * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
+				target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
 		additional_effects_non_cyborg(target, user)
 	return TRUE
+
+// Override to make stun batons respect knockdown resistance
+/obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target)
+	if(target.staminaloss > ((initial(stamina_damage) * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
+		var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
+		if(!target.IsKnockdown())
+			to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
+
+		if(!trait_check)
+			target.Knockdown(knockdown_time)
 
 #undef BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT
 #undef BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT
 #undef BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME
+#undef TRANSLATE_EXTRA_SWING_ARMOR
