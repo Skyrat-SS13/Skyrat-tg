@@ -295,8 +295,8 @@
 	new /obj/item/xenoarch/handheld_recoverer(src)
 
 /obj/item/skillchip/xenoarch_magnifier
-	name = "UHM-ACK5HU-4LLY skillchip"
-	desc = "This biochip integrates with user's brain to enable mastery of a specific skill. Consult certified Nanotrasen neurosurgeon before use. \
+	name = "R3T3N-T1VE skillchip"
+	desc = "This biochip integrates with user's brain to enable the mastery of a specific skill. Consult certified Nanotrasen neurosurgeon before use. \
 	There's a little face etched into the back of the skillchip, with buck teeth and goofy-looking glasses."
 	auto_traits = list(TRAIT_XENOARCH_QUALIFIED)
 	skill_name = "Xenoarchaeological Analysis"

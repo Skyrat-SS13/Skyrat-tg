@@ -62,12 +62,12 @@
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/paper_bin)
 
-/datum/supply_pack/goody/junior_curator
+/datum/supply_pack/goody/xenoarch_intern
 	name = "Xenoarchaeology Intern Skillchip"
 	desc = "A skillchip with all the information required to start dabbling in the fine art of interpreting xenoarchaeological finds. \
 			Does not come with actual xenoarchaeological tools, nor the ability to actually make anyone pay attention to one's \
 			attempts at intellectual posturing, nor any actual job experience as a curator."
-	cost = PAYCHECK_CREW * 5
+	cost = PAYCHECK_CREW * 35 // 1750 credit goody? do bounties
 	contains = list(/obj/item/skillchip/xenoarch_magnifier)
 
 /*
