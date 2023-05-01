@@ -23,7 +23,7 @@
 
 	var/overcharge_stun_volume = 20
 	var/overcharge_cell_cost_mult = 10.1 // default batons cant overcharge, get a better cell
-	var/overcharge_passive_power_loss = 100
+	var/overcharge_passive_power_loss = 400
 
 	/// The sound the baton makes when a cell is inserted
 	var/sound_cell_insert = 'sound/weapons/magin.ogg'
@@ -41,7 +41,7 @@
 	var/default_light_color = COLOR_ORANGE
 
 	light_on = FALSE
-	light_system = MOVABLE_LIGH
+	light_system = MOVABLE_LIGHT
 
 /obj/item/melee/baton/security/cattleprod/Initialize(mapload)
 	. = ..()
@@ -123,8 +123,7 @@
 	add_atom_colour(COLOR_CYAN, ADMIN_COLOUR_PRIORITY)
 	update_inhand_icon(user)
 
-	if (active)
-		START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSobj, src)
 
 	overcharged = TRUE
 
@@ -182,11 +181,8 @@
 /obj/item/melee/baton/security/attack_self(mob/user)
 	. = ..()
 
-	if (active)
-		if (overcharged)
-			START_PROCESSING(SSobj, src)
-	else
-		STOP_PROCESSING(SSobj, src)
+	if (overcharged)
+		START_PROCESSING(SSobj, src)
 
 	set_light_on(active)
 
@@ -227,8 +223,9 @@
 /obj/item/melee/baton/security/process(seconds_per_tick)
 	deductcharge(power_use_amount)
 
-	if(!active || !overcharged)
+	if(!overcharged)
 		STOP_PROCESSING(SSobj, src)
+		return
 
 	if (overcharged && (!cell || (cell.charge < (cell_hit_cost))))
 		var/mob/user
