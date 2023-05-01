@@ -302,6 +302,9 @@
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
+/datum/round_event/ion_storm/announce(fake)
+	return
+
 /**
  * Immovable Rod
  */
