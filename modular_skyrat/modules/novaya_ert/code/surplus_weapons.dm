@@ -188,6 +188,6 @@
 	speed = 0.4
 	damage = 50
 	armour_penetration = 75
-	wound_bonus = 40
-	bare_wound_bonus = 90 // No armor? Yeah bye buddy
-	projectile_piercing = PASSMOB | PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
+	wound_bonus = -30
+	bare_wound_bonus = -15 
+	projectile_piercing = PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
