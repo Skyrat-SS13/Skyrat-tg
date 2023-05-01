@@ -54,16 +54,16 @@
 /datum/action/item_action/stun_baton/toggle_overcharge
 	name = "Toggle overcharge"
 	desc = "Disable/Enable current limiters, switching between the standard armor-respecting mode \
-	and an inefficient high-power mode, which boasts impressive armor penetration but with extreme power cost/passive discharge."
+	and an inefficient high-power mode, which boasts impressive armor penetration and easier knockdown but with extreme power cost/passive discharge."
 
 // Stun baton - Trades off it's ability to instantly knockdown enemies with more stamina DPS than police/telebaton, though
 // with the downside of having a cell and mediocre armor performance
-// A alternate mode, overcharge, can be toggled, which massively increases anti-armor abilities while draining massive chunks of power
+// A alternate mode, overcharge, can be toggled, which massively increases anti-armor abilities + ease of knockdown while draining massive chunks of power
 /obj/item/melee/baton/security
 	swings_to_knockdown = 2 // when not overcharged, you must swing twice to knockdown someone
 	armor_for_extra_swing_needed_for_knockdown = 0.25 // remember: overcharge massively increases penetration
 
-	/// Is this baton currently overcharged, granting armor penetration at the cost of extra cell usage?
+	/// Is this baton currently overcharged?
 	var/overcharged = FALSE
 	/// Is this baton currently in the process of charging into an overcharge? If true, disallows
 	/// overcharge attempts. 
@@ -72,9 +72,13 @@
 	var/overcharge_time = 1.5 SECONDS
 
 	/// How much stun cost will be multiplied when a baton is overcharged.
-	var/overcharge_cell_cost_mult = 9.3 // default cells have 10000 charge, and cell_hit_cost is 1000
-	/// How much power will be deducted from an overcharged baton's cell every process tick.
-	var/overcharge_passive_power_loss = 400
+	var/overcharge_cell_cost_mult = 9.7 // default cells have 10000 charge, and cell_hit_cost is 1000
+	/// How much power will be deducted from an overcharged baton's cell every second. Flat.
+	var/overcharge_passive_power_loss = 5
+	/// The percent of a cell's maximum charge that will be lost for every second overcharge is active. 0-1.
+	var/overcharge_passive_power_loss_percent = 0.005
+	/// When overcharged, swings to knockdown will be reduced by this amount.
+	var/overcharge_knockdown_swing_reduction = 1
 
 	/// The sound the baton makes when a cell is inserted
 	var/sound_cell_insert = 'sound/weapons/magin.ogg'
@@ -105,27 +109,35 @@
 	light_on = FALSE
 	light_system = MOVABLE_LIGHT
 
-/obj/item/melee/baton/security/cattleprod/Initialize(mapload)
-	. = ..()
-
-	overcharge_cell_cost_mult *= 2 // i wanna nerf overcharge on prods but im not totally sure how
-	// maybe increase the armor penetration but dump the entire cell?
+// already less efficient as its cell cost is 2x the norm, no need to nerf
+/obj/item/melee/baton/security/cattleprod
 
 /obj/item/melee/baton/security/Initialize(mapload)
 	. = ..()
 
 	set_light_range_power_color(default_light_range, default_light_power, default_light_color)
-	add_item_action(/datum/action/item_action/stun_baton/toggle_overcharge)
+	if (can_overcharge)
+		add_item_action(/datum/action/item_action/stun_baton/toggle_overcharge)
 
 /obj/item/melee/baton/security/ui_action_click(mob/user, actiontype)
 	if (istype(actiontype, /datum/action/item_action/stun_baton/toggle_overcharge))
 		if (!charging)
 			toggle_overcharge(user)
-			return
+		else
+			balloon_alert(user, "already charging!")
+		return
 
 	return ..()
 
-/// Switches the overcharge state to the opposite of what it currently is.
+/**
+ * Switches the overcharge state to the opposite of what it currently is.
+ *
+ * Args:
+ * mob/user: The mob that initiated the toggle.
+ *
+ * Returns:
+ * True if a state change occurs, false otherwise (was charging, no cell, not enough power, etc)
+ */ 
 /obj/item/melee/baton/security/proc/toggle_overcharge(mob/user)
 
 	if (charging)
@@ -149,14 +161,14 @@
 		else
 			balloon_alert_to_viewers("charging...")
 
-		playsound(src, 'sound/weapons/flash.ogg', 110, TRUE, -1, frequency = 0.7)
+		playsound(src, 'sound/weapons/flash.ogg', 110, TRUE, -1, frequency = 0.7) // very nice "charge-up" sound
 		addtimer(CALLBACK(src, PROC_REF(enable_overcharge), user), overcharge_time)
 		charging = TRUE
 
 	return TRUE
 
 /**
- * Enables overcharge, a high-power mode that massively increases armor penetration at the cost of
+ * Enables overcharge, a high-power mode that massively increases armor penetration and knockdown ability at the cost of
  * extreme stun cell cost and passive power discharge. 
  * 
  * Often is called after a delay from toggle_overcharge.
@@ -193,9 +205,11 @@
 
 	cell_hit_cost *= overcharge_cell_cost_mult
 
-	power_use_amount = overcharge_passive_power_loss
+	power_use_amount += get_overcharge_passive_discharge()
 
-	set_light_range_power_color(overcharge_light_range, overcharge_light_power, overcharge_light_color)
+	swings_to_knockdown -= overcharge_knockdown_swing_reduction
+
+	set_light_range_power_color(overcharge_light_range, overcharge_light_power, overcharge_light_color) // a glow helps with at-a-glance recognition
 
 	add_atom_colour(COLOR_CYAN, ADMIN_COLOUR_PRIORITY) //recolor it so it becomes obvious at a glance the danger of this baton
 	update_inhand_icon(user)
@@ -229,7 +243,9 @@
 
 	cell_hit_cost /= overcharge_cell_cost_mult
 
-	power_use_amount = initial(src.power_use_amount)
+	power_use_amount -= get_overcharge_passive_discharge()
+
+	swings_to_knockdown += overcharge_knockdown_swing_reduction
 
 	set_light_range_power_color(default_light_range, default_light_power, default_light_color)
 
@@ -241,10 +257,17 @@
 
 	return TRUE
 
+/**
+ * Returns:
+ * 0 if no cell is installed, ((cell.maxcharge) * overcharge_passive_power_loss_percent) + overcharge_passive_power_loss) otherwise
+ */
+/obj/item/melee/baton/security/proc/get_overcharge_passive_discharge()
+	return (cell ? ((cell.maxcharge) * (1 - overcharge_passive_power_loss_percent)) + overcharge_passive_power_loss : 0)
+
 /obj/item/melee/baton/security/deductcharge(deducted_charge)
 	. = ..()
 
-	if (overcharged && !.) // using the power check here prematurely disables overcharge, so lets nots
+	if (overcharged && !.) // using the power check here prematurely disables overcharge, so lets not
 		var/mob/user
 		if (istype(loc, /mob))
 			user = loc
@@ -267,11 +290,11 @@
 /obj/item/melee/baton/security/attack_self(mob/user)
 	. = ..()
 
-	if (overcharged) // sanity
-		START_PROCESSING(SSobj, src)
-
-	if (!active && overcharged) // inactive batons shouldnt be overcharged, since it would drain power while inactive otherwise
-		disable_overcharge(user)
+	if (overcharged)
+		if (!active)
+			disable_overcharge(user) // inactive batons shouldnt be overcharged, since it would drain power while inactive
+		else
+			START_PROCESSING(SSobj, src) // sanity)
 
 	set_light_on(active)
 
@@ -330,18 +353,21 @@
 	. = ..()
 
 	if (overcharged)
-		. += span_blue("This [name] is overcharged, granting it greatly enhanced armor penetration at the cost of extreme energy cost and passive discharge.")
-		. += "Stun power usage multiplied by [span_red(overcharge_cell_cost_mult*100)]%"
-		. += "Passively discharging [span_red(overcharge_passive_power_loss)] volts per second"
+		. += span_blue("This [name] is overcharged, granting it greatly enhanced armor penetration and improved knockdown ability at the cost of extreme energy cost and passive discharge.")
+		. += "Stun armor penetration increased by [span_blue((BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT*100) + "%")] + [span_blue(BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT)]"
+		. += "Hits to knockdown reduced by [span_blue(overcharge_knockdown_swing_reduction)]"
+
+		. += "Stun power usage incresaed by [span_red((overcharge_cell_cost_mult*100) + "%")]"
+		. += "Passively discharging [span_red(overcharge_passive_power_loss)] volts and [span_red(overcharge_passive_power_loss_percent + "%")] of the installed cell's capacity per second"
 		// giving info to people that theyd have to find out through trial and error otherwise is a good thing imo
 
 /obj/item/melee/baton/security/process(seconds_per_tick)
-	deductcharge(power_use_amount)
+	deductcharge(power_use_amount*seconds_per_tick)
 
 	if (istype(loc, /obj/machinery/recharger)) //prevent people from bypassing the delay by putting them in rechargers
 		disable_overcharge()
-
-	do_overcharge_power_check()
+	else
+		do_overcharge_power_check()
 
 	if(!overcharged)
 		STOP_PROCESSING(SSobj, src)
