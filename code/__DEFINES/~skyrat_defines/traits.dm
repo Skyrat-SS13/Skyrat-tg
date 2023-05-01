@@ -64,5 +64,8 @@
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
 
+/// trait that lets you do flips with a style meter
+#define TRAIT_STYLISH "stylish"
+
 /// trait that lets you do xenoarch magnification
 #define TRAIT_XENOARCH_QUALIFIED "trait_xenoarch_qualified"
