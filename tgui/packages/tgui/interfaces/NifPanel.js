@@ -1,6 +1,6 @@
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table } from '../components';
+import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table, Icon } from '../components';
 import { TableCell, TableRow } from '../components/Table';
 
 export const NifPanel = (props, context) => {
@@ -49,7 +49,12 @@ export const NifPanel = (props, context) => {
                   {loaded_nifsofts.map((nifsoft) => (
                     <Flex.Item key={nifsoft.name}>
                       <Collapsible
-                        title={nifsoft.name}
+                        title={
+                          <>
+                            {<Icon name={nifsoft.ui_icon} />}
+                            {nifsoft.name + '  '}
+                          </>
+                        }
                         buttons={
                           <Button
                             icon="play"

@@ -15,6 +15,7 @@
 	persistence = TRUE
 	purchase_price = 0 //It came free with your NIF.
 	buying_category = NIFSOFT_CATEGORY_FUN
+	ui_icon = "scroll"
 
 	///Is the NIFSoft transmitting data?
 	var/transmitting_data = TRUE
