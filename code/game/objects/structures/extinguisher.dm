@@ -16,11 +16,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 	. = ..()
 	if(building)
 		opened = TRUE
-<<<<<<< HEAD
 		//icon_state = "extinguisher_empty" ORIGINAL
 		icon_state = "extinguisher_empty_open"	//SKYRAT EDIT CHANGE - AESTHETICS
-=======
->>>>>>> 190779445b0 (New extinguisher cabinet sprites (#74923))
 	else
 		stored_extinguisher = new /obj/item/extinguisher(src)
 	update_appearance(UPDATE_ICON)
