@@ -119,7 +119,7 @@
 	icon_state = "amr"
 	inhand_icon_state = "amr"
 	worn_icon_state = "amr"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BACK
 
 	mag_type = /obj/item/ammo_box/magazine/cin_amr
@@ -189,5 +189,5 @@
 	damage = 50
 	armour_penetration = 75
 	wound_bonus = -30
-	bare_wound_bonus = -15 
+	bare_wound_bonus = -15
 	projectile_piercing = PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
