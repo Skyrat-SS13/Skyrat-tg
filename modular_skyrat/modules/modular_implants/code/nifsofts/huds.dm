@@ -15,6 +15,12 @@
 	var/list/added_eyewear_traits = list()
 
 /datum/nifsoft/hud/activate()
+	if(eyewear_check && !active)
+		var/obj/item/clothing/glasses/nif_hud/hud_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
+		if(!istype(hud_glasses))
+			to_chat(linked_mob, span_warning("You need to wear a piece of compatible eyewear for [program_name] to work."))
+			return FALSE
+
 	. = ..()
 	if(!.)
 		return FALSE
@@ -30,12 +36,6 @@
 			REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
 
 		return TRUE
-
-	if(eyewear_check)
-		var/obj/item/clothing/glasses/nif_hud/hud_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
-		if(!istype(hud_glasses))
-			linked_mob.balloon_alert(linked_mob, "You need to wear a piece of compatible eyewear for this to work.")
-			return FALSE
 
 	if(hud_type)
 		var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
@@ -100,15 +100,15 @@
 	name = "Diagnostic HUD"
 	loaded_nifsoft = /datum/nifsoft/hud/job/diagnostic
 
-/obj/item/disk/nifsoft_uploader/security
+/obj/item/disk/nifsoft_uploader/sec_hud
 	name = "Security HUD"
 	loaded_nifsoft = /datum/nifsoft/hud/job/security
 
-/obj/item/disk/nifsoft_uploader/cargo_tech
+/obj/item/disk/nifsoft_uploader/permit_hud
 	name = "Permit HUD"
 	loaded_nifsoft = /datum/nifsoft/hud/job/cargo_tech
 
-/obj/item/disk/nifsoft_uploader/science
+/obj/item/disk/nifsoft_uploader/sci_hud
 	name = "Science HUD"
 	loaded_nifsoft = /datum/nifsoft/hud/job/science
 
