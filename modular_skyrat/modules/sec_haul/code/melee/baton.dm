@@ -11,18 +11,28 @@
 
 /datum/action/item_action/stun_baton/toggle_overcharge
 	name = "Toggle overcharge"
+	desc = "Disable/Enable current limiters, switching between the standard armor-respecting mode \
+	and an inefficient high-power mode, which boasts impressive armor penetration but with extreme power cost/passive discharge."
 
-#define SECURITY_BATON_OVERCHARGE_CELL_COST_MULT 10
-#define BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT 0.85 // keep armor SOMEWHAT effective
+/// The default armor penetration of a baton in overcharge mode. Percentage-based.
+#define BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT 0.85 // keep armor SOMEWHAT effective, at least 15%
+/// The default armor penetration of a baton in overcharge mode. Flat. Needed to be above 1 to get the armor penetration message.
 #define BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT 0.1 // todo: make it so we only need the percentage
+/// The volume of the extra sound played on overcharged baton impact, for extra "oomph" factor
+#define BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME 20
 
 /obj/item/melee/baton/security
+	/// Is this baton currently overcharged, granting armor penetration at the cost of extra cell usage?
 	var/overcharged = FALSE
+	/// Is this baton currently in the process of charging into an overcharge? If true, disallows
+	/// overcharge attempts. 
 	var/charging = FALSE
+	/// How long this baton takes, in seconds, to go from charging to overcharged.
 	var/overcharge_time = 1.5 SECONDS
 
-	var/overcharge_stun_volume = 20
-	var/overcharge_cell_cost_mult = 10.1 // default batons cant overcharge, get a better cell
+	/// How much stun cost will be multiplied when a baton is overcharged.
+	var/overcharge_cell_cost_mult = 10.1 // default cells have 10000 charge, and cell_hit_cost is 1000
+	/// How much power will be deducted from an overcharged baton's cell every process tick.
 	var/overcharge_passive_power_loss = 400
 
 	/// The sound the baton makes when a cell is inserted
@@ -30,14 +40,25 @@
 	/// The sound the baton makes when a cell is removed
 	var/sound_cell_remove = 'sound/weapons/magout.ogg'
 
+	/// If this baton can overcharge at all.
 	var/can_overcharge = TRUE
 
+	// Note: In testing, oddly enough, range and power seem to only work in increments of 0.5 and round down accordingly
+
+	// A quite dim cyan light that expands from the user's tile to half a tile out
+	/// The range of the light emitted when overcharge is active.
 	var/overcharge_light_range = 1.6
+	/// The power of the light emitted when overcharge is active. 
 	var/overcharge_light_power = 0.5
+	/// The color of the light emitted when overcharge is active.
 	var/overcharge_light_color = COLOR_CYAN
 
+	// An extremely dim orange light that expands from the user's tile to half a tile out - impractial for lighting
+	/// The range of the light emitted when overcharge is inactive.
 	var/default_light_range = 1.5
+	/// The power of the light emitted when overcharge is inactive.
 	var/default_light_power = 0.005
+	/// The color of the light emitted when overcharge is inactive.
 	var/default_light_color = COLOR_ORANGE
 
 	light_on = FALSE
@@ -46,7 +67,8 @@
 /obj/item/melee/baton/security/cattleprod/Initialize(mapload)
 	. = ..()
 
-	overcharge_cell_cost_mult *= 2
+	overcharge_cell_cost_mult *= 2 // i wanna nerf overcharge on prods but im not totally sure how
+	// maybe increase the armor penetration but dump the entire cell?
 
 /obj/item/melee/baton/security/Initialize(mapload)
 	. = ..()
@@ -62,6 +84,7 @@
 
 	return ..()
 
+/// Switches the overcharge state to the opposite of what it currently is.
 /obj/item/melee/baton/security/proc/toggle_overcharge(mob/user)
 
 	if (charging)
@@ -91,6 +114,19 @@
 
 	return TRUE
 
+/**
+ * Enables overcharge, a high-power mode that massively increases armor penetration at the cost of
+ * extreme stun cell cost and passive power discharge. 
+ * 
+ * Often is called after a delay from toggle_overcharge.
+ * This delay, coupled with the passive discharge, encourages users to only keep overcharge active
+ * when absolutely necessary, and think stratetegically about when to use it.
+ *
+ * Plus, the high cell cost and discharge both incentivise users to upgrade their cell, which is always good.
+ * 
+ * Args:
+ * mob/user: The person that initiated the overcharge attempt. Nullable.
+ */
 /obj/item/melee/baton/security/proc/enable_overcharge(mob/user)
 
 	if (!charging || overcharged)
@@ -109,7 +145,7 @@
 		balloon_alert_to_viewers("overcharged!")
 
 	playsound(src, SFX_SPARKS, 120, TRUE, -1, frequency = 0.6)
-	do_sparks(3, TRUE, src)
+	do_sparks(3, TRUE, src) // extra "oomph" factor, and also a good telegraph for it's activation
 
 	stun_armor_percent_penetration = BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT
 	stun_armor_flat_penetration = BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT // mainly just to get the "your armor was penetrated" message
@@ -120,13 +156,20 @@
 
 	set_light_range_power_color(overcharge_light_range, overcharge_light_power, overcharge_light_color)
 
-	add_atom_colour(COLOR_CYAN, ADMIN_COLOUR_PRIORITY)
+	add_atom_colour(COLOR_CYAN, ADMIN_COLOUR_PRIORITY) //recolor it so it becomes obvious at a glance the danger of this baton
 	update_inhand_icon(user)
 
 	START_PROCESSING(SSobj, src)
 
 	overcharged = TRUE
 
+/**
+ * Disables the overcharge of the baton, returning it to the standard low-cost but low-antiarmor-effectiveness
+ * baton we all know and love (hate).
+ *
+ * Args:
+ * mob/user: The mob that disabled overcharge. Nullable.
+ */
 /obj/item/melee/baton/security/proc/disable_overcharge(mob/user)
 
 	if (!overcharged)
@@ -160,7 +203,7 @@
 /obj/item/melee/baton/security/deductcharge(deducted_charge)
 	. = ..()
 
-	if (overcharged && !.)
+	if (overcharged && !.) // using the power check here prematurely disables overcharge, so lets nots
 		var/mob/user
 		if (istype(loc, /mob))
 			user = loc
@@ -175,14 +218,19 @@
 
 	if (overcharged)
 		do_sparks(3, TRUE, target)
-		playsound(get_turf(src), 'sound/magic/mm_hit.ogg', overcharge_stun_volume, TRUE, -1, frequency = 1.3)
+		playsound(get_turf(src), 'sound/magic/mm_hit.ogg', BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME, TRUE, -1, frequency = 1.3)
 		target.visible_message(span_danger("[user]'s [src.name] sparks violently as it's overcharged prongs penetrate [target]'s armor!"))
+
+	// effects for extra "oomph" and also to make it just that more obvious how dangerous this baton is
 
 /obj/item/melee/baton/security/attack_self(mob/user)
 	. = ..()
 
-	if (overcharged)
+	if (overcharged) // sanity
 		START_PROCESSING(SSobj, src)
+
+	if (!active && overcharged) // inactive batons shouldnt be overcharged, since it would drain power while inactive otherwise
+		disable_overcharge(user)
 
 	set_light_on(active)
 
@@ -191,6 +239,10 @@
 	if(istype(item, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/new_cell = item
 
+		// you may ask: why? well my dear reader, because if there was no cell addition delay there would be no
+		// reason to care about the power usage as you can just screwdriver the cell out and pop a new one in!
+		// sure with this you can use multiple batons, but a. theyre harder to come by
+		// b. they still self-discharge when overcharged c. it still takes time to start an overcharge on those batons
 		if (!cell && !(new_cell.maxcharge < cell_hit_cost)) //this all exists to delay adding a cell
 			user.balloon_alert_to_viewers("replacing cell...")
 			if (!do_after(user, 3 SECONDS, src))
@@ -198,41 +250,61 @@
 
 	. = ..()
 
-	if (item == cell)
+	if (item == cell) // checks if the item has indeed been placed in our cell slot
 		playsound(src, sound_cell_insert, 40)
+		do_overcharge_power_check(user)
 
 /obj/item/melee/baton/security/tryremovecell(mob/user)
 	. = ..()
 
 	if (.)
 		playsound(src, sound_cell_remove, 40)
+		set_light_on(active)
 
-		if (overcharged)
-			if (user)
+		do_overcharge_power_check(user)
+
+/**
+ * Checks if src.cell exists or has enough power to perform an overcharged attack.
+ * If not, disables overcharge, with an optional message to whomever is holding the baton.
+ * Only runs this check if overcharged == TRUE.
+ *
+ * Args:
+ * mob/user: The holder of this baton. Nullable.
+ * silent = FALSE: If true, no message will be given to user, assuming it exists.
+ *
+ * Returns:
+ * src.overcharged after the checks have been done.
+ */
+/obj/item/melee/baton/security/proc/do_overcharge_power_check(mob/user, silent = FALSE)
+
+	if (overcharged)
+		if (!cell || (cell.charge < (cell_hit_cost)))
+			if (!silent && user)
 				balloon_alert(user, "not enough power!")
 			disable_overcharge(user)
 
-		set_light_on(active)
+	return overcharged
 
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 
 	if (overcharged)
 		. += span_blue("This [name] is overcharged, granting it greatly enhanced armor penetration at the cost of extreme energy cost and passive discharge.")
+		. += "Stun power usage multiplied by [span_red(overcharge_cell_cost_mult*100)]%"
+		. += "Passively discharging [span_red(overcharge_passive_power_loss)] volts per second"
+		// giving info to people that theyd have to find out through trial and error otherwise is a good thing imo
 
 /obj/item/melee/baton/security/process(seconds_per_tick)
 	deductcharge(power_use_amount)
 
+	if (istype(loc, /obj/machinery/recharger)) //prevent people from bypassing the delay by putting them in rechargers
+		disable_overcharge()
+
+	do_overcharge_power_check()
+
 	if(!overcharged)
 		STOP_PROCESSING(SSobj, src)
 		return
-
-	if (overcharged && (!cell || (cell.charge < (cell_hit_cost))))
-		var/mob/user
-		if (istype(loc, /mob))
-			user = loc
-			balloon_alert(user, "not enough power!")
-		disable_overcharge(user)
 
 // Override to make batons respect armor
 /obj/item/melee/baton/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override)
@@ -253,3 +325,7 @@
 			target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
 		additional_effects_non_cyborg(target, user)
 	return TRUE
+
+#undef BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT
+#undef BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT
+#undef BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME
