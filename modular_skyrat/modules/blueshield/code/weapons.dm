@@ -1,6 +1,6 @@
 // CMG gunset - IN USE
 /obj/item/storage/box/gunset/blueshield
-	name = "Blueshield's CMG-1 gunset"
+	name = "Blueshield's CMG-2 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
