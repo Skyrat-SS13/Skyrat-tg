@@ -8,11 +8,9 @@
 	var/select_name = CALIBER_ENERGY
 	fire_sound = 'sound/weapons/laser.ogg'
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/energy
-<<<<<<< HEAD
 	heavy_metal = FALSE
-	//SKYRAT EDIT CELL LOADED GUNS//
-	var/select_color = FALSE //This is the color that shows up when selecting an ammo type. Disabled by default
-	//SKYRAT EDIT END//
-=======
 	is_cased_ammo = FALSE
->>>>>>> 461ef29f18e (Bows no longer randomly become unusable (#75058))
+	
+	//SKYRAT EDIT ADD - CELL LOADED GUNS
+	var/select_color = FALSE //This is the color that shows up when selecting an ammo type. Disabled by default
+	//SKYRAT EDIT ADD END
