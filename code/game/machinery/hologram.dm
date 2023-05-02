@@ -610,16 +610,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	update_holoray(owner, get_turf(loc))
 	return TRUE
 
-<<<<<<< HEAD
-
-/obj/machinery/holopad/proc/clear_holo(mob/living/user)
-	qdel(masters[user]) // Get rid of user's hologram
-	unset_holo(user)
-=======
 /obj/machinery/holopad/proc/clear_holo(datum/owner)
 	qdel(masters[owner]) // Get rid of owner's hologram
 	unset_holo(owner)
->>>>>>> 88fcbad2813 (Fixes holorecords not getting the color filter properly (#74999))
 	return TRUE
 
 /**
