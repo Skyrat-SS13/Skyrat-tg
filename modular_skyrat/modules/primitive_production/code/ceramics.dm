@@ -63,19 +63,6 @@
 						/obj/item/reagent_containers/cup/bowl/ceramic,
 						/obj/item/reagent_containers/cup/beaker/large/ceramic)
 
-/datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
-
-/datum/export/ceramics_unfinished
-	cost = CARGO_CRATE_VALUE * 0.5
-	unit_name = "unfinished ceramic product"
-	export_types = list(/obj/item/ceramic/plate,
-						/obj/item/ceramic/bowl,
-						/obj/item/ceramic/cup)
-
-/datum/export/ceramics_unfinished/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
-
 /obj/item/ceramic/plate
 	name = "ceramic plate"
 	desc = "A piece of clay that is flat, in the shape of a plate."
@@ -171,7 +158,7 @@
 	if(in_use)
 		return
 	use(user)
-	in_use = FALSE 
+	in_use = FALSE
 
 /**
  * Prompts user for how they wish to use the throwing wheel

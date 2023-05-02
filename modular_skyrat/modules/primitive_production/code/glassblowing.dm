@@ -16,7 +16,7 @@
 	custom_materials = list(/datum/material/glass = 1000)
 
 /datum/export/glassblowing
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "glassblowing product"
 	export_types = list(
 		/obj/item/glassblowing/glass_lens,
@@ -25,9 +25,6 @@
 		/obj/item/reagent_containers/cup/beaker/large/blowing_glass,
 		/obj/item/plate/blowing_glass
 	)
-
-/datum/export/glassblowing/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	return ..()
 
 /obj/item/glassblowing/glass_lens
 	name = "glass lens"
