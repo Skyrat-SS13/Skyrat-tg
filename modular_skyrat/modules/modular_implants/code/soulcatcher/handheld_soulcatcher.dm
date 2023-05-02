@@ -1,5 +1,3 @@
-#define SOULCATCHER_CATCH_TIME_LIMIT 30 SECONDS
-
 /obj/item/handheld_soulcatcher
 	name = "\improper Evoker-type RSD"
 	desc = "The Evoker-Type Resonance Simulation Device is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
@@ -132,5 +130,3 @@
 
 	confirming_entry -= soul
 	UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
-
-#undef SOULCATCHER_CATCH_TIME_LIMIT
