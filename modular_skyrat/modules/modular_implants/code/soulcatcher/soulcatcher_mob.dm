@@ -29,6 +29,7 @@
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
 
+
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
 	if(!outside_sight)
@@ -131,6 +132,13 @@
 	return FALSE
 
 /mob/living/soulcatcher_soul/Destroy()
+	if(current_room)
+		var/datum/soulcatcher_room/room = current_room.resolve()
+		if(room)
+			room.current_souls -= src
+
+		current_room = null
+
 	if(previous_body && mind)
 		var/mob/target_body = previous_body.resolve()
 		if(!target_body)

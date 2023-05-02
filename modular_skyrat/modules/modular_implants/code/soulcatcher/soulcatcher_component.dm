@@ -200,6 +200,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	current_souls -= soul_to_remove
+	soul_to_remove.current_room = null
 	qdel(soul_to_remove)
 	return TRUE
 
