@@ -58,9 +58,6 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-	if (!user.can_join_soulcatcher_room(target_room, TRUE))
-		return FALSE
-
 	to_chat(user, span_blue("[target_mob] has been requested to join [target_room]."))
 	if (!invite_soul(target_room, user, target_mob))
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
@@ -73,24 +70,24 @@
 		if (ghost)
 			real_target = ghost
 
-	if (!real_target.can_join_soulcatcher_room(target_room))
+	if (!target_mob.can_join_soulcatcher_room(target_room, TRUE))
 		return FALSE
 
 	var/turf/source_turf = get_turf(user)
-	var/admin_log = "[key_name(user)] used [src] to put [key_name(real_target)]'s mind into a soulcatcher at [AREACOORD(source_turf)]."
+	var/admin_log = "[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]."
 	if (target_dead)
 		if(!target_room.add_soul_from_ghost(real_target))
 			return FALSE
 	else
-		admin_log += " [real_target] was still alive."
-		target_room.add_soul(real_target.mind, TRUE)
+		admin_log += " [target_mob] was still alive."
+		target_room.add_soul(target_mob.mind, TRUE)
 
 		playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-		visible_message(span_notice("[src] beeps: [real_target]'s mind transfer is now complete."))
+		visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
-	if(!real_target.GetComponent(/datum/component/previous_body))
+	if(!target_mob.GetComponent(/datum/component/previous_body))
 		return FALSE
-	linked_soulcatcher.scan_body(real_target, user)
+	linked_soulcatcher.scan_body(target_mob, user)
 
 	log_admin(admin_log)
 	return TRUE
