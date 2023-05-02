@@ -358,6 +358,10 @@
 /obj/item/glassblowing/blowing_rod/proc/do_glass_step(step_id, mob/user, actioning_speed, obj/item/glassblowing/molten_glass/glass)
 	if(!glass)
 		return
+	if(COOLDOWN_FINISHED(glass, remaining_heat))
+		to_chat(user, span_warning("The glass has cooled down and will require reheating to modify! "))
+		return FALSE
+
 	if(in_use)
 		return
 
