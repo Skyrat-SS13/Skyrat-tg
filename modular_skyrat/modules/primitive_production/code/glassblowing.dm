@@ -370,12 +370,16 @@
 	if(!check_valid_table(user))
 		fail_message("You must be near a non-flammable table!", user)
 		return
-	if(!check_valid_tool(user, step_id))
-		return
+
+	var/datum/thing_blowing = check_valid_tool(user, step_id)
+	if(!thing_blowing)
+		return FALSE
+
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		return
+		thing_blowing.RemoveComponent(/datum/component/currently_glassblowing)
+		return FALSE
 
 	if(glass.steps_remaining)
 		// We do not want to have negative values here
@@ -384,6 +388,7 @@
 			if(check_finished(glass))
 				glass.is_finished = TRUE
 
+	thing_blowing.RemoveComponent(/datum/component/currently_glassblowing)
 	in_use = FALSE
 
 	to_chat(user, span_notice("You finish trying to [step_id] [src]."))
@@ -416,31 +421,35 @@
  * * mob/living/carbon/human/user - the mob doing the action
  * * step_id - the step id of the action being done
  *
- * Returns TRUE or FALSE.
+ * Checks to see if the action being taken can be done, if this isn't the case, the proc will return `FALSE`.
+ * If the item being used does work, returns the item/mob being used.
  */
 /obj/item/glassblowing/blowing_rod/proc/check_valid_tool(mob/living/carbon/human/user, step_id)
 	if(!istype(user))
 		return FALSE
 
-	var/obj/item/glassblowing/tool_path
-	switch(step_id)
-		if(STEP_BLOW)
-			return TRUE
-		if(STEP_SPIN)
-			return TRUE
-		if(STEP_PADDLE)
-			tool_path = /obj/item/glassblowing/paddle
-		if(STEP_SHEAR)
-			tool_path = /obj/item/glassblowing/shears
-		if(STEP_JACKS)
-			tool_path = /obj/item/glassblowing/jacks
+	if(step_id == STEP_BLOW || step_id == STEP_SPIN)
+		if(user.GetComponent(user, /datum/component/currently_glassblowing))
+			balloon_alert(user, "you are already blowing!")
+			return FALSE
 
-	if(user.is_holding_item_of_type(tool_path))
+		user.AddComponent(/datum/component/currently_glassblowing)
 		return TRUE
 
-	balloon_alert(user, "need to be holding [initial(tool_path.name)]!")
-	in_use = FALSE
-	return FALSE
+	var/obj/item/glassblowing/used_tool
+	switch(step_id)
+		if(STEP_PADDLE)
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/paddle)
+		if(STEP_SHEAR)
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/shears)
+		if(STEP_JACKS)
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/jacks)
+
+	if(!used_tool || GetComponent(used_tool, /datum/component/currently_glassblowing))
+		return FALSE
+
+	used_tool.AddComponent(/datum/componnet/currently_glassblowing)
+	return used_tool
 
 /**
  * Checks if the glass is ready to craft into its chosen item.
@@ -511,6 +520,12 @@
 		has_sand = TRUE
 		icon_state = "metal_cup_full"
 	return ..()
+
+
+/datum/component/currently_glassblowing/Initialize(...)
+	. = ..()
+	if(!isobj(parent) && !ismob(parent))
+		return COMPONENT_INCOMPATIBLE
 
 #undef DEFAULT_TIMED
 #undef STEP_BLOW
