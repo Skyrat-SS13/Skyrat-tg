@@ -101,7 +101,7 @@
 		return FALSE
 
 	if(!able_to_emote)
-		to_chat(src, span_warning("You are unable to speak!"))
+		to_chat(src, span_warning("You are unable to emote!"))
 		return FALSE
 
 	var/datum/soulcatcher_room/room = current_room.resolve()
@@ -151,3 +151,6 @@
 			target_body.grab_ghost(TRUE)
 
 	return ..()
+
+/datum/emote/living
+	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/soulcatcher_soul)
