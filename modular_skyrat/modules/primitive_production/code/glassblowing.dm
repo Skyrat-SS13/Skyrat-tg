@@ -358,6 +358,7 @@
 /obj/item/glassblowing/blowing_rod/proc/do_glass_step(step_id, mob/user, actioning_speed, obj/item/glassblowing/molten_glass/glass)
 	if(!glass)
 		return
+
 	if(COOLDOWN_FINISHED(glass, remaining_heat))
 		to_chat(user, span_warning("The glass has cooled down and will require reheating to modify! "))
 		return FALSE
@@ -371,14 +372,15 @@
 		fail_message("You must be near a non-flammable table!", user)
 		return
 
-	var/datum/thing_blowing = check_valid_tool(user, step_id)
-	if(!thing_blowing)
+	var/datum/blower = check_valid_tool(user, step_id)
+	if(!blower)
+		in_use = FALSE
 		return FALSE
 
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		thing_blowing.RemoveComponent(/datum/component/currently_glassblowing)
+		REMOVE_TRAIT(blower, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 		return FALSE
 
 	if(glass.steps_remaining)
@@ -388,7 +390,7 @@
 			if(check_finished(glass))
 				glass.is_finished = TRUE
 
-	thing_blowing.RemoveComponent(/datum/component/currently_glassblowing)
+	REMOVE_TRAIT(blower, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 	in_use = FALSE
 
 	to_chat(user, span_notice("You finish trying to [step_id] [src]."))
@@ -421,20 +423,20 @@
  * * mob/living/carbon/human/user - the mob doing the action
  * * step_id - the step id of the action being done
  *
- * Checks to see if the action being taken can be done, if this isn't the case, the proc will return `FALSE`.
- * If the item being used does work, returns the item/mob being used.
+ * We check to see if the user is using the right tool and if they are currently glassblowing with it.
+ * If the correct tool is being used we return the tool. Otherwise we return `FALSE`
  */
 /obj/item/glassblowing/blowing_rod/proc/check_valid_tool(mob/living/carbon/human/user, step_id)
 	if(!istype(user))
 		return FALSE
 
 	if(step_id == STEP_BLOW || step_id == STEP_SPIN)
-		if(user.GetComponent(user, /datum/component/currently_glassblowing))
-			balloon_alert(user, "you are already blowing!")
+		if(HAS_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING))
+			balloon_alert(user, "you are already glassblowing!")
 			return FALSE
 
-		user.AddComponent(/datum/component/currently_glassblowing)
-		return TRUE
+		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		return user
 
 	var/obj/item/glassblowing/used_tool
 	switch(step_id)
@@ -445,10 +447,15 @@
 		if(STEP_JACKS)
 			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/jacks)
 
-	if(!used_tool || GetComponent(used_tool, /datum/component/currently_glassblowing))
+	if(!used_tool)
+		balloon_alert(user, "you don't have the right tool!")
 		return FALSE
 
-	used_tool.AddComponent(/datum/componnet/currently_glassblowing)
+	if(HAS_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING))
+		balloon_alert(user, "[used_tool] is currently in use.")
+		return FALSE
+
+	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 	return used_tool
 
 /**
@@ -520,12 +527,6 @@
 		has_sand = TRUE
 		icon_state = "metal_cup_full"
 	return ..()
-
-
-/datum/component/currently_glassblowing/Initialize(...)
-	. = ..()
-	if(!isobj(parent) && !ismob(parent))
-		return COMPONENT_INCOMPATIBLE
 
 #undef DEFAULT_TIMED
 #undef STEP_BLOW
