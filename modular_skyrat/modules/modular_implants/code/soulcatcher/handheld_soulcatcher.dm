@@ -65,19 +65,19 @@
 		return FALSE
 
 	var/target_dead = (target_mob.stat == DEAD)
-	var/mob/real_target = target_mob
-	if (target_dead)
-		var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
-		if (ghost)
-			real_target = ghost
+	var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
+
+	if (target_dead && !ghost)
+		target_mob.ghostize(TRUE)
+		ghost = target_mob.get_ghost(TRUE, TRUE) // ghostized, new ghost could be here
 
 	if (!target_mob.can_join_soulcatcher_room(target_room, TRUE)) // sanity
 		return FALSE
 
 	var/turf/source_turf = get_turf(user)
 	var/admin_log = "[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]."
-	if (target_dead)
-		if(!target_room.add_soul_from_ghost(real_target))
+	if (ghost)
+		if(!target_room.add_soul_from_ghost(ghost))
 			return FALSE
 	else
 		admin_log += " [target_mob] was still alive."
@@ -94,16 +94,16 @@
 	return TRUE
 
 /**
- * Invites target_mob into target_room by giving them a tgui_alert. 
+ * Invites target_mob into target_room by giving them a tgui_alert.
  * target_mob cannot be invited more than once while a alert from a given soulcatcher is open, enforced by
- * src.confirming_entry += real_target and a check surrounding that. 
+ * src.confirming_entry += real_target and a check surrounding that.
  *
  * Args:
  * datum/soulcatcher/target_room: The room we are inviting target_mob to.
  * mob/living/user (Nullable): The individual who invited the mob.
  * mob/living/target_mob: The mob that was clicked on/invited into the room.
  *
- * Returns: 
+ * Returns:
  * False if the invitation wasn't delivered, the result of the tgui_alert otherwise.
  */
 /obj/item/handheld_soulcatcher/proc/invite_soul(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
@@ -116,17 +116,18 @@
 	if (user)
 		message = "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?"
 	var/target_dead = (target_mob.stat == DEAD)
+	var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
 	var/mob/real_target = target_mob
 
-	if(target_dead) //We can temporarily store souls of dead mobs.
+	if(ghost || target_dead) //We can temporarily store souls of dead mobs.
 		target_mob.ghostize(TRUE) //Incase they are staying in the body.
-		var/mob/dead/observer/target_ghost = target_mob.get_ghost(TRUE, TRUE)
-		if(!target_ghost)
+		ghost = target_mob.get_ghost(TRUE, TRUE) // ghostized, new ghost could be here
+		if(!ghost)
 			if (user)
 				to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 		else
-			real_target = target_ghost
+			real_target = ghost
 	else
 		message += " This will remove you from your body until you leave."
 

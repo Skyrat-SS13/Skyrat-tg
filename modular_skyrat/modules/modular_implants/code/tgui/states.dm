@@ -16,6 +16,9 @@
 
 /datum/ui_state/handheld_soulcatcher_state/can_use_topic(src_object, mob/living/user)
 
+	if (QDELETED(our_item))
+		return UI_CLOSE
+
 	var/mob/target_mob = our_item.interacting_mobs[user]
 	if (!target_mob)
 		return UI_CLOSE
