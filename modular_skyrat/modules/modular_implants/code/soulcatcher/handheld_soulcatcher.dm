@@ -13,16 +13,9 @@
 	/// Associative list of (user -> target), where user is anyone that used this object on a target mob.
 	/// User is removed on ui close.
 	var/list/mob/interacting_mobs = list()
-	/// Associative list of (target -> (modified_key -> datum instance))
-	/// A temporary "map" of modified strings corresponding to room datums. See the tgui list proc for more information, as it's just a copy.
-	/// Target cleared on UI close or destroy.
-	var/list/items_map = list()
 	/// A list of mobs that currently have the "Do you want to join this room" pop-up. Used to prevent spam of the popup.
 	/// Target removed on popup close or popup holder destroy.
 	var/list/mob/confirming_entry = list()
-	/// A assoc list of (user -> time_used), where time_used is the world.time reported when the list TGUI window was opened.
-	/// User removed on UI close.
-	var/list/start_times = list()
 
 /obj/item/handheld_soulcatcher/attack_self(mob/user, modifiers)
 	linked_soulcatcher.ui_interact(user)
@@ -44,57 +37,6 @@
 	confirming_entry = null
 
 	return ..()
-
-// no global instance so we can pass args
-/datum/ui_state/handheld_soulcatcher_state
-	var/obj/item/handheld_soulcatcher/our_item
-
-/datum/ui_state/handheld_soulcatcher_state/New(obj/item/handheld_soulcatcher/our_item)
-	. = ..()
-
-	src.our_item = our_item
-
-/datum/ui_state/handheld_soulcatcher_state/Destroy(force, ...)
-	our_item = null
-
-	return ..()
-
-#define SOULCATCHER_MAX_CATCHING_DISTANCE 7
-
-/datum/ui_state/handheld_soulcatcher_state/can_use_topic(src_object, mob/living/user)
-
-	var/mob/target_mob = our_item.interacting_mobs[user]
-	if (!target_mob)
-		return UI_CLOSE
-
-	if (!istype(user))
-		return UI_CLOSE
-
-	if(user.stat != CONSCIOUS)
-		return UI_CLOSE
-
-	var/is_holding = user.is_holding(our_item)
-
-	if (!is_holding)
-		if (user.z != our_item.z)
-			return UI_CLOSE
-
-	var/dist_from_src_to_target = get_dist(get_turf(our_item), get_turf(target_mob))
-	if (dist_from_src_to_target > SOULCATCHER_MAX_CATCHING_DISTANCE)
-		to_chat(user, span_warning("[target_mob] left range of [our_item]!"))
-		return UI_CLOSE
-
-	/*if (get_time_limit(user) <= 0)
-		to_chat(user, span_warning("Ran out of time to pick your room!"))
-		return UI_CLOSE*/
-
-	if(HAS_TRAIT(src, TRAIT_UI_BLOCKED) || user.incapacitated())
-		return UI_DISABLED
-
-	if (is_holding)
-		return UI_INTERACTIVE
-	else
-		return user.shared_living_ui_distance(our_item)
 
 /obj/item/handheld_soulcatcher/attack(mob/living/target_mob, mob/living/user, params)
 	if(!target_mob)

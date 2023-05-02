@@ -92,6 +92,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
+	if (soulcatcher_owner.stat == DEAD || !soulcatcher_owner.mind)
+		return FALSE
 
 	return TRUE
 
@@ -295,7 +297,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		to_chat(src, span_warning("No soulcatchers are joinable."))
 		return FALSE
 
-	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
+	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers, ui_state = GLOB.observer_state)
 	// you can no longer trust that the soulcatcher is open due to the list wait
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers) || !can_join_soulcatcher(soulcatcher_to_join))
 		return FALSE
@@ -316,7 +318,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	else
 		// you cannot trust the state of any variable after a tgui_input_list, meaning both room AND soulcatcher
-		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
+		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join, ui_state = GLOB.observer_state)
 		// we check both parent and room to see if either will let us in since. who knows maybe the parent closed?
 		if (!can_join_soulcatcher_room(room_to_join, check_parent = TRUE))
 			to_chat(src, span_warning("This room can no longer be joined!"))
@@ -338,9 +340,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	room_to_join.add_soul_from_ghost(src)
 	return TRUE
 
+/**
+ * Args:
+ * datum/component/soulcatcher/catcher - The soulcatcher we are checking.
+ *
+ * Returns: TRUE by default.
+ */
 /mob/proc/can_join_soulcatcher(datum/component/soulcatcher/catcher)
 	return TRUE
 
+/**
+ * Args:
+ * datum/component/soulcatcher/catcher - The soulcatcher we are checking.
+ *
+ * Returns: False if super returned false, false if the catcher is not joinable by ghosts, true otherwise.
+ */
 /mob/dead/observer/can_join_soulcatcher(datum/component/soulcatcher/catcher)
 	. = ..()
 
@@ -350,6 +364,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if (!catcher.ghost_joinable)
 		return FALSE
 
+/**
+ * Args:
+ * datum/soulcatcher_room/room - The room we are checking.
+ * check_parent = TRUE - If TRUE, returns false if no catcher is room's parent, as well as if can_join_soulcatcher(catcher) returns false.
+ * datum/component/soulcatcher/catcher - Only present for efficiency - if running this proc in a catcher's loop, put src in here.
+ *
+ * Returns: False if check_parent is TRUE and no catcher is present or can_join_soulcatcher(catcher) returns false, false if the room is unjoinable, true otherwise.
+ */
 /mob/proc/can_join_soulcatcher_room(datum/soulcatcher_room/room, check_parent = TRUE, datum/component/soulcatcher/catcher)
 	if (check_parent)
 		if (!catcher)
