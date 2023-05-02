@@ -37,10 +37,6 @@
 		to_chat(user, span_warning("[target_mob] left range of [our_item]!"))
 		return UI_CLOSE
 
-	/*if (get_time_limit(user) <= 0)
-		to_chat(user, span_warning("Ran out of time to pick your room!"))
-		return UI_CLOSE*/
-
 	if(HAS_TRAIT(src, TRAIT_UI_BLOCKED) || user.incapacitated())
 		return UI_DISABLED
 

@@ -48,9 +48,10 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-	interacting_mobs[user] = target_mob
+	// dont worry about invalid states in regards to this tgui_list, it uses a custom ui_state that prevents abuse
+	interacting_mobs[user] = target_mob // prevents list spam by storing the fact we clicked on this mob
 	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, ui_state = new /datum/ui_state/handheld_soulcatcher_state(src))
-	interacting_mobs -= user
+	interacting_mobs -= user // tgui lists sleep - trust no variables after this point
 	if(!target_room)
 		return FALSE
 
@@ -70,7 +71,7 @@
 		if (ghost)
 			real_target = ghost
 
-	if (!target_mob.can_join_soulcatcher_room(target_room, TRUE))
+	if (!target_mob.can_join_soulcatcher_room(target_room, TRUE)) // sanity
 		return FALSE
 
 	var/turf/source_turf = get_turf(user)
@@ -92,12 +93,28 @@
 	log_admin(admin_log)
 	return TRUE
 
+/**
+ * Invites target_mob into target_room by giving them a tgui_alert. 
+ * target_mob cannot be invited more than once while a alert from a given soulcatcher is open, enforced by
+ * src.confirming_entry += real_target and a check surrounding that. 
+ *
+ * Args:
+ * datum/soulcatcher/target_room: The room we are inviting target_mob to.
+ * mob/living/user (Nullable): The individual who invited the mob.
+ * mob/living/target_mob: The mob that was clicked on/invited into the room.
+ *
+ * Returns: 
+ * False if the invitation wasn't delivered, the result of the tgui_alert otherwise.
+ */
 /obj/item/handheld_soulcatcher/proc/invite_soul(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
 	if (target_mob in confirming_entry)
-		to_chat(user, span_warning("You've already invited this person to a room, wait for them to respond!"))
+		if (user)
+			to_chat(user, span_warning("You've already invited this person to a room, wait for them to respond!"))
 		return FALSE
 
-	var/message = "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?"
+	var/message = "Do you want to transfer your soul into [target_room]?"
+	if (user)
+		message = "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?"
 	var/target_dead = (target_mob.stat == DEAD)
 	var/mob/real_target = target_mob
 
@@ -105,7 +122,8 @@
 		target_mob.ghostize(TRUE) //Incase they are staying in the body.
 		var/mob/dead/observer/target_ghost = target_mob.get_ghost(TRUE, TRUE)
 		if(!target_ghost)
-			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
+			if (user)
+				to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 			return FALSE
 		else
 			real_target = target_ghost
@@ -122,6 +140,7 @@
 
 	return invitation_results
 
+// This proc exists just to be safe and ensure no reference schenanigans happen.
 /obj/item/handheld_soulcatcher/proc/handle_confirming_soul_del(mob/soul)
 	SIGNAL_HANDLER
 
