@@ -63,3 +63,6 @@
 
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
+
+/// trait that lets you do flips with a style meter
+#define TRAIT_STYLISH "stylish"
