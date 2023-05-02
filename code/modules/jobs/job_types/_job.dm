@@ -135,31 +135,16 @@
 
 /datum/job/New()
 	. = ..()
-<<<<<<< HEAD
 	// SKYRAT EDIT START
 	if(!job_spawn_title)
 		job_spawn_title = title
 	// SKYRAT EDIT END
-	var/list/job_changes = SSmapping.config.job_changes
-	if(!job_changes[title])
-		return TRUE
-
-	var/list/job_positions_edits = job_changes[title]
-	if(!job_positions_edits)
-		return TRUE
-
-	if(isnum(job_positions_edits["spawn_positions"]))
-		spawn_positions = job_positions_edits["spawn_positions"]
-	if(isnum(job_positions_edits["total_positions"]))
-		total_positions = job_positions_edits["total_positions"]
-=======
 	var/new_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
 	if(isnum(new_spawn_positions))
 		spawn_positions = new_spawn_positions
 	var/new_total_positions = CHECK_MAP_JOB_CHANGE(title, "total_positions")
 	if(isnum(new_total_positions))
 		total_positions = new_total_positions
->>>>>>> b1b1c356ab4 (Adds a macro for checking map job changes, makes captain outfit more runtime resilient (#74993))
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
