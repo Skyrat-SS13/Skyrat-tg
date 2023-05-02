@@ -37,8 +37,6 @@
 		qdel(linked_soulcatcher)
 
 	interacting_mobs = null
-	items_map = null
-	start_times = null
 
 	for (var/mob/soul as anything in confirming_entry)
 		UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
@@ -47,108 +45,56 @@
 
 	return ..()
 
-/obj/item/handheld_soulcatcher/ui_interact(mob/user, datum/tgui/ui, mob/target)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		interacting_mobs[user] = target
-		start_times[user] = world.time
-		ui = new(user, src, "ListInputModal", name)
-		ui.open()
+// no global instance so we can pass args
+/datum/ui_state/handheld_soulcatcher_state
+	var/obj/item/handheld_soulcatcher/our_item
 
-/obj/item/handheld_soulcatcher/ui_act(action, list/params)
+/datum/ui_state/handheld_soulcatcher_state/New(obj/item/handheld_soulcatcher/our_item)
 	. = ..()
 
-	switch (action)
-		if ("submit")
-			// this looks confusing because it is
-			// all this is doing is accessing the datum instance of a room that the modified key corresponds to
-			// the reason this is done this way is because specific rooms may be open or closed to specific people,
-			// necessitating the use of target as a key in the item map
-			var/mob/target_mob = interacting_mobs[usr]
-			var/list/target_specific_item_map = items_map[target_mob]
-			// this was built off the assumption the user's UI would close apon selecting an option
-			// so we cant wait for the alerts in this to finish. so we invoke async
-			INVOKE_ASYNC(src, PROC_REF(room_selected), target_specific_item_map[params["entry"]], usr, interacting_mobs[usr])
-	SStgui.close_user_uis(usr, src)
-	return TRUE
+	src.our_item = our_item
 
-/obj/item/handheld_soulcatcher/ui_data(mob/user)
-	var/list/data = list()
+/datum/ui_state/handheld_soulcatcher_state/Destroy(force, ...)
+	our_item = null
 
-	data["timeout"] = get_time_limit(user)
-
-	return data
-
-/obj/item/handheld_soulcatcher/proc/get_time_limit(mob/user)
-	return clamp((SOULCATCHER_CATCH_TIME_LIMIT - (world.time - start_times[user]) - 1 SECONDS) / (SOULCATCHER_CATCH_TIME_LIMIT - 1 SECONDS), 0, 1)
-
-/obj/item/handheld_soulcatcher/ui_static_data(mob/user)
-
-	var/list/data = list()
-	var/list/items = linked_soulcatcher.get_open_rooms(interacting_mobs[user])
-	var/list/sanitized_items = list()
-	var/list/repeat_items = list()
-
-	LAZYINITLIST(items_map[interacting_mobs[user]])
-	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"})
-	for(var/i as anything in items)
-		//avoids duplicated keys E.g: when areas have the same name
-		var/string_key = whitelistedWords.Replace("[i]", "")
-		string_key = avoid_assoc_duplicate_keys(string_key, repeat_items)
-		sanitized_items += string_key
-		src.items_map[interacting_mobs[user]][string_key] = i
-
-	data["items"] = sanitized_items
-	data["init_value"] = sanitized_items[1]
-	data["large_buttons"] = user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
-	data["message"] = "Choose a room to send [interacting_mobs[user]]'s soul to."
-	data["swapped_buttons"] = user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
-	data["title"] = name
-
-	return data
-
-/obj/item/handheld_soulcatcher/ui_close(mob/user)
-	. = ..()
-
-	items_map -= interacting_mobs[user]
-	interacting_mobs -= user
-	start_times -= user
+	return ..()
 
 #define SOULCATCHER_MAX_CATCHING_DISTANCE 7
 
-/obj/item/handheld_soulcatcher/ui_status(mob/living/user)
-	. = ..()
+/datum/ui_state/handheld_soulcatcher_state/can_use_topic(src_object, mob/living/user)
 
-	var/mob/target_mob = interacting_mobs[user]
+	var/mob/target_mob = our_item.interacting_mobs[user]
 	if (!target_mob)
 		return UI_CLOSE
 
 	if (!istype(user))
 		return UI_CLOSE
 
-	var/is_holding = user.is_holding(src)
+	if(user.stat != CONSCIOUS)
+		return UI_CLOSE
+
+	var/is_holding = user.is_holding(our_item)
 
 	if (!is_holding)
-		if (user.z != z)
+		if (user.z != our_item.z)
 			return UI_CLOSE
 
-	var/dist_from_src_to_target = get_dist(get_turf(src), get_turf(target_mob))
+	var/dist_from_src_to_target = get_dist(get_turf(our_item), get_turf(target_mob))
 	if (dist_from_src_to_target > SOULCATCHER_MAX_CATCHING_DISTANCE)
-		to_chat(user, span_warning("[target_mob] left range of [src]!"))
+		to_chat(user, span_warning("[target_mob] left range of [our_item]!"))
 		return UI_CLOSE
 
-	if (get_time_limit(user) <= 0)
+	/*if (get_time_limit(user) <= 0)
 		to_chat(user, span_warning("Ran out of time to pick your room!"))
-		return UI_CLOSE
+		return UI_CLOSE*/
 
-	var/default_flag = (is_holding ? UI_INTERACTIVE : user.shared_living_ui_distance(src))
+	if(HAS_TRAIT(src, TRAIT_UI_BLOCKED) || user.incapacitated())
+		return UI_DISABLED
 
-	return min(., default_flag)
-
-#undef SOULCATCHER_MAX_CATCHING_DISTANCE
-
-/obj/item/handheld_soulcatcher/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
+	if (is_holding)
+		return UI_INTERACTIVE
+	else
+		return user.shared_living_ui_distance(our_item)
 
 /obj/item/handheld_soulcatcher/attack(mob/living/target_mob, mob/living/user, params)
 	if(!target_mob)
@@ -162,15 +108,9 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-	ui_interact(user, target = target_mob)
-	return TRUE
-
-/obj/item/handheld_soulcatcher/proc/room_selected(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
-
-	// no variable can be trusted - re-sanitize EVERYTHING
-
-	// nightmare code
-
+	interacting_mobs[user] = target_mob
+	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, ui_state = new /datum/ui_state/handheld_soulcatcher_state(src))
+	interacting_mobs -= user
 	if(!target_room)
 		return FALSE
 
@@ -181,13 +121,17 @@
 	if (!user.can_join_soulcatcher_room(target_room, TRUE))
 		return FALSE
 
-	var/target_dead = (target_mob.stat == DEAD)
-	var/mob/real_target = target_mob
-
 	to_chat(user, span_blue("[target_mob] has been requested to join [target_room]."))
 	if (!invite_soul(target_room, user, target_mob))
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE
+
+	var/target_dead = (target_mob.stat == DEAD)
+	var/mob/real_target = target_mob
+	if (target_dead)
+		var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
+		if (ghost)
+			real_target = ghost
 
 	if (!real_target.can_join_soulcatcher_room(target_room))
 		return FALSE
