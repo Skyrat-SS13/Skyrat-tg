@@ -13,6 +13,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	active_cost = 0.2
 	purchase_price = 350
 	buying_category = NIFSOFT_CATEGORY_UTILITY
+	ui_icon = "users"
+
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network
 	///What networks are the user connected to?
