@@ -358,6 +358,11 @@
 /obj/item/glassblowing/blowing_rod/proc/do_glass_step(step_id, mob/user, actioning_speed, obj/item/glassblowing/molten_glass/glass)
 	if(!glass)
 		return
+
+	if(COOLDOWN_FINISHED(glass, remaining_heat))
+		balloon_alert(user, "glass too cool!")
+		return FALSE
+
 	if(in_use)
 		return
 
@@ -366,12 +371,17 @@
 	if(!check_valid_table(user))
 		fail_message("You must be near a non-flammable table!", user)
 		return
-	if(!check_valid_tool(user, step_id))
-		return
+
+	var/atom/movable/tool_to_use = check_valid_tool(user, step_id)
+	if(!tool_to_use)
+		in_use = FALSE
+		return FALSE
+
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		return
+		REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		return FALSE
 
 	if(glass.steps_remaining)
 		// We do not want to have negative values here
@@ -380,6 +390,7 @@
 			if(check_finished(glass))
 				glass.is_finished = TRUE
 
+	REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 	in_use = FALSE
 
 	to_chat(user, span_notice("You finish trying to [step_id] [src]."))
@@ -412,31 +423,40 @@
  * * mob/living/carbon/human/user - the mob doing the action
  * * step_id - the step id of the action being done
  *
- * Returns TRUE or FALSE.
+ * We check to see if the user is using the right tool and if they are currently glassblowing with it.
+ * If the correct tool is being used we return the tool. Otherwise we return `FALSE`
  */
 /obj/item/glassblowing/blowing_rod/proc/check_valid_tool(mob/living/carbon/human/user, step_id)
 	if(!istype(user))
 		return FALSE
 
-	var/obj/item/glassblowing/tool_path
+	if(step_id == STEP_BLOW || step_id == STEP_SPIN)
+		if(HAS_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING))
+			balloon_alert(user, "already glassblowing!")
+			return FALSE
+
+		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		return user
+
+	var/obj/item/glassblowing/used_tool
 	switch(step_id)
-		if(STEP_BLOW)
-			return TRUE
-		if(STEP_SPIN)
-			return TRUE
 		if(STEP_PADDLE)
-			tool_path = /obj/item/glassblowing/paddle
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/paddle)
 		if(STEP_SHEAR)
-			tool_path = /obj/item/glassblowing/shears
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/shears)
 		if(STEP_JACKS)
-			tool_path = /obj/item/glassblowing/jacks
+			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/jacks)
 
-	if(user.is_holding_item_of_type(tool_path))
-		return TRUE
+	if(!used_tool)
+		balloon_alert(user, "need the right tool!")
+		return FALSE
 
-	balloon_alert(user, "need to be holding [initial(tool_path.name)]!")
-	in_use = FALSE
-	return FALSE
+	if(HAS_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING))
+		balloon_alert(user, "already in use!")
+		return FALSE
+
+	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+	return used_tool
 
 /**
  * Checks if the glass is ready to craft into its chosen item.
