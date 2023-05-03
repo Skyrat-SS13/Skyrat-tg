@@ -134,7 +134,7 @@
 	balloon_alert_to_viewers("fizzles!")
 
 /obj/item/circuitboard/machine/bluespace_miner
-	name = "Bluespace Miner (Machine Board)"
+	name = "Bluespace Miner"
 	desc = "The bluespace miner is a machine that, when provided the correct temperature and pressure, will produce materials."
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/bluespace_miner

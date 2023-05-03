@@ -28,7 +28,7 @@
 	// SKYRAT EDIT ADDITION END
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
-	desc = "Plain black gloves without fingertips for the hard working."
+	desc = "Plain black gloves without fingertips for the hard-working."
 	icon_state = "fingerless"
 	greyscale_colors = "#2f2e31"
 	strip_delay = 40
