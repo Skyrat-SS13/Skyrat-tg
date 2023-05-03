@@ -12239,8 +12239,6 @@
 	},
 /area/station/hallway/primary/flotilla/service/wing)
 "bwM" = (
-/obj/structure/table,
-/obj/machinery/coffeemaker/impressa,
 /obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/office)
@@ -15667,22 +15665,6 @@
 /area/space/nearstation)
 "deQ" = (
 /obj/structure/table,
-/obj/item/coffee_cartridge/bootleg{
-	pixel_y = 9;
-	pixel_x = 6
-	},
-/obj/item/coffee_cartridge/bootleg{
-	pixel_y = 9;
-	pixel_x = 6
-	},
-/obj/item/coffee_cartridge/decaf{
-	pixel_y = 4;
-	pixel_x = 6
-	},
-/obj/item/coffee_cartridge/fancy{
-	pixel_x = 6;
-	pixel_y = -1
-	},
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/office)
@@ -34201,7 +34183,8 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/hallway/primary/flotilla/umbilical/cargo)
 "mDR" = (
-/obj/machinery/oven,
+/obj/structure/table,
+/obj/machinery/coffeemaker/impressa,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/office)
 "mDZ" = (
@@ -35772,7 +35755,19 @@
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/office)
 "ntR" = (
-/obj/machinery/griddle,
+/obj/structure/table,
+/obj/item/coffee_cartridge/bootleg{
+	pixel_y = 9;
+	pixel_x = 6
+	},
+/obj/item/coffee_cartridge/decaf{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/coffee_cartridge/fancy{
+	pixel_x = 6;
+	pixel_y = -1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/office)
 "ntX" = (
@@ -37902,8 +37897,8 @@
 	},
 /area/station/security/checkpoint/customs)
 "oxM" = (
-/obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/bot,
+/obj/machinery/recharge_station,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/lockers)
 "oxU" = (
@@ -43493,12 +43488,12 @@
 /turf/open/floor/iron,
 /area/station/science/explab)
 "rnB" = (
-/obj/docking_port/stationary/random/icemoon{
-	dir = 8;
-	shuttle_id = "pod_1_lavaland";
-	name = "lavaland"
-	},
 /obj/structure/lattice,
+/obj/docking_port/stationary/random{
+	shuttle_id = "pod_1_lavaland";
+	name = "lavaland";
+	dir = 8
+	},
 /turf/open/openspace/airless,
 /area/space/nearstation)
 "rnF" = (
@@ -50412,6 +50407,14 @@
 	},
 /turf/open/floor/iron/herringbone,
 /area/station/hallway/primary/flotilla/service/upper/aft)
+"uII" = (
+/obj/docking_port/stationary/random{
+	shuttle_id = "pod_4_lavaland";
+	name = "lavaland";
+	dir = 2
+	},
+/turf/open/openspace/airless,
+/area/space)
 "uIP" = (
 /obj/machinery/power/solar{
 	id = "aftport";
@@ -53202,8 +53205,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/flotilla/command/upper/central)
 "wbo" = (
-/obj/machinery/recharge_station,
 /obj/effect/turf_decal/delivery,
+/obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/lockers)
 "wbP" = (
@@ -53311,10 +53314,10 @@
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/flotilla/service/lower)
 "wdJ" = (
-/obj/machinery/oven,
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 8
 	},
+/obj/machinery/oven/range,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/service/kitchen)
 "wdT" = (
@@ -168366,7 +168369,7 @@ gLb
 aWC
 aWC
 aqB
-obE
+uII
 kkf
 kkf
 kkf
