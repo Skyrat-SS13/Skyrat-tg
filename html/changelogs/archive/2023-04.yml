@@ -973,3 +973,257 @@
   vinylspiders:
   - bugfix: wooden half-barricades and other constructed barricades (e.g. snow) may
       now be constructed in the same turf like directional windows/railings
+2023-04-23:
+  Melbert:
+  - bugfix: Ingredients which fail to react in soup reactions drop when the reaction
+      finishes as intended
+  SkyratBot:
+  - bugfix: Removed extra messaging server in North Star tcomms
+  - bugfix: Things that block glow will now like, do that again
+  Tattle:
+  - qol: basicmobs can now make sounds when their speech is triggered
+  - qol: pigs will now make sounds and emote on their own
+  - sound: cows, pigs, and sheep have new sound effects!
+  vinylspiders:
+  - bugfix: cafe roles will now retain their name after ghosting instead of just being
+      called 'a cafe visitor'
+  - bugfix: buttplugs if inserted too hastily will no longer cause the victim to redirect
+      their pain to the server by spamming it with runtime errors.
+2023-04-24:
+  LT3:
+  - code_imp: Added TGUI mobility check bypass
+  - qol: You can now use your PDA while laying down
+  Nerev4r:
+  - balance: Hemophages now get 1.5x the blood when bite-draining people with ckeys
+  - balance: The Satiated Thirst effect now lasts 30 minutes, up from 20.
+  Ryll/Shaps:
+  - bugfix: Yawning will now have a chance of making people near you yawn as well,
+      and is guaranteed to make them yawn if they examined you in the last 2 seconds.
+      It was supposed to already do that, but now it'll actually do that
+  SkyratBot:
+  - balance: Bulldogs now hit 20% harder with their projectiles!
+  - bugfix: Anti-glow actually bringing some darkness instead of just a light glow.
+  - qol: rewords "Total Cost" to just "Total" so text does not overflow to the next
+      line and improves readability
+  - qol: just one failure message if you don't have enough credits for cargo/express
+      mode to keep it consistent
+  - refactor: rounds the total cost of your produce console order so you don't have
+      decimal values left in your bank account
+  - qol: telecomms is quieter and less ear-damaging.
+  - sound: modified tcomms sound to remove high-tones.
+  - bugfix: the telecomms sound only comes from the server hub machine.
+  - rscadd: If you ever happen upon a wild deer, try not to ride your fancy vehicles
+      too close to it as it'll freeze up like a... you know where I'm going with this.
+  Wallem, Imaginos:
+  - image: Updates the IV drip sprites
+2023-04-25:
+  GoldenAlpharex, ChatGPT for the first changelog entry (slightly edited):
+  - qol: Zipped and unzipped through alt-click, winter coats can now be. Hmm, stylishly
+      warm, you shall be. Feel like a Spaceman, you will. Use the Force, to zip and
+      unzip, you must. Look cool, you will. Yes, hmmm.
+  - image: Winter coats no longer have their hood baked into their jacket's sprite,
+      both in item form and when worn.
+  - bugfix: Updated the Icebox EVA winter coats (the Endotherm winter coats) to use
+      the same sprites as the regular winter coats.
+  Hatterhat:
+  - balance: The CIN surplus crate is now an import crate, meaning that it's no longer
+      buyable through Security's department order console and has no lock.
+  - bugfix: The Mosin/Sportiv ammo box that appears in the CIN surplus crate now comes
+      with actual clips suitable for the Sportiv.
+  - bugfix: The 7.62 ammo box was renamed to .244 Acia ammo box, because lore parity.
+  Melbert:
+  - balance: Cameras can only see vertically upwards if the turf above them is transparent.
+      But hey, the North Star (and other multi-z maps) will now perform wayyy better
+      (less time dilation)
+  Rhials:
+  - rscadd: New event weight station trait -- Dust Stormfront.
+  - balance: Space Weather Forecast -- Expect more frequent Major Space Dust storms
+      in the foreseeable future.
+  - code_imp: The Major Space Dust event is once again returned to being a meteor_wave
+      event instead of a Space Dust subtype.
+  SkyratBot:
+  - bugfix: Adds prisoner ID's inside the gen pop lockers on the Northstar. Also renames
+      the holding cells to Gen Pop.
+  - bugfix: balloon alert adding timer on deleted mod core after construction causing
+      runtime.
+  - bugfix: The mafia early vote counter will now properly display.
+  - rscdel: prisoner spawns from the north star asylum
+  - spellcheck: Fixes Explosive Holoparasite description mentioning a removed ability
+  - bugfix: Maps now spawn the correct amount of space levels. The bug caused them
+      to spawn 1 less in each category
+  - code_imp: The space ruins budget is now proportional to the amount of ruin levels.
+      This has no effect on the current default maps, but added maps with less than
+      the default amount of ruin levels will see less ruins.
+  - bugfix: fixes produce console bluescreening when viewing it as ghost
+  - qol: When failing to teleport with the veil shifter it tells you with text and
+      spooky ghost sfx, and doesn't use up a charge or have any unintended vfx.
+  - rscadd: Books can now be burned just like any other paper item.
+  - rscadd: You can cut pages out of books with any sharp item, not just knives or
+      wirecutters.
+  - balance: removes fov from the SWAT mask
+  - rscadd: You can make a tactical turtleneck or turtleskirt by putting a telecrystal
+      and a tactiCOOL varient of the turtleneck into a washing machine. Watch it change
+      before your eyes!
+  - rscadd: A few map specific lunar objects have been added related to Konsu 19 (Moon
+      Outpost 19).
+  - rscadd: New fluff objects were added related to xenoflora and mining.
+  - rscadd: New loot, puzzles, and challenges await you on Konsu 19. Are you prepared?
+  - bugfix: Restores ability for borgs to adjust reflector angles. This is now a left-click
+      with nothing selected, similar to humans' left-click with an empty hand.
+  softcerv:
+  - rscadd: Adds in a time clock, allowing workers to clock out during a shift.
+2023-04-26:
+  Gandalf2k15:
+  - balance: 'The shotgun revolver has been balanced: It now shakes the screen and
+      has an accuracy debuff. It also requires you to hold it in both hands to shoot.'
+  GoldenAlpharex:
+  - bugfix: Biogenerators now display the accurate price of their products after having
+      been upgraded, as they no longer visually apply the efficiency discount twice.
+  - bugfix: Dwarves are no longer affected by the body size preference.
+  Rhials:
+  - bugfix: Falling down one of the stage hazard chasms on the medisim shuttle will
+      now properly kill you on Icebox, instead of dropping you into the z-level below.
+  SkyratBot:
+  - rscadd: A new venture by Nanotrasen has put phonebooths in space.
+  - bugfix: crafting lizard skin cowboy boots no longer places a spawner object over
+      the created boot item
+  - bugfix: flood light now shines with their object color
+  - sound: Disablers and lasers have a new deeper sound to them
+  - sound: Sound of lasers hitting a person now are giving more of a punch
+  - rscadd: Say emote prefixes are no longer forced to be lowercase. This includes
+      radio emotes!
+  - balance: '[Mafia] Notes are no longer written out for you.'
+  - qol: '[Mafia] You can now send your notes to chat whenever.'
+  - qol: '[Mafia] Roundend has changed. Solos will win over others in a 1v1, but a
+      HoP can keep a round going in case they can solo lynch.'
+  - refactor: removed duplicate `pre_attack()` & redundant `attackby()` procs which
+      did the same thing
+  - bugfix: unnecessary crash when unwrenching pipes/devices with the RPD
+  - rscadd: Added hostile spawn tag to rats
+  Zergspower:
+  - balance: Port Tarkon - Replaces the ARCD with the MM to get rid of the infinite
+      charges
+  - bugfix: Port Tarkon - Defcon 3 ruin now has proper door access markers that are
+      present in all other ones
+  vinylspiders:
+  - bugfix: the bluespace miner's machine board item now has the correct name
+2023-04-27:
+  Ebin-Halcyon:
+  - image: Teshari have had (most) winter coats refitted for them
+  Gamer025:
+  - bugfix: Ingame ore silo logs should now log deposit actions correctly
+  - config: New config for silo logs
+  GoldenAlpharex:
+  - bugfix: Doing custom emotes (*me) no longer impacts your global emote cooldown.
+  Melbert:
+  - refactor: Mob ai refactored once again
+  RatFromTheJungle:
+  - balance: the AMR no longer has wound-chance to rival god, and also, no longer
+      goes through mobs
+  Rhials:
+  - qol: Deadchat now gets more juicy details on what has triggered a non-randomly
+      occurring random event.
+  - code_imp: There are now helpers for forcing events in a variety of ways. More
+      events! More events!!!!!!!
+  SkyratBot:
+  - balance: Heretic blades butcher speed is 3 seconds now.
+  - rscadd: Added a crashed prisoner transport space ruin.
+  - code_imp: Adds support for ammunition 'bands', basically intended to be used rather
+      than wholly new sprites for new ammotypes. Additionally, they're (meant to be)
+      greyscale, which allows one overlay to be used for many ammo types. Only implemented
+      on the detective revolver.
+  - qol: Add mood events for basketball shooting and dunking
+  - bugfix: Book's no longer take your formatting and throw it out the window.
+  - refactor: Book display and rendering
+  - bugfix: Swat crate's description now lists the correct kind of gloves
+  - bugfix: Fixed final objectives appearing as 'Skipped' in the traitor panel.
+  - bugfix: You can no longer bypass the laws of bluespace with a portable chem mixer.
+  - bugfix: You can no longer bypass container locks with storage hotkeys.
+  - bugfix: fixed an oversight - Made Goliath Cloak and Goliath Cloak Hood fireproof.
+      And Goliath hide.
+  - bugfix: skeletons get boosted heals from milk again
+  - rscadd: Burning items now get (small) smoke particles. Sick.
+  - bugfix: Burning objects now clear their burning overlay properly.
+  - qol: Examining burning objects will always tell you that they are burning.
+  - balance: '"Camera Obscura" (crafted with holy water + camera) will now steal the
+      soul of ghostly apparitions when a picture is taken causing damage.  This will
+      also stun and reveal revenants briefly.'
+  - bugfix: Changelogs entries for "sound" and "image" should now have icons associated
+      with them, how neat.
+  - qol: Lowered the atmos build, reprogram, and destroy delays on the RPD
+  - qol: Health analyzers now show body temperature in red/blue if the temperature
+      of the body can't sustain it's own life.
+  - bugfix: Inverse technetium now properly gives advanced details in genetics/radiation
+      analyzing.
+  - bugfix: social anxiety is incompatible with mute
+  Youtubeboy139:
+  - rscadd: Adds in the new coffee based sprites in a dedicated .dmi file
+  - code_imp: Extends /kitchen.dm code to overwrite base TG code icons
+  tf-4:
+  - bugfix: Ashen heretic blade is now fire resistant
+  - balance: heretic blades do 20 damage, have 35% armor penetration, but deal 20%
+      less damage to structures like lockers
+  - code_imp: The access requirements at the end of supply crate descriptions are
+      now automatically generated
+  - bugfix: Supply console now tells you what access each crate needs to be privately
+      purchased
+  vinylspiders:
+  - bugfix: fixes an issue that was causing the glassblowing ui to crash when molten
+      glass is inserted to the rod before letting it cool down
+  - bugfix: roundstart slimes now have the same wound immunities as the rest of the
+      slimes.
+  - balance: roundstart slimes can still get flesh wounds
+2023-04-28:
+  SkyratBot:
+  - bugfix: mobs can now be set on fire using flares and candles if they are covered
+      in something flammable
+  - bugfix: SiliConnect can download borg logs again.
+  - bugfix: The RD can once again enable Admin mode on Wirecarp
+  - bugfix: NT IRN can once again see the shopping cart and call the cargo shuttle.
+  - bugfix: Chat Client, ID Management and Messenger should now update their UIs properly.
+  - code_imp: PDAs will hopefully not lag as much when clicking on buttons (such as
+      in ID management).
+2023-04-29:
+  SkyratBot:
+  - bugfix: Stabilized Oil extracts no longer explode infinitely if your corpse is
+      immune to gibbing
+  - bugfix: Updated the billboard on the space phonebooth
+  - bugfix: Fixes crafting tools not taking into account subtypes, i.e. you can craft
+      a filet migrawr with any lighter.
+  - bugfix: Replaced live ammo found that was unintended on the waystation and the
+      faceoff with spent subtypes.
+  - bugfix: Paradox clones are now attempted manual copies of humans, rather than
+      straight-up copying everything. They should no longer have bugs related to being
+      unable to use UIs, having FOV, or visual bugs.
+  - rscadd: filled up Northstar's Z1 maint with stuff. Reworked some ugly rooms.
+  - bugfix: fixed Northstar's Z1 sec outpost having the wrong sec locker
+  Tattle:
+  - image: removes unused vault walls
+2023-04-30:
+  Fikou, Zonespace, Arcane for voicing:
+  - rscadd: The mining vendor now has a style meter. This meter gauges your style
+      points and uses them to improve your ore yield.
+  SkyratBot:
+  - bugfix: Bookbinder no longer takes your pen's font and throws it out the nearest
+      window
+  - qol: '[Mafia] Players get a popup when a player is voted to the stand.'
+  - qol: '[Mafia] Players now have the name of who they voted for displayed over their
+      heads during voting period.'
+  - balance: '[Mafia] Deadchat can no longer see Mafia chat.'
+  - balance: '[Mafia] HoP can now solo-win.'
+  - bugfix: the anomaly refinery will no longer let you insert cores of insufficient
+      quality to refine
+  - rscadd: Craftable Material sniffers
+  - balance: Star Gazer now explodes when it dies.
+  - balance: Star Gazer will only die when the owner dies.
+  - balance: Star Gazer will attack the most recent enemy that attacked him when on
+      autopilot.
+  - balance: Star Gazer has an aura that slowly damages people and heals the owner.
+  - balance: Cosmic Ascension now buffs some spells.
+  softcerv:
+  - qol: NIFSofts now have associated Font Awesome icons that show up in UI.
+  tralezab code, Drag for the commission and player project, cre#0484 for their spritework:
+  - rscadd: Divine Archer Armor and Weapon
+  - qol: Bows give more feedback when you're doing something wrong, like trying to
+      draw without a nocked arrow
+  - code_imp: Sorted files, cleaned bow code up to allow subtypes

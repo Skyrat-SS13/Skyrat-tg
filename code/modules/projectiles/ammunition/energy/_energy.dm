@@ -8,7 +8,8 @@
 	var/select_name = CALIBER_ENERGY
 	fire_sound = 'sound/weapons/laser.ogg'
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/energy
-	heavy_metal = FALSE
-	//SKYRAT EDIT CELL LOADED GUNS//
+	is_cased_ammo = FALSE
+	
+	//SKYRAT EDIT ADD - CELL LOADED GUNS
 	var/select_color = FALSE //This is the color that shows up when selecting an ammo type. Disabled by default
-	//SKYRAT EDIT END//
+	//SKYRAT EDIT ADD END

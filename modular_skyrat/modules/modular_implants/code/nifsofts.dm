@@ -16,6 +16,8 @@
 	var/purchase_price = 300
 	///What catagory is the NIFSoft under?
 	var/buying_category = NIFSOFT_CATEGORY_GENERAL
+	///What font awesome icon is shown next to the name of the nifsoft?
+	var/ui_icon = "floppy-disk"
 
 	///Can the program be installed with other instances of itself?
 	var/single_install = TRUE
