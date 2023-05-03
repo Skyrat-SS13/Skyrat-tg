@@ -372,15 +372,15 @@
 		fail_message("You must be near a non-flammable table!", user)
 		return
 
-	var/datum/blower = check_valid_tool(user, step_id)
-	if(!blower)
+	var/atom/movable/tool_to_use = check_valid_tool(user, step_id)
+	if(!tool_to_use)
 		in_use = FALSE
 		return FALSE
 
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		REMOVE_TRAIT(blower, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+		REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 		return FALSE
 
 	if(glass.steps_remaining)
@@ -390,7 +390,7 @@
 			if(check_finished(glass))
 				glass.is_finished = TRUE
 
-	REMOVE_TRAIT(blower, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
+	REMOVE_TRAIT(tool_to_use, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
 	in_use = FALSE
 
 	to_chat(user, span_notice("You finish trying to [step_id] [src]."))
