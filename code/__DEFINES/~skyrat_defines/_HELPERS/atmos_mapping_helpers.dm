@@ -13,3 +13,7 @@
 #define ATMOS_GAS_MONITOR_TARKON_N2O "tarkon_n2o"
 #define ATMOS_GAS_MONITOR_TARKON_CO2 "tarkon_co2"
 #define ATMOS_GAS_MONITOR_TARKON_INCINERATOR "tarkon_incinerator"
+
+
+//FlotillaStation Incinerator
+#define ATMOS_GAS_MONITOR_MEDBAY_INCINERATOR "Incinerator Chamber"

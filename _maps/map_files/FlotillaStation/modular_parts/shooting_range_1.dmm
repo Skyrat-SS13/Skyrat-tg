@@ -46,6 +46,14 @@
 /area/station/security/range)
 "r" = (
 /obj/machinery/dish_drive/bullet,
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
+	},
+/turf/open/floor/iron/dark/nitrogen,
+/area/station/security/range)
+"u" = (
+/obj/machinery/light/floor,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/range)
 "v" = (
@@ -115,6 +123,25 @@
 /area/station/security/range)
 "F" = (
 /obj/effect/turf_decal/trimline/red/filled/warning,
+/turf/open/floor/iron/dark/nitrogen,
+/area/station/security/range)
+"G" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/obj/machinery/light/floor,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/range)
 "H" = (
@@ -232,11 +259,11 @@ a
 (2,1,1) = {"
 i
 W
-Q
+M
 q
 M
-M
 Q
+M
 M
 M
 M
@@ -249,18 +276,18 @@ O
 "}
 (3,1,1) = {"
 i
-M
+u
 E
 M
 M
 M
 M
-M
+u
 M
 M
 H
 F
-M
+u
 M
 K
 B
@@ -330,7 +357,7 @@ M
 M
 M
 M
-z
+G
 F
 M
 M
@@ -339,18 +366,18 @@ U
 "}
 (8,1,1) = {"
 i
-M
+u
 E
 M
 M
 M
 M
-M
+u
 M
 M
 H
 F
-M
+u
 M
 K
 J
@@ -358,11 +385,11 @@ J
 (9,1,1) = {"
 i
 D
-v
+M
 d
 M
-M
 v
+M
 M
 M
 M

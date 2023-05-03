@@ -28,12 +28,10 @@
 /turf/open/floor/plating/nitrogen,
 /area/station/security/range)
 "bd" = (
-/obj/machinery/computer/security{
-	dir = 4;
-	network = list("shoothouse");
-	name = "shoothouse monitor"
-	},
 /obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer/security/shoot_house{
 	dir = 4
 	},
 /turf/open/floor/iron/dark/nitrogen,
@@ -223,6 +221,16 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/nitrogen,
 /area/station/security/range)
+"yV" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 4;
+	name = "east";
+	pixel_x = 24
+	},
+/turf/open/floor/plating/nitrogen,
+/area/station/security/range)
 "AI" = (
 /obj/structure/grille,
 /obj/structure/window{
@@ -252,6 +260,16 @@
 /obj/structure/grille,
 /obj/structure/window{
 	dir = 8
+	},
+/turf/open/floor/plating/nitrogen,
+/area/station/security/range)
+"Ga" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 8;
+	name = "west";
+	pixel_x = -24
 	},
 /turf/open/floor/plating/nitrogen,
 /area/station/security/range)
@@ -513,7 +531,7 @@ Wr
 bG
 aS
 lV
-Vb
+yV
 ts
 Vb
 kH
@@ -571,7 +589,7 @@ Wr
 Wr
 Wr
 JR
-Wr
+Ga
 AI
 bG
 bG

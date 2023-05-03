@@ -29,6 +29,14 @@
 	name = "\improper Medical Hangar Catwalk"
 	icon_state = "chem"
 
+/area/station/maintenance/department/medical/subdeck_access
+	name = "\improper Medical Subdeck Access"
+	icon_state = "medbay_maint"
+
+/area/station/medical/break_room/shower
+	name = "\improper Medical Showers"
+	icon_state = "med_break"
+
 /area/station/command/heads_quarters/hop/private
 	name = "\improper Head of Personnel's Quarters"
 	icon_state = "hop_office"
