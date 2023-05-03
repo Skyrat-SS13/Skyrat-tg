@@ -1,3 +1,5 @@
+#define VERY_LATE_ARRIVAL_TOAST_PROB 20
+
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -579,6 +581,14 @@ SUBSYSTEM_DEF(job)
 
 		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 
+		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
+			// SKYRAT EDIT CHANGE START - Lizards
+			if(islizard(equipping))
+				equipping.equip_to_slot_or_del(new /obj/item/food/breadslice/root(equipping), ITEM_SLOT_MASK)
+			else
+				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
+			// SKYRAT EDIT CHANGE END - Lizards
+
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -1144,3 +1154,5 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_GENERIC
 
 	return JOB_AVAILABLE
+
+#undef VERY_LATE_ARRIVAL_TOAST_PROB
