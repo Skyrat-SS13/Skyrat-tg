@@ -1158,7 +1158,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
 	)
-	
+
 /datum/design/borg_upgrade_condiment_synthesizer
 	name = "Condiment Synthesizer"
 	id = "borg_upgrade_condiment_synthesizer"
@@ -1180,7 +1180,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_SERVICE
 	)
-	
+
 /datum/design/borg_upgrade_service_apparatus
 	name = "Service apparatus"
 	id = "borg_upgrade_service_apparatus"
@@ -1197,12 +1197,7 @@
 	id = "borg_upgrade_expand"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/expand
-<<<<<<< HEAD
-	//materials = list(/datum/material/iron = 200000, /datum/material/titanium = 5000) //ORIGINAL
-	materials = list(/datum/material/iron = 20000, /datum/material/titanium = 5000) //SKYRAT EDIT CHANGE - CYBORG
-=======
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*100, /datum/material/titanium =SHEET_MATERIAL_AMOUNT * 2.5)
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
 	construction_time = 120
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL

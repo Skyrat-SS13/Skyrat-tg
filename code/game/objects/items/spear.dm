@@ -216,17 +216,9 @@
 
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
-<<<<<<< HEAD
-	custom_materials = list(/datum/material/bone=7000)
-	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
-	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
-
-	reach = 2 // SKYRAT EDIT ADD
-=======
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
 	force_unwielded = 12
 	force_wielded = 20
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
 
 /*
  * Bamboo Spear

@@ -26,8 +26,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
-<<<<<<< HEAD
-=======
 /datum/design/pickaxe
 	name = "Pickaxe"
 	id = "pickaxe"
@@ -39,7 +37,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
 /datum/design/drill
 	name = "Mining Drill"
 	desc = "Yours is the drill that will pierce through the rock walls."

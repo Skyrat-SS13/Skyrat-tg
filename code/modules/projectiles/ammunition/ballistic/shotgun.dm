@@ -93,12 +93,8 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 6
 	variance = 20
-<<<<<<< HEAD
-	custom_materials = list(/datum/material/iron=4000)
-	harmful = FALSE //SKYRAT EDIT ADDITION
-=======
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2)
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
+	harmful = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "custom incapacitating shot"

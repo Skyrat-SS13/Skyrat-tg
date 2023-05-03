@@ -223,14 +223,10 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-<<<<<<< HEAD
-	custom_materials = list(/datum/material/glass=500)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
+	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
-=======
-	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
-	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -249,13 +245,8 @@
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units." //SKYRAT EDIT: Used to say Can hold up to 100 units.
 	icon_state = "beakerlarge"
-<<<<<<< HEAD
-	custom_materials = list(/datum/material/glass=2500)
-	volume = 120 //SKYRAT EDIT: Original value (100)
-=======
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
-	volume = 100
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
+	volume = 120 //SKYRAT EDIT: Original value (100)
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT: Original Values
 	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) //SKYRAT EDIT: New Values
@@ -265,13 +256,8 @@
 	name = "x-large beaker"
 	desc = "An extra-large beaker. Can hold up to 150 units." //SKYRAT EDIT: Used to say Can hold up to 120 units
 	icon_state = "beakerwhite"
-<<<<<<< HEAD
-	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000)
-	volume = 150 //SKYRAT EDIT: Original Value (120)
-=======
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
-	volume = 120
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
+	volume = 150 //SKYRAT EDIT: Original Value (120)
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,60,120) //SKYRAT EDIT: Original values
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,150) //SKYRAT EDIT: New Values

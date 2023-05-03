@@ -707,15 +707,9 @@
 	smoothing_groups = null
 	canSmoothWith = null
 	can_buckle = 1
-<<<<<<< HEAD
-	buckle_lying = 90 // SKYRAT EDIT old: NO_BUCKLE_LYING
-	buckle_requires_restraints = FALSE // SKYRAT EDIT old: TRUE
-	custom_materials = list(/datum/material/silver = 2000)
-=======
 	buckle_lying = NO_BUCKLE_LYING
 	buckle_requires_restraints = TRUE
 	custom_materials = list(/datum/material/silver =SHEET_MATERIAL_AMOUNT)
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
 	var/mob/living/carbon/patient = null
 	var/obj/machinery/computer/operating/computer = null
 

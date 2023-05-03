@@ -30,15 +30,9 @@
 	heat = 3800
 	tool_behaviour = TOOL_WELDER
 	toolspeed = 1
-<<<<<<< HEAD
 	//wound_bonus = 10 //SKYRAT EDIT REMOVAL
 	//bare_wound_bonus = 15 //SKYRAT EDIT REMOVAL
-	custom_materials = list(/datum/material/iron=70, /datum/material/glass=30)
-=======
-	wound_bonus = 10
-	bare_wound_bonus = 15
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.3)
->>>>>>> f2fd69a49a7 (Minerals have been refactored so costs and minerals in items are now in terms of mineral defines. (#75052))
 	/// Whether the welding tool is on or off.
 	var/welding = FALSE
 	/// Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
