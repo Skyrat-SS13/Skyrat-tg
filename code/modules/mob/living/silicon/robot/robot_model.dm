@@ -796,17 +796,26 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+		/obj/item/reagent_containers/borghypo/borgshaker,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
+<<<<<<< HEAD
 		//Skyrat Edit Start: Borg Buff
 		//obj/item/reagent_containers/condiment/enzyme, //edit
+=======
+		/obj/item/reagent_containers/condiment/enzyme,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/rsf,
+		/obj/item/storage/bag/tray,
+>>>>>>> 61a034bcd93 (Service Borger Upri- Kitchen Upgrades (#74938))
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
 		/obj/item/razor,
-		/obj/item/rsf,
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
+<<<<<<< HEAD
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
@@ -818,10 +827,14 @@
 		//obj/item/reagent_containers/borghypo/borgshaker, //edit
 		/obj/item/reagent_containers/syringe, //edit
 		/obj/item/cooking/cyborg/power, //edit
+=======
+		/obj/item/lighter,
+>>>>>>> 61a034bcd93 (Service Borger Upri- Kitchen Upgrades (#74938))
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/chisel,
+		/obj/item/reagent_containers/cup/rag,
+		/obj/item/storage/bag/money,
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(
