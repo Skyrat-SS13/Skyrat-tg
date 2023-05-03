@@ -15,4 +15,8 @@
 	anomaly_path = /obj/effect/anomaly/hallucination
 
 /datum/round_event/anomaly/anomaly_hallucination/announce(fake)
+<<<<<<< HEAD
 	priority_announce("Hallucinatory event [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE
+=======
+	priority_announce("Hallucinatory event detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")
+>>>>>>> 6ff8085e4a9 (Adds in some missing words for the hallucinatory anomaly announcement (#75094))
