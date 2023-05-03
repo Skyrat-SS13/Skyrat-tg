@@ -265,6 +265,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
+	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
