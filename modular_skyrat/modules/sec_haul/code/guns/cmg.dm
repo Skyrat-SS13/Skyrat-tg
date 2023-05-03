@@ -51,7 +51,7 @@
 	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock. This takes a moment.")
 
 /obj/item/gun/ballistic/automatic/cmg/AltClick(mob/user)
-	if(!user.can_perform_action(src, NEED_HANDS))
+	if(!user.is_holding(src))
 		return // fuckin around w/ a collapsible stock without hands is Suboptimal
 	if(item_flags & IN_STORAGE)
 		return // if you could unfold it while it's stowed away that'd defeat the purpose
