@@ -304,8 +304,6 @@
 	var/obj/item/assembly/flash/handheld/flash1 = null
 	var/obj/item/assembly/flash/handheld/flash2 = null
 
-<<<<<<< HEAD
-=======
 #define EMP_GLITCH "EMP_GLITCH"
 
 /obj/item/bodypart/head/robot/emp_act(severity)
@@ -321,7 +319,6 @@
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, remove_client_colour), /datum/client_colour/malfunction), glitch_duration)
 
 #undef EMP_GLITCH
->>>>>>> 129c74c945a (EMPs on robotic limbs will now disable them for 4-8 seconds rather than causing a 10-20 second full stun (#74570))
 
 /obj/item/bodypart/head/robot/handle_atom_del(atom/head_atom)
 	if(head_atom == flash1)
