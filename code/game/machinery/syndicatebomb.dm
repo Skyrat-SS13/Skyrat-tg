@@ -50,6 +50,12 @@
 	if(!try_detonate())
 		..()
 
+<<<<<<< HEAD
+=======
+/obj/machinery/syndicatebomb/ex_act(severity, target)
+	return FALSE
+
+>>>>>>> 1b5c0489a40 (`ex_act()` will work on basic mobs again (lol) + Unit Test (#74953))
 /obj/machinery/syndicatebomb/process()
 	if(!active)
 		end_processing()
@@ -323,6 +329,7 @@
 
 /obj/item/bombcore/ex_act(severity, target) // Little boom can chain a big boom.
 	detonate()
+	return TRUE
 
 
 /obj/item/bombcore/burn()
@@ -343,6 +350,27 @@
 
 ///Bomb Core Subtypes///
 
+<<<<<<< HEAD
+=======
+/// Subtype for the bomb cores found inside syndicate bombs, which will not detonate due to explosion/burning.
+/obj/item/bombcore/syndicate
+	name = "Donk Co. Super-Stable Bomb Payload"
+	desc = "After a string of unwanted detonations, this payload has been specifically redesigned to not explode unless triggered electronically by a bomb shell."
+
+/obj/item/bombcore/syndicate/ex_act(severity, target)
+	return FALSE
+
+/obj/item/bombcore/syndicate/burn()
+	return ..()
+
+/obj/item/bombcore/syndicate/large
+	name = "Donk Co. Super-Stable Bomb Payload XL"
+	range_heavy = 5
+	range_medium = 10
+	range_light = 20
+	range_flame = 20
+
+>>>>>>> 1b5c0489a40 (`ex_act()` will work on basic mobs again (lol) + Unit Test (#74953))
 /obj/item/bombcore/training
 	name = "dummy payload"
 	desc = "A Nanotrasen replica of a syndicate payload. It's not intended to explode but to announce that it WOULD have exploded, then rewire itself to allow for more training."

@@ -264,7 +264,12 @@
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
+<<<<<<< HEAD
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
+=======
+	boom()
+	return TRUE
+>>>>>>> 1b5c0489a40 (`ex_act()` will work on basic mobs again (lol) + Unit Test (#74953))
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
