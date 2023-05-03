@@ -360,7 +360,7 @@
 		return
 
 	if(COOLDOWN_FINISHED(glass, remaining_heat))
-		to_chat(user, span_warning("The glass has cooled down and will require reheating to modify! "))
+		balloon_alert(user, "glass too cool!")
 		return FALSE
 
 	if(in_use)
@@ -432,7 +432,7 @@
 
 	if(step_id == STEP_BLOW || step_id == STEP_SPIN)
 		if(HAS_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING))
-			balloon_alert(user, "you are already glassblowing!")
+			balloon_alert(user, "already glassblowing!")
 			return FALSE
 
 		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
@@ -448,11 +448,11 @@
 			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/jacks)
 
 	if(!used_tool)
-		balloon_alert(user, "you don't have the right tool!")
+		balloon_alert(user, "need the right tool!")
 		return FALSE
 
 	if(HAS_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING))
-		balloon_alert(user, "[used_tool] is currently in use.")
+		balloon_alert(user, "already in use!")
 		return FALSE
 
 	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, GLASSBLOWING_TRAIT)
