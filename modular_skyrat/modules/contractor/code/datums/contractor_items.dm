@@ -221,9 +221,9 @@
 
 /datum/contractor_item/microbomb // reset into neutral (one-way)
 	name = "Microexplosive Implant"
-	desc = "An additional subdermal microbomb implant, designed to only allow you to inject yourself. \
-	Less of a blast radius than conventional microbombs. Two of these and a standard microbomb \
-	give you the same detonating force as a microbomb. Don't give hugs. Or do. Caveat emptor."
+	desc = "A mini-microbomb implant that only allows self-implantation. \
+	Two of these with a standard microbomb gives you the same detonation as a Syndicate minibomb (grenade). \
+	Every additional implant adds 0.7 seconds before detonation. Don't give hugs. Or do. Caveat emptor."
 	item = /obj/item/implanter/explosive/self
 	item_icon = "bomb"
 	limited = 2 // let's not get too spicy here

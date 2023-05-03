@@ -119,7 +119,7 @@
 	if(target != user)
 		balloon_alert(user, "can't implant others!")
 		return
-	. = ..()
+	return ..()
 
 /obj/item/implant/explosive/contractor
 	name = "contractor microbomb implant"
@@ -127,4 +127,3 @@
 	weak = 1
 	medium = 0.6
 	heavy = 0.3
-	delay = 2 // as a treat
