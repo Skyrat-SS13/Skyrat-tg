@@ -137,19 +137,10 @@
 	switch(animation)
 		if("opening")
 			flick("opening", src)
-<<<<<<< HEAD
-			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
-			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
-		if("closing")
-			flick("closing", src)
-			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
-			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
-=======
 			playsound(src, animation_sound, 50, TRUE)
 		if("closing")
 			flick("closing", src)
 			playsound(src, animation_sound, 50, TRUE)
->>>>>>> 4de43c8d4bc (Adds new shutter sound and nerfs blastdoor sound (#74945))
 
 /obj/machinery/door/poddoor/update_icon_state()
 	. = ..()
