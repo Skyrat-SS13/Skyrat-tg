@@ -218,3 +218,17 @@
 	item_icon = "arrow-left" //replace if fontawesome gets an actual hook icon
 	limited = 1
 	cost = 3
+
+/datum/contractor_item/microbomb // reset into neutral (one-way)
+	name = "Microexplosive Implant"
+	desc = "An additional subdermal microbomb implant, designed to only allow you to inject yourself. \
+	Less of a blast radius than conventional microbombs. Two of these and a standard microbomb \
+	give you the same detonating force as a microbomb. Don't give hugs. Or do. Caveat emptor."
+	item = /obj/item/implanter/explosive/self
+	item_icon = "bomb"
+	limited = 2 // let's not get too spicy here
+	// base microbomb is (0.4, 0.8, 2)
+	// each addtl bomb is extra (0.3, 0.6, 1) (down from base (0.4, 0.8, 2))
+	// max should therefore be (1, 2, 4)?
+	// consider that minibombs are (1, 2, 4)
+	cost = 1

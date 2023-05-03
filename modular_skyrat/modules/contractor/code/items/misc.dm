@@ -109,3 +109,22 @@
 			<p>Good luck agent. You can burn this document with the supplied lighter.</p>"}
 
 	return ..()
+
+/obj/item/implanter/explosive/self
+	name = "self-implanter (focused microbomb)"
+	desc = "A sterile automatic implant injector, designed to only be able to implant its user."
+	imp_type = /obj/item/implant/explosive/contractor
+
+/obj/item/implanter/explosive/self/attack(mob/living/target, mob/user)
+	if(target != user)
+		balloon_alert(user, "can't implant others!")
+		return
+	. = ..()
+
+/obj/item/implant/explosive/contractor
+	name = "contractor microbomb implant"
+	desc = "You had burst."
+	weak = 1
+	medium = 0.6
+	heavy = 0.3
+	delay = 2 // as a treat
