@@ -10,6 +10,9 @@
 	mod_type = /obj/item/mod/control/pre_equipped/policing
 	storage_type = /obj/item/tank/internals/oxygen/yellow
 
+/// A nerfed down variation of the pirates' shuttle scrambler thingy that locks down supply lines to a halt. Can be turned off, but does not siphon any money.
+/// Muh arpee. Also yes I've literally copypasted the description because this is literally what it does there's no hidden meaning behind anything.
+/// TODO: hidden meaning stockmarket integration update
 /obj/machinery/shuttle_scrambler/nri
 	name = "system crasher"
 	desc = "This heap of machinery locks down supply lines to a halt. Can be turned off, but does not siphon any money. Do that yourself, lazyass."
@@ -29,33 +32,41 @@
 /obj/machinery/shuttle_scrambler/nri/process()
 	if(active)
 		if(is_station_level(z))
-			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			if(D)
-				var/siphoned = min(D.account_balance,siphon_per_tick)
-				D.adjust_money(-siphoned)
+			var/datum/bank_account/aank_bcount = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			if(aank_bcount)
+				var/siphoned = min(aank_bcount.account_balance,siphon_per_tick)
+				aank_bcount.adjust_money(-siphoned)
 				credits_stored += siphoned
 		else
 			return
 	else
 		STOP_PROCESSING(SSobj,src)
 
+/// idfk-idrc how to make this cleaner it works-it works-good
 /obj/machinery/shuttle_scrambler/nri/interact(mob/user)
 	if(active)
 		var/deactivation_response = tgui_alert(user,"Turn the crasher off?", "Crasher", list("Yes", "Cancel"))
+
 		if(deactivation_response != "Yes")
 			return
+
 		if(!active|| !user.can_perform_action(src))
 			return
+
 		toggle_off(user)
 		update_appearance()
 		send_notification()
 		to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
 		return
+
 	var/scramble_response = tgui_alert(user, "Turning the crasher on might alienate the population and will make the shuttle trackable by GPS. Are you sure you want to do it?", "Crasher", list("Yes", "Cancel"))
+
 	if(scramble_response != "Yes")
 		return
+
 	if(active || !user.can_perform_action(src))
 		return
+
 	toggle_on(user)
 	update_appearance()
 	send_notification()

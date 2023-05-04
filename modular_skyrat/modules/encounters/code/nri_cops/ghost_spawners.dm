@@ -17,6 +17,7 @@ GLOBAL_VAR(first_officer)
 	random_appearance = FALSE
 	show_flavor = TRUE
 
+/// Applies name wow
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/proc/apply_codename(mob/living/carbon/human/spawned_human)
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.numbers_as_words)
