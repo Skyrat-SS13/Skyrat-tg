@@ -76,3 +76,98 @@
   - bugfix: Number inputs work now
   softcerv:
   - bugfix: NIF action icons no longer persist after a NIF is removed.
+2023-05-04:
+  Melbert:
+  - bugfix: Mime using captain's announcement visible message is correct
+  - bugfix: Fixes rare occasions in which the captain can fail to spawn with their
+      banner on certain maps if their left hand was holding something else.
+  - bugfix: Stairs are now resistant to being shoved by mobs with high move force.
+  Paxilmaniac:
+  - image: The plasma thrower's power bar has been changed to go from green-yellow-orange-red
+      (looks comically bad!) to a purple bar that shrinks as the gun loses charge
+  - bugfix: the cargo orderable AMR should no longer fit in suit storage slots, only
+      your back, as was originally intended
+  SkyratBot:
+  - rscadd: Damp rag and Money bag to service borg
+  - rscadd: Service borg upgrades, with accompanying tech web node
+  - rscadd: Sprites for kitchen toolset, and service apparatus
+  - balance: The RSF can print a few more things, paper cups, seaweed sheets, plates,
+      bowls, plastic cutlery and standard decks of cards.
+  - balance: 'Sugar moved from borgshaker to condiment synthesizer. Berry juice, cherry
+      jelly and vinegar added to borgshaker. balance: Both shaker and synthesizer
+      can also be adjusted to give 1 unit at time, so it goes 5, 10, 20 then 1, and
+      back around.'
+  - balance: Adds blood and Carpotoxin to the emagged borgshaker.
+  - bugfix: Money bag was missing a description, it now has one.
+  - bugfix: Holodisk recording gives the right vfx again. Bonus, the rays work with
+      it now too!
+  - refactor: Mineral costs have been reformatted to be scaled by the number of sheets,
+      darts, and small fractions they make up.
+  - qol: Foam darts no longer hold a fraction of a unit of iron within themselves.
+  - bugfix: Basic mobs will now be affected by explosions again.
+  - bugfix: fixed spiderlings speaking human instead of spider
+  - qol: 'Mapping: Air alarm variants replaced with corresponding helpers'
+  - spellcheck: Fixed Nanotrasen being miscapitalized in traitor posters, a drink,
+      the ethereal lore, and some photocopier paperwork
+  - bugfix: Fixed the Chef not having CQC outside the kitchen on Tramstation
+  - rscadd: North Star's captain's office has been expanded! It now includes a sitting
+      area as well as a photocopier and some cigars.
+  - bugfix: Various minor changes in North Star
+  - image: extinguisher cabinet has new sprites
+  - bugfix: Bows will no longer randomly stop taking new arrows.
+  - balance: 'EMPs on robotic limbs will now disable them for 10-20 seconds rather
+      than causing a 10-20 second full stun on the user. Additionally, they will damage
+      the limb for a little brute and some burn.
+
+      EMPs on robotic limbs will now disable them for 10-20 seconds rather than causing
+      a 10-20 second full stun on the user. Additionally, they will damage the limb
+      for a little brute and some burn.'
+  - balance: Arm EMPs don't do anything special as the limb being disabled already
+      drops items.
+  - balance: Leg EMPs cause a 10-20 second knockdown, only really applicable if there's
+      only one robotic leg as two disabled legs KD you anyways.
+  - balance: Chest EMPs cause a 3-6 second standing-up paralyze, visible to the player
+      by a quite noticeable shaking of their body.
+  - balance: Head EMPs break the optical transponder circuits for 7.5-15 seconds,
+      effectively giving the user nightmare goggles vision with green instead of red
+      as the only remaining color.
+  - spellcheck: The hallucinatory anomaly announcement is no longer missing words.
+  - qol: Health Analyzers now show embeds in bodyparts on examine.
+  - rscadd: Stowaway Changelings will now appear as a late join form of Changeling.
+  - refactor: Russian mobs are now subtypes of Syndicate basic mobs.
+  - spellcheck: BLOX is the name and posibrain is the game.
+  - bugfix: Removes player references.
+  Tattle:
+  - sound: shutters have a unique sound effect
+  Thedragmeme:
+  - qol: 'Makes the Meta station kitchen not cramped anymore
+
+      :cl:'
+  Wallem:
+  - rscadd: The ancient recipe for the Death Sandwich has been rediscovered buried
+      in the deepest depths of an erupting volcano.
+  Zergspower:
+  - qol: Dangerous Research Ruin - Area redefines
+  - bugfix: Port Tarkon - Window firelock issues resolved for all along with cleanup
+  Zytolg, LT3:
+  - rscadd: Birdshot station has been pulled out of Mothball.
+  - rscadd: New station areas and places to visit. A Mix of Kilo and Delta maints
+      with winding shortcutting paths.
+  - rscadd: A host of new shuttles to support this bold endeavor to reclaim something
+      that really shouldn't be reclaimed.
+  - rscadd: Two Trams, Two Trams. TWO TRAMS!
+  - rscadd: For the last time Bob, the gaping hole is a **feature.** Use the breach
+      shutters or have the virologist make starlight.
+  - rscadd: A smiling salute to stations past...
+  - rscadd: Secrets.
+  nikothedude:
+  - rscadd: '*exme now allows you to pick which layer of container the emote originates
+      from'
+  softcerv:
+  - code_imp: moves the SAD code for applying prefs, while keeping damage, to it's
+      own separate proc.
+  - refactor: refactors magical wand code, fixing several bugs.
+  - bugfix: glassblowing no longer works if the glass lacks heat
+  - bugfix: glassblowing is unable to be done on multiple objects at once.
+  - refactor: refactors organic interface status effects so that they no longer run
+      on every human.
