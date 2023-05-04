@@ -98,7 +98,7 @@
 		for(var/mat in mat_container.materials)
 			var/datum/material/M = mat
 			var/amount = mat_container.materials[M]
-			var/sheet_amount = amount / MINERAL_MATERIAL_AMOUNT
+			var/sheet_amount = amount / SHEET_MATERIAL_AMOUNT
 			var/ref = REF(M)
 			data["materials"] += list(list("name" = M.name, "id" = ref, "amount" = sheet_amount))
 
@@ -172,7 +172,7 @@
 			if(!amount)
 				return
 
-			var/stored_amount = CEILING(amount / MINERAL_MATERIAL_AMOUNT, 0.1)
+			var/stored_amount = CEILING(amount / SHEET_MATERIAL_AMOUNT, 0.1)
 
 			if(!stored_amount)
 				return
@@ -384,7 +384,7 @@
 
 /obj/machinery/ammo_workbench/proc/AfterMaterialInsert(obj/item/item_inserted, id_inserted, amount_inserted)
 	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
-		use_power(MINERAL_MATERIAL_AMOUNT / 10)
+		use_power(SHEET_MATERIAL_AMOUNT / 10)
 	else if(item_inserted.has_material_type(/datum/material/glass))
 		flick("autolathe_r", src)//plays glass insertion animation by default otherwise
 	else

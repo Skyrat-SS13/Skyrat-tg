@@ -70,13 +70,14 @@
 	name = "\improper Tkach 'Ya-Sui' 12 GA revolver"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. A revolver type design with a three shell cylinder. That's right, shell, this one shoots twelve guage."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
-	w_class = WEIGHT_CLASS_NORMAL
+	recoil = SAWN_OFF_RECOIL
+	weapon_weight = WEAPON_HEAVY
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
 	icon_state = "shawty_revolver"
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
+	spread = SAWN_OFF_ACC_PENALTY
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/give_manufacturer_examine()
-
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/examine_more(mob/user)
@@ -118,7 +119,7 @@
 	icon_state = "amr"
 	inhand_icon_state = "amr"
 	worn_icon_state = "amr"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BACK
 
 	mag_type = /obj/item/ammo_box/magazine/cin_amr
@@ -187,6 +188,6 @@
 	speed = 0.4
 	damage = 50
 	armour_penetration = 75
-	wound_bonus = 40
-	bare_wound_bonus = 90 // No armor? Yeah bye buddy
-	projectile_piercing = PASSMOB | PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
+	wound_bonus = -30
+	bare_wound_bonus = -15
+	projectile_piercing = PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
