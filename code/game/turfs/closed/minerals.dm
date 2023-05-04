@@ -180,7 +180,7 @@
 	. = ..()
 	if(target == src)
 		gets_drilled(null, FALSE)
-		return
+		return TRUE
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			gets_drilled(null, FALSE)
@@ -190,6 +190,8 @@
 		if(EXPLODE_LIGHT)
 			if(prob(75))
 				gets_drilled(null, FALSE)
+
+	return TRUE
 
 /turf/closed/mineral/blob_act(obj/structure/blob/B)
 	if(prob(50))
