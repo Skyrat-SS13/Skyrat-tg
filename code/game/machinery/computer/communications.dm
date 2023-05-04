@@ -780,8 +780,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		//No cheating, mime/random mute guy!
 		input = "..."
 		user.visible_message(
-			span_notice("You leave the mic on in awkward silence..."),
 			span_notice("[user] holds down [src]'s announcement button, leaving the mic on in awkward silence."),
+			span_notice("You leave the mic on in awkward silence..."),
 			span_hear("You hear an awkward silence, somehow."),
 			vision_distance = 4,
 		)
