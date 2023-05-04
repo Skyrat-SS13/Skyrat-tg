@@ -315,10 +315,6 @@
 	name = "Teshari Feathers Upright"
 	icon_state = "teshari_feathers_upright"
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_mane
-	name = "Teshari Feathers Mane"
-	icon_state = "teshari_feathers_mane"
-
 /datum/sprite_accessory/ears/mutant/teshari/feathers_droopy
 	name = "Teshari Feathers Droopy"
 	icon_state = "teshari_feathers_droopy"
@@ -327,16 +323,14 @@
 	name = "Teshari Feathers Longway"
 	icon_state = "teshari_feathers_longway"
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_tree
-	name = "Teshari Feathers Tree"
-	icon_state = "teshari_feathers_tree"
+/datum/sprite_accessory/ears/mutant/teshari/feathers_ponytail
+	name = "Teshari Feathers Ponytail"
+	icon_state = "teshari_feathers_ponytail"
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_mushroom
 	name = "Teshari Feathers Mushroom"
 	icon_state = "teshari_feathers_mushroom"
 	color_src = USE_ONE_COLOR
-	// Converting each one of these to rbg matrixed is like a 20+ minute process per sprite to make it look good
-	// and this one looks kinda meh anyway so I cba, it stays greyscale
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_backstrafe
 	name = "Teshari Feathers Backstrafe"
@@ -348,9 +342,9 @@
 	icon_state = "teshari_feathers_thinmohawk"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
-	name = "Teshari Feathers Thin Mane"
-	icon_state = "teshari_feathers_thinmane"
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thin
+	name = "Teshari Feathers Thin"
+	icon_state = "teshari_feathers_thin"
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/deer2
