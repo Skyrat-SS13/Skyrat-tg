@@ -396,6 +396,7 @@
 /obj/item/weldingtool/abductor/process()
 	if(get_fuel() <= max_fuel)
 		reagents.add_reagent(/datum/reagent/fuel, 1)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 	..()
 
 /obj/item/weldingtool/hugetank
@@ -426,5 +427,7 @@
 	if(get_fuel() < max_fuel && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10
 		reagents.add_reagent(/datum/reagent/fuel, 1)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+
 
 #undef WELDER_FUEL_BURN_INTERVAL
