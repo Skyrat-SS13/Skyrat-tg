@@ -19249,11 +19249,7 @@
 /area/station/command/cc_dock)
 "fFf" = (
 /obj/effect/mapping_helpers/broken_floor,
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/corpse/human/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/basic/syndicate/russian,
 /turf/open/floor/wood,
 /area/station/maintenance/rus_gambling)
 "fFg" = (
@@ -28045,11 +28041,7 @@
 /obj/structure/chair/sofa/left/brown{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/corpse/human/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/basic/syndicate/russian,
 /turf/open/floor/wood,
 /area/station/maintenance/rus_gambling)
 "ila" = (
@@ -32961,10 +32953,8 @@
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
-/obj/machinery/airalarm/mixingchamber{
-	dir = 8;
-	pixel_x = -26
-	},
+/obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "jCA" = (
@@ -33819,10 +33809,8 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/storage_shared)
 "jOF" = (
-/obj/machinery/airalarm/mixingchamber{
-	dir = 4;
-	pixel_x = 25
-	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
@@ -42584,10 +42572,8 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/lobby)
 "miR" = (
-/obj/machinery/airalarm/unlocked{
-	dir = 1;
-	pixel_y = 23
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/unlocked,
 /obj/structure/table/wood/fancy,
 /turf/open/floor/pod/dark,
 /area/station/service/chapel/office)
@@ -49277,10 +49263,8 @@
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "nXi" = (
-/obj/machinery/airalarm/server{
-	dir = 8;
-	pixel_x = -22
-	},
+/obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /obj/effect/turf_decal/trimline/white/filled/line{
 	dir = 1
 	},
@@ -59258,11 +59242,7 @@
 /area/station/medical/virology)
 "qLu" = (
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/corpse/human/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/basic/syndicate/russian,
 /turf/open/floor/wood,
 /area/station/maintenance/rus_gambling)
 "qLy" = (
@@ -65167,11 +65147,7 @@
 /obj/structure/chair/stool/directional/north{
 	pixel_y = 6
 	},
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/corpse/human/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/basic/syndicate/russian,
 /turf/open/floor/wood,
 /area/station/maintenance/rus_gambling)
 "svC" = (
@@ -66209,10 +66185,8 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
 	},
-/obj/machinery/airalarm/kitchen_cold_room{
-	dir = 1;
-	pixel_y = 24
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/tlv_cold_room,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/service/kitchen/coldroom)
 "sJd" = (
@@ -78961,10 +78935,8 @@
 	dir = 1;
 	name = "Chamber Extract"
 	},
-/obj/machinery/airalarm/engine{
-	dir = 8;
-	pixel_x = -23
-	},
+/obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/engine_access,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "wjk" = (
@@ -81226,10 +81198,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 6
 	},
-/obj/machinery/airalarm/kitchen_cold_room{
-	dir = 4;
-	pixel_x = 21
-	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/tlv_cold_room,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},

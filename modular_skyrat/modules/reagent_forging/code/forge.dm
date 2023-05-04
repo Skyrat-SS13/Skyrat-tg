@@ -795,11 +795,11 @@
 		var/list/material_list = list()
 
 		if(search_stack.material_type)
-			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+			material_list[GET_MATERIAL_REF(search_stack.material_type)] = SHEET_MATERIAL_AMOUNT
 
 		else
 			for(var/material as anything in search_stack.custom_materials)
-				material_list[material] = MINERAL_MATERIAL_AMOUNT
+				material_list[material] = SHEET_MATERIAL_AMOUNT
 
 		if(!search_stack.use(1))
 			fail_message(user, "not enough of [search_stack]")
