@@ -170,5 +170,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/uranium = 5000, /datum/material/glass = 4000, /datum/material/plasma = 2000, /datum/material/diamond = 500)
 	build_path = /obj/item/device/custom_kit/medigun_fastcharge
-	category = list(RND_CATEGORY_WEAPONS)
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL

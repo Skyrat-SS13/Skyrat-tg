@@ -1,7 +1,7 @@
 ///This element just handles creating and destroying an area sound manager that's hooked into weather stuff
 /datum/element/weather_listener
 	element_flags = ELEMENT_BESPOKE
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 	var/weather_type
 	//What events to change the track on
 	var/list/sound_change_signals
@@ -30,17 +30,21 @@
 
 /datum/element/weather_listener/Detach(datum/source)
 	. = ..()
-	UnregisterSignal(source, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOB_LOGOUT)
+	UnregisterSignal(source, list(COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOB_LOGOUT))
 
 /datum/element/weather_listener/proc/handle_z_level_change(datum/source, turf/old_loc, turf/new_loc)
 	SIGNAL_HANDLER
 	var/list/fitting_z_levels = SSmapping.levels_by_trait(weather_trait)
 	if(!(new_loc.z in fitting_z_levels))
 		return
-	var/datum/component/our_comp = source.AddComponent(/datum/component/area_sound_manager, playlist, list(), COMSIG_MOB_LOGOUT, fitting_z_levels)
-	our_comp.RegisterSignal(SSdcs, sound_change_signals, TYPE_PROC_REF(/datum/component/area_sound_manager, handle_change))
+	var/datum/component/our_comp = source.AddComponent(\
+		/datum/component/area_sound_manager, \
+		area_loop_pairs = playlist, \
+		remove_on = COMSIG_MOB_LOGOUT, \
+		acceptable_zs = fitting_z_levels, \
+	)
+	our_comp.RegisterSignals(SSdcs, sound_change_signals, TYPE_PROC_REF(/datum/component/area_sound_manager, handle_change))
 
 /datum/element/weather_listener/proc/handle_logout(datum/source)
 	SIGNAL_HANDLER
 	source.RemoveElement(/datum/element/weather_listener, weather_type, weather_trait, playlist)
-

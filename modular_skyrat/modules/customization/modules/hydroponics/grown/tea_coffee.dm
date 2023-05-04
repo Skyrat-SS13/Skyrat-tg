@@ -12,7 +12,7 @@
 	icon_dead = null
 	growthstages = 3
 	product = /obj/item/food/grown/tea/catnip
-	reagents_add = list(/datum/reagent/pax/catnip = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.3)
+	reagents_add = list(/datum/reagent/pax/catnip = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.1)
 	rarity = 50
 
 /obj/item/food/grown/tea/catnip

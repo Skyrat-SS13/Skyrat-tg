@@ -5,7 +5,7 @@
  */
 /datum/element/atmos_requirements
 	element_flags = ELEMENT_BESPOKE
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 	/// An assoc list of "what atmos does this mob require to survive in".
 	var/list/atmos_requirements
 	/// How much (brute) damage we take from being in unsuitable atmos.
@@ -26,12 +26,12 @@
 	UnregisterSignal(target, COMSIG_LIVING_HANDLE_BREATHING)
 
 ///signal called by the living mob's life() while non stasis
-/datum/element/atmos_requirements/proc/on_non_stasis_life(mob/living/target, delta_time = SSMOBS_DT)
+/datum/element/atmos_requirements/proc/on_non_stasis_life(mob/living/target, seconds_per_tick = SSMOBS_DT)
 	SIGNAL_HANDLER
 	if(is_breathable_atmos(target))
 		target.clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
 		return
-	target.adjustBruteLoss(unsuitable_atmos_damage * delta_time)
+	target.adjustBruteLoss(unsuitable_atmos_damage * seconds_per_tick)
 	target.throw_alert(ALERT_NOT_ENOUGH_OXYGEN, /atom/movable/screen/alert/not_enough_oxy)
 
 /datum/element/atmos_requirements/proc/is_breathable_atmos(mob/living/target)

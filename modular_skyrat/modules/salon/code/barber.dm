@@ -6,7 +6,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BARBER"
 
@@ -30,7 +29,7 @@
 	jobtype = /datum/job/barber
 
 	glasses = /obj/item/clothing/glasses/sunglasses
-	belt = /obj/item/modular_computer/tablet/pda
+	belt = /obj/item/modular_computer/pda
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/barber
 	shoes = /obj/item/clothing/shoes/laceup

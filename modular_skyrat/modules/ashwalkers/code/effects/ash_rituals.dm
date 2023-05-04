@@ -344,10 +344,10 @@
 	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
 		return
 
-	find_animal.faction = list("neutral")
+	find_animal.faction = list(FACTION_NEUTRAL)
 
 	if(ishostile(find_animal))
 		var/mob/living/simple_animal/hostile/hostile_animal = find_animal
 		hostile_animal.attack_same = FALSE
 
-	find_animal.revive(full_heal = TRUE, admin_revive = TRUE)
+	find_animal.revive(HEAL_ALL)

@@ -3,14 +3,11 @@
 	name = "Vox"
 	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/modules/organs/icons/vox_eyes.dmi'
-	say_mod = "skrees"
 	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -21,6 +18,7 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mutanttongue = /obj/item/organ/internal/tongue/vox
 	mutantlungs = /obj/item/organ/internal/lungs/nitrogen/vox
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
@@ -63,9 +61,10 @@
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
-	var/datum/outfit/vox/O = new /datum/outfit/vox
-	equipping.equipOutfit(O, visuals_only)
-	equipping.open_internals(equipping.get_item_for_held_index(2))
+	if(job?.vox_outfit)
+		equipping.equipOutfit(job.vox_outfit, visuals_only)
+	else
+		give_important_for_life(equipping)
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)
@@ -96,8 +95,8 @@
 	if(item_slot == LOADOUT_ITEM_SHOES)
 		var/obj/item/bodypart/leg = bodypart_overrides[BODY_ZONE_L_LEG] || bodypart_overrides[BODY_ZONE_R_LEG]
 		if(initial(leg?.limb_id) != "digitigrade")
-			// normal legs, force using human shoes
-			return item.worn_icon || item.icon
+			// normal legs, use normal human shoes
+			return DEFAULT_SHOES_FILE
 
 	return item.worn_icon_vox
 
@@ -109,3 +108,11 @@
 
 /datum/species/vox/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/vox/prepare_human_for_preview(mob/living/carbon/human/vox)
+	vox.dna.features["mcolor"] = "#77DD88"
+	vox.dna.features["mcolor2"] = "#EEDD88"
+	vox.dna.features["mcolor3"] = "#222222"
+	vox.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Vox Snout", MUTANT_INDEX_COLOR_LIST = list("#EEDD88"))
+	regenerate_organs(vox, src, visual_only = TRUE)
+	vox.update_body(TRUE)

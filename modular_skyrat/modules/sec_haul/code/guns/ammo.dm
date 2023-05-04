@@ -21,13 +21,11 @@
 
 /obj/item/ammo_box/advanced/b6mm/rubber
 	name = "6.3mm dissuasive pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-rubber"
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
 /obj/item/ammo_box/advanced/b6mm/ihdf
 	name = "6.3mm fragmentation pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
@@ -35,59 +33,25 @@
 *	9mm
 */
 
-/obj/item/ammo_box/advanced/b9mm
-	name = "9x19mm FMJ box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_l"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	max_ammo = 30
+/obj/item/ammo_box/c9mm/rubber
+	name = "9x25mm rubber box"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
-/obj/item/ammo_box/advanced/b9mm/hp
-	name = "9x19mm JHP box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol"
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-
-/obj/item/ammo_box/advanced/b9mm/rubber
-	name = "9x19mm rubber box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_r"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-
-/obj/item/ammo_box/advanced/b9mm/ihdf
-	name = "9x19mm IHDF box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_hv"
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+/obj/item/ammo_box/c9mm/ihdf
+	name = "9x25mm IHDF box"
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 
 /*
 *	10mm
 */
 
-/obj/item/ammo_box/advanced/b10mm
-	name = "10mm auto box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 30
-
-/obj/item/ammo_box/advanced/b10mm/hp
-	name = "10mm auto JHP box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-lethal"
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-
-/obj/item/ammo_box/advanced/b10mm/rubber
+/obj/item/ammo_box/c10mm/rubber
 	name = "10mm auto rubber box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-rubber"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/c10mm/rubber
 
-/obj/item/ammo_box/advanced/b10mm/ihdf
+/obj/item/ammo_box/c10mm/ihdf
 	name = "peacekeeper ammo box (10mm ihdf)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-hv"
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c10mm/ihdf
 
 /*
 *	12mm
@@ -142,6 +106,7 @@
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_MAT_REDEMPTION
+	var/multitype = TRUE
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -170,8 +135,6 @@
 		if(AMMO_BOX_PER_BULLET)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
@@ -188,7 +151,7 @@
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	var/round_type = AMMO_TYPE_LETHAL
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 	start_empty = TRUE //SOmething strange going on with refills.

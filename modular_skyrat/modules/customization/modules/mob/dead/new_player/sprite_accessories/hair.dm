@@ -395,6 +395,86 @@
 	name = "Long Over Eye Alt"
 	icon_state = "hair_longovereye_alt"
 
+/datum/sprite_accessory/hair/skyrat/gentle_bun
+	name = "Gentle Bun"
+	icon_state = "hair_gentle_bun"
+
+/datum/sprite_accessory/hair/skyrat/stacy
+	name = "Stacy"
+	icon_state = "hair_stacy"
+
+/datum/sprite_accessory/hair/skyrat/stacy_bun
+	name = "Stacy Bun"
+	icon_state = "hair_stacy_bun"
+
+/datum/sprite_accessory/hair/skyrat/curly_front
+	name = "Curly Front"
+	icon_state = "hair_braided_front"
+
+/datum/sprite_accessory/hair/skyrat/phoenix
+	name = "Phoenix"
+	icon_state = "hair_phoenix"
+
+/datum/sprite_accessory/hair/skyrat/spiky4
+	name = "Spiky 4"
+	icon_state = "hair_spikey"
+
+/datum/sprite_accessory/hair/skyrat/short_tassles
+	name = "Short Tassles"
+	icon_state = "hair_short_tassles"
+
+/datum/sprite_accessory/hair/skyrat/tri_bun
+	name = "Tri Bun"
+	icon_state = "hair_tri_bun"
+
+/datum/sprite_accessory/hair/skyrat/ring_tails
+	name = "Ring Tails"
+	icon_state = "hair_ring_tails"
+
+/datum/sprite_accessory/hair/skyrat/holo_tuber
+	name = "Holo Tuber"
+	icon_state = "hair_holo_tuber"
+
+/datum/sprite_accessory/hair/skyrat/spikey_long
+	name = "Spikey Long"
+	icon_state = "hair_spikey_long"
+
+/datum/sprite_accessory/hair/skyrat/violet
+	name = "Violet"
+	icon_state = "hair_violet"
+
+/datum/sprite_accessory/hair/skyrat/violet_ponytail
+	name = "Violet Ponytail"
+	icon_state = "hair_violet_ponytail"
+
+/datum/sprite_accessory/hair/skyrat/gentle_duo_bun
+	name = "Gentle Duo Bun"
+	icon_state = "hair_gentle_duo_bun"
+
+/datum/sprite_accessory/hair/skyrat/phoenix_half_shaven
+	name = "Phoenix Half-Shaven"
+	icon_state = "hair_phoenix_half_shaven"
+
+/datum/sprite_accessory/hair/skyrat/jay
+	name = "Jay"
+	icon_state = "hair_jay"
+
+/datum/sprite_accessory/hair/skyrat/zoey
+	name = "Zoey"
+	icon_state = "hair_zoey"
+
+/datum/sprite_accessory/hair/skyrat/runner
+	name = "Runner"
+	icon_state = "hair_runner"
+
+/datum/sprite_accessory/hair/skyrat/runner_bun
+	name = "Runner Bun"
+	icon_state = "hair_runner_bun"
+
+/datum/sprite_accessory/hair/skyrat/tri_bun_long
+	name = "Tri Bun Long"
+	icon_state = "hair_tri_bun_long"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat

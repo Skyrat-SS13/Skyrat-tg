@@ -13,10 +13,7 @@
 	density = TRUE
 	max_integrity = 250
 	buckle_lying = 0
-	base_pixel_x = -8
-	base_pixel_y = -8
-	pixel_x = -8
-	pixel_y = -8
+	SET_BASE_PIXEL(-8, -8)
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	/// The extra range that this turret gives regarding viewrange.
@@ -79,9 +76,9 @@
 		current_user = null
 	return ..()
 
-/obj/machinery/mounted_machine_gun/process(delta_time)
+/obj/machinery/mounted_machine_gun/process(seconds_per_tick)
 	if(barrel_heat)
-		barrel_heat -= passive_barrel_cooldown_rate * delta_time
+		barrel_heat -= passive_barrel_cooldown_rate * seconds_per_tick
 		update_appearance()
 
 /obj/machinery/mounted_machine_gun/update_overlays()

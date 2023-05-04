@@ -22,6 +22,8 @@
 	var/hit_sound = 'sound/effects/Glasshit.ogg'
 	/// How quickly we deflate when manually deflated.
 	var/manual_deflation_time = 3 SECONDS
+	/// Whether or not the inflatable has been deflated
+	var/has_been_deflated = FALSE
 
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
@@ -62,12 +64,19 @@
 
 // Deflates the airbag and drops a deflated airbag item. If violent, drops a broken item instantly.
 /obj/structure/inflatable/proc/deflate(violent)
+	if(has_been_deflated) // We do not ever want to deflate more than once.
+		return
+		
+	has_been_deflated = TRUE
+	
 	playsound(src, 'sound/machines/hiss.ogg', 75, 1)
 	if(!violent)
 		balloon_alert_to_viewers("slowly deflates!")
 		addtimer(CALLBACK(src, PROC_REF(slow_deflate_finish)), manual_deflation_time)
 		return
-	balloon_alert_to_viewers("rapidly deflates!")
+		
+	var/turf/inflatable_loc = get_turf(src)
+	inflatable_loc.balloon_alert_to_viewers("[src] rapidly deflates!") // just so we don't balloon alert from the qdeleted inflatable object
 	if(torn_type)
 		new torn_type(get_turf(src))
 	qdel(src)
@@ -156,7 +165,7 @@
 		return
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user, span_notice("You inflate [src]."))
-	if(do_mob(user, src, 1 SECONDS))
+	if(do_after(user, 1 SECONDS, src))
 		new structure_type(get_turf(user))
 		qdel(src)
 
@@ -170,7 +179,7 @@
 	if(attacking_tape.use(TAPE_REQUIRED_TO_FIX, check = TRUE))
 		to_chat(user, span_danger("There is not enough of [attacking_tape]! You need at least [TAPE_REQUIRED_TO_FIX] pieces!"))
 		return
-	if(!do_mob(user, src, 2 SECONDS))
+	if(!do_after(user, 2 SECONDS, src))
 		return
 	playsound(user, 'modular_skyrat/modules/inflatables/sound/ducttape1.ogg', 50, 1)
 	to_chat(user, span_notice("You fix [src] using [attacking_tape]!"))

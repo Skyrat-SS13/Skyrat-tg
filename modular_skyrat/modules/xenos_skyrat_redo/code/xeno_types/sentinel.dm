@@ -17,14 +17,14 @@
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_slow)
 
 /mob/living/carbon/alien/adult/skyrat/sentinel/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
+	organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
 	..()
 
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
 	desc = "Spits neurotoxin at someone, exhausting them."
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
 	/// A singular projectile? Use this one and leave acid_casing null
@@ -51,7 +51,7 @@
 	to_chat(on_who, span_notice("You prepare your [projectile_name] gland. <B>Left-click to fire at a target!</B>"))
 
 	button_icon_state = "[button_base_icon]_1"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -63,7 +63,7 @@
 		to_chat(on_who, span_notice("You empty your [projectile_name] gland."))
 
 	button_icon_state = "[button_base_icon]_0"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/InterceptClickOn(mob/living/caller, params, atom/target)
@@ -110,12 +110,11 @@
 	damage = 30
 	paralyze = 0
 	damage_type = STAMINA
-	nodamage = FALSE
 	armor_flag = BIO
 
 /obj/projectile/neurotoxin/on_hit(atom/target, blocked = FALSE)
 	if(isalien(target))
-		nodamage = TRUE
+		damage = 0
 	return ..()
 
 /datum/action/cooldown/alien/acid/skyrat/lethal

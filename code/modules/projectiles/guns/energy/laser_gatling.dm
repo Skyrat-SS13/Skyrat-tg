@@ -32,8 +32,8 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/minigunpack/process(delta_time)
-	overheat = max(0, overheat - heat_diffusion * delta_time)
+/obj/item/minigunpack/process(seconds_per_tick)
+	overheat = max(0, overheat - heat_diffusion * seconds_per_tick)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/minigunpack/attack_hand(mob/living/carbon/user, list/modifiers)
@@ -113,15 +113,13 @@
 	item_flags = NEEDS_PERMIT | SLOWS_WHILE_IN_HAND
 	can_charge = FALSE
 	var/obj/item/minigunpack/ammo_pack
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)//SKYRAT EDIT ADDITION
-
 
 /obj/item/gun/energy/minigun/Initialize(mapload)
 	if(!istype(loc, /obj/item/minigunpack)) //We should spawn inside an ammo pack so let's use that one.
 		return INITIALIZE_HINT_QDEL //No pack, no gun
 	ammo_pack = loc
 	AddElement(/datum/element/update_icon_blocker)
-	//AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
+	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	return ..()
 
 /obj/item/gun/energy/minigun/Destroy()

@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	RADIO_CHANNEL_INTERDYNE = RADIO_TOKEN_INTERDYNE, //SKYRAT EDIT ADDITION - Mapping
 	RADIO_CHANNEL_GUILD = RADIO_TOKEN_GUILD, //SKYRAT EDIT ADDITION - Mapping
 	RADIO_CHANNEL_TARKON = RADIO_TOKEN_TARKON, //SKYRAT EDIT ADDITION - MAPPING
+	RADIO_CHANNEL_SOLFED = RADIO_TOKEN_SOLFED, //SKYRAT EDIT ADDITION - SOLFED
 	RADIO_CHANNEL_SYNDICATE = RADIO_TOKEN_SYNDICATE,
 	RADIO_CHANNEL_SUPPLY = RADIO_TOKEN_SUPPLY,
 	RADIO_CHANNEL_SERVICE = RADIO_TOKEN_SERVICE,
@@ -27,7 +28,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "headset"
-	custom_materials = list(/datum/material/iron=75)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 0.75)
 	subspace_transmission = TRUE
 	canhear_range = 0 // can't hear headsets from very far away
 
@@ -36,6 +37,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	var/obj/item/encryptionkey/keyslot2 = null
 	/// A list of all languages that this headset allows the user to understand. Populated by language encryption keys.
 	var/list/language_list
+
+	// headset is too small to display overlays
+	overlay_speaker_idle = null
+	overlay_speaker_active = null
+	overlay_mic_idle = null
+	overlay_mic_active = null
 
 /obj/item/radio/headset/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!"))
@@ -91,7 +98,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset/MouseDrop(mob/over, src_location, over_location)
 	var/mob/headset_user = usr
-	if((headset_user == over) && headset_user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if((headset_user == over) && headset_user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return attack_self(headset_user)
 	return ..()
 
@@ -130,6 +137,20 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 /obj/item/radio/headset/syndicate/alt/leader
 	name = "team leader headset"
 	command = TRUE
+
+/obj/item/radio/headset/syndicate/alt/psyker
+	name = "psychic headset"
+	desc = "A headset designed to boost psychic waves. Protects ears from flashbangs."
+	icon_state = "psyker_headset"
+
+/obj/item/radio/headset/syndicate/alt/psyker/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot_flags & slot)
+		ADD_CLOTHING_TRAIT(user, TRAIT_ECHOLOCATION_EXTRA_RANGE)
+
+/obj/item/radio/headset/syndicate/alt/psyker/dropped(mob/user, silent)
+	. = ..()
+	REMOVE_CLOTHING_TRAIT(user, TRAIT_ECHOLOCATION_EXTRA_RANGE)
 
 /obj/item/radio/headset/binary
 	keyslot = /obj/item/encryptionkey/binary
@@ -270,6 +291,9 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "mining radio headset"
 	desc = "Headset used by shaft miners."
 	icon_state = "mine_headset"
+	// "puts the antenna down" while the headset is off
+	overlay_speaker_idle = "headset_up"
+	overlay_mic_idle = "headset_up"
 	keyslot = /obj/item/encryptionkey/headset_mining
 
 /obj/item/radio/headset/headset_srv
@@ -296,7 +320,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "\improper CentCom bowman headset"
 	desc = "A headset especially for emergency response personnel. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	keyslot = null
+	keyslot2 = null
 
 /obj/item/radio/headset/headset_cent/alt/Initialize(mapload)
 	. = ..()

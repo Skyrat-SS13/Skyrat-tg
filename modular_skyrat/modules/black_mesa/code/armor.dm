@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/armor/vest/hecu
 	name = "combat vest"
 	desc = "Vest designed to take heavy beating and probably keep the user alive in the process."
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	armor_type = /datum/armor/vest_hecu
 	icon_state = "ceramic_vest"
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
@@ -26,10 +26,20 @@
 		),
 	)
 
+/datum/armor/vest_hecu
+	melee = 40
+	bullet = 40
+	laser = 40
+	energy = 40
+	bomb = 40
+	fire = 80
+	acid = 100
+	wound = 30
+
 /obj/item/clothing/head/helmet/hecu
 	name = "combat helmet"
 	desc = "Helmet designed to take heavy beating and probably keep the user alive in the process."
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	armor_type = /datum/armor/helmet_hecu
 	icon_state = "ceramic_helmet"
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
@@ -53,3 +63,13 @@
 			RESKIN_WORN_ICON_STATE = "ceramic_helmet_medic_black"
 		),
 	)
+
+/datum/armor/helmet_hecu
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	fire = 80
+	acid = 100
+	wound = 30

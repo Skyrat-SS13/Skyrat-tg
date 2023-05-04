@@ -4,7 +4,7 @@
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
-	mode = TURRET_STUN
+	mode = 0
 	max_integrity = 200
 
 //Exterior ship turrets
@@ -15,9 +15,19 @@
 	stun_projectile = /obj/projectile/energy/electrode
 	stun_projectile_sound = 'sound/weapons/taser.ogg'
 	max_integrity = 600
-	armor = list(MELEE = 50, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 0, FIRE = 90, ACID = 90)
+	armor_type = /datum/armor/assaultops_shuttle
 
 //Internal ship and base turrets
+
+/datum/armor/assaultops_shuttle
+	melee = 50
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 80
+	fire = 90
+	acid = 90
+
 /obj/machinery/porta_turret/syndicate/assaultops/internal
 	always_up = FALSE
 	has_cover = TRUE

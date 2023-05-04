@@ -10,7 +10,6 @@ Assistant
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "absolutely everyone"
-	selection_color = "#dddddd"
 	exp_granted_type = EXP_TYPE_CREW
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
@@ -42,8 +41,8 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	belt = /obj/item/modular_computer/tablet/pda/assistant
 	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
+	belt = /obj/item/modular_computer/pda/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

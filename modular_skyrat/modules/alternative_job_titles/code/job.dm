@@ -19,7 +19,7 @@
 		card.update_label()
 
 	// Look for PDA in belt or L pocket
-	var/obj/item/modular_computer/tablet/pda/pda = equipping.belt
+	var/obj/item/modular_computer/pda/pda = equipping.belt
 	if(!istype(pda))
 		pda = equipping.l_store
 	if(istype(pda))

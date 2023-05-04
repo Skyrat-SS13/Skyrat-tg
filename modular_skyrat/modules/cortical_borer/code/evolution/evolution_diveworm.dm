@@ -8,6 +8,7 @@
 	gain_text = "Over time, some of the more aggressive worms became harder to dissect post-mortem. Their skin membrane has become up to thrice as thick."
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/host_speed)
+	evo_cost = 1
 
 /datum/borer_evolution/diveworm/health_per_level/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
@@ -56,11 +57,13 @@
 	name = "Health Increase II"
 	tier = -1
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/health_per_level/t3)
+	evo_cost = 2
 
 /datum/borer_evolution/diveworm/health_per_level/t3
 	name = "Health Increase III"
 	tier = -1
 	unlocked_evolutions = list()
+	evo_cost = 2
 
 // T4 + its path
 /datum/borer_evolution/diveworm/harm_increase

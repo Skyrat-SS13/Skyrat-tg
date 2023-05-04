@@ -28,7 +28,7 @@
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
 		)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/toggle_labcoat
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/toggle/labcoat/cmo
@@ -37,12 +37,17 @@
 	icon_state = "labcoat_cmo"
 	inhand_icon_state = null
 
+/datum/armor/toggle_labcoat
+	bio = 50
+	fire = 50
+	acid = 50
+
 /obj/item/clothing/suit/toggle/labcoat/cmo/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
-		/obj/item/storage/medkit //SKYRAT EDIT - ADDITION
+		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT ADDITION - MEDIGUNS
+		/obj/item/storage/medkit, //SKYRAT EDIT ADDITION
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -51,13 +56,13 @@
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = null
 
-//START SKYRAT EDIT - ADDITION
-/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
+//START SKYRAT EDIT ADDITION
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/storage/medkit,
 	)
-//END SKYRAT EDIT- ADDITION
+//END SKYRAT EDIT
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"
@@ -97,12 +102,6 @@
 	. = ..()
 	allowed += /obj/item/storage/bag/xeno
 
-/obj/item/clothing/suit/toggle/labcoat/research_director
-	name = "research director's coat"
-	desc = "A mix between a labcoat and just a regular coat. It's made out of a special anti-bacterial, anti-acidic, and anti-biohazardous synthetic fabric."
-	icon_state = "labcoat_rd"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 75, FIRE = 75, ACID = 75)
-
 /obj/item/clothing/suit/toggle/labcoat/roboticist
 	name = "roboticist labcoat"
 	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
@@ -112,4 +111,3 @@
 	name = "interdyne labcoat"
 	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
 	icon_state = "labcoat_robo"
-

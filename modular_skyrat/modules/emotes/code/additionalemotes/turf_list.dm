@@ -1,4 +1,4 @@
-#define EXTRA_ABOVE_MOB_LAYER ABOVE_MOB_LAYER + 0.01
+#define EXTRA_ABOVE_MOB_LAYER (ABOVE_MOB_LAYER + 0.01)
 
 /obj/structure/mark_turf
 	name = "turf"

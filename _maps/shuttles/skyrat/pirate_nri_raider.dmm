@@ -17,12 +17,12 @@
 /obj/item/storage/box/zipties{
 	pixel_x = 2
 	},
-/obj/item/gun/energy/disabler/bolt_disabler,
-/obj/item/gun/energy/disabler/bolt_disabler,
-/obj/item/gun/energy/disabler/bolt_disabler,
-/obj/item/melee/baton/security/loaded,
-/obj/item/melee/baton/security/loaded,
-/obj/item/melee/baton/security/loaded,
+/obj/item/gun/energy/e_gun/advtaser/assault_ops,
+/obj/item/gun/energy/e_gun/advtaser/assault_ops,
+/obj/item/gun/energy/e_gun/advtaser/assault_ops,
+/obj/item/melee/baton,
+/obj/item/melee/baton,
+/obj/item/melee/baton,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "be" = (
@@ -50,17 +50,9 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "bE" = (
-/obj/structure/closet/crate/secure/weapon{
-	name = "footlocker";
-	desc = "A secure crate to keep all your personal belongings in.";
-	anchored = 1
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/sign/flag/nri/directional/north,
-/obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
-/obj/item/clothing/under/costume/nri/engineer,
-/obj/item/storage/belt/military/nri/engineer,
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "bG" = (
@@ -95,7 +87,7 @@
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	name = "blast shield"
 	},
 /obj/machinery/power/shuttle_engine/heater{
@@ -105,10 +97,8 @@
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "cZ" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
@@ -135,7 +125,6 @@
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	shield_range = 12;
 	max_integrity = 600;
-	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator";
 	req_access = list("syndicate")
@@ -145,7 +134,7 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "et" = (
-/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/structure/reagent_dispensers/fueltank/large{
 	anchored = 1;
 	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
@@ -168,7 +157,8 @@
 /obj/structure/rack/shelf,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/small/red/directional/north,
-/obj/item/storage/toolbox/ammo/full/bison/ert,
+/obj/item/storage/toolbox/ammo/full/nri_smg,
+/obj/item/storage/toolbox/ammo/full/nri_smg,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "fJ" = (
@@ -248,11 +238,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/docking_port/mobile/pirate/nri_raider{
 	dir = 1;
-	height = 15;
-	launch_status = 0;
-	width = 29;
-	dwidth = 15;
-	dheight = 18
+	launch_status = 0
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -267,12 +253,6 @@
 /area/shuttle/pirate/nri)
 "iC" = (
 /turf/open/floor/plating/airless,
-/area/shuttle/pirate/nri)
-"iG" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/shuttle/spaceship,
-/obj/structure/plaque/static_plaque/golden/commission/ks13,
-/turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "jx" = (
 /obj/effect/turf_decal/stripes/line{
@@ -324,11 +304,10 @@
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	name = "blast shield"
 	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	name = "blast shield"
 	},
 /turf/open/floor/engine/hull/reinforced,
@@ -403,9 +382,24 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine{
-	dir = 1
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
 	},
+/obj/item/clothing/under/costume/nri/engineer,
+/obj/item/clothing/mask/balaclavaadjust,
+/obj/item/clothing/suit/armor/vest/warden/peacekeeper{
+	name = "advanced imperial jacket";
+	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
+	},
+/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
+/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/encryptionkey/heads/ce,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "pQ" = (
@@ -433,8 +427,30 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "qE" = (
-/obj/machinery/recharge_station,
-/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/storage/box/nri_rations{
+	pixel_x = -3
+	},
+/obj/item/storage/box/nri_rations{
+	pixel_x = 7;
+	pixel_y = -5
+	},
+/obj/item/storage/box/nri_rations{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/nri_rations{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/obj/item/storage/box/nri_rations{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/storage/box/nri_rations{
+	pixel_x = 7;
+	pixel_y = 1
+	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "qJ" = (
@@ -473,15 +489,12 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rk" = (
-/obj/machinery/base_alarm/nri_raider{
-	pixel_x = -32
-	},
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/plastikov/nri_pirate,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/item/gun/ballistic/shotgun/m23,
+/obj/item/gun/ballistic/automatic/nri_smg,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "rp" = (
@@ -500,14 +513,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/structure/table/reinforced,
-/obj/item/stock_parts/cell/crank{
-	maxcharge = 10000;
-	name = "improved crank cell";
-	chargerate = 500;
-	crank_speed = 5;
-	crank_amount = 250
-	},
+/obj/machinery/shuttle_scrambler/nri,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "tk" = (
@@ -515,9 +521,9 @@
 /area/shuttle/pirate/nri)
 "tl" = (
 /obj/machinery/power/apc/auto_name/directional/east{
-	cell_type = /obj/item/stock_parts/cell/super;
-	req_access = list("syndicate")
+	cell_type = /obj/item/stock_parts/cell/super
 	},
+/obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table/reinforced,
@@ -649,33 +655,11 @@
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "wT" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/nri_rations{
-	pixel_x = -3
-	},
-/obj/item/storage/box/nri_rations{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/nri_rations{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/storage/box/nri_rations{
-	pixel_x = 7;
-	pixel_y = -5
-	},
-/obj/item/storage/box/nri_rations{
-	pixel_x = 7;
-	pixel_y = -2
-	},
-/obj/item/storage/box/nri_rations{
-	pixel_x = 7;
-	pixel_y = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/structure/cable,
+/obj/machinery/recharge_station,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "xg" = (
@@ -743,7 +727,7 @@
 /area/shuttle/pirate/nri)
 "zJ" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/latex/nitrile{
+/obj/item/clothing/gloves/latex/nitrile{
 	pixel_y = 3
 	},
 /obj/item/wrench/medical{
@@ -790,7 +774,6 @@
 "Bk" = (
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	max_integrity = 600;
-	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator";
 	req_access = list("syndicate")
@@ -806,24 +789,12 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Bw" = (
-/obj/structure/closet/crate/secure/weapon{
-	name = "footlocker";
-	desc = "A secure crate to keep all your personal belongings in.";
-	anchored = 1
-	},
 /obj/structure/sign/flag/ssc/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /obj/machinery/light/small/red/directional/north,
-/obj/item/clothing/suit/armor/vest/warden/peacekeeper{
-	name = "advanced imperial jacket";
-	armor = list("melee"=30,"bullet"=40,"laser"=20,"energy"=30,"bomb"=35,"bio"=0,"fire"=50,"acid"=50,"wound"=15);
-	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
-	},
-/obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
-/obj/item/clothing/under/costume/nri/captain,
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "Bz" = (
@@ -861,12 +832,27 @@
 /area/shuttle/pirate/nri)
 "CC" = (
 /obj/machinery/light/small/red/directional/south,
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/under/costume/nri/medic,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclavaadjust,
+/obj/item/clothing/suit/armor/vest/warden/peacekeeper{
+	name = "advanced imperial jacket";
+	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
+	},
+/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
+/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
+/obj/item/encryptionkey/heads/cmo,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "CP" = (
@@ -898,12 +884,10 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Eh" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "EG" = (
@@ -967,9 +951,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Hu" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /obj/structure/reagent_dispensers/fueltank/large{
 	anchored = 1;
 	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
@@ -981,12 +963,26 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "HD" = (
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/under/costume/nri/captain,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclavaadjust,
+/obj/item/clothing/suit/armor/vest/warden/peacekeeper{
+	name = "advanced imperial jacket";
+	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
+	},
+/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
+/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
+/obj/item/encryptionkey/heads/hos,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "HO" = (
@@ -1165,8 +1161,7 @@
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	name = "blast shield"
 	},
 /obj/machinery/power/shuttle_engine/heater{
@@ -1273,14 +1268,10 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Tg" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Tj" = (
@@ -1289,17 +1280,9 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "TF" = (
-/obj/structure/closet/crate/secure/weapon{
-	name = "footlocker";
-	desc = "A secure crate to keep all your personal belongings in.";
-	anchored = 1
-	},
 /obj/structure/sign/flag/mars/directional/north,
-/obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
-/obj/item/clothing/under/costume/nri/medic,
-/obj/item/storage/belt/military/nri/medic,
-/obj/item/clothing/glasses/hud/health,
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer,
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "TR" = (
@@ -1341,10 +1324,8 @@
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "UY" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
@@ -1368,10 +1349,7 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "Wa" = (
-/obj/machinery/vending/sovietsoda{
-	extra_price = 0;
-	default_price = 0
-	},
+/obj/machinery/vending/imported/mothic,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "Wr" = (
@@ -1391,7 +1369,6 @@
 "Xh" = (
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	max_integrity = 600;
-	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator";
 	req_access = list("syndicate")
@@ -1428,7 +1405,6 @@
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	shield_range = 12;
 	max_integrity = 600;
-	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator";
 	req_access = list("syndicate")
@@ -1458,11 +1434,10 @@
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	name = "blast shield"
 	},
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	name = "blast shield"
 	},
 /turf/open/floor/engine/hull/reinforced,
@@ -1709,7 +1684,7 @@ Hz
 (15,1,1) = {"
 Hz
 rg
-wb
+qp
 aW
 Hz
 pQ
@@ -1884,7 +1859,7 @@ Te
 ot
 Iv
 Iv
-iG
+Iv
 Iv
 Iv
 ot

@@ -137,7 +137,8 @@
 
 	skin = new_skin
 	update_appearance()
-	linked_techweb = SSresearch.science_tech
+	if(!CONFIG_GET(flag/no_default_techweb_link) && !linked_techweb)
+		linked_techweb = SSresearch.science_tech
 
 	AddComponent(/datum/component/tippable, \
 		tip_time = 3 SECONDS, \
@@ -163,6 +164,11 @@
 
 /mob/living/simple_animal/bot/medbot/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)
+
+/mob/living/simple_animal/bot/medbot/multitool_act(mob/living/user, obj/item/multitool/tool)
+	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
+		linked_techweb = tool.buffer
+	return TRUE
 
 // Variables sent to TGUI
 /mob/living/simple_animal/bot/medbot/ui_data(mob/user)
@@ -197,6 +203,9 @@
 			medical_mode_flags ^= MEDBOT_STATIONARY_MODE
 			path = list()
 		if("sync_tech")
+			if(!linked_techweb)
+				to_chat(usr, span_notice("No research techweb connected."))
+				return
 			var/oldheal_amount = heal_amount
 			var/tech_boosters
 			for(var/index in linked_techweb.researched_designs)
@@ -365,7 +374,14 @@
 				)
 				playsound(src, pick(i_need_scissors), 70)
 			else
-				var/list/messagevoice = list("Radar, put a mask on!" = 'sound/voice/medbot/radar.ogg',"There's always a catch, and I'm the best there is." = 'sound/voice/medbot/catch.ogg',"I knew it, I should've been a plastic surgeon." = 'sound/voice/medbot/surgeon.ogg',"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medbot/flies.ogg',"Delicious!" = 'sound/voice/medbot/delicious.ogg', "Why are we still here? Just to suffer?" = 'sound/voice/medbot/why.ogg')
+				var/static/list/messagevoice = list(
+					"Delicious!" = 'sound/voice/medbot/delicious.ogg',
+					"I knew it, I should've been a plastic surgeon." = 'sound/voice/medbot/surgeon.ogg',
+					"Radar, put a mask on!" = 'sound/voice/medbot/radar.ogg',
+					"There's always a catch, and I'm the best there is." = 'sound/voice/medbot/catch.ogg',
+					"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medbot/flies.ogg',
+					"Why are we still here? Just to suffer?" = 'sound/voice/medbot/why.ogg',
+				)
 				var/message = pick(messagevoice)
 				speak(message)
 				playsound(src, messagevoice[message], 50)
@@ -427,7 +443,7 @@
 	if(!(loc == C.loc) && !(isturf(C.loc) && isturf(loc)))
 		return FALSE
 
-	if(C.suiciding)
+	if(HAS_TRAIT_FROM_ONLY(C, TRAIT_SUICIDED, REF(C)))
 		return FALSE //Kevorkian school of robotic medical assistants.
 
 	if(bot_cover_flags & BOT_COVER_EMAGGED) //Everyone needs our medicine. (Our medicine is toxins)
@@ -545,7 +561,7 @@
 			C.visible_message(span_danger("[src] is trying to tend the wounds of [patient]!"), \
 				span_userdanger("[src] is trying to tend your wounds!"))
 
-			if(do_mob(src, patient, 10 SECONDS)) //SKYRAT EDIT: Increased time as tradeoff for automated healing. ORIGINAL: if(do_mob(src, patient, 20))
+			if(do_after(src, 10 SECONDS, patient)) //SKYRAT EDIT: Increased time as tradeoff for automated healing. ORIGINAL: if(do_after(src, 2 SECONDS, patient))
 				if((get_dist(src, patient) <= 1) && (bot_mode_flags & BOT_MODE_ON) && assess_patient(patient))
 					var/healies = heal_amount
 					var/obj/item/storage/medkit/medkit = medkit_type

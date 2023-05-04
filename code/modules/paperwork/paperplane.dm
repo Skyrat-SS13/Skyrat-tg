@@ -57,12 +57,12 @@
 	return ..()
 
 /obj/item/paperplane/suicide_act(mob/living/user)
-	var/obj/item/organ/internal/eyes/eyes = user.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	user.Stun(200)
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
-	user.adjust_blurriness(6)
+	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
-		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
+		eyes.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
 	sleep(1 SECONDS)
 	return BRUTELOSS
 
@@ -72,12 +72,16 @@
 		. += "paperplane_[stamp]"
 
 /obj/item/paperplane/attack_self(mob/user)
-	to_chat(user, span_notice("You unfold [src]."))
-	// We don't have to qdel the paperplane here; it shall be done once the internal paper object is moved out of src anyway.
-	if(user.Adjacent(internalPaper))
-		user.put_in_hands(internalPaper)
-	else
-		internalPaper.forceMove(loc)
+	balloon_alert(user, "unfolded")
+
+	var/atom/location = drop_location()
+	// Need to keep a reference to the internal paper
+	// when we move it out of the plane, our ref gets set to null
+	var/obj/item/paper/internal_paper = internalPaper
+	internal_paper.forceMove(location)
+	// This will as a side effect, qdel the paper plane, making the user's hands empty
+
+	user.put_in_hands(internal_paper)
 
 /obj/item/paperplane/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(burn_paper_product_attackby_check(P, user))
@@ -113,7 +117,7 @@
 		// SKYRAT EDIT END
 		return
 	var/mob/living/carbon/human/H = hit_atom
-	var/obj/item/organ/internal/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = H.get_organ_slot(ORGAN_SLOT_EYES)
 	if(prob(hit_probability))
 		if(H.is_eyes_covered())
 			// SKYRAT EDIT START - Better paper planes
@@ -122,10 +126,9 @@
 			// SKYRAT EDIT END
 			return
 		visible_message(span_danger("\The [src] hits [H] in the eye[eyes ? "" : " socket"]!"))
-		H.adjust_blurriness(6)
-		// SKYRAT EDIT START - Better paper planes
-		eyes?.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
-		H.Knockdown(knockdown_duration)
+		H.adjust_eye_blur(12 SECONDS)
+		eyes?.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
+		H.Knockdown(40)
 		H.emote("scream")
 
 	if(delete_on_impact)
@@ -137,7 +140,7 @@
 	. += span_notice("Alt-click [src] to fold it into a paper plane.")
 
 /obj/item/paper/AltClick(mob/living/user, obj/item/I)
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		return
 	if(istype(src, /obj/item/paper/carbon))
 		var/obj/item/paper/carbon/Carbon = src
@@ -160,7 +163,7 @@
  * * obj/item/paperplane/plane_type - what it will be folded into (path)
  */
 /obj/item/paper/proc/make_plane(mob/living/user, obj/item/I, obj/item/paperplane/plane_type = /obj/item/paperplane)
-	to_chat(user, span_notice("You fold [src] into the shape of a plane!"))
+	balloon_alert(user, "folded into a plane")
 	user.temporarilyRemoveItemFromInventory(src)
 	I = new plane_type(loc, src)
 	if(user.Adjacent(I))

@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
+#define TRUE_CHANGELING_REFORM_THRESHOLD (5 MINUTES)
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
@@ -23,9 +23,10 @@
 	maxHealth = 750 //Very durable
 	health = 500
 	healable = FALSE
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	environment_smash = TRUE
+	lighting_cutoff_red = 0
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	wander = FALSE
@@ -172,7 +173,7 @@
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
 	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "change_to_human"
@@ -201,7 +202,7 @@
 /datum/action/innate/devour
 	name = "Devour"
 	desc = "We tear into the innards of a human. After some time, they will be significantly damaged and our health partially restored."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
 
@@ -232,7 +233,7 @@
 	horrorform.devouring = TRUE
 	horrorform.visible_message(span_warning("[horrorform] begins ripping apart and feasting on [lunch]!"), \
 					span_danger("We begin to feast upon [lunch]..."))
-	if(!do_mob(usr, lunch, 5 SECONDS))
+	if(!do_after(usr, 5 SECONDS, lunch))
 		horrorform.devouring = FALSE
 		return FALSE
 	horrorform.devouring = FALSE

@@ -1,32 +1,24 @@
 // 10mm
 
 /obj/item/ammo_casing/c10mm
-//	name = "10mm bullet casing"						// SKYRAT EDIT: Original
-//	desc = "A 10mm bullet casing."					// SKYRAT EDIT: Original
-	name = "10mm Magnum bullet casing"				// SKYRAT EDIT
-	desc = "A 10mm Magnum bullet casing."			// SKYRAT EDIT
+	name = "10mm bullet casing"
+	desc = "A 10mm bullet casing."
 	caliber = CALIBER_10MM
 	projectile_type = /obj/projectile/bullet/c10mm
 
 /obj/item/ammo_casing/c10mm/ap
-//	name = "10mm armor-piercing bullet casing"		// SKYRAT EDIT: Original
-//	desc = "A 10mm armor-piercing bullet casing."	// SKYRAT EDIT: Original
-	name = "10mm Magnum armor-piercing bullet casing"							// SKYRAT EDIT
-	desc = "A 10mm Magnum bullet casing with an armor-piercing projectile."		// SKYRAT EDIT
+	name = "10mm armor-piercing bullet casing"
+	desc = "A 10mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/c10mm/ap
 
 /obj/item/ammo_casing/c10mm/hp
-//	name = "10mm hollow-point bullet casing"		// SKYRAT EDIT: Original
-//	desc = "A 10mm hollow-point bullet casing."		// SKYRAT EDIT: Original
-	name = "10mm Magnum hollow-point bullet casing"								// SKYRAT EDIT
-	desc = "A 10mm Magnum bullet casing with a hollow-point projectile."		// SKYRAT EDIT
+	name = "10mm hollow-point bullet casing"
+	desc = "A 10mm hollow-point bullet casing."
 	projectile_type = /obj/projectile/bullet/c10mm/hp
 
 /obj/item/ammo_casing/c10mm/fire
-//	name = "10mm incendiary bullet casing"			// SKYRAT EDIT: Original
-//	desc = "A 10mm incendiary bullet casing."		// SKYRAT EDIT: Original
-	name = "10mm Magnum incendiary bullet casing"								// SKYRAT EDIT
-	desc = "A 10mm Magnum bullet casing. This leaves a burning trail and ignites its target."	// SKYRAT EDIT
+	name = "10mm incendiary bullet casing"
+	desc = "A 10mm incendiary bullet casing."
 	projectile_type = /obj/projectile/bullet/incendiary/c10mm
 
 // 9mm (Makarov, Stechkin APS, PP-95)

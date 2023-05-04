@@ -3,8 +3,6 @@
 #define CALIBER_12MM "12mm"
 #define CALIBER_473MM "473mm"
 #define CALIBER_6MM "6mm"
-#define CALIBER_10MMAUTO "10x25mm"
-#define CALIBER_9MMPEACE "9x19mm"
 
 /// The caliber used by the Automag.
 #define CALIBER_44 ".44 AMP"
@@ -28,3 +26,6 @@
 
 /// The caliber used by the Oldarms 'Mk.11.4 rifle'
 #define CALIBER_223 ".223 Stinger"
+
+/// Caliber used by the giant anti materiel rifle in guncargo
+#define CALIBER_60STRELA ".60 Strela"

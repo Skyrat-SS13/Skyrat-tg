@@ -39,7 +39,7 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/ravager/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
+	organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager
@@ -51,7 +51,7 @@
 	charge_past = 3
 	destroy_objects = FALSE
 	charge_damage = 25
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "ravager_charge"
 	unset_after_click = TRUE
 

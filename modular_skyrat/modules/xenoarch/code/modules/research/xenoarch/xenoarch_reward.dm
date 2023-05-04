@@ -30,7 +30,6 @@ GLOBAL_LIST_INIT(tech_reward, list(
 	/obj/item/megaphone = 1,
 	/obj/item/bodybag/bluespace = 1,
 	/obj/item/relic = 1,
-	/obj/item/disk/tech_disk/spaceloot = 1,
 	/obj/item/raw_anomaly_core/random = 1,
 	/obj/item/bag_of_holding_inert = 1,
 	/obj/item/construction/plumbing = 1,
@@ -47,7 +46,7 @@ GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
-	/obj/item/shield/riot/roman = 1,
+	/obj/item/shield/roman = 1,
 	/obj/item/pneumatic_cannon = 1,
 	/obj/item/gun/syringe/rapidsyringe = 1,
 ))
@@ -76,7 +75,6 @@ GLOBAL_LIST_INIT(clothing_reward, list(
 GLOBAL_LIST_INIT(illegal_reward, list(
 	/obj/item/stack/telecrystal = 1,
 	/obj/item/storage/box/rndboards = 1,
-	/obj/item/disk/tech_disk/spaceloot = 6
 ))
 
 GLOBAL_LIST_INIT(plant_reward, list(

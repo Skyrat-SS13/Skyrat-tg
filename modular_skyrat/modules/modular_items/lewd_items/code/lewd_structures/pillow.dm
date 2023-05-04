@@ -10,7 +10,8 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	icon_state = "pillow"
+	icon_state = "pillow_pink_round"
+	base_icon_state = "pillow"
 	inhand_icon_state = "pillow_pink_round"
 	var/datum/effect_system/feathers/pillow_feathers
 	var/current_color = "pink"
@@ -84,8 +85,8 @@
 
 /obj/item/fancy_pillow/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
+	icon_state = "[base_icon_state]_[current_color]_[current_form]"
+	inhand_icon_state = "[base_icon_state]_[current_color]_[current_form]"
 
 /obj/item/fancy_pillow/Destroy()
 	if(pillow_feathers)
@@ -163,7 +164,8 @@
 	name = "pillow"
 	desc = "A tiny pillow, for tiny heads."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
-	icon_state = "pillow"
+	icon_state = "pillow_pink_round"
+	base_icon_state = "pillow"
 	var/current_color = "pink"
 	var/current_form = "round"
 
@@ -179,7 +181,7 @@
 
 /obj/structure/bed/pillow_tiny/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
+	icon_state = "[base_icon_state]_[current_color]_[current_form]"
 
 //picking up the pillow
 
@@ -248,7 +250,8 @@
 	name = "small pillow pile"
 	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
-	icon_state = "pillowpile_small"
+	icon_state = "pillowpile_small_pink"
+	base_icon_state = "pillowpile_small"
 	pseudo_z_axis = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
@@ -302,7 +305,7 @@
 
 /obj/structure/chair/pillow_small/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
 /obj/structure/chair/pillow_small/AltClick(mob/user)
@@ -373,7 +376,8 @@
 	name = "large pillow pile"
 	desc = "A large pile of pillows. Jump on it!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
-	icon_state = "pillowpile_large"
+	icon_state = "pillowpile_large_pink"
+	base_icon_state = "pillowpile_large"
 	pseudo_z_axis = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
@@ -430,7 +434,7 @@
 
 /obj/structure/bed/pillow_large/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
 /obj/structure/bed/pillow_large/AltClick(mob/user)

@@ -36,3 +36,6 @@
 
 // Turn on/off guncargo permit-locked firing pins
 /datum/config_entry/flag/permit_pins
+
+// Disables the ability to commit suicide
+/datum/config_entry/flag/disable_suicide

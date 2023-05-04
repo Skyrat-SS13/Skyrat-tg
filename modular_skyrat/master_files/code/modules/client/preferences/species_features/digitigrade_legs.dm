@@ -11,7 +11,7 @@
 
 
 /datum/preference/choiced/digitigrade_legs/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["legs"])
+	return assoc_to_keys_features(GLOB.sprite_accessories["legs"])
 
 /datum/preference/choiced/digitigrade_legs/is_accessible(datum/preferences/preferences)
 	return ..() && is_usable(preferences)
@@ -35,5 +35,11 @@
 	if(!preferences || !is_usable(preferences))
 		return FALSE
 
+	var/old_value = target.dna.features["legs"]
+	if(value == old_value)
+		return FALSE
+
 	target.dna.features["legs"] = value
+
+	target.dna.species.replace_body(target, target.dna.species) // TODO: Replace this with something less stupidly expensive.
 	return TRUE

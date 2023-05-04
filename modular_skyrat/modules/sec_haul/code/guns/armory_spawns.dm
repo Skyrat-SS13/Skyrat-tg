@@ -38,12 +38,6 @@
 					for(var/i in 1 to mags_to_spawn)
 						new spawned_ballistic_gun.mag_type (spawned_box)
 
-			if(istype(spawned_gun, /obj/item/gun/microfusion))
-				var/obj/item/gun/microfusion/spawned_microfusion_gun = spawned_gun
-				var/obj/item/storage/box/ammo_box/microfusion/spawned_box = new(loc)
-				for(var/i in 1 to mags_to_spawn)
-					new spawned_microfusion_gun.cell_type (spawned_box)
-
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
 	gun_count = 4
@@ -103,8 +97,9 @@
 /obj/effect/spawner/armory_spawn/cmg
 	icon_state = "random_rifle"
 	gun_count = 3
+	vertical_guns = FALSE
 	guns = list(
-		/obj/item/gun/ballistic/automatic/cmg,
-		/obj/item/gun/ballistic/automatic/cmg,
-		/obj/item/gun/ballistic/automatic/cmg,
+		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/box/gunset/cmg,
 	)

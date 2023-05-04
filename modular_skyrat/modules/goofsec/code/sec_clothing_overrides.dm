@@ -47,37 +47,37 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "backpack_black"
+	icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
-			RESKIN_ICON_STATE = "backpack_black",
-			RESKIN_WORN_ICON_STATE = "backpack_black"
+			RESKIN_ICON_STATE = "backpack_security_black",
+			RESKIN_WORN_ICON_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "backpack_white",
-			RESKIN_WORN_ICON_STATE = "backpack_white"
+			RESKIN_ICON_STATE = "backpack_security_white",
+			RESKIN_WORN_ICON_STATE = "backpack_security_white"
 		),
 	)
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_satchel"
+	icon_state = "satchel_security"
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_duffle_blue"
+	icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_blue",
-			RESKIN_WORN_ICON_STATE = "security_duffle_blue"
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "duffel_security_black",
+			RESKIN_WORN_ICON_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_white",
-			RESKIN_WORN_ICON_STATE = "security_duffle_white"
+			RESKIN_ICON_STATE = "duffel_security_white",
+			RESKIN_WORN_ICON_STATE = "duffel_security_white"
 		),
 	)
 
@@ -171,6 +171,7 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
+	base_icon_state = "security_eyepatch"
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
@@ -233,7 +234,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_garrison
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
@@ -248,6 +249,16 @@
 	)
 
 //Normal Cap
+
+/datum/armor/head_security_garrison
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
+
 /obj/item/clothing/head/security_cap
 	name = "security cap"
 	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -255,7 +266,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_cap
 	strip_delay = 60
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -273,6 +284,15 @@
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
 	)
+
+/datum/armor/head_security_cap
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
 
 /obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -453,7 +473,7 @@
 
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //ORION TODO - actually have a unique icon_state overriding it instead of this cop-out it originally had (The original was actually done wrong anyways)
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
@@ -465,16 +485,16 @@
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
 	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "security_wintercoat_hood"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "winterhood_security"
 
 /obj/item/clothing/suit/hooded/wintercoat/security
 	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
 	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Lopland\"</b> logo."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "security_wintercoat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
+	icon_state = "coatsecurity_winter"
 
 /obj/item/clothing/suit/armor/hos/hos_formal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -582,16 +602,16 @@
 	. = ..()
 
 //PDA Greyscale Overrides
-/obj/item/modular_computer/tablet/pda/security
+/obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/detective
+/obj/item/modular_computer/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/warden
+/obj/item/modular_computer/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/modular_computer/tablet/pda/heads/hos
+/obj/item/modular_computer/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
 /*
@@ -619,6 +639,7 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
+	base_icon_state = "hudpatch"
 
 /obj/item/clothing/glasses/hud/security/night/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'

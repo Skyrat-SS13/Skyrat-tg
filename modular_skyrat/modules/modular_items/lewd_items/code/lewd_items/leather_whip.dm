@@ -3,8 +3,9 @@
 /obj/item/clothing/mask/leatherwhip
 	name = "leather whip"
 	desc = "A tool used for domination. Hurts in a way you like it."
-	icon_state = "leather"
-	worn_icon_state = "leather"
+	icon_state = "leather_whip_pink_hard"
+	worn_icon_state = "leather_whip"
+	base_icon_state = "leather"
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
@@ -80,7 +81,7 @@
 
 	update_icon_state()
 
-	whip_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi', "[initial(icon_state)]_[current_whip_form]", ABOVE_MOB_LAYER + 0.1) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
+	whip_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi', "[base_icon_state]_[current_whip_form]", ABOVE_MOB_LAYER + 0.1) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
 
 	update_icon()
 	update_appearance()
@@ -136,7 +137,7 @@
 
 	update_icon_state()
 
-	whip_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi', "[initial(icon_state)]_[current_whip_form]", ABOVE_MOB_LAYER + 0.1) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
+	whip_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi', "[base_icon_state]_[current_whip_form]", ABOVE_MOB_LAYER + 0.1) //two arguments. Yes, all mob layer. Fuck person who was working on genitals, they're working wrong.ABOVE_NORMAL_TURF_LAYER
 
 	update_icon()
 	update_appearance()
@@ -144,9 +145,9 @@
 
 /obj/item/clothing/mask/leatherwhip/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[initial(icon_state)]_[current_whip_form]_[current_whip_color]_[current_whip_type]"
-	inhand_icon_state = "[initial(icon_state)]_[current_whip_form]_[current_whip_color]_[current_whip_type]"
-	worn_icon_state = "[initial(icon_state)]_[current_whip_form]"
+	icon_state = icon_state = "[base_icon_state]_[current_whip_form]_[current_whip_color]_[current_whip_type]"
+	inhand_icon_state = "[base_icon_state]_[current_whip_form]_[current_whip_color]_[current_whip_type]"
+	worn_icon_state = "[base_icon_state]_[current_whip_form]"
 
 //safely discipline someone without damage
 /obj/item/clothing/mask/leatherwhip/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)

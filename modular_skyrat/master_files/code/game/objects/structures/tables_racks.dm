@@ -25,6 +25,7 @@
 
 	// If stasis isn't an option, only numbing is applied
 	ADD_TRAIT(target, TRAIT_NUMBED, REF(src))
+	target.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 ///Used to remove the effects of stasis and numbing when a patient is unbuckled
 /obj/structure/table/optable/proc/thaw_them(mob/living/target)
@@ -34,6 +35,7 @@
 		return
 
 	REMOVE_TRAIT(target, TRAIT_NUMBED, REF(src))
+	target.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /obj/structure/table/optable/post_buckle_mob(mob/living/patient)
 	mark_patient(potential_patient = patient)

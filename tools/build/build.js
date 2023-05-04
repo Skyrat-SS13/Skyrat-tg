@@ -65,7 +65,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
 });
 
 export const DmTarget = new Juke.Target({
-  parameters: [DefineParameter, DmVersionParameter],
+  parameters: [DefineParameter, DmVersionParameter, WarningParameter],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
@@ -98,7 +98,7 @@ export const DmTarget = new Juke.Target({
 });
 
 export const DmTestTarget = new Juke.Target({
-  parameters: [DefineParameter, DmVersionParameter],
+  parameters: [DefineParameter, DmVersionParameter, WarningParameter],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
@@ -132,7 +132,7 @@ export const DmTestTarget = new Juke.Target({
 });
 
 export const AutowikiTarget = new Juke.Target({
-  parameters: [DefineParameter, DmVersionParameter],
+  parameters: [DefineParameter, DmVersionParameter, WarningParameter],
   dependsOn: ({ get }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
@@ -278,7 +278,8 @@ export const BuildTarget = new Juke.Target({
 });
 
 export const ServerTarget = new Juke.Target({
-  dependsOn: [BuildTarget, DmVersionParameter],
+  parameters: [DmVersionParameter, PortParameter],
+  dependsOn: [BuildTarget],
   executes: async ({ get }) => {
     const port = get(PortParameter) || '1337';
     const options = {

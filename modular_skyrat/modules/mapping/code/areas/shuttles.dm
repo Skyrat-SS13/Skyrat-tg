@@ -51,9 +51,6 @@
 /area/shuttle/transport/no_light
 	static_lighting = FALSE
 
-/area/shuttle/supply/cockpit
-	name = "NLV Consign Cockpit"
-
 /area/shuttle/mining/advanced
 	name = "NMC Phoenix"
 

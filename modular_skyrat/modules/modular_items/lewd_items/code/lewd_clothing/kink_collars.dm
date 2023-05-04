@@ -55,7 +55,7 @@
 
 /obj/item/clothing/neck/kink_collar/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/kink_collar)
+	create_storage(storage_type = /datum/storage/pockets/small/kink_collar)
 	var/obj/item/key/kink_collar/key
 	if(!treat_path)
 		return
@@ -70,7 +70,7 @@
 
 /obj/item/clothing/neck/kink_collar/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
 //rename collar code
@@ -108,7 +108,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/kink_collar/locked)
+	create_storage(storage_type = /datum/storage/pockets/small/kink_collar/locked)
 
 //spawn thing in collar
 
@@ -116,7 +116,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
 //locking or unlocking collar code
@@ -174,7 +174,8 @@
 	name = "kink collar key"
 	desc = "A key for a tiny lock on a collar or bag."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	icon_state = "collar_key"
+	icon_state = "collar_key_metal"
+	base_icon_state = "collar_key"
 	/// The name inscribed on the key
 	var/keyname = null
 	/// The ID of the key to pair with a collar. Will normally be the ref of the collar
@@ -188,13 +189,13 @@
 						"White" = "collar_key_white",
 						"Purple" = "collar_key_purple",
 						"Black" = "collar_key_black",
-						"Metal" = "collar_key",
+						"Metal" = "collar_key_metal",
 						"Black-teal" = "collar_key_tealblack")
 
 //changing color of key in case if we using multiple collars
 /obj/item/key/kink_collar/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
 //changing name of key in case if we using multiple collars with same color
@@ -294,7 +295,7 @@
 
 /obj/item/clothing/neck/mind_collar/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/kink_collar/mind_collar)
+	create_storage(storage_type = /datum/storage/pockets/small/kink_collar/mind_collar)
 	remote = new /obj/item/mind_controller(src, src)
 	remote.forceMove(src)
 

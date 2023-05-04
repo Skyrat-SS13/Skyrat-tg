@@ -9,7 +9,7 @@
 /obj/item/card/id/faction_command
 	name = "command card"
 	access = list(ACCESS_FACTION_PUBLIC, ACCESS_FACTION_CREW, ACCESS_FACTION_COMMAND)
-	icon_state = "silver"
+	icon_state = "card_silver"
 	inhand_icon_state = "silver_id"
 
 /obj/item/card/faction_access

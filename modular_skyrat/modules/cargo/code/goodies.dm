@@ -62,25 +62,6 @@
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/paper_bin)
 
-/datum/supply_pack/goody/nri_rations
-	name = "Surplus NRI Combat Ration"
-	desc = "A single surplus ration pack from the NRI Defense Collegium. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
-	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
-	contains = list(/obj/item/storage/box/nri_rations)
-
-/*
-*	WEAPONS / AMMO
-*/
-
-/datum/supply_pack/goody/gunmaint
-	name = "Gun Maintenance Kits"
-	desc = "Keep your pa's rifle in best condition, with two sets of cleaning supplies. Or your standard issue pistol if you're an itchy trigger, we're not here to judge."
-	cost = PAYCHECK_CREW * 3
-	contains = list(
-		/obj/item/gun_maintenance_supplies,
-		/obj/item/gun_maintenance_supplies,
-	)
-
 /*
 *	CARPET PACKS
 */
@@ -128,14 +109,3 @@
 /datum/supply_pack/goody/carpet/premium/blue
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
-
-/*
-*	MEDICAL STUFF
-*/
-
-
-/datum/supply_pack/goody/afad
-	name = "Automated First Aid Device"
-	desc = "Someone mildly hurt and it's too much of a bother to manually handle their burns or cuts? Look no further than the AFAD, a state-of-the-art pain-relief device!"
-	cost = PAYCHECK_CREW * 40
-	contains = list(/obj/item/gun/medbeam/afad)

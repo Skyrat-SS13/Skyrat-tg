@@ -42,16 +42,13 @@
 	righthand_file ='modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "mp5"
-	selector_switch_icon = TRUE
 	mag_type = /obj/item/ammo_box/magazine/mp5
 	bolt_type = BOLT_TYPE_LOCKING
 	can_suppress = TRUE
-	burst_size = 3
 	fire_delay = 1.25
 	spread = 2.5
 	mag_display = TRUE
 	alt_icons = TRUE
-	realistic = TRUE
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_magin.ogg'
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_cock.ogg'
@@ -64,13 +61,19 @@
 	suppressed_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mp5_fire_suppressed.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
+	projectile_damage_multiplier = 0.7
+
+/obj/item/gun/ballistic/automatic/mp5/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/ammo_box/magazine/mp5
 	name = "MP5 magazine (10mm Auto)"
 	desc = "Magazines taking 10mm ammunition; it fits in the MP5."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "mp5"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MMAUTO
+	ammo_type = /obj/item/ammo_casing/c10mm
+	caliber = CALIBER_10MM
 	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY

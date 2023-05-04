@@ -11,8 +11,14 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor_type = /datum/armor/armor_forging_plate_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+
+/datum/armor/armor_forging_plate_armor
+	melee = 40
+	bullet = 40
+	fire = 50
+	wound = 30
 
 /obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
@@ -33,8 +39,14 @@
 	icon_state = "plate_gloves"
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor_type = /datum/armor/gloves_forging_plate_gloves
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+
+/datum/armor/gloves_forging_plate_gloves
+	melee = 40
+	bullet = 40
+	fire = 50
+	wound = 30
 
 /obj/item/clothing/gloves/forging_plate_gloves/Initialize(mapload)
 	. = ..()
@@ -55,8 +67,14 @@
 	resistance_flags = FIRE_PROOF
 	flags_inv = null
 	skyrat_obj_flags = ANVIL_REPAIR
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor_type = /datum/armor/helmet_forging_plate_helmet
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+
+/datum/armor/helmet_forging_plate_helmet
+	melee = 40
+	bullet = 40
+	fire = 50
+	wound = 30
 
 /obj/item/clothing/head/helmet/forging_plate_helmet/Initialize(mapload)
 	. = ..()
@@ -75,11 +93,15 @@
 	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
 	icon_state = "plate_boots"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/shoes_forging_plate_boots
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
 	can_be_tied = FALSE
+
+/datum/armor/shoes_forging_plate_boots
+	melee = 20
+	bullet = 20
 
 /obj/item/clothing/shoes/forging_plate_boots/Initialize(mapload)
 	. = ..()
@@ -93,11 +115,15 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
 	icon_state = "horseshoe"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/shoes_horseshoe
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
 	skyrat_obj_flags = ANVIL_REPAIR
 	can_be_tied = FALSE
+
+/datum/armor/shoes_horseshoe
+	melee = 20
+	bullet = 20
 
 /obj/item/clothing/shoes/horseshoe/Initialize(mapload)
 	. = ..()

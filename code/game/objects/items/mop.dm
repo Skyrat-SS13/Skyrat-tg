@@ -20,13 +20,16 @@
 	var/mopspeed = 1.5 SECONDS
 	force_string = "robust... against germs"
 	var/insertable = TRUE
+	var/static/list/clean_blacklist = typecacheof(list(
+		/obj/item/reagent_containers/cup/bucket,
+		/obj/structure/mop_bucket,
+	))
 
 /obj/item/mop/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cleaner, mopspeed, pre_clean_callback=CALLBACK(src, PROC_REF(should_clean)), on_cleaned_callback=CALLBACK(src, PROC_REF(apply_reagents)))
 	create_reagents(max_reagent_volume)
 	GLOB.janitor_devices += src
-	AddComponent(/datum/component/liquids_interaction, TYPE_PROC_REF(/obj/item/mop, attack_on_liquids_turf)) //SKYRAT EDIT ADDITION - Liquids
 
 /obj/item/mop/Destroy(force)
 	GLOB.janitor_devices -= src
@@ -34,7 +37,7 @@
 
 ///Checks whether or not we should clean.
 /obj/item/mop/proc/should_clean(datum/cleaning_source, atom/atom_to_clean, mob/living/cleaner)
-	if(istype(atom_to_clean, /obj/item/reagent_containers/cup/bucket) || istype(atom_to_clean, /obj/structure/janitorialcart))
+	if(clean_blacklist[atom_to_clean.type])
 		return DO_NOT_CLEAN
 	if(reagents.total_volume < 0.1)
 		to_chat(cleaner, span_warning("Your mop is dry!"))
@@ -65,6 +68,7 @@
 	name = "advanced mop"
 	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
 	icon_state = "advmop"
+	inhand_icon_state = "advmop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	force = 12
@@ -89,8 +93,8 @@
 	to_chat(user, span_notice("You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position."))
 	playsound(user, 'sound/machines/click.ogg', 30, TRUE)
 
-/obj/item/mop/advanced/process(delta_time)
-	var/amadd = min(max_reagent_volume - reagents.total_volume, refill_rate * delta_time)
+/obj/item/mop/advanced/process(seconds_per_tick)
+	var/amadd = min(max_reagent_volume - reagents.total_volume, refill_rate * seconds_per_tick)
 	if(amadd > 0)
 		reagents.add_reagent(refill_reagent, amadd)
 

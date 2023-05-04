@@ -4,7 +4,7 @@
 //Hierophant: Hierophant Club
 
 #define HIEROPHANT_BLINK_RANGE 5
-#define HIEROPHANT_BLINK_COOLDOWN 15 SECONDS
+#define HIEROPHANT_BLINK_COOLDOWN (15 SECONDS)
 
 /datum/action/innate/dash/hierophant
 	current_charges = 1
@@ -101,6 +101,7 @@
 
 /obj/item/hierophant_club/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	// If our target is the beacon and the hierostaff is next to the beacon, we're trying to pick it up.
 	if((target == beacon) && target.Adjacent(src))
 		return
@@ -124,7 +125,7 @@
 				playsound(T,'sound/magic/blind.ogg', 200, TRUE, -4)
 				new /obj/effect/temp_visual/hierophant/telegraph/teleport(T, user)
 				beacon = new/obj/effect/hierophant(T)
-				user.update_action_buttons_icon()
+				user.update_mob_action_buttons()
 				user.visible_message(span_hierophant_warning("[user] places a strange machine beneath [user.p_their()] feet!"), \
 				"[span_hierophant("You detach the hierophant beacon, allowing you to teleport yourself and any allies to it at any time!")]\n\
 				[span_notice("You can remove the beacon to place it again by striking it with the club.")]")
@@ -142,7 +143,7 @@
 		to_chat(user, span_warning("You don't have enough space to teleport from here!"))
 		return
 	teleporting = TRUE //start channel
-	user.update_action_buttons_icon()
+	user.update_mob_action_buttons()
 	user.visible_message(span_hierophant_warning("[user] starts to glow faintly..."))
 	beacon.icon_state = "hierophant_tele_on"
 	var/obj/effect/temp_visual/hierophant/telegraph/edge/TE1 = new /obj/effect/temp_visual/hierophant/telegraph/edge(user.loc)
@@ -153,7 +154,7 @@
 		if(T.is_blocked_turf(TRUE))
 			teleporting = FALSE
 			to_chat(user, span_warning("The beacon is blocked by something, preventing teleportation!"))
-			user.update_action_buttons_icon()
+			user.update_mob_action_buttons()
 			beacon.icon_state = "hierophant_tele_off"
 			return
 		new /obj/effect/temp_visual/hierophant/telegraph(T, user)
@@ -163,14 +164,14 @@
 		if(!do_after(user, 3, target = user) || !user || !beacon || QDELETED(beacon)) //no walking away shitlord
 			teleporting = FALSE
 			if(user)
-				user.update_action_buttons_icon()
+				user.update_mob_action_buttons()
 			if(beacon)
 				beacon.icon_state = "hierophant_tele_off"
 			return
 		if(T.is_blocked_turf(TRUE))
 			teleporting = FALSE
 			to_chat(user, span_warning("The beacon is blocked by something, preventing teleportation!"))
-			user.update_action_buttons_icon()
+			user.update_mob_action_buttons()
 			beacon.icon_state = "hierophant_tele_off"
 			return
 		user.log_message("teleported self from [AREACOORD(source)] to [beacon].", LOG_GAME)
@@ -192,7 +193,7 @@
 		beacon.icon_state = "hierophant_tele_off"
 	teleporting = FALSE
 	if(user)
-		user.update_action_buttons_icon()
+		user.update_mob_action_buttons()
 
 /obj/item/hierophant_club/proc/teleport_mob(turf/source, mob/teleporting, turf/target, mob/user)
 	var/turf/turf_to_teleport_to = get_step(target, get_dir(source, teleporting)) //get position relative to caster
@@ -253,7 +254,7 @@
 	desc = "Hostile Environment Cross-Kinetic Suit: A suit designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
 	icon_state = "hostile_env"
 	hoodtype = /obj/item/clothing/head/hooded/hostile_environment
-	armor = list(MELEE = 70, BULLET = 40, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/hooded_hostile_environment
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -261,7 +262,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	clothing_flags = THICKMATERIAL
 	resistance_flags = FIRE_PROOF|LAVA_PROOF|ACID_PROOF
-	transparent_protection = HIDEGLOVES|HIDESUITSTORAGE|HIDEJUMPSUIT|HIDESHOES
+	transparent_protection = HIDESUITSTORAGE|HIDEJUMPSUIT
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/recharge/kinetic_accelerator, /obj/item/pickaxe)
 	greyscale_colors = "#4d4d4d#808080"
 	greyscale_config = /datum/greyscale_config/heck_suit
@@ -269,15 +270,24 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/datum/armor/hooded_hostile_environment
+	melee = 70
+	bullet = 40
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
+
 /obj/item/clothing/suit/hooded/hostile_environment/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/radiation_protected_clothing)
 	AddComponent(/datum/component/gags_recolorable)
 
-/obj/item/clothing/suit/hooded/hostile_environment/process(delta_time)
+/obj/item/clothing/suit/hooded/hostile_environment/process(seconds_per_tick)
 	. = ..()
 	var/mob/living/carbon/wearer = loc
-	if(istype(wearer) && DT_PROB(1, delta_time)) //cursed by bubblegum
+	if(istype(wearer) && SPT_PROB(1, seconds_per_tick)) //cursed by bubblegum
 		if(prob(7.5))
 			wearer.cause_hallucination(/datum/hallucination/oh_yeah, "H.E.C.K suit", haunt_them = TRUE)
 		else
@@ -290,7 +300,7 @@
 	desc = "Hostile Environiment Cross-Kinetic Helmet: A helmet designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
 	icon_state = "hostile_env"
 	w_class = WEIGHT_CLASS_NORMAL
-	armor = list(MELEE = 70, BULLET = 40, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/hooded_hostile_environment
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = HEAD
@@ -377,6 +387,7 @@
 	RegisterSignal(soul, COMSIG_MOB_ATTACK_RANGED, PROC_REF(on_attack))
 	RegisterSignal(soul, COMSIG_MOB_ATTACK_RANGED_SECONDARY, PROC_REF(on_secondary_attack))
 	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(on_integrity_change))
+	AddElement(/datum/element/bane, mob_biotypes = MOB_PLANT, damage_multiplier = 0.5, requires_combat_mode = FALSE)
 
 /obj/item/soulscythe/examine(mob/user)
 	. = ..()
@@ -440,7 +451,7 @@
 		return
 	if(pixel_x != base_pixel_x || pixel_y != base_pixel_y)
 		animate(src, 0.2 SECONDS, pixel_x = base_pixel_y, pixel_y = base_pixel_y, flags = ANIMATION_PARALLEL)
-	Move(get_step_multiz(src, direction), direction)
+	try_step_multiz(direction)
 	COOLDOWN_START(src, move_cooldown, (direction in GLOB.cardinals) ? 0.1 SECONDS : 0.2 SECONDS)
 
 /obj/item/soulscythe/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -582,10 +593,10 @@
 	. = ..()
 	. += "Blood: [blood_level]/[MAX_BLOOD_LEVEL]"
 
-/mob/living/simple_animal/soulscythe/Life(delta_time, times_fired)
+/mob/living/simple_animal/soulscythe/Life(seconds_per_tick, times_fired)
 	. = ..()
 	if(!stat)
-		blood_level = min(MAX_BLOOD_LEVEL, blood_level + round(1 * delta_time))
+		blood_level = min(MAX_BLOOD_LEVEL, blood_level + round(1 * seconds_per_tick))
 
 /obj/projectile/soulscythe
 	name = "soulslash"
@@ -608,6 +619,7 @@
 /obj/item/melee/ghost_sword
 	name = "\improper spectral blade"
 	desc = "A rusted and dulled blade. It doesn't look like it'd do much damage. It glows weakly."
+	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "spectral"
 	inhand_icon_state = "spectral"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -771,6 +783,7 @@
 	. = ..()
 	if(timer > world.time)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(is_type_in_typecache(target, banned_turfs))
 		return
 	if(target in view(user.client.view, get_turf(user)))
@@ -835,7 +848,7 @@
 	/// Whether the saw is open or not
 	var/is_open = FALSE
 	/// List of factions we deal bonus damage to
-	var/list/nemesis_factions = list("mining", "boss")
+	var/list/nemesis_factions = list(FACTION_MINING, FACTION_BOSS)
 	/// Amount of damage we deal to the above factions
 	var/faction_bonus_force = 30
 	/// Whether the cleaver is actively AoE swiping something.
@@ -1001,6 +1014,7 @@
 
 /obj/item/storm_staff/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(!thunder_charges)
 		balloon_alert(user, "needs to charge!")
 		return
@@ -1049,7 +1063,7 @@
 		new /obj/effect/temp_visual/electricity(turf)
 		for(var/mob/living/hit_mob in turf)
 			to_chat(hit_mob, span_userdanger("You've been struck by lightning!"))
-			hit_mob.electrocute_act(15 * (isanimal(hit_mob) ? 3 : 1) * (turf == target ? 2 : 1) * (boosted ? 2 : 1), src, flags = SHOCK_TESLA|SHOCK_NOSTUN)
+			hit_mob.electrocute_act(15 * (isanimal_or_basicmob(hit_mob) ? 3 : 1) * (turf == target ? 2 : 1) * (boosted ? 2 : 1), src, flags = SHOCK_TESLA|SHOCK_NOSTUN)
 
 		for(var/obj/hit_thing in turf)
 			hit_thing.take_damage(20, BURN, ENERGY, FALSE)

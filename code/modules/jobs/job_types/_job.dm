@@ -35,9 +35,6 @@
 	/// Supervisors, who this person answers to directly
 	var/supervisors = ""
 
-	/// Selection screen color
-	var/selection_color = "#ffffff"
-
 	/// What kind of mob type joining players with this job as their assigned role are spawned as.
 	var/spawn_type = /mob/living/carbon/human
 
@@ -132,6 +129,9 @@
 	/// You'll probably break someone's config if you change this, so it's best to not to.
 	var/config_tag = ""
 
+	/// custom ringtone for this job
+	var/job_tone
+
 
 /datum/job/New()
 	. = ..()
@@ -139,30 +139,23 @@
 	if(!job_spawn_title)
 		job_spawn_title = title
 	// SKYRAT EDIT END
-	var/list/job_changes = SSmapping.config.job_changes
-	if(!job_changes[title])
-		return TRUE
-
-	var/list/job_positions_edits = job_changes[title]
-	if(!job_positions_edits)
-		return TRUE
-
-	if(isnum(job_positions_edits["spawn_positions"]))
-		spawn_positions = job_positions_edits["spawn_positions"]
-	if(isnum(job_positions_edits["total_positions"]))
-		total_positions = job_positions_edits["total_positions"]
+	var/new_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
+	if(isnum(new_spawn_positions))
+		spawn_positions = new_spawn_positions
+	var/new_total_positions = CHECK_MAP_JOB_CHANGE(title, "total_positions")
+	if(isnum(new_total_positions))
+		total_positions = new_total_positions
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
-	for(var/trait in mind_traits)
-		ADD_TRAIT(spawned.mind, trait, JOB_TRAIT)
+	if(length(mind_traits))
+		spawned.mind.add_traits(mind_traits, JOB_TRAIT)
 
-	var/obj/item/organ/internal/liver/liver = spawned.getorganslot(ORGAN_SLOT_LIVER)
-	if(liver)
-		for(var/trait in liver_traits)
-			ADD_TRAIT(liver, trait, JOB_TRAIT)
+	var/obj/item/organ/internal/liver/liver = spawned.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(liver && length(liver_traits))
+		liver.add_traits(liver_traits, JOB_TRAIT)
 
 	if(!ishuman(spawned))
 		return
@@ -214,7 +207,7 @@
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels)
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -256,19 +249,14 @@
  * If they have 0 spawn and total positions in the config, the job is entirely removed from occupations prefs for the round.
  */
 /datum/job/proc/map_check()
-	var/list/job_changes = SSmapping.config.job_changes
-	if(!job_changes[title]) //no edits made
-		return TRUE
-
-	var/list/job_positions_edits = job_changes[title]
-	if(!job_positions_edits)
-		return TRUE
-
 	var/available_roundstart = TRUE
 	var/available_latejoin = TRUE
-	if(!isnull(job_positions_edits["spawn_positions"]) && (job_positions_edits["spawn_positions"] == 0))
+
+	var/edited_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
+	if(!isnull(edited_spawn_positions) && (edited_spawn_positions == 0))
 		available_roundstart = FALSE
-	if(!isnull(job_positions_edits["total_positions"]) && (job_positions_edits["total_positions"] == 0))
+	var/edited_total_positions = CHECK_MAP_JOB_CHANGE(title, "total_positions")
+	if(!isnull(edited_total_positions) && (edited_total_positions == 0))
 		available_latejoin = FALSE
 
 	if(!available_roundstart && !available_latejoin) //map config disabled the job
@@ -287,7 +275,7 @@
 	uniform = /obj/item/clothing/under/color/grey
 	id = /obj/item/card/id/advanced
 	ears = /obj/item/radio/headset
-	belt = /obj/item/modular_computer/tablet/pda
+	belt = /obj/item/modular_computer/pda
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	box = /obj/item/storage/box/survival
@@ -362,17 +350,18 @@
 
 		equipped.sec_hud_set_ID()
 
-	var/obj/item/modular_computer/tablet/pda/pda = equipped.get_item_by_slot(pda_slot)
+	var/obj/item/modular_computer/pda/pda = equipped.get_item_by_slot(pda_slot)
 
 	if(istype(pda))
 		pda.saved_identification = equipped.real_name
 		pda.saved_job = equipped_job.title
+		pda.update_ringtone(equipped_job.job_tone)
 		pda.UpdateDisplay()
 
 		var/client/equipped_client = GLOB.directory[ckey(equipped.mind?.key)]
 
 		if(equipped_client)
-			pda.update_ringtone(equipped_client)
+			pda.update_pda_prefs(equipped_client)
 
 
 /datum/outfit/job/get_chameleon_disguise_info()
@@ -405,7 +394,7 @@
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
 	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
-//SKYRAT EDIT START
+
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
 	if(random_spawns_possible)
@@ -422,8 +411,12 @@
 				hangover_landmark.used = TRUE
 				break
 			return hangover_spawn_point || get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title]))
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 		return get_latejoin_spawn_point()
@@ -433,7 +426,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != job_spawn_title)
+		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles - ORIGINAL: if(spawn_point.name != title)
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
@@ -443,16 +436,17 @@
 	if(!.)
 		log_world("Couldn't find a round start spawn point for [title]")
 
-
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
-
-//SKYRAT EDIT END
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)

@@ -1,3 +1,20 @@
+/**
+ * Get a human's taur mode in a standardized way.
+ *
+ * Returns STYLE_TAUR_* or NONE.
+ */
+/mob/living/carbon/human/proc/get_taur_mode()
+	var/taur_mutant_bodypart = dna.species.mutant_bodyparts["taur"]
+	if(!taur_mutant_bodypart)
+		return NONE
+
+	var/bodypart_name = taur_mutant_bodypart[MUTANT_INDEX_NAME]
+	var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][bodypart_name]
+	if(!taur)
+		return NONE
+
+	return taur.taur_mode
+
 /datum/sprite_accessory/taur
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
@@ -14,9 +31,9 @@
 	/// Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
 	var/alt_taur_mode = NONE
 
-/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target, obj/item/bodypart/limb)
+/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target)
 	var/obj/item/clothing/suit/worn_suit = target.wear_suit
-	if(istype(worn_suit) && (worn_suit.flags_inv & HIDEJUMPSUIT) && !worn_suit.gets_cropped_on_taurs)
+	if(istype(worn_suit) && (worn_suit.flags_inv & HIDETAIL) && !worn_suit.gets_cropped_on_taurs)
 		return TRUE
 	if(target.owned_turf)
 		var/list/used_in_turf = list("tail")
@@ -24,74 +41,6 @@
 			return TRUE
 	return FALSE
 
-
-/obj/item/organ/external/taur_body
-	name = "taur body"
-	zone = BODY_ZONE_CHEST
-	slot = ORGAN_SLOT_EXTERNAL_TAUR
-	layers = ALL_EXTERNAL_OVERLAYS
-	external_bodytypes = BODYTYPE_TAUR
-	color_source = ORGAN_COLOR_OVERRIDE
-	use_mob_sprite_as_obj_sprite = TRUE
-
-	feature_key = "taur"
-	preference = "feature_taur"
-	mutantpart_key = "taur"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-
-
-/obj/item/organ/external/taur_body/override_color(rgb_value)
-	if(mutantpart_key)
-		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
-
-	return rgb_value
-
-
-/obj/item/organ/external/taur_body/get_global_feature_list()
-	return GLOB.sprite_accessories["taur"]
-
-
-/obj/item/organ/external/taur_body/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
-		external_bodytypes |= BODYTYPE_HIDE_SHOES
-
-	var/obj/item/bodypart/leg/left/taur/new_left_leg = new /obj/item/bodypart/leg/left/taur()
-	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/leg/right/taur/new_right_leg = new /obj/item/bodypart/leg/right/taur()
-	var/obj/item/bodypart/leg/right/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
-
-	new_left_leg.bodytype |= external_bodytypes
-	new_left_leg.replace_limb(reciever, TRUE)
-	if(old_left_leg)
-		qdel(old_left_leg)
-
-	new_right_leg.bodytype |= external_bodytypes
-	new_right_leg.replace_limb(reciever, TRUE)
-	if(old_right_leg)
-		qdel(old_right_leg)
-
-	return ..()
-
-
-/obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special, moving)
-	var/obj/item/bodypart/leg/left/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/leg/right/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
-
-	if(left_leg)
-		left_leg.drop_limb()
-
-		if(left_leg)
-			qdel(left_leg)
-
-	if(right_leg)
-		right_leg.drop_limb()
-
-		if(right_leg)
-			qdel(right_leg)
-
-	// We don't call `synchronize_bodytypes()` here, because it's already going to get called in the parent because `external_bodytypes` has a value.
-
-	return ..()
 
 /datum/sprite_accessory/taur/none
 	name = "None"
@@ -157,10 +106,6 @@
 	name = "Scolipede"
 	icon_state = "pede"
 	taur_mode = STYLE_TAUR_PAW
-	extra = TRUE
-	extra2 = TRUE
-	extra_color_src = MUTCOLORS2
-	extra2_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/taur/tentacle
 	name = "Tentacle"
@@ -177,3 +122,15 @@
 	name = "Feline"
 	icon_state = "feline"
 	taur_mode = STYLE_TAUR_PAW
+
+/datum/sprite_accessory/taur/goop
+	name = "Goop"
+	icon_state = "goop"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/taur/slime
+	name = "Slime"
+	icon_state = "slime"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR

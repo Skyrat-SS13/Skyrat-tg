@@ -26,5 +26,5 @@
 	grind_results = list(/datum/reagent/consumable/muli_juice = 0.1)
 	tastes = list("mint and savory sweetness" = 1)
 
-/obj/item/food/grown/muli/MakeBakeable()
+/obj/item/food/grown/muli/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/baked_muli, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)

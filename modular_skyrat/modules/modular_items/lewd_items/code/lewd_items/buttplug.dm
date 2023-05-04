@@ -1,8 +1,9 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
-	icon_state = "buttplug"
-	worn_icon_state = "buttplug"
+	icon_state = "buttplug_pink_small"
+	base_icon_state = "buttplug"
+	worn_icon_state = "buttplug_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -79,8 +80,8 @@
 
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[current_size]"
+	worn_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/buttplug/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -100,20 +101,19 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/buttplug/process(delta_time)
+/obj/item/clothing/sextoy/buttplug/process(seconds_per_tick)
 	var/mob/living/carbon/human/target = loc
 	if(!istype(target))
 		return
 	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(current_size == "small" && target.arousal < 30)
-		target.adjust_arousal(0.6 * delta_time)
-		target.adjust_pleasure(0.7 * delta_time)
+		target.adjust_arousal(0.6 * seconds_per_tick)
+		target.adjust_pleasure(0.7 * seconds_per_tick)
 	else if(current_size == "medium" && target.arousal < 40)
-		target.adjust_arousal(0.8 * delta_time)
-		target.adjust_pleasure(0.8 * delta_time)
+		target.adjust_arousal(0.8 * seconds_per_tick)
+		target.adjust_pleasure(0.8 * seconds_per_tick)
 	else if(current_size == "big" && target.arousal < 50)
-		target.adjust_arousal(delta_time)
-		target.adjust_pleasure(delta_time)
-		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
-			return
-		target.adjust_pain(target * delta_time)
+		target.adjust_arousal(seconds_per_tick)
+		target.adjust_pleasure(seconds_per_tick)
+		if(target.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
+			target.adjust_pain(1 * seconds_per_tick)

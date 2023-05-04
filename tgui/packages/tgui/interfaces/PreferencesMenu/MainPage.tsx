@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
 import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE
 import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
-import { CharacterPreview } from './CharacterPreview';
+import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { MultiNameInput, NameInput } from './names';

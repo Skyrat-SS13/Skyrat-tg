@@ -1,4 +1,4 @@
-#define DEFAULT_TITLE_MAP_LOADTIME 150 SECONDS
+#define DEFAULT_TITLE_MAP_LOADTIME (150 SECONDS)
 
 #define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
 #define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'

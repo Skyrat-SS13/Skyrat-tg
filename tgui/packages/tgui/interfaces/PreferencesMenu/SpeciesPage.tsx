@@ -1,7 +1,7 @@
 import { classes } from 'common/react';
 import { useBackend } from '../../backend';
 import { BlockQuote, Box, Button, Divider, Icon, Section, Stack, Tooltip } from '../../components';
-import { CharacterPreview } from './CharacterPreview';
+import { CharacterPreview } from '../common/CharacterPreview';
 import { createSetPreference, Food, Perk, PreferencesMenuData, ServerData, Species } from './data';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
@@ -306,7 +306,13 @@ const SpeciesPageInner = (
                           <Diet diet={currentSpecies.diet} />
                         )
                       }>
-                      <Section title="Description">
+                      <Section
+                        /* SKYRAT EDIT START - Scrollable description */
+                        title="Description"
+                        maxHeight="14vh"
+                        scrollable:true
+                        /* SKYRAT EDIT END*/
+                      >
                         {currentSpecies.desc}
                       </Section>
 
@@ -327,7 +333,11 @@ const SpeciesPageInner = (
 
               <Box mt={1}>
                 <Section title="Lore">
-                  <BlockQuote>
+                  <BlockQuote /* SKYRAT EDIT START - scrollable lore */
+                    overflowY="auto"
+                    maxHeight="45vh"
+                    mr={-1} /* SKYRAT EDIT END */
+                  >
                     {currentSpecies.lore.map((text, index) => (
                       <Box key={index} maxWidth="100%">
                         {text}

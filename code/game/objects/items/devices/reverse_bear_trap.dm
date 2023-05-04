@@ -1,4 +1,4 @@
-#define REVERSE_BEAR_TRAP_COUNTDOWN 60 SECONDS
+#define REVERSE_BEAR_TRAP_COUNTDOWN (60 SECONDS)
 
 /obj/item/reverse_bear_trap
 	name = "reverse bear trap"
@@ -39,7 +39,7 @@
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
-/obj/item/reverse_bear_trap/process(delta_time)
+/obj/item/reverse_bear_trap/process(seconds_per_tick)
 	if(!ticking)
 		return
 	soundloop2.mid_length = max(0.5, COOLDOWN_TIMELEFT(src, kill_countdown) - 5) //beepbeepbeepbeepbeep

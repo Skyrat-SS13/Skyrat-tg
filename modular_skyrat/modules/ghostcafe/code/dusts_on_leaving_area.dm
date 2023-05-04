@@ -1,6 +1,6 @@
 /datum/element/dusts_on_leaving_area
 	element_flags = ELEMENT_BESPOKE
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 	var/list/area_types = list()
 
 /datum/element/dusts_on_leaving_area/Attach(datum/target, types)

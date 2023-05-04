@@ -1,4 +1,4 @@
-/obj/item/clothing/head/sus_bowler
+/obj/item/clothing/head/hats/sus_bowler
 	name = "odd bowler"
 	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."
 	icon_state = "bowler"
@@ -12,14 +12,14 @@
 	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
-///obj/item/clothing/head/sus_bowler/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+///obj/item/clothing/head/hats/sus_bowler/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	//var/caught = hit_atom.hitby(src, FALSE, FALSE, throwingdatum=throwingdatum)
 	//if(thrownby && !caught)
 		//addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, throw_at), thrownby, throw_range+2, throw_speed, null, TRUE), 1)
 	//else
 		//return ..()
 
-///obj/item/clothing/head/sus_bowler/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
+///obj/item/clothing/head/hats/sus_bowler/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
 	//if(ishuman(thrower))
 		//var/mob/living/carbon/human/I = thrower
 		//I.throw_mode_off(THROW_MODE_TOGGLE) //so they can catch it on the return.

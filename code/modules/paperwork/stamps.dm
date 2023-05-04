@@ -8,13 +8,14 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	custom_materials = list(/datum/material/iron=60)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.6)
 	pressure_resistance = 2
 	attack_verb_continuous = list("stamps")
 	attack_verb_simple = list("stamp")
 
 /obj/item/stamp/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] stamps 'VOID' on [user.p_their()] forehead, then promptly falls over, dead."))
+	playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 	return OXYLOSS
 
 /obj/item/stamp/get_writing_implement_details()

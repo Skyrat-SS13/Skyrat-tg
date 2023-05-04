@@ -38,7 +38,7 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/warrior/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
+	organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
 /datum/action/cooldown/alien/skyrat/warrior_agility

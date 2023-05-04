@@ -1,4 +1,4 @@
-#define DISARM_TIME 3 SECONDS
+#define DISARM_TIME (3 SECONDS)
 
 /obj/structure/window/reinforced/fulltile/Initialize(mapload, direct)
 	. = ..()

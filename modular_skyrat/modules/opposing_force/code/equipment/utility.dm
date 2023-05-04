@@ -11,6 +11,13 @@
 	item_type = /obj/item/card/emag/doorjack
 	description = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell."
 
+/datum/opposing_force_equipment/gear/tram_remote
+	name = "Tram Remote Control"
+	item_type = /obj/item/tram_remote
+	description = "When linked to a tram's on board computer systems, this device allows the user to manipulate the controls remotely. \
+		Includes direction toggle and a rapid mode to bypass door safety checks and crossing signals. \
+		Perfect for running someone over in the name of a tram malfunction!"
+
 /datum/opposing_force_equipment/gear/stoolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
@@ -60,13 +67,6 @@
 	item_type = /obj/item/reagent_containers/syringe/mulligan
 	description = "A syringe containing a chemical that can completely change the user's identity."
 
-/* Removing it for lag-related reason, for now. Might make it permanent later.
-/datum/opposing_force_equipment/gear/dump_eet
-	name = "Crab-17 Phone"
-	item_type = /obj/item/suspiciousphone
-	description = "\"Bogdanoff, he did it.\" \"He bought?\" \"He went all in.\" \"Dump it.\"" // I'm sorry
-*/
-
 /datum/opposing_force_equipment/gear/borer_egg
 	name = "Cortical Borer Egg"
 	item_type = /obj/effect/gibspawner/generic
@@ -97,6 +97,7 @@
 	description = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
 			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
 			of humanoids."
+	admin_note = "WARNING: Is a knockout weapon with no warning, and 'infinite' use."
 
 /datum/opposing_force_equipment/gear/stimpack
 	name = "Stimulant Medipen"
@@ -135,9 +136,17 @@
 /datum/opposing_force_equipment/gear/combatmedkit
 	name = "Syndicate Combat Medic Kit"
 	item_type = /obj/item/storage/medkit/tactical
-	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
-			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
-			and other supplies helpful for a field medic."
+	description = "This first aid kit is a suspicious black and red. Included is a number of atropine medipens \
+			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
+			for faster healing on the field. Also comes with basic medical tools and sterlizer."
+
+/datum/opposing_force_equipment/gear/combatmedkit_premium
+	name = "Syndicate Combat Medical Suite"
+	item_type = /obj/item/storage/medkit/tactical/premium
+	description = "This first aid kit is a suspicious black and red. Included is an unloaded combat chemical injector \
+			for suit-penetrative chem delivery, a medical science night vision HUD for quick identification of injured personnel and chemical supplies, \
+			improved medical supplies, including Interdyne-approved pharmaceuticals, a hacked cybernetic surgery toolset arm implant, \
+			and some helpful MODsuit modules for for field medical use and operative physiopharmaceutical augmentation."
 
 /datum/opposing_force_equipment/gear/ai_module
 	name = "Syndicate AI Law Module"
@@ -187,6 +196,7 @@
 /datum/opposing_force_equipment/gear/energyshield_mod
 	item_type = /obj/item/mod/module/energy_shield
 	description = "A highly illegal MODsuit module that projects a shield of energy around you, temporarily blocking conventional kinetic and laser projectiles."
+	admin_note = "WARNING: Gives you essentially, total immunity to three attacks every thirty seconds, give out sparingly."
 
 /datum/opposing_force_equipment/gear/biteof87_mod
 	item_type = /obj/item/mod/module/springlock/bite_of_87

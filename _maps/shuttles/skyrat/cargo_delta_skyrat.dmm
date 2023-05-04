@@ -6,6 +6,10 @@
 "bh" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/supply)
+"dO" = (
+/obj/structure/marker_beacon/burgundy,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/supply)
 "fh" = (
 /obj/structure/fluff/metalpole/end{
 	dir = 1;
@@ -14,9 +18,12 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/supply)
 "hv" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/turf/open/floor/plating,
-/area/shuttle/supply/cockpit)
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/diagonal,
+/area/shuttle/supply)
 "hC" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
@@ -32,20 +39,12 @@
 	dir = 1
 	},
 /area/shuttle/supply)
-"iz" = (
-/obj/structure/marker_beacon/olive,
-/obj/structure/fluff/metalpole/end{
-	pixel_y = -32
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/supply)
 "kh" = (
 /turf/closed/wall/mineral/titanium/spaceship,
 /area/shuttle/supply)
 "lb" = (
 /obj/docking_port/mobile/supply{
-	dir = 4;
-	dwidth = 4
+	dir = 4
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Supply Shuttle Airlock";
@@ -65,23 +64,11 @@
 /area/shuttle/supply)
 "pD" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/comfy/shuttle,
-/obj/structure/closet/emcloset/wall{
-	pixel_x = 28
-	},
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron/shuttle/cargo{
-	dir = 1
-	},
-/area/shuttle/supply/cockpit)
-"sz" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Supply Shuttle Cockpit";
-	req_access = list("cargo")
-	},
-/obj/effect/turf_decal/delivery/white,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/supply/cockpit)
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/diagonal,
+/area/shuttle/supply)
 "sN" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
@@ -96,13 +83,15 @@
 	},
 /area/shuttle/supply)
 "uB" = (
-/obj/structure/table/reinforced,
-/obj/item/paper/crumpled/muddy{
-	default_raw_text = "Toddy spilled his damn coffee all over the console, don't expect to manually pilot the Consign until we can get a repair guy. Which, uh, might be a while...<hr><FONT COLOR='blue'>Oh, by the way, I'm using this note now to complain about the fact we had to build a whole replica Consign for this station specifically? They could have just adjusted the docking parameters but noooo, 'wah the door is an inch off!' God, those corpos can <b>suck my wrench.</b></FONT>"
-	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/supply/cockpit)
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/effect/turf_decal/box/white/corners,
+/obj/effect/turf_decal/box/white/corners{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/diagonal,
+/area/shuttle/supply)
 "vd" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -123,21 +112,21 @@
 	dir = 1
 	},
 /area/shuttle/supply)
-"xI" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/supply/cockpit)
 "zx" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/supply)
 "zP" = (
-/turf/template_noop,
-/area/template_noop)
-"AU" = (
-/obj/machinery/light/directional/south,
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/shuttle/cargo{
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/effect/turf_decal/box/white/corners{
 	dir = 1
 	},
+/obj/effect/turf_decal/box/white/corners{
+	dir = 4
+	},
+/obj/structure/sign/warning/directional/west,
+/turf/open/floor/iron/dark/diagonal,
 /area/shuttle/supply)
 "CR" = (
 /obj/effect/turf_decal/stripes/line{
@@ -159,25 +148,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/supply)
-"KM" = (
-/obj/machinery/computer{
-	desc = "This WAS a helmsman's console, before it became a coffee's console.";
-	dir = 1
-	},
-/obj/machinery/light/directional/east,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/supply/cockpit)
-"Lh" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/turf_decal/tile/neutral/diagonal_edge,
-/obj/effect/turf_decal/tile/neutral/diagonal_centre,
-/obj/effect/turf_decal/box/white/corners{
-	dir = 4
-	},
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/diagonal,
-/area/shuttle/supply)
 "Ow" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
@@ -188,34 +158,16 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/shuttle/supply)
 "PH" = (
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/supply/cockpit)
-"PS" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/iron/shuttle/cargo{
-	dir = 1
-	},
-/area/shuttle/supply/cockpit)
-"Qx" = (
-/obj/structure/closet/shuttle/engivent{
-	pixel_y = 33
-	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
-/obj/effect/turf_decal/box/white/corners{
-	dir = 1
-	},
+/obj/structure/sign/warning/no_smoking/circle/directional/east,
 /turf/open/floor/iron/dark/diagonal,
 /area/shuttle/supply)
-"To" = (
-/obj/structure/marker_beacon/burgundy,
-/obj/structure/fluff/metalpole/end{
-	pixel_y = -32
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/supply/cockpit)
+"SL" = (
+/obj/structure/marker_beacon/olive,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/supply)
 "Uj" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/loading_area/white{
@@ -271,16 +223,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/supply)
-"Xp" = (
-/obj/structure/extinguisher_cabinet/directional/south,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/turf_decal/tile/neutral/diagonal_edge,
-/obj/effect/turf_decal/tile/neutral/diagonal_centre,
-/obj/effect/turf_decal/box/white/corners{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/diagonal,
-/area/shuttle/supply)
 "Zh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -306,8 +248,8 @@ Xb
 Gf
 bh
 bh
-iz
-zP
+bh
+SL
 "}
 (2,1,1) = {"
 Zh
@@ -318,10 +260,10 @@ hV
 UC
 hV
 wI
-sR
-sR
-bh
 zP
+hv
+uB
+bh
 "}
 (3,1,1) = {"
 CR
@@ -333,51 +275,51 @@ sR
 sR
 sR
 sR
-AU
+sR
+sR
 bh
-zP
 "}
 (4,1,1) = {"
 fh
 zx
-Qx
+VP
+hC
+hC
 oU
 sR
 VP
 hC
-Xp
-PH
-sz
-PH
-xI
+hC
+oU
+bh
 "}
 (5,1,1) = {"
 CR
 Xe
 hC
 hC
+hC
+hC
 sR
 hC
 hC
 hC
-PH
-PS
-uB
-hv
+hC
+bh
 "}
 (6,1,1) = {"
 Zh
 Xe
 Ow
-sN
-sR
-Lh
+pD
 hC
 sN
+sR
+Ow
 PH
 pD
-KM
-hv
+sN
+bh
 "}
 (7,1,1) = {"
 kh
@@ -388,8 +330,8 @@ bh
 bh
 bh
 bh
-PH
-PH
-PH
-To
+bh
+bh
+bh
+dO
 "}

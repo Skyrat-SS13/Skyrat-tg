@@ -2,7 +2,7 @@
  */
 /datum/element/obj_regen
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 	/// The rate of regeneration as a function of maximum integrity.
 	var/rate
 	/// The objects that are regenerating due to this element.
@@ -45,7 +45,7 @@
 
 
 /// Handle regenerating attached objects.
-/datum/element/obj_regen/process(delta_time)
+/datum/element/obj_regen/process(seconds_per_tick)
 	set waitfor = FALSE
 
 	if(!resumed)

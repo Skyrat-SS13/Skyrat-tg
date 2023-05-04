@@ -12,7 +12,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -44,7 +44,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /datum/outfit/security_guard
 	name = "Security Guard"
@@ -86,7 +86,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /obj/item/clothing/under/rank/security/officer/hecu //Subtype of security for armor (and because I dont want to repath it)
 	name = "urban camouflage BDU"
@@ -181,9 +181,9 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /datum/outfit/hecu/leader
 	name = "HECU Captain"

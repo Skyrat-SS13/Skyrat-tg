@@ -109,6 +109,36 @@
 	results = list(/datum/reagent/consumable/ethanol/quadruple_sec/cityofsin = 4)
 	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/champagne = 1, /datum/reagent/consumable/berryjuice = 1)
 
+/datum/chemical_reaction/drink/blizzard_brew
+	results = list(/datum/reagent/consumable/ethanol/blizzard_brew = 3)
+	required_reagents = list(/datum/reagent/consumable/ethanol/iced_beer = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/inverse/cryostylane = 1)
+	mix_message = "You hear crackling ice as it mixes."
+	mix_sound = 'sound/effects/ice_shovel.ogg'
+
+/datum/chemical_reaction/drink/molten_mead
+	results = list(/datum/reagent/consumable/ethanol/molten_mead = 3)
+	required_reagents = list(/datum/reagent/consumable/condensedcapsaicin = 2, /datum/reagent/consumable/ethanol/mead = 2, /datum/reagent/consumable/ethanol/mauna_loa = 1)
+	mix_message = "You hear sizzling flesh and angry wasps buzzing as it mixes."
+	mix_sound = 'sound/effects/wounds/sizzle2.ogg'
+
+/datum/chemical_reaction/drink/hippie_hooch
+	results = list(/datum/reagent/consumable/ethanol/hippie_hooch = 5)
+	required_reagents = list(/datum/reagent/medicine/antihol = 1, /datum/reagent/consumable/ethanol/crevice_spike = 3, /datum/reagent/medicine/earthsblood = 1)
+	mix_message = "You hear wood flutes and nature as it mixes."
+	mix_sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
+
+/datum/chemical_reaction/drink/research_rum
+	results = list(/datum/reagent/consumable/ethanol/research_rum = 4)
+	required_reagents = list(/datum/reagent/consumable/ethanol/bananahonk = 2, /datum/reagent/inverse/neurine = 1, /datum/reagent/consumable/ethanol/grog = 1)
+	mix_message = "You hear gurgling and dinging as it mixes."
+	mix_sound = 'sound/machines/microwave/microwave-end.ogg'
+
+/datum/chemical_reaction/drink/golden_grog
+	results = list(/datum/reagent/consumable/ethanol/golden_grog = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol/goldschlager = 10, /datum/reagent/gold = 1, /datum/reagent/silver = 1, /datum/reagent/cellulose = 1, /datum/reagent/spraytan = 1)
+	mix_message = "You hear golden coins and snobby rich laughing as it mixes."
+	mix_sound = 'sound/items/coinflip.ogg'
+
 // RACE SPECIFIC DRINKS
 
 /datum/chemical_reaction/drink/coldscales
@@ -158,6 +188,12 @@
 	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
+/datum/chemical_reaction/drink/bloodshot
+	results = list(/datum/reagent/consumable/ethanol/bloodshot = 5)
+	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
+
 // Non-Booze, see modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\drink_reagents.dm
 
 /datum/chemical_reaction/drink/pinkmilk
@@ -173,7 +209,7 @@
 	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/pax/catnip = 2)
 
 /datum/chemical_reaction/drink/beerbatter
-	results = list(/datum/reagent/consumable/beerbatter = 4)
+	results = list(/datum/reagent/consumable/ethanol/beerbatter = 4)
 	required_reagents = list(/datum/reagent/consumable/cooking_oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
 	mix_message = "Sizzling and cracking is heard as you beat the mixture into submission."
 

@@ -1,13 +1,10 @@
 /datum/species/insect
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
-	say_mod = "chitters"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -30,6 +27,7 @@
 		"wings" = "Bee",
 		"moth_antennae" = "None"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/insect
 	liked_food = GROSS | RAW | TOXIC | GORE
 	disliked_food = CLOTH | GRAIN | FRIED
 	toxic_food = DAIRY
@@ -58,5 +56,5 @@
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
 	human.dna.features["mcolor3"] = secondary_color
-	human.update_mutant_bodyparts(TRUE)
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)
