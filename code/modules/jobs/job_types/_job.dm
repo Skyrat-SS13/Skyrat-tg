@@ -434,7 +434,11 @@
 		spawn_point.used = TRUE
 		break
 	if(!.)
+<<<<<<< HEAD
 		log_world("Couldn't find a round start spawn point for [title]")
+=======
+		log_mapping("Job [title] ([type]) couldn't find a round start spawn point.")
+>>>>>>> aacc85964a4 (Adds a unit test that all roundstart spawnable jobs have a landmark to spawn at (#74995))
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
