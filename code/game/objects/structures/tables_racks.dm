@@ -763,8 +763,10 @@
 
 	if(potential_patient.body_position == LYING_DOWN && potential_patient.loc == loc)
 		patient = potential_patient
+		chill_out(patient) // SKYRAT EDIT
 		return
 
+	thaw_them(patient) // SKYRAT EDIT
 	// Find another lying mob as a replacement.
 	for (var/mob/living/carbon/replacement_patient in loc.contents)
 		if(replacement_patient.body_position == LYING_DOWN)
