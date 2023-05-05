@@ -135,15 +135,21 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			//var/area/local_area = get_area(src) SKYRAT EDIT REMOVAL
-			// SKYRAT EDIT ADDITION BEGIN
-			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
-			else if(major_emergency)
+			var/area/local_area = get_area(src)
+			//SKYRAT EDIT BEGIN - Original
+			/*
+			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
-			// SKYRAT EDIT ADDITION END
 			else
 				icon_state = "[base_state]"
+			*/
+			if(low_power_mode)
+				icon_state = "[base_state]_lpower"
+			else if(major_emergency || (local_area?.fire))
+				icon_state = "[base_state]_emergency"
+			else
+				icon_state = "[base_state]"
+			// SKYRAT EDIT END
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -161,7 +167,8 @@
 	var/area/local_area = get_area(src)
 	if(emergency_mode || (local_area?.fire))
 	*/
-	if(low_power_mode || major_emergency) // SKYRAT EDIT END
+	var/area/local_area = get_area(src)
+	if(low_power_mode || major_emergency || (local_area?.fire)) // SKYRAT EDIT END
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
@@ -195,7 +202,7 @@
 
 /obj/machinery/light/proc/handle_fire(area/source, new_fire)
 	SIGNAL_HANDLER
-	update()
+	update(instant = TRUE, play_sound = FALSE) //SKYRAT EDIT CHANGE
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SKYRAT EDIT CHANGE

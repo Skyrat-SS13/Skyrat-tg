@@ -119,7 +119,7 @@
 				return
 
 			to_chat(user, span_notice("You start slicing the floorweld off \the [src]..."))
-			if(I.use_tool(src, user, 20, volume=100) && panel_open)
+			if(I.use_tool(src, user, 20, volume=SMALL_MATERIAL_AMOUNT) && panel_open)
 				to_chat(user, span_notice("You slice the floorweld off \the [src]."))
 				deconstruct()
 			return
@@ -382,7 +382,7 @@
 
 /obj/machinery/disposal/bin/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(isitem(AM) && AM.CanEnterDisposals())
-		if(HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM) || prob(75))
+		if((throwingdatum.thrower && HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM)) || prob(75))
 			AM.forceMove(src)
 			visible_message(span_notice("[AM] lands in [src]."))
 			update_appearance()

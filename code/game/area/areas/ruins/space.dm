@@ -213,6 +213,17 @@
 /area/ruin/space/has_grav/interdyne
 	name = "\improper Interdyne Research Base"
 
+//Ruin of Crashed Ship
+
+/area/ruin/space/has_grav/crashedship/aft
+	name = "\improper Crashed Aft"
+
+/area/ruin/space/has_grav/crashedship/midship
+	name = "\improper Crashed Midship"
+
+/area/ruin/space/has_grav/crashedship/fore
+	name = "\improper Crashed Fore"
+
 //Ruin of ancient Space Station (OldStation)
 
 /area/ruin/space/ancientstation
@@ -540,6 +551,11 @@
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 	airlock_wires = /datum/wires/airlock/engineering
 
+// CRASHED PRISON SHUTTLE
+/area/ruin/space/prison_shuttle
+	name = "\improper Crashed Prisoner Shuttle"
+
+
 //ABANDONED BOX WHITESHIP
 
 /area/ruin/space/has_grav/whiteship/box
@@ -590,6 +606,10 @@
 /area/ruin/space/has_grav/travelers_rest
 	name = "\improper Traveler's Rest"
 
+// The Phonebooth
+/area/ruin/space/has_grav/powered/space_phone_booth
+	name = "\improper Phonebooth"
+
 // Botnanical Haven
 /area/ruin/space/has_grav/powered/botanical_haven
 	name = "\improper Botanical Haven"
@@ -628,6 +648,10 @@
 
 /area/ruin/space/has_grav/waystation/power
 	name = "Waystation Electrical"
+
+// Ruin of The All-American Diner
+/area/ruin/space/has_grav/allamericandiner
+	name = "\improper The All-American Diner"
 
 // Transit Booth
 /area/ruin/space/has_grav/transit_booth

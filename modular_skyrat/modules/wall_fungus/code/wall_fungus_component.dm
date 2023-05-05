@@ -13,7 +13,7 @@
 	/// How far has the fungus progressed on the affected wall? Percentage.
 	var/progression_percent = 0
 	/// How many percent do we increase each subsystem fire?
-	var/progression_step_amount = 0.6
+	var/progression_step_amount = 0.5
 	/// What stage are we at?
 	var/progression_stage = FUNGUS_STAGE_ONE
 	/// Our overlay icon file
