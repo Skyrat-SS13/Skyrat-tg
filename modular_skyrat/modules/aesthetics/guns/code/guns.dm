@@ -1,11 +1,3 @@
-/obj/item/gun/energy/e_gun
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "energy"
-	ammo_x_offset = 2
-
 /obj/item/gun/energy/e_gun/advtaser
 	worn_icon = null
 	worn_icon_state = "gun"
@@ -35,11 +27,6 @@
 	worn_icon_state = "gun"
 
 /obj/item/gun/energy/ionrifle
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
-/obj/item/gun/energy/laser
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
@@ -102,17 +89,9 @@
 
 /obj/item/gun/ballistic/automatic/m90
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-/obj/item/gun/ballistic/revolver/c38/detective
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/automatic/pistol
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/automatic/pistol/deagle/regal
-	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 
 /obj/item/gun/energy/e_gun/nuclear
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
@@ -300,11 +279,6 @@
 	icon_state = "arg"
 	inhand_icon_state = "arg"
 	can_suppress = FALSE
-
-//SOLFED PILOT RIFLE GONE, TO BE ADDED TO ERT FACTIONS FOLDER
-
-/obj/item/gun/energy/kinetic_accelerator
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction
 	name = "\improper Sportiv precision rifle"
