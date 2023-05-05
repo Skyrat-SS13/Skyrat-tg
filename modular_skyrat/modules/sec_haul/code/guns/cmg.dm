@@ -48,9 +48,9 @@
 
 /obj/item/gun/ballistic/automatic/cmg/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-click</b> to [folded ? "extend" : "collapse"] the stock. This takes a moment.")
+	. += span_notice("<b>Ctrl-click</b> to [folded ? "extend" : "collapse"] the stock.")
 
-/obj/item/gun/ballistic/automatic/cmg/AltClick(mob/user)
+/obj/item/gun/ballistic/automatic/cmg/CtrlClick(mob/user)
 	if(!user.is_holding(src))
 		return // fuckin around w/ a collapsible stock without hands is Suboptimal
 	if(item_flags & IN_STORAGE)
@@ -65,20 +65,26 @@
 		return
 	balloon_alert(user, "[folded ? "extending" : "collapsing"] stock...")
 	if(!do_after(user, toggle_time))
-		balloon_alert(user, "failed!")
+		balloon_alert(user, "interrupted!")
 		return
 	folded = !folded
 	update_fold_stats()
-	balloon_alert(user, "stock [folded ? "collapsed" : "extended"]!")
+	balloon_alert(user, "stock [folded ? "collapsed" : "extended"]")
 	playsound(src.loc, folding_sound, 30, 1)
 
 /obj/item/gun/ballistic/automatic/cmg/proc/update_fold_stats()
 	if(folded)
 		spread = folded_spread
-		w_class = WEIGHT_CLASS_NORMAL
+		if(suppressed)
+			w_class = WEIGHT_CLASS_BULKY
+		else
+			w_class = WEIGHT_CLASS_NORMAL
 	else
 		spread = unfolded_spread
-		w_class = WEIGHT_CLASS_BULKY
+		if(suppressed)
+			w_class = WEIGHT_CLASS_HUGE
+		else
+			w_class = WEIGHT_CLASS_BULKY
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/cmg/update_overlays()
