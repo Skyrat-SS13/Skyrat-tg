@@ -147,6 +147,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_liquid,					/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_mob_spawner,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_pollution,				/*SKYRAT EDIT ADDITION*/
+	/client/proc/call_gpt,
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
 	/client/proc/intensity_credits_panel,		/*SKYRAT EDIT ADDITION*/
 	/client/proc/toggle_bsa,					/*SKYRAT EDIT ADDITION*/

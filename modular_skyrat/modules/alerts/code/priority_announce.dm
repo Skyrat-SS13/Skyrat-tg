@@ -24,6 +24,12 @@
 	if(!text)
 		return
 
+	// SKYRAT EDIT ADDITION
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_SENTIENT_ANNOUNCER))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(sentient_priority_announcement), text, title, sound, type, sender_override, has_important_message, players, encode_title, encode_text)
+		return
+	// SKYRAT EDIT END
+
 	if(encode_title && title && length(title) > 0)
 		title = html_encode(title)
 	if(encode_text)

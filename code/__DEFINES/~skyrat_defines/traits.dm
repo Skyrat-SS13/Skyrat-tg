@@ -72,3 +72,7 @@
 
 /// Trait that is applied whenever someone or something is glassblowing
 #define TRAIT_CURRENTLY_GLASSBLOWING "currently_glassblowing"
+
+
+// STATION TRAITS
+#define STATION_TRAIT_SENTIENT_ANNOUNCER "station_trait_sentient_announcer"
