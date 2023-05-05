@@ -18,6 +18,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
+	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear_message))
 
 	conversation_ref = SSgpt.initialise_conversation(conditioning_prefix, endpoint_id)
@@ -48,15 +49,13 @@
 
 	INVOKE_ASYNC(src, PROC_REF(converse), message)
 
-/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
-	. = ..()
-
-
 /datum/component/gpt_conversation/proc/user_converse(mob/user)
 	var/message = tgui_input_text(user, "What would you like to say?", "Converse!")
 
 	if(!message)
 		return
+
+	user.say(message, forced = TRUE)
 
 	var/formatted_message = "[user] : [message]"
 
