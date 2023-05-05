@@ -766,7 +766,9 @@
 		chill_out(patient) // SKYRAT EDIT - Operation Table Numbing
 		return
 
-	thaw_them(patient) // SKYRAT EDIT - Operation Table Numbing
+	if(!isnull(patient)) // SKYRAT EDIT - Operation Table Numbing
+		thaw_them(patient) // SKYRAT EDIT - Operation Table Numbing
+
 	// Find another lying mob as a replacement.
 	for (var/mob/living/carbon/replacement_patient in loc.contents)
 		if(replacement_patient.body_position == LYING_DOWN)
