@@ -10,7 +10,7 @@
 	/// The prefix that we will use to get GPT into character.
 	var/conditioning_prefix = GPT_CONDITIONING_PREFIX_SS13_1
 	/// Are we waiting for a response from GPT?
-	var/busy = TRUE
+	var/busy = FALSE
 
 
 /datum/component/gpt_conversation/Initialize(...)
@@ -18,6 +18,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
+	RegisterSignal(parent, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear_message))
 
 	conversation_ref = SSgpt.initialise_conversation(conditioning_prefix, endpoint_id)
 
@@ -31,6 +32,24 @@
 	INVOKE_ASYNC(src, PROC_REF(user_converse), user)
 
 	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/datum/component/gpt_conversation/proc/on_hear_message(datum/source, list/hearing_args)
+	SIGNAL_HANDLER
+
+	if(busy)
+		return
+
+	var/mob/speaker = hearing_args[HEARING_SPEAKER]
+
+	if(get_dist(speaker, parent) > 3)
+		return
+
+	var/message = "[speaker] : [hearing_args[HEARING_RAW_MESSAGE]]"
+
+	INVOKE_ASYNC(src, PROC_REF(converse), message)
+
+/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+	. = ..()
 
 
 /datum/component/gpt_conversation/proc/user_converse(mob/user)
@@ -64,4 +83,5 @@
 
 
 
-
+/datum/component/gpt_conversation/monkey
+	conditioning_prefix = GPT_CONDITIONING_PREFIX_SS13_1_MONKEY
