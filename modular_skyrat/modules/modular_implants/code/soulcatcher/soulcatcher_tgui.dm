@@ -5,9 +5,8 @@
 		ui = new(usr, src, "Soulcatcher", name)
 		ui.open()
 
-/datum/component/soulcatcher/operating/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
-
+/datum/component/soulcatcher/nifsoft/ui_state(mob/user)
+	return GLOB.conscious_state
 
 /datum/component/soulcatcher/ui_data(mob/user)
 	var/list/data = list()
