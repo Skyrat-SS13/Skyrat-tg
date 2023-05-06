@@ -52,6 +52,7 @@
 
 // ~wound global lists
 // list in order of highest severity to lowest
+<<<<<<< HEAD
 GLOBAL_LIST_INIT(global_wound_types, list(WOUND_BLUNT = list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate),
 		WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
 		WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
@@ -64,6 +65,30 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datu
 	/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate,
 	/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate,
 	/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate, /datum/wound/muscle/severe, /datum/wound/muscle/moderate))
+=======
+GLOBAL_LIST_INIT(global_wound_types, list(
+	WOUND_BLUNT = list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate),
+	WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
+	WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
+	WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate),
+))
+
+// every single type of wound that can be rolled naturally, in case you need to pull a random one
+GLOBAL_LIST_INIT(global_all_wound_types, list(
+	/datum/wound/blunt/critical,
+	/datum/wound/blunt/severe,
+	/datum/wound/blunt/moderate,
+	/datum/wound/slash/critical,
+	/datum/wound/slash/severe,
+	/datum/wound/slash/moderate,
+	/datum/wound/pierce/critical,
+	/datum/wound/pierce/severe,
+	/datum/wound/pierce/moderate,
+	/datum/wound/burn/critical,
+	/datum/wound/burn/severe,
+	/datum/wound/burn/moderate,
+))
+>>>>>>> 1674f25725c (New Medical job: The Coroner (#75065))
 
 
 // ~burn wound infection defines
