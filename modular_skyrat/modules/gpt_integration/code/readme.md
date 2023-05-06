@@ -1,4 +1,4 @@
-## Title: Satchel and duffel bag of holding port
+## Title: OpenAI GPT Integration
 
 MODULE ID: GPT_INTEGRATION
 

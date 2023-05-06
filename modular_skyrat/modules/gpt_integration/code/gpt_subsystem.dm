@@ -144,10 +144,9 @@ SUBSYSTEM_DEF(gpt)
 /datum/controller/subsystem/gpt/proc/get_models()
 	// Set up the required headers and URL for the GPT API
 	var/list/headers = list("Authorization" = "Bearer [api_key]")
-	var/url = "https://api.openai.com/v1/models"
 
 	var/datum/http_request/request = new()
-	request.prepare(RUSTG_HTTP_METHOD_GET, url, "", headers)
+	request.prepare(RUSTG_HTTP_METHOD_GET, GPT_API_URL_MODELS, "", headers)
 
 	// Send the request and wait for the response
 	request.begin_async()
