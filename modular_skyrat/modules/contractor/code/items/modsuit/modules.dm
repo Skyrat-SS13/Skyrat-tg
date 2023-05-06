@@ -37,6 +37,9 @@
 
 /obj/item/mod/module/baton_holster/preloaded
 	eaten_baton = TRUE
+	device = /obj/item/melee/baton/telescopic/contractor_baton
+
+/obj/item/mod/module/baton_holster/preloaded/upgraded
 	device = /obj/item/melee/baton/telescopic/contractor_baton/upgraded
 
 /obj/item/mod/module/chameleon/contractor // zero complexity module to match pre-TGification

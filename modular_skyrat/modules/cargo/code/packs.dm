@@ -708,7 +708,7 @@
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
 
-/datum/supply_pack/security/armory/russian
+/datum/supply_pack/imports/cin_surplus
 	name = "CIN Military Surplus Crate"
 	desc = "A collection of surplus equipment sourced from the Coalition of Independent Nations' military stockpiles. Likely to contain old and outdated equipment, as is the nature of surplus."
 	contraband = TRUE
@@ -716,7 +716,7 @@
 	contains = list(
 		/obj/item/crucifix = 3,
 		/obj/item/storage/box/nri_rations = 3,
-		/obj/item/storage/toolbox/ammo = 1,
+		/obj/item/storage/toolbox/a762 = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/gun/ballistic/rifle/boltaction = 1,
 		/obj/item/ammo_box/a762 = 3,
@@ -735,7 +735,7 @@
 		/obj/item/clothing/mask/balaclavaadjust = 3,
 	)
 
-/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/we_are_filling_this_crate)
+/datum/supply_pack/imports/cin_surplus/fill(obj/structure/closet/crate/we_are_filling_this_crate)
 	for(var/i in 1 to 10)
 		var/item = pick_weight(contains)
 		new item(we_are_filling_this_crate)
@@ -784,7 +784,7 @@
 /datum/supply_pack/goody/money_sense_nifsoft
 	name = "Automatic Appraisal NIFSoft"
 	desc = "Contains a single Automatic Appraisal NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/money_sense,
 	)
@@ -792,7 +792,7 @@
 /datum/supply_pack/goody/shapeshifter_nifsoft
 	name = "Polymorph NIFSoft"
 	desc = "Contains a single Polymorph NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/shapeshifter,
 	)
@@ -800,7 +800,7 @@
 /datum/supply_pack/goody/hivemind_nifsoft
 	name = "Hivemind NIFSoft"
 	desc = "Contains a single Hivemind NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/hivemind,
 	)
@@ -808,7 +808,7 @@
 /datum/supply_pack/goody/summoner_nifsoft
 	name = "Grimoire Caeruleam NIFSoft"
 	desc = "Contains a single Grimoire Caeruleam NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 1
+	cost = CARGO_CRATE_VALUE * 0.75
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/summoner,
 	)

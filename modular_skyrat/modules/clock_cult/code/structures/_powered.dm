@@ -92,7 +92,7 @@
 		icon_state = base_icon_state + "_active"
 
 
-/obj/structure/destructible/clockwork/gear_base/powered/process(delta_time)
+/obj/structure/destructible/clockwork/gear_base/powered/process(seconds_per_tick)
 	if(!use_power(passive_consumption))
 		depowered()
 		insufficient_power = TRUE

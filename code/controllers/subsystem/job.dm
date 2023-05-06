@@ -1,3 +1,5 @@
+#define VERY_LATE_ARRIVAL_TOAST_PROB 20
+
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -579,6 +581,14 @@ SUBSYSTEM_DEF(job)
 
 		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 
+		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
+			// SKYRAT EDIT CHANGE START - Lizards
+			if(islizard(equipping))
+				equipping.equip_to_slot_or_del(new /obj/item/food/breadslice/root(equipping), ITEM_SLOT_MASK)
+			else
+				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
+			// SKYRAT EDIT CHANGE END - Lizards
+
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -1033,7 +1043,7 @@ SUBSYSTEM_DEF(job)
 	if(!id_safe_code)
 		CRASH("Cannot promote [new_captain.real_name] to Captain, there is no id_safe_code.")
 
-	var/paper = new /obj/item/folder/biscuit/confidental/spare_id_safe_code()
+	var/paper = new /obj/item/folder/biscuit/confidential/spare_id_safe_code()
 	var/list/slots = list(
 		LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
 		LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
@@ -1059,7 +1069,7 @@ SUBSYSTEM_DEF(job)
 
 /// Send a drop pod containing a piece of paper with the spare ID safe code to loc
 /datum/controller/subsystem/job/proc/send_spare_id_safe_code(loc)
-	new /obj/effect/pod_landingzone(loc, /obj/structure/closet/supplypod/centcompod, new /obj/item/folder/biscuit/confidental/emergency_spare_id_safe_code())
+	new /obj/effect/pod_landingzone(loc, /obj/structure/closet/supplypod/centcompod, new /obj/item/folder/biscuit/confidential/emergency_spare_id_safe_code())
 	safe_code_timer_id = null
 	safe_code_request_loc = null
 
@@ -1144,3 +1154,5 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_GENERIC
 
 	return JOB_AVAILABLE
+
+#undef VERY_LATE_ARRIVAL_TOAST_PROB

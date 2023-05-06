@@ -10,7 +10,7 @@
 	strip_delay = 20
 	equip_delay_other = 25
 	resistance_flags = NONE
-	custom_materials = list(/datum/material/glass = 250)
+	custom_materials = list(/datum/material/glass = SMALL_MATERIAL_AMOUNT*2.5)
 	gender = PLURAL
 	var/vision_flags = 0
 	var/invis_view = SEE_INVISIBLE_LIVING // Admin only for now
@@ -201,9 +201,34 @@
 	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
 	user.update_worn_glasses()
 
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
+/obj/item/clothing/glasses/eyepatch/medical
+	name = "medical eyepatch"
+	desc = "Used by space weeaboos to pretend their eye isn't there, and crewmembers who actually lost their eye to pretend their eye is there."
+	icon_state = "eyepatch_medical"
+	base_icon_state = "eyepatch_medical"
+	inhand_icon_state = null
+
+/// wizard version
+/obj/item/clothing/glasses/eyepatch/medical/chuuni
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	clothing_flags = CASTING_CLOTHES
+
+/obj/item/clothing/glasses/eyepatch/medical/chuuni/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_EYES)
+		ADD_TRAIT(src, TRAIT_NODROP, type)
+
+/obj/item/clothing/glasses/eyepatch/medical/chuuni/Initialize(mapload)
+	. = ..()
+	var/static/list/chuuni_backstories
+	if(!chuuni_backstories)
+		chuuni_backstories = list(
+			"This eyepatch is a seal that contains the power of the demon king. If I remove it, I will unleash a cataclysmic destruction upon the world.",
+			"This eyepatch is a gift from the angel of light. It allows me to see the true nature of things and protect the innocent from harm.",
+			"This eyepatch is a mark of my contract with the dragon god. It grants me access to his ancient wisdom and fiery breath.",
+			"This eyepatch is a symbol of my sacrifice for the sake of love. It hides the scar that I received from saving my beloved from a fatal attack.",
+		)
+	desc = pick(chuuni_backstories)
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -267,7 +292,7 @@
 	if(isliving(movable))
 		var/mob/living/crusher = movable
 		if(crusher.m_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & (FLYING|FLOATING)) || crusher.buckled))
-			playsound(src, 'sound/effects/glass_step.ogg', 30, TRUE)
+			playsound(src, 'sound/effects/footstep/glass_step.ogg', 30, TRUE)
 			visible_message(span_warning("[crusher] steps on [src], damaging it!"))
 			take_damage(100, sound_effect = FALSE)
 
@@ -380,7 +405,7 @@
 	inhand_icon_state = "welding-g"
 	actions_types = list(/datum/action/item_action/toggle)
 	flash_protect = FLASH_PROTECTION_WELDER
-	custom_materials = list(/datum/material/iron = 250)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*2.5)
 	tint = 2
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	flags_cover = GLASSESCOVERSEYES

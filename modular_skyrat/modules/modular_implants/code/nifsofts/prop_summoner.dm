@@ -15,12 +15,13 @@
 	cooldown = TRUE
 	activation_cost = 100 // Around 1/10th the energy of a standard NIF
 	buying_category = NIFSOFT_CATEGORY_FUN
+	ui_icon = "book-open"
 
 	/// Does the resulting object have a holographic like filter appiled to it?
 	var/holographic_filter = TRUE
 	/// Is there any special tag added at the begining of the resulting object name?
 	var/name_tag = "cerulean "
-	purchase_price = 250
+	purchase_price = 175
 
 	///The list of items that can be summoned from the NIFSoft.
 	var/list/summonable_items = list(

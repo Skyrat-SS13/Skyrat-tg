@@ -229,7 +229,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 // Mask choke processor
-/obj/item/clothing/mask/gas/bdsm_mask/process(delta_time)
+/obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
 	var/mob/living/affected_mob = loc
 	var/mob/living/carbon/affected_carbon = affected_mob
 
@@ -260,9 +260,9 @@
 				breath_status = TRUE
 				temp_check = FALSE
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_choke_left -= delta_time
+		time_to_choke_left -= seconds_per_tick
 
 /*
 *	FILTERS

@@ -128,9 +128,9 @@
 	RegisterSignal(src, COMSIG_GUN_FIRED, PROC_REF(process_heat))
 	START_PROCESSING(SSobj, src)
 
-/obj/item/gun/ballistic/automatic/mg34/mg42/process(delta_time)
+/obj/item/gun/ballistic/automatic/mg34/mg42/process(seconds_per_tick)
 	if(barrel_heat > 0)
-		barrel_heat -= BARREL_COOLDOWN_RATE * delta_time
+		barrel_heat -= BARREL_COOLDOWN_RATE * seconds_per_tick
 		update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/examine(mob/user)

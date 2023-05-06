@@ -248,12 +248,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/christmas
 	name = "Red Christmas Hat"
-	item_path = /obj/item/clothing/head/costume/christmas
+	item_path = /obj/item/clothing/head/costume/skyrat/christmas
 	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas Hat"
-	item_path = /obj/item/clothing/head/costume/christmas/green
+	item_path = /obj/item/clothing/head/costume/skyrat/christmas/green
 	required_season = CHRISTMAS
 
 /*
@@ -302,7 +302,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/flowerpin
 	name = "Flower Pin"
-	item_path = /obj/item/clothing/head/costume/flowerpin
+	item_path = /obj/item/clothing/head/costume/skyrat/flowerpin
 
 /datum/loadout_item/head/rice_hat
 	name = "Rice Hat"
@@ -315,15 +315,11 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/wrussian
 	name = "Black Papakha"
-	item_path = /obj/item/clothing/head/costume/whiterussian
+	item_path = /obj/item/clothing/head/costume/skyrat/papakha
 
 /datum/loadout_item/head/wrussianw
 	name = "White Papakha"
-	item_path = /obj/item/clothing/head/costume/whiterussian/white
-
-/datum/loadout_item/head/wrussianb
-	name = "Black and Red Papakha"
-	item_path = /obj/item/clothing/head/costume/whiterussian/black
+	item_path = /obj/item/clothing/head/costume/skyrat/papakha/white
 
 /datum/loadout_item/head/slime
 	name = "Slime Hat"
@@ -333,17 +329,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flak Helmet"
 	item_path = /obj/item/clothing/head/hats/flakhelm
 
-/datum/loadout_item/head/whitekepi
-	name = "White Kepi"
-	item_path = /obj/item/clothing/head/costume/kepi
-
-/datum/loadout_item/head/whitekepiold
-	name = "White Kepi (Old)"
-	item_path = /obj/item/clothing/head/costume/kepi/old
-
 /datum/loadout_item/head/maidhead
 	name = "Simple Maid Headband"
-	item_path = /obj/item/clothing/head/costume/maid
+	item_path = /obj/item/clothing/head/costume/skyrat/maid
 	additional_tooltip_contents = list("Small headband that only fits on top the head.")
 
 /datum/loadout_item/head/maidhead2
@@ -482,7 +470,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
-	item_path = /obj/item/clothing/head/costume/ushanka/sec/blue
+	item_path = /obj/item/clothing/head/costume/ushanka/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/blasthelmet

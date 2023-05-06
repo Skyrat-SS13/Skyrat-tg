@@ -40,13 +40,13 @@
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
-/obj/item/gun/ballistic/rifle/boltaction/brand_new/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
-
 /obj/item/gun/ballistic/shotgun/toy/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_DONK)
 
-/obj/item/gun/ballistic/rifle/boltaction/brand_new/prime/give_manufacturer_examine()
+/obj/item/gun/ballistic/rifle/boltaction/quartermaster/give_manufacturer_examine()
+	return
+
+/obj/item/gun/ballistic/rifle/boltaction/prime/give_manufacturer_examine()
 	return
 
 /obj/item/gun/ballistic/rifle/boltaction/pipegun/give_manufacturer_examine()

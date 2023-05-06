@@ -174,6 +174,15 @@
 	access_id = null
 	master_access = TRUE
 
+/obj/effect/mapping_helpers/airlock/access/all/twin_nexus_staff/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_TWIN_NEXUS_STAFF
+	return access_list
+
+/obj/effect/mapping_helpers/airlock/access/all/twin_nexus_staff/manager/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_TWIN_NEXUS_MANAGER
+	return access_list
 
 /obj/machinery/door/airlock/keyed/hotel_room
 	name = "Guest Room"

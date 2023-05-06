@@ -202,7 +202,7 @@
 	if(statue.name == initial(statue.name)) //statue has not been set up
 		statue.name = "statue of [becoming_statue.real_name]"
 		statue.desc = "statue depicting [becoming_statue.real_name]"
-		statue.set_custom_materials(list(/datum/material/silver=MINERAL_MATERIAL_AMOUNT*5))
+		statue.set_custom_materials(list(/datum/material/silver=SHEET_MATERIAL_AMOUNT*5))
 
 	if(is_statue)
 		statue.visible_message(span_danger("[statue] becomes animated!"))
@@ -473,11 +473,10 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	name = "bananium tongue"
 	desc = "A bananium geode mostly used for honking."
 	say_mod = "honks"
-
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/horn.dmi'
+	icon_state = "gold_horn"
 	lefthand_file = 'icons/mob/inhands/equipment/horns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/horns_righthand.dmi'
-	icon_state = "gold_horn"
 
 /obj/item/organ/internal/tongue/jelly
 	name = "jelly tongue"

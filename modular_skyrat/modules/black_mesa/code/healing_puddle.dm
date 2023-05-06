@@ -11,7 +11,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/structure/water_source/puddle/healing/process(delta_time)
+/obj/structure/water_source/puddle/healing/process(seconds_per_tick)
 	for(var/mob/living/iterating_mob in loc)
 		iterating_mob.heal_overall_damage(2, 2)
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/jelly_scream.ogg', 100)

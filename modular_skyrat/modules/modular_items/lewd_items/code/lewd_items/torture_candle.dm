@@ -102,7 +102,7 @@
 	put_out_candle()
 	return ..()
 
-/obj/item/bdsm_candle/process(delta_time)
+/obj/item/bdsm_candle/process(seconds_per_tick)
 	if(!lit)
 		return PROCESS_KILL
 	open_flame()

@@ -66,7 +66,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/structure/mob_spawner/process(delta_time)
+/obj/structure/mob_spawner/process(seconds_per_tick)
 	if(passive_spawning)
 		if(spawned_mobs >= max_mobs)
 			return

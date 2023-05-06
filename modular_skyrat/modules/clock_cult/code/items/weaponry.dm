@@ -232,7 +232,7 @@
 	name = "energy bolt"
 	icon = 'modular_skyrat/modules/clock_cult/icons/projectiles.dmi'
 	icon_state = "arrow_energy"
-	damage = 24
+	damage = 35
 	damage_type = BURN
 
 

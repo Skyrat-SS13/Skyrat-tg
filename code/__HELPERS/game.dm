@@ -238,6 +238,9 @@
 
 ///Calls the show_candidate_poll_window() to all eligible ghosts
 /proc/poll_candidates(question, jobban_type, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE, list/group = null)
+	if (group.len == 0)
+		return list()
+
 	var/time_passed = world.time
 	if (!question)
 		question = "Would you like to be a special role?"
@@ -246,7 +249,7 @@
 		if(!candidate_mob.key || !candidate_mob.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (candidate_mob.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
 		//SKYRAT EDIT ADDITION BEGIN
-		if(is_banned_from(candidate_mob.ckey, BAN_GHOST_TAKEOVER))
+		if(is_banned_from(candidate_mob.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(candidate_mob.ckey, BAN_ANTAGONIST))
 			to_chat(candidate_mob, "There was a ghost prompt for: [question], unfortunately you are banned from ghost takeovers.")
 			continue
 		//SKYRAT EDIT END

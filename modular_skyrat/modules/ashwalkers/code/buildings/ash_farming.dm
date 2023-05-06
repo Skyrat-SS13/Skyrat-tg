@@ -114,7 +114,7 @@
 	. += span_notice("You can use goliath hides to increase the amount dropped per harvest!")
 	. += span_notice("You can use a regenerative core to force the plant to drop four harvests!")
 
-/obj/structure/simple_farm/process(delta_time)
+/obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
 
 /obj/structure/simple_farm/update_appearance(updates)

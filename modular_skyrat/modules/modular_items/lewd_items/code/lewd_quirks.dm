@@ -186,7 +186,7 @@
 	gain_text = span_danger("You have a sudden desire for pain...")
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
-	icon = "heart-broken"
+	icon = FA_ICON_HEART_BROKEN
 	erp_quirk = TRUE
 
 /datum/quirk/masochism/post_add()
@@ -234,7 +234,7 @@
 	gain_text = span_danger("You feel a sudden desire to inflict pain.")
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
-	icon = "hammer"
+	icon = FA_ICON_HAMMER
 	erp_quirk = TRUE
 
 /datum/quirk/sadism/post_add()
@@ -257,7 +257,7 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/sadism/on_life(seconds_per_tick, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		affected_mob.adjust_arousal(2)
@@ -288,7 +288,7 @@
 	mob_trait = TRAIT_ROPEBUNNY
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
-	icon = "link"
+	icon = FA_ICON_HANDCUFFS
 	erp_quirk = TRUE
 
 /datum/quirk/ropebunny/post_add()
@@ -309,7 +309,7 @@
 	mob_trait = TRAIT_RIGGER
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
-	icon = "chain-broken"
+	icon = FA_ICON_CHAIN_BROKEN
 	erp_quirk = TRUE
 
 /datum/quirk/rigger/post_add()

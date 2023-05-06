@@ -71,11 +71,11 @@
 
 	SSliquids.add_active_turf(src)
 
-/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE)
+/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1)
 	var/list/compiled_list = list()
 	for(var/r in giver.reagent_list)
 		var/datum/reagent/R = r
-		compiled_list[R.type] = R.volume
+		compiled_list[R.type] = R.volume * reagent_multiplier
 	if(!compiled_list.len) //No reagents to add, don't bother going further
 		return
 	add_liquid_list(compiled_list, no_react, giver.chem_temp)

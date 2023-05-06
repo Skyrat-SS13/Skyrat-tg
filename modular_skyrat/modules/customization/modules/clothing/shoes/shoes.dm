@@ -54,7 +54,7 @@
 	greyscale_colors = "#FFFFFF"
 	greyscale_config = /datum/greyscale_config/fancyheels
 	greyscale_config_worn = /datum/greyscale_config/fancyheels/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/discoshoes
