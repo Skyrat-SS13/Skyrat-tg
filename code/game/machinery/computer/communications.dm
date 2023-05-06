@@ -934,7 +934,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			dynamic.unfavorable_situation()
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
-			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator // SKYRAT EDIT: ORIGINAL /datum/dynamic_ruleset/midround/from_living/autotraitor
+			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor
 			var/datum/game_mode/dynamic/dynamic = SSticker.mode
 			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
 			var/num_agents_created = 0
@@ -945,10 +945,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			if(num_agents_created <= 0)
 				// We failed to run any midround sleeper agents, so let's be patient and run latejoin traitor
-				// SKYRAT EDIT START
-				//dynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator, forced = TRUE, ignore_cost = TRUE)
-				return
-				// SKYRAT EDIT END
+				dynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator, forced = TRUE, ignore_cost = TRUE)
 
 			else
 				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
