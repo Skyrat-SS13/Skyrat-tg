@@ -24,7 +24,7 @@
 		"legs" = "Normal Legs"
 	)
 	digitigrade_customization = DIGITIGRADE_NEVER
-	disliked_food = GROSS | GRAIN | GORE
+	disliked_food = GROSS | GRAIN
 	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
