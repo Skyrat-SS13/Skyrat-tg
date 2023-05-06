@@ -780,8 +780,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		//No cheating, mime/random mute guy!
 		input = "..."
 		user.visible_message(
-			span_notice("You leave the mic on in awkward silence..."),
 			span_notice("[user] holds down [src]'s announcement button, leaving the mic on in awkward silence."),
+			span_notice("You leave the mic on in awkward silence..."),
 			span_hear("You hear an awkward silence, somehow."),
 			vision_distance = 4,
 		)
@@ -900,11 +900,16 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	hacker.log_message("hacked a communications console, resulting in: [picked_option].", LOG_GAME, log_globally = TRUE)
 	switch(picked_option)
 		if(HACK_PIRATE) // Triggers pirates, which the crew may be able to pay off to prevent
+			var/datum/game_mode/dynamic/dynamic = SSticker.mode
+			var/list/pirate_rulesets = list(
+				/datum/dynamic_ruleset/midround/pirates,
+				/datum/dynamic_ruleset/midround/dangerous_pirates,
+			)
 			priority_announce(
 				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
 				"[command_name()] High-Priority Update",
 			)
-			force_event_after(/datum/round_event_control/pirates, "[hacker] hacking a communications console", rand(20 SECONDS, 1 MINUTES))
+			dynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
