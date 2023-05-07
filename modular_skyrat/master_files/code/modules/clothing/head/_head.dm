@@ -30,6 +30,9 @@
 		user.update_inv_ears()
 	UnregisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT)
 
+/obj/item/clothing/head/helmet
+	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet_muzzled.dmi'
+
 /obj/item/clothing/head/bio_hood
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/bio_muzzled.dmi'
 
@@ -49,6 +52,7 @@
 /obj/item/clothing/head/helmet/space/changeling
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION
+
 /obj/item/clothing/head/helmet/space/freedom
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION

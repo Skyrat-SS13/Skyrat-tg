@@ -419,7 +419,7 @@
 
 //Helmet pairs with the above suit
 /datum/greyscale_config/heck_helmet/worn/snouted
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet_muzzled.dmi'
 
 // Bathrobes
 
