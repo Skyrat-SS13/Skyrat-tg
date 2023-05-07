@@ -115,3 +115,24 @@
 	)
 	tastes = list("blood" = 5, "congealed blood" = 2, "chili" = 3, "vinegar" = 1, "garlic" = 1)
 	foodtypes = GORE | BLOODY | VEGETABLES
+
+/obj/item/food/cake/wedding_hemo
+	name = "bloody wedding cake"
+	desc = "An expensive, multi-tiered cake, baked with blood instead of milk, to be served to hemophages."
+	icon_state = "weddingcake"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 40,
+		/datum/reagent/blood = 90,
+	)
+	tastes = list("cake" = 3, "blood" = 1)
+	foodtypes = GRAIN | SUGAR | GORE | BLOODY
+	color = "#810000"
+	slice_type = /obj/item/food/cakeslice/wedding_hemo
+
+/obj/item/food/cakeslice/wedding_hemo
+	name = "bloody wedding cake slice"
+	desc = "Traditionally, those getting married feed each other a slice of cake. This one is made of blood."
+	icon_state = "weddingcake_slice"
+	tastes = list("cake" = 3, "blood" = 1)
+	foodtypes = GRAIN | SUGAR | GORE | BLOODY
+	color = "#810000"

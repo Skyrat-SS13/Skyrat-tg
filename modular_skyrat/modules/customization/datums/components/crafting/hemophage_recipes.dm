@@ -60,3 +60,13 @@
 		/obj/item/reagent_containers/cup/bowl = 1,
 	)
 	result = /obj/item/food/soup/hemophage/blood_soup
+
+/datum/crafting_recipe/food/weddingcake_hemo
+	name = "Bloody wedding cake"
+	reqs = list(
+		/obj/item/food/cake/plain = 4,
+		/datum/reagent/consumable/sugar = 30,
+		/datum/reagent/blood = 90,
+	)
+	result = /obj/item/food/cake/wedding_hemo
+	category = CAT_CAKE
