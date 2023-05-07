@@ -44,7 +44,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red cloak"
 	icon_state = "goliath_cloak"
-	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, made of entirely synthetic material.
+	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, made of entirely synthetic material."
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/david
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
