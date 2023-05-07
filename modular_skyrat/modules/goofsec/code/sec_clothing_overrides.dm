@@ -771,3 +771,10 @@
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
 	current_skin = "jackboots_sec"	//prevents reskinning
+
+//Finally, a few description changes for items that couldn't get a resprite.
+/obj/item/clothing/head/bio_hood/security
+	desc = "A hood that protects the head and face from biological contaminants. This is a slightly outdated model from Nanotrasen Securities - you can hardly see through the foggy visor's ageing red. Hopefully it's still up to spec..."
+
+/obj/item/clothing/suit/bio_suit/security
+	desc = "A suit that protects against biological contamination. This is a slightly outdated model from Nanotrasen Securities, using their red color-scheme and even outdated labelling. Hopefully it's still up to spec..."
