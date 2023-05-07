@@ -37,8 +37,8 @@
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
 	desc = "A robust and spaceworthy helmet with a small cross on it along with 'IP' written across the earpad."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "swat_ds"
 
 /obj/item/clothing/head/beret/sec/syndicate
