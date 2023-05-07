@@ -1,8 +1,6 @@
 #define TRAIT_ALREADYSTAMINAFLOORED    	"alreadystaminafloored" //Trait to keep track whether someone was floored recently by stamina damage.
 #define STAMINA_KNOCKDOWN_COOLDOWN 10 SECONDS
 
-#define MAX_HUMAN_LIFE 135
-
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
 //This one is applied on non-glancing melee attacks aswell as normal projectiles.
