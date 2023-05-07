@@ -81,7 +81,7 @@
 	icon_state = "policeofficercap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hats/hos/peacekeeper/sol
+/obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
 	name = "sol police chief cap"
 	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
