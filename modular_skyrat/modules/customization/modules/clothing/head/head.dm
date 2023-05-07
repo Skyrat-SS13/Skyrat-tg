@@ -55,24 +55,6 @@
 	acid = 50
 	wound = 6
 
-/obj/item/clothing/head/soft/enclave
-	name = "neo american cap"
-	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclavesoft"
-	soft_type = "enclave"
-	dog_fashion = null
-
-/obj/item/clothing/head/soft/enclaveo
-	name = "neo american officer cap"
-	desc = "It blocks out the sun and laser bolts from executions."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclaveosoft"
-	soft_type = "enclaveo"
-	dog_fashion = null
-
 /obj/item/clothing/head/hats/sec/peacekeeper/sol
 	name = "sol police cap"
 	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
