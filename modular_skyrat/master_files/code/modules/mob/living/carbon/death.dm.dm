@@ -2,7 +2,7 @@
 /mob/living/carbon/spill_organs(no_brain, no_organs, no_bodyparts, gibbed = FALSE)
 	/// Organs always get spilled when the mob is gibbed
 	if(gibbed)
-		return
+		return ..()
 
 	var/list/held_organs = list()
 
