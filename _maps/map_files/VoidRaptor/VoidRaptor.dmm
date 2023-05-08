@@ -23915,8 +23915,8 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "gVD" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall,
+/obj/machinery/vending/wardrobe/coroner_wardrobe,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "gVG" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
@@ -28083,11 +28083,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/security/checkpoint/supply)
 "ijk" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/bot_red,
+/obj/structure/mannequin/skeleton,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "ijw" = (
@@ -30270,6 +30266,7 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
+/obj/effect/landmark/start/coroner,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "iNu" = (
@@ -34398,10 +34395,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/science/ordnance/testlab)
 "jVt" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/cold/directional/east,
-/obj/effect/turf_decal/bot_blue,
+/obj/effect/mapping_helpers/dead_body_placer,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "jVx" = (
@@ -44142,12 +44138,6 @@
 	},
 /turf/open/floor/engine,
 /area/station/security/execution/education)
-"mBT" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/dead_body_placer,
-/turf/open/floor/iron/dark/smooth_large,
-/area/station/medical/morgue)
 "mBX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -46386,7 +46376,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "nfC" = (
@@ -47482,14 +47471,13 @@
 /turf/open/floor/iron/smooth,
 /area/station/construction/mining/aux_base)
 "nuV" = (
-/obj/structure/bodycontainer/morgue,
-/obj/effect/turf_decal/bot_red,
 /obj/effect/turf_decal/trimline/dark/filled/warning{
 	dir = 9
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "nvc" = (
@@ -62095,11 +62083,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/starboard/lesser)
-"rxx" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/delivery/blue,
-/turf/open/floor/iron/dark/smooth_large,
-/area/station/medical/morgue)
 "rxO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet,
@@ -75413,20 +75396,17 @@
 /area/station/security/range)
 "vdw" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/paper/guides/jobs/medical/morgue{
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /obj/machinery/camera/directional/west{
 	c_tag = "Medbay - Morgue";
 	name = "medical camera";
 	network = list("ss13","medical")
 	},
 /obj/machinery/newscaster/directional/west,
+/obj/machinery/computer/records/medical/laptop{
+	dir = 4;
+	pixel_x = 3;
+	pixel_y = -1
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "vdM" = (
@@ -77704,17 +77684,7 @@
 	},
 /area/station/hallway/primary/fore)
 "vLX" = (
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/box/red,
-/obj/machinery/disposal/delivery_chute{
-	dir = 1;
-	name = "Corpse Disposal"
-	},
-/obj/machinery/door/window/left/directional/north{
-	name = "Corpse Disposal"
-	},
-/obj/structure/window/spawner/directional/west,
-/obj/structure/sign/warning/bodysposal/directional/south,
+/obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
 "vMa" = (
@@ -79621,15 +79591,10 @@
 /turf/open/floor/carpet,
 /area/station/medical/psychology)
 "wok" = (
-/obj/structure/disposaloutlet{
-	desc = "An outlet for the pneumatic disposal system. This one seems designed for rapid corpse disposal.";
-	dir = 1;
-	name = "rapid corpse mover 9000"
-	},
-/obj/structure/disposalpipe/trunk{
+/obj/effect/turf_decal/bot_red,
+/obj/structure/bodycontainer/morgue{
 	dir = 1
 	},
-/obj/effect/turf_decal/delivery/blue,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
 "wop" = (
@@ -80818,7 +80783,6 @@
 /turf/open/floor/wood/large,
 /area/station/service/theater)
 "wDK" = (
-/obj/structure/bodycontainer/morgue,
 /obj/structure/sign/poster/contraband/borg_fancy_1{
 	pixel_x = -32
 	},
@@ -80827,6 +80791,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/bot_red,
+/obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "wDO" = (
@@ -113263,7 +113228,7 @@ cUH
 yhJ
 ljI
 ljI
-oGw
+ijk
 eSB
 dMx
 lYb
@@ -113520,8 +113485,8 @@ qnh
 ldf
 bLE
 ljI
-oGw
-mBT
+gVD
+eSB
 bAT
 vNI
 xRR
@@ -114290,10 +114255,10 @@ dxD
 knu
 kmR
 vLX
-gVD
-ijk
+ljI
+oGw
 jVt
-rxx
+qpV
 wok
 xRR
 xtI
