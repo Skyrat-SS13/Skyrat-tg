@@ -1394,7 +1394,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				else
 					human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
 
-				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((MAX_HUMAN_LIFE - human.health) * 0.5))) // rev deconversion through blunt trauma. // SKYRAT EDIT CHANGE
+				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((human.maxHealth - human.health) * 0.5))) // rev deconversion through blunt trauma. // SKYRAT EDIT CHANGE
 					var/datum/antagonist/rev/rev = human.mind.has_antag_datum(/datum/antagonist/rev)
 					if(rev)
 						rev.remove_revolutionary(FALSE, user)
