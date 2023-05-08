@@ -64,12 +64,9 @@
 	return FALSE
 
 #define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
-<<<<<<< HEAD
 #define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
-=======
 ///Modifier given to surgery speed for dissected bodies.
 #define SURGERY_DISSECTION_MODIFIER 1.2
->>>>>>> 1674f25725c (New Medical job: The Coroner (#75065))
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
