@@ -70,10 +70,9 @@
 	new /obj/item/clothing/head/hats/hopcap(src)
 	new /obj/item/clothing/neck/cloak/hop(src)
 	new /obj/item/clothing/shoes/laceup(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
+	//new /obj/item/clothing/under/rank/security/head_of_security/skirt(src) SKYRAT EDIT REMOVAL - Blue Sec
 	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
