@@ -46,6 +46,11 @@
 					qdel(X)
 		else //we're going to drop all bodyparts except chest, so the only organs that needs spilling are those inside it.
 			for(var/obj/item/organ/organ as anything in organs)
+				// SKYRAT EDIT START - Non-spillable organs
+				if(!organ.drop_when_organ_spilling)
+					qdel(organ)
+					continue
+				// SKYRAT EDIT END
 				if(no_brain && istype(organ, /obj/item/organ/internal/brain))
 					qdel(organ) //so the brain isn't transfered to the head when the head drops.
 					continue
@@ -62,6 +67,11 @@
 			if(no_organs && !istype(organ, /obj/item/organ/internal/brain))
 				qdel(organ)
 				continue
+			// SKYRAT EDIT START - Non-spillable organs
+			if(!organ.drop_when_organ_spilling)
+				qdel(organ)
+				continue
+			// SKYRAT EDIT END
 			organ.Remove(src)
 			organ.forceMove(Tsec)
 			organ.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
