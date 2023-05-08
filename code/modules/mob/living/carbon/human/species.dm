@@ -25,27 +25,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/sexes = TRUE
 	///A bitfield of "bodytypes", updated by /datum/obj/item/bodypart/proc/synchronize_bodytypes()
 	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
-<<<<<<< HEAD
-	///Clothing offsets. If a species has a different body than other species, you can offset clothing so they look less weird.
-	var/list/offset_features = list(
-		OFFSET_UNIFORM = list(0,0),
-		OFFSET_ID = list(0,0),
-		OFFSET_GLOVES = list(0,0),
-		OFFSET_GLASSES = list(0,0),
-		OFFSET_EARS = list(0,0),
-		OFFSET_SHOES = list(0,0),
-		OFFSET_S_STORE = list(0,0),
-		OFFSET_FACEMASK = list(0,0),
-		OFFSET_HEAD = list(0,0),
-		OFFSET_FACE = list(0,0),
-		OFFSET_BELT = list(0,0),
-		OFFSET_BACK = list(0,0),
-		OFFSET_SUIT = list(0,0),
-		OFFSET_NECK = list(0,0),
-		OFFSET_ACCESSORY = list(0, 0), // SKYRAT EDIT ADDITION
-	)
-=======
->>>>>>> 1a918a2e141 (Golem Rework (#74197))
 
 	///The maximum number of bodyparts this species can have.
 	var/max_bodypart_count = 6
