@@ -294,7 +294,7 @@
 	fire = 20
 	acid = 50
 
-/obj/item/clothing/head/hats/hos
+/obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hoscap_blue"
@@ -319,7 +319,7 @@
 	)
 
 //Need to quickly redefine this so the icon doesnt break
-/obj/item/clothing/head/hats/hos/syndicate
+/obj/item/clothing/head/hats/hos/cap/syndicate
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
