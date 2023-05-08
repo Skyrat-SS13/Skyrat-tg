@@ -307,12 +307,8 @@
 		return
 	staminaloss = clamp((staminaloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, max_stamina)
 	if(updating_stamina)
-<<<<<<< HEAD
-		update_stamina()
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
-=======
 		updatehealth()
->>>>>>> 6f884c22211 (fix: Infinite slowdown due to stamina (#75201))
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
 	return
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype)
