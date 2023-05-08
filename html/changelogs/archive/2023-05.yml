@@ -1,0 +1,275 @@
+2023-05-01:
+  Rhials:
+  - bugfix: Replaces the purely decorative mining shuttle console on the Icebox bridge
+      with an ID console.
+  SkyratBot:
+  - bugfix: Bloody Mary flavor is now accurate to its description.
+  - refactor: Spiderlings are now basic mobs, report any complete weirdness/deviation
+      from known behavior. They should be a lot more intelligent now though.
+  - rscadd: AI Spiderlings are super fragile, but they're also super fast, especially
+      when they get into a vent. Once they're in circulation, they could end up everywhere!
+      Maybe in the armory, maybe in a locked closet in maintenance. Be sure to be
+      vigilant and splat them whenever you can to save the station from a whole lotta
+      heartache!
+  - bugfix: papers should count cyrillic and other non-ascii characters correctly
+      both server and client-side
+  - qol: Dirt pile is crafted from sand instead of sandstone and drops it on deconstruction
+  - bugfix: You can't have free water and nutriments by rebuilding hydrotray
+  - spellcheck: Deleted the extra line in combat information
+  - balance: Mimes can no longer write on paper without breaking their vow.
+  - bugfix: Deep Storage Space Ruin - Fixes atmos alarms never shutting off
+  - bugfix: Deep Storage Space Ruin - made the atmos pipenet sane
+  - bugfix: Shuttle Loan event's resupply and hijacking have been separated into two
+      different datums
+  - bugfix: The airlocks on the hug relaxation shuttle now align up properly
+  Zergspower:
+  - bugfix: Crashedship Ruin - You can now use the teleport
+2023-05-02:
+  Hatterhat:
+  - bugfix: People with style meters affixed to their glasses can now do cool flips.
+  - spellcheck: Port Tarkon personnel now have their assignment on their IDs properly
+      checked. It truly was nothing personnel, kid.
+  SkyratBot:
+  - bugfix: Pirates summoned through hacking a comms console should actually spawn
+      now.
+  - bugfix: ' Drying rack spawning a matter bin and circuit board on deconstruction'
+  - bugfix: You can't spam open codex cicatrix now.
+  - qol: You can close codex cicatrix in your hand now! Also toy codex cicatrix has
+      proper animation now.
+  - code_imp: TGUI input datums can now accept custom ui_states
+  - rscadd: Crewmembers arriving very late will not always have time to finish their
+      breakfast.
+  - bugfix: air alarms correctly spew out cable & electronics depending on their build
+      stage when their integrity reaches 0  i.e. destroyed
+  - bugfix: fire alarms correctly spew out cable & electronics depending on their
+      build stage when their integrity reaches 0  i.e. destroyed
+  - bugfix: balloon alerts runtiming when cutting terminals
+2023-05-03:
+  Hatterhat:
+  - spellcheck: The gunsets and crate that hold CMG-2s are now actually labeled CMG-2,
+      and not CMG-1. The last vestiges of "C20-r but stationside" continue to fall.
+  SkyratBot:
+  - admin: Enslaving mobs is now logged in game.log
+  - balance: Machines (such as ORM and Techfabs) will no longer unsync from Ore silos
+      when it moves Z-level, instead it will prevent materials from being used, as
+      if it was on hold.
+  - bugfix: Style meter parrying works again
+  - bugfix: Style meter bar now works correctly with very high style point count
+  - bugfix: prosthetic limb quirk will no longer display a prosthetic on your character
+      preview because it is buggy and hardly ever matches what you end up getting
+      upon spawning
+  - code_imp: removing the prosthetic limb quirk will restore your original limb
+  - qol: The game now supports export of your preferences into a JSON file! The verb
+      (export-preferences) should now be available in the OOC tab of your stat-panel
+      if enabled by server operators.
+  - server: Exporting player preferences is controlled by a configuration option,
+      'FORBID_PREFERENCES_EXPORT'. If you do not wish to let clients access the ftp()
+      function to their own preferences file (probably for bandwidth reasons?) you
+      should uncomment this or add it to your config somehow.
+  - config: Server operators are also able to set the cooldown between requests to
+      download the JSON Preferences file via the 'SECONDS_COOLDOWN_FOR_PREFERENCES_EXPORT'
+      config option.
+  - bugfix: Electrolysis chemical reaction works with enriched liquid electricity
+  Tattle:
+  - sound: nerfed the police whistle volume
+  nikothedude:
+  - bugfix: Number inputs work now
+  softcerv:
+  - bugfix: NIF action icons no longer persist after a NIF is removed.
+2023-05-04:
+  Melbert:
+  - bugfix: Mime using captain's announcement visible message is correct
+  - bugfix: Fixes rare occasions in which the captain can fail to spawn with their
+      banner on certain maps if their left hand was holding something else.
+  - bugfix: Stairs are now resistant to being shoved by mobs with high move force.
+  Paxilmaniac:
+  - image: The plasma thrower's power bar has been changed to go from green-yellow-orange-red
+      (looks comically bad!) to a purple bar that shrinks as the gun loses charge
+  - bugfix: the cargo orderable AMR should no longer fit in suit storage slots, only
+      your back, as was originally intended
+  SkyratBot:
+  - rscadd: Damp rag and Money bag to service borg
+  - rscadd: Service borg upgrades, with accompanying tech web node
+  - rscadd: Sprites for kitchen toolset, and service apparatus
+  - balance: The RSF can print a few more things, paper cups, seaweed sheets, plates,
+      bowls, plastic cutlery and standard decks of cards.
+  - balance: 'Sugar moved from borgshaker to condiment synthesizer. Berry juice, cherry
+      jelly and vinegar added to borgshaker. balance: Both shaker and synthesizer
+      can also be adjusted to give 1 unit at time, so it goes 5, 10, 20 then 1, and
+      back around.'
+  - balance: Adds blood and Carpotoxin to the emagged borgshaker.
+  - bugfix: Money bag was missing a description, it now has one.
+  - bugfix: Holodisk recording gives the right vfx again. Bonus, the rays work with
+      it now too!
+  - refactor: Mineral costs have been reformatted to be scaled by the number of sheets,
+      darts, and small fractions they make up.
+  - qol: Foam darts no longer hold a fraction of a unit of iron within themselves.
+  - bugfix: Basic mobs will now be affected by explosions again.
+  - bugfix: fixed spiderlings speaking human instead of spider
+  - qol: 'Mapping: Air alarm variants replaced with corresponding helpers'
+  - spellcheck: Fixed Nanotrasen being miscapitalized in traitor posters, a drink,
+      the ethereal lore, and some photocopier paperwork
+  - bugfix: Fixed the Chef not having CQC outside the kitchen on Tramstation
+  - rscadd: North Star's captain's office has been expanded! It now includes a sitting
+      area as well as a photocopier and some cigars.
+  - bugfix: Various minor changes in North Star
+  - image: extinguisher cabinet has new sprites
+  - bugfix: Bows will no longer randomly stop taking new arrows.
+  - balance: 'EMPs on robotic limbs will now disable them for 10-20 seconds rather
+      than causing a 10-20 second full stun on the user. Additionally, they will damage
+      the limb for a little brute and some burn.
+
+      EMPs on robotic limbs will now disable them for 10-20 seconds rather than causing
+      a 10-20 second full stun on the user. Additionally, they will damage the limb
+      for a little brute and some burn.'
+  - balance: Arm EMPs don't do anything special as the limb being disabled already
+      drops items.
+  - balance: Leg EMPs cause a 10-20 second knockdown, only really applicable if there's
+      only one robotic leg as two disabled legs KD you anyways.
+  - balance: Chest EMPs cause a 3-6 second standing-up paralyze, visible to the player
+      by a quite noticeable shaking of their body.
+  - balance: Head EMPs break the optical transponder circuits for 7.5-15 seconds,
+      effectively giving the user nightmare goggles vision with green instead of red
+      as the only remaining color.
+  - spellcheck: The hallucinatory anomaly announcement is no longer missing words.
+  - qol: Health Analyzers now show embeds in bodyparts on examine.
+  - rscadd: Stowaway Changelings will now appear as a late join form of Changeling.
+  - refactor: Russian mobs are now subtypes of Syndicate basic mobs.
+  - spellcheck: BLOX is the name and posibrain is the game.
+  - bugfix: Removes player references.
+  Tattle:
+  - sound: shutters have a unique sound effect
+  Thedragmeme:
+  - qol: 'Makes the Meta station kitchen not cramped anymore
+
+      :cl:'
+  Wallem:
+  - rscadd: The ancient recipe for the Death Sandwich has been rediscovered buried
+      in the deepest depths of an erupting volcano.
+  Zergspower:
+  - qol: Dangerous Research Ruin - Area redefines
+  - bugfix: Port Tarkon - Window firelock issues resolved for all along with cleanup
+  Zytolg, LT3:
+  - rscadd: Birdshot station has been pulled out of Mothball.
+  - rscadd: New station areas and places to visit. A Mix of Kilo and Delta maints
+      with winding shortcutting paths.
+  - rscadd: A host of new shuttles to support this bold endeavor to reclaim something
+      that really shouldn't be reclaimed.
+  - rscadd: Two Trams, Two Trams. TWO TRAMS!
+  - rscadd: For the last time Bob, the gaping hole is a **feature.** Use the breach
+      shutters or have the virologist make starlight.
+  - rscadd: A smiling salute to stations past...
+  - rscadd: Secrets.
+  nikothedude:
+  - rscadd: '*exme now allows you to pick which layer of container the emote originates
+      from'
+  softcerv:
+  - code_imp: moves the SAD code for applying prefs, while keeping damage, to it's
+      own separate proc.
+  - refactor: refactors magical wand code, fixing several bugs.
+  - bugfix: glassblowing no longer works if the glass lacks heat
+  - bugfix: glassblowing is unable to be done on multiple objects at once.
+  - refactor: refactors organic interface status effects so that they no longer run
+      on every human.
+2023-05-05:
+  Ebin-Halcyon:
+  - image: Teshari have been resprited in their entirety, set your colors if they
+      look off.
+  - image: One new Teshari ear style, a ponytail.
+  - image: Upright mane, and thin mane Teshari ear styles have been edited/removed,
+      add a mane through the fluff dropdown menu. Set your mismatched parts on.
+  LT3:
+  - code_imp: You can now exclude maps from ssDecay
+2023-05-06:
+  Ebin-Halcyon:
+  - bugfix: Syndicate winter coats should no longer be masses of missing textures.
+  Helios7-1:
+  - rscadd: The new Adventurous Synth Plushie! It Beeps!
+  Rhials:
+  - qol: Observers now recieve an alert when a powersink is activated/about to explode.
+  - qol: His Grace being awoken now alerts observers, to give you a headstart on your
+      murderbone ghost ring.
+  - qol: Ascension Rituals being completed will also alert observers, for basically
+      the same reason.
+  - qol: Arming a hot potato will now alert observers. Catch!
+  - qol: Eyesnatcher victims will now notify observers, and invite them to laugh at
+      their state of misery and impotence.
+  - qol: Observers will be notified of any acute references to The Simpsons or other
+      20th Television America copyright properties.
+  - qol: Wizard Imposter spawns alert observers, much like any other ghost role event
+      should.
+  - qol: Playing Rock-Paper-Scissors with death will now alert the observers and invite
+      them to watch. Better not choke!
+  - qol: Observers now get an orbit link for BSA impact sites. Why does it keep teleporting
+      me to the AI upload??
+  - qol: Spontaneous Appendicitis now alerts deadchat.
+  - qol: The purchasing of a badass syndie balloon now alerts deadchat. You might
+      not be any more powerful, but at least you have an audience.
+  - qol: When beginning to delaminate, the Supermatter will alert observers and invite
+      them to watch the fireworks.
+  RikuuTheRiolu:
+  - balance: Removed "Gore" from disliked food's for Teshari
+  larentoun:
+  - rscadd: Synth-Humanoids now have snout as a deafult bodypart
+2023-05-07:
+  Anonymous:
+  - image: Updates Blastwave suits to be more taller and greener. Torso part is also
+      now closed/zipped up.
+  - bugfix: Fixes wrong reskin icon names for Blastwave helmet.
+  ChakatStormCloud:
+  - bugfix: BSA now properly faces East when built with the Bore facing east
+  - bugfix: BSA now properly checks that it has a bore and generator, space to deploy,
+      and proper alignment.
+  Hatterhat:
+  - balance: Thanks to further developments from Nanotrasen Arms' R&D Division, the
+      CMG-2's rounds now carry slightly more stopping power than before (0.5x -> 0.7x
+      damage multiplier).
+  - balance: Unfortunately, adjustments to the CMG's internals now make its folding
+      stock actually adjustable, and also matter for use. Ctrl-click to toggle its'
+      stock. Users are warned that improper handling will lead to decreased accuracy.
+  Jolly:
+  - bugfix: The area icon for the evidence room should be visible in the map editor
+      again.
+  Melbert:
+  - balance: Blind people don't get alerted when someone in a cardboard box pops out
+      nearby
+  - rscadd: ' Non-player references'
+  QuacksQ:
+  - bugfix: Fixes dead ends in arrival maints on Voidraptor.
+  Rhials:
+  - bugfix: Powersinks no longer always show as being very hot if you're too close.
+  Shadow-Quill:
+  - bugfix: The arrival shuttle's console can no longer have the "Shuttle departing..."
+      message spammed.
+  - bugfix: The welding fuel ammo indicator will now update whenever it's used or
+      refilled, not just when it's toggled.
+  SkyratBot:
+  - qol: The Ice Box pharmacy and Med Sec Outpost blast doors have been replaced with
+      shutters.
+  - bugfix: fixed unrefined ectoplasm anomaly cores not appearing as unrefined
+  - qol: Shuttles will no longer show their current destination as a choice while
+      in transit.
+  - rscadd: miners with style meter can now parry kisses
+  - qol: 'Mapping: Added broken machine map helper'
+  - qol: 'Mapping: Replaced damaged window spawner with a universal helper'
+  - bugfix: The hierophant club's sprite updates when it should
+  - bugfix: The hierophant club grants the blink action when summoned into hand
+  - balance: Psyker Pirates are now Psyker Shikari (bounty hunters).
+  - bugfix: Fixed math on cyborg restocking
+  - qol: borgs entering chargers now have the restocking feature enabled by default.
+      It can be disabled with a right-click while charging if you don't want to eat
+      the station's mats.
+  - balance: Borg restocking speed now scales with the charger's manipulator tier.
+  - bugfix: The North Star's cargo shuttle has working conveyors.
+  - bugfix: The North Star has had a slew of missing and improperly done content added
+      and reworked, see the PR for more!
+  - balance: Tonguespike is better, chemspike deals slightly less damage
+  - qol: Trees, rocks, grass and etc. now drop materials when destroyed.
+  - bugfix: a mob will now once again spill their organs when they are gibbed
+  - bugfix: Mech chargers on Tram (and possibly elsewhere) no longer sync oddly.
+  - rscadd: Added wedding cakes
+  colb:
+  - qol: You can now use the Navigate verb to find your way to cryo on Birdshot
+  - bugfix: Removed a doubled up cryo pod
+  larentoun:
+  - bugfix: icon names for 6.8 mag

@@ -135,4 +135,4 @@
 // Misc Items
 
 /obj/item/forging/reagent_weapon/axe/fake_copper
-	custom_materials = list(/datum/material/copporcitite = MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/copporcitite = SHEET_MATERIAL_AMOUNT )

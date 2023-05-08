@@ -621,3 +621,11 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 	gender = MALE
 
+//Donation reward for Frixit
+/obj/item/toy/plush/skyrat/plushie_synthia
+	name = "adventurous synth plushie"
+	desc = "This plush is perfect For adventures in space and in bed, a cuddly purple Synth, their scarf is extra soft!"
+	icon_state = "plushie_synthia"
+	attack_verb_continuous = list("blushes", "hugs", "whips")
+	attack_verb_simple = list("blush", "hug", "whip")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)

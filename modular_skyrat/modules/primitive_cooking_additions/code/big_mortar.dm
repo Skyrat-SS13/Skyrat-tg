@@ -10,7 +10,7 @@
 	anchored = TRUE
 	max_integrity = 100
 	pass_flags = PASSTABLE
-	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 10)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT  * 10)
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
 
