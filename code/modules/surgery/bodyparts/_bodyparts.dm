@@ -527,7 +527,6 @@
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
-<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION - MEDICAL
 			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
 			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
@@ -542,10 +541,7 @@
 			if(current_splint)
 				current_splint.take_damage()
 			//SKYRAT EDIT ADDITION END - MEDICAL
-			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
-=======
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction, damage_source = damage_source)
->>>>>>> 1674f25725c (New Medical job: The Coroner (#75065))
 
 	for(var/datum/wound/iter_wound as anything in wounds)
 		iter_wound.receive_damage(wounding_type, wounding_dmg, wound_bonus)

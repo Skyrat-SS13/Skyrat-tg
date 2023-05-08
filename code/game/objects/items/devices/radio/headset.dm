@@ -209,12 +209,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 /obj/item/radio/headset/headset_srvmed
 	name = "service medical headset"
 	desc = "A headset allowing the wearer to communicate with medbay and service."
-<<<<<<< HEAD
-	icon_state = "med_headset"
-=======
 	icon_state = "srv_headset"
-	worn_icon_state = "srv_headset"
->>>>>>> 1674f25725c (New Medical job: The Coroner (#75065))
 	keyslot = /obj/item/encryptionkey/headset_srvmed
 
 /obj/item/radio/headset/headset_com
