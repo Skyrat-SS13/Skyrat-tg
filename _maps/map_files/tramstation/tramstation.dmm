@@ -11281,11 +11281,11 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/machinery/requests_console/directional/west{
-	announcementConsole = 1;
 	assistance_requestable = 1;
 	department = "Quartermaster's Desk";
 	name = "Quartermaster's Requests Console";
-	receive_ore_updates = 1
+	receive_ore_updates = 1;
+	can_send_announcements = 1
 	},
 /obj/machinery/camera{
 	c_tag = "Cargo - Quartermaster's Office";
@@ -19951,10 +19951,10 @@
 	dir = 1
 	},
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	department = "Chief Engineer's Desk";
 	name = "Chief Engineer's Request Console";
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /obj/machinery/computer/security/telescreen/engine{
 	dir = 4;
@@ -28338,11 +28338,11 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/neck/stethoscope,
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	assistance_requestable = 1;
 	department = "Chief Medical Officer's Console";
 	name = "Chief Medical Officer's Request Console";
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/dark,
@@ -30369,9 +30369,9 @@
 	dir = 1
 	},
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	department = "Telecomms Admin";
-	name = "Telecomms Requests Console"
+	name = "Telecomms Requests Console";
+	can_send_announcements = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -37434,10 +37434,10 @@
 	dir = 5
 	},
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	department = "Research Lab";
 	name = "Research Requests Console";
-	receive_ore_updates = 1
+	receive_ore_updates = 1;
+	can_send_announcements = 1
 	},
 /obj/structure/sign/clock/directional/north,
 /turf/open/floor/iron/white,
@@ -42591,12 +42591,12 @@
 	dir = 1
 	},
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	anon_tips_receiver = 1;
 	assistance_requestable = 1;
 	department = "Bridge";
 	name = "Bridge Requests Console";
-	pixel_y = 30
+	pixel_y = 30;
+	can_send_announcements = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -44994,10 +44994,10 @@
 /area/station/commons/lounge)
 "pbf" = (
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	assistance_requestable = 1;
 	department = "Captain's Desk";
-	name = "Captain's Requests Console"
+	name = "Captain's Requests Console";
+	can_send_announcements = 1
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
@@ -46025,12 +46025,30 @@
 	pixel_x = -8
 	},
 /obj/machinery/requests_console/directional/west{
-	announcementConsole = 1;
 	anon_tips_receiver = 1;
 	assistance_requestable = 1;
 	department = "Head of Personnel's Desk";
 	name = "Head of Personnel's Requests Console";
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/table/wood,
+/obj/item/folder/blue,
+/obj/item/stamp/head/hop,
+/obj/item/trapdoor_remote/preloaded{
+	pixel_x = -8
+	},
+/obj/machinery/requests_console/directional/west{
+	anon_tips_receiver = 1;
+	assistance_requestable = 1;
+	department = "Head of Personnel's Desk";
+	name = "Head of Personnel's Requests Console";
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
@@ -48340,12 +48358,12 @@
 /area/station/security/courtroom/holding)
 "qjw" = (
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	anon_tips_receiver = 1;
 	assistance_requestable = 1;
 	department = "Head of Security's Desk";
 	name = "Head of Security's Requests Console";
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /obj/machinery/camera{
 	c_tag = "Security - Head of Security's Office";
@@ -56553,11 +56571,11 @@
 	},
 /obj/machinery/suit_storage_unit/rd,
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	anon_tips_receiver = 1;
 	assistance_requestable = 1;
 	department = "Research Director's Desk";
-	name = "Research Director's Request Console"
+	name = "Research Director's Request Console";
+	can_send_announcements = 1
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/rd)
