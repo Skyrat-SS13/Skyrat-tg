@@ -10,7 +10,7 @@ import {
   FeatureTriBoolInput,
   FeatureToggle,
   FeatureNumberInput,
-  FeatureValueProps, FeatureChoicedServerData
+  FeatureValueProps, FeatureChoicedServerData,
 } from '../../base';
 
 export const feature_leg_type: FeatureChoiced = {

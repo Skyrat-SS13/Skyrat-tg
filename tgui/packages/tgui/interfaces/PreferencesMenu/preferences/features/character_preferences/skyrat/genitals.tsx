@@ -8,7 +8,7 @@ import {
   FeatureNumeric,
   FeatureToggle,
   FeatureChoiced,
-  FeatureValueProps, FeatureChoicedServerData
+  FeatureValueProps, FeatureChoicedServerData,
 } from '../../base';
 
 export const feature_penis: Feature<string> = {
