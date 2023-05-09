@@ -132,6 +132,7 @@
 	return FALSE
 
 /mob/living/soulcatcher_soul/Destroy()
+	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
 	if(current_room)
 		var/datum/soulcatcher_room/room = current_room.resolve()
 		if(room)
