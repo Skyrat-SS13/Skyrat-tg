@@ -18,7 +18,8 @@
 #define ORANGES (1<<17)
 #define BUGS (1<<18)
 #define GORE (1<<19)
-#define BLOODY (1<<20) // SKYRAT EDIT - Hemophage Food
+#define STONE (1<<20)
+#define BLOODY (1<<21) // SKYRAT EDIT - Hemophage Food
 
 DEFINE_BITFIELD(foodtypes, list(
 	"MEAT" = MEAT,
@@ -41,6 +42,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"ORANGES" = ORANGES,
 	"BUGS" = BUGS,
 	"GORE" = GORE,
+	"STONE" = STONE,
 	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
 ))
 
@@ -66,6 +68,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"ORANGES", \
 	"BUGS", \
 	"GORE", \
+	"STONE", \
 	"BLOODY", /* SKYRAT EDIT - Hemophage Food */ \
 )
 
@@ -91,6 +94,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"Oranges", \
 	"Bugs", \
 	"Gore", \
+	"Rocks", \
 	"Bloody", /* SKYRAT EDIT - Hemophage Food */ \
 )
 

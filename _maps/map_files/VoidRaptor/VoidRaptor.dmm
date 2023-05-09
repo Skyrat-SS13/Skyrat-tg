@@ -3895,11 +3895,11 @@
 /obj/machinery/photocopier,
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	department = "Head of Personnel's Desk";
 	name = "Head of Personnel's Requests Console";
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/executive,
@@ -4647,7 +4647,7 @@
 "btf" = (
 /obj/structure/rack,
 /obj/item/stock_parts/matter_bin,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/micro_laser,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/east,
@@ -9220,11 +9220,11 @@
 "cPs" = (
 /obj/machinery/announcement_system,
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	anon_tips_receiver = 1;
 	assistance_requestable = 1;
 	department = "Telecomms Admin";
-	name = "Telecomms Requests Console"
+	name = "Telecomms Requests Console";
+	can_send_announcements = 1
 	},
 /obj/machinery/light_switch/directional/north,
 /obj/effect/turf_decal/bot,
@@ -9598,12 +9598,12 @@
 	},
 /obj/structure/filingcabinet/chestdrawer/wheeled,
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	department = "Research Lab";
 	name = "Research Requests Console";
 	receive_ore_updates = 1;
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/machinery/camera/directional/east{
 	c_tag = "Science - Research and Development";
@@ -21312,14 +21312,8 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/item/stock_parts/manipulator{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/item/stock_parts/manipulator{
-	pixel_x = -7;
-	pixel_y = 8
-	},
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/radio/headset/headset_sci{
 	pixel_x = -13;
 	pixel_y = 3
@@ -30438,9 +30432,9 @@
 "iQp" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/structure/table,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/capacitor,
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/white/smooth_edge{
@@ -37371,11 +37365,11 @@
 	pixel_y = -25
 	},
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	department = "Chief Engineer's Desk";
 	name = "Chief Engineer's Requests Console";
 	assistance_requestable = 1;
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/orange,
@@ -39115,11 +39109,11 @@
 "liK" = (
 /obj/machinery/modular_computer/console/preset/id,
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	department = "Captain's Desk";
 	name = "Captain's Requests Console";
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/structure/noticeboard/captain{
 	dir = 8;
@@ -40740,12 +40734,12 @@
 /area/station/service/chapel)
 "lGf" = (
 /obj/machinery/requests_console/directional/west{
-	announcementConsole = 1;
 	department = "Research Director's Desk";
 	name = "Research Director's Requests Console";
 	receive_ore_updates = 1;
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -44480,11 +44474,11 @@
 "mIj" = (
 /obj/structure/table/reinforced/rglass,
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	department = "Bridge";
 	name = "Bridge Requests Console";
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/item/storage/toolbox/emergency{
 	pixel_y = 4
@@ -61131,12 +61125,12 @@
 /area/station/command/bridge)
 "rjy" = (
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	department = "Head of Security's Desk";
 	name = "Head of Security's Requests Console";
 	pixel_x = 10;
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/structure/cable,
 /obj/machinery/button/door/directional/north{
@@ -68264,10 +68258,10 @@
 	desc = "A tiny laser used in certain devices. A lil left.";
 	pixel_x = -6
 	},
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/capacitor{
 	pixel_x = 6;
 	pixel_y = 6
@@ -70485,11 +70479,11 @@
 	dir = 1
 	},
 /obj/machinery/requests_console/directional/south{
-	announcementConsole = 1;
 	department = "Chief Medical Officer's Desk";
 	name = "Chief Medical Officer's Requests Console";
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/effect/landmark/start/chief_medical_officer,
 /turf/open/floor/carpet/blue,
@@ -75121,10 +75115,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/requests_console/directional/east{
-	announcementConsole = 1;
 	department = "Quartermaster's Desk";
 	name = "Quartermaster's Requests Console";
-	supplies_requestable = 1
+	supplies_requestable = 1;
+	can_send_announcements = 1
 	},
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/qm)
@@ -75995,11 +75989,11 @@
 /area/station/science/xenobiology)
 "vnh" = (
 /obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
 	department = "Captain's Desk";
 	name = "Captain's Requests Console";
 	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	anon_tips_receiver = 1;
+	can_send_announcements = 1
 	},
 /obj/structure/table/wood/fancy/royalblue,
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
@@ -80135,8 +80129,8 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
