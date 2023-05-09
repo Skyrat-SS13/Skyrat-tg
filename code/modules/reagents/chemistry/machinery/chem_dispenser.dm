@@ -479,30 +479,30 @@
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		recharge_amount *= capacitor.tier
 		parts_rating += capacitor.tier
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
+	for(var/datum/stock_part/servo/servo in component_parts)
 		/* SKYRAT EDIT - ORIGINAL
-		if (manipulator.tier > 3)
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
 		*/
 		//SKYRAT EDIT START
-		if (manipulator.tier > 1)
+		if (servo.tier > 1)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
 
-		if (manipulator.tier > 2)
+		if (servo.tier > 2)
 			dispensable_reagents |= upgrade_reagents2
 		else
 			dispensable_reagents -= upgrade_reagents2
 
-		if (manipulator.tier > 3)
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents3
 		else
 			dispensable_reagents -= upgrade_reagents3
 		//SKYRAT EDIT END
-		parts_rating += manipulator.tier
+		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
