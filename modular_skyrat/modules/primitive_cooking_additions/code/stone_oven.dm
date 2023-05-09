@@ -14,6 +14,18 @@
 		/obj/item/plate/oven_tray/material/fake_tin,
 	)
 
+/obj/machinery/oven/stone/Initialize(mapload)
+	. = ..()
+
+	if(!mapload)
+		return
+
+	if(used_tray) // We have to get rid of normal generic tray that normal ovens spawn with
+		QDEL(used_tray)
+
+	var/new_tray_type_to_use = pick(random_oven_tray_types)
+	add_tray_to_oven(new new_tray_type_to_use(src))
+
 /obj/machinery/oven/stone/add_tray_to_oven(obj/item/plate/oven_tray, mob/baker)
 	used_tray = oven_tray
 
