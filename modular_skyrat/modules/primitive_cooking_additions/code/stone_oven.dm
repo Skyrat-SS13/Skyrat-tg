@@ -8,10 +8,10 @@
 	use_power = FALSE
 
 	/// A list of the different oven trays we can spawn with
-	var/static/list/random_soup_pot_types = list(
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_copper,
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_brass,
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_tin,
+	var/static/list/random_oven_tray_types = list(
+		/obj/item/plate/oven_tray/material/fake_copper,
+		/obj/item/plate/oven_tray/material/fake_brass,
+		/obj/item/plate/oven_tray/material/fake_tin,
 	)
 
 /obj/machinery/oven/stone/add_tray_to_oven(obj/item/plate/oven_tray, mob/baker)
