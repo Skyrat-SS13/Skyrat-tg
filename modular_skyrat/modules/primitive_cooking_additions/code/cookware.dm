@@ -48,5 +48,5 @@
 
 /obj/item/plate/oven_tray/material/fake_tin/Initialize(mapload)
 	. = ..()
-	set_custom_materials(list(GET_MATERIAL_REF(/obj/item/stack/sheet/tinumium) = SHEET_MATERIAL_AMOUNT))
+	set_custom_materials(list(GET_MATERIAL_REF(/datum/material/tinumium) = SHEET_MATERIAL_AMOUNT))
 
