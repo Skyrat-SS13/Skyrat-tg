@@ -43,7 +43,7 @@
 	icon_state = "circuit_map"
 	build_path = /obj/machinery/ammo_workbench
 	req_components = list(
-		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
 		/datum/stock_part/micro_laser = 2
 	)
@@ -365,10 +365,10 @@
 	time_per_round = clamp(time_efficiency, 1, 20)
 
 	var/efficiency = 1.8
-	for(var/datum/stock_part/manipulator/new_manipulator in component_parts)
-		efficiency -= new_manipulator.tier * 0.2
+	for(var/datum/stock_part/servo/new_servo in component_parts)
+		efficiency -= new_servo.tier * 0.2
 
-	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of manipulator efficiency
+	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of servo efficiency
 
 	var/mat_capacity = 0
 	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
