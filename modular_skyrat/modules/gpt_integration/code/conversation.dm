@@ -12,16 +12,34 @@
 	/// Are we waiting for a response from GPT?
 	var/busy = FALSE
 
-
 /datum/component/gpt_conversation/Initialize(...)
-	if(!ismovable(parent))
+	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_MOVABLE_HEAR, PROC_REF(on_hear_message))
 
-	conversation_ref = SSgpt.initialise_conversation(conditioning_prefix, endpoint_id)
+	var/datum/gpt_conversation/created_conversation = SSgpt.initialise_conversation(conditioning_prefix, endpoint_id)
+
+	RegisterSignal(created_conversation, COMSIG_GPT_CONVERSATION_RESPONSE_RECEIVED, PROC_REF(response_recieved))
+
+	conversation_ref = REF(created_conversation)
+
+/datum/component/gpt_conversation/proc/response_recieved(datum/source, list/processed_responses)
+	SIGNAL_HANDLER
+
+	var/response = SSgpt.deformat_single_message(processed_responses)
+
+	if(busy)
+		var/mob/parent_mob = parent
+		parent_mob.thinking_IC = FALSE
+		parent_mob.remove_typing_indicator()
+		busy = FALSE
+	var/atom/movable/parent_atom = parent
+	parent_atom.say(response, forced = TRUE)
+
+
 
 /datum/component/gpt_conversation/proc/on_attack_hand(datum/source, mob/user, list/modifiers)
 	SIGNAL_HANDLER
@@ -61,26 +79,13 @@
 
 	converse(formatted_message)
 
-/datum/component/gpt_conversation/proc/converse(message_to_send, role = GPT_ROLE_USER, silent)
+/datum/component/gpt_conversation/proc/converse(message_to_send, role = GPT_ROLE_USER)
 	busy = TRUE
+	var/mob/parent_mob = parent
+	parent_mob.thinking_IC = TRUE
+	parent_mob.create_typing_indicator()
 
-	if(!silent && ismob(parent))
-		var/mob/parent_mob = parent
-		parent_mob.thinking_IC = TRUE
-		parent_mob.create_typing_indicator()
-
-	var/response = SSgpt.converse(message_to_send, conversation_ref, role)
-
-	if(!silent && ismob(parent))
-		var/mob/parent_mob = parent
-		parent_mob.thinking_IC = FALSE
-		parent_mob.remove_typing_indicator()
-
-	busy = FALSE
-	var/atom/movable/parent_atom = parent
-	parent_atom.say(response, forced = TRUE)
-
-
+	SSgpt.converse(message_to_send, conversation_ref, role)
 
 /datum/component/gpt_conversation/monkey
 	conditioning_prefix = GPT_CONDITIONING_PREFIX_SS13_1_MONKEY

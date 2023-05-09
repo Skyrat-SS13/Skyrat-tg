@@ -65,12 +65,12 @@
  *
  * Returns: The HTTP request.
  */
-/datum/gpt_endpoint_config/proc/create_http_request(messages_to_send)
+/datum/gpt_endpoint_config/proc/create_http_request(messages_to_send, model_override)
 	// Set up the required headers for the GPT API
 	var/list/headers = form_api_request_header(SSgpt.api_key)
 
 	// Create the JSON body for the request
-	var/list/body = form_api_request_body(messages_to_send)
+	var/list/body = form_api_request_body(messages_to_send, model_override)
 
 	// Encode the json for export
 	var/body_json = json_encode(body)
@@ -91,21 +91,25 @@
  *
  * Returns: The formatted messages list, format is as follows:
  * message = role
+ *
+ * As we do not want to cause other things to crash with null responses, we just send the error reason! Easier debugging.
  */
 /datum/gpt_endpoint_config/proc/process_http_response(datum/http_response/incoming_response)
+	var/list/responses = list()
+
 	if(incoming_response.errored && incoming_response.status_code != 200)
-		CRASH("HTTP ERROR: [incoming_response.error]")
+		stack_trace("GPT REQUEST ERROR: [incoming_response.error]")
+		responses += list(GPT_RESPONSE_ID_ROLE = "error", GPT_RESPONSE_ID_CONTENT = "HTTP ERROR: [incoming_response.error]")
+		return responses
 
 	var/list/incoming_response_json = json_decode(incoming_response["body"])
 
 	if(LAZYLEN(incoming_response_json["error"]))
-		CRASH("GPT RESPONSE ERROR: [incoming_response_json["error"]["message"]]")
+		stack_trace("GPT RESPONSE ERROR: [incoming_response_json["error"]["message"]]")
+		responses += list(GPT_RESPONSE_ID_ROLE = "error", GPT_RESPONSE_ID_CONTENT = "GPT RESPONSE ERROR: [incoming_response_json["error"]["message"]]")
+		return responses
 
-	var/list/responses = list()
-
-	for(var/choice in incoming_response_json["choices"])
-		responses[choice["message"]["content"]] = choice["message"]["role"]
+	for(var/list/message in incoming_response_json["choices"]["message"])
+		responses += list(GPT_RESPONSE_ID_ROLE = message[GPT_RESPONSE_ID_ROLE], GPT_RESPONSE_ID_CONTENT = message[GPT_RESPONSE_ID_CONTENT])
 
 	return responses
-
-

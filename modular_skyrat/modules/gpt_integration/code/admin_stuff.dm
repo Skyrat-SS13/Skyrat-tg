@@ -12,7 +12,17 @@
 
 	var/selected_model = tgui_input_list(usr, "What model would you like to use?", "Call GPT API", SSgpt.gpt_models, GPT_DEFAULT_MODEL)
 
-	var/list/responses = SSgpt.send_gpt_request(formatted_message, model_override = selected_model)
+	SSgpt.send_single_request()
+
+	to_chat(usr, "Request sent! Waiting for response...")
+
+	var/datum/gpt_message_request/request = SSgpt.send_single_request(message = formatted_message, manual_checking = TRUE, model_override = selected_model)
+
+	request.start_request()
+
+	UNTIL(request.check_request())
+
+	var/list/responses = request.process_request()
 
 	for(var/message in responses)
 		to_chat(usr, "RESPONSE | User: [responses[message]] | Message: [message]")
