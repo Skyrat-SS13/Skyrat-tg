@@ -1,8 +1,23 @@
-import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureNumeric, FeatureToggle, FeatureChoiced } from '../../base';
+import {
+  FeatureDropdownInput,
+  Feature,
+  FeatureNumberInput,
+  CheckboxInput,
+  FeatureTriColorInput,
+  FeatureTriBoolInput,
+  FeatureNumeric,
+  FeatureToggle,
+  FeatureChoiced,
+  FeatureValueProps, FeatureChoicedServerData
+} from '../../base';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const penis_skin_tone: FeatureToggle = {
@@ -27,7 +42,11 @@ export const penis_emissive: Feature<boolean[]> = {
 
 export const penis_sheath: Feature<string> = {
   name: 'Penis Sheath',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const penis_length: FeatureNumeric = {
@@ -47,7 +66,11 @@ export const penis_taur_mode_toggle: FeatureToggle = {
 
 export const feature_testicles: Feature<string> = {
   name: 'Testicles Choice',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const testicles_skin_tone: FeatureToggle = {
@@ -77,7 +100,11 @@ export const balls_size: FeatureNumeric = {
 
 export const feature_vagina: Feature<string> = {
   name: 'Vagina Choice',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const vagina_skin_tone: FeatureToggle = {
@@ -102,12 +129,20 @@ export const vagina_emissive: Feature<boolean[]> = {
 
 export const feature_womb: Feature<string> = {
   name: 'Womb Choice',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const feature_breasts: Feature<string> = {
   name: 'Breast Choice',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const breasts_skin_tone: FeatureToggle = {
@@ -137,7 +172,11 @@ export const breasts_lactation_toggle: FeatureToggle = {
 
 export const breasts_size: Feature<string> = {
   name: 'Breast Size',
-  component: FeatureDropdownInput,
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
 };
 
 export const feature_anus: Feature<string> = {
