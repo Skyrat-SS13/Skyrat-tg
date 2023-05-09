@@ -25,7 +25,6 @@
 	var/datum/computer_file/program/contract_uplink/uplink = locate() in stored_files
 
 	active_program = uplink
-	uplink.program_state = PROGRAM_STATE_ACTIVE
 
 	var/datum/computer_file/program/messenger/msg = locate() in stored_files
 	if(msg)
