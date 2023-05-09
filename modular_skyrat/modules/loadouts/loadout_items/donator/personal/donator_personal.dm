@@ -639,11 +639,6 @@
 	item_path = /obj/item/clothing/suit/razurathcoat
 	ckeywhitelist = list("razurath")
 
-/datum/loadout_item/suit/digicoat_glitched
-	name = "Glitched Digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched
-	ckeywhitelist = list("razurath")
-
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
