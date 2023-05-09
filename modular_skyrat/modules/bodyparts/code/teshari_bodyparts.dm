@@ -36,12 +36,12 @@
 	worn_back_offset = new(
 		attached_part = src,
 		feature_key = OFFSET_BACK,
-		offset_y = list("north" = -2, "south" = -2, "east" = -2, "west" = -2),
+		offset_y = list("north" = -4, "south" = -4, "east" = -4, "west" = -4),
 	)
 	worn_accessory_offset = new(
 		attached_part = src,
 		feature_key = OFFSET_ACCESSORY,
-		offset_y = list("north" = -2, "south" = -2, "east" = -2, "west" = -2),
+		offset_y = list("north" = -4, "south" = -4, "east" = -4, "west" = -4),
 	)
 	return ..()
 
