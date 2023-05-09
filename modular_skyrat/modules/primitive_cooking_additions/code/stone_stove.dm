@@ -36,11 +36,11 @@
 
 	if(!on)
 		real_parent.icon_state = "[real_parent.base_icon_state]_off" // Not an overlay but do you really want me to override a second proc? I don't
-		set_light(0, 0)
+		real_parent.set_light(0, 0)
 		return
 
 	real_parent.icon_state = "[real_parent.base_icon_state]_on"
-	set_light(3, 1, LIGHT_COLOR_FIRE)
+	real_parent.set_light(3, 1, LIGHT_COLOR_FIRE)
 
 	overlays += emissive_appearance(real_parent.icon, "[real_parent.base_icon_state]_on_fire_emissive", real_parent, alpha = real_parent.alpha)
 

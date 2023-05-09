@@ -21,7 +21,7 @@
 		return
 
 	if(used_tray) // We have to get rid of normal generic tray that normal ovens spawn with
-		QDEL(used_tray)
+		QDEL_NULL(used_tray)
 
 	var/new_tray_type_to_use = pick(random_oven_tray_types)
 	add_tray_to_oven(new new_tray_type_to_use(src))
