@@ -1,10 +1,5 @@
 /obj/structure/closet/secure_closet/captains
-<<<<<<< HEAD
-	name = "\proper captain's locker"
-	req_access = list(ACCESS_CAPTAIN)
-=======
 	name = "captain's locker"
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 	icon_state = "cap"
 	req_access = list(ACCESS_CAPTAIN)
 
@@ -27,16 +22,10 @@
 	new /obj/item/storage/photo_album/captain(src)
 
 /obj/structure/closet/secure_closet/hop
-<<<<<<< HEAD
-	name = "\proper head of personnel's locker"
-	req_access = list(ACCESS_HOP)
-	icon_state = "hop"
-	storage_capacity = 40 //SKYRAT EDIT ADDITION
-=======
 	name = "head of personnel's locker"
 	icon_state = "hop"
 	req_access = list(ACCESS_HOP)
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
@@ -58,12 +47,7 @@
 	new /obj/item/storage/lockbox/medal/hop(src)
 
 /obj/structure/closet/secure_closet/hos
-<<<<<<< HEAD
-	name = "\proper head of security's locker"
-	req_access = list(ACCESS_HOS)
-=======
 	name = "head of security's locker"
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 	icon_state = "hos"
 	req_access = list(ACCESS_HOS)
 
@@ -263,13 +247,8 @@
 
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE
-<<<<<<< HEAD
-	name = "Secure Evidence Closet"
-	req_one_access = list("armory","detective")
-=======
 	name = "secure evidence closet"
 	req_one_access = list(ACCESS_ARMORY, ACCESS_DETECTIVE)
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
@@ -300,24 +279,14 @@
 	req_access = list(ACCESS_ARMORY)
 
 /obj/structure/closet/secure_closet/contraband/heads
-<<<<<<< HEAD
-	anchored = TRUE
-	name = "Contraband Locker"
-=======
 	name = "contraband locker"
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 	req_access = list(ACCESS_COMMAND)
 	anchored = TRUE
 
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
-<<<<<<< HEAD
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
-=======
-	icon_state = "armory"
 	req_access = list(ACCESS_ARMORY)
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
 	..()
@@ -336,13 +305,8 @@
 
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
-<<<<<<< HEAD
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
-=======
-	icon_state = "armory"
 	req_access = list(ACCESS_ARMORY)
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
 	..()
@@ -354,13 +318,8 @@
 
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
-<<<<<<< HEAD
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
-=======
-	icon_state = "armory"
 	req_access = list(ACCESS_ARMORY)
->>>>>>> 2068ea9ab53 (Crate, Closet Refactors & Access Secured Stuff  (#74754))
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
 	..()
