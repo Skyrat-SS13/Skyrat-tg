@@ -55,24 +55,6 @@
 	acid = 50
 	wound = 6
 
-/obj/item/clothing/head/soft/enclave
-	name = "neo american cap"
-	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclavesoft"
-	soft_type = "enclave"
-	dog_fashion = null
-
-/obj/item/clothing/head/soft/enclaveo
-	name = "neo american officer cap"
-	desc = "It blocks out the sun and laser bolts from executions."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclaveosoft"
-	soft_type = "enclaveo"
-	dog_fashion = null
-
 /obj/item/clothing/head/hats/sec/peacekeeper/sol
 	name = "sol police cap"
 	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
@@ -203,21 +185,10 @@
 	icon_state = "yankeenobrimsoft"
 	soft_type = "yankeenobrim"
 
-/obj/item/clothing/head/fedora/fedbrown
+/obj/item/clothing/head/fedora/brown //Fedora without detective's candy corn gimmick
 	name = "brown fedora"
-	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "brfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/fedora/fedblack
-	name = "black fedora"
-	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "blfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	icon_state = "detective"
+	inhand_icon_state = "det_hat"
 
 /obj/item/clothing/head/standalone_hood
 	name = "hood"
