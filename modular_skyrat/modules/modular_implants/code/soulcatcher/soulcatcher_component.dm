@@ -192,7 +192,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
 
 	var/atom/parent_atom = parent_object
-	if(parent_atom)
+	if(istype(parent_atom))
 		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
 		var/message_to_log = "[key_name(new_soul)] joined [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
 		parent_atom.log_message(message_to_log, LOG_GAME)
