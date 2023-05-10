@@ -34,8 +34,8 @@
 		gas_temp -= (laser_part.tier * 5)
 
 	processing_speed = 6 SECONDS //starts at 6 seconds, should go down to 4 seconds at most.
-	for(var/datum/stock_part/manipulator/manipulator_part in component_parts)
-		processing_speed -= (manipulator_part.tier * (0.5 SECONDS))
+	for(var/datum/stock_part/servo/servo_part in component_parts)
+		processing_speed -= (servo_part.tier * (0.5 SECONDS))
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -143,7 +143,7 @@
 		/obj/item/stack/ore/bluespace_crystal/refined = 1,
 		/datum/stock_part/matter_bin = 2,
 		/datum/stock_part/micro_laser = 2,
-		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/servo = 2,
 	)
 	needs_anchored = TRUE
 

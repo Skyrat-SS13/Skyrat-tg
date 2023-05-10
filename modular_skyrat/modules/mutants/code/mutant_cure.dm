@@ -303,9 +303,9 @@
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	. = ..()
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - manipulator.tier) >= 1)
-			recombination_step_time -= manipulator.tier
+	for(var/datum/stock_part/servo/servo in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - servo.tier) >= 1)
+			recombination_step_time -= servo.tier
 	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
 		recombination_step_amount += scanning_module.tier * 2
 	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
