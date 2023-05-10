@@ -26,12 +26,14 @@
 
 /datum/component/gun_safety/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_GUN_TRY_FIRE, PROC_REF(check_if_we_can_actually_shooty))
+	RegisterSignal(parent, COMSIG_AUTOFIRE_ONMOUSEDOWN, PROC_REF(check_if_we_can_actually_shooty))
 	RegisterSignal(parent, COMSIG_ITEM_UI_ACTION_CLICK, PROC_REF(we_may_be_toggling_safeties))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/gun_safety/UnregisterFromParent()
 	UnregisterSignal(parent, list(
 		COMSIG_GUN_TRY_FIRE,
+		COMSIG_AUTOFIRE_ONMOUSEDOWN,
 		COMSIG_ITEM_UI_ACTION_CLICK,
 		COMSIG_PARENT_EXAMINE,
 	))
