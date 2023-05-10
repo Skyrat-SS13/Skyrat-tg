@@ -558,6 +558,11 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_razurath
 	ckeywhitelist = list("razurath")
 
+/datum/loadout_item/toys/plushie_razurath/second
+	name = "Dwarf Shark Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_razurath/second
+	ckeywhitelist = list("razurath")
+
 /datum/loadout_item/toys/plushie_elofy
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
