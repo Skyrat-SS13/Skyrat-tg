@@ -314,6 +314,7 @@
 	greyscale_colors = "#4d4d4d#808080#ff3300"
 	greyscale_config = /datum/greyscale_config/heck_helmet
 	greyscale_config_worn = /datum/greyscale_config/heck_helmet/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted //SKYRAT EDIT ADDITION - MuzzledGreyscale (Why does this use worn_digi)
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/hooded/hostile_environment/Initialize(mapload)

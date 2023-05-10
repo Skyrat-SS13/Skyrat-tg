@@ -507,12 +507,14 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
+	type_to_check = /datum/preference/choiced/mutant_choice/synth_antenna
 
 /datum/preference/tri_bool/synth_antenna_emissive
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
+	type_to_check = /datum/preference/choiced/mutant_choice/synth_antenna
 
 /// IPC Chassis
 
