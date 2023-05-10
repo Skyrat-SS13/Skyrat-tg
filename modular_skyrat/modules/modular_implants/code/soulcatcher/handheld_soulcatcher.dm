@@ -6,8 +6,10 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
+	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	slot_flags = ITEM_SLOT_BELT
 	/// What soulcatcher datum is associated with this item?
 	var/datum/component/soulcatcher/linked_soulcatcher
 	/// The cooldown for the RSD on scanning a body if the ghost refuses. This is here to prevent spamming.
