@@ -133,7 +133,7 @@ export const AugmentationPage = (props, context) => {
                   <Dropdown
                     grow
                     width="100%"
-                    options={Object.values(props.limb.aug_choices)}
+                    options={props.limb.aug_choices}
                     displayText={props.limb.chosen_aug}
                     onSelected={(value) => {
                       // Since the costs are positive,
@@ -188,7 +188,7 @@ export const OrganPage = (props, context) => {
         <Stack.Item grow>
           <Dropdown
             width="100%"
-            options={Object.values(props.organ.organ_choices)}
+            options={props.limb.aug_choices}
             displayText={props.organ.chosen_organ}
             onSelected={(value) => {
               // Since the costs are positive, it's added and not substracted
