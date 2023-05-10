@@ -15,6 +15,8 @@
 	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	internal_magazine = TRUE
+	item_flags = NEEDS_PERMIT //SKYRAT EDIT - Bow Consolidation
+	trigger_guard = TRIGGER_GUARD_ALLOW_ALL //SKYRAT EDIT - Bow Consolidation - So Ashwalkers Can Use It
 	cartridge_wording = "arrow"
 	bolt_type = BOLT_TYPE_NO_BOLT
 	/// whether the bow is drawn back
@@ -44,6 +46,7 @@
 		balloon_alert(user, "no arrow nocked!")
 	else
 		balloon_alert(user, "[drawn ? "string released" : "string drawn"]")
+		playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //SKYRAT EDIT - Bow Consolidation - gets way too high pitched if the freq varies
 		drawn = !drawn
 	update_appearance()
 
