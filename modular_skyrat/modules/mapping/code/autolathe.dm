@@ -10,7 +10,7 @@
 	stored_research = GLOB.autounlock_techwebs[/datum/techweb/autounlocking/autolathe/ghost_cafe]
 
 /obj/item/circuitboard/machine/autolathe/ghost_cafe
-	"Ancient Autolathe"
+	name = "Ancient Autolathe"
 	build_path = /obj/machinery/autolathe/ghost_cafe
 
 /datum/techweb/autounlocking/autolathe/ghost_cafe/New()
