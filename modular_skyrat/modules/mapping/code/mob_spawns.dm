@@ -289,7 +289,7 @@
 /datum/outfit/ds2/syndicate_command/corporateliaison
 	name = "DS-2 Corporate Liasion"
 	uniform = /obj/item/clothing/under/syndicate/sniper
-	head = /obj/item/clothing/head/fedora/fedblack
+	head = /obj/item/clothing/head/fedora
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion

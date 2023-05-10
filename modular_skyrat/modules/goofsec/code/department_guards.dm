@@ -86,11 +86,12 @@
 */
 /obj/item/clothing/head/helmet/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //Sci guard will get the plain TG version of this item too
+	//The base one is used for science guards, and the sprite is unchanged
 	unique_reskin = null
 
 /obj/item/clothing/head/helmet/blueshirt/skyrat/guard //Version of the blueshirt helmet without a blue line. Used by all dept guards right now.
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
 
@@ -144,7 +145,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/effect/landmark/start/bouncer
-	name = "Bouncer"
+	name = "Service Guard"
 	icon_state = "Bouncer"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
