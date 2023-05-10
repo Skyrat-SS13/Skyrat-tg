@@ -1,8 +1,8 @@
 /obj/item/clothing/head/helmet/rus_helmet/nri
 	name = "\improper M-42 helmet"
 	desc = "A lightweight M-42 helmet, previously used by the NRI military. This helmet performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the heads) of insurgents."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi'
 	icon_state = "russian_green_helmet"
 	armor_type = /datum/armor/rus_helmet_nri
@@ -37,8 +37,8 @@
 	name = "\improper Cordun-M helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	armor_type = /datum/armor/helmet_nri_heavy
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
@@ -81,8 +81,6 @@
 /obj/item/clothing/head/helmet/nri_heavy/old
 	name = "\improper REDUT helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
-	icon_state = "russian_heavy_helmet_old"
-	worn_icon_state = "russian_heavy_helmet" // Add a proper worn icon state if you still want it to look like the old one, can't be bothered to find it myself.
 	armor_type = /datum/armor/nri_heavy_old
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
@@ -101,8 +99,8 @@
 /obj/item/clothing/head/helmet/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor helmet"
 	desc = "A composite graphene-plasteel helmet with a ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi'
 	icon_state = "nri_soldier"

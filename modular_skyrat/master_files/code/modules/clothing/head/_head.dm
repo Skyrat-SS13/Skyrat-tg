@@ -33,6 +33,12 @@
 /obj/item/clothing/head/bio_hood
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/bio_muzzled.dmi'
 
+/obj/item/clothing/head/helmet
+	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet_muzzled.dmi'
+
+/obj/item/clothing/head/helmet/toggleable/riot
+	flags_inv = HIDEEARS|HIDEFACE //Removes HIDESNOUT so that transparent helmets still show the snout
+
 /obj/item/clothing/head/helmet/space
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/spacehelm_muzzled.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR //Removes HIDESNOUT so that transparent helmets still show the snout
@@ -49,6 +55,7 @@
 /obj/item/clothing/head/helmet/space/changeling
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION
+
 /obj/item/clothing/head/helmet/space/freedom
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION
