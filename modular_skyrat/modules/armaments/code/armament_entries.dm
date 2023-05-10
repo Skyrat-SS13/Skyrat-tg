@@ -13,9 +13,14 @@
  * @author Gandalf2k15
  */
 
-GLOBAL_LIST_INIT(armament_entries, build_armament_list())
-// Do not touch this.
-/proc/build_armament_list()
+SUBSYSTEM_DEF(armaments)
+	name = "Armaments"
+	flags = SS_NO_FIRE
+	init_order = INIT_ORDER_ARMAMENTS
+
+	var/list/entries
+
+/datum/controller/subsystem/armaments/Initialize()
 	var/list/armament_dataset = list()
 	for(var/datum/armament_entry/armament_entry as anything in subtypesof(/datum/armament_entry))
 		// Set up our categories so we can add items to them
@@ -68,7 +73,9 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 				if(!(ARMAMENT_SUBCATEGORY_NONE in armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY]))
 					armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] = list()
 				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] += spawned_armament_entry
-	return armament_dataset
+
+	entries = armament_dataset
+	return SS_INIT_SUCCESS
 
 /*
 *	ARMAMENT ENTRIES
@@ -102,7 +109,7 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 	/// Is this restricted for purchase in some form? Requires extra code in the vendor to function, used for guncargo.
 	var/restricted = FALSE
 
-/datum/armament_entry/proc/setup() // TODO: Make this use overlays.
+/datum/armament_entry/proc/setup()
 	var/obj/item/test_item = new item_type()
 	if(istype(test_item, /obj/item/gun/ballistic))
 		var/obj/item/gun/ballistic/ballistic_test = test_item

@@ -1,13 +1,20 @@
 /obj/item/clothing/under/rank/expeditionary_corps
 	name = "expeditionary corps uniform"
+	desc = "A rugged uniform for those who see the worst at the edges of the galaxy."
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
-	strip_delay = 70
+	armor_type = /datum/armor/rank_expeditionary_corps
+	strip_delay = 7 SECONDS
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+
+/datum/armor/rank_expeditionary_corps
+	bio = 10
+	fire = 15
+	acid = 15
+	wound = 5
 
 /obj/item/storage/belt/military/expeditionary_corps
 	name = "expeditionary corps chest rig"
@@ -75,8 +82,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
-	inhand_icon_state = "exp_corps"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	inhand_icon_state = "jackboots"
 
 /obj/item/clothing/gloves/color/black/expeditionary_corps
 	name = "expeditionary corps gloves"
@@ -88,9 +94,8 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
 
-/obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps
+/obj/item/clothing/gloves/chief_engineer/expeditionary_corps
 	name = "expeditionary corps insulated gloves"
 	icon_state = "exp_corps_eng"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -101,9 +106,13 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/chief_engineer_expeditionary_corps
 
-/obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps
+/datum/armor/chief_engineer_expeditionary_corps
+	fire = 80
+	acid = 50
+
+/obj/item/clothing/gloves/latex/nitrile/expeditionary_corps
 	name = "expeditionary corps medic gloves"
 	icon_state = "exp_corps_med"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -114,7 +123,11 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/nitrile_expeditionary_corps
+
+/datum/armor/nitrile_expeditionary_corps
+	fire = 80
+	acid = 50
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
 	name = "expeditionary corps bag"
@@ -123,8 +136,6 @@
 	inhand_icon_state = "backpack"
 	icon = 'modular_skyrat/modules/exp_corps/icons/backpack.dmi'
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/mob_backpack.dmi'
-	slowdown = 0
-	resistance_flags = FIRE_PROOF
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Backpack" = list(
@@ -139,12 +150,12 @@
 
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
-	desc = "An armored vest that provides decent protection against most types of damage."
+	desc = "An armored vest that provides okay protection against most types of damage."
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	armor_type = /datum/armor/vest_expeditionary_corps
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	dog_fashion = null
@@ -162,17 +173,37 @@
 		)
 
 
+/datum/armor/vest_expeditionary_corps
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 80
+	acid = 100
+	wound = 10
+
 /obj/item/clothing/head/helmet/expeditionary_corps
 	name = "expeditionary corps helmet"
 	desc = "A robust helmet worn by Expeditionary Corps troopers. Alt+click it to toggle the NV system."
 	icon_state = "exp_corps"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	armor_type = /datum/armor/helmet_expeditionary_corps
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
 	actions_types = list(/datum/action/item_action/toggle_nv)
+
+/datum/armor/helmet_expeditionary_corps
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 30
+	fire = 80
+	acid = 100
+	wound = 10
 
 /datum/action/item_action/toggle_nv
 	name = "Toggle Nightvision"
@@ -196,19 +227,17 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/enable_nv(mob/user)
 	if(current_user)
-		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.get_organ_by_type(/obj/item/organ/internal/eyes)
 		if(my_eyes)
-			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			my_eyes.see_in_dark = 8
+			my_eyes.color_cutoffs = list(10, 30, 10)
 			my_eyes.flash_protect = FLASH_PROTECTION_SENSITIVE
 		current_user.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/disable_nv()
 	if(current_user)
-		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.get_organ_by_type(/obj/item/organ/internal/eyes)
 		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
+			my_eyes.color_cutoffs = initial(my_eyes.color_cutoffs)
 			my_eyes.flash_protect = initial(my_eyes.flash_protect)
 		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		current_user.update_sight()

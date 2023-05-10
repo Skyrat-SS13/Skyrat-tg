@@ -4,11 +4,11 @@
 	density = FALSE
 	desc = "A generic pAI hard-light holographics emitter."
 	health = 500
-	held_lh = 'icons/mob/pai_item_lh.dmi'
-	held_rh = 'icons/mob/pai_item_rh.dmi'
-	head_icon = 'icons/mob/pai_item_head.dmi'
+	held_lh = 'icons/mob/inhands/pai_item_lh.dmi'
+	held_rh = 'icons/mob/inhands/pai_item_rh.dmi'
+	head_icon = 'icons/mob/clothing/head/pai_head.dmi'
 	hud_type = /datum/hud/pai
-	icon = 'icons/mob/pai.dmi'
+	icon = 'icons/mob/silicon/pai.dmi'
 	icon_state = "repairbot"
 	job = JOB_PERSONAL_AI
 	layer = LOW_MOB_LAYER
@@ -146,9 +146,10 @@
 	return ..()
 
 // See software.dm for Topic()
-/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE, need_hands = FALSE, floor_okay = FALSE)
-	// Resting is just an aesthetic feature for them.
-	return ..(movable, be_close, no_dexterity, no_tk, need_hands, TRUE)
+/mob/living/silicon/pai/can_perform_action(atom/movable/target, action_bitflags)
+	action_bitflags |= ALLOW_RESTING // Resting is just an aesthetic feature for them
+	action_bitflags &= ~ALLOW_SILICON_REACH // They don't get long reach like the rest of silicons
+	return ..(target, action_bitflags)
 
 /mob/living/silicon/pai/Destroy()
 	QDEL_NULL(atmos_analyzer)
@@ -159,12 +160,7 @@
 	QDEL_NULL(internal_gps)
 	QDEL_NULL(newscaster)
 	QDEL_NULL(signaler)
-	if(!QDELETED(card) && loc != card)
-		card.forceMove(drop_location())
-		// these are otherwise handled by paicard/handle_atom_del()
-		card.pai = null
-		card.emotion_icon = initial(card.emotion_icon)
-		card.update_appearance()
+	card = null
 	GLOB.pai_list.Remove(src)
 	return ..()
 
@@ -174,6 +170,9 @@
 /mob/living/silicon/pai/examine(mob/user)
 	. = ..()
 	. += "Its master ID string seems to be [(!master_name || emagged) ? "empty" : master_name]."
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	. += get_silicon_flavortext()
+	//SKYRAT EDIT ADDITION END
 
 /mob/living/silicon/pai/get_status_tab_items()
 	. += ..()
@@ -220,20 +219,19 @@
 		pai_card.set_personality(src)
 	forceMove(pai_card)
 	card = pai_card
-	addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_INIT_TIME)
+	addtimer(VARSET_WEAK_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_INIT_TIME)
 	if(!holoform)
-		ADD_TRAIT(src, TRAIT_IMMOBILIZED, PAI_FOLDED)
-		ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, PAI_FOLDED)
+		add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), PAI_FOLDED)
 	desc = "A pAI hard-light holographics emitter. This one appears in the form of a [chassis]."
 
-	RegisterSignal(src, COMSIG_LIVING_CULT_SACRIFICED, .proc/on_cult_sacrificed)
+	RegisterSignal(src, COMSIG_LIVING_CULT_SACRIFICED, PROC_REF(on_cult_sacrificed))
 
 /mob/living/silicon/pai/make_laws()
 	laws = new /datum/ai_laws/pai()
 	return TRUE
 
-/mob/living/silicon/pai/process(delta_time)
-	holochassis_health = clamp((holochassis_health + (HOLOCHASSIS_REGEN_PER_SECOND * delta_time)), -50, HOLOCHASSIS_MAX_HEALTH)
+/mob/living/silicon/pai/process(seconds_per_tick)
+	holochassis_health = clamp((holochassis_health + (HOLOCHASSIS_REGEN_PER_SECOND * seconds_per_tick)), -50, HOLOCHASSIS_MAX_HEALTH)
 
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	. = ..()
@@ -251,6 +249,7 @@
 		return
 	set_health(maxHealth - getBruteLoss() - getFireLoss())
 	update_stat()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /**
  * Resolves the weakref of the pai's master.

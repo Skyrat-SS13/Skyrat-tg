@@ -4,13 +4,12 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	worn_icon = 'modular_skyrat/modules/morenarcotics/icons/mask.dmi'
 	icon_state = "glass_pipeoff" //it seems like theres some unused crack pipe sprite in masks.dmi, sweet!
-	inhand_icon_state = "glass_pipeoff"
 	icon_on = "glass_pipeon"
 	icon_off = "glass_pipeoff"
 	chem_volume = 20
 
-/obj/item/clothing/mask/cigarette/pipe/crackpipe/process(delta_time)
-	smoketime -= delta_time
+/obj/item/clothing/mask/cigarette/pipe/crackpipe/process(seconds_per_tick)
+	smoketime -= seconds_per_tick
 	if(smoketime <= 0)
 		if(ismob(loc))
 			var/mob/living/smoking_mob = loc

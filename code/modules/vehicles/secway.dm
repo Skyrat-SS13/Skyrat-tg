@@ -4,14 +4,18 @@
 	desc = "A brave security cyborg gave its life to help you look like a complete tool."
 	icon_state = "secway"
 	max_integrity = 60
-	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 60)
+	armor_type = /datum/armor/ridden_secway
 	key_type = /obj/item/key/security
 	integrity_failure = 0.5
-		///What mobs are currently repairing us.
-	var/list/mob/living/repairing_mobs
 
 	///This stores a banana that, when used on the secway, prevents the vehicle from moving until it is removed.
 	var/obj/item/food/grown/banana/eddie_murphy
+
+/datum/armor/ridden_secway
+	melee = 10
+	laser = 10
+	fire = 60
+	acid = 60
 
 /obj/vehicle/ridden/secway/Initialize(mapload)
 	. = ..()
@@ -21,10 +25,10 @@
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/vehicle/ridden/secway/process(delta_time)
+/obj/vehicle/ridden/secway/process(seconds_per_tick)
 	if(atom_integrity >= integrity_failure * max_integrity)
 		return PROCESS_KILL
-	if(DT_PROB(10, delta_time))
+	if(SPT_PROB(10, seconds_per_tick))
 		return
 	var/datum/effect_system/fluid_spread/smoke/smoke = new
 	smoke.set_up(0, holder = src, location = src)
@@ -34,7 +38,7 @@
 	if(user.combat_mode)
 		return
 	. = TRUE
-	if(LAZYFIND(repairing_mobs, user))
+	if(DOING_INTERACTION(user, src))
 		balloon_alert(user, "you're already repairing it!")
 		return
 	if(atom_integrity >= max_integrity)
@@ -42,7 +46,6 @@
 		return
 	if(!W.tool_start_check(user, amount=1))
 		return
-	LAZYADD(repairing_mobs, user)
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
 	audible_message(span_hear("You hear welding."))
 	var/did_the_thing
@@ -57,7 +60,6 @@
 		user.balloon_alert_to_viewers("[(atom_integrity >= max_integrity) ? "fully" : "partially"] repaired [src]")
 	else
 		user.balloon_alert_to_viewers("stopped welding [src]", "interrupted the repair!")
-	LAZYREMOVE(repairing_mobs, user)
 
 /obj/vehicle/ridden/secway/attackby(obj/item/W, mob/living/user, params)
 	if(!istype(W, /obj/item/food/grown/banana))

@@ -11,7 +11,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
@@ -24,7 +24,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	heat_protection = CHEST|ARMS
 
-/obj/item/clothing/suit/det_suit/cowboyvest
+/obj/item/clothing/suit/jacket/det_suit/cowboyvest
 	name = "blonde cowboy vest"
 	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -57,6 +57,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
@@ -78,17 +79,25 @@
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
 	name = "security medic scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards and acid, along with some light padding. This one is in a deep red."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
+	armor_type = /datum/armor/red_sec
 
 /// PRISONER
+
+/datum/armor/red_sec
+	melee = 10
+	bio = 10
+	fire = 30
+	acid = 30
+	wound = 10
+
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
-	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentComm employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
 	greyscale_colors = "#FFB600"
 
 /obj/item/clothing/under/rank/prisoner/skirt/protcust
 	name = "protective custody prisoner jumpskirt"
-	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentComm employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
 	greyscale_colors = "#FFB600"
 	supports_variations_flags = NONE
 
@@ -128,14 +137,16 @@
 /obj/item/clothing/under/rank/prisoner/classic
 	name = "classic prisoner jumpsuit"
 	desc = "A black and white striped jumpsuit, like something out of a movie."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 	icon_state = "prisonerclassic"
 	greyscale_colors = null
 	greyscale_config = null
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/prisoner/syndicate
 	name = "syndicate prisoner jumpsuit"

@@ -29,7 +29,7 @@
 /mob/living/simple_animal/parrot
 	name = "parrot"
 	desc = "The parrot squawks, \"They're a Parrot! BAWWK!\"" //'
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
 	icon_dead = "parrot_dead"
@@ -134,6 +134,10 @@
 						/obj/item/radio/headset/headset_cargo)
 		ears = new headset(src)
 
+/mob/living/simple_animal/parrot/Destroy()
+	QDEL_NULL(ears)
+	return ..()
+
 /mob/living/simple_animal/parrot/examine(mob/user)
 	. = ..()
 	if(stat)
@@ -159,12 +163,11 @@
 
 /mob/living/simple_animal/parrot/get_status_tab_items()
 	. = ..()
-	. += ""
 	. += "Held Item: [held_item]"
-	. += "Combat mode: [combat_mode ? "On" : "Off"]"
 
-/* SKYRAT EDIT - MOVED TO modular_skyrat/modules/poly_commands
-/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO modular_skyrat/modules/poly_commands
+/*
+/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
 	. = ..()
 	if(speaker != src && prob(50)) //Dont imitate ourselves
 		if(!radio_freq || prob(10))
@@ -174,6 +177,7 @@
 	if(speaker == src && !client) //If a parrot squawks in the woods and no one is around to hear it, does it make a sound? This code says yes!
 		return message
 */
+// SKYRAT EDIT REMOVAL END
 
 /mob/living/simple_animal/parrot/radio(message, list/message_mods = list(), list/spans, language) //literally copied from human/radio(), but there's no other way to do this. at least it's better than it used to be.
 	. = ..()
@@ -379,7 +383,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /*
  * AI - Not really intelligent, but I'm calling it AI anyway.
  */
-/mob/living/simple_animal/parrot/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/parrot/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	..()
 
 	//Sprite update for when a parrot gets pulled
@@ -426,7 +430,8 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 				icon_state = icon_living
 				return
 
-		if(--parrot_sleep_dur) //Zzz
+		parrot_sleep_dur--
+		if(parrot_sleep_dur) //Zzz
 			return
 
 		else
@@ -656,7 +661,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 					item = I
 					break
 		if(item)
-			if(!get_path_to(src, item))
+			if(!length(get_path_to(src, item))) // WHY DO WE DISREGARD THE PATH AHHHHHH
 				item = null
 				continue
 			return item
@@ -922,7 +927,10 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 	. = ..()
 
-/mob/living/simple_animal/parrot/poly/Life(delta_time = SSMOBS_DT, times_fired)
+	// Ensure 1 Poly exists
+	REGISTER_REQUIRED_MAP_ITEM(1, 1)
+
+/mob/living/simple_animal/parrot/poly/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory(FALSE)
 		memory_saved = TRUE
@@ -1021,3 +1029,11 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	H.ForceContractDisease(P, FALSE)
 	parrot_interest = null
 	H.visible_message(span_danger("[src] dive bombs into [H]'s chest and vanishes!"), span_userdanger("[src] dive bombs into your chest, vanishing! This can't be good!"))
+
+#undef PARROT_PERCH
+#undef PARROT_SWOOP
+#undef PARROT_WANDER
+#undef PARROT_STEAL
+#undef PARROT_ATTACK
+#undef PARROT_RETURN
+#undef PARROT_FLEE

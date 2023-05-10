@@ -1,3 +1,7 @@
+#define PARROT_PERCH (1<<0) //Sitting/sleeping, not moving
+#define PARROT_SWOOP (1<<1) //Moving towards or away from a target
+#define PARROT_WANDER (1<<2) //Moving without a specific target in mind
+
 /*
 * Parrot commands: Made modular
 */
@@ -6,7 +10,7 @@
 	/// Whether the parrot is on a human's shoulder or not
 	var/buckled_to_human = FALSE
 
-/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())
+/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
 	. = ..()
 	if(check_command(message, speaker))
 		return
@@ -55,6 +59,8 @@
 		return FALSE
 
 /mob/living/simple_animal/parrot/poly/proc/command_perch(mob/living/carbon/human/human_target)
+	if (!buckled)
+		buckled_to_human = FALSE
 	if(human_target.buckled_mobs?.len >= human_target.max_buckled_mobs)
 		return
 	if(buckled_to_human)
@@ -67,6 +73,8 @@
 	perch_on_human(human_target)
 
 /mob/living/simple_animal/parrot/poly/proc/command_hop_off(mob/living/carbon/human/human_target)
+	if (!buckled)
+		buckled_to_human = FALSE
 	if(!buckled_to_human || !buckled)
 		emote("me", EMOTE_VISIBLE, "gives [human_target] a confused look, squawking softly.")
 		return
@@ -81,3 +89,7 @@
 	buckled_to_human = FALSE
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
+
+#undef PARROT_PERCH
+#undef PARROT_SWOOP
+#undef PARROT_WANDER

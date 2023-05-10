@@ -1,8 +1,9 @@
 /obj/item/spanking_pad
 	name = "spanking pad"
 	desc = "A leather pad with a handle."
-	icon_state = "spankpad"
-	inhand_icon_state = "spankpad"
+	icon_state = "spankpad_pink"
+	base_icon_state = "spankpad"
+	inhand_icon_state = "spankpad_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -16,9 +17,10 @@
 
 /// Create the designs for the radial menu
 /obj/item/spanking_pad/proc/populate_spankpad_designs()
-    spankpad_designs = list(
-		"pink" = image (icon = src.icon, icon_state = "spankpad_pink"),
-		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"))
+	spankpad_designs = list(
+		"pink" = image(icon = src.icon, icon_state = "spankpad_pink"),
+		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"),
+	)
 
 /// A check to ensure the user can use the radial menu
 /obj/item/spanking_pad/proc/check_menu(mob/living/user)
@@ -38,8 +40,8 @@
 
 /obj/item/spanking_pad/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/spanking_pad/AltClick(mob/user)
 	if(color_changed)
@@ -47,7 +49,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, spankpad_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, spankpad_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -72,8 +74,8 @@
 			message = (user == target) ? pick("spanks themselves with [src]", "uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt", "spanks [target] with [src], making a loud slapping noise", "slaps [target]'s thighs with [src]")
 			if(prob(40) && (target.stat != DEAD))
 				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
-			target.adjustArousal(2)
-			target.adjustPain(4)
+			target.adjust_arousal(2)
+			target.adjust_pain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 				target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)

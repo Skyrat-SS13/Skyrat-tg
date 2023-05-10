@@ -1,8 +1,9 @@
 /obj/item/clothing/ears/kinky_headphones
 	name = "kinky headphones"
 	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
-	icon_state = "kinkphones"
-	inhand_icon_state = "kinkphones"
+	icon_state = "kinkphones_pink_off"
+	base_icon_state = "kinkphones"
+	inhand_icon_state = "kinkphones_pink_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
 	strip_delay = 15
@@ -33,7 +34,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, kinkphones_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, kinkphones_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_kinkphones_color = choice
@@ -51,7 +52,7 @@
 //we equipping it so we deaf now
 /obj/item/clothing/ears/kinky_headphones/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!(istype(user) && slot == ITEM_SLOT_EARS))
+	if(!(istype(user) && (slot & ITEM_SLOT_EARS)))
 		return
 	to_chat(user, span_purple("[!kinky_headphones_on ? "You can barely hear anything! Your other senses have become more apparent..." : "Strange but relaxing music fills your mind. You feel so... Calm."]"))
 	ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -79,8 +80,8 @@
 
 /obj/item/clothing/ears/kinky_headphones/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
+	icon_state = "[base_icon_state]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
 
 /obj/item/clothing/ears/kinky_headphones/proc/toggle(owner)
 	kinky_headphones_on = !kinky_headphones_on

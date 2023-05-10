@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(id_access)
 	/// The roundstart generated code for the spare ID safe. This is given to the Captain on shift start. If there's no Captain, it's given to the HoP. If there's no HoP
 	var/spare_id_safe_code = ""
 
-/datum/controller/subsystem/id_access/Initialize(timeofday)
+/datum/controller/subsystem/id_access/Initialize()
 	// We use this because creating the trim singletons requires the config to be loaded.
 	setup_access_flags()
 	setup_region_lists()
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(id_access)
 
 	spare_id_safe_code = "[rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)]"
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * Called by [/datum/controller/subsystem/ticker/proc/setup]
@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(id_access)
 			"pdas" = list(),
 		),
 		"[ACCESS_HOP]" = list(
-			"regions" = list(REGION_GENERAL, REGION_SUPPLY),
+			"regions" = list(REGION_GENERAL),
 			"head" = JOB_HEAD_OF_PERSONNEL,
 			"templates" = list(),
 			"pdas" = list(),
@@ -216,7 +216,7 @@ SUBSYSTEM_DEF(id_access)
 		var/datum/id_trim/trim = trim_singletons_by_path[trim_path]
 		centcom_job_templates[trim_path] = trim.assignment
 
-	var/list/all_pda_paths = typesof(/obj/item/modular_computer/tablet/pda)
+	var/list/all_pda_paths = typesof(/obj/item/modular_computer/pda)
 	var/list/pda_regions = PDA_PAINTING_REGIONS
 	for(var/pda_path in all_pda_paths)
 		if(!(pda_path in pda_regions))
@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(id_access)
 				if(!(whitelisted_region in manager_regions))
 					continue
 				var/list/manager_pdas = manager_info["pdas"]
-				var/obj/item/modular_computer/tablet/pda/fake_pda = pda_path
+				var/obj/item/modular_computer/pda/fake_pda = pda_path
 				manager_pdas[pda_path] = initial(fake_pda.name)
 				station_pda_templates[pda_path] = initial(fake_pda.name)
 
@@ -257,6 +257,7 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_MEDICAL]"] = "Medical"
 	desc_by_access["[ACCESS_GENETICS]"] = "Genetics Lab"
 	desc_by_access["[ACCESS_MORGUE]"] = "Morgue"
+	desc_by_access["[ACCESS_MORGUE_SECURE]"] = "Coroner"
 	desc_by_access["[ACCESS_SCIENCE]"] = "R&D Lab"
 	desc_by_access["[ACCESS_ORDNANCE]"] = "Ordnance Lab"
 	desc_by_access["[ACCESS_ORDNANCE_STORAGE]"] = "Ordnance Storage"

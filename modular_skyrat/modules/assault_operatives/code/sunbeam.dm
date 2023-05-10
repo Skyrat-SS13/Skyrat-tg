@@ -1,7 +1,7 @@
 #define SUNBEAM_OBLITERATION_RANGE_FIRE 2
 #define SUNBEAM_OBLITERATION_RANGE_FLATTEN 1
-#define SUNBEAM_OBLITERATION_COOLDOWN 0.2 SECONDS
-#define SUNBEAM_MOVEMENT_COOLDOWN 0.3 SECONDS
+#define SUNBEAM_OBLITERATION_COOLDOWN (0.2 SECONDS)
+#define SUNBEAM_MOVEMENT_COOLDOWN (0.3 SECONDS)
 #define SUNBEAM_DEFAULT_SCALE_X 2
 #define SUNBEAM_DEFAULT_SCALE_Y 2
 #define SUNBEAM_OVERLAYS 16
@@ -17,7 +17,6 @@
 	pull_force = INFINITY
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	movement_type = PHASING | FLYING
-	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	light_color = "#ffbf10"
@@ -72,7 +71,7 @@
 		beam_overlay.pixel_y = beam_offset_y * i
 		. += beam_overlay
 
-/obj/effect/sunbeam/process(delta_time)
+/obj/effect/sunbeam/process(seconds_per_tick)
 	if(target_atom && COOLDOWN_FINISHED(src, movement_delay))
 		step_towards(src, target_atom)
 		COOLDOWN_START(src, movement_delay, movement_cooldown)
@@ -149,6 +148,7 @@
 	typepath = /datum/round_event/icarus_sunbeam
 	max_occurrences = 0
 	weight = 0
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

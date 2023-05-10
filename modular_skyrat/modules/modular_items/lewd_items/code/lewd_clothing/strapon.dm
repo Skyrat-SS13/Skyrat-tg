@@ -1,7 +1,8 @@
 /obj/item/clothing/strapon
 	name = "strapon"
 	desc = "Sometimes you need a special way to humiliate someone."
-	icon_state = "strapon"
+	icon_state = "strapon_human"
+	base_icon_state = "strapon"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	slot_flags = ITEM_SLOT_BELT
@@ -27,7 +28,7 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		strapon_type = choice
@@ -49,7 +50,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(strapon_types))
 		populate_strapon_types()
 
@@ -58,10 +59,10 @@
 /obj/item/clothing/strapon/equipped(mob/user, slot)
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
-	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 	if(src == affected_mob.belt)
 		affected_vagina?.visibility_preference = GENITAL_NEVER_SHOW
@@ -75,10 +76,10 @@
 /obj/item/clothing/strapon/dropped(mob/living/user)
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
-	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 	if(strapon_item && !ismob(loc) && in_hands == TRUE && src != affected_mob.belt)
 		qdel(strapon_item)
@@ -95,19 +96,19 @@
 
 /obj/item/clothing/strapon/update_icon_state()
 	.=..()
-	icon_state = "[initial(icon_state)]_[strapon_type]"
+	icon_state = "[base_icon_state]_[strapon_type]"
 
 //Functionality stuff
-/obj/item/clothing/strapon/proc/update_action_buttons_icons()
+/obj/item/clothing/strapon/proc/update_mob_action_buttonss()
 	for(var/datum/action/item_action/take_strapon/action_button in actions_types)
 		action_button.button_icon_state = "dildo_[strapon_type]"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	update_icon()
 
 //button stuff
 /datum/action/item_action/take_strapon
-    name = "Put strapon in hand"
-    desc = "Put the strapon in your hand in order to use it properly."
+	name = "Put strapon in hand"
+	desc = "Put the strapon in your hand in order to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	var/obj/item/clothing/strapon/affected_item = target
@@ -140,7 +141,7 @@
 			return
 
 		else if(held == null)
-			if(unheld.name =="strapon" && unheld.item_flags == ABSTRACT | HAND_ITEM)
+			if(istype(unheld, /obj/item/strapon_dildo) && unheld.item_flags == ABSTRACT | HAND_ITEM)
 				if(src == user.belt)
 					qdel(unheld)
 					//CODE FOR PUTTING STRAPON IN HANDS
@@ -169,7 +170,8 @@
 	name = "strapon"
 	desc = "An item with which to be menacing and merciless."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	icon_state = "dildo"
+	icon_state = "dildo_human"
+	base_icon_state = "dildo"
 	inhand_icon_state = "nothing"
 	force = 0
 	throwforce = 0
@@ -183,8 +185,8 @@
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
 
 /obj/item/strapon_dildo/update_icon_state()
-	.=..()
-	icon_state = "[initial(icon_state)]_[strapon_type]"
+	. = ..()
+	icon_state = "[base_icon_state]_[strapon_type]"
 
 /obj/item/strapon_dildo/attack(mob/living/carbon/human/hit_mob, mob/living/carbon/human/user)
 	if(hit_mob == user)
@@ -194,15 +196,15 @@
 		return
 
 	var/message = ""
-	var/obj/item/organ/external/genital/vagina = hit_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/vagina = hit_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(hit_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(hit_mob.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 						message = pick("delicately rubs [hit_mob]'s vagina with [src]", "uses [src] to fuck [hit_mob]'s vagina", "jams [hit_mob]'s pussy with [src]", "teases [hit_mob]'s pussy with [src]")
-						hit_mob.adjustArousal(6)
-						hit_mob.adjustPleasure(8)
+						hit_mob.adjust_arousal(6)
+						hit_mob.adjust_pleasure(8)
 						if(prob(40))
 							hit_mob.try_lewd_autoemote(pick("twitch_s", "moan"))
 						user.visible_message(span_purple("[user] [message]!"))
@@ -222,8 +224,8 @@
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!hit_mob.is_mouth_covered())
 					message = pick("fucks [hit_mob]'s mouth with [src]", "chokes [hit_mob] by inserting [src] into [hit_mob.p_their()] throat", "forces [hit_mob] to suck [src]", "inserts [src] into [hit_mob]'s throat")
-					hit_mob.adjustArousal(4)
-					hit_mob.adjustPleasure(1)
+					hit_mob.adjust_arousal(4)
+					hit_mob.adjust_pleasure(1)
 					hit_mob.adjustOxyLoss(1.5)
 					if(prob(70))
 						hit_mob.try_lewd_autoemote(pick("gasp", "moan"))
@@ -242,8 +244,8 @@
 			else
 				if(hit_mob.is_bottomless())
 					message = pick("fucks [hit_mob]'s ass with [src]", "uses [src] to fuck [hit_mob]'s anus", "jams [hit_mob]'s ass with [src]", "roughly fucks [hit_mob]'s ass with [src], causing their eyes to roll back")
-					hit_mob.adjustArousal(5)
-					hit_mob.adjustPleasure(5)
+					hit_mob.adjust_arousal(5)
+					hit_mob.adjust_pleasure(5)
 					if(prob(60))
 						hit_mob.try_lewd_autoemote(pick("twitch_s", "moan", "shiver"))
 					user.visible_message(span_purple("[user] [message]!"))

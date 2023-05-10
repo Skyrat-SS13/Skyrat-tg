@@ -99,3 +99,80 @@
 					GLOB.augment_categories_to_slots[L.category] = list()
 				GLOB.augment_categories_to_slots[L.category] += L.slot
 			GLOB.augment_slot_to_items[L.slot] += L.path
+
+/// If the "Remove ERP Interaction" config is disabled, remove ERP things from various lists
+/proc/remove_erp_things()
+	if(!CONFIG_GET(flag/disable_erp_preferences))
+		return
+	// Chemical reactions aren't handled here because they're loaded in the reagents SS
+	// See Initialize() on SSReagents
+
+	// Loadouts
+	for(var/loadout_path in GLOB.all_loadout_datums)
+		var/datum/loadout_item/loadout_datum = GLOB.all_loadout_datums[loadout_path]
+		if(!loadout_datum.erp_item)
+			continue
+		GLOB.all_loadout_datums -= loadout_path
+		// Ensure this FULLY works later
+
+	var/list/loadout_lists = list(
+		GLOB.loadout_belts,
+		GLOB.loadout_ears,
+		GLOB.loadout_glasses,
+		GLOB.loadout_gloves,
+		GLOB.loadout_helmets,
+		GLOB.loadout_masks,
+		GLOB.loadout_necks,
+		GLOB.loadout_shoes,
+		GLOB.loadout_exosuits,
+		GLOB.loadout_jumpsuits,
+		GLOB.loadout_undersuits,
+		GLOB.loadout_miscunders,
+		GLOB.loadout_accessory,
+		GLOB.loadout_inhand_items,
+		GLOB.loadout_toys,
+		GLOB.loadout_pocket_items,
+	)
+	for(var/loadout_list in loadout_lists)
+		for(var/datum/loadout_item/loadout_typepath in loadout_list)
+			if(!initial(loadout_typepath.erp_item))
+				continue
+			loadout_list -= loadout_typepath
+
+	// Underwear
+	for(var/sprite_name in GLOB.underwear_list)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_list[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_list -= sprite_name
+
+	for(var/sprite_name in GLOB.underwear_f)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_f[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_f -= sprite_name
+
+	for(var/sprite_name in GLOB.underwear_m)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_m[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_m -= sprite_name
+
+	// Undershirts
+	for(var/sprite_name in GLOB.undershirt_list)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_list[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_list -= sprite_name
+
+	for(var/sprite_name in GLOB.undershirt_f)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_f[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_f -= sprite_name
+
+	for(var/sprite_name in GLOB.undershirt_m)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_m[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_m -= sprite_name

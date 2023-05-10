@@ -76,7 +76,6 @@
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock"
 	no_destination_swap = TRUE
-	var/static/list/dumb_rev_heads = list()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/machinery/computer/shuttle/mining/attack_hand(mob/user, list/modifiers)
@@ -88,31 +87,6 @@
 	if (HAS_TRAIT(user, TRAIT_FORBID_MINING_SHUTTLE_CONSOLE_OUTSIDE_STATION) && !is_station_level(user.z))
 		to_chat(user, span_warning("You get the feeling you shouldn't mess with this."))
 		return
-
-	if(HAS_TRAIT(user, TRAIT_ILLITERATE))
-		to_chat(user, span_warning("You start mashing buttons at random!"))
-		if(do_after(user, 10 SECONDS, target = src))
-			var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-			if(no_destination_swap)
-				if(M.mode == SHUTTLE_RECHARGING)
-					to_chat(usr, span_warning("Shuttle engines are not ready for use."))
-					return
-				if(M.mode != SHUTTLE_IDLE)
-					to_chat(usr, span_warning("Shuttle already in transit."))
-					return
-			var/destionation = M.getDockedId() == "mining_home" ? "mining_away" : "mining_home"
-			switch(SSshuttle.moveShuttle(shuttleId, destionation, 1))
-				if(0)
-					say("Shuttle departing. Please stand away from the doors.")
-					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" towards \"[destionation]\", using [src].")
-					return TRUE
-				if(1)
-					to_chat(usr, span_warning("Invalid shuttle requested."))
-				else
-					to_chat(usr, span_warning("Unable to comply."))
-
-		return
-
 	return ..()
 
 /obj/machinery/computer/shuttle/mining/common
@@ -134,6 +108,10 @@
 	roundstart_template = /datum/map_template/shuttle/mining/kilo
 	height = 10
 
+/obj/docking_port/stationary/mining_home/northstar
+	roundstart_template = /datum/map_template/shuttle/mining/northstar
+	height = 6
+
 /obj/docking_port/stationary/mining_home/common
 	name = "SS13: Common Mining Dock"
 	shuttle_id = "commonmining_home"
@@ -142,9 +120,13 @@
 /obj/docking_port/stationary/mining_home/common/kilo
 	roundstart_template = /datum/map_template/shuttle/mining_common/kilo
 
+/obj/docking_port/stationary/mining_home/common/northstar
+	roundstart_template = /datum/map_template/shuttle/mining_common/northstar
+
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 
 /obj/structure/closet/crate/miningcar
 	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
 	name = "Mining car (not for rails)"
 	icon_state = "miningcar"
+	base_icon_state = "miningcar"

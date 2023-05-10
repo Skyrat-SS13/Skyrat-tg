@@ -139,7 +139,7 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 15 SECONDS
+#define RECOMBINATION_STEP_TIME (15 SECONDS)
 #define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator
@@ -262,7 +262,7 @@
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
 	use_power(3000)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -279,7 +279,7 @@
 	flick("h_lathe_wloop", src)
 	use_power(3000)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_finish()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -303,13 +303,13 @@
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	. = ..()
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - M.rating) >= 1)
-			recombination_step_time -= M.rating
-	for(var/obj/item/stock_parts/scanning_module/M in component_parts)
-		recombination_step_amount += M.rating*2
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		recombination_step_amount += M.rating
+	for(var/datum/stock_part/servo/servo in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - servo.tier) >= 1)
+			recombination_step_time -= servo.tier
+	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
+		recombination_step_amount += scanning_module.tier * 2
+	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
+		recombination_step_amount += micro_laser.tier
 
 /obj/machinery/rnd/rna_recombinator/update_overlays()
 	. = ..()

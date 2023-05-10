@@ -7,8 +7,8 @@
 /datum/unit_test/gun_go_bang/Run()
 	// test is for a ballistic gun that starts loaded + chambered
 	var/obj/item/gun/test_gun = allocate(/obj/item/gun/ballistic/automatic/pistol)
-	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human)
-	var/mob/living/carbon/human/gunner = allocate(/mob/living/carbon/human)
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/gunner = allocate(/mob/living/carbon/human/consistent)
 	ADD_TRAIT(victim, TRAIT_PIERCEIMMUNE, INNATE_TRAIT) // So the human isn't randomly affected by shrapnel
 
 	var/obj/item/ammo_casing/loaded_casing = test_gun.chambered
@@ -18,8 +18,8 @@
 
 	gunner.put_in_hands(test_gun, forced=TRUE)
 	//SKYRAT EDIT ADDITION BEGIN
-	if(test_gun.has_gun_safety)
-		test_gun.toggle_safety(gunner)
+	if(test_gun.GetComponent(/datum/component/gun_safety))
+		qdel(test_gun.GetComponent(/datum/component/gun_safety))
 	loaded_bullet.wound_bonus = CANT_WOUND //Baseline wounding makes things weird
 	//SKYRAT EDIT ADDITION END
 	gunner.set_combat_mode(FALSE) // just to make sure we know we're not trying to pistol-whip them

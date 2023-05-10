@@ -2,16 +2,22 @@
 	name = "monkey mind magnification helmet"
 	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
 	icon_state = "monkeymind"
-	inhand_icon_state = "monkeymind"
+	inhand_icon_state = null
 	strip_delay = 100
-	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 0)
-	var/mob/living/carbon/human/magnification = null /// if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
-	var/polling = FALSE/// if the helmet is currently polling for targets (special code for removal)
-	var/light_colors = 1 /// which icon state color this is (red, blue, yellow)
+	armor_type = /datum/armor/helmet_monkey_sentience
+	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
+	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
+	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)
+
+/datum/armor/helmet_monkey_sentience
+	melee = 5
+	bomb = 25
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/helmet/monkey_sentience/Initialize(mapload)
 	. = ..()
-	light_colors = rand(1, 3)
+	light_colors = rand(1,3)
 	update_appearance()
 
 /obj/item/clothing/head/helmet/monkey_sentience/examine(mob/user)
@@ -29,7 +35,7 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_HEAD)
+	if(!(slot & ITEM_SLOT_HEAD))
 		return
 	if(istype(user, /mob/living/carbon/human/dummy)) // Prevents ghosts from being polled when the helmet is put on a dummy.
 		return
@@ -45,12 +51,12 @@
 	magnification = user // this polls ghosts
 	visible_message(span_warning("[src] powers up!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, .proc/make_fall_off)
-	INVOKE_ASYNC(src, /obj/item/clothing/head/helmet/monkey_sentience.proc/connect, user)
+	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, PROC_REF(make_fall_off))
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/clothing/head/helmet/monkey_sentience, connect), user)
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/connect(mob/user)
 	polling = TRUE
-	var/list/candidates = poll_candidates_for_mob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, target_mob = magnification, ignore_category = POLL_IGNORE_SENTIENCE_POTION)
+	var/list/candidates = poll_candidates_for_mob("Do you want to play as a mind magnified monkey?", ROLE_MONKEY_HELMET, null, 5 SECONDS, magnification, POLL_IGNORE_MONKEY_HELMET)
 	polling = FALSE
 	if(!magnification)
 		return
@@ -97,6 +103,7 @@
 				if(3) // primal gene (gorilla)
 					magnification.gorillize()
 				if(4) // genetic mass susceptibility (gib)
+					magnification.investigate_log("has been gibbed by a sentience helmet being pulled off at the wrong time.", INVESTIGATE_DEATHS)
 					magnification.gib()
 	magnification = null
 

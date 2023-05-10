@@ -45,9 +45,10 @@
 /obj/item/clothing/suit/armor/vest/warden/syndicate
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "master at arms's vest"
+	name = "master at arms' vest"
 	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
 	icon_state = "warden_syndie"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 // HEAD OF PERSONNEL
 /obj/item/clothing/suit/toggle/hop_parade
@@ -56,23 +57,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hopformal"
-	inhand_icon_state = "capspacesuit"
+	inhand_icon_state = "coatcaptain"
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
-
-/obj/item/clothing/suit/hooded/wintercoat/hopformal
-	name = "head of personnel's formal winter coat"
-	desc = "A long cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana. Someone at CC most really like you, huh?"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "coathopformal"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
-
-/obj/item/clothing/head/hooded/winterhood/hopformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_hopformal"
 
 // CAPTAIN
 /obj/item/clothing/suit/armor/vest/capcarapace/jacket

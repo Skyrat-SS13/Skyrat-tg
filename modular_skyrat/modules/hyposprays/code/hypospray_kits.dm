@@ -3,6 +3,8 @@
 	desc = "It's a kit containing a hypospray and specific treatment chemical-filled vials."
 	icon = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
 	icon_state = "firstaid-mini"
+	worn_icon_state = "healthanalyzer" // Get a better sprite later
+	inhand_icon_state = "medkit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
@@ -63,7 +65,7 @@
 	var/casetype = cmo_case_designs
 	if(!src.cmo_case)
 		casetype = case_designs
-	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 42, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_case = choice
@@ -94,6 +96,7 @@
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
+	inhand_icon_state = "medkit-tactical"
 	current_case = "tactical"
 	cmo_case = TRUE
 

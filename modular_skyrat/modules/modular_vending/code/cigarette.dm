@@ -10,4 +10,5 @@
 		/obj/item/reagent_containers/vapecart/reddiesel = 4,
 		/obj/item/reagent_containers/vapecart/pwrgame = 4,
 		/obj/item/reagent_containers/vapecart/cheese = 4,
+		/obj/item/storage/fancy/cigarettes/khi = 3,
 	)

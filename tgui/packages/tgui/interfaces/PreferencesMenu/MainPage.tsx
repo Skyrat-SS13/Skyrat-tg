@@ -2,7 +2,7 @@ import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
 import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE
 import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
-import { CharacterPreview } from './CharacterPreview';
+import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { MultiNameInput, NameInput } from './names';
@@ -556,18 +556,20 @@ export const MainPage = (
                     />
                   </Stack.Item>
 
-                  <Dropdown
+                  <Stack.Item
                     // SKYRAT EDIT ADDITION
-                    width="100%"
-                    position="relative"
-                    selected={data.preview_selection}
-                    options={data.preview_options}
-                    onSelected={(value) =>
-                      act('update_preview', {
-                        updated_preview: value,
-                      })
-                    }
-                  />
+                    position="relative">
+                    <Dropdown
+                      width="100%"
+                      selected={data.preview_selection}
+                      options={data.preview_options}
+                      onSelected={(value) =>
+                        act('update_preview', {
+                          updated_preview: value,
+                        })
+                      }
+                    />
+                  </Stack.Item>
 
                   <Stack.Item position="relative">
                     <NameInput

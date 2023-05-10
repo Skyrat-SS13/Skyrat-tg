@@ -1,3 +1,5 @@
+#define ARMAMENT_CATEGORY_UTILITY "Utility"
+
 /datum/armament_entry/hecu/utility
 	category = ARMAMENT_CATEGORY_UTILITY
 	category_item_limit = 20
@@ -54,13 +56,6 @@
 	max_purchase = 2
 	cost = 1
 
-/datum/armament_entry/hecu/utility/jammer
-	name = "Radio Jammer"
-	description = "When activated, this cell powered device will block all outgoing radio communication."
-	item_type = /obj/item/jammer
-	max_purchase = 1
-	cost = 4
-
 /datum/armament_entry/hecu/utility/suppressor
 	item_type = /obj/item/suppressor
 	max_purchase = 4
@@ -70,3 +65,10 @@
 	item_type = /obj/item/radio/headset/headset_faction/bowman
 	max_purchase = 3
 	cost = 4
+
+/datum/armament_entry/hecu/utility/breaching_hammer //Mesa more like R6S amirite
+	item_type = /obj/item/melee/hammer
+	max_purchase = 1
+	cost = 4
+
+#undef ARMAMENT_CATEGORY_UTILITY

@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(opposing_force)
 	msg = "UNSUB: [LAZYLEN(unsubmitted_applications)] | SUB: [LAZYLEN(submitted_applications)] | APPR: [LAZYLEN(approved_applications)]"
 	return ..()
 
-/datum/controller/subsystem/opposing_force/Initialize(start_timeofday)
+/datum/controller/subsystem/opposing_force/Initialize()
 	for(var/datum/opposing_force_equipment/opfor_equipment as anything in subtypesof(/datum/opposing_force_equipment))
 		// Set up our categories so we can add items to them
 		if(initial(opfor_equipment.category))
@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(opposing_force)
 				equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 			// We don't have home :( add us to the other category.
 			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()
 	if(get_current_applications() >= max_objectives)

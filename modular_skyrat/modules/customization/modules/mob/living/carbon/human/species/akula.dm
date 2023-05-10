@@ -5,8 +5,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR
 	)
 	inherent_traits = list(
@@ -14,6 +12,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -23,10 +22,6 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	liked_food = SEAFOOD | RAW
 	disliked_food = CLOTH | DAIRY
@@ -35,10 +30,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/akula,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/akula,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/akula,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/akula,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/akula,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
@@ -79,3 +74,15 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#394b66"
+	var/secondary_color = "#818b9b"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "hShark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Sergal", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	regenerate_organs(human, src, visual_only = TRUE)
+	human.update_body(TRUE)

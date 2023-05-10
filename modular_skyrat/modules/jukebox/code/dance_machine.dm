@@ -172,7 +172,7 @@
 			spotlights += new /obj/item/flashlight/spotlight(t, 1 + get_dist(src, t), 30 - (get_dist(src, t) * 8), LIGHT_COLOR_PURPLE)
 			continue
 		if(t.x > cen.x && t.y == cen.y)
-			spotlights += new /obj/item/flashlight/spotlight(t, 1 + get_dist(src, t), 30 - (get_dist(src, t) * 8), LIGHT_COLOR_YELLOW)
+			spotlights += new /obj/item/flashlight/spotlight(t, 1 + get_dist(src, t), 30 - (get_dist(src, t) * 8), LIGHT_COLOR_BRIGHT_YELLOW)
 			continue
 		if(t.x < cen.x && t.y == cen.y)
 			spotlights += new /obj/item/flashlight/spotlight(t, 1 + get_dist(src, t), 30 - (get_dist(src, t) * 8), LIGHT_COLOR_GREEN)
@@ -195,7 +195,7 @@
 /obj/machinery/jukebox/disco/proc/hierofunk()
 	for(var/i in 1 to 10)
 		spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
-		sleep(5)
+		sleep(0.5 SECONDS)
 		if(QDELETED(src))
 			return
 #define DISCO_INFENO_RANGE (rand(85, 115)*0.01)
@@ -217,9 +217,9 @@
 			if(25)
 				S.pixel_y = 7
 				S.forceMove(get_turf(src))
-		sleep(7)
+		sleep(0.7 SECONDS)
 	if(selection.song_name == "Engineering's Ultimate High-Energy Hustle")
-		sleep(280)
+		sleep(28 SECONDS)
 	for(var/s in sparkles)
 		var/obj/effect/overlay/sparkles/reveal = s
 		reveal.alpha = 255
@@ -268,12 +268,12 @@
 				if(LIGHT_COLOR_BLUEGREEN)
 					if(glow.even_cycle)
 						glow.set_light_range(glow.base_light_range * DISCO_INFENO_RANGE)
-						glow.set_light_color(LIGHT_COLOR_YELLOW)
+						glow.set_light_color(LIGHT_COLOR_BRIGHT_YELLOW)
 						glow.set_light_on(TRUE)
 					else
 						glow.set_light_on(FALSE)
-						glow.set_light_color(LIGHT_COLOR_YELLOW)
-				if(LIGHT_COLOR_YELLOW)
+						glow.set_light_color(LIGHT_COLOR_BRIGHT_YELLOW)
+				if(LIGHT_COLOR_BRIGHT_YELLOW)
 					if(glow.even_cycle)
 						glow.set_light_on(FALSE)
 						glow.set_light_color(LIGHT_COLOR_CYAN)
@@ -290,7 +290,7 @@
 						glow.set_light_color(COLOR_SOFT_RED)
 					glow.even_cycle = !glow.even_cycle
 		if(prob(2))  // Unique effects for the dance floor that show up randomly to mix things up
-			INVOKE_ASYNC(src, .proc/hierofunk)
+			INVOKE_ASYNC(src, PROC_REF(hierofunk))
 		sleep(selection.song_beat)
 		if(QDELETED(src))
 			return
@@ -311,8 +311,8 @@
 
 /obj/machinery/jukebox/disco/proc/dance2(mob/living/M)
 	for(var/i in 0 to 9)
-		dance_rotate(M, CALLBACK(M, /mob.proc/dance_flip))
-		sleep(20)
+		dance_rotate(M, CALLBACK(M, TYPE_PROC_REF(/mob, dance_flip)))
+		sleep(2 SECONDS)
 
 /mob/proc/dance_flip()
 	if(dir == WEST)
@@ -363,7 +363,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 
 /obj/machinery/jukebox/disco/proc/dance4(mob/living/M)
@@ -376,7 +376,7 @@
 			M.setDir(pick(GLOB.cardinals))
 			for(var/mob/living/carbon/NS in rangers)
 				NS.set_resting(!NS.resting, TRUE, TRUE)
-		 time--
+		time--
 
 /obj/machinery/jukebox/disco/proc/dance5(mob/living/M)
 	animate(M, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
@@ -412,7 +412,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 
 /mob/living/proc/lying_fix()

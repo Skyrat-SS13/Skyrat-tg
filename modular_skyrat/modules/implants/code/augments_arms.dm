@@ -7,7 +7,6 @@
 	icon_state = "mantis_blade"
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
-	slot_flags = ITEM_SLOT_BELT
 	force = 25
 	armour_penetration = 20
 	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.
@@ -49,6 +48,7 @@
 /obj/item/implant_mounted_chainsaw
 	name = "integrated chainsaw"
 	desc = "A chainsaw that conceals inside your arm."
+	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw_on"
 	inhand_icon_state = "mounted_chainsaw"
 	lefthand_file = 'icons/mob/inhands/weapons/chainsaw_lefthand.dmi'

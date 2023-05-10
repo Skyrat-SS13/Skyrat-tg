@@ -187,10 +187,7 @@
 	)
 	all_emotes += synth_emotes
 	var/static/list/allowed_species_synth = list(
-		/datum/species/robotic/ipc,
-		/datum/species/robotic/synthliz,
-		/datum/species/robotic/synthetic_human,
-		/datum/species/robotic/synthetic_mammal
+		/datum/species/synthetic
 	)
 
 	// modular_skyrat\modules\emotes\code\additionalemotes\overlay_emote.dm
@@ -237,11 +234,11 @@
 			if(current_mob.dna.species.type in allowed_species_synth)
 				available_emotes += synth_emotes
 			// Checking if can wag tail
-			var/obj/item/organ/external/tail/tail = current_mob.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+			var/obj/item/organ/external/tail/tail = current_mob.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 			if(!(tail?.wag_flags & WAG_ABLE))
 				available_emotes -= /mob/living/carbon/human/proc/emote_wag
 			// Checking if has wings
-			if(!current_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
+			if(!current_mob.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS))
 				available_emotes -= /mob/living/carbon/human/proc/emote_wing
 		if(isalien(src))
 			available_emotes += alien_emotes

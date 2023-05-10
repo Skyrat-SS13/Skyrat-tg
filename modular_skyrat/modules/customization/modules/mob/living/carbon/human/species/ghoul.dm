@@ -2,14 +2,20 @@
 	name = "Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
-	say_mod = "rasps"
-	species_traits = list(NOEYESPRITES, DYNCOLORS, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
+	species_traits = list(
+		NOEYESPRITES,
+		DYNCOLORS,
+		HAIR,
+		FACEHAIR
+	)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(
 		"tail" = "None",
-		"ears" = "None"
+		"ears" = "None",
+		"legs" = "Normal Legs"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
@@ -17,22 +23,6 @@
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
 		TRAIT_LITERATE,
-	)
-	offset_features = list(
-		OFFSET_UNIFORM = list(0,0),
-		OFFSET_ID = list(0,0),
-		OFFSET_GLOVES = list(0,0),
-		OFFSET_GLASSES = list(0,1),
-		OFFSET_EARS = list(0,1),
-		OFFSET_SHOES = list(0,0),
-		OFFSET_S_STORE = list(0,0),
-		OFFSET_FACEMASK = list(0,1),
-		OFFSET_HEAD = list(0,1),
-		OFFSET_FACE = list(0,1),
-		OFFSET_BELT = list(0,0),
-		OFFSET_BACK = list(0,0),
-		OFFSET_SUIT = list(0,0),
-		OFFSET_NECK = list(0,1),
 	)
 	toxic_food = DAIRY | PINEAPPLE
 	disliked_food = VEGETABLES | FRUIT | CLOTH
@@ -42,16 +32,14 @@
 	brutemod = 2
 	burnmod = 2
 	stunmod = 1.25 //multiplier for stun durations
-	punchdamagelow = 1 //lowest possible punch damage. if this is set to 0, punches will always miss
-	punchdamagehigh = 5 //highest possible punch damage
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/ghoul,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/ghoul,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/ghoul,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/ghoul,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/ghoul,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/ghoul,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/ghoul,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/ghoul,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/ghoul,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/ghoul,
 	)
 	//the chest and head cannot be turned into meat
@@ -77,10 +65,10 @@
 		// 2) BODYPARTS
 		C.part_default_head = /obj/item/bodypart/head/mutant/ghoul
 		C.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
-		C.part_default_l_arm = /obj/item/bodypart/l_arm/mutant/ghoul
-		C.part_default_r_arm = /obj/item/bodypart/r_arm/mutant/ghoul
-		C.part_default_l_leg = /obj/item/bodypart/l_leg/mutant/ghoul
-		C.part_default_r_leg = /obj/item/bodypart/r_leg/mutant/ghoul
+		C.part_default_l_arm = /obj/item/bodypart/arm/left/mutant/ghoul
+		C.part_default_r_arm = /obj/item/bodypart/arm/right/mutant/ghoul
+		C.part_default_l_leg = /obj/item/bodypart/leg/left/mutant/ghoul
+		C.part_default_r_leg = /obj/item/bodypart/leg/right/mutant/ghoul
 		C.ReassignForeignBodyparts()
 
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
@@ -95,32 +83,38 @@
 	if (head?.type != part_default_head)
 		qdel(head)
 		var/obj/item/bodypart/limb = new part_default_head
-		limb.replace_limb(src,TRUE)
+		limb.replace_limb(src, TRUE)
+
 	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 	if (chest?.type != part_default_chest)
 		qdel(chest)
 		var/obj/item/bodypart/limb = new part_default_chest
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_arm = get_bodypart(BODY_ZONE_L_ARM)
-	if (l_arm?.type != part_default_l_arm)
-		qdel(l_arm)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/arm/left/left_arm = get_bodypart(BODY_ZONE_L_ARM)
+	if (left_arm?.type != part_default_l_arm)
+		qdel(left_arm)
 		var/obj/item/bodypart/limb = new part_default_l_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_arm = get_bodypart(BODY_ZONE_R_ARM)
-	if (r_arm?.type != part_default_r_arm)
-		qdel(r_arm)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/arm/right/right_arm = get_bodypart(BODY_ZONE_R_ARM)
+	if (right_arm?.type != part_default_r_arm)
+		qdel(right_arm)
 		var/obj/item/bodypart/limb = new part_default_r_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_leg = get_bodypart(BODY_ZONE_L_LEG)
-	if (l_leg?.type != part_default_l_leg)
-		qdel(l_leg)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/leg/left/left_leg = get_bodypart(BODY_ZONE_L_LEG)
+	if (left_leg?.type != part_default_l_leg)
+		qdel(left_leg)
 		var/obj/item/bodypart/limb = new part_default_l_leg
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_leg = get_bodypart(BODY_ZONE_R_LEG)
-	if (r_leg?.type != part_default_r_leg)
-		qdel(r_leg)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/leg/right/right_leg = get_bodypart(BODY_ZONE_R_LEG)
+	if (right_leg?.type != part_default_r_leg)
+		qdel(right_leg)
 		var/obj/item/bodypart/limb = new part_default_r_leg
-		limb.replace_limb(src,TRUE)
+		limb.replace_limb(src, TRUE)
+
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	..()
@@ -128,10 +122,10 @@
 	// 2) BODYPARTS
 	C.part_default_head = /obj/item/bodypart/head
 	C.part_default_chest = /obj/item/bodypart/chest
-	C.part_default_l_arm = /obj/item/bodypart/l_arm
-	C.part_default_r_arm = /obj/item/bodypart/r_arm
-	C.part_default_l_leg = /obj/item/bodypart/l_leg
-	C.part_default_r_leg = /obj/item/bodypart/r_leg
+	C.part_default_l_arm = /obj/item/bodypart/arm/left
+	C.part_default_r_arm = /obj/item/bodypart/arm/right
+	C.part_default_l_leg = /obj/item/bodypart/leg/left
+	C.part_default_r_leg = /obj/item/bodypart/leg/right
 	C.ReassignForeignBodyparts()
 
 /*
@@ -158,7 +152,7 @@
 
 			// Pry it off...
 			user.visible_message("[user] grabs onto [p_their()] own [affecting.name] and pulls.", span_notice("You grab hold of your [affecting.name] and yank hard."))
-			if (!do_mob(user,target))
+			if (!do_after(user, 3 SECONDS, target))
 				return TRUE
 
 			user.visible_message("[user]'s [affecting.name] comes right off in their hand.", span_notice("Your [affecting.name] pops right off."))
@@ -196,11 +190,11 @@
 
 			// Leave Melee Chain (so deleting the meat doesn't throw an error) <--- aka, deleting the meat that called this very proc.
 			spawn(1)
-				if(do_mob(user,H))
+				if(do_after(user, 3 SECONDS, H))
 					// Attach the part!
 					var/obj/item/bodypart/newBP = H.newBodyPart(target_zone, FALSE)
 					H.visible_message("The meat sprouts digits and becomes [H]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
-					newBP.attach_limb(H)
+					newBP.try_attach_limb(H)
 					qdel(I)
 					playsound(get_turf(H), 'sound/effects/meatslap.ogg', 50, 1)
 
@@ -212,13 +206,17 @@
 	// Type References for Bodyparts
 	var/obj/item/bodypart/head/part_default_head = /obj/item/bodypart/head
 	var/obj/item/bodypart/chest/part_default_chest = /obj/item/bodypart/chest
-	var/obj/item/bodypart/l_arm/part_default_l_arm = /obj/item/bodypart/l_arm
-	var/obj/item/bodypart/r_arm/part_default_r_arm = /obj/item/bodypart/r_arm
-	var/obj/item/bodypart/l_leg/part_default_l_leg = /obj/item/bodypart/l_leg
-	var/obj/item/bodypart/r_leg/part_default_r_leg = /obj/item/bodypart/r_leg
+	var/obj/item/bodypart/arm/left/part_default_l_arm = /obj/item/bodypart/arm/left
+	var/obj/item/bodypart/arm/right/part_default_r_arm = /obj/item/bodypart/arm/right
+	var/obj/item/bodypart/leg/left/part_default_l_leg = /obj/item/bodypart/leg/left
+	var/obj/item/bodypart/leg/right/part_default_r_leg = /obj/item/bodypart/leg/right
 
 /datum/species/ghoul/get_species_description()
 	return placeholder_description
 
 /datum/species/ghoul/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/ghoul/prepare_human_for_preview(mob/living/carbon/human/human)
+	regenerate_organs(human, src, visual_only = TRUE)
+	human.update_body(TRUE)

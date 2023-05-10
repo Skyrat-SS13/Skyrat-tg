@@ -4,10 +4,7 @@
 	icon = 'modular_skyrat/modules/black_mesa/icons/nihilanth.dmi'
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
-	pixel_x = -32
-	pixel_y = -32
-	base_pixel_x = -32
-	base_pixel_y = -32
+	SET_BASE_PIXEL(-32, -32)
 	speed = 3
 	bound_height = 64
 	bound_width = 64
@@ -44,7 +41,7 @@
 	damage_type = BURN
 	light_range = 2
 	armor_flag = ENERGY
-	light_color = LIGHT_COLOR_YELLOW
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
 	nondirectional_sprite = TRUE
@@ -66,28 +63,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/death(gibbed)
 	. = ..()
-	alert_sound_to_playing('modular_skyrat/modules/black_mesa/sound/mobs/nihilanth/nihilanth_death01.ogg')
-	new /obj/effect/singularity_creation(loc)
-	message_admins("[src] has been defeated, a spacetime cascade might occur in 30 seconds with a [cascade_chance]% chance.")
-	addtimer(CALLBACK(src, .proc/endgame_shit),  30 SECONDS)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
-	to_chat(world, span_danger("You feel as though a powerful force has been defeated..."))
-	if(prob(cascade_chance))
-		var/datum/round_event_control/resonance_cascade/event_to_start = new()
-		event_to_start.runEvent()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
 	set_combat_mode(FALSE)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/attackby(obj/item/attacking_item, mob/living/user, params)
-	. = ..()
-	if(istype(attacking_item, /obj/item/grenade/xen_crystal))
-		if(cascade_chance <= 0)
-			balloon_alert(user, "link already weak!")
-			return
-		cascade_chance -= 15
-		balloon_alert(user, "world link weakened")
-		playsound(user, 'modular_skyrat/modules/black_mesa/sound/tc_13_teleport.ogg', 100)
-		qdel(attacking_item)

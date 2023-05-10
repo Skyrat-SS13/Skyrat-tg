@@ -1,7 +1,7 @@
-//used for holding information about unique properties of maps
-//feed it json files that match the datum layout
-//defaults to box
-//  -Cyberboss
+//This file is used to contain unique properties of every map, and how we wish to alter them on a per-map basis.
+//Use JSON files that match the datum layout and you should be set from there.
+//Right now, we default to MetaStation to ensure something does indeed load by default.
+//  -san7890 (with regards to Cyberboss)
 
 /datum/map_config
 	// Metadata
@@ -19,22 +19,30 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 7
-	var/space_empty_levels = 1
+	var/space_ruin_levels = DEFAULT_SPACE_RUIN_LEVELS
+	var/space_empty_levels = DEFAULT_SPACE_EMPTY_LEVELS
+	/// Boolean that tells us if this is a planetary station. (like IceBoxStation)
+	var/planetary = FALSE
 
+	///The type of mining Z-level that should be loaded.
 	var/minetype = "lavaland"
+	///If no minetype is set, this will be the blacklist file used
+	var/blacklist_file
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
 		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
+		"whiteship" = "whiteship_meta",
 		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 	/// List of additional areas that count as a part of the library
 	var/library_areas = list()
+
+	/// List of unit tests that are skipped when running this map
+	var/list/skipped_tests
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -171,6 +179,12 @@
 	if ("minetype" in json)
 		minetype = json["minetype"]
 
+	if ("planetary" in json)
+		planetary = json["planetary"]
+
+	if ("blacklist_file" in json)
+		blacklist_file = json["blacklist_file"]
+
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
 	if ("job_changes" in json)
@@ -189,6 +203,16 @@
 				stack_trace("Invalid path in mapping config for additional library areas: \[[path_as_text]\]")
 				continue
 			library_areas += path
+
+#ifdef UNIT_TESTS
+	// Check for unit tests to skip, no reason to check these if we're not running tests
+	for(var/path_as_text in json["ignored_unit_tests"])
+		var/path_real = text2path(path_as_text)
+		if(!ispath(path_real, /datum/unit_test))
+			stack_trace("Invalid path in mapping config for ignored unit tests: \[[path_as_text]\]")
+			continue
+		LAZYADD(skipped_tests, path_real)
+#endif
 
 	defaulted = FALSE
 	return TRUE

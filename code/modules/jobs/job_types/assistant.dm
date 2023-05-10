@@ -10,7 +10,6 @@ Assistant
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "absolutely everyone"
-	selection_color = "#dddddd"
 	exp_granted_type = EXP_TYPE_CREW
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
@@ -34,6 +33,7 @@ Assistant
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 	rpg_title = "Lout"
+	config_tag = "ASSISTANT"
 
 	allow_bureaucratic_error = FALSE // SKYRAT EDIT ADDITION
 
@@ -41,8 +41,8 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	uniform = /obj/item/clothing/under/color/random
-
+	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
+	belt = /obj/item/modular_computer/pda/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

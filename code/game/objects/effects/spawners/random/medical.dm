@@ -34,7 +34,9 @@
 		/obj/item/organ/internal/heart/gland/slime = 4,
 		/obj/item/organ/internal/heart/gland/trauma = 4,
 		/obj/item/organ/internal/heart/gland/electric = 3,
-		/obj/item/organ/internal/regenerative_core = 2,
+		/obj/item/organ/internal/monster_core/regenerative_core = 2,
+		/obj/item/organ/internal/monster_core/rush_gland = 2,
+		/obj/item/organ/internal/monster_core/brimdust_sac = 2,
 		/obj/item/organ/internal/heart/gland/ventcrawling = 1,
 		/obj/item/organ/internal/body_egg/alien_embryo = 1,
 	)
@@ -68,7 +70,7 @@
 	icon_state = "xeno_egg"
 	loot = list(
 		/obj/effect/decal/remains/xeno = 49,
-		/obj/effect/spawner/xeno_egg_delivery = 1,
+		/obj/item/clothing/mask/facehugger/toy = 1, // SKYRAT EDIT - They should be handled by dynamic - ORIGIGNAL: /obj/effect/spawner/xeno_egg_delivery = 1,
 	)
 
 /obj/effect/spawner/random/medical/surgery_tool

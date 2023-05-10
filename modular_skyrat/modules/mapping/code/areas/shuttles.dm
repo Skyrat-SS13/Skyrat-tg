@@ -37,7 +37,7 @@
 	name = "Trader Ship Cargo Bay"
 
 /area/shuttle/escape/no_light
-	area_flags = UNIQUE_AREA | NO_ALERTS | AREA_USES_STARLIGHT
+	area_flags = UNIQUE_AREA | AREA_USES_STARLIGHT
 
 /area/shuttle/arrival/no_light
 	static_lighting = FALSE
@@ -50,9 +50,6 @@
 
 /area/shuttle/transport/no_light
 	static_lighting = FALSE
-
-/area/shuttle/supply/cockpit
-	name = "NLV Consign Cockpit"
 
 /area/shuttle/mining/advanced
 	name = "NMC Phoenix"

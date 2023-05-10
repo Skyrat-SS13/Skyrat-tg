@@ -12,7 +12,7 @@
 	heat_protection = NONE
 	min_cold_protection_temperature = EMERGENCY_SUIT_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = EMERGENCY_SUIT_MAX_TEMP_PROTECT
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 20, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/space_emergency
 	clothing_flags = STOPSPRESSUREDAMAGE | SNUG_FIT
 	actions_types = null
 	show_hud = FALSE
@@ -21,9 +21,12 @@
 	/// Have we been damaged?
 	var/torn = FALSE
 
+/datum/armor/space_emergency
+	bio = 20
+
 /obj/item/clothing/suit/space/emergency/equipped(mob/user, slot)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, .proc/user_damaged)
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(user_damaged))
 
 /obj/item/clothing/suit/space/emergency/dropped(mob/user)
 	. = ..()
@@ -58,7 +61,7 @@
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange"
 	heat_protection = NONE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 20, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/space_emergency
 	flash_protect = 0
 	clothing_flags = STOPSPRESSUREDAMAGE | SNUG_FIT
 	min_cold_protection_temperature = EMERGENCY_HELMET_MIN_TEMP_PROTECT
@@ -70,6 +73,7 @@
 #undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
 
 // Lil box to hold em in
+
 /obj/item/storage/box/emergency_spacesuit
 	name = "emergency space suit case"
 	desc =  "A small case containing an emergency space suit and helmet."
@@ -89,31 +93,3 @@
 /obj/item/storage/box/emergency_spacesuit/PopulateContents()
 	new /obj/item/clothing/head/helmet/space/emergency(src)
 	new /obj/item/clothing/suit/space/emergency(src)
-
-// Overriding emergency lockers
-/obj/structure/closet/emcloset/PopulateContents()
-	new /obj/item/storage/box/emergency_spacesuit(src)
-	if (prob(40))
-		new /obj/item/storage/toolbox/emergency(src)
-
-	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10)))
-		if ("small")
-			new /obj/item/tank/internals/emergency_oxygen(src)
-			new /obj/item/tank/internals/emergency_oxygen(src)
-			new /obj/item/clothing/mask/breath(src)
-			new /obj/item/clothing/mask/breath(src)
-
-		if ("aid")
-			new /obj/item/tank/internals/emergency_oxygen(src)
-			new /obj/item/storage/medkit/emergency(src)
-			new /obj/item/clothing/mask/breath(src)
-
-		if ("tank")
-			new /obj/item/tank/internals/oxygen(src)
-			new /obj/item/clothing/mask/breath(src)
-
-		if ("both")
-			new /obj/item/tank/internals/emergency_oxygen(src)
-			new /obj/item/clothing/mask/breath(src)
-
-

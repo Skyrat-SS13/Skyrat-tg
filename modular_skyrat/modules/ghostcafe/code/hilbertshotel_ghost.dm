@@ -7,3 +7,7 @@
 	if(.)
 		return
 	return promptAndCheckIn(user, user)
+
+/datum/map_template/ghost_cafe_rooms
+	name = "Apartment"
+	mappath = "modular_skyrat/modules/hotel_rooms/apartment.dmm"

@@ -16,13 +16,19 @@
 /obj/item/clothing/head/beret
 	greyscale_config_worn_vox = /datum/greyscale_config/beret/worn/vox
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/beret/badge
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
+
+/obj/item/clothing/head/hats/hos/beret
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
 /obj/item/clothing/head/beret/sec
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
 /obj/item/clothing/head/beret/science/fancy
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
+
+/obj/item/clothing/head/beret/science/rd
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
 /obj/item/clothing/head/beret/durathread
@@ -58,7 +64,7 @@
 /obj/item/clothing/head/frenchberet
 	greyscale_config_worn_vox = /datum/greyscale_config/beret/worn/vox
 
-/obj/item/clothing/head/sec/navywarden/syndicate
+/obj/item/clothing/head/beret/sec/navywarden/syndicate
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
 /obj/item/clothing/head/nanotrasen_consultant/beret

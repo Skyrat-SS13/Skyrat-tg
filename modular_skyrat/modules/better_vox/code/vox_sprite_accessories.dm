@@ -6,7 +6,6 @@
 	color_src = 0
 	gender_specific = FALSE
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
-	general_type = "vox_primalis"
 
 /datum/sprite_accessory/tails/vox_primalis/albino
 	name = "Vox Primalis Albino Tail"
@@ -28,8 +27,6 @@
 /datum/sprite_accessory/hair/vox_primalis
 	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_hair.dmi'
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
-
-/datum/sprite_accessory/hair/vox_primalis/shortquills
 	name = "Vox Primalis Shortquills"
 	icon_state = "vox_shortquills_s"
 

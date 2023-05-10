@@ -23,6 +23,10 @@
 	var/list/obj/machinery/base_alarm/alarms = list()
 	/// The area that we use to trigger other alarms.
 	var/area/myarea = null
+	/// Path to the alarm sound
+	var/alarm_sound_file = 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg'
+	/// Cooldown between each sound
+	var/alarm_cooldown = 65
 
 /obj/machinery/base_alarm/Initialize(mapload)
 	. = ..()
@@ -60,15 +64,16 @@
 		iterating_alarm.triggered = TRUE
 		if(!iterating_alarm.alarm_playing)
 			iterating_alarm.alarm_playing = TRUE
-			playsound(iterating_alarm, 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg', 30)
-			addtimer(CALLBACK(iterating_alarm, .proc/alarm_sound), 65)
+			playsound(iterating_alarm, alarm_sound_file, 30)
+			addtimer(CALLBACK(iterating_alarm, PROC_REF(alarm_sound)), alarm_cooldown)
 
 /obj/machinery/base_alarm/proc/alarm_sound()
 	if(!triggered)
 		alarm_playing = FALSE
 	else
-		playsound(src, 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg', 30)
-		addtimer(CALLBACK(src, .proc/alarm_sound), 65)
+		playsound(src, alarm_sound_file, 30)
+		addtimer(CALLBACK(src, PROC_REF(alarm_sound)), alarm_cooldown)
+
 
 /obj/machinery/base_alarm/proc/reset(mob/user)
 	for(var/obj/machinery/base_alarm/iterating_alarm in alarms)

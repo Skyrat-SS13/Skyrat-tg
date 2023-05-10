@@ -89,6 +89,7 @@
 	release()
 
 /obj/item/clothing/head/mob_holder/Exited(atom/movable/gone, direction)
+	. = ..()
 	if(held_mob && held_mob == gone)
 		release()
 
@@ -116,7 +117,7 @@
 	var/mob/living/simple_animal/drone/D = L
 	if(!D)
 		return ..()
-	icon = 'icons/mob/drone.dmi'
+	icon = 'icons/mob/silicon/drone.dmi'
 	icon_state = "[D.visualAppearance]_hat"
 
 /obj/item/clothing/head/mob_holder/destructible

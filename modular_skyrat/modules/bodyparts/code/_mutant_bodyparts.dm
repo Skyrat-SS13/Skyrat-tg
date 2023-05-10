@@ -9,30 +9,15 @@
 	var/base_limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/proc/check_mutant_compatability()
-	if(ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		var/uniform_compatible = FALSE
-		var/suit_compatible = FALSE
-		var/shoes_compatible = FALSE
-		if(!(human_owner.w_uniform) || (human_owner.w_uniform.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
-			uniform_compatible = TRUE
-		if((!human_owner.wear_suit) || (human_owner.wear_suit.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)) || !(human_owner.wear_suit.body_parts_covered & LEGS))
-			suit_compatible = TRUE
-		if((!human_owner.shoes) || (human_owner.shoes.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
-			shoes_compatible = TRUE
+	return
 
-		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) // If the uniform is hidden, it doesnt matter if its compatible
-			limb_id = "digitigrade"
-		else
-			limb_id = base_limb_id
-
-/obj/item/bodypart/r_leg
+/obj/item/bodypart/leg/right
 	/// This is used in digitigrade legs, when this leg is swapped out with the digitigrade version.
-	var/digitigrade_type = /obj/item/bodypart/r_leg/digitigrade
+	var/digitigrade_type = /obj/item/bodypart/leg/right/digitigrade
 
-/obj/item/bodypart/l_leg
+/obj/item/bodypart/leg/left
 	/// This is used in digitigrade legs, when this leg is swapped out with the digitigrade version.
-	var/digitigrade_type = /obj/item/bodypart/l_leg/digitigrade
+	var/digitigrade_type = /obj/item/bodypart/leg/left/digitigrade
 
 
 /// General mutant bodyparts. Used in most mutant species.
@@ -46,36 +31,48 @@
 	limb_id = SPECIES_MAMMAL
 	is_dimorphic = TRUE
 
-/obj/item/bodypart/l_arm/mutant
+/obj/item/bodypart/arm/left/mutant
+	icon_greyscale = BODYPART_ICON_MAMMAL
+	limb_id = SPECIES_MAMMAL
+	unarmed_attack_verb = "slash"
+	unarmed_attack_effect = ATTACK_EFFECT_CLAW
+	unarmed_attack_sound = 'sound/weapons/slash.ogg'
+	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+
+
+/obj/item/bodypart/arm/right/mutant
+	icon_greyscale = BODYPART_ICON_MAMMAL
+	limb_id = SPECIES_MAMMAL
+	unarmed_attack_verb = "slash"
+	unarmed_attack_effect = ATTACK_EFFECT_CLAW
+	unarmed_attack_sound = 'sound/weapons/slash.ogg'
+	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+
+
+/obj/item/bodypart/leg/left/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
-/obj/item/bodypart/r_arm/mutant
+/obj/item/bodypart/leg/right/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
-/obj/item/bodypart/l_leg/mutant
-	icon_greyscale = BODYPART_ICON_MAMMAL
-	limb_id = SPECIES_MAMMAL
-
-/obj/item/bodypart/r_leg/mutant
-	icon_greyscale = BODYPART_ICON_MAMMAL
-	limb_id = SPECIES_MAMMAL
-
-/obj/item/bodypart/l_leg/digitigrade
+/obj/item/bodypart/leg/left/digitigrade
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	base_limb_id = "digitigrade"
 
-/obj/item/bodypart/l_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
+/obj/item/bodypart/leg/left/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()
 
-/obj/item/bodypart/r_leg/digitigrade
+/obj/item/bodypart/leg/right/digitigrade
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	base_limb_id = "digitigrade"
 
-/obj/item/bodypart/r_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
+/obj/item/bodypart/leg/right/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()

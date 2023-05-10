@@ -239,7 +239,6 @@
 /obj/item/book/manual/wiki
 	var/page_link = ""
 	window_size = "970x710"
-	var/skyrat_wiki = FALSE //SKYRAT EDIT ADDITION - will point someone to skyrat wiki instead of TG one if enabled
 
 /obj/item/book/manual/wiki/attack_self()
 	if(!book_data.content)
@@ -247,14 +246,7 @@
 	return ..()
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	//var/wikiurl = CONFIG_GET(string/wikiurl) //ORIGINAL
-	//SKYRAT EDIT CHANGE BEGIN
-	var/wikiurl
-	if(skyrat_wiki)
-		wikiurl = CONFIG_GET(string/wikiurlskyrat)
-	else
-		wikiurl = CONFIG_GET(string/wikiurl)
-	//SKYRAT EDIT CHANGE END
+	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		var/wikiinfo = {"
 
@@ -305,16 +297,12 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/security_space_law
-	//name = "Space Law" //ORIGINAL
-	name = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
-	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
+	name = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	desc = "A set of Nanotrasen regulations for keeping law, order, and procedure followed within their space stations." //SKYRAT EDIT CHANGE - Original: "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
-	starting_title = "Space Law"
-	//page_link = "Space_Law" //ORIGINAL
-	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
-	skyrat_wiki = TRUE
+	starting_title = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE - Original: "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
@@ -426,13 +414,13 @@
 	starting_title = "Ordnance for Dummies or: How I Learned to Stop Worrying and Love the Maxcap"
 	page_link = "Guide_to_toxins"
 
-/obj/item/book/manual/wiki/ordnance/suicide_act(mob/user)
+/obj/item/book/manual/wiki/ordnance/suicide_act(mob/living/user)
 	var/mob/living/carbon/human/H = user
 	user.visible_message(span_suicide("[user] starts dancing to the Rhumba Beat! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if (!QDELETED(H))
 		H.emote("spin")
-		sleep(20)
+		sleep(2 SECONDS)
 		for(var/obj/item/W in H)
 			H.dropItemToGround(W)
 			if(prob(50))
@@ -441,12 +429,12 @@
 		for(var/obj/item/bodypart/part as anything in H.bodyparts)
 			part.adjustBleedStacks(5)
 		H.gib_animation()
-		sleep(3)
+		sleep(0.3 SECONDS)
 		H.adjustBruteLoss(1000) //to make the body super-bloody
 		H.spawn_gibs()
 		H.spill_organs()
 		H.spread_bodyparts()
-	return (BRUTELOSS)
+	return BRUTELOSS
 
 /obj/item/book/manual/wiki/plumbing
 	name = "Chemical Factories Without Narcotics"
@@ -461,3 +449,10 @@
 	starting_author = "Kryson"
 	starting_title = "Unethically Grown Organics"
 	page_link = "Guide_to_cytology"
+
+/obj/item/book/manual/wiki/tgc
+	name = "Tactical Game Cards - Player's Handbook"
+	icon_state = "tgcbook"
+	starting_author = "Nanotrasen Edu-tainment Division"
+	starting_title = "Tactical Game Cards - Player's Handbook"
+	page_link = "Tactical_Game_Cards"

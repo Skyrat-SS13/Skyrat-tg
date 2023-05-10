@@ -12,3 +12,6 @@
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/clothing/suit/utility/fire/atmos(src)
 	new /obj/item/tank/internals/oxygen/red(src)
+	new /obj/item/clothing/gloves/atmos(src)
+	new /obj/item/clothing/mask/gas/atmos(src)
+	new /obj/item/clothing/head/utility/hardhat/welding/atmos(src)

@@ -16,7 +16,7 @@
 	force = 6
 	base_pixel_x = -4
 	pixel_x = -4
-	custom_materials = list(/datum/material/iron=2000)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	clumsy_check = FALSE
 	fire_sound = 'sound/items/syringeproj.ogg'
 	var/load_sound = 'sound/weapons/gun/shotgun/insert_shell.ogg'
@@ -60,7 +60,7 @@
 
 /obj/item/gun/syringe/attack_self(mob/living/user)
 	if(!syringes.len)
-		to_chat(user, span_warning("[src] is empty!"))
+		balloon_alert(user, "it's empty!")
 		return FALSE
 
 	var/obj/item/reagent_containers/syringe/S = syringes[syringes.len]
@@ -70,27 +70,27 @@
 	user.put_in_hands(S)
 
 	syringes.Remove(S)
-	to_chat(user, span_notice("You unload [S] from \the [src]."))
+	balloon_alert(user, "[S.name] unloaded")
 	update_appearance()
 
 	return TRUE
 
 /obj/item/gun/syringe/attackby(obj/item/A, mob/user, params, show_msg = TRUE)
 	if(istype(A, /obj/item/reagent_containers/syringe/bluespace))
-		to_chat(user, span_notice("[A] is too big to load into [src]."))
+		balloon_alert(user, "[A.name] is too big!")
 		return TRUE
 	if(istype(A, /obj/item/reagent_containers/syringe))
 		if(syringes.len < max_syringes)
 			if(!user.transferItemToLoc(A, src))
 				return FALSE
-			to_chat(user, span_notice("You load [A] into \the [src]."))
+			balloon_alert(user, "[A.name] loaded")
 			syringes += A
 			recharge_newshot()
 			update_appearance()
 			playsound(loc, load_sound, 40)
 			return TRUE
 		else
-			to_chat(user, span_warning("[src] cannot hold more syringes!"))
+			balloon_alert(user, "it's already full!")
 	return FALSE
 
 /obj/item/gun/syringe/update_overlays()
@@ -160,19 +160,19 @@
 	if(istype(A, /obj/item/dnainjector))
 		var/obj/item/dnainjector/D = A
 		if(D.used)
-			to_chat(user, span_warning("This injector is used up!"))
+			balloon_alert(user, "[D.name] is used up!")
 			return
 		if(syringes.len < max_syringes)
 			if(!user.transferItemToLoc(D, src))
 				return FALSE
-			to_chat(user, span_notice("You load \the [D] into \the [src]."))
+			balloon_alert(user, "[D.name] loaded")
 			syringes += D
 			recharge_newshot()
 			update_appearance()
 			playsound(loc, load_sound, 40)
 			return TRUE
 		else
-			to_chat(user, span_warning("[src] cannot hold more syringes!"))
+			balloon_alert(user, "it's already full!")
 	return FALSE
 
 /obj/item/gun/syringe/blowgun
@@ -194,11 +194,10 @@
 	pixel_x = 0
 	force = 4
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
-	has_gun_safety = FALSE // SKYRAT EDIT
 
 /obj/item/gun/syringe/blowgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	visible_message(span_danger("[user] starts aiming with a blowgun!"))
-	if(do_after(user, 25, target = src))
-		user.adjustStaminaLoss(20)
-		user.adjustOxyLoss(20)
-		return ..()
+	visible_message(span_danger("[user] shoots the blowgun!"))
+
+	user.adjustStaminaLoss(20)
+	user.adjustOxyLoss(20)
+	return ..()

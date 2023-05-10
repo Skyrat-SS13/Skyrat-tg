@@ -5,8 +5,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -15,6 +13,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -26,10 +25,6 @@
 		"legs" = "Normal Legs",
 		"wings" = "None"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	liked_food = SEAFOOD | MEAT | FRUIT | GORE
 	disliked_food = CLOTH | GROSS
@@ -39,10 +34,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/akula,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/akula,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/akula,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/akula,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/akula,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
 /datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)

@@ -20,6 +20,7 @@
 	desc = "Contains an incredibly potent mix of various hallucinogenics, herbal extracts, and hard drugs. \
 	the Tiger Cooperative praises it as a link to higher powers, but for all intents and purposes this should \
 	not be consumed."
+	volume = 50
 	list_reagents = list(
 		//changeling adrenals part
 		/datum/reagent/drug/methamphetamine = 5,

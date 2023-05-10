@@ -3,7 +3,7 @@ GLOBAL_PROTECT(mentorlog)
 
 /proc/log_mentor(text)
 	GLOB.mentorlog.Add(text)
-	WRITE_FILE(GLOB.world_game_log, "MENTOR: [text]")
+	WRITE_LOG(GLOB.world_game_log, "MENTOR: [text]")
 
 /datum/admins/proc/MentorLogSecret()
 	var/dat = "<B>Mentor Log<HR></B>"

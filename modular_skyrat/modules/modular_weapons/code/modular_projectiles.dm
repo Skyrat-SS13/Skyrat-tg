@@ -1,85 +1,4 @@
 /*
-*	.32 ACP
-*/
-
-/obj/item/ammo_casing/c32
-	name = ".32 bullet casing"
-	desc = "A .32 bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32
-
-/obj/projectile/bullet/c32
-	name = ".32 bullet"
-	damage = 15
-	wound_bonus = 0
-
-/obj/item/ammo_casing/c32/rubber
-	name = ".32 rubber bullet casing"
-	desc = "A .32 rubber bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/c32/rubber
-	name = ".32 rubber bullet"
-	damage = 5
-	stamina = 20
-	wound_bonus = -75
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/obj/item/ammo_casing/c32/ap
-	name = ".32 armor-piercing bullet"
-	desc = "A .32 armor-piercing bullet casing.\
-	<br><br>\
-	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32/ap
-
-/obj/projectile/bullet/c32/ap
-	name = ".32 armor-piercing bullet"
-	damage = 15
-	armour_penetration = 40
-	wound_bonus = -75
-
-/obj/item/ammo_casing/c32_incendiary
-	name = ".32 incendiary bullet"
-	desc = "A .32 incendiary bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/incendiary/c32_incendiary
-
-/obj/projectile/bullet/incendiary/c32_incendiary
-	name = ".32 incendiary bullet"
-	damage = 8
-	fire_stacks = 1
-	wound_bonus = -90
-
-/*
-*	10mm MAG
-*/
-
-
-/obj/item/ammo_casing/c10mm/rubber
-	name = "10mm Magnum rubber bullet casing"
-	desc = "A 10mm Magnum bullet casing. This fires a non-lethal projectile to cause compliance by pain and bruising. Don't aim for the head."
-	caliber = CALIBER_10MM
-	projectile_type = /obj/projectile/bullet/c10mm/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/c10mm/rubber
-	name = "10mm Magnum rubber ball"
-	damage = 10
-	stamina = 40
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.7
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/*
 *	.460 Ceres
 */
 
@@ -171,7 +90,6 @@
 *	.244 Acia
 */
 
-
 /obj/item/ammo_casing/a762/rubber
 	name = ".244 Acia rubber bullet casing"
 	desc = "A .244 rubber bullet casing.\
@@ -194,6 +112,22 @@
 	sharpness = NONE
 	embedding = null
 
+// no better place to put these overrides lmao
+
+/obj/item/ammo_box/a762
+	caliber = CALIBER_A762
+
+// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
+/obj/item/ammo_casing/a762/lionhunter
+	name = "lionhunter's casing"
+	desc = "There's something unnatural about this casing."
+	can_be_printed = FALSE
+
+/obj/item/ammo_casing/a762/enchanted
+	name = "enchanted .244 Acia casing"
+	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // you should only see this if someone picked lesser summon guns
+	can_be_printed = FALSE
+
 /*
 *	5.56x45mm (???)
 */
@@ -202,6 +136,7 @@
 
 /// The 5.56 you see pretty much everyone under NATO use.
 #define CALIBER_A556x45 "a556x45"
+
 /obj/item/ammo_casing/a556x45
 	name = "5.56x45mm bullet casing"
 	desc = "A 5.56mm rubber bullet casing."
@@ -220,11 +155,12 @@
 /*
 *	.34 ACP
 */
+
 // Why? Blame CFA, they want their bullets to be *proprietary*
 /obj/item/ammo_casing/c34
 	name = ".34 bullet casing"
 	desc = "A .34 bullet casing."
-	caliber = "c32acp"
+	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c34
 
 /obj/projectile/bullet/c34
@@ -394,8 +330,6 @@
 /*
 *	6.8x43mm
 */
-
-
 
 /obj/item/ammo_casing/a68
 	name = "6.8mm bullet casing"
