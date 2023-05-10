@@ -422,11 +422,7 @@
 
 /obj/item/organ/internal/eyes/robotic/glow/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	mob_overlay = image('modular_skyrat/master_files/icons/mob/human_face.dmi', "eyes_glow_gs") //SKURAT EDIT CHANGE
-=======
 	eye = new /obj/item/flashlight/eyelight/glow
->>>>>>> 8fa6242c662 (Refactors High Luminosity Eyes, fixes a ton of bugs related to it as well as qol improvements (#75040))
 
 /obj/item/organ/internal/eyes/robotic/glow/Destroy()
 	. = ..()
@@ -439,21 +435,11 @@
 		return
 	deactivate(close_ui = TRUE)
 
-<<<<<<< HEAD
-/obj/item/organ/internal/eyes/robotic/glow/proc/terminate_effects()
-	if(owner && active)
-		deactivate()
-	remove_mob_overlay() //SKYRAT EDIT ADDITION
-	active = FALSE
-	clear_visuals(TRUE)
-	STOP_PROCESSING(SSfastprocess, src)
-=======
 /// We have to do this here because on_insert gets called before refresh(), which we need to have been called for old_eye_color vars to be set
 /obj/item/organ/internal/eyes/robotic/glow/Insert(mob/living/carbon/eye_recipient, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
 	current_left_color_string = old_eye_color_left
 	current_right_color_string = old_eye_color_right
->>>>>>> 8fa6242c662 (Refactors High Luminosity Eyes, fixes a ton of bugs related to it as well as qol improvements (#75040))
 
 /obj/item/organ/internal/eyes/robotic/glow/on_insert(mob/living/carbon/eye_recipient)
 	. = ..()
@@ -631,11 +617,6 @@
 	else
 		activate()
 
-<<<<<<< HEAD
-/obj/item/organ/internal/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null // SKYRAT EDIT CHANGE
-	if(!color || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
-=======
 /**
  * Toggles for the eye color mode
  *
@@ -662,7 +643,6 @@
 			eye_color_right = current_right_color_string
 
 	if(QDELETED(eye_owner) || !ishuman(eye_owner)) //Other carbon mobs don't have eye color.
->>>>>>> 8fa6242c662 (Refactors High Luminosity Eyes, fixes a ton of bugs related to it as well as qol improvements (#75040))
 		return
 
 	eye_owner.dna.species.handle_body(eye_owner)
@@ -680,20 +660,8 @@
 	if(QDELETED(eye_owner))
 		return
 
-<<<<<<< HEAD
-/obj/item/organ/internal/eyes/robotic/glow/on_insert(mob/living/carbon/eye_owner)
-	. = ..()
-	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
-	//SKYRAT EDIT ADDITION
-	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
-	mob_overlay.color = eye_color
-	current_color_string = eye_color
-	add_mob_overlay()
-	//SKYRAT EDIT END
-=======
 	if(!ishuman(eye_owner))
 		return
->>>>>>> 8fa6242c662 (Refactors High Luminosity Eyes, fixes a ton of bugs related to it as well as qol improvements (#75040))
 
 	eye_owner.cut_overlay(eyes_overlay)
 	eye_owner.cut_overlay(eyes_overlay_left)
@@ -702,105 +670,6 @@
 	if(!eye.on)
 		return
 
-<<<<<<< HEAD
-/obj/item/organ/internal/eyes/robotic/glow/proc/activate(silent = FALSE)
-	start_visuals()
-	if(!silent)
-		to_chat(owner, span_warning("Your [src] clicks and makes a whining noise, before shooting out a beam of light!"))
-	cycle_mob_overlay()
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/deactivate(silent = FALSE)
-	clear_visuals()
-	if(!silent)
-		to_chat(owner, span_warning("Your [src] shuts off!"))
-	//remove_mob_overlay() SKYRAT EDIT REMOVAL
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/update_visuals(datum/source, olddir, newdir)
-	SIGNAL_HANDLER
-	if(!active)
-		return // Don't update if we're not active!
-	if((LAZYLEN(eye_lighting) < light_beam_distance) || !on_mob)
-		regenerate_light_effects()
-	var/turf/scanfrom = get_turf(owner)
-	var/scandir = owner.dir
-	if (newdir && scandir != newdir) // COMSIG_ATOM_DIR_CHANGE happens before the dir change, but with a reference to the new direction.
-		scandir = newdir
-	if(!istype(scanfrom))
-		clear_visuals()
-	var/turf/scanning = scanfrom
-	var/stop = FALSE
-	on_mob.set_light_flags(on_mob.light_flags & ~LIGHT_ATTACHED)
-	on_mob.forceMove(scanning)
-	for(var/i in 1 to light_beam_distance)
-		scanning = get_step(scanning, scandir)
-		if(IS_OPAQUE_TURF(scanning))
-			stop = TRUE
-		var/obj/effect/abstract/eye_lighting/lighting = LAZYACCESS(eye_lighting, i)
-		if(stop)
-			lighting.forceMove(src)
-		else
-			lighting.forceMove(scanning)
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/clear_visuals(delete_everything = FALSE)
-	if(delete_everything)
-		QDEL_LIST(eye_lighting)
-		QDEL_NULL(on_mob)
-	else
-		for(var/obj/effect/abstract/eye_lighting/lighting as anything in eye_lighting)
-			lighting.forceMove(src)
-		if(!QDELETED(on_mob))
-			on_mob.set_light_flags(on_mob.light_flags | LIGHT_ATTACHED)
-			on_mob.forceMove(src)
-	active = FALSE
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/start_visuals()
-	if(!islist(eye_lighting))
-		eye_lighting = list()
-		regenerate_light_effects()
-	if((eye_lighting.len < light_beam_distance) || !on_mob)
-		regenerate_light_effects()
-	sync_light_effects()
-	active = TRUE
-	update_visuals()
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/set_distance(dist)
-	light_beam_distance = dist
-	regenerate_light_effects()
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/regenerate_light_effects()
-	clear_visuals(TRUE)
-	on_mob = new (src, light_object_range, light_object_power, current_color_string, LIGHT_ATTACHED)
-	for(var/i in 1 to light_beam_distance)
-		LAZYADD(eye_lighting, new /obj/effect/abstract/eye_lighting(src, light_object_range, light_object_power, current_color_string))
-	sync_light_effects()
-
-
-/obj/item/organ/internal/eyes/robotic/glow/proc/sync_light_effects()
-	for(var/obj/effect/abstract/eye_lighting/eye_lighting as anything in eye_lighting)
-		eye_lighting.set_light_color(current_color_string)
-	on_mob?.set_light_color(current_color_string)
-
-
-/obj/effect/abstract/eye_lighting
-	light_system = MOVABLE_LIGHT
-	var/obj/item/organ/internal/eyes/robotic/glow/parent
-
-
-/obj/effect/abstract/eye_lighting/Initialize(mapload, light_object_range, light_object_power, current_color_string, light_flags)
-	. = ..()
-	parent = loc
-	if(!istype(parent))
-		stack_trace("/obj/effect/abstract/eye_lighting added to improper parent ([loc]). Deleting.")
-		return INITIALIZE_HINT_QDEL
-	if(!isnull(light_object_range))
-		set_light_range(light_object_range)
-	if(!isnull(light_object_power))
-		set_light_power(light_object_power)
-	if(!isnull(current_color_string))
-		set_light_color(current_color_string)
-	if(!isnull(light_flags))
-		set_light_flags(light_flags)
-=======
 	switch(eye_color_mode)
 		if(MATCH_LIGHT_COLOR)
 			eyes_overlay = emissive_appearance('icons/mob/species/human/human_face.dmi', "eyes_glow_gs", eye_owner, layer = -BODY_LAYER, alpha = owner.alpha)
@@ -813,7 +682,6 @@
 			eyes_overlay_right.color = eye_color_right
 			eye_owner.add_overlay(eyes_overlay_left)
 			eye_owner.add_overlay(eyes_overlay_right)
->>>>>>> 8fa6242c662 (Refactors High Luminosity Eyes, fixes a ton of bugs related to it as well as qol improvements (#75040))
 
 #undef MATCH_LIGHT_COLOR
 #undef USE_CUSTOM_COLOR
