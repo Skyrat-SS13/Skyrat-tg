@@ -12,12 +12,17 @@
 
 /// A nerfed down variation of the pirates' shuttle scrambler thingy that locks down supply lines to a halt. Can be turned off, but does not siphon any money.
 /// Muh arpee. Also yes I've literally copypasted the description because this is literally what it does there's no hidden meaning behind anything.
-/// TODO: hidden meaning stockmarket integration update
 /obj/machinery/shuttle_scrambler/nri
 	name = "system crasher"
 	desc = "This heap of machinery locks down supply lines to a halt. Can be turned off, but does not siphon any money. Do that yourself, lazyass."
 	siphon_per_tick = 0
+	///Needed for GPS addition on first activation.
 	var/first_toggle = FALSE
+	///Somewhat self-descriptive variables for "command"'s activation-/deactivation-related messages.
+	var/activation_report = "We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. \
+	We're sincerely hoping for and expecting your assistance with the matter."
+	var/deactivation_report = "We've received a signal to stop the supply blockade; you're once again free to perform your duties as before. \
+	Due to the urgency and cost of the responding dispatch, no supply budget increase is to be issued."
 
 /obj/machinery/shuttle_scrambler/nri/toggle_on(mob/user)
 	SSshuttle.registerTradeBlockade(src)
@@ -32,10 +37,10 @@
 /obj/machinery/shuttle_scrambler/nri/process()
 	if(active)
 		if(is_station_level(z))
-			var/datum/bank_account/aank_bcount = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			if(aank_bcount)
-				var/siphoned = min(aank_bcount.account_balance,siphon_per_tick)
-				aank_bcount.adjust_money(-siphoned)
+			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			if(bank_account)
+				var/siphoned = min(bank_account.account_balance,siphon_per_tick)
+				bank_account.adjust_money(-siphoned)
 				credits_stored += siphoned
 		else
 			return
@@ -73,12 +78,9 @@
 	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
 	return
 
-
 /obj/machinery/shuttle_scrambler/nri/send_notification()
-	priority_announce(active ?
-		"We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be." :
-		"We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.",
-		"NRI IAC HQ",
-		ANNOUNCER_NRI_RAIDERS,
-		"Priority"
+	priority_announce(active ? activation_report : deactivation_report,
+	"NRI IAC HQ",
+	ANNOUNCER_NRI_RAIDERS,
+	"Priority"
 	)

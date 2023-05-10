@@ -1,3 +1,5 @@
+#define FIRE_DELAY 4
+
 /obj/machinery/porta_turret/syndicate/nri_raider
 	name = "anti-projectile turret"
 	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
@@ -17,9 +19,9 @@
 	if(target)
 		setDir(get_dir(base, target))//even if you can't shoot, follow the target
 		shootAt(target)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 4)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 8)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 12)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), FIRE_DELAY)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), FIRE_DELAY*2)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), FIRE_DELAY*3)
 		return TRUE
 
 /obj/projectile/bullet/ciws
