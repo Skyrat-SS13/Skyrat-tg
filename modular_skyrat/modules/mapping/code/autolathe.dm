@@ -17,3 +17,4 @@
 	. = ..()
 	remove_design_by_id("radio_headset")
 	remove_design_by_id("bounced_radio")
+	remove_design_by_id("intercom_frame")
