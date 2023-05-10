@@ -3,18 +3,18 @@
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
-	inhand_icon_state = "radio"
+	inhand_icon_state = null
 
 	var/list/possible_choices = list()
 
 	var/pod_style = STYLE_CENTCOM
 
 /obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
-	if(canUseBeacon(user))
+	if(can_use_beacon(user))
 		display_options(user)
 
-/obj/item/advanced_choice_beacon/proc/canUseBeacon(mob/living/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+/obj/item/advanced_choice_beacon/proc/can_use_beacon(mob/living/user)
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
@@ -112,7 +112,7 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list("neutral", FACTION_ERT)
+		turret.faction = list(FACTION_NEUTRAL, FACTION_ERT)
 		qdel(src)
 
 	..()
@@ -121,22 +121,22 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/advanced/b12mm/rubber
+	stun_projectile = /obj/projectile/bullet/b12mm/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list("neutral", FACTION_ERT)
+	faction = list(FACTION_NEUTRAL, FACTION_ERT)
 	shot_delay = 0.25
 
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
 	return 0
 
-/mob/living/simple_animal/hostile/viscerator/nri
-	faction = list("neutral", FACTION_ERT)
+/mob/living/basic/viscerator/nri
+	faction = list(FACTION_NEUTRAL, FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "imperial viscerator delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/viscerator/nri
+	spawner_type = /mob/living/basic/viscerator/nri
 	deliveryamt = 10
 
 /obj/structure/closet/crate/secure/weapon/nri
@@ -152,8 +152,8 @@
 //defensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense
 	name = "defensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification.\
-	 Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
+	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification. \
+		Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -177,8 +177,8 @@
 //offensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense
 	name = "offensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression.\
-	 Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
+	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression. \
+		Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -196,8 +196,9 @@
 //defensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
-	 Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines."
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications. \
+		Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
+		And some bonus frag grenades."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
@@ -211,25 +212,25 @@
 	new /obj/item/minespawner/explosive(src)
 	new /obj/item/minespawner/explosive(src)
 	new /obj/item/minespawner/explosive(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
 
 //offensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense
 	name = "offensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
-	 Features FTU's standard pulse MMG with two spare ammo boxes, as well as ammunition for Krinkov and PP-542.\
-		And a bonus frag grenade."
-
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support. \
+		Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pitbull/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/grenade/frag(src)
+	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
+	new /obj/item/storage/toolbox/ammo/full/l6_saw(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/emp(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/fire(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/ricochet(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/ap(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammo/full/aps(src)

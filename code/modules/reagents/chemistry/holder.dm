@@ -20,6 +20,15 @@
 
 	return reagent_list
 
+/// Creates an list which is indexed by reagent name . used by plumbing reaction chamber and chemical filter UI
+/proc/init_chemical_name_list()
+	var/list/name_list = list()
+	for(var/X in GLOB.chemical_reagents_list)
+		var/datum/reagent/Reagent = GLOB.chemical_reagents_list[X]
+		name_list += Reagent.name
+	return sort_list(name_list)
+
+
 /proc/build_chemical_reactions_lists()
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
@@ -57,10 +66,16 @@
 		for(var/reaction in D.required_reagents)
 			reaction_ids += reaction
 			var/datum/reagent/reagent = find_reagent_object_from_type(reaction)
+			if(!istype(reagent))
+				stack_trace("Invalid reagent found in [D] required_reagents: [reaction]")
+				continue
 			reagents += list(list("name" = reagent.name, "id" = reagent.type))
 
 		for(var/product in D.results)
 			var/datum/reagent/reagent = find_reagent_object_from_type(product)
+			if(!istype(reagent))
+				stack_trace("Invalid reagent found in [D] results: [product]")
+				continue
 			product_names += reagent.name
 			product_ids += product
 
@@ -266,18 +281,14 @@
 	return TRUE
 
 /// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-	//SKYRAT EDIT CHANGE BEGIN
-		add_reagent(r_id, amt, data, no_react = TRUE)
-	if(!no_react)
-		handle_reactions()
-	//SKYRAT EDIT CHANGE END
+		add_reagent(r_id, amt, data)
 
 
 /// Remove a specific reagent
-/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE, no_react = FALSE)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		stack_trace("null amount passed to reagent code")
 		return FALSE
@@ -294,7 +305,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
-			if(!safety || !no_react)//So it does not handle reactions when it need not to //SKYRAT EDIT CHANGE
+			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
 
@@ -476,7 +487,7 @@
 	else
 		if(!ignore_stomach && (methods & INGEST) && iscarbon(target))
 			var/mob/living/carbon/eater = target
-			var/obj/item/organ/internal/stomach/belly = eater.getorganslot(ORGAN_SLOT_STOMACH)
+			var/obj/item/organ/internal/stomach/belly = eater.get_organ_slot(ORGAN_SLOT_STOMACH)
 			if(!belly)
 				eater.expel_ingested(my_atom, amount)
 				return
@@ -521,7 +532,9 @@
 
 		for(var/datum/reagent/reagent as anything in reagents_to_remove)
 			var/transfer_amount = reagent.volume * part
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			if(methods)
+				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -548,7 +561,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -696,21 +709,40 @@
  *
  * Arguments:
  * * mob/living/carbon/carbon - The mob to metabolize in, if null it uses [/datum/reagents/var/my_atom]
- * * delta_time - the time in server seconds between proc calls (when performing normally it will be 2)
+ * * seconds_per_tick - the time in server seconds between proc calls (when performing normally it will be 2)
  * * times_fired - the number of times the owner's life() tick has been called aka The number of times SSmobs has fired
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
-/datum/reagents/proc/metabolize(mob/living/carbon/owner, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+/datum/reagents/proc/metabolize(mob/living/carbon/owner, seconds_per_tick, times_fired, can_overdose = FALSE, liverless = FALSE, dead = FALSE)
 	var/list/cached_reagents = reagent_list
 	if(owner)
 		expose_temperature(owner.bodytemperature, 0.25)
+
 	var/need_mob_update = FALSE
+	var/obj/item/organ/internal/stomach/belly = owner.get_organ_slot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/internal/liver/liver = owner.get_organ_slot(ORGAN_SLOT_LIVER)
+	var/liver_tolerance
+	if(liver)
+		var/liver_health_percent = (liver.maxHealth - liver.damage) / liver.maxHealth
+		liver_tolerance = liver.toxTolerance * liver_health_percent
+
 	for(var/datum/reagent/reagent as anything in cached_reagents)
-		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose, liverless)
+		// skip metabolizing effects for small units of toxins
+		if(istype(reagent, /datum/reagent/toxin) && liver && !dead)
+			var/datum/reagent/toxin/toxin = reagent
+			var/amount = round(toxin.volume, CHEMICAL_QUANTISATION_LEVEL)
+			if(belly)
+				amount += belly.reagents.get_reagent_amount(toxin.type)
+
+			if(amount <= liver_tolerance)
+				owner.reagents.remove_reagent(toxin.type, toxin.metabolization_rate * owner.metabolism_efficiency * seconds_per_tick)
+				continue
+
+		need_mob_update += metabolize_reagent(owner, reagent, seconds_per_tick, times_fired, can_overdose, liverless, dead)
+
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /*
@@ -718,12 +750,12 @@
  *
  * Arguments:
  * * mob/living/carbon/owner - The mob to metabolize in, if null it uses [/datum/reagents/var/my_atom]
- * * delta_time - the time in server seconds between proc calls (when performing normally it will be 2)
+ * * seconds_per_tick - the time in server seconds between proc calls (when performing normally it will be 2)
  * * times_fired - the number of times the owner's life() tick has been called aka The number of times SSmobs has fired
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
-/datum/reagents/proc/metabolize_reagent(mob/living/carbon/owner, datum/reagent/reagent, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+/datum/reagents/proc/metabolize_reagent(mob/living/carbon/owner, datum/reagent/reagent, seconds_per_tick, times_fired, can_overdose = FALSE, liverless = FALSE, dead = FALSE)
 	var/need_mob_update = FALSE
 	if(QDELETED(reagent.holder))
 		return FALSE
@@ -755,8 +787,8 @@
 			return
 	//SKYRAT EDIT ADDITION END
 
-	if(owner && reagent)
-		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
+	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
+		if(owner.reagent_check(reagent, seconds_per_tick, times_fired))
 			return
 		if(liverless && !reagent.self_consuming) //need to be metabolized
 			return
@@ -773,9 +805,11 @@
 				owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
 
 			if(reagent.overdosed)
-				need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
-
-		need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+				need_mob_update += reagent.overdose_process(owner, seconds_per_tick, times_fired)
+		if(!dead)
+			need_mob_update += reagent.on_mob_life(owner, seconds_per_tick, times_fired)
+	if(dead)
+		need_mob_update += reagent.on_mob_dead(owner, seconds_per_tick)
 	return need_mob_update
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
@@ -813,7 +847,7 @@
 		added_purity = 0
 
 	if((reagent.inverse_chem_val > added_purity) && (reagent.inverse_chem))//Turns all of a added reagent into the inverse chem
-		add_reagent(reagent.inverse_chem, added_volume, FALSE, added_purity = 1-reagent.creation_purity)
+		add_reagent(reagent.inverse_chem, added_volume, FALSE, added_purity = reagent.get_inverse_purity(reagent.creation_purity))
 		var/datum/reagent/inverse_reagent = has_reagent(reagent.inverse_chem)
 		if(inverse_reagent.chemical_flags & REAGENT_SNEAKYNAME)
 			inverse_reagent.name = reagent.name//Negative effects are hidden
@@ -821,15 +855,14 @@
 	return added_volume
 
 ///Processes any chems that have the REAGENT_IGNORE_STASIS bitflag ONLY
-/datum/reagents/proc/handle_stasis_chems(mob/living/carbon/owner, delta_time, times_fired)
+/datum/reagents/proc/handle_stasis_chems(mob/living/carbon/owner, seconds_per_tick, times_fired)
 	var/need_mob_update = FALSE
 	for(var/datum/reagent/reagent as anything in reagent_list)
 		if(!(reagent.chemical_flags & REAGENT_IGNORE_STASIS))
 			continue
-		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose = TRUE)
+		need_mob_update += metabolize_reagent(owner, reagent, seconds_per_tick, times_fired, can_overdose = TRUE)
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /**
@@ -873,10 +906,17 @@
 		return FALSE //Yup, no reactions here. No siree.
 
 	if(is_reacting)//Prevent wasteful calculations
-		if(datum_flags != DF_ISPROCESSING)//If we're reacting - but not processing (i.e. we've transfered)
+		if(!(datum_flags & DF_ISPROCESSING))//If we're reacting - but not processing (i.e. we've transfered)
 			START_PROCESSING(SSreagents, src)
 		if(!(has_changed_state()))
 			return FALSE
+
+#ifndef UNIT_TESTS
+	// We assert that reagents will not need to react before the map is fully loaded
+	// This is the best I can do, sorry :(
+	if(!MC_RUNNING())
+		return FALSE
+#endif
 
 	var/list/cached_reagents = reagent_list
 	var/list/cached_reactions = GLOB.chemical_reactions_list_reactant_index
@@ -917,21 +957,13 @@
 					break
 				total_matching_catalysts++
 			if(cached_my_atom)
-				if(!reaction.required_container)
-					matching_container = TRUE
-				else
-					if(cached_my_atom.type == reaction.required_container)
-						matching_container = TRUE
-				if (isliving(cached_my_atom) && !reaction.mob_react) //Makes it so certain chemical reactions don't occur in mobs
+				matching_container = reaction.required_container ? (cached_my_atom.type == reaction.required_container) : TRUE
+
+				if(isliving(cached_my_atom) && !reaction.mob_react) //Makes it so certain chemical reactions don't occur in mobs
 					matching_container = FALSE
-				if(!reaction.required_other)
-					matching_other = TRUE
 
-				else if(istype(cached_my_atom, /obj/item/slime_extract))
-					var/obj/item/slime_extract/extract = cached_my_atom
+				matching_other = reaction.required_other ? reaction.pre_reaction_other_checks(src) : TRUE
 
-					if(extract.Uses > 0) // added a limit to slime cores -- Muskets requested this
-						matching_other = TRUE
 			else
 				if(!reaction.required_container)
 					matching_container = TRUE
@@ -984,6 +1016,8 @@
 	if(.)
 		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTED, .)
 
+	TEST_ONLY_ASSERT(!. || MC_RUNNING(), "We reacted during subsystem init, that shouldn't be happening!")
+
 /*
 * Main Reaction loop handler, Do not call this directly
 *
@@ -991,9 +1025,9 @@
 * If any are ended, it displays the reaction message and removes it from the reaction list
 * If the list is empty at the end it finishes reacting.
 * Arguments:
-* * delta_time - the time between each time step
+* * seconds_per_tick - the time between each time step
 */
-/datum/reagents/process(delta_time)
+/datum/reagents/process(seconds_per_tick)
 	if(!is_reacting)
 		force_stop_reacting()
 		stack_trace("[src] | [my_atom] was forced to stop reacting. This might be unintentional.")
@@ -1004,7 +1038,7 @@
 	var/num_reactions = 0
 	for(var/datum/equilibrium/equilibrium as anything in reaction_list)
 		//Continue reacting
-		equilibrium.react_timestep(delta_time)
+		equilibrium.react_timestep(seconds_per_tick)
 		num_reactions++
 		//if it's been flagged to delete
 		if(equilibrium.to_delete)
@@ -1014,7 +1048,7 @@
 			continue
 		SSblackbox.record_feedback("tally", "chemical_reaction", 1, "[equilibrium.reaction.type] total reaction steps")
 	if(num_reactions)
-		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTION_STEP, num_reactions, delta_time)
+		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTION_STEP, num_reactions, seconds_per_tick)
 
 	if(length(mix_message)) //This is only at the end
 		my_atom.audible_message(span_notice("[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]"))
@@ -1315,6 +1349,14 @@
 		if(cached_reagent.type == reagent)
 			return round(cached_reagent.volume, CHEMICAL_QUANTISATION_LEVEL)
 	return 0
+
+/datum/reagents/proc/get_multiple_reagent_amounts(list/reagents)
+	var/list/cached_reagents = reagent_list
+	var/total_amount = 0
+	for(var/datum/reagent/cached_reagent as anything in cached_reagents)
+		if(cached_reagent.type in reagents)
+			total_amount += round(cached_reagent.volume, CHEMICAL_QUANTISATION_LEVEL)
+	return total_amount
 
 /// Get the purity of this reagent
 /datum/reagents/proc/get_reagent_purity(reagent)
@@ -1904,7 +1946,7 @@
 			ui_reaction_id = text2path(params["id"])
 			return TRUE
 		if("search_reagents")
-			var/input_reagent = (input("Enter the name of any reagent", "Input") as text|null)
+			var/input_reagent = tgui_input_list(usr, "Select reagent", "Reagent", GLOB.chemical_name_list)
 			input_reagent = get_reagent_type_from_product_string(input_reagent) //from string to type
 			var/datum/reagent/reagent = find_reagent_object_from_type(input_reagent)
 			if(!reagent)

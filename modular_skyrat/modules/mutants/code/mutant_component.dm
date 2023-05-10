@@ -6,12 +6,12 @@
  */
 
 
-#define CURE_TIME 10 SECONDS
-#define REVIVE_TIME_LOWER 2 MINUTES
-#define REVIVE_TIME_UPPER 3 MINUTES
-#define IMMUNITY_LOWER 5 MINUTES
-#define IMMUNITY_UPPER 10 MINUTES
-#define RNA_REFRESH_TIME 2 MINUTES // How soon can we extract more RNA?
+#define CURE_TIME (10 SECONDS)
+#define REVIVE_TIME_LOWER (2 MINUTES)
+#define REVIVE_TIME_UPPER (3 MINUTES)
+#define IMMUNITY_LOWER (5 MINUTES)
+#define IMMUNITY_UPPER (10 MINUTES)
+#define RNA_REFRESH_TIME (2 MINUTES) // How soon can we extract more RNA?
 
 /datum/component/mutant_infection
 	/// The reference to our host body.
@@ -43,10 +43,10 @@
 
 	if(host.stat == DEAD)
 		var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
-		timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
+		timer_id = addtimer(CALLBACK(src, PROC_REF(transform_host)), revive_time, TIMER_STOPPABLE)
 		to_chat(host, span_userdanger("You feel your veins throb as your body begins twitching..."))
 
-	RegisterSignal(parent, COMSIG_MUTANT_CURED, .proc/cure_host)
+	RegisterSignal(parent, COMSIG_MUTANT_CURED, PROC_REF(cure_host))
 
 	START_PROCESSING(SSobj, src)
 
@@ -78,7 +78,7 @@
 		return FALSE
 	to_chat(host, span_userdanger("You feel your genes being altered!"))
 	rna_extracted = TRUE
-	addtimer(CALLBACK(src, .proc/refresh_rna), RNA_REFRESH_TIME, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(refresh_rna)), RNA_REFRESH_TIME, TIMER_STOPPABLE)
 	return TRUE
 
 /datum/component/mutant_infection/proc/refresh_rna()
@@ -87,17 +87,17 @@
 /mob/living/carbon/human/proc/remove_mutant_immunity()
 	REMOVE_TRAIT(src, TRAIT_MUTANT_IMMUNE, "mutant_virus")
 
-/datum/component/mutant_infection/process(delta_time)
+/datum/component/mutant_infection/process(seconds_per_tick)
 	if(!ismutant(host) && host.stat != DEAD)
 		var/toxloss = host.getToxLoss()
 		if(toxloss < 50)
-			host.adjustToxLoss(tox_loss_mod * delta_time)
-			if(DT_PROB(5, delta_time))
+			host.adjustToxLoss(tox_loss_mod * seconds_per_tick)
+			if(SPT_PROB(5, seconds_per_tick))
 				to_chat(host, span_userdanger("You feel your motor controls seize up for a moment!"))
 				host.Paralyze(10)
 		else
-			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
-			if(DT_PROB(10, delta_time))
+			host.adjustToxLoss((tox_loss_mod * 2) * seconds_per_tick)
+			if(SPT_PROB(10, seconds_per_tick))
 				var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
 				if(wound_area)
 					var/datum/wound/slash/moderate/rotting_wound = new
@@ -113,14 +113,14 @@
 		not even death can stop, you will rise again!"))
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
 	to_chat(host, span_redtext("You will transform in approximately [revive_time/10] seconds."))
-	timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(transform_host)), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/cure_host()
 	SIGNAL_HANDLER
 	if(!host.stat == DEAD)
 		to_chat(host, span_notice("You start to feel refreshed and invigorated!"))
 	STOP_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/Destroy), CURE_TIME)
+	addtimer(CALLBACK(src, PROC_REF(Destroy)), CURE_TIME)
 
 /datum/component/mutant_infection/proc/transform_host()
 	timer_id = null
@@ -146,13 +146,13 @@
 	to_chat(host, span_alertalien("You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren. You retain some higher functions and can reason to an extent."))
 	host.mind?.add_antag_datum(/datum/antagonist/mutant)
 	create_glow()
-	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(mutant_death))
 
 /datum/component/mutant_infection/proc/mutant_death()
 	SIGNAL_HANDLER
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
 	to_chat(host, span_cultlarge("You can feel your heart stopping, but something isn't right... you will rise again!"))
-	timer_id = addtimer(CALLBACK(src, .proc/regenerate), revive_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(regenerate)), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/regenerate()
 	if(!host.mind)
@@ -174,7 +174,7 @@
 		return
 
 	parent_movable.add_filter("infection_glow", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 2))
-	addtimer(CALLBACK(src, .proc/start_glow_loop, parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(start_glow_loop), parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
 
 /datum/component/mutant_infection/proc/start_glow_loop(atom/movable/parent_movable)
 	var/filter = parent_movable.get_filter("infection_glow")

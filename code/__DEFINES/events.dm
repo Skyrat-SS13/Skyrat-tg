@@ -32,3 +32,21 @@
 #define EVENT_CATEGORY_SPACE "Space Threats"
 ///Events summoned by a wizard
 #define EVENT_CATEGORY_WIZARD "Wizard"
+
+/// Return from admin setup to stop the event from triggering entirely.
+#define ADMIN_CANCEL_EVENT "cancel event"
+
+/// Event can only run on a map set in space
+#define EVENT_SPACE_ONLY (1 << 0)
+/// Event can only run on a map which is a planet
+#define EVENT_PLANETARY_ONLY (1 << 1)
+/// Event timer in seconds
+#define EVENT_SECONDS *0.5
+
+///Backstory key for the fugitive solo backstories
+#define FUGITIVE_BACKSTORY_WALDO "waldo"
+#define FUGITIVE_BACKSTORY_INVISIBLE "invisible"
+///Backstory keys for the fugitive team backstories
+#define FUGITIVE_BACKSTORY_PRISONER "prisoner"
+#define FUGITIVE_BACKSTORY_CULTIST "cultist"
+#define FUGITIVE_BACKSTORY_SYNTH "synth"

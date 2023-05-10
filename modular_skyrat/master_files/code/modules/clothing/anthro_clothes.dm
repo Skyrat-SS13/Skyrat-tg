@@ -1,10 +1,10 @@
 // This is the file for edge case clothing items that are not properly defined.
 
 // HEAD
-/obj/item/clothing/head/hardhat/atmos
+/obj/item/clothing/head/utility/hardhat/welding/atmos
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
 
-/obj/item/clothing/head/sombrero
+/obj/item/clothing/head/costume/sombrero
 	flags_inv = HIDEHAIR | SHOWSPRITEEARS
 
 /obj/item/clothing/head/wig

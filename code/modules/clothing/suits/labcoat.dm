@@ -28,42 +28,47 @@
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
 		)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/toggle_labcoat
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/toggle/labcoat/cmo
 	name = "chief medical officer's labcoat"
 	desc = "Bluer than the standard model."
 	icon_state = "labcoat_cmo"
-	inhand_icon_state = "labcoat_cmo"
+	inhand_icon_state = null
+
+/datum/armor/toggle_labcoat
+	bio = 50
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/suit/toggle/labcoat/cmo/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
-		/obj/item/storage/medkit //SKYRAT EDIT - ADDITION
+		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT ADDITION - MEDIGUNS
+		/obj/item/storage/medkit, //SKYRAT EDIT ADDITION
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic's jacket"
 	desc = "A dark blue jacket for paramedics with reflective stripes."
 	icon_state = "labcoat_paramedic"
-	inhand_icon_state = "labcoat_paramedic"
+	inhand_icon_state = null
 
-//START SKYRAT EDIT - ADDITION
-/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
+//START SKYRAT EDIT ADDITION
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/storage/medkit,
 	)
-//END SKYRAT EDIT- ADDITION
+//END SKYRAT EDIT
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
 	icon_state = "labgreen"
-	inhand_icon_state = "labgreen"
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/toggle/labcoat/genetics
 	name = "geneticist labcoat"
@@ -88,6 +93,15 @@
 	. = ..()
 	allowed += /obj/item/storage/bag/bio
 
+/obj/item/clothing/suit/toggle/labcoat/coroner
+	name = "coroner labcoat"
+	desc = "A suit that protects against minor chemical spills. Has a black stripe on the shoulder."
+	icon_state = "labcoat_coroner"
+
+/obj/item/clothing/suit/toggle/labcoat/coroner/Initialize(mapload)
+	. = ..()
+	allowed += /obj/item/autopsy_scanner
+
 /obj/item/clothing/suit/toggle/labcoat/science
 	name = "scientist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
@@ -106,4 +120,3 @@
 	name = "interdyne labcoat"
 	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
 	icon_state = "labcoat_robo"
-

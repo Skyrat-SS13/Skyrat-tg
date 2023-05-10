@@ -1,6 +1,6 @@
 /datum/preference_middleware/antags
 	action_delegations = list(
-		"set_antags" = .proc/set_antags,
+		"set_antags" = PROC_REF(set_antags),
 	)
 
 /datum/preference_middleware/antags/get_ui_static_data(mob/user)
@@ -119,6 +119,7 @@
 		ROLE_FUGITIVE = /datum/antagonist/fugitive,
 		ROLE_LONE_OPERATIVE = /datum/antagonist/nukeop/lone,
 		ROLE_DRIFTING_CONTRACTOR = /datum/antagonist/contractor, //SKYRAT EDIT
+		ROLE_SENTIENCE = /datum/antagonist/sentient_creature,
 	)
 
 	var/list/antagonists = non_ruleset_antagonists.Copy()

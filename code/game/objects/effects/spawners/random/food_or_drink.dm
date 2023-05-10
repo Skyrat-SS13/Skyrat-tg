@@ -14,6 +14,18 @@
 		/obj/item/storage/box/donkpockets/donkpockethonk,
 	)
 
+/obj/effect/spawner/random/food_or_drink/donkpockets_single
+	name = "single donk pocket spawner"
+	icon_state = "donkpocket_single"
+	loot = list(
+		/obj/item/food/donkpocket,
+		/obj/item/food/donkpocket/spicy,
+		/obj/item/food/donkpocket/teriyaki,
+		/obj/item/food/donkpocket/pizza,
+		/obj/item/food/donkpocket/berry,
+		/obj/item/food/donkpocket/honk,
+	)
+
 /obj/effect/spawner/random/food_or_drink/seed
 	name = "seed spawner"
 	icon_state = "seed"
@@ -60,12 +72,12 @@
 	name = "soup spawner"
 	icon_state = "soup"
 	loot = list(
-		/obj/item/food/soup/beet,
-		/obj/item/food/soup/sweetpotato,
-		/obj/item/food/soup/stew,
-		/obj/item/food/soup/hotchili,
-		/obj/item/food/soup/nettle,
-		/obj/item/food/soup/meatball,
+		/obj/item/reagent_containers/cup/bowl/soup/hotchili,
+		/obj/item/reagent_containers/cup/bowl/soup/meatball_soup,
+		/obj/item/reagent_containers/cup/bowl/soup/nettle,
+		/obj/item/reagent_containers/cup/bowl/soup/stew,
+		/obj/item/reagent_containers/cup/bowl/soup/sweetpotato,
+		/obj/item/reagent_containers/cup/bowl/soup/white_beet,
 	)
 
 /obj/effect/spawner/random/food_or_drink/salad
@@ -211,7 +223,7 @@
 		/obj/item/food/breadslice/root = 5,
 		/obj/item/food/kebab/candied_mushrooms = 5,
 		/obj/item/food/steeped_mushrooms = 5,
-		/obj/item/food/larvae = 5,
+		/obj/item/food/canned/larvae = 5,
 		/obj/item/food/emperor_roll = 5,
 		/obj/item/food/honey_roll = 5,
 	)
@@ -242,3 +254,20 @@
 		/obj/item/storage/box/cups,
 		/obj/item/storage/box/condimentbottles,
 	)
+
+///Used for the employee birthday station trait
+/obj/effect/spawner/random/food_or_drink/cake_ingredients
+	name = "cake ingredients spawner"
+	icon_state = "cake"
+	spawn_all_loot = TRUE
+	loot = list(
+		/obj/item/food/cakebatter,
+		/obj/item/flashlight/flare/candle,
+		/obj/item/reagent_containers/condiment/sugar,
+		/obj/item/reagent_containers/cup/bottle/caramel,
+	)
+
+/obj/effect/spawner/random/food_or_drink/cake_ingredients/Initialize(mapload)
+	if(!HAS_TRAIT(SSstation, STATION_TRAIT_BIRTHDAY))
+		spawn_loot_chance = 0
+	return ..()

@@ -17,7 +17,7 @@
 	desc = "Buzzy buzzy bee, stingy sti- Ouch!"
 	icon_state = ""
 	icon_living = ""
-	icon = 'icons/mob/bees.dmi'
+	icon = 'icons/mob/simple/bees.dmi'
 	gender = FEMALE
 	speak_emote = list("buzzes")
 	emote_hear = list("buzzes")
@@ -34,7 +34,7 @@
 	response_harm_simple = "squash"
 	maxHealth = 10
 	health = 10
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	move_to_delay = 0
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -62,8 +62,7 @@
 
 /mob/living/simple_animal/hostile/bee/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	add_traits(list(TRAIT_SPACEWALK, TRAIT_VENTCRAWLER_ALWAYS), INNATE_TRAIT)
 	generate_bee_visuals()
 	AddElement(/datum/element/simple_flying)
 	AddComponent(/datum/component/clickbox, x_offset = -2, y_offset = -2)
@@ -135,7 +134,7 @@
 	add_overlay("[icon_base]_base")
 
 	var/static/mutable_appearance/greyscale_overlay
-	greyscale_overlay = greyscale_overlay || mutable_appearance('icons/mob/bees.dmi')
+	greyscale_overlay = greyscale_overlay || mutable_appearance('icons/mob/simple/bees.dmi')
 	greyscale_overlay.icon_state = "[icon_base]_grey"
 	greyscale_overlay.color = col
 	add_overlay(greyscale_overlay)
@@ -193,7 +192,8 @@
 		real_name = name
 		//clear the old since this one is going to have some new value
 		RemoveElement(/datum/element/venomous)
-		AddElement(/datum/element/venomous, beegent.type, list(1, 5))
+		var/static/list/injection_range = list(1, 5)
+		AddElement(/datum/element/venomous, beegent.type, injection_range)
 		generate_bee_visuals()
 
 /mob/living/simple_animal/hostile/bee/proc/pollinate(obj/machinery/hydroponics/Hydro)
@@ -307,7 +307,7 @@
 	desc = "She's the queen of bees, BZZ BZZ!"
 	icon_state = "queen_item"
 	inhand_icon_state = ""
-	icon = 'icons/mob/bees.dmi'
+	icon = 'icons/mob/simple/bees.dmi'
 	/// The actual mob that our bee item corresponds to
 	var/mob/living/simple_animal/hostile/bee/queen/queen
 
@@ -352,7 +352,7 @@
 				to_chat(user, span_warning("You don't have enough units of that chemical to modify the bee's DNA!"))
 	..()
 
-/obj/item/queen_bee/suicide_act(mob/user)
+/obj/item/queen_bee/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] eats [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.say("IT'S HIP TO EAT BEES!")
 	qdel(src)
@@ -369,12 +369,12 @@
 
 /mob/living/simple_animal/hostile/bee/short/Initialize(mapload, timetolive=50 SECONDS)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/death), timetolive)
+	addtimer(CALLBACK(src, PROC_REF(death)), timetolive)
 
 /obj/item/trash/bee
 	name = "bee"
 	desc = "No wonder the bees are dying out, you monster."
-	icon = 'icons/mob/bees.dmi'
+	icon = 'icons/mob/simple/bees.dmi'
 	icon_state = "bee_item"
 	var/datum/reagent/beegent
 
@@ -389,4 +389,13 @@
 	body_overlay.color = beegent ? beegent.color : BEE_DEFAULT_COLOUR
 	. += body_overlay
 
+#undef BEE_DEFAULT_COLOUR
 #undef BEE_FOODGROUPS
+#undef BEE_IDLE_GOHOME
+#undef BEE_IDLE_ROAMING
+#undef BEE_POLLINATE_PEST_CHANCE
+#undef BEE_POLLINATE_POTENCY_CHANCE
+#undef BEE_POLLINATE_YIELD_CHANCE
+#undef BEE_PROB_GOHOME
+#undef BEE_PROB_GOROAM
+#undef BEE_TRAY_RECENT_VISIT

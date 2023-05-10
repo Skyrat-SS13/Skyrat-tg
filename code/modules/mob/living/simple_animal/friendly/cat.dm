@@ -2,7 +2,7 @@
 /mob/living/simple_animal/pet/cat
 	name = "cat"
 	desc = "Kitty!!"
-	icon = 'icons/mob/pets.dmi'
+	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
@@ -12,7 +12,6 @@
 	emote_see = list("shakes their head.", "shivers.")
 	speak_chance = 1
 	turns_per_move = 5
-	see_in_dark = 6
 	pass_flags = PASSTABLE
 	mob_size = MOB_SIZE_SMALL
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
@@ -29,12 +28,12 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
-	var/mob/living/simple_animal/mouse/movement_target
+	var/mob/living/basic/mouse/movement_target
 	gold_core_spawnable = FRIENDLY_SPAWN
-	collar_type = "cat"
+	collar_icon_state = "cat"
+	has_collar_resting_icon_state = TRUE
 	can_be_held = TRUE
 	held_state = "cat2"
-	///In the case 'melee_damage_upper' is somehow raised above 0
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "claw"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -70,7 +69,7 @@
 	icon_state = "breadcat"
 	icon_living = "breadcat"
 	icon_dead = "breadcat_dead"
-	collar_type = null
+	collar_icon_state = null
 	held_state = "breadcat"
 	butcher_results = list(/obj/item/food/meat/slab = 2, /obj/item/organ/internal/ears/cat = 1, /obj/item/organ/external/tail/cat = 1, /obj/item/food/breadslice/plain = 1)
 
@@ -84,12 +83,13 @@
 	icon_state = "original"
 	icon_living = "original"
 	icon_dead = "original_dead"
-	collar_type = null
+	collar_icon_state = null
 	unique_pet = TRUE
 	held_state = "original"
 
 /mob/living/simple_animal/pet/cat/original/add_cell_sample()
 	return
+
 /mob/living/simple_animal/pet/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww."
@@ -99,7 +99,7 @@
 	density = FALSE
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	collar_type = "kitten"
+	collar_icon_state = "kitten"
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/runtime
@@ -125,7 +125,7 @@
 	Read_Memory()
 	. = ..()
 
-/mob/living/simple_animal/pet/cat/runtime/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/cat/runtime/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
 		Deploy_The_Cats()
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
@@ -197,46 +197,49 @@
 		return
 	if (resting)
 		icon_state = "[icon_living]_rest"
-		collar_type = "[initial(collar_type)]_rest"
 	else
 		icon_state = "[icon_living]"
-		collar_type = "[initial(collar_type)]"
-	regenerate_icons()
 
 
-/mob/living/simple_animal/pet/cat/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/cat/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(!stat && !buckled && !client)
-		if(DT_PROB(0.5, delta_time))
+		if(SPT_PROB(0.5, seconds_per_tick))
 			manual_emote(pick("stretches out for a belly rub.", "wags [p_their()] tail.", "lies down."))
 			set_resting(TRUE)
-		else if(DT_PROB(0.5, delta_time))
+		else if(SPT_PROB(0.5, seconds_per_tick))
 			manual_emote(pick("sits down.", "crouches on [p_their()] hind legs.", "looks alert."))
 			set_resting(TRUE)
 			icon_state = "[icon_living]_sit"
-			collar_type = "[initial(collar_type)]_sit"
-		else if(DT_PROB(0.5, delta_time))
+			cut_overlays() // No collar support in sitting state
+		else if(SPT_PROB(0.5, seconds_per_tick))
 			if (resting)
 				manual_emote(pick("gets up and meows.", "walks around.", "stops resting."))
 				set_resting(FALSE)
 			else
 				manual_emote(pick("grooms [p_their()] fur.", "twitches [p_their()] whiskers.", "shakes out [p_their()] coat."))
 
-	//MICE!
+	//MICE! RATS! OH MY!
 	if((src.loc) && isturf(src.loc))
-		if(!stat && !resting && !buckled)
-			for(var/mob/living/simple_animal/mouse/M in view(1,src))
-				if(istype(M, /mob/living/simple_animal/mouse/brown/tom) && inept_hunter)
-					if(COOLDOWN_FINISHED(src, emote_cooldown))
-						visible_message(span_warning("[src] chases [M] around, to no avail!"))
-						step(M, pick(GLOB.cardinals))
-						COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
-					break
+		if(!stat && !buckled)
+			//Targeting anything in the rat faction nearby
+			for(var/mob/living/M in view(1,src))
 				if(!M.stat && Adjacent(M))
-					manual_emote("splats \the [M]!")
-					M.splat()
-					movement_target = null
-					stop_automated_movement = 0
-					break
+					if (FACTION_RAT in M.faction)
+						//Jerry can never catch Tom snowflaking
+						if(istype(M, /mob/living/basic/mouse/brown/tom) && inept_hunter)
+							if(COOLDOWN_FINISHED(src, emote_cooldown))
+								visible_message(span_warning("[src] chases [M] around, to no avail!"))
+								step(M, pick(GLOB.cardinals))
+								COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
+							break
+						//Mouse splatting
+						if(ismouse(M))
+							manual_emote("splats \the [M]!")
+							var/mob/living/basic/mouse/snack = M
+							snack.splat()
+							movement_target = null
+							stop_automated_movement = 0
+							break
 			for(var/obj/item/toy/cattoy/T in view(1,src))
 				if (T.cooldown < (world.time - 400))
 					manual_emote("bats \the [T] around with \his paw!")
@@ -257,10 +260,12 @@
 			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
 				movement_target = null
 				stop_automated_movement = 0
-				for(var/mob/living/simple_animal/mouse/snack in oview(src,3))
-					if(isturf(snack.loc) && !snack.stat)
-						movement_target = snack
-						break
+				//Targeting mice and mobs in the rat faction
+				for(var/mob/living/target in oview(src,3))
+					if(isturf(target.loc) && !target.stat)
+						if(FACTION_RAT in target.faction)
+							movement_target = target
+							break
 			if(movement_target)
 				stop_automated_movement = 1
 				SSmove_manager.move_to(src, movement_target, 0, 3)
@@ -308,12 +313,12 @@
 		to_chat(src, span_notice("Your name is now <b>[new_name]</b>!"))
 		name = new_name
 
-/mob/living/simple_animal/pet/cat/cak/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/cat/cak/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	..()
 	if(stat)
 		return
 	if(health < maxHealth)
-		adjustBruteLoss(-4 * delta_time) //Fast life regen
+		adjustBruteLoss(-4 * seconds_per_tick) //Fast life regen
 	for(var/obj/item/food/donut/D in range(1, src)) //Frosts nearby donuts!
 		if(!D.is_decorated)
 			D.decorate_donut()

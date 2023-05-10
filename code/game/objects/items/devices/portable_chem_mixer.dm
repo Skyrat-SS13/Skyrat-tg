@@ -37,6 +37,8 @@
 	if(severity > EXPLODE_LIGHT)
 		return ..()
 
+	return FALSE
+
 /obj/item/storage/portable_chem_mixer/attackby(obj/item/I, mob/user, params)
 	if (is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container() && atom_storage.locked)
 		var/obj/item/reagent_containers/B = I
@@ -80,7 +82,7 @@
 /obj/item/storage/portable_chem_mixer/AltClick(mob/living/user)
 	if(!atom_storage.locked)
 		return ..()
-	if(!can_interact(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!can_interact(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	replace_beaker(user)
 	update_appearance()
@@ -90,6 +92,7 @@
 	if (!atom_storage.locked)
 		update_contents()
 	if (atom_storage.locked)
+		atom_storage.hide_contents(usr)
 		replace_beaker(user)
 	update_appearance()
 	playsound(src, 'sound/items/screwdriver2.ogg', 50)
@@ -145,9 +148,16 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "PortableChemMixer", name)
-		if(user.hallucinating())
+
+		var/is_hallucinating = FALSE
+		if(isliving(user))
+			var/mob/living/living_user = user
+			is_hallucinating = !!living_user.has_status_effect(/datum/status_effect/hallucination)
+
+		if(is_hallucinating)
 			// to not ruin the immersion by constantly changing the fake chemicals
 			ui.set_autoupdate(FALSE)
+
 		ui.open()
 
 /obj/item/storage/portable_chem_mixer/ui_data(mob/user)
@@ -159,9 +169,11 @@
 	data["beakerTransferAmounts"] = beaker ? list(1,5,10,30,50,100) : null
 	data["showpH"] = show_ph
 	var/chemicals[0]
-	var/is_hallucinating = user.hallucinating()
-	if(user.hallucinating())
-		is_hallucinating = TRUE
+	var/is_hallucinating = FALSE
+	if(isliving(user))
+		var/mob/living/living_user = user
+		is_hallucinating = !!living_user.has_status_effect(/datum/status_effect/hallucination)
+
 	for(var/re in dispensable_reagents)
 		var/value = dispensable_reagents[re]
 		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
@@ -198,7 +210,7 @@
 			var/reagent_name = params["reagent"]
 			var/datum/reagent/reagent = GLOB.name2reagent[reagent_name]
 			var/entry = dispensable_reagents[reagent]
-			if(beaker)
+			if(beaker && beaker.loc == src)
 				var/datum/reagents/R = beaker.reagents
 				var/actual = min(amount, 1000, R.maximum_volume - R.total_volume)
 				// todo: add check if we have enough reagent left

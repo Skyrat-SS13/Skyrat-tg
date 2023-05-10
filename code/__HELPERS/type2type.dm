@@ -244,14 +244,6 @@ GLOBAL_LIST_INIT(modulo_angle_to_dir, list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,
 		if(ITEM_SLOT_LEGCUFFED)
 			return pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
-		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-		if(ITEM_SLOT_PENIS, ITEM_SLOT_VAGINA, ITEM_SLOT_ANUS)
-			return BODY_ZONE_PRECISE_GROIN
-
-		if(ITEM_SLOT_NIPPLES)
-			return BODY_ZONE_CHEST
-		//SKYRAT EDIT ADDITION END
-
 //adapted from http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
 /proc/heat2colour(temp)
 	return rgb(heat2colour_r(temp), heat2colour_g(temp), heat2colour_b(temp))
@@ -380,3 +372,7 @@ GLOBAL_LIST_INIT(modulo_angle_to_dir, list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,
 /// for use inside of browse() calls to html assets that might be loaded on a cdn.
 /proc/url2htmlloader(url)
 	return {"<html><head><meta http-equiv="refresh" content="0;URL='[url]'"/></head><body onLoad="parent.location='[url]'"></body></html>"}
+
+/// Formats a larger number to correct textual representation without losing data
+/proc/big_number_to_text(number)
+	return num2text(number, INFINITY)

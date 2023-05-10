@@ -11,6 +11,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
 	icon_state = "scrubswhite" // Because for some reason TG's scrubs dont have an icon on their basetype
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one seems to be the original Scrub."
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/chemist/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
@@ -34,14 +35,16 @@
 	name = "medical utility uniform"
 	desc = "A utility uniform worn by Medical doctors."
 	icon_state = "util_med"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /*
 *	SCRUBS
 */
+
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
 	icon_state = "scrubsred"
@@ -71,14 +74,15 @@
 *	PARAMEDIC
 */
 
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
-	name = "dark paramedic jumpsuit"
-	desc = "It's covered in reflective strips and made of a special fiber that provides minor protection against biohazards. It has a reflective white cross on the back denoting that the wearer is a trained paramedic."
-	icon_state = "paramedic_dark"
+/obj/item/clothing/under/rank/medical/paramedic/skyrat/light
+	name = "light paramedic uniform"
+	desc = "A brighter variant of the typical Paramedic uniform made with special fibers that provide minor protection against biohazards, this one has the reflective strips removed."
+	icon_state = "paramedic_light"
 
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
-	name = "dark paramedic jumpskirt"
-	icon_state = "paramedic_skirt_dark"
+/obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
+	name = "light paramedic skirt"
+	desc = "A brighter variant of the typical Paramedic uniform made with special fibers that provide minor protection against biohazards, this one has had it's legs replaced with a skirt."
+	icon_state = "paramedic_light_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
@@ -92,4 +96,3 @@
 	desc = "A teal, sterile naval suit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
 	name = "chief medical officer's naval jumpsuit"
 	icon_state = "impcmo"
-	inhand_icon_state = "b_suit"

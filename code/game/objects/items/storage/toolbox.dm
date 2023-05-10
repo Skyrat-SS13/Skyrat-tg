@@ -1,7 +1,7 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'icons/obj/storage/toolbox.dmi'
 	icon_state = "toolbox_default"
 	inhand_icon_state = "toolbox_default"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
@@ -13,7 +13,7 @@
 	throw_range = 7
 	demolition_mod = 1.25
 	w_class = WEIGHT_CLASS_BULKY
-	custom_materials = list(/datum/material/iron = 500)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5)
 	attack_verb_continuous = list("robusts")
 	attack_verb_simple = list("robust")
 	hitsound = 'sound/weapons/smash.ogg'
@@ -26,6 +26,7 @@
 
 /obj/item/storage/toolbox/Initialize(mapload)
 	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	if(has_latches)
 		if(prob(10))
 			latches = "double_latch"
@@ -33,18 +34,16 @@
 				latches = "triple_latch"
 	update_appearance()
 
+	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
+
 /obj/item/storage/toolbox/update_overlays()
 	. = ..()
 	if(has_latches)
 		. += latches
 
-/obj/item/storage/toolbox/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/toolbox/suicide_act(mob/user)
+/obj/item/storage/toolbox/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] robusts [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
-	return (BRUTELOSS)
+	return BRUTELOSS
 
 /obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"
@@ -146,17 +145,20 @@
 	material_flags = NONE
 
 /obj/item/storage/toolbox/electrical/PopulateContents()
-	var/pickedcolor = pick("red","yellow","green","blue","pink","orange","cyan","white")
+	var/pickedcolor = pick(GLOB.cable_colors)
 	new /obj/item/screwdriver(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/t_scanner(src)
 	new /obj/item/crowbar(src)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
+	var/obj/item/stack/cable_coil/new_cable_one = new(src, MAXCOIL)
+	new_cable_one.set_cable_color(pickedcolor)
+	var/obj/item/stack/cable_coil/new_cable_two = new(src, MAXCOIL)
+	new_cable_two.set_cable_color(pickedcolor)
 	if(prob(5))
 		new /obj/item/clothing/gloves/color/yellow(src)
 	else
-		new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
+		var/obj/item/stack/cable_coil/new_cable_three = new(src, MAXCOIL)
+		new_cable_three.set_cable_color(pickedcolor)
 
 /obj/item/storage/toolbox/syndicate
 	name = "tactical toolbox" //SKYRAT EDIT
@@ -208,7 +210,7 @@
 /obj/item/storage/toolbox/artistic/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 20
-	atom_storage.max_slots = 10
+	atom_storage.max_slots = 11
 
 /obj/item/storage/toolbox/artistic/PopulateContents()
 	new /obj/item/storage/crayons(src)
@@ -221,10 +223,12 @@
 	new /obj/item/stack/pipe_cleaner_coil/orange(src)
 	new /obj/item/stack/pipe_cleaner_coil/cyan(src)
 	new /obj/item/stack/pipe_cleaner_coil/white(src)
+	new /obj/item/stack/pipe_cleaner_coil/brown(src)
 
-/obj/item/storage/toolbox/ammo
-	name = "ammo box"
-	desc = "It contains a few clips."
+/obj/item/storage/toolbox/a762
+	name = "7.62mm ammo box (Surplus?)"
+	desc = "It contains a few clips. Goddamn, this thing smells awful. \
+		Has this been sitting in a warehouse for the last several centuries?"
 	icon_state = "ammobox"
 	inhand_icon_state = "ammobox"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
@@ -232,15 +236,14 @@
 	has_latches = FALSE
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
+	var/ammo_to_spawn = /obj/item/ammo_box/a762
 
-/obj/item/storage/toolbox/ammo/PopulateContents()
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
-	new /obj/item/ammo_box/a762(src)
+/obj/item/storage/toolbox/a762/PopulateContents()
+	for(var/i in 1 to 6)
+		new ammo_to_spawn(src)
+
+/obj/item/storage/toolbox/a762/surplus
+	ammo_to_spawn = /obj/item/ammo_box/a762/surplus
 
 /obj/item/storage/toolbox/maint_kit
 	name = "gun maintenance kit"
@@ -255,43 +258,6 @@
 	new /obj/item/gun_maintenance_supplies(src)
 	new /obj/item/gun_maintenance_supplies(src)
 	new /obj/item/gun_maintenance_supplies(src)
-
-/obj/item/storage/toolbox/infiltrator
-	name = "insidious case"
-	desc = "Bearing the emblem of the Syndicate, this case contains a full infiltrator stealth suit, and has enough room to fit weaponry if necessary."
-	icon_state = "infiltrator_case"
-	inhand_icon_state = "infiltrator_case"
-	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
-	force = 15
-	throwforce = 18
-	w_class = WEIGHT_CLASS_NORMAL
-	has_latches = FALSE
-
-/obj/item/storage/toolbox/infiltrator/Initialize(mapload)
-	. = ..()
-	atom_storage.max_slots = 10
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.max_total_storage = 24
-	atom_storage.set_holdable(list(
-		/obj/item/clothing/head/helmet/infiltrator,
-		/obj/item/clothing/suit/armor/vest/infiltrator,
-		/obj/item/clothing/under/syndicate/bloodred,
-		/obj/item/clothing/gloves/color/infiltrator,
-		/obj/item/clothing/mask/infiltrator,
-		/obj/item/clothing/shoes/combat/sneakboots,
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box
-		))
-
-/obj/item/storage/toolbox/infiltrator/PopulateContents()
-	new /obj/item/clothing/head/helmet/infiltrator(src)
-	new /obj/item/clothing/suit/armor/vest/infiltrator(src)
-	new /obj/item/clothing/under/syndicate/bloodred(src)
-	new /obj/item/clothing/gloves/color/infiltrator(src)
-	new /obj/item/clothing/mask/infiltrator(src)
-	new /obj/item/clothing/shoes/combat/sneakboots(src)
 
 //floorbot assembly
 /obj/item/storage/toolbox/attackby(obj/item/stack/tile/iron/T, mob/user, params)
@@ -334,4 +300,4 @@
 
 /obj/item/storage/toolbox/haunted
 	name = "old toolbox"
-	custom_materials = list(/datum/material/hauntium = 500)
+	custom_materials = list(/datum/material/hauntium = SMALL_MATERIAL_AMOUNT*5)

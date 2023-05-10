@@ -13,9 +13,22 @@ You can use the run_loc_floor_bottom_left and run_loc_floor_top_right to get tur
 
 GLOBAL_DATUM(current_test, /datum/unit_test)
 GLOBAL_VAR_INIT(failed_any_test, FALSE)
-GLOBAL_VAR(test_log)
 /// When unit testing, all logs sent to log_mapping are stored here and retrieved in log_mapping unit test.
 GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
+/// Global assoc list of required mapping items, [item typepath] to [required item datum].
+GLOBAL_LIST_EMPTY(required_map_items)
+
+/// A list of every test that is currently focused.
+/// Use the PERFORM_ALL_TESTS macro instead.
+GLOBAL_VAR_INIT(focused_tests, focused_tests())
+
+/proc/focused_tests()
+	var/list/focused_tests = list()
+	for (var/datum/unit_test/unit_test as anything in subtypesof(/datum/unit_test))
+		if (initial(unit_test.focus))
+			focused_tests += unit_test
+
+	return focused_tests.len > 0 ? focused_tests : null
 
 /datum/unit_test
 	//Bit of metadata for the future maybe
@@ -33,6 +46,9 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	var/succeeded = TRUE
 	var/list/allocated
 	var/list/fail_reasons
+
+	/// Do not instantiate if type matches this
+	var/abstract_type = /datum/unit_test
 
 	var/static/datum/space_level/reservation
 
@@ -54,7 +70,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 /datum/unit_test/Destroy()
 	QDEL_LIST(allocated)
 	// clear the test area
-	for (var/turf/turf in block(locate(1, 1, run_loc_floor_bottom_left.z), locate(world.maxx, world.maxy, run_loc_floor_bottom_left.z)))
+	for (var/turf/turf in Z_TURFS(run_loc_floor_bottom_left.z))
 		for (var/content in turf.contents)
 			if (istype(content, /obj/effect/landmark))
 				continue
@@ -62,7 +78,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	return ..()
 
 /datum/unit_test/proc/Run()
-	TEST_FAIL("Run() called parent or not implemented")
+	TEST_FAIL("[type]/Run() called parent or not implemented")
 
 /datum/unit_test/proc/Fail(reason = "No reason", file = "OUTDATED_TEST", line = 1)
 	succeeded = FALSE
@@ -76,11 +92,17 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 /// Instances allocated through this proc will be destroyed when the test is over
 /datum/unit_test/proc/allocate(type, ...)
 	var/list/arguments = args.Copy(2)
-	if (!arguments.len)
-		arguments = list(run_loc_floor_bottom_left)
-	else if (arguments[1] == null)
-		arguments[1] = run_loc_floor_bottom_left
-	var/instance = new type(arglist(arguments))
+	if(ispath(type, /atom))
+		if (!arguments.len)
+			arguments = list(run_loc_floor_bottom_left)
+		else if (arguments[1] == null)
+			arguments[1] = run_loc_floor_bottom_left
+	var/instance
+	// Byond will throw an index out of bounds if arguments is empty in that arglist call. Sigh
+	if(length(arguments))
+		instance = new type(arglist(arguments))
+	else
+		instance = new type()
 	allocated += instance
 	return instance
 
@@ -97,7 +119,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	if (fexists(filename))
 		var/data_filename = "data/screenshots/[path_prefix]_[name].png"
 		fcopy(icon, data_filename)
-		log_test("[path_prefix]_[name] was found, putting in data/screenshots")
+		log_test("\t[path_prefix]_[name] was found, putting in data/screenshots")
 	else if (fexists("code"))
 		// We are probably running in a local build
 		fcopy(icon, filename)
@@ -106,47 +128,84 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 		// We are probably running in real CI, so just pretend it worked and move on
 		fcopy(icon, "data/screenshots_new/[path_prefix]_[name].png")
 
-		log_test("[path_prefix]_[name] was put in data/screenshots_new")
+		log_test("\t[path_prefix]_[name] was put in data/screenshots_new")
 
-/proc/RunUnitTest(test_path, list/test_results)
+/// Helper for screenshot tests to take an image of an atom from all directions and insert it into one icon
+/datum/unit_test/proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
+	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(thing, defdir = direction, no_anim = no_anim)
+		output.Insert(partial, dir = direction)
+
+	return output
+
+/// Logs a test message. Will use GitHub action syntax found at https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
+/datum/unit_test/proc/log_for_test(text, priority, file, line)
+	var/map_name = SSmapping.config.map_name
+
+	// Need to escape the text to properly support newlines.
+	var/annotation_text = replacetext(text, "%", "%25")
+	annotation_text = replacetext(annotation_text, "\n", "%0A")
+
+	log_world("::[priority] file=[file],line=[line],title=[map_name]: [type]::[annotation_text]")
+
+/proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
+	if(ispath(test_path, /datum/unit_test/focus_only))
+		return
+
+	if(initial(test_path.abstract_type) == test_path)
+		return
+
 	var/datum/unit_test/test = new test_path
 
 	GLOB.current_test = test
 	var/duration = REALTIMEOFDAY
+	var/skip_test = (test_path in SSmapping.config.skipped_tests)
+	var/test_output_desc = "[test_path]"
+	var/message = ""
 
-	test.Run()
+	log_world("::group::[test_path]")
 
-	duration = REALTIMEOFDAY - duration
-	GLOB.current_test = null
-	GLOB.failed_any_test |= !test.succeeded
+	if(skip_test)
+		log_world("[TEST_OUTPUT_YELLOW("SKIPPED")] Skipped run on map [SSmapping.config.map_name].")
 
-	var/list/log_entry = list(
-		"[test.succeeded ? TEST_OUTPUT_GREEN("PASS") : TEST_OUTPUT_RED("FAIL")]: [test_path] [duration / 10]s",
-	)
-	var/list/fail_reasons = test.fail_reasons
-	var/map_name = SSmapping.config.map_name
+	else
 
-	for(var/reasonID in 1 to LAZYLEN(fail_reasons))
-		var/text = fail_reasons[reasonID][1]
-		var/file = fail_reasons[reasonID][2]
-		var/line = fail_reasons[reasonID][3]
+		test.Run()
 
-		// Github action annotation.
-		// See https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
+		duration = REALTIMEOFDAY - duration
+		GLOB.current_test = null
+		GLOB.failed_any_test |= !test.succeeded
 
-		// Need to escape the text to properly support newlines.
-		var/annotation_text = replacetext(text, "%", "%25")
-		annotation_text = replacetext(annotation_text, "\n", "%0A")
+		var/list/log_entry = list()
+		var/list/fail_reasons = test.fail_reasons
 
-		log_world("::error file=[file],line=[line],title=[map_name]: [test_path]::[annotation_text]")
+		for(var/reasonID in 1 to LAZYLEN(fail_reasons))
+			var/text = fail_reasons[reasonID][1]
+			var/file = fail_reasons[reasonID][2]
+			var/line = fail_reasons[reasonID][3]
 
-		// Normal log message
-		log_entry += "\tREASON #[reasonID]: [text] at [file]:[line]"
+			test.log_for_test(text, "error", file, line)
 
-	var/message = log_entry.Join("\n")
-	log_test(message)
+			// Normal log message
+			log_entry += "\tFAILURE #[reasonID]: [text] at [file]:[line]"
 
-	test_results[test_path] = list("status" = test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED, "message" = message, "name" = test_path)
+		if(length(log_entry))
+			message = log_entry.Join("\n")
+			log_test(message)
+
+		test_output_desc += " [duration / 10]s"
+		if (test.succeeded)
+			log_world("[TEST_OUTPUT_GREEN("PASS")] [test_output_desc]")
+
+	log_world("::endgroup::")
+
+	if (!test.succeeded && !skip_test)
+		log_world("::error::[TEST_OUTPUT_RED("FAIL")] [test_output_desc]")
+
+	var/final_status = skip_test ? UNIT_TEST_SKIPPED : (test.succeeded ? UNIT_TEST_PASSED : UNIT_TEST_FAILED)
+	test_results[test_path] = list("status" = final_status, "message" = message, "name" = test_path)
 
 	qdel(test)
 
@@ -162,7 +221,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	if(length(focused_tests))
 		tests_to_run = focused_tests
 
-	tests_to_run = sortTim(tests_to_run, /proc/cmp_unit_test_priority)
+	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
 
 	var/list/test_results = list()
 
@@ -176,7 +235,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 
 	SSticker.force_ending = TRUE
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
-	SSticker.standard_reboot()
+	SSticker.declare_completion()
 
 /datum/map_template/unit_tests
 	name = "Unit Tests Zone"

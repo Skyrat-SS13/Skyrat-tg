@@ -243,7 +243,7 @@
 	},
 /obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/disk/tech_disk/spaceloot,
+/obj/item/disk/design_disk/bepis,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "mW" = (
@@ -466,10 +466,8 @@
 "Cc" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/power/apc/unlocked{
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/mapping_helpers/apc/unlocked,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "Ct" = (
@@ -595,9 +593,10 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "LT" = (
-/obj/machinery/airalarm/all_access{
+/obj/machinery/airalarm/directional/south{
 	pixel_x = -5
 	},
+/obj/effect/mapping_helpers/airalarm/all_access,
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
 	color = "#8ab1ec"
 	},
@@ -685,7 +684,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "RQ" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
 	},
 /turf/template_noop,
@@ -720,7 +719,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Uf" = (
-/obj/structure/shuttle/engine/large{
+/obj/machinery/power/shuttle_engine/large{
 	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
@@ -739,7 +738,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "UL" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /turf/closed/wall/r_wall{
@@ -797,7 +796,7 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "Zf" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible/layer1,

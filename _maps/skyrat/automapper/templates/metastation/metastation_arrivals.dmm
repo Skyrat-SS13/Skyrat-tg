@@ -1095,6 +1095,9 @@
 /area/station/hallway/secondary/entry)
 "EL" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/status_display/shuttle/directional/north{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/hallway/secondary/entry)
 "EQ" = (
@@ -1721,6 +1724,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
+"Uj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
@@ -2956,7 +2971,7 @@ aJ
 LQ
 sV
 NO
-Vq
+Uj
 bO
 qU
 bb

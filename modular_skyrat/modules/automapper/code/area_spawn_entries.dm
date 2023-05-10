@@ -1,15 +1,15 @@
 // Pets
 /datum/area_spawn/markus
 	target_areas = list(/area/station/cargo/sorting,  /area/station/cargo/storage, /area/station/cargo/office, /area/station/command/heads_quarters/qm)
-	desired_atom = /mob/living/simple_animal/pet/dog/markus
+	desired_atom = /mob/living/basic/pet/dog/markus
 
 /datum/area_spawn/bumbles
 	target_areas = list(/area/station/service/hydroponics, /area/station/service/hydroponics/upper)
-	desired_atom = /mob/living/simple_animal/pet/bumbles
+	desired_atom = /mob/living/basic/pet/bumbles
 
 /datum/area_spawn/borgi
 	target_areas = list(/area/station/science/robotics, /area/station/science/robotics/mechbay, /area/station/science/robotics/lab)
-	desired_atom = /mob/living/simple_animal/pet/dog/corgi/borgi
+	desired_atom = /mob/living/basic/pet/dog/corgi/borgi
 
 /datum/area_spawn/poppy
 	target_areas = list(/area/station/engineering/main, /area/station/engineering/break_room, /area/station/engineering/lobby, /area/station/engineering/supermatter/room)
@@ -35,11 +35,6 @@
 	desired_atom = /obj/machinery/ammo_workbench
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
-/datum/area_spawn/gun_vendor
-	target_areas = list(/area/station/security/lockers, /area/station/security/office)
-	desired_atom = /obj/machinery/gun_vendor
-	mode = AREA_SPAWN_MODE_HUG_WALL
-
 /datum/area_spawn/lustwish_public
 	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms/laundry, /area/station/commons/dorms)
 	desired_atom = /obj/machinery/vending/dorms
@@ -61,6 +56,17 @@
 	desired_atom = /obj/machinery/posialert
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
+/datum/area_spawn/prison_cryo_console
+	// Keep to one area so it's in the same area as the pods, which is required.
+	target_areas = list(/area/station/security/prison)
+	desired_atom = /obj/machinery/computer/cryopod
+	mode = AREA_SPAWN_MODE_MOUNT_WALL
+
+/datum/area_spawn/prison_cryopod
+	target_areas = list(/area/station/security/prison)
+	desired_atom = /obj/machinery/cryopod/prison
+	mode = AREA_SPAWN_MODE_MOUNT_WALL
+
 // Job spawners
 /datum/area_spawn/secmed_landmark
 	target_areas = list(/area/station/security/medical, /area/station/security/brig)
@@ -73,10 +79,6 @@
 /datum/area_spawn/blueshield_landmark
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
 	desired_atom = /obj/effect/landmark/start/blueshield
-
-/datum/area_spawn/vanguard_landmark
-	target_areas = list(/area/station/command/gateway, /area/station/science/lobby, /area/station/science/breakroom)
-	desired_atom = /obj/effect/landmark/start/expeditionary_corps
 
 /datum/area_spawn/bouncer_landmark
 	desired_atom = /obj/effect/landmark/start/bouncer
@@ -97,3 +99,12 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+
+/datum/area_spawn_over/prison_curtains
+	desired_atom = /obj/structure/curtain/cloth/prison
+	over_atoms = list(/obj/structure/window/reinforced/fulltile, /obj/machinery/door/airlock/security/glass, /obj/machinery/door/airlock/public/glass)
+	target_areas = list(/area/station/security/prison/safe)
+
+/datum/area_spawn/corrections_officer_landmark
+	desired_atom = /obj/effect/landmark/start/corrections_officer
+	target_areas = list(/area/station/security/brig, /area/station/security/prison/)

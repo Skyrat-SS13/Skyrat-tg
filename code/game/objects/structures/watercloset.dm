@@ -91,7 +91,7 @@
 		else
 			for(var/i in custom_materials)
 				var/datum/material/M = i
-				new M.sheet_type(loc, FLOOR(custom_materials[M] / MINERAL_MATERIAL_AMOUNT, 1))
+				new M.sheet_type(loc, FLOOR(custom_materials[M] / SHEET_MATERIAL_AMOUNT, 1))
 	..()
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user, params)
@@ -156,14 +156,16 @@
 	icon_state = "urinal"
 	density = FALSE
 	anchored = TRUE
-	var/exposed = 0 // can you currently put an item inside
-	var/obj/item/hiddenitem = null // what's in the urinal
+	/// Can you currently put an item inside
+	var/exposed = FALSE
+	/// What's in the urinal
+	var/obj/item/hidden_item
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 
 /obj/structure/urinal/Initialize(mapload)
 	. = ..()
-	hiddenitem = new /obj/item/food/urinalcake
+	hidden_item = new /obj/item/food/urinalcake
 
 /obj/structure/urinal/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -182,21 +184,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 			to_chat(user, span_warning("You need a tighter grip!"))
 
 	else if(exposed)
-		if(!hiddenitem)
+		if(!hidden_item)
 			to_chat(user, span_warning("There is nothing in the drain holder!"))
 		else
 			if(ishuman(user))
-				user.put_in_hands(hiddenitem)
+				user.put_in_hands(hidden_item)
 			else
-				hiddenitem.forceMove(get_turf(src))
-			to_chat(user, span_notice("You fish [hiddenitem] out of the drain enclosure."))
-			hiddenitem = null
+				hidden_item.forceMove(get_turf(src))
+			to_chat(user, span_notice("You fish [hidden_item] out of the drain enclosure."))
+			hidden_item = null
 	else
 		..()
 
 /obj/structure/urinal/attackby(obj/item/I, mob/living/user, params)
 	if(exposed)
-		if (hiddenitem)
+		if (hidden_item)
 			to_chat(user, span_warning("There is already something in the drain enclosure!"))
 			return
 		if(I.w_class > 1)
@@ -205,7 +207,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 		if(!user.transferItemToLoc(I, src))
 			to_chat(user, span_warning("[I] is stuck to your hand, you cannot put it in the drain enclosure!"))
 			return
-		hiddenitem = I
+		hidden_item = I
 		to_chat(user, span_notice("You place [I] into the drain enclosure."))
 	else
 		return ..()
@@ -222,14 +224,29 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 		exposed = !exposed
 	return TRUE
 
+/obj/structure/urinal/deconstruct(disassembled = TRUE)
+	if(!(flags_1 & NODECONSTRUCT_1))
+		new /obj/item/wallframe/urinal(loc)
+	qdel(src)
+
+/obj/item/wallframe/urinal
+	name = "urinal frame"
+	desc = "An unmounted urinal. Attach it to a wall to use."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "urinal"
+	result_path = /obj/structure/urinal
+	pixel_shift = 32
 
 /obj/item/food/urinalcake
 	name = "urinal cake"
 	desc = "The noble urinal cake, protecting the station's pipes from the station's pee. Do not eat."
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "urinalcake"
 	w_class = WEIGHT_CLASS_TINY
-	food_reagents = list(/datum/reagent/chlorine = 3, /datum/reagent/ammonia = 1)
+	food_reagents = list(
+		/datum/reagent/chlorine = 3,
+		/datum/reagent/ammonia = 1,
+	)
 	foodtypes = TOXIC | GROSS
 
 /obj/item/food/urinalcake/attack_self(mob/living/user)
@@ -240,7 +257,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 /obj/item/bikehorn/rubberducky/plasticducky
 	name = "plastic ducky"
 	desc = "It's a cheap plastic knockoff of a loveable bathtime toy."
-	custom_materials = list(/datum/material/plastic = 1000)
+	custom_materials = list(/datum/material/plastic =HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
@@ -248,6 +265,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "rubberducky"
 	inhand_icon_state = "rubberducky"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "duck"
 
 /obj/structure/sink
@@ -343,7 +362,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	begin_reclamation()
 	if(washing_face)
 		SEND_SIGNAL(user, COMSIG_COMPONENT_CLEAN_FACE_ACT, CLEAN_WASH)
-		user.adjust_drowsyness(rand(-2, -3)) //Washing your face wakes you up if you're falling asleep
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
@@ -379,7 +397,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		if(baton.cell?.charge && baton.active)
 			flick("baton_active", src)
 			user.Paralyze(baton.knockdown_time)
-			user.set_timed_status_effect(baton.knockdown_time, /datum/status_effect/speech/stutter)
+			user.set_stutter(baton.knockdown_time)
 			baton.cell.use(baton.cell_hit_cost)
 			user.visible_message(span_warning("[user] shocks [user.p_them()]self while attempting to wash the active [baton.name]!"), \
 								span_userdanger("You unwisely attempt to wash [baton] while it's still on."))
@@ -479,12 +497,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 			new /obj/item/stock_parts/water_recycler(drop_location())
 	..()
 
-/obj/structure/sink/process(delta_time)
+/obj/structure/sink/process(seconds_per_tick)
 	// Water reclamation complete?
 	if(!has_water_reclaimer || reagents.total_volume >= reagents.maximum_volume)
 		return PROCESS_KILL
 
-	reagents.add_reagent(dispensedreagent, reclaim_rate * delta_time)
+	reagents.add_reagent(dispensedreagent, reclaim_rate * seconds_per_tick)
 
 /obj/structure/sink/proc/drop_materials()
 	if(buildstacktype)
@@ -492,7 +510,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	else
 		for(var/i in custom_materials)
 			var/datum/material/M = i
-			new M.sheet_type(loc, FLOOR(custom_materials[M] / MINERAL_MATERIAL_AMOUNT, 1))
+			new M.sheet_type(loc, FLOOR(custom_materials[M] / SHEET_MATERIAL_AMOUNT, 1))
 
 /obj/structure/sink/proc/begin_reclamation()
 	START_PROCESSING(SSplumbing, src)
@@ -555,7 +573,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 
 /obj/structure/sinkframe/proc/drop_materials()
 	for(var/datum/material/material as anything in custom_materials)
-		new material.sheet_type(loc, FLOOR(custom_materials[material] / MINERAL_MATERIAL_AMOUNT, 1))
+		new material.sheet_type(loc, FLOOR(custom_materials[material] / SHEET_MATERIAL_AMOUNT, 1))
 	return
 
 //Water source, use the type water_source for unlimited water sources like classic sinks.
@@ -596,7 +614,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 
 	if(washing_face)
 		SEND_SIGNAL(user, COMSIG_COMPONENT_CLEAN_FACE_ACT, CLEAN_WASH)
-		user.adjust_drowsyness(rand(-2, -3)) //Washing your face wakes you up if you're falling asleep
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
@@ -628,7 +645,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 		if(baton.cell?.charge && baton.active)
 			flick("baton_active", src)
 			user.Paralyze(baton.knockdown_time)
-			user.set_timed_status_effect(baton.knockdown_time, /datum/status_effect/speech/stutter)
+			user.set_stutter(baton.knockdown_time)
 			baton.cell.use(baton.cell_hit_cost)
 			user.visible_message(span_warning("[user] shocks [user.p_them()]self while attempting to wash the active [baton.name]!"), \
 								span_userdanger("You unwisely attempt to wash [baton] while it's still on."))
@@ -726,12 +743,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 	open = !open
 	if(open)
 		layer = SIGN_LAYER
-		plane = GAME_PLANE
+		SET_PLANE_IMPLICIT(src, GAME_PLANE)
 		set_density(FALSE)
 		set_opacity(FALSE)
 	else
 		layer = WALL_OBJ_LAYER
-		plane = GAME_PLANE_UPPER
+		SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 		set_density(TRUE)
 		if(opaque_closed)
 			set_opacity(TRUE)
@@ -828,7 +845,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 /obj/structure/curtain/cloth/fancy/mechanical/proc/open()
 	icon_state = "[icon_type]-open"
 	layer = SIGN_LAYER
-	plane = GAME_PLANE
+	SET_PLANE_IMPLICIT(src, GAME_PLANE)
 	set_density(FALSE)
 	open = TRUE
 	set_opacity(FALSE)
@@ -836,7 +853,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 /obj/structure/curtain/cloth/fancy/mechanical/proc/close()
 	icon_state = "[icon_type]-closed"
 	layer = WALL_OBJ_LAYER
-	plane = GAME_PLANE_UPPER
+	SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 	set_density(TRUE)
 	open = FALSE
 	if(opaque_closed)

@@ -58,5 +58,3 @@
 #define LOADOUT_INFO_STYLE			1
 //Stores a single color for use by the loadout datum
 #define LOADOUT_INFO_ONE_COLOR 		2
-//Stores three colors! Good for polychromatic stuff
-#define LOADOUT_INFO_THREE_COLORS	3

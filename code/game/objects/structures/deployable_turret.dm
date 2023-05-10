@@ -93,7 +93,7 @@
 			M.put_in_hands(TC)
 	M.pixel_y = 14
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
+	SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 	setDir(SOUTH)
 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
 	set_anchored(TRUE)
@@ -128,42 +128,43 @@
 	switch(dir)
 		if(NORTH)
 			layer = BELOW_MOB_LAYER
-			plane = GAME_PLANE
+			SET_PLANE_IMPLICIT(src, GAME_PLANE)
 			user.pixel_x = 0
 			user.pixel_y = -14
 		if(NORTHEAST)
 			layer = BELOW_MOB_LAYER
-			plane = GAME_PLANE
+			SET_PLANE_IMPLICIT(src, GAME_PLANE)
 			user.pixel_x = -8
 			user.pixel_y = -4
 		if(EAST)
 			layer = ABOVE_MOB_LAYER
-			plane = GAME_PLANE_UPPER
+			SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 			user.pixel_x = -14
 			user.pixel_y = 0
 		if(SOUTHEAST)
 			layer = BELOW_MOB_LAYER
-			plane = GAME_PLANE
+			SET_PLANE_IMPLICIT(src, GAME_PLANE)
 			user.pixel_x = -8
 			user.pixel_y = 4
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
+			SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 			plane = GAME_PLANE_UPPER
 			user.pixel_x = 0
 			user.pixel_y = 14
 		if(SOUTHWEST)
 			layer = BELOW_MOB_LAYER
-			plane = GAME_PLANE
+			SET_PLANE_IMPLICIT(src, GAME_PLANE)
 			user.pixel_x = 8
 			user.pixel_y = 4
 		if(WEST)
 			layer = ABOVE_MOB_LAYER
-			plane = GAME_PLANE_UPPER
+			SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
 			user.pixel_x = 14
 			user.pixel_y = 0
 		if(NORTHWEST)
 			layer = BELOW_MOB_LAYER
-			plane = GAME_PLANE
+			SET_PLANE_IMPLICIT(src, GAME_PLANE)
 			user.pixel_x = 8
 			user.pixel_y = -4
 
@@ -184,7 +185,7 @@
 /obj/machinery/deployable_turret/proc/volley(mob/user)
 	target_turf = get_turf(target)
 	for(var/i in 1 to number_of_shots)
-		addtimer(CALLBACK(src, /obj/machinery/deployable_turret/.proc/fire_helper, user), i*rate_of_fire)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/deployable_turret/, fire_helper), user), i*rate_of_fire)
 
 /obj/machinery/deployable_turret/proc/fire_helper(mob/user)
 	if(user.incapacitated() || !(user in buckled_mobs))
@@ -228,7 +229,7 @@
 
 /obj/item/gun_control
 	name = "turret controls"
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT | NOBLUDGEON | DROPDEL
@@ -261,6 +262,7 @@
 
 /obj/item/gun_control/afterattack(atom/targeted_atom, mob/user, flag, params)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	var/modifiers = params2list(params)
 	var/obj/machinery/deployable_turret/E = user.buckled
 	E.calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(user, targeted_atom, modifiers)

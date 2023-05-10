@@ -11,7 +11,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	pin = /obj/item/firing_pin/implant/pindicate
 	bolt_type = BOLT_TYPE_NO_BOLT
-	has_gun_safety = FALSE //SKYRAT EDIT
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted
 	pin = /obj/item/firing_pin
@@ -40,7 +39,6 @@
 	mag_type = /obj/item/ammo_box/magazine/m75
 	burst_size = 1
 	fire_delay = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	casing_ejector = FALSE
 
 /obj/item/gun/ballistic/rocketlauncher
@@ -93,19 +91,19 @@
 		user.notransform = TRUE
 		playsound(src, 'sound/vehicles/rocketlaunch.ogg', 80, TRUE, 5)
 		animate(user, pixel_z = 300, time = 30, easing = LINEAR_EASING)
-		sleep(70)
+		sleep(7 SECONDS)
 		animate(user, pixel_z = 0, time = 5, easing = LINEAR_EASING)
-		sleep(5)
+		sleep(0.5 SECONDS)
 		user.notransform = FALSE
 		process_fire(user, user, TRUE)
 		if(!QDELETED(user)) //if they weren't gibbed by the explosion, take care of them for good.
 			user.gib()
 		return MANUAL_SUICIDE
 	else
-		sleep(5)
+		sleep(0.5 SECONDS)
 		shoot_with_empty_chamber(user)
-		sleep(20)
+		sleep(2 SECONDS)
 		user.visible_message(span_warning("[user] looks about the room realizing [user.p_theyre()] still there. [user.p_they(TRUE)] proceed to shove [src] down their throat and choke [user.p_them()]self with it!"), \
 			span_userdanger("You look around after realizing you're still here, then proceed to choke yourself to death with [src]!"))
-		sleep(20)
+		sleep(2 SECONDS)
 		return OXYLOSS

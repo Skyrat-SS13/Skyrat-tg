@@ -3,10 +3,12 @@
 /obj/item/clothing/head/helmet/sec/peacekeeper
 	name = "peacekeeper helmet"
 	desc = "A standard issue combat helmet for peacekeeper operators. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "peacekeeper_helmet"
-	worn_icon_state = "peacekeeper"
+	base_icon_state = "peacekeeper_helmet"
+	can_toggle = FALSE
+	actions_types = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper
@@ -27,7 +29,7 @@
 
 
 
-/obj/item/clothing/head/sec/peacekeeper/sergeant
+/obj/item/clothing/head/hats/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
 	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -35,7 +37,7 @@
 	icon_state = "peacekeeper_sergeant_cap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hos/beret/peacekeeper
+/obj/item/clothing/head/hats/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -82,7 +84,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_warden"
-	inhand_icon_state = "peacekeeper_warden"
 
 /obj/item/clothing/under/rank/security/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -94,7 +95,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_hos"
-	inhand_icon_state = "peacekeeper_hos"
 
 //PEACEKEEPER ARMOR
 /obj/item/clothing/suit/armor/vest/peacekeeper
@@ -138,20 +138,6 @@
 	icon_state = "peacekeeper_trench_warden"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "coatpeacekeeper"
-	inhand_icon_state = "coatpeacekeeper"
-	desc = "A greyish-blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/peacekeeper
-
-/obj/item/clothing/head/hooded/winterhood/security/peacekeeper
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_peacekeeper"
-	desc = "A greyish-blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
-
 /obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat
 	name = "peacekeeper sleek coat"
 	desc = "An incredibly stylish and heavy black coat made of synthetic kangaroo leather, padded with durathread and lined with kevlar."
@@ -176,7 +162,7 @@
 	heat_protection = 0
 	max_heat_protection_temperature = null
 	resistance_flags = FLAMMABLE
-	armor = null
+	armor_type = /datum/armor/none
 	cut_type = null
 
 /obj/item/clothing/gloves/tackler/peacekeeper
@@ -272,24 +258,12 @@
 		))
 
 //BOOTS
-/obj/item/clothing/shoes/combat/peacekeeper
+/obj/item/clothing/shoes/jackboots/peacekeeper
 	name = "peacekeeper boots"
 	desc = "High speed, low drag combat boots."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "peacekeeper_boots"
-	inhand_icon_state = "jackboots"
-	worn_icon_state = "peacekeeper"
-	armor = null
-	strip_delay = 30
-	equip_delay_other = 50
-	resistance_flags = NONE
-	can_be_tied = FALSE
-
-/obj/item/clothing/shoes/combat/peacekeeper/Initialize(mapload)
-	. = ..()
-
-	create_storage(type = /datum/storage/pockets/shoes)
+	icon_state = "peacekeeper"
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"

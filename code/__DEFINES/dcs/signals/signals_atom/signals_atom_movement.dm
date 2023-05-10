@@ -11,6 +11,10 @@
 #define COMSIG_ATOM_NO_LONGER_PULLING "movable_no_longer_pulling"
 ///called for each movable in a turf contents on /turf/zImpact(): (atom/movable/A, levels)
 #define COMSIG_ATOM_INTERCEPT_Z_FALL "movable_intercept_z_impact"
+///signal sent out by an atom upon onZImpact : (turf/impacted_turf, levels)
+#define COMSIG_ATOM_ON_Z_IMPACT "movable_on_z_impact"
+///Signal sent after an atom movable moves on shuttle.
+#define COMSIG_ATOM_AFTER_SHUTTLE_MOVE "movable_after_shuttle_move"
 ///called on a movable (NOT living) when it starts pulling (atom/movable/pulled, state, force)
 #define COMSIG_ATOM_START_PULL "movable_start_pull"
 ///called on /living when someone starts pulling (atom/movable/pulled, state, force)
@@ -20,6 +24,7 @@
 ///called on /living, when pull is attempted, but before it completes, from base of [/mob/living/start_pulling]: (atom/movable/thing, force)
 #define COMSIG_LIVING_TRY_PULL "living_try_pull"
 	#define COMSIG_LIVING_CANCEL_PULL (1 << 0)
+#define COMSIG_LIVING_TRYING_TO_PULL "living_tried_pulling"
 /// Called from /mob/living/update_pull_movespeed
 #define COMSIG_LIVING_UPDATING_PULL_MOVESPEED "living_updating_pull_movespeed"
 /// Called from /mob/living/PushAM -- Called when this mob is about to push a movable, but before it moves
@@ -31,8 +36,14 @@
 #define COMSIG_ATOM_RELAYMOVE "atom_relaymove"
 	///prevents the "you cannot move while buckled! message"
 	#define COMSIG_BLOCK_RELAYMOVE (1<<0)
+
+/// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes
+#define COMSIG_ATOM_PRE_DIR_CHANGE "mob_pre_face_atom"
+	#define COMPONENT_ATOM_BLOCK_DIR_CHANGE (1<<0)
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+///from base of atom/setDir(): (old_dir, new_dir). Called after the direction changes.
+#define COMSIG_ATOM_POST_DIR_CHANGE "atom_dir_change"
 /// from /datum/component/singularity/proc/can_move(), as well as /obj/energy_ball/proc/can_move()
 /// if a callback returns `SINGULARITY_TRY_MOVE_BLOCK`, then the singularity will not move to that turf
 #define COMSIG_ATOM_SINGULARITY_TRY_MOVE "atom_singularity_try_move"

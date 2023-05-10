@@ -6,6 +6,6 @@
 	icon = 'icons/turf/floors.dmi' // This makes it look like the dirt floor
 	icon_state = "dirt"
 	layer = 2.0001
-	plane = -7
+	plane = FLOOR_PLANE
 	self_sustaining = 1
 	pixel_z = 0

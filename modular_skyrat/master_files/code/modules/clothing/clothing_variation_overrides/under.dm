@@ -18,9 +18,6 @@
 /obj/item/clothing/under/rank/centcom/intern
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/bouncer
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
 /obj/item/clothing/under/rank/security/officer/spacepol
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -45,14 +42,6 @@
 	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/rank/captain/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/chaplain/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/security/officer/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -94,10 +83,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/syndicate/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
 /obj/item/clothing/under/rank/cargo/tech/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
@@ -126,7 +111,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -190,7 +175,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/security/detective/grey/skirt
+/obj/item/clothing/under/rank/security/detective/noir/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -199,22 +184,6 @@
 	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/suit/black_really/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/syndicate/tacticool/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-
-/obj/item/clothing/under/costume/draculass
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/rank/prisoner/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
@@ -232,28 +201,9 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/civilian/lawyer/black/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/lawyer/female/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/lawyer/red/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
 /obj/item/clothing/under/color/jumpskirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/suit/toggle/labcoat/roboticist
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -262,7 +212,28 @@
  * NONE(Squash)
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
-/obj/item/clothing/under/costume/swagoutfit
+/obj/item/clothing/under/suit/henchmen
 	supports_variations_flags = NONE
 
 
+/**
+ * SUBTYPE WITH NEW ICON
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ */
+/obj/item/clothing/under/misc/bouncer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/color
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/suit/waiter
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/prisoner
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/security/officer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/medical/scrubs
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION

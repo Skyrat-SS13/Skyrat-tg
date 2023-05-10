@@ -39,9 +39,7 @@
 /turf/template_noop,
 /area/template_noop)
 "cq" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plastic,
 /area/ruin/powered)
@@ -68,9 +66,8 @@
 /area/template_noop)
 "ef" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light{
-	active_power_usage = 10;
-	dir = 1
+/obj/machinery/light/directional/north{
+	active_power_usage = 10
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered)
@@ -192,12 +189,8 @@
 /turf/template_noop,
 /area/template_noop)
 "iT" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -226,9 +219,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/powered)
 "jV" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /obj/item/wallframe/airalarm{
 	pixel_y = -7
 	},
@@ -296,9 +287,7 @@
 /turf/closed/indestructible/opshuttle,
 /area/ruin/unpowered/no_grav)
 "ni" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -321,7 +310,7 @@
 /turf/closed/wall/material,
 /area/ruin/unpowered/no_grav)
 "pb" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
 	},
 /turf/template_noop,
@@ -368,7 +357,7 @@
 	},
 /area/template_noop)
 "qj" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
 	},
 /obj/structure/lattice/catwalk{
@@ -387,7 +376,7 @@
 /turf/template_noop,
 /area/template_noop)
 "rP" = (
-/obj/structure/shuttle/engine/large{
+/obj/machinery/power/shuttle_engine/large{
 	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
@@ -462,10 +451,8 @@
 /turf/closed/indestructible/opshuttle,
 /area/ruin/unpowered/no_grav)
 "vA" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /turf/template_noop,
 /area/template_noop)
 "vH" = (
@@ -477,10 +464,8 @@
 /turf/open/floor/plating/airless,
 /area/template_noop)
 "wc" = (
-/obj/machinery/airalarm/unlocked{
-	dir = 1;
-	pixel_y = 13
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/unlocked,
 /turf/closed/wall,
 /area/ruin/powered)
 "wu" = (
@@ -502,7 +487,7 @@
 /turf/open/floor/engine/airless,
 /area/ruin/unpowered/no_grav)
 "yA" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
@@ -539,10 +524,8 @@
 /turf/template_noop,
 /area/template_noop)
 "Ay" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/machinery/atmospherics/components/tank/air{
 	anchored = 0;
 	pixel_x = 3;
@@ -582,12 +565,8 @@
 /turf/open/floor/plating/airless,
 /area/template_noop)
 "BM" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -610,9 +589,7 @@
 /turf/open/floor/plating/airless,
 /area/ruin/powered)
 "DX" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -654,12 +631,8 @@
 /turf/open/floor/plating/plasma,
 /area/template_noop)
 "EJ" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /turf/template_noop,
 /area/template_noop)
 "EQ" = (
@@ -726,9 +699,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/structure/window{
-	dir = 1
-	},
+/obj/structure/window/spawner/directional/north,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plastic,
 /area/ruin/powered)
@@ -759,7 +730,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/obj/machinery/light{
+/obj/machinery/light/directional/south{
 	active_power_usage = 10
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -772,10 +743,8 @@
 /turf/open/floor/plating/plasma,
 /area/template_noop)
 "Ko" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/closet/emcloset,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
@@ -843,9 +812,7 @@
 /turf/open/floor/plating,
 /area/ruin/powered)
 "NI" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -947,7 +914,7 @@
 /area/template_noop)
 "QU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible/layer1,
-/obj/structure/shuttle/engine/router,
+/obj/machinery/power/shuttle_engine/propulsion,
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
 	color = "#b49973"
 	},
@@ -1037,7 +1004,7 @@
 /turf/open/floor/iron/recharge_floor/airless,
 /area/template_noop)
 "WR" = (
-/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/structure/lattice/catwalk{
 	color = "#318350";
 	desc = "A catwalk-like mesh, used for the collection of space debris before processing.";
@@ -1056,9 +1023,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Xb" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/machinery/portable_atmospherics/canister/plasma{
 	desc = "Plasma gas. Highly fuel efficient. Highly volatile. Highly toxic.";
 	name = "Fuel canister"

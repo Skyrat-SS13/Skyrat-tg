@@ -7,7 +7,7 @@
 	density = FALSE
 	mob_name = "cortical borer"
 	///Type of mob that will be spawned
-	mob_type = /mob/living/simple_animal/cortical_borer
+	mob_type = /mob/living/basic/cortical_borer
 	role_ban = ROLE_ALIEN
 	show_flavor = FALSE
 	prompt_name = "cortical borer"
@@ -22,7 +22,7 @@
 	///what the generation of the borer egg is
 	var/generation = 1
 	///the egg that is attached to this mob spawn
-	var/obj/item/borer_egg/host_egg
+	var/obj/item/borer_egg/host_egg = /obj/item/borer_egg
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/Destroy()
 	host_egg = null
@@ -36,7 +36,7 @@
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/Initialize(mapload, datum/team/cortical_borers/borer_team)
 	. = ..()
-	host_egg = new /obj/item/borer_egg(get_turf(src))
+	host_egg = new host_egg(get_turf(src))
 	host_egg.host_spawner = src
 	forceMove(host_egg)
 	var/area/src_area = get_area(src)
@@ -73,18 +73,18 @@
 	QDEL_NULL(host_spawner)
 	qdel(src)
 
-/datum/uplink_item/dangerous/cortical_borer
-	name = "Cortical Borer Egg"
-	desc = "The egg of a cortical borer. The cortical borer is a parasite that can produce chemicals upon command, as well as \
-			learn new chemicals through the blood if old enough. Be careful as there is no way to get the borer to pledge allegiance \
-			to yourself. The egg is extremely fragile, do not crush it in your hand nor throw it. \
-			The egg is required to sit out in the open in order to hatch. (Cannot be hidden in closets, etc.)"
-	progression_minimum = 20 MINUTES
-	item = /obj/effect/mob_spawn/ghost_role/borer_egg/traitor
-	cost = 20
+/obj/item/borer_egg/empowered
+	name = "empowered borer egg"
+	icon_state = "empowered_brainegg"
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/traitor
 	prompt_name = "cortical borer (traitor spawned)"
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/opfor
 	prompt_name = "cortical borer (OPFOR spawned)"
+
+/obj/effect/mob_spawn/ghost_role/borer_egg/empowered
+	name = "empowered borer egg"
+	desc = "An egg of a creature that came crawling out of someone instead of into them."
+	mob_type = /mob/living/basic/cortical_borer/empowered
+	host_egg = /obj/item/borer_egg/empowered

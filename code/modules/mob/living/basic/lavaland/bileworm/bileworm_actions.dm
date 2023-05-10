@@ -15,7 +15,7 @@
 		to_chat(burrower, span_warning("Couldn't burrow anywhere near the target!"))
 		if(burrower.ai_controller?.ai_status == AI_STATUS_ON)
 			//this is a valid reason to give up on a target
-			burrower.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] = null
+			burrower.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 		return
 	playsound(burrower, 'sound/effects/break_stone.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(get_turf(burrower))
@@ -23,7 +23,7 @@
 	burrower.invisibility = INVISIBILITY_MAXIMUM
 	burrower.forceMove(unburrow_turf)
 	//not that it's gonna die with godmode but still
-	SLEEP_CHECK_DEATH(rand(0.75 SECONDS, 1.25 SECONDS), burrower)
+	SLEEP_CHECK_DEATH(rand(0.7 SECONDS, 1.2 SECONDS), burrower)
 	playsound(burrower, 'sound/effects/break_stone.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(unburrow_turf)
 	burrower.status_flags &= ~GODMODE
@@ -60,22 +60,20 @@
 	StartCooldownSelf(INFINITY)
 	attack_sequence(owner, target_atom)
 	//resurface now off cooldown shortly
-	StartCooldownOthers(1.5 SECONDS)
+	StartCooldownOthers(2.5 SECONDS)
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/dir_shots/bileworm/attack_sequence(mob/living/firer, atom/target)
 	fire_in_directions(firer, target, GLOB.cardinals)
-	SLEEP_CHECK_DEATH(0.25 SECONDS, firer)
+	SLEEP_CHECK_DEATH(0.5 SECONDS, firer)
 	fire_in_directions(firer, target, GLOB.diagonals)
-	SLEEP_CHECK_DEATH(0.25 SECONDS, firer)
-	fire_in_directions(firer, target, GLOB.cardinals)
 
 /obj/projectile/bileworm_acid
 	name = "acidic bile"
 	icon_state = "neurotoxin"
 	hitsound = 'sound/weapons/sear.ogg'
 	damage = 20
-	armour_penetration = 100
 	speed = 2
+	range = 20
 	jitter = 3 SECONDS
 	stutter = 3 SECONDS
 	damage_type = BURN
@@ -110,7 +108,7 @@
 	devourer.invisibility = INVISIBILITY_MAXIMUM
 	devourer.forceMove(devour_turf)
 	//not that it's gonna die with godmode but still
-	SLEEP_CHECK_DEATH(rand(0.75 SECONDS, 1.25 SECONDS), devourer)
+	SLEEP_CHECK_DEATH(rand(0.7 SECONDS, 1.2 SECONDS), devourer)
 	playsound(devourer, 'sound/effects/break_stone.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(devour_turf)
 	devourer.status_flags &= ~GODMODE

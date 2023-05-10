@@ -18,15 +18,9 @@
 	item_type = /obj/item/clothing/suit/armor/laserproof
 	description = "A laserproof vest, for the aspiring bane of security."
 
-/datum/opposing_force_equipment/clothing/heavy
-	item_type = /obj/item/clothing/suit/armor/heavy
+/datum/opposing_force_equipment/clothing/swat
+	item_type = /obj/item/clothing/suit/armor/swat
 	description = "A superheavy armor suit purpose-built to ensure all injuries are pushovers. WARNING: Not spaceproof."
-
-/datum/opposing_force_equipment/clothing/infiltrator
-	name = "Infiltrator Gear"
-	item_type = /obj/item/storage/toolbox/infiltrator
-	description = "A box of equipment specially made for an infiltration expert, including sound-insulated boots, nanochip apprehension gloves, \
-				and a voice-masking balaclava. Too bad it's made in such a red color..."
 
 /datum/opposing_force_equipment/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/swat
@@ -55,11 +49,6 @@
 	item_type = /obj/item/clothing/suit/hooded/ablative
 	description = "A hooded coat that can be worn above a jumpsuit, allowing you to reflect and absorb energy weapons."
 
-/datum/opposing_force_equipment/clothing/muffling_balaclava
-	name = "Voice-Muffling Balaclava"
-	item_type = /obj/item/clothing/mask/infiltrator
-	description = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
-
 //NRI larping equipment here
 
 /datum/opposing_force_equipment/clothing/nrihelm
@@ -74,12 +63,14 @@
 	item_type = /obj/item/clothing/head/helmet/nri_heavy/old
 	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
 				or murder with a frying pan."
+	admin_note = "WARNING: This helmet is very well armored, equal to an elite nukie suits helmets with the armor deployed."
 
 /datum/opposing_force_equipment/clothing/nrivest
-	item_type = /obj/item/clothing/suit/armor/vest/russian
+	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
 
 /datum/opposing_force_equipment/clothing/redut
 	item_type = /obj/item/clothing/suit/armor/heavy/nri/old
+	admin_note = "WARNING: This is an extremely strong armor, with a decent slowdown, comparable to an elite nukie hardsuit with the armor deployed."
 
 /datum/opposing_force_equipment/clothing/nrijumpsuit
 	item_type = /obj/item/clothing/under/costume/nri
@@ -115,3 +106,9 @@
 	name = "Elite MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/elite
 	description = "An elite suit upgraded by Cybersun Industries, offering upgraded armor values."
+
+/datum/opposing_force_equipment/clothing/infiltratormod
+	name = "Infiltrator MODsuit"
+	item_type = /obj/item/mod/control/pre_equipped/infiltrator
+	description = "A specialized infiltration suit, developed by the Roseus Galactic Actors Guild to strike fear and awe into the hearts of the public."
+	admin_note = "WARNING: This armor causes an AOE mood debuff for anyone without the traitor antag datum."

@@ -4,35 +4,35 @@
 
 /datum/design/leftarm
 	name = "Left Arm"
-	id = "l_arm"
+	id = "arm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
-	build_path = /obj/item/bodypart/l_arm
+	build_path = /obj/item/bodypart/arm/left
 	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL)
 
 /datum/design/rightarm
 	name = "Right Arm"
-	id = "r_arm"
+	id = "arm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
-	build_path = /obj/item/bodypart/r_arm
+	build_path = /obj/item/bodypart/arm/right
 	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL)
 
 /datum/design/leftleg
 	name = "Left Leg"
-	id = "l_leg"
+	id = "leg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
-	build_path = /obj/item/bodypart/l_leg
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_DIGITIGRADE)
+	build_path = /obj/item/bodypart/leg/left
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE)
 
 /datum/design/rightleg
 	name = "Right Leg"
-	id = "r_leg"
+	id = "leg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
-	build_path = /obj/item/bodypart/r_leg
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_DIGITIGRADE)
+	build_path = /obj/item/bodypart/leg/right
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE)
 
 //Non-limb limb designs
 
@@ -123,7 +123,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 20)
 	build_path = /obj/item/organ/external/tail/monkey
-	category = list(RND_CATEGORY_OTHER, RND_CATEGORY_INITIAL)
+	category = list(RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_INITIAL)
 
 /datum/design/cat_tail
 	name = "Cat Tail"
@@ -212,7 +212,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 75)
 	build_path = /obj/item/melee/synthetic_arm_blade
-	category = list(RND_CATEGORY_OTHER, RND_CATEGORY_EMAGGED)
+	category = list(RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_HACKED)
 
 /// Design disks and designs - for adding limbs and organs to the limbgrower.
 /obj/item/disk/design_disk/limbs
@@ -224,7 +224,6 @@
 
 /obj/item/disk/design_disk/limbs/Initialize(mapload)
 	. = ..()
-	max_blueprints = limb_designs.len
 	for(var/design in limb_designs)
 		var/datum/design/new_design = design
 		blueprints += new new_design
@@ -234,9 +233,11 @@
 	desc = "Contains designs for various limbs."
 	id = "limbdesign_parent"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 300, /datum/material/glass = 100)
+	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass =SMALL_MATERIAL_AMOUNT)
 	build_path = /obj/item/disk/design_disk/limbs
-	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /obj/item/disk/design_disk/limbs/felinid

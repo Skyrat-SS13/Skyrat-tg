@@ -13,7 +13,7 @@
 	src.pollutant_type = pollutant_type
 	src.pollutant_amount = pollutant_amount
 	src.expiry_time = world.time + expiry_time
-	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/wash_off)
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(wash_off))
 	START_PROCESSING(SSobj, src)
 
 /datum/component/temporary_pollution_emission/Destroy()
@@ -21,11 +21,13 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/datum/component/temporary_pollution_emission/process(delta_time = SSOBJ_DT)
+/datum/component/temporary_pollution_emission/process(seconds_per_tick = SSOBJ_DT)
 	var/turf/my_turf = get_turf(parent)
 	if(!my_turf || world.time >= expiry_time)
 		qdel(src)
-	my_turf.pollute_turf(pollutant_type, pollutant_amount * delta_time)
+		return
+
+	my_turf.pollute_turf(pollutant_type, pollutant_amount * seconds_per_tick)
 
 /datum/component/temporary_pollution_emission/proc/wash_off()
 	SIGNAL_HANDLER

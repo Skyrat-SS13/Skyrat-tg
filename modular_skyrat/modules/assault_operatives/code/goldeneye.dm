@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
-#define ICARUS_IGNITION_TIME 20 SECONDS
-#define PINPOINTER_PING_TIME 4 SECONDS
+#define ICARUS_IGNITION_TIME (20 SECONDS)
+#define PINPOINTER_PING_TIME (4 SECONDS)
 
 /**
  * GoldenEye defence network
@@ -11,8 +11,7 @@ GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
 SUBSYSTEM_DEF(goldeneye)
 	name = "GoldenEye"
-	init_order = INIT_ORDER_DEFAULT
-	flags = SS_NO_FIRE
+	flags = SS_NO_FIRE | SS_NO_INIT
 	/// A tracked list of all our keys.
 	var/list/goldeneye_keys = list()
 	/// A list of minds that have been extracted and thus cannot be extracted again.
@@ -55,12 +54,12 @@ SUBSYSTEM_DEF(goldeneye)
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	goldeneye_activated = TRUE
 
-	addtimer(CALLBACK(src, .proc/fire_icarus), ignition_time)
+	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time)
 
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
 	var/datum/round_event_control/icarus_sunbeam/event_to_start = new()
-	event_to_start.runEvent()
+	event_to_start.run_event()
 
 /// Checks if a mind(target_mind) is a head and if they aren't in the goldeneye_extracted_minds list.
 /datum/controller/subsystem/goldeneye/proc/check_goldeneye_target(datum/mind/target_mind)

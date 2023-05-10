@@ -9,7 +9,7 @@
 	desc = "An minature exosuit from Nanotrasen, developed to let the irreplacable station pets live a little longer."
 	icon_state = "vim"
 	max_integrity = 50
-	armor = list(MELEE = 70, BULLET = 40, LASER = 40, ENERGY = 0, BOMB = 30, BIO = 0, FIRE = 80, ACID = 80)
+	armor_type = /datum/armor/car_vim
 	enter_delay = 20
 	movedelay = 0.6
 	engine_sound_length = 0.3 SECONDS
@@ -18,11 +18,17 @@
 	light_power = 2
 	light_on = FALSE
 	engine_sound = 'sound/effects/servostep.ogg'
-		///What mobs are currently repairing us.
-	var/list/mob/living/repairing_mobs
 	///Maximum size of a mob trying to enter the mech
 	var/maximum_mob_size = MOB_SIZE_SMALL
 	COOLDOWN_DECLARE(sound_cooldown)
+
+/datum/armor/car_vim
+	melee = 70
+	bullet = 40
+	laser = 40
+	bomb = 30
+	fire = 80
+	acid = 80
 
 /obj/vehicle/sealed/car/vim/Initialize(mapload)
 	. = ..()
@@ -55,7 +61,7 @@
 	if(user.combat_mode)
 		return
 	. = TRUE
-	if(LAZYFIND(repairing_mobs, user))
+	if(DOING_INTERACTION(user, src))
 		balloon_alert(user, "you're already repairing it!")
 		return
 	if(atom_integrity >= max_integrity)
@@ -63,7 +69,6 @@
 		return
 	if(!W.tool_start_check(user, amount=1))
 		return
-	LAZYADD(repairing_mobs, user)
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
 	audible_message(span_hear("You hear welding."))
 	var/did_the_thing
@@ -78,7 +83,6 @@
 		user.balloon_alert_to_viewers("[(atom_integrity >= max_integrity) ? "fully" : "partially"] repaired [src]")
 	else
 		user.balloon_alert_to_viewers("stopped welding [src]", "interrupted the repair!")
-	LAZYREMOVE(repairing_mobs, user)
 
 /obj/vehicle/sealed/car/vim/mob_enter(mob/newoccupant, silent = FALSE)
 	. = ..()
@@ -129,9 +133,9 @@
 
 /obj/item/circuit_component/vim/register_shell(atom/movable/shell)
 	. = ..()
-	RegisterSignal(shell, COMSIG_VIM_HEADLIGHTS_TOGGLED, .proc/on_headlights_toggle)
-	RegisterSignal(shell, COMSIG_VIM_CHIME_USED, .proc/on_chime_used)
-	RegisterSignal(shell, COMSIG_VIM_BUZZ_USED, .proc/on_buzz_used)
+	RegisterSignal(shell, COMSIG_VIM_HEADLIGHTS_TOGGLED, PROC_REF(on_headlights_toggle))
+	RegisterSignal(shell, COMSIG_VIM_CHIME_USED, PROC_REF(on_chime_used))
+	RegisterSignal(shell, COMSIG_VIM_BUZZ_USED, PROC_REF(on_buzz_used))
 
 /obj/item/circuit_component/vim/unregister_shell(atom/movable/shell)
 	. = ..()

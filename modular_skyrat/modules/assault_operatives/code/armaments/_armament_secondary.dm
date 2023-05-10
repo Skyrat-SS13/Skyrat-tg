@@ -1,65 +1,40 @@
+#define OPS_SUBCATEGORY_LETHAL_SIDE "Lethal"
+#define OPS_SUBCATEGORY_NONLETHAL_SIDE "Non-Lethal"
+#define OPS_SUBCATEGORY_MARTIAL_SIDE "Martial Arts"
+
 /datum/armament_entry/assault_operatives/secondary
-	category = ARMAMENT_CATEGORY_SECONDARY
-	category_item_limit = ARMAMENT_CATEGORY_SECONDARY_LIMIT
-	cost = 5
-	mags_to_spawn = 2
-
-/datum/armament_entry/assault_operatives/secondary/pistol
-	subcategory = ARMAMENT_SUBCATEGORY_PISTOL
-
-/datum/armament_entry/assault_operatives/secondary/pistol/m1911
-	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
-	cost = 4
-
-/datum/armament_entry/assault_operatives/secondary/pistol/aps
-	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
-	cost = 7
-
-/datum/armament_entry/assault_operatives/secondary/pistol/luger
-	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
-
-/datum/armament_entry/assault_operatives/secondary/pistol/syndicate
-	item_type = /obj/item/gun/ballistic/automatic/pistol
-
-/datum/armament_entry/assault_operatives/secondary/pistol/deagle
-	item_type = /obj/item/gun/ballistic/automatic/pistol/deagle
-	cost = 9
-
-/datum/armament_entry/assault_operatives/secondary/pistol/deagle_gold
-	item_type = /obj/item/gun/ballistic/automatic/pistol/deagle/gold
-	cost = 9
-
-/datum/armament_entry/assault_operatives/secondary/pistol/deagle_camo
-	item_type = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
-	cost = 9
-
-/datum/armament_entry/assault_operatives/secondary/pistol/robohand
-	item_type = /obj/item/gun/ballistic/automatic/pistol/robohand
-	description = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip."
-	cost = 10
-
-/datum/armament_entry/assault_operatives/secondary/pistol/automag
-	item_type = /obj/item/gun/ballistic/automatic/pistol/automag
-	cost = 8
-
-/datum/armament_entry/assault_operatives/secondary/pistol/energy_gun
-	item_type = /obj/item/gun/energy/e_gun
-
-/datum/armament_entry/assault_operatives/secondary/pistol/taser
-	item_type = /obj/item/gun/energy/e_gun/advtaser
-
-/datum/armament_entry/assault_operatives/secondary/pistol/pepperball
-	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
+	category = "Side Arms"
+	category_item_limit = 3
+	mags_to_spawn = 3
 	cost = 3
 
-/datum/armament_entry/assault_operatives/secondary/closequarters
-	subcategory = ARMAMENT_SUBCATEGORY_CQC
+/datum/armament_entry/assault_operatives/secondary/lethal
+	subcategory = OPS_SUBCATEGORY_LETHAL_SIDE
 
-/datum/armament_entry/assault_operatives/secondary/closequarters/kravmaga
+/datum/armament_entry/assault_operatives/secondary/lethal/ansem
+	item_type = /obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops
+
+/datum/armament_entry/assault_operatives/secondary/lethal/energy_sword
+	item_type = /obj/item/melee/energy/sword/saber
+
+/datum/armament_entry/assault_operatives/secondary/nonlethal
+	subcategory = OPS_SUBCATEGORY_NONLETHAL_SIDE
+
+/datum/armament_entry/assault_operatives/secondary/nonlethal/taze_me_bro
+	item_type = /obj/item/gun/energy/e_gun/advtaser/assault_ops
+
+/datum/armament_entry/assault_operatives/secondary/nonlethal/baton
+	item_type = /obj/item/melee/baton/telescopic
+
+/datum/armament_entry/assault_operatives/secondary/martial
+	subcategory = OPS_SUBCATEGORY_MARTIAL_SIDE
+
+/datum/armament_entry/assault_operatives/secondary/martial/krav_gloves
 	item_type = /obj/item/clothing/gloves/krav_maga/combatglovesplus
-	cost = 5
 
-/datum/armament_entry/assault_operatives/secondary/closequarters/cqc
-	name = "CQC Manual"
+/datum/armament_entry/assault_operatives/secondary/martial/cqc
 	item_type = /obj/item/book/granter/martial/cqc
-	cost = 10
+
+#undef OPS_SUBCATEGORY_LETHAL_SIDE
+#undef OPS_SUBCATEGORY_NONLETHAL_SIDE
+#undef OPS_SUBCATEGORY_MARTIAL_SIDE

@@ -1,4 +1,4 @@
-#define BEAM_FADE_TIME 1 SECONDS
+#define BEAM_FADE_TIME (1 SECONDS)
 
 /obj/machinery/launchpad
 	name = "bluespace launchpad"
@@ -26,8 +26,8 @@
 /obj/machinery/launchpad/RefreshParts()
 	. = ..()
 	var/max_range_multiplier = 0
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		max_range_multiplier += M.rating
+	for(var/datum/stock_part/servo/servo in component_parts)
+		max_range_multiplier += servo.tier
 	range = initial(range)
 	range *= max_range_multiplier
 
@@ -37,13 +37,17 @@
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(src)
 
+	update_hud()
+
+/obj/machinery/launchpad/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	if(same_z_layer && !QDELETED(src))
+		update_hud()
+	return ..()
+
+/obj/machinery/launchpad/proc/update_hud()
 	var/image/holder = hud_list[DIAG_LAUNCHPAD_HUD]
-	var/mutable_appearance/MA = new /mutable_appearance()
-	MA.icon = 'icons/effects/effects.dmi'
-	MA.icon_state = "launchpad_target"
-	MA.layer = ABOVE_OPEN_TURF_LAYER
-	MA.plane = GAME_PLANE
-	holder.appearance = MA
+	var/mutable_appearance/target = mutable_appearance('icons/effects/effects.dmi', "launchpad_target", ABOVE_OPEN_TURF_LAYER, src, GAME_PLANE)
+	holder.appearance = target
 
 	update_indicator()
 
@@ -283,7 +287,7 @@
 /obj/machinery/launchpad/briefcase/MouseDrop(over_object, src_location, over_location)
 	. = ..()
 	if(over_object == usr)
-		if(!briefcase || !usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+		if(!briefcase || !usr.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 			return
 		usr.visible_message(span_notice("[usr] starts closing [src]..."), span_notice("You start closing [src]..."))
 		if(do_after(usr, 30, target = usr))
@@ -491,6 +495,11 @@
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 
+	if(abs(x_pos.value) > attached_launchpad.range || abs(y_pos.value) > attached_launchpad.range)
+		why_fail.set_output("Out of range!")
+		on_fail.set_output(COMPONENT_SIGNAL)
+		return
+
 	attached_launchpad.set_offset(x_pos.value, y_pos.value)
 
 	if(COMPONENT_TRIGGERED_BY(port, x_pos))
@@ -501,6 +510,7 @@
 		y_pos.set_value(attached_launchpad.y_offset)
 		return
 
+
 	var/checks = attached_launchpad.teleport_checks()
 	if(!isnull(checks))
 		why_fail.set_output(checks)
@@ -508,9 +518,9 @@
 		return
 
 	if(COMPONENT_TRIGGERED_BY(send_trigger, port))
-		INVOKE_ASYNC(attached_launchpad, /obj/machinery/launchpad.proc/doteleport, null, TRUE, parent.get_creator())
+		INVOKE_ASYNC(attached_launchpad, TYPE_PROC_REF(/obj/machinery/launchpad, doteleport), null, TRUE, parent.get_creator())
 		sent.set_output(COMPONENT_SIGNAL)
 
 	if(COMPONENT_TRIGGERED_BY(retrieve_trigger, port))
-		INVOKE_ASYNC(attached_launchpad, /obj/machinery/launchpad.proc/doteleport, null, FALSE, parent.get_creator())
+		INVOKE_ASYNC(attached_launchpad, TYPE_PROC_REF(/obj/machinery/launchpad, doteleport), null, FALSE, parent.get_creator())
 		retrieved.set_output(COMPONENT_SIGNAL)

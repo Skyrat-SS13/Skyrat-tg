@@ -7,12 +7,12 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOS
-	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "SECURITY_MEDIC"
 
 	outfit = /datum/outfit/job/security_medic
 	plasmaman_outfit = /datum/outfit/plasmaman/security
@@ -20,7 +20,6 @@
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
 
-	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
@@ -48,11 +47,11 @@
 	name = "Security Medic"
 	jobtype = /datum/job/security_medic
 
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	shoes = /obj/item/clothing/shoes/jackboots/security
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
+	gloves = /obj/item/clothing/gloves/latex/nitrile
+	shoes = /obj/item/clothing/shoes/jackboots/sec
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	l_hand = /obj/item/storage/medkit/brute
@@ -100,17 +99,18 @@
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic/blue(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic/blue(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic/blue(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/medkit/emergency(src)
-	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/jacket/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/medic/full(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/skirt(src)

@@ -29,7 +29,7 @@
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/badonkers = target.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/badonkers = target.get_organ_slot(ORGAN_SLOT_BREASTS)
 			if(!(target.is_topless() || badonkers.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("[target]'s chest is covered!"))
 				return
@@ -69,11 +69,14 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(4)
 	target.add_mood_event("tickled", /datum/mood_event/tickled)
-	target.adjustArousal(3)
+	target.adjust_arousal(3)
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, pick('sound/items/handling/cloth_drop.ogg', // I duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
-            			'sound/items/handling/cloth_pickup.ogg', // If you can make it better - go ahead, modify it, please.
-        	       	    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
+	playsound(loc, \
+		pick(
+			'sound/items/handling/cloth_drop.ogg', // I duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
+			'sound/items/handling/cloth_pickup.ogg', // If you can make it better - go ahead, modify it, please.
+			'sound/items/handling/cloth_pickup.ogg',
+		), 70, 1, -1, ignore_walls = FALSE)
 
 //Mood boost
 /datum/mood_event/tickled

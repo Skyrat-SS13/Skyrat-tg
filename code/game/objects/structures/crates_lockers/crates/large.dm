@@ -2,6 +2,7 @@
 	name = "large crate"
 	desc = "A hefty wooden crate. You'll need a crowbar to get it open."
 	icon_state = "largecrate"
+	base_icon_state = "largecrate"
 	density = TRUE
 	pass_flags_self = PASSSTRUCTURE
 	material_drop = /obj/item/stack/sheet/mineral/wood
@@ -16,6 +17,10 @@
 
 	// Stops people from "diving into" a crate you can't open normally
 	divable = FALSE
+
+/obj/structure/closet/crate/large/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NO_MISSING_ITEM_ERROR, TRAIT_GENERIC)
 
 /obj/structure/closet/crate/large/attack_hand(mob/user, list/modifiers)
 	add_fingerprint(user)

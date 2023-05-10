@@ -56,7 +56,7 @@
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
-	try_get_common_language()
+	languages[try_get_common_language()] = LANGUAGE_SPOKEN
 	save_character()
 
 /datum/preferences/proc/print_bodypart_change_line(key)
@@ -92,41 +92,23 @@
 			var/datum/body_marking/BM = GLOB.body_markings[key]
 			bml[key] = BM.get_default_color(features, pref_species)
 
-/datum/preferences/proc/get_linguistic_points()
-	var/points
-	points = (QUIRK_LINGUIST in all_quirks) ? LINGUISTIC_POINTS_LINGUIST : LINGUISTIC_POINTS_DEFAULT
-	for(var/langpath in languages)
-		points -= languages[langpath]
-	return points
+/// This helper proc gets the current species language holder and does any post-processing that's required in one easy to track place.
+/// This proc should *always* be edited or used when modifying or getting the default languages of a player controlled, unrestricted species, to prevent any errant conflicts.
+/datum/preferences/proc/get_adjusted_language_holder()
+	var/datum/species/species = read_preference(/datum/preference/choiced/species)
+	species = new species()
+	var/datum/language_holder/language_holder = new species.species_language_holder()
 
-/datum/preferences/proc/get_optional_languages()
-	var/list/lang_list = list()
-	var/datum/language_holder/lang_holder = new pref_species.species_language_holder()
-	for(var/lang in lang_holder.spoken_languages)
-		lang_list[lang] = TRUE
-	qdel(lang_holder)
-	return lang_list
+	// Do language post procesing here. Used to house our foreigner functionality.
+	// I saw little reason to remove this proc, considering it makes code using this a little easier to read.
 
-/datum/preferences/proc/get_available_languages()
-	var/list/lang_list = list()
-	for(var/lang_key in get_optional_languages())
-		lang_list[lang_key] = TRUE
-	return lang_list
+	return language_holder
 
-/datum/preferences/proc/can_buy_language(language_path, level)
-	var/points = get_linguistic_points()
-	if(languages[language_path])
-		points += languages[language_path]
-	if(points < level)
-		return FALSE
-	return TRUE
-
-// Whenever we switch a species, we'll try to get common if we can to not confuse anyone
+/// Tries to get the topmost language of the language holder. Should be the species' native language, and if it isn't, you should pester a coder.
 /datum/preferences/proc/try_get_common_language()
-	var/list/langs = get_available_languages()
-	if(langs[/datum/language/common])
-		languages[/datum/language/common] = LANGUAGE_SPOKEN
-
+	var/datum/language_holder/language_holder = get_adjusted_language_holder()
+	var/language = language_holder.spoken_languages[1]
+	return language
 
 /datum/preferences/proc/validate_species_parts()
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
@@ -180,3 +162,53 @@
 	else
 		return FALSE
 
+/// This proc saves the damage currently on `character` and reapplies it after `safe_transfer_prefs()` is applied to the `character`.
+/datum/preferences/proc/safe_transfer_prefs_to_with_damage(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
+	if(!istype(character))
+		return FALSE
+
+	//Organ damage saving code.
+	var/heart_damage = character.check_organ_damage(/obj/item/organ/internal/heart)
+	var/liver_damage = character.check_organ_damage(/obj/item/organ/internal/liver)
+	var/lung_damage = character.check_organ_damage(/obj/item/organ/internal/lungs)
+	var/stomach_damage = character.check_organ_damage(/obj/item/organ/internal/stomach)
+	var/brain_damage = character.check_organ_damage(/obj/item/organ/internal/brain)
+	var/eye_damage = character.check_organ_damage(/obj/item/organ/internal/eyes)
+	var/ear_damage = character.check_organ_damage(/obj/item/organ/internal/ears)
+
+	var/list/trauma_list = list()
+	if(character.get_traumas())
+		for(var/datum/brain_trauma/trauma as anything in character.get_traumas())
+			trauma_list += trauma
+
+	var/brute_damage = character.getBruteLoss()
+	var/burn_damage = character.getFireLoss()
+
+	safe_transfer_prefs_to(character, icon_updates, is_antag)
+
+	// Apply organ damage
+	character.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
+	character.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
+	character.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
+	character.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
+	character.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+	character.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
+	character.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+
+	//Re-Applies Trauma
+	var/obj/item/organ/internal/brain/character_brain = character.get_organ_by_type(/obj/item/organ/internal/brain)
+
+	if(length(trauma_list))
+		character_brain.traumas = trauma_list
+
+	//Re-Applies Damage
+	character.setBruteLoss(brute_damage)
+	character.setFireLoss(burn_damage)
+
+/// Returns the damage of the `organ_to_check`, if the organ isn't there, the proc returns `100`.
+/mob/living/carbon/human/proc/check_organ_damage(obj/item/organ/organ_to_check)
+	var/obj/item/organ/organ_to_track = get_organ_by_type(organ_to_check)
+	if(!organ_to_track)
+		return 100 //If the organ is missing, return max damage.
+
+	return organ_to_track.damage

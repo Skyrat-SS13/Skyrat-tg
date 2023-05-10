@@ -46,6 +46,7 @@
 	weight = 10
 	max_occurrences = 1
 	min_players = 60
+	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/spacevine
 	fakeable = FALSE
@@ -56,8 +57,8 @@
 
 	var/obj/structure/spacevine/vine = new()
 
-	for(var/area/station/maintenance/maint_area in world)
-		for(var/turf/floor in maint_area)
+	for(var/area/station/maintenance/maint_area in GLOB.areas)
+		for(var/turf/floor as anything in maint_area.get_contained_turfs())
 			if(floor.Enter(vine))
 				turfs += floor
 
@@ -663,7 +664,7 @@
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/atmos_sensitive, mapload)
@@ -841,13 +842,13 @@
 	kudzu_seed.set_production(11 - (spread_cap / initial(spread_cap)) * 5) // Reverts spread_cap formula so resulting seed gets original production stat or equivalent back.
 	qdel(src)
 
-/datum/spacevine_controller/process(delta_time)
+/datum/spacevine_controller/process(seconds_per_tick)
 	var/vine_count = length(vines)
 	if(!vine_count)
 		qdel(src) // space vines exterminated. Remove the controller
 		return
 
-	var/spread_max = round(clamp(delta_time * 0.5 * vine_count / spread_multiplier, 1, spread_cap))
+	var/spread_max = round(clamp(seconds_per_tick * 0.5 * vine_count / spread_multiplier, 1, spread_cap))
 	var/amount_processed = 0
 	for(var/obj/structure/spacevine/current_vine as anything in growth_queue)
 		if(!current_vine)
@@ -859,7 +860,7 @@
 
 		if(current_vine.energy >= 2) // If tile is fully grown
 			current_vine.entangle_mob()
-		else if(DT_PROB(10, delta_time)) // If tile isn't fully grown
+		else if(SPT_PROB(10, seconds_per_tick)) // If tile isn't fully grown
 			current_vine.grow()
 
 		current_vine.spread()

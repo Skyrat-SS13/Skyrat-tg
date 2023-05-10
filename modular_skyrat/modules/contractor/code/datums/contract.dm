@@ -1,5 +1,5 @@
-#define RANSOM_LOWER 25
-#define RANSOM_UPPER 75
+#define RANSOM_LOWER 75
+#define RANSOM_UPPER 150
 #define CONTRACTOR_RANSOM_CUT 0.35
 
 /datum/syndicate_contract
@@ -11,7 +11,7 @@
 	var/datum/objective/contract/contract = new()
 	/// Target's job
 	var/target_rank
-	/// A number in multiples of 100, anywhere from 2500 credits to 7500, station cost when someone is kidnapped
+	/// A number in multiples of 100, anywhere from 7500 credits to 15000, station cost when someone is kidnapped
 	var/ransom = 0
 	/// TC payout size, will be small, medium, or large.
 	var/payout_type
@@ -30,12 +30,12 @@
 /datum/syndicate_contract/proc/generate(blacklist)
 	contract.find_target(null, blacklist)
 
-	var/datum/data/record/record
+	var/datum/record/crew/record
 	if (contract.target)
-		record = find_record("name", contract.target.name, GLOB.data_core.general)
+		record = find_record(contract.target.name)
 
 	if (record)
-		target_rank = record.fields["rank"]
+		target_rank = record.rank
 	else
 		target_rank = "Unknown"
 
@@ -78,7 +78,7 @@
 	empty_pod.tied_contract = src
 	empty_pod.recieving = TRUE
 
-	RegisterSignal(empty_pod, COMSIG_ATOM_ENTERED, .proc/enter_check)
+	RegisterSignal(empty_pod, COMSIG_ATOM_ENTERED, PROC_REF(enter_check))
 
 	empty_pod.stay_after_drop = TRUE
 	empty_pod.reversing = TRUE
@@ -140,7 +140,7 @@
 		sent_mob_human.dna.species.give_important_for_life(sent_mob_human)
 
 	// After pod is sent we start the victim narrative/heal.
-	INVOKE_ASYNC(src, .proc/handle_victim_experience, sent_mob)
+	INVOKE_ASYNC(src, PROC_REF(handle_victim_experience), sent_mob)
 
 	// This is slightly delayed because of the sleep calls above to handle the narrative.
 	// We don't want to tell the station instantly.
@@ -156,27 +156,32 @@
 	priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. \
 					As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
 
-	addtimer(CALLBACK(src, .proc/finish_enter), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_enter)), 3 SECONDS)
 
 /// Called when person is finished shoving in, awards ransome money
 /datum/syndicate_contract/proc/finish_enter()
-
 	// Pay contractor their portion of ransom
-	if(!(status == CONTRACT_STATUS_COMPLETE))
+	if(status != CONTRACT_STATUS_COMPLETE)
 		return
+
 	var/obj/item/card/id/owner_id = contract.owner.current?.get_idcard(TRUE)
 
-	if(owner_id?.registered_account)
+	if(owner_id?.registered_account.account_id) // why do we check for account id? because apparently unset agent IDs have existing bank accounts that can't be accessed. this is suboptimal
 		owner_id.registered_account.adjust_money(ransom * CONTRACTOR_RANSOM_CUT)
 
 		owner_id.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
 		[owner_id.registered_account.account_balance] credits.", TRUE)
+	else
+		to_chat(contract.owner.current, span_notice("A briefcase appears at your feet!"))
+		var/obj/item/storage/secure/briefcase/case = new(get_turf(contract.owner.current))
+		for(var/i in 1 to (round((ransom * CONTRACTOR_RANSOM_CUT) / 1000))) // Gets slightly less/more but whatever
+			new /obj/item/stack/spacecash/c1000(case)
 
 /// They're off to holding - handle the return timer and give some text about what's going on.
 /datum/syndicate_contract/proc/handle_victim_experience(mob/living/target)
 	// Ship 'em back - dead or alive, 4 minutes wait.
 	// Even if they weren't the target, we're still treating them the same.
-	addtimer(CALLBACK(src, .proc/return_victim, target), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(return_victim), target), 4 MINUTES)
 
 	if (target.stat == DEAD)
 		return
@@ -189,29 +194,62 @@
 	target.reagents.add_reagent(/datum/reagent/medicine/omnizine, 20)
 
 	target.flash_act()
-	target.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
-	target.blur_eyes(5)
+	target.adjust_confusion(10 SECONDS)
+	target.set_eye_blur_if_lower(10 SECONDS)
 	to_chat(target, span_warning("You feel strange..."))
-	addtimer(CALLBACK(src, .proc/victim_stage_two, target), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(victim_stage_two), target), 6 SECONDS)
 
 /// Continued victim handling
 /datum/syndicate_contract/proc/victim_stage_two(mob/living/target)
+	var/list/parts_to_fuck_up = list(
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_LEG,
+		BODY_ZONE_R_LEG,
+	)
+
 	to_chat(target, span_warning("That pod did something to you..."))
-	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
-	addtimer(CALLBACK(src, .proc/victim_stage_three, target), 6 SECONDS)
+	target.set_dizzy(70 SECONDS)
+
+	for(var/i in 1 to 2)
+		var/obj/item/bodypart/limb = target.get_bodypart(pick_n_take(parts_to_fuck_up))
+		var/datum/wound/blunt/severe/severe_wound_type = /datum/wound/blunt/severe
+		var/datum/wound/blunt/critical/critical_wound_type = /datum/wound/blunt/critical
+		limb.receive_damage(brute = WOUND_MINIMUM_DAMAGE, wound_bonus = rand(initial(severe_wound_type.threshold_minimum), initial(critical_wound_type.threshold_minimum) + 10))
+		target.update_damage_overlays()
+
+	addtimer(CALLBACK(src, PROC_REF(victim_stage_three), target), 6 SECONDS)
 
 /// Continued victim handling, flashes them as well
 /datum/syndicate_contract/proc/victim_stage_three(mob/living/target)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
-	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
-	target.blur_eyes(3)
-	addtimer(CALLBACK(src, .proc/victim_stage_four, target), 3 SECONDS)
+	target.adjust_confusion(20 SECONDS)
+	target.set_eye_blur_if_lower(6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(victim_stage_four), target), 3 SECONDS)
 
 /// Continued victim handling
 /datum/syndicate_contract/proc/victim_stage_four(mob/living/target)
 	to_chat(target, span_warning("Your head pounds..."))
-	addtimer(CALLBACK(src, .proc/victim_stage_five, target), 10 SECONDS)
+
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		switch(rand(1, 100))
+			if(1 to 45)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
+
+			if(46 to 73)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
+
+			if(74 to 94)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
+
+			if(75 to 100)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
+				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
+
+	addtimer(CALLBACK(src, PROC_REF(victim_stage_five), target), 10 SECONDS)
 
 /// Continued victim handling, some unconsciousness
 /datum/syndicate_contract/proc/victim_stage_five(mob/living/target)
@@ -220,9 +258,9 @@
 	to_chat(target, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
-	target.blur_eyes(10)
-	target.set_timed_status_effect(30 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
-	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
+	target.set_eye_blur_if_lower(20 SECONDS)
+	target.set_dizzy_if_lower(30 SECONDS)
+	target.adjust_confusion(20 SECONDS)
 
 /// We're returning the victim
 /datum/syndicate_contract/proc/return_victim(mob/living/target)
@@ -261,9 +299,9 @@
 		target.forceMove(return_pod)
 
 		target.flash_act()
-		target.blur_eyes(30)
-		target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
-		target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
+		target.set_eye_blur_if_lower(60 SECONDS)
+		target.set_dizzy_if_lower(70 SECONDS)
+		target.adjust_confusion(20 SECONDS)
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
@@ -272,6 +310,7 @@
 		if(!isliving(target))
 			return
 		var/mob/living/unlucky_fellow = target
+		unlucky_fellow.investigate_log("was returned without a valid drop location by the contractor [contract.owner?.current].", INVESTIGATE_DEATHS)
 		unlucky_fellow.death()
 
 #undef RANSOM_LOWER

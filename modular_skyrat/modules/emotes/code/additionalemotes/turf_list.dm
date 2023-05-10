@@ -1,4 +1,4 @@
-#define EXTRA_ABOVE_MOB_LAYER ABOVE_MOB_LAYER + 0.01
+#define EXTRA_ABOVE_MOB_LAYER (ABOVE_MOB_LAYER + 0.01)
 
 /obj/structure/mark_turf
 	name = "turf"
@@ -31,7 +31,7 @@
 			desc = "It's a patch of water."
 			icon_state = "water"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "water_top", EXTRA_ABOVE_MOB_LAYER))
-			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), src, 20)
+			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), 20)
 			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
@@ -108,9 +108,8 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "tails"
 			pixel_x = -16 //correcting the offset for 64
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", EXTRA_ABOVE_MOB_LAYER)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", EXTRA_ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
-			overlay.plane = GAME_PLANE_UPPER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 25, TRUE)
 
@@ -120,9 +119,8 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "naga"
 			pixel_x = -16
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", EXTRA_ABOVE_MOB_LAYER)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", EXTRA_ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
-			overlay.plane = GAME_PLANE_UPPER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg', 25, TRUE)
 

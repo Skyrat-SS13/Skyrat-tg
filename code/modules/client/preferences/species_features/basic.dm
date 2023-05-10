@@ -1,7 +1,7 @@
 /proc/generate_possible_values_for_sprite_accessories_on_head(accessories)
 	var/list/values = possible_values_for_sprite_accessory_list(accessories)
 
-	var/icon/head_icon = icon('icons/mob/human_parts_greyscale.dmi', "human_head_m")
+	var/icon/head_icon = icon('icons/mob/species/human/bodyparts_greyscale.dmi', "human_head_m")
 	head_icon.Blend(skintone2hex("caucasian1"), ICON_MULTIPLY)
 
 	for (var/name in values)
@@ -34,7 +34,7 @@
 	if(!hetero)
 		target.eye_color_right = value
 
-	var/obj/item/organ/internal/eyes/eyes_organ = target.getorgan(/obj/item/organ/internal/eyes)
+	var/obj/item/organ/internal/eyes/eyes_organ = target.get_organ_by_type(/obj/item/organ/internal/eyes)
 	if (!eyes_organ || !istype(eyes_organ))
 		return
 
@@ -92,7 +92,7 @@
 	relevant_species_trait = FACEHAIR
 
 /datum/preference/choiced/facial_hair_gradient/init_possible_values()
-	return assoc_to_keys(GLOB.facial_hair_gradients_list)
+	return assoc_to_keys_features(GLOB.facial_hair_gradients_list)
 
 /datum/preference/choiced/facial_hair_gradient/apply_to_human(mob/living/carbon/human/target, value)
 	LAZYSETLEN(target.grad_style, GRADIENTS_LEN)
@@ -155,7 +155,7 @@
 	relevant_species_trait = HAIR
 
 /datum/preference/choiced/hair_gradient/init_possible_values()
-	return assoc_to_keys(GLOB.hair_gradients_list)
+	return assoc_to_keys_features(GLOB.hair_gradients_list)
 
 /datum/preference/choiced/hair_gradient/apply_to_human(mob/living/carbon/human/target, value)
 	LAZYSETLEN(target.grad_style, GRADIENTS_LEN)

@@ -14,5 +14,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/disk/ammo_workbench/lethal
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_SECURITY, RND_CATEGORY_AMMO)
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_SECURITY,
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
+		)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY

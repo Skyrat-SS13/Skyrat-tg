@@ -26,7 +26,8 @@
 	desc = "The BOOP module"
 	icon = 'modular_skyrat/modules/altborgs/icons/robot_items.dmi'
 	icon_state = "nose"
-	flags_1 = CONDUCT_1|NOBLUDGEON
+	flags_1 = CONDUCT_1
+	item_flags = NOBLUDGEON
 	force = 0
 
 /obj/item/dogborg_nose/afterattack(atom/target, mob/user, proximity)

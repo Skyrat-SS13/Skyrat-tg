@@ -1,6 +1,7 @@
 /datum/map_template/automap_template
 	name = "Automap Template"
 	should_place_on_top = FALSE
+	keep_cached_map = FALSE
 
 	/// Our load turf
 	var/turf/load_turf
@@ -10,7 +11,7 @@
 	var/affects_builtin_map
 
 /datum/map_template/automap_template/New(path, rename, incoming_required_map, incoming_load_turf)
-	. = ..(path, rename, FALSE)
+	. = ..(path, rename, cache = TRUE)
 
 	if(!incoming_required_map || !incoming_load_turf)
 		return

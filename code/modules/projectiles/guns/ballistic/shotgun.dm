@@ -70,6 +70,10 @@
 	desc = "An advanced shotgun with two separate magazine tubes, allowing you to quickly toggle between ammo types."
 	icon_state = "cycler"
 	inhand_icon_state = "bulldog"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
 	worn_icon_state = "cshotgun"
 	w_class = WEIGHT_CLASS_HUGE
 	semi_auto = TRUE
@@ -83,7 +87,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
 	name = "bounty cycler shotgun"
-	desc = "An advanced shotgun with two separate magazine tubes. This one shows signs of bounty hunting customization, meaning it likely has a dual rubbershot/fire slug load."
+	desc = "An advanced shotgun with two separate magazine tubes. This one shows signs of bounty hunting customization, meaning it likely has a dual rubber shot/fire slug load."
 	alt_mag_type = /obj/item/ammo_box/magazine/internal/shot/tube/fire
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
@@ -94,6 +98,10 @@
 	. = ..()
 	alt_mag_type = alt_mag_type || mag_type
 	alternate_magazine = new alt_mag_type(src)
+
+/obj/item/gun/ballistic/shotgun/automatic/dual_tube/Destroy()
+	QDEL_NULL(alternate_magazine)
+	return ..()
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/attack_self(mob/living/user)
 	if(!chambered && magazine.contents.len)
@@ -108,12 +116,12 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		to_chat(user, span_notice("You switch to tube B."))
+		balloon_alert(user, "switched to tube B")
 	else
-		to_chat(user, span_notice("You switch to tube A."))
+		balloon_alert(user, "switched to tube A")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		return
 	rack()
 
@@ -129,14 +137,14 @@
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
+	projectile_damage_multiplier = 1.2
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/m12g
 	can_suppress = FALSE
 	burst_size = 1
-	fire_delay = 0
+	fire_delay = 10 //Skyrat edit - Original: 0
 	pin = /obj/item/firing_pin/implant/pindicate
 	fire_sound = 'sound/weapons/gun/shotgun/shot_alt.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = TRUE
 	empty_indicator = TRUE
 	empty_alarm = TRUE
@@ -155,6 +163,10 @@
 	secondary_magazine_type = secondary_magazine_type || mag_type
 	secondary_magazine = new secondary_magazine_type(src)
 	update_appearance()
+
+/obj/item/gun/ballistic/shotgun/bulldog/Destroy()
+	QDEL_NULL(secondary_magazine)
+	return ..()
 
 /obj/item/gun/ballistic/shotgun/bulldog/examine(mob/user)
 	. = ..()
@@ -200,7 +212,7 @@
 
 /obj/item/gun/ballistic/shotgun/bulldog/attackby_secondary(obj/item/weapon, mob/user, params)
 	if(!istype(weapon, secondary_magazine_type))
-		to_chat(user, span_warning("[weapon] doesn't seem to fit into [src]..."))
+		balloon_alert(user, "[weapon.name] doesn't fit!")
 		return SECONDARY_ATTACK_CALL_NORMAL
 	if(!user.transferItemToLoc(weapon, src))
 		to_chat(user, span_warning("You cannot seem to get [src] out of your hands!"))
@@ -209,7 +221,7 @@
 	secondary_magazine = weapon
 	if(old_mag)
 		user.put_in_hands(old_mag)
-	to_chat(user, span_notice("You load a new [magazine_wording] into [src]."))
+	balloon_alert(user, "secondary [magazine_wording] loaded")
 	playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -265,7 +277,7 @@
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/sawoff(mob/user)
@@ -303,6 +315,10 @@
 /obj/item/gun/ballistic/shotgun/hook/Initialize(mapload)
 	. = ..()
 	hook = new /obj/item/gun/magic/hook/bounty(src)
+
+/obj/item/gun/ballistic/shotgun/hook/Destroy()
+	QDEL_NULL(hook)
+	return ..()
 
 /obj/item/gun/ballistic/shotgun/hook/examine(mob/user)
 	. = ..()

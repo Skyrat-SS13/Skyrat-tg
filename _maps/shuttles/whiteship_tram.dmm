@@ -59,7 +59,7 @@
 	pixel_y = 4
 	},
 /obj/item/flashlight,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/cold/no_nightlight/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -144,7 +144,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/engine)
 "au" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -153,7 +153,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/cargo)
 "av" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -166,8 +166,7 @@
 /turf/closed/wall/mineral/titanium/survival/nodiagonal,
 /area/shuttle/abandoned/cargo)
 "ax" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -175,8 +174,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/cargo)
 "az" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -186,8 +184,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/cargo)
 "aA" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -252,7 +249,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
@@ -304,7 +301,7 @@
 /turf/open/floor/pod,
 /area/shuttle/abandoned/cargo)
 "aX" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -374,7 +371,7 @@
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/shuttle/abandoned/cargo)
 "bj" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -401,8 +398,7 @@
 /turf/open/floor/pod,
 /area/shuttle/abandoned/cargo)
 "bo" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -476,7 +472,7 @@
 /turf/closed/wall/mineral/titanium/survival/nodiagonal,
 /area/shuttle/abandoned/cargo)
 "bA" = (
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -488,7 +484,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/cargo)
 "bB" = (
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -576,13 +572,10 @@
 "bN" = (
 /obj/docking_port/mobile{
 	dir = 2;
-	dwidth = 6;
-	height = 27;
 	shuttle_id = "whiteship";
 	launch_status = 0;
 	name = "White Ship";
-	port_direction = 2;
-	width = 13
+	port_direction = 2
 	},
 /obj/effect/turf_decal/stripes/white/box,
 /obj/machinery/door/airlock/external/ruin,
@@ -621,11 +614,11 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/abandoned/engine)
 "bS" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 1
 	},
 /obj/structure/window/reinforced/plasma/spawner,
-/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
@@ -669,7 +662,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/abandoned/engine)
 "ce" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 1
 	},
 /obj/structure/window/reinforced/plasma/spawner,
@@ -715,8 +708,7 @@
 /turf/open/floor/mineral/titanium/airless,
 /area/shuttle/abandoned/cargo)
 "cr" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8;
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -728,8 +720,8 @@
 /turf/open/floor/mineral/titanium/airless,
 /area/shuttle/abandoned/cargo)
 "cx" = (
-/obj/structure/window/reinforced/spawner/west,
-/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
@@ -801,7 +793,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/cargo)
 "cL" = (
-/obj/structure/window/reinforced/survival_pod{
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south{
 	opacity = 1
 	},
 /obj/effect/turf_decal/bot_red,
@@ -825,8 +817,8 @@
 /turf/template_noop,
 /area/shuttle/abandoned/cargo)
 "cO" = (
-/obj/structure/window/reinforced/plasma/spawner/west,
-/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/cargo)
@@ -855,12 +847,12 @@
 /turf/template_noop,
 /area/shuttle/abandoned/cargo)
 "cV" = (
-/obj/structure/window/reinforced/plasma/spawner/west,
-/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/cargo)
 "cY" = (
-/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/lattice,
 /turf/template_noop,
 /area/shuttle/abandoned/cargo)
@@ -1078,11 +1070,11 @@
 /turf/open/floor/mineral/titanium/white/airless,
 /area/shuttle/abandoned/cargo)
 "fh" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 1
 	},
 /obj/structure/window/reinforced/plasma/spawner,
-/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
@@ -1255,7 +1247,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 10
 	},
-/obj/structure/window/reinforced/spawner/north,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/crew)
 "AC" = (
@@ -1284,7 +1276,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/bridge)
 "Fp" = (
-/obj/structure/window/reinforced/spawner/west,
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/lattice,
 /turf/template_noop,
 /area/shuttle/abandoned/cargo)
@@ -1397,7 +1389,7 @@
 "Qm" = (
 /obj/structure/closet/syndicate,
 /obj/effect/turf_decal/bot_white,
-/obj/structure/window/reinforced/spawner/north,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/abandoned/crew)
 "Qy" = (

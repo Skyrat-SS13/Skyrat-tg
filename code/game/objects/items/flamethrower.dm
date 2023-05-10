@@ -12,7 +12,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
-	custom_materials = list(/datum/material/iron=500)
+	custom_materials = list(/datum/material/iron= HALF_SHEET_MATERIAL_AMOUNT * 0.5)
 	resistance_flags = FIRE_PROOF
 	trigger_guard = TRIGGER_GUARD_NORMAL
 	light_system = MOVABLE_LIGHT
@@ -72,11 +72,9 @@
 
 /obj/item/flamethrower/afterattack(atom/target, mob/user, flag)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(flag)
 		return // too close
-	if(ishuman(user))
-		if(!can_trigger_gun(user))
-			return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("You can't bring yourself to fire \the [src]! You don't want to risk harming anyone..."))
 		return
@@ -152,7 +150,7 @@
 	toggle_igniter(user)
 
 /obj/item/flamethrower/AltClick(mob/user)
-	if(ptank && isliving(user) && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(ptank && isliving(user) && user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		user.put_in_hands(ptank)
 		ptank = null
 		to_chat(user, span_notice("You remove the plasma tank from [src]!"))
@@ -209,7 +207,7 @@
 			igniter.ignite_turf(src,T)
 		else
 			default_ignite(T)
-		sleep(1)
+		sleep(0.1 SECONDS)
 		previousturf = T
 	operating = FALSE
 	for(var/mob/M in viewers(1, loc))
@@ -243,7 +241,7 @@
 		if(create_with_tank)
 			ptank = new /obj/item/tank/internals/plasma/full(src)
 		update_appearance()
-	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_refill)
+	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_refill))
 
 /obj/item/flamethrower/full
 	create_full = TRUE

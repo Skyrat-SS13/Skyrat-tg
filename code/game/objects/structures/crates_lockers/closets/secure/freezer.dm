@@ -1,35 +1,45 @@
 /obj/structure/closet/secure_closet/freezer
 	icon_state = "freezer"
+	base_icon_state = "freezer"
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	door_anim_squish = 0.22
 	door_anim_angle = 123
 	door_anim_time = 4
 	/// If FALSE, we will protect the first person in the freezer from an explosion / nuclear blast.
 	var/jones = FALSE
+	paint_jobs = null
+
+/obj/structure/closet/secure_closet/freezer/before_open(mob/living/user, force)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	toggle_organ_decay(src)
+	return TRUE
+
+/obj/structure/closet/secure_closet/freezer/after_close(mob/living/user)
+	. = ..()
+	toggle_organ_decay(src)
 
 /obj/structure/closet/secure_closet/freezer/Destroy()
-	recursive_organ_check(src)
+	toggle_organ_decay(src)
 	return ..()
 
 /obj/structure/closet/secure_closet/freezer/Initialize(mapload)
 	. = ..()
-	recursive_organ_check(src)
-
-/obj/structure/closet/secure_closet/freezer/open(mob/living/user, force = FALSE)
-	if(opened || !can_open(user, force)) //dupe check just so we don't let the organs decay when someone fails to open the locker
-		return FALSE
-	recursive_organ_check(src)
-	return ..()
-
-/obj/structure/closet/secure_closet/freezer/close(mob/living/user)
-	if(..()) //if we actually closed the locker
-		recursive_organ_check(src)
+	toggle_organ_decay(src)
 
 /obj/structure/closet/secure_closet/freezer/ex_act()
 	if(jones)
 		return ..()
 	jones = TRUE
 	flags_1 &= ~PREVENT_CONTENTS_EXPLOSION_1
+	return FALSE
+
+/obj/structure/closet/secure_closet/freezer/deconstruct(disassembled)
+	if (!(flags_1 & NODECONSTRUCT_1))
+		new /obj/item/assembly/igniter/condenser(drop_location())
+	. = ..()
 
 /obj/structure/closet/secure_closet/freezer/empty
 	name = "empty freezer"
@@ -75,8 +85,8 @@
 		new /obj/item/food/meat/slab/monkey(src)
 
 /obj/structure/closet/secure_closet/freezer/meat/open
-	req_access = list()
 	locked = FALSE
+	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/gulag_fridge
 	name = "refrigerator"
@@ -101,6 +111,11 @@
 /obj/structure/closet/secure_closet/freezer/fridge/open
 	req_access = null
 	locked = FALSE
+
+/obj/structure/closet/secure_closet/freezer/fridge/preopen
+	req_access = null
+	locked = FALSE
+	opened = TRUE
 
 /obj/structure/closet/secure_closet/freezer/money
 	name = "freezer"

@@ -4,7 +4,7 @@
 	slot_flags = null
 	projectile_type = /obj/projectile/magic
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect/magic
-	heavy_metal = FALSE
+	is_cased_ammo = FALSE
 
 /obj/item/ammo_casing/magic/change
 	projectile_type = /obj/projectile/magic/change
@@ -71,8 +71,8 @@
 /obj/item/ammo_casing/magic/antimagic
 	projectile_type = /obj/projectile/magic/antimagic
 
-/obj/item/ammo_casing/magic/sapping
-	projectile_type = /obj/projectile/magic/sapping
+/obj/item/ammo_casing/magic/babel
+	projectile_type = /obj/projectile/magic/babel
 
 /obj/item/ammo_casing/magic/necropotence
 	projectile_type = /obj/projectile/magic/necropotence

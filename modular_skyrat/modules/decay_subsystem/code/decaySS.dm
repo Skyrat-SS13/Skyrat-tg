@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(decay)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_DECAY
 
+	/// This is used to determine what maps we should not spawn on.
+	var/list/station_filter = list("Birdshot Station", "Runtime Station", "MultiZ Debug")
 	var/list/possible_turfs = list()
 	var/list/possible_areas = list()
 	var/severity_modifier = 1
@@ -37,23 +39,29 @@ SUBSYSTEM_DEF(decay)
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
 		log_world("SSDecay was disabled in config.")
-		return ..()
+		return SS_INIT_NO_NEED
+
+	if(SSmapping.config.map_name in station_filter)
+		message_admins("SSDecay was disabled due to map filter.")
+		log_world("SSDecay was disabled due to map filter.")
+		return SS_INIT_NO_NEED
+
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
 	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
-		return ..()
-	for(var/turf/iterating_turf in world)
-		if(!is_station_level(iterating_turf.z))
-			continue
-		if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
-			continue
-		possible_turfs += iterating_turf
+		return SS_INIT_NO_NEED
 
-	for(var/area/iterating_area in world)
+	for(var/area/iterating_area as anything in GLOB.areas)
 		if(!is_station_level(iterating_area.z))
 			continue
 		possible_areas += iterating_area
+
+		// Now add the turfs
+		for(var/turf/iterating_turf as anything in iterating_area.get_contained_turfs())
+			if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
+				continue
+			possible_turfs += iterating_turf
 
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
@@ -71,7 +79,7 @@ SUBSYSTEM_DEF(decay)
 
 	do_medical()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)

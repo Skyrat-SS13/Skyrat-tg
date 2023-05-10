@@ -73,10 +73,10 @@
 	///is the mob currently ascending or descending through z levels?
 	var/currently_z_moving
 
-	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
-	var/blocks_emissive = FALSE
+	/// Either [EMISSIVE_BLOCK_NONE], [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = EMISSIVE_BLOCK_NONE
 	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
-	var/atom/movable/emissive_blocker/em_block
+	var/atom/movable/render_step/emissive_blocker/em_block
 
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
@@ -96,41 +96,41 @@
 
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances //SKYRAT EDIT ADDITION
 	var/face_mouse = FALSE //SKYRAT EDIT ADDITION
+	/// Value used to increment ex_act() if reactionary_explosions is on
+	/// How much we as a source block explosions by
+	/// Will not automatically apply to the turf below you, you need to apply /datum/element/block_explosives in conjunction with this
+	var/explosion_block = 0
 
 /mutable_appearance/emissive_blocker
 
 /mutable_appearance/emissive_blocker/New()
 	. = ..()
 	// Need to do this here because it's overriden by the parent call
-	plane = EMISSIVE_PLANE
 	color = EM_BLOCK_COLOR
 	appearance_flags = EMISSIVE_APPEARANCE_FLAGS
 
 /atom/movable/Initialize(mapload)
 	. = ..()
-	switch(blocks_emissive)
-		if(EMISSIVE_BLOCK_GENERIC)
-			var/static/mutable_appearance/emissive_blocker/blocker = new()
-			blocker.icon = icon
-			blocker.icon_state = icon_state
-			blocker.dir = dir
-			blocker.appearance_flags |= appearance_flags
-			// Ok so this is really cursed, but I want to set with this blocker cheaply while
-			// Still allowing it to be removed from the overlays list later
-			// So I'm gonna flatten it, then insert the flattened overlay into overlays AND the managed overlays list, directly
-			// I'm sorry
-			var/mutable_appearance/flat = blocker.appearance
-			overlays += flat
-			if(managed_overlays)
-				if(islist(managed_overlays))
-					managed_overlays += flat
-				else
-					managed_overlays = list(managed_overlays, flat)
-			else
-				managed_overlays = flat
-		if(EMISSIVE_BLOCK_UNIQUE)
+#ifdef UNIT_TESTS
+	if(explosion_block && !HAS_TRAIT(src, TRAIT_BLOCKING_EXPLOSIVES))
+		stack_trace("[type] blocks explosives, but does not have the managing element applied")
+#endif
+
+#if EMISSIVE_BLOCK_GENERIC != 0
+	#error EMISSIVE_BLOCK_GENERIC is expected to be 0 to faciliate a weird optimization hack where we rely on it being the most common.
+	#error Read the comment in code/game/atoms_movable.dm for details.
+#endif
+
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
 			render_target = ref(src)
-			em_block = new(src, render_target)
+			em_block = new(null, src)
 			overlays += em_block
 			if(managed_overlays)
 				if(islist(managed_overlays))
@@ -139,6 +139,26 @@
 					managed_overlays = list(managed_overlays, em_block)
 			else
 				managed_overlays = em_block
+	else
+		var/static/mutable_appearance/emissive_blocker/blocker = new()
+		blocker.icon = icon
+		blocker.icon_state = icon_state
+		blocker.dir = dir
+		blocker.appearance_flags |= appearance_flags
+		blocker.plane = GET_NEW_PLANE(EMISSIVE_PLANE, PLANE_TO_OFFSET(plane))
+		// Ok so this is really cursed, but I want to set with this blocker cheaply while
+		// Still allowing it to be removed from the overlays list later
+		// So I'm gonna flatten it, then insert the flattened overlay into overlays AND the managed overlays list, directly
+		// I'm sorry
+		var/mutable_appearance/flat = blocker.appearance
+		overlays += flat
+		if(managed_overlays)
+			if(islist(managed_overlays))
+				managed_overlays += flat
+			else
+				managed_overlays = list(managed_overlays, flat)
+		else
+			managed_overlays = flat
 
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
@@ -147,6 +167,8 @@
 			AddComponent(/datum/component/overlay_lighting)
 		if(MOVABLE_LIGHT_DIRECTIONAL)
 			AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
+		if(MOVABLE_LIGHT_BEAM)
+			AddComponent(/datum/component/overlay_lighting, is_directional = TRUE, is_beam = TRUE)
 
 /atom/movable/Destroy(force)
 	QDEL_NULL(language_holder)
@@ -181,7 +203,7 @@
 		move_packet = null
 
 	if(spatial_grid_key)
-		SSspatial_grid.force_remove_from_cell(src)
+		SSspatial_grid.force_remove_from_grid(src)
 
 	LAZYCLEARLIST(client_mobs_in_contents)
 
@@ -199,28 +221,88 @@
 
 
 	vis_locs = null //clears this atom out of all viscontents
-	vis_contents.Cut()
+
+	// Checking length(vis_contents) before cutting has significant speed benefits
+	if (length(vis_contents))
+		vis_contents.Cut()
 
 /atom/movable/proc/update_emissive_block()
-	if(!blocks_emissive)
-		return
-	else if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
-		var/mutable_appearance/gen_emissive_blocker = emissive_blocker(icon, icon_state, alpha = src.alpha, appearance_flags = src.appearance_flags)
-		gen_emissive_blocker.dir = dir
-		return gen_emissive_blocker
-	else if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
-		if(!em_block && !QDELETED(src))
-			render_target = ref(src)
-			em_block = new(src, render_target)
-		return em_block
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+			if(em_block)
+				SET_PLANE(em_block, EMISSIVE_PLANE, src)
+			else if(!QDELETED(src))
+				render_target = ref(src)
+				em_block = new(null, src)
+			return em_block
+		// Implied else if (blocks_emissive == EMISSIVE_BLOCK_NONE) -> return
+	// EMISSIVE_BLOCK_GENERIC == 0
+	else
+		return fast_emissive_blocker(src)
+
+/// Generates a space underlay for a turf
+/// This provides proper lighting support alongside just looking nice
+/// Accepts the appearance to make "spaceish", and the turf we're doing this for
+/proc/generate_space_underlay(mutable_appearance/underlay_appearance, turf/generate_for)
+	underlay_appearance.icon = 'icons/turf/space.dmi'
+	underlay_appearance.icon_state = "space"
+	SET_PLANE(underlay_appearance, PLANE_SPACE, generate_for)
+	if(!generate_for.render_target)
+		generate_for.render_target = ref(generate_for)
+	var/atom/movable/render_step/emissive_blocker/em_block = new(null, generate_for)
+	underlay_appearance.overlays += em_block
+	// We used it because it's convienient and easy, but it's gotta go now or it'll hang refs
+	QDEL_NULL(em_block)
+	// We're gonna build a light, and mask it with the base turf's appearance
+	// grab a 32x32 square of it
+	var/mutable_appearance/light = new(GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(generate_for) + 1])
+	light.appearance_flags |= KEEP_TOGETHER
+	// Now apply a copy of the turf, set to multiply
+	// This will multiply against our light, so we only light up the bits that aren't "on" the wall
+	var/mutable_appearance/mask = new(generate_for.appearance)
+	mask.blend_mode = BLEND_MULTIPLY
+	mask.render_target = ""
+	mask.pixel_x = 0
+	mask.pixel_y = 0
+	mask.pixel_w = 0
+	mask.pixel_z = 0
+	mask.transform = null
+	mask.underlays = list() // Begone foul lighting overlay
+	SET_PLANE(mask, FLOAT_PLANE, generate_for)
+	mask.layer = FLOAT_LAYER
+
+	// Bump the opacity to full, will this work?
+	mask.color = list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,255, 0,0,0,0)
+	light.overlays += mask
+	underlay_appearance.overlays += light
+
+	// Now, we're going to make a copy of the mask. Instead of using it to multiply against our light
+	// We're going to use it to multiply against the turf lighting plane. Going to mask away the turf light
+	// And rely on LIGHTING_MASK_LAYER to ensure we mask ONLY that bit
+	var/mutable_appearance/turf_mask = new(mask.appearance)
+	SET_PLANE(turf_mask, LIGHTING_PLANE, generate_for)
+	turf_mask.layer = LIGHTING_MASK_LAYER
+	/// Any color becomes white. Anything else is black, and it's fully opaque
+	/// Ought to work
+	turf_mask.color = list(255,255,255,0, 255,255,255,0, 255,255,255,0, 0,0,0,0, 0,0,0,255)
+	underlay_appearance.overlays += turf_mask
 
 /atom/movable/update_overlays()
-	. = ..()
+	var/list/overlays = ..()
 	var/emissive_block = update_emissive_block()
 	if(emissive_block)
-		. += emissive_block
+		// Emissive block should always go at the beginning of the list
+		overlays.Insert(1, emissive_block)
+	return overlays
 
 /atom/movable/proc/onZImpact(turf/impacted_turf, levels, message = TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(message)
 		visible_message(span_danger("[src] crashes into [impacted_turf]!"))
 	var/atom/highest = impacted_turf
@@ -230,8 +312,21 @@
 		if(isobj(hurt_atom) || ismob(hurt_atom))
 			if(hurt_atom.layer > highest.layer)
 				highest = hurt_atom
-	INVOKE_ASYNC(src, .proc/SpinAnimation, 5, 2)
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+	SEND_SIGNAL(src, COMSIG_ATOM_ON_Z_IMPACT, impacted_turf, levels)
 	return TRUE
+
+/*
+ * Attempts to move using zMove if direction is UP or DOWN, step if not
+ *
+ * Args:
+ * direction: The direction to go
+ * z_move_flags: bitflags used for checks in zMove and can_z_move
+*/
+/atom/movable/proc/try_step_multiz(direction, z_move_flags = ZMOVE_FLIGHT_FLAGS)
+	if(direction == UP || direction == DOWN)
+		return zMove(direction, null, z_move_flags)
+	return step(src, direction)
 
 /*
  * The core multi-z movement proc. Used to move a movable through z levels.
@@ -316,16 +411,16 @@
 			else
 				to_chat(src, span_warning("You are not Superman."))
 		return FALSE
-	if(!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(src, direction, destination) && destination.zPassIn(src, direction, start)))
+	if(!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(src, direction, destination, (z_move_flags & ZMOVE_ALLOW_ANCHORED)) && destination.zPassIn(src, direction, start)))
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			to_chat(rider || src, span_warning("You couldn't move there!"))
 		return FALSE
 	return destination //used by some child types checks and zMove()
 
 /atom/movable/vv_edit_var(var_name, var_value)
-	var/static/list/banned_edits = list(NAMEOF(src, step_x) = TRUE, NAMEOF(src, step_y) = TRUE, NAMEOF(src, step_size) = TRUE, NAMEOF(src, bounds) = TRUE)
-	var/static/list/careful_edits = list(NAMEOF(src, bound_x) = TRUE, NAMEOF(src, bound_y) = TRUE, NAMEOF(src, bound_width) = TRUE, NAMEOF(src, bound_height) = TRUE)
-	var/static/list/not_falsey_edits = list(NAMEOF(src, bound_width) = TRUE, NAMEOF(src, bound_height) = TRUE)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, step_x) = TRUE, NAMEOF_STATIC(src, step_y) = TRUE, NAMEOF_STATIC(src, step_size) = TRUE, NAMEOF_STATIC(src, bounds) = TRUE)
+	var/static/list/careful_edits = list(NAMEOF_STATIC(src, bound_x) = TRUE, NAMEOF_STATIC(src, bound_y) = TRUE, NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	var/static/list/not_falsey_edits = list(NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
 	if(banned_edits[var_name])
 		return FALSE //PLEASE no.
 	if(careful_edits[var_name] && (var_value % world.icon_size) != 0)
@@ -493,7 +588,7 @@
 // Here's where we rewrite how byond handles movement except slightly different
 // To be removed on step_ conversion
 // All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direction, glide_size_override = 0)
+/atom/movable/Move(atom/newloc, direction, glide_size_override = 0, update_dir = TRUE)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
@@ -501,10 +596,10 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move && dir != direction && !face_mouse) // SKYRAT EDIT CHANGE
+	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // SKYRAT EDIT - && !face_mouse
 		setDir(direction)
 
-	var/is_multi_tile_object = bound_width > 32 || bound_height > 32
+	var/is_multi_tile_object = is_multi_tile_object(src)
 
 	var/list/old_locs
 	if(is_multi_tile_object && isturf(loc))
@@ -566,7 +661,7 @@
 
 ////////////////////////////////////////
 
-/atom/movable/Move(atom/newloc, direct, glide_size_override = 0)
+/atom/movable/Move(atom/newloc, direct, glide_size_override = 0, update_dir = TRUE)
 	var/atom/movable/pullee = pulling
 	var/turf/current_turf = loc
 	if(!moving_from_pull)
@@ -627,7 +722,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && !face_mouse) // SKYRAT EDIT CHANGE
+				if(!. && set_dir_on_move && update_dir && !face_mouse) // SKYRAT EDIT CHANGE - && !face_mouse
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
@@ -668,7 +763,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && !face_mouse) // SKYRAT EDIT CHANGE
+	if(set_dir_on_move && dir != direct && update_dir && !face_mouse) // SKYRAT EDIT CHANGE - && !face_mouse)
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
@@ -717,7 +812,8 @@
 	var/turf/new_turf = get_turf(src)
 
 	if (old_turf?.z != new_turf?.z)
-		on_changed_z_level(old_turf, new_turf)
+		var/same_z_layer = (GET_TURF_PLANE_OFFSET(old_turf) == GET_TURF_PLANE_OFFSET(new_turf))
+		on_changed_z_level(old_turf, new_turf, same_z_layer)
 
 	if(HAS_SPATIAL_GRID_CONTENTS(src))
 		if(old_turf && new_turf && (old_turf.z != new_turf.z \
@@ -735,7 +831,7 @@
 
 	return TRUE
 
-// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
+// Make sure you know what you're doing if you call this
 // You probably want CanPass()
 /atom/movable/Cross(atom/movable/crossed_atom)
 	. = TRUE
@@ -802,7 +898,9 @@
 	var/list/nested_locs = get_nested_locs(src) + src
 	for(var/channel in gone.important_recursive_contents)
 		for(var/atom/movable/location as anything in nested_locs)
+			LAZYINITLIST(location.important_recursive_contents)
 			var/list/recursive_contents = location.important_recursive_contents // blue hedgehog velocity
+			LAZYINITLIST(recursive_contents[channel])
 			recursive_contents[channel] -= gone.important_recursive_contents[channel]
 			switch(channel)
 				if(RECURSIVE_CONTENTS_CLIENT_MOBS, RECURSIVE_CONTENTS_HEARING_SENSITIVE)
@@ -910,7 +1008,9 @@
 	SSspatial_grid.remove_grid_membership(src, our_turf, SPATIAL_GRID_CONTENTS_TYPE_CLIENTS)
 
 	for(var/atom/movable/movable_loc as anything in get_nested_locs(src) + src)
+		LAZYINITLIST(movable_loc.important_recursive_contents)
 		var/list/recursive_contents = movable_loc.important_recursive_contents // blue hedgehog velocity
+		LAZYINITLIST(recursive_contents[RECURSIVE_CONTENTS_CLIENT_MOBS])
 		recursive_contents[RECURSIVE_CONTENTS_CLIENT_MOBS] -= src
 		if(!length(recursive_contents[RECURSIVE_CONTENTS_CLIENT_MOBS]))
 			SSspatial_grid.remove_grid_awareness(movable_loc, SPATIAL_GRID_CONTENTS_TYPE_CLIENTS)
@@ -942,6 +1042,8 @@
 		return
 	. = anchored
 	anchored = anchorvalue
+	if(anchored && pulledby)
+		pulledby.stop_pulling()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
 
 /// Sets the currently_z_moving variable to a new value. Used to allow some zMovement sources to have precedence over others.
@@ -1034,17 +1136,39 @@
  * Called when a movable changes z-levels.
  *
  * Arguments:
- * * old_z - The previous z-level they were on before.
- * * notify_contents - Whether or not to notify the movable's contents that their z-level has changed.
+ * * old_turf - The previous turf they were on before.
+ * * new_turf - The turf they have now entered.
+ * * same_z_layer - If their old and new z levels are on the same level of plane offsets or not
+ * * notify_contents - Whether or not to notify the movable's contents that their z-level has changed. NOTE, IF YOU SET THIS, YOU NEED TO MANUALLY SET PLANE OF THE CONTENTS LATER
  */
-/atom/movable/proc/on_changed_z_level(turf/old_turf, turf/new_turf, notify_contents = TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_turf, new_turf)
+/atom/movable/proc/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents = TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_turf, new_turf, same_z_layer)
+
+	// If our turfs are on different z "layers", recalc our planes
+	if(!same_z_layer && !QDELETED(src))
+		SET_PLANE(src, PLANE_TO_TRUE(src.plane), new_turf)
+		// a TON of overlays use planes, and thus require offsets
+		// so we do this. sucks to suck
+		update_appearance()
+
+		if(update_on_z)
+			// I so much wish this could be somewhere else. alas, no.
+			for(var/image/update in update_on_z)
+				SET_PLANE(update, PLANE_TO_TRUE(update.plane), new_turf)
+		if(update_overlays_on_z)
+			// This EVEN more so
+			cut_overlay(update_overlays_on_z)
+			// This even more so
+			for(var/mutable_appearance/update in update_overlays_on_z)
+				SET_PLANE(update, PLANE_TO_TRUE(update.plane), new_turf)
+			add_overlay(update_overlays_on_z)
 
 	if(!notify_contents)
 		return
 
 	for (var/atom/movable/content as anything in src) // Notify contents of Z-transition.
-		content.on_changed_z_level(old_turf, new_turf)
+		content.on_changed_z_level(old_turf, new_turf, same_z_layer)
 
 /**
  * Called whenever an object moves and by mobs when they attempt to move themselves through space
@@ -1095,6 +1219,13 @@
 	AddComponent(/datum/component/drift, direction, instant, start_delay)
 
 	return TRUE
+
+/atom/movable/set_explosion_block(explosion_block)
+	var/old_block = src.explosion_block
+	explosive_resistance -= old_block
+	src.explosion_block = explosion_block
+	explosive_resistance += explosion_block
+	SEND_SIGNAL(src, COMSIG_MOVABLE_EXPLOSION_BLOCK_CHANGED, old_block, explosion_block)
 
 /atom/movable/proc/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	set waitfor = FALSE
@@ -1355,7 +1486,7 @@
 	return language_holder.can_speak_language(language)
 
 /// Returns the result of tongue specific limitations on spoken languages.
-/atom/movable/proc/could_speak_language(language)
+/atom/movable/proc/could_speak_language(datum/language/language_path)
 	return TRUE
 
 /// Returns selected language, if it can be spoken, or finds, sets and returns a new selected language if possible.
@@ -1388,6 +1519,29 @@
 	var/datum/language_holder/language_holder = get_language_holder()
 	return language_holder.update_atom_languages(src)
 
+/**
+ * Randomizes our atom's language to an uncommon language if:
+ * - They are on the station Z level
+ * OR
+ * - They are on the escape shuttle
+ */
+/atom/movable/proc/randomize_language_if_on_station()
+	var/turf/atom_turf = get_turf(src)
+	var/area/atom_area = get_area(src)
+
+	if(!atom_turf) // some machines spawn in nullspace
+		return
+
+	if(!is_station_level(atom_turf.z) && !istype(atom_area, /area/shuttle/escape))
+		// Why snowflake check for escape shuttle? Well, a lot of shuttles spawn with machines
+		// but docked at centcom, and I wanted those machines to also speak funny languages
+		return FALSE
+
+	/// The atom's language holder - so we can randomize and change their language
+	var/datum/language_holder/atom_languages = get_language_holder()
+	atom_languages.selected_language = atom_languages.get_random_spoken_uncommon_language()
+	return TRUE
+
 /* End language procs */
 
 //Returns an atom's power cell, if it has one. Overload for individual items.
@@ -1418,16 +1572,14 @@
 	grab_state = newstate
 	switch(grab_state) // Current state.
 		if(GRAB_PASSIVE)
-			REMOVE_TRAIT(pulling, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)
-			REMOVE_TRAIT(pulling, TRAIT_HANDS_BLOCKED, CHOKEHOLD_TRAIT)
+			pulling.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), CHOKEHOLD_TRAIT)
 			if(. >= GRAB_NECK) // Previous state was a a neck-grab or higher.
 				REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		if(GRAB_AGGRESSIVE)
 			if(. >= GRAB_NECK) // Grab got downgraded.
 				REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 			else // Grab got upgraded from a passive one.
-				ADD_TRAIT(pulling, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)
-				ADD_TRAIT(pulling, TRAIT_HANDS_BLOCKED, CHOKEHOLD_TRAIT)
+				pulling.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), CHOKEHOLD_TRAIT)
 		if(GRAB_NECK, GRAB_KILL)
 			if(. <= GRAB_AGGRESSIVE)
 				ADD_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
@@ -1445,6 +1597,7 @@
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
 	VV_DROPDOWN_OPTION(VV_HK_DEADCHAT_PLAYS, "Start/Stop Deadchat Plays")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_FANTASY_AFFIX, "Add Fantasy Affix")
 
@@ -1453,6 +1606,10 @@
 
 	if(!.)
 		return
+
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
 
 	if(href_list[VV_HK_DEADCHAT_PLAYS] && check_rights(R_FUN))
 		if(tgui_alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", list("Allow", "Cancel")) != "Allow")
