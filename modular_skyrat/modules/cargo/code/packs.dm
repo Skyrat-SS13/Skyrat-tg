@@ -708,7 +708,7 @@
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
 
-/datum/supply_pack/security/armory/russian
+/datum/supply_pack/imports/cin_surplus
 	name = "CIN Military Surplus Crate"
 	desc = "A collection of surplus equipment sourced from the Coalition of Independent Nations' military stockpiles. Likely to contain old and outdated equipment, as is the nature of surplus."
 	contraband = TRUE
@@ -716,7 +716,7 @@
 	contains = list(
 		/obj/item/crucifix = 3,
 		/obj/item/storage/box/nri_rations = 3,
-		/obj/item/storage/toolbox/ammo = 1,
+		/obj/item/storage/toolbox/a762 = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/gun/ballistic/rifle/boltaction = 1,
 		/obj/item/ammo_box/a762 = 3,
@@ -735,7 +735,7 @@
 		/obj/item/clothing/mask/balaclavaadjust = 3,
 	)
 
-/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/we_are_filling_this_crate)
+/datum/supply_pack/imports/cin_surplus/fill(obj/structure/closet/crate/we_are_filling_this_crate)
 	for(var/i in 1 to 10)
 		var/item = pick_weight(contains)
 		new item(we_are_filling_this_crate)

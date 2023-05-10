@@ -233,7 +233,7 @@ const GASES = [
     color: 'olive',
   },
   {
-    id: 'Freon',
+    id: 'freon',
     path: '/datum/gas/freon',
     name: 'Freon',
     label: 'Freon',
@@ -288,39 +288,65 @@ const GASES = [
     label: 'Anti-Noblium',
     color: 'maroon',
   },
+  {
+    id: 'nitrium',
+    path: '/datum/gas/nitrium',
+    name: 'Nitrium',
+    label: 'Nitrium',
+    color: 'brown',
+  },
 ] as const;
 
 // Returns gas label based on gasId
 export const getGasLabel = (gasId: string, fallbackValue?: string) => {
+  if (!gasId) return fallbackValue || 'None';
+
   const gasSearchString = gasId.toLowerCase();
-  const gas = GASES.find(
-    (gas) =>
-      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
-  );
-  return gas?.label || fallbackValue || gasId;
+
+  for (let idx = 0; idx < GASES.length; idx++) {
+    if (GASES[idx].id === gasSearchString) {
+      return GASES[idx].label;
+    }
+  }
+
+  return fallbackValue || 'None';
 };
 
 // Returns gas color based on gasId
 export const getGasColor = (gasId: string) => {
+  if (!gasId) return 'black';
+
   const gasSearchString = gasId.toLowerCase();
-  const gas = GASES.find(
-    (gas) =>
-      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
-  );
-  return gas?.color;
+
+  for (let idx = 0; idx < GASES.length; idx++) {
+    if (GASES[idx].id === gasSearchString) {
+      return GASES[idx].color;
+    }
+  }
+
+  return 'black';
 };
 
 // Returns gas object based on gasId
 export const getGasFromId = (gasId: string): Gas | undefined => {
+  if (!gasId) return;
+
   const gasSearchString = gasId.toLowerCase();
-  const gas = GASES.find(
-    (gas) =>
-      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
-  );
-  return gas;
+
+  for (let idx = 0; idx < GASES.length; idx++) {
+    if (GASES[idx].id === gasSearchString) {
+      return GASES[idx];
+    }
+  }
 };
 
 // Returns gas object based on gasPath
 export const getGasFromPath = (gasPath: string): Gas | undefined => {
-  return GASES.find((gas) => gas.path === gasPath);
+  if (!gasPath) return;
+
+  for (let idx = 0; idx < GASES.length; idx++) {
+    if (GASES[idx].path === gasPath) {
+      return GASES[idx];
+    }
+  }
 };

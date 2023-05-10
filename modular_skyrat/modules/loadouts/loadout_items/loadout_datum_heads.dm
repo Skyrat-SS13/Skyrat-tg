@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/black_fedora
 	name = "Black Fedora"
-	item_path = /obj/item/clothing/head/fedora/fedblack
+	item_path = /obj/item/clothing/head/fedora
 
 /datum/loadout_item/head/beige_fedora
 	name = "Beige Fedora"
@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/brown_fedora
 	name = "Brown Fedora"
-	item_path = /obj/item/clothing/head/fedora/fedbrown
+	item_path = /obj/item/clothing/head/fedora/brown
 
 /*
 *	HARDHATS
@@ -648,18 +648,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Rainbow Bunch"
 	item_path = /obj/item/food/grown/rainbow_flower
 	additional_tooltip_contents = list(TOOLTIP_RANDOM_COLOR)
-
-/*
-*	ENCLAVE
-*/
-
-/datum/loadout_item/head/donator/enclave
-	name = "Enclave Cap"
-	item_path = /obj/item/clothing/head/soft/enclave
-
-/datum/loadout_item/head/donator/enclaveo
-	name = "Enclave Cap - Officer"
-	item_path = /obj/item/clothing/head/soft/enclaveo
 
 // Legacy unpaintable cowboy hat because it fits a character better
 /datum/loadout_item/head/cowboyhat_legacy

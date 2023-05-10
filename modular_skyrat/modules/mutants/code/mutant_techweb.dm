@@ -4,7 +4,7 @@
 	build_path = /obj/machinery/rnd/rna_recombinator
 	req_components = list(
 		/datum/stock_part/scanning_module = 1,
-		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/servo = 2,
 		/datum/stock_part/micro_laser = 2,
 	)
 

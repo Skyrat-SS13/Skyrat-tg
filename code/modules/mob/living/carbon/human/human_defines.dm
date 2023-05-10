@@ -13,8 +13,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
 
-	maxHealth = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
-	health = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
+	maxHealth = 135 //SKYRAT EDIT ADDITION
+	health = 135 //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
 	var/hair_color = "#000000"

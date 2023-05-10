@@ -4,9 +4,6 @@
 	update_body_parts() //to update the carbon's new bodyparts appearance
 	register_context()
 
-	// Carbons cannot taste anything without a tongue; the tongue organ removes this on Insert
-	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
-
 	GLOB.carbon_list += src
 	var/static/list/loc_connections = list(
 		COMSIG_CARBON_DISARM_PRESHOVE = PROC_REF(disarm_precollide),
@@ -590,7 +587,7 @@
 			set_invis_see(min(glasses.invis_view, see_invisible))
 		if(!isnull(glasses.lighting_cutoff))
 			lighting_cutoff = max(lighting_cutoff, glasses.lighting_cutoff)
-		if(!isnull(glasses.color_cutoffs))
+		if(length(glasses.color_cutoffs))
 			lighting_color_cutoffs = blend_cutoff_colors(lighting_color_cutoffs, glasses.color_cutoffs)
 
 

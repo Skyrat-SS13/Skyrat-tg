@@ -112,6 +112,7 @@
 	return total_burn_power
 
 /obj/effect/abstract/liquid_turf/extinguish()
+	. = ..()
 	if(fire_state)
 		set_fire_state(LIQUID_FIRE_STATE_NONE)
 

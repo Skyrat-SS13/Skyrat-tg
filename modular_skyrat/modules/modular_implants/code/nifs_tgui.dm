@@ -39,6 +39,7 @@
 			"activation_cost" = nifsoft.activation_cost,
 			"active_cost" = nifsoft.active_cost,
 			"reference" = REF(nifsoft),
+			"ui_icon" = nifsoft.ui_icon,
 		)
 		data["loaded_nifsofts"] += list(nifsoft_data)
 

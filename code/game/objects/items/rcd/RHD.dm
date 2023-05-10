@@ -13,7 +13,7 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
-	custom_materials = list(/datum/material/iron=100000)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*50)
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	armor_type = /datum/armor/item_construction
 	resistance_flags = FIRE_PROOF
@@ -214,13 +214,13 @@
 	return TRUE
 
 ///shared action for toggling silo link rcd,rld & plumbing
-/obj/item/construction/ui_act(action, list/params)
+/obj/item/construction/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
 
 	if(action == "toggle_silo" && (upgrade & RCD_UPGRADE_SILO_LINK))
-		toggle_silo(usr)
+		toggle_silo(ui.user)
 		return TRUE
 
 /obj/item/construction/proc/checkResource(amount, mob/user)

@@ -32,6 +32,7 @@
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		admin = TRUE
 
+	/* SKYRAT EDIT REMOVAL START - We have the panic bunker on 24/7, this just makes our method unusable.
 	if(!real_bans_only && !admin && CONFIG_GET(flag/panic_bunker) && !CONFIG_GET(flag/panic_bunker_interview))
 		var/datum/db_query/query_client_in_db = SSdbcore.NewQuery(
 			"SELECT 1 FROM [format_table_name("player")] WHERE ckey = :ckey",
@@ -49,6 +50,7 @@
 			if (message)
 				message_admins(span_adminnotice("[reject_message]"))
 			return list("reason"="panicbunker", "desc" = "Sorry but the server is currently not accepting connections from never before seen players")
+	*/ // SKYRAT EDIT REMOVAL END
 
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))
