@@ -183,13 +183,15 @@
 
 //Overrides the bulletproof helm with the older non red visor version.
 /obj/item/clothing/head/helmet/alt
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_state = "helmetalt_blue"
+	base_icon_state = "helmetalt_blue"
 
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
