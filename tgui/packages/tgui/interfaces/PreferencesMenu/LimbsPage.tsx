@@ -188,7 +188,7 @@ export const OrganPage = (props, context) => {
         <Stack.Item grow>
           <Dropdown
             width="100%"
-            options={Object.values(props.limb.aug_choices) as string[]}
+            options={Object.values(props.organ.organ_choices) as string[]}
             displayText={props.organ.chosen_organ}
             onSelected={(value) => {
               // Since the costs are positive, it's added and not substracted
