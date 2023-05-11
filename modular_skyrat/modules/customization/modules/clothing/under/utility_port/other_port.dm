@@ -1,7 +1,7 @@
 
 /obj/item/clothing/suit/costume/samurai
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/costume.dmi'
 	name = "samurai armor"
 	desc = "A set of ancient-Japan Samurai armor. Despite being a cheap replica, it's still remarkably heavy."
 	icon_state = "samurai"

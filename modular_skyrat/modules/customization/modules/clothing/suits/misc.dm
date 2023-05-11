@@ -255,8 +255,8 @@
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/costume.dmi'
 	icon_state = "ensuit"
 	supports_variations_flags = NONE
 
