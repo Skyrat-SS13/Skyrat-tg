@@ -3,12 +3,6 @@
 /obj/item/gun/ballistic/bow/longbow
 	name = "longbow"
 	desc = "While pretty finely crafted, surely you can find something better to use in the current year."
-	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi' //SKYRAT EDIT - Bow Consolidation
-	slot_flags = ITEM_SLOT_BACK //SKYRAT EDIT BEGIN - Bow Consolidation
-	icon_state = "bow"
-	inhand_icon_state = "bow"
-	base_icon_state = "bow"
-	worn_icon_state = "bow" //SKYRAT EDIT END - Bow Consolidation
 
 ///chaplain's divine archer bow
 /obj/item/gun/ballistic/bow/divine

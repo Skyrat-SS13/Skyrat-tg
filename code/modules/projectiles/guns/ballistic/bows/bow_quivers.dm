@@ -5,11 +5,9 @@
 	icon = 'icons/obj/weapons/guns/bows/quivers.dmi'
 	icon_state = "quiver"
 	inhand_icon_state = null
-	worn_icon_state = "quiver" //SKYRAT EDIT BEGIN - Bow Consolidation - Original: harpoon_quiver
-	worn_icon = 'icons/mob/clothing/back.dmi' //SKYRAT EDIT END - Bow Consolidation
+	worn_icon_state = "harpoon_quiver"
 	/// type of arrow the quivel should hold
 	var/arrow_path = /obj/item/ammo_casing/caseless/arrow
-	slot_flags = ITEM_SLOT_BELT //SKYRAT EDIT - Bow Consolidation
 
 /obj/item/storage/bag/quiver/Initialize(mapload)
 	. = ..()

@@ -15,8 +15,6 @@
 	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	internal_magazine = TRUE
-	item_flags = NEEDS_PERMIT //SKYRAT EDIT - Bow Consolidation
-	trigger_guard = TRIGGER_GUARD_ALLOW_ALL //SKYRAT EDIT - Bow Consolidation - So Ashwalkers Can Use It
 	cartridge_wording = "arrow"
 	bolt_type = BOLT_TYPE_NO_BOLT
 	/// whether the bow is drawn back
