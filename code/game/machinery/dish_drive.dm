@@ -9,17 +9,32 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/dish_drive
 	pass_flags = PASSTABLE
+<<<<<<< HEAD
 	var/list/collectable_items = list(/obj/item/trash/waffles,//SKYRAT EDIT CHANGE: NO STATIC!
 		/obj/item/trash/tray,
+=======
+	var/static/list/collectable_items = list(/obj/item/trash/waffles,
+		/obj/item/broken_bottle,
+		/obj/item/kitchen/fork,
+		/obj/item/plate,
+		/obj/item/plate_shard,
+>>>>>>> 1886848f3ce (Dish drives now collect empty plates and plate fragments (#75243))
 		/obj/item/reagent_containers/cup/bowl,
 		/obj/item/reagent_containers/cup/glass/drinkingglass,
-		/obj/item/kitchen/fork,
 		/obj/item/shard,
+<<<<<<< HEAD
 		/obj/item/broken_bottle)
 	var/list/disposable_items = list(/obj/item/trash/waffles,//SKYRAT EDIT CHANGE: NO STATIC!
+=======
+>>>>>>> 1886848f3ce (Dish drives now collect empty plates and plate fragments (#75243))
 		/obj/item/trash/tray,
+	)
+	var/static/list/disposable_items = list(/obj/item/trash/waffles,
+		/obj/item/broken_bottle,
+		/obj/item/plate_shard,
 		/obj/item/shard,
-		/obj/item/broken_bottle)
+		/obj/item/trash/tray,
+	)
 	var/time_since_dishes = 0
 	var/suction_enabled = TRUE
 	var/transmit_enabled = TRUE
@@ -88,8 +103,13 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
+<<<<<<< HEAD
 	for(var/obj/item/I in view(succrange, src)) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/obj/item/I in view(4, src))
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
+=======
+	for(var/obj/item/I in view(4, src))
+		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume) && (I.contents.len < 1))
+>>>>>>> 1886848f3ce (Dish drives now collect empty plates and plate fragments (#75243))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
 				visible_message(span_notice("[src] beams up [I]!"))
