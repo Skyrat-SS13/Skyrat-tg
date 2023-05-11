@@ -564,6 +564,12 @@
 	attack_verb_simple = list("bite", "eat", "fin slap")
 	squeak_override = list('sound/weapons/bite.ogg'=1)
 
+//Other donation reward for Razurath
+/obj/item/toy/plush/skyrat/plushie_razurath/second
+	name = "dwarf shark plushie"
+	desc = "Despite her height, the plushie regards you with keen and frankly unamused eyes; the look on her face, and the elegance of her little tiny coat tell you that she knows something you don't."
+	icon_state = "plushie_nedilla"
+
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
 	name = "bumbling wolfgirl plushie"
