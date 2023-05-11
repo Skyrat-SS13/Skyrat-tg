@@ -1,8 +1,8 @@
 /obj/item/clothing/suit/hooded/seva
 	name = "SEVA suit"
 	desc = "A fire-proof suit for exploring hot environments. Its design doesn't allow for upgrading with goliath plates."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/utility.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/utility.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "seva"
