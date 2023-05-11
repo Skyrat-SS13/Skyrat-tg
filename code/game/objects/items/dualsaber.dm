@@ -23,7 +23,12 @@
 	light_on = FALSE
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
+<<<<<<< HEAD
 	block_chance = 45 //SKYRAT EDIT - Lowered ORIGINAL:75
+=======
+	block_chance = 75
+	block_sound = 'sound/weapons/block_blade.ogg'
+>>>>>>> a4822c165b0 (Now blocking is more noticeable! New blocking and parrying sounds (#74998))
 	max_integrity = 200
 	armor_type = /datum/armor/item_dualsaber
 	resistance_flags = FIRE_PROOF

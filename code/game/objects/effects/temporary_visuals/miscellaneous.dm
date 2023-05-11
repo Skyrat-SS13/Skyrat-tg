@@ -583,3 +583,28 @@
 /// Remove the image from the modsuit wearer's screen
 /obj/effect/temp_visual/sonar_ping/proc/remove_mind(mob/living/looker)
 	looker?.client?.images -= modsuit_image
+<<<<<<< HEAD
+=======
+
+/// Update the position of the ping while it's still up. Not sure if i need to use the full proc but just being safe
+/obj/effect/temp_visual/sonar_ping/process(seconds_per_tick)
+	var/mob/living/looker = mod_man?.resolve()
+	var/mob/living/creature = pinged_person?.resolve()
+	if(isnull(looker) || isnull(creature))
+		return PROCESS_KILL
+	modsuit_image.loc = looker.loc
+	modsuit_image.pixel_x = ((creature.x - looker.x) * 32)
+	modsuit_image.pixel_y = ((creature.y - looker.y) * 32)
+
+/obj/effect/temp_visual/block //color is white by default, set to whatever is needed
+	name = "blocking glow"
+	icon_state = "block"
+	duration = 6.7
+
+/obj/effect/temp_visual/block/Initialize(mapload, set_color)
+	if(set_color)
+		add_atom_colour(set_color, FIXED_COLOUR_PRIORITY)
+	. = ..()
+	pixel_x = rand(-12, 12)
+	pixel_y = rand(-9, 0)
+>>>>>>> a4822c165b0 (Now blocking is more noticeable! New blocking and parrying sounds (#74998))
