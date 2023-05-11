@@ -408,3 +408,29 @@
   - bugfix: The armoury APC on birdshot will now start connected to the power grid.
   vinylspiders:
   - bugfix: sex organs can no longer spill out when a mob is gibbed or disemboweled
+2023-05-11:
+  Jolly:
+  - bugfix: '[Ruins] Pod Crash now uses the ruins-specific space turf. This doesn''t
+      change anything visually, but ships can land here and not have their areas viciously
+      rip off.'
+  - bugfix: '[Ruins] In the crashed ship ruin, other ruins should be able to spawn
+      more organically close to it.'
+  - bugfix: '[Ruins] In the SAME ruin, area defines were added to the asteroids. Don''t
+      get lost now!'
+  - bugfix: '[Ruins] If you explode the deep storage ruin, you won''t see space. You''ll
+      see asteroids!'
+  - bugfix: '[Ruins] The entire thing should blow up into asteroid turf now, instead
+      of previously one pocket of space forming (lol?).'
+  OrionTheFox:
+  - image: removed a whole lot of unused hat icons. Make any reports for broken icons
+      on the github!
+  SkyratBot:
+  - bugfix: high luminosity eyes light overlays now follow the user correctly
+  - qol: high luminosity eyes now have a tgui menu so you no longer have to go through
+      the color picker every time you want to change the range. they also have a new
+      setting that lets you change the color of your eyes independently of the light
+      color. You can now have cybernetic heterochromia if you want
+  - bugfix: directional flashlights when picked up will now always update their cast
+      light direction correctly no matter what dir you are facing
+  - refactor: refactors high luminosity eye code to better make use of the atom lighting
+      system, adding a new light type 'MOVABLE_LIGHT_BEAM'
