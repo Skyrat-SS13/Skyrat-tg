@@ -805,6 +805,11 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
+	//SKYRAT EDIT ADDITION - RESPAWN DELAY
+	if(!check_respawn_delay())
+		return
+	//SKYRAT EDIT END - RESPAWN DELAY
+
 	//SKYRAT EDIT ADDITION
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
