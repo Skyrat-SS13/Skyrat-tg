@@ -106,8 +106,8 @@
 	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/armor/bulletproof/old
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "bulletproof"
 
 /obj/item/clothing/under/syndicate/skyrat/overalls
