@@ -173,8 +173,8 @@
 	name = "hooded leather coat"
 	desc = "A simple leather coat with a hoodie underneath it, not really hooded is it?"
 	icon_state = "leatherhoodie"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	hoodtype = /obj/item/clothing/head/hooded/leather

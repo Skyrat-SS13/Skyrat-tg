@@ -154,6 +154,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Leather Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather
 
+/datum/loadout_item/suit/leather_jacket/overcoat
+	name = "Leather Overcoat"
+	item_path = /obj/item/clothing/suit/jacket/leather/overcoat
+
 /datum/loadout_item/suit/leather_jacket/biker
 	name = "Biker Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather/biker
@@ -397,10 +401,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Colourable Leather Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather/colourable
 
-/datum/loadout_item/suit/woolcoat
-	name = "Leather Overcoat"
-	item_path = /obj/item/clothing/suit/woolcoat
-
 /datum/loadout_item/suit/flakjack
 	name = "Flak Jacket"
 	item_path = /obj/item/clothing/suit/flakjack
@@ -607,7 +607,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/supply_gorka_jacket
 	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka/supply
+	item_path = /obj/item/clothing/suit/gorka
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 // LABCOATS

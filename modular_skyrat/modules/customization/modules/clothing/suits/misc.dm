@@ -184,15 +184,13 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
-/obj/item/clothing/suit/woolcoat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "wool coat"
-	desc = "A fine coat made from the richest of wool."
-	icon_state = "woolcoat"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|GROIN|ARMS
-
+/obj/item/clothing/suit/jacket/leather/overcoat
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
+	name = "leather overcoat"
+	icon_state = "leathercoat"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	cold_protection = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/suit/gautumn
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -279,7 +277,7 @@
 		for(var/datum/species/synthetic/R in orange(2,src))
 			step_towards(R,src)
 
-/obj/item/clothing/suit/trenchbrown
+/obj/item/clothing/suit/trenchbrown //ORION - Move to GAGS
 	name = "brown trenchcoat"
 	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -287,7 +285,7 @@
 	icon_state = "brtrenchcoat"
 	body_parts_covered = CHEST|ARMS
 
-/obj/item/clothing/suit/trenchblack
+/obj/item/clothing/suit/trenchblack //ORION - Move to GAGS
 	name = "black trenchcoat"
 	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
