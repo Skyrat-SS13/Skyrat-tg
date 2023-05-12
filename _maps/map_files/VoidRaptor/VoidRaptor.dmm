@@ -4647,7 +4647,7 @@
 "btf" = (
 /obj/structure/rack,
 /obj/item/stock_parts/matter_bin,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/micro_laser,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/east,
@@ -21312,14 +21312,8 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/item/stock_parts/manipulator{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/item/stock_parts/manipulator{
-	pixel_x = -7;
-	pixel_y = 8
-	},
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/radio/headset/headset_sci{
 	pixel_x = -13;
 	pixel_y = 3
@@ -30438,9 +30432,9 @@
 "iQp" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/structure/table,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/capacitor,
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/white/smooth_edge{
@@ -37319,9 +37313,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery,
-/obj/structure/closet/crate{
-	icon_state = "crateopen"
-	},
+/obj/structure/closet/preopen,
 /obj/effect/spawner/random/maintenance,
 /obj/item/electronics/apc,
 /turf/open/floor/iron/smooth_large,
@@ -38289,7 +38281,7 @@
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/stamp/cmo{
+/obj/item/stamp/head/cmo{
 	pixel_y = 3
 	},
 /obj/structure/table/reinforced/rglass,
@@ -39678,7 +39670,7 @@
 	pixel_x = -3;
 	pixel_y = 4
 	},
-/obj/item/stamp/hos{
+/obj/item/stamp/head/hos{
 	pixel_x = -3;
 	pixel_y = 4
 	},
@@ -42262,7 +42254,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/item/stamp/qm{
+/obj/item/stamp/head/qm{
 	pixel_x = 5;
 	pixel_y = 4
 	},
@@ -43958,7 +43950,7 @@
 /obj/item/folder/white{
 	pixel_y = 4
 	},
-/obj/item/stamp/rd{
+/obj/item/stamp/head/rd{
 	pixel_y = 4
 	},
 /turf/open/floor/carpet/purple,
@@ -49692,7 +49684,7 @@
 	pixel_y = 3;
 	pixel_x = -2
 	},
-/obj/item/stamp/ce{
+/obj/item/stamp/head/ce{
 	pixel_x = -2;
 	pixel_y = 3
 	},
@@ -53586,7 +53578,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/stamp/hop{
+/obj/item/stamp/head/hop{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -60442,6 +60434,10 @@
 "qZf" = (
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/aft/upper)
+"qZl" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/open/floor/iron/freezer,
+/area/station/medical/pharmacy)
 "qZo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
@@ -60999,7 +60995,7 @@
 /obj/item/folder/blue{
 	pixel_x = 4
 	},
-/obj/item/stamp/captain{
+/obj/item/stamp/head/captain{
 	pixel_x = 4
 	},
 /obj/item/stamp/denied{
@@ -65145,9 +65141,7 @@
 /turf/open/floor/iron/solarpanel/airless,
 /area/station/solars/port/fore)
 "sqW" = (
-/obj/structure/closet/crate{
-	icon_state = "crateopen"
-	},
+/obj/structure/closet/preopen,
 /obj/item/stack/sheet/rglass{
 	amount = 50
 	},
@@ -68264,10 +68258,10 @@
 	desc = "A tiny laser used in certain devices. A lil left.";
 	pixel_x = -6
 	},
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/item/stock_parts/capacitor{
 	pixel_x = 6;
 	pixel_y = 6
@@ -68447,9 +68441,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/structure/closet/crate{
-	icon_state = "crateopen"
-	},
+/obj/structure/closet/preopen,
 /obj/item/stack/package_wrap,
 /obj/item/stack/package_wrap{
 	pixel_y = 2
@@ -74644,7 +74636,7 @@
 /area/station/commons/dorms)
 "uSq" = (
 /obj/machinery/smartfridge,
-/turf/closed/wall,
+/turf/open/floor/iron/large,
 /area/station/service/hydroponics)
 "uSr" = (
 /obj/structure/closet/l3closet/janitor,
@@ -77935,7 +77927,7 @@
 /area/station/maintenance/aft)
 "vPC" = (
 /obj/machinery/smartfridge/organ,
-/turf/closed/wall,
+/turf/open/floor/iron/white/smooth_edge,
 /area/station/medical/surgery)
 "vPJ" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -80135,8 +80127,8 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
@@ -82903,7 +82895,7 @@
 /area/station/security/checkpoint/engineering)
 "xnP" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
-/turf/closed/wall,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "xnR" = (
 /obj/structure/cable,
@@ -117842,7 +117834,7 @@ ugm
 fDn
 aAN
 hns
-xnP
+qZl
 ebp
 fDn
 fDn
