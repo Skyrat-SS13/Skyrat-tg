@@ -56,6 +56,8 @@
 
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
+	skillchips = list(/obj/item/skillchip/xenoarch_magnifier) // SKYRAT EDIT: for the xenoarch thing
+
 /datum/outfit/job/curator/post_equip(mob/living/carbon/human/translator, visualsOnly = FALSE)
 	..()
 

@@ -5,7 +5,7 @@
 
 /obj/item/glassblowing/magnifying_glass/examine(mob/user)
 	. = ..()
-	if(is_curator_job(user.mind?.assigned_role) || HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
+	if(HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
 		. += span_notice("You can use [src] on useless relics to realize their full potential!")
 
 /datum/crafting_recipe/magnifying_glass

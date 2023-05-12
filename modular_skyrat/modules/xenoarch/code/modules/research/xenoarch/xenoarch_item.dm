@@ -15,7 +15,7 @@
 		if(istype(src, /obj/item/xenoarch/useless_relic/magnified))
 			balloon_alert(user, "already magnified!")
 			return
-		if(!is_curator_job(user.mind?.assigned_role) && !HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
+		if(!HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
 			balloon_alert(user, "needs training!") // it was very tempting to replace this with "skill issue"
 			return
 		balloon_alert(user, "starting analysis!")
