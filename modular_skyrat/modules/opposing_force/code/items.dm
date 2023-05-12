@@ -14,16 +14,19 @@
 	amount_per_transfer_from_this = 30
 	desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
 
-
 /obj/item/storage/box/syndie_kit/gunman_outfit
 	name = "gunman clothing bundle"
 	desc = "A box filled with armored and stylish clothing for the aspiring gunmans."
 
-/obj/item/clothing/suit/armor/vest/leather/gunman
+/obj/item/clothing/suit/jacket/leather/overcoat/gunman
 	name = "leather overcoat"
 	desc = "An armored leather overcoat, intended as the go-to wear for any aspiring gunman."
 	body_parts_covered = CHEST|GROIN|ARMS
 	armor_type = /datum/armor/leather_gunman
+
+/obj/item/clothing/suit/jacket/leather/overcoat/gunman/Initialize(mapload)
+	. = ..()
+	allowed += GLOB.security_vest_allowed
 
 /datum/armor/leather_gunman
 	melee = 45
@@ -38,7 +41,7 @@
 /obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
 	new /obj/item/clothing/under/pants/black/robohand(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
-	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
+	new /obj/item/clothing/suit/jacket/leather/overcoat/gunman(src)
 	new /obj/item/clothing/shoes/combat(src)
 
 /obj/item/autosurgeon/syndicate/hackerman
