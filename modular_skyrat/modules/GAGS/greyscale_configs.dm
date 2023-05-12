@@ -576,6 +576,17 @@
 	name = "Winter Coat Hood (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 
+// TRENCHCOAT
+
+/datum/greyscale_config/trenchcoat
+	name = "Recolorable Trenchcoat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/trenchcoat.json'
+
+/datum/greyscale_config/trenchcoat/worn
+	name = "Recolorable Trenchcoat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
+
 // LEATHER JACKET
 
 /datum/greyscale_config/leather_jacket

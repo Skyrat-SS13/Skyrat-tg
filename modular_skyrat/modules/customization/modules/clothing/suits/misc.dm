@@ -26,14 +26,6 @@
 	icon_state = "trackjacket"
 	toggle_noun = "zipper"
 
-/obj/item/clothing/suit/frenchtrench
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "blue trenchcoat"
-	icon_state = "frenchtrench"
-	desc = "There's a certain timeless feeling to this coat, like it was once worn by a romantic, broken through his travels, from a schemer who hunted injustice to a traveller, however it arrived in your hands? Who knows?"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/victoriantailcoatbutler
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -277,21 +269,36 @@
 		for(var/datum/species/synthetic/R in orange(2,src))
 			step_towards(R,src)
 
-/obj/item/clothing/suit/trenchbrown //ORION - Move to GAGS
-	name = "brown trenchcoat"
-	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "brtrenchcoat"
-	body_parts_covered = CHEST|ARMS
+/obj/item/clothing/suit/jacket/colorable_trench
+	name = "trenchcoat"
+	desc = "A 18th-century multi-purpose trenchcoat. Someone who wears this means serious business."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
+	icon_state = "trenchcoat"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	heat_protection = CHEST|GROIN|ARMS
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/trenchcoat
+	greyscale_config_worn = /datum/greyscale_config/trenchcoat/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/trenchblack //ORION - Move to GAGS
-	name = "black trenchcoat"
-	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "bltrenchcoat"
-	body_parts_covered = CHEST|ARMS
+/obj/item/clothing/suit/jacket/colorable_trench/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/flashlight,
+		/obj/item/lighter,
+		/obj/item/modular_computer/pda,
+		/obj/item/radio,
+		/obj/item/storage/bag/books,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/toy,
+		/obj/item/analyzer,
+		/obj/item/t_scanner,
+	)
 
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"

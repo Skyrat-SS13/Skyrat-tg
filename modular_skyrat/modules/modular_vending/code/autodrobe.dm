@@ -37,8 +37,7 @@
 			"icon" = "star",
 			"products" = list(
 				/obj/item/clothing/glasses/biker = 5,
-				/obj/item/clothing/suit/trenchblack = 5,
-				/obj/item/clothing/suit/trenchbrown = 5,
+				/obj/item/clothing/suit/jacket/colorable_trench = 5,
 				/obj/item/clothing/head/costume/skyrat/christmas = 5,
 				/obj/item/clothing/head/costume/skyrat/christmas/green =  5,
 				/obj/item/clothing/under/costume/skyrat/christmas = 5,

@@ -186,6 +186,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Tailored Short Jacket"
 	item_path = /obj/item/clothing/suit/tailored_jacket/short
 
+/datum/loadout_item/suit/bltrench
+	name = "Recolorable Trenchcoat"
+	item_path = /obj/item/clothing/suit/jacket/colorable_trench
+
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
@@ -357,10 +361,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	MISC
 */
 
-/datum/loadout_item/suit/frenchtrench
-	name = "Blue Trenchcoat"
-	item_path = /obj/item/clothing/suit/frenchtrench
-
 /datum/loadout_item/suit/cossak
 	name = "Ukrainian Coat"
 	item_path = /obj/item/clothing/suit/cossack
@@ -409,14 +409,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Runner Coat"
 	item_path = /obj/item/clothing/suit/toggle/deckard
 	restricted_roles = list(JOB_DETECTIVE)
-
-/datum/loadout_item/suit/bltrench
-	name = "Black Trenchcoat"
-	item_path = /obj/item/clothing/suit/trenchblack
-
-/datum/loadout_item/suit/brtrench
-	name = "Brown Trenchcoat"
-	item_path = /obj/item/clothing/suit/trenchbrown
 
 /datum/loadout_item/suit/discojacket
 	name = "Disco Ass Blazer"
