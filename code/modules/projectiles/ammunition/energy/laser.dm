@@ -22,7 +22,8 @@
 	select_name = "kill"
 
 /obj/item/ammo_casing/energy/laser/hos
-	e_cost = 120
+	projectile_type = /obj/projectile/beam/laser/hos
+	e_cost = 60
 
 /obj/item/ammo_casing/energy/laser/practice
 	projectile_type = /obj/projectile/beam/practice

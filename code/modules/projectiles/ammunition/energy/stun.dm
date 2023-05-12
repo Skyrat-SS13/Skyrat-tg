@@ -23,7 +23,7 @@
 	harmful = FALSE
 
 /obj/item/ammo_casing/energy/disabler/hos
-	e_cost = 60
+	e_cost = 50
 
 // SKYRAT ADDITION START
 /obj/item/ammo_casing/energy/disabler/skyrat

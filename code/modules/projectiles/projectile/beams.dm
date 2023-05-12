@@ -28,6 +28,10 @@
 	damage = 25
 	bare_wound_bonus = 40
 
+/obj/projectile/beam/laser/hos
+	damage = 25
+	wound_bonus = 0
+
 //overclocked laser, does a bit more damage but has much higher wound power (-0 vs -20)
 /obj/projectile/beam/laser/hellfire
 	name = "hellfire laser"
