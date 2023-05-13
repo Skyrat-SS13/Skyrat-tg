@@ -56,7 +56,6 @@
 
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
-
 /datum/outfit/job/curator/post_equip(mob/living/carbon/human/translator, visualsOnly = FALSE)
 	..()
 
