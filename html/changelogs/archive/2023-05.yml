@@ -468,3 +468,40 @@
   - bugfix: the mortidrobe restock is now orderable from cargo, in the medical wardrobe
       supply crate.
   - spellcheck: fixes typo in autopsy kit crate name
+2023-05-13:
+  "@\_Xander3359 Sprites: Nebby#1467":
+  - image: Replaces the old patches with some new sprites
+  Melbert:
+  - bugfix: Applying fines via sechud apply correctly
+  - bugfix: Runtime from neutralizing "hollow" anomalies
+  - bugfix: Runtimes when deleting humans relating to gravity
+  Paxilmaniac:
+  - bugfix: Company order metals now use the right sheet_type, which means not a whole
+      lot, but its fixed now
+  ShizCalev:
+  - bugfix: Armed cleanbots no longer break when they encounter a mindless human.
+  - bugfix: Headphones now properly update to display musical notes when a song starts
+      & stops playing while worn!
+  - bugfix: The materials sniffer now actually works!
+  - bugfix: Ghosts & camera mobs (ie blobs & AI's) will no longer set off landmines.
+  - bugfix: Jaunting mobs will now only set off landmines if they stepped on them
+      BEFORE jaunting.
+  - bugfix: Flying mobs will no longer detonate landmines that were not first stepped
+      on.
+  SkyratBot:
+  - bugfix: fixed griddle code so that the smoke over the grilling items appears only
+      when the griddle is on
+  - bugfix: For the purposes of the crew manifest, Coroner is now considered a medical
+      job rather than both service and medical.
+  - bugfix: Psychologists have Morgue access on lowpop, on top of their existing Coroner
+      office access.
+  - balance: Drones can now access computers and air alarms by default, and the CE
+      has the option to turn it off through the BotKeeper app (it used to be backwards).
+  - qol: Players now are able to use other languages for announcements via requests
+      console.
+  - bugfix: closets & crates can be wrapped with wrapping paper again
+  - refactor: closet & crate paint jobs static list vars, access_choices static list
+      var are initialized only once during init
+  oranges:
+  - balance: increased laser damage, decreased energy cost and increased wound chance
+  - balance: MECH RCD is no longer magic
