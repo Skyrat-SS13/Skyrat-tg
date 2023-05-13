@@ -57,8 +57,9 @@
  * Arguments:
  * * item_slot: The slot we're updating. One of LOADOUT_ITEM_HEAD, etc.
  * * item: The item being rendered.
+ * * human_owner: The human wearing the item.
  */
-/datum/species/proc/generate_custom_worn_icon(item_slot, obj/item/item)
+/datum/species/proc/generate_custom_worn_icon(item_slot, obj/item/item, mob/living/carbon/human/human_owner)
 	// If already set (possibly by us, or manually, use it.)
 	var/icon/final_icon = get_custom_worn_icon(item_slot, item)
 	if(final_icon && icon_exists(final_icon, item.worn_icon_state || item.icon_state))
@@ -82,7 +83,7 @@
 /**
  * Generate a fallback worn icon, if the species supports it. You must call it in an override of generate_custom_worn_icon()
  */
-/datum/species/proc/generate_custom_worn_icon_fallback(item_slot, obj/item/item)
+/datum/species/proc/generate_custom_worn_icon_fallback(item_slot, obj/item/item, mob/living/carbon/human/human_owner)
 	var/icon/human_icon = item.worn_icon || item.icon
 	var/human_icon_state = item.worn_icon_state || item.icon_state
 
