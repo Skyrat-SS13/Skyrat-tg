@@ -1,7 +1,7 @@
 //normal ball mittens
 /obj/item/clothing/gloves/ball_mittens
 	name = "ball mittens"
-	desc = "A nice, comfortable pair of inflatable ball gloves."
+	desc = "A nice, comfortable pair of inflatable ball gloves, preventing the use of your hands."
 	icon_state = "ballmittens"
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'

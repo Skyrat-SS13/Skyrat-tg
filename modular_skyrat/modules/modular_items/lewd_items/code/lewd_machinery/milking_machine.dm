@@ -249,7 +249,7 @@
 	desc = "A thick metal cuff for restraining hands."
 	lefthand_file = null
 	righthand_file = null
-	breakouttime = 45 SECONDS
+	breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
 	flags_1 = NONE
 	item_flags = DROPDEL | ABSTRACT
 	///The chair that the handcuffs are parented to.

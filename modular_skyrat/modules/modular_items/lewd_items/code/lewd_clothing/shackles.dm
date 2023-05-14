@@ -14,7 +14,8 @@
 	flags_inv = null
 	equip_delay_self = NONE
 	strip_delay = 120
-	breakouttime = 10
+	breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
+
 	slowdown = 1
 	/// The current variant of the shackles' color.
 	var/current_color = "metal" //yes, metal color. Don't ask.

@@ -22,7 +22,7 @@
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
 	strip_delay = 300
-	breakouttime = 1200 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
+	breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
@@ -151,11 +151,11 @@
 	switch(state_thing)
 		if("deflated")
 			bag_state = "deflated"
-			breakouttime = 1 MINUTES
+			breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
 			slowdown = 4 //moving like a caterpillar now
 		if("inflated")
 			bag_state = "inflated"
-			breakouttime = 2 MINUTES //do not touch
+			breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
 			slowdown = 14 //it should be almost impossible to move in that thing, so this big slowdown have reasons.
 	// appearance_update()
 

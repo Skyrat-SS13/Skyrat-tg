@@ -155,8 +155,6 @@
 		var/obj/item/restraints/handcuffs/milker/shibari/cuffs = new (current_mob)
 		current_mob.set_handcuffed(cuffs)
 		cuffs.parent_chair = WEAKREF(src)
-		if(HAS_TRAIT(current_mob, TRAIT_ROPEBUNNY))
-			current_mob.handcuffed.breakouttime = 4 MINUTES
 		current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.
@@ -182,7 +180,7 @@
 /obj/item/restraints/handcuffs/milker/shibari
 	name = "ropes"
 	desc = "A shibari rope for restraining hands."
-	breakouttime = 2 MINUTES
+	breakouttime = 5 SECONDS //Users should always have the option to stop an uncomfortable situation. No ERP item should have a breakout time longer than 5 seconds.
 
 //Disassembling shibari stand
 /obj/structure/chair/shibari_stand/CtrlShiftClick(mob/user)
