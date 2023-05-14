@@ -477,9 +477,6 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
-	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
-	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
-
 	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
 
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
@@ -702,10 +699,6 @@
 
 	switch(mode)
 		if(SHUTTLE_CALL)
-			// SKYRAT EDIT ADD START
-			if(!can_be_called_in_transit)
-				return
-			// SKYRAT EDIT ADD END
 			if(destination_port == destination)
 				if(timeLeft(1) < callTime * engine_coeff)
 					setTimer(callTime * engine_coeff)
@@ -713,10 +706,6 @@
 				destination = destination_port
 				setTimer(callTime * engine_coeff)
 		if(SHUTTLE_RECALL)
-			// SKYRAT EDIT ADD START
-			if(!can_be_called_in_transit)
-				return
-			// SKYRAT EDIT ADD END
 			if(destination_port == destination)
 				setTimer(callTime * engine_coeff - timeLeft(1))
 			else

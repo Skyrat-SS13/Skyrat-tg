@@ -138,12 +138,6 @@
 
 /obj/machinery/power/apc/Initialize(mapload, ndir)
 	. = ..()
-	//Initialize name & access of the apc
-	if(!req_access)
-		req_access = list(ACCESS_ENGINE_EQUIP)
-	if(auto_name)
-		name = "\improper [get_area_name(area, TRUE)] APC"
-
 	//Pixel offset its appearance based on its direction
 	dir = ndir
 	switch(dir)
@@ -173,6 +167,12 @@
 		if(area.apc)
 			log_mapping("Duplicate APC created at [AREACOORD(src)] [area.type]. Original at [AREACOORD(area.apc)] [area.type].")
 		area.apc = src
+
+	//Initialize name & access of the apc. Name requires area to be assigned first
+	if(!req_access)
+		req_access = list(ACCESS_ENGINE_EQUIP)
+	if(auto_name)
+		name = "\improper [get_area_name(area, TRUE)] APC"
 
 	//Initialize its electronics
 	wires = new /datum/wires/apc(src)
@@ -207,7 +207,7 @@
 	GLOB.apcs_list -= src
 
 	if(malfai && operating)
-		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10,0,1000)
+		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10, 0, 1000)
 	disconnect_from_area()
 	QDEL_NULL(alarm_manager)
 	if(occupier)
@@ -218,6 +218,7 @@
 		QDEL_NULL(cell)
 	if(terminal)
 		disconnect_terminal()
+
 	return ..()
 
 /obj/machinery/power/apc/proc/assign_to_area(area/target_area = get_area(src))

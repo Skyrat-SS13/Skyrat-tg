@@ -209,7 +209,6 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#39393f#f0cc8f"
-	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; (RESKINNING NEEDS A CODE REWRITE SO IT STOPS SPREADING TO SUBTYPES OR CAN AT LEAST BE SET TO FALSE)
 
 /obj/item/clothing/head/hats/hos/beret/navyhos
 	name = "head of security's formal beret"
@@ -411,6 +410,11 @@
 	name = "turquoise surgery cap"
 	icon_state = "surgicalcapcmo"
 	desc = "The CMO's medical surgery cap to prevent their hair from entering the insides of the patient!"
+
+/obj/item/clothing/head/utility/surgerycap/black
+	name = "black surgery cap"
+	icon_state = "surgicalcapblack"
+	desc = "A black medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
 
 //Engineering
 /obj/item/clothing/head/beret/engi

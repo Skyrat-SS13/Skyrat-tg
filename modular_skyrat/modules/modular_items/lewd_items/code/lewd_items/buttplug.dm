@@ -115,6 +115,5 @@
 	else if(current_size == "big" && target.arousal < 50)
 		target.adjust_arousal(seconds_per_tick)
 		target.adjust_pleasure(seconds_per_tick)
-		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
-			return
-		target.adjust_pain(target * seconds_per_tick)
+		if(target.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
+			target.adjust_pain(1 * seconds_per_tick)

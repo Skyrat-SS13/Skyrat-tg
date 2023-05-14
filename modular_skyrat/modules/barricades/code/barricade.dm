@@ -550,7 +550,7 @@
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
 
-			user.visible_message (span_notice ("[user] removes the panel from[src]."),
+			user.visible_message (span_notice ("[user] removes the panel from [src]."),
 			span_notice ("You remove the panel from [src], revealing some <b>bolts</b> beneath it."))
 			build_state = BARRICADE_METAL_ANCHORED
 			return TRUE
