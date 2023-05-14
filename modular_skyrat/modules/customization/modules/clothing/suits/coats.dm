@@ -96,25 +96,11 @@
 	greyscale_colors = "#61618a"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/toggle/lawyer/black/better
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "suitjacket_black"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/costume/poncho
 	supports_variations_flags = STYLE_TAUR_ALL
 
 /obj/item/clothing/suit/apron
 	supports_variations_flags = STYLE_TAUR_ALL
-
-/obj/item/clothing/suit/toggle/lawyer/white
-	name = "white suit jacket"
-	desc = "A very versatile part of a suit ensable. Oddly in fashion with mobsters."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "suitjacket_white"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/det_suit/runner
 	name = "joyful coat"

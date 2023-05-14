@@ -72,18 +72,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Purple Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
-/datum/loadout_item/suit/white_suit_jacket
-	name = "White Suit Jacket"
-	item_path = /obj/item/clothing/suit/toggle/lawyer/white
-
-/datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
-	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
-
-/datum/loadout_item/suit/suitwhite
-	name = "Texan Suit Jacket"
-	item_path = /obj/item/clothing/suit/texas
-
 /*
 *	SUSPENDERS
 */

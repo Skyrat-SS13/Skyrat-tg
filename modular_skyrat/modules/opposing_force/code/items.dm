@@ -64,9 +64,11 @@
 /obj/item/guardiancreator/tech/choose/traitor/opfor
 	allowling = TRUE
 
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister
+/obj/item/clothing/suit/jacket/colorable_suitjacket/heister
 	name = "armored suit jacket"
 	desc = "A professional suit jacket, it feels much heavier than a regular jacket. A label on the inside reads \"Nanite-based Self-repairing Kevlar weave\"."
+	flags_1 = NONE
+	greyscale_colors = "#37373E"
 	armor_type = /datum/armor/better_heister
 	/// How many hits we can take before the armor breaks, PAYDAY style
 	var/armor_stacks = 2
@@ -81,18 +83,18 @@
 	acid = 50
 	wound = 10
 
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/Initialize(mapload)
+/obj/item/clothing/suit/jacket/colorable_suitjacket/heister/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/shielded/suit, max_charges = armor_stacks, recharge_start_delay = 8 SECONDS, charge_increment_delay = 1 SECONDS, \
 	charge_recovery = armor_stacks, lose_multiple_charges = FALSE, starting_charges = armor_stacks, shield_icon_file = null, shield_icon = null)
 
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/equipped(mob/living/user, slot)
+/obj/item/clothing/suit/jacket/colorable_suitjacket/heister/equipped(mob/living/user, slot)
 	. = ..()
 	if(!(slot & ITEM_SLOT_OCLOTHING))
 		return
 	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(armor_reaction))
 
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/proc/armor_reaction(mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0)
+/obj/item/clothing/suit/jacket/colorable_suitjacket/heister/proc/armor_reaction(mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, owner, hitby, attack_text, 0, damage, attack_type) & COMPONENT_HIT_REACTION_BLOCK)
 		return SHIELD_BLOCK
 	return NONE
@@ -127,6 +129,6 @@
 	new /obj/item/clothing/gloves/latex/nitrile/heister(src)
 	new /obj/item/clothing/under/suit/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black/better/heister(src)
+	new /obj/item/clothing/suit/jacket/colorable_suitjacket/heister(src)
 	new /obj/item/restraints/handcuffs/cable/zipties(src)
 	new /obj/item/restraints/handcuffs/cable/zipties(src)

@@ -218,15 +218,6 @@
 	melee = 10
 	bullet = 10
 
-/obj/item/clothing/suit/texas
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "white suit coat"
-	desc = "A white suit coat, perfect for fat oil barons."
-	icon_state = "texas"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|ARMS
-
 /obj/item/clothing/suit/cossack
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
