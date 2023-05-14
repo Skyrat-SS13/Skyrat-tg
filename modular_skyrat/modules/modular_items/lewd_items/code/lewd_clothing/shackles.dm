@@ -84,5 +84,3 @@
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
 		to_chat(user, span_purple("The shackles are no longer restraining your body."))
- //better than handcuffs, but not better than straightjacket. Please, do not change this var.
-	slowdown = 2
