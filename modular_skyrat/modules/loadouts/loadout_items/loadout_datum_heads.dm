@@ -122,8 +122,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/flatcap
 
 /datum/loadout_item/head/pflatcap
-	name = "Poly Flat cap"
+	name = "Poly Flat Cap"
 	item_path = /obj/item/clothing/head/colourable_flatcap
+
+/datum/loadout_item/head/mothcap
+	name = "Mothic Softcap"
+	item_path = /obj/item/clothing/head/mothcap
 
 /*
 *	FEDORAS
