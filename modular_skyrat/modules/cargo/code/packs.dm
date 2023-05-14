@@ -354,15 +354,7 @@
 		/obj/item/modular_computer/pda/expeditionary_corps,
 		/obj/item/knife/combat/marksman,
 	)
-	/// How many of the contains to put in the crate
-	var/num_contained = 3
-
-/datum/supply_pack/misc/vanguard_surplus/fill(obj/structure/closet/crate/filled_crate)
-	var/list/contain_copy = contains.Copy()
-	for(var/i in 1 to num_contained)
-		var/item = pick_n_take(contain_copy)
-		new item(filled_crate)
-
+	crate_name = "Expedition Corps Supply"
 /*
 *	FOOD
 */
