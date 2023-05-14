@@ -74,7 +74,7 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are restraining your body, though the lock appears to be made of... Plastic?"))
+		to_chat(user, span_purple("The shackles are restraining your body."))
 	else
 		return
 
@@ -83,43 +83,6 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are no longer restraining your body. It wasn't too hard, huh?"))
-
-//reinforcing normal version by using handcuffs on it.
-/obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/used_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
-	if(istype(used_item, /obj/item/restraints/handcuffs))
-		var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new()
-		remove_item_from_storage(user)
-		user.put_in_hands(shackles)
-		to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
-		qdel(used_item)
-		qdel(src)
-		return TRUE
-
-	return ..()
-
-//reinforced version.
-/obj/item/clothing/suit/straight_jacket/shackles/reinforced
-	name = "reinforced shackles"
-	desc = "Fancy shackles, but with a suspiciously sturdy lock..."
-	clothing_flags = DANGEROUS_OBJECT
-	equip_delay_self = 100
-	strip_delay = 120
-	breakouttime = 1800 //better than handcuffs, but not better than straightjacket. Please, do not change this var.
+		to_chat(user, span_purple("The shackles are no longer restraining your body."))
+ //better than handcuffs, but not better than straightjacket. Please, do not change this var.
 	slowdown = 2
-
-//message when equipping that thing
-/obj/item/clothing/suit/straight_jacket/shackles/reinforced/equipped(mob/user, slot)
-	. = ..()
-	var/mob/living/carbon/human/affected_mob = user
-	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are restraining your body!"))
-	else
-		return
-
-//message when unequipping that thing
-/obj/item/clothing/suit/straight_jacket/shackles/reinforced/dropped(mob/user)
-	. = ..()
-	var/mob/living/carbon/human/affected_mob = user
-	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))
