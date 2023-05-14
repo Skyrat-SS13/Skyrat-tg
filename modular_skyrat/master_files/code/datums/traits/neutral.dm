@@ -205,3 +205,23 @@
 	value = 0
 	mob_trait = TRAIT_SENSITIVESNOUT
 	icon = FA_ICON_FINGERPRINT
+
+/datum/quirk/overweight
+	name = "Overweight"
+	desc = "You weigh more than an average person at your size, you've gotten used to it by now."
+	gain_text = span_notice("Your body feels heavy.")
+	lose_text = span_notice("Your suddenly feel lighter!")
+	value = 0
+	icon = FA_ICON_HAMBURGER // I'm very hungry. Give me the burger!
+	medical_record_text = "Patient weighs higher than average."
+	mob_trait = TRAIT_OVERWEIGHT_QUIRK
+
+/datum/quirk/overweight/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	human_holder.set_nutrition(NUTRITION_LEVEL_FAT + 150) //Enough to make the mob fat plus a little more.
+
+/datum/mood_event/fat/New(mob/parent_mob, ...)
+	. = ..()
+	if(HAS_TRAIT(parent_mob, TRAIT_OVERWEIGHT_QUIRK))
+		mood_change = 0 // They are probably used to it, no reason to be viscerally upset about it.
+		description = "<b>I'm fat.</b>"
