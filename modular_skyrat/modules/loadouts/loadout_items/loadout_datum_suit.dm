@@ -56,6 +56,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	SUITS / SUIT JACKETS
 */
 
+/datum/loadout_item/suit/recolorable_suitjacket
+	name = "Recolorable Suit Jacket"
+	item_path = /obj/item/clothing/suit/jacket/colorable_suitjacket
+
 /datum/loadout_item/suit/black_suit_jacket
 	name = "Black Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black

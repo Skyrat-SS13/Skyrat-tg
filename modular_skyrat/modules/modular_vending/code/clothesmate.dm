@@ -107,6 +107,7 @@
 				/obj/item/clothing/suit/toggle/peacoat = 5,
 				/obj/item/clothing/suit/toggle/trackjacket = 5,
 				/obj/item/clothing/suit/toggle/lawyer/white = 5,
+				/obj/item/clothing/suit/jacket/colorable_suitjacket = 5,
 				/obj/item/clothing/suit/urban = 5,
 				/obj/item/clothing/suit/duster = 5,
 				/obj/item/clothing/suit/fallsparka = 5,

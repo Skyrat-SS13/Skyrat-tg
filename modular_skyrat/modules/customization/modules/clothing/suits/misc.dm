@@ -276,9 +276,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
 	icon_state = "trenchcoat"
 	blood_overlay_type = "coat"
-	body_parts_covered = CHEST|GROIN|ARMS
-	cold_protection = CHEST|GROIN|ARMS
-	heat_protection = CHEST|GROIN|ARMS
 	greyscale_colors = "#ffffff"
 	greyscale_config = /datum/greyscale_config/trenchcoat
 	greyscale_config_worn = /datum/greyscale_config/trenchcoat/worn
@@ -299,6 +296,18 @@
 		/obj/item/analyzer,
 		/obj/item/t_scanner,
 	)
+
+/obj/item/clothing/suit/jacket/colorable_suitjacket
+	name = "suit jacket"
+	desc = "A simple, colored formal vest. Best paired with formal pants, and a collared shirt underneath. Maybe even a tie?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
+	icon_state = "suitjacket"
+	blood_overlay_type = "coat"
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/suitjacket
+	greyscale_config_worn = /datum/greyscale_config/suitjacket/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"

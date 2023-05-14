@@ -587,6 +587,17 @@
 	name = "Recolorable Trenchcoat (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
 
+// SUIT JACKET
+
+/datum/greyscale_config/suitjacket
+	name = "Recolorable Suit Jacket"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/suitjacket.json'
+
+/datum/greyscale_config/suitjacket/worn
+	name = "Recolorable Suit Jacket (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
+
 // LEATHER JACKET
 
 /datum/greyscale_config/leather_jacket
