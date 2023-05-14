@@ -68,27 +68,6 @@
 	greyscale_colors = "#252e5a#938060#66562b"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/toggle/deckard
-	name = "runner coat"
-	desc = "They say you overused reference. Tell them you're eating in this lovely coat, a long flowing brown one."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "deckard"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	inhand_icon_state = "det_suit"
-	blood_overlay_type = "coat"
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor_type = /datum/armor/toggle_deckard
-	cold_protection = CHEST|GROIN|LEGS|ARMS
-	heat_protection = CHEST|GROIN|LEGS|ARMS
-
-/datum/armor/toggle_deckard
-	melee = 25
-	bullet = 10
-	laser = 25
-	energy = 35
-	acid = 45
-
 /obj/item/clothing/suit/jacket/leather/colourable
 	desc = "Now with more color!"
 	icon_state = "leather_jacket"

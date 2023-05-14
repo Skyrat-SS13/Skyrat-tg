@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Tailored Short Jacket"
 	item_path = /obj/item/clothing/suit/tailored_jacket/short
 
-/datum/loadout_item/suit/bltrench
+/datum/loadout_item/suit/recolorable_trench
 	name = "Recolorable Trenchcoat"
 	item_path = /obj/item/clothing/suit/jacket/colorable_trench
 
@@ -404,11 +404,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/flakjack
 	name = "Flak Jacket"
 	item_path = /obj/item/clothing/suit/flakjack
-
-/datum/loadout_item/suit/deckard
-	name = "Runner Coat"
-	item_path = /obj/item/clothing/suit/toggle/deckard
-	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/suit/discojacket
 	name = "Disco Ass Blazer"
