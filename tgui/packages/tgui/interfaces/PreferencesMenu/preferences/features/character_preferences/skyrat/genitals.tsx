@@ -1,15 +1,4 @@
-import {
-  FeatureDropdownInput,
-  Feature,
-  FeatureNumberInput,
-  CheckboxInput,
-  FeatureTriColorInput,
-  FeatureTriBoolInput,
-  FeatureNumeric,
-  FeatureToggle,
-  FeatureChoiced,
-  FeatureValueProps, FeatureChoicedServerData,
-} from '../../base';
+import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureNumeric, FeatureToggle, FeatureChoiced, FeatureValueProps, FeatureChoicedServerData } from '../../base';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis Choice',

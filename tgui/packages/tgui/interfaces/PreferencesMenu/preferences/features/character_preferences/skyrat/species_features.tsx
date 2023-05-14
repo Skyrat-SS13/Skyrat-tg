@@ -1,17 +1,4 @@
-import {
-  FeatureChoiced,
-  FeatureDropdownInput,
-  Feature,
-  FeatureColorInput,
-  FeatureTextInput,
-  FeatureShortTextInput,
-  CheckboxInput,
-  FeatureTriColorInput,
-  FeatureTriBoolInput,
-  FeatureToggle,
-  FeatureNumberInput,
-  FeatureValueProps, FeatureChoicedServerData,
-} from '../../base';
+import { FeatureChoiced, FeatureDropdownInput, Feature, FeatureColorInput, FeatureTextInput, FeatureShortTextInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureToggle, FeatureNumberInput, FeatureValueProps, FeatureChoicedServerData } from '../../base';
 
 export const feature_leg_type: FeatureChoiced = {
   name: 'Leg type',
