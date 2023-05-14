@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Section, Stack, Divider, Flex } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike, classes } from '../../common/react';
@@ -28,11 +28,6 @@ type DesignInfo = {
   icon: string;
   icon2: string;
 };
-
-const brassColor = '#DFC69C';
-const tinkerCache = '#B5FD9D';
-const replicaFab = '#DED09F';
-const clockMarauder = '#FF9D9D';
 
 const MainData = () => {
   return (
@@ -65,7 +60,7 @@ const SelectedSection = (props, context) => {
           {data.focused_research.name}
         </Box>
         <Box>{data.focused_research.desc}</Box>
-        <div style="padding-top: 5px">
+        <div style={{ 'padding-top': '5px' }}>
           <Box>
             <i>{data.focused_research.lore}</i>
           </Box>
@@ -104,33 +99,31 @@ const SelectedSection = (props, context) => {
 const ResearchSection = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   return (
-    <>
-      <Stack vertical>
-        <Stack.Item fill>
-          <Section fill title="Basic Research">
-            <div style={{ 'text-align': 'center' }}>
-              {ResearchNode(data.starting_research, act, context)}
-            </div>
+    <Stack vertical>
+      <Stack.Item fill>
+        <Section fill title="Basic Research">
+          <div style={{ 'text-align': 'center' }}>
+            {ResearchNode(data.starting_research, act, context)}
+          </div>
+        </Section>
+      </Stack.Item>
+      {data.research_tiers.map((inside_array: Array<Research>) => (
+        <Stack vertical fill key={inside_array[1].name}>
+          <Section
+            title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
+            {inside_array.map((single_research: Research) => (
+              <Stack.Item key={single_research.name}>
+                <Section fill>
+                  <div style={{ 'text-align': 'center' }}>
+                    {ResearchNode(single_research, act, context)}
+                  </div>
+                </Section>
+              </Stack.Item>
+            ))}
           </Section>
-        </Stack.Item>
-        {data.research_tiers.map((inside_array: Array<Research>) => (
-          <Stack vertical fill>
-            <Section
-              title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
-              {inside_array.map((single_research: Research) => (
-                <Stack.Item key={single_research.name}>
-                  <Section fill>
-                    <div style={{ 'text-align': 'center' }}>
-                      {ResearchNode(single_research, act, context)}
-                    </div>
-                  </Section>
-                </Stack.Item>
-              ))}
-            </Section>
-          </Stack>
-        ))}
-      </Stack>
-    </>
+        </Stack>
+      ))}
+    </Stack>
   );
 };
 
@@ -147,7 +140,7 @@ const ResearchNode = (research: Research, act: any, context: any) => {
         />
       </Stack.Item>
       <Stack.Item>
-        <div style="padding-top: 6px">{research.desc}</div>
+        <div style={{ 'padding-top': '6px' }}>{research.desc}</div>
       </Stack.Item>
       <br />
       <Stack.Item>

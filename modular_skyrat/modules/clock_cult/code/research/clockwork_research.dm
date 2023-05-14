@@ -71,7 +71,7 @@
 	return TRUE
 
 
-/// Makes sure the researching place is the correct area
+/// Makes sure the area that the atom is attempting to research, is the correct area as specified by the datum. Returns FALSE otherwise
 /datum/clockwork_research/proc/check_is_place_good(atom/researcher)
 	if(!istype(get_area(researcher), selected_area))
 		return FALSE

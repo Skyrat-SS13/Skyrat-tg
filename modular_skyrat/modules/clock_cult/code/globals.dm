@@ -8,6 +8,8 @@ GLOBAL_LIST_EMPTY(clockwork_research)
 GLOBAL_LIST_EMPTY(clockwork_research_unlocked_recipes)
 GLOBAL_LIST_EMPTY(clockwork_research_unlocked_scriptures)
 
+
+/// Returns a list of every initialized clockwork research datum
 /proc/setup_clockwork_research()
 	. = list()
 	for(var/path in subtypesof(/datum/clockwork_research))

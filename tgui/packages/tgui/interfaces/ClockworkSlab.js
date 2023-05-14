@@ -112,7 +112,7 @@ const ClockworkHelp = (props, context) => {
           <br />
           The&nbsp;
           <font color={brassColor}>
-            <b>Technologist's Lectern&nbsp;</b>
+            <b>Technologist&apos;s Lectern&nbsp;</b>
           </font>
           can be used to research normally-locked equipment and abilities, but
           not easily.

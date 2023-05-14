@@ -20,7 +20,7 @@
 				icon_file = initial(unlocked_item.research_icon)
 				icon_state = initial(unlocked_item.research_icon_state)
 
-			else
+			else if(initial(item.icon) && initial(item.icon_state))
 				icon_file = initial(item.icon)
 				icon_state = initial(item.icon_state)
 
