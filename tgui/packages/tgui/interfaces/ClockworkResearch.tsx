@@ -148,9 +148,8 @@ const ResearchNode = (research: Research, act: any, context: any) => {
           <Flex className="ClockResearch__IconContent">
             {research.research_designs.map(
               (design_data: DesignInfo, i: number) => (
-                <div className="ClockResearch__Icon">
+                <div className="ClockResearch__Icon" key={design_data.name}>
                   <Button
-                    key={design_data.name}
                     className={classes([`design32x32`, design_data.icon2])} // swap back to clockresearch when it's not absolutely broken
                     tooltip={`${design_data.name} (Tinker's Design)`}
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
@@ -160,9 +159,8 @@ const ResearchNode = (research: Research, act: any, context: any) => {
             )}
             {research.research_scriptures.map(
               (scripture_data: DesignInfo, i: number) => (
-                <div className="ClockResearch__Icon">
+                <div className="ClockResearch__Icon" key={scripture_data.name}>
                   <Button
-                    key={scripture_data.name}
                     className={classes([`design32x32`, scripture_data.icon2])} // swap back to clockresearch when it's not absolutely broken
                     tooltip={`${scripture_data.name} (Scripture)`}
                     tooltipPosition={i % 15 < 7 ? 'right' : 'left'}
