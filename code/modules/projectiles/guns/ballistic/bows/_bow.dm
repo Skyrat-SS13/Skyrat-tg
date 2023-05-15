@@ -44,7 +44,6 @@
 		balloon_alert(user, "no arrow nocked!")
 	else
 		balloon_alert(user, "[drawn ? "string released" : "string drawn"]")
-		playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //SKYRAT EDIT - Bow Consolidation
 		drawn = !drawn
 	update_appearance()
 
