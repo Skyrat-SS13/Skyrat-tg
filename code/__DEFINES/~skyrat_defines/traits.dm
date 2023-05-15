@@ -8,7 +8,6 @@
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
-#define TRAIT_OVERWEIGHT_QUIRK "overweight" // You are fat! Added quirk at the end of the trait incase TG adds an overweight trait.
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
 #define GLOVES_TRAIT "gloves_trait" //Traits associated with wearing gloves
