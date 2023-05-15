@@ -555,6 +555,8 @@
 	var/image/modsuit_image
 	/// The person in the modsuit at the moment, really just used to remove this from their screen
 	var/datum/weakref/mod_man
+	/// The creature we're placing this on
+	var/datum/weakref/pinged_person
 	/// The icon state applied to the image created for this ping.
 	var/real_icon_state = "sonar_ping"
 
@@ -566,12 +568,15 @@
 	modsuit_image.plane = ABOVE_LIGHTING_PLANE
 	SET_PLANE_EXPLICIT(modsuit_image, ABOVE_LIGHTING_PLANE, creature)
 	mod_man = WEAKREF(looker)
+	pinged_person = WEAKREF(creature)
 	add_mind(looker)
+	START_PROCESSING(SSfastprocess, src)
 
 /obj/effect/temp_visual/sonar_ping/Destroy()
 	var/mob/living/previous_user = mod_man?.resolve()
 	if(previous_user)
 		remove_mind(previous_user)
+	STOP_PROCESSING(SSfastprocess, src)
 	// Null so we don't shit the bed when we delete
 	modsuit_image = null
 	return ..()
@@ -583,8 +588,6 @@
 /// Remove the image from the modsuit wearer's screen
 /obj/effect/temp_visual/sonar_ping/proc/remove_mind(mob/living/looker)
 	looker?.client?.images -= modsuit_image
-<<<<<<< HEAD
-=======
 
 /// Update the position of the ping while it's still up. Not sure if i need to use the full proc but just being safe
 /obj/effect/temp_visual/sonar_ping/process(seconds_per_tick)
@@ -607,4 +610,3 @@
 	. = ..()
 	pixel_x = rand(-12, 12)
 	pixel_y = rand(-9, 0)
->>>>>>> a4822c165b0 (Now blocking is more noticeable! New blocking and parrying sounds (#74998))
