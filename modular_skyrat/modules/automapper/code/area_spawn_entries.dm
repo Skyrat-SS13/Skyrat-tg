@@ -104,3 +104,7 @@
 	desired_atom = /obj/structure/curtain/cloth/prison
 	over_atoms = list(/obj/structure/window/reinforced/fulltile, /obj/machinery/door/airlock/security/glass, /obj/machinery/door/airlock/public/glass)
 	target_areas = list(/area/station/security/prison/safe)
+
+/datum/area_spawn/corrections_officer_landmark
+	desired_atom = /obj/effect/landmark/start/corrections_officer
+	target_areas = list(/area/station/security/brig, /area/station/security/prison/)

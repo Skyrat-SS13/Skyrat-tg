@@ -412,12 +412,14 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
-/*
-*	ARMOR
-*/
+// ARMOR
 
 /datum/greyscale_config/heck_suit/worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+
+//Helmet pairs with the above suit
+/datum/greyscale_config/heck_helmet/worn/snouted
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet_muzzled.dmi'
 
 // Bathrobes
 
@@ -1065,7 +1067,7 @@ digi
 /datum/greyscale_config/fancyheels/worn
 	name = "Fancy Heels (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
-	
+
 /datum/greyscale_config/fancyheels/worn/digi
 	name = "Fancy Heels (Worn Digi)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn_digi.json'

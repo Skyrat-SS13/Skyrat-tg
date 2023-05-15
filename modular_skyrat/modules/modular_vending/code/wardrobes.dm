@@ -121,8 +121,6 @@
 	skyrat_products = list(
 		/obj/item/clothing/head/fedora/beige = 2,
 		/obj/item/clothing/head/fedora/white = 2,
-		/obj/item/clothing/head/fedora/fedblack = 2,
-		/obj/item/clothing/head/fedora/fedbrown = 2,
 		/obj/item/clothing/under/costume/cybersleek = 2,
 		/obj/item/clothing/under/costume/cybersleek/long = 2,
 		/obj/item/clothing/head/fedora/det_hat/cybergoggles = 2,

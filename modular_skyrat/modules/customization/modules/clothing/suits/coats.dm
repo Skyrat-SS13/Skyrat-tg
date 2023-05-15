@@ -44,17 +44,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red cloak"
 	icon_state = "goliath_cloak"
-	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, perfect for kids"
+	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, made of entirely synthetic material."
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/david
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/cloakhood/david
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	name = "red cloak hood"
 	icon_state = "golhood"
-	desc = "conceal your face in shame with this nanotrasen brand hood"
+	desc = "Conceal your face in shame with this nanotrasen brand mock-goliath hood."
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
