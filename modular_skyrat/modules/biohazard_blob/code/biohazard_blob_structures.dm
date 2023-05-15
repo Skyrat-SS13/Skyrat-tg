@@ -470,6 +470,4 @@
 			monster_types = list(/mob/living/basic/giant_spider)
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
-	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(FACTION_MOLD), "emerges from", max_spawns)
-
-	/datum/component/spawner
+	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, max_spawns, list(FACTION_MOLD), "emerges from")
