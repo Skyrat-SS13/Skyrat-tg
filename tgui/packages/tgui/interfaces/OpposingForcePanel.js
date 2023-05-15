@@ -182,7 +182,7 @@ export const OpposingForceTab = (props, context) => {
             disabled={!can_edit}
             height="100px"
             value={backstory}
-            placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
+            placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately (2000 char limit)."
             onChange={(_e, value) =>
               act('set_backstory', {
                 backstory: value,
@@ -391,7 +391,7 @@ export const OpposingForceObjectives = (props, context) => {
                     Description
                     <Button
                       icon="info"
-                      tooltip="Input objective description here, be descriptive about what you want to do, such as 'Destroy the Death Star' or 'Destroy the Death Star and the Death Star Base'."
+                      tooltip="Input objective description here, be descriptive about what you want to do, such as 'Destroy the Death Star' or 'Destroy the Death Star and the Death Star Base' (1000 char limit)."
                       color="light-gray"
                     />
                   </Stack.Item>
@@ -417,7 +417,7 @@ export const OpposingForceObjectives = (props, context) => {
                     Justification
                     <Button
                       icon="info"
-                      tooltip="Input justification for the objective here, make sure you have a good reason for the objective."
+                      tooltip="Input justification for the objective here, make sure you have a good reason for the objective (1000 char limit)."
                       color="light-gray"
                     />
                   </Stack.Item>
