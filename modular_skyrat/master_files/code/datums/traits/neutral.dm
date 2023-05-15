@@ -223,7 +223,7 @@
 	quirk_holder.remove_movespeed_modifier(/datum/movespeed_modifier/overweight)
 
 /datum/movespeed_modifier/overweight
-	multiplicative_slowdown = 0.75 //A little more than having a dufflebag.
+	multiplicative_slowdown = 0.5 //Around that of a dufflebag, enough to be impactful but not debilitating.
 
 /datum/mood_event/fat/New(mob/parent_mob, ...)
 	. = ..()
