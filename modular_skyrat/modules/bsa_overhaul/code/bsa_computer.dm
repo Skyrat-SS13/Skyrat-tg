@@ -8,7 +8,7 @@
 	name = "bluespace artillery control"
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/bsa_control
-	icon = 'modular_skyrat/modules/fixing_missing_icons/particle_accelerator.dmi'
+	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_state = "control_boxp"
 	/// A weakref to our cannon
 	var/datum/weakref/connected_cannon
