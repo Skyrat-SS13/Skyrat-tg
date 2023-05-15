@@ -221,12 +221,9 @@
 		target.crimes += new_crime
 		investigate_log("New Crime: <strong>[input_name]</strong> | Added to [target.name] by [key_name(user)]. Their previous status was [target.wanted_status]", INVESTIGATE_RECORDS)
 		target.wanted_status = WANTED_ARREST
-<<<<<<< HEAD
-=======
 
 		update_matching_security_huds(target.name)
 
->>>>>>> 4522f929222 (Fixes records console sechuds glitch, ninja sechuds glitch (#75320))
 		return TRUE
 
 	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
