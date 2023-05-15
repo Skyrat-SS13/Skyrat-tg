@@ -232,7 +232,7 @@
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_sniper_mag"
 	ammo_type = /obj/item/ammo_casing/p50
-	caliber = CALIBER_50
+	caliber = CALIBER_50BMG
 	max_ammo = 5
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)

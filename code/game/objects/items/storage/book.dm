@@ -186,6 +186,9 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 		playsound(src.loc, SFX_PUNCH, 25, TRUE, -1)
 		log_combat(user, M, "attacked", src)
 
+/obj/item/storage/book/bible/attackby_storage_insert(datum/storage, atom/storage_holder, mob/user)
+	return !istype(storage_holder, /obj/item/storage/book/bible)
+
 /obj/item/storage/book/bible/afterattack(atom/bible_smacked, mob/user, proximity)
 	. = ..()
 	if(!proximity)
@@ -274,7 +277,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 		uses -= 1
 		to_chat(H, span_userdanger("You try to open the book AND IT BITES YOU!"))
 		playsound(src.loc, 'sound/effects/snap.ogg', 50, TRUE)
-		H.apply_damage(5, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
+		H.apply_damage(5, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM), attacking_item = src)
 		to_chat(H, span_notice("Your name appears on the inside cover, in blood."))
 		ownername = H.real_name
 
