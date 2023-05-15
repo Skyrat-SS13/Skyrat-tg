@@ -679,7 +679,7 @@
 	current_skin = "duffel-security" //prevents reskinning
 
 /*
-*	BELT
+*	BELT + HOLSTERS
 */
 
 /obj/item/storage/belt/security/redsec
@@ -689,6 +689,46 @@
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
 	current_skin = "security"	//prevents reskinning
+	
+	
+/obj/item/storage/belt/holster
+	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
+	
+/obj/item/storage/belt/holster/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 3
+	atom_storage.max_total_storage = 16
+	atom_storage.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/dueling,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		))
+	
+/obj/item/storage/belt/holster/detective
+	name = "detective's holster"
+	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
+
+/obj/item/storage/belt/holster/detective/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 4
+	atom_storage.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/dueling,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		))
+
 
 /*
 *	HEAD
