@@ -18,7 +18,12 @@
 	new /obj/item/etherealballdeployer(src)
 	new /obj/item/roulette_wheel_beacon(src)
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	//SKYRAT EDIT END
+=======
+/obj/structure/closet/secure_closet/bar/all_access
+	req_access = null
+>>>>>>> f0fea164d27 (Replaces var edited freezers. (#75439))
