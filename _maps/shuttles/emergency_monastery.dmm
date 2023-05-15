@@ -789,6 +789,12 @@
 "lX" = (
 /turf/open/floor/carpet/black,
 /area/shuttle/escape)
+"md" = (
+/obj/item/storage/book/bible,
+/obj/structure/cable,
+/obj/structure/altar_of_gods,
+/turf/open/floor/carpet,
+/area/shuttle/escape)
 "me" = (
 /obj/structure/table/wood/fancy,
 /turf/open/floor/carpet,
@@ -1079,19 +1085,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"qe" = (
-/obj/item/radio/intercom/directional/north,
-/obj/machinery/requests_console/directional/west{
-	department = "Chapel";
-	supplies_requestable = 1
-	},
-/obj/structure/closet,
-/obj/item/storage/backpack/cultpack,
-/obj/item/clothing/head/chaplain/nun_hood,
-/obj/item/clothing/suit/chaplainsuit/nun,
-/obj/item/clothing/suit/chaplainsuit/holidaypriest,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
+"qc" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/book/bible,
+/turf/open/floor/carpet,
 /area/shuttle/escape)
 "qi" = (
 /obj/structure/table/wood,
@@ -1448,6 +1445,14 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"vs" = (
+/obj/structure/closet,
+/obj/machinery/light/small/directional/south,
+/obj/item/storage/book/bible,
+/obj/item/storage/book/bible,
+/obj/item/storage/book/bible,
+/turf/open/floor/carpet,
+/area/shuttle/escape)
 "vE" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Chapel Access"
@@ -1608,14 +1613,6 @@
 "yq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"yr" = (
-/obj/structure/closet,
-/obj/machinery/light/small/directional/south,
-/obj/item/storage/book/bible,
-/obj/item/storage/book/bible,
-/obj/item/storage/book/bible,
-/turf/open/floor/carpet,
 /area/shuttle/escape)
 "yu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -2035,12 +2032,6 @@
 "Dt" = (
 /obj/structure/flora/bush,
 /turf/open/misc/asteroid,
-/area/shuttle/escape)
-"Dv" = (
-/obj/item/storage/book/bible,
-/obj/structure/cable,
-/obj/structure/altar_of_gods,
-/turf/open/floor/carpet,
 /area/shuttle/escape)
 "Dw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2875,6 +2866,20 @@
 /obj/item/storage/fancy/candle_box,
 /turf/open/floor/carpet,
 /area/shuttle/escape)
+"Oq" = (
+/obj/item/radio/intercom/directional/north,
+/obj/machinery/requests_console/directional/west{
+	department = "Chapel"
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/structure/closet,
+/obj/item/storage/backpack/cultpack,
+/obj/item/clothing/head/chaplain/nun_hood,
+/obj/item/clothing/suit/chaplainsuit/nun,
+/obj/item/clothing/suit/chaplainsuit/holidaypriest,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "Or" = (
 /obj/structure/chair/wood,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -3208,11 +3213,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"Si" = (
-/obj/structure/table/wood/fancy,
-/obj/item/storage/book/bible,
-/turf/open/floor/carpet,
 /area/shuttle/escape)
 "Sj" = (
 /obj/structure/extinguisher_cabinet/directional/west,
@@ -3990,7 +3990,7 @@ JG
 JG
 nr
 nr
-qe
+Oq
 PY
 rA
 nr
@@ -4405,7 +4405,7 @@ BG
 eW
 rX
 eQ
-yr
+vs
 nr
 yO
 Ab
@@ -4747,7 +4747,7 @@ Pz
 kw
 oa
 eQ
-Si
+qc
 Ti
 RM
 Xs
@@ -5794,7 +5794,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-Dv
+md
 sm
 jx
 iS
