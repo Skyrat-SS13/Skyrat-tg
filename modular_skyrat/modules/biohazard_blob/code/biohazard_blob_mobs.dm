@@ -8,6 +8,7 @@
 	vision_range = 5
 	aggro_vision_range = 8
 	move_to_delay = 6
+	faction = list(FACTION_MOLD)
 
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler
@@ -26,7 +27,7 @@
 	obj_damage = 40
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	faction = list(MOLD_FACTION)
+	faction = list(FACTION_MOLD)
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
@@ -77,7 +78,7 @@
 	speed = 0
 	melee_damage_lower = 7
 	melee_damage_upper = 13
-	faction = list(MOLD_FACTION)
+	faction = list(FACTION_MOLD)
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	pass_flags = PASSTABLE
@@ -109,7 +110,7 @@
 	obj_damage = 20
 	melee_damage_lower = 7
 	melee_damage_upper = 10
-	faction = list(MOLD_FACTION)
+	faction = list(FACTION_MOLD)
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 	attack_sound = 'sound/effects/attackblob.ogg'
@@ -141,7 +142,7 @@
 	obj_damage = 40
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	faction = list(MOLD_FACTION)
+
 	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
 	melee_damage_type = BRUTE
 	light_system = MOVABLE_LIGHT

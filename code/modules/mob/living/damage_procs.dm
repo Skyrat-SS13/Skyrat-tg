@@ -307,7 +307,7 @@
 		return
 	staminaloss = clamp((staminaloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, max_stamina)
 	if(updating_stamina)
-		update_stamina()
+		updatehealth()
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
 	return
 
@@ -316,7 +316,7 @@
 		return FALSE
 	staminaloss = amount
 	if(updating_stamina)
-		update_stamina()
+		updatehealth()
 
 /**
  * heal ONE external organ, organ gets randomly selected from damaged ones.
