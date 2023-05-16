@@ -541,7 +541,8 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	playsound(loc, 'sound/machines/buzz-sigh.ogg', 25, TRUE)
 	sleep(0.36 SECONDS)
 	visible_message(span_userdanger("[src] explodes!"))
-	explosion(src, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 8, flame_range = 16)
+	// explosion(src, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 8, flame_range = 16) - ORIGINAL
+	explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 4, flame_range = 2) // SKYRAT EDIT CHANGE
 	qdel(src)
 
 /obj/singularity/orion
