@@ -547,3 +547,144 @@
   - balance: Golem bluespace teleportation is slightly quicker.
   tralezab:
   - bugfix: Chuuni wizards no longer get robeless casting issues.
+2023-05-16:
+  DrDiasyl aka DrTuxedo#0931:
+  - qol: Now blocking an attack will play a sound and display a spark effect, giving
+      back feedback
+  - sound: parry.ogg was updated to a better-sounding version
+  - sound: shieldbash.ogg no longer has noise and unnecessary silence
+  - sound: New block_shield.ogg and block_blade.ogg for shields and energy swords
+  - code_imp: Cultists items no longer have their own code for playing parrying sounds
+  Hatterhat:
+  - rscadd: 'The R3T3N-T1VE skillchip is now available in Cargo''s goodies tab for
+      the price of 1750 credits, and allows you a brief glimpse into the wonderful
+      world of xenoarchaeological academia (read: allows you to use magnifying glasses
+      on useless relics).'
+  - code_imp: NIF goodies are now in the proper goodies.dm file.
+  - rscadd: 'Items flagged with UNIQUE_RENAME (read: the items that let you rename/re-desc
+      them with a pen, like food, or the det''s revolver, or the proto-kinetic crusher)
+      now allow you to enter up to 280 characters of description for them. Please
+      re-desc your items responsibly.'
+  JohnFulpWillard:
+  - balance: The R&D monitoring console now shows R&D consoles and their locations.
+  - refactor: The R&D monitoring console now has a nice TGUI menu.
+  KoJIT2009:
+  - qol: more interactive character customization
+  LT3:
+  - bugfix: Blueshield now has a locker on Birdshot
+  - admin: Admins are now warned if they are going to override a currently playing
+      admin midi
+  - bugfix: Minor fixes to Icebox's elevator
+  - refactor: LOOC and whisper channels converted to TGUI
+  Melbert:
+  - balance: You are now slightly less likely, statistically, to get an antag role
+      on latejoin
+  - bugfix: Fixed latejoin antags being logged as "midround" antags
+  ORCACommander:
+  - bugfix: cleared CI error related to NT Consultant spawning
+  Paxilmaniac:
+  - bugfix: Ashwalkers and the ice dwellers in the chat can now partake in the making
+      of soup with primitive stoves placed in their camps. Rejoice for they are no
+      longer gatekept from making a large portion of the food cat-alogue
+  - bugfix: The ashwalker kitchen now uses a stone oven, not a forge, since forge
+      baking has been broken for who knows how long now
+  - bugfix: Glassware will now actually have the glass material applied to it
+  QuacksQ:
+  - bugfix: Fixes three tiles in Voidraptor arrivalls being marked as space.
+  RaShCat:
+  - bugfix: fix for teshari and their human's hats
+  RatFromTheJungle:
+  - balance: shoulder holsters now have three slots, while the detectives has 4, and
+      can also hold magazines and a few additional pistol-style guns (check the OOC
+      tags on it)
+  Rhials:
+  - code_imp: Autodocs dreaming.dm and bedsheet_bin.dm.
+  - code_imp: Dreams now have an expanded list of subjects to choose from.
+  - spellcheck: Fixed a typo when trying to fasten in an APC board before inserting
+      it.
+  Shadow-Quill:
+  - bugfix: Operating tables will once again numb a person laying on top of them (no
+      need to be buckled).
+  ShizCalev:
+  - bugfix: There is now a message clarifying that you've been KICKED from the game
+      when the keysend flood autokick triggers.
+  - bugfix: Fixed a minor runtime when renaming mechs that don't have a camera attached
+      to them.
+  - bugfix: Food/slime processors now shake when in use again.
+  - bugfix: Guns without magazines inserted can now fire again!
+  - bugfix: Secret recipes will no longer contain inaprovaline or stranger reagent.
+  - bugfix: Fixed a runtime which occured when a self-recharging gun (ie proto-kinetic
+      accelerator) with a bayonet attached was deleted.
+  SkyratBot:
+  - rscadd: Added a new way out of Birdshot's gulag.
+  - bugfix: Replaced the oven on Birdshot with a range.
+  - qol: To clear up confusion with players bringing their own uniforms to the basketball
+      match the holodeck engineers over at centcom added uniforms for their basketball
+      court holodeck!
+  - bugfix: Barriers have been added in the holodeck basketball court to prevent players
+      from entering the bleachers
+  - rscadd: Adds the Syndicate Induction Kit for Nuclear Operatives, which lets them
+      induct any willing antagonist into the nuclear operative team for 10 TC.
+  - rscadd: Uplink spacesuits are randomized between all their different colored variants!
+      Visual only.
+  - image: Skillchips have been resprited to be smaller and more chip-like
+  - qol: Posters can now fit back into the boxes they come in.
+  - bugfix: space ambience tracks will no longer cut themselves off
+  - sound: added a new ambient track for space
+  - qol: Added a message to the component menu in the integrated circuit interface
+      that explains how to link an integrated circuit to a component printer.
+  - bugfix: Spiderlings no longer get stuck in webs
+  - bugfix: Holopad UI will not hang when connection fails
+  - bugfix: made gorilla transformation when affected by excess amounts of genetic
+      damage work
+  - rscadd: Things made primarily of the glass material datum (and any of its subtypes)
+      will now shatter when thrown, be careful with that statue block now.
+  - code_imp: Shattering on impact is now a component, rather than code just on plates.
+  - bugfix: Fixed dropdown buttons empty selected case
+  - bugfix: Turret Outpost's external airlocks now all cycle together instead of as
+      2 separate pairs.
+  - bugfix: DJ Station's kitchen fridges no longer require kitchen access to open.
+  - bugfix: The Faceoff's faster-than-jetpack-speed enemies no longer attack explorers
+      only passing by.
+  - bugfix: Setting arrest status with the records console now immediately updates
+      sechud visuals.
+  - bugfix: Ninja security record hacks now immediately update sechud visuals.
+  - bugfix: fixed sealed webs not stopping active atmos
+  - bugfix: Desert Eagles can no longer load .50 BMG sniper rifle rounds and vice
+      versa.
+  - bugfix: signal override & other area sensitive runtimes during area editing with
+      station blueprints
+  - balance: The Death Sandwich can no longer be renamed
+  - bugfix: fixes how the morgue renders on tramstation.
+  - bugfix: gps arrows rotate correctly
+  - bugfix: icons have their correct sizes applied again
+  - qol: Added a Oxy Tank dispenser to the bounty ship for a lil' more general QoL
+  SomeRandomOwl:
+  - rscadd: The Ghost Cafe's Library room has been expanded, it now includes a Art
+      Gallery, for all of you aspiring Vincent van Gogh artists out there. You now
+      have a space to archive more art!
+  Swiftcore:
+  - qol: Dish drives now collect empty plates and plate fragments
+  Sylvette:
+  - bugfix: Fixed sign language so you can't sign when cuffed or emotemute as initially
+      intended
+  - balance: Allows signers to cast spells using sign language as long as both hands
+      are free
+  SyncIt21:
+  - bugfix: Bibles can convert other bibles
+  Unit2E:
+  - bugfix: Death berry juice is poisonous now, like poison berry's
+  necromanceranne:
+  - balance: Sends a chat alert to those nearby when someone completes a stage of
+      a hijack.
+  sergeirocks100:
+  - bugfix: The underwear preview in the character preferences now displays properly.
+  softcerv:
+  - bugfix: mold mobs no longer attack each other.
+  - bugfix: fixes an issue present with DNR and the time clock, allowing for negative
+      workers.
+  tf-4:
+  - balance: Buffs the Active Sonar module for modsuits with a shorter cooldown &
+      moving pings.
+  vinylspiders:
+  - bugfix: the view exploitables menu is functional once again
