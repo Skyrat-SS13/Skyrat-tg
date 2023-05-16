@@ -3896,11 +3896,11 @@
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/requests_console/directional/north{
 	department = "Head of Personnel's Desk";
-	name = "Head of Personnel's Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Head of Personnel's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/executive,
 /area/station/command/heads_quarters/hop)
@@ -9220,12 +9220,12 @@
 "cPs" = (
 /obj/machinery/announcement_system,
 /obj/machinery/requests_console/directional/east{
-	anon_tips_receiver = 1;
-	assistance_requestable = 1;
 	department = "Telecomms Admin";
-	name = "Telecomms Requests Console";
-	can_send_announcements = 1
+	name = "Telecomms Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/light_switch/directional/north,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/circuit/green,
@@ -9599,12 +9599,12 @@
 /obj/structure/filingcabinet/chestdrawer/wheeled,
 /obj/machinery/requests_console/directional/east{
 	department = "Research Lab";
-	name = "Research Requests Console";
-	receive_ore_updates = 1;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Research Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/ore_update,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/camera/directional/east{
 	c_tag = "Science - Research and Development";
 	name = "science camera";
@@ -13031,9 +13031,9 @@
 	},
 /obj/machinery/requests_console/directional/east{
 	department = "Xenobiology";
-	name = "Xenobiology Requests Console";
-	receive_ore_updates = 1
+	name = "Xenobiology Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "dQi" = (
@@ -14010,10 +14010,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/requests_console/directional/east{
 	department = "Atmospherics";
-	name = "Atmospherics Requests Console";
-	assistance_requestable = 1;
-	supplies_requestable = 1
+	name = "Atmospherics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/structure/closet/radiation,
 /obj/item/clothing/glasses/meson,
 /turf/open/floor/iron/smooth,
@@ -19429,9 +19429,9 @@
 /obj/structure/table/glass,
 /obj/machinery/requests_console/directional/north{
 	department = "Medbay";
-	name = "Medbay Requests Console";
-	assistance_requestable = 1
+	name = "Medbay Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/item/storage/box/gloves{
 	pixel_x = 4;
 	pixel_y = 6
@@ -25451,9 +25451,9 @@
 	},
 /obj/machinery/requests_console/directional/north{
 	department = "Medbay";
-	name = "Medbay Requests Console";
-	assistance_requestable = 1
+	name = "Medbay Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/camera/directional/north{
 	c_tag = "Medbay - Storage";
 	name = "medbay camera";
@@ -30998,10 +30998,10 @@
 	},
 /obj/machinery/requests_console/directional/west{
 	department = "Ordnance Lab";
-	name = "Ordnance Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	name = "Ordnance Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera/directional/west{
 	c_tag = "Science - Ordnance Lab Port";
@@ -37364,11 +37364,11 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Chief Engineer's Desk";
-	name = "Chief Engineer's Requests Console";
-	assistance_requestable = 1;
-	supplies_requestable = 1;
-	can_send_announcements = 1
+	name = "Chief Engineer's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/orange,
 /area/station/command/heads_quarters/ce)
@@ -37473,9 +37473,9 @@
 	},
 /obj/machinery/requests_console/directional/north{
 	department = "Virology";
-	name = "Virology Requests Console";
-	receive_ore_updates = 1
+	name = "Virology Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /obj/item/folder/white,
 /obj/item/pen/red,
 /turf/open/floor/iron/white/smooth_edge,
@@ -39108,11 +39108,11 @@
 /obj/machinery/modular_computer/console/preset/id,
 /obj/machinery/requests_console/directional/north{
 	department = "Captain's Desk";
-	name = "Captain's Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Captain's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/structure/noticeboard/captain{
 	dir = 8;
 	pixel_x = -32
@@ -40111,10 +40111,10 @@
 	},
 /obj/machinery/requests_console/directional/north{
 	department = "Robotics";
-	name = "Robotics Requests Console";
-	receive_ore_updates = 1;
-	supplies_requestable = 1
+	name = "Robotics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/ore_update,
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 1
 	},
@@ -40722,12 +40722,12 @@
 "lGf" = (
 /obj/machinery/requests_console/directional/west{
 	department = "Research Director's Desk";
-	name = "Research Director's Requests Console";
-	receive_ore_updates = 1;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Research Director's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/ore_update,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
@@ -44462,11 +44462,11 @@
 /obj/structure/table/reinforced/rglass,
 /obj/machinery/requests_console/directional/east{
 	department = "Bridge";
-	name = "Bridge Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Bridge Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/item/storage/toolbox/emergency{
 	pixel_y = 4
 	},
@@ -52244,10 +52244,10 @@
 /obj/structure/cable,
 /obj/machinery/requests_console/directional/south{
 	department = "AI";
-	name = "AI Chamber Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	name = "AI Chamber Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
@@ -55613,9 +55613,9 @@
 /obj/machinery/requests_console/directional/east{
 	department = "Bar";
 	name = "Bar Requests Console";
-	pixel_x = -30;
-	supplies_requestable = 1
+	pixel_x = -30
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /obj/item/reagent_containers/cup/glass/bottle/champagne{
 	pixel_y = -2
@@ -61118,11 +61118,11 @@
 /obj/machinery/requests_console/directional/north{
 	department = "Head of Security's Desk";
 	name = "Head of Security's Requests Console";
-	pixel_x = 10;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	pixel_x = 10
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/structure/cable,
 /obj/machinery/button/door/directional/north{
 	id = "hoslockdown";
@@ -61397,10 +61397,10 @@
 /obj/item/analyzer,
 /obj/machinery/requests_console/directional/west{
 	department = "Ordnance Lab";
-	name = "Ordnance Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	name = "Ordnance Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
@@ -61569,10 +61569,10 @@
 	},
 /obj/machinery/requests_console/directional/east{
 	department = "Atmospherics";
-	name = "Atmospherics Requests Console";
-	assistance_requestable = 1;
-	supplies_requestable = 1
+	name = "Atmospherics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -68001,10 +68001,10 @@
 /obj/machinery/computer/station_alert,
 /obj/machinery/requests_console/directional/east{
 	department = "Atmospherics";
-	name = "Atmospherics Requests Console";
-	assistance_requestable = 1;
-	supplies_requestable = 1
+	name = "Atmospherics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
@@ -69922,9 +69922,9 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Pharmacy";
-	name = "Pharmacy Requests Console";
-	receive_ore_updates = 1
+	name = "Pharmacy Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /obj/structure/closet/secure_closet/medical1,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/freezer,
@@ -70467,11 +70467,11 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Chief Medical Officer's Desk";
-	name = "Chief Medical Officer's Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Chief Medical Officer's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/landmark/start/chief_medical_officer,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/cmo)
@@ -73125,10 +73125,10 @@
 /obj/machinery/requests_console/directional/north{
 	department = "Security";
 	name = "Security Requests Console";
-	pixel_y = -32;
-	assistance_requestable = 1;
-	supplies_requestable = 1
+	pixel_y = -32
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/light/warm/directional/south,
 /obj/machinery/camera/directional/south{
 	c_tag = "Security - Office Aft"
@@ -73974,9 +73974,9 @@
 /obj/item/radio/intercom/directional/north,
 /obj/machinery/requests_console/directional/west{
 	department = "Chapel";
-	name = "Chapel Requests console";
-	supplies_requestable = 1
+	name = "Chapel Requests console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/structure/closet,
 /obj/item/storage/backpack/cultpack,
 /obj/item/clothing/head/chaplain/nun_hood,
@@ -75103,10 +75103,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/requests_console/directional/east{
 	department = "Quartermaster's Desk";
-	name = "Quartermaster's Requests Console";
-	supplies_requestable = 1;
-	can_send_announcements = 1
+	name = "Quartermaster's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/qm)
 "uZU" = (
@@ -75166,9 +75166,9 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Hydroponics";
-	name = "Hydroponics Requests Console";
-	supplies_requestable = 1
+	name = "Hydroponics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/turf_decal/trimline/green/mid_joiner{
 	dir = 1
 	},
@@ -75330,9 +75330,9 @@
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/requests_console/directional/north{
 	department = "Cargo Bay";
-	name = "Cargo Bay Requests Console";
-	supplies_requestable = 1
+	name = "Cargo Bay Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/machinery/camera/directional/north{
 	c_tag = "Cargo - Office";
 	name = "cargo camera"
@@ -75977,11 +75977,11 @@
 "vnh" = (
 /obj/machinery/requests_console/directional/north{
 	department = "Captain's Desk";
-	name = "Captain's Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	name = "Captain's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/structure/table/wood/fancy/royalblue,
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
 /obj/item/kitchen/fork{
@@ -79437,9 +79437,9 @@
 /obj/machinery/status_display/ai/directional/north,
 /obj/machinery/requests_console/directional/west{
 	department = "Chapel";
-	name = "Chapel Requests console";
-	supplies_requestable = 1
+	name = "Chapel Requests console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/pod/dark,
 /area/station/service/chapel)
 "wlK" = (
@@ -80972,10 +80972,10 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Engineering";
-	name = "Engineering Requests Console";
-	assistance_requestable = 1;
-	supplies_requestable = 1
+	name = "Engineering Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/lobby)
 "wFR" = (
@@ -83816,9 +83816,9 @@
 /obj/effect/turf_decal/tile/dark/fourcorners,
 /obj/machinery/requests_console/directional/south{
 	department = "Janitorial";
-	name = "Janitor's Request Console";
-	assistance_requestable = 1
+	name = "Janitor's Request Console"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/noslip,
 /area/station/service/janitor)
@@ -84828,9 +84828,9 @@
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/requests_console/directional/east{
 	department = "Chemistry";
-	name = "Chemistry Requests Console";
-	assistance_requestable = 1
+	name = "Chemistry Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/freezer,
 /area/station/medical/chemistry)
 "xPP" = (
@@ -85251,9 +85251,9 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Service Hall";
-	name = "Service Hall Requests Console";
-	supplies_requestable = 1
+	name = "Service Hall Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /obj/item/radio/headset/headset_srv{
 	pixel_x = -11;
 	pixel_y = 4
