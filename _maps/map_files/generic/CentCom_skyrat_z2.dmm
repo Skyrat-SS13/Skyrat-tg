@@ -119,10 +119,8 @@
 	},
 /area/centcom/holding/cafe)
 "afl" = (
-/obj/machinery/jukebox{
-	req_access = "0"
-	},
 /obj/machinery/barsign/all_access/directional/north,
+/obj/machinery/vending/wardrobe/bar_wardrobe/ghost_cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "afr" = (
@@ -1340,7 +1338,7 @@
 /obj/structure/sign/poster/contraband/lusty_xenomorph{
 	pixel_y = -32
 	},
-/obj/machinery/vending/wardrobe/jani_wardrobe,
+/obj/machinery/vending/wardrobe/jani_wardrobe/ghost_cafe,
 /turf/open/indestructible/hoteltile{
 	icon_state = "white"
 	},
@@ -1543,7 +1541,7 @@
 /area/centcom/holding/cafepark)
 "awQ" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/vending/wardrobe/science_wardrobe/ghost_cafe,
+/obj/machinery/vending/wardrobe/engi_wardrobe/ghost_cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "awU" = (
@@ -2064,7 +2062,7 @@
 	},
 /area/centcom/holding/cafepark)
 "aBk" = (
-/obj/machinery/vending/wardrobe/curator_wardrobe,
+/obj/machinery/vending/wardrobe/curator_wardrobe/ghost_cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aBm" = (
@@ -3042,7 +3040,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -3175,13 +3173,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -3466,7 +3464,7 @@
 	},
 /area/centcom/holding/cafe)
 "aPK" = (
-/obj/machinery/vending/wardrobe/bar_wardrobe/ghost_cafe,
+/obj/machinery/vending/wardrobe/cent_wardrobe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aPU" = (
@@ -4301,7 +4299,7 @@
 /turf/open/floor/plating/abductor2,
 /area/centcom/holding/cafe)
 "aXd" = (
-/obj/machinery/vending/wardrobe/law_wardrobe,
+/obj/machinery/vending/wardrobe/law_wardrobe/ghost_cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aXl" = (
@@ -4395,6 +4393,7 @@
 /area/centcom/holding/cafepark)
 "aYc" = (
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/wardrobe/science_wardrobe/ghost_cafe,
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -6264,7 +6263,7 @@
 /area/centcom/interlink)
 "fvx" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/vending/wardrobe/engi_wardrobe/ghost_cafe,
+/obj/machinery/vending/wardrobe/coroner_wardrobe/ghost_cafe,
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -6590,6 +6589,8 @@
 	pixel_x = 26;
 	pixel_y = -7
 	},
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "goK" = (
@@ -6666,6 +6667,10 @@
 /obj/structure/sign/poster/random/directional/south,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"gAu" = (
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/turf/open/misc/grass/planet,
+/area/centcom/holding/cafepark)
 "gAH" = (
 /obj/structure/table,
 /obj/item/paper/pamphlet/centcom/visitor_info{
@@ -6806,12 +6811,12 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -6835,7 +6840,7 @@
 /obj/structure/fence{
 	pixel_x = 17
 	},
-/turf/closed/indestructible/wood,
+/turf/closed/indestructible/syndicate,
 /area/centcom/holding/cafe)
 "hea" = (
 /obj/structure/table/wood,
@@ -7653,6 +7658,9 @@
 	},
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
+"jhR" = (
+/turf/closed/indestructible/syndicate,
+/area/centcom/holding/cafe)
 "jiQ" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/misc/dirt/planet,
@@ -9587,24 +9595,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -54717,11 +54725,11 @@ aFP
 aFP
 aFP
 aFP
-aqf
+jhR
 hdV
-aqf
-aqf
-aqf
+jhR
+jhR
+jhR
 aFP
 aFP
 aFP
@@ -54974,11 +54982,11 @@ akW
 akW
 aVI
 aFP
-aqf
+jhR
 aKQ
 hpP
 rcq
-aqf
+jhR
 aFP
 aFP
 aFP
@@ -55231,11 +55239,11 @@ aFr
 auM
 aKc
 aFP
-aqf
+jhR
 djn
 lwt
 vUv
-aqf
+jhR
 aFP
 aFP
 aGg
@@ -55492,7 +55500,7 @@ uWe
 egn
 aBv
 vUv
-aqf
+jhR
 aFP
 aFP
 aFP
@@ -55745,11 +55753,11 @@ alC
 aUM
 aKc
 aFV
-aqf
+jhR
 fFr
 nlM
 vUv
-aqf
+jhR
 aVA
 aFP
 aFP
@@ -56002,11 +56010,11 @@ alC
 aUM
 aKc
 aFP
-aqf
+jhR
 iQp
 pwV
 gmE
-aqf
+jhR
 aFP
 aAY
 aFP
@@ -56259,11 +56267,11 @@ alC
 aUM
 aKc
 aFP
-aqf
-aqf
+jhR
+jhR
 pPH
-aqf
-aqf
+jhR
+jhR
 aKu
 aFP
 aFP
@@ -71408,7 +71416,7 @@ aPf
 aPf
 aFP
 awV
-awV
+gAu
 aFP
 aFP
 ahQ
