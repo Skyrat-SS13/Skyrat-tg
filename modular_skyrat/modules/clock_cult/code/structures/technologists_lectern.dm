@@ -359,15 +359,15 @@
 
 /// Called after research completes, making one of 5 bad things happen to the station
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/proc/side_effect(force_rand)
-	var/side_effect_num = force_rand || rand(1, 50)
+	var/side_effect_num = force_rand || rand(11, 50)
 
 	switch(side_effect_num)
-		if(1 to 10) // Fun hallucinations for the crew
+/*		if(1 to 10) // Fun hallucinations for the crew
 			for(var/mob/living/living_mob as anything in GLOB.mob_living_list)
 				if(IS_CLOCK(living_mob) || living_mob.can_block_magic(MAGIC_RESISTANCE_HOLY))
 					continue
 
-				living_mob.cause_hallucination(/datum/hallucination/delusion/preset/clock, "research ritual side effect")
+				living_mob.cause_hallucination(/datum/hallucination/delusion/preset/clock, "research ritual side effect")*/ // I'll fix this after TM recompile
 
 		if(11 to 20) // Cult-ify everything nearby
 			playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/ark_scream.ogg', 100, FALSE, pressure_affected = FALSE)

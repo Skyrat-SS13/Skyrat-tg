@@ -108,7 +108,7 @@ const ResearchSection = (props, context) => {
         </Section>
       </Stack.Item>
       {data.research_tiers.map((inside_array: Array<Research>) => (
-        <Stack vertical fill key={inside_array[1].name}>
+        <Stack vertical fill key={inside_array[0].name}>
           <Section
             title={`Tier ${data.research_tiers.indexOf(inside_array) + 1}`}>
             {inside_array.map((single_research: Research) => (

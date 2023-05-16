@@ -5,7 +5,7 @@
 	affects_others = TRUE
 	affects_us = TRUE
 
-/datum/hallucination/delusion/preset/syndies/make_delusion_image(mob/over_who)
+/datum/hallucination/delusion/preset/clock/make_delusion_image(mob/over_who)
 	delusion_icon_file = getFlatIcon(get_dynamic_human_appearance(
 		mob_spawn_path = pick(
 			/obj/effect/mob_spawn/corpse/human/clock_cultist,
