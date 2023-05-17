@@ -479,9 +479,10 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	gameStatus = ORION_STATUS_START
 	say("Congratulations, you made it to Orion!")
 	if(obj_flags & EMAGGED)
-		new /obj/item/orion_ship(loc)
-		message_admins("[ADMIN_LOOKUPFLW(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
-		usr.log_message("made it to Orion on an emagged machine and got an explosive toy ship.", LOG_GAME)
+		// new /obj/item/orion_ship(loc) - ORIGINAL
+		new /obj/item/gun/energy/recharge/ebow(loc) //SKYRAT EDIT CHANGE - Weapon instead of bomb
+		// message_admins("[ADMIN_LOOKUPFLW(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
+		// usr.log_message("made it to Orion on an emagged machine and got an explosive toy ship.", LOG_GAME)
 	else
 		new /obj/item/stack/arcadeticket((get_turf(src)), 2)
 		to_chat(user, span_notice("[src] dispenses 2 tickets!"))
