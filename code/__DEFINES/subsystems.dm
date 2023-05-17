@@ -160,11 +160,8 @@
 #define INIT_ORDER_ECONOMY 40
 #define INIT_ORDER_OUTPUTS 35
 #define INIT_ORDER_RESTAURANT 34
-<<<<<<< HEAD
 #define INIT_ORDER_POLLUTION 32 //SKYRAT EDIT ADDITION - //Needs to be above atoms
-=======
 #define INIT_ORDER_TTS 33
->>>>>>> a98706ff8b1 (Adds TTS to the game. Players can select their own voices in preferences. (#74775))
 #define INIT_ORDER_ATOMS 30
 #define INIT_ORDER_ARMAMENTS 27 // SKYRAT EDIT ADDITION - Needs to be between atoms and default so it runs before gun companies
 #define INIT_ORDER_LANGUAGE 25
