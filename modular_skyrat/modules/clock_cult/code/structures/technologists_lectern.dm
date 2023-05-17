@@ -357,12 +357,12 @@
 	addtimer(CALLBACK(src, PROC_REF(side_effect)), 10 SECONDS)
 
 
-/// Called after research completes, making one of 5 bad things happen to the station
+/// Called after research completes, making one of a few bad things happen to the station
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern/proc/side_effect(force_rand)
-	var/side_effect_num = force_rand || rand(11, 50)
+	var/side_effect_num = force_rand || rand(1, 40)
 
 	switch(side_effect_num)
-		if(11 to 20) // Cult-ify everything nearby
+		if(1 to 10) // Cult-ify everything nearby
 			playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/ark_scream.ogg', 100, FALSE, pressure_affected = FALSE)
 			for(var/atom/nearby_atom in range(8))
 				if(istype(nearby_atom, /turf/open/floor))
@@ -395,7 +395,7 @@
 					new /obj/effect/temp_visual/ratvar/beam(nearby_atom.loc)
 					qdel(nearby_atom)
 
-		if(21 to 30) // Spawn 4 ai-controlled marauders to fuck shit up
+		if(11 to 20) // Spawn 4 ai-controlled marauders to fuck shit up
 			visible_message(span_warning("A group of clockwork marauders appear, before being obscured by a cloud of smoke!"))
 
 			for(var/direction in list(NORTH, SOUTH, EAST, WEST))
@@ -406,7 +406,7 @@
 				smoke_cloud.set_up(4, holder = src, location = src)
 				smoke_cloud.start()
 
-		if(31 to 40) // Fuck up the power
+		if(21 to 30) // Fuck up the power
 			priority_announce("A fatal power outage has occurred. Please ensure that all on-board devices are connected to an appropriate power generator.")
 
 			apc_loop:
@@ -435,8 +435,7 @@
 					to_chat(living_mob, span_brass("You feel as if something powerful is watching over you as a low hum of machinery fills your mind."))
 
 
-		if(41 to 50) // Fuck up the power, but in the other way instead
-
+		if(31 to 40) // Fuck up the power, but in the other way instead
 			priority_announce("An extreme power surge has been detected in on-board APCs. Surge will subside in [rand(3, 8)] minutes.") // Not always accurate, are we?
 
 			force_apc_arcing(TRUE)
