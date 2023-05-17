@@ -19,6 +19,7 @@
  */
 /mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job)
 	if (!preference_source)
+		equipOutfit(outfit, visuals_only) // no prefs for loadout items, but we should still equip the outfit.
 		return FALSE
 
 	var/datum/outfit/equipped_outfit

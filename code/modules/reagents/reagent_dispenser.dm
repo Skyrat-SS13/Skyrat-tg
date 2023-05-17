@@ -173,7 +173,7 @@
 		visible_message(span_danger("\The [src] explodes!"))
 		// old code for reference:
 		// standard fuel tank = 1000 units = heavy_impact_range = 1, light_impact_range = 5, flame_range = 5
-		// big fuel tank = 5000 units = devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12
+		// big fuel tank =SHEET_MATERIAL_AMOUNT * 2.5 units = devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12
 		// It did not account for how much fuel was actually in the tank at all, just the size of the tank.
 		// I encourage others to better scale these numbers in the future.
 		// As it stands this is a minor nerf in exchange for an easy bombing technique working that has been broken for a while.
@@ -265,6 +265,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
+	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
@@ -297,6 +298,7 @@
 			user.visible_message(span_notice("[user] refills [user.p_their()] [W.name]."), span_notice("You refill [W]."))
 			playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 			W.update_appearance()
+			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		else
 			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
 			log_bomber(user, "detonated a", src, "via welding tool")
@@ -309,7 +311,7 @@
 	name = "high capacity fuel tank"
 	desc = "A tank full of a high quantity of welding fuel. Keep away from open flames."
 	icon_state = "fuel_high"
-	tank_volume = 5000
+	tank_volume =SHEET_MATERIAL_AMOUNT * 2.5
 
 /obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)

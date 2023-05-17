@@ -292,7 +292,7 @@
 	layer = ABOVE_WINDOW_LAYER
 	anchored = TRUE
 	density = TRUE
-	obj_flags = NO_BUILD // Becomes undense when the door is open
+	obj_flags = BLOCKS_CONSTRUCTION // Becomes undense when the door is open
 
 	var/busy = FALSE
 	var/busy_icon_state
@@ -525,5 +525,5 @@
 	build_path = /obj/machinery/bci_implanter
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/servo = 1,
 	)

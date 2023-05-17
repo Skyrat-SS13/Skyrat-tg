@@ -320,7 +320,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
-	if(stat != DEAD)
+	if(stat != CONSCIOUS && stat != DEAD)
 		succumb()
 	if(stat == DEAD)
 		if(!HAS_TRAIT(src, TRAIT_CORPSELOCKED)) //corpse-locked have to confirm with the alert below
@@ -422,7 +422,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(!current_mob.has_quirk(/datum/quirk/dnr))
 			current_mob.add_quirk(/datum/quirk/dnr)
 		var/datum/job/job_to_free = SSjob.GetJob(current_mob.mind.assigned_role.title)
-		job_to_free.current_positions--
+		if(job_to_free)
+			job_to_free.current_positions = max(0, job_to_free.current_positions - 1)
 		//SKYRAT EDIT ADDITION END - DNR TRAIT
 	log_message("has opted to do-not-resuscitate / DNR from their body ([current_mob])", LOG_GAME, color = COLOR_GREEN)
 
@@ -981,7 +982,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	var/datum/mafia_controller/game = GLOB.mafia_game //this needs to change if you want multiple mafia games up at once.
 	if(!game)
-		game = create_mafia_game("mafia")
+		game = create_mafia_game()
 	game.ui_interact(usr)
 
 /mob/dead/observer/CtrlShiftClick(mob/user)

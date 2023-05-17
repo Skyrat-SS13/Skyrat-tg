@@ -63,3 +63,15 @@
 
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
+
+/// trait that lets you do flips with a style meter
+#define TRAIT_STYLISH "stylish"
+
+/// trait that lets you do xenoarch magnification
+#define TRAIT_XENOARCH_QUALIFIED "trait_xenoarch_qualified"
+
+/// Traits granted by glassblowing
+#define GLASSBLOWING_TRAIT "glassblowing"
+
+/// Trait that is applied whenever someone or something is glassblowing
+#define TRAIT_CURRENTLY_GLASSBLOWING "currently_glassblowing"

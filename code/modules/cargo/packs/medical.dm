@@ -30,6 +30,17 @@
 					/obj/item/reagent_containers/hypospray/medipen/blood_loss = 3)
 	crate_name = "medipen crate"
 
+/datum/supply_pack/medical/coroner_crate
+	name = "Autopsy Kit"
+	desc = "Contains an autopsy scanner, when you lose your own and really \
+		need to complete your dissection experiments."
+	cost = CARGO_CRATE_VALUE * 2.5
+	contains = list(
+		/obj/item/autopsy_scanner = 1,
+		/obj/item/storage/medkit/coroner = 1,
+	)
+	crate_name = "autopsy kit crate"
+
 /datum/supply_pack/medical/chemical
 	name = "Chemical Starter Kit Crate"
 	desc = "Contains thirteen different chemicals, for all the fun experiments you can make."
@@ -119,7 +130,7 @@
 	desc = "Contains a bulk supply of saline-glucose condensed into a single canister that \
 		should last several days, with a large pump to fill containers with. Direct injection \
 		of saline should be left to medical professionals as the pump is capable of overdosing \
-		patients. Requires medbay access to open."
+		patients."
 	cost = CARGO_CRATE_VALUE * 6
 	access = ACCESS_MEDICAL
 	contains = list(/obj/machinery/iv_drip/saline)
@@ -127,8 +138,7 @@
 /datum/supply_pack/medical/virus
 	name = "Virus Crate"
 	desc = "Contains twelve different bottles of several viral samples for virology \
-		research. Also includes seven beakers and syringes. Balled-up jeans not included. \
-		Requires CMO access to open."
+		research. Also includes seven beakers and syringes. Balled-up jeans not included."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_CMO
 	access_view = ACCESS_VIROLOGY
@@ -151,7 +161,7 @@
 
 /datum/supply_pack/medical/cmoturtlenecks
 	name = "Chief Medical Officer Turtlenecks"
-	desc = "Contains the CMO's turtleneck and turtleneck skirt. Requires CMO access to open."
+	desc = "Contains the CMO's turtleneck and turtleneck skirt."
 	cost = CARGO_CRATE_VALUE * 2
 	access = ACCESS_CMO
 	contains = list(/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck,

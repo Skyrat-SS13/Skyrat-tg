@@ -1,7 +1,7 @@
 /obj/item/bodypart/leg/right/taur
 	icon_greyscale = BODYPART_ICON_TAUR
 	limb_id = LIMBS_TAUR
-	dismemberable = FALSE
+	bodypart_flags = BODYPART_UNREMOVABLE
 	can_be_surgically_removed = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_TAUR
 
@@ -15,7 +15,7 @@
 /obj/item/bodypart/leg/left/taur
 	icon_greyscale = BODYPART_ICON_TAUR
 	limb_id = LIMBS_TAUR
-	dismemberable = FALSE
+	bodypart_flags = BODYPART_UNREMOVABLE
 	can_be_surgically_removed = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_TAUR
 
