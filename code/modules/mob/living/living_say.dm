@@ -420,8 +420,17 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
  *
  * message - The message to treat.
  * capitalize_message - Whether we run capitalize() on the message after we're done.
+ *
+ * Returns a list, which is a packet of information corresponding to the message that has been treated, which
+ * contains the new message, as well as text-to-speech information.
  */
+<<<<<<< HEAD
 /mob/living/proc/treat_message(message, capitalize_message = TRUE)
+=======
+/mob/living/proc/treat_message(message, tts_message, tts_filter, capitalize_message = TRUE)
+	RETURN_TYPE(/list)
+
+>>>>>>> 4a2df9bb5b9 (Fixes Request Console Announcements (#75496))
 	if(HAS_TRAIT(src, TRAIT_UNINTELLIGIBLE_SPEECH))
 		message = unintelligize(message)
 
@@ -430,7 +439,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(capitalize_message)
 		message = capitalize(message)
 
+<<<<<<< HEAD
 	return message
+=======
+	return list("message" = message, "tts_message" = tts_message, "tts_filter" = tts_filter)
+>>>>>>> 4a2df9bb5b9 (Fixes Request Console Announcements (#75496))
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
 	//SKYRAT EDIT ADDITION BEGIN
