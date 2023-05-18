@@ -245,14 +245,6 @@
 	icon_state = "kuban_cossak"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/cossack/sec
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "security ukrainian coat"
-	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
-	icon_state = "don_cossak"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
