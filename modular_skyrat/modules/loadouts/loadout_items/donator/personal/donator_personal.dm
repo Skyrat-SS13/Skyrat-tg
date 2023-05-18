@@ -156,7 +156,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
