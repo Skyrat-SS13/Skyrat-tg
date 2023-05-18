@@ -22,3 +22,6 @@
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	//SKYRAT EDIT END
+
+/obj/structure/closet/secure_closet/bar/all_access
+	req_access = null
