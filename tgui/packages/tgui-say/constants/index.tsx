@@ -1,5 +1,13 @@
 /** Radio channels */
-export const CHANNELS = ['Say', 'Radio', 'Me', 'OOC', 'Admin'] as const;
+export const CHANNELS = [
+  'Say',
+  'Radio',
+  'Me',
+  'Whis', // SKYRAT EDIT ADDITION - CUSTOMIZATION
+  'LOOC', // SKYRAT EDIT ADDITION - CUSTOMIZATION
+  'OOC',
+  'Admin',
+] as const;
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {

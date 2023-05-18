@@ -431,7 +431,8 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	microfusion_gun.can_bayonet = initial(microfusion_gun.can_bayonet)
 	if(microfusion_gun.bayonet)
 		microfusion_gun.bayonet.forceMove(get_turf(microfusion_gun))
-		microfusion_gun.clear_bayonet()
+		microfusion_gun.bayonet = null
+		microfusion_gun.update_appearance()
 	microfusion_gun.remove_all_attachments()
 
 /*
