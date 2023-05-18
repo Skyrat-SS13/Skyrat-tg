@@ -179,7 +179,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
 
-//PEACEKEEPER BELTS
+//PEACEKEEPER BELTS 
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
 	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
@@ -256,6 +256,7 @@
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/holosign_creator/security
 		))
+		
 
 //BOOTS
 /obj/item/clothing/shoes/jackboots/peacekeeper
