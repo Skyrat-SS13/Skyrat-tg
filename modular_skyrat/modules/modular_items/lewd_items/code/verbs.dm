@@ -22,12 +22,12 @@
 	set category = "OOC"
 	set desc = "Removes any and all lewd items from you."
 
-	log_message("[get_ckey(src)] used the Remove Lewd Items verb.")
+	log_message("[key_name(src)] used the Remove Lewd Items verb.")
 	for(var/obj/item/equipped_item in get_equipped_items())
 		if(!(equipped_item.type in GLOB.pref_checked_clothes))
 			continue
 
-		log_message("[equipped_item] was removed from [src].")
+		log_message("[equipped_item] was removed from [key_name(src)].")
 		dropItemToGround(equipped_item, TRUE)
 
 	return TRUE
