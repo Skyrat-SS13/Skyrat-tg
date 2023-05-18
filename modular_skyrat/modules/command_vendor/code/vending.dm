@@ -48,7 +48,7 @@
 		/obj/item/clothing/under/rank/blueshield/turtleneck = 1,
 		/obj/item/clothing/under/rank/blueshield/turtleneck/skirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshield = 1,
-		/obj/item/clothing/suit/armor/vest/blueshieldarmor = 1,
+		/obj/item/clothing/suit/armor/vest/blueshield/jacket = 1,
 		/obj/item/clothing/neck/mantle/bsmantle = 1,
 		/obj/item/storage/backpack/blueshield = 1,
 		/obj/item/storage/backpack/satchel/blueshield = 1,
