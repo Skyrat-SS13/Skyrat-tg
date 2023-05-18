@@ -440,7 +440,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_white"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -483,7 +482,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_warden"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
@@ -494,7 +492,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/security
 	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
-	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Lopland\"</b> logo."
+	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority. The zipper tab is a small <b>\"Lopland\"</b> logo."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity_winter"
@@ -690,11 +688,10 @@
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
 	current_skin = "security"	//prevents reskinning
-	
-	
+
 /obj/item/storage/belt/holster
 	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
-	
+
 /obj/item/storage/belt/holster/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
@@ -710,7 +707,7 @@
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
 		))
-	
+
 /obj/item/storage/belt/holster/detective
 	name = "detective's holster"
 	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
@@ -729,7 +726,6 @@
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
 		))
-
 
 /*
 *	HEAD
