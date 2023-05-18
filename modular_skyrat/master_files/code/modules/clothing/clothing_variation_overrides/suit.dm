@@ -126,13 +126,10 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
+/obj/item/clothing/suit/armor/changeling
+	supports_variations_flags = NONE
+
 /obj/item/clothing/suit/armor/vest/ctf
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/marine/security
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/marine/engineer
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/vest/leather //This item blows
@@ -170,6 +167,12 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/apron/overalls
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/marine/security
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/marine/engineer
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 //Chaplain Suits
