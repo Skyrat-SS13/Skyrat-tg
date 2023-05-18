@@ -361,10 +361,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	MISC
 */
 
-/datum/loadout_item/suit/cossak
-	name = "Ukrainian Coat"
-	item_path = /obj/item/clothing/suit/cossack
-
 /datum/loadout_item/suit/parka
 	name = "Falls Parka"
 	item_path = /obj/item/clothing/suit/fallsparka
@@ -553,11 +549,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC) //Not giving this one to COs because it's actually better than the one they spawn with
 
-/datum/loadout_item/suit/cossak/sec
-	name = "Ukrainian Security Jacket"
-	item_path = /obj/item/clothing/suit/armor/cossack/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
-
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
@@ -594,7 +585,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/supply_gorka_jacket
 	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka
+	item_path = /obj/item/clothing/suit/jacket/gorka
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 // LABCOATS

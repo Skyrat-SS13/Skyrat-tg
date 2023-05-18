@@ -53,13 +53,12 @@
 	desc = "A comfortable jacket in a neutral black"
 	icon_state = "off_dep_jacket"
 
-/obj/item/clothing/suit/gorka
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+/obj/item/clothing/suit/jacket/gorka
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/jacket.dmi'
 	name = "supply gorka jacket"
 	desc = "A snug jacket to wear over your gorka. This one matches with supply's colors."
 	icon_state = "gorka_jacket_supply"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/jacket/supply/head
 	name = "quartermaster's jacket"

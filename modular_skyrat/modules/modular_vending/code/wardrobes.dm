@@ -40,7 +40,7 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/utility = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
-		/obj/item/clothing/suit/gorka = 3,
+		/obj/item/clothing/suit/jacket/gorka = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
 		/obj/item/clothing/glasses/hud/gun_permit = 5, //from company imports module
 	)
