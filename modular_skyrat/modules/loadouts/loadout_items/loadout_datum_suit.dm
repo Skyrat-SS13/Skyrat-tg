@@ -560,14 +560,19 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 // JACKETS
 /datum/loadout_item/suit/navybluejacketofficer
-	name = "Security Officer's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/navyblue
+	name = "Security Officer's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/officer/blue
 	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
-	name = "Warden's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/vest/warden/navyblue
+	name = "Warden's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/warden/blue
 	restricted_roles = list(JOB_WARDEN)
+
+/datum/loadout_item/suit/navybluejackethos
+	name = "Head of Security's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/hos/blue
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/suit/security_jacket
 	name = "Security Jacket"
