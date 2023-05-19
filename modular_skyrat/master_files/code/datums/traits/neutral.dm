@@ -177,7 +177,7 @@
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"
-	desc = "Bark. You seem to act like a canine for whatever reason."
+	desc = "Bark. You seem to act like a canine for whatever reason. This will replace most other tongue-based speech quirks."
 	icon = FA_ICON_DOG
 	value = 0
 	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."

@@ -62,8 +62,10 @@
 	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 
 /datum/action/changeling/fakedeath/can_sting(mob/living/user)
-	if(HAS_TRAIT_FROM(user, TRAIT_DEATHCOMA, "changeling") && !revive_ready)
-		user.balloon_alert(user, "already reviving!")
+	if(revive_ready)
+		return ..()
+
+	if(!can_enter_stasis(user))
 		return
 	//Confirmation for living changelings if they want to fake their death
 	if(user.stat != DEAD)
