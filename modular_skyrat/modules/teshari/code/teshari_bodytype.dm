@@ -54,8 +54,7 @@
 
 		// Generate muzzled icon, but offset
 		var/icon/new_icon = icon('icons/blanks/32x32.dmi', "nothing")
-		selected_offset?.apply_offset(new_icon)
-		new_icon.Blend(icon(human_icon, human_icon_state), ICON_OVERLAY)
+		new_icon.Blend(icon(human_icon, human_icon_state), ICON_OVERLAY, x = selected_offset.offset_x["north"], y = selected_offset.offset_y["north"])
 		new_icon.Insert(new_icon, human_icon_state)
 		set_custom_worn_icon_cached(human_icon, human_icon_state, "m", new_icon)
 		return new_icon
