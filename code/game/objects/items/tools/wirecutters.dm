@@ -19,7 +19,7 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(/datum/material/iron=80)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.8)
 	attack_verb_continuous = list("pinches", "nips")
 	attack_verb_simple = list("pinch", "nip")
 	hitsound = 'sound/items/wirecutter.ogg'
@@ -71,15 +71,15 @@
 	name = "alien wirecutters"
 	desc = "Extremely sharp wirecutters, made out of a silvery-green metal."
 	icon = 'icons/obj/abductor.dmi'
-	custom_materials = list(/datum/material/iron = 5000, /datum/material/silver = 2500, /datum/material/plasma = 1000, /datum/material/titanium = 2000, /datum/material/diamond = 2000)
+	custom_materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/silver = SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SHEET_MATERIAL_AMOUNT)
 	icon_state = "cutters"
 	toolspeed = 0.1
 	random_color = FALSE
 
-/obj/item/wirecutters/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/wirecutters/cyborg
 	name = "powered wirecutters"
 	desc = "Cuts wires with the power of ELECTRICITY. Faster than normal wirecutters."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "wirecutters_cyborg"
 	worn_icon_state = "cutters"
 	toolspeed = 0.5

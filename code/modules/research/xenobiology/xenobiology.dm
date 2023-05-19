@@ -482,10 +482,10 @@
 			return 450
 
 		if(SLIME_ACTIVATE_MAJOR)
-			to_chat(user, span_warning("You feel your body rapidly crystallizing..."))
+			to_chat(user, span_warning("You feel your body rapidly hardening..."))
 			if(do_after(user, 120, target = user))
 				to_chat(user, span_warning("You feel solid."))
-				user.set_species(pick(/datum/species/golem/adamantine))
+				user.set_species(/datum/species/golem)
 				return
 			to_chat(user, span_notice("You stop feeding [src], and your body returns to its slimelike state."))
 
@@ -776,6 +776,7 @@
 	SEND_SIGNAL(switchy_mob, COMSIG_SIMPLEMOB_TRANSFERPOTION, user)
 	switchy_mob.faction = user.faction.Copy()
 	switchy_mob.copy_languages(user, LANGUAGE_MIND)
+	switchy_mob.update_atom_languages()
 	user.death()
 	to_chat(switchy_mob, span_notice("In a quick flash, you feel your consciousness flow into [switchy_mob]!"))
 	to_chat(switchy_mob, span_warning("You are now [switchy_mob]. Your allegiances, alliances, and role is still the same as it was prior to consciousness transfer!"))
@@ -1019,7 +1020,7 @@
 	inhand_icon_state = "tile-bluespace"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 6
-	mats_per_unit = list(/datum/material/iron=500)
+	mats_per_unit = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5)
 	throwforce = 10
 	throw_speed = 3
 	throw_range = 7
@@ -1036,7 +1037,7 @@
 	inhand_icon_state = "tile-sepia"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 6
-	mats_per_unit = list(/datum/material/iron=500)
+	mats_per_unit = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5)
 	throwforce = 10
 	throw_speed = 0.1
 	throw_range = 28

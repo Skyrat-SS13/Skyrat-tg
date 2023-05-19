@@ -564,6 +564,12 @@
 	attack_verb_simple = list("bite", "eat", "fin slap")
 	squeak_override = list('sound/weapons/bite.ogg'=1)
 
+//Other donation reward for Razurath
+/obj/item/toy/plush/skyrat/plushie_razurath/second
+	name = "dwarf shark plushie"
+	desc = "Despite her height, the plushie regards you with keen and frankly unamused eyes; the look on her face, and the elegance of her little tiny coat tell you that she knows something you don't."
+	icon_state = "plushie_nedilla"
+
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
 	name = "bumbling wolfgirl plushie"
@@ -621,3 +627,11 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 	gender = MALE
 
+//Donation reward for Frixit
+/obj/item/toy/plush/skyrat/plushie_synthia
+	name = "adventurous synth plushie"
+	desc = "This plush is perfect For adventures in space and in bed, a cuddly purple Synth, their scarf is extra soft!"
+	icon_state = "plushie_synthia"
+	attack_verb_continuous = list("blushes", "hugs", "whips")
+	attack_verb_simple = list("blush", "hug", "whip")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
