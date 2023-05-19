@@ -6,55 +6,6 @@ $lightMode: #ffffff;
 $lightBorder: #bbbbbb;
 $lightHover: #eaeaea;
 
-<<<<<<< HEAD
-////////////////////////////////////////////////
-// Normal chat colors
-$say: #a4bad6;
-$radio: #1ecc43;
-$me: #5975da;
-$whis: #7c7fd9; // SKYRAT EDIT ADDITION - CUSTOMIZATION
-$ooc: #cca300;
-$looc: #ffceb6; // SKYRAT EDIT ADDITION - CUSTOMIZATION
-
-////////////////////////////////////////////////
-// Subchannel chat colors
-$ai: #d65d95;
-$admin: #ffbbff;
-$binary: #1e90ff;
-$centcom: #2681a5;
-$command: #fcdf03;
-$engi: #f37746;
-$hive: #855d85;
-$medical: #57b8f0;
-$science: #c68cfa;
-$security: #dd3535;
-$syndicate: #8f4a4b;
-$service: #6ca729;
-$supply: #b88646;
-
-$_channel_map: (
-  'say': $say,
-  'radio': $radio,
-  'me': $me,
-  // SKYRAT EDIT ADDITION START - CUSTOMIZATION
-  'whis': $whis,
-  'looc': $looc,
-  // SKYRAT EDIT ADDITION END
-  'ooc': $ooc,
-  'ai': $ai,
-  'admin': $admin,
-  'binary': $binary,
-  'centcom': $centcom,
-  'command': $command,
-  'engi': $engi,
-  'hive': $hive,
-  'medical': $medical,
-  'science': $science,
-  'security': $security,
-  'syndicate': $syndicate,
-  'service': $service,
-  'supply': $supply,
-=======
 $_channel_map: (
   'Admin': #ffbbff,
   'AI': #d65d95,
@@ -63,6 +14,8 @@ $_channel_map: (
   'Engi': #f37746,
   'Hive': #855d85,
   'io': #1e90ff,
+  // SKYRAT EDIT ADDITION
+  'LOOC': #ffceb6,
   'Me': #5975da,
   'Med': #57b8f0,
   'OOC': #cca300,
@@ -73,7 +26,8 @@ $_channel_map: (
   'Supp': #b88646,
   'Svc': #6ca729,
   'Synd': #8f4a4b,
->>>>>>> aa74657f699 (Tgui say v1.1 (#75431))
+  // SKYRAT EDIT ADDITION
+  'Whis': #7c7fd9,
 );
 
 $channel_keys: map.keys($_channel_map) !default;
