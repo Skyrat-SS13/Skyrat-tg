@@ -302,6 +302,12 @@
 
 	sleep(10 SECONDS)
 
+	send_message("You hear the echoing of cogs ")
+
+	addtimer(CALLBACK(src, PROC_REF(send_message), "The echoing of cogs returns, even louder, "), (selected_research.time_to_research / 2), 90)
+
+/// Send a message to everyone on the Z level with directions to the lectern
+/obj/structure/destructible/clockwork/gear_base/technologists_lectern/proc/send_message(message = "You hear the echoing of cogs ", volume = 70)
 	for(var/mob/living/living_mob as anything in GLOB.mob_living_list)
 		if((living_mob.z != z) || IS_CLOCK(living_mob) || !living_mob.can_hear())
 			continue
@@ -310,7 +316,6 @@
 		var/turf/mob_turf = get_turf(living_mob)
 		var/dist = get_dist(mob_turf, src)
 		var/dir = get_dir(mob_turf, src)
-		var/message = "You hear the echoing of cogs "
 		switch(dist)
 			if (0 to 15)
 				message += "very nearby, to your [dir2text(dir)]!"
@@ -321,9 +326,8 @@
 			else
 				message += "very far, to your [dir2text(dir)]!"
 
-		living_mob.playsound_local(target_turf, 'modular_skyrat/modules/clock_cult/sound/machinery/research_notice.ogg', 70, FALSE, pressure_affected = FALSE) // Shit? Maybe?
+		living_mob.playsound_local(get_turf(src), 'modular_skyrat/modules/clock_cult/sound/machinery/research_notice.ogg', volume, FALSE, pressure_affected = FALSE)
 		to_chat(living_mob, span_brass(message))
-
 
 
 /// Called when the research finishes, cleaning up everything and triggering the appropriate effects
