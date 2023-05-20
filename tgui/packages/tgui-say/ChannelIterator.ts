@@ -23,9 +23,9 @@ export class ChannelIterator {
     'Me',
     // SKYRAT EDIT ADDITION
     'Whis',
-    'OOC',
-    // SKYRAT EDIT ADDITION
     'LOOC',
+    // SKYRAT EDIT ADDITION
+    'OOC',
     'Admin',
   ];
   private readonly blacklist: Channel[] = ['Admin'];
