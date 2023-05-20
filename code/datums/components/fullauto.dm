@@ -143,7 +143,7 @@
 		if(!_target)
 			CRASH("Failed to get the turf under clickcatcher")
 
-	if(SEND_SIGNAL(parent, COMSIG_AUTOFIRE_ONMOUSEDOWN, source, _target, location, control, params) & COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS) // SKYRAT EDIT CHANGE: ORIGINAL if(SEND_SIGNAL(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, source, _target, location, control, params) & COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS)
+	if(SEND_SIGNAL(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, source, _target, location, control, params) & COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS)
 		return
 
 	source.click_intercept_time = world.time //From this point onwards Click() will no longer be triggered.
