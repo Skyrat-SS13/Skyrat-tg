@@ -1,4 +1,4 @@
-#define SHELL_TRANSPARENCY_ALPHA 180
+#define SHELL_TRANSPARENCY_ALPHA 90
 
 /obj/item/storage/backpack/snail
 	var/storage_core = FALSE
