@@ -11,6 +11,7 @@
 	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_state = "control_boxp"
 	icon_keyboard = null
+	icon_screen = null
 	/// A weakref to our cannon
 	var/datum/weakref/connected_cannon
 	/// The current system status of the gun
