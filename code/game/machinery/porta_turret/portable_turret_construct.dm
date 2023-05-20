@@ -98,19 +98,10 @@
 
 
 		if(PTURRET_INTERNAL_ARMOUR_ON)
-<<<<<<< HEAD
-			if(istype(I, /obj/item/gun/energy)) //the gun installation part
-				if(istype(I, /obj/item/gun/energy/cell_loaded/medigun)) //SKYRAT EDIT MEDIGUNS//
-					to_chat(user, span_notice("The [I] is unable to fit inside of the turret"))
-					return //SKYRAT EDIT MEDIGUN END//
-				var/obj/item/gun/energy/E = I
-				if(!user.transferItemToLoc(E, src))
-=======
 			if(istype(used, /obj/item/gun/energy)) //the gun installation part
 				var/obj/item/gun/energy/egun = used
 				if(egun.gun_flags & TURRET_INCOMPATIBLE)
 					to_chat(user, span_notice("You don't think it would be right to add [used] to the turret"))
->>>>>>> 642722affa4 (Adds a blacklist for putting guns in turrets (#75263))
 					return
 				if(!user.transferItemToLoc(egun, src))
 					return
