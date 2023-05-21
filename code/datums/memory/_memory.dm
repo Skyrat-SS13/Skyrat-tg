@@ -237,7 +237,6 @@
 		/mob/living/basic/giant_spider,
 		/mob/living/basic/giant_spider/hunter,
 		/mob/living/basic/killer_tomato,
-		/mob/living/basic/lizard,
 		/mob/living/basic/mouse,
 		/mob/living/basic/pet/dog/breaddog,
 		/mob/living/basic/pet/dog/corgi,
@@ -255,11 +254,7 @@
 		/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
 		/mob/living/simple_animal/hostile/gorilla,
 		/mob/living/simple_animal/hostile/headcrab,
-<<<<<<< HEAD
-		/mob/living/simple_animal/hostile/killertomato,
 		/mob/living/simple_animal/hostile/lizard,
-=======
->>>>>>> 9ae0802eadf (Converts Killer Tomatoes to Basic Mobs (#75516))
 		/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 		/mob/living/simple_animal/hostile/morph,
 		/mob/living/simple_animal/hostile/mushroom,
