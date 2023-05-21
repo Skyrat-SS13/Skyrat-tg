@@ -259,7 +259,7 @@
 /obj/item/trash/vendor_trash/lizard_bag
 	name = "empty tizirian snack bag"
 	desc = "All that money importing tizirian snacks just to end at this?"
-	icon_state = "tiziria_bag_trash"
+	icon_state = "tizira_bag_trash"
 
 /obj/item/food/vendor_snacks/lizard_box
 	name = "tizirian dumplings"
@@ -282,8 +282,8 @@
 
 /obj/item/trash/vendor_trash/lizard_box
 	name = "empty tizirian snack box"
-	desc = "Tiziria, contributing to the space plastic crisis since 2530."
-	icon_state = "tiziria_box_trash"
+	desc = "Tizira, contributing to the space plastic crisis since 2530."
+	icon_state = "tizira_box_trash"
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom
 	name = "bottle of mushroom tea"

@@ -176,8 +176,8 @@
 /obj/machinery/vending/imported/tizirian
 	name = "Tizirian Imported Delicacies"
 	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tizirian brands."
-	icon_state = "tiziria_food"
-	light_mask = "tiziria_food-light-mask"
+	icon_state = "tizira_food"
+	light_mask = "tizira_food-light-mask"
 	light_color = LIGHT_COLOR_FIRE
 	product_slogans = "Real imports from the capital itself, we promise!;Rare selections of salt water catch!;Moonfish glaze included with all meat options!"
 	product_categories = list(
@@ -199,9 +199,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/tiziria = 6,
-				/obj/item/storage/box/foodpack/tiziria/roll = 6,
-				/obj/item/storage/box/foodpack/tiziria/stir_fry = 6,
+				/obj/item/storage/box/foodpack/tizira = 6,
+				/obj/item/storage/box/foodpack/tizira/roll = 6,
+				/obj/item/storage/box/foodpack/tizira/stir_fry = 6,
 				/obj/item/food/vendor_tray_meal/side/root_crackers = 6,
 				/obj/item/food/vendor_tray_meal/side/korta_brittle = 6,
 				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 6,
