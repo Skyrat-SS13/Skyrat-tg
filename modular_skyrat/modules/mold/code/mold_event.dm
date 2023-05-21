@@ -18,15 +18,15 @@
 /datum/round_event/mold
 	fakeable = FALSE
 	var/list/available_molds_t1 = list(
-		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/emp,
-		/obj/structure/biohazard_blob/structure/core/radioactive,
+		/obj/structure/mold/structure/core/fire,
+		/obj/structure/mold/structure/core/emp,
+		/obj/structure/mold/structure/core/radioactive,
 	)
 	var/list/available_molds_t2 = list(
-		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/fungus,
-		/obj/structure/biohazard_blob/structure/core/radioactive,
-		/obj/structure/biohazard_blob/structure/core/emp,
+		/obj/structure/mold/structure/core/fire,
+		/obj/structure/mold/structure/core/fungus,
+		/obj/structure/mold/structure/core/radioactive,
+		/obj/structure/mold/structure/core/emp,
 	)
 
 /datum/round_event/mold
@@ -52,7 +52,7 @@
 	else if(active_players < MOLDIES_MIDPOP_THRESHOLD && prob((active_players - MOLDIES_LOWPOP_THRESHOLD) * (100 / (MOLDIES_MIDPOP_THRESHOLD - MOLDIES_LOWPOP_THRESHOLD))))
 		mold_spawns = MOLDIES_SPAWN_LOWPOP_MAX
 
-	var/obj/structure/biohazard_blob/resin/resin_test = new()
+	var/obj/structure/mold/resin/resin_test = new()
 
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
@@ -79,12 +79,12 @@
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(turfs.len) //Pick a turf to spawn at if we can
-			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, picked_turf))
+			if(locate(/obj/structure/mold/structure/core) in range(20, picked_turf))
 				turfs -= picked_turf
 				continue
-			if(istype(picked_mold, /obj/structure/biohazard_blob/structure/core/fungus))
+			if(istype(picked_mold, /obj/structure/mold/structure/core/fungus))
 				announce_chance = 100
-			var/obj/structure/biohazard_blob/blob = new picked_mold(picked_turf)
+			var/obj/structure/mold/blob = new picked_mold(picked_turf)
 			announce_to_ghosts(blob)
 			turfs -= picked_turf
 			i++
