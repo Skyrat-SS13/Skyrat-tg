@@ -377,8 +377,6 @@
 		/mob/living/simple_animal/hostile/mining_drone/interdyne,
 		/mob/living/simple_animal/hostile/mutantliz,
 		/mob/living/simple_animal/hostile/plantmutant,
-		/mob/living/simple_animal/hostile/retaliate/tegu,
-		/mob/living/simple_animal/hostile/retaliate/tegu/gus,
 		/mob/living/simple_animal/hostile/scorpion,
 		/mob/living/simple_animal/hostile/syndimouse,
 		/mob/living/simple_animal/hostile/trog,
