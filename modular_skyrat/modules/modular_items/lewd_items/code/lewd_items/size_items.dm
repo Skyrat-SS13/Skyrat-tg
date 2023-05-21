@@ -21,12 +21,12 @@
 
 	var/chosen_size = tgui_input_number(user, "What size percentage do you wish to set the collar to?", name, 100, CONFIG_GET(number/size_collar_maximum), CONFIG_GET(number/size_collar_minimum))
 	if(!chosen_size)
-		to_chat(user, span_warning("You didn't choose a valid size."))
+		balloon_alert(user, "invalid size!")
 		return FALSE
 
-	log_message("[src] had it's target size changed to [chosen_size]% by [usr]", LOG_ATTACK)
-	to_chat(user, span_notice("[src] is now set to [chosen_size]%"))
-	target_size = (chosen_size / 100)
+	log_message("[src] had its target size changed to [chosen_size]% by [usr]", LOG_ATTACK)
+	balloon_alert(user, "set to [chosen_size]%")
+	target_size = (chosen_size * 0.01)
 	return TRUE
 
 /obj/item/clothing/neck/size_collar/mob_can_equip(mob/living/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
@@ -83,12 +83,12 @@
 /// Checks if we need to revert our size when entering a different area.
 /datum/component/temporary_size/proc/check_area()
 	var/area/current_area = get_area(parent)
-	if(length(allowed_areas) && !is_type_in_list(current_area, allowed_areas))
-		apply_size(original_size)
-		return FALSE
+	if(length(allowed_areas) && is_type_in_list(current_area, allowed_areas))
+		apply_size(target_size)
+		return TRUE
 
-	apply_size(target_size)
-	return TRUE
+	apply_size(original_size)
+	return FALSE
 
 /// Adjusts the sprite size of the parent mob based off `size_to_apply`.
 /datum/component/temporary_size/proc/apply_size(size_to_apply)
