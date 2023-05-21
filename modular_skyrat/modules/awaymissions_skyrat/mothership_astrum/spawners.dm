@@ -8,7 +8,8 @@
 				/obj/item/stack/medical/mesh/advanced = 21,
 				/obj/item/clothing/under/chameleon = 20,
 				/obj/item/shield/riot/tele = 12,
-				/obj/item/clothing/shoes/chameleon/noslip = 10)
+				/obj/item/clothing/shoes/chameleon/noslip = 10,
+				)
 
 /obj/effect/spawner/random/astrum/mid
 	name = "astrum mid"
@@ -18,7 +19,8 @@
 				/obj/item/book/granter/action/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
-				/obj/item/melee/baton/telescopic = 12)
+				/obj/item/melee/baton/telescopic = 12,
+				)
 
 /obj/effect/spawner/random/astrum/sci_loot
 	name = "abductor scientist loot"
@@ -34,7 +36,8 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 30)
+				/obj/effect/gibspawner/generic = 30,
+				)
 
 /obj/effect/spawner/random/astrum/agent_loot
 	name = "abductor agent loot"
@@ -43,5 +46,5 @@
 				/obj/item/clothing/head/helmet/astrum = 10,
 				/obj/item/organ/internal/cyberimp/arm/armblade = 5,
 				/obj/effect/gibspawner/generic = 10,
-				/obj/item/organ/internal/eyes/alien = 5
+				/obj/item/organ/internal/eyes/alien = 5,
 				)

@@ -38,4 +38,3 @@
 
 /datum/ai_behavior/basic_ranged_attack/abductor
 	action_cooldown = 2.5 SECONDS
-	required_distance = 3
