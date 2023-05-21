@@ -49,6 +49,7 @@
 	. = ..()
 	if(size_component)
 		qdel(size_component)
+		size_component = null
 
 /// Component that temporarily applies a size to a human.
 /datum/component/temporary_size
