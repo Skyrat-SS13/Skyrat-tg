@@ -1488,7 +1488,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-//Donation reward for Razurath
+//Public donation reward for Razurath
 /obj/item/clothing/suit/toggle/digicoat/glitched
 	name = "hacked digicoat"
 	desc = "Glitched images display across the back. Cool!"

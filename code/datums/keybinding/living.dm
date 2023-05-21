@@ -21,7 +21,7 @@
 	return TRUE
 
 /datum/keybinding/living/look_up
-	//hotkey_keys = list("L") //ORIGINAL
+	// hotkey_keys = list("L") // ORIGINAL
 	hotkey_keys = list("P") //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	name = "look up"
 	full_name = "Look Up"
@@ -42,7 +42,8 @@
 	return TRUE
 
 /datum/keybinding/living/look_down
-	hotkey_keys = list(";")
+	// hotkey_keys = list(";") // ORIGINAL
+	hotkey_keys = list("\[") //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	name = "look down"
 	full_name = "Look Down"
 	description = "Look down at the previous z-level.  Only works if directly above open space."

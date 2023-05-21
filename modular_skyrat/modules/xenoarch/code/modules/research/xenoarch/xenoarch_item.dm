@@ -15,8 +15,8 @@
 		if(istype(src, /obj/item/xenoarch/useless_relic/magnified))
 			balloon_alert(user, "already magnified!")
 			return
-		if(!is_curator_job(user.mind?.assigned_role))
-			balloon_alert(user, "must be a curator!")
+		if(!HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
+			balloon_alert(user, "needs training!") // it was very tempting to replace this with "skill issue"
 			return
 		balloon_alert(user, "starting analysis!")
 		if(!do_after(user, 5 SECONDS, target = src))
@@ -80,6 +80,7 @@
 			new_item.desc = "This useless relic is an ancient rock bowl that dates from around [rand(900,1100)] years ago. \
 			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
 			Perhaps it will give insight into the ancient's eating and drinking habits."
+	new_item.desc += " Whatever use it possibly had in the past, its only use now is either as a museum piece, or being sold off to collectors via the Cargo shuttle."
 	qdel(src)
 
 #undef ANCIENT_URN
@@ -93,16 +94,21 @@
 
 /obj/item/xenoarch/useless_relic/magnified
 	name = "magnified useless relic"
-	desc = "A useless relic that can be redeemed for cargo or research points. Has been magnified."
+	desc = "A useless relic that can be exported through Cargo. Has been magnified."
 
 /datum/export/xenoarch/useless_relic
 	cost = CARGO_CRATE_VALUE * 3 //600
 	unit_name = "useless relic"
 	export_types = list(/obj/item/xenoarch/useless_relic)
 	include_subtypes = FALSE
+	k_elasticity = 0
 
-/datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
+/datum/export/xenoarch/broken_item
+	cost = CARGO_CRATE_VALUE*5
+	unit_name = "broken object"
+	export_types = list(/obj/item/xenoarch/broken_item)
+	include_subtypes = TRUE
+	k_elasticity = 0
 
 /datum/export/xenoarch/useless_relic/magnified
 	cost = CARGO_CRATE_VALUE * 6 //1200
@@ -176,11 +182,6 @@
 	desc = "A piece of clothing that has long since lost its beauty."
 	icon_state = "recover_clothing"
 
-/datum/export/xenoarch/broken_item
-	cost = CARGO_CRATE_VALUE*5
-	unit_name = "broken object"
-	export_types = list(/obj/item/xenoarch/broken_item)
-	include_subtypes = TRUE
 
 //circuit boards
 /obj/item/circuitboard/machine/xenoarch_machine

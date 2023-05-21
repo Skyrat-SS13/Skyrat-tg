@@ -1112,24 +1112,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-				if("LOOC")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=looc")
-				if("Whisper")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=whisper")
-				//SKYRAT EDIT END
-				if(SAY_CHANNEL)
-					var/say = tgui_say_create_open_command(SAY_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[say]")
-				if(RADIO_CHANNEL)
-					var/radio = tgui_say_create_open_command(RADIO_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[radio]")
-				if(ME_CHANNEL)
-					var/me = tgui_say_create_open_command(ME_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[me]")
-				if(OOC_CHANNEL)
-					var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[ooc]")
 				if(ADMIN_CHANNEL)
 					if(holder)
 						var/asay = tgui_say_create_open_command(ADMIN_CHANNEL)
