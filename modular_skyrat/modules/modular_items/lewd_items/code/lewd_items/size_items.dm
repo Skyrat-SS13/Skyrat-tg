@@ -43,7 +43,7 @@
 	if(!ishuman(user) || !(slot & ITEM_SLOT_NECK))
 		return FALSE
 
-	size_component = user.AddComponent(/datum/component/temporary_size)
+	size_component = user.AddComponent(/datum/component/temporary_size, target_size)
 	size_component.target_size = target_size
 
 	user.log_message("[src] was equipped by [user].", LOG_ATTACK)
@@ -67,7 +67,7 @@
 	/// What size are we changing the parent mob to?
 	var/target_size = 1
 
-/datum/component/temporary_size/New(list/raw_args)
+/datum/component/temporary_size/Initialize(size_to_apply)
 	. = ..()
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -79,6 +79,8 @@
 		return COMPONENT_INCOMPATIBLE
 
 	RegisterSignal(parent, COMSIG_ENTER_AREA, .proc/check_area)
+
+	target_size = size_to_apply
 	check_area()
 
 /// Checks if we need to revert our size when entering a different area.
