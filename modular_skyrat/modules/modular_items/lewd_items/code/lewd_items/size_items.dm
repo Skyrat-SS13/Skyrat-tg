@@ -3,7 +3,7 @@
 
 /obj/item/clothing/neck/size_collar
 	name = "size collar"
-	desc = "A shiny black collar embeded with technology that allows the user to change their own size."
+	desc = "A shiny black collar embeded with technology that allows the user to change their own size. Mysteriously, this only seems to work while inside of dorms."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_black"
