@@ -15,7 +15,9 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
-	return client ? pick(markus_speak) : message // markus only talks business
+	if(client)
+		message = pick(markus_speak) // markus only talks business
+	return ..()
 
 /mob/living/basic/pet/dog/markus/update_dog_speech(datum/ai_planning_subtree/random_speech/speech)
 	. = ..()
