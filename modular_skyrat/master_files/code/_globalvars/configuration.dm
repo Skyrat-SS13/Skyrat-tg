@@ -54,3 +54,9 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /// Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 /datum/config_entry/number/ticket_ping_frequency
+
+/datum/config_entry/number/size_collar_maximum
+	default = 600
+
+/datum/config_entry/number/size_collar_minimum
+	default = 15

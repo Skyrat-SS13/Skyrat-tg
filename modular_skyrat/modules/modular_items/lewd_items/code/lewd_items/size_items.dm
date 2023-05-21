@@ -1,6 +1,3 @@
-#define MAX_DORMS_SIZE 600
-#define MIN_DORMS_SIZE 15
-
 /obj/item/clothing/neck/size_collar
 	name = "size collar"
 	desc = "A shiny black collar embeded with technology that allows the user to change their own size. Mysteriously, this only seems to work while inside of dorms."
@@ -22,7 +19,7 @@
 
 		warning_given = TRUE
 
-	var/chosen_size = tgui_input_number(user, "What size percentage do you wish to set the collar to?", name, 100, MAX_DORMS_SIZE, MIN_DORMS_SIZE)
+	var/chosen_size = tgui_input_number(user, "What size percentage do you wish to set the collar to?", name, 100, CONFIG_GET(number/size_collar_maximum), CONFIG_GET(number/size_collar_minimum))
 	if(!chosen_size)
 		to_chat(user, span_warning("You didn't choose a valid size."))
 		return FALSE
@@ -109,6 +106,3 @@
 	UnregisterSignal(parent, COMSIG_ENTER_AREA)
 
 	return ..()
-
-#undef MAX_DORMS_SIZE
-#undef MIN_DORMS_SIZE
