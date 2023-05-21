@@ -83,7 +83,7 @@
 /// Checks if we need to revert our size when entering a different area.
 /datum/component/temporary_size/proc/check_area()
 	var/area/current_area = get_area(parent)
-	if(length(allowed_areas) && is_type_in_list(current_area, allowed_areas))
+	if(!length(allowed_areas) || is_type_in_list(current_area, allowed_areas))
 		apply_size(target_size)
 		return TRUE
 
