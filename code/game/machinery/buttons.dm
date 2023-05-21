@@ -1,11 +1,6 @@
 /obj/machinery/button
 	name = "button"
 	desc = "A remote control switch."
-<<<<<<< HEAD
-	icon = 'icons/obj/stationobjs.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "doorctrl"
-	var/skin = "doorctrl"
-=======
 	icon = 'icons/obj/buttons.dmi'
 	base_icon_state = "button"
 	icon_state = "button"
@@ -13,7 +8,6 @@
 	var/skin = ""
 	///Whether it is possible to change the panel skin
 	var/can_alter_skin = TRUE
->>>>>>> 440809af9ba (Button sprite refactor (#75536))
 	power_channel = AREA_USAGE_ENVIRON
 	var/obj/item/assembly/device
 	var/obj/item/electronics/airlock/board
