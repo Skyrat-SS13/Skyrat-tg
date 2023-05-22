@@ -132,7 +132,7 @@
 	active_resin.Cut()
 	activate_adjacent_resin_recursive(get_turf(our_core), 4)
 
-/datum/mold_controller/proc/try_spread_resin(obj/structure/biohazard_blob/resin/spreaded_resin)
+/datum/mold_controller/proc/try_spread_resin(obj/structure/mold/resin/spreaded_resin)
 	. = RESIN_CANT_SPREAD
 	var/turf/ownturf = get_turf(spreaded_resin)
 	if(structure_progression > PROGRESSION_FOR_STRUCTURE)

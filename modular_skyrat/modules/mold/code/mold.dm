@@ -2,6 +2,8 @@
 
 /datum/mold
 	var/name = "generic"
+	/// The tier of the mold, used to decide whether it can spawn
+	var/tier = MOLD_TIER_LOW_THREAT
 	/// The color of the mold structures
 	var/color
 	/// The examine text for structures
@@ -33,7 +35,7 @@
 	spewed_reagents.my_atom = source
 	spewed_reagents.add_reagent(reagent_to_add, 30)
 	var/datum/effect_system/fluid_spread/foam/foam = new
-	var/source_turf = get_turf(source)
+	var/turf/source_turf = get_turf(source)
 	foam.set_up(range, location = source_turf, carry = spewed_reagents)
 	foam.start()
 
@@ -58,7 +60,7 @@
 	spawn_atmos(bulb)
 
 /datum/mold/fire/proc/spawn_atmos(obj/structure/mold/structure/source)
-	var/source_turf = get_turf(source)
+	var/turf/source_turf = get_turf(source)
 	source_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 
 
@@ -67,6 +69,7 @@
  */
 /datum/mold/fungal
 	name = "fungal"
+	tier = MOLD_TIER_HIGH_THREAT
 	color = "#6e5100"
 	examine_text = "It looks like it's rotting."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat)
@@ -77,7 +80,7 @@
 	core.visible_message(span_warning("[core] emits a cloud!"))
 	fungal_puff(core, 5)
 
-/datum/mold/fungal/bulb_discharge(obj/sructure/mold/strucure/bulb/bulb)
+/datum/mold/fungal/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	fungal_puff(bulb, 4)
 
 /datum/mold/fungal/proc/fungal_puff(source, range)
@@ -85,7 +88,7 @@
 	reagents.my_atom = source
 	reagents.add_reagent(/datum/reagent/cryptococcus_spores, 50)
 	var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
-	var/source_turf = get_turf(source)
+	var/turf/source_turf = get_turf(source)
 	puff.set_up(range, location = source_turf, carry = reagents, efficiency = 24)
 	puff.attach(source)
 	puff.start()
@@ -111,7 +114,7 @@
 		guarantee_emp = TRUE,
 		)
 
-/datum/mold/emp/bulb_discharge(obj/sructure/mold/strucure/bulb/bulb)
+/datum/mold/emp/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	electrical_discharge(
 		source = bulb,
 		heavy_emp_range = 5,
@@ -120,10 +123,11 @@
 
 /datum/mold/emp/proc/electrical_discharge(obj/structure/mold/structure/source, heavy_emp_range, light_emp_range, guarantee_emp = FALSE)
 	var/severe_effects = prob(50)
+	var/turf/source_turf = get_turf(source)
 	if(guarantee_emp || severe_effects)
-		source.empulse(source, heavy_emp_range, light_emp_range)
+		empulse(source_turf, heavy_emp_range, light_emp_range)
 	if(severe_effects)
-		for(var/mob/living/nearby_hearer in get_hearers_in_view(3, my_turf))
+		for(var/mob/living/nearby_hearer in get_hearers_in_view(3, source_turf))
 			if(nearby_hearer.flash_act(affect_silicon = TRUE))
 				nearby_hearer.Paralyze(20)
 				nearby_hearer.Knockdown(20)
@@ -140,7 +144,7 @@
 	name = "toxic"
 	color = "#5300a1"
 	examine_text = "It feels damp and smells of rat poison."
-	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/giant_spider)
+	mob_types = list(/mob/living/basic/giant_spider)
 	preferred_atmos_conditions = "miasma=50;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
 
@@ -152,7 +156,7 @@
 		reagent_to_add = /datum/reagent/toxin,
 		)
 
-/datum/mold/toxic/bulb_discharge(obj/sructure/mold/strucure/bulb/bulb)
+/datum/mold/toxic/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	spew_foam(
 		bulb,
 		range = MAX_MOLD_FOAM_RANGE,
@@ -182,7 +186,7 @@
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/bulb_discharge(obj/sructure/mold/structure/bulb/bulb)
+/datum/mold/radioactive/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	irradiate(bulb, threshold = 15, fire_nuclear_particle = TRUE)
 	spew_foam(
 		bulb,
@@ -191,7 +195,7 @@
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/bonus_conditioner_effects(obj/sructure/mold/structure/conditioner/conditioner)
+/datum/mold/radioactive/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
 	conditioner.fire_nuclear_particle()
 
 /datum/mold/radioactive/proc/irradiate(obj/structure/mold/structure/source, threshold, fire_nuclear_particle = FALSE)

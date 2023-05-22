@@ -4,7 +4,7 @@
 	lighting_cutoff_green = 35
 	lighting_cutoff_blue = 20
 	mob_biotypes = MOB_ORGANIC
-	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
+	icon = 'modular_skyrat/modules/mold/icons/blob_mobs.dmi'
 	vision_range = 5
 	aggro_vision_range = 8
 	move_to_delay = 6

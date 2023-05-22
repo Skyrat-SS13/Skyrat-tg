@@ -54,7 +54,7 @@
 	/// The time to the next attack
 	var/next_retaliation = 0
 
-/obj/structure/mold/structure/core/Initialize(mapload)
+/obj/structure/mold/structure/core/Initialize(mapload, mold_type)
 	if(!mold_type)
 		mold_type = pick(subtypesof(/datum/mold))
 	. = ..()
@@ -345,7 +345,7 @@
 
 /obj/structure/mold/structure/spawner/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, max_spawns, list(FACTION_MOLD), "emerges from")
+	AddComponent(/datum/component/spawner, mold_type.mob_types, mold_type.spawn_cooldown, mold_type.max_spawns, list(FACTION_MOLD), "emerges from")
 
 #undef CORE_RETALIATION_COOLDOWN
 #undef BLOB_BULB_ALPHA
