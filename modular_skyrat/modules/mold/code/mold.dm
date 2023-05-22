@@ -1,13 +1,13 @@
 #define MAX_MOLD_FOAM_RANGE 7
 
 /datum/mold
-	name = "generic mold"
+	var/name = "generic"
 	/// The color of the mold structures
 	var/color
 	/// The examine text for structures
 	var/examine_text
 	/// The type of mobs the mold spawns
-	var/mob_types = list()
+	var/list/mob_types = list()
 	/// The cooldown between mob spawns
 	var/spawn_cooldown = 12 SECONDS
 	/// The maximum number of spawns
@@ -24,7 +24,10 @@
 	bulb.visible_message(span_warning("[bulb] ruptures!"))
 	return
 
-/datum/mold/proc/spew_foam(source, range, reagent_capacity, reagent_to_add)
+/datum/mold/proc/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
+	return
+
+/datum/mold/proc/spew_foam(obj/structure/mold/structure/source, range, reagent_capacity, reagent_to_add)
 	source.visible_message(span_warning("[source] spews out foam!"))
 	var/datum/reagents/spewed_reagents = new /datum/reagents(300)
 	spewed_reagents.my_atom = source
@@ -39,7 +42,7 @@
  * Fire mold
  */
 /datum/mold/fire
-	name = "fire mold"
+	name = "fire"
 	color = "#e04000"
 	examine_text = "It feels hot to the touch."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler)
@@ -54,7 +57,7 @@
 	. = ..()
 	spawn_atmos(bulb)
 
-/datum/mold/fire/proc/spawn_atmos(source)
+/datum/mold/fire/proc/spawn_atmos(obj/structure/mold/structure/source)
 	var/source_turf = get_turf(source)
 	source_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 
@@ -63,7 +66,7 @@
  * Fungal mold
  */
 /datum/mold/fungal
-	name = "fungal mold"
+	name = "fungal"
 	color = "#6e5100"
 	examine_text = "It looks like it's rotting."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat)
@@ -89,20 +92,20 @@
 
 
 /**
- * EMP mol
+ * EMP mold
  */
 /datum/mold/emp
-	name = "emp mold"
+	name = "EMP"
 	color = "#00caa5"
 	examine_text = "You can notice small sparks travelling in the vines."
-	mob_type = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
+	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "n2=30;TEMP=100"
 
 /datum/mold/emp/core_defense(obj/structure/mold/structure/core/core)
 	core.visible_message(span_warning("[core] sends out electrical discharges!"))
 	electrical_discharge(
-		source = bulb,
+		source = core,
 		heavy_emp_range = 5,
 		light_emp_range = 7,
 		guarantee_emp = TRUE,
@@ -115,7 +118,7 @@
 		light_emp_range = 7,
 		)
 
-/datum/mold/emp/proc/electrical_discharge(source, heavy_emp_range, light_emp_range, guarantee_emp = FALSE)
+/datum/mold/emp/proc/electrical_discharge(obj/structure/mold/structure/source, heavy_emp_range, light_emp_range, guarantee_emp = FALSE)
 	var/severe_effects = prob(50)
 	if(guarantee_emp || severe_effects)
 		source.empulse(source, heavy_emp_range, light_emp_range)
@@ -134,10 +137,10 @@
  * Toxic mold
  */
 /datum/mold/toxic
-	name = "toxic mold"
+	name = "toxic"
 	color = "#5300a1"
 	examine_text = "It feels damp and smells of rat poison."
-	mob_type = list(/mob/living/simple_animal/hostile/biohazard_blob/giant_spider)
+	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/giant_spider)
 	preferred_atmos_conditions = "miasma=50;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
 
@@ -162,10 +165,10 @@
  * Radioactive mold
  */
 /datum/mold/radioactive
-	name = "radioactive mold"
+	name = "radioactive"
 	color = "#80ff00"
 	examine_text = "It's glowing a soft green."
-	mob_type = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
+	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	preferred_atmos_conditions = "tritium=5;TEMP=296"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 
@@ -179,7 +182,7 @@
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/bulb_discharge(obj/sructure/mold/strucure/bulb/bulb)
+/datum/mold/radioactive/bulb_discharge(obj/sructure/mold/structure/bulb/bulb)
 	irradiate(bulb, threshold = 15, fire_nuclear_particle = TRUE)
 	spew_foam(
 		bulb,
@@ -188,7 +191,10 @@
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/proc/irradiate(source, threshold, fire_nuclear_particle = FALSE)
+/datum/mold/radioactive/bonus_conditioner_effects(obj/sructure/mold/structure/conditioner/conditioner)
+	conditioner.fire_nuclear_particle()
+
+/datum/mold/radioactive/proc/irradiate(obj/structure/mold/structure/source, threshold, fire_nuclear_particle = FALSE)
 	radiation_pulse(source, max_range = 1500, threshold = threshold, chance = FALSE, minimum_exposure_time = TRUE)
 	if(fire_nuclear_particle)
 		source.fire_nuclear_particle()

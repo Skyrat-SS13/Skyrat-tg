@@ -1,3 +1,6 @@
+#define CORE_RETALIATION_COOLDOWN (5 SECONDS)
+#define BLOB_BULB_ALPHA 100
+
 /obj/structure/mold
 	anchored = TRUE
 
@@ -23,6 +26,7 @@
 	. = ..()
 	color = mold_type.color
 	resistance_flags = mold_type.resistance_flags
+	name = "[mold_type.name] [name]"
 
 /obj/structure/mold/structure
 	density = TRUE
@@ -32,10 +36,11 @@
 	mid_sounds = list('modular_skyrat/master_files/sound/effects/heart_beat_loop3.ogg' = 1)
 	volume = 20
 
-#define CORE_RETALIATION_COOLDOWN (5 SECONDS)
-
+/**
+ * The core
+ */
 /obj/structure/mold/structure/core
-	name = "glowing core"
+	name = "core"
 	icon = 'modular_skyrat/modules/mold/icons/blob_core.dmi'
 	icon_state = "blob_core"
 	layer = TABLE_LAYER
@@ -48,21 +53,6 @@
 	var/datum/looping_sound/core_heartbeat/soundloop
 	/// The time to the next attack
 	var/next_retaliation = 0
-
-/obj/structure/mold/structure/core/fungal
-	mold_type = /datum/mold/fungal
-
-/obj/structure/mold/structure/core/fire
-	mold_type = /datum/mold/fire
-
-/obj/structure/mold/structure/core/emp
-	mold_type = /datum/mold/emp
-
-/obj/structure/mold/structure/core/toxic
-	mold_type = /datum/mold/toxic
-
-/obj/structure/mold/structure/core/radioactive
-	mold_type = /datum/mold/radioactive
 
 /obj/structure/mold/structure/core/Initialize(mapload)
 	if(!mold_type)
@@ -98,8 +88,10 @@
 	overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 	overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
-#undef CORE_RETALIATION_COOLDOWN
 
+/**
+ * Mold resin
+ */
 /obj/structure/mold/resin
 	name = "mold"
 	desc = "It looks like mold, but it seems alive."
@@ -182,10 +174,12 @@
 		our_controller.active_resin -= src
 	return ..()
 
-#define BLOB_BULB_ALPHA 100
 
+/**
+ * Bulbs
+ */
 /obj/structure/mold/structure/bulb
-	name = "empty bulb"
+	name = "bulb"
 	icon = 'modular_skyrat/modules/mold/icons/blob_bulb.dmi'
 	icon_state = "blob_bulb_empty"
 	density = FALSE
@@ -217,7 +211,6 @@
 	if(QDELETED(src))
 		return
 	is_full = TRUE
-	name = "filled bulb"
 	icon_state = "blob_bulb_full"
 	set_light(2, 1, LIGHT_COLOR_LAVA)
 	density = TRUE
@@ -231,7 +224,6 @@
 	mold_type.bulb_discharge(src)
 
 	is_full = FALSE
-	name = "empty bulb"
 	icon_state = "blob_bulb_empty"
 	playsound(src, 'sound/effects/bamf.ogg', 100, TRUE)
 	set_light(0)
@@ -239,16 +231,14 @@
 	density = FALSE
 	addtimer(CALLBACK(src, PROC_REF(make_full)), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
-
-
 /obj/structure/mold/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
 	if(FACTION_MOLD in user.faction)
 		return ..()
 	discharge()
 	. = ..()
 
-/obj/structure/mold/structure/bulb/bullet_act(obj/projectile/P)
-	if(istype(P, /obj/projectile/energy/nuclear_particle))
+/obj/structure/mold/structure/bulb/bullet_act(obj/projectile/hit_projectile)
+	if(istype(hit_projectile, /obj/projectile/energy/nuclear_particle))
 		return ..()
 	discharge()
 	. = ..()
@@ -256,8 +246,8 @@
 /obj/structure/mold/structure/bulb/Destroy()
 	if(our_controller)
 		our_controller.other_structures -= src
-	for(var/t in registered_turfs)
-		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
+	for(var/checked_turfs in registered_turfs)
+		UnregisterSignal(checked_turfs, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
 	return ..()
 
@@ -272,9 +262,10 @@
 		overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 		overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
-#undef BLOB_BULB_ALPHA
 
-
+/**
+ * Wall
+ */
 /obj/structure/mold/structure/wall
 	name = "mold wall"
 	desc = "Looks like some kind of thick resin."
@@ -294,6 +285,10 @@
 		our_controller.other_structures -= src
 	return ..()
 
+
+/**
+ * Conditioner
+ */
 /obj/structure/mold/structure/conditioner
 	name = "pulsating vent"
 	desc = "An unsightly vent, it appears to be puffing something out."
@@ -303,10 +298,11 @@
 	density = FALSE
 	layer = LOW_OBJ_LAYER
 	max_integrity = 150
-	/// The mold atmosphere conditioner will spawn the molds preferred atmosphere every so often.
+	/// The mold atmosphere conditioner will spawn the mold's preferred atmosphere every so often.
 	var/happy_atmos = null
 	/// The time between injections of that mold type's preferred atmos
 	var/puff_cooldown = 15 SECONDS
+	/// Tracks the status of the cooldown
 	var/puff_delay = 0
 
 /obj/structure/mold/structure/conditioner/Destroy()
@@ -328,20 +324,19 @@
 	puff_delay = world.time + puff_cooldown
 	var/turf/holder_turf = get_turf(src)
 	holder_turf.atmos_spawn_air(happy_atmos)
-	if(mold_type == BIO_MOLD_TYPE_RADIOACTIVE)
-		fire_nuclear_particle()
+	mold_type.bonus_conditioner_effects(src)
 
+
+/**
+ * Hatchery
+ */
 /obj/structure/mold/structure/spawner
 	name = "hatchery"
-	density = FALSE
 	icon = 'modular_skyrat/modules/mold/icons/blob_spawner.dmi'
 	icon_state = "blob_spawner"
 	density = FALSE
 	layer = LOW_OBJ_LAYER
 	max_integrity = 150
-	var/monster_types = list()
-	var/max_spawns = 1
-	var/spawn_cooldown = 1200 //In deciseconds
 
 /obj/structure/mold/structure/spawner/Destroy()
 	if(our_controller)
@@ -351,3 +346,6 @@
 /obj/structure/mold/structure/spawner/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, max_spawns, list(FACTION_MOLD), "emerges from")
+
+#undef CORE_RETALIATION_COOLDOWN
+#undef BLOB_BULB_ALPHA
