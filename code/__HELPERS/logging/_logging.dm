@@ -128,6 +128,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(LOG_EMOTE)
 			log_emote(log_text)
 		//SKYRAT EDIT ADDITION BEGIN
+		if(LOG_SUBTLE)
+			log_subtle(log_text)
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
 		//SKYRAT EDIT ADDITION END
