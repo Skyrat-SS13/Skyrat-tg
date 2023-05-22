@@ -26,7 +26,7 @@
 
 /datum/mold/proc/spew_foam(source, range, reagent_capacity, reagent_to_add)
 	source.visible_message(span_warning("[source] spews out foam!"))
-	var/datum/reagents/spewed_reagents = new /datum/reagents(300)
+	var/datum/reagents/spewed_reagents = new /datum/reagents(reagent_capacity)
 	spewed_reagents.my_atom = source
 	spewed_reagents.add_reagent(/datum/reagent/toxin, 30)
 	var/datum/effect_system/fluid_spread/foam/foam = new
