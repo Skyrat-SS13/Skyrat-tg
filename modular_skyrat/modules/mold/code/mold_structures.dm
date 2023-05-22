@@ -1,16 +1,18 @@
 #define CORE_RETALIATION_COOLDOWN (5 SECONDS)
-#define BLOB_BULB_ALPHA 100
+#define MOLD_BULB_ALPHA 100
 
 /obj/structure/mold
 	anchored = TRUE
 
 	/// The controller controlling the mold's expansion
-	var/datum/mold_controller/our_controller
+	var/datum/mold_controller/mold_controller
 	/// The type of mold
 	var/datum/mold/mold_type
 
 /obj/structure/mold/Destroy()
-	our_controller = null
+	if(!mold_controller)
+		qdel(mold_type)
+	mold_controller = null
 	mold_type = null
 	playsound(src.loc, 'sound/effects/splat.ogg', 30, TRUE)
 	return ..()
@@ -22,14 +24,28 @@
 		if(BURN)
 			playsound(loc, 'sound/items/welder.ogg', 100, TRUE)
 
-/obj/structure/mold/Initialize(mapload)
+/obj/structure/mold/Initialize(mapload, passed_type)
 	. = ..()
-	color = mold_type.color
+	if(mold_type)
+		mold_type = new
+	else
+		mold_type = mold_controller?.mold_type || passed_type
+	color = mold_type.mold_color
 	resistance_flags = mold_type.resistance_flags
 	name = "[mold_type.name] [name]"
 
 /obj/structure/mold/structure
 	density = TRUE
+	/// Does the structure emit light?
+	var/emits_light = FALSE
+
+/obj/structure/mold/structure/Initialize(mapload, passed_type)
+	. = ..()
+	if(emits_light)
+		light_range = 2
+		light_power = 1
+		if(mold_type.structure_light_color)
+			light_color = mold_type.structure_light_color
 
 /datum/looping_sound/core_heartbeat
 	mid_length = 3 SECONDS
@@ -44,9 +60,6 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_core.dmi'
 	icon_state = "blob_core"
 	layer = TABLE_LAYER
-	light_range = 2
-	light_power = 1
-	light_color = LIGHT_COLOR_LAVA
 	max_integrity = 1200
 
 	/// The soundloop played by the core
@@ -54,17 +67,15 @@
 	/// The time to the next attack
 	var/next_retaliation = 0
 
-/obj/structure/mold/structure/core/Initialize(mapload, mold_type)
-	if(!mold_type)
-		mold_type = pick(subtypesof(/datum/mold))
+/obj/structure/mold/structure/core/Initialize(mapload, passed_type)
+	new /datum/mold_controller(src, passed_type)
 	. = ..()
-	new /datum/mold_controller(src, mold_type)
-	soundloop = new(list(src), TRUE)
+	soundloop = new(src, TRUE)
 	update_overlays()
 
 /obj/structure/mold/structure/core/Destroy()
-	if(our_controller)
-		our_controller.our_core = null
+	if(mold_controller)
+		mold_controller.our_core = null
 	soundloop.stop()
 	QDEL_NULL(soundloop)
 	return ..()
@@ -73,7 +84,7 @@
 	if(!(damage_amount > 10) || !(world.time > next_retaliation) || !prob(40))
 		return ..()
 
-	our_controller?.core_retaliated()
+	mold_controller?.core_retaliated()
 	next_retaliation = world.time + CORE_RETALIATION_COOLDOWN
 
 	mold_type.core_defense(src)
@@ -88,6 +99,16 @@
 	overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 	overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
+/obj/structure/mold/structure/core/proc/update_type(datum/mold/new_type)
+	if(!mold_controller)
+		message_admins("Core type updated with no controller.")
+		return
+	var/datum/mold/old_mold_type = mold_type
+	if(old_mold_type)
+		qdel(old_mold_type)
+	mold_type = new new_type
+	mold_controller.update_mold_type(mold_type)
+	update_overlays()
 
 /**
  * Mold resin
@@ -168,12 +189,14 @@
 		update_overlays()
 
 /obj/structure/mold/resin/Destroy()
-	if(our_controller)
-		our_controller.activate_adjacent_resin(get_turf(src))
-		our_controller.all_resin -= src
-		our_controller.active_resin -= src
+	if(mold_controller)
+		mold_controller.activate_adjacent_resin(get_turf(src))
+		mold_controller.all_resin -= src
+		mold_controller.active_resin -= src
 	return ..()
 
+/obj/structure/mold/resin/test
+	mold_type = /datum/mold
 
 /**
  * Bulbs
@@ -244,8 +267,8 @@
 	. = ..()
 
 /obj/structure/mold/structure/bulb/Destroy()
-	if(our_controller)
-		our_controller.other_structures -= src
+	if(mold_controller)
+		mold_controller.other_structures -= src
 	for(var/checked_turfs in registered_turfs)
 		UnregisterSignal(checked_turfs, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
@@ -255,7 +278,7 @@
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(is_full)
-		SSvis_overlays.add_vis_overlay(src, icon, "blob_bulb_overlay", layer, plane, dir, BLOB_BULB_ALPHA)
+		SSvis_overlays.add_vis_overlay(src, icon, "blob_bulb_overlay", layer, plane, dir, MOLD_BULB_ALPHA)
 		SSvis_overlays.add_vis_overlay(src, icon, "blob_bulb_overlay", 0, EMISSIVE_PLANE, dir, alpha)
 		var/obj/effect/overlay/vis/overlay1 = managed_vis_overlays[1]
 		var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
@@ -280,9 +303,9 @@
 	can_atmos_pass = ATMOS_PASS_DENSITY
 
 /obj/structure/mold/wall/Destroy()
-	if(our_controller)
-		our_controller.activate_adjacent_resin(get_turf(src))
-		our_controller.other_structures -= src
+	if(mold_controller)
+		mold_controller.activate_adjacent_resin(get_turf(src))
+		mold_controller.other_structures -= src
 	return ..()
 
 
@@ -307,8 +330,8 @@
 
 /obj/structure/mold/structure/conditioner/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	if(our_controller)
-		our_controller.other_structures -= src
+	if(mold_controller)
+		mold_controller.other_structures -= src
 	return ..()
 
 /obj/structure/mold/structure/conditioner/Initialize(mapload)
@@ -339,8 +362,8 @@
 	max_integrity = 150
 
 /obj/structure/mold/structure/spawner/Destroy()
-	if(our_controller)
-		our_controller.other_structures -= src
+	if(mold_controller)
+		mold_controller.other_structures -= src
 	return ..()
 
 /obj/structure/mold/structure/spawner/Initialize(mapload)
@@ -348,4 +371,4 @@
 	AddComponent(/datum/component/spawner, mold_type.mob_types, mold_type.spawn_cooldown, mold_type.max_spawns, list(FACTION_MOLD), "emerges from")
 
 #undef CORE_RETALIATION_COOLDOWN
-#undef BLOB_BULB_ALPHA
+#undef MOLD_BULB_ALPHA

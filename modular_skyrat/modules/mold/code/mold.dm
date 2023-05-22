@@ -1,13 +1,15 @@
 #define MAX_MOLD_FOAM_RANGE 7
 
 /datum/mold
-	var/name = "generic"
-	/// The tier of the mold, used to decide whether it can spawn
+	var/name = "debug"
+	/// The tier of the mold, used to decide whether it can spawn on lowpop
 	var/tier = MOLD_TIER_LOW_THREAT
 	/// The color of the mold structures
-	var/color
+	var/mold_color = "#ff00ff"
+	/// The color of the light emitted by some of the mold structures
+	var/structure_light_color = LIGHT_COLOR_DEFAULT
 	/// The examine text for structures
-	var/examine_text
+	var/examine_text = "Debug mold. You should report seeing this."
 	/// The type of mobs the mold spawns
 	var/list/mob_types = list()
 	/// The cooldown between mob spawns
@@ -45,14 +47,15 @@
  */
 /datum/mold/fire
 	name = "fire"
-	color = "#e04000"
+	mold_color = "#e04000"
+	structure_light_color = LIGHT_COLOR_FIRE
 	examine_text = "It feels hot to the touch."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler)
 	preferred_atmos_conditions = "co2=30;TEMP=1000"
 	resistance_flags = FIRE_PROOF
 
 /datum/mold/fire/core_defense(obj/structure/mold/structure/core/core)
-	core.visible_message(span_warning("The [core] puffs out a cloud of flames!"))
+	core.visible_message(span_warning("[core] puffs out a cloud of flames!"))
 	spawn_atmos(core)
 
 /datum/mold/fire/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
@@ -70,7 +73,8 @@
 /datum/mold/fungal
 	name = "fungal"
 	tier = MOLD_TIER_HIGH_THREAT
-	color = "#6e5100"
+	mold_color = "#6e5100"
+	structure_light_color = LIGHT_COLOR_BROWN
 	examine_text = "It looks like it's rotting."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat)
 	spawn_cooldown = 5 SECONDS
@@ -99,7 +103,8 @@
  */
 /datum/mold/emp
 	name = "EMP"
-	color = "#00caa5"
+	mold_color = "#00caa5"
+	structure_light_color = LIGHT_COLOR_ELECTRIC_CYAN
 	examine_text = "You can notice small sparks travelling in the vines."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
 	spawn_cooldown = 5 SECONDS
@@ -142,7 +147,8 @@
  */
 /datum/mold/toxic
 	name = "toxic"
-	color = "#5300a1"
+	mold_color = "#5300a1"
+	structure_light_color = LIGHT_COLOR_LAVENDER
 	examine_text = "It feels damp and smells of rat poison."
 	mob_types = list(/mob/living/basic/giant_spider)
 	preferred_atmos_conditions = "miasma=50;TEMP=296"
@@ -170,7 +176,8 @@
  */
 /datum/mold/radioactive
 	name = "radioactive"
-	color = "#80ff00"
+	mold_color = "#80ff00"
+	structure_light_color = LIGHT_COLOR_ELECTRIC_GREEN
 	examine_text = "It's glowing a soft green."
 	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	preferred_atmos_conditions = "tritium=5;TEMP=296"

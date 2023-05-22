@@ -37,7 +37,7 @@
 	else if(active_players < EVENT_MIDPOP_THRESHOLD && prob((active_players - EVENT_LOWPOP_THRESHOLD) * (100 / (EVENT_MIDPOP_THRESHOLD - EVENT_LOWPOP_THRESHOLD))))
 		mold_spawns = MOLDIES_SPAWN_LOWPOP_MAX
 
-	var/obj/structure/mold/resin/resin_test = new()
+	var/obj/structure/mold/resin/test/test_resin = new()
 
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
@@ -47,25 +47,29 @@
 		if(!is_type_in_typecache(checked_area, possible_spawn_areas))
 			continue
 		for(var/turf/open/floor in checked_area.get_contained_turfs())
-			if(!floor.Enter(resin_test))
+			if(!floor.Enter(test_resin))
 				continue
 			if(locate(/turf/closed) in range(2, floor))
 				continue
 			turfs += floor
 
-	qdel(resin_test)
+	qdel(test_resin)
 
 	for(var/i in 1 to mold_spawns)
 		var/threat_level = active_players >= EVENT_MIDPOP_THRESHOLD ? MOLD_TIER_HIGH_THREAT : MOLD_TIER_LOW_THREAT
-		var/list/possible_mold_types
-		for(var/datum/mold/mold_type as anything in subtypesof(/datum/mold))
+		message_admins("At pop of [active_players], spawning mold threat level [threat_level]") // DEBUG
+		var/list/possible_mold_types = list()
+		for(var/iterated_type in subtypesof(/datum/mold))
+			var/datum/mold/mold_type = new iterated_type()
 			if(mold_type.tier <= threat_level)
 				possible_mold_types += mold_type
 		if(!possible_mold_types)
 			log_game("Event: Moldies failed to spawn due to lack of possible types.")
 			message_admins("Moldies failed to spawn due to lack of possible types.")
 			break
+		message_admins("Generated types: [possible_mold_types]") // DEBUG
 		var/datum/mold/picked_type = pick(possible_mold_types)
+		message_admins("Picked type: [picked_type]") // DEBUG
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(length(turfs)) //Pick a turf to spawn at if we can
@@ -74,8 +78,8 @@
 				continue
 			if(picked_type.tier > MOLD_TIER_LOW_THREAT)
 				announce_chance = 100
-			var/obj/structure/mold/structure/core/new_mold = new (picked_turf, picked_type)
-			announce_to_ghosts(new_mold)
+			var/obj/structure/mold/structure/core/new_core = new (picked_turf, picked_type)
+			announce_to_ghosts(new_core)
 			turfs -= picked_turf
 			i++
 		else

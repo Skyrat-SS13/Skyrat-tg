@@ -26,7 +26,7 @@
 		return
 	our_core = the_core
 	mold_type = passed_type
-	our_core.our_controller = src
+	our_core.mold_controller = src
 	spawn_expansion()
 	START_PROCESSING(SSobj, src)
 	return ..()
@@ -83,6 +83,12 @@
 			if(RESIN_DID_SPREAD)
 				return
 
+/datum/mold_controller/proc/update_mold_type(datum/mold/new_type)
+	for(var/obj/structure/mold/resin/resin as anything in all_resin)
+		resin.update_overlays()
+	for(var/obj/structure/mold/structure/structure as anything in other_structures)
+		structure.update_overlays()
+
 /datum/mold_controller/proc/spawn_expansion()
 	var/list/turfs = list()
 	var/hatcheries_to_spawn = 3
@@ -92,24 +98,22 @@
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)
-		for(var/tr in turfs)
-			var/turf/T = tr
-			for(var/tr2 in T.atmos_adjacent_turfs)
-				turfs[tr2] = TRUE
-	for(var/tr in turfs)
-		var/turf/T = tr
-		spawn_resin(T)
-		if(T == our_turf)
+		for(var/turf/iterated_turf as anything in turfs)
+			for(var/turf/adjacent_turf as anything in iterated_turf.atmos_adjacent_turfs)
+				turfs[adjacent_turf] = TRUE
+	for(var/turf/iterated_turf as anything in turfs)
+		spawn_resin(iterated_turf)
+		if(iterated_turf == our_turf)
 			continue
 		if(hatcheries_to_spawn && prob(40))
 			hatcheries_to_spawn--
-			spawn_structure_loc(2, T)
+			spawn_structure_loc(2, iterated_turf)
 		else if(bulbs_to_spawn && prob(40))
 			bulbs_to_spawn--
-			spawn_structure_loc(1, T)
+			spawn_structure_loc(1, iterated_turf)
 		else if(conditioners_to_spawn && prob(40))
 			conditioners_to_spawn--
-			spawn_structure_loc(3, T)
+			spawn_structure_loc(3, iterated_turf)
 
 /datum/mold_controller/proc/spawn_structure_loc(index, location)
 	var/spawn_type
@@ -196,7 +200,7 @@
 		potato.break_light_tube()
 	//Spawn the resin
 	var/obj/structure/mold/resin/new_resin = new /obj/structure/mold/resin(loc, mold_type)
-	new_resin.our_controller = src
+	new_resin.mold_controller = src
 	all_resin[new_resin] = TRUE
 	active_resin[new_resin] = TRUE
 	new_resin.calculate_direction()
@@ -215,7 +219,7 @@
 	for(var/t in turfs)
 		var/turf/ite_turf = t
 		for(var/obj/structure/mold/resin/potato in ite_turf)
-			if(potato && potato.our_controller && potato.our_controller == src)
+			if(potato && potato.mold_controller && potato.mold_controller == src)
 				active_resin[potato] = TRUE
 				return
 
@@ -229,7 +233,7 @@
 	for(var/t in turfs)
 		var/turf/ite_turf = t
 		for(var/obj/structure/mold/resin/potato in ite_turf)
-			if(potato && potato.our_controller && potato.our_controller == src)
+			if(potato && potato.mold_controller && potato.mold_controller == src)
 				active_resin[potato] = TRUE
 				return
 
