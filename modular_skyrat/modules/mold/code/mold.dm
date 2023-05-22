@@ -28,7 +28,7 @@
 	source.visible_message(span_warning("[source] spews out foam!"))
 	var/datum/reagents/spewed_reagents = new /datum/reagents(reagent_capacity)
 	spewed_reagents.my_atom = source
-	spewed_reagents.add_reagent(/datum/reagent/toxin, 30)
+	spewed_reagents.add_reagent(reagent_to_add, 30)
 	var/datum/effect_system/fluid_spread/foam/foam = new
 	var/source_turf = get_turf(source)
 	foam.set_up(range, location = source_turf, carry = spewed_reagents)
