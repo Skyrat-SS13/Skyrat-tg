@@ -1,5 +1,5 @@
 /datum/station_trait/sentient_announcer
-	name = "Sentient Announcer"
+	name = "Cutting Edge Artificial Intelligence Announcer"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 10
 	show_in_report = TRUE
