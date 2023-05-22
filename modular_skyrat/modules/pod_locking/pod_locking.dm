@@ -4,6 +4,10 @@
 		launch_status = NOLAUNCH
 		RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(check_for_evac))
 
+/**
+  * Signal handler for [COMSIG_SECURITY_LEVEL_CHANGED].
+  * Pulls minimum required alert level from modular config and sets pod's [var/launch_status] accordingly. Will not do anything of pod already launched.
+  */
 /obj/docking_port/mobile/pod/proc/check_for_evac(datum/source, new_level)
 	SIGNAL_HANDLER
 
