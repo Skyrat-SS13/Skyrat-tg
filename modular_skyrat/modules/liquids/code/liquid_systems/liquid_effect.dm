@@ -620,8 +620,7 @@
 				reagents_string += ", "
 				if(reagents_remaining == 1)
 					reagents_string += "and "
-
-	while(reagents_remaining) // if there is more than one kind of reagent, we will either list them separated by 'and' or use commas appropriately.
+	while(reagents_remaining)
 
 	return reagents_string
 
