@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	say("Congratulations, you made it to Orion!")
 	if(obj_flags & EMAGGED)
 		// new /obj/item/orion_ship(loc) - ORIGINAL
-		new /obj/item/gun/energy/recharge/ebow(loc) //SKYRAT EDIT CHANGE - Weapon instead of bomb
+		new /obj/item/grenade/syndieminibomb(loc) //SKYRAT EDIT CHANGE - minibomb
 		// message_admins("[ADMIN_LOOKUPFLW(usr)] made it to Orion on an emagged machine and got an explosive toy ship.")
 		// usr.log_message("made it to Orion on an emagged machine and got an explosive toy ship.", LOG_GAME)
 	else

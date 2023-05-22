@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 
 			if(obj_flags & EMAGGED)
 				// new /obj/effect/spawner/newbomb/plasma(loc, /obj/item/assembly/timer) - ORIGINAL
-				new /obj/item/gun/energy/recharge/ebow(loc) // SKYRAT EDIT CHANGE - Weapon instead of bomb
+				new /obj/item/grenade/syndieminibomb(loc) // SKYRAT EDIT CHANGE - minibomb instead of TTV
 				new /obj/item/clothing/head/collectable/petehat(loc)
 				// message_admins("[ADMIN_LOOKUPFLW(usr)] has outbombed Cuban Pete and been awarded a bomb.")
 				// usr.log_message("outbombed Cuban Pete and has been awarded a bomb.", LOG_GAME)
