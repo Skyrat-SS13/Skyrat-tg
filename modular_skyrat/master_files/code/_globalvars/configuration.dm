@@ -56,7 +56,7 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/number/ticket_ping_frequency
 
 /datum/config_entry/number/size_collar_maximum
-	default = 600
+	default = 400
 
 /datum/config_entry/number/size_collar_minimum
 	default = 15
