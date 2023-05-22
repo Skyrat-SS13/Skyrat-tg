@@ -1165,6 +1165,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/new_duration = world.realtime + duration
 	if(prefs.hearted_until > new_duration)
 		return
+	prefs.hearted_until = new_duration
 	// to_chat(src, span_nicegreen("Someone awarded you a heart!")) // ORIGINAL
 	to_chat(src, span_nicegreen("Someone awarded you a heart! You've received [get_award_status(/datum/award/score/hearted)] in total!")) // SKYRAT EDIT CHANGE - HEARTED
 	prefs.hearted = TRUE
