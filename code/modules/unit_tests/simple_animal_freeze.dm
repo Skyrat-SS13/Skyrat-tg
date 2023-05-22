@@ -307,11 +307,6 @@
 		//PLEASE REFACTOR THESE AS YOU CAN
 		/mob/living/simple_animal/chicken/teshari,
 		/mob/living/simple_animal/crab/shuffle,
-		/mob/living/simple_animal/hostile/abductor,
-		/mob/living/simple_animal/hostile/abductor/agent,
-		/mob/living/simple_animal/hostile/abductor/melee,
-		/mob/living/simple_animal/hostile/abductor/ranged,
-		/mob/living/simple_animal/hostile/abductor/ranged/agent,
 		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/biohazard_blob,
