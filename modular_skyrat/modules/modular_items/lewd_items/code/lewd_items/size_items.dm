@@ -56,7 +56,6 @@
 	/// List containing the areas that the size change works in. If this is empty, this will work everywhere.
 	var/list/allowed_areas = list(
 		/area/centcom/interlink/dorm_rooms,
-		/area/station/commons/dorms,
 		/area/centcom/holding/cafedorms,
 		/area/misc/hilbertshotel,
 	)
