@@ -6,7 +6,8 @@
 
 /**
   * Signal handler for [COMSIG_SECURITY_LEVEL_CHANGED].
-  * Pulls minimum required alert level from modular config and sets pod's [var/launch_status] accordingly. Will not do anything of pod already launched.
+  * Pulls minimum required alert level from modular config and sets pod's [var/launch_status] as [NOLAUNCH] or [UNLAUNCHED] accordingly.
+  * Will not do anything if pod already launched.
   */
 /obj/docking_port/mobile/pod/proc/check_for_evac(datum/source, new_level)
 	SIGNAL_HANDLER
