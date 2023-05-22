@@ -163,7 +163,7 @@
 	desc = "A bush... oozing blood?"
 	icon_state = "nest_grass"
 	light_color = LIGHT_COLOR_GREEN
-	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
+	monster_types = list(/mob/living/basic/killer_tomato)
 	loot = list(/obj/item/seeds/random = 3)
 	max_mobs = 6
 

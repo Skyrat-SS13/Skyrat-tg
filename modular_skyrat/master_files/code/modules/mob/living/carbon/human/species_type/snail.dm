@@ -1,6 +1,43 @@
+#define SHELL_TRANSPARENCY_ALPHA 90
+
+/obj/item/storage/backpack/snail
+	/// Whether or not a bluespace anomaly core has been inserted
+	var/storage_core = FALSE
+
 /obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
-	atom_storage.max_specific_storage = 30
+	atom_storage.max_total_storage = 30
+
+/obj/item/storage/backpack/snail/attackby(obj/item/core, mob/user)
+	if(!istype(core, /obj/item/assembly/signaler/anomaly/bluespace))
+		return ..()
+
+	to_chat(user, span_notice("You insert [core] into your shell, and it starts to glow blue with expanded storage potential!"))
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+	add_filter("bluespace_shell", 2, list("type" = "outline", "color" = COLOR_BLUE_LIGHT, "size" = 1))
+	storage_core = TRUE
+	qdel(core)
+	emptyStorage()
+	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, storage_type = /datum/storage/bag_of_holding)
+	atom_storage.allow_big_nesting = TRUE
+	name = "snail shell of holding"
+	user.update_worn_back()
+	update_appearance()
+
+/obj/item/storage/backpack/snail/build_worn_icon(
+	default_layer = 0,
+	default_icon_file = null,
+	isinhands = FALSE,
+	female_uniform = NO_FEMALE_UNIFORM,
+	override_state = null,
+	override_file = null,
+	mutant_styles = NONE,
+)
+
+	var/mutable_appearance/standing = ..()
+	if(storage_core == TRUE)
+		standing.add_filter("bluespace_shell", 2, list("type" = "outline", "color" = COLOR_BLUE_LIGHT, "alpha" = SHELL_TRANSPARENCY_ALPHA, "size" = 1))
+	return standing
 
 /datum/species/snail/prepare_human_for_preview(mob/living/carbon/human/snail)
 	snail.dna.features["mcolor"] = "#adaba7"
@@ -55,3 +92,5 @@
 	)
 
 	return to_add
+
+#undef SHELL_TRANSPARENCY_ALPHA
