@@ -11,7 +11,7 @@
 	icon_state = "alienblaster"
 	inhand_icon_state = "alienblaster"
 	pin = /obj/item/firing_pin
-	selfcharge = 1
+	selfcharge = TRUE
 
 /obj/item/gun/energy/alien/astrum
 	name = "alien energy pistol"

@@ -30,11 +30,11 @@
 	ai_controller = /datum/ai_controller/basic_controller/abductor
 
 	/// What this mob drops on death
-	var/loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/sci_loot)
+	var/list/loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/sci_loot)
 
 /mob/living/basic/abductor/Initialize(mapload)
 	. = ..()
-	if(LAZYLEN(loot))
+	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE)
 
@@ -121,8 +121,7 @@
 	attack_verb_simple = "attack"
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/bullet)
-	apply_damage(bullet.damage, bullet.damage_type)
-	return // no more reduction
+	apply_damage(bullet.damage, bullet.damage_type) // no damage reduction
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
