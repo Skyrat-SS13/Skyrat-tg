@@ -28,20 +28,19 @@ GLOBAL_PROTECT(##log_var_name);\
 	SHOULD_CALL_PARENT(TRUE)
 	return
 
-// All individual log files
+// All individual log files.
+// These should be used where the log category cannot easily be a json log file.
 DECLARE_LOG(config_error_log, DONT_START_LOG)
-DECLARE_LOG(dynamic_log, DONT_START_LOG)
-DECLARE_LOG(lua_log, DONT_START_LOG)
 DECLARE_LOG(perf_log, DONT_START_LOG) // Declared here but name is set in time_track subsystem
-DECLARE_LOG(query_debug_log, DONT_START_LOG)
-DECLARE_LOG(signals_log, DONT_START_LOG)
-DECLARE_LOG(tgui_log, START_LOG)
+
 #ifdef REFERENCE_DOING_IT_LIVE
 DECLARE_LOG_NAMED(harddel_log, "harddels", START_LOG)
 #endif
+
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 DECLARE_LOG_NAMED(test_log, "tests", START_LOG)
 #endif
+<<<<<<< HEAD
 DECLARE_LOG_NAMED(filter_log, "filters", DONT_START_LOG)
 DECLARE_LOG_NAMED(sql_error_log, "sql", DONT_START_LOG)
 DECLARE_LOG_NAMED(world_asset_log, "asset", DONT_START_LOG)
@@ -73,6 +72,9 @@ DECLARE_LOG_NAMED(world_suspicious_login_log, "suspicious_logins", DONT_START_LO
 DECLARE_LOG_NAMED(event_vote_log, "event_vote", START_LOG)
 DECLARE_LOG_NAMED(character_creation_log, "character_creation", START_LOG)
 // SKYRAT EDIT END
+=======
+
+>>>>>>> fbec9c14e99 (JSON Logging Take Two (#73604))
 
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
