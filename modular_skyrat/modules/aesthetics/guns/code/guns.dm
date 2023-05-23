@@ -26,11 +26,6 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
-/obj/item/gun/energy/ionrifle
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
 /obj/item/gun/energy/e_gun/stun
 	charge_sections = 5
 	ammo_x_offset = 2
