@@ -75,6 +75,7 @@
 /obj/item/ammo_casing/c9mm/hp
 	name = "9x25mm Mk.12 hollow-point bullet casing"
 	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires a hollow-point projectile. Very lethal to unarmored opponents."
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c9mm/fire
 	name = "9x25mm Mk.12 incendiary bullet casing"
@@ -126,6 +127,9 @@
 /obj/item/ammo_casing/c10mm/ap
 	advanced_print_req = TRUE
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/ammo_casing/c10mm/hp
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c10mm/fire
 	advanced_print_req = TRUE
@@ -215,6 +219,7 @@
 	icon_state = "sh-casing"
 	caliber = CALIBER_12MM
 	projectile_type = /obj/projectile/bullet/b12mm/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/b12mm/hp
 	name = "12mm hollowpoint bullet"
@@ -304,6 +309,7 @@
 	icon_state = "sh-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/b473/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/b473/hp
 	name = "4.73x33mm JHP bullet"
