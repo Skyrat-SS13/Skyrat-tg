@@ -69,11 +69,10 @@
 		activate()
 
 	linked_mob = null
-	if(!parent_nif)
-		return ..()
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif.resolve()
-	installed_nif.loaded_nifsofts.Remove(src)
+	if(installed_nif)
+		installed_nif.loaded_nifsofts.Remove(src)
 
 	return ..()
 
