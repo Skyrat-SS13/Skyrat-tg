@@ -1,18 +1,22 @@
 /mob/living/basic/pet/dog/markus
 	name = "\proper Markus"
-	real_name = "Markus"
-	gender = MALE
-	desc = "It's the Cargo's overfed, yet still beloved dog."
+	desc = "The supply department's overfed yet still beloved dog."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "markus"
 	icon_dead = "markus_dead"
 	icon_living = "markus"
-	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
-	butcher_results = list(/obj/item/food/burger/cheese = 1, /obj/item/food/meat/slab = 2, /obj/item/trash/syndi_cakes = 1)
+	butcher_results = list(
+		/obj/item/food/burger/cheese = 1,
+		/obj/item/food/meat/slab = 2,
+		/obj/item/trash/syndi_cakes = 1,
+		)
 	ai_controller = /datum/ai_controller/basic_controller/dog/corgi
 	gender = MALE
 	can_be_held = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
+
+	/// List of possible dialogue options. This is both used by the AI and as an override when a sentient Markus speaks.
+	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
 	if(client)
@@ -21,19 +25,21 @@
 
 /mob/living/basic/pet/dog/markus/update_dog_speech(datum/ai_planning_subtree/random_speech/speech)
 	. = ..()
-
 	speech.speak = markus_speak
 
 /datum/chemical_reaction/mark_reaction
 	results = list(/datum/reagent/consumable/liquidgibs = 15)
-	required_reagents = list(/datum/reagent/blood = 20,
-	/datum/reagent/medicine/omnizine = 20,
-	/datum/reagent/medicine/c2/synthflesh = 20,
-	/datum/reagent/consumable/nutriment/protein = 10,
-	/datum/reagent/consumable/nutriment = 10,
-	/datum/reagent/consumable/ketchup = 5,
-	/datum/reagent/consumable/mayonnaise = 5,
-	/datum/reagent/colorful_reagent/powder/yellow/crayon = 5)
+	required_reagents = list(
+		/datum/reagent/blood = 20,
+		/datum/reagent/medicine/omnizine = 20,
+		/datum/reagent/medicine/c2/synthflesh = 20,
+		/datum/reagent/consumable/nutriment/protein = 10,
+		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/ketchup = 5,
+		/datum/reagent/consumable/mayonnaise = 5,
+		/datum/reagent/colorful_reagent/powder/yellow/crayon = 5,
+	)
+
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 	required_temp = 480
 
@@ -41,22 +47,24 @@
 	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /mob/living/basic/pet/dog/markus(location)
-	playsound(location, 'modular_skyrat/master_files/sound/effects/dorime.ogg', 100, 0, 7)
+	playsound(location, 'modular_skyrat/master_files/sound/effects/dorime.ogg', vol = 100, vary = FALSE, extrarange = 7)
 
 /mob/living/basic/pet/dog/corgi/borgi
 	name = "E-N"
-	real_name = "E-N" // Intended to hold the name without altering it.
-	gender = NEUTER
 	desc = "It's a borgi."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
+	gender = NEUTER
 	unique_pet = TRUE
 	can_be_held = FALSE
 	maxHealth = 150
 	health = 150
-	butcher_results = list(/obj/item/clothing/head/costume/skyrat/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
+	butcher_results = list(
+		/obj/item/clothing/head/costume/skyrat/en = 1,
+		/obj/item/clothing/suit/corgisuit/en = 1,
+	)
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
 	nofur = TRUE
@@ -71,12 +79,18 @@
 	light_power = 0.8
 	light_on = FALSE
 
-	var/emagged = 0
+	/// Has E-N been emagged already?
+	var/emagged = FALSE
+	/// A list of the things dropped when it dies
+	var/static/list/borgi_drops = list(/obj/effect/decal/cleanable/oil/slippery)
+	/// The threshold of HP before the borgi attacks non-friends
+	var/rage_hp = 30
+	/// The chance to spark (on life)
+	var/spark_chance = 5
 
 /mob/living/basic/pet/dog/corgi/borgi/Initialize(mapload)
 	. = ..()
 
-	var/static/list/borgi_drops = list(/obj/effect/decal/cleanable/oil/slippery)
 	AddElement(/datum/element/death_drops, borgi_drops)
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
@@ -98,22 +112,22 @@
  * * always_shoot - always shoot the target, as opposed to only if not a friend.
  */
 /mob/living/basic/pet/dog/corgi/borgi/proc/harass_target(mob/living/target, always_shoot = FALSE)
-	var/datum/ai_controller/basic_controller/dog/EN = ai_controller
-	if(!EN)
+	var/datum/ai_controller/basic_controller/dog/borgi = ai_controller
+	if(!borgi)
 		return
 
-	var/list/friends_list = EN.blackboard[BB_FRIENDS_LIST]
+	var/list/friends_list = borgi.blackboard[BB_FRIENDS_LIST]
 	var/is_friend = friends_list && friends_list[WEAKREF(target)]
 
 	if(always_shoot || !is_friend)
 		INVOKE_ASYNC(src, PROC_REF(shoot_at), target)
 
-	if(health > 30 || is_friend)
+	if(health > rage_hp || is_friend)
 		return
 
-	EN.set_movement_target(target)
-	EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
-	EN.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETTING_DATUM)
+	borgi.set_movement_target(target)
+	borgi.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+	borgi.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETTING_DATUM)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
 	SIGNAL_HANDLER
@@ -160,41 +174,38 @@
 
 		harass_target(target)
 	else
-		shoot_toy_at(target)
+		shoot_at(target, harmless = TRUE)
 
-/mob/living/basic/pet/dog/corgi/borgi/proc/shoot_at(atom/movable/target)
+/mob/living/basic/pet/dog/corgi/borgi/proc/shoot_at(atom/movable/target, harmless = FALSE)
 	var/turf/source_turf = get_turf(src)
 	var/turf/target_turf = get_turf(target)
 	if(!source_turf || !target_turf)
 		return
-	var/obj/projectile/beam/laser = new /obj/projectile/beam(loc)
-	laser.icon = 'icons/effects/genetics.dmi'
-	laser.icon_state = "eyelasers"
-	playsound(loc, 'sound/weapons/taser.ogg', 75, 1)
-	laser.preparePixelProjectile(target, source_turf)
-	laser.firer = src
-	laser.fired_from = src
-	laser.fire()
 
-/mob/living/basic/pet/dog/corgi/borgi/proc/shoot_toy_at(atom/movable/target)
-	var/turf/source_turf = get_turf(src)
-	var/turf/target_turf = get_turf(target)
-	if(!source_turf || !target_turf)
-		return
-	var/obj/projectile/bullet/reusable/foam_dart/fired_dart = new /obj/projectile/bullet/reusable/foam_dart(loc)
-	fired_dart.icon = 'icons/obj/weapons/guns/toy.dmi'
-	fired_dart.icon_state = "foamdart_proj"
-	playsound(loc, 'sound/items/syringeproj.ogg', 75, 1)
-	fired_dart.preparePixelProjectile(target, source_turf)
-	fired_dart.firer = src
-	fired_dart.fired_from = src
-	fired_dart.fire()
+	var/obj/projectile/fired_projectile
+	var/fire_sound
+	if(harmless)
+		fired_projectile = new /obj/projectile/bullet/reusable/foam_dart(loc)
+		fired_projectile.icon = 'icons/obj/weapons/guns/toy.dmi'
+		fired_projectile.icon_state = "foamdart_proj"
+		fire_sound = 'sound/items/syringeproj.ogg'
+	else
+		fired_projectile = new /obj/projectile/beam(loc)
+		fired_projectile.icon = 'icons/effects/genetics.dmi'
+		fired_projectile.icon_state = "eyelasers"
+		fire_sound = 'sound/weapons/taser.ogg'
+
+	playsound(loc, fire_sound, vol = 75, vary = TRUE)
+	fired_projectile.preparePixelProjectile(target, source_turf)
+	fired_projectile.firer = src
+	fired_projectile.fired_from = src
+	fired_projectile.fire()
 
 /mob/living/basic/pet/dog/corgi/borgi/Life(seconds, times_fired)
 	. = ..()
 
 	// spark for no reason
-	if(prob(5))
+	if(prob(spark_chance))
 		do_sparks(3, 1, src)
 
 /mob/living/basic/pet/dog/corgi/borgi/death(gibbed)
@@ -208,9 +219,9 @@
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
-	do_sparks(3, 1, src)
-	var/datum/ai_controller/basic_controller/dog/EN = ai_controller
-	LAZYCLEARLIST(EN.current_behaviors)
+	do_sparks(number = 3, cardinal_only = TRUE, source = src)
+	var/datum/ai_controller/basic_controller/dog/borgi = ai_controller
+	LAZYCLEARLIST(borgi.current_behaviors)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_emag_act(mob/living/basic/pet/dog/target, mob/user)
 	SIGNAL_HANDLER
@@ -218,7 +229,7 @@
 	if(emagged)
 		return
 
-	emagged = 1
+	emagged = TRUE
 
 	// Emote sleeps.
 	INVOKE_ASYNC(src, PROC_REF(emote), "exclaim")
@@ -261,8 +272,6 @@
 /datum/ai_planning_subtree/emagged_borgi
 	/// Probability that emagged borgi will randomly attack.
 	var/chance = 33
-	/// Range to immediately target enemies
-	var/view_range = 10
 
 /datum/ai_planning_subtree/emagged_borgi/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
@@ -304,10 +313,10 @@
 	borgi_pawn.shoot_at(target)
 
 /mob/living/basic/pet/dog/dobermann
-	name = "\proper Dobermann"
-	gender = MALE
+	name = "\improper dobermann"
 	desc = "A larger breed of dog."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
 	icon_living = "dobber"
+	gender = MALE
