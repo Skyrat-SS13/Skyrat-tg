@@ -135,7 +135,7 @@
 	var/faction_bonus_force = 60
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
-	var/roll_stamcost = 3
+	var/roll_stamcost = 6
 	/// how far do we roll?
 	var/roll_range = 3
 
@@ -170,7 +170,7 @@
 	id = "dodgeroll_dodging"
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
-	duration = 1.2 SECONDS // worth tweaking?
+	duration = 1 SECONDS // worth tweaking?
 
 /datum/status_effect/dodgeroll_iframes/on_apply()
 	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(whiff))
