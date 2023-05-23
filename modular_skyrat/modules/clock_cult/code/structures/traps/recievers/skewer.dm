@@ -51,6 +51,7 @@
 		target_stabbed = TRUE
 		to_chat(stabbed_mob, span_userdanger("You are impaled by [src]!"))
 		stabbed_mob.emote("scream")
+		playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/brass_skewer.ogg')
 		stabbed_mob.apply_damage(SKEWER_DAMAGE, BRUTE, BODY_ZONE_CHEST)
 
 		if(ishuman(stabbed_mob))

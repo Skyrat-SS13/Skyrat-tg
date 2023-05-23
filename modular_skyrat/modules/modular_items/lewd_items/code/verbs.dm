@@ -16,3 +16,18 @@
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/climax_verb
+
+/mob/living/carbon/human/verb/safeword()
+	set name = "Remove Lewd Items"
+	set category = "OOC"
+	set desc = "Removes any and all lewd items from you."
+
+	log_message("[key_name(src)] used the Remove Lewd Items verb.", LOG_ATTACK)
+	for(var/obj/item/equipped_item in get_equipped_items())
+		if(!(equipped_item.type in GLOB.pref_checked_clothes))
+			continue
+
+		log_message("[equipped_item] was removed from [key_name(src)].", LOG_ATTACK)
+		dropItemToGround(equipped_item, TRUE)
+
+	return TRUE
