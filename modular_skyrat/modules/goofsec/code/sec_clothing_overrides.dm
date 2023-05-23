@@ -483,6 +483,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_warden"
 
+/obj/item/clothing/suit/armor/vest/warden/alt //un-overrides this since its sprite is TG
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
 	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this

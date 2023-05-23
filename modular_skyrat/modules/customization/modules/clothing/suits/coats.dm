@@ -40,8 +40,6 @@
 	acid = -15
 
 /obj/item/clothing/suit/hooded/cloak/david
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red cloak"
 	icon_state = "goliath_cloak"
 	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, made of entirely synthetic material."

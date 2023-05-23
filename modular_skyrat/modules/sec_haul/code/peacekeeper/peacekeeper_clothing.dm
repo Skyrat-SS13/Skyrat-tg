@@ -102,18 +102,17 @@
 	desc = "A standard issue peacekeeper armor vest, versatile, lightweight, and most importantly, cheap."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "peacekeeper_armor"
-	worn_icon_state = "peacekeeper"
+	icon_state = "peacekeeper_white"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	name = "black peacekeeper vest"
 	icon_state = "peacekeeper_black"
-	worn_icon_state = "peacekeeper_black"
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 	name = "high vis armored vest"
 	desc = "Oi bruv, you got a loicence for that?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hazardbg"
 	worn_icon_state = "hazardbg"
 
@@ -179,7 +178,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
 
-//PEACEKEEPER BELTS 
+//PEACEKEEPER BELTS
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
 	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
@@ -256,7 +255,7 @@
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/holosign_creator/security
 		))
-		
+
 
 //BOOTS
 /obj/item/clothing/shoes/jackboots/peacekeeper
