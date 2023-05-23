@@ -83,12 +83,6 @@
 			if(RESIN_DID_SPREAD)
 				return
 
-/datum/mold_controller/proc/update_mold_type(datum/mold/new_type)
-	for(var/obj/structure/mold/resin/resin as anything in all_resin)
-		resin.update_overlays()
-	for(var/obj/structure/mold/structure/structure as anything in other_structures)
-		structure.update_overlays()
-
 /datum/mold_controller/proc/spawn_expansion()
 	var/list/turfs = list()
 	var/hatcheries_to_spawn = 3

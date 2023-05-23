@@ -33,6 +33,7 @@
 	color = mold_type.mold_color
 	resistance_flags = mold_type.resistance_flags
 	name = "[mold_type.name] [name]"
+	update_appearance()
 
 /obj/structure/mold/structure
 	density = TRUE
@@ -98,17 +99,6 @@
 	var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
 	overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 	overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
-
-/obj/structure/mold/structure/core/proc/update_type(datum/mold/new_type)
-	if(!mold_controller)
-		message_admins("Core type updated with no controller.")
-		return
-	var/datum/mold/old_mold_type = mold_type
-	if(old_mold_type)
-		qdel(old_mold_type)
-	mold_type = new new_type
-	mold_controller.update_mold_type(mold_type)
-	update_overlays()
 
 /**
  * Mold resin
