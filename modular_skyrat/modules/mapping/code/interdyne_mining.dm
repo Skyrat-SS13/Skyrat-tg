@@ -30,4 +30,4 @@
 
 /mob/living/simple_animal/hostile/mining_drone/interdyne
 	name = "\improper Interdyne minebot"
-	faction = list("neutral", "Syndicate")
+	faction = list(FACTION_NEUTRAL, ROLE_SYNDICATE)

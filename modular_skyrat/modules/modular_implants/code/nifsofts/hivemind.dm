@@ -11,8 +11,10 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 0.2
-	purchase_price = 500
+	purchase_price = 350
 	buying_category = NIFSOFT_CATEGORY_UTILITY
+	ui_icon = "users"
+
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network
 	///What networks are the user connected to?
@@ -275,7 +277,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /obj/item/hivemind_keyboard/proc/send_message(mob/living/carbon/human/user)
 	var/mob/living/carbon/human/kebyoard_owner = source_user
 	var/mob/living/carbon/human/network_owner = connected_network.parent
-	var/message = sanitize(tgui_input_text(user, "Enter a message to transmit.", "[connected_network.network_name] Telepathy"))
+	var/message = tgui_input_text(user, "Enter a message to transmit.", "[connected_network.network_name] Telepathy")
 	if(!message || QDELETED(src) || QDELETED(user) || user.stat == DEAD)
 		return
 

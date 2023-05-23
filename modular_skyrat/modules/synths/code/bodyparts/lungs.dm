@@ -7,15 +7,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "lungs-ipc"
 	safe_nitro_min = 0
-	safe_nitro_max = 0
-	safe_co2_min = 0
 	safe_co2_max = 0
 	safe_plasma_min = 0
 	safe_plasma_max = 0
 	safe_oxygen_min = 0	//What are you doing man, dont breathe with those!
 	safe_oxygen_max = 0
 	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
 /obj/item/organ/internal/lungs/synth/emp_act(severity)
 	. = ..()

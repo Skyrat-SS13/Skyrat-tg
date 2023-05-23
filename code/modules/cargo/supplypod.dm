@@ -210,7 +210,7 @@
 /obj/structure/closet/supplypod/toggle(mob/living/user)
 	return
 
-/obj/structure/closet/supplypod/open(mob/living/user, force = FALSE)
+/obj/structure/closet/supplypod/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	return
 
 /obj/structure/closet/supplypod/proc/handleReturnAfterDeparting(atom/movable/holder = src)
@@ -249,12 +249,12 @@
 				for (var/bp in carbon_target_mob.bodyparts) //Look at the bodyparts in our poor mob beneath our pod as it lands
 					var/obj/item/bodypart/bodypart = bp
 					if(bodypart.body_part != HEAD && bodypart.body_part != CHEST)//we dont want to kill him, just teach em a lesson!
-						if (bodypart.dismemberable)
+						if (!(bodypart.bodypart_flags & BODYPART_UNREMOVABLE))
 							bodypart.dismember() //Using the power of flextape i've sawed this man's limb in half!
 							break
 			if (effectOrgans) //effectOrgans means remove every organ in our mob
 				var/mob/living/carbon/carbon_target_mob = target_living
-				for(var/obj/item/organ/organ_to_yeet as anything in carbon_target_mob.internal_organs)
+				for(var/obj/item/organ/organ_to_yeet as anything in carbon_target_mob.organs)
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs)) //Pick a random direction to toss them in
 					// SKYRAT EDIT START - Non-spillable organs
 					if(!organ_to_yeet.drop_when_organ_spilling)
@@ -268,7 +268,7 @@
 				for (var/bp in carbon_target_mob.bodyparts) //Look at the bodyparts in our poor mob beneath our pod as it lands
 					var/obj/item/bodypart/bodypart = bp
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs))
-					if (bodypart.dismemberable)
+					if (!(bodypart.bodypart_flags & BODYPART_UNREMOVABLE))
 						bodypart.dismember() //Using the power of flextape i've sawed this man's bodypart in half!
 						bodypart.throw_at(destination, 2, 3)
 						sleep(0.1 SECONDS)
@@ -429,6 +429,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handleReturnAfterDeparting), holder), 15) //Finish up the pod's duties after a certain amount of time
 
 /obj/structure/closet/supplypod/extractionpod/preReturn(atom/movable/holder)
+	// Double ensure we're loaded, this SHOULD be here by now but you never know
 	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY)
 	var/turf/picked_turf = pick(GLOB.holdingfacility)
 	reverse_dropoff_coords = list(picked_turf.x, picked_turf.y, picked_turf.z)
@@ -438,16 +439,19 @@
 	opened = TRUE
 	set_density(FALSE)
 	update_appearance()
+	after_open(null, FALSE)
 
 /obj/structure/closet/supplypod/extractionpod/setOpened()
 	opened = TRUE
 	set_density(TRUE)
 	update_appearance()
+	after_open(null, FALSE)
 
 /obj/structure/closet/supplypod/setClosed() //Ditto
 	opened = FALSE
 	set_density(TRUE)
 	update_appearance()
+	after_close(null, FALSE)
 
 /obj/structure/closet/supplypod/proc/tryMakeRubble(turf/T) //Ditto
 	if (rubble_type == RUBBLE_NONE)

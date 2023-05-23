@@ -37,7 +37,7 @@
 	to_chat(user, span_notice("You press the quick release as all the cells pop out!"))
 	for(var/i in charging_batteries)
 		removecell()
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
@@ -88,14 +88,14 @@
 			return
 		return ..()
 
-/obj/machinery/cell_charger_multi/process(delta_time)
+/obj/machinery/cell_charger_multi/process(seconds_per_tick)
 	if(!charging_batteries.len || !anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
 
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
 		if(charging.percent() >= 100)
 			continue
-		var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
+		var/main_draw = use_power_from_net(charge_rate * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
 		if(!main_draw)
 			return
 		charging.give(main_draw)

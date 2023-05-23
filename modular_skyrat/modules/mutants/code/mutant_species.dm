@@ -64,20 +64,24 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	id = SPECIES_MUTANT_INFECTIOUS
-	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	var/hands_to_give = /obj/item/hnz_mutant_hand
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1
 	/// The cooldown before the mutant can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
 
+/datum/species/mutant/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
+
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
 	id = SPECIES_MUTANT_FAST
-	mutanthands = /obj/item/mutant_hand/fast
+	hands_to_give = /obj/item/hnz_mutant_hand/fast
 	armor = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
@@ -92,7 +96,7 @@
 	heal_rate = 1.5
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
-/datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
+/datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
 
 /datum/species/mutant/infectious/check_roundstart_eligible()
@@ -101,26 +105,26 @@
 /datum/species/mutant/infectious/spec_stun(mob/living/carbon/human/H,amount)
 	. = min(20, amount)
 
-/datum/species/mutant/infectious/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, spread_damage = FALSE, forced = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction)
+/datum/species/mutant/infectious/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, attacking_item)
 	. = ..()
 	if(.)
 		COOLDOWN_START(src, regen_cooldown, REGENERATION_DELAY)
 
-/datum/species/mutant/infectious/spec_life(mob/living/carbon/carbon_mob, delta_time, times_fired)
+/datum/species/mutant/infectious/spec_life(mob/living/carbon/carbon_mob, seconds_per_tick, times_fired)
 	. = ..()
 	//mutants never actually die, they just fall down until they regenerate enough to rise back up.
 	if(COOLDOWN_FINISHED(src, regen_cooldown))
 		var/heal_amt = heal_rate
 		if(HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION))
 			heal_amt *= 2
-		carbon_mob.heal_overall_damage(heal_amt * delta_time, heal_amt * delta_time)
-		carbon_mob.adjustStaminaLoss(-heal_amt * delta_time)
-		carbon_mob.adjustToxLoss(-heal_amt * delta_time)
+		carbon_mob.heal_overall_damage(heal_amt * seconds_per_tick, heal_amt * seconds_per_tick)
+		carbon_mob.adjustStaminaLoss(-heal_amt * seconds_per_tick)
+		carbon_mob.adjustToxLoss(-heal_amt * seconds_per_tick)
 		for(var/i in carbon_mob.all_wounds)
 			var/datum/wound/iter_wound = i
-			if(DT_PROB(2-(iter_wound.severity/2), delta_time))
+			if(SPT_PROB(2-(iter_wound.severity/2), seconds_per_tick))
 				iter_wound.remove_wound()
-	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && DT_PROB(2, delta_time))
+	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && SPT_PROB(2, seconds_per_tick))
 		playsound(carbon_mob, pick(spooks), 50, TRUE, 10)
 
 #undef REGENERATION_DELAY
@@ -131,7 +135,7 @@
 	else
 		. = ..()
 
-/obj/item/mutant_hand
+/obj/item/hnz_mutant_hand
 	name = "mutant claw"
 	desc = "A mutant's claw is its primary tool, capable of infecting \
 		humans, butchering all other living things to \
@@ -152,17 +156,17 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 
-/obj/item/mutant_hand/fast
+/obj/item/hnz_mutant_hand/fast
 	name = "weak mutant claw"
 	force = 21
 	sharpness = NONE
 	wound_bonus = -40
 
-/obj/item/mutant_hand/Initialize(mapload)
+/obj/item/hnz_mutant_hand/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 
-/obj/item/mutant_hand/equipped(mob/user, slot)
+/obj/item/hnz_mutant_hand/equipped(mob/user, slot)
 	. = ..()
 	//these are intentionally inverted
 	var/i = user.get_held_index_of_item(src)
@@ -171,7 +175,7 @@
 	else
 		icon_state = icon_right
 
-/obj/item/mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/hnz_mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
 		return
@@ -217,7 +221,7 @@
 	if(infection)
 		qdel(infection)
 
-/obj/item/mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
+/obj/item/hnz_mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
 		var/hp_gained = target.maxHealth
 		target.investigate_log("has been feasted upon by the mutant [user].", INVESTIGATE_DEATHS)

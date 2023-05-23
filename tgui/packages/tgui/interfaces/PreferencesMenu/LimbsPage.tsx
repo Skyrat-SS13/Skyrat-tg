@@ -1,7 +1,7 @@
 import { Box, Stack, Section, Dropdown, Button, ColorBox } from '../../components';
 import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
-import { CharacterPreview } from './CharacterPreview';
+import { CharacterPreview } from '../common/CharacterPreview';
 
 export const RotateCharacterButtons = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
@@ -133,7 +133,7 @@ export const AugmentationPage = (props, context) => {
                   <Dropdown
                     grow
                     width="100%"
-                    options={Object.values(props.limb.aug_choices)}
+                    options={Object.values(props.limb.aug_choices) as string[]}
                     displayText={props.limb.chosen_aug}
                     onSelected={(value) => {
                       // Since the costs are positive,
@@ -188,7 +188,7 @@ export const OrganPage = (props, context) => {
         <Stack.Item grow>
           <Dropdown
             width="100%"
-            options={Object.values(props.organ.organ_choices)}
+            options={Object.values(props.organ.organ_choices) as string[]}
             displayText={props.organ.chosen_organ}
             onSelected={(value) => {
               // Since the costs are positive, it's added and not substracted

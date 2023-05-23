@@ -89,10 +89,10 @@
 	for(var/datum/stock_part/matter_bin/bin in component_parts)
 		new_max_items += MAX_ITEMS_PER_RATING * bin.tier
 
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
-		new_productivity += manipulator.tier
-		new_efficiency += manipulator.tier
-		new_processed_items_per_cycle += PROCESSED_ITEMS_PER_RATING * manipulator.tier
+	for(var/datum/stock_part/servo/servo in component_parts)
+		new_productivity += servo.tier
+		new_efficiency += servo.tier
+		new_processed_items_per_cycle += PROCESSED_ITEMS_PER_RATING * servo.tier
 
 	max_items = new_max_items
 	efficiency = new_efficiency
@@ -222,7 +222,7 @@
 
 /obj/machinery/biogenerator/AltClick(mob/living/user)
 	. = ..()
-	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) && can_interact(user))
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH) && can_interact(user))
 		eject_beaker(user)
 
 
@@ -245,7 +245,7 @@
 	update_appearance()
 
 
-/obj/machinery/biogenerator/process(delta_time)
+/obj/machinery/biogenerator/process(seconds_per_tick)
 	if(!processing)
 		return
 
@@ -265,7 +265,7 @@
 
 		convert_to_biomass(food_to_convert)
 
-	use_power(active_power_usage * delta_time)
+	use_power(active_power_usage * seconds_per_tick)
 
 	if(!current_item_count)
 		stop_process(FALSE)

@@ -83,31 +83,6 @@
 		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
 // SKYRAT EDIT END -- ONE CLICK ANTAG
 
-	else if(href_list["forceevent"])
-		if(!check_rights(R_FUN))
-			return
-		var/datum/round_event_control/E = locate(href_list["forceevent"]) in SSevents.control
-		if(E)
-			E.admin_setup(usr)
-			var/datum/round_event/event = E.runEvent()
-			if(event.cancel_event)
-				return
-			if(event.announce_when>0)
-				event.processing = FALSE
-				var/prompt = tgui_alert(usr, "Would you like to alert the crew?", "Alert", list("Yes", "No", "Cancel"))
-				switch(prompt)
-					if("Yes")
-						event.announce_chance = 100
-					if("Cancel")
-						event.kill()
-						return
-					if("No")
-						event.announce_chance = 0
-				event.processing = TRUE
-			message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
-			log_admin("[key_name(usr)] has triggered an event. ([E.name])")
-		return
-
 	else if(href_list["editrightsbrowser"])
 		edit_admin_permissions(0)
 
@@ -886,7 +861,7 @@
 					status = "<font color='red'><b>Dead</b></font>"
 			health_description = "Status: [status]"
 			health_description += "<br>Brute: [lifer.getBruteLoss()] - Burn: [lifer.getFireLoss()] - Toxin: [lifer.getToxLoss()] - Suffocation: [lifer.getOxyLoss()]"
-			health_description += "<br>Clone: [lifer.getCloneLoss()] - Brain: [lifer.getOrganLoss(ORGAN_SLOT_BRAIN)] - Stamina: [lifer.getStaminaLoss()]"
+			health_description += "<br>Clone: [lifer.getCloneLoss()] - Brain: [lifer.get_organ_loss(ORGAN_SLOT_BRAIN)] - Stamina: [lifer.getStaminaLoss()]"
 		else
 			health_description = "This mob type has no health to speak of."
 
@@ -1554,7 +1529,7 @@
 	else if(href_list["ctf_toggle"])
 		if(!check_rights(R_ADMIN))
 			return
-		toggle_id_ctf(usr, "centcom")
+		toggle_id_ctf(usr, CTF_GHOST_CTF_GAME_ID)
 
 	else if(href_list["rebootworld"])
 		if(!check_rights(R_ADMIN))
@@ -1815,3 +1790,13 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
+	else if(href_list["play_internet"])
+		if(!check_rights(R_SOUND))
+			return
+
+		var/link_url = href_list["play_internet"]
+		if(!link_url)
+			return
+
+		web_sound(usr, link_url)
+

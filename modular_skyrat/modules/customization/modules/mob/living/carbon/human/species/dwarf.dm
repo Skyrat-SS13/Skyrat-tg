@@ -22,6 +22,7 @@
 	payday_modifier = 0.75
 	liked_food = ALCOHOL | MEAT | DAIRY //Dwarves like alcohol, meat, and dairy products.
 	disliked_food = JUNKFOOD | FRIED | CLOTH //Dwarves hate foods that have no nutrition other than alcohol.
+	body_size_restricted = TRUE
 
 /datum/species/dwarf/get_species_description()
 	return placeholder_description
@@ -32,5 +33,5 @@
 /datum/species/dwarf/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.facial_hairstyle = "Beard (Dwarf)"
 	human.facial_hair_color = "#a55310"
-	human.update_mutant_bodyparts(TRUE)
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)

@@ -3,8 +3,8 @@
 /obj/item/clothing/head/helmet/sec/peacekeeper
 	name = "peacekeeper helmet"
 	desc = "A standard issue combat helmet for peacekeeper operators. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "peacekeeper_helmet"
 	base_icon_state = "peacekeeper_helmet"
 	can_toggle = FALSE
@@ -179,7 +179,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
 
-//PEACEKEEPER BELTS
+//PEACEKEEPER BELTS 
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
 	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
@@ -256,6 +256,7 @@
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/holosign_creator/security
 		))
+		
 
 //BOOTS
 /obj/item/clothing/shoes/jackboots/peacekeeper
@@ -263,9 +264,7 @@
 	desc = "High speed, low drag combat boots."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "peacekeeper_boots"
-	inhand_icon_state = "jackboots"
-	worn_icon_state = "peacekeeper"
+	icon_state = "peacekeeper"
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"

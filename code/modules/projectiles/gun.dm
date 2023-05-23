@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -11,7 +10,7 @@
 	worn_icon_state = "gun"
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	custom_materials = list(/datum/material/iron=2000)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 5
 	throw_speed = 3
@@ -75,6 +74,8 @@
 		pin = new pin(src)
 
 	add_seclight_point()
+	give_gun_safeties() // SKYRAT EDIT ADDITION - GUN SAFETIES
+	give_manufacturer_examine() // SKYRAT EDIT ADDITON - MANUFACTURER EXAMINE
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -99,10 +100,15 @@
 	if(A == chambered)
 		chambered = null
 		update_appearance()
-	if(A == bayonet)
-		clear_bayonet()
 	if(A == suppressed)
 		clear_suppressor()
+	return ..()
+
+/obj/item/gun/Exited(atom/movable/gone, direction)
+	if(gone == bayonet)
+		bayonet = null
+		if(!QDELING(src))
+			update_appearance()
 	return ..()
 
 ///Clears var and updates icon. In the case of ballistic weapons, also updates the gun's weight.
@@ -117,7 +123,10 @@
 	if(!pinless)
 		if(pin)
 			. += "It has \a [pin] installed."
-			. += span_info("[pin] looks like it could be removed with some <b>tools</b>.")
+			if(pin.pin_removable)
+				. += span_info("[pin] looks like [pin.p_they()] could be removed with some <b>tools</b>.")
+			else
+				. += span_info("[pin] looks like [pin.p_theyre()] firmly locked in, [pin.p_they()] looks impossible to remove.")
 		else
 			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
 
@@ -199,14 +208,16 @@
 	var/datum/component/gunpoint/gunpoint_component = user.GetComponent(/datum/component/gunpoint)
 	if (gunpoint_component)
 		if(gunpoint_component.target == victim)
-			return ..() //we're already holding them up, shoot that mans instead of complaining
-		balloon_alert(user, "already holding someone up!")
+			balloon_alert(user, "already holding them up!")
+		else
+			balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if (user == victim)
 		balloon_alert(user, "can't hold yourself up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	user.AddComponent(/datum/component/gunpoint, victim, src)
+	if(do_after(user, 0.5 SECONDS, victim))
+		user.AddComponent(/datum/component/gunpoint, victim, src)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
@@ -445,13 +456,19 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 
 	if(bayonet && can_bayonet) //if it has a bayonet, and the bayonet can be removed
-		return remove_bayonet(user, I)
+		I.play_tool_sound(src)
+		to_chat(user, span_notice("You unfix [bayonet] from [src]."))
+		bayonet.forceMove(drop_location())
 
-	else if(pin && user.is_holding(src))
+		if(Adjacent(user) && !issilicon(user))
+			user.put_in_hands(bayonet)
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+
+	else if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
@@ -460,15 +477,15 @@
 			user.visible_message(span_notice("[pin] is pried out of [src] by [user], destroying the pin in the process."),
 								span_warning("You pry [pin] out with [I], destroying the pin in the process."), null, 3)
 			QDEL_NULL(pin)
-			return TRUE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/item/gun/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	if(pin && user.is_holding(src))
+	if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
@@ -483,9 +500,9 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	if(pin && user.is_holding(src))
+	if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
@@ -495,23 +512,6 @@
 								span_warning("You rip [pin] out of [src] with [I], mangling the pin in the process."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
-
-/obj/item/gun/proc/remove_bayonet(mob/living/user, obj/item/tool_item)
-	tool_item?.play_tool_sound(src)
-	to_chat(user, span_notice("You unfix [bayonet] from [src]."))
-	bayonet.forceMove(drop_location())
-
-	if(Adjacent(user) && !issilicon(user))
-		user.put_in_hands(bayonet)
-
-	return clear_bayonet()
-
-/obj/item/gun/proc/clear_bayonet()
-	if(!bayonet)
-		return
-	bayonet = null
-	update_appearance()
-	return TRUE
 
 /obj/item/gun/update_overlays()
 	. = ..()
@@ -542,7 +542,7 @@
 
 	semicd = TRUE
 
-	if(!bypass_timer && (!do_mob(user, target, 120) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
+	if(!bypass_timer && (!do_after(user, 120, target) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
 		if(user)
 			if(user == target)
 				user.visible_message(span_notice("[user] decided not to shoot."))
@@ -577,4 +577,3 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
-*/

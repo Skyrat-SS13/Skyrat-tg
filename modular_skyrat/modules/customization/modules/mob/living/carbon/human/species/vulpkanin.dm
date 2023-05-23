@@ -25,6 +25,7 @@
 	liked_food = RAW | MEAT
 	disliked_food = CLOTH
 	toxic_food = TOXIC
+	species_language_holder = /datum/language_holder/vulpkanin
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_MAMMAL
@@ -70,6 +71,7 @@
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
 
+/*	Runtime in vulpkanin.dm,78: pick() from empty list
 /datum/species/vulpkanin/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
@@ -83,6 +85,7 @@
 		randname += " [pick(GLOB.last_names_vulp)]"
 
 	return randname
+*/
 
 /datum/species/vulpkanin/get_species_description()
 	return placeholder_description
@@ -97,8 +100,8 @@
 	vulp.dna.features["mcolor"] = main_color
 	vulp.dna.features["mcolor2"] = second_color
 	vulp.dna.features["mcolor3"] = second_color
-	vulp.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_COLOR_LIST = list(main_color, main_color, main_color))
-	vulp.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(second_color, main_color, main_color))
-	vulp.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Wolf", MUTANT_INDEX_COLOR_LIST = list(main_color, second_color, second_color))
-	vulp.update_mutant_bodyparts(TRUE)
+	vulp.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_COLOR_LIST = list(main_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(second_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Wolf", MUTANT_INDEX_COLOR_LIST = list(main_color, second_color, second_color))
+	regenerate_organs(vulp, src, visual_only = TRUE)
 	vulp.update_body(TRUE)

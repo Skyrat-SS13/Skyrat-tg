@@ -11,7 +11,6 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/p90
 	can_suppress = FALSE
-	burst_size = 5
 	fire_delay = 1
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/p90_fire.ogg'
 	fire_sound_volume = 100
@@ -20,6 +19,11 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/p90_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/p90_magout.ogg'
 	alt_icons = TRUE
+
+/obj/item/gun/ballistic/automatic/p90/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/ammo_box/magazine/p90
 	name = "\improper P90-02 magazine"

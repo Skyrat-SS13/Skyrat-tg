@@ -17,31 +17,10 @@
 /obj/item/clothing/head/hats/flakhelm/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/pockets/tiny/spacenam)
+	create_storage(storage_type = /datum/storage/pockets/tiny/spacenam)
 
 /datum/storage/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
-
-/obj/item/clothing/head/costume/kepi
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	name = "kepi"
-	desc = "A white cap with visor. Oui oui, mon capitane!"
-	icon_state = "kepi"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/kepi/old
-	icon_state = "kepi_old"
-	desc = "A flat, white circular cap with a visor, that demands some honor from it's wearer."
-
-/obj/item/clothing/head/costume/maid
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	name = "maid headband"
-	desc = "Maid in China."
-	icon_state = "maid"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 
 //Cyberpunk PI Costume - Sprites from Eris
 /obj/item/clothing/head/fedora/det_hat/cybergoggles //Subset of detective fedora so that detectives dont have to sacrifice candycorns for style
@@ -76,69 +55,6 @@
 	acid = 50
 	wound = 6
 
-/obj/item/clothing/head/costume/ushanka/sec
-	name = "security ushanka"
-	desc = "There's more to life than money, with this red ushanka, you can prove it for $19.99."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "ushankared"
-	inhand_icon_state = "rus_ushanka"
-	upsprite = "ushankaredup"
-	downsprite = "ushankared"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-
-/obj/item/clothing/head/costume/ushanka/sec/blue
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "There's more to life than money, with this blue ushanka, you can prove it for $19.99."
-	icon_state = "ushankablue"
-	inhand_icon_state = "rus_ushanka"
-	upsprite = "ushankablueup"
-	downsprite = "ushankablue"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/soft/enclave
-	name = "neo american cap"
-	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclavesoft"
-	soft_type = "enclave"
-	dog_fashion = null
-
-/obj/item/clothing/head/soft/enclaveo
-	name = "neo american officer cap"
-	desc = "It blocks out the sun and laser bolts from executions."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enclaveosoft"
-	soft_type = "enclaveo"
-	dog_fashion = null
-
-/obj/item/clothing/head/costume/whiterussian
-	name = "papakha"
-	desc = "A big wooly clump of fur designed to go on your head."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "papakha"
-	dog_fashion = null
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/whiterussian/white
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "papakha_white"
-	dog_fashion = null
-
-/obj/item/clothing/head/costume/whiterussian/black
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "papakha_kuban"
-	dog_fashion = null
-
 /obj/item/clothing/head/hats/sec/peacekeeper/sol
 	name = "sol police cap"
 	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
@@ -147,7 +63,7 @@
 	icon_state = "policeofficercap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hats/hos/peacekeeper/sol
+/obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
 	name = "sol police chief cap"
 	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -171,17 +87,6 @@
 	greyscale_config_worn = /datum/greyscale_config/flatcap/worn
 	greyscale_colors = "#79684c"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/flowerpin
-	name = "flower pin"
-	desc = "A small, colourable flower pin"
-	icon_state = "flowerpin"
-	greyscale_config = /datum/greyscale_config/flowerpin
-	greyscale_config_worn = /datum/greyscale_config/flowerpin/worn
-	greyscale_colors = "#FF0000"
-	flags_1 = IS_PLAYER_COLORABLE_1
-	w_class = WEIGHT_CLASS_SMALL
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hats/imperial
@@ -262,13 +167,6 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "goggles")
 
-/obj/item/clothing/head/corgi/en
-	name = "E-N suit head"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enhead"
-	supports_variations_flags = NONE
-
 /obj/item/clothing/head/soft/yankee
 	name = "fashionable baseball cap"
 	desc = "Rimmed and brimmed."
@@ -287,35 +185,10 @@
 	icon_state = "yankeenobrimsoft"
 	soft_type = "yankeenobrim"
 
-/obj/item/clothing/head/fedora/fedbrown
+/obj/item/clothing/head/fedora/brown //Fedora without detective's candy corn gimmick
 	name = "brown fedora"
-	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "brfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/fedora/fedblack
-	name = "black fedora"
-	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "blfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/christmas
-	name = "red christmas hat"
-	desc = "A red Christmas Hat! How festive!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "christmashat"
-
-/obj/item/clothing/head/costume/christmas/green
-	name = "green christmas hat"
-	desc = "A green Christmas Hat! How festive!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "christmashatg"
+	icon_state = "detective"
+	inhand_icon_state = "det_hat"
 
 /obj/item/clothing/head/standalone_hood
 	name = "hood"
@@ -345,7 +218,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#972A2A#EFEFEF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-  
+
 /obj/item/clothing/head/costume/cowboyhat_old
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'

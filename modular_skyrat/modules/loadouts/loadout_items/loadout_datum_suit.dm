@@ -8,6 +8,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit
 	category = LOADOUT_ITEM_SUIT
 
+/datum/loadout_item/suit/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE) // don't bother storing in backpack, can't fit
+	if(initial(outfit_important_for_life.suit))
+		return TRUE
+
 /datum/loadout_item/suit/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
 		if(outfit.suit)
@@ -29,24 +33,28 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/custom
 
 /datum/loadout_item/suit/aformal
-	name = "Assistant's formal winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/aformal
+	name = "Assistant's Formal Winter Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat
 
 /datum/loadout_item/suit/runed
-	name = "Runed winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
+	name = "Runed Winter Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
 
 /datum/loadout_item/suit/brass
-	name = "Brass winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
+	name = "Brass Winter Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 
 /datum/loadout_item/suit/korea
-	name = "Eastern winter coat"
+	name = "Eastern Winter Coat"
 	item_path = /obj/item/clothing/suit/koreacoat
 
 /datum/loadout_item/suit/czech
-	name = "Modern winter coat"
+	name = "Modern Winter Coat"
 	item_path = /obj/item/clothing/suit/modernwintercoatthing
+
+/datum/loadout_item/suit/mantella
+	name = "Mothic Mantella"
+	item_path = /obj/item/clothing/suit/mothcoat/winter
 
 /*
 *	SUITS / SUIT JACKETS
@@ -182,6 +190,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
 
+/datum/loadout_item/suit/mothcoat
+	name = "Mothic Flightsuit"
+	item_path = /obj/item/clothing/suit/mothcoat
+
 /*
 *	VARSITY JACKET
 */
@@ -256,13 +268,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/winter_coat/christmas
 	name = "Christmas Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
 	required_season = CHRISTMAS
 
 /datum/loadout_item/suit/winter_coat/christmas/green
 	name = "Green Christmas Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas/green
-
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas/green
 
 /*
 *	MISC
@@ -534,7 +545,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/coat_bar
 	name = "Bartender Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/bartender
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/bartender
 	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER) //Reserved for Bartenders and their boss, the Head of Personnel
 
 /datum/loadout_item/suit/coat_cargo
@@ -664,3 +675,14 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Cowboy Vest"
 	item_path = /obj/item/clothing/suit/cowboyvest
 
+/datum/loadout_item/suit/donator/digicoat/nanotrasen
+	name = "nanotrasen digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/nanotrasen
+
+/datum/loadout_item/suit/donator/digicoat/interdyne
+	name = "Interdyne Digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
+
+/datum/loadout_item/suit/digicoat_glitched //Public donator reward for Razurath.
+	name = "Glitched Digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched

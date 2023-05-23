@@ -78,14 +78,14 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/vibroring/process(delta_time)
+/obj/item/clothing/sextoy/vibroring/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!user || !istype(user))
 		return PROCESS_KILL
-	var/obj/item/organ/external/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/balls = user.get_organ_slot(ORGAN_SLOT_PENIS)
 	if(!toy_on || !balls)
 		return
-	user.adjust_arousal(1 * delta_time)
-	user.adjust_pleasure(1 * delta_time)
+	user.adjust_arousal(1 * seconds_per_tick)
+	user.adjust_pleasure(1 * seconds_per_tick)
 	if(balls.aroused != AROUSAL_CANT)
 		balls.aroused = AROUSAL_FULL //Vibroring keep penis erected.

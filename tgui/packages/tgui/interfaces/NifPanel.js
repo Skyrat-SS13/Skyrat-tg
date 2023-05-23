@@ -1,6 +1,6 @@
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table } from '../components';
+import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table, Icon } from '../components';
 import { TableCell, TableRow } from '../components/Table';
 
 export const NifPanel = (props, context) => {
@@ -49,7 +49,12 @@ export const NifPanel = (props, context) => {
                   {loaded_nifsofts.map((nifsoft) => (
                     <Flex.Item key={nifsoft.name}>
                       <Collapsible
-                        title={nifsoft.name}
+                        title={
+                          <>
+                            {<Icon name={nifsoft.ui_icon} />}
+                            {nifsoft.name + '  '}
+                          </>
+                        }
                         buttons={
                           <Button
                             icon="play"
@@ -154,6 +159,7 @@ const NifSettings = (props, context) => {
     blood_drain,
     minimum_blood_level,
     blood_level,
+    stored_points,
   } = data;
   return (
     <LabeledList>
@@ -167,7 +173,7 @@ const NifSettings = (props, context) => {
       </LabeledList.Item>
       <LabeledList.Item label="NIF Flavor Text">
         <Input
-          onInput={(e, value) =>
+          onChange={(e, value) =>
             act('change_examine_text', { new_text: value })
           }
           width="100%"
@@ -196,6 +202,16 @@ const NifSettings = (props, context) => {
           onClick={() => act('toggle_blood_drain')}
           disabled={blood_level < minimum_blood_level}
         />
+      </LabeledList.Item>
+      <LabeledList.Item
+        label="Rewards Points"
+        buttons={
+          <Button
+            icon="info"
+            tooltip="Rewards points are an alternative currency gained by purchasing NIFSofts, rewards points carry between shifts."
+          />
+        }>
+        {stored_points}
       </LabeledList.Item>
     </LabeledList>
   );

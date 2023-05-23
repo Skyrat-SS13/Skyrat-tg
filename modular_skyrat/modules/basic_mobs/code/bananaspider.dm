@@ -49,7 +49,7 @@
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 
-/mob/living/simple_animal/hostile/giant_spider/badnana_spider
+/mob/living/basic/giant_spider/badnana_spider
 	name = "badnana spider"
 	desc = "WHY WOULD GOD ALLOW THIS?!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
@@ -60,13 +60,6 @@
 	health = 40
 	melee_damage_lower = 5
 	melee_damage_upper = 5
-	move_to_delay = 4
 	speed = -0.5
-	faction = list("spiders")
-
-/mob/living/simple_animal/hostile/giant_spider/badnana_spider/AttackingTarget()
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent(/datum/reagent/consumable/laughter, 10)
+	faction = list(FACTION_SPIDER)
 

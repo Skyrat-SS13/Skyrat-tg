@@ -8,7 +8,7 @@
 	slot = ORGAN_SLOT_BRAIN
 	zone = BODY_ZONE_CHEST
 	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
@@ -33,9 +33,9 @@
 	if(. & EMP_PROTECT_SELF || severity != EMP_HEAVY)
 		return
 
-	applyOrganDamage(SYNTH_EMP_BRAIN_DAMAGE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
+	apply_organ_damage(SYNTH_EMP_BRAIN_DAMAGE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 
-/obj/item/organ/internal/brain/synth/applyOrganDamage(damage_amount, maximumm, required_organtype)
+/obj/item/organ/internal/brain/synth/apply_organ_damage(damage_amount, maximumm, required_organtype)
 	. = ..()
 
 	if(owner && damage > 0 && (world.time - last_message_time) > SYNTH_BRAIN_DAMAGE_MESSAGE_INTERVAL)

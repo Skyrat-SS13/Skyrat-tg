@@ -19,14 +19,14 @@
 	var/mob/living/carbon/human/human_target = target
 	var/static/list/dye_options = list(DYE_OPTION_HAIR_COLOR, DYE_OPTION_GRADIENT)
 	var/gradient_or_hair = tgui_alert(user, "What would you like to do?", "Hair Dye Spray", dye_options, autofocus = TRUE)
-	if(!gradient_or_hair || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(!gradient_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 
 	var/dying_themselves = target == user
 	if(gradient_or_hair == DYE_OPTION_HAIR_COLOR)
 		var/new_color = input(usr, "Choose a hair color:", "Character Preference", "#" + human_target.hair_color) as color|null
 
-		if(!new_color || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+		if(!new_color || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
 
@@ -39,16 +39,16 @@
 
 	else
 		var/beard_or_hair = input(user, "What do you want to dye?", "Character Preference")  as null|anything in list("Hair", "Facial Hair")
-		if(!beard_or_hair || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+		if(!beard_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
 		var/list/choices = beard_or_hair == "Hair" ? GLOB.hair_gradients_list : GLOB.facial_hair_gradients_list
 		var/new_grad_style = tgui_input_list(usr, "Choose a color pattern:", "Dye Spray", choices)
-		if(!new_grad_style || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+		if(!new_grad_style || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
 		var/new_grad_color = input(usr, "Choose a secondary hair color:", "Dye Spray", human_target.grad_color) as color|null
-		if(!new_grad_color || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+		if(!new_grad_color || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
 		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs = user)

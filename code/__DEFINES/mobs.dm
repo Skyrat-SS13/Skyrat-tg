@@ -23,6 +23,8 @@
 
 /// How efficiently humans regenerate blood.
 #define BLOOD_REGEN_FACTOR 0.25
+/// Determines the rate at which humans lose blood when they have the blood deficiency quirk. The default is BLOOD_REGEN_FACTOR + BLOOD_DEFICIENCY_MODIFIER.
+#define BLOOD_DEFICIENCY_MODIFIER 0.025
 
 /// Temperature at which blood loss and regen stops. [/mob/living/carbon/human/proc/handle_blood]
 #define BLOOD_STOP_TEMP 225
@@ -52,6 +54,10 @@
 #define MOB_SPIRIT (1 << 9)
 #define MOB_PLANT (1 << 10)
 
+//Lung respiration type flags
+#define RESPIRATION_OXYGEN (1 << 0)
+#define RESPIRATION_N2 (1 << 1)
+#define RESPIRATION_PLASMA (1 << 2)
 
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC 1
@@ -64,10 +70,6 @@
 #define MONKEY_BODYPART "monkey"
 #define ALIEN_BODYPART "alien"
 #define LARVA_BODYPART "larva"
-
-//Bodypart change blocking flags
-///Bodypart does not get replaced during set_species()
-#define BP_BLOCK_CHANGE_SPECIES (1<<0)
 
 //Bodytype defines for how things can be worn, surgery, and other misc things.
 ///The limb is organic.
@@ -86,14 +88,21 @@
 #define BODYTYPE_LARVA_PLACEHOLDER (1<<6)
 ///The limb is from a xenomorph.
 #define BODYTYPE_ALIEN (1<<7)
+///The limb is from a golem
+#define BODYTYPE_GOLEM (1<<8)
 // SKYRAT EDIT ADDITION
 ///The limb fits a modular custom shape
-#define BODYTYPE_CUSTOM (1<<8)
+#define BODYTYPE_CUSTOM (1<<9)
 ///The limb fits a taur body
-#define BODYTYPE_TAUR (1<<9)
+#define BODYTYPE_TAUR (1<<10)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
-#define BODYTYPE_HIDE_SHOES (1<<10)
+#define BODYTYPE_HIDE_SHOES (1<<11)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<12)
 // SKYRAT EDIT END
+
+#define BODYTYPE_BIOSCRAMBLE_COMPATIBLE (BODYTYPE_HUMANOID | BODYTYPE_MONKEY | BODYTYPE_ALIEN)
+#define BODYTYPE_CAN_BE_BIOSCRAMBLED(bodytype) (!(bodytype & BODYTYPE_ROBOTIC) && (bodytype & BODYTYPE_BIOSCRAMBLE_COMPATIBLE))
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
 #define SPECIES_ABDUCTOR "abductor"
@@ -112,6 +121,8 @@
 #define SPECIES_LIZARD_SILVER "silverscale"
 #define SPECIES_NIGHTMARE "nightmare"
 #define SPECIES_MONKEY "monkey"
+#define SPECIES_MONKEY_FREAK "monkey_freak"
+#define SPECIES_MONKEY_HUMAN_LEGGED "monkey_human_legged"
 #define SPECIES_MOTH "moth"
 #define SPECIES_MUSHROOM "mush"
 #define SPECIES_PLASMAMAN "plasmaman"
@@ -119,6 +130,7 @@
 #define SPECIES_SHADOW "shadow"
 #define SPECIES_SKELETON "skeleton"
 #define SPECIES_SNAIL "snail"
+#define SPECIES_TALLBOY "tallboy"
 #define SPECIES_VAMPIRE "vampire"
 #define SPECIES_ZOMBIE "zombie"
 #define SPECIES_ZOMBIE_INFECTIOUS "memezombie"
@@ -353,11 +365,18 @@
 #define ENVIRONMENT_SMASH_WALLS 2 //walls
 #define ENVIRONMENT_SMASH_RWALLS 3 //rwalls
 
+// Slip flags, also known as lube flags
+/// The mob will not slip if they're walking intent
 #define NO_SLIP_WHEN_WALKING (1<<0)
+/// Slipping on this will send them sliding a few tiles down
 #define SLIDE (1<<1)
-#define GALOSHES_DONT_HELP (1<<2)
-#define SLIDE_ICE (1<<3)
-#define SLIP_WHEN_CRAWLING (1<<4) //clown planet ruin
+/// Ice slides only go one tile and don't knock you over, they're intended to cause a "slip chain"
+/// where you slip on ice until you reach a non-slippable tile (ice puzzles)
+#define SLIDE_ICE (1<<2)
+/// [TRAIT_NO_SLIP_WATER] does not work on this slip. ONLY [TRAIT_NO_SLIP_ALL] will
+#define GALOSHES_DONT_HELP (1<<3)
+/// Slip works even if you're already on the ground
+#define SLIP_WHEN_CRAWLING (1<<4)
 
 #define MAX_CHICKENS 50
 
@@ -415,6 +434,7 @@
 #define OFFSET_BACK "back"
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
+#define OFFSET_HELD "held"
 #define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
 
 //MINOR TWEAKS/MISC
@@ -436,6 +456,7 @@
 #define CLOTHING_NUTRITION_GAIN 15
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4) // By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
+#define REM REAGENTS_EFFECT_MULTIPLIER //! Shorthand for the above define for ease of use in equations and the like
 
 // Eye protection
 #define FLASH_PROTECTION_HYPER_SENSITIVE -2
@@ -591,6 +612,8 @@
 #define AI_EMOTION_BLUE_GLOW "Blue Glow"
 #define AI_EMOTION_RED_GLOW "Red Glow"
 
+/// Icon state to use for ai displays that just turns them off
+#define AI_DISPLAY_DONT_GLOW "ai_off"
 /// Throw modes, defines whether or not to turn off throw mode after
 #define THROW_MODE_DISABLED 0
 #define THROW_MODE_TOGGLE 1
@@ -609,11 +632,36 @@
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
 #define GRADIENT_APPLIES_TO_FACIAL_HAIR (1<<1)
 
+// Height defines
+// - They are numbers so you can compare height values (x height < y height)
+// - They do not start at 0 for futureproofing
+// - They skip numbers for futureproofing as well
+// Otherwise they are completely arbitrary
+#define HUMAN_HEIGHT_DWARF 2
+#define HUMAN_HEIGHT_SHORTEST 4
+#define HUMAN_HEIGHT_SHORT 6
+#define HUMAN_HEIGHT_MEDIUM 8
+#define HUMAN_HEIGHT_TALL 10
+#define HUMAN_HEIGHT_TALLEST 12
+
+/// Assoc list of all heights, cast to strings, to """"tuples"""""
+/// The first """tuple""" index is the upper body offset
+/// The second """tuple""" index is the lower body offset
+GLOBAL_LIST_INIT(human_heights_to_offsets, list(
+	"[HUMAN_HEIGHT_DWARF]" = list(-5, -4),
+	"[HUMAN_HEIGHT_SHORTEST]" = list(-2, -1),
+	"[HUMAN_HEIGHT_SHORT]" = list(-1, -1),
+	"[HUMAN_HEIGHT_MEDIUM]" = list(0, 0),
+	"[HUMAN_HEIGHT_TALL]" = list(1, 1),
+	"[HUMAN_HEIGHT_TALLEST]" = list(2, 2),
+))
+
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-// SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
-#define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
-// SKYRAT EDIT CHANGE END
+/// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
+/// Also consider updating layers_to_offset
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
@@ -643,9 +691,9 @@
 #define NIPPLES_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
-/// ID card layer (might be deprecated)
-#define ID_LAYER 24
 /// ID card layer
+#define ID_LAYER 24
+/// ID card layer (might be deprecated)
 #define ID_CARD_LAYER 23
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
 #define BODYPARTS_HIGH_LAYER 22
@@ -692,6 +740,49 @@
 /// Fire layer when you're on fire
 #define FIRE_LAYER 1
 
+#define UPPER_BODY "upper body"
+#define LOWER_BODY "lower body"
+#define NO_MODIFY "do not modify"
+
+/// Used for human height overlay adjustments
+/// Certain standing overlay layers shouldn't have a filter applied and should instead just offset by a pixel y
+/// This list contains all the layers that must offset, with its value being whether it's a part of the upper half of the body (TRUE) or not (FALSE)
+GLOBAL_LIST_INIT(layers_to_offset, list(
+	// Weapons commonly cross the middle of the sprite so they get cut in half by the filter
+	"[HANDS_LAYER]" = LOWER_BODY,
+	// Very tall hats will get cut off by filter
+	"[HEAD_LAYER]" = UPPER_BODY,
+	// Hair will get cut off by filter
+	"[HAIR_LAYER]" = UPPER_BODY,
+	// Long belts (sabre sheathe) will get cut off by filter
+	"[BELT_LAYER]" = LOWER_BODY,
+	// Everything below looks fine with or without a filter, so we can skip it and just offset
+	// (In practice they'd be fine if they got a filter but we can optimize a bit by not.)
+	"[GLASSES_LAYER]" = UPPER_BODY,
+	"[ABOVE_BODY_FRONT_GLASSES_LAYER]" = UPPER_BODY, // currently unused
+	"[ABOVE_BODY_FRONT_HEAD_LAYER]" = UPPER_BODY, // only used for head stuff
+	"[GLOVES_LAYER]" = LOWER_BODY,
+	"[HALO_LAYER]" = UPPER_BODY, // above the head
+	"[HANDCUFF_LAYER]" = LOWER_BODY,
+	"[ID_CARD_LAYER]" = UPPER_BODY, // unused
+	"[ID_LAYER]" = UPPER_BODY,
+	"[FACEMASK_LAYER]" = UPPER_BODY,
+	// These two are cached, and have their appearance shared(?), so it's safer to just not touch it
+	"[MUTATIONS_LAYER]" = NO_MODIFY,
+	"[FRONT_MUTATIONS_LAYER]" = NO_MODIFY,
+	// These DO get a filter, I'm leaving them here as reference,
+	// to show how many filters are added at a glance
+	// BACK_LAYER (backpacks are big)
+	// BODYPARTS_HIGH_LAYER (arms)
+	// BODY_ADJ_LAYER (external organs like wings)
+	// BODY_BEHIND_LAYER (external organs like wings)
+	// BODY_FRONT_LAYER (external organs like wings)
+	// DAMAGE_LAYER (full body)
+	// FIRE_LAYER (full body)
+	// UNIFORM_LAYER (full body)
+	// WOUND_LAYER (full body)
+))
+
 //Bitflags for the layers an external organ can draw on (organs can be drawn on multiple layers)
 /// Draws organ on the BODY_FRONT_LAYER
 #define EXTERNAL_FRONT (1 << 1)
@@ -699,6 +790,12 @@
 #define EXTERNAL_ADJACENT (1 << 2)
 /// Draws organ on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 3)
+// SKYRAT EDIT ADDITION - Customization
+/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
+#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
+/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
+#define EXTERNAL_FRONT_OVER (1 << 5)
+// SKYRAT EDIT END (not touching what comes next because we don't actually have to (nor want to))
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
@@ -723,6 +820,23 @@
 #define ABOVE_SHOES_LAYER (SHOES_LAYER-1)
 /// The layer above mutant body parts
 #define ABOVE_BODY_FRONT_LAYER (BODY_FRONT_LAYER-1)
+
+/// If gravity must be present to perform action (can't use pens without gravity)
+#define NEED_GRAVITY (1<<0)
+/// If reading is required to perform action (can't read a book if you are illiterate)
+#define NEED_LITERACY (1<<1)
+/// If lighting must be present to perform action (can't heal someone in the dark)
+#define NEED_LIGHT (1<<2)
+/// If other mobs (monkeys, aliens, etc) can perform action (can't use computers if you are a monkey)
+#define NEED_DEXTERITY (1<<3)
+/// If hands are required to perform action (can't use objects that require hands if you are a cyborg)
+#define NEED_HANDS (1<<4)
+/// If telekinesis is forbidden to perform action from a distance (ex. canisters are blacklisted from telekinesis manipulation)
+#define FORBID_TELEKINESIS_REACH (1<<5)
+/// If silicons are allowed to perform action from a distance (silicons can operate airlocks from far away)
+#define ALLOW_SILICON_REACH (1<<6)
+/// If resting on the floor is allowed to perform action (pAIs can play music while resting)
+#define ALLOW_RESTING (1<<7)
 
 /// The default mob sprite size (used for shrinking or enlarging the mob sprite to regular size)
 #define RESIZE_DEFAULT_SIZE 1
@@ -757,33 +871,35 @@
 #define HEAL_STAM (1<<6)
 /// Restore all limbs to their initial state.
 #define HEAL_LIMBS (1<<7)
-/// Heals all organs from failing. If done as a part of an admin heal, will instead restore all organs to their initial state.
+/// Heals all organs from failing.
 #define HEAL_ORGANS (1<<8)
+/// A "super" heal organs, this refreshes all organs entirely, deleting old and replacing them with new.
+#define HEAL_REFRESH_ORGANS (1<<9)
 /// Removes all wounds.
-#define HEAL_WOUNDS (1<<9)
+#define HEAL_WOUNDS (1<<10)
 /// Removes all brain traumas, not including permanent ones.
-#define HEAL_TRAUMAS (1<<10)
+#define HEAL_TRAUMAS (1<<11)
 /// Removes all reagents present.
-#define HEAL_ALL_REAGENTS (1<<11)
+#define HEAL_ALL_REAGENTS (1<<12)
 /// Removes all non-positive diseases.
-#define HEAL_NEGATIVE_DISEASES (1<<12)
+#define HEAL_NEGATIVE_DISEASES (1<<13)
 /// Restores body temperature back to nominal.
-#define HEAL_TEMP (1<<13)
+#define HEAL_TEMP (1<<14)
 /// Restores blood levels to normal.
-#define HEAL_BLOOD (1<<14)
+#define HEAL_BLOOD (1<<15)
 /// Removes all non-positive mutations (neutral included).
-#define HEAL_NEGATIVE_MUTATIONS (1<<15)
+#define HEAL_NEGATIVE_MUTATIONS (1<<16)
 /// Removes status effects with this flag set that also have remove_on_fullheal = TRUE.
-#define HEAL_STATUS (1<<16)
+#define HEAL_STATUS (1<<17)
 /// Same as above, removes all CC related status effects with this flag set that also have remove_on_fullheal = TRUE.
-#define HEAL_CC_STATUS (1<<17)
+#define HEAL_CC_STATUS (1<<18)
 /// Deletes any restraints on the mob (handcuffs / legcuffs)
-#define HEAL_RESTRAINTS (1<<18)
+#define HEAL_RESTRAINTS (1<<19)
 
 /// Combination flag to only heal the main damage types.
 #define HEAL_DAMAGE (HEAL_BRUTE|HEAL_BURN|HEAL_TOX|HEAL_OXY|HEAL_CLONE|HEAL_STAM)
 /// Combination flag to only heal things messed up things about the mob's body itself.
-#define HEAL_BODY (HEAL_LIMBS|HEAL_ORGANS|HEAL_WOUNDS|HEAL_TRAUMAS|HEAL_BLOOD|HEAL_TEMP)
+#define HEAL_BODY (HEAL_LIMBS|HEAL_ORGANS|HEAL_REFRESH_ORGANS|HEAL_WOUNDS|HEAL_TRAUMAS|HEAL_BLOOD|HEAL_TEMP)
 /// Combination flag to heal negative things affecting the mob.
 #define HEAL_AFFLICTIONS (HEAL_NEGATIVE_DISEASES|HEAL_NEGATIVE_MUTATIONS|HEAL_ALL_REAGENTS|HEAL_STATUS|HEAL_CC_STATUS)
 
@@ -796,5 +912,32 @@
 #define READING_CHECK_LITERACY (1<<0)
 #define READING_CHECK_LIGHT (1<<1)
 
+// Flash deviation defines
+/// No deviation at all. Flashed from the front or front-left/front-right. Alternatively, flashed in direct view.
+#define DEVIATION_NONE 0
+/// Partial deviation. Flashed from the side. Alternatively, flashed out the corner of your eyes.
+#define DEVIATION_PARTIAL 1
+/// Full deviation. Flashed from directly behind or behind-left/behind-rack. Not flashed at all.
+#define DEVIATION_FULL 2
+
 /// In dynamic human icon gen we don't replace the held item.
 #define NO_REPLACE 0
+
+/// Flags for whether you can heal yourself or not or only
+#define HEALING_TOUCH_ANYONE "healing_touch_anyone"
+#define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
+#define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"
+
+/// Default minimum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MIN_TEMP 250
+/// Default maximum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MAX_TEMP 350
+
+// Flags for mobs which can't do certain things while someone is looking at them
+/// Flag which stops you from moving while observed
+#define NO_OBSERVED_MOVEMENT (1<<0)
+/// Flag which stops you from using actions while observed
+#define NO_OBSERVED_ACTIONS (1<<1)
+/// Flag which stops you from attacking while observed
+#define NO_OBSERVED_ATTACKS (1<<2)
+

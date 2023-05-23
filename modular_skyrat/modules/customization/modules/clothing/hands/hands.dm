@@ -31,5 +31,5 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 
-/obj/item/clothing/gloves/maid
+/obj/item/clothing/gloves
 	worn_icon_teshari = TESHARI_HANDS_ICON

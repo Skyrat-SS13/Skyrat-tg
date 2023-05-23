@@ -16,7 +16,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throw_speed = 3
 	throw_range = 6
-	custom_materials = list(/datum/material/iron=12000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 6)
 	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
@@ -94,7 +94,7 @@
 	flags_1 = CONDUCT_1
 	force = 15
 	throwforce = 10
-	custom_materials = list(/datum/material/iron=18000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 6)
 	attack_verb_continuous = list("slices", "dices", "chops", "cubes", "minces", "juliennes", "chiffonades", "batonnets")
 	attack_verb_simple = list("slice", "dice", "chop", "cube", "mince", "julienne", "chiffonade", "batonnet")
 	w_class = WEIGHT_CLASS_NORMAL
@@ -148,6 +148,10 @@
 	throwforce = 15
 	custom_materials = null
 
+/obj/item/knife/combat/bone/Initialize(mapload)
+	flags_1 &= ~CONDUCT_1
+	return ..()
+
 /obj/item/knife/combat/cyborg
 	name = "cyborg knife"
 	icon = 'icons/obj/items_cyborg.dmi'
@@ -167,7 +171,11 @@
 	attack_verb_continuous = list("shanks", "shivs")
 	attack_verb_simple = list("shank", "shiv")
 	armor_type = /datum/armor/none
-	custom_materials = list(/datum/material/glass=400)
+	custom_materials = list(/datum/material/glass = SMALL_MATERIAL_AMOUNT * 4)
+
+/obj/item/knife/shiv/Initialize(mapload)
+	flags_1 &= ~CONDUCT_1
+	return ..()
 
 /obj/item/knife/shiv/plasma
 	name = "plasma shiv"
@@ -177,7 +185,7 @@
 	force = 9
 	throwforce = 13
 	armor_type = /datum/armor/shiv_plasma
-	custom_materials = list(/datum/material/glass=400, /datum/material/plasma=200)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT *4, /datum/material/plasma=SMALL_MATERIAL_AMOUNT * 2)
 
 /datum/armor/shiv_plasma
 	melee = 25
@@ -197,7 +205,7 @@
 	throw_range = 7
 	wound_bonus = 10
 	armor_type = /datum/armor/shiv_titanium
-	custom_materials = list(/datum/material/glass=400, /datum/material/titanium=200)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT * 4, /datum/material/titanium=SMALL_MATERIAL_AMOUNT * 2)
 
 /datum/armor/shiv_titanium
 	melee = 25
@@ -220,7 +228,7 @@
 	wound_bonus = 10
 	bare_wound_bonus = 20
 	armor_type = /datum/armor/shiv_plastitanium
-	custom_materials = list(/datum/material/glass=400, /datum/material/alloy/plastitanium=200)
+	custom_materials = list(/datum/material/glass= SMALL_MATERIAL_AMOUNT * 4, /datum/material/alloy/plastitanium= SMALL_MATERIAL_AMOUNT * 2)
 
 /datum/armor/shiv_plastitanium
 	melee = 50

@@ -19,6 +19,9 @@
 	. += "You could attach <b>[MEATSPIKE_IRONROD_REQUIREMENT]</b> iron rods to it to create a <b>Meat Spike</b>."
 
 /obj/structure/kitchenspike_frame/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	if(isnull(held_item))
+		return NONE
+
 	var/message = ""
 	if(held_item.tool_behaviour == TOOL_WELDER)
 		message = "Deconstruct"
@@ -82,6 +85,9 @@
 	. += "A <b>crowbar</b> could remove those spikes."
 
 /obj/structure/kitchenspike/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	if(isnull(held_item))
+		return NONE
+
 	if(held_item.tool_behaviour == TOOL_CROWBAR)
 		context[SCREENTIP_CONTEXT_LMB] = "Remove Spikes"
 		return CONTEXTUAL_SCREENTIP_SET
@@ -105,7 +111,7 @@
 /obj/structure/kitchenspike/user_buckle_mob(mob/living/target, mob/user, check_loc = TRUE)
 	if(!iscarbon(target) && !isanimal_or_basicmob(target))
 		return
-	if(!do_mob(user, target, 10 SECONDS))
+	if(!do_after(user, 10 SECONDS, target))
 		return
 	return ..()
 

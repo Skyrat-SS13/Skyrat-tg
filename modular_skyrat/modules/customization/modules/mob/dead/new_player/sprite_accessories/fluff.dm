@@ -6,14 +6,16 @@
 	recommended_species = list(SPECIES_MOTH, SPECIES_MAMMAL, SPECIES_INSECT)
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/fluff
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
 	icon_state = "none"
 
-/datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.head && (H.head.flags_inv & HIDEHAIR)) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
+/datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/human)
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return TRUE
+
 	return FALSE
 
 /datum/sprite_accessory/fluff/moth/plain
@@ -111,3 +113,13 @@
 	name = "Snow (Dual-Color)"
 	icon_state = "snowdual"
 	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/fluff/moth/teshari
+	name = "Teshari Mane"
+	icon_state = "teshmane"
+	default_color = DEFAULT_TERTIARY
+
+/datum/sprite_accessory/fluff/moth/teshari/front
+	name = "Teshari Mane (Top)"
+	icon_state = "teshmane"
+	default_color = DEFAULT_TERTIARY

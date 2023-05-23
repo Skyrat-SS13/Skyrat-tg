@@ -27,7 +27,8 @@
 			/* offset = */ 2,
 		)
 	)
-
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/leave_body(
 			null,
@@ -37,6 +38,8 @@
 			CALLBACK(src, PROC_REF(open_leave_body)),
 		)
 	)
+	*/
+	// SKYRAT EDIT REMOVAL END
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)
@@ -235,7 +238,7 @@
 
 	return TRUE
 
-/atom/movable/screen/escape_menu/home_button/admin_help/process(delta_time)
+/atom/movable/screen/escape_menu/home_button/admin_help/process(seconds_per_tick)
 	if (world.time - last_blink_time < blink_interval)
 		return
 

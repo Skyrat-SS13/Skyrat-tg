@@ -1,7 +1,3 @@
-/obj/effect/turf_decal/tile/blue/darkblue
-	name = "dark blue corner"
-	color = "#486091"
-
 /obj/effect/turf_decal/stripes/blue
 	icon_state = "warningline_blue"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/turf_decals.dmi'
@@ -49,52 +45,3 @@
 /obj/effect/turf_decal/caution/blue
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/turf_decals.dmi'
 	icon_state = "caution_blue"
-
-/obj/effect/turf_decal/trimline/darkblue
-	color = "#486091"
-	alpha = 160
-
-/obj/effect/turf_decal/trimline/darkblue/line
-	icon_state = "trimline"
-
-/obj/effect/turf_decal/trimline/darkblue/corner
-	icon_state = "trimline_corner"
-
-/obj/effect/turf_decal/trimline/darkblue/end
-	icon_state = "trimline_end"
-
-/obj/effect/turf_decal/trimline/darkblue/arrow_cw
-	icon_state = "trimline_arrow_cw"
-
-/obj/effect/turf_decal/trimline/darkblue/arrow_ccw
-	icon_state = "trimline_arrow_ccw"
-
-/obj/effect/turf_decal/trimline/darkblue/warning
-	icon_state = "trimline_warn"
-
-/obj/effect/turf_decal/trimline/darkblue/filled
-	icon_state = "trimline_box_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/line
-	icon_state = "trimline_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/corner
-	icon_state = "trimline_corner_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/end
-	icon_state = "trimline_end_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/arrow_cw
-	icon_state = "trimline_arrow_cw_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/arrow_ccw
-	icon_state = "trimline_arrow_ccw_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/warning
-	icon_state = "trimline_warn_fill"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/shrink_cw
-	icon_state = "trimline_shrink_cw"
-
-/obj/effect/turf_decal/trimline/darkblue/filled/shrink_ccw
-	icon_state = "trimline_shrink_ccw"

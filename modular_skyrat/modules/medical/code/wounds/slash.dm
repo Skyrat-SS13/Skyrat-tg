@@ -103,15 +103,6 @@
 		return BLOOD_FLOW_INCREASING
 
 /datum/wound/slash/handle_process()
-	if(victim.stat == DEAD)
-		adjust_blood_flow(-max(clot_rate, WOUND_SLASH_DEAD_CLOT_MIN))
-		if(blood_flow < minimum_flow)
-			if(demotes_to)
-				replace_wound(demotes_to)
-				return
-			qdel(src)
-			return
-
 	set_blood_flow(min(blood_flow, WOUND_SLASH_MAX_BLOODFLOW))
 
 	if(HAS_TRAIT(victim, TRAIT_BLOODY_MESS))
@@ -120,14 +111,8 @@
 	if(limb.current_gauze)
 		if(clot_rate > 0)
 			adjust_blood_flow(-clot_rate)
-		//SKYRAT EDIT CHANGE BEGIN - MEDICAL
-		/*
-		blood_flow -= limb.current_gauze.absorption_rate
-		limb.seep_gauze(limb.current_gauze.absorption_rate)
-		*/
 		if(limb.current_gauze && limb.current_gauze.seep_gauze(limb.current_gauze.absorption_rate, GAUZE_STAIN_BLOOD))
 			adjust_blood_flow(-limb.current_gauze.absorption_rate)
-		//SKYRAT EDIT CHANGE END
 	else
 		adjust_blood_flow(-clot_rate)
 
@@ -175,7 +160,7 @@
 	if(user.is_mouth_covered())
 		to_chat(user, span_warning("Your mouth is covered, you can't lick [victim]'s wounds!"))
 		return
-	if(!user.getorganslot(ORGAN_SLOT_TONGUE))
+	if(!user.get_organ_slot(ORGAN_SLOT_TONGUE))
 		to_chat(user, span_warning("You can't lick wounds without a tongue!")) // f in chat
 		return
 

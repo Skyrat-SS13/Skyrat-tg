@@ -8,6 +8,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses
 	category = LOADOUT_ITEM_GLASSES
 
+/datum/loadout_item/glasses/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	if(initial(outfit_important_for_life.glasses))
+		.. ()
+		return TRUE
+
 /datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
 		if(outfit.glasses)
@@ -25,10 +30,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	if(equipped_glasses.tint)
 		equipper.update_tint()
 	if(equipped_glasses.vision_flags \
-		|| equipped_glasses.darkness_view \
 		|| equipped_glasses.invis_override \
 		|| equipped_glasses.invis_view \
-		|| !isnull(equipped_glasses.lighting_alpha))
+		|| !isnull(equipped_glasses.color_cutoffs))
 		equipper.update_sight()
 /*
 *	PRESCRIPTION GLASSES
@@ -95,9 +99,13 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch
 
-/datum/loadout_item/glasses/whiteeyepatch
+/datum/loadout_item/glasses/white_eyepatch
 	name = "White Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch/white
+
+/datum/loadout_item/glasses/medical_eyepatch
+	name = "Medical Eyepatch"
+	item_path = /obj/item/clothing/glasses/eyepatch/medical
 
 /datum/loadout_item/glasses/blindfold
 	name = "Blindfold"

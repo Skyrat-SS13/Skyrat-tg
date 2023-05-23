@@ -46,7 +46,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "eastern winter coat"
-	desc = "War crimes make people cold, not just on the inside, but on the outside as well, just ask Germany, France, Sweden, Germany again, Russia themselves and Poland, this coat's a touch more eastern, however."
+	desc = "War makes people cold, not just on the inside, but on the outside as well... luckily this coat's not seen any hardships like that, and is actually quite warm!"
 	icon_state = "chi_korea_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -329,6 +329,26 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
 	greyscale_colors = "#594032"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/apron/overalls/greyscale/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/flashlight,
+		/obj/item/lighter,
+		/obj/item/modular_computer/pda,
+		/obj/item/radio,
+		/obj/item/storage/bag/books,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/toy,
+		/obj/item/analyzer,
+		/obj/item/construction/rcd,
+		/obj/item/fireaxe/metal_h2_axe,
+		/obj/item/pipe_dispenser,
+		/obj/item/storage/bag/construction,
+		/obj/item/t_scanner,
+	)
 
 /obj/item/clothing/suit/apron/overalls/greyscale/examine(mob/user)
 	. = ..()

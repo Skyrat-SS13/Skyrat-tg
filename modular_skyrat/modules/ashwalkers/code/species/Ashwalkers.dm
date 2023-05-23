@@ -1,5 +1,5 @@
 /datum/species/lizard/ashwalker
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision
+	mutanteyes = /obj/item/organ/internal/eyes/night_vision/ashwalker
 	burnmod = 0.8
 	brutemod = 0.9
 

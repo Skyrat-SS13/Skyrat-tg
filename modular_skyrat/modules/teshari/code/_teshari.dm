@@ -24,7 +24,7 @@
 		"legs" = "Normal Legs"
 	)
 	digitigrade_customization = DIGITIGRADE_NEVER
-	disliked_food = GROSS | GRAIN | GORE
+	disliked_food = GROSS | GRAIN
 	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
@@ -42,7 +42,6 @@
 		LOADOUT_ITEM_ACCESSORY = TESHARI_ACCESSORIES_ICON,
 		LOADOUT_ITEM_EARS = TESHARI_EARS_ICON
 	)
-	offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,0), OFFSET_EARS = list(0,-4), OFFSET_SHOES = list(0,0), OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,-5), OFFSET_HEAD = list(1,-4), OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,-4), OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,0), OFFSET_ACCESSORY = list(0, -4))
 	coldmod = TESHARI_COLDMOD
 	heatmod = TESHARI_HEATMOD
 	brutemod = TESHARI_BRUTEMOD
@@ -77,7 +76,7 @@
 	var/ear_color = "#e4c49b"
 
 	tesh.dna.features["mcolor"] = base_color
-	tesh.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Teshari Feathers Upright", MUTANT_INDEX_COLOR_LIST = list(ear_color, ear_color, ear_color))
-	tesh.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_COLOR_LIST = list(base_color, base_color, ear_color))
-	tesh.update_mutant_bodyparts(TRUE)
+	tesh.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Teshari Feathers Upright", MUTANT_INDEX_COLOR_LIST = list(ear_color, ear_color, ear_color))
+	tesh.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_COLOR_LIST = list(base_color, base_color, ear_color))
+	regenerate_organs(tesh, src, visual_only = TRUE)
 	tesh.update_body(TRUE)

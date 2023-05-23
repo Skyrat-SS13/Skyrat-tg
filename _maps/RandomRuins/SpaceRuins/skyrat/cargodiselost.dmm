@@ -4,9 +4,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "av" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/russian/ranged{
-	faction = list("hostile")
-	},
+/mob/living/basic/syndicate/russian/ranged,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
@@ -251,9 +249,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "fB" = (
 /obj/machinery/light/directional/south,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/effect/turf_decal/tile/brown/half/contrasted,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
@@ -340,10 +336,8 @@
 "ha" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
 	},
@@ -357,9 +351,8 @@
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "hm" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/airalarm/all_access{
-	pixel_y = -25
-	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -472,10 +465,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "iJ" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/vending/hydronutrients{
 	pixel_x = 6
 	},
@@ -529,7 +520,7 @@
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "jv" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
@@ -773,7 +764,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "nM" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "nY" = (
@@ -816,12 +807,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "oZ" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
@@ -921,9 +908,7 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "qq" = (
@@ -981,9 +966,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "qY" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/closet/crate,
 /obj/item/clothing/sextoy/dildo,
 /obj/item/clothing/glasses/hypno,
@@ -1016,9 +999,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/random/exotic/syndie,
 /obj/effect/spawner/random/exotic/syndie,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/shield/riot,
 /obj/item/clothing/head/helmet/toggleable/riot,
@@ -1044,9 +1025,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "rE" = (
 /obj/structure/closet/crate/secure/loot,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "rI" = (
@@ -1075,9 +1054,7 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "sn" = (
-/obj/structure/closet/secure_closet/freezer/fridge{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /obj/item/storage/box/ingredients/vegetarian,
 /obj/item/storage/box/ingredients/italian,
 /obj/item/storage/box/ingredients/fruity,
@@ -1128,9 +1105,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "sA" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "sC" = (
@@ -1247,7 +1222,7 @@
 /obj/machinery/power/emitter/welded{
 	dir = 8
 	},
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "uw" = (
@@ -1266,10 +1241,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "uZ" = (
-/obj/machinery/airalarm/all_access{
-	pixel_y = 25;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
 	},
@@ -1322,9 +1295,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "vC" = (
-/obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/freezer/kitchen/all_access,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "vQ" = (
@@ -1423,11 +1394,11 @@
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "wA" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter,
+/mob/living/basic/giant_spider/hunter,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "wB" = (
-/mob/living/simple_animal/hostile/giant_spider,
+/mob/living/basic/giant_spider,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "wG" = (
@@ -1464,9 +1435,8 @@
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "xb" = (
 /obj/item/kirbyplants/random,
-/obj/machinery/airalarm/all_access{
-	pixel_y = -19
-	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/dark,
@@ -1527,7 +1497,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "yp" = (
-/mob/living/simple_animal/hostile/giant_spider/badnana_spider,
+/mob/living/basic/giant_spider/badnana_spider,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "ys" = (
@@ -1569,9 +1539,7 @@
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "yF" = (
@@ -1700,7 +1668,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Ax" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
@@ -1720,10 +1688,8 @@
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "AM" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
@@ -1764,15 +1730,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "Bq" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/vending/hydroseeds,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Bx" = (
-/obj/machinery/airalarm/all_access{
-	pixel_y = 26;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "BL" = (
@@ -1852,10 +1816,8 @@
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "DM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 25;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
 	},
@@ -1916,7 +1878,7 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "EB" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
@@ -1993,18 +1955,13 @@
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "FX" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north{
-	start_charge = 0
-	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/mapping_helpers/apc/no_charge,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "FY" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/closet/crate/secure/loot,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
@@ -2055,10 +2012,8 @@
 "Hj" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 1
 	},
@@ -2122,7 +2077,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "IV" = (
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "IX" = (
@@ -2256,9 +2211,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "Ke" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
@@ -2412,9 +2365,8 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/machinery/airalarm/all_access{
-	pixel_y = -25
-	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "Mx" = (
@@ -2445,9 +2397,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/cargodise_freighter/trauma)
 "MJ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/seed_extractor,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
@@ -2513,10 +2463,8 @@
 "Np" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 26;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
 	},
@@ -2630,9 +2578,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/airalarm/all_access{
-	pixel_y = -35
-	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/brown/half/contrasted,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
@@ -2738,9 +2685,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "PZ" = (
-/obj/structure/closet/secure_closet/freezer/meat{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/freezer/meat/all_access,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Qc" = (
@@ -2798,7 +2743,7 @@
 	pixel_x = 24;
 	pixel_y = 0
 	},
-/mob/living/simple_animal/hostile/giant_spider/nurse,
+/mob/living/basic/giant_spider/nurse,
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
@@ -2821,12 +2766,8 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "Rb" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/reagent_dispensers/watertank/high{
 	tank_volume = 8000
 	},
@@ -2916,9 +2857,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "SS" = (
-/obj/machinery/airalarm/all_access{
-	pixel_y = -35
-	},
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
@@ -2994,9 +2934,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "TF" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "TM" = (
@@ -3222,10 +3160,8 @@
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "We" = (
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/mapping_helpers/airalarm/all_access,
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
@@ -3337,7 +3273,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Xr" = (
 /obj/effect/turf_decal/bot,
-/mob/living/simple_animal/hostile/giant_spider,
+/mob/living/basic/giant_spider,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "Xs" = (
@@ -3392,9 +3328,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/russian/ranged/mosin{
-	faction = list("hostile")
-	},
+/mob/living/basic/syndicate/russian/ranged,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "XY" = (

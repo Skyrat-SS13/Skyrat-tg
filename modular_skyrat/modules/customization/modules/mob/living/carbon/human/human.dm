@@ -19,7 +19,7 @@
 						continue
 					if(G.is_hidden(src))
 						continue
-					var/obj/item/organ/external/genital/ORG = getorganslot(G.associated_organ_slot)
+					var/obj/item/organ/external/genital/ORG = get_organ_slot(G.associated_organ_slot)
 					if(!ORG)
 						continue
 					line += ORG.get_description_string(G)
@@ -41,6 +41,15 @@
 /mob/living/carbon/human/species/mammal
 	race = /datum/species/mammal
 
+/mob/living/carbon/human/species/vulpkanin
+	race = /datum/species/vulpkanin
+
+/mob/living/carbon/human/species/tajaran
+	race = /datum/species/tajaran
+
+/mob/living/carbon/human/species/unathi
+	race = /datum/species/unathi
+
 /mob/living/carbon/human/species/podweak
 	race = /datum/species/pod/podweak
 
@@ -55,6 +64,12 @@
 
 /mob/living/carbon/human/species/teshari
 	race = /datum/species/teshari
+
+/mob/living/carbon/human/species/akula
+	race = /datum/species/akula
+
+/mob/living/carbon/human/species/skrell
+	race = /datum/species/skrell
 
 /mob/living/carbon/human/verb/toggle_undies()
 	set category = "IC"
@@ -104,15 +119,14 @@
 	var/list/available_selection
 	// The total list of parts choosable
 	var/static/list/total_selection = list(
-	"horns",
-	"ears",
-	"moth_wings",
-	"wings",
-	"tail",
-	"ipc_antenna",
-	"moth_antennae",
-	"xenodorsal",
-	"spines",
+		ORGAN_SLOT_EXTERNAL_HORNS = "horns",
+		ORGAN_SLOT_EXTERNAL_EARS = "ears",
+		ORGAN_SLOT_EXTERNAL_WINGS = "wings",
+		ORGAN_SLOT_EXTERNAL_TAIL = "tail",
+		ORGAN_SLOT_EXTERNAL_SYNTH_ANTENNA = "ipc_antenna",
+		ORGAN_SLOT_EXTERNAL_ANTENNAE = "moth_antennae",
+		ORGAN_SLOT_EXTERNAL_XENODORSAL = "xenodorsal",
+		ORGAN_SLOT_EXTERNAL_SPINES = "spines",
 	)
 
 	// Stat check
@@ -124,9 +138,9 @@
 	if(try_hide_mutant_parts)
 		LAZYOR(available_selection, "reveal all")
 	// Lets build our parts list
-	for(var/key in total_selection)
-		if(findtext(mutant_renderkey, "[key]"))
-			LAZYOR(available_selection, key)
+	for(var/organ_slot in total_selection)
+		if(get_organ_slot(organ_slot))
+			LAZYOR(available_selection, total_selection[organ_slot])
 
 	// If this proc is called with the 'quick_toggle' flag, we skip the rest
 	if(quick_toggle)

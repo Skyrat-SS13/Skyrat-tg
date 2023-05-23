@@ -6,6 +6,7 @@
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_1 = ON_BORDER_1
+	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR | IGNORE_DENSITY
 	max_integrity = 100
 	///The type of stack the barricade dropped when disassembled if any.
 	var/stack_type
@@ -549,7 +550,7 @@
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
 
-			user.visible_message (span_notice ("[user] removes the panel from[src]."),
+			user.visible_message (span_notice ("[user] removes the panel from [src]."),
 			span_notice ("You remove the panel from [src], revealing some <b>bolts</b> beneath it."))
 			build_state = BARRICADE_METAL_ANCHORED
 			return TRUE
@@ -762,7 +763,7 @@
 
 /obj/item/quickdeploy/examine(mob/user)
 	. = ..()
-	. += "This [src.name] is set up deploy [thing_to_deploy.name]."
+	. += "This [src.name] is set up deploy [initial(thing_to_deploy.name)]." // initial() since thing_to_deploy is a typepath
 
 /obj/item/quickdeploy/attack_self(mob/user)
 	to_chat(user, span_notice("You start deploying [src] in front of you."))

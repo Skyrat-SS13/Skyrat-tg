@@ -55,7 +55,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/machinery/self_actualization_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(atom/movable/target, density_to_set = TRUE)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(!occupant)
@@ -70,10 +70,6 @@
 /obj/machinery/self_actualization_device/examine(mob/user)
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
-
-/obj/machinery/self_actualization_device/open_machine(mob/user)
-	playsound(src, 'sound/machines/click.ogg', 50)
-	..()
 
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
@@ -113,7 +109,7 @@
 		open_machine()
 		return
 
-/obj/machinery/self_actualization_device/process(delta_time)
+/obj/machinery/self_actualization_device/process(seconds_per_tick)
 	if(!processing)
 		return
 	if(!powered() || !occupant || !iscarbon(occupant))
@@ -140,24 +136,7 @@
 	var/mob/living/carbon/human/patient = occupant
 	var/original_name = patient.dna.real_name
 
-	//Organ damage saving code.
-	var/heart_damage = check_organ(patient, /obj/item/organ/internal/heart)
-	var/liver_damage = check_organ(patient, /obj/item/organ/internal/liver)
-	var/lung_damage = check_organ(patient, /obj/item/organ/internal/lungs)
-	var/stomach_damage = check_organ(patient, /obj/item/organ/internal/stomach)
-	var/brain_damage = check_organ(patient, /obj/item/organ/internal/brain)
-	var/eye_damage = check_organ(patient, /obj/item/organ/internal/eyes)
-	var/ear_damage = check_organ(patient, /obj/item/organ/internal/ears)
-
-	var/list/trauma_list = list()
-	if(patient.get_traumas())
-		for(var/datum/brain_trauma/trauma as anything in patient.get_traumas())
-			trauma_list += trauma
-
-	var/brute_damage = patient.getBruteLoss()
-	var/burn_damage = patient.getFireLoss()
-
-	patient.client?.prefs?.safe_transfer_prefs_to(patient)
+	patient.client?.prefs?.safe_transfer_prefs_to_with_damage(patient)
 	patient.dna.update_dna_identity()
 	log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
 
@@ -166,38 +145,8 @@
 		Original Name: [original_name], New Name: [patient.dna.real_name]. \
 		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 
-	// Apply organ damage
-	patient.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
-	patient.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
-	patient.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
-	patient.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
-	// Head organ damage.
-	patient.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-	patient.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
-	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
-
-	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
-
-	if(length(trauma_list))
-		patient_brain.traumas = trauma_list
-
-	//Re-Applies Damage
-	patient.setBruteLoss(brute_damage)
-	patient.setFireLoss(burn_damage)
-
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
-
-/// Checks the damage on the inputed organ and stores it.
-/obj/machinery/self_actualization_device/proc/check_organ(mob/living/carbon/human/patient, obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = patient.getorgan(organ_to_check)
-
-	// If the organ is missing, the organ damage is automatically set to 100.
-	if(!organ_to_track)
-		return 100 //If the organ is missing, return max damage.
-
-	return organ_to_track.damage
 
 /obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/used_item)
 	. = TRUE

@@ -5,7 +5,24 @@
 	var/alt_icon_state
 	/// How long it takes to reload a magazine.
 	var/reload_time = 2 SECONDS
+	/// if this gun has a penalty for reloading with an ammo_box type
+	var/box_reload_penalty = TRUE
+	/// reload penalty inflicted by using an ammo box instead of an individual cartridge, if not outright exchanging the magazine
+	var/box_reload_delay = CLICK_CD_MELEE
 
+/*
+* hey there's like... no better place to put these overrides, sorry
+* if there's other guns that use speedloader-likes or otherwise have a reason to
+* probably not have a CLICK_CD_MELEE cooldown for reloading them with something else
+* i guess add it here? only current example is revolvers
+* you could maybe make a case for double-barrels? i'll leave that for discussion in the pr comments
+*/
+
+/obj/item/gun/ballistic/revolver
+	box_reload_delay = CLICK_CD_RAPID // honestly this is negligible because of the inherent delay of having to switch hands
+
+/obj/item/gun/ballistic/rifle/boltaction // slightly less negligible than a revolver, since this is mostly for fairly powerful but crew-accessible stuff like mosins
+	box_reload_delay = CLICK_CD_RANGE
 
 /obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
@@ -44,8 +61,13 @@
 				chambered.forceMove(drop_location())
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
-			if (num_loaded)
-				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src]."))
+			if(num_loaded)
+				var/box_load = FALSE // if you're reloading with an ammo box, inflicts a cooldown
+				if(istype(A, /obj/item/ammo_box) && box_reload_penalty)
+					box_load = TRUE
+					user.changeNext_move(box_reload_delay) // cooldown to simulate having to fumble for another round
+					balloon_alert(user, "reload encumbered!")
+				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()

@@ -41,7 +41,23 @@ export const breast_enlargement_pref: FeatureToggle = {
   name: 'Breast enlargement',
   category: 'ERP',
   description:
-    'Determines if you wish to recieve the effects of breast enlargement chemicals.',
+    'Determines if you wish to receive the effects of breast enlargement chemicals.',
+  component: CheckboxInput,
+};
+
+export const breast_shrinkage_pref: FeatureToggle = {
+  name: 'Breast shrinkage',
+  category: 'ERP',
+  description:
+    'Determines if you wish to receive the effects of breast shrinkage chemicals.',
+  component: CheckboxInput,
+};
+
+export const breast_removal_pref: FeatureToggle = {
+  name: 'Complete breast shrinkage',
+  category: 'ERP',
+  description:
+    'Determines if you wish to receive the full effects of breast shrinkage chemicals.',
   component: CheckboxInput,
 };
 
@@ -49,7 +65,15 @@ export const penis_enlargement_pref: FeatureToggle = {
   name: 'Penis enlargement',
   category: 'ERP',
   description:
-    'Determines if you wish to recieve the effects of penis enlargement chemicals.',
+    'Determines if you wish to receive the effects of penis enlargement chemicals.',
+  component: CheckboxInput,
+};
+
+export const penis_shrinkage_pref: FeatureToggle = {
+  name: 'Penis shrinkage',
+  category: 'ERP',
+  description:
+    'Determines if you wish to receive the effects of penis shrinkage chemicals.',
   component: CheckboxInput,
 };
 
@@ -82,6 +106,14 @@ export const erp_sexuality_pref: FeatureChoiced = {
   description:
     'Determines what sexual content you see, limited use. None will show all content.',
   component: FeatureDropdownInput,
+};
+
+export const genitalia_removal_pref: FeatureToggle = {
+  name: 'ERP Genitalia Removal',
+  category: 'ERP',
+  description:
+    'If checked, allows drugs to remove existing genitalia on your character.',
+  component: CheckboxInput,
 };
 
 export const new_genitalia_growth_pref: FeatureToggle = {

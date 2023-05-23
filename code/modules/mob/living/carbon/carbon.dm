@@ -4,9 +4,6 @@
 	update_body_parts() //to update the carbon's new bodyparts appearance
 	register_context()
 
-	// Carbons cannot taste anything without a tongue; the tongue organ removes this on Insert
-	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
-
 	GLOB.carbon_list += src
 	var/static/list/loc_connections = list(
 		COMSIG_CARBON_DISARM_PRESHOVE = PROC_REF(disarm_precollide),
@@ -19,7 +16,7 @@
 	. = ..()
 
 	QDEL_LIST(hand_bodyparts)
-	QDEL_LIST(internal_organs)
+	QDEL_LIST(organs)
 	QDEL_LIST(bodyparts)
 	QDEL_LIST(implants)
 	for(var/wound in all_wounds) // these LAZYREMOVE themselves when deleted so no need to remove the list here
@@ -204,11 +201,12 @@
 		power_throw++
 	do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
-	visible_message("<span class='danger'>[src] throws [thrown_thing][power_throw ? " really hard!" : "."]</span>", \
-					"<span class='danger'>You throw [thrown_thing][power_throw ? " really hard!" : "."]</span>")
-	log_message("has thrown [thrown_thing] [power_throw ? "really hard" : ""]", LOG_ATTACK)
+	visible_message(span_danger("[src] throws [thrown_thing][power_throw ? " really hard!" : "."]"), \
+					span_danger("You throw [thrown_thing][power_throw ? " really hard!" : "."]"))
+	log_message("has thrown [thrown_thing] [power_throw > 0 ? "really hard" : ""]", LOG_ATTACK)
+	var/extra_throw_range = HAS_TRAIT(src, TRAIT_THROWINGARM) ? 2 : 0
 	newtonian_move(get_dir(target, src))
-	thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+	thrown_thing.safe_throw_at(target, thrown_thing.throw_range + extra_throw_range, max(1,thrown_thing.throw_speed + power_throw), src, null, null, null, move_force)
 
 /mob/living/carbon/proc/canBeHandcuffed()
 	return FALSE
@@ -221,7 +219,7 @@
 
 /mob/living/carbon/Topic(href, href_list)
 	..()
-	if(href_list["embedded_object"] && usr.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(href_list["embedded_object"] && usr.can_perform_action(src, NEED_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["embedded_limb"]) in bodyparts
 		if(!L)
 			return
@@ -488,9 +486,9 @@
 
 /mob/living/carbon/proc/spew_organ(power = 5, amt = 1)
 	for(var/i in 1 to amt)
-		if(!internal_organs.len)
+		if(!organs.len)
 			break //Guess we're out of organs!
-		var/obj/item/organ/guts = pick(internal_organs)
+		var/obj/item/organ/guts = pick(organs)
 		var/turf/T = get_turf(src)
 		guts.Remove(src)
 		guts.forceMove(T)
@@ -560,20 +558,21 @@
 			set_sight(initial(sight))
 		else
 			set_sight(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		set_see_in_dark(8)
 		set_invis_see(SEE_INVISIBLE_OBSERVER)
 		return
 
 	var/new_sight = initial(sight)
-	lighting_alpha = initial(lighting_alpha)
+	lighting_cutoff = initial(lighting_cutoff)
+	lighting_color_cutoffs = list(lighting_cutoff_red, lighting_cutoff_green, lighting_cutoff_blue)
 
-	var/obj/item/organ/internal/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
 		set_invis_see(eyes.see_invisible)
-		set_see_in_dark(eyes.see_in_dark)
 		new_sight |= eyes.sight_flags
-		if(!isnull(eyes.lighting_alpha))
-			lighting_alpha = eyes.lighting_alpha
+		if(!isnull(eyes.lighting_cutoff))
+			lighting_cutoff = eyes.lighting_cutoff
+		if(!isnull(eyes.color_cutoffs))
+			lighting_color_cutoffs = blend_cutoff_colors(lighting_color_cutoffs, eyes.color_cutoffs)
 
 	if(client.eye && client.eye != src)
 		var/atom/A = client.eye
@@ -581,31 +580,30 @@
 			return
 
 	if(glasses)
-		var/obj/item/clothing/glasses/G = glasses
-		new_sight |= G.vision_flags
-		set_see_in_dark(max(G.darkness_view, see_in_dark))
-		if(G.invis_override)
-			set_invis_see(G.invis_override)
+		new_sight |= glasses.vision_flags
+		if(glasses.invis_override)
+			set_invis_see(glasses.invis_override)
 		else
-			set_invis_see(min(G.invis_view, see_invisible))
-		if(!isnull(G.lighting_alpha))
-			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
+			set_invis_see(min(glasses.invis_view, see_invisible))
+		if(!isnull(glasses.lighting_cutoff))
+			lighting_cutoff = max(lighting_cutoff, glasses.lighting_cutoff)
+		if(length(glasses.color_cutoffs))
+			lighting_color_cutoffs = blend_cutoff_colors(lighting_color_cutoffs, glasses.color_cutoffs)
+
 
 	if(HAS_TRAIT(src, TRAIT_TRUE_NIGHT_VISION))
-		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
-		set_see_in_dark(max(see_in_dark, 8))
+		lighting_cutoff = max(lighting_cutoff, LIGHTING_CUTOFF_HIGH)
 
 	if(HAS_TRAIT(src, TRAIT_MESON_VISION))
 		new_sight |= SEE_TURFS
-		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+		lighting_cutoff = max(lighting_cutoff, LIGHTING_CUTOFF_MEDIUM)
 
 	if(HAS_TRAIT(src, TRAIT_THERMAL_VISION))
 		new_sight |= SEE_MOBS
-		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+		lighting_cutoff = max(lighting_cutoff, LIGHTING_CUTOFF_MEDIUM)
 
 	if(HAS_TRAIT(src, TRAIT_XRAY_VISION))
 		new_sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-		set_see_in_dark(max(see_in_dark, 8))
 
 	if(see_override)
 		set_invis_see(see_override)
@@ -630,7 +628,7 @@
 	if(isclothing(glasses))
 		tint += glasses.tint
 
-	var/obj/item/organ/internal/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
 		tint += eyes.tint
 
@@ -863,24 +861,24 @@
 		if(dna && !HAS_TRAIT(src, TRAIT_NOBLOOD))
 			blood_volume += (excess_healing * 2) //1 excess = 10 blood
 
-		for(var/obj/item/organ/organ as anything in internal_organs)
+		for(var/obj/item/organ/organ as anything in organs)
 			if(organ.organ_flags & ORGAN_SYNTHETIC)
 				continue
-			organ.applyOrganDamage(excess_healing * -1) //1 excess = 5 organ damage healed
+			organ.apply_organ_damage(excess_healing * -1) //1 excess = 5 organ damage healed
 
 	return ..()
 
 /mob/living/carbon/heal_and_revive(heal_to = 75, revive_message)
 	// We can't heal them if they're missing a heart
-	if(needs_heart() && !getorganslot(ORGAN_SLOT_HEART))
+	if(needs_heart() && !get_organ_slot(ORGAN_SLOT_HEART))
 		return FALSE
 
 	// We can't heal them if they're missing their lungs
-	if(!HAS_TRAIT(src, TRAIT_NOBREATH) && !getorganslot(ORGAN_SLOT_LUNGS))
+	if(!HAS_TRAIT(src, TRAIT_NOBREATH) && !isnull(dna?.species.mutantlungs) && !get_organ_slot(ORGAN_SLOT_LUNGS))
 		return FALSE
 
 	// And we can't heal them if they're missing their liver
-	if(!HAS_TRAIT(src, TRAIT_NOMETABOLISM) && !getorganslot(ORGAN_SLOT_LIVER))
+	if(!HAS_TRAIT(src, TRAIT_NOMETABOLISM) && !isnull(dna?.species.mutantliver) && !get_organ_slot(ORGAN_SLOT_LIVER))
 		return FALSE
 
 	return ..()
@@ -903,8 +901,8 @@
 	if(heal_flags & HEAL_LIMBS)
 		regenerate_limbs()
 
-	if(heal_flags & HEAL_ORGANS)
-		regenerate_organs()
+	if(heal_flags & (HEAL_REFRESH_ORGANS|HEAL_ORGANS))
+		regenerate_organs(regenerate_existing = (heal_flags & HEAL_REFRESH_ORGANS))
 
 	if(heal_flags & HEAL_TRAUMAS)
 		cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
@@ -922,7 +920,7 @@
 	return ..()
 
 /mob/living/carbon/can_be_revived()
-	if(!getorgan(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
+	if(!get_organ_by_type(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
 		return FALSE
 //SKYRAT EDIT ADDITION - DNR TRAIT
 	if(HAS_TRAIT(src, TRAIT_DNR))
@@ -936,8 +934,7 @@
 	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
 		return DEFIB_FAIL_DNR
 //SKYRAT EDIT ADDITION END - DNR TRAIT
-
-	if (suiciding)
+	if (HAS_TRAIT(src, TRAIT_SUICIDED))
 		return DEFIB_FAIL_SUICIDE
 
 	if (HAS_TRAIT(src, TRAIT_HUSK))
@@ -951,7 +948,7 @@
 
 	// Only check for a heart if they actually need a heart. Who would've thunk
 	if (needs_heart())
-		var/obj/item/organ/internal/heart = getorgan(/obj/item/organ/internal/heart)
+		var/obj/item/organ/internal/heart = get_organ_by_type(/obj/item/organ/internal/heart)
 
 		if (!heart)
 			return DEFIB_FAIL_NO_HEART
@@ -959,7 +956,7 @@
 		if (heart.organ_flags & ORGAN_FAILING)
 			return DEFIB_FAIL_FAILING_HEART
 
-	var/obj/item/organ/internal/brain/current_brain = getorgan(/obj/item/organ/internal/brain)
+	var/obj/item/organ/internal/brain/current_brain = get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if (QDELETED(current_brain))
 		return DEFIB_FAIL_NO_BRAIN
@@ -967,7 +964,7 @@
 	if (current_brain.organ_flags & ORGAN_FAILING)
 		return DEFIB_FAIL_FAILING_BRAIN
 
-	if (current_brain.suicided || current_brain.brainmob?.suiciding)
+	if (current_brain.suicided || (current_brain.brainmob && HAS_TRAIT(current_brain.brainmob, TRAIT_SUICIDED)))
 		return DEFIB_FAIL_NO_INTELLIGENCE
 
 	if(key && key[1] == "@") // Adminghosts
@@ -979,11 +976,11 @@
 	if(QDELETED(src))
 		return
 	var/organs_amt = 0
-	for(var/obj/item/organ/internal_organ as anything in internal_organs)
+	for(var/obj/item/organ/organ as anything in organs)
 		if(prob(50))
 			organs_amt++
-			internal_organ.Remove(src)
-			internal_organ.forceMove(drop_location())
+			organ.Remove(src)
+			organ.forceMove(drop_location())
 	if(organs_amt)
 		to_chat(user, span_notice("You retrieve some of [src]\'s internal organs!"))
 	remove_all_embedded_objects()
@@ -1003,12 +1000,24 @@
 			if(ARM_LEFT)
 				l_arm_index_next += 2
 				bodypart_instance.held_index = l_arm_index_next //1, 3, 5, 7...
-				hand_bodyparts += bodypart_instance
+				on_added_hand(bodypart_instance, l_arm_index_next)
 			if(ARM_RIGHT)
 				r_arm_index_next += 2
 				bodypart_instance.held_index = r_arm_index_next //2, 4, 6, 8...
-				hand_bodyparts += bodypart_instance
+				on_added_hand(bodypart_instance, r_arm_index_next)
 
+/// Called when a new hand is added
+/mob/living/carbon/proc/on_added_hand(obj/item/bodypart/arm/new_hand, hand_index)
+	if(hand_index > hand_bodyparts.len)
+		hand_bodyparts.len = hand_index
+	hand_bodyparts[hand_index] = new_hand
+	RegisterSignals(new_hand, list(COMSIG_PARENT_QDELETING, COMSIG_BODYPART_REMOVED), PROC_REF(on_lost_hand))
+
+/// Cleans up references to an arm when it is dismembered or deleted
+/mob/living/carbon/proc/on_lost_hand(obj/item/bodypart/arm/lost_hand)
+	SIGNAL_HANDLER
+	hand_bodyparts[lost_hand.held_index] = null
+	UnregisterSignal(lost_hand, list(COMSIG_PARENT_QDELETING, COMSIG_BODYPART_REMOVED))
 
 ///Proc to hook behavior on bodypart additions. Do not directly call. You're looking for [/obj/item/bodypart/proc/try_attach_limb()].
 /mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart)
@@ -1045,7 +1054,7 @@
 
 
 /mob/living/carbon/proc/create_internal_organs()
-	for(var/obj/item/organ/internal/internal_organ in internal_organs)
+	for(var/obj/item/organ/internal/internal_organ in organs)
 		internal_organ.Insert(src)
 
 /proc/cmp_organ_slot_asc(slot_a, slot_b)
@@ -1096,7 +1105,7 @@
 			switch(edit_action)
 				if("remove")
 					if(BP)
-						BP.drop_limb(special = TRUE)
+						BP.drop_limb()
 						admin_ticket_log("[key_name_admin(usr)] has removed [src]'s [parse_zone(BP.body_zone)]")
 					else
 						to_chat(usr, span_boldwarning("[src] doesn't have such bodypart."))
@@ -1173,7 +1182,7 @@
 		return FALSE
 	if(has_status_effect(/datum/status_effect/hallucination))
 		return TRUE
-	if(IsSleeping())
+	if(IsSleeping() || IsUnconscious())
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
@@ -1293,7 +1302,7 @@
 /mob/living/carbon/proc/adjust_skillchip_complexity_modifier(delta)
 	skillchip_complexity_modifier += delta
 
-	var/obj/item/organ/internal/brain/brain = getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/internal/brain/brain = get_organ_slot(ORGAN_SLOT_BRAIN)
 
 	if(!brain)
 		return

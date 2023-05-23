@@ -71,7 +71,7 @@
 		beam_overlay.pixel_y = beam_offset_y * i
 		. += beam_overlay
 
-/obj/effect/sunbeam/process(delta_time)
+/obj/effect/sunbeam/process(seconds_per_tick)
 	if(target_atom && COOLDOWN_FINISHED(src, movement_delay))
 		step_towards(src, target_atom)
 		COOLDOWN_START(src, movement_delay, movement_cooldown)
@@ -149,6 +149,7 @@
 	max_occurrences = 0
 	weight = 0
 	category = EVENT_CATEGORY_SPACE
+	description = "Forces the ICARUS weapons system to fire a sunbeam at a random location. Causing massive devistation to the station."
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

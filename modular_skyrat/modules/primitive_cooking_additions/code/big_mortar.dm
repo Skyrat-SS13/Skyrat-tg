@@ -10,7 +10,7 @@
 	anchored = TRUE
 	max_integrity = 100
 	pass_flags = PASSTABLE
-	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 10)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT  * 10)
 	/// The maximum number of items this structure can store
 	var/maximum_contained_items = 10
 
@@ -51,7 +51,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 
-	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
+	if(!can_interact(user) || !user.can_perform_action(src))
 		return
 
 	set_anchored(!anchored)

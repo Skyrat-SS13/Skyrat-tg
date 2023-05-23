@@ -42,7 +42,7 @@
 
 /// Proc to handle removing the cap of the perfume bottle.
 /obj/item/perfume/proc/toggle_cap(mob/user)
-	if(has_cap && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(has_cap && user.can_perform_action(src, NEED_DEXTERITY))
 		cap = !cap
 		to_chat(user, span_notice("The cap on [src] is now [cap ? "on" : "off"]."))
 		update_appearance()

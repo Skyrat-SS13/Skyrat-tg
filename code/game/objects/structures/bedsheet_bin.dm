@@ -26,8 +26,11 @@ LINEN BINS
 	dying_key = DYE_REGISTRY_BEDSHEET
 
 	dog_fashion = /datum/dog_fashion/head/ghost
+	/// Custom nouns to act as the subject of dreams
 	var/list/dream_messages = list("white")
+	/// The number of cloth sheets to be dropped by this bedsheet when cut
 	var/stack_amount = 3
+	/// Denotes if the bedsheet is a single, double, or other kind of bedsheet
 	var/bedsheet_type = BEDSHEET_SINGLE
 	var/datum/weakref/signal_sleeper //this is our goldylocks
 
@@ -135,7 +138,7 @@ LINEN BINS
 
 /obj/item/bedsheet/AltClick(mob/living/user)
 	// double check the canUseTopic args to make sure it's correct
-	if(!istype(user) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = !iscyborg(user)))
+	if(!istype(user) || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	dir = turn(dir, 180)
 
@@ -308,6 +311,21 @@ LINEN BINS
 	icon_state = "sheetwiz"
 	inhand_icon_state = "sheetwiz"
 	dream_messages = list("a book", "an explosion", "lightning", "a staff", "a skeleton", "a robe", "magic")
+
+/obj/item/bedsheet/rev
+	name = "revolutionary's bedsheet"
+	desc = "A bedsheet stolen from a Central Command official's bedroom, used a symbol of triumph against Nanotrasen's tyranny. The golden emblem on the front has been scribbled out."
+	icon_state = "sheetrev"
+	inhand_icon_state = "sheetrev"
+	dream_messages = list(
+		"the people",
+		"liberation",
+		"collaboration",
+		"heads rolling",
+		"so, so many baseball bats",
+		"blinding light",
+		"your brothers in arms"
+	)
 
 /obj/item/bedsheet/nanotrasen
 	name = "\improper Nanotrasen bedsheet"
@@ -526,6 +544,11 @@ LINEN BINS
 	worn_icon_state = "sheetwiz"
 	bedsheet_type = BEDSHEET_DOUBLE
 
+/obj/item/bedsheet/rev/double
+	icon_state = "double_sheetrev"
+	worn_icon_state = "sheetrev"
+	bedsheet_type = BEDSHEET_DOUBLE
+
 /obj/item/bedsheet/nanotrasen/double
 	icon_state = "double_sheetNT"
 	worn_icon_state = "sheetNT"
@@ -583,8 +606,11 @@ LINEN BINS
 	anchored = TRUE
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
+	/// The number of bedsheets in the bin
 	var/amount = 10
+	/// A list of actual sheets within the bin
 	var/list/sheets = list()
+	/// The object hiddin within the bedsheet bin
 	var/obj/item/hidden = null
 
 /obj/structure/bedsheetbin/empty

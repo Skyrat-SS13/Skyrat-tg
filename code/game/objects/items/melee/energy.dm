@@ -69,7 +69,9 @@
 		hitsound_on = active_hitsound, \
 		w_class_on = active_w_class, \
 		attack_verb_continuous_on = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts"), \
-		attack_verb_simple_on = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut"))
+		attack_verb_simple_on = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut"), \
+		inhand_icon_change = FALSE, \
+	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/energy/suicide_act(mob/living/user)
@@ -78,7 +80,7 @@
 	user.visible_message(span_suicide("[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
 	return (BRUTELOSS|FIRELOSS)
 
-/obj/item/melee/energy/process(delta_time)
+/obj/item/melee/energy/process(seconds_per_tick)
 	if(heat)
 		open_flame()
 
@@ -112,7 +114,7 @@
 	if(active)
 		if(sword_color_icon)
 			icon_state = "[icon_state]_[sword_color_icon]"
-			inhand_icon_state = "[inhand_icon_state]_[sword_color_icon]"
+			inhand_icon_state = "[inhand_icon_state]_on_[sword_color_icon]"
 			if(ismob(loc))
 				var/mob/loc_mob = loc
 				loc_mob.update_held_items()
@@ -186,6 +188,7 @@
 	throw_range = 5
 	armour_penetration = 35
 	block_chance = 50
+	block_sound = 'sound/weapons/block_blade.ogg'
 	embedding = list("embed_chance" = 75, "impact_pain_mult" = 10)
 
 /obj/item/melee/energy/sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)

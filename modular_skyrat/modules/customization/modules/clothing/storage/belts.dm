@@ -14,7 +14,7 @@
 	create_storage(
 		max_slots = 2,
 		max_specific_storage = WEIGHT_CLASS_BULKY,	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
-		type = /datum/storage/belt/crusader,
+		storage_type = /datum/storage/belt/crusader,
 		canhold = list(
 			/obj/item/storage/belt/storage_pouch,
 			/obj/item/forging/reagent_weapon/sword,
@@ -65,7 +65,7 @@
 	return
 
 /obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	if(contents.len == 2)
 		var/obj/item/drawn_item = contents[2]
@@ -154,6 +154,7 @@
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
+		/obj/item/hypospray/mkii,
 		/obj/item/reagent_containers/cup/vial,
 		/obj/item/weaponcell/medical
 		))

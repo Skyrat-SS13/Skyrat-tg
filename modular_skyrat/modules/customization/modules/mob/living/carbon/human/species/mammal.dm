@@ -108,8 +108,8 @@
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
 	human.dna.features["mcolor3"] = secondary_color
-	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, "#464646"))
-	human.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, "#4D4D4D", secondary_color))
-	human.update_mutant_bodyparts(TRUE)
+	human.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, "#464646"))
+	human.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, "#4D4D4D", secondary_color))
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)

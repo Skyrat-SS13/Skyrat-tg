@@ -12,7 +12,7 @@
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	custom_materials = list(/datum/material/glass = 1000)
+	custom_materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT)
 	w_class = WEIGHT_CLASS_SMALL
 	grind_results = list(/datum/reagent/silicon = 20)
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
@@ -25,7 +25,8 @@
 /obj/item/circuitboard/Initialize(mapload)
 	if(name_extension)
 		name = "[initial(name)] [name_extension]"
-	set_greyscale(new_config = /datum/greyscale_config/circuit)
+	if(icon_state == "circuit_map") // some circuitboards have cool custom sprites
+		set_greyscale(new_config = /datum/greyscale_config/circuit)
 	return ..()
 
 /obj/item/circuitboard/proc/apply_default_parts(obj/machinery/machine)

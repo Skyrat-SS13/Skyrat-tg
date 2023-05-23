@@ -1,6 +1,7 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+	icon = FA_ICON_BOX_OPEN
 	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
 	var/list/items = list()
 	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
@@ -51,6 +52,7 @@
 
 /datum/quirk/equipping/lungs
 	abstract_parent_type = /datum/quirk/equipping/lungs
+	icon = FA_ICON_LUNGS
 	var/obj/item/organ/internal/lungs/lungs_holding
 	var/obj/item/organ/internal/lungs/lungs_added
 	var/lungs_typepath = /obj/item/organ/internal/lungs
@@ -61,7 +63,7 @@
 	var/mob/living/carbon/human/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_typepath)
 		return
-	var/current_lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/current_lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (istype(current_lungs, lungs_typepath))
 		return
 	lungs_holding = current_lungs
@@ -74,7 +76,7 @@
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_holding)
 		return
-	var/obj/item/organ/internal/lungs/lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (lungs != lungs_added && lungs != lungs_holding)
 		qdel(lungs_holding)
 		return
@@ -118,7 +120,7 @@
 /datum/quirk/equipping/lungs/nitrogen
 	name = "Nitrogen Breather"
 	desc = "You breathe nitrogen, even if you might not normally breathe it. Oxygen is poisonous."
-	icon = "lungs"
+	icon = FA_ICON_LUNGS_VIRUS
 	medical_record_text = "Patient can only breathe nitrogen."
 	gain_text = "<span class='danger'>You suddenly have a hard time breathing anything but nitrogen."
 	lose_text = "<span class='notice'>You suddenly feel like you aren't bound to nitrogen anymore."

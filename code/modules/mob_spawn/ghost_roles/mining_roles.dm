@@ -294,7 +294,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_SPAWNER) // SKYRAT EDIT CHANGE - ORIGINAL: new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_mind)
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
@@ -315,7 +315,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	shoes = /obj/item/clothing/shoes/combat
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_hand = /obj/item/gun/ballistic/automatic/sniper_rifle
+	r_hand = /obj/item/gun/ballistic/rifle/sniper_rifle
 
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT

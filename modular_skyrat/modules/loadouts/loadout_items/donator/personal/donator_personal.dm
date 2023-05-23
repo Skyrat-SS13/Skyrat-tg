@@ -156,7 +156,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -558,10 +558,36 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_razurath
 	ckeywhitelist = list("razurath")
 
+/datum/loadout_item/toys/plushie_razurath/second
+	name = "Dwarf Shark Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_razurath/second
+	ckeywhitelist = list("razurath")
+
 /datum/loadout_item/toys/plushie_elofy
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
 	//ckeywhitelist = list("october23") // Asked it to be public.
+
+/datum/loadout_item/suit/elofy
+	name = "Solar Admiral Coat"
+	item_path = /obj/item/clothing/suit/armor/hos/elofy
+	ckeywhitelist = list("october23")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/gloves/elofy
+	name = "Solar Admiral Gloves"
+	item_path = /obj/item/clothing/gloves/elofy
+	ckeywhitelist = list("october23")
+
+/datum/loadout_item/shoes/elofy
+	name = "Solar Admiral Boots"
+	item_path = /obj/item/clothing/shoes/jackboots/elofy
+	ckeywhitelist = list("october23")
+
+/datum/loadout_item/pocket_items/transponder
+	name = "Broken Helian Transponder"
+	item_path = /obj/item/donator/transponder
+	ckeywhitelist = list("glacii")
 
 /datum/loadout_item/glasses/goldaviator
 	name = "Purple and Gold Aviators"
@@ -643,6 +669,11 @@
 	name = "Charcoal Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/skyy
 	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/toys/switchcomb
+	name = "Switchblade Comb"
+	item_path = /obj/item/hairbrush/switchblade
+	ckeywhitelist = list("stonetear")
 
 /datum/loadout_item/suit/colorblockhoodie
 	name = "Color-Block Hoodie"

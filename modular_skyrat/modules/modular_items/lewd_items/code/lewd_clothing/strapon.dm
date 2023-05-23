@@ -59,10 +59,10 @@
 /obj/item/clothing/strapon/equipped(mob/user, slot)
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
-	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 	if(src == affected_mob.belt)
 		affected_vagina?.visibility_preference = GENITAL_NEVER_SHOW
@@ -76,10 +76,10 @@
 /obj/item/clothing/strapon/dropped(mob/living/user)
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
-	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/affected_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/affected_womb = affected_mob.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/affected_penis = affected_mob.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/affected_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 	if(strapon_item && !ismob(loc) && in_hands == TRUE && src != affected_mob.belt)
 		qdel(strapon_item)
@@ -196,7 +196,7 @@
 		return
 
 	var/message = ""
-	var/obj/item/organ/external/genital/vagina = hit_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/vagina = hit_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(hit_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)

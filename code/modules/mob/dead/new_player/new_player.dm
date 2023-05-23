@@ -36,6 +36,9 @@
 
 	return ..()
 
+/mob/dead/new_player/mob_negates_gravity()
+	return TRUE //no need to calculate if they have gravity.
+
 /mob/dead/new_player/prepare_huds()
 	return
 
@@ -226,7 +229,7 @@
 	if(humanc) //These procs all expect humans
 		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
 		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
-		GLOB.data_core.manifest_inject(humanc, humanc.client)
+		GLOB.manifest.inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
@@ -236,7 +239,7 @@
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
-		SSpersistence.load_modular_persistence(humanc.getorganslot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
+		SSpersistence.load_modular_persistence(humanc.get_organ_slot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)

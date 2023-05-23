@@ -7,6 +7,10 @@
 		"malfunction",
 		"default",
 		"ntos",
+		"ntos_darkmode",
+		"ntOS95",
+		"ntos_synth",
+		"ntos_terminal",
 		"wizard",
 	)
 	///What theme is currently being used on the NIF?
@@ -35,6 +39,7 @@
 			"activation_cost" = nifsoft.activation_cost,
 			"active_cost" = nifsoft.active_cost,
 			"reference" = REF(nifsoft),
+			"ui_icon" = nifsoft.ui_icon,
 		)
 		data["loaded_nifsofts"] += list(nifsoft_data)
 
@@ -44,6 +49,7 @@
 	data["max_power"] = max_power_level
 	data["max_blood_level"] = linked_mob.blood_volume_normal
 	data["product_notes"] = manufacturer_notes
+	data["stored_points"] = rewards_points
 
 	return data
 
@@ -67,13 +73,6 @@
 	//Durability Variables.
 	data["durability"] = durability
 
-	var/datum/component/nif_examine/examine_component = linked_mob.GetComponent(/datum/component/nif_examine)
-	if(!examine_component)
-		data["examine_text"] = ""
-
-	else
-		data["examine_text"] = examine_component.nif_examine_text
-
 	return data
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_act(action, list/params)
@@ -96,7 +95,7 @@
 				return FALSE
 
 			if(!text_to_use || length(text_to_use) <= 6)
-				examine_datum.nif_examine_text = span_purple("<b>There's a certain spark to their eyes.<b>")
+				examine_datum.nif_examine_text = "There's a certain spark to their eyes."
 				return FALSE
 
 			examine_datum.nif_examine_text = text_to_use

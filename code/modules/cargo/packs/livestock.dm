@@ -146,6 +146,13 @@
 	contains = list(/mob/living/simple_animal/hostile/retaliate/goat)
 	crate_name = "goat crate"
 
+/datum/supply_pack/critter/rabbit
+	name = "Rabbit Crate"
+	desc = "What noise do rabbits even make? Contains one rabbit."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/mob/living/basic/rabbit)
+	crate_name = "rabbit crate"
+
 /datum/supply_pack/critter/mothroach
 	name = "Mothroach Crate"
 	desc = "Put the mothroach on your head and find out what true cuteness looks like. \
@@ -206,7 +213,7 @@
 	desc = "Hisss! Containssss a friendly lizard. Not to be confusssed with a lizardperssson."
 	cost = CARGO_CRATE_VALUE * 4
 	access_view = ACCESS_JANITOR
-	contains = list(/mob/living/simple_animal/hostile/lizard)
+	contains = list(/mob/living/basic/lizard)
 	crate_name = "lizard crate"
 
 /datum/supply_pack/critter/garden_gnome

@@ -27,12 +27,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
-		list("Quadruple Amputee", "Paraplegic", "Frail"),
+		list("Quadruple Amputee", "Paraplegic"),
+		list("Quadruple Amputee", "Frail"),
+		list("Mute", "Social Anxiety"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
-		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
 	)
@@ -157,13 +158,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /// be valid.
 /// If no changes need to be made, will return the same list.
 /// Expects all quirk names to be unique, but makes no other expectations.
-/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks)
+/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments) // SKYRAT EDIT - AUGMENTS+
 	var/list/new_quirks = list()
 	var/list/positive_quirks = list()
 	var/balance = 0
 
 	var/list/all_quirks = get_quirks()
 
+	// SKYRAT EDIT BEGIN - AUGMENTS+
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		balance += aug.cost
+	// SKYRAT EDIT END
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]
 		if (isnull(quirk))
@@ -216,5 +222,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	return new_quirks
 
+#undef EXP_ASSIGN_WAYFINDER
 #undef RANDOM_QUIRK_BONUS
 #undef MINIMUM_RANDOM_QUIRKS

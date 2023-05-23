@@ -63,7 +63,7 @@
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna... Uhh... You get the point.
 		if(BODY_ZONE_PRECISE_GROIN)
-			var/obj/item/organ/external/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
 			if(!penis)
 				to_chat(user, span_danger("[target] doesn't have a penis!"))
 				return

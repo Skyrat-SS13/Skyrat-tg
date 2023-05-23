@@ -57,6 +57,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
@@ -145,6 +146,7 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/prisoner/syndicate
 	name = "syndicate prisoner jumpsuit"

@@ -47,7 +47,7 @@
 	greyscale_colors = "#3d3d3d" //Having all the configs for a single color feels wrong. This is wrong.
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/pants/skyrat/chaps //ORION TODO - attachment AND uniform item (is it even possible?); GREYSCALE
+/obj/item/clothing/under/pants/skyrat/chaps
 	name = "black chaps"
 	desc = "Yeehaw"
 	icon_state = "chaps"

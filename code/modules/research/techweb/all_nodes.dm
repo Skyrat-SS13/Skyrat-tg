@@ -38,7 +38,6 @@
 		"conveyor_belt",
 		"conveyor_switch",
 		"custom_vendor_refill",
-		"design_disk",
 		"destructive_analyzer",
 		"destructive_scanner",
 		"desttagger",
@@ -69,7 +68,7 @@
 		"light_replacer",
 		"light_tube",
 		"mechfab",
-		"micro_mani",
+		"micro_servo",
 		"miniature_power_cell",
 		"newscaster_frame",
 		"oven_tray",
@@ -85,6 +84,7 @@
 		"plastitanium",
 		"plastitaniumglass",
 		"plate",
+		"polarizer", // SKYRAT EDIT ADDITION - Polarized windows
 		"prox_sensor",
 		"radio_headset",
 		"rdconsole",
@@ -127,6 +127,7 @@
 		"turret_control",
 		"universal_scanner",
 		"voice_analyzer",
+		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 
@@ -242,6 +243,7 @@
 		"plant_analyzer",
 		"plunger",
 		"pushbroom",
+		"rwd",
 		"razor",
 		"screwdriver",
 		"secateurs",
@@ -429,6 +431,7 @@
 	description = "Advanced Biotechnology"
 	prereq_ids = list("biotech")
 	design_ids = list(
+		"autopsyscanner",
 		"crewpinpointer",
 		"defibrillator_compact",
 		"harvester",
@@ -493,8 +496,10 @@
 		"monkey_recycler",
 		"oven",
 		"processor",
+		"range", // should be in a further node, probably
 		"reagentgrinder",
 		"smartfridge",
+		"stove",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/cytology = 3000) //Big discount to reinforce doing it.
@@ -605,7 +610,7 @@
 		"high_cell",
 		"high_micro_laser",
 		"mesons",
-		"nano_mani",
+		"nano_servo",
 		"oxygen_tank",
 		"pacman",
 		"plasma_tank",
@@ -620,6 +625,7 @@
 		"solarcontrol",
 		"stack_console",
 		"stack_machine",
+		"suit_storage_unit",
 		"tank_compressor",
 		"tesla_coil",
 		"thermomachine",
@@ -650,7 +656,7 @@
 		"rtd_loaded",
 		"sheetifier",
 		"weldingmask",
-
+		"bolter_wrench",
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"engine_goggles_prescription",
 		"mesons_prescription",
@@ -682,7 +688,7 @@
 	description = "Finely-tooled manufacturing techniques allowing for picometer-perfect precision levels."
 	prereq_ids = list("engineering", "datatheory")
 	design_ids = list(
-		"pico_mani",
+		"pico_servo",
 		"super_matter_bin",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
@@ -745,7 +751,7 @@
 	design_ids = list(
 		"bluespace_matter_bin",
 		"bluespacebodybag",
-		"femto_mani",
+		"femto_servo",
 		"quantum_keycard",
 		"swapper",
 		"triphasic_scanning",
@@ -911,8 +917,9 @@
 	prereq_ids = list("base")
 	design_ids = list(
 		"paicard",
+		"mecha_camera",
+		"botnavbeacon",
 		"borg_upgrade_snacks", // SKYRAT ADDITION - BETTER BORG SNACK DISPENSORS
-		"mecha_camera"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -985,6 +992,19 @@
 	. = ..()
 	if(!CONFIG_GET(flag/disable_secborg))
 		design_ids += "borg_upgrade_disablercooler"
+
+/datum/techweb_node/cyborg_upg_serv
+	id = "cyborg_upg_serv"
+	display_name = "Cyborg Upgrades: Service"
+	description = "Service upgrades for cyborgs."
+	prereq_ids = list("adv_robotics")
+	design_ids = list(
+		"borg_upgrade_rolling_table",
+		"borg_upgrade_condiment_synthesizer",
+		"borg_upgrade_silicon_knife",
+		"borg_upgrade_service_apparatus",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
 /datum/techweb_node/cyborg_upg_engiminer
 	id = "cyborg_upg_engiminer"
@@ -1175,6 +1195,7 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
+		"time_clock_frame", //SKYRAT EDIT ADDITION - TIME CLOCKS
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
@@ -2244,6 +2265,9 @@
 		"donksoft_refill",
 		"donksofttoyvendor",
 		"largecrossbow",
+		"mag_autorifle",
+		"mag_autorifle_ap",
+		"mag_autorifle_ic",
 		"rapidsyringe",
 		"suppressor",
 		"super_pointy_tape",

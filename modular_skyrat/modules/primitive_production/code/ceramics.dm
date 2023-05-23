@@ -170,6 +170,18 @@
 	. = ..()
 	if(in_use)
 		return
+	use(user)
+	in_use = FALSE 
+
+/**
+ * Prompts user for how they wish to use the throwing wheel
+ *
+ * To make sure in_use var always gets set back to FALSE no matter what happens, do the actual 'using' in its own proc and do the setting to FALSE in attack_hand
+ *
+ * Arguments:
+ * * user - the mob who is using the throwing wheel
+ */
+/obj/structure/throwing_wheel/proc/use(mob/living/user)
 	in_use = TRUE
 	var/spinning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_SPIN
 	if(!has_clay)
@@ -177,13 +189,11 @@
 		return
 	var/user_input = tgui_alert(user, "What would you like to do?", "Choice Selection", list("Create", "Remove"))
 	if(!user_input)
-		in_use = FALSE
 		return
 	switch(user_input)
 		if("Create")
 			var/creation_choice = tgui_alert(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl"))
 			if(!creation_choice)
-				in_use = FALSE
 				return
 			switch(creation_choice)
 				if("Cup")
@@ -194,13 +204,10 @@
 					use_clay(/obj/item/ceramic/bowl, user)
 		if("Remove")
 			if(!do_after(user, spinning_speed, target = src))
-				in_use = FALSE
 				return
 			var/atom/movable/new_clay = new /obj/item/stack/clay(get_turf(src))
 			user.put_in_active_hand(new_clay)
 			has_clay = FALSE
-			in_use = FALSE
 			icon_state = "throw_wheel_empty"
-	in_use = FALSE
 
 #undef DEFAULT_SPIN

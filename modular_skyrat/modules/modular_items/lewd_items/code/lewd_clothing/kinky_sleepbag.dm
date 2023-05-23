@@ -183,15 +183,15 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
 			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_sound_left -= delta_time
+		time_to_sound_left -= seconds_per_tick
 
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)

@@ -86,6 +86,18 @@
 	icon_state = "medbox"
 
 /*
+// Engineering
+*/
+/obj/item/storage/box/metalfoam
+	icon_state = "engibox"
+
+/obj/item/storage/box/smart_metal_foam
+	icon_state = "engibox"
+
+/obj/item/storage/box/material
+	icon_state = "engibox"
+
+/*
 // Security
 */
 /obj/item/storage/box/rubbershot

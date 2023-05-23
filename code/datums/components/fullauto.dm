@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR FULLAUTO.DM
 #define AUTOFIRE_MOUSEUP 0
 #define AUTOFIRE_MOUSEDOWN 1
 
@@ -49,7 +48,7 @@
 	autofire_off()
 	return ..()
 
-/datum/component/automatic_fire/process(delta_time)
+/datum/component/automatic_fire/process(seconds_per_tick)
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
 		STOP_PROCESSING(SSprojectiles, src)
 		return
@@ -313,4 +312,3 @@
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN
-*/

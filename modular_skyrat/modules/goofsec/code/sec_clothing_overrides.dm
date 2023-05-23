@@ -47,37 +47,37 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "backpack_black"
+	icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
-			RESKIN_ICON_STATE = "backpack_black",
-			RESKIN_WORN_ICON_STATE = "backpack_black"
+			RESKIN_ICON_STATE = "backpack_security_black",
+			RESKIN_WORN_ICON_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "backpack_white",
-			RESKIN_WORN_ICON_STATE = "backpack_white"
+			RESKIN_ICON_STATE = "backpack_security_white",
+			RESKIN_WORN_ICON_STATE = "backpack_security_white"
 		),
 	)
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_satchel"
+	icon_state = "satchel_security"
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_duffle_blue"
+	icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_blue",
-			RESKIN_WORN_ICON_STATE = "security_duffle_blue"
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "duffel_security_black",
+			RESKIN_WORN_ICON_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_white",
-			RESKIN_WORN_ICON_STATE = "security_duffle_white"
+			RESKIN_ICON_STATE = "duffel_security_white",
+			RESKIN_WORN_ICON_STATE = "duffel_security_white"
 		),
 	)
 
@@ -183,13 +183,15 @@
 
 //Overrides the bulletproof helm with the older non red visor version.
 /obj/item/clothing/head/helmet/alt
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_state = "helmetalt_blue"
+	base_icon_state = "helmetalt_blue"
 
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "security_helmet"
 	base_icon_state = "security_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
@@ -294,7 +296,7 @@
 	fire = 20
 	acid = 50
 
-/obj/item/clothing/head/hats/hos
+/obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hoscap_blue"
@@ -319,7 +321,7 @@
 	)
 
 //Need to quickly redefine this so the icon doesnt break
-/obj/item/clothing/head/hats/hos/syndicate
+/obj/item/clothing/head/hats/hos/cap/syndicate
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
@@ -473,7 +475,7 @@
 
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //ORION TODO - actually have a unique icon_state overriding it instead of this cop-out it originally had (The original was actually done wrong anyways)
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
@@ -485,16 +487,16 @@
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
 	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "security_wintercoat_hood"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "winterhood_security"
 
 /obj/item/clothing/suit/hooded/wintercoat/security
 	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
 	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Lopland\"</b> logo."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "security_wintercoat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
+	icon_state = "coatsecurity_winter"
 
 /obj/item/clothing/suit/armor/hos/hos_formal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -677,7 +679,7 @@
 	current_skin = "duffel-security" //prevents reskinning
 
 /*
-*	BELT
+*	BELT + HOLSTERS
 */
 
 /obj/item/storage/belt/security/redsec
@@ -687,6 +689,46 @@
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
 	current_skin = "security"	//prevents reskinning
+	
+	
+/obj/item/storage/belt/holster
+	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
+	
+/obj/item/storage/belt/holster/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 3
+	atom_storage.max_total_storage = 16
+	atom_storage.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/dueling,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		))
+	
+/obj/item/storage/belt/holster/detective
+	name = "detective's holster"
+	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
+
+/obj/item/storage/belt/holster/detective/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 4
+	atom_storage.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/dueling,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		))
+
 
 /*
 *	HEAD
@@ -771,3 +813,10 @@
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
 	current_skin = "jackboots_sec"	//prevents reskinning
+
+//Finally, a few description changes for items that couldn't get a resprite.
+/obj/item/clothing/head/bio_hood/security
+	desc = "A hood that protects the head and face from biological contaminants. This is a slightly outdated model from Nanotrasen Securities - you can hardly see through the foggy visor's ageing red. Hopefully it's still up to spec..."
+
+/obj/item/clothing/suit/bio_suit/security
+	desc = "A suit that protects against biological contamination. This is a slightly outdated model from Nanotrasen Securities, using their red color-scheme and even outdated labelling. Hopefully it's still up to spec..."

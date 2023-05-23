@@ -83,12 +83,12 @@
 ///A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/vehicle/ridden/wheelchair/gold
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_AFFECT_STATISTICS
-	desc = "Damn, he's been through a lot."
+	desc = "Damn, must've been through a lot."
 	icon_state = "gold_wheelchair"
 	overlay_icon = "gold_wheelchair_overlay"
 	max_integrity = 200
 	armor_type = /datum/armor/wheelchair_gold
-	custom_materials = list(/datum/material/gold = 10000)
+	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT*5)
 	foldabletype = /obj/item/wheelchair/gold
 
 /obj/item/wheelchair
@@ -101,7 +101,7 @@
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 8 //Force is same as a chair
-	custom_materials = list(/datum/material/iron = 10000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	///The wheelchair vehicle type we create when we unfold this chair
 	var/unfolded_type = /obj/vehicle/ridden/wheelchair
 
@@ -115,7 +115,7 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	force = 10
-	custom_materials = list(/datum/material/gold = 10000)
+	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT*5)
 	unfolded_type = /obj/vehicle/ridden/wheelchair/gold
 
 /datum/armor/wheelchair_gold
@@ -130,7 +130,7 @@
 	. = ..()
 	if(over_object != usr || !Adjacent(usr) || !foldabletype)
 		return FALSE
-	if(!ishuman(usr) || !usr.canUseTopic(src, be_close = TRUE))
+	if(!ishuman(usr) || !usr.can_perform_action(src))
 		return FALSE
 	if(has_buckled_mobs())
 		return FALSE

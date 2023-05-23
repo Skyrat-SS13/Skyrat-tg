@@ -155,6 +155,16 @@
 /turf/open/floor/grass/proc/spawniconchange()
 	icon_state = "grass[rand(0,3)]"
 
+/turf/open/floor/grass/lavaland
+	name = "dead grass patch"
+	desc = "It turns out grass doesn't grow very well in hell."
+	icon_state = "sand"
+	broken = TRUE
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+
+/turf/open/floor/grass/lavaland/spawniconchange()
+	return
+
 /turf/open/floor/grass/fairy //like grass but fae-er
 	name = "fairygrass patch"
 	desc = "Something about this grass makes you want to frolic. Or get high."
@@ -188,7 +198,7 @@
 
 /turf/open/floor/fake_snow/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/diggable, /obj/item/stack/tile/mineral/snow, 2, worm_chance = 0)
+	AddElement(/datum/element/diggable, /obj/item/stack/tile/mineral/snow, 1, worm_chance = 0)
 
 /turf/open/floor/fake_snow/broken_states()
 	return list("snow_dug")
@@ -775,6 +785,9 @@
 /turf/open/floor/carpet/neon/simple/pink/nodots/airless
 	initial_gas_mix = AIRLESS_ATMOS
 
+/turf/open/floor/carpet/blue/lavaland
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+
 /turf/open/floor/fakepit
 	desc = "A clever illusion designed to look like a bottomless pit."
 	icon = 'icons/turf/floors/chasms.dmi'
@@ -815,7 +828,5 @@
 	return list("damaged")
 
 /turf/open/floor/fakespace/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = 'icons/turf/space.dmi'
-	underlay_appearance.icon_state = "space"
-	SET_PLANE(underlay_appearance, PLANE_SPACE, src)
+	generate_space_underlay(underlay_appearance, asking_turf)
 	return TRUE

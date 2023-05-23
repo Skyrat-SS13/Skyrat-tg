@@ -18,7 +18,7 @@
 	desc = "A surgical procedure that reboots a positronic brain."
 
 /datum/surgery/robot_chassis_restoration/can_start(mob/user, mob/living/carbon/target)
-	if(!..() || target.stat != DEAD || target.suiciding || !target.getorganslot(ORGAN_SLOT_BRAIN))
+	if(!..() || target.stat != DEAD ||  !target.get_organ_slot(ORGAN_SLOT_BRAIN))
 		return FALSE
 
 	return TRUE

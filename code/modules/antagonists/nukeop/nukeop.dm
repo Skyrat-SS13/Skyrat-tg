@@ -35,6 +35,7 @@
 		return
 
 	var/mob/living/carbon/human/operative = owner.current
+	ADD_TRAIT(operative, TRAIT_NOFEAR_HOLDUPS, INNATE_TRAIT)
 
 	if(!nukeop_outfit) // this variable is null in instances where an antagonist datum is granted via enslaving the mind (/datum/mind/proc/enslave_mind_to_creator), like in golems.
 		return
@@ -126,17 +127,26 @@
 	if(nuke_team)
 		objectives |= nuke_team.objectives
 
+/// Actually moves our nukie to where they should be
 /datum/antagonist/nukeop/proc/move_to_spawnpoint()
 	// Ensure that the nukiebase is loaded, and wait for it if required
 	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
+	var/turf/destination = get_spawnpoint()
+	owner.current.forceMove(destination)
+	if(!owner.current.onSyndieBase())
+		message_admins("[ADMIN_LOOKUPFLW(owner.current)] is a NUKE OP and move_to_spawnpoint put them somewhere that isn't the syndie base, help please.")
+		stack_trace("Nuke op move_to_spawnpoint resulted in a location not on the syndicate base. (Was moved to: [destination])")
 
+/// Gets the position we spawn at
+/datum/antagonist/nukeop/proc/get_spawnpoint()
 	var/team_number = 1
 	if(nuke_team)
 		team_number = nuke_team.members.Find(owner)
-	owner.current.forceMove(GLOB.nukeop_start[((team_number - 1) % GLOB.nukeop_start.len) + 1])
 
-/datum/antagonist/nukeop/leader/move_to_spawnpoint()
-	owner.current.forceMove(pick(GLOB.nukeop_leader_start))
+	return GLOB.nukeop_start[((team_number - 1) % GLOB.nukeop_start.len) + 1]
+
+/datum/antagonist/nukeop/leader/get_spawnpoint()
+	return pick(GLOB.nukeop_leader_start)
 
 /datum/antagonist/nukeop/create_team(datum/team/nuclear/new_team)
 	if(!new_team)
@@ -172,7 +182,7 @@
 
 /datum/antagonist/nukeop/proc/admin_tell_code(mob/admin)
 	var/code
-	for (var/obj/machinery/nuclearbomb/bombue in GLOB.machines)
+	for (var/obj/machinery/nuclearbomb/bombue as anything in GLOB.nuke_list)
 		if (length(bombue.r_code) <= 5 && bombue.r_code != initial(bombue.r_code))
 			code = bombue.r_code
 			break
@@ -371,6 +381,7 @@
 
 /datum/team/nuclear/proc/get_result()
 	var/shuttle_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
+	var/shuttle_landed_base = SSshuttle.emergency.is_hijacked()
 	var/disk_rescued = is_disk_rescued()
 	var/syndies_didnt_escape = !is_infiltrator_docked_at_syndiebase()
 	var/team_is_dead = are_all_operatives_dead()
@@ -398,6 +409,13 @@
 		// The station was not nuked, but something was, and the syndicates returned to their base
 		else
 			return NUKE_RESULT_WRONG_STATION
+
+	// Nuke didn't blow, but nukies somehow hijacked the emergency shuttle to land at the base anyways.
+	else if(shuttle_landed_base)
+		if(disk_rescued)
+			return NUKE_RESULT_HIJACK_DISK
+		else
+			return NUKE_RESULT_HIJACK_NO_DISK
 
 	// No nuke went off, the station rescued the disk
 	else if(disk_rescued)
@@ -439,6 +457,12 @@
 		if(NUKE_RESULT_WRONG_STATION_DEAD)
 			parts += "<span class='redtext big'>[syndicate_name] operatives have earned Darwin Award!</span>"
 			parts += "<B>[syndicate_name] operatives blew up something that wasn't [station_name()] and got caught in the explosion.</B> Next time, don't do that!"
+		if(NUKE_RESULT_HIJACK_DISK)
+			parts += "<span class='greentext big'>Syndicate Miniscule Victory!</span>"
+			parts += "<B>[syndicate_name] operatives failed to destroy [station_name()], but they managed to secure the disk and hijack the emergency shuttle, causing it to land on the syndicate base. Good job?</B>"
+		if(NUKE_RESULT_HIJACK_NO_DISK)
+			parts += "<span class='greentext big'>Syndicate Insignificant Victory!</span>"
+			parts += "<B>[syndicate_name] operatives failed to destroy [station_name()] or secure the disk, but they managed to hijack the emergency shuttle, causing it to land on the syndicate base. Good job?</B>"
 		if(NUKE_RESULT_CREW_WIN_SYNDIES_DEAD)
 			parts += "<span class='redtext big'>Crew Major Victory!</span>"
 			parts += "<B>The Research Staff has saved the disk and killed the [syndicate_name] Operatives</B>"

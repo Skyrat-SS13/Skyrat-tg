@@ -47,3 +47,11 @@
 	bullet = 25
 	laser = 15
 	energy = 20
+
+/obj/machinery/vending/security/noaccess
+	req_access = null
+
+/obj/structure/closet/secure_closet/medical2/unlocked/Initialize(mapload)
+	. = ..()
+	locked = FALSE
+	update_appearance()

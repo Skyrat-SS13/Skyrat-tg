@@ -50,6 +50,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/show_to_ghosts = FALSE
 	/// The typepath for the outfit to show in the preview for the preferences menu.
 	var/preview_outfit
+	/// Flags for antags to turn on or off and check!
+	var/antag_flags = FLAG_ANTAG_CAN_BE_INDUCTED
 
 	//ANTAG UI
 
@@ -126,13 +128,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 //button for antags to review their descriptions/info
 /datum/action/antag_info
-	name = "Open Antag Information:"
+	name = "Open Special Role Information:"
 	button_icon_state = "round_end"
 	show_to_observers = FALSE
 
 /datum/action/antag_info/New(Target)
 	. = ..()
-	name += " [target]"
+	name = "Open [target] Information:"
 
 /datum/action/antag_info/Trigger(trigger_flags)
 	. = ..()
@@ -230,8 +232,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(!silent)
 		greet()
 		if(ui_name)
-			to_chat(owner.current, span_boldnotice("For more info, read the panel. you can always come back to it using the button in the top left."))
+			to_chat(owner.current, span_boldnotice("For more info, read the panel. \
+				You can always come back to it using the button in the top left."))
 			info_button.Trigger()
+		var/type_policy = get_policy("[type]") // path to text
+		if(type_policy)
+			to_chat(owner.current, type_policy)
+
 	apply_innate_effects()
 	give_antag_moodies()
 	RegisterSignal(owner, COMSIG_PRE_MINDSHIELD_IMPLANT, PROC_REF(pre_mindshield))
@@ -302,7 +309,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	qdel(src)
 	// SKYRAT EDIT START
-	owner.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
+	owner?.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
 	// SKYRAT EDIT END
 
 /**
@@ -328,7 +335,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/give_antag_moodies()
 	if(!antag_moodlet)
 		return
-	owner.current.add_mood_event("antag_moodlet", antag_moodlet)
+	owner.current.add_mood_event("antag_moodlet_[type]", antag_moodlet)
 
 /**
  * Proc that removes this antagonist's ascribed moodlet from the player.
@@ -336,7 +343,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/clear_antag_moodies()
 	if(!antag_moodlet)
 		return
-	owner.current.clear_mood_event("antag_moodlet")
+	owner.current.clear_mood_event("antag_moodlet_[type]")
 
 /**
  * Proc that will return the team this antagonist belongs to, when called. Helpful with antagonists that may belong to multiple potential teams in a single round.
@@ -516,4 +523,3 @@ GLOBAL_LIST_EMPTY(antagonists)
 /// Used to create objectives for the antagonist.
 /datum/antagonist/proc/forge_objectives()
 	return
-

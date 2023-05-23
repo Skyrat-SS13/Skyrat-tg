@@ -17,7 +17,7 @@
 
 /datum/surgery/repair_nif/can_start(mob/user, mob/living/patient)
 	var/mob/living/carbon/human/nif_patient = patient
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!nif_patient || !installed_nif)
 		return FALSE
@@ -47,7 +47,7 @@
 	)
 
 	var/mob/living/carbon/human/nif_patient = target
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 
 	installed_nif.durability = installed_nif.max_durability
@@ -56,7 +56,7 @@
 	return ..()
 
 /datum/surgery_step/repair_nif/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(target.getorganslot(ORGAN_SLOT_BRAIN))
+	if(target.get_organ_slot(ORGAN_SLOT_BRAIN))
 		display_results(user, target, span_warning("You screw up, causing [target] brain damage!"),
 			span_warning("[user] screws up, while trying to repair [target]'s NIF!"),
 			"[user] fails to complete the repair on [target]'s NIF.")

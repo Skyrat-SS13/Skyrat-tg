@@ -21,6 +21,7 @@
 	Or perhaps more exotic customers are in local space...?"
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/black_market
+	spawner_job_path = /datum/job/blackmarket
 	quirks_enabled = TRUE
 	random_appearance = FALSE
 	loadout_enabled = TRUE
@@ -37,12 +38,14 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ds2
 	name = "DS2 personnel"
+	use_outfit_name = TRUE
 	prompt_name = "DS2 personnel"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	quirks_enabled = TRUE
 	random_appearance = FALSE
 	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms
+	spawner_job_path = /datum/job/ds2
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -52,7 +55,9 @@
 	important_text = "You are still subject to standard prisoner policy and must Adminhelp before antagonizing DS2."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/security/prison
 	outfit = /datum/outfit/ds2/prisoner
+	spawner_job_path = /datum/job/ds2
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
@@ -63,6 +68,8 @@
 	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base to Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
 	important_text = "You are not an antagonist. Adminhelp before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/halls
+	spawner_job_path = /datum/job/ds2
 	loadout_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command
@@ -74,15 +81,17 @@
 	flavour_text = "The Sothran Syndicate has found it fit to send you to help command the forward operating base in Sector 13. Your orders are commanding the crew of DS-2 while keeping a low profile as well as possible."
 	important_text = "Keep yourself to the same standards as Command Policy. You are not an antagonist and must Adminhelp before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate_command
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/halls
+	spawner_job_path = /datum/job/ds2
 	loadout_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/special(mob/living/new_spawn)
 	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service
@@ -280,7 +289,7 @@
 /datum/outfit/ds2/syndicate_command/corporateliaison
 	name = "DS-2 Corporate Liasion"
 	uniform = /obj/item/clothing/under/syndicate/sniper
-	head = /obj/item/clothing/head/fedora/fedblack
+	head = /obj/item/clothing/head/fedora
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
@@ -291,7 +300,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/automatic/pistol/aps
-	head = /obj/item/clothing/head/hats/hos/syndicate
+	head = /obj/item/clothing/head/hats/hos/cap/syndicate
 	id = /obj/item/card/id/advanced/gold/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
 
@@ -333,6 +342,7 @@
 	desc = "A humming cryo pod. There's a freight hauler inside."
 	mob_name = "Freighter Crew"
 	outfit = /datum/outfit/freighter_crew
+	spawner_job_path = /datum/job/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -366,6 +376,7 @@
 	desc = "A humming cryo pod. There's an excavation worker inside."
 	mob_name = "Freighter Excavator"
 	outfit = /datum/outfit/freighter_excavator
+	spawner_job_path = /datum/job/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -407,6 +418,7 @@
 	desc = "A humming cryo pod. You see someone who looks In Charge inside."
 	mob_name = "Freighter Chief"
 	outfit = /datum/outfit/freighter_boss
+	spawner_job_path = /datum/job/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -449,6 +461,7 @@
 	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
 	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
 	outfit = /datum/outfit/tarkon
+	spawner_job_path = /datum/job/tarkon
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
 	random_appearance = FALSE
@@ -541,6 +554,7 @@
 	flavour_text = "The rest of command bailed, and left as nothing more than a glorified assistant, you are held responsible should you be unable to wrangle what hopes of success Headquarters has. Find the blueprints and keep them close, Lest looters and raiders plan to seize what isn't theirs. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
 	important_text = "People aren't obligated to listen to you, and you are, otherwise, just another body with some remnant of control. Make sure important items aren't traded and do your best to survive in the hellscape left for you. Unwelcomed and uninvited guests are not obligated to your kindness."
 	outfit = /datum/outfit/tarkon/ensign
+	spawner_job_path = /datum/job/tarkon
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
 	name = "Port Tarkon Ensigns Outfit"
@@ -626,15 +640,17 @@
 
 /datum/id_trim/away/hotel
 	assignment = "Hotel Staff"
+	access = list(ACCESS_TWIN_NEXUS_STAFF)
 
 /datum/id_trim/away/hotel/manager
 	assignment = "Hotel Manager"
+	access = list(ACCESS_TWIN_NEXUS_STAFF, ACCESS_TWIN_NEXUS_MANAGER)
 
 /datum/id_trim/away/hotel/security
 	assignment = "Hotel Security"
 
 /datum/id_trim/away/tarkon
-	assignment = "P-T Cargo Personell"
+	assignment = "P-T Cargo Personnel"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/sec

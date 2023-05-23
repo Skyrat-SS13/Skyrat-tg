@@ -11,7 +11,7 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	w_class = WEIGHT_CLASS_BULKY
-	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/seva
 	armor_type = /datum/armor/hooded_seva
@@ -42,7 +42,8 @@
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS|HIDESNOUT
 	cold_protection = HEAD
 	heat_protection = HEAD
-	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
+	clothing_traits = list(TRAIT_ASHSTORM_IMMUNE)
 	armor_type = /datum/armor/hooded_seva
 	resistance_flags = FIRE_PROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION //I can't find the snout sprite so I'm just gonna force it to do this

@@ -38,8 +38,8 @@
 /obj/item/clothing/head/helmet/space/hev_suit
 	name = "hazardous environment suit helmet"
 	desc = "The Mark IV HEV suit helmet."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "hev"
 	armor_type = /datum/armor/space_hev_suit
 	obj_flags = NO_MAT_REDEMPTION
@@ -537,7 +537,7 @@
 	send_message("CALIBRATING DEFENSIVE WEAPON SELECTION SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, PROC_REF(weaponselect)), 3 SECONDS, TIMER_STOPPABLE)
 
-/obj/item/clothing/suit/space/hev_suit/process(delta_time)
+/obj/item/clothing/suit/space/hev_suit/process(seconds_per_tick)
 	if(!activated)
 		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)

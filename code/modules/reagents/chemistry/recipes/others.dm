@@ -175,6 +175,10 @@
 /datum/chemical_reaction/virus_food
 	results = list(/datum/reagent/consumable/virus_food = 15)
 	required_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/milk = 5)
+	is_cold_recipe = TRUE
+	required_temp = 200
+	optimal_temp = 150
+	overheat_temp = 50
 
 /datum/chemical_reaction/virus_food_mutagen
 	results = list(/datum/reagent/toxin/mutagen/mutagenvirusfood = 1)
@@ -589,7 +593,7 @@
 //water electrolysis
 /datum/chemical_reaction/electrolysis
 	results = list(/datum/reagent/oxygen = 1.5, /datum/reagent/hydrogen = 3)
-	required_reagents = list(/datum/reagent/consumable/liquidelectricity = 1, /datum/reagent/water = 5)
+	required_reagents = list(/datum/reagent/consumable/liquidelectricity/enriched = 1, /datum/reagent/water = 5)
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
 
 //butterflium
@@ -626,12 +630,12 @@
 		'sound/voice/human/malescream_6.ogg',
 		'sound/voice/human/wilhelm_scream.ogg',
 	)
-	
+
 	playsound(holder.my_atom, pick(screams), created_volume*5,TRUE)
 
 /datum/chemical_reaction/hair_dye
 	results = list(/datum/reagent/hair_dye = 5)
-	required_reagents = list(/datum/reagent/colorful_reagent = 1, /datum/reagent/uranium/radium = 1, /datum/reagent/drug/space_drugs = 1)
+	required_reagents = list(/datum/reagent/colorful_reagent = 1, /datum/reagent/chlorine = 1, /datum/reagent/drug/space_drugs = 1)
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/barbers_aid

@@ -118,12 +118,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 		if(parent.hotkeys)
 			for(var/hotkeytobind in kb.hotkey_keys)
-				if(!length(binds_by_key[hotkeytobind]) && hotkeytobind != "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+				if(hotkeytobind == "Unbound")
+					addedbind = TRUE
+				else if(!length(binds_by_key[hotkeytobind])) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= hotkeytobind
 					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
-				if(!length(binds_by_key[classickeytobind]) && classickeytobind != "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+				if(classickeytobind == "Unbound")
+					addedbind = TRUE
+				else if(!length(binds_by_key[classickeytobind])) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= classickeytobind
 					addedbind = TRUE
 
@@ -312,7 +316,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
 
-	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
+	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks), augments)// SKYRAT EDIT - AUGMENTS+
 	validate_quirks()
 
 	return TRUE

@@ -14,7 +14,6 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
-	foldable = FALSE
 	illustration = null
 	var/opened = FALSE
 

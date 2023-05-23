@@ -8,12 +8,13 @@
 /obj/effect/mob_spawn/ghost_role/robot/ghostcafe
 	name = "Cafe Robotic Storage"
 	prompt_name = "a ghost cafe robot"
-	uses = -1
+	infinite_use = TRUE
+	deletes_on_zero_uses_left = FALSE
 	icon = 'modular_skyrat/modules/ghostcafe/icons/robot_storage.dmi'
 	icon_state = "robostorage"
-	mob_name = "a cafe robot"
 	anchored = TRUE
 	density = FALSE
+	spawner_job_path = /datum/job/ghostcafe
 	you_are_text = "You are a Cafe Robot!"
 	flavour_text = "Who could have thought? This awesome local cafe accepts cyborgs too!"
 	mob_type = /mob/living/silicon/robot/model/roleplay
@@ -38,15 +39,17 @@
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe
 	name = "Cafe Sleeper"
 	prompt_name = "a ghost cafe human"
-	uses = -1
+	infinite_use = TRUE
+	deletes_on_zero_uses_left = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	mob_name = "a cafe visitor"
 	density = FALSE
-	outfit = /datum/outfit
+	spawner_job_path = /datum/job/ghostcafe
+	outfit = /datum/outfit/ghostcafe
 	you_are_text = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
 	random_appearance = FALSE
+	loadout_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
 	. = ..()
@@ -59,7 +62,6 @@
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
 		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
-		new_spawn.equip_outfit_and_loadout(/datum/outfit/ghostcafe, new_spawn.client.prefs, FALSE, null)
 		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
 		D.Grant(new_spawn)
 

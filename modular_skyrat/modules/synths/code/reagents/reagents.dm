@@ -13,6 +13,9 @@
 /datum/reagent/medicine/leporazine
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
+/datum/reagent/flightpotion
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+
 // REAGENTS FOR SYNTHS
 
 /datum/reagent/medicine/system_cleaner
@@ -24,9 +27,9 @@
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC
 
-/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.adjustToxLoss(-2 * REM * delta_time, 0)
-	var/remove_amount = 1 * REM * delta_time;
+/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	affected_mob.adjustToxLoss(-2 * REM * seconds_per_tick, 0)
+	var/remove_amount = 1 * REM * seconds_per_tick;
 	for(var/thing in affected_mob.reagents.reagent_list)
 		var/datum/reagent/reagent = thing
 		if(reagent != src)
@@ -42,8 +45,8 @@
 	taste_description = "metal"
 	process_flags = REAGENT_SYNTHETIC
 
-/datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/carbon/affected_mob, delta_time)
-	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3 * REM * delta_time)
+/datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick)
+	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3 * REM * seconds_per_tick)
 	if(prob(10))
 		affected_mob.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
 	return ..()
@@ -63,14 +66,14 @@
 	var/temperature_change = 50
 
 
-/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob, delta_time)
-	var/heal_amount = healing * REM * delta_time
+/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick)
+	var/heal_amount = healing * REM * seconds_per_tick
 	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_bodytype = BODYTYPE_ROBOTIC)
 	return ..()
 
-/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
+/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
-		affected_mob.adjust_bodytemperature(temperature_change * REM * delta_time)
+		affected_mob.adjust_bodytemperature(temperature_change * REM * seconds_per_tick)
 		return ..()
 	affected_mob.reagents.remove_reagent(type, NANITE_SLURRY_ORGANIC_PURGE_RATE) //gets removed from organics very fast
 	if(prob(NANITE_SLURRY_ORGANIC_VOMIT_CHANCE))

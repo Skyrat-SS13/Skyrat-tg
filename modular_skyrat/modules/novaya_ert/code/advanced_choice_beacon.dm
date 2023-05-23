@@ -14,7 +14,7 @@
 		display_options(user)
 
 /obj/item/advanced_choice_beacon/proc/can_use_beacon(mob/living/user)
-	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
@@ -112,7 +112,7 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list("neutral", FACTION_ERT)
+		turret.faction = list(FACTION_NEUTRAL, FACTION_ERT)
 		qdel(src)
 
 	..()
@@ -125,14 +125,14 @@
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list("neutral", FACTION_ERT)
+	faction = list(FACTION_NEUTRAL, FACTION_ERT)
 	shot_delay = 0.25
 
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
 	return 0
 
 /mob/living/basic/viscerator/nri
-	faction = list("neutral", FACTION_ERT)
+	faction = list(FACTION_NEUTRAL, FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "imperial viscerator delivery grenade"
@@ -231,6 +231,6 @@
 	new /obj/item/storage/toolbox/ammo/full/krinkov/fire(src)
 	new /obj/item/storage/toolbox/ammo/full/krinkov/ricochet(src)
 	new /obj/item/storage/toolbox/ammo/full/krinkov/ap(src)
-	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
-	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
 	new /obj/item/storage/toolbox/ammo/full/aps(src)

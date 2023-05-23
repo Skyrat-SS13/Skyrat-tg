@@ -39,12 +39,12 @@
 	mutanttongue = /obj/item/organ/internal/tongue
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/roundstartslime,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/roundstartslime,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/roundstartslime,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/roundstartslime,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime/roundstart,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime/roundstart,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstart,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime/roundstart,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime/roundstart,
 	)
 
 /**
@@ -66,13 +66,13 @@
 	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
 	///List containing all of the avalible parts
 	var/static/list/available_choices
-  
+
 /datum/action/innate/alter_form/New(Target)
 	. = ..()
 	if(length(available_choices))
 		return
 
-	available_choices = GLOB.sprite_accessories.Copy()
+	available_choices = deep_copy_list(GLOB.sprite_accessories)
 	for(var/parts_list in available_choices)
 		for(var/parts in available_choices[parts_list])
 			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
@@ -329,6 +329,9 @@
  */
 /datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
 	var/list/key_list = alterer.dna.mutant_bodyparts
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/erp_part in ORGAN_ERP_LIST)
+			key_list -= erp_part
 	var/chosen_key = tgui_input_list(
 		alterer,
 		"Select the part you want to alter",
@@ -354,7 +357,7 @@
 		if(selected_sprite_accessory.organ_type)
 			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
 			var/slot = initial(organ_path.slot)
-			var/obj/item/organ/got_organ = alterer.getorganslot(slot)
+			var/obj/item/organ/got_organ = alterer.get_organ_slot(slot)
 			if(got_organ)
 				got_organ.Remove(alterer)
 				qdel(got_organ)
@@ -364,7 +367,7 @@
 		if(selected_sprite_accessory.organ_type)
 			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
 			var/slot = initial(organ_path.slot)
-			var/obj/item/organ/got_organ = alterer.getorganslot(slot)
+			var/obj/item/organ/got_organ = alterer.get_organ_slot(slot)
 			if(got_organ)
 				got_organ.Remove(alterer)
 				qdel(got_organ)
@@ -411,11 +414,11 @@
  */
 /datum/action/innate/alter_form/proc/alter_genitals(mob/living/carbon/human/alterer)
 	var/list/genital_list
-	if(alterer.getorganslot(ORGAN_SLOT_BREASTS))
+	if(alterer.get_organ_slot(ORGAN_SLOT_BREASTS))
 		genital_list += list("Breasts Lactation", "Breasts Size")
-	if(alterer.getorganslot(ORGAN_SLOT_PENIS))
+	if(alterer.get_organ_slot(ORGAN_SLOT_PENIS))
 		genital_list += list("Penis Girth", "Penis Length", "Penis Sheath", "Penis Taur Mode")
-	if(alterer.getorganslot(ORGAN_SLOT_TESTICLES))
+	if(alterer.get_organ_slot(ORGAN_SLOT_TESTICLES))
 		genital_list += list("Testicles Size")
 	if(!length(genital_list))
 		alterer.balloon_alert(alterer, "no genitals!")
@@ -430,13 +433,13 @@
 		return
 	switch(dna_alteration)
 		if("Breasts Lactation")
-			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
 			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
 			melons.lactates = alterer.dna.features["breasts_lactation"]
 			alterer.balloon_alert(alterer, "[alterer.dna.features["breasts_lactation"] ? "lactating" : "not lactating"]")
 
 		if("Breasts Size")
-			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/breasts/melons = alterer.get_organ_slot(ORGAN_SLOT_BREASTS)
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's breasts size:",
@@ -449,7 +452,7 @@
 			melons.set_size(alterer.dna.features["breasts_size"])
 
 		if("Penis Girth")
-			var/obj/item/organ/external/genital/penis/sausage = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/penis/sausage = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/max_girth = PENIS_MAX_GIRTH
 			if(alterer.dna.features["penis_size"] >= max_girth)
 				max_girth = alterer.dna.features["penis_size"]
@@ -465,7 +468,7 @@
 				sausage.girth = alterer.dna.features["penis_girth"]
 
 		if("Penis Length")
-			var/obj/item/organ/external/genital/penis/wang = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/penis/wang = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/new_length = tgui_input_number(
 				alterer,
 				"Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] inches)",
@@ -482,7 +485,7 @@
 			wang.set_size(alterer.dna.features["penis_size"])
 
 		if("Penis Sheath")
-			var/obj/item/organ/external/genital/penis/schlong = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/penis/schlong = alterer.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/new_sheath = tgui_input_list(
 				alterer,
 				"Choose your penis sheath",
@@ -498,7 +501,7 @@
 			alterer.balloon_alert(alterer, "[alterer.dna.features["penis_taur_mode"] ? "using taur penis" : "not using taur penis"]")
 
 		if("Testicles Size")
-			var/obj/item/organ/external/genital/testicles/avocados = alterer.getorganslot(ORGAN_SLOT_TESTICLES)
+			var/obj/item/organ/external/genital/testicles/avocados = alterer.get_organ_slot(ORGAN_SLOT_TESTICLES)
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's testicles size:",

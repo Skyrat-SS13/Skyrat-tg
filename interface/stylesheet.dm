@@ -2,7 +2,7 @@
 /// !!!!!!!!!!HEY LISTEN!!!!!!!!!!!!!!!!!!!!!!!!
 /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// If you modify this file you ALSO need to modify tgui/packages/tgui-panel/styles/goon/chat-light.scss and chat-dark.scss
+// If you modify this file you ALSO need to modify tgui/packages/tgui-panel/styles/tgchat/chat-light.scss and chat-dark.scss
 // BUT you have to use PX font sizes with are on a x8 scale of these font sizes
 // Sample font-size: DM: 8 CSS: 64px
 
@@ -205,10 +205,52 @@ h1.alert, h2.alert		{color: #000000;}
   }
 }
 
-.brown					{color: #3d2009;}
-.orange 				{color: #b8761a;}
-.yellow					{color: #c7b72c;}
-.cyan					{color: #0ea1e6;}
+
+.brass {
+	color: #BE8700;
+}
+
+.big_brass {
+	color: #BE8700;
+	font-size: 3;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.clockyellow {
+	color: #DAAA18;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.clockgray {
+	color: #42474D;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.clockred {
+	color: #6E001A;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.brown {
+	color: #3d2009;
+}
+
+.orange {
+	color: #b8761a;
+}
+
+.yellow {
+	color: #c7b72c;
+}
+
+.cyan {
+	color: #0ea1e6;
+}
+
 
 // SKYRAT ADDITION END
 

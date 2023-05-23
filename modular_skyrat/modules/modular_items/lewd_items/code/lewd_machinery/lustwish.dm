@@ -43,8 +43,8 @@
 					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/clothing/head/costume/maid = 5,
+					/obj/item/clothing/head/deprivation_helmet = 5,
+					/obj/item/clothing/head/costume/skyrat/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
@@ -119,6 +119,7 @@
 					/obj/item/clothing/under/costume/jabroni = 4,
 					/obj/item/clothing/neck/human_petcollar/locked = 4,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
+					/obj/item/disk/nifsoft_uploader/dorms/contract = 5,
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/cup/bottle/hexacrocin = 4,

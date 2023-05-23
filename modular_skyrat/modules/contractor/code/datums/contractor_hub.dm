@@ -45,8 +45,8 @@
 	)
 
 	//What the fuck
-	if(length(to_generate) > length(GLOB.data_core.locked))
-		to_generate.Cut(1, length(GLOB.data_core.locked))
+	if(length(to_generate) > length(GLOB.manifest.locked))
+		to_generate.Cut(1, length(GLOB.manifest.locked))
 
 	var/total = 0
 	var/lowest_paying_sum = 0

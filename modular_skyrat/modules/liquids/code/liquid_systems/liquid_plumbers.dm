@@ -27,7 +27,7 @@
 	var/is_pumping = FALSE
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
-	
+
 	///category for plumbing RCD
 	category = "Liquids"
 
@@ -74,7 +74,7 @@
  * Change regulator level -- ie. what liquid depth we are OK with, like a thermostat.
  */
 /obj/machinery/plumbing/floor_pump/proc/set_regulator(mob/living/user)
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	var/new_height = tgui_input_number(user,
 		"At what water level should the pump stop pumping from 0 to [LIQUID_HEIGHT_CONSIDER_FULL_TILE]? 0 disables.",
@@ -127,7 +127,7 @@
 /obj/machinery/plumbing/floor_pump/proc/should_regulator_permit(turf/affected_turf)
 	CRASH("should_regulator_permit() must be overriden.")
 
-/obj/machinery/plumbing/floor_pump/process(delta_time)
+/obj/machinery/plumbing/floor_pump/process(seconds_per_tick)
 	var/was_pumping = is_pumping
 
 	if(!can_run())
@@ -160,17 +160,17 @@
 
 	// We're good, actually pump.
 	for(var/turf/affected_turf as anything in affected_turfs)
-		pump_turf(affected_turf, delta_time, multiplier)
+		pump_turf(affected_turf, seconds_per_tick, multiplier)
 
 /**
  * Pump out the liquids on a turf.
  *
  * Arguments:
  * * affected_turf - the turf to pump liquids out of.
- * * delta_time - machine process delta time
+ * * seconds_per_tick - machine process delta time
  * * multiplier - Multiplier to apply to final volume we want to pump.
  */
-/obj/machinery/plumbing/floor_pump/proc/pump_turf(turf/affected_turf, delta_time, multiplier)
+/obj/machinery/plumbing/floor_pump/proc/pump_turf(turf/affected_turf, seconds_per_tick, multiplier)
 	CRASH("pump_turf() must be overriden.")
 
 
@@ -191,8 +191,8 @@
 /obj/machinery/plumbing/floor_pump/input/should_regulator_permit(turf/affected_turf)
 	return affected_turf.liquids && affected_turf.liquids.height > height_regulator
 
-/obj/machinery/plumbing/floor_pump/input/pump_turf(turf/affected_turf, delta_time, multiplier)
-	var/target_value = delta_time * (drain_flat + (affected_turf.liquids.total_reagents * drain_percent)) * multiplier
+/obj/machinery/plumbing/floor_pump/input/pump_turf(turf/affected_turf, seconds_per_tick, multiplier)
+	var/target_value = seconds_per_tick * (drain_flat + (affected_turf.liquids.total_reagents * drain_percent)) * multiplier
 	//Free space handling
 	var/free_space = reagents.maximum_volume - reagents.total_volume
 	if(target_value > free_space)
@@ -274,8 +274,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 		return FALSE
 	return TRUE
 
-/obj/machinery/plumbing/floor_pump/output/pump_turf(turf/affected_turf, delta_time, multiplier)
-	var/target_value = delta_time * (drain_flat + (reagents.total_volume * drain_percent)) * multiplier
+/obj/machinery/plumbing/floor_pump/output/pump_turf(turf/affected_turf, seconds_per_tick, multiplier)
+	var/target_value = seconds_per_tick * (drain_flat + (reagents.total_volume * drain_percent)) * multiplier
 	if(target_value > reagents.total_volume)
 		target_value = reagents.total_volume
 
@@ -301,7 +301,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
 	icon_state = "plumberer_engi"
-	has_ammobar = TRUE
 
 /obj/item/construction/plumbing/engineering/set_plumbing_designs()
 	plumbing_design_types = list(
@@ -314,7 +313,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 		/obj/machinery/plumbing/splitter = 5,
 		/obj/machinery/plumbing/disposer = 10,
 		/obj/machinery/plumbing/floor_pump/input = 20,
-		/obj/machinery/plumbing/floor_pump/output = 20
+		/obj/machinery/plumbing/floor_pump/output = 20,
+		/obj/structure/drain = 5,
 	)
 
 // Helpers for maps

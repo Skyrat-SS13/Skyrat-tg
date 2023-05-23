@@ -1,3 +1,8 @@
+/obj/effect/mob_spawn/ghost_role/
+	/// set this to make the spawner use the outfit.name instead of its name var for things like cryo announcements and ghost records
+	/// modifying the actual name during the game will cause issues with the GLOB.mob_spawners associative list
+	var/use_outfit_name
+
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/load_prefs = FALSE
 	//if we can load our own appearance and its not restricted, try
@@ -15,9 +20,14 @@
 
 	spawned_human?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 	spawned_human.dna.update_dna_identity()
+	if(spawned_human.mind)
+		spawned_human.mind.name = spawned_human.real_name // the mind gets initialized with the random name given as a result of the parent create() so we need to readjust it
+	spawned_human.dna.species.give_important_for_life(spawned_human) // make sure they get plasmaman/vox internals etc before anything else
 
 	if(quirks_enabled)
 		SSquirks.AssignQuirks(spawned_human, spawned_human.client)
+
+	post_transfer_prefs(spawned_human)
 
 	if(loadout_enabled)
 		spawned_human.equip_outfit_and_loadout(outfit, spawned_human.client.prefs)
@@ -35,3 +45,10 @@
 	if(!is_pref_loaded)
 		equip(spawned_mob)
 	return spawned_mob
+
+// Anything that can potentially be overwritten by transferring prefs must go in this proc
+// This is needed because safe_transfer_prefs_to() can override some things that get set in special() for certain roles, like name replacement
+// In those cases, please override this proc as well as special()
+// TODO: refactor create() and special() so that this is no longer necessary
+/obj/effect/mob_spawn/ghost_role/proc/post_transfer_prefs(mob/living/new_spawn)
+	return

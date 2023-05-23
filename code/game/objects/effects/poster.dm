@@ -17,6 +17,7 @@
 	icon = 'icons/obj/poster.dmi'
 	force = 0
 	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
 	var/poster_type
 	var/obj/structure/sign/poster/poster_structure
 
@@ -57,7 +58,7 @@
 		return ..()
 
 	if (poster_structure.trap?.resolve())
-		to_chat(user, span_warning("This poster is already booby-trapped!"))
+		balloon_alert(user, "already trapped!")
 		return
 
 	if(!user.transferItemToLoc(I, poster_structure))
@@ -111,6 +112,8 @@
 	var/ruined = FALSE
 	var/random_basetype
 	var/never_random = FALSE // used for the 'random' subclasses.
+	///Exclude posters of these types from being added to the random pool
+	var/list/blacklisted_types = list()
 	///Whether the poster should be printable from library management computer. Mostly exists to keep directionals from being printed.
 	var/printable = FALSE
 
@@ -150,6 +153,9 @@
 
 /obj/structure/sign/poster/proc/randomise(base_type)
 	var/list/poster_types = subtypesof(base_type)
+	if(length(blacklisted_types))
+		for(var/iterated_type in blacklisted_types)
+			poster_types -= typesof(iterated_type)
 	var/list/approved_types = list()
 	for(var/obj/structure/sign/poster/type_of_poster as anything in poster_types)
 		if(initial(type_of_poster.icon_state) && !initial(type_of_poster.never_random))
@@ -215,16 +221,16 @@
 		return
 
 	to_chat(user, span_warning("There's something sharp behind this! What the hell?"))
-	if(!can_embed_trap(user) || !payload.tryEmbed(user.get_active_hand(), TRUE))
+	if(!can_embed_trap(user) || !payload.tryEmbed(user.get_active_hand(), forced = TRUE))
 		visible_message(span_notice("A [payload.name] falls from behind the poster.") )
 		payload.forceMove(user.drop_location())
 	else
 		SEND_SIGNAL(src, COMSIG_POSTER_TRAP_SUCCEED, user)
 
 /obj/structure/sign/poster/proc/can_embed_trap(mob/living/carbon/human/user)
-	if (!istype(user))
+	if (!istype(user) || HAS_TRAIT(user, TRAIT_PIERCEIMMUNE))
 		return FALSE
-	return (!user.gloves && !HAS_TRAIT(user, TRAIT_PIERCEIMMUNE))
+	return !user.gloves || !(user.gloves.body_parts_covered & HANDS) || HAS_TRAIT(user, TRAIT_FINGERPRINT_PASSTHROUGH) || HAS_TRAIT(user.gloves, TRAIT_FINGERPRINT_PASSTHROUGH)
 
 /obj/structure/sign/poster/proc/roll_and_drop(atom/location)
 	pixel_x = 0
@@ -249,15 +255,14 @@
 	var/stuff_on_wall = 0
 	for(var/obj/contained_object in contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(contained_object, /obj/structure/sign/poster))
-			to_chat(user, span_warning("The wall is far too cluttered to place a poster!"))
+			balloon_alert(user, "no room!")
 			return
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			to_chat(user, span_warning("The wall is far too cluttered to place a poster!"))
+			balloon_alert(user, "no room!")
 			return
 
-	to_chat(user, span_notice("You start placing the poster on the wall...") )
-
+	balloon_alert(user, "hanging poster...")
 	var/obj/structure/sign/poster/placed_poster = rolled_poster.poster_structure
 
 	flick("poster_being_set", placed_poster)
@@ -266,11 +271,11 @@
 
 	var/turf/user_drop_location = get_turf(user) //cache this so it just falls to the ground if they move. also no tk memes allowed.
 	if(!do_after(user, PLACE_SPEED, placed_poster, extra_checks = CALLBACK(placed_poster, TYPE_PROC_REF(/obj/structure/sign/poster, snowflake_wall_turf_check), src)))
-		to_chat(user, span_notice("The poster falls down!"))
 		placed_poster.roll_and_drop(user_drop_location)
 		return
 
 	placed_poster.on_placed_poster(user)
+	return TRUE
 
 /obj/structure/sign/poster/proc/snowflake_wall_turf_check(atom/hopefully_still_a_wall_turf) //since turfs never get deleted but instead change type, make sure we're still being placed on a wall.
 	return iswallturf(hopefully_still_a_wall_turf)
@@ -291,6 +296,7 @@
 	icon_state = "random_anything"
 	never_random = TRUE
 	random_basetype = /obj/structure/sign/poster
+	blacklisted_types = list(/obj/structure/sign/poster/traitor)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/random, 32)
 
@@ -1072,5 +1078,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/random, 32)
 	name = "You Wouldn't Download A Gun"
 	desc = "A poster reminding the crew that corporate secrets should stay in the workplace."
 	icon_state = "download_gun"
+
+/obj/structure/sign/poster/contraband/singletank_bomb
+	name = "Single Tank Bomb Guide"
+	desc = "This informational poster teaches the viewer how to make a single tank bomb of high quality."
+	icon_state = "singletank_bomb"
 
 #undef PLACE_SPEED

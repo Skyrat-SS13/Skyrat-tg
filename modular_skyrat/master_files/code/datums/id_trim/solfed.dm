@@ -2,9 +2,31 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	assignment = "SolFed"
 	trim_state = "trim_solfed"
-	department_color = COLOR_SOAPSTONE_GOLD
-	subdepartment_color = COLOR_SOAPSTONE_GOLD
+	department_color = COLOR_SOLFED_GOLD
+	subdepartment_color = COLOR_SOLFED_GOLD
 	sechud_icon_state = SECHUD_SOLFED
+
+/datum/id_trim/solfed/atmos/New()
+	. = ..()
+	access = list(
+		ACCESS_ATMOSPHERICS,
+		ACCESS_AUX_BASE,
+		ACCESS_BRIG_ENTRANCE,
+		ACCESS_COMMAND,
+		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING,
+		ACCESS_ENGINE_EQUIP,
+		ACCESS_EVA,
+		ACCESS_EXTERNAL_AIRLOCKS,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MECH_ENGINE,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINISAT,
+		ACCESS_RC_ANNOUNCE,
+		ACCESS_TCOMMS,
+		ACCESS_TECH_STORAGE,
+		ACCESS_TELEPORTER,
+		)
 
 /datum/id_trim/solgov/New()
 	. = ..()

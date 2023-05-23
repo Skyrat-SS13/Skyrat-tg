@@ -412,12 +412,14 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
-/*
-*	ARMOR
-*/
+// ARMOR
 
 /datum/greyscale_config/heck_suit/worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+
+//Helmet pairs with the above suit
+/datum/greyscale_config/heck_helmet/worn/snouted
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet_muzzled.dmi'
 
 // Bathrobes
 
@@ -461,7 +463,6 @@
 /datum/greyscale_config/recolorable_suit/worn/digi
 	name = "Worn Formal Suit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
-
 
 /datum/greyscale_config/recolorable_suitskirt
 	name = "Formal Suitskirt"
@@ -536,11 +537,11 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls.json'
 
 /datum/greyscale_config/overalls/worn
-	name = "Overalls (Worn)"
+	name = "Worn Overalls"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls_worn.json'
 
 /datum/greyscale_config/overalls/worn/digi
-	name = "Overalls (Worn) (Digi)"
+	name = "Worn Overalls - Digitigrade"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_digi.dmi'
 
 // URBAN COAT
@@ -665,6 +666,16 @@
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
+
+/datum/greyscale_config/jumpsuit_worn/monkey
+	name = "Worn Jumpsuit - Monkey"
+	icon_file = MONKEY_UNIFORM_FILE
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
+
+/datum/greyscale_config/jumpsuit_prison_worn/monkey
+	name = "Worn Prison Jumpsuit - Monkey"
+	icon_file = MONKEY_UNIFORM_FILE
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
@@ -1046,6 +1057,7 @@ digi
 
 /datum/greyscale_config/heels/worn/digi
 	name = "High Heels (Worn Digi)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels_worn_digi.json'
 
 /datum/greyscale_config/fancyheels
 	name = "Fancy Heels"
@@ -1055,6 +1067,10 @@ digi
 /datum/greyscale_config/fancyheels/worn
 	name = "Fancy Heels (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
+
+/datum/greyscale_config/fancyheels/worn/digi
+	name = "Fancy Heels (Worn Digi)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn_digi.json'
 
 // TESHARI FALLBACKS.
 
@@ -1120,6 +1136,53 @@ digi
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
 
 /*
+*	CIN SURPLUS ARMOR
+*/
+
+// Helmet
+/datum/greyscale_config/cin_surplus_helmet
+	name = "CIN Surplus Helmet"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/helmet.json'
+
+/datum/greyscale_config/cin_surplus_helmet/object
+	name = "CIN Surplus Helmet (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
+// Undersuit
+/datum/greyscale_config/cin_surplus_undersuit
+	name = "CIN Surplus Undersuit"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/undersuit.json'
+
+/datum/greyscale_config/cin_surplus_undersuit/object
+	name = "CIN Surplus Undersuit (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
+/datum/greyscale_config/cin_surplus_undersuit/digi
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_digi.dmi'
+
+// Backpack
+/datum/greyscale_config/cin_surplus_backpack
+	name = "CIN Surplus Backpack"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/backpack.json'
+
+/datum/greyscale_config/cin_surplus_backpack/object
+	name = "CIN Surplus Backpack (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
+// Chestrig
+/datum/greyscale_config/cin_surplus_chestrig
+	name = "CIN Surplus Chestrig"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/chestrig.json'
+
+/datum/greyscale_config/cin_surplus_chestrig/object
+	name = "CIN Surplus Chestrig (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
+/*
 *	ITEMS
 */
 
@@ -1132,3 +1195,59 @@ digi
 	name = "Wargame Hologram Projector"
 	icon_file = 'modular_skyrat/modules/wargame_projectors/icons/projectors_and_holograms.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wargame_holoprojector/projector.json'
+
+// Evil primitive catgirl clothing
+
+/datum/greyscale_config/primitive_catgirl_wraps
+	name = "Primitive Body Wraps"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps.json'
+
+/datum/greyscale_config/primitive_catgirl_wraps/worn
+	name = "Primitive Body Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_armwraps
+	name = "Arm Wraps"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
+
+/datum/greyscale_config/primitive_catgirl_armwraps/worn
+	name = "Arm Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_coat
+	name = "Primitive Fur Coat"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat.json'
+
+/datum/greyscale_config/primitive_catgirl_coat/worn
+	name = "Primitive Fur Coat (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_boots
+	name = "Primitive Winter Boots"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots.json'
+
+/datum/greyscale_config/primitive_catgirl_boots/worn
+	name = "Primitive Winter Boots (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_gaiter
+	name = "Neck Gaiter"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter.json'
+
+/datum/greyscale_config/primitive_catgirl_gaiter/worn
+	name = "Neck Gaiter (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets
+	name = "Gauntlets"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets/worn
+	name = "Gauntlets (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'

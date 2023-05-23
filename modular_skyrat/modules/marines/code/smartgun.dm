@@ -13,7 +13,6 @@
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
@@ -25,10 +24,10 @@
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
 	burst_size = 1
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/mindshield
 	mag_display_ammo = FALSE
 	mag_display = FALSE
-	company_flag = COMPANY_NANOTRASEN
 	fire_sound_volume = 30
 	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
@@ -37,7 +36,13 @@
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/Initialize(mapload)
 	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
 	AddElement(/datum/element/update_icon_updates_onmob)
+
+/obj/item/gun/ballistic/automatic/smart_machine_gun/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
@@ -51,7 +56,7 @@
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attack_hand_secondary(mob/user, list/modifiers)
-	if(!user.canUseTopic(src))
+	if(!user.can_perform_action(src))
 		return
 	cover_open = !cover_open
 	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
@@ -113,7 +118,7 @@
 
 /obj/item/ammo_casing/smart/caseless
 	firing_effect_type = null
-	heavy_metal = FALSE
+	is_cased_ammo = FALSE
 
 /obj/item/ammo_casing/smart/caseless/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	if (!..()) //failed firing

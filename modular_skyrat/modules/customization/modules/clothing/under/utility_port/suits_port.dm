@@ -72,14 +72,19 @@
 	name = "security jacket"
 	desc = "A comfortable jacket in security blue. Probably against uniform regulations."
 	icon_state = "sec_dep_jacket"
-	armor_type = /datum/armor/jacket_sec
+	armor_type = /datum/armor/sec_dep_jacket
 
-/datum/armor/jacket_sec
-	melee = 25
-	bullet = 15
+/obj/item/clothing/suit/toggle/jacket/sec/Initialize(mapload)
+	. = ..()
+	allowed = GLOB.security_vest_allowed
+
+/datum/armor/sec_dep_jacket
+	melee = 30
+	bullet = 20
 	laser = 30
-	energy = 10
+	energy = 40
 	bomb = 25
+	fire = 30
 	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/sec/old	//Oldsec (Red)

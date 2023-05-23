@@ -139,7 +139,8 @@
 /mob/living/basic/ex_act(severity, target, origin)
 	. = ..()
 	if(!. || QDELETED(src))
-		return
+		return FALSE
+
 	var/bomb_armor = getarmor(null, BOMB)
 	switch(severity)
 		if (EXPLODE_DEVASTATE)
@@ -148,7 +149,7 @@
 			else
 				investigate_log("has been gibbed by an explosion.", INVESTIGATE_DEATHS)
 				gib()
-				return
+
 		if (EXPLODE_HEAVY)
 			var/bloss = 60
 			if(prob(bomb_armor))
@@ -160,6 +161,8 @@
 			if(prob(bomb_armor))
 				bloss = bloss / 1.5
 			apply_damage(bloss, damagetype = BRUTE)
+
+	return TRUE
 
 /mob/living/basic/blob_act(obj/structure/blob/attacking_blob)
 	apply_damage(20, damagetype = BRUTE)
@@ -194,7 +197,7 @@
 		if(EMP_LIGHT)
 			visible_message(span_danger("[src] shakes violently, its parts coming loose!"))
 			apply_damage(maxHealth * 0.6)
-			Shake(5, 5, 1 SECONDS)
+			Shake(duration = 1 SECONDS)
 		if(EMP_HEAVY)
 			visible_message(span_danger("[src] suddenly bursts apart!"))
 			apply_damage(maxHealth)

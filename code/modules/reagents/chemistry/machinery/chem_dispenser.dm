@@ -160,14 +160,14 @@
 		begin_processing()
 
 
-/obj/machinery/chem_dispenser/process(delta_time)
+/obj/machinery/chem_dispenser/process(seconds_per_tick)
 	if (recharge_counter >= 8)
 		var/usedpower = cell.give(recharge_amount)
 		if(usedpower)
 			use_power(active_power_usage + recharge_amount)
 		recharge_counter = 0
 		return
-	recharge_counter += delta_time
+	recharge_counter += seconds_per_tick
 
 /obj/machinery/chem_dispenser/proc/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
@@ -379,7 +379,7 @@
 			if(!is_operational)
 				return
 			var/name = tgui_input_text(usr, "What do you want to name this recipe?", "Recipe Name", MAX_NAME_LEN)
-			if(!usr.canUseTopic(src, !issilicon(usr)))
+			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(saved_recipes[name] && tgui_alert(usr, "\"[name]\" already exists, do you want to overwrite it?",, list("Yes", "No")) == "No")
 				return
@@ -479,30 +479,30 @@
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		recharge_amount *= capacitor.tier
 		parts_rating += capacitor.tier
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
+	for(var/datum/stock_part/servo/servo in component_parts)
 		/* SKYRAT EDIT - ORIGINAL
-		if (manipulator.tier > 3)
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
 		*/
 		//SKYRAT EDIT START
-		if (manipulator.tier > 1)
+		if (servo.tier > 1)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
 
-		if (manipulator.tier > 2)
+		if (servo.tier > 2)
 			dispensable_reagents |= upgrade_reagents2
 		else
 			dispensable_reagents -= upgrade_reagents2
 
-		if (manipulator.tier > 3)
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents3
 		else
 			dispensable_reagents -= upgrade_reagents3
 		//SKYRAT EDIT END
-		parts_rating += manipulator.tier
+		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
@@ -527,7 +527,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, no_tk = TRUE))
+	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH|FORBID_TELEKINESIS_REACH))
 		return
 	replace_beaker(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

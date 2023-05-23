@@ -16,7 +16,7 @@
 	make_friend()
 	get_ghost()
 
-/datum/brain_trauma/special/imaginary_friend/on_life(delta_time, times_fired)
+/datum/brain_trauma/special/imaginary_friend/on_life(seconds_per_tick, times_fired)
 	if(get_dist(owner, friend) > 9)
 		friend.recall()
 	if(!friend)
@@ -60,8 +60,6 @@
 	real_name = "imaginary friend"
 	move_on_shuttle = TRUE
 	desc = "A wonderful yet fake friend."
-	see_in_dark = 0
-	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	sight = NONE
 	mouse_opacity = MOUSE_OPACITY_ICON
 	see_invisible = SEE_INVISIBLE_LIVING

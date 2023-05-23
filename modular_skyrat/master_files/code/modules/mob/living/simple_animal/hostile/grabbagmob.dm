@@ -75,7 +75,7 @@
 	loot = list(/obj/effect/gibspawner/human)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("hostile", "cult")
+	faction = list(FACTION_HOSTILE, FACTION_CULT)
 	status_flags = CANPUSH
 	del_on_death = 1
 	rapid_melee = 2
@@ -192,7 +192,7 @@
 	turns_per_move = 5
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
-	faction = list("hostile", "cult")
+	faction = list(FACTION_HOSTILE, FACTION_CULT)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	weather_immunities = list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE)
 	minbodytemp = 0
@@ -236,7 +236,7 @@
 	unsuitable_atmos_damage = 15
 	check_friendly_fire = 1
 	dodging = TRUE
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	rapid_melee = 2
 	del_on_death = 1
 
@@ -284,7 +284,7 @@
 	casingtype = /obj/item/ammo_casing/shotgun/buckshot
 	loot = list(/obj/effect/spawner/random/maintenance/five)
 	dodging = FALSE
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	projectilesound = 'sound/weapons/gun/shotgun/shot.ogg'
 
 /mob/living/simple_animal/hostile/looter/ranged/space
@@ -333,7 +333,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
 	projectiletype = /obj/projectile/hivebotbullet
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	check_friendly_fire = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -513,7 +513,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -548,7 +548,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -586,7 +586,7 @@
 	atmos_requirements = list("min_oxy" = 10, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile", "vines", "plants")
+	faction = list(FACTION_HOSTILE, "vines", "plants")
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -625,7 +625,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 800
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -664,7 +664,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 800
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = NO_SPAWN
 
@@ -696,7 +696,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 900
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -767,7 +767,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -802,7 +802,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = NO_SPAWN
 
@@ -837,7 +837,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	pressure_resistance = 200
 	gold_core_spawnable = NO_SPAWN
 
@@ -869,7 +869,7 @@
 	loot = list(/obj/effect/spawner/random/maintenance/three = 1)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 5, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("hostile")
+	faction = list(FACTION_HOSTILE)
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = 1

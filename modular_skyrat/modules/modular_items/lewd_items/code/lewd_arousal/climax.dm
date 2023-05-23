@@ -48,8 +48,8 @@
 	var/self_their = p_their()
 
 	if(climax_choice == CLIMAX_PENIS || climax_choice == CLIMAX_BOTH)
-		var/obj/item/organ/external/genital/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
-		if(!getorganslot(ORGAN_SLOT_TESTICLES)) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
+		var/obj/item/organ/external/genital/penis/penis = get_organ_slot(ORGAN_SLOT_PENIS)
+		if(!get_organ_slot(ORGAN_SLOT_TESTICLES)) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
 			visible_message(span_userlove("[src] orgasms, but nothing comes out of [self_their] penis!"), \
 				span_userlove("You orgasm, it feels great, but nothing comes out of your penis!"))
 
@@ -103,7 +103,7 @@
 					if(target_human.has_anus(REQUIRE_GENITAL_EXPOSED))
 						target_buttons += "asshole"
 					if(target_human.has_penis(REQUIRE_GENITAL_EXPOSED))
-						var/obj/item/organ/external/genital/penis/other_penis = target_human.getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/penis/other_penis = target_human.get_organ_slot(ORGAN_SLOT_PENIS)
 						if(other_penis.sheath != "None")
 							target_buttons += "sheath"
 					target_buttons += "On [target_human_them]"
@@ -123,7 +123,7 @@
 							span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into [target_human_them]!"))
 						to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [self_their] load into it."))
 
-			var/obj/item/organ/external/genital/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+			var/obj/item/organ/external/genital/testicles/testicles = get_organ_slot(ORGAN_SLOT_TESTICLES)
 			testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
 			if(create_cum_decal)
 				add_cum_splatter_floor(get_turf(src))
@@ -137,7 +137,7 @@
 			return TRUE
 
 	if(climax_choice == CLIMAX_VAGINA || climax_choice == CLIMAX_BOTH)
-		var/obj/item/organ/external/genital/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
+		var/obj/item/organ/external/genital/vagina/vagina = get_organ_slot(ORGAN_SLOT_VAGINA)
 		if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 			visible_message(span_userlove("[src] twitches and moans as [p_they()] climax from their vagina!"), span_userlove("You twitch and moan as you climax from your vagina!"))
 			add_cum_splatter_floor(get_turf(src), female = TRUE)

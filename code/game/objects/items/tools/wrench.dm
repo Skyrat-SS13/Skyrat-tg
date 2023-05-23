@@ -14,7 +14,7 @@
 	demolition_mod = 1.25
 	w_class = WEIGHT_CLASS_SMALL
 	usesound = 'sound/items/ratchet.ogg'
-	custom_materials = list(/datum/material/iron=150)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*1.5)
 	drop_sound = 'sound/items/handling/wrench_drop.ogg'
 	pickup_sound = 'sound/items/handling/wrench_pickup.ogg'
 
@@ -42,7 +42,7 @@
 	desc = "A polarized wrench. It causes anything placed between the jaws to turn."
 	icon = 'icons/obj/abductor.dmi'
 	belt_icon_state = "wrench_alien"
-	custom_materials = list(/datum/material/iron = 5000, /datum/material/silver = 2500, /datum/material/plasma = 1000, /datum/material/titanium = 2000, /datum/material/diamond = 2000)
+	custom_materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/silver = SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SHEET_MATERIAL_AMOUNT)
 	usesound = 'sound/effects/empulse.ogg'
 	toolspeed = 0.1
 
@@ -129,3 +129,10 @@
 	balloon_alert(user, "[name] [active ? "active, woe!":"restrained"]")
 	playsound(user ? user : src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 5, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
+
+/obj/item/wrench/bolter
+	name = "bolter wrench"
+	desc = "A wrench designed to grab into airlock's bolting system and raise it regardless of the airlock's power status."
+	icon_state = "bolter_wrench"
+	inhand_icon_state = "bolter_wrench"
+	w_class = WEIGHT_CLASS_NORMAL

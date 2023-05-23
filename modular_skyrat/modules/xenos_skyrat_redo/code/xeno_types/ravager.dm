@@ -39,7 +39,7 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/ravager/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
+	organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager

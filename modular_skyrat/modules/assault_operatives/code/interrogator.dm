@@ -75,8 +75,8 @@
 	if(!locked)
 		open_machine()
 
-/obj/machinery/interrogator/open_machine(drop)
-	..()
+/obj/machinery/interrogator/open_machine(drop = TRUE, density_to_set = FALSE)
+	. = ..()
 	human_occupant = null
 
 /obj/machinery/interrogator/proc/stop_extract()
