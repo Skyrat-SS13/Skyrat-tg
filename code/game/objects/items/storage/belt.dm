@@ -246,7 +246,11 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+<<<<<<< HEAD
 		/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT HYPOSPRAYS
+=======
+		/obj/item/reagent_containers/cup/tube,
+>>>>>>> 2d546939135 (Test tubes and racks (#75179))
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/reagent_containers/pill,
@@ -871,6 +875,7 @@
 		/obj/item/plant_analyzer,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/spray/pestspray,
 		/obj/item/reagent_containers/spray/plantbgone,
 		/obj/item/secateurs,
