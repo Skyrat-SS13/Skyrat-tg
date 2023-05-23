@@ -34,7 +34,7 @@ export const StoryManager = (props, context) => {
           <i>Anything published here will not appear until the next round!</i>
           <br />
           <span style={{ 'color': 'red' }}>
-            Do not mess with this unless you know what you're doing.
+            Do not mess with this unless you know what you&apos;re doing.
           </span>
         </Section>
         <Section>
