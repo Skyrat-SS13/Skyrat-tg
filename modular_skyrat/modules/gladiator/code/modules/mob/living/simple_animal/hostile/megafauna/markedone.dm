@@ -283,7 +283,7 @@
 		if(SHOWDOWN_PERCENT to FIFTY_PERCENT)
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
-				INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 5 SECONDS
 				rapid_melee = 4
 				melee_damage_upper = 25
@@ -443,45 +443,6 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
 	ground_pound(2, 0.2 SECONDS, 3)
 
-/// Initial setup for the cannon
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/aim_cannon()
-	anchored = TRUE
-	for(var/mob/living/possible_target in oview(9, src))
-		if(possible_target.stat == DEAD || possible_target.stat == UNCONSCIOUS)
-			continue
-		if(faction_check(faction, possible_target.faction))
-			continue
-		fire(possible_target)
-		return
-	fire(get_edge_target_turf(src, pick(GLOB.cardinals)))
-	balloon_alert_to_viewers("aiming cannon!")
-
-// Tracers for the cannon (shameless legion tracer reuse)
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/fire(atom/target)
-	var/turf/target_turf = get_turf(target)
-	var/turf/source_turf = get_turf(src)
-	if(!target_turf || !source_turf)
-		return
-	var/angle = get_angle(source_turf, target_turf)
-	var/datum/point/vector/targeting_angle = new(source_turf.x, source_turf.y, source_turf.z, 0, 0, angle)
-	generate_tracer_between_points(targeting_angle, targeting_angle.return_vector_after_increments(10), /obj/effect/projectile/tracer/legion/tracer, 0, 3, 0, 0, 0, null)
-	playsound(src, 'sound/effects/fuse.ogg', 100, TRUE)
-	addtimer(CALLBACK(src, PROC_REF(fire_cannonball), angle), 3)
-
-// CANNON
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/fire_cannonball(angle)
-	var/obj/projectile/kaboom = new /obj/projectile/bullet/cannonball/guts(loc)
-	kaboom.firer = src
-	kaboom.fire(angle)
-	playsound(src, 'sound/weapons/gun/general/cannon.ogg', 100, TRUE)
-	anchored = FALSE
-
-/obj/projectile/bullet/cannonball/guts
-	damage = 40
-	paralyze = null
-	stutter = null
-	knockdown = null
-
 /// Used to determine what attacks the Marked One actually uses. This works by making him a ranged mob without a projectile. Shitcode? Maybe! But it woooorks.
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
@@ -511,7 +472,7 @@
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
 				else
-					INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+					INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 					ranged_cooldown += 5 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
@@ -523,7 +484,7 @@
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
 						ranged_cooldown += 3 SECONDS
 					else
-						INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+						INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 						ranged_cooldown += 4 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
@@ -549,7 +510,7 @@
 					INVOKE_ASYNC(src, PROC_REF(stomp))
 					ranged_cooldown += 0.5 SECONDS
 			else
-				INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				INVOKE_ASYNC(src, PROC_REF(stomp))
 				ranged_cooldown += 2.5 SECONDS
 
