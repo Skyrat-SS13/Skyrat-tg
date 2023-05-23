@@ -19,7 +19,8 @@
 		return
 	if(uses != -1 && uses)
 		uses--
-	priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, JOB_CAPTAIN, has_important_message = TRUE)
+	var/list/message_data = user.treat_message(input)
+	priority_announce(html_decode(message_data["message"]), null, ANNOUNCER_CAPTAIN, JOB_CAPTAIN, has_important_message = TRUE)
 	deadchat_broadcast(" made a fake priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 	user.log_talk(input, LOG_SAY, tag = "priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has used [src] to make a fake announcement of [input].")
