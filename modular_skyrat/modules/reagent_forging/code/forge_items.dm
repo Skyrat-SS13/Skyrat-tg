@@ -15,6 +15,10 @@ GLOBAL_LIST_INIT(allowed_forging_materials, list(
 	/datum/material/alloy/plasteel,
 	/datum/material/alloy/plastitanium,
 	/datum/material/alloy/alien,
+	/datum/material/cobolterium,
+	/datum/material/copporcitite,
+	/datum/material/tinumium,
+	/datum/material/brussite,
 ))
 
 /obj/item/forging
