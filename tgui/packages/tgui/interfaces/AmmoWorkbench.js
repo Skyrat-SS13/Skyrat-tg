@@ -93,7 +93,7 @@ export const AmmunitionsTab = (props, context) => {
             />
           </>
         }>
-        {!!mag_loaded && <Box>{toTitleCase(mag_name)}</Box>}
+        {!!mag_loaded && <Box>{mag_name}</Box>}
         {!!mag_loaded && (
           <Box bold textAlign="right">
             {current_rounds} / {max_rounds}

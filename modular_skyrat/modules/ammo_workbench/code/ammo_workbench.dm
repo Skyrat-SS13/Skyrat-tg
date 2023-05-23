@@ -7,7 +7,7 @@
 	use_power = IDLE_POWER_USE
 	circuit = /obj/item/circuitboard/machine/ammo_workbench
 	var/busy = FALSE
-	/// this does nothing. no, really.
+	/// if it's hacked it's gonna be able to print lethals. it'll be mad at you for doing so but it'll print basic lethals.
 	var/hacked = FALSE
 	var/disabled = FALSE
 	var/shocked = FALSE
@@ -24,13 +24,24 @@
 	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
 	/// A list of all currently allowed ammo types.
 	var/list/allowed_ammo_types = list()
-	/// can it print ammunition flagged as harmful (e.g. most ammo)
+	/// can it print ammunition flagged as harmful (e.g. most ammo)?
 	var/allowed_harmful = FALSE
+	/// can it print advanced ammunition types (e.g. armor-piercing)? see modular_skyrat\modules\modular_weapons\code\modular_projectiles.dm
+	var/allowed_advanced = FALSE
+	/// what datadisks have been loaded. uh... honestly this doesn't really do much either
 	var/list/loaded_datadisks = list()
-	/// a list of how many deciseconds it takes to assemble a round
-	var/time_per_round = 20
-	/// at the time of writing: this does nothing. literally nothing
+	/// current multiplier for material cost per round
 	var/creation_efficiency = 1.6
+	/// current amount of time in deciseconds it takes to assemble a round
+	var/time_per_round = 2 SECONDS
+	/// multiplier for material cost per round (when turbo isn't enabled)
+	var/base_efficiency = 1.6
+	// deciseconds per round (when turbo isn't enabled)
+	var/base_time_per_round = 2 SECONDS
+	/// deciseconds per round (when turbo is enabled)
+	var/turbo_time_per_round = 5
+	/// multiplier for material cost per round (when turbo is enabled)
+	var/turbo_efficiency = 3.2
 	/// can this print any round of any caliber given a correct ammo_box? (you varedit this at your own risk, especially if used in a player-facing context.)
 	/// does not force ammo to load in. just makes it able to print wacky ammotypes e.g. lionhunter 7.62, techshells
 	var/adminbus = FALSE
@@ -52,6 +63,12 @@
 	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 200000, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	. = ..()
 	wires = new /datum/wires/ammo_workbench(src)
+
+/obj/machinery/ammo_workbench/examine(mob/user)
+	. += ..()
+	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
+	if(in_range(user, src) || isobserver(user))
+		. += span_notice("The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[creation_efficiency*100]%</b>.")
 
 /obj/machinery/ammo_workbench/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -89,7 +106,7 @@
 
 	data["efficiency"] = creation_efficiency
 	data["time"] = time_per_round / 10
-	data["hacked"] = allowed_harmful
+	data["hacked"] = hacked
 	data["turboBoost"] = turbo_boost
 
 	data["materials"] = list()
@@ -130,10 +147,14 @@
 	for(var/casing as anything in allowed_ammo_types)
 		var/obj/item/ammo_casing/our_casing = casing
 		if(!adminbus)
-			if(initial(our_casing.harmful) && !allowed_harmful)
+			if(!(initial(our_casing.can_be_printed))) // if we're not supposed to be printed (looking at you, smartgun rails)
+				continue // go home
+			if(initial(our_casing.harmful) && (!allowed_harmful && !hacked)) // if you hack it that's on you.
 				continue
-			if(!(initial(our_casing.can_be_printed)))
-				continue
+			if(initial(our_casing.advanced_print_req) && !allowed_advanced) // if it's got a funny function (hello, AP!) and we're not good for it yet,
+				continue // no
+		if(initial(our_casing.projectile_type) == null) // spent casing subtype >:(
+			continue
 		data["available_rounds"] += list(list(
 			"name" = initial(our_casing.name),
 			"typepath" = our_casing
@@ -195,14 +216,18 @@
 		if("turboBoost")
 			toggleTurboBoost()
 
-/obj/machinery/ammo_workbench/proc/toggleTurboBoost()
-	turbo_boost = !turbo_boost
+/obj/machinery/ammo_workbench/proc/toggleTurboBoost(forced = FALSE)
+	if(forced)
+		turbo_boost = FALSE
+	else
+		turbo_boost = !turbo_boost
 
 	if(turbo_boost)
-		time_per_round = 1
-		creation_efficiency = 3
+		time_per_round = turbo_time_per_round
+		creation_efficiency = turbo_efficiency
 	else
-		RefreshParts()
+		time_per_round = base_time_per_round
+		creation_efficiency = base_efficiency
 
 /obj/machinery/ammo_workbench/proc/ejectItem()
 	if(loaded_magazine)
@@ -229,16 +254,17 @@
 		error_type = ""
 
 	if(!(casing_type in allowed_ammo_types))
-		error_message = "AMMUNITION MISSMATCH"
+		error_message = "AMMUNITION MISMATCH"
 		error_type = "bad"
 		return
 
 	var/obj/item/ammo_casing/our_casing = casing_type
 
 	if(initial(our_casing.harmful) && !allowed_harmful)
-		error_message = "SYSTEM CORRUPTION DETECTED"
+		error_message = "SYSTEM CORRUPTION DETECTED, PLEASE SUBMIT SUPPORT TICKET"
 		error_type = "bad"
-		return
+		if(!hacked)
+			return
 
 	if(!loaded_magazine)
 		error_message = "NO MAGAZINE INSERTED"
@@ -273,8 +299,12 @@
 	var/obj/item/ammo_casing/new_casing = new casing_type
 
 	var/list/required_materials = new_casing.get_material_composition()
+	var/list/efficient_materials = list()
 
-	if(!materials.has_materials(required_materials))
+	for(var/material in required_materials)
+		efficient_materials[material] = required_materials[material] * creation_efficiency
+
+	if(!materials.has_materials(efficient_materials))
 		error_message = "INSUFFICIENT MATERIALS"
 		error_type = "bad"
 		ammo_fill_finish(FALSE)
@@ -283,12 +313,13 @@
 
 	if(new_casing.type in allowed_ammo_types)
 		if(!loaded_magazine.give_round(new_casing))
-			error_message = "AMMUNITION MISSMATCH"
+			error_message = "AMMUNITION MISMATCH"
 			error_type = "bad"
 			ammo_fill_finish(FALSE)
 			qdel(new_casing)
 			return
-		materials.use_materials(required_materials)
+		materials.use_materials(efficient_materials)
+		new_casing.set_custom_materials(efficient_materials)
 		loaded_magazine.update_appearance()
 		flick("ammobench_process", src)
 		use_power(3000)
@@ -300,7 +331,7 @@
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
 		ammo_fill_finish()
-		error_message = "MAGAZINE IS FULL"
+		error_message = "CONTAINER IS FULL"
 		error_type = "good"
 		return
 
@@ -326,17 +357,14 @@
 	if(!loaded_datadisk)
 		return FALSE
 	if(loaded_datadisk.type in loaded_datadisks)
-		disk_error = "ERROR: DISK BLUEPRINT ALREADY IN SYSTEM MEMEORY"
+		disk_error = "ERROR: DISK DATA ALREADY IN SYSTEM MEMEORY"
 		return FALSE
 
-	if(istype(loaded_datadisk, /obj/item/disk/ammo_workbench/lethal))
-		allowed_harmful = TRUE
-		loaded_datadisks += loaded_datadisk.type
-		disk_error = "DISK LOADED SUCCESSFULLY"
-		disk_error_type = "good"
-		return TRUE
-
-	loaded_datadisks += loaded_datadisk.type
+	disk_error = "DISK LOADED SUCCESSFULLY"
+	disk_error_type = "good"
+	loaded_datadisk.set_vars(src)
+	loaded_datadisks += loaded_datadisk.type // THIS CAUSES HARD DELS IF THE SOURCE DISK IS DELETED BY THE WAY.
+	return TRUE
 
 /obj/machinery/ammo_workbench/proc/ejectDisk()
 	if(loaded_datadisk)
@@ -347,7 +375,7 @@
 
 /datum/design/board/ammo_workbench
 	name = "Machine Design (Ammunitions Workbench)"
-	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
+	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for ammunition containers, like magazines or stripper clips."
 	id = "ammo_workbench"
 	build_path = /obj/item/circuitboard/machine/ammo_workbench
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_FAB)
@@ -358,17 +386,22 @@
 
 /obj/machinery/ammo_workbench/RefreshParts()
 	. = ..()
-
-	var/time_efficiency = 20
+	toggleTurboBoost(TRUE) // forces turbo off
+	var/time_efficiency = 2 SECONDS
 	for(var/datum/stock_part/micro_laser/new_laser in component_parts)
-		time_efficiency -= new_laser.tier * 2
+		time_efficiency -= new_laser.tier * 2 // there's two lasers
+		// time_eff prog with paired lasers is 16 -> 12 -> 8 -> 4
 	time_per_round = clamp(time_efficiency, 1, 20)
+	base_time_per_round = time_per_round
+	turbo_time_per_round = time_efficiency / 8
 
-	var/efficiency = 1.8
+	var/efficiency = 1.4
 	for(var/datum/stock_part/servo/new_servo in component_parts)
-		efficiency -= new_servo.tier * 0.2
+		efficiency -= new_servo.tier * 0.1 // there's two servos
 
-	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of servo efficiency
+	creation_efficiency = max(0, efficiency) // with paired servos of appropriate tier, progression is 1.2 -> 1 -> 0.8 -> 0.6
+	base_efficiency = creation_efficiency
+	turbo_efficiency = creation_efficiency * 2
 
 	var/mat_capacity = 0
 	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
@@ -401,6 +434,7 @@
 	if(loaded_magazine)
 		loaded_magazine.forceMove(loc)
 		loaded_magazine = null
+
 	. = ..()
 	return ..()
 
@@ -440,7 +474,7 @@
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		if(loaded_magazine)
-			to_chat(user, span_notice("You swap quickly swap [O] for [loaded_magazine]."))
+			to_chat(user, span_notice("You quickly swap [loaded_magazine] for [O]."))
 			loaded_magazine.forceMove(drop_location())
 			user.put_in_hands(loaded_magazine)
 			loaded_magazine = null
@@ -504,7 +538,7 @@
 // WIRE DATUM
 /datum/wires/ammo_workbench
 	holder_type = /obj/machinery/ammo_workbench
-	proper_name = "ammunitions workbench"
+	proper_name = "Ammunition Workbench"
 
 /datum/wires/ammo_workbench/New(atom/holder)
 	wires = list(

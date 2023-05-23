@@ -1,3 +1,13 @@
+/obj/item/ammo_casing
+	/// Can this bullet casing be printed at an ammunition workbench?
+	var/can_be_printed = TRUE
+	/// If it can be printed, does this casing require an advanced ammunition datadisk? Mainly for specialized ammo.
+	/// Rubbers aren't advanced. Standard ammo isn't advanced. Hollowpoints probably don't count.
+	/// Think more specialized or weird, niche ammo, like armor-piercing, incendiary, or God forbid, phasic.
+	var/advanced_print_req = FALSE
+
+// whatever goblin decided to spread out bullets over like 3 files and god knows however many overrides i wish you a very stubbed toe
+
 /*
 *	.460 Ceres
 */
@@ -8,6 +18,7 @@
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	projectile_type = /obj/projectile/bullet/c45/rubber
+	harmful = FALSE
 
 /obj/projectile/bullet/c45/rubber
 	name = ".460 Ceres rubber bullet"
@@ -81,6 +92,8 @@
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	caliber = CALIBER_A556
 	projectile_type = /obj/projectile/bullet/a556/ap
+	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/projectile/bullet/a556/ap
 	name = ".277 armor-piercing bullet"
@@ -111,6 +124,19 @@
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null
+
+/obj/item/ammo_casing/a762/ap
+	name = ".244 Acia armor-piercing bullet casing"
+	desc = "A .244 armor-piercing bullet casing.\
+	<br><br>\
+	<i>ARMOR-PIERCING: Improved armor-piercing capabilities, in return for less outright damage.</i>"
+	projectile_type = /obj/projectile/bullet/a762/ap
+	advanced_print_req = TRUE
+
+/obj/projectile/bullet/a762/ap
+	name = ".244 armor-piercing bullet"
+	damage = 45
+	armour_penetration = 60
 
 // no better place to put these overrides lmao
 
@@ -189,6 +215,7 @@
 	desc = "A .34 armor-piercing bullet casing."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c34/ap
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c34/ap
 	name = ".34 armor-piercing bullet"
@@ -201,6 +228,7 @@
 	desc = "A .34 incendiary bullet casing."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/incendiary/c34_incendiary
 	name = ".34 incendiary bullet"
@@ -222,11 +250,13 @@
 	name = "4.2x30mm armor-piercing bullet casing"
 	desc = "A 4.2x30mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/c42x30mm/ap
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c42x30mm/inc
 	name = "4.2x30mm incendiary bullet casing"
 	desc = "A 4.2x30mm incendiary bullet casing."
 	projectile_type = /obj/projectile/bullet/incendiary/c42x30mm
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c42x30mm
 	name = "4.2x30mm bullet"
@@ -277,8 +307,9 @@
 
 /obj/item/ammo_casing/c12mm/ap
 	name = "12mm Magnum armor-piercing bullet casing"
-	desc = "A 12mm Magnum bullet casing with a tungsten core tip."
+	desc = "A 12mm Magnum bullet casing with a titanium core."
 	projectile_type = /obj/projectile/bullet/c12mm/ap
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c12mm/hp
 	name = "12mm Magnum hollow-point bullet casing"
@@ -289,6 +320,7 @@
 	name = "12mm Magnum incendiary bullet casing"
 	desc = "A 12mm Magnum bullet casing with a magnesium coated tip meant for setting things on fire."
 	projectile_type = /obj/projectile/bullet/incendiary/c12mm
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c12mm/rubber
 	name = "12mm Magnum rubber bullet casing"
