@@ -49,6 +49,8 @@
 			uncompiled_stories[story]["month"] = "[time2text(world.timeofday, "MM")]"
 		if(!("day" in uncompiled_stories[story]))
 			uncompiled_stories[story]["day"] = "[time2text(world.timeofday, "DD")]"
+		if(!("id" in uncompiled_stories[story]))
+			uncompiled_stories[story]["id"] = story
 
 	sortTim(date_list, cmp=/proc/cmp_numeric_dsc)
 
@@ -117,7 +119,8 @@
 				"text" = text,
 				"year" = "[CURRENT_STATION_YEAR]",
 				"month" = "[time2text(world.timeofday, "MM")]",
-				"day" = "[time2text(world.timeofday, "DD")]"
+				"day" = "[time2text(world.timeofday, "DD")]",
+				"id" = id,
 			)
 
 			rustg_file_write(json_encode(current_story_copy), NEWS_FILE)
