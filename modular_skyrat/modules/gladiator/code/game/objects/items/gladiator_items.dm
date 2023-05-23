@@ -135,7 +135,7 @@
 	var/faction_bonus_force = 60
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
-	var/roll_stamcost = 6
+	var/roll_stamcost = 9
 	/// how far do we roll?
 	var/roll_range = 3
 
