@@ -700,7 +700,7 @@
 	atom_storage.max_total_storage = 16
 	atom_storage.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/ammo_box/, // Ammoboxes in general, because revolver ammo doesn't come in 'magazines' (obviously)
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
@@ -719,7 +719,7 @@
 	atom_storage.max_slots = 4
 	atom_storage.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine, // Magazines in general, because the secbelt can hold them anyway
+		/obj/item/ammo_box/, // Ammoboxes in general, because revolver ammo doesn't come in 'magazines' (obviously)
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
