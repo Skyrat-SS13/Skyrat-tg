@@ -33,6 +33,17 @@
 	embedding = null
 	wound_bonus = -50
 
+/obj/item/ammo_casing/c45/hp
+	name = ".460 Ceres hollow-point bullet"
+	desc = "A .460 hollow-point bullet casing. Very lethal against unarmored opponents. Suffers against armor."
+	projectile_type = /obj/projectile/bullet/c45/hp
+	advanced_print_req = TRUE
+
+/obj/projectile/bullet/c45/hp
+	name = ".460 Ceres hollow-point bullet"
+	damage = 40
+	weak_against_armour = TRUE
+
 /*
 *	8mm Usurpator
 */

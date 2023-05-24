@@ -535,6 +535,28 @@
 	<br><br>\
 	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
 
+/obj/item/ammo_box/c38
+	caliber = CALIBER_38
+
+/obj/item/ammo_casing/c38/trac
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/dumdum
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/hotshot
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/iceblox
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
+	advanced_print_req = TRUE
+
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
 /obj/projectile/bullet/a556
