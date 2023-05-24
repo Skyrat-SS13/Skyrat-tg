@@ -37,12 +37,18 @@
 	WRITE_LOG_NO_FORMAT(GLOB.perf_log, .)
 
 /// Logging for hard deletes
+<<<<<<< HEAD
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
 /// Logging for SQL errors
 /proc/log_query_debug(text)
 	WRITE_LOG(GLOB.query_debug_log, "SQL: [text]")
+=======
+/// Done once, at roundend. Really just a text file
+/proc/log_qdel(text)
+	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
+>>>>>>> ae5f603176c (Reverts qdel logging to a raw text file (#75632))
 
 /* Log to the logfile only. */
 /proc/log_runtime(text)

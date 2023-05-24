@@ -33,9 +33,14 @@ DECLARE_LOG(config_error_log, DONT_START_LOG)
 DECLARE_LOG(dynamic_log, DONT_START_LOG)
 DECLARE_LOG(lua_log, DONT_START_LOG)
 DECLARE_LOG(perf_log, DONT_START_LOG) // Declared here but name is set in time_track subsystem
+<<<<<<< HEAD
 DECLARE_LOG(query_debug_log, DONT_START_LOG)
 DECLARE_LOG(signals_log, DONT_START_LOG)
 DECLARE_LOG(tgui_log, START_LOG)
+=======
+DECLARE_LOG_NAMED(world_qdel_log, "qdel", START_LOG)
+
+>>>>>>> ae5f603176c (Reverts qdel logging to a raw text file (#75632))
 #ifdef REFERENCE_DOING_IT_LIVE
 DECLARE_LOG_NAMED(harddel_log, "harddels", START_LOG)
 #endif
