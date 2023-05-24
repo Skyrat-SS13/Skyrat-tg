@@ -1,5 +1,5 @@
 /// How many wetstacks does the clothing's status effect apply to its wearer
-#define STATUS_EFFECT_STACKS 15
+#define STATUS_EFFECT_STACKS 5
 
 /datum/component/wetsuit
 	dupe_mode = COMPONENT_DUPE_UNIQUE

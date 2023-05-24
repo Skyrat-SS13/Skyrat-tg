@@ -1,7 +1,9 @@
 /// How long the akula will stay wet for, AKA how long their species buff will last without being sustained by h2o
 #define DRY_UP_TIME 10 MINUTES
 /// How many wetstacks an Akula will get upon creation
-#define INITIAL_WETSTACKS 15
+#define WETSTACK_INITIAL 5
+/// How many wetstacks an Akula needs to activate the TRAIT_SLIPPERY trait
+#define WETSTACK_THRESHOLD 5
 
 /datum/species/akula
 	name = "Akula"
@@ -129,7 +131,7 @@
 	. = ..()
 	RegisterSignal(akula, COMSIG_MOB_TRIGGER_WET_SKIN, PROC_REF(wetted), akula)
 	// lets give 15 wet_stacks on initial
-	akula.set_wet_stacks(INITIAL_WETSTACKS, remove_fire_stacks = FALSE)
+	akula.set_wet_stacks(WETSTACK_INITIAL, remove_fire_stacks = FALSE)
 
 /// Remove the signal on species loss
 /datum/species/akula/on_species_loss(mob/living/carbon/akula, datum/species/new_species, pref_load)
@@ -158,11 +160,12 @@
 	. = ..()
 	if(!owner)
 		return
-	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= 10)
+	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= WETSTACK_THRESHOLD)
 		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
 
-	if(HAS_TRAIT(owner, TRAIT_SLIPPERY) && stacks <= 0.5)
+	if(HAS_TRAIT(owner, TRAIT_SLIPPERY) && stacks <= 0.5) // Removed just before we hit 0 and delete the /status_effect/
 		REMOVE_TRAIT(owner, TRAIT_SLIPPERY, SPECIES_TRAIT)
 
 #undef DRY_UP_TIME
-#undef INITIAL_WETSTACKS
+#undef WETSTACK_INITIAL
+#undef WETSTACK_THRESHOLD
