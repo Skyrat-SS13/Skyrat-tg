@@ -6,6 +6,7 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
+	lore_protected = TRUE
 	offset_features = list(
 		OFFSET_GLASSES = list(0, 1),
 		OFFSET_EARS = list(0, 2),
@@ -51,7 +52,6 @@
 	)
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
-	lore_protected = TRUE
 
 /datum/species/akula/get_species_description()
 	return placeholder_description
