@@ -199,7 +199,8 @@
 	var/obj/item/organ/internal/brain/character_brain = character.get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
-		character_brain.traumas = trauma_list
+		for(var/datum/brain_trauma/trauma as anything in trauma_list)
+			character_brain.gain_trauma(trauma)
 
 	//Re-Applies Damage
 	character.setBruteLoss(brute_damage)

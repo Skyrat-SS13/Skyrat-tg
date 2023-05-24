@@ -33,24 +33,28 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/custom
 
 /datum/loadout_item/suit/aformal
-	name = "Assistant's formal winter coat"
+	name = "Assistant's Formal Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat
 
 /datum/loadout_item/suit/runed
-	name = "Runed winter coat"
+	name = "Runed Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
 
 /datum/loadout_item/suit/brass
-	name = "Brass winter coat"
+	name = "Brass Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 
 /datum/loadout_item/suit/korea
-	name = "Eastern winter coat"
+	name = "Eastern Winter Coat"
 	item_path = /obj/item/clothing/suit/koreacoat
 
 /datum/loadout_item/suit/czech
-	name = "Modern winter coat"
+	name = "Modern Winter Coat"
 	item_path = /obj/item/clothing/suit/modernwintercoatthing
+
+/datum/loadout_item/suit/mantella
+	name = "Mothic Mantella"
+	item_path = /obj/item/clothing/suit/mothcoat/winter
 
 /*
 *	SUITS / SUIT JACKETS
@@ -185,6 +189,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
+
+/datum/loadout_item/suit/mothcoat
+	name = "Mothic Flightsuit"
+	item_path = /obj/item/clothing/suit/mothcoat
 
 /*
 *	VARSITY JACKET
@@ -674,3 +682,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/donator/digicoat/interdyne
 	name = "Interdyne Digicoat"
 	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
+
+/datum/loadout_item/suit/digicoat_glitched //Public donator reward for Razurath.
+	name = "Glitched Digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched

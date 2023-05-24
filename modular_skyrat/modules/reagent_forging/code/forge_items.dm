@@ -265,7 +265,7 @@
 
 /obj/item/forging/incomplete_bow/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/weaponcrafting/silkstring))
-		new /obj/item/gun/ballistic/tribalbow(get_turf(src))
+		new /obj/item/gun/ballistic/bow/longbow(get_turf(src))
 		qdel(attacking_item)
 		qdel(src)
 		return
@@ -281,7 +281,7 @@
 	. = ..()
 	var/turf/src_turf = get_turf(src)
 	for(var/i in 1 to spawning_amount)
-		new /obj/item/ammo_casing/caseless/arrow/wood/forged(src_turf)
+		new /obj/item/ammo_casing/caseless/arrow/(src_turf)
 	qdel(src)
 
 /obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
