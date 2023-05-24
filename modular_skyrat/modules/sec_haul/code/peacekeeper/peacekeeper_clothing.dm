@@ -264,10 +264,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "peacekeeper"
-
-/obj/item/clothing/suit/armor/riot/peacekeeper
-	name = "peacekeeper riotsuit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "peacekeeper_riot"
-	worn_icon_state = "peacekeeper_riot"
