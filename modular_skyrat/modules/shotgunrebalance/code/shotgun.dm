@@ -7,6 +7,7 @@
 	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/hp
 	name = "12g hollow point shotgun slug"
@@ -35,7 +36,9 @@
 	desc = "A Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = list(/datum/material/bronze = HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4,
+							/datum/material/bronze = SMALL_MATERIAL_AMOUNT)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
