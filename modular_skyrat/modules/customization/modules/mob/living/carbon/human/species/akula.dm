@@ -1,4 +1,4 @@
-/// How long the akula will stay wet for, AKA how long their species buff will last without being sustained by h2o
+/// How long the akula will stay wet for, AKA how long until they get a mood debuff
 #define DRY_UP_TIME 10 MINUTES
 /// How many wetstacks an Akula will get upon creation
 #define WETSTACK_INITIAL 5
