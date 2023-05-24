@@ -4,6 +4,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "riot"
 	req_access = list(ACCESS_SYNDICATE)
+	anchorable = 0
+	anchored = 1
 
 /obj/structure/closet/secure_closet/ds2atmos/PopulateContents()
 	..()
