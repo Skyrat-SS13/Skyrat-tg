@@ -16,6 +16,10 @@
 			COMSIG_REAGENTS_REACTED,),
 		PROC_REF(update_ammo_hud))
 
+/obj/item/weldingtool/set_welding(new_value)
+	. = ..()
+	update_ammo_hud()
+
 /obj/item/weldingtool/proc/update_ammo_hud()
 	SIGNAL_HANDLER
 

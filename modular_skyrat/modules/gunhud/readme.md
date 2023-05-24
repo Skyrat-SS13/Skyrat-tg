@@ -17,7 +17,7 @@ Adds a dynamic hud system for energy and some ballistics guns.
 ### Master file additions
 
 - Hud directory > _defines.dm, human.dm, hud.dm
-- `modular_skyrat\master_files\code\game\objects\items\tools\weldingtool.dm`: `proc/Initialize`
+- `modular_skyrat\master_files\code\game\objects\items\tools\weldingtool.dm`: `proc/Initialize`, `proc/set_welding`
 - `modular_skyrat\master_files\code\modules\projectiles\guns\ballistic.dm`: `proc/eject_magazine`, `proc/insert_magazine`
 - `modular_skyrat\master_files\code\modules\projectiles\guns\energy.dm`: `proc/process`, `proc/select_fire`
 
