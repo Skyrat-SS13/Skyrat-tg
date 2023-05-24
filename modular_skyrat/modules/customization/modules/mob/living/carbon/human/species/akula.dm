@@ -51,6 +51,7 @@
 	)
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
+	lore_protected = TRUE
 
 /datum/species/akula/get_species_description()
 	return placeholder_description

@@ -156,7 +156,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -558,6 +558,11 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_razurath
 	ckeywhitelist = list("razurath")
 
+/datum/loadout_item/toys/plushie_razurath/second
+	name = "Dwarf Shark Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_razurath/second
+	ckeywhitelist = list("razurath")
+
 /datum/loadout_item/toys/plushie_elofy
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
@@ -637,11 +642,6 @@
 /datum/loadout_item/suit/razurathcoat
 	name = "Golden Nanotrasen Officer Coat"
 	item_path = /obj/item/clothing/suit/razurathcoat
-	ckeywhitelist = list("razurath")
-
-/datum/loadout_item/suit/digicoat_glitched
-	name = "Glitched Digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched
 	ckeywhitelist = list("razurath")
 
 /datum/loadout_item/pocket_items/masvedishcigar

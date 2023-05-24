@@ -289,7 +289,7 @@
 /datum/outfit/ds2/syndicate_command/corporateliaison
 	name = "DS-2 Corporate Liasion"
 	uniform = /obj/item/clothing/under/syndicate/sniper
-	head = /obj/item/clothing/head/fedora/fedblack
+	head = /obj/item/clothing/head/fedora
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
@@ -300,7 +300,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/automatic/pistol/aps
-	head = /obj/item/clothing/head/hats/hos/syndicate
+	head = /obj/item/clothing/head/hats/hos/cap/syndicate
 	id = /obj/item/card/id/advanced/gold/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
 
@@ -650,7 +650,7 @@
 	assignment = "Hotel Security"
 
 /datum/id_trim/away/tarkon
-	assignment = "P-T Cargo Personell"
+	assignment = "P-T Cargo Personnel"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/sec

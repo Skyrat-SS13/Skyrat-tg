@@ -7,4 +7,4 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	flags_cover = HEADCOVERSEYES
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR|SHOWSPRITEEARS

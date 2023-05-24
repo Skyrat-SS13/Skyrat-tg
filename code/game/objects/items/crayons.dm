@@ -678,7 +678,7 @@
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(/datum/material/cardboard = 2000)
+	custom_materials = list(/datum/material/cardboard = SHEET_MATERIAL_AMOUNT)
 
 /obj/item/storage/crayons/Initialize(mapload)
 	. = ..()
@@ -869,8 +869,8 @@
 
 	return ..()
 
-/obj/item/toy/crayon/spraycan/afterattack_secondary(atom/target, mob/user, proximity, params)
-	if(!proximity)
+/obj/item/toy/crayon/spraycan/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(is_capped)
 		balloon_alert(user, "take the cap off first!")
