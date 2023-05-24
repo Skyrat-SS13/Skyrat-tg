@@ -1,5 +1,4 @@
 #define span_emote(str) ("<span class='emote'>" + str + "</span>")
-#define span_header(str) ("<span class='header'>" + str + "</span>")
 #define span_italics(str) ("<span class='italics'>" + str + "</span>")
 #define span_maptext(str) ("<span class='maptext'>" + str + "</span>")
 #define span_mentor(str) ("<span class='mentor'>" + str + "</span>")
