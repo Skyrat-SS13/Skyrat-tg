@@ -2,10 +2,10 @@
 /datum/sprite_accessory/snouts/synthliz
 	recommended_species = list()
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_snouts.dmi'
-	color_src = USE_ONE_COLOR
+	color_src = USE_MATRIXED_COLORS
 	default_color = null
 	name = "Synthetic Lizard - Snout"
-	icon_state = "synthliz_basic"
+	icon_state = "synth_basic"
 	genetic = FALSE
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_under

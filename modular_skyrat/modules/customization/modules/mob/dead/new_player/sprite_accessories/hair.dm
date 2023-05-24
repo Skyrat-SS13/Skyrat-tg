@@ -43,6 +43,10 @@
 	name = "Scully"
 	icon_state = "hair_scully"
 
+/datum/sprite_accessory/hair/skyrat/beehive
+	name = "Beehive"
+	icon_state = "hair_beehive"
+
 /datum/sprite_accessory/hair/skyrat/beehive2
 	name = "Beehive 2"
 	icon_state = "hair_beehive2"
