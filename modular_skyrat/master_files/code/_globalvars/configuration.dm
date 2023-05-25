@@ -54,3 +54,6 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /// Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 /datum/config_entry/number/ticket_ping_frequency
+
+// Minimum alert level for pods to actually evacuate people
+/datum/config_entry/number/minimum_alert_for_pods

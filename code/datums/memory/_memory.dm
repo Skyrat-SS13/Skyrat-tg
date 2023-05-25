@@ -229,6 +229,7 @@
 
 	var/static/list/something_pool = list(
 		/mob/living/basic/bat,
+		/mob/living/basic/butterfly,
 		/mob/living/basic/carp,
 		/mob/living/basic/carp/magic,
 		/mob/living/basic/carp/magic/chaos,
@@ -244,7 +245,6 @@
 		/mob/living/basic/statue,
 		/mob/living/basic/stickman,
 		/mob/living/basic/stickman/dog,
-		/mob/living/simple_animal/butterfly,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/chicken,
 		/mob/living/simple_animal/crab,
