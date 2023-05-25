@@ -303,7 +303,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/chicken/teshari,
 		/mob/living/simple_animal/crab/shuffle,
 		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
