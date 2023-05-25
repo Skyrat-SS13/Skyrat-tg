@@ -48,6 +48,7 @@
 
 /obj/machinery/ammo_workbench/unlocked
 	allowed_harmful = TRUE
+	allowed_advanced = TRUE
 
 /obj/item/circuitboard/machine/ammo_workbench
 	name = "Ammunition Workbench (Machine Board)"
