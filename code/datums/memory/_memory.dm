@@ -229,6 +229,7 @@
 
 	var/static/list/something_pool = list(
 		/mob/living/basic/bat,
+		/mob/living/basic/butterfly,
 		/mob/living/basic/carp,
 		/mob/living/basic/carp/magic,
 		/mob/living/basic/carp/magic/chaos,
@@ -244,7 +245,6 @@
 		/mob/living/basic/statue,
 		/mob/living/basic/stickman,
 		/mob/living/basic/stickman/dog,
-		/mob/living/simple_animal/butterfly,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/chicken,
 		/mob/living/simple_animal/crab,
@@ -254,7 +254,7 @@
 		/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
 		/mob/living/simple_animal/hostile/gorilla,
 		/mob/living/simple_animal/hostile/headcrab,
-		/mob/living/simple_animal/hostile/lizard,
+		/mob/living/basic/lizard,
 		/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 		/mob/living/simple_animal/hostile/morph,
 		/mob/living/simple_animal/hostile/mushroom,

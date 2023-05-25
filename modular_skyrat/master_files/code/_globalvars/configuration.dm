@@ -60,3 +60,6 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/number/size_collar_minimum
 	default = 15
+
+// Minimum alert level for pods to actually evacuate people
+/datum/config_entry/number/minimum_alert_for_pods
