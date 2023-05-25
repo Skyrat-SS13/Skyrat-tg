@@ -20,7 +20,7 @@
 	icon_door = "science"
 
 /obj/structure/closet/secure_closet/syndicate/admiral
-	name = "\proper station admiral's locker"
+	name = "station admiral's locker"
 	icon_state = "cap"
 	icon_door = "cap"
 
@@ -69,7 +69,7 @@
 	icon_door = "sec"
 
 /obj/structure/closet/secure_closet/syndicate_leader/corp_liaison
-	name = "\proper corporate liaison's locker"
+	name = "corporate liaison's locker"
 	icon_state = "hop"
 	icon_door = "hop"
 
@@ -79,7 +79,7 @@
 	icon_door = "qm"
 
 /obj/structure/closet/secure_closet/syndicate_leader/mod
-	name = "MODsuit module locker"
+	name = "\improper MODsuit module locker"
 	icon_state = "syndicate"
 	icon_door = "syndicate"
 
