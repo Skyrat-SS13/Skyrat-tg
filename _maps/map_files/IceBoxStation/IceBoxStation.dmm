@@ -452,13 +452,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/hallway/primary/aft)
-"ajG" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/effect/turf_decal/box,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/textured,
-/area/station/security/prison/workout)
 "akk" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/layer2{
 	dir = 4
@@ -1701,12 +1694,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"aCH" = (
-/obj/item/toy/plush/space_lizard_plushie{
-	name = "Ruins-The-Analog"
-	},
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
 "aCJ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -8217,11 +8204,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
-"czW" = (
-/obj/structure/weightmachine/stacklifter,
-/obj/effect/turf_decal/box,
-/turf/open/floor/iron/dark/textured,
-/area/station/security/prison/workout)
 "czY" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 4
@@ -11321,6 +11303,12 @@
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+"dwI" = (
+/obj/item/toy/plush/lizard_plushie/space/green{
+	name = "Ruins-The-Analog"
+	},
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
 "dwS" = (
 /obj/machinery/status_display/door_timer{
 	id = "Cell 3";
@@ -13494,7 +13482,7 @@
 "egY" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
-	id = "medsecprivacy";
+	id = "hop";
 	name = "Privacy Shutters"
 	},
 /obj/effect/spawner/structure/window/reinforced,
@@ -45585,12 +45573,6 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
-"owv" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/mob/living/simple_animal/hostile/lizard/wags_his_tail,
-/turf/open/floor/iron,
-/area/station/service/janitor)
 "owC" = (
 /turf/closed/wall/r_wall,
 /area/station/science/server)
@@ -46681,6 +46663,12 @@
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron/white,
 /area/station/science/research)
+"oOp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/mob/living/basic/lizard/wags_his_tail,
+/turf/open/floor/iron,
+/area/station/service/janitor)
 "oOx" = (
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -46702,6 +46690,13 @@
 /obj/structure/sign/warning/secure_area/directional/south,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"oOW" = (
+/obj/structure/weightmachine,
+/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured,
+/area/station/security/prison/workout)
 "oPa" = (
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
@@ -49515,6 +49510,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/execution/transfer)
+"pJv" = (
+/obj/structure/weightmachine,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/station/security/prison/workout)
 "pJy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -59119,7 +59119,7 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
-	id = "medsecprivacy";
+	id = "hop";
 	name = "Privacy Shutters"
 	},
 /obj/structure/desk_bell{
@@ -59133,7 +59133,8 @@
 	req_access = list("hop")
 	},
 /obj/machinery/flasher/directional/south{
-	pixel_y = -23
+	pixel_y = -23;
+	id = "hopflash"
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hop)
@@ -105399,7 +105400,7 @@ cfh
 nLW
 hhr
 iZo
-czW
+pJv
 gSy
 vPx
 qDG
@@ -105667,7 +105668,7 @@ lkS
 wKC
 wyO
 dbH
-aCH
+dwI
 iDt
 iDt
 ghx
@@ -105913,7 +105914,7 @@ cfh
 nLW
 hhr
 giN
-ajG
+oOW
 gSy
 rLX
 kLo
@@ -238344,7 +238345,7 @@ iuv
 vXh
 xVK
 fDJ
-owv
+oOp
 pYF
 uwO
 rSx

@@ -96,6 +96,13 @@
 
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances //SKYRAT EDIT ADDITION
 	var/face_mouse = FALSE //SKYRAT EDIT ADDITION
+
+	/// The voice that this movable makes when speaking
+	var/voice
+
+	/// The filter to apply to the voice when processing the TTS audio message.
+	var/voice_filter = ""
+
 	/// Value used to increment ex_act() if reactionary_explosions is on
 	/// How much we as a source block explosions by
 	/// Will not automatically apply to the turf below you, you need to apply /datum/element/block_explosives in conjunction with this

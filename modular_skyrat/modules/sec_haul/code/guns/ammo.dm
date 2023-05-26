@@ -1,10 +1,11 @@
 /obj/item/ammo_box/advanced
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/datum/techweb_node/peacekeeper_ammo_advanced
+/datum/techweb_node/smartgun_rails
+	id = "smartgun_rails"
 	display_name = "Experimental SMARTGUN Ammunition"
 	description = "Standard ammo for a non-standard SMARTGUN."
-	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
+	prereq_ids = list("electronic_weapons", "exotic_ammo")
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 

@@ -645,8 +645,8 @@
 		/obj/item/claymore/weak/weaker,
 		/obj/item/clothing/suit/armor/vest/cuirass/larp,
 		/obj/item/clothing/suit/armor/vest/cuirass/larp,
-		/obj/item/gun/ballistic/bow,
-		/obj/item/gun/ballistic/bow,
+		/obj/item/gun/ballistic/bow/longbow,
+		/obj/item/gun/ballistic/bow/longbow,
 		/obj/item/storage/bag/quiver,
 		/obj/item/storage/bag/quiver,
 		/obj/item/clothing/head/helmet/knight/red,
@@ -666,8 +666,8 @@
 		/obj/item/seeds/lavaland/inocybe,
 		/obj/item/seeds/lavaland/ember,
 		/obj/item/seeds/lavaland/seraka,
-		/obj/item/seeds/star_cactus,
-		/obj/item/seeds/star_cactus,
+		/obj/item/seeds/lavaland/fireblossom,
+		/obj/item/seeds/lavaland/cactus,
 	)
 	crate_name = "planetary seeds crate"
 	crate_type = /obj/structure/closet/crate/hydroponics

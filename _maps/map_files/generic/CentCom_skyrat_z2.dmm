@@ -1694,8 +1694,8 @@
 /area/centcom/holding/cafe)
 "axY" = (
 /obj/effect/overlay/palmtree_l,
-/turf/open/misc/beach/sand{
-	dir = 1
+/turf/open/misc/beach/coast/corner{
+	dir = 4
 	},
 /area/centcom/holding/cafepark)
 "ayd" = (
@@ -2555,7 +2555,7 @@
 /area/centcom/holding/cafepark)
 "aGB" = (
 /obj/structure/flora/bush/reed,
-/turf/open/misc/beach/sand{
+/turf/open/misc/beach/coast{
 	dir = 5
 	},
 /area/centcom/holding/cafepark)
@@ -2676,8 +2676,8 @@
 /area/centcom/holding/cafe)
 "aHD" = (
 /obj/structure/flora/bush/reed,
-/turf/open/misc/beach/sand{
-	dir = 9
+/turf/open/misc/beach/coast/corner{
+	dir = 4
 	},
 /area/centcom/holding/cafepark)
 "aHJ" = (
@@ -3326,16 +3326,7 @@
 /area/centcom/holding/cafe)
 "aOt" = (
 /obj/machinery/light/directional/north,
-/obj/machinery/vending/boozeomat{
-	default_price = 0;
-	extended_inventory = 1;
-	extra_price = 0;
-	fair_market_price = 0
-	},
-/obj/effect/mapping_helpers/atom_injector/obj_flag{
-	inject_flags = 1;
-	target_type = /obj/machinery/vending/boozeomat
-	},
+/obj/machinery/vending/boozeomat/cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "aOw" = (
@@ -3649,20 +3640,10 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "aRh" = (
-/obj/structure/table/wood,
-/obj/machinery/vending/boozeomat{
-	default_price = 0;
-	extended_inventory = 1;
-	extra_price = 0;
-	fair_market_price = 0
-	},
-/obj/effect/mapping_helpers/atom_injector/obj_flag{
-	inject_flags = 1;
-	target_type = /obj/machinery/vending/boozeomat
-	},
 /obj/structure/sign/poster/contraband/space_cola{
 	pixel_y = 32
 	},
+/obj/machinery/vending/boozeomat/cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aRi" = (
@@ -3763,7 +3744,7 @@
 /area/centcom/holding/cafepark)
 "aRL" = (
 /obj/structure/flora/bush/reed,
-/turf/open/misc/beach/sand{
+/turf/open/misc/beach/coast{
 	dir = 4
 	},
 /area/centcom/holding/cafepark)
@@ -4324,11 +4305,9 @@
 /area/centcom/holding/cafepark)
 "aXD" = (
 /obj/structure/closet/crate/wooden,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
-/obj/item/grown/log/tree,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/lighter,
 /turf/open/indestructible/hotelwood{
 	desc = "It's really cozy! Great for soft paws!";
 	icon = 'modular_skyrat/modules/ghostcafe/icons/carpet_royalblack.dmi';
@@ -4373,16 +4352,6 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
-"aXU" = (
-/obj/structure/table/wood,
-/obj/item/stack/sheet/mineral/gold{
-	amount = 5
-	},
-/obj/item/stack/sheet/mineral/silver{
-	amount = 5
-	},
-/turf/open/indestructible/hotelwood,
-/area/centcom/holding/cafe)
 "aXV" = (
 /obj/structure/table,
 /turf/open/indestructible/hotelwood,
@@ -4902,6 +4871,10 @@
 /obj/machinery/vending/dorms,
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
+"bSq" = (
+/obj/machinery/vending/boozeomat/cafe,
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafedorms)
 "bTH" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -5844,8 +5817,8 @@
 /area/centcom/holding/cafedorms)
 "eks" = (
 /obj/item/toy/beach_ball,
-/turf/open/misc/beach/sand{
-	dir = 8
+/turf/open/misc/beach/coast/corner{
+	dir = 4
 	},
 /area/centcom/holding/cafepark)
 "ekE" = (
@@ -6667,10 +6640,6 @@
 /obj/structure/sign/poster/random/directional/south,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
-"gAu" = (
-/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
-/turf/open/misc/grass/planet,
-/area/centcom/holding/cafepark)
 "gAH" = (
 /obj/structure/table,
 /obj/item/paper/pamphlet/centcom/visitor_info{
@@ -6787,6 +6756,12 @@
 /obj/effect/turf_decal/siding/white,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"gUC" = (
+/obj/structure/spacevine,
+/turf/open/misc/beach/coast{
+	dir = 4
+	},
+/area/centcom/holding/cafepark)
 "gWT" = (
 /obj/structure/table/wood,
 /obj/item/toy/cards/deck/cas/black,
@@ -7192,7 +7167,6 @@
 /area/centcom/interlink)
 "iaB" = (
 /obj/structure/table/wood,
-/obj/item/stack/sheet/mineral/plasma/five,
 /obj/item/reagent_containers/cup/rag,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
@@ -7220,6 +7194,15 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"ifp" = (
+/obj/structure/spacevine{
+	name = "thick vines";
+	opacity = 1
+	},
+/turf/open/misc/beach/coast{
+	dir = 4
+	},
+/area/centcom/holding/cafepark)
 "ifE" = (
 /obj/machinery/vending/cigarette/syndicate,
 /obj/effect/turf_decal/bot_white,
@@ -9045,6 +9028,12 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"mMx" = (
+/obj/structure/spacevine,
+/turf/open/misc/beach/coast{
+	dir = 9
+	},
+/area/centcom/holding/cafepark)
 "mPR" = (
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
@@ -9848,6 +9837,14 @@
 /obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"pcp" = (
+/obj/structure/flora/biolumi/flower{
+	random_light = null
+	},
+/turf/open/misc/beach/sand{
+	dir = 4
+	},
+/area/centcom/holding/cafepark)
 "pcH" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -10100,6 +10097,10 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"pFT" = (
+/obj/machinery/vending/primitive_catgirl_clothing_vendor,
+/turf/open/misc/dirt/planet,
+/area/centcom/holding/cafepark)
 "pGK" = (
 /obj/machinery/shower/directional/west,
 /obj/structure/sink/directional/south,
@@ -11799,16 +11800,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/holding/cafe)
 "tVB" = (
-/obj/machinery/vending/boozeomat{
-	default_price = 0;
-	extended_inventory = 1;
-	extra_price = 0;
-	fair_market_price = 0
-	},
-/obj/effect/mapping_helpers/atom_injector/obj_flag{
-	inject_flags = 1;
-	target_type = /obj/machinery/vending/boozeomat
-	},
+/obj/machinery/vending/boozeomat/cafe,
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "tWA" = (
@@ -49337,8 +49329,8 @@ ajj
 ajj
 ajj
 ajj
-aWi
-aWi
+aSq
+ofJ
 aWi
 aWi
 ajj
@@ -49594,10 +49586,10 @@ aPf
 ajj
 aRe
 aUm
+aHZ
 aWi
-aWi
-aOO
-aUr
+aVv
+twL
 ajj
 aPf
 aPf
@@ -49850,9 +49842,9 @@ ayI
 ayI
 aHX
 aUm
-aUm
-aWi
-aWi
+aSq
+ofJ
+aVv
 axY
 aWg
 ajj
@@ -50107,9 +50099,9 @@ aPf
 aPf
 ajj
 axJ
-apX
+aHZ
 aWi
-aWi
+gjj
 axa
 aUm
 ajj
@@ -50363,10 +50355,10 @@ ajj
 ajj
 ajj
 ajj
+uxW
+ofJ
 aWi
-aWi
-aWi
-aWi
+gjj
 axa
 aUm
 ajj
@@ -50620,10 +50612,10 @@ aFP
 aMJ
 ajj
 ajj
+bFi
 aWi
-aWi
-aWi
-aWi
+aVv
+aRS
 axa
 aRe
 ajj
@@ -50877,11 +50869,11 @@ aFP
 aFP
 anC
 ajj
-aUr
-aUr
+aCv
+twL
 eks
 aUr
-aRS
+aUr
 aUm
 ajj
 aPf
@@ -58303,7 +58295,7 @@ auU
 aqf
 aDr
 aUo
-aXU
+aCD
 aNi
 aUo
 aUo
@@ -64520,7 +64512,7 @@ aFP
 aFP
 aDa
 aUm
-aSq
+aUm
 apX
 aHZ
 aQf
@@ -64778,8 +64770,8 @@ aUm
 aUm
 aUm
 aUm
-aVv
-aQf
+aSq
+ofJ
 aQf
 gjj
 axa
@@ -65037,8 +65029,8 @@ sQX
 aqQ
 aHZ
 aQf
-aQf
-ofJ
+aVv
+aRS
 axa
 aUm
 aDa
@@ -65290,13 +65282,13 @@ aFP
 aDa
 aUm
 aUm
-aSq
+aUm
 apX
 aHZ
 aQf
 gjj
 aOO
-aRS
+aUm
 aUm
 aUm
 aUm
@@ -65546,13 +65538,13 @@ aeT
 aFP
 aUm
 aUm
-aSq
+aUm
 apX
-aVv
-aQf
-aQf
+aSq
 ofJ
-axa
+aVv
+aRS
+aUm
 aUm
 aUm
 aUm
@@ -65804,12 +65796,12 @@ aFP
 aUm
 aUm
 aUm
-aVv
-aQf
+aSq
+ofJ
 aQf
 gjj
 aOO
-aRS
+aUm
 aUm
 aUm
 aUm
@@ -66523,7 +66515,7 @@ ayI
 aPf
 ovH
 rUA
-aPf
+pFT
 aPf
 aPf
 aPf
@@ -66575,12 +66567,12 @@ aUm
 aUm
 aUm
 aUm
-aLD
-aQf
+aCv
+bFi
 aQf
 gjj
 aJh
-aCv
+aUm
 aUm
 aUm
 aUm
@@ -66831,12 +66823,12 @@ aFB
 aUm
 aDa
 aUm
-aKP
+aUm
 aLQ
 aHZ
 aQf
-aQf
-bFi
+aLD
+aKP
 axa
 aUm
 aUm
@@ -67347,12 +67339,12 @@ aUm
 aUm
 aUm
 aUm
-aLD
-aQf
+aCv
+bFi
 aQf
 gjj
 aJh
-aCv
+aUm
 sQX
 aUm
 aUm
@@ -67603,13 +67595,13 @@ aFP
 aFP
 aUm
 aUm
-aKP
+aUm
 aLQ
 aHZ
 aQf
-aQf
-bFi
-axa
+aLD
+aKP
+aUm
 aUm
 aDa
 aUm
@@ -68124,7 +68116,7 @@ aQf
 aQf
 gjj
 aJh
-aCv
+aUm
 aUm
 aUm
 aUm
@@ -68379,9 +68371,9 @@ aUm
 aHZ
 aQf
 aQf
-aQf
-bFi
-axa
+aLD
+aKP
+aUm
 aUm
 aUm
 aUm
@@ -68637,8 +68629,8 @@ aHZ
 aQf
 aQf
 aQf
-ofJ
-axa
+gjj
+aUm
 aUm
 vYR
 aUm
@@ -68893,9 +68885,9 @@ aUm
 aHZ
 aQf
 aQf
-gjj
-aOO
+aVv
 aRS
+aUm
 aUm
 aUm
 cZJ
@@ -69145,7 +69137,7 @@ aFP
 aUm
 aUm
 aUm
-aSq
+aUm
 apX
 aHZ
 aQf
@@ -69403,12 +69395,12 @@ aUm
 aDa
 aUm
 aUm
-aVv
-aQf
-aQf
-twL
+aSq
 ofJ
-aGw
+aQf
+aVv
+aRS
+aqQ
 aUm
 nap
 aUm
@@ -69662,10 +69654,10 @@ aUm
 aqQ
 aHZ
 aQf
-gjj
-aOO
-aUr
+aVv
 aRS
+aUr
+aUm
 sQX
 aUm
 aUm
@@ -70428,12 +70420,12 @@ aFP
 aUm
 aUm
 aUm
-aSq
+aUm
 apX
 aHZ
 aQf
 aQf
-ofJ
+gjj
 axa
 aUm
 xFU
@@ -70684,14 +70676,14 @@ aFP
 aUm
 aUm
 aUm
-aSq
+aUm
 apX
+aSq
+ofJ
+aQf
 aVv
-aQf
-aQf
-gjj
 aHD
-aRS
+aUm
 aUm
 xFU
 xFU
@@ -70940,13 +70932,13 @@ aFP
 aUm
 aUm
 aRe
-sQX
+pcp
 aUm
-aVv
-aQf
-aQf
-aQf
+aSq
 ofJ
+aQf
+aVv
+aRS
 axa
 aUm
 aUm
@@ -71195,16 +71187,16 @@ aLH
 aFP
 ajj
 aUm
-aSq
+axJ
 axJ
 axJ
 anQ
 aHZ
 aQf
 aQf
-ofJ
+gjj
 aOO
-aRS
+aUm
 aUm
 aUm
 xFU
@@ -71416,7 +71408,7 @@ aPf
 aPf
 aFP
 awV
-gAu
+aFP
 aFP
 aFP
 ahQ
@@ -71451,16 +71443,16 @@ ahA
 aFP
 ajj
 ajj
+axJ
+axJ
 aSq
-apX
+uxW
+uxW
+ofJ
+aQf
 aVv
-uxW
-uxW
-aQf
-aQf
-gjj
-aOO
 aRS
+aUm
 aUm
 dIw
 aUm
@@ -71707,10 +71699,10 @@ aFP
 ajj
 ajj
 ajj
+axJ
+axJ
 aSq
-apX
-aVv
-aQf
+ofJ
 aQf
 aQf
 aQf
@@ -71962,17 +71954,17 @@ aFP
 aFP
 ajj
 ajj
-aSq
 axJ
-apX
+axJ
+axJ
+aSq
+ofJ
+aQf
+aQf
+aQf
+aQf
 aVv
-aQf
-aQf
-aQf
-aQf
-aQf
-aQf
-gjj
+aRS
 axa
 rPh
 dOC
@@ -72219,17 +72211,17 @@ ajj
 ajj
 ajj
 ajj
-apX
-aVv
+aSq
 uxW
-aQf
-aQf
-aQf
-twL
-twL
-twL
-twL
+uxW
 ofJ
+aQf
+aVv
+twL
+twL
+twL
+aRS
+aUm
 axa
 lCi
 vgx
@@ -72464,30 +72456,30 @@ ajj
 aUm
 aUm
 aSq
-axJ
-axJ
-axJ
+uxW
+uxW
+uxW
 aRL
-aCv
+aKP
 aUm
 ajj
 ajj
 ajj
 ajj
-fTV
-lkn
-aQf
-aQf
-aQf
-aQf
-aQf
+ifp
+gUC
 ofJ
+aQf
+aQf
+aQf
+aVv
+aRS
 aOO
 aUr
 aUr
 aUr
 aUr
-aRS
+aUm
 aUm
 aUm
 aUm
@@ -72720,26 +72712,26 @@ ajj
 asz
 aUm
 aSq
-apX
+ofJ
 aQf
 aQf
 aQf
 aQf
 aGB
-axJ
-axJ
+uxW
+uxW
 ajj
 lkn
 fTV
 fTV
 fTV
 lkn
-aOO
-aLQ
-aLD
-ofJ
-aOO
+aVv
+twL
+twL
 aRS
+aOO
+aUm
 eEg
 aUm
 nDE
@@ -72976,7 +72968,7 @@ aNq
 aUm
 aUm
 aUm
-aUm
+aHZ
 aQf
 aQf
 aQf
@@ -72989,13 +72981,13 @@ tEg
 aQf
 lkn
 fTV
-lkn
-aOO
+mMx
+twL
 aRS
-aKP
+aUm
 aAS
 aUr
-aRS
+aUm
 mzR
 eEg
 fRe
@@ -73233,7 +73225,7 @@ aUm
 aUm
 aUm
 aUm
-aUm
+aHZ
 aQf
 aQf
 aQf
@@ -73490,15 +73482,15 @@ axA
 axA
 aUm
 aUm
-aKP
-aUr
-aLQ
+aCv
+twL
+bFi
 aQf
 aQf
 aQf
-aOO
-aUr
-aUr
+aVv
+twL
+twL
 ajj
 ajj
 ajj
@@ -73749,10 +73741,10 @@ aUm
 aUm
 aUm
 aUm
-aKP
-aUr
-aUr
-aUr
+aCv
+twL
+twL
+twL
 aRS
 aUm
 aUm
@@ -74765,7 +74757,7 @@ axA
 ajj
 ajj
 axA
-atF
+bSq
 atF
 amD
 abK
