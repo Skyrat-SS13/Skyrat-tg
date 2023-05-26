@@ -54,18 +54,18 @@
 	desc = "A twenty round magazine built for 5.6x40mm, intended for use in the IGE-110 rifle."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_assault_mag"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39
-	caliber = "a762x39"
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40
+	caliber = "a56x40"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/civilian/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/ap
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ap
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/ap
 	round_type = AMMO_TYPE_AP
 
 // SMG

@@ -51,27 +51,27 @@
 //
 
 //NRI Propietary ammo
-/obj/item/ammo_casing/realistic/a762x39
+/obj/item/ammo_casing/realistic/a56x40
 	name = "5.6x40mm bullet casing"
 	desc = "A 5.6x40mm bullet casing."
-	icon_state = "762x39-casing"
-	caliber = "a762x39"
-	projectile_type = /obj/projectile/bullet/a762x39
+	icon_state = "56x40-casing"
+	caliber = "a56x40"
+	projectile_type = /obj/projectile/bullet/a56x40
 
-/obj/projectile/bullet/a762x39
+/obj/projectile/bullet/a56x40
 	name = "5.6mm bullet"
 	damage = 38
 	wound_bonus = 35
 	armour_penetration = 40
 	wound_falloff_tile = 0
 
-/obj/item/ammo_casing/realistic/a762x39/ricochet
+/obj/item/ammo_casing/realistic/a56x40/ricochet
 	name = "5.6x40mm match bullet casing"
 	desc = "A 5.6x40mm match bullet casing."
 	special_desc = "MATCH: Ricochets everywhere. Like crazy."
-	projectile_type = /obj/projectile/bullet/a762x39/ricochet
+	projectile_type = /obj/projectile/bullet/a56x40/ricochet
 
-/obj/projectile/bullet/a762x39/ricochet
+/obj/projectile/bullet/a56x40/ricochet
 	name = "5.6mm match bullet"
 	damage = 30
 	wound_bonus = 25
@@ -84,13 +84,13 @@
 	ricochet_decay_damage = 1
 	ricochet_shoots_firer = FALSE
 
-/obj/item/ammo_casing/realistic/a762x39/fire
+/obj/item/ammo_casing/realistic/a56x40/fire
 	name = "5.6x40mm incendiary bullet casing"
 	desc = "A 5.6x40mm incendiary bullet casing."
 	special_desc = "TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame."
-	projectile_type = /obj/projectile/bullet/incendiary/a762x39
+	projectile_type = /obj/projectile/bullet/incendiary/a56x40
 
-/obj/projectile/bullet/incendiary/a762x39
+/obj/projectile/bullet/incendiary/a56x40
 	name = "5.6mm incendiary bullet"
 	damage = 30
 	wound_bonus = 25
@@ -99,25 +99,25 @@
 	fire_stacks = 2
 	leaves_fire_trail = FALSE
 
-/obj/item/ammo_casing/realistic/a762x39/ap
+/obj/item/ammo_casing/realistic/a56x40/ap
 	name = "5.6x40mm armor-piercing bullet casing"
 	desc = "A 5.6x40mm armor-piercing bullet casing."
 	special_desc = "ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
-	projectile_type = /obj/projectile/bullet/a762x39
+	projectile_type = /obj/projectile/bullet/a56x40
 
-/obj/projectile/bullet/a762x39/ap
+/obj/projectile/bullet/a56x40/ap
 	name = "5.6mm armor-piercing bullet"
 	damage = 30
 	wound_bonus = 15
 	armour_penetration = 60
 
-/obj/item/ammo_casing/realistic/a762x39/emp
+/obj/item/ammo_casing/realistic/a56x40/emp
 	name = "5.6x40mm ion bullet casing"
 	desc = "A 5.6x40mm ion bullet casing."
 	special_desc = "EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely."
-	projectile_type = /obj/projectile/bullet/a762x39/emp
+	projectile_type = /obj/projectile/bullet/a56x40/emp
 
-/obj/projectile/bullet/a762x39/emp
+/obj/projectile/bullet/a56x40/emp
 	name = "5.6mm ion bullet"
 	damage = 25
 	wound_bonus = 15
@@ -125,32 +125,32 @@
 	var/heavy_emp_radius = -1
 	var/light_emp_radius = 0
 
-/obj/projectile/bullet/a762x39/emp/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/a56x40/emp/on_hit(atom/target, blocked = FALSE)
 	..()
 	empulse(target, heavy_emp_radius, light_emp_radius)
 	return BULLET_ACT_HIT
 
-/obj/item/ammo_casing/realistic/a762x39/civilian
+/obj/item/ammo_casing/realistic/a56x40/civilian
 	name = "5.6x40mm civilian bullet casing"
 	desc = "A 5.6x40mm civilian-grade surplus bullet casing."
 	special_desc = "CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant."
-	projectile_type = /obj/projectile/bullet/a762x39/civilian
+	projectile_type = /obj/projectile/bullet/a56x40/civilian
 
-/obj/projectile/bullet/a762x39/civilian
+/obj/projectile/bullet/a56x40/civilian
 	name = "5.6mm civilian bullet"
 	damage = 34
 	wound_bonus = 15
 	armour_penetration = 10
 	wound_falloff_tile = 3
 
-/obj/item/ammo_casing/realistic/a762x39/civilian/rubber
+/obj/item/ammo_casing/realistic/a56x40/civilian/rubber
 	name = "5.6x40mm rubber bullet casing"
 	desc = "A 5.6x40mm civilian-grade rubber bullet casing."
 	special_desc = "RUBBER: Less than lethal ammo. Deals both stamina and brute damage."
-	projectile_type = /obj/projectile/bullet/a762x39/rubber
+	projectile_type = /obj/projectile/bullet/a56x40/rubber
 	harmful = FALSE
 
-/obj/projectile/bullet/a762x39/rubber
+/obj/projectile/bullet/a56x40/rubber
 	name = "5.6mm rubber bullet"
 	damage = 15
 	armour_penetration = 10
@@ -164,13 +164,13 @@
 	embedding = null
 	wound_bonus = -50
 
-/obj/item/ammo_casing/realistic/a762x39/civilian/hunting
+/obj/item/ammo_casing/realistic/a56x40/civilian/hunting
 	name = "5.6x40mm hunting bullet casing"
 	desc = "A 5.6x40mm jacketed soft point bullet casing."
 	special_desc = "HUNTING: Ammo purpose-built to deal more damage against simplemobs than other humans."
-	projectile_type = /obj/projectile/bullet/a762x39/hunting
+	projectile_type = /obj/projectile/bullet/a56x40/hunting
 
-/obj/projectile/bullet/a762x39/hunting
+/obj/projectile/bullet/a56x40/hunting
 	name = "5.6mm hunting bullet"
 	damage = 20
 	wound_bonus = 10
@@ -181,20 +181,20 @@
 		/// List (not really a list) of mobs we deal bonus damage to
 	var/list/nemesis_path = /mob/living/simple_animal
 
-/obj/projectile/bullet/a762x39/hunting/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
+/obj/projectile/bullet/a56x40/hunting/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
 		damage += nemesis_bonus_force
 	.=..()
 
-/obj/item/ammo_casing/realistic/a762x39/civilian/blank
+/obj/item/ammo_casing/realistic/a56x40/civilian/blank
 	name = "5.6x40mm blank bullet casing"
 	desc = "A 5.6x40mm blank bullet casing."
 	special_desc = "BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful."
-	projectile_type = /obj/projectile/bullet/a762x39/blank
+	projectile_type = /obj/projectile/bullet/a56x40/blank
 	///"Potentially."
 	harmful = FALSE
 
-/obj/projectile/bullet/a762x39/blank
+/obj/projectile/bullet/a56x40/blank
 	name = "hot gas"
 	icon = 'icons/obj/weapons/guns/projectiles_muzzle.dmi'
 	icon_state = "muzzle_bullet"

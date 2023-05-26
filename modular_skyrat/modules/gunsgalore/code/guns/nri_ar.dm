@@ -33,8 +33,8 @@
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "nri_ar"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39
-	caliber = "a762x39"
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40
+	caliber = "a56x40"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -42,31 +42,31 @@
 	name = "krinkov magazine (MATCH)"
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains highly ricocheting ammunition."
 	icon_state = "nri_ar_ricochet"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ricochet
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/ricochet
 
 /obj/item/ammo_box/magazine/nri_ar/fire
 	name = "krinkov magazine (INCENDIARY)"
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains incendiary ammunition."
 	icon_state = "nri_ar_fire"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/fire
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/fire
 
 /obj/item/ammo_box/magazine/nri_ar/ap
 	name = "krinkov magazine (ARMOR PIERCING)"
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains armor-piercing ammunition."
 	icon_state = "nri_ar_ap"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ap
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/ap
 
 /obj/item/ammo_box/magazine/nri_ar/emp
 	name = "krinkov magazine (EMP)"
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains ion ammunition, good for disrupting electronics and wrecking mechas."
 	icon_state = "nri_ar_emp"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/emp
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/emp
 
 /obj/item/ammo_box/magazine/nri_ar/rubber
 	name = "krinkov magazine (RUBBER)"
 	desc = "A double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains less-than-lethal rubber ammunition."
 	icon_state = "nri_ar_rubber"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/civilian/rubber
 
 /obj/item/ammo_box/magazine/nri_ar/banana
 	name = "\improper Krinkov extended magazine"
@@ -78,7 +78,7 @@
 	desc = "A shortened double-stack magazine able to hold 15 rounds of civilian-grade 5.6mm ammo."
 	icon_state = "nri_ar_civ"
 	max_ammo = 15
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian
+	ammo_type = /obj/item/ammo_casing/realistic/a56x40/civilian
 
 /obj/item/gun/ballistic/automatic/nri_ar/civvie
 	name = "\improper Sabel-42 carbine"
@@ -86,6 +86,7 @@
 	icon_state = "nri_ar_civ"
 	inhand_icon_state = "nri_ar_civ"
 	mag_type = /obj/item/ammo_box/magazine/nri_ar/civvie
+	burst_size = 1
 	fire_delay = 5
 	actions_types = list()
 	dual_wield_spread = 15

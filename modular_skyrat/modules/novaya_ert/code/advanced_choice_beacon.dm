@@ -122,7 +122,7 @@
 	icon_state = "living"
 	base_icon_state = "living"
 	stun_projectile = /obj/projectile/bullet/b12mm/rubber
-	lethal_projectile = /obj/projectile/bullet/a762x39
+	lethal_projectile = /obj/projectile/bullet/a56x40
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
 	faction = list(FACTION_NEUTRAL, FACTION_ERT)

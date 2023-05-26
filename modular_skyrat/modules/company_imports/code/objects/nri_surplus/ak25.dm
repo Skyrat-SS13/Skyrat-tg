@@ -40,7 +40,7 @@
 /obj/item/ammo_casing/realistic/a732x29
 	name = "7.32x29 bullet casing"
 	desc = "A 7.32x29mm M43 bullet casing."
-	icon_state = "762x39-casing"
+	icon_state = "56x40-casing"
 	caliber = CALIBER_732x29
 	projectile_type = /obj/projectile/bullet/a732x29
 
