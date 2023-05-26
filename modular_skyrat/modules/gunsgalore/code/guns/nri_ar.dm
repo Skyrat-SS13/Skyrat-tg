@@ -13,12 +13,13 @@
 	fire_delay = 2
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "nri_ar"
-	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/akm_fire.ogg'
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/ar2_fire.ogg'
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ar2_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ar2_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ar2_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ar2_magout.ogg'
 	alt_icons = TRUE
+	empty_alarm = TRUE
 
 /obj/item/gun/ballistic/automatic/nri_ar/Initialize(mapload)
 	. = ..()
