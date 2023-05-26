@@ -3332,7 +3332,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/medical/medbay/central)
 "aWH" = (
 /obj/effect/spawner/random/structure/crate,
@@ -4092,7 +4092,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/structure/crate_empty,
 /obj/effect/spawner/random/maintenance/three,
-/turf/open/floor/iron/smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "bgy" = (
 /obj/structure/chair/wood,
@@ -4223,11 +4223,12 @@
 /turf/open/floor/iron/recharge_floor,
 /area/station/science/research/abandoned)
 "bjm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plating,
-/area/station/maintenance/port)
+/area/station/maintenance/port/central)
 "bjs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -11914,7 +11915,7 @@
 "dyZ" = (
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "dzh" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -15954,7 +15955,8 @@
 	dir = 10
 	},
 /obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "eBr" = (
 /obj/effect/turf_decal/siding/wood,
@@ -17326,10 +17328,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
 "eVW" = (
-/obj/effect/spawner/random/trash/garbage,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port)
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/lesser)
 "eWc" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 10
@@ -18808,7 +18809,7 @@
 	},
 /obj/effect/spawner/random/structure/steam_vent,
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical/morgue)
 "frH" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -21252,6 +21253,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
 "ggA" = (
@@ -21651,6 +21653,7 @@
 	id = "sciencebridge";
 	name = "Bridge Shutters"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
 "gkk" = (
@@ -21844,6 +21847,7 @@
 "gmJ" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/item/storage/box/lights/mixed,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "gmL" = (
@@ -22667,12 +22671,10 @@
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/hallway/primary/fore)
 "gzy" = (
-/obj/machinery/light/warm/directional/west,
-/obj/machinery/airalarm/directional/west,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet/blue,
-/area/station/command/heads_quarters/cmo)
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/security/brig)
 "gzC" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -32897,13 +32899,7 @@
 /turf/open/floor/iron/smooth_edge,
 /area/station/engineering/lobby)
 "jtP" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/lesser)
+)
 "jtX" = (
 /obj/machinery/computer/station_alert,
 /obj/structure/sign/nanotrasen{
@@ -43791,7 +43787,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "mrl" = (
 /obj/structure/disposalpipe/segment{
@@ -46805,11 +46801,12 @@
 /area/station/medical/surgery)
 "nfl" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
-/area/station/maintenance/department/medical/central)
+/area/station/maintenance/starboard/greater)
 "nfr" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -48768,6 +48765,7 @@
 "nHD" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/item/storage/box/lights/mixed,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/brig)
 "nHY" = (
@@ -48883,6 +48881,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
 "nJe" = (
@@ -55677,7 +55676,7 @@
 "pCB" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical/morgue)
 "pCD" = (
 /obj/effect/turf_decal/bot,
@@ -56555,7 +56554,7 @@
 /area/station/maintenance/department/engine/atmos/lesser)
 "pPp" = (
 /obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical/morgue)
 "pPN" = (
 /obj/structure/window/reinforced/spawner/directional/west,
@@ -64963,7 +64962,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/structure/crate_empty,
 /obj/effect/spawner/random/maintenance/three,
-/turf/open/floor/iron/smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "sgn" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -65514,7 +65513,7 @@
 	},
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "soM" = (
 /obj/structure/cable,
@@ -67206,7 +67205,8 @@
 /area/station/engineering/power_room)
 "sKs" = (
 /obj/effect/spawner/random/structure/steam_vent,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/station/maintenance/starboard/lesser)
 "sKu" = (
 /obj/structure/cable,
@@ -68624,7 +68624,8 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/catwalk_floor/iron_smooth,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/station/maintenance/port)
 "tdO" = (
 /obj/machinery/door/firedoor,
@@ -68826,6 +68827,7 @@
 	dir = 10
 	},
 /obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
 "tgT" = (
@@ -73660,6 +73662,14 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/gravity_generator)
+"uvE" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/greater)
 "uvK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -74359,6 +74369,7 @@
 	dir = 9
 	},
 /obj/structure/sign/poster/random/directional/east,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
 "uEI" = (
@@ -75388,11 +75399,11 @@
 /turf/open/floor/vault,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "uTd" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/ordnance_maint)
+/area/station/maintenance/department/security/brig)
 "uTh" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -107662,7 +107673,7 @@ wvh
 oZv
 wUU
 eyy
-uTd
+iKf
 uvj
 ktn
 uvj
@@ -108253,7 +108264,7 @@ kZJ
 kRE
 pkR
 nhU
-bjm
+lAC
 nhU
 nMv
 nhU
@@ -108767,7 +108778,7 @@ krh
 fZT
 pkR
 nhU
-eVW
+bJj
 lMS
 ipg
 xMq
@@ -109432,7 +109443,7 @@ ttw
 dWX
 dWX
 mIm
-tvv
+cUd
 tgT
 jBx
 pCQ
@@ -110860,7 +110871,7 @@ kug
 dSI
 toq
 eYa
-xLt
+jtP
 tjr
 vZZ
 jCo
@@ -116944,7 +116955,7 @@ uHZ
 knA
 rPI
 cnC
-ulA
+bjm
 xSN
 irk
 qCX
@@ -125419,13 +125430,13 @@ ecR
 ssV
 ssV
 ecR
-ecR
+uvE
 ggz
 ssV
 ecR
 aNK
 aNK
-aNK
+nfl
 sIS
 lxD
 cVF
@@ -127700,8 +127711,8 @@ ndR
 fTi
 fTi
 hmN
-fTi
-oUo
+gzy
+uTd
 hmN
 hmN
 pWC
@@ -127755,7 +127766,7 @@ aeN
 pMm
 mLT
 rWS
-mdf
+eVW
 onP
 tJv
 izK
@@ -128516,7 +128527,7 @@ udg
 gtH
 xud
 rMk
-jtP
+bls
 vWC
 vWC
 vWC
@@ -129503,7 +129514,7 @@ ttw
 aqy
 xMq
 mjX
-heM
+rMY
 kjL
 xMq
 kbK
