@@ -1,0 +1,19 @@
+name: PR Labeler
+
+on:
+  push:
+    branches:
+      - master
+  pull_request_target:
+
+jobs:
+  Label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply labels based on changed files
+        if: github.event_name != 'push'
+        uses: actions/labeler@main
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          sync-labels: true
+          configuration-path: .github/labeler.yml
