@@ -1,6 +1,6 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
-#define NIGHTSHIFT_COLOR_MODIFIER 0.10
+#define NIGHTSHIFT_COLOR_MODIFIER 0.15
 
 /atom
 	light_power = 1.25
@@ -10,13 +10,13 @@
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
-	fire_colour = "#D47F9B"
-	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	fire_colour = COLOR_FIRE_LIGHT_RED
+	bulb_colour = COLOR_OFF_WHITE
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
-	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
-	bulb_low_power_brightness_mul = 0.4
-	bulb_low_power_pow_min = 0.4
+	bulb_low_power_colour = LIGHT_COLOR_BROWN
+	bulb_low_power_brightness_mul = 0.5
+	bulb_low_power_pow_min = 0.5
 	bulb_emergency_colour = LIGHT_COLOR_INTENSE_RED
 	bulb_major_emergency_brightness_mul = 0.7
 	power_consumption_rate = 5.62
@@ -117,7 +117,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_righthand.dmi'
-	
+
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)
