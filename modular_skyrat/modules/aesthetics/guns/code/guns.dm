@@ -375,6 +375,22 @@
 	name = ".244 Acia surplus casing"
 	desc = "A .244 surplus bullet casing."
 
+// no better place to put these overrides lmao
+
+/obj/item/ammo_box/a762
+	caliber = CALIBER_A762
+
+// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
+/obj/item/ammo_casing/a762/lionhunter
+	name = "lionhunter's casing"
+	desc = "There's something unnatural about this casing."
+	can_be_printed = FALSE
+
+/obj/item/ammo_casing/a762/enchanted
+	name = "enchanted .244 Acia casing"
+	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
+	can_be_printed = FALSE
+
 /obj/item/ammo_casing/a556
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
@@ -540,8 +556,8 @@
 
 /obj/item/ammo_casing/c38/trac
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
-							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
+						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
+						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/dumdum
@@ -549,12 +565,12 @@
 
 /obj/item/ammo_casing/c38/hotshot
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/iceblox
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
 	advanced_print_req = TRUE
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot

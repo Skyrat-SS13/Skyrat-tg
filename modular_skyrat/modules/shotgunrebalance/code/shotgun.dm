@@ -21,9 +21,9 @@
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7.5,
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2.5,
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/pt20
@@ -107,7 +107,7 @@
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 5)
+						/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 5)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
@@ -129,8 +129,8 @@
 	fire_sound = 'sound/weapons/taser.ogg'
 	harmful = FALSE
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 5)
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 5)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
@@ -162,8 +162,8 @@
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
+						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
@@ -198,7 +198,7 @@
 	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5)
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5)
 	pellets = 5
 	variance = 20
 	advanced_print_req = TRUE

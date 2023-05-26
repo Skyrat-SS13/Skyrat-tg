@@ -262,7 +262,7 @@
 	var/obj/item/ammo_casing/our_casing = casing_type
 
 	if(initial(our_casing.harmful) && !allowed_harmful)
-		error_message = "SYSTEM CORRUPTION DETECTED, PLEASE SUBMIT SUPPORT TICKET"
+		error_message = "SYSTEM CORRUPTION DETECTED, PLEASE EJECT CONTAINER AND SUBMIT SUPPORT TICKET"
 		error_type = "bad"
 		if(!hacked)
 			return
