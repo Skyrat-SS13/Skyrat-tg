@@ -147,32 +147,8 @@
 
 /obj/projectile/bullet/a762/ap
 	name = ".244 armor-piercing bullet"
-	damage = 45
-	armour_penetration = 60
-
-/*
-*	5.56x45mm (???)
-*/
-
-// Very good at piercing armour at short range, not as good at going through armour at over 100m. But this is SS13...  //I have no fucking clue why there's 2 separate instances of 5.56 but I won't remove this until I know shit won't break entirely -DF
-
-/// The 5.56 you see pretty much everyone under NATO use.
-#define CALIBER_A556x45 "a556x45"
-
-/obj/item/ammo_casing/a556x45
-	name = "5.56x45mm bullet casing"
-	desc = "A 5.56mm rubber bullet casing."
-	caliber = CALIBER_A556x45
-	projectile_type = /obj/projectile/bullet/a556x45
-
-/obj/projectile/bullet/a556x45
-	name = "5.56x45mm bullet"
 	damage = 50
-	armour_penetration = 20
-	stamina = 10
-	speed = 0.2
-	wound_bonus = 20
-	bare_wound_bonus = 10
+	armour_penetration = 60
 
 /*
 *	.34 ACP
