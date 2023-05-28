@@ -455,8 +455,8 @@
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
 		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
+			RESKIN_ICON_STATE = "peacekeeper_white",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_white"
 		)
 	)
 
@@ -474,7 +474,8 @@
 
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
-	worn_icon_state = "riot_ad" //replaces the NT on the back
+	icon_state = "riot_ad" //replaces the NT on the back
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 
 //Warden's Vest
