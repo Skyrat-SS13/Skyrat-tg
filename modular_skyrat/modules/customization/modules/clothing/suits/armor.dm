@@ -1,16 +1,5 @@
 // MODULAR ARMOUR
 
-// HEAD OF SECURITY
-
-/obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/cloak
-	name = "armored trenchcloak"
-	desc = "A trenchcoat enchanced with a special lightweight kevlar. This one appears to be designed to be draped over one's shoulders rather than worn normally.."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "trenchcloak"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	body_parts_covered = CHEST|ARMS|LEGS
-
 // WARDEN
 
 /obj/item/clothing/suit/armor/vest/warden/syndicate
