@@ -263,9 +263,6 @@
 	alt_titles = list(
 		"Nanotrasen Consultant",
 		"Nanotrasen Diplomat",
-		"Central Command Consultant",
-		"Nanotrasen Representative",
-		"Central Command Representative",
 	)
 
 /datum/job/orderly
