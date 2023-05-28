@@ -679,3 +679,8 @@
 	name = "Color-Block Hoodie"
 	item_path = /obj/item/clothing/suit/hooded/colorblockhoodie
 	ckeywhitelist = list("lolpopomg101")
+
+/datum/loadout_item/inhand/officialcat
+	name = "Official Cat Stamp"
+	item_path = /obj/item/stamp/cat
+	ckeywhitelist = list("kathrinbailey")
