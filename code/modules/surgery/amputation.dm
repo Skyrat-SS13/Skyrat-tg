@@ -19,7 +19,7 @@
 	removes_target_bodypart = TRUE // SKYRAT EDIT ADDITION - Surgically unremovable limbs
 
 /datum/surgery/amputation/can_start(mob/user, mob/living/patient)
-	if(HAS_TRAIT(target, TRAIT_NODISMEMBER))
+	if(HAS_TRAIT(patient, TRAIT_NODISMEMBER))
 		return FALSE
 	return ..()
 

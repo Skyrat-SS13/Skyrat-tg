@@ -1,3 +1,26 @@
+GLOBAL_LIST_INIT(allowed_forging_materials, list(
+	/datum/material/iron,
+	/datum/material/silver,
+	/datum/material/gold,
+	/datum/material/uranium,
+	/datum/material/bananium,
+	/datum/material/titanium,
+	/datum/material/runite,
+	/datum/material/adamantine,
+	/datum/material/mythril,
+	/datum/material/metalhydrogen,
+	/datum/material/runedmetal,
+	/datum/material/bronze,
+	/datum/material/hauntium,
+	/datum/material/alloy/plasteel,
+	/datum/material/alloy/plastitanium,
+	/datum/material/alloy/alien,
+	/datum/material/cobolterium,
+	/datum/material/copporcitite,
+	/datum/material/tinumium,
+	/datum/material/brussite,
+))
+
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
@@ -296,6 +319,9 @@
 
 /obj/item/stack/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
+	if(!(material_type in GLOB.allowed_forging_materials))
+		user.balloon_alert(user, "can only forge metal!")
+		return
 	if(length(tool.contents) > 0)
 		user.balloon_alert(user, "tongs are full already!")
 		return FALSE

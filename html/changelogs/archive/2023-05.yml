@@ -973,3 +973,140 @@
   vinylspiders:
   - bugfix: drowning in liquid that is not water will now give the appropriate message
       based on what kind of liquid it is
+2023-05-25:
+  Chadley:
+  - bugfix: fixes the HMS objective.
+  Guillaume Prata:
+  - balance: Plasmamen won't spawn with breathing masks anymore as their helmet has
+      maskless internals support now. Enjoy your moustache's accent plasmacooks!
+  Hatterhat:
+  - bugfix: SMART rifle rails are now printable after researching exotic ammunition
+      and electric weaponry. Please use responsibly.
+  Iajret:
+  - rscadd: Escape pods will not evacuate people at low alert level (disabled by default)
+  - rscadd: Escape pods can be emagged to evacuate even if alert is to low
+  - config: added config string to set minimum alert level for pods to work.
+  Jolly:
+  - rscdel: Removed a player reference from one of North Stars Automapper templates.
+  MTandi, coiledlamb:
+  - rscadd: Added test tubes and racks for them
+  - balance: All 30u bottles now have 50u volume and chem master/pandemic spawn tubes
+      instead of bottles
+  RatFromTheJungle:
+  - balance: changelings regenerate their chems slow, and have 25 less in total.
+  Ryll/Shaps:
+  - bugfix: Godmode now prevents people from suffering forced wounds
+  SkyratBot:
+  - refactor: honeycomb is now edible
+  - bugfix: all-in-one grinder now notifies the user when trying to dump an empty
+      bag
+  - bugfix: all-in-one grinder now accepts honeycomb from plant bags
+  - bugfix: Capturing CTF control points no longer requires the active hand to be
+      empty.
+  - admin: 'If you are on a downstream server using non-Latin fonts (e.g. Cyrillic)
+      for character/job names: The player panel encoding has been fixed so it should
+      show up properly for you now.'
+  - balance: You can no longer augment golems
+  - balance: You can no longer amputate undismemberable traits
+  - bugfix: Shaft Miners are now alerted of Icemoon storms, Clowns are naive, and
+      Curators are immune to the Tower of Babel again.
+  - qol: RPD and Pipe Pispenser UI tweaks for better navigation
+  - code_imp: RPD and Pipe Dispenser UI now on TS
+  - rscadd: Interdyne has released a new medication to treat those who are in the
+      wrong timeline!
+  - rscadd: Interdyne has also realized this is VERY profitable! They've begun arming
+      their operatives with an autoinjector.
+  - bugfix: You receive damage from tritium only when there are enough moles to make
+      it visible
+  - bugfix: Fixes the sparring contract. You can now spar with no stakes and just
+      for fun.
+  - balance: Hulk damage to portals lowered to 30 (Was 150)
+2023-05-26:
+  Melbert:
+  - bugfix: Fix being unable to wound people who are wounded
+  - balance: Milk no longer harms the potency of mushrooms. Apparently it's good for
+      them?
+  - balance: Radium now does slightly more tox damage than Uranium
+  - code_imp: Removed a ton of boilerplate from chem hydro interactions
+  SkyratBot:
+  - qol: Apc covers can now be repaired with a welder and replaced with an apc frame.
+  - bugfix: Plumbing RCD UI fixed
+  - qol: Adds a eye-dropper-like right-click function to the painting canvas UI. Right-Click
+      a pixel on the canvas while holding a painting tool to have it copy its color.
+  - qol: Also adds a right-click function to the color palette at the bottom of the
+      UI to allow users to set its colors without having to alternate between the
+      game window and the UI.
+  - qol: Lastly, a tooltip has been added near the top-left corner of the same UI
+      to let players know of these features.
+  - rscadd: Nanotrasen has uncovered a unique use for plasteel allowing the construction
+      of new machines capable of fabricating and distributing hardlight into a modular
+      barrier. These new machines are available via the advanced power manipulation
+      techweb.
+  - code_imp: Cat Surgeons are a bit more smarter about attacking threats to the world
+      around them on their endless pursuit for those felinid tails.
+  - bugfix: out of bounds when updating lights in lighting subsystem
+  - refactor: Refactors snipping cuffs into a bespoke cuffsnapping element, adding
+      support for delayed cuffsnipping. Adds this element to box cutters! Effectively
+      speaking everything is the same as usual.
+  - balance: Drawing small graffiti like paw/foot/claw prints, small brush dots and
+      short lines should cost half as many charges off your spraycan or crayon.
+  - balance: The cost of recoloring graffiti decals is now consistent with that of
+      drawing them.
+  - balance: Trying to suicide with an empty spraycan will now fail, because it's
+      empty. It's just that simple.
+  - bugfix: Spacesuits won't show 'you turn off x' if it's turned off automatically,
+      either from removing the power cell or it losing power.
+  TheSmallBlue and cats4gold:
+  - sound: Recent research concluded that the new elevator music was upping crewmate's
+      morale a bit too much, this has now been corrected via the replacement of said
+      music.
+  - code_imp: Added a new "in_order" variable to the looping sound datum, for when
+      you need sounds to play in order
+2023-05-27:
+  KathrinBailey:
+  - bugfix: Voidraptor smoke machine room in the chemistry lab can now be opened by
+      chemists/CMO.
+  - qol: Voidraptor chemlab reorganised for better accessibility and reduced roundstart
+      chores, so chemists can get to doing chemistry faster.
+  Melbert:
+  - bugfix: Fixed being unable to spraypaint things
+  - bugfix: Fixes being unable to amputate
+  - admin: Getting dusted by HMS gives a death log
+  Paxilmaniac:
+  - bugfix: Forging can only be done with metals, and not bone/wood/meat/paper/diamonds/whatever
+      else
+  SkyratBot:
+  - bugfix: runtime when sm processes gases in vacuum
+  - qol: sm will now get activated for the very first time only if there is more than
+      0.01 moles of a reactive gas present, so you can now safely install it in near
+      vacuum
+  - qol: sm will continue to process gasses only when there is above 0.01 moles of
+      the gas present else it just ignores it
+  - bugfix: Species that have longer arms than normal can now properly set their glove
+      offset to go low and meet their hand.
+  - bugfix: Test tubes can now be stored in chemistry smart fridges
+  - bugfix: graves can be closed again, but only with a shovel and not by hand.
+  - qol: you can put items in graves normally without throwing them in
+  - qol: examines & screentips for graves
+  - bugfix: rolling pin icon show's up correctly under the tools section in the crafting
+      menu i.e. for those recipes that require it
+  - bugfix: basketball hoop icon and other sprites that are not the standard `32 x
+      32` now show's up correctly in the crafting menu
+  YakumoChen:
+  - bugfix: Booze-O-Mats contain alcohol for synths again
+  - bugfix: Ghost Cafe dorms with fireplace contain usable wood now
+  - qol: Ghost Cafe now with Icecat clothing vendor. Consult your local tribal vending
+      station.
+  - qol: Ghost Cafe minerals for mixed drinks now are in the Booze-O-Mat. Now with
+      uranium!
+2023-05-28:
+  SkyratBot:
+  - bugfix: Fixed virus food being unsynthesizable by making it a hot reaction instead.
+      Now requires 600K to synthesize.
+  - bugfix: Coroner envirohelm (plasmaman helmet of coroner) now doesn't show as errors
+      when using flashlight mode.
+  - balance: Very small items like tape recorders now use 10 mat points instead of
+      5.
+  - bugfix: soap suicide
+  Stalkeros:
+  - sound: Rubber duck now quacks.
