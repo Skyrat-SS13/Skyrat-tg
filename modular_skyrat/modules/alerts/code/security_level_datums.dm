@@ -72,4 +72,4 @@
 	shuttle_call_time_mod = 0.25
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/gamma_alert.ogg'
 	looping_sound = 'modular_skyrat/modules/alerts/sound/security_levels/gamma_alert.ogg'
-	looping_sound_interval = 12 SECONDS
+	looping_sound_interval = 13 SECONDS
