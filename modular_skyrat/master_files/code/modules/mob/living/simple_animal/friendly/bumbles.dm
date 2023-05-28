@@ -16,7 +16,7 @@
 	speak_emote = list("buzzes")
 	friendly_verb_continuous = "bzzs"
 	friendly_verb_simple = "bzz"
-	butcher_results = list(/obj/item/reagent_containers/honeycomb = 2)
+	butcher_results = list(/obj/item/food/honeycomb = 2)
 	density = FALSE
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
