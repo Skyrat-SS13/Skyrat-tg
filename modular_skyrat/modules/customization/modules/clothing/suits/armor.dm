@@ -8,6 +8,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "warden_syndie"
+	current_skin = "warden_syndie" //prevents reskinning
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 // HEAD OF PERSONNEL

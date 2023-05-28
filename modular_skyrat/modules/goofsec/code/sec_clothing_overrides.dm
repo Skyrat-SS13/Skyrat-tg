@@ -469,7 +469,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_bulletproof"
-	body_parts_covered = CHEST|GROIN|ARMS // Our sprite has groin and arm protections, so we get it too.
+	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
@@ -639,7 +639,7 @@
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "sunhudsec"
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
-	current_skin = "sunhudsec"	//prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
+	current_skin = "sunhudsec" //prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -692,7 +692,7 @@
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
-	current_skin = "security"	//prevents reskinning
+	current_skin = "security" //prevents reskinning
 
 /obj/item/storage/belt/holster
 	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
@@ -755,7 +755,7 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
-	current_skin = "rsecurity"	//prevents reskinning
+	current_skin = "rsecurity" //prevents reskinning
 
 /obj/item/clothing/under/rank/security/warden/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
@@ -804,6 +804,7 @@
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sec"
+	current_skin = "armor_sec" //prevents reskinning
 
 /*
 *	FEET
@@ -814,7 +815,7 @@
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
-	current_skin = "jackboots_sec"	//prevents reskinning
+	current_skin = "jackboots_sec" //prevents reskinning
 
 //Finally, a few description changes for items that couldn't get a resprite.
 /obj/item/clothing/head/bio_hood/security
