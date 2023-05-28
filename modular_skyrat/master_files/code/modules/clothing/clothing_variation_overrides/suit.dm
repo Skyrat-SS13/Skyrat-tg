@@ -164,6 +164,12 @@
 /obj/item/clothing/suit/apron/overalls
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
+/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/warden
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
 /obj/item/clothing/suit/armor/vest/leather
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 

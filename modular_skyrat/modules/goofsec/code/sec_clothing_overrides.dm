@@ -535,6 +535,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "hosformal_blue"
+	current_skin = "hosformal_blue"	//prevents reskinning (but not toggling!)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /*
 * UNDER
