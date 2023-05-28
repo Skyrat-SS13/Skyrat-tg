@@ -11,7 +11,6 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
-	invisibility = INVISIBILITY_MAXIMUM //SKYRAT EDIT ADDITION
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
@@ -54,13 +53,6 @@
 
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN
-	new /obj/effect/singularity_creation(loc)
-
-	addtimer(CALLBACK(src, PROC_REF(make_visible)), 62)
-
-	energy = starting_energy
-	//SKYRAT EDIT END
 
 	START_PROCESSING(SSsinguloprocess, src)
 	SSpoints_of_interest.make_point_of_interest(src)
