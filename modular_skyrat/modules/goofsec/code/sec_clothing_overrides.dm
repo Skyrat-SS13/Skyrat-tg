@@ -462,6 +462,30 @@
 
 /obj/item/clothing/suit/armor/hos
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Greatcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hos",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hos"
+		),
+		"Trenchcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hostrench",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hostrench"
+		),
+		"Trenchcloak" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "trenchcloak",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "trenchcloak"
+		),
+	)
+
+/obj/item/clothing/suit/armor/hos/trenchcoat/winter
+	current_skin = "hoswinter" //prevents reskinning
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
@@ -487,6 +511,7 @@
 /obj/item/clothing/suit/armor/vest/warden/alt //un-overrides this since its sprite is TG
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+	current_skin = "warden_jacket" //prevents reskinning
 
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
