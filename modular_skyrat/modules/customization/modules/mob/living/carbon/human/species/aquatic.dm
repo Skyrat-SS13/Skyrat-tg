@@ -1,5 +1,5 @@
 /datum/species/aquatic
-	name = "Aquatic"
+	name = "Akula (Generic)"
 	id = SPECIES_AQUATIC
 	species_traits = list(
 		MUTCOLORS,
