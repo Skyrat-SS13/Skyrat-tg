@@ -67,7 +67,7 @@
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/parade = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/parade/female = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial = 1,
-		/obj/item/clothing/suit/toggle/hop_parade = 1,
+		/obj/item/clothing/suit/armor/vest/hop/hop_formal = 1,
 		/obj/item/clothing/neck/cloak/hop = 1,
 		/obj/item/clothing/neck/mantle/hopmantle = 1,
 		/obj/item/storage/backpack/head_of_personnel = 1,
