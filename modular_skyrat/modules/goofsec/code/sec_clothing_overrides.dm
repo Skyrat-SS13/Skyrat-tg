@@ -502,6 +502,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 
+/obj/item/clothing/suit/armor/riot/knight //This needs to be sent back to its original .dmis
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
