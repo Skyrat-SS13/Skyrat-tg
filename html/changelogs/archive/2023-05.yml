@@ -1110,3 +1110,26 @@
   - bugfix: soap suicide
   Stalkeros:
   - sound: Rubber duck now quacks.
+2023-05-29:
+  LT3:
+  - qol: Being connected to an IV now has a visual indicator
+  SkyratBot:
+  - refactor: Chickens have been refactored into basic mobs, expect them to be a tad
+      bit smarter.
+  - rscadd: Made disposals outlets launch with more range depending on the setting
+      used
+  - rscadd: Made disposals outlets emag effect irreversible without reconstruction
+  - qol: Objects have a variable to adjust them visually when they're wrenched or
+      spawned on a table
+  - refactor: Removed redundant code that had similar purpose, moved `obj` wrenching
+      logic into the `objs.dm`
+  - qol: food/slime processor can be moved on table and adjusts to it when wrenched
+  - server: All logs are now formatted in json, excluding perf and investigations
+  - image: New air alarm sprite
+  - bugfix: Air alarm properly updates status when powered
+  - rscadd: Elevator music now cuts off instantly when exiting the elevator and is
+      inaudible from the corridor outside.
+  - rscadd: Elevator music can be disabled via a preference.
+  - bugfix: Several elevators which should not have played music now do not.
+  axietheaxolotl / viro:
+  - image: new medkit sprites, again.
