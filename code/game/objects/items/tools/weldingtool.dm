@@ -57,7 +57,7 @@
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_HANDS)
+	AddElement(/datum/element/update_icon_updates_onmob)
 	AddElement(/datum/element/tool_flash, light_range)
 	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
 
@@ -91,7 +91,6 @@
 		burned_fuel_for += seconds_per_tick
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 			use(TRUE)
-			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		update_appearance()
 
 	//Welders left on now use up fuel, but lets not have them run out quite that fast
@@ -101,7 +100,6 @@
 		update_appearance()
 		if(!can_off_process)
 			STOP_PROCESSING(SSobj, src)
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		return
 
 	//This is to start fires. process() is only called if the welder is on.
@@ -225,6 +223,7 @@
 
 	if(get_fuel() >= used)
 		reagents.remove_reagent(/datum/reagent/fuel, used)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		check_fuel()
 		return TRUE
 	else
@@ -355,10 +354,10 @@
 /obj/item/weldingtool/largetank/empty
 	starting_fuel = FALSE
 
-/obj/item/weldingtool/largetank/cyborg //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
 	desc = "An advanced welder designed to be used in robotic systems. Custom framework doubles the speed of welding."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "indwelder_cyborg"
 	toolspeed = 0.5
 
@@ -397,6 +396,7 @@
 /obj/item/weldingtool/abductor/process()
 	if(get_fuel() <= max_fuel)
 		reagents.add_reagent(/datum/reagent/fuel, 1)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 	..()
 
 /obj/item/weldingtool/hugetank
@@ -427,5 +427,7 @@
 	if(get_fuel() < max_fuel && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10
 		reagents.add_reagent(/datum/reagent/fuel, 1)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+
 
 #undef WELDER_FUEL_BURN_INTERVAL

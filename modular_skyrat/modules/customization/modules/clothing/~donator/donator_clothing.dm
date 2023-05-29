@@ -1109,6 +1109,8 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
+
 // Donation reward for Kay-Nite
 /obj/item/clothing/glasses/eyepatch/rosecolored
 	name = "rose-colored eyepatch"
@@ -1488,7 +1490,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-//Donation reward for Razurath
+//Public donation reward for Razurath
 /obj/item/clothing/suit/toggle/digicoat/glitched
 	name = "hacked digicoat"
 	desc = "Glitched images display across the back. Cool!"

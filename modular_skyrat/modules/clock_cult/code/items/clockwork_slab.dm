@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 /obj/item/clockwork/clockwork_slab/dropped(mob/user)
 	. = ..()
 	//Clear quickbinds
-	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
+	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
 		script.Remove(user)
 
 	if(active_scripture)
@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		return
 
 	//Grant quickbound spells
-	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
+	for(var/datum/action/innate/clockcult/quick_bind/script as anything in quick_bound_scriptures)
 		script.Grant(user)
 
 	user.update_action_buttons()
@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			"purchased" = (scripture.type in purchased_scriptures),
 			"cog_cost" = scripture.cogs_required,
 			"typepath" = scripture.type,
+			"research_required" = !!(scripture.research_required ? !(scripture.type in GLOB.clockwork_research_unlocked_scriptures) : FALSE),
 		)
 		//Add it to the correct list
 		data["scriptures"] += list(scripture_data)
@@ -211,6 +212,10 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 				scripture.begin_invoke(living_user, src)
 
 			else
+				if(scripture.research_required && !(scripture.type in GLOB.clockwork_research_unlocked_scriptures))
+					living_user.balloon_alert(living_user, "research required!")
+					return FALSE
+
 				if(cogs >= scripture.cogs_required)
 					cogs -= scripture.cogs_required
 					living_user.balloon_alert(living_user, "[scripture.name] purchased")

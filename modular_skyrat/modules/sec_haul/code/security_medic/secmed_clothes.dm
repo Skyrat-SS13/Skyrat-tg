@@ -96,8 +96,8 @@
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic
 	name = "security medic helmet"
 	desc = "A standard issue combat helmet for security medics. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "secmed_helmet"
 	base_icon_state = "secmed_helmet"
 	can_toggle = FALSE

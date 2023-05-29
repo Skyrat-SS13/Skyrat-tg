@@ -7,13 +7,6 @@
 		damage += faction_bonus_force
 	.=..()
 
-/obj/projectile/bullet/reusable/arrow/wood
-	name = "wooden arrow"
-	desc = "Woosh!"
-	damage = 25
-	icon_state = "arrow"
-	ammo_type = /obj/item/ammo_casing/caseless/arrow/wood
-
 /obj/projectile/bullet/reusable/arrow/ash
 	name = "ashen arrow"
 	desc = "An arrow made of hardened ash."

@@ -36,8 +36,7 @@
 		to_chat(user, span_warning("You can't emote at this time."))
 		return FALSE
 
-	var/prefix_log_message = "(SUBTLE) [subtle_message]"
-	user.log_message(prefix_log_message, LOG_EMOTE)
+	user.log_message(subtle_message, LOG_SUBTLE)
 
 	var/space = should_have_space_before_emote(html_decode(subtle_emote)[1]) ? " " : ""
 
