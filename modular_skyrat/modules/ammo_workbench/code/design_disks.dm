@@ -3,6 +3,7 @@
 	desc = "You shouldn't be seeing this!"
 
 /obj/item/disk/ammo_workbench/proc/set_vars(obj/machinery/ammo_workbench/ammobench)
+	return
 
 /obj/item/disk/ammo_workbench/advanced
 	name = "advanced munitions datadisk"
@@ -14,7 +15,7 @@
 	ammobench.allowed_advanced = TRUE
 
 /datum/design/disk/ammo_workbench_lethal
-	name = "Ammo Workbench: Advanced Munitions Datadisk"
+	name = "Ammo Workbench Advanced Munitions Datadisk"
 	id = "ammoworkbench_disk_lethal"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)

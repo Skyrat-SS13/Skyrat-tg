@@ -2,8 +2,8 @@
 	/// Can this bullet casing be printed at an ammunition workbench?
 	var/can_be_printed = TRUE
 	/// If it can be printed, does this casing require an advanced ammunition datadisk? Mainly for specialized ammo.
-	/// Rubbers aren't advanced. Standard ammo isn't advanced. Hollowpoints probably don't count.
-	/// Think more specialized or weird, niche ammo, like armor-piercing, incendiary, or God forbid, phasic.
+	/// Rubbers aren't advanced. Standard ammo (or FMJ if you're particularly pedantic) isn't advanced.
+	/// Think more specialized or weird, niche ammo, like armor-piercing, incendiary, hollowpoint, or God forbid, phasic.
 	var/advanced_print_req = FALSE
 
 // whatever goblin decided to spread out bullets over like 3 files and god knows however many overrides i wish you a very stubbed toe
