@@ -1109,6 +1109,8 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
+
 // Donation reward for Kay-Nite
 /obj/item/clothing/glasses/eyepatch/rosecolored
 	name = "rose-colored eyepatch"
