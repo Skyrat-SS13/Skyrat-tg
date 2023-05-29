@@ -3,7 +3,7 @@
 /// How many wetstacks an Akula will get upon creation
 #define WETSTACK_INITIAL 5
 /// How many wetstacks an Akula needs to activate the TRAIT_SLIPPERY trait
-#define WETSTACK_THRESHOLD 5
+#define WETSTACK_THRESHOLD 3
 
 /datum/species/akula
 	name = "Akula"

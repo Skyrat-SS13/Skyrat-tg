@@ -6,7 +6,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/rank/azulean/old_blood
-	name = "\improper Oldblood's royal regalia"
+	name = "\improper Agurkrral Oldblood's royal regalia"
 	desc = "A service dress uniform of the Old Principalities of Agurkrral, a fashion shared by the majority of the nobility. \
 		These outfits are known to normally be accessorized with gold trims and other rare metals, \
 		constructed and treated specially for use in underwater environments; the dwellings of most of the crown's old guard. \n\n\
@@ -16,12 +16,12 @@
 	icon_state = "oldblood"
 
 /obj/item/clothing/under/rank/azulean/old_blood/skirt
-	name = "\improper Oldblood's royal regalia"
+	name = "\improper Agurkrral Oldblood's royal regalia"
 	icon_state = "oldblood_skirt"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/azulean/upstart
-	name = "\improper Upstart's noble getup"
+	name = "\improper Agurkrral Upstart's noble getup"
 	desc = "Patterned off the dress uniforms of the Old Principalities, this sort of style belongs to the border princes of the New Principalities. \
 		These outfits rebuke tradition to incorporate the use of imported leather, using reinforced clasps instead of shiny golden buttons. \n\n\
 		Few decorations are normally seen in these clothing, owing to the tendency of their wearers to 'gallivant.' \
@@ -30,6 +30,6 @@
 	icon_state = "upstart"
 
 /obj/item/clothing/under/rank/azulean/upstart/skirt
-	name = "\improper Upstart's noble getup"
+	name = "\improper Agurkrral Upstart's noble getup"
 	icon_state = "upstart_skirt"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
