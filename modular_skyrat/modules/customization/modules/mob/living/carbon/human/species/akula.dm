@@ -13,7 +13,7 @@
 		OFFSET_GLASSES = list(0, 1),
 		OFFSET_EARS = list(0, 2),
 		OFFSET_FACEMASK = list(0, 2),
-		OFFSET_HEAD = list(0, 1),
+		OFFSET_HEAD = list(0, 2),
 		OFFSET_HAIR = list(0, 1),
 	)
 	eyes_icon = 'modular_skyrat/modules/organs/icons/akula_eyes.dmi'

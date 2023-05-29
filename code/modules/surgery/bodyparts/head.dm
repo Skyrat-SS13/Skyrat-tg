@@ -282,8 +282,8 @@
 			if(hair_gradient_overlay)
 				// SKYRAT ADD - Hair offset
 				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
-					hair_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
-					hair_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+					hair_gradient_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+					hair_gradient_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
 				// SKYRAT ADD END
 				. += hair_gradient_overlay
 
