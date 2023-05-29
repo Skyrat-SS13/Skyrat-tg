@@ -292,6 +292,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Witch Hat"
 	item_path = /obj/item/clothing/head/wizard/marisa/fake
 
+/datum/loadout_item/head/akula_helmet
+	name = "Agurkrral Helmet"
+	item_path = /obj/item/clothing/head/helmet/space/akula_wetsuit
+
 /*
 *	MISC
 */

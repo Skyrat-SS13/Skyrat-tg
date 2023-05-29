@@ -59,6 +59,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Rainbow Jumpskirt"
 	item_path = /obj/item/clothing/under/color/jumpskirt/rainbow
 
+
+/datum/loadout_item/under/jumpsuit/akula_wetsuit
+	name = "Agurkrral Wetsuit"
+	item_path = /obj/item/clothing/under/akula_wetsuit
+
 /datum/loadout_item/under/jumpsuit/impcap
 	name = "Captain's Naval Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
