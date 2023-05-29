@@ -262,6 +262,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Witch Robe"
 	item_path = /obj/item/clothing/suit/wizrobe/marisa/fake
 
+/datum/loadout_item/suit/techpriest
+	name = "Techpriest Robe"
+	item_path = /obj/item/clothing/suit/hooded/techpriest
+
 /*
 *	SEASONAL
 */
