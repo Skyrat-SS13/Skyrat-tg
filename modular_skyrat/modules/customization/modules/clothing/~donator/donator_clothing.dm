@@ -723,13 +723,6 @@
 	icon_state = "ana_envirosuit"
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/bio_hood/jax
-	name = "xuracorp biohazard hood"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-	icon_state = "bio_hood_jax"
-	desc = "A hood composed of proprietary material from a Nanotrasen Affiliate."
-
 /obj/item/clothing/under/plasmaman/jax2
 	name = "xuracorp hazard underfitting"
 	desc = "A hazard suit fitted with bio-resistant fibers. Utilizes self-sterilizing pumps fitted in the back."
@@ -737,24 +730,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
-	name = "xuracorp enameled labcoat"
-	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "labcoat_xc"
-	body_parts_covered = CHEST|ARMS|LEGS
-	armor_type = /datum/armor/rd_jax
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 // Donation reward for Raxraus
-
-/datum/armor/rd_jax
-	melee = 5
-	bio = 80
-	fire = 80
-	acid = 70
-
 /obj/item/clothing/under/rax_turtleneck
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
