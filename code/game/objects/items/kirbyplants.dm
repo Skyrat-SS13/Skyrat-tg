@@ -69,22 +69,14 @@
 
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
-<<<<<<< HEAD
-	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 25)
-=======
-	for(var/i in 1 to 24)
->>>>>>> e155d49a8fb (Potted plant revival (#75602))
+	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 24)
 		var/number
 		if(i < 10)
 			number = "0[i]"
 		else
 			number = "[i]"
 		random_plant_states += "plant-[number]"
-<<<<<<< HEAD
 	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE - ORIGINAL:random_plant_states += "applebush"
-=======
-	random_plant_states += "applebush"
->>>>>>> e155d49a8fb (Potted plant revival (#75602))
 
 /obj/item/kirbyplants/dead
 	name = "dead potted plant"
