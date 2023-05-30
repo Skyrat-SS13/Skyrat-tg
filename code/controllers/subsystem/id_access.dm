@@ -195,6 +195,7 @@ SUBSYSTEM_DEF(id_access)
 			"pdas" = list(),
 		),
 	)
+
 	var/list/station_job_trims = subtypesof(/datum/id_trim/job)
 	for(var/trim_path in station_job_trims)
 		var/datum/id_trim/job/trim = trim_singletons_by_path[trim_path]

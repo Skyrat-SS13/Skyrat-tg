@@ -924,6 +924,7 @@ SUBSYSTEM_DEF(job)
 		destination = pick(GLOB.jobspawn_overrides[M.mind.assigned_role.title])
 		destination.JoinPlayerHere(M, FALSE)
 		return TRUE
+
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
 		destination.JoinPlayerHere(M, buckle)
