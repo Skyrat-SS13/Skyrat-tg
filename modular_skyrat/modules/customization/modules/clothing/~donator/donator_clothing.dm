@@ -697,6 +697,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax2
+	name = "azulean's environment helmet"
+	desc = "An Azulean-made Enviro-Helmet, adjusted for the unique skull shape typical of the species. Alongside the standard features, it includes an embossment of the Azulean Crest on the back of the helmet."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anahead"
+
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
@@ -704,6 +713,14 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
+
+// Donation reward for CandleJax
+/obj/item/clothing/under/plasmaman/candlejax2
+	name = "azulean's environment suit"
+	desc = "An Azulean-made Enviro-Suit. Fitted to the Azulean form, it has surplus containment fabric designed to give the solidified mass of plasma that was once a tail some breathing room."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "ana_envirosuit"
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/bio_hood/jax
