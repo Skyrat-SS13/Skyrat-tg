@@ -1,3 +1,5 @@
+// SKYRAT EDIT REMOVE BEGIN (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
+/*
 // Defines for the ballmer peak.
 #define BALLMER_PEAK_LOW_END 12.9
 #define BALLMER_PEAK_HIGH_END 13.8
@@ -5,6 +7,8 @@
 
 /// The threshld which determine if someone is tipsy vs drunk
 #define TIPSY_THRESHOLD 6
+*/
+// SKYRAT EDIT REMOVE END (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
 
 /**
  * The drunk status effect.
@@ -132,6 +136,8 @@
 	if(drunk_value < TIPSY_THRESHOLD)
 		owner.apply_status_effect(/datum/status_effect/inebriated/tipsy, drunk_value)
 
+// SKYRAT EDIT REMOVE BEGIN (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
+/*
 /datum/status_effect/inebriated/drunk/on_tick_effects()
 	// Handle the Ballmer Peak.
 	// If our owner is a scientist (has the trait "TRAIT_BALLMER_SCIENTIST"), there's a 5% chance
@@ -194,6 +200,8 @@
 	// And finally, over 100 - let's be honest, you shouldn't be alive by now.
 	if(drunk_value >= 101)
 		owner.adjustToxLoss(2)
+*/
+// SKYRAT EDIT REMOVE END (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
 
 /// Status effect for being fully drunk (not tipsy).
 /atom/movable/screen/alert/status_effect/drunk
@@ -202,8 +210,12 @@
 		motor skills, and mental cognition. Make sure to act like it."
 	icon_state = "drunk"
 
+// SKYRAT EDIT REMOVE BEGIN (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
+/*
 #undef BALLMER_PEAK_LOW_END
 #undef BALLMER_PEAK_HIGH_END
 #undef BALLMER_PEAK_WINDOWS_ME
 
 #undef TIPSY_THRESHOLD
+*/
+// SKYRAT EDIT REMOVE END (moved to modular_skyrat/master_files/code/datums/status_effects/debuffs/drunk.dm)
