@@ -339,7 +339,6 @@
 		balloon_alert(user, "[magazine_wording] unloaded")
 	update_appearance()
 
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 /obj/item/gun/ballistic/can_shoot()
 	return chambered?.loaded_projectile
@@ -452,7 +451,6 @@
 			bolt_locked = TRUE
 			playsound(src, bolt_drop_sound, bolt_drop_sound_volume)
 			update_appearance()
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 ///postfire empty checks for bolt locking and sound alarms
 /obj/item/gun/ballistic/proc/postfire_empty_checks(last_shot_succeeded)
