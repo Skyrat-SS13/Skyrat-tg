@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(global_wound_types, list(
 	WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
 	WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
 	WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate),
-	WOUND_MUSCLE = list(/datum/wound/muscle/severe, /datum/wound/muscle/moderate),
+	WOUND_MUSCLE = list(/datum/wound/muscle/severe, /datum/wound/muscle/moderate), /* SKYRAT EDIT ADD */
 ))
 
 // every single type of wound that can be rolled naturally, in case you need to pull a random one
@@ -74,8 +74,10 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(
 	/datum/wound/burn/critical,
 	/datum/wound/burn/severe,
 	/datum/wound/burn/moderate,
+	/* SKYRAT EDIT ADD START */
 	/datum/wound/muscle/severe,
 	/datum/wound/muscle/moderate,
+	/* SKYRAT EDIT ADD END */
 ))
 
 
