@@ -15,8 +15,8 @@
 /obj/item/clothing/suit/armor/vest/russian/nri
 	name = "\improper B42M combined armor vest"
 	desc = "A B42M combined body armor designed to protect the torso from bullets, shrapnel and blunt force. This vest performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the bodies) of insurgents."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_green_armor"
 	armor_type = /datum/armor/russian_nri
@@ -47,8 +47,8 @@
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_heavy_armor"
 	armor_type = /datum/armor/heavy_nri
@@ -72,9 +72,8 @@
 /obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper REDUT armor system"
 	desc = "A strong set of full-body armor designed for harsh environments. After the NRI withdrew them, these models found their way onto the black market and have been rarely used by freelance mercenaries and planetary militias ever since, because of their relatively low cost."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "russian_heavy_armor_old"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	armor_type = /datum/armor/nri_old
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
