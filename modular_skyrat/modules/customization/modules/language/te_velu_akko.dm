@@ -4,7 +4,7 @@
         Records show that the King had personally created it so that those with little education, including aliens, could integrate easier with Azulean society. \
         To this end, the language is known for its rapid pace of learning, the written portion being readily mastered within two weeks, a tongue characterized by hard consonants followed by soft vowel strings. \
         An underwater component exists, fleshed out and codified by deepwater reformists in the later portions of Akko the Uniter's life; featuring great emphasis on close physical proximity, variations of pitch, high-frequency sounds, and clicking. \
-        Alien tourists frequently either seek temporary genemods, or specialized organisms that dwell in the throat to be able to speak this portion., \n\
+        Alien tourists frequently either seek temporary genemods, or specialized organisms that dwell in the throat to be able to speak this portion., \n\n\
         Differences exist in dialect between the Old Principalities and New Principalities; \
         The Old sounds far slower and smoother, words flowing into each other in a very melodic way; befitting of the language's name. \
         The New is much faster, more harsh, and more aggressive in an attempt to be more efficient; however, rapidly adopting new loanwords from alien tongues. \

@@ -208,7 +208,7 @@
 	/// Variable for storing hats which are worn inside the bubble helmet
 	var/obj/item/clothing/head/attached_hat
 	flags_inv = null
-	flags_cover = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF
+	flags_cover = HEADCOVERSMOUTH | PEPPERPROOF
 
 	/// Helmet armor
 /datum/armor/wetsuit_helmet
