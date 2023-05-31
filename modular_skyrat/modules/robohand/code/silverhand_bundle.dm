@@ -9,7 +9,7 @@
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
-	new /obj/item/clothing/suit/armor/bulletproof/robohand(src)
+	new /obj/item/clothing/suit/armor/bulletproof/old(src)
 	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
 	new /obj/item/autosurgeon/syndicate/esword_arm(src)
 	new /obj/item/autosurgeon/syndicate/nodrop(src)
@@ -50,8 +50,3 @@
 	energy = 20
 	bomb = 20
 	wound = 5
-
-/obj/item/clothing/suit/armor/bulletproof/robohand
-	name = "badass bulletproof armor"
-	desc = "One of a kind bulletproof armor custom made to fit one person, Johnny Robohand. It seems that your arms are protected by it as well!"
-	body_parts_covered = CHEST|GROIN|ARMS
