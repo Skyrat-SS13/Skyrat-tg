@@ -437,10 +437,9 @@
 /obj/item/clothing/suit/armor/vest/alt/sec
 	name = "armored security vest"
 	desc = "A Type-II-AD-P armored vest that provides decent protection against most types of damage."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_white"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -456,33 +455,67 @@
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
 		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
+			RESKIN_ICON_STATE = "peacekeeper_white",
+			RESKIN_WORN_ICON_STATE = "peacekeeper_white"
 		)
 	)
 
 /obj/item/clothing/suit/armor/hos
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Greatcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hos",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hos"
+		),
+		"Trenchcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hostrench",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hostrench"
+		),
+		"Trenchcloak" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "trenchcloak",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "trenchcloak"
+		),
+	)
+
+/obj/item/clothing/suit/armor/hos/trenchcoat/winter
+	current_skin = "hoswinter" //prevents reskinning
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
 	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_bulletproof"
-	body_parts_covered = CHEST|GROIN|ARMS // Our sprite has groin and arm protections, so we get it too.
+	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "riot_ad" //replaces the NT on the back
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
+
+/obj/item/clothing/suit/armor/riot/knight //This needs to be sent back to its original .dmis
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_warden"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/armor/vest/warden/alt //un-overrides this since its sprite is TG
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+	current_skin = "warden_jacket" //prevents reskinning
 
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
@@ -493,15 +526,17 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/security
 	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
-	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Lopland\"</b> logo."
+	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority. The zipper tab is a small <b>\"Lopland\"</b> logo."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity_winter"
 
 /obj/item/clothing/suit/armor/hos/hos_formal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "hosformal_blue"
+	current_skin = "hosformal_blue"	//prevents reskinning (but not toggling!)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /*
 * UNDER
@@ -635,7 +670,7 @@
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "sunhudsec"
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
-	current_skin = "sunhudsec"	//prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
+	current_skin = "sunhudsec" //prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -688,12 +723,11 @@
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
-	current_skin = "security"	//prevents reskinning
-	
-	
+	current_skin = "security" //prevents reskinning
+
 /obj/item/storage/belt/holster
 	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
-	
+
 /obj/item/storage/belt/holster/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
@@ -709,7 +743,7 @@
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
 		))
-	
+
 /obj/item/storage/belt/holster/detective
 	name = "detective's holster"
 	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
@@ -728,7 +762,6 @@
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
 		))
-
 
 /*
 *	HEAD
@@ -753,7 +786,7 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
-	current_skin = "rsecurity"	//prevents reskinning
+	current_skin = "rsecurity" //prevents reskinning
 
 /obj/item/clothing/under/rank/security/warden/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
@@ -802,6 +835,7 @@
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sec"
+	current_skin = "armor_sec" //prevents reskinning
 
 /*
 *	FEET
@@ -812,7 +846,7 @@
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
-	current_skin = "jackboots_sec"	//prevents reskinning
+	current_skin = "jackboots_sec" //prevents reskinning
 
 //Finally, a few description changes for items that couldn't get a resprite.
 /obj/item/clothing/head/bio_hood/security

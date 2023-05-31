@@ -30,8 +30,8 @@
 /obj/item/clothing/suit/hazardvest/security_medic
 	name = "security medic vest"
 	desc = "A lightweight vest worn by the Security Medic."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "secmed_vest"
 	worn_icon_state = "secmed_vest"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -55,8 +55,8 @@
 /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	name = "security medic armor vest"
 	desc = "A security medic's armor vest, with little pockets for little things."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "secmed_armor"
 	worn_icon_state = "secmed_armor"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
