@@ -21,12 +21,13 @@
 	icon_state = "beret_badge_fancy_diagonal"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne
+/obj/item/clothing/suit/armor/hos/trenchcoat/armadyne
 	name = "armadyne trenchcoat"
 	desc = "A large and warm Armadyne-red trenchcoat worn by the wealthy higher-ups. A good half of its warmth - and bulk - actually comes from the polymer armor plating beneath it."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_trench"
+	current_skin = "armadyne_trench" //prevents reskinning
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
 	name = "armadyne jacket"
