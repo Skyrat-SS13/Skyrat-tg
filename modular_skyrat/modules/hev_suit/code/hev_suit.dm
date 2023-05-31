@@ -96,6 +96,7 @@
 	var/user_old_oxyloss
 
 	///Lots of sound vars.
+	var/activation_song = 'modular_skyrat/modules/hev_suit/sound/hev/anomalous_materials.ogg'
 
 	var/logon_sound = 'modular_skyrat/modules/hev_suit/sound/hev/01_hev_logon.ogg'
 	var/armor_sound = 'modular_skyrat/modules/hev_suit/sound/hev/02_powerarmor_on.ogg'
@@ -334,6 +335,8 @@
 	activating = TRUE
 
 	if(first_use)
+		var/sound/song = sound(activation_song, volume = 50)
+		SEND_SOUND(current_user, song)
 		first_use = FALSE
 
 	playsound(src, logon_sound, 50)
@@ -847,6 +850,8 @@
 			RESKIN_WORN_ICON_STATE = "hecu_vest_medic_black"
 		),
 	)
+
+	activation_song = 'modular_skyrat/modules/hev_suit/sound/pcv/planet.ogg'
 
 	logon_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/01_pcv_logon.ogg'
 	armor_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/02_powerarmor_on.ogg'
