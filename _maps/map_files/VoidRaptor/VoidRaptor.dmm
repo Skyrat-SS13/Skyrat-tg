@@ -6040,11 +6040,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/door/airlock/external/glass{
-	name = "Space Bridge Access";
-	space_dir = 1
-	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	name = "Space Bridge Construction"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/fore)
 "bMN" = (
@@ -25171,6 +25171,13 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"gYi" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/maintenance/department/science/xenobiology)
 "gYp" = (
 /obj/effect/turf_decal/weather/sand,
 /obj/structure/flora/bush/sparsegrass{
@@ -31685,6 +31692,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/small/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/science/xenobiology)
 "iQy" = (
@@ -33139,6 +33147,21 @@
 	},
 /turf/open/floor/pod/dark,
 /area/station/service/chapel/office)
+"jkx" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/science/xenobiology)
 "jkH" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/o2,
 /obj/structure/window/reinforced/plasma/spawner/directional/west,
@@ -36221,16 +36244,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/warden)
-"kdU" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/maintenance/department/science/xenobiology)
 "kek" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 1
@@ -48340,6 +48353,17 @@
 	dir = 4
 	},
 /area/station/commons/fitness/recreation)
+"nmE" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/smooth_large,
+/area/station/maintenance/department/science/xenobiology)
 "nmJ" = (
 /turf/open/floor/iron/smooth_large,
 /area/station/construction/mining/aux_base)
@@ -50638,17 +50662,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/research)
-"nSx" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/science/xenobiology)
 "nSE" = (
 /obj/machinery/light/warm/directional/north,
 /obj/effect/turf_decal/siding/green,
@@ -59148,6 +59161,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+"qge" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access"
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/science/xenobiology)
 "qgh" = (
 /obj/effect/spawner/random/trash/botanical_waste,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -60371,11 +60399,6 @@
 /obj/effect/landmark/start/clown,
 /turf/open/floor/wood/large,
 /area/station/service/theater)
-"qxs" = (
-/obj/structure/sign/warning/biohazard/directional/east,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "qxI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -60961,17 +60984,6 @@
 	},
 /turf/open/floor/iron/smooth_edge,
 /area/station/science/ordnance)
-"qFy" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access"
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/science/xenobiology)
 "qFz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office,
@@ -85099,11 +85111,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/door/airlock/external/glass{
-	name = "Space Bridge Access";
-	space_dir = 1
-	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	name = "Space Bridge Construction"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/fore)
 "xla" = (
@@ -105098,9 +105110,9 @@ ttw
 ttw
 ttw
 ttw
-xMq
 ttw
-qxs
+ttw
+cvG
 ttw
 ttw
 ttw
@@ -105356,7 +105368,7 @@ xXo
 rLn
 ttw
 xMq
-jgz
+xMq
 kVR
 seE
 seE
@@ -105611,9 +105623,9 @@ xXo
 xXo
 xXo
 xXo
+ttw
 dWX
-qFy
-dyY
+jkx
 kVR
 bLQ
 ipL
@@ -105868,9 +105880,9 @@ pkp
 pkp
 pkp
 pkp
+jgz
 dWX
-kdU
-dyY
+nmE
 kVR
 avX
 ike
@@ -106125,9 +106137,9 @@ tJM
 jQV
 tJM
 sKL
-dWX
-nSx
 dyY
+dWX
+qge
 kVR
 ejl
 mMB
@@ -106383,7 +106395,7 @@ bnf
 evr
 bnf
 iQs
-ihT
+gYi
 mIm
 wyj
 wdu
