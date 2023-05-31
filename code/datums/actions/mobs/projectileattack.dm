@@ -212,6 +212,7 @@
 		fire_shotgun(firer, target, pattern)
 		SLEEP_CHECK_DEATH(0.8 SECONDS, firer)
 
+
 /datum/action/cooldown/mob_cooldown/projectile_attack/shotgun_blast/pattern/circular
 	name = "Circular Shotgun Fire"
 	shot_angles = list(list(0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330), list(-30, -15, 0, 15, 30))
