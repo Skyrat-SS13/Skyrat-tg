@@ -74,14 +74,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	  * They also allow for faster '[]' list access versus 'in'. Other than that, they are useless right now.
 	  * Layer hiding is handled by [/datum/species/proc/handle_mutant_bodyparts] below.
 	  */
-<<<<<<< HEAD
 	//var/list/mutant_bodyparts = list() //ORIGINAL
 	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATION (typed list)
-	///Internal organs that are unique to this race, like a tail.
-	var/list/mutant_organs = list()
-=======
-	var/list/mutant_bodyparts = list()
->>>>>>> 0c99bd28f4b (Makes gasses use defines (#75542))
 	///The bodyparts this species uses. assoc of bodypart string - bodypart type. Make sure all the fucking entries are in or I'll skin you alive.
 	var/list/bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left,
@@ -96,8 +90,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	///List of external organs to generate like horns, frills, wings, etc. list(typepath of organ = "Round Beautiful BDSM Snout"). Still WIP
 	var/list/external_organs = list()
-<<<<<<< HEAD
-=======
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
 	///Replaces default heart with a different organ
@@ -117,7 +109,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///Replaces default appendix with a different organ.
 	var/obj/item/organ/internal/appendix/mutantappendix = /obj/item/organ/internal/appendix
 
->>>>>>> 0c99bd28f4b (Makes gasses use defines (#75542))
 	///Multiplier for the race's speed. Positive numbers make it move slower, negative numbers make it move faster.
 	var/speedmod = 0
 	///Percentage modifier for overall defense of the race, or less defense, if it's negative.
