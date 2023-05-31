@@ -465,12 +465,10 @@
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "ahi" = (
-/obj/machinery/ammo_workbench,
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/item/radio/intercom/directional/east,
-/obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/iron/dark,
 /area/station/security/range)
 "ahv" = (
@@ -2377,7 +2375,6 @@
 "aKh" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/starboard/fore)
 "aKj" = (
@@ -3595,6 +3592,7 @@
 /area/station/service/bar)
 "aZt" = (
 /obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/security/greater)
 "aZy" = (
@@ -4846,9 +4844,10 @@
 /area/station/science/auxlab)
 "bsS" = (
 /obj/item/radio/intercom/directional/north,
-/obj/effect/landmark/secequipment,
 /obj/effect/turf_decal/tile/red/diagonal_centre,
 /obj/effect/turf_decal/bot,
+/obj/machinery/ammo_workbench,
+/obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/office)
 "btf" = (
@@ -5166,17 +5165,6 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/xenobiology)
-"bxU" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 1;
-	id = "prisonbridge2";
-	name = "Gulag Shuttle Space Bridge"
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/maintenance/starboard/fore)
 "bxX" = (
 /obj/structure/lattice/catwalk,
 /obj/item/book/manual/wiki/security_space_law,
@@ -5218,6 +5206,10 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/medical/storage)
+"byr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/maintenance/department/security/brig)
 "byt" = (
 /obj/structure/table/reinforced/rglass,
 /obj/item/radio/intercom,
@@ -6040,13 +6032,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/maintenance/external/glass{
-	name = "Space Bridge Access"
-	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
@@ -6056,6 +6044,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/door/airlock/external/glass{
+	name = "Space Bridge Access";
+	space_dir = 1
+	},
+/obj/structure/fans/tiny,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/fore)
 "bMN" = (
@@ -14164,6 +14157,10 @@
 	dir = 4
 	},
 /area/station/security/prison)
+"dWw" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/department/security/greater)
 "dWS" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 9
@@ -21424,6 +21421,9 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"fYq" = (
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/maintenance/starboard/fore)
 "fYs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
@@ -25719,7 +25719,6 @@
 /area/station/maintenance/department/security/brig)
 "heV" = (
 /obj/structure/cable,
-/obj/effect/spawner/random/trash/garbage,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/eva/abandoned)
@@ -28071,6 +28070,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/north,
 /obj/effect/spawner/random/structure/crate_loot,
+/obj/effect/spawner/random/maintenance/two,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/eva/abandoned)
 "hOM" = (
@@ -29381,6 +29381,11 @@
 /obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/morgue)
+"ikw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/department/eva/abandoned)
 "iky" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -30588,12 +30593,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/port/greater)
-"izp" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/starboard/fore)
 "izt" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line,
@@ -31351,6 +31350,10 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/storage)
+"iKN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/maintenance/starboard/fore)
 "iKV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
@@ -35011,13 +35014,6 @@
 /obj/machinery/telecomms/processor/preset_four,
 /turf/open/floor/circuit/telecomms/server,
 /area/station/tcommsat/server)
-"jJz" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/starboard/fore)
 "jJE" = (
 /obj/structure/chair/sofa/bench/left,
 /obj/effect/turf_decal/siding/wood{
@@ -36799,16 +36795,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/large,
 /area/station/commons/dorms)
-"kmc" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/button/door/directional/north{
-	id = "prisonbridge2";
-	name = "Bridge Shutters"
-	},
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/maintenance/starboard/fore)
 "kmg" = (
 /obj/machinery/door/window/brigdoor/security/holding/right/directional/west{
 	name = "Court";
@@ -40926,6 +40912,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/science/ordnance_maint)
+"lpB" = (
+/obj/effect/spawner/random/trash/mess,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/starboard/fore)
 "lpX" = (
 /obj/machinery/computer/arcade/orion_trail{
 	dir = 8
@@ -43818,11 +43808,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
-"mcY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/department/security/greater)
 "mdf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/catwalk_floor/iron_smooth,
@@ -46723,6 +46708,11 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
+"mRP" = (
+/obj/structure/lattice,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/space/basic,
+/area/space/nearstation)
 "mRU" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/window/reinforced/fulltile,
@@ -49576,8 +49566,7 @@
 /area/station/service/chapel)
 "nDf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/maintenance/three,
-/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/wood,
 /area/station/maintenance/starboard/fore)
 "nDn" = (
@@ -51018,6 +51007,15 @@
 	},
 /turf/open/floor/iron/large,
 /area/station/service/bar)
+"nWx" = (
+/obj/structure/window/spawner/directional/east,
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/delivery_chute{
+	name = "Mystery Adventure Chute"
+	},
+/obj/machinery/door/window,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/department/security/greater)
 "nWY" = (
 /obj/effect/turf_decal/trimline/green/filled/warning,
 /obj/structure/disposalpipe/segment,
@@ -52550,14 +52548,10 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/medical/morgue)
 "otR" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/door/poddoor/shutters{
-	dir = 1;
-	id = "prisonbridge2";
-	name = "Gulag Shuttle Space Bridge"
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/maintenance/starboard/fore)
+/obj/structure/lattice/catwalk,
+/obj/machinery/door/poddoor/shutters/preopen,
+/turf/open/space/basic,
+/area/space/nearstation)
 "otU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash/mess,
@@ -54747,6 +54741,11 @@
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/aft)
+"oYH" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "oYN" = (
 /obj/item/clothing/head/cone,
 /turf/open/floor/iron/smooth,
@@ -56233,6 +56232,12 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/large,
 /area/station/commons/fitness/recreation)
+"psV" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/door/poddoor/shutters/preopen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/space/basic,
+/area/space/nearstation)
 "psZ" = (
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyer";
@@ -56528,7 +56533,7 @@
 /area/station/maintenance/abandon_arcade)
 "pwA" = (
 /obj/structure/destructible/cult/item_dispenser/altar,
-/obj/item/knife/bloodletter,
+/obj/item/melee/cultblade/dagger,
 /turf/open/floor/cult,
 /area/station/maintenance/department/security/greater)
 "pwB" = (
@@ -57583,16 +57588,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen/abandoned)
-"pLV" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/button/door/directional/north{
-	id = "prisonbridge2";
-	name = "Bridge Shutters"
-	},
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/maintenance/starboard/fore)
 "pMf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61848,7 +61843,7 @@
 /area/station/medical/virology)
 "qRy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/maintenance/two,
+/obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/cult,
 /area/station/maintenance/department/security/greater)
 "qRD" = (
@@ -62503,12 +62498,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
 /area/station/maintenance/port/aft)
-"qZv" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/spawner/random/structure/crate_loot,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/department/eva/abandoned)
 "qZz" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/camera/directional/north{
@@ -64958,8 +64947,8 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "rKz" = (
-/obj/effect/spawner/random/trash/garbage,
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/eva/abandoned)
 "rKD" = (
@@ -74449,13 +74438,8 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/surgery)
 "une" = (
+/obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/disposal/delivery_chute{
-	name = "Mystery Adventure Chute"
-	},
-/obj/structure/window/spawner/directional/east,
-/obj/machinery/door/window,
-/obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/security/greater)
 "unp" = (
@@ -84348,14 +84332,6 @@
 	dir = 4
 	},
 /area/station/science/xenobiology)
-"wVh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/maintenance/two,
-/obj/effect/turf_decal/loading_area{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/department/eva/abandoned)
 "wVn" = (
 /obj/machinery/light/small/directional/north,
 /obj/structure/cable,
@@ -85137,13 +85113,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/maintenance/external/glass{
-	name = "Space Bridge Access"
-	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -85153,6 +85125,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/door/airlock/external/glass{
+	name = "Space Bridge Access";
+	space_dir = 1
+	},
+/obj/structure/fans/tiny,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/fore)
 "xla" = (
@@ -86372,11 +86349,6 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/security/greater)
-"xAP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/engineering/vending_restock,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/starboard/fore)
 "xAS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/toy/balloon,
@@ -88831,20 +88803,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/security/tram)
-"ylq" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/door/poddoor/shutters{
-	dir = 1;
-	id = "prisonbridge2";
-	name = "Gulag Shuttle Space Bridge"
-	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 1;
-	id = "prisonbridge2";
-	name = "Gulag Shuttle Space Bridge"
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/maintenance/starboard/fore)
 "ylx" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -109772,7 +109730,7 @@ rVT
 heg
 qTb
 aPT
-nPA
+ikw
 acb
 wnN
 gQh
@@ -110287,7 +110245,7 @@ hOJ
 nPA
 qTb
 nPA
-qZv
+vQO
 jhJ
 gQh
 cta
@@ -110799,7 +110757,7 @@ jsK
 rVT
 lCi
 xWY
-wVh
+xWY
 nPA
 rKz
 kJW
@@ -129296,7 +129254,7 @@ taf
 qJa
 taf
 eBf
-sDX
+iKN
 mNd
 taf
 taf
@@ -129553,7 +129511,7 @@ jkM
 kgC
 taf
 rib
-ioM
+iKN
 sIh
 taf
 eju
@@ -129564,10 +129522,10 @@ eju
 taf
 gGW
 joP
-jnJ
-jnJ
-jnJ
-jnJ
+iED
+iED
+iED
+iED
 joP
 bCj
 mSk
@@ -129810,7 +129768,7 @@ vpE
 ePz
 taf
 unw
-ioM
+fYq
 hOb
 taf
 eju
@@ -130067,7 +130025,7 @@ taf
 taf
 taf
 taf
-pLV
+fYq
 taf
 taf
 taf
@@ -130580,8 +130538,8 @@ ttw
 ttw
 xMq
 xMq
-bxU
-izp
+psV
+dJR
 otR
 xMq
 xMq
@@ -130837,9 +130795,9 @@ ttw
 ttw
 ttw
 xMq
-bxU
-izp
-otR
+xMq
+dJR
+psV
 xMq
 ttw
 ttw
@@ -131094,9 +131052,9 @@ ttw
 ttw
 ttw
 xMq
-bxU
-izp
-otR
+psV
+dJR
+mRP
 xMq
 ttw
 ttw
@@ -131351,9 +131309,9 @@ ttw
 ttw
 ttw
 xMq
-bxU
-jJz
-otR
+psV
+dJR
+oYH
 xMq
 ttw
 ttw
@@ -131608,9 +131566,9 @@ ttw
 ttw
 xMq
 xMq
-bxU
-izp
-ylq
+xMq
+dJR
+psV
 xMq
 xMq
 ttw
@@ -132123,7 +132081,7 @@ ttw
 ttw
 ttw
 taf
-kmc
+fYq
 taf
 taf
 taf
@@ -132380,7 +132338,7 @@ ttw
 ttw
 ttw
 taf
-ioM
+fYq
 lQl
 rib
 lnL
@@ -132637,21 +132595,21 @@ ttw
 ttw
 ttw
 taf
-ioM
+iKN
 plQ
 wim
 aKh
-wim
+eBf
 vyq
 kaz
 lQl
 gwz
 soz
 joP
-jnJ
-jnJ
-jnJ
-jnJ
+iED
+iED
+iED
+iED
 joP
 ovn
 ruQ
@@ -132897,7 +132855,7 @@ taf
 ioM
 ioM
 ioM
-fAL
+ioM
 ioM
 ioM
 ioM
@@ -133160,7 +133118,7 @@ taf
 taf
 taf
 wHJ
-xzN
+lpB
 iPZ
 iPZ
 iPZ
@@ -133674,7 +133632,7 @@ nSQ
 taf
 ueF
 ioM
-xAP
+eBf
 iPZ
 rsM
 kgN
@@ -133958,7 +133916,7 @@ ttw
 rCm
 nHD
 nxr
-byh
+byr
 ttw
 ttw
 smE
@@ -134215,7 +134173,7 @@ rCm
 rCm
 nAo
 nxr
-byh
+byr
 ttw
 ttw
 ttw
@@ -134472,7 +134430,7 @@ rCm
 goB
 sCN
 nxr
-byh
+byr
 ttw
 ttw
 ttw
@@ -135495,9 +135453,9 @@ vzp
 rCm
 rCm
 rCm
-byh
-byh
-byh
+byr
+byr
+byr
 rCm
 rCm
 rCm
@@ -139336,9 +139294,9 @@ ttw
 ttw
 ttw
 ttw
-jnJ
+iED
 fUD
-jnJ
+iED
 ttw
 ttw
 ttw
@@ -139593,9 +139551,9 @@ ttw
 ttw
 ttw
 ttw
-jnJ
+iED
 fUD
-jnJ
+iED
 ttw
 ttw
 ttw
@@ -139850,9 +139808,9 @@ ttw
 ttw
 ttw
 ttw
-jnJ
+iED
 fUD
-jnJ
+iED
 ttw
 ttw
 ttw
@@ -140107,9 +140065,9 @@ ttw
 ttw
 ttw
 ttw
-jnJ
+iED
 fUD
-jnJ
+iED
 ttw
 ttw
 ttw
@@ -140361,7 +140319,7 @@ ttw
 rug
 ttw
 ttw
-fYl
+xMq
 joP
 iED
 joP
@@ -140618,7 +140576,7 @@ ttw
 ttw
 ttw
 ttw
-odJ
+xMq
 iMf
 ulZ
 xdT
@@ -140875,7 +140833,7 @@ ttw
 ttw
 ttw
 ttw
-fYl
+xMq
 joP
 joP
 joP
@@ -141133,8 +141091,8 @@ ttw
 ttw
 ttw
 ttw
-ttw
 joP
+nWx
 une
 huH
 xTY
@@ -141390,9 +141348,9 @@ ttw
 ttw
 ttw
 ttw
-ttw
 joP
-mcY
+dWw
+vyR
 iEP
 fxr
 woX
@@ -141647,8 +141605,8 @@ ttw
 ttw
 ttw
 ttw
-ttw
 joP
+vyR
 wpo
 dbE
 xTY
