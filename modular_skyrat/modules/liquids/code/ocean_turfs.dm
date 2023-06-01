@@ -33,7 +33,7 @@
 
 /turf/open/floor/plating/ocean/ironsand
 	baseturfs = /turf/open/floor/plating/ocean/ironsand
-	icon_state = "ironsand"
+	icon_state = "ironsand1"
 	base_icon_state = "ironsand"
 	rand_variants = 15
 	rand_chance = 100
@@ -98,8 +98,8 @@
 
 	if(rand_variants && prob(rand_chance))
 		var/random = rand(1,rand_variants)
-		icon_state = "[icon_state][random]"
-		base_icon_state = "[icon_state][random]"
+		icon_state = "[base_icon_state][random]"
+		base_icon_state = "[base_icon_state][random]"
 
 /turf/open/floor/plating/ocean_plating
 	planetary_atmos = TRUE
