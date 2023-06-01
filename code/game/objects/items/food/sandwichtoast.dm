@@ -25,9 +25,12 @@
 		/datum/reagent/carbon = 4,
 	)
 	tastes = list("toast" = 2, "cheese" = 3, "butter" = 1)
+<<<<<<< HEAD
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
+=======
+>>>>>>> c8e61e79af0 (Reinstates grilled cheese sandwich taste and fixes a typo. [NO GBP] (#75779))
 	burns_on_grill = TRUE
 
 /obj/item/food/cheese_sandwich
