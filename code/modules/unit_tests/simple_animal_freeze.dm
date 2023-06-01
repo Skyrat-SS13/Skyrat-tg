@@ -34,7 +34,6 @@
 		/mob/living/simple_animal/bot/vibebot,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/chick/holo,
-		/mob/living/simple_animal/chicken,
 		/mob/living/simple_animal/crab,
 		/mob/living/simple_animal/crab/coffee,
 		/mob/living/simple_animal/crab/evil,
@@ -124,7 +123,6 @@
 		/mob/living/simple_animal/hostile/boss,
 		/mob/living/simple_animal/hostile/boss/paper_wizard,
 		/mob/living/simple_animal/hostile/boss/paper_wizard/copy,
-		/mob/living/simple_animal/hostile/cat_butcherer,
 		/mob/living/simple_animal/hostile/construct,
 		/mob/living/simple_animal/hostile/construct/artificer,
 		/mob/living/simple_animal/hostile/construct/artificer/angelic,
@@ -186,7 +184,6 @@
 		/mob/living/simple_animal/hostile/jungle/mega_arachnid,
 		/mob/living/simple_animal/hostile/jungle/mook,
 		/mob/living/simple_animal/hostile/jungle/seedling,
-		/mob/living/simple_animal/hostile/lightgeist,
 		/mob/living/simple_animal/hostile/megafauna,
 		/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner,
 		/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/doom,
@@ -304,7 +301,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/chicken/teshari,
 		/mob/living/simple_animal/crab/shuffle,
 		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
