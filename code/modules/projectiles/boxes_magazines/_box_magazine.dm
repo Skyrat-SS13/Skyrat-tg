@@ -80,13 +80,8 @@
 		return
 
 	for(var/i in max(1, stored_ammo.len) to max_ammo)
-<<<<<<< HEAD
 		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
-	update_ammo_count()
-=======
-		stored_ammo += new round_check(src)
 	update_appearance()
->>>>>>> 2922d36500b (Refactors for material container, ammo box & recycler (#75422))
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
 /obj/item/ammo_box/proc/get_round(keep = FALSE)
@@ -220,8 +215,7 @@
 
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
-<<<<<<< HEAD
-	update_ammo_count()
+	update_appearance()
 
 //SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
 /obj/item/ammo_box/Destroy()
@@ -229,6 +223,3 @@
 	for(var/i in stored_ammo)
 		qdel(i)
 //SKYRAT EDIT END
-=======
-	update_appearance()
->>>>>>> 2922d36500b (Refactors for material container, ammo box & recycler (#75422))
