@@ -77,7 +77,6 @@
 		return TRUE
 	return ..()
 
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()
 	return "Plant lore!"
@@ -85,7 +84,7 @@
 /datum/species/pod/get_species_lore()
 	return list("You're a plant!")
 // SKYRAT EDIT END
-=======
+
 /datum/species/pod/create_pref_unique_perks()
 	var/list/to_add = list()
 
@@ -113,7 +112,6 @@
 	))
 
 	return to_add
->>>>>>> d46782b5b62 (Generifies a bit of species trait code, adds a few more generic traits to species traits, adds traits to podpeople (#75718))
 
 /datum/species/pod/randomize_features(mob/living/carbon/human_mob)
 	randomize_external_organs(human_mob)
