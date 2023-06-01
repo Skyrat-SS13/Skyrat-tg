@@ -58,15 +58,15 @@
 	for(var/i in 1 to mold_spawns)
 		var/threat_level = active_players >= EVENT_MIDPOP_THRESHOLD ? MOLD_TIER_HIGH_THREAT : MOLD_TIER_LOW_THREAT
 		var/list/possible_mold_types = list()
-		for(var/iterated_type in subtypesof(/datum/mold))
-			var/datum/mold/mold_type = new iterated_type()
+		for(var/iterated_type in subtypesof(/datum/mold_type))
+			var/datum/mold_type/mold_type = new iterated_type()
 			if(mold_type.tier <= threat_level)
 				possible_mold_types += mold_type
 		if(!possible_mold_types)
 			log_game("Event: Moldies failed to spawn due to lack of possible types.")
 			message_admins("Moldies failed to spawn due to lack of possible types.")
 			break
-		var/datum/mold/picked_type = pick(possible_mold_types)
+		var/datum/mold_type/picked_type = pick(possible_mold_types)
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(length(turfs)) //Pick a turf to spawn at if we can

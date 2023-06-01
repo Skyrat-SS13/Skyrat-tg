@@ -7,7 +7,7 @@
 	/// The controller controlling the mold's expansion
 	var/datum/mold_controller/mold_controller
 	/// The type of mold
-	var/datum/mold/mold_type
+	var/datum/mold_type/mold_type
 
 /obj/structure/mold/Destroy()
 	if(!mold_controller)
@@ -186,7 +186,7 @@
 	return ..()
 
 /obj/structure/mold/resin/test
-	mold_type = /datum/mold
+	mold_type = /datum/mold_type
 
 /**
  * Bulbs

@@ -1,6 +1,4 @@
-#define MAX_MOLD_FOAM_RANGE 7
-
-/datum/mold
+/datum/mold_type
 	var/name = "debug"
 	/// The tier of the mold, used to decide whether it can spawn on lowpop
 	var/tier = MOLD_TIER_LOW_THREAT
@@ -14,7 +12,7 @@
 	var/list/mob_types = list()
 	/// The cooldown between mob spawns
 	var/spawn_cooldown = 12 SECONDS
-	/// The maximum number of spawns
+	/// The maximum number of mobs we can have at once, per spawner
 	var/max_spawns = 1
 	/// The resistance flags for the mold type
 	var/resistance_flags
@@ -31,7 +29,7 @@
  *
  * * core - the core that is being triggered.
  */
-/datum/mold/proc/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/proc/core_defense(obj/structure/mold/structure/core/core)
 	return
 
 
@@ -45,7 +43,7 @@
  *
  * * bulb - the bulb that is being triggered.
  */
-/datum/mold/proc/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/proc/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	SHOULD_CALL_PARENT(TRUE) //  don't skip the message brah...
 	bulb.visible_message(span_warning("[bulb] ruptures!"))
 	return
@@ -59,7 +57,7 @@
  *
  * * conditioner - the conditioner that is being triggered.
  */
-/datum/mold/proc/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
+/datum/mold_type/proc/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
 	return
 
 
@@ -76,7 +74,7 @@
  * * reagent_to_add - the reagent the foam contains
  * * amount_of_reagent - how much of the reagent to add to the reagents datum. Defaults to 30.
  */
-/datum/mold/proc/spew_foam(obj/structure/mold/structure/source, range, reagent_capacity, reagent_to_add, amount_of_reagent = 30)
+/datum/mold_type/proc/spew_foam(obj/structure/mold/structure/source, range, reagent_capacity, reagent_to_add, amount_of_reagent = 30)
 	source.visible_message(span_warning("[source] spews out foam!"))
 	var/datum/reagents/spewed_reagents = new /datum/reagents(reagent_capacity)
 	spewed_reagents.my_atom = source
@@ -95,7 +93,7 @@
  * spawns are oil shamblers, a humanoid figure that can set fire to people on hit.
  * Probably the most simple mold type.
  */
-/datum/mold/fire
+/datum/mold_type/fire
 	name = "fire"
 	mold_color = "#e04000"
 	structure_light_color = LIGHT_COLOR_FIRE
@@ -104,15 +102,15 @@
 	preferred_atmos_conditions = "co2=30;TEMP=1000"
 	resistance_flags = FIRE_PROOF
 
-/datum/mold/fire/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/fire/core_defense(obj/structure/mold/structure/core/core)
 	core.visible_message(span_warning("[core] puffs out a cloud of flames!"))
 	spawn_atmos(core)
 
-/datum/mold/fire/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/fire/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
 	spawn_atmos(bulb)
 
-/datum/mold/fire/proc/spawn_atmos(obj/structure/mold/structure/source)
+/datum/mold_type/fire/proc/spawn_atmos(obj/structure/mold/structure/source)
 	var/turf/source_turf = get_turf(source)
 	source_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 
@@ -124,7 +122,7 @@
  * out puffs of fungal smoke that spread disease.
  * It has its own custom disease, too. Fancy.
  */
-/datum/mold/disease
+/datum/mold_type/disease
 	name = "fungal"
 	tier = MOLD_TIER_HIGH_THREAT
 	mold_color = "#6e5100"
@@ -134,21 +132,26 @@
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "TEMP=312"
 
-/datum/mold/disease/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/disease/core_defense(obj/structure/mold/structure/core/core)
 	core.visible_message(span_warning("[core] emits a cloud!"))
-	fungal_puff(core, 5)
+	fungal_puff(core, DISEASE_PUFF_RANGE_CORE)
 
-/datum/mold/disease/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/disease/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
-	fungal_puff(bulb, 4)
+	fungal_puff(bulb, DISEASE_PUFF_RANGE_BULB)
 
-/datum/mold/disease/proc/fungal_puff(source, range)
-	var/datum/reagents/reagents = new/datum/reagents(300)
+/datum/mold_type/disease/proc/fungal_puff(source, range)
+	var/datum/reagents/reagents = new/datum/reagents(TEMP_REAGENT_HOLDER_CAPACITY_LARGE)
 	reagents.my_atom = source
-	reagents.add_reagent(/datum/reagent/cryptococcus_spores, 50)
+	reagents.add_reagent(/datum/reagent/cryptococcus_spores, PUFF_REAGENT_AMOUNT)
 	var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 	var/turf/source_turf = get_turf(source)
-	puff.set_up(range, location = source_turf, carry = reagents, efficiency = 24)
+	puff.set_up(
+		range,
+		location = source_turf,
+		carry = reagents,
+		efficiency = PUFF_REAGENT_EFFICIENCY,
+	)
 	puff.attach(source)
 	puff.start()
 
@@ -159,7 +162,7 @@
  * A mold type centered around electricity and EMPs. Its mobs, mosquitos, inject teslium on hit,
  * it lets out EMPs as a defense mechanism, and can tesla-zap people too. Spicy.
  */
-/datum/mold/emp
+/datum/mold_type/emp
 	name = "EMP"
 	mold_color = "#00caa5"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_CYAN
@@ -168,37 +171,55 @@
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "n2=30;TEMP=100"
 
-/datum/mold/emp/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/emp/core_defense(obj/structure/mold/structure/core/core)
 	core.visible_message(span_warning("[core] sends out electrical discharges!"))
 	electrical_discharge(
 		source = core,
-		heavy_emp_range = 5,
-		light_emp_range = 7,
+		heavy_emp_range = ELECTRICAL_DISCHARGE_HEAVY_RANGE,
+		light_emp_range = ELECTRICAL_DISCHARGE_LIGHT_RANGE,
 		guarantee_emp = TRUE,
 		)
 
-/datum/mold/emp/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/emp/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
 	electrical_discharge(
 		source = bulb,
-		heavy_emp_range = 5,
-		light_emp_range = 7,
+		heavy_emp_range = ELECTRICAL_DISCHARGE_HEAVY_RANGE,
+		light_emp_range = ELECTRICAL_DISCHARGE_LIGHT_RANGE,
 		)
 
-/datum/mold/emp/proc/electrical_discharge(obj/structure/mold/structure/source, heavy_emp_range, light_emp_range, guarantee_emp = FALSE)
-	var/severe_effects = prob(50)
+/datum/mold_type/emp/proc/electrical_discharge(obj/structure/mold/structure/source, heavy_emp_range, light_emp_range, guarantee_emp = FALSE)
+	var/severe_effects = prob(EMP_SEVERE_EFFECT_CHANCE)
 	var/turf/source_turf = get_turf(source)
+
 	if(guarantee_emp || severe_effects)
 		empulse(source_turf, heavy_emp_range, light_emp_range)
+
 	if(!severe_effects)
-		tesla_zap(source, zap_range = 4, power = 10000, zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
+		tesla_zap(
+			source,
+			zap_range = EMP_ZAP_RANGE,
+			power = EMP_ZAP_POWER,
+			zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE,
+		)
 		return
+
 	for(var/mob/living/nearby_hearer in get_hearers_in_view(3, source_turf))
 		if(nearby_hearer.flash_act(affect_silicon = TRUE))
-			nearby_hearer.Paralyze(20)
-			nearby_hearer.Knockdown(20)
-		nearby_hearer.soundbang_act(1, 20, 10, 5)
-	do_sparks(number = 3, cardinal_only = TRUE, source = source)
+			nearby_hearer.Paralyze(EMP_STUN_LENGTH)
+			nearby_hearer.Knockdown(EMP_STUN_LENGTH)
+
+		nearby_hearer.soundbang_act(
+			EMP_SOUNDBANG_INTENSITY,
+			EMP_SOUNDBANG_STUN_POWER,
+			EMP_SOUNDBANG_DAMAGE_POWER,
+			EMP_SOUNDBANG_DEAFEN_POWER,
+		)
+	do_sparks(
+		number = ELECTRICAL_DISCHARGE_SPARKS_AMOUNT,
+		cardinal_only = TRUE,
+		source = source,
+	)
 
 
 /**
@@ -208,7 +229,7 @@
  * toxin-filled foam, and is purple - which, as we all know, is the colour of the poison
  * in the poison flask Hearthstone card.
  */
-/datum/mold/toxic
+/datum/mold_type/toxic
 	name = "toxic"
 	mold_color = "#cb37f5"
 	structure_light_color = LIGHT_COLOR_LAVENDER
@@ -217,20 +238,20 @@
 	preferred_atmos_conditions = "miasma=50;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
 
-/datum/mold/toxic/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/toxic/core_defense(obj/structure/mold/structure/core/core)
 	spew_foam(
 		core,
-		range = 4,
-		reagent_capacity = 210,
+		range = MAX_MOLD_FOAM_RANGE_CORE,
+		reagent_capacity = TEMP_REAGENT_HOLDER_CAPACITY_SMALL,
 		reagent_to_add = /datum/reagent/toxin,
 		)
 
-/datum/mold/toxic/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/toxic/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
 	spew_foam(
 		bulb,
-		range = MAX_MOLD_FOAM_RANGE,
-		reagent_capacity = 300,
+		range = MAX_MOLD_FOAM_RANGE_BULB,
+		reagent_capacity = TEMP_REAGENT_HOLDER_CAPACITY_LARGE,
 		reagent_to_add = /datum/reagent/toxin,
 		)
 
@@ -242,7 +263,7 @@
  * themselves that have a very high chance to wound on hit. Additionally, the mold will spew
  * unstable mutagen foam as well as occasionally firing nuclear particles.
  */
-/datum/mold/radioactive
+/datum/mold_type/radioactive
 	name = "radioactive"
 	mold_color = "#80ff00"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_GREEN
@@ -251,32 +272,35 @@
 	preferred_atmos_conditions = "tritium=5;TEMP=296"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 
-/datum/mold/radioactive/core_defense(obj/structure/mold/structure/core/core)
+/datum/mold_type/radioactive/core_defense(obj/structure/mold/structure/core/core)
 	core.visible_message(span_warning("[core] emits a strong radiation pulse!"))
-	irradiate(core, threshold = 10)
+	irradiate(core, threshold = RAD_IRRADIATE_THRESHOLD_CORE)
 	spew_foam(
 		core,
-		range = 4,
-		reagent_capacity = 210,
+		range = MAX_MOLD_FOAM_RANGE_CORE,
+		reagent_capacity = TEMP_REAGENT_HOLDER_CAPACITY_SMALL,
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
+/datum/mold_type/radioactive/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
-	irradiate(bulb, threshold = 15, fire_nuclear_particle = TRUE)
+	irradiate(bulb, threshold = RAD_IRRADIATE_THRESHOLD_BULB, fire_nuclear_particle = TRUE)
 	spew_foam(
 		bulb,
-		range = MAX_MOLD_FOAM_RANGE,
-		reagent_capacity = 300,
+		range = MAX_MOLD_FOAM_RANGE_BULB,
+		reagent_capacity = TEMP_REAGENT_HOLDER_CAPACITY_LARGE,
 		reagent_to_add = /datum/reagent/toxin/mutagen,
 		)
 
-/datum/mold/radioactive/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
+/datum/mold_type/radioactive/bonus_conditioner_effects(obj/structure/mold/structure/conditioner/conditioner)
 	conditioner.fire_nuclear_particle()
 
-/datum/mold/radioactive/proc/irradiate(obj/structure/mold/structure/source, threshold, fire_nuclear_particle = FALSE)
-	radiation_pulse(source, max_range = 1500, threshold = threshold, chance = FALSE, minimum_exposure_time = TRUE)
+/datum/mold_type/radioactive/proc/irradiate(obj/structure/mold/structure/source, threshold, fire_nuclear_particle = FALSE)
+	radiation_pulse(source,
+	max_range = RAD_PULSE_RANGE,
+	threshold = threshold,
+	chance = FALSE,
+	minimum_exposure_time = TRUE,
+	)
 	if(fire_nuclear_particle)
 		source.fire_nuclear_particle()
-
-#undef MAX_MOLD_FOAM_RANGE
