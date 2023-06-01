@@ -634,10 +634,7 @@
 /turf/closed/mineral/snowmountain/coldroom
 	baseturfs = /turf/open/misc/asteroid/snow/coldroom
 	turf_type = /turf/open/misc/asteroid/snow/coldroom
-
-/turf/closed/mineral/snowmountain/coldroom/Initialize(mapload)
 	initial_gas_mix = KITCHEN_COLDROOM_ATMOS
-	return ..()
 
 //yoo RED ROCK RED ROCK
 
