@@ -10,6 +10,9 @@
 /// The volume of the extra sound played on overcharged baton impact, for extra "oomph" factor
 #define BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME 20
 
+/// How long it takes for a user to replace a cell in a baton.
+#define BATON_CELL_REPLACE_TIME 3 SECONDS
+
 // Police baton - very hard to not get knocked down by it, though its low attack rate limits its effectiveness
 /obj/item/melee/baton
 	/// The armor flag used when we use our stun function, AKA our left click.
@@ -19,14 +22,31 @@
 	/// The armor penetration used for our stun function. Percentage, 0 to 1 scale. but can go higher.
 	var/stun_armor_percent_penetration = 0
 
-	/// The amount of swings we will ideally cause a knockdown with. Affected by armor_for_extra_swing_needed_for_knockdown.
+	/// The amount of swings we will ideally cause a knockdown with. Affected by extra_swing_til_knockdown_armor_thresh.
 	/// Multiplied by our initial stun damage value to determine the stamina damage needed to knockdown.
 	/// Set to 0 for guaranteed knockdown on every hit.
 	var/swings_to_knockdown = 1
 	/// If the target has stun_armor_flag armor equal or above this, it will take an extra swing to knock them down.
 	/// The threshold for knockdown is multiplied by (1 - this), so be careful of the values you enter.
 	/// Affected by stun_armor_penetration in the way you would assume. 50% pen = 50% effective armor.
-	var/armor_for_extra_swing_needed_for_knockdown = 0.75
+	var/extra_swing_til_knockdown_armor_thresh = 0.75
+
+/obj/item/melee/baton/add_weapon_description()
+	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_baton_notes))
+
+/// Adds baton-specific combat info notes to the combat info text bit.
+/obj/item/melee/baton/proc/add_baton_notes()
+	RETURN_TYPE(/list)
+
+	var/list/notes = list()
+
+	notes += ""
+	notes += "Stun mode:"
+	notes += "Has [span_blue("[stun_armor_flat_penetration]")] + [span_blue("[stun_armor_percent_penetration*100]")]% armor penetration, respecting [span_blue("[stun_armor_flag]")] armor"
+	notes += "Takes [span_blue("~[swings_to_knockdown]")] hits to induce a knockdown on an unarmored opponent"
+	notes += "[span_blue("~[extra_swing_til_knockdown_armor_thresh*100]%")] [stun_armor_flag] armor to delay knockdown by one hit"
+
+	return notes
 
 /obj/item/melee/baton/telescopic
 	// todo: rebalance
@@ -34,9 +54,9 @@
 // Contractor baton: Generally just really good, although it falters somewhat against armor in terms of stamina damage
 // (knockdown is nearly always guaranteed)
 /obj/item/melee/baton/telescopic/contractor_baton
-	stamina_damage = 85 //todo: adjust
+	stamina_damage = 80 //todo: adjust
 	swings_to_knockdown = 1
-	armor_for_extra_swing_needed_for_knockdown = 0.45 //sufficient armor, like riot gear, grants a small resistance
+	extra_swing_til_knockdown_armor_thresh = 0.45 //sufficient armor, like riot gear, grants a small resistance
 
 /datum/action/item_action/stun_baton/toggle_overcharge
 	name = "Toggle overcharge"
@@ -49,8 +69,8 @@
 /obj/item/melee/baton/security
 	power_use_amount = 0
 
-	swings_to_knockdown = 2 // when not overcharged, you must swing twice to knockdown someone
-	armor_for_extra_swing_needed_for_knockdown = 0.25 // remember: overcharge massively increases penetration
+	swings_to_knockdown = 1 // when not overcharged, you must swing ONCE to knockdown someone -- but nearly any armor prevents it
+	extra_swing_til_knockdown_armor_thresh = 0.1 // remember: overcharge massively increases penetration
 
 	/// Is this baton currently overcharged?
 	var/overcharged = FALSE
@@ -58,16 +78,16 @@
 	/// overcharge attempts.
 	var/charging = FALSE
 	/// How long this baton takes, in seconds, to go from charging to overcharged.
-	var/overcharge_time = 2 SECONDS
+	var/overcharge_time = 2.5 SECONDS
 
 	/// How much stun cost will be multiplied when a baton is overcharged.
-	var/overcharge_cell_cost_mult = 9.7 // default cells have 10000 charge, and cell_hit_cost is 1000
+	var/overcharge_cell_cost_mult = 9.7 // always intended to give base batons at least 1 overcharge and some breathing room for discharge
 	/// How much power will be deducted from an overcharged baton's cell every second. Flat.
 	var/overcharge_passive_power_loss = 0
-	/// The percent of a cell's maximum charge that will be lost for every second overcharge is active. 0-1.
-	var/overcharge_passive_power_loss_percent = 0.007
+	/// The percent of a cell's maximum charge that will be lost for every second overcharge is active. 0-1, multiplied by 100.
+	var/overcharge_passive_power_loss_percent = 0.01 //1%
 	/// When overcharged, swings to knockdown will be reduced by this amount.
-	var/overcharge_knockdown_swing_reduction = 1
+	var/overcharge_knockdown_swing_reduction = 0
 
 	/// The sound the baton makes when a cell is inserted
 	var/sound_cell_insert = 'sound/weapons/magin.ogg'
@@ -95,11 +115,59 @@
 	/// The color of the light emitted when overcharge is inactive.
 	var/default_light_color = COLOR_ORANGE
 
+	/// The amount of time it takes for us to run our knockdown check after we hit someone.
+	var/knockdown_delay = 2 SECONDS
+
+	/// The timestamp of the moment we stopped being handled, e.g. we were dropped on the floor or put in a bag
+	var/unhandled_start
+	/// If the unhandled start var exeeds world.time by this amount, overcharge will be disabled
+	var/unhandled_threshold_for_disable = 2 SECONDS
+
 	light_on = FALSE
 	light_system = MOVABLE_LIGHT
 
+/obj/item/melee/baton/security/loaded
+	preload_cell_type = /obj/item/stock_parts/cell/baton
+
+/// This cell is useful because it lets us control the amount of power a roundstart baton can have without worrying about
+/// the actual overcharge balance concerns of having a renewable power source so easily available
+/// + it prevents people from looting the batons for the cells due to the discharge
+/obj/item/stock_parts/cell/baton
+	name = "stun baton cell"
+	desc = "The standard cell given to all stun batons. Nearly unrechargable, discharges entirely when removed, but has a high capacity for a very low manufacturing price."
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=SMALL_MATERIAL_AMOUNT, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.8) //recycle!
+	maxcharge = 23000 // ~2 hits and some leftover
+	chargerate = 50 // SUFFER.
+
+/obj/item/stock_parts/cell/baton/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+
+	if (old_loc == loc)
+		return
+
+	if (charge)
+		visible_message(span_warning("[src] hisses violently as it discharges its remaining power..."))
+		do_sparks(rand(3, 5), FALSE, src)
+		charge = 0
+		maxcharge = 10 //completely useless now, keeping 10 to allow the overlay
+		chargerate = 0
+
+		update_icon()
+
+/obj/item/melee/baton/security/loaded/bluespace
+	preload_cell_type = /obj/item/stock_parts/cell/bluespace
+
+/obj/item/melee/baton/security/loaded/infinite
+	preload_cell_type = /obj/item/stock_parts/cell/infinite
+
 // already less efficient as its cell cost is 2x the norm, no need to nerf
 /obj/item/melee/baton/security/cattleprod
+
+// same story as the cattleprod
+/obj/item/melee/baton/security/boomerang
+
+// This baton is fine, it doesnt even use half the rules batons use so the changes dont affect it much
+/obj/item/melee/baton/abductor
 
 /obj/item/melee/baton/security/Initialize(mapload)
 	. = ..()
@@ -120,6 +188,18 @@
 		return
 
 	return ..()
+
+/obj/item/melee/baton/security/add_baton_notes()
+	. = ..()
+
+	. += ""
+	. += "Overcharge changes:"
+	. += "Stun armor penetration increased by [span_blue("[BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT*100]%")] + [span_blue("[BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT]")]"
+	. += "Hits to knockdown reduced by [span_blue("[overcharge_knockdown_swing_reduction]")]"
+	. += ""
+	. += "Stun power usage increased by [span_red(("[overcharge_cell_cost_mult*100]%"))]"
+	. += "Passively discharges [span_red("[overcharge_passive_power_loss]")] volts and [span_red("[overcharge_passive_power_loss_percent*100]%")] of the installed cell's capacity per second"
+	// giving info to people that theyd have to find out through trial and error otherwise is a good thing imo
 
 /**
  * Switches the overcharge state to the opposite of what it currently is.
@@ -174,10 +254,17 @@
  */
 /obj/item/melee/baton/security/proc/enable_overcharge(mob/user)
 
-	if (!charging || overcharged)
+	if (!charging)
 		return FALSE
 
 	charging = FALSE
+
+	if (overcharged)
+		return FALSE
+
+	if (!istype(loc, /mob/living/carbon))
+		balloon_alert_to_viewers("unhandled! pick it up!")
+		return FALSE
 
 	if (cell.charge < (cell_hit_cost * overcharge_cell_cost_mult))
 		if (user)
@@ -190,7 +277,7 @@
 		balloon_alert_to_viewers("overcharged!")
 
 	playsound(src, SFX_SPARKS, 120, TRUE, -1, frequency = 0.6)
-	do_sparks(3, TRUE, src) // extra "oomph" factor, and also a good telegraph for it's activation
+	do_sparks(rand(3, 5), FALSE, src) // extra "oomph" factor, and also a good telegraph for it's activation
 
 	stun_armor_percent_penetration = BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT
 	stun_armor_flat_penetration = BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT // mainly just to get the "your armor was penetrated" message
@@ -209,6 +296,9 @@
 	START_PROCESSING(SSobj, src)
 
 	overcharged = TRUE
+
+	if (cell && cell.rigged) // :)
+		cell.explode()
 
 /**
  * Disables the overcharge of the baton, returning it to the standard low-cost but low-antiarmor-effectiveness
@@ -247,6 +337,8 @@
 	overcharged = FALSE
 	STOP_PROCESSING(SSobj, src)
 
+	handled()
+
 	return TRUE
 
 /**
@@ -273,7 +365,7 @@
 		return
 
 	if (overcharged)
-		do_sparks(3, TRUE, target)
+		do_sparks(rand(3, 5), FALSE, target)
 		playsound(get_turf(src), 'sound/magic/mm_hit.ogg', BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME, TRUE, -1, frequency = 1.3)
 		target.visible_message(span_danger("[user]'s [src.name] sparks violently as it's overcharged prongs penetrate [target]'s armor!"))
 
@@ -307,7 +399,7 @@
 		// b. they still self-discharge when overcharged c. it still takes time to start an overcharge on those batons
 		if (!cell && !(new_cell.maxcharge < cell_hit_cost)) //this all exists to delay adding a cell
 			user.balloon_alert_to_viewers("replacing cell...")
-			if (!do_after(user, 3 SECONDS, src))
+			if (!do_after(user, BATON_CELL_REPLACE_TIME, src))
 				return FALSE
 
 	. = ..()
@@ -339,6 +431,8 @@
  */
 /obj/item/melee/baton/security/proc/do_overcharge_power_check(mob/user, silent = FALSE)
 
+	disable_if_unhandled() //best if we use it here, since process is a tad inconsistant
+
 	if (overcharged)
 		if (!cell || (cell.charge < (cell_hit_cost)))
 			if (!silent && istype(user))
@@ -350,32 +444,54 @@
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 
-	if (overcharged)
-		. += ""
-		. += span_notice("This [name] is currently overcharged, significantly altering it's behavior. Examine closer to see specific stat changes.")
-
-/obj/item/melee/baton/security/examine_more(mob/user)
-	. = ..()
+	. += "This [name] is [span_blue("overcharge capable")]. See the action button in the top left of your screen (You can clickdrag it for more convenient use)."
 
 	if (overcharged)
-		. += "Stun armor penetration increased by [span_blue("[BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT*100]%")] + [span_blue("[BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT]")]"
-		. += "Hits to knockdown reduced by [span_blue("[overcharge_knockdown_swing_reduction]")]"
 		. += ""
-		. += "Stun power usage increased by [span_red(("[overcharge_cell_cost_mult*100]%"))]"
-		. += "Passively discharging [span_red("[overcharge_passive_power_loss]")] volts and [span_red("[overcharge_passive_power_loss_percent]%")] of the installed cell's capacity per second"
-		// giving info to people that theyd have to find out through trial and error otherwise is a good thing imo
+		. += span_notice("This [name] is currently overcharged, significantly altering it's behavior. See it's combat stats label for more information.")
+
+	if (cell && istype(cell, /obj/item/stock_parts/cell/baton))
+		. += span_warning("The installed cell has an extremely slow recharge rate. Upgrade it when able.")
 
 /obj/item/melee/baton/security/process(seconds_per_tick)
 	deductcharge(power_use_amount * seconds_per_tick)
 
-	if (istype(loc, /obj/machinery/recharger)) //prevent people from bypassing the delay by putting them in rechargers
-		disable_overcharge()
-	else
-		do_overcharge_power_check(loc)
+	do_unhandled_check() // prevents hoarding entirely - you must have it in your hands, back, belt, whatever slot, but nowhere else
+	do_overcharge_power_check(loc)
 
 	if(!overcharged)
 		STOP_PROCESSING(SSobj, src)
 		return
+
+/obj/item/melee/baton/security/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+
+	if (old_loc == loc)
+		return
+	do_unhandled_check()
+
+/obj/item/melee/baton/security/proc/do_unhandled_check()
+	if (overcharged)
+		if (!istype(loc, /mob/living/carbon))
+			unhandled()
+		else
+			handled()
+
+/obj/item/melee/baton/security/proc/handled()
+	unhandled_start = null
+
+/// Useful because if someone gets stunned and drops their baton we dont always want them to have to redo the chargeup
+/obj/item/melee/baton/security/proc/unhandled()
+	if (!unhandled_start)
+		unhandled_start = world.time
+	disable_if_unhandled()
+
+/obj/item/melee/baton/security/proc/disable_if_unhandled()
+	if (unhandled_start == null) // straight nullcheck since this is a nullable numerical variable
+		return
+	var/difference = world.time - unhandled_start
+	if (difference >= unhandled_threshold_for_disable)
+		disable_overcharge()
 
 // Override to make batons respect armor and respect knockdown resistance
 /obj/item/melee/baton/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override)
@@ -393,29 +509,29 @@
 				human_target.force_say()
 		target.apply_damage(stamina_damage, STAMINA, blocked = (target.run_armor_check(attack_flag = stun_armor_flag, armour_penetration = stun_armor_flat_penetration, weak_against_armour = src.weak_against_armour))*(1-stun_armor_percent_penetration))
 		if(!trait_check)
-			if (target.staminaloss > ((initial(src.stamina_damage) * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
+			if (target.staminaloss > ((initial(src.stamina_damage) * swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(extra_swing_til_knockdown_armor_thresh)))
 				target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
 		additional_effects_non_cyborg(target, user)
 	return TRUE
 
 // Override to make stun batons respect knockdown resistance
-/obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target, cached_swings_to_knockdown)
-	if(target.staminaloss > ((initial(stamina_damage) * cached_swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(armor_for_extra_swing_needed_for_knockdown)))
+// cached_stamina_damage exists to make knockdown possible if using stamina drugs
+/obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target, cached_swings_to_knockdown, cached_stamina_damage)
+	var/staminaloss = max(target.staminaloss, cached_stamina_damage)
+	if(staminaloss > ((initial(stamina_damage) * cached_swings_to_knockdown) * TRANSLATE_EXTRA_SWING_ARMOR(extra_swing_til_knockdown_armor_thresh)))
 		var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 		if(!target.IsKnockdown())
 			to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
 
 		if(!trait_check)
 			target.Knockdown(knockdown_time)
-/*
-/obj/item/melee/baton/security/baton_attack(mob/living/target, mob/living/user, modifiers)
+
+/*/obj/item/melee/baton/security/baton_attack(mob/living/target, mob/living/user, modifiers)
 	if (charging)
 		if (user)
 			balloon_alert(user, "can't attack while charging!")
 		return BATON_ATTACK_DONE
-
-	return ..()
-*/
+	return ..()*/
 
 /*
  * After a target is hit, we apply some status effects.
@@ -426,10 +542,11 @@
 	// target.set_confusion_if_lower(10 SECONDS) // SKYRAT EDIT REMOVAL
 	target.set_stutter_if_lower(16 SECONDS)
 
-	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)
-	addtimer(CALLBACK(src, PROC_REF(apply_stun_effect_end), target, swings_to_knockdown), 2 SECONDS) // Modularized to add an arg
+	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK) //this happens after the stam damage is applied thank fuck
+	addtimer(CALLBACK(src, PROC_REF(apply_stun_effect_end), target, swings_to_knockdown, target.staminaloss), knockdown_delay) // Modularized to add args
 
 #undef BATON_OVERCHARGE_ARMOR_PENETRATION_PERCENT
 #undef BATON_OVERCHARGE_ARMOR_PENETRATION_FLAT
 #undef BATON_OVERCHARGE_EXTRA_HITSOUND_VOLUME
 #undef TRANSLATE_EXTRA_SWING_ARMOR
+#undef BATON_CELL_REPLACE_TIME
