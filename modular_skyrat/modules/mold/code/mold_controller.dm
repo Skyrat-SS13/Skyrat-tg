@@ -43,8 +43,10 @@
 	progress_to_spread++
 	if(stalled && progress_to_spread < SPREAD_STALLED_PROCESS)
 		return
+
 	if(progress_to_spread < spread_delay)
 		return
+
 	stalled = FALSE
 	progress_to_spread = 0
 
@@ -95,16 +97,20 @@
 		for(var/turf/iterated_turf as anything in turfs)
 			for(var/turf/adjacent_turf as anything in iterated_turf.atmos_adjacent_turfs)
 				turfs[adjacent_turf] = TRUE
+
 	for(var/turf/iterated_turf as anything in turfs)
 		spawn_resin(iterated_turf)
 		if(iterated_turf == our_turf)
 			continue
+
 		if(hatcheries_to_spawn && prob(40))
 			hatcheries_to_spawn--
 			spawn_structure_loc(2, iterated_turf)
+
 		else if(bulbs_to_spawn && prob(40))
 			bulbs_to_spawn--
 			spawn_structure_loc(1, iterated_turf)
+
 		else if(conditioners_to_spawn && prob(40))
 			conditioners_to_spawn--
 			spawn_structure_loc(3, iterated_turf)
@@ -139,6 +145,7 @@
 			if(istype(O, /obj/structure/mold/structure))
 				forbidden = TRUE
 				break
+
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
 			var/random = rand(1,3)
@@ -165,6 +172,7 @@
 				var/the_wall = new /obj/structure/mold/structure/wall(ownturf, mold_type)
 				other_structures[the_wall] = TRUE
 				CALCULATE_ADJACENT_TURFS(T, NORMAL_TURF)
+
 		else
 			possible_locs += T
 
@@ -174,12 +182,15 @@
 		var/placeCount = 1
 		for(var/obj/structure/mold/resin/potato in iterated_turf)
 			resinCount++
+
 		for(var/wallDir in GLOB.cardinals)
 			var/turf/isWall = get_step(iterated_turf,wallDir)
 			if(isWall.density)
 				placeCount++
+
 		if(resinCount >= placeCount)
 			continue
+
 		spawn_resin(iterated_turf)
 		return RESIN_DID_SPREAD
 
