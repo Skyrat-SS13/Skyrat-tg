@@ -81,3 +81,52 @@
   vinylspiders:
   - bugfix: '''Stop All Animations'' from the VV menu will no longer cause the mob''s
       size to get permanently reset to the default'
+2023-06-02:
+  Charley:
+  - bugfix: fixes birdshot access in various spots.
+  Jolly:
+  - bugfix: '[MetaStation] - Secured some walls in science that weren''t secured properly
+      (reinforced).'
+  MTandi, Krysonism:
+  - rscadd: Added Spess Knife with many tool behaviours
+  ShizCalev:
+  - code_imp: Made a new unit test to find turfs with broken/missing icons! Rejoice!
+  - bugfix: Fixed a bunch of incorrect and missing turf icons.
+  SkyratBot:
+  - bugfix: Added a name and description for the basic version of the bow.
+  - balance: Golems' 55% species innate armor has been lowered to 10%
+  - bugfix: Nanotrasen engineers has installed delamination counters for all Northstar
+      class expeditionary vessels to increase the pressure for engineers not to fuck
+      up
+  - bugfix: Syndicate Holster now works as intended (You can finally put both revolver
+      and speedloaders in it at the same time).
+  - balance: You can now sweep garbage into open trash bins (the crate subtype).
+  - bugfix: Syndicate mod-suit in Tactical NukeOps Metagame Syndi-kit (the one with
+      bulldog shotgun) now doesn't require any access, so you don't need to buy agent
+      card to simply use it.
+  - spellcheck: Plate Gauntlets and Plate Boots now have proper looking names.
+  - bugfix: Disposals pipes for the Detective's office & Mining cafeteria now work
+      on tram.
+  - bugfix: Replaced an open space with a floor at the courtroom holding area.
+  - bugfix: precise insertion of sheets into material container (e.g. drone dispenser)
+      works again
+  - bugfix: recycler properly recycles all contents inside a storage medium like a
+      backpack & even inert bag of holding
+  - bugfix: gaining extra metal after recycling ammo boxes
+  - qol: recycler consumes only half the power when recycling item's that has no material
+  - qol: you can fill up your bag with iron, glass, whatever material and attack the
+      autolathe/ore silo with it to transfer all it's contents into it
+  - refactor: '`/datum/component/material_container/insert_item()` now splits stack,
+      deletes the inserted item & calls the
+
+      `after_insert` callback'
+  - refactor: '`/datum/component/material_container/user_insert()` now extracts material
+      from all the contents of an atom reccursively'
+  - image: Resprited many condiment containers
+  - image: Added a sprite for cooking oil / corn oil container
+  - image: Replaced old condiment bottles with the newer bottles in Condi Master
+  axietheaxolotl / viro:
+  - image: 'brand new pride pin sprites! Also adds a couple more options: mlm/gay,
+      genderqueer, genderfluid, and aromatic'
+  softcerv:
+  - rscadd: Adds soulcatchers to the game, see (https://github.com/Skyrat-SS13/Skyrat-tg/pull/20576)
