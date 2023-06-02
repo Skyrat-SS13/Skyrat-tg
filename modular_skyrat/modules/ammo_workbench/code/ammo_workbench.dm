@@ -215,10 +215,11 @@
 			ejectDisk()
 
 		if("turboBoost")
-			toggleTurboBoost()
+			toggle_turbo_boost()
 
-/obj/machinery/ammo_workbench/proc/toggleTurboBoost(forced = FALSE)
-	if(forced)
+/// Toggles this ammo bench's turbo setting. If it's on, uses the turbo time-per-round/efficiency; if off, resets to base time-per-round/efficiency. forced_off forces turbo off.
+/obj/machinery/ammo_workbench/proc/toggle_turbo_boost(forced_off = FALSE)
+	if(forced_off)
 		turbo_boost = FALSE
 	else
 		turbo_boost = !turbo_boost
@@ -363,8 +364,8 @@
 
 	disk_error = "DISK LOADED SUCCESSFULLY"
 	disk_error_type = "good"
-	loaded_datadisk.set_vars(src)
-	loaded_datadisks += loaded_datadisk.type // THIS CAUSES HARD DELS IF THE SOURCE DISK IS DELETED BY THE WAY.
+	loaded_datadisk.on_bench_install(src)
+	loaded_datadisks += loaded_datadisk.type // upon further reflection this. doesn't cause a hard del. still not a fan since the disks don't do anything by themselves
 	return TRUE
 
 /obj/machinery/ammo_workbench/proc/ejectDisk()
@@ -387,7 +388,7 @@
 
 /obj/machinery/ammo_workbench/RefreshParts()
 	. = ..()
-	toggleTurboBoost(TRUE) // forces turbo off
+	toggle_turbo_boost(forced_off = TRUE) // forces turbo off
 	var/time_efficiency = 2 SECONDS
 	for(var/datum/stock_part/micro_laser/new_laser in component_parts)
 		time_efficiency -= new_laser.tier * 2 // there's two lasers

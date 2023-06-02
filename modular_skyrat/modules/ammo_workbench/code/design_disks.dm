@@ -2,7 +2,9 @@
 	name = "Armadyne Munitions blueprint datadisk"
 	desc = "You shouldn't be seeing this!"
 
-/obj/item/disk/ammo_workbench/proc/set_vars(obj/machinery/ammo_workbench/ammobench)
+/// For doing things when installed/downloaded onto an ammo bench.
+/// Really only used for setting variables, but if someone expands the system to have disks per ammo type, I guess this could be more useful.
+/obj/item/disk/ammo_workbench/proc/on_bench_install(obj/machinery/ammo_workbench/ammobench)
 	return
 
 /obj/item/disk/ammo_workbench/advanced
@@ -10,7 +12,7 @@
 	desc = "An Armadyne datadisk filled with advanced munition fabrication data for the ammunition workbench, including lethal ammotypes if not previously enabled. \
 	Armadyne's munitions division does not take responsibility for any incidents that occur if safeties were circumvented beforehand."
 
-/obj/item/disk/ammo_workbench/advanced/set_vars(obj/machinery/ammo_workbench/ammobench)
+/obj/item/disk/ammo_workbench/advanced/on_bench_install(obj/machinery/ammo_workbench/ammobench)
 	ammobench.allowed_harmful = TRUE
 	ammobench.allowed_advanced = TRUE
 
