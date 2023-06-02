@@ -30,6 +30,7 @@
 		mold_type = new
 	else
 		mold_type = mold_controller?.mold_type || passed_type
+
 	color = mold_type.mold_color
 	resistance_flags = mold_type.resistance_flags
 	name = "[mold_type.name] [name]"
@@ -113,7 +114,7 @@
 	layer = ABOVE_NORMAL_TURF_LAYER
 	max_integrity = 50
 	var/blooming = FALSE
-	//Are we a floor resin? If not then we're a wall resin
+	/// Are we a floor resin? If not then we're a wall resin
 	var/floor = TRUE
 
 /obj/structure/mold/resin/examine(mob/user)
