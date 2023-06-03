@@ -5,7 +5,7 @@
 /// Used for Nanite Slurry vomit. The mob will vomit a nanite puddle.
 #define VOMIT_NANITE 3
 
-/// How much booze a mob can have before getting drunk.
+/// How much booze a mob can have before getting drunk. (/tg/ original is 6)
 #define TIPSY_THRESHOLD 21
 
 #define UNDERWEAR_HIDE_SOCKS (1<<0)
