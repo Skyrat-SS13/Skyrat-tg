@@ -11,7 +11,19 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 25);
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
+<<<<<<< HEAD:SQL/database_changelog.txt
 Version 5.25, 28 December 2022, by Mothblocks
+=======
+Version 5.24, 17 May 2023, by LemonInTheDark
+Modified the library action table to fit ckeys properly, and to properly store ips.
+```sql
+ ALTER TABLE `library_action` MODIFY COLUMN `ckey` varchar(32) NOT NULL;
+ ALTER TABLE `library_action` MODIFY COLUMN `ip_addr` int(10) unsigned NOT NULL;
+```
+
+-----------------------------------------------------
+Version 5.23, 28 December 2022, by Mothblocks
+>>>>>>> 0065f020ed2 (Removes line about adding a new index to the library_action table (#75808)):SQL/database_changelog.md
 Added `tutorial_completions` to mark what ckeys have completed contextual tutorials.
 
 ```
