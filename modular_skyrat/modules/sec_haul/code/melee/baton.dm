@@ -78,14 +78,14 @@
 	/// overcharge attempts.
 	var/charging = FALSE
 	/// How long this baton takes, in seconds, to go from charging to overcharged.
-	var/overcharge_time = 2.5 SECONDS
+	var/overcharge_time = 2 SECONDS
 
 	/// How much stun cost will be multiplied when a baton is overcharged.
 	var/overcharge_cell_cost_mult = 9.7 // always intended to give base batons at least 1 overcharge and some breathing room for discharge
 	/// How much power will be deducted from an overcharged baton's cell every second. Flat.
 	var/overcharge_passive_power_loss = 0
 	/// The percent of a cell's maximum charge that will be lost for every second overcharge is active. 0-1, multiplied by 100.
-	var/overcharge_passive_power_loss_percent = 0.01 //1%
+	var/overcharge_passive_power_loss_percent = 0.002 //.2%
 	/// When overcharged, swings to knockdown will be reduced by this amount.
 	var/overcharge_knockdown_swing_reduction = 0
 
