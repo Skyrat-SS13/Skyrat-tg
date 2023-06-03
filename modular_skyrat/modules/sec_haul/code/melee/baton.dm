@@ -78,14 +78,14 @@
 	/// overcharge attempts.
 	var/charging = FALSE
 	/// How long this baton takes, in seconds, to go from charging to overcharged.
-	var/overcharge_time = 2 SECONDS
+	var/overcharge_time = 1.75 SECONDS
 
 	/// How much stun cost will be multiplied when a baton is overcharged.
-	var/overcharge_cell_cost_mult = 9.7 // always intended to give base batons at least 1 overcharge and some breathing room for discharge
+	var/overcharge_cell_cost_mult = 9.2 // always intended to give base batons at least 1 overcharge and some breathing room for discharge
 	/// How much power will be deducted from an overcharged baton's cell every second. Flat.
 	var/overcharge_passive_power_loss = 0
 	/// The percent of a cell's maximum charge that will be lost for every second overcharge is active. 0-1, multiplied by 100.
-	var/overcharge_passive_power_loss_percent = 0.002 //.2%
+	var/overcharge_passive_power_loss_percent = 0.0037 //.37%
 	/// When overcharged, swings to knockdown will be reduced by this amount.
 	var/overcharge_knockdown_swing_reduction = 0
 
@@ -121,7 +121,7 @@
 	/// The timestamp of the moment we stopped being handled, e.g. we were dropped on the floor or put in a bag
 	var/unhandled_start
 	/// If the unhandled start var exeeds world.time by this amount, overcharge will be disabled
-	var/unhandled_threshold_for_disable = 2 SECONDS
+	var/unhandled_threshold_for_disable = 4 SECONDS
 
 	light_on = FALSE
 	light_system = MOVABLE_LIGHT
@@ -134,25 +134,18 @@
 /// + it prevents people from looting the batons for the cells due to the discharge
 /obj/item/stock_parts/cell/baton
 	name = "stun baton cell"
-	desc = "The standard cell given to all stun batons. Nearly unrechargable, discharges entirely when removed, but has a high capacity for a very low manufacturing price."
+	desc = "The standard cell given to all stun batons. Nearly unrechargable, only installable in stun batons, but has a high capacity for a very low manufacturing price."
 	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=SMALL_MATERIAL_AMOUNT, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.8) //recycle!
-	maxcharge = 23000 // ~2 hits and some leftover
-	chargerate = 50 // SUFFER.
+	maxcharge = 32000 // basically a worse hypercell (sorta)
+	chargerate = 300 // SUFFER.
 
-/obj/item/stock_parts/cell/baton/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	. = ..()
+/obj/item/stock_parts/cell/baton/pre_attack(atom/A, mob/living/user, params)
+	if (!istype(A, /obj/item/melee/baton/security) && !istype(A, /obj/machinery/autolathe)) //maybe remove this check if the charge rate is low enough it doesnt matter?
+		if (user)
+			balloon_alert(user, "can only be installed in batons!")
+		return TRUE //stops the attack chain
 
-	if (old_loc == loc)
-		return
-
-	if (charge)
-		visible_message(span_warning("[src] hisses violently as it discharges its remaining power..."))
-		do_sparks(rand(3, 5), FALSE, src)
-		charge = 0
-		maxcharge = 10 //completely useless now, keeping 10 to allow the overlay
-		chargerate = 0
-
-		update_icon()
+	return ..()
 
 /obj/item/melee/baton/security/loaded/bluespace
 	preload_cell_type = /obj/item/stock_parts/cell/bluespace
@@ -444,7 +437,7 @@
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 
-	. += "This [name] is [span_blue("overcharge capable")]. See the action button in the top left of your screen (You can clickdrag it for more convenient use)."
+	. += "This [name] is [span_blue("overcharge capable")]. See the [span_green("action button")] in the top left of your screen (You can clickdrag it for more convenient use)."
 
 	if (overcharged)
 		. += ""
