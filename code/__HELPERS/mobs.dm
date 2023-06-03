@@ -606,6 +606,10 @@ GLOBAL_LIST_EMPTY(species_list)
 		moblist += mob_to_sort
 	for(var/mob/living/basic/mob_to_sort in sortmob)
 		moblist += mob_to_sort
+	// SKYRAT EDIT START - SOULCATCHERS
+	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
+		moblist += mob_to_sort
+	// SKYRAT EDIT END - SOULCATCHERS
 	return moblist
 
 ///returns a mob type controlled by a specified ckey

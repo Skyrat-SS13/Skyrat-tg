@@ -19,6 +19,9 @@
 		/obj/item/holochip,
 		/obj/item/card,
 		/obj/item/clothing/mask/cigarette,
+		// SKYRAT EDIT BEGIN
+		/obj/item/condom_pack,
+		// SKYRAT EDIT END
 		/obj/item/coupon,
 		/obj/item/flashlight/pen,
 		/obj/item/seeds,
@@ -39,9 +42,7 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/pill,
 		/obj/item/screwdriver,
-		// SKYRAT EDIT BEGIN
-		/obj/item/condom_pack,
-		// SKYRAT EDIT END
+		/obj/item/spess_knife,
 		/obj/item/stamp),
 		list(/obj/item/screwdriver/power))
 

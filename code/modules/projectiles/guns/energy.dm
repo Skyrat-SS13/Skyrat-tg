@@ -152,7 +152,6 @@
 		cell.give(100)
 		if(!chambered) //if empty chamber we try to charge a new shot
 			recharge_newshot(TRUE)
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		update_appearance()
 
 /obj/item/gun/energy/attack_self(mob/living/user as mob)
@@ -210,7 +209,6 @@
 	chambered = null
 	recharge_newshot(TRUE)
 	update_appearance()
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 /obj/item/gun/energy/update_icon_state()
 	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon

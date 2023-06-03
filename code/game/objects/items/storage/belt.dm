@@ -74,6 +74,7 @@
 		/obj/item/weldingtool,
 		/obj/item/wirecutters,
 		/obj/item/wrench,
+		/obj/item/spess_knife,
 	))
 
 /obj/item/storage/belt/utility/chief
@@ -266,6 +267,7 @@
 		/obj/item/surgicaldrill,
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
+		/obj/item/handheld_soulcatcher, // SKYRAT EDIT SOULCATCHERS
 		/obj/item/wrench/medical,
 	))
 
