@@ -1,0 +1,1 @@
+#define COMSIG_KB_BATON_OVERCHARGE "keybinding_baton_overcharge"

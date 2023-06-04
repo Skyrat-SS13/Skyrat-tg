@@ -61,7 +61,18 @@
 /datum/action/item_action/stun_baton/toggle_overcharge
 	name = "Toggle overcharge"
 	desc = "Disable/Enable current limiters, switching between the standard armor-respecting mode \
-	and an inefficient high-power mode, which boasts impressive armor penetration and easier knockdown but with extreme power cost/passive discharge."
+	and an inefficient high-power mode, which boasts impressive armor penetration and easier knockdown but with extreme power cost/passive discharge. \
+	This can be easily triggered by using the default keybind: Shift + F"
+
+/datum/action/item_action/stun_baton/toggle_overcharge/GiveAction(mob/viewer)
+	. = ..()
+
+	RegisterSignal(viewer, COMSIG_KB_BATON_OVERCHARGE, PROC_REF(Trigger))
+
+/datum/action/item_action/stun_baton/toggle_overcharge/HideFrom(mob/viewer)
+	. = ..()
+
+	UnregisterSignal(viewer, COMSIG_KB_BATON_OVERCHARGE)
 
 // Stun baton - Trades off it's ability to instantly knockdown enemies with more stamina DPS than police/telebaton, though
 // with the downside of having a cell and mediocre armor performance
