@@ -1,7 +1,3 @@
-#define NRI_ARMOR_POWEROFF list(25, 25, 25, 25, 25, 25, 30, 30, 30, 10)
-
-#define NRI_ARMOR_POWERON list(40, 50, 30, 40, 60, 75, 50, 50, 50, 40)
-
 #define NRI_POWERUSE_HIT 100
 #define NRI_POWERUSE_HEAL 150
 
@@ -110,8 +106,8 @@
 
 	radio_channel = RADIO_CHANNEL_CENTCOM
 
-	armor_poweroff = NRI_ARMOR_POWEROFF
-	armor_poweron = NRI_ARMOR_POWERON
+	armor_unpowered = /datum/armor/hev_suit_nri
+	armor_powered = /datum/armor/hev_suit_nri/powered
 	heal_amount = NRI_HEAL_AMOUNT
 	blood_replenishment = NRI_BLOOD_REPLENISHMENT
 	health_static_cooldown = NRI_COOLDOWN_HEAL
@@ -128,10 +124,23 @@
 	laser = 25
 	energy = 25
 	bomb = 25
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
+	bio = 25
+	fire = 30
+	acid = 30
+	wound = 30
+	consume = 10
+
+/datum/armor/hev_suit_nri/powered
+	melee = 40
+	bullet = 50
+	laser = 30
+	energy = 40
+	bomb = 60
+	bio = 75
+	fire = 50
+	acid = 50
+	wound = 50
+	consume = 40
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"
