@@ -108,6 +108,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// These two are locked to one type only, and shouldn't be widely available, hence why they runtime otherwise.
 	// Can't be bothered adding more to them.
 	ignore += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
+	// These load maps. We really, really don't want that during C&D.
+	ignore += typesof(/obj/modular_map_root)
 	//SKYRAT EDIT END
 	//Needs cards passed into the initilazation args
 	ignore += typesof(/obj/item/toy/cards/cardhand)
