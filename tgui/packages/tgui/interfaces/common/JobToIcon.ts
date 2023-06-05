@@ -1,7 +1,7 @@
 /** Icon map of jobs to their fontawesome5 (free) counterpart. */
-//SKYRAT EDIT START - ORIGINAL: export const JOB2ICONs = {
+// SKYRAT EDIT START - ORIGINAL: export const JOB2ICONs = {
 const BASEICONS = {
-  //SKYRAT EDIT - END
+  // SKYRAT EDIT - END
   'AI': 'eye',
   'Assistant': 'toolbox',
   'Atmospheric Technician': 'fan',
