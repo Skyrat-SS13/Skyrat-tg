@@ -415,7 +415,7 @@
 // ARMOR
 
 /datum/greyscale_config/heck_suit/worn/digi
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor_digi.dmi'
 
 //Helmet pairs with the above suit
 /datum/greyscale_config/heck_helmet/worn/snouted

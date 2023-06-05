@@ -3,6 +3,9 @@
 	var/gets_cropped_on_taurs = TRUE
 
 //Define worn_icon_digi below here for suits so we don't have to make whole new .dm files for each
+/obj/item/clothing/suit/armor
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor_digi.dmi'
+
 /obj/item/clothing/suit/bio_suit
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/bio_digi.dmi'
 

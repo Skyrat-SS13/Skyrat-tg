@@ -7,11 +7,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_syndiemed"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/syndicate_medical, 32)
+
 /obj/structure/sign/poster/contraband/crocin_pool
 	name = "SWIM"
 	desc = "This poster dramatically states; 'SWIM'. It seems to be advertising the use of Crocin.. 'recreationally', in the home, work, and, most ominously, 'the pool'. A 'MamoTramsem' logo is in the corner."
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_crocin"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/crocin_pool, 32)
 
 /obj/structure/sign/poster/contraband/icebox_moment
 	name = "As above, so below"
@@ -19,11 +23,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_abovebelow"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/icebox_moment, 32)
+
 /obj/structure/sign/poster/contraband/shipstation
 	name = "Flight Services - Enlist"
 	desc = "This poster depicts the long deprecated 'Ship' class 'station' in it's hayday. Surprisingly, the poster seems to be Nanotrasen official; though with how hush they've been on the topic..." //A disaster as big as Ship deserves a scandalous coverup.
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_shipstation"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/shipstation, 32)
 
 /obj/structure/sign/poster/contraband/dancing_honk
 	name = "DANCE"
@@ -31,11 +39,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_honkdance"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/dancing_honk, 32)
+
 /obj/structure/sign/poster/contraband/operative_duffy
 	name = "CASH REWARD"
 	desc = "This poster depicts a gas mask, with details on how to 'forward information' on the whereabouts of whoever it means... though it doesn't specify to who."
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_duffy"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/operative_duffy, 32)
 
 /obj/structure/sign/poster/contraband/ultra
 	name = "ULTRA"
@@ -43,17 +55,23 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_ultra"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/ultra, 32)
+
 /obj/structure/sign/poster/contraband/secborg_vale
 	name = "Defaced Valeborg Advertisement"
 	desc = "This poster originally sought to advertise the sleek utility of the valeborg - but it seems to have been long since defaced. One word lies on top; 'RUN.' - Perhaps fitting, considering the security model shown."
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_valeborg"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/secborg_vale, 32)
+
 /obj/structure/sign/poster/contraband/killingjoke // I like Batman :)))
 	name = "You don't have to be crazy to work here - but it sure helps!"
 	desc = "A poster boldly stating that being insane abord Nanotrasen stations isn't required. But it doesn't hurt to have!"
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "poster_sr_killingjoke"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/killingjoke, 32)
 
 /obj/structure/sign/poster/contraband/nri_text
 	name = "NRI declaration of sovereignity"
@@ -70,11 +88,15 @@
 	. += "\t[span_info("...This Declaration is the basis for the development of a new Constitution of the NRI, the conclusion of the Imperial Treaty and the improvement of royal legislation.")]"
 	return .
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_text, 32)
+
 /obj/structure/sign/poster/contraband/nri_rations
 	name = "NRI military rations advertisement"
 	desc = "This poster presumably is an advertisement for military rations produced by a certain private company as a part of the Defense Collegia's state order. This admiral's right hand man sure does look excited."
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "nri_rations"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_rations, 32)
 
 /obj/structure/sign/poster/contraband/nri_voskhod
 	name = "VOSKHOD combat armor advertisement"
@@ -82,11 +104,15 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "nri_voskhod"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_voskhod, 32)
+
 /obj/structure/sign/poster/contraband/nri_pistol
 	name = "Szabo-Ivanek service pistol technical poster"
 	desc = "This poster seems to be a technical documentation for Szabo-Ivanek service pistol in use by most of the NRI's state police and military institutions. Sadly, it's all written in Pan-Slavic."
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "nri_pistol"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_pistol, 32)
 
 /obj/structure/sign/poster/contraband/nri_engineer
 	name = "Build, Now"
@@ -94,8 +120,12 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "nri_engineer"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_engineer, 32)
+
 /obj/structure/sign/poster/contraband/nri_radar
 	name = "Imperial navy enlistment poster"
 	desc = "Enlist with the imperial navy today! See the galaxy, shoot solarians, get PTSD!"
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "nri_radar"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_radar, 32)

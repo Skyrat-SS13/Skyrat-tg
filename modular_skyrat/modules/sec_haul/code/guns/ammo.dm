@@ -1,10 +1,11 @@
 /obj/item/ammo_box/advanced
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/datum/techweb_node/peacekeeper_ammo_advanced
+/datum/techweb_node/smartgun_rails
+	id = "smartgun_rails"
 	display_name = "Experimental SMARTGUN Ammunition"
 	description = "Standard ammo for a non-standard SMARTGUN."
-	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
+	prereq_ids = list("electronic_weapons", "exotic_ammo")
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
@@ -137,13 +138,6 @@
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	if(length(bullet_cost))
-		var/temp_materials = custom_materials.Copy()
-		for (var/material in bullet_cost)
-			var/material_amount = bullet_cost[material]
-			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-			temp_materials[material] = material_amount
-		set_custom_materials(temp_materials)
 
 /obj/item/ammo_box/revolver
 	name = "speed loader"
