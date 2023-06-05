@@ -1142,7 +1142,6 @@
 			pulledby.stop_pulling()
 			return FALSE
 		else
-			adjustStaminaLoss(rand(10,15))//failure to escape still imparts a pretty serious penalty //SKYRAT EDIT CHANGE: //adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
 			visible_message("<span class='danger'>[src] struggles as they fail to break free of [pulledby]'s grip!</span>", \
 							"<span class='warning'>You struggle as you fail to break free of [pulledby]'s grip!</span>", null, null, pulledby)
 			to_chat(pulledby, "<span class='danger'>[src] struggles as they fail to break free of your grip!</span>")
