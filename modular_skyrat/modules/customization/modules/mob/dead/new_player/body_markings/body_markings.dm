@@ -139,6 +139,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/secondary/basic
+	name = "Basic"
+	icon_state = "basic"
+	affected_bodyparts = CHEST | ARM_LEFT | HAND_LEFT | ARM_RIGHT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
 /datum/body_marking/secondary/teshari
 	name = "Teshari"
 	icon_state = "teshari"
@@ -184,7 +189,7 @@
 /datum/body_marking/secondary/tajaran
 	name = "Tajaran"
 	icon_state = "tajaran"
-	affected_bodyparts = HEAD | CHEST //The legs were literally one pixel so I removed them
+	affected_bodyparts = HEAD | CHEST
 
 /datum/body_marking/secondary/sergal
 	name = "Sergal"
@@ -361,41 +366,6 @@
 	name = "Datashark"
 	icon_state = "datashark"
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
-
-/datum/body_marking/secondary/belly
-	name = "Belly"
-	icon_state = "belly"
-	affected_bodyparts = CHEST
-
-/datum/body_marking/secondary/bellyslim
-	name = "Belly Slim"
-	icon_state = "bellyslim"
-	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
-
-/datum/body_marking/secondary/bellyslimalt
-	name = "Belly Slim Alternative"
-	icon_state = "bellyslim_alt"
-	affected_bodyparts = CHEST
-
-/datum/body_marking/secondary/bellyandbutt
-	name = "Belly and Butt"
-	icon_state = "bellyandbutt"
-	affected_bodyparts = CHEST
-
-/datum/body_marking/secondary/butt
-	name = "Butt"
-	icon_state = "butt"
-	affected_bodyparts = CHEST
-
-/datum/body_marking/secondary/handsfeet
-	name = "Hands Feet"
-	icon_state = "handsfeet"
-	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
-
-/datum/body_marking/secondary/frog
-	name = "Frog"
-	icon_state = "frog"
-	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary/bee
 	name = "Bee"
