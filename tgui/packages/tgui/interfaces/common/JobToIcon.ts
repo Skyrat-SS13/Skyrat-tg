@@ -49,11 +49,7 @@ const BASEICONS = {
   'Syndicate Operative': 'dragon',
   'Virologist': 'virus',
   'Warden': 'handcuffs',
-} as const;
-
-// SKYRAT EDIT START - ALT TITLES + SKYRAT JOBS
-SKYRATJOBS = {
-  // SKYRAT JOBS
+  // SKYRAT EDIT START - Skyrat-exclusive jobs have icons too
   'Barber': 'scissors',
   'Blueshield': 'shield-dog',
   'Bouncer': 'shield-heart',
@@ -64,7 +60,11 @@ SKYRATJOBS = {
   'Orderly': 'shield-heart',
   'Science Guard': 'shield-heart',
   'Security Medic': 'heart-pulse',
-  // ALT TITLES
+  // SKYRAT EDIT END
+} as const;
+
+// SKYRAT EDIT START - ALT TITLES
+const ALTTITLES = {
   // AI - eye
   'Station Intelligence': BASEICONS['AI'],
   'Automated Overseer': BASEICONS['AI'],
@@ -272,7 +272,7 @@ SKYRATJOBS = {
 } as const;
 
 // Combine the Base icons and ALt titles
-export const JOB2ICON = { ...BASEICONS, ...SKYRATJOBS } as const;
+export const JOB2ICON = { ...BASEICONS, ...ALTTITLES } as const;
 // SKYRAT EDIT END
 
 export type AvailableJob = keyof typeof JOB2ICON;
