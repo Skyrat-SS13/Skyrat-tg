@@ -190,10 +190,10 @@
 
 	// Not enough charge? Tough luck.
 	if(user?.cell.charge < charge_cost)
-		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use \the [src]."))
+		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]."))
 		return
+	
 	user.cell.use(charge_cost)
-
 	in_use = TRUE
 	COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
