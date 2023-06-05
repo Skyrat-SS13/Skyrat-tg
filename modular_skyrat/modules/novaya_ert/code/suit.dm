@@ -108,41 +108,6 @@
 
 	activation_song = null //No nice song.
 
-	logon_sound = 'modular_skyrat/modules/hev_suit/sound/nri/01_hev_logon.ogg' //don't tell anyone that we've used russian HEV sounds
-	armor_sound = 'modular_skyrat/modules/hev_suit/sound/nri/02_powerarmor_on.ogg'
-	atmospherics_sound = 'modular_skyrat/modules/hev_suit/sound/nri/03_atmospherics_on.ogg'
-	vitalsigns_sound = 'modular_skyrat/modules/hev_suit/sound/nri/04_vitalsigns_on.ogg'
-	automedic_sound = 'modular_skyrat/modules/hev_suit/sound/nri/05_automedic_on.ogg'
-	weaponselect_sound = 'modular_skyrat/modules/hev_suit/sound/nri/06_weaponselect_on.ogg'
-	munitions_sound = 'modular_skyrat/modules/hev_suit/sound/nri/07_munitionview_on.ogg'
-	communications_sound = 'modular_skyrat/modules/hev_suit/sound/nri/08_communications_on.ogg'
-	safe_day_sound = 'modular_skyrat/modules/hev_suit/sound/nri/09_safe_day.ogg'
-
-	batt_50_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fifty.ogg'
-	batt_40_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fourty.ogg'
-	batt_30_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_thirty.ogg'
-	batt_20_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_twenty.ogg'
-	batt_10_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_ten.ogg'
-
-	near_death_sound = 'modular_skyrat/modules/hev_suit/sound/nri/near_death.ogg'
-	health_critical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_critical.ogg'
-	health_dropping_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_dropping.ogg'
-
-	blood_loss_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_loss.ogg'
-	blood_toxins_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_toxins.ogg'
-	biohazard_sound = 'modular_skyrat/modules/hev_suit/sound/nri/biohazard_detected.ogg'
-	chemical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/chemical_detected.ogg'
-
-	minor_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_fracture.ogg'
-	major_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_fracture.ogg'
-	minor_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_lacerations.ogg'
-	major_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_lacerations.ogg'
-
-	morphine_sound = 'modular_skyrat/modules/hev_suit/sound/nri/morphine_shot.ogg'
-	wound_sound = 'modular_skyrat/modules/hev_suit/sound/nri/wound_sterilized.ogg'
-	antitoxin_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antitoxin_shot.ogg'
-	antidote_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antidote_shot.ogg'
-
 	radio_channel = RADIO_CHANNEL_CENTCOM
 
 	armor_poweroff = NRI_ARMOR_POWEROFF

@@ -851,7 +851,7 @@
 		),
 	)
 
-	activation_song = 'modular_skyrat/modules/hev_suit/sound/pcv/planet.ogg'
+	activation_song = null // removal of song only standard suit will have the song
 
 	logon_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/01_pcv_logon.ogg'
 	armor_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/02_powerarmor_on.ogg'
