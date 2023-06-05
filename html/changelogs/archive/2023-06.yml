@@ -147,3 +147,34 @@
   - image: brand new crate sprites, wowie zowie!!
   larentoun:
   - bugfix: Engineering departmental order consoles can now once again order gas canisters.
+2023-06-05:
+  Rhials:
+  - rscadd: The scrubber clog event is now the ventilation clog event. It uses vents
+      instead of scrubbers now. It is now the ventilation clog event.
+  - rscadd: Ventilation clogs now produce a lot of filth in addition to produced mobs,
+      and make the surrounding area dirty.
+  - balance: Ventilation clogs may produce more mobs at once, and have a higher limit
+      on how many can occur per round.
+  - code_imp: The ventilation clog event is now self-contained, and handles all logic/behavior
+      in the event itself (rather than on the targeted vent).
+  SkyratBot:
+  - image: Added a cross to the top of the new medical crate for readability's sake.
+  - qol: Fugitive hunters now get a deadchat poll and notify deadchat properly.
+  - bugfix: Gun overlays (energy ammo counter, flashlights, bayonette, etc) are now
+      one with gun's icon, which makes said overlays to transform correctly with gun's
+      transform (ie, throwing)
+  - balance: 'The source of the demonic portals that endlessly deposits snow legions
+      onto the Icemoon no longer preserves the bodies nor gear of the damned (read:
+      demon portal snow legions now only drop skeletons).'
+  - bugfix: fixed dead plant having wrong icon roundstart
+  - spellcheck: Fixes grammar error on syndie sm shard desc
+  - bugfix: Radios tuned to things other than common respond properly to turning on
+      the speaker
+  SomeRandomOwl:
+  - sound: reduced the size and length of a few large audio files
+  - sound: Gamma Alert level now indefinitely loops until alert level is changed,
+      so you really know that the universe is ending
+  - sound: NRI HEV Suit no longer has Unique sounds
+  - sound: All HEV suits no longer have intro songs
+  zeroisthebiggay:
+  - bugfix: mantis blade is sharp
