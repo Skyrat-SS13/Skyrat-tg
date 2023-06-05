@@ -56,20 +56,11 @@
 	if(post_unlink_callback)
 		src.post_unlink_callback = post_unlink_callback
 
-<<<<<<< HEAD
 	src.speech_action_icon = speech_action_icon
 	src.speech_action_icon_state = speech_action_icon_state
 	src.speech_action_background_icon_state = speech_action_background_icon_state
 
-	if(ispath(linker_action_path))
-		linker_action = new linker_action_path(src)
-		linker_action.Grant(owner)
-	else
-		stack_trace("[type] was created without a valid linker_action_path. No one will be able to link to it.")
-
 	/* ORIGINAL CODE
-=======
->>>>>>> e5631487104 (Re-pr of #70522 "Space Dragon Update: Up Close and Personal" (#75607))
 	master_speech = new(src)
 	master_speech.Grant(owner)
 	*/ //ORIGINAL CODE END
@@ -104,7 +95,6 @@
 /datum/component/mind_linker/proc/link_mob(mob/living/to_link)
 	if(QDELETED(to_link) || to_link.stat == DEAD)
 		return FALSE
-<<<<<<< HEAD
 
 	/* ORIGINAL CODE
 	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD)) // Mindshield implant - no dice
@@ -118,8 +108,6 @@
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection)
 		return FALSE
 	//SKYRAT EDIT END
-=======
->>>>>>> e5631487104 (Re-pr of #70522 "Space Dragon Update: Up Close and Personal" (#75607))
 	if(linked_mobs[to_link])
 		return FALSE
 
