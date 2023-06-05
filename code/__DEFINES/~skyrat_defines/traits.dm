@@ -75,3 +75,6 @@
 
 /// Trait that is applied whenever someone or something is glassblowing
 #define TRAIT_CURRENTLY_GLASSBLOWING "currently_glassblowing"
+
+/// Trait that is applied to prevent ghosts from seeing subtle and whisper messages.
+#define TRAIT_NO_GHOST_MESSAGES "no_ghost_messages"

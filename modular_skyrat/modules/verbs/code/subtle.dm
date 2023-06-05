@@ -58,6 +58,9 @@
 			ghost.show_message(subtle_message)
 
 	for(var/mob/reciever in viewers)
+		if(HAS_TRAIT(user, TRAIT_NO_GHOST_MESSAGES) && isobserver(reciever))
+			continue
+
 		reciever.show_message(subtle_message, alt_msg = subtle_message)
 
 	return TRUE

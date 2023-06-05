@@ -363,6 +363,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message_raw)
 
 	for(var/atom/movable/listening_movable as anything in listening)
+		// SKYRAT EDIT DISABLE GHOST VIEWING
+		if(is_speaker_whispering && isobserver(listening_movable) && HAS_TRAIT(src, TRAIT_NO_GHOST_MESSAGES))
+			continue
+		// SKYRAT EDIT END
 		if(!listening_movable)
 			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
 			continue
