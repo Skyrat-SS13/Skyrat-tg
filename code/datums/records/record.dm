@@ -236,16 +236,12 @@
 
 	final_paper_text += "Species: [species]<br>Fingerprint: [fingerprint]<br>Wanted Status: [wanted_status]<br><br>"
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADD - RP RECORDS
 	if(past_general_records != "")
 		final_paper_text += "\nGeneral Records:\n[past_general_records]\n"
 	//SKYRAT EDIT ADD END
-
-	final_paper_text += text("<center><B>Security Data</B></center><br><br>")
-=======
+	
 	final_paper_text += "<center><B>Security Data</B></center><br><br>"
->>>>>>> cb4a836d416 (Removes all uses of text() (#75766))
 
 	//SKYRAT EDIT ADDITION START - RP RECORDS
 	if(past_security_records != "")
