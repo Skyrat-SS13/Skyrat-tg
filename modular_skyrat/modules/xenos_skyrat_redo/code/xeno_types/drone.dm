@@ -4,19 +4,28 @@
 	name = "alien drone"
 	desc = "As plain looking as you could call an alien with armored black chitin and large claws."
 	caste = "drone"
-	maxHealth = 200
-	health = 200
+	maxHealth = 2000 // (:
+	health = 2000
 	icon_state = "aliendrone"
 	/// Holds the healing aura ability the drone will be granted
 	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 25
+	melee_damage_upper = 30
 	next_evolution = /mob/living/carbon/alien/adult/skyrat/praetorian
 
 /mob/living/carbon/alien/adult/skyrat/drone/Initialize(mapload)
 	. = ..()
 	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura()
 	heal_aura_ability.Grant(src)
+	var/datum/action/cooldown/alien/sneak/sneaky_beaky = new(src)
+	sneaky_beaky.Grant(src)
+	var/datum/action/cooldown/alien/sneak/total/sneaky_beaky_evenmore = new(src)
+	sneaky_beaky_evenmore.Grant(src)
+	var/datum/action/cooldown/spell/pointed/hardstun/main_character_ism = new(src)
+	main_character_ism.Grant(src)
+	var/datum/action/cooldown/spell/pointed/decap/too_lazy_to_add_headbite = new(src)
+	too_lazy_to_add_headbite.Grant(src)
+
 
 /mob/living/carbon/alien/adult/skyrat/drone/Destroy()
 	QDEL_NULL(heal_aura_ability)

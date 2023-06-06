@@ -217,6 +217,16 @@
 	if (configuration_success == FALSE)
 		return
 	smite.effect(src, target)
+	target.get_all_contents()
+
+/client/proc/lighteat(mob/living/target as mob)
+	set category = "Admin.Fun"
+	set name = "Lighteat"
+	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
+		return
+
+	for(var/obj/content_object in target.get_all_contents())
+		content_object.AddElement(/datum/element/light_eaten)
 
 ///"Turns" people into bread. Really, we just add them to the contents of the bread food item.
 /proc/breadify(atom/movable/target)

@@ -366,6 +366,10 @@ Doesn't work on other aliens/AI.*/
 
 	return TRUE
 
+/datum/action/cooldown/alien/sneak/total
+	name = "Sneak (TOTAL)"
+	sneak_alpha = 0
+
 /datum/action/cooldown/alien/regurgitate
 	name = "Regurgitate"
 	desc = "Empties the contents of your stomach."

@@ -276,6 +276,68 @@
 	cast_on.apply_status_effect(/datum/status_effect/psychic_projection, projection_duration)
 	return TRUE
 
+/datum/action/cooldown/spell/pointed/hardstun
+	name = "Hardstun"
+	desc = "Cinematically hardstun a mf."
+	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
+	button_icon_state = "blind"
+	school = SCHOOL_PSYCHIC
+	cooldown_time = 1
+	antimagic_flags = MAGIC_RESISTANCE_MIND
+	spell_max_level = 1
+	invocation_type = INVOCATION_NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
+	cast_range = 9
+	active_msg = "Whose career do you want to end"
+
+/datum/action/cooldown/spell/pointed/hardstun/is_valid_target(atom/cast_on)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!isliving(cast_on))
+		return FALSE
+	return TRUE
+
+/datum/action/cooldown/spell/pointed/hardstun/cast(mob/living/cast_on)
+	. = ..()
+	to_chat(cast_on, span_userdanger("You feel yourself be paralyzed with fear!"))
+	cast_on.Stun(10 SECONDS, TRUE)
+	return TRUE
+
+
+/datum/action/cooldown/spell/pointed/decap
+	name = "Decapitate"
+	desc = "End them."
+	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
+	button_icon_state = "blind"
+	school = SCHOOL_PSYCHIC
+	cooldown_time = 1
+	antimagic_flags = MAGIC_RESISTANCE_MIND
+	spell_max_level = 1
+	invocation_type = INVOCATION_NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
+	cast_range = 1
+	active_msg = "You get ready to take some weight off their shoulders"
+
+/datum/action/cooldown/spell/pointed/decap/is_valid_target(atom/cast_on)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!isliving(cast_on))
+		return FALSE
+	return TRUE
+
+/datum/action/cooldown/spell/pointed/decap/cast(mob/living/cast_on)
+	. = ..()
+	cast_on.visible_message(span_boldwarning("[owner] draws back a grabber, readying their claws!"), span_warning("You prepare to decapitate [cast_on]..."))
+	if(!do_after(owner, 4 SECONDS, cast_on))
+		return
+	cast_on.visible_message(span_boldwarning("[owner] swings a set of claws at [cast_on], decapitating them instantly!"), span_warning("You decapitate [cast_on]!"))
+	var/mob/living/living_target = cast_on
+	var/obj/item/bodypart/head/head = living_target.get_bodypart("head")
+	head.dismember()
+	return TRUE
+
 /// Status effect that adds a weird view to its owner and causes them to rapidly shoot a firearm in their general direction.
 /datum/status_effect/psychic_projection
 	id = "psychic_projection"

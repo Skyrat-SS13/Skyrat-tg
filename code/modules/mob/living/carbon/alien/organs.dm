@@ -16,13 +16,13 @@
 	)
 
 	/// The current amount of stored plasma.
-	var/stored_plasma = 100
+	var/stored_plasma = 2500
 	/// The maximum plasma this organ can store.
-	var/max_plasma = 250
+	var/max_plasma = 2500
 	/// The rate this organ regenerates its owners health at per damage type per second.
 	var/heal_rate = 2.5
 	/// The rate this organ regenerates plasma at per second.
-	var/plasma_rate = 5
+	var/plasma_rate = 500
 
 /obj/item/organ/internal/alien/plasmavessel/large
 	name = "large plasma vessel"
