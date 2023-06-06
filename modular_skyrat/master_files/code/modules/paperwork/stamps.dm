@@ -69,7 +69,7 @@
 			return
 
 /obj/item/stamp/nri
-	name = "Novaya Rossiyskaya Imperia Stamp"
+	name = "/improper Novaya Rossiyskaya Imperia stamp"
 	desc = "A rubber stamp for stamping important documents. Used in various NRI documents."
 	icon = 'modular_skyrat/master_files/icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-nri"
