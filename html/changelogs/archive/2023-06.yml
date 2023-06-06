@@ -147,3 +147,70 @@
   - image: brand new crate sprites, wowie zowie!!
   larentoun:
   - bugfix: Engineering departmental order consoles can now once again order gas canisters.
+2023-06-05:
+  Rhials:
+  - rscadd: The scrubber clog event is now the ventilation clog event. It uses vents
+      instead of scrubbers now. It is now the ventilation clog event.
+  - rscadd: Ventilation clogs now produce a lot of filth in addition to produced mobs,
+      and make the surrounding area dirty.
+  - balance: Ventilation clogs may produce more mobs at once, and have a higher limit
+      on how many can occur per round.
+  - code_imp: The ventilation clog event is now self-contained, and handles all logic/behavior
+      in the event itself (rather than on the targeted vent).
+  SkyratBot:
+  - image: Added a cross to the top of the new medical crate for readability's sake.
+  - qol: Fugitive hunters now get a deadchat poll and notify deadchat properly.
+  - bugfix: Gun overlays (energy ammo counter, flashlights, bayonette, etc) are now
+      one with gun's icon, which makes said overlays to transform correctly with gun's
+      transform (ie, throwing)
+  - balance: 'The source of the demonic portals that endlessly deposits snow legions
+      onto the Icemoon no longer preserves the bodies nor gear of the damned (read:
+      demon portal snow legions now only drop skeletons).'
+  - bugfix: fixed dead plant having wrong icon roundstart
+  - spellcheck: Fixes grammar error on syndie sm shard desc
+  - bugfix: Radios tuned to things other than common respond properly to turning on
+      the speaker
+  SomeRandomOwl:
+  - sound: reduced the size and length of a few large audio files
+  - sound: Gamma Alert level now indefinitely loops until alert level is changed,
+      so you really know that the universe is ending
+  - sound: NRI HEV Suit no longer has Unique sounds
+  - sound: All HEV suits no longer have intro songs
+  zeroisthebiggay:
+  - bugfix: mantis blade is sharp
+2023-06-06:
+  JohnFulpWillard, tatax:
+  - qol: '[Mafia] Players are now sent back to their in-game character''s bodies when
+      they finish a game.'
+  - image: '[Mafia] Mafia now has a new sprite for the main action button in-game.'
+  - bugfix: '[Mafia] Chaplains can now use their ability.'
+  - bugfix: '[Mafia] The game no longer ends in a Draw if Town or Changelings win.'
+  - bugfix: '[Mafia] The role list now properly shows roles once.'
+  Jolly, vinylspiders:
+  - bugfix: '[DS-2] - Fixed the locker door fuckiness.'
+  LT3:
+  - bugfix: IVs again work with non-living containers
+  Paxilmaniac:
+  - code_imp: The code for advanced shrapnel mines now sits in the mapping folder,
+      not its own folder named "planet" for whatever reason
+  RatFromTheJungle:
+  - bugfix: the detective's holster holds ammo again
+  SkyratBot:
+  - bugfix: bluespace poly crystals can be used to complete machine frames either
+      by hand or by RPED
+  - bugfix: Abstract items can no longer be placed in others' hands.
+  - bugfix: The reviver implant will no longer leave its user looping between soft
+      and hard critical states.
+  - balance: the cake hat wounds more
+  - bugfix: the cake hat no longer balds you
+  - rscadd: Changes syndicate surgery duffelbags to contain advanced tools, sterilizine,
+      surgical tape, and a roller bed.
+  - rscadd: Changed the Syndicate Infiltrators' surgery areas to contain a full syndicate
+      surgery duffelbag.
+  - rscadd: The normal infiltrator now has a operating computer and a closet of misc.
+      surgical clothing and anesthesic tank.
+  Zonespace27:
+  - admin: Added a lorecaster story manager panel
+  - sound: Shortened assault ops intro theme
+  softcerv:
+  - bugfix: NIFs shouldn't hard delete as much now.
