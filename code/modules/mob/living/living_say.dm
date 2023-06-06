@@ -364,7 +364,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	for(var/atom/movable/listening_movable as anything in listening)
 		// SKYRAT EDIT DISABLE GHOST VIEWING
-		if(is_speaker_whispering && isobserver(listening_movable) && HAS_TRAIT(src, TRAIT_NO_GHOST_MESSAGES))
+		var/mob/listener = listening_movable
+		if(is_speaker_whispering && isobserver(listening_movable) && !listener?.client?.holder && HAS_TRAIT(src, TRAIT_NO_GHOST_MESSAGES))
 			continue
 		// SKYRAT EDIT END
 		if(!listening_movable)
