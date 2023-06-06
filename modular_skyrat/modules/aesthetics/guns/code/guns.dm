@@ -1,3 +1,14 @@
+// open to suggestions on where to put these ammobox overrides
+
+/obj/item/ammo_box
+	/// When inserted into an ammo workbench, does this ammo box check for parent ammunition to search for subtypes of? Relevant for surplus clips, multi-sprite magazines.
+	/// Maybe don't enable this for shotgun ammo boxes.
+	var/multitype = FALSE
+
+/obj/item/ammo_box/a762
+	multitype = TRUE
+	caliber = CALIBER_A762
+
 /obj/item/gun/energy/e_gun
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -375,11 +386,6 @@
 	name = ".244 Acia surplus casing"
 	desc = "A .244 surplus bullet casing."
 
-// no better place to put these overrides lmao
-
-/obj/item/ammo_box/a762
-	caliber = CALIBER_A762
-
 // these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
 /obj/item/ammo_casing/a762/lionhunter
 	name = "lionhunter's casing"
@@ -423,6 +429,7 @@
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 9.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.

@@ -139,9 +139,8 @@
 	var/ammo_caliber = initial(ammo_type.caliber)
 	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
 
-	if("multitype" in loaded_magazine.vars)
-		if(loaded_magazine:multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
-			ammo_type = ammo_parent_type
+	if(loaded_magazine.multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
+		ammo_type = ammo_parent_type
 
 	allowed_ammo_types = typesof(ammo_type)
 
