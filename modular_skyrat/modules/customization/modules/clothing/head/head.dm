@@ -128,6 +128,8 @@
 	name = "head of security's naval officer cap"
 	desc = "A tar black naval cap with a silver disk in the center."
 	icon_state = "imphos"
+	armor_type = /datum/armor/hats_hos
+	
 /obj/item/clothing/head/hats/imperial/cmo
 	name = "chief medical officer's naval cap"
 	desc = "A teal naval cap with a silver disk in the center."
