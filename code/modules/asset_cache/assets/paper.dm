@@ -14,7 +14,7 @@
 		// SKYRAT ADDITION: END - Donator stamp icons
 
 		// SKYRAT ADDITION: START - Other stamp icons
-		"stamp-nri" = "modular_skyrat/master_files/icons/stamp_icons/large_stamp-nri.png",
+		"stamp-nri" = 'modular_skyrat/master_files/icons/stamp_icons/large_stamp-nri.png',
 		// SKYRAT ADDITION: END - Other stamp icons
 
 		"stamp-clown" = 'icons/stamp_icons/large_stamp-clown.png',
