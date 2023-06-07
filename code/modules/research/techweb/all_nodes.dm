@@ -969,6 +969,7 @@
 	prereq_ids = list("biotech", "datatheory")
 	design_ids = list(
 		"skill_station",
+		"soulcatcher_device", //SKYRAT EDIT SOULCATCHERS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
