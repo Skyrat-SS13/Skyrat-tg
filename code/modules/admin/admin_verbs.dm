@@ -97,10 +97,10 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggle_view_range, /*changes how far we can see*/
 	/client/proc/cmd_admin_law_panel,
 	/client/proc/log_viewer_new,
-	/datum/admins/proc/toggleaooc,		/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
-	/datum/admins/proc/toggledchat, 	/*SKYRAT EDIT ADDITION*/
-	/datum/admins/proc/togglesooc,		/*Toggle Security OOC - SKYRAT EDIT ADDITION*/
-
+	/client/proc/player_ticket_history,
+	/datum/admins/proc/toggleaooc,					/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
+	/datum/admins/proc/toggledchat, 				/*SKYRAT EDIT ADDITION*/
+	/datum/admins/proc/togglesooc,					/*Toggle Security OOC - SKYRAT EDIT ADDITION*/
 	/client/proc/admin_open_event_spawners_menu,	/*EVENTS - SKYRAT EDIT ADDITION*/
 	/client/proc/request_help,						/*SKYRAT EDIT ADDITION*/
 	/client/proc/view_opfors,						/*OPFOR - SKYRAT EDIT ADDITION*/
