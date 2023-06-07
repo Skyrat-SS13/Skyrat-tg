@@ -270,11 +270,8 @@
 		/mob/living/simple_animal/hostile/bear,
 		/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
 		/mob/living/simple_animal/hostile/gorilla,
-<<<<<<< HEAD
-		/mob/living/simple_animal/hostile/headcrab,
+		/mob/living/basic/headslug,
 		/mob/living/basic/lizard,
-=======
->>>>>>> a1d58490c5c (Turns Changeling Headslugs into a Basic Mob (#75601))
 		/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 		/mob/living/simple_animal/hostile/morph,
 		/mob/living/simple_animal/hostile/mushroom,
