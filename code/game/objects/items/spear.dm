@@ -220,6 +220,10 @@
 	force_unwielded = 12
 	force_wielded = 20
 
+	//SKYRAT EDIT ADDITION BEGIN - increases bone spear range to 2
+	reach = 2
+	//SKYRAT EDIT ADDITION END
+
 /*
  * Bamboo Spear
  */

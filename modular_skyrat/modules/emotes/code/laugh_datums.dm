@@ -2,10 +2,8 @@ GLOBAL_LIST_EMPTY(laugh_types)
 
 /datum/laugh_type
 	var/name
-	var/donator_only = FALSE
 	var/list/male_laughsounds
 	var/list/female_laughsounds
-	var/restricted_species_type
 
 /datum/laugh_type/none //Why would you want this?
 	name = "No Laugh"
@@ -31,10 +29,8 @@ GLOBAL_LIST_EMPTY(laugh_types)
 	name = "Moth Laugh"
 	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg')
 	female_laughsounds = null
-	restricted_species_type = /datum/species/moth
 
 /datum/laugh_type/insect
 	name = "Insect Laugh"
 	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg')
 	female_laughsounds = null
-	restricted_species_type = /datum/species/insect
