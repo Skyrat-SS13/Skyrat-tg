@@ -352,11 +352,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Hawaiian Shirt"
 	item_path = /obj/item/clothing/suit/costume/hawaiian
 
-/datum/loadout_item/suit/hawaiian_gags
-	name = "Colourable Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_shirt
-
-
 /*
 *	MISC
 */
