@@ -82,13 +82,8 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/yellow)
 /// Red tiles
 
 /obj/effect/turf_decal/tile/red
-<<<<<<< HEAD
-	name = "red corner"
-	color = "#486091" //SKYRAT EDIT CHANGE
-=======
 	name = "red tile decal"
-	color = "#DE3A3A"
->>>>>>> f97830c9829 (Change pride tiles to generic holiday tiles, add Tramstation support (#75665))
+	color = "#486091" // SKYRAT EDIT CHANGE
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/red)
 
