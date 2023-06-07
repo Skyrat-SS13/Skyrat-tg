@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/shapeshifter,
 	/datum/nifsoft/summoner/dorms,
 	/datum/nifsoft/soul_poem,
+	/datum/nifsoft/soulcatcher,
 ))
 
 /datum/computer_file/program/nifsoft_downloader
