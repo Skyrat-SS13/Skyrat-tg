@@ -1776,7 +1776,7 @@
 	color_src = FALSE
 
 /datum/sprite_accessory/pod_hair
-	icon = 'modular_skyrat/master_files/icons/mob/species/podperson_hair.dmi' //SKYRAT EDIT: Original - 'icons/mob/species/podperson_hair.dmi'
+	icon = 'icons/mob/species/podperson_hair.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/pod_hair/ivy
