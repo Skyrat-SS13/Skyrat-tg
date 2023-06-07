@@ -41,8 +41,6 @@
 /datum/opposing_force
 	/// A list of objectives.
 	var/list/objectives = list()
-	/// A list of items they want spawned.
-	var/list/requested_items = list()
 	/// Justification for wanting to do bad things.
 	var/set_backstory = ""
 	/// Has this been approved?
@@ -55,8 +53,6 @@
 	var/can_edit = TRUE
 	/// The reason we were denied.
 	var/denied_reason = ""
-	/// Any changes required
-	var/requested_changes
 	/// Have we been request update muted by an admin?
 	var/request_updates_muted = FALSE
 	/// A text list of the admin chat.
@@ -69,8 +65,6 @@
 	var/blocked = FALSE
 	/// What admin has this request been assigned to?
 	var/handling_admin = ""
-	/// What changes have the handling admin requested, if any?
-	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
 	/// Contractor hub datum, used if the user OPFORs for a contractor kit
