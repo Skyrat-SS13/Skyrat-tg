@@ -6,12 +6,6 @@
 
 #define HEV_DAMAGE_POWER_USE_THRESHOLD 10
 
-#define HEV_ARMOR_POWEROFF list(20, 20, 20, 20, 30, 40, 40, 40, 40, 10)
-#define PCV_ARMOR_POWEROFF list(30, 30, 30, 30, 30, 30, 20, 20, 20, 10)
-
-#define HEV_ARMOR_POWERON list(50, 50, 50, 50, 90, 100, 100, 100, 100, 30)
-#define PCV_ARMOR_POWERON list(40, 40, 40, 40, 60, 75, 50, 50, 50, 40)
-
 #define HEV_POWERUSE_AIRTANK 2
 
 #define HEV_POWERUSE_HIT 100
@@ -60,7 +54,20 @@
 	bio = 40
 	fire = 40
 	acid = 40
-	wound = 10
+	wound = 40
+	consume = 10
+
+/datum/armor/space_hev_suit/powered
+	melee = 50
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 90
+	bio = 100
+	fire = 100
+	acid = 100
+	wound = 100
+	consume = 30
 
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
@@ -122,6 +129,7 @@
 	var/blood_toxins_sound = 'modular_skyrat/modules/hev_suit/sound/hev/blood_toxins.ogg'
 	var/biohazard_sound = 'modular_skyrat/modules/hev_suit/sound/hev/biohazard_detected.ogg'
 	var/chemical_sound = 'modular_skyrat/modules/hev_suit/sound/hev/chemical_detected.ogg'
+	var/radiation_sound = 'modular_skyrat/modules/hev_suit/sound/hev/radiation_detected.ogg'
 
 	var/minor_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/hev/minor_fracture.ogg'
 	var/major_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/hev/major_fracture.ogg'
@@ -138,10 +146,7 @@
 	var/timer_id = null
 
 	///Action cooldowns, duh.
-	var/voice_current_cooldown
 	var/healing_current_cooldown
-	var/health_statement_cooldown
-	var/battery_statement_cooldown
 	var/acid_statement_cooldown
 	var/rad_statement_cooldown
 
@@ -167,8 +172,8 @@
 	var/playing_voice_line
 
 	///Used only for differentiating of different (obviously) suits.
-	var/armor_poweroff = HEV_ARMOR_POWEROFF
-	var/armor_poweron = HEV_ARMOR_POWERON
+	var/armor_unpowered = /datum/armor/space_hev_suit
+	var/armor_powered = /datum/armor/space_hev_suit/powered
 	var/heal_amount = HEV_HEAL_AMOUNT
 	var/blood_replenishment = HEV_BLOOD_REPLENISHMENT
 	var/suit_name = "HEV MARK IV"
@@ -407,31 +412,8 @@
 		batt_50_alarm = FALSE
 
 /obj/item/clothing/suit/space/hev_suit/proc/powerarmor()
-	// hi, WHAT THE FUCK IS THIS? I refuse to fix this
-	// armor = armor.setRating(
-	// 	armor_poweron[1],
-	// 	armor_poweron[2],
-	// 	armor_poweron[3],
-	// 	armor_poweron[4],
-	// 	armor_poweron[5],
-	// 	armor_poweron[6],
-	// 	armor_poweron[7],
-	// 	armor_poweron[8],
-	// 	armor_poweron[9],
-	// 	armor_poweron[10]
-	// 	)
-	// current_helmet.armor = current_helmet.armor.setRating(
-	// 	armor_poweron[1],
-	// 	armor_poweron[2],
-	// 	armor_poweron[3],
-	// 	armor_poweron[4],
-	// 	armor_poweron[5],
-	// 	armor_poweron[6],
-	// 	armor_poweron[7],
-	// 	armor_poweron[8],
-	// 	armor_poweron[9],
-	// 	armor_poweron[10]
-	// 	)
+	set_armor(armor_powered)
+	current_helmet.set_armor(armor_powered)
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
@@ -531,6 +513,7 @@
 /obj/item/clothing/suit/space/hev_suit/proc/medical_systems()
 	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, PROC_REF(process_wound))
 	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, PROC_REF(process_acid))
+	RegisterSignal(current_user, COMSIG_IN_RANGE_OF_IRRADIATION, PROC_REF(process_radiation))
 	START_PROCESSING(SSobj, src)
 	playsound(src, automedic_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
@@ -585,12 +568,12 @@
 
 	if(new_stamloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustStaminaLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustStaminaLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown * 2
 
 	if(new_oxyloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustOxyLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustOxyLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("ADRENALINE ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(morphine_sound)
@@ -598,7 +581,7 @@
 
 	if(new_bruteloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustBruteLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BRUTE MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
@@ -606,7 +589,7 @@
 
 	if(new_fireloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustFireLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustFireLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BURN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
@@ -614,7 +597,7 @@
 
 	if(new_toxloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustToxLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustToxLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("TOXIN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antitoxin_sound)
@@ -622,7 +605,7 @@
 
 	if(new_cloneloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.adjustCloneLoss(-HEV_HEAL_AMOUNT)
+			current_user.adjustCloneLoss(-heal_amount)
 			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antidote_sound)
@@ -684,6 +667,13 @@
 	acid_statement_cooldown = world.time + acid_static_cooldown
 	send_hev_sound(chemical_sound)
 
+/obj/item/clothing/suit/space/hev_suit/proc/process_radiation()
+	SIGNAL_HANDLER
+	if(world.time <= rad_statement_cooldown)
+		return
+	rad_statement_cooldown = world.time + rads_static_cooldown
+	send_hev_sound(radiation_sound)
+
 /obj/item/clothing/suit/space/hev_suit/proc/weaponselect()
 	ADD_TRAIT(current_user, list(TRAIT_GUNFLIP,TRAIT_GUN_NATURAL), "hev_trait")
 	playsound(src, weaponselect_sound, 50)
@@ -717,33 +707,9 @@
 		deltimer(timer_id)
 	STOP_PROCESSING(SSobj, src)
 	REMOVE_TRAIT(src, TRAIT_NODROP, "hev_trait")
-	// See above.
-	// armor = armor.setRating(
-	// 	armor_poweroff[1],
-	// 	armor_poweroff[2],
-	// 	armor_poweroff[3],
-	// 	armor_poweroff[4],
-	// 	armor_poweroff[5],
-	// 	armor_poweroff[6],
-	// 	armor_poweroff[7],
-	// 	armor_poweroff[8],
-	// 	armor_poweroff[9],
-	// 	armor_poweroff[10]
-	// 	)
-	// if(current_helmet)
-	// 	current_helmet.armor = current_helmet.armor.setRating(
-	// 	armor_poweroff[1],
-	// 	armor_poweroff[2],
-	// 	armor_poweroff[3],
-	// 	armor_poweroff[4],
-	// 	armor_poweroff[5],
-	// 	armor_poweroff[6],
-	// 	armor_poweroff[7],
-	// 	armor_poweroff[8],
-	// 	armor_poweroff[9],
-	// 	armor_poweroff[10]
-	// 	)
+	set_armor(armor_unpowered)
 	if(current_helmet)
+		current_helmet.set_armor(armor_unpowered)
 		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
@@ -753,6 +719,7 @@
 		UnregisterSignal(current_user, list(
 			COMSIG_ATOM_ACID_ACT,
 			COMSIG_CARBON_GAIN_WOUND,
+			COMSIG_IN_RANGE_OF_IRRADIATION,
 			COMSIG_MOB_RUN_ARMOR,
 			COMSIG_MOB_STATCHANGE
 		))
@@ -811,10 +778,23 @@
 	laser = 30
 	energy = 30
 	bomb = 30
-	bio = 20
+	bio = 30
 	fire = 20
 	acid = 20
-	wound = 10
+	wound = 20
+	consume = 10
+
+/datum/armor/hev_suit_pcv/powered
+	melee = 40
+	bullet = 40
+	laser = 40
+	energy = 40
+	bomb = 60
+	bio = 75
+	fire = 50
+	acid = 50
+	wound = 50
+	consume = 40
 
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
@@ -888,8 +868,8 @@
 	antitoxin_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/antitoxin_shot.ogg'
 	antidote_sound = 'modular_skyrat/modules/hev_suit/sound/pcv/antidote_shot.ogg'
 
-	armor_poweroff = PCV_ARMOR_POWEROFF
-	armor_poweron = PCV_ARMOR_POWERON
+	armor_unpowered = /datum/armor/hev_suit_pcv
+	armor_powered = /datum/armor/hev_suit_pcv/powered
 	heal_amount = PCV_HEAL_AMOUNT
 	blood_replenishment = PCV_BLOOD_REPLENISHMENT
 	health_static_cooldown = PCV_COOLDOWN_HEAL
@@ -906,10 +886,6 @@
 #undef HEV_COLOR_BLUE
 #undef HEV_COLOR_ORANGE
 #undef HEV_DAMAGE_POWER_USE_THRESHOLD
-#undef HEV_ARMOR_POWEROFF
-#undef PCV_ARMOR_POWEROFF
-#undef HEV_ARMOR_POWERON
-#undef PCV_ARMOR_POWERON
 #undef HEV_POWERUSE_AIRTANK
 #undef HEV_POWERUSE_HIT
 #undef HEV_POWERUSE_HEAL
