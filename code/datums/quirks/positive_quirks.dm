@@ -230,6 +230,16 @@
 		/datum/language/sylvan,
 		/datum/language/terrum,
 		/datum/language/voltaic,
+		// SKYRAT ADD
+		/datum/language/skrell,
+		/datum/language/yangyu,
+		/datum/language/vox,
+		/datum/language/schechi,
+		/datum/language/siiktajr,
+		/datum/language/xerxian,
+		/datum/language/canilunzt,
+		/datum/language/panslavic,
+		// SKYRAT ADD END
 	)
 	var/extra_language
 	mail_goodies = list(/obj/item/taperecorder, /obj/item/clothing/head/frenchberet, /obj/item/clothing/mask/fakemoustache/italian)
