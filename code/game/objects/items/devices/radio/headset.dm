@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset/screwdriver_act(mob/living/user, obj/item/tool)
 	user.set_machine(src)
-	if(keyslot || keyslot2)
+	if(keyslot || keyslot2 && !istype(keyslot2, /obj/item/encryptionkey/ai)) //SKYRAT EDIT AI_ENCRYPTIONKEY
 		for(var/ch_name in channels)
 			SSradio.remove_object(src, GLOB.radiochannels[ch_name])
 			secure_radio_connections[ch_name] = null
@@ -346,7 +346,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		if(keyslot)
 			user.put_in_hands(keyslot)
 			keyslot = null
-		if(keyslot2)
+		if(keyslot2 && !istype(keyslot2, /obj/item/encryptionkey/ai)) //SKYRAT EDIT AI_ENCRYPTIONKEY
 			user.put_in_hands(keyslot2)
 			keyslot2 = null
 
