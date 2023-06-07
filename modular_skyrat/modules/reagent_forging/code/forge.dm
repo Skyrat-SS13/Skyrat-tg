@@ -607,7 +607,7 @@
 
 /// Handles clothing imbuing, extremely similar to weapon imbuing but not in the same proc because of how uhh... goofy the way this has to be done is
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
-	//This code will refuse all non-ashwalkers from imbuing
+	//This code will refuse all non-ashwalkers & non-icecats from imbuing
 	if(!ishuman(user))
 		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers & Icecats Only)")) //maybe remove (ashwalkers & icecats only) after some time
 		return
