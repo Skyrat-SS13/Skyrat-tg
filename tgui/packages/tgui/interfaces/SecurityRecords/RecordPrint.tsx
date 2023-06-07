@@ -87,7 +87,7 @@ export const RecordPrint = (props, context) => {
             Missing
           </Button>
           <Button
-            // SKYRAT EDIT REMOVE - REMOVE INNOCENT CHECK
+            // SKYRAT EDIT REMOVE - REMOVE INNOCENT CHECK, ALLOWS RAPSHEETS TO BE PRINTED WITHOUT ANY CRIMES HAVING BEEN LOGGED
             // disabled={innocent}
             // SKYRA EDIT REMOVE END
             icon="file-alt"
