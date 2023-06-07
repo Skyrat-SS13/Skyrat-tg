@@ -8,15 +8,13 @@
 	flags_1 = ON_BORDER_1
 	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR | IGNORE_DENSITY
 	max_integrity = 100
+	pass_flags_self = PASSSTRUCTURE | LETPASSTHROW
 	///The type of stack the barricade dropped when disassembled if any.
 	var/stack_type
 	///The amount of stack dropped when disassembled at full health
 	var/stack_amount = 5
 	///to specify a non-zero amount of stack to drop when destroyed
 	var/destroyed_stack_amount = 0
-	var/base_acid_damage = 2
-	///Whether things can be thrown over
-	var/allow_thrown_objs = TRUE
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
 	///Whether this barricade has damaged states
 	var/can_change_dmg_state = TRUE
@@ -264,7 +262,7 @@
 	stack_type = /obj/item/stack/rods
 	destroyed_stack_amount = 2
 	barricade_type = "railing"
-	allow_thrown_objs = FALSE
+	pass_flags_self = PASSSTRUCTURE
 	can_wire = FALSE
 
 /datum/armor/deployable_barricade_guardrail
@@ -426,7 +424,7 @@
 		if(can_upgrade && get_integrity() > max_integrity * 0.3)
 			return attempt_barricade_upgrade(I, user, params)
 
-		if(metal_sheets.get_amount() < 2)
+		if(metal_sheets.get_amount() < repair_amount)
 			to_chat(user, span_warning("You need at least two sheets of metal to repair [src]!"))
 			return FALSE
 
@@ -435,7 +433,7 @@
 		if(!do_after(user, 2 SECONDS, src) || get_integrity() >= max_integrity)
 			return FALSE
 
-		if(!metal_sheets.use(2))
+		if(!metal_sheets.use(repair_amount))
 			return FALSE
 
 		repair_damage(max_integrity * 0.3)

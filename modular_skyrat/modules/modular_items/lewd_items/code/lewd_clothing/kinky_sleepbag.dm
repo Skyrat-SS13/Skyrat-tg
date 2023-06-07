@@ -17,7 +17,6 @@
 	var/color_changed = FALSE
 	var/time_to_sound = 20
 	var/time_to_sound_left
-	var/time = 2
 	var/tt
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
@@ -26,9 +25,6 @@
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
-	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/leg/left/legr
-	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
