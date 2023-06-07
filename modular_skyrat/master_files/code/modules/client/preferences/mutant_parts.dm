@@ -821,3 +821,6 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "pod_hair_emissive"
 	relevant_mutant_bodypart = "pod_hair"
+	// This makes it so that it appears only when we have pod hair or allow mismatched parts.
+	check_mode = TRICOLOR_CHECK_ACCESSORY
+	type_to_check = /datum/preference/choiced/pod_hair
