@@ -557,14 +557,14 @@
 
 /// Handles weapon reagent imbuing
 /obj/structure/reagent_forge/proc/handle_weapon_imbue(obj/attacking_item, mob/living/user)
-	//This code will refuse all non-ashwalkers from imbuing
+	//This code will refuse all non-ashwalkers & non-icecats from imbuing
 	if(!ishuman(user))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)")) //maybe remove (ashwalkers only) after some time
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers & Icecats Only)")) //maybe remove (ashwalkers & icecats only) after some time
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	if(!is_species(human_user, /datum/species/lizard/ashwalker))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)")) //maybe remove (ashwalkers only) after some time
+	if(!is_species(human_user, /datum/species/lizard/ashwalker) && !is_species(human_user, /datum/species/human/felinid/primitive))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers & Icecats Only)")) //maybe remove (ashwalkers & icecats only) after some time
 		return
 
 	in_use = TRUE
@@ -609,12 +609,12 @@
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
 	//This code will refuse all non-ashwalkers from imbuing
 	if(!ishuman(user))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)")) //maybe remove (ashwalkers only) after some time
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers & Icecats Only)")) //maybe remove (ashwalkers & icecats only) after some time
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	if(!is_species(human_user, /datum/species/lizard/ashwalker))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)")) //maybe remove (ashwalkers only) after some time
+	if(!is_species(human_user, /datum/species/lizard/ashwalker) && !is_species(human_user, /datum/species/human/felinid/primitive))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers & Icecats Only)")) //maybe remove (ashwalkers & icecats only) after some time
 		return
 
 	in_use = TRUE
