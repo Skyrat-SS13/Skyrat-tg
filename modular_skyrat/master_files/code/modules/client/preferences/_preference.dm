@@ -91,9 +91,6 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	default_value = FALSE
 
-	/// The linked preferences to this toggle. Automatically filled.
-	var/list/linked_preference_paths = list()
-
 /datum/preference/toggle/mutant_toggle/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 

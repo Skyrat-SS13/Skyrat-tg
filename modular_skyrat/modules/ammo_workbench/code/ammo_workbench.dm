@@ -127,8 +127,7 @@
 
 	allowed_ammo_types = typesof(ammo_type)
 
-	for(var/casing as anything in allowed_ammo_types)
-		var/obj/item/ammo_casing/our_casing = casing
+	for(var/obj/item/ammo_casing/our_casing as anything in allowed_ammo_types) // this is a list of TYPES, not INSTANCES
 		if(!adminbus)
 			if(initial(our_casing.harmful) && !allowed_harmful)
 				continue
