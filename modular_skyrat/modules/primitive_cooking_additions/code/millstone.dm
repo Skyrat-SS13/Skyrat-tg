@@ -105,7 +105,5 @@
 
 	return
 
-/obj/structure/millstone/proc/make_the_seeds(obj/item/grown/seed_haver)
-
 #undef MILLSTONE_STAMINA_MINIMUM
 #undef MILLSTONE_STAMINA_USE
