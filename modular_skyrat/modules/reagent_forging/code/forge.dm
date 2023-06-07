@@ -559,12 +559,12 @@
 /obj/structure/reagent_forge/proc/handle_weapon_imbue(obj/attacking_item, mob/living/user)
 	//This code will refuse all none ashwalkers from imbuing
 	if(!ishuman(user))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued!"))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
 	if(!istype(human_user.dna.species, /datum/species/lizard/ashwalker))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued!"))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	in_use = TRUE
@@ -609,12 +609,12 @@
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
 	//This code will refuse all none ashwalkers from imbuing
 	if(!ishuman(user))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued!"))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
 	if(!istype(human_user.dna.species, /datum/species/lizard/ashwalker))
-		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued!"))
+		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	in_use = TRUE
