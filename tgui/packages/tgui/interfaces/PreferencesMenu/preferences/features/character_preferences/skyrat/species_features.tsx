@@ -863,7 +863,7 @@ export const pod_hair_color: Feature<string> = {
   name: 'Floral Hair Color',
   description:
     "If your podperson hair is greyscale enabled, then it'll take on this color.",
-  component: FeatureColorInput,
+  component: FeatureTriColorInput,
 };
 
 export const pod_hair_emissive: Feature<boolean> = {
