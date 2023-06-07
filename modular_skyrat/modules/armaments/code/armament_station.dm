@@ -19,13 +19,13 @@
 	/// The armament entry type path that will fill the armament station's list.
 	var/armament_type
 	/// The access needed to use the vendor
-	var/list/required_access = list()
+	var/list/required_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/armament_station/Initialize(mapload)
 	. = ..()
 	if(!armament_type)
 		return
-	AddComponent(/datum/component/armament, subtypesof(armament_type), ACCESS_SYNDICATE)
+	AddComponent(/datum/component/armament, subtypesof(armament_type), required_access)
 
 
 /**
