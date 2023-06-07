@@ -557,13 +557,13 @@
 
 /// Handles weapon reagent imbuing
 /obj/structure/reagent_forge/proc/handle_weapon_imbue(obj/attacking_item, mob/living/user)
-	//This code will refuse all none ashwalkers from imbuing
+	//This code will refuse all non-ashwalkers from imbuing
 	if(!ishuman(user))
 		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	if(!istype(human_user.dna.species, /datum/species/lizard/ashwalker))
+	if(!is_species(human_user, /datum/species/lizard/ashwalker))
 		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
@@ -607,13 +607,13 @@
 
 /// Handles clothing imbuing, extremely similar to weapon imbuing but not in the same proc because of how uhh... goofy the way this has to be done is
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
-	//This code will refuse all none ashwalkers from imbuing
+	//This code will refuse all non-ashwalkers from imbuing
 	if(!ishuman(user))
 		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
-	if(!istype(human_user.dna.species, /datum/species/lizard/ashwalker))
+	if(!is_species(human_user, /datum/species/lizard/ashwalker))
 		to_chat(user, span_danger("[attacking_item] shakes, refusing to be imbued! (Ashwalkers Only)"))
 		return
 
