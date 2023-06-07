@@ -513,15 +513,13 @@
 //Salve Globule
 /obj/item/mending_globule/hardlight
 	name = "salve globule"
-	desc = "a ball of regenerative synthetic plant matter, contained within a soft hardlight field"
+	desc = "A ball of regenerative synthetic plant matter, contained within a soft hardlight field."
 	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
 	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "globule"
 	heals_left = 40 //This means it'll be heaing 15 damage per type max.
-	var/attached_part //The part that the globule is attached to
-	var/attached_mob //The mob that the globule is attached to
 
-/obj/item/mending_globule/unembedded()
+/obj/item/mending_globule/hardlight/unembedded()
 	. = ..()
 	qdel(src)
 
