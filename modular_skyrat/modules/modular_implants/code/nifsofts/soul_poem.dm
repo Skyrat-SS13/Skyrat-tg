@@ -1,5 +1,5 @@
 /obj/item/disk/nifsoft_uploader/soul_poem
-	name = "Automatic Appraisal"
+	name = "Soul Poem"
 	loaded_nifsoft = /datum/nifsoft/soul_poem
 
 //Modular Persistence variables for the soul_poem NIFSoft
