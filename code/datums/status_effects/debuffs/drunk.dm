@@ -180,8 +180,7 @@
 	// And drunk people will always lose jitteriness
 	owner.adjust_jitter(-6 SECONDS)
 
-	// Over 41, we have a 10% chance to gain confusion and occasionally slur words
-
+	// Over 41, we have a 10% chance to gain confusion and occasionally slur words, scaling with drunk_value
 	if(drunk_value >= 41)
 		if(prob(clamp(drunk_value - 8, 0, 100)))
 			owner.adjust_timed_status_effect(4 SECONDS, /datum/status_effect/speech/slurring/drunk, max_duration = 20 SECONDS)
