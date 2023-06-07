@@ -143,10 +143,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/pod_hair
 	name = "None"
+	icon = 'modular_skyrat/master_files/icons/mob/species/podperson_hair.dmi'
 	icon_state = "None"
 	key = "pod_hair"
 	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
 	organ_type = /obj/item/organ/external/pod_hair
+	color_src = USE_ONE_COLOR
 
 
 /datum/sprite_accessory/spines
