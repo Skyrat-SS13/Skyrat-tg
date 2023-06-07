@@ -160,7 +160,7 @@
 
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 
-	if(reagent_forging)
+	if(reagent_forging && (is_species(human_user, /datum/species/lizard/ashwalker) || is_species(human_user, /datum/species/human/felinid/primitive)))
 		. += span_warning("[src] has a fine gold trim, it is ready to imbue chemicals into reagent objects.")
 
 	return .
