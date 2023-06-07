@@ -153,19 +153,15 @@
 		if(spec_return)
 			return spec_return
 	var/obj/item/I
+	var/damage_type = BRUTE
 	var/throwpower = 30
 	if(isitem(AM))
 		I = AM
-		throwpower = I.throwforce
 		if(I.thrownby == WEAKREF(src)) //No throwing stuff at yourself to trigger hit reactions
 			return ..()
-<<<<<<< HEAD
-	if(check_shields(AM, throwpower, "\the [AM.name]", THROWN_PROJECTILE_ATTACK))
-=======
 		throwpower = I.throwforce
 		damage_type = I.damtype
 	if(check_shields(AM, throwpower, "\the [AM.name]", THROWN_PROJECTILE_ATTACK, 0, damage_type))
->>>>>>> 3d8de7c63d0 (Fixing thrown things being unblockable by shields [NO GBP] (#75796))
 		hitpush = FALSE
 		skipcatch = TRUE
 		blocked = TRUE
