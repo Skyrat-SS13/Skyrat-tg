@@ -1140,9 +1140,10 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_SPECIES
 
-	if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
-		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_UNAVAILABLE_FLAVOUR
+	if(CONFIG_GET(flag/min_flavor_text))
+		if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= CONFIG_GET(number/flavor_text_character_requirement))
+			JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+			return JOB_UNAVAILABLE_FLAVOUR
 
 
 	//SKYRAT EDIT END
