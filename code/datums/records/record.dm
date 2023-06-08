@@ -242,7 +242,7 @@
 		final_paper_text += "<br>[past_general_records]<br>"
 	//SKYRAT EDIT ADD END
 
-	final_paper_text += text("<center>Security Data</center><br>")
+	final_paper_text += "<center><B>Security Data</B></center><br><br>"
 
 	//SKYRAT EDIT ADDITION START - RP RECORDS
 	if(past_security_records != "")
@@ -294,7 +294,7 @@
 	if(description)
 		final_paper_text += text("- [description]<br>")
 
-	printed_paper.name = text("SR-[] '[]'", print_count, name)
+	printed_paper.name = "SR-[print_count] '[name]'"
 
 	/// SKYRAT EDIT ADD - TRUE
 	printed_paper.add_raw_text(final_paper_text,TRUE)
