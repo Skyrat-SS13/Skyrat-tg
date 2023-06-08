@@ -78,24 +78,6 @@
 	minimal_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/security_medic
-	assignment = "Security Medic"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_securitymedic"
-	department_color = COLOR_ASSEMBLY_BLACK
-	subdepartment_color = COLOR_ASSEMBLY_BLACK
-	sechud_icon_state = SECHUD_SECURITY_MEDIC
-	extra_access = list(ACCESS_DETECTIVE)
-	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS)
-	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
-
-/datum/id_trim/job/security_medic/New()
-	. = ..()
-
-	// Config check for if sec has maint access.
-	if(CONFIG_GET(flag/security_has_maint_access))
-		access |= list(ACCESS_MAINT_TUNNELS)
-
 /datum/id_trim/job/corrections_officer
 	assignment = "Corrections Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
