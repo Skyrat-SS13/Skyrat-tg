@@ -63,7 +63,7 @@
 		if(inserting_cell.chargerate <= 0)
 			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
 			return
-		if(charging_batteries.len >= 4)
+		if(length(charging_batteries) >= max_batteries)
 			to_chat(user, span_warning("[src] is full, and cannot hold anymore cells!"))
 			return
 		else
