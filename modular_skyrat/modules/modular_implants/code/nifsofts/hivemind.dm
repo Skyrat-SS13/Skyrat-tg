@@ -16,11 +16,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	ui_icon = "users"
 
 	///The network that the user is currently hosting
-	var/datum/component/mind_linker/nif/user_network
+	var/datum/component/mind_linker/active_linking/nif/user_network
 	///What networks are the user connected to?
 	var/list/network_list = list()
 	///What network is the user sending messages to? This is saved from the keyboard so the user doesn't have to change the channel every time.
-	var/datum/component/mind_linker/nif/active_network
+	var/datum/component/mind_linker/active_linking/nif/active_network
 	///The physical keyboard item being used to send messages
 	var/obj/item/hivemind_keyboard/linked_keyboard
 	///What action is being used to summon the Keyboard?
@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/New()
 	. = ..()
 
-	user_network = linked_mob.AddComponent(/datum/component/mind_linker/nif, \
+	user_network = linked_mob.AddComponent(/datum/component/mind_linker/active_linking/nif, \
 		network_name = "Hivemind Link", \
 		linker_action_path = /datum/action/innate/hivemind_config, \
 	)
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	linked_keyboard = null
 
-	for(var/datum/component/mind_linker/nif/hivemind as anything in network_list)
+	for(var/datum/component/mind_linker/active_linking/nif/hivemind as anything in network_list)
 		hivemind.linked_mobs -= linked_mob
 		var/mob/living/hivemind_owner = hivemind.parent
 
@@ -90,7 +90,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/action/innate/hivemind_config/Activate()
 	. = ..()
-	var/datum/component/mind_linker/nif/link = target
+	var/datum/component/mind_linker/active_linking/nif/link = target
 
 	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind", "Toggle invites"))
 	if(!choice)
@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
 
-	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Choose a Hivemind to set as active.", "Switch Hivemind", hivemind.network_list)
+	var/datum/component/mind_linker/active_linking/nif/new_active_hivemind = tgui_input_list(user, "Choose a Hivemind to set as active.", "Switch Hivemind", hivemind.network_list)
 	if(!new_active_hivemind)
 		return FALSE
 
@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/list/network_list = hivemind.network_list
 	network_list -= hivemind.user_network
 
-	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Choose a Hivemind to disconnect from.", "Remove Hivemind", network_list)
+	var/datum/component/mind_linker/active_linking/nif/hivemind_to_leave = tgui_input_list(user, "Choose a Hivemind to disconnect from.", "Remove Hivemind", network_list)
 	if(!hivemind_to_leave)
 		return FALSE
 
@@ -181,21 +181,21 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	///Does the component check to see if the person being linked has a mindshield or anti-magic?
 	var/linking_protection = TRUE
 
-/datum/component/mind_linker/nif
+/datum/component/mind_linker/active_linking/nif
 	speech_action = FALSE
 	linking_protection = FALSE
 
 	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
 	var/name = ""
 
-/datum/component/mind_linker/nif/New()
+/datum/component/mind_linker/active_linking/nif/New()
 	. = ..()
 
 	var/mob/living/owner = parent
 	name = owner.name + "'s " + network_name
 
 ///Lets the user add someone to their Hivemind through a choice menu that shows everyone that has the Hivemind NIFSoft.
-/datum/component/mind_linker/nif/proc/invite_user()
+/datum/component/mind_linker/active_linking/nif/proc/invite_user()
 	var/list/hivemind_users = GLOB.hivemind_users.Copy()
 	var/mob/living/carbon/human/owner = parent
 
@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	to_chat(owner, span_abductor("[person_to_add] has now been added to your Hivemind"))
 
 ///Removes a user from the list of connected people within a hivemind
-/datum/component/mind_linker/nif/proc/remove_user()
+/datum/component/mind_linker/active_linking/nif/proc/remove_user()
 	var/mob/living/carbon/human/owner = parent
 	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Choose a person to remove from your Hivemind.", "Remove User", linked_mobs)
 
@@ -244,7 +244,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind."))
 	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind."))
 
-/datum/component/mind_linker/nif/proc/change_chat_color()
+/datum/component/mind_linker/active_linking/nif/proc/change_chat_color()
 	var/mob/living/carbon/human/owner = parent
 	var/new_chat_color = input(owner, "", "Choose Color", COLOR_ASSEMBLY_GREEN) as color
 
@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	inhand_icon_state = "electronic"
 	///What Hivemind are messages being sent to?
-	var/datum/component/mind_linker/nif/connected_network
+	var/datum/component/mind_linker/active_linking/nif/connected_network
 	//Who owns the controller?
 	var/datum/weakref/source_user
 

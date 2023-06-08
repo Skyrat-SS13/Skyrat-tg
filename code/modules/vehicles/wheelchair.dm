@@ -45,7 +45,8 @@
 
 /obj/vehicle/ridden/wheelchair/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
-	playsound(src, 'sound/effects/roll.ogg', 75, TRUE)
+	if(!forced && !check_move_loop_flags(MOVEMENT_LOOP_DRAGGING))
+		playsound(src, 'sound/effects/roll.ogg', 75, TRUE)
 
 /obj/vehicle/ridden/wheelchair/post_buckle_mob(mob/living/user)
 	. = ..()
@@ -83,7 +84,7 @@
 ///A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/vehicle/ridden/wheelchair/gold
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_AFFECT_STATISTICS
-	desc = "Damn, he's been through a lot."
+	desc = "Damn, must've been through a lot."
 	icon_state = "gold_wheelchair"
 	overlay_icon = "gold_wheelchair_overlay"
 	max_integrity = 200

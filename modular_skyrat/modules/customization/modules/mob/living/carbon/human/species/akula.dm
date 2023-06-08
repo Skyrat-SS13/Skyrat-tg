@@ -35,6 +35,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
+	lore_protected = TRUE
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color

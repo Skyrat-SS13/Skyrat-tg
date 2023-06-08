@@ -35,6 +35,13 @@
 /datum/preference/text/custom_species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["custom_species"] = value
 
+/datum/preference/text/custom_species/is_accessible(datum/preferences/preferences)
+	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	if(species_type)
+		if(initial(species_type.lore_protected))
+			return FALSE
+	return ..()
+
 /datum/preference/text/custom_species_lore
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -43,6 +50,13 @@
 
 /datum/preference/text/custom_species_lore/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["custom_species_lore"] = value
+
+/datum/preference/text/custom_species_lore/is_accessible(datum/preferences/preferences)
+	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	if(species_type)
+		if(initial(species_type.lore_protected))
+			return FALSE
+	return ..()
 
 
 // RP RECORDS REJUVINATION - All of these are handled in datacore, so we dont apply it to the human.

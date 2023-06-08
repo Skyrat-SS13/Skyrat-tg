@@ -109,6 +109,9 @@
 		/datum/language/skrell,
 	))
 
+/obj/item/organ/internal/tongue/skrell/get_possible_languages()
+	return languages_possible_skrell
+
 /obj/item/organ/internal/heart/skrell
 	name = "skrellian heart"
 	icon = 'modular_skyrat/modules/organs/icons/skrell_organ.dmi'
