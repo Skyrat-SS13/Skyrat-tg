@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	if(lewd)
-		user.emote("subtler", null, msg, TRUE)
+		user.emote("subtle", null, msg, TRUE)
 	else
 		user.manual_emote(msg)
 	if(user_messages.len)

@@ -45,8 +45,8 @@
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
 		//SKYRAT EDIT ADDITION BEGIN
-		if(LOG_SUBTLER)
-			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
+		if(LOG_SUBTLE)
+			colored_message = "(EMOTE) (subtle) [colored_message]"
 		//SKYRAT EDIT ADDITION END
 		if(LOG_RADIO_EMOTE)
 			colored_message = "(RADIOEMOTE) [colored_message]"

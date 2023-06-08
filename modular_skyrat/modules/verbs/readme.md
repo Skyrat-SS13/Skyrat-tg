@@ -1,6 +1,6 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/872
 
-## Title: More verbs and subtler.
+## Title: More verbs and subtle.
 
 MODULE ID: VERBS
 
@@ -16,7 +16,7 @@ Adds a few emotes and verbs for players to use, such as LOOC, subtle.
 
 - #define CHAT_LOOC			(1<<12)
 - #define CHAT_LOOC_ADMIN		(1<<13)
-- #define LOG_SUBTLER		(1 << 20)
+- #define LOG_SUBTLE		(1 << 20)
 
 ### Master file additions
 
