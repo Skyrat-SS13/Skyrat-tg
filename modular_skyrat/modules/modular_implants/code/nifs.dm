@@ -138,7 +138,6 @@
 	linked_mob = insertee
 	stored_ckey = linked_mob.ckey
 
-	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
