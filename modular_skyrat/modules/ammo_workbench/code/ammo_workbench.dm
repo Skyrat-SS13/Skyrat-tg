@@ -121,14 +121,12 @@
 	var/ammo_caliber = initial(ammo_type.caliber)
 	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
 
-	if("multitype" in loaded_magazine.vars)
-		if(loaded_magazine:multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
-			ammo_type = ammo_parent_type
+	if(istype(loaded_magazine, /obj/item/ammo_box/magazine/multi_sprite) && ammo_caliber == initial(ammo_parent_type.caliber) && !isnull(ammo_caliber))
+		ammo_type = ammo_parent_type
 
 	allowed_ammo_types = typesof(ammo_type)
 
-	for(var/casing as anything in allowed_ammo_types)
-		var/obj/item/ammo_casing/our_casing = casing
+	for(var/obj/item/ammo_casing/our_casing as anything in allowed_ammo_types) // this is a list of TYPES, not INSTANCES
 		if(!adminbus)
 			if(initial(our_casing.harmful) && !allowed_harmful)
 				continue
