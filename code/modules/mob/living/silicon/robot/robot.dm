@@ -731,6 +731,7 @@
 		hud_used.update_robot_modules_display()
 
 	if (hasExpanded)
+<<<<<<< HEAD
 		//resize = 0.5 //ORIGINAL
 		resize = 0.8 //SKYRAT EDIT CHANGE - CYBORG
 		hasExpanded = FALSE
@@ -742,6 +743,10 @@
 		update_transform()
 	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
+=======
+		hasExpanded = FALSE
+		update_transform(0.5)
+>>>>>>> 3a8592d2586 (Improves mob resizing (and UpdatePaths). (#75892))
 	logevent("Chassis model has been reset.")
 	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)
