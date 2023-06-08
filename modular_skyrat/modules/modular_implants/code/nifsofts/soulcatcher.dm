@@ -21,9 +21,7 @@
 	soulcatcher_action = new
 	soulcatcher_action.Grant(linked_mob)
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
-
-	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent_nif.resolve()
-	var/datum/component/soulcatcher/new_soulcatcher = target_nif.AddComponent(/datum/component/soulcatcher/nifsoft)
+	var/datum/component/soulcatcher/new_soulcatcher = linked_mob.AddComponent(/datum/component/soulcatcher/nifsoft)
 
 	for(var/room in saved_soulcatcher_rooms)
 		new_soulcatcher.create_room(room, saved_soulcatcher_rooms[room])

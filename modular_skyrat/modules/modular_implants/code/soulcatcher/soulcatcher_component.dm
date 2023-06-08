@@ -55,9 +55,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
 /datum/component/soulcatcher/proc/get_current_holder()
 	var/mob/living/holder
-	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
-		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
-		holder = target_nif.linked_mob
+	if(ismob(parent))
+		holder = parent
 
 	else if(istype(parent, /obj/item))
 		var/obj/item/parent_item = parent
