@@ -1,5 +1,14 @@
 // MODULAR SECURITY WEAR (NOT OVERRIDES, LOOK IN 'modular_skyrat\modules\goofsec\code\sec_clothing_overrides.dm')
 
+// OFFICER
+
+/obj/item/clothing/under/rank/security/officer/turtleneck
+	name = "security turtleneck"
+	desc = "A blue turtleneck with black pants, catch em' comfortably."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+	icon_state = "security_turtleneck"
+
 // DETECTIVE
 /obj/item/clothing/under/rank/security/detective/cowboy
 	name = "blonde cowboy uniform"

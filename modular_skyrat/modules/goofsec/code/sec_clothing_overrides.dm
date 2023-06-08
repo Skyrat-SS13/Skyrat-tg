@@ -453,10 +453,6 @@
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
-		),
-		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_white",
-			RESKIN_WORN_ICON_STATE = "peacekeeper_white"
 		)
 	)
 
@@ -815,6 +811,16 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_parade_fem"
+
+/obj/item/clothing/under/rank/security/head_of_security/alt/redsec
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "hosalt"
+
+/obj/item/clothing/under/rank/security/head_of_security/alt/skirt/redsec
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "hosalt_skirt"
 
 /*
 *	WINTER COAT

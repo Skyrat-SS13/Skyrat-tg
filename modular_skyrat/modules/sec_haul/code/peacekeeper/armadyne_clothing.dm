@@ -1,16 +1,10 @@
-/obj/item/clothing/under/rank/security/peacekeeper/armadyne
+/obj/item/clothing/under/rank/security/armadyne
 	name = "armadyne corporate uniform"
 	desc = "A sleek uniform worn by Armadyne corporate. Its metallic red belt buckle is made in the shape of the Armadyne logo."
 	icon_state = "armadyne_shirt"
 	worn_icon_state = "armadyne_shirt"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'	//This can probably be moved to centcom.dm when the suits are sorted
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
-
-/obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
-	name = "armadyne tactical uniform"
-	desc = "A robust tactical uniform worn by Armadyne corporate."
-	icon_state = "armadyne_tac"
-	worn_icon_state = "armadyne_tac"
 
 /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	name = "armadyne corporate beret"
@@ -29,7 +23,7 @@
 	icon_state = "armadyne_trench"
 	current_skin = "armadyne_trench" //prevents reskinning
 
-/obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
+/obj/item/clothing/suit/armor/vest/armadyne
 	name = "armadyne jacket"
 	desc = "An Armadyne branded track jacket, with a thin nanocarbon lining inside for protective purposes. Worn by Armadyne corporate, or wealthy supporters."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -38,11 +32,11 @@
 	worn_icon_state = "armadyne_jacket"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/Initialize(mapload)
+/obj/item/clothing/suit/armor/vest/armadyne/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "zipper")
 
-/obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
+/obj/item/clothing/suit/armor/vest/armadyne/armor
 	name = "armadyne armor vest"
 	desc = "A nanocarbon and high-grade polymer vest, with the worn-red Armadyne logo printed on the back. Used by Armadyne corporate when they need emergency armor."
 	icon_state = "armadyne_armor"
@@ -54,25 +48,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	uses_advanced_reskins = FALSE
-
-/obj/item/clothing/gloves/combat/peacekeeper/armadyne
-	name = "armadyne combat gloves"
-	desc = "Tactical and sleek. Worn by Armadyne representatives."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-	icon_state = "armadyne_gloves"
-	worn_icon_state = "armadyne_gloves"
-	cut_type = null
-
-/obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
-	name = "armadyne combat boots"
-	desc = "Tactical and sleek. Worn by Armadyne representatives."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "armadyne_boots"
-	inhand_icon_state = "jackboots"
-	worn_icon_state = "armadyne_boots"
-
 
 /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	name = "armadyne webbing"
@@ -95,13 +70,13 @@
 
 	suit_store = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_cent/commander
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
+	uniform = /obj/item/clothing/under/rank/security/armadyne
+	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	neck = /obj/item/clothing/neck/tie/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
-	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
+	suit = /obj/item/clothing/suit/armor/vest/armadyne
+	shoes = /obj/item/clothing/shoes/jackboots/sec/redsec
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(
@@ -118,21 +93,21 @@
 	name = "Armadyne Corporate Security"
 
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
+	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
+	gloves = /obj/item/clothing/gloves/combat
 	head = /obj/item/clothing/head/helmet
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	mask = /obj/item/clothing/mask/gas/sechailer
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
+	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/pitbull
-	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
+	shoes = /obj/item/clothing/shoes/jackboots/sec/redsec
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
 		/obj/item/modular_computer/pda/security,
 	)
-	back = /obj/item/storage/backpack/security
+	back = /obj/item/storage/backpack/security/redsec
 	box = /obj/item/storage/box/survival/security
 	id = /obj/item/card/id/advanced/armadyne/security
 
@@ -141,14 +116,14 @@
 	name = "Armadyne Corporate Security Commander"
 
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
+	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
+	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
+	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/norwind
-	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
+	shoes = /obj/item/clothing/shoes/jackboots/sec/redsec
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/pdh_striker,
@@ -156,7 +131,7 @@
 		/obj/item/ammo_box/magazine/multi_sprite/norwind,
 		/obj/item/modular_computer/pda/security,
 	)
-	back = /obj/item/storage/backpack/security
+	back = /obj/item/storage/backpack/security/redsec
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
 	id = /obj/item/card/id/advanced/armadyne/security
