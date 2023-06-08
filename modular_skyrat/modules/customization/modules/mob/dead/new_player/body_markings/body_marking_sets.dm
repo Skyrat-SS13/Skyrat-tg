@@ -11,6 +11,10 @@
 	recommended_species = null
 	body_marking_list = list()
 
+/datum/body_marking_set/basic
+	name = "Basic"
+	body_marking_list = list("Basic")
+
 /datum/body_marking_set/tajaran
 	name = "Tajaran"
 	body_marking_list = list("Tajaran")
@@ -158,22 +162,6 @@
 /datum/body_marking_set/shark
 	name = "Shark"
 	body_marking_list = list("Shark")
-
-/datum/body_marking_set/belly
-	name = "Belly"
-	body_marking_list = list("Belly")
-
-/datum/body_marking_set/belly_slim
-	name = "Belly Slim"
-	body_marking_list = list("Belly Slim")
-
-/datum/body_marking_set/hands_feet
-	name = "Hands Feet"
-	body_marking_list = list("Hands Feet")
-
-/datum/body_marking_set/frog
-	name = "Frog"
-	body_marking_list = list("Frog")
 
 /datum/body_marking_set/bee
 	name = "Bee"

@@ -27,16 +27,6 @@
 	icon_state = "beret"
 	greyscale_colors = "#EAEAEA"
 
-
-
-/obj/item/clothing/head/hats/sec/peacekeeper/sergeant
-	name = "peacekeeper sergeant hat"
-	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_sergeant_cap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/hats/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
@@ -56,45 +46,6 @@
 	icon_state = "peacekeeperglasses"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
-
-//PEACEKEEPER UNIFORM
-/obj/item/clothing/under/rank/security/peacekeeper
-	name = "peacekeeper uniform"
-	desc = "A sleek peacekeeper uniform, made to a price."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "peacekeeper"
-	can_adjust = TRUE
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
-
-/obj/item/clothing/under/rank/security/peacekeeper/tactical
-	name = "tactical peacekeeper uniform"
-	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
-	icon_state = "peacekeeper_tac"
-
-/obj/item/clothing/under/rank/security/peacekeeper/sergeant
-	name = "peacekeeper sergeant uniform"
-	desc = "A sleek peackeeper uniform, signifying the rank of Sergeant."
-	icon_state = "peacekeeper_sergeant"
-
-/obj/item/clothing/under/rank/security/warden/peacekeeper
-	name = "peacekeeper wardens suit"
-	desc = "A formal security suit for officers complete with Armadyne belt buckle."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "peacekeeper_warden"
-
-/obj/item/clothing/under/rank/security/warden
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-
-/obj/item/clothing/under/rank/security/head_of_security/peacekeeper
-	name = "head of security's peacekeeper jumpsuit"
-	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "peacekeeper_hos"
 
 //PEACEKEEPER ARMOR
 /obj/item/clothing/suit/armor/vest/peacekeeper
