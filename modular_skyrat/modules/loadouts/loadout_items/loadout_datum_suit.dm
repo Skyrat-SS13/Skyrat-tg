@@ -352,11 +352,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Hawaiian Shirt"
 	item_path = /obj/item/clothing/suit/costume/hawaiian
 
-/datum/loadout_item/suit/hawaiian_gags
-	name = "Colourable Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_shirt
-
-
 /*
 *	MISC
 */
@@ -560,29 +555,29 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 // JACKETS
 /datum/loadout_item/suit/navybluejacketofficer
-	name = "Security Officer's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	name = "Security Officer's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/officer/blue
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
-	name = "Warden's Navy Blue Jacket"
-	item_path = /obj/item/clothing/suit/armor/vest/warden/navyblue
+	name = "Warden's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/warden/blue
 	restricted_roles = list(JOB_WARDEN)
+
+/datum/loadout_item/suit/navybluejackethos
+	name = "Head of Security's Navy Blue Formal Jacket"
+	item_path = /obj/item/clothing/suit/jacket/hos/blue
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/suit/security_jacket
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC) //Not giving this one to COs because it's actually better than the one they spawn with
-
-/datum/loadout_item/suit/cossak/sec
-	name = "Ukrainian Security Jacket"
-	item_path = /obj/item/clothing/suit/armor/cossack/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE) //Not giving this one to COs because it's actually better than the one they spawn with
 
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket
 	name = "Peacekeeper Officer Coat"
@@ -622,7 +617,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
 
 /*
 *	FAMILIES

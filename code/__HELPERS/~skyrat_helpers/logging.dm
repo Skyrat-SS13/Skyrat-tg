@@ -1,13 +1,11 @@
-/// This logs subtle emotes in game.txt, if the conflig flag in config\skyrat\skyrat_config.txt is true.
-/proc/log_subtle(text)
-	if (CONFIG_GET(flag/log_subtle))
-		WRITE_LOG(GLOB.world_game_log, "subtle EMOTE: [text]")
+/// This logs subtle emotes in game.log
+/proc/log_subtle(text, list/data)
+	logger.Log(LOG_CATEGORY_GAME_SUBTLE, text, data)
 
-/// This logs subtle emotes in game.txt, if the conflig flag in config\skyrat\skyrat_config.txt is true.
-/proc/log_creator(text)
-	WRITE_LOG(GLOB.character_creation_log, "CREATOR LOG: [text]")
+/// This logs character creator changes in debug.log
+/proc/log_creator(text, list/data)
+	logger.Log(LOG_CATEGORY_DEBUG_CHARACTER_CREATOR, text, data)
 
 /// Logging for borer evolutions
-/proc/log_borer_evolution(text)
-	if (CONFIG_GET(flag/log_uplink))
-		WRITE_LOG(GLOB.world_uplink_log, "BORER EVOLUTION: [text]")
+/proc/log_borer_evolution(text, list/data)
+	logger.Log(LOG_CATEGORY_UPLINK_BORER, text, data)

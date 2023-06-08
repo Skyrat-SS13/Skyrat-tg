@@ -147,6 +147,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			say_dead(original_message)
 			return
 
+	if(HAS_TRAIT(src, TRAIT_SOFTSPOKEN))
+		message_mods[WHISPER_MODE] = MODE_WHISPER
+
 	if(client && SSlag_switch.measures[SLOWMODE_SAY] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES) && !forced && src == usr)
 		if(!COOLDOWN_FINISHED(client, say_slowmode))
 			to_chat(src, span_warning("Message not sent due to slowmode. Please wait [SSlag_switch.slowmode_cooldown/10] seconds between messages.\n\"[message]\""))
@@ -257,9 +260,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	return TRUE
 
+
 /mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range=0)
 	if(!GET_CLIENT(src))
-		return
+		return FALSE
 
 	var/deaf_message
 	var/deaf_type
@@ -273,8 +277,12 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/avoid_highlight = src == (istype(holopad_speaker) ? holopad_speaker.source : speaker)
 
 	var/is_custom_emote = message_mods[MODE_CUSTOM_SAY_ERASE_INPUT]
+	var/understood = TRUE
 	if(!is_custom_emote) // we do not translate emotes
+		var/untranslated_raw_message = raw_message
 		raw_message = translate_language(src, message_language, raw_message) // translate
+		if(raw_message != untranslated_raw_message)
+			understood = FALSE
 
 	// if someone is whispering we make an extra type of message that is obfuscated for people out of range
 	var/is_speaker_whispering = message_mods[WHISPER_MODE]
@@ -288,7 +296,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
 
 	if(HAS_TRAIT(speaker, TRAIT_SIGN_LANG)) //Checks if speaker is using sign language
-		deaf_message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mods)
+		deaf_message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mods, FALSE, TRUE)
 
 		if(speaker != src)
 			if(!radio_freq) //I'm about 90% sure there's a way to make this less cluttered
@@ -308,8 +316,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 		message = deaf_message
 
-		show_message(message, MSG_VISUAL, deaf_message, deaf_type, avoid_highlight)
-		return message
+		var/show_message_success = show_message(message, MSG_VISUAL, deaf_message, deaf_type, avoid_highlight)
+		return understood && show_message_success
 
 	if(speaker != src)
 		if(!radio_freq) //These checks have to be separate, else people talking on the radio will make "You can't hear yourself!" appear when hearing people over the radio while deaf.
@@ -328,9 +336,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	// Recompose message for AI hrefs, language incomprehension.
 	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mods)
-
-	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight)
-	return message
+	var/show_message_success = show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight)
+	return understood && show_message_success
 
 /mob/living/send_speech(message_raw, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language = null, list/message_mods = list(), forced = null, tts_message, list/tts_filter)
 	var/whisper_range = 0
@@ -362,6 +369,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	// this signal ignores whispers or language translations (only used by beetlejuice component)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message_raw)
 
+	var/list/listened = list()
 	for(var/atom/movable/listening_movable as anything in listening)
 		// SKYRAT EDIT DISABLE GHOST VIEWING
 		var/mob/listener = listening_movable
@@ -372,7 +380,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			stack_trace("somehow theres a null returned from get_hearers_in_view() in send_speech!")
 			continue
 
-		listening_movable.Hear(null, src, message_language, message_raw, null, spans, message_mods, message_range)
+		if(listening_movable.Hear(null, src, message_language, message_raw, null, spans, message_mods, message_range))
+			listened += listening_movable
 
 	//speech bubble
 	var/list/speech_bubble_recipients = list()
@@ -396,7 +405,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(length(tts_filter) > 0)
 			filter += tts_filter.Join(",")
 
-		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(tts_message_to_use), message_language, voice, filter.Join(","), message_range = message_range)
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(tts_message_to_use), message_language, voice, filter.Join(","), listened, message_range = message_range)
 
 	var/image/say_popup = image('icons/mob/effects/talk.dmi', src, "[bubble_type][talk_icon_state]", FLY_LAYER)
 	SET_PLANE_EXPLICIT(say_popup, ABOVE_GAME_PLANE, src)

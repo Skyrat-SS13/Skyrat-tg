@@ -21,6 +21,7 @@
 	var/subtle_message
 	var/subtle_emote = params
 	var/target
+
 	if(SSdbcore.IsConnected() && is_banned_from(user, "emote"))
 		to_chat(user, span_warning("You cannot send subtle emotes (banned)."))
 		return FALSE

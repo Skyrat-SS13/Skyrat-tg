@@ -3,8 +3,6 @@
 	var/soul_desc = "It's a soul."
 	/// What are the ooc notes for the soul?
 	var/ooc_notes = ""
-	/// The apperance preview for our soul.
-	var/atom/movable/screen/map_view/char_preview/soul_preview
 
 	/// Assuming we died inside of the round? What is our previous body?
 	var/datum/weakref/previous_body
@@ -60,12 +58,6 @@
 
 	return outside_hearing
 
-/// Builds the player preview for the soul.
-/mob/living/soulcatcher_soul/proc/build_preview()
-	soul_preview = new(null, src)
-	soul_preview.generate_view(assigned_view)
-	soul_preview.display_to(user)
-
 /// Attemp to leave the soulcatcher.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
 	set name = "Leave Soulcatcher"
@@ -118,10 +110,6 @@
 
 	room.send_message(message, src, TRUE)
 	return TRUE
-
-/mob/living/soulcatcher_soul/subtle()
-	set hidden = TRUE
-	return FALSE
 
 /mob/living/soulcatcher_soul/subtle()
 	set hidden = TRUE
