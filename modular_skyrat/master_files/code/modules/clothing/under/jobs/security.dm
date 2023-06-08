@@ -32,7 +32,7 @@
 	armor_type = /datum/armor/redsec_syndicate
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/rank/security/peacekeeper/trousers
+/obj/item/clothing/under/rank/security/trousers
 	name = "security trousers"
 	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'

@@ -68,7 +68,7 @@
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/restraints/handcuffs(src)
-	new /obj/item/clothing/shoes/jackboots/peacekeeper(src)
+	new /obj/item/clothing/shoes/jackboots/sec(src)
 	new /obj/item/clothing/head/helmet/toggleable/riot(src)
 	new /obj/item/shield/riot(src)
 	new /obj/item/clothing/under/rank/security/corrections_officer(src)
