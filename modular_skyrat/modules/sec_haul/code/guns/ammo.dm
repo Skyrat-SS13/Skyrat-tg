@@ -107,7 +107,6 @@
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_MAT_REDEMPTION
-	var/multitype = TRUE
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
