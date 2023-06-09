@@ -36,12 +36,6 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "zipper")
 
-/obj/item/clothing/suit/armor/vest/armadyne/armor
-	name = "armadyne armor vest"
-	desc = "A nanocarbon and high-grade polymer vest, with the worn-red Armadyne logo printed on the back. Used by Armadyne corporate when they need emergency armor."
-	icon_state = "armadyne_armor"
-	worn_icon_state = "armadyne_armor"
-
 /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	name = "armadyne webbing"
 	desc = "Unique and versatile chest rig, can hold security gear."
