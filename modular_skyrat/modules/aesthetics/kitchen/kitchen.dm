@@ -10,9 +10,6 @@
 /obj/machinery/deepfryer
 	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
 
-/obj/machinery/reagentgrinder
-	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
-
 /obj/machinery/grill
 	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
 
