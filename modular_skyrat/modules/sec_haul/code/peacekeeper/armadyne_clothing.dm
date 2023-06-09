@@ -42,13 +42,6 @@
 	icon_state = "armadyne_armor"
 	worn_icon_state = "armadyne_armor"
 
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
-	name = "armadyne hud glasses"
-	icon_state = "armadyne_glasses"
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
-	uses_advanced_reskins = FALSE
-
 /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	name = "armadyne webbing"
 	desc = "Unique and versatile chest rig, can hold security gear."
@@ -74,7 +67,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	neck = /obj/item/clothing/neck/tie/black
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	suit = /obj/item/clothing/suit/armor/vest/armadyne
 	shoes = /obj/item/clothing/shoes/jackboots/sec/redsec
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
@@ -96,7 +89,7 @@
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
 	gloves = /obj/item/clothing/gloves/combat
 	head = /obj/item/clothing/head/helmet
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	mask = /obj/item/clothing/mask/gas/sechailer
 	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/pitbull
@@ -119,7 +112,7 @@
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
 	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/norwind

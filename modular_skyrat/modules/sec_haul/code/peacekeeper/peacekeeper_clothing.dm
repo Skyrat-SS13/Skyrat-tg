@@ -31,45 +31,8 @@
 	icon_state = "beret_badge_fancy_twist"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
-	name = "peacekeeper hud glasses"
-	icon_state = "peacekeeperglasses"
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
-
-//PEACEKEEPER GLOVES
-/obj/item/clothing/gloves/combat/peacekeeper
-	name = "peacekeeper gloves"
-	desc = "These tactical gloves are fireproof."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-	icon_state = "peacekeeper_gloves"
-	worn_icon_state = "peacekeeper"
-	siemens_coefficient = 0.5
-	strip_delay = 20
-	cold_protection = 0
-	min_cold_protection_temperature = null
-	heat_protection = 0
-	max_heat_protection_temperature = null
-	resistance_flags = FLAMMABLE
-	armor_type = /datum/armor/none
-	cut_type = null
-
-/obj/item/clothing/gloves/tackler/peacekeeper
-	name = "peacekeeper gripper gloves"
-	desc = "Special gloves that manipulate the blood vessels in the wearer's hands, granting them the ability to launch headfirst into walls."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-	icon_state = "peacekeeper_gripper_gloves"
-
-/obj/item/clothing/gloves/krav_maga/sec/peacekeeper
-	name = "peacekeeper krav maga gloves"
-	desc = "These gloves can teach you to perform Krav Maga using nanochips."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-	icon_state = "peacekeeper_gripper_gloves"
-
 //PEACEKEEPER BELTS
+
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
 	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
