@@ -22,8 +22,13 @@
 	var/turbo_boost = FALSE
 	var/obj/item/ammo_box/loaded_magazine = null
 	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
-	/// A list of all currently allowed ammo types.
-	var/list/allowed_ammo_types = list()
+	/// A list of all possible ammo types.
+	var/list/possible_ammo_types = list()
+	// hello future codediver. open to suggestions on how to do the following without it sucking so badly
+	/// what casings we're able to use
+	var/list/valid_casings = list()
+	/// the material requirement strings for these casings (for the tooltip)
+	var/list/casing_mat_strings = list()
 	/// can it print ammunition flagged as harmful (e.g. most ammo)?
 	var/allowed_harmful = FALSE
 	/// can it print advanced ammunition types (e.g. armor-piercing)? see modular_skyrat\modules\modular_weapons\code\modular_projectiles.dm
@@ -31,17 +36,17 @@
 	/// what datadisks have been loaded. uh... honestly this doesn't really do much either
 	var/list/loaded_datadisks = list()
 	/// current multiplier for material cost per round
-	var/creation_efficiency = 1.6
+	var/creation_efficiency = 1.4
 	/// current amount of time in deciseconds it takes to assemble a round
-	var/time_per_round = 2 SECONDS
+	var/time_per_round = 1.8 SECONDS
 	/// multiplier for material cost per round (when turbo isn't enabled)
-	var/base_efficiency = 1.6
+	var/base_efficiency = 1.4
 	// deciseconds per round (when turbo isn't enabled)
-	var/base_time_per_round = 2 SECONDS
+	var/base_time_per_round = 1.8 SECONDS
 	/// deciseconds per round (when turbo is enabled)
-	var/turbo_time_per_round = 5
+	var/turbo_time_per_round = 0.225 SECONDS
 	/// multiplier for material cost per round (when turbo is enabled)
-	var/turbo_efficiency = 3.2
+	var/turbo_efficiency = 2.8
 	/// can this print any round of any caliber given a correct ammo_box? (you varedit this at your own risk, especially if used in a player-facing context.)
 	/// does not force ammo to load in. just makes it able to print wacky ammotypes e.g. lionhunter 7.62, techshells
 	var/adminbus = FALSE
@@ -80,7 +85,56 @@
 	if(shocked)
 		shock(user, 80)
 
+/obj/machinery/ammo_workbench/proc/update_ammotypes()
+	LAZYCLEARLIST(valid_casings)
+	LAZYCLEARLIST(casing_mat_strings)
+	if(!loaded_magazine)
+		return
+	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
+	var/ammo_caliber = initial(ammo_type.caliber)
+	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
+
+	if(loaded_magazine.multitype)
+		if(ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
+			ammo_type = ammo_parent_type
+		possible_ammo_types = typesof(ammo_type)
+	else
+		possible_ammo_types = list(ammo_type) // literally just for the niche edgecase of shotgun slug boxes
+
+	for(var/obj/item/ammo_casing/our_casing as anything in possible_ammo_types) // this is a list of TYPES, not INSTANCES
+		if(!adminbus)
+			if(!(initial(our_casing.can_be_printed))) // if we're not supposed to be printed (looking at you, smartgun rails)
+				continue // go home
+			if(initial(our_casing.harmful) && (!allowed_harmful && !hacked)) // if you hack it that's on you.
+				continue
+			if(initial(our_casing.advanced_print_req) && !allowed_advanced) // if it's got a funny function (hello, AP!) and we're not good for it yet,
+				continue // no
+		if(initial(our_casing.projectile_type) == null) // spent casing subtypes >:(
+			continue
+		// i'm very sorry for this, but literally every other thing i tried to get the material composition didn't copy at all
+		var/obj/item/ammo_casing/casing_actual = new our_casing
+		var/list/raw_casing_mats = casing_actual.get_material_composition()
+		var/list/efficient_casing_mats = list()
+		qdel(casing_actual)
+		for(var/material in raw_casing_mats)
+			efficient_casing_mats[material] = raw_casing_mats[material] * creation_efficiency
+		var/mat_string = ""
+
+		for(var/i in 1 to length(efficient_casing_mats))
+			var/datum/material/our_material = efficient_casing_mats[i]
+			mat_string += "[efficient_casing_mats[our_material]] cm³ [our_material.name]"
+			if(i == length(efficient_casing_mats))
+				mat_string += " per cartridge"
+			else
+				mat_string += ", "
+
+		valid_casings += our_casing // adding the valid typepath
+		valid_casings[our_casing] = initial(our_casing.name)
+		casing_mat_strings += mat_string // adding the casing material cost string
+		// we pray to god these indexes stay consistent.
+
 /obj/machinery/ammo_workbench/ui_data(mob/user)
+	// i kinda hate how all of this is done on every tgui process tick
 	var/list/data = list()
 
 	data["loaded_datadisks"] = list()
@@ -135,33 +189,17 @@
 		data["mag_loaded"] = TRUE
 
 	data["available_rounds"] = list()
-	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
-	var/ammo_caliber = initial(ammo_type.caliber)
-	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
 
-	if(loaded_magazine.multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
-		ammo_type = ammo_parent_type
-
-	allowed_ammo_types = typesof(ammo_type)
-
-	for(var/obj/item/ammo_casing/our_casing as anything in allowed_ammo_types) // this is a list of TYPES, not INSTANCES
-		if(!adminbus)
-			if(!(initial(our_casing.can_be_printed))) // if we're not supposed to be printed (looking at you, smartgun rails)
-				continue // go home
-			if(initial(our_casing.harmful) && (!allowed_harmful && !hacked)) // if you hack it that's on you.
-				continue
-			if(initial(our_casing.advanced_print_req) && !allowed_advanced) // if it's got a funny function (hello, AP!) and we're not good for it yet,
-				continue // no
-		if(initial(our_casing.projectile_type) == null) // spent casing subtype >:(
-			continue
+	for(var/casings_to_relay = 1 to length(valid_casings))
+		var/typepath = valid_casings[casings_to_relay]
 		data["available_rounds"] += list(list(
-			"name" = initial(our_casing.name),
-			"typepath" = our_casing
+			"name" = valid_casings[typepath],
+			"typepath" = typepath,
+			"mats_list" = casing_mat_strings[casings_to_relay]
 		))
 
 	data["mag_name"] = loaded_magazine.name
-	data["caliber"] = initial(ammo_type.caliber)
-	data["current_rounds"] = loaded_magazine.stored_ammo.len
+	data["current_rounds"] = length(loaded_magazine.stored_ammo)
 	data["max_rounds"] = loaded_magazine.max_ammo
 
 	return data
@@ -228,6 +266,7 @@
 	else
 		time_per_round = base_time_per_round
 		creation_efficiency = base_efficiency
+	update_ammotypes()
 
 /obj/machinery/ammo_workbench/proc/ejectItem()
 	if(loaded_magazine)
@@ -239,6 +278,7 @@
 	if(timer_id)
 		deltimer(timer_id)
 		timer_id = null
+	update_ammotypes()
 	update_appearance()
 
 /obj/machinery/ammo_workbench/proc/fill_magazine_start(casing_type)
@@ -253,7 +293,7 @@
 		error_message = ""
 		error_type = ""
 
-	if(!(casing_type in allowed_ammo_types))
+	if(!(casing_type in possible_ammo_types))
 		error_message = "AMMUNITION MISMATCH"
 		error_type = "bad"
 		return
@@ -311,7 +351,7 @@
 		qdel(new_casing)
 		return
 
-	if(new_casing.type in allowed_ammo_types)
+	if(new_casing.type in possible_ammo_types)
 		if(!loaded_magazine.give_round(new_casing))
 			error_message = "AMMUNITION MISMATCH"
 			error_type = "bad"
@@ -387,10 +427,10 @@
 /obj/machinery/ammo_workbench/RefreshParts()
 	. = ..()
 	toggle_turbo_boost(forced_off = TRUE) // forces turbo off
-	var/time_efficiency = 2 SECONDS
+	var/time_efficiency = 1.8 SECONDS
 	for(var/datum/stock_part/micro_laser/new_laser in component_parts)
 		time_efficiency -= new_laser.tier * 2 // there's two lasers
-		// time_eff prog with paired lasers is 16 -> 12 -> 8 -> 4
+		// time_eff prog with paired lasers is 1.4 -> 1.0 -> 0.6 -> 0.2 seconds per round
 	time_per_round = clamp(time_efficiency, 1, 20)
 	base_time_per_round = time_per_round
 	turbo_time_per_round = time_efficiency / 8
@@ -409,6 +449,7 @@
 
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	materials.max_amount = mat_capacity
+	update_ammotypes()
 
 /obj/machinery/ammo_workbench/update_overlays()
 	. = ..()
@@ -488,6 +529,7 @@
 		to_chat(user, span_notice("You insert [O] to into [src]'s reciprocal."))
 		flick("h_lathe_load", src)
 		update_appearance()
+		update_ammotypes()
 		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 		return TRUE
 	if(istype(O, /obj/item/disk/ammo_workbench))

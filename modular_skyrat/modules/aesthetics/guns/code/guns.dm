@@ -3,10 +3,9 @@
 /obj/item/ammo_box
 	/// When inserted into an ammo workbench, does this ammo box check for parent ammunition to search for subtypes of? Relevant for surplus clips, multi-sprite magazines.
 	/// Maybe don't enable this for shotgun ammo boxes.
-	var/multitype = FALSE
+	var/multitype = TRUE
 
 /obj/item/ammo_box/a762
-	multitype = TRUE
 	caliber = CALIBER_A762
 
 /obj/item/gun/energy/e_gun
