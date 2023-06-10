@@ -1,3 +1,38 @@
+#define MAX_MOLD_FOAM_RANGE_BULB 7
+#define MAX_MOLD_FOAM_RANGE_CORE 4
+
+#define TEMP_REAGENT_HOLDER_CAPACITY_LARGE 300
+#define TEMP_REAGENT_HOLDER_CAPACITY_SMALL 210
+
+// Disease
+#define DISEASE_PUFF_RANGE_BULB 4
+#define DISEASE_PUFF_RANGE_CORE 5
+
+#define PUFF_REAGENT_AMOUNT 50
+#define PUFF_REAGENT_EFFICIENCY 24
+
+// EMP
+#define ELECTRICAL_DISCHARGE_HEAVY_RANGE 5
+#define ELECTRICAL_DISCHARGE_LIGHT_RANGE 7
+#define ELECTRICAL_DISCHARGE_SPARKS_AMOUNT 3
+
+#define EMP_SEVERE_EFFECT_CHANCE 50
+#define EMP_ZAP_RANGE 4
+#define EMP_ZAP_POWER 10000
+
+#define EMP_STUN_LENGTH 2 SECONDS
+#define EMP_STUN_RANGE 3
+#define EMP_SOUNDBANG_INTENSITY 1
+#define EMP_SOUNDBANG_STUN_POWER 20
+#define EMP_SOUNDBANG_DAMAGE_POWER 10
+#define EMP_SOUNDBANG_DEAFEN_POWER 5
+
+// Radiation
+#define RAD_PULSE_RANGE 1500
+#define RAD_IRRADIATE_THRESHOLD_BULB 15
+#define RAD_IRRADIATE_THRESHOLD_CORE 10
+
+
 /datum/mold_type
 	var/name = "debug"
 	/// The tier of the mold, used to decide whether it can spawn on lowpop
@@ -180,6 +215,7 @@
 		guarantee_emp = TRUE,
 		)
 
+
 /datum/mold_type/emp/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	. = ..()
 	electrical_discharge(
@@ -296,11 +332,38 @@
 	conditioner.fire_nuclear_particle()
 
 /datum/mold_type/radioactive/proc/irradiate(obj/structure/mold/structure/source, threshold, fire_nuclear_particle = FALSE)
-	radiation_pulse(source,
-	max_range = RAD_PULSE_RANGE,
-	threshold = threshold,
-	chance = FALSE,
-	minimum_exposure_time = TRUE,
+	radiation_pulse(
+		source,
+		max_range = RAD_PULSE_RANGE,
+		threshold = threshold,
+		chance = FALSE,
+		minimum_exposure_time = TRUE,
 	)
+
 	if(fire_nuclear_particle)
 		source.fire_nuclear_particle()
+
+
+#undef MAX_MOLD_FOAM_RANGE_BULB 7
+#undef MAX_MOLD_FOAM_RANGE_CORE 4
+#undef TEMP_REAGENT_HOLDER_CAPACITY_LARGE 300
+#undef TEMP_REAGENT_HOLDER_CAPACITY_SMALL 210
+#undef DISEASE_PUFF_RANGE_BULB 4
+#undef DISEASE_PUFF_RANGE_CORE 5
+#undef PUFF_REAGENT_AMOUNT 50
+#undef PUFF_REAGENT_EFFICIENCY 24
+#undef ELECTRICAL_DISCHARGE_HEAVY_RANGE 5
+#undef ELECTRICAL_DISCHARGE_LIGHT_RANGE 7
+#undef ELECTRICAL_DISCHARGE_SPARKS_AMOUNT 3
+#undef EMP_SEVERE_EFFECT_CHANCE 50
+#undef EMP_ZAP_RANGE 4
+#undef EMP_ZAP_POWER 10000
+#undef EMP_STUN_LENGTH 2 SECONDS
+#undef EMP_STUN_RANGE 3
+#undef EMP_SOUNDBANG_INTENSITY 1
+#undef EMP_SOUNDBANG_STUN_POWER 20
+#undef EMP_SOUNDBANG_DAMAGE_POWER 10
+#undef EMP_SOUNDBANG_DEAFEN_POWER 5
+#undef RAD_PULSE_RANGE 1500
+#undef RAD_IRRADIATE_THRESHOLD_BULB 15
+#undef RAD_IRRADIATE_THRESHOLD_CORE 10
