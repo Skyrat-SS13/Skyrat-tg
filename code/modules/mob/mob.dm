@@ -821,17 +821,15 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-<<<<<<< HEAD
+	if(!check_respawn_delay())
+		return
+
 	//SKYRAT EDIT ADDITION
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
 			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
 			return
 	//SKYRAT EDIT END
-=======
-	if(!check_respawn_delay())
-		return
->>>>>>> 036cfc84c89 (feat: Respawn delay (optional) (#75544))
 
 	usr.log_message("used the respawn button.", LOG_GAME)
 
