@@ -18,7 +18,6 @@
 /datum/bodypart_overlay/mutant/pod_hair/override_color(rgb_value)
 	return draw_color
 
-// TODO: at some point make this use tricolors instead of inverting
 /datum/bodypart_overlay/mutant/pod_hair/color_images(list/image/overlays, draw_layer, obj/item/bodypart/limb)
 	if(draw_layer != bitflag_to_layer(color_swapped_layer))
 		return ..()
