@@ -22,7 +22,6 @@
  * The mob for the fire mold - humanoids that are (visually) on fire
  * They're immune to burn damage and have a chance to add fire stacks on melee attack
  */
-
 /mob/living/basic/mold/oil_shambler
 	name = "oil shambler"
 	desc = "Humanoid figure covered in oil, or maybe they're just oil? They seem to be perpetually on fire."
@@ -111,7 +110,6 @@
  * Giant rats that are created by the disease mold
  * They try to inject their target on melee attacks and, if successful, make them contract a disease
  */
-
 /mob/living/basic/mold/diseased_rat
 	name = "diseased rat"
 	desc = "An incredibly large, rabid looking rat. There are shrooms growing out of it"
@@ -179,7 +177,6 @@
  * Giant mosquitos spawned by the electric mold
  * They inject their target with teslium on melee attacks
  */
-
 /mob/living/basic/mold/electric_mosquito
 	name = "electric mosquito"
 	desc = "An oversized mosquito with what seems like electricity inside its body."
@@ -239,7 +236,6 @@
  * Weird centipede things that spawn with a rad mold
  * They have a chance to irradiate their target on hit, as well as splashing mutagen on death
  */
-
 /mob/living/basic/mold/centaur
 	name = "centaur"
 	desc = "A horrific combination of bone and flesh with multiple sets of legs and feet."
