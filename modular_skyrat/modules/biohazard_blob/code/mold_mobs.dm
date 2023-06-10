@@ -1,3 +1,14 @@
+// Oil shamblers
+#define OIL_SHAMBLER_OVERLAY "oil_shambler_overlay"
+#define OIL_SHAMBLER_OVERLAY_LAYER 0
+
+// Centaur
+#define CENTAUR_DEATH_SPLASH_RANGE 5
+#define CENTAUR_DEATH_SPLAT_VOLUME 50
+#define CENTAUR_RAD_PULSE_RANGE 300
+#define CENTAUR_RAD_PULSE_THRESHOLD 1
+#define CENTAUR_ATTACK_SCREAM_VOLUME 60
+
 /mob/living/basic/mold
 	name = "mold mob"
 	desc = "A debug mob for molds. You should report seeing this."
@@ -56,8 +67,8 @@
 /mob/living/basic/mold/oil_shambler/update_overlays()
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	SSvis_overlays.add_vis_overlay(src, icon, "oil_shambler_overlay", layer, plane, dir, alpha)
-	SSvis_overlays.add_vis_overlay(src, icon, "oil_shambler_overlay", 0, EMISSIVE_PLANE, dir, alpha)
+	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, layer, plane, dir, alpha)
+	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, OIL_SHAMBLER_OVERLAY_LAYER, EMISSIVE_PLANE, dir, alpha)
 
 /datum/ai_controller/basic_controller/oil_shambler
 	blackboard = list(
@@ -272,8 +283,8 @@
 	var/datum/reagents/reagent_spawn = new /datum/reagents(300)
 	reagent_spawn.my_atom = src
 	reagent_spawn.add_reagent(death_chem, 20)
-	chem_splash(loc, null, 5, list(reagent_spawn))
-	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
+	chem_splash(loc, null, CENTAUR_DEATH_SPLASH_RANGE, list(reagent_spawn))
+	playsound(src, 'sound/effects/splat.ogg', CENTAUR_DEATH_SPLAT_VOLUME, TRUE)
 	return ..()
 
 /datum/ai_controller/basic_controller/centaur
@@ -307,5 +318,14 @@
 		return
 	var/mob/living/radiation_target = target
 	if(prob(centaur.irradiate_chance))
-		radiation_pulse(radiation_target, 300, 1, FALSE, TRUE)
-		playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', 60, TRUE)
+		radiation_pulse(radiation_target, CENTAUR_RAD_PULSE_RANGE, CENTAUR_RAD_PULSE_THRESHOLD, FALSE, TRUE)
+		playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', CENTAUR_ATTACK_SCREAM_VOLUME, TRUE)
+
+
+#undef OIL_SHAMBLER_OVERLAY
+#undef OIL_SHAMBLER_OVERLAY_LAYER
+#undef CENTAUR_DEATH_SPLASH_RANGE
+#undef CENTAUR_DEATH_SPLAT_VOLUME
+#undef CENTAUR_RAD_PULSE_RANGE
+#undef CENTAUR_RAD_PULSE_THRESHOLD
+#undef CENTAUR_ATTACK_SCREAM_VOLUME
