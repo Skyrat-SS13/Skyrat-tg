@@ -181,9 +181,9 @@
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
 
 /datum/species/synthetic/create_pref_unique_perks()
-	var/list/to_add = list()
+	var/list/perk_descriptions = list()
 
-	to_add += list(list( //tryin to keep traits minimal since synths will get a lot of traits when my upstream traits pr is merged
+	perk_descriptions += list(list( //tryin to keep traits minimal since synths will get a lot of traits when my upstream traits pr is merged
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Benefits",
@@ -191,14 +191,14 @@
 		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry. On top of this, synthetics are unable to be wounded!"
 	))
 
-	to_add += list(list(
+	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Unhuskable",
 		SPECIES_PERK_DESC = "[plural_form] can't be husked, disappointing changelings galaxy-wide.",
 	))
 
-	to_add += list(list(
+	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Oddities",
@@ -207,7 +207,7 @@
 		or a curse, depending on the mood of the local chemist."
 	))
 
-	return to_add
+	return perk_descriptions
 
 /datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
 	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
