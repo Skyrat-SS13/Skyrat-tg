@@ -24,6 +24,7 @@
 		// SKYRAT EDIT END
 		/obj/item/coupon,
 		/obj/item/flashlight/pen,
+		/obj/item/folder/biscuit,
 		/obj/item/seeds,
 		/obj/item/stack/medical,
 		/obj/item/toy/crayon,
@@ -32,6 +33,7 @@
 		/obj/item/dice,
 		/obj/item/disk,
 		/obj/item/implanter,
+		/obj/item/laser_pointer,
 		/obj/item/lighter,
 		/obj/item/lipstick,
 		/obj/item/match,
