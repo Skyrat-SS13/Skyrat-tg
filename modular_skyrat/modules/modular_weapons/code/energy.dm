@@ -72,6 +72,83 @@
 /obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
 	return
 
+
+
+// Energy SMG NX-867 Starfall (sprite changes pending) //
+
+/obj/item/gun/ballistic/automatic/laser_smg
+	name = "NTX-867 Starfall"
+	desc = "A significant improvement over older designs, this SMG is powered by cells that utilise chemical processes to generate electriciy, rather than storing it. This prototype was engineered by Sol Armistice."
+	icon_state = "oldrifle"
+	w_class = WEIGHT_CLASS_BULKY
+	inhand_icon_state = "arg"
+	mag_type = /obj/item/ammo_box/magazine/recharge/laser_smg
+	empty_indicator = TRUE
+	fire_delay = 2.25
+	can_suppress = FALSE
+	burst_size = 2
+	actions_types = list()
+	fire_sound = 'sound/weapons/laser.ogg'
+	casing_ejector = FALSE
+	bolt_type = BOLT_TYPE_OPEN
+	show_bolt_icon = FALSE
+
+/obj/item/gun/ballistic/automatic/laser_smg/Initialize(mapload)
+	. = ..()
+	bolt_locked = FALSE
+
+/obj/item/gun/ballistic/automatic/laser_smg/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
+	. = ..()
+	
+	if(!chambered)
+		process_chamber(TRUE, FALSE, TRUE)
+
+//Lethal munitions//
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/lethal
+	name = "energy battery NTX-867-1"
+	desc = "A reliable and rechargable battery that serves as an energy source for NTX-867 Starfall."
+	icon_state = "laser_smg_L-20"
+	base_icon_state = "laser_smg_L"
+	ammo_type = /obj/item/ammo_casing/caseless/laser_smg/lethal
+	caliber = CALIBER_LASER
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/lethal/update_desc()
+	. = ..()
+	desc = "[initial(desc)] It has [stored_ammo.len] shot\s left."
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/lethal/update_icon_state()
+	. = ..()
+	icon_state = "[base_icon_state]-[round(ammo_count(), 4)]"
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/lethal/attack_self() //No popping out the "bullets"
+	return
+
+//Non-lethal munitons//
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal
+	name = "energy battery NTX-867-2"
+	desc = "A reliable and rechargable battery that serves as an energy source for NTX-867 Starfall."
+	icon_state = "laser_smg_NL-20"
+	base_icon_state = "laser_smg_NL"
+	ammo_type = /obj/item/ammo_casing/caseless/laser_smg/nonlethal
+	caliber = CALIBER_LASER
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal/update_desc()
+	. = ..()
+	desc = "[initial(desc)] It has [stored_ammo.len] shot\s left."
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal/update_icon_state()
+	. = ..()
+	icon_state = "[base_icon_state]-[round(ammo_count(), 4)]"
+
+/obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal/attack_self() //No popping out the "bullets"
+	return
+
+
+
 /*
 *	BOUNCE DISABLER
 *	A disabler that will always ricochet.
@@ -160,6 +237,23 @@
 	stamina = 30
 	range = 6
 
+// NTX-867 Non-lethal Projectile //
+
+/obj/item/ammo_casing/energy/electrode/laser_smg
+	projectile_type = /obj/projectile/energy/electrode/knockdown
+	select_name = "non-lethal"
+	fire_sound = 'sound/weapons/taser.ogg'
+	e_cost = 200
+	harmful = FALSE
+
+/obj/projectile/energy/electrode/laser_smg
+	name = "electrobolt"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/projectiles.dmi'
+	icon_state = "electro_bolt"
+	stamina = 20
+	range = 7
+
+
 /*
 *	SINGLE LASER
 *	Has an unique sprite
@@ -183,6 +277,26 @@
 	light_power = 0.75
 	speed = 0.5
 	armour_penetration = 10
+
+// NTX-867 Lethal Projectile //
+
+/obj/item/ammo_casing/energy/laser/single/laser_smg
+	projectile_type = /obj/projectile/beam/laser/single/laser_smg
+	e_cost = 50
+	select_name = "lethal"
+
+/obj/projectile/beam/laser/single/laser_smg
+	name = "laser bolt"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/projectiles.dmi'
+	icon_state = "single_laser"
+	damage = 20
+	eyeblur = 1
+	light_range = 7
+	light_power = 0.75
+	speed = 0.75
+	armour_penetration = 5
+	wound_bonus = -20
+
 
 /*
 *	DOUBLE LASER
@@ -248,3 +362,22 @@
 	projectile_type = /obj/projectile/beam/disabler/bounce
 
 
+/obj/item/ammo_casing/caseless/laser_smg/lethal
+	name = "type V1 energy projectile"
+	desc = "An energy cell that once triggered, creates a lethal projectile, melting it's own casing in the process."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
+	icon_state = "plasma_shell"
+	worn_icon_state = "shell"
+	caliber = "energy blast"
+	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	projectile_type = /obj/projectile/beam/laser/single/laser_smg
+
+/obj/item/ammo_casing/caseless/laser_smg/nonlethal
+	name = "type V2 energy projectile"
+	desc = "An energy cell that once triggered, creates a non-lethal projectile, melting it's own casing in the process."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
+	icon_state = "disabler_shell"
+	worn_icon_state = "shell"
+	caliber = "electrode"
+	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	projectile_type = /obj/projectile/energy/electrode/laser_smg

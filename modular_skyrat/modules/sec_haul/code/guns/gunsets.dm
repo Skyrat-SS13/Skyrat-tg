@@ -439,6 +439,25 @@
 	. = ..()
 	new /obj/item/gun/energy/e_gun(src)
 
+// NX-867 Starfall //
+
+/obj/item/storage/box/gunset/laser_smg
+	name = "NX-867 gun case"
+	desc = "A briefcase that contains NX-867 Starfall SMG. Comes with batteries."
+	w_class = WEIGHT_CLASS_BULKY
+/obj/item/gun/ballistic/automatic/laser_smg/nomag
+	spawnwithmagazine = FALSE
+
+
+/obj/item/storage/box/gunset/laser_smg/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/laser_smg/nomag(src)
+	new /obj/item/ammo_box/magazine/recharge/laser_smg/lethal(src)
+	new /obj/item/ammo_box/magazine/recharge/laser_smg/lethal(src)
+	new /obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal(src)
+	new /obj/item/ammo_box/magazine/recharge/laser_smg/nonlethal(src)
+
+
 /*
 *	PEPPERBALLS
 */
