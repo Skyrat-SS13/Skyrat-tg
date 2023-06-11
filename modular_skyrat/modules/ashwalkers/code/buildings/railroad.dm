@@ -32,14 +32,14 @@
 /obj/structure/railroad/Initialize(mapload)
 	. = ..()
 	for(var/obj/structure/railroad/rail in range(1))
-		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
+		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 1 SECONDS)
 
 /obj/structure/railroad/Destroy()
-	. = ..()
 	for(var/obj/structure/railroad/rail in range(1))
 		if(rail == src)
 			continue
-		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
+		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 1 SECONDS)
+	return ..()
 
 /obj/structure/railroad/update_appearance(updates)
 	icon_state = "rail"
@@ -67,13 +67,10 @@
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	/// The mutable appearance used for the overlay over buckled mobs.
 	var/mutable_appearance/railoverlay
-	/// whether there is sand in the cart
-	var/has_sand = FALSE
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
 	. += span_notice("<br><b>Alt-Click</b> to attach a rail cart to this cart.")
-	. += span_notice("<br>Filling it with <b>10 sand</b> will allow it to be used as a planter!")
 
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
@@ -107,33 +104,13 @@
 	return FALSE
 
 /obj/vehicle/ridden/rail_cart/AltClick(mob/user)
-	. = ..()
+	to_chat(user, span_notice("You attempt to attach a trailer to [src]..."))
 	attach_trailer()
+	return ..()
 
 /obj/vehicle/ridden/rail_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	atom_storage?.show_contents(user)
-
-/obj/vehicle/ridden/rail_cart/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/use_item = attacking_item
-		if(has_sand || !use_item.use(10))
-			return ..()
-		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 16))
-		has_sand = TRUE
-		RemoveElement(/datum/element/ridable)
-		return
-
-	if(attacking_item.tool_behaviour == TOOL_SHOVEL)
-		var/datum/component/remove_component = GetComponent(/datum/component/simple_farm)
-		if(!remove_component)
-			return ..()
-		qdel(remove_component)
-		has_sand = FALSE
-		AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
-		return
-
-	return ..()
 
 /// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()
