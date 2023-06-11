@@ -388,27 +388,27 @@
 			if(!forced)
 				to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
 			minimum_target_temperature = 25 // Will allow quicker reheating from having no fuel
-			temperature_loss_reduction = 2
+			temperature_loss_reduction = 3
 			forge_level = FORGE_LEVEL_JOURNEYMAN
 
 		if(SKILL_LEVEL_EXPERT)
 			if(!forced)
-				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
-			create_reagent_forge()
-			temperature_loss_reduction = 3
+				to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
+			temperature_loss_reduction = 4
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_EXPERT
 
 		if(SKILL_LEVEL_MASTER)
 			if(!forced)
-				to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
-			temperature_loss_reduction = 4
+				to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_MASTER
 
-		if(SKILL_LEVEL_LEGENDARY)
+		if(SKILL_LEVEL_LEGENDARY && (is_species(user, /datum/species/lizard/ashwalker) || is_species(user, /datum/species/human/felinid/primitive)))
 			if(!forced)
-				to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
+			create_reagent_forge()
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
