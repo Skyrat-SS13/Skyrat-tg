@@ -701,3 +701,12 @@
 
 /datum/config_entry/flag/config_errors_runtime
 	default = FALSE
+
+/datum/config_entry/number/drift_dump_threshold
+	default = 4 SECONDS
+
+/datum/config_entry/number/drift_profile_delay
+	default = 15 SECONDS
+
+/datum/config_entry/number/sleep_profile_delay
+	default = 30 SECONDS

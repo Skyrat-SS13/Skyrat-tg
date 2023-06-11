@@ -587,3 +587,13 @@ TOAST_NOTIFICATION_ON_INIT
 
 ## Causes configuration errors to spit out runtimes
 CONFIG_ERRORS_RUNTIME
+
+## Threshold (in deciseconds) for real time between ticks before we start dumping profiles
+DRIFT_DUMP_THRESHOLD 40
+
+## How long to wait (in deciseconds) after a profile dump before logging another tickdrift sourced one
+DRIFT_PROFILE_DELAY 150
+
+## How long to wait (in deciseconds) after a profile dump before logging another sleep failure sourced one
+## (IE: a sleeping proc eat all our cpu so we can't do anything)
+SLEEP_PROFILE_DELAY 300
