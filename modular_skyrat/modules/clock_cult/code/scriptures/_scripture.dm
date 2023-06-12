@@ -211,7 +211,10 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 	if(!.)
 		return FALSE
 
-	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))
+	for(var/obj/structure/destructible/clockwork/clockwork_struct in get_turf(invoker))
+		if(istype(clockwork_struct, /obj/structure/destructible/clockwork/trap))
+			continue
+
 		invoker.balloon_alert(invoker, "structure already on tile!")
 		return FALSE
 

@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(decay)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_DECAY
 
+	/// This is used to determine what maps we should not spawn on.
+	var/list/station_filter = list("Birdshot Station", "Runtime Station", "MultiZ Debug")
 	var/list/possible_turfs = list()
 	var/list/possible_areas = list()
 	var/severity_modifier = 1
@@ -37,6 +39,11 @@ SUBSYSTEM_DEF(decay)
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
 		log_world("SSDecay was disabled in config.")
+		return SS_INIT_NO_NEED
+
+	if(SSmapping.config.map_name in station_filter)
+		message_admins("SSDecay was disabled due to map filter.")
+		log_world("SSDecay was disabled due to map filter.")
 		return SS_INIT_NO_NEED
 
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.

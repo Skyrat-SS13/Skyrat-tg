@@ -39,8 +39,8 @@
 	if(istype(source, /obj/structure/destructible/clockwork/gear_base/powered))
 		var/obj/structure/destructible/clockwork/gear_base/powered/powered_source = source
 		assembled_string += "This structure is currently toggled <b>[powered_source.enabled ? "on" : "off"]</b>, and is <b>[powered_source.processing ? "running" : "not running"]</b>.<br>"
-		assembled_string += "This structure consumes <b>[powered_source.passive_consumption]</b> W every 2 seconds while enabled."
-		assembled_string += "This structure is connected to [LAZYLEN(powered_source.transmission_sigils)] transmission sigil[LAZYLEN(powered_source.transmission_sigils) == 1 ? "" : "s"]."
+		assembled_string += "This structure consumes <b>[powered_source.passive_consumption]</b> W every 2 seconds while enabled.<br>"
+		assembled_string += "This structure is connected to <b>[LAZYLEN(powered_source.transmission_sigils)]</b> transmission sigil[LAZYLEN(powered_source.transmission_sigils) == 1 ? "" : "s"]."
 
 	to_chat(user, span_brass(assembled_string))
 

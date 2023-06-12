@@ -113,3 +113,13 @@
 	name = "Snow (Dual-Color)"
 	icon_state = "snowdual"
 	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/fluff/moth/teshari
+	name = "Teshari Mane"
+	icon_state = "teshmane"
+	default_color = DEFAULT_TERTIARY
+
+/datum/sprite_accessory/fluff/moth/teshari/front
+	name = "Teshari Mane (Top)"
+	icon_state = "teshmane"
+	default_color = DEFAULT_TERTIARY

@@ -13,7 +13,7 @@
 /mob/living/simple_animal/hostile/asteroid
 	reagent_health = TRUE
 
-/mob/living/simple_animal/Life(delta_time, times_fired)
+/mob/living/simple_animal/Life(seconds_per_tick, times_fired)
 	. = ..()
 	if(reagent_health && reagents)
 		for(var/datum/reagent/reagents_within as anything in reagents.reagent_list)

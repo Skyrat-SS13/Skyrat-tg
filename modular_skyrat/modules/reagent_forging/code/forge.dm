@@ -266,7 +266,7 @@
 	var/obj/item/stack/sheet/mineral/coal/spawn_coal = new(get_turf(src))
 	spawn_coal.name = "charcoal"
 
-/obj/structure/reagent_forge/process(delta_time)
+/obj/structure/reagent_forge/process(seconds_per_tick)
 	if(!COOLDOWN_FINISHED(src, forging_cooldown))
 		return
 
@@ -285,10 +285,10 @@
 		set_smoke_state(SMOKE_STATE_NONE)
 		return
 
-	handle_baking_things(delta_time)
+	handle_baking_things(seconds_per_tick)
 
 /// Sends signals to bake and items on the used tray, setting the smoke state of the forge according to the most cooked item in it
-/obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
+/obj/structure/reagent_forge/proc/handle_baking_things(seconds_per_tick)
 	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
 		return
 
@@ -296,7 +296,7 @@
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item as anything in used_tray.contents)
 
-		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PROCESS, src, delta_time)
+		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PROCESS, src, seconds_per_tick)
 
 		if(signal_result & COMPONENT_HANDLED_BAKING)
 			if(signal_result & COMPONENT_BAKING_GOOD_RESULT && worst_cooked_food_state < SMOKE_STATE_GOOD)
@@ -308,7 +308,7 @@
 		worst_cooked_food_state = SMOKE_STATE_BAD
 		baked_item.fire_act(1000) // Overcooked food really does burn, hot hot hot!
 
-		if(DT_PROB(10, delta_time))
+		if(SPT_PROB(10, seconds_per_tick))
 			visible_message(span_danger("You smell a burnt smell coming from [src]!")) // Give indication that something is burning in the oven
 	set_smoke_state(worst_cooked_food_state)
 
@@ -468,7 +468,7 @@
 
 	if(!user.transferItemToLoc(tray, src, silent = FALSE))
 		return
-		
+
 	// need to send the right signal for each item in the tray
 	for(var/obj/item/baked_item in tray.contents)
 		SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PLACED_IN, src, user)
@@ -685,6 +685,7 @@
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+	spawned_glass.total_time = glassblowing_amount
 
 /// Handles creating molten glass from a metal cup filled with sand
 /obj/structure/reagent_forge/proc/handle_metal_cup_melting(obj/attacking_item, mob/living/user)
@@ -714,6 +715,7 @@
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+	spawned_glass.total_time = glassblowing_amount
 
 /obj/structure/reagent_forge/billow_act(mob/living/user, obj/item/tool)
 	if(in_use) // Preventing billow use if the forge is in use to prevent spam
@@ -793,11 +795,11 @@
 		var/list/material_list = list()
 
 		if(search_stack.material_type)
-			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+			material_list[GET_MATERIAL_REF(search_stack.material_type)] = SHEET_MATERIAL_AMOUNT
 
 		else
 			for(var/material as anything in search_stack.custom_materials)
-				material_list[material] = MINERAL_MATERIAL_AMOUNT
+				material_list[material] = SHEET_MATERIAL_AMOUNT
 
 		if(!search_stack.use(1))
 			fail_message(user, "not enough of [search_stack]")
@@ -861,6 +863,7 @@
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
+	find_glass.total_time = glassblowing_amount
 	to_chat(user, span_notice("You finish heating up [blowing_item]."))
 	user.mind.adjust_experience(/datum/skill/smithing, 5)
 	user.mind.adjust_experience(/datum/skill/production, 10)

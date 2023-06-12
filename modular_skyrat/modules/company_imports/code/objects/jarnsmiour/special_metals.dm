@@ -21,7 +21,7 @@
 	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	mats_per_unit = list(/datum/material/cobolterium = MINERAL_MATERIAL_AMOUNT)
+	mats_per_unit = list(/datum/material/cobolterium = SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/sheet/cobolterium
 	material_type = /datum/material/cobolterium
 	material_modifier = 1
@@ -50,7 +50,7 @@
 	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	mats_per_unit = list(/datum/material/copporcitite = MINERAL_MATERIAL_AMOUNT)
+	mats_per_unit = list(/datum/material/copporcitite = SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/sheet/copporcitite
 	material_type = /datum/material/copporcitite
 	material_modifier = 1
@@ -79,7 +79,7 @@
 	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	mats_per_unit = list(/datum/material/tinumium = MINERAL_MATERIAL_AMOUNT)
+	mats_per_unit = list(/datum/material/tinumium = SHEET_MATERIAL_AMOUNT )
 	merge_type = /obj/item/stack/sheet/tinumium
 	material_type = /datum/material/tinumium
 	material_modifier = 1
@@ -108,7 +108,7 @@
 	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	mats_per_unit = list(/datum/material/brussite = MINERAL_MATERIAL_AMOUNT)
+	mats_per_unit = list(/datum/material/brussite = SHEET_MATERIAL_AMOUNT )
 	merge_type = /obj/item/stack/sheet/brussite
 	material_type = /datum/material/brussite
 	material_modifier = 1

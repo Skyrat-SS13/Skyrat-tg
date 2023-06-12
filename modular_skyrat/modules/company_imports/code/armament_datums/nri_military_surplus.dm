@@ -98,25 +98,24 @@
 /datum/armament_entry/company_import/nri_surplus/firearm
 	subcategory = "Firearms"
 
-/datum/armament_entry/company_import/nri_surplus/firearm/makarov
-	item_type = /obj/item/gun/ballistic/automatic/pistol/makarov
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
+/datum/armament_entry/company_import/nri_surplus/firearm/shotgun_revolver
+	item_type = /obj/item/gun/ballistic/revolver/cin_shotgun_revolver
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
 	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
-/datum/armament_entry/company_import/nri_surplus/firearm/sportiv
-	item_type = /obj/item/gun/ballistic/rifle/boltaction
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 15
-	interest_required = COMPANY_HIGH_INTEREST
-	restricted = TRUE
+/datum/armament_entry/company_import/nri_surplus/firearm/plasma_thrower
+	item_type = /obj/item/gun/energy/laser/plasma_thrower
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
-/datum/armament_entry/company_import/nri_surplus/firearm/civilian_akm
-	item_type = /obj/item/gun/ballistic/automatic/akm/civvie
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 17
+/datum/armament_entry/company_import/nri_surplus/firearm/anti_materiel_rifle
+	item_type = /obj/item/gun/ballistic/automatic/cin_amr
+	lower_cost = CARGO_CRATE_VALUE * 8
+	upper_cost = CARGO_CRATE_VALUE * 10
 	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
 	interest_addition = COMPANY_INTEREST_GAIN_BIG

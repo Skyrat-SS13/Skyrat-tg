@@ -74,7 +74,7 @@
 		var/mats = stack_mats & mat_container.materials
 		var/amount = gathered_ore.amount
 		mat_container.insert_item(gathered_ore, ore_multiplier, breakdown_flags=BREAKDOWN_FLAGS_ORM) //insert it
-		materials.silo_log(src, "smelted", amount, "someone", mats)
+		materials.silo_log(src, "smelted", amount, gathered_ore.name, mats)
 		qdel(gathered_ore)
 
 	SEND_SIGNAL(src, COMSIG_ORM_COLLECTED_ORE)
@@ -126,7 +126,7 @@
 
 	for(var/mat in mat_container.materials)
 		var/datum/material/M = mat
-		var/mineral_amount = mat_container.materials[mat] / MINERAL_MATERIAL_AMOUNT
+		var/mineral_amount = mat_container.materials[mat] / SHEET_MATERIAL_AMOUNT
 		if(mineral_amount)
 			has_minerals = TRUE
 		msg += "[capitalize(M.name)]: [mineral_amount] sheets<br>"
@@ -220,7 +220,7 @@
 	if (mat_container)
 		for(var/datum/material/material as anything in mat_container.materials)
 			var/amount = mat_container.materials[material]
-			var/sheet_amount = amount / MINERAL_MATERIAL_AMOUNT
+			var/sheet_amount = amount / SHEET_MATERIAL_AMOUNT
 			data["materials"] += list(list(
 				"name" = material.name,
 				"id" = REF(material),
@@ -238,12 +238,15 @@
 				"amount" = can_smelt_alloy(alloy),
 			))
 
+	data["disconnected"] = null
 	if (!mat_container)
-		data["disconnected"] = "local mineral storage is unavailable"
+		data["disconnected"] = "Local mineral storage is unavailable"
 	else if (!materials.silo)
-		data["disconnected"] = "no ore silo connection is available; storing locally"
+		data["disconnected"] = "No ore silo connection is available; storing locally"
+	else if (!materials.check_z_level())
+		data["disconnected"] = "Unable to connect to ore silo, too far away"
 	else if (materials.on_hold())
-		data["disconnected"] = "mineral withdrawal is on hold"
+		data["disconnected"] = "Mineral withdrawal is on hold"
 
 	var/obj/item/card/id/card
 	if(isliving(user))
@@ -297,6 +300,8 @@
 			if(isliving(usr))
 				var/mob/living/user = usr
 				user_id_card = user.get_idcard(TRUE)
+			if(!materials.check_z_level())
+				return TRUE
 			if(points)
 				if(user_id_card)
 					user_id_card.registered_account.mining_points += points
@@ -320,7 +325,7 @@
 				if(!amount)
 					return
 
-				var/stored_amount = CEILING(amount / MINERAL_MATERIAL_AMOUNT, 0.1)
+				var/stored_amount = CEILING(amount / SHEET_MATERIAL_AMOUNT, 0.1)
 				if(!stored_amount)
 					return
 
@@ -329,7 +334,7 @@
 
 				var/count = mat_container.retrieve_sheets(sheets_to_remove, mat, get_step(src, output_dir))
 				var/list/mats = list()
-				mats[mat] = MINERAL_MATERIAL_AMOUNT
+				mats[mat] = SHEET_MATERIAL_AMOUNT
 				materials.silo_log(src, "released", -count, "sheets", mats)
 				//Logging deleted for quick coding
 			return TRUE

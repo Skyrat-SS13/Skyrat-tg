@@ -70,6 +70,12 @@
 			change_capacitor_target(params["capacitor_target"])
 	update_appearance()
 
+/obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		return
+	obj_flags |= EMAGGED
+	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out."))
+
 /**
  * Changes the target charge for the internal capacitors
  */
@@ -125,7 +131,9 @@
  * Locates the impact turf based off of if it's an area or a GPS.
  */
 /obj/machinery/computer/bsa_control/proc/get_impact_turf()
-	if(istype(target, /area))
+	if(obj_flags & EMAGGED)
+		return get_turf(src)
+	else if(istype(target, /area))
 		return pick(get_area_turfs(target))
 	else if(istype(target, /datum/component/gps))
 		var/datum/component/gps/gps = target
@@ -145,7 +153,8 @@
 	if((cannon.machine_stat & NOPOWER))
 		notice = "Cannon unpowered!"
 		return
-	notice = cannon.pre_fire(user, get_impact_turf())
+	var/turf/target_turf = get_impact_turf()
+	notice = cannon.pre_fire(user, target_turf)
 
 /**
  * Deploy
@@ -178,5 +187,4 @@
 		qdel(centerpiece.back_piece.resolve())
 	qdel(centerpiece)
 	connected_cannon = WEAKREF(cannon)
-
 

@@ -106,20 +106,20 @@
 	taste_description = "flowers"
 	addiction_types = list(/datum/addiction/opioids = 18)
 
-/datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+/datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
-	if(DT_PROB(2.5, delta_time))
+	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
 	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
-	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
-	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
+	M.adjustBruteLoss(-0.1 * REM * seconds_per_tick, 0) //can be used as a (shitty) painkiller
+	M.adjustFireLoss(-0.1 * REM * seconds_per_tick, 0)
 	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)
 	return ..()
 
-/datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
-	M.adjustToxLoss(1 * REM * delta_time, 0)
-	M.adjust_drowsiness(1 SECONDS * REM * normalise_creation_purity() * delta_time)
+/datum/reagent/drug/opium/overdose_process(mob/living/M, seconds_per_tick, times_fired)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * seconds_per_tick)
+	M.adjustToxLoss(1 * REM * seconds_per_tick, 0)
+	M.adjust_drowsiness(1 SECONDS * REM * normalise_creation_purity() * seconds_per_tick)
 	return TRUE
 
 /datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)
@@ -142,12 +142,12 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
 
-/datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+/datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
-	if(DT_PROB(2.5, delta_time))
+	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
-	M.adjustBruteLoss(-0.4 * REM * delta_time, 0) //more powerful as a painkiller, possibly actually useful to medical now
-	M.adjustFireLoss(-0.4 * REM * delta_time, 0)
+	M.adjustBruteLoss(-0.4 * REM * seconds_per_tick, 0) //more powerful as a painkiller, possibly actually useful to medical now
+	M.adjustFireLoss(-0.4 * REM * seconds_per_tick, 0)
 	..()
 
 /datum/reagent/drug/opium/blacktar
@@ -160,13 +160,13 @@
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+/datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
-	if(DT_PROB(2.5, delta_time))
+	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
 
-	M.set_drugginess(20 SECONDS * REM * delta_time)
-	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
+	M.set_drugginess(20 SECONDS * REM * seconds_per_tick)
+	M.adjustToxLoss(0.5 * REM * seconds_per_tick, 0) //toxin damage
 	return ..()
 
 /datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed

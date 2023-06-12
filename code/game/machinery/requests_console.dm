@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 /obj/machinery/requests_console
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
-	icon = 'icons/obj/terminals.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp_off"
 	base_icon_state = "req_comp"
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.15
@@ -108,15 +108,21 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 		return
 	set_light(1.5, 0.7, "#34D352")//green light
 
-/obj/machinery/requests_console/update_icon_state()
-	if(open)
-		icon_state = "[base_icon_state]_[hackState ? "rewired" : "open"]"
-		return ..()
-	icon_state = "[base_icon_state]_off"
-	return ..()
+/obj/machinery/requests_console/examine(mob/user)
+	. = ..()
+	if(!open)
+		. += span_notice("It looks like you can pry open the panel with <b>a crowbar</b>.")
+	else
+		. += span_warning("The panel was pried open, you can close it with <b>a crowbar</b>.")
+
+	if(hackState)
+		. += span_warning("The console seems to have been tampered with!")
 
 /obj/machinery/requests_console/update_overlays()
 	. = ..()
+
+	if(open)
+		. += mutable_appearance(icon, "req_comp_open")
 
 	if(open || (machine_stat & NOPOWER))
 		return

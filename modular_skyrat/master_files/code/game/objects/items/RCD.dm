@@ -17,7 +17,7 @@
 	plumbing_design_types += list(
 		/obj/structure/drain = 5,
 	)
-	
+
 ///overridden to account for special case for the drain which is a structure
 /obj/item/construction/plumbing/get_category(obj/recipe)
 	if(ispath(recipe, /obj/structure/drain))
@@ -29,7 +29,6 @@
 	name = "mining plumbing constructor"
 	desc = "A type of plumbing constructor designed to harvest from geysers and collect their fluids."
 	icon_state = "plumberer_mining"
-	has_ammobar = TRUE
 
 /obj/item/construction/plumbing/mining/set_plumbing_designs()
 	plumbing_design_types = list(

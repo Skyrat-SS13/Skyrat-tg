@@ -14,3 +14,4 @@
 #define COMPANY_JARNSMIOUR (1<<13)
 #define COMPANY_ABDUCTOR (1<<14)
 #define COMPANY_REMOVED (1<<15)
+#define COMPANY_TKACH (1<<16)

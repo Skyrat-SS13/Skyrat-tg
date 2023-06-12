@@ -112,6 +112,22 @@
 	sharpness = NONE
 	embedding = null
 
+// no better place to put these overrides lmao
+
+/obj/item/ammo_box/a762
+	caliber = CALIBER_A762
+
+// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
+/obj/item/ammo_casing/a762/lionhunter
+	name = "lionhunter's casing"
+	desc = "There's something unnatural about this casing."
+	can_be_printed = FALSE
+
+/obj/item/ammo_casing/a762/enchanted
+	name = "enchanted .244 Acia casing"
+	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // you should only see this if someone picked lesser summon guns
+	can_be_printed = FALSE
+
 /*
 *	5.56x45mm (???)
 */

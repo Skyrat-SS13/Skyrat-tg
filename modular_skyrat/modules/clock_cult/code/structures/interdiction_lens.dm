@@ -31,12 +31,12 @@
 	return ..()
 
 
-/obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens/process(delta_time)
+/obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens/process(seconds_per_tick)
 	. = ..()
 	if(!.)
 		return
 
-	if(DT_PROB(3, delta_time))
+	if(SPT_PROB(3, seconds_per_tick))
 		new /obj/effect/temp_visual/steam_release(get_turf(src))
 
 	for(var/mob/living/living_mob in viewers(INTERDICTION_LENS_RANGE, src))

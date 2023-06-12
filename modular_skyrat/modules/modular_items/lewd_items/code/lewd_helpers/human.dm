@@ -12,12 +12,6 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-// For tracking arousal and fluid regen.
-/mob/living/carbon/human/Initialize(mapload)
-	. = ..()
-	if(!istype(src, /mob/living/carbon/human/species/monkey))
-		apply_status_effect(/datum/status_effect/aroused)
-		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
 /*
 *	This code needed to determine if the human is naked in that part of body or not

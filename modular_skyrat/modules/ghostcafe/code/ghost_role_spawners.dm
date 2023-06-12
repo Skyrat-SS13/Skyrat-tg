@@ -12,7 +12,6 @@
 	deletes_on_zero_uses_left = FALSE
 	icon = 'modular_skyrat/modules/ghostcafe/icons/robot_storage.dmi'
 	icon_state = "robostorage"
-	mob_name = "a cafe robot"
 	anchored = TRUE
 	density = FALSE
 	spawner_job_path = /datum/job/ghostcafe
@@ -44,7 +43,6 @@
 	deletes_on_zero_uses_left = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	mob_name = "a cafe visitor"
 	density = FALSE
 	spawner_job_path = /datum/job/ghostcafe
 	outfit = /datum/outfit/ghostcafe

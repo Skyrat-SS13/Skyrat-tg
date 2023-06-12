@@ -48,6 +48,7 @@
 /obj/item/implant_mounted_chainsaw
 	name = "integrated chainsaw"
 	desc = "A chainsaw that conceals inside your arm."
+	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw_on"
 	inhand_icon_state = "mounted_chainsaw"
 	lefthand_file = 'icons/mob/inhands/weapons/chainsaw_lefthand.dmi'

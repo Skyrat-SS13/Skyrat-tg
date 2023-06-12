@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	SSpersistence.save_panic_bunker() //we can do this every time, it's okay
 	log_admin("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
 	message_admins("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
-	return "[params] has been added to the current round's bunker bypass list."
+	return new /datum/tgs_message_content("[params] has been added to the current round's bunker bypass list.")
 
 /datum/controller/subsystem/persistence/proc/load_panic_bunker()
 	var/bunker_path = file("data/bunker_passthrough.json")

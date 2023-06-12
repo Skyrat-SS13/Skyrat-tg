@@ -47,37 +47,37 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "backpack_black"
+	icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
-			RESKIN_ICON_STATE = "backpack_black",
-			RESKIN_WORN_ICON_STATE = "backpack_black"
+			RESKIN_ICON_STATE = "backpack_security_black",
+			RESKIN_WORN_ICON_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "backpack_white",
-			RESKIN_WORN_ICON_STATE = "backpack_white"
+			RESKIN_ICON_STATE = "backpack_security_white",
+			RESKIN_WORN_ICON_STATE = "backpack_security_white"
 		),
 	)
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_satchel"
+	icon_state = "satchel_security"
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_duffle_blue"
+	icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_blue",
-			RESKIN_WORN_ICON_STATE = "security_duffle_blue"
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "duffel_security_black",
+			RESKIN_WORN_ICON_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_white",
-			RESKIN_WORN_ICON_STATE = "security_duffle_white"
+			RESKIN_ICON_STATE = "duffel_security_white",
+			RESKIN_WORN_ICON_STATE = "duffel_security_white"
 		),
 	)
 

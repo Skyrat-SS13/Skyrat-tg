@@ -20,10 +20,7 @@
 
 /obj/item/clockwork/trap_placer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!IS_CLOCK(user))
-		return
-
-	if(!isturf(target))
+	if(!IS_CLOCK(user) || !isturf(target) || !proximity_flag)
 		return
 
 	place_trap(target, user)

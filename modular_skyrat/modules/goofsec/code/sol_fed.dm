@@ -345,8 +345,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 */
 
 /datum/antagonist/ert/request_911/atmos
-	name = "Advanced Atmospherics Technician"
-	role = "Advanced Atmospherics Technician"
+	name = "Adv. Atmos Tech"
+	role = "Adv. Atmospherics Technician"
 	department = "Advanced Atmospherics"
 	outfit = /datum/outfit/request_911/atmos
 
@@ -368,17 +368,17 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/beamout_tool = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		)
-	id_trim = /datum/id_trim/solfed
+	id_trim = /datum/id_trim/solfed/atmos
 
 /obj/item/radio/headset/headset_solfed/atmos
-	name = "\improper SolFed advanced atmos headset"
+	name = "\improper SolFed adv. atmos headset"
 	desc = "A headset used by the Solar Federation response teams."
 	icon_state = "med_headset"
 	keyslot = /obj/item/encryptionkey/headset_solfed/atmos
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/security.ogg'
 
 /obj/item/encryptionkey/headset_solfed/atmos
-	name = "\improper SolFed advanced atmos encryption key"
+	name = "\improper SolFed adv. atmos encryption key"
 	icon_state = "cypherkey_medical"
 	independent = TRUE
 	channels = list(RADIO_CHANNEL_SOLFED = 1, RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_COMMAND = 1)

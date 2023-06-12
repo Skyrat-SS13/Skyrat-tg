@@ -15,10 +15,9 @@
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme
-	weight = 4
-	min_players = 60
-	max_occurrences = 1
-	earliest_start = 30 MINUTES
+	weight = 0
+	max_occurrences = 0
+	earliest_start = 45 MINUTES
 	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/cme
@@ -33,8 +32,9 @@
 /datum/round_event_control/cme/unknown
 	name = "Coronal Mass Ejection: Unknown"
 	typepath = /datum/round_event/cme/unknown
-	weight = 0
-	max_occurrences = 0
+	weight = 15
+	min_players = 75
+	max_occurrences = 1
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
@@ -61,6 +61,7 @@
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
 	weight = 0
+	min_players = 75
 	max_occurrences = 0
 
 /datum/round_event/cme/extreme

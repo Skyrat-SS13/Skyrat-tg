@@ -11,3 +11,4 @@ Gandalf2k15 - Code and some icons.
 Stalkeros - Code and some icons.
 Ramirez - Icons and idea.
 Flavrius - Icons + misc.
+Paxilmaniac - Surplus weapons and armor

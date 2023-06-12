@@ -39,12 +39,12 @@
 	mutanttongue = /obj/item/organ/internal/tongue
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/roundstartslime,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/roundstartslime,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/roundstartslime,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/roundstartslime,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/slime/roundstart,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime/roundstart,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/slime/roundstart,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/slime/roundstart,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime/roundstart,
 	)
 
 /**
@@ -329,6 +329,9 @@
  */
 /datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
 	var/list/key_list = alterer.dna.mutant_bodyparts
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/erp_part in ORGAN_ERP_LIST)
+			key_list -= erp_part
 	var/chosen_key = tgui_input_list(
 		alterer,
 		"Select the part you want to alter",

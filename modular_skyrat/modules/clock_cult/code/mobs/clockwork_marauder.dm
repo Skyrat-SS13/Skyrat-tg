@@ -9,13 +9,12 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_mobs.dmi'
 	icon_state = "clockwork_marauder"
 	icon_living = "clockwork_marauder"
-	icon_dead = ""
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	maxHealth = 140
 	health = 140
 	basic_mob_flags = DEL_ON_DEATH
-	speed = 1.1
+	speed = 1.25
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 24
 	melee_damage_upper = 24
@@ -32,6 +31,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	faction = list(FACTION_CLOCK)
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	ai_controller = /datum/ai_controller/basic_controller/clockwork_marauder
+	initial_language_holder = /datum/language_holder/clockmob
 
 	/// Items to be dropped on death
 	var/static/list/loot = list(
@@ -59,12 +59,19 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	GLOB.clockwork_marauders -= src
 	return ..()
 
+/mob/living/basic/clockwork_marauder/examine(mob/user)
+	. = ..()
+	if(IS_CLOCK(user))
+		. += span_brass("[src]'s shield is at [shield_health] / [MARAUDER_SHIELD_MAX] charges.")
+
+		if(shield_health < MARAUDER_SHIELD_MAX)
+			. += span_brass("It can be repaired with a <b>welding tool</b>.")
 
 /mob/living/basic/clockwork_marauder/attacked_by(obj/item/attacking_item, mob/living/user)
 	if(shield_health)
 		damage_shield()
 
-		playsound(src,'sound/hallucinations/veryfar_noise.ogg',40,1)
+		playsound(src, 'sound/hallucinations/veryfar_noise.ogg', 40, 1)
 
 	if(attacking_item == TOOL_WELDER)
 		welder_act(user, attacking_item)

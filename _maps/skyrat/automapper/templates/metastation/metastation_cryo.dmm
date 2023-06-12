@@ -2,6 +2,33 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"e" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
+"i" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
+"j" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/public/glass{
+	name = "Cryopods"
+	},
+/turf/open/floor/iron,
+/area/station/common/cryopods)
 "p" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -12,15 +39,11 @@
 /turf/open/floor/iron/dark,
 /area/station/common/cryopods)
 "q" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/public/glass{
-	name = "Cryopods"
-	},
 /obj/effect/landmark/navigate_destination,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
-/area/station/common/cryopods)
+/area/station/commons/fitness/recreation)
 "v" = (
 /obj/structure/cable,
 /obj/machinery/computer/cryopod/directional/north,
@@ -33,6 +56,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/common/cryopods)
+"x" = (
+/obj/structure/chair/stool/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
 "A" = (
 /obj/machinery/cryopod{
 	dir = 8
@@ -67,6 +96,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/common/cryopods)
+"I" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
 "L" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -87,6 +121,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/common/cryopods)
+"P" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
 "U" = (
 /obj/machinery/cryopod{
 	dir = 8
@@ -99,6 +142,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/common/cryopods)
+"V" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/machinery/time_clock/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 
 (1,1,1) = {"
 N
@@ -107,13 +157,31 @@ C
 C
 N
 a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}
 (2,1,1) = {"
 N
 F
 p
-p
-C
+V
+N
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 "}
 (3,1,1) = {"
@@ -121,8 +189,17 @@ N
 v
 w
 L
-q
+j
 B
+i
+I
+I
+I
+x
+I
+I
+q
+P
 "}
 (4,1,1) = {"
 N
@@ -131,6 +208,15 @@ A
 U
 C
 a
+a
+a
+a
+a
+a
+a
+a
+e
+a
 "}
 (5,1,1) = {"
 N
@@ -138,5 +224,14 @@ C
 C
 C
 N
+a
+a
+a
+a
+a
+a
+a
+a
+a
 a
 "}

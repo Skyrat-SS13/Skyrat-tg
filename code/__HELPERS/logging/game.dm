@@ -37,3 +37,4 @@
 /proc/log_vote(text)
 	if (CONFIG_GET(flag/log_vote))
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
+

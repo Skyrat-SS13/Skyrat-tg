@@ -43,6 +43,7 @@
 /obj/item/hardened_spike
 	name = "biomass spike"
 	desc = "Hardened biomass, shaped into a spike. Very pointy!"
+	icon = 'icons/obj/weapons/thrown.dmi'
 	icon_state = "tonguespike"
 	force = 2
 	throwforce = 15 //15 + 2 (WEIGHT_CLASS_SMALL) * 4 (EMBEDDED_IMPACT_PAIN_MULTIPLIER) = i didnt do the math
@@ -55,7 +56,7 @@
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	sharpness = SHARP_POINTY
-	custom_materials = list(/datum/material/biomass = 500)
+	custom_materials = list(/datum/material/biomass = SMALL_MATERIAL_AMOUNT * 5)
 	/// What mob "fired" our tongue
 	var/datum/weakref/fired_by_ref
 	/// if we missed our target

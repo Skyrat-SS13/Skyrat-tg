@@ -9,6 +9,7 @@
 	active_cost = 0.5
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 	buying_category = NIFSOFT_CATEGORY_UTILITY
+	ui_icon = "coins"
 
 /datum/nifsoft/money_sense/activate()
 	. = ..()

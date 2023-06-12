@@ -121,21 +121,21 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/eggvib/process(delta_time)
+/obj/item/clothing/sextoy/eggvib/process(seconds_per_tick)
 	if(!toy_on)
 		return
 	var/mob/living/carbon/human/target = loc
 	if(!istype(target))
 		return
 	if(vibration_mode == "low")
-		target.adjust_arousal(0.5 * delta_time)
-		target.adjust_pleasure(0.5 * delta_time)
+		target.adjust_arousal(0.5 * seconds_per_tick)
+		target.adjust_pleasure(0.5 * seconds_per_tick)
 	if(vibration_mode == "medium")
-		target.adjust_arousal(0.6 * delta_time)
-		target.adjust_pleasure(0.6 * delta_time)
+		target.adjust_arousal(0.6 * seconds_per_tick)
+		target.adjust_pleasure(0.6 * seconds_per_tick)
 	if(vibration_mode == "high")
-		target.adjust_arousal(0.7 * delta_time)
-		target.adjust_pleasure(0.7 * delta_time)
+		target.adjust_arousal(0.7 * seconds_per_tick)
+		target.adjust_pleasure(0.7 * seconds_per_tick)
 
 /*
 *	SIGNALLER CONTROLLED EGG

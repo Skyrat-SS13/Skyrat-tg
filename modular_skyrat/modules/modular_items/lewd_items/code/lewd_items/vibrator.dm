@@ -89,23 +89,23 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/vibrator/process(delta_time)
+/obj/item/clothing/sextoy/vibrator/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!istype(user))
 		return
 	if(toy_on)
 		if(vibration_mode == "low" && user.arousal < 40) //prevent non-stop cumming from wearing this thing
-			user.adjust_arousal(0.7 * delta_time)
-			user.adjust_pleasure(0.7 * delta_time)
+			user.adjust_arousal(0.7 * seconds_per_tick)
+			user.adjust_pleasure(0.7 * seconds_per_tick)
 		if(vibration_mode == "medium" && user.arousal < 70)
-			user.adjust_arousal(1 * delta_time)
-			user.adjust_pleasure(1 * delta_time)
+			user.adjust_arousal(1 * seconds_per_tick)
+			user.adjust_pleasure(1 * seconds_per_tick)
 		if(vibration_mode == "hard") //no mercy
-			user.adjust_arousal(1.5 * delta_time)
-			user.adjust_pleasure(1.5 * delta_time)
+			user.adjust_arousal(1.5 * seconds_per_tick)
+			user.adjust_pleasure(1.5 * seconds_per_tick)
 	else if(!toy_on && user.arousal < 30)
-		user.adjust_arousal(0.5 * delta_time)
-		user.adjust_pleasure(0.5 * delta_time)
+		user.adjust_arousal(0.5 * seconds_per_tick)
+		user.adjust_pleasure(0.5 * seconds_per_tick)
 
 //SHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODE
 /obj/item/clothing/sextoy/vibrator/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)

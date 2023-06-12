@@ -14,6 +14,8 @@
 	program_desc = "The Poem of Communal Souls was the first commission the Altspace Coven ever took; a rare occasion for their involvement in NIFSoft development. This program was originally commissioned by a then-underground group of ravers as a sort of 'social contagion' for the purpose of spreading peace, love, unity, and respect. The software operates by allowing different users running it to ambiently share 'Verses' with each other, small portions of their unique nanomachine fields that carry user-set messages; sometimes actual poetry, short biographies, or simple hope to meet and bond with other NIF users. Each trade of nanomachine packets represents a physical memory of the user who traded it, some long-time 'Poets' surrounded with a dazzling rainbow of different past messages."
 	persistence = TRUE
 	purchase_price = 0 //It came free with your NIF.
+	buying_category = NIFSOFT_CATEGORY_FUN
+	ui_icon = "scroll"
 
 	///Is the NIFSoft transmitting data?
 	var/transmitting_data = TRUE

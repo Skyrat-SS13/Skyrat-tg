@@ -29,9 +29,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 		bit_flag |= spanning_direction
 	return bit_flag
 
-/obj/machinery/atmospherics/pipe/smart/Initialize(mapload)
-	return ..()
-
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 

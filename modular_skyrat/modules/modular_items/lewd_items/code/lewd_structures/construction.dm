@@ -36,11 +36,11 @@
 	var/obj/structure/chair/final_structure = new resulting_structure (get_turf(user))
 	if(current_color && istype(final_structure, /obj/structure/chair/milking_machine))
 		var/obj/structure/chair/milking_machine/new_milker = final_structure
+		new_milker.machine_color = current_color
+
 		if(current_color == "pink")
-			new_milker.machine_color = new_milker.machine_color_list[1]
 			new_milker.icon_state = "milking_pink_off"
-		if(current_color == "teal")
-			new_milker.machine_color = new_milker.machine_color_list[2]
+		else
 			new_milker.icon_state = "milking_teal_off"
 
 	if(istype(final_structure, /obj/structure/chair/shibari_stand))
