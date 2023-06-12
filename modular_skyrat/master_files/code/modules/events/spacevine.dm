@@ -266,7 +266,7 @@
 	quality = POSITIVE
 	severity = SEVERITY_TRIVIAL
 
-/datum/spacevine_mutation/transparency/on_grow(obj/structure/spacevine/vine_object)
+/datum/spacevine_mutation/transparency/on_birth(obj/structure/spacevine/vine_object)
 	vine_object.set_opacity(0)
 	vine_object.alpha = 125
 
