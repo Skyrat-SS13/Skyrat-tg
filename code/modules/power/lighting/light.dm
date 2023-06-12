@@ -178,8 +178,8 @@
 
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
-#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
+#define LIGHT_ON_DELAY_UPPER (2 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (0.25 SECONDS)
 //SKYRAT EDIT END
 
 // Area sensitivity is traditionally tied directly to power use, as an optimization
