@@ -378,16 +378,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * Returns: False if check_parent is TRUE and no catcher is present or can_join_soulcatcher(catcher) returns false, false if the room is unjoinable, true otherwise.
  */
 /mob/proc/can_join_soulcatcher_room(datum/soulcatcher_room/room, check_parent = TRUE, datum/component/soulcatcher/catcher)
-	if (check_parent)
-		if (!catcher)
-			catcher = room.master_soulcatcher.resolve()
-			if (!catcher)
-				return FALSE
-		if (!can_join_soulcatcher(catcher))
+	if(!room.joinable)
+		return FALSE
+	else if(!check_parent)
+	        return TRUE 
+	
+	if(!catcher)
+		catcher = room.master_soulcatcher.resolve()
+		if(!catcher)
+			return FALSE
+	
+	if(!can_join_soulcatcher(catcher))
 			return FALSE
 
-	if (!room.joinable)
-		return FALSE
 
 	return TRUE
 
