@@ -17,11 +17,8 @@
 /datum/dynamic_ruleset/roundstart/quiet/pre_execute(population)
 	. = ..()
 	var/num_candidates = rand(1, 4) * (scaled_times + 1)
-	message_admins("ZONENOTE: num_candidates [num_candidates], cand len [length(candidates)]")
 	for (var/i in 1 to num_candidates)
-		message_admins("ZONENOTE: num_candidates iter [i]")
 		if(length(candidates) <= 0)
-			message_admins("ZONENOTE: num_candidates iter break on [i]")
 			break
 		var/mob/candidate = pick_n_take(candidates)
 		assigned += candidate.mind

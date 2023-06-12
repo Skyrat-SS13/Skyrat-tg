@@ -482,17 +482,14 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 
 	for (var/datum/dynamic_ruleset/ruleset_type as anything in subtypesof(ruleset_subtype))
 		if (initial(ruleset_type.name) == "")
-			message_admins("ZONENOTE: ruleset [ruleset_type] failed no name")
 			continue
 
 		if (initial(ruleset_type.weight) == 0)
-			message_admins("ZONENOTE: ruleset [ruleset_type] failed no weight")
 			continue
 
 		var/ruleset = new ruleset_type
 		configure_ruleset(ruleset)
 		rulesets += ruleset
-		message_admins("ZONENOTE: ruleset [ruleset_type] sent")
 
 	return rulesets
 
@@ -525,7 +522,6 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	var/list/drafted_rules = list()
 	for (var/datum/dynamic_ruleset/roundstart/rule in roundstart_rules)
 		if (!rule.weight)
-			message_admins("ZONENOTE: ruleset [rule] failedv2 no weight")
 			continue
 		if (rule.acceptable(roundstart_pop_ready, threat_level) && round_start_budget >= rule.cost) // If we got the population and threat required
 			rule.candidates = candidates.Copy()
