@@ -445,6 +445,7 @@
 	name = "NX-867 gun case"
 	desc = "A briefcase that contains NX-867 Starfall SMG. Comes with batteries."
 	w_class = WEIGHT_CLASS_BULKY
+	
 /obj/item/gun/ballistic/automatic/laser_smg/nomag
 	spawnwithmagazine = FALSE
 
