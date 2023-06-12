@@ -56,6 +56,7 @@
 /datum/outfit/syndicateinfiltrator
 	name = "Syndicate Operative - Infiltrator"
 
+	implants = list(/obj/item/implant/explosive)
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves =  /obj/item/clothing/gloves/combat
