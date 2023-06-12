@@ -5,6 +5,7 @@
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
 	/// Associative list of (user -> target), where user is anyone that used this object on a target mob.
+	/// Merely a advanced form of boolean that considers the possibility of this item being dropped/handed to someone else - the actual value of an entry is irrelevant.
 	/// User is removed on ui close.
 	var/list/mob/interacting_mobs = list()
 	/// A list of mobs that currently have the "Do you want to join this room" pop-up. Used to prevent spam of the popup.
@@ -39,7 +40,7 @@
 	return ..()
 
 /obj/item/handheld_soulcatcher/attack(mob/living/target_mob, mob/living/user, params)
-	if(!target_mob)
+	if(!target_mob || !user)
 		return ..()
 
 	if(target_mob.GetComponent(/datum/component/previous_body))
@@ -50,9 +51,13 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
+	if (interacting_mobs[user])
+		to_chat(user, span_warning("You already have room selection open, close it or choose a room!"))
+		return FALSE
+
 	// dont worry about invalid states in regards to this tgui_list, it uses a custom ui_state that prevents abuse
 	interacting_mobs[user] = target_mob // prevents list spam by storing the fact we clicked on this mob
-	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, ui_state = new /datum/ui_state/handheld_soulcatcher_state(src))
+	var/datum/soulcatcher_room/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.soulcatcher_rooms, ui_state = new /datum/ui_state/handheld_soulcatcher_state(src), timeout = 30 SECONDS)
 	interacting_mobs -= user // tgui lists sleep - trust no variables after this point
 	if(!target_room)
 		return FALSE
@@ -88,11 +93,12 @@
 		playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 		visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
 
+	log_admin(admin_log)
+
 	if(!target_mob.GetComponent(/datum/component/previous_body))
 		return FALSE
 	linked_soulcatcher.scan_body(target_mob, user)
 
-	log_admin(admin_log)
 	return TRUE
 
 /**
