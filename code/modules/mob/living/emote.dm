@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain)
+	mob_type_blacklist_typecache = list(/mob/living/brain) //SKYRAT EDIT - OVERWIRTTEN BY `modular_skyrat\modules\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
 
 /datum/emote/living/blush
 	key = "blush"

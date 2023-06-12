@@ -16,10 +16,6 @@
 	desired_atom = /mob/living/simple_animal/pet/poppy
 
 // Structures
-/datum/area_spawn/secmed_locker
-	target_areas = list(/area/station/security/medical, /area/station/security/lockers)
-	desired_atom = /obj/structure/closet/secure_closet/security_medic
-
 /datum/area_spawn/blueshield_locker
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge, /area/station/command/corporate_dock, /area/station/command/meeting_room, /area/station/command/gateway)
 	desired_atom = /obj/structure/closet/secure_closet/blueshield
@@ -68,10 +64,6 @@
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
 // Job spawners
-/datum/area_spawn/secmed_landmark
-	target_areas = list(/area/station/security/medical, /area/station/security/brig)
-	desired_atom = /obj/effect/landmark/start/security_medic
-
 /datum/area_spawn/barber_landmark
 	target_areas = list(/area/station/service/salon, /area/station/hallway/secondary/service)
 	desired_atom = /obj/effect/landmark/start/barber

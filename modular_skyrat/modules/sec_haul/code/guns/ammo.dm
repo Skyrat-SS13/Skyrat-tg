@@ -107,7 +107,7 @@
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_MAT_REDEMPTION
-	var/multitype = TRUE
+	multitype = TRUE
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -138,13 +138,6 @@
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	if(length(bullet_cost))
-		var/temp_materials = custom_materials.Copy()
-		for (var/material in bullet_cost)
-			var/material_amount = bullet_cost[material]
-			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-			temp_materials[material] = material_amount
-		set_custom_materials(temp_materials)
 
 /obj/item/ammo_box/revolver
 	name = "speed loader"

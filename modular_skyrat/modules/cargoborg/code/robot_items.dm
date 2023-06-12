@@ -184,10 +184,16 @@
 	empty_contents()
 
 
-/obj/item/borg/hydraulic_clamp/pre_attack(atom/attacked_atom, mob/living/user, params)
-	if(!user.Adjacent(attacked_atom) || !COOLDOWN_FINISHED(src, clamp_cooldown) || in_use)
+/obj/item/borg/hydraulic_clamp/pre_attack(atom/attacked_atom, mob/living/silicon/robot/user, params)
+	if(!istype(user) || !user.Adjacent(attacked_atom) || !COOLDOWN_FINISHED(src, clamp_cooldown) || in_use)
 		return
 
+	// Not enough charge? Tough luck.
+	if(user?.cell.charge < charge_cost)
+		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]."))
+		return
+	
+	user.cell.use(charge_cost)
 	in_use = TRUE
 	COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 

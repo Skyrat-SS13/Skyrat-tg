@@ -156,7 +156,7 @@
 	var/turf/exposed_turf = get_turf(holder.my_atom)
 	if(!exposed_turf)
 		return
-	exposed_turf.atmos_spawn_air("n2o=[equilibrium.step_target_vol/2];TEMP=[holder.chem_temp]")
+	exposed_turf.atmos_spawn_air("[GAS_N2O]=[equilibrium.step_target_vol/2];[TURF_TEMPERATURE(holder.chem_temp)]")
 	clear_products(holder, equilibrium.step_target_vol)
 
 /datum/chemical_reaction/nitrous_oxide/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
@@ -948,5 +948,5 @@
 /datum/chemical_reaction/ant_slurry/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i in rand(1, created_volume) to created_volume)
-		new /mob/living/simple_animal/hostile/ant(location)
+		new /mob/living/basic/ant(location)
 	..()

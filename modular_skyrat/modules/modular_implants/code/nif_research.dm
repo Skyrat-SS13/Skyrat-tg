@@ -18,3 +18,13 @@
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
+/datum/design/soulcatcher_device
+	name = "Evoker-Type RSD"
+	desc = "An RSD instrument that lets the user pull the consciousness from a body and store it virtually."
+	id = "soulcatcher_device"
+	build_type = PROTOLATHE | AWAY_LATHE
+	build_path = /obj/item/handheld_soulcatcher
+	materials = list(/datum/material/iron = 6000, /datum/material/silver = 2000, /datum/material/bluespace = 2000)
+	category = list(RND_CATEGORY_EQUIPMENT)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
