@@ -187,7 +187,7 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Benefits",
-		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with vacuum! Additionally, your chassis is built with such strength as to \
+		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with a vacuum! Additionally, your chassis is built with such strength as to \
 		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry. On top of this, synthetics are unable to be wounded!"
 	))
 
