@@ -11,7 +11,7 @@
 	name = "Ammo Workbench: Lethal Munitions Datadisk"
 	id = "ammoworkbench_disk_lethal"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/disk/ammo_workbench/lethal
 	category = list(
 		RND_CATEGORY_INITIAL,

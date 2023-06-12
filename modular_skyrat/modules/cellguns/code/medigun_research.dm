@@ -60,7 +60,7 @@
 	desc = "Allows cell loaded Mediguns to use the Burn III functoinality"
 	id = "burn3medicell"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
 	reagents_list = list(/datum/reagent/medicine/oxandrolone = 10)
 	build_path = /obj/item/weaponcell/medical/burn/better/best
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
@@ -71,7 +71,7 @@
 	desc = "Allows cell loaded Mediguns to use the Toxin III functoinality"
 	id = "toxin3medicell"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
+	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5)
 	reagents_list = list(/datum/reagent/medicine/pen_acid = 10)
 	build_path = /obj/item/weaponcell/medical/toxin/better/best
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)

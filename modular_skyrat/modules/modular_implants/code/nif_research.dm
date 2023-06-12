@@ -4,7 +4,7 @@
 	id = "nifsoft_remover"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/nifsoft_remover
-	materials = list(/datum/material/iron = 200, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 5, /datum/material/uranium = 500)
+	materials = list(/datum/material/iron = 200, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 5, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
