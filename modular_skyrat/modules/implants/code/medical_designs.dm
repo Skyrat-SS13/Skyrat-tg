@@ -69,7 +69,7 @@
 	id = "ci-antisleep"
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 60
-	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 1000, /datum/material/gold = 500)
+	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold = 500)
 	build_path = /obj/item/organ/internal/cyberimp/brain/anti_sleep
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
@@ -82,7 +82,7 @@
 	id = "ci-scanner"
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 40
-	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/silver = 2000, /datum/material/gold = 1500)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/glass = 2500, /datum/material/silver = 2000, /datum/material/gold = 1500)
 	build_path = /obj/item/organ/internal/cyberimp/chest/scanner
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_HEALTH

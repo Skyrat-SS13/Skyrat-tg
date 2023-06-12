@@ -6,7 +6,7 @@
 	name = "7.62 Bullet"
 	id = "a762"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/a762
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -14,7 +14,7 @@
 	name = "7.62 Rubber Bullet"
 	id = "a762_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/a762/rubber
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -60,7 +60,7 @@
 	name = ".460 Rowland magnum"
 	id = "b460"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1500)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/b460
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 

@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
-	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT) //We will be using this to prevent refund scamming mats
 
 /obj/item/ammo_casing/shotgun/hp
 	name = "hollow point slug"
@@ -21,7 +21,7 @@
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/titanium=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
@@ -33,7 +33,7 @@
 	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/diamond=HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
@@ -64,7 +64,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 7
 	variance = 20
-	custom_materials = list(/datum/material/iron=1000)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT)
 	harmful = FALSE
 
 /obj/item/ammo_casing/shotgun/magnum
@@ -101,7 +101,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
-	custom_materials = list(/datum/material/iron=500,/datum/material/titanium=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
@@ -117,7 +117,7 @@
 	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/silver=500,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
@@ -147,7 +147,7 @@
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/uranium=HALF_SHEET_MATERIAL_AMOUNT)
 	pellets = 5
 	variance = 30
 	harmful = FALSE
@@ -184,7 +184,7 @@
 	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
 	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	pellets = 5
 	variance = 20
 

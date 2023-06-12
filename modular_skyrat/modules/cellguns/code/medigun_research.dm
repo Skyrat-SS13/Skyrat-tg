@@ -168,7 +168,7 @@
 	desc = "Upgrades the CWM-479 to have a faster charger time and larger cell"
 	id = "medigunspeed"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/uranium = 5000, /datum/material/glass = 4000, /datum/material/plasma = 2000, /datum/material/diamond = 500)
+	materials = list(/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2, /datum/material/plasma = SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/device/custom_kit/medigun_fastcharge
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
