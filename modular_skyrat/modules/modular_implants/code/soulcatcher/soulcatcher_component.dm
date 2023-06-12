@@ -92,7 +92,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
-	if (soulcatcher_owner.stat == DEAD || !soulcatcher_owner.mind)
+	if(soulcatcher_owner.stat == DEAD || !soulcatcher_owner.mind)
 		return FALSE
 
 	return TRUE
@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if (!can_join_soulcatcher(soulcatcher))
+		if(!can_join_soulcatcher(soulcatcher))
 			continue
 
 		joinable_soulcatchers += soulcatcher
@@ -325,7 +325,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		// you cannot trust the state of any variable after a tgui_input_list, meaning both room AND soulcatcher
 		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join, ui_state = GLOB.observer_state)
 		// we check both parent and room to see if either will let us in since. who knows maybe the parent closed?
-		if (!can_join_soulcatcher_room(room_to_join, check_parent = TRUE))
+		if(!can_join_soulcatcher_room(room_to_join, check_parent = TRUE))
 			to_chat(src, span_warning("This room can no longer be joined!"))
 			return FALSE
 
@@ -362,9 +362,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  */
 /mob/dead/observer/can_join_soulcatcher(datum/component/soulcatcher/soulcatcher)
 	. = ..()
-
 	if (!.)
-		return
+		return FALSE
 
 	if (!soulcatcher.ghost_joinable)
 		return FALSE
@@ -407,11 +406,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/component/soulcatcher/proc/get_open_rooms(mob/user)
 	var/list/datum/soulcatcher_room/rooms = list()
 
-	if (!user.can_join_soulcatcher(src))
+	if(!user.can_join_soulcatcher(src))
 		return rooms
 
-	for (var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
-		if (user.can_join_soulcatcher_room(room, FALSE))
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		if(user.can_join_soulcatcher_room(room, FALSE))
 			rooms += room
 			continue
 

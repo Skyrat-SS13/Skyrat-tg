@@ -15,15 +15,14 @@
 #define SOULCATCHER_MAX_CATCHING_DISTANCE 7
 
 /datum/ui_state/handheld_soulcatcher_state/can_use_topic(src_object, mob/living/user)
-
-	if (QDELETED(our_item))
+	if(QDELETED(our_item))
 		return UI_CLOSE
 
 	var/mob/target_mob = our_item.interacting_mobs[user]
-	if (!target_mob)
+	if(!target_mob)
 		return UI_CLOSE
 
-	if (!istype(user))
+	if(!istype(user))
 		return UI_CLOSE
 
 	if(user.stat != CONSCIOUS)
@@ -31,19 +30,19 @@
 
 	var/is_holding = user.is_holding(our_item)
 
-	if (!is_holding)
-		if (user.z != our_item.z)
+	if(!is_holding)
+		if(user.z != our_item.z)
 			return UI_CLOSE
 
 	var/dist_from_src_to_target = get_dist(get_turf(our_item), get_turf(target_mob))
-	if (dist_from_src_to_target > SOULCATCHER_MAX_CATCHING_DISTANCE)
+	if(dist_from_src_to_target > SOULCATCHER_MAX_CATCHING_DISTANCE)
 		to_chat(user, span_warning("[target_mob] left range of [our_item]!"))
 		return UI_CLOSE
 
 	if(HAS_TRAIT(src, TRAIT_UI_BLOCKED) || user.incapacitated())
 		return UI_DISABLED
 
-	if (is_holding)
+	if(is_holding)
 		return UI_INTERACTIVE
 	else
 		return user.shared_living_ui_distance(our_item)
