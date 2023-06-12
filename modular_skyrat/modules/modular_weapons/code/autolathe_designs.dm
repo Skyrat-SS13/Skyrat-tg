@@ -24,7 +24,7 @@
 	name = "4.6x30mm Bullet"
 	id = "c46x30mm"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c46x30mm
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -32,7 +32,7 @@
 	name = "4.6x30mm Rubber Bullet"
 	id = "c46x30mm_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c46x30mm/rubber
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -42,7 +42,7 @@
 	name = ".45 Bullet"
 	id = "c45_lethal"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c45
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -50,7 +50,7 @@
 	name = ".45 Bouncy Rubber Ball"
 	id = "c45_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c45/rubber
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -69,7 +69,7 @@
 	name = "10mm Auto bullet"
 	id = "c10mm_lethal"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c10mm
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
@@ -77,6 +77,6 @@
 	name = "10mm Auto rubber bullet"
 	id = "c10mm_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)

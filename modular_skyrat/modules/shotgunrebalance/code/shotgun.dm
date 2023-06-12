@@ -117,7 +117,7 @@
 	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/silver=500,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/silver=HALF_SHEET_MATERIAL_AMOUNT,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'

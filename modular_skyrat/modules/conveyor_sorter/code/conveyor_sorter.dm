@@ -185,8 +185,8 @@
 	materials = list(
 		/datum/material/iron = 500,
 		/datum/material/plastic = 500,
-		/datum/material/gold = 500,
-		/datum/material/bluespace = 500,
+		/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 5,
 	)
 
 

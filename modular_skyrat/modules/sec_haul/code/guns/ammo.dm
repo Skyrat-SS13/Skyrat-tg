@@ -85,7 +85,7 @@
 	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
+	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 5, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
