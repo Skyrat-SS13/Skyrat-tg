@@ -212,6 +212,14 @@ function check_tag_and_replace($payload, $title_tag, $label, &$array_to_add_labe
 }
 
 function set_labels($payload, $labels, $remove) {
+<<<<<<< HEAD
+=======
+	global $repoAutoTaggerWhitelist;
+	if(!in_array($payload['repository']['name'], $repoAutoTaggerWhitelist)) {
+		return;
+	}
+
+>>>>>>> 98ebf926891 (Fix Pull Request Auto-Tagging (#76010))
 	$existing = get_labels($payload);
 	$tags = array();
 
