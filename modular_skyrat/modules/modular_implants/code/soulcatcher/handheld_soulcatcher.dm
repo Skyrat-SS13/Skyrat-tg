@@ -4,8 +4,6 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
-	/// What soulcatcher datum is associated with this item?
-	var/datum/component/soulcatcher/linked_soulcatcher
 	/// Associative list of (user -> target), where user is anyone that used this object on a target mob.
 	/// User is removed on ui close.
 	var/list/mob/interacting_mobs = list()
