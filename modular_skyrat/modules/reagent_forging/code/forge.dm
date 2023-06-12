@@ -409,6 +409,7 @@
 			if(!is_species(user, /datum/species/lizard/ashwalker) && !is_species(user, /datum/species/human/felinid/primitive))
 				to_chat(user, span_warning("It is impossible to further improve the forge!"))
 				return
+
 			if(!forced)
 				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
 			create_reagent_forge()
