@@ -29,9 +29,6 @@
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
 
-	/// What action is the mob using when they leave the soulcatcher?
-	var/datum/action/innate/leave_soulcatcher/leave_action
-
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
 	if(!outside_sight)
@@ -40,7 +37,7 @@
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
-	leave_action = new
+	var/datum/action/innate/leave_soulcatcher/leave_action = new
 	leave_action.Grant(src)
 
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
@@ -138,10 +135,6 @@
 
 /mob/living/soulcatcher_soul/Destroy()
 	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
-	if(leave_action)
-		leave_action.Remove()
-		qdel(leave_action)
-
 	if(current_room)
 		var/datum/soulcatcher_room/room = current_room.resolve()
 		if(room)
