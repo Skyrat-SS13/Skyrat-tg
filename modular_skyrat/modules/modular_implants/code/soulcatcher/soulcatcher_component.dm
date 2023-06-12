@@ -368,6 +368,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if (!soulcatcher.ghost_joinable)
 		return FALSE
 
+	// super returns true by default, we dont need to specify we're returning anything
+
+
 /**
  * Args:
  * datum/soulcatcher_room/room - The room we are checking.
