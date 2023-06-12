@@ -192,6 +192,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
 	to_chat(new_soul, span_notice("While inside of a soulcatcher, you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
 	to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
+
 	var/atom/parent_atom = parent_object
 	if(istype(parent_atom))
 		var/turf/soulcatcher_turf = get_turf(parent_soulcatcher.parent)
