@@ -4,8 +4,6 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	/// What soulcatcher datum is associated with this item?
 	var/datum/component/soulcatcher/linked_soulcatcher
 	/// Associative list of (user -> target), where user is anyone that used this object on a target mob.
@@ -14,6 +12,12 @@
 	/// A list of mobs that currently have the "Do you want to join this room" pop-up. Used to prevent spam of the popup.
 	/// Target removed on popup close or popup holder destroy.
 	var/list/mob/confirming_entry = list()
+	worn_icon_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	slot_flags = ITEM_SLOT_BELT
+	/// What soulcatcher datum is associated with this item?
+	var/datum/component/soulcatcher/linked_soulcatcher
 
 /obj/item/handheld_soulcatcher/attack_self(mob/user, modifiers)
 	linked_soulcatcher.ui_interact(user)
@@ -147,3 +151,4 @@
 
 	confirming_entry -= soul
 	UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
+

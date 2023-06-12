@@ -5,9 +5,8 @@
 		ui = new(usr, src, "Soulcatcher", name)
 		ui.open()
 
-/datum/component/soulcatcher/operating/ui_state(mob/user)
+/datum/component/soulcatcher/nifsoft/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
-
 
 /datum/component/soulcatcher/ui_data(mob/user)
 	var/list/data = list()
@@ -129,9 +128,10 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/human_user = usr
 				var/datum/nifsoft/soulcatcher/soulcatcher_nifsoft = human_user.find_nifsoft(/datum/nifsoft/soulcatcher)
-				if(soulcatcher_nifsoft && (parent != soulcatcher_nifsoft))
-					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher
-					available_rooms.Add(nifsoft_soulcatcher.soulcatcher_rooms)
+				if(soulcatcher_nifsoft && (parent != soulcatcher_nifsoft.parent_nif.resolve()))
+					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
+					if(istype(nifsoft_soulcatcher))
+						available_rooms.Add(nifsoft_soulcatcher.soulcatcher_rooms)
 
 				for(var/obj/item/held_item in human_user.held_items)
 					if(parent == held_item)

@@ -13,7 +13,7 @@
 	if(reebe_began_spawning)
 		return
 
-	GLOB.reebe_began_spawning = TRUE
+	reebe_began_spawning = TRUE
 
 	var/turf/atom_turf = get_turf(target_atom) // Protection in case this gets deleted
 	var/area/atom_area = get_area(target_atom)
@@ -118,6 +118,13 @@
 	name = "Clock Cultist"
 	outfit = /datum/outfit/clock
 
+/obj/effect/mob_spawn/corpse/human/clock_cultist/armored
+	name = "Armored Clock Cultist"
+	outfit = /datum/outfit/clock/armor
+
+/obj/effect/mob_spawn/corpse/human/clock_cultist/support
+	name = "Support Clock Cultist"
+	outfit = /datum/outfit/clock/support
 
 /obj/effect/landmark/late_cog_portals
 	name = "late cog portal spawn"

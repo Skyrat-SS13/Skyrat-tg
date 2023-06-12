@@ -1,7 +1,6 @@
 /obj/item/disk/ammo_workbench
 	name = "Armadyne Munitions blueprint datadisk"
 	desc = "You shouldn't be seeing this!"
-	var/list/loaded_ammo_types
 
 /obj/item/disk/ammo_workbench/lethal
 	name = "lethal munitions datadisk"

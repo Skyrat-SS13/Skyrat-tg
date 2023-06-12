@@ -134,8 +134,8 @@
 						var/datum/reagents/tempr = our_turf.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
 						tempr.trans_to(src, tempr.total_volume, methods = INGEST)
 						qdel(tempr)
-						visible_message("<span class='warning'>[src] chokes on water!</span>", \
-									"<span class='userdanger'>You're choking on water!</span>")
+						visible_message("<span class='warning'>[src] chokes on [our_turf.liquids.reagents_to_text()]!</span>", \
+									"<span class='userdanger'>You're choking on [our_turf.liquids.reagents_to_text()]!</span>")
 					return FALSE
 				if(isopenturf(our_turf))
 					var/turf/open/open_turf = our_turf

@@ -24,6 +24,9 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 
 /obj/machinery/computer/department_orders/Initialize(mapload, obj/item/circuitboard/board)
 	. = ..()
+	// All maps should have ONLY ONE of each order console roundstart
+	REGISTER_REQUIRED_MAP_ITEM(1, 1)
+
 	if(mapload) //check for mapping errors
 		for(var/delivery_area_type in department_delivery_areas)
 			if(GLOB.areas_by_type[delivery_area_type])
@@ -114,7 +117,8 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 		return
 
 	. = TRUE
-	var/id = text2path(params["id"])
+	var/id = params["id"]
+	id = text2path(id) || id
 	var/datum/supply_pack/pack = SSshuttle.supply_packs[id]
 	if(!pack)
 		say("Something went wrong!")

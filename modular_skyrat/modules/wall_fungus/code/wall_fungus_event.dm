@@ -4,6 +4,7 @@
 	category = EVENT_CATEGORY_ENGINEERING
 	max_occurrences = 2
 	earliest_start = 30 MINUTES
+	description = "A wall fungus will infest a random wall on the station, eating away at it. If left unchecked, it will spread to other walls and eventually destroy the station."
 
 /datum/round_event/wall_fungus/announce(fake)
 	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_FUNGI)

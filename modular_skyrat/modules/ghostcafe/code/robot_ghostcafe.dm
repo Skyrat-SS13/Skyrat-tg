@@ -2,6 +2,7 @@
 	lawupdate = FALSE
 	scrambledcodes = TRUE // Roleplay borgs aren't real
 	set_model = /obj/item/robot_model/roleplay
+	radio = null
 
 /mob/living/silicon/robot/model/roleplay/Initialize(mapload)
 	. = ..()

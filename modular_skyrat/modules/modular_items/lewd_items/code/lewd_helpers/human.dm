@@ -12,12 +12,6 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-// For tracking arousal and fluid regen.
-/mob/living/carbon/human/Initialize(mapload)
-	. = ..()
-	if(!istype(src, /mob/living/carbon/human/species/monkey))
-		apply_status_effect(/datum/status_effect/aroused)
-		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
 /*
 *	This code needed to determine if the human is naked in that part of body or not
@@ -257,9 +251,8 @@
 	if(!vagina_overlay)
 		vagina_overlay = sex_toy?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		vagina_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		vagina_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(vagina_overlay) // every day we stray further and further from god
 	overlays_standing[VAGINA_LAYER] = vagina_overlay
 
 	apply_overlay(VAGINA_LAYER)
@@ -281,9 +274,9 @@
 	if(!anus_overlay)
 		anus_overlay = sex_toy?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		anus_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		anus_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+
+	chest_part?.worn_uniform_offset?.apply_offset(anus_overlay) // and i keep on asking myself... why? why do we do this?
 	overlays_standing[ANUS_LAYER] = anus_overlay
 
 	apply_overlay(ANUS_LAYER)
@@ -305,9 +298,9 @@
 	if(!nipples_overlay)
 		nipples_overlay = sex_toy?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		nipples_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		nipples_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(nipples_overlay) // then i realised something, something horrific
+
 	overlays_standing[NIPPLES_LAYER] = nipples_overlay
 
 	apply_overlay(NIPPLES_LAYER)
@@ -329,9 +322,9 @@
 	if(!penis_overlay)
 		penis_overlay = sex_toy?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
-	if(OFFSET_UNIFORM in dna.species.offset_features)
-		penis_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
-		penis_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
+	var/obj/item/bodypart/chest/chest_part = get_bodypart(BODY_ZONE_CHEST)
+	chest_part?.worn_uniform_offset?.apply_offset(penis_overlay) // we can never escape, we are forever governed by sex(two)
+
 	overlays_standing[PENIS_LAYER] = penis_overlay
 
 	apply_overlay(PENIS_LAYER)

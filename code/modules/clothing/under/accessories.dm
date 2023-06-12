@@ -134,7 +134,7 @@
 	name = "bronze medal"
 	desc = "A bronze medal."
 	icon_state = "bronze"
-	custom_materials = list(/datum/material/iron=1000)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT)
 	resistance_flags = FIRE_PROOF
 	var/medaltype = "medal" //Sprite used for medalbox
 	var/commended = FALSE
@@ -203,7 +203,7 @@
 	desc = "A silver medal."
 	icon_state = "silver"
 	medaltype = "medal-silver"
-	custom_materials = list(/datum/material/silver=1000)
+	custom_materials = list(/datum/material/silver=HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/clothing/accessory/medal/silver/valor
 	name = "medal of valor"
@@ -226,7 +226,7 @@
 	desc = "A prestigious golden medal."
 	icon_state = "gold"
 	medaltype = "medal-gold"
-	custom_materials = list(/datum/material/gold=1000)
+	custom_materials = list(/datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/clothing/accessory/medal/med_medal
 	name = "exemplary performance medal"
@@ -253,7 +253,7 @@
 	icon_state = "plasma"
 	medaltype = "medal-plasma"
 	armor_type = /datum/armor/medal_plasma
-	custom_materials = list(/datum/material/plasma=1000)
+	custom_materials = list(/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 
 /datum/armor/medal_plasma
 	fire = -10
@@ -266,7 +266,7 @@
 	return exposed_temperature > 300
 
 /obj/item/clothing/accessory/medal/plasma/atmos_expose(datum/gas_mixture/air, exposed_temperature)
-	atmos_spawn_air("plasma=20;TEMP=[exposed_temperature]")
+	atmos_spawn_air("[GAS_PLASMA]=20;[TURF_TEMPERATURE(exposed_temperature)]")
 	visible_message(span_danger("\The [src] bursts into flame!"), span_userdanger("Your [src] bursts into flame!"))
 	qdel(src)
 
@@ -493,7 +493,7 @@
 	SIGNAL_HANDLER
 	examine_list += "The dogtag has a listing of allergies : [display]"
 
-
+/* MODULAR SKYRAT - OVERRIDDEN IN (\modular_skyrat\modules\customization\modules\clothing\under\accessories.dm)
 /// Reskins for the pride pin accessory, mapped by display name to icon state
 GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Rainbow Pride" = "pride",
@@ -505,7 +505,7 @@ GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Intersex Pride" = "pride_intersex",
 	"Lesbian Pride" = "pride_lesbian",
 ))
-
+*/
 /obj/item/clothing/accessory/pride
 	name = "pride pin"
 	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your pride, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"

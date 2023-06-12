@@ -165,6 +165,8 @@
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
+	QDEL_LIST(loaded_nifsofts)
+
 ///Installs preinstalled NIFSofts
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_preinstalled_nifsofts()
 	if(!preinstalled_nifsofts)
@@ -325,7 +327,7 @@
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
-	loaded_nifsoft.parent_nif = src
+	loaded_nifsoft.parent_nif = WEAKREF(src)
 	loaded_nifsoft.linked_mob = linked_mob
 	rewards_points += (loaded_nifsoft.rewards_points_rate * loaded_nifsoft.purchase_price)
 

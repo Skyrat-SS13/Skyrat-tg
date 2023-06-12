@@ -114,7 +114,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_out_job = current_trim.job
-	clocked_out_job.current_positions--
+	clocked_out_job.current_positions = max(0, clocked_out_job.current_positions - 1)
 
 	radio.talk_into(src, "[inserted_id.registered_name], [current_assignment] has gone off-duty.", announcement_channel)
 	update_static_data_for_all_viewers()

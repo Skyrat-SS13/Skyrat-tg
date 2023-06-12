@@ -269,7 +269,7 @@
 	if(!isliving(AM))
 		return
 	var/mob/living/L = AM
-	if(!(MOLD_FACTION in L.faction))
+	if(!(FACTION_MOLD in L.faction))
 		INVOKE_ASYNC(src, PROC_REF(discharge))
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
@@ -339,7 +339,7 @@
 #undef MAX_MOLD_FOAM_RANGE
 
 /obj/structure/biohazard_blob/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
-	if(MOLD_FACTION in user.faction)
+	if(FACTION_MOLD in user.faction)
 		return ..()
 	discharge()
 	. = ..()
@@ -470,6 +470,4 @@
 			monster_types = list(/mob/living/basic/giant_spider)
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
-	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
-
-	/datum/component/spawner
+	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, max_spawns, list(FACTION_MOLD), "emerges from")

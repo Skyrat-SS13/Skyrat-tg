@@ -26,7 +26,7 @@ When the core dies, everything slowly decays away.
 
 |File Location|Defines|
 |-------------|-------|
-|`modular_skyrat/modules/biohazard_blob/code/_biohazard_blob_defines.dm`|`BIO_BLOB_TYPE_FUNGUS`<br>`BIO_BLOB_TYPE_FIRE`<br>`BIO_BLOB_TYPE_EMP`<br>`BIO_BLOB_TYPE_TOXIC`<br>`ALL_BIO_BLOB_TYPES`<br>`MOLD_FACTION`|
+|`modular_skyrat/modules/biohazard_blob/code/_biohazard_blob_defines.dm`|`BIO_BLOB_TYPE_FUNGUS`<br>`BIO_BLOB_TYPE_FIRE`<br>`BIO_BLOB_TYPE_EMP`<br>`BIO_BLOB_TYPE_TOXIC`<br>`ALL_BIO_BLOB_TYPES`<br>`FACTION_MOLD`|
 
 ### Master file additions
 

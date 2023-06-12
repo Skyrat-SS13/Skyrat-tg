@@ -3,8 +3,8 @@
 /obj/item/clothing/head/helmet/sec/peacekeeper
 	name = "peacekeeper helmet"
 	desc = "A standard issue combat helmet for peacekeeper operators. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "peacekeeper_helmet"
 	base_icon_state = "peacekeeper_helmet"
 	can_toggle = FALSE
@@ -100,20 +100,19 @@
 /obj/item/clothing/suit/armor/vest/peacekeeper
 	name = "peacekeeper armor vest"
 	desc = "A standard issue peacekeeper armor vest, versatile, lightweight, and most importantly, cheap."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "peacekeeper_armor"
-	worn_icon_state = "peacekeeper"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
+	icon_state = "peacekeeper_white"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	name = "black peacekeeper vest"
 	icon_state = "peacekeeper_black"
-	worn_icon_state = "peacekeeper_black"
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 	name = "high vis armored vest"
 	desc = "Oi bruv, you got a loicence for that?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hazardbg"
 	worn_icon_state = "hazardbg"
 
@@ -121,20 +120,11 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "zipper")
 
-/obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
-	name = "armored peacekeeper trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "peacekeeper_trench_hos"
-	inhand_icon_state = "hostrench"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
 	name = "warden's peacekeeper jacket"
-	desc = "A white jacket with blue  rank pips and body armor strapped on top."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	desc = "A deep blue jacket with some simple body armor strapped over the top."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "peacekeeper_trench_warden"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -257,6 +247,7 @@
 		/obj/item/holosign_creator/security
 		))
 
+
 //BOOTS
 /obj/item/clothing/shoes/jackboots/peacekeeper
 	name = "peacekeeper boots"
@@ -264,9 +255,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "peacekeeper"
-
-/obj/item/clothing/suit/armor/riot/peacekeeper
-	name = "peacekeeper riotsuit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "peacekeeper_riot"

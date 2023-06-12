@@ -43,7 +43,7 @@
 	icon_state = "circuit_map"
 	build_path = /obj/machinery/ammo_workbench
 	req_components = list(
-		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
 		/datum/stock_part/micro_laser = 2
 	)
@@ -98,7 +98,7 @@
 		for(var/mat in mat_container.materials)
 			var/datum/material/M = mat
 			var/amount = mat_container.materials[M]
-			var/sheet_amount = amount / MINERAL_MATERIAL_AMOUNT
+			var/sheet_amount = amount / SHEET_MATERIAL_AMOUNT
 			var/ref = REF(M)
 			data["materials"] += list(list("name" = M.name, "id" = ref, "amount" = sheet_amount))
 
@@ -121,14 +121,12 @@
 	var/ammo_caliber = initial(ammo_type.caliber)
 	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
 
-	if("multitype" in loaded_magazine.vars)
-		if(loaded_magazine:multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
-			ammo_type = ammo_parent_type
+	if(istype(loaded_magazine, /obj/item/ammo_box/magazine/multi_sprite) && ammo_caliber == initial(ammo_parent_type.caliber) && !isnull(ammo_caliber))
+		ammo_type = ammo_parent_type
 
 	allowed_ammo_types = typesof(ammo_type)
 
-	for(var/casing as anything in allowed_ammo_types)
-		var/obj/item/ammo_casing/our_casing = casing
+	for(var/obj/item/ammo_casing/our_casing as anything in allowed_ammo_types) // this is a list of TYPES, not INSTANCES
 		if(!adminbus)
 			if(initial(our_casing.harmful) && !allowed_harmful)
 				continue
@@ -172,7 +170,7 @@
 			if(!amount)
 				return
 
-			var/stored_amount = CEILING(amount / MINERAL_MATERIAL_AMOUNT, 0.1)
+			var/stored_amount = CEILING(amount / SHEET_MATERIAL_AMOUNT, 0.1)
 
 			if(!stored_amount)
 				return
@@ -365,10 +363,10 @@
 	time_per_round = clamp(time_efficiency, 1, 20)
 
 	var/efficiency = 1.8
-	for(var/datum/stock_part/manipulator/new_manipulator in component_parts)
-		efficiency -= new_manipulator.tier * 0.2
+	for(var/datum/stock_part/servo/new_servo in component_parts)
+		efficiency -= new_servo.tier * 0.2
 
-	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of manipulator efficiency
+	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of servo efficiency
 
 	var/mat_capacity = 0
 	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
@@ -384,7 +382,7 @@
 
 /obj/machinery/ammo_workbench/proc/AfterMaterialInsert(obj/item/item_inserted, id_inserted, amount_inserted)
 	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
-		use_power(MINERAL_MATERIAL_AMOUNT / 10)
+		use_power(SHEET_MATERIAL_AMOUNT / 10)
 	else if(item_inserted.has_material_type(/datum/material/glass))
 		flick("autolathe_r", src)//plays glass insertion animation by default otherwise
 	else
