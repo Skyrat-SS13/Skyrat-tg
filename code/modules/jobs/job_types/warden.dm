@@ -56,8 +56,13 @@
 	belt = /obj/item/modular_computer/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/hats/warden //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/hats/warden/red
+=======
+	gloves = /obj/item/clothing/gloves/security
+	head = /obj/item/clothing/head/hats/warden/red
+>>>>>>> bcc649462a9 (Pink Security (#75946))
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
