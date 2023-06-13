@@ -458,3 +458,65 @@
       repeated consonants
   larentoun:
   - bugfix: Remove Lewd Items verb is config dependant
+2023-06-13:
+  GoldenAlpharex:
+  - rscdel: Disabled the earthquakes, so your scenes don't get randomly broken up
+      because RNGesus felt like screwing your whole round over in an unpreventable
+      and unpredictable manner.
+  Gyran:
+  - balance: reintroduce orderable dragnet crates for security
+  Hatterhat:
+  - balance: The ammo workbench can now be hacked to unlock basic lethals.
+  - balance: The ammo workbench now requires an advanced disk (replaces the old lethal
+      disk) for advanced ammotypes, e.g. incendiary/armor-piercing/hollow-point.
+  - balance: Armor-piercing rounds from the ammobench now require titanium. Incendiary
+      rounds from the ammobench require plasma. Hollow-point rounds still only require
+      iron.
+  - balance: In return for all this, upgraded stock parts now actually matter much
+      more in regards to material consumption efficiency and time efficiency, and
+      the base performance of ammo benches have been mildly improved.
+  - rscadd: There's now 7.62 (.244 Acia) armor-piercing and .45 (.460 Ceres) hollow-point
+      rounds from advanced ammo benches.
+  - bugfix: .244 Acia surplus stripper clips can now be used to hold any .244 Acia
+      from an ammo bench.
+  - qol: Ammo benches now show you what materials are consumed per cartridge as a
+      tooltip.
+  Skyrat:
+  - rscdel: Cursed trait no longer available
+  - rscdel: Vending machines no longer flatten your sprite
+  - rscdel: Vending machines won't RR you via gibbing/destroying your head
+  SkyratBot:
+  - bugfix: light replacer accepts glass sheets & light tubes when you attack them
+      with a light replacer
+  - bugfix: only glass shards can fill the light replacer not other shard types
+  - qol: glass sheet's & shards inside storage items like backpacks are also consumed
+      when you attack the light replacer with it
+  - qol: feedback messages when inserting lights, glass sheet's, shards into the light
+      replacer are more descriptive and displayed for all insert event's
+  - qol: blue beam for bluespace light replacer last's just 0.5 seconds so it doesn't
+      look awkward
+  - refactor: renamed `add_shards()` to just `add_shard()` for adding 1 shard at a
+      time
+  - refactor: removed redundant` Initialize()` proc from `obj/item/light`
+  - refactor: VV editing var's works properly
+  - balance: In general, mineral recipe costs for items in larger amounts has been
+      decreased by 2x.
+  - balance: One sheet now contains a total of 100 units of material, down from 2000.
+      Proportionally the costs of items should remain the same, except for the smaller
+      costs of certain recipes.
+  - code_imp: Added a python script to the tools folder, letting you see a mineral
+      breakdown of one/several rounds using silo logs.
+  axietheaxolotl / viro:
+  - image: removes dogborg walking animations
+  - image: brand new arachne sprites!
+  - code_imp: old arachne renamed to slipper
+  jjpark-kb:
+  - rscdel: removed the red sec skirt from labor camp
+  - rscdel: removed cursed spring functionality
+  - bugfix: prevents certain organs from dropping on gib
+  nikothedude:
+  - spellcheck: Nanotrasen replaced the faulty measuring devices for certain bodyparts.
+      Sorry to all the crew who thought they were actually 10 inches
+  - rscadd: Synths now have their mechanical quirks listed in their species page
+  - rscadd: Slimepeople now have their alter form action documented in their species
+      page
