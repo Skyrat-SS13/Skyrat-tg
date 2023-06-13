@@ -579,12 +579,16 @@
 */
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	icon_state = "hos_parade_male_blue"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
 	icon_state = "hos_parade_fem_blue"
 
 /obj/item/clothing/under/rank/security/head_of_security/alt
 	icon_state = "hosalt_blue"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	icon_state = "hosalt_skirt_blue"
