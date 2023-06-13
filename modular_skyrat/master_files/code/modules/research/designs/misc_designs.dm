@@ -39,7 +39,7 @@
 	desc = "All-in-one kit containing the parts to create a portable anesthetic stand, tank not included."
 	id = "anesthetic_machine"
 	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 10000, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2)
 	build_path = /obj/item/anesthetic_machine_kit
 	category = list(
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
