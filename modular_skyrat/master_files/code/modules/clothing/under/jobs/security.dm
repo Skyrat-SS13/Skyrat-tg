@@ -2,7 +2,7 @@
 /*
 /obj/item/clothing/under/rank/security
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/security_digi.dmi' // Anything that was in the security.dmi, should be in the security_digi.dmi
-
+*/
 /obj/item/clothing/under/rank/security/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
@@ -12,7 +12,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 //DEBATE MOVING *ALL* SECURITY STUFF HERE? Even overrides, at least as a like, sub-file?
-*/
 /*
 *	SECURITY OFFICER
 */
