@@ -15,5 +15,4 @@
 	nightshift_light_color = null
 
 /obj/machinery/light/warm
-	bulb_colour = LIGHT_COLOR_TUNGSTEN
 	nightshift_light_color = null
