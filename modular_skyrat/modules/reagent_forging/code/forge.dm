@@ -406,12 +406,12 @@
 			forge_level = FORGE_LEVEL_MASTER
 
 		if(SKILL_LEVEL_LEGENDARY)
-			if(!is_species(user, /datum/species/lizard/ashwalker) && !is_species(user, /datum/species/human/felinid/primitive))
-				to_chat(user, span_warning("It is impossible to further improve the forge!"))
-				return
 			if(!forced)
-				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
-			create_reagent_forge()
+				if(is_species(user, /datum/species/lizard/ashwalker) || is_species(user, /datum/species/human/felinid/primitive))
+					to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
+					create_reagent_forge()
+				if(forge_level == FORGE_LEVEL_MASTER)
+					to_chat(user, span_warning("It is impossible to further improve the forge!"))
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
@@ -902,8 +902,27 @@
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
-/obj/structure/reagent_forge/ready
+/obj/structure/reagent_forge/tier2
+	forge_level = FORGE_LEVEL_NOVICE
+
+/obj/structure/reagent_forge/tier3
+	forge_level = FORGE_LEVEL_APPRENTICE
+
+/obj/structure/reagent_forge/tier4
+	forge_level = FORGE_LEVEL_JOURNEYMAN
+
+/obj/structure/reagent_forge/tier5
+	forge_level = FORGE_LEVEL_EXPERT
+
+/obj/structure/reagent_forge/tier6
+	forge_level = FORGE_LEVEL_MASTER
+
+/obj/structure/reagent_forge/tier7
 	forge_level = FORGE_LEVEL_LEGENDARY
+
+/obj/structure/reagent_forge/tier7/imbuing/Initialize(mapload)
+	. = ..()
+	create_reagent_forge()
 
 /particles/smoke/mild
 	spawning = 1
