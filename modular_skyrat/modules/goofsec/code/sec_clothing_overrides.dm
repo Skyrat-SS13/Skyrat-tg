@@ -44,6 +44,7 @@
 /*
 * BACKPACKS
 */
+/*
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
@@ -108,7 +109,7 @@
 			RESKIN_WORN_ICON_STATE = "belt_slim"
 		),
 	)
-
+*/
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
@@ -434,6 +435,7 @@
 /*
 * SUITS
 */
+/*
 /obj/item/clothing/suit/armor/vest/alt/sec
 	name = "armored security vest"
 	desc = "A Type-II-AD-P armored vest that provides decent protection against most types of damage."
@@ -483,7 +485,7 @@
 			RESKIN_WORN_ICON_STATE = "trenchcloak"
 		),
 	)
-
+*/
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	current_skin = "hoswinter" //prevents reskinning
 
@@ -542,6 +544,7 @@
 * UNDER
 */
 //Officer
+/*
 /obj/item/clothing/under/rank/security/officer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
@@ -573,7 +576,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
-
+*/
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	icon_state = "hos_parade_male_blue"
 
@@ -589,6 +592,7 @@
 /*
 * FEET
 */
+/*
 //Adds reskins and special footstep noises
 /obj/item/clothing/shoes/jackboots/sec
 	name = "security jackboots"
@@ -612,7 +616,7 @@
 			RESKIN_WORN_ICON_STATE = "security_boots_fullwhite"
 		),
 	)
-
+*/
 /obj/item/clothing/shoes/jackboots/sec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/footstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/footstep2.ogg'=1, 'modular_skyrat/master_files/sound/effects/footstep3.ogg'=1), 100)

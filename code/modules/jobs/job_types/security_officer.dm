@@ -212,13 +212,8 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		)
 	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-<<<<<<< HEAD
-	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/helmet/sec
-=======
 	gloves = /obj/item/clothing/gloves/security
-	head = /obj/item/clothing/head/helmet/sec
->>>>>>> bcc649462a9 (Pink Security (#75946))
+	head = /obj/item/clothing/head/soft/sec //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/helmet/sec
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
