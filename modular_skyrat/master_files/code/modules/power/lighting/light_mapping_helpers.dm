@@ -2,13 +2,13 @@
 /obj/machinery/light/dim
 	brightness = 4
 	nightshift_brightness = 4
-	bulb_colour = LIGHT_COLOR_TUNGSTEN
+	bulb_colour = "#F5EE93"
 	bulb_power = 0.4
 
 /obj/machinery/light/small
 	brightness = 5
 	nightshift_brightness = 4.5
-	bulb_colour = LIGHT_COLOR_TUNGSTEN
+	bulb_colour = "#F5EE93"
 	bulb_power = 0.9
 
 /obj/machinery/light/cold
