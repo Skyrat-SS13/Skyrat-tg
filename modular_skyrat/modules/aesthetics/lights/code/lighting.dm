@@ -11,7 +11,7 @@
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = COLOR_FIRE_LIGHT_RED
-	bulb_colour = COLOR_OFF_WHITE
+	bulb_colour = "#fae5c1"
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = LIGHT_COLOR_BROWN
