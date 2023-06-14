@@ -789,7 +789,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	can_bayonet = TRUE
 
-/obj/item/gun/ballistic/auotmatic/g11/Initialize(mapload)
+/obj/item/gun/ballistic/automatic/g11/Initialize(mapload)
 	. = ..()
 
 	AddComponent(/datum/component/automatic_fire, fire_delay)
