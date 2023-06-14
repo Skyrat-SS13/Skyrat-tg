@@ -1,130 +1,58 @@
-/obj/item/clothing/suit/hooded/wintercoat
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+/obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
+	allowed = list(
+		/obj/item/analyzer,
+		/obj/item/stack/medical,
+		/obj/item/dnainjector,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/pill,
+		/obj/item/storage/pill_bottle,
+		/obj/item/paper,
+		/obj/item/melee/baton/telescopic,
+	)
+	armor_type = /datum/armor/wintercoat_paramedic
 
-/obj/item/clothing/suit/hooded/wintercoat/paramedic
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "paramedic winter coat"
-	desc = "A winter coat with blue markings. Warm, but probably won't protect from biological agents. For the cozy doctor on the go."
-	icon_state = "coatparamed"
-	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/cup/bottle, /obj/item/reagent_containers/cup/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 50, "fire" = 0, "acid" = 45, "wound" = 3)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/paramedic
-
-/obj/item/clothing/head/hooded/winterhood/paramedic
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A white winter coat hood with blue markings."
-	icon_state = "winterhood_paramed"
-
-/obj/item/clothing/suit/hooded/wintercoat/robotics
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "robotics winter coat"
-	desc = "A black winter coat with a badass flaming robotic skull for the zipper tab. This one has bright red designs and a few useless buttons."
-	icon_state = "coatrobotics"
-	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/robotics
-
-/obj/item/clothing/head/hooded/winterhood/robotics
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter coat hood. You can pull it down over your eyes and pretend that you're an outdated, late 1980s interpretation of a futuristic mechanized police force. They'll fix you. They fix everything."
-	icon_state = "winterhood_robotics"
-
-/obj/item/clothing/suit/hooded/wintercoat/aformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "assistant's formal winter coat"
-	desc = "A black button up winter coat."
-	icon_state = "coataformal"
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter,/obj/item/clothing/gloves/color/yellow)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/aformal
-
-/obj/item/clothing/head/hooded/winterhood/aformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter coat hood."
-	icon_state = "winterhood_aformal"
-
-/obj/item/clothing/suit/hooded/wintercoat/ratvar
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "ratvarian winter coat"
-	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
-	icon_state = "coatratvar"
-	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/ratvar
-
-/obj/item/clothing/head/hooded/winterhood/ratvar
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_ratvar"
-	desc = "A brass-plated winter hood that glows softly, hinting at its divinity."
-	light_range = 3
-	light_power = 1
-	light_color = "#B18B25" //clockwork slab background top color
-
-/obj/item/clothing/suit/hooded/wintercoat/narsie
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "narsian winter coat"
-	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
-	icon_state = "coatnarsie"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/restraints/legcuffs/bola/cult,/obj/item/melee/cultblade,/obj/item/melee/cultblade/dagger,/obj/item/reagent_containers/cup/beaker/unholywater,/obj/item/cult_shift,/obj/item/flashlight/flare/culttorch,/obj/item/melee/cultblade/halberd)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/narsie
-
-/obj/item/clothing/head/hooded/winterhood/narsie
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter hood full of whispering secrets that only She shall ever know."
-	icon_state = "winterhood_narsie"
-
-/obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
-	name = "brass winter coat"
-	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red piece of plastic as an inset."
-	icon_state = "coatratvar"
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
-
-/obj/item/clothing/suit/hooded/wintercoat/narsie/fake
-	name = "runed winter coat"
-	desc = "A dusty button up winter coat in the tones of oblivion and ash. The zipper pull looks like a single drop of blood."
-	icon_state = "coatnarsie"
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+/datum/armor/wintercoat_paramedic
+	bio = 50
+	acid = 45
+	wound = 3
 
 /obj/item/clothing/suit/flakjack
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "flak jacket"
 	desc = "A dilapidated jacket made of a supposedly bullet-proof material (Hint: It isn't.). Smells faintly of napalm."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "flakjack"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	body_parts_covered = CHEST
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
+	armor_type = /datum/armor/suit_flakjack
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/datum/armor/suit_flakjack
+	bomb = 5
+	fire = -5
+	acid = -15
+
 /obj/item/clothing/suit/hooded/cloak/david
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red cloak"
 	icon_state = "goliath_cloak"
-	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, perfect for kids"
+	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, made of entirely synthetic material."
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/david
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/cloakhood/david
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	name = "red cloak hood"
 	icon_state = "golhood"
-	desc = "conceal your face in shame with this nanotrasen brand hood"
+	desc = "Conceal your face in shame with this nanotrasen brand mock-goliath hood."
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -148,9 +76,16 @@
 	inhand_icon_state = "det_suit"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, FIRE = 0, ACID = 45)
+	armor_type = /datum/armor/toggle_deckard
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
+
+/datum/armor/toggle_deckard
+	melee = 25
+	bullet = 10
+	laser = 25
+	energy = 35
+	acid = 45
 
 /obj/item/clothing/suit/jacket/leather/colourable
 	desc = "Now with more color!"
@@ -199,39 +134,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "suitjacket_white"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/hooded/wintercoat/christmas
-	name = "red christmas coat"
-	desc = "A festive red Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatr"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas
-
-/obj/item/clothing/head/hooded/winterhood/christmas
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "christmashoodr"
-
-/obj/item/clothing/suit/hooded/wintercoat/christmas/green
-	name = "green christmas coat"
-	desc = "A festive green Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatg"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/green
-
-/obj/item/clothing/head/hooded/winterhood/christmas/green
-	icon_state = "christmashoodg"
-
-/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc
-	name = "red and green christmas coat"
-	desc = "A festive red and green Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatrg"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
-
-/obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
-	icon_state = "christmashoodrg"
 
 /obj/item/clothing/suit/armor/vest/det_suit/runner
 	name = "joyful coat"

@@ -33,7 +33,7 @@
 
 /turf/open/floor/plating/ocean/ironsand
 	baseturfs = /turf/open/floor/plating/ocean/ironsand
-	icon_state = "ironsand"
+	icon_state = "ironsand1"
 	base_icon_state = "ironsand"
 	rand_variants = 15
 	rand_chance = 100
@@ -55,8 +55,8 @@
 	icon_state = "fissure-0"
 	base_icon_state = "fissure"
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_FISSURE)
-	canSmoothWith = list(SMOOTH_GROUP_FISSURE)
+	smoothing_groups = SMOOTH_GROUP_FISSURE
+	canSmoothWith = SMOOTH_GROUP_FISSURE
 	light_range = 3
 	light_color = LIGHT_COLOR_LAVA
 
@@ -98,8 +98,8 @@
 
 	if(rand_variants && prob(rand_chance))
 		var/random = rand(1,rand_variants)
-		icon_state = "[icon_state][random]"
-		base_icon_state = "[icon_state][random]"
+		icon_state = "[base_icon_state][random]"
+		base_icon_state = "[base_icon_state][random]"
 
 /turf/open/floor/plating/ocean_plating
 	planetary_atmos = TRUE
@@ -198,12 +198,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine/setup_broken_states()
-	return list("submarine_floor")
-
-/turf/open/floor/iron/submarine/setup_burnt_states()
-	return list("submarine_floor")
-
 /turf/open/floor/iron/submarine/rust_heretic_act()
 	return
 
@@ -215,12 +209,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine_vents/setup_broken_states()
-	return list("submarine_vents")
-
-/turf/open/floor/iron/submarine_vents/setup_burnt_states()
-	return list("submarine_vents")
-
 /turf/open/floor/iron/submarine_vents/rust_heretic_act()
 	return
 
@@ -231,12 +219,6 @@
 	icon_state = "submarine_perf"
 	liquid_height = -30
 	turf_height = -30
-
-/turf/open/floor/iron/submarine_perf/setup_broken_states()
-	return list("submarine_perf")
-
-/turf/open/floor/iron/submarine_perf/setup_burnt_states()
-	return list("submarine_perf")
 
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return

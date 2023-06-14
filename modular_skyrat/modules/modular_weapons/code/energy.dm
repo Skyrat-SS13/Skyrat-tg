@@ -17,8 +17,12 @@
 	cell_type = /obj/item/stock_parts/cell/mini_egun
 	ammo_x_offset = 2
 	charge_sections = 3
-	has_gun_safety = FALSE
-	company_flag = COMPANY_BOLT
+
+/obj/item/gun/energy/disabler/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+
+/obj/item/gun/energy/disabler/bolt_disabler/give_gun_safeties()
+	return
 
 /obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
 	return
@@ -39,9 +43,13 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/bounce, /obj/item/ammo_casing/energy/laser/bounce, /obj/item/ammo_casing/energy/electrode/knockdown)
 	ammo_x_offset = 1
 	charge_sections = 5
-	has_gun_safety = FALSE
 	cell_type = /obj/item/stock_parts/cell/hos_gun
-	company_flag = COMPANY_CANTALAN
+
+/obj/item/gun/energy/e_gun/cfa_phalanx/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+
+/obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
+	return
 
 /*
 *	CFA PALADIN
@@ -57,8 +65,12 @@
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/double)
 	charge_sections = 5
-	has_gun_safety = FALSE
-	company_flag = COMPANY_CANTALAN
+
+/obj/item/gun/energy/laser/cfa_paladin/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+
+/obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
+	return
 
 /*
 *	BOUNCE DISABLER
@@ -208,7 +220,7 @@
 	icon_state = "plasma_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/single
 
 /obj/item/ammo_casing/caseless/laser/double
@@ -217,7 +229,7 @@
 	icon_state = "plasma_shell2"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/double
 
 /obj/item/ammo_casing/caseless/laser/bounce
@@ -226,7 +238,7 @@
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/bounce
 
 /obj/item/ammo_casing/caseless/laser/bounce/disabler

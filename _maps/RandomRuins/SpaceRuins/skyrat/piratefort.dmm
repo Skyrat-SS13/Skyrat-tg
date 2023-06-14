@@ -32,16 +32,6 @@
 /obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"bk" = (
-/obj/structure/chair{
-	dir = 1;
-	pixel_y = 8
-	},
-/obj/structure/chair{
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
 "bF" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/syndicate,
@@ -148,13 +138,6 @@
 /obj/item/modular_computer/laptop/preset,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered)
-"fB" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Loot Storage";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "fK" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
@@ -202,7 +185,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "gl" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
+/mob/living/basic/syndicate/ranged{
 	desc = "Yarr-harr fiddley dee.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -226,6 +209,16 @@
 /obj/structure/table/wood,
 /obj/item/modular_computer/pda/cargo,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"gZ" = (
+/mob/living/basic/carp/mega{
+	faction = list("pirate");
+	health = 50;
+	maxHealth = 50;
+	name = "Jack"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hd" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/corner{
@@ -360,7 +353,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "na" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
+/mob/living/basic/syndicate/melee{
 	desc = "Yo-ho-ho he took a bite'a gum-gum.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -377,6 +370,13 @@
 	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"nj" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Prison Cell";
+	req_access = list("command","tech_storage")
+	},
+/turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
 "nw" = (
 /obj/effect/turf_decal/bot,
@@ -436,7 +436,7 @@
 /turf/open/floor/engine,
 /area/ruin/space)
 "pu" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
+/mob/living/basic/syndicate/ranged{
 	desc = "Yarr-harr fiddley dee.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -457,13 +457,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
-"pF" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Armory";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "pS" = (
 /mob/living/simple_animal/hostile/pirate/melee,
@@ -488,7 +481,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "qy" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
+/mob/living/basic/syndicate/melee{
 	desc = "Yo-ho-ho he took a bite'a gum-gum.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -496,9 +489,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
 "qX" = (
-/obj/structure/closet/secure_closet/freezer/meat{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/freezer/meat/all_access,
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
 "rq" = (
@@ -509,9 +500,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ru" = (
-/obj/structure/closet/secure_closet/freezer/fridge{
-	req_access = null
-	},
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /obj/item/reagent_containers/condiment/quality_oil,
 /obj/item/reagent_containers/condiment/quality_oil,
 /turf/open/floor/iron/kitchen,
@@ -562,13 +551,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
-"tA" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Prison Cell";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
 "tC" = (
 /obj/structure/closet/crate/secure{
@@ -738,7 +720,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "xD" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
+/mob/living/basic/syndicate/melee{
 	desc = "Yo-ho-ho he took a bite'a gum-gum.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -787,13 +769,13 @@
 /obj/machinery/reagentgrinder{
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
-/obj/item/reagent_containers/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
 "yE" = (
@@ -841,16 +823,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
-"zR" = (
-/mob/living/simple_animal/hostile/carp/megacarp{
-	faction = list("pirate");
-	health = 50;
-	maxHealth = 50;
-	name = "Jack"
-	},
-/obj/effect/turf_decal/trimline/dark_red/filled/line,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "An" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
@@ -888,7 +860,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "BV" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
+/mob/living/basic/syndicate/ranged{
 	desc = "Yarr-harr fiddley dee.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -1008,6 +980,13 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"FL" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Loot Storage";
+	req_access = list("command","tech_storage")
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "FP" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -1166,7 +1145,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Nz" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
+/mob/living/basic/syndicate/melee{
 	desc = "Yo-ho-ho he took a bite'a gum-gum.";
 	faction = list("pirate");
 	name = "Pirate Operative"
@@ -1202,6 +1181,13 @@
 /obj/structure/table/reinforced/plasmarglass,
 /obj/machinery/cell_charger_multi,
 /obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Oo" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Armory";
+	req_access = list("command","tech_storage")
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ph" = (
@@ -1385,7 +1371,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "VZ" = (
-/mob/living/simple_animal/hostile/abductor,
+/mob/living/basic/abductor,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
 "Wd" = (
@@ -1869,7 +1855,7 @@ wL
 oR
 RQ
 Iy
-bk
+zQ
 Iy
 zQ
 ih
@@ -2071,7 +2057,7 @@ oR
 oR
 oR
 oR
-fB
+FL
 oR
 oR
 yr
@@ -2198,7 +2184,7 @@ BV
 dP
 dP
 dP
-zR
+gZ
 oR
 qX
 us
@@ -2297,8 +2283,8 @@ oR
 oR
 oR
 oR
-pF
-pF
+Oo
+Oo
 oR
 oR
 FP
@@ -2630,11 +2616,11 @@ Js
 Js
 oR
 oR
-tA
+nj
 oR
 nf
 oR
-tA
+nj
 oR
 oR
 oR

@@ -19,19 +19,10 @@
 	inhand_y_dimension = 64
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
-	pixel_x = -8
 	inhand_icon_state = "revolving"
-	company_flag = COMPANY_IZHEVSK
 
-/obj/item/gun/ballistic/revolver/rifle/improvised
-	name = "\improper improvised .38 revolving rifle"
-	desc = "A crudely made revolving rifle. It fires .38 rounds. The cylinder doesn't rotate very well."
-	icon_state = "revolving-rifle"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38	//TAs far as improvised weapons go, this is fairly decent, this isn't half bad.
-	fire_delay = 15
-	recoil = 1
-	company_flag = null
-
+/obj/item/gun/ballistic/revolver/rifle/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 /obj/item/gun/ballistic/revolver/rifle/gold
 	name = "\improper .45 revolving rifle"
 	desc = "A gold trimmed revolving rifle! It fires .45 bullets."

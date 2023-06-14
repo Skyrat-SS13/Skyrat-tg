@@ -33,6 +33,8 @@
 	move_to_delay = 2.25
 	pixel_x = -32
 	pixel_y = -9
+	base_pixel_x = -32
+	base_pixel_y = -9
 	wander = FALSE
 	ranged = 1
 	ranged_cooldown_time = 30
@@ -50,7 +52,7 @@
 	/// Are we doing the spin attack?
 	var/spinning = FALSE
 	/// Range of spin attack
-	var/spinning_range = 4
+	var/spinning_range = 6
 	/// Are we doing the charge attack
 	var/charging = FALSE
 	/// If we are charging, this is a counter for how many tiles we have ran past
@@ -60,11 +62,15 @@
 	/// We get stunned whenever we ram into a closed turf
 	var/stunned = FALSE
 	/// Move_to_delay but only while we are charging
-	var/move_to_delay_charge = 1.5
-	/// Chance to block damage entirely on phase 1
-	var/phase_1_block_chance = 50
+	var/move_to_delay_charge = 0.6
+	/// Chance to block damage entirely on phases 1 and 4
+	var/block_chance = 50
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
+
+/mob/living/simple_animal/hostile/megafauna/gladiator/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/Destroy()
 	get_calm()
@@ -103,14 +109,14 @@
 		. = ..()
 		. += span_boldwarning("They are currently in Phase [phase].")
 
-/// Gets him mad at you if you're a species he's not racist towards, and provides the 25% chance to block attacks in the first phase
+/// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
-	if(spinning)
-		visible_message(span_danger("[src] brushes off all incoming attacks with his spinning blade!"))
+	if(prob(block_chance) && (phase == 1) && !stunned)
+		balloon_alert_to_viewers("damage blocked!")
 		return FALSE
-	else if(prob(phase_1_block_chance) && (phase == 1) && !stunned)
-		visible_message(span_danger("[src] blocks all incoming damage with his arm!"))
+	else if(prob(block_chance) && (phase == 4) && !stunned)
+		balloon_alert_to_viewers("damage blocked!")
 		return FALSE
 	. = ..()
 	update_phase()
@@ -268,7 +274,7 @@
 			if(phase == MARKED_ONE_FIRST_PHASE)
 				phase = MARKED_ONE_SECOND_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
-				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
+				ranged_cooldown += 8 SECONDS //this needs to be here lest another ranged attack override the charge while it's prepping
 				icon_state = "marked2"
 				rapid_melee = 2
 				move_to_delay = 2
@@ -278,21 +284,21 @@
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
-				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
+				ranged_cooldown += 5 SECONDS
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
-				move_to_delay = 1.7
+				move_to_delay = 1.5
 		if(0 to SHOWDOWN_PERCENT)
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
-				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
+				ranged_cooldown += 8 SECONDS
 				icon_state = "marked3"
 				rapid_melee = 1
 				melee_damage_upper = 50
 				melee_damage_lower = 50
-				move_to_delay = 2.5
+				move_to_delay = 1.2
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
@@ -301,7 +307,18 @@
 	var/turf/our_turf = get_turf(src)
 	if(!istype(our_turf))
 		return
-	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
+	var/static/list/spin_messages = list(
+							"Duck!",
+							"I'll break your legs!",
+							"Plain, dead, simple!",
+							"SWING AND A MISS!",
+							"Only one of us makes it outta here!",
+							"JUMP-ROPE!!",
+							"Slice and dice, right?!",
+							"Come on, HIT ME!",
+							"CLANG!!",
+						)
+	say(message = pick(spin_messages))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
 	SLEEP_CHECK_DEATH(5, src)
@@ -322,7 +339,7 @@
 		QDEL_IN(smonk, 0.5 SECONDS)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
-				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
+				playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 				if(slapped.apply_damage(40, BRUTE, BODY_ZONE_CHEST, slapped.run_armor_check(BODY_ZONE_CHEST), wound_bonus = CANT_WOUND))
 					visible_message(span_danger("[src] slashes through [slapped] with his spinning blade!"))
 				else
@@ -333,13 +350,22 @@
 			break
 		sleep(0.75) //addtimer(CALLBACK(src, PROC_REF(convince_zonespace_to_let_me_use_sleeps)), 2 WEEKS)
 	animate(src, color = initial(color), 3)
-	sleep(3)
+	sleep(1)
 	spinning = FALSE
 
-/// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
+/// The Marked One's charge is extremely quick, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it stuns if it lands
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
-	visible_message(span_userdanger("[src] lifts his arm, and prepares to charge!"))
+	var/static/list/charge_messages = list(
+							"Heads up!",
+							"Coming through!",
+							"This ends only one way!",
+							"Hold still!",
+							"GET OVER HERE!",
+							"Looking for this?!",
+							"COME ON!!",
+						)
+	say(message = pick(charge_messages))
 	animate(src, color = "#ff6666", 3)
 	SLEEP_CHECK_DEATH(4, src)
 	face_atom(target)
@@ -347,12 +373,13 @@
 	charging = TRUE
 	update_phase()
 
-/// Discharge damages the Marked One and stuns him when he slams into a wall whilst charging
+/// Discharge stuns the marked one momentarily after landing a charge into a wall or a person
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
 	minimum_distance = initial(minimum_distance)
 	chargetiles = 0
+	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 	animate(src, color = initial(color), 5)
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
@@ -396,30 +423,25 @@
 		for(var/turf/stomp_turf in all_turfs)
 			if(get_dist(origin, stomp_turf) > sound_range)
 				continue
-
 			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
 			for(var/mob/living/target in stomp_turf)
 				if(target == src || target.throwing)
 					continue
-
 				to_chat(target, span_userdanger("[src]'s ground slam shockwave sends you flying!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(src, target, throw_range, rand(-10, 10))
 				target.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				target.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
-
 				shake_camera(target, 2, 1)
-
 			all_turfs -= stomp_turf
-
 		sleep(delay)
 
 /// Large radius but slow-to-move radiating ground slam
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
-	ground_pound(5, 1 SECONDS, 8)
+	ground_pound(5, 0.4 SECONDS, 8)
 
 /// Sort range slam with faster shockwave travel
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
-	ground_pound(2, 0.5 SECONDS, 3)
+	ground_pound(2, 0.2 SECONDS, 3)
 
 /// Used to determine what attacks the Marked One actually uses. This works by making him a ranged mob without a projectile. Shitcode? Maybe! But it woooorks.
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
@@ -432,7 +454,6 @@
 		if(MARKED_ONE_FIRST_PHASE)
 			if(prob(10) && (get_dist(src, target) <= spinning_range))
 				INVOKE_ASYNC(src, PROC_REF(spinattack))
-				INVOKE_ASYNC(src, PROC_REF(stomp))
 				ranged_cooldown += 5.5 SECONDS
 			else
 				if(prob(50))
@@ -446,15 +467,13 @@
 				if(prob(80))
 					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
-						INVOKE_ASYNC(src, PROC_REF(stomp))
 						ranged_cooldown += 5 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
 				else
-					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
-					INVOKE_ASYNC(src, PROC_REF(teleport), target)
-					ranged_cooldown += 2 SECONDS
+					INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
+					ranged_cooldown += 5 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
 				ranged_cooldown += 0.5 SECONDS
@@ -463,14 +482,13 @@
 				if(prob(50))
 					if(prob(30) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
-						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 4.5 SECONDS
+						ranged_cooldown += 3 SECONDS
 					else
-						INVOKE_ASYNC(src, PROC_REF(swordslam))
-						ranged_cooldown += 2 SECONDS
+						INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
+						ranged_cooldown += 4 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
-					INVOKE_ASYNC(src, PROC_REF(teleport), target)
+					INVOKE_ASYNC(src, PROC_REF(swordslam))
 					ranged_cooldown += 2 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
@@ -485,15 +503,16 @@
 						ranged_cooldown += 2 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
+						INVOKE_ASYNC(src, PROC_REF(stomp))
 						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 					INVOKE_ASYNC(src, PROC_REF(stomp))
 					ranged_cooldown += 0.5 SECONDS
 			else
-				INVOKE_ASYNC(src, PROC_REF(teleport), target)
+				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				INVOKE_ASYNC(src, PROC_REF(stomp))
-				ranged_cooldown += 0.5 SECONDS
+				ranged_cooldown += 2.5 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION

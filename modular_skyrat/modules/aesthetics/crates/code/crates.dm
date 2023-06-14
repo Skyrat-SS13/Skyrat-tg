@@ -1,6 +1,9 @@
 /obj/structure/closet/crate
 	icon = 'modular_skyrat/modules/aesthetics/crates/icons/crates.dmi'
 
+/obj/structure/closet/crate/syndicrate
+	icon = 'icons/obj/storage/crates.dmi'
+
 /obj/item/delivery
 	icon = 'modular_skyrat/modules/aesthetics/crates/icons/crates.dmi'
 

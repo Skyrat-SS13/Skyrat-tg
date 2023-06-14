@@ -10,7 +10,8 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	icon_state = "pillow"
+	icon_state = "pillow_pink_round"
+	base_icon_state = "pillow"
 	inhand_icon_state = "pillow_pink_round"
 	var/datum/effect_system/feathers/pillow_feathers
 	var/current_color = "pink"
@@ -84,8 +85,8 @@
 
 /obj/item/fancy_pillow/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
+	icon_state = "[base_icon_state]_[current_color]_[current_form]"
+	inhand_icon_state = "[base_icon_state]_[current_color]_[current_form]"
 
 /obj/item/fancy_pillow/Destroy()
 	if(pillow_feathers)

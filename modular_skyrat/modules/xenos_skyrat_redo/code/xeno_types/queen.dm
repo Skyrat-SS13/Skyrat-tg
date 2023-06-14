@@ -32,10 +32,10 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/queen/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
-	internal_organs += new /obj/item/organ/internal/alien/resinspinner
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/queen
-	internal_organs += new /obj/item/organ/internal/alien/eggsac
+	organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
+	organs += new /obj/item/organ/internal/alien/resinspinner
+	organs += new /obj/item/organ/internal/alien/neurotoxin/queen
+	organs += new /obj/item/organ/internal/alien/eggsac
 	..()
 
 /mob/living/carbon/alien/adult/skyrat/queen/alien_talk(message, shown_name = name)
@@ -60,7 +60,7 @@
 		if(carbon_mob == src)
 			continue
 
-		var/obj/item/organ/internal/alien/hivenode/node = carbon_mob.getorgan(/obj/item/organ/internal/alien/hivenode)
+		var/obj/item/organ/internal/alien/hivenode/node = carbon_mob.get_organ_by_type(/obj/item/organ/internal/alien/hivenode)
 
 		if(istype(node))
 			node.queen_death()

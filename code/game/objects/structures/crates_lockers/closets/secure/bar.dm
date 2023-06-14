@@ -9,6 +9,7 @@
 	open_sound_volume = 25
 	close_sound_volume = 50
 	door_anim_time = 0 // no animation
+	paint_jobs = null
 
 /obj/structure/closet/secure_closet/bar/PopulateContents()
 	..()
@@ -21,3 +22,6 @@
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	//SKYRAT EDIT END
+
+/obj/structure/closet/secure_closet/bar/all_access
+	req_access = null

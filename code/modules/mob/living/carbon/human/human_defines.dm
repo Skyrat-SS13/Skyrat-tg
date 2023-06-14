@@ -13,8 +13,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
 
-	maxHealth = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
-	health = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
+	maxHealth = 135 //SKYRAT EDIT ADDITION
+	health = 135 //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
 	var/hair_color = "#000000"
@@ -90,3 +90,6 @@
 
 	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
 	var/list/afk_thefts
+
+	/// Height of the mob
+	VAR_PROTECTED/mob_height = HUMAN_HEIGHT_MEDIUM

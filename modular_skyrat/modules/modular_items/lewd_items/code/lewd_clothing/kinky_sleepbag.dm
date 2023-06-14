@@ -8,7 +8,8 @@
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
-	icon_state = "sleepbag"
+	icon_state = "sleepbag_pink_deflated_folded"
+	base_icon_state = "sleepbag"
 	w_class = WEIGHT_CLASS_SMALL
 	var/bag_state = "deflated"
 	var/bag_fold = TRUE
@@ -16,7 +17,6 @@
 	var/color_changed = FALSE
 	var/time_to_sound = 20
 	var/time_to_sound_left
-	var/time = 2
 	var/tt
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
@@ -25,9 +25,6 @@
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
-	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/leg/left/legr
-	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -97,8 +94,8 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
-	inhand_icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	inhand_icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
 	var/mob/living/carbon/human/affected_human = user
@@ -182,15 +179,15 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(seconds_per_tick)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
 			tt = rand(15, 35) //to do random funny sounds when character inside that thing.
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_sound_left -= delta_time
+		time_to_sound_left -= seconds_per_tick
 
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)

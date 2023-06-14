@@ -75,6 +75,8 @@
 #define ACCESS_MEDICAL "medical"
 /// Access to the Morgue.
 #define ACCESS_MORGUE "morgue"
+/// Access to the secure morgue area.
+#define ACCESS_MORGUE_SECURE "morgue_secure"
 /// Access to the Pharmacy, or the smaller room in medical with the multiple chem dispensers and pill pressers. The Chemist's main position.
 #define ACCESS_PHARMACY "pharmacy"
 /// Access to the surgery rooms.
@@ -304,6 +306,7 @@
 	ACCESS_MINERAL_STOREROOM, \
 	ACCESS_MINING, \
 	ACCESS_MINING_STATION, \
+	ACCESS_MORGUE_SECURE, \
 	ACCESS_MORGUE, \
 	ACCESS_NETWORK, \
 	ACCESS_ORDNANCE, \
@@ -441,6 +444,7 @@
 	ACCESS_MECH_MEDICAL, \
 	ACCESS_MEDICAL, \
 	ACCESS_MORGUE, \
+	ACCESS_MORGUE_SECURE, \
 	ACCESS_PHARMACY, \
 	ACCESS_PLUMBING, \
 	ACCESS_PSYCHOLOGY, \
@@ -527,6 +531,7 @@
 	/obj/item/modular_computer/pda/mime = list(REGION_GENERAL), \
 	/obj/item/modular_computer/pda/medical = list(REGION_MEDBAY), \
 	/obj/item/modular_computer/pda/viro = list(REGION_MEDBAY), \
+	/obj/item/modular_computer/pda/coroner = list(REGION_MEDBAY), \
 	/obj/item/modular_computer/pda/engineering = list(REGION_ENGINEERING), \
 	/obj/item/modular_computer/pda/security = list(REGION_SECURITY), \
 	/obj/item/modular_computer/pda/detective = list(REGION_SECURITY), \
@@ -543,7 +548,7 @@
 	/obj/item/modular_computer/pda/cargo = list(REGION_SUPPLY), \
 	/obj/item/modular_computer/pda/shaftminer = list(REGION_SUPPLY), \
 	/obj/item/modular_computer/pda/chaplain = list(REGION_GENERAL), \
-	/obj/item/modular_computer/pda/lawyer = list(REGION_GENERAL, REGION_SECURITY), \
+	/obj/item/modular_computer/pda/lawyer = list(REGION_GENERAL), \
 	/obj/item/modular_computer/pda/botanist = list(REGION_GENERAL), \
 	/obj/item/modular_computer/pda/roboticist = list(REGION_RESEARCH), \
 	/obj/item/modular_computer/pda/curator = list(REGION_GENERAL), \

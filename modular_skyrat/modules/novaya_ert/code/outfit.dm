@@ -21,7 +21,7 @@
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm
+	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
@@ -66,7 +66,7 @@
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm
+	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
 
 	id_trim = /datum/id_trim/nri/commander
 
@@ -78,7 +78,7 @@
 	belt = /obj/item/storage/belt/military/nri/medic/full
 	suit = null
 	suit_store = null
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/tactical,
@@ -92,7 +92,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/medic
 
@@ -114,7 +114,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/engineer
 
@@ -151,7 +151,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/research_director
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	suit_store = null
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
@@ -173,7 +173,7 @@
 	uniform = /obj/item/clothing/under/rank/medical/chief_medical_officer
 	suit = /obj/item/clothing/suit/toggle/labcoat/cmo
 	suit_store = null
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,

@@ -10,7 +10,6 @@
 	name = "command card"
 	access = list(ACCESS_FACTION_PUBLIC, ACCESS_FACTION_CREW, ACCESS_FACTION_COMMAND)
 	icon_state = "card_silver"
-	worn_icon_state = "card_silver"
 	inhand_icon_state = "silver_id"
 
 /obj/item/card/faction_access

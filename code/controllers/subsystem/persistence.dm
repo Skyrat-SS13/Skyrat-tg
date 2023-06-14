@@ -1,7 +1,6 @@
 #define FILE_RECENT_MAPS "data/RecentMaps.json"
 
 #define KEEP_ROUNDS_MAP 3
-#define ROUNDCOUNT_ENGINE_JUST_EXPLODED 0
 
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
@@ -48,6 +47,7 @@ SUBSYSTEM_DEF(persistence)
 	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	save_randomized_recipes()
 	save_scars()
+	save_modular_persistence() // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 	save_custom_outfits()
 	save_delamination_counter()
 	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
@@ -548,3 +548,5 @@ SUBSYSTEM_DEF(persistence)
 	rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
 
 #undef DELAMINATION_COUNT_FILEPATH
+#undef FILE_RECENT_MAPS
+#undef KEEP_ROUNDS_MAP

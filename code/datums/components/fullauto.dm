@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR FULLAUTO.DM
 #define AUTOFIRE_MOUSEUP 0
 #define AUTOFIRE_MOUSEDOWN 1
 
@@ -12,9 +11,22 @@
 	var/autofire_shot_delay = 0.3 SECONDS //Time between individual shots.
 	var/mouse_status = AUTOFIRE_MOUSEUP //This seems hacky but there can be two MouseDown() without a MouseUp() in between if the user holds click and uses alt+tab, printscreen or similar.
 
+	///windup autofire vars
+	///Whether the delay between shots increases over time, simulating a spooling weapon
+	var/windup_autofire = FALSE
+	///the reduction to shot delay for windup
+	var/current_windup_reduction = 0
+	///the percentage of autfire_shot_delay that is added to current_windup_reduction
+	var/windup_autofire_reduction_multiplier = 0.3
+	///How high of a reduction that current_windup_reduction can reach
+	var/windup_autofire_cap = 0.3
+	///How long it takes for weapons that have spooled-up to reset back to the original firing speed
+	var/windup_spindown = 3 SECONDS
+	///Timer for tracking the spindown reset timings
+	var/timerid
 	COOLDOWN_DECLARE(next_shot_cd)
 
-/datum/component/automatic_fire/Initialize(_autofire_shot_delay)
+/datum/component/automatic_fire/Initialize(autofire_shot_delay, windup_autofire, windup_autofire_reduction_multiplier, windup_autofire_cap, windup_spindown)
 	. = ..()
 	if(!isgun(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -36,7 +48,7 @@
 	autofire_off()
 	return ..()
 
-/datum/component/automatic_fire/process(delta_time)
+/datum/component/automatic_fire/process(seconds_per_tick)
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
 		STOP_PROCESSING(SSprojectiles, src)
 		return
@@ -251,6 +263,12 @@
 	stop_autofiring()
 	return FALSE
 
+/// Reset for our windup, resetting everything back to initial values after a variable set amount of time (determined by var/windup_spindown).
+/datum/component/automatic_fire/proc/windup_reset(deltimer)
+	current_windup_reduction = initial(current_windup_reduction)
+	if(deltimer && timerid)
+		deltimer(timerid)
+
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
@@ -294,4 +312,3 @@
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN
-*/

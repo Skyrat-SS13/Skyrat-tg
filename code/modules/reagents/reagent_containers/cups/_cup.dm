@@ -70,7 +70,7 @@
 	if(target_mob != user)
 		target_mob.visible_message(span_danger("[user] attempts to feed [target_mob] something from [src]."), \
 					span_userdanger("[user] attempts to feed you something from [src]."))
-		if(!do_mob(user, target_mob))
+		if(!do_after(user, 3 SECONDS, target_mob))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The drink might be empty after the delay, such as by spam-feeding
@@ -81,6 +81,7 @@
 		to_chat(user, span_notice("You swallow a gulp of [src]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
+	SEND_SIGNAL(target_mob, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
 	var/fraction = min(gulp_size/reagents.total_volume, 1)
 	reagents.trans_to(target_mob, gulp_size, transfered_by = user, methods = INGEST)
 	checkLiked(fraction, target_mob)
@@ -100,7 +101,12 @@
 
 /obj/item/reagent_containers/cup/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if((!proximity_flag) || !check_allowed_items(target, target_self = TRUE))
+	if(!proximity_flag)
+		return
+
+	. |= AFTERATTACK_PROCESSED_ITEM
+
+	if(!check_allowed_items(target, target_self = TRUE))
 		return
 
 	if(!spillable)
@@ -198,6 +204,16 @@
 		set_custom_materials(list(GET_MATERIAL_REF(/datum/material/glass) = 5))//sets it to glass so, later on, it gets picked up by the glass catch (hope it doesn't 'break' things lol)
 	return ..()
 
+/// Callback for [datum/component/takes_reagent_appearance] to inherent style footypes
+/obj/item/reagent_containers/cup/proc/on_cup_change(datum/glass_style/has_foodtype/style)
+	if(!istype(style))
+		return
+	drink_type = style.drink_type
+
+/// Callback for [datum/component/takes_reagent_appearance] to reset to no foodtypes
+/obj/item/reagent_containers/cup/proc/on_cup_reset()
+	drink_type = NONE
+
 /obj/item/reagent_containers/cup/beaker
 	name = "beaker"
 	desc = "A beaker. It can hold up to 60 units." //SKYRAT EDIT: Used to say can hold up to 50 units.
@@ -207,10 +223,10 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-	custom_materials = list(/datum/material/glass=500)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
+	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
-	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -229,7 +245,7 @@
 	name = "large beaker"
 	desc = "A large beaker. Can hold up to 120 units." //SKYRAT EDIT: Used to say Can hold up to 100 units.
 	icon_state = "beakerlarge"
-	custom_materials = list(/datum/material/glass=2500)
+	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
 	volume = 120 //SKYRAT EDIT: Original value (100)
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT: Original Values
@@ -240,7 +256,7 @@
 	name = "x-large beaker"
 	desc = "An extra-large beaker. Can hold up to 150 units." //SKYRAT EDIT: Used to say Can hold up to 120 units
 	icon_state = "beakerwhite"
-	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000)
+	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
 	volume = 150 //SKYRAT EDIT: Original Value (120)
 	amount_per_transfer_from_this = 10
 	//possible_transfer_amounts = list(5,10,15,20,25,30,60,120) //SKYRAT EDIT: Original values
@@ -251,7 +267,7 @@
 	name = "metamaterial beaker"
 	desc = "A large beaker. Can hold up to 180 units."
 	icon_state = "beakergold"
-	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000, /datum/material/gold=1000, /datum/material/titanium=1000)
+	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
 	volume = 180
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,60,120,180)
@@ -262,7 +278,7 @@
 	desc = "A cryostasis beaker that allows for chemical storage without \
 		reactions. Can hold up to 50 units."
 	icon_state = "beakernoreact"
-	custom_materials = list(/datum/material/iron=3000)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 1.5)
 	reagent_flags = OPENCONTAINER | NO_REACT
 	volume = 50
 	amount_per_transfer_from_this = 10
@@ -273,7 +289,7 @@
 		and Element Cuban combined with the Compound Pete. Can hold up to \
 		300 units."
 	icon_state = "beakerbluespace"
-	custom_materials = list(/datum/material/glass = 5000, /datum/material/plasma = 3000, /datum/material/diamond = 1000, /datum/material/bluespace = 1000)
+	custom_materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/plasma =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT)
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100,300)
@@ -341,7 +357,7 @@
 	greyscale_config_worn = /datum/greyscale_config/buckets_worn
 	greyscale_config_inhand_left = /datum/greyscale_config/buckets_inhands_left
 	greyscale_config_inhand_right = /datum/greyscale_config/buckets_inhands_right
-	custom_materials = list(/datum/material/iron=200)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT CHANGE
@@ -349,7 +365,7 @@
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 75, ACID = 50) //Weak melee protection, because you can wear it on your head
+	armor_type = /datum/armor/cup_bucket
 	slot_equipment_priority = list( \
 		ITEM_SLOT_BACK, ITEM_SLOT_ID,\
 		ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,\
@@ -360,6 +376,11 @@
 		ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
 		ITEM_SLOT_DEX_STORAGE
 	)
+
+/datum/armor/cup_bucket
+	melee = 10
+	fire = 75
+	acid = 50
 
 /obj/item/reagent_containers/cup/bucket/Initialize(mapload, vol)
 	if(greyscale_colors == initial(greyscale_colors))
@@ -375,11 +396,13 @@
 	greyscale_config_worn = null
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
-	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 2)
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 50)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	resistance_flags = FLAMMABLE
+	armor_type = /datum/armor/bucket_wooden
 
-#define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
+/datum/armor/bucket_wooden
+	melee = 10
+	acid = 50
 
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
 	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
@@ -391,7 +414,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
-			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
@@ -407,8 +430,6 @@
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-
-#undef SQUEEZING_DISPERSAL_PERCENT  //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
@@ -442,12 +463,14 @@
 
 /obj/item/reagent_containers/cup/mortar
 	name = "mortar"
-	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting. <b>Alt click to eject the item.</b>"
+	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting."
+	desc_controls = "Alt click to eject the item."
 	icon_state = "mortar"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50, 100)
 	volume = 100
-	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT)
+	resistance_flags = FLAMMABLE
 	reagent_flags = OPENCONTAINER
 	spillable = TRUE
 	var/obj/item/grinded
@@ -536,3 +559,15 @@
 	volume = 240
 	icon_state = "coffeepot_bluespace"
 	fill_icon_thresholds = list(0)
+
+///Test tubes created by chem master and pandemic and placed in racks
+/obj/item/reagent_containers/cup/tube
+	name = "tube"
+	desc = "A small test tube."
+	icon_state = "test_tube"
+	fill_icon_state = "tube"
+	inhand_icon_state = "atoxinbottle"
+	worn_icon_state = "beaker"
+	possible_transfer_amounts = list(5, 10, 15, 30)
+	volume = 30
+	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)

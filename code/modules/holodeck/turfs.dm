@@ -70,24 +70,24 @@
 	gender = PLURAL
 	name = "sand"
 	desc = "This is better than a vacation, since you're still getting paid."
-	icon = 'icons/misc/beach.dmi'
+	icon = 'icons/turf/sand.dmi'
 	icon_state = "sand"
 	bullet_bounce_sound = null
 	tiled_dirt = FALSE
 
-/turf/open/floor/holofloor/beach/coast_t
+/turf/open/floor/holofloor/beach/coast
 	gender = NEUTER
 	name = "coastline"
-	icon_state = "sandwater_t"
+	icon = 'icons/turf/beach.dmi'
+	icon_state = "beach"
 
-/turf/open/floor/holofloor/beach/coast_b
-	gender = NEUTER
-	name = "coastline"
-	icon_state = "sandwater_b"
+/turf/open/floor/holofloor/beach/coast/corner
+	icon_state = "beach-corner"
 
 /turf/open/floor/holofloor/beach/water
 	name = "water"
 	desc = "Gives the impression you can walk on water. Chaplains love it."
+	icon = 'icons/turf/beach.dmi'
 	icon_state = "water"
 	bullet_sizzle = TRUE
 
@@ -146,8 +146,8 @@
 	base_icon_state = "carpet"
 	floor_tile = /obj/item/stack/tile/carpet
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
-	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET
+	canSmoothWith = SMOOTH_GROUP_CARPET
 	bullet_bounce_sound = null
 	tiled_dirt = FALSE
 
@@ -176,9 +176,28 @@
 	bullet_bounce_sound = null
 	tiled_dirt = FALSE
 
-/turf/open/floor/holofloor/snow/cold
-	initial_gas_mix = "nob=7500;TEMP=2.7"
-
 /turf/open/floor/holofloor/dark
 	icon_state = "darkfull"
 	desc = "The surrounding enviroment is so dark you can hardly see yourself."
+
+/turf/open/floor/holofloor/stairs
+	name = "stairs"
+	icon_state = "stairs"
+	tiled_dirt = FALSE
+
+/turf/open/floor/holofloor/stairs/left
+	icon_state = "stairs-l"
+
+/turf/open/floor/holofloor/stairs/medium
+	icon_state = "stairs-m"
+
+/turf/open/floor/holofloor/stairs/right
+	icon_state = "stairs-r"
+
+/turf/open/floor/holofloor/chess_white
+	icon_state = "white_large"
+	color = "#eeeed2"
+
+/turf/open/floor/holofloor/chess_black
+	icon_state = "white_large"
+	color = "#93b570"

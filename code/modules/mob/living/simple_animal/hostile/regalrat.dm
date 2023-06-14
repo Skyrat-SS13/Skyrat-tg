@@ -1,4 +1,3 @@
-
 /mob/living/simple_animal/hostile/regalrat
 	name = "feral regal rat"
 	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom. Not technically a king."
@@ -9,10 +8,13 @@
 	turns_per_move = 5
 	maxHealth = 70
 	health = 70
-	see_in_dark = 15
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	// Slightly brown red, for the eyes
+	// Might be a bit too dim
+	lighting_cutoff_red = 22
+	lighting_cutoff_green = 8
+	lighting_cutoff_blue = 5
 	obj_damage = 10
-	butcher_results = list(/obj/item/clothing/head/costume/crown = 1,)
+	butcher_results = list(/obj/item/food/meat/slab/mouse = 2, /obj/item/clothing/head/costume/crown = 1)
 	response_help_continuous = "glares at"
 	response_help_simple = "glare at"
 	response_disarm_continuous = "skoffs at"
@@ -97,7 +99,8 @@
 /mob/living/simple_animal/hostile/regalrat/CanAttack(atom/the_target)
 	if(isliving(the_target))
 		var/mob/living/living_target = the_target
-		return !living_target.faction_check_mob(src, exact_match = TRUE)
+		if (living_target.stat != DEAD)
+			return !living_target.faction_check_mob(src, exact_match = TRUE)
 
 	return ..()
 
@@ -118,33 +121,25 @@
 	if(stat == DEAD || !environment || !environment.gases[/datum/gas/miasma])
 		return
 	var/miasma_percentage = environment.gases[/datum/gas/miasma][MOLES] / environment.total_moles()
-	if(miasma_percentage>=0.25)
+	if(miasma_percentage >= 0.25)
 		heal_bodypart_damage(1)
 
 #define REGALRAT_INTERACTION "regalrat"
 
 /mob/living/simple_animal/hostile/regalrat/AttackingTarget()
-	if (DOING_INTERACTION(src, REGALRAT_INTERACTION))
-		return
-	if (QDELETED(target))
+	if (DOING_INTERACTION(src, REGALRAT_INTERACTION) || QDELETED(target))
 		return
 	if(istype(target, /obj/machinery/door/airlock) && !opening_airlock)
 		pry_door(target)
 		return
-
-	if (target.reagents && target.is_injectable(src, allowmobs = TRUE) && !istype(target, /obj/item/food/cheese))
+	if (src.mind && !src.combat_mode && target.reagents && target.is_injectable(src, allowmobs = TRUE) && !istype(target, /obj/item/food/cheese))
 		src.visible_message(span_warning("[src] starts licking [target] passionately!"),span_notice("You start licking [target]..."))
-		if (do_mob(src, target, 2 SECONDS, interaction_key = REGALRAT_INTERACTION))
+		if (do_after(src, 2 SECONDS, target, interaction_key = REGALRAT_INTERACTION))
 			target.reagents.add_reagent(/datum/reagent/rat_spit,rand(1,3),no_react = TRUE)
 			to_chat(src, span_notice("You finish licking [target]."))
-			return
+		return
 	else
 		SEND_SIGNAL(target, COMSIG_RAT_INTERACT, src)
-		if(QDELETED(target))
-			return
-
-	if (DOING_INTERACTION(src, REGALRAT_INTERACTION)) // check again in case we started interacting
-		return
 	return ..()
 
 #undef REGALRAT_INTERACTION
@@ -188,7 +183,7 @@
 		playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, vary = TRUE)
 	if(do_after(src, time_to_open, prying_door))
 		opening_airlock = FALSE
-		if(prying_door.density && !prying_door.open(2))
+		if(prying_door.density && !prying_door.open(BYPASS_DOOR_CHECKS))
 			to_chat(src, span_warning("Despite your efforts, the airlock managed to resist your attempts to open it!"))
 			return FALSE
 		prying_door.open()
@@ -210,7 +205,7 @@
 /datum/action/cooldown/domain
 	name = "Rat King's Domain"
 	desc = "Corrupts this area to be more suitable for your rat army."
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	cooldown_time = 6 SECONDS
 	melee_cooldown_time = 0 SECONDS
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -220,7 +215,7 @@
 
 /datum/action/cooldown/domain/proc/domain()
 	var/turf/T = get_turf(owner)
-	T.atmos_spawn_air("miasma=4;TEMP=[T20C]")
+	T.atmos_spawn_air("[GAS_MIASMA]=4;[TURF_TEMPERATURE(T20C)]")
 	switch (rand(1,10))
 		if (8)
 			new /obj/effect/decal/cleanable/vomit(T)
@@ -244,7 +239,7 @@
 /datum/action/cooldown/riot
 	name = "Raise Army"
 	desc = "Raise an army out of the hordes of mice and pests crawling around the maintenance shafts."
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "riot"
 	background_icon_state = "bg_clock"
@@ -314,6 +309,7 @@
 /datum/action/cooldown/riot/proc/make_minion(mob/living/new_minion, minion_desc, list/command_list = mouse_commands)
 	if (isbasicmob(new_minion))
 		new_minion.AddComponent(/datum/component/obeys_commands, command_list)
+		qdel(new_minion.GetComponent(/datum/component/tameable)) // Rats don't share
 	new_minion.befriend(owner)
 	new_minion.faction = owner.faction.Copy()
 	// Give a hint in description too
@@ -395,15 +391,15 @@
 /datum/pet_command/point_targetting/attack/mouse
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!" // Frogs and roaches can squeak too it's fine
-	pointed_reaction = "squeaks aggressively!"
+	pointed_reaction = "and squeaks aggressively"
 	refuse_reaction = "quivers"
-	attack_behaviour = /datum/ai_behavior/basic_melee_attack/rat
+	attack_behaviour = /datum/ai_behavior/basic_melee_attack
 
 // Command you can give to a mouse to make it kill someone
 /datum/pet_command/point_targetting/attack/glockroach
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!"
-	pointed_reaction = "cocks gun"
+	pointed_reaction = "and cocks its gun"
 	refuse_reaction = "quivers"
 	attack_behaviour = /datum/ai_behavior/basic_ranged_attack/glockroach
 

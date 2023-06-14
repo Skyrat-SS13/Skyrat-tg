@@ -1,41 +1,17 @@
-/mob/living/simple_animal/hostile/retaliate/tegu
+/mob/living/basic/lizard/tegu
 	name = "tegu"
 	desc = "That's a tegu."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "tegu"
 	icon_living = "tegu"
-	icon_dead ="tegu_dead"
-	speak_emote = list("hisses")
-	emote_see = list("hisses.", "flicks its tongue.")
+	icon_dead = "tegu_dead"
 	health = 20
 	maxHealth = 20
-	faction = list("Lizard")
-	attack_verb_continuous = "bites"
-	attack_verb_simple = "bite"
-	attack_sound = 'sound/weapons/bite.ogg'
-	attack_vis_effect = ATTACK_EFFECT_BITE
-	footstep_type = FOOTSTEP_MOB_CLAW
 	melee_damage_lower = 16 //They do have a nasty bite
 	melee_damage_upper = 16
-	response_help_continuous = "pets the"
-	response_help_simple = "pet"
-	response_disarm_continuous = "rolls over the"
-	response_disarm_simple = "roll over"
-	response_harm_continuous = "stomps on"
-	response_harm_simple = "stomp on"
 	pass_flags = PASSTABLE
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST|MOB_REPTILE
-	gold_core_spawnable = FRIENDLY_SPAWN
-	turns_per_move = 10
-	can_be_held = TRUE
-	ai_controller = /datum/ai_controller/dog //Tegus can be taught to fetch
-	stop_automated_movement = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/tegu/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/pet_bonus, "sticks its tongue out contentedly!")
-
-/mob/living/simple_animal/hostile/retaliate/tegu/gus
+/mob/living/basic/lizard/tegu/gus
 	name = "Gus"
 	real_name = "Gus"
 	desc = "The Research Department's beloved pet tegu."
@@ -55,15 +31,20 @@
 	resize = 0.5
 	update_transform()
 
-/mob/living/simple_animal/hostile/carp/megacarp/shorki
-	desc = "A not so ferocious, fang bearing creature that resembles a shark. This one seems a little big for its tank."
-	faction = list("neutral")
-	gender = MALE
-
-/mob/living/simple_animal/hostile/carp/megacarp/shorki/Initialize(mapload)
-	. = ..()
+/mob/living/basic/carp/mega/shorki
 	name = "Shorki"
-	real_name = "Shorki"
+	desc = "A not so ferocious, fang bearing creature that resembles a shark. This one seems a little big for its tank."
+	faction = list(FACTION_NEUTRAL)
+	gender = MALE
+	gold_core_spawnable = NO_SPAWN
+	ai_controller = /datum/ai_controller/basic_controller/carp/pet
+
+/mob/living/basic/carp/mega/shorki/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/ai_retaliate)
+	AddElement(/datum/element/pet_bonus, "bloops happily!")
+	name = initial(name)
+	real_name = initial(name)
 
 /mob/living/simple_animal/pet/gondola/funky
 	name = "Funky"
@@ -86,13 +67,13 @@
 	name = "Wojtek"
 	real_name = "Wojtek"
 	desc = "The bearer of Bluespace Artillery."
-	faction = list("neutral")
+	faction = list(FACTION_NEUTRAL)
 	gender = MALE
 
-/mob/living/simple_animal/chicken/teshari
+/mob/living/basic/chicken/teshari
 	name = "Teshari"
 	real_name = "Teshari"
 	desc = "A timeless classic."
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 0
-	maxbodytemp = 30000
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = 0
+	maximum_survivable_temperature = 30000

@@ -9,17 +9,17 @@
 	medical_record_text = "Patient seems to get excited easily."
 	value = 0
 	mob_trait = TRAIT_EXCITABLE
-	icon = "laugh-beam"
+	icon = FA_ICON_LAUGH_BEAM
 
 /datum/quirk/personalspace
 	name = "Personal Space"
-	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass.."
-	gain_text = span_notice("You'd like it if people kept their hands off your ass.")
-	lose_text = span_notice("You're less concerned about people touching your ass.")
+	desc = "You'd rather people keep their hands off your rear end."
+	gain_text = span_notice("You'd like it if people kept their hands off your butt.")
+	lose_text = span_notice("You're less concerned about people touching your butt.")
 	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
 	mob_trait = TRAIT_PERSONALSPACE
-	icon = "hand-paper"
+	icon = FA_ICON_HAND_PAPER
 
 /datum/quirk/dnr
 	name = "Do Not Revive"
@@ -29,20 +29,33 @@
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
-	icon = "skull-crossbones"
+	icon = FA_ICON_SKULL_CROSSBONES
 
 // uncontrollable laughter
 /datum/quirk/item_quirk/joker
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."
 	value = 0
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_PROCESSES
 	medical_record_text = "Patient suffers with sudden and uncontrollable bursts of laughter."
 	var/pcooldown = 0
 	var/pcooldown_time = 60 SECONDS
-	icon = "grin-squint-tears"
+	icon = FA_ICON_GRIN_TEARS
 
-/datum/quirk/item_quirk/joker/add_unique()
+/datum/quirk/item_quirk/joker/add_unique(client/client_source)
 	give_item_to_holder(/obj/item/paper/joker, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+
+/datum/quirk/item_quirk/joker/process()
+	if(pcooldown > world.time)
+		return
+	pcooldown = world.time + pcooldown_time
+	var/mob/living/carbon/human/user = quirk_holder
+	if(user && istype(user))
+		if(user.stat == CONSCIOUS)
+			if(prob(20))
+				user.emote("laugh")
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
 
 /obj/item/paper/joker
 	name = "disability card"
@@ -153,18 +166,6 @@
 
 	balloon_alert(user, "card flipped")
 
-/datum/quirk/item_quirk/joker/process()
-	if(pcooldown > world.time)
-		return
-	pcooldown = world.time + pcooldown_time
-	var/mob/living/carbon/human/user = quirk_holder
-	if(user && istype(user))
-		if(user.stat == CONSCIOUS)
-			if(prob(20))
-				user.emote("laugh")
-				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
-				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
-
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
 	desc = "You happen to act like a feline, for whatever reason."
@@ -172,22 +173,27 @@
 	lose_text = span_notice("You feel less attracted to lasers.")
 	medical_record_text = "Patient seems to possess behavior much like a feline."
 	mob_trait = TRAIT_FELINE
-	icon = "cat"
+	icon = FA_ICON_CAT
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"
-	desc = "Bark. You seem to act like a canine for whatever reason."
-	icon = "canine"
+	desc = "Bark. You seem to act like a canine for whatever reason. This will replace most other tongue-based speech quirks."
+	icon = FA_ICON_DOG
 	value = 0
 	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."
 
-/datum/quirk/item_quirk/canine/add_unique()
+/datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/internal/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
+
+	// make sure the new tongue gets the actions from any species specific things (like hemophage blood drain, etc)
+	for(var/datum/action/action as anything in old_tongue.actions)
+		new_tongue.add_item_action(action.type)
+	// as well as the flags from the old tongue (like corruption from hemophage)
+	new_tongue.organ_flags |= old_tongue.organ_flags
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)
-
-	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder)
 
 /datum/quirk/sensitivesnout
@@ -198,4 +204,29 @@
 	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
 	value = 0
 	mob_trait = TRAIT_SENSITIVESNOUT
-	icon = "fingerprint"
+	icon = FA_ICON_FINGERPRINT
+
+/datum/quirk/overweight
+	name = "Overweight"
+	desc = "You weigh more than an average person at your size, you've gotten used to it by now."
+	gain_text = span_notice("Your body feels heavy.")
+	lose_text = span_notice("Your suddenly feel lighter!")
+	value = 0
+	icon = FA_ICON_HAMBURGER // I'm very hungry. Give me the burger!
+	medical_record_text = "Patient weighs higher than average."
+	mob_trait = TRAIT_FAT
+
+/datum/quirk/overweight/add(client/client_source)
+	quirk_holder.add_movespeed_modifier(/datum/movespeed_modifier/overweight)
+
+/datum/quirk/overweight/remove()
+	quirk_holder.remove_movespeed_modifier(/datum/movespeed_modifier/overweight)
+
+/datum/movespeed_modifier/overweight
+	multiplicative_slowdown = 0.5 //Around that of a dufflebag, enough to be impactful but not debilitating.
+
+/datum/mood_event/fat/New(mob/parent_mob, ...)
+	. = ..()
+	if(HAS_TRAIT_FROM(parent_mob, TRAIT_FAT, QUIRK_TRAIT))
+		mood_change = 0 // They are probably used to it, no reason to be viscerally upset about it.
+		description = "<b>I'm fat.</b>"

@@ -36,8 +36,29 @@
 
 	return ..()
 
+/mob/dead/new_player/mob_negates_gravity()
+	return TRUE //no need to calculate if they have gravity.
+
 /mob/dead/new_player/prepare_huds()
 	return
+
+/mob/dead/new_player/Topic(href, href_list)
+	if (usr != src)
+		return
+
+	if (!client)
+		return
+
+	if (client.interviewee)
+		return
+
+	if (href_list["viewpoll"])
+		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
+		poll_player(poll)
+
+	if (href_list["votepollref"])
+		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
+		vote_on_poll_handler(poll, href_list)
 
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
@@ -74,6 +95,7 @@
 		observer.real_name = observer.client.prefs.read_preference(/datum/preference/name/real_name)
 		observer.name = observer.real_name
 		observer.client.init_verbs()
+		observer.client.player_details.time_of_death = world.time
 	observer.update_appearance()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
@@ -208,7 +230,7 @@
 	if(humanc) //These procs all expect humans
 		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
 		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
-		GLOB.data_core.manifest_inject(humanc, humanc.client)
+		GLOB.manifest.inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
@@ -218,6 +240,7 @@
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
+		SSpersistence.load_modular_persistence(humanc.get_organ_slot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)

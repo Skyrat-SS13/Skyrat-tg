@@ -1,5 +1,12 @@
 /obj/item/storage/toolbox/ammo
 	desc = "It contains a few clips."
+	icon_state = "ammobox"
+	inhand_icon_state = "ammobox"
+	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
+	has_latches = FALSE
+	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
+	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
 
 /obj/item/storage/toolbox/ammo/PopulateContents()
 	return
@@ -46,10 +53,12 @@
 /obj/item/storage/toolbox/ammo/full/bison
 	name = "ammo box (PP-95)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/plastikov9mm
+	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	amount = 4
 
-/obj/item/storage/toolbox/ammo/full/bison/ert
+/obj/item/storage/toolbox/ammo/full/nri_smg
+	name = "ammo box (QLP/04)"
+	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	amount = 7
 
 /obj/item/storage/toolbox/ammo/full/l6_saw

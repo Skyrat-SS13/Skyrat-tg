@@ -10,6 +10,7 @@
 */ // SKYRAT EDIT END
 #define CHANNEL_TRAITOR 1017
 #define CHANNEL_CHARGED_SPELL 1016
+#define CHANNEL_ELEVATOR 1015
 
 // SKYRAT EDIT START - JUKEBOX
 #define CHANNEL_JUKEBOX 1021
@@ -49,6 +50,7 @@
 #define PICKUP_SOUND_VOLUME 15
 #define DROP_SOUND_VOLUME 20
 #define YEET_SOUND_VOLUME 90
+#define BLOCK_SOUND_VOLUME 70
 
 #define AMBIENCE_GENERIC "generic"
 #define AMBIENCE_HOLY "holy"
@@ -133,6 +135,7 @@
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_CARP "announcer_carp"
 #define ANNOUNCER_VORTEXANOMALIES "announcer_vortexanomalies"
+#define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
@@ -152,6 +155,8 @@
 #define ANNOUNCER_KLAXON "announcer_klaxon"
 #define ANNOUNCER_ICARUS "announcer_icarus"
 #define ANNOUNCER_NRI_RAIDERS "announcer_nri_raiders"
+#define ANNOUNCER_OUTBREAK6 "announcer_outbreak6"
+#define ANNOUNCER_FUNGI "announcer_fungi"
 //SKYRAT EDIT END
 
 
@@ -196,6 +201,8 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_KLAXON,
 	ANNOUNCER_ICARUS,
 	ANNOUNCER_NRI_RAIDERS,
+	ANNOUNCER_OUTBREAK6,
+	ANNOUNCER_FUNGI,
 	//SKYRAT EDIT END
 ))
 

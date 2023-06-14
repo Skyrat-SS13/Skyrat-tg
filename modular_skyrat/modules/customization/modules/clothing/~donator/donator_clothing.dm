@@ -109,7 +109,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(selection)
 			if("Save")
@@ -126,7 +126,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -198,10 +198,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
+	armor_type = /datum/armor/tacticool_black
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
 // Donation reward for Thedragmeme
+
+/datum/armor/tacticool_black
+	wound = 5
+
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
 	desc = "Almost like regular jackboots... why are they on a high heel?"
@@ -462,7 +466,7 @@
 
 /obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/collar)
+	create_storage(storage_type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 
@@ -499,6 +503,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
+	worn_icon_state = "darksheath"
 
 /obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
@@ -520,7 +525,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	supports_variations_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
+	armor_type = /datum/armor/none
 
 // Donation reward for inferno707
 /obj/item/clothing/mask/hheart
@@ -692,6 +697,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax2
+	name = "azulean's environment helmet"
+	desc = "An Azulean-made Enviro-Helmet, adjusted for the unique skull shape typical of the species. Alongside the standard features, it includes an embossment of the Azulean Crest on the back of the helmet."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anahead"
+
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
@@ -701,29 +715,20 @@
 	icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/bio_hood/jax
-	name = "xuracorp biohazard hood"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-	icon_state = "bio_hood_jax"
-	desc = "A hood composed of proprietary material from a Nanotrasen Affiliate."
+/obj/item/clothing/under/plasmaman/candlejax2
+	name = "azulean's environment suit"
+	desc = "An Azulean-made Enviro-Suit. Fitted to the Azulean form, it has surplus containment fabric designed to give the solidified mass of plasma that was once a tail some breathing room."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "ana_envirosuit"
 
+// Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/jax2
 	name = "xuracorp hazard underfitting"
 	desc = "A hazard suit fitted with bio-resistant fibers. Utilizes self-sterilizing pumps fitted in the back."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
-
-/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
-	name = "xuracorp enameled labcoat"
-	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "labcoat_xc"
-	body_parts_covered = CHEST|ARMS|LEGS
-	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck
@@ -774,8 +779,8 @@
 /obj/item/clothing/suit/jacket/rax
 	name = "navy aerostatic jacket"
 	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "blueshield"
 
 // Donation reward for DeltaTri
@@ -1097,6 +1102,8 @@
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
+
 // Donation reward for Kay-Nite
 /obj/item/clothing/glasses/eyepatch/rosecolored
 	name = "rose-colored eyepatch"
@@ -1376,3 +1383,187 @@
 	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringblack"
 	spans = list("glossy")
+
+//reward for SomeRandomOwl
+/obj/item/clothing/head/costume/strigihat
+	name = "starry witch hat"
+	desc = "A cute witch hat typically worn by an owl-like teshari."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/head_teshari.dmi'
+	icon_state = "strigihat"
+
+//Donation reward for Razurath
+/obj/item/clothing/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	desc = "A Nanotrasen officer cap. Now darker, golder, and cooler!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "razurath_hat"
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	desc = "A fancy Nanotrasen officer coat. Now darker, golder, and cooler than ever!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "razurath_coat"
+
+// Donation reward for MaSvedish
+/obj/item/clothing/mask/holocigarette/masvedishcigar
+	name = "holocigar"
+	desc = "A soft buzzing device that, using holodeck technology, replicates a slow burn cigar. Now with less-shock technology."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	inhand_icon_state = "masvedishcigar_off"
+	worn_icon_state = "masvedishcigar_off"
+	icon_state = "masvedishcigar_off"
+	icon_on = "masvedishcigar_on"
+	icon_off = "masvedishcigar_off"
+
+// Donation reward for LT3
+/obj/item/clothing/suit/armor/skyy
+	name = "silver jacket mk II"
+	desc = "A jacket for those with a commanding presence. Made of synthetic fabric, it's interwoven with a special alloy that provides extra protection and style."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "lt3_jacket"
+	inhand_icon_state = "syndicate-black"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/jacket/skyy
+	name = "silver jacket"
+	desc = "A jacket for those with a commanding presence. Made of synthetic fabric, it's interwoven with a special alloy that provides extra protection and style."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "lt3_jacket"
+	inhand_icon_state = "syndicate-black"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/under/pants/skyy
+	name = "silver jeans"
+	desc = "A pair of jeans for those with a commanding presence. Made of shining, silver denim, it's interwoven with a special alloy that provides extra protection and style."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "lt3_jeans"
+	inhand_icon_state = "lt3_jeans"
+
+/obj/item/clothing/gloves/skyy
+	name = "charcoal fingerless gloves"
+	desc = "Valuing form over function, these gloves barely cover more than the palm of your hand."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
+	icon_state = "lt3_gloves"
+
+// Donation reward for Lolpopomg101
+/obj/item/clothing/suit/hooded/colorblockhoodie
+	name = "color-block hoodie"
+	desc = "A soft pastel color-block hoodie from an unrecognizable brand."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "colorblockhoodie"
+	hoodtype = /obj/item/clothing/head/hooded/colorblockhoodie
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/hooded/colorblockhoodie
+	name = "hood"
+	desc = "Very soft on the inside!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "colorblockhood"
+	flags_inv = HIDEHAIR
+
+/obj/item/clothing/suit/toggle/digicoat
+	toggle_noun = "holo-dislpay"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+//Public donation reward for Razurath
+/obj/item/clothing/suit/toggle/digicoat/glitched
+	name = "hacked digicoat"
+	desc = "Glitched images display across the back. Cool!"
+	base_icon_state = "digicoat_glitched"
+	icon_state = "digicoat_glitched"
+
+/obj/item/clothing/suit/toggle/digicoat/nanotrasen
+	name = "nanotrasen digicoat"
+	desc = "A company jacket of popular design."
+	base_icon_state = "digicoat_nt"
+	icon_state = "digicoat_nt"
+
+/obj/item/clothing/suit/toggle/digicoat/interdyne
+	name = "interdyne digicoat"
+	desc = "A sinister colored jacket from a familiar company."
+	base_icon_state = "digicoat_interdyne"
+	icon_state = "digicoat_interdyne"
+
+/obj/item/clothing/suit/armor/hos/elofy
+	name = "solar admiral coat"
+	desc = "A traditional naval officer uniform of the late 63rd Expeditionary Fleet. This faithful recreation bears the admiral's crest of the Luna Wolves Legion. It is uniquely tailored to the form of a certain wolf girl."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "coat_blackblue"
+	inhand_icon_state = "hostrench"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	supports_variations_flags = NONE
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black-Red" = list(
+			RESKIN_ICON_STATE = "coat_blackred",
+			RESKIN_WORN_ICON_STATE = "coat_blackred"
+		),
+		"White-Red" = list(
+			RESKIN_ICON_STATE = "coat_whitered",
+			RESKIN_WORN_ICON_STATE = "coat_whitered"
+		),
+		"White-Blue" = list(
+			RESKIN_ICON_STATE = "coat_whiteblue",
+			RESKIN_WORN_ICON_STATE = "coat_whiteblue"
+		)
+	)
+
+/obj/item/clothing/suit/armor/hos/elofy/examine_more(mob/user)
+	. = ..()
+	. += "It seems particularly soft and has subtle ballistic fibers intwined with the soft fabric that is perfectedly tailored to the body that wears it. Each golden engraving seems to reflect against your eyes with a slightly blinding flare. This is part of a full set of Luna Wolves Legion battle garb."
+
+/obj/item/clothing/gloves/elofy
+	name = "solar admiral gloves"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
+	icon_state = "gloves_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"White" = list(
+			RESKIN_ICON_STATE = "gloves_white",
+			RESKIN_WORN_ICON_STATE = "gloves_white"
+		)
+	)
+
+/obj/item/clothing/shoes/jackboots/elofy
+	name = "solar admiral boots"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
+	icon_state = "boots_blackblue"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black-Red" = list(
+			RESKIN_ICON_STATE = "boots_blackred",
+			RESKIN_WORN_ICON_STATE = "boots_blackred"
+		),
+		"White-Red" = list(
+			RESKIN_ICON_STATE = "boots_whitered",
+			RESKIN_WORN_ICON_STATE = "boots_whitered"
+		),
+		"White-Blue" = list(
+			RESKIN_ICON_STATE = "boots_whiteblue",
+			RESKIN_WORN_ICON_STATE = "boots_whiteblue"
+		)
+	)
+

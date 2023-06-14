@@ -70,7 +70,7 @@
 		if("PRG_call_extraction")
 			if (uplink_computer.opfor_data.contractor_hub.current_contract.status != CONTRACT_STATUS_EXTRACTING)
 				if (uplink_computer.opfor_data.contractor_hub.current_contract.handle_extraction(user))
-					user.playsound_local(user, 'sound/effects/confirmdropoff.ogg', 100, TRUE)
+					user.playsound_local(user, 'modular_skyrat/modules/contractor/sound/confirmdropoff.ogg', 100, TRUE)
 					uplink_computer.opfor_data.contractor_hub.current_contract.status = CONTRACT_STATUS_EXTRACTING
 
 					program_icon_state = "extracted"
@@ -136,7 +136,7 @@
 
 	if (uplink_computer?.opfor_data)
 		var/datum/opposing_force/opfor_data = uplink_computer.opfor_data
-		data += get_header_data()
+		data += list()
 
 		if (opfor_data.contractor_hub.current_contract)
 			data["ongoing_contract"] = TRUE

@@ -23,8 +23,9 @@
 	maxHealth = 750 //Very durable
 	health = 500
 	healable = FALSE
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_cutoff_red = 0
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 40
 	melee_damage_upper = 40
@@ -232,7 +233,7 @@
 	horrorform.devouring = TRUE
 	horrorform.visible_message(span_warning("[horrorform] begins ripping apart and feasting on [lunch]!"), \
 					span_danger("We begin to feast upon [lunch]..."))
-	if(!do_mob(usr, lunch, 5 SECONDS))
+	if(!do_after(usr, 5 SECONDS, lunch))
 		horrorform.devouring = FALSE
 		return FALSE
 	horrorform.devouring = FALSE

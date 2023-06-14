@@ -23,5 +23,5 @@
 	if(!isturf(turf_target) || !turf_target.liquids)
 		return NONE
 
-	if(interaction_callback.Invoke(target, turf_target, user, turf_target.liquids))
+	if(interaction_callback.Invoke(turf_target, user, turf_target.liquids))
 		return COMPONENT_CANCEL_ATTACK_CHAIN

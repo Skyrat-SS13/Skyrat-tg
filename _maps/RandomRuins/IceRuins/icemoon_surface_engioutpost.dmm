@@ -44,9 +44,8 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/east{
-	start_charge = 0
-	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/mapping_helpers/apc/no_charge,
 /turf/open/floor/iron,
 /area/ruin/planetengi)
 "au" = (
@@ -65,7 +64,7 @@
 /turf/open/floor/plating,
 /area/ruin/planetengi)
 "ax" = (
-/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
 	},
@@ -108,7 +107,7 @@
 /turf/open/floor/engine/o2,
 /area/ruin/planetengi)
 "aE" = (
-/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
 	},
@@ -163,7 +162,7 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
 "aT" = (
-/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
 	},
@@ -187,6 +186,16 @@
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /turf/open/floor/plating,
+/area/ruin/planetengi)
+"bb" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/grey_tide/directional/north,
+/turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "bc" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
@@ -237,13 +246,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/planetengi)
-"br" = (
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
-/obj/structure/sign/poster/official/build{
-	pixel_x = -32
-	},
-/turf/open/floor/iron,
-/area/ruin/planetengi)
 "bs" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 6
@@ -270,24 +272,6 @@
 "bz" = (
 /obj/machinery/door/firedoor/heavy,
 /turf/open/floor/iron,
-/area/ruin/planetengi)
-"bA" = (
-/obj/structure/window/reinforced/plasma/spawner,
-/obj/structure/window/reinforced/plasma/spawner/north,
-/obj/structure/window/reinforced/plasma/spawner/west,
-/obj/machinery/atmospherics/components/unary/vent_scrubber{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/ruin/planetengi)
-"bB" = (
-/obj/structure/window/reinforced/plasma/spawner,
-/obj/structure/window/reinforced/plasma/spawner/east,
-/obj/structure/window/reinforced/plasma/spawner/north,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4
-	},
-/turf/open/floor/engine,
 /area/ruin/planetengi)
 "bD" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -488,7 +472,7 @@
 /turf/open/floor/iron,
 /area/ruin/planetengi)
 "ct" = (
-/obj/structure/window/reinforced/plasma/spawner/north,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/ruin/planetengi)
@@ -631,15 +615,6 @@
 "de" = (
 /turf/template_noop,
 /area/template_noop)
-"df" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
-	dir = 4
-	},
-/obj/structure/sign/poster/official/pda_ad{
-	pixel_y = -32
-	},
-/turf/open/floor/iron,
-/area/ruin/planetengi)
 "dg" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 4
@@ -693,11 +668,11 @@
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "dr" = (
+/obj/effect/mob_spawn/corpse/human/engineer/mod,
+/obj/effect/decal/cleanable/blood/old,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
-/obj/effect/mob_spawn/corpse/human/engineer/mod,
-/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "ds" = (
@@ -746,18 +721,6 @@
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/planetengi)
-"dB" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/structure/chair/sofa/bench/left{
-	dir = 4
-	},
-/obj/structure/sign/poster/contraband/grey_tide{
-	pixel_y = 32
-	},
-/turf/open/floor/iron/icemoon,
-/area/ruin/planetengi)
 "dC" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -783,11 +746,23 @@
 	},
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
+"he" = (
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
+/obj/structure/sign/poster/official/build/directional/west,
+/turf/open/floor/iron,
+/area/ruin/planetengi)
+"hS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/pda_ad/directional/south,
+/turf/open/floor/iron,
+/area/ruin/planetengi)
 "kS" = (
-/obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/box/corners{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "na" = (
@@ -813,6 +788,15 @@
 "vD" = (
 /turf/closed/wall/mineral/cult,
 /area/ruin/planetengi)
+"vK" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/planetengi)
 "xA" = (
 /obj/machinery/portable_atmospherics/canister,
 /obj/machinery/light/small/directional/south,
@@ -830,8 +814,8 @@
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "Iy" = (
-/obj/effect/turf_decal/tile/yellow,
 /mob/living/simple_animal/hostile/construct/proteon,
+/obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "Je" = (
@@ -848,12 +832,21 @@
 	},
 /turf/open/floor/plating/icemoon,
 /area/ruin/planetengi)
+"MN" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/planetengi)
 "Nd" = (
 /obj/structure/girder/displaced,
+/obj/effect/turf_decal/box/corners,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
-/obj/effect/turf_decal/box/corners,
 /turf/open/floor/iron/icemoon,
 /area/ruin/planetengi)
 "UK" = (
@@ -901,7 +894,7 @@ do
 an
 aG
 ba
-br
+he
 cg
 bd
 by
@@ -970,7 +963,7 @@ bc
 cm
 bS
 bZ
-df
+hS
 do
 do
 do
@@ -1077,7 +1070,7 @@ bT
 cV
 bG
 do
-dB
+bb
 UK
 dq
 dD
@@ -1093,7 +1086,7 @@ cG
 bd
 bW
 cf
-bA
+MN
 cJ
 cW
 bd
@@ -1135,7 +1128,7 @@ cG
 bH
 bZ
 cj
-bB
+vK
 cW
 cY
 dj

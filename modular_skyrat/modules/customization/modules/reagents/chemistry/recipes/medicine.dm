@@ -12,3 +12,15 @@
 	results = list(/datum/reagent/medicine/nanite_slurry = 3)
 	required_reagents = list(/datum/reagent/foaming_agent = 1, /datum/reagent/gold = 1, /datum/reagent/iron = 1)
 	mix_message = "The mixture becomes a metallic slurry."
+
+
+/datum/chemical_reaction/medicine/taste_suppressor
+	results = list(/datum/reagent/medicine/taste_suppressor = 3)
+	required_reagents = list(/datum/reagent/sodium = 1, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
+	mix_message = "The mixture becomes clear like water."
+
+
+/datum/chemical_reaction/medicine/taste_suppressor/maint
+	results = list(/datum/reagent/medicine/taste_suppressor = 3, /datum/reagent/chlorine = 1) // The chlorine dissociated from the sodium to allow for the synthesis of the taste suppressor
+	required_reagents = list(/datum/reagent/consumable/salt = 2, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
+	required_temp = 300

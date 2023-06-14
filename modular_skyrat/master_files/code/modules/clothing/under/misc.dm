@@ -18,7 +18,8 @@
 	name = "gear harness"
 	desc = "A simple, inconspicuous harness replacement for a jumpsuit."
 	icon_state = "gear_harness"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = NONE
+	attachment_slot_override = CHEST
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -26,6 +27,7 @@
 	name = "collection of leaves"
 	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
 	icon_state = "eve"
+	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/under/misc/skyrat/gear_harness/adam
 	name = "leaf"
@@ -53,5 +55,10 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
+
+/datum/armor/utility_syndicate
+	melee = 10
+	fire = 50
+	acid = 40

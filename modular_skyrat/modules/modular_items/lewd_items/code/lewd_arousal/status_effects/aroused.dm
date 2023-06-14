@@ -25,7 +25,7 @@
 	var/temp_pleasure = BASE_PAIN_AND_PLEASURE_ADJUSTMENT
 	var/temp_pain = BASE_PAIN_AND_PLEASURE_ADJUSTMENT
 
-	var/obj/item/organ/external/genital/testicles/balls = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/testicles/balls = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(balls && balls.internal_fluid_full())
 		temp_arousal += BLUEBALL_AROUSAL_MODIFIER
 

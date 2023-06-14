@@ -20,7 +20,7 @@
 
 /obj/machinery/rnd/Initialize(mapload)
 	. = ..()
-	if(!CONFIG_GET(flag/no_default_techweb_link))
+	if(!CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
 		connect_techweb(SSresearch.science_tech)
 	wires = new /datum/wires/rnd(src)
 
@@ -127,7 +127,7 @@
 	var/stack_name
 	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
 		stack_name = "bluespace"
-		use_power(MINERAL_MATERIAL_AMOUNT / 10)
+		use_power(SHEET_MATERIAL_AMOUNT / 10)
 	else
 		var/obj/item/stack/S = item_inserted
 		stack_name = S.name

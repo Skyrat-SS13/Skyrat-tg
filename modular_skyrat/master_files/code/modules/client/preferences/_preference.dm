@@ -58,12 +58,16 @@
 		part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, part_enabled)
 	return ((passed_initial_check || allowed) && part_enabled && emissives_allowed)
 
-/datum/preference/tri_bool/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/tri_bool/proc/is_emissive_allowed(datum/preferences/preferences)
+	return preferences?.read_preference(/datum/preference/toggle/allow_emissives)
+
+/datum/preference/tri_bool/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if (type == abstract_type)
 		return ..()
 	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
 		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value[1]), sanitize_integer(value[2]), sanitize_integer(value[3]))
+	if(is_emissive_allowed(preferences))
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value[1]), sanitize_integer(value[2]), sanitize_integer(value[3]))
 
 /datum/preference/color/mutant
 	abstract_type = /datum/preference/color/mutant
@@ -86,9 +90,6 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	default_value = FALSE
-
-	/// The linked preferences to this toggle. Automatically filled.
-	var/list/linked_preference_paths = list()
 
 /datum/preference/toggle/mutant_toggle/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
@@ -191,22 +192,30 @@
 
 	return (savefile_key in species.get_features())
 
+/// Apply this preference onto the given human.
+/// May be overriden by subtypes.
+/// Called when the savefile_identifier == PREFERENCE_CHARACTER.
+///
+/// Returns whether the bodypart is actually visible.
 /datum/preference/choiced/mutant_choice/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	if(!preferences || !is_visible(target, preferences))
+	// body part is not the default/none value.
+	var/bodypart_is_visible = preferences && is_visible(target, preferences)
+
+	if(!bodypart_is_visible)
 		value = create_default_value()
 
 	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
 		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = value, MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-		return TRUE
+		return bodypart_is_visible
 
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
-	return TRUE
+	return bodypart_is_visible
 
 /datum/preference/toggle/emissive
 	abstract_type = /datum/preference/toggle/emissive
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
-	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, whatever that means.
+	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, aka not None
 	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/toggle/emissive/is_accessible(datum/preferences/preferences)

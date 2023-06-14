@@ -1,7 +1,35 @@
-///Sends an announcement to all players and formats it accordingly. Use this for big bad shit.
-/proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message, players)
+/**
+ * Make a big red text announcement to
+ *
+ * Formatted like:
+ *
+ * " Message from sender "
+ *
+ * " Title "
+ *
+ * " Text "
+ *
+ * Arguments
+ * * text - required, the text to announce
+ * * title - optional, the title of the announcement.
+ * * sound - optional, the sound played accompanying the announcement
+ * * type - optional, the type of the announcement, for some "preset" announcement templates. "Priority", "Captain", "Syndicate Captain"
+ * * sender_override - optional, modifies the sender of the announcement
+ * * has_important_message - is this message critical to the game (and should not be overridden by station traits), or not
+ * * players - a list of all players to send the message to. defaults to all players (not including new players)
+ * * encode_title - if TRUE, the title will be HTML encoded
+ * * encode_text - if TRUE, the text will be HTML encoded
+ */
+/proc/priority_announce(text, title = "", sound, type, sender_override, has_important_message = FALSE, list/mob/players, encode_title = TRUE, encode_text = TRUE)
 	if(!text)
 		return
+
+	if(encode_title && title && length(title) > 0)
+		title = html_encode(title)
+	if(encode_text)
+		text = html_encode(text)
+		if(!length(text))
+			return
 
 	var/announcement
 
@@ -14,10 +42,10 @@
 	if(type == "Priority")
 		announcement += "<h1 class='alert'>Priority Announcement</h1>"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
+			announcement += "<br><h2 class='alert'>[title]</h2>"
 	else if(type == JOB_CAPTAIN)
 		announcement += "<h1 class='alert'>Captain Announces</h1>"
-		GLOB.news_network.submit_article(html_encode(text), "Captain's Announcement", "Station Announcements", null)
+		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
 	else if(type == "Syndicate Captain")
 		announcement += "<h1 class='alert'>Syndicate Captain Announces</h1>"
 
@@ -27,7 +55,7 @@
 		else
 			announcement += "<h1 class='alert'>[sender_override]</h1>"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
+			announcement += "<br><h2 class='alert'>[title]</h2>"
 
 		if(!sender_override)
 			if(title == "")
@@ -39,7 +67,7 @@
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
 		announcement +=  SSstation.announcer.custom_alert_message
 	else
-		announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
+		announcement += "<br><span class='alert'>[text]</span><br>"
 	announcement += "<br>"
 
 	if(!players)
@@ -109,34 +137,3 @@
 		alert_sound_to_playing(sound('sound/misc/notice2.ogg'), players = players)
 
 
-/**
- * Summon the crew for an emergency meeting
- *
- * Teleports the crew to a specified area, and tells everyone (via an announcement) who called the meeting. Should only be used during april fools!
- * Arguments:
- * * user - Mob who called the meeting
- * * button_zone - Area where the meeting was called and where everyone will get teleported to
- */
-/proc/call_emergency_meeting(mob/living/user, area/button_zone)
-	var/meeting_sound = sound('sound/misc/emergency_meeting.ogg')
-	var/announcement
-	announcement += "<h1 class='alert'>Captain Alert</h1>"
-	announcement += "<br>[span_alert("[user] has called an Emergency Meeting!")]<br><br>"
-
-	for(var/mob/mob_to_teleport in GLOB.player_list) //gotta make sure the whole crew's here!
-		if(isnewplayer(mob_to_teleport) || iscameramob(mob_to_teleport))
-			continue
-		to_chat(mob_to_teleport, announcement)
-		SEND_SOUND(mob_to_teleport, meeting_sound) //no preferences here, you must hear the funny sound
-		mob_to_teleport.overlay_fullscreen("emergency_meeting", /atom/movable/screen/fullscreen/emergency_meeting, 1)
-		addtimer(CALLBACK(mob_to_teleport, TYPE_PROC_REF(/mob, clear_fullscreen), "emergency_meeting"), 3 SECONDS)
-
-		if (is_station_level(mob_to_teleport.z)) //teleport the mob to the crew meeting
-			var/turf/target
-			var/list/turf_list = get_area_turfs(button_zone)
-			while (!target && turf_list.len)
-				target = pick_n_take(turf_list)
-				if (isclosedturf(target))
-					target = null
-					continue
-				mob_to_teleport.forceMove(target)

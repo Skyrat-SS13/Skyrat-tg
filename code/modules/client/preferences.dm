@@ -2,20 +2,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences
 	var/client/parent
-	//doohickeys for savefiles
+	/// The path to the general savefile for this datum
 	var/path
-	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 30 //SKYRAT EDIT CHANGE
+	/// Whether or not we allow saving/loading. Used for guests, if they're enabled
+	var/load_and_save = TRUE
+	/// Ensures that we always load the last used save, QOL
+	var/default_slot = 1
+	/// The maximum number of slots we're allowed to contain
+	var/max_save_slots = 30 //SKYRAT EDIT - ORIGINAL 3
 
-	//non-preference stuff
-	var/muted = 0
+	/// Bitflags for communications that are muted
+	var/muted = NONE
+	/// Last IP that this client has connected from
 	var/last_ip
+	/// Last CID that this client has connected from
 	var/last_id
 
-	//game-preferences
-	var/lastchangelog = "" //Saved changlog filesize to detect if there was a change
+	/// Cached changelog size, to detect new changelogs since last join
+	var/lastchangelog = ""
 
-	//Antag preferences
+	/// List of ROLE_X that the client wants to be eligible for
 	var/list/be_special = list() //Special role selection
 
 	/// Custom keybindings. Map of keybind names to keyboard inputs.
@@ -99,13 +105,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		middleware += new middleware_type(src)
 
 	if(IS_CLIENT_OR_MOCK(parent))
-		if(!is_guest_key(parent.key))
-			load_path(parent.ckey)
-			if(!fexists(path))
-				try_savefile_type_migration()
-			unlock_content = !!parent.IsByondMember()
-			if(unlock_content)
-				max_save_slots = 40 //SKYRAT EDIT CHANGE
+		load_and_save = !is_guest_key(parent.key)
+		load_path(parent.ckey)
+		if(load_and_save && !fexists(path))
+			try_savefile_type_migration()
+		unlock_content = !!parent.IsByondMember() || GLOB.donator_list[parent.ckey] //SKYRAT EDIT - ADDED DONATOR CHECK
+		if(unlock_content)
+			max_save_slots = 50 //SKYRAT EDIT - ORIGINAL 8
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
@@ -453,15 +459,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /// Updates the currently displayed body
 /atom/movable/screen/map_view/char_preview/proc/update_body()
-	// SKYRAT EDIT REMOVAL START - wipe_state() works poorly for our codebase.
-	/*
 	if (isnull(body))
 		create_body()
 	else
 		body.wipe_state()
-	*/
-	// SKYRAT EDIT REMOVAL END
-	create_body() // SKYRAT EDIT ADDITION - replacement of above
 	appearance = preferences.render_new_preview_appearance(body)
 
 /atom/movable/screen/map_view/char_preview/proc/create_body()
@@ -544,7 +545,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE)  // SKYRAT EDIT - Customization - ORIGINAL: /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.dna.features = MANDATORY_FEATURE_LIST //SKYRAT EDIT CHANGE - We need to instansiate the list with the basic features.
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
@@ -555,7 +556,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// SKYRAT EDIT ADDITION START - middleware apply human prefs
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
-		preference_middleware.apply_to_human(character, src)
+		preference_middleware.apply_to_human(character, src, visuals_only = visuals_only)
 	// SKYRAT EDIT ADDITION END
 
 	character.dna.real_name = character.real_name

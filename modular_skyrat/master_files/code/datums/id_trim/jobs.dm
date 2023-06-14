@@ -52,13 +52,12 @@
 	trim_state = "trim_blueshield"
 	department_color = COLOR_COMMAND_BLUE
 	subdepartment_color = COLOR_CENTCOM_BLUE // Not the other way around. I think.
-	orbit_icon = "shield-dog"
 	sechud_icon_state = SECHUD_BLUESHIELD
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG, ACCESS_COURT, ACCESS_CARGO, ACCESS_GATEWAY) // Someone needs to come back and order these alphabetically, this is a nightmare
 	minimal_access = list(
 		ACCESS_DETECTIVE, ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_ENGINEERING, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH,
 		ACCESS_RC_ANNOUNCE, ACCESS_COMMAND, ACCESS_WEAPONS,
-		)
+	)
 	minimal_wildcard_access = list(ACCESS_CAPTAIN)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
@@ -67,7 +66,6 @@
 	trim_state = "trim_centcom"
 	department_color = COLOR_GREEN
 	subdepartment_color = COLOR_GREEN
-	orbit_icon = "clipboard-check"
 	sechud_icon_state = SECHUD_NT_CONSULTANT
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_COURT, ACCESS_WEAPONS,
@@ -80,30 +78,10 @@
 	minimal_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/security_medic
-	assignment = "Security Medic"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_securitymedic"
-	orbit_icon = "heart-pulse"
-	department_color = COLOR_ASSEMBLY_BLACK
-	subdepartment_color = COLOR_ASSEMBLY_BLACK
-	sechud_icon_state = SECHUD_SECURITY_MEDIC
-	extra_access = list(ACCESS_DETECTIVE)
-	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS)
-	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
-
-/datum/id_trim/job/security_medic/New()
-	. = ..()
-
-	// Config check for if sec has maint access.
-	if(CONFIG_GET(flag/security_has_maint_access))
-		access |= list(ACCESS_MAINT_TUNNELS)
-
 /datum/id_trim/job/corrections_officer
 	assignment = "Corrections Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_corrections_officer"
-	orbit_icon = "hands-bound"
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_ASSEMBLY_BLACK
 	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
@@ -119,7 +97,6 @@
 	trim_state = "trim_barber"
 	department_color = COLOR_SERVICE_LIME
 	subdepartment_color = COLOR_SERVICE_LIME
-	orbit_icon = "scissors"
 	sechud_icon_state = SECHUD_BARBER
 	extra_access = list()
 	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_BARBER, ACCESS_SERVICE)

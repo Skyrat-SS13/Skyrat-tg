@@ -1,17 +1,13 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
 	desc = "A vending machine with various toys. Not for the faint of heart."
-	icon_state = "lustwish_pink"
+	icon_state = "lustwish"
 	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
 	age_restrictions = TRUE
 	///Has the discount card been used on the vending machine?
 	var/card_used = FALSE
-	///What is the current color of the vending machine?
-	var/current_color = "pink"
-	///A list containing the avalible colors that the vending machine can be. Populated by the populate_vend_designs() proc
-	var/static/list/vend_designs
 	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;Don't forget to use protection!"
 	vend_reply = "Enjoy!;We're glad to satisfy your desires!"
 
@@ -47,8 +43,8 @@
 					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/clothing/head/costume/maid = 5,
+					/obj/item/clothing/head/deprivation_helmet = 5,
+					/obj/item/clothing/head/costume/skyrat/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
@@ -123,6 +119,7 @@
 					/obj/item/clothing/under/costume/jabroni = 4,
 					/obj/item/clothing/neck/human_petcollar/locked = 4,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
+					/obj/item/disk/nifsoft_uploader/dorms/contract = 5,
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/cup/bottle/hexacrocin = 4,
@@ -132,13 +129,6 @@
 	payment_department = ACCOUNT_SRV
 	default_price = 30
 	extra_price = 250
-
-///Populates vend_designs with different colors for the vending machine
-/obj/machinery/vending/dorms/proc/populate_vend_designs()
-	vend_designs = list(
-		"pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
-		"teal" = image(icon = src.icon, icon_state = "lustwish_teal"),
-	)
 
 //Changes the settings on the vendor, if the user uses the discount card.
 /obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)
@@ -157,20 +147,6 @@
 	default_price = initial(default_price)
 	extra_price = initial(extra_price)
 
-///Allows the user to change the color if the card has been used
-/obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/used_item)
-	. = ..()
-	if(.)
-		return
-
-	if(!card_used)
-		return
-
-	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
-	if(choice)
-		current_color = choice
-		update_icon()
-
 ///Performs checks to see if the user can change the color on the vending machine.
 /obj/machinery/vending/dorms/proc/check_menu(mob/living/user, obj/item/multitool)
 	if(!istype(user))
@@ -187,16 +163,13 @@
 	update_icon_state()
 	update_icon()
 
-	if(!length(vend_designs))
-		populate_vend_designs()
-
 /obj/machinery/vending/dorms/update_icon_state()
 	..()
 	if(machine_stat & BROKEN)
-		icon_state = "[base_icon_state]_[current_color]-broken"
+		icon_state = "[base_icon_state]-broken"
 		return
 
-	icon_state = "[base_icon_state]_[current_color][powered() ? null : "-off"]"
+	icon_state = "[base_icon_state][powered() ? null : "-off"]"
 
 //Refill item
 /obj/item/vending_refill/lustwish

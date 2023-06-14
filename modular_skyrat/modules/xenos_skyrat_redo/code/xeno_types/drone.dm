@@ -23,8 +23,8 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/drone/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
-	internal_organs += new /obj/item/organ/internal/alien/resinspinner
+	organs += new /obj/item/organ/internal/alien/plasmavessel
+	organs += new /obj/item/organ/internal/alien/resinspinner
 	..()
 
 /datum/action/cooldown/alien/skyrat/heal_aura

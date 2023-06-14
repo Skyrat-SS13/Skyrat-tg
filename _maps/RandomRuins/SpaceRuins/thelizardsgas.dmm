@@ -31,9 +31,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/thelizardsgas)
 "bt" = (
-/obj/structure/sign/poster/fluff/lizards_gas_payment{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/fluff/lizards_gas_payment/directional/north,
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 8
 	},
@@ -119,6 +117,15 @@
 	},
 /turf/open/floor/engine/plasma{
 	initial_gas_mix = "plasma=35000;TEMP=293.15"
+	},
+/area/ruin/space/has_grav/thelizardsgas)
+"lk" = (
+/mob/living/basic/lizard/space{
+	desc = "How are you ALIVE?!";
+	name = "Blarpo"
+	},
+/turf/open/floor/iron/white/side{
+	dir = 1
 	},
 /area/ruin/space/has_grav/thelizardsgas)
 "mN" = (
@@ -245,10 +252,9 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/north{
 	coverlocked = 0;
-	locked = 0;
-	network_id = null;
 	start_charge = 60
 	},
+/obj/effect/mapping_helpers/apc/unlocked,
 /obj/structure/cable,
 /obj/item/paper/fluff/spaceruins/lizardsgas/memorandum,
 /obj/effect/spawner/random/contraband/cannabis/lizardsgas,
@@ -340,7 +346,6 @@
 "Io" = (
 /obj/machinery/power/smes{
 	charge = 2e+006;
-	network_id = null;
 	output_level = 0
 	},
 /obj/structure/cable,
@@ -397,9 +402,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/sign/poster/fluff/lizards_gas_power{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/fluff/lizards_gas_power/directional/east,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/thelizardsgas)
 "MB" = (
@@ -441,24 +444,13 @@
 	},
 /turf/template_noop,
 /area/ruin/space/has_grav/thelizardsgas)
-"QQ" = (
-/obj/item/toy/plush/space_lizard_plushie{
-	desc = "How the fuck did he get in there?!";
-	name = "Zingo"
-	},
-/turf/open/floor/engine/plasma{
-	initial_gas_mix = "plasma=35000;TEMP=293.15"
-	},
-/area/ruin/space/has_grav/thelizardsgas)
 "RB" = (
 /obj/structure/marker_beacon/burgundy,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/thelizardsgas)
 "Ss" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/hidden,
-/obj/structure/sign/poster/fluff/lizards_gas_payment{
-	pixel_x = -32
-	},
+/obj/structure/sign/poster/fluff/lizards_gas_payment/directional/west,
 /turf/open/floor/iron/white/corner{
 	dir = 4
 	},
@@ -467,15 +459,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/thelizardsgas)
-"Ua" = (
-/mob/living/simple_animal/hostile/lizard/space{
-	desc = "How are you ALIVE?!";
-	name = "Blarpo"
-	},
-/turf/open/floor/iron/white/side{
-	dir = 1
-	},
 /area/ruin/space/has_grav/thelizardsgas)
 "Ud" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
@@ -555,6 +538,15 @@
 /obj/effect/spawner/random/food_or_drink/refreshing_beverage,
 /obj/structure/closet/secure_closet/freezer/empty/open,
 /turf/open/floor/iron/white/side,
+/area/ruin/space/has_grav/thelizardsgas)
+"YM" = (
+/obj/item/toy/plush/lizard_plushie/space/green{
+	desc = "How the fuck did he get in there?!";
+	name = "Zingo"
+	},
+/turf/open/floor/engine/plasma{
+	initial_gas_mix = "plasma=35000;TEMP=293.15"
+	},
 /area/ruin/space/has_grav/thelizardsgas)
 "Zr" = (
 /obj/effect/turf_decal/tile/dark{
@@ -818,7 +810,7 @@ Qg
 LA
 DG
 WY
-QQ
+YM
 rC
 hl
 bp
@@ -931,7 +923,7 @@ mR
 gS
 Zs
 zn
-Ua
+lk
 uh
 CA
 CA

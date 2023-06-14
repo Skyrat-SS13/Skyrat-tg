@@ -14,7 +14,6 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
-	foldable = FALSE
 	illustration = null
 	var/opened = FALSE
 
@@ -405,7 +404,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 
 /*
-*	SEC MEDIC
+*	OLD SECMED SIDEARM
 */
 
 /obj/item/storage/box/gunset/firefly

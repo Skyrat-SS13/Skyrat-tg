@@ -1,13 +1,25 @@
-#define ADMIN_CANCEL_MIDROUND_TIME (60 SECONDS) //SKYRAT EDIT - ORIGINAL 10 SECONDS
+#define ADMIN_CANCEL_MIDROUND_TIME (180 SECONDS) //SKYRAT EDIT - ORIGINAL 10 SECONDS
 
-/// From a list of rulesets, returns one based on weight and availability.
-/// Mutates the list that is passed into it to remove invalid rules.
-/datum/game_mode/dynamic/proc/pick_ruleset(list/drafted_rules)
+///
+///
+/**
+ * From a list of rulesets, returns one based on weight and availability.
+ * Mutates the list that is passed into it to remove invalid rules.
+ *
+ * * max_allowed_attempts - Allows you to configure how many times the proc will attempt to pick a ruleset before giving up.
+ */
+/datum/game_mode/dynamic/proc/pick_ruleset(list/drafted_rules, max_allowed_attempts = INFINITY)
 	if (only_ruleset_executed)
 		log_dynamic("FAIL: only_ruleset_executed")
 		return null
 
-	while (TRUE)
+	if(!length(drafted_rules))
+		log_dynamic("FAIL: pick ruleset supplied with an empty list of drafted rules.")
+		return null
+
+	var/attempts = 0
+	while (attempts < max_allowed_attempts)
+		attempts++
 		var/datum/dynamic_ruleset/rule = pick_weight(drafted_rules)
 		if (!rule)
 			var/list/leftover_rules = list()
@@ -15,10 +27,10 @@
 				leftover_rules += "[leftover_rule]"
 
 			log_dynamic("FAIL: No rulesets left to pick. Leftover rules: [leftover_rules.Join(", ")]")
-
 			return null
 
 		if (check_blocking(rule.blocking_rules, executed_rules))
+			log_dynamic("FAIL: [rule] can't execute as another rulset is blocking it.")
 			drafted_rules -= rule
 			if(drafted_rules.len <= 0)
 				return null
@@ -37,6 +49,8 @@
 
 		return rule
 
+	return null
+
 /// Executes a random midround ruleset from the list of drafted rules.
 /datum/game_mode/dynamic/proc/pick_midround_rule(list/drafted_rules, description)
 	log_dynamic("Rolling [drafted_rules.len] [description]")
@@ -52,13 +66,33 @@
 		ADMIN_CANCEL_MIDROUND_TIME, \
 		TIMER_STOPPABLE, \
 	)
-
+	// SKYRAT EDIT REMOVAL BEGIN - Event notification
+	/**
 	log_dynamic("[rule] ruleset executing...")
 	message_admins("DYNAMIC: Executing midround ruleset [rule] in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]. \
 		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>")
 
 	return rule
+	*/
+	// SKYRAT EDIT REMOVAL END - Event notification
+
+	// SKYRAT EDIT ADDITION BEGIN - Event notification
+	message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]: [rule]. (\
+		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
+	sleep(ADMIN_CANCEL_MIDROUND_TIME * 0.5)
+
+	if(!midround_injection_timer_id == null)
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME * 0.5)]: [rule]. (\
+		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
+
+	return rule
+	// SKYRAT EDIT ADDITION END - Event notification
 
 /// Fired after admins do not cancel a midround injection.
 /datum/game_mode/dynamic/proc/execute_midround_rule(datum/dynamic_ruleset/rule)
@@ -68,28 +102,18 @@
 		midround_rules = remove_from_list(midround_rules, rule.type)
 	addtimer(CALLBACK(src, PROC_REF(execute_midround_latejoin_rule), rule), rule.delay)
 
-/// Executes a random latejoin ruleset from the list of drafted rules.
-/datum/game_mode/dynamic/proc/pick_latejoin_rule(list/drafted_rules)
-	var/datum/dynamic_ruleset/rule = pick_ruleset(drafted_rules)
-	if (isnull(rule))
-		return
-	if (!rule.repeatable)
-		latejoin_rules = remove_from_list(latejoin_rules, rule.type)
-	addtimer(CALLBACK(src, PROC_REF(execute_midround_latejoin_rule), rule), rule.delay)
-	return TRUE
-
 /// Mainly here to facilitate delayed rulesets. All midround/latejoin rulesets are executed with a timered callback to this proc.
 /datum/game_mode/dynamic/proc/execute_midround_latejoin_rule(sent_rule)
 	var/datum/dynamic_ruleset/rule = sent_rule
 	spend_midround_budget(rule.cost, threat_log, "[worldtime2text()]: [rule.ruletype] [rule.name]")
 	rule.pre_execute(GLOB.alive_player_list.len)
 	if (rule.execute())
-		log_dynamic("Injected a [rule.ruletype == "latejoin" ? "latejoin" : "midround"] ruleset [rule.name].")
+		log_dynamic("Injected a [rule.ruletype] ruleset [rule.name].")
 		if(rule.flags & HIGH_IMPACT_RULESET)
 			high_impact_ruleset_executed = TRUE
 		else if(rule.flags & ONLY_RULESET)
 			only_ruleset_executed = TRUE
-		if(rule.ruletype == "Latejoin")
+		if(rule.ruletype == LATEJOIN_RULESET)
 			var/mob/M = pick(rule.candidates)
 			message_admins("[key_name(M)] joined the station, and was selected by the [rule.name] ruleset.")
 			log_dynamic("[key_name(M)] joined the station, and was selected by the [rule.name] ruleset.")

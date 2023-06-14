@@ -9,8 +9,9 @@
 #define COMSIG_OBJ_DEFAULT_UNFASTEN_WRENCH "obj_default_unfasten_wrench"
 ///from base of /turf/proc/levelupdate(). (intact) true to hide and false to unhide
 #define COMSIG_OBJ_HIDE "obj_hide"
-/// from /obj/item/toy/crayon/spraycan/afterattack: (color_is_dark)
+/// from /obj/item/toy/crayon/spraycan/afterattack: (user, spraycan, color_is_dark)
 #define COMSIG_OBJ_PAINTED "obj_painted"
+	#define DONT_USE_SPRAYCAN_CHARGES (1<<0)
 
 // /obj/machinery signals
 
@@ -30,6 +31,8 @@
 #define COMSIG_MACHINERY_START_PROCESSING_AIR "start_processing_air"
 ///from /datum/controller/subsystem/air/proc/stop_processing_machine: ()
 #define COMSIG_MACHINERY_STOP_PROCESSING_AIR "stop_processing_air"
+///from /obj/machinery/RefreshParts: ()
+#define COMSIG_MACHINERY_REFRESH_PARTS "machine_refresh_parts"
 
 ///from /obj/machinery/can_interact(mob/user): Called on user when attempting to interact with a machine (obj/machinery/machine)
 #define COMSIG_TRY_USE_MACHINE "try_use_machine"
@@ -131,7 +134,7 @@
 
 ///from base of mob/living/carbon/attacked_by(): (mob/living/carbon/target, mob/living/user, hit_zone)
 #define COMSIG_ITEM_ATTACK_ZONE "item_attack_zone"
-///from base of obj/item/hit_reaction(): (list/args)
+///from base of obj/item/hit_reaction(): (owner, hitby, attack_text, final_block_chance, damage, attack_type, damage_type)
 #define COMSIG_ITEM_HIT_REACT "item_hit_react"
 	#define COMPONENT_HIT_REACTION_BLOCK (1<<0)
 ///from base of item/sharpener/attackby(): (amount, max)
@@ -155,6 +158,8 @@
 	#define COMPONENT_OFFER_TAKE_INTERRUPT (1<<0)
 /// sent from obj/effect/attackby(): (/obj/effect/hit_effect, /mob/living/attacker, params)
 #define COMSIG_ITEM_ATTACK_EFFECT "item_effect_attacked"
+/// Called by /obj/item/proc/worn_overlays(list/overlays, mutable_appearance/standing, isinhands, icon_file)
+#define COMSIG_ITEM_GET_WORN_OVERLAYS "item_get_worn_overlays"
 
 ///from base of [/obj/item/proc/tool_check_callback]: (mob/living/user)
 #define COMSIG_TOOL_IN_USE "tool_in_use"
@@ -167,7 +172,7 @@
 ///from [/obj/structure/closet/supplypod/proc/preOpen]:
 #define COMSIG_SUPPLYPOD_LANDED "supplypodgoboom"
 
-///from /obj/item/storage/book/bible/afterattack(): (mob/user, proximity)
+///from /obj/item/book/bible/afterattack(): (mob/user, proximity)
 #define COMSIG_BIBLE_SMACKED "bible_smacked"
 	///stops the bible chain from continuing. When all of the effects of the bible smacking have been moved to a signal we can kill this
 	#define COMSIG_END_BIBLE_CHAIN (1<<0)
@@ -182,6 +187,12 @@
 	#define BLOCK_OPEN (1<<0)
 ///From open: (forced)
 #define COMSIG_CLOSET_POST_OPEN "closet_post_open"
+
+///From close
+#define COMSIG_CLOSET_PRE_CLOSE "closet_pre_close"
+	#define BLOCK_CLOSE (1<<1)
+///From close
+#define COMSIG_CLOSET_POST_CLOSE "closet_post_close"
 
 ///a deliver_first element closet was successfully delivered
 #define COMSIG_CLOSET_DELIVERED "crate_delivered"
@@ -295,10 +306,10 @@
 //called in /obj/item/tank/jetpack/proc/turn_off() : ()
 #define COMSIG_JETPACK_DEACTIVATED "jetpack_deactivated"
 
-//called in /obj/item/organ/internal/cyberimp/chest/thrusters/proc/toggle() : ()
+//called in /obj/item/organ/cyberimp/chest/thrusters/proc/toggle() : ()
 #define COMSIG_THRUSTER_ACTIVATED "jetmodule_activated"
 	#define THRUSTER_ACTIVATION_FAILED (1<<0)
-//called in /obj/item/organ/internal/cyberimp/chest/thrusters/proc/toggle() : ()
+//called in /obj/item/organ/cyberimp/chest/thrusters/proc/toggle() : ()
 #define COMSIG_THRUSTER_DEACTIVATED "jetmodule_deactivated"
 
 // /obj/item/camera signals
@@ -317,9 +328,9 @@
 
 // /obj/projectile signals (sent to the firer)
 
-///from base of /obj/projectile/proc/on_hit(), like COMSIG_PROJECTILE_ON_HIT but on the projectile itself and with the hit limb (if any): (atom/movable/firer, atom/target, Angle, hit_limb)
+///from base of /obj/projectile/proc/on_hit(), like COMSIG_PROJECTILE_ON_HIT but on the projectile itself and with the hit limb (if any): (atom/movable/firer, atom/target, angle, hit_limb)
 #define COMSIG_PROJECTILE_SELF_ON_HIT "projectile_self_on_hit"
-///from base of /obj/projectile/proc/on_hit(): (atom/movable/firer, atom/target, Angle)
+///from base of /obj/projectile/proc/on_hit(): (atom/movable/firer, atom/target, angle, hit_limb)
 #define COMSIG_PROJECTILE_ON_HIT "projectile_on_hit"
 ///from base of /obj/projectile/proc/fire(): (obj/projectile, atom/original_target)
 #define COMSIG_PROJECTILE_BEFORE_FIRE "projectile_before_fire"
@@ -390,6 +401,10 @@
 #define COMSIG_ITEM_ATTACK_SECONDARY "item_pre_attack_secondary"
 ///from base of obj/item/afterattack(): (atom/target, mob/user, proximity_flag, click_parameters)
 #define COMSIG_ITEM_AFTERATTACK "item_afterattack"
+	/// Flag for when /afterattack potentially acts on an item.
+	/// Used for the swap hands/drop tutorials to know when you might just be trying to do something normally.
+	/// Does not necessarily imply success, or even that it did hit an item, just intent.
+	#define COMPONENT_AFTERATTACK_PROCESSED_ITEM (1<<0)
 ///from base of obj/item/afterattack_secondary(): (atom/target, mob/user, proximity_flag, click_parameters)
 #define COMSIG_ITEM_AFTERATTACK_SECONDARY "item_afterattack_secondary"
 ///from base of obj/item/attack_qdeleted(): (atom/target, mob/user, params)
@@ -410,3 +425,9 @@
 
 /// from /obj/item/detective_scanner/scan(): (mob/user, list/extra_data)
 #define COMSIG_DETECTIVE_SCANNED "det_scanned"
+
+/// from /obj/machinery/mineral/ore_redemption/pickup_item when it successfully picks something up
+#define COMSIG_ORM_COLLECTED_ORE "orm_collected_ore"
+
+/// from /obj/plunger_act when an object is being plungered
+#define COMSIG_PLUNGER_ACT "plunger_act"

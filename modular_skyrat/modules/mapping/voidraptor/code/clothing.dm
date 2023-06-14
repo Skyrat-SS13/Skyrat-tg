@@ -1,8 +1,8 @@
-/obj/item/storage/backpack/duffelbag/robo/surgery
-	name = "robotics surgery duffelbag"
-	desc = "A sleek, industrial-strength duffelbag issued to robotics personnel. This one seems to be designed for holding surgical tools."
+/obj/item/storage/backpack/duffelbag/science/robo/surgery
+	name = "robotics surgical duffelbag"
+	desc = "A sleek, industrial-strength duffelbag issued to robotics personnel. This one has a tag implying it came stocked with surgical tools."
 
-/obj/item/storage/backpack/duffelbag/robo/surgery/PopulateContents()
+/obj/item/storage/backpack/duffelbag/science/robo/surgery/PopulateContents()
 	new /obj/item/scalpel(src)
 	new /obj/item/hemostat(src)
 	new /obj/item/retractor(src)

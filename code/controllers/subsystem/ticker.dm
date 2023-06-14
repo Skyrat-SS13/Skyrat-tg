@@ -48,6 +48,7 @@ SUBSYSTEM_DEF(ticker)
 	var/queue_delay = 0
 	var/list/queued_players = list() //used for join queues when the server exceeds the hard population cap
 
+	/// What is going to be reported to other stations at end of round?
 	var/news_report
 
 
@@ -148,6 +149,8 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
+	else
+		gametime_offset = (CONFIG_GET(number/shift_time_start_hour) HOURS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
@@ -158,10 +161,13 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			//SKYRAT EDIT START - DISCORD SPAM PREVENTION
+			/* ORIGINAL:
+			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/channel_announce_new_game))
+			*/ // SKYRAT EDIT START - DISCORD SPAM PREVENTION
 			if(!discord_alerted)
 				discord_alerted = TRUE
-				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
+				send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles."), CONFIG_GET(string/channel_announce_new_game)) // SKYRAT EDIT - Role ping and round ID in game-alert
+			// SKYRAT EDIT END
 			current_state = GAME_STATE_PREGAME
 			SStitle.change_title_screen() //SKYRAT EDIT ADDITION - Title screen
 			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) //SKYRAT EDIT ADDITION - Title screen
@@ -265,7 +271,7 @@ SUBSYSTEM_DEF(ticker)
 	collect_minds()
 	equip_characters()
 
-	GLOB.data_core.manifest()
+	GLOB.manifest.build()
 
 	transfer_characters() //transfer keys to the new mobs
 
@@ -323,6 +329,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
+		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(!iter_human.hardcore_survival_score)
 			continue
@@ -582,47 +589,96 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
 	var/news_source = "Nanotrasen News Network"
-	var/decoded_station_name = html_decode("[CONFIG_GET(string/cross_comms_name)]([station_name()])") //decode station_name to avoid minor_announce double encode //SKYRAT EDIT CHANGE
+	var/decoded_station_name = html_decode(CONFIG_GET(string/cross_comms_name)) //decode station_name to avoid minor_announce double encode // SKYRAT EDIT: CROSS COMMS CONFIG
+
 	switch(news_report)
+		// The nuke was detonated on the syndicate recon outpost
 		if(NUKE_SYNDICATE_BASE)
-			news_message = "In a daring raid, the heroic crew of [decoded_station_name] detonated a nuclear device in the heart of a terrorist base."
+			news_message = "In a daring raid, the heroic crew of [decoded_station_name] \
+				detonated a nuclear device in the heart of a terrorist base."
+		// The station was destroyed by nuke ops
 		if(STATION_DESTROYED_NUKE)
-			news_message = "We would like to reassure all employees that the reports of a Syndicate backed nuclear attack on [decoded_station_name] are, in fact, a hoax. Have a secure day!"
+			news_message = "We would like to reassure all employees that the reports of a Syndicate \
+				backed nuclear attack on [decoded_station_name] are, in fact, a hoax. Have a secure day!"
+		// The station was evacuated (normal result)
 		if(STATION_EVACUATED)
+			// Had an emergency reason supplied to pass along
 			if(emergency_reason)
-				news_message = "[decoded_station_name] has been evacuated after transmitting the following distress beacon:\n\n[html_decode(emergency_reason)]"
+				news_message = "[decoded_station_name] has been evacuated after transmitting \
+					the following distress beacon:\n\n[html_decode(emergency_reason)]"
 			else
-				news_message = "The crew of [decoded_station_name] has been evacuated amid unconfirmed reports of enemy activity."
+				news_message = "The crew of [decoded_station_name] has been \
+					evacuated amid unconfirmed reports of enemy activity."
+		// A blob won
 		if(BLOB_WIN)
-			news_message = "[decoded_station_name] was overcome by an unknown biological outbreak, killing all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
-		if(BLOB_NUKE)
-			news_message = "[decoded_station_name] is currently undergoing decontanimation after a controlled burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, and are enjoying a relaxing vacation."
+			news_message = "[decoded_station_name] was overcome by an unknown biological outbreak, killing \
+				all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
+		// A blob was destroyed
 		if(BLOB_DESTROYED)
-			news_message = "[decoded_station_name] is currently undergoing decontamination procedures after the destruction of a biological hazard. As a reminder, any crew members experiencing cramps or bloating should report immediately to security for incineration."
+			news_message = "[decoded_station_name] is currently undergoing decontamination procedures \
+				after the destruction of a biological hazard. As a reminder, any crew members experiencing \
+				cramps or bloating should report immediately to security for incineration."
+		// A certain percentage of all cultists managed to escape at the end of round
 		if(CULT_ESCAPE)
 			news_message = "Security Alert: A group of religious fanatics have escaped from [decoded_station_name]."
+		// Cult was completely or almost completely wiped out
 		if(CULT_FAILURE)
-			news_message = "Following the dismantling of a restricted cult aboard [decoded_station_name], we would like to remind all employees that worship outside of the Chapel is strictly prohibited, and cause for termination."
+			news_message = "Following the dismantling of a restricted cult aboard [decoded_station_name], \
+				we would like to remind all employees that worship outside of the Chapel is strictly prohibited, \
+				and cause for termination."
+		// Cult summoned Nar'sie
 		if(CULT_SUMMON)
-			news_message = "Company officials would like to clarify that [decoded_station_name] was scheduled to be decommissioned following meteor damage earlier this year. Earlier reports of an unknowable eldritch horror were made in error."
+			news_message = "Company officials would like to clarify that [decoded_station_name] was scheduled \
+				to be decommissioned following meteor damage earlier this year. Earlier reports of an \
+				unknowable eldritch horror were made in error."
+		// Nuke detonated, but missed the station entirely
 		if(NUKE_MISS)
-			news_message = "The Syndicate have bungled a terrorist attack [decoded_station_name], detonating a nuclear weapon in empty space nearby."
+			news_message = "The Syndicate have bungled a terrorist attack [decoded_station_name], \
+				detonating a nuclear weapon in empty space nearby."
+		// All nuke ops got killed
 		if(OPERATIVES_KILLED)
-			news_message = "Repairs to [decoded_station_name] are underway after an elite Syndicate death squad was wiped out by the crew."
+			news_message = "Repairs to [decoded_station_name] are underway after an elite \
+				Syndicate death squad was wiped out by the crew."
+		// Nuke ops results inconclusive - Crew escaped without the disk, or nukies were left alive, or something
 		if(OPERATIVE_SKIRMISH)
-			news_message = "A skirmish between security forces and Syndicate agents aboard [decoded_station_name] ended with both sides bloodied but intact."
+			news_message = "A skirmish between security forces and Syndicate agents aboard [decoded_station_name] \
+				ended with both sides bloodied but intact."
+		// Revolution victory
 		if(REVS_WIN)
-			news_message = "Company officials have reassured investors that despite a union led revolt aboard [decoded_station_name] there will be no wage increases for workers."
+			news_message = "Company officials have reassured investors that despite a union led revolt \
+				aboard [decoded_station_name] there will be no wage increases for workers."
+		// Revolution defeat
 		if(REVS_LOSE)
-			news_message = "[decoded_station_name] quickly put down a misguided attempt at mutiny. Remember, unionizing is illegal!"
+			news_message = "[decoded_station_name] quickly put down a misguided attempt at mutiny. \
+				Remember, unionizing is illegal!"
+		// All wizards (plus apprentices) have been killed
 		if(WIZARD_KILLED)
-			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [decoded_station_name]."
+			news_message = "Tensions have flared with the Space Wizard Federation following the death \
+				of one of their members aboard [decoded_station_name]."
+		// The station was nuked generically
 		if(STATION_NUKED)
-			news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. Attempts to clone the Captain for arrest and execution are underway."
+			// There was a blob on board, guess it was nuked to stop it
+			if(length(GLOB.overminds))
+				for(var/mob/camera/blob/overmind as anything in GLOB.overminds)
+					if(overmind.max_count < overmind.announcement_size)
+						continue
+
+					news_message = "[decoded_station_name] is currently undergoing decontanimation after a controlled \
+						burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, \
+						and are enjoying a relaxing vacation."
+					break
+			// A self destruct or something else
+			else
+				news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. \
+					Attempts to clone the Captain for arrest and execution are underway."
+		// The emergency escape shuttle was hijacked
 		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] had its navigation protocols corrupted and went off course, but was recovered shortly after."
+			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] \
+				had its navigation protocols corrupted and went off course, but was recovered shortly after."
+		// A supermatter cascade triggered
 		if(SUPERMATTER_CASCADE)
-			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in the sector surrounding [decoded_station_name]."
+			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in \
+				the sector surrounding [decoded_station_name]."
 
 	//SKYRAT EDIT - START
 	if(SSblackbox.first_death)
@@ -723,3 +779,5 @@ SUBSYSTEM_DEF(ticker)
 		possible_themes += themes
 	if(possible_themes.len)
 		return "[global.config.directory]/reboot_themes/[pick(possible_themes)]"
+
+#undef ROUND_START_MUSIC_LIST

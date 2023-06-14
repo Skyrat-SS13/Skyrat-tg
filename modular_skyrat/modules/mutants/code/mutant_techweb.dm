@@ -3,9 +3,10 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/rna_recombinator
 	req_components = list(
-		/obj/item/stock_parts/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/micro_laser = 2)
+		/datum/stock_part/scanning_module = 1,
+		/datum/stock_part/servo = 2,
+		/datum/stock_part/micro_laser = 2,
+	)
 
 /datum/techweb_node/mutanttech
 	id = "mutanttech"
@@ -20,19 +21,23 @@
 	desc = "An empty RNA vial for storing genetic information."
 	id = "rna_vial"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
+	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/rna_vial
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/rna_extractor
-	name = "Empty RNA vial"
+	name = "RNA Extractor Device"
 	desc = "An RNA extraction device, use this on any subect you'd like to extract RNA data from, needs RNA vials to work."
 	id = "rna_extractor"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 2, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/rna_extractor
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/board/rna_recombinator

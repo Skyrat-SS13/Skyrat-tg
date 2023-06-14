@@ -235,9 +235,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+    canToggleEngineeringOverride, // SKYRAT EDIT - Engineering Override
     emagged,
     syndicate,
     emergencyAccess,
+    engineeringOverride, // SKYRAT EDIT - Engineering Override
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -373,13 +375,6 @@ const PageMain = (props, context) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
-          {!!aprilFools && !!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Emergency Meeting"
-              onClick={() => act('emergency_meeting')}
-            />
-          )}
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
@@ -390,6 +385,19 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
+
+          {/* SKYRAT EDIT ADDITION START - Engineering Override */}
+          {!!canToggleEngineeringOverride && (
+            <Button.Confirm
+              icon="wrench"
+              content={`${
+                engineeringOverride ? 'Disable' : 'Enable'
+              } Engineering Override Access`}
+              color={engineeringOverride ? 'bad' : undefined}
+              onClick={() => act('toggleEngOverride')}
+            />
+          )}
+          {/* SKYRAT EDIT ADDITION END */}
 
           {!syndicate && (
             <Button
@@ -456,8 +464,8 @@ const PageMain = (props, context) => {
           {!!canMakeAnnouncement && (
             <Button
               icon="bullhorn"
-              content="Call Sol Federation 811: Breach Control Response"
-              onClick={() => act('callBreachControl')}
+              content="Call Sol Federation 811: Advanced Atmospherics Response"
+              onClick={() => act('callTheCatmos')}
             />
           )}
           {!!canMakeAnnouncement && (

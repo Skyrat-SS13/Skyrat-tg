@@ -20,8 +20,14 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	alt_icons = TRUE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
-	company_flag = COMPANY_OLDARMS
+
+/obj/item/gun/ballistic/automatic/mp40/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
+/obj/item/gun/ballistic/automatic/mp40/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"

@@ -56,7 +56,7 @@
 	SIGNAL_HANDLER
 	cloth_wearer = null
 
-/datum/component/reagent_clothing/process(delta_time)
+/datum/component/reagent_clothing/process(seconds_per_tick)
 	if(!parent_clothing || !cloth_wearer || !length(imbued_reagent))
 		return
 

@@ -9,7 +9,7 @@
 	icon_state = null //Keeps this from showing up under the chameleon hat
 	worn_icon_state = null //TG defaults this to "hunter" and breaks our items
 	flags_inv = SHOWSPRITEEARS
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0) //TG defaults cowboy hats with armor
+	armor_type = /datum/armor/none
 	resistance_flags = NONE //TG defaults cowboy hats to fireproof/acidproof
 
 /obj/item/clothing/head/cowboy/skyrat/wide
@@ -90,12 +90,32 @@
 	name = "security cattleman hat"
 	desc = "A security cattleman hat, perfect for any true lawman."
 	greyscale_colors = "#39393F#3F6E9E"
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4) // same armour as the sec beret
+	armor_type = /datum/armor/cattleman_sec
 	flags_1 = NONE //No recoloring presets
+
+/datum/armor/cattleman_sec
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 20
+	acid = 50
+	wound = 4
 
 /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
 	name = "wide brimmed security cattleman hat"
 	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
 	greyscale_colors = "#39393F#3F6E9E"
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4) // same armour as the sec beret
+	armor_type = /datum/armor/wide_sec
 	flags_1 = NONE //No recoloring presets
+
+/datum/armor/wide_sec
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 20
+	acid = 50
+	wound = 4

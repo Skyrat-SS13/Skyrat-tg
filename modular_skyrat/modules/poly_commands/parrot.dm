@@ -1,3 +1,7 @@
+#define PARROT_PERCH (1<<0) //Sitting/sleeping, not moving
+#define PARROT_SWOOP (1<<1) //Moving towards or away from a target
+#define PARROT_WANDER (1<<2) //Moving without a specific target in mind
+
 /*
 * Parrot commands: Made modular
 */
@@ -85,3 +89,7 @@
 	buckled_to_human = FALSE
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
+
+#undef PARROT_PERCH
+#undef PARROT_SWOOP
+#undef PARROT_WANDER

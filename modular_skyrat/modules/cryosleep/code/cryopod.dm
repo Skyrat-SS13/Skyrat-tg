@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
+	icon_screen = null
 	use_power = FALSE
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
@@ -40,6 +41,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// The channel to be broadcast on, valid values are the values of any of the "RADIO_CHANNEL_" defines.
 	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
@@ -134,13 +136,13 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
+	base_icon_state = "cryopod"
 	use_power = FALSE
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
 
-	var/on_store_message = "has entered long-term storage."
-	var/on_store_name = "Cryogenic Oversight"
+	var/open_icon_state = "cryopod-open"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
 	var/allow_timer_override = FALSE
 	/// Minimum time for someone to be SSD before another player can cryo them.
@@ -159,6 +161,14 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 
 	/// Has the occupant been tucked in?
 	var/tucked = FALSE
+
+	/// What was the ckey of the client that entered the cryopod?
+	var/stored_ckey = null
+	/// The name of the mob that entered the cryopod.
+	var/stored_name = null
+	/// The rank (job title) of the mob that entered the cryopod, if it was a human. "N/A" by default.
+	var/stored_rank = "N/A"
+
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -195,7 +205,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 
 	return control_computer_weakref != null
 
-/obj/machinery/cryopod/close_machine(atom/movable/target)
+/obj/machinery/cryopod/close_machine(atom/movable/target, density_to_set = TRUE)
 	if(!control_computer_weakref)
 		find_control_computer(TRUE)
 	if((isnull(target) || isliving(target)) && state_open && !panel_open)
@@ -203,16 +213,28 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
+			stored_ckey = mob_occupant.ckey
+			stored_name = mob_occupant.name
+
+			if(mob_occupant.mind)
+				stored_rank = mob_occupant.mind.assigned_role.title
+				if(isnull(stored_ckey))
+					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
+
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(human_occupant && human_occupant.mind)
+			human_occupant.save_individual_persistence(stored_ckey)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
-	icon_state = "cryopod"
 
-/obj/machinery/cryopod/open_machine()
+/obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
 	..()
-	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
+	stored_ckey = null
+	stored_name = null
+	stored_rank = "N/A"
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -293,55 +315,53 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 					update_objective.owner.announce_objectives()
 			qdel(objective)
 
-/obj/machinery/cryopod/proc/should_preserve_item(obj/item/item)
-	for(var/datum/objective_item/steal/possible_item in GLOB.possible_items)
-		if(istype(item, possible_item.targetitem))
-			return TRUE
-	return FALSE
-
-// This function can not be undone; do not call this unless you are sure
+/// This function can not be undone; do not call this unless you are sure.
+/// Handles despawning the player.
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
-	var/list/crew_member = list()
 
-	crew_member["name"] = mob_occupant.real_name
+	SSjob.FreeRole(stored_rank)
+
+	// Handle holy successor removal
+	var/list/holy_successors = list_holy_successors()
+	if(mob_occupant in holy_successors) // if this mob was a holy successor then remove them from the pool
+		GLOB.holy_successors -= WEAKREF(mob_occupant)
 
 	if(mob_occupant.mind)
-		// Handle job slot/tater cleanup.
-		var/job = mob_occupant.mind.assigned_role.title
-		crew_member["job"] = job
-		SSjob.FreeRole(job)
+		// Handle tater cleanup.
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		// Handle freeing the high priest role for the next chaplain in line
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
+			reset_religion()
 	else
-		crew_member["job"] = "N/A"
+		// handle the case of the high priest no longer having a mind
+		var/datum/weakref/current_highpriest = GLOB.current_highpriest
+		if(current_highpriest?.resolve() == mob_occupant)
+			reset_religion()
 
 	// Delete them from datacore and ghost records.
 	var/announce_rank = null
 
-	for(var/datum/data/record/record as anything in GLOB.ghost_records)
-		if(record.fields["name"] == mob_occupant.real_name)
-			announce_rank = record.fields["rank"]
-			GLOB.ghost_records.Remove(record)
-			qdel(record)
+	for(var/list/record in GLOB.ghost_records)
+		if(record["name"] == stored_name)
+			announce_rank = record["rank"]
+			GLOB.ghost_records.Remove(list(record))
+			break
 
-	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
-		if(medical_record.fields["name"] == mob_occupant.real_name)
-			qdel(medical_record)
-	for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
-		if(security_record.fields["name"] == mob_occupant.real_name)
-			qdel(security_record)
-	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
-		if(general_record.fields["name"] == mob_occupant.real_name)
-			announce_rank = general_record.fields["rank"]
-			qdel(general_record)
+	if(!announce_rank) // No need to loop over all of those if we already found it beforehand.
+		for(var/datum/record/crew/possible_target_record as anything in GLOB.manifest.general)
+			if(possible_target_record.name == stored_name && (stored_rank == "N/A" || possible_target_record.trim == stored_rank))
+				announce_rank = possible_target_record.rank
+				qdel(possible_target_record)
+				break
 
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
 	if(!control_computer)
 		control_computer_weakref = null
 	else
-		control_computer.frozen_crew += list(crew_member)
+		control_computer.frozen_crew += list(list("name" = stored_name, "job" = stored_rank))
 
 	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
 	if(!quiet)
@@ -359,15 +379,94 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 				var/obj/item/modular_computer/computer = item_content
 				for(var/datum/computer_file/program/messenger/message_app in computer.stored_files)
 					message_app.invisible = TRUE
-			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			item_content.dropped(mob_occupant)
 			control_computer.frozen_item += item_content
-		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+		else
+			mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+
+	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
+	mob_occupant.ghostize()
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
+
+/// It's time to kill GLOB
+/**
+ * Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
+ * Also handles the selection of a holy successor from existing crew if multiple chaplains are on station.
+ */
+/obj/machinery/cryopod/proc/reset_religion()
+
+	// remember what the previous sect and favor values were so they can be restored if the same one gets chosen
+	GLOB.prev_favor = GLOB.religious_sect.favor
+	GLOB.prev_sect_type = GLOB.religious_sect.type
+
+ // set the altar references to the old religious_sect to null
+	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
+		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
+		altar.sect_to_altar = null
+
+	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
+
+	// set the rest of the global vars to null for the new chaplain
+	GLOB.religion = null
+	GLOB.deity = null
+	GLOB.bible_name = null
+	GLOB.bible_icon_state = null
+	GLOB.bible_inhand_icon_state = null
+	GLOB.holy_armor_type = null
+	GLOB.holy_weapon_type = null
+
+	// now try to pick the successor from existing crew, or leave it empty if no valid candidates found
+	var/mob/living/carbon/human/chosen_successor = pick_holy_successor()
+	GLOB.current_highpriest = chosen_successor ? WEAKREF(chosen_successor) : null // if a successor is already on the station then pick the first in line
+
+/**
+ * Chooses a valid holy successor from GLOB.holy_successor weakref list and sets things up for them to be the new high priest
+ *
+ * Returns the chosen holy successor, or null if no valid successor
+ */
+/obj/machinery/cryopod/proc/pick_holy_successor()
+	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
+		var/mob/living/carbon/human/actual_successor = successor.resolve()
+		if(!actual_successor)
+			GLOB.holy_successors -= successor
+			continue
+		if(!actual_successor.key || !actual_successor.mind)
+			continue
+
+		// we have a match! set the religious globals up properly and make the candidate high priest
+		GLOB.holy_successors -= successor
+		GLOB.religion = actual_successor.client?.prefs?.read_preference(/datum/preference/name/religion) || DEFAULT_RELIGION
+		GLOB.bible_name = actual_successor.client?.prefs?.read_preference(/datum/preference/name/deity) || DEFAULT_DEITY
+		GLOB.deity = actual_successor.client?.prefs?.read_preference(/datum/preference/name/bible) || DEFAULT_BIBLE
+
+		actual_successor.mind.holy_role = HOLY_ROLE_HIGHPRIEST
+
+		to_chat(actual_successor, span_warning("You have been chosen as the successor to the previous high priest. Visit a holy altar to declare the station's religion!"))
+
+		return actual_successor
+
+	return null
+
+/**
+ * Create a list of the holy successors mobs from GLOB.holy_successors weakref list
+ *
+ * Returns the list of valid holy successors
+ */
+/obj/machinery/cryopod/proc/list_holy_successors()
+	var/list/holy_successors = list()
+	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
+		var/mob/living/carbon/human/actual_successor = successor.resolve()
+		if(!actual_successor)
+			GLOB.holy_successors -= successor
+			continue
+		holy_successors += actual_successor
+
+	return holy_successors
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -395,7 +494,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 
 // Allows players to cryo others. Checks if they have been AFK for 30 minutes.
 	if(target.key && user != target)
-		if (target.getorgan(/obj/item/organ/internal/brain) ) //Target the Brain
+		if (target.get_organ_by_type(/obj/item/organ/internal/brain) ) //Target the Brain
 			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
 					to_chat(user, span_notice("You can't put [target] into [src] for another [round(((ssd_time - (world.time - target.lastclienttime)) / (1 MINUTES)), 1)] minutes."))
@@ -476,21 +575,44 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
 		tucked = TRUE
 
+/obj/machinery/cryopod/update_icon_state()
+	icon_state = state_open ? open_icon_state : base_icon_state
+	return ..()
+
+/// Special wall mounted cryopod for the prison, making it easier to autospawn.
+/obj/machinery/cryopod/prison
+	icon_state = "prisonpod"
+	base_icon_state = "prisonpod"
+	open_icon_state = "prisonpod"
+	density = FALSE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
+
+/obj/machinery/cryopod/prison/set_density(new_value)
+	// Simple way to make it always non-dense.
+	return ..(FALSE)
+
+/obj/machinery/cryopod/prison/close_machine(atom/movable/target, density_to_set = TRUE)
+	. = ..()
+	// Flick the pod for a second when user enters
+	flick("prisonpod-open", src)
+
 // Wake-up notifications
 
 /obj/effect/mob_spawn/ghost_role
 	/// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
 	var/area/computer_area
 
-/obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
-	. = ..()
+/obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
+	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	var/datum/data/record/record = new
-	record.fields["name"] = spawned_mob.real_name
-	record.fields["rank"] = name
-	GLOB.ghost_records.Add(record)
+
+	var/alt_name = get_alt_name()
+	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = alt_name ? alt_name : name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
+
+	return spawned_mob
 
 /obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
 	if(!computer_area)
@@ -502,6 +624,16 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 			return console
 
 	return
+
+/**
+ * Returns the the alt name for this spawner, which is 'outfit.name'.
+ *
+ * For when you might want to use that for things instead of the name var.
+ * example: the DS2 spawners, which have a number of different types of spawner with the same name.
+ */
+/obj/effect/mob_spawn/ghost_role/get_alt_name()
+	if(use_outfit_name)
+		return initial(outfit.name)
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
 	computer_area = /area/ruin/syndicate_lava_base/dormitories

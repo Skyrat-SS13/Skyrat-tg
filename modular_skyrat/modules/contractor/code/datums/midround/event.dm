@@ -4,6 +4,7 @@
 	weight = 8
 	max_occurrences = 1
 	category = EVENT_CATEGORY_INVASION
+	description = "A pre-equipped contractor floats towards the station to fulfill contracts."
 
 /datum/round_event/ghost_role/contractor
 	minimum_required = 1
@@ -24,9 +25,9 @@
 		return MAP_ERROR
 
 	var/mob/living/carbon/human/operative = new(pick(spawn_locs))
-	operative.randomize_human_appearance(~RANDOMIZE_SPECIES)
 	operative.dna.update_dna_identity()
 	var/datum/mind/mind = new /datum/mind(selected.key)
+	selected.client?.prefs?.apply_prefs_to(operative)
 	mind.set_assigned_role(SSjob.GetJobType(/datum/job/drifting_contractor))
 	mind.special_role = ROLE_DRIFTING_CONTRACTOR
 	mind.active = TRUE

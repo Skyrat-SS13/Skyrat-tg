@@ -202,15 +202,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/webhook_sent = WEBHOOK_NONE
 	/// List of player interactions
 	var/list/player_interactions
-
-	//SKYRAT EDIT START
-	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
-	var/ticket_ping_stop = FALSE
-	/// Are we added to the ticket ping subsystem in the first place
-	var/ticket_ping = FALSE
-	/// Who is handling this admin help?
-	var/handler
-	//SKYRAT EDIT END
+	/// List of admin ckeys that are involved, like through responding
+	var/list/admins_involved = list()
+	/// Has the player replied to this ticket yet?
+	var/player_replied = FALSE
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -235,6 +230,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	opened_at = world.time
 
 	name = copytext_char(msg, 1, 100)
+
+	full_text = msg //SKYRAT EDIT ADDITION - Adminhelps into mentorhelps converting.
 
 	initiator = C
 	initiator_ckey = initiator.ckey
@@ -294,7 +291,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		"PLAYERS" = player_count,
 		"ROUND STATE" = round_state,
 		"ROUND ID" = GLOB.round_id,
-		"ROUND TIME" = ROUND_TIME,
+		"ROUND TIME" = ROUND_TIME(),
 		"MESSAGE" = message,
 		"ADMINS" = admin_text,
 	)
@@ -352,7 +349,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(CONFIG_GET(string/adminhelp_webhook_pfp))
 		webhook_info["avatar_url"] = CONFIG_GET(string/adminhelp_webhook_pfp)
 	// Uncomment when servers are moved to TGS4
-	// send2chat("[initiator_ckey] | [message_content]", "ahelp", TRUE)
+	// send2chat(new /datum/tgs_message_conent("[initiator_ckey] | [message_content]"), "ahelp", TRUE)
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
@@ -366,9 +363,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	return ..()
 
 /datum/admin_help/proc/AddInteraction(formatted_message, player_message)
-	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
-		heard_by_no_admins = FALSE
-		send2adminchat(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
+	if (!isnull(usr) && usr.ckey != initiator_ckey)
+		admins_involved |= usr.ckey
+		if(heard_by_no_admins)
+			heard_by_no_admins = FALSE
+			send2adminchat(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
+
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
@@ -397,8 +397,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=handle_issue'>HANDLE</A>)" //SKYRAT EDIT ADDITION
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=pingmute'>PING MUTE</A>)" //SKYRAT EDIT ADDITION
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -434,11 +432,19 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			confidential = TRUE)
 
 	//show it to the person adminhelping too
-	to_chat(initiator,
-		type = MESSAGE_TYPE_ADMINPM,
-		html = span_adminnotice("PM to-<b>Admins</b>: [span_linkify(msg)]"),
-		confidential = TRUE)
+	reply_to_admins_notification(msg)
 	SSblackbox.LogAhelp(id, "Ticket Opened", msg, null, initiator.ckey, urgent = urgent)
+
+/// Sends a message to the player that they are replying to admins.
+/datum/admin_help/proc/reply_to_admins_notification(message)
+	to_chat(
+		initiator,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = span_notice("PM to-<b>Admins</b>: [span_linkify(message)]"),
+		confidential = TRUE,
+	)
+
+	player_replied = TRUE
 
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
@@ -602,6 +608,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	for(var/I in ticket_interactions)
 		dat += "[I]<br>"
 
+	// Helper for opening directly to player ticket history
+	dat += "<br><br><b>Player Ticket History:</b>"
+	dat += "[FOURSPACES]<A href='?_src_=holder;[HrefToken()];player_ticket_history=[initiator_ckey]'>Open</A>"
+
 	// Append any tickets also opened by this user if relevant
 	var/list/related_tickets = GLOB.ahelp_tickets.TicketsByCKey(initiator_ckey)
 	if (related_tickets.len > 1)
@@ -683,6 +693,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			var/msg = "Ticket [TicketHref("#[id]")] has been [ticket_ping_stop ? "" : "un"]muted from the Ticket Ping Subsystem by [key_name_admin(usr)]."
 			message_admins(msg)
 			log_admin_private(msg)
+		if("convert")
+			convert_to_mentorhelp()
 		// SKYRAT EDIT ADDITION END
 
 /datum/admin_help/proc/player_ticket_panel()
@@ -806,7 +818,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	if(user_client.handle_spam_prevention(message, MUTE_ADMINHELP))
 		return
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adminhelp") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
 	if(urgent)
 		if(!COOLDOWN_FINISHED(src, ahelp_cooldowns?[user_client.ckey]))
@@ -1020,7 +1032,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 			var/list/L = splittext(string, " ")
 			var/surname_found = 0
 			//surnames
-			for(var/i=L.len, i>=1, i--)
+			for(var/i=L.len, i >= 1, i--)
 				var/word = ckey(L[i])
 				if(word)
 					surnames[word] = M

@@ -1,52 +1,34 @@
 /obj/item/clothing/head/helmet/chaplain/bland
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/chaplain.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/chaplain.dmi'
+	name = "crusader helmet"
+	desc = "Helfen, Wehren, Heilen."
 	icon_state = "knight_generic"
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	worn_icon_state = "knight_generic"
+	unique_reskin = list(
+		"Basic" = "knight_generic",
+		"Winged" = "knight_winged",
+		"Horned" = "knight_horned",
+		)
 
-/obj/item/clothing/head/helmet/chaplain/bland/horned
-	name = "horned crusader helmet"
-	desc = "Helfen, Wehren, Heilen."
-	icon_state = "knight_horned"
-	worn_icon_state = "knight_horned"
+/obj/item/clothing/suit/chaplainsuit/armor/templar/generic
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/chaplain.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/chaplain.dmi'
+	desc = "Protect the weak and defenceless, live by honor and glory, and fight for the welfare of all!"
+	icon_state = "knight_generic"
+	unique_reskin = list(
+		"Basic" = "knight_generic",
+		"Teutonic" = "knight_teutonic",
+		"Hospitaller" = "knight_hospitaller",
+	)
 
-/obj/item/clothing/head/helmet/chaplain/bland/winged
-	name = "winged crusader helmet"
-	desc = "Helfen, Wehren, Heilen."
-	icon_state = "knight_winged"
-	worn_icon_state = "knight_winged"
+/obj/item/storage/box/holy/knight
+	name = "knight's kit"
 
-/obj/item/clothing/suit/chaplainsuit/armor/teutonic
-	desc = "Help, Defend, Heal!"
-	icon_state = "knight_teutonic"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_state = "knight_teutonic"
-
-/obj/item/clothing/suit/chaplainsuit/armor/teutonic/alt
-	icon_state = "knight_teutonic_alt"
-	worn_icon_state = "knight_teutonic_alt"
-
-/obj/item/clothing/suit/chaplainsuit/armor/hospitaller
-	icon_state = "knight_hospitaller"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_state = "knight_hospitaller"
-
-/obj/item/storage/box/holy/teutonic
-	name = "teutonic kit"
-
-/obj/item/storage/box/holy/teutonic/PopulateContents()
-	pick(new /obj/item/clothing/head/helmet/chaplain/bland/horned(src), new /obj/item/clothing/head/helmet/chaplain/bland/winged(src))
-	pick(new /obj/item/clothing/suit/chaplainsuit/armor/teutonic(src), new /obj/item/clothing/suit/chaplainsuit/armor/teutonic/alt(src))
-
-/obj/item/storage/box/holy/hospitaller
-	name = "hospitaller kit"
-
-/obj/item/storage/box/holy/hospitaller/PopulateContents()
+/obj/item/storage/box/holy/knight/PopulateContents()
 	new /obj/item/clothing/head/helmet/chaplain/bland(src)
-	new /obj/item/clothing/suit/chaplainsuit/armor/hospitaller(src)
+	new /obj/item/clothing/suit/chaplainsuit/armor/templar/generic(src)
 
+//make chaplain version w/ unique sprite?
 /obj/item/clothing/suit/hooded/cultlain_robe
 	name = "ancient robes"
 	desc = "A ragged, dusty set of robes."
@@ -55,8 +37,8 @@
 	icon_state = "cultrobes"
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
-	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	armor_type = /datum/armor/chaplainsuit_armor
+	allowed = list(/obj/item/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/flashlight/flare/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
 /obj/item/clothing/head/hooded/cultlain_hood
@@ -68,7 +50,7 @@
 	body_parts_covered = HEAD
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) // Chaplain Riot Helmet
+	armor_type = /datum/armor/helmet_chaplain
 
 /obj/item/storage/box/holy/narsian
 	name = "ancient kit"
@@ -116,7 +98,6 @@
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
 
-/* The other one isn't merged yet so we'll wait.
 /obj/item/nullrod/spear
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_CHAPLAIN)
@@ -125,17 +106,19 @@
 
 /obj/item/nullrod/spear/attack_self(mob/user)
 	if(ratvarian)
-	else if(user.mind && (user.mind.holy_role))
+		return ..()
+	else if(user.mind?.holy_role)
+		to_chat(user, span_bigbrass("The sound of cogs permeates your head..."))
 		user.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		ratvarian = TRUE
-*/
 
 /obj/item/nullrod/rosary
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
+	worn_icon_state = "nullrod"
 	force = 4
 	throwforce = 0
 	attack_verb_simple = list("whipped", "repented", "lashed", "flagellated")
@@ -196,3 +179,4 @@
 	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
+	worn_icon_state = "dark_blade"

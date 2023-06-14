@@ -51,10 +51,13 @@
 	SET_PLANE(panel_edge, PLANE_TO_TRUE(panel_edge.plane), new_turf)
 	SET_PLANE(panel, PLANE_TO_TRUE(panel.plane), new_turf)
 
+/obj/effect/overlay/solar_panel
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_ICON
+	appearance_flags = TILE_BOUND
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+
 /obj/machinery/power/solar/proc/add_panel_overlay(icon_state, z_offset)
-	var/obj/effect/overlay/overlay = new()
-	overlay.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_ICON
-	overlay.appearance_flags = TILE_BOUND
+	var/obj/effect/overlay/solar_panel/overlay = new(src)
 	overlay.icon_state = icon_state
 	SET_PLANE_EXPLICIT(overlay, ABOVE_GAME_PLANE, src)
 	overlay.pixel_z = z_offset
@@ -386,13 +389,25 @@
 	var/obj/machinery/power/tracker/connected_tracker = null
 	var/list/connected_panels = list()
 
+	///History of power supply
+	var/list/history = list()
+	///Size of history, should be equal or bigger than the solar cycle
+	var/record_size = 0
+	///Interval between records
+	var/record_interval = 60 SECONDS
+	///History record timer
+	var/next_record = 0
+
 /obj/machinery/power/solar_control/Initialize(mapload)
 	. = ..()
-	azimuth_rate = SSsun.base_rotation
 	RegisterSignal(SSsun, COMSIG_SUN_MOVED, PROC_REF(timed_track))
 	connect_to_network()
 	if(powernet)
 		set_panels(azimuth_target)
+	azimuth_rate = SSsun.base_rotation
+	record_interval = SSsun.wait
+	history["supply"] = list()
+	history["capacity"] = list()
 
 /obj/machinery/power/solar_control/Destroy()
 	for(var/obj/machinery/power/solar/M in connected_panels)
@@ -420,6 +435,26 @@
 					if(!T.control) //i.e unconnected
 						T.set_control(src)
 
+///Record the generated power supply and capacity for history
+/obj/machinery/power/solar_control/proc/record()
+	if(record_size == 0)
+		record_size = 1 + ROUND_UP(360 / (azimuth_rate * abs(SSsun.azimuth_mod))) //History contains full sun cycle
+
+	if(world.time >= next_record)
+		next_record = world.time + record_interval
+
+		var/list/supply = history["supply"]
+		if(powernet)
+			supply += round(lastgen)
+		if(supply.len > record_size)
+			supply.Cut(1, 2)
+
+		var/list/capacity = history["capacity"]
+		if(powernet)
+			capacity += round(max(connected_panels.len, 1) * SOLAR_GEN_RATE)
+		if(capacity.len > record_size)
+			capacity.Cut(1, 2)
+
 /obj/machinery/power/solar_control/update_overlays()
 	. = ..()
 	if(machine_stat & NOPOWER)
@@ -440,14 +475,15 @@
 
 /obj/machinery/power/solar_control/ui_data()
 	var/data = list()
-	data["generated"] = round(lastgen)
-	data["generated_ratio"] = data["generated"] / round(max(connected_panels.len, 1) * SOLAR_GEN_RATE)
+	data["supply"] = round(lastgen)
+	data["capacity"] = connected_panels.len * SOLAR_GEN_RATE
 	data["azimuth_current"] = azimuth_target
 	data["azimuth_rate"] = azimuth_rate
 	data["max_rotation_rate"] = SSsun.base_rotation * 2
 	data["tracking_state"] = track
 	data["connected_panels"] = connected_panels.len
 	data["connected_tracker"] = (connected_tracker ? TRUE : FALSE)
+	data["history"] = history
 	return data
 
 /obj/machinery/power/solar_control/ui_act(action, params)
@@ -535,9 +571,9 @@
 /obj/machinery/power/solar_control/process()
 	lastgen = gen
 	gen = 0
-
 	if(connected_tracker && (!powernet || connected_tracker.powernet != powernet))
 		connected_tracker.unset_control()
+	record()
 
 ///Ran every time the sun updates.
 /obj/machinery/power/solar_control/proc/timed_track()

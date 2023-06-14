@@ -52,6 +52,7 @@
 /obj/machinery/shower/directional/south,
 /obj/structure/curtain/bounty,
 /obj/structure/drain,
+/obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "hk" = (
@@ -60,8 +61,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "ht" = (
-/obj/structure/toilet{
-	contents = newlist(/obj/item/toy/snappop/phoenix);
+/obj/structure/toilet/snappop{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot_white,
@@ -120,6 +120,7 @@
 /obj/item/reagent_containers/cup/beaker{
 	pixel_x = -13
 	},
+/obj/item/holosign_creator/atmos,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "lp" = (
@@ -173,10 +174,6 @@
 /obj/structure/sign/warning/docking/directional/south,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"oo" = (
-/obj/structure/table,
-/turf/closed/mineral/random,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "oV" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -210,10 +207,6 @@
 /obj/machinery/light/dim/directional/north,
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/smooth,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"tw" = (
-/obj/structure/sign/poster/contraband/random/directional/west,
-/turf/closed/wall,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "tC" = (
 /obj/structure/table,
@@ -302,12 +295,13 @@
 "vj" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/suit_storage_unit/industrial{
+	mask_type = /obj/item/clothing/mask/breath;
 	mod_type = /obj/item/mod/control/pre_equipped/standard
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "vy" = (
-/obj/structure/window/reinforced/spawner/north,
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/fluff/metalpole{
 	dir = 1
 	},
@@ -340,9 +334,9 @@
 /obj/docking_port/stationary{
 	dwidth = 5;
 	height = 7;
-	shuttle_id = "blackmarket_chevvy_home";
 	name = "Market";
 	roundstart_template = /datum/map_template/shuttle/ruin/blackmarket_chevvy;
+	shuttle_id = "blackmarket_chevvy_home";
 	width = 11
 	},
 /turf/open/floor/plating,
@@ -373,7 +367,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "AG" = (
-/obj/structure/window/reinforced/spawner,
+/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/fluff/metalpole,
 /obj/effect/turf_decal/siding/thinplating_new/dark,
 /obj/machinery/power/rtg/advanced,
@@ -452,10 +446,12 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "FG" = (
 /obj/structure/table,
+/obj/structure/sign/poster/contraband/random/directional/west,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/prison,
 /obj/item/modular_computer/laptop/preset/civilian{
 	pixel_y = 1
 	},
-/obj/structure/sign/poster/contraband/random/directional/west,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "FJ" = (
@@ -472,9 +468,12 @@
 "IS" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/structure/closet/crate/cardboard/mothic,
-/obj/item/circuitboard/machine/techfab,
-/obj/item/stock_parts/manipulator/nano,
+/obj/item/stock_parts/servo/nano,
 /obj/item/reagent_containers/cup/beaker,
+/obj/item/circuitboard/machine/protolathe/offstation,
+/obj/item/circuitboard/machine/circuit_imprinter/offstation{
+	pixel_y = 4
+	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "IZ" = (
@@ -792,11 +791,11 @@ lp
 hO
 hO
 hO
-oo
+hO
 hO
 Zh
 Zh
-tw
+Zh
 Zh
 Zh
 hk

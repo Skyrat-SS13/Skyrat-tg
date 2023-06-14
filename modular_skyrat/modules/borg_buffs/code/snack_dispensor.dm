@@ -1,14 +1,14 @@
 /datum/design/borg_snack_dispenser
-	name = "Cyborg Upgrade (Snack Dispenser)"
+	name = "Snack Dispenser Module"
 	id = "borg_upgrade_snacks"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/snack_dispenser
-	materials = list(/datum/material/iron = 700, /datum/material/glass = 500)
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
 	construction_time = 1 SECONDS
 	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
 
 /obj/item/borg/upgrade/snack_dispenser
-	name = "Cyborg Upgrade (Snack Dispenser)"
+	name = "Snack Dispenser Module"
 	desc = "Gives any borg the ability to dispense speciality snacks."
 	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
 	var/list/removed_modules = list()

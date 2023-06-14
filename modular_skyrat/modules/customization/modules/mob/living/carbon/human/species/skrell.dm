@@ -5,8 +5,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		NO_SLIP_WHEN_WALKING
 	)
 	inherent_traits = list(
@@ -79,8 +77,8 @@
 	skrell.dna.features["mcolor"] = skrell_color
 	skrell.dna.features["mcolor2"] = skrell_color
 	skrell.dna.features["mcolor3"] = skrell_color
-	skrell.dna.species.mutant_bodyparts["skrell_hair"] = list(MUTANT_INDEX_NAME = "Female", MUTANT_INDEX_COLOR_LIST = list(skrell_color, skrell_color, skrell_color))
-	skrell.update_mutant_bodyparts(TRUE)
+	skrell.dna.mutant_bodyparts["skrell_hair"] = list(MUTANT_INDEX_NAME = "Female", MUTANT_INDEX_COLOR_LIST = list(skrell_color, skrell_color, skrell_color))
+	regenerate_organs(skrell, src, visual_only = TRUE)
 	skrell.update_body(TRUE)
 
 
@@ -110,6 +108,9 @@
 		/datum/language/nekomimetic,
 		/datum/language/skrell,
 	))
+
+/obj/item/organ/internal/tongue/skrell/get_possible_languages()
+	return languages_possible_skrell
 
 /obj/item/organ/internal/heart/skrell
 	name = "skrellian heart"

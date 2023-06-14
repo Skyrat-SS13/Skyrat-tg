@@ -262,14 +262,3 @@
 			return FALSE
 
 	return TRUE
-
-/datum/component/armament/proc/text2access(access_text)
-	. = list()
-	if(!access_text)
-		return
-	var/list/split = splittext(access_text,";")
-	for(var/split_text in split)
-		var/num_text = text2num(split_text)
-		if(!num_text)
-			continue
-		. += num_text

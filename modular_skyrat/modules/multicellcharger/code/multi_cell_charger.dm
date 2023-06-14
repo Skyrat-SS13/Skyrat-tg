@@ -37,7 +37,7 @@
 	to_chat(user, span_notice("You press the quick release as all the cells pop out!"))
 	for(var/i in charging_batteries)
 		removecell()
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
@@ -63,7 +63,7 @@
 		if(inserting_cell.chargerate <= 0)
 			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
 			return
-		if(charging_batteries.len >= 4)
+		if(length(charging_batteries) >= max_batteries)
 			to_chat(user, span_warning("[src] is full, and cannot hold anymore cells!"))
 			return
 		else
@@ -88,14 +88,14 @@
 			return
 		return ..()
 
-/obj/machinery/cell_charger_multi/process(delta_time)
+/obj/machinery/cell_charger_multi/process(seconds_per_tick)
 	if(!charging_batteries.len || !anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
 
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
 		if(charging.percent() >= 100)
 			continue
-		var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
+		var/main_draw = use_power_from_net(charge_rate * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
 		if(!main_draw)
 			return
 		charging.give(main_draw)
@@ -114,11 +114,12 @@
 /obj/machinery/cell_charger_multi/RefreshParts()
 	. = ..()
 	charge_rate = 0 // No, you cant get free charging speed!
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		charge_rate += charge_rate_base * C.rating
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		charge_rate += charge_rate_base * capacitor.tier
 		if(charge_rate >= charge_rate_max) // We've hit the charge speed cap, stop iterating.
 			charge_rate = charge_rate_max
 			break
+
 	if(charge_rate < charge_rate_base) // This should never happen; but we need to pretend it can.
 		charge_rate = charge_rate_base
 
@@ -186,7 +187,7 @@
 	name = "Multi-Cell Charger (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/cell_charger_multi
-	req_components = list(/obj/item/stock_parts/capacitor = 4)
+	req_components = list(/datum/stock_part/capacitor = 4)
 	needs_anchored = FALSE
 
 
@@ -195,4 +196,7 @@
 	desc = "The circuit board for a multi-cell charger."
 	id = "multi_cell_charger"
 	build_path = /obj/item/circuitboard/machine/cell_charger_multi
-	category = list ("Misc. Machinery")
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING

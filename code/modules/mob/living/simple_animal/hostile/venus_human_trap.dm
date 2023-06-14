@@ -20,8 +20,9 @@
 	opacity = FALSE
 	canSmoothWith = null
 	smoothing_flags = NONE
+	density = FALSE
 	/// The amount of time it takes to create a venus human trap.
-	var/growth_time = 1 MINUTES //SKYRAT EDIT CHANGE
+	var/growth_time = 120 SECONDS
 	var/growth_icon = 0
 
 	/// Used by countdown to check time, this is when the timer will complete and the venus trap will spawn.
@@ -58,6 +59,15 @@
 	if((trait_flags & SPACEVINE_HEAT_RESISTANT) && damage_type == BURN)
 		damage_amount = 0
 	. = ..()
+
+/obj/structure/alien/resin/flower_bud/attacked_by(obj/item/item, mob/living/user)
+	var/damage_dealt = item.force
+	if(item.damtype == BURN)
+		damage_dealt *= 4
+	if(item.get_sharpness())
+		damage_dealt *= 16 // alien resin applies 75% reduction to brute damage so this actually x4 damage
+
+	take_damage(damage_dealt, item.damtype, MELEE, 1)
 
 /obj/structure/alien/resin/flower_bud/Destroy()
 	QDEL_LIST(vines)
@@ -125,8 +135,8 @@
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
 	plane = GAME_PLANE_UPPER_FOV_HIDDEN
-	health = 60 //SKYRAT EDIT CHANGE - ORIGINAL = 50
-	maxHealth = 60 //SKYRAT EDIT CHANGE - ORIGINAL = 50
+	health = 50
+	maxHealth = 50
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
@@ -135,7 +145,7 @@
 	minbodytemp = 100
 	combat_mode = TRUE
 	ranged_cooldown_time = 4 SECONDS
-	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
+	del_on_death = TRUE
 	death_message = "collapses into bits of plant matter."
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
 	death_sound = 'sound/creatures/venus_trap_death.ogg'
@@ -146,8 +156,11 @@
 	unsuitable_atmos_damage = 0
 	/// copied over from the code from eyeballs (the mob) to make it easier for venus human traps to see in kudzu that doesn't have the transparency mutation
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	faction = list("hostile","vines","plants")
+	// Real green, cause of course
+	lighting_cutoff_red = 10
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
+	faction = list(FACTION_HOSTILE,FACTION_VINES,FACTION_PLANTS)
 	initial_language_holder = /datum/language_holder/venus
 	unique_name = TRUE
 	/// A list of all the plant's vines
@@ -159,9 +172,7 @@
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
-	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
-
-/mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/hostile/venus_human_trap/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	. = ..()
 	pull_vines()
 
@@ -174,7 +185,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.stat != DEAD)
-			adjustHealth(-maxHealth * 0.05) //SKYRAT EDIT: Nerfs vines (from 0.1 to 0.05-- lets see with less health)
+			adjustHealth(-maxHealth * 0.1)
 
 /mob/living/simple_animal/hostile/venus_human_trap/OpenFire(atom/the_target)
 	for(var/datum/beam/B in vines)

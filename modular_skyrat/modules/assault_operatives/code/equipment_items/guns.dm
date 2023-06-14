@@ -3,11 +3,15 @@
 /obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops
 	name = "\improper IGE-040 pistol"
 	desc = "A pistol chambered in 10mm magnum and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
-	company_flag = COMPANY_REMOVED
+
+/obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/gun/energy/e_gun/advtaser/assault_ops
 	w_class = WEIGHT_CLASS_NORMAL
-	company_flag = COMPANY_REMOVED
+
+/obj/item/gun/energy/e_gun/advtaser/assault_ops/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 // Rifle
 
@@ -33,16 +37,17 @@
 	can_suppress = TRUE
 	suppressor_x_offset = 4
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	burst_size = 2
 	fire_delay = 3
 	pin = /obj/item/firing_pin/implant/pindicate
-	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/automatic/assault_ops_rifle/Initialize(mapload)
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/ballistic/automatic/assault_ops_rifle/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	name = "\improper IGE-110 magazine"
@@ -52,7 +57,7 @@
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
 	caliber = "a762x39"
 	max_ammo = 20
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
@@ -85,12 +90,19 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	can_suppress = TRUE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 0.8
 	projectile_damage_multiplier = 0.6
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/pindicate
-	company_flag = COMPANY_REMOVED
+
+/obj/item/gun/ballistic/automatic/assault_ops_smg/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
+/obj/item/gun/ballistic/automatic/assault_ops_smg/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	name = "\improper IGE-260 magazine"
@@ -100,7 +112,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 40
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
@@ -135,11 +147,13 @@
 	can_suppress = TRUE
 	suppressor_x_offset = 4
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 1.5
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/pindicate
-	company_flag = COMPANY_REMOVED
+
+/obj/item/gun/ballistic/automatic/assault_ops_shotgun/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	name = "\improper IGE-340 magazine"
@@ -149,7 +163,7 @@
 	ammo_type = /obj/item/ammo_casing/shotgun
 	caliber = CALIBER_SHOTGUN
 	max_ammo = 7
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
@@ -203,12 +217,14 @@
 	can_be_sawn_off = FALSE
 	can_jam = FALSE
 	pin = /obj/item/firing_pin/implant/pindicate
-	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper/Initialize(mapload)
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 2.5)
+
+/obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	name = "\improper IGE-410 magazine"
@@ -216,9 +232,9 @@
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_sniper_mag"
 	ammo_type = /obj/item/ammo_casing/p50
-	caliber = CALIBER_50
+	caliber = CALIBER_50BMG
 	max_ammo = 5
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime

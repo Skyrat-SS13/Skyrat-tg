@@ -1,10 +1,11 @@
 /obj/item/ammo_box/advanced
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/datum/techweb_node/peacekeeper_ammo_advanced
+/datum/techweb_node/smartgun_rails
+	id = "smartgun_rails"
 	display_name = "Experimental SMARTGUN Ammunition"
 	description = "Standard ammo for a non-standard SMARTGUN."
-	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
+	prereq_ids = list("electronic_weapons", "exotic_ammo")
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
@@ -21,13 +22,11 @@
 
 /obj/item/ammo_box/advanced/b6mm/rubber
 	name = "6.3mm dissuasive pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-rubber"
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
 /obj/item/ammo_box/advanced/b6mm/ihdf
 	name = "6.3mm fragmentation pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
@@ -86,7 +85,7 @@
 	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
+	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 5, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
@@ -108,6 +107,7 @@
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_MAT_REDEMPTION
+	multitype = TRUE
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -136,17 +136,8 @@
 		if(AMMO_BOX_PER_BULLET)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	if(length(bullet_cost))
-		var/temp_materials = custom_materials.Copy()
-		for (var/material in bullet_cost)
-			var/material_amount = bullet_cost[material]
-			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-			temp_materials[material] = material_amount
-		set_custom_materials(temp_materials)
 
 /obj/item/ammo_box/revolver
 	name = "speed loader"
@@ -154,7 +145,7 @@
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	var/round_type = AMMO_TYPE_LETHAL
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 	start_empty = TRUE //SOmething strange going on with refills.

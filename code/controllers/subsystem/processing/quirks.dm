@@ -27,12 +27,15 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
-		list("Quadruple Amputee", "Paraplegic", "Frail"),
+		list("Quadruple Amputee", "Paraplegic"),
+		list("Quadruple Amputee", "Frail"),
+		list("Mute", "Social Anxiety"),
+		list("Mute", "Soft-Spoken"),
+		list("Stormtrooper Aim", "Big Hands"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
-		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
-		list("Mute", "Social Anxiety"),
+		list("No Guns", "Big Hands", "Stormtrooper Aim"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
 	)
@@ -76,19 +79,19 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 			continue
 		hardcore_quirks[quirk_type] += hardcore_value
 
-/datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli)
+/datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/applied_client)
 	var/badquirk = FALSE
-	for(var/quirk_name in cli.prefs.all_quirks)
-		var/datum/quirk/Q = quirks[quirk_name]
-		if(Q)
-			if(user.add_quirk(Q))
+	for(var/quirk_name in applied_client.prefs.all_quirks)
+		var/datum/quirk/quirk_type = quirks[quirk_name]
+		if(ispath(quirk_type))
+			if(user.add_quirk(quirk_type, override_client = applied_client))
 				SSblackbox.record_feedback("nested tally", "quirks_taken", 1, list("[quirk_name]"))
 		else
-			stack_trace("Invalid quirk \"[quirk_name]\" in client [cli.ckey] preferences")
-			cli.prefs.all_quirks -= quirk_name
+			stack_trace("Invalid quirk \"[quirk_name]\" in client [applied_client.ckey] preferences")
+			applied_client.prefs.all_quirks -= quirk_name
 			badquirk = TRUE
 	if(badquirk)
-		cli.prefs.save_character()
+		applied_client.prefs.save_character()
 
 /*
  *Randomises the quirks for a specified mob
@@ -157,19 +160,24 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /// be valid.
 /// If no changes need to be made, will return the same list.
 /// Expects all quirk names to be unique, but makes no other expectations.
-/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks)
+/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments) // SKYRAT EDIT - AUGMENTS+
 	var/list/new_quirks = list()
 	var/list/positive_quirks = list()
 	var/balance = 0
 
 	var/list/all_quirks = get_quirks()
 
+	// SKYRAT EDIT BEGIN - AUGMENTS+
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		balance += aug.cost
+	// SKYRAT EDIT END
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]
 		if (isnull(quirk))
 			continue
 
-		if (initial(quirk.mood_quirk) && CONFIG_GET(flag/disable_human_mood))
+		if ((initial(quirk.quirk_flags) & QUIRK_MOODLET_BASED) && CONFIG_GET(flag/disable_human_mood))
 			continue
 
 		var/blacklisted = FALSE
@@ -216,5 +224,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	return new_quirks
 
+#undef EXP_ASSIGN_WAYFINDER
 #undef RANDOM_QUIRK_BONUS
 #undef MINIMUM_RANDOM_QUIRKS

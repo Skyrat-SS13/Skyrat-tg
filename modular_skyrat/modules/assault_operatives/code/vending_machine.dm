@@ -64,7 +64,6 @@
 		var/atom/temp = typepath
 		var/datum/data/vending_product/vending_product = new /datum/data/vending_product()
 
-		GLOB.vending_products[typepath] = 1
 		vending_product.name = initial(temp.name)
 		vending_product.product_path = typepath
 		if(!start_empty)

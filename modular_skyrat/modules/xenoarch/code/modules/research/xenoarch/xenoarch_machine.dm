@@ -17,8 +17,8 @@
 /obj/machinery/xenoarch/RefreshParts()
 	. = ..()
 	efficiency = -1
-	for(var/obj/item/stock_parts/micro_laser/laser_part in component_parts)
-		efficiency += laser_part.rating
+	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
+		efficiency += laser_part.tier
 	process_speed = initial(process_speed) - (6 SECONDS * efficiency)
 
 /obj/machinery/xenoarch/Initialize(mapload)
@@ -63,7 +63,7 @@
 	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
 	icon_state = "researcher"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
-	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns an anomalous crystal.
+	///A variable that goes from 0 to 150. Depending on what is processed, increases the value. Once at or above 150, spawns an anomalous crystal.
 	var/current_research = 0
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)

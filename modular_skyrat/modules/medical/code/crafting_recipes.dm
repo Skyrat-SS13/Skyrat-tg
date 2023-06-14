@@ -4,7 +4,7 @@
 	time = 30
 	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/sinew = 1)
-	category = CAT_PRIMAL
+	category = CAT_MISC
 
 /datum/crafting_recipe/improvsplint
 	name = "Improvised Splint"

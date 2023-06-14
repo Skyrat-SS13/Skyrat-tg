@@ -31,7 +31,7 @@
 #define CHAT_GHOSTWHISPER (1<<7)
 #define CHAT_GHOSTPDA (1<<8)
 #define CHAT_GHOSTRADIO (1<<9)
-#define CHAT_BANKCARD  (1<<10)
+#define CHAT_BANKCARD (1<<10)
 #define CHAT_GHOSTLAWS (1<<11)
 #define CHAT_LOGIN_LOGOUT (1<<12)
 
@@ -60,7 +60,7 @@
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_LIVING "Living"
 #define EXP_TYPE_CREW "Crew"
-#define EXP_TYPE_CENTRAL_COMMAND "Central Command"
+#define EXP_TYPE_CENTRAL_COMMAND "Central Command" // SKYRAT EDIT ADD
 #define EXP_TYPE_COMMAND "Command"
 #define EXP_TYPE_ENGINEERING "Engineering"
 #define EXP_TYPE_MEDICAL "Medical"

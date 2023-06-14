@@ -11,7 +11,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
@@ -57,6 +57,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
@@ -73,12 +74,6 @@
 	icon_state = "policechiefalt"
 
 // End Police Uniforms
-
-///SECMED
-/obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
-	name = "security medic scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards and acid, along with some light padding. This one is in a deep red."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
 
 /// PRISONER
 /obj/item/clothing/under/rank/prisoner/protcust
@@ -137,6 +132,7 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/prisoner/syndicate
 	name = "syndicate prisoner jumpsuit"

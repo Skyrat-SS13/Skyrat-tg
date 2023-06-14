@@ -26,6 +26,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		// In case they reopen the GUI
+		// FIXME: this can cause a runtime since user can be a living mob
 		if(istype(user))
 			user.jobs_menu_mounted = FALSE
 			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
@@ -66,6 +67,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		departments[department.department_name] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
+			//Jobs under multiple departments should only be displayed if this is their first department or the command department
+			if(LAZYLEN(job_datum.departments_list) > 1 && job_datum.departments_list[1] != department.type && !(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+				continue
+
 			var/job_availability = owner.IsJobUnavailable(job_datum.title, latejoin = TRUE)
 
 			var/list/job_data = list(
@@ -100,22 +105,21 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		departments[department.department_name] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
-			var/datum/outfit/outfit = job_datum.outfit
-			var/datum/id_trim/trim = initial(outfit.id_trim)
+			//Jobs under multiple departments should only be displayed if this is their first department or the command department
+			if(LAZYLEN(job_datum.departments_list) > 1 && job_datum.departments_list[1] != department.type && !(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+				continue
 
 			var/list/job_data = list(
 				"command" = !!(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND),
 				"description" = job_datum.description,
-				"icon" = initial(trim.orbit_icon),
 			)
 
 			department_jobs[job_datum.title] = job_data
 
 	return list("departments_static" = departments)
 
-// we can't use GLOB.new_player_state here since it also allows any admin to see the ui, which will cause runtimes
-/datum/latejoin_menu/ui_status(mob/user)
-	return isnewplayer(user) ? UI_INTERACTIVE : UI_CLOSE
+/datum/latejoin_menu/ui_state(mob/user)
+	return GLOB.new_player_state
 
 /datum/latejoin_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -145,9 +149,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				return TRUE
 
 			// SKYRAT EDIT ADDITION START - Flavourtext requirement
-			if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
-				to_chat(owner, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
-				return
+			if(CONFIG_GET(flag/min_flavor_text))
+				if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
+					to_chat(owner, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
+					return
 			// SKYRAT EDIT END
 
 			//Determines Relevent Population Cap
@@ -166,8 +171,6 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
 			owner.AttemptLateSpawn(params["job"])
-			return TRUE
-
 		if("viewpoll")
 			var/datum/poll_question/poll = locate(params["viewpoll"]) in GLOB.polls
 			if(!poll)

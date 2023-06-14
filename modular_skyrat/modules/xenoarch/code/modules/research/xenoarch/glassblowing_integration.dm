@@ -5,7 +5,8 @@
 
 /obj/item/glassblowing/magnifying_glass/examine(mob/user)
 	. = ..()
-	. += span_notice("You can use [src] on useless relics to realize their full potential!")
+	if(HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
+		. += span_notice("You can use [src] on useless relics to realize their full potential!")
 
 /datum/crafting_recipe/magnifying_glass
 	name = "Magnifying Glass"
@@ -14,4 +15,4 @@
 		/obj/item/stack/sheet/mineral/wood = 1,
 		/obj/item/glassblowing/glass_lens = 1,
 	)
-	category = CAT_PRIMAL
+	category = CAT_EQUIPMENT

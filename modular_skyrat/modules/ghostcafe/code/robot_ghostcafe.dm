@@ -2,6 +2,7 @@
 	lawupdate = FALSE
 	scrambledcodes = TRUE // Roleplay borgs aren't real
 	set_model = /obj/item/robot_model/roleplay
+	radio = null
 
 /mob/living/silicon/robot/model/roleplay/Initialize(mapload)
 	. = ..()
@@ -33,7 +34,7 @@
 		/obj/item/multitool/cyborg,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
-		/obj/item/stack/sheet/rglass/cyborg,
+		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron,
 		/obj/item/stack/cable_coil,

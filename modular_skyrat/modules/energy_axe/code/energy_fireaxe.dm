@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/energy_axe.dmi'
 	icon_state = "energy_axe0"
 	base_icon_state = "energy_axe"
+	worn_icon_state = "energy_axe"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_righthand.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'

@@ -6,7 +6,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_RD
-	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -50,9 +49,9 @@
 	ears = /obj/item/radio/headset/headset_sci
 	l_pocket = /obj/item/modular_computer/pda/roboticist
 
-	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
-	satchel = /obj/item/storage/backpack/satchel/tox/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
-	duffelbag = /obj/item/storage/backpack/duffelbag/robo //SKYRAT CHANGE - Roboticist Bags (ADDITION)
+	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags
+	satchel = /obj/item/storage/backpack/satchel/science/robo //SKYRAT CHANGE - Roboticist Bags
+	duffelbag = /obj/item/storage/backpack/duffelbag/science/robo //SKYRAT ADDITION - Roboticist Bags
 
 	pda_slot = ITEM_SLOT_LPOCKET
 	skillchips = list(/obj/item/skillchip/job/roboticist)

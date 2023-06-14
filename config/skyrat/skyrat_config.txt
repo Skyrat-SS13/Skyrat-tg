@@ -1,19 +1,15 @@
-## The name that the server uses to identify itself to the database. Useful if you intend to run multiple servers that
-#  speak to the same database to share staff ranks, bans, notes etc.
-SERVERSQLNAME
-
 ## Comment this out if you'd like a server that cares only about local bans in the database.
 RESPECT_GLOBAL_BANS
 
 ## Automatic population control population limit, will send players(not admins) to the overflow server.
 ## Set to 0 to disable
 ## MAKE SURE YOU SET AN OVERFLOW IP!
-HARD_PLAYER_CAP 0
+PLAYER_HARD_CAP 0
 
 ## Player prompt to change servers after this cap.
 ## Set to 0 to disable
 ## MAKE SURE YOU SET AN OVERFLOW IP!
-SOFT_PLAYER_CAP 0
+PLAYER_SOFT_CAP 0
 
 ## The IP of the overflow server. See above.
 #OVERFLOW_SERVER_IP byond://example:1337
@@ -37,8 +33,8 @@ MENTOR_LEGACY_SYSTEM
 
 ALERT_AMBER_UPTO A major security emergency has developed. Security staff may have weapons unholstered at all times. Random searches are allowed and advised.
 ALERT_AMBER_DOWNTO A major security emergency is still underway. Non-security personnel are required to obey all relevant instructions from security staff.
-ALERT_ORANGE_UPTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff.
-ALERT_ORANGE_DOWNTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff.
+ALERT_ORANGE_UPTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff. Engineering staff will have expanded access to areas of the station during the emergency.
+ALERT_ORANGE_DOWNTO A major engineering emergency has developed. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff. Engineering staff will have expanded access to areas of the station during the emergency.
 ALERT_VIOLET_UPTO A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff.
 ALERT_VIOLET_DOWNTO  A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff.
 ALERT_DELTA_UPTO Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
@@ -105,34 +101,34 @@ SSDECAY_DISABLE_NESTS
 ## Disables mismatched parts for codebases that don't want it.
 #DISABLE_MISMATCHED_PARTS
 
-## Toggles if the events system will use a vote or random choice to run events
-## Comment out to disable
-#EVENTS_USE_RANDOM
-
-## Toggles if the events system uses admin votes or public votes
-## Comment out for public votes
-#EVENTS_PUBLIC_VOTING
-
-## If we use admin votes, do we use chaos or all event vote?
-ADMIN_EVENT_USES_CHAOS
-
-## Runs a side timer for low chaos events
-LOW_CHAOS_EVENT_SYSTEM
-
-## Log event votes
-LOG_EVENT_VOTES
-
 ## Do we allow consecutive catastrophic events?
 ALLOW_CONSECUTIVE_CATASTROPIC_EVENTS
 
 ## What is the most amount of time the next event can run?
-EVENT_FREQUENCY_UPPER 12000
+EVENT_FREQUENCY_UPPER 8400
 
 ## What is the least amount of time the next event can run?
-EVENT_FREQUENCY_LOWER 9000
+EVENT_FREQUENCY_LOWER 4200
 
 ## Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 TICKET_PING_FREQUENCY 0
 
+## Minimum alert level for pods to actually evacuate people
+MINIMUM_ALERT_FOR_PODS 0
+
 ## Delay between newscasters making lore announcements, default is 18000 (30 minutes)
 LORECASTER_DELAY 18000
+
+## If uncommented, suicide will be disabled.
+# DISABLE_SUICIDE
+
+## The link to the policy wiki page for primitive catgirls
+ICECATS_POLICY_LINK "https://wiki.skyrat13.tk/w/index.php/Ghost_Role_policy#Icewalkers"
+
+## Uncomment to enable minimum flavor text requirements for joining the round
+#MIN_FLAVOR_TEXT
+
+## Minimum flavor text number needed to enter the game
+## YOU MUST HAVE MIN_FLAVOR_TEXT ENABLED FOR THIS TO WORK.
+## Don't ever set this to 0, just disable MIN_FLAVOR_TEXT
+#FLAVOR_TEXT_CHARACTER_REQUIREMENT 150

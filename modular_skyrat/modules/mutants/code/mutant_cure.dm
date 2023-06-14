@@ -3,7 +3,7 @@
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
-	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = SHEET_MATERIAL_AMOUNT, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
 	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
@@ -84,7 +84,7 @@
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
-	custom_materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
+	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	var/contains_rna = FALSE
 
 /obj/item/rna_vial/proc/load_rna(mob/living/carbon/human/H)
@@ -303,13 +303,13 @@
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	. = ..()
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - M.rating) >= 1)
-			recombination_step_time -= M.rating
-	for(var/obj/item/stock_parts/scanning_module/M in component_parts)
-		recombination_step_amount += M.rating*2
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		recombination_step_amount += M.rating
+	for(var/datum/stock_part/servo/servo in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - servo.tier) >= 1)
+			recombination_step_time -= servo.tier
+	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
+		recombination_step_amount += scanning_module.tier * 2
+	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
+		recombination_step_amount += micro_laser.tier
 
 /obj/machinery/rnd/rna_recombinator/update_overlays()
 	. = ..()
@@ -349,7 +349,7 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
-	custom_materials = list(/datum/material/glass=500)
+	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT * 5)
 
 /obj/item/reagent_containers/cup/bottle/hnz/one
 	list_reagents = list(/datum/reagent/hnz = 1)

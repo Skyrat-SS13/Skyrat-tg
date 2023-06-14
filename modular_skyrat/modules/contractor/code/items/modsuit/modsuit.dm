@@ -2,6 +2,7 @@
 /obj/item/mod/control/pre_equipped/contractor
 	worn_icon = 'modular_skyrat/modules/contractor/icons/worn_modsuit.dmi'
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit.dmi'
+	icon_state = "contractor-control"
 	theme = /datum/mod_theme/contractor
 	applied_cell = /obj/item/stock_parts/cell/hyper
 	applied_modules = list(
@@ -20,7 +21,7 @@
 /obj/item/mod/control/pre_equipped/contractor/upgraded
 	applied_cell = /obj/item/stock_parts/cell/bluespace
 	applied_modules = list(
-		/obj/item/mod/module/baton_holster,
+		/obj/item/mod/module/baton_holster/preloaded,
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack,
@@ -35,7 +36,7 @@
 
 /obj/item/mod/control/pre_equipped/contractor/upgraded/adminbus
 	applied_modules = list(
-		/obj/item/mod/module/baton_holster/preloaded,
+		/obj/item/mod/module/baton_holster/preloaded/upgraded,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/scorpion_hook,

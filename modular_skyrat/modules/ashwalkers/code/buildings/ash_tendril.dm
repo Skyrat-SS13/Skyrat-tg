@@ -160,7 +160,7 @@
 		qdel(src)
 		return
 
-	living_inside.revive(HEAL_ADMIN)
+	living_inside.revive(ADMIN_HEAL_ALL)
 	living_inside.forceMove(get_turf(src))
 	living_inside.mind.grab_ghost()
 	living_inside.balloon_alert_to_viewers("[living_inside] breaks out of [src]!")

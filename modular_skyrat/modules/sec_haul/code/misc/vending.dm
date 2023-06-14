@@ -52,6 +52,7 @@
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
+	light_mask = "sec-light-mask"
 	icon_state = "peace"
 	product_ads = "Beat perps in style!;The stains wash right out!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Good luck, Peacekeeper!"
@@ -67,11 +68,12 @@
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
+					/obj/item/clothing/under/rank/security/skyrat/utility = 3,
 					/obj/item/clothing/shoes/jackboots/sec = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-					/obj/item/clothing/head/costume/ushanka/sec/blue = 10,
+					/obj/item/clothing/head/costume/ushanka/sec = 10,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol = 5,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,

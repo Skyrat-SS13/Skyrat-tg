@@ -1,6 +1,6 @@
 /datum/component/shielded/suit
 
-/datum/component/shielded/suit/process(delta_time)
+/datum/component/shielded/suit/process(seconds_per_tick)
 	if(current_charges >= max_charges)
 		STOP_PROCESSING(SSdcs, src)
 		return

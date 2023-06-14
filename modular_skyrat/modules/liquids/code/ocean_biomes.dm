@@ -8,14 +8,14 @@
 	flora_types = list(/obj/effect/spawner/ocean_curio, /obj/structure/flora/rock/pile, /obj/structure/flora/ocean/glowweed, /obj/structure/flora/ocean/seaweed, /obj/structure/flora/ocean/longseaweed, /obj/structure/flora/ocean/coral)
 	flora_density = 25
 	fauna_density = 0.03
-	fauna_types = list(/mob/living/simple_animal/hostile/carp)
+	fauna_types = list(/mob/living/basic/carp)
 
 /datum/biome/ocean_redsand
 	turf_type = /turf/open/floor/plating/ocean/ironsand
 	flora_types = list(/obj/effect/spawner/ocean_curio, /obj/structure/flora/rock/pile, /obj/structure/flora/ocean/glowweed, /obj/structure/flora/ocean/seaweed, /obj/structure/flora/ocean/longseaweed, /obj/structure/flora/ocean/coral)
 	flora_density = 40
 	fauna_density = 0.06
-	fauna_types = list(/mob/living/simple_animal/hostile/carp)
+	fauna_types = list(/mob/living/basic/carp)
 
 /datum/biome/ocean_rocklight
 	turf_type = /turf/open/floor/plating/ocean/rock

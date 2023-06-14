@@ -25,6 +25,7 @@
 #define ROLE_ALIEN "Xenomorph"
 #define ROLE_BLOB "Blob"
 #define ROLE_BLOB_INFECTION "Blob Infection"
+#define ROLE_CHANGELING_MIDROUND "Changeling (Midround)"
 #define ROLE_FUGITIVE "Fugitive"
 #define ROLE_LONE_OPERATIVE "Lone Operative"
 #define ROLE_MALF_MIDROUND "Malf AI (Midround)"
@@ -32,6 +33,7 @@
 #define ROLE_NINJA "Space Ninja"
 #define ROLE_OBSESSED "Obsessed"
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
+#define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
@@ -39,16 +41,18 @@
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
 //SKYRAT EDIT START
-#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
+#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
 #define ROLE_PROVOCATEUR "Provocateur"
 #define ROLE_SYNDICATE_INFILTRATOR "Syndicate Infiltrator"
+#define ROLE_STOWAWAY_CHANGELING "Stowaway Changeling"
 
 // Other roles
 #define ROLE_SYNDICATE "Syndicate"
@@ -63,6 +67,7 @@
 #define ROLE_HIVE "Hivemind Host" //Role removed, left here for safety.
 #define ROLE_SENTIENCE "Sentience Potion Spawn"
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
+#define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
 #define ROLE_POSIBRAIN "Posibrain"
 #define ROLE_DRONE "Drone"
@@ -93,7 +98,6 @@
 #define ROLE_SPACE_SYNDICATE "Space Syndicate"
 #define ROLE_SYNDICATE_CYBERSUN "Cybersun Space Syndicate" //Ghost role syndi from Forgottenship ruin
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
-#define ROLE_HEADSLUG_CHANGELING "Headslug Changeling"
 #define ROLE_SPACE_PIRATE "Space Pirate"
 #define ROLE_ANCIENT_CREW "Ancient Crew"
 #define ROLE_SPACE_DOCTOR "Space Doctor"
@@ -105,7 +109,13 @@
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
-
+//SKYRAT EDIT START
+#define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
+#define ROLE_DS2 "DS2 Syndicate"
+#define ROLE_FREIGHTER_CREW "Freighter Crew"
+#define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
+#define ROLE_PORT_TARKON "Port Tarkon Survivor"
+//SKYRAT EDIT END
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -131,6 +141,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_ALIEN = 0,
 	ROLE_BLOB = 0,
 	ROLE_BLOB_INFECTION = 0,
+	ROLE_CHANGELING_MIDROUND = 0,
 	ROLE_FUGITIVE = 0,
 	ROLE_LONE_OPERATIVE = 14,
 	ROLE_MALF_MIDROUND = 0,
@@ -138,6 +149,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_NINJA = 0,
 	ROLE_OBSESSED = 0,
 	ROLE_OPERATIVE_MIDROUND = 14,
+	ROLE_PARADOX_CLONE = 0,
 	ROLE_REVENANT = 0,
 	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
@@ -155,6 +167,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_HERETIC_SMUGGLER = 0,
 	ROLE_PROVOCATEUR = 14,
 	ROLE_SYNDICATE_INFILTRATOR = 0,
+	ROLE_STOWAWAY_CHANGELING = 0,
 
 	// I'm not too sure why these are here, but they're not moving.
 	ROLE_PAI = 0,

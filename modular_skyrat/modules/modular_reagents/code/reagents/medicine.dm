@@ -21,8 +21,8 @@
 	L.clear_alert("numbed")
 	..()
 
-/datum/reagent/medicine/lidocaine/overdose_process(mob/living/M, delta_time, times_fired)
-	M.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 80)
+/datum/reagent/medicine/lidocaine/overdose_process(mob/living/M, seconds_per_tick, times_fired)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * seconds_per_tick, 80)
 	..()
 
 //Inverse Medicines//
@@ -36,11 +36,11 @@
 	ph = 6.09
 	tox_damage = 0
 
-/datum/reagent/inverse/lidocaine/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
+/datum/reagent/inverse/lidocaine/on_mob_life(mob/living/carbon/owner, seconds_per_tick, times_fired)
 	..()
 	to_chat(owner, span_userdanger("Your body aches with unimaginable pain!"))
-	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 85)
-	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * seconds_per_tick, 85)
+	owner.adjustStaminaLoss(5 * REM * seconds_per_tick, 0)
 	if(prob(30))
 		INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 

@@ -10,20 +10,20 @@
 # More can be found in code\__DEFINES\maps.dm
 
 # CENTRAL COMMAND MAP TEMPLATES
-# CC Shuttle Dock - This is where we drop the players off after the round ends
-[templates.centcom_shuttle_dock]
-map_files = ["centcom_shuttle_dock.dmm"]
-directory = "_maps/skyrat/automapper/templates/centcom/"
-required_map = "builtin"
-coordinates = [186, 70, 1]
-trait_name = "CentCom"
-
 # CC Ferry Dock - Admin Shuttle
 [templates.centcom_ferry_dock]
 map_files = ["centcom_ferry_dock.dmm"]
 directory = "_maps/skyrat/automapper/templates/centcom/"
 required_map = "builtin"
 coordinates = [128, 79, 1]
+trait_name = "CentCom"
+
+# CC Evac Docking Port Removal
+[templates.centcom_shuttle_dock]
+map_files = ["centcom_shuttle_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [206, 85, 1]
 trait_name = "CentCom"
 
 # METASTATION MAP TEMPLATES
@@ -40,7 +40,7 @@ trait_name = "Station"
 map_files = ["metastation_cryo.dmm"]
 directory = "_maps/skyrat/automapper/templates/metastation/"
 required_map = "MetaStation.dmm"
-coordinates = [136, 181, 1]
+coordinates = [133, 182, 1]
 trait_name = "Station"
 
 # Metastation Barber
@@ -65,14 +65,6 @@ map_files = ["metastation_ntrep_office.dmm"]
 directory = "_maps/skyrat/automapper/templates/metastation/"
 required_map = "MetaStation.dmm"
 coordinates = [57, 119, 1]
-trait_name = "Station"
-
-# Metastation Prison Privacy
-[templates.metastation_prison_privacy]
-map_files = ["metastation_prison_privacy.dmm"]
-directory = "_maps/skyrat/automapper/templates/metastation/"
-required_map = "MetaStation.dmm"
-coordinates = [82, 180, 1]
 trait_name = "Station"
 
 # DELTASTATION MAP EDITS
@@ -114,14 +106,6 @@ map_files = ["deltastation_ntrep_office.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
 coordinates = [123, 143, 1]
-trait_name = "Station"
-
-# Deltastation Prison Privacy
-[templates.deltastation_prison_privacy]
-map_files = ["deltastation_prison_privacy.dmm"]
-directory = "_maps/skyrat/automapper/templates/deltastation/"
-required_map = "DeltaStation2.dmm"
-coordinates = [201, 161, 1]
 trait_name = "Station"
 
 # ICEBOX MAP EDITS
@@ -212,7 +196,7 @@ trait_name = "Station"
 map_files = ["tramstation_arrivals.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [14, 96, 2]
+coordinates = [8, 96, 2]
 trait_name = "Station"
 
 # Tramstation Armory
@@ -220,7 +204,7 @@ trait_name = "Station"
 map_files = ["tramstation_armory.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [76, 162, 2]
+coordinates = [70, 162, 2]
 trait_name = "Station"
 
 # Tramstation Barber
@@ -228,15 +212,7 @@ trait_name = "Station"
 map_files = ["tramstation_barber.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [117, 151, 1]
-trait_name = "Station"
-
-# Tramstation Barber Cover
-[templates.tramstation_barber_cover]
-map_files = ["tramstation_barber_cover.dmm"]
-directory = "_maps/skyrat/automapper/templates/tramstation/"
-required_map = "tramstation.dmm"
-coordinates = [118, 164, 2]
+coordinates = [134, 133, 1]
 trait_name = "Station"
 
 # Tramstation Cryo
@@ -244,7 +220,7 @@ trait_name = "Station"
 map_files = ["tramstation_cryo.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [74, 102, 2]
+coordinates = [68, 102, 2]
 trait_name = "Station"
 
 # Tramstation NTR Office
@@ -252,21 +228,119 @@ trait_name = "Station"
 map_files = ["tramstation_ntrep_office.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [129, 149, 1]
+coordinates = [34, 135, 2]
 trait_name = "Station"
 
-# Tramstation NTR Office Cover - Due to how this is placed, the above layer doesn't make a ceiling
-[templates.tramstation_ntrep_office_cover]
-map_files = ["tramstation_ntrep_office_cover.dmm"]
-directory = "_maps/skyrat/automapper/templates/tramstation/"
-required_map = "tramstation.dmm"
-coordinates = [135, 162, 2]
+# BIRDSHOT MAP EDITS
+# Birdshot Arrivals
+[templates.birdshot_arrivals]
+map_files = ["birdshot_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [136, 61, 1]
 trait_name = "Station"
 
-# Tramstation Prison Privacy
-[templates.tramstation_prison_privacy]
-map_files = ["tramstation_prison_privacy.dmm"]
-directory = "_maps/skyrat/automapper/templates/tramstation/"
-required_map = "tramstation.dmm"
-coordinates = [89, 156, 1]
+# Birdshot Armory
+[templates.birdshot_armory]
+map_files = ["birdshot_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [51, 106, 1]
+trait_name = "Station"
+
+# Birdshot Cryo
+[templates.birdshot_cryo]
+map_files = ["birdshot_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [147, 142, 1]
+trait_name = "Station"
+
+# Birdshot Barber
+[templates.birdshot_barber]
+map_files = ["birdshot_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [129, 127, 1]
+trait_name = "Station"
+
+# Birdshot NTR Office
+[templates.birdshot_ntrep_office]
+map_files = ["birdshot_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [111, 157, 1]
+trait_name = "Station"
+
+# Birdshot ERT Bay
+[templates.birdshot_ert_bay]
+map_files = ["birdshot_ert_bay.dmm"]
+directory = "_maps/skyrat/automapper/templates/birdshot/"
+required_map = "birdshot.dmm"
+coordinates = [188, 72, 1]
+trait_name = "Station"
+
+# NORTHSTAR MAP EDITS
+# Northstar Cryo
+[templates.northstar_cryo]
+map_files = ["northstar_cryo.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [130, 114, 3]
+trait_name = "Station"
+
+# Northstar Dorms
+[templates.northstar_dorms]
+map_files = ["northstar_dorms.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [137, 132, 3]
+trait_name = "Station"
+
+# Northstar Arrivals
+[templates.northstar_arrivals]
+map_files = ["northstar_arrivals.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [90, 100, 1]
+trait_name = "Station"
+
+# Northstar ERT Bay
+[templates.northstar_ert_bay]
+map_files = ["northstar_ert_bay.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [54, 118, 2]
+trait_name = "Station"
+
+# Northstar Barber
+[templates.northstar_barber]
+map_files = ["northstar_barber.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [105, 117, 2]
+trait_name = "Station"
+
+# Northstar Armory
+[templates.northstar_armory]
+map_files = ["northstar_armory.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [121, 109, 4]
+trait_name = "Station"
+
+# Northstar Prison
+[templates.northstar_prison]
+map_files = ["northstar_prison.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [149, 109, 4]
+trait_name = "Station"
+
+# Northstar NTR Office
+[templates.northstar_ntrep_office]
+map_files = ["northstar_ntrep_office.dmm"]
+directory = "_maps/skyrat/automapper/templates/northstar/"
+required_map = "north_star.dmm"
+coordinates = [150, 114, 3]
 trait_name = "Station"

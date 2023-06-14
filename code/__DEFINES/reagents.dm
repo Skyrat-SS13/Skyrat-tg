@@ -41,18 +41,36 @@
 ///Amount of synthflesh required to unhusk someone
 #define SYNTHFLESH_UNHUSK_AMOUNT 100
 
-//SKYRAT EDIT ADD
-///Amount of synthflesh required to unhusk someone
-#define SYNTHFLESH_LING_UNHUSK_AMOUNT 200
-
 //used by chem masters and pill presses
 #define PILL_STYLE_COUNT 22 //Update this if you add more pill icons or you die
 #define RANDOM_PILL_STYLE 22 //Dont change this one though
 
 //used by chem masters and pill presses
 //update this if you add more patch icons
-#define PATCH_STYLE_LIST list("bandaid", "bandaid_brute", "bandaid_burn", "bandaid_both") //icon_state list
-#define DEFAULT_PATCH_STYLE "bandaid"
+#define PATCH_STYLE_LIST list(\
+	"bandaid_1", \
+	"bandaid_2", \
+	"bandaid_3", \
+	"bandaid_4", \
+	"bandaid_blank", \
+	"bandaid_both", \
+	"bandaid_brute", \
+	"bandaid_brute_2", \
+	"bandaid_burn", \
+	"bandaid_burn_2", \
+	"bandaid_clown", \
+	"bandaid_colonthree", \
+	"bandaid_exclaimationpoint", \
+	"bandaid_mix", \
+	"bandaid_monke", \
+	"bandaid_msic", \
+	"bandaid_questionmark", \
+	"bandaid_suffocation", \
+	"bandaid_suffocation_2", \
+	"bandaid_toxin", \
+	"bandaid_toxin_2", \
+) //icon_state list
+#define DEFAULT_PATCH_STYLE "bandaid_blank"
 
 //used by chem master
 #define CONDIMASTER_STYLE_AUTO "auto"
@@ -180,6 +198,10 @@
 /// This reaction is produces a product that affects plants
 #define REACTION_TAG_COMPETITIVE (1<<21)
 
+#define RNGCHEM_INPUT "input"
+#define RNGCHEM_CATALYSTS "catalysts"
+#define RNGCHEM_OUTPUT "output"
+
 /// Below are defines used for reagent associated machines only
 /// For the pH meter flashing method
 #define ENABLE_FLASHING -1
@@ -189,6 +211,9 @@
 #define GOLDSCHLAGER_GOLD (1)
 
 #define GOLDSCHLAGER_GOLD_RATIO (GOLDSCHLAGER_GOLD/(GOLDSCHLAGER_VODKA+GOLDSCHLAGER_GOLD))
+
+/// The rate at which alcohol affects the drinker
+#define ALCOHOL_RATE 0.005
 
 #define BLASTOFF_DANCE_MOVE_CHANCE_PER_UNIT 3
 #define BLASTOFF_DANCE_MOVES_PER_SUPER_MOVE 3

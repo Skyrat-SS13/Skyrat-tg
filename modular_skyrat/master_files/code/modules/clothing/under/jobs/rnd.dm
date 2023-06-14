@@ -23,16 +23,17 @@
 	name = "science utility uniform"
 	desc = "A utility uniform worn by NT-certified Science staff."
 	icon_state = "util_sci"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	desc = "A utility uniform worn by Science staff."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
-	name = "ridiculous scientist outfit"
-	desc = "The tie is mandatory."
+	name = "science team uniform"
+	desc = "A simple semi-formal uniform consisting of a grayish-blue shirt and off-white slacks, paired with a ridiculous, but mandatory, tie."
 	icon_state = "hl_scientist"
 	can_adjust = FALSE
 
@@ -72,7 +73,7 @@
 
 /*
 *	OVERRIDES
-*	Remind Orion to look over these when TG finishes their science resprites
+*	ORION TODO: look over these when TG finishes their science resprites (any day now...)
 */
 
 /obj/item/clothing/under/rank/rnd/scientist

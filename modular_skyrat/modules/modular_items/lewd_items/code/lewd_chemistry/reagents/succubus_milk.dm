@@ -80,112 +80,79 @@
 	)
 
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
-	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	enlargement_amount += enlarger_increase_step
-	// Adds a check for breasts in the first place.
+	// Attempt to grow breasts!
+	grow_breasts(exposed_mob)
+
+// Turns you into a female if character is male. Also adds breasts and female genitalia.
+/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
+
+	// Check if overdosing on succubus milk and incubus draft simultaneously, to prevent chat spam
+	var/suppress_chat = FALSE
+	var/datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft = locate(/datum/reagent/drug/aphrodisiac/incubus_draft) in exposed_mob.reagents.reagent_list
+	if(incubus_draft && incubus_draft.overdosed)
+		suppress_chat = TRUE
+
+	// Begin breast growth if prefs allow it
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
+		create_genitals(exposed_mob, suppress_chat, list(GENITAL_BREASTS))
+
+	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
+	change_gender(exposed_mob, FEMALE, suppress_chat)
+
+	// Womb and vagina creation
+	create_genitals(exposed_mob, suppress_chat, list(GENITAL_VAGINA, GENITAL_WOMB))
+
+	// Cock & ball shrinkage
+	shrink_genitals(exposed_mob, suppress_chat, list(GENITAL_PENIS, GENITAL_TESTICLES))
+
+/**
+* Helper function used to display the messages that appear in chat while the growth is occurring
+*
+* exposed_mob - the mob being affected by the reagent
+* genital - the genital that is causing the messages
+* suppress_chat - whether or not to display a message in chat
+* NOTE: this function doesn't get called often enough to warrant suppressing chat, hence the var's omission
+*/
+/datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.get_organ_slot(ORGAN_SLOT_BREASTS))
+
 	if(!mob_breasts)
 		return
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= max_breast_size)
-			return
-		mob_breasts.genital_size += breast_size_increase_step
-		mob_breasts.update_sprite_suffix()
-		exposed_mob.update_body()
-		enlargement_amount = 0
 
-		// Checks for cup size.
-		var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
+	// Checks for cup size.
+	var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 
-		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-			switch(translation)
-				if(BREAST_SIZE_FLATCHESTED)
-					return
-				if(BREAST_SIZE_BEYOND_MEASUREMENT)
-					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
-					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
-					return
-				else
-					if(mob_breasts?.genital_size >= (max_breast_size - 2))
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
-					else
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_action_text_list)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
-		else
-			switch(translation)
-				if(BREAST_SIZE_FLATCHESTED)
-					return
-				if(BREAST_SIZE_BEYOND_MEASUREMENT)
-					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
-					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
-					return
-				else
-					if(mob_breasts?.genital_size >= (max_breast_size - 2))
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
-					else
-						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(covered_boobs_list)] [pick(notice_boobs)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
-
-	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-			exposed_mob.adjustOxyLoss(5)
-			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
-
-// Turns you into a female if character is male. Also adds breasts.
-/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
-			path = new /obj/item/organ/external/genital/breasts
-			path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
-			path.Insert(exposed_mob, FALSE, FALSE)
-			var/obj/item/organ/external/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-			new_breasts.genital_size = 2
-			new_breasts.update_sprite_suffix()
-			exposed_mob.update_body()
-			enlargement_amount = 0
-			if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-				exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
-				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
+	if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
+		switch(translation)
+			if(BREAST_SIZE_FLATCHESTED)
 				return
+			if(BREAST_SIZE_BEYOND_MEASUREMENT)
+				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
 			else
-				exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
-				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
+				if(mob_breasts?.genital_size >= (max_breast_size - 2))
+					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+				else
+					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_action_text_list)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+	else
+		switch(translation)
+			if(BREAST_SIZE_FLATCHESTED)
 				return
-	// Separates gender change stuff from breast growth.
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
-		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-		if(exposed_mob.gender == MALE)
-			exposed_mob.set_gender(FEMALE)
-			exposed_mob.physique = exposed_mob.gender
-			exposed_mob.update_body()
-			exposed_mob.update_mutations_overlay()
-		if(!mob_penis)
-			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)) // To do cock shrinkage, check if prefs allow for this.
-			if(mob_penis.genital_size > penis_min_length)
-				mob_penis.genital_size -= penis_size_reduction_step
-				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
-			if(mob_penis.girth > penis_minimum_girth)
-				mob_penis.girth -= penis_girth_reduction_step
-				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
-			if(!mob_testicles || mob_testicles.genital_size <= 1)
-				return
-			mob_testicles.genital_size -= 1
-			return
+
+			if(BREAST_SIZE_BEYOND_MEASUREMENT)
+				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
+			else
+				if(mob_breasts?.genital_size >= (max_breast_size - 2))
+					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+				else
+					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(covered_boobs_list)] [pick(notice_boobs)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
-/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_process(mob/living/carbon/human/exposed_mob)
+/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_start(mob/living/carbon/human/exposed_mob)
 	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
 	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
 

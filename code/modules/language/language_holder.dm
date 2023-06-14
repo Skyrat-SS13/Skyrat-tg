@@ -53,21 +53,9 @@ Key procs
 	var/atom/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-///datum/language_holder/New(atom/_owner) //ORIGINAL
-/datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+/datum/language_holder/New(atom/_owner)
 	if(_owner && QDELETED(_owner))
 		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
-
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(pref_load)
-		//If we're loading a holder from prefs, override the languages
-		understood_languages.Cut()
-		spoken_languages.Cut()
-		for(var/lang_path in pref_load.languages)
-			understood_languages[lang_path] = list(LANGUAGE_ATOM)
-			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
-				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
-	//SKYRAT EDIT ADDITION END
 
 	owner = _owner
 	if(istype(owner, /datum/mind))
@@ -168,10 +156,8 @@ Key procs
 /// Checks if you can speak the language. Tongue limitations should be supplied as an argument.
 /datum/language_holder/proc/can_speak_language(language)
 	var/atom/movable/ouratom = get_atom()
-	var/tongue = ouratom.could_speak_language(language)
-	if((omnitongue || tongue) && has_language(language, TRUE))
-		return TRUE
-	return FALSE
+	var/can_speak_language_path = omnitongue || ouratom.could_speak_language(language)
+	return (can_speak_language_path && has_language(language, TRUE))
 
 /// Returns selected language if it can be spoken, or decides, sets and returns a new selected language if possible.
 /datum/language_holder/proc/get_selected_language()

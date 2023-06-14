@@ -155,6 +155,7 @@ Difficulty: Extremely Hard
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/ex_act(severity, target)
 	adjustBruteLoss(-30 * severity)
 	visible_message(span_danger("[src] absorbs the explosion!"), span_userdanger("You absorb the explosion!"))
+	return TRUE
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/Goto(target, delay, minimum_distance)
 	if(enraging)
@@ -363,6 +364,11 @@ Difficulty: Extremely Hard
 	SIGNAL_HANDLER
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
+/datum/status_effect/ice_block_talisman/be_replaced()
+	owner.cut_overlay(cube)
+	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
+	return ..()
+
 /datum/status_effect/ice_block_talisman/on_remove()
 	if(!owner.stat)
 		to_chat(owner, span_notice("The cube melts!"))
@@ -399,3 +405,5 @@ Difficulty: Extremely Hard
 	color = new_color
 	set_light_color(new_color)
 	set_light(new_range)
+
+#undef FROST_MINER_SHOULD_ENRAGE

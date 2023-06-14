@@ -18,6 +18,8 @@
 #define ORANGES (1<<17)
 #define BUGS (1<<18)
 #define GORE (1<<19)
+#define STONE (1<<20)
+#define BLOODY (1<<21) // SKYRAT EDIT - Hemophage Food
 
 DEFINE_BITFIELD(foodtypes, list(
 	"MEAT" = MEAT,
@@ -40,6 +42,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"ORANGES" = ORANGES,
 	"BUGS" = BUGS,
 	"GORE" = GORE,
+	"STONE" = STONE,
+	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
 ))
 
 /// A list of food type names, in order of their flags
@@ -64,6 +68,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"ORANGES", \
 	"BUGS", \
 	"GORE", \
+	"STONE", \
+	"BLOODY", /* SKYRAT EDIT - Hemophage Food */ \
 )
 
 /// IC meaning (more or less) for food flags
@@ -88,6 +94,8 @@ DEFINE_BITFIELD(foodtypes, list(
 	"Oranges", \
 	"Bugs", \
 	"Gore", \
+	"Rocks", \
+	"Bloody", /* SKYRAT EDIT - Hemophage Food */ \
 )
 
 #define DRINK_NICE 1
@@ -117,7 +125,7 @@ DEFINE_BITFIELD(food_flags, list(
 ///Amount of reagents you start with on crafted food excluding the used parts
 #define CRAFTED_FOOD_BASE_REAGENT_MODIFIER 0.7
 ///Modifier of reagents you get when crafting food from the parts used
-#define CRAFTED_FOOD_INGREDIENT_REAGENT_MODIFIER  0.5
+#define CRAFTED_FOOD_INGREDIENT_REAGENT_MODIFIER 0.5
 
 #define IS_EDIBLE(O) (O.GetComponent(/datum/component/edible))
 
@@ -177,3 +185,15 @@ DEFINE_BITFIELD(food_flags, list(
 #define ICE_CREAM_SCOOP_OFFSET 4
 
 #define BLACKBOX_LOG_FOOD_MADE(food) SSblackbox.record_feedback("tally", "food_made", 1, food)
+
+/// Point water boils at
+#define WATER_BOILING_POINT (T0C + 100)
+/// Point at which soups begin to burn at
+#define SOUP_BURN_TEMP 540
+
+/// Serving size of soup. Plus or minus five units.
+#define SOUP_SERVING_SIZE 25
+
+// Venues for the barbots.
+#define VENUE_RESTAURANT "Restaurant Venue"
+#define VENUE_BAR "Bar Venue"

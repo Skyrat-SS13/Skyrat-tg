@@ -4,7 +4,7 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "error"
 	max_integrity = 300
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, FIRE = 60, ACID = 60)
+	armor_type = /datum/armor/obj_vehicle
 	layer = VEHICLE_LAYER
 	plane = GAME_PLANE // SKYRAT EDIT - ORIGINAL: plane = GAME_PLANE_FOV_HIDDEN
 	density = TRUE
@@ -36,6 +36,14 @@
 	var/obj/vehicle/trailer
 	var/are_legs_exposed = FALSE
 
+/datum/armor/obj_vehicle
+	melee = 30
+	bullet = 30
+	laser = 30
+	bomb = 30
+	fire = 60
+	acid = 60
+
 /obj/vehicle/Initialize(mapload)
 	. = ..()
 	occupants = list()
@@ -56,8 +64,6 @@
 
 /obj/vehicle/examine(mob/user)
 	. = ..()
-	if(resistance_flags & ON_FIRE)
-		. += span_warning("It's on fire!")
 	. += generate_integrity_message()
 
 /// Returns a readable string of the vehicle's health for examining. Overridden by subtypes who want to be more verbose with their health messages.

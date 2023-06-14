@@ -5,16 +5,16 @@
 ****************************************************/
 
 // Takes care blood loss and regeneration
-/mob/living/carbon/human/handle_blood(delta_time, times_fired)
+/mob/living/carbon/human/handle_blood(seconds_per_tick, times_fired)
 
-	if(NOBLOOD in dna.species.species_traits || HAS_TRAIT(src, TRAIT_NOBLEED) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		return
 
 	if(bodytemperature < BLOOD_STOP_TEMP || (HAS_TRAIT(src, TRAIT_HUSK))) //cold or husked people do not pump the blood.
 		return
 
 	//Blood regeneration if there is some space
-	if(blood_volume < blood_volume_normal && !HAS_TRAIT(src, TRAIT_NOHUNGER)) //SKYRAT EDIT CHANGE
+	if(blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER))
 		var/nutrition_ratio = 0
 		switch(nutrition)
 			if(0 to NUTRITION_LEVEL_STARVING)
@@ -29,36 +29,38 @@
 				nutrition_ratio = 1
 		if(satiety > 80)
 			nutrition_ratio *= 1.25
-		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
-		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
+		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * seconds_per_tick)
+		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * seconds_per_tick), BLOOD_VOLUME_NORMAL)
 
-	// SKYRAT EDIT ADDITION START - Oversized quirk
-	var/blood_volume_max = max(BLOOD_VOLUME_MAXIMUM, blood_volume_normal + 1)
-	// SKYRAT EDIT END
+	// we call lose_blood() here rather than quirk/process() to make sure that the blood loss happens in sync with life()
+	if(HAS_TRAIT(src, TRAIT_BLOOD_DEFICIENCY))
+		var/datum/quirk/blooddeficiency/blooddeficiency = get_quirk(/datum/quirk/blooddeficiency)
+		if(!isnull(blooddeficiency))
+			blooddeficiency.lose_blood(seconds_per_tick)
 
 	//Effects of bloodloss
 	var/word = pick("dizzy","woozy","faint")
 	switch(blood_volume)
 		if(BLOOD_VOLUME_EXCESS to BLOOD_VOLUME_MAX_LETHAL)
-			if(DT_PROB(7.5, delta_time))
+			if(SPT_PROB(7.5, seconds_per_tick))
 				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
 				investigate_log("has been gibbed by having too much blood.", INVESTIGATE_DEATHS)
 				inflate_gib()
-		if(blood_volume_max to BLOOD_VOLUME_EXCESS) // SKYRAT EDIT - Oversized quirk - ORIGINAL: if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
-			if(DT_PROB(5, delta_time))
+		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
+			if(SPT_PROB(5, seconds_per_tick))
 				to_chat(src, span_warning("You feel terribly bloated."))
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			if(DT_PROB(2.5, delta_time))
+			if(SPT_PROB(2.5, seconds_per_tick))
 				to_chat(src, span_warning("You feel [word]."))
-			adjustOxyLoss(round(0.005 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE - Oversized quirk
+			adjustOxyLoss(round(0.005 * (BLOOD_VOLUME_NORMAL - blood_volume) * seconds_per_tick, 1))
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			adjustOxyLoss(round(0.01 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE - Oversized quirk
-			if(DT_PROB(2.5, delta_time))
-				blur_eyes(6)
+			adjustOxyLoss(round(0.01 * (BLOOD_VOLUME_NORMAL - blood_volume) * seconds_per_tick, 1))
+			if(SPT_PROB(2.5, seconds_per_tick))
+				set_eye_blur_if_lower(12 SECONDS)
 				to_chat(src, span_warning("You feel very [word]."))
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			adjustOxyLoss(2.5 * delta_time)
-			if(DT_PROB(7.5, delta_time))
+			adjustOxyLoss(2.5 * seconds_per_tick)
+			if(SPT_PROB(7.5, seconds_per_tick))
 				Unconscious(rand(20,60))
 				to_chat(src, span_warning("You feel extremely [word]."))
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
@@ -70,7 +72,7 @@
 	//Bleeding out
 	for(var/obj/item/bodypart/iter_part as anything in bodyparts)
 		var/iter_bleed_rate = iter_part.get_modified_bleed_rate()
-		temp_bleed += iter_bleed_rate * delta_time
+		temp_bleed += iter_bleed_rate * seconds_per_tick
 
 		if(iter_part.generic_bleedstacks) // If you don't have any bleedstacks, don't try and heal them
 			iter_part.adjustBleedStacks(-1, 0)
@@ -96,7 +98,7 @@
 
 /mob/living/carbon/human/bleed(amt)
 	amt *= physiology.bleed_mod
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /// A helper to see how much blood we're losing per tick
@@ -110,7 +112,7 @@
 	return bleed_amt
 
 /mob/living/carbon/human/get_bleed_rate()
-	if((NOBLOOD in dna.species.species_traits))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	. = ..()
 	. *= physiology.bleed_mod
@@ -175,7 +177,7 @@
 	COOLDOWN_START(src, bleeding_message_cd, next_cooldown)
 
 /mob/living/carbon/human/bleed_warn(bleed_amt = 0, forced = FALSE)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return ..()
 
 /mob/living/proc/restore_blood()
@@ -259,7 +261,7 @@
 		else if(last_mind)
 			blood_data["ckey"] = ckey(last_mind.key)
 
-		if(!suiciding)
+		if(!HAS_TRAIT_FROM(src, TRAIT_SUICIDED, REF(src)))
 			blood_data["cloneable"] = 1
 		blood_data["blood_type"] = dna.blood_type
 		blood_data["gender"] = gender
@@ -287,7 +289,7 @@
 		return /datum/reagent/colorful_reagent
 	if(dna.species.exotic_blood)
 		return dna.species.exotic_blood
-	else if((NOBLOOD in dna.species.species_traits))
+	else if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	return /datum/reagent/blood
 
@@ -327,7 +329,6 @@
 		var/obj/effect/decal/cleanable/blood/drip/drop = locate() in T
 		if(drop)
 			if(drop.drips < 5)
-				T.pollute_turf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
 				drop.drips++
 				drop.add_overlay(pick(drop.random_icon_states))
 				drop.transfer_mob_blood_dna(src)
@@ -337,7 +338,6 @@
 				temp_blood_DNA = GET_ATOM_BLOOD_DNA(drop) //we transfer the dna from the drip to the splatter
 				qdel(drop)//the drip is replaced by a bigger splatter
 		else
-			T.pollute_turf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
 			drop = new(T, get_static_viruses())
 			drop.transfer_mob_blood_dna(src)
 			SEND_SIGNAL(src, COMSIG_LIVING_BLEED_DECAL) //SKYRAT EDIT ADDITION
@@ -346,7 +346,7 @@
 	//SKYRAT EDIT ADDITION
 	// Create a bit of metallic pollution, as that's how blood smells
 	T.pollute_turf(/datum/pollutant/metallic_scent, 30)
-	SEND_SIGNAL(src, COMSIG_LIVING_BLEED_DECAL)
+	SEND_SIGNAL(src, COMSIG_LIVING_BLEED_DECAL) //ZONENOTE: CHECK ME
 	//SKYRAT EDIT END
 
 	// Find a blood decal or create a new one.
@@ -361,7 +361,7 @@
 		B.add_blood_DNA(temp_blood_DNA)
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)
@@ -378,3 +378,5 @@
 	var/obj/effect/decal/cleanable/oil/B = locate() in T.contents
 	if(!B)
 		B = new(T)
+
+#undef BLOOD_DRIP_RATE_MOD

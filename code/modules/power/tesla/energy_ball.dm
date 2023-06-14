@@ -164,7 +164,7 @@
 		return
 	var/mob/living/carbon/jedi = user
 	to_chat(jedi, span_userdanger("That was a shockingly dumb idea."))
-	var/obj/item/organ/internal/brain/rip_u = locate(/obj/item/organ/internal/brain) in jedi.internal_organs
+	var/obj/item/organ/internal/brain/rip_u = locate(/obj/item/organ/internal/brain) in jedi.organs
 	jedi.ghostize(jedi)
 	if(rip_u)
 		qdel(rip_u)
@@ -237,15 +237,6 @@
 		/obj/structure/lattice = FALSE,
 		/obj/structure/grille = FALSE,
 		/obj/structure/frame/machine = FALSE,
-		//SKYRAT EDIT ADDITION BEGIN
-		/obj/machinery/particle_accelerator/control_box = FALSE,
-		/obj/structure/particle_accelerator/fuel_chamber = FALSE,
-		/obj/structure/particle_accelerator/particle_emitter/center = FALSE,
-		/obj/structure/particle_accelerator/particle_emitter/left = FALSE,
-		/obj/structure/particle_accelerator/particle_emitter/right = FALSE,
-		/obj/structure/particle_accelerator/power_box = FALSE,
-		/obj/structure/particle_accelerator/end_cap = FALSE,
-		//SKYRAT EDIT END
 	))
 
 	//Ok so we are making an assumption here. We assume that view() still calculates from the center out.
@@ -374,3 +365,6 @@
 #undef MACHINERY
 #undef BLOB
 #undef STRUCTURE
+
+#undef TESLA_DEFAULT_POWER
+#undef TESLA_MINI_POWER

@@ -160,14 +160,14 @@
 		begin_processing()
 
 
-/obj/machinery/chem_dispenser/process(delta_time)
+/obj/machinery/chem_dispenser/process(seconds_per_tick)
 	if (recharge_counter >= 8)
 		var/usedpower = cell.give(recharge_amount)
 		if(usedpower)
 			use_power(active_power_usage + recharge_amount)
 		recharge_counter = 0
 		return
-	recharge_counter += delta_time
+	recharge_counter += seconds_per_tick
 
 /obj/machinery/chem_dispenser/proc/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
@@ -379,7 +379,7 @@
 			if(!is_operational)
 				return
 			var/name = tgui_input_text(usr, "What do you want to name this recipe?", "Recipe Name", MAX_NAME_LEN)
-			if(!usr.canUseTopic(src, !issilicon(usr)))
+			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(saved_recipes[name] && tgui_alert(usr, "\"[name]\" already exists, do you want to overwrite it?",, list("Yes", "No")) == "No")
 				return
@@ -471,24 +471,38 @@
 	recharge_amount = initial(recharge_amount)
 	var/newpowereff = 0.0666666
 	var/parts_rating = 0
-	for(var/obj/item/stock_parts/cell/P in component_parts)
-		cell = P
-	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		newpowereff += 0.0166666666*M.rating
-		parts_rating += M.rating
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		recharge_amount *= C.rating
-		parts_rating += C.rating
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if (M.rating > 1)
+	for(var/obj/item/stock_parts/cell/stock_cell in component_parts)
+		cell = stock_cell
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		newpowereff += 0.0166666666 * matter_bin.tier
+		parts_rating += matter_bin.tier
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		recharge_amount *= capacitor.tier
+		parts_rating += capacitor.tier
+	for(var/datum/stock_part/servo/servo in component_parts)
+		/* SKYRAT EDIT - ORIGINAL
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
+		*/
 		//SKYRAT EDIT START
-		if (M.rating > 2)
+		if (servo.tier > 1)
+			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
+
+		if (servo.tier > 2)
 			dispensable_reagents |= upgrade_reagents2
-		if (M.rating > 3)
+		else
+			dispensable_reagents -= upgrade_reagents2
+
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents3
+		else
+			dispensable_reagents -= upgrade_reagents3
 		//SKYRAT EDIT END
-		parts_rating += M.rating
+		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
@@ -513,7 +527,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, no_tk = TRUE))
+	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH|FORBID_TELEKINESIS_REACH))
 		return
 	replace_beaker(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -536,7 +550,7 @@
 	has_panel_overlay = FALSE
 	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP // magical mystery temperature of 274.5, where ice does not melt, and water does not freeze
 	amount = 10
-	pixel_y = 6
+	anchored_tabletop_offset = 6
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks
 	working_state = null
 	nopower_state = null
@@ -560,6 +574,7 @@
 		/datum/reagent/consumable/shamblers,
 		/datum/reagent/consumable/spacemountainwind,
 		/datum/reagent/consumable/sodawater,
+		/datum/reagent/consumable/sol_dry,
 		/datum/reagent/consumable/space_up,
 		/datum/reagent/consumable/sugar,
 		/datum/reagent/consumable/tea,
@@ -667,7 +682,7 @@
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
-		/datum/reagent/toxin/minttoxin,
+		/datum/reagent/consumable/mintextract,
 		/datum/reagent/consumable/ethanol/atomicbomb,
 		/datum/reagent/consumable/ethanol/fernet
 	)
