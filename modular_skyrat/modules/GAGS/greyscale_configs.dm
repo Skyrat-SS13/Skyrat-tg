@@ -609,16 +609,6 @@
 	name = "Peacoat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat_worn.json'
 
-// HAWAIIAN SHIRT
-
-/datum/greyscale_config/hawaiian_shirt
-	name = "Hawaiian Shirt"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/hawaiianshirt.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt.json'
-
-/datum/greyscale_config/hawaiian_shirt/worn
-	name = "Hawaiian Shirt (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt_worn.json'
 
 // VARSITY JACKET
 
