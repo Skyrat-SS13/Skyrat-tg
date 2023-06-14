@@ -1024,6 +1024,3 @@
 		return
 
 	opfor.ui_interact(usr)
-
-/obj/effect/statclick/opfor_specific/proc/Action()
-	Click()
