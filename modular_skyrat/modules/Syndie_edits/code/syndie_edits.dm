@@ -106,9 +106,11 @@
 	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/armor/bulletproof/old
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "bulletproof"
+	body_parts_covered = CHEST //TG's version has no groin/arm padding
 
 /obj/item/clothing/under/syndicate/skyrat/overalls
 	name = "utility overalls turtleneck"

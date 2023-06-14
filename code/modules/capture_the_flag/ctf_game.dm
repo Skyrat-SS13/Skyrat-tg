@@ -349,7 +349,7 @@
 			scores += UNLINT("<span style='color: [ctf_team.team_color]'>[ctf_team.team_color] - [ctf_team.points]/[ctf_game.points_to_win]</span>\n")
 		balloon_alert_to_viewers(scores)
 
-/obj/machinery/ctf/control_point/attackby(mob/user, params)
+/obj/machinery/ctf/control_point/attackby(obj/item/item, mob/user, params)
 	capture(user)
 
 /obj/machinery/ctf/control_point/attack_hand(mob/user, list/modifiers)

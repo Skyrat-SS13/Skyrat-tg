@@ -10,7 +10,7 @@
 /datum/tgui_say/proc/alter_entry(payload)
 	var/entry = payload["entry"]
 	/// No OOC leaks
-	if(!entry || payload["channel"] == OOC_CHANNEL || payload["channel"] == ME_CHANNEL)
+	if(!entry || payload["channel"] == OOC_CHANNEL || payload["channel"] == ME_CHANNEL || payload["channel"] == LOOC_CHANNEL) // SKYRAT EDIT CHANGE - CUSTOMIZATION
 		return pick(hurt_phrases)
 	/// Random trimming for larger sentences
 	if(length(entry) > 50)
@@ -47,6 +47,14 @@
 		if(ADMIN_CHANNEL)
 			client.cmd_admin_say(entry)
 			return TRUE
+		// SKYRAT EDIT ADDITION START - CUSTOMIZATION
+		if(LOOC_CHANNEL)
+			client.looc(entry)
+			return TRUE
+		if(WHIS_CHANNEL)
+			client.mob.whisper_verb(entry)
+			return TRUE
+		// SKYRAT EDIT ADDITION END
 	return FALSE
 
 /**

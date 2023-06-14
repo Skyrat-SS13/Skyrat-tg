@@ -13,6 +13,6 @@
 
 /obj/structure/water_source/puddle/healing/process(seconds_per_tick)
 	for(var/mob/living/iterating_mob in loc)
-		iterating_mob.heal_overall_damage(2, 2)
+		iterating_mob.heal_overall_damage(heal_amount, heal_amount)
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/jelly_scream.ogg', 100)
 

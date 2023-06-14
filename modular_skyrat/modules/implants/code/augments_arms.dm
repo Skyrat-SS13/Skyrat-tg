@@ -7,6 +7,7 @@
 	icon_state = "mantis_blade"
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
+	sharpness = SHARP_EDGED
 	force = 25
 	armour_penetration = 20
 	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.
@@ -36,7 +37,7 @@
 /obj/item/organ/internal/cyberimp/arm/hacker
 	name = "hacking arm implant"
 	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."
-	icon ='modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "multitool_cyborg"
 	items_to_create = list(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
 
@@ -73,7 +74,7 @@
 /obj/item/multitool/abductor/implant
 	name = "multitool"
 	desc = "An optimized, highly advanced stripped-down multitool able to interface with electronics far better than its standard counterpart."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "multitool_cyborg"
 
 /obj/item/organ/internal/cyberimp/arm/janitor

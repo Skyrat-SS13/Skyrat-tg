@@ -150,6 +150,7 @@
 #define DIGITIGRADE_OPTIONAL 1
 ///The species is forced to have digitigrade legs in generation.
 #define DIGITIGRADE_FORCED 2
+
 ///Digitigrade's prefs, used in features for legs if you're meant to be a Digitigrade.
 #define DIGITIGRADE_LEGS "Digitigrade Legs"
 
@@ -642,7 +643,8 @@
 #define HUMAN_HEIGHT_SHORT 6
 #define HUMAN_HEIGHT_MEDIUM 8
 #define HUMAN_HEIGHT_TALL 10
-#define HUMAN_HEIGHT_TALLEST 12
+#define HUMAN_HEIGHT_TALLER 12
+#define HUMAN_HEIGHT_TALLEST 14
 
 /// Assoc list of all heights, cast to strings, to """"tuples"""""
 /// The first """tuple""" index is the upper body offset
@@ -653,7 +655,8 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 	"[HUMAN_HEIGHT_SHORT]" = list(-1, -1),
 	"[HUMAN_HEIGHT_MEDIUM]" = list(0, 0),
 	"[HUMAN_HEIGHT_TALL]" = list(1, 1),
-	"[HUMAN_HEIGHT_TALLEST]" = list(2, 2),
+	"[HUMAN_HEIGHT_TALLER]" = list(2, 1),
+	"[HUMAN_HEIGHT_TALLEST]" = list(3, 2),
 ))
 
 // Mob Overlays Indexes

@@ -197,8 +197,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	/// Static list of possible colors for the toy
-	var/static/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 	current_type = null
 
 	var/static/list/dildo_sizes = list()

@@ -210,6 +210,8 @@ Medical HUD! Basic mode needs suit sensors on.
 			holder.icon_state = "huddead"
 	else
 		switch(virus_threat)
+			if(DISEASE_SEVERITY_UNCURABLE)
+				holder.icon_state = "hudill6"
 			if(DISEASE_SEVERITY_BIOHAZARD)
 				holder.icon_state = "hudill5"
 			if(DISEASE_SEVERITY_DANGEROUS)
@@ -337,6 +339,23 @@ Security HUDs! Basic mode shows only the job.
 			holder.icon_state = "huddischarged"
 
 	set_hud_image_active(WANTED_HUD)
+
+//Utility functions
+
+/**
+ * Updates the visual security huds on all mobs in GLOB.human_list that match the name passed to it.
+ */
+/proc/update_matching_security_huds(perp_name)
+	for (var/mob/living/carbon/human/h as anything in GLOB.human_list)
+		if (h.get_face_name(h.get_id_name("")) == perp_name)
+			h.sec_hud_set_security_status()
+
+/**
+ * Updates the visual security huds on all mobs in GLOB.human_list
+ */
+/proc/update_all_security_huds()
+	for(var/mob/living/carbon/human/h as anything in GLOB.human_list)
+		h.sec_hud_set_security_status()
 
 /***********************************************
 Diagnostic HUDs!

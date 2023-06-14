@@ -252,7 +252,7 @@
 
 				investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
 				target_record.wanted_status = new_status
-				sec_hud_set_security_status()
+				update_matching_security_huds(target_record.name)
 				return
 
 			if(href_list["view"])
@@ -775,6 +775,7 @@
 			HUMAN_HEIGHT_SHORT,
 			HUMAN_HEIGHT_MEDIUM,
 			HUMAN_HEIGHT_TALL,
+			HUMAN_HEIGHT_TALLER,
 			HUMAN_HEIGHT_TALLEST
 		)
 		if(!(var_value in heights))

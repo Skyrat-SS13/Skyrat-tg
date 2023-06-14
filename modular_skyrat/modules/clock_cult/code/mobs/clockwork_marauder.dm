@@ -92,7 +92,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 /// Damage the marauder's shield by one tick
 /mob/living/basic/clockwork_marauder/proc/damage_shield()
 	shield_health--
-	playsound(src, 'sound/magic/clockwork/anima_fragment_attack.ogg', 60, TRUE)
+	playsound(src, 'modular_skyrat/modules/clock_cult/sound/magic/anima_fragment_attack.ogg', 60, TRUE)
 	if(!shield_health)
 		to_chat(src, span_userdanger("Your shield breaks!"))
 		to_chat(src, span_brass("You require a <b>welding tool</b> to repair your damaged shield!"))

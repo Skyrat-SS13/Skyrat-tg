@@ -143,8 +143,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	state_open = TRUE
 
 	var/open_icon_state = "cryopod-open"
-	var/on_store_message = "has entered long-term storage."
-	var/on_store_name = "Cryogenic Oversight"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
 	var/allow_timer_override = FALSE
 	/// Minimum time for someone to be SSD before another player can cryo them.
@@ -316,12 +314,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					to_chat(objective.owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
 					update_objective.owner.announce_objectives()
 			qdel(objective)
-
-/obj/machinery/cryopod/proc/should_preserve_item(obj/item/item)
-	for(var/datum/objective_item/steal/possible_item in GLOB.possible_items)
-		if(istype(item, possible_item.targetitem))
-			return TRUE
-	return FALSE
 
 /// This function can not be undone; do not call this unless you are sure.
 /// Handles despawning the player.
@@ -614,7 +606,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	
+
 	var/alt_name = get_alt_name()
 	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = alt_name ? alt_name : name)))
 	if(control_computer)
@@ -636,7 +628,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 /**
  * Returns the the alt name for this spawner, which is 'outfit.name'.
  *
- * For when you might want to use that for things instead of the name var. 
+ * For when you might want to use that for things instead of the name var.
  * example: the DS2 spawners, which have a number of different types of spawner with the same name.
  */
 /obj/effect/mob_spawn/ghost_role/get_alt_name()
