@@ -68,6 +68,13 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
+/obj/item/clothing/under/rank/security/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+		icon_state = "rsecurity"
+
 /obj/item/clothing/under/rank/security/peacekeeper/tactical
 	name = "tactical peacekeeper uniform"
 	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
@@ -85,9 +92,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_warden"
 
-/obj/item/clothing/under/rank/security/warden
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+/obj/item/clothing/under/rank/security/warden/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+		icon_state = "rwarden"
 
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper
 	name = "head of security's peacekeeper jumpsuit"
@@ -105,6 +115,13 @@
 	icon_state = "peacekeeper_white"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/armor/vest/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
+
 /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	icon_state = "peacekeeper_black"
 
@@ -118,6 +135,10 @@
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/brit/Initialize(mapload)
 	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
 	AddComponent(/datum/component/toggle_icon, "zipper")
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
@@ -155,6 +176,13 @@
 	armor_type = /datum/armor/none
 	cut_type = null
 
+/obj/item/clothing/gloves/combat/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
+
 /obj/item/clothing/gloves/tackler/peacekeeper
 	name = "peacekeeper gripper gloves"
 	desc = "Special gloves that manipulate the blood vessels in the wearer's hands, granting them the ability to launch headfirst into walls."
@@ -162,12 +190,26 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
 
+/obj/item/clothing/gloves/tackler/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
+
 /obj/item/clothing/gloves/krav_maga/sec/peacekeeper
 	name = "peacekeeper krav maga gloves"
 	desc = "These gloves can teach you to perform Krav Maga using nanochips."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
+
+/obj/item/clothing/gloves/krav_maga/sec/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
 
 //PEACEKEEPER BELTS
 /obj/item/storage/belt/security/peacekeeper
@@ -178,6 +220,13 @@
 	icon_state = "peacekeeperbelt"
 	worn_icon_state = "peacekeeperbelt"
 	content_overlays = FALSE
+
+/obj/item/storage/belt/security/peacekeeper/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/belts.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/belt.dmi'
+		icon_state = "security"
 
 /obj/item/storage/belt/security/peacekeeper/Initialize(mapload)
 	. = ..()

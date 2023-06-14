@@ -60,10 +60,25 @@
 		),
 	)
 
+/obj/item/storage/backpack/security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/backpack.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/backpack.dmi'
+		icon_state = "backpack-security"
+		unique_reskin = NONE
+
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	icon_state = "satchel_security"
+
+/obj/item/storage/backpack/satchel/sec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/backpack.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/backpack.dmi'
+		icon_state = "satchel-security"
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
@@ -80,6 +95,14 @@
 			RESKIN_WORN_ICON_STATE = "duffel_security_white"
 		),
 	)
+
+/obj/item/storage/backpack/duffelbag/sec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/backpack.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/backpack.dmi'
+		icon_state = "duffel-security"
+		unique_reskin = NONE
 
 /*
 * BELTS
@@ -108,6 +131,14 @@
 			RESKIN_WORN_ICON_STATE = "belt_slim"
 		),
 	)
+
+/obj/item/storage/belt/security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/belts.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/belt.dmi'
+		icon_state = "security"
+		unique_reskin = NONE
 
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
@@ -287,6 +318,14 @@
 		),
 	)
 
+/obj/item/clothing/head/security_cap/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/hats.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hats.dmi'
+		icon_state = "secsoft"
+		unique_reskin = NONE
+
 /datum/armor/head_security_cap
 	melee = 30
 	bullet = 25
@@ -319,6 +358,14 @@
 			RESKIN_WORN_ICON_STATE = "cowboy_black"
 		)
 	)
+
+/obj/item/clothing/head/hats/hos/cap/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/hats.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hats.dmi'
+		icon_state = "secsoft"
+		unique_reskin = NONE
 
 //Need to quickly redefine this so the icon doesnt break
 /obj/item/clothing/head/hats/hos/cap/syndicate
@@ -421,15 +468,37 @@
 		),
 	)
 
+/obj/item/clothing/gloves/color/black/security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
+		unique_reskin = NONE
+
 /obj/item/clothing/gloves/tackler/security	//Can't just overwrite tackler, as there's a ton of subtypes that we'd then need to account for. This is easier. MUCH easier.
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "tackle_blue"
 
+/obj/item/clothing/gloves/tackler/security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
+
 /obj/item/clothing/gloves/krav_maga/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "fightgloves_blue"
+
+/obj/item/clothing/gloves/tackler/security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/gloves.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/hands.dmi'
+		icon_state = "sec_gloves"
 
 /*
 * SUITS
@@ -460,6 +529,14 @@
 		)
 	)
 
+/obj/item/clothing/suit/armor/vest/alt/sec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
+		unique_reskin = NONE
+
 /obj/item/clothing/suit/armor/hos
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	uses_advanced_reskins = TRUE
@@ -484,6 +561,14 @@
 		),
 	)
 
+/obj/item/clothing/suit/armor/hos/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
+		unique_reskin = NONE
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	current_skin = "hoswinter" //prevents reskinning
 
@@ -496,11 +581,25 @@
 	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/armor/bulletproof/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
+
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
 	icon_state = "riot_ad" //replaces the NT on the back
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
+
+/obj/item/clothing/suit/armor/riot/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
 
 /obj/item/clothing/suit/armor/riot/knight //This needs to be sent back to its original .dmis
 	icon = 'icons/obj/clothing/suits/armor.dmi'
@@ -511,6 +610,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "vest_warden"
+
+/obj/item/clothing/suit/armor/vest/warden/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/armor.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/armor.dmi'
+		icon_state = "armor_sec"
 
 /obj/item/clothing/suit/armor/vest/warden/alt //un-overrides this since its sprite is TG
 	icon = 'icons/obj/clothing/suits/armor.dmi'
@@ -562,17 +668,39 @@
 		),
 	)
 
+/obj/item/clothing/under/rank/security/officer/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+		icon_state = "rsecurity"
+		unique_reskin = NONE
+
 //Warden
 /obj/item/clothing/under/rank/security/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "warden_black"
 
+/obj/item/clothing/under/rank/security/warden/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+		icon_state = "rwarden"
+
 //HoS
 /obj/item/clothing/under/rank/security/head_of_security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
+
+/obj/item/clothing/under/rank/security/head_of_security/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+		icon_state = "rhos"
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	icon_state = "hos_parade_male_blue"
@@ -615,6 +743,11 @@
 
 /obj/item/clothing/shoes/jackboots/sec/Initialize(mapload)
 	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/shoes.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/feet.dmi'
+		icon_state = "jackboots_sec"
+		unique_reskin = NONE
 	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/footstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/footstep2.ogg'=1, 'modular_skyrat/master_files/sound/effects/footstep3.ogg'=1), 100)
 
 //
@@ -725,6 +858,12 @@
 	worn_icon_state = "security"
 	current_skin = "security" //prevents reskinning
 
+/obj/item/storage/belt/security/redsec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/belts.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/belt.dmi'
+
 /obj/item/storage/belt/holster
 	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
 
@@ -796,15 +935,33 @@
 	icon_state = "rsecurity"
 	current_skin = "rsecurity" //prevents reskinning
 
+/obj/item/clothing/under/rank/security/officer/redsec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+
 /obj/item/clothing/under/rank/security/warden/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rwarden"
 
+/obj/item/clothing/under/rank/security/warden/redsec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
+
 /obj/item/clothing/under/rank/security/head_of_security/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rhos"
+
+/obj/item/clothing/under/rank/security/head_of_security/redsec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/security.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
@@ -855,6 +1012,13 @@
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
 	current_skin = "jackboots_sec" //prevents reskinning
+
+/obj/item/clothing/shoes/jackboots/sec/redsec/Initialize(mapload)
+	. = ..()
+	if(check_holidays(PRIDE_WEEK))
+		icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/obj/shoes.dmi'
+		worn_icon = 'modular_skyrat/modules/sec_haul/icons/pinksec/mob/feet.dmi'
+		icon_state = "jackboots_sec"
 
 //Finally, a few description changes for items that couldn't get a resprite.
 /obj/item/clothing/head/bio_hood/security
