@@ -4240,7 +4240,6 @@
 /obj/item/radio/intercom/directional/north{
 	pixel_x = -10
 	},
-/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "bls" = (
@@ -26543,10 +26542,11 @@
 	name = "Kitchen Requests Console"
 	},
 /obj/structure/table,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -2;
-	pixel_y = 5
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "kitchen_counter";
+	name = "Kitchen Counter Shutters"
 	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
@@ -53965,10 +53965,10 @@
 	},
 /area/station/construction/mining/aux_base)
 "piM" = (
-/obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/effect/turf_decal/delivery,
 /obj/structure/disposaloutlet{
 	dir = 4;
 	name = "Cargo Deliveries"
@@ -61465,12 +61465,6 @@
 /obj/structure/closet/firecloset/wall{
 	pixel_x = 32
 	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 5
-	},
-/obj/structure/chair/sofa/bench/right{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "rmO" = (
@@ -63613,6 +63607,7 @@
 "rTx" = (
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/status_display/evac/directional/east,
+/obj/structure/chair/stool/directional/north,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/cafeteria)
 "rTD" = (
@@ -75325,7 +75320,12 @@
 /turf/open/floor/carpet/orange,
 /area/station/command/heads_quarters/ce)
 "vaT" = (
-/obj/machinery/grill,
+/obj/structure/table,
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
 "vaU" = (
