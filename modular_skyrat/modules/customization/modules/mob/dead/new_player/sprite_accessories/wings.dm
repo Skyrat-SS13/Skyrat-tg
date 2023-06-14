@@ -19,7 +19,7 @@
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	// Can hide if wearing uniform
-	if(key in wearer.try_hide_mutant_parts)
+	if(initial(key) in wearer.try_hide_mutant_parts) // initial because some of the wing types have different keys (wings_functional, wings_open, etc)
 		return TRUE
 	if(wearer.wear_suit)
 	// Exception for MODs

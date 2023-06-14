@@ -87,6 +87,8 @@
 	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT - Customization - ORIGINAL: return GLOB.moth_wings_list
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
+	return ..() //SKYRAT EDIT ADDITION - skip the snowflake code below and do what we do for all wings
+
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
 		return TRUE
 	return FALSE
