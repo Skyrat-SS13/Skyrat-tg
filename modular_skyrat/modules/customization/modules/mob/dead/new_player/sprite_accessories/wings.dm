@@ -34,7 +34,7 @@
 
 	return FALSE
 
-/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer, suit_override = FALSE)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 
@@ -43,8 +43,12 @@
 		return FALSE
 
 	if(wearer.wear_suit)
+		// If TRUE, wings are always visible unless deliberately hidden. Used for moths.
+		if(suit_override)
+			return TRUE
+
 		// Exception for MODs
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+		else if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return TRUE
 
 		// Hide accessory if flagged to do so, taking species exceptions in account
