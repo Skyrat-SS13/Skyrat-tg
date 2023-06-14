@@ -39,7 +39,7 @@
 		return ..()
 
 	// Can hide if wearing uniform
-	if("wings" in wearer.try_hide_mutant_parts)
+	if(feature_key in wearer.try_hide_mutant_parts)
 		return FALSE
 
 	if(wearer.wear_suit)
