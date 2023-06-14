@@ -43,7 +43,7 @@
 		return FALSE
 
 	if(wearer.wear_suit)
-		// If TRUE, wings are always visible unless deliberately hidden. Used for moths.
+		// Exception for moth wings. This will make the wings always visible unless deliberately hidden.
 		if(suit_override)
 			return TRUE
 
