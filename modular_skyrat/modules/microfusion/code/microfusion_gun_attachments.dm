@@ -62,9 +62,6 @@
 		microfusion_gun.recalculate_recoil()
 	return
 
-/obj/item/microfusion_gun_attachment/proc/adjust_spread(obj/item/gun/microfusion/microfusion_gun) // pain.
-
-
 /*
 Returns a list of modifications of this attachment, it must return a list within a list list(list()).
 All of the following must be returned.
