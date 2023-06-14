@@ -1,17 +1,17 @@
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
-	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
+	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT) //We will be using this to prevent refund scamming mats
 
 /obj/item/ammo_casing/shotgun/hp
 	name = "hollow point slug"
 	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/hp
 	name = "12g hollow point shotgun slug"
 	damage = 60
-	sharpness = SHARP_POINTY
 	wound_bonus = 0
 	bare_wound_bonus = 40
 	weak_against_armour = TRUE
@@ -21,7 +21,10 @@
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/titanium=500)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7.5,
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2.5,
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
@@ -30,10 +33,12 @@
 
 /obj/item/ammo_casing/shotgun/rip
 	name = "RIP shotgun slug"
-	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
+	desc = "A Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4,
+							/datum/material/bronze = SMALL_MATERIAL_AMOUNT)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
@@ -64,7 +69,6 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 7
 	variance = 20
-	custom_materials = list(/datum/material/iron=1000)
 	harmful = FALSE
 
 /obj/item/ammo_casing/shotgun/magnum
@@ -74,6 +78,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
 	variance = 30
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	name = "magnum buckshot pellet"
@@ -101,7 +106,9 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
-	custom_materials = list(/datum/material/iron=500,/datum/material/titanium=500)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
@@ -117,11 +124,14 @@
 	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
 	harmful = FALSE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
 	name = "beehive pellet"
@@ -147,11 +157,14 @@
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
 	pellets = 5
 	variance = 30
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	name = "electrode"
@@ -184,9 +197,11 @@
 	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
 	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5)
 	pellets = 5
 	variance = 20
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox //see /obj/projectile/temp for the original code
 	name = "iceblox pellet"
