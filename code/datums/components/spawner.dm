@@ -55,10 +55,16 @@
 		created_mob.faction = src.faction
 		RegisterSignal(created, COMSIG_MOB_STATCHANGE, PROC_REF(mob_stat_changed))
 
+
 	if (spawn_text)
 		spawner.visible_message(span_danger("[created] [spawn_text] [spawner]."))
 
+<<<<<<< HEAD
 	RegisterSignal(created, COMSIG_PARENT_QDELETING, PROC_REF(on_deleted))
+=======
+	SEND_SIGNAL(src, COMSIG_SPAWNER_SPAWNED, created)
+	RegisterSignal(created, COMSIG_QDELETING, PROC_REF(on_deleted))
+>>>>>>> 1648bcc47ed (Plasma flower MOD core from the lavaland patch of eden ruin (#75959))
 
 /// Remove weakrefs to atoms which have been killed or deleted without us picking it up somehow
 /datum/component/spawner/proc/validate_references()
