@@ -520,11 +520,11 @@
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45
-	name = ".460 Ceres casing"
+	name = ".460 Ceres bullet casing"
 	desc = "A .460 bullet casing."
 
 /obj/item/ammo_casing/c45/ap
-	name = ".460 Ceres armor-piercing casing"
+	name = ".460 Ceres armor-piercing bullet casing"
 	desc = "An armor-piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
@@ -540,7 +540,7 @@
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/a50ae
-	name = ".454 Trucidator casing"
+	name = ".454 Trucidator bullet casing"
 	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
 	<br><br>\
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
