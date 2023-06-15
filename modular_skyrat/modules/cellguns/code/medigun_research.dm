@@ -91,7 +91,6 @@
 
 /datum/design/medicell/utility
 	name = "Utility Medicell"
-	desc = "Hi. Base type. Shouldn't be seeing this."
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_MEDICALAMMO + RND_MEDICALAMMO_UTILITY)
 
 /datum/design/medicell/utility/clot
