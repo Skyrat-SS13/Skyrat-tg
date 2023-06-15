@@ -10,6 +10,9 @@
 /obj/machinery/vending/wallmed/directional/south,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"ef" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/escape)
 "ew" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Shuttle Engineering"
@@ -141,10 +144,6 @@
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/escape)
-"qX" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/escape/brig)
 "re" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark,
 /turf/open/floor/iron/dark/textured_large,
@@ -167,6 +166,10 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/escape)
+"sl" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/escape/brig)
 "sz" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/effect/turf_decal/stripes{
@@ -177,9 +180,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/escape)
-"tc" = (
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/escape/brig)
 "tY" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
@@ -318,11 +318,6 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/escape)
-"Fo" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/structure/window/reinforced/plasma/spawner/directional/east,
-/turf/open/floor/plating,
-/area/shuttle/escape)
 "FJ" = (
 /obj/machinery/computer/security{
 	dir = 8
@@ -339,7 +334,7 @@
 /area/shuttle/escape)
 "Iu" = (
 /turf/template_noop,
-/area/space)
+/area/template_noop)
 "IE" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -375,7 +370,7 @@
 /area/shuttle/escape)
 "Se" = (
 /turf/open/floor/iron/dark/textured_large,
-/area/shuttle/escape)
+/area/shuttle/escape/brig)
 "Sp" = (
 /obj/effect/turf_decal/stripes{
 	dir = 8
@@ -399,6 +394,11 @@
 	dir = 10
 	},
 /turf/open/floor/iron/dark/textured_large,
+/area/shuttle/escape)
+"SY" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/plating,
 /area/shuttle/escape)
 "TG" = (
 /turf/open/floor/catwalk_floor/iron_smooth,
@@ -574,11 +574,11 @@ Iu
 Iu
 Iu
 zg
-Se
-Se
-Se
+ef
+ef
+ef
 TG
-Se
+ef
 lD
 lD
 zg
@@ -588,7 +588,7 @@ Iu
 (6,1,1) = {"
 Iu
 Zt
-Fo
+SY
 ji
 ji
 ji
@@ -604,7 +604,7 @@ Iu
 Iu
 oH
 UH
-Se
+ef
 xR
 xR
 TG
@@ -636,8 +636,8 @@ ji
 ji
 ji
 zg
-qX
-tc
+sl
+Se
 Vt
 UH
 iD
@@ -651,8 +651,8 @@ ji
 ji
 ji
 VT
-tc
-tc
+Se
+Se
 Vt
 UH
 Zq
@@ -740,11 +740,11 @@ zg
 ji
 ji
 UH
-Se
+ef
 re
 ji
 go
-Se
+ef
 UH
 Zq
 cM
@@ -830,14 +830,14 @@ XV
 ji
 ji
 zg
-Se
+ef
 re
 ji
 go
-Se
+ef
 zg
 CW
-Se
+ef
 zg
 "}
 (23,1,1) = {"
@@ -852,7 +852,7 @@ DZ
 xR
 UH
 CW
-Se
+ef
 UH
 "}
 (24,1,1) = {"
@@ -867,7 +867,7 @@ UH
 UH
 UH
 CW
-Se
+ef
 UH
 "}
 (25,1,1) = {"
