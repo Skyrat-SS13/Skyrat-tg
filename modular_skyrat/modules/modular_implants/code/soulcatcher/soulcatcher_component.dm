@@ -33,11 +33,33 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		add_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
+
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
 	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		remove_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 	return ..()
 
