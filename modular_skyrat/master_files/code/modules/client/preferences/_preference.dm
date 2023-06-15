@@ -91,9 +91,6 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	default_value = FALSE
 
-	/// The linked preferences to this toggle. Automatically filled.
-	var/list/linked_preference_paths = list()
-
 /datum/preference/toggle/mutant_toggle/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
@@ -218,7 +215,7 @@
 	abstract_type = /datum/preference/toggle/emissive
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
-	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, whatever that means.
+	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, aka not None
 	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/toggle/emissive/is_accessible(datum/preferences/preferences)
