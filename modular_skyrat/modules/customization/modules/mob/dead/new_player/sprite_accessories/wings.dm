@@ -19,7 +19,7 @@
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	// Can hide if wearing uniform
-	if(key in wearer.try_hide_mutant_parts)
+	if(initial(key) in wearer.try_hide_mutant_parts) // initial because some of the wing types have different keys (wings_functional, wings_open, etc)
 		return TRUE
 	if(wearer.wear_suit)
 	// Exception for MODs
@@ -34,15 +34,15 @@
 
 	return FALSE
 
-/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer, ignore_suit = FALSE)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 
 	// Can hide if wearing uniform
-	if("wings" in wearer.try_hide_mutant_parts)
+	if(feature_key in wearer.try_hide_mutant_parts)
 		return FALSE
 
-	if(wearer.wear_suit)
+	if(!ignore_suit && wearer.wear_suit)
 		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return TRUE
