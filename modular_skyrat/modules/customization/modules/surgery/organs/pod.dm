@@ -26,17 +26,10 @@
 		if(index_to_color > length(overlays))
 			break
 
-		var/image/overlay = overlays[index_to_color]
-
 		var/list/rgb_list
-		if(islist(draw_color))
-			rgb_list = rgb2num(draw_color[2])
-		else // legacy single-color mode, we just invert it
+		if(istext(draw_color) || length(draw_color) == 1) // legacy single-color mode, we just invert it
 			rgb_list = list()
-			for(var/col in rgb2num(draw_color))
+			for(var/col in rgb2num(islist(draw_color) ? draw_color[1] : draw_color))
 				rgb_list += (color_inverse_base - col) //inversa da color
-
-		if(rgb_list)
-			overlay.color = rgb(rgb_list[1], rgb_list[2], rgb_list[3])
-		else
-			overlay.color = null
+		else if(length(draw_color) >= 2)
+			rgb_list = rgb2num(draw_color[2])
