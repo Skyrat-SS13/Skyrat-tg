@@ -166,6 +166,7 @@
 
 	if(!isliving(target))
 		return
+
 	var/mob/living/carbon/disease_target = target
 	if(diseased_rat.can_inject(disease_target))
 		to_chat(disease_target, span_danger("[diseased_rat] manages to penetrate your clothing with its teeth!"))
@@ -227,6 +228,7 @@
 
 	if(!iscarbon(target))
 		return
+
 	var/mob/living/carbon/shock_target = target
 	shock_target.reagents.add_reagent(/datum/reagent/teslium, 2)
 
@@ -312,6 +314,7 @@
 
 	if(!isliving(target))
 		return
+
 	var/mob/living/radiation_target = target
 	if(prob(centaur.irradiate_chance))
 		radiation_pulse(radiation_target, CENTAUR_RAD_PULSE_RANGE, CENTAUR_RAD_PULSE_THRESHOLD, FALSE, TRUE)
