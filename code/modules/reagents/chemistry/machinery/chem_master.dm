@@ -6,6 +6,8 @@
 #define CAT_TUBES "tubes"
 #define CAT_PILLS "pills"
 #define CAT_PATCHES "patches"
+#define CAT_HYPOS "hypos" // SKYRAT EDIT ADDITION
+#define CAT_DARTS "darts" // SKYRAT EDIT ADDITION
 
 /// List of containers the Chem Master machine can print
 GLOBAL_LIST_INIT(chem_master_containers, list(
@@ -42,7 +44,15 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 	)),
 	CAT_PATCHES = typecacheof(list(
 		/obj/item/reagent_containers/pill/patch/style
+	)),
+	// SKYRAT EDIT ADDITION START
+	CAT_HYPOS = typecacheof(list(
+		/obj/item/reagent_containers/cup/vial
+	)),
+	CAT_DARTS = typecacheof(list(
+		/obj/item/reagent_containers/syringe/smartdart
 	))
+	// SKYRAT EDIT ADDITION END
 ))
 
 /obj/machinery/chem_master
@@ -217,6 +227,8 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 		CAT_TUBES = GLOB.chem_master_containers[CAT_TUBES],
 		CAT_PILLS = GLOB.chem_master_containers[CAT_PILLS],
 		CAT_PATCHES = GLOB.chem_master_containers[CAT_PATCHES],
+		CAT_HYPOS = GLOB.chem_master_containers[CAT_HYPOS], // SKYRAT EDIT ADDITION
+		CAT_DARTS = GLOB.chem_master_containers[CAT_DARTS], // SKYRAT EDIT ADDITION
 	)
 
 /obj/machinery/chem_master/ui_assets(mob/user)
@@ -368,163 +380,7 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 		var/item_count = text2num(params["itemCount"])
 		if(item_count <= 0)
 			return FALSE
-<<<<<<< HEAD
-		// Get units per item
-		var/vol_each = text2num(params["volume"])
-		var/vol_each_text = params["volume"]
-		var/vol_each_max = reagents.total_volume / amount
-		var/list/style
-		use_power(active_power_usage)
-		if (item_type == "pill")
-			vol_each_max = min(50, vol_each_max)
-		else if (item_type == "patch")
-			vol_each_max = min(40, vol_each_max)
-		else if (item_type == "bottle")
-			vol_each_max = min(30, vol_each_max)
-		//SKYRAT EDIT ADDITION START
-		else if (item_type == "vial")
-			vol_each_max = min(60, vol_each_max)
-		else if (item_type == "smartdart")
-			vol_each_max = min(10, vol_each_max)
-		//SKYRAT EDIT ADDITION END
-		else if (item_type == "condimentPack")
-			vol_each_max = min(10, vol_each_max)
-		else if (item_type == "condimentBottle")
-			var/list/styles = get_condi_styles()
-			if (chosen_condi_style == CONDIMASTER_STYLE_AUTO || !(chosen_condi_style in styles))
-				style = guess_condi_style(reagents)
-			else
-				style = styles[chosen_condi_style]
-			vol_each_max = min(50, vol_each_max)
-		else
-			return FALSE
-		if(vol_each_text == "auto")
-			vol_each = vol_each_max
-		if(vol_each == null)
-			vol_each = text2num(input(usr,
-				"Maximum [vol_each_max] units per item.",
-				"How many units to fill?",
-				vol_each_max))
-		vol_each = round(clamp(vol_each, 0, vol_each_max), 0.01)
-		if(vol_each <= 0)
-			return FALSE
-		// Get item name
-		var/name = strip_html(params["name"], limit = 100)
-		var/name_has_units = item_type == "pill" || item_type == "patch"
-		if(!name)
-			var/name_default
-			if (style && style["name"] && !style["generate_name"])
-				name_default = style["name"]
-			else
-				name_default = reagents.get_master_reagent_name()
-			if (name_has_units)
-				name_default += " ([vol_each]u)"
-			name = tgui_input_text(usr,
-				"Give it a name!",
-				"Name",
-				name_default,
-				MAX_NAME_LEN)
-		if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.can_perform_action(src, ALLOW_SILICON_REACH))
-			return FALSE
-		// Start filling
-		if(item_type == "pill")
-			var/obj/item/reagent_containers/pill/P
-			var/target_loc = drop_location()
-			var/drop_threshold = INFINITY
-			if(bottle)
-				if(bottle.atom_storage)
-					drop_threshold = bottle.atom_storage.max_slots - bottle.contents.len
-					target_loc = bottle
-			for(var/i in 1 to amount)
-				if(i-1 < drop_threshold)
-					P = new/obj/item/reagent_containers/pill(target_loc)
-				else
-					P = new/obj/item/reagent_containers/pill(drop_location())
-				P.name = trim("[name] pill")
-				if(chosen_pill_style == RANDOM_PILL_STYLE)
-					P.icon_state ="pill[rand(1,21)]"
-				else
-					P.icon_state = "pill[chosen_pill_style]"
-				if(P.icon_state == "pill4")
-					P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		if(item_type == "patch")
-			var/obj/item/reagent_containers/pill/patch/P
-			for(var/i in 1 to amount)
-				P = new/obj/item/reagent_containers/pill/patch(drop_location())
-				P.name = trim("[name] patch")
-				P.icon_state = patch_style
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		if(item_type == "bottle")
-			var/obj/item/reagent_containers/cup/tube/P
-			for(var/i in 1 to amount)
-				P = new/obj/item/reagent_containers/cup/tube(drop_location())
-				P.name = trim("[name] test tube")
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		//SKYRAT EDIT ADDTION START
-		if(item_type == "vial")
-			var/obj/item/reagent_containers/cup/vial/small/P
-			for(var/i = 0; i < amount; i++)
-				P = new/obj/item/reagent_containers/cup/vial/small(drop_location())
-				P.name = trim("[name] vial")
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		if(item_type == "smartdart")
-			for(var/i in 1 to amount)
-				var/obj/item/reagent_containers/syringe/smartdart/dart = new(drop_location())
-				dart.name = trim("[name] SmartDart")
-				adjust_item_drop_location(dart)
-				reagents.trans_to(dart, vol_each, transfered_by = usr)
-			return TRUE
-		//SKYRAT EDIT ADDTION END
-		if(item_type == "condimentPack")
-			var/obj/item/reagent_containers/condiment/pack/P
-			for(var/i in 1 to amount)
-				P = new/obj/item/reagent_containers/condiment/pack(drop_location())
-				P.originalname = name
-				P.name = trim("[name] pack")
-				P.desc = "A small condiment pack. The label says it contains [name]."
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		if(item_type == "condimentBottle")
-			var/obj/item/reagent_containers/condiment/P
-			for(var/i in 1 to amount)
-				P = new/obj/item/reagent_containers/condiment(drop_location())
-				if (style)
-					apply_condi_style(P, style)
-				P.renamedByPlayer = TRUE
-				P.name = name
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-			return TRUE
-		return FALSE
-
-	if(action == "analyze")
-		var/datum/reagent/analyzed_reagent = GLOB.name2reagent[params["id"]]
-		if(analyzed_reagent)
-			var/state = "Unknown"
-			if(initial(analyzed_reagent.reagent_state) == SOLID)
-				state = "Solid"
-			else if(initial(analyzed_reagent.reagent_state) == LIQUID)
-				state = "Liquid"
-			else if(initial(analyzed_reagent.reagent_state) == GAS)
-				state = "Gas"
-			var/metabolization_rate = initial(analyzed_reagent.metabolization_rate) * (60 / SSMOBS_DT)
-			analyze_vars = list("name" = initial(analyzed_reagent.name), "state" = state, "color" = initial(analyzed_reagent.color), "description" = initial(analyzed_reagent.description), "metaRate" = metabolization_rate, "overD" = initial(analyzed_reagent.overdose_threshold), "pH" = initial(analyzed_reagent.ph))
-			screen = "analyze"
-			return TRUE
-
-	if(action == "goScreen")
-		screen = params["screen"]
-=======
 		create_containers(item_count)
->>>>>>> d2789800669 (ChemMaster and CondiMaster refactored, prints items over time (#75849))
 		return TRUE
 
 /// Create N selected containers with reagents from buffer split between them
@@ -655,3 +511,5 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 #undef CAT_TUBES
 #undef CAT_PILLS
 #undef CAT_PATCHES
+#undef CAT_HYPOS // SKYRAT EDIT ADDITION
+#undef CAT_DARTS // SKYRAT EDIT ADDITION
