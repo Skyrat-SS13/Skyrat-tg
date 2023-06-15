@@ -14,7 +14,7 @@
 	baseturfs = /turf/open/water/cursed_spring
 	planetary_atmos = TRUE
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
-
+/* SKYRAT EDIT REMOVAL
 /turf/open/water/cursed_spring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(!isliving(arrived))
@@ -39,3 +39,4 @@
 	var/turf/return_turf = find_safe_turf(extended_safety_checks = TRUE, dense_atoms = FALSE)
 	transformed_mob.forceMove(return_turf)
 	to_chat(transformed_mob, span_notice("You blink and find yourself in [get_area_name(return_turf)]."))
+*/
