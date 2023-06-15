@@ -34,7 +34,7 @@
 	wound_bonus = -50
 
 /obj/item/ammo_casing/c45/hp
-	name = ".460 Ceres hollow-point bullet"
+	name = ".460 Ceres hollow-point bullet casing"
 	desc = "A .460 hollow-point bullet casing. Very lethal against unarmored opponents. Suffers against armor."
 	projectile_type = /obj/projectile/bullet/c45/hp
 	advanced_print_req = TRUE
@@ -97,7 +97,7 @@
 	wound_bonus = -50
 
 /obj/item/ammo_casing/a556/ap
-	name = ".277 Aestus armor-piercing casing"
+	name = ".277 Aestus armor-piercing bullet casing"
 	desc = "A .277 armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
@@ -183,7 +183,7 @@
 	embedding = null
 
 /obj/item/ammo_casing/c34/ap
-	name = ".34 armor-piercing bullet"
+	name = ".34 armor-piercing bullet casing"
 	desc = "A .34 armor-piercing bullet casing."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c34/ap
@@ -197,7 +197,7 @@
 	wound_bonus = -75
 
 /obj/item/ammo_casing/c34_incendiary
-	name = ".34 incendiary bullet"
+	name = ".34 incendiary bullet casing"
 	desc = "A .34 incendiary bullet casing."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
