@@ -12,7 +12,7 @@
 /mob/living/basic/mold
 	name = "mold mob"
 	desc = "A debug mob for molds. You should report seeing this."
-	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
+	icon = 'modular_skyrat/modules/mold/icons/blob_mobs.dmi'
 	gold_core_spawnable = NO_SPAWN
 	faction = list(FACTION_MOLD)
 
