@@ -8538,9 +8538,7 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "cYE" = (
 /obj/effect/turf_decal/stripes/red/line,
-/obj/machinery/door/poddoor/incinerator_ordmix{
-	id = ssssssss
-	},
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/station/science/ordnance/burnchamber)
 "cYI" = (
@@ -22860,7 +22858,6 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "hRu" = (
-/obj/machinery/light/directional/east,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /obj/effect/turf_decal/stripes/end{
@@ -31752,7 +31749,7 @@
 /area/station/tcommsat/computer)
 "kWr" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "qm_warehouse_inside"ssssssssssssssssssssssssssssssssssss
+	id = "qm_warehouse_inside"
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/warehouse/upper)
@@ -55989,6 +55986,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
+"tcB" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/station/science/ordnance)
 "tcE" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -67040,11 +67041,14 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/aft)
 "wIb" = (
-/obj/machinery/door/poddoor/shutters{
-	id = ss
+/obj/machinery/light/directional/east,
+/obj/machinery/button/door{
+	id = "ordmix_vent";
+	name = "Burn Chamber Vent";
+	pixel_x = 24
 	},
 /turf/open/floor/iron/dark,
-/area/station/cargo/warehouse/upper)
+/area/station/science/ordnance)
 "wIf" = (
 /obj/structure/light_construct/small{
 	dir = 1
@@ -71584,15 +71588,8 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "xQG" = (
-/obj/machinery/button/door{
-	id = "ordmix_vent";
-	name = "Burn Chamber Vent";
-	pixel_x = 24;
-	pixel_y = 4
-	},
 /obj/machinery/button/door/incinerator_vent_ordmix,
 /obj/machinery/button/ignition/incinerator/ordmix,
-/obj/machinery/light/directional/east,
 /obj/effect/turf_decal/stripes/end{
 	dir = 8
 	},
@@ -96918,7 +96915,7 @@ xhP
 qxD
 fkQ
 mzJ
-wIb
+kWr
 qik
 qtx
 dEc
@@ -112349,10 +112346,10 @@ wgM
 qwU
 rHf
 ktZ
-ktZ
+tcB
 uwY
 ktZ
-ktZ
+wIb
 ktZ
 pVB
 fZL
