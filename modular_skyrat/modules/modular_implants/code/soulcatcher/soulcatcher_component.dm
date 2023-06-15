@@ -16,6 +16,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "soulcatcher"
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
+	/// What soulcatcher room are verbs sending messages to?
+	var/datum/soulcatcher_room/targeted_soulcatcher_room
+
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
@@ -27,6 +30,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return COMPONENT_INCOMPATIBLE
 
 	create_room()
+	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
 /datum/component/soulcatcher/Destroy(force, ...)

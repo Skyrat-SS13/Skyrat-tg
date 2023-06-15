@@ -100,6 +100,15 @@ export const Soulcatcher = (props, context) => {
                 Redecorate
               </Button>
               <Button
+                icon={room.currently_targeted ? 'check' : 'xmark'}
+                tooltip="Choose where messages using the soulcatcher verbs are sent."
+                color={room.currently_targeted ? 'green' : 'red'}
+                onClick={() =>
+                  act('change_targeted_room', { room_ref: room.reference })
+                }>
+                {room.currently_targeted ? 'Targeted' : 'Untargeted'}
+              </Button>
+              <Button
                 color={room.joinable ? 'green' : 'red'}
                 icon={room.joinable ? 'door-open' : 'door-closed'}
                 onClick={() =>
