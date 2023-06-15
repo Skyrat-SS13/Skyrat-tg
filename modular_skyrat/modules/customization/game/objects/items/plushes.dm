@@ -635,3 +635,13 @@
 	attack_verb_continuous = list("blushes", "hugs", "whips")
 	attack_verb_simple = list("blush", "hug", "whip")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+//Donation reward for Kitsun
+/obj/item/toy/plush/skyrat/jecca
+	name = "sexy snoodle plushie"
+	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales, and its ruby colored eyes seem to be rather enticing and full of mischievous, lewd thoughts behind them."
+	icon_state = "plushie_jecca"
+	attack_verb_continuous = list("sighs")
+	attack_verb_simple = list("sigh")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg' = 1)
+	gender = FEMALE

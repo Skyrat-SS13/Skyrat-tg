@@ -354,6 +354,6 @@
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/clothing/under/rank/security/officer(src)
-	new /obj/item/clothing/under/rank/security/officer/skirt(src)
+	//new /obj/item/clothing/under/rank/security/officer/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/flashlight/seclite(src)

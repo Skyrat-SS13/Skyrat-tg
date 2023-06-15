@@ -196,40 +196,40 @@
 		. = ..()
 
 /**
- * Add liquid effect overlay.
+ * Makes and returns the liquid effect overlay.
  *
  * Arguments:
  * * overlay_state - the icon state of the new overlay
  * * overlay_layer - the layer
  * * overlay_plane - the plane
  */
-/obj/effect/abstract/liquid_turf/proc/add_liquid_overlay(overlay_state, overlay_layer, overlay_plane)
+/obj/effect/abstract/liquid_turf/proc/make_liquid_overlay(overlay_state, overlay_layer, overlay_plane)
 	PRIVATE_PROC(TRUE)
 
-	add_overlay(mutable_appearance(
+	return mutable_appearance(
 		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
 		overlay_state,
 		overlay_layer,
 		src,
 		overlay_plane,
-	))
+	)
 
 /**
- * Add over and underlays for different liquid states.
+ * Returns a list of over and underlays for different liquid states.
  *
  * Arguments:
  * * state - the stage number.
  * * has_top - if this stage has a top.
  */
-/obj/effect/abstract/liquid_turf/proc/add_state_layer(state, has_top)
+/obj/effect/abstract/liquid_turf/proc/make_state_layer(state, has_top)
 	PRIVATE_PROC(TRUE)
 
-	add_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, GAME_PLANE_UPPER)
+	. = list(make_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, GAME_PLANE_UPPER))
 
 	if(!has_top)
 		return
 
-	add_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
+	. += make_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
@@ -243,13 +243,13 @@
 
 	switch(liquid_state)
 		if(LIQUID_STATE_ANKLES)
-			add_state_layer(1, has_top = TRUE)
+			. += make_state_layer(1, has_top = TRUE)
 		if(LIQUID_STATE_WAIST)
-			add_state_layer(2, has_top = TRUE)
+			. += make_state_layer(2, has_top = TRUE)
 		if(LIQUID_STATE_SHOULDERS)
-			add_state_layer(3, has_top = TRUE)
+			. += make_state_layer(3, has_top = TRUE)
 		if(LIQUID_STATE_FULLTILE)
-			add_state_layer(4, has_top = FALSE)
+			. += make_state_layer(4, has_top = FALSE)
 
 	var/mutable_appearance/shine = mutable_appearance(icon, "shine", offset_spokesman = src, alpha = 32, appearance_flags = RESET_COLOR|RESET_ALPHA)
 	shine.blend_mode = BLEND_ADD

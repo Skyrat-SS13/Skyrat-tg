@@ -362,7 +362,6 @@ SUBSYSTEM_DEF(explosions)
 	if(!silent)
 		shake_the_room(epicenter, orig_max_distance, far_dist, devastation_range, heavy_impact_range)
 
-	/* SKYRAT EDIT CHANGE
 	if(heavy_impact_range > 1)
 		var/datum/effect_system/explosion/E
 		if(smoke)
@@ -371,24 +370,6 @@ SUBSYSTEM_DEF(explosions)
 			E = new
 		E.set_up(epicenter)
 		E.start()
-	*/
-	if(heavy_impact_range > 1)
-		if(smoke)
-			var/datum/effect_system/explosion/E = new /datum/effect_system/explosion/smoke
-			E.set_up(epicenter)
-			E.start()
-		else
-			var/datum/effect_system/explosion_skyrat/E
-			switch(heavy_impact_range)
-				if(1 to 2)
-					E = new
-				if(3 to 5)
-					E = new /datum/effect_system/explosion_skyrat/medium
-				else
-					E = new /datum/effect_system/explosion_skyrat/large
-			E.set_up(epicenter)
-			E.start()
-	// SKYRAT EDIT END
 
 	//flash mobs
 	if(flash_range)
@@ -452,7 +433,7 @@ SUBSYSTEM_DEF(explosions)
 				SSexplosions.medturf += explode
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += explode
-		
+
 		//SKYRAT EDIT ADDITION
 		for(var/obj/machinery/light/iterating_light in explode)
 			iterating_light.start_flickering()

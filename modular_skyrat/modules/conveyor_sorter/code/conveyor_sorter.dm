@@ -144,7 +144,7 @@
 	id = "conveysorter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/conveyor_sorter
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5)
 	category = list(
 		RND_CATEGORY_EQUIPMENT
 	)
@@ -183,10 +183,10 @@
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
 	materials = list(
-		/datum/material/iron = 500,
-		/datum/material/plastic = 500,
-		/datum/material/gold = 500,
-		/datum/material/bluespace = 500,
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 5,
 	)
 
 
