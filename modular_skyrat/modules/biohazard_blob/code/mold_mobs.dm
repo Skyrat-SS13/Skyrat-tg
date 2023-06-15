@@ -98,9 +98,11 @@
 
 	if(!isliving(target))
 		return
+
 	var/mob/living/ignite_target = target
 	if(prob(oil_shambler.ignite_chance))
 		ignite_target.adjust_fire_stacks(oil_shambler.additional_fire_stacks)
+
 	if(ignite_target.fire_stacks)
 		ignite_target.ignite_mob()
 
