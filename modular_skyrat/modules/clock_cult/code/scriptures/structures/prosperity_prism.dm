@@ -1,6 +1,3 @@
-//==================================//
-// !      Prosperity Prism     ! //
-//==================================//
 /datum/scripture/create_structure/prosperity_prism
 	name = "Prosperity Prism"
 	desc = "Creates a prism that will remove all forms of damage from nearby servants over time, along with purging poisons. Requires power from a sigil of transmission."

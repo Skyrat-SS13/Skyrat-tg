@@ -255,6 +255,16 @@
 	intensity_restriction = TRUE
 
 /**
+ * Earthquakes
+ *
+ * Disabled: Yeah lol as if we'd run an event with the sole purpose of griefing the station
+ * with no way to prevent it. Nice try.
+ */
+/datum/round_event_control/earthquake
+	max_occurrences = 0
+
+
+/**
  * Electricity Events
  *
  * Combined weight: 32

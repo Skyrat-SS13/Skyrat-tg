@@ -666,8 +666,8 @@
 		/obj/item/seeds/lavaland/inocybe,
 		/obj/item/seeds/lavaland/ember,
 		/obj/item/seeds/lavaland/seraka,
-		/obj/item/seeds/star_cactus,
-		/obj/item/seeds/star_cactus,
+		/obj/item/seeds/lavaland/fireblossom,
+		/obj/item/seeds/lavaland/cactus,
 	)
 	crate_name = "planetary seeds crate"
 	crate_type = /obj/structure/closet/crate/hydroponics

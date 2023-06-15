@@ -32,11 +32,11 @@
 	/// The amount of DMA gained using absorb, not DNA sting. Start with one (your original DNA)
 	var/true_absorbs = 0
 	/// The number of chemicals the changeling currently has.
-	var/chem_charges = 75 // SKYRAT EDIT - ORIGINAL: 20
+	var/chem_charges = 20
 	/// The max chemical storage the changeling currently has.
-	var/total_chem_storage = 100 // SKYRAT EDIT - ORIGINAL: 75
+	var/total_chem_storage = 75
 	/// The chemical recharge rate per life tick.
-	var/chem_recharge_rate = 1.5 // SKYRAT EDIT - ORIGINAL: 0.5
+	var/chem_recharge_rate = 0.5
 	/// Any additional modifiers triggered by changelings that modify the chem_recharge_rate.
 	var/chem_recharge_slowdown = 0
 	/// The range this ling can sting things.

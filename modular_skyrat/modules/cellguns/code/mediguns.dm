@@ -14,6 +14,7 @@
 	maxcells = 3
 	allowed_cells = list(/obj/item/weaponcell/medical)
 	item_flags = null
+	gun_flags = TURRET_INCOMPATIBLE
 
 // Standard medigun - this is what you will get from Cargo, most likely.
 /obj/item/gun/energy/cell_loaded/medigun/standard

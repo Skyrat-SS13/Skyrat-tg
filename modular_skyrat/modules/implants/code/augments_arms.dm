@@ -7,6 +7,7 @@
 	icon_state = "mantis_blade"
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
+	sharpness = SHARP_EDGED
 	force = 25
 	armour_penetration = 20
 	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.

@@ -697,6 +697,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax2
+	name = "azulean's environment helmet"
+	desc = "An Azulean-made Enviro-Helmet, adjusted for the unique skull shape typical of the species. Alongside the standard features, it includes an embossment of the Azulean Crest on the back of the helmet."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anahead"
+
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
@@ -706,13 +715,14 @@
 	icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/bio_hood/jax
-	name = "xuracorp biohazard hood"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-	icon_state = "bio_hood_jax"
-	desc = "A hood composed of proprietary material from a Nanotrasen Affiliate."
+/obj/item/clothing/under/plasmaman/candlejax2
+	name = "azulean's environment suit"
+	desc = "An Azulean-made Enviro-Suit. Fitted to the Azulean form, it has surplus containment fabric designed to give the solidified mass of plasma that was once a tail some breathing room."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "ana_envirosuit"
 
+// Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/jax2
 	name = "xuracorp hazard underfitting"
 	desc = "A hazard suit fitted with bio-resistant fibers. Utilizes self-sterilizing pumps fitted in the back."
@@ -720,24 +730,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
-	name = "xuracorp enameled labcoat"
-	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "labcoat_xc"
-	body_parts_covered = CHEST|ARMS|LEGS
-	armor_type = /datum/armor/rd_jax
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 // Donation reward for Raxraus
-
-/datum/armor/rd_jax
-	melee = 5
-	bio = 80
-	fire = 80
-	acid = 70
-
 /obj/item/clothing/under/rax_turtleneck
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
@@ -786,8 +779,8 @@
 /obj/item/clothing/suit/jacket/rax
 	name = "navy aerostatic jacket"
 	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "blueshield"
 
 // Donation reward for DeltaTri
@@ -1108,6 +1101,8 @@
 	desc = "This poster bears a huge, pink helix on it, with smaller text underneath it that reads 'The Korps institute, advancing the Genetics field since 2423!'"
 	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 // Donation reward for Kay-Nite
 /obj/item/clothing/glasses/eyepatch/rosecolored

@@ -2,7 +2,7 @@
 /obj/singularity
 	name = "gravitational singularity"
 	desc = "A gravitational singularity."
-	icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/engine/singularity.dmi'
+	icon = 'icons/obj/engine/singularity.dmi'
 	icon_state = "singularity_s1"
 	anchored = TRUE
 	density = TRUE
@@ -11,7 +11,6 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
-	invisibility = INVISIBILITY_MAXIMUM //SKYRAT EDIT ADDITION
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
@@ -54,13 +53,6 @@
 
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN
-	new /obj/effect/singularity_creation(loc)
-
-	addtimer(CALLBACK(src, PROC_REF(make_visible)), 62)
-
-	energy = starting_energy
-	//SKYRAT EDIT END
 
 	START_PROCESSING(SSsinguloprocess, src)
 	SSpoints_of_interest.make_point_of_interest(src)
@@ -207,7 +199,7 @@
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/engine/singularity.dmi'
+			icon = 'icons/obj/engine/singularity.dmi'
 			icon_state = "[singularity_icon_variant]_s1"
 			pixel_x = 0
 			pixel_y = 0
@@ -219,7 +211,7 @@
 		if(STAGE_TWO)
 			if(check_cardinals_range(1, TRUE))
 				current_size = STAGE_TWO
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s3.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/obj/engine/singularity.dmi'
 				icon_state = "[singularity_icon_variant]_s3"
 				pixel_x = -32
 				pixel_y = -32
@@ -231,7 +223,7 @@
 		if(STAGE_THREE)
 			if(check_cardinals_range(2, TRUE))
 				current_size = STAGE_THREE
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s5.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/obj/engine/singularity.dmi'
 				icon_state = "[singularity_icon_variant]_s5"
 				pixel_x = -64
 				pixel_y = -64
@@ -243,7 +235,7 @@
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s7.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/obj/engine/singularity.dmi'
 				icon_state = "[singularity_icon_variant]_s7"
 				pixel_x = -96
 				pixel_y = -96
@@ -254,7 +246,7 @@
 				dissipate_strength = 10
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s9.dmi' //SKYRAT EDIT CHANGE'
+			icon = 'icons/obj/engine/singularity.dmi'
 			icon_state = "[singularity_icon_variant]_s9"
 			pixel_x = -128
 			pixel_y = -128

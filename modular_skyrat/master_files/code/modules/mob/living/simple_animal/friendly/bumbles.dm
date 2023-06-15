@@ -16,7 +16,7 @@
 	speak_emote = list("buzzes")
 	friendly_verb_continuous = "bzzs"
 	friendly_verb_simple = "bzz"
-	butcher_results = list(/obj/item/reagent_containers/honeycomb = 2)
+	butcher_results = list(/obj/item/food/honeycomb = 2)
 	density = FALSE
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -46,7 +46,7 @@
 	AddElement(/datum/element/simple_flying)
 	add_verb(src, /mob/living/proc/toggle_resting)
 
-	ai_controller.blackboard[BB_BASIC_FOODS] = flower_types
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, flower_types)
 
 	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(smell_flower))
 
@@ -100,7 +100,7 @@
 	manual_emote(pick("smells [target].", "sniffs [target].", "collects some nectar."))
 
 	// Clear the target, if any or we'll stunlock on a flower.
-	ai_controller.blackboard -= BB_BASIC_MOB_CURRENT_TARGET
+	ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 
 	return TRUE
 
