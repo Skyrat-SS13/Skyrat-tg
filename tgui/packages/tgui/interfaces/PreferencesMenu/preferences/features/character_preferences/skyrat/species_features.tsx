@@ -859,7 +859,7 @@ export const vox_bodycolor: Feature<string> = {
   },
 };
 
-export const pod_hair_color: Feature<string> = {
+export const pod_hair_color: Feature<string[]> = {
   name: 'Floral Hair Color',
   description:
     "If your podperson hair is greyscale enabled, then it'll take on this color.",
