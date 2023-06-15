@@ -36,7 +36,7 @@
 	current_threat = clamp(current_threat + earned_threat, 0, MAXIMUM_THREAT)
 	if(prob(CHANCE_PER_TICK) || current_threat >= MAXIMUM_THREAT)
 		try_event()
-	addtimer(CALLBACK(src, .proc/tick), tick_time)
+	addtimer(CALLBACK(src, PROC_REF(tick)), tick_time)
 
 /datum/outbound_gateway_controller/proc/try_event()
 	var/datum/outbound_gateway_event/picked_event = pick(event_datums)

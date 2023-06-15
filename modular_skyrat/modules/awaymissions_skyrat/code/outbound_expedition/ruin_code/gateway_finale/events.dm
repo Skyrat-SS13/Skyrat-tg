@@ -64,12 +64,11 @@
 	name = "Portal Storm - Syndicates"
 	threat = 60
 	possible_enemies = list(
-		/mob/living/simple_animal/hostile/syndicate/melee/space = 3,
-		/mob/living/simple_animal/hostile/syndicate/ranged/space = 4,
-		/mob/living/simple_animal/hostile/syndicate/ranged/smg/space = 3,
-		/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space = 3,
-		/mob/living/simple_animal/hostile/syndicate/mecha_pilot = 1,
-		/mob/living/simple_animal/hostile/syndicate/space = 3,
+		/mob/living/basic/syndicate/melee/space = 3,
+		/mob/living/basic/syndicate/ranged/space = 4,
+		/mob/living/basic/syndicate/ranged/smg/space = 3,
+		/mob/living/basic/syndicate/ranged/shotgun/space = 3,
+		/mob/living/basic/syndicate/space = 3,
 	)
 	minimum_spawns = 3
 	maximum_spawns = 8
@@ -88,13 +87,12 @@
 	name = "Portal Storm - Syndicates (Lone Wolf)"
 	threat = 75
 	possible_enemies = list(
-		/mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper = 4,
-		/mob/living/simple_animal/hostile/syndicate/ranged/space/stormtrooper = 3,
-		/mob/living/simple_animal/hostile/syndicate/ranged/smg/space/stormtrooper = 3,
-		/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper = 3,
-		/mob/living/simple_animal/hostile/syndicate/mecha_pilot = 1,
-		/mob/living/simple_animal/hostile/syndicate/space/stormtrooper = 4,
-		/mob/living/simple_animal/hostile/syndicate/melee/sword/space/stormtrooper = 2,
+		/mob/living/basic/syndicate/melee/space/stormtrooper = 4,
+		/mob/living/basic/syndicate/ranged/space/stormtrooper = 3,
+		/mob/living/basic/syndicate/ranged/smg/space/stormtrooper = 3,
+		/mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper = 3,
+		/mob/living/basic/syndicate/space/stormtrooper = 4,
+		/mob/living/basic/syndicate/melee/sword/space/stormtrooper = 2,
 	)
 	minimum_spawns = 8 // this isn't meant to be fair
 	maximum_spawns = 12

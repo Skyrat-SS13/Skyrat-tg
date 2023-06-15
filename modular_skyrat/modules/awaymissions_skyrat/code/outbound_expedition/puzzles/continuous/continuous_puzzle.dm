@@ -33,7 +33,7 @@
 		return
 	increase_charge(capacitator_increase) //Check if this needs to use delta_time later
 	if(capacitator_charge >= CAPACITATOR_MAX_CHARGE)
-		addtimer(CALLBACK(src, .proc/fail), 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(fail)), 0.5 SECONDS)
 
 /datum/outbound_teamwork_puzzle/continuous/capacitator/fail()
 	OUTBOUND_CONTROLLER

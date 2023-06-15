@@ -33,71 +33,20 @@
 	name = "Communications Terminal"
 	desc = "A computer that appears to have a variety of sensor-reading and communication gizmos."
 
-/obj/machinery/computer/outbound_radio/proc/start_talking(talk_type)
+/obj/machinery/computer/outbound_radio/proc/start_talking()
 	OUTBOUND_CONTROLLER
 	var/total_spiel = ""
-	var/title = ""
-	var/list/text_strings = list()
 	var/curr_time = 0 SECONDS
-	switch(talk_type)
-		if(/datum/outbound_random_event/harmless/cargo)
-			title = "sensor readout"
-			text_strings = list("Sensors have detected a cargo pod nearby your corvette.",
-			"Ship has been slowed down to allow for EVA to retrieve the materials if wished.",
-			"Retrieval not mandatory.",
-			)
+	if(!outbound_controller.current_event.printout_title || !length(outbound_controller.current_event.printout_strings))
+		return
 
-		if(/datum/outbound_random_event/ruin/salvage)
-			title = "sensor readout"
-			text_strings = list("Sensors have detected a large piece of floating salvage nearby your ship.",
-			"Ship has been slowed down to allow for EVA to retrieve whatever it contains.",
-			"Retrieval not mandatory.",
-			)
-
-		if(/datum/outbound_random_event/ruin/salvage/interdiction)
-			title = "sensor readout - IMPORTANT"
-			text_strings = list("Sensors have detected a large piece of floating salvage nearby your ship.",
-			"Structure is interdicting the shuttle.",
-			"Proceed to destroy the interference. GPS signal locked.",
-			)
-
-		if(/datum/outbound_random_event/harmful/raiders)
-			title = "sensor readout - URGENT"
-			text_strings = list("Sensors have detected a boarding vessel near your ship.",
-			"The raiding party has forcibly slowed down your ship.",
-			"Prepare for boarding and a counter-attack.",
-			)
-
-		if(/datum/outbound_random_event/story/betrayal)
-			title = "goodbye"
-			text_strings = list("INCOMING RECORDED AUDIO MESSAGE.",
-			"Congratulations on going beyond the halfway point on your journey.",
-			"Unfortunately, this won't be one you're coming back from.",
-			"Your sensors and long-range communications back to the outpost have been jammed,",
-			"you won't be able to navigate back.",
-			"With this tragic loss of explorers to the void,",
-			"I think the government may finally give us proper funding.",
-			)
-
-		if(/datum/outbound_random_event/story/radar)
-			title = "sensor readout"
-			text_strings = list("Deep-space telescope-radar located near the ship.",
-			"Please proceed to secure the data on-board.",
-			)
-
-		if(/datum/outbound_random_event/story/the_end)
-			title = "sensor readout"
-			text_strings = list("High-energy signature located near the ship.",
-			"Please proceed to enter the structure.",
-			)
-
-	for(var/string in text_strings)
+	for(var/string in outbound_controller.current_event.printout_strings)
 		curr_time += TIME_PER_MESSAGE
-		addtimer(CALLBACK(src, /atom/movable.proc/say, string), curr_time)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), string), curr_time)
 		total_spiel += "[string]<br>"
 
 	var/obj/item/paper/spiel_paper = new /obj/item/paper(get_turf(src))
-	spiel_paper.name = "paper - '[title]'"
+	spiel_paper.name = "paper - '[outbound_controller.current_event.printout_title]'"
 	spiel_paper.add_raw_text(total_spiel)
 	spiel_paper.update_appearance()
 
@@ -118,17 +67,21 @@
 	if(!outbound_controller.puzzle_controller.can_scan)
 		to_chat(user, span_warning("You can't use this currently - the coordinates are locked in and the shuttle's on autopilot."))
 		return
+
 	if(outbound_controller.puzzle_controller.has_scanned)
 		to_chat(user, span_warning("Sensors have already scanned the nearby area this jump."))
 		return
+
 	to_chat(user, span_notice("You start scanning for nearby structures..."))
 	if(!do_after(user, 10 SECONDS, src))
 		to_chat(user, span_warning("You need to stand still to scan with the console!"))
 		return
+
 	if(!prob(outbound_controller.is_system_dead("Sensors") ? (succeed_odds / 2) : succeed_odds)) //good luck lmao
 		to_chat(user, span_notice("You don't find anything nearby this jump, maybe the next one?"))
 		outbound_controller.puzzle_controller.has_scanned = TRUE
 		return
+
 	to_chat(user, span_notice("You found something not too far off, coordinates locked in."))
 	outbound_controller.puzzle_controller.can_scan = FALSE
 	outbound_controller.puzzle_controller.on_computer_scan()
@@ -138,13 +91,16 @@
 	OUTBOUND_CONTROLLER
 	if(!istype(weapon, /obj/item/computer_disk))
 		return ..()
+
 	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/story/radar)) // de-hardcode later if this gets used for anything else
 		return
+
 	var/obj/item/computer_disk/our_disk = weapon
 	var/datum/computer_file/found_file = locate(/datum/computer_file/data/outbound_radar_data) in our_disk.stored_files
 	if(!found_file)
 		balloon_alert(user, "nothing to upload")
 		return
+
 	balloon_alert(user, "uploading...")
 	if(!do_after(user, 10 SECONDS, src))
 		balloon_alert(user, "uploading stopped")
@@ -153,9 +109,11 @@
 	var/randoms_to_make = rand(5, 7)
 	for(var/i in 1 to randoms_to_make - REVIVER_INSERT_POINT)
 		outbound_controller.event_order += "random"
+
 	outbound_controller.event_order += /datum/outbound_random_event/ruin/guaranteed/reviver
 	for(var/i in 1 to REVIVER_INSERT_POINT)
 		outbound_controller.event_order += "random"
+		
 	outbound_controller.event_order += /datum/outbound_random_event/story/the_end
 	outbound_controller.jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/the_end)
 	say("Large energy emission signal located. Coordinates locked.")

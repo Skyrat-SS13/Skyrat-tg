@@ -36,8 +36,8 @@
 /obj/effect/fake_rune/narsie/puzzle/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
-		COMSIG_ATOM_EXITED = .proc/on_exited,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+		COMSIG_ATOM_EXITED = PROC_REF(on_exited),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections) // test if this applies anywhere on the 3x3 or just one tile
 
@@ -45,7 +45,7 @@
 	SIGNAL_HANDLER
 
 	if(isliving(arrived))
-		RegisterSignal(arrived, COMSIG_LIVING_BLEED_DECAL, .proc/on_bleed)
+		RegisterSignal(arrived, COMSIG_LIVING_BLEED_DECAL, PROC_REF(on_bleed))
 
 /obj/effect/fake_rune/narsie/puzzle/proc/on_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
@@ -58,11 +58,14 @@
 
 	if(!istype(source) || solved)
 		return
-	if("clock" in source.faction)
+
+	if(FACTION_CLOCK in source.faction)
 		for(var/mob/nearby_mob in viewers(7, src))
 			to_chat(nearby_mob, span_cult("As the blood of a heretic is spilled on [src], the forcefields nearby fade out of existence..."))
+
 		for(var/obj/effect/forcefield/cult/cult_field in GLOB.areas_by_type[/area/awaymission/outbound_expedition/ruin/blood])
-			qdel(cult_field) //might make it more interesting later
+			animate(cult_field, alpha = 0, time = 5 SECONDS, easing = EASE_OUT)
+			QDEL_IN(cult_field, 5 SECONDS)
 		solved = TRUE
 
 #undef EXAMINE_RANGE

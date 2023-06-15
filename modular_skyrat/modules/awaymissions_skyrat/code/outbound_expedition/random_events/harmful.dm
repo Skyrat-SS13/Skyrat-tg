@@ -6,7 +6,7 @@
 
 /datum/outbound_random_event/harmful/meteor/on_select()
 	OUTBOUND_CONTROLLER
-	addtimer(CALLBACK(src, .proc/clear_objective), 45 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_objective)), 45 SECONDS)
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait])
 
 /datum/outbound_random_event/harmful/meteor/clear_objective()
@@ -25,7 +25,7 @@
 
 /datum/outbound_random_event/harmful/meteor_storm/on_select()
 	OUTBOUND_CONTROLLER
-	addtimer(CALLBACK(src, .proc/clear_objective), 1 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(clear_objective)), 1 MINUTES)
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait])
 
 /datum/outbound_random_event/harmful/meteor_storm/clear_objective()
@@ -45,7 +45,7 @@
 
 /datum/outbound_random_event/harmful/dust_storm/on_select()
 	OUTBOUND_CONTROLLER
-	addtimer(CALLBACK(src, .proc/clear_objective), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_objective)), 30 SECONDS)
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait])
 
 /datum/outbound_random_event/harmful/dust_storm/clear_objective()
@@ -85,6 +85,12 @@
 /datum/outbound_random_event/harmful/raiders
 	name = "Raiders"
 	weight = 6
+	printout_title = "sensor readout - URGENT"
+	printout_strings = list(
+		"Sensors have detected a boarding vessel near your ship.",
+		"The vessel has forcibly slowed down your ship.",
+		"Prepare for boarding.",
+	)
 
 /datum/outbound_random_event/harmful/raiders/on_select()
 	OUTBOUND_CONTROLLER
@@ -92,10 +98,10 @@
 	var/list/candidates = poll_ghost_candidates("Do you wish to play as part of a Raider Team?", ROLE_SYNDICATE, FALSE, 10 SECONDS)
 
 	if(!length(candidates))
-		addtimer(CALLBACK(src, .proc/clear_objective), 1 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(clear_objective)), 1 MINUTES)
 		return //bwomp
 
-	addtimer(CALLBACK(src, .proc/radio), 1 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(radio)), 1 MINUTES)
 	var/list/debris_points = list()
 	for(var/obj/effect/landmark/outbound/debris_loc/debris_point in GLOB.landmarks_list)
 		debris_points += debris_point
@@ -124,11 +130,11 @@
 			raider.equipOutfit(/datum/outfit/raider/leader)
 			made_leader = TRUE
 		else
-			raider.equipOutfit(/datum/outfit/raider) // make one of them a leader or smth later
+			raider.equipOutfit(/datum/outfit/raider)
 		to_chat(raider, span_notice("You are a raider. You have the goal to raid and hijack the ship you've found and interdicted.")) // add what happens if they actually do it later
 		outbound_controller.give_objective(raider, outbound_controller.objectives[/datum/outbound_objective/raid_ship])
 
-	addtimer(CALLBACK(src, .proc/clear_objective), 6 MINUTES) //ballpark time
+	addtimer(CALLBACK(src, PROC_REF(clear_objective)), 6 MINUTES) //ballpark time
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait])
 
 /datum/outbound_random_event/harmful/raiders/clear_objective()

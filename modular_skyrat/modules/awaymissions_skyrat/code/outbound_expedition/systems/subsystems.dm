@@ -37,7 +37,7 @@
 	/// Is the light controller destroyed?
 	var/light_gen_alive = TRUE
 
-/obj/machinery/power/apc/auto_name/directional/north/vanguard_shuttle/New(turf/loc, ndir, building)
+/obj/machinery/power/apc/auto_name/directional/north/vanguard_shuttle/Initialize(mapload, ndir)
 	. = ..()
 	req_access = null
 

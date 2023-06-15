@@ -69,7 +69,7 @@ const WireMap = (props, context) => {
           buttons={
             <>
               <Button
-                content={wire.cut ? 'Mend' : 'Cut'}
+                content="Cut"
                 disabled={wire.disabled}
                 onClick={() =>
                   act('cut', {

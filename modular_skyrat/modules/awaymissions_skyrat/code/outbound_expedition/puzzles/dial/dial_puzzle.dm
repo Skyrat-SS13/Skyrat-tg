@@ -5,16 +5,18 @@
 	tgui_name = "DialPuzzle"
 	terminal_name = "dial board"
 	terminal_desc = "A small board of dials, all unlabelled."
-	/// List of dials and their values ("number dial":value)
+	/// Assoc ist of dials and their values ("number dial":value)
 	var/list/dials = list()
 	/// Assoc list of potential "phrases" that will determine what the 4 dials need to be set to (phrase:dialnums)
 	var/list/phrases = list("North" = list(), "East" = list(), "South" = list(), "West" = list())
 	/// Currently selected phrase
 	var/current_phrase = ""
 
+
 /datum/outbound_teamwork_puzzle/dials/New()
 	. = ..()
 	generate_dials()
+
 
 /datum/outbound_teamwork_puzzle/dials/proc/generate_dials()
 	var/compiled_desc = ""
@@ -31,10 +33,12 @@
 		compiled_desc += "respectively. \n"
 	desc = compiled_desc
 
+
 /datum/outbound_teamwork_puzzle/dials/proc/choose_phrase()
 	current_phrase = pick(phrases)
 	for(var/i in 1 to DIAL_NUM)
 		dials["[i]"] = rand(1, 100)
+
 
 /datum/outbound_teamwork_puzzle/dials/ui_data(mob/user)
 	var/list/data = list()
@@ -48,6 +52,7 @@
 		)))
 	data["dials"] = compiled_dials
 	return data
+
 
 /datum/outbound_teamwork_puzzle/dials/ui_act(action, list/params)
 	OUTBOUND_CONTROLLER

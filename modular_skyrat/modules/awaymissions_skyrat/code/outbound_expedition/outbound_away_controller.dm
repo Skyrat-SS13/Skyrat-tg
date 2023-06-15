@@ -4,6 +4,8 @@
 
 #define IDEAL_PLAYER_COUNT 4
 
+
+
 /datum/away_controller/outbound_expedition
 	name = "Away Controller: Outbound Expedition"
 	ss_delay = 10 SECONDS
@@ -41,6 +43,7 @@
 	)
 	/// Ordered list of events.
 	var/list/event_order = list(
+		/datum/outbound_random_event/harmful/part_malf, //undo me later
 		"random",
 		"random",
 		"random",
@@ -57,6 +60,7 @@
 		/obj/effect/landmark/objective_update,
 	)
 
+
 /datum/away_controller/outbound_expedition/New()
 	. = ..()
 	for(var/ship_sys in subtypesof(/datum/outbound_ship_system))
@@ -72,13 +76,14 @@
 			if(istype(machine_piece, system_datum.machine_type))
 				machine_datums[machine_piece] = system_datum
 				break
-		RegisterSignal(machine_piece, COMSIG_ATOM_TAKE_DAMAGE, .proc/on_sys_damage)
+		RegisterSignal(machine_piece, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(on_sys_damage))
 	for(var/objective_type in subtypesof(/datum/outbound_objective))
 		var/datum/new_objective = new objective_type
 		objectives[objective_type] = new_objective
-	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_EXITED, .proc/exited_cryopod)
-	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_ENTERED, .proc/entered_cryopod)
+	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_EXITED, PROC_REF(exited_cryopod))
+	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_ENTERED, PROC_REF(entered_cryopod))
 	jumps_to_dest = event_order.Find(/datum/outbound_random_event/story/betrayal)
+
 
 /datum/away_controller/outbound_expedition/Destroy(force, ...)
 	for(var/datum/system as anything in ship_systems)
@@ -87,6 +92,7 @@
 	if(puzzle_controller)
 		QDEL_NULL(puzzle_controller)
 	return ..()
+
 
 /datum/away_controller/outbound_expedition/fire()
 	if(!landmarks_checked)
@@ -105,12 +111,14 @@
 	qdel(pinpointer)
 	participating_mobs[person_cleared] = null
 
+
 /datum/away_controller/outbound_expedition/proc/objective_pinpoint(mob/living/person_to_point, atom/point_to)
 	if(!point_to)
 		person_to_point.balloon_alert(person_to_point, "no objective!")
 		return
 	var/datum/status_effect/agent_pinpointer/away_objective/away_pinpointer = person_to_point.apply_status_effect(/datum/status_effect/agent_pinpointer/away_objective)
 	away_pinpointer.scan_target = point_to
+
 
 /datum/away_controller/outbound_expedition/proc/give_objective(mob/living/person_chosen, datum/outbound_objective/chosen_objective)
 	var/datum/status_effect/pinpointer = person_chosen.has_status_effect(/datum/status_effect/agent_pinpointer/away_objective)
@@ -122,13 +130,15 @@
 	if(corresponding_landmark)
 		objective_pinpoint(person_chosen, corresponding_landmark)
 		corresponding_landmark.enable()
-	INVOKE_ASYNC(person_chosen.hud_used?.away_dialogue, /atom/movable/screen/screentip/away_dialogue.proc/set_text_slow, chosen_objective.desc)
+	INVOKE_ASYNC(person_chosen.hud_used?.away_dialogue, TYPE_PROC_REF(/atom/movable/screen/screentip/away_dialogue, set_text_slow), chosen_objective.desc)
 	chosen_objective.on_give(person_chosen)
 	participating_mobs[person_chosen] = chosen_objective
+
 
 /datum/away_controller/outbound_expedition/proc/give_objective_all(datum/outbound_objective/chosen_objective)
 	for(var/mob/living/person as anything in participating_mobs)
 		give_objective(person, chosen_objective)
+
 
 /datum/away_controller/outbound_expedition/proc/tell_objective(mob/living/target)
 	var/datum/outbound_objective/target_objective = participating_mobs[target]
@@ -163,6 +173,7 @@
 		event_order.Cut(pos_num, pos_num + 1)
 	return pick(possible_events)
 
+
 /datum/away_controller/outbound_expedition/proc/calculate_difficulty()
 	var/calculated_difficulty = 1
 	switch(length(participating_mobs))
@@ -171,11 +182,14 @@
 		// 2-4 people have a difficulty of 1
 		if(5 to INFINITY)
 			calculated_difficulty = length(participating_mobs) * 0.25 //maybe make exponential
+
 	switch(current_stage)
 		if(STORY_STAGE_POST_BETRAYAL)
 			calculated_difficulty *= 1.5
+
 		if(STORY_STAGE_POST_RADAR)
 			calculated_difficulty *= 2
+
 	return calculated_difficulty
 
 // Landmark check
@@ -198,16 +212,18 @@
 
 	for(var/obj/landmark as anything in landmark_list)
 		qdel(landmark)
+
 	landmarks_checked = TRUE
 
 // System code
 
-/datum/away_controller/outbound_expedition/proc/on_sys_damage(datum/source, damage_amount, damage_type, damage_flag, sound_effect, attack_dir, aurmor_penetration)
+/datum/away_controller/outbound_expedition/proc/on_sys_damage(datum/source, damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
 	SIGNAL_HANDLER
 	// code is probably bad and can be improved
 	for(var/obj/machinery/ship_system as anything in machine_datums)
-		if(!(source == ship_system))
+		if(source != ship_system)
 			continue
+
 		var/datum/outbound_ship_system/system_datum = machine_datums[source]
 		system_datum.adjust_health(-damage_amount, base_machine = source)
 		break
@@ -219,9 +235,11 @@
 		if(typed_system.health <= 0)
 			return TRUE
 		return FALSE
+
 	var/datum/outbound_ship_system/gotten_system = ship_systems[sys_name_or_type]
 	if(gotten_system.health <= 0)
 		return TRUE
+
 	return FALSE
 
 // """Moving""" the ship
@@ -229,13 +247,17 @@
 /datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
 	if(jumps_to_dest != -1)
 		jumps_to_dest--
+
 	var/area/important_space_region = GLOB.areas_by_type[/area/space/outbound_space]
 	for(var/affected_area as anything in affected_areas)
 		if(is_type_in_typecache(affected_area, area_clear_blacklist))
 			continue
+
 		var/area/affected_area_datum = GLOB.areas_by_type[affected_area]
-		for(var/turf/to_delete in affected_area_datum)
-			var/turf/to_change = to_delete
+		if(!affected_area_datum)
+			continue
+
+		for(var/turf/to_change in affected_area_datum.contained_turfs)
 			to_change.empty(/turf/open/space)
 			for(var/obj/effect/landmark/outbound_landmark in to_change.contents)
 				if(is_type_in_list(outbound_landmark, landmark_del_types))
@@ -243,16 +265,17 @@
 			important_space_region.contents += to_change
 			to_change.transfer_area_lighting(affected_area_datum, important_space_region)
 
+
 /datum/away_controller/outbound_expedition/proc/tick_elevator_time()
 	elevator_time -= 1 SECONDS
 	if((elevator_time > 60 SECONDS) && (length(participating_mobs) >= IDEAL_PLAYER_COUNT))
 		elevator_time = 60 SECONDS
 	if(elevator_time > 1 SECONDS)
-		addtimer(CALLBACK(src, .proc/tick_elevator_time), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(tick_elevator_time)), 1 SECONDS)
 	else
 		var/area/our_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/dock]
 		for(var/obj/machinery/door/poddoor/shutters/indestructible/shutter in our_area)
-			addtimer(CALLBACK(shutter, /obj/machinery/door/poddoor/shutters.proc/open), 0 SECONDS)
+			INVOKE_ASYNC(shutter, TYPE_PROC_REF(/obj/machinery/door/poddoor/shutters, open))
 		for(var/obj/effect/landmark/awaystart/landmark in our_area)
 			qdel(landmark)
 
@@ -264,10 +287,12 @@
 	if(!length(uncryoed_mobs))
 		everyones_gone_to_the_cryopods()
 
+
 /datum/away_controller/outbound_expedition/proc/exited_cryopod(datum/source, mob/living/living_mob)
 	SIGNAL_HANDLER
 	if(length(uncryoed_mobs))
 		uncryoed_mobs |= living_mob
+
 
 /datum/away_controller/outbound_expedition/proc/everyones_gone_to_the_cryopods()
 	for(var/obj/machinery/outbound_expedition/cryopod/sleepytime as anything in GLOB.outbound_cryopods)
@@ -277,22 +302,23 @@
 			continue
 		human_content.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_begin.ogg', 100)
 		human_content.overlay_fullscreen("cryopod", /atom/movable/screen/fullscreen/impaired, 2)
-		addtimer(CALLBACK(human_content, /mob.proc/playsound_local, get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_progress.ogg', 100), 7.8 SECONDS)
+		addtimer(CALLBACK(human_content, TYPE_PROC_REF(/mob, playsound_local), get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_progress.ogg', 100), 7.8 SECONDS)
 
-	INVOKE_ASYNC(src, /datum/away_controller/outbound_expedition.proc/move_shuttle)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/away_controller/outbound_expedition, move_shuttle))
 	move_shuttle()
 	puzzle_controller.on_jump()
-	addtimer(CALLBACK(src, .proc/post_move_act, select_event()), 13 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(post_move_act), select_event()), 13 SECONDS)
+
 
 /datum/away_controller/outbound_expedition/proc/post_move_act(datum/outbound_random_event/picked_event)
-
 	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
 		wakeytime.locked = FALSE
 		var/mob/living/carbon/human/human_content = locate(/mob/living/carbon/human) in wakeytime
 		human_content?.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_end.ogg', 100)
 		human_content?.clear_fullscreen("cryopod", FALSE)
 
-	addtimer(CALLBACK(src, .proc/cause_event, picked_event), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(cause_event), picked_event), 6 SECONDS)
+
 
 /datum/away_controller/outbound_expedition/proc/cause_event(datum/outbound_random_event/picked_event)
 	//for(var/mob/living/carbon/human/person as anything in participating_mobs)
@@ -310,21 +336,25 @@
 	var/list/ship_turfs = list()
 	for(var/obj/effect/landmark/outbound/meteor_start/start in GLOB.landmarks_list)
 		meteor_spawns += start
+
 	var/area/ship_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/shuttle]
-	for(var/turf/shuttle_turf in ship_area)
+	for(var/turf/shuttle_turf in ship_area.contained_turfs)
 		ship_turfs += shuttle_turf
+
 	while(!isspaceturf(pickedstart) || !isturf(pickedgoal))
 		pickedstart = get_turf(pick(meteor_spawns))
 		pickedgoal = pick(ship_turfs)
 		max_i--
 		if(max_i <= 0)
 			return
+
 	var/meteor = pick_weight(meteortypes)
 	new meteor(pickedstart, pickedgoal)
 
+
 /datum/away_controller/outbound_expedition/proc/add_mob(mob/living/living_mob)
 	participating_mobs |= living_mob
-	RegisterSignal(living_mob, COMSIG_PARENT_QDELETING, .proc/remove_mob)
+	RegisterSignal(living_mob, COMSIG_PARENT_QDELETING, PROC_REF(remove_mob))
 	give_objective(living_mob, objectives[/datum/outbound_objective/talk_person])
 	var/datum/action/found_action = locate(/datum/action/outbound_objective) in living_mob.actions
 	if(!found_action)
@@ -332,6 +362,7 @@
 		remember_obj.Grant(living_mob)
 	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
 		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
+
 
 /datum/away_controller/outbound_expedition/proc/remove_mob(mob/living/living_mob, force)
 	SIGNAL_HANDLER

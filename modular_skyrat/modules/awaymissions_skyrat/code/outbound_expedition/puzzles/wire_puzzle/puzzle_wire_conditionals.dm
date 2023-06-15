@@ -4,8 +4,7 @@
  * They all follow the concept of "If X, do Y, else do Z"
  */
 
-/// Note to self: figure out why conditionals occasionally make assocs instead of singleton numbers
-
+/*
 /datum/outbound_wire_conditional
 	/// Text that describes the conditional
 	var/desc = ""
@@ -19,6 +18,7 @@
 /datum/outbound_wire_conditional/New()
 	. = ..()
 	set_up_condition()
+
 
 /// The check to see if it was right or wrong. Potentially depreciated.
 /datum/outbound_wire_conditional/proc/conditional_check(list/wire_list)
@@ -35,6 +35,7 @@
 	desc = ""
 	logic_wires.Cut()
 
+
 /// Basically check to see if another conditional is asking to cut/pulse the same wires
 /datum/outbound_wire_conditional/proc/check_multi_wire_act()
 	OUTBOUND_CONTROLLER
@@ -46,6 +47,7 @@
 			if(puzzle_wire in conditional.acting_wires)
 				return FALSE
 	return TRUE
+
 
 ////////////////////////////////////////////
 //HOLY SHIT TEST THIS ENTIRE FILE THOROUGHLY
@@ -193,7 +195,7 @@
 			acting_wire_check = 4
 
 	for(var/i in 1 to acting_wire_check)
-		while(length(acting_wires) == i - 1)
+		while(length(acting_wires) == (i - 1))
 			var/picked_wire = rand(1, OUTBOUND_WIRE_COUNT)
 			acting_wires += picked_wire
 			if(!check_multi_wire_act())
@@ -203,5 +205,71 @@
 	for(var/wire in acting_wires)
 		acting_wire_text += "[wire][wire == acting_wires[length(acting_wires)] ? "" : (wire == acting_wires[length(acting_wires) - 1] ? " and " : ", ")]"
 
-	var/multiple_check = length(acting_wires) > 1 ? TRUE : FALSE
+	var/multiple_check = length(acting_wires) != 1 ? TRUE : FALSE
 	desc = "[capitalize(cut_or_pulse)] the [acting_wire_text] wire[multiple_check ? "s" : ""]."
+*/
+
+/**
+ * Conditionals are the orders to cut certain wires in certain scenarios for the wire cutting puzzle
+ * There'll be a set of them that are created at roundstart, exactly how many, their order, and what they are is variable
+ * They all follow the concept of "If X, do Y, else do Z"
+ */
+
+
+/datum/outbound_wire_conditional
+	/// Text that describes the conditional
+	var/desc = ""
+	/// What wire(s) need to get cut or pulsed in the end
+	var/list/acting_wires = list()
+	/// Does this need cutting or pulsing
+	var/cut_or_pulse = "cut"
+	///
+	var/list/pre_check_pos_wires = list()
+	///
+	var/list/pre_check_color_wires = list()
+
+/datum/outbound_wire_conditional/New()
+	. = ..()
+	set_up_condition()
+
+/**
+ * Creates the condition that should be met to cut a certain wire
+ * Shouldn't be rerolled on an already-set conditional but has the capability to do so
+*/
+/datum/outbound_wire_conditional/proc/set_up_condition()
+	SHOULD_CALL_PARENT(TRUE)
+	cut_or_pulse = pick("pulse", "cut")
+	acting_wires.Cut()
+	pre_check_color_wires = list()
+	pre_check_pos_wires = list()
+	desc = ""
+
+
+/datum/outbound_wire_conditional/proc/set_wires_to_act(list/wires = list(), list/colors = list())
+	acting_wires = list()
+	for(var/wire_position in pre_check_pos_wires)
+		if(wire_position <= length(wires))
+			acting_wires |= wires[wire_position]
+
+	for(var/wire_color in pre_check_color_wires)
+		if(wire_color in colors)
+			acting_wires |= colors[wire_color]
+
+/// Simply cut a certain wire
+/datum/outbound_wire_conditional/simple_act
+
+
+/datum/outbound_wire_conditional/simple_act/set_up_condition()
+	. = ..()
+
+	if(prob(50))
+		// Cut a wire in X position
+		var/wire_position = rand(1, OUTBOUND_WIRE_COUNT)
+		pre_check_pos_wires |= wire_position
+		desc = "[capitalize(cut_or_pulse)] the wire in the [wire_position]\th position."
+
+	else
+		// Cut a [color] wire
+		var/wire_color = pick(OUTBOUND_WIRE_COLORS)
+		pre_check_color_wires |= wire_color
+		desc = "[capitalize(cut_or_pulse)] the [wire_color] wire, should it exist."

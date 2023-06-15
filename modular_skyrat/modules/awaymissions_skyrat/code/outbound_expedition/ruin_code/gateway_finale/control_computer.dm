@@ -24,6 +24,7 @@
 	if(!pressed)
 		confirm_beginning(user)
 
+
 /obj/machinery/computer/outbound_gateway/proc/confirm_beginning(mob/living/user)
 	to_chat(user, span_boldnotice("You start readying yourself to hit the button..."))
 	if(!do_after(user, 5 SECONDS, src))
@@ -40,8 +41,9 @@
 	sleep(2 SECONDS)
 	say("SIGNAL BROADCASTING...")
 
+
 /obj/machinery/computer/outbound_gateway/proc/start_the_end()
-	addtimer(CALLBACK(src, .proc/open_gateway), 5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(open_gateway)), 5 MINUTES)
 	gate_controller = new
 	var/area/loaded_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/ruin/gateway_ruin]
 	for(var/obj/effect/landmark/outbound/gateway_space_edge/space_edge in loaded_area.contents)
@@ -49,15 +51,17 @@
 		landmark_turf.ChangeTurf(/turf/open/space/no_travel/see_through)
 		qdel(space_edge)
 
+
 /obj/machinery/computer/outbound_gateway/proc/open_gateway()
-	addtimer(CALLBACK(src, .proc/far_too_late), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(far_too_late)), 2 MINUTES)
 	say("Gateway initialization complete, doors opening.")
 	sleep(2 SECONDS)
-	say("WARNING: Gateway casuality unstable. Unexpected Gateway collapse may occur.")
+	say("WARNING: Gateway casuality unstable. Unexpected gateway collapse may occur.")
 	var/area/the_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/ruin/gateway_ruin]
 	for(var/obj/machinery/door/airlock/vault/gateway/solid_door in the_area.contents)
 		solid_door.unbolt()
 		solid_door.open(TRUE)
+
 
 /obj/machinery/computer/outbound_gateway/proc/far_too_late() //https://www.youtube.com/watch?v=R2BjRgRU_ig
 	say("WARNING: GATEWAY CASUALITY COLLAPSING. COMMENCING IMMEDIATE SHUTDOWN.")
@@ -68,11 +72,13 @@
 		our_gateway.deactivate()
 		our_gateway.requires_key = TRUE
 		break
+
 	gate_controller.tick_time = initial(gate_controller.tick_time) / 2
 	gate_controller.earned_threat = 25
 	gate_controller.event_datums.Cut()
 	gate_controller.event_datums += new /datum/outbound_gateway_event/portal/syndicate/lone_wolf
-	addtimer(CALLBACK(src, .proc/stop_event_ticking), 5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(stop_event_ticking)), 5 MINUTES)
+
 
 /obj/machinery/computer/outbound_gateway/proc/stop_event_ticking()
 	gate_controller.enabled = FALSE

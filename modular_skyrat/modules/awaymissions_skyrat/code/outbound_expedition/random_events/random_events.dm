@@ -5,6 +5,10 @@
 	var/event_tier
 	/// What is the weight of the event within its tier?
 	var/weight = 1
+	/// What the comms terminal printout name should be
+	var/printout_title = ""
+	/// What the contents of the comms message/printout should be
+	var/list/printout_strings = list()
 
 /// What occurs when the event is selected
 /datum/outbound_random_event/proc/on_select()

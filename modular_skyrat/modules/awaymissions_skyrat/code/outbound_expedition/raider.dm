@@ -20,7 +20,7 @@
 
 	back = /obj/item/mod/control/pre_equipped/raider/leader
 	ears = /obj/item/radio/headset/guild/command
-	l_hand = /obj/item/gun/ballistic/rifle/boltaction/brand_new
+	l_hand = /obj/item/gun/ballistic/rifle/boltaction
 
 /datum/mod_theme/raider
 	name = "raider"
@@ -30,7 +30,7 @@
 	Filled with aftermarket parts and questionable repair jobs, it's not the fastest suit,\
 	but it'll get you through a jam. Probably."
 	default_skin = "prototype"
-	armor = list(MELEE = 30, BULLET = 40, LASER = 30, ENERGY = 20, BOMB = 40, BIO = 100, FIRE = 100, ACID = 40, WOUND = 10)
+	armor_type = /datum/armor/mod_theme_raider
 	skins = list(
 		"prototype" = list(
 			HELMET_FLAGS = list(
@@ -57,6 +57,17 @@
 			),
 		),
 	)
+
+/datum/armor/mod_theme_raider
+	melee = 30
+	bullet = 40
+	laser = 30
+	energy = 20
+	bomb = 40
+	bio = 100
+	fire = 100
+	acid = 40
+	wound = 10
 
 /obj/item/mod/control/pre_equipped/raider
 	theme = /datum/mod_theme/raider

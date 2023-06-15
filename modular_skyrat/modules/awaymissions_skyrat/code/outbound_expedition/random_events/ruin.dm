@@ -1,6 +1,12 @@
 /datum/outbound_random_event/ruin/salvage
 	name = "Drifting Salvage"
 	weight = 1
+	printout_title = "sensor readout"
+	printout_strings = list(
+		"Sensors have detected a large piece of floating salvage nearby your ship.",
+		"Ship has been slowed down to allow for EVA to retrieve whatever it contains.",
+		"Retrieval not mandatory.",
+	)
 	/// Map templates that can appear
 	var/list/possible_templates = list(
 		/datum/map_template/ruin/outbound_expedition/prison_shuttle,
@@ -42,6 +48,12 @@
 
 /datum/outbound_random_event/ruin/salvage/interdiction
 	name = "Drifting Interdiction"
+	printout_title = "sensor readout - IMPORTANT"
+	printout_strings = list(
+		"Sensors have detected a large piece of floating salvage nearby your ship.",
+		"Structure is interdicting the corvette.",
+		"Proceed to destroy the interference. GPS signal locked.",
+	)
 	possible_templates = list(
 		/datum/map_template/ruin/outbound_expedition/prison_shuttle,
 		/datum/map_template/ruin/outbound_expedition/survival_bunker,
@@ -60,7 +72,7 @@
 	for(var/obj/effect/landmark/outbound/ruin_shuttle_interdictor/interdiction_point in GLOB.landmarks_list)
 		new /obj/machinery/outbound_expedition/shuttle_interdictor(get_turf(interdiction_point))
 		break
-	RegisterSignal(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED, .proc/clear_objective)
+	RegisterSignal(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED, PROC_REF(clear_objective))
 
 /datum/outbound_random_event/ruin/salvage/interdiction/on_radio()
 	return
@@ -86,10 +98,10 @@
 		to_chat(listener, span_notice("<i>You hear a faint, static crackling noise come from the bridge.</i>"))
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/radio_listen])
 	if(has_interdictor)
-		for(var/obj/effect/landmark/outbound/ruin_shuttle_interdictor/interdiction_point in GLOB.landmarks_list)
+		var/obj/effect/landmark/outbound/ruin_shuttle_interdictor/interdiction_point = locate(/obj/effect/landmark/outbound/ruin_shuttle_interdictor) in GLOB.landmarks_list
+		if(interdiction_point)
 			new /obj/machinery/outbound_expedition/shuttle_interdictor(get_turf(interdiction_point))
-			break
-		RegisterSignal(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED, .proc/clear_objective)
+			RegisterSignal(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED, PROC_REF(clear_objective))
 
 /datum/outbound_random_event/ruin/guaranteed/clear_objective()
 	OUTBOUND_CONTROLLER

@@ -52,9 +52,7 @@
 /area/awaymission/outbound_expedition/ruin/holdout)
 "eF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/window{
-	dir = 1
-	},
+/obj/structure/window/spawner/directional/north,
 /obj/item/radio/intercom/directional/east{
 	pixel_y = -18
 	},
@@ -117,11 +115,13 @@
 /turf/open/floor/iron/airless,
 /area/awaymission/outbound_expedition/ruin/holdout)
 "mv" = (
-/obj/effect/spawner/structure/window/reinforced/damaged,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/holdout)
 "mw" = (
-/obj/effect/spawner/structure/window/reinforced/damaged,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/mapping_helpers/damaged_window,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/holdout)
@@ -136,10 +136,8 @@
 /area/awaymission/outbound_expedition/ruin/holdout)
 "nJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/window,
-/obj/structure/window{
-	dir = 8
-	},
+/obj/structure/window/spawner/directional/south,
+/obj/structure/window/spawner/directional/west,
 /obj/effect/gibspawner/human,
 /turf/open/floor/circuit/green/off,
 /area/awaymission/outbound_expedition/ruin/holdout)
@@ -194,7 +192,7 @@
 /turf/open/floor/iron/airless,
 /area/awaymission/outbound_expedition/ruin/holdout)
 "sR" = (
-/obj/structure/window,
+/obj/structure/window/spawner/directional/south,
 /obj/item/radio/intercom/directional/east{
 	pixel_y = 19
 	},
@@ -433,13 +431,9 @@
 /turf/template_noop,
 /area/template_noop)
 "Qe" = (
-/obj/structure/window{
-	dir = 1
-	},
-/obj/structure/window{
-	dir = 8
-	},
-/mob/living/simple_animal/hostile/netherworld/statue{
+/obj/structure/window/spawner/directional/north,
+/obj/structure/window/spawner/directional/west,
+/mob/living/basic/statue{
 	desc = "A uranium carving that seems unusually lifelike.";
 	icon_state = "eng";
 	name = "last voyager"

@@ -29,5 +29,5 @@
 
 /datum/computer_file/data/outbound_radar_data
 	filename = "radardata"
-	do_not_edit = TRUE
+	undeletable = TRUE
 	size = 6

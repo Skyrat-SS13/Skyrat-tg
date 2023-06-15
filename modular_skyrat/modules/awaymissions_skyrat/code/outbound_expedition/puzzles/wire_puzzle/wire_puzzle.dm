@@ -18,7 +18,7 @@ there should not be two different wiresets
 	fail_system = "Power"
 	/// list of initialized wire datums
 	var/list/wires = list()
-	/// assoc list of colors - to - wires
+	/// assoc list of (colors : wires)
 	var/list/colors = list()
 	/// Max amount of wires possible
 	var/wire_amount = OUTBOUND_WIRE_COUNT
@@ -31,15 +31,16 @@ there should not be two different wiresets
 	. = ..()
 	generate_wires()
 
+
 /datum/outbound_teamwork_puzzle/wires/proc/generate_wires()
-	if(length(wires))
-		for(var/datum/wire in wires)
-			QDEL_NULL(wire)
-		wires.Cut()
+	QDEL_LIST(wires)
+
 	if(length(colors))
 		colors.Cut()
+
 	if(length(to_cut_wires))
 		to_cut_wires.Cut()
+
 	var/list/possible_colors = wire_colors.Copy()
 	for(var/wire_num in 1 to wire_amount)
 		var/datum/outbound_puzzle_wire/new_wire = new
@@ -47,40 +48,60 @@ there should not be two different wiresets
 		colors[picked_color] = new_wire
 		new_wire.color = picked_color
 		wires += new_wire
-	addtimer(CALLBACK(src, .proc/check_all_conditionals), 1 SECONDS)
 
-/datum/outbound_teamwork_puzzle/wires/proc/check_all_conditionals()
+	addtimer(CALLBACK(src, PROC_REF(set_all_conditionals)), 1 SECONDS)
+
+
+
+/datum/outbound_teamwork_puzzle/wires/proc/set_all_conditionals()
 	OUTBOUND_CONTROLLER
 	for(var/datum/outbound_wire_conditional/conditional as anything in outbound_controller.puzzle_controller.wire_conditionals)
-		conditional.conditional_check(wires)
+		conditional.set_wires_to_act(wires, colors)
+
 
 /datum/outbound_teamwork_puzzle/wires/proc/wire_interact(datum/outbound_puzzle_wire/target_wire, mob/user, cut_or_pulse)
 	OUTBOUND_CONTROLLER
 	if(!length(to_cut_wires))
 		for(var/datum/outbound_wire_conditional/wire_cond as anything in outbound_controller.puzzle_controller.wire_conditionals)
-			for(var/wire_num as anything in wire_cond.acting_wires)
-				var/datum/outbound_puzzle_wire/wire_indiv = wires[wire_num]
-				if(to_cut_wires[wire_indiv])
+			for(var/datum/outbound_puzzle_wire/wire as anything in wire_cond.acting_wires)
+				if(to_cut_wires[wire])
 					continue
-				to_cut_wires[wire_indiv] = wire_cond.cut_or_pulse
+				to_cut_wires[wire] = wire_cond.cut_or_pulse
+
 	if(target_wire in to_cut_wires)
 		var/req_method = to_cut_wires[target_wire]
 		if(req_method != cut_or_pulse)
-			wrong_wire()
+			wrong_tool()
 			return
+
 		to_cut_wires -= target_wire
+		if(cut_or_pulse == "cut")
+			target_wire.cut = TRUE
+		else
+			target_wire.pulsed = TRUE
+
 	else
 		wrong_wire()
 		return
+
 	if(!length(to_cut_wires))
 		terminal.balloon_alert_to_viewers("wires fixed", vision_distance = 3)
 		SEND_SIGNAL(outbound_controller.puzzle_controller, COMSIG_AWAY_PUZZLE_COMPLETED, src)
 
-/datum/outbound_teamwork_puzzle/wires/proc/wrong_wire()
+
+/datum/outbound_teamwork_puzzle/wires/proc/wrong_tool()
 	OUTBOUND_CONTROLLER
-	terminal.balloon_alert_to_viewers("wrong wire cut!")
+	terminal.balloon_alert_to_viewers("wrong tool!")
 	var/datum/outbound_ship_system/selected_sys = outbound_controller.ship_systems[fail_system]
 	selected_sys.adjust_health(-fail_damage)
+
+
+/datum/outbound_teamwork_puzzle/wires/proc/wrong_wire()
+	OUTBOUND_CONTROLLER
+	terminal.balloon_alert_to_viewers("wrong wire!")
+	var/datum/outbound_ship_system/selected_sys = outbound_controller.ship_systems[fail_system]
+	selected_sys.adjust_health(-fail_damage)
+
 
 /datum/outbound_teamwork_puzzle/wires/ui_data(mob/user)
 	var/list/data = list()
@@ -98,6 +119,7 @@ there should not be two different wiresets
 	data["wires"] = payload
 	return data
 
+
 /datum/outbound_teamwork_puzzle/wires/ui_act(action, params)
 	. = ..()
 
@@ -112,8 +134,10 @@ there should not be two different wiresets
 					tool_used.play_tool_sound(terminal, 20)
 				wire_interact(target_wire, usr, action)
 				. = TRUE
+
 			else
-				to_chat(living_usr, span_warning("You need wirecutters!"))
+				terminal.balloon_alert(living_usr, "wirecutter needed!")
+
 		if("pulse")
 			tool_used = living_usr.is_holding_tool_quality(TOOL_MULTITOOL)
 			if(tool_used || isAdminGhostAI(usr))
@@ -121,8 +145,9 @@ there should not be two different wiresets
 					tool_used.play_tool_sound(terminal, 20)
 				wire_interact(target_wire, usr, action)
 				. = TRUE
+
 			else
-				to_chat(living_usr, span_warning("You need a multitool!"))
+				terminal.balloon_alert(living_usr, "multitool needed!")
 
 #undef WIRE_MAX_LOWER
 #undef WIRE_MAX_UPPER

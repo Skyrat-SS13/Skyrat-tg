@@ -1,5 +1,15 @@
 /datum/outbound_random_event/story/betrayal
 	name = "The Betrayal"
+	printout_title = "goodbye"
+	printout_strings = list(
+		"INCOMING RECORDED AUDIO MESSAGE.",
+		"Congratulations on going beyond the halfway point on your journey.",
+		"Unfortunately, this won't be one you're coming back from.",
+		"Your sensors and long-range communications back to the outpost have been disabled,",
+		"you won't be able to navigate back.",
+		"With this tragic loss of explorers to the void,",
+		"I think the government may finally give us proper funding.",
+	)
 
 /datum/outbound_random_event/story/betrayal/on_select()
 	OUTBOUND_CONTROLLER
@@ -17,6 +27,11 @@
 
 /datum/outbound_random_event/story/radar
 	name = "Stray Radar Station"
+	printout_title = "sensor_readout"
+	printout_strings = list(
+		"Deep-space telescope-radar located near the ship.",
+		"Proceed to secure the data onboard.",
+	)
 
 /datum/outbound_random_event/story/radar/on_select()
 	OUTBOUND_CONTROLLER
@@ -38,6 +53,11 @@
 
 /datum/outbound_random_event/story/the_end
 	name = "The Last Stand"
+	printout_title = "sensor readout"
+	printout_strings = list(
+		"High energy signature located nearby the corvette.",
+		"Proceed to the signature.",
+	)
 
 /datum/outbound_random_event/story/the_end/on_select()
 	OUTBOUND_CONTROLLER

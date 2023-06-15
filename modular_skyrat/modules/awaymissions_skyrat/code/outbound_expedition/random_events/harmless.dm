@@ -4,7 +4,7 @@
 
 /datum/outbound_random_event/harmless/nothing/on_select()
 	OUTBOUND_CONTROLLER
-	addtimer(CALLBACK(src, .proc/clear_objective), 4 MINUTES) // RP time
+	addtimer(CALLBACK(src, PROC_REF(clear_objective)), 4 MINUTES) // RP time
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait])
 
 /datum/outbound_random_event/harmless/nothing/clear_objective()
@@ -15,12 +15,18 @@
 /datum/outbound_random_event/harmless/cargo
 	name = "Cargo Beacon"
 	weight = 1
+	printout_title = "sensor readout"
+	printout_strings = list(
+		"Sensors have detected a cargo pod nearby the corvette.",
+		"Ship has been slowed down to allow for EVA to retrieve the materials if desired.",
+		"Retrieval not mandatory.",
+	)
 	/// List of nearby space turfs to spawn the cargo on
 	var/list/space_turfs = list()
 
 /datum/outbound_random_event/harmless/cargo/on_select()
 	OUTBOUND_CONTROLLER
-	addtimer(CALLBACK(src, .proc/radio_message), 1.5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(radio_message)), 1.5 MINUTES)
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/wait_beacon])
 	var/area/space_area = GLOB.areas_by_type[/area/space/outbound_space]
 	if(!length(space_turfs))

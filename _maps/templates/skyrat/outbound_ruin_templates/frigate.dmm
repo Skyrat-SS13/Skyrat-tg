@@ -3,18 +3,18 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/pilot{
+/mob/living/basic/syndicate/ranged/smg/pilot{
 	name = "Syndicate Maintenance Technician"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "bw" = (
-/obj/machinery/light,
-/mob/living/simple_animal/hostile/syndicate/ranged/space/stormtrooper,
+/obj/machinery/light/directional/south,
+/mob/living/basic/syndicate/ranged/space/stormtrooper,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "bP" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /turf/closed/wall/r_wall/syndicate,
@@ -31,17 +31,16 @@
 	charge = 9e+006;
 	output_level = 40000
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "cp" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged{
+/mob/living/basic/syndicate/ranged{
 	desc = "Flying military-grade spacecraft has never felt so tedious.";
+	health = 250;
 	name = "Syndicate Captain"
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -50,7 +49,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/smg{
+/mob/living/basic/syndicate/ranged/smg{
 	desc = "Is the money really worth having to handle all of those idiots? You ask him.";
 	name = "Syndicate Master-At-Arms"
 	},
@@ -58,10 +57,9 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "dA" = (
 /obj/structure/cable,
-/obj/structure/sign/poster/contraband/killingjoke{
+/obj/structure/sign/poster/contraband/killingjoke/directional/west{
 	desc = "A neatly printed poster that claims wearing red outfits is better for the Syndicate as an overall organization, given Nanotrasen Security's recent swap to the color blue. The Gorlex Marauders insignia is stamped at the bottom.";
-	name = "IT HELPS TO WEAR RED";
-	pixel_x = -32
+	name = "IT HELPS TO WEAR RED"
 	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
@@ -76,12 +74,12 @@
 	charge = 9e+006;
 	output_level = 40000
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "eI" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/syndicate/ranged,
+/mob/living/basic/syndicate/ranged,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "fc" = (
@@ -105,12 +103,8 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "gt" = (
@@ -124,21 +118,19 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "gy" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "gE" = (
 /turf/template_noop,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "gF" = (
-/mob/living/simple_animal/hostile/syndicate/melee,
+/mob/living/basic/syndicate/melee,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "im" = (
 /obj/structure/chair/sofa/corp/right,
-/mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper{
+/mob/living/basic/syndicate/melee/space/stormtrooper{
 	desc = "Running at one's enemies high on cocaine with a knife and combat armor isn't too rare in a place like spinward sector.";
 	dodge_prob = 100;
 	health = 150;
@@ -146,9 +138,7 @@
 	name = "Coked-Up Syndicate Stormtrooper";
 	rapid_melee = 3
 	},
-/obj/structure/sign/poster/contraband/masked_men{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/masked_men/directional/north,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "iB" = (
@@ -166,7 +156,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "jQ" = (
 /obj/structure/chair/sofa/corp/left,
-/mob/living/simple_animal/hostile/syndicate/melee{
+/mob/living/basic/syndicate/melee{
 	desc = "Running at one's enemies high on cocaine with a knife and combat armor isn't too rare in a place like spinward sector.";
 	dodge_prob = 100;
 	move_to_delay = 0;
@@ -177,9 +167,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "kw" = (
 /obj/structure/rack/shelf,
-/obj/structure/sign/poster/contraband/operative_duffy{
-	pixel_x = -32
-	},
+/obj/structure/sign/poster/contraband/operative_duffy/directional/west,
 /obj/item/melee/energy/sword{
 	pixel_x = 4;
 	pixel_y = 10
@@ -202,10 +190,8 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "kN" = (
 /obj/structure/closet/secure_closet/chemical/heisenberg,
-/obj/structure/sign/poster/contraband/interdyne_gene_clinics{
-	pixel_x = -32
-	},
-/obj/machinery/light,
+/obj/structure/sign/poster/contraband/interdyne_gene_clinics/directional/west,
+/obj/machinery/light/directional/south,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "lF" = (
@@ -228,9 +214,7 @@
 	pixel_x = -1;
 	pixel_y = -2
 	},
-/obj/structure/sign/poster/contraband/c20r{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/c20r/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "ma" = (
@@ -263,12 +247,8 @@
 	pixel_x = 10;
 	pixel_y = 15
 	},
-/obj/structure/sign/poster/contraband/dancing_honk{
-	pixel_y = 32
-	},
-/obj/structure/sign/poster/contraband/donk_co{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/dancing_honk/directional/north,
+/obj/structure/sign/poster/contraband/donk_co/directional/south,
 /obj/structure/closet/infinite,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
@@ -290,13 +270,13 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "ns" = (
 /obj/structure/chair/comfy/shuttle,
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
+/mob/living/basic/syndicate/ranged/smg/space{
 	desc = "Nuking things is a pretty awesome job to be so good at."
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "nF" = (
-/obj/machinery/computer/med_data/syndie{
+/obj/machinery/computer/records/medical/syndie{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -313,24 +293,20 @@
 	pixel_x = 16;
 	toolspeed = INFINITY
 	},
-/obj/item/clothing/head/hos/syndicate{
+/obj/item/clothing/head/hats/hos/cap/syndicate{
 	pixel_x = 14;
 	pixel_y = 6
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "ou" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space,
+/mob/living/basic/syndicate/ranged/shotgun/space,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "oB" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /obj/effect/landmark/outbound/ruin_shuttle_interdictor,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
@@ -349,10 +325,8 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "pa" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/machinery/light{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged/space/stormtrooper,
+/obj/machinery/light/directional/north,
+/mob/living/basic/syndicate/ranged/space/stormtrooper,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "pp" = (
@@ -372,7 +346,7 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "rs" = (
-/obj/structure/shuttle/engine/huge{
+/obj/machinery/power/shuttle_engine/huge{
 	dir = 8
 	},
 /turf/template_noop,
@@ -417,9 +391,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/structure/sign/poster/contraband/fun_police{
-	pixel_x = 32
-	},
+/obj/structure/sign/poster/contraband/fun_police/directional/east,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
@@ -436,13 +408,13 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/syndicate/melee/sword{
+/mob/living/basic/syndicate/melee/sword{
 	desc = "Fuck lasers- wait, did they bring bullets?"
 	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "sZ" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
 /turf/closed/wall/r_wall/syndicate,
@@ -460,9 +432,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "tN" = (
 /obj/structure/cable,
-/obj/structure/sign/poster/contraband/energy_swords{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/energy_swords/directional/south,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "ui" = (
@@ -492,10 +462,8 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/sign/poster/contraband/free_drone{
-	pixel_y = -32
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper{
+/obj/structure/sign/poster/contraband/free_drone/directional/south,
+/mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper{
 	desc = "Killing corporate bastards is a tough job, but lugging around a chain-shotgun generally makes it easier. Big shame it's being pointed at you - yes, YOU.";
 	name = "Heavy Syndicate Stormtrooper";
 	ranged_cooldown_time = 5;
@@ -505,20 +473,16 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "xy" = (
 /obj/structure/rack,
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "xP" = (
 /obj/structure/rack/shelf,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "xZ" = (
-/obj/structure/sign/poster/contraband/gorlex_recruitment{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/gorlex_recruitment/directional/south,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "yp" = (
@@ -538,14 +502,14 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "zz" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
+/mob/living/basic/syndicate/ranged/smg/space{
 	desc = "Nuking things is a pretty awesome job to be so good at."
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "zB" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/syndicate/ranged,
+/mob/living/basic/syndicate/ranged,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Ag" = (
@@ -558,7 +522,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Ba" = (
 /obj/structure/lattice/catwalk,
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
+/mob/living/basic/syndicate/ranged/smg/space{
 	desc = "Nuking things is a pretty awesome job to be so good at."
 	},
 /turf/template_noop,
@@ -579,7 +543,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper{
+/mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper{
 	desc = "Killing corporate bastards is a tough job, but lugging around a chain-shotgun generally makes it easier. Big shame it's being pointed at you - yes, YOU.";
 	name = "Heavy Syndicate Stormtrooper";
 	ranged_cooldown_time = 5;
@@ -656,7 +620,7 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Fp" = (
@@ -682,7 +646,7 @@
 	icon_keyboard = "security_key";
 	name = "light frigate central maintenance computer"
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "GG" = (
@@ -705,13 +669,11 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Is" = (
 /obj/structure/cable,
-/obj/structure/sign/poster/contraband/pwr_game{
-	pixel_x = -32
-	},
+/obj/structure/sign/poster/contraband/pwr_game/directional/west,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "IB" = (
-/obj/machinery/computer/secure_data/syndie{
+/obj/machinery/computer/records/security/syndie{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -776,7 +738,7 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "MW" = (
@@ -795,7 +757,7 @@
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "NN" = (
-/mob/living/simple_animal/hostile/syndicate/melee/sword{
+/mob/living/basic/syndicate/melee/sword{
 	desc = "Fuck lasers- wait, did they bring bullets?"
 	},
 /turf/open/floor/plating,
@@ -819,14 +781,14 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "PJ" = (
-/obj/structure/shuttle/engine/large{
+/obj/machinery/power/shuttle_engine/large{
 	dir = 8
 	},
 /turf/template_noop,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "PV" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/syndicate/mecha_pilot/no_mech{
+/obj/item/pen{
 	desc = "Better known as the 'designated loser', because everyone roboticsts will always pilot the mechs that they build. No sharing!";
 	name = "Syndicate Mech Pilot"
 	},
@@ -844,9 +806,7 @@
 	icon_screen = "cameras";
 	name = "light frigate navigational computer"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /obj/structure/sign/map/right{
 	desc = "A navigational chart of Spinward Sector, with colored areas highlighting zones of control for individual grups.";
 	name = "system map";
@@ -864,9 +824,7 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/structure/sign/poster/contraband/punch_shit{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/punch_shit/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Rd" = (
@@ -889,9 +847,7 @@
 	amount = 50;
 	pixel_y = 4
 	},
-/obj/structure/sign/poster/contraband/missing_gloves{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/missing_gloves/directional/south,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "RD" = (
@@ -903,16 +859,12 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "SJ" = (
 /obj/structure/closet/emcloset,
-/obj/structure/sign/poster/contraband/icebox_moment{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/icebox_moment/directional/south,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "SN" = (
 /obj/structure/closet/firecloset,
-/obj/structure/sign/poster/contraband/lusty_xenomorph{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "SP" = (
@@ -924,19 +876,15 @@
 /turf/template_noop,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "SU" = (
-/obj/structure/shuttle/engine/large{
+/obj/machinery/power/shuttle_engine/large{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Ts" = (
 /obj/machinery/mecha_part_fabricator/maint,
-/obj/structure/sign/poster/contraband/hacking_guide{
-	pixel_x = -32
-	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/structure/sign/poster/contraband/hacking_guide/directional/west,
+/obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "TV" = (
@@ -967,27 +915,10 @@
 /obj/structure/fireaxecabinet{
 	pixel_y = 32
 	},
-/mob/living/simple_animal/hostile/syndicate/civilian/scientist{
-	desc = "A funny looking fella in a labcoat.";
-	name = "Syndicate Engineer"
-	},
-/turf/open/floor/plating,
-/area/awaymission/outbound_expedition/ruin/syndicate_frigate)
-"Wa" = (
-/obj/structure/cable,
-/obj/machinery/power/terminal,
-/mob/living/simple_animal/hostile/syndicate/civilian/scientist{
-	desc = "A funny looking fella in a labcoat.";
-	name = "Syndicate Engineer"
-	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Ws" = (
 /obj/effect/turf_decal/syndicateemblem/middle/middle,
-/mob/living/simple_animal/hostile/syndicate/mecha_pilot{
-	desc = "When have roboticists EVER held back?";
-	name = "Syndicate Mech Engineer"
-	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Ww" = (
@@ -998,7 +929,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "WS" = (
@@ -1016,7 +947,7 @@
 	name = "system map";
 	pixel_y = 32
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/pilot{
+/mob/living/basic/syndicate/ranged/smg/pilot{
 	name = "Syndicate Frigate Navigator"
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -1031,9 +962,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Zw" = (
 /obj/structure/closet/firecloset,
-/obj/structure/sign/poster/contraband/grey_tide{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/grey_tide/directional/north,
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 
@@ -1276,7 +1205,7 @@ OC
 OC
 qu
 Yj
-Wa
+dP
 Dd
 RD
 "}

@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(away_missions)
 
 /datum/controller/subsystem/away_missions/Initialize(start_timeofday)
 	. = ..()
-	RegisterSignal(src, COMSIG_AWAY_MISSION_LOADED, .proc/controller_setup)
+	RegisterSignal(src, COMSIG_AWAY_MISSION_LOADED, PROC_REF(controller_setup))
 
 /datum/controller/subsystem/away_missions/Recover()
 	selected_controller = SSaway_missions.selected_controller
@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(away_missions)
 	chosen_path = replacetext(chosen_path, clean_up_regex, "")
 	chosen_path = replacetext(chosen_path, clean_up_regex2, "")
 	chosen_path = text2path("/datum/away_controller/[lowertext(replacetext(chosen_path, clean_up_regex, ""))]") //this donut work with "outbound_expedition.dmm custom"
-	if(!ispath(chosen_path)) //check if this passes or fails on improper paths
+	if(!ispath(chosen_path))
 		return
 	selected_controller = new chosen_path
 	wait = selected_controller.ss_delay

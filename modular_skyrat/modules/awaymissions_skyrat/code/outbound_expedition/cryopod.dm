@@ -36,10 +36,10 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 	GLOB.outbound_cryopods -= src
 	return ..()
 
-/obj/machinery/outbound_expedition/cryopod/close_machine(atom/movable/target)
+/obj/machinery/outbound_expedition/cryopod/close_machine(atom/movable/target, density_to_set = TRUE)
 	OUTBOUND_CONTROLLER
 	if((isnull(target) || isliving(target)) && state_open && !panel_open)
-		..(target)
+		..()
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 
 	icon_state = "cryopod"
 
-/obj/machinery/outbound_expedition/cryopod/open_machine()
+/obj/machinery/outbound_expedition/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
 	OUTBOUND_CONTROLLER
 	if(locked)
 		for(var/mob/living/locked_in in contents)
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 		SEND_SIGNAL(outbound_controller, COMSIG_AWAY_CRYOPOD_EXITED, internal_mob)
 	..()
 	icon_state = "cryopod-open"
-	set_density(TRUE)
+	set_density(density_to_set)
 	name = initial(name)
 
 /obj/machinery/outbound_expedition/cryopod/container_resist_act(mob/living/user)

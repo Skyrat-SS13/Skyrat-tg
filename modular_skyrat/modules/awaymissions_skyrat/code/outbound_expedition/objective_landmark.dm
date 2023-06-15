@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 				continue
 			untriggered_mobs |= not_dead_mob
 	for(var/turf/iterating_turf in range(range_req, src))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger, override = TRUE)
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, PROC_REF(trigger), override = TRUE)
 	enabled = TRUE
 
 /obj/effect/landmark/away_objective/proc/disable()
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 
 /obj/effect/landmark/objective_update/Initialize(mapload)
 	. = ..()
-	RegisterSignal(get_turf(src), COMSIG_ATOM_ENTERED, .proc/on_enter)
+	RegisterSignal(get_turf(src), COMSIG_ATOM_ENTERED, PROC_REF(on_enter))
 
 /obj/effect/landmark/objective_update/proc/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 
@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 			dest_point.target_turfs = list()
 
 	if(outbound_controller.elevator_time == initial(outbound_controller.elevator_time))
-		addtimer(CALLBACK(outbound_controller, /datum/away_controller/outbound_expedition.proc/tick_elevator_time), 1 SECONDS)
+		addtimer(CALLBACK(outbound_controller, TYPE_PROC_REF(/datum/away_controller/outbound_expedition, tick_elevator_time)), 1 SECONDS)
 
 	var/mob/arrived_mob = arrived
 	all_people_entered |= arrived_mob
