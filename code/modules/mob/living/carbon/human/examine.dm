@@ -462,7 +462,6 @@
 	else if(isobserver(user))
 		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
 		var/datum/record/crew/target_records = find_record(perpname)
@@ -516,10 +515,7 @@
 		else
 			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	. += "</span>"
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
-=======
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
->>>>>>> ae5a4f955d0 (Pulls apart the vestiges of components still hanging onto signals (#75914))
 
 /**
  * Shows any and all examine text related to any status effects the user has.
