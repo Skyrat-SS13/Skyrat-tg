@@ -20,11 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-<<<<<<< HEAD
 #define DB_MINOR_VERSION 25
-=======
-#define DB_MINOR_VERSION 24
->>>>>>> 57ef596898a (Admin Library Moderation (in-game edition) (#75645))
 
 
 //! ## Timing subsystem
