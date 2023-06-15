@@ -15,7 +15,7 @@
 		return
 	else if(target_obj.type == from_obj) //Checks whether the item is eligible to be converted
 		if(!pre_convert_check(target_obj, user))
-			return
+			return FALSE
 		var/obj/item/converted_item = new to_obj(get_turf(src))
 		user.put_in_hands(converted_item)
 		user.visible_message(span_notice("[user] modifies [target_obj] into [converted_item]."), span_notice("You modify [target_obj] into [converted_item]."))

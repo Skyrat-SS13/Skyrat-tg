@@ -4,7 +4,7 @@
 //Upgrade Kit//
 /datum/design/medigun_speedkit
 	name = "VeyMedical CWM-479 upgrade kit"
-	desc = "An upgrade kit for the VM CWM-479 to have a higher-capacity internal cell, with increased recharger throughput."
+	desc = "An upgrade kit for the VeyMedical CWM-479 to have a higher-capacity internal cell, with increased recharger throughput."
 	id = "medigun_speed"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -138,7 +138,7 @@
 	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/device/custom_kit/empty_cell/body_teleporter
 
-/datum/design/medicell/utility/relocate
+/datum/design/medicell/utility/relocation
 	name = "Oppressive Force Relocation Medicell"
 	desc = "A medicell that can be used to teleport non-medical staff to the lobby."
 	id = "relocatemedicell"
