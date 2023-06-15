@@ -33,3 +33,12 @@
 				rgb_list += (color_inverse_base - col) //inversa da color
 		else if(length(draw_color) >= 2)
 			rgb_list = rgb2num(draw_color[2])
+
+		if(rgb_list)
+			overlays[index_to_color].color = rgb(rgb_list[1], rgb_list[2], rgb_list[3])
+		else
+			overlays[index_to_color].color = null
+
+/datum/bodypart_overlay/mutant/pod_hair/randomize_appearance()
+    . = ..()
+    draw_color = list("#[random_color()]", "#[random_color()]", "#FFFFFF") // currently only two colors are used

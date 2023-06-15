@@ -148,7 +148,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	key = "pod_hair"
 	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
 	organ_type = /obj/item/organ/external/pod_hair
-	color_src = USE_ONE_COLOR
 
 
 /datum/sprite_accessory/spines
