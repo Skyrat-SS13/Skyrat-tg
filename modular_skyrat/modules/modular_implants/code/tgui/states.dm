@@ -1,4 +1,8 @@
-// no global instance so we can pass args
+/// The state used for handheld soulcatcher interaction tgui.
+/// COULD be generified, but for now, its fine. 
+/// If someone ever makes a combination alive, concious, and proximity item state like this,
+/// please do switch over.
+/// No global instance so we can pass args.
 /datum/ui_state/handheld_soulcatcher_state
 	var/obj/item/handheld_soulcatcher/linked_soulcatcher
 
@@ -19,20 +23,13 @@
 		return UI_CLOSE
 
 	var/mob/target_mob = linked_soulcatcher.interacting_mobs[user]
-	if(!target_mob)
-		return UI_CLOSE
-
-	if(!istype(user))
-		return UI_CLOSE
-
-	if(user.stat != CONSCIOUS)
+	if(!target_mob || !istype(user) || user.stat != CONSCIOUS)
 		return UI_CLOSE
 
 	var/is_holding = user.is_holding(linked_soulcatcher)
 
-	if(!is_holding)
-		if(user.z != linked_soulcatcher.z)
-			return UI_CLOSE
+	if(!is_holding && user.z != linked_soulcatcher.z)
+		return UI_CLOSE
 
 	var/dist_from_src_to_target = get_dist(get_turf(linked_soulcatcher), get_turf(target_mob))
 	if(dist_from_src_to_target > SOULCATCHER_MAX_CATCHING_DISTANCE)
@@ -44,7 +41,7 @@
 
 	if(is_holding)
 		return UI_INTERACTIVE
-	else
-		return user.shared_living_ui_distance(linked_soulcatcher)
+
+	return user.shared_living_ui_distance(linked_soulcatcher)
 
 #undef SOULCATCHER_MAX_CATCHING_DISTANCE

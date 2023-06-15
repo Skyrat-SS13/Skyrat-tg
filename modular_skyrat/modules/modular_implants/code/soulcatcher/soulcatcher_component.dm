@@ -350,10 +350,18 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * Args:
  * datum/component/soulcatcher/soulcatcher - The soulcatcher we are checking.
  *
- * Returns: TRUE by default.
+ * Returns: TRUE if we can join any room at all, FALSE otherwise.
  */
 /mob/proc/can_join_soulcatcher(datum/component/soulcatcher/soulcatcher)
-	return TRUE
+	SHOULD_CALL_PARENT(TRUE)
+
+	var/room_joinable = FALSE
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher.soulcatcher_rooms)
+		if(can_join_soulcatcher_room(room, FALSE)) // checking parent = recursion
+			room_joinable = TRUE
+			break
+
+	return room_joinable
 
 /**
  * Args:
@@ -369,7 +377,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if (!soulcatcher.ghost_joinable)
 		return FALSE
 
-	// super returns true by default, we dont need to specify we're returning anything
+	// super returns a value by default, and we return false if it returns false, so if it reaches here - we returned true
 
 
 /**

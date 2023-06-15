@@ -5,7 +5,7 @@
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
 	/// Associative list of (user -> target), where user is anyone that used this object on a target mob.
-	/// Merely a advanced form of boolean that considers the possibility of this item being dropped/handed to someone else - the actual value of an entry is irrelevant.
+	/// Used in tgui/states.dm, in the soulcatcher state, for tracking the mob we are interacting with. Important for determining distance between user and target.
 	/// User is removed on ui close.
 	var/list/mob/interacting_mobs = list()
 	/// A list of mobs that currently have the "Do you want to join this room" pop-up. Used to prevent spam of the popup.
@@ -34,7 +34,6 @@
 
 	for (var/mob/soul as anything in confirming_entry)
 		UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
-		confirming_entry -= soul
 	confirming_entry = null
 
 	return ..()
