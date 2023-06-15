@@ -149,9 +149,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				return TRUE
 
 			// SKYRAT EDIT ADDITION START - Flavourtext requirement
-			if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
-				to_chat(owner, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
-				return
+			if(CONFIG_GET(flag/min_flavor_text))
+				if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
+					to_chat(owner, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
+					return
 			// SKYRAT EDIT END
 
 			//Determines Relevent Population Cap

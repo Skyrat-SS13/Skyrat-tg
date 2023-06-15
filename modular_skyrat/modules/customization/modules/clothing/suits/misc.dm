@@ -303,16 +303,6 @@
 	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/hawaiian_shirt
-	name = "hawaiian shirt"
-	desc = "Strangely en vogue with aviator wearing shibas."
-	icon_state = "hawaiianshirt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	greyscale_config = /datum/greyscale_config/hawaiian_shirt
-	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
-	greyscale_colors = "#313B82#CCCFF0"
-	flags_1 = IS_PLAYER_COLORABLE_1
-
 /obj/item/clothing/suit/apron/overalls/greyscale
 	desc = "A set of overalls."
 	icon_state = "overalls"

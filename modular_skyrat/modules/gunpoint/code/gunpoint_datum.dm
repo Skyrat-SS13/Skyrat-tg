@@ -15,8 +15,6 @@
 	var/locked = FALSE
 	var/was_running = FALSE
 
-	var/moved_counter = 0
-
 
 /datum/gunpoint/New(user, tar, gun)
 	source = user
@@ -73,11 +71,6 @@
 		return FALSE
 	if(source.CanGunpointAt(target))
 		source.face_atom(target)
-		return TRUE
-	return FALSE
-
-/datum/gunpoint/proc/CanReact()
-	if(locked && !(target.stat == DEAD || target.stat == HARD_CRIT || target.stat == SOFT_CRIT) && source.next_move <= world.time)
 		return TRUE
 	return FALSE
 
