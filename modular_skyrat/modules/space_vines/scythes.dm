@@ -1,11 +1,11 @@
 /obj/item/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/items_and_weapons.dmi'
+	icon = 'modular_skyrat/modules/space_vines/items_and_weapons.dmi'
 	icon_state = "scythe_t1"
-	worn_icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/back.dmi'
-	lefthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_righthand.dmi'
+	worn_icon = 'modular_skyrat/modules/space_vines/back.dmi'
+	lefthand_file = 'modular_skyrat/modules/space_vines/polearms_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/space_vines/polearms_righthand.dmi'
 	force = 10
 	throwforce = 5
 	throw_speed = 2
