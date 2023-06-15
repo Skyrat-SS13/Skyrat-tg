@@ -655,11 +655,7 @@
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
-<<<<<<< HEAD
 	to_chat(src, span_notice("You stand up.")) //SKYRAT EDIT ADDITION
-	set_lying_angle(0)
-=======
->>>>>>> 3a8592d2586 (Improves mob resizing (and UpdatePaths). (#75892))
 	set_body_position(STANDING_UP)
 	set_lying_angle(0)
 

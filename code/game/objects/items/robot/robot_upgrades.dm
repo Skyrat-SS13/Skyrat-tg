@@ -574,25 +574,17 @@
 			robot.SetLockdown(FALSE)
 		robot.set_anchored(FALSE)
 		robot.notransform = FALSE
-<<<<<<< HEAD
-		robot.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
-=======
->>>>>>> 3a8592d2586 (Improves mob resizing (and UpdatePaths). (#75892))
 		robot.hasExpanded = TRUE
-		robot.update_transform(2)
+		//robot.update_transform(2) // Original
+		robot.update_transform(1.5) // SKYRAT EDIT CHANGE
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
 		if (R.hasExpanded)
 			R.hasExpanded = FALSE
-<<<<<<< HEAD
-			//R.resize = 0.5 //ORIGINAL
-			R.resize = 0.8 //SKYRAT EDIT CHANGE - CYBORG
-			R.update_transform()
-=======
-			R.update_transform(0.5)
->>>>>>> 3a8592d2586 (Improves mob resizing (and UpdatePaths). (#75892))
+			//R.update_transform(0.5) // Original
+			R.update_transform(0.8) // SKYRAT EDIT CHANGE
 
 /obj/item/borg/upgrade/rped//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "engineering cyborg RPED"
