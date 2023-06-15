@@ -73,7 +73,6 @@
 		generate_states()
 	var/current = random_plant_states.Find(icon_state)
 	var/next = WRAP(current+1,1,length(random_plant_states))
-<<<<<<< HEAD
 	icon_state = random_plant_states[next]
 
 /obj/item/kirbyplants/random
@@ -86,11 +85,10 @@
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
 	if(!random_plant_states)
 		generate_states()
-	icon_state = pick(random_plant_states)
-=======
+	var/current = random_plant_states.Find(icon_state)
+	var/next = WRAP(current+1,1,length(random_plant_states))
 	base_icon_state = random_plant_states[next]
 	update_appearance(UPDATE_ICON)
->>>>>>> 7923d83dd42 (Potted plant fixes (#75929))
 
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
