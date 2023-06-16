@@ -651,6 +651,6 @@
 	name = "courier synth plushie"
 	desc = "This synth plushie looks about ready to deliver hugs and beeps straight to the heart! The tag seems to have an advertisement for a delivery company on it..."
 	icon_state = "plushie_courier"
-	attack_verb_continuous = list("delivers to", "export scans", "dwoops at", "bwuhs at", "stamps")
+	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
 	attack_verb_simple = list("deliver to", "export scan", "dwoop", "bwuh", "stamp")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
