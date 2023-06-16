@@ -20,22 +20,6 @@
 //(TODO applies to NT as well)
 
 /*
-*	LOPLAND
-*/
-/obj/item/clothing/under/rank/centcom/skyrat/lopland
-	name = "\improper Lopland corporate uniform"
-	desc = "A sleek jumpsuit worn by Lopland corporate. Its surprisingly well padded."
-	icon_state = "lopland_shirt"
-	worn_icon_state = "lopland_shirt"
-
-/obj/item/clothing/under/rank/centcom/skyrat/lopland/instructor
-	name = "\improper Lopland instructor's uniform"
-	desc = "A over-the-top, militaristic jumpsuit worn by Lopland-certified instructors, with a big Lopland logo slapped on the back. The amount of pockets could make a space marine cry."
-	icon_state = "lopland_tac"
-	worn_icon_state = "lopland_tac"
-
-
-/*
 *	MISC
 */
 // pizza and other misc ERTs in this file too?
