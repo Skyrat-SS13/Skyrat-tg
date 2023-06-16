@@ -331,11 +331,47 @@
 		amount = clamp(round(amount), 0, 10)
 		if (amount <= 0)
 			return FALSE
+<<<<<<< HEAD
 		// Get units per item
 		var/vol_each = text2num(params["volume"])
 		var/vol_each_text = params["volume"]
 		var/vol_each_max = reagents.total_volume / amount
 		var/list/style
+=======
+		create_containers(item_count)
+		return TRUE
+
+/// Create N selected containers with reagents from buffer split between them
+/obj/machinery/chem_master/proc/create_containers(item_count = 1)
+	var/obj/item/reagent_containers/container_style = locate(selected_container)
+	var/is_pill_subtype = ispath(container_style, /obj/item/reagent_containers/pill)
+	var/volume_in_each = reagents.total_volume / item_count
+	var/printing_amount_current = is_pill_subtype ? printing_amount * 2 : printing_amount
+
+	// Generate item name
+	var/item_name_default = initial(container_style.name)
+	if(selected_container == default_container) // Tubes and bottles gain reagent name
+		item_name_default = "[reagents.get_master_reagent_name()] [item_name_default]"
+	if(!(initial(container_style.reagent_flags) & OPENCONTAINER)) // Closed containers get both reagent name and units in the name
+		item_name_default = "[reagents.get_master_reagent_name()] [item_name_default] ([volume_in_each]u)"
+	var/item_name = tgui_input_text(usr,
+		"Container name",
+		"Name",
+		item_name_default,
+		MAX_NAME_LEN)
+
+	if(!item_name || !reagents.total_volume || QDELETED(src) || !usr.can_perform_action(src, ALLOW_SILICON_REACH))
+		return FALSE
+
+	// Print and fill containers
+	is_printing = TRUE
+	update_appearance(UPDATE_ICON)
+	printing_progress = 0
+	printing_total = item_count
+	while(item_count > 0)
+		if(!is_printing)
+			break
+>>>>>>> e03941b5dc7 ([NO GBP] Tube and Bottles get main reagent in their name (#76040))
 		use_power(active_power_usage)
 		if (item_type == "pill")
 			vol_each_max = min(50, vol_each_max)
