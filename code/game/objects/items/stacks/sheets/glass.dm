@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	point_value = 1
 	tableVariant = /obj/structure/table/glass
 	matter_amount = 4
-	cost = 500
-	source = /datum/robot_energy_storage/glass
+	cost = SHEET_MATERIAL_AMOUNT
+	source = /datum/robot_energy_storage/material/glass
 	sniffable = TRUE
 
 /datum/armor/sheet_glass
@@ -51,6 +51,9 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 
 /obj/item/stack/sheet/glass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
+	if(istype(W, /obj/item/lightreplacer))
+		var/obj/item/lightreplacer/lightreplacer = W
+		lightreplacer.attackby(src, user)
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if (get_amount() < 1 || CC.get_amount() < 5)
@@ -352,7 +355,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 		var/mob/living/carbon/human/H = user
 		if(!H.gloves && !HAS_TRAIT(H, TRAIT_PIERCEIMMUNE)) // golems, etc
 			to_chat(H, span_warning("[src] cuts into your hand!"))
-			H.apply_damage(force*0.5, BRUTE, hit_hand)
+			H.apply_damage(force*0.5, BRUTE, hit_hand, attacking_item = src)
 
 /obj/item/shard/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/lightreplacer))

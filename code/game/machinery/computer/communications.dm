@@ -94,6 +94,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
+	// All maps should have at least 1 comms console
+	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
+
 	GLOB.shuttle_caller_list += src
 	AddComponent(/datum/component/gps, "Secured Communications Signal")
 
@@ -775,7 +778,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return
 	if(user.try_speak(input))
 		//Adds slurs and so on. Someone should make this use languages too.
-		input = user.treat_message(input)
+		var/list/input_data = user.treat_message(input)
+		input = input_data["message"]
 	else
 		//No cheating, mime/random mute guy!
 		input = "..."

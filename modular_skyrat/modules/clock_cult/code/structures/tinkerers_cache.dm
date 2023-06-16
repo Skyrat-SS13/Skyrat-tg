@@ -41,12 +41,19 @@
 		to_chat(user, span_brass("[src] is still warming up, it will be ready in [DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]."))
 		return
 
-	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", craft_possibilities)
+	var/list/real_possibilities = craft_possibilities.Copy()
+
+	for(var/name in real_possibilities)
+		var/datum/tinker_cache_item/path = real_possibilities[name]
+		if(initial(path.research_locked) && !(path in GLOB.clockwork_research_unlocked_recipes))
+			real_possibilities -= name
+
+	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", real_possibilities)
 
 	if(!selection)
 		return
 
-	var/datum/tinker_cache_item/chosen_item = craft_possibilities[selection]
+	var/datum/tinker_cache_item/chosen_item = real_possibilities[selection]
 
 	if(!can_interact(user) || !anchored || depowered || !chosen_item || !COOLDOWN_FINISHED(src, use_cooldown))
 		return
@@ -63,7 +70,7 @@
 
 	var/crafting_item = initial(chosen_item.item_path)
 	new crafting_item(get_turf(src))
-	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 50)
+	playsound(src, 'modular_skyrat/modules/clock_cult/sound/machinery/steam_whoosh.ogg', 50)
 
 	to_chat(user, span_brass("You craft [initial(chosen_item.name)] to near perfection, [src] cooling down. [initial(chosen_item.time_delay_mult) ? "It will be available in [DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]." : "It is ready to use again."]"))
 
@@ -81,11 +88,17 @@
 	/// Name of the item
 	var/name = "abstract parent"
 	/// Path to the object that this will create
-	var/item_path
+	var/atom/item_path
 	/// Amount of power this will consume to create
 	var/power_use = 0
 	/// Multiplier for time delay (default 4m) after producing this item
 	var/time_delay_mult = 1
+	/// If this is locked behind research
+	var/research_locked = FALSE
+	/// Override icon file for the item for the technologist's lectern
+	var/research_icon
+	/// Override icon state for the item for the technologist's lectern
+	var/research_icon_state
 
 /datum/tinker_cache_item/speed_robes
 	name = "Robes Of Divinity"
@@ -116,12 +129,16 @@
 	name = "Clockwork Rifle"
 	item_path = /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 	power_use = 500
+	research_locked = TRUE
+	research_icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
+	research_icon_state = "clockwork_rifle_research"
 
 /datum/tinker_cache_item/clockwork_rifle_ammo
 	name = "Clockwork Rifle Ammunition"
 	item_path = /obj/item/ammo_box/a762/lionhunter/clock
 	power_use = 200
 	time_delay_mult = 0.5
+	research_locked = TRUE
 
 /datum/tinker_cache_item/tools
 	name = "Equipped Toolbelt"

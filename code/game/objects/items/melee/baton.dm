@@ -127,7 +127,7 @@
 
 	if(!chunky_finger_usable && ishuman(user))
 		var/mob/living/carbon/human/potential_chunky_finger_human = user
-		if(potential_chunky_finger_human.check_chunky_fingers() && user.is_holding(src))
+		if(potential_chunky_finger_human.check_chunky_fingers() && user.is_holding(src) && !HAS_TRAIT(user, TRAIT_CHUNKYFINGERS_IGNORE_BATON) && (user.mind && !HAS_TRAIT(user.mind, TRAIT_CHUNKYFINGERS_IGNORE_BATON)))
 			balloon_alert(potential_chunky_finger_human, "fingers are too big!")
 			return BATON_ATTACK_DONE
 
@@ -280,7 +280,7 @@
 		if(on_stun_sound)
 			playsound(get_turf(src), on_stun_sound, on_stun_volume, TRUE, -1)
 
-	user.apply_damage(2*force, BRUTE, BODY_ZONE_HEAD)
+	user.apply_damage(2*force, BRUTE, BODY_ZONE_HEAD, attacking_item = src)
 
 	log_combat(user, user, "accidentally stun attacked [user.p_them()]self due to their clumsiness", src)
 	if(stun_animation)

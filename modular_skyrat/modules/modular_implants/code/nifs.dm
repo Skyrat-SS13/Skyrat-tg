@@ -327,7 +327,7 @@
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
-	loaded_nifsoft.parent_nif = src
+	loaded_nifsoft.parent_nif = WEAKREF(src)
 	loaded_nifsoft.linked_mob = linked_mob
 	rewards_points += (loaded_nifsoft.rewards_points_rate * loaded_nifsoft.purchase_price)
 
@@ -503,6 +503,7 @@
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
+	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END

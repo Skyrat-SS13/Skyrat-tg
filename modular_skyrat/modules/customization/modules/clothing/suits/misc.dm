@@ -245,14 +245,6 @@
 	icon_state = "kuban_cossak"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/cossack/sec
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "security ukrainian coat"
-	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
-	icon_state = "don_cossak"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -309,16 +301,6 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/apron/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/apron/worn/newvox
 	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/obj/item/clothing/suit/hawaiian_shirt
-	name = "hawaiian shirt"
-	desc = "Strangely en vogue with aviator wearing shibas."
-	icon_state = "hawaiianshirt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	greyscale_config = /datum/greyscale_config/hawaiian_shirt
-	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
-	greyscale_colors = "#313B82#CCCFF0"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/apron/overalls/greyscale

@@ -55,7 +55,6 @@
 	clothing_flags = MASKINTERNALS
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	species_exception = list(/datum/species/golem/bananium)
 	has_fov = FALSE
 	greyscale_config = /datum/greyscale_config/clown_mask
 	greyscale_config_worn = /datum/greyscale_config/clown_mask/worn
@@ -72,7 +71,6 @@
 	inhand_icon_state = null
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
-	species_exception = list(/datum/species/golem/bananium)
 
 /obj/item/clothing/mask/gas/respirator
 	name = "half mask respirator"

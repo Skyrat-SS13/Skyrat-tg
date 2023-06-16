@@ -48,3 +48,9 @@
 	name = "medical labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
 	icon_state = "labcoat_gen"
+
+/obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/handheld_soulcatcher,
+	)

@@ -7,7 +7,7 @@
 	mob_storage_capacity = 1
 	max_mob_size = MOB_SIZE_LARGE
 
-/obj/structure/closet/body_bag/stasis/open(mob/living/user, force = FALSE)
+/obj/structure/closet/body_bag/stasis/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	for(var/mob/living/M in contents)
 		thaw_them(M)
 	. = ..()

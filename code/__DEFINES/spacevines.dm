@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /// Determines brightness of the light emitted by kudzu with the light mutation
 #define LIGHT_MUTATION_BRIGHTNESS 4
 /// Kudzu light states
@@ -28,10 +27,10 @@
 #define SEVERITY_MAJOR 10
 
 /// Kudzu mutativeness is based on a scale factor * potency
-#define MUTATIVENESS_SCALE_FACTOR 0.2
+#define MUTATIVENESS_SCALE_FACTOR 0.1 // SKYRAT EDIT CHANGE - Original: 0.2
 
 /// Kudzu maximum mutation severity is a linear function of potency
-#define MAX_SEVERITY_LINEAR_COEFF 0.15
+#define MAX_SEVERITY_LINEAR_COEFF 0.1 // SKYRAT EDIT CHANGE - Original: 0.15
 #define MAX_SEVERITY_CONSTANT_TERM 10
 
 /// Additional maximum mutation severity given to kudzu spawned by a random event
@@ -48,4 +47,3 @@
 
 /// Kudzu's maximum possible maximum mutation severity (assuming ideal potency), used to balance mutation appearance chance
 #define IDEAL_MAX_SEVERITY 20
-*/

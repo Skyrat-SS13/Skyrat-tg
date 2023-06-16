@@ -39,7 +39,7 @@
 		return TRUE
 
 	if(attached_tank)
-		to_chat(user, span_warning("[attached_tank] inside of the [src] deconsturction."))
+		to_chat(user, span_warning("[attached_tank] must be removed from [src] first!"))
 		return TRUE
 
 	new /obj/item/anesthetic_machine_kit(get_turf(src))

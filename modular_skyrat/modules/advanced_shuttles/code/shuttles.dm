@@ -9,7 +9,6 @@
 	rechargeTime = 15 SECONDS
 
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
-	can_be_called_in_transit = FALSE
 
 /obj/machinery/computer/shuttle/arrivals
 	name = "arrivals shuttle control"
@@ -23,6 +22,7 @@
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
+	no_destination_swap = TRUE
 
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"

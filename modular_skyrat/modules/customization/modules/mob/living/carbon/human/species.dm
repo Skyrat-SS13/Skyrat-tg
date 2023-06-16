@@ -31,6 +31,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/default_mutant_bodyparts = list()
 	/// A static list of all genital slot possibilities.
 	var/static/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
+	/// Are we lore protected? This prevents people from changing the species lore or species name.
+	var/lore_protected = FALSE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/owner, forced_colour, force_update = FALSE)
 	return
@@ -105,16 +107,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/height_offset = species_human.get_top_offset() // From high changed by varying limb height
 	var/list/standing = list()
 
-	var/obj/item/bodypart/head/HD = species_human.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/head/noggin = species_human.get_bodypart(BODY_ZONE_HEAD)
 
-	if(HD && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
+	if(noggin && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
 		if(species_human.lip_style && (LIPS in species_traits))
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
 			lip_overlay.color = species_human.lip_color
-			if(OFFSET_FACE in species_human.dna.species.offset_features)
-				lip_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
-				lip_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
+			noggin.worn_face_offset?.apply_offset(lip_overlay)
 			lip_overlay.pixel_y += height_offset
 			standing += lip_overlay
 
@@ -122,17 +122,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(!(NOEYESPRITES in species_traits))
 			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
-
 			var/add_pixel_x = 0
 			var/add_pixel_y = 0
 			//cut any possible vis overlays
-			if(length(body_vis_overlays))
+			if(body_vis_overlays.len)
 				SSvis_overlays.remove_vis_overlay(species_human, body_vis_overlays)
-
-			if(OFFSET_FACE in species_human.dna.species.offset_features)
-				add_pixel_x = species_human.dna.species.offset_features[OFFSET_FACE][1]
-				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
-
+			var/list/feature_offset = noggin.worn_face_offset?.get_offset()
+			if(feature_offset)
+				add_pixel_x = feature_offset["x"]
+				add_pixel_y = feature_offset["y"]
 			add_pixel_y += height_offset
 
 			if(!eye_organ)
@@ -149,8 +147,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					standing += eye_overlay
 					if(eye_organ.is_emissive)
 						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay, species_human)
-						eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
-						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
+						eye_emissive.pixel_x += add_pixel_x
+						eye_emissive.pixel_y += add_pixel_y
 						standing += eye_emissive
 
 	//Underwear, Undershirts & Socks

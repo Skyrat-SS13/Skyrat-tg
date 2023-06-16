@@ -2,3 +2,4 @@
 #define COMSIG_KB_CLIENT_LOOC_DOWN "keybinding_client_looc_down"
 #define COMSIG_KB_CLIENT_WHISPER_DOWN "keybinding_client_whisper_down"
 #define COMSIG_KB_LIVING_COMBAT_INDICATOR "keybinding_living_combat_indicator"
+#define COMSIG_KB_CARBON_TOGGLE_SAFETY "keybinding_carbon_toggle_safety"
