@@ -167,7 +167,11 @@
  * * new_beaker - New beaker to insert. Optional
  */
 /obj/machinery/chem_master/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
+<<<<<<< HEAD
 	if(!user)
+=======
+	if(new_beaker && user && !user.transferItemToLoc(new_beaker, src))
+>>>>>>> 438decaa8f4 (Fixes chem master replace beaker runtime (#76062))
 		return FALSE
 	if(beaker)
 		try_put_in_hand(beaker, user)
