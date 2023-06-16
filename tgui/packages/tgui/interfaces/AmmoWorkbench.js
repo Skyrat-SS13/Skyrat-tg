@@ -1,6 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { useBackend, useSharedState, useLocalState } from '../backend';
-import { Box, Button, NumberInput, NoticeBox, ProgressBar, Section, Flex, Stack, RoundGauge, Tabs, Table } from '../components';
+import { Box, Button, NumberInput, NoticeBox, ProgressBar, Section, Flex, Stack, RoundGauge, Tabs, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 export const AmmoWorkbench = (props, context) => {
@@ -45,6 +45,7 @@ export const AmmunitionsTab = (props, context) => {
     max_rounds,
     efficiency,
     time,
+    caliber,
     available_rounds = [],
   } = data;
   return (
@@ -93,7 +94,7 @@ export const AmmunitionsTab = (props, context) => {
             />
           </>
         }>
-        {!!mag_loaded && <Box>{toTitleCase(mag_name)}</Box>}
+        {!!mag_loaded && <Box>{mag_name}</Box>}
         {!!mag_loaded && (
           <Box bold textAlign="right">
             {current_rounds} / {max_rounds}
@@ -110,15 +111,19 @@ export const AmmunitionsTab = (props, context) => {
                 p={1}
                 pb={2}>
                 <Stack.Item>
-                  <Button
-                    content={available_round.name}
-                    disabled={system_busy}
-                    onClick={() =>
-                      act('FillMagazine', {
-                        selected_type: available_round.typepath,
-                      })
-                    }
-                  />
+                  <Tooltip
+                    content={available_round.mats_list}
+                    position={'right'}>
+                    <Button
+                      content={available_round.name}
+                      disabled={system_busy}
+                      onClick={() =>
+                        act('FillMagazine', {
+                          selected_type: available_round.typepath,
+                        })
+                      }
+                    />
+                  </Tooltip>
                 </Stack.Item>
               </Box>
             ))}
@@ -229,12 +234,7 @@ const MaterialRow = (props, context) => {
   const amountAvailable = Math.floor(material.amount);
   return (
     <Table.Row>
-      <Table.Cell>{toTitleCase(material.name).replace('Alloy', '')}</Table.Cell>
-      <Table.Cell collapsing textAlign="right">
-        <Box mr={2} color="label" inline>
-          {material.value && material.value + ' cr'}
-        </Box>
-      </Table.Cell>
+      <Table.Cell>{toTitleCase(material.name)}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         <Box mr={2} color="label" inline>
           {amountAvailable} sheets

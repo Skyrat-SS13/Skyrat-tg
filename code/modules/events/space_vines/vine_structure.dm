@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "space vine"
@@ -68,6 +67,10 @@
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		override += mutation.on_chem(src, chem)
 	if(!override && prob(75) && istype(chem, /datum/reagent/toxin/plantbgone))
+		// SKYRAT EDIT ADD START
+		if(plantbgone_resist && prob(50))
+			return
+		// SKYRAT EDIT ADD END
 		qdel(src)
 
 /obj/structure/spacevine/proc/eat(mob/eater)
@@ -204,4 +207,3 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
-*/
