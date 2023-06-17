@@ -60,7 +60,7 @@
 		spawner.visible_message(span_danger("[created] [spawn_text] [spawner]."))
 
 	SEND_SIGNAL(src, COMSIG_SPAWNER_SPAWNED, created)
-	RegisterSignal(created, COMSIG_QDELETING, PROC_REF(on_deleted))
+	RegisterSignal(created, COMSIG_PARENT_QDELETING, PROC_REF(on_deleted))
 
 /// Remove weakrefs to atoms which have been killed or deleted without us picking it up somehow
 /datum/component/spawner/proc/validate_references()
