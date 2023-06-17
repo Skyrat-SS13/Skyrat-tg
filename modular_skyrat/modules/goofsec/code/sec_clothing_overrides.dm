@@ -228,6 +228,16 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+/datum/armor/headwear_security
+	melee = 30
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 10
+	fire = 20
+	acid = 20
+	wound = 10
+
 //Beret replacement
 /obj/item/clothing/head/security_garrison
 	name = "security garrison cap"
@@ -236,7 +246,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
-	armor_type = /datum/armor/head_security_garrison
+	armor_type = /datum/armor/headwear_security
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
@@ -250,17 +260,6 @@
 		),
 	)
 
-//Normal Cap
-
-/datum/armor/head_security_garrison
-	melee = 30
-	bullet = 25
-	laser = 25
-	energy = 35
-	bomb = 25
-	fire = 20
-	acid = 50
-
 /obj/item/clothing/head/security_cap
 	name = "security cap"
 	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -268,7 +267,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
-	armor_type = /datum/armor/head_security_cap
+	armor_type = /datum/armor/headwear_security
 	strip_delay = 60
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -286,15 +285,6 @@
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
 	)
-
-/datum/armor/head_security_cap
-	melee = 30
-	bullet = 25
-	laser = 25
-	energy = 35
-	bomb = 25
-	fire = 20
-	acid = 50
 
 /obj/item/clothing/head/hats/hos/cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
