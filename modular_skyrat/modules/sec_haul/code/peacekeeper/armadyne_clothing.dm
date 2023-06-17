@@ -61,7 +61,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	neck = /obj/item/clothing/neck/tie/black
-	glasses = /obj/item/clothing/glasses/hud/security/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	suit = /obj/item/clothing/suit/armor/vest/armadyne
 	shoes = /obj/item/clothing/shoes/jackboots/sec/redsec
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
@@ -83,7 +83,7 @@
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
 	gloves = /obj/item/clothing/gloves/combat
 	head = /obj/item/clothing/head/helmet
-	glasses = /obj/item/clothing/glasses/hud/security/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	mask = /obj/item/clothing/mask/gas/sechailer
 	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/pitbull
@@ -106,7 +106,7 @@
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/alt/redsec
 	gloves = /obj/item/clothing/gloves/combat
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
-	glasses = /obj/item/clothing/glasses/hud/security/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	suit = /obj/item/clothing/suit/armor/vest/alt/sec/redsec
 	suit_store = /obj/item/gun/ballistic/automatic/norwind

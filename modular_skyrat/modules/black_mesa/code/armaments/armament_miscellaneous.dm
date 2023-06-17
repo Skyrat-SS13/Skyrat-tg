@@ -53,6 +53,6 @@
 	cost = 1
 
 /datum/armament_entry/hecu/misc/hudglasses
-	item_type = /obj/item/clothing/glasses/hud/security/redsec
+	item_type = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	max_purchase = 6
 	cost = 2
