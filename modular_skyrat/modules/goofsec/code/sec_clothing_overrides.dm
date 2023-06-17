@@ -229,13 +229,13 @@
 		carbon_user.head_update(src, forced = TRUE)
 
 /datum/armor/headwear_security
-	melee = 30
-	bullet = 20
-	laser = 20
-	energy = 20
-	bomb = 10
-	fire = 20
-	acid = 20
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
 	wound = 10
 
 //Beret replacement
