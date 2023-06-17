@@ -358,8 +358,6 @@
 	add_charge(uses_needed * charge_given)
 	balloon_alert(user, "core refueled")
 	return TRUE
-<<<<<<< HEAD
-=======
 
 #undef PLASMA_CORE_ORE_CHARGE
 #undef PLASMA_CORE_SHEET_CHARGE
@@ -435,4 +433,3 @@
 	var/flower_boots = new chosen_type(get_turf(wearer))
 	animate(flower_boots, alpha = 0, 1 SECONDS)
 	QDEL_IN(flower_boots, 1 SECONDS)
->>>>>>> 7554538acaa (Fixes MOD plasma core recharge amount from plasma sheets (#76022))
