@@ -113,7 +113,6 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
 	if(prob(block_chance) && (phase == 1 || phase == 4) && !stunned)
-		// balloon_alert_to_viewers("damage blocked!") // not sure if this should be a visible message in the chatlog, remain as a balloon alert, or be dropped tbh
 		var/our_turf = get_turf(src)
 		new /obj/effect/temp_visual/block(our_turf, COLOR_YELLOW)
 		playsound(src, 'sound/weapons/parry.ogg', BLOCK_SOUND_VOLUME * 2, vary = TRUE) // louder because lavaland low pressure maybe?
