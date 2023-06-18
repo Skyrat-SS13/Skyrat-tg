@@ -116,8 +116,10 @@
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dragonslayer"
-	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_R.dmi'
-	righthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi' //confusing, right? hahahaha im not fixing those fucken dmis
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/64x64_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/64x64_righthand.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	hitsound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
@@ -130,10 +132,10 @@
 	sharpness = SHARP_EDGED
 	item_flags = NO_BLOOD_ON_ITEM
 	// aughhghghgh this really should be elementized but this works for now
-	var/faction_bonus_force = 100
+	var/faction_bonus_force = 60
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
-	var/roll_stamcost = 15
+	var/roll_stamcost = 9
 	/// how far do we roll?
 	var/roll_range = 3
 
@@ -157,7 +159,7 @@
 		return
 	var/turf/where_to = get_turf(target)
 	user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
-	user.Immobilize(0.8 SECONDS) // you dont get to adjust your roll
+	user.Immobilize(0.1 SECONDS) // you dont get to adjust your roll
 	user.throw_at(where_to, range = roll_range, speed = 1, force = MOVE_FORCE_NORMAL)
 	user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
 	playsound(user, SFX_BODYFALL, 50, TRUE)
@@ -168,7 +170,7 @@
 	id = "dodgeroll_dodging"
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
-	duration = 0.8 SECONDS // worth tweaking?
+	duration = 1 SECONDS // worth tweaking?
 
 /datum/status_effect/dodgeroll_iframes/on_apply()
 	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(whiff))

@@ -94,8 +94,6 @@
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/silverscale/gunner
 	rank = "Top-drawer"
-<<<<<<< HEAD
-=======
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/interdyne
 	name = "\improper Interdyne sleeper"
@@ -130,4 +128,3 @@
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/grey/shitter
 	rank = "Tidemaster"
->>>>>>> 37ca0d8dd56 (Gray Tider pirates Quick fix on spelling (No GBP) (#76023))
