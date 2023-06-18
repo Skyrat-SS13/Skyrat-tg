@@ -22,9 +22,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/disk/ammo_workbench/advanced
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_SECURITY,
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-		)
+	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_SECURITY)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY

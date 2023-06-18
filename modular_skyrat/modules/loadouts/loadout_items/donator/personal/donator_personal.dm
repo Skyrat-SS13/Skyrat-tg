@@ -683,3 +683,8 @@
 	name = "Official Cat Stamp"
 	item_path = /obj/item/stamp/cat
 	ckeywhitelist = list("kathrinbailey")
+
+/datum/loadout_item/inhand/hardlight_wheelchair
+	name = "Hardlight Wheelchair Projector"
+	item_path = /obj/item/holosign_creator/hardlight_wheelchair
+	ckeywhitelist = list("sqnztb")

@@ -53,7 +53,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/wallframe/time_clock
-	category = list(RND_CATEGORY_MACHINE)
+	category = list(RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MOUNTS)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/vox_gas_filter

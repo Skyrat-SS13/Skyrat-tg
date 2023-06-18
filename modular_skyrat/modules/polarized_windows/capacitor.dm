@@ -1,7 +1,7 @@
 /obj/item/stock_parts/capacitor/Initialize(mapload)
 	. = ..()
 
-	RegisterSignal(src, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(install_polarization_controller))
+	RegisterSignal(src, COMSIG_ITEM_ATTACK_ATOM, PROC_REF(install_polarization_controller))
 
 
 /**
