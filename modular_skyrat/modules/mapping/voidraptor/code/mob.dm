@@ -28,8 +28,7 @@
 
 /mob/living/simple_animal/crab/shuffle/Initialize(mapload)
 	. = ..()
-	resize = 0.5
-	update_transform()
+	update_transform(0.5)
 
 /mob/living/basic/carp/mega/shorki
 	name = "Shorki"
