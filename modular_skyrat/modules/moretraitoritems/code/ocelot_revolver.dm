@@ -1,6 +1,8 @@
 /obj/item/gun/ballistic/revolver/ocelot
 	name = "Colt Peacemaker revolver"
 	desc = "A modified Peacemaker revolver that chambers .357 ammo. Less powerful than the regular .357, but ricochets a lot more." // We need tension...conflict. The world today has become too soft. We're living in an age where true feelings are suppressed. So we're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
+	// this could probably be made funnier by reducing its damage multiplier but also making it so that every fired bullet has the wacky ricochets
+	// but that's a different plate of cookies for a different glass of milk
 	icon_state = "c38_panther"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 
@@ -22,12 +24,12 @@
 	ricochet_decay_chance = 1
 
 /datum/design/a357/peacemaker
-	name = ".357 Peacemaker speed loader"
+	name = "Speed Loader (.357 Peacemaker)"
 	id = "a357PM"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 4000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 	build_path = /obj/item/ammo_box/a357/peacemaker
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED)
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
 /obj/item/ammo_box/a357/peacemaker
 	name = "speed loader (.357 Peacemaker)"

@@ -85,7 +85,7 @@
 	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
+	materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 5, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
@@ -107,6 +107,7 @@
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = NO_MAT_REDEMPTION
+	multitype = TRUE
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)

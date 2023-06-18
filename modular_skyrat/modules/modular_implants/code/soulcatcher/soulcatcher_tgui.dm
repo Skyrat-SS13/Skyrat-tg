@@ -16,12 +16,15 @@
 
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
+		var/currently_targeted = (room == targeted_soulcatcher_room)
+
 		var/list/room_data = list(
 		"name" = html_decode(room.name),
 		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
 		"color" = room.room_color,
+		"currently_targeted" = currently_targeted,
 		)
 
 		for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
@@ -40,7 +43,6 @@
 			room_data["souls"] += list(soul_list)
 
 		data["current_rooms"] += list(room_data)
-
 
 	return data
 
@@ -74,7 +76,12 @@
 				return FALSE
 
 			soulcatcher_rooms -= target_room
+			targeted_soulcatcher_room = soulcatcher_rooms[1]
 			qdel(target_room)
+			return TRUE
+
+		if("change_targeted_room")
+			targeted_soulcatcher_room = target_room
 			return TRUE
 
 		if("create_room")

@@ -69,7 +69,7 @@
 	stock_mult = 3
 
 /datum/armament_entry/company_import/deforest/first_aid/bone_gel
-	item_type = /obj/item/stack/medical/bone_gel/four
+	item_type = /obj/item/stack/medical/bone_gel
 	lower_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_LOWER
 	upper_cost = CARGO_CRATE_VALUE * PRICE_FIRST_AID_MEDIUM_HIGHER
 	stock_mult = 2
