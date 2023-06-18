@@ -313,6 +313,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return ..()
 
+/datum/action/innate/join_soulcatcher
+	name = "Enter Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher_enter"
+
+/datum/action/innate/join_soulcatcher/Activate()
+	. = ..()
+	var/mob/dead/observer/joining_soul = owner
+	if(!joining_soul)
+		return FALSE
+
+	joining_soul.join_soulcatcher()
+
 /mob/dead/observer/verb/join_soulcatcher()
 	set name = "Enter Soulcatcher"
 	set category = "Ghost"
@@ -374,3 +389,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return TRUE
 
 	return ..()
+
+/mob/dead/observer/Login()
+	. = ..()
+	var/soulcatcher_action_given = client.prefs.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+	if(!soulcatcher_action_given)
+		return
+
+	var/datum/action/innate/join_soulcatcher/new_join_action = new
+	new_join_action.Grant(src)
