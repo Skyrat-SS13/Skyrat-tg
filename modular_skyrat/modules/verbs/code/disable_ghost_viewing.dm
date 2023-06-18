@@ -23,7 +23,7 @@
 /// Removes the component from the parent mob while sending them a message. This is called whenever the parent leaves an area.
 /datum/component/no_ghost_messages/proc/remove_self()
 	var/mob/living/parent_mob = parent
-	to_chat(parent_mob, span_boldwarning("Due to leaving an area, your whispers and subtles will be sent to dead-chat. To re-disable sending, use the Toggle Ghost Viewing verb."))
+	to_chat(parent_mob, span_boldwarning("Due to leaving an area, your whispers and subtles will once again be sent to dead-chat. To re-disable sending, use the Toggle Ghost Viewing verb."))
 	qdel(src)
 
 /datum/component/no_ghost_messages/Destroy(force, silent)
