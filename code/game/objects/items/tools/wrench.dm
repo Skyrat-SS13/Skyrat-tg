@@ -121,22 +121,10 @@
 /obj/item/wrench/combat/proc/on_transform(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
-<<<<<<< HEAD
-	if(active)
-		tool_behaviour = TOOL_WRENCH
-		toolspeed = 1
-	else
-		tool_behaviour = initial(tool_behaviour)
-		toolspeed = initial(toolspeed)
-
-	balloon_alert(user, "[name] [active ? "active, woe!":"restrained"]")
-	playsound(user ? user : src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 5, TRUE)
-=======
 	tool_behaviour = active ? TOOL_WRENCH : initial(tool_behaviour)
 	if(user)
 		balloon_alert(user, "[name] [active ? "active, woe!":"restrained"]")
 	playsound(src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 5, TRUE)
->>>>>>> 43f1a52223f (Removes some boilerplate from transforming component (#75998))
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/wrench/bolter
