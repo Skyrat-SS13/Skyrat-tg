@@ -510,7 +510,7 @@
 		else
 			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	. += "</span>"
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
 /**
  * Shows any and all examine text related to any status effects the user has.
