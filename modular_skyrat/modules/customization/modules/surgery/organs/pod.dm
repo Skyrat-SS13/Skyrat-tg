@@ -11,7 +11,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/pod_hair
 
 /datum/bodypart_overlay/mutant/pod_hair
-	layers = EXTERNAL_FRONT_OVER|EXTERNAL_FRONT
+	layers = EXTERNAL_FRONT_OVER|EXTERNAL_FRONT_ABOVE_HAIR
 	color_swapped_layer = EXTERNAL_FRONT_OVER
 	color_source = ORGAN_COLOR_OVERRIDE
 
