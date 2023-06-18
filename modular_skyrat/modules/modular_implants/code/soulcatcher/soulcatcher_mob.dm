@@ -58,6 +58,21 @@
 
 	return outside_hearing
 
+/// Changes the soul's name based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/change_name(new_name)
+	if(!new_name || (round_participant && body_scan_needed))
+		return FALSE
+
+	name = new_name
+	return TRUE
+
+/// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/reset_name()
+	if(!mind?.name || change_name(mind.name))
+		return FALSE
+
+	return TRUE
+
 /// Attemp to leave the soulcatcher.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
 	set name = "Leave Soulcatcher"
