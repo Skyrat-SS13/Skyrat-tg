@@ -99,7 +99,7 @@
 
 	// Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(src, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hitby))
 	// For traitor objectives
 	RegisterSignal(src, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
@@ -215,7 +215,7 @@
 		return FALSE
 
 	UnregisterSignal(src, COMSIG_ATOM_ATTACK_HAND)
-	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(src, COMSIG_ATOM_ATTACKBY)
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
