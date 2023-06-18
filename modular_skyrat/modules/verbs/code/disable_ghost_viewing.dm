@@ -5,11 +5,11 @@
 
 	if(GetComponent(/datum/component/no_ghost_messages))
 		qdel(GetComponent(/datum/component/no_ghost_messages))
-		to_chat(src, span_notice("You will now send whipsers and subtles to dead chat."))
+		to_chat(src, span_notice("You will now send whispers and subtles to dead chat."))
 		return TRUE
 
 	AddComponent(/datum/component/no_ghost_messages)
-	to_chat(src, span_notice("You will no longer send whipsers and subtles to dead chat."))
+	to_chat(src, span_notice("You will no longer send whispers and subtles to dead chat."))
 	return TRUE
 
 /datum/component/no_ghost_messages/Initialize(...)
