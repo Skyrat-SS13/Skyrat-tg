@@ -238,14 +238,15 @@
 
 	//SKYRAT EDIT ADD - RP RECORDS
 	if(past_general_records != "")
-		final_paper_text += "\nGeneral Records:\n[past_general_records]\n"
+		final_paper_text += "<br><B>General Records:</B>"
+		final_paper_text += "<br>[past_general_records]<br>"
 	//SKYRAT EDIT ADD END
-	
 	final_paper_text += "<center><B>Security Data</B></center><br><br>"
 
 	//SKYRAT EDIT ADDITION START - RP RECORDS
 	if(past_security_records != "")
-		final_paper_text += "<br>Security Records:<br>[past_security_records]<br>"
+		final_paper_text += "<B>Security Records:</B>"
+		final_paper_text += "<br>[past_security_records]<br>"
 	//SKYRAT EDIT END
 
 	final_paper_text += "Crimes:<br>"
@@ -293,7 +294,10 @@
 		final_paper_text += "- [description]<br>"
 
 	printed_paper.name = "SR-[print_count] '[name]'"
-	printed_paper.add_raw_text(final_paper_text)
+
+	/// SKYRAT EDIT ADD - TRUE
+	printed_paper.add_raw_text(final_paper_text,TRUE)
+	/// SKYRAT EDIT ADD END
 	printed_paper.update_appearance()
 
 	return printed_paper
