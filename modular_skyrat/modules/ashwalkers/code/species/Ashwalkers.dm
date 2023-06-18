@@ -50,7 +50,7 @@
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
 	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, PROC_REF(check_evolution))
-	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(human_target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER

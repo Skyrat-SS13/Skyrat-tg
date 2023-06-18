@@ -16,6 +16,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "soulcatcher"
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
+	/// What soulcatcher room are verbs sending messages to?
+	var/datum/soulcatcher_room/targeted_soulcatcher_room
+
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
@@ -27,13 +30,36 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return COMPONENT_INCOMPATIBLE
 
 	create_room()
+	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		add_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
 	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		remove_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 	return ..()
 
@@ -44,7 +70,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_name - The name that we want to assign to the created room.
  * * target_desc - The description that we want to assign to the created room.
  */
-/datum/component/soulcatcher/proc/create_room(target_name = "default room", target_desc = "it's a room")
+/datum/component/soulcatcher/proc/create_room(target_name = "Default Room", target_desc = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment.")
 	var/datum/soulcatcher_room/created_room = new(src)
 	created_room.name = target_name
 	created_room.room_description = target_desc
