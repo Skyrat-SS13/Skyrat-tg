@@ -204,16 +204,13 @@
 			target_room.send_message(message_to_send, message_sender, emote)
 			return TRUE
 
-/datum/component/soulcatcher_user/Initialize(...)
+/datum/component/soulcatcher_user/New()
 	. = ..()
 	var/mob/living/soulcatcher_soul/parent_soul = parent
 	if(!istype(parent_soul))
 		return COMPONENT_INCOMPATIBLE
 
 	return TRUE
-
-/datum/component/soulcatcher_user/Destroy(force, silent)
-	. = ..()
 
 /datum/component/soulcatcher_user/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(usr, src, ui)
@@ -231,6 +228,21 @@
 	if(!istype(user_soul))
 		return FALSE //uhoh
 
+	data["user_data"] = list(
+		"name" = user_soul.name,
+		"description" = user_soul.soul_desc,
+		"reference" = REF(user_soul),
+		"internal_hearing" = user_soul.internal_hearing,
+		"internal_sight" = user_soul.internal_sight,
+		"outside_hearing" = user_soul.outside_hearing,
+		"outside_sight" = user_soul.outside_sight,
+		"able_to_emote" = user_soul.able_to_emote,
+		"able_to_speak" = user_soul.able_to_speak,
+		"able_to_rename" = user_soul.able_to_rename,
+		"ooc_notes" = user_soul.ooc_notes,
+		"scan_needed" = user_soul.body_scan_needed,
+	)
+
 	var/datum/soulcatcher_room/current_room = user_soul.current_room.resolve()
 	data["current_room"] = list(
 		"name" = html_decode(current_room.name),
@@ -242,33 +254,39 @@
 
 	for(var/mob/living/soulcatcher_soul/soul in current_room.current_souls)
 		if(soul == user_soul)
-			data["user_data"] = list(
-				"name" = soul.name,
-				"description" = soul.soul_desc,
-				"reference" = REF(soul),
-				"internal_hearing" = soul.internal_hearing,
-				"internal_sight" = soul.internal_sight,
-				"outside_hearing" = soul.outside_hearing,
-				"outside_sight" = soul.outside_sight,
-				"able_to_emote" = soul.able_to_emote,
-				"able_to_speak" = soul.able_to_speak,
-				"ooc_notes" = soul.ooc_notes,
-			)
 			continue
 
 		var/list/soul_list = list(
 			"name" = soul.name,
 			"description" = soul.soul_desc,
+			"ooc_notes" = soul.ooc_notes,
 			"reference" = REF(soul),
-			"internal_hearing" = soul.internal_hearing,
-			"internal_sight" = soul.internal_sight,
-			"outside_hearing" = soul.outside_hearing,
-			"outside_sight" = soul.outside_sight,
-			"able_to_emote" = soul.able_to_emote,
-			"able_to_speak" = soul.able_to_speak,
-			"ooc_notes" = soul.ooc_notes
 		)
 		data["souls"] += list(soul_list)
 
 	return data
+
+/datum/component/soulcatcher_user/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/soulcatcher_soul/user_soul = parent
+	if(!istype(user_soul))
+		return FALSE
+
+	switch(action)
+		if("change_name")
+			var/new_name = tgui_input_text(usr, "Enter a new name", "Soulcatcher", user_soul.name)
+			if(!new_name)
+				return FALSE
+
+			user_soul.change_name(new_name)
+			return TRUE
+
+		if("reset_name")
+			if(tgui_alert(usr, "Do you wish to reset your name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+				return FALSE
+
+			user_soul.reset_name()
 

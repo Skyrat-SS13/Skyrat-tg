@@ -21,6 +21,8 @@
 	var/able_to_emote = TRUE
 	/// Is the soul able to speak inside the soulcatcher room?
 	var/able_to_speak = TRUE
+	/// Is the soul able to change their own name?
+	var/able_to_rename = TRUE
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
@@ -39,6 +41,11 @@
 
 	var/datum/action/innate/leave_soulcatcher/leave_action = new
 	leave_action.Grant(src)
+
+	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new
+	soulcatcher_action.Grant(src)
+	var/datum/component/soulcatcher_user/user_component = AddComponent(/datum/component/soulcatcher_user)
+	soulcatcher_action.soulcatcher_user_component = WEAKREF(user_component)
 
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
@@ -187,3 +194,20 @@
 		return FALSE
 
 	parent_soul.leave_soulcatcher()
+
+/datum/action/innate/soulcatcher_user
+	name = "Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher"
+	/// What soulcatcher user component are we bringing up the menu for?
+	var/datum/weakref/soulcatcher_user_component
+
+/datum/action/innate/soulcatcher_user/Activate()
+	. = ..()
+	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
+	if(!user_component)
+		return FALSE
+
+	user_component.ui_interact(owner)

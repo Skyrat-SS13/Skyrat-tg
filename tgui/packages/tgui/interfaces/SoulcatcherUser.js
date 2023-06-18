@@ -20,134 +20,101 @@ export const SoulcatcherUser = (props, context) => {
             {' '}
             {current_room.description}
           </BlockQuote>
-        </Section>
+          <br />
+          <Box textAlign="center" fontSize="15px" opacity={0.8}>
+            <b>{user_data.name} </b>
+            {!user_data.scan_needed && user_data.able_to_rename ? (
+              <>
+                <Button
+                  color="green"
+                  icon="pen"
+                  tooltip="Change your name."
+                  onClick={() => act('change_name', {})}
+                />
+                <Button
+                  color="red"
+                  icon="arrow-rotate-left"
+                  tooltip="Reset your name."
+                  onClick={() => act('reset_name', {})}
+                />
+              </>
+            ) : (
+              <> </>
+            )}
+          </Box>
+          <Divider />
+          <Collapsible title="Flavor Text">
+            <BlockQuote preserveWhitespace>{user_data.description}</BlockQuote>
+          </Collapsible>
+          <Collapsible title="OOC Notes">
+            <BlockQuote preserveWhitespace>{user_data.ooc_notes}</BlockQuote>
+          </Collapsible>
+          <Collapsible title="Soul Info">
+            <LabeledList textAlign>
+              <LabeledList.Item label="Ability to see outside">
+                {user_data.outside_sight ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to hear outside">
+                {user_data.outside_hearing ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to see inside">
+                {user_data.internal_sight ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to hear inside">
+                {user_data.internal_hearing ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to speak">
+                {user_data.able_to_speak ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to emote">
+                {user_data.able_to_emote ? 'Enabled' : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Ability to change name">
+                {user_data.able_to_rename && !user_data.scan_needed
+                  ? 'Enabled'
+                  : 'Disabled'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Body Scan Needed">
+                {user_data.scan_needed ? 'True' : 'False'}
+              </LabeledList.Item>
+            </LabeledList>
+          </Collapsible>
 
-        {souls ? (
-          <>
-            <br />
-            <Box textAlign="center" fontSize="15px" opacity={0.8}>
-              <b>Other Souls</b>
-            </Box>
-            <Divider />
-            <Flex direction="column">
-              {souls.map((soul) => (
-                <Flex.Item key={soul.key}>
-                  <Collapsible title={soul.name}>
-                    <Box textAlign="center" fontSize="13px" opacity={0.8}>
-                      <b>Flavor Text</b>
-                    </Box>
-                    <Divider />
-                    <BlockQuote preserveWhitespace>
-                      {soul.description}
-                    </BlockQuote>
-                    <br />
-                    <Box textAlign="center" fontSize="13px" opacity={0.8}>
-                      <b>OOC Notes</b>
-                    </Box>
-                    <Divider />
-                    <BlockQuote preserveWhitespace>{soul.ooc_notes}</BlockQuote>
-                    <br />
-                    <LabeledList>
-                      <LabeledList.Item label="Outside Hearing">
-                        <Button
-                          color={soul.outside_hearing ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to hear the outside world?"
-                          onClick={() =>
-                            act('toggle_soul_outside_sense', {
-                              target_soul: soul.reference,
-                              sense_to_change: 'hearing',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.outside_hearing ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Outside Sight">
-                        <Button
-                          color={soul.outside_sight ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to see the outside world?"
-                          onClick={() =>
-                            act('toggle_soul_outside_sense', {
-                              target_soul: soul.reference,
-                              sense_to_change: 'sight',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.outside_sight ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Hearing">
-                        <Button
-                          color={soul.internal_hearing ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to hear inside the room?"
-                          onClick={() =>
-                            act('toggle_soul_sense', {
-                              target_soul: soul.reference,
-                              sense_to_change: 'hearing',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.internal_hearing ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Sight">
-                        <Button
-                          color={soul.internal_sight ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to see inside the room?"
-                          onClick={() =>
-                            act('toggle_soul_sense', {
-                              target_soul: soul.reference,
-                              sense_to_change: 'sight',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.internal_sight ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Speech">
-                        <Button
-                          color={soul.able_to_speak ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to speak?"
-                          onClick={() =>
-                            act('toggle_soul_communication', {
-                              target_soul: soul.reference,
-                              communication_type: 'speech',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.able_to_speak ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Emote">
-                        <Button
-                          color={soul.able_to_emote ? 'green' : 'red'}
-                          fluid
-                          tooltip="Is the soul able to emote?"
-                          onClick={() =>
-                            act('toggle_soul_communication', {
-                              target_soul: soul.reference,
-                              communication_type: 'emote',
-                              room_ref: room.reference,
-                            })
-                          }>
-                          {soul.able_to_emote ? 'Enabled' : 'Disabled'}
-                        </Button>
-                      </LabeledList.Item>
-                    </LabeledList>
-                    <br />
-                  </Collapsible>
-                </Flex.Item>
-              ))}
-            </Flex>
-          </>
-        ) : (
-          <> </>
-        )}
+          {souls && user_data.internal_sight ? (
+            <>
+              <br />
+              <Box textAlign="center" fontSize="15px" opacity={0.8}>
+                <b>Souls</b>
+              </Box>
+              <Divider />
+              <Flex direction="column">
+                {souls.map((soul) => (
+                  <Flex.Item key={soul.key}>
+                    <Collapsible title={soul.name}>
+                      <Box textAlign="center" fontSize="13px" opacity={0.8}>
+                        <b>Flavor Text</b>
+                      </Box>
+                      <Divider />
+                      <BlockQuote preserveWhitespace>
+                        {soul.description}
+                      </BlockQuote>
+                      <br />
+                      <Box textAlign="center" fontSize="13px" opacity={0.8}>
+                        <b>OOC Notes</b>
+                      </Box>
+                      <Divider />
+                      <BlockQuote preserveWhitespace>
+                        {soul.ooc_notes}
+                      </BlockQuote>
+                    </Collapsible>
+                  </Flex.Item>
+                ))}
+              </Flex>
+            </>
+          ) : (
+            <> </>
+          )}
+        </Section>
       </Window.Content>
     </Window>
   );
