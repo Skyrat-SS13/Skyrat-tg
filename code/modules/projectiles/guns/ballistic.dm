@@ -402,16 +402,13 @@
 			return
 
 	return FALSE
-<<<<<<< HEAD
 */ // SKYRAT EDIT END
-=======
 
 /obj/item/gun/ballistic/proc/check_if_held(mob/user)
 	if(src != user.get_inactive_held_item())
 		return FALSE
 	return TRUE
 
->>>>>>> ed0ac95c98b (Fixes various bow issues and includes new sounds for the bow (#75828))
 /obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(magazine && chambered.loaded_projectile && can_misfire && misfire_probability > 0)
 		if(prob(misfire_probability))
