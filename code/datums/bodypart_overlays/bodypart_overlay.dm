@@ -51,8 +51,8 @@
 			return "FRONT_UNDER"
 		if(-ABOVE_BODY_FRONT_HEAD_LAYER)
 			return "FRONT_OVER"
-		if(-FACEMASK_LAYER)
-			return "FRONT_GLASSES"
+		if(-HEAD_LAYER)
+			return "FRONT_OVER_HAIR"
 		//SKYRAT EDIT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
@@ -70,7 +70,7 @@
 		if(EXTERNAL_FRONT_OVER)
 			return -ABOVE_BODY_FRONT_HEAD_LAYER
 		if(EXTERNAL_FRONT_ABOVE_HAIR)
-			return -FACEMASK_LAYER
+			return -HEAD_LAYER
 		//SKYRAT EDIT ADDITION END
 
 ///Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit
