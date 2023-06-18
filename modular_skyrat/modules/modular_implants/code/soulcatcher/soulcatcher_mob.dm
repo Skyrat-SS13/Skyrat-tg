@@ -29,7 +29,6 @@
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
 
-
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
 	if(!outside_sight)
@@ -37,6 +36,9 @@
 
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
+
+	var/datum/action/innate/leave_soulcatcher/leave_action = new
+	leave_action.Grant(src)
 
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
@@ -58,7 +60,7 @@
 
 	return outside_hearing
 
-/// Attemp to leave the soulcatcher.
+/// Checks if the mob wants to leave the soulcatcher. If they do and are able to leave, they are booted out.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
 	set name = "Leave Soulcatcher"
 	set category = "IC"
@@ -155,3 +157,18 @@
 
 /datum/emote/living
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/soulcatcher_soul)
+
+/datum/action/innate/leave_soulcatcher
+	name = "Leave Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher_exit"
+
+/datum/action/innate/leave_soulcatcher/Activate()
+	. = ..()
+	var/mob/living/soulcatcher_soul/parent_soul = owner
+	if(!parent_soul)
+		return FALSE
+
+	parent_soul.leave_soulcatcher()

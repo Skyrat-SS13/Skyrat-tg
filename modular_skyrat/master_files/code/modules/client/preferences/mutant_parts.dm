@@ -491,6 +491,8 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
+	check_mode = TRICOLOR_CHECK_ACCESSORY
+	type_to_check = /datum/preference/choiced/mutant_choice/ipc_screen
 
 /// IPC Antennas
 
@@ -507,6 +509,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
+	check_mode = TRICOLOR_CHECK_ACCESSORY
 	type_to_check = /datum/preference/choiced/mutant_choice/synth_antenna
 
 /datum/preference/tri_bool/synth_antenna_emissive
@@ -514,6 +517,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
+	check_mode = TRICOLOR_CHECK_ACCESSORY
 	type_to_check = /datum/preference/choiced/mutant_choice/synth_antenna
 
 /// IPC Chassis

@@ -449,7 +449,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, .proc/add_examine)
 
 /datum/component/nif_examine/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
