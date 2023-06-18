@@ -343,6 +343,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/costume/maidheadband
 	additional_tooltip_contents = list("Larger headband from the maid rework. Fits around head and ears.")
 
+/datum/loadout_item/head/fakemaid
+	name = "Suspicious Maid Headband"
+	item_path = /obj/item/clothing/head/costume/maidheadband/syndicate/fake
+
 /datum/loadout_item/head/wig
 	name = "Wig"
 	item_path = /obj/item/clothing/head/wig

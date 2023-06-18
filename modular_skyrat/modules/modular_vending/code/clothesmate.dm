@@ -149,4 +149,7 @@
 		/obj/item/clothing/suit/brownbattlecoat = 1,
 		/obj/item/clothing/suit/blackfurrich = 1,
 		/obj/item/clothing/suit/frenchtrench = 1,
+		/obj/item/clothing/head/costume/maidheadband/syndicate/fake = 1,
+		/obj/item/clothing/gloves/combat/maid/fake = 1, //effectively reskinned black gloves
+		/obj/item/clothing/under/syndicate/skyrat/maid/fake = 1,
 	)

@@ -142,10 +142,18 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/costume.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/costume.dmi'
 
+/obj/item/clothing/head/costume/maidheadband/syndicate/fake
+	name = "suspicious maid headband"
+
 /obj/item/clothing/gloves/combat/maid
 	name = "combat maid sleeves"
 	desc = "These 'tactical' gloves and sleeves are fireproof and electrically insulated. Warm to boot."
 	icon_state = "syndimaid_arms"
+
+/obj/item/clothing/gloves/combat/maid/fake
+	name = "suspicious maid sleeves"
+	desc = "These 'tactical' gloves and sleeves are pretty silly-looking, despite their warmth."
+	siemens_coefficient = 1
 
 /obj/item/clothing/under/syndicate/skyrat/maid
 	name = "tactical maid outfit"
@@ -160,6 +168,17 @@
 	var/obj/item/clothing/accessory/maidcorset/syndicate/A = new (src)
 	attach_accessory(A)
 
+/obj/item/clothing/under/syndicate/skyrat/maid/fake
+	name = "suspicious maid outfit"
+	desc = "A 'tactical' skirtleneck fashioned to the likeness of a maid outfit."
+	armor_type = null
+
+/obj/item/clothing/under/syndicate/skyrat/maid/fake/Initialize(mapload)
+	. = ..()
+	var/obj/item/clothing/accessory/maidcorset/syndicate/fake/A = new (src)
+	attach_accessory(A)
+
+
 /obj/item/clothing/accessory/maidcorset/syndicate
 	name = "syndicate maid apron"
 	desc = "Practical? No. Tactical? Also no. Cute? Most definitely yes."
@@ -168,6 +187,9 @@
 	icon_state = "syndimaid_corset"
 	minimize_when_attached = FALSE
 	attachment_slot = null
+
+/obj/item/clothing/accessory/maidcorset/syndicate/fake
+	name = "suspicious maid apron"
 
 //Wintercoat & Hood
 /obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate
