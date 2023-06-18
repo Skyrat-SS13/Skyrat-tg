@@ -220,7 +220,7 @@
 	icon_state = "plasma_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/single
 
 /obj/item/ammo_casing/caseless/laser/double
@@ -229,7 +229,7 @@
 	icon_state = "plasma_shell2"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/double
 
 /obj/item/ammo_casing/caseless/laser/bounce
@@ -238,7 +238,7 @@
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/bounce
 
 /obj/item/ammo_casing/caseless/laser/bounce/disabler
