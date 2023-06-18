@@ -90,12 +90,12 @@
 	name = "security cattleman hat"
 	desc = "A security cattleman hat, perfect for any true lawman."
 	greyscale_colors = "#39393F#3F6E9E"
-	armor_type = /datum/armor/headwear_security //this gets defined in Goofsec's overrides
+	armor_type = /datum/armor/head_helmet
 	flags_1 = NONE //No recoloring presets
 
 /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
 	name = "wide brimmed security cattleman hat"
 	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
 	greyscale_colors = "#39393F#3F6E9E"
-	armor_type = /datum/armor/headwear_security
+	armor_type = /datum/armor/head_helmet
 	flags_1 = NONE //No recoloring presets
