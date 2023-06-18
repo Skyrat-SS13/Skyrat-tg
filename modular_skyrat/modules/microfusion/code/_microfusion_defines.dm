@@ -45,6 +45,8 @@
 #define GUN_SLOT_RAIL "rail"
 /// Unique slots, can hold as many as you want.
 #define GUN_SLOT_UNIQUE "unique"
+/// Camo slot. Because why would you put four overlapping camos on your gun?
+#define GUN_SLOT_CAMO "camo"
 
 /// Max name size for changing names
 #define GUN_MAX_NAME_CHARS 20
