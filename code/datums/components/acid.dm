@@ -80,13 +80,9 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	return ..()
 
 /datum/component/acid/RegisterWithParent()
-<<<<<<< HEAD
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-=======
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(parent, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
->>>>>>> 1bede4dcff9 (Acid particles (+unsorted acid/burning/thermite component changes) (#75248))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
 	if(isturf(parent))
@@ -96,13 +92,9 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /datum/component/acid/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-<<<<<<< HEAD
-		COMSIG_PARENT_EXAMINE,
-=======
 		COMSIG_ATOM_ATTACK_HAND,
 		COMSIG_ATOM_EXAMINE,
 		COMSIG_ATOM_EXPOSE_REAGENT,
->>>>>>> 1bede4dcff9 (Acid particles (+unsorted acid/burning/thermite component changes) (#75248))
 		COMSIG_ATOM_UPDATE_OVERLAYS,
 		COMSIG_COMPONENT_CLEAN_ACT,
 	))

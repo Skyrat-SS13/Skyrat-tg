@@ -8152,19 +8152,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/tram/left)
-"bwk" = (
-/obj/effect/landmark/navigate_destination/dockescpod2,
-/obj/effect/turf_decal/trimline/red/filled/corner,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/window/right/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/security/office)
 "bwp" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/power/solar{
@@ -17798,6 +17785,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"eVs" = (
+/obj/structure/ladder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "eVz" = (
 /turf/open/floor/grass,
 /area/station/service/hydroponics)
@@ -26107,6 +26099,10 @@
 /obj/machinery/bci_implanter,
 /turf/open/floor/iron,
 /area/station/science/explab)
+"iit" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "iiw" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
@@ -29058,10 +29054,6 @@
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
 /area/station/ai_monitored/command/nuke_storage)
-"jln" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "jlo" = (
 /obj/machinery/conveyor/inverted{
 	dir = 9;
@@ -35376,6 +35368,14 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/cargo/miningdock)
+"lxr" = (
+/obj/item/kirbyplants/random/dead/research_director,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/station/command/heads_quarters/rd)
 "lxH" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/engineering_hacking{
@@ -39034,19 +39034,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
-"mMD" = (
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=8";
-	location = "Security";
-	name = "navigation beacon (Security Delivery)"
-	},
-/obj/machinery/door/window/right/directional/west,
-/obj/effect/turf_decal/loading_area{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/department/security)
 "mMG" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/dim/directional/east,
@@ -50273,6 +50260,22 @@
 "qVr" = (
 /turf/closed/wall/r_wall,
 /area/station/science/xenobiology)
+"qVC" = (
+/obj/effect/landmark/navigate_destination/dockescpod2,
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Security Delivery Chute";
+	req_access = list("security")
+	},
+/turf/open/floor/plating,
+/area/station/security/office)
 "qVI" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -54765,6 +54768,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/medical/virology)
+"sAg" = (
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Security";
+	name = "navigation beacon (Security Delivery)"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/security)
 "sAE" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
@@ -56398,14 +56413,6 @@
 "tdx" = (
 /turf/closed/wall,
 /area/station/maintenance/port/aft)
-"tdB" = (
-/obj/item/kirbyplants/random/dead/research_director,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/cafeteria,
-/area/station/command/heads_quarters/rd)
 "tdO" = (
 /obj/machinery/power/smes,
 /obj/machinery/light/small/directional/north,
@@ -59346,6 +59353,15 @@
 "ufO" = (
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+"ufV" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Security Maintenance Hatch"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/eva)
 "ufY" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/ladder,
@@ -67912,11 +67928,6 @@
 /obj/effect/turf_decal/trimline/white/warning,
 /turf/open/floor/iron,
 /area/station/maintenance/tram/right)
-"xjD" = (
-/obj/structure/ladder,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "xjV" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
@@ -70397,15 +70408,6 @@
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"ygT" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Security Maintenance Hatch"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/eva)
 "ygY" = (
 /obj/effect/turf_decal/siding/thinplating/corner{
 	dir = 4
@@ -150733,7 +150735,7 @@ inO
 inO
 awP
 stz
-ygT
+ufV
 gKX
 ayR
 eeL
@@ -158170,7 +158172,7 @@ idF
 dYe
 auR
 bLr
-bwk
+qVC
 nPw
 lMQ
 tfk
@@ -158427,7 +158429,7 @@ idF
 nqM
 tag
 tFJ
-mMD
+sAg
 tFJ
 nle
 uIt
@@ -168214,7 +168216,7 @@ naB
 dJd
 fad
 llE
-xjD
+eVs
 mdp
 mUL
 fhg
@@ -168471,7 +168473,7 @@ tqV
 sfv
 guL
 fKn
-jln
+iit
 mdp
 mUL
 oCx
@@ -182140,7 +182142,7 @@ mGo
 dLO
 jwe
 rBb
-tdB
+lxr
 tes
 lWv
 xPR

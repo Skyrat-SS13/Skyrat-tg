@@ -70,13 +70,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_FIRE_ACT, PROC_REF(on_fire_act))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(clean_react))
-<<<<<<< HEAD
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(attackby_react))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(parent_qdeleting)) //probably necessary because turfs are wack
-=======
 	RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(parent_qdeleting)) //probably necessary because turfs are wack
->>>>>>> 1bede4dcff9 (Acid particles (+unsorted acid/burning/thermite component changes) (#75248))
 	var/turf/turf_parent = parent
 	turf_parent.update_appearance()
 
@@ -88,13 +82,7 @@
 		COMSIG_ATOM_FIRE_ACT,
 		COMSIG_ATOM_UPDATE_OVERLAYS,
 		COMSIG_COMPONENT_CLEAN_ACT,
-<<<<<<< HEAD
-		COMSIG_PARENT_ATTACKBY,
-		COMSIG_PARENT_EXAMINE,
-		COMSIG_PARENT_QDELETING,
-=======
 		COMSIG_QDELETING,
->>>>>>> 1bede4dcff9 (Acid particles (+unsorted acid/burning/thermite component changes) (#75248))
 	))
 	var/turf/turf_parent = parent
 	turf_parent.update_appearance()
@@ -132,13 +120,8 @@
 	fakefire = new(parent_turf)
 	burn_callback = CALLBACK(src, PROC_REF(burn_parent), user)
 	burn_timer = addtimer(burn_callback, min(amount * 0.35 SECONDS, 20 SECONDS), TIMER_STOPPABLE)
-<<<<<<< HEAD
-	//unregister everything mechanical, we are burning up
-	UnregisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_PARENT_ATTACKBY, COMSIG_ATOM_FIRE_ACT))
-=======
 	//unregister everything related to burning
 	UnregisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_ATOM_ATTACKBY, COMSIG_ATOM_FIRE_ACT))
->>>>>>> 1bede4dcff9 (Acid particles (+unsorted acid/burning/thermite component changes) (#75248))
 
 /**
  * Used to actually melt parent
@@ -223,7 +206,7 @@
 	if(thing.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		thermite_melt(user)
 
-/// Signal handler for COMSIG_PARENT_QDELETING, necessary because turfs can be weird with qdel()
+/// Signal handler for COMSIG_QDELETING, necessary because turfs can be weird with qdel()
 /datum/component/thermite/proc/parent_qdeleting(datum/source)
 	SIGNAL_HANDLER
 
