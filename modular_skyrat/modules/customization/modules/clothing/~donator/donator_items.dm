@@ -182,12 +182,6 @@
 	return ..()
 
 
-/obj/vehicle/ridden/wheelchair/hardlight/post_buckle_mob(mob/living/user)
-	. = ..()
-
-	set_density(TRUE)
-
-
 /obj/vehicle/ridden/wheelchair/hardlight/post_unbuckle_mob()
 	. = ..()
 
