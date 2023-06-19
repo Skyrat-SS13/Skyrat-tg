@@ -19,6 +19,7 @@
 	icon_state = "beret_badge"
 	greyscale_colors = "#3F3C40#375989"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/head_helmet
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
 	greyscale_config = /datum/greyscale_config/beret
@@ -27,8 +28,6 @@
 	icon_state = "beret"
 	greyscale_colors = "#EAEAEA"
 
-
-
 /obj/item/clothing/head/hats/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
 	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."
@@ -36,11 +35,13 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_sergeant_cap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/hats_warden
 
 /obj/item/clothing/head/hats/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/hats_hos
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	name = "warden's peacekeeper beret"
@@ -50,6 +51,7 @@
 	greyscale_colors = "#3F3C40#FF0000#00AEEF"
 	icon_state = "beret_badge_fancy_twist"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/hats_warden
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	name = "peacekeeper hud glasses"

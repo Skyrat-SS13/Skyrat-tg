@@ -6,7 +6,7 @@
 /obj/item/clothing/glasses/hud/ar
 	name = "\improper AR glasses"
 	icon = 'icons/obj/clothing/glasses.dmi'
-	icon_state = "glasses"
+	icon_state = "glasses_regular"
 	desc = "A heads-up display that provides important info in (almost) real time. These don't really seem to work"
 	actions_types = list(/datum/action/item_action/toggle_mode)
 	glass_colour_type = /datum/client_colour/glass_colour/gray
