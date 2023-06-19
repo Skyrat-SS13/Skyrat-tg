@@ -46,6 +46,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
+
+	targeted_soulcatcher_room = null
 	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
