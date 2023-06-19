@@ -284,7 +284,7 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to rename themselves?"
                               onClick={() => act('toggle_soul_renaming', {})}>
-                              {soul.able_to_emote ? 'Enabled' : 'Disabled'}
+                              {soul.able_to_rename ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                         </LabeledList>
