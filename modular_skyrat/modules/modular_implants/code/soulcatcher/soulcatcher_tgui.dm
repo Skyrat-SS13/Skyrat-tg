@@ -38,7 +38,9 @@
 				"outside_sight" = soul.outside_sight,
 				"able_to_emote" = soul.able_to_emote,
 				"able_to_speak" = soul.able_to_speak,
-				"ooc_notes" = soul.ooc_notes
+				"able_to_rename" = soul.able_to_rename,
+				"ooc_notes" = soul.ooc_notes,
+				"scan_needed" = soul.body_scan_needed,
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -188,6 +190,24 @@
 				target_soul.able_to_speak = !target_soul.able_to_speak
 
 			return TRUE
+
+		if("toggle_soul_renaming")
+			target_soul.able_to_rename = !target_soul.able_to_rename
+			return TRUE
+
+		if("change_name")
+			var/new_name = tgui_input_text(usr, "Enter a new name for [target_soul]", "Soulcatcher", target_soul)
+			if(!new_name)
+				return FALSE
+
+			target_soul.change_name(new_name)
+			return TRUE
+
+		if("reset_name")
+			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+				return FALSE
+
+			target_soul.reset_name()
 
 		if("send_message")
 			var/message_to_send = ""
