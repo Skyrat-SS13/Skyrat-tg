@@ -283,7 +283,12 @@ export const Soulcatcher = (props, context) => {
                               color={soul.able_to_rename ? 'green' : 'red'}
                               fluid
                               tooltip="Is the soul able to rename themselves?"
-                              onClick={() => act('toggle_soul_renaming', {})}>
+                              onClick={() =>
+                                act('toggle_soul_renaming', {
+                                  target_soul: soul.reference,
+                                  room_ref: room.reference,
+                                })
+                              }>
                               {soul.able_to_rename ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
