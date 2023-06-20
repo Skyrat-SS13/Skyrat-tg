@@ -15,13 +15,17 @@
 	var/datum/action/innate/soulcatcher/soulcatcher_action
 	/// a list containing saved soulcatcher rooms
 	var/list/saved_soulcatcher_rooms = list()
+	/// The item we are using to store the souls
+	var/obj/item/soulcatcher_holder/soul_holder
 
 /datum/nifsoft/soulcatcher/New()
 	. = ..()
 	soulcatcher_action = new
 	soulcatcher_action.Grant(linked_mob)
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
-	var/datum/component/soulcatcher/new_soulcatcher = linked_mob.AddComponent(/datum/component/soulcatcher/nifsoft)
+
+	soul_holder = new(linked_mob)
+	var/datum/component/soulcatcher/new_soulcatcher = soul_holder.AddComponent(/datum/component/soulcatcher/nifsoft)
 
 	for(var/room in saved_soulcatcher_rooms)
 		new_soulcatcher.create_room(room, saved_soulcatcher_rooms[room])
@@ -61,6 +65,8 @@
 		var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
 		if(current_soulcatcher)
 			qdel(current_soulcatcher)
+
+	qdel(soul_holder)
 
 	return ..()
 
@@ -106,3 +112,9 @@
 		return FALSE
 
 	soulcatcher_nifsoft.activate()
+
+/// This is the object we use if we give a mob soulcatcher. Having the souls directly parented could cause issues.
+/obj/item/soulcatcher_holder
+	name = "Soul Holder"
+	desc = "You probably shouldn't be seeing this..."
+

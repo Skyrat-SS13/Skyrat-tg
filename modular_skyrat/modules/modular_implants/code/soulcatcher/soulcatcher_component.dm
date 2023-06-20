@@ -55,12 +55,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
 /datum/component/soulcatcher/proc/get_current_holder()
 	var/mob/living/holder
-	if(ismob(parent))
-		holder = parent
 
-	else if(istype(parent, /obj/item))
-		var/obj/item/parent_item = parent
-		holder = parent_item.loc
+	if(!istype(parent, /obj/item))
+		return FALSE
+
+	var/obj/item/parent_item = parent
+	holder = parent_item.loc
 
 	if(!istype(holder))
 		return FALSE
