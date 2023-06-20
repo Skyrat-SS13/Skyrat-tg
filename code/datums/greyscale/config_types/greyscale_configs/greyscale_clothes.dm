@@ -36,8 +36,6 @@
 	json_config = 'code/datums/greyscale/json_configs/sombrero_base_worn.json'
 
 /* SKYRAT EDIT START - Beret-lliant (moved to modular_skyrat/modules/berets/code/datums/config_types)
-=======
->>>>>>> bfe651c9009 (Sorts the Greyscale Configs files (#76090)):code/datums/greyscale/config_types/greyscale_configs/greyscale_clothes.dm
 /datum/greyscale_config/beret
 	name = "Beret"
 	icon_file = 'icons/obj/clothing/head/beret.dmi'
