@@ -208,9 +208,9 @@
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Oddities",
-		SPECIES_PERK_DESC = "[plural_form] are unable to gain nutrition from traditional foods. Instead, you must either use a cyborg charger or extend a \
-		wire from your arm to draw power from an APC. In addition to this, welders and wires are your sutures and mesh and you are immune to the metabolization effects of all chemicals - a blessing \
-		or a curse, depending on the mood of the local chemist."
+		SPECIES_PERK_DESC = "[plural_form] are unable to gain nutrition from traditional foods. Instead, you must either consume welding fuel or extend a \
+		wire from your arm to draw power from an APC. In addition to this, welders and wires are your sutures and mesh and only specific chemicals even metabolize inside \
+		of you. This ranges from whiskey, to synthanol, to various obscure medicines."
 	))
 
 	return perk_descriptions
