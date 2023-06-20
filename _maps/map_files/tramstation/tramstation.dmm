@@ -8900,22 +8900,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/station/ai_monitored/turret_protected/aisat/hallway)
-"bJR" = (
-/obj/effect/landmark/navigate_destination/dockescpod2,
-/obj/effect/turf_decal/trimline/red/filled/corner,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/window/brigdoor/left/directional/west{
-	name = "Security Delivery Chute";
-	req_access = list("security")
-	},
-/turf/open/floor/plating,
-/area/station/security/office)
 "bJT" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/machinery/light/directional/south,
@@ -10635,15 +10619,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
-"ckk" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Security Maintenance Hatch"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/eva)
 "cko" = (
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance"
@@ -13226,6 +13201,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"dhq" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/flora/tree/palm/style_random,
+/obj/structure/flora/coconuts,
+/turf/open/misc/grass/jungle,
+/area/station/science/explab)
 "dhC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -17810,6 +17791,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"eVs" = (
+/obj/structure/ladder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "eVz" = (
 /turf/open/floor/grass,
 /area/station/service/hydroponics)
@@ -20812,10 +20798,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
-"ggt" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall,
-/area/station/maintenance/disposal)
 "ggw" = (
 /obj/machinery/door/poddoor{
 	id = "QMLoaddoor2";
@@ -26119,6 +26101,10 @@
 /obj/machinery/bci_implanter,
 /turf/open/floor/iron,
 /area/station/science/explab)
+"iit" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "iiw" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
@@ -35384,6 +35370,14 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/cargo/miningdock)
+"lxr" = (
+/obj/item/kirbyplants/random/dead/research_director,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/station/command/heads_quarters/rd)
 "lxH" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/engineering_hacking{
@@ -38687,10 +38681,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
-"mGe" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "mGl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit,
@@ -48296,18 +48286,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom/holding)
-"qjf" = (
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=8";
-	location = "Security";
-	name = "navigation beacon (Security Delivery)"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/department/security)
 "qjA" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -50284,6 +50262,22 @@
 "qVr" = (
 /turf/closed/wall/r_wall,
 /area/station/science/xenobiology)
+"qVC" = (
+/obj/effect/landmark/navigate_destination/dockescpod2,
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Security Delivery Chute";
+	req_access = list("security")
+	},
+/turf/open/floor/plating,
+/area/station/security/office)
 "qVI" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -50716,12 +50710,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
-"rbY" = (
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/structure/flora/tree/palm/style_random,
-/obj/structure/flora/coconuts,
-/turf/open/misc/grass/jungle,
-/area/station/science/explab)
 "rci" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -54713,11 +54701,6 @@
 "syv" = (
 /turf/closed/wall/r_wall,
 /area/station/security/checkpoint/science)
-"syC" = (
-/obj/structure/ladder,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "syE" = (
 /obj/machinery/rnd/production/circuit_imprinter/department/science,
 /obj/effect/turf_decal/stripes/line{
@@ -54787,6 +54770,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/medical/virology)
+"sAg" = (
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Security";
+	name = "navigation beacon (Security Delivery)"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/security)
 "sAE" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
@@ -59360,6 +59355,15 @@
 "ufO" = (
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+"ufV" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Security Maintenance Hatch"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/eva)
 "ufY" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/ladder,
@@ -64035,14 +64039,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
-"vGN" = (
-/obj/item/kirbyplants/random/dead/research_director,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/cafeteria,
-/area/station/command/heads_quarters/rd)
 "vGP" = (
 /obj/structure/flora/bush/sunny/style_random,
 /obj/item/food/grown/banana,
@@ -118881,7 +118877,7 @@ aac
 vle
 gqc
 oNA
-ggt
+vle
 mbQ
 vle
 xSG
@@ -118914,7 +118910,7 @@ mtI
 fGK
 bwU
 vEl
-rbY
+dhq
 uVa
 oQU
 czu
@@ -150735,7 +150731,7 @@ inO
 inO
 awP
 stz
-ckk
+ufV
 gKX
 ayR
 eeL
@@ -158172,7 +158168,7 @@ idF
 dYe
 auR
 bLr
-bJR
+qVC
 nPw
 lMQ
 tfk
@@ -158429,7 +158425,7 @@ idF
 nqM
 tag
 tFJ
-qjf
+sAg
 tFJ
 nle
 uIt
@@ -168216,7 +168212,7 @@ naB
 dJd
 fad
 llE
-syC
+eVs
 mdp
 mUL
 fhg
@@ -168473,7 +168469,7 @@ tqV
 sfv
 guL
 fKn
-mGe
+iit
 mdp
 mUL
 oCx
@@ -182142,7 +182138,7 @@ mGo
 dLO
 jwe
 rBb
-vGN
+lxr
 tes
 lWv
 xPR
