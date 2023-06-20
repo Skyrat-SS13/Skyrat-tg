@@ -33,12 +33,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
-	var/mob/living/soulcatcher_owner = parent
-	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
-	if(istype(parent_nif))
-		soulcatcher_owner = parent_nif.linked_mob
-
-	if(istype(soulcatcher_owner))
+	var/obj/item/soulcatcher_holder/soul_holder = parent
+	if(istype(soul_holder) && ismob(soul_holder.loc))
+		var/mob/living/soulcatcher_owner = soul_holder.loc
 		add_verb(soulcatcher_owner, list(
 			/mob/living/proc/soulcatcher_say,
 			/mob/living/proc/soulcatcher_emote,
