@@ -334,18 +334,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable)
+		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent))
 			continue
 
-		if(isobj(soulcatcher.parent))
-			var/obj/item/soulcatcher_parent = soulcatcher.parent
-			if(soulcatcher.name != soulcatcher_parent.name)
-				soulcatcher.name = soulcatcher_parent.name
-
-		if(ismob(soulcatcher.parent))
-			var/mob/living/soulcatcher_parent = soulcatcher.parent
-			if(soulcatcher.name != soulcatcher_parent.name)
-				soulcatcher.name = soulcatcher_parent.name
+		var/obj/item/soulcatcher_parent = soulcatcher.parent
+		if(soulcatcher.name != soulcatcher_parent.name)
+			soulcatcher.name = soulcatcher_parent.name
 
 		joinable_soulcatchers += soulcatcher
 
