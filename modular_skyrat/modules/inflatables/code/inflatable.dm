@@ -214,21 +214,26 @@
 /obj/item/inflatable/door/torn
 	torn = TRUE
 
-// The box full of inflatables
 
+/// The storage for the inflatables box.
+/datum/storage/inflatables_box
+	max_slots = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT)
+	max_specific_storage = WEIGHT_CLASS_SMALL
+	max_total_storage = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT) * WEIGHT_CLASS_SMALL
+
+
+/// The box full of inflatables
 /obj/item/storage/inflatable
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
+	storage_type = /datum/storage/inflatables_box
 
 /obj/item/storage/inflatable/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(typesof(/obj/item/inflatable))
-	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
-	atom_storage.max_total_storage = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT) * WEIGHT_CLASS_SMALL
-	atom_storage.max_slots = (BOX_DOOR_AMOUNT + BOX_WALL_AMOUNT)
 
 /obj/item/storage/inflatable/PopulateContents()
 	for(var/i = 0, i < BOX_DOOR_AMOUNT, i++)
