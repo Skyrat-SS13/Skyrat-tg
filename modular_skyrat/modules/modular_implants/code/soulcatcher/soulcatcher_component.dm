@@ -33,12 +33,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
-	var/mob/living/soulcatcher_owner = parent
-	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
-	if(istype(parent_nif))
-		soulcatcher_owner = parent_nif.linked_mob
-
-	if(istype(soulcatcher_owner))
+	var/obj/item/soulcatcher_holder/soul_holder = parent
+	if(istype(soul_holder) && ismob(soul_holder.loc))
+		var/mob/living/soulcatcher_owner = soul_holder.loc
 		add_verb(soulcatcher_owner, list(
 			/mob/living/proc/soulcatcher_say,
 			/mob/living/proc/soulcatcher_emote,
@@ -83,13 +80,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /// Tries to find out who is currently using the soulcatcher, returns the holder. If no holder can be found, returns FALSE
 /datum/component/soulcatcher/proc/get_current_holder()
 	var/mob/living/holder
-	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
-		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
-		holder = target_nif.linked_mob
 
-	else if(istype(parent, /obj/item))
-		var/obj/item/parent_item = parent
-		holder = parent_item.loc
+	if(!istype(parent, /obj/item))
+		return FALSE
+
+	var/obj/item/parent_item = parent
+	holder = parent_item.loc
 
 	if(!istype(holder))
 		return FALSE
@@ -335,18 +331,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable)
+		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent))
 			continue
 
-		if(isobj(soulcatcher.parent))
-			var/obj/item/soulcatcher_parent = soulcatcher.parent
-			if(soulcatcher.name != soulcatcher_parent.name)
-				soulcatcher.name = soulcatcher_parent.name
-
-		if(ismob(soulcatcher.parent))
-			var/mob/living/soulcatcher_parent = soulcatcher.parent
-			if(soulcatcher.name != soulcatcher_parent.name)
-				soulcatcher.name = soulcatcher_parent.name
+		var/obj/item/soulcatcher_parent = soulcatcher.parent
+		if(soulcatcher.name != soulcatcher_parent.name)
+			soulcatcher.name = soulcatcher_parent.name
 
 		joinable_soulcatchers += soulcatcher
 
