@@ -108,8 +108,6 @@
 		"Pride" = "lucifer",
 		"Wrath" = "justice",
 		"Gluttony" = "malina",
-		"Envy" = "zdara",
-		"Vanity" = "cereberus",
 	)
 
 /obj/item/clothing/under/suit/skyrat/inferno/skirt
@@ -120,13 +118,6 @@
 		"Lust" = "modeus",
 		"Sloth" = "pande",
 	)
-
-/obj/item/clothing/under/suit/skyrat/inferno/beeze
-	name = "designer inferno suit"
-	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
-	icon_state = "beeze"
-	obj_flags = null
-	unique_reskin = null
 
 /obj/item/clothing/under/suit/skyrat/helltaker
 	name = "red shirt with white pants"

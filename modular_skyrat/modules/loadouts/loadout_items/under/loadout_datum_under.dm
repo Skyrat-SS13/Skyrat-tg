@@ -822,11 +822,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Inferno Skirt"
 	item_path = /obj/item/clothing/under/suit/skyrat/inferno/skirt
 
-/datum/loadout_item/under/formal/designer_inferno
-	name = "Designer Inferno Suit"
-	item_path = /obj/item/clothing/under/suit/skyrat/inferno/beeze
-	restricted_roles = list(JOB_LAWYER)
-
 /datum/loadout_item/under/formal/pencil
 	name = "Black Pencilskirt"
 	item_path = /obj/item/clothing/under/suit/skyrat/pencil
