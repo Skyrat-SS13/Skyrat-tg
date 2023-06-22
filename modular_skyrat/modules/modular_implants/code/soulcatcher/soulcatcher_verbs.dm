@@ -32,7 +32,11 @@
 
 /// Attempts to find and return the soulcatcher the parent mob is currently using. If none can be found, returns `FALSE`
 /mob/living/proc/find_soulcatcher()
-	var/datum/component/soulcatcher/target_soulcatcher = GetComponent(/datum/component/soulcatcher)
+	var/obj/item/soulcatcher_holder/soul_holder = locate(/obj/item/soulcatcher_holder) in contents
+	if(!soul_holder)
+		return FALSE
+
+	var/datum/component/soulcatcher/target_soulcatcher = soul_holder.GetComponent(/datum/component/soulcatcher)
 	if(!target_soulcatcher)
 		return FALSE
 

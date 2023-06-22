@@ -19,7 +19,7 @@
 	icon_state = "beret_badge"
 	greyscale_colors = "#3F3C40#375989"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/headwear_security
+	armor_type = /datum/armor/head_helmet
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
 	greyscale_config = /datum/greyscale_config/beret
