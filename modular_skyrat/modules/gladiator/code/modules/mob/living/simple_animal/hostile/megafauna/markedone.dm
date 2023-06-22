@@ -413,7 +413,7 @@
 							"Boo.",
 							"Sup.",
 						)
-			if(prob = 20)
+			if(prob(20))
 				say(message = pick(tele_messages))
 
 /// Bone Knife Throw makes him throw bone knives. woah.
