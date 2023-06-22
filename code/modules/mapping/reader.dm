@@ -107,6 +107,9 @@
 	/// Pulls out model paths for DMM
 	var/static/regex/model_path = new(@'(\/[^\{]*?(?:\{.*?\})?)(?:,|$)', "g")
 
+	/// If we are currently loading this map
+	var/loading = FALSE
+
 	#ifdef TESTING
 	var/turfsSkipped = 0
 	#endif
@@ -249,9 +252,19 @@
 
 #define MAPLOADING_CHECK_TICK \
 	if(TICK_CHECK) { \
+<<<<<<< HEAD
 		SSatoms.map_loader_stop(); \
 		stoplag(); \
 		SSatoms.map_loader_begin(); \
+=======
+		if(loading) { \
+			SSatoms.map_loader_stop(REF(src)); \
+			stoplag(); \
+			SSatoms.map_loader_begin(REF(src)); \
+		} else { \
+			stoplag(); \
+		} \
+>>>>>>> cf92862daf3 (Fixes a runtime in atom init management (#76241))
 	}
 
 // Do not call except via load() above.
@@ -259,7 +272,12 @@
 	PRIVATE_PROC(TRUE)
 	// Tell ss atoms that we're doing maploading
 	// We'll have to account for this in the following tick_checks so it doesn't overflow
+<<<<<<< HEAD
 	SSatoms.map_loader_begin()
+=======
+	loading = TRUE
+	SSatoms.map_loader_begin(REF(src))
+>>>>>>> cf92862daf3 (Fixes a runtime in atom init management (#76241))
 
 	// Loading used to be done in this proc
 	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should stil tell our parents we failed
@@ -272,7 +290,12 @@
 			sucessful = _dmm_load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, new_z)
 
 	// And we are done lads, call it off
+<<<<<<< HEAD
 	SSatoms.map_loader_stop()
+=======
+	SSatoms.map_loader_stop(REF(src))
+	loading = FALSE
+>>>>>>> cf92862daf3 (Fixes a runtime in atom init management (#76241))
 
 	if(new_z)
 		for(var/z_index in bounds[MAP_MINZ] to bounds[MAP_MAXZ])

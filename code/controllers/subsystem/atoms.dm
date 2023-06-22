@@ -173,10 +173,26 @@ SUBSYSTEM_DEF(atoms)
 		stack_trace("We started maploading while we were already maploading. You doing something odd?")
 	initialized_changed += 1
 
+<<<<<<< HEAD
 /datum/controller/subsystem/atoms/proc/clear_tracked_initalize()
 	initialized_changed -= 1
 	if(!initialized_changed)
 		initialized = old_initialized
+=======
+/datum/controller/subsystem/atoms/proc/clear_tracked_initalize(source)
+	if(!length(initialized_state))
+		return
+	for(var/i in length(initialized_state) to 1 step -1)
+		if(initialized_state[i][1] == source)
+			initialized_state.Cut(i, i+1)
+			break
+
+	if(!length(initialized_state))
+		initialized = base_initialized
+		base_initialized = INITIALIZATION_INNEW_REGULAR
+		return
+	initialized = initialized_state[length(initialized_state)][2]
+>>>>>>> cf92862daf3 (Fixes a runtime in atom init management (#76241))
 
 /// Returns TRUE if anything is currently being initialized
 /datum/controller/subsystem/atoms/proc/initializing_something()
