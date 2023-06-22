@@ -1,11 +1,11 @@
 /obj/item/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/items_and_weapons.dmi'
+	icon = 'modular_skyrat/modules/space_vines/items_and_weapons.dmi'
 	icon_state = "scythe_t1"
-	worn_icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/back.dmi'
-	lefthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_righthand.dmi'
+	worn_icon = 'modular_skyrat/modules/space_vines/back.dmi'
+	lefthand_file = 'modular_skyrat/modules/space_vines/polearms_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/space_vines/polearms_righthand.dmi'
 	force = 10
 	throwforce = 5
 	throw_speed = 2
@@ -56,25 +56,21 @@
 	force = 20
 	hit_range = 3
 
-/datum/design/scythe_t1
+/datum/design/scythe
 	name = "Scythe (Tier 1)"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	id = "scythet1"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/scythe/tier1
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_BOTANY)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-/datum/design/scythe_t2
+/datum/design/scythe/tier2
 	name = "Scythe (Tier 2)"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	id = "scythet2"
-	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/scythe/tier2
-	category = list(RND_CATEGORY_EQUIPMENT)
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/techweb_node/scythe_t1
 	id = "t1scythe"

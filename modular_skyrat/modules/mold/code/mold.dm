@@ -133,7 +133,7 @@
 	mold_color = "#e04000"
 	structure_light_color = LIGHT_COLOR_FIRE
 	examine_text = "It feels hot to the touch."
-	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler)
+	mob_types = list(/mob/living/basic/mold/oil_shambler)
 	preferred_atmos_conditions = "co2=30;TEMP=1000"
 	resistance_flags = FIRE_PROOF
 
@@ -163,7 +163,7 @@
 	mold_color = "#6e5100"
 	structure_light_color = LIGHT_COLOR_BROWN
 	examine_text = "It looks like it's rotting."
-	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat)
+	mob_types = list(/mob/living/basic/mold/diseased_rat)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "TEMP=312"
 
@@ -202,7 +202,7 @@
 	mold_color = "#00caa5"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_CYAN
 	examine_text = "You can notice small sparks travelling in the vines."
-	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
+	mob_types = list(/mob/living/basic/mold/electric_mosquito)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "n2=30;TEMP=100"
 
@@ -304,7 +304,7 @@
 	mold_color = "#80ff00"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_GREEN
 	examine_text = "It's glowing a soft green."
-	mob_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
+	mob_types = list(/mob/living/basic/mold/centaur)
 	preferred_atmos_conditions = "tritium=5;TEMP=296"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 
