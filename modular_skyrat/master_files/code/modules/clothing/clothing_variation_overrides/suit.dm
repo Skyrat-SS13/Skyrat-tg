@@ -184,18 +184,13 @@
 
 //Chaplain Suits
 //TG neglected to sort between legged and robed, so we'll have to just manually set each one
-/obj/item/clothing/suit/chaplainsuit/armor/studentuni
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
-
-/obj/item/clothing/suit/chaplainsuit/armor/clock
+/obj/item/clothing/suit/chaplainsuit
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
-/obj/item/clothing/suit/chaplainsuit/armor/templar
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+/obj/item/clothing/suit/chaplainsuit/armor/crusader
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/chaplainsuit/armor/ancient
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+/obj/item/clothing/suit/hooded/chaplain_hoodie
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/chaplainsuit/shrinehand
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
 //End Chaplain Suits
