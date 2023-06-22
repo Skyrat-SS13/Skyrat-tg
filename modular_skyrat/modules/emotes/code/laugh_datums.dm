@@ -34,3 +34,7 @@ GLOBAL_LIST_EMPTY(laugh_types)
 	name = "Insect Laugh"
 	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg')
 	female_laughsounds = null
+/datum/laugh_type/teshari
+	name = "Teshari Laugh"
+	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/tesharilaugh.ogg')
+	female_laughsounds = null

@@ -39,6 +39,8 @@
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(isvox(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
+	if(isteshari(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/tesharicough.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return pick('modular_skyrat/modules/emotes/sound/emotes/male/male_cough_1.ogg',
@@ -55,6 +57,8 @@
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(isvox(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
+	if(isteshari(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/tesharisneeze.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg'
