@@ -930,12 +930,13 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-	if (!istype(my_head))
+	if(!istype(my_head))
 		return
 
 	my_head.update_limb(is_creating = update_limb_data)
 
 	add_overlay(my_head.get_limb_icon())
+<<<<<<< HEAD
 	update_damage_overlays()
 
 	if(my_head && !(HAS_TRAIT(src, TRAIT_HUSK)))
@@ -964,6 +965,8 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 				add_overlay(emissive_appearance)
 			//SKYRAT EDIT END
 
+=======
+>>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 	update_worn_head()
 	update_worn_mask()
 

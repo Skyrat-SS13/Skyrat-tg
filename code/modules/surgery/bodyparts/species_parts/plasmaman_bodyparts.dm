@@ -7,6 +7,12 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+<<<<<<< HEAD
+=======
+	brute_modifier = 1.5 //Plasmemes are weak
+	burn_modifier = 1.5 //Plasmemes are weak
+	head_flags = HEAD_EYESPRITES
+>>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/plasmaman
 	icon = 'icons/mob/species/plasmaman/bodyparts.dmi'
