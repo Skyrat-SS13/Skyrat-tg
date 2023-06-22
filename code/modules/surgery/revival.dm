@@ -89,13 +89,10 @@
 		target.visible_message(span_notice("...[target] wakes up, alive and aware!"))
 		target.emote("gasp")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
-<<<<<<< HEAD
 		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
-=======
 		if(HAS_TRAIT(user, TRAIT_MORBID) && ishuman(user)) //Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 			var/mob/living/carbon/human/morbid_weirdo = user
 			morbid_weirdo.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
->>>>>>> 64eae49042d (Replaces the Reaper Scythe with the Vorpal Scythe (also the Morbid trait) (#75948))
 		return TRUE
 	else
 	//SKYRAT EDIT ADDITION - DNR TRAIT - need this so that people dont just keep spamming the revival surgery; it runs success just bc the surgery steps are done
