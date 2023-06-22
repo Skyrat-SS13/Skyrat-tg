@@ -117,7 +117,7 @@
 		return TRUE
 	balloon_alert(user, "hold it!")
 	return FALSE
-	
+
 
 /obj/item/mail/attack_self(mob/user)
 	if(!unwrap(user))
@@ -142,8 +142,11 @@
 // proc that goes after unwrapping a mail.
 /obj/item/mail/proc/after_unwrap(mob/user)
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)
-	for(var/obj/item/stuff as anything in contents) // Mail and envelope actually can have more than 1 item.
-		user.put_in_hands(stuff)
+	for(var/obj/stuff as anything in contents) // Mail and envelope actually can have more than 1 item.
+		if(isitem(stuff))
+			user.put_in_hands(stuff)
+		else
+			stuff.forceMove(drop_location())
 	playsound(loc, 'sound/items/poster_ripped.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 	return TRUE
@@ -207,7 +210,12 @@
 
 	if(prob(25))
 		special_name = TRUE
-		junk = pick(list(/obj/item/paper/pamphlet/gateway, /obj/item/paper/pamphlet/violent_video_games, /obj/item/paper/fluff/junkmail_redpill, /obj/effect/decal/cleanable/ash))
+		junk = pick(list(
+			/obj/item/paper/pamphlet/gateway,
+			/obj/item/paper/pamphlet/violent_video_games,
+			/obj/item/paper/fluff/junkmail_redpill,
+			/obj/effect/decal/cleanable/ash,
+		))
 
 	var/list/junk_names = list(
 		/obj/item/paper/pamphlet/gateway = "[initial(name)] for [pick(GLOB.adjectives)] adventurers",
@@ -393,7 +401,7 @@
 		return TRUE
 	else
 		balloon_alert(user, "tinkering with something...")
-		
+
 		if(!do_after(user, 2 SECONDS, target = src))
 			after_unwrap(user)
 			return FALSE
@@ -448,13 +456,13 @@
 			continue
 		mail_recipients += person.mind_ref
 		mail_recipients_for_input += avoid_assoc_duplicate_keys(person.name, used_names)
-		
+
 	var/recipient = tgui_input_list(user, "Choose a recipient", "Mail Counterfeiting", mail_recipients_for_input)
 	if(isnull(recipient))
 		return FALSE
 	if(!(src in user.contents))
 		return FALSE
-	
+
 	var/index = mail_recipients_for_input.Find(recipient)
 
 	var/obj/item/mail/traitor/shady_mail
@@ -462,7 +470,7 @@
 		shady_mail = new /obj/item/mail/traitor
 	else
 		shady_mail = new /obj/item/mail/traitor/envelope
-	
+
 	shady_mail.made_by_cached_ckey = user.ckey
 	shady_mail.made_by_cached_name = user.mind.name
 

@@ -46,7 +46,7 @@
 	. = ..()
 	new /obj/item/weaponcell/medical/brute(src)
 	new /obj/item/weaponcell/medical/burn(src)
-	new /obj/item/weaponcell/medical/toxin/better(src)
+	new /obj/item/weaponcell/medical/toxin/tier_2(src)
 	new /obj/item/weaponcell/medical/utility/temperature(src)
 	new /obj/item/weaponcell/medical/utility/bed(src)
 
