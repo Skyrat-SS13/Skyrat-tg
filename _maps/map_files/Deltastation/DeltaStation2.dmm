@@ -6093,11 +6093,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
-"bzg" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "bzh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6304,6 +6299,14 @@
 	},
 /turf/open/floor/plating/airless,
 /area/station/science/ordnance/bomb)
+"bBm" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/sign/warning/pods/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "bBp" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -26131,16 +26134,6 @@
 /obj/effect/turf_decal/arrows/white,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hfr_room)
-"gwS" = (
-/obj/structure/sign/nanotrasen{
-	pixel_x = 32;
-	pixel_y = -32
-	},
-/obj/machinery/light/small/directional/south,
-/obj/item/kirbyplants/organic/plant22,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark,
-/area/station/command/bridge)
 "gwT" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/maintenance/two,
@@ -36423,6 +36416,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/commons/toilet/restrooms)
+"jcV" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Research Division Access"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/unres,
+/turf/open/floor/iron,
+/area/station/science/research)
 "jdg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -45880,13 +45893,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/lab)
-"lun" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/port)
 "luo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -46257,14 +46263,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"lzx" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/structure/sign/warning/pods/directional/east,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "lzH" = (
 /obj/structure/chair{
 	dir = 8
@@ -46383,14 +46381,6 @@
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/wood,
 /area/station/service/theater/abandoned)
-"lAX" = (
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/item/radio/intercom/directional/east,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "lAY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/closed/wall,
@@ -48289,24 +48279,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"mao" = (
-/obj/machinery/light/small/directional/north,
-/obj/structure/sign/nanotrasen{
-	pixel_x = 32;
-	pixel_y = 32
-	},
-/obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
-	icon_state = "doors";
-	name = "WARNING: BLAST DOORS";
-	pixel_y = 32
-	},
-/obj/item/kirbyplants/organic/plant22,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/station/command/bridge)
 "maI" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
@@ -51956,16 +51928,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/science/robotics/mechbay)
-"mWZ" = (
-/obj/structure/sign/nanotrasen{
-	pixel_x = -32;
-	pixel_y = -32
-	},
-/obj/machinery/light/small/directional/south,
-/obj/item/kirbyplants/organic/plant22,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark,
-/area/station/command/bridge)
 "mXg" = (
 /obj/structure/table/glass,
 /obj/item/storage/medkit/regular,
@@ -58255,6 +58217,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
+"oFu" = (
+/obj/structure/sign/nanotrasen{
+	pixel_x = 32;
+	pixel_y = -32
+	},
+/obj/machinery/light/small/directional/south,
+/obj/item/kirbyplants/organic/plant22,
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "oFv" = (
 /obj/docking_port/stationary/syndicate/northeast{
 	dir = 8
@@ -60482,6 +60454,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
+"pkj" = (
+/obj/machinery/light/directional/north,
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "pkp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -65540,6 +65518,13 @@
 /obj/effect/turf_decal/siding/dark_red,
 /turf/open/floor/iron/dark,
 /area/station/security/medical)
+"quQ" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "quR" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -68825,11 +68810,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"rlM" = (
-/obj/item/kirbyplants/organic/plant22,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "rlQ" = (
 /obj/structure/chair{
 	dir = 4
@@ -71578,6 +71558,24 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
+"rWj" = (
+/obj/machinery/light/small/directional/north,
+/obj/structure/sign/nanotrasen{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/obj/structure/sign/directions/engineering{
+	desc = "A sign that shows there are doors here. There are doors everywhere!";
+	icon_state = "doors";
+	name = "WARNING: BLAST DOORS";
+	pixel_y = 32
+	},
+/obj/item/kirbyplants/organic/plant22,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "rWo" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -73711,12 +73709,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/processing)
-"sxQ" = (
-/obj/machinery/light/directional/north,
-/obj/item/kirbyplants/organic/plant21,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "sxR" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -75307,6 +75299,14 @@
 /obj/effect/spawner/random/trash/graffiti,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"sSz" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "sSH" = (
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 8
@@ -80187,25 +80187,6 @@
 /obj/effect/turf_decal/tile/neutral/full,
 /turf/open/floor/iron/large,
 /area/station/security/processing)
-"ucM" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	name = "Research Division Access"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/science/general,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/duct,
-/turf/open/floor/iron,
-/area/station/science/research)
 "ucW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -81377,22 +81358,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
-"usV" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	name = "Research Division Access"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/science/general,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/science/research)
 "utj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -82594,6 +82559,11 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
+"uIR" = (
+/obj/item/kirbyplants/organic/plant21,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "uIY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/grimy,
@@ -82904,6 +82874,11 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"uNJ" = (
+/obj/item/kirbyplants/organic/plant22,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "uNQ" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
@@ -83811,6 +83786,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/medical/surgery/theatre)
+"uYv" = (
+/obj/structure/sign/nanotrasen{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/obj/machinery/light/small/directional/south,
+/obj/item/kirbyplants/organic/plant22,
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "uYy" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -85727,6 +85712,23 @@
 	},
 /turf/open/floor/wood,
 /area/station/medical/psychology)
+"vxf" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Research Division Access"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/unres,
+/turf/open/floor/iron,
+/area/station/science/research)
 "vxi" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -124910,7 +124912,7 @@ emB
 hza
 ejp
 hza
-lun
+quQ
 vcB
 lmJ
 qVA
@@ -128935,7 +128937,7 @@ aaa
 qld
 odb
 qld
-lAX
+sSz
 mti
 mti
 rWu
@@ -129200,10 +129202,10 @@ pkd
 qld
 thf
 qld
-sxQ
+pkj
 qqA
 xSq
-rlM
+uNJ
 qld
 thf
 qld
@@ -129823,11 +129825,11 @@ mUt
 utj
 tQt
 xaS
-ucM
+jcV
 qAG
 kzT
 alT
-ucM
+jcV
 tWa
 kSR
 pba
@@ -130337,11 +130339,11 @@ oPE
 flF
 oqJ
 saz
-usV
+vxf
 nHB
 mHq
 qLE
-usV
+vxf
 eAO
 ban
 jqx
@@ -131836,10 +131838,10 @@ xms
 xms
 xms
 diL
-mao
+rWj
 drj
 bog
-gwS
+oFu
 awc
 xOv
 nHc
@@ -133561,7 +133563,7 @@ aaa
 qld
 odb
 qld
-lzx
+bBm
 mti
 oYh
 aho
@@ -134866,7 +134868,7 @@ aaa
 aaa
 aad
 pkd
-bzg
+uIR
 oMr
 cDT
 kJd
@@ -139546,10 +139548,10 @@ xms
 xms
 xms
 diL
-mao
+rWj
 drj
 bog
-mWZ
+uYv
 gOU
 prt
 wqT
