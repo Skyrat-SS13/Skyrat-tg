@@ -175,7 +175,7 @@
 	monster_types = list(/mob/living/simple_animal/hostile/bee)
 	max_mobs = 15
 	spawn_cooldown = 5 SECONDS
-	loot = list(/obj/item/reagent_containers/honeycomb = 5, /obj/item/queen_bee)
+	loot = list(/obj/item/food/honeycomb = 5, /obj/item/queen_bee)
 	var/swarmed = FALSE
 
 /obj/structure/mob_spawner/beehive/attacked_by(obj/item/I, mob/living/user)

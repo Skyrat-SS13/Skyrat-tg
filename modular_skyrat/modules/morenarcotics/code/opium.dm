@@ -28,7 +28,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroin"
 	volume = 4
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 4)
 
 /obj/item/reagent_containers/heroin/proc/snort(mob/living/user)
@@ -73,7 +73,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroinbrick"
 	volume = 20
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 20)
 
 

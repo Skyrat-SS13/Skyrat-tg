@@ -4,5 +4,5 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "blacktar"
 	volume = 5
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/blacktar = 5)

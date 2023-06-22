@@ -263,9 +263,6 @@
 	alt_titles = list(
 		"Nanotrasen Consultant",
 		"Nanotrasen Diplomat",
-		"Central Command Consultant",
-		"Nanotrasen Representative",
-		"Central Command Representative",
 	)
 
 /datum/job/orderly
@@ -345,15 +342,6 @@
 		"Xenoarchaeologist",
 		"Research Assistant",
 		"Graduate Student",
-	)
-
-/datum/job/security_medic
-	alt_titles = list(
-		"Security Medic",
-		"Field Medic",
-		"Security Corpsman",
-		"Brig Physician",
-		"Combat Medic",
 	)
 
 /datum/job/security_officer

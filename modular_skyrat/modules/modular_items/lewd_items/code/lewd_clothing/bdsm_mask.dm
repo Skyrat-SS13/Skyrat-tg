@@ -277,9 +277,9 @@
 	unique_reskin = list("pink" = "filter_pink",
 						"teal" = "filter_teal")
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(/datum/material/glass = 1500, /datum/material/plastic = 2000)
+	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SHEET_MATERIAL_AMOUNT)
 	volume = 50
-	possible_transfer_amounts = list(1, 2, 3, 4, 5)
+	possible_transfer_amounts = list(1, 2, 3, 4, 5, 10, 25, 50)
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 
 // Standard initialize code for filter
