@@ -368,7 +368,8 @@
 	face_atom(target)
 	minimum_distance = 0
 	charging = TRUE
-	move_to_delay = (move_to_delay - 0.4)
+	var/pre_charge_delay = move_to_delay
+	move_to_delay = (pre_charge_delay - 0.4)
 	update_phase()
 
 /// Discharge stuns the marked one momentarily after landing a charge into a wall or a person
@@ -379,7 +380,8 @@
 	chargetiles = 0
 	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 	animate(src, color = initial(color), 5)
-move_to_delay = (move_to_delay + 0.4)
+	var/post_charge_delay = move_to_delay
+	move_to_delay = (post_charge_delay + 0.4)
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE
