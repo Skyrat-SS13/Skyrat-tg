@@ -156,13 +156,6 @@
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
-	/*
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	if(multi_tile)
-		set_bounds()
-	update_overlays()
-	//SKYRAT EDIT END
-	*/
 	wires = set_wires()
 	if(glass)
 		airlock_material = "glass"
