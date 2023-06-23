@@ -1,4 +1,4 @@
-/obj/machinery/door
+/obj/machinery/door/airlock
 	/// Whether or not the door is a multi-tile airlock.
 	var/multi_tile = FALSE
 	/// How many tiles the airlock takes up.
@@ -6,12 +6,12 @@
 	/// A filler object used to fill the space of multi-tile airlocks.
 	var/obj/airlock_filler_object/filler
 
-/obj/machinery/door/Move()
+/obj/machinery/door/airlock/Move()
 	if(multi_tile)
 		SetBounds()
 	return ..()
 
-/obj/machinery/door/Destroy()
+/obj/machinery/door/airlock/Destroy()
 	if(filler)
 		qdel(filler)
 		filler = null
