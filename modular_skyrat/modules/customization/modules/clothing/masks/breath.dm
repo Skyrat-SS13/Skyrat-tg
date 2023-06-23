@@ -14,7 +14,7 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
-	w_class = WEIGHT_CLASS_SMALL
+	alternate_worn_layer = LOW_FACEMASK_LAYER //This lets it layer below glasses and headsets - WILL LAYER BELOW HAIR IF HIDEHAIR IS NOT UPDATING CORRECTLY
 	var/open = 0 //0 = full, 1 = head only, 2 = face only
 
 /obj/item/clothing/mask/balaclavaadjust/proc/adjust_mask(mob/living/carbon/human/user)
