@@ -36,12 +36,8 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
-<<<<<<< HEAD
-	load_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
-
-=======
 	load_tram_counter()
->>>>>>> b3d040fb2fc (Enhanced delam/tram counter (#75699))
+	load_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 	load_adventures()
 	return SS_INIT_SUCCESS
 
@@ -57,12 +53,9 @@ SUBSYSTEM_DEF(persistence)
 	save_modular_persistence() // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 	save_custom_outfits()
 	save_delamination_counter()
-<<<<<<< HEAD
-	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
-=======
 	if(SStramprocess.can_fire)
 		save_tram_counter()
->>>>>>> b3d040fb2fc (Enhanced delam/tram counter (#75699))
+	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
