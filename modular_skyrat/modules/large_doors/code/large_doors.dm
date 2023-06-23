@@ -23,7 +23,7 @@
  * If the airlock doesn't already have a filler object, it will create one.
  * If the airlock already has a filler object, it will move it to the correct location.
  */
-/obj/machinery/door/proc/SetBounds()
+/obj/machinery/door/airlock/proc/SetBounds()
 	if(!multi_tile)
 		return
 	bound_width = (get_adjusted_dir(dir) == NORTH) ? world.icon_size : size * world.icon_size
@@ -57,7 +57,7 @@
  *
  * @return list of turfs the door occupies
  */
-/obj/machinery/door/proc/get_turfs()
+/obj/machinery/door/airlock/proc/get_turfs()
 	var/turf/current_turf = get_turf(src)
 	if(!multi_tile)
 		return current_turf
@@ -121,7 +121,8 @@
 //ASSEMBLYS!
 /obj/structure/door_assembly/multi_tile
 	dir = EAST
-	var/size = 1
+	/// How many tiles the airlock takes up.
+	var/size = 2
 
 /obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	. = ..()
