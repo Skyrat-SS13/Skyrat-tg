@@ -33,7 +33,7 @@
 				to_chat(user, "You adjust the balaclava up to cover your mouth.")
 				open = 2
 			else
-				flags_inv = HIDEFACE|HIDEHAIR
+				flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 				icon_state = initial(icon_state)
 				to_chat(user, "You pull the balaclava up to cover your whole head.")
 				open = 0
