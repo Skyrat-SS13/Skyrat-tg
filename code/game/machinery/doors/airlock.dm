@@ -1212,10 +1212,12 @@
 
 	var/dangerous_close = !safe || force_crush
 	if(!dangerous_close)
-		for(var/atom/movable/M in get_turf(src))
-			if(M.density && M != src) //something is blocking the door
-				autoclose_in(DOOR_CLOSE_WAIT)
-				return FALSE
+		for(var/turf/checked_turf in get_turfs()) // SKYRAT EDIT ADD
+			//for(var/atom/movable/M in get_turf(src)) // Original
+			for(var/atom/movable/M in checked_turf) // SKYRAT EDIT CHANGE
+				if(M.density && M != src) //something is blocking the door
+					autoclose_in(DOOR_CLOSE_WAIT)
+					return FALSE
 
 	if(!try_to_force_door_shut(forced))
 		return FALSE

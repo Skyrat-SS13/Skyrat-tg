@@ -1,44 +1,76 @@
-/obj/machinery/door/airlock
+/obj/machinery/door
+	/// Whether or not the door is a multi-tile airlock.
 	var/multi_tile = FALSE
-	var/width = 1
+	/// How many tiles the airlock takes up.
+	var/size = 1
+	/// A filler object used to fill the space of multi-tile airlocks.
 	var/obj/airlock_filler_object/filler
 
-/obj/machinery/door/airlock/Move()
+/obj/machinery/door/Move()
 	if(multi_tile)
 		SetBounds()
 	return ..()
 
-/obj/machinery/door/airlock/Destroy()
+/obj/machinery/door/Destroy()
 	if(filler)
 		qdel(filler)
 		filler = null
 	return ..()
 
-/obj/machinery/door/airlock/proc/SetBounds()
+/**
+ * Sets the bounds of the airlock. For use with multi-tile airlocks.
+ * If the airlock is multi-tile, it will set the bounds to be the size of the airlock.
+ * If the airlock doesn't already have a filler object, it will create one.
+ * If the airlock already has a filler object, it will move it to the correct location.
+ */
+/obj/machinery/door/proc/SetBounds()
 	if(!multi_tile)
 		return
-	if(dir in list(NORTH, SOUTH))
-		bound_width = width * world.icon_size
-		bound_height = world.icon_size
-		if(!filler)
-			filler = new(get_step(src,EAST))
-			filler.parent_airlock = src
-		else
-			filler.loc = get_step(src,EAST)
+	bound_width = (get_adjusted_dir(dir) == NORTH) ? world.icon_size : size * world.icon_size
+	bound_height = (get_adjusted_dir(dir) == NORTH) ? size * world.icon_size : world.icon_size
+	if(!filler)
+		filler = new(get_step(src, get_adjusted_dir(dir)))
+		filler.parent_airlock = src
 	else
-		bound_width = world.icon_size
-		bound_height = width * world.icon_size
-		if(!filler)
-			filler = new(get_step(src,NORTH))
-			filler.parent_airlock = src
-		else
-			filler.loc = get_step(src,NORTH)
+		filler.loc = get_step(src, get_adjusted_dir(dir))
+
 	filler.density = density
 	filler.set_opacity(opacity)
 
+/**
+ * Checks which way the airlock is facing and adjusts the direction accordingly.
+ * For use with multi-tile airlocks.
+ *
+ * @param dir direction to adjust
+ * @return adjusted direction
+ */
+/obj/machinery/door/proc/get_adjusted_dir(dir)
+	if(dir in list(NORTH, SOUTH))
+		return EAST
+	else
+		return NORTH
+
+/**
+ * Returns a list of turfs that the door occupies.
+ * If the door is multi-tile, it will return a list of turfs that the door occupies.
+ * If the door is not multi-tile, it will return only the current turf.
+ *
+ * @return list of turfs the door occupies
+ */
+/obj/machinery/door/proc/get_turfs()
+	var/turf/current_turf = get_turf(src)
+	if(!multi_tile)
+		return current_turf
+	var/list/occupied_turfs = list()
+	for(var/i in 1 to size)
+		occupied_turfs += current_turf
+		current_turf = get_step(current_turf, get_adjusted_dir(dir))
+	return occupied_turfs
+
+
 /obj/machinery/door/airlock/multi_tile
 	multi_tile = TRUE
-	width = 2
+	size = 2
 	has_environment_lights = FALSE
 
 /obj/machinery/door/airlock/multi_tile/glass
@@ -89,7 +121,7 @@
 //ASSEMBLYS!
 /obj/structure/door_assembly/multi_tile
 	dir = EAST
-	var/width = 1
+	var/size = 1
 
 /obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	. = ..()
@@ -101,11 +133,11 @@
 
 /obj/structure/door_assembly/multi_tile/proc/update_dir()
 	if(dir in list(NORTH, SOUTH))
-		bound_width = width * world.icon_size
+		bound_width = size * world.icon_size
 		bound_height = world.icon_size
 	else
 		bound_width = world.icon_size
-		bound_height = width * world.icon_size
+		bound_height = size * world.icon_size
 
 /obj/structure/door_assembly/multi_tile/metal
 	name = "Large Airlock Assembly"
