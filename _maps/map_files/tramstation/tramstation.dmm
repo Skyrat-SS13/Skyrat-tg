@@ -4594,6 +4594,13 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
+"aAq" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
 "aAr" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -4604,13 +4611,13 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/structure/fireaxecabinet/directional/north,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "aAE" = (
@@ -8019,10 +8026,10 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/structure/sign/clock/directional/north,
 /obj/machinery/camera/directional/north{
 	c_tag = "Command - Bridge North"
 	},
+/obj/machinery/incident_display/dual/directional/north,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "bsW" = (
@@ -12818,13 +12825,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/checker,
 /area/station/service/kitchen)
-"cZo" = (
-/obj/structure/sign/collision_counter{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/turf/closed/wall,
-/area/station/medical/medbay/lobby)
 "cZz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -16302,7 +16302,6 @@
 	},
 /obj/machinery/newscaster/directional/south,
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/sign/delamination_counter/directional/west,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "eqJ" = (
@@ -18723,7 +18722,7 @@
 /area/station/science/ordnance/testlab)
 "fnl" = (
 /obj/machinery/light/directional/east,
-/obj/item/radio/intercom/directional/east,
+/obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -20646,6 +20645,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
+"gbb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/incident_display/delam/directional/north,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "gbj" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -21382,7 +21389,6 @@
 	dir = 10;
 	network = list("ss13","engine","engineering")
 	},
-/obj/structure/sign/delamination_counter/directional/south,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "gpD" = (
@@ -24218,6 +24224,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/incident_display/tram/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "hvJ" = (
@@ -24926,6 +24933,7 @@
 	c_tag = "Civilian - Recreational Area North-West"
 	},
 /obj/item/toy/plush/lizard_plushie/space/green,
+/obj/machinery/incident_display/dual/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "hMs" = (
@@ -25238,6 +25246,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/item/wrench,
 /obj/item/assembly/signaler,
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "hSs" = (
@@ -28096,9 +28105,6 @@
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "iWm" = (
-/obj/structure/sign/collision_counter{
-	pixel_x = -32
-	},
 /obj/structure/table/reinforced,
 /obj/item/storage/medkit/regular{
 	pixel_x = -5;
@@ -28108,6 +28114,7 @@
 	pixel_x = 8;
 	pixel_y = 4
 	},
+/obj/item/radio/intercom/directional/west,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "iWz" = (
@@ -32153,7 +32160,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/structure/fireaxecabinet/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -34182,9 +34188,6 @@
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 2
-	},
-/obj/structure/sign/collision_counter{
-	pixel_x = 32
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
@@ -41350,7 +41353,6 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
 	},
-/obj/machinery/newscaster/directional/north,
 /obj/item/pai_card,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
@@ -43051,7 +43053,10 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/incident_display/tram/directional/north{
+	name = "darwin award counter";
+	desc = "A display that indicates how many dents that'll need fixed after the shift is over."
+	},
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
 "onW" = (
@@ -44378,6 +44383,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
 "oRV" = (
@@ -49329,11 +49335,6 @@
 /obj/structure/table,
 /obj/item/storage/toolbox/emergency,
 /obj/item/crowbar,
-/obj/structure/sign/collision_counter{
-	desc = "A display that indicates how many dents that'll need fixed after the shift is over.";
-	name = "darwin award counter";
-	pixel_x = 32
-	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
@@ -58383,10 +58384,10 @@
 /turf/closed/wall,
 /area/station/hallway/secondary/entry)
 "tPV" = (
-/obj/machinery/status_display/evac/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/machinery/incident_display/dual/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "tPW" = (
@@ -68573,6 +68574,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/security/office)
+"xwT" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/incident_display/dual/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/tram/center)
 "xxe" = (
 /obj/machinery/duct,
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
@@ -102221,7 +102232,7 @@ sHH
 sHH
 cjy
 qHs
-vqH
+gbb
 fuj
 xEy
 miU
@@ -152306,7 +152317,7 @@ jvf
 ook
 mGQ
 yiM
-fpg
+aAq
 heY
 ddh
 mQp
@@ -169009,8 +169020,8 @@ gUF
 rlO
 ykP
 lej
-fxs
-lDt
+xwT
+wyd
 mJc
 kin
 juV
@@ -169267,7 +169278,7 @@ uGM
 qwI
 lej
 fxs
-cZo
+wyd
 wyd
 rks
 rks
