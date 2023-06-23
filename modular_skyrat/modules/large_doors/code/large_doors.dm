@@ -1,14 +1,32 @@
+/**
+ * Returns the size of the sprite in tiles.
+ * Takes the icon size and divides it by the world icon size (default 32).
+ * This gives the size of the sprite in tiles.
+ *
+ * @return size of the sprite in tiles
+ */
+/proc/get_size_in_tiles(obj/target)
+	var/icon/size_check = icon(target.icon, target.icon_state)
+	var/size = size_check.Width() / world.icon_size
+
+	return size
+
 /obj/machinery/door/airlock
 	/// Whether or not the door is a multi-tile airlock.
-	var/multi_tile = FALSE
-	/// How many tiles the airlock takes up.
-	var/size = 1
+	var/multi_tile
 	/// A filler object used to fill the space of multi-tile airlocks.
 	var/obj/airlock_filler_object/filler
 
+/obj/machinery/door/airlock/Initialize(mapload)
+	. = ..()
+	multi_tile = get_size_in_tiles(src) > 1
+	if(multi_tile)
+		set_bounds()
+	update_overlays()
+
 /obj/machinery/door/airlock/Move()
 	if(multi_tile)
-		SetBounds()
+		set_bounds()
 	return ..()
 
 /obj/machinery/door/airlock/Destroy()
@@ -23,9 +41,10 @@
  * If the airlock doesn't already have a filler object, it will create one.
  * If the airlock already has a filler object, it will move it to the correct location.
  */
-/obj/machinery/door/airlock/proc/SetBounds()
+/obj/machinery/door/airlock/proc/set_bounds()
 	if(!multi_tile)
 		return
+	var/size = get_size_in_tiles(src)
 	bound_width = (get_adjusted_dir(dir) == NORTH) ? world.icon_size : size * world.icon_size
 	bound_height = (get_adjusted_dir(dir) == NORTH) ? size * world.icon_size : world.icon_size
 	if(!filler)
@@ -36,6 +55,7 @@
 
 	filler.density = density
 	filler.set_opacity(opacity)
+
 
 /**
  * Checks which way the airlock is facing and adjusts the direction accordingly.
@@ -62,7 +82,7 @@
 	if(!multi_tile)
 		return current_turf
 	var/list/occupied_turfs = list()
-	for(var/i in 1 to size)
+	for(var/i in 1 to get_size_in_tiles(src))
 		occupied_turfs += current_turf
 		current_turf = get_step(current_turf, get_adjusted_dir(dir))
 	return occupied_turfs
@@ -70,11 +90,10 @@
 
 /obj/machinery/door/airlock/multi_tile
 	multi_tile = TRUE
-	size = 2
 	has_environment_lights = FALSE
 
 /obj/machinery/door/airlock/multi_tile/glass
-	name = "Large Glass Airlock"
+	name = "large glass airlock"
 	icon = 'modular_skyrat/modules/large_doors/icons/glass/multi_tile.dmi'
 	overlays_file = 'modular_skyrat/modules/large_doors/icons/glass/overlays.dmi'
 	opacity = FALSE
@@ -83,7 +102,7 @@
 	assemblytype = /obj/structure/door_assembly/multi_tile/glass
 
 /obj/machinery/door/airlock/multi_tile/metal
-	name = "Large Airlock"
+	name = "large airlock"
 	icon = 'modular_skyrat/modules/large_doors/icons/metal/multi_tile.dmi'
 	overlays_file = 'modular_skyrat/modules/large_doors/icons/metal/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/multi_tile/metal
@@ -121,18 +140,30 @@
 //ASSEMBLYS!
 /obj/structure/door_assembly/multi_tile
 	dir = EAST
-	/// How many tiles the airlock takes up.
-	var/size = 2
+	/// Whether or not the assembly is for a multi-tile airlock.
+	var/multi_tile
 
 /obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	. = ..()
-	update_dir()
+	multi_tile = get_size_in_tiles(src) > 1
+	if(multi_tile)
+		set_bounds()
+	update_overlays()
+
 
 /obj/structure/door_assembly/multi_tile/Move()
 	. = ..()
-	update_dir()
+	set_bounds()
 
-/obj/structure/door_assembly/multi_tile/proc/update_dir()
+
+/**
+ * Updates the bounds of the airlock assembly
+ * Sets the bounds of the airlock assembly according to the direction.
+ * This ensures that the bounds are always correct, even if the airlock is rotated.
+ */
+/obj/structure/door_assembly/multi_tile/proc/set_bounds()
+	var/size = get_size_in_tiles(src)
+
 	if(dir in list(NORTH, SOUTH))
 		bound_width = size * world.icon_size
 		bound_height = world.icon_size
@@ -140,18 +171,19 @@
 		bound_width = world.icon_size
 		bound_height = size * world.icon_size
 
+
 /obj/structure/door_assembly/multi_tile/metal
-	name = "Large Airlock Assembly"
+	name = "large airlock assembly"
+	base_name = "large airlock"
 	icon = 'modular_skyrat/modules/large_doors/icons/metal/multi_tile.dmi'
-	base_name = "Large Airlock"
 	overlays_file = 'modular_skyrat/modules/large_doors/icons/metal/overlays.dmi'
 	airlock_type = /obj/machinery/door/airlock/multi_tile/metal
 	glass_type = /obj/machinery/door/airlock/multi_tile/glass
 
 /obj/structure/door_assembly/multi_tile/glass
-	name = "Large Glass Airlock Assembly"
+	name = "large glass airlock assembly"
+	base_name = "large glass airlock"
 	icon = 'modular_skyrat/modules/large_doors/icons/glass/multi_tile.dmi'
-	base_name = "Large Glass Airlock"
 	overlays_file = 'modular_skyrat/modules/large_doors/icons/glass/overlays.dmi'
 	airlock_type = /obj/machinery/door/airlock/multi_tile/glass
 
