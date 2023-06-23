@@ -132,10 +132,10 @@
 	sharpness = SHARP_EDGED
 	item_flags = NO_BLOOD_ON_ITEM
 	// aughhghghgh this really should be elementized but this works for now
-	var/faction_bonus_force = 60
+	var/faction_bonus_force = 40
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
-	var/roll_stamcost = 9
+	var/roll_stamcost = 10
 	/// how far do we roll?
 	var/roll_range = 3
 
