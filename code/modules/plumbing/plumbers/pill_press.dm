@@ -13,13 +13,9 @@
 	///maximum size of a patch
 	var/max_patch_volume = 40
 	///maximum size of a bottle
-<<<<<<< HEAD
-	var/max_bottle_volume = 30
+	var/max_bottle_volume = 50
 	//SKYRAT EDIT HYPOVIALS maximum size of a vial
 	var/max_vial_volume = 60
-=======
-	var/max_bottle_volume = 50
->>>>>>> d2483213516 (Increases bottle max volume for pill press to 50. (#76217))
 	///current operating product (pills or patches)
 	var/product = "pill"
 	///the minimum size a pill or patch can be
