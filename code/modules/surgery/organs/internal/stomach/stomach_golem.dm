@@ -17,6 +17,7 @@
 	RegisterSignal(owner, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	if (!ishuman(organ_owner))
 		return
+<<<<<<< HEAD:code/modules/surgery/organs/stomach/stomach_golem.dm
 	if (organ_owner.flags_1 & INITIALIZED_1)
 		setup_physiology(organ_owner)
 	else
@@ -25,6 +26,9 @@
 /// Physiology doesn't exist yet if this is added on initialisation of a golem, so we need to wait until it does
 /obj/item/organ/internal/stomach/golem/proc/setup_physiology(mob/living/carbon/human/human_owner)
 	SIGNAL_HANDLER
+=======
+	var/mob/living/carbon/human/human_owner = organ_owner
+>>>>>>> 6da96bef842 (SPECIES NUKING 2023: Mein leber! Allows livers to handle reagents in special ways, instead of the species datum doing it (#76184)):code/modules/surgery/organs/internal/stomach/stomach_golem.dm
 	human_owner.physiology?.hunger_mod *= hunger_mod
 	UnregisterSignal(human_owner, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
 
@@ -56,9 +60,10 @@
 
 /// Slow down based on how full you are
 /obj/item/organ/internal/stomach/golem/handle_hunger(mob/living/carbon/human/human, delta_time, times_fired)
+	// the effects are all negative, so just don't run them if you have the trait
+	. = ..()
 	if(HAS_TRAIT(human, TRAIT_NOHUNGER))
 		return
-	. = ..()
 	var/hunger = (NUTRITION_LEVEL_HUNGRY - human.nutrition) / NUTRITION_LEVEL_HUNGRY // starving = 1, satisfied = 0
 	if(hunger > 0)
 		var/slowdown = LERP(min_hunger_slowdown, max_hunger_slowdown, hunger)
