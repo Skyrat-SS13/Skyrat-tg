@@ -32,6 +32,8 @@
 
 /obj/item/storage/box/gunset/AltClick(mob/user)
 	. = ..()
+	if(!user.can_perform_action(src, NEED_HANDS))
+		return
 	opened = !opened
 	update_icon()
 
