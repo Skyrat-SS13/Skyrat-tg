@@ -15,13 +15,13 @@
 	var/list/added_eyewear_traits = list()
 
 /datum/nifsoft/hud/activate()
+	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active)
-		var/obj/item/clothing/glasses/nif_hud/hud_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
-		if(!istype(hud_glasses))
+		if(!istype(worn_glasses) || !HAS_TRAIT(worn_glasses, TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR))
 			to_chat(linked_mob, span_warning("You need to wear a piece of compatible eyewear for [program_name] to work."))
 			return FALSE
 
-	. = ..()
+	. = ..() // active = !active
 	if(!.)
 		return FALSE
 
@@ -35,6 +35,12 @@
 		for(var/trait as anything in added_eyewear_traits)
 			REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
 
+		if(eyewear_check)
+			if(!istype(worn_glasses)) // Really non-ideal situation, but it's better than a runtime.
+				return FALSE
+
+			UnregisterSignal(worn_glasses, COMSIG_ITEM_PRE_UNEQUIP)
+
 		return TRUE
 
 	if(hud_type)
@@ -45,6 +51,9 @@
 
 	for(var/trait as anything in added_eyewear_traits)
 		ADD_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
+
+	if(eyewear_check)
+		RegisterSignal(worn_glasses, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(activate))
 
 	return TRUE
 
@@ -117,30 +126,7 @@
 // NIFSOFT HUD GLASSES
 //
 
-/obj/item/clothing/glasses/nif_hud
-	name = "NIF HUD glasses"
-	desc = "Glasses that interface with a NIF"
-
-/obj/item/clothing/glasses/nif_hud/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(!istype(user))
-		return FALSE
-
-	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = user.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
-	if(!target_nif)
-		return FALSE
-
-	for(var/datum/nifsoft/hud/hud_nifsoft in target_nif.loaded_nifsofts)
-		if(!hud_nifsoft.eyewear_check || !hud_nifsoft.active)
-			continue
-
-		hud_nifsoft.activate()
-
-/obj/item/clothing/glasses/nif_hud/fake_blindfold
+/obj/item/clothing/glasses/trickblindfold/obsolete
 	name = "modernized fake blindfold"
 	desc = "A restored version of the obsolete fake blindfold, retrofitted with the proper electronics to work as a NIF HUD."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon_state = "obsoletefold"
-	base_icon_state = "obsoletefold"
-	can_switch_eye = TRUE
+	clothing_traits = TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR
