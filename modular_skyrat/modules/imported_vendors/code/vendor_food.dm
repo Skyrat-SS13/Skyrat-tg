@@ -25,12 +25,14 @@
 /obj/item/trash/empty_side_pack/moth
 	icon_state = "foodpack_moth_trash"
 
-/obj/item/trash/empty_side_pack/tiziria
-	icon_state = "foodpack_tiziria_trash"
+/obj/item/trash/empty_side_pack/tizira
+	icon_state = "foodpack_tizira_trash"
 	
 /* MEALS */
 	
-// NT meals
+/*
+*	NT Meals
+*/
 
 /obj/item/food/vendor_tray_meal
 	name = "\improper NT-Meal: Steak and Macaroni"
@@ -74,7 +76,9 @@
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY
 	
-// Yangyu meals
+/*
+*	Yangyu Meals
+*/
 
 /obj/item/food/vendor_tray_meal/ramen
 	name = "\improper Meinkosu: Homestyle Noodles"
@@ -97,7 +101,9 @@
 	tastes = list("cheap beef" = 1, "rice" = 3, "laziness" = 1)
 	foodtypes = GRAIN | MEAT
 
-// Mothic meals
+/*
+*	Mothic Meals
+*/
 
 /obj/item/food/vendor_tray_meal/pesto_pizza
 	name = "\improper Main Course - Type M: Pesto Pizza"
@@ -120,7 +126,9 @@
 	tastes = list("potato" = 2, "cabbage" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = DAIRY | VEGETABLES
 	
-// Tizirian meals
+/*
+*	Tiziran Meals
+*/
 
 /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	name = "\improper Tizira Imports: Moonfish and Nizaya"
@@ -150,7 +158,9 @@
 	desc = "I hope I get one that actually matches my meal."
 	icon_state = "loot"
 	
-// NT sides
+/*
+*	NT Sides
+*/
 
 /obj/effect/spawner/random/vendor_meal_sides/nt
 	name = "random nt side spawner"
@@ -186,7 +196,9 @@
 	tastes = list("tough bread" = 2, "cheese" = 2)
 	foodtypes = GRAIN | DAIRY
 	
-// Yangyu sides
+/*
+*	Yangyu Sides
+*/
 
 /obj/effect/spawner/random/vendor_meal_sides/yangyu
 	name = "random yangyu side spawner"
@@ -223,7 +235,9 @@
 	tastes = list("vinegar" = 4)
 	foodtypes = VEGETABLES
 	
-// Mothic sides
+/*
+*	Mothic Sides
+*/
 
 /obj/effect/spawner/random/vendor_meal_sides/moth
 	name = "random mothic side spawner"
@@ -260,10 +274,12 @@
 	tastes = list("seeds" = 2, "char" = 2)
 	foodtypes = NUTS
 	
-// Tizirian sides
+/*
+*	Tiziran Sides
+*/
 
 /obj/effect/spawner/random/vendor_meal_sides/tizira
-	name = "random tizirian side spawner"
+	name = "random tiziran side spawner"
 
 /obj/effect/spawner/random/vendor_meal_sides/tizira/Initialize(mapload)
 	loot = list(
@@ -277,15 +293,15 @@
 	name = "\improper Tizira Imports: Rootbread Crackers and Pate"
 	desc = "A small stack of rootbread crackers, with a small spread of meat pate for each."
 	icon_state = "foodpack_tizira"
-	trash_type = /obj/item/trash/empty_side_pack/tiziria
+	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("tough rootbread" = 2, "pate" = 2)
 	foodtypes = VEGETABLES | NUTS | MEAT
 
 /obj/item/food/vendor_tray_meal/side/korta_brittle
-	name = "\improper Tiziria Imports: Korta Brittle"
+	name = "\improper Tizira Imports: Korta Brittle"
 	desc = "A perfectly rectangular portion of unsweetened korta brittle."
 	icon_state = "foodpack_tizira"
-	trash_type = /obj/item/trash/empty_side_pack/tiziria
+	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("peppery heat" = 2)
 	foodtypes = NUTS
 
@@ -293,6 +309,6 @@
 	name = "\improper Tizira Imports: Crisped Headcheese"
 	desc = "A processed looking block of breaded headcheese."
 	icon_state = "foodpack_tizira"
-	trash_type = /obj/item/trash/empty_side_pack/tiziria
+	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("cheese" = 1, "oil" = 1)
 	foodtypes = MEAT | VEGETABLES | NUTS | GORE

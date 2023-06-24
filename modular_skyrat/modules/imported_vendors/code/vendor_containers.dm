@@ -68,12 +68,12 @@
 
 /obj/item/storage/box/foodpack/tizira
 	name = "\improper Tizira Imports Pack - Moonfish Nizaya"
-	desc = "A dull, metal foil package with the colors of the tizirian flag striped across it, as well as a stamp of legitimate origin from the Tizirian exports office."
+	desc = "A dull, metal foil package with the colors of the Tiziran flag striped across it, as well as a stamp of legitimate origin from the Tiziran exports office."
 	icon_state = "foodpack_tizira_big"
 	main_course = /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/tizira
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/bbqsauce
-	custom_price = PAYCHECK_CREW * 2 //Tizirian imports are a bit more expensive
+	custom_price = PAYCHECK_CREW * 2 //Tiziran imports are a bit more expensive
 
 /obj/item/storage/box/foodpack/tizira/examine_more(mob/user)
 	. = ..()
