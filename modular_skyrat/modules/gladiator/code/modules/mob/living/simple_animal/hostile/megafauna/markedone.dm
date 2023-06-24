@@ -112,11 +112,10 @@
 /// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
-	if(prob(block_chance) && (phase == 1) && !stunned)
-		balloon_alert_to_viewers("damage blocked!")
-		return FALSE
-	else if(prob(block_chance) && (phase == 4) && !stunned)
-		balloon_alert_to_viewers("damage blocked!")
+	if(prob(block_chance) && (phase == 1 || phase == 4) && !stunned)
+		var/our_turf = get_turf(src)
+		new /obj/effect/temp_visual/block(our_turf, COLOR_YELLOW)
+		playsound(src, 'sound/weapons/parry.ogg', BLOCK_SOUND_VOLUME * 2, vary = TRUE) // louder because lavaland low pressure maybe?
 		return FALSE
 	. = ..()
 	update_phase()
