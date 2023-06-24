@@ -174,7 +174,11 @@ SUBSYSTEM_DEF(tgui)
 /datum/controller/subsystem/tgui/proc/get_open_ui(mob/user, datum/src_object)
 	var/key = "[REF(src_object)]"
 	// No UIs opened for this src_object
+<<<<<<< HEAD
 	if(isnull(open_uis_by_src[key]) || !istype(open_uis_by_src[key], /list))
+=======
+	if(!LAZYLEN(src_object?.open_uis))
+>>>>>>> 49b72fdebe3 (Fixes some spurious runtimes in SStgui procs (#76251))
 		return null
 	for(var/datum/tgui/ui in open_uis_by_src[key])
 		// Make sure we have the right user
@@ -192,6 +196,12 @@ SUBSYSTEM_DEF(tgui)
  * return int The number of UIs updated.
  */
 /datum/controller/subsystem/tgui/proc/update_uis(datum/src_object)
+<<<<<<< HEAD
+=======
+	// No UIs opened for this src_object
+	if(!LAZYLEN(src_object?.open_uis))
+		return 0
+>>>>>>> 49b72fdebe3 (Fixes some spurious runtimes in SStgui procs (#76251))
 	var/count = 0
 	var/key = "[REF(src_object)]"
 	// No UIs opened for this src_object
@@ -214,6 +224,12 @@ SUBSYSTEM_DEF(tgui)
  * return int The number of UIs closed.
  */
 /datum/controller/subsystem/tgui/proc/close_uis(datum/src_object)
+<<<<<<< HEAD
+=======
+	// No UIs opened for this src_object
+	if(!LAZYLEN(src_object?.open_uis))
+		return 0
+>>>>>>> 49b72fdebe3 (Fixes some spurious runtimes in SStgui procs (#76251))
 	var/count = 0
 	var/key = "[REF(src_object)]"
 	// No UIs opened for this src_object
