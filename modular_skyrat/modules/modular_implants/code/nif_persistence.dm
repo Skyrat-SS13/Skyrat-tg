@@ -80,6 +80,13 @@
 	if(examine_component)
 		examine_component.nif_examine_text = persistence.nif_examine_text
 
+	var/obj/item/modular_computer/pda/found_pda = locate(/obj/item/modular_computer/pda) in contents
+	if(!found_pda)
+		return FALSE
+
+	var/datum/computer_file/program/nifsoft_downloader/downloaded_app = new
+	found_pda.store_file(downloaded_app)
+
 /// Loads the modular persistence data for a NIFSoft
 /datum/nifsoft/proc/load_persistence_data()
 	if(!linked_mob || !persistence)
