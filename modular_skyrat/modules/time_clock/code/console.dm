@@ -114,7 +114,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_out_job = current_trim.job
-	clocked_out_job.current_positions--
+	clocked_out_job.current_positions = max(0, clocked_out_job.current_positions - 1)
 
 	radio.talk_into(src, "[inserted_id.registered_name], [current_assignment] has gone off-duty.", announcement_channel)
 	update_static_data_for_all_viewers()
@@ -202,6 +202,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	icon_state = "unanchoredstatusdisplay"
 	result_path = /obj/machinery/time_clock
 	pixel_shift = 28
-	custom_materials = list(/datum/material/iron = 2000, /datum/material/glass = 4000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2)
 
 #undef CLOCK_IN_COOLDOWN

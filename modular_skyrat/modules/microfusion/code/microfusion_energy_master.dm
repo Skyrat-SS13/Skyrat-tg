@@ -25,14 +25,10 @@
 	var/base_cell_type = /obj/item/stock_parts/cell/microfusion
 	/// If the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
-	/// Can it be charged in a recharger?
-	var/can_charge = TRUE
 	/// How many charge sections do we have?
 	var/charge_sections = 4
 	/// if this gun uses a stateful charge bar for more detail
 	var/shaded_charge = FALSE
-	/// If this gun has a "this is loaded with X" overlay alongside chargebars and such
-	var/single_shot_type_overlay = TRUE
 	/// Should we give an overlay to empty guns?
 	var/display_empty = TRUE
 	/// whether the gun's cell drains the cyborg user's cell to recharge
@@ -72,6 +68,10 @@
 	var/base_fire_delay = 0
 	/// Do we use more power because of attachments?
 	var/extra_power_usage = 0
+	/// Spread from attachments.
+	var/attachment_spread = 0
+	/// Recoil from attachments.
+	var/attachment_recoil = 0
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -106,6 +106,7 @@
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
+	START_PROCESSING(SSobj, src)
 
 /obj/item/gun/microfusion/give_gun_safeties()
 	AddComponent(/datum/component/gun_safety)
@@ -161,6 +162,10 @@
 	if(!chambered && can_shoot())
 		process_chamber() // If the gun was drained and then recharged, load a new shot.
 	return ..()
+
+/obj/item/gun/microfusion/process(seconds_per_tick)
+	for(var/obj/item/microfusion_gun_attachment/attached as anything in attachments)
+		attached.process_attachment(src, seconds_per_tick)
 
 /obj/item/gun/microfusion/update_icon_state()
 	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon
@@ -610,7 +615,7 @@
 		balloon_alert(user, "can't install!")
 		return FALSE
 	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attachments)
-		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
+		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatible_attachments))
 			balloon_alert(user, "not compatible with [iterating_attachment]!")
 			return FALSE
 		if(iterating_attachment.slot != GUN_SLOT_UNIQUE && iterating_attachment.slot == microfusion_gun_attachment.slot)
@@ -741,3 +746,10 @@
 				return
 			phase_emitter.toggle_cooling_system(usr)
 
+/// Recalculates the spread, based on attachment-provided values.
+/obj/item/gun/microfusion/proc/recalculate_spread()
+	spread = max(0, attachment_spread)
+
+/// Recalculates the recoil, based on attachment-provided values.
+/obj/item/gun/microfusion/proc/recalculate_recoil()
+	recoil = max(0, attachment_recoil)

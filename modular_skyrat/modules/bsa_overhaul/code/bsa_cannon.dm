@@ -75,7 +75,7 @@
 			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
 			multitool.buffer = null
 		else if(istype(multitool.buffer, /obj/machinery/bsa/front))
-			front_piece = multitool.buffer
+			front_piece = WEAKREF(multitool.buffer)
 			to_chat(user, span_notice("You link [src] with [multitool.buffer]."))
 			multitool.buffer = null
 	else
@@ -83,8 +83,8 @@
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()
-	var/obj/machinery/bsa/back/back_part = back_piece.resolve()
-	var/obj/machinery/bsa/front/front_part = front_piece.resolve()
+	var/obj/machinery/bsa/back/back_part = back_piece?.resolve()
+	var/obj/machinery/bsa/front/front_part = front_piece?.resolve()
 	if(!front_part || !back_part)
 		return "Some parts are missing!"
 	if(!front_part.anchored || !back_part.anchored || !anchored)
@@ -112,8 +112,8 @@
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/get_cannon_direction()
-	var/obj/machinery/bsa/back/back_part = back_piece.resolve()
-	var/obj/machinery/bsa/front/front_part = front_piece.resolve()
+	var/obj/machinery/bsa/back/back_part = back_piece?.resolve()
+	var/obj/machinery/bsa/front/front_part = front_piece?.resolve()
 	if(!back_part || !front_part)
 		return FALSE
 	if(front_part.x > x && back_part.x < x)

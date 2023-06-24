@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "space vine"
@@ -31,6 +30,7 @@
 
 /obj/structure/spacevine/Initialize(mapload)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_CHASM_DESTROYED, INNATE_TRAIT)
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
@@ -67,6 +67,10 @@
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		override += mutation.on_chem(src, chem)
 	if(!override && prob(75) && istype(chem, /datum/reagent/toxin/plantbgone))
+		// SKYRAT EDIT ADD START
+		if(plantbgone_resist && prob(50))
+			return
+		// SKYRAT EDIT ADD END
 		qdel(src)
 
 /obj/structure/spacevine/proc/eat(mob/eater)
@@ -184,6 +188,8 @@
 	if(!index && prob(34 * severity))
 		qdel(src)
 
+	return TRUE
+
 /obj/structure/spacevine/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (always_atmos_process || exposed_temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD || exposed_temperature < VINE_FREEZING_POINT || !can_spread)//if you're room temperature you're safe
 
@@ -201,4 +207,3 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
-*/

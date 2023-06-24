@@ -16,12 +16,7 @@
 			// Make new appearance so we don't break the real accessory overlay for other species, and treat it as final.
 			return mutable_appearance(custom_accessory_icon, accessory_overlay.icon_state)
 
-	// Apply an offset only if we didn't apply a different appearance.
-	if(OFFSET_ACCESSORY in human_wearer.dna.species.offset_features)
-		accessory_overlay.pixel_x = human_wearer.dna.species.offset_features[OFFSET_ACCESSORY][1]
-		accessory_overlay.pixel_y = human_wearer.dna.species.offset_features[OFFSET_ACCESSORY][2]
-	else
-		accessory_overlay.pixel_x = 0
-		accessory_overlay.pixel_y = 0
+	var/obj/item/bodypart/chest/my_chest = human_wearer.get_bodypart(BODY_ZONE_CHEST)
+	my_chest?.worn_accessory_offset?.apply_offset(accessory_overlay)
 
 	return accessory_overlay

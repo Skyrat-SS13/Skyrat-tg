@@ -17,7 +17,7 @@
 		shielded = FALSE
 		update_appearance()
 
-/mob/living/simple_animal/hostile/blackmesa/xen/apply_damage(damage, damagetype, def_zone, blocked, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
+/mob/living/simple_animal/hostile/blackmesa/xen/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, attacking_item)
 	if(shielded)
 		balloon_alert_to_viewers("ineffective!")
 		return FALSE
@@ -65,8 +65,8 @@
 	mob_to_register.update_appearance()
 	var/datum/beam/created_beam = Beam(mob_to_register, icon_state = "red_lightning", time = 10 MINUTES, maxdistance = (shield_range - 1))
 	shielded_mobs[mob_to_register] = created_beam
-	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, PROC_REF(beam_died), override = TRUE)
-	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, PROC_REF(mob_died), override = TRUE)
+	RegisterSignal(created_beam, COMSIG_QDELETING, PROC_REF(beam_died), override = TRUE)
+	RegisterSignal(mob_to_register, COMSIG_QDELETING, PROC_REF(mob_died), override = TRUE)
 
 /obj/structure/xen_pylon/proc/mob_died(atom/movable/source, force)
 	SIGNAL_HANDLER

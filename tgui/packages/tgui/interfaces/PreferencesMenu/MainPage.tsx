@@ -556,18 +556,20 @@ export const MainPage = (
                     />
                   </Stack.Item>
 
-                  <Dropdown
+                  <Stack.Item
                     // SKYRAT EDIT ADDITION
-                    width="100%"
-                    position="relative"
-                    selected={data.preview_selection}
-                    options={data.preview_options}
-                    onSelected={(value) =>
-                      act('update_preview', {
-                        updated_preview: value,
-                      })
-                    }
-                  />
+                    position="relative">
+                    <Dropdown
+                      width="100%"
+                      selected={data.preview_selection}
+                      options={data.preview_options}
+                      onSelected={(value) =>
+                        act('update_preview', {
+                          updated_preview: value,
+                        })
+                      }
+                    />
+                  </Stack.Item>
 
                   <Stack.Item position="relative">
                     <NameInput

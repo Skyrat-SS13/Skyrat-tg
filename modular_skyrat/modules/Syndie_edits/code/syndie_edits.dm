@@ -37,9 +37,10 @@
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
 	desc = "A robust and spaceworthy helmet with a small cross on it along with 'IP' written across the earpad."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "swat_ds"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/head/beret/sec/syndicate
 	name = "brig officer's beret"
@@ -56,6 +57,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
 	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
+	alternate_worn_layer = LOW_FACEMASK_LAYER //This lets it layer below glasses and headsets; yes, that's below hair, but it already has HIDEHAIR
 
 /obj/item/clothing/mask/gas/sechailer/syndicate
 	name = "neck gaiter"
@@ -105,9 +107,11 @@
 	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/armor/bulletproof/old
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "bulletproof"
+	body_parts_covered = CHEST //TG's version has no groin/arm padding
 
 /obj/item/clothing/under/syndicate/skyrat/overalls
 	name = "utility overalls turtleneck"

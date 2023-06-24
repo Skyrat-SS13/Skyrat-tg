@@ -26,8 +26,11 @@ LINEN BINS
 	dying_key = DYE_REGISTRY_BEDSHEET
 
 	dog_fashion = /datum/dog_fashion/head/ghost
+	/// Custom nouns to act as the subject of dreams
 	var/list/dream_messages = list("white")
+	/// The number of cloth sheets to be dropped by this bedsheet when cut
 	var/stack_amount = 3
+	/// Denotes if the bedsheet is a single, double, or other kind of bedsheet
 	var/bedsheet_type = BEDSHEET_SINGLE
 	var/datum/weakref/signal_sleeper //this is our goldylocks
 
@@ -94,7 +97,7 @@ LINEN BINS
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
 	RegisterSignal(sleeper, COMSIG_MOVABLE_MOVED, PROC_REF(smooth_sheets))
 	RegisterSignal(sleeper, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(smooth_sheets))
-	RegisterSignal(sleeper, COMSIG_PARENT_QDELETING, PROC_REF(smooth_sheets))
+	RegisterSignal(sleeper, COMSIG_QDELETING, PROC_REF(smooth_sheets))
 
 /obj/item/bedsheet/proc/smooth_sheets(mob/living/sleeper)
 	SIGNAL_HANDLER
@@ -102,7 +105,7 @@ LINEN BINS
 	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(sleeper, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(sleeper, COMSIG_LIVING_SET_BODY_POSITION)
-	UnregisterSignal(sleeper, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(sleeper, COMSIG_QDELETING)
 	balloon_alert(sleeper, "smoothed sheets")
 	layer = initial(layer)
 	SET_PLANE_IMPLICIT(src, initial(plane))
@@ -118,7 +121,7 @@ LINEN BINS
 	UnregisterSignal(src, COMSIG_ITEM_PICKUP)
 	UnregisterSignal(sleeper, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(sleeper, COMSIG_LIVING_SET_BODY_POSITION)
-	UnregisterSignal(sleeper, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(sleeper, COMSIG_QDELETING)
 	signal_sleeper = null
 
 /obj/item/bedsheet/attackby(obj/item/I, mob/user, params)
@@ -603,8 +606,11 @@ LINEN BINS
 	anchored = TRUE
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
+	/// The number of bedsheets in the bin
 	var/amount = 10
+	/// A list of actual sheets within the bin
 	var/list/sheets = list()
+	/// The object hiddin within the bedsheet bin
 	var/obj/item/hidden = null
 
 /obj/structure/bedsheetbin/empty

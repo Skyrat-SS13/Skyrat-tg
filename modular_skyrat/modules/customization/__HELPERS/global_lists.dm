@@ -6,30 +6,9 @@
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()
-	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
 	load_veteran_players()
-
-/proc/make_culture_references()
-	for(var/path in subtypesof(/datum/cultural_info/culture))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_cultures[path] = L
-	for(var/path in subtypesof(/datum/cultural_info/location))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_locations[path] = L
-	for(var/path in subtypesof(/datum/cultural_info/faction))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_factions[path] = L
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
@@ -114,6 +93,30 @@
 			continue
 		GLOB.all_loadout_datums -= loadout_path
 		// Ensure this FULLY works later
+
+	var/list/loadout_lists = list(
+		GLOB.loadout_belts,
+		GLOB.loadout_ears,
+		GLOB.loadout_glasses,
+		GLOB.loadout_gloves,
+		GLOB.loadout_helmets,
+		GLOB.loadout_masks,
+		GLOB.loadout_necks,
+		GLOB.loadout_shoes,
+		GLOB.loadout_exosuits,
+		GLOB.loadout_jumpsuits,
+		GLOB.loadout_undersuits,
+		GLOB.loadout_miscunders,
+		GLOB.loadout_accessory,
+		GLOB.loadout_inhand_items,
+		GLOB.loadout_toys,
+		GLOB.loadout_pocket_items,
+	)
+	for(var/loadout_list in loadout_lists)
+		for(var/datum/loadout_item/loadout_typepath in loadout_list)
+			if(!initial(loadout_typepath.erp_item))
+				continue
+			loadout_list -= loadout_typepath
 
 	// Underwear
 	for(var/sprite_name in GLOB.underwear_list)

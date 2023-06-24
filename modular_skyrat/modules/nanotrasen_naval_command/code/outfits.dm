@@ -23,7 +23,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval
 
-	head = /obj/item/clothing/head/hats/caphat/naval/beret
+	head = /obj/item/clothing/head/beret/centcom_formal
 
 	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 

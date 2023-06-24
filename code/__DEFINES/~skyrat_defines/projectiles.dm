@@ -10,8 +10,6 @@
 /// The caliber used by the M45A5
 #define CALIBER_460 ".460 RM JHP"
 
-#define CALIBER_50BMG ".50 BMG"
-
 /// The caliber used by the CFA Lynx.
 #define CALIBER_42X30MM "4.2x30mm"
 

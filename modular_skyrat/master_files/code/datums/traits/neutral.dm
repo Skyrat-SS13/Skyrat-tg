@@ -177,7 +177,7 @@
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"
-	desc = "Bark. You seem to act like a canine for whatever reason."
+	desc = "Bark. You seem to act like a canine for whatever reason. This will replace most other tongue-based speech quirks."
 	icon = FA_ICON_DOG
 	value = 0
 	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."
@@ -185,10 +185,15 @@
 /datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
+
+	// make sure the new tongue gets the actions from any species specific things (like hemophage blood drain, etc)
+	for(var/datum/action/action as anything in old_tongue.actions)
+		new_tongue.add_item_action(action.type)
+	// as well as the flags from the old tongue (like corruption from hemophage)
+	new_tongue.organ_flags |= old_tongue.organ_flags
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)
-
-	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder)
 
 /datum/quirk/sensitivesnout
@@ -200,3 +205,28 @@
 	value = 0
 	mob_trait = TRAIT_SENSITIVESNOUT
 	icon = FA_ICON_FINGERPRINT
+
+/datum/quirk/overweight
+	name = "Overweight"
+	desc = "You weigh more than an average person at your size, you've gotten used to it by now."
+	gain_text = span_notice("Your body feels heavy.")
+	lose_text = span_notice("Your suddenly feel lighter!")
+	value = 0
+	icon = FA_ICON_HAMBURGER // I'm very hungry. Give me the burger!
+	medical_record_text = "Patient weighs higher than average."
+	mob_trait = TRAIT_FAT
+
+/datum/quirk/overweight/add(client/client_source)
+	quirk_holder.add_movespeed_modifier(/datum/movespeed_modifier/overweight)
+
+/datum/quirk/overweight/remove()
+	quirk_holder.remove_movespeed_modifier(/datum/movespeed_modifier/overweight)
+
+/datum/movespeed_modifier/overweight
+	multiplicative_slowdown = 0.5 //Around that of a dufflebag, enough to be impactful but not debilitating.
+
+/datum/mood_event/fat/New(mob/parent_mob, ...)
+	. = ..()
+	if(HAS_TRAIT_FROM(parent_mob, TRAIT_FAT, QUIRK_TRAIT))
+		mood_change = 0 // They are probably used to it, no reason to be viscerally upset about it.
+		description = "<b>I'm fat.</b>"
