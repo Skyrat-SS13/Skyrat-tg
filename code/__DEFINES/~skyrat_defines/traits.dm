@@ -78,6 +78,3 @@
 
 /// Trait that was granted by a NIFSoft
 #define NIFSOFT_TRAIT "nifsoft"
-
-/// Eyewear that when worn provides access to NIFSoft HUDs
-#define TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR "nifsoft_hud_compatible_eyewear"

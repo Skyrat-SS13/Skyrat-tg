@@ -99,3 +99,67 @@
 	if(!uses)
 		qdel(src)
 
+/obj/item/nif_hud_adapter
+	name = "NIF HUD retrofitter"
+	desc = "Modifies select glasses to display HUDs for NIFs"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
+	icon_state = "partskit"
+
+	/// Can this item be used multiple times? If not, it will delete itself after being used.
+	var/multiple_uses = FALSE
+	/// List containing all of the glasses that we want to work with this.
+	var/list/glasses_whitelist = list(
+		/obj/item/clothing/glasses/trickblindfold,
+		/obj/item/clothing/glasses/monocle,
+		/obj/item/clothing/glasses/fake_sunglasses,
+		/obj/item/clothing/glasses/regular,
+		/obj/item/clothing/glasses/eyepatch,
+		/obj/item/clothing/glasses/osi,
+		/obj/item/clothing/glasses/phantom,
+		/obj/item/clothing/glasses/salesman, // Now's your chance.
+		/obj/item/clothing/glasses/nice_goggles,
+		/obj/item/clothing/glasses/thin,
+		/obj/item/clothing/glasses/biker,
+	)
+
+/obj/item/nif_hud_adapter/examine(mob/user)
+	. = ..()
+	var/list/compatible_glasses_names = list()
+	for(var/obj/item/glasses_type as anything in glasses_whitelist)
+		var/glasses_name = initial(glasses_type.name)
+		if(!glasses_name)
+			continue
+
+		compatible_glasses_names += glasses_name
+
+	if(length(compatible_glasses_names))
+		. += span_cyan("This item will work on the following glasses: [english_list(compatible_glasses_names)].")
+
+	return .
+
+/obj/item/nif_hud_adapter/afterattack(obj/item/clothing/glasses/target_glasses, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!proximity_flag || !istype(target_glasses))
+		return FALSE
+
+	if(!is_type_in_list(target_glasses, glasses_whitelist))
+		to_chat(user, span_warning("[target_glasses] is incompatible with [src]!"))
+		return FALSE
+
+	if(target_glasses.obj_flags & NIF_HUD_GRANTER)
+		to_chat(user, span_warning("[target_glasses] is already upgraded!"))
+		return FALSE
+
+	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]"), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
+	target_glasses.name = "Upgraded " + target_glasses.name
+	target_glasses.obj_flags |= NIF_HUD_GRANTER
+	playsound(target_glasses.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
+
+	if(!multiple_uses)
+		qdel(src)
+
+/obj/item/clothing/glasses/examine(mob/user)
+	. = ..()
+	if(obj_flags & NIF_HUD_GRANTER)
+		. += span_cyan("Wearing this item in your glasses slot will allow you to use NIFSoft HUDs.")
+
