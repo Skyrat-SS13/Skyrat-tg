@@ -16,10 +16,9 @@
 
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
-	if(eyewear_check && !active)
-		if(!istype(worn_glasses) || !HAS_TRAIT(worn_glasses, TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR))
-			to_chat(linked_mob, span_warning("You need to wear a piece of compatible eyewear for [program_name] to work."))
-			return FALSE
+	if(eyewear_check && !active && (!istype(worn_glasses) || !HAS_TRAIT(linked_mob, TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR)))
+		to_chat(linked_mob, span_warning("You need to wear a piece of compatible eyewear for [program_name] to work."))
+		return FALSE
 
 	. = ..() // active = !active
 	if(!.)
@@ -126,7 +125,7 @@
 // NIFSOFT HUD GLASSES
 //
 
-/obj/item/clothing/glasses/trickblindfold/obsolete
+/obj/item/clothing/glasses/trickblindfold/obsolete/nif
 	name = "modernized fake blindfold"
 	desc = "A restored version of the obsolete fake blindfold, retrofitted with the proper electronics to work as a NIF HUD."
-	clothing_traits = TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR
+	clothing_traits = list(TRAIT_NIFSOFT_HUD_COMPATIBLE_EYEWEAR)
