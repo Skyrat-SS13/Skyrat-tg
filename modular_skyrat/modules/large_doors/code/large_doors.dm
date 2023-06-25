@@ -11,18 +11,18 @@
 
 	return size
 
-/obj/machinery/door/airlock
+/obj/machinery/door
 	/// Whether or not the door is a multi-tile airlock.
 	var/multi_tile
 	/// A filler object used to fill the space of multi-tile airlocks.
 	var/obj/airlock_filler_object/filler
 
-/obj/machinery/door/airlock/Initialize(mapload)
+/obj/machinery/door/Initialize(mapload)
 	. = ..()
 	multi_tile = get_size_in_tiles(src) > 1
 	if(multi_tile)
 		set_bounds()
-	update_overlays()
+		update_overlays()
 
 /obj/machinery/door/airlock/Move()
 	if(multi_tile)
@@ -41,7 +41,7 @@
  * If the airlock doesn't already have a filler object, it will create one.
  * If the airlock already has a filler object, it will move it to the correct location.
  */
-/obj/machinery/door/airlock/proc/set_bounds()
+/obj/machinery/door/proc/set_bounds()
 	if(!multi_tile)
 		return
 	var/size = get_size_in_tiles(src)
@@ -77,7 +77,7 @@
  *
  * @return list of turfs the door occupies
  */
-/obj/machinery/door/airlock/proc/get_turfs()
+/obj/machinery/door/proc/get_turfs()
 	var/turf/current_turf = get_turf(src)
 	if(!multi_tile)
 		return current_turf

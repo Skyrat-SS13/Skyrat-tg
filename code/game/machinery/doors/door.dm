@@ -455,31 +455,33 @@
 		open()
 
 /obj/machinery/door/proc/crush()
-	for(var/mob/living/L in get_turf(src))
-		L.visible_message(span_warning("[src] closes on [L], crushing [L.p_them()]!"), span_userdanger("[src] closes on you and crushes you!"))
-		SEND_SIGNAL(L, COMSIG_LIVING_DOORCRUSHED, src)
-		if(isalien(L))  //For xenos
-			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE * 1.5) //Xenos go into crit after aproximately the same amount of crushes as humans.
-			L.emote("roar")
-		else if(ishuman(L)) //For humans
-			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-			L.emote("scream")
-			//L.Paralyze(100) //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL
-			L.StaminaKnockdown(20, TRUE, TRUE)
-		else if(ismonkey(L)) //For monkeys
-			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-			//L.Paralyze(100) //ORIGINAL
-			L.StaminaKnockdown(20, TRUE, TRUE)
-			//SKYRAT EDIT END
-		else //for simple_animals & borgs
-			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-		var/turf/location = get_turf(src)
-		//add_blood doesn't work for borgs/xenos, but add_blood_floor does.
-		L.add_splatter_floor(location)
-		log_combat(src, L, "crushed")
-	for(var/obj/vehicle/sealed/mecha/M in get_turf(src))
-		M.take_damage(DOOR_CRUSH_DAMAGE)
-		log_combat(src, M, "crushed")
+	for(var/turf/checked_turf in get_turfs(src))
+		//for(var/mob/living/L in get_turf(src)) // Original
+		for(var/mob/living/L in checked_turf) // SKYRAT EDIT CHANGE
+			L.visible_message(span_warning("[src] closes on [L], crushing [L.p_them()]!"), span_userdanger("[src] closes on you and crushes you!"))
+			SEND_SIGNAL(L, COMSIG_LIVING_DOORCRUSHED, src)
+			if(isalien(L))  //For xenos
+				L.adjustBruteLoss(DOOR_CRUSH_DAMAGE * 1.5) //Xenos go into crit after aproximately the same amount of crushes as humans.
+				L.emote("roar")
+			else if(ishuman(L)) //For humans
+				L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
+				L.emote("scream")
+				//L.Paralyze(100) //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL
+				L.StaminaKnockdown(20, TRUE, TRUE)
+			else if(ismonkey(L)) //For monkeys
+				L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
+				//L.Paralyze(100) //ORIGINAL
+				L.StaminaKnockdown(20, TRUE, TRUE)
+				//SKYRAT EDIT END
+			else //for simple_animals & borgs
+				L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
+				var/turf/location = get_turf(src)
+				//add_blood doesn't work for borgs/xenos, but add_blood_floor does.
+				L.add_splatter_floor(location)
+				log_combat(src, L, "crushed")
+		for(var/obj/vehicle/sealed/mecha/M in get_turf(src))
+			M.take_damage(DOOR_CRUSH_DAMAGE)
+			log_combat(src, M, "crushed")
 
 /obj/machinery/door/proc/autoclose()
 	if(!QDELETED(src) && !density && !operating && !locked && !welded && autoclose)
