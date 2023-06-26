@@ -28,8 +28,7 @@
 
 /mob/living/simple_animal/crab/shuffle/Initialize(mapload)
 	. = ..()
-	resize = 0.5
-	update_transform()
+	update_transform(0.5)
 
 /mob/living/basic/carp/mega/shorki
 	name = "Shorki"
@@ -70,10 +69,10 @@
 	faction = list(FACTION_NEUTRAL)
 	gender = MALE
 
-/mob/living/simple_animal/chicken/teshari
+/mob/living/basic/chicken/teshari
 	name = "Teshari"
 	real_name = "Teshari"
 	desc = "A timeless classic."
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 0
-	maxbodytemp = 30000
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = 0
+	maximum_survivable_temperature = 30000

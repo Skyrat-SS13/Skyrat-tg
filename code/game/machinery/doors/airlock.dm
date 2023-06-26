@@ -156,11 +156,6 @@
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	if(multi_tile)
-		SetBounds()
-	update_overlays()
-	//SKYRAT EDIT END
 	wires = set_wires()
 	if(glass)
 		airlock_material = "glass"
@@ -864,12 +859,12 @@
 		else
 			return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	if(!tool.tool_start_check(user, amount=2))
+	if(!tool.tool_start_check(user, amount=1))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	to_chat(user, span_notice("You begin cutting the [layer_flavor]..."))
 
-	if(!tool.use_tool(src, user, 4 SECONDS, volume=50, amount=2))
+	if(!tool.use_tool(src, user, 4 SECONDS, volume=50))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	if(!panel_open || security_level != starting_level)
@@ -981,7 +976,7 @@
 			return
 
 		if(atom_integrity < max_integrity)
-			if(!W.tool_start_check(user, amount=0))
+			if(!W.tool_start_check(user, amount=1))
 				return
 			user.visible_message(span_notice("[user] begins welding the airlock."), \
 							span_notice("You begin repairing the airlock..."), \
@@ -996,7 +991,7 @@
 			to_chat(user, span_notice("The airlock doesn't need repairing."))
 
 /obj/machinery/door/airlock/try_to_weld_secondary(obj/item/weldingtool/tool, mob/user)
-	if(!tool.tool_start_check(user, amount=0))
+	if(!tool.tool_start_check(user, amount=1))
 		return
 	user.visible_message(span_notice("[user] begins [welded ? "unwelding":"welding"] the airlock."), \
 		span_notice("You begin [welded ? "unwelding":"welding"] the airlock..."), \
@@ -1212,10 +1207,12 @@
 
 	var/dangerous_close = !safe || force_crush
 	if(!dangerous_close)
-		for(var/atom/movable/M in get_turf(src))
-			if(M.density && M != src) //something is blocking the door
-				autoclose_in(DOOR_CLOSE_WAIT)
-				return FALSE
+		for(var/turf/checked_turf in get_turfs()) // SKYRAT EDIT ADD
+			//for(var/atom/movable/M in get_turf(src)) // Original
+			for(var/atom/movable/M in checked_turf) // SKYRAT EDIT CHANGE
+				if(M.density && M != src) //something is blocking the door
+					autoclose_in(DOOR_CLOSE_WAIT)
+					return FALSE
 
 	if(!try_to_force_door_shut(forced))
 		return FALSE
@@ -1408,7 +1405,7 @@
 				message = "unshocked"
 			else
 				message = "temp shocked for [secondsElectrified] seconds"
-		LAZYADD(shockedby, text("\[[time_stamp()]\] [key_name(user)] - ([uppertext(message)])"))
+		LAZYADD(shockedby, "\[[time_stamp()]\] [key_name(user)] - ([uppertext(message)])")
 		log_combat(user, src, message)
 		add_hiddenprint(user)
 

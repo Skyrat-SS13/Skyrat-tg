@@ -184,10 +184,16 @@
 	empty_contents()
 
 
-/obj/item/borg/hydraulic_clamp/pre_attack(atom/attacked_atom, mob/living/user, params)
-	if(!user.Adjacent(attacked_atom) || !COOLDOWN_FINISHED(src, clamp_cooldown) || in_use)
+/obj/item/borg/hydraulic_clamp/pre_attack(atom/attacked_atom, mob/living/silicon/robot/user, params)
+	if(!istype(user) || !user.Adjacent(attacked_atom) || !COOLDOWN_FINISHED(src, clamp_cooldown) || in_use)
 		return
 
+	// Not enough charge? Tough luck.
+	if(user?.cell.charge < charge_cost)
+		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]."))
+		return
+
+	user.cell.use(charge_cost)
 	in_use = TRUE
 	COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
@@ -310,7 +316,7 @@
 	id = "borg_upgrade_clamp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/better_clamp
-	materials = list(/datum/material/titanium = 4000, /datum/material/gold = 500, /datum/material/bluespace = 50)
+	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 5)
 	construction_time = 12 SECONDS
 	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO)
 

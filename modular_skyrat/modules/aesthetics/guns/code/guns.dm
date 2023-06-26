@@ -1,3 +1,13 @@
+// open to suggestions on where to put these ammobox overrides
+
+/obj/item/ammo_box
+	/// When inserted into an ammo workbench, does this ammo box check for parent ammunition to search for subtypes of? Relevant for surplus clips, multi-sprite magazines.
+	/// Maybe don't enable this for shotgun ammo boxes.
+	var/multitype = TRUE
+
+/obj/item/ammo_box/a762
+	caliber = CALIBER_A762
+
 /obj/item/gun/energy/e_gun
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -319,7 +329,7 @@
 	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
 	It still feels uncomfortably moist."
 
-/obj/item/gun/ballistic/rifle/boltaction/quartermaster
+/obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper FTU 'Archangel' precision rifle"
 	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
@@ -330,13 +340,19 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
+/obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
+	bolt_locked = TRUE // so the bolt starts visibly open
+	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 8
-	multiload = TRUE
+
+/obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+	start_empty = TRUE
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
@@ -375,19 +391,31 @@
 	name = ".244 Acia surplus casing"
 	desc = "A .244 surplus bullet casing."
 
+// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
+/obj/item/ammo_casing/a762/lionhunter
+	name = "lionhunter's casing"
+	desc = "There's something unnatural about this casing."
+	can_be_printed = FALSE
+
+/obj/item/ammo_casing/a762/enchanted
+	name = "enchanted .244 Acia casing"
+	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
+	can_be_printed = FALSE
+
 /obj/item/ammo_casing/a556
-	name = ".277 Aestus polymer casing"
+	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
 
 /obj/item/ammo_casing/a556/phasic
-	name = ".277 Aestus phasic polymer casing"
+	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
 	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
+	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT)
 
 /obj/item/ammo_casing/shotgun
-	name = "shotgun slug"
-	desc = "A 12 gauge tungsten slug."
+	desc = "A 12 gauge iron slug."
 
 // THE BELOW TWO SLUGS ARE NOTED AS ADMINONLY AND HAVE ***EIGHTY*** WOUND BONUS. NOT BARE WOUND BONUS. FLAT WOUND BONUS.
 /obj/item/ammo_casing/shotgun/executioner
@@ -405,6 +433,8 @@
 	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 9.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
@@ -460,6 +490,8 @@
 /obj/item/ammo_casing/p50
 	name = ".416 Stabilis polymer casing"
 	desc = "A .416 bullet casing."
+	advanced_print_req = TRUE // you are NOT printing more ammo for this without effort.
+	// then again the offstations with ammo printers and sniper rifles come with an ammo disk anyway, so
 
 /obj/item/ammo_casing/p50/soporific
 	name = ".416 Stabilis tranquilizer casing"
@@ -482,31 +514,39 @@
 	desc = "An 8mm armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c46x30mm/inc
 	name = "8mm Usurpator incendiary bullet casing"
 	desc = "An 8mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45
-	name = ".460 Ceres polymer casing"
+	name = ".460 Ceres bullet casing"
 	desc = "A .460 bullet casing."
 
 /obj/item/ammo_casing/c45/ap
-	name = ".460 Ceres armor-piercing polymer casing"
+	name = ".460 Ceres armor-piercing bullet casing"
 	desc = "An armor-piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45/inc
 	name = ".460 Ceres incendiary bullet casing"
 	desc = "An incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/a50ae
-	name = ".454 Trucidator polymer casing"
+	name = ".454 Trucidator bullet casing"
 	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
 	<br><br>\
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
@@ -522,6 +562,28 @@
 	desc = "A .357 bullet casing, manufactured to exceedingly high standards.\
 	<br><br>\
 	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
+
+/obj/item/ammo_box/c38
+	caliber = CALIBER_38
+
+/obj/item/ammo_casing/c38/trac
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
+						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/dumdum
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/hotshot
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c38/iceblox
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
+						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
+	advanced_print_req = TRUE
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 

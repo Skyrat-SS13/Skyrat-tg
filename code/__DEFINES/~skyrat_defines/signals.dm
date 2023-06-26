@@ -82,3 +82,9 @@
 
 /// Engineering Override Access manual toggle
 #define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"
+
+/// Whenever we need to check if a mob is currently inside of soulcatcher.
+#define COMSIG_SOULCATCHER_CHECK_SOUL "soulcatcher_check_soul"
+
+/// Whenever we need to get the soul of the mob inside of the soulcatcher.
+#define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"
