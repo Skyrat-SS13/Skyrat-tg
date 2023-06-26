@@ -5,7 +5,7 @@
 	icon_state = "vapecart"
 	fill_icon_state = "vapecart"
 	volume = 50
-	possible_transfer_amounts = list()
+	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/nicotine = 50)
 	fill_icon_thresholds = list(0, 5, 20, 40)
 	custom_price = PAYCHECK_CREW
