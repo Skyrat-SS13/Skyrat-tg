@@ -253,18 +253,31 @@
 
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "FAR-14C IRU"
-	desc = "A close-fitting respirator designed by Forestiian Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
+	name = "Ixian Taj Rebreather"
+	desc = "A close-fitting respirator meant for Ixian Tajarans and designed by Caligram Internal Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "far14c"
+	actions_types = list(/datum/action/item_action/adjust)
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
-	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_inv = HIDEFACE | HIDESNOUT
 	flags_cover = NONE
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
+
+/obj/item/clothing/mask/gas/nightlight/attack_self(mob/user)
+	adjustmask(user)
+
+/obj/item/clothing/mask/gas/nightlight/AltClick(mob/user)
+	..()
+	if(user.can_perform_action(src, NEED_DEXTERITY))
+		adjustmask(user)
+
+/obj/item/clothing/mask/gas/nightlight/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt-click [src] to adjust it.")
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
