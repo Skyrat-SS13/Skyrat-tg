@@ -108,7 +108,7 @@
 	/// Can this item be used multiple times? If not, it will delete itself after being used.
 	var/multiple_uses = FALSE
 	/// List containing all of the glasses that we want to work with this.
-	var/list/glasses_whitelist = list(
+	var/static/list/glasses_whitelist = list(
 		/obj/item/clothing/glasses/trickblindfold,
 		/obj/item/clothing/glasses/monocle,
 		/obj/item/clothing/glasses/fake_sunglasses,
@@ -144,15 +144,15 @@
 		return FALSE
 
 	if(!is_type_in_list(target_glasses, glasses_whitelist))
-		to_chat(user, span_warning("[target_glasses] is incompatible with [src]!"))
+		balloon_alert("incompatible!")
 		return FALSE
 
 	if(target_glasses.obj_flags & NIF_HUD_GRANTER)
-		to_chat(user, span_warning("[target_glasses] is already upgraded!"))
+		balloon_alert("already upgraded!")
 		return FALSE
 
-	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]"), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
-	target_glasses.name = "Upgraded " + target_glasses.name
+	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]."), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
+	target_glasses.name = "HUD-upgraded " + target_glasses.name
 	target_glasses.obj_flags |= NIF_HUD_GRANTER
 	playsound(target_glasses.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 

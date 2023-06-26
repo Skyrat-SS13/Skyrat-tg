@@ -1,5 +1,5 @@
 /datum/nifsoft/hud
-	name = "Blank HUD"
+	name = "blank HUD"
 	program_desc = "Provides the overlay of a hud on compatible eyewear."
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 	active_mode = TRUE
@@ -17,7 +17,7 @@
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active && (!istype(worn_glasses) || !(worn_glasses.obj_flags & NIF_HUD_GRANTER)))
-		to_chat(linked_mob, span_warning("You need to wear a piece of compatible eyewear for [program_name] to work."))
+		balloon_alert("no compatible eyewear!")
 		return FALSE
 
 	. = ..() // active = !active
@@ -31,7 +31,7 @@
 		if(hud_trait)
 			REMOVE_TRAIT(linked_mob, hud_trait, NIFSOFT_TRAIT)
 
-		for(var/trait as anything in added_eyewear_traits)
+		for(var/trait in added_eyewear_traits)
 			REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
 
 		if(eyewear_check)
@@ -64,34 +64,34 @@
 //
 
 /datum/nifsoft/hud/job/medical
-	name = "Medical HUD"
+	name = "medical HUD"
 	program_desc = "Allows the user to view a medical HUD when wearing compatible eyewear."
 	ui_icon = "staff-snake"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
 	hud_trait = TRAIT_MEDICAL_HUD
 
 /datum/nifsoft/hud/job/diagnostic
-	name = "Diagnostic HUD"
+	name = "diagnostic HUD"
 	program_desc = "Allows the user to view a diagnostic HUD when wearing compatible eyewear."
 	ui_icon = "robot"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
 	hud_trait = TRAIT_DIAGNOSTIC_HUD
 
 /datum/nifsoft/hud/job/security
-	name = "Security HUD"
+	name = "security HUD"
 	program_desc = "Allows the user to view a security HUD when wearing compatible eyewear."
 	ui_icon = "shield"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	hud_trait = TRAIT_SECURITY_HUD
 
 /datum/nifsoft/hud/job/cargo_tech
-	name = "Permit HUD"
+	name = "permit HUD"
 	program_desc = "Allows the user to view a permit HUD when wearing compatible eyewear."
 	ui_icon = "gun"
 	hud_type = DATA_HUD_PERMIT
 
 /datum/nifsoft/hud/job/science
-	name = "Science HUD"
+	name = "science HUD"
 	program_desc = "Allows the user to view a science HUD when wearing compatible eyewear."
 	ui_icon = "flask"
 	added_eyewear_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
