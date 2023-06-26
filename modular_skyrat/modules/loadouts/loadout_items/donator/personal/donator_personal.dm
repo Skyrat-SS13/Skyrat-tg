@@ -153,9 +153,9 @@
 	ckeywhitelist = list("enzoman")
 
 /datum/loadout_item/mask/nightlight_mask
-	name = "FAR-14C IRU"
+	name = "Ixian Taj Rebreather"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "socialistion", "Chillylobster")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"

@@ -329,7 +329,7 @@
 	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
 	It still feels uncomfortably moist."
 
-/obj/item/gun/ballistic/rifle/boltaction/quartermaster
+/obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper FTU 'Archangel' precision rifle"
 	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
@@ -340,13 +340,19 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
+/obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
+	bolt_locked = TRUE // so the bolt starts visibly open
+	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 8
-	multiload = TRUE
+
+/obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+	start_empty = TRUE
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
