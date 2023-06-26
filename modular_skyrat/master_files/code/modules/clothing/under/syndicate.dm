@@ -123,47 +123,6 @@
 		desc = "A non-descript and slightly suspicious looking skirtleneck."
 		inhand_icon_state = "bl_suit"
 
-/*
-*	ENCLAVE
-*/
-/obj/item/clothing/under/syndicate/skyrat/enclaveo
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclaveo"
-	can_adjust = TRUE
-	armor_type = /datum/armor/none
-
-/obj/item/clothing/under/syndicate/skyrat/enclave
-	name = "neo american sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclave"
-	can_adjust = TRUE
-	armor_type = /datum/armor/none
-
-/obj/item/clothing/under/syndicate/skyrat/enclaveo/real
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclaveo"
-	armor_type = /datum/armor/enclaveo_real
-
-/datum/armor/enclaveo_real
-	melee = 10
-	bio = 10
-	fire = 50
-	acid = 40
-
-/obj/item/clothing/under/syndicate/skyrat/enclave/real
-	name = "neo american sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclave"
-	armor_type = /datum/armor/enclave_real
-
 #undef RESKIN_CHARCOAL
 #undef RESKIN_NT
 #undef RESKIN_SYNDIE
-
-/datum/armor/enclave_real
-	melee = 10
-	bio = 10
-	fire = 50
-	acid = 40
