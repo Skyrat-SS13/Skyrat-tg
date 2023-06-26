@@ -15,7 +15,7 @@
 
 	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual)
 		return
-	if(refractory_period < REALTIMEOFDAY)
+	if(refractory_period > REALTIMEOFDAY)
 		return
 	refractory_period = REALTIMEOFDAY + 30 SECONDS
 	if(has_status_effect(/datum/status_effect/climax_cooldown) || !client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
