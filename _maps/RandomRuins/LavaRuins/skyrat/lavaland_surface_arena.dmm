@@ -85,9 +85,7 @@
 "cN" = (
 /obj/structure/stone_tile/slab,
 /obj/effect/gibspawner/human,
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "dR" = (
 /obj/structure/stone_tile/block{
@@ -258,24 +256,21 @@
 	},
 /area/lavaland/surface/outdoors)
 "mZ" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
-	dir = 8
+/obj/structure/stone_tile/block{
+	dir = 4
 	},
 /obj/structure/stone_tile{
 	dir = 4
 	},
 /obj/structure/stone_tile{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/decal/remains/human{
 	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
 	layer = 33
 	},
 /obj/item/clothing/head/helmet/gladiator,
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "nc" = (
 /obj/structure/stone_tile/block{
@@ -376,16 +371,17 @@
 /area/lavaland/surface/outdoors)
 "qU" = (
 /obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile{
 	dir = 1
 	},
 /obj/structure/stone_tile,
-/obj/structure/stone_tile{
-	dir = 8
+/obj/effect/decal/remains/human{
+	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
+	layer = 33
 	},
-/obj/item/knife/combat/bone,
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "si" = (
 /obj/structure/stone_tile/slab,
@@ -510,23 +506,15 @@
 	},
 /area/lavaland/surface/outdoors)
 "xn" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
-	dir = 8
-	},
+/obj/structure/stone_tile/block,
 /obj/structure/stone_tile{
 	dir = 4
 	},
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/obj/effect/decal/remains/human{
-	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
-	layer = 33
-	},
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/obj/item/knife/combat/bone,
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "xt" = (
 /obj/structure/stone_tile/block{
@@ -593,13 +581,11 @@
 /area/lavaland/surface/outdoors)
 "Dc" = (
 /obj/structure/stone_tile/slab,
-/obj/structure/necropolis_arch,
 /obj/structure/necropolis_gate{
 	desc = "A massive stone gateway into a gladitorial arena. You feel like entering this unprepared would be your doom."
 	},
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/obj/structure/necropolis_arch,
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "Df" = (
 /obj/structure/stone_tile,
@@ -635,22 +621,19 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "DM" = (
-/obj/structure/stone_tile/block{
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile{
 	dir = 4
 	},
 /obj/structure/stone_tile{
-	dir = 8
-	},
-/obj/structure/stone_tile{
-	dir = 4
+	dir = 1
 	},
 /obj/effect/decal/remains/human{
 	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
 	layer = 33
 	},
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
+/obj/item/clothing/under/costume/gladiator/ash_walker,
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "DN" = (
 /obj/structure/stone_tile/block{
@@ -896,23 +879,6 @@
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface{
-	slowdown = 0
-	},
-/area/lavaland/surface/outdoors)
-"Qj" = (
-/obj/structure/stone_tile/block{
-	dir = 1
-	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
-	dir = 8
-	},
-/obj/effect/decal/remains/human{
-	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
-	layer = 33
-	},
-/obj/item/clothing/under/costume/gladiator/ash_walker,
 /turf/open/lava/smooth/lava_land_surface{
 	slowdown = 0
 	},
@@ -1212,7 +1178,7 @@ BX
 Wr
 XL
 CJ
-Wr
+Qs
 Iv
 Wr
 xh
@@ -1280,9 +1246,9 @@ CR
 kO
 Wr
 WF
-Qs
-TP
-Qj
+Wr
+DM
+ie
 XY
 XY
 xh
@@ -1314,8 +1280,8 @@ kO
 Wr
 wQ
 Wr
-TP
-qU
+xn
+ie
 XY
 XY
 xh
@@ -1374,8 +1340,8 @@ ne
 pF
 XL
 XL
-xn
-Wr
+pF
+ot
 RQ
 Wr
 wQ
@@ -1468,7 +1434,7 @@ XY
 Wr
 XL
 pF
-DM
+lf
 lf
 pF
 Wr
@@ -1501,11 +1467,11 @@ XY
 wQ
 ne
 lT
-vF
+qU
 vF
 vF
 RQ
-Wr
+cN
 Qe
 GU
 Tu
@@ -1587,7 +1553,7 @@ WF
 wQ
 wQ
 Dc
-wQ
+Wr
 pM
 wQ
 JS
@@ -1649,7 +1615,7 @@ TP
 dR
 Wr
 Wr
-Pj
+mZ
 Pj
 Pj
 XY
@@ -1682,7 +1648,7 @@ XL
 wQ
 Wr
 Wr
-mZ
+pF
 CK
 ne
 XY
@@ -1704,7 +1670,7 @@ XY
 xh
 pF
 wQ
-cN
+wQ
 wQ
 ie
 wQ
@@ -1738,7 +1704,7 @@ xh
 XL
 XL
 wQ
-Wr
+cN
 Wr
 Wr
 wQ
