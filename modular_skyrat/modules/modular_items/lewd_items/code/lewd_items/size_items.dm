@@ -1,6 +1,13 @@
+/// What areas are we allowed to use size items in?
+#define SIZE_WHITELISTED_AREAS list(\
+		/area/centcom/interlink/dorm_rooms,\
+		/area/centcom/holding/cafedorms,\
+		/area/misc/hilbertshotel,\
+)
+
 /obj/item/clothing/neck/size_collar
 	name = "size collar"
-	desc = "A shiny black collar embeded with technology that allows the user to change their own size. Mysteriously, this only seems to work while inside of interlink dorms."
+	desc = "A shiny black collar embeded with technology that allows the user to change their own size."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_black"
@@ -51,14 +58,26 @@
 		qdel(size_component)
 		size_component = null
 
+/obj/item/clothing/neck/size_collar/examine(mob/user)
+	. = ..()
+	var/list/area_names = list()
+	for(var/area_index in SIZE_WHITELISTED_AREAS) //We can't do this typed.
+		var/area/area_type = area_index //So we have to assign it to a typed variable after we get it from the loop.
+		var/area_name = initial(area_type.name)
+		if(!area_name)
+			continue
+
+		area_names += area_name
+
+	if(length(area_names))
+		. += span_cyan("This collar will work in the following areas: [english_list(area_names)]")
+
+	return .
+
 /// Component that temporarily applies a size to a human.
 /datum/component/temporary_size
 	/// List containing the areas that the size change works in. If this is empty, this will work everywhere.
-	var/list/allowed_areas = list(
-		/area/centcom/interlink/dorm_rooms,
-		/area/centcom/holding/cafedorms,
-		/area/misc/hilbertshotel,
-	)
+	var/list/allowed_areas = SIZE_WHITELISTED_AREAS
 	/// What is the stored size of the mob using this?
 	var/original_size = 1
 	/// What size are we changing the parent mob to?
@@ -106,3 +125,5 @@
 	UnregisterSignal(parent, COMSIG_ENTER_AREA)
 
 	return ..()
+
+#undef SIZE_WHITELISTED_AREAS
