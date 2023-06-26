@@ -120,6 +120,7 @@
 		/obj/item/clothing/glasses/nice_goggles,
 		/obj/item/clothing/glasses/thin,
 		/obj/item/clothing/glasses/biker,
+		/obj/item/clothing/glasses/sunglasses/gar,
 	)
 
 /obj/item/nif_hud_adapter/examine(mob/user)
