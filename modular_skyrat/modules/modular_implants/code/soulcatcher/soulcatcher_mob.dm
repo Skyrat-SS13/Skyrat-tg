@@ -21,6 +21,8 @@
 	var/able_to_emote = TRUE
 	/// Is the soul able to speak inside the soulcatcher room?
 	var/able_to_speak = TRUE
+	/// Is the soul able to change their own name?
+	var/able_to_rename = TRUE
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
@@ -29,7 +31,6 @@
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
 
-
 /mob/living/soulcatcher_soul/Initialize(mapload)
 	. = ..()
 	if(!outside_sight)
@@ -37,6 +38,14 @@
 
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
+
+	var/datum/action/innate/leave_soulcatcher/leave_action = new
+	leave_action.Grant(src)
+
+	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new
+	soulcatcher_action.Grant(src)
+	var/datum/component/soulcatcher_user/user_component = AddComponent(/datum/component/soulcatcher_user)
+	soulcatcher_action.soulcatcher_user_component = WEAKREF(user_component)
 
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
@@ -58,7 +67,22 @@
 
 	return outside_hearing
 
-/// Attemp to leave the soulcatcher.
+/// Changes the soul's name based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/change_name(new_name)
+	if(!new_name || (round_participant && body_scan_needed))
+		return FALSE
+
+	name = new_name
+	return TRUE
+
+/// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/reset_name()
+	if(!mind?.name || change_name(mind.name))
+		return FALSE
+
+	return TRUE
+
+/// Checks if the mob wants to leave the soulcatcher. If they do and are able to leave, they are booted out.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
 	set name = "Leave Soulcatcher"
 	set category = "IC"
@@ -155,3 +179,35 @@
 
 /datum/emote/living
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/living/soulcatcher_soul)
+
+/datum/action/innate/leave_soulcatcher
+	name = "Leave Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher_exit"
+
+/datum/action/innate/leave_soulcatcher/Activate()
+	. = ..()
+	var/mob/living/soulcatcher_soul/parent_soul = owner
+	if(!parent_soul)
+		return FALSE
+
+	parent_soul.leave_soulcatcher()
+
+/datum/action/innate/soulcatcher_user
+	name = "Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher"
+	/// What soulcatcher user component are we bringing up the menu for?
+	var/datum/weakref/soulcatcher_user_component
+
+/datum/action/innate/soulcatcher_user/Activate()
+	. = ..()
+	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
+	if(!user_component)
+		return FALSE
+
+	user_component.ui_interact(owner)
