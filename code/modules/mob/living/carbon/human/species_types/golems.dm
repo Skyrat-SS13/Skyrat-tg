@@ -22,8 +22,12 @@
 	mutantheart = null
 	mutantlungs = null
 	inherent_biotypes = MOB_HUMANOID|MOB_MINERAL
+<<<<<<< HEAD
 	liked_food = STONE
 	armor = 10
+=======
+	damage_modifier = 10 //golem is stronk
+>>>>>>> 62ccbff0dfc (SPECIES NUKING 2023: Makes tongues handle liked/disliked food instead of species datum (#76204))
 	payday_modifier = 0.75
 	siemens_coeff = 0
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING | ITEM_SLOT_SUITSTORE

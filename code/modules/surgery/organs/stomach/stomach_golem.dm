@@ -5,8 +5,7 @@
 	color = COLOR_GOLEM_GRAY
 	status = ORGAN_MINERAL
 	organ_traits = list(TRAIT_ROCK_EATER)
-	/// Multiplier for the hunger rate, golems burn fuel quickly
-	var/hunger_mod = 10
+	hunger_modifier = 10 // golems burn fuel quickly
 	/// How slow are you when the "hungry" icon appears?
 	var/min_hunger_slowdown = 0.5
 	/// How slow are you if you have absolutely nothing in the tank?
@@ -15,6 +14,7 @@
 /obj/item/organ/internal/stomach/golem/on_insert(mob/living/carbon/organ_owner, special)
 	. = ..()
 	RegisterSignal(owner, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
+<<<<<<< HEAD:code/modules/surgery/organs/stomach/stomach_golem.dm
 	if (!ishuman(organ_owner))
 		return
 	if (organ_owner.flags_1 & INITIALIZED_1)
@@ -27,16 +27,21 @@
 	SIGNAL_HANDLER
 	human_owner.physiology?.hunger_mod *= hunger_mod
 	UnregisterSignal(human_owner, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
+=======
+>>>>>>> 62ccbff0dfc (SPECIES NUKING 2023: Makes tongues handle liked/disliked food instead of species datum (#76204)):code/modules/surgery/organs/internal/stomach/stomach_golem.dm
 
 /obj/item/organ/internal/stomach/golem/on_remove(mob/living/carbon/organ_owner, special)
 	. = ..()
 	UnregisterSignal(organ_owner, COMSIG_CARBON_ATTEMPT_EAT)
 	organ_owner.remove_movespeed_modifier(/datum/movespeed_modifier/golem_hunger)
 	organ_owner.remove_status_effect(/datum/status_effect/golem_statued)
+<<<<<<< HEAD:code/modules/surgery/organs/stomach/stomach_golem.dm
 	if (!ishuman(organ_owner))
 		return
 	var/mob/living/carbon/human/human_owner = organ_owner
 	human_owner.physiology?.hunger_mod /= hunger_mod
+=======
+>>>>>>> 62ccbff0dfc (SPECIES NUKING 2023: Makes tongues handle liked/disliked food instead of species datum (#76204)):code/modules/surgery/organs/internal/stomach/stomach_golem.dm
 
 /// Reject food, rocks only
 /obj/item/organ/internal/stomach/golem/proc/try_eating(mob/living/carbon/source, atom/eating)
