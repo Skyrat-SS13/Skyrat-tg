@@ -17,7 +17,7 @@
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active && (!istype(worn_glasses) || !(worn_glasses.obj_flags & NIF_HUD_GRANTER)))
-		balloon_alert("no compatible eyewear!")
+		linked_mob.balloon_alert("no compatible eyewear!")
 		return FALSE
 
 	. = ..() // active = !active
