@@ -35,6 +35,7 @@
 	species_exception = list(/datum/species/plasmaman)
 	custom_price = PAYCHECK_CREW * 12 // 600 credits
 
+	/// The overlays removed when we wear this thing un-inflated
 	var/static/list/applied_overlays = list(
 		BACK_LAYER,
 		BELT_LAYER,
@@ -46,19 +47,25 @@
 		SHOES_LAYER,
 	)
 
+	/// The overlays removed when we wear this thing and it's inflated
 	var/static/list/bonus_overlays = list(
 		HEAD_LAYER,
 		HAIR_LAYER
 	)
 
+	/// The overlays we had before putting the bag on, so we can put them back when we take it off
 	var/list/previous_overlays = list()
 
+	/// Is the bag inflated?
 	var/inflated = FALSE
+	/// Is the bag folded?
 	var/folded = TRUE
+	/// The color of the bag
 	var/bag_color = "pink"
+	/// Has the color been changed?
 	var/color_changed = FALSE
+	/// The colors for the radial menu
 	var/list/bag_colors
-	var/list/bag_inf_states
 
 	COOLDOWN_DECLARE(sound_cooldown)
 
@@ -66,11 +73,8 @@
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	// update_icon()
 	if(!length(bag_colors))
 		populate_bag_colors()
-	if(!length(bag_inf_states))
-		populate_bag_inf_states()
 
 
 // to reskin the bag
@@ -84,23 +88,13 @@
 		return FALSE
 
 	if(!color_changed)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(human_user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), human_user), radius = 36, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		bag_color = choice
-		update_icon()
-		// update_icon_state()
-		color_changed = TRUE
+		handle_color_change(human_user)
 		return
 
 	if(!fold(human_user))
 		return
 	to_chat(human_user, span_notice("The sleeping bag now is [folded? "folded." : "unfolded."]"))
 	update_icon()
-	// update_icon_state()
 
 
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/update_icon_state()
@@ -143,7 +137,6 @@
 		return
 	toggle_mode(affected_human)
 	update_icon()
-	// update_icon_state()
 
 
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/dropped(mob/user)
@@ -177,6 +170,11 @@
 		COOLDOWN_START(src, sound_cooldown, SOUND_COOLDOWN_LENGTH)
 
 
+/**
+ * Checks if the user has the preference to use this item.
+ *
+ * @param user The user to check.
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/check_prefs(mob/user)
 	if(user.client?.prefs.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return TRUE
@@ -184,20 +182,22 @@
 		return FALSE
 
 
-// populate deflated designs for the radial menu
+/**
+ * Populates colours / designs for the radial menu
+ * We don't need to worry about the inflated state because you can't inflate it before reskinning it
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/populate_bag_colors()
 	bag_colors = list(
 		"pink" = image(icon = src.icon, icon_state = ICON_STATE_FOLDED_PINK),
 		"teal" = image(icon = src.icon, icon_state = ICON_STATE_FOLDED_TEAL),
 		)
 
-// populate inflated designs for the radial menu
-/obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/populate_bag_inf_states()
-	bag_inf_states = list(
-		"pink" = image(icon = src.icon, icon_state = ICON_STATE_FOLDED_PINK),
-		"teal" = image(icon = src.icon, icon_state = ICON_STATE_FOLDED_TEAL),
-		)
 
+/**
+ * Checks if the user is able to access the reskin menu
+ *
+ * @params user The mob being checked
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
@@ -205,6 +205,26 @@
 		return FALSE
 	return TRUE
 
+
+/**
+ * Handles changing the colour of the bag
+ *
+ * @params user The mob changing the colour
+ */
+/obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/handle_color_change(mob/living/user)
+	var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	bag_color = choice
+	update_icon()
+	color_changed = TRUE
+	return
+
+
+/**
+ * Folds the bag
+ * Changes the
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/fold(mob/user)
 	if(inflated)
 		balloon_alert(user, "need to deflate!")
