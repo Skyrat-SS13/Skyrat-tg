@@ -404,6 +404,7 @@
 	melee = 10
 	acid = 50
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
 	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
@@ -424,6 +425,17 @@
 				reagents.trans_to(O, 5, transfered_by = user)
 				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
 				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE) //SKYRAT EDIT CHANGE END
+=======
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
+	if(istype(O, /obj/item/mop))
+		if(reagents.total_volume < 1)
+			user.balloon_alert(user, "empty!")
+		else
+			reagents.trans_to(O, 5, transfered_by = user)
+			user.balloon_alert(user, "doused [O]")
+			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+		return
+>>>>>>> 5057e65041b (Janitor balloon alerts (#76284))
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)
