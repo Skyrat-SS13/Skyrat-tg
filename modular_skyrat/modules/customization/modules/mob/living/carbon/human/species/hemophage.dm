@@ -109,11 +109,24 @@
 	return ..()
 
 
-/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species)
+/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species, pref_load)
 	. = ..()
 	to_chat(new_hemophage, HEMOPHAGE_SPAWN_TEXT)
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
+
+	
+/datum/species/hemophage/on_species_loss(mob/living/carbon/human/former_hemophage, datum/species/new_species, pref_load)
+	. = ..()
+	var/datum/species/hemophage/hemophage_species = former_hemophage.dna.species
+	var/obj/item/organ/internal/heart/hemophage/tumor = former_hemophage.getorgan(/obj/item/organ/internal/heart/hemophage)
+	
+	// make sure we clear dormant status when changing species
+	if(tumor?.is_dormant)
+		tumor.toggle_dormant_state()
+		hemophage_species.tumor_status = tumor.is_dormant
+		hemophage_species.toggle_dormant_tumor_vulnerabilities(hemophage)
+		hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, seconds_per_tick, times_fired)
