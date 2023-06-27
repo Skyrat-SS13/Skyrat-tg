@@ -534,8 +534,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	if(C.dna.species.exotic_bloodtype)
-		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 	for(var/obj/item/organ/external/organ in C.organs)
@@ -1078,8 +1076,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return TRUE
 	if(!chem.overdosed && chem.overdose_threshold && chem.volume >= chem.overdose_threshold)
 		chem.overdosed = TRUE
+<<<<<<< HEAD:code/modules/mob/living/carbon/human/species.dm
 		chem.overdose_start(H)
 		H.log_message("has started overdosing on [chem.name] at [chem.volume] units.", LOG_GAME)
+=======
+		chem.overdose_start(affected)
+		affected.log_message("has started overdosing on [chem.name] at [chem.volume] units.", LOG_GAME)
+	return SEND_SIGNAL(affected, COMSIG_SPECIES_HANDLE_CHEMICAL, chem, seconds_per_tick, times_fired)
+>>>>>>> 221e82c3640 ([NO GBP] Fixes my fuckups with species livers (#76331)):code/modules/mob/living/carbon/human/_species.dm
 
 /datum/species/proc/check_species_weakness(obj/item, mob/living/attacker)
 	return 1 //This is not a boolean, it's the multiplier for the damage that the user takes from the item. The force of the item is multiplied by this value
