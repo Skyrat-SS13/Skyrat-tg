@@ -437,6 +437,7 @@
 #define OFFSET_NECK "neck"
 #define OFFSET_HELD "held"
 #define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
+#define OFFSET_HAIR "hair" // Skyrat edit - addition - Akulas
 
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
