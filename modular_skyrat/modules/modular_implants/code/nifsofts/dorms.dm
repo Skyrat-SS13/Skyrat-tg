@@ -46,7 +46,7 @@
 					/obj/item/clothing/under/misc/latex_catsuit,
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket,
 					/obj/item/clothing/suit/straight_jacket/shackles,
-					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag,
+					/obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag,
 					/obj/item/clothing/neck/mind_collar,
 					/obj/item/clothing/strapon,
 					/obj/item/storage/belt/erpbelt,

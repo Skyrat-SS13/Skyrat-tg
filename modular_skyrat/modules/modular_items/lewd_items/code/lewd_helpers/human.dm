@@ -360,6 +360,6 @@
 
 // For handling things that don't already have handcuff handlers.
 /mob/living/carbon/human/set_handcuffed(new_value)
-	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag))
 		return FALSE
 	..()

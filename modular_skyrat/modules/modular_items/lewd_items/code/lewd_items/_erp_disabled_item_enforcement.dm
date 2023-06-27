@@ -83,7 +83,7 @@
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize(mapload)
+/obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL

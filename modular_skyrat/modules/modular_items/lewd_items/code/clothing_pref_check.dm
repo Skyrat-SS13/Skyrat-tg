@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(pref_checked_clothes, list(
 	/obj/item/clothing/neck/mind_collar,
 	/obj/item/clothing/glasses/blindfold/kinky,
 	/obj/item/clothing/ears/kinky_headphones,
-	/obj/item/clothing/suit/straight_jacket/kinky_sleepbag,
+	/obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag,
 	/obj/item/clothing/suit/straight_jacket/latex_straight_jacket,
 	/obj/item/clothing/gloves/ball_mittens,
 	/obj/item/clothing/gloves/ball_mittens_reinforced,
