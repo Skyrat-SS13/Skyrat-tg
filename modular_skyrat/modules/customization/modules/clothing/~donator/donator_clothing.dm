@@ -253,8 +253,8 @@
 
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "Ixian Taj Rebreather"
-	desc = "A close-fitting respirator meant for Ixian Tajarans and designed by Caligram Internal Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
+	name = "FIR-36 Rebreather"
+	desc = "A close-fitting respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-36 Rebreather is commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "far14c"
@@ -263,7 +263,7 @@
 	flags_inv = HIDEFACE | HIDESNOUT
 	flags_cover = NONE
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
-	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_inv = HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
 
@@ -278,6 +278,26 @@
 /obj/item/clothing/mask/gas/nightlight/examine(mob/user)
 	. = ..()
 	. += span_notice("Alt-click [src] to adjust it.")
+
+/obj/item/clothing/mask/gas/nightlight/alldono //different itempath so regular donators can have it, too
+
+// Donation reward for ChillyLobster
+/obj/item/clothing/suit/jacket/brasspriest
+	name = "brasspriest coat"
+	desc = "A reddish coat with brass-clad parts embed into said coat. You can hear the faint noise of some cogs turning from time to time inside."
+	icon_state = "brasspriest"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+
+// Donation reward for ChillyLobster
+/obj/item/clothing/suit/jacket/hydrogenrobes
+	name = "metallic-hydrogen robes"
+	desc = "An incredibly shiny dress that seems to be covered in a very thin sheet of metallic hydrogen all over the textiles. Not very protective."
+	icon_state = "hydrogenrobes"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
