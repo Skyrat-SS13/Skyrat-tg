@@ -49,8 +49,8 @@
 
 	/// The overlays removed when we wear this thing and it's inflated
 	var/static/list/bonus_overlays = list(
+		HAIR_LAYER,
 		HEAD_LAYER,
-		HAIR_LAYER
 	)
 
 	/// The overlays we had before putting the bag on, so we can put them back when we take it off
@@ -223,7 +223,9 @@
 
 /**
  * Folds the bag
- * Changes the
+ * Changes the folded state, weight class, and slot flags
+ *
+ * @params user The mob folding the bag
  */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/fold(mob/user)
 	if(inflated)
@@ -241,6 +243,9 @@
 	update_icon()
 
 
+/**
+ * Builds the icon state for the bag
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/build_icon_state()
 	var/built_icon_state
 
@@ -252,6 +257,12 @@
 	return built_icon_state
 
 
+/**
+ * Toggles the inflated state of the bag
+ * Changes the slowdown and breakout time
+ *
+ * @params user The mob in/deflating the bag
+ */
 /obj/item/clothing/suit/jacket/straight_jacket/sleeping_bag/proc/toggle_mode(mob/user)
 	inflated = !inflated
 	if(inflated)
