@@ -152,7 +152,7 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]."), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
-	target_glasses.name = "HUD-upgraded " + target_glasses.name
+	target_glasses.name = "\improper HUD-upgraded " + target_glasses.name
 	target_glasses.obj_flags |= NIF_HUD_GRANTER
 	playsound(target_glasses.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
