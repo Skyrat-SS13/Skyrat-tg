@@ -153,9 +153,19 @@
 	ckeywhitelist = list("enzoman")
 
 /datum/loadout_item/mask/nightlight_mask
-	name = "Ixian Taj Rebreather"
+	name = "FIR-36 Rebreather"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "socialistion", "Chillylobster")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee")
+
+/datum/loadout_item/suit/brasspriest
+	name = "Brasspriest Coat"
+	item_path = /obj/item/clothing/suit/jacket/brasspriest
+	ckeywhitelist = list("ChillyLobster")
+
+/datum/loadout_item/suit/hydrogenrobes
+	name = "Metallic-Hydrogen robes"
+	item_path = /obj/item/clothing/suit/jacket/hydrogenrobes
+	ckeywhitelist = list("ChillyLobster")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
