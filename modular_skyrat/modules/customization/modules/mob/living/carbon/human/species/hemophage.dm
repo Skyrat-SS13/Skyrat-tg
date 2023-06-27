@@ -118,6 +118,11 @@
 	
 /datum/species/hemophage/on_species_loss(mob/living/carbon/human/former_hemophage, datum/species/new_species, pref_load)
 	. = ..()
+	
+	// if we are still a hemophage for whatever reason then we don't want to do any of this (this can happen with the Pride Mirror)
+	if(ishemophage(former_hemophage))
+		return
+	
 	var/obj/item/organ/internal/heart/hemophage/tumor = former_hemophage.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	
 	// make sure we clear dormant status when changing species
