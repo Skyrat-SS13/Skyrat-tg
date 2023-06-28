@@ -23,8 +23,9 @@
 
 	if(istype(vessel))
 		src.vessel = vessel
-		RegisterSignal(vessel, COMSIG_PARENT_QDELETING, PROC_REF(vessel_qdeleting))
-	src.permanent = permanent
+		RegisterSignal(vessel, COMSIG_QDELETING, PROC_REF(vessel_qdeleting))
+	if(!isnull(permanent))
+		src.permanent = permanent
 	if(!isnull(luck_mod))
 		src.luck_mod = luck_mod
 	if(!isnull(damage_mod))
@@ -36,7 +37,7 @@
 
 	if(vessel)
 		vessel.visible_message(span_warning("[vessel] burns up in a sinister flash, taking an evil energy with it..."))
-		UnregisterSignal(vessel, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(vessel, COMSIG_QDELETING)
 		vessel.burn()
 		vessel = null
 
@@ -161,7 +162,7 @@
 /datum/component/omen/proc/vessel_qdeleting(atom/source)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(vessel, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(vessel, COMSIG_QDELETING)
 	vessel = null
 
 /**

@@ -330,7 +330,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 /datum/game_mode/dynamic/proc/generate_advisory_level()
 	var/advisory_string = ""
 	if (prob(PULSAR_REPORT_CHANCE))
-		if (/datum/station_trait/bananium_shipment in SSstation.station_traits)
+		if(HAS_TRAIT(SSstation, STATION_TRAIT_BANANIUM_SHIPMENTS))
 			advisory_string += "Advisory Level: <b>Clown Planet</b></center><BR>"
 			advisory_string += "Your sector's advisory level is Clown Planet! Our bike horns have picked up on a large bananium stash. Clowns show a large influx of clowns on your station. We highly advice you to slip any threats to keep Honkotrasen assets within the Banana Sector. The Department advises defending chemistry from any clowns that are trying to make baldium or space lube."
 			return advisory_string
@@ -711,6 +711,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		if(!handle_executing_latejoin(forced_latejoin_rule, newPlayer, forced = TRUE))
 			message_admins("The forced latejoin ruleset [forced_latejoin_rule.name] couldn't be executed \
 				as the most recent latejoin did not fulfill the ruleset's requirements.")
+		forced_latejoin_rule = null
 		return
 
 	if(!forced_injection)

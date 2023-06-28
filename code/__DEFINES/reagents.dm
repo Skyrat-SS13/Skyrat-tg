@@ -41,10 +41,6 @@
 ///Amount of synthflesh required to unhusk someone
 #define SYNTHFLESH_UNHUSK_AMOUNT 100
 
-//SKYRAT EDIT ADD
-///Amount of synthflesh required to unhusk someone
-#define SYNTHFLESH_LING_UNHUSK_AMOUNT 200
-
 //used by chem masters and pill presses
 #define PILL_STYLE_COUNT 22 //Update this if you add more pill icons or you die
 #define RANDOM_PILL_STYLE 22 //Dont change this one though
@@ -150,11 +146,11 @@
 #define MAX_ADDICTION_POINTS 1000
 
 ///Addiction start/ends
-#define WITHDRAWAL_STAGE1_START_CYCLE 61
-#define WITHDRAWAL_STAGE1_END_CYCLE 120
-#define WITHDRAWAL_STAGE2_START_CYCLE 121
-#define WITHDRAWAL_STAGE2_END_CYCLE 180
-#define WITHDRAWAL_STAGE3_START_CYCLE 181
+#define WITHDRAWAL_STAGE1_START_CYCLE 121 // SKYRAT EDIT CHANGE - Original 61
+#define WITHDRAWAL_STAGE1_END_CYCLE 240 // SKYRAT EDIT CHANGE - Original 120
+#define WITHDRAWAL_STAGE2_START_CYCLE 241 // SKYRAT EDIT CHANGE - Original 121
+#define WITHDRAWAL_STAGE2_END_CYCLE 360 // SKYRAT EDIT CHANGE - Original 180
+#define WITHDRAWAL_STAGE3_START_CYCLE 361 // SKYRAT EDIT CHANGE - Original 181
 
 ///reagent tags - used to look up reagents for specific effects. Feel free to add to but comment it
 /// This reagent does brute effects (BOTH damaging and healing)

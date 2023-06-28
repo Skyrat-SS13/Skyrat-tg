@@ -30,7 +30,7 @@
 	required_access = needed_access
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 
 /datum/component/armament/Destroy(force, silent)
 	if(inserted_card)
@@ -262,14 +262,3 @@
 			return FALSE
 
 	return TRUE
-
-/datum/component/armament/proc/text2access(access_text)
-	. = list()
-	if(!access_text)
-		return
-	var/list/split = splittext(access_text,";")
-	for(var/split_text in split)
-		var/num_text = text2num(split_text)
-		if(!num_text)
-			continue
-		. += num_text

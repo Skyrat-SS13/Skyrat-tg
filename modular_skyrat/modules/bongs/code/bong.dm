@@ -22,8 +22,6 @@
 
 	///Max units able to be stored inside the bong
 	var/chem_volume = 30
-	///What are the reagents inside?
-	var/list_reagents = null
 	///Is it filled?
 	var/packed_item = FALSE
 

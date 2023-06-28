@@ -163,7 +163,7 @@
 	logging_desc = "Pizza delivery"
 
 /datum/shuttle_loan_situation/pizza_delivery/spawn_items(list/spawn_list, list/empty_shuttle_turfs)
-	var/naughtypizza = list(/obj/item/pizzabox/bomb, /obj/item/pizzabox/margherita/robo) //oh look another blacklist, for pizza nonetheless!
+	var/naughtypizza = list(/obj/item/pizzabox/bomb /*/obj/item/pizzabox/margherita/robo*/) // SKYRAT EDIT: oh look another blacklist, for pizza nonetheless! removes borg pizza
 	var/nicepizza = list(/obj/item/pizzabox/margherita, /obj/item/pizzabox/meat, /obj/item/pizzabox/vegetable, /obj/item/pizzabox/mushroom)
 	for(var/i in 1 to 6)
 		spawn_list.Add(pick(prob(5) ? naughtypizza : nicepizza))

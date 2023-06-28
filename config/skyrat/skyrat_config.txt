@@ -113,6 +113,9 @@ EVENT_FREQUENCY_LOWER 4200
 ## Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 TICKET_PING_FREQUENCY 0
 
+## Minimum alert level for pods to actually evacuate people
+MINIMUM_ALERT_FOR_PODS 0
+
 ## Delay between newscasters making lore announcements, default is 18000 (30 minutes)
 LORECASTER_DELAY 18000
 
@@ -121,3 +124,11 @@ LORECASTER_DELAY 18000
 
 ## The link to the policy wiki page for primitive catgirls
 ICECATS_POLICY_LINK "https://wiki.skyrat13.tk/w/index.php/Ghost_Role_policy#Icewalkers"
+
+## Uncomment to enable minimum flavor text requirements for joining the round
+#MIN_FLAVOR_TEXT
+
+## Minimum flavor text number needed to enter the game
+## YOU MUST HAVE MIN_FLAVOR_TEXT ENABLED FOR THIS TO WORK.
+## Don't ever set this to 0, just disable MIN_FLAVOR_TEXT
+#FLAVOR_TEXT_CHARACTER_REQUIREMENT 150
