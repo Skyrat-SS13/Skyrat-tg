@@ -10,7 +10,7 @@
 #define NABBER_HEAT_THRESHOLD_3 600
 
 /datum/species/nabber
-	name = "Gigant armored sertenpid"
+	name = "Giant Armored Serpentid"
 	id = SPECIES_NABBER
 	bodytype = BODYTYPE_CUSTOM
 	eyes_icon = 'modular_skyrat/modules/organs/icons/nabber_eyes.dmi'
@@ -47,7 +47,7 @@
 	disliked_food = CLOTH | GRAIN | FRIED | TOXIC | GORE | GROSS
 	toxic_food = DAIRY
 	always_customizable = FALSE
-	payday_modifier = 0.15 //Nabbers is dumb.. they not thinking about a payday
+	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 20)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 45)
@@ -119,21 +119,21 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Durable leather",
-		SPECIES_PERK_DESC = "The Gigant armored sertenpid leather is durable and can withstand high pressure drops. At the same time giving extra protection."
+		SPECIES_PERK_DESC = "The Giant Armored Serpentid chitin is very robust and protects them from pressure and low temperature hazards, while also providing decent brute resistance."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Heavy Skeleton",
-		SPECIES_PERK_DESC = "Gigant armored sertenpid are large and heavy. They have more power and cannot be swept away by other creatures."
+		SPECIES_PERK_DESC = "Giant Armored Serpentid are large and heavy. They can't be properly grabbed by other creatures."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Custom body",
-		SPECIES_PERK_DESC = "Gigant armored sertenpid have an unusual body. And they cannot wear shoes or suits."
+		SPECIES_PERK_DESC = "Giant Armored Serpentid has a nonhumanoid body and can't wear most clothes."
 	))
 
 	return perk_descriptions

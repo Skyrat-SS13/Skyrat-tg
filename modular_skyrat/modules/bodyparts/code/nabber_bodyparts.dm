@@ -1,5 +1,5 @@
-#define NABBER_PUNCH_LOW 8 // Much highter punch damage
-#define NABBER_PUNCH_HIGH 19
+#define NABBER_PUNCH_LOW 3 // Humanoid pair of hands is extremely weak and deals reduced damage.
+#define NABBER_PUNCH_HIGH 5
 //Nabbers
 
 /obj/item/bodypart/head/mutant/nabber

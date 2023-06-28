@@ -981,7 +981,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(!disable_warning)
 						to_chat(H, span_warning("[I] doesn't fit your [chest.name]!"))
 					return FALSE
-				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_ID)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)
