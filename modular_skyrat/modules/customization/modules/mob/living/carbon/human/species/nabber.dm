@@ -15,7 +15,7 @@
 	bodytype = BODYTYPE_CUSTOM
 	eyes_icon = 'modular_skyrat/modules/organs/icons/nabber_eyes.dmi'
 	can_augment = FALSE
-	veteran_only = FALSE
+	veteran_only = FALSE //Change in the future.
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -49,8 +49,8 @@
 	always_customizable = FALSE
 	payday_modifier = 0.15 //Nabbers is dumb.. they not thinking about a payday
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 15)
-	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 30)
+	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 20)
+	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 45)
 	// Need balancing
 	speedmod = 1
 	armor = 10
@@ -119,21 +119,21 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Durable leather",
-		SPECIES_PERK_DESC = "The nabbers leather is durable and can withstand high pressure drops. At the same time giving extra protection."
+		SPECIES_PERK_DESC = "The Gigant armored sertenpid leather is durable and can withstand high pressure drops. At the same time giving extra protection."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Heavy Skeleton",
-		SPECIES_PERK_DESC = "Nabbers are large and heavy. They have more power and cannot be swept away by other creatures."
+		SPECIES_PERK_DESC = "Gigant armored sertenpid are large and heavy. They have more power and cannot be swept away by other creatures."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Custom body",
-		SPECIES_PERK_DESC = "Nabbers have an unusual body. And they cannot wear shoes or suits."
+		SPECIES_PERK_DESC = "Gigant armored sertenpid have an unusual body. And they cannot wear shoes or suits."
 	))
 
 	return perk_descriptions
