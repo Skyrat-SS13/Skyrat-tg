@@ -112,8 +112,6 @@
 	regenerate_organs(nabber, src, visual_only = TRUE)
 	nabber.update_body(TRUE)
 
-
-
 /datum/species/nabber/create_pref_unique_perks()
 	var/list/perk_descriptions = list()
 
@@ -139,6 +137,20 @@
 	))
 
 	return perk_descriptions
+
+/datum/species/nabber/random_name(gender, unique, lastname)
+	if(unique)
+		return random_unique_name(gender)
+
+	var/random_name
+	random_name += (pick("Alpha","Delta","Dzetta","Phi","Epsilon","Gamma","Tau","Omega") + "-" + rand(1, 199))
+	return random_name
+
+/datum/species/nabber/get_species_description()
+	return placeholder_description
+
+/datum/species/nabber/get_species_lore()
+	return placeholder_lore
 
 /obj/item/organ/internal/ears/nabber
 	name = "Nabber ears"

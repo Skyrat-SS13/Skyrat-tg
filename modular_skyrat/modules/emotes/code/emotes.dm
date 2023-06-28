@@ -57,8 +57,8 @@
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(isvox(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
-	if(isteshari(user))
-		return 'modular_skyrat/modules/emotes/sound/emotes/tesharisneeze.ogg'
+	if(isnabber(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/nabbersneeze.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg'
