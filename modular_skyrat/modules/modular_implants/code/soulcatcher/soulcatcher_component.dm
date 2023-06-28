@@ -416,6 +416,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if (!.)
 		return FALSE
 
+	if (!isobj(soulcatcher.parent))
+		return FALSE
+
 	if (!soulcatcher.ghost_joinable)
 		return FALSE
 

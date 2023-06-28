@@ -39,7 +39,7 @@
 	interacting_mobs = null
 
 	for (var/mob/soul as anything in confirming_entry)
-		UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(soul, COMSIG_QDELETING)
 	confirming_entry = null
 
 	return ..()
@@ -58,6 +58,10 @@
 
 	if (interacting_mobs[user])
 		to_chat(user, span_warning("You already have room selection open, close it or choose a room!"))
+		return FALSE
+
+	if (target_mob in confirming_entry)
+		to_chat(user, span_warning("[target_mob] has already been invited into this RSD! Wait for them to respond!"))
 		return FALSE
 
 	// dont worry about invalid states in regards to this tgui_list, it uses a custom ui_state that prevents abuse
@@ -145,11 +149,11 @@
 		message += " This will remove you from your body until you leave."
 
 	confirming_entry += real_target
-	RegisterSignal(real_target, COMSIG_PARENT_QDELETING, PROC_REF(handle_confirming_soul_del))
+	RegisterSignal(real_target, COMSIG_QDELETING, PROC_REF(handle_confirming_soul_del))
 	SEND_SOUND(real_target, 'sound/misc/notice2.ogg')
 	window_flash(real_target.client)
 	var/invitation_results = (((tgui_alert(real_target, message, name, list("Yes", "No"), 30 SECONDS) == "Yes") && (tgui_alert(real_target, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) == "Yes")))
-	UnregisterSignal(real_target, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(real_target, COMSIG_QDELETING)
 	confirming_entry -= real_target
 
 	return invitation_results
@@ -159,5 +163,5 @@
 	SIGNAL_HANDLER
 
 	confirming_entry -= soul
-	UnregisterSignal(soul, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(soul, COMSIG_QDELETING)
 
