@@ -59,8 +59,6 @@
 				/obj/item/clothing/under/tachawaiian/purple = 5,
 				/obj/item/clothing/under/tachawaiian/green = 5,
 				/obj/item/clothing/under/tachawaiian/blue = 5,
-				/obj/item/clothing/under/suit/skyrat/black_really_collared = 3,
-				/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt = 3,
 				/obj/item/clothing/under/suit/skyrat/pencil = 3,
 				/obj/item/clothing/under/suit/skyrat/pencil/black_really = 3,
 				/obj/item/clothing/under/suit/skyrat/pencil/charcoal = 3,
