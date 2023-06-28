@@ -133,8 +133,6 @@
 
 /obj/machinery/vending/wardrobe/law_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/suit/skyrat/black_really_collared = 3,
-		/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt = 3,
 		/obj/item/clothing/under/suit/skyrat/inferno = 3,
 		/obj/item/clothing/under/suit/skyrat/inferno/skirt = 3,
 	)
