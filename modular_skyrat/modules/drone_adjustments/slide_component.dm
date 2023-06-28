@@ -18,10 +18,10 @@
 	//either bumping or ctrl click
 	RegisterSignal(atom_parent, COMSIG_CLICK_CTRL, PROC_REF(check_conditions))
 	//so that we can know how to do that (sliding under)
-	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, PROC_REF(ExamineMessage))
+	RegisterSignal(atom_parent, COMSIG_ATOM_EXAMINE, PROC_REF(ExamineMessage))
 
 /datum/component/sliding_under/Destroy(force, silent)
-	UnregisterSignal(atom_parent, list(COMSIG_CLICK_CTRL, COMSIG_PARENT_EXAMINE))
+	UnregisterSignal(atom_parent, list(COMSIG_CLICK_CTRL, COMSIG_ATOM_EXAMINE))
 	return ..()
 
 /datum/component/sliding_under/proc/check_conditions(datum/source, mob/user)

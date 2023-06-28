@@ -26,9 +26,7 @@
 
 /obj/structure/mold/Initialize(mapload, passed_type)
 	. = ..()
-	if(mold_type)
-		mold_type = new
-	else
+	if(!mold_type)
 		mold_type = mold_controller?.mold_type || passed_type
 
 	color = mold_type.mold_color
@@ -70,6 +68,8 @@
 	var/next_retaliation = 0
 
 /obj/structure/mold/structure/core/Initialize(mapload, passed_type)
+	if(mold_type)
+		passed_type = new mold_type
 	new /datum/mold_controller(src, passed_type)
 	. = ..()
 	soundloop = new(src, TRUE)
@@ -100,6 +100,27 @@
 	var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
 	overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 	overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+
+/**
+ * Preset types
+ * Useful for admins
+ */
+/obj/structure/mold/structure/core/fire
+	mold_type = /datum/mold_type/fire
+
+/obj/structure/mold/structure/core/disease
+	mold_type = /datum/mold_type/disease
+
+/obj/structure/mold/structure/core/emp
+	mold_type = /datum/mold_type/emp
+
+/obj/structure/mold/structure/core/toxic
+	mold_type = /datum/mold_type/toxic
+
+/obj/structure/mold/structure/core/radioactive
+	mold_type = /datum/mold_type/radioactive
+
+
 
 /**
  * Mold resin
