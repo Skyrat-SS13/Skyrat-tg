@@ -1,6 +1,6 @@
 /datum/language/yangyu
-	name = "Spatial Sino-Tibetan"
-	desc = "A genetic relationship between Chinese, Tibetan, Burmese and other Human languages of similar characteristics was first proposed in the early 19th century and is extremely popular even in the space age. Originating from Asia, this group of tongues is the second most spoken by Human and Human-derived populations since the birth of Sol Common - and was a primary contender to be the Sol Federation's official language."
+	name = "Spacial Sino-Tibetan"
+	desc = "Colloquially known as \"Konjian\", this language group is a result of a genetic relationship between Chinese, Tibetan, Burmese and other Human languages of similar characteristics that was first proposed in the early 19th century and is extremely popular even in the space age. Originating from Asia, this group of tongues is the second most spoken by Human and Human-derived populations since the birth of Sol Common - and was a primary contender to be the Sol Federation's official language."
 	key = "Y"
 	flags = TONGUELESS_SPEECH
 	space_chance = 70
