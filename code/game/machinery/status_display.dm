@@ -3,10 +3,6 @@
 #define MAX_STATIC_WIDTH 22
 #define FONT_STYLE "12pt 'TinyUnicode'"
 #define SCROLL_RATE (0.04 SECONDS) // time per pixel
-<<<<<<< HEAD
-#define LINE1_Y -7 // SKYRAT EDIT CHANGE - AESTHETICS - originally -8
-#define LINE2_Y -14 // SKYRAT EDIT CHANGE - AESTHETICS - originally -15
-=======
 #define SCROLL_PADDING 2 // how many pixels we chop to make a smooth loop
 #define LINE1_X 1
 #define LINE1_Y -4
@@ -14,7 +10,6 @@
 #define LINE2_Y -11
 #define STATUS_DISPLAY_FONT_DATUM /datum/font/tiny_unicode/size_12pt
 
->>>>>>> 62c6da56cb8 (Maptext 2023: I can see clearly now (#76356))
 /// Status display which can show images and scrolling text.
 /obj/machinery/status_display
 	name = "status display"
@@ -195,7 +190,7 @@
 			if(message1 == "" && message2 == "")
 				return
 
-	. += emissive_appearance(icon, "outline", src, alpha = src.alpha)
+	. += emissive_appearance('modular_skyrat/modules/aesthetics/status_display/icons/status_display.dmi', "outline", src, alpha = src.alpha) // SKYRAT EDIT CHANGE - AESTHETICS
 
 // Timed process - performs nothing in the base class
 /obj/machinery/status_display/process()
