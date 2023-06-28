@@ -673,14 +673,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Executive Suitskirt"
 	item_path = /obj/item/clothing/under/suit/black_really/skirt
 
-/datum/loadout_item/under/formal/executive_suit_alt
-	name = "Wide-collared Executive Suit"
-	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared
-
-/datum/loadout_item/under/formal/executive_skirt_alt
-	name = "Wide-collared Executive Suitskirt"
-	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
-
 /datum/loadout_item/under/formal/navy_suit
 	name = "Navy Suit"
 	item_path = /obj/item/clothing/under/suit/navy

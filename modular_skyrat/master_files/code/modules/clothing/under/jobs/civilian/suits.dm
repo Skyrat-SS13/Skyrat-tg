@@ -84,20 +84,6 @@
 	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
 	icon_state = "scarface"
 
-/obj/item/clothing/under/suit/skyrat/black_really_collared
-	name = "wide-collared executive suit"
-	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
-	icon_state = "really_black_suit_collar"
-
-/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
-	name = "wide-collared executive suitskirt"
-	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
-	icon_state = "really_black_suit_skirt_collar"
-	body_parts_covered = CHEST|GROIN|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
 /obj/item/clothing/under/suit/skyrat/inferno
 	name = "inferno suit"
 	desc = "Stylish enough to impress the devil."
