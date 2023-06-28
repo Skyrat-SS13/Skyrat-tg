@@ -1,5 +1,5 @@
 /datum/language/piratespeak
-	name = "Spatial Sea-talk"
+	name = "Spatial Sea-tongue"
 	desc = "The language of Space Pirates. It's rough, convoluted, and tough to decipher on purpose."
 	space_chance = 60
 	syllables = list(
