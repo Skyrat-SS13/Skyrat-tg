@@ -122,6 +122,8 @@
 			return "You need to be veteran to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_AUGMENT)
+			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_LANGUAGE)
 			return "[jobtitle] is restricted from your languages."
 		if(JOB_UNAVAILABLE_SPECIES)
@@ -159,6 +161,8 @@
 		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_AUGMENT
 	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_VETERAN
 	if(job.has_banned_species(client.prefs))
