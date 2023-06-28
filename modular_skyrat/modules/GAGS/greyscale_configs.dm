@@ -1155,6 +1155,10 @@ digi
 /datum/greyscale_config/nabber/eyes
 	name = "Nabber eyes"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/eyes.json'
+
+/datum/greyscale_config/nabber/belt
+	name = "Nabber belt"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/belt.json'
 /*
 *	CIN SURPLUS ARMOR
 */

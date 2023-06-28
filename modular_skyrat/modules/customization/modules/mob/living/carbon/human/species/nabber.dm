@@ -143,14 +143,14 @@
 		return random_unique_name(gender)
 
 	var/random_name
-	random_name += (pick("Alpha","Delta","Dzetta","Phi","Epsilon","Gamma","Tau","Omega") + "-" + rand(1, 199))
+	random_name += ("[pick("Alpha","Delta","Dzetta","Phi","Epsilon","Gamma","Tau","Omega")] - [rand(1, 199)]")
 	return random_name
 
 /datum/species/nabber/get_species_description()
 	return placeholder_description
 
 /datum/species/nabber/get_species_lore()
-	return placeholder_lore
+	return list(placeholder_lore)
 
 /obj/item/organ/internal/ears/nabber
 	name = "Nabber ears"
@@ -248,3 +248,7 @@
 /obj/item/clothing/glasses
 	species_clothing_color_coords = list(list(BASE_CLOTH_X_1, BASE_CLOTH_Y_1))
 	greyscale_config_worn_nabber_fallback = /datum/greyscale_config/nabber/eyes
+
+/obj/item/clothing/belt
+	species_clothing_color_coords = list(list(BASE_CLOTH_X_1, BASE_CLOTH_Y_1))
+	greyscale_config_worn_nabber_fallback = /datum/greyscale_config/nabber/belt
