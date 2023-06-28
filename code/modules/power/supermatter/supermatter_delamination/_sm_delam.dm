@@ -40,6 +40,7 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
 		message_admins("[sm] has entered the emergency point [ADMIN_VERBOSEJMP(sm)].")
+		SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, TRUE) // SKYRAT EDIT ADDITION - maybe the botanist can come to the rescue
 
 	if((REALTIMEOFDAY - sm.lastwarning) < SUPERMATTER_WARNING_DELAY)
 		return FALSE
@@ -56,8 +57,6 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 			// SKYRAT EDIT ADDITION
 			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/core_overheating.ogg', override_volume = TRUE)
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg', override_volume = TRUE)
-			// wait so there aren't a million sounds and messages happening at once
-			addtimer(CALLBACK(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level, minimum_security_level), SEC_LEVEL_ORANGE, TRUE, TRUE), 12 SECONDS)
 			// SKYRAT EDIT END
 			playsound(sm, 'sound/machines/engine_alert1.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
 		if(SUPERMATTER_DANGER)
