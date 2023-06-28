@@ -14,6 +14,8 @@
 	var/icon/worn_icon_better_vox
 	/// Icon file for mob worn overlays, if the user is a teshari.
 	var/icon/worn_icon_teshari
+	// Icon file for mob worn overylays, if the user is a nabber
+	var/icon/worn_icon_nabber
 	/// The config type to use for greyscaled worn sprites for Teshari characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_teshari
 	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.

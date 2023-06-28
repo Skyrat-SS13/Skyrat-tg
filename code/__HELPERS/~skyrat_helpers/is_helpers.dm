@@ -13,7 +13,8 @@
 #define isskrell(A) (is_species(A,/datum/species/skell)) //SKRELL GANG SKRELL GANG
 #define isunathi(A) (is_species(A,/datum/species/unathi))
 #define isvulpkanin(A) (is_species(A,/datum/species/vulpkanin))
-#define isteshari(A) (is_species(A, /datum/species/teshari))
+#define isteshari(A) (is_species(A, /datum/species/teshari)) // Teshari <3
+#define isnabber(A)	(is_species(A, /datum/species/nabber))
 #define ishemophage(A) (is_species(A, /datum/species/hemophage))
 #define issnail(A) (is_species(A, /datum/species/snail))
 #define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))

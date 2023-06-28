@@ -60,6 +60,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/raptorscream.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/nabber
+	name = "Ascent Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/nabberscream.ogg')
+	female_screamsounds = null
+
 /datum/scream_type/rodent //Ported from Polaris/Virgo.
 	name = "Rodent Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/rodentscream.ogg')
