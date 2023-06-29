@@ -2,11 +2,15 @@
 	name = "\improper Mothman"
 	plural_form = "Mothmen"
 	id = SPECIES_MOTH
+<<<<<<< HEAD
 	species_traits = list(
 		LIPS,
 		HAS_MARKINGS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_HAS_MARKINGS,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_WINGED_ATTACKER,
 		TRAIT_ANTENNAE,

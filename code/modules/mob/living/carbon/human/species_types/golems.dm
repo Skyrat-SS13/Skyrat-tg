@@ -2,6 +2,7 @@
 /datum/species/golem
 	name = "Golem"
 	id = SPECIES_GOLEM
+<<<<<<< HEAD
 	species_traits = list(
 		NO_DNA_COPY,
 		NOTRANSSTING,
@@ -9,7 +10,10 @@
 		NOEYEHOLES,
 		NOAUGMENTS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_GENELESS,
 		TRAIT_LAVA_IMMUNE,
 		TRAIT_NOBREATH,
@@ -18,6 +22,9 @@
 		TRAIT_NOFIRE,
 		TRAIT_PIERCEIMMUNE,
 		TRAIT_RADIMMUNE,
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_TRANSFORMATION_STING,
+		TRAIT_NO_AUGMENTS,
 	)
 	mutantheart = null
 	mutantlungs = null

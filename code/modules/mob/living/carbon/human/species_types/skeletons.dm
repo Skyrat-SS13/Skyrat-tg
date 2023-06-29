@@ -4,13 +4,17 @@
 	id = SPECIES_SKELETON
 	sexes = 0
 	meat = /obj/item/food/meat/slab/human/mutant/skeleton
+<<<<<<< HEAD
 	species_traits = list(
 		NOTRANSSTING,
 		NOEYESPRITES,
 		NO_DNA_COPY,
 		NO_UNDERWEAR,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_FAKEDEATH,
@@ -28,7 +32,12 @@
 		TRAIT_TOXIMMUNE,
 		TRAIT_XENO_IMMUNE,
 		TRAIT_NOBLOOD,
+<<<<<<< HEAD
 		TRAIT_NO_DEBRAIN_OVERLAY,
+=======
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_TRANSFORMATION_STING,
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/bone

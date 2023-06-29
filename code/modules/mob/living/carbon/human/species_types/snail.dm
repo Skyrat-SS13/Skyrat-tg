@@ -1,6 +1,7 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
+<<<<<<< HEAD
 	/*SKYRAT EDIT - ORIGINAL
 	species_traits = list(
 		MUTCOLORS,
@@ -14,7 +15,11 @@
 		HAIR,
 		FACEHAIR
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)

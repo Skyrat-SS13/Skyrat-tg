@@ -8,14 +8,19 @@
 	fixed_mut_color = "#DBBF92"
 	hair_color = "#FF4B19" //cap color, spot color uses eye color
 
+<<<<<<< HEAD
 	species_traits = list(
 		MUTCOLORS,
 		NOEYESPRITES,
 		NO_UNDERWEAR,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_NOBREATH,
 		TRAIT_NOFLASH,
+		TRAIT_NO_UNDERWEAR,
 	)
 	inherent_factions = list(FACTION_MUSHROOM)
 	speedmod = 1.5 //faster than golems but not by much

@@ -106,7 +106,10 @@
 	var/px_x = 0
 	var/px_y = 0
 
+<<<<<<< HEAD
 	var/species_flags_list = list()
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	///the type of damage overlay (if any) to use when this bodypart is bruised/burned.
 	var/dmg_overlay_type = "human"
 	/// If we're bleeding, which icon are we displaying on this part
@@ -838,7 +841,10 @@
 	// No, xenos don't actually use bodyparts. Don't ask.
 	var/mob/living/carbon/human/human_owner = owner
 	var/datum/species/owner_species = human_owner.dna.species
+<<<<<<< HEAD
 	species_flags_list = owner_species.species_traits
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	limb_gender = (human_owner.physique == MALE) ? "m" : "f"
 
 	if(owner_species.use_skintones)
@@ -846,7 +852,7 @@
 	else
 		skin_tone = ""
 
-	if(((MUTCOLORS in owner_species.species_traits) || (DYNCOLORS in owner_species.species_traits))) //Ethereal code. Motherfuckers.
+	if(HAS_TRAIT(owner, TRAIT_MUTANT_COLORS))
 		if(owner_species.fixed_mut_color)
 			species_color = owner_species.fixed_mut_color
 		else

@@ -2,11 +2,15 @@
 	name = "Abductor"
 	id = SPECIES_ABDUCTOR
 	sexes = FALSE
+<<<<<<< HEAD
 	species_traits = list(
 		NOEYESPRITES,
 		NO_UNDERWEAR,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,
 		TRAIT_VIRUSIMMUNE,

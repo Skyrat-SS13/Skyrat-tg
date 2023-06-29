@@ -3,11 +3,15 @@
 	name = "\improper Podperson"
 	plural_form = "Podpeople"
 	id = SPECIES_PODPERSON
+<<<<<<< HEAD
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_PLANT_SAFE,
 	)
 	external_organs = list(

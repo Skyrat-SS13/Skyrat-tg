@@ -1,12 +1,15 @@
 /datum/species/dullahan
 	name = "Dullahan"
 	id = SPECIES_DULLAHAN
+<<<<<<< HEAD
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
 		FACEHAIR,
 		LIPS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,

@@ -7,6 +7,7 @@
 /datum/species/vampire
 	name = "Vampire"
 	id = SPECIES_VAMPIRE
+<<<<<<< HEAD
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
@@ -15,9 +16,13 @@
 		DRINKSBLOOD,
 		BLOOD_CLANS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_BLOOD_CLANS,
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,
+		TRAIT_DRINKS_BLOOD,
 	)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")

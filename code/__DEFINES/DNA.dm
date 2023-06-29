@@ -76,6 +76,7 @@
 #define DNA_MUTATION_BLOCKS 8
 #define DNA_UNIQUE_ENZYMES_LEN 32
 
+<<<<<<< HEAD
 //species traits for mutantraces
 #define MUTCOLORS 1
 #define HAIR 2
@@ -104,6 +105,8 @@
 /// Similar to NOEYESPRITES but only excludes the eyeless overlay
 #define NOEYEHOLES 19
 
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 //organ slots
 #define ORGAN_SLOT_ADAMANTINE_RESONATOR "adamantine_resonator"
 #define ORGAN_SLOT_APPENDIX "appendix"

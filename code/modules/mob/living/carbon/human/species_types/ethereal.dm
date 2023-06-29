@@ -11,6 +11,7 @@
 	siemens_coeff = 0.5 //They thrive on energy
 	brutemod = 1.25 //They're weak to punches
 	payday_modifier = 0.75
+<<<<<<< HEAD
 	/* SKYRAT EDIT - ORIGINAL
 	species_traits = list(
 		DYNCOLORS,
@@ -26,6 +27,13 @@
 		AGENDER,
 		HAIR,
 		FACEHAIR,
+=======
+	inherent_traits = list(
+		TRAIT_NO_UNDERWEAR,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_FIXED_MUTANT_COLORS,
+		TRAIT_AGENDER,
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_cookie = /obj/item/food/energybar
@@ -50,16 +58,16 @@
 	)
 
 	var/current_color
-	var/EMPeffect = FALSE
-	var/emageffect = FALSE
+	var/default_color
 	var/r1
 	var/g1
 	var/b1
 	var/static/r2 = 237
 	var/static/g2 = 164
 	var/static/b2 = 149
+	var/EMPeffect = FALSE
+	var/emageffect = FALSE
 	var/obj/effect/dummy/lighting_obj/ethereal_light
-	var/default_color
 
 /datum/species/ethereal/Destroy(force)
 	QDEL_NULL(ethereal_light)

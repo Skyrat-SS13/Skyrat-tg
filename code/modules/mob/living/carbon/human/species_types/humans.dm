@@ -1,12 +1,15 @@
 /datum/species/human
 	name = "\improper Human"
 	id = SPECIES_HUMAN
+<<<<<<< HEAD
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
 		FACEHAIR,
 		LIPS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 	)

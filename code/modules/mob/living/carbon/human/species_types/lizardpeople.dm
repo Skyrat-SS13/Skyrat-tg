@@ -3,12 +3,16 @@
 	name = "\improper Lizardperson"
 	plural_form = "Lizardfolk"
 	id = SPECIES_LIZARD
+<<<<<<< HEAD
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_TAILED_DEFENDER,
 	)
@@ -143,13 +147,16 @@ Lizard subspecies: ASHWALKERS
 	id = SPECIES_LIZARD_ASH
 	mutantlungs = /obj/item/organ/internal/lungs/lavaland
 	mutantbrain = /obj/item/organ/internal/brain/primitive
+<<<<<<< HEAD
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
 	)
+=======
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	inherent_traits = list(
-		//TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 		TRAIT_VIRUSIMMUNE,
 	)
 	species_language_holder = /datum/language_holder/lizard/ash

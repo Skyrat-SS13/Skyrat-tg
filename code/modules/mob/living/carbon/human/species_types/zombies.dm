@@ -1,4 +1,4 @@
-#define REGENERATION_DELAY 60  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY 6 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/zombie
 	// 1spooky
@@ -7,12 +7,9 @@
 	sexes = 0
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
-	species_traits = list(
-		NOZOMBIE,
-		NOTRANSSTING,
-	)
 	inherent_traits = list(
 		// SHARED WITH ALL ZOMBIES
+		TRAIT_NO_ZOMBIFY,
 		TRAIT_EASILY_WOUNDED,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_FAKEDEATH,
@@ -21,12 +18,13 @@
 		TRAIT_NOCLONELOSS,
 		TRAIT_NODEATH,
 		TRAIT_NOHUNGER,
-		TRAIT_NOMETABOLISM,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,
 		TRAIT_TOXIMMUNE,
+		TRAIT_NO_TRANSFORMATION_STING,
 		// HIGH FUNCTIONING UNIQUE
 		TRAIT_NOBLOOD,
 		TRAIT_SUCCUMB_OVERRIDE,
@@ -54,6 +52,18 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie
 	)
 
+<<<<<<< HEAD
+=======
+	/// Spooky growls we sometimes play while alive
+	var/static/list/spooks = list(
+		'sound/hallucinations/growl1.ogg',
+		'sound/hallucinations/growl2.ogg',
+		'sound/hallucinations/growl3.ogg',
+		'sound/hallucinations/veryfar_noise.ogg',
+		'sound/hallucinations/wail.ogg',
+	)
+
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 /// Zombies do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/zombie/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
@@ -94,10 +104,6 @@
 	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	mutantbrain = /obj/item/organ/internal/brain/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
-	/// The rate the zombies regenerate at
-	var/heal_rate = 0.5
-	/// The cooldown before the zombie can start regenerating
-	COOLDOWN_DECLARE(regen_cooldown)
 
 	inherent_traits = list(
 		// SHARED WITH ALL ZOMBIES
@@ -109,7 +115,7 @@
 		TRAIT_NOCLONELOSS,
 		TRAIT_NODEATH,
 		TRAIT_NOHUNGER,
-		TRAIT_NOMETABOLISM,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
@@ -120,7 +126,16 @@
 		TRAIT_STABLELIVER, // Not necessary but for consistency with above
 	)
 
+<<<<<<< HEAD
 /datum/species/zombie/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+=======
+	/// The rate the zombies regenerate at
+	var/heal_rate = 0.5
+	/// The cooldown before the zombie can start regenerating
+	COOLDOWN_DECLARE(regen_cooldown)
+
+/datum/species/zombie/infectious/on_species_gain(mob/living/carbon/human/new_zombie, datum/species/old_species)
+>>>>>>> 316767fc071 (SPECIES NUKING 2023: Nukes species_traits, good night sweet prince (#76297))
 	. = ..()
 	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = /obj/item/mutant_hand/zombie)
 
