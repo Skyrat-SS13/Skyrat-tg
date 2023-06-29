@@ -7,6 +7,7 @@
 /datum/species/vampire
 	name = "Vampire"
 	id = SPECIES_VAMPIRE
+<<<<<<< HEAD
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
@@ -15,6 +16,9 @@
 		DRINKSBLOOD,
 		BLOOD_CLANS,
 	)
+=======
+	examine_limb_id = SPECIES_HUMAN
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	inherent_traits = list(
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,
@@ -29,7 +33,6 @@
 	mutanttongue = /obj/item/organ/internal/tongue/vampire
 	mutantstomach = null
 	mutantlungs = null
-	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	///some starter text sent to the vampire initially, because vampires have shit to do to stay alive
 	var/info_text = "You are a <span class='danger'>Vampire</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."

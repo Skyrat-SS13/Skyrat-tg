@@ -10,10 +10,14 @@
 	name = "\improper Jellyperson"
 	plural_form = "Jellypeople"
 	id = SPECIES_JELLYPERSON
+<<<<<<< HEAD
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 	)
+=======
+	examine_limb_id = SPECIES_JELLYPERSON
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	inherent_traits = list(
 		TRAIT_TOXINLOVER,
 		TRAIT_NOBLOOD,

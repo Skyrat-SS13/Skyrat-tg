@@ -1,11 +1,15 @@
 /datum/species/android
 	name = "Android"
 	id = SPECIES_ANDROID
+<<<<<<< HEAD
 	species_traits = list(
 		NO_DNA_COPY,
 		NOTRANSSTING,
 		NO_UNDERWEAR,
 	)
+=======
+	examine_limb_id = SPECIES_HUMAN
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_GENELESS,
@@ -45,7 +49,6 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/android,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/android,
 	)
-	examine_limb_id = SPECIES_HUMAN
 
 /datum/species/android/on_species_gain(mob/living/carbon/C)
 	. = ..()

@@ -1,12 +1,16 @@
 /datum/species/dullahan
 	name = "Dullahan"
 	id = SPECIES_DULLAHAN
+<<<<<<< HEAD
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
 		FACEHAIR,
 		LIPS,
 	)
+=======
+	examine_limb_id = SPECIES_HUMAN
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	inherent_traits = list(
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,
@@ -20,7 +24,6 @@
 	mutantears = /obj/item/organ/internal/ears/dullahan
 	mutantstomach = null
 	mutantlungs = null
-	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 

@@ -15,6 +15,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species
 	///If the game needs to manually check your race to do something not included in a proc here, it will use this.
 	var/id
+	///This is used for children, it will determine their default limb ID for use of examine. See [/mob/living/carbon/human/proc/examine].
+	var/examine_limb_id
 	///This is the fluff name. They are displayed on health analyzers and in the character setup menu. Leave them generic for other servers to customize.
 	var/name
 	/// The formatting of the name of the species in plural context. Defaults to "[name]\s" if unset.
@@ -33,10 +35,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///The alpha used by the hair. 255 is completely solid, 0 is invisible.
 	var/hair_alpha = 255
 
+<<<<<<< HEAD:code/modules/mob/living/carbon/human/species.dm
 	///Examine text when the person has cellular damage.
 	var/cellular_damage_desc = DEFAULT_CLONE_EXAMINE_TEXT
 	///This is used for children, it will determine their default limb ID for use of examine. See [/mob/living/carbon/human/proc/examine].
 	var/examine_limb_id
+=======
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298)):code/modules/mob/living/carbon/human/_species.dm
 	///Never, Optional, or Forced digi legs?
 	var/digitigrade_customization = DIGITIGRADE_NEVER
 	///Does the species use skintones or not? As of now only used by humans.
@@ -85,7 +90,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
 	)
+<<<<<<< HEAD:code/modules/mob/living/carbon/human/species.dm
 	///Internal organs that are unique to this race, like a tail.
+=======
+	///Internal organs that are unique to this race, like a tail. list(typepath of organ 1, typepath of organ 2)
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298)):code/modules/mob/living/carbon/human/_species.dm
 	var/list/mutant_organs = list()
 
 	///List of external organs to generate like horns, frills, wings, etc. list(typepath of organ = "Round Beautiful BDSM Snout"). Still WIP
@@ -217,6 +226,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	if(!plural_form)
 		plural_form = "[name]\s"
+	if(!examine_limb_id)
+		examine_limb_id = id
 
 	return ..()
 
@@ -854,12 +865,19 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+<<<<<<< HEAD:code/modules/mob/living/carbon/human/species.dm
 		//SKYRAT EDIT ADDITION BEGIN
 		if(BODY_FRONT_UNDER_CLOTHES)
 			return "FRONT_UNDER"
 		if(ABOVE_BODY_FRONT_HEAD_LAYER)
 			return "FRONT_OVER"
 		//SKYRAT EDIT ADDITION END
+=======
+
+///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
+/datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
+	human_mob.set_hairstyle(random_hairstyle(human_mob.gender), update = FALSE)
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298)):code/modules/mob/living/carbon/human/_species.dm
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob,
 /// but will not update the body right away.
@@ -1131,8 +1149,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/go_bald(mob/living/carbon/human/target)
 	if(QDELETED(target)) //may be called from a timer
 		return
-	target.facial_hairstyle = "Shaved"
-	target.hairstyle = "Bald"
+	target.set_facial_hairstyle("Shaved", update = FALSE)
+	target.set_hairstyle("Bald", update = FALSE)
 	target.update_body_parts()
 
 //////////////////

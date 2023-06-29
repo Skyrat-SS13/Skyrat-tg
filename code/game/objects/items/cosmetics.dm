@@ -147,11 +147,17 @@
 
 /obj/item/razor/proc/shave(mob/living/carbon/human/H, location = BODY_ZONE_PRECISE_MOUTH)
 	if(location == BODY_ZONE_PRECISE_MOUTH)
+<<<<<<< HEAD
 		H.facial_hairstyle = "Shaved"
 	else
 		H.hairstyle = "Skinhead"
 
 	H.update_body_parts()
+=======
+		skinhead.set_facial_hairstyle("Shaved", update = TRUE)
+	else
+		skinhead.set_hairstyle("Skinhead", update = TRUE)
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	playsound(loc, 'sound/items/welder2.ogg', 20, TRUE)
 
 /obj/item/razor/attack(mob/M, mob/living/user)
@@ -235,8 +241,29 @@
 					H.hairstyle = new_style
 					H.update_body_parts()
 					return
+<<<<<<< HEAD
+=======
+				user.visible_message(span_notice("[user] tries to change [human_target]'s facial hairstyle using [src]."), span_notice("You try to change [human_target]'s facial hairstyle using [src]."))
+				if(new_style && do_after(user, 6 SECONDS, target = human_target))
+					user.visible_message(span_notice("[user] successfully changes [human_target]'s facial hairstyle using [src]."), span_notice("You successfully change [human_target]'s facial hairstyle using [src]."))
+					human_target.set_facial_hairstyle(new_style, update = TRUE)
+					return
+			else
+				return
+		else
+			if(!get_location_accessible(human_target, location))
+				to_chat(user, span_warning("The mask is in the way!"))
+				return
+			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
+				to_chat(user, span_warning("There is no facial hair to shave!"))
+				return
+			if(human_target.facial_hairstyle == "Shaved")
+				to_chat(user, span_warning("Already clean-shaven!"))
+				return
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 
 			else
+<<<<<<< HEAD
 				if(!(HAIR in H.dna.species.species_traits))
 					to_chat(user, span_warning("There is no hair to shave!"))
 					return
@@ -246,6 +273,49 @@
 				if(H.hairstyle == "Bald" || H.hairstyle == "Balding Hair" || H.hairstyle == "Skinhead")
 					to_chat(user, span_warning("There is not enough hair left to shave!"))
 					return
+=======
+				user.visible_message(span_warning("[user] tries to shave [human_target]'s facial hair with [src]."), \
+					span_notice("You start shaving [human_target]'s facial hair..."))
+				if(do_after(user, 5 SECONDS, target = human_target))
+					user.visible_message(span_warning("[user] shaves off [human_target]'s facial hair with [src]."), \
+						span_notice("You shave [human_target]'s facial hair clean off."))
+					shave(human_target, location)
+				return
+	else if(location == BODY_ZONE_HEAD)
+		if(!user.combat_mode)
+			if(human_target == user)
+				to_chat(user, span_warning("You need a mirror to properly style your own hair!"))
+				return
+			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+				return
+			var/new_style = tgui_input_list(user, "Select a hairstyle", "Grooming", GLOB.hairstyles_list)
+			if(isnull(new_style))
+				return
+			if(!get_location_accessible(human_target, location))
+				to_chat(user, span_warning("The headgear is in the way!"))
+				return
+			if(!(noggin.head_flags & HEAD_HAIR))
+				to_chat(user, span_warning("There is no hair to style!"))
+				return
+			if(HAS_TRAIT(human_target, TRAIT_BALD))
+				to_chat(user, span_warning("[human_target] is just way too bald. Like, really really bald."))
+				return
+			user.visible_message(span_notice("[user] tries to change [human_target]'s hairstyle using [src]."), span_notice("You try to change [human_target]'s hairstyle using [src]."))
+			if(new_style && do_after(user, 6 SECONDS, target = human_target))
+				user.visible_message(span_notice("[user] successfully changes [human_target]'s hairstyle using [src]."), span_notice("You successfully change [human_target]'s hairstyle using [src]."))
+				human_target.set_hairstyle(new_style, update = TRUE)
+				return
+		else
+			if(!get_location_accessible(human_target, location))
+				to_chat(user, span_warning("The headgear is in the way!"))
+				return
+			if(!(noggin.head_flags & HEAD_HAIR))
+				to_chat(user, span_warning("There is no hair to shave!"))
+				return
+			if(human_target.hairstyle == "Bald" || human_target.hairstyle == "Balding Hair" || human_target.hairstyle == "Skinhead")
+				to_chat(user, span_warning("There is not enough hair left to shave!"))
+				return
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 
 				if(H == user) //shaving yourself
 					user.visible_message(span_notice("[user] starts to shave [user.p_their()] head with [src]."), \

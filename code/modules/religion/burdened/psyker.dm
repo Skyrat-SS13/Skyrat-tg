@@ -41,6 +41,7 @@
 	. = ..()
 	if(!.)
 		return
+<<<<<<< HEAD
 	new_head_owner.become_blind(limb_id)
 	if(!new_head_owner.dna?.species)
 		return
@@ -58,6 +59,12 @@
 
 	owner.dna.species.species_traits &= ~NOEYESPRITES
 	owner.update_body()
+=======
+	new_head_owner.become_blind(bodypart_trait_source)
+
+/obj/item/bodypart/head/psyker/drop_limb(special, dismembered)
+	owner.cure_blind(bodypart_trait_source)
+>>>>>>> 614fab11b26 (SPECIES NUKING 2023: Head flags 2: Electric Boogaloo (#76298))
 	return ..()
 
 /// flavorful variant of psykerizing that deals damage and sends messages before calling psykerize()
