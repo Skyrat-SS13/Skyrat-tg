@@ -287,11 +287,15 @@
 		updatehealth()
 	return amount
 
+<<<<<<< HEAD
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organtype)
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) //SKYRAT EDIT ADDITION
+=======
+/mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organ_flag)
+>>>>>>> 82cf9ea4990 (Removes shitty "status" variable on organs, makes them use organ_flags instead (#76350))
 	return
 
-/mob/living/proc/setOrganLoss(slot, amount, maximum, required_organtype)
+/mob/living/proc/setOrganLoss(slot, amount, maximum, required_organ_flag)
 	return
 
 /mob/living/proc/get_organ_loss(slot)

@@ -282,8 +282,12 @@
 /obj/item/organ/internal/stomach/cybernetic
 	name = "basic cybernetic stomach"
 	icon_state = "stomach-c"
+<<<<<<< HEAD:code/modules/surgery/organs/stomach/_stomach.dm
 	desc = "A basic device designed to mimic the functions of a human stomach"
 	organ_flags = ORGAN_SYNTHETIC
+=======
+	organ_flags = ORGAN_ROBOTIC
+>>>>>>> 82cf9ea4990 (Removes shitty "status" variable on organs, makes them use organ_flags instead (#76350)):code/modules/surgery/organs/internal/stomach/_stomach.dm
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.5
 	var/emp_vulnerability = 80 //Chance of permanent effects if emp-ed.
 	metabolism_efficiency = 0.035 // not as good at digestion
@@ -314,7 +318,7 @@
 		owner.vomit(stun = FALSE)
 		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
-		organ_flags |= ORGAN_SYNTHETIC_EMP //Starts organ faliure - gonna need replacing soon.
+		organ_flags |= ORGAN_EMP //Starts organ faliure - gonna need replacing soon.
 
 
 #undef STOMACH_METABOLISM_CONSTANT
