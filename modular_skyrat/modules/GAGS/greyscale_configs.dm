@@ -1132,32 +1132,32 @@ digi
  */
 
 /datum/greyscale_config/nabber
-	name = "Nabber clothings"
+	name = "Nabber clothing"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/nabber_fallbacks.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/uniform.json'
 
 /datum/greyscale_config/nabber/cloak
-	name = "Nabber poncho"
+	name = "Nabber Poncho"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/neck.json'
 
 /datum/greyscale_config/nabber/tie
-	name = "Nabber poncho"
+	name = "Nabber Tie"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/neck.json'
 
 /datum/greyscale_config/nabber/scarf
-	name = "Nabber poncho"
+	name = "Nabber Scarf"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/neck.json'
 
 /datum/greyscale_config/nabber/gloves
-	name = "Nabber gloves"
+	name = "Nabber Gloves"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/gloves.json'
 
 /datum/greyscale_config/nabber/eyes
-	name = "Nabber eyes"
+	name = "Nabber Eyes"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/eyes.json'
 
 /datum/greyscale_config/nabber/belt
-	name = "Nabber belt"
+	name = "Nabber Belt"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nabber_fallbacks/belt.json'
 /*
 *	CIN SURPLUS ARMOR

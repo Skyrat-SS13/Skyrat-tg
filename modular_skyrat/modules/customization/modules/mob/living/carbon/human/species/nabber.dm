@@ -49,16 +49,16 @@
 	always_customizable = FALSE
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 20)
-	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 45)
+	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 10)
+	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 25)
 	// Need balancing
 	speedmod = 1
 	armor = 10
 	brutemod = 0.8
 	burnmod = 1.4
-	coldmod = 0.6
-	heatmod = 1.8
-	stunmod = 1.2
+	coldmod = 0.8
+	heatmod = 2
+	stunmod = 1
 	mutantbrain = /obj/item/organ/internal/brain/nabber
 	mutanteyes = /obj/item/organ/internal/eyes/nabber
 	mutantlungs = /obj/item/organ/internal/lungs/nabber
@@ -143,7 +143,7 @@
 		return random_unique_name(gender)
 
 	var/random_name
-	random_name += ("[pick("Alpha","Delta","Dzetta","Phi","Epsilon","Gamma","Tau","Omega")] - [rand(1, 199)]")
+	random_name += (pick("Alpha","Delta","Dzetta","Phi","Epsilon","Gamma","Tau","Omega") + " [rand(1, 199)]")
 	return random_name
 
 /datum/species/nabber/get_species_description()
@@ -153,29 +153,29 @@
 	return list(placeholder_lore)
 
 /obj/item/organ/internal/ears/nabber
-	name = "Nabber ears"
+	name = "nabber ears"
 	icon = 'modular_skyrat/modules/organs/icons/nabber_organs.dmi'
 	icon_state = "ears"
 
 /obj/item/organ/internal/heart/nabber
-	name = "Nabber heart"
+	name = "nabber heart"
 	icon = 'modular_skyrat/modules/organs/icons/nabber_organs.dmi'
 	icon_state = "heart"
 
 /obj/item/organ/internal/brain/nabber
-	name = "Squis brain"
+	name = "nabber brain"
 	icon = 'modular_skyrat/modules/organs/icons/nabber_organs.dmi'
 	icon_state = "brain"
 
 /obj/item/organ/internal/eyes/nabber
-	name = "Glass eyes"
+	name = "nabber eyes"
 	desc = "Small orange orbs."
 	icon = 'modular_skyrat/modules/organs/icons/nabber_organs.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 
 /obj/item/organ/internal/lungs/nabber
-	name = "Nabber lungs"
+	name = "nabber lungs"
 	icon = 'modular_skyrat/modules/organs/icons/nabber_organs.dmi'
 	icon_state = "lungs"
 
