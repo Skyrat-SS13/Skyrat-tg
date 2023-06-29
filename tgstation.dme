@@ -1,6 +1,7 @@
 // DM Environment file for tgstation.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
+// interface\skin.dmf needs to be at the very end of the file.
 // BEGIN_INTERNALS
 // END_INTERNALS
 
@@ -5430,10 +5431,13 @@
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
 #include "code\ze_genesis_call\genesis_call.dm"
-#include "interface\fonts.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
+#include "interface\fonts\fonts_datum.dm"
+#include "interface\fonts\grand_9k.dm"
+#include "interface\fonts\tiny_unicode.dm"
+#include "interface\fonts\vcr_osd_mono.dm"
 #include "interface\skin.dmf"
 #include "modular_skyrat\master_files\code\_globalvars\configuration.dm"
 #include "modular_skyrat\master_files\code\_globalvars\religion.dm"
@@ -5551,7 +5555,6 @@
 #include "modular_skyrat\master_files\code\modules\client\preferences\middleware\species_additional_changes.dm"
 #include "modular_skyrat\master_files\code\modules\client\preferences\species_features\digitigrade_legs.dm"
 #include "modular_skyrat\master_files\code\modules\client\preferences\species_features\generate_side_shots.dm"
-#include "modular_skyrat\master_files\code\modules\client\preferences\species_features\pod.dm"
 #include "modular_skyrat\master_files\code\modules\clothing\anthro_clothes.dm"
 #include "modular_skyrat\master_files\code\modules\clothing\base_clothes.dm"
 #include "modular_skyrat\master_files\code\modules\clothing\chameleon.dm"
@@ -6296,6 +6299,7 @@
 #include "modular_skyrat\modules\customization\modules\surgery\organs\neck_accessory.dm"
 #include "modular_skyrat\modules\customization\modules\surgery\organs\nif.dm"
 #include "modular_skyrat\modules\customization\modules\surgery\organs\organ.dm"
+#include "modular_skyrat\modules\customization\modules\surgery\organs\pod.dm"
 #include "modular_skyrat\modules\customization\modules\surgery\organs\skrell_hair.dm"
 #include "modular_skyrat\modules\customization\modules\surgery\organs\spines.dm"
 #include "modular_skyrat\modules\customization\modules\surgery\organs\synth_antenna.dm"
