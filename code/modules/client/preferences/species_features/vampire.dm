@@ -22,7 +22,11 @@
 GLOBAL_LIST_EMPTY(vampire_houses)
 
 /datum/preference/choiced/vampire_status/apply_to_human(mob/living/carbon/human/target, value)
+<<<<<<< HEAD
 	if (!(relevant_species_trait in target.dna?.species.species_traits))
+=======
+	if(!HAS_TRAIT(target, TRAIT_BLOOD_CLANS))
+>>>>>>> 35fd8737ed7 (Fix widespread vampirism (#76414))
 		return
 
 	if(value != "Inoculated")
