@@ -195,7 +195,7 @@
 	light_color = LIGHT_COLOR_INTENSE_RED
 	light_power = 0.7
 	///one use only!
-	var/button_stage = FALSE
+	var/button_stage = BUTTON_IDLE
 	///who pushed the big red button
 	var/who_did_it
 	///our internal radio
@@ -237,9 +237,8 @@
 	message_admins("[key_name(user)] just opened the cover of the [src].")
 	investigate_log("[key_name(user)] opened the cover of the [src].", INVESTIGATE_ATMOS)
 	if(tgui_alert(usr, "You really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
-		button_stage = FALSE
-		visible_message(span_danger("[user] slowly closes the plastic cover of the [src]!"))
 		button_stage = BUTTON_IDLE
+		visible_message(span_danger("[user] slowly closes the plastic cover of the [src]!"))
 		update_appearance()
 		return
 	who_did_it = user.ckey
