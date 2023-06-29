@@ -393,16 +393,11 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
-<<<<<<< HEAD
-	//slowdown = 1 //ORIGINAL
-	slowdown = 0.5 //SKYRAT EDIT CHANGE
-=======
 	actions_types = list(/datum/action/item_action/zipper)
 	storage_type = /datum/storage/duffel
 	/// If this bag is zipped (contents hidden) up or not
 	/// Starts enabled so people need to figure it out to use the thing
 	var/zipped_up = TRUE
->>>>>>> 03c964ac45e (Reworks Duffel Bags (Zippers) (#76313))
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
