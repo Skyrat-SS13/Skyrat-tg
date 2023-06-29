@@ -1,22 +1,33 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/machinery/light/small/directional/south,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/station/service/barber)
 "b" = (
-/obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "d" = (
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/iron/dark,
 /area/station/service/barber)
 "f" = (
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
 	},
+/obj/effect/landmark/start/barber,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "g" = (
@@ -40,6 +51,12 @@
 /obj/machinery/vending/barbervend,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
+"j" = (
+/obj/machinery/firealarm{
+	dir = 8
+	},
+/turf/closed/wall,
+/area/station/service/barber)
 "l" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -53,9 +70,10 @@
 "m" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/item/reagent_containers/spray/barbers_aid,
 /obj/item/hairbrush/comb,
+/obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "o" = (
@@ -64,10 +82,16 @@
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
+"p" = (
+/obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
 "r" = (
 /obj/structure/mirror/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/item/reagent_containers/spray/quantum_hair_dye,
 /obj/item/reagent_containers/dropper,
 /turf/open/floor/iron/dark,
@@ -106,6 +130,13 @@
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
+"x" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/obj/structure/chair/stool/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
 "A" = (
 /turf/template_noop,
 /area/template_noop)
@@ -119,9 +150,36 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
-"G" = (
-/obj/structure/cable,
+"D" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "backbarbercurtains"
+	},
+/turf/open/floor/plating,
+/area/station/service/barber)
+"E" = (
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"G" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/machinery/button/curtain{
+	pixel_x = 24;
+	id = "backbarbercurtains"
+	},
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"I" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/structure/bed{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "K" = (
@@ -129,7 +187,10 @@
 	id_tag = "commissarydoor";
 	name = "Barber Storage"
 	},
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
 /area/station/service/barber)
 "M" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -146,7 +207,16 @@
 "O" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/structure/table/glass,
+/obj/item/hairbrush,
+/obj/item/lipstick/random,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"P" = (
+/obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/closet/secure_closet/barber,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "Q" = (
@@ -166,16 +236,23 @@
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
 	},
+/obj/effect/landmark/start/barber,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "S" = (
 /obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "frontbarbercurtains"
+	},
 /turf/open/floor/plating,
 /area/station/service/barber)
 "V" = (
-/obj/item/radio/intercom/directional/north,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/structure/closet/secure_closet/barber,
+/obj/machinery/button/curtain{
+	id = "frontbarbercurtains";
+	pixel_y = 24
+	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "W" = (
@@ -188,7 +265,7 @@
 "Y" = (
 /obj/structure/mirror/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/item/lipstick/random,
 /obj/item/razor,
 /turf/open/floor/iron/dark,
@@ -221,24 +298,24 @@ B
 (3,1,1) = {"
 B
 V
-O
+w
 R
 f
 N
-B
-d
-d
+D
+I
+x
 B
 "}
 (4,1,1) = {"
 B
 i
 h
-G
-G
 b
-B
-d
+b
+b
+D
+O
 a
 B
 "}
@@ -248,9 +325,9 @@ W
 h
 o
 M
-w
+E
 K
-d
+G
 d
 B
 "}
@@ -260,15 +337,15 @@ t
 C
 w
 C
-w
+p
 B
 B
-B
+j
 B
 "}
 (7,1,1) = {"
 B
-s
+P
 Y
 m
 r
