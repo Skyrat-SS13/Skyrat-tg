@@ -205,21 +205,16 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+
 /datum/sprite_accessory/socks/socks_norm
 	name = "Normal (Greyscale)"
 	icon_state = "white_norm"
-	use_static = null
-
-/datum/sprite_accessory/socks/stirrups_norm
-	name = "Normal Stirrups (Greyscale)"
-	icon_state = "socks_norm-stir"
 	use_static = null
 
 /datum/sprite_accessory/socks/socks_short
 	name = "Short (Greyscale)"
 	icon_state = "white_short"
 	use_static = null
-
 
 /datum/sprite_accessory/socks/socks_knee
 	name = "Knee-high (Greyscale)"
@@ -270,45 +265,17 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thigh-high - Bee (Old)"
 	icon_state = "bee_thigh_old"
 
-/datum/sprite_accessory/socks/bee_knee
-	name = "Knee-high - Bee (Old)"
-	icon_state = "bee_knee_old"
+/datum/sprite_accessory/socks/cream
+	name = "Thigh-high - Cream"
+	icon_state = "cream_thigh"
 
-/datum/sprite_accessory/socks/christmas_norm
-	name = "Normal - Christmas"
-	icon_state = "christmas_norm"
-
-/datum/sprite_accessory/socks/candycaner_norm
-	name = "Normal - Red Candy Cane"
-	icon_state = "candycaner_norm"
-
-/datum/sprite_accessory/socks/candycaneg_norm
-	name = "Normal - Green Candy Cane"
-	icon_state = "candycaneg_norm"
-
-/datum/sprite_accessory/socks/christmas_knee
-	name = "Knee-High - Christmas"
-	icon_state = "christmas_knee"
-
-/datum/sprite_accessory/socks/candycaner_knee
-	name = "Knee-High - Red Candy Cane"
-	icon_state = "candycaner_knee"
-
-/datum/sprite_accessory/socks/candycaneg_knee
-	name = "Knee-High - Green Candy Cane"
-	icon_state = "candycaneg_knee"
+/datum/sprite_accessory/socks/redblack
+	name = "Thigh-high - Red black"
+	icon_state = "redblack_thigh"
 
 /datum/sprite_accessory/socks/christmas_thigh
 	name = "Thigh-high - Christmas"
 	icon_state = "christmas_thigh"
-
-/datum/sprite_accessory/socks/candycaner_thigh
-	name = "Thigh-high - Red Candy Cane"
-	icon_state = "candycaner_thigh"
-
-/datum/sprite_accessory/socks/candycaneg_thigh
-	name = "Thigh-high - Green Candy Cane"
-	icon_state = "candycaneg_thigh"
 
 /datum/sprite_accessory/socks/rainbow_thigh
 	name = "Thigh-high - Rainbow"
@@ -317,10 +284,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks/rainbow_knee
 	name = "Knee-high - Rainbow"
 	icon_state = "rainbow_knee"
-
-/datum/sprite_accessory/socks/rainbow_knee/stirrups
-	name = "Knee-high - Rainbow Stirrups"
-	icon_state = "rainbow_knee-stir"
 
 /datum/sprite_accessory/socks/rainbow_thigh/stirrups
 	name = "Thigh-high - Rainbow Stirrups"
