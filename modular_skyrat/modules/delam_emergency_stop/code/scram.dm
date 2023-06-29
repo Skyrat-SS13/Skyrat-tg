@@ -1,4 +1,6 @@
 #define BUTTON_PUSHED 0
+#define BUTTON_IDLE 1
+#define BUTTON_ARMED 2
 #define MINI_DELAMINATION 14
 #define DAMAGED_SM_LIMIT 295
 
@@ -49,9 +51,7 @@
 
 	marry_sm()
 
-	var/obj/machinery/power/supermatter_crystal/engine/sm_crystal = my_sm?.resolve()
-	if(sm_crystal)
-		RegisterSignal(sm_crystal, COMSIG_MAIN_SM_DELAMINATING, PROC_REF(go_time))
+	RegisterSignal(SSdcs, COMSIG_MAIN_SM_DELAMINATING, PROC_REF(panic_time))
 
 	emitter_area = get_area_instance_from_text("/area/station/engineering/supermatter/room")
 	scrubber_area = get_area_instance_from_text("/area/station/engineering/supermatter")
@@ -98,22 +98,19 @@
 
 		update_parents()
 
-/obj/machinery/atmospherics/components/unary/delam_scram/proc/go_time(source, trigger_reason)
+/obj/machinery/atmospherics/components/unary/delam_scram/proc/panic_time(source, trigger_reason)
 	SIGNAL_HANDLER
 
 	if(on)
 		return
 
 	message_admins("Delam SCRAM activated!")
-	investigate_log("Delam SCRAM was hit by [key_name(usr)]", INVESTIGATE_ATMOS)
-	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM ARMED. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
+	investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
+	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
 	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded
 	SSpersistence.rounds_since_engine_exploded = BUTTON_PUSHED
 	for(var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
 		sign.update_delam_count(BUTTON_PUSHED)
-	arm_delam_scram()
-
-/obj/machinery/atmospherics/components/unary/delam_scram/proc/arm_delam_scram()
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
 
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
@@ -168,7 +165,7 @@
 	var/datum/gas_mixture/delam_juice = new
 	delam_juice.add_gases(/datum/gas/freon)
 	delam_juice.gases[/datum/gas/freon][MOLES] = 64000
-	delam_juice.temperature = 80
+	delam_juice.temperature = 120
 	airs[1] = delam_juice
 
 /datum/controller/subsystem/nightshift/proc/suck_light_power()
@@ -185,5 +182,88 @@
 		light_to_restore.update_appearance()
 		light_to_restore.update()
 
+/obj/machinery/button/delam_scram
+	name = "supermatter emergency stop"
+	desc = "Your last hope to try and save the crystal during a delamination. \
+	While it is indeed a big red button, pressing it outside of an emergency \
+	will probably get the engineering department out for your blood."
+	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
+	skin = "-scram"
+	can_alter_skin = FALSE
+	silicon_access_disabled = TRUE
+	resistance_flags = FREEZE_PROOF | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	light_color = LIGHT_COLOR_INTENSE_RED
+	light_power = 0.7
+	///one use only!
+	var/button_stage = FALSE
+	///who pushed the big red button
+	var/who_did_it
+	///our internal radio
+	var/obj/item/radio/radio
+	///radio key
+	var/radio_key = /obj/item/encryptionkey/headset_eng
+
+/obj/machinery/button/delam_scram/Initialize(mapload)
+	. = ..()
+	radio = new(src)
+	radio.keyslot = new radio_key
+	radio.set_listening(FALSE)
+	radio.recalculateChannels()
+
+/obj/machinery/button/delam_scram/screwdriver_act(mob/living/user, obj/item/tool)
+	return TRUE
+
+/obj/machinery/button/delam_scram/emag_act(mob/user)
+	return
+
+/obj/machinery/button/delam_scram/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
+
+	if(button_stage == BUTTON_ARMED | BUTTON_PUSHED)
+		return
+
+	if(world.time - SSticker.round_start_time > 30 MINUTES)
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		burn_out()
+		return
+
+	button_stage = BUTTON_ARMED
+	update_appearance()
+	radio.talk_into(src, "SUPERMATTER EMERGENCY STOP BUTTON ARMED!", RADIO_CHANNEL_ENGINEERING)
+	visible_message(span_danger("[user] swings open the plastic cover of the [src]!"))
+	message_admins("[key_name(user)] just opened the cover of the [src].")
+	investigate_log("[key_name(user)] opened the cover of the [src].", INVESTIGATE_ATMOS)
+	if(tgui_alert(usr, "You really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
+		button_stage = FALSE
+		visible_message(span_danger("[user] slowly closes the plastic cover of the [src]!"))
+		button_stage = BUTTON_IDLE
+		update_appearance()
+		return
+	who_did_it = user.ckey
+	button_stage = BUTTON_PUSHED
+	visible_message(span_danger("[user] smashes the [src] with their hand!"))
+	message_admins("[key_name(user)] pushed the [src]!")
+	investigate_log("[key_name(user)] pushed the [src]!", INVESTIGATE_ATMOS)
+	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
+	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, BUTTON_PUSHED)
+
+/obj/machinery/button/delam_scram/proc/burn_out()
+	if(!(machine_stat & BROKEN))
+		set_machine_stat(machine_stat | BROKEN)
+		update_appearance()
+
+/obj/machinery/button/delam_scram/update_icon_state()
+	icon_state = "[base_icon_state][skin]"
+	if(button_stage == BUTTON_ARMED | BUTTON_PUSHED)
+		icon_state += "-armed"
+	else if(machine_stat & (NOPOWER|BROKEN))
+		icon_state += "-nopower"
+	return ..()
+
 #undef BUTTON_PUSHED
+#undef BUTTON_IDLE
+#undef BUTTON_ARMED
 #undef MINI_DELAMINATION
