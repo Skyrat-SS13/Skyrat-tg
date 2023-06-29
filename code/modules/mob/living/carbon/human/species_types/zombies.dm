@@ -4,7 +4,7 @@
 	// 1spooky
 	name = "High-Functioning Zombie"
 	id = SPECIES_ZOMBIE
-	sexes = 0
+	sexes = FALSE
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
 	species_traits = list(
@@ -89,8 +89,12 @@
 	name = "Infectious Zombie"
 	id = SPECIES_ZOMBIE_INFECTIOUS
 	examine_limb_id = SPECIES_ZOMBIE
+<<<<<<< HEAD
 	armor = 20 // 120 damage to KO a zombie, which kills it
 	speedmod = 1.6
+=======
+	damage_modifier = 20 // 120 damage to KO a zombie, which kills it
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	mutantbrain = /obj/item/organ/internal/brain/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
@@ -120,7 +124,25 @@
 		TRAIT_STABLELIVER, // Not necessary but for consistency with above
 	)
 
+<<<<<<< HEAD
 /datum/species/zombie/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+=======
+	// Infectious zombies have slow legs
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/zombie,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/zombie,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/zombie/infectious,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie/infectious,
+	)
+	/// The rate the zombies regenerate at
+	var/heal_rate = 0.5
+	/// The cooldown before the zombie can start regenerating
+	COOLDOWN_DECLARE(regen_cooldown)
+
+/datum/species/zombie/infectious/on_species_gain(mob/living/carbon/human/new_zombie, datum/species/old_species)
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 	. = ..()
 	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = /obj/item/mutant_hand/zombie)
 

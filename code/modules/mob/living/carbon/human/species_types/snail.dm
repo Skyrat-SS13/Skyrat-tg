@@ -20,8 +20,11 @@
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
+<<<<<<< HEAD
 	burnmod = 2
 	speedmod = 6
+=======
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 	siemens_coeff = 2 //snails are mostly water
 	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
 	disliked_food = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.

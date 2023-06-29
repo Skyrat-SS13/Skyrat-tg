@@ -30,16 +30,28 @@
 /obj/item/bodypart/leg/left/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
+<<<<<<< HEAD
 	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
 	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+=======
+	unarmed_damage_high = 0.5
+	burn_modifier = 2
+	speed_modifier = 3 //disgustingly slow
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 
 /obj/item/bodypart/leg/right/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
+<<<<<<< HEAD
 	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
 	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+=======
+	unarmed_damage_high = 0.5
+	burn_modifier = 2
+	speed_modifier = 3 //disgustingly slow
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
@@ -189,6 +201,16 @@
 /obj/item/bodypart/leg/right/zombie
 	limb_id = SPECIES_ZOMBIE
 	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/left/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.8 //braaaaains
+
+/obj/item/bodypart/leg/right/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.8 //braaaaains
 
 ///PODPEOPLE
 /obj/item/bodypart/head/pod
@@ -351,12 +373,22 @@
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
+<<<<<<< HEAD
+=======
+	burn_modifier = 1.25
+	speed_modifier = 0.75 //big big fungus
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 
 /obj/item/bodypart/leg/right/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
+<<<<<<< HEAD
+=======
+	burn_modifier = 1.25
+	speed_modifier = 0.75 //big fungus big fungus
+>>>>>>> 57ad2d8a8ea (SPECIES NUKING 2023: Moves speed modifier to bodyparts (#76336))
 
 /obj/item/bodypart/head/golem
 	icon = 'icons/mob/species/golems.dmi'
