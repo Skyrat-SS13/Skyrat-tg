@@ -44,8 +44,12 @@
 	armor_type = /datum/armor/cargo_miner
 	resistance_flags = NONE
 
+<<<<<<< HEAD
 /datum/armor/cargo_miner
 	bio = 10
+=======
+/datum/armor/clothing_under/cargo_miner
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	fire = 80
 	wound = 10
 

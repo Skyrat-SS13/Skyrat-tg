@@ -4,14 +4,21 @@
 	icon_state = "syndicate"
 	inhand_icon_state = "bl_suit"
 	has_sensor = NO_SENSORS
+<<<<<<< HEAD
 	armor_type = /datum/armor/under_syndicate
+=======
+	armor_type = /datum/armor/clothing_under/syndicate
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	alt_covers_chest = TRUE
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
 	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
 
+<<<<<<< HEAD
 /datum/armor/under_syndicate
+=======
+/datum/armor/clothing_under/syndicate
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	melee = 10
-	bio = 10
 	fire = 50
 	acid = 40
 
@@ -20,19 +27,25 @@
 	desc = "A non-descript and slightly suspicious looking skirtleneck."
 	icon_state = "syndicate_skirt"
 	inhand_icon_state = "bl_suit"
+<<<<<<< HEAD
 	has_sensor = NO_SENSORS
 	armor_type = /datum/armor/syndicate_skirt
 	alt_covers_chest = TRUE
+=======
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+<<<<<<< HEAD
 /datum/armor/syndicate_skirt
 	melee = 10
 	bio = 10
 	fire = 50
 	acid = 40
 
+=======
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 /obj/item/clothing/under/syndicate/bloodred
 	name = "blood-red sneaksuit"
 	desc = "It still counts as stealth if there are no witnesses."
@@ -47,7 +60,6 @@
 	bullet = 10
 	laser = 10
 	energy = 10
-	bio = 10
 	fire = 50
 	acid = 40
 
@@ -58,8 +70,12 @@
 	inhand_icon_state = "bl_suit"
 	armor_type = /datum/armor/bloodred_sleepytime
 
+<<<<<<< HEAD
 /datum/armor/bloodred_sleepytime
 	bio = 10
+=======
+/datum/armor/clothing_under/bloodred_sleepytime
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	fire = 50
 	acid = 40
 
@@ -72,8 +88,12 @@
 	armor_type = /datum/armor/syndicate_tacticool
 	stubborn_stains = TRUE
 
+<<<<<<< HEAD
 /datum/armor/syndicate_tacticool
 	bio = 10
+=======
+/datum/armor/clothing_under/syndicate_tacticool
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	fire = 50
 	acid = 40
 
@@ -100,16 +120,22 @@
 	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
 	icon_state = "tactifool_skirt"
 	inhand_icon_state = "bl_suit"
+<<<<<<< HEAD
 	armor_type = /datum/armor/tacticool_skirt
+=======
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+<<<<<<< HEAD
 /datum/armor/tacticool_skirt
 	bio = 10
 	fire = 50
 	acid = 40
 
+=======
+>>>>>>> 596ca8b6d4c (Fixes and includes `clothing_under_armor_subtype_check.dm` in the unit tests. (#76351))
 /obj/item/clothing/under/syndicate/sniper
 	name = "tactical turtleneck suit"
 	desc = "A double seamed tactical turtleneck disguised as a civilian-grade silk suit. Intended for the most formal operator. The collar is really sharp."
@@ -134,7 +160,6 @@
 
 /datum/armor/syndicate_soviet
 	melee = 10
-	bio = 10
 
 /obj/item/clothing/under/syndicate/combat
 	name = "combat uniform"
@@ -152,7 +177,6 @@
 
 /datum/armor/syndicate_rus_army
 	melee = 5
-	bio = 10
 
 /obj/item/clothing/under/syndicate/scrubs
 	name = "tactical scrubs"
