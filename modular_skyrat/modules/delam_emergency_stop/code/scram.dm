@@ -14,7 +14,7 @@
 	can_unwrench = FALSE // comedy option, what if unwrenching trying to steal it throws you into the crystal for a nice dusting
 	shift_underlay_only = FALSE
 	hide = TRUE
-	layer = GAS_SCRUBBER_LAYER
+	piping_layer = PIPING_LAYER_MAX
 	pipe_state = "injector"
 	resistance_flags = FIRE_PROOF | FREEZE_PROOF | UNACIDABLE
 
@@ -50,9 +50,6 @@
 	marry_sm()
 
 	RegisterSignal(SSdcs, COMSIG_MAIN_SM_DELAMINATING, PROC_REF(panic_time))
-
-	emitter_area = get_area_instance_from_text("/area/station/engineering/supermatter/room")
-	scrubber_area = get_area_instance_from_text("/area/station/engineering/supermatter")
 
 /obj/machinery/atmospherics/components/unary/delam_scram/Destroy()
 	QDEL_NULL(radio)
@@ -96,7 +93,7 @@
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
 		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15)
-		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		return
 
 	investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
@@ -112,7 +109,8 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
 	var/obj/machinery/power/supermatter_crystal/engine/angry_sm = my_sm?.resolve()
 	on = TRUE
-	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = FALSE)
+	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 80, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
+	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	// good job at kneecapping the crystal, engineers
 	angry_sm.modify_filter(name = "ray", new_params = list(
 		color = SUPERMATTER_TESLA_COLOUR,
@@ -145,12 +143,12 @@
 	if(damaged_sm.damage > 100)
 		damaged_sm.damage = 100
 	damaged_sm.internal_energy = MISTAKES_WERE_MADE
-	for(var/obj/machinery/power/energy_accumulator/tesla_coil/zappy_boi in scrubber_area)
+	for(var/obj/machinery/power/energy_accumulator/tesla_coil/zappy_boi in range(3, src))
 		zappy_boi.stored_energy = 0
 	// good job buddy, sacrificing yourself for the greater good
-	playsound(src, 'sound/misc/compiler-failure.ogg', 50, FALSE, 15)
+	playsound(src, 'sound/misc/compiler-failure.ogg', 75, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
 	audible_message(span_danger("The [src] beeps a sorrowful melody!"))
-	visible_message(span_danger("The [src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"))
+	visible_message(span_danger("The [src] collapses into a pile of twisted metal and foam!"))
 	deconstruct(FALSE)
 
 /obj/machinery/atmospherics/components/unary/delam_scram/New()
@@ -222,7 +220,7 @@
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
 		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 7)
-		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
 
@@ -245,6 +243,10 @@
 	investigate_log("[key_name(user)] pushed the [src]!", INVESTIGATE_ATMOS)
 	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
 	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, BUTTON_PUSHED)
+	for(var/obj/machinery/door/airlock/escape_route in range(7, src))
+		if(istype(escape_route, /obj/machinery/door/airlock/command))
+			continue
+		INVOKE_ASYNC(escape_route, TYPE_PROC_REF(/obj/machinery/door/airlock, temp_emergency_exit), 45 SECONDS)
 	notify_ghosts(
 		"The [src] has been pushed!",
 		source = src,
@@ -286,6 +288,9 @@
 
 	active = FALSE
 	update_appearance()
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/delam_scram, 27)
 
 #undef BUTTON_PUSHED
 #undef BUTTON_IDLE

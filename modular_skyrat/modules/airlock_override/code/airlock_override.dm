@@ -163,3 +163,13 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 	engineering_override = TRUE
 	normalspeed = FALSE
 	update_appearance()
+
+/obj/machinery/door/airlock/proc/temp_emergency_exit(duration)
+	if(!emergency)
+		emergency = TRUE
+		addtimer(CALLBACK(src, PROC_REF(set_emergency_exit), FALSE), duration)
+		update_appearance()
+
+/obj/machinery/door/airlock/proc/set_emergency_exit(active)
+	emergency = active
+	update_appearance()
