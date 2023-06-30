@@ -1,8 +1,7 @@
 #define BUTTON_PUSHED 0
 #define BUTTON_IDLE 1
 #define BUTTON_ARMED 2
-#define MINI_DELAMINATION 14
-#define DAMAGED_SM_LIMIT 295
+#define SUPERMATTER_DAMAGED 41
 
 /obj/machinery/atmospherics/components/unary/delam_scram
 	icon_state = "inje_map-3"
@@ -104,6 +103,11 @@
 	if(on)
 		return
 
+	if(world.time - SSticker.round_start_time > 30 MINUTES)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15)
+		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		return
+
 	message_admins("Delam SCRAM activated!")
 	investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
 	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
@@ -112,12 +116,13 @@
 	for(var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
 		sign.update_delam_count(BUTTON_PUSHED)
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
+	// fight power with power
+	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
 
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
 	var/obj/machinery/power/supermatter_crystal/engine/angry_sm = my_sm?.resolve()
 	on = TRUE
-	// fight power with power
-	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
+	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = FALSE)
 	// good job at kneecapping the crystal, engineers
 	angry_sm.modify_filter(name = "ray", new_params = list(
 		color = SUPERMATTER_TESLA_COLOUR,
@@ -150,13 +155,15 @@
 	var/obj/machinery/power/supermatter_crystal/engine/damaged_sm = my_sm?.resolve()
 	damaged_sm.name = "partially delaminated supermatter crystal"
 	damaged_sm.desc = "This crystal has seen better days, the glow seems off and the shards look brittle. Central says it's still \"relatively safe.\" They'd never lie to us, right?"
-	damaged_sm.explosion_power = MINI_DELAMINATION
+	damaged_sm.explosion_power = SUPERMATTER_DAMAGED // if you fuck up again, yeesh
 	if(damaged_sm.damage > 100)
 		damaged_sm.damage = 100
 	damaged_sm.internal_energy = BUTTON_PUSHED
 	for(var/obj/machinery/power/energy_accumulator/tesla_coil/zappy_boi in scrubber_area)
 		zappy_boi.stored_energy = 0
 	// good job buddy, sacrificing yourself for the greater good
+	playsound(src, 'sound/misc/compiler-failure.ogg', 50, FALSE, 15)
+	audible_message(span_danger("The [src] beeps a sorrowful melody!"))
 	visible_message(span_danger("The [src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"))
 	deconstruct(FALSE)
 
@@ -210,6 +217,10 @@
 	radio.set_listening(FALSE)
 	radio.recalculateChannels()
 
+/obj/machinery/button/delam_scram/Destroy()
+	QDEL_NULL(radio)
+	return ..()
+
 /obj/machinery/button/delam_scram/screwdriver_act(mob/living/user, obj/item/tool)
 	return TRUE
 
@@ -221,11 +232,11 @@
 	if(.)
 		return
 
-	if(button_stage == BUTTON_ARMED | BUTTON_PUSHED)
+	if(button_stage != BUTTON_IDLE)
 		return
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 7)
 		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
@@ -242,6 +253,7 @@
 		update_appearance()
 		return
 	who_did_it = user.ckey
+	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7)
 	button_stage = BUTTON_PUSHED
 	visible_message(span_danger("[user] smashes the [src] with their hand!"))
 	message_admins("[key_name(user)] pushed the [src]!")
@@ -255,14 +267,16 @@
 		update_appearance()
 
 /obj/machinery/button/delam_scram/update_icon_state()
+	. = ..()
 	icon_state = "[base_icon_state][skin]"
-	if(button_stage == BUTTON_ARMED | BUTTON_PUSHED)
+	if(button_stage == BUTTON_ARMED)
+		icon_state += "-armed"
+	else if(button_stage == BUTTON_PUSHED)
 		icon_state += "-armed"
 	else if(machine_stat & (NOPOWER|BROKEN))
 		icon_state += "-nopower"
-	return ..()
 
 #undef BUTTON_PUSHED
 #undef BUTTON_IDLE
 #undef BUTTON_ARMED
-#undef MINI_DELAMINATION
+#undef SUPERMATTER_DAMAGED
