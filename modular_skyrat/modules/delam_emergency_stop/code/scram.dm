@@ -30,8 +30,6 @@
 	///radio channels, need null to actually broadcast on common, lol.
 	var/emergency_channel = null
 	var/warning_channel = RADIO_CHANNEL_ENGINEERING
-	var/emitter_area
-	var/scrubber_area
 
 /obj/machinery/atmospherics/components/unary/delam_scram/Initialize(mapload)
 	. = ..()
