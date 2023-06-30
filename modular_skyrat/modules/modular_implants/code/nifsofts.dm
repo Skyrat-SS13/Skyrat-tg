@@ -103,7 +103,7 @@
 		active = TRUE
 
 	if(cooldown)
-		addtimer(CALLBACK(src, .proc/remove_cooldown), cooldown_duration)
+		addtimer(CALLBACK(src, PROC_REF(remove_cooldown)), cooldown_duration)
 		on_cooldown = TRUE
 
 	return TRUE
@@ -133,7 +133,7 @@
 		scrambled_name += pick(random_characters)
 
 	program_name = scrambled_name
-	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(restore_name)), 60 SECONDS)
 
 /datum/nifsoft/ui_state(mob/user)
 	return GLOB.conscious_state
