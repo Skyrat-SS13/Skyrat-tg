@@ -2,13 +2,14 @@
 #define BUTTON_IDLE 1
 #define BUTTON_ARMED 2
 #define SUPERMATTER_DAMAGED 41
+#define MISTAKES_WERE_MADE 0
 
 /obj/machinery/atmospherics/components/unary/delam_scram
-	icon_state = "inje_map-3"
-
-	name = "reactor emergency scram"
-	desc = "An expensive delamination suppression system. You don't want to be in the chamber when it's activated!"
-
+	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
+	icon_state = "dispenser-idle"
+	name = "delamination suppression system"
+	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems. You don't want to be in the chamber when it's activated! \
+	Come to think of it, CentCom would rather you didn't activate it at all. These things are expensive!"
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE // comedy option, what if unwrenching trying to steal it throws you into the crystal for a nice dusting
 	shift_underlay_only = FALSE
@@ -17,11 +18,9 @@
 	pipe_state = "injector"
 	resistance_flags = FIRE_PROOF | FREEZE_PROOF | UNACIDABLE
 
-	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.25
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 4
 	///Rate of operation of the device
 	var/volume_rate = 33
-	///if we're byond the point of no return
-	var/scram_triggered = FALSE
 	///weakref to our SM
 	var/datum/weakref/my_sm
 	///Our internal radio
@@ -63,15 +62,7 @@
 	my_sm = WEAKREF(GLOB.main_supermatter_engine)
 
 /obj/machinery/atmospherics/components/unary/delam_scram/update_icon_nopipes()
-	cut_overlays()
-	if(showpipe)
-		// everything is already shifted so don't shift the cap
-		add_overlay(get_pipe_image(icon, "inje_cap", initialize_directions, pipe_color))
-
-	if(!nodes[1] || !on || !is_operational)
-		icon_state = "inje_off"
-	else
-		icon_state = "inje_on"
+	return
 
 /obj/machinery/atmospherics/components/unary/delam_scram/process_atmos()
 	..()
@@ -108,13 +99,12 @@
 		visible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		return
 
-	message_admins("Delam SCRAM activated!")
 	investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
 	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
-	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded
-	SSpersistence.rounds_since_engine_exploded = BUTTON_PUSHED
+	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded // yeah that's right Skyrat, no more cheating the counter by deleting the SM
+	SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
 	for(var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
-		sign.update_delam_count(BUTTON_PUSHED)
+		sign.update_delam_count(MISTAKES_WERE_MADE)
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
 	// fight power with power
 	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
@@ -128,15 +118,11 @@
 		color = SUPERMATTER_TESLA_COLOUR,
 	))
 	angry_sm.set_light_color(SUPERMATTER_TESLA_COLOUR)
-	// don't assume these dummies turned off the emitters
-	for(var/obj/machinery/power/emitter/shooty_boi in emitter_area)
-		shooty_boi.active = FALSE
-		shooty_boi.update_appearance()
 	// don't vent the delam juice as it works its magic
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/scrubby_boi in scrubber_area)
+	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/scrubby_boi in range(3, src))
 		scrubby_boi.on = FALSE
 		scrubby_boi.update_appearance()
-	for(var/obj/machinery/atmospherics/components/unary/vent_pump/venti_boi in scrubber_area)
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/venti_boi in range(3, src))
 		venti_boi.on = FALSE
 		venti_boi.update_appearance()
 	// the windows can only protect you for so long
@@ -158,7 +144,7 @@
 	damaged_sm.explosion_power = SUPERMATTER_DAMAGED // if you fuck up again, yeesh
 	if(damaged_sm.damage > 100)
 		damaged_sm.damage = 100
-	damaged_sm.internal_energy = BUTTON_PUSHED
+	damaged_sm.internal_energy = MISTAKES_WERE_MADE
 	for(var/obj/machinery/power/energy_accumulator/tesla_coil/zappy_boi in scrubber_area)
 		zappy_boi.stored_energy = 0
 	// good job buddy, sacrificing yourself for the greater good
@@ -195,7 +181,6 @@
 	While it is indeed a big red button, pressing it outside of an emergency \
 	will probably get the engineering department out for your blood."
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
-	skin = "-scram"
 	can_alter_skin = FALSE
 	silicon_access_disabled = TRUE
 	resistance_flags = FREEZE_PROOF | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -245,7 +230,7 @@
 	update_appearance()
 	radio.talk_into(src, "SUPERMATTER EMERGENCY STOP BUTTON ARMED!", RADIO_CHANNEL_ENGINEERING)
 	visible_message(span_danger("[user] swings open the plastic cover of the [src]!"))
-	message_admins("[key_name(user)] just opened the cover of the [src].")
+	message_admins("[ADMIN_LOOKUPFLW(user)] just opened the cover of the [src].")
 	investigate_log("[key_name(user)] opened the cover of the [src].", INVESTIGATE_ATMOS)
 	if(tgui_alert(usr, "You really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
 		button_stage = BUTTON_IDLE
@@ -256,10 +241,18 @@
 	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7)
 	button_stage = BUTTON_PUSHED
 	visible_message(span_danger("[user] smashes the [src] with their hand!"))
-	message_admins("[key_name(user)] pushed the [src]!")
+	message_admins("[ADMIN_LOOKUPFLW(user)] pushed the [src]!")
 	investigate_log("[key_name(user)] pushed the [src]!", INVESTIGATE_ATMOS)
 	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
 	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, BUTTON_PUSHED)
+	notify_ghosts(
+		"The [src] has been pushed!",
+		source = src,
+		header = "Mistakes Were Made",
+		action = NOTIFY_ORBIT,
+		ghost_sound = 'sound/machines/warning-buzzer.ogg',
+		notify_volume = 75
+	)
 
 /obj/machinery/button/delam_scram/proc/burn_out()
 	if(!(machine_stat & BROKEN))
@@ -276,7 +269,26 @@
 	else if(machine_stat & (NOPOWER|BROKEN))
 		icon_state += "-nopower"
 
+/obj/machinery/power/supermatter_crystal/Destroy() // I wish I could set the sign to negatives if you manage to still screw it up
+	if(is_main_engine && GLOB.main_supermatter_engine == src)
+		SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded
+		SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
+			sign.update_delam_count(MISTAKES_WERE_MADE)
+	return ..()
+
+/obj/machinery/power/emitter/LateInitialize(mapload)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_MAIN_SM_DELAMINATING, PROC_REF(emergency_stop))
+
+/obj/machinery/power/emitter/proc/emergency_stop()
+	SIGNAL_HANDLER
+
+	active = FALSE
+	update_appearance()
+
 #undef BUTTON_PUSHED
 #undef BUTTON_IDLE
 #undef BUTTON_ARMED
 #undef SUPERMATTER_DAMAGED
+#undef MISTAKES_WERE_MADE
