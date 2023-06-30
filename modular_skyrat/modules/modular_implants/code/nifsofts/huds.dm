@@ -14,6 +14,32 @@
 	/// A list of traits that we want to add while the NIFSoft is active. This is here to emulate things like sci-goggles
 	var/list/added_eyewear_traits = list()
 
+// Attemps to add the hud variables from the NIFSoft to the user.
+/datum/nifsoft/hud/proc/add_huds()
+	if(hud_type)
+		var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
+		our_hud.show_to(linked_mob)
+
+	if(hud_trait)
+		ADD_TRAIT(linked_mob, hud_trait, GLASSES_TRAIT)
+
+	for(var/trait as anything in added_eyewear_traits)
+		ADD_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
+
+/// Attempts to remove the HUDs given to the user by the NIFSoft
+/datum/nifsoft/hud/proc/remove_huds()
+	if(hud_type)
+		var/datum/atom_hud/hud = GLOB.huds[hud_type]
+		hud.hide_from(linked_mob)
+
+	if(hud_trait)
+		REMOVE_TRAIT(linked_mob, hud_trait, NIFSOFT_TRAIT)
+
+	for(var/trait in added_eyewear_traits)
+		REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
+
+	return TRUE
+
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active && (!istype(worn_glasses) || !(worn_glasses.obj_flags & NIF_HUD_GRANTER)))
@@ -25,15 +51,7 @@
 		return FALSE
 
 	if(!active)
-		if(hud_type)
-			var/datum/atom_hud/hud = GLOB.huds[hud_type]
-			hud.hide_from(linked_mob)
-		if(hud_trait)
-			REMOVE_TRAIT(linked_mob, hud_trait, NIFSOFT_TRAIT)
-
-		for(var/trait in added_eyewear_traits)
-			REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
-
+		remove_huds()
 		if(eyewear_check)
 			if(!istype(worn_glasses)) // Really non-ideal situation, but it's better than a runtime.
 				return FALSE
@@ -42,15 +60,7 @@
 
 		return TRUE
 
-	if(hud_type)
-		var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
-		our_hud.show_to(linked_mob)
-	if(hud_trait)
-		ADD_TRAIT(linked_mob, hud_trait, GLASSES_TRAIT)
-
-	for(var/trait as anything in added_eyewear_traits)
-		ADD_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
-
+	add_huds()
 	if(eyewear_check)
 		RegisterSignal(worn_glasses, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(activate))
 
