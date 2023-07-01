@@ -466,7 +466,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	C.mob_biotypes = inherent_biotypes
 	C.mob_respiration_type = inherent_respiration_type
 
+<<<<<<< HEAD:code/modules/mob/living/carbon/human/species.dm
 	if (old_species.type != type)
+=======
+	if(old_species.type != type)
+>>>>>>> ed4fb32be91 ([No GBP] Revert "Adds nullchecks in species code to prevent runtimes" (#76357)):code/modules/mob/living/carbon/human/_species.dm
 		replace_body(C, src)
 
 	regenerate_organs(C, old_species, visual_only = C.visual_only_organs)
