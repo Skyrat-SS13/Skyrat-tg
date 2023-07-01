@@ -69,8 +69,14 @@
 			return
 
 /obj/item/stamp/nri
-	name = "/improper Novaya Rossiyskaya Imperia stamp"
+	name = "\improper Novaya Rossiyskaya Imperia stamp"
 	desc = "A rubber stamp for stamping important documents. Used in various NRI documents."
 	icon = 'modular_skyrat/master_files/icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-nri"
-	inhand_icon_state = "stamp"
+	dye_color = DYE_CENTCOM
+
+/obj/item/stamp/solfed
+	name = "\improper Solar Federation stamp"
+	icon = 'modular_skyrat/master_files/icons/obj/bureaucracy.dmi'
+	icon_state = "stamp-solfed"
+	dye_color = DYE_CE
