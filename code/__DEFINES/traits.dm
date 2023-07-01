@@ -486,8 +486,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HATED_BY_DOGS "hated_by_dogs"
 /// Mobs with this trait will not be immobilized when held up
 #define TRAIT_NOFEAR_HOLDUPS "no_fear_holdup"
-<<<<<<< HEAD
-=======
 /// Mob has gotten an armor buff from adamantine extract
 #define TRAIT_ADAMANTINE_EXTRACT_ARMOR "adamantine_extract_armor"
 /// Mobs with this trait won't be able to dual wield guns.
@@ -495,7 +493,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Projectile with this trait will always hit the defined zone of a struck living mob.
 #define TRAIT_ALWAYS_HIT_ZONE "always_hit_zone"
->>>>>>> f07b74ea904 (Moves species brutemod and burnmod to be handled by bodyparts (#76060))
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
