@@ -125,7 +125,7 @@
 	// the windows can only protect you for so long
 	for(var/obj/structure/window/reinforced/plasma/fucked_window in range(3, src))
 		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, delam_explode)), rand(13 SECONDS, 15 SECONDS))
-	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(13 SECONDS, 15 SECONDS))
+	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(19 SECONDS, 21 SECONDS))
 	addtimer(CALLBACK(src, PROC_REF(goodbye_friends)), 9 SECONDS)
 	update_appearance()
 
