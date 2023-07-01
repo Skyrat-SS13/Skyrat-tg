@@ -331,6 +331,7 @@ Key procs
 
 /* SKYRAT EDIT REMOVAL - Moved to modular_skyrat\master_files\code\modules\language\language_holders.dm
 /datum/language_holder/synthetic
+<<<<<<< HEAD
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 								/datum/language/uncommon = list(LANGUAGE_ATOM),
 								/datum/language/machine = list(LANGUAGE_ATOM),
@@ -348,6 +349,18 @@ Key procs
 							/datum/language/voltaic = list(LANGUAGE_ATOM),
 							/datum/language/nekomimetic = list(LANGUAGE_ATOM))
 */ /// SKYRAT EDIT END
+=======
+	understood_languages = list(
+		/datum/language/common = list(LANGUAGE_ATOM),
+		/datum/language/uncommon = list(LANGUAGE_ATOM),
+		/datum/language/machine = list(LANGUAGE_ATOM),
+	)
+	spoken_languages = list(
+		/datum/language/common = list(LANGUAGE_ATOM),
+		/datum/language/uncommon = list(LANGUAGE_ATOM),
+		/datum/language/machine = list(LANGUAGE_ATOM),
+	)
+>>>>>>> a4b4f738d07 (Removes silicon's knowledge of non human languages (#76305))
 
 /datum/language_holder/moth
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
