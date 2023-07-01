@@ -89,7 +89,7 @@
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
 		return ..(human, ignore_suit = TRUE) //SKYRAT - Customization - ORIGINAL: return TRUE
-	return ..() //SKYRAT EDIT - Customization - ORIGINAL: return FALSE
+	return FALSE
 
 /datum/bodypart_overlay/mutant/wings/moth/get_base_icon_state()
 	return burnt ? burn_datum.icon_state : sprite_datum.icon_state

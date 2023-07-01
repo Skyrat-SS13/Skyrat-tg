@@ -397,5 +397,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_action_given)
 		return
 
+	if(locate(/datum/action/innate/join_soulcatcher) in actions)
+		return
+
 	var/datum/action/innate/join_soulcatcher/new_join_action = new
 	new_join_action.Grant(src)
