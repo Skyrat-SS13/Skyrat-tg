@@ -54,16 +54,3 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 								/datum/language/machine = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM))
-
-/// Modularized the Cyborg and AI language_holder, add here the languages that you want them to be able to speak and understand.
-/datum/language_holder/synthetic
-	understood_languages = list(
-		/datum/language/common = list(LANGUAGE_ATOM),
-		/datum/language/uncommon = list(LANGUAGE_ATOM),
-		/datum/language/machine = list(LANGUAGE_ATOM),
-	)
-	spoken_languages = list(
-		/datum/language/common = list(LANGUAGE_ATOM),
-		/datum/language/uncommon = list(LANGUAGE_ATOM),
-		/datum/language/machine = list(LANGUAGE_ATOM),
-	)
