@@ -83,15 +83,11 @@
 	icon_state = "giftbag0"
 	inhand_icon_state = "giftbag"
 	w_class = WEIGHT_CLASS_BULKY
+	storage_type = /datum/storage/backpack/santabag
 
 /obj/item/storage/backpack/santabag/Initialize(mapload)
 	. = ..()
 	regenerate_presents()
-
-/obj/item/storage/backpack/santabag/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.max_total_storage = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit..."))
@@ -106,7 +102,7 @@
 	if(user.mind && HAS_TRAIT(user.mind, TRAIT_CANNOT_OPEN_PRESENTS))
 		var/turf/floor = get_turf(src)
 		var/obj/item/thing = new /obj/item/a_gift/anything(floor)
-		if(!atom_storage.attempt_insert(thing, user, override = TRUE))
+		if(!atom_storage.attempt_insert(thing, user, override = TRUE, force = STORAGE_SOFT_LOCKED))
 			qdel(thing)
 
 
@@ -398,12 +394,101 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
+<<<<<<< HEAD
 	//slowdown = 1 //ORIGINAL
 	slowdown = 0.5 //SKYRAT EDIT CHANGE
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 30
+=======
+	actions_types = list(/datum/action/item_action/zipper)
+	storage_type = /datum/storage/duffel
+	// How much to slow you down if your bag isn't zipped up
+	var/zip_slowdown = 1
+	/// If this bag is zipped (contents hidden) up or not
+	/// Starts enabled so you're forced to interact with it to "get" it
+	var/zipped_up = TRUE
+
+/obj/item/storage/backpack/duffelbag/Initialize(mapload)
+	. = ..()
+	set_zipper(TRUE)
+
+/obj/item/storage/backpack/duffelbag/update_desc(updates)
+	. = ..()
+	desc = "[initial(desc)]<br>[zipped_up ? "It's zipped up, preventing you from accessing its contents." : "It's unzipped, and harder to move in."]"
+
+/obj/item/storage/backpack/duffelbag/attack_self(mob/user, modifiers)
+	if(loc != user) // God fuck TK
+		return ..()
+	if(zipped_up)
+		return attack_hand(user, modifiers)
+	else
+		return attack_hand_secondary(user, modifiers)
+
+/obj/item/storage/backpack/duffelbag/attack_self_secondary(mob/user, modifiers)
+	attack_self(user, modifiers)
+	return ..()
+
+// If we're zipped, click to unzip
+/obj/item/storage/backpack/duffelbag/attack_hand(mob/user, list/modifiers)
+	if(loc != user)
+		// Hacky, but please don't be cringe yeah?
+		atom_storage.silent = TRUE
+		. = ..()
+		atom_storage.silent = initial(atom_storage.silent)
+		return
+	if(!zipped_up)
+		return ..()
+
+	balloon_alert(user, "unzipping...")
+	playsound(src, 'sound/items/un_zip.ogg', 100, FALSE)
+	var/datum/callback/can_unzip = CALLBACK(src, PROC_REF(zipper_matches), TRUE)
+	if(!do_after(user, 2.1 SECONDS, src, extra_checks = can_unzip))
+		return
+	balloon_alert(user, "unzipped")
+	set_zipper(FALSE)
+	return TRUE
+
+// Vis versa
+/obj/item/storage/backpack/duffelbag/attack_hand_secondary(mob/user, list/modifiers)
+	if(loc != user)
+		return ..()
+	if(zipped_up)
+		return SECONDARY_ATTACK_CALL_NORMAL
+
+	balloon_alert(user, "zipping...")
+	playsound(src, 'sound/items/zip_up.ogg', 100, FALSE)
+	var/datum/callback/can_zip = CALLBACK(src, PROC_REF(zipper_matches), FALSE)
+	if(!do_after(user, 0.5 SECONDS, src, extra_checks = can_zip))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	balloon_alert(user, "zipped")
+	set_zipper(TRUE)
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+/// Checks to see if the zipper matches the passed in state
+/// Returns true if so, false otherwise
+/obj/item/storage/backpack/duffelbag/proc/zipper_matches(matching_value)
+	return zipped_up == matching_value
+
+/obj/item/storage/backpack/duffelbag/proc/set_zipper(new_zip)
+	zipped_up = new_zip
+	SEND_SIGNAL(src, COMSIG_DUFFEL_ZIP_CHANGE, new_zip)
+	if(zipped_up)
+		slowdown = initial(slowdown)
+		atom_storage.locked = STORAGE_SOFT_LOCKED
+		atom_storage.display_contents = FALSE
+		atom_storage.close_all()
+	else
+		slowdown = zip_slowdown
+		atom_storage.locked = STORAGE_NOT_LOCKED
+		atom_storage.display_contents = TRUE
+
+	if(isliving(loc))
+		var/mob/living/wearer = loc
+		wearer.update_equipment_speed_mods()
+	update_appearance()
+>>>>>>> 8c2c72b0ed7 (Duiffel Spotfix (#76442))
 
 /obj/item/storage/backpack/duffelbag/cursed
 	name = "living duffel bag"
@@ -412,7 +497,7 @@
 		then it might have negative effects on the bag..."
 	icon_state = "duffel-curse"
 	inhand_icon_state = "duffel-curse"
-	slowdown = 2
+	zip_slowdown = 2
 	max_integrity = 100
 
 /obj/item/storage/backpack/duffelbag/cursed/Initialize(mapload)
