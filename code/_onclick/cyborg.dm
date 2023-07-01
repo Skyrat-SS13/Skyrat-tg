@@ -95,17 +95,7 @@
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
-<<<<<<< HEAD
-/mob/living/silicon/robot/CtrlShiftClickOn(atom/A) // Procs overridden in skyrat_modular/modules/Silicon_QoL
-	A.BorgCtrlShiftClick(src)
-/mob/living/silicon/robot/ShiftClickOn(atom/A)
-	A.BorgShiftClick(src)
-/mob/living/silicon/robot/CtrlClickOn(atom/A)
-	A.BorgCtrlClick(src)
-/mob/living/silicon/robot/AltClickOn(atom/A)
-	A.BorgAltClick(src)
-=======
-/mob/living/silicon/robot/CtrlShiftClickOn(atom/target)
+/mob/living/silicon/robot/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
 	target.BorgCtrlShiftClick(src)
 
 /mob/living/silicon/robot/ShiftClickOn(atom/target)
@@ -116,7 +106,6 @@
 
 /mob/living/silicon/robot/AltClickOn(atom/target)
 	target.BorgAltClick(src)
->>>>>>> 10f5932c4c2 (Add hotkeys to APC settings (#76358))
 
 /atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
 	CtrlShiftClick(user)

@@ -115,17 +115,7 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
-<<<<<<< HEAD
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/A) // Procs overriden in modular_skyrat/modules/Silicon_QoL
-	A.AICtrlShiftClick(src) 
-/mob/living/silicon/ai/ShiftClickOn(atom/A)
-	A.AIShiftClick(src)
-/mob/living/silicon/ai/CtrlClickOn(atom/A)
-	A.AICtrlClick(src)
-/mob/living/silicon/ai/AltClickOn(atom/A)
-	A.AIAltClick(src) 
-=======
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/target)
+/mob/living/silicon/ai/CtrlShiftClickOn(atom/target) // Procs overriden in modular_skyrat/modules/Silicon_QoL
 	target.AICtrlShiftClick(src)
 
 /mob/living/silicon/ai/ShiftClickOn(atom/target)
@@ -136,7 +126,6 @@
 
 /mob/living/silicon/ai/AltClickOn(atom/target)
 	target.AIAltClick(src)
->>>>>>> 10f5932c4c2 (Add hotkeys to APC settings (#76358))
 
 /*
 	The following criminally helpful code is just the previous code cleaned up;
@@ -178,17 +167,10 @@
 	if(obj_flags & EMAGGED)
 		return
 
-<<<<<<< HEAD
-	user_toggle_open(usr)
-	add_hiddenprint(usr)
-	
-/obj/machinery/door/airlock/AICtrlShiftClick()  // Sets/Unsets Emergency Access Override
-=======
 	user_toggle_open(user)
 	add_hiddenprint(user)
 
 /obj/machinery/door/airlock/AICtrlShiftClick(mob/living/silicon/ai/user)  // Sets/Unsets Emergency Access Override
->>>>>>> 10f5932c4c2 (Add hotkeys to APC settings (#76358))
 	if(obj_flags & EMAGGED)
 		return
 
