@@ -659,23 +659,16 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(!vomit)
 		return
 	// Apply the proper icon set based on vomit type
-<<<<<<< HEAD
-	if(toxvomit == VOMIT_PURPLE)
-		V.icon_state = "vomitpurp_[pick(1,4)]"
-	else if (toxvomit == VOMIT_TOXIC)
-		V.icon_state = "vomittox_[pick(1,4)]"
-	//SKYRAT EDIT START - Nanite Slurry
-	else if (toxvomit == VOMIT_NANITE)
-		V.name = "metallic slurry"
-		V.desc = "A puddle of metallic slurry that looks vaguely like very fine sand. It almost seems like it's moving..."
-		V.icon_state = "vomitnanite_[pick(1,4)]"
-	// SKYRAT EDIT END
-=======
 	if(vomit_type == VOMIT_PURPLE)
 		vomit.icon_state = "vomitpurp_[pick(1,4)]"
 	else if (vomit_type == VOMIT_TOXIC)
 		vomit.icon_state = "vomittox_[pick(1,4)]"
->>>>>>> 626e5c9dea6 (Eating from floor may cause disease (#76018))
+	//SKYRAT EDIT START - Nanite Slurry
+	else if (vomit_type == VOMIT_NANITE)
+		vomit.name = "metallic slurry"
+		vomit.desc = "A puddle of metallic slurry that looks vaguely like very fine sand. It almost seems like it's moving..."
+		vomit.icon_state = "vomitnanite_[pick(1,4)]"
+	// SKYRAT EDIT END
 	if (purge_ratio && iscarbon(M))
 		clear_reagents_to_vomit_pool(M, vomit, purge_ratio)
 
