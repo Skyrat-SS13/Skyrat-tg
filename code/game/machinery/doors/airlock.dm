@@ -146,20 +146,13 @@
 	var/boltUp = 'sound/machines/boltsup.ogg'
 	var/boltDown = 'sound/machines/boltsdown.ogg'
 	var/noPower = 'sound/machines/doorclick.ogg'
-<<<<<<< HEAD
-	var/previous_airlock = /obj/structure/door_assembly //what airlock assembly mineral plating was applied to
-	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
-	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	/// What airlock assembly mineral plating was applied to
 	var/previous_airlock = /obj/structure/door_assembly
 	/// Material of inner filling; if its an airlock with glass, this should be set to "glass"
 	var/airlock_material
-	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
+	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	/// Used for papers and photos pinned to the airlock
-	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
->>>>>>> 830d2e50b41 (Fixes some stupid airlock sleeps (#75961))
+	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi'//OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 
 	var/cyclelinkeddir = 0
 	var/obj/machinery/door/airlock/cyclelinkedairlock
@@ -179,16 +172,13 @@
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	if(multi_tile)
 		SetBounds()
 	update_overlays()
 	//SKYRAT EDIT END
-	wires = set_wires()
-=======
+
 	set_wires(get_wires())
->>>>>>> 830d2e50b41 (Fixes some stupid airlock sleeps (#75961))
 	if(glass)
 		airlock_material = "glass"
 	if(security_level > AIRLOCK_SECURITY_IRON)
