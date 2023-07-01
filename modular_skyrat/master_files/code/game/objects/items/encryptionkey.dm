@@ -65,6 +65,11 @@
 	desc = "An encryption key that automatically encodes Siik'tajr heard through the radio into common."
 	translated_language = /datum/language/siiktajr
 
+/obj/item/encryptionkey/translation/akula
+	name = "\improper Te Velu Akko translation key"
+	desc = "An encryption key that automatically encodes Te Velu Akko heard through the radio into common."
+	translated_language = /datum/language/akulan
+
 /obj/item/encryptionkey/translation/terrum
 	name = "\improper Terrum translation key"
 	desc = "An encryption key that automatically encodes Terrum heard through the radio into common."
