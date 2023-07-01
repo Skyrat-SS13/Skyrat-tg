@@ -938,3 +938,209 @@
   softcerv:
   - bugfix: soulcatcher join actions no longer duplicate themselves when a ghost logs
       in and out.
+2023-06-24:
+  GoldenAlpharex:
+  - bugfix: Inflatable barrier box can now only contain inflatables, and should be
+      able to hold as many as they spawn with. They also hold a nicer amount of items
+      (7 doors and 14 walls, instead of 8 doors and 16 walls, which looked stupid).
+  Guillaume Prata:
+  - rscadd: 'New Wizard spell branch: Vendormacy! Summon runic vending machines with
+      your Vending Scepter, force push them on your enemies to squish them or blow
+      them up while they are busy buying from the machines.'
+  Hatterhat:
+  - rscadd: The Free Trade Union has reported losing small stocks of their "Archangel"
+      rifle furniture sets. Coincidentally, in-sector black markets (accessible, as
+      always, via appropriate black market uplinks) now report an uptick in availability
+      of the very same parts. Prospective crazed gunmen are advised to bring a screwdriver.
+  LT3:
+  - image: Delam and tram flipsigns have been replaced with information displays
+  - bugfix: Tram hit count is centrally managed instead of independently on each sign,
+      so they won't get out of sync
+  Melbert:
+  - qol: Categorizes chef vendor
+  - bugfix: The colossus's finale attack is now 100x more lethal, because it was firing
+      100x fewer projectiles than intended
+  - bugfix: Fixed EMP'd / signaled microwaves not running as they should
+  - bugfix: Fix runtimes from Bileworms targeting mechas (or other objects people
+      are hiding in)
+  - bugfix: The Syndicate Assault Cyborg can autofire their LMG
+  OrionTheFox:
+  - qol: made Balaclavas layer below glasses and radios
+  Paxilmaniac:
+  - qol: If you are either flying or floating, you can now traverse differently heighted
+      tiles (for example, pool tiles onto a normal floor) without having to climb.
+  - bugfix: Pool tiles are no longer forever jail if the gravity system shuts off.
+  Skyrat:
+  - balance: Nanotrasen's accounting department flipped out when they noticed how
+      much money the station was spending on confetti. Employees are now advised to
+      have birthdays less often and/or with less celebration.
+  SkyratBot:
+  - bugfix: Fixed being unable to reimburse syndicate spawners via uplinks. This includes
+      nukie reinforcements, cyborgs, and holoparasite injectors.
+  - refactor: Turned TC reimbursement into a bespoke element.
+  - spellcheck: Tuned demon's blood message when there's no ghosts to pick to be a
+      little more understandable and sensible.
+  - qol: pill press' max volume for bottles are 50, as the volume of bottles itself.
+  - bugfix: changed station floor tiles to be worth 25 instead of 50, one quarter
+      of an iron sheet.
+  - rscadd: air sensor's are craftable
+  - refactor: air sensor's can now be turned off by hand and can only be deconstructed
+      by a welding tool
+  - refactor: removed `Params()` proc
+  - qol: unwrenched air sensors can be picked up & recycled like regular item's
+  - rscdel: air sensor are removed from the RPD UI
+  - qol: air sensor's are no longer restricted by their unique ID's which mean you
+      can craft as many air sensors as you want.
+  - qol: Instrument delivery beacons now fit in pockets.
+  - bugfix: ' material container[and hence autolathe] now won''t touch the content''s
+      of abstract/hologram item''s like the tentacle gun'
+  - bugfix: material container[and hence autolathe] consuming indestructible items
+  - bugfix: material container[and hence autolathe] cosuming half the content's of
+      an object and leaving out the rest if there isn't space producing broken behaviour
+      in those item's
+  - qol: material container[and hence autolathe] display's the item name consumed
+      and it's material worth to let player's fully know the content's of the item
+      being recycled
+  - bugfix: Rockets can no longer embed in people and cause blunt wounds instead of
+      piercing
+  - bugfix: Dehardcodes some stuff with tram windows, they'll be easier to map with
+      now
+  - refactor: Border objects can now smooth with each other. I'm sure something cool
+      will come of this
+  - sound: explosive implant's beeps get louder as it gets closer to exploding
+  - bugfix: fixed Godwoken Syndrome VoG commands triggering the spam filter
+  - qol: Embedding an object inside a cake or loaf of bread now requires a right-click
+      instead of a left-click. No more accidentally putting your knife inside it!
+  - qol: Added context tips for slicing, embedding, and removing embedded items from
+      cake, bread, and cheese wheels.
+  - bugfix: Fixed the honourbound trauma not reacting to attacks from basic mobs
+  - bugfix: Fixed the "Declare Evil" spell not working against the medical department.
+  - rscadd: Baseballs can now be crafted with 3 leather.
+  - bugfix: fixed mecha generators using way too much fuel due to using the old values
+      of material units per sheet
+  - bugfix: Maps loaded post init will no longer randomly enter a failed state. Hopefully.
+  - bugfix: attacking non-carbon mobs with a cuffsnapping object will no longer runtime.
+  - code_imp: makes sure cargo computer doesn't use `usr` var inside `ui_act()` which
+      could cause undefined behaviour
+  - qol: Add UI preference menus for AI hologram and status displays
+  - bugfix: autolathe, protolathe, mech fabricator and component printers material
+      capacity are now in 20 times less, as intended.
+  - bugfix: protolathe material menu now should display material ejecting correctly.
+  Wallem:
+  - image: Tweaks cardboard sheet sprite
+  vinylspiders:
+  - bugfix: the mothic mantella and mothic flightsuit will now always hide moth wings
+      again
+2023-06-25:
+  LT3:
+  - bugfix: Nanotrasen sent a crew in the night to fix the poorly installed clocks
+      and incident displays on Void Raptor
+  SkyratBot:
+  - bugfix: bubble gum crate actually looks correct
+  - image: Added new Space Beer sprite
+  - image: Added new Carp Lite sprite
+  - image: Added new Ale Bottle sprite
+  - image: Added new Two-Time Root Beer sprite
+  - rscadd: Adds digital clocks, can be found in all the stations' hallways! Most
+      noticeably in bars or the bridge. They can also be lathed.
+  - admin: The Debug and Admin MODsuits now take a lot less time to (de)activate.
+      2 and 0.5 seconds respectively, compared to the default of 10s.
+  - image: Resprited the Limb Grower
+  Wallem:
+  - image: Resprites plumbing machines
+  softcerv:
+  - rscadd: soulcatcher souls can now be renamed by themselves or the owner of the
+      soulcatcher
+  - qol: soulcatcher souls now have their own dedicated UI
+  tf-4:
+  - bugfix: Multi-tile airlocks will no longer close on you if you stand on the "wrong"
+      tile.
+  - bugfix: Multi-tile airlock assemblies are no longer only half dense.
+2023-06-27:
+  LT3:
+  - qol: Crew have learned how to properly hold their alcohol
+  - qol: Crew can smoke a cigarette without falling into an instant coughing fit
+  - bugfix: Fixed nicotine addiction side effects being applied twice each time
+  OrionTheFox:
+  - image: Stock Parts, Bluespace Crystals, and Telecrystals are now using TG's sprites
+  zydras:
+  - qol: Improved a donator gas mask's sprite, function and gave it general donator
+      access
+2023-06-28:
+  Hatterhat:
+  - rscadd: Breaching hammers (like the ones found in the armory) are now usable to
+      break kneecaps on immobilized, buckled, or floored targets.
+  SkyratBot:
+  - bugfix: Added the missing medical laptop to the morgue on Northstar.
+  - qol: '[Birdshot] Adds layer adapters to gas tank output hookups in atmospherics'
+  - qol: '[Birdshot] Adds additional navigation verb landmarks'
+  - bugfix: '[Birdshot] Fixes entrances to some departments from maints not requiring
+      department access'
+  - bugfix: '[Birdshot] Converts the guard locker in perma to a normal security officer''s
+      locker'
+  - bugfix: '[Birdshot] Adds an exterior outlet vent for the incinerator'
+  - bugfix: Science department hallways now have unrestricted one-way exits on Delta,
+      Birdshot, and Icebox, to make these maps consistent with the others.
+  YakumoChen:
+  - balance: Deforest Medical imports now have a selection of Medical-themed MODsuit
+      modules for sale, as well as some cyber augments.
+  dolphinemote:
+  - bugfix: replaces sofas in VR medbay break room with correctly turned versions
+  - bugfix: replaces the bench in the VR medbay lobby with a correctly edged version
+  - bugfix: replaces the reinforced table in the VR maint that was adjacent to the
+      basic iron tables with an iron version
+  - bugfix: changes decals in the VR evidence room
+  - bugfix: removes one air alarm from the VR evidence room (it had two)
+  zydras:
+  - rscadd: Added 2 new donator items for someone
+  - bugfix: fixed incorrect/missing ckeys on donator items
+  - bugfix: fixed all-donator item not being selectable due to lacking a duplicate
+      path
+2023-06-29:
+  LT3:
+  - refactor: Refactored maptext (those floating words)
+  - bugfix: Fixed special chat bubbles for yelling, clown, redtext, greentext
+  - bugfix: Fixed alignment of status display text
+  - code_imp: Status displays now synchronize their message lines when scrolling
+  Melbert:
+  - rscadd: 'Wizarditis Improved. Those infected will now randomly cast one of the
+      following (weakened) spells at max stage: Teleport, Disable Tech, Mutate, Knock,
+      Forcewall, Blink, Smoke, Spacetime Distortion, Timestop, Repulse, Blind, Lightning
+      Bolt, or Swap'
+  - rscadd: A source of antimagic will prevent Wizarditis's ill effects, but won't
+      cure you.
+  Nerev4r:
+  - refactor: Podperson hair is now colorable, properly layered, and able to be emissive.
+  SkyratBot:
+  - sound: Adds unique sounds to library barcode scanner
+  - image: Removes soul from library
+  - sound: One (1) new space ambience track has been added. Good luck and godspeed.
+  - bugfix: Brand intelligence can no longer affect off-station vendors in some specific
+      circumstances.
+  - bugfix: glass bottles with reagents can be used for crafting, empty glass bottles
+      will be used as tools(e.g. empty glass bottle as rolling pin)
+  - bugfix: glass bottle with welding fuel can be used for crafting improvised shotgun
+      shells
+  - bugfix: The lavaproof tracks cyborg upgrade now protects against liquid plasma,
+      the Icebox equivalent of lava.
+  - bugfix: fixed hostile mobs trying to attack supermatter discharge bolts
+  - image: the mosin and prime nagants' mob sprites have been updated
+  - bugfix: Items that shouldn't have been stacking should no longer stack.
+  - balance: Syndicate simplemob fire-rate raised to one shot per second.
+  - bugfix: Symbols display correctly when sending messages via mind link
+  axietheaxolotl / viro:
+  - image: resprited surgery tables, and stasis beds
+2023-06-30:
+  Iamgoofball, Nadare, ddPn08, Mangio621, the rest of the RVC dev team:
+  - rscadd: Improves the audio quality and speaker fidelity by implementing Retrieval
+      Voice Conversion as an intermediary layer, utilizing the repository at https://github.com/ddPn08/rvc-webui.
+  - rscadd: Leverages RVC to allow players to set a pitch for their voice.
+  - rscadd: Makes silicons utilize a player's chosen voice preference on their character
+      slot, and adds a preview button to hear the voice as a silicon on character
+      creation.
+  - rscadd: Adds a toggle on character creation to disable having a voice on a specific
+      character slot.
+  - rscadd: Adds support for per-tongue voice filters.
+  - rscadd: Reworks the silicon voice effect to be a special effect done on the TTS
+      server level instead of via normal filters.
+  - rscadd: Reworks the vending machine effect to use the new robotic voicebox effect.

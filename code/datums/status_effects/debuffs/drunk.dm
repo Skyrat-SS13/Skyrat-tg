@@ -1,10 +1,12 @@
+// SKYRAT EDIT CHANGE BEGIN (#21546 DRUNK EFFECTS)
 // Defines for the ballmer peak.
-#define BALLMER_PEAK_LOW_END 12.9
-#define BALLMER_PEAK_HIGH_END 13.8
-#define BALLMER_PEAK_WINDOWS_ME 26
+#define BALLMER_PEAK_LOW_END 25.8 // Original 12.9
+#define BALLMER_PEAK_HIGH_END 27.6 // Original 13.8
+#define BALLMER_PEAK_WINDOWS_ME 37 // Original 26
 
 /// The threshld which determine if someone is tipsy vs drunk
-#define TIPSY_THRESHOLD 6
+#define TIPSY_THRESHOLD 21 // Original 6
+// SKYRAT EDIT CHANGE END (#21546 DRUNK EFFECTS)
 
 /**
  * The drunk status effect.
@@ -144,6 +146,8 @@
 		if(drunk_value > BALLMER_PEAK_WINDOWS_ME) // by this point you're into windows ME territory
 			owner.say(pick_list_replacements(VISTA_FILE, "ballmer_windows_me_msg"), forced = "ballmer")
 
+	// SKYRAT EDIT CHANGE BEGIN (#21546 DRUNK EFFECTS)
+	/* ORIGINAL
 	// Drunk slurring scales in intensity based on how drunk we are -at 16 you will likely not even notice it,
 	// but when we start to scale up you definitely will
 	if(drunk_value >= 16)
@@ -171,6 +175,33 @@
 	// Over 71, we will constantly have blurry eyes
 	if(drunk_value >= 71)
 		owner.set_eye_blur_if_lower((drunk_value * 2 SECONDS) - 140 SECONDS)
+	*/
+
+	// And drunk people will always lose jitteriness
+	owner.adjust_jitter(-6 SECONDS)
+
+	// Over 41, we have a 10% chance to gain confusion and occasionally slur words, scaling with drunk_value
+	if(drunk_value >= 41)
+		if(prob(clamp(drunk_value - 8, 0, 100)))
+			owner.adjust_timed_status_effect(4 SECONDS, /datum/status_effect/speech/slurring/drunk, max_duration = 20 SECONDS)
+		if(prob(10))
+			owner.adjust_confusion(4 SECONDS)
+
+	// Over 61, we start to get blurred vision
+	if(drunk_value >= 61)
+		owner.set_dizzy_if_lower(45 SECONDS)
+		if(prob(15))
+			owner.adjust_eye_blur_up_to(4 SECONDS, 20 SECONDS)
+
+	// Over 71, we will constantly have blurry eyes, we might vomit
+	if(drunk_value >= 71)
+		owner.set_eye_blur_if_lower(20 SECONDS)
+		if(prob(3))
+			owner.adjust_confusion(15 SECONDS)
+			if(iscarbon(owner))
+				var/mob/living/carbon/carbon_owner = owner
+				carbon_owner.vomit() // Vomiting clears toxloss - consider this a blessing
+	// SKYRAT EDIT CHANGE END (#21546 DRUNK EFFECTS)
 
 	// Over 81, we will gain constant toxloss
 	if(drunk_value >= 81)
