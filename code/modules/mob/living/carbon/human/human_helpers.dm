@@ -259,6 +259,11 @@
 		if (preference.is_randomizable())
 			preference.apply_to_human(src, preference.create_random_value(preferences))
 
+<<<<<<< HEAD
+=======
+	fully_replace_character_name(real_name, dna.species.random_name())
+
+>>>>>>> d85e44c69cc (SPECIES NUKING 2023: Head flags 3 & Knuckles: Fixes some growing pains with head flags  (#76440))
 /**
  * Setter for mob height
  *

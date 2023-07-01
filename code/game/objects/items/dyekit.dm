@@ -47,6 +47,7 @@
 	to_chat(user, span_notice("You start applying the hair dye..."))
 	if(!do_after(user, 3 SECONDS, target))
 		return
+<<<<<<< HEAD
 	var/gradient_key = beard_or_hair == "Hair" ? GRADIENT_HAIR_KEY : GRADIENT_FACIAL_HAIR_KEY
 	LAZYSETLEN(human_target.grad_style, GRADIENTS_LEN)
 	LAZYSETLEN(human_target.grad_color, GRADIENTS_LEN)
@@ -55,3 +56,12 @@
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	human_target.update_body_parts()
 */
+=======
+	if(beard_or_hair == "Hair")
+		human_target.set_hair_gradient_style(new_grad_style, update = FALSE)
+		human_target.set_hair_gradient_color(new_grad_color, update = TRUE)
+	else
+		human_target.set_facial_hair_gradient_style(new_grad_style, update = FALSE)
+		human_target.set_facial_hair_gradient_color(new_grad_color, update = TRUE)
+	playsound(src, 'sound/effects/spray.ogg', 10, vary = TRUE)
+>>>>>>> d85e44c69cc (SPECIES NUKING 2023: Head flags 3 & Knuckles: Fixes some growing pains with head flags  (#76440))
