@@ -295,12 +295,12 @@
 	update_appearance()
 
 /obj/item/folder/biscuit/confidential/delam
-	name = "delamination emergency procedures"
+	name = "NT-approved delam emergency procedure"
 	contained_slip = /obj/item/paper/paperslip/corporate/fluff/delam_procedure
 	layer = SIGN_LAYER
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/Initialize(mapload)
-	name = "Nanotrasen-Approved Delamination Emergency Procedure"
+	name = "delam emergency procedure"
 	desc = "Now you're a REAL engineer!"
 	default_raw_text = "<b>EMERGENCY PROCEDURE: SUPERMATTER DELAMINATION</b><br><br>\
 		<b>So you've found yourself in a bit of a pickle with a delamination of a supermatter reactor.<br>Don't worry, saving the day is just a few steps away!</b><br><br>\
