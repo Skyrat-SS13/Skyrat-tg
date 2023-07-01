@@ -91,7 +91,7 @@
 		return
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
 		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		return
 
@@ -108,7 +108,7 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
 	var/obj/machinery/power/supermatter_crystal/engine/angry_sm = my_sm?.resolve()
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 80, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
+	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 40, ignore_walls = TRUE, use_reverb = TRUE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	// good job at kneecapping the crystal, engineers
 	angry_sm.modify_filter(name = "ray", new_params = list(
@@ -145,7 +145,7 @@
 	for(var/obj/machinery/power/energy_accumulator/tesla_coil/zappy_boi in range(3, src))
 		zappy_boi.stored_energy = 0
 	// good job buddy, sacrificing yourself for the greater good
-	playsound(src, 'sound/misc/compiler-failure.ogg', 75, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
+	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
 	audible_message(span_danger("The [src] beeps a sorrowful melody!"))
 	visible_message(span_danger("The [src] collapses into a pile of twisted metal and foam!"))
 	deconstruct(FALSE)
@@ -216,7 +216,7 @@
 
 	if(button_stage == BUTTON_IDLE)
 		visible_message(span_danger("A biscuit card falls out of the [src]!"))
-		new /obj/item/folder/biscuit/confidential/delam(user.loc)
+		user.put_in_hands(new /obj/item/folder/biscuit/confidential/delam(get_turf(user)))
 		button_stage = BUTTON_AWAKE
 		return
 
@@ -224,7 +224,7 @@
 		return
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 7)
+		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 15)
 		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
@@ -241,7 +241,7 @@
 		update_appearance()
 		return
 	who_did_it = user.ckey
-	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7)
+	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
 	button_stage = BUTTON_PUSHED
 	visible_message(span_danger("[user] smashes the [src] with their hand!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] pushed the [src]!")
@@ -318,8 +318,6 @@
 	return ..()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/delam_scram, 27)
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/folder/biscuit/confidential/delam, 32)
 
 #undef BUTTON_PUSHED
 #undef BUTTON_IDLE
