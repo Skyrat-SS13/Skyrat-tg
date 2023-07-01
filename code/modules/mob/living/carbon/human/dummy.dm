@@ -90,27 +90,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
 	target.dna.initialize_dna(skip_index = TRUE)
-<<<<<<< HEAD
 	/* SKYRAT EDIT START - Customization - ORIGINAL:
-	target.dna.features["body_markings"] = "None"
-	target.dna.features["ears"] = "None"
-	target.dna.features["ethcolor"] = COLOR_WHITE
-	target.dna.features["frills"] = "None"
-	target.dna.features["horns"] = "None"
-	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
-	target.dna.features["moth_antennae"] = "Plain"
-	target.dna.features["moth_markings"] = "None"
-	target.dna.features["moth_wings"] = "Plain"
-	target.dna.features["snout"] = "Round"
-	target.dna.features["spines"] = "None"
-	target.dna.features["tail_cat"] = "None"
-	target.dna.features["tail_lizard"] = "Smooth"
-	target.dna.features["pod_hair"] = "Ivy"
-	*/ // ORIGINAL END - SKYRAT EDIT START
-	target.dna.features["ethcolor"] = COLOR_WHITE
-	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
-	target.dna.features["pod_hair"] = "Ivy"
-=======
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	target.dna.features["body_markings"] = get_consistent_feature_entry(GLOB.body_markings_list)
@@ -125,7 +105,11 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_cat"] = get_consistent_feature_entry(GLOB.tails_list_human) // it's a lie
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(GLOB.tails_list_lizard)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(GLOB.pod_hair_list)
->>>>>>> 6977a041a99 (Do not add external organs if not needed and not rendered. (#75963))
+	*/ // ORIGINAL END - SKYRAT EDIT START
+	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
+	target.dna.features["ethcolor"] = COLOR_WHITE
+	target.dna.features["pod_hair"] = get_consistent_feature_entry(GLOB.pod_hair_list)
+	// SKYRAT EDIT END
 
 /// Provides a dummy that is consistently bald, white, naked, etc.
 /mob/living/carbon/human/dummy/consistent
