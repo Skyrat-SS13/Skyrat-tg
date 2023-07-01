@@ -10,10 +10,16 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
+	obj_flags = UNIQUE_RENAME
 	/// What soulcatcher datum is associated with this item?
 	var/datum/component/soulcatcher/linked_soulcatcher
 	/// The cooldown for the RSD on scanning a body if the ghost refuses. This is here to prevent spamming.
 	COOLDOWN_DECLARE(rsd_scan_cooldown)
+
+/obj/item/handheld_soulcatcher/Initialize(mapload)
+	. = ..()
+	name += " #[rand(0, 999)]" // If it works for monkeys, it surely works for soulcatchers.
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/handheld_soulcatcher/attack_self(mob/user, modifiers)
 	linked_soulcatcher.ui_interact(user)
@@ -21,7 +27,7 @@
 /obj/item/handheld_soulcatcher/New(loc, ...)
 	. = ..()
 	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
-	linked_soulcatcher.name = "[src] soulcatcher"
+	linked_soulcatcher.name = name
 
 /obj/item/handheld_soulcatcher/Destroy(force)
 	if(linked_soulcatcher)

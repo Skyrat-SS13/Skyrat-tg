@@ -138,7 +138,6 @@
 	linked_mob = insertee
 	stored_ckey = linked_mob.ckey
 
-	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
@@ -407,7 +406,7 @@
 		broken = TRUE
 		addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
 
-	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(make_vulnerable)), 3 MINUTES)
 
 	switch(severity)
 		if(1)
@@ -449,7 +448,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(add_examine))
 
 /datum/component/nif_examine/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)

@@ -3,14 +3,18 @@
 	plane = FLOOR_PLANE
 	anchored = TRUE
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	///Boolean on whether this decal can be placed inside of groundless turfs/walls. If FALSE, will runtime and delete if it happens.
 	var/turf_loc_check = TRUE
 
 /obj/effect/decal/Initialize(mapload)
 	. = ..()
-	if(turf_loc_check && (!isturf(loc) || NeverShouldHaveComeHere(loc)))
+	if(NeverShouldHaveComeHere(loc))
+		if(mapload)
+			stack_trace("[name] spawned in a bad turf ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. \
+				Please remove it or allow it to pass NeverShouldHaveComeHere if it's intended.")
 		return INITIALIZE_HINT_QDEL
 	var/static/list/loc_connections = list(
-		COMSIG_TURF_CHANGED = PROC_REF(handle_turf_change),
+		COMSIG_TURF_CHANGE = PROC_REF(on_decal_move),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
@@ -18,8 +22,9 @@
 	if(B && B.loc == loc)
 		qdel(src)
 
-/obj/effect/decal/proc/NeverShouldHaveComeHere(turf/T)
-	return isclosedturf(T) || isgroundlessturf(T)
+///Checks if we are allowed to be in `here_turf`, and returns that result. Subtypes should override this when necessary.
+/obj/effect/decal/proc/NeverShouldHaveComeHere(turf/here_turf)
+	return isclosedturf(here_turf) || (isgroundlessturf(here_turf) && !SSmapping.get_turf_below(here_turf))
 
 /obj/effect/decal/ex_act(severity, target)
 	qdel(src)
@@ -29,7 +34,7 @@
 	if(!(resistance_flags & FIRE_PROOF)) //non fire proof decal or being burned by lava
 		qdel(src)
 
-/obj/effect/decal/proc/handle_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+/obj/effect/decal/proc/on_decal_move(turf/changed, path, list/new_baseturfs, flags, list/post_change_callbacks)
 	SIGNAL_HANDLER
 	post_change_callbacks += CALLBACK(src, PROC_REF(sanity_check_self))
 
