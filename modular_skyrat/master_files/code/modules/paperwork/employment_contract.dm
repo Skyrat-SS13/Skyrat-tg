@@ -4,6 +4,7 @@
 	throw_range = 3
 	throw_speed = 3
 	item_flags = NOBLUDGEON
+	///Needed to get the spawned mob's name to display in the paper.
 	var/employee_name = ""
 
 /obj/item/paper/work_contract/Initialize(mapload, new_employee_name)
