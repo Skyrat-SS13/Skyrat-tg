@@ -20,6 +20,7 @@
 	armor_type = /datum/armor/wetsuit_under
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	can_adjust = FALSE
+	can_be_bloody = FALSE
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	/// If an akula tail accessory is present, we can overlay an additional icon
