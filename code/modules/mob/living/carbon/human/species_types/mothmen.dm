@@ -52,17 +52,19 @@
 
 	return randname
 
+<<<<<<< HEAD
 /datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
 	if(chem.type == /datum/reagent/toxin/pestkiller)
 		H.adjustToxLoss(3 * REM * seconds_per_tick)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
 
+=======
+>>>>>>> 7f3d7632857 (Adds Roach Infusion to the DNA infuser (#76393))
 /datum/species/moth/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/melee/flyswatter))
 		return 10 //flyswatters deal 10x damage to moths
 	return 1
-
 
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
 	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_wings_list)
