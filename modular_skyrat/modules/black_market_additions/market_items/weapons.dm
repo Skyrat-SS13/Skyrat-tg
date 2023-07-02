@@ -1,9 +1,9 @@
 /datum/market_item/weapon
 	category = "Weapons"
 
-/datum/market_item/weapon/bear_trap
-	name = "Bear Trap"
-	desc = "Get the janitor back at his own game with this affordable prank kit."
+/datum/market_item/weapon/bolt_rifle
+	name = "Worn Sportiv Rifle"
+	desc = "A bunch of corrupt imperial law officials have marked a shipment of those as 'defunct' and sold them to us. They still jam like a bitch though."
 	item = /obj/item/gun/ballistic/rifle/boltaction
 
 	price_min = CARGO_CRATE_VALUE * 1.5
@@ -11,55 +11,93 @@
 	stock_max = 3
 	availability_prob = 40
 
-/datum/market_item/weapon/shotgun_dart
-	name = "Shotgun Dart"
-	desc = "These handy darts can be filled up with any chemical and be shot with a shotgun! \
-	Prank your friends by shooting them with laughter! \
-	Not recommended for comercial use."
+/datum/market_item/weapon/bolt_ammo
+	name = "Sportiv Stripper Clip"
+	desc = "This came with the rifles and is -probably- some sportsmanship-grade ammunition, so surely it must be something good. Warranty void if used against people."
+	item = /obj/item/ammo_box/a762/surplus
+
+	price_min = CARGO_CRATE_VALUE * 1.5
+	price_max = CARGO_CRATE_VALUE * 2.75
+	stock_max = 9
+	availability_prob = 60
+
+/datum/market_item/weapon/shit_revolver
+	name = ".38 Revolver"
+	desc = "There was this roving band of psycholunatics mugging people for shit. But you can't mug if you can't see, so they were dying wave after wave. \
+	That's where the guns are from."
 	item = /obj/item/gun/ballistic/revolver/c38
 
 	price_min = CARGO_CRATE_VALUE * 0.05
 	price_max = CARGO_CRATE_VALUE * 0.25
-	stock_min = 10
-	stock_max = 60
+	stock_max = 4
 	availability_prob = 40
 
-/datum/market_item/weapon/bone_spear
-	name = "Bone Spear"
-	desc = "Authentic tribal spear, made from real bones! A steal at any price, especially if you're a caveman."
-	item = /obj/item/spear/bonespear
+/datum/market_item/weapon/revolver_ammo
+	name = ".38 Speedloader"
+	desc = "There was this roving band of psycholunatics mugging people for shit. But you can't mug if you can't see, so they were dying wave after wave. \
+	That's where the guns are from. And the ammo."
+	item = /obj/item/ammo_box/c38
+
+	price_min = CARGO_CRATE_VALUE * 0.05
+	price_max = CARGO_CRATE_VALUE * 0.25
+	stock_max = 7
+	availability_prob = 40
+
+/datum/market_item/weapon/croon
+	name = "Croon SMG"
+	desc = "This piece of junk was probably welded together in some garage. I mean it's literally a bunch of metal squares welded together. And it can barely hit anyone\
+	at a range of three meters. Fantastic gun if you ask me."
+	item = /obj/item/gun/ballistic/automatic/croon
 
 	price_min = CARGO_CRATE_VALUE
 	price_max = CARGO_CRATE_VALUE * 1.5
 	stock_max = 3
 	availability_prob = 60
 
-/datum/market_item/weapon/chainsaw
-	name = "Chainsaw"
-	desc = "A lumberjack's best friend, perfect for cutting trees or limbs efficiently."
-	item = /obj/item/chainsaw
+/datum/market_item/weapon/croon_ammo
+	name = "Croon Magazine"
+	desc = "Whoever designed this might be a real crackhead because not only did they weld together the gun but they also made this proprietary ammo. Crazy right?"
+	item = /obj/item/ammo_box/magazine/multi_sprite/croon
+
+	price_min = CARGO_CRATE_VALUE
+	price_max = CARGO_CRATE_VALUE * 1.5
+	stock_max = 3
+	availability_prob = 60
+
+/datum/market_item/weapon/rc_makarov
+	name = "Authentic Makarov Pistol"
+	desc = "I bet you've always wanted to have this 10mm beauty yourself right? So here's the perfect opportunity to grab one. No refunds."
+	item = /obj/item/gun/ballistic/automatic/pistol/makarov
 
 	price_min = CARGO_CRATE_VALUE * 1.75
 	price_max = CARGO_CRATE_VALUE * 3
 	stock_max = 1
 	availability_prob = 35
 
-/datum/market_item/weapon/switchblade
-	name = "Switchblade"
-	desc = "Tunnel Snakes rule!"
-	item = /obj/item/switchblade
+/datum/market_item/weapon/makarov_ammo
+	name = "Authentic Makarov Ammo"
+	desc = "You'd think this'd come with a gun, but you see, we're not called black market for nothing."
+	item = /obj/item/ammo_box/magazine/multi_sprite/makarov
 
+	price_min = CARGO_CRATE_VALUE * 1.75
+	price_max = CARGO_CRATE_VALUE * 3
+	stock_max = 1
+	availability_prob = 35
+
+/datum/market_item/weapon/surplus_rifle
+	name = "Surplus Rifle"
+	desc = "This gun was used by the frontier varminting groups before it got phased out with that slavic civilian rifle. So, we took the batches for ourselves."
+	item = /obj/item/gun/ballistic/automatic/surplus
 	price_min = CARGO_CRATE_VALUE * 1.25
 	price_max = CARGO_CRATE_VALUE * 1.75
 	stock_max = 3
 	availability_prob = 45
 
-/datum/market_item/weapon/emp_grenade
-	name = "EMP Grenade"
-	desc = "Use this grenade for SHOCKING results!"
-	item = /obj/item/grenade/empgrenade
-
-	price_min = CARGO_CRATE_VALUE * 0.5
-	price_max = CARGO_CRATE_VALUE * 2
-	stock_max = 2
-	availability_prob = 50
+/datum/market_item/weapon/surplus_ammo
+	name = "Surplus Rifle Ammo"
+	desc = "This gun was used by the frontier varminting groups before it got phased out with that slavic civilian rifle. So, we took the batches for ourselves."
+	item = /obj/item/ammo_box/magazine/m10mm/rifle
+	price_min = CARGO_CRATE_VALUE * 1.25
+	price_max = CARGO_CRATE_VALUE * 1.75
+	stock_max = 3
+	availability_prob = 45
