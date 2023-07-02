@@ -9,7 +9,7 @@
 	stock_max = 6
 
 	price_min = CARGO_CRATE_VALUE * 2.6
-	price_max = CARGO_CRATE_VALUE * 3
+	price_max = CARGO_CRATE_VALUE * 4
 	availability_prob = 30
 
 /datum/market_item/consumable/hash
