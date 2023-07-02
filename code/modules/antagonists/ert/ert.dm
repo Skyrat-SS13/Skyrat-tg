@@ -276,3 +276,16 @@
 	name = "Marine Medic"
 	outfit = /datum/outfit/centcom/ert/marine/medic
 	role = "Medical Officer"
+<<<<<<< HEAD
+=======
+
+/datum/antagonist/ert/militia
+	name = "Frontier Militia"
+	outfit = /datum/outfit/centcom/militia
+	role = "Volunteer"
+
+/datum/antagonist/ert/militia/general
+	name = "Frontier Militia General"
+	outfit = /datum/outfit/centcom/militia/general
+	role = "General"
+>>>>>>> 982c4bcad4c (Frontier Militia ERT Fix [NO GBP] (#76454))
