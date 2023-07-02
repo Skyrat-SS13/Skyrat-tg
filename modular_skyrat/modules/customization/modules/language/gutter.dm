@@ -1,6 +1,6 @@
 /datum/language/gutter
-	name = "Plutonian Franco-Castilian"
-	desc = "Colloquially known as just \"Plutonian\", this is a constructed Romance language that was developed early on in the Sol Federation's colonization history out of necessity for communication between its first Plutonian colonists. It heavily borrows from Spanish and French, with minor influence from other tongues the likes of Italian and Portuguese, despite coming off as elegant it carries a heavy amount of slang and idioms correlated to certain criminal groups. Today, it stands heavily engrained in the planet's culture - and almost every citizen will speak at least some of it on top of Sol."
+	name = "Plutonian"
+	desc = "Plutonian Franco-Castilian is a constructed Romance language that was developed early on in the Sol Federation's colonization history out of necessity for communication between its first Plutonian colonists. It heavily borrows from Spanish and French, with minor influence from other tongues the likes of Italian and Portuguese, despite coming off as elegant it carries a heavy amount of slang and idioms correlated to certain criminal groups. Today, it stands heavily engrained in the planet's culture - and almost every citizen will speak at least some of it on top of Sol."
 	key = "G"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
