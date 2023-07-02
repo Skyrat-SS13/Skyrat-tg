@@ -9,6 +9,7 @@
 /obj/item/paper/work_contract/Initialize(mapload, new_employee_name)
 	if(!new_employee_name)
 		return INITIALIZE_HINT_QDEL
+
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
 	employee_name = new_employee_name
