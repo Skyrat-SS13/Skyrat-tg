@@ -44,7 +44,7 @@
 /datum/market_item/clothing/tacklers
 	name = "Tackling Gloves"
 	desc = "Good if you like acting recklessly."
-	item = /obj/item/clothing/gloves/tackler
+	item = /obj/item/clothing/gloves/tackler/offbrand
 
 	price_min = CARGO_CRATE_VALUE * 0.5
 	price_max = CARGO_CRATE_VALUE
