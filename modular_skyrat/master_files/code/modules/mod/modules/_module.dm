@@ -22,7 +22,7 @@
 		wearer.update_clothing(slot_flags)
 
 // SEE HERE: This is how you make any given module retract alongside a suit part.
-// Set to retracts_into WEAKREF to mod.helmet, mod.chestplate, mod.boots, or mod.gauntlets as desired in the on_install proc just like shown below
+// Set the retracts_into WEAKREF to mod.helmet, mod.chestplate, mod.boots, or mod.gauntlets as desired in the on_install proc just like shown below
 /obj/item/mod/module/visor/on_install()
 	. = ..()
 	retracts_into = WEAKREF(mod.helmet) // hide visor module when the helmet is retracted
