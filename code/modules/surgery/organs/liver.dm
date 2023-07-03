@@ -95,6 +95,7 @@
 #define HAS_PAINFUL_TOXIN 2
 
 /obj/item/organ/internal/liver/on_life(seconds_per_tick, times_fired)
+<<<<<<< HEAD:code/modules/surgery/organs/liver.dm
 	var/mob/living/carbon/liver_owner = owner
 	. = ..() //perform general on_life()
 
@@ -102,6 +103,12 @@
 		return
 	if(organ_flags & ORGAN_FAILING || HAS_TRAIT(liver_owner, TRAIT_NOMETABOLISM)) //If your liver is failing or you lack a metabolism then we use the liverless version of metabolize
 		liver_owner.reagents.metabolize(liver_owner, seconds_per_tick, times_fired, can_overdose=TRUE, liverless=TRUE)
+=======
+	. = ..()
+	//If your liver is failing, then we use the liverless version of metabolize
+	if((organ_flags & ORGAN_FAILING) || HAS_TRAIT(owner, TRAIT_LIVERLESS_METABOLISM))
+		owner.reagents.metabolize(owner, seconds_per_tick, times_fired, can_overdose = TRUE, liverless = TRUE)
+>>>>>>> f8049a6e6ba ([NO GBP] Fixes dumb usage of TRAIT_LIVERLESS_METABOLISM i caused (#76500)):code/modules/surgery/organs/internal/liver/_liver.dm
 		return
 
 	var/obj/belly = liver_owner.get_organ_slot(ORGAN_SLOT_STOMACH)
