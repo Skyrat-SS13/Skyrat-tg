@@ -7,7 +7,16 @@
 	var/head_only_when_active = FALSE
 	/// Is the module's visuals head-only when inactive? Useful for visors and such, to avoid multiplying the amount of overlay with empty images
 	var/head_only_when_inactive = FALSE
+	/// Which part of the modsuit this module is 'attached' to, for purposes of hiding them when retracting the part. Null means it won't get hidden.
+	var/obj/item/clothing/hide_when_retracted = null
 
+/obj/item/mod/module/visor/on_install()
+	. = ..()
+	hide_when_retracted = mod.helmet // hide visor module when the helmet is retracted
+
+/obj/item/mod/module/visor/on_uninstall(deleting= FALSE)
+	. = ..()
+	hide_when_retracted = null
 
 /**
  * Proc that handles the mutable_appearances of the module on the MODsuits
@@ -21,6 +30,9 @@
 	var/is_new_vox = FALSE
 	var/is_old_vox = FALSE
 	if(mod.wearer)
+		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
+			return
+	
 		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
@@ -28,6 +40,7 @@
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)
+		
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
@@ -65,3 +78,20 @@
 		var/mutable_appearance/additional_module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1)
 		additional_module_icon.appearance_flags |= RESET_COLOR
 		. += additional_module_icon
+
+/**
+ * Check whether or not the mod's overlay is hidden. 
+ *
+ * Returns TRUE or FALSE based on whether the module is able to be hidden when the part it is attached to is retracted.
+ * By default, will return FALSE for every mod unless 'hide_when_retracted' is set for that mod.
+ *
+ */
+/obj/item/mod/module/proc/is_module_hidden()
+	if(isnull(hide_when_retracted))
+		return FALSE
+	if(allow_flags & MODULE_ALLOW_INACTIVE)
+		return FALSE
+	if(hide_when_retracted.loc == mod)
+		return TRUE
+		
+
