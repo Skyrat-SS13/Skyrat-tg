@@ -8,15 +8,7 @@
 	/// Is the module's visuals head-only when inactive? Useful for visors and such, to avoid multiplying the amount of overlay with empty images
 	var/head_only_when_inactive = FALSE
 	/// Which part of the modsuit this module is 'attached' to, for purposes of hiding them when retracting the part. Null means it won't get hidden.
-	var/obj/item/clothing/hide_when_retracted = null
-
-/obj/item/mod/module/visor/on_install()
-	. = ..()
-	hide_when_retracted = mod.helmet // hide visor module when the helmet is retracted
-
-/obj/item/mod/module/visor/on_uninstall(deleting=FALSE)
-	. = ..()
-	hide_when_retracted = null
+	var/datum/weakref/hide_when_retracted
 
 // we need to update mod overlays on deploy/retract in order for the hiding to work
 /obj/item/mod/control/deploy(mob/user, obj/item/part)
@@ -28,6 +20,12 @@
 	. = ..()
 	if(wearer)
 		wearer.update_clothing(slot_flags)
+
+// SEE HERE: This is how you make any given module retract alongside a suit part.
+// set to WEAKREF of mod.helmet, mod.chestplate, mod.boots, or mod.gauntlets as desired in the on_install proc just like shown below
+/obj/item/mod/module/visor/on_install()
+	. = ..()
+	hide_when_retracted = WEAKREF(mod.helmet) // hide visor module when the helmet is retracted
 
 
 /**
@@ -102,7 +100,9 @@
 		return FALSE
 	if(allow_flags & MODULE_ALLOW_INACTIVE)
 		return FALSE
-	if(hide_when_retracted.loc == mod)
+
+	var/obj/item/clothing/attached_suit_part = hide_when_retracted.resolve()
+	if(attached_suit_part && attached_suit_part.loc == mod)
 		return TRUE
 
 
