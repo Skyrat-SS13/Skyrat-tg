@@ -3,8 +3,8 @@
 
 /datum/market_item/weapon/bolt_rifle
 	name = "Worn Sportiv Rifle"
-	desc = "A bunch of corrupt imperial law officials have marked a shipment of those as 'defunct' and sold them to us. They still jam like a bitch though."
-	item = /obj/item/gun/ballistic/rifle/boltaction
+	desc = "A bunch of corrupt imperial law officials have marked a shipment of those as 'defunct' and sold them to us. They do jam like a bitch though."
+	item = /obj/item/gun/ballistic/rifle/boltaction/surplus
 
 	price_min = CARGO_CRATE_VALUE * 4
 	price_max = CARGO_CRATE_VALUE * 6
