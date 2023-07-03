@@ -10,7 +10,7 @@
 	/// Which part of the modsuit this module is 'attached' to, for purposes of hiding them when retracting the part. Null means it won't get hidden.
 	var/datum/weakref/retracts_into
 
-// we need to update mod overlays on deploy/retract in order for the hiding to work
+// we need to update mod overlays on deploy/retract in order for the hiding to work because this doesn't happen otherwise
 /obj/item/mod/control/deploy(mob/user, obj/item/part)
 	. = ..()
 	if(wearer)
@@ -20,6 +20,10 @@
 	. = ..()
 	if(wearer)
 		wearer.update_clothing(slot_flags)
+
+/obj/item/mod/module/on_uninstall(deleting = FALSE)
+	. = ..()
+	retracts_into = null
 
 // SEE HERE: This is how you make any given module retract alongside a suit part.
 // Set the retracts_into WEAKREF to mod.helmet, mod.chestplate, mod.boots, or mod.gauntlets as desired in the on_install proc just like shown below
