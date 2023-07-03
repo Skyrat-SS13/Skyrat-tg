@@ -14,7 +14,7 @@
 	. = ..()
 	hide_when_retracted = mod.helmet // hide visor module when the helmet is retracted
 
-/obj/item/mod/module/visor/on_uninstall(deleting= FALSE)
+/obj/item/mod/module/visor/on_uninstall(deleting=FALSE)
 	. = ..()
 	hide_when_retracted = null
 
