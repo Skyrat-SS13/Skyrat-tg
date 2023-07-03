@@ -1,0 +1,126 @@
+2023-07-01:
+  LT3:
+  - qol: Context tooltip size increased
+  - bugfix: Fixed remnants of old maptext code on various things
+2023-07-02:
+  ATHATH:
+  - rscadd: Adds a variant of the external organ manipulation surgery for robotic
+      body parts, similar to the robotic version of the internal organ manipulation
+      surgery. It uses the same procedure as non-head/torso prosthetic organ manipulation.
+  - rscadd: In layman's terms, augged people can get frills, antennae, wings, tails,
+      etc. attached to them now.
+  - qol: The suitability of crowbars in the "manipulate organs" and "manipulate features"
+      steps has been boosted from 55% to 100%, but only for the robotic versions of
+      those steps. Their suitability remains 55% for organic organ manipulation.
+  Chadley:
+  - bugfix: fixes the EHMS injector's do_after()
+  - code_imp: Improves the code for the disease scan proc (thank you fikou)
+  Guillaume Prata:
+  - balance: The Atmospheric MODsuit now comes pre equipped with the quick carry module.
+      Go save some lives!
+  Improvedname:
+  - balance: Weakens summoned stickmen to be 1 or 2 hit
+  Jolly:
+  - spellcheck: Changeling hallucination sting will now tell you it costs 10 chemicals.
+      It always did, but now its there. Cheers?
+  Melbert:
+  - bugfix: Fix shooting guns without a magazine loaded making no fire sound effect
+  - qol: Sivlerscale Tongue action is now a cooldown action, making it significantly
+      easier to use
+  - balance: Buffed the silverscale statue every so slightly, it now has innate armor
+      and can reflect lasers shot at it. But it also requires you not by lying down
+      to activate.
+  - bugfix: Fix a runtime involving Bilingual Curators
+  - qol: Bilinguals get a message on spawn reporting which language they've learned,
+      or a message reporting they have learned no language if they're already fluent
+      in all possible ones.
+  Nerev4r:
+  - image: Adds a cyclops head marking, located right between the eyes.
+  Seven:
+  - bugfix: Cult communion and assert leadership can be used while your hands are
+      blocked or you are immobile
+  SkyratBot:
+  - bugfix: fixed basalt turfs remaining visually dug up when refilled by an ash storm
+  - bugfix: fixed ash storm ending sounds looping after the storm is over
+  - bugfix: mechs are now snow storm immune
+  - bugfix: jaunt spells protect from weather when jaunting
+  - bugfix: Cat Butcherer can no longer remove a tail you don't have.
+  - bugfix: You can no longer manipulate "None" organs
+  - bugfix: fixed sechailers/SWAT masks not using the installed air filter
+  - bugfix: Adds wound armor to ALL jumpsuits that were missing it
+  - rscadd: Stethoscopes may be used on the chest, groin, or extremities to assess
+      organ damage, blood level, and/or suffocation damage depending on the targeted
+      area.
+  - rscadd: Shining flashlights into the mouth or eyes of other players will additionally
+      assess brain health, suffocation damage, and/or blood level depending on the
+      targeted area.
+  - balance: Halves the duration of the flash effect from shining lights into players'
+      eyes (2s -> 1s). Use combat mode to get the full duration.
+  - rscadd: Christmas now has special station prefixes.
+  - balance: We are now using space Monsanto brand rice/wheat seeds. Nutriment of
+      both grains has been changed to 12% from 4%
+  - qol: people now lie down when buckled to surgery tables, and you no longer need
+      cuffs to buckle someone to a surgery table
+  - bugfix: Names for Interdyne pirates are now less bizzare
+  - rscadd: Food and pills have a 10% chance to infect with one of three new diseases
+      on consumption when left for more than 5 seconds on the floor. You can wash
+      it to avoid disease. ChemMaster and Pill Press are added to the list of elevated
+      structures (Considered as tables for pills). Made harvest spawn on top of hydrotrays
+      to stay protected from germs.
+  - rscadd: 'Added three new advanced diseases: Gastritium, Carpellosis, Nebula Nausea
+      with static cures obtained by digesting dirty food.'
+  - bugfix: Food no longer decomposes on Hydrotrays, Grilles, Bonfires and all dense
+      kitchen machinery
+  - code_imp: Decomposition now uses `germ_sensitive` component and follows 5 second
+      rule too.
+  - qol: Crafted food items spawns on nearby tables (except the one behind you) instead
+      of dropping on floor when hands are full.
+  - rscadd: You can now revive dead fishes, bees and (mindless) mice with a lazarus
+      injector.
+  - balance: Tom, the mouse, no longer counts toward the mice population cap.
+  - refactor: Species brute and burn damage modifiers are now handled by bodyparts,
+      instead of being universal. Go ham at the surgical bay.
+  - bugfix: Fixed the office chair being silent. My bad.
+  - balance: Silicon now only know Common, Uncommon and Robotic languages.
+  - bugfix: Arm implants properly handle EMPs depending on whether it is robotic or
+      organic. No longer can you EMP an organic organ!
+  - bugfix: fixed RPD switching layers on mousescroll when not in active hand
+  - qol: installing an RPD wrench upgrade & reprogramming a pipe via RMB produces
+      a balloon alert
+  - rscadd: 'Expanded the Experimental MODsuit Bepis node with three new modules:
+      Magneto Charger, Recycler and Shooting Assistant.'
+  - rscadd: Added a Riot Foam Recycler module to the black market, as well a more
+      innocuous version as maint loot.
+  - bugfix: Plasmamen can now get HMS
+  - bugfix: Fixed snatcherprods potentially giving held objects a one-way ticket to
+      nullspace if thrown at someone by something that's not a mob.
+  - rscadd: Added butter slices, which you can make by cutting butter into 3.
+  - qol: Recipes that once required butter now only require a slice of it. With the
+      exception of the butter on a stick, of course.
+  - balance: Butter now requires 25 milk to mix and has 3 times as much nutriment.
+  - image: Resprited butter and butter on a stick using bluespace technology, managing
+      to compress more butter into a smaller space
+  - qol: Add hotkeys to APCs for AIs and borgs. Toggle environmental (ctrl + shift),
+      toggle lighting (shift), toggle equipment (alt), and toggle breaker (ctrl).
+  - qol: Remove APC UI popup when using RMB to toggle the lock.
+  - bugfix: fixes balloon alert runtime when spider webs are destroyed.
+  Tattle:
+  - admin: build mode help text is in an examine block
+  - admin: adv build mode and fill now have item previews
+  Vekter:
+  - balance: Increased armor penetration on xenos' neurotoxin spit. Well-protected
+      crew members should still take more than a few hits to down but shouldn't be
+      immune to it.
+  - bugfix: Fixed the ORM not granting mining points if you added ore by hand instead
+      of dumping it on the floor.
+  larentoun:
+  - refactor: Changed some .proc to PROC_REF()
+  oranges:
+  - balance: Ashlizards can no longer use the shuttle console to go on station
+  softcerv:
+  - qol: The NIFSoft Catalog PDA app now automatically downloads itself roundstart
+      if you have a NIF installed.
+  vinylspiders:
+  - bugfix: opaque public airlocks will now have proper fill sprites instead of empty
+      glass frames
+  - image: new fill sprites for non-glass public airlock sprites
