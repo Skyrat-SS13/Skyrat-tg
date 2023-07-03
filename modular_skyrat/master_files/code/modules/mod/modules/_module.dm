@@ -53,7 +53,6 @@
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)
 
-
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
 	if(is_new_vox || is_old_vox)
