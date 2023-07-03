@@ -18,6 +18,18 @@
 	. = ..()
 	hide_when_retracted = null
 
+// we need to update mod overlays on deploy/retract in order for the hiding to work
+/obj/item/mod/control/deploy(mob/user, obj/item/part)
+	. = ..()
+	if(wearer)
+		wearer.update_clothing(slot_flags)
+
+/obj/item/mod/control/retract(mob/user, obj/item/part)
+	. = ..()
+	if(wearer)
+		wearer.update_clothing(slot_flags)
+
+
 /**
  * Proc that handles the mutable_appearances of the module on the MODsuits
  *
@@ -32,7 +44,7 @@
 	if(mod.wearer)
 		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
 			return
-	
+
 		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
@@ -40,7 +52,7 @@
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)
-		
+
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
@@ -80,7 +92,7 @@
 		. += additional_module_icon
 
 /**
- * Check whether or not the mod's overlay is hidden. 
+ * Check whether or not the mod's overlay is hidden.
  *
  * Returns TRUE or FALSE based on whether the module is able to be hidden when the part it is attached to is retracted.
  * By default, will return FALSE for every mod unless 'hide_when_retracted' is set for that mod.
@@ -93,5 +105,5 @@
 		return FALSE
 	if(hide_when_retracted.loc == mod)
 		return TRUE
-		
+
 
