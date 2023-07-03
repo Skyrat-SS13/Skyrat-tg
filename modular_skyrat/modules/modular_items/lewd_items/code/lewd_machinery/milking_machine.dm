@@ -680,7 +680,6 @@
 			return FALSE
 		current_vessel.reagents?.trans_to(beaker, amount)
 		update_all_visuals()
-		to_chat(usr, span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 /obj/structure/chair/milking_machine/examine(mob/user)
