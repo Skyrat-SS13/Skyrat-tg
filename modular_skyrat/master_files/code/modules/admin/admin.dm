@@ -82,5 +82,3 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 	log_admin("[usr.client] converted Ticket #[id] from [initiator_ckey] into Mentorhelp")
 
 	Close(key_name, TRUE)
-
-/datum/admins/proc/stop_delam()
