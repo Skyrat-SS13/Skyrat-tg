@@ -1,10 +1,3 @@
-#define BUTTON_PUSHED 0
-#define BUTTON_IDLE 1
-#define BUTTON_AWAKE 2
-#define BUTTON_ARMED 3
-#define SUPERMATTER_DAMAGED 41
-#define MISTAKES_WERE_MADE 0
-
 /obj/machinery/atmospherics/components/unary/delam_scram
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	icon_state = "dispenser-idle"
@@ -90,12 +83,16 @@
 	if(on)
 		return
 
-	if(world.time - SSticker.round_start_time > 30 MINUTES)
+	if(world.time - SSticker.round_start_time > 30 MINUTES && trigger_reason != DIVINE_INTERVENTION)
 		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
 		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		stack_trace("Delam SCRAM was triggered with an invalid time or trigger reason!")
 		return
 
-	investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
+	if(trigger_reason == DIVINE_INTERVENTION)
+		investigate_log("Delam SCRAM was activated by admin intervention", INVESTIGATE_ATMOS)
+	else
+		investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
 	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
 	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded // yeah that's right Skyrat, no more cheating the counter by deleting the SM
 	SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
@@ -318,9 +315,3 @@
 	return ..()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
-
-#undef BUTTON_PUSHED
-#undef BUTTON_IDLE
-#undef BUTTON_ARMED
-#undef SUPERMATTER_DAMAGED
-#undef MISTAKES_WERE_MADE
