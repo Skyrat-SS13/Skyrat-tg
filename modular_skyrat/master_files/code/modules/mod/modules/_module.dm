@@ -10,7 +10,7 @@
 	/// Which part of the modsuit this module is 'attached' to, for purposes of hiding them when retracting the part. Null means it won't get hidden.
 	var/datum/weakref/retracts_into
 
-// we need to update mod overlays on deploy/retract in order for the hiding to work because this doesn't happen otherwise
+// we need to update mob overlays on deploy/retract in order for the hiding to work because this doesn't happen otherwise
 /obj/item/mod/control/deploy(mob/user, obj/item/part)
 	. = ..()
 	if(wearer)
