@@ -27,8 +27,11 @@
 	mutanttongue = /obj/item/organ/internal/tongue/mush
 	mutanteyes = /obj/item/organ/internal/eyes/night_vision/mushroom
 	mutantlungs = null
+<<<<<<< HEAD
 	use_skintones = FALSE
 	var/datum/martial_art/mushpunch/mush
+=======
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 	species_language_holder = /datum/language_holder/mushroom
 
 	bodypart_overrides = list(

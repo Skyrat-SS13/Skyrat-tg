@@ -209,14 +209,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 			var/datum/species/newrace = selectable_races[racechoice]
 			amazed_human.set_species(newrace, icon_update = FALSE)
-
-			if(amazed_human.dna.species.use_skintones)
+			if(HAS_TRAIT(amazed_human, TRAIT_USES_SKINTONES))
 				var/new_s_tone = tgui_input_list(user, "Choose your skin tone", "Race change", GLOB.skin_tones)
 				if(new_s_tone)
 					amazed_human.skin_tone = new_s_tone
 					amazed_human.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
+<<<<<<< HEAD
 
 			if(MUTCOLORS in amazed_human.dna.species.species_traits)
+=======
+			else if(HAS_TRAIT(amazed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(amazed_human, TRAIT_FIXED_MUTANT_COLORS))
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", amazed_human.dna.features["mcolor"]) as color|null
 				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return TRUE

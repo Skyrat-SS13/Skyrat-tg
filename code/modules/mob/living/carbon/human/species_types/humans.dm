@@ -9,9 +9,9 @@
 	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_USES_SKINTONES,
 	)
 	mutant_bodyparts = list("wings" = "None")
-	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = GROSS | RAW | CLOTH | BUGS | GORE
 	liked_food = JUNKFOOD | FRIED

@@ -183,8 +183,11 @@
 	name = "\improper Human"
 	id = SPECIES_ZOMBIE_KROKODIL
 	examine_limb_id = SPECIES_HUMAN
+<<<<<<< HEAD
 	sexes = 0
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
+=======
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
 	bodypart_overrides = list(
@@ -195,6 +198,5 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/zombie,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie
 	)
-
 
 #undef REGENERATION_DELAY

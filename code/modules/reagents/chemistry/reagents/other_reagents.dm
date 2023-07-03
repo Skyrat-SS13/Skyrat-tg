@@ -501,7 +501,11 @@
 	if(ishuman(exposed_mob))
 		if(methods & (PATCH|VAPOR))
 			var/mob/living/carbon/human/exposed_human = exposed_mob
+<<<<<<< HEAD
 			if(exposed_human.dna.species.id == SPECIES_HUMAN)
+=======
+			if(HAS_TRAIT(exposed_human, TRAIT_USES_SKINTONES))
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 				switch(exposed_human.skin_tone)
 					if("african1")
 						exposed_human.skin_tone = "african2"
@@ -525,8 +529,13 @@
 						exposed_human.skin_tone = "caucasian2"
 					if ("albino")
 						exposed_human.skin_tone = "caucasian1"
+<<<<<<< HEAD
 
 			if(MUTCOLORS in exposed_human.dna.species.species_traits) //take current alien color and darken it slightly
+=======
+			//take current alien color and darken it slightly
+			else if(HAS_TRAIT(exposed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(exposed_human, TRAIT_FIXED_MUTANT_COLORS))
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 				var/newcolor = ""
 				var/string = exposed_human.dna.features["mcolor"]
 				var/len = length(string)
@@ -564,6 +573,7 @@
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/affected_human = affected_mob
 		if(!HAS_TRAIT(affected_human, TRAIT_BALD))
+<<<<<<< HEAD
 			affected_human.hairstyle = "Spiky"
 		affected_human.facial_hairstyle = "Shaved"
 		affected_human.facial_hair_color = "#000000"
@@ -571,6 +581,11 @@
 		if(!(HAIR in affected_human.dna.species.species_traits)) //No hair? No problem!
 			affected_human.dna.species.species_traits += HAIR
 		if(affected_human.dna.species.use_skintones)
+=======
+			affected_human.set_hairstyle("Spiky", update = FALSE)
+		affected_human.set_haircolor("#000000", update = FALSE)
+		if(HAS_TRAIT(affected_human, TRAIT_USES_SKINTONES))
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 			affected_human.skin_tone = "orange"
 		else if(MUTCOLORS in affected_human.dna.species.species_traits) //Aliens with custom colors simply get turned orange
 			affected_human.dna.features["mcolor"] = "#ff8800"

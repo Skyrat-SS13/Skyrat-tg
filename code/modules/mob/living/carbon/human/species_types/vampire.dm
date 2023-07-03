@@ -16,15 +16,22 @@
 		BLOOD_CLANS,
 	)
 	inherent_traits = list(
+<<<<<<< HEAD
 		TRAIT_NOBREATH,
 		TRAIT_NOHUNGER,
+=======
+		TRAIT_BLOOD_CLANS,
+		TRAIT_DRINKS_BLOOD,
+		TRAIT_NOBREATH,
+		TRAIT_NOHUNGER,
+		TRAIT_USES_SKINTONES,
+>>>>>>> 9e8f8dc877f (SPECIES NUKING 2023 EXTRA: Makes skin tones a trait instead of a species variable (#76410))
 	)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	exotic_bloodtype = "U"
 	blood_deficiency_drain_rate = BLOOD_DEFICIENCY_MODIFIER // vampires already passively lose blood, so this just makes them lose it slightly more quickly when they have blood deficiency.
-	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/vampire
 	mutanttongue = /obj/item/organ/internal/tongue/vampire
 	mutantstomach = null
