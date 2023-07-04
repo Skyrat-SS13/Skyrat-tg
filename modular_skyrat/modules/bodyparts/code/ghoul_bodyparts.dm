@@ -3,6 +3,7 @@
 	icon_greyscale = BODYPART_ICON_GHOUL
 	is_dimorphic = FALSE
 	limb_id = SPECIES_GHOUL
+	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_DEBRAIN
 
 /obj/item/bodypart/head/mutant/ghoul/Initialize(mapload)
 	worn_ears_offset = new(

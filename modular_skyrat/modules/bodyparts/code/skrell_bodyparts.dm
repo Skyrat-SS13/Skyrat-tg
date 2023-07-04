@@ -2,6 +2,7 @@
 /obj/item/bodypart/head/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
+	head_flags = HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /obj/item/bodypart/chest/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL

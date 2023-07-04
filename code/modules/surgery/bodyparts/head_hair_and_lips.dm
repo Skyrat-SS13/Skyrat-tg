@@ -55,13 +55,9 @@
 	hair_overlay = null
 	hair_gradient_overlay = null
 
-<<<<<<< HEAD:code/modules/surgery/bodyparts/hair.dm
-	hair_alpha = human_head_owner.hair_alpha ? human_head_owner.hair_alpha : owner_species.hair_alpha // SKYRAT EDIT - Customization - Hair alpha //hair_alpha = owner_species.hair_alpha // ORIGINAL
-=======
 	lip_style = human_head_owner.lip_style
 	lip_color = human_head_owner.lip_color
-	hair_alpha = owner_species.hair_alpha
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074)):code/modules/surgery/bodyparts/head_hair_and_lips.dm
+	hair_alpha = human_head_owner.hair_alpha ? human_head_owner.hair_alpha : owner_species.hair_alpha // SKYRAT EDIT - Customization - Hair alpha - ORIGINAL: hair_alpha = owner_species.hair_alpha
 	hair_color = human_head_owner.hair_color
 	facial_hair_color = human_head_owner.facial_hair_color
 	fixed_hair_color = owner_species.fixed_mut_color //Can be null

@@ -3,11 +3,7 @@
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
-<<<<<<< HEAD
-=======
-	burn_modifier = 2
 	head_flags = HEAD_EYESPRITES|HEAD_DEBRAIN
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
@@ -88,11 +84,7 @@
 	limb_id = SPECIES_JELLYPERSON
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
-<<<<<<< HEAD
-=======
-	burn_modifier = 0.5 // = 1/2x generic burn damage
 	head_flags = HEAD_ALL_FEATURES
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/jelly
 	biological_state = BIO_INORGANIC
@@ -208,11 +200,7 @@
 /obj/item/bodypart/head/pod
 	limb_id = SPECIES_PODPERSON
 	is_dimorphic = TRUE
-<<<<<<< HEAD
-=======
-	burn_modifier = 1.25
 	head_flags = HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/pod
 	limb_id = SPECIES_PODPERSON
@@ -243,7 +231,7 @@
 	limb_id = SPECIES_FLYPERSON
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
+	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN // SKYRAT EDIT - Flies deserve hair - ORIGINAL: head_flags = HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /obj/item/bodypart/chest/fly
 	limb_id = SPECIES_FLYPERSON
@@ -272,11 +260,7 @@
 	limb_id = SPECIES_SHADOW
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-<<<<<<< HEAD
-=======
-	burn_modifier = 1.5
 	head_flags = NONE
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/shadow
 	biological_state = BIO_INORGANIC
@@ -354,11 +338,7 @@
 /obj/item/bodypart/head/mushroom
 	limb_id = SPECIES_MUSHROOM
 	is_dimorphic = TRUE
-<<<<<<< HEAD
-=======
-	burn_modifier = 1.25
 	head_flags = NONE
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/chest/mushroom
 	limb_id = SPECIES_MUSHROOM

@@ -11,19 +11,10 @@
 	siemens_coeff = 0.5 //They thrive on energy
 	brutemod = 1.25 //They're weak to punches
 	payday_modifier = 0.75
-	/* SKYRAT EDIT - ORIGINAL
 	species_traits = list(
 		DYNCOLORS,
 		AGENDER,
-		NO_UNDERWEAR,
-	)
-	*/
-	// SKYRAT EDIT - LET THEM WEAR PANTIES
-	species_traits = list(
-		DYNCOLORS,
-		AGENDER,
-		HAIR,
-		FACEHAIR,
+		// NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_cookie = /obj/item/food/energybar

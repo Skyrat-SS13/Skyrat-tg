@@ -3,9 +3,6 @@
 	id = SPECIES_SKRELL
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		NO_SLIP_WHEN_WALKING
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

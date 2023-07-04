@@ -6,6 +6,7 @@
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_TESHARI
+	head_flags = HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /obj/item/bodypart/head/mutant/teshari/Initialize(mapload)
 	worn_ears_offset = new(

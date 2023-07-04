@@ -6,11 +6,7 @@
 	attack_type = BURN // bish buzz
 	unarmed_attack_sound = 'sound/weapons/etherealhit.ogg'
 	unarmed_miss_sound = 'sound/weapons/etherealmiss.ogg'
-<<<<<<< HEAD
-=======
-	brute_modifier = 1.25 //ethereal are weak to brute damage
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 
 /obj/item/bodypart/head/ethereal/update_limb(dropping_limb, is_creating)
 	. = ..()

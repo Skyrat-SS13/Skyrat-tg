@@ -7,6 +7,7 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC

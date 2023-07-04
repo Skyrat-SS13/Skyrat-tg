@@ -3,10 +3,6 @@
 	id = SPECIES_AQUATIC
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

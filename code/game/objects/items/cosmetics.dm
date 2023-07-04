@@ -136,10 +136,7 @@
 		span_notice("You wipe off [target]'s lipstick."))
 	target.update_lips(null)
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
@@ -203,12 +200,6 @@
 			else
 				return
 		else
-<<<<<<< HEAD
-			..()
-	else
-		..()
-*/
-=======
 			if(!get_location_accessible(human_target, location))
 				to_chat(user, span_warning("The mask is in the way!"))
 				return
@@ -288,4 +279,4 @@
 					shave(human_target, location)
 				return
 	return ..()
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
+*/

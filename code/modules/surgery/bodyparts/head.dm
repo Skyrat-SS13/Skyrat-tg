@@ -262,19 +262,6 @@
 		if(eyes?.eye_icon_state && (head_flags & HEAD_EYESPRITES))
 			var/image/eye_left = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
 			var/image/eye_right = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
-<<<<<<< HEAD
-			if(eyes.eye_color_left)
-				eye_left.color = eyes.eye_color_left
-			if(eyes.eye_color_right)
-				eye_right.color = eyes.eye_color_right
-
-			// SKYRAT EDIT START - Customization (darn synths I swear)
-			if(eyes.eye_icon_state == "None")
-				eye_left.alpha = 0
-				eye_right.alpha = 0
-			// SKYRAT EDIT END
-
-=======
 			if(head_flags & HEAD_EYECOLOR)
 				if(eyes.eye_color_left)
 					eye_left.color = eyes.eye_color_left
@@ -286,7 +273,28 @@
 			if(worn_face_offset)
 				worn_face_offset.apply_offset(eye_left)
 				worn_face_offset.apply_offset(eye_right)
->>>>>>> f030b3b5aa8 (SPECIES NUKING 2023: Refactors a bunch of species traits into flags for the head bodypart (#76074))
+
+			// SKYRAT EDIT ADDITION START - Customization (Emissives and synths)
+			if(eyes.eye_icon_state == "None")
+				eye_left.alpha = 0
+				eye_right.alpha = 0
+
+			if (eyes.is_emissive) // Because it was done all weird up there.
+				var/mutable_appearance/emissive_left = emissive_appearance(eye_left.icon, eye_left.icon_state, src, -BODY_LAYER, eye_left.alpha)
+				var/mutable_appearance/emissive_right = emissive_appearance(eye_right.icon, eye_right.icon_state, src, -BODY_LAYER, eye_right.alpha)
+
+				emissive_left.appearance_flags &= ~RESET_TRANSFORM
+				emissive_right.appearance_flags &= ~RESET_TRANSFORM
+
+				if(worn_face_offset)
+					worn_face_offset.apply_offset(emissive_right)
+					worn_face_offset.apply_offset(emissive_left)
+
+				eye_left.overlays += emissive_left
+				eye_right.overlays += emissive_right
+
+			// SKYRAT EDIT END
+
 			. += eye_left
 			. += eye_right
 		else if(!eyes && (head_flags & HEAD_EYEHOLES))
@@ -318,7 +326,7 @@
 			worn_face_offset?.apply_offset(no_eyes)
 			. += no_eyes
 
-	return 
+	return
 
 /// Returns an appropriate debrained icon state
 /obj/item/bodypart/head/proc/get_debrain_overlay(can_rotate = TRUE)
