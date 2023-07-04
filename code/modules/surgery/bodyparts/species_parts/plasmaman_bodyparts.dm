@@ -8,6 +8,8 @@
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
 	brute_modifier = 1.5 //Plasmemes are weak
+	burn_modifier = 1.5 //Plasmemes are weak
+	head_flags = HEAD_EYESPRITES
 
 /obj/item/bodypart/chest/plasmaman
 	icon = 'icons/mob/species/plasmaman/bodyparts.dmi'
