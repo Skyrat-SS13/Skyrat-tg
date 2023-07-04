@@ -6,7 +6,7 @@
 	greyscale_colors = "#878687"
 	categories = list(MAT_CATEGORY_ORE = TRUE, MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
 	sheet_type = /obj/item/stack/sheet/iron
-	value_per_unit = 0.0025
+	value_per_unit = 0.05
 
 /datum/material/iron/on_accidental_mat_consumption(mob/living/carbon/victim, obj/item/source_item)
 	victim.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = 5)
@@ -149,8 +149,6 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	. = ..()
 	if(ismovable(source))
 		source.AddElement(/datum/element/firestacker, amount=1)
-		// Ideally exploding plasma objects should delete themselves but we still have the flooder and SSexplosions to rely on deleting it asynchronously so it's not that bad.
-		source.AddComponent(/datum/component/explodable, 0, 0, amount / 2500, 0, amount / 1250, delete_after = EXPLODABLE_NO_DELETE)
 	source.AddComponent(/datum/component/combustible_flooder, "plasma", amount*0.05) //Empty temp arg, fully dependent on whatever ignited it.
 
 /datum/material/plasma/on_removed(atom/source, amount, material_flags)
