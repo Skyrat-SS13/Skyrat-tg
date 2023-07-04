@@ -675,9 +675,10 @@
 		if (!beaker)
 			return FALSE
 
-		var/amount = text2num(params["amount"])
 		if(!current_vessel.reagents?.reagent_list.len)
 			return FALSE
+
+		var/amount = text2num(params["amount"])
 		current_vessel.reagents?.trans_to(beaker, amount)
 		update_all_visuals()
 		return TRUE
