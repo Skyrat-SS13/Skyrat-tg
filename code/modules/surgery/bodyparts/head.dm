@@ -255,6 +255,11 @@
 				var/image/hair_overlay = image(hair_sprite.icon, "[hair_sprite.icon_state]", -HAIR_LAYER, SOUTH)
 				hair_overlay.color = hair_color
 				hair_overlay.alpha = hair_alpha
+				// SKYRAT ADD - Hair offset
+				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
+					hair_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+					hair_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+				// SKYRAT ADD END
 				. += hair_overlay
 
 		// eyes
@@ -317,8 +322,18 @@
 
 		else if(!hair_hidden && hair_overlay && (head_flags & HEAD_HAIR))
 			hair_overlay.alpha = hair_alpha
+			// SKYRAT ADD - Hair offset
+			if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
+				hair_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+				hair_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+			// SKYRAT ADD END
 			. += hair_overlay
 			if(hair_gradient_overlay)
+				// SKYRAT ADD - Hair offset
+				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
+					hair_gradient_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+					hair_gradient_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+				// SKYRAT ADD END
 				. += hair_gradient_overlay
 
 		if(show_missing_eyes && (head_flags && HEAD_EYEHOLES))

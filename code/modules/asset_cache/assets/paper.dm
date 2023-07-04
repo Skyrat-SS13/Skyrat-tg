@@ -15,6 +15,7 @@
 
 		// SKYRAT ADDITION: START - Other stamp icons
 		"stamp-nri" = 'modular_skyrat/master_files/icons/stamp_icons/large_stamp-nri.png',
+		"stamp-solfed" = 'modular_skyrat/master_files/icons/stamp_icons/large_stamp-solfed.png',
 		// SKYRAT ADDITION: END - Other stamp icons
 
 		"stamp-clown" = 'icons/stamp_icons/large_stamp-clown.png',
