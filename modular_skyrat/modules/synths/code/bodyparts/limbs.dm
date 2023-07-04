@@ -1,3 +1,6 @@
+#define SYNTH_BRUTE_MODIFIER 1.3
+#define SYNTH_BURN_MODIFIER 1.3
+
 // Synth bois!
 /obj/item/bodypart/head/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -7,6 +10,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/chest/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -15,6 +20,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/arm/left/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -23,6 +30,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/arm/right/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -31,6 +40,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/leg/left/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -40,6 +51,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/leg/right/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
@@ -49,6 +62,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/leg/left/robot/digitigrade
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
@@ -59,6 +74,8 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/leg/left/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -73,7 +90,12 @@
 	change_exempt_flags = NONE
 	brute_reduction = 0
 	burn_reduction = 0
+	brute_modifier = SYNTH_BRUTE_MODIFIER
+	burn_modifier = SYNTH_BURN_MODIFIER
 
 /obj/item/bodypart/leg/right/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()
+
+#undef SYNTH_BRUTE_MODIFIER
+#undef SYNTH_BURN_MODIFIER
