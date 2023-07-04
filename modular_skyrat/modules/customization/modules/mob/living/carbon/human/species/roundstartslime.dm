@@ -408,6 +408,7 @@
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 		alterer.dna.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
 	alterer.update_mutant_bodyparts()
+	alterer.update_clothing(ALL) // for any clothing that has alternate versions (e.g. muzzled masks)
 
 /**
  * Alter markings lets you add a particular body marking
