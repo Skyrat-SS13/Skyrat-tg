@@ -116,6 +116,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(tgui_alert(soulcatcher_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
+
 	if(soulcatcher_owner.stat == DEAD || !soulcatcher_owner.mind)
 		return FALSE
 
@@ -346,6 +347,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers, ui_state = GLOB.observer_state)
+
 	// you can no longer trust that the soulcatcher is open due to the list wait
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers) || !can_join_soulcatcher(soulcatcher_to_join))
 		return FALSE
@@ -367,6 +369,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	else
 		// you cannot trust the state of any variable after a tgui_input_list, meaning both room AND soulcatcher
 		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join, ui_state = GLOB.observer_state)
+
 		// we check both parent and room to see if either will let us in since. who knows maybe the parent closed?
 		if(!can_join_soulcatcher_room(room_to_join, check_parent = TRUE))
 			to_chat(src, span_warning("This room can no longer be joined!"))
@@ -422,21 +425,22 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if (!soulcatcher.ghost_joinable)
 		return FALSE
 
-	// super returns a value by default, and we return false if it returns false, so if it reaches here - we returned true
+	return TRUE
 
 
 /**
  * Args:
- * datum/soulcatcher_room/room - The room we are checking.
- * check_parent = TRUE - If TRUE, returns false if no soulcatcher is room's parent, as well as if can_join_soulcatcher(soulcatcher) returns false.
- * datum/component/soulcatcher/soulcatcher - Only present for efficiency - if running this proc in a soulcatcher's loop, put src in here.
+ * * datum/soulcatcher_room/room - The room we are checking.
+ * * check_parent = TRUE - If TRUE, returns false if no soulcatcher is room's parent, as well as if can_join_soulcatcher(soulcatcher) returns false.
+ * * datum/component/soulcatcher/soulcatcher - Only present for efficiency - if running this proc in a soulcatcher's loop, put src in here.
  *
  * Returns: False if check_parent is TRUE and no soulcatcher is present or can_join_soulcatcher(soulcatcher) returns false, false if the room is unjoinable, true otherwise.
  */
 /mob/proc/can_join_soulcatcher_room(datum/soulcatcher_room/room, check_parent = TRUE, datum/component/soulcatcher/soulcatcher)
 	if(!room.joinable)
 		return FALSE
-	else if(!check_parent)
+
+	if(!check_parent)
 		return TRUE
 
 	if(!soulcatcher)

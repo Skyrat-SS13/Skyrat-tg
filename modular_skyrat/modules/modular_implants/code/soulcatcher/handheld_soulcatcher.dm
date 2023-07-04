@@ -40,6 +40,7 @@
 
 	for (var/mob/soul as anything in confirming_entry)
 		UnregisterSignal(soul, COMSIG_QDELETING)
+
 	confirming_entry = null
 
 	return ..()
@@ -92,9 +93,11 @@
 
 	var/turf/source_turf = get_turf(user)
 	var/admin_log = "[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]."
+
 	if (ghost)
 		if(!target_room.add_soul_from_ghost(ghost))
 			return FALSE
+
 	else
 		admin_log += " [target_mob] was still alive."
 		target_room.add_soul(target_mob.mind, TRUE)
@@ -106,6 +109,7 @@
 
 	if(!target_mob.GetComponent(/datum/component/previous_body))
 		return FALSE
+
 	linked_soulcatcher.scan_body(target_mob, user)
 
 	return TRUE
@@ -116,9 +120,9 @@
  * src.confirming_entry += real_target and a check surrounding that.
  *
  * Args:
- * datum/soulcatcher/target_room: The room we are inviting target_mob to.
- * mob/living/user (Nullable): The individual who invited the mob.
- * mob/living/target_mob: The mob that was clicked on/invited into the room.
+ * * datum/soulcatcher/target_room: The room we are inviting target_mob to.
+ * * mob/living/user (Nullable): The individual who invited the mob.
+ * * mob/living/target_mob: The mob that was clicked on/invited into the room.
  *
  * Returns:
  * False if the invitation wasn't delivered, the result of the tgui_alert otherwise.
@@ -127,11 +131,13 @@
 	if (target_mob in confirming_entry)
 		if (user)
 			to_chat(user, span_warning("You've already invited this person to a room, wait for them to respond!"))
+
 		return FALSE
 
 	var/message = "Do you want to transfer your soul into [target_room]?"
 	if (user)
 		message = "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?"
+
 	var/target_dead = (target_mob.stat == DEAD)
 	var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
 	var/mob/real_target = target_mob
@@ -139,9 +145,11 @@
 	if(ghost || target_dead) //We can temporarily store souls of dead mobs.
 		target_mob.ghostize(TRUE) //Incase they are staying in the body.
 		ghost = target_mob.get_ghost(TRUE, TRUE) // ghostized, new ghost could be here
+
 		if(!ghost)
 			if (user)
 				to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
+
 			return FALSE
 		else
 			real_target = ghost
