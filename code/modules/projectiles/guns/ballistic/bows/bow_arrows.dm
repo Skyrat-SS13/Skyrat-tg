@@ -15,12 +15,8 @@
 
 /obj/item/ammo_casing/arrow/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	AddComponent(/datum/element/envenomable_casing)
-=======
 	AddElement(/datum/element/envenomable_casing)
 	AddElement(/datum/element/caseless, reusable)
->>>>>>> 6b007f758ba (Replaces ammo_casing/caseless and bullet/reusable with elements. (#76335))
 
 ///base arrow projectile
 /obj/projectile/bullet/arrow
