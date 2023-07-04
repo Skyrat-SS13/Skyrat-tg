@@ -65,7 +65,7 @@
 	name = "Mutated Abomination"
 	id = SPECIES_MUTANT_INFECTIOUS
 	speedmod = 1
-	armor = 10
+	damage_modifier = 10
 	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	var/hands_to_give = /obj/item/hnz_mutant_hand
@@ -82,7 +82,7 @@
 	name = "Fast Mutated Abomination"
 	id = SPECIES_MUTANT_FAST
 	hands_to_give = /obj/item/hnz_mutant_hand/fast
-	armor = 0
+	damage_modifier = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
 	speedmod = 0.5
@@ -90,7 +90,7 @@
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
 	id = SPECIES_MUTANT_SLOW
-	armor = 15
+	damage_modifier = 15
 	speedmod = 1.5
 	/// The rate the mutants regenerate at
 	heal_rate = 1.5

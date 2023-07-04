@@ -74,7 +74,7 @@
 
 		summon_choices[summon_item] = obj_icon
 
-	var/obj/item/choice = show_radial_menu(linked_mob, linked_mob, summon_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, linked_mob))
+	var/obj/item/choice = show_radial_menu(linked_mob, linked_mob, summon_choices, radius = 42, custom_check = CALLBACK(src, PROC_REF(check_menu), linked_mob))
 	if(!choice)
 		refund_activation_cost()
 		return FALSE

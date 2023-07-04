@@ -3,43 +3,45 @@
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
+	burn_modifier = 2
 
 /obj/item/bodypart/chest/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
+	burn_modifier = 2
 
 /obj/item/bodypart/arm/left/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
 
 /obj/item/bodypart/arm/right/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
 
 /obj/item/bodypart/leg/left/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
 
 /obj/item/bodypart/leg/right/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	//unarmed_damage_high = 0.5
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
@@ -82,32 +84,38 @@
 	limb_id = SPECIES_JELLYPERSON
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/chest/jelly
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_JELLYPERSON
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/arm/left/jelly
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/arm/right/jelly
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/left/jelly
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/right/jelly
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
+	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 ///SLIME
 /obj/item/bodypart/head/slime
@@ -194,10 +202,12 @@
 /obj/item/bodypart/head/pod
 	limb_id = SPECIES_PODPERSON
 	is_dimorphic = TRUE
+	burn_modifier = 1.25
 
 /obj/item/bodypart/chest/pod
 	limb_id = SPECIES_PODPERSON
 	is_dimorphic = TRUE
+	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/left/pod
 	limb_id = SPECIES_PODPERSON
@@ -205,6 +215,7 @@
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slice.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/right/pod
 	limb_id = SPECIES_PODPERSON
@@ -212,12 +223,15 @@
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slice.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/left/pod
 	limb_id = SPECIES_PODPERSON
+	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/right/pod
 	limb_id = SPECIES_PODPERSON
+	burn_modifier = 1.25
 
 ///FLY
 /obj/item/bodypart/head/fly
@@ -252,32 +266,38 @@
 	limb_id = SPECIES_SHADOW
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/chest/shadow
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_SHADOW
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/arm/left/shadow
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_SHADOW
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/arm/right/shadow
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_SHADOW
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/leg/left/shadow
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_SHADOW
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/leg/right/shadow
 	biological_state = BIO_INORGANIC
 	limb_id = SPECIES_SHADOW
 	should_draw_greyscale = FALSE
+	burn_modifier = 1.5
 
 /obj/item/bodypart/arm/left/shadow/nightmare
 	bodypart_traits = list(TRAIT_CHUNKYFINGERS)
@@ -328,36 +348,43 @@
 /obj/item/bodypart/head/mushroom
 	limb_id = SPECIES_MUSHROOM
 	is_dimorphic = TRUE
+	burn_modifier = 1.25
 
 /obj/item/bodypart/chest/mushroom
 	limb_id = SPECIES_MUSHROOM
 	is_dimorphic = TRUE
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
+	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/left/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
 	unarmed_stun_threshold = 14
+	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/right/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
 	unarmed_stun_threshold = 14
+	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/left/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
+	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/right/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
+	burn_modifier = 1.25
 
+//GOLEM
 /obj/item/bodypart/head/golem
 	icon = 'icons/mob/species/golems.dmi'
 	icon_static = 'icons/mob/species/golems.dmi'
