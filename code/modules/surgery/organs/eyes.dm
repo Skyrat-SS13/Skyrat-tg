@@ -148,10 +148,25 @@
 			my_head.worn_face_offset.apply_offset(eye_left)
 			my_head.worn_face_offset.apply_offset(eye_right)
 
-	// SKYRAT EDIT START - Customization (darn synths I swear)
+	// SKYRAT EDIT START - Customization (Synths + Emissives)
 	if(eye_icon_state == "None")
 		eye_left.alpha = 0
 		eye_right.alpha = 0
+
+	if (is_emissive) // Because it was done all weird up there.
+		var/mutable_appearance/emissive_left = emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, eye_left.alpha)
+		var/mutable_appearance/emissive_right = emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -BODY_LAYER, eye_right.alpha)
+
+		emissive_left.appearance_flags &= ~RESET_TRANSFORM
+		emissive_right.appearance_flags &= ~RESET_TRANSFORM
+
+		if(my_head.worn_face_offset)
+			my_head.worn_face_offset.apply_offset(emissive_right)
+			my_head.worn_face_offset.apply_offset(emissive_left)
+
+		eye_left.overlays += emissive_left
+		eye_right.overlays += emissive_right
+
 	// SKYRAT EDIT END
 
 	return list(eye_left, eye_right)
