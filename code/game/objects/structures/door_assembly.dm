@@ -261,7 +261,7 @@
 	door.setDir(dir)
 	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOORS
 	if(door.multi_tile)
-		door.SetBounds()
+		door.set_bounds()
 	//SKYRAT EDIT END
 	door.unres_sides = electronics.unres_sides
 	//door.req_access = req_access
