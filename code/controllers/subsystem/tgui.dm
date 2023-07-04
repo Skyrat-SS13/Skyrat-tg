@@ -189,7 +189,6 @@ SUBSYSTEM_DEF(tgui)
  * return int The number of UIs updated.
  */
 /datum/controller/subsystem/tgui/proc/update_uis(datum/src_object)
-<<<<<<< HEAD
 	// No UIs opened for this src_object
 	if(!LAZYLEN(src_object.open_uis))
 		return 0
@@ -211,7 +210,6 @@ SUBSYSTEM_DEF(tgui)
  * return int The number of UIs closed.
  */
 /datum/controller/subsystem/tgui/proc/close_uis(datum/src_object)
-<<<<<<< HEAD
 	// No UIs opened for this src_object
 	if(!LAZYLEN(src_object.open_uis))
 		return 0
