@@ -212,9 +212,19 @@
 		return FALSE
 	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
-	if(slot_index == ORGAN_SLOT_NIPPLES && !target.is_topless())
-		return FALSE
-	return target.is_bottomless()
+	switch(slot_index)
+		if(ORGAN_SLOT_NIPPLES)
+			var/tits_out = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
+			if(!tits_out)
+				return target.is_topless() // for when we don't have breasts
+			else
+				return TRUE
+		if(ORGAN_SLOT_PENIS)
+			return target.has_penis(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_VAGINA)
+			return target.has_vagina(required_state = REQUIRE_GENITAL_EXPOSED)
+		if(ORGAN_SLOT_ANUS)
+			return target.has_anus(required_state = REQUIRE_GENITAL_EXPOSED)
 
 /// Decides if a player should be able to insert or remove an item from a provided lewd slot_index.
 /datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)
