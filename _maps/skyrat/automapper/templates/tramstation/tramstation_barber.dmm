@@ -13,6 +13,12 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/machinery/button/door/directional/south{
+	id = "barberback";
+	name = "Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "d" = (
@@ -173,8 +179,8 @@
 /area/station/service/barber)
 "K" = (
 /obj/machinery/door/airlock{
-	id_tag = "commissarydoor";
-	name = "Barber Storage"
+	name = "Massage Room";
+	id_tag = "barberback"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -200,10 +206,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "Q" = (
-/obj/machinery/door/airlock{
-	id_tag = "commissarydoor";
-	name = "Barber Maintenance"
-	},
+/obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
