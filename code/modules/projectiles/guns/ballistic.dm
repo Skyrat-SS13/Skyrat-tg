@@ -251,10 +251,11 @@
 			stack_trace("Trying to move a qdeleted casing of type [casing.type]!")
 			chambered = null
 		else if(casing_ejector || !from_firing)
-			casing.forceMove(drop_location()) //Eject casing onto ground.
-			casing.bounce_away(TRUE)
-			SEND_SIGNAL(casing, COMSIG_CASING_EJECTED)
 			chambered = null
+			casing.forceMove(drop_location()) //Eject casing onto ground.
+			if(!QDELETED(casing))
+				casing.bounce_away(TRUE)
+				SEND_SIGNAL(casing, COMSIG_CASING_EJECTED)
 		else if(empty_chamber)
 			chambered = null
 	if (chamber_next_round && (magazine?.max_ammo > 1))
@@ -370,6 +371,7 @@
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())
+				magazine?.stored_ammo -= chambered
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
 			if (num_loaded)
