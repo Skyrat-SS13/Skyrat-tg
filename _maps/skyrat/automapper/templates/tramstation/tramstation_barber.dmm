@@ -9,17 +9,20 @@
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "b" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/service/barber)
-"d" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"d" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/machinery/button/curtain{
+	pixel_x = 24;
+	id = "backbarbercurtains"
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "f" = (
@@ -51,12 +54,6 @@
 /obj/machinery/vending/barbervend,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
-"j" = (
-/obj/machinery/firealarm{
-	dir = 8
-	},
-/turf/closed/wall,
-/area/station/service/barber)
 "l" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -80,12 +77,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
-/turf/open/floor/iron/dark,
-/area/station/service/barber)
-"p" = (
-/obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/machinery/power/apc/auto_name/directional/south,
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "r" = (
@@ -131,10 +122,12 @@
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "x" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
-/obj/structure/sink/directional/east,
-/obj/structure/mirror/directional/west,
-/obj/structure/chair/stool/directional/north,
+/obj/structure/table/glass,
+/obj/item/hairbrush,
+/obj/item/lipstick/random,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "A" = (
@@ -150,36 +143,32 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
-"D" = (
-/obj/effect/spawner/structure/window,
-/obj/structure/curtain/cloth/fancy/mechanical{
-	id = "backbarbercurtains"
-	},
-/turf/open/floor/plating,
-/area/station/service/barber)
 "E" = (
-/obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/service/barber)
-"G" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/neutral/opposingcorners,
-/obj/machinery/button/curtain{
-	pixel_x = 24;
-	id = "backbarbercurtains"
+/obj/machinery/firealarm{
+	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/turf/closed/wall,
 /area/station/service/barber)
-"I" = (
+"F" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
 /obj/structure/bed{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"G" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"I" = (
+/obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "K" = (
@@ -205,15 +194,6 @@
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 "O" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/neutral/opposingcorners,
-/obj/structure/table/glass,
-/obj/item/hairbrush,
-/obj/item/lipstick/random,
-/turf/open/floor/iron/dark,
-/area/station/service/barber)
-"P" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/structure/closet/secure_closet/barber,
@@ -246,6 +226,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/service/barber)
+"T" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "backbarbercurtains"
+	},
+/turf/open/floor/plating,
+/area/station/service/barber)
 "V" = (
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/machinery/button/curtain{
@@ -262,12 +249,25 @@
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
+"X" = (
+/obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
 "Y" = (
 /obj/structure/mirror/directional/east,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/structure/table/glass,
 /obj/item/lipstick/random,
 /obj/item/razor,
+/turf/open/floor/iron/dark,
+/area/station/service/barber)
+"Z" = (
+/obj/effect/turf_decal/tile/neutral/opposingcorners,
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/obj/structure/chair/stool/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/service/barber)
 
@@ -302,20 +302,20 @@ w
 R
 f
 N
-D
-I
-x
+T
+F
+Z
 B
 "}
 (4,1,1) = {"
 B
 i
 h
-b
-b
-b
-D
-O
+G
+G
+G
+T
+x
 a
 B
 "}
@@ -325,10 +325,10 @@ W
 h
 o
 M
-E
+I
 K
-G
 d
+b
 B
 "}
 (6,1,1) = {"
@@ -337,15 +337,15 @@ t
 C
 w
 C
-p
+X
 B
 B
-j
+E
 B
 "}
 (7,1,1) = {"
 B
-P
+O
 Y
 m
 r
