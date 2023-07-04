@@ -222,11 +222,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "white_knee"
 	use_static = null
 
-/datum/sprite_accessory/socks/stirrups_knee
-	name = "Knee-high Stirrups"
-	icon_state = "socks_knee-stir"
-	use_static = null
-
 /datum/sprite_accessory/socks/striped_knee
 	name = "Knee-high - Striped"
 	icon_state = "striped_knee"
@@ -314,18 +309,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "pantyhose_ripped-stir"
 	use_static = null
 
-/datum/sprite_accessory/socks/stockings_ripped
-	name = "Stockings - Ripped"
-	icon_state = "stockings_ripped"
-
 /datum/sprite_accessory/socks/leggings
 	name = "Leggings"
 	icon_state = "leggings"
-	use_static = null
-
-/datum/sprite_accessory/socks/leggings/stirrups
-	name = "Leggings - Stirrups"
-	icon_state = "leggings-stir"
 	use_static = null
 
 /datum/sprite_accessory/socks/leggings/latex
