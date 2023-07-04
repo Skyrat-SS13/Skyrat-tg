@@ -1,9 +1,12 @@
+#define SOULCATCHER_MAX_CATCHING_DISTANCE 7
+
 /// The state used for handheld soulcatcher interaction tgui.
-/// COULD be generified, but for now, its fine. 
+/// COULD be generified, but for now, its fine.
 /// If someone ever makes a combination alive, concious, and proximity item state like this,
 /// please do switch over.
 /// No global instance so we can pass args.
 /datum/ui_state/handheld_soulcatcher_state
+	/// The soulcatcher we are bound to. We compare distance between this, our target, and the user, and if any exceed a certain range, we close the UI.
 	var/obj/item/handheld_soulcatcher/linked_soulcatcher
 
 /datum/ui_state/handheld_soulcatcher_state/New(obj/item/handheld_soulcatcher/linked_soulcatcher)
@@ -15,8 +18,6 @@
 	linked_soulcatcher = null
 
 	return ..()
-
-#define SOULCATCHER_MAX_CATCHING_DISTANCE 7
 
 /datum/ui_state/handheld_soulcatcher_state/can_use_topic(src_object, mob/living/user)
 	if(QDELETED(linked_soulcatcher))

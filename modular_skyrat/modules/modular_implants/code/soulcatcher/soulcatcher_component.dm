@@ -223,6 +223,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		var/message_to_log = "[key_name(new_soul)] joined [src] inside of [parent_atom] at [loc_name(soulcatcher_turf)]"
 		parent_atom.log_message(message_to_log, LOG_GAME)
 		new_soul.log_message(message_to_log, LOG_GAME)
+
 	return TRUE
 
 /// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `soul_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.

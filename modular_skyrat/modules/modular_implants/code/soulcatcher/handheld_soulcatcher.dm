@@ -57,11 +57,11 @@
 		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
 		return FALSE
 
-	if (interacting_mobs[user])
+	if(interacting_mobs[user])
 		to_chat(user, span_warning("You already have room selection open, close it or choose a room!"))
 		return FALSE
 
-	if (target_mob in confirming_entry)
+	if(target_mob in confirming_entry)
 		to_chat(user, span_warning("[target_mob] has already been invited into this RSD! Wait for them to respond!"))
 		return FALSE
 
@@ -77,24 +77,24 @@
 		return FALSE
 
 	to_chat(user, span_blue("[target_mob] has been requested to join [target_room]."))
-	if (!invite_soul(target_room, user, target_mob))
+	if(!invite_soul(target_room, user, target_mob))
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE
 
 	var/target_dead = (target_mob.stat == DEAD)
 	var/mob/dead/observer/ghost = target_mob.get_ghost(TRUE, TRUE)
 
-	if (target_dead && !ghost)
+	if(target_dead && !ghost)
 		target_mob.ghostize(TRUE)
 		ghost = target_mob.get_ghost(TRUE, TRUE) // ghostized, new ghost could be here
 
-	if (!target_mob.can_join_soulcatcher_room(target_room, TRUE)) // sanity
+	if(!target_mob.can_join_soulcatcher_room(target_room, TRUE)) // sanity
 		return FALSE
 
 	var/turf/source_turf = get_turf(user)
 	var/admin_log = "[key_name(user)] used [src] to put [key_name(target_mob)]'s mind into a soulcatcher at [AREACOORD(source_turf)]."
 
-	if (ghost)
+	if(ghost)
 		if(!target_room.add_soul_from_ghost(ghost))
 			return FALSE
 
@@ -128,14 +128,14 @@
  * False if the invitation wasn't delivered, the result of the tgui_alert otherwise.
  */
 /obj/item/handheld_soulcatcher/proc/invite_soul(datum/soulcatcher_room/target_room, mob/living/user, mob/living/target_mob)
-	if (target_mob in confirming_entry)
-		if (user)
+	if(target_mob in confirming_entry)
+		if(user)
 			to_chat(user, span_warning("You've already invited this person to a room, wait for them to respond!"))
 
 		return FALSE
 
 	var/message = "Do you want to transfer your soul into [target_room]?"
-	if (user)
+	if(user)
 		message = "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?"
 
 	var/target_dead = (target_mob.stat == DEAD)
@@ -147,7 +147,7 @@
 		ghost = target_mob.get_ghost(TRUE, TRUE) // ghostized, new ghost could be here
 
 		if(!ghost)
-			if (user)
+			if(user)
 				to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
 
 			return FALSE
@@ -156,20 +156,24 @@
 	else
 		message += " This will remove you from your body until you leave."
 
-	confirming_entry += real_target
-	RegisterSignal(real_target, COMSIG_QDELETING, PROC_REF(handle_confirming_soul_del))
 	SEND_SOUND(real_target, 'sound/misc/notice2.ogg')
 	window_flash(real_target.client)
-	var/invitation_results = (((tgui_alert(real_target, message, name, list("Yes", "No"), 30 SECONDS) == "Yes") && (tgui_alert(real_target, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS) == "Yes")))
-	UnregisterSignal(real_target, COMSIG_QDELETING)
-	confirming_entry -= real_target
 
-	return invitation_results
+	confirming_entry += real_target
+	RegisterSignal(real_target, COMSIG_QDELETING, PROC_REF(no_longer_confirming_entry)) //add a signal since this shit sleeps
+
+	var/accepted_invitation = FALSE
+	if(tgui_alert(real_target, message, name, list("Yes", "No"), 30 SECONDS) == "Yes")
+		accepted_invitation = TRUE
+
+	no_longer_confirming_entry(real_target)
+
+	return accepted_invitation
 
 // This proc exists just to be safe and ensure no reference schenanigans happen.
-/obj/item/handheld_soulcatcher/proc/handle_confirming_soul_del(mob/soul)
+/obj/item/handheld_soulcatcher/proc/no_longer_confirming_entry(mob/target)
 	SIGNAL_HANDLER
 
-	confirming_entry -= soul
-	UnregisterSignal(soul, COMSIG_QDELETING)
+	confirming_entry -= target
+	UnregisterSignal(target, COMSIG_QDELETING)
 
