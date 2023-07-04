@@ -163,9 +163,15 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		SSshuttle.order_history += spawning_order
 		QDEL_NULL(spawning_order.applied_coupon)
 
+<<<<<<< HEAD
 		spawning_order.on_spawn() //SKYRAT EDIT
 		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) //we handle goody crates below //SKYRAT EDIT
 			spawning_order.generate(pick_n_take(empty_turfs))
+=======
+		if(!spawning_order.pack.goody) //we handle goody crates below
+			var/obj/structure/closet/crate = spawning_order.generate(pick_n_take(empty_turfs))
+			crate.name += " - #[spawning_order.id]"
+>>>>>>> 2333e8b0c1f (Makes cargo orders and req forms easier to differentiate (#76499))
 
 		SSblackbox.record_feedback("nested tally", "cargo_imports", 1, list("[spawning_order.pack.get_cost()]", "[spawning_order.pack.name]"))
 
