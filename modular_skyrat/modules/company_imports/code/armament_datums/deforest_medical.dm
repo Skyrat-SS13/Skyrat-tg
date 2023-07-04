@@ -5,12 +5,19 @@
 #define PRICE_FIRST_AID_PREMIUM_LOWER 0.6
 #define PRICE_FIRST_AID_PREMIUM_HIGHER 0.7
 
-#define PRICE_CHEM_CHEAP_LOWER 5.7
-#define PRICE_CHEM_CHEAP_HIGHER 4.8
-#define PRICE_CHEM_MEDIUM_LOWER 4.4
-#define PRICE_CHEM_MEDIUM_HIGHER 4
-#define PRICE_CHEM_PREMIUM_LOWER 3.5
-#define PRICE_CHEM_PREMIUM_HIGHER 3
+#define PRICE_CHEM_CHEAP_LOWER 4.8
+#define PRICE_CHEM_CHEAP_HIGHER 5.7
+#define PRICE_CHEM_MEDIUM_LOWER 4
+#define PRICE_CHEM_MEDIUM_HIGHER 4.4
+#define PRICE_CHEM_PREMIUM_LOWER 3
+#define PRICE_CHEM_PREMIUM_HIGHER 3.5
+#define PRICE_CYBER_ORGAN_LOWER 2
+#define PRICE_CYBER_ORGAN_HIGHER 5
+#define PRICE_CYBER_AUGMENT_LOWER 3
+#define PRICE_CYBER_AUGMENT_HIGHER 6
+
+#define MODULE_MID_LOWER 2
+#define MODULE_MID_UPPER 3 //I stole these from nakamura, bite me
 
 /datum/armament_entry/company_import/deforest
 	category = DEFOREST_MEDICAL_NAME
@@ -204,59 +211,88 @@
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 	interest_required = COMPANY_HIGH_INTEREST
 
+// Modsuit Modules from the medical category, here instead of in Nakamura because nobody buys from this company
+
+/datum/armament_entry/company_import/deforest/medical_modules
+	subcategory = "MOD Medical Modules"
+	interest_required = COMPANY_SOME_INTEREST
+	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
+
+/datum/armament_entry/company_import/deforest/medical_modules/injector
+	name = "MOD injector module"
+	item_type = /obj/item/mod/module/injector
+
+/datum/armament_entry/company_import/deforest/medical_modules/organ_thrower
+	name = "MOD organ thrower module"
+	item_type = /obj/item/mod/module/organ_thrower
+
+/datum/armament_entry/company_import/deforest/medical_modules/patient_transport
+	name = "MOD patient transport module"
+	item_type = /obj/item/mod/module/criminalcapture/patienttransport
+
+/datum/armament_entry/company_import/deforest/medical_modules/thread_ripper
+	name = "MOD thread ripper module"
+	item_type = /obj/item/mod/module/thread_ripper
+
+/datum/armament_entry/company_import/deforest/medical_modules/surgical_processor
+	name = "MOD surgical processor module"
+	item_type = /obj/item/mod/module/surgical_processor
+
 // Various advanced cybernetic organs, organ replacements for the rich
 
 /datum/armament_entry/company_import/deforest/cyber_organs
 	subcategory = "Premium Cybernetic Organs"
+	lower_cost = CARGO_CRATE_VALUE * PRICE_CYBER_ORGAN_LOWER
+	upper_cost = CARGO_CRATE_VALUE * PRICE_CYBER_ORGAN_HIGHER
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/eyes
 	name = "shielded cybernetic eyes"
 	item_type = /obj/item/storage/organbox/advanced_cyber_eyes
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/ears
 	name = "upgraded cybernetic ears"
 	item_type = /obj/item/storage/organbox/advanced_cyber_ears
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/heart
 	name = "upgraded cybernetic heart"
 	item_type = /obj/item/storage/organbox/advanced_cyber_heart
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/liver
 	name = "upgraded cybernetic liver"
 	item_type = /obj/item/storage/organbox/advanced_cyber_liver
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/lungs
 	name = "upgraded cybernetic lungs"
 	item_type = /obj/item/storage/organbox/advanced_cyber_lungs
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/stomach
 	name = "upgraded cybernetic stomach"
 	item_type = /obj/item/storage/organbox/advanced_cyber_stomach
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = COMPANY_SOME_INTEREST
 
+/datum/armament_entry/company_import/deforest/cyber_organs/augments
+	lower_cost = CARGO_CRATE_VALUE * PRICE_CYBER_AUGMENT_LOWER
+	upper_cost = CARGO_CRATE_VALUE * PRICE_CYBER_AUGMENT_HIGHER
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
+	interest_required = COMPANY_HIGH_INTEREST
+
+/datum/armament_entry/company_import/deforest/cyber_organs/augments/nutriment
+	name = "Nutriment pump implant"
+	item_type = /obj/item/organ/internal/cyberimp/chest/nutriment
+
+/datum/armament_entry/company_import/deforest/cyber_organs/augments/reviver
+	name = "Reviver implant"
+	item_type = /obj/item/organ/internal/cyberimp/chest/reviver
+
+/datum/armament_entry/company_import/deforest/cyber_organs/augments/surgery_implant
+	name = "surgical toolset implant"
+	item_type = /obj/item/organ/internal/cyberimp/arm/surgery
+
+/datum/armament_entry/company_import/deforest/cyber_organs/augments/breathing_tube
+	name = "breathing tube implant"
+	item_type = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
 
 #undef PRICE_FIRST_AID_BASIC_LOWER
 #undef PRICE_FIRST_AID_BASIC_HIGHER
@@ -271,3 +307,11 @@
 #undef PRICE_CHEM_MEDIUM_HIGHER
 #undef PRICE_CHEM_PREMIUM_LOWER
 #undef PRICE_CHEM_PREMIUM_HIGHER
+
+#undef MODULE_MID_LOWER
+#undef MODULE_MID_UPPER
+
+#undef PRICE_CYBER_ORGAN_LOWER
+#undef PRICE_CYBER_ORGAN_HIGHER
+#undef PRICE_CYBER_AUGMENT_LOWER
+#undef PRICE_CYBER_AUGMENT_HIGHER
