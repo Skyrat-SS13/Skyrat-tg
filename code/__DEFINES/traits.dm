@@ -492,6 +492,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HATED_BY_DOGS "hated_by_dogs"
 /// Mobs with this trait will not be immobilized when held up
 #define TRAIT_NOFEAR_HOLDUPS "no_fear_holdup"
+/// Mob has gotten an armor buff from adamantine extract
+#define TRAIT_ADAMANTINE_EXTRACT_ARMOR "adamantine_extract_armor"
+/// Mobs with this trait won't be able to dual wield guns.
+#define TRAIT_NO_GUN_AKIMBO "no_gun_akimbo"
+
+/// Projectile with this trait will always hit the defined zone of a struck living mob.
+#define TRAIT_ALWAYS_HIT_ZONE "always_hit_zone"
 
 /// Mobs with this trait do care about a few grizzly things, such as digging up graves. They also really do not like bringing people back to life or tending wounds, but love autopies, dissections and amputations.
 #define TRAIT_MORBID "morbid"
@@ -667,7 +674,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SELF_AWARE "self_aware"
 #define TRAIT_FREERUNNING "freerunning"
 #define TRAIT_SKITTISH "skittish"
-#define TRAIT_POOR_AIM "poor_aim"
 #define TRAIT_PROSOPAGNOSIA "prosopagnosia"
 #define TRAIT_TAGGER "tagger"
 #define TRAIT_PHOTOGRAPHER "photographer"
@@ -958,8 +964,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define BEAUTY_ELEMENT_TRAIT "beauty_element"
 #define MOOD_DATUM_TRAIT "mood_datum"
 #define DRONE_SHY_TRAIT "drone_shy"
-/// Pacifism trait given by stabilized light pink extracts.
-#define STABILIZED_LIGHT_PINK_TRAIT "stabilized_light_pink"
+/// Trait given by stabilized light pink extracts
+#define STABILIZED_LIGHT_PINK_EXTRACT_TRAIT "stabilized_light_pink"
+/// Trait given by adamantine extracts
+#define ADAMANTINE_EXTRACT_TRAIT "adamantine_extract"
 /// Given by the multiple_lives component to the previous body of the mob upon death.
 #define EXPIRED_LIFE_TRAIT "expired_life"
 /// Trait given to an atom/movable when they orbit something.
@@ -1106,3 +1114,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SPEAKING_FROM_TONGUE "tongue"
 ///trait source that sign language should use
 #define SPEAKING_FROM_HANDS "hands"
+
+///Trait given by /datum/component/germ_sensitive
+#define TRAIT_GERM_SENSITIVE "germ_sensitive"

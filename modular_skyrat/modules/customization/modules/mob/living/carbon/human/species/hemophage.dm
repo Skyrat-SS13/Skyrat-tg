@@ -109,11 +109,28 @@
 	return ..()
 
 
-/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species)
+/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species, pref_load)
 	. = ..()
 	to_chat(new_hemophage, HEMOPHAGE_SPAWN_TEXT)
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
+
+	
+/datum/species/hemophage/on_species_loss(mob/living/carbon/human/former_hemophage, datum/species/new_species, pref_load)
+	. = ..()
+	
+	// if we are still a hemophage for whatever reason then we don't want to do any of this (this can happen with the Pride Mirror)
+	if(ishemophage(former_hemophage))
+		return
+	
+	var/obj/item/organ/internal/heart/hemophage/tumor = former_hemophage.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
+	
+	// make sure we clear dormant status when changing species
+	if(tumor?.is_dormant)
+		tumor.toggle_dormant_state()
+		tumor_status = tumor.is_dormant
+		toggle_dormant_tumor_vulnerabilities(former_hemophage)
+		former_hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, seconds_per_tick, times_fired)
