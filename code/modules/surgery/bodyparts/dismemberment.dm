@@ -91,9 +91,14 @@
 
 	SEND_SIGNAL(owner, COMSIG_CARBON_REMOVE_LIMB, src, dismembered)
 	SEND_SIGNAL(src, COMSIG_BODYPART_REMOVED, owner, dismembered)
+<<<<<<< HEAD
 	update_limb(TRUE)
 	//limb is out and about, it can't really be considered an implant
 	bodypart_flags &= ~BODYPART_IMPLANTED
+=======
+	update_limb(dropping_limb = TRUE)
+	bodypart_flags &= ~BODYPART_IMPLANTED //limb is out and about, it can't really be considered an implant
+>>>>>>> b09f9824082 (Fixes bodypart movespeed modifiers (#76520))
 	owner.remove_bodypart(src)
 
 	for(var/datum/wound/wound as anything in wounds)
@@ -123,7 +128,7 @@
 	if(!special)
 		if(phantom_owner.dna)
 			for(var/datum/mutation/human/mutation as anything in phantom_owner.dna.mutations) //some mutations require having specific limbs to be kept.
-				if(mutation.limb_req && mutation.limb_req == body_zone)
+				if(mutation.limb_req && (mutation.limb_req == body_zone))
 					to_chat(phantom_owner, span_warning("You feel your [mutation] deactivating from the loss of your [body_zone]!"))
 					phantom_owner.dna.force_lose(mutation)
 
@@ -327,6 +332,7 @@
 	moveToNullspace()
 	set_owner(new_limb_owner)
 	new_limb_owner.add_bodypart(src)
+<<<<<<< HEAD
 	if(held_index)
 		new_limb_owner.on_added_hand(src, held_index)
 		if(new_limb_owner.hud_used)
@@ -334,6 +340,8 @@
 			if(hand)
 				hand.update_appearance()
 		new_limb_owner.update_worn_gloves()
+=======
+>>>>>>> b09f9824082 (Fixes bodypart movespeed modifiers (#76520))
 
 	if(special) //non conventional limb attachment
 		for(var/datum/surgery/attach_surgery as anything in new_limb_owner.surgeries) //if we had an ongoing surgery to attach a new limb, we stop it.
