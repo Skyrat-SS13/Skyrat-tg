@@ -38,9 +38,9 @@
 		exposed_mob.cure_husk(CHANGELING_DRAIN)
 		exposed_mob.visible_message("<span class='nicegreen'>A rubbery liquid coats [exposed_mob]'s tissues. [exposed_mob] looks a lot healthier!")
 
-/datum/reagent/medicine/regen_jelly/expose_mob(mob/living/exposed_mob, reac_volume)
+/datum/reagent/medicine/regen_jelly/expose_mob(mob/living/carbon/human/exposed_mob, reac_volume)
 	. = ..()
-	if(!ishuman(exposed_mob) || (reac_volume < 0.5))
+	if(!istype(exposed_mob) || (reac_volume < 0.5))
 		return
 
-	exposed_human.update_mutant_bodyparts(force_update=TRUE)
+	exposed_mob.update_mutant_bodyparts(force_update=TRUE)
