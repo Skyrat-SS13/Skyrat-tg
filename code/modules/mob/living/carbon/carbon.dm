@@ -1036,12 +1036,18 @@
 			if(!new_bodypart.bodypart_disabled)
 				set_usable_hands(usable_hands + 1)
 
+<<<<<<< HEAD
+=======
+	synchronize_bodytypes()
+>>>>>>> c97f2e73adc (Fixes carbon bodytypes not always being synchronized with bodyparts (#76522))
 
 ///Proc to hook behavior on bodypart removals.  Do not directly call. You're looking for [/obj/item/bodypart/proc/drop_limb()].
 /mob/living/carbon/proc/remove_bodypart(obj/item/bodypart/old_bodypart)
 	SHOULD_NOT_OVERRIDE(TRUE)
+
 	old_bodypart.on_removal()
 	bodyparts -= old_bodypart
+
 	switch(old_bodypart.body_part)
 		if(LEG_LEFT, LEG_RIGHT)
 			set_num_legs(num_legs - 1)
@@ -1052,6 +1058,17 @@
 			if(!old_bodypart.bodypart_disabled)
 				set_usable_hands(usable_hands - 1)
 
+<<<<<<< HEAD
+=======
+	synchronize_bodytypes()
+
+///Updates the bodypart speed modifier based on our bodyparts.
+/mob/living/carbon/proc/update_bodypart_speed_modifier()
+	var/final_modification = 0
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		final_modification += bodypart.speed_modifier
+	add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bodypart, update = TRUE, multiplicative_slowdown = final_modification)
+>>>>>>> c97f2e73adc (Fixes carbon bodytypes not always being synchronized with bodyparts (#76522))
 
 /mob/living/carbon/proc/create_internal_organs()
 	for(var/obj/item/organ/internal/internal_organ in organs)

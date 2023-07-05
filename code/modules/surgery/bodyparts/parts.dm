@@ -326,14 +326,18 @@
 	max_damage = 100
 	should_draw_greyscale = FALSE
 
-/// Parent Type for arms, should not appear in game.
+/// Parent Type for legs, should not appear in game.
 /obj/item/bodypart/leg
 	name = "leg"
 	desc = "This item shouldn't exist. Talk about breaking a leg. Badum-Tss!"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
+<<<<<<< HEAD
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_MONKEY | BODYTYPE_ORGANIC
 	max_damage = 60 // SKYRAT EDIT - ORIGINAL: 50
+=======
+	max_damage = 50
+>>>>>>> c97f2e73adc (Fixes carbon bodytypes not always being synchronized with bodyparts (#76522))
 	body_damage_coeff = 0.75
 	can_be_disabled = TRUE
 	unarmed_attack_effect = ATTACK_EFFECT_KICK
