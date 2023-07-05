@@ -3,7 +3,6 @@
 /obj/item/clothing/suit/hooded/wintercoat/colourable
 	name = "custom winter coat"
 	icon_state = "winter_coat"
-	worn_icon_state = "winter_coat"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
 	greyscale_config = /datum/greyscale_config/winter_coat
 	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
