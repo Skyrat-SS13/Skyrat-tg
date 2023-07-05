@@ -11,6 +11,8 @@
 	greyscale_colors = "#666666#CCBBAA#0000FF"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	hood_overlay = null // for this particular coat, the hood already is drawn onto the base sprite so we won't use this
+	//hood_down_overlay_suffix = "" future maintainers -- uncomment this when my toil gets undone by PR 22129.
+	// This should stop the hood overlay and negate the need for the two proc overrides below, as well as the 'hood_overlay = null'
 
 // NO HOOD OVERLAYS EVER
 /obj/item/clothing/suit/hooded/wintercoat/colourable/generate_hood_overlay()
