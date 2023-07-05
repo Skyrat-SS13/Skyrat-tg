@@ -219,6 +219,7 @@
 				return target.is_topless() // for when we don't have breasts
 			else
 				return TRUE
+				
 		if(ORGAN_SLOT_PENIS)
 			return target.has_penis(required_state = REQUIRE_GENITAL_EXPOSED)
 		if(ORGAN_SLOT_VAGINA)
