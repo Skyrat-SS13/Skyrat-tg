@@ -214,9 +214,10 @@
 		return TRUE
 	switch(slot_index)
 		if(ORGAN_SLOT_NIPPLES)
-			var/tits_out = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
-			if(!tits_out)
-				return target.is_topless() // for when we don't have breasts
+			var/chest_exposed = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
+			if(!chest_exposed)
+				chest_exposed = target.is_topless() // for when we don't have breasts
+			return chest_exposed
 			else
 				return TRUE
 				
