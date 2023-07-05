@@ -212,15 +212,15 @@
 		return FALSE
 	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
+
 	switch(slot_index)
 		if(ORGAN_SLOT_NIPPLES)
 			var/chest_exposed = target.has_breasts(required_state = REQUIRE_GENITAL_EXPOSED)
 			if(!chest_exposed)
 				chest_exposed = target.is_topless() // for when we don't have breasts
+
 			return chest_exposed
-			else
-				return TRUE
-				
+
 		if(ORGAN_SLOT_PENIS)
 			return target.has_penis(required_state = REQUIRE_GENITAL_EXPOSED)
 		if(ORGAN_SLOT_VAGINA)
