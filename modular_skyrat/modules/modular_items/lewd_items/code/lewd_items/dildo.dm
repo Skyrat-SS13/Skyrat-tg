@@ -450,4 +450,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	. = ..()
 	QDEL_NULL(src)
 
+/obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
+	parent_dildo = null
+	return ..()
+
 #undef AROUSAL_REGULAR_THRESHOLD
