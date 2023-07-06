@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	user.update_body()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Destroy()
-	var/mob/living/carbon/human/other_user = other_end.loc
+	var/mob/living/carbon/human/other_user = other_end?.loc
 	if(istype(other_user))
 		other_user.dropItemToGround(src, force = TRUE) // TODO: THIS IS SO GROSS. These slots should be integrated into the actual equip/drop procs instead of this awful hacking.
 	if(!QDELETED(other_end))
@@ -436,7 +436,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	item_flags = ABSTRACT | HAND_ITEM
 	side_double = TRUE
 	/// ref to the parent end
-	var/obj/item/clothing/sextoy/dildo/double_dildo/parent_end
+	var/datum/weakref/parent_end
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Initialize(mapload)
 	. = ..()
@@ -460,12 +460,19 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		QDEL_NULL(src)
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
+	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent_end?.resolve()
+	if(!parent_end)
+		return ..()
+
 	parent_end.end_in_hand = FALSE
 	parent_end.other_end = null
 	parent_end = null
+
 	return ..()
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/proc/set_parent(obj/item/clothing/sextoy/dildo/double_dildo/parent)
-	parent_end = parent
+	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent?.resolve()
+	if(our_parent)
+		parent_end = our_parent
 
 #undef AROUSAL_REGULAR_THRESHOLD
