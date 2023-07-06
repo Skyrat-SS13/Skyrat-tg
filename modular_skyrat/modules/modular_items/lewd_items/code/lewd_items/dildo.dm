@@ -454,8 +454,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(ismob(loc)) // if it's in a mob we don't want to be qdeleting it just yet
 		return
 
-	if(parent_end?.other_end)
-		parent_end.other_end = null
+	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent_end?.resolve()
+
+	if(our_parent?.other_end)
+		our_parent.other_end = null
 	if(!QDELETED(src))
 		QDEL_NULL(src)
 
