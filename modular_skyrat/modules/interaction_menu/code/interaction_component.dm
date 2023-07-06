@@ -156,14 +156,14 @@
 		var/item_index = params["item_slot"]
 		var/mob/living/carbon/human/source = locate(params["userref"])
 		var/mob/living/carbon/human/target = locate(params["selfref"])
-		var/obj/item/new_item = source.get_active_held_item()
-		var/obj/item/existing_item = target.vars[item_index]
+		var/obj/item/clothing/sextoy/new_item = source.get_active_held_item()
+		var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
 
 		if(!existing_item && !new_item)
 			source.show_message(span_warning("No item to insert or remove!"))
 			return
 
-		if(!existing_item && !istype(new_item, /obj/item/clothing/sextoy))
+		if(!existing_item && !istype(new_item))
 			source.show_message(span_warning("The item you're holding is not a toy!"))
 			return
 
@@ -182,7 +182,7 @@
 				source,
 				5 SECONDS,
 				target,
-				interaction_key = "interation_[item_index]"
+				interaction_key = "interaction_[item_index]"
 				) && can_lewd_strip(source, target, item_index))
 
 				if(existing_item)

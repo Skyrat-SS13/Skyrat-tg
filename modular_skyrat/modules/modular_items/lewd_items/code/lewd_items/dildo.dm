@@ -308,10 +308,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	var/obj/item/clothing/sextoy/dildo/double_dildo/dildo = target
 	if(istype(dildo))
-		dildo.check()
+		dildo.can_take_in_hand()
 
 /// A check to make sure the user can actually take one end in their hand
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/check()
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/can_take_in_hand()
 	var/mob/living/carbon/human/user = usr
 	if(src == user.vagina)
 		toggle(user)
@@ -330,7 +330,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/anus/anus = user.get_organ_slot(ORGAN_SLOT_ANUS)
-
 
 	if(src == user.vagina)
 		vagina?.visibility_preference = GENITAL_NEVER_SHOW
@@ -357,13 +356,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		return FALSE
 
 	if(other_end)
-		other_end.forceMove(src)
-		var/mob/living/carbon/human/other_user = other_end.loc
-		if(istype(other_user))
-			other_user.dropItemToGround(src, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
 		QDEL_NULL(other_end)
-		end_in_hand = FALSE
-
 
 	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
@@ -384,9 +377,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	user.update_body()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Destroy()
-	var/mob/living/carbon/human/other_user = other_end?.loc
-	if(istype(other_user))
-		other_user.dropItemToGround(src, force = TRUE) // TODO: THIS IS SO GROSS. These slots should be integrated into the actual equip/drop procs instead of this awful hacking.
+	moveToNullspace() // This will ensure it gets removed from the world, and from any slots in mobs
 	if(!QDELETED(other_end))
 		QDEL_NULL(other_end)
 	return ..()
@@ -394,37 +385,31 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /// Code for taking out/putting away the other end of the toy when one end is in you
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
 	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
-	var/obj/item/held = user.get_active_held_item()
-	var/obj/item/secondary_held = user.get_inactive_held_item()
 
 	if(!end_in_hand)
 		take_in_hand(user)
-		return FALSE
+		return
 
-	if((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end)) && held?.item_flags == ABSTRACT | HAND_ITEM)
-		var/obj/item/hand_to_drop = ((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end/)) ? held : secondary_held)
-		hand_to_drop.forceMove(src)
+	var/obj/item/clothing/sextoy/dildo/double_dildo_end/end_piece = user.is_holding_item_of_type(/obj/item/clothing/sextoy/dildo/double_dildo_end)
+	if(end_piece)
+		end_piece.moveToNullspace()
 		QDEL_NULL(other_end)
 		user.visible_message(span_notice("[user] releases their grip on one end of the [src]."))
 		end_in_hand = FALSE
 		return
 
-	else if(!held)
-		if(istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end) && secondary_held.item_flags == ABSTRACT | HAND_ITEM)
-			if(src == user.belt)
-				secondary_held.forceMove(src)
-				QDEL_NULL(other_end)
-				take_in_hand(user)
-	else
-		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
-
-/// For holding the other end while the thing is inserted
+/// For holding the other end while the thing is inserted, returns FALSE if unsuccessful
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
 	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
+
+	if(!user.put_in_hands(other_end))
+		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
+		return FALSE
+
 	other_end.parent_end = WEAKREF(src)
-	user.put_in_hands(other_end)
 	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
 	end_in_hand = TRUE
+	return TRUE
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end
 	name = "dildo side"
@@ -460,11 +445,14 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
 	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent_end?.resolve()
 	if(!our_parent)
+		parent_end = null
+		moveToNullspace()
 		return ..()
 
+	moveToNullspace()
 	our_parent.end_in_hand = FALSE
 	our_parent.other_end = null
-	our_parent = null
+	parent_end = null
 
 	return ..()
 
