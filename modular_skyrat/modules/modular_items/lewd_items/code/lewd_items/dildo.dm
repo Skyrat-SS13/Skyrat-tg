@@ -272,18 +272,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	w_class = WEIGHT_CLASS_TINY
 	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 	actions_types = list(/datum/action/item_action/take_dildo)
+	change_sprite = FALSE
 	/// If one end of the toy is in your hand
 	var/end_in_hand = FALSE
 	/// Reference to the end of the toy that you can hold when the other end is inserted in you
 	var/obj/item/clothing/sextoy/dildo/double_dildo_end/other_end
-	change_sprite = FALSE
 	/// Whether or not the current location is front or behind
 	var/in_back = FALSE
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
 	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
@@ -330,38 +329,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		to_chat(user, span_warning("You need to equip [src] before you can use it!"))
 
-/// Code for taking out/putting away the other end of the toy when one end is in you
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
-	var/obj/item/held = user.get_active_held_item()
-	var/obj/item/secondary_held = user.get_inactive_held_item()
-
-	if(!end_in_hand)
-		take_in_hand(user)
-		return FALSE
-
-	if((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end)) && held?.item_flags == ABSTRACT | HAND_ITEM)
-		var/obj/item/hand_to_drop = ((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end/)) ? held : secondary_held)
-		hand_to_drop.forceMove(src)
-		user.visible_message(span_notice("[user] releases their grip on one end of the [src]."))
-		end_in_hand = FALSE
-		return
-
-	else if(!held)
-		if(istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end) && secondary_held.item_flags == ABSTRACT | HAND_ITEM)
-			if(src == user.belt)
-				secondary_held.forceMove(src)
-				take_in_hand(user)
-	else
-		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
-
-/// For holding the other end while the thing is inserted
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
-	user.put_in_hands(other_end)
-	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
-	end_in_hand = TRUE
-
-
 //dumb way to fix organs overlapping with toys, but WHY NOT. Find a better way if you're not lazy as me.
 /obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -400,6 +367,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	if(other_end && !ismob(loc) && end_in_hand && src != user.belt)
 		other_end.forceMove(src)
+		QDEL_NULL(other_end)
 		end_in_hand = FALSE
 
 	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
@@ -424,13 +392,47 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	QDEL_NULL(other_end)
 	return ..()
 
+/// Code for taking out/putting away the other end of the toy when one end is in you
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
+	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	var/obj/item/held = user.get_active_held_item()
+	var/obj/item/secondary_held = user.get_inactive_held_item()
+
+	if(!end_in_hand)
+		take_in_hand(user)
+		return FALSE
+
+	if((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end)) && held?.item_flags == ABSTRACT | HAND_ITEM)
+		var/obj/item/hand_to_drop = ((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end/)) ? held : secondary_held)
+		hand_to_drop.forceMove(src)
+		QDEL_NULL(other_end)
+		user.visible_message(span_notice("[user] releases their grip on one end of the [src]."))
+		end_in_hand = FALSE
+		return
+
+	else if(!held)
+		if(istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end) && secondary_held.item_flags == ABSTRACT | HAND_ITEM)
+			if(src == user.belt)
+				secondary_held.forceMove(src)
+				QDEL_NULL(other_end)
+				take_in_hand(user)
+	else
+		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
+
+/// For holding the other end while the thing is inserted
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
+	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
+	user.put_in_hands(other_end)
+	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
+	end_in_hand = TRUE
+
 /obj/item/clothing/sextoy/dildo/double_dildo_end
 	name = "dildo side"
 	desc = "You looking so hot!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "dildo_side"
 	inhand_icon_state = null
-	worn_icon_state = null
+	worn_icon_state = ""
 	item_flags = ABSTRACT | HAND_ITEM
 	side_double = TRUE
 
@@ -443,5 +445,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	icon_state = "[initial(icon_state)]"
 	inhand_icon_state = null
 	worn_icon_state = null
+
+/obj/item/clothing/sextoy/dildo/double_dildo_end/dropped()
+	. = ..()
+	QDEL_NULL(src)
+
+/obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
+	parent_dildo = null
+	return ..()
 
 #undef AROUSAL_REGULAR_THRESHOLD
