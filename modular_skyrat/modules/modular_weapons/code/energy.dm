@@ -10,7 +10,9 @@
 	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
-	inhand_icon_state = null
+	inhand_icon_state = "disabler"
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
 	w_class = WEIGHT_CLASS_SMALL
@@ -27,6 +29,18 @@
 /obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
 	return
 
+// Use the inhand icon from the disabler
+/obj/item/gun/energy/disabler/bolt_disabler/update_icon_state()
+	var/ratio = get_charge_ratio()
+	var/temp_icon_to_use = initial(inhand_icon_state)
+
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	temp_icon_to_use += "[shot.select_name]"
+
+	temp_icon_to_use += "[ratio]"
+	inhand_icon_state = temp_icon_to_use
+	return ..()
+
 /*
 *	CFA PHALANX
 *	Similar to the HoS's laser
@@ -38,6 +52,9 @@
 	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "phalanx1"
+	inhand_icon_state = "hoslaser"
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/bounce, /obj/item/ammo_casing/energy/laser/bounce, /obj/item/ammo_casing/energy/electrode/knockdown)
@@ -51,11 +68,27 @@
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
 	return
 
+// With a few tricks we can just steal the HoS gun inhand sprites
+/obj/item/gun/energy/e_gun/cfa_phalanx/update_icon_state()
+	var/ratio = get_charge_ratio()
+	var/temp_icon_to_use = initial(inhand_icon_state)
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+
+	if(shot.select_name == "lethal") // this won't match, it has to be 'kill'
+		temp_icon_to_use += "kill"
+	else if(shot.select_name == "disabler") // this one the color just matches a little better
+		temp_icon_to_use += "ion"
+	else
+		temp_icon_to_use += "[shot.select_name]"
+
+	temp_icon_to_use += "[ratio]"
+	inhand_icon_state = temp_icon_to_use
+	return ..()
+
 /*
 *	CFA PALADIN
 *	Identical to a heavy laser.
 */
-
 
 /obj/item/gun/energy/laser/cfa_paladin
 	name = "\improper Mk.IV Paladin plasma carbine"
@@ -76,7 +109,6 @@
 *	BOUNCE DISABLER
 *	A disabler that will always ricochet.
 */
-
 
 /obj/item/ammo_casing/energy/disabler/bounce
 	projectile_type = /obj/projectile/beam/disabler/bounce
