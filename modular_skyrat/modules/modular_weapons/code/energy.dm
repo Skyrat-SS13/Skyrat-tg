@@ -34,9 +34,6 @@
 	var/ratio = get_charge_ratio()
 	var/temp_icon_to_use = initial(inhand_icon_state)
 
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	temp_icon_to_use += "[shot.select_name]"
-
 	temp_icon_to_use += "[ratio]"
 	inhand_icon_state = temp_icon_to_use
 	return ..()
@@ -76,7 +73,7 @@
 
 	if(shot.select_name == "lethal") // this won't match, it has to be 'kill'
 		temp_icon_to_use += "kill"
-	else if(shot.select_name == "disabler") // this one the color just matches a little better
+	else if(shot.select_name == "disable") // this one the color just matches a little better
 		temp_icon_to_use += "ion"
 	else
 		temp_icon_to_use += "[shot.select_name]"
