@@ -91,7 +91,7 @@
 		target.emote("gasp")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
 		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION - BLACKOUT POLICY
-		if(user.mind && HAS_TRAIT(user.mind, TRAIT_MORBID) && ishuman(user)) //Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
+		if(HAS_MIND_TRAIT(user, TRAIT_MORBID) && ishuman(user)) //Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 			var/mob/living/carbon/human/morbid_weirdo = user
 			morbid_weirdo.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
 		return TRUE
