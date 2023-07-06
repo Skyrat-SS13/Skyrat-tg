@@ -473,8 +473,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	return ..()
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/proc/set_parent(obj/item/clothing/sextoy/dildo/double_dildo/parent)
-	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent?.resolve()
-	if(our_parent)
-		parent_end = our_parent
+	parent_end = WEAKREF(parent)
 
 #undef AROUSAL_REGULAR_THRESHOLD
