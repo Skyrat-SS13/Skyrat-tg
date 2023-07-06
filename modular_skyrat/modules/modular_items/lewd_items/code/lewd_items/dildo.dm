@@ -70,7 +70,7 @@
 	. = ..()
 	if(!istype(user))
 		return
-	if(src == user.anus || src == user.vagina)
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/dildo/dropped(mob/user, slot)
@@ -273,9 +273,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 	actions_types = list(/datum/action/item_action/take_dildo)
 	/// If one end of the toy is in your hand
-	var/in_hands = FALSE
+	var/end_in_hand = FALSE
 	/// Reference to the end of the toy that you can hold when the other end is inserted in you
-	var/obj/item/clothing/sextoy/dildo_side/the_toy
+	var/obj/item/clothing/sextoy/dildo/double_dildo_end/other_end
 	change_sprite = FALSE
 	/// Whether or not the current location is front or behind
 	var/in_back = FALSE
@@ -283,6 +283,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
+	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
 	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
@@ -299,7 +300,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]"
-	worn_icon_state = "[initial(worn_icon_state)]_[(in_back ? "back" : "")]"
+	worn_icon_state = "[initial(worn_icon_state)][(in_back ? "_back" : "")]"
 
 /// Proc to update the actionbutton icon
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
@@ -335,33 +336,31 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/obj/item/held = user.get_active_held_item()
 	var/obj/item/secondary_held = user.get_inactive_held_item()
 
-	if(!in_hands)
-		new_dildo(user)
+	if(!end_in_hand)
+		take_in_hand(user)
 		return FALSE
 
-	if((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/dildo_side)) && held?.item_flags == ABSTRACT | HAND_ITEM)
-		var/qdel_hand = ((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side)) ? held : secondary_held)
-		QDEL_NULL(qdel_hand)
-		user.visible_message(span_notice("[user] puts one end of [src] back.")) // I tried to work out what this message is trying to say, but I can't quite get it.
-		in_hands = FALSE
+	if((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end)) && held?.item_flags == ABSTRACT | HAND_ITEM)
+		var/obj/item/hand_to_drop = ((istype(held, /obj/item/clothing/sextoy/dildo/double_dildo_end/)) ? held : secondary_held)
+		hand_to_drop.forceMove(src)
+		user.visible_message(span_notice("[user] releases their grip on one end of the [src]."))
+		end_in_hand = FALSE
 		return
 
 	else if(!held)
-		if(istype(secondary_held, /obj/item/clothing/sextoy/dildo/dildo_side) && secondary_held.item_flags == ABSTRACT | HAND_ITEM)
+		if(istype(secondary_held, /obj/item/clothing/sextoy/dildo/double_dildo_end) && secondary_held.item_flags == ABSTRACT | HAND_ITEM)
 			if(src == user.belt)
-				QDEL_NULL(secondary_held)
-				new_dildo(user)
+				secondary_held.forceMove(src)
+				take_in_hand(user)
 	else
 		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
 
-/// Code for creating the other end of the toy when one end's in you
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/new_dildo(mob/living/carbon/human/user)
-	the_toy = new()
-	user.put_in_hands(the_toy)
-	the_toy.update_icon_state()
-	the_toy.update_icon()
+/// For holding the other end while the thing is inserted
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
+	user.put_in_hands(other_end)
 	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
-	in_hands = TRUE
+	end_in_hand = TRUE
+
 
 //dumb way to fix organs overlapping with toys, but WHY NOT. Find a better way if you're not lazy as me.
 /obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot)
@@ -372,6 +371,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
 	var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/anus/anus = user.get_organ_slot(ORGAN_SLOT_ANUS)
 
 
 	if(src == user.vagina)
@@ -382,15 +382,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		user.update_body()
 
 	else if(src == user.anus)
-		user.cut_overlay(user.overlays_standing[ANUS_LAYER])
-
-/obj/item/clothing/sextoy/dildo/double_dildo/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(!istype(user))
-		return
-	if(the_toy && !ismob(loc) && in_hands && src != user.belt)
-		QDEL_NULL(the_toy)
-		in_hands = FALSE
+		anus?.visibility_preference = GENITAL_NEVER_SHOW
+		user.update_body()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
@@ -405,31 +398,50 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(!istype(user))
 		return FALSE
 
+	if(other_end && !ismob(loc) && end_in_hand && src != user.belt)
+		other_end.forceMove(src)
+		end_in_hand = FALSE
+
 	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
 	var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/anus/anus = user.get_organ_slot(ORGAN_SLOT_ANUS)
 
 	if(!(src == user.vagina))
-		return FALSE
+		anus?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+		user.update_body()
+		return
 
 	vagina?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 	womb?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 	penis?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 	testicles?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+
 	user.update_body()
 
-/obj/item/clothing/sextoy/dildo/dildo_side
+/obj/item/clothing/sextoy/dildo/double_dildo/Destroy()
+	QDEL_NULL(other_end)
+	return ..()
+
+/obj/item/clothing/sextoy/dildo/double_dildo_end
 	name = "dildo side"
 	desc = "You looking so hot!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "dildo_side"
-	inhand_icon_state = "nothing"
+	inhand_icon_state = null
+	worn_icon_state = null
 	item_flags = ABSTRACT | HAND_ITEM
 	side_double = TRUE
 
-/obj/item/clothing/sextoy/dildo_side/dildo/Initialize(mapload)
+/obj/item/clothing/sextoy/dildo/double_dildo_end/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
+
+/obj/item/clothing/sextoy/dildo/double_dildo_end/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]"
+	inhand_icon_state = null
+	worn_icon_state = null
 
 #undef AROUSAL_REGULAR_THRESHOLD

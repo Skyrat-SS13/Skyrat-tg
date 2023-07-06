@@ -26,7 +26,7 @@
 
 	// Give out actions our item has to people who equip it.
 	for(var/datum/action/action as anything in actions)
-		give_item_action(action, user, slot)
+		give_item_action(action, user)
 
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()
