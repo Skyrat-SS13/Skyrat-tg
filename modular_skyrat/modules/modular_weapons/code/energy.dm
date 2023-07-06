@@ -10,7 +10,7 @@
 	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
-	inhand_icon_state = "disabler"
+	inhand_icon_state = "boltdisabler"
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
