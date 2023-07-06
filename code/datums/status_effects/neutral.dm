@@ -417,7 +417,7 @@
 		return
 	stable_message = FALSE
 
-	
+
 	//Increment cycle
 	current_cycle++ //needs to be done here because phase 2 can early return
 
@@ -531,8 +531,6 @@
 #undef EIGENSTASIUM_PHASE_2_END
 #undef EIGENSTASIUM_PHASE_3_START
 #undef EIGENSTASIUM_PHASE_3_END
-<<<<<<< HEAD
-=======
 
 ///Makes the mob luminescent for the duration of the effect.
 /datum/status_effect/tinlux_light
@@ -552,4 +550,3 @@
 
 /datum/status_effect/tinlux_light/on_remove()
 	QDEL_NULL(mob_light_obj)
->>>>>>> 4ffccee19ef ([NO GBP] I flunked a commit just a hour ago and now Tinea Luxor's effect only lasts two seconds when added to mobs with a reagent holder. That was idiotic of me. (#76328))
