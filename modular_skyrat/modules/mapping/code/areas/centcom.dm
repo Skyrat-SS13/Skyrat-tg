@@ -33,3 +33,6 @@
 
 /area/centcom/interlink
 	name = "The Interlink"
+
+/area/centcom/interlink/dorm_rooms
+	name = "Interlink Dorm Rooms"
