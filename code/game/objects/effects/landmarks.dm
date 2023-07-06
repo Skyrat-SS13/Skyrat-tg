@@ -478,7 +478,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/unit_test_top_right
 	name = "unit test zone top right"
 
-
 /obj/effect/landmark/start/hangover
 	name = "hangover spawn"
 	icon_state = "hangover_spawn"
