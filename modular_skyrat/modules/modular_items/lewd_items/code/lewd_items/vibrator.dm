@@ -79,7 +79,7 @@
 	icon_state = "[base_icon_state]_[current_color]_[vibration_mode]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/vibrator/lewd_equipped(var/mob/living/carbon/human/user, slot)
+/obj/item/clothing/sextoy/vibrator/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!istype(user))
 		return
