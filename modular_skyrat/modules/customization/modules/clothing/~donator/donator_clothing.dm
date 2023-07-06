@@ -3,11 +3,32 @@
 /obj/item/clothing/suit/hooded/wintercoat/colourable
 	name = "custom winter coat"
 	icon_state = "winter_coat"
+	icon = null
+	worn_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
 	greyscale_config = /datum/greyscale_config/winter_coat
 	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
 	greyscale_colors = "#666666#CCBBAA#0000FF"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	hood_overlay = null // for this particular coat, the hood already is drawn onto the base sprite so we won't use this
+	//hood_down_overlay_suffix = "" future maintainers -- uncomment this when my toil gets undone by PR 22129.
+	// This should stop the hood overlay and negate the need for the two proc overrides below, as well as the 'hood_overlay = null'
+
+// NO HOOD OVERLAYS EVER
+/obj/item/clothing/suit/hooded/wintercoat/colourable/generate_hood_overlay()
+	return
+
+// We are going to temporarily act as if the hood is up when it's down
+// so that we don't ever add the hood_overlay in the parent proc.
+// I cannot stress how much this coat hates hood overlays. We must avoid them at all costs.
+/obj/item/clothing/suit/hooded/wintercoat/colourable/worn_overlays(mutable_appearance/standing, isinhands)
+	if(!hood_up)
+		hood_up = TRUE
+		. = ..()
+	else
+		return ..()
+
+	hood_up = FALSE
 
 //In case colors are changed after initialization
 /obj/item/clothing/suit/hooded/wintercoat/colourable/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
