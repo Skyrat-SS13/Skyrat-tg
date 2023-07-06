@@ -421,7 +421,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /// For holding the other end while the thing is inserted
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
 	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
-	other_end.set_parent(src)
+	other_end.parent_end = WEAKREF(src)
 	user.put_in_hands(other_end)
 	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
 	end_in_hand = TRUE
@@ -467,8 +467,5 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	our_parent = null
 
 	return ..()
-
-/obj/item/clothing/sextoy/dildo/double_dildo_end/proc/set_parent(obj/item/clothing/sextoy/dildo/double_dildo/parent)
-	parent_end = WEAKREF(parent)
 
 #undef AROUSAL_REGULAR_THRESHOLD
