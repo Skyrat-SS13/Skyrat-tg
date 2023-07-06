@@ -461,12 +461,12 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
 	var/obj/item/clothing/sextoy/dildo/double_dildo/our_parent = parent_end?.resolve()
-	if(!parent_end)
+	if(!our_parent)
 		return ..()
 
-	parent_end.end_in_hand = FALSE
-	parent_end.other_end = null
-	parent_end = null
+	our_parent.end_in_hand = FALSE
+	our_parent.other_end = null
+	our_parent = null
 
 	return ..()
 
