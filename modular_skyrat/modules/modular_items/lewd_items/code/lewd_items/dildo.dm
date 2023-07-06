@@ -283,7 +283,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
@@ -300,14 +299,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	. = ..()
 	icon_state = "[initial(icon_state)]"
 	worn_icon_state = "[initial(worn_icon_state)][(in_back ? "_back" : "")]"
-
-/// Proc to update the actionbutton icon
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
-	var/datum/action/item_action/action_button
-	if(istype(action_button, /datum/action/item_action/take_dildo))
-		action_button.button_icon_state = "dildo_side"
-		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
-	update_icon()
 
 //button stuff
 /datum/action/item_action/take_dildo
@@ -365,7 +356,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(!istype(user))
 		return FALSE
 
-	if(other_end && !ismob(loc) && end_in_hand && src != user.belt)
+	if(other_end)
 		other_end.forceMove(src)
 		QDEL_NULL(other_end)
 		end_in_hand = FALSE
@@ -389,7 +380,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	user.update_body()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Destroy()
-	QDEL_NULL(other_end)
+	if(!QDELETED(other_end))
+		QDEL_NULL(other_end)
 	return ..()
 
 /// Code for taking out/putting away the other end of the toy when one end is in you
@@ -422,6 +414,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /// For holding the other end while the thing is inserted
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/take_in_hand(mob/living/carbon/human/user)
 	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
+	other_end.set_parent(src)
 	user.put_in_hands(other_end)
 	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
 	end_in_hand = TRUE
@@ -435,6 +428,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	worn_icon_state = ""
 	item_flags = ABSTRACT | HAND_ITEM
 	side_double = TRUE
+	/// ref to the parent end
+	var/obj/item/clothing/sextoy/dildo/double_dildo/parent_end
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Initialize(mapload)
 	. = ..()
@@ -448,10 +443,22 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/dropped()
 	. = ..()
-	QDEL_NULL(src)
+
+	if(ismob(loc)) // if it's in a mob we don't want to be qdeleting it just yet
+		return
+
+	if(parent_end?.other_end)
+		parent_end.other_end = null
+	if(!QDELETED(src))
+		QDEL_NULL(src)
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end/Destroy()
-	parent_dildo = null
+	parent_end.end_in_hand = FALSE
+	parent_end.other_end = null
+	parent_end = null
 	return ..()
+
+/obj/item/clothing/sextoy/dildo/double_dildo_end/proc/set_parent(obj/item/clothing/sextoy/dildo/double_dildo/parent)
+	parent_end = parent
 
 #undef AROUSAL_REGULAR_THRESHOLD
