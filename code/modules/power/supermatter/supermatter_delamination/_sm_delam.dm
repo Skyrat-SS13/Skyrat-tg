@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 			log_admin("DELAM: Round timer under 30 minutes! Supermatter will perform an automatic delam suppression at strength 0%. To cancel this, delete the delamination suppression system inside the chamber.")
 			message_admins(span_adminnotice("DELAM: Round timer under 30 minutes! [sm] will perform an automatic delam suppression at strength 0%. To cancel this, delete the delamination suppression system inside the chamber. [ADMIN_VERBOSEJMP(sm)]."))
 		SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, TRUE)
-		 // SKYRAT EDIT ADDITION END
+		// SKYRAT EDIT ADDITION END
 
 	if((REALTIMEOFDAY - sm.lastwarning) < SUPERMATTER_WARNING_DELAY)
 		return FALSE
