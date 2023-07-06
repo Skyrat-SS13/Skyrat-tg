@@ -12,8 +12,11 @@ Adds an emergency stop for the supermatter engine. Operable in the first 30 minu
 
 File Location | Changed TG Proc
 ------------- | ---------------
-code/modules/power/supermatter/supermatter.dm | `/obj/machinery/power/supermatter_crystal/proc/count_down()`
-code/modules/power/supermatter/supermatter_delamination/_sm_delam.dm | `/datum/sm_delam/proc/delam_progress(obj/machinery/power/supermatter_crystal/sm)`
+`code/modules/power/supermatter/supermatter.dm`
+`/obj/machinery/power/supermatter_crystal/proc/count_down`
+
+`code/modules/power/supermatter/supermatter_delamination/_sm_delam.dm`
+`/datum/sm_delam/proc/delam_progress(obj/machinery/power/supermatter_crystal/sm)`
 
 ### TG File Changes:
 
