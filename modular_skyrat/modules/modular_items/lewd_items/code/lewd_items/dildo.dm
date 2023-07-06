@@ -358,8 +358,12 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	if(other_end)
 		other_end.forceMove(src)
+		var/mob/living/carbon/human/other_user = other_end.loc
+		if(istype(other_user))
+			other_user.dropItemToGround(src, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
 		QDEL_NULL(other_end)
 		end_in_hand = FALSE
+
 
 	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
@@ -380,6 +384,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	user.update_body()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Destroy()
+	var/mob/living/carbon/human/other_user = other_end.loc
+	if(istype(other_user))
+		other_user.dropItemToGround(src, force = TRUE) // TODO: THIS IS SO GROSS. These slots should be integrated into the actual equip/drop procs instead of this awful hacking.
 	if(!QDELETED(other_end))
 		QDEL_NULL(other_end)
 	return ..()
