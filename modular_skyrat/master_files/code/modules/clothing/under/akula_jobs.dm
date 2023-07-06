@@ -5,8 +5,8 @@
 
 /obj/item/clothing/under/akula_wetsuit
 	name = "Shoredress wetsuit"
-	desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
-		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
+	desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made."
+	extended_desc = "This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
 		even sometimes worn underneath orbital suits such as MODs. \n\n\
 		Shoredresses apply active thermal channels and motion-powered micropumps to allow for water of the wearer's temperature choice to circulate; \
 		ensuring ample flow over not only the gills, but the rest of the wearer's skin, at the cost of occasional movement being needed when the wearer is still. \n\
@@ -191,8 +191,8 @@
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit
 	name = "\improper Shoredress helm"
-	desc = "Known simply as a 'Glass' throughout Azulean society as a whole, these spheroidal helmets are often the main source of comfort for workers on land; domestic and abroad. \
-		More advanced than humans would ever give them credit for, a Shoredress's Glass is a piece of technology unto itself. \n\n\
+	desc = "Known simply as a 'Glass' throughout Azulean society as a whole, these spheroidal helmets are often the main source of comfort for workers on land; domestic and abroad."
+	extended_desc = "More advanced than humans would ever give them credit for, a Shoredress's Glass is a piece of technology unto itself. \n\n\
 		These helmets employ a near-invisible system of cameras and sensors to prevent refraction from the water kept inside. \
 		The 'flexiglass' glass comprising the unit is chemically strengthened to be thin, light, and damage-resistant, but capable of bending even in half without shattering; all to allow you to touch your face. \n\
 		Some have taken to putting electronic displays around the face to help express emotion, or to signal nonverbally. \

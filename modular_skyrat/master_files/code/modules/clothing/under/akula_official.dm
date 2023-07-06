@@ -7,8 +7,8 @@
 
 /obj/item/clothing/under/rank/azulean/old_blood
 	name = "\improper Agurkrral Oldblood's royal regalia"
-	desc = "A service dress uniform of the Old Principalities of Agurkrral, a fashion shared by the majority of the nobility. \
-		These outfits are known to normally be accessorized with gold trims and other rare metals, \
+	desc = "A service dress uniform of the Old Principalities of Agurkrral, a fashion shared by the majority of the nobility."
+	extended_desc = "These outfits are known to normally be accessorized with gold trims and other rare metals, \
 		constructed and treated specially for use in underwater environments; the dwellings of most of the crown's old guard. \n\n\
 		Actual fish-leather is often used for the subtle pattern of scaling, and to ensure proper hydrodynamics while swimming. \
 		Due to being constructed for comfort and flash rather than practicality, the technology used in Shoredresses to hydrate the wearer could not be implemented; \
@@ -22,8 +22,8 @@
 
 /obj/item/clothing/under/rank/azulean/upstart
 	name = "\improper Agurkrral Upstart's noble getup"
-	desc = "Patterned off the dress uniforms of the Old Principalities, this sort of style belongs to the border princes of the New Principalities. \
-		These outfits rebuke tradition to incorporate the use of imported leather, using reinforced clasps instead of shiny golden buttons. \n\n\
+	desc = "Patterned off the dress uniforms of the Old Principalities, this sort of style belongs to the border princes of the New Principalities."
+	extended_desc = "These outfits rebuke tradition to incorporate the use of imported leather, using reinforced clasps instead of shiny golden buttons. \n\n\
 		Few decorations are normally seen in these clothing, owing to the tendency of their wearers to 'gallivant.' \
 		Due to being constructed for a degree of expendability, the technology used in Shoredresses to hydrate the wearer is \
 		an extremely rare sight in these outfits; only the mount for a Shoredress's helm."
