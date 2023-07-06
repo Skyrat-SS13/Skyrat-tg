@@ -66,24 +66,24 @@
 	name = "\improper Ration Type M - Fueljack's Feast"
 	main_course = /obj/item/food/vendor_tray_meal/fueljack
 
-/obj/item/storage/box/foodpack/tiziria
-	name = "\improper Tiziria Imports Pack - Moonfish Nizaya"
-	desc = "A dull, metal foil package with the colors of the tizirian flag striped across it, as well as a stamp of legitimate origin from the Tizirian exports office."
+/obj/item/storage/box/foodpack/tizira
+	name = "\improper Tizira Imports Pack - Moonfish Nizaya"
+	desc = "A dull, metal foil package with the colors of the Tiziran flag striped across it, as well as a stamp of legitimate origin from the Tiziran exports office."
 	icon_state = "foodpack_tizira_big"
 	main_course = /obj/item/food/vendor_tray_meal/moonfish_nizaya
-	side_item = /obj/effect/spawner/random/vendor_meal_sides/tiziria
+	side_item = /obj/effect/spawner/random/vendor_meal_sides/tizira
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/bbqsauce
-	custom_price = PAYCHECK_CREW * 2 //Tizirian imports are a bit more expensive
+	custom_price = PAYCHECK_CREW * 2 //Tiziran imports are a bit more expensive
 
-/obj/item/storage/box/foodpack/tiziria/examine_more(mob/user)
+/obj/item/storage/box/foodpack/tizira/examine_more(mob/user)
 	. = ..()
 	. += span_notice("<b>Now that you look at it, the origin stamp appears to be a poor imitation of the real thing!</b>")
 	return .
 
-/obj/item/storage/box/foodpack/tiziria/roll
-	name = "\improper Tiziria Imports Pack - Emperor Roll"
+/obj/item/storage/box/foodpack/tizira/roll
+	name = "\improper Tizira Imports Pack - Emperor Roll"
 	main_course = /obj/item/food/vendor_tray_meal/emperor_roll
 
-/obj/item/storage/box/foodpack/tiziria/stir_fry
-	name = "\improper Tiziria Imports Pack - Mushroom Stirfry"
+/obj/item/storage/box/foodpack/tizira/stir_fry
+	name = "\improper Tizira Imports Pack - Mushroom Stirfry"
 	main_course = /obj/item/food/vendor_tray_meal/mushroom_fry
