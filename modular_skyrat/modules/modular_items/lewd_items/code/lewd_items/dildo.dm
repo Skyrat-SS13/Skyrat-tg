@@ -66,7 +66,7 @@
 	icon_state = "[base_icon_state][change_sprite ? "_[current_type]" : ""]"
 	inhand_icon_state = "[base_icon_state][change_sprite ? "_[current_type]" : ""]"
 
-/obj/item/clothing/sextoy/dildo/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/sextoy/dildo/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!istype(user))
 		return
@@ -277,6 +277,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	/// Reference to the end of the toy that you can hold when the other end is inserted in you
 	var/obj/item/clothing/sextoy/dildo_side/the_toy
 	change_sprite = FALSE
+	/// Whether or not the current location is front or behind
+	var/in_back = FALSE
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
@@ -288,6 +290,16 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo/AltClick(mob/user)
 	return
+
+/obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot, initial)
+	. = ..()
+	in_back = (src == user.anus)
+	update_icon_state()
+
+/obj/item/clothing/sextoy/dildo/double_dildo/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]"
+	worn_icon_state = "[initial(worn_icon_state)]_[(in_back ? "back" : "")]"
 
 /// Proc to update the actionbutton icon
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
@@ -352,7 +364,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	in_hands = TRUE
 
 //dumb way to fix organs overlapping with toys, but WHY NOT. Find a better way if you're not lazy as me.
-/obj/item/clothing/sextoy/dildo/double_dildo/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!istype(user))
 		return

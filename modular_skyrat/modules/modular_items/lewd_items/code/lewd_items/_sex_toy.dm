@@ -10,6 +10,24 @@
 	/// See code/__DEFINES/~skyrat_defines/inventory.dm for the full list.
 	var/lewd_slot_flags = NONE
 
+/**
+ * Called after an item is placed in a lewd slot via the interaction menu. This gets called after equipped() does.
+ *
+ * Use this instead of equipped() when dealing with lewd slots. We really should hook this better into the upstream
+ * equip chain but for now this will have to do.
+ *
+ * Arguments:
+ * * user is mob that equipped it
+ * * slot(s) that item is equipped to
+ * * initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
+ */
+/obj/item/proc/lewd_equipped(mob/living/carbon/human/user, slot, initial)
+	SHOULD_CALL_PARENT(TRUE)
+
+	// Give out actions our item has to people who equip it.
+	for(var/datum/action/action as anything in actions)
+		give_item_action(action, user, slot)
+
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()
 
