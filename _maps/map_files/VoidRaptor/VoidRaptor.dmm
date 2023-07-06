@@ -12610,13 +12610,7 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/port/central)
 "dLz" = (
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/dark_red{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "dLE" = (
@@ -18045,15 +18039,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/coldroom)
-"flJ" = (
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/security/warden)
 "flP" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 8
@@ -19956,9 +19941,6 @@
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet)
 "fRm" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -19968,6 +19950,9 @@
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/light_switch/directional/east,
 /obj/effect/landmark/start/paramedic,
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
 "fRq" = (
@@ -20577,12 +20562,7 @@
 /area/station/security/brig)
 "gaJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "gaQ" = (
@@ -21163,6 +21143,21 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/purple,
 /area/station/command/heads_quarters/rd)
+"gjk" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/fire{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 10
+	},
+/turf/open/floor/iron/smooth,
+/area/station/engineering/lobby)
 "gjl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/box/lights/mixed,
@@ -32709,9 +32704,6 @@
 	},
 /area/station/engineering/main)
 "jvf" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -32719,6 +32711,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/orderly,
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
 "jvg" = (
@@ -33636,25 +33631,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/break_room)
-"jGN" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 6
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/machinery/requests_console/directional/south{
-	department = "Engineering";
-	name = "Engineering Requests Console";
-	dir = 4;
-	pixel_y = 0;
-	pixel_x = 30
-	},
-/turf/open/floor/iron/smooth,
-/area/station/engineering/lobby)
 "jGT" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/hangover,
@@ -39831,9 +39807,9 @@
 /obj/structure/rack,
 /obj/item/gun/energy/e_gun/dragnet,
 /obj/item/gun/energy/e_gun/dragnet,
-/obj/item/melee/hammer,
-/obj/item/melee/hammer,
-/obj/item/melee/hammer,
+/obj/item/melee/breaching_hammer,
+/obj/item/melee/breaching_hammer,
+/obj/item/melee/breaching_hammer,
 /obj/effect/turf_decal/tile/dark_red/half,
 /obj/machinery/camera/directional/south{
 	c_tag = "Armory - Interior"
@@ -41700,11 +41676,6 @@
 	dir = 4
 	},
 /area/station/engineering/gravity_generator)
-"lQU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/evidence,
-/turf/open/floor/iron/dark,
-/area/station/security/warden)
 "lQX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
@@ -49264,6 +49235,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/command/bridge)
+"nWh" = (
+/obj/vehicle/sealed/mecha/ripley/cargo,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/smooth_edge,
+/area/station/cargo/warehouse)
 "nWl" = (
 /obj/effect/spawner/random/maintenance,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -49732,17 +49712,6 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
 /area/station/science/research)
-"oei" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/dark_red{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/security/warden)
 "oej" = (
 /obj/effect/turf_decal/weather/sand{
 	dir = 4
@@ -53486,7 +53455,6 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
-/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "peM" = (
@@ -56251,10 +56219,10 @@
 	},
 /area/station/engineering/break_room)
 "pTK" = (
-/obj/structure/table/reinforced,
 /obj/item/mmi,
 /obj/item/assembly/prox_sensor,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
 /turf/open/floor/iron/smooth,
 /area/station/science/research/abandoned)
 "pUe" = (
@@ -57752,23 +57720,6 @@
 "qlN" = (
 /turf/closed/wall/r_wall,
 /area/station/science/robotics/lab)
-"qlQ" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/medkit/fire{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/radio/off{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 10
-	},
-/obj/effect/mapping_helpers/requests_console/supplies,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/turf/open/floor/iron/smooth,
-/area/station/engineering/lobby)
 "qlS" = (
 /obj/machinery/door/airlock/research{
 	name = "Circuit Testing Lab"
@@ -60773,15 +60724,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
-"rdM" = (
-/obj/vehicle/sealed/mecha/working/ripley/cargo,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/bot,
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/smooth_edge,
-/area/station/cargo/warehouse)
 "rdT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -69092,7 +69034,6 @@
 /turf/open/floor/iron/diagonal,
 /area/station/hallway/secondary/service)
 "tsb" = (
-/obj/structure/chair/sofa/bench,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
@@ -69101,6 +69042,7 @@
 	pixel_y = 32
 	},
 /obj/effect/landmark/start/assistant,
+/obj/structure/chair/sofa/bench/right,
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/medical/medbay/lobby)
 "tsi" = (
@@ -75860,6 +75802,27 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/carpet/green,
 /area/station/commons/dorms)
+"vlP" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/machinery/requests_console/directional/south{
+	department = "Engineering";
+	name = "Engineering Requests Console";
+	dir = 4;
+	pixel_y = 0;
+	pixel_x = 30
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/turf/open/floor/iron/smooth,
+/area/station/engineering/lobby)
 "vlS" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/n2o,
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
@@ -79203,6 +79166,7 @@
 /area/station/maintenance/port/fore)
 "whY" = (
 /obj/structure/closet/secure_closet/evidence,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "wia" = (
@@ -85593,12 +85557,7 @@
 /area/station/maintenance/port/aft)
 "yaH" = (
 /obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "ybj" = (
@@ -121462,7 +121421,7 @@ mWr
 fdG
 mhY
 vsS
-qlQ
+gjk
 wlh
 xBW
 iPJ
@@ -121719,7 +121678,7 @@ aTR
 mLJ
 kSN
 cEE
-jGN
+vlP
 rAU
 qvp
 xCw
@@ -122653,8 +122612,8 @@ cAy
 aDR
 yaH
 dLz
-oei
-flJ
+gaJ
+dLz
 gaJ
 aDR
 bzs
@@ -122909,7 +122868,7 @@ tpZ
 uLY
 aDR
 wWQ
-lQU
+whY
 whY
 aDR
 kIV
@@ -126580,7 +126539,7 @@ wZs
 nXO
 hcg
 onP
-rdM
+nWh
 vFv
 tqu
 gmb
