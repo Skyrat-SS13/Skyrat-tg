@@ -7,27 +7,26 @@
  * so the old cost of SMALL_MATERIAL_AMOUNT * 5 was 500/2000 from a sheet (25%)
  * experimental material balance PR makes it so that it's 10 units out of 100 (10%)
  * this makes it so that the old assumed value of SMALL_MATERIAL_AMOUNT * 5 is 50/100 (50% of a sheet for a single bullet) (suboptimal)
- * as it stands, tentative values make it so that a single round is 10% a sheet, which... might be a sharp increase over base
- * we can hash this out later
+ * as it stands, tentative values make it so that a single round's total materials are 20% of a sheet
 */
 
-#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1)
+#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
 
-#define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.8,\
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.2)
+#define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
 
-#define AMMO_MATS_INC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.8,\
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.2)
+#define AMMO_MATS_INC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
 
-#define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.8,\
-							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.2)
+#define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4)
 
-#define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.8,\
-							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2)
+#define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4)
 
-#define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.8,\
-							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.1,\
-							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.1)
+#define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
 
 /obj/item/ammo_casing
 	custom_materials = AMMO_MATS_BASIC
