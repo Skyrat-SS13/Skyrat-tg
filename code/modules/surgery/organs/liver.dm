@@ -222,12 +222,26 @@
 /obj/item/organ/internal/liver/cybernetic
 	name = "basic cybernetic liver"
 	icon_state = "liver-c"
+<<<<<<< HEAD:code/modules/surgery/organs/liver.dm
 	desc = "A very basic device designed to mimic the functions of a human liver. Handles toxins slightly worse than an organic liver."
 	organ_flags = ORGAN_SYNTHETIC
+=======
+	organ_flags = ORGAN_ROBOTIC
+	maxHealth = STANDARD_ORGAN_THRESHOLD*0.5
+>>>>>>> ca401b57a74 (Bargain bin organ quirks: Prosthetic organ and Tin Man (#76498)):code/modules/surgery/organs/internal/liver/_liver.dm
 	toxTolerance = 2
 	liver_resistance = 0.9 * LIVER_DEFAULT_TOX_RESISTANCE // -10%
-	maxHealth = STANDARD_ORGAN_THRESHOLD*0.5
 	var/emp_vulnerability = 80 //Chance of permanent effects if emp-ed.
+
+/obj/item/organ/internal/liver/cybernetic/emp_act(severity)
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	if(!COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
+		owner.adjustToxLoss(10)
+		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
+	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
+		organ_flags |= ORGAN_EMP //Starts organ faliure - gonna need replacing soon.
 
 /obj/item/organ/internal/liver/cybernetic/tier2
 	name = "cybernetic liver"
@@ -241,15 +255,34 @@
 /obj/item/organ/internal/liver/cybernetic/tier3
 	name = "upgraded cybernetic liver"
 	icon_state = "liver-c-u2"
+<<<<<<< HEAD:code/modules/surgery/organs/liver.dm
 	desc = "An upgraded version of the cybernetic liver, designed to improve further upon organic livers. It is resistant to alcohol poisoning and is very robust at filtering toxins."
 	alcohol_tolerance = 0.001
+=======
+	alcohol_tolerance = ALCOHOL_RATE * 0.2
+>>>>>>> ca401b57a74 (Bargain bin organ quirks: Prosthetic organ and Tin Man (#76498)):code/modules/surgery/organs/internal/liver/_liver.dm
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	toxTolerance = 10 //can shrug off up to 10u of toxins
 	liver_resistance = 1.5 * LIVER_DEFAULT_TOX_RESISTANCE // +50%
 	emp_vulnerability = 20
 
-/obj/item/organ/internal/liver/cybernetic/emp_act(severity)
+/obj/item/organ/internal/liver/cybernetic/surplus
+	name = "surplus prosthetic liver"
+	desc = "A very cheap prosthetic liver, mass produced for low-functioning alcoholics... It looks more like a water filter than \
+		an actual liver. \
+		Very fragile, absolutely terrible at filtering toxins and substantially weak to alcohol. \
+		Offers no protection against EMPs."
+	icon_state = "liver-c-s"
+	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.35
+	alcohol_tolerance = ALCOHOL_RATE * 2 // can barely handle alcohol
+	toxTolerance = 1 //basically can't shrug off any toxins
+	liver_resistance = 0.75 * LIVER_DEFAULT_TOX_RESISTANCE // -25%
+	emp_vulnerability = 100
+
+//surplus organs are so awful that they explode when removed, unless failing
+/obj/item/organ/internal/liver/cybernetic/surplus/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD:code/modules/surgery/organs/liver.dm
 	if(. & EMP_PROTECT_SELF)
 		return
 	if(!COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
@@ -257,6 +290,9 @@
 		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
 		organ_flags |= ORGAN_SYNTHETIC_EMP //Starts organ faliure - gonna need replacing soon.
+=======
+	AddElement(/datum/element/dangerous_surgical_removal)
+>>>>>>> ca401b57a74 (Bargain bin organ quirks: Prosthetic organ and Tin Man (#76498)):code/modules/surgery/organs/internal/liver/_liver.dm
 
 #undef HAS_SILENT_TOXIN
 #undef HAS_NO_TOXIN
