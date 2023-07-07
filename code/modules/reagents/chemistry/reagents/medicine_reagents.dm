@@ -377,7 +377,7 @@
 	. = ..()
 	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
 	metabolizer.clear_alert("numbed") // SKYRAT EDIT ADD END
-	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 /datum/reagent/medicine/omnizine
 	name = "Omnizine"
