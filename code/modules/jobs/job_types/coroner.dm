@@ -28,6 +28,10 @@
 		/obj/item/reagent_containers/cup/bottle/formaldehyde = 30,
 		/obj/item/storage/box/bodybags = 15,
 		/obj/item/healthanalyzer = 10,
+<<<<<<< HEAD
+=======
+		/obj/item/shovel/serrated/dull = 5,
+>>>>>>> 4c99fb2ebb2 (Coroner additions and tweaks (#76534))
 		/obj/effect/spawner/random/medical/organs = 5,
 		/obj/effect/spawner/random/medical/memeorgans = 1,
 	)
