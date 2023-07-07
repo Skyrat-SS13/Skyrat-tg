@@ -1,8 +1,3 @@
-#define SUMMON_POSSIBILITIES 3
-#define CULT_VICTORY 1
-#define CULT_LOSS 0
-#define CULT_NARSIE_KILLED -1
-
 /datum/antagonist/cult
 	name = "Cultist"
 	roundend_category = "cultists"
@@ -10,47 +5,21 @@
 	antag_moodlet = /datum/mood_event/cult
 	suicide_cry = "FOR NAR'SIE!!"
 	preview_outfit = /datum/outfit/cultist
-	var/datum/action/innate/cult/comm/communion = new
-	var/datum/action/innate/cult/mastervote/vote = new
-	var/datum/action/innate/cult/blood_magic/magic = new
 	job_rank = ROLE_CULTIST
 	antag_hud_name = "cult"
-	var/ignore_implant = FALSE
+
+	///The vote ability Cultists have to elect someone to be the leader.
+	var/datum/action/innate/cult/mastervote/vote_ability = new
+
+	///Boolean on whether the starting equipment should be given to their inventory.
 	var/give_equipment = FALSE
+	///Reference to the Blood cult team they are part of.
 	var/datum/team/cult/cult_team
 
-
-/datum/antagonist/cult/get_team()
-	return cult_team
-
-/datum/antagonist/cult/create_team(datum/team/cult/new_team)
-	if(!new_team)
-		//todo remove this and allow admin buttons to create more than one cult
-		for(var/datum/antagonist/cult/H in GLOB.antagonists)
-			if(!H.owner)
-				continue
-			if(H.cult_team)
-				cult_team = H.cult_team
-				return
-		cult_team = new /datum/team/cult
-		cult_team.setup_objectives()
-		return
-	if(!istype(new_team))
-		stack_trace("Wrong team type passed to [type] initialization.")
-	cult_team = new_team
-
-/datum/antagonist/cult/proc/add_objectives()
-	objectives |= cult_team.objectives
-
-/datum/antagonist/cult/Destroy()
-	QDEL_NULL(communion)
-	QDEL_NULL(vote)
-	return ..()
-
 /datum/antagonist/cult/can_be_owned(datum/mind/new_owner)
-	. = ..()
-	if(. && !ignore_implant)
-		. = is_convertable_to_cult(new_owner.current,cult_team)
+	if(!is_convertable_to_cult(new_owner.current, cult_team))
+		return FALSE
+	return ..()
 
 /datum/antagonist/cult/greet()
 	. = ..()
@@ -58,7 +27,7 @@
 	owner.announce_objectives()
 
 /datum/antagonist/cult/on_gain()
-	add_objectives()
+	objectives |= cult_team.objectives
 	. = ..()
 	var/mob/living/current = owner.current
 	if(give_equipment)
@@ -81,6 +50,7 @@
 
 	return ..()
 
+<<<<<<< HEAD
 /datum/antagonist/cult/get_preview_icon()
 	var/icon/icon = render_preview_outfit(preview_outfit)
 
@@ -129,19 +99,23 @@
 			mob.back.atom_storage?.show_contents(mob)
 		return TRUE
 
+=======
+>>>>>>> 32afa856dbb (Makes cult leader handling work off of the Cult datum (#76556))
 /datum/antagonist/cult/apply_innate_effects(mob/living/mob_override)
 	. = ..()
-	var/mob/living/current = owner.current
-	if(mob_override)
-		current = mob_override
+	var/mob/living/current = owner.current || mob_override
 	handle_clown_mutation(current, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
 	current.faction |= FACTION_CULT
 	current.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
-	if(!cult_team.cult_master)
-		vote.Grant(current)
+
+	var/datum/action/innate/cult/comm/communion = new
 	communion.Grant(current)
+	if(isnull(cult_team.cult_leader_datum))
+		vote_ability.Grant(current)
 	if(ishuman(current))
+		var/datum/action/innate/cult/blood_magic/magic = new
 		magic.Grant(current)
+
 	current.throw_alert("bloodsense", /atom/movable/screen/alert/bloodsense)
 	if(cult_team.cult_risen)
 		current.AddElement(/datum/element/cult_eyes, initial_delay = 0 SECONDS)
@@ -152,15 +126,16 @@
 
 /datum/antagonist/cult/remove_innate_effects(mob/living/mob_override)
 	. = ..()
-	var/mob/living/current = owner.current
-	if(mob_override)
-		current = mob_override
+	var/mob/living/current = owner.current || mob_override
 	handle_clown_mutation(current, removing = FALSE)
 	current.faction -= FACTION_CULT
 	current.remove_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
-	vote.Remove(current)
-	communion.Remove(current)
-	magic.Remove(current)
+
+	QDEL_NULL(vote_ability)
+	for(var/datum/action/innate/cult/cult_buttons in owner.current.actions)
+		qdel(cult_buttons)
+	current.update_mob_action_buttons()
+
 	current.clear_alert("bloodsense")
 	if (HAS_TRAIT(current, TRAIT_UNNATURAL_RED_GLOWY_EYES))
 		current.RemoveElement(/datum/element/cult_eyes)
@@ -188,12 +163,66 @@
 	.["Dagger and Metal"] = CALLBACK(src, PROC_REF(admin_give_metal))
 	.["Remove Dagger and Metal"] = CALLBACK(src, PROC_REF(admin_take_all))
 
+	if(is_cult_leader())
+		.["Demote From Leader"] = CALLBACK(src, PROC_REF(demote_from_leader))
+	else if(isnull(cult_team.cult_leader_datum))
+		.["Make Cult Leader"] = CALLBACK(src, PROC_REF(make_cult_leader))
+
+/datum/antagonist/cult/get_team()
+	return cult_team
+
+/datum/antagonist/cult/create_team(datum/team/cult/new_team)
+	if(!new_team)
+		//todo remove this and allow admin buttons to create more than one cult
+		for(var/datum/antagonist/cult/H in GLOB.antagonists)
+			if(!H.owner)
+				continue
+			if(H.cult_team)
+				cult_team = H.cult_team
+				return
+		cult_team = new /datum/team/cult
+		cult_team.setup_objectives()
+		return
+	if(!istype(new_team))
+		stack_trace("Wrong team type passed to [type] initialization.")
+	cult_team = new_team
+
+///Equips the cultist with a dagger and runed metal.
+/datum/antagonist/cult/proc/equip_cultist(metal = TRUE)
+	var/mob/living/carbon/H = owner.current
+	if(!istype(H))
+		return
+	. += cult_give_item(/obj/item/melee/cultblade/dagger, H)
+	if(metal)
+		. += cult_give_item(/obj/item/stack/sheet/runed_metal/ten, H)
+	to_chat(owner, "These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
+
+///Attempts to make a new item and put it in a potential inventory slot in the provided mob.
+/datum/antagonist/cult/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/mob)
+	var/list/slots = list(
+		"backpack" = ITEM_SLOT_BACKPACK,
+		"left pocket" = ITEM_SLOT_LPOCKET,
+		"right pocket" = ITEM_SLOT_RPOCKET,
+	)
+
+	var/T = new item_path(mob)
+	var/item_name = initial(item_path.name)
+	var/where = mob.equip_in_one_of_slots(T, slots)
+	if(!where)
+		to_chat(mob, span_userdanger("Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1)."))
+		return FALSE
+	else
+		to_chat(mob, span_danger("You have a [item_name] in your [where]."))
+		if(where == "backpack")
+			mob.back.atom_storage?.show_contents(mob)
+		return TRUE
+
 /datum/antagonist/cult/proc/admin_give_dagger(mob/admin)
-	if(!equip_cultist(metal=FALSE))
+	if(!equip_cultist(metal = FALSE))
 		to_chat(admin, span_danger("Spawning dagger failed!"))
 
 /datum/antagonist/cult/proc/admin_give_metal(mob/admin)
-	if (!equip_cultist(metal=TRUE))
+	if (!equip_cultist(metal = TRUE))
 		to_chat(admin, span_danger("Spawning runed metal failed!"))
 
 /datum/antagonist/cult/proc/admin_take_all(mob/admin)
@@ -202,80 +231,71 @@
 		if(istype(o, /obj/item/melee/cultblade/dagger) || istype(o, /obj/item/stack/sheet/runed_metal))
 			qdel(o)
 
-/datum/antagonist/cult/master
-	ignore_implant = TRUE
-	show_in_antagpanel = FALSE //Feel free to add this later
+///Returns whether or not this datum is its team's leader.
+/datum/antagonist/cult/proc/is_cult_leader()
+	return (cult_team.cult_leader_datum == src)
+
+///Turns this antag datum into its team's leader, assigning them their unique abilities, hud, and deathrattle.
+/datum/antagonist/cult/proc/make_cult_leader()
+	if(cult_team.cult_leader_datum)
+		return FALSE
+	cult_team.cult_leader_datum = src
+
 	antag_hud_name = "cultmaster"
-	var/datum/action/innate/cult/master/finalreck/reckoning = new
+	add_team_hud(owner.current)
+	RegisterSignal(owner.current, COMSIG_MOB_STATCHANGE, PROC_REF(deathrattle))
+
+	if(!cult_team.reckoning_complete)
+		var/datum/action/innate/cult/master/finalreck/reckoning = new
+		reckoning.Grant(owner.current)
 	var/datum/action/innate/cult/master/cultmark/bloodmark = new
 	var/datum/action/innate/cult/master/pulse/throwing = new
+	bloodmark.Grant(owner.current)
+	throwing.Grant(owner.current)
+	owner.current.update_mob_action_buttons()
 
-/datum/antagonist/cult/master/Destroy()
-	QDEL_NULL(reckoning)
-	QDEL_NULL(bloodmark)
-	QDEL_NULL(throwing)
-	return ..()
+	for(var/datum/mind/cult_mind as anything in cult_team.members)
+		vote_ability.Remove(cult_mind.current)
+		to_chat(cult_mind.current, span_cultlarge("[owner.current] has won the cult's support and is now their master. \
+			Follow [owner.current.p_their()] orders to the best of your ability!"))
 
-/datum/antagonist/cult/master/greet()
-	to_chat(owner.current, "<span class='warningplain'><span class='cultlarge'>You are the cult's Master</span>. As the cult's Master, you have a unique title and loud voice when communicating, are capable of marking \
-	targets, such as a location or a noncultist, to direct the cult to them, and, finally, you are capable of summoning the entire living cult to your location <b><i>once</i></b>. Use these abilities to direct the cult to victory at any cost.</span>")
+	to_chat(owner.current, span_cultlarge("<span class='warningplain'>You are the cult's Master</span>. \
+		As the cult's Master, you have a unique title and loud voice when communicating, are capable of marking \
+		targets, such as a location or a noncultist, to direct the cult to them, and, finally, you are capable of \
+		summoning the entire living cult to your location <b><i>once</i></b>. Use these abilities to direct the cult \
+		to victory at any cost."))
 
-/datum/antagonist/cult/master/apply_innate_effects(mob/living/mob_override)
-	. = ..()
-	var/mob/living/current = owner.current
-	if(mob_override)
-		current = mob_override
-	if(!cult_team.reckoning_complete)
-		reckoning.Grant(current)
-	bloodmark.Grant(current)
-	throwing.Grant(current)
-	current.update_mob_action_buttons()
-	current.apply_status_effect(/datum/status_effect/cult_master)
-	if(cult_team.cult_risen)
-		current.AddElement(/datum/element/cult_eyes, initial_delay = 0 SECONDS)
-	if(cult_team.cult_ascendent)
-		current.AddElement(/datum/element/cult_halo, initial_delay = 0 SECONDS)
-	add_team_hud(current, /datum/antagonist/cult)
+	return TRUE
 
-/datum/antagonist/cult/master/remove_innate_effects(mob/living/mob_override)
-	. = ..()
-	var/mob/living/current = owner.current
-	if(mob_override)
-		current = mob_override
-	reckoning.Remove(current)
-	bloodmark.Remove(current)
-	throwing.Remove(current)
-	current.update_mob_action_buttons()
-	current.remove_status_effect(/datum/status_effect/cult_master)
+///Admin-only helper to demote someone from Cult leader, taking away their HUD, abilities, and deathrattle
+///And gives all cultists from their team back their ability to vote for a new leader.
+/datum/antagonist/cult/proc/demote_from_leader()
+	if(!cult_team.cult_leader_datum)
+		return FALSE
+	cult_team.cult_leader_datum = null
 
-/datum/team/cult
-	name = "\improper Cult"
+	antag_hud_name = initial(antag_hud_name)
+	add_team_hud(owner.current)
+	UnregisterSignal(owner.current, COMSIG_MOB_STATCHANGE)
 
-	///The blood mark target
-	var/atom/blood_target
-	///Image of the blood mark target
-	var/image/blood_target_image
-	///Timer for the blood mark expiration
-	var/blood_target_reset_timer
+	var/datum/action/innate/cult/master/finalreck/reckoning = locate() in owner.current.actions
+	if(reckoning)
+		reckoning.Remove(owner.current)
+	var/datum/action/innate/cult/master/cultmark/bloodmark = locate() in owner.current.actions
+	if(bloodmark)
+		bloodmark.Remove(owner.current)
+	var/datum/action/innate/cult/master/pulse/throwing = locate() in owner.current.actions
+	if(throwing)
+		throwing.Remove(owner.current)
+	owner.current.update_mob_action_buttons()
+	for(var/datum/mind/cult_mind as anything in cult_team.members)
+		vote_ability.Grant(cult_mind.current)
 
-	///Has a vote been called for a leader?
-	var/cult_vote_called = FALSE
-	///The cult leader
-	var/mob/living/cult_master
-	///Has the mass teleport been used yet?
-	var/reckoning_complete = FALSE
-	///Has the cult risen, and gotten red eyes?
-	var/cult_risen = FALSE
-	///Has the cult asceneded, and gotten halos?
-	var/cult_ascendent = FALSE
+	to_chat(owner.current, span_cultlarge("You have been demoted from being the cult's Master, you are now an acolyte once more!"))
 
-	///Has narsie been summoned yet?
-	var/narsie_summoned = FALSE
-	///How large were we at max size.
-	var/size_at_maximum = 0
-	///list of cultists just before summoning Narsie
-	var/list/true_cultists = list()
+	return TRUE
 
+<<<<<<< HEAD
 /datum/team/cult/proc/check_size()
 	if(cult_ascendent)
 		return
@@ -396,109 +416,58 @@
 			mind.current.throw_alert("bloodsense", /atom/movable/screen/alert/bloodsense)
 
 /datum/objective/sacrifice/proc/on_target_body_del()
+=======
+///If dead (and Narsie isn't summoned), will alert all Cultists of their death, sending their location out.
+/datum/antagonist/cult/proc/deathrattle(datum/source)
+>>>>>>> 32afa856dbb (Makes cult leader handling work off of the Cult datum (#76556))
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, PROC_REF(find_target))
 
-/datum/objective/sacrifice/proc/on_mind_transfer(datum/source, mob/previous_body)
-	SIGNAL_HANDLER
-	//If, for some reason, the mind was transferred to a ghost (better safe than sorry), find a new target.
-	if(!isliving(target.current))
-		INVOKE_ASYNC(src, PROC_REF(find_target))
+	if(owner.current.stat != DEAD)
 		return
-	UnregisterSignal(previous_body, list(COMSIG_QDELETING, COMSIG_MOB_MIND_TRANSFERRED_INTO))
-	RegisterSignal(target.current, COMSIG_QDELETING, PROC_REF(on_target_body_del))
-	RegisterSignal(target.current, COMSIG_MOB_MIND_TRANSFERRED_INTO, PROC_REF(on_possible_mindswap))
-
-/datum/objective/sacrifice/proc/on_possible_mindswap(mob/source)
-	SIGNAL_HANDLER
-	UnregisterSignal(target.current, list(COMSIG_QDELETING, COMSIG_MOB_MIND_TRANSFERRED_INTO))
-	//we check if the mind is bodyless only after mindswap shenanigeans to avoid issues.
-	addtimer(CALLBACK(src, PROC_REF(do_we_have_a_body)), 0 SECONDS)
-
-/datum/objective/sacrifice/proc/do_we_have_a_body()
-	if(!target.current) //The player was ghosted and the mind isn't probably going to be transferred to another mob at this point.
-		find_target()
+	if(!QDELETED(GLOB.cult_narsie))
 		return
-	RegisterSignal(target.current, COMSIG_QDELETING, PROC_REF(on_target_body_del))
-	RegisterSignal(target.current, COMSIG_MOB_MIND_TRANSFERRED_INTO, PROC_REF(on_possible_mindswap))
+	if(!is_cult_leader())
+		return
 
-/datum/objective/sacrifice/check_completion()
-	return sacced || completed
+	var/area/current_area = get_area(owner.current)
+	for(var/datum/mind/cult_mind as anything in cult_team.members)
+		SEND_SOUND(cult_mind, sound('sound/hallucinations/veryfar_noise.ogg'))
+		to_chat(cult_mind, span_cultlarge("The Cult's Master, [owner.current.name], has fallen in \the [current_area]!"))
 
-/datum/objective/sacrifice/update_explanation_text()
-	if(target)
-		explanation_text = "Sacrifice [target], the [target.assigned_role.title] via invoking an Offer rune with [target.p_them()] on it and three acolytes around it."
-	else
-		explanation_text = "The veil has already been weakened here, proceed to the final objective."
+/datum/antagonist/cult/get_preview_icon()
+	var/icon/icon = render_preview_outfit(preview_outfit)
 
-/datum/objective/eldergod
-	var/summoned = FALSE
-	var/killed = FALSE
-	var/list/summon_spots = list()
+	// The longsword is 64x64, but getFlatIcon crunches to 32x32.
+	// So I'm just going to add it in post, screw it.
 
-/datum/objective/eldergod/New()
-	..()
-	var/sanity = 0
-	while(summon_spots.len < SUMMON_POSSIBILITIES && sanity < 100)
-		var/area/summon_area = pick(GLOB.areas - summon_spots)
-		if(summon_area && is_station_level(summon_area.z) && (summon_area.area_flags & VALID_TERRITORY))
-			summon_spots += summon_area
-		sanity++
-	update_explanation_text()
+	// Center the dude, because item icon states start from the center.
+	// This makes the image 64x64.
+	icon.Crop(-15, -15, 48, 48)
 
-/datum/objective/eldergod/update_explanation_text()
-	explanation_text = "Summon Nar'Sie by invoking the rune 'Summon Nar'Sie'. The summoning can only be accomplished in [english_list(summon_spots)] - where the veil is weak enough for the ritual to begin."
+	var/obj/item/melee/cultblade/longsword = new
+	icon.Blend(icon(longsword.lefthand_file, longsword.inhand_icon_state), ICON_OVERLAY)
+	qdel(longsword)
 
-/datum/objective/eldergod/check_completion()
-	if(killed)
-		return CULT_NARSIE_KILLED // You failed so hard that even the code went backwards.
-	return summoned || completed
+	// Move the guy back to the bottom left, 32x32.
+	icon.Crop(17, 17, 48, 48)
 
-/datum/team/cult/proc/check_cult_victory()
-	for(var/datum/objective/O in objectives)
-		if(O.check_completion() == CULT_NARSIE_KILLED)
-			return CULT_NARSIE_KILLED
-		else if(!O.check_completion())
-			return CULT_LOSS
-	return CULT_VICTORY
+	return finish_preview_icon(icon)
 
-/datum/team/cult/roundend_report()
-	var/list/parts = list()
-	var/victory = check_cult_victory()
+/datum/outfit/cultist
+	name = "Cultist (Preview only)"
 
-	if(victory == CULT_NARSIE_KILLED) // Epic failure, you summoned your god and then someone killed it.
-		parts += "<span class='redtext big'>Nar'sie has been killed! The cult will haunt the universe no longer!</span>"
-	else if(victory)
-		parts += "<span class='greentext big'>The cult has succeeded! Nar'Sie has snuffed out another torch in the void!</span>"
-	else
-		parts += "<span class='redtext big'>The staff managed to stop the cult! Dark words and heresy are no match for Nanotrasen's finest!</span>"
+	uniform = /obj/item/clothing/under/color/black
+	suit = /obj/item/clothing/suit/hooded/cultrobes/alt
+	head = /obj/item/clothing/head/hooded/cult_hoodie/alt
+	shoes = /obj/item/clothing/shoes/cult/alt
+	r_hand = /obj/item/melee/blood_magic/stun
 
-	if(objectives.len)
-		parts += "<b>The cultists' objectives were:</b>"
-		var/count = 1
-		for(var/datum/objective/objective in objectives)
-			if(objective.check_completion())
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_greentext("Success!")]"
-			else
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
-			count++
+/datum/outfit/cultist/post_equip(mob/living/carbon/human/equipped, visualsOnly)
+	equipped.eye_color_left = BLOODCULT_EYE
+	equipped.eye_color_right = BLOODCULT_EYE
+	equipped.update_body()
 
-	if(members.len)
-		parts += "<span class='header'>The cultists were:</span>"
-		if(length(true_cultists))
-			parts += printplayerlist(true_cultists)
-		else
-			parts += printplayerlist(members)
-
-	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
-
-/datum/team/cult/proc/is_sacrifice_target(datum/mind/mind)
-	for(var/datum/objective/sacrifice/sac_objective in objectives)
-		if(mind == sac_objective.target)
-			return TRUE
-	return FALSE
-
-/// Returns whether the given mob is convertable to the blood cult
+///Returns whether the given mob is convertable to the blood cult
 /proc/is_convertable_to_cult(mob/living/target, datum/team/cult/specific_cult)
 	if(!istype(target))
 		return FALSE
@@ -518,6 +487,7 @@
 	if(HAS_TRAIT(target, TRAIT_MINDSHIELD) || issilicon(target) || isbot(target) || isdrone(target))
 		return FALSE //can't convert machines, shielded, or braindead
 	return TRUE
+<<<<<<< HEAD
 
 /// Sets a blood target for the cult.
 /datum/team/cult/proc/set_blood_target(atom/new_target, mob/marker, duration = 90 SECONDS)
@@ -596,3 +566,5 @@
 #undef CULT_NARSIE_KILLED
 #undef CULT_VICTORY
 #undef SUMMON_POSSIBILITIES
+=======
+>>>>>>> 32afa856dbb (Makes cult leader handling work off of the Cult datum (#76556))
