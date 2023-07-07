@@ -133,6 +133,7 @@
 			if(viewer.is_blind() && !viewer.can_hear())
 				to_chat(viewer, msg)
 
+<<<<<<< HEAD
 	// SKYRAT EDIT -- BEGIN -- ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
@@ -147,6 +148,8 @@
 	// SKYRAT EDIT -- END
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
+=======
+>>>>>>> 12c7f3a7814 (Fix double signal send of `COMSIG_MOB_EMOTED` (#76607))
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
  *
