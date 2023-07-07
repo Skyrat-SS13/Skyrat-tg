@@ -38,7 +38,6 @@
 	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "phalanx1"
-	inhand_icon_state = "hoslaser"
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -53,23 +52,6 @@
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
 	return
-
-// With a few tricks we can just steal the HoS gun inhand sprites
-/obj/item/gun/energy/e_gun/cfa_phalanx/update_icon_state()
-	var/ratio = get_charge_ratio()
-	var/temp_icon_to_use = initial(inhand_icon_state)
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-
-	if(shot.select_name == "lethal") // this won't match, it has to be 'kill'
-		temp_icon_to_use += "kill"
-	else if(shot.select_name == "disable") // this one the color just matches a little better
-		temp_icon_to_use += "ion"
-	else
-		temp_icon_to_use += "[shot.select_name]"
-
-	temp_icon_to_use += "[ratio]"
-	inhand_icon_state = temp_icon_to_use
-	return ..()
 
 /*
 *	CFA PALADIN
