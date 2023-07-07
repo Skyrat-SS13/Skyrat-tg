@@ -65,6 +65,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/plasmaman //Added tgstation#73828 screams to our modular scream solution
+	name = "Plasmaman Scream"
+	male_screamsounds = list('sound/voice/plasmaman/plasmeme_scream_1.ogg', 'sound/voice/plasmaman/plasmeme_scream_2.ogg', 'sound/voice/plasmaman/plasmeme_scream_3.ogg')
+	female_screamsounds = null
+
 //DONATOR SCREAMS
 /datum/scream_type/zombie
 	name = "Zombie Scream"

@@ -40,7 +40,7 @@
 	femalescreamsounds = null
 
 /datum/species/plasmaman
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
+	screamsounds = list('sound/voice/plasmaman/plasmeme_scream_1.ogg', 'sound/voice/plasmaman/plasmeme_scream_2.ogg', 'sound/voice/plasmaman/plasmeme_scream_3.ogg')
 	femalescreamsounds = null
 
 /datum/species/vox
