@@ -16,6 +16,7 @@
 #define BODYPART_ICON_HUMAN 'modular_skyrat/modules/bodyparts/icons/human_parts_greyscale.dmi'
 #define BODYPART_ICON_MAMMAL 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
 #define BODYPART_ICON_AKULA 'modular_skyrat/modules/bodyparts/icons/akula_parts_greyscale.dmi'
+#define BODYPART_ICON_AQUATIC 'modular_skyrat/modules/bodyparts/icons/aquatic_parts_greyscale.dmi'
 #define BODYPART_ICON_GHOUL 'modular_skyrat/modules/bodyparts/icons/ghoul_bodyparts.dmi'
 #define BODYPART_ICON_INSECT 'modular_skyrat/modules/bodyparts/icons/insect_parts_greyscale.dmi'
 #define BODYPART_ICON_LIZARD 'modular_skyrat/modules/bodyparts/icons/lizard_parts_greyscale.dmi'

@@ -291,8 +291,10 @@
 ///called in /obj/item/gun/fire_gun (user, target, flag, params)
 #define COMSIG_GUN_TRY_FIRE "gun_try_fire"
 	#define COMPONENT_CANCEL_GUN_FIRE (1<<0)
-///called in /obj/item/gun/process_fire (src, target, params, zone_override)
+///called in /obj/item/gun/process_fire (src, target, params, zone_override, bonus_spread_values)
 #define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
+	#define MIN_BONUS_SPREAD_INDEX 1
+	#define MAX_BONUS_SPREAD_INDEX 2
 ///called in /obj/item/gun/process_fire (user, target, params, zone_override)
 #define COMSIG_GUN_FIRED "gun_fired"
 ///called in /obj/item/gun/process_chamber (src)
@@ -354,7 +356,10 @@
 #define COMSIG_ITEM_EMBEDDING_UPDATE "item_embedding_update"
 
 ///sent to targets during the process_hit proc of projectiles
-#define COMSIG_PELLET_CLOUD_INIT "pellet_cloud_init"
+#define COMSIG_FIRE_CASING "fire_casing"
+
+///sent to the projectile after an item is spawned by the projectile_drop element: (new_casing)
+#define COMSIG_PROJECTILE_ON_SPAWN_DROP "projectile_on_spawn_drop"
 
 // /obj/vehicle/sealed/car/vim signals
 
