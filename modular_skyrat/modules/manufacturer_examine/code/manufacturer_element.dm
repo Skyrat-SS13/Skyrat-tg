@@ -15,7 +15,7 @@
 
 	src.company_string = given_company_string
 
-	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/element/manufacturer_examine/Detach(datum/target)
 	. = ..()
