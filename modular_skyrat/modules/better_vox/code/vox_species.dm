@@ -7,10 +7,6 @@
 	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

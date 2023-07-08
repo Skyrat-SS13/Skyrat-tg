@@ -21,10 +21,6 @@
 	)
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
 	)
