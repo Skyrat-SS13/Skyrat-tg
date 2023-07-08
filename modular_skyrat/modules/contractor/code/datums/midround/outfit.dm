@@ -19,6 +19,7 @@
 		/obj/item/storage/box/syndicate/contract_kit/midround,
 		/obj/item/knife/combat/survival,
 		/obj/item/pinpointer/crew/contractor,
+		/obj/item/melee/baton/telescopic/contractor_baton
 	)
 
 	implants = list(
