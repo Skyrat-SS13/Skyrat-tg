@@ -19,7 +19,7 @@
 	charge_sections = 3
 
 /obj/item/gun/energy/disabler/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/energy/disabler/bolt_disabler/give_gun_safeties()
 	return
@@ -46,7 +46,7 @@
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
 	return
@@ -67,7 +67,7 @@
 	charge_sections = 5
 
 /obj/item/gun/energy/laser/cfa_paladin/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
 	return
