@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		Security ignoring Command, Security violating civil rights, Security engaging in Mutiny, \
 		General Violation of Sol Federation Citizen Rights by Command/Security, etc.\n\
 		You SHOULD NOT call Marshals for:\n\
-		Corporate affairs, manhunts, settling arguments, etc.\n\
+		Corporate affairs, manhunts, settling arguments, biohazards, etc.\n\
 		Are you sure you want to call Marshals?",
 	EMERGENCY_RESPONSE_ATMOS = "You SHOULD call Advanced Atmospherics for:\n\
 		Stationwide atmospherics loss, wide-scale supermatter delamination related repairs, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
@@ -90,45 +90,51 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
 /obj/machinery/computer/communications/proc/call_911(ordered_team)
+	/// How many players will be spawned
 	var/team_size
+	/// Outfit datum that this team uses
 	var/cops_to_send
+	var/announcer = "Sol Federation Dispatch"
 	var/announcement_message = "sussus amogus"
-	var/announcer = "Sol Federation Marshal Department"
+	/// What Ghosts will see under the poll
 	var/poll_question = "fuck you leatherman"
+	/// ID of the phones that the team is given, so they can contact eachother
 	var/cell_phone_number = "911"
+	/// List of spawned players, for tracking related to False-call vote counting
 	var/list_to_use = "911_responders"
 	switch(ordered_team)
 		if(EMERGENCY_RESPONSE_POLICE)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/police
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate marshal support, and we are \
-				sending our best marshals to support your station.\n\n\
-				If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+			announcer = "Sol Federation Marshal Department"
+			announcement_message = "Attention crew of [station_name()], this is SolFed Emergency Dispatch. We've recieved a request for Marshal intervention, and are \
+				sending a team of Marshals to investigate and support your station.\n\n\
+				If the first responders request that they need SWAT support to do their job, or to handle a faulty 911 call, we will send them in at additional cost to your station to the \
 				tune of $20,000.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
-			announcer = "Sol Federation Marshal Department"
-			poll_question = "The station has called for the Marshals. Will you respond?"
+			poll_question = "The station has called for a Marshal intervention. Will you respond?"
 		if(EMERGENCY_RESPONSE_ATMOS)
 			team_size = tgui_input_number(usr, "How many techs would you like dispatched?", "How badly did you screw up?", 3, 3, 1)
 			cops_to_send = /datum/antagonist/ert/request_911/atmos
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've recieved a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
+			announcer = "Sol Federation Breach Control Division"
+			announcement_message = "Attention crew of [station_name()], this is SolFed Emergency Dispatch. We've recieved a report of unsustainable stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
 				sending an Advanced Atmospherics team to support your station.\n\n\
-				The transcript of the call is as follows:\n\
-				[GLOB.call_911_msg]"
-			announcer = "Sol Federation 811 Dispatch - Advanced Atmospherics"
-			poll_question = "The station has called for an advanced engineering support team. Will you respond?"
-			cell_phone_number = "911"	//This needs to stay so they can communicate with SWAT
-		if(EMERGENCY_RESPONSE_EMT)
-			team_size = 8
-			cops_to_send = /datum/antagonist/ert/request_911/emt
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate medical support, and we are \
-				sending our best emergency medical technicians to support your station.\n\n\
-				If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+				If the first responders request that they need SWAT support to do their job, or to handle a faulty 911 call, we will send them in at additional cost to your station to the \
 				tune of $20,000.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
+			poll_question = "The station has called for an advanced engineering support team. Will you respond?"
+		if(EMERGENCY_RESPONSE_EMT)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/request_911/emt
 			announcer = "Sol Federation EMTs"
+			announcement_message = "Attention crew of [station_name()], this is SolFed Emergency Dispatch. We've recieved a request for immediate medical support, and we are \
+				sending our best emergency medical technicians to support your station.\n\n\
+				If the first responders request that they need SWAT support to do their job, or to handle a faulty 911 call, we will send them in at additional cost to your station to the \
+				tune of $20,000.\n\n\
+				The transcript of the call is as follows:\n\
+				[GLOB.call_911_msg]"
 			poll_question = "The station has called for medical support. Will you respond?"
 		if(EMERGENCY_RESPONSE_EMAG)
 			team_size = 8
@@ -138,7 +144,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				Thank you for choosing our premium Fifteen Minutes or Less delivery option! Our pizza will be at your doorstep at [station_name()] as soon as possible thanks \
 				to our lightning-fast warp drives installed on all Dogginos delivery shuttles!\n\
 				Distance from your chosen Dogginos: 70,000 Lightyears"
-			announcer = "Dogginos"
+			announcer = "Dogginos Pizza"
 			poll_question = "The station has ordered $35,000 in pizza. Will you deliver?"
 			cell_phone_number = "Dogginos"
 			list_to_use = "dogginos"
@@ -249,6 +255,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	name = "911 Responder"
 	antag_hud_name = "hud_spacecop"
 	suicide_cry = "FOR THE SOL FEDERATION!!"
+	/// Used in the greet() text to say what kind of assistance the responder is providing
 	var/department = "Some stupid shit"
 
 /datum/antagonist/ert/request_911/apply_innate_effects(mob/living/mob_override)
@@ -282,7 +289,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>1.</B> Contact [GLOB.caller_of_911] and assist them in resolving the matter."
 	missiondesc += "<BR> <B>2.</B> Protect, ensure, and uphold the rights of Sol Federation citizens on board [station_name()]."
 	missiondesc += "<BR> <B>3.</B> If you believe yourself to be in danger, unable to do the job assigned to you due to a dangerous situation, \
-		or that the 911 call was made in error, you can use the S.W.A.T. Backup Caller in your backpack to vote on calling a S.W.A.T. team to assist in the situation."
+		or that the 911 call was made in error, you can use the S.W.A.T. Backup Caller in your backpack to vote on calling a S.W.A.T. team to assist in the situation. \
+		This will fine the station 20k credits."
 	missiondesc += "<BR> <B>4.</B> When you have finished with your work on the station, use the Beamout Tool in your backpack to beam out yourself \
 		along with anyone you are pulling."
 	to_chat(owner, missiondesc)
@@ -315,13 +323,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 */
 
 /datum/antagonist/ert/request_911/police
-	name = "Marshal"
+	name = "SolFed Marshal"
 	role = "Marshal"
 	department = "Marshal"
 	outfit = /datum/outfit/request_911/police
 
 /datum/outfit/request_911/police
-	name = "911 Response: Marshal"
+	name = "911 Response: SolFed Marshal"
 	back = /obj/item/storage/backpack/duffelbag/cops
 	uniform = /obj/item/clothing/under/rank/security/detective/cowboy
 	shoes = /obj/item/clothing/shoes/cowboy
@@ -354,7 +362,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	name = "811 Response: Advanced Atmospherics"
 	back = /obj/item/mod/control/pre_equipped/advanced/atmos
 	uniform = /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat/utility/advanced
-	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper
+	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_solfed/atmos
 	mask = /obj/item/clothing/mask/gas/atmos/glass
 	belt = /obj/item/storage/belt/utility/full/powertools/ircd
@@ -392,7 +400,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /datum/antagonist/ert/request_911/emt
 	name = "Emergency Medical Technician"
 	role = "EMT"
-	department = "EMT"
+	department = "Emergency Medical"
 	outfit = /datum/outfit/request_911/emt
 
 /datum/outfit/request_911/emt
@@ -424,12 +432,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /datum/antagonist/ert/request_911/condom_destroyer/greet()
 	var/missiondesc =  ""
 	missiondesc += "<B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
-	missiondesc += "<BR>You are here to backup the 911 first responders, as they have reported for your assistance..\n"
+	missiondesc += "<BR>You are here to backup the 911 first responders, as they have requested assistance.\n"
 	missiondesc += "<BR><B>Your Mission</B>:"
 	missiondesc += "<BR> <B>1.</B> Contact the first responders using the Cell Phone in your backpack to figure out the situation."
 	missiondesc += "<BR> <B>2.</B> Arrest anyone who interferes the work of the first responders."
-	missiondesc += "<BR> <B>3.</B> Use lethal force in the arrest of the suspects if they will not comply, or the station refuses to comply."
-	missiondesc += "<BR> <B>4.</B> If you believe the station is engaging in treason and is firing upon first responders and S.W.A.T. members, use the \
+	missiondesc += "<BR> <B>3.</B> If subjects do not comply or engage in hostility, and can not be handled non-lethally, then lethal force is authorized."
+	missiondesc += "<BR> <B>4.</B> If you believe the station is engaging in treason and is attacking first responders and S.W.A.T. members, use the \
 		Treason Reporter in your backpack to call the military."
 	missiondesc += "<BR> <B>5.</B> When you have finished with your work on the station, use the Beamout Tool in your backpack to beam out yourself \
 		along with anyone you are pulling."
@@ -475,7 +483,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>2.</B> Arrest all suspects involved in the treason attempt."
 	missiondesc += "<BR> <B>3.</B> Assume control of the station for the Sol Federation, and initiate evacuation procedures to get non-offending citizens \
 		away from the scene."
-	missiondesc += "<BR> <B>4.</B> If you need to use lethal force, do so, but only if you must."
+	missiondesc += "<BR> <B>4.</B> Lethal force is authorized, but strongly advised against. Try to show SolFed in a good light."
 	to_chat(owner, missiondesc)
 	var/mob/living/greeted_mob = owner.current
 	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
@@ -505,7 +513,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/solfed_reporter
 	name = "SolFed reporter"
-	desc = "Use this in-hand to vote to call SolFed backup. If half your team votes for it, SWAT will be dispatched."
+	desc = "Use this in-hand to realize you're holding a debug item. Where did you get this."
 	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
 	icon_state = "reporter_off"
 	w_class = WEIGHT_CLASS_SMALL
