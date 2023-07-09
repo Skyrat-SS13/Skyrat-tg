@@ -152,6 +152,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "beret_sol"
 	armor_type = /datum/armor/beret_sec
+	greyscale_config = null
+	greyscale_config_worn = null
 
 //SWAT Leader Riot Armor
 /obj/item/clothing/suit/armor/riot/sol/leader
