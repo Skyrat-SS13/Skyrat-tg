@@ -7,10 +7,7 @@
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
 	species_traits = list(
 		NOZOMBIE,
-		NOEYESPRITES,
-		LIPS,
-		HAIR
-		)
+	)
 	inherent_traits = list(
 		TRAIT_NOBLOOD,
 		TRAIT_NODISMEMBER,
