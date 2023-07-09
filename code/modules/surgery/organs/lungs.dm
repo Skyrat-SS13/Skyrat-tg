@@ -464,7 +464,7 @@
 		// tl;dr the first argument chooses the smaller of miasma_pp/2 or 6(typical max virus symptoms), the second chooses the smaller of miasma_pp or 8(max virus symptom level)
 		// Each argument has a minimum of 1 and rounds to the nearest value. Feel free to change the pp scaling I couldn't decide on good numbers for it.
 		miasma_disease.name = "Unknown"
-		miasma_disease.try_infect(breather)
+		breather.ForceContractDisease(miasma_disease, del_on_fail = TRUE) // SKYRAT EDIT - RESPECTING VIRUS IMMUNITY - ORIGINAL: miasma_disease.try_infect(breather)
 	// Miasma side effects
 	switch(miasma_pp)
 		if(0.25 to 5)
