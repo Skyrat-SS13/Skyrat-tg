@@ -11,7 +11,6 @@
 	cure_chance = 25
 	desc = "Fungal infection that attacks patient's muscles and brain in an attempt to hijack them. Causes fever, headaches, muscle spasms, and fatigue."
 	severity = DISEASE_SEVERITY_BIOHAZARD
-	bypasses_immunity = TRUE
 
 /datum/disease/cryptococcus/stage_act(seconds_per_tick, times_fired)
 	. = ..()
