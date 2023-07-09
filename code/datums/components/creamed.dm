@@ -25,39 +25,10 @@ GLOBAL_LIST_INIT(creamable, typecacheof(list(
 
 	add_memory_in_range(parent, 7, /datum/memory/witnessed_creampie, protagonist = parent)
 
-<<<<<<< HEAD
-	creamface = mutable_appearance('icons/effects/creampie.dmi')
-
-	if(ishuman(parent))
-		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.bodytype & BODYTYPE_SNOUTED)
-			creamface.icon_state = "creampie_lizard"
-		else if(H.dna.species.bodytype & BODYTYPE_MONKEY)
-			creamface.icon_state = "creampie_monkey"
-		else
-			creamface.icon_state = "creampie_human"
-		H.add_mood_event("creampie", /datum/mood_event/creampie)
-	else if(iscorgi(parent))
-		creamface.icon_state = "creampie_corgi"
-	else if(isAI(parent))
-		creamface.icon_state = "creampie_ai"
-
-	var/atom/A = parent
-	A.add_overlay(creamface)
-
-/datum/component/creamed/Destroy(force, silent)
-	var/atom/A = parent
-	A.cut_overlay(creamface)
-	qdel(creamface)
-	if(ishuman(A))
-		var/mob/living/carbon/human/human_parent = A
-		human_parent.clear_mood_event("creampie")
-=======
 /datum/component/creamed/Destroy(force)
 	creamface = null
 	my_head = null
 	QDEL_NULL(creampie)
->>>>>>> a59442d292f (Makes creampies use bodypart overlays (#76525))
 	return ..()
 
 /datum/component/creamed/RegisterWithParent()
