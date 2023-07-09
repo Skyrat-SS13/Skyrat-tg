@@ -213,7 +213,7 @@
 *	Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
 */
 
-/obj/item/ammo_casing/caseless/laser
+/obj/item/ammo_casing/laser
 	name = "type I plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
@@ -223,7 +223,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/single
 
-/obj/item/ammo_casing/caseless/laser/double
+/obj/item/ammo_casing/laser/double
 	name = "type II plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon_state = "plasma_shell2"
@@ -232,7 +232,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/double
 
-/obj/item/ammo_casing/caseless/laser/bounce
+/obj/item/ammo_casing/laser/bounce
 	name = "type III reflective projectile (lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
@@ -241,7 +241,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/bounce
 
-/obj/item/ammo_casing/caseless/laser/bounce/disabler
+/obj/item/ammo_casing/laser/bounce/disabler
 	name = "type III reflective projectile (disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"

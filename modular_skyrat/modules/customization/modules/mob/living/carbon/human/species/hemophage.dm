@@ -63,10 +63,6 @@
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
 	species_traits = list(
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
 		DRINKSBLOOD,
 	)
 	inherent_traits = list(
