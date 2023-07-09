@@ -68,7 +68,7 @@
 /// Will differentiate into the "viper" giant spider.
 /mob/living/basic/spiderling/viper
 	grow_as = /mob/living/basic/giant_spider/viper
-	name = "viper_spiderling"
+	name = "viper spiderling"
 	desc = "Furry and black, it looks defenseless. This one has sparkling purple eyes."
 	icon_state = "viper_spiderling"
 	icon_dead = "viper_spiderling_dead"
@@ -78,7 +78,7 @@
 /// Will differentiate into the "tarantula" giant spider.
 /mob/living/basic/spiderling/tarantula
 	grow_as = /mob/living/basic/giant_spider/tarantula
-	name = "tarantula_spiderling"
+	name = "tarantula spiderling"
 	desc = "Furry and black, it looks defenseless. This one has abyssal red eyes."
 	icon_state = "taratula_spiderling"
 	icon_dead = "tarantula_spiderling_dead"
