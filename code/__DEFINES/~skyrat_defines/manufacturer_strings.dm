@@ -7,7 +7,6 @@
 #define COMPANY_NANOTRASEN "It has <b>[span_blue("Nanotrasen Armories")]</b> etched into it."
 
 #define COMPANY_ARMADYNE "It has <b>[span_red("Armadyne Corporation")]</b> etched into it."
-#define COMPANY_OLDARMS "It has <b><i>[span_red("Armadyne Oldarms")]</i></b> etched into it."
 #define COMPANY_SCARBOROUGH "It has <b>[span_orange("Scarborough Arms")]</b> stamped onto it."
 #define COMPANY_INTERDYNE "It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto it."
 

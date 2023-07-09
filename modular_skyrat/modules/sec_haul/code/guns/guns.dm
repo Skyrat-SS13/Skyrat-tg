@@ -795,7 +795,7 @@
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/g11/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_OLDARMS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
 	name = "\improper G-11 magazine"
@@ -965,7 +965,7 @@
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/vintorez/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_OLDARMS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	name = "\improper VKC magazine"
