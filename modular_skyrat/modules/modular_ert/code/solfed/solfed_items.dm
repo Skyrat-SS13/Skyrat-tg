@@ -2,12 +2,22 @@
 // GLOBAL ITEMS
 //
 
+// Custom Cellphone
+/obj/item/gangster_cellphone/sol
+	name = "walkie talkie"
+	desc = "Yeah, yeah, Walkie Talkie isn't the right term, but do you know how agonizing it would be to call these things \"two-way transceivers\" \
+	in a day-to-day conversation? I don't care how tacti-cool you want to be, at the end of the day you're gonna talkie while you walkie."
+	icon = 'modular_skyrat/modules/modular_ert/icons/solfed.dmi'
+	// Hard-coded icon states means that in the file, the states are called phone_on and phone_off
+	w_class = WEIGHT_CLASS_SMALL
+
+
 // Beamout Tool
 // Used to despawn Sol from the round, as they have no shuttle
 /obj/item/beamout_tool
 	name = "beam-out tool" // TODO, find a way to make this into drop pods cuz that's cooler visually
 	desc = "Use this to begin the lengthy beam-out process to return to Sol Federation space. It will bring anyone you are pulling with you."
-	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
+	icon = 'modular_skyrat/modules/modular_ert/icons/solfed.dmi'
 	icon_state = "beam_me_up_scotty"
 	w_class = WEIGHT_CLASS_SMALL
 

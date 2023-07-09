@@ -184,10 +184,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 				station_balance?._adjust_money(GLOB.solfed_tech_charge)
 			else
-				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
+				var/obj/item/gangster_cellphone/sol/phone = new() // biggest gang in the city
 				phone.gang_id = cell_phone_number
-				phone.name = "[cell_phone_number] branded cell phone"
-				phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
+				phone.name = "[cell_phone_number] walkie talkie"
 				var/phone_equipped = phone.equip_to_best_slot(cop)
 				if(!phone_equipped)
 					to_chat(cop, "Your [phone.name] has been placed at your feet.")
@@ -254,7 +253,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/solfed_reporter
 	name = "SolFed reporter"
 	desc = "Use this in-hand to realize you're holding a debug item. Where did you get this."
-	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
+	icon = 'modular_skyrat/modules/modular_ert/icons/solfed.dmi'
 	icon_state = "reporter_off"
 	w_class = WEIGHT_CLASS_SMALL
 	/// Was the reporter turned on?
