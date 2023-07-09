@@ -152,6 +152,7 @@
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
+		/obj/item/sol_evasion_kit,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
@@ -211,6 +212,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
+	head = /obj/item/clothing/head/helmet/toggleable/riot/sol
 	belt = /obj/item/gun/energy/disabler
 	suit = /obj/item/clothing/suit/armor/riot/sol
 	r_pocket = /obj/item/lighter
@@ -234,6 +236,7 @@
 	head = /obj/item/clothing/head/helmet/toggleable/riot/sol
 	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
+	suit = /obj/item/clothing/suit/armor/vest/alt/sol
 	shoes = /obj/item/clothing/shoes/combat
 
 	back = /obj/item/storage/backpack/duffelbag/cops

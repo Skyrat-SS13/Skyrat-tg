@@ -73,6 +73,23 @@
 	greyscale_config = /datum/greyscale_config/encryptionkey_medical
 	greyscale_colors = "#ebebeb#2b2793"
 
+/obj/item/sol_evasion_kit
+	name = "\improper SolFed combat evasion kit"
+	desc = "A vaccuum-sealed bag with a foldable Type I armor vest and helmet. SolFed Marshals are given them to armor up in case of an emergency, \
+	and although the gear inside isn't good for prolonged combat it works well in a pinch. There's no way to re-seal them into the bag after opening it."
+	icon_state = "evasion_kit"
+	icon = 'modular_skyrat/modules/modular_ert/icons/solfed.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/sol_evasion_kit/attack_self(mob/user)
+	if(tgui_alert(user, "Do you want to open the evasion kit? There's no putting the gear back, and it will be dropped at your feet.", "Time to Suit Up?", list("Yes", "No")) != "Yes")
+		return
+	playsound(get_turf(user), 'sound/items/handling/cloth_pickup.ogg', 60)
+	new /obj/item/clothing/suit/armor/vest/alt/sol(user.loc)
+	new /obj/item/clothing/head/helmet/sol(user.loc)
+	new /obj/effect/decal/cleanable/plastic(user.loc)
+	qdel(src)
+
 //
 // CLOTHING
 //
