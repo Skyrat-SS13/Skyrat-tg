@@ -206,12 +206,13 @@
 	name = "911 Response: Armed S.W.A.T. Officer"
 	back = /obj/item/storage/backpack/duffelbag/cops
 	uniform = /obj/item/clothing/under/rank/centcom/skyrat/solfed/marshal
-	shoes = /obj/item/clothing/shoes/jackboots
+	shoes = /obj/item/clothing/shoes/combat
+	mask = /obj/item/clothing/mask/balaclava
+	gloves = /obj/item/clothing/gloves/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/helmet/toggleable/riot
 	belt = /obj/item/gun/energy/disabler
-	suit = /obj/item/clothing/suit/armor/riot
+	suit = /obj/item/clothing/suit/armor/riot/sol
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
@@ -230,10 +231,9 @@
 	name = "911 Response: SolFed Military"
 
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet
+	head = /obj/item/clothing/head/helmet/toggleable/riot/sol
 	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 
 	back = /obj/item/storage/backpack/duffelbag/cops

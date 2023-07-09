@@ -97,20 +97,43 @@
 	icon_state = "sol_marshal"
 	armor_type = /datum/armor/rank_security
 
-//Marshal Armor - part of their Evasion kit
+//Marshal Helmet - part of their Evasion kit
+/obj/item/clothing/head/helmet/sol
+	name = "\improper SolFed compact helmet"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_state = "helmet_solup" //not toggleable, has visor removed
+
+//Marshal and Military Armor
 /obj/item/clothing/suit/armor/vest/alt/sol
 	name = "\improper SolFed armor vest"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sol"
 
-//SWAT's Riot Armor
+// SWAT and Military Helmet
+/obj/item/clothing/head/helmet/toggleable/riot/sol
+	name = "\improper SolFed riot helmet"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_state = "helmet_sol" //toggleable version
+
+//SWAT Riot Armor
 /obj/item/clothing/suit/armor/riot/sol
 	name = "\improper SolFed riot gear"
 	desc = "A typical SolFed Type I armored vest, with the reflective plasteel replaced with a flexible polycarbonate and some heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sol_riot"
+
+//Leader Beret
+/obj/item/clothing/head/beret/sol
+	name = "\improper SolFed beret"
+	desc = "A Sol-blue beret made of durathread, and a small silver Sun pin. The inside has a layering of padding and some cleverly placed elastic bands, allowing it to be secured firmly to the head and protect from light impacts."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "helmet_sol"
+	armor_type = /datum/armor/beret_sec
 
 //SWAT Leader Riot Armor
 /obj/item/clothing/suit/armor/riot/sol/leader
