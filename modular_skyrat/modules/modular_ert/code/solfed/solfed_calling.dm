@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			else
 				var/obj/item/gangster_cellphone/sol/phone = new() // biggest gang in the city
 				phone.gang_id = cell_phone_number
-				phone.name = "[cell_phone_number] walkie talkie"
+				phone.name = "\improper [cell_phone_number] walkie talkie"
 				var/phone_equipped = phone.equip_to_best_slot(cop)
 				if(!phone_equipped)
 					to_chat(cop, "Your [phone.name] has been placed at your feet.")
@@ -272,6 +272,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	var/amount_to_summon = 4
 	/// What antagonist type should we give to the ghosts?
 	var/type_to_summon = /datum/antagonist/ert/request_911/condom_destroyer
+	/// If this team has one, what type of lead should it spawn? Null by default
+	var/lead_to_summon = null
 	/// What table should be be incrementing amount in in the solfed responders global?
 	var/summoned_type = "swat"
 	/// What name and ID should be on the cell phone given to the squad members?
@@ -323,6 +325,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 				var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 				var/index = 0
+
+				var/team_leader = pick(candidates)
+
 				while(agents_number && candidates.len)
 					var/spawn_loc = spawnpoints[index + 1]
 					//loop through spawnpoints one at a time
@@ -338,16 +343,20 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					cop.key = chosen_candidate.key
 
 					//Give antag datum
-					var/datum/antagonist/ert/request_911/ert_antag = new type_to_summon
+					var/datum/antagonist/ert/request_911/ert_antag
+					if(!lead_to_summon || chosen_candidate != team_leader)
+						ert_antag = new type_to_summon
+					else
+						ert_antag = new lead_to_summon
 
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
 					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
-					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
+					var/obj/item/gangster_cellphone/sol/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number
-					phone.name = "[cell_phone_number] branded cell phone"
+					phone.name = "\improper [cell_phone_number] walkie talkie"
 					var/phone_equipped = phone.equip_to_best_slot(cop)
 					if(!phone_equipped)
 						to_chat(cop, "Your [phone.name] has been placed at your feet.")
@@ -367,6 +376,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ghost_poll_msg = "The Sol-Fed 911 services have requested a S.W.A.T. backup. Do you wish to become a S.W.A.T. member?"
 	amount_to_summon = 6
 	type_to_summon = /datum/antagonist/ert/request_911/condom_destroyer
+	lead_to_summon = /datum/antagonist/ert/request_911/condom_destroyer/leader
 	summoned_type = "swat"
 	announcement_message = "Hello, crewmembers. Our emergency services have requested S.W.A.T. backup, either for assistance doing their job due to crew \
 		impediment, or due to a fraudulent 911 call. We have billed the station $20,000 for this, to cover the expenses of flying a second emergency response to \
@@ -391,6 +401,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ghost_poll_msg = "The station has decided to engage in treason. Do you wish to join the Sol Federation Military?"
 	amount_to_summon = 12
 	type_to_summon = /datum/antagonist/ert/request_911/treason_destroyer
+	lead_to_summon = /datum/antagonist/ert/request_911/treason_destroyer/leader
 	summoned_type = "national_guard"
 	announcement_message = "Crewmembers of the station. You have refused to comply with first responders and SWAT officers, and have assaulted them, \
 		and they are unable to carry out the wills of the Sol Federation, despite residing within Sol Federation borders.\n\

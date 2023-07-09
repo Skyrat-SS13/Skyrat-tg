@@ -75,6 +75,11 @@
 	department = "Police"
 	outfit = /datum/outfit/request_911/condom_destroyer
 
+/datum/antagonist/ert/request_911/condom_destroyer/leader
+	name = "Armed S.W.A.T. Leader"
+	role = "S.W.A.T. Leader"
+	outfit = /datum/outfit/request_911/condom_destroyer/leader
+
 /datum/antagonist/ert/request_911/condom_destroyer/greet()
 	var/missiondesc =  ""
 	missiondesc += "<B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
@@ -97,6 +102,12 @@
 	role = "Private"
 	department = "Military"
 	outfit = /datum/outfit/request_911/treason_destroyer
+
+/datum/antagonist/ert/request_911/treason_destroyer/leader
+	name = "Sol Federation Military"
+	role = "Sergeant"
+	department = "Military"
+	outfit = /datum/outfit/request_911/treason_destroyer/leader
 
 /datum/antagonist/ert/request_911/treason_destroyer/greet()
 	var/missiondesc =  ""
@@ -209,7 +220,7 @@
 	uniform = /obj/item/clothing/under/rank/centcom/skyrat/solfed/marshal
 	shoes = /obj/item/clothing/shoes/combat
 	mask = /obj/item/clothing/mask/balaclava
-	gloves = /obj/item/clothing/gloves/combat
+	gloves = /obj/item/clothing/gloves/tackler/combat
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
 	head = /obj/item/clothing/head/helmet/toggleable/riot/sol
@@ -227,6 +238,12 @@
 		/obj/item/beamout_tool = 1)
 
 	id_trim = /datum/id_trim/solfed
+
+/datum/outfit/request_911/condom_destroyer/leader
+	mask = null
+	head = /obj/item/clothing/head/beret/sol
+	suit = /obj/item/clothing/suit/armor/riot/sol/leader
+	r_pocket = /obj/item/megaphone
 
 // MILITARY
 /datum/outfit/request_911/treason_destroyer
@@ -251,3 +268,8 @@
 	)
 
 	id_trim = /datum/id_trim/solfed
+
+/datum/outfit/request_911/treason_destroyer/leader
+	head = /obj/item/clothing/head/beret/sol
+	suit = /obj/item/clothing/suit/armor/riot/sol/leader
+	r_pocket = /obj/item/megaphone

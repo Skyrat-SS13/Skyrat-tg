@@ -134,6 +134,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet_sol" //toggleable version
+	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT|HIDEHAIR //for some reason the base riot helmet doesnt have hidehair
 
 //SWAT Riot Armor
 /obj/item/clothing/suit/armor/riot/sol
@@ -149,7 +150,7 @@
 	desc = "A Sol-blue beret made of durathread, and a small silver Sun pin. The inside has a layering of padding and some cleverly placed elastic bands, allowing it to be secured firmly to the head and protect from light impacts."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "helmet_sol"
+	icon_state = "beret_sol"
 	armor_type = /datum/armor/beret_sec
 
 //SWAT Leader Riot Armor
