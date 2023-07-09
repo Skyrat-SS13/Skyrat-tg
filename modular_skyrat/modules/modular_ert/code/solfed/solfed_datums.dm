@@ -234,14 +234,16 @@
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/storage/box/lethalshot = 2,
+		/obj/item/storage/box/rubbershot = 1,
 		/obj/item/solfed_reporter/treason_reporter = 1,
 		/obj/item/beamout_tool = 1)
 
 	id_trim = /datum/id_trim/solfed
 
 /datum/outfit/request_911/condom_destroyer/leader
+	name = "911 Response: S.W.A.T. Leader"
 	mask = null
-	head = /obj/item/clothing/head/beret/sol
+	head = /obj/item/clothing/head/beret/solfed
 	suit = /obj/item/clothing/suit/armor/riot/sol/leader
 	r_pocket = /obj/item/megaphone
 
@@ -270,6 +272,7 @@
 	id_trim = /datum/id_trim/solfed
 
 /datum/outfit/request_911/treason_destroyer/leader
-	head = /obj/item/clothing/head/beret/sol
+	name = "911 Response: SolFed Military Leader"
+	head = /obj/item/clothing/head/beret/solfed
 	suit = /obj/item/clothing/suit/armor/riot/sol/leader
 	r_pocket = /obj/item/megaphone

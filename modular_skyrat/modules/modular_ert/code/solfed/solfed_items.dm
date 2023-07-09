@@ -145,7 +145,7 @@
 	icon_state = "armor_sol_riot"
 
 //Leader Beret
-/obj/item/clothing/head/beret/sol
+/obj/item/clothing/head/beret/solfed
 	name = "\improper SolFed beret"
 	desc = "A Sol-blue beret made of durathread, and a small silver Sun pin. The inside has a layering of padding and some cleverly placed elastic bands, allowing it to be secured firmly to the head and protect from light impacts."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
