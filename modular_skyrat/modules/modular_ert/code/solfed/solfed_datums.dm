@@ -7,7 +7,7 @@
 	antag_hud_name = "hud_spacecop"
 	suicide_cry = "FOR THE SOL FEDERATION!!"
 	/// Used in the greet() text to say what kind of assistance the responder is providing
-	var/department = "\(Report Me!\)"
+	var/department = "(Report Me!)"
 
 /datum/antagonist/ert/request_911/greet()
 	var/missiondesc =  ""
