@@ -11,9 +11,6 @@
 	desc = "It's a card with a magnetic strip attached to some circuitry."
 	name = "cryptographic sequencer" //SKYRAT COMMENT: Everyone knows what an emag is, both IC and OOC, they even make toy lookalikes.
 	icon_state = "emag"
-	inhand_icon_state = "card-id"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "An specially modified ID card used to break machinery and disable safeties. Notoriously used by Syndicate agents." // Skyrat edit
@@ -42,13 +39,15 @@
 	desc = "It's a card with a magnetic strip attached to some circuitry." //SKYRAT EDIT
 	name = "cryptographic sequencer"
 	icon_state = "emag"
-	inhand_icon_state = "card-id"
 	slot_flags = ITEM_SLOT_ID
 	worn_icon_state = "emag"
+<<<<<<< HEAD
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit. It's a toy, we're not hiding it.
 	special_desc = "Closer inspection shows that this card is a poorly made replica, with a \"DonkCo\" logo stamped on the back." // Skyrat edit
+=======
+>>>>>>> 3b44a8b15c6 (Adds cardboard IDs to the game: The broke man's agent ID. (#76682))
 
 /obj/item/card/emagfake/attack_self(mob/user) //for assistants with balls of plasteel
 	if(Adjacent(user))
