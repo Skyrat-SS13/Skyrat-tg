@@ -93,7 +93,11 @@
 	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/mask/gas/sechailer(src)
+=======
+	new /obj/item/storage/bag/garment/warden(src)
+>>>>>>> ade047f2c9f (Puts garment bag in wardens locker as should (#76715))
 	new /obj/item/storage/box/zipties(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/belt/security/full(src)
