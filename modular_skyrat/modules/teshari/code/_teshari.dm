@@ -6,11 +6,11 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
-	species_traits = list(MUTCOLORS,
-		EYECOLOR,
+	species_traits = list(
+		MUTCOLORS,
 		NO_UNDERWEAR,
 		HAS_MARKINGS,
-		)
+	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
