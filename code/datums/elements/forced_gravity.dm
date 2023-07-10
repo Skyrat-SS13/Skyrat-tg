@@ -5,10 +5,8 @@
 	var/gravity
 	///whether we will override the turf if it forces no gravity
 	var/ignore_turf_gravity
-	///whether or not we will pass override = TRUE when registering the signal
-	var/override_sig
 
-/datum/element/forced_gravity/Attach(datum/target, gravity = 1, ignore_turf_gravity = FALSE, override_sig = FALSE)
+/datum/element/forced_gravity/Attach(datum/target, gravity = 1, ignore_turf_gravity = FALSE)
 	. = ..()
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
@@ -16,9 +14,9 @@
 	src.gravity = gravity
 	src.ignore_turf_gravity = ignore_turf_gravity
 
-	RegisterSignal(target, COMSIG_ATOM_HAS_GRAVITY, PROC_REF(gravity_check), override = TRUE)
+	RegisterSignal(target, COMSIG_ATOM_HAS_GRAVITY, PROC_REF(gravity_check))
 	if(isturf(target))
-		RegisterSignal(target, COMSIG_TURF_HAS_GRAVITY, PROC_REF(turf_gravity_check), override = TRUE)
+		RegisterSignal(target, COMSIG_TURF_HAS_GRAVITY, PROC_REF(turf_gravity_check))
 
 	ADD_TRAIT(target, TRAIT_FORCED_GRAVITY, REF(src))
 
