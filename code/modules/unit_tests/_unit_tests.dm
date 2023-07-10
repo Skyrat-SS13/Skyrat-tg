@@ -146,6 +146,7 @@
 #include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
 #include "knockoff_component.dm"
+#include "language_transfer.dm"
 #include "lesserform.dm"
 #include "limbsanity.dm"
 #include "lungs.dm"
