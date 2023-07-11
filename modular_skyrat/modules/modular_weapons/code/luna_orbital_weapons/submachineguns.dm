@@ -49,7 +49,7 @@
 
 // Civilian (?) SMG
 
-/obj/item/gun/ballistic/automatic/luna_pcc
+/obj/item/gun/ballistic/automatic/luna_pdw
 	name = "\improper Luno 'Piranjo' Personal Defense Weapon"
 	desc = "A small personal defense weapon capable of rapid two round bursts."
 
