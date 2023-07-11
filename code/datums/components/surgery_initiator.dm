@@ -315,17 +315,13 @@
 		target.balloon_alert(user, "not the right type of limb!")
 		return
 
-<<<<<<< HEAD
 	// SKYRAT EDIT START - Limbs that can't be surgically removed
 	if (surgery.removes_target_bodypart && !isnull(affecting_limb) && !affecting_limb.can_be_surgically_removed)
 		target.balloon_alert(user, "limb can't be surgically removed!")
 		return
 	// SKYRAT EDIT END
 
-	if ((surgery.surgery_flags & SURGERY_REQUIRE_RESTING) && target.body_position != LYING_DOWN)
-=======
 	if (IS_IN_INVALID_SURGICAL_POSITION(target, surgery))
->>>>>>> a5b5bf65169 (Tend Wounds works on non-human mobs (#76471))
 		target.balloon_alert(user, "patient is not lying down!")
 		return
 
