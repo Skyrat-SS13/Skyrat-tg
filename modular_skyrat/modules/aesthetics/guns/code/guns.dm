@@ -20,7 +20,7 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
-/obj/item/gun/energy/e_gun/cfa_phalanx
+/obj/item/gun/energy/e_gun/phalanx_plasma
 	worn_icon = null
 	worn_icon_state = "gun"
 

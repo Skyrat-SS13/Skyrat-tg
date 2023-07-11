@@ -28,12 +28,12 @@
 	return
 
 /*
-*	CFA PHALANX
+*	Phalanx Plasma Blaster
 *	Similar to the HoS's laser
 *	Fires a bouncing non-lethal, lethal and knockdown projectile.
 */
 
-/obj/item/gun/energy/e_gun/cfa_phalanx
+/obj/item/gun/energy/e_gun/phalanx_plasma
 	name = "\improper Mk.II Phalanx plasma blaster"
 	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
@@ -45,19 +45,19 @@
 	charge_sections = 5
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 
-/obj/item/gun/energy/e_gun/cfa_phalanx/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+/obj/item/gun/energy/e_gun/phalanx_plasma/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)
 
-/obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
+/obj/item/gun/energy/e_gun/phalanx_plasma/give_gun_safeties()
 	return
 
 /*
-*	CFA PALADIN
+*	Paladin Plasma Carbine
 *	Identical to a heavy laser.
 */
 
 
-/obj/item/gun/energy/laser/cfa_paladin
+/obj/item/gun/energy/laser/paladin_plasma
 	name = "\improper Mk.IV Paladin plasma carbine"
 	desc = "Essentially a handheld laser cannon. This is solely for killing, and it's dual-laser system reflects that."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
@@ -66,10 +66,10 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/double)
 	charge_sections = 5
 
-/obj/item/gun/energy/laser/cfa_paladin/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+/obj/item/gun/energy/laser/paladin_plasma/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)
 
-/obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
+/obj/item/gun/energy/laser/paladin_plasma/give_gun_safeties()
 	return
 
 /*

@@ -53,12 +53,12 @@
 /obj/item/storage/toolbox/ammo/full/bison
 	name = "ammo box (PP-95)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	ammo_type = /obj/item/ammo_box/magazine/plastikov9mm
 	amount = 4
 
 /obj/item/storage/toolbox/ammo/full/nri_smg
 	name = "ammo box (QLP/04)"
-	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	ammo_type = /obj/item/ammo_box/magazine/uzim9mm
 	amount = 7
 
 /obj/item/storage/toolbox/ammo/full/l6_saw

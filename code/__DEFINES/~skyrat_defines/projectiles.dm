@@ -10,9 +10,6 @@
 /// The caliber used by the M45A5
 #define CALIBER_460 ".460 RM JHP"
 
-/// The caliber used by the CFA Lynx.
-#define CALIBER_42X30MM "4.2x30mm"
-
 /// Sol Short .35 used by SolFed weapons
 #define CALIBER_SOL35SHORT "Sol .35 Short"
 /// Sol Long .40 used by SolFed weapons
