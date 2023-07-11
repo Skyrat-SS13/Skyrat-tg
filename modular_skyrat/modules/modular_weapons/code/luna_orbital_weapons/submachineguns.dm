@@ -77,7 +77,7 @@
 
 /obj/item/ammo_box/magazine/c35sol_smg
 	name = "\improper Luno submachinegun magazine"
-	desc = "A standard size magazine for Luno submachineguns, holds twenty four rounds."
+	desc = "A standard size magazine for Luno submachineguns, holds twenty five rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "smgstandard"
@@ -86,4 +86,4 @@
 
 	ammo_type = /obj/item/ammo_casing/c35sol
 	caliber = CALIBER_SOL35SHORT
-	max_ammo = 24
+	max_ammo = 25

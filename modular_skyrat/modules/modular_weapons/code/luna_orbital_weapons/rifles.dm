@@ -48,6 +48,8 @@
 
 	icon_state = "bekofiso"
 
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_short.ogg'
+
 	spread = 5
 
 // Police short rifle
