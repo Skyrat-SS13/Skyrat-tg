@@ -133,10 +133,8 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1)
-		to_chat(owner, "You feel relief as the pressure building inside you subsides.")
-		return
+		to_chat(owner, "You feel relief as your organs cease to strain against your insides.")
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
 
@@ -407,9 +405,9 @@
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
