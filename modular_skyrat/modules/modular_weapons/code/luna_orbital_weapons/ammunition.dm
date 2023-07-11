@@ -171,3 +171,22 @@
 		var/mob/living/carbon/M = target
 		M.adjust_fire_stacks(4)
 		M.ignite_mob()
+
+//
+// .55 Sol Marksman
+// High caliber marksman ammo, caseless just like the doctor ordered
+//
+
+/obj/item/ammo_casing/c55sol
+	name = ".40 Sol Long lethal bullet casing"
+	desc = "A SolFed standard lethal rifle round."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "rifle_round"
+
+	caliber = CALIBER_SOL40LONG
+	projectile_type = /obj/projectile/bullet/c40sol
+
+/obj/projectile/bullet/c40sol
+	name = ".40 Sol Long bullet"
+	damage = 40

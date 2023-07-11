@@ -71,6 +71,8 @@
 	burst_size = 2
 	fire_delay = 1
 
+	spread = 10
+
 // Magazine (singular)
 
 /obj/item/ammo_box/magazine/c35sol_smg

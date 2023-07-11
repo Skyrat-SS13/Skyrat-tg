@@ -14,9 +14,11 @@
 #define CALIBER_42X30MM "4.2x30mm"
 
 /// Sol Short .35 used by SolFed weapons
-#define CALIBER_SOL35SHORT "sol .35 short"
+#define CALIBER_SOL35SHORT "Sol .35 Short"
 /// Sol Long .40 used by SolFed weapons
-#define CALIBER_SOL40LONG "sol .40 long"
+#define CALIBER_SOL40LONG "Sol .40 Long"
+/// Sol Marksman .55 used by SolFed weapons
+#define CALIBER_SOL55MARKSMAN "Sol .55 Marksman"
 
 /// The caliber used by the AK-25
 #define CALIBER_732x29 "a732x29"

@@ -56,6 +56,8 @@
 
 	projectile_damage_multiplier = 0.8 // Makes it exactly 20 damage per normal round
 
+	spread = 7
+
 /obj/item/gun/ballistic/automatic/pistol/luna/pocket/add_seclight_point()
 	return
 
