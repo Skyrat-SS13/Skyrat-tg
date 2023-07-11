@@ -20,9 +20,6 @@
 	mutanteyes = /obj/item/organ/internal/eyes/akula
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
