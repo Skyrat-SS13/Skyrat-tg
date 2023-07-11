@@ -21,7 +21,7 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 
-	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle
+	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle/thirty
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_long.ogg'
 	can_suppress = TRUE
@@ -64,8 +64,7 @@
 
 	inhand_icon_state = "police_rifle"
 
-	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle/short
-
+	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle
 // Heavy weapons guy
 
 /obj/item/gun/ballistic/automatic/luna_rifle/machinegun
@@ -92,30 +91,32 @@
 // Magazines
 
 /obj/item/ammo_box/magazine/c40sol_rifle
-	name = "\improper Luno rifle magazine"
-	desc = "A standard size magazine for Luno rifles, holds thirty rounds."
+	name = "\improper Luno rifle short magazine"
+	desc = "A shortened magazine for Luno rifles, holds twenty rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
-	icon_state = "riflestandard"
+	icon_state = "rifleshort"
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 	ammo_type = /obj/item/ammo_casing/c40sol
 	caliber = CALIBER_SOL40LONG
-	max_ammo = 30
-
-/obj/item/ammo_box/magazine/c40sol_rifle/short
-	name = "\improper Luno rifle short magazine"
-	desc = "A shortened magazine for Luno rifles, holds twenty rounds."
-
-	icon_state = "rifleshort"
-
 	max_ammo = 20
+
+/obj/item/ammo_box/magazine/c40sol_rifle/thirty
+	name = "\improper Luno rifle magazine"
+	desc = "A standard size magazine for Luno rifles, holds thirty rounds."
+
+	icon_state = "riflestandard"
+
+	max_ammo = 30
 
 /obj/item/ammo_box/magazine/c40sol_rifle/drum
 	name = "\improper Luno rifle drum magazine"
 	desc = "A massive drum magazine for Luno rifles, holds fifty rounds."
 
 	icon_state = "rifledrum"
+
+	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 50

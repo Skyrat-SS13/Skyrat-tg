@@ -81,44 +81,44 @@
 	item_type = /obj/item/ammo_box/a357/match
 	description = "A seven-round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off walls several times."
 
-/datum/opposing_force_equipment/ammo/cfa_snub
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
+/datum/opposing_force_equipment/ammo/sol_pistol
+	item_type = /obj/item/ammo_box/magazine/c35sol_pistol
 
-/datum/opposing_force_equipment/ammo/cfa_snubap
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/ap
+/datum/opposing_force_equipment/ammo/sol_pistol_stendo
+	item_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo
 
-/datum/opposing_force_equipment/ammo/cfa_snubrubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber
+/datum/opposing_force_equipment/ammo/sol_smg
+	item_type = /obj/item/ammo_box/magazine/c35sol_smg
 
-/datum/opposing_force_equipment/ammo/cfa_snubincendiary
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/incendiary
+/datum/opposing_force_equipment/ammo/sol35_box
+	item_type = /obj/item/ammo_box/c35sol
 
-/datum/opposing_force_equipment/ammo/cfa_ruby
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
+/datum/opposing_force_equipment/ammo/sol35_box_incapacitator
+	item_type = /obj/item/ammo_box/c35sol/incapacitator
 
-/datum/opposing_force_equipment/ammo/cfa_rubyap
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap
+/datum/opposing_force_equipment/ammo/sol35_box_pierce
+	item_type = /obj/item/ammo_box/c35sol/pierce
 
-/datum/opposing_force_equipment/ammo/cfa_rubyrubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber
+/datum/opposing_force_equipment/ammo/sol35_box_ripper
+	item_type = /obj/item/ammo_box/c35sol/ripper
 
-/datum/opposing_force_equipment/ammo/cfa_rubyhp
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp
+/datum/opposing_force_equipment/ammo/sol_rifle_small
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/short
 
-/datum/opposing_force_equipment/ammo/cfa_rubyincendiary
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/incendiary
+/datum/opposing_force_equipment/ammo/sol_rifle
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle
 
-/datum/opposing_force_equipment/ammo/wildcat
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
+/datum/opposing_force_equipment/ammo/sol_rifle_drum
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-/datum/opposing_force_equipment/ammo/wildcatap
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap
+/datum/opposing_force_equipment/ammo/sol40_box
+	item_type = /obj/item/ammo_box/c40sol
 
-/datum/opposing_force_equipment/ammo/wildcatrubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber
+/datum/opposing_force_equipment/ammo/sol40_box_fragmentation
+	item_type = /obj/item/ammo_box/c40sol/fragmentation
 
-/datum/opposing_force_equipment/ammo/wildcatincendiary
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
+/datum/opposing_force_equipment/ammo/sol40_box_incendiary
+	item_type = /obj/item/ammo_box/c40sol/incendiary
 
 /datum/opposing_force_equipment/ammo/glock17
 	name = "Glock 17 Magazine"

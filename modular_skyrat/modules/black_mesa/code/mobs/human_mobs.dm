@@ -65,7 +65,7 @@
 	rapid = 3
 	icon_state = "hecu_ranged_smg"
 	icon_living = "hecu_ranged_smg"
-	casingtype = /obj/item/ammo_casing/c34
+	casingtype = /obj/item/ammo_casing/c35sol
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/random/hecu_smg)
 

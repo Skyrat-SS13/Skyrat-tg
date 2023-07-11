@@ -23,9 +23,9 @@
 	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
 	admin_note = "WARNING: This weapon is decently powerful, firing a 2 round burst of 30 damage bullets."
 
-/datum/opposing_force_equipment/submachine_gun/lynx
-	item_type = /obj/item/gun/ballistic/automatic/cfa_lynx
-	admin_note = "Capable of high rate of fire full auto of 20 damage bullets."
+/datum/opposing_force_equipment/submachine_gun/sol_pdw
+	item_type = /obj/item/gun/ballistic/automatic/luna_pdw
+	admin_note = "Two shot burst 25 damage bullets."
 
 /datum/opposing_force_equipment/submachine_gun/nri_smg
 	item_type = /obj/item/gun/ballistic/automatic/nri_smg

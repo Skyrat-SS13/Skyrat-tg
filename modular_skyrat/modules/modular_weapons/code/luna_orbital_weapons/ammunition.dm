@@ -18,6 +18,18 @@
 	damage = 25
 	wound_bonus = 10 // Normal bullets are 20
 
+/obj/item/ammo_box/c35sol
+	name = "ammo box (.35 Sol Short lethal)"
+	desc = "A box of .35 Sol Short pistol rounds, holds thirty-six bullets."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "pistol_box"
+
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+	ammo_type = /obj/item/ammo_casing/c35sol
+	max_ammo = 36
+
 // .35 Sol's equivalent to a rubber bullet
 
 /obj/item/ammo_casing/c35sol/incapacitator
@@ -46,6 +58,13 @@
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null
+
+/obj/item/ammo_box/c35sol/incapacitator
+	name = "ammo box (.35 Sol Short incapacitator)"
+
+	icon_state = "pistol_box_incap"
+
+	ammo_type = /obj/item/ammo_casing/c35sol/incapacitator
 
 // .35 Sol armor piercing, if there's less than 20 bullet armor on wherever these hit, it'll go completely through the target and out the other side
 
@@ -83,13 +102,20 @@
 
 	return ..()
 
+/obj/item/ammo_box/c35sol/pierce
+	name = "ammo box (.35 Sol Short piercing)"
+
+	icon_state = "pistol_box_ap"
+
+	ammo_type = /obj/item/ammo_casing/c35sol/pierce
+
 // .35 Sol ripper, similar to the detective revolver's dumdum rounds, causes slash wounds and is weak to armor
 
 /obj/item/ammo_casing/c35sol/ripper
 	name = ".35 Sol Short ripper bullet casing"
 	desc = "A SolFed standard ripper pistol round. Causes slashing wounds on targets, but is weak to armor."
 	caliber = "c34acp"
-	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
+	projectile_type = /obj/projectile/bullet/c35sol/ripper
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
 	advanced_print_req = TRUE
 
@@ -105,6 +131,13 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
 	wound_falloff_tile = -3
 	embed_falloff_tile = -15
+
+/obj/item/ammo_box/c35sol/ripper
+	name = "ammo box (.35 Sol Short ripper)"
+
+	icon_state = "pistol_box_rip"
+
+	ammo_type = /obj/item/ammo_casing/c35sol/ripper
 
 //
 // .40 Sol Long
@@ -124,6 +157,18 @@
 /obj/projectile/bullet/c40sol
 	name = ".40 Sol Long bullet"
 	damage = 40
+
+/obj/item/ammo_box/c40sol
+	name = "ammo box (.40 Sol Long lethal)"
+	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "rifle_box"
+
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+	ammo_type = /obj/item/ammo_casing/c40sol
+	max_ammo = 30
 
 // .40 Sol fragmentation rounds, embeds shrapnel in the target almost every time at close to medium range
 
@@ -148,6 +193,13 @@
 	wound_falloff_tile = -2
 	embed_falloff_tile = -5
 
+/obj/item/ammo_box/c40sol/fragmentation
+	name = "ammo box (.40 Sol Long fragmentation)"
+
+	icon_state = "rifle_box_frag"
+
+	ammo_type = /obj/item/ammo_casing/c40sol/fragmentation
+
 // .40 Sol incendiary
 
 /obj/item/ammo_casing/c40sol/incendiary
@@ -171,3 +223,10 @@
 		var/mob/living/carbon/M = target
 		M.adjust_fire_stacks(4)
 		M.ignite_mob()
+
+/obj/item/ammo_box/c40sol/incendiary
+	name = "ammo box (.40 Sol Long incendiary)"
+
+	icon_state = "rifle_box_incen"
+
+	ammo_type = /obj/item/ammo_casing/c40sol/incendiary

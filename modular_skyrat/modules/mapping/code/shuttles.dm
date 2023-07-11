@@ -127,12 +127,12 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
+		/obj/item/gun/ballistic/automatic/pistol/luna/pocket/no_mag,
+		/obj/item/ammo_box/magazine/c35sol_pistol,
+		/obj/item/ammo_box/magazine/c35sol_pistol,
+		/obj/item/ammo_box/magazine/c35sol_pistol,
+		/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+		/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
 		/obj/item/grenade/c4,
 		/obj/item/grenade/smokebomb
 	)
@@ -157,12 +157,11 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
-		/obj/item/megaphone/command
+		/obj/item/gun/ballistic/automatic/luna_pdw/no_mag,
+		/obj/item/ammo_box/magazine/c35sol_smg,
+		/obj/item/ammo_box/magazine/c35sol_smg,
+		/obj/item/ammo_box/magazine/c35sol_smg,
+		/obj/item/megaphone/command,
 	)
 
 /*----- Tarkon Shuttle Datum + related code -----*/

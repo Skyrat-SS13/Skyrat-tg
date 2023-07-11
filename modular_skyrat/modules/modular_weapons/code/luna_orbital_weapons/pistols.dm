@@ -22,6 +22,9 @@
 		is_light_removable = FALSE, \
 		)
 
+/obj/item/gun/ballistic/automatic/pistol/luna/no_mag
+	spawnwithmagazine = FALSE
+
 // Police pistol
 
 /obj/item/gun/ballistic/automatic/pistol/luna/police
@@ -30,9 +33,12 @@
 
 	icon_state = "anglofiso_police"
 
+/obj/item/gun/ballistic/automatic/pistol/luna/police/no_mag
+	spawnwithmagazine = FALSE
+
 // Police glockinator
 
-/obj/item/gun/ballistic/automatic/pistol/luna/police
+/obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator
 	name = "\improper Luno 'Kirasfiŝo' Peacekeeper Pistol"
 	desc = "A modificaiton of the standard Luno peacekeeper pistol. It has a higher firerate and a burst selector. Due to the fact it expends some of the fired round's gas to accelerate fire, some lethality is lost."
 
@@ -45,6 +51,9 @@
 	spread = 5
 
 	actions_types = list(/datum/action/item_action/toggle_firemode)
+
+/obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/no_mag
+	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/luna/pocket
 	name = "\improper Luno 'Puffiŝo' Pocket Pistol"
@@ -61,6 +70,9 @@
 /obj/item/gun/ballistic/automatic/pistol/luna/pocket/add_seclight_point()
 	return
 
+/obj/item/gun/ballistic/automatic/pistol/luna/pocket/no_mag
+	spawnwithmagazine = FALSE
+
 // Magazines
 
 /obj/item/ammo_box/magazine/c35sol_pistol
@@ -76,7 +88,7 @@
 	caliber = CALIBER_SOL35SHORT
 	max_ammo = 9
 
-/obj/item/ammo_box/magazine/c35sol_pistol
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo
 	name = "\improper Luno extended pistol magazine"
 	desc = "An extended magazine for Luno pistols, holds eighteen rounds."
 

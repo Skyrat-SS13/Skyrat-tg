@@ -77,7 +77,7 @@
 	guns = list(
 		/obj/item/gun/ballistic/automatic/ar,
 		/obj/item/gun/ballistic/automatic/m16,
-		/obj/item/gun/ballistic/automatic/cfa_rifle,
+		/obj/item/gun/ballistic/automatic/luna_sport_shooter,
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers

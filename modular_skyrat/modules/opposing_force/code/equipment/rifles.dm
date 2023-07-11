@@ -9,9 +9,9 @@
 	item_type = /obj/item/gun/ballistic/automatic/akm/nri
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 38 damage bullets."
 
-/datum/opposing_force_equipment/rifle/cfa
-	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
-	admin_note = "WARNING: This weapon is very powerful, firing single-shot 60 damage bullets."
+/datum/opposing_force_equipment/rifle/sol_big_shooter
+	item_type = /obj/item/gun/ballistic/automatic/luna_sport_shooter
+	admin_note = "WARNING: Fairly powerful weapon, single firing 40 damage shots out of a 20 round magazine at minimum."
 
 /datum/opposing_force_equipment/rifle/norwind
 	item_type = /obj/item/gun/ballistic/automatic/norwind

@@ -55,7 +55,7 @@
 	mags_to_spawn = 2
 
 /datum/armament_entry/hecu/primary/special/sniper_rifle
-	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
+	item_type = /obj/item/gun/ballistic/automatic/luna_sport_shooter
 	max_purchase = 1
 	cost = 16
 

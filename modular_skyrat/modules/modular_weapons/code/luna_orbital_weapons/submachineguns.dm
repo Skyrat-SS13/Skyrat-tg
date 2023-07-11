@@ -73,6 +73,9 @@
 
 	spread = 10
 
+/obj/item/gun/ballistic/automatic/luna_pdw/no_mag
+	spawnwithmagazine = FALSE
+
 // Magazine (singular)
 
 /obj/item/ammo_box/magazine/c35sol_smg
