@@ -14,6 +14,8 @@
 	mag_type = /obj/item/ammo_box/magazine/c35sol_pistol
 	special_mags = TRUE
 
+	suppressor_x_offset = 9
+
 	fire_delay = 2
 
 /obj/item/gun/ballistic/automatic/pistol/luna/add_seclight_point()
@@ -50,6 +52,8 @@
 	fire_delay = 1.75
 	spread = 5
 
+	suppressor_x_offset = 11
+
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 
 /obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/no_mag
@@ -64,6 +68,8 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/pistol_small.ogg'
 
 	projectile_damage_multiplier = 0.8 // Makes it exactly 20 damage per normal round
+
+	suppressor_x_offset = 6
 
 	spread = 7
 

@@ -26,6 +26,8 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/smg_heavy.ogg'
 	can_suppress = TRUE
 
+	suppressor_x_offset = 7
+
 	burst_size = 1
 	fire_delay = 1
 	actions_types = list()
@@ -67,6 +69,7 @@
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/smg_light.ogg'
 	can_suppress = TRUE
+	suppressor_x_offset = 13
 
 	burst_size = 2
 	fire_delay = 1

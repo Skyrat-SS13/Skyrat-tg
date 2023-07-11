@@ -22,6 +22,8 @@
 
 	can_suppress = TRUE
 
+	suppressor_x_offset = 10
+
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/luna
 
 	w_class = WEIGHT_CLASS_BULKY

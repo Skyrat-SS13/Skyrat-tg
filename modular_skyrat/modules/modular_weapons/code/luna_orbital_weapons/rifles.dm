@@ -14,6 +14,8 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/righthand.dmi'
 	inhand_icon_state = "military_rifle"
 
+	special_mags = TRUE
+
 	base_pixel_x = -8
 	pixel_x = -8
 
@@ -25,6 +27,8 @@
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_long.ogg'
 	can_suppress = TRUE
+
+	suppressor_x_offset = 12
 
 	burst_size = 1
 	fire_delay = 2
@@ -51,6 +55,8 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_short.ogg'
 
 	spread = 5
+
+	suppressor_x_offset = 8
 
 // Police short rifle
 
@@ -80,6 +86,8 @@
 
 	fire_delay = 1
 	spread = 10
+
+	suppressor_x_offset = 11
 
 	projectile_damage_multiplier = 0.8
 

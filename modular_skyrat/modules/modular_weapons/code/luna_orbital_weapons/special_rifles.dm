@@ -26,6 +26,8 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_civilian.ogg'
 	can_suppress = TRUE
 
+	suppressor_x_offset = 12
+
 	burst_size = 1
 	fire_delay = 3
 	actions_types = list()
