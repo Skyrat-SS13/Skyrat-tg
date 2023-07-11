@@ -51,7 +51,7 @@
 	/obj/item/card/id/departmental_budget/car, \
 	/obj/item/clothing/suit/armor/reactive/teleport, \
 	/obj/item/mod/control/pre_equipped/research, \
-	/obj/item/gun/ballistic/automatic/pistol/g18/nomag, \
+	/obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/no_mag, \
 )
 
 

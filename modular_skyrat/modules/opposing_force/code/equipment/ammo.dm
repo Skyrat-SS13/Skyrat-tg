@@ -116,22 +116,6 @@
 /datum/opposing_force_equipment/ammo/sol40_box_incendiary
 	item_type = /obj/item/ammo_box/c40sol/incendiary
 
-/datum/opposing_force_equipment/ammo/glock17
-	name = "Glock 17 Magazine"
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17
-
-/datum/opposing_force_equipment/ammo/glock17hp
-	name = "Glock 17 Magazine (HP)"
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/hp
-
-/datum/opposing_force_equipment/ammo/glock18
-	name = "Glock 18 Magazine"
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g18
-
-/datum/opposing_force_equipment/ammo/glock18hp
-	name = "Glock 18 Magazine (HP)"
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g18/hp
-
 /datum/opposing_force_equipment/ammo/ladon
 	name = "P-3 'Ladon' Magazine"
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/ladon

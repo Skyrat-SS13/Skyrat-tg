@@ -10,10 +10,10 @@
 
 // Normal police pistol
 
-/obj/item/storage/box/gunset/luna_police_pistol
+/obj/item/storage/box/gunset/luna/small/luna_police_pistol
 	name = "Luno 'Anglofiŝo-P' supply box"
 
-/obj/item/storage/box/gunset/luna_police_pistol/PopulateContents()
+/obj/item/storage/box/gunset/luna/small/luna_police_pistol/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/luna/police/no_mag(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol(src)
@@ -23,10 +23,10 @@
 
 // Police glockinator (for the HoS)
 
-/obj/item/storage/box/gunset/luna_glockinator
+/obj/item/storage/box/gunset/luna/small/luna_glockinator
 	name = "Luno 'Kirasfiŝo' supply box"
 
-/obj/item/storage/box/gunset/luna_glockinator/PopulateContents()
+/obj/item/storage/box/gunset/luna/small/luna_glockinator/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/no_mag(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty(src)
