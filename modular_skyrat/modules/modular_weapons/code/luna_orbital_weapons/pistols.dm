@@ -63,7 +63,7 @@
 
 /obj/item/ammo_box/magazine/c35sol_pistol
 	name = "\improper Luno pistol magazine"
-	desc = "A standard size magazine for the Luno 'Anglofiŝo', holds nine rounds."
+	desc = "A standard size magazine for Luno pistols, holds nine rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "pistolstandard"
@@ -76,7 +76,7 @@
 
 /obj/item/ammo_box/magazine/c35sol_pistol
 	name = "\improper Luno extended pistol magazine"
-	desc = "An extended magazine for the Luno 'Anglofiŝo', holds eighteen rounds."
+	desc = "An extended magazine for Luno pistols, holds eighteen rounds."
 
 	icon_state = "pistolstendo"
 

@@ -105,3 +105,23 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
 	wound_falloff_tile = -3
 	embed_falloff_tile = -15
+
+//
+// .40 Sol Long
+// Rifle caliber caseless ammo that kills people good
+//
+
+/obj/item/ammo_casing/c40sol
+	name = ".40 Sol Long lethal bullet casing"
+	desc = "A SolFed standard lethal pistol round."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "rifle_round"
+
+	caliber = CALIBER_SOL40LONG
+	projectile_type = /obj/projectile/bullet/c40sol
+
+/obj/projectile/bullet/c35sol
+	name = ".35 Sol Short bullet"
+	damage = 25
+	wound_bonus = 10 // Normal bullets are 20

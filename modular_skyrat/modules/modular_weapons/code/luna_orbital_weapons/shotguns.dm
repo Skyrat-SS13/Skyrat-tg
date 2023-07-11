@@ -18,6 +18,9 @@
 	pixel_x = -8
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/shotgun.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+
+	can_suppress = TRUE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/luna
 
