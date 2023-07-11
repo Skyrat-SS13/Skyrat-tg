@@ -26,6 +26,32 @@
 /obj/item/gun/ballistic/automatic/nri_smg/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx // These go here for now because the nri smgs want to use these magazines and I cannot be bothered currently
+	name = "CFA Lynx Magazine (4.2x30mm)"
+	desc = "A magazine for the CFA Lynx. It has a small inscription on the base, '4.2x30mm'. Alt+click to reskin it."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
+	icon_state = "lynx"
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
+	ammo_type = /obj/item/ammo_casing/c42x30mm
+	caliber = CALIBER_42X30MM
+	max_ammo = 40
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap
+	ammo_type = /obj/item/ammo_casing/c42x30mm/ap
+	round_type = AMMO_TYPE_AP
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber
+	ammo_type = /obj/item/ammo_casing/c42x30mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/incendiary
+	ammo_type = /obj/item/ammo_casing/c42x30mm/inc
+	round_type = AMMO_TYPE_INCENDIARY
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/empty
+	start_empty = TRUE
+
 /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	name = "\improper Szabo-Ivanek service pistol"
 	desc = "A mass produced NRI-made modified reproduction of the PDH-6 line of handguns rechambered in 9×25mm.\

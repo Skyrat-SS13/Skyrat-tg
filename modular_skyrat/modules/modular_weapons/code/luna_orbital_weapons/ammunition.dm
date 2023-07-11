@@ -113,7 +113,7 @@
 
 /obj/item/ammo_casing/c40sol
 	name = ".40 Sol Long lethal bullet casing"
-	desc = "A SolFed standard lethal pistol round."
+	desc = "A SolFed standard lethal rifle round."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "rifle_round"
@@ -121,7 +121,53 @@
 	caliber = CALIBER_SOL40LONG
 	projectile_type = /obj/projectile/bullet/c40sol
 
-/obj/projectile/bullet/c35sol
-	name = ".35 Sol Short bullet"
+/obj/projectile/bullet/c40sol
+	name = ".40 Sol Long bullet"
+	damage = 40
+
+// .40 Sol fragmentation rounds, embeds shrapnel in the target almost every time at close to medium range
+
+/obj/item/ammo_casing/c40sol/fragmentation
+	name = ".40 Sol Long fragmentation bullet casing"
+	desc = "A SolFed standard fragmentation rifle round. Shatters upon impact, ejecting sharp shrapnel that can harm the target further."
+
+	projectile_type = /obj/projectile/bullet/c40sol/fragmentation
+
+	advanced_print_req = TRUE
+
+/obj/projectile/bullet/c40sol/fragmentation
+	name = ".40 Sol Long fragmentation bullet"
 	damage = 25
-	wound_bonus = 10 // Normal bullets are 20
+
+	weak_against_armour = TRUE
+
+	sharpness = SHARP_EDGED
+	bare_wound_bonus = 30
+	shrapnel_type = /obj/item/shrapnel/capmine
+	embedding = list(embed_chance=110, fall_chance=3, jostle_chance=5, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
+	wound_falloff_tile = -2
+	embed_falloff_tile = -5
+
+// .40 Sol incendiary
+
+/obj/item/ammo_casing/c40sol/incendiary
+	name = ".40 Sol Long incendiary bullet casing"
+	desc = "A SolFed standard incendiary rifle round."
+
+	projectile_type = /obj/projectile/bullet/c40sol/incendiary
+
+	advanced_print_req = TRUE
+
+/obj/projectile/bullet/c40sol/incendiary
+	name = ".40 Sol Long incendiary bullet"
+	icon_state = "redtrac"
+
+	damage = 25
+
+/obj/projectile/bullet/c40sol/incendiary/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.adjust_fire_stacks(4)
+		M.ignite_mob()
