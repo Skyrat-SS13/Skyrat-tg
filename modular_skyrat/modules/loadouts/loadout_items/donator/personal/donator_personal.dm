@@ -167,6 +167,11 @@
 	item_path = /obj/item/clothing/suit/jacket/hydrogenrobes
 	ckeywhitelist = list("ChillyLobster")
 
+/datum/loadout_item/suit/wetsuit_norm
+	name = "Fitted Wetsuit"
+	item_path = /obj/item/clothing/under/wetsuit_norm
+	ckeywhitelist = list("ChillyLobster")
+
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
 	item_path = /obj/item/clothing/mask/animal/kindle
