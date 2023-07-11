@@ -391,6 +391,7 @@
 	inhand_icon_state = "duffel"
 	actions_types = list(/datum/action/item_action/zipper)
 	storage_type = /datum/storage/duffel
+	zip_slowdown = 1
 	/// If this bag is zipped (contents hidden) up or not
 	/// Starts enabled so people need to figure it out to use the thing
 	var/zipped_up = TRUE

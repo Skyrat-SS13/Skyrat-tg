@@ -72,7 +72,7 @@
 		state += "-up"
 	icon_state = state
 
-/obj/item/clothing/head/helmet/nri_heavy/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+/obj/item/clothing/head/helmet/nri_heavy/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE

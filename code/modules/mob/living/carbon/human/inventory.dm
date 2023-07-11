@@ -177,17 +177,14 @@
 		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return
-<<<<<<< HEAD
-			gloves = I
+
+			gloves = equipping
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
 				update_mob_action_buttons()
 			//SKYRAT EDIT ADDITION END
-=======
-			gloves = equipping
->>>>>>> 8c2c72b0ed7 (Duiffel Spotfix (#76442))
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)
