@@ -49,25 +49,6 @@
 */
 
 /*
-*	G-17
-*/
-
-/obj/item/storage/box/gunset/glock17
-	name = "GK-17 supply box"
-
-/obj/item/gun/ballistic/automatic/pistol/g17/nomag
-	spawnwithmagazine = FALSE
-
-
-/obj/item/storage/box/gunset/glock17/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/g17/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-
-/*
 *	LADON
 */
 
@@ -310,26 +291,6 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
-
-/*
-*	HOS
-*/
-
-/obj/item/storage/box/gunset/glock18_hos
-	name = "GK-18 supply box"
-	desc = "Ideally contains a fast-firing 9x19mm pistol made out of cheap plastic."
-	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/gun/ballistic/automatic/pistol/g18/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/glock18_hos/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
 
 /*
 *	HOP

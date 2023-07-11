@@ -88,6 +88,9 @@
 	caliber = CALIBER_SOL35SHORT
 	max_ammo = 9
 
+/obj/item/ammo_box/magazine/c35sol_pistol/starts_empty
+	start_empty = TRUE
+
 /obj/item/ammo_box/magazine/c35sol_pistol/stendo
 	name = "\improper Luno extended pistol magazine"
 	desc = "An extended magazine for Luno pistols, holds eighteen rounds."
@@ -95,3 +98,6 @@
 	icon_state = "pistolstendo"
 
 	max_ammo = 18
+
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty
+	start_empty = TRUE
