@@ -148,5 +148,11 @@
 /datum/action/cooldown/lay_web/web_carcass/obstructed_by_other_web()
 	return !!(locate(/obj/structure/spider/carcass) in get_turf(owner))
 
+<<<<<<< HEAD
 /datum/action/cooldown/lay_web/web_carcass/plant_web(turf/target_turf, obj/structure/spider/stickyweb/existing_web)
 	new /obj/structure/spider/carcass(target_turf)
+=======
+/datum/action/cooldown/web_effigy/Activate()
+	new /obj/structure/spider/effigy(get_turf(owner))
+	return ..()
+>>>>>>> 7103131078a ([no gbp] Restores cooldown to spider guard ability (#76698))
