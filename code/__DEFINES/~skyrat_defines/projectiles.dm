@@ -13,8 +13,8 @@
 /// The caliber used by the CFA Lynx.
 #define CALIBER_42X30MM "4.2x30mm"
 
-/// The caliber used by the Catanheim.
-#define CALIBER_A68 "a68"
+/// Sol Short .35 used by SolFed weapons
+#define CALIBER_SOL35SHORT "sol35short"
 
 /// The caliber used by the AK-25
 #define CALIBER_732x29 "a732x29"

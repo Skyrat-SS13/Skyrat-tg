@@ -151,66 +151,6 @@
 	armour_penetration = 60
 
 /*
-*	.34 ACP
-*/
-
-// Why? Blame CFA, they want their bullets to be *proprietary*
-/obj/item/ammo_casing/c34
-	name = ".34 bullet casing"
-	desc = "A .34 bullet casing."
-	caliber = "c34acp"
-	projectile_type = /obj/projectile/bullet/c34
-
-/obj/projectile/bullet/c34
-	name = ".34 bullet"
-	damage = 15
-	wound_bonus = 0
-
-/obj/item/ammo_casing/c34/rubber
-	name = ".34 rubber bullet casing"
-	desc = "A .34 rubber bullet casing."
-	caliber = "c34acp"
-	projectile_type = /obj/projectile/bullet/c34/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/c34/rubber
-	name = ".34 rubber bullet"
-	damage = 5
-	stamina = 20
-	wound_bonus = -75
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/obj/item/ammo_casing/c34/ap
-	name = ".34 armor-piercing bullet casing"
-	desc = "A .34 armor-piercing bullet casing."
-	caliber = "c34acp"
-	projectile_type = /obj/projectile/bullet/c34/ap
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/c34/ap
-	name = ".34 armor-piercing bullet"
-	damage = 15
-	armour_penetration = 40
-	wound_bonus = -75
-
-/obj/item/ammo_casing/c34_incendiary
-	name = ".34 incendiary bullet casing"
-	desc = "A .34 incendiary bullet casing."
-	caliber = "c34acp"
-	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/incendiary/c34_incendiary
-	name = ".34 incendiary bullet"
-	damage = 8
-	fire_stacks = 1
-	wound_bonus = -90
-
-/*
 *	4.2x30mm
 */
 
