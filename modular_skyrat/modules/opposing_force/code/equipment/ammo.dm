@@ -31,11 +31,7 @@
 
 /datum/opposing_force_equipment/ammo/m9mm
 	item_type = /obj/item/ammo_box/magazine/uzim9mm
-	description = "A thirty-two round magazine for the mini uzi. Uses 9x19mm ammunition."
-
-/datum/opposing_force_equipment/ammo/lynx
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
-	description = "A forty round magazine for CFA Lynx and QLP/04 submachine guns."
+	description = "A thirty-two round magazine for the mini uzi and QLP/04 submachine guns. Uses 9x19mm ammunition."
 
 /datum/opposing_force_equipment/ammo/makarov
 	item_type = /obj/item/ammo_box/magazine/m9mm
