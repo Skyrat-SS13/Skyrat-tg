@@ -412,6 +412,9 @@
 
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weight_class_to_text(w_class)] item."
 
+	if(item_flags & CRUEL_IMPLEMENT)
+		. += "[src] seems quite practical for particularly <font color='red'>morbid</font> procedures and experiments."
+
 	if(resistance_flags & INDESTRUCTIBLE)
 		. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
 	else
@@ -1318,6 +1321,8 @@
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)
 	. = ..()
+
+	SEND_SIGNAL(src, COMSIG_ATOM_WASHED)
 
 	if(ismob(loc))
 		var/mob/mob_loc = loc
