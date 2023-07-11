@@ -35,16 +35,25 @@
 	var/datum/action/cooldown/domain/domain
 	///The Spell that the rat uses to recruit/convert more rats.
 	var/datum/action/cooldown/riot/riot
+	///Should we request a mind immediately upon spawning?
+	var/poll_ghosts = FALSE
 
 /mob/living/simple_animal/hostile/regalrat/Initialize(mapload)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	AddElement(/datum/element/waddling)
+	AddComponent(\
+		/datum/component/ghost_direct_control,\
+		poll_candidates = poll_ghosts,\
+		role_name = "the Regal Rat, cheesy be their crown",\
+		poll_ignore_key = POLL_IGNORE_REGAL_RAT,\
+		assumed_control_message = "You are an independent, invasive force on the station! Hoard coins, trash, cheese, and the like from the safety of darkness!",\
+		after_assumed_control = CALLBACK(src, PROC_REF(became_player_controlled)),\
+	)
 	domain = new(src)
 	riot = new(src)
 	domain.Grant(src)
 	riot.Grant(src)
-	AddElement(/datum/element/waddling)
-
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/regalrat/Destroy()
 	. = ..()
@@ -52,6 +61,7 @@
 	QDEL_NULL(riot)
 	return ..()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/regalrat/proc/get_player()
 	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to play as the Regal Rat, cheesey be their crown?", ROLE_SENTIENCE, ROLE_SENTIENCE, 100, POLL_IGNORE_REGAL_RAT)
 	if(LAZYLEN(candidates) && !mind)
@@ -88,6 +98,16 @@
 		return
 	key = user.key
 	src.log_message("took control of [name].", LOG_GAME)
+=======
+/mob/living/simple_animal/hostile/regalrat/proc/became_player_controlled()
+	notify_ghosts(
+		"All rise for the rat king, ascendant to the throne in \the [get_area(src)].",
+		source = src,
+		action = NOTIFY_ORBIT,
+		flashwindow = FALSE,
+		header = "Sentient Rat Created",
+	)
+>>>>>>> 2ee79d70778 (Bots no longer require PAIs to become sapient (#76691))
 
 /mob/living/simple_animal/hostile/regalrat/handle_automated_action()
 	if(prob(20))
@@ -190,9 +210,11 @@
 		return FALSE
 	opening_airlock = FALSE
 
+/mob/living/simple_animal/hostile/regalrat/controlled
+	poll_ghosts = TRUE
+
 /mob/living/simple_animal/hostile/regalrat/controlled/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(get_player))
 	var/kingdom = pick("Plague","Miasma","Maintenance","Trash","Garbage","Rat","Vermin","Cheese")
 	var/title = pick("King","Lord","Prince","Emperor","Supreme","Overlord","Master","Shogun","Bojar","Tsar")
 	name = "[kingdom] [title]"
