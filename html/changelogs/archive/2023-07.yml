@@ -293,3 +293,87 @@
   - qol: slimes who use Alter Form will automatically have their clothing icons updated
       with the appropriate versions (for things like snouted masks, digitigrade legs,
       taur shoes) without having to remove and re-equip their gear
+2023-07-09:
+  SkyratBot:
+  - balance: Reduced the complexity cost of a lot of MODules.
+  - balance: Pathfinder 2 -> 1
+  - balance: Tether 3 -> 2
+  - balance: Temperature Regulator 2 -> 1
+  - balance: DNA lock 2 -> 1
+  - balance: Health analyzer 2 -> 1
+  - balance: Sonar 2 -> 1
+  - balance: Microwave beam 2 -> 1
+  - balance: Drill 2 -> 1
+  - balance: All visors (including NV and thermals) 2 -> 1
+  - balance: Circuit Adapter 2 -> 1
+  - balance: The Mining MODsuit has had its complexity increased to 13 and now starts
+      with the eating apparatus module, with a total base complexity of 10/13 now.
+  - balance: The Prototype MODsuit's active slowdown has been decreased from 1.5 (!)
+      to 1.
+  - spellcheck: Fixed a type on the energy net module.
+2023-07-10:
+  Fikou:
+  - bugfix: service borg apparatus now works on stoves and griddles and ovens
+  - qol: borgs can now activate stoves and griddles
+  - rscadd: rnd can research a cookbook for service borgs
+  Imaginos:
+  - image: A new sprite for oeprating tables
+  LT3:
+  - bugfix: That new maptext mentioned below actually works
+  - image: A courier synth ready to deliver hugs and beeps straight to the heart!
+  Melbert:
+  - rscadd: The Atrocinator will now flip you even more.
+  SkyratBot:
+  - rscadd: Coroners are now Morbid!
+  - rscadd: Coroners come with a series of special tools that are especially good
+      at performing certain surgeries if used by a Morbid individual (which the coroner
+      happens to be). They are found in the coroner's medkit.
+  - rscadd: The sorts of surgeries they enjoy are; dissections, autospies, revival
+      surgery, plastic surgery, organ/feature manipulations, amputations. Also eyesnatching.
+  - rscadd: Coroners therefore hate; tending the wounds of the living, defibrillation
+      and CPR. Why waste so much effort on breathers if you can't even carve them
+      up a bit first?
+  - rscadd: Coroners love pickles and pickle juice.
+  - rscadd: The coroner can finally put their autopsy scanner into their special medkit.
+      Not the compact one, though.
+  - rscadd: The elephant graveyard is safer to plunder for the morbid individual.
+      The rewards from the graveyard are now also slightly more lucrative...if you
+      don't care about being cursed, that is.
+  - balance: Roboticists get secure morgue access during skeleton shifts
+  - bugfix: arrows can now be actually coated with reagents.
+  - bugfix: jetpack modules work on mod suits again
+  - bugfix: jetpack cyber implants also work
+  - refactor: removed `get_mover` callback, user is retrieved during activation
+  - refactor: timestop module on `on_module_triggered()` accepts user as 2nd param
+  - spellcheck: Improves gas monitor reaction information RP.
+  - bugfix: You can once again directly place patients on operating tables
+  - bugfix: Creampies no longer float above the heads of monkeys
+  - rscadd: You can now put sandstone bricks in pillows to... make them deadlier?
+  - rscadd: Adds coloured large scarfs and winter coats to ClothesMate and black shoes
+      to ChefDrobe
+  - rscadd: Adds latex gloves to SciDrobe, ChemDrobe and GeneDrobe and nitrile gloves
+      to MediDrobe
+  - rscadd: Adds job headsets to GeneDrobe and RoboDrobe, ViroDrobe and ChemDrobe
+  - rscadd: Adds black wizard robes and black wizard hat to MagiVend
+  - rscadd: Adds grey backpack, grey satchel, leather satchel and grey duffel bag
+      to CargoDrobe
+  - rscadd: Organises Drobes
+  Vishenka0704:
+  - bugfix: fixed age restriction reason
+  - bugfix: Added a forgotten reason for not being allowed to work if the age is low.
+  vinylspiders:
+  - sound: reduced the size of a few large audio files
+  - bugfix: fixes a bug that was causing forge-crafted arrows to turn into bullet
+      casings upon crafting completion
+  - refactor: converts modular caseless ammo subtypes to use the caseless element
+      instead
+  - bugfix: ash headdress, ash winged headdress, ash robes, ash combat plates, & decorated
+      ash combat plates now provide a slight armor protection, equal to that of 'bone
+      bracers'.
+  - bugfix: fixes some layout issues with the milking machine ui that was causing
+      elements to overlap one another and be unreadable
+  - qol: items stored in pockets now fall out and get sent flying when gibbed (instead
+      of just being deleted)
+  - bugfix: you may now interact with lewd slots when the appropriate genitals are
+      exposed (using the Expose/Hide genitals verb -> set to Always Show) regardless
+      of whether or not you are clothed.
