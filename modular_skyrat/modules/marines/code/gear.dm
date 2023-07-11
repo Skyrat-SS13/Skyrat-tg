@@ -34,14 +34,18 @@
 	icon_state = "300compressed"
 	max_ammo = 99
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	ammo_type = /obj/item/ammo_casing/caseless/c300
+	ammo_type = /obj/item/ammo_casing/c300
 	caliber = "300comp"
 
-/obj/item/ammo_casing/caseless/c300
+/obj/item/ammo_casing/c300
 	name = ".300 caseless round"
 	desc = "A .300 caseless round for proprietary Nanotrasen firearms."
 	caliber = "300comp"
 	projectile_type = /obj/projectile/bullet/a300
+
+/obj/item/ammo_casing/c300/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
 
 /obj/projectile/bullet/a300
 	name = ".300 caseless bullet"
