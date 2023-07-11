@@ -110,9 +110,9 @@
 	equipped.eye_color_right = BLOODCULT_EYE
 	equipped.update_body()
 
-	var/obj/item/clothing/suit/hooded/hooded = locate() in equipped
+	var/obj/item/clothing/suit/hooded/hooded = equipped.wear_suit
 	var/datum/component/toggle_attached_clothing/hood = hooded.GetComponent(/datum/component/toggle_attached_clothing)
-	hood.toggle_deployable()
+	hood.toggle_deployable() // start unhooded
 
 
 /obj/effect/mob_spawn/corpse/human/clock_cultist
