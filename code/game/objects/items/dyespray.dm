@@ -2,7 +2,7 @@
 	name = "hair dye spray"
 	desc = "A spray to dye hair as well as giving it any gradient you'd like." // SKYRAT EDIT - Making the dyespray change hair color
 	w_class = WEIGHT_CLASS_TINY
-	icon = 'icons/obj/dyespray.dmi'
+	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "dyespray"
 
 	var/uses = 40 //SKYRAT EDIT ADDITION

@@ -13,8 +13,13 @@
 /datum/mutation/human/telekinesis/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()
 	if(!(type in visual_indicators))
+<<<<<<< HEAD
 		visual_indicators[type] = list(mutable_appearance('modular_skyrat/master_files/icons/effects/tele_effects.dmi', "telekinesishead", -MUTATIONS_LAYER)) //SKYRAT EDIT, Old icon location: "icons/effects/genetics.dmi"
 		//visual_indicators[type] = list(mutable_appearance('icons/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER)) //non Skyrat version
+=======
+		visual_indicators[type] = list(mutable_appearance('icons/mob/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER))
+
+>>>>>>> a373b4cb082 (Icon folder cleaning wave one (#76703))
 /datum/mutation/human/telekinesis/on_acquiring(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
