@@ -687,8 +687,6 @@
 	inhand_icon_state = "glasses"
 	glass_colour_type = /datum/client_colour/glass_colour/nightmare
 	forced_glass_color = TRUE
-<<<<<<< HEAD
-=======
 	lighting_cutoff = LIGHTING_CUTOFF_FULLBRIGHT
 	/// Hallucination datum currently being used for seeing mares
 	var/datum/hallucination/stored_hallucination
@@ -716,7 +714,6 @@
 /obj/item/clothing/glasses/nightmare_vision/dropped(mob/living/user)
 	. = ..()
 	QDEL_NULL(stored_hallucination)
->>>>>>> 388a91b9c64 (nightmare vision goggles give you mare vision (#76604))
 
 /obj/item/clothing/glasses/osi
 	name = "O.S.I. Sunglasses"
