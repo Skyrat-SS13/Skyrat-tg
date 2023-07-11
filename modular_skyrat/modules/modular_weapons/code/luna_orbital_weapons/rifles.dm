@@ -84,6 +84,11 @@
 
 	projectile_damage_multiplier = 0.8
 
+/obj/item/gun/ballistic/automatic/luna_rifle/machinegun/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/scope, range_modifier = 1.2)
+
 // Magazines
 
 /obj/item/ammo_box/magazine/c40sol_rifle
