@@ -277,21 +277,3 @@
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null
-
-/*
-*	6.8x43mm
-*/
-
-/obj/item/ammo_casing/a68
-	name = "6.8mm bullet casing"
-	desc = "A 6.8mm bullet casing."
-	icon_state = "762-casing"
-	caliber = CALIBER_A68
-	projectile_type = /obj/projectile/bullet/a68
-
-/obj/projectile/bullet/a68
-	name = "6.8 bullet"
-	damage = 55
-	armour_penetration = 10
-	wound_bonus = -45
-	wound_falloff_tile = 0

@@ -7,37 +7,77 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/guns_32.dmi'
 	icon_state = "anglofiso"
 
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/pistol_large.ogg'
+
 	w_class = WEIGHT_CLASS_NORMAL
+
+	mag_type = /obj/item/ammo_box/magazine/c35sol_pistol
+	special_mags = TRUE
 
 	fire_delay = 2
 
-/obj/item/gun/ballistic/automatic/pistol/g17
-	name = "\improper GK-17"
-	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9x25mm."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
-	icon_state = "glock"
-	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
-	can_suppress = FALSE
-	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
-	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
-	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	fire_delay = 1.90
-	projectile_damage_multiplier = 0.5
+/obj/item/gun/ballistic/automatic/pistol/luna/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, \
+		starting_light = new /obj/item/flashlight/seclite(src), \
+		is_light_removable = FALSE, \
+		)
 
-/obj/item/gun/ballistic/automatic/pistol/g17/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+// Police pistol
 
-/obj/item/gun/ballistic/automatic/pistol/g17/add_seclight_point()
+/obj/item/gun/ballistic/automatic/pistol/luna/police
+	name = "\improper Luno 'Anglofiŝo-P' Peacekeeper Pistol"
+	desc = "The standard issue service pistol of SolFed's various peacekeeping forces. Comes with attached light."
+
+	icon_state = "anglofiso_police"
+
+// Police glockinator
+
+/obj/item/gun/ballistic/automatic/pistol/luna/police
+	name = "\improper Luno 'Kirasfiŝo' Peacekeeper Pistol"
+	desc = "A modificaiton of the standard Luno peacekeeper pistol. It has a higher firerate and a burst selector. Due to the fact it expends some of the fired round's gas to accelerate fire, some lethality is lost."
+
+	icon_state = "kirasfiso"
+
+	projectile_damage_multiplier = 0.72 // Makes it exactly 18 damage per normal round, rather than 25
+
+	burst_size = 3
+	fire_delay = 1.75
+	spread = 5
+
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+
+/obj/item/gun/ballistic/automatic/pistol/luna/pocket
+	name = "\improper Luno 'Puffiŝo' Pocket Pistol"
+	desc = "A significantly smaller version of the modern Luno pistol line. For the price of lower power, you too can have a pistol in your pocket."
+
+	icon_state = "puffiso"
+
+	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/pistol_small.ogg'
+
+	projectile_damage_multiplier = 0.8 // Makes it exactly 20 damage per normal round
+
+/obj/item/gun/ballistic/automatic/pistol/luna/pocket/add_seclight_point()
 	return
 
-/obj/item/ammo_box/magazine/multi_sprite/g17
-	name = "\improper GK-17 magazine"
-	desc = "A magazine for the GK-17 handgun, chambered for 9x25mm ammo."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "g17"
-	ammo_type = /obj/item/ammo_casing/c9mm
-	caliber = CALIBER_9MM
-	max_ammo = 17
+// Magazines
+
+/obj/item/ammo_box/magazine/c35sol_pistol
+	name = "\improper Luno pistol magazine"
+	desc = "A standard size magazine for the Luno 'Anglofiŝo', holds nine rounds."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "pistolstandard"
+
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+	ammo_type = /obj/item/ammo_casing/c35sol
+	caliber = CALIBER_SOL35SHORT
+	max_ammo = 9
+
+/obj/item/ammo_box/magazine/c35sol_pistol
+	name = "\improper Luno extended pistol magazine"
+	desc = "An extended magazine for the Luno 'Anglofiŝo', holds eighteen rounds."
+
+	icon_state = "pistolstendo"
+
+	max_ammo = 18

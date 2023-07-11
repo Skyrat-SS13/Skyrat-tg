@@ -6,6 +6,10 @@
 /obj/item/ammo_casing/c35sol
 	name = ".35 Sol Short lethal bullet casing"
 	desc = "A SolFed standard lethal pistol round."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon_state = "pistol_round"
+
 	caliber = CALIBER_SOL35SHORT
 	projectile_type = /obj/projectile/bullet/c35sol
 
@@ -71,7 +75,7 @@
 		hit_limb = poor_sap.check_limb_hit(def_zone)
 
 		// If the target mob has enough armor to stop the bullet, or the bullet has already gone through two people, stop it on this hit
-		if((poor_sap.head.get_armor_rating(BULLET) > 20) || (penetrations > 2))
+		if((hit_limb.get_armor_rating(BULLET) > 20) || (penetrations > 2))
 			projectile_piercing = NONE
 
 		else
