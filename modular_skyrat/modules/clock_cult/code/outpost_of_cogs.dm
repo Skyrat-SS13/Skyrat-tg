@@ -111,7 +111,8 @@
 	equipped.update_body()
 
 	var/obj/item/clothing/suit/hooded/hooded = locate() in equipped
-	hooded.ToggleHood()
+	var/datum/component/toggle_attached_clothing/hood = hooded.GetComponent(/datum/component/toggle_attached_clothing)
+	hood.toggle_deployable()
 
 
 /obj/effect/mob_spawn/corpse/human/clock_cultist
