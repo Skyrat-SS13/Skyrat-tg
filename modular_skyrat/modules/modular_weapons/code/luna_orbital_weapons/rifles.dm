@@ -1,18 +1,18 @@
 // Military SMG
 
-/obj/item/gun/ballistic/automatic/luna_pcc
-	name = "\improper Luno 'Leonfiŝo' Submachinegun"
-	desc = "A pistol caliber carbine modification of the Luno 'Spadfiŝo' rifle. Made for and used by SolFed's various military branches."
+/obj/item/gun/ballistic/automatic/luna_rifle
+	name = "\improper Luno 'Spadfiŝo' Assault Rifle"
+	desc = "A full length, standard SolFed rifle caliber assault rifle. Made for and used by SolFed's various military branches."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/guns_48.dmi'
-	icon_state = "leonfiso"
+	icon_state = "spadfiso"
 
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/worn.dmi'
-	worn_icon_state = "military_smg"
+	worn_icon_state = "military_rifle"
 
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/righthand.dmi'
-	inhand_icon_state = "military_smg"
+	inhand_icon_state = "military_rifle"
 
 	base_pixel_x = -8
 	pixel_x = -8
@@ -21,7 +21,7 @@
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 
-	mag_type = /obj/item/ammo_box/magazine/c35sol_smg
+	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/smg_heavy.ogg'
 	can_suppress = TRUE
