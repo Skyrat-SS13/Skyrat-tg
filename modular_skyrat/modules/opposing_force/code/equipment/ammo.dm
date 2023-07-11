@@ -37,10 +37,6 @@
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	description = "A forty round magazine for CFA Lynx and QLP/04 submachine guns."
 
-/datum/opposing_force_equipment/ammo/cm68
-	item_type = /obj/item/ammo_box/magazine/cm68
-	description = "6.8mm bullets in a ten round magazine for a Cantanheim 6.8 rifle."
-
 /datum/opposing_force_equipment/ammo/makarov
 	item_type = /obj/item/ammo_box/magazine/m9mm
 	description = "A magazine of ammo for the Makarov."
@@ -103,10 +99,10 @@
 	item_type = /obj/item/ammo_box/c35sol/ripper
 
 /datum/opposing_force_equipment/ammo/sol_rifle_small
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/short
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle
 
 /datum/opposing_force_equipment/ammo/sol_rifle
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/thirty
 
 /datum/opposing_force_equipment/ammo/sol_rifle_drum
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
