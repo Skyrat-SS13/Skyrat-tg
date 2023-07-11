@@ -13,6 +13,11 @@
 	caliber = CALIBER_SOL35SHORT
 	projectile_type = /obj/projectile/bullet/c35sol
 
+/obj/item/ammo_casing/c35sol/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/caseless)
+
 /obj/projectile/bullet/c35sol
 	name = ".35 Sol Short bullet"
 	damage = 25
@@ -153,6 +158,11 @@
 
 	caliber = CALIBER_SOL40LONG
 	projectile_type = /obj/projectile/bullet/c40sol
+
+/obj/item/ammo_casing/c40sol/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/caseless)
 
 /obj/projectile/bullet/c40sol
 	name = ".40 Sol Long bullet"
