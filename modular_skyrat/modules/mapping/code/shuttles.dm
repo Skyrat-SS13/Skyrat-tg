@@ -132,7 +132,6 @@
 		/obj/item/ammo_box/magazine/c35sol_pistol,
 		/obj/item/ammo_box/magazine/c35sol_pistol,
 		/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
-		/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
 		/obj/item/grenade/c4,
 		/obj/item/grenade/smokebomb
 	)
