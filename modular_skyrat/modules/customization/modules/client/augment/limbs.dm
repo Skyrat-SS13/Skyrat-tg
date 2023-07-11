@@ -67,9 +67,9 @@
 	path = /obj/item/bodypart/arm/left/plasmaman
 	uses_robotic_styles = FALSE
 
-/datum/augment_item/limb/l_arm/selfdestruct
+/datum/augment_item/limb/l_arm/self_destruct
 	name = "No Left Arm"
-	path = /obj/item/bodypart/arm/left/selfdestruct
+	path = /obj/item/bodypart/arm/left/self_destruct
 	cost = -2
 	uses_robotic_styles = FALSE
 
@@ -91,9 +91,9 @@
 	path = /obj/item/bodypart/arm/right/plasmaman
 	uses_robotic_styles = FALSE
 
-/datum/augment_item/limb/r_arm/selfdestruct
+/datum/augment_item/limb/r_arm/self_destruct
 	name = "No Right Arm"
-	path = /obj/item/bodypart/arm/right/selfdestruct
+	path = /obj/item/bodypart/arm/right/self_destruct
 	cost = -2
 	uses_robotic_styles = FALSE
 
@@ -115,9 +115,9 @@
 	path = /obj/item/bodypart/leg/left/plasmaman
 	uses_robotic_styles = FALSE
 
-/datum/augment_item/limb/l_leg/selfdestruct
+/datum/augment_item/limb/l_leg/self_destruct
 	name = "No Left Leg"
-	path = /obj/item/bodypart/leg/left/selfdestruct
+	path = /obj/item/bodypart/leg/left/self_destruct
 	cost = -2
 	uses_robotic_styles = FALSE
 
@@ -139,8 +139,8 @@
 	path = /obj/item/bodypart/leg/right/plasmaman
 	uses_robotic_styles = FALSE
 
-/datum/augment_item/limb/r_leg/selfdestruct
+/datum/augment_item/limb/r_leg/self_destruct
 	name = "No Right Leg"
-	path = /obj/item/bodypart/leg/right/selfdestruct
+	path = /obj/item/bodypart/leg/right/self_destruct
 	cost = -2
 	uses_robotic_styles = FALSE
