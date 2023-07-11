@@ -17,6 +17,9 @@
 	base_pixel_x = -8
 	pixel_x = -8
 
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/shotgun.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 
