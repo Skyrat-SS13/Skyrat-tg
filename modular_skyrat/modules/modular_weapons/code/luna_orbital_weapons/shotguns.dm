@@ -32,6 +32,7 @@
 /obj/item/ammo_box/magazine/internal/shot/luna
 	name = "\improper 'Sledmartelo' Shotgun Internal Tube"
 	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
 	max_ammo = 8
 
 // Police shotgun

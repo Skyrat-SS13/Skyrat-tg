@@ -14,6 +14,8 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/righthand.dmi'
 	inhand_icon_state = "civilian_rifle"
 
+	special_mags = TRUE
+
 	base_pixel_x = -8
 	pixel_x = -8
 
