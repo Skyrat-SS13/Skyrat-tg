@@ -83,7 +83,7 @@
 /obj/effect/spawner/armory_spawn/centcom_lasers
 	guns = list(
 		/obj/item/gun/energy/laser,
-		/obj/item/gun/energy/laser/paladin_plasma,
+		/obj/item/gun/energy/laser,
 		/obj/item/gun/energy/e_gun,
 	)
 
