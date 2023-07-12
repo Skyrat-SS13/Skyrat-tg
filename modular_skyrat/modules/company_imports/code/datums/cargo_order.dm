@@ -23,6 +23,14 @@
 /datum/supply_order/proc/on_spawn()
 	return
 
+/datum/supply_order/generate(atom/A)
+	. = ..()
+
+	if(!.)
+		return
+
+	on_spawn()
+
 /datum/supply_order/company_import/on_spawn()
 	for(var/company in SScargo_companies.companies)
 		var/datum/cargo_company/comp_datum = SScargo_companies.companies[company]
