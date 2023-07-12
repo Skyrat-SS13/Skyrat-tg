@@ -83,18 +83,6 @@
 	..()
 	new /obj/item/dog_bone(src)
 	new /obj/item/radio/headset/headset_sec(src)
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/armor/vest/warden(src)
-	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
-	//new /obj/item/clothing/head/hats/warden/drill(src) SKYRAT EDIT REMOVAL
-	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
-	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/suit/jacket/warden/blue(src) //SKYRAT ADDITION - FORMAL COAT
-	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
-	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
-=======
->>>>>>> c2b82a7ea23 (Gives Warden their own Garment Bag. (#76579))
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/storage/bag/garment/warden
 	new /obj/item/storage/box/zipties(src)

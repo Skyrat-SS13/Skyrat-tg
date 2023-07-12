@@ -94,12 +94,13 @@
 
 /obj/item/storage/bag/garment/warden/PopulateContents()
 	new /obj/item/clothing/suit/armor/vest/warden(src)
-	new /obj/item/clothing/head/hats/warden(src)
-	new /obj/item/clothing/head/hats/warden/drill(src)
+	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/hats/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
+	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/under/rank/security/warden/skirt(src)
+	new /obj/item/clothing/suit/jacket/warden/blue(src) //SKYRAT ADDITION - FORMAL COAT
+	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/gloves/krav_maga/sec(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
