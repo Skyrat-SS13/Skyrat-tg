@@ -23,7 +23,7 @@
 /datum/supply_order/proc/on_spawn()
 	return
 
-/datum/supply_order/proc/generate(atom/A)
+/datum/supply_order/generate(atom/A)
 	. = ..()
 
 	if(!.)
