@@ -3,9 +3,6 @@
 	id = SPECIES_SKRELL
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		NO_SLIP_WHEN_WALKING
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -14,8 +11,6 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	brutemod = 1.70
-	burnmod = 0.60
 	exotic_blood = /datum/reagent/copper
 	bodytemp_normal = (BODYTEMP_NORMAL + 70)
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD

@@ -68,15 +68,14 @@
 
 	if(has_cure())
 		if(disease_flags & CHRONIC && SPT_PROB(cure_chance, seconds_per_tick))
-			src.stage = 1
+			update_stage(1)
 			to_chat(affected_mob, span_notice("Your chronic illness is alleviated a little, though it can't be cured!"))
 			return
-		else
-			if(SPT_PROB(cure_chance, seconds_per_tick))
-				update_stage(max(stage - 1, 1))
-			if(disease_flags & CURABLE && SPT_PROB(cure_chance, seconds_per_tick))
-				cure()
-				return FALSE
+		if(SPT_PROB(cure_chance, seconds_per_tick))
+			update_stage(max(stage - 1, 1))
+		if(disease_flags & CURABLE && SPT_PROB(cure_chance, seconds_per_tick))
+			cure()
+			return FALSE
 	else if(SPT_PROB(stage_prob*slowdown, seconds_per_tick))
 		update_stage(min(stage + 1, max_stages))
 
@@ -133,6 +132,8 @@
 
 
 /datum/disease/proc/cure(add_resistance = TRUE)
+	if(severity == DISEASE_SEVERITY_UNCURABLE) //aw man :(
+		return
 	if(affected_mob)
 		if(add_resistance && (disease_flags & CAN_RESIST))
 			LAZYOR(affected_mob.disease_resistances, GetDiseaseID())
