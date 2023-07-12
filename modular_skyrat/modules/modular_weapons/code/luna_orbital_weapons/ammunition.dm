@@ -96,10 +96,9 @@
 
 	if(isliving(target))
 		var/mob/living/poor_sap = target
-		hit_limb = poor_sap.check_limb_hit(def_zone)
 
 		// If the target mob has enough armor to stop the bullet, or the bullet has already gone through two people, stop it on this hit
-		if((hit_limb.get_armor_rating(BULLET) > 20) || (penetrations > 2))
+		if((poor_sap.run_armor_check(def_zone, BULLET, "", "", silent = TRUE) > 20) || (penetrations > 2))
 			projectile_piercing = NONE
 
 		else

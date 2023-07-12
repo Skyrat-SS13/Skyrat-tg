@@ -15,6 +15,7 @@
 	special_mags = TRUE
 
 	suppressor_x_offset = 9
+	suppressor_y_offset = 0
 
 	fire_delay = 2
 
