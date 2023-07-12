@@ -10,36 +10,31 @@
 	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
 	greyscale_colors = "#666666#CCBBAA#0000FF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	hood_overlay = null // for this particular coat, the hood already is drawn onto the base sprite so we won't use this
-	//hood_down_overlay_suffix = "" future maintainers -- uncomment this when my toil gets undone by PR 22129.
-	// This should stop the hood overlay and negate the need for the two proc overrides below, as well as the 'hood_overlay = null'
+	hood_down_overlay_suffix = ""
+	/// Whether the hood is flipped up
+	var/hood_up = FALSE
 
-// NO HOOD OVERLAYS EVER
-/obj/item/clothing/suit/hooded/wintercoat/colourable/generate_hood_overlay()
-	return
+/// Called when the hood is worn
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_up(obj/item/clothing/head/hooded/hood)
+	hood_up = TRUE
 
-// We are going to temporarily act as if the hood is up when it's down
-// so that we don't ever add the hood_overlay in the parent proc.
-// I cannot stress how much this coat hates hood overlays. We must avoid them at all costs.
-/obj/item/clothing/suit/hooded/wintercoat/colourable/worn_overlays(mutable_appearance/standing, isinhands)
-	if(!hood_up)
-		hood_up = TRUE
-		. = ..()
-	else
-		return ..()
-
+/// Called when the hood is hidden
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_down(obj/item/clothing/head/hooded/hood)
 	hood_up = FALSE
 
 //In case colors are changed after initialization
 /obj/item/clothing/suit/hooded/wintercoat/colourable/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
 	. = ..()
-	if(hood)
-		var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
-		var/list/new_coat_colors = coat_colors.Copy(1,3)
-		hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
+
+	if(!hood)
+		return
+
+	var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
+	var/list/new_coat_colors = coat_colors.Copy(1,3)
+	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
 //But also keep old method in case the hood is (re-)created later
-/obj/item/clothing/suit/hooded/wintercoat/colourable/MakeHood()
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_created(obj/item/clothing/head/hooded/hood)
 	. = ..()
 	var/list/coat_colors = (SSgreyscale.ParseColorString(greyscale_colors))
 	var/list/new_coat_colors = coat_colors.Copy(1,3)
