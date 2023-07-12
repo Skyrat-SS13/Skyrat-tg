@@ -257,6 +257,9 @@
 /area/ruin/space/has_grav/cargodise_freighter/vault
 	name = "Freighter Vault"
 
+/area/ruin/space/has_grav/cargodise_freighter/exterior
+	name = "Freighter Exterior"
+
 // Skyrat's Space Hotel
 
 /area/ruin/space/has_grav/hotel/sauna
