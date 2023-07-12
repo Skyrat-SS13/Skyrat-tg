@@ -31,7 +31,6 @@
 
 	on_spawn()
 
-
 /datum/supply_order/company_import/on_spawn()
 	for(var/company in SScargo_companies.companies)
 		var/datum/cargo_company/comp_datum = SScargo_companies.companies[company]
