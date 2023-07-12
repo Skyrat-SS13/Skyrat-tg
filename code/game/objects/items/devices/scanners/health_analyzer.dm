@@ -563,10 +563,6 @@
 	else
 		violence(user)
 
-<<<<<<< HEAD
-/obj/item/healthanalyzer/wound/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-=======
 /obj/item/healthanalyzer/simple/proc/greed_warning(mob/user)
 	to_chat(user, span_warning("\The [src] displays an eerily high-definition frowny face, chastizing you for asking it for too much encouragement."))
 	show_emotion(AID_EMOTION_ANGRY)
@@ -581,9 +577,9 @@
 		L.dropItemToGround(src)
 		show_emotion(AID_EMOTION_HAPPY)
 
-/obj/item/healthanalyzer/simple/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src) || user.is_blind())
->>>>>>> 721fd308378 (Heavily reworks and resprites first aid analyzers. (#76533))
+
+/obj/item/healthanalyzer/wound/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
+	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
 	add_fingerprint(user)
