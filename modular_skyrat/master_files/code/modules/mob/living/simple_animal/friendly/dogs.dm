@@ -185,7 +185,7 @@
 	var/obj/projectile/fired_projectile
 	var/fire_sound
 	if(harmless)
-		fired_projectile = new /obj/projectile/bullet/reusable/foam_dart(loc)
+		fired_projectile = new /obj/item/ammo_casing/foam_dart(loc)
 		fired_projectile.icon = 'icons/obj/weapons/guns/toy.dmi'
 		fired_projectile.icon_state = "foamdart_proj"
 		fire_sound = 'sound/items/syringeproj.ogg'
