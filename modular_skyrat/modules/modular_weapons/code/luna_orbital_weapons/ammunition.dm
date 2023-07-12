@@ -92,8 +92,6 @@
 	var/penetrations = 0
 
 /obj/projectile/bullet/c35sol/pierce/on_hit(atom/target, blocked = FALSE)
-	var/obj/item/bodypart/hit_limb
-
 	if(isliving(target))
 		var/mob/living/poor_sap = target
 
