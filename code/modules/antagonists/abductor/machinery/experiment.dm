@@ -119,15 +119,12 @@
 /obj/machinery/abductor/experiment/proc/experiment(mob/living/carbon/human/occupant, type, mob/user)
 	LAZYINITLIST(history)
 
-<<<<<<< HEAD
-=======
 	if(!istype(occupant))
 		stack_trace("Abductor '[name]' called /proc/experiment with unexpected occupant ([occupant])")
 
 	if(!ishuman(occupant)) //We shouldn't be processing anything other than humans
 		return "Not a humanoid!"
 
->>>>>>> 24ed837a4a1 (fixes abductors unable to get points (#76505))
 	var/datum/antagonist/abductor/user_abductor = user.mind.has_antag_datum(/datum/antagonist/abductor)
 	if(!user_abductor)
 		return "Authorization failure. Contact mothership immediately."

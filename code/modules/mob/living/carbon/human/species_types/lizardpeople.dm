@@ -5,8 +5,6 @@
 	id = SPECIES_LIZARD
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
 	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -145,8 +143,6 @@ Lizard subspecies: ASHWALKERS
 	mutantbrain = /obj/item/organ/internal/brain/primitive
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
 	)
 	inherent_traits = list(
 		//TRAIT_LITERATE,
