@@ -22260,6 +22260,13 @@
 "isj" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/turret_protected/aisat/teleporter)
+"isr" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/diagonal,
+/area/station/command/heads_quarters/hop)
 "ist" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22551,21 +22558,6 @@
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"iwv" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/storage/box/pdas{
-	pixel_x = 7;
-	pixel_y = 12
-	},
-/obj/item/storage/box/ids{
-	pixel_x = 7;
-	pixel_y = 3
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/diagonal,
-/area/station/command/heads_quarters/hop)
 "iwM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/cyan/visible{
 	dir = 1
@@ -23138,6 +23130,16 @@
 	},
 /turf/open/floor/iron/dark/textured_edge,
 /area/station/command/heads_quarters/hop)
+"iIH" = (
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/table,
+/turf/open/floor/iron/freezer,
+/area/station/service/kitchen/coldroom)
 "iIN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -51882,15 +51884,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/small,
 /area/station/maintenance/starboard/central)
-"swF" = (
-/obj/structure/cable,
-/obj/effect/mapping_helpers/broken_floor,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/freezer,
-/area/station/service/kitchen/coldroom)
 "swI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -55119,6 +55112,10 @@
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/floor/grass,
 /area/station/service/hydroponics/garden/monastery)
+"tzX" = (
+/obj/machinery/computer/order_console/cook,
+/turf/open/floor/iron/freezer,
+/area/station/service/kitchen/coldroom)
 "tAq" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -55564,10 +55561,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
-"tGe" = (
-/obj/structure/reagent_dispensers/cooking_oil,
-/turf/open/floor/iron/freezer,
-/area/station/service/kitchen/coldroom)
 "tGp" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/engine,
@@ -66427,12 +66420,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/cryo)
-"wYy" = (
-/obj/machinery/computer/order_console/cook,
-/obj/effect/turf_decal/bot_red,
-/obj/structure/sign/poster/official/random/directional/north,
-/turf/open/floor/iron/freezer,
-/area/station/service/kitchen/coldroom)
 "wYA" = (
 /turf/closed/wall/r_wall,
 /area/station/medical/chemistry)
@@ -68771,6 +68758,12 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"xCR" = (
+/obj/effect/turf_decal/bot_red,
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/open/floor/iron/freezer,
+/area/station/service/kitchen/coldroom)
 "xCS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -93405,7 +93398,7 @@ pLr
 qoD
 uVT
 wqi
-iwv
+isr
 iLC
 iLC
 jts
@@ -93682,8 +93675,8 @@ jVM
 ygb
 ipt
 jVM
-swF
-tGe
+iIH
+tzX
 tGq
 tGq
 qnA
@@ -94967,7 +94960,7 @@ qtb
 jVM
 vXW
 jVM
-wYy
+xCR
 pww
 pRU
 tGq

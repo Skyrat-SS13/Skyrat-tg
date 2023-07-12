@@ -1409,6 +1409,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
+"aqr" = (
+/obj/effect/landmark/start/hangover,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/east,
+/obj/machinery/camera/directional/east{
+	c_tag = "Service - Hydroponics Kitchen Access";
+	name = "service camera"
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/station/service/kitchen)
 "aqs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10008,6 +10022,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
+"ctl" = (
+/obj/structure/table/wood,
+/obj/item/papercutter,
+/obj/item/paper/fluff/ids_for_dummies,
+/turf/open/floor/wood,
+/area/station/command/heads_quarters/hop)
 "ctw" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=engi1";
@@ -10460,6 +10480,21 @@
 	},
 /turf/open/floor/glass,
 /area/station/maintenance/space_hut/observatory)
+"czr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/duct,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white/corner{
+	dir = 8
+	},
+/area/station/service/kitchen)
 "czy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/duct,
@@ -11230,22 +11265,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
-"cIa" = (
-/obj/effect/landmark/start/hangover,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/east,
-/obj/machinery/camera/directional/east{
-	c_tag = "Service - Hydroponics Kitchen Access";
-	name = "service camera"
-	},
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/service/kitchen)
 "cIn" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /turf/open/floor/iron,
@@ -35633,6 +35652,14 @@
 /obj/structure/sign/poster/official/work_for_a_future/directional/east,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"iVW" = (
+/obj/machinery/modular_computer/preset/id{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hop)
 "iWc" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -47619,41 +47646,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
-"lQR" = (
-/obj/structure/table/wood,
-/obj/machinery/computer/records/medical/laptop,
-/obj/machinery/light_switch/directional/west{
-	pixel_x = -38;
-	pixel_y = 8
-	},
-/obj/machinery/button/flasher{
-	id = "hopflash";
-	pixel_x = -38;
-	pixel_y = -7;
-	req_access = list("kitchen")
-	},
-/obj/machinery/button/ticket_machine{
-	pixel_y = 22
-	},
-/obj/item/radio/intercom/directional/north{
-	pixel_y = 30
-	},
-/obj/machinery/button/door/directional/west{
-	id = "hopblast";
-	name = "Lockdown Blast Doors";
-	pixel_y = 6;
-	req_access = list("hop")
-	},
-/obj/machinery/button/door/directional/west{
-	id = "hopline";
-	name = "Queue Shutters Control";
-	pixel_y = -6;
-	req_access = list("hop")
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/item/papercutter,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hop)
 "lQV" = (
 /obj/machinery/camera/motion/directional/east{
 	c_tag = "E.V.A. Storage";
@@ -59410,6 +59402,40 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/wood,
 /area/station/hallway/secondary/service)
+"oWL" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/records/medical/laptop,
+/obj/machinery/light_switch/directional/west{
+	pixel_x = -38;
+	pixel_y = 8
+	},
+/obj/machinery/button/flasher{
+	id = "hopflash";
+	pixel_x = -38;
+	pixel_y = -7;
+	req_access = list("kitchen")
+	},
+/obj/machinery/button/ticket_machine{
+	pixel_y = 22
+	},
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 30
+	},
+/obj/machinery/button/door/directional/west{
+	id = "hopblast";
+	name = "Lockdown Blast Doors";
+	pixel_y = 6;
+	req_access = list("hop")
+	},
+/obj/machinery/button/door/directional/west{
+	id = "hopline";
+	name = "Queue Shutters Control";
+	pixel_y = -6;
+	req_access = list("hop")
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hop)
 "oXe" = (
 /obj/machinery/holopad,
 /obj/structure/cable,
@@ -62715,15 +62741,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)
-"pLV" = (
-/obj/machinery/modular_computer/preset/id{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/item/paper/fluff/ids_for_dummies,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hop)
 "pMa" = (
 /obj/item/reagent_containers/cup/bucket,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -63859,15 +63876,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
-"pXM" = (
-/obj/structure/table/wood,
-/obj/item/storage/box/ids{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/silver_ids,
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/hop)
 "pXW" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/junction/yjunction{
@@ -87328,18 +87336,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
-"vQS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/duct,
-/obj/effect/turf_decal/siding/white{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/turf/open/floor/iron/white/corner{
-	dir = 8
-	},
-/area/station/service/kitchen)
 "vQT" = (
 /obj/machinery/duct,
 /obj/effect/turf_decal/siding/thinplating/dark/corner,
@@ -128040,7 +128036,7 @@ kGt
 cyM
 fyw
 gld
-vQS
+czr
 rEP
 pyC
 lZa
@@ -128295,7 +128291,7 @@ ueJ
 bIG
 csw
 frR
-cIa
+aqr
 ddg
 uWI
 oHQ
@@ -132444,9 +132440,9 @@ sEm
 dEA
 ymi
 pRS
-lQR
+oWL
 eGs
-pLV
+iVW
 dxW
 sCh
 cvE
@@ -133729,7 +133725,7 @@ wmp
 rgW
 mGw
 pRS
-pXM
+ctl
 lAv
 nAz
 jce
