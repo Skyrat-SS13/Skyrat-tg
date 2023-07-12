@@ -10,21 +10,10 @@
 	exotic_bloodtype = "LE"
 	siemens_coeff = 0.5 //They thrive on energy
 	payday_modifier = 0.75
-	/* SKYRAT EDIT - ORIGINAL
 	species_traits = list(
 		DYNCOLORS,
 		AGENDER,
-		NO_UNDERWEAR,
-		HAIR,
-		FACEHAIR,
-	)
-	*/
-	// SKYRAT EDIT - LET THEM WEAR PANTIES
-	species_traits = list(
-		DYNCOLORS,
-		AGENDER,
-		HAIR,
-		FACEHAIR,
+		// NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_cookie = /obj/item/food/energybar
@@ -38,6 +27,7 @@
 	bodytemp_cold_damage_limit = (T20C - 10) // about 10c
 	hair_color = "fixedmutcolor"
 	hair_alpha = 140
+	facial_hair_alpha = 140
 
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/ethereal,
