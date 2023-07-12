@@ -45,6 +45,7 @@
 
 /obj/machinery/atmospherics/components/unary/delam_scram/Destroy()
 	QDEL_NULL(radio)
+	my_sm = null
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/marry_sm()
