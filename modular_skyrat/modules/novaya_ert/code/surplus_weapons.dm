@@ -168,19 +168,23 @@
 	icon_state = "amr_mag"
 	base_icon_state = "amr_mag"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	ammo_type = /obj/item/ammo_casing/caseless/p60strela
+	ammo_type = /obj/item/ammo_casing/p60strela
 	max_ammo = 3
 	caliber = CALIBER_60STRELA
 
 // AMR bullet
 
-/obj/item/ammo_casing/caseless/p60strela
+/obj/item/ammo_casing/p60strela
 	name = ".60 Strela caseless cartridge"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
 	icon_state = "amr_bullet"
 	desc = "A massive block of propellant with an equally massive round sticking out the top of it."
 	caliber = CALIBER_60STRELA
 	projectile_type = /obj/projectile/bullet/p60strela
+
+/obj/item/ammo_casing/p60strela/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
 
 /obj/projectile/bullet/p60strela // The funny thing is, these are wild but you only get three of them
 	name =".60 Strela bullet"

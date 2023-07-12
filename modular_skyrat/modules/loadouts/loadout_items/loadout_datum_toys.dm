@@ -264,6 +264,11 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/jecca
 	name = "Sexy Snoodle Plushie"
 	item_path = /obj/item/toy/plush/skyrat/jecca
+
+/datum/loadout_item/toys/courier_synth
+	name = "Courier Synth Plushie"
+	item_path = /obj/item/toy/plush/skyrat/courier_synth
+
 /*
 *	CARDS
 */
