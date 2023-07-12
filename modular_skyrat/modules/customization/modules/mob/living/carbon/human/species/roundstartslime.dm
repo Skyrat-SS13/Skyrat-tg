@@ -1,9 +1,6 @@
 /datum/species/jelly
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
@@ -376,23 +373,30 @@
 			alterer.dna.species.mutant_bodyparts -= chosen_key
 	else
 		if(selected_sprite_accessory.organ_type)
+			var/robot_organs = (ROBOTIC_DNA_ORGANS in alterer.dna.species.species_traits)
+
 			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
 			var/slot = initial(organ_path.slot)
 			var/obj/item/organ/got_organ = alterer.get_organ_slot(slot)
 			if(got_organ)
 				got_organ.Remove(alterer)
 				qdel(got_organ)
-			organ_path = new selected_sprite_accessory.organ_type
+
+			var/obj/item/organ/replacement_organ = SSwardrobe.provide_type(selected_sprite_accessory.organ_type)
+			replacement_organ.sprite_accessory_flags = selected_sprite_accessory.flags_for_organ
+			replacement_organ.relevant_layers = selected_sprite_accessory.relevent_layers
+
 			var/list/new_acc_list = list()
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
 			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-			if(ROBOTIC_DNA_ORGANS in alterer.dna.species.species_traits)
-				organ_path.status = ORGAN_ROBOTIC
-				organ_path.organ_flags |= ORGAN_SYNTHETIC
-			organ_path.build_from_dna(alterer.dna, chosen_key)
-			organ_path.Insert(alterer, 0, FALSE)
 
+			if(robot_organs)
+				replacement_organ.status = ORGAN_ROBOTIC
+				replacement_organ.organ_flags |= ORGAN_SYNTHETIC
+
+			replacement_organ.build_from_dna(alterer.dna, chosen_key)
+			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
 		else
 			var/list/new_acc_list = list()
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
@@ -401,6 +405,7 @@
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 		alterer.dna.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
 	alterer.update_mutant_bodyparts()
+	alterer.update_clothing(ALL) // for any clothing that has alternate versions (e.g. muzzled masks)
 
 /**
  * Alter markings lets you add a particular body marking
