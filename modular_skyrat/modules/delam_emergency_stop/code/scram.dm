@@ -105,6 +105,9 @@
 
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
 	var/obj/machinery/power/supermatter_crystal/engine/angry_sm = my_sm?.resolve()
+	if(!angry_sm)
+		return
+
 	on = TRUE
 	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 40, ignore_walls = TRUE, use_reverb = TRUE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
