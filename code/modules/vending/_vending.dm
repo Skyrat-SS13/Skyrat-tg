@@ -64,7 +64,7 @@
 	payment_department = ACCOUNT_SRV
 	light_power = 0.7
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
-	voice_filter = "aderivative"
+	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
 
 	/// Is the machine active (No sales pitches if off)!
 	var/active = 1
@@ -207,7 +207,7 @@
 		circuit = null
 		build_inv = TRUE
 	. = ..()
-	wires = new /datum/wires/vending(src)
+	set_wires(new /datum/wires/vending(src))
 
 	if(SStts.tts_enabled)
 		var/static/vendor_voice_by_type = list()
