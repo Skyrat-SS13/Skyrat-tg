@@ -243,12 +243,8 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	. += GLOB.titaniumglass_recipes
 
 GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
-<<<<<<< HEAD
-	new/datum/stack_recipe("plastitanium window", /obj/structure/window/reinforced/plasma/plastitanium/unanchored, 2, time = 0, on_solid_ground = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS) \
-=======
 	new/datum/stack_recipe("plastitanium window", /obj/structure/window/reinforced/plasma/plastitanium/unanchored, 2, time = 2 SECONDS, on_solid_ground = TRUE, is_fulltile = TRUE, category = CAT_WINDOWS), \
 	new/datum/stack_recipe("plastitanium glass shard", /obj/item/shard/plastitanium, time = 60, on_solid_ground = TRUE, category = CAT_MISC) \
->>>>>>> c5c20524c1b (Adds build times to other forms of windows (AKA more Fornite removal) (#76449))
 	))
 
 /obj/item/stack/sheet/plastitaniumglass
