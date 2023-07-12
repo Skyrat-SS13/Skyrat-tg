@@ -94,7 +94,7 @@
 	name = "smartgun drum (10x28mm caseless)"
 	icon = 'modular_skyrat/modules/marines/icons/items/ammo.dmi'
 	icon_state = "smartgun_drum"
-	ammo_type = /obj/item/ammo_casing/smart/caseless/a10x28
+	ammo_type = /obj/item/ammo_casing/smart/a10x28
 	caliber = "a10x28"
 	max_ammo = 500
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
@@ -116,11 +116,15 @@
 		var/obj/projectile/bullet/smart/smart_proj = loaded_projectile
 		smart_proj.ignored_factions = iff_factions.Copy()
 
-/obj/item/ammo_casing/smart/caseless
+/obj/item/ammo_casing/smart
 	firing_effect_type = null
 	is_cased_ammo = FALSE
 
-/obj/item/ammo_casing/smart/caseless/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
+/obj/item/ammo_casing/smart/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
+
+/obj/item/ammo_casing/smart/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	if (!..()) //failed firing
 		return FALSE
 	if(istype(fired_from, /obj/item/gun))
@@ -130,11 +134,11 @@
 	qdel(src)
 	return TRUE
 
-/obj/item/ammo_casing/smart/caseless/update_icon_state()
+/obj/item/ammo_casing/smart/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]"
 
-/obj/item/ammo_casing/smart/caseless/a10x28
+/obj/item/ammo_casing/smart/a10x28
 	name = "10x28mm bullet"
 	desc = "A 10x28m caseless bullet."
 	icon_state = "792x57-casing"

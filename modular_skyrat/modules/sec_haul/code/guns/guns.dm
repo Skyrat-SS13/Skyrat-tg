@@ -802,17 +802,17 @@
 	desc = "A magazine for the G-11 rifle, meant to be filled with angry propellant cubes. Chambered for 4.73mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
-	ammo_type = /obj/item/ammo_casing/caseless/b473
+	ammo_type = /obj/item/ammo_casing/b473
 	caliber = CALIBER_473MM
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/hp
-	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
+	ammo_type = /obj/item/ammo_casing/b473/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
-	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
+	ammo_type = /obj/item/ammo_casing/b473/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /*

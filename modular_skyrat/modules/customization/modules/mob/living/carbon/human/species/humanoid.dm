@@ -1,11 +1,8 @@
 /datum/species/humanoid
 	name = "Humanoid"
 	id = SPECIES_HUMANOID
-	species_traits = list(MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
+	species_traits = list(
+		MUTCOLORS,
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
