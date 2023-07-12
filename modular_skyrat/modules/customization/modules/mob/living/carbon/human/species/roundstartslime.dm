@@ -1,9 +1,6 @@
 /datum/species/jelly
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
