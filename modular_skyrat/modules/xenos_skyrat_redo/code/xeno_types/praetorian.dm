@@ -71,17 +71,21 @@
 	desc = "Spits a spread neurotoxin at someone, exhausting them."
 	plasma_cost = 50
 	acid_projectile = null
-	acid_casing = /obj/item/ammo_casing/caseless/xenospit
+	acid_casing = /obj/item/ammo_casing/xenospit
 	spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid2.ogg'
 	cooldown_time = 10 SECONDS
 
-/obj/item/ammo_casing/caseless/xenospit //This is probably really bad, however I couldn't find any other nice way to do this
+/obj/item/ammo_casing/xenospit //This is probably really bad, however I couldn't find any other nice way to do this
 	name = "big glob of neurotoxin"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/spitter_spread
 	pellets = 3
 	variance = 20
 
-/obj/item/ammo_casing/caseless/xenospit/tk_firing(mob/living/user, atom/fired_from)
+/obj/item/ammo_casing/xenospit/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
+
+/obj/item/ammo_casing/xenospit/tk_firing(mob/living/user, atom/fired_from)
 	return FALSE
 
 /obj/projectile/neurotoxin/skyrat/spitter_spread //Slightly nerfed because its a shotgun spread of these
@@ -93,12 +97,12 @@
 	name = "Spit Acid Spread"
 	desc = "Spits a spread of acid at someone, burning them."
 	acid_projectile = null
-	acid_casing = /obj/item/ammo_casing/caseless/xenospit/spread/lethal
+	acid_casing = /obj/item/ammo_casing/xenospit/spread/lethal
 	button_icon_state = "acidspit_0"
 	projectile_name = "acid"
 	button_base_icon = "acidspit"
 
-/obj/item/ammo_casing/caseless/xenospit/spread/lethal
+/obj/item/ammo_casing/xenospit/spread/lethal
 	name = "big glob of acid"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/acid/spitter_spread
 	pellets = 4
