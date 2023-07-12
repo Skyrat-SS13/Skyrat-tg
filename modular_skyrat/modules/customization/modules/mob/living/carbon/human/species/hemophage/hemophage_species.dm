@@ -1,7 +1,3 @@
-/// Maximum an Hemophage will drain, they will drain less if they hit their cap.
-#define HEMOPHAGE_DRAIN_AMOUNT 50
-/// How much blood do Hemophages normally lose per second (visible effect is every two seconds, so twice this value).
-#define NORMAL_BLOOD_DRAIN 0.125
 /// Minimum amount of blood that you can reach via blood regeneration, regeneration will stop below this.
 #define MINIMUM_VOLUME_FOR_REGEN (BLOOD_VOLUME_BAD + 1) // We do this to avoid any jankiness, and because we want to ensure that they don't fall into a state where they're constantly passing out in a locker.
 /// Minimum amount of light for Hemophages to be considered in pure darkness, and therefore be allowed to heal just like in a closet.
@@ -23,41 +19,16 @@
 /// How much cellular damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_CELLULAR_AMOUNT 0.25
 
-/// The message displayed in the hemophage's chat when they enter their dormant state.
-#define DORMANT_STATE_START_MESSAGE "You feel your tumor's pulse slowing down, as it enters a dormant state. You suddenly feel incredibly weak and vulnerable to everything, and exercise has become even more difficult, as only your most vital bodily functions remain."
-/// The message displayed in the hemophage's chat when they leave their dormant state.
-#define DORMANT_STATE_END_MESSAGE "You feel a rush through your veins, as you can tell your tumor is pulsating at a regular pace once again. You no longer feel incredibly vulnerable, and exercise isn't as difficult anymore."
+/// Just a conversion factor that ensures there's no weird floating point errors when blood is draining.
+#define FLOATING_POINT_ERROR_AVOIDING_FACTOR 1000
+
 /// How high should the damage multiplier to the Hemophage be when they're in a dormant state?
 #define DORMANT_DAMAGE_MULTIPLIER 3
 /// By how much the blood drain will be divided when the tumor is in a dormant state.
 #define DORMANT_BLOODLOSS_MULTIPLIER 10
+/// How much blood do Hemophages normally lose per second (visible effect is every two seconds, so twice this value).
+#define NORMAL_BLOOD_DRAIN 0.125
 
-/// Generic description for the corrupted organs that don't have one.
-#define GENERIC_CORRUPTED_ORGAN_DESC "This shares the shape of a normal organ, but it's been covered and filled with some sort of midnight-black pulsing tissue, engorged with some sort of infectious mass."
-
-/// We have a tumor, it's active.
-#define PULSATING_TUMOR_ACTIVE 0
-/// We have a tumor, it's dormant.
-#define PULSATING_TUMOR_DORMANT 1
-/// We don't have a tumor.
-#define PULSATING_TUMOR_MISSING 2
-
-/// Organ flag for organs of hemophage origin, or organs that have since been infected by an hemophage's tumor.
-#define ORGAN_TUMOR_CORRUPTED (1<<12) // Not taking chances, hopefully this number remains good for a little while.
-
-/// Just a conversion factor that ensures there's no weird floating point errors when blood is draining.
-#define FLOATING_POINT_ERROR_AVOIDING_FACTOR 1000
-
-/// The minimum ratio of reagents that need to have the `REAGENT_BLOOD_REGENERATING` chemical_flags for the Hemophage not to violently vomit upon consumption.
-#define MINIMUM_BLOOD_REGENING_REAGENT_RATIO 0.75
-/// How much disgust we're at after eating/drinking something the tumor doesn't like.
-#define TUMOR_DISLIKED_FOOD_DISGUST DISGUST_LEVEL_GROSS + 15
-/// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
-#define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
-/// The multiplier for blood received by Hemophages out of humans with ckeys.
-#define BLOOD_DRAIN_MULTIPLIER_CKEY 1.5
-/// The rate at which blood metabolizes in a Hemophage's stomach subtype.
-#define BLOOD_METABOLIZATION_RATE (0.1 * REAGENTS_METABOLISM)
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -111,16 +82,20 @@
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
 
-	
+	if(istype(old_species, /datum/species/hemophage) && tumor_status == PULSATING_TUMOR_MISSING)
+		var/datum/species/hemophage/old_hemo_species = old_species
+		tumor_status = old_hemo_species.tumor_status
+
+
 /datum/species/hemophage/on_species_loss(mob/living/carbon/human/former_hemophage, datum/species/new_species, pref_load)
 	. = ..()
-	
+
 	// if we are still a hemophage for whatever reason then we don't want to do any of this (this can happen with the Pride Mirror)
 	if(ishemophage(former_hemophage))
 		return
-	
+
 	var/obj/item/organ/internal/heart/hemophage/tumor = former_hemophage.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
-	
+
 	// make sure we clear dormant status when changing species
 	if(tumor?.is_dormant)
 		tumor.toggle_dormant_state()
@@ -366,278 +341,6 @@
 	return
 
 
-/obj/item/organ/internal/heart/hemophage
-	name = "pulsating tumor"
-	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
-	icon_state = "tumor-on"
-	base_icon_state = "tumor"
-	desc = "This pulsating organ nearly resembles a normal heart, but it's been twisted beyond any human appearance, having turned to the color of coal. The way it barely fits where the original organ was sends shivers down your spine... <i>The fact that it's what keeps them alive makes it all the more terrifying.</i>"
-	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
-	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
-	var/is_dormant = PULSATING_TUMOR_ACTIVE
-
-
-/obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-	. = ..()
-	if(!ishemophage(reciever))
-		return
-
-	var/mob/living/carbon/human/tumorful_hemophage = reciever
-	var/datum/species/hemophage/tumorful_species = tumorful_hemophage.dna.species
-
-	tumorful_species.tumor_status = is_dormant
-
-	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
-	if(is_dormant)
-		tumorful_species.toggle_dormant_tumor_vulnerabilities(tumorful_hemophage)
-		tumorful_hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-
-/obj/item/organ/internal/heart/hemophage/Remove(mob/living/carbon/tumorless, special = FALSE)
-	. = ..()
-	if(!ishemophage(tumorless))
-		return
-
-	var/mob/living/carbon/human/tumorless_hemophage = tumorless
-	var/datum/species/hemophage/tumorless_species = tumorless_hemophage.dna.species
-
-	tumorless_species.tumor_status = PULSATING_TUMOR_MISSING
-
-	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
-	if(is_dormant)
-		tumorless_species.toggle_dormant_tumor_vulnerabilities(tumorless_hemophage)
-		tumorless_hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-
-/// Simple helper proc that toggles the dormant state of the tumor, which also switches its appearance to reflect said change.
-/obj/item/organ/internal/heart/hemophage/proc/toggle_dormant_state()
-	is_dormant = !is_dormant
-	base_icon_state = is_dormant ? "[base_icon_state]-dormant" : initial(base_icon_state)
-	update_appearance()
-
-
-/obj/item/organ/internal/liver/hemophage
-	name = "corrupted liver"
-	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
-	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
-
-
-/obj/item/organ/internal/liver/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-	. = ..()
-
-	RegisterSignal(reciever, COMSIG_GLASS_DRANK, PROC_REF(handle_drink))
-
-
-/obj/item/organ/internal/liver/hemophage/Remove(mob/living/carbon/organ_owner, special)
-	. = ..()
-
-	UnregisterSignal(organ_owner, COMSIG_GLASS_DRANK)
-
-
-/**
- * Handles reacting to drinks based on their content, to see if the tumor likes what's in it or not.
- */
-/obj/item/organ/internal/liver/hemophage/proc/handle_drink(mob/living/target_mob, obj/item/reagent_containers/cup/container, mob/living/user)
-	SIGNAL_HANDLER
-
-	if(HAS_TRAIT(owner, TRAIT_AGEUSIA)) // They don't taste anything, their body shouldn't react strongly to the taste of that stuff.
-		return
-
-	if(container.reagents.has_chemical_flag_skyrat(REAGENT_BLOOD_REGENERATING, container.reagents.total_volume * MINIMUM_BLOOD_REGENING_REAGENT_RATIO)) // At least 75% of the content of the cup needs to be something that's counting as blood-regenerating for the tumor not to freak out.
-		return
-
-	var/mob/living/carbon/body = owner
-	ASSERT(istype(body))
-
-	owner.set_disgust(max(owner.disgust, TUMOR_DISLIKED_FOOD_DISGUST))
-
-	to_chat(owner, span_warning("That tasted awful..."))
-
-	// We don't lose nutrition because we don't even use nutrition as Hemopahges. It WILL however purge nearly all of what's in their stomach.
-	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
-
-
-/obj/item/organ/internal/stomach/hemophage
-	name = "corrupted stomach"
-	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
-	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
-
-
-/obj/item/organ/internal/stomach/hemophage/after_eat(atom/edible)
-	if(!istype(edible, /obj/item/food))
-		return
-
-	var/obj/item/food/eaten = edible
-
-	if(BLOODY & eaten.foodtypes) // They're good if it's BLOODY food, they're less good if it isn't.
-		return
-
-	if(HAS_TRAIT(owner, TRAIT_AGEUSIA)) // They don't taste anything, their body shouldn't react strongly to the taste of that stuff.
-		return
-
-	var/mob/living/carbon/body = owner
-	ASSERT(istype(body))
-
-	owner.set_disgust(max(owner.disgust, TUMOR_DISLIKED_FOOD_DISGUST))
-
-	to_chat(owner, span_warning("That tasted awful..."))
-
-	// We don't lose nutrition because we don't even use nutrition as hemopahges. It WILL however purge nearly all of what's in their stomach.
-	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
-	return ..()
-
-/obj/item/organ/internal/stomach/hemophage/on_life(seconds_per_tick, times_fired)
-	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
-	if(blood)
-		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
-	..()
-
-/obj/item/organ/internal/tongue/hemophage
-	name = "corrupted tongue"
-	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
-	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
-	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
-
-
-/datum/action/cooldown/hemophage
-	cooldown_time = 3 SECONDS
-	button_icon_state = null
-
-
-/datum/action/cooldown/hemophage/New(Target)
-	. = ..()
-
-	if(target && isnull(button_icon_state))
-		AddComponent(/datum/component/action_item_overlay, target)
-
-
-/datum/action/cooldown/hemophage/drain_victim
-	name = "Drain Victim"
-	desc = "Leech blood from any carbon victim you are passively grabbing."
-
-
-/datum/action/cooldown/hemophage/drain_victim/Activate(atom/target)
-	if(!iscarbon(owner))
-		return
-
-	var/mob/living/carbon/hemophage = owner
-
-	if(!hemophage.pulling || !iscarbon(hemophage.pulling) || isalien(hemophage.pulling))
-		hemophage.balloon_alert(hemophage, "not pulling any valid target!")
-		return
-
-	var/mob/living/carbon/victim = hemophage.pulling
-	if(hemophage.blood_volume >= BLOOD_VOLUME_MAXIMUM)
-		hemophage.balloon_alert(hemophage, "already full!")
-		return
-
-	if(victim.stat == DEAD)
-		hemophage.balloon_alert(hemophage, "needs a living victim!")
-		return
-
-	if(!victim.blood_volume || (victim.dna && ((HAS_TRAIT(victim, TRAIT_NOBLOOD)) || victim.dna.species.exotic_blood)))
-		hemophage.balloon_alert(hemophage, "[victim] doesn't have blood!")
-		return
-
-
-	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - hemophage.blood_volume //How much capacity we have left to absorb blood
-	// We start by checking that the victim is a human and they have a client, so we can give them the
-	// beneficial status effect for drinking higher-quality blood.
-	var/is_target_human_with_client = istype(victim, /mob/living/carbon/human) && victim.client
-
-	if(ismonkey(victim))
-		if(hemophage.blood_volume >= BLOOD_VOLUME_NORMAL)
-			hemophage.balloon_alert(hemophage, "their inferior blood cannot sate you any further!")
-			return
-
-		is_target_human_with_client = FALSE // Sorry, not going to get the status effect from monkeys, even if they have a client in them.
-
-		blood_volume_difference = BLOOD_VOLUME_NORMAL - hemophage.blood_volume
-
-	StartCooldown()
-
-	if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
-		victim.show_message(span_warning("[hemophage] tries to bite you, but stops before touching you!"))
-		to_chat(hemophage, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
-		return
-
-	if(victim.has_reagent(/datum/reagent/consumable/garlic))
-		victim.show_message(span_warning("[hemophage] tries to bite you, but recoils in disgust!"))
-		to_chat(hemophage, span_warning("[victim] reeks of garlic! You can't bring yourself to drain such tainted blood."))
-		return
-
-	if(!do_after(hemophage, 3 SECONDS, target = victim))
-		hemophage.balloon_alert(hemophage, "stopped feeding")
-		return
-
-	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
-	// if you drained from a human w/ a client, congrats
-	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER_CKEY : 1)
-
-	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * drained_multiplier), 0, BLOOD_VOLUME_MAXIMUM)
-
-	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
-	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
-	to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
-
-	playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
-
-	if(victim.blood_volume <= BLOOD_VOLUME_OKAY)
-		to_chat(hemophage, span_warning("That definitely left them looking pale..."))
-
-	if(is_target_human_with_client)
-		hemophage.apply_status_effect(/datum/status_effect/blood_thirst_satiated)
-
-	if(!victim.blood_volume || victim.blood_volume < BLOOD_VOLUME_SURVIVE)
-		to_chat(hemophage, span_warning("You finish off [victim]'s blood supply."))
-
-
-/datum/action/cooldown/hemophage/toggle_dormant_state
-	name = "Enter Dormant State"
-	desc = "Causes the tumor inside of you to enter a dormant state, causing it to need just a minimum amount of blood to survive. However, as the tumor living in your body is the only thing keeping you still alive, rendering it latent cuts both it and you to just the essential functions to keep standing. It will no longer mend your body even in the darkness, and the lack of blood pumping through you will have you the weakest you've ever felt; and leave you hardly able to run. It is not on a switch, and it will take some time for it to awaken."
-	cooldown_time = 3 MINUTES
-
-
-/datum/action/cooldown/hemophage/toggle_dormant_state/Activate(atom/action_target)
-	if(!owner || !ishemophage(owner) || !target) // Sorry, but blood drain and the likes are only usable by Hemophages.
-		return
-
-	var/obj/item/organ/internal/heart/hemophage/tumor = target
-	if(!tumor || !istype(tumor)) // This shouldn't happen, but you can never be too careful.
-		return
-
-	owner.balloon_alert(owner, "[tumor.is_dormant ? "leaving" : "entering"] dormant state")
-
-	if(!do_after(owner, 3 SECONDS))
-		owner.balloon_alert(owner, "cancelled state change")
-		return
-
-	to_chat(owner, span_notice("[tumor.is_dormant ? DORMANT_STATE_END_MESSAGE : DORMANT_STATE_START_MESSAGE]"))
-
-	var/mob/living/carbon/human/hemophage = owner
-	var/datum/species/hemophage/hemophage_species = hemophage.dna.species
-
-	tumor.toggle_dormant_state()
-
-	StartCooldown()
-
-	hemophage_species.tumor_status = tumor.is_dormant
-	hemophage_species.toggle_dormant_tumor_vulnerabilities(hemophage)
-
-	if(tumor.is_dormant)
-		name = "Exit Dormant State"
-		desc =  "Causes the pitch-black mass living inside of you to awaken, allowing your circulation to return and blood to pump freely once again. It fills your legs to let you run again, and longs for the darkness as it did before. You start to feel strength rather than the weakness you felt before. However, the tumor giving you life is not on a switch, and it will take some time to subdue it again."
-		hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-	else
-		name = initial(name)
-		desc = initial(desc)
-		hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-
 // We need to override it here because we changed their vampire heart with an Hemophage heart
 /mob/living/carbon/get_status_tab_items()
 	. = ..()
@@ -759,8 +462,8 @@
 	icon_state = "template"
 
 
-#undef HEMOPHAGE_DRAIN_AMOUNT
 #undef NORMAL_BLOOD_DRAIN
+
 #undef MINIMUM_VOLUME_FOR_REGEN
 #undef MINIMUM_LIGHT_THRESHOLD_FOR_REGEN
 #undef TUMORLESS_ORGAN_DAMAGE
@@ -773,24 +476,7 @@
 #undef BLOOD_REGEN_TOXIN_AMOUNT
 #undef BLOOD_REGEN_CELLULAR_AMOUNT
 
-#undef DORMANT_STATE_START_MESSAGE
-#undef DORMANT_STATE_END_MESSAGE
-#undef DORMANT_DAMAGE_MULTIPLIER
-#undef DORMANT_BLOODLOSS_MULTIPLIER
-
-#undef GENERIC_CORRUPTED_ORGAN_DESC
-
-#undef PULSATING_TUMOR_ACTIVE
-#undef PULSATING_TUMOR_DORMANT
-#undef PULSATING_TUMOR_MISSING
-
-#undef ORGAN_TUMOR_CORRUPTED
-
 #undef FLOATING_POINT_ERROR_AVOIDING_FACTOR
 
-#undef HEMOPHAGE_VOMIT_PURGE_RATIO
-#undef TUMOR_DISLIKED_FOOD_DISGUST
-#undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
-
-#undef BLOOD_DRAIN_MULTIPLIER_CKEY
-#undef BLOOD_METABOLIZATION_RATE
+#undef DORMANT_DAMAGE_MULTIPLIER
+#undef DORMANT_BLOODLOSS_MULTIPLIER
