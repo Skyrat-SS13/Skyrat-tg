@@ -282,7 +282,8 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
-	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
+	real_round_start_time = REALTIMEOFDAY //SKYRAT EDIT ADDITION
+	SSautotransfer.new_shift(real_round_start_time) //SKYRAT EDIT ADDITION
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))
