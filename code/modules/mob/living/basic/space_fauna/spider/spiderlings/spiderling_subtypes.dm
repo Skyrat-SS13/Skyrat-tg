@@ -5,8 +5,6 @@
 	grow_as = /mob/living/basic/giant_spider/guard
 	name = "guard spiderling"
 	desc = "Furry and brown, it looks defenseless. This one has sparkling red eyes."
-	icon_state = "guard_spiderling"
-	icon_dead = "guard_spiderling_dead"
 	menu_description = "Furry and brown, specializing in defense of the hive and other spides."
 
 	/// Will differentiate into the "ambush" giant spider.
@@ -68,7 +66,7 @@
 /// Will differentiate into the "viper" giant spider.
 /mob/living/basic/spiderling/viper
 	grow_as = /mob/living/basic/giant_spider/viper
-	name = "viper_spiderling"
+	name = "viper spiderling"
 	desc = "Furry and black, it looks defenseless. This one has sparkling purple eyes."
 	icon_state = "viper_spiderling"
 	icon_dead = "viper_spiderling_dead"
@@ -78,9 +76,9 @@
 /// Will differentiate into the "tarantula" giant spider.
 /mob/living/basic/spiderling/tarantula
 	grow_as = /mob/living/basic/giant_spider/tarantula
-	name = "tarantula_spiderling"
+	name = "tarantula spiderling"
 	desc = "Furry and black, it looks defenseless. This one has abyssal red eyes."
-	icon_state = "taratula_spiderling"
+	icon_state = "tarantula_spiderling"
 	icon_dead = "tarantula_spiderling_dead"
 	menu_description = "Tank spider variant with an enormous amount of health and damage, but is very slow when not on webbing. It also has a charge ability to close distance with a target after a small windup."
 	gold_core_spawnable = NO_SPAWN
