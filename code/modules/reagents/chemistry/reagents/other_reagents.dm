@@ -1554,13 +1554,8 @@
 /datum/reagent/colorful_reagent/powder/black
 	name = "Black Powder"
 	colorname = "black"
-<<<<<<< HEAD
-	color = "#1C1C1C" // not quite black
-	random_color_list = list("#8D8D8D")	//more grey than black, not enough to hide your true colors
-=======
 	color = COLOR_CRAYON_BLACK
 	random_color_list = list("#8D8D8D") //more grey than black, not enough to hide your true colors
->>>>>>> 5237777a07b ([NO GBP] Crayon fixes (#76620))
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/colorful_reagent/powder/white
