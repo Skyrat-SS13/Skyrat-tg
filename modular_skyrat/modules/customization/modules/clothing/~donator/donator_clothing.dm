@@ -214,13 +214,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor_type = /datum/armor/tacticool_black
+	armor_type = /datum/armor/clothing_under/none
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
-
-// Donation reward for Thedragmeme
-
-/datum/armor/tacticool_black
-	wound = 5
 
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
@@ -574,7 +569,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	supports_variations_flags = NONE
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under/none
 
 // Donation reward for inferno707
 /obj/item/clothing/mask/hheart
