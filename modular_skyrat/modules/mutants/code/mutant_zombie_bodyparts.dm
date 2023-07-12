@@ -7,6 +7,7 @@
 	is_dimorphic = FALSE
 	limb_id = SPECIES_MUTANT
 	species_color = "#ffffff"
+	head_flags = HEAD_HAIR|HEAD_LIPS|HEAD_DEBRAIN
 
 /obj/item/bodypart/chest/mutant_zombie
 	icon_greyscale = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'

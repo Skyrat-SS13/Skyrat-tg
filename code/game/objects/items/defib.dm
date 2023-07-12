@@ -653,7 +653,7 @@
 					H.set_jitter_if_lower(200 SECONDS)
 					to_chat(H, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
 					SEND_SIGNAL(H, COMSIG_LIVING_MINOR_SHOCK)
-					if(HAS_TRAIT(user, TRAIT_MORBID))
+					if(user.mind && HAS_TRAIT(user.mind, TRAIT_MORBID))
 						user.add_mood_event("morbid_saved_life", /datum/mood_event/morbid_saved_life)
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
