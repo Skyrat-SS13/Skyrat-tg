@@ -6,7 +6,6 @@
 		"moth_antennae" = ACC_RANDOM,
 	)
 	species_traits = list(
-		LIPS,
 		HAS_MARKINGS,
 		TRAIT_ANTENNAE,
 		MUTCOLORS,

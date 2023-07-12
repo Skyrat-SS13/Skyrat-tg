@@ -1,6 +1,4 @@
 #define TESHARI_TEMP_OFFSET -30 // K, added to comfort/damage limit etc
-#define TESHARI_BURNMOD 1.25 // They take more damage from practically everything
-#define TESHARI_BRUTEMOD 1.2
 #define TESHARI_HEATMOD 1.3
 #define TESHARI_COLDMOD 0.67 // Except cold.
 
@@ -8,11 +6,11 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
-	species_traits = list(MUTCOLORS,
-		EYECOLOR,
+	species_traits = list(
+		MUTCOLORS,
 		NO_UNDERWEAR,
 		HAS_MARKINGS,
-		)
+	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -44,8 +42,6 @@
 	)
 	coldmod = TESHARI_COLDMOD
 	heatmod = TESHARI_HEATMOD
-	brutemod = TESHARI_BRUTEMOD
-	burnmod = TESHARI_BURNMOD
 	bodytemp_normal = BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
