@@ -134,6 +134,9 @@
 
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/goodbye_friends()
 	var/obj/machinery/power/supermatter_crystal/engine/damaged_sm = my_sm?.resolve()
+	if(!damaged_sm)
+		return
+
 	damaged_sm.name = "partially delaminated supermatter crystal"
 	damaged_sm.desc = "This crystal has seen better days, the glow seems off and the shards look brittle. Central says it's still \"relatively safe.\" They'd never lie to us, right?"
 	damaged_sm.explosion_power = SUPERMATTER_DAMAGED // if you fuck up again, yeesh
