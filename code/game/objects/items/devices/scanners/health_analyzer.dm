@@ -578,7 +578,7 @@
 		show_emotion(AID_EMOTION_HAPPY)
 
 
-/obj/item/healthanalyzer/wound/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
+/obj/item/healthanalyzer/simple/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
 	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
