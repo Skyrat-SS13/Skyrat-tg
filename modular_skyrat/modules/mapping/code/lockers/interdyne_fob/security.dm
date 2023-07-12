@@ -20,7 +20,6 @@
 	desc = "A bag for storing extra clothes and shoes. This one belongs to a brig officer."
 
 /obj/item/storage/bag/garment/brig_officer/PopulateContents()
-	new /obj/item/radio/headset/interdyne(src)
 	new /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate(src)
 	new /obj/item/clothing/head/beret/sec/syndicate(src)
 	new /obj/item/clothing/accessory/armband(src)
@@ -36,6 +35,7 @@
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/bag/garment/brig_officer(src)
+	new /obj/item/radio/headset/interdyne(src)
 
 /obj/structure/closet/secure_closet/interdynefob/armory_gear_locker
 	anchored = 1

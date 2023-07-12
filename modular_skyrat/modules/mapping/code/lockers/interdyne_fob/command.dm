@@ -16,7 +16,6 @@
 	new /obj/item/clothing/head/hats/hos/cap/syndicate(src)
 	new /obj/item/clothing/suit/armor/vest/capcarapace/syndicate(src)
 	new /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate(src)
-	new /obj/item/radio/headset/interdyne/command(src)
 	new /obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/clothing/accessory/medal/gold/admiral(src)
@@ -26,6 +25,7 @@
 
 	new /obj/item/ammo_box/magazine/m9mm_aps(src)
 	new /obj/item/storage/bag/garment/station_admiral(src)
+	new /obj/item/radio/headset/interdyne/command(src)
 
 /obj/structure/closet/secure_closet/interdynefob/maa_locker
 	icon_door = "warden"
@@ -52,12 +52,12 @@
 
 /obj/item/storage/bag/garment/master_arms/PopulateContents()
 	new /obj/item/clothing/accessory/medal/silver/maa_medal(src)
-	new /obj/item/radio/headset/interdyne(src)
 	new /obj/item/clothing/suit/armor/vest/warden/syndicate(src)
 	new /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate(src)
 	new /obj/item/clothing/under/suit/skyrat/helltaker(src)
 	new /obj/item/clothing/suit/armor/hos/maa_greatcoat(src)
 	new /obj/item/clothing/head/beret/sec/navywarden/syndicate(src)
+	new /obj/item/clothing/head/hats/hos/beret/syndicate(src)
 
 /obj/structure/closet/secure_closet/interdynefob/maa_locker/PopulateContents()
 	..()
@@ -66,6 +66,7 @@
 	new /obj/item/watertank/pepperspray(src)
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/bag/garment/master_arms(src)
+	new /obj/item/radio/headset/interdyne(src)
 
 /obj/structure/closet/secure_closet/interdynefob/cl_locker
 	icon_door = "hop"
@@ -86,7 +87,6 @@
 	new /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate(src)
 	new /obj/item/clothing/under/suit/skyrat/helltaker(src)
 	new /obj/item/clothing/neck/chaplain/black/cl_cloak(src)
-	new /obj/item/radio/headset/interdyne/command(src)
 	new /obj/item/clothing/head/hats/hos/beret/syndicate(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 
@@ -101,3 +101,4 @@
 	new /obj/item/encryptionkey/headset_syndicate/interdyne(src)
 	new /obj/item/language_manual/codespeak_manual/unlimited(src)
 	new /obj/item/storage/bag/garment/corprate_liaison(src)
+	new /obj/item/radio/headset/interdyne/command(src)
