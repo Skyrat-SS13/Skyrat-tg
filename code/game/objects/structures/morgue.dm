@@ -31,11 +31,7 @@
 GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants and other ghosties.
 
 /obj/structure/bodycontainer
-<<<<<<< HEAD
-	icon = 'icons/obj/stationobjs.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/structures.dmi'
->>>>>>> a373b4cb082 (Icon folder cleaning wave one (#76703))
+	icon = 'icons/obj/structures.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "morgue1"
 	density = TRUE
 	anchored = TRUE

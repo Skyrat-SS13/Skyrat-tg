@@ -286,11 +286,7 @@
 /obj/machinery/power/shieldwallgen
 	name = "shield wall generator"
 	desc = "A shield generator."
-<<<<<<< HEAD
-	icon = 'icons/obj/stationobjs.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/machines/basic_machines.dmi'
->>>>>>> a373b4cb082 (Icon folder cleaning wave one (#76703))
+	icon = 'icons/obj/machines/basic_machines.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "shield_wall_gen"
 	anchored = FALSE
 	density = TRUE
