@@ -14,13 +14,13 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/ammo_box/magazine/recharge/marksman
-	ammo_type = /obj/item/ammo_casing/caseless/laser/marksman
+	ammo_type = /obj/item/ammo_casing/laser/marksman
 	max_ammo = 5
 
-/obj/item/ammo_casing/caseless/laser/marksman
+/obj/item/ammo_casing/laser/marksman
 	projectile_type = /obj/projectile/beam/marksman
 
-/obj/item/ammo_casing/caseless/laser/marksman/Initialize(mapload)
+/obj/item/ammo_casing/laser/marksman/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/delete_on_drop)
 
