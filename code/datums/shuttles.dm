@@ -793,17 +793,6 @@
 	suffix = "grey"
 	name = "pirate ship (The Space Toolbox)"
 
-<<<<<<< HEAD
-=======
-/datum/map_template/shuttle/pirate/irs
-	suffix = "irs"
-	name = "pirate ship (Space IRS)"
-
-/datum/map_template/shuttle/pirate/geode
-	suffix = "geode"
-	name = "pirate ship (Lustrous Geode)"
-
->>>>>>> 865cd178bc8 (Adds a new heavy weight space pirate variant: The space IRS! (#76115))
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"
 	name = "Police Spacevan"
