@@ -311,3 +311,119 @@
   - balance: The Prototype MODsuit's active slowdown has been decreased from 1.5 (!)
       to 1.
   - spellcheck: Fixed a type on the energy net module.
+2023-07-10:
+  Fikou:
+  - bugfix: service borg apparatus now works on stoves and griddles and ovens
+  - qol: borgs can now activate stoves and griddles
+  - rscadd: rnd can research a cookbook for service borgs
+  Imaginos:
+  - image: A new sprite for oeprating tables
+  LT3:
+  - bugfix: That new maptext mentioned below actually works
+  - image: A courier synth ready to deliver hugs and beeps straight to the heart!
+  Melbert:
+  - rscadd: The Atrocinator will now flip you even more.
+  SkyratBot:
+  - rscadd: Coroners are now Morbid!
+  - rscadd: Coroners come with a series of special tools that are especially good
+      at performing certain surgeries if used by a Morbid individual (which the coroner
+      happens to be). They are found in the coroner's medkit.
+  - rscadd: The sorts of surgeries they enjoy are; dissections, autospies, revival
+      surgery, plastic surgery, organ/feature manipulations, amputations. Also eyesnatching.
+  - rscadd: Coroners therefore hate; tending the wounds of the living, defibrillation
+      and CPR. Why waste so much effort on breathers if you can't even carve them
+      up a bit first?
+  - rscadd: Coroners love pickles and pickle juice.
+  - rscadd: The coroner can finally put their autopsy scanner into their special medkit.
+      Not the compact one, though.
+  - rscadd: The elephant graveyard is safer to plunder for the morbid individual.
+      The rewards from the graveyard are now also slightly more lucrative...if you
+      don't care about being cursed, that is.
+  - balance: Roboticists get secure morgue access during skeleton shifts
+  - bugfix: arrows can now be actually coated with reagents.
+  - bugfix: jetpack modules work on mod suits again
+  - bugfix: jetpack cyber implants also work
+  - refactor: removed `get_mover` callback, user is retrieved during activation
+  - refactor: timestop module on `on_module_triggered()` accepts user as 2nd param
+  - spellcheck: Improves gas monitor reaction information RP.
+  - bugfix: You can once again directly place patients on operating tables
+  - bugfix: Creampies no longer float above the heads of monkeys
+  - rscadd: You can now put sandstone bricks in pillows to... make them deadlier?
+  - rscadd: Adds coloured large scarfs and winter coats to ClothesMate and black shoes
+      to ChefDrobe
+  - rscadd: Adds latex gloves to SciDrobe, ChemDrobe and GeneDrobe and nitrile gloves
+      to MediDrobe
+  - rscadd: Adds job headsets to GeneDrobe and RoboDrobe, ViroDrobe and ChemDrobe
+  - rscadd: Adds black wizard robes and black wizard hat to MagiVend
+  - rscadd: Adds grey backpack, grey satchel, leather satchel and grey duffel bag
+      to CargoDrobe
+  - rscadd: Organises Drobes
+  Vishenka0704:
+  - bugfix: fixed age restriction reason
+  - bugfix: Added a forgotten reason for not being allowed to work if the age is low.
+  vinylspiders:
+  - sound: reduced the size of a few large audio files
+  - bugfix: fixes a bug that was causing forge-crafted arrows to turn into bullet
+      casings upon crafting completion
+  - refactor: converts modular caseless ammo subtypes to use the caseless element
+      instead
+  - bugfix: ash headdress, ash winged headdress, ash robes, ash combat plates, & decorated
+      ash combat plates now provide a slight armor protection, equal to that of 'bone
+      bracers'.
+  - bugfix: fixes some layout issues with the milking machine ui that was causing
+      elements to overlap one another and be unreadable
+  - qol: items stored in pockets now fall out and get sent flying when gibbed (instead
+      of just being deleted)
+  - bugfix: you may now interact with lewd slots when the appropriate genitals are
+      exposed (using the Expose/Hide genitals verb -> set to Always Show) regardless
+      of whether or not you are clothed.
+2023-07-12:
+  KathrinBailey:
+  - rscadd: Three skirts, one dress.
+  Melbert:
+  - bugfix: Fixes Aphasia being removed
+  Seven:
+  - balance: Acid on a turf no longer immediately applies acid to its contents
+  - bugfix: Acid applied on a tile will no longer damage pipes below that tile
+  - bugfix: Xeno's corrosive acid no longer instakills mobs
+  - bugfix: Xenos can now touch acid
+  - qol: Mops, some cleaning items, and light replacers now use balloon alerts
+  - bugfix: Fixes changelings not being put into their headslug when using last resort
+  - bugfix: Fixes changeling headslugs not putting their eggs into dead bodies
+  SkyratBot:
+  - bugfix: The military surplus trader encountered by explorer drones will now correctly
+      ask for armor rather than "suit"
+  - qol: Matches command envirosuit helms' armor value with their hat counterparts.
+  - bugfix: Destroying the fabled "green text" now properly releases its victims from
+      their curse.
+  - code_imp: Jousting now registers/unregisters properly on two-handed items.
+  - bugfix: You can now correctly Tend Wounds on most non-human animals.
+  - rscadd: You can now Remove Implants from non-human animals, just in case Ian swallowed
+      a macrobomb.
+  - bugfix: sliding puzzles can no longer have their icons erased by the hand labeler
+  - bugfix: the fortunate cookie dont dropped a empty paper anymore.
+  - bugfix: Fix atoms not applying proper armour penetration logic.
+  - bugfix: Fix silenced living armour penetration not using proper armour penetration
+      logic.
+  - code_imp: Added macro for calculating armour penetration.
+  - bugfix: Fixes venomous projectiles for real, and invisible arrow sprites.
+  - balance: The Regal Condor's base spread has been reduced to 0, like damn near
+      every other gun that exists.
+  - admin: If a circuit component outputs a radio signal, it should now be logged
+      in list-signalers.
+  - spellcheck: Fixed typos in the descriptions of the mRLD and RTD as seen from protolathes.
+  - bugfix: Cake cats/butter bear now grab the ghost of the brain used in their making
+  - bugfix: Autorifle magazines are now visible in the security techfab's ammunition
+      category.
+  Tattle:
+  - qol: changed mouth blocked message to a balloon alert
+  vinylspiders:
+  - bugfix: fixes a common CI failure that was caused by misplaced items on Voidraptor
+      occasionally getting eaten by randomized maintenance crates.
+  - bugfix: fixes a potential issue with gigantism/dwarfism trait not actually getting
+      removed alongside the mutation if your body size is too big or small
+  - bugfix: fixed an issue that was causing climaxes to not complete if you possessed
+      testicles, leading to being permanently horny in some cases
+  - bugfix: fixes some runtimes with the milking machine
+  - bugfix: Sadism quirk will now wait until the climax moodlet is gone before starting
+      to add more arousal
