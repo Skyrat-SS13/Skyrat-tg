@@ -3,9 +3,6 @@
 	id = SPECIES_UNATHI
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

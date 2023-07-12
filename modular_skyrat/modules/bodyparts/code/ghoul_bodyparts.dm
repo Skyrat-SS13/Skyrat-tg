@@ -8,7 +8,7 @@
 	limb_id = SPECIES_GHOUL
 	brute_modifier = GHOUL_BRUTE_MODIFIER
 	burn_modifier = GHOUL_BURN_MODIFIER
-
+	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_DEBRAIN
 
 /obj/item/bodypart/head/mutant/ghoul/Initialize(mapload)
 	worn_ears_offset = new(
