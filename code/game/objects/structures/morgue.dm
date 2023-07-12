@@ -156,6 +156,8 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 					continue
 			else if(istype(AM, /obj/effect/dummy/phased_mob))
 				continue
+			else if(isdead(AM))
+				continue
 			AM.forceMove(src)
 	toggle_organ_decay(src)
 	update_appearance()
@@ -236,7 +238,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(!length(compiled)) // No mobs?
 		icon_state = "morgue3"
 		return ..()
-	
+
 	if(!(obj_flags & EMAGGED))
 		for(var/mob/living/occupant as anything in compiled)
 			var/mob/living/mob_occupant = get_mob_or_brainmob(occupant)
@@ -341,7 +343,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			qdel(O)
 
 		if(!locate(/obj/effect/decal/cleanable/ash) in get_step(src, dir))//prevent pile-up
-			new/obj/effect/decal/cleanable/ash/crematorium(src)
+			new/obj/effect/decal/cleanable/ash(src)
 
 		sleep(3 SECONDS)
 
