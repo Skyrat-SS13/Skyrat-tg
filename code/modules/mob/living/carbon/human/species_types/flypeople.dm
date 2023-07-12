@@ -2,11 +2,6 @@
 	name = "Flyperson"
 	plural_form = "Flypeople"
 	id = SPECIES_FLYPERSON
-	//SKYRAT EDIT - Flypeople deserve fancy hair
-	species_traits = list(
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_FRAIL_ATTACKER,
