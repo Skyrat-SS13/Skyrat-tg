@@ -32,7 +32,8 @@
 			to_chat(user, span_warning("[target_human] doesn't have a head!"))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(!(FACEHAIR in target_human.dna.species.species_traits))
+			var/obj/item/bodypart/head/noggin = target_human.get_bodypart(BODY_ZONE_HEAD)
+			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
 				to_chat(user, span_warning("There is no facial hair to shave!"))
 				return
 			if(!get_location_accessible(target_human, location))
