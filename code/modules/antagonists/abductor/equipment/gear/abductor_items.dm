@@ -686,63 +686,6 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 		return FALSE
 	return TRUE
 
-<<<<<<< HEAD:code/modules/antagonists/abductor/equipment/abduction_gear.dm
-/obj/structure/table/optable/abductor/process(seconds_per_tick)
-	. = PROCESS_KILL
-	for(var/mob/living/carbon/C in get_turf(src))
-		. = TRUE
-		for(var/chemical in injected_reagents)
-			if(C.reagents.get_reagent_amount(chemical) < inject_am * seconds_per_tick)
-				C.reagents.add_reagent(chemical, inject_am * seconds_per_tick)
-
-/obj/structure/table/optable/abductor/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/structure/closet/abductor
-	name = "alien locker"
-	desc = "Contains secrets of the universe."
-	icon_state = "abductor"
-	icon_door = "abductor"
-	can_weld_shut = FALSE
-	door_anim_time = 0
-	material_drop = /obj/item/stack/sheet/mineral/abductor
-
-/obj/structure/door_assembly/door_assembly_abductor
-	name = "alien airlock assembly"
-	icon = 'icons/obj/doors/airlocks/abductor/abductor_airlock.dmi'
-	base_name = "alien airlock"
-	overlays_file = 'icons/obj/doors/airlocks/abductor/overlays.dmi'
-	airlock_type = /obj/machinery/door/airlock/abductor
-	material_type = /obj/item/stack/sheet/mineral/abductor
-	noglass = TRUE
-
-/obj/item/clothing/under/abductor
-	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable."
-	name = "alien jumpsuit"
-	icon = 'icons/obj/clothing/under/syndicate.dmi'
-	icon_state = "abductor"
-	inhand_icon_state = "bl_suit"
-	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
-	armor_type = /datum/armor/under_abductor
-	can_adjust = FALSE
-
-/datum/armor/under_abductor
-	bomb = 10
-	bio = 10
-
-#undef BATON_CUFF
-#undef BATON_MODES
-#undef BATON_PROBE
-#undef BATON_SLEEP
-#undef BATON_STUN
-#undef GIZMO_MARK
-#undef GIZMO_SCAN
-#undef MIND_DEVICE_CONTROL
-#undef MIND_DEVICE_MESSAGE
-#undef VEST_COMBAT
-#undef VEST_STEALTH
-=======
 /obj/item/abductor/alien_omnitool/proc/set_toolset(mob/user)
 	if(active_toolset == TOOLSET_MEDICAL)
 		tool_list = list(
@@ -770,4 +713,3 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 		active_toolset = TOOLSET_MEDICAL
 		if(user)
 			balloon_alert(user, "medical toolset selected")
->>>>>>> 1388003d0b9 (Gives abductors three new equipment shop purchase options, splits up abductor_gear.dm (#76101)):code/modules/antagonists/abductor/equipment/gear/abductor_items.dm
