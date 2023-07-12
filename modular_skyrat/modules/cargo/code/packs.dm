@@ -716,7 +716,7 @@
 	contains = list(
 		/obj/item/crucifix = 3,
 		/obj/item/storage/box/nri_rations = 3,
-		/obj/item/storage/toolbox/a762 = 1,
+		/obj/item/storage/toolbox/ammobox/a762 = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/gun/ballistic/rifle/boltaction = 1,
 		/obj/item/ammo_box/a762 = 3,
