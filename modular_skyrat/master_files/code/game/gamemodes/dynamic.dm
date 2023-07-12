@@ -29,8 +29,8 @@
 /// Divides threat budget, in this case pure midround because Skyrat doesn't have roundstart antags.
 /datum/game_mode/dynamic/generate_budgets()
 	round_start_budget = 0
-	initial_round_start_budget = round_start_budget
-	mid_round_budget = threat_level - round_start_budget
+	initial_round_start_budget = 0
+	mid_round_budget = threat_level
 
 /// Gets the chance for a heavy ruleset midround injection, the dry_run argument is only used for forced injection.
 /datum/game_mode/dynamic/get_heavy_midround_injection_chance(dry_run)
