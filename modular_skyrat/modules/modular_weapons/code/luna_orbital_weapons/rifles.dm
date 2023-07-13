@@ -114,7 +114,7 @@
 	fire_delay = 1
 	spread = 10
 
-	suppressor_x_offset = 11
+	suppressor_x_offset = 9
 
 	projectile_damage_multiplier = 0.8
 
