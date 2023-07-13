@@ -1,4 +1,6 @@
 GLOBAL_LIST_EMPTY(roundstart_races)
+///List of all roundstart languages by path
+GLOBAL_LIST_EMPTY(roundstart_languages)
 
 /// An assoc list of species types to their features (from get_features())
 GLOBAL_LIST_EMPTY(features_by_species)
@@ -223,23 +225,28 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	RETURN_TYPE(/list)
 
 	if (!GLOB.roundstart_races.len)
-		GLOB.roundstart_races = generate_selectable_species()
+		GLOB.roundstart_races = generate_selectable_species_and_languages()
 
 	return GLOB.roundstart_races
-
 /**
  * Generates species available to choose in character setup at roundstart
  *
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
-/proc/generate_selectable_species()
+/proc/generate_selectable_species_and_languages()
 	var/list/selectable_species = list()
 
 	for(var/species_type in subtypesof(/datum/species))
 		var/datum/species/species = new species_type
 		if(species.check_roundstart_eligible())
 			selectable_species += species.id
+			var/datum/language_holder/temp_holder = new species.species_language_holder
+			for(var/datum/language/spoken_languages as anything in temp_holder.understood_languages)
+				if(spoken_languages in GLOB.roundstart_languages)
+					continue
+				GLOB.roundstart_languages += spoken_languages
+			qdel(temp_holder)
 			qdel(species)
 
 	if(!selectable_species.len)
@@ -251,7 +258,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * Checks if a species is eligible to be picked at roundstart.
  *
  * Checks the config to see if this species is allowed to be picked in the character setup menu.
- * Used by [/proc/generate_selectable_species].
+ * Used by [/proc/generate_selectable_species_and_languages].
  */
 /datum/species/proc/check_roundstart_eligible()
 	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
@@ -1374,7 +1381,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((human.maxHealth - human.health) * 0.5))) // rev deconversion through blunt trauma. // SKYRAT EDIT CHANGE
 					var/datum/antagonist/rev/rev = human.mind.has_antag_datum(/datum/antagonist/rev)
 					if(rev)
-						rev.remove_revolutionary(FALSE, user)
+						rev.remove_revolutionary(user)
 
 			if(bloody) //Apply blood
 				if(human.wear_mask)
