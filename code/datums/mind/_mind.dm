@@ -164,14 +164,6 @@
 	SIGNAL_HANDLER
 	set_current(null)
 
-<<<<<<< HEAD
-/datum/mind/proc/get_language_holder()
-	if(!language_holder)
-		language_holder = new (src)
-	return language_holder
-
-=======
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 /datum/mind/proc/transfer_to(mob/new_character, force_key_move = 0)
 	set_original_character(null)
 	if(current) // remove ourself from our old body's mind variable
