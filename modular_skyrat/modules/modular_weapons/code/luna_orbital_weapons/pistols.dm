@@ -94,6 +94,8 @@
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/pistol_small.ogg'
 
+	w_class = WEIGHT_CLASS_SMALL
+
 	projectile_damage_multiplier = 0.8 // Makes it exactly 20 damage per normal round
 
 	suppressor_x_offset = 6
