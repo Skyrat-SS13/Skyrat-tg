@@ -136,15 +136,9 @@
 		current = mob_override
 	handle_clown_mutation(current, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
 	current.faction |= FACTION_CULT
-<<<<<<< HEAD
-	current.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
-	if(!cult_team.cult_master)
-		vote.Grant(current)
-=======
 	current.grant_language(/datum/language/narsie, source = LANGUAGE_CULTIST)
 
 	var/datum/action/innate/cult/comm/communion = new
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 	communion.Grant(current)
 	if(ishuman(current))
 		magic.Grant(current)
@@ -163,12 +157,6 @@
 		current = mob_override
 	handle_clown_mutation(current, removing = FALSE)
 	current.faction -= FACTION_CULT
-<<<<<<< HEAD
-	current.remove_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
-	vote.Remove(current)
-	communion.Remove(current)
-	magic.Remove(current)
-=======
 	current.remove_language(/datum/language/narsie, source = LANGUAGE_CULTIST)
 
 	QDEL_NULL(vote_ability)
@@ -176,7 +164,6 @@
 		qdel(cult_buttons)
 	current.update_mob_action_buttons()
 
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 	current.clear_alert("bloodsense")
 	if (HAS_TRAIT(current, TRAIT_UNNATURAL_RED_GLOWY_EYES))
 		current.RemoveElement(/datum/element/cult_eyes)

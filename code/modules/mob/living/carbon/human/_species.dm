@@ -59,19 +59,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/toxic_food = TOXIC
 	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/no_equip_flags
-<<<<<<< HEAD
 	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
 	var/nojumpsuit = FALSE
 	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
 	var/say_mod = "says"
-	///What languages this species can understand and say. Use a [language holder datum][/datum/language_holder] in this var.
-	var/species_language_holder = /datum/language_holder
-=======
 	/// What languages this species can understand and say.
 	/// Use a [language holder datum][/datum/language_holder] typepath in this var.
 	/// Should never be null.
 	var/datum/language_holder/species_language_holder = /datum/language_holder/human_basic
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 	/**
 	  * Visible CURRENT bodyparts that are unique to a species.
 	  * DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK
@@ -529,9 +524,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		for(var/i in inherent_factions)
 			C.faction += i //Using +=/-= for this in case you also gain the faction from a different source.
 
-<<<<<<< HEAD
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-=======
 	// All languages associated with this language holder are added with source [LANGUAGE_SPECIES]
 	// rather than source [LANGUAGE_ATOM], so we can track what to remove if our species changes again
 	var/datum/language_holder/gaining_holder = GLOB.prototype_language_holders[species_language_holder]
@@ -541,7 +534,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.grant_language(language, SPOKEN_LANGUAGE, LANGUAGE_SPECIES)
 	for(var/language in gaining_holder.blocked_languages)
 		C.add_blocked_language(language, LANGUAGE_SPECIES)
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
@@ -583,9 +575,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	clear_tail_moodlets(C)
 
-<<<<<<< HEAD
 	C.remove_movespeed_modifier(/datum/movespeed_modifier/species)
-=======
 	// Removes all languages previously associated with [LANGUAGE_SPECIES], gaining our new species will add new ones back
 	var/datum/language_holder/losing_holder = GLOB.prototype_language_holders[species_language_holder]
 	for(var/language in losing_holder.understood_languages)
@@ -594,7 +584,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.remove_language(language, SPOKEN_LANGUAGE, LANGUAGE_SPECIES)
 	for(var/language in losing_holder.blocked_languages)
 		C.remove_blocked_language(language, LANGUAGE_SPECIES)
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
