@@ -36,7 +36,7 @@
 
 	new_soulcatcher.name = "[linked_mob]"
 
-	RegisterSignal(new_soulcatcher, COMSIG_QDELETING, .proc/no_soulcatcher_component)
+	RegisterSignal(new_soulcatcher, COMSIG_QDELETING, PROC_REF(no_soulcatcher_component))
 	linked_soulcatcher = WEAKREF(new_soulcatcher)
 
 /datum/nifsoft/soulcatcher/activate()
