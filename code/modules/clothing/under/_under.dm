@@ -151,18 +151,11 @@
 
 	/* SKYRAT EDIT REMOVAL - This breaks jumpsuit adjustment. Plus, we don't support it.
 	if((supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && ishuman(user))
-<<<<<<< HEAD
-		var/mob/living/carbon/human/H = user
-		if(H.dna.species.bodytype & BODYTYPE_DIGITIGRADE)
-			adjusted = DIGITIGRADE_STYLE
-		H.update_worn_undersuit()
-	*/ // SKYRAT EDIT END
-=======
 		var/mob/living/carbon/human/wearer = user
 		if(wearer.bodytype & BODYTYPE_DIGITIGRADE)
 			adjusted = DIGITIGRADE_STYLE
 			update_appearance()
->>>>>>> bfe3f19d537 (Allows uniforms to have multiple accessories attached, removes armor from accessories (#76629))
+		*/ // SKYRAT EDIT END
 
 /obj/item/clothing/under/equipped(mob/living/user, slot)
 	..()
