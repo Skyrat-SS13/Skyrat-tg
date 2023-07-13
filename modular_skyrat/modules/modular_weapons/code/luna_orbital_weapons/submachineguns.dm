@@ -48,7 +48,8 @@
 		weapon, it is mechanically identical to its larger counterpart. The benefits of a \
 		significantly smaller round is that the weapon can be made significantly smaller as well. \
 		At nearly three quarters the length of even the short rifle, it finds popular use among \
-		army medics and rear line personnel, as well as police forces."
+		army medics and rear line personnel, as well as police forces. Has been in consistent use \
+		by SolFed militaries and police forces since 2556"
 
 	return .
 

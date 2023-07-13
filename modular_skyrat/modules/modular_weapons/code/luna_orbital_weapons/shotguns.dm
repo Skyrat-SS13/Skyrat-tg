@@ -45,7 +45,8 @@
 		the removal of the self loading system in exchange for a pump action. \
 		This significantly lowers the manufacturing cost of the weapon, making it \
 		a popular and common sight among SolFed police and military forces that \
-		often operate in tight quarters."
+		often operate in tight quarters. Has been in consistent use by SolFed \
+		militaries and police forces since 2556."
 
 	return .
 
