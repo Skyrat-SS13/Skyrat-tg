@@ -2,7 +2,7 @@
 	. = ..()
 	var/mob/living/owner_mob = mob_override || owner.current
 	var/datum/language_holder/holder = owner_mob.get_language_holder()
-	holder.remove_language(/datum/language/common, TRUE, TRUE, LANGUAGE_ALL)
-	holder.remove_language(/datum/language/draconic, TRUE, TRUE, LANGUAGE_ALL)
-	holder.grant_language(/datum/language/ashtongue, TRUE, TRUE, LANGUAGE_ALL)
+	holder.remove_language(/datum/language/common, source = LANGUAGE_ALL)
+	holder.remove_language(/datum/language/draconic, source = LANGUAGE_ALL)
+	holder.grant_language(/datum/language/ashtongue, source = LANGUAGE_ALL)
 	holder.selected_language = /datum/language/ashtongue

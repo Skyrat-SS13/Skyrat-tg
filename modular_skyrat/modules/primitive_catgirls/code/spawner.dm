@@ -100,9 +100,9 @@
 	var/mob/living/owner_mob = mob_override || owner.current
 	var/datum/language_holder/holder = owner_mob.get_language_holder()
 
-	holder.remove_language(/datum/language/common, TRUE, TRUE, LANGUAGE_ALL)
+	holder.remove_language(/datum/language/common, source = LANGUAGE_ALL)
 
-	holder.grant_language(/datum/language/primitive_catgirl, TRUE, TRUE, LANGUAGE_ALL)
+	holder.grant_language(/datum/language/primitive_catgirl, source = LANGUAGE_ALL)
 	holder.selected_language = /datum/language/primitive_catgirl
 
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
