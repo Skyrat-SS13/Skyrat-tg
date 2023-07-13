@@ -54,7 +54,6 @@ Key procs
 	var/atom/movable/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-<<<<<<< HEAD
 /datum/language_holder/New(atom/_owner)
 	if(_owner && QDELETED(_owner))
 		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
@@ -64,16 +63,6 @@ Key procs
 		var/datum/mind/M = owner
 		if(M.current)
 			update_atom_languages(M.current)
-=======
-/datum/language_holder/New(atom/new_owner)
-	if(new_owner)
-		if(QDELETED(new_owner))
-			CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(new_owner)]")
-		if(!ismovable(new_owner))
-			CRASH("Language holder being added to a non-movable thing, this is invalid (was: [new_owner] / [new_owner.type])")
-
-	owner = new_owner
->>>>>>> 8c1e35e1c07 (Refactors mind language holders into non-existent, fixes new languages being deleted on species swap + tests (#76612))
 
 	// If we have an owner, we'll set a default selected language
 	if(owner)
