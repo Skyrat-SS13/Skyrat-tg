@@ -203,11 +203,13 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	switch(holder.gender)
 		if(MALE)
-			L[DNA_GENDER_BLOCK] = construct_block(G_MALE, 3)
+			L[DNA_GENDER_BLOCK] = construct_block(G_MALE, GENDERS)
 		if(FEMALE)
-			L[DNA_GENDER_BLOCK] = construct_block(G_FEMALE, 3)
+			L[DNA_GENDER_BLOCK] = construct_block(G_FEMALE, GENDERS)
+		if(NEUTER)
+			L[DNA_GENDER_BLOCK] = construct_block(G_NEUTER, GENDERS)
 		else
-			L[DNA_GENDER_BLOCK] = construct_block(G_PLURAL, 3)
+			L[DNA_GENDER_BLOCK] = construct_block(G_PLURAL, GENDERS)
 	if(ishuman(holder))
 		var/mob/living/carbon/human/H = holder
 		if(!GLOB.hairstyles_list.len)
@@ -353,11 +355,13 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_GENDER_BLOCK)
 			switch(H.gender)
 				if(MALE)
-					set_uni_identity_block(blocknumber, construct_block(G_MALE, 3))
+					set_uni_identity_block(blocknumber, construct_block(G_MALE, GENDERS))
 				if(FEMALE)
-					set_uni_identity_block(blocknumber, construct_block(G_FEMALE, 3))
+					set_uni_identity_block(blocknumber, construct_block(G_FEMALE, GENDERS))
+				if(NEUTER)
+					set_uni_identity_block(blocknumber, construct_block(G_NEUTER, GENDERS))
 				else
-					set_uni_identity_block(blocknumber, construct_block(G_PLURAL, 3))
+					set_uni_identity_block(blocknumber, construct_block(G_PLURAL, GENDERS))
 		if(DNA_FACIAL_HAIRSTYLE_BLOCK)
 			set_uni_identity_block(blocknumber, construct_block(GLOB.facial_hairstyles_list.Find(H.facial_hairstyle), GLOB.facial_hairstyles_list.len))
 		if(DNA_HAIRSTYLE_BLOCK)
@@ -622,11 +626,22 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!has_dna())
 		return
 
+<<<<<<< HEAD
 	switch(deconstruct_block(get_uni_identity_block(dna.unique_identity, DNA_GENDER_BLOCK), 3))
+=======
+	//Always plural gender if agender
+	if(HAS_TRAIT(src, TRAIT_AGENDER))
+		gender = PLURAL
+		return
+
+	switch(deconstruct_block(get_uni_identity_block(dna.unique_identity, DNA_GENDER_BLOCK), GENDERS))
+>>>>>>> 823b9a53a59 (Adds support for it/its pronouns (#76799))
 		if(G_MALE)
 			gender = MALE
 		if(G_FEMALE)
 			gender = FEMALE
+		if(G_NEUTER)
+			gender = NEUTER
 		else
 			gender = PLURAL
 
