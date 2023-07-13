@@ -1,8 +1,10 @@
 //Lockers used in cargodiselost.dmm
 
+//Ammo storage in freighter armoury
 /obj/structure/closet/freighterammo
 	name = "Ammo Storage"
 
+//Freighter QM's gear locker
 /obj/structure/closet/secure_closet/personal/cabinet/freighterboss
 	name = "Personal Closet"
 
