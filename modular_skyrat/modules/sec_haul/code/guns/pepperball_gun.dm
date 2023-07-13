@@ -13,7 +13,7 @@
 	fire_sound_volume = 50
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")

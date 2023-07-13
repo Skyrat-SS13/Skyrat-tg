@@ -24,7 +24,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 
 /obj/item/gun/ballistic/automatic/nri_smg/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	name = "\improper Szabo-Ivanek service pistol"
@@ -37,4 +37,4 @@
 	fire_delay = 3
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/nri/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
