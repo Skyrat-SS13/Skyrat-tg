@@ -166,18 +166,6 @@
 	SIGNAL_HANDLER
 	set_current(null)
 
-/datum/mind/proc/get_language_holder()
-	if(isnull(language_holder))
-		if(iscarbon(current))
-			var/mob/living/carbon/talker = current
-			// AHH WHY DO MINDS ALSO HAVE LANGUAGE HOLDERS WHAT'S THE POINT OF THE "MIND" LANGUAGE SOURCE IF WE STORE IT TWICE ANYWAYS
-			var/type_to_use = talker.dna?.species?.species_language_holder || talker.language_holder?.type || /datum/language_holder
-			language_holder = new type_to_use(src)
-		else
-			language_holder = new(src)
-
-	return language_holder
-
 /datum/mind/proc/transfer_to(mob/new_character, force_key_move = 0)
 	set_original_character(null)
 	if(current) // remove ourself from our old body's mind variable
