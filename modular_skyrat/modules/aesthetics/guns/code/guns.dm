@@ -83,7 +83,7 @@
 	can_suppress = FALSE
 
 /obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -280,7 +280,7 @@
 	weapon_weight = WEAPON_LIGHT
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -370,7 +370,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
