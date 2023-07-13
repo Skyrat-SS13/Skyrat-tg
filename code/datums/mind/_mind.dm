@@ -166,6 +166,11 @@
 	SIGNAL_HANDLER
 	set_current(null)
 
+/datum/mind/proc/get_language_holder()
+	if(!language_holder)
+		language_holder = new (src)
+	return language_holder
+
 /datum/mind/proc/transfer_to(mob/new_character, force_key_move = 0)
 	set_original_character(null)
 	if(current) // remove ourself from our old body's mind variable
