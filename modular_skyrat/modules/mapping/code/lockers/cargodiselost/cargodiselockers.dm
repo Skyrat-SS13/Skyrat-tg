@@ -22,7 +22,7 @@
 	new /obj/item/ammo_box/a762(src)
 	new /obj/item/ammo_box/a762(src)
 
-/obj/structure/secure_closet/personal/cabinet/freighterboss/PopulateContents()
+/obj/structure/closet/secure_closet/personal/cabinet/freighterboss/PopulateContents()
 	. = ..()
 
 	new /obj/item/gun/ballistic/automatic/cfa_rifle(src)
