@@ -116,7 +116,6 @@
 /obj/item/ammo_casing/c35sol/ripper
 	name = ".35 Sol Short ripper bullet casing"
 	desc = "A SolFed standard caseless ripper pistol round. Causes slashing wounds on targets, but is weak to armor."
-	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c35sol/ripper
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
 	advanced_print_req = TRUE
