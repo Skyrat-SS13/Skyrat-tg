@@ -3,6 +3,11 @@
 /obj/item/storage/box/gunset/luna
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/gunsets.dmi'
 
+/obj/item/storage/box/gunset/luna/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
 /obj/item/storage/box/gunset/luna/small
 	icon_state = "guncase_s"
 

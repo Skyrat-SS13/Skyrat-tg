@@ -44,6 +44,9 @@
 
 	mag_type = real_magazine_type
 
+/obj/item/gun/ballistic/automatic/luna_rifle/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
 // Military short rifle
 
 /obj/item/gun/ballistic/automatic/luna_rifle/short

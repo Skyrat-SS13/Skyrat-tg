@@ -37,6 +37,9 @@
 
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
+/obj/item/gun/ballistic/automatic/luna_pcc/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
 // Police SMG
 
 /obj/item/gun/ballistic/automatic/luna_pcc/police
@@ -75,6 +78,9 @@
 	fire_delay = 1
 
 	spread = 10
+
+/obj/item/gun/ballistic/automatic/luna_pdw/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
 
 /obj/item/gun/ballistic/automatic/luna_pdw/no_mag
 	spawnwithmagazine = FALSE

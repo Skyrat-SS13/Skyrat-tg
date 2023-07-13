@@ -1,7 +1,7 @@
 // Text for what examine blurb will come up when used with /datum/element/manufacturer_examine
 // Very loosely grouped based on what company makes what mainly for your viewing pleasure
 
-#define COMPANY_CANTALAN "It has <b>[span_purple("Cantalan Federal Arms")]</b> etched into it."
+#define COMPANY_LUNA "It has <b>[span_cyan("Luno Orbital Pafilfabriko")]</b> etched into it."
 #define COMPANY_DONK "It has a <b>[span_green("Donk Corporation")]</b> label visible on it."
 #define COMPANY_BOLT "It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto it."
 #define COMPANY_NANOTRASEN "It has <b>[span_blue("Nanotrasen Armories")]</b> etched into it."

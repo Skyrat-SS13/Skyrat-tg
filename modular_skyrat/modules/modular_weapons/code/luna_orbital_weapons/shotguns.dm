@@ -32,6 +32,9 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 
+/obj/item/gun/ballistic/shotgun/luna/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
 /obj/item/ammo_box/magazine/internal/shot/luna
 	name = "\improper 'Sledmartelo' Shotgun Internal Tube"
 	caliber = CALIBER_SHOTGUN

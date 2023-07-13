@@ -19,6 +19,9 @@
 
 	fire_delay = 2
 
+/obj/item/gun/ballistic/automatic/pistol/luna/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
 /obj/item/gun/ballistic/automatic/pistol/luna/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, \
 		starting_light = new /obj/item/flashlight/seclite(src), \

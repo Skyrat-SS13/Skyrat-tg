@@ -38,3 +38,6 @@
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 2.5)
+
+/obj/item/gun/ballistic/automatic/luna_sport_shooter/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
