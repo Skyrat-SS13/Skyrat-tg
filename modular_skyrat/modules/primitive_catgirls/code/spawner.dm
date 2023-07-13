@@ -57,9 +57,6 @@
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	// I just have to be REALLY sure they get those languages
-	spawned_human.language_holder = new /datum/language_holder/primitive_felinid
-
 	team.players_spawned += (spawned_human.key)
 
 /datum/job/primitive_catgirl
