@@ -44,21 +44,13 @@
 	var/mob/living/carbon/human/wearer = loc
 	if(!ishuman(wearer) || !wearer.w_uniform)
 		return
-<<<<<<< HEAD
-	var/obj/item/clothing/under/U = M.w_uniform
-	if(istype(U) && U.attached_accessory)
-		var/obj/item/clothing/accessory/A = U.attached_accessory
-		if(A.above_suit)
-			. += U.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
-=======
 	var/obj/item/clothing/under/undershirt = wearer.w_uniform
 	if(!istype(undershirt) || !LAZYLEN(undershirt.attached_accessories))
 		return
 
 	var/obj/item/clothing/accessory/displayed = undershirt.attached_accessories[1]
 	if(displayed.above_suit)
-		. += undershirt.accessory_overlay
->>>>>>> bfe3f19d537 (Allows uniforms to have multiple accessories attached, removes armor from accessories (#76629))
+		. += undershirt.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += undershirt.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()
