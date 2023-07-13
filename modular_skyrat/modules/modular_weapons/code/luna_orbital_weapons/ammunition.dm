@@ -5,7 +5,7 @@
 
 /obj/item/ammo_casing/c35sol
 	name = ".35 Sol Short lethal bullet casing"
-	desc = "A SolFed standard lethal pistol round."
+	desc = "A SolFed standard caseless lethal pistol round."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "pistol_round"
@@ -39,7 +39,7 @@
 
 /obj/item/ammo_casing/c35sol/incapacitator
 	name = ".35 Sol Short incapacitator bullet casing"
-	desc = "A SolFed standard less-lethal pistol round. Exhausts targets on hit, has a tendency to bounce off walls at shallow angles."
+	desc = "A SolFed standard caseless less-lethal pistol round. Exhausts targets on hit, has a tendency to bounce off walls at shallow angles."
 	projectile_type = /obj/projectile/bullet/c35sol/incapacitator
 	harmful = FALSE
 
@@ -75,7 +75,7 @@
 
 /obj/item/ammo_casing/c35sol/pierce
 	name = ".35 Sol Short piercing bullet casing"
-	desc = "A SolFed standard armor-piercing pistol round. Effective at penetrating armor and people, at expense of less injury than a standard bullet."
+	desc = "A SolFed standard caseless armor-piercing pistol round. Effective at penetrating armor and people, at expense of less injury than a standard bullet."
 	projectile_type = /obj/projectile/bullet/c35sol/pierce
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
 	advanced_print_req = TRUE
@@ -115,7 +115,7 @@
 
 /obj/item/ammo_casing/c35sol/ripper
 	name = ".35 Sol Short ripper bullet casing"
-	desc = "A SolFed standard ripper pistol round. Causes slashing wounds on targets, but is weak to armor."
+	desc = "A SolFed standard caseless ripper pistol round. Causes slashing wounds on targets, but is weak to armor."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c35sol/ripper
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
@@ -148,7 +148,7 @@
 
 /obj/item/ammo_casing/c40sol
 	name = ".40 Sol Long lethal bullet casing"
-	desc = "A SolFed standard lethal rifle round."
+	desc = "A SolFed standard caseless lethal rifle round."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "rifle_round"
@@ -181,7 +181,7 @@
 
 /obj/item/ammo_casing/c40sol/fragmentation
 	name = ".40 Sol Long fragmentation bullet casing"
-	desc = "A SolFed standard fragmentation rifle round. Shatters upon impact, ejecting sharp shrapnel that can harm the target further."
+	desc = "A SolFed standard caseless fragmentation rifle round. Shatters upon impact, ejecting sharp shrapnel that can harm the target further."
 
 	projectile_type = /obj/projectile/bullet/c40sol/fragmentation
 
@@ -211,7 +211,7 @@
 
 /obj/item/ammo_casing/c40sol/incendiary
 	name = ".40 Sol Long incendiary bullet casing"
-	desc = "A SolFed standard incendiary rifle round."
+	desc = "A SolFed standard caseless incendiary rifle round. Leaves no flaming trail, only igniting targets on impact."
 
 	projectile_type = /obj/projectile/bullet/c40sol/incendiary
 
