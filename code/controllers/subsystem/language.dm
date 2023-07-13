@@ -14,4 +14,3 @@ SUBSYSTEM_DEF(language)
 		var/datum/language/instance = new language
 		GLOB.language_datum_instances[language] = instance
 	return SS_INIT_SUCCESS
-		scientific_partners += partner
