@@ -281,3 +281,308 @@
   vinylspiders:
   - bugfix: the colourable winter coat will no longer display as a broken checkerboard
       icon when the hood is down
+2023-07-08:
+  LT3:
+  - image: More maptext and font tweaks
+  - spellcheck: Context tooltips too small, too big... just right?
+  vinylspiders:
+  - bugfix: Miner's Salve will no longer cause permanent numbness
+  - refactor: cleans up medicine.dm and removes some Skyrat edits in medicine_reagents.dm
+  - bugfix: slimes who use the Alter Form action to get taur bodies will now properly
+      hide shoes like they're supposed to
+  - qol: slimes who use Alter Form will automatically have their clothing icons updated
+      with the appropriate versions (for things like snouted masks, digitigrade legs,
+      taur shoes) without having to remove and re-equip their gear
+2023-07-09:
+  SkyratBot:
+  - balance: Reduced the complexity cost of a lot of MODules.
+  - balance: Pathfinder 2 -> 1
+  - balance: Tether 3 -> 2
+  - balance: Temperature Regulator 2 -> 1
+  - balance: DNA lock 2 -> 1
+  - balance: Health analyzer 2 -> 1
+  - balance: Sonar 2 -> 1
+  - balance: Microwave beam 2 -> 1
+  - balance: Drill 2 -> 1
+  - balance: All visors (including NV and thermals) 2 -> 1
+  - balance: Circuit Adapter 2 -> 1
+  - balance: The Mining MODsuit has had its complexity increased to 13 and now starts
+      with the eating apparatus module, with a total base complexity of 10/13 now.
+  - balance: The Prototype MODsuit's active slowdown has been decreased from 1.5 (!)
+      to 1.
+  - spellcheck: Fixed a type on the energy net module.
+2023-07-10:
+  Fikou:
+  - bugfix: service borg apparatus now works on stoves and griddles and ovens
+  - qol: borgs can now activate stoves and griddles
+  - rscadd: rnd can research a cookbook for service borgs
+  Imaginos:
+  - image: A new sprite for oeprating tables
+  LT3:
+  - bugfix: That new maptext mentioned below actually works
+  - image: A courier synth ready to deliver hugs and beeps straight to the heart!
+  Melbert:
+  - rscadd: The Atrocinator will now flip you even more.
+  SkyratBot:
+  - rscadd: Coroners are now Morbid!
+  - rscadd: Coroners come with a series of special tools that are especially good
+      at performing certain surgeries if used by a Morbid individual (which the coroner
+      happens to be). They are found in the coroner's medkit.
+  - rscadd: The sorts of surgeries they enjoy are; dissections, autospies, revival
+      surgery, plastic surgery, organ/feature manipulations, amputations. Also eyesnatching.
+  - rscadd: Coroners therefore hate; tending the wounds of the living, defibrillation
+      and CPR. Why waste so much effort on breathers if you can't even carve them
+      up a bit first?
+  - rscadd: Coroners love pickles and pickle juice.
+  - rscadd: The coroner can finally put their autopsy scanner into their special medkit.
+      Not the compact one, though.
+  - rscadd: The elephant graveyard is safer to plunder for the morbid individual.
+      The rewards from the graveyard are now also slightly more lucrative...if you
+      don't care about being cursed, that is.
+  - balance: Roboticists get secure morgue access during skeleton shifts
+  - bugfix: arrows can now be actually coated with reagents.
+  - bugfix: jetpack modules work on mod suits again
+  - bugfix: jetpack cyber implants also work
+  - refactor: removed `get_mover` callback, user is retrieved during activation
+  - refactor: timestop module on `on_module_triggered()` accepts user as 2nd param
+  - spellcheck: Improves gas monitor reaction information RP.
+  - bugfix: You can once again directly place patients on operating tables
+  - bugfix: Creampies no longer float above the heads of monkeys
+  - rscadd: You can now put sandstone bricks in pillows to... make them deadlier?
+  - rscadd: Adds coloured large scarfs and winter coats to ClothesMate and black shoes
+      to ChefDrobe
+  - rscadd: Adds latex gloves to SciDrobe, ChemDrobe and GeneDrobe and nitrile gloves
+      to MediDrobe
+  - rscadd: Adds job headsets to GeneDrobe and RoboDrobe, ViroDrobe and ChemDrobe
+  - rscadd: Adds black wizard robes and black wizard hat to MagiVend
+  - rscadd: Adds grey backpack, grey satchel, leather satchel and grey duffel bag
+      to CargoDrobe
+  - rscadd: Organises Drobes
+  Vishenka0704:
+  - bugfix: fixed age restriction reason
+  - bugfix: Added a forgotten reason for not being allowed to work if the age is low.
+  vinylspiders:
+  - sound: reduced the size of a few large audio files
+  - bugfix: fixes a bug that was causing forge-crafted arrows to turn into bullet
+      casings upon crafting completion
+  - refactor: converts modular caseless ammo subtypes to use the caseless element
+      instead
+  - bugfix: ash headdress, ash winged headdress, ash robes, ash combat plates, & decorated
+      ash combat plates now provide a slight armor protection, equal to that of 'bone
+      bracers'.
+  - bugfix: fixes some layout issues with the milking machine ui that was causing
+      elements to overlap one another and be unreadable
+  - qol: items stored in pockets now fall out and get sent flying when gibbed (instead
+      of just being deleted)
+  - bugfix: you may now interact with lewd slots when the appropriate genitals are
+      exposed (using the Expose/Hide genitals verb -> set to Always Show) regardless
+      of whether or not you are clothed.
+2023-07-12:
+  KathrinBailey:
+  - rscadd: Three skirts, one dress.
+  Melbert:
+  - bugfix: Fixes Aphasia being removed
+  Seven:
+  - balance: Acid on a turf no longer immediately applies acid to its contents
+  - bugfix: Acid applied on a tile will no longer damage pipes below that tile
+  - bugfix: Xeno's corrosive acid no longer instakills mobs
+  - bugfix: Xenos can now touch acid
+  - qol: Mops, some cleaning items, and light replacers now use balloon alerts
+  - bugfix: Fixes changelings not being put into their headslug when using last resort
+  - bugfix: Fixes changeling headslugs not putting their eggs into dead bodies
+  SkyratBot:
+  - bugfix: The military surplus trader encountered by explorer drones will now correctly
+      ask for armor rather than "suit"
+  - qol: Matches command envirosuit helms' armor value with their hat counterparts.
+  - bugfix: Destroying the fabled "green text" now properly releases its victims from
+      their curse.
+  - code_imp: Jousting now registers/unregisters properly on two-handed items.
+  - bugfix: You can now correctly Tend Wounds on most non-human animals.
+  - rscadd: You can now Remove Implants from non-human animals, just in case Ian swallowed
+      a macrobomb.
+  - bugfix: sliding puzzles can no longer have their icons erased by the hand labeler
+  - bugfix: the fortunate cookie dont dropped a empty paper anymore.
+  - bugfix: Fix atoms not applying proper armour penetration logic.
+  - bugfix: Fix silenced living armour penetration not using proper armour penetration
+      logic.
+  - code_imp: Added macro for calculating armour penetration.
+  - bugfix: Fixes venomous projectiles for real, and invisible arrow sprites.
+  - balance: The Regal Condor's base spread has been reduced to 0, like damn near
+      every other gun that exists.
+  - admin: If a circuit component outputs a radio signal, it should now be logged
+      in list-signalers.
+  - spellcheck: Fixed typos in the descriptions of the mRLD and RTD as seen from protolathes.
+  - bugfix: Cake cats/butter bear now grab the ghost of the brain used in their making
+  - bugfix: Autorifle magazines are now visible in the security techfab's ammunition
+      category.
+  Tattle:
+  - qol: changed mouth blocked message to a balloon alert
+  vinylspiders:
+  - bugfix: fixes a common CI failure that was caused by misplaced items on Voidraptor
+      occasionally getting eaten by randomized maintenance crates.
+  - bugfix: fixes a potential issue with gigantism/dwarfism trait not actually getting
+      removed alongside the mutation if your body size is too big or small
+  - bugfix: fixed an issue that was causing climaxes to not complete if you possessed
+      testicles, leading to being permanently horny in some cases
+  - bugfix: fixes some runtimes with the milking machine
+  - bugfix: Sadism quirk will now wait until the climax moodlet is gone before starting
+      to add more arousal
+2023-07-13:
+  ATHATH:
+  - qol: Emagged organ harvesters will no longer refuse a victim that has items on
+      their person, such as the handcuffs they've been bound with.
+  Hatterhat:
+  - rscadd: A really old data disk with the MOD module designs for the status readout
+      was recovered, and has been haphazardly hotpatched into the research networks.
+  - rscadd: Also, the status readout module now plays a sound on death.
+  - qol: The MODsuit health analyzer's info tab health readout can now be disabled
+      in its settings.
+  LT3:
+  - bugfix: Security records no longer accept negative values for citation payment
+  - image: Roller bed now has an inhand sprite
+  - bugfix: Crew's poor livers should no longer be destroyed by your increased alcohol
+      tolerance
+  - image: Realigned status display panel to match the scrolling text
+  Melbert:
+  - refactor: Refactor of connections.js. Yeah that's it.
+  - bugfix: You can once again "too slow" someone with a high five
+  - qol: Scanning apps (Lifeline app) start with a scan
+  - bugfix: Fixes a potential exploit in radar apps
+  - bugfix: Fix Debug verb "Spawn full crew"
+  - qol: You no longer fall over when you get dusted, making the animation line up
+      with your body
+  - bugfix: Fix hard deletes that brick all of a wizards spell when their body is
+      delted
+  Motho & TheDragMeme:
+  - image: MekaNIKA Heavy Industries has unveiled it's new commercial line-up of cyborg
+      chassis, the NiKA and the NiKO.
+  Paxilmaniac:
+  - code_imp: There was some unused code related to companies and their defines lying
+      around that I removed.
+  - refactor: The manufacturer examine component is now an element that achieves the
+      same thing in a much nicer looking way.
+  Rhials:
+  - bugfix: The organ manipulator menu will now delete implants or organs that fail
+      to properly insert.
+  - code_imp: The organ manipulator menu code now looks nicer :)
+  Riggle:
+  - spellcheck: fix suspicious_logins
+  Seven:
+  - balance: Only 2 smugglers satchels will spawn on the station at roundstart, down
+      from 10
+  SkyratBot:
+  - rscdel: Removed excess ID boxes on HoP's office
+  - qol: Produce consoles now have tables near them.
+  - bugfix: ' Infinite spider eggs are no more.'
+  - rscadd: Added Interdyne ModSuits for Interdyne pirates.
+  - balance: Metalgen cannot spawn as a random chem anymore (strange seeds, maintpills
+      etc)
+  - rscadd: The abductor equipment vendor now offers a hacking/medical hypertool,
+      at a price of 2 research points.
+  - rscadd: The abductor equipment vendor now sells decorative abductor posters, at
+      a price of 1 research point.
+  - rscadd: The abductor equipment vendor now sells a cow, at the price of 1 research
+      point.
+  - bugfix: Fixes a runtime when trying to probe non-human mobs.
+  - image: Some abductorized versions of existing wall posters and an alien hypertool.
+  - code_imp: The abductor shop listings now use lists of items, rather than single
+      build paths.
+  - code_imp: The abductor_gear.dm file has been split up into a few different files.
+  - code_imp: Posters can now be hung on indestructible walls.
+  - bugfix: Quantum relays now process, meaning DOS attacks actually function
+  - bugfix: Music Request Credit shows CKEY instead of character name
+  - bugfix: androids now have proper robotic organs and no appendix.
+  - image: Heavily reworks and resprites first aid analyzers. They now display if
+      they're happy, sad, angry, or warning you! Also a 'pricking' animation.
+  - rscadd: First aid analyzers are now found in all basic and specialized medkits.
+      Toxin medkits get a new* disease analyzer. Miners get a miner-colored one in
+      their box.
+  - balance: Scanning yourself with a first aid analyzer will 'create a holo-image
+      with treatment instructions next to your wounds', doubling the speed of treatment
+      of scanned wounds!
+  - sound: Health analyzers and gene scanners now have a scanning sound, courtesy
+      of CM.
+  - refactor: Refactored some wound code to make treatment duration changes and changes
+      in the description of wounds easier.
+  - bugfix: Fixed a dummy parent feature of the health analyzer (Verbose mode) showing
+      up, uselessly, on the disease and first aid subtypes.
+  - image: Surgical processors and slime scanners have recieved a similar resprite.
+  - server: job_config.toml should now comply with reload-configuration verb, meaning
+      you can hot-reload the configuration from disk and have it apply ingame automatically.
+  - config: The documentation for setting Minimum Character Age on a per-Job basis
+      has been altered to be more explicit.
+  - bugfix: The Minimum Character Age configuration entry is now sanitized to ensure
+      that it's within the codebase-defined ages, since there's no (legitimate) way
+      to get a character outside of those ages anyways. Invalid values will log to
+      the config log.
+  - bugfix: Hereditary Manifold Sickness, and other uncurable diseases, have been
+      found to no longer disappear upon miraculous acts of divine restoration. In
+      addition, viral bonding no longer makes you into a carrier for those aswell.
+  - sound: Walking on conveyors, catwalks and tables no longer plays the footstep
+      sound of the turf. They have theirs.
+  - image: New directional sprites for spiderlings, with movement animations.
+  - bugfix: Dead spiderlings will be the same colour as they were when they were alive.
+  - bugfix: Tarantula spiderlings are no longer invisible,
+  - qol: Clear PDAs now has all themes in their themify app by default.
+  - bugfix: Guard spiders can now only make one scary duplicate of themselves at a
+      time, rather than as many as they can click on the button.
+  - bugfix: eating mime's and rainbow crayons now properly transfers reagents.
+  - bugfix: I somehow fixed the amount of reagents in crayons to what it was before.
+  - bugfix: cable layers 1 & 3 can now be used by machine's like emitters, smes, tesla
+      coil & turbine.
+  - bugfix: terminals(smes & apc) can operate on different cable layers by installing
+      them with right click
+  - bugfix: Fully charged APCs will now actually be fully charged, instead of nearly
+      empty.
+  - refactor: Foxes are more crafty now. They will run from danger, and hunt small
+      prey when no one is keeping an eye on them. Don't leave Renault alone with Ian!
+  - rscadd: Nightmare vision goggles now give you mare vision
+  - qol: AI VOX messages are sent over announcement instead of radio
+  - bugfix: AI VOX messages work properly on multi-Z stations
+  - bugfix: abductors can get points again
+  - bugfix: morgue units can no longer hold ghosts
+  - rscadd: A bible or lighter in your suit slot, or cowboy hat on your head will
+      occasionally intercept a bullet.
+  - qol: Crates that come in the cargo shuttle now have the order ID in their name
+  - qol: Requisition forms are now blue, and named with the timestamp they were created
+      on
+  - qol: It has been issued brand new mini-fridges for our active stations, Featuring
+      more booze and less moldy pizza!
+  - bugfix: The cursed katana shard you can get from tendril loot no longer falsely
+      tells you you're not supposed to have it
+  - qol: When a MOD fails to store something in itself when retracting, you're now
+      notified in both the chat and by a balloon alert.
+  - rscadd: AI-controlled spiders will make more web-shaped webs.
+  - qol: The Warden's locker now has a garment bag
+  - bugfix: warden has his garment bag in locker as should
+  - bugfix: snakes, security, spiders and skeletons phobias now properly react on
+      mobs
+  StaringGasMask:
+  - qol: Now plasmamen can use the infiltrator MODsuit without having their species
+      revealed. The helmet's still not sealed, so remember your mask.
+  Vekter:
+  - balance: Adds a build time to window types which didn't have ones before.
+  Zergspower:
+  - bugfix: Serrated bone shovels can be created with any kind of shovel now, not
+      just a spade (???)
+  - rscadd: Serrated bone shovels can be used in place of circular saw in most surgeries.
+  - rscadd: Added a duller (still deadly) variant of the serrated bone shovel as coroner
+      mail.
+  - rscadd: Autopsy scanners now act as advanced health analyzers on dead and seemingly-dead
+      people.
+  - rscadd: Increased the force, throwforce, and wound bonus of inert ritual knives
+      and scythes.
+  - rscadd: 'Coroner gloves can quickly apply medicine like nitrile gloves. /:cl:'
+  - code_imp: 'mat per unit values of materials now scale with material defines /:cl:'
+  Zydras & Juniper:
+  - image: Kugelblitz 4utomation Technologies has unveiled its competing lineup of
+      cyborg chassis, the K4Ts.
+  distributivgesetz:
+  - spellcheck: Fixed some underscores in spiderling names.
+  vinylspiders:
+  - qol: reverts the reduction in mining satchel spawns, now 10 will spawn once again
+      instead of just 2.
+  - balance: Guard spider web statues despawn as the ability comes back off cooldown.
+  - balance: Spiderlings now only move at light speed if they're on webs, stay safe
+      little guys.
+  - bugfix: 'Spiders once again have random numbers after their names. /:cl:'

@@ -3,6 +3,7 @@
 //They cannot be cured with chemicals, and require brain surgery to solve.
 
 /datum/brain_trauma/severe
+	abstract_type = /datum/brain_trauma/severe
 	resilience = TRAUMA_RESILIENCE_SURGERY
 
 /datum/brain_trauma/severe/mute
@@ -34,8 +35,8 @@
 
 /datum/brain_trauma/severe/aphasia/on_lose()
 	if(!QDELING(owner))
-		owner.remove_blocked_language(subtypesof(/datum/language/), LANGUAGE_APHASIA)
-		owner.remove_language(/datum/language/aphasia, TRUE, TRUE, LANGUAGE_APHASIA)
+		owner.remove_blocked_language(subtypesof(/datum/language), LANGUAGE_APHASIA)
+		owner.remove_language(/datum/language/aphasia, source = LANGUAGE_APHASIA)
 
 	..()
 
