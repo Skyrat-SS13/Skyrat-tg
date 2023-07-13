@@ -161,7 +161,7 @@
 /obj/item/nullrod/scythe/sickle
 	name = "damned sickle"
 	desc = "A green crescent blade, decorated with an ornamental eye. The pupil has faded..."
-	icon = 'icons/obj/eldritch.dmi'
+	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
