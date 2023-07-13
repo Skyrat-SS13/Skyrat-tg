@@ -40,6 +40,18 @@
 /obj/item/gun/ballistic/automatic/luna_pcc/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
 
+/obj/item/gun/ballistic/automatic/luna_pcc/examine_more(mob/user)
+	. = ..()
+
+	. += "The Luno kompakta karabeno line is a series of submachineguns built off of \
+		the SolFed standard military rifle. Being a pistol caliber conversion of the base \
+		weapon, it is mechanically identical to its larger counterpart. The benefits of a \
+		significantly smaller round is that the weapon can be made significantly smaller as well. \
+		At nearly three quarters the length of even the short rifle, it finds popular use among \
+		army medics and rear line personnel, as well as police forces."
+
+	return .
+
 // Police SMG
 
 /obj/item/gun/ballistic/automatic/luna_pcc/police
@@ -81,6 +93,18 @@
 
 /obj/item/gun/ballistic/automatic/luna_pdw/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
+/obj/item/gun/ballistic/automatic/luna_pdw/examine_more(mob/user)
+	. = ..()
+
+	. += "The Luno 'Piranjo' is a civilian market personal defense weapon made for \
+		anyone who'd need a compact defense weapon, and a pistol just wouldn't cut it \
+		It is mechanically similar to SolFed military compact weapons, and even shares \
+		caliber and magazines with them. Due to its extremely small size and collapsing \
+		stock, it finds popular use by private security companies, ship crew, frontiersmen, \
+		and other unsavory individuals."
+
+	return .
 
 /obj/item/gun/ballistic/automatic/luna_pdw/no_mag
 	spawnwithmagazine = FALSE

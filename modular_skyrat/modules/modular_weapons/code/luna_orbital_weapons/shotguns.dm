@@ -35,6 +35,20 @@
 /obj/item/gun/ballistic/shotgun/luna/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
 
+/obj/item/gun/ballistic/shotgun/luna/examine_more(mob/user)
+	. = ..()
+
+	. += "The Luno caspafilo line is a series of shotguns built off of the \
+		SolFed standard military rifle. Despite many of the parts being different \
+		to facilitate twelve guage instead of .40 Sol Long, it is mechanically \
+		similar to the rifle this weapon is based upon. The largest difference is \
+		the removal of the self loading system in exchange for a pump action. \
+		This significantly lowers the manufacturing cost of the weapon, making it \
+		a popular and common sight among SolFed police and military forces that \
+		often operate in tight quarters."
+
+	return .
+
 /obj/item/ammo_box/magazine/internal/shot/luna
 	name = "\improper 'Sledmartelo' Shotgun Internal Tube"
 	caliber = CALIBER_SHOTGUN

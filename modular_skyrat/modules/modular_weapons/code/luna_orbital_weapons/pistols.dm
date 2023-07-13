@@ -28,6 +28,19 @@
 		is_light_removable = FALSE, \
 		)
 
+/obj/item/gun/ballistic/automatic/pistol/luna/examine_more(mob/user)
+	. = ..()
+
+	. += "The Luna Orbital servopistolo line, built to meet the requirements set out \
+		by the SolFed department of defense for a new military service pistol. The requirements \
+		of an interstellar military force are complex and strict, though there are two more important than the rest. \
+		The new weapon was to use the newly developed .35 Sol Short caseless ammunition, \
+		and had to have the reliability to function without failure in just about any environment \
+		SolFed forces may find themselves in. The resulting weapon is what you look at now, \
+		in consistent use by SolFed militaries and police forces since 2557."
+
+	return .
+
 /obj/item/gun/ballistic/automatic/pistol/luna/no_mag
 	spawnwithmagazine = FALSE
 
@@ -60,6 +73,16 @@
 
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 
+/obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/examine_more(mob/user)
+	. = ..()
+
+	. += "This particular variant is modified significantly from standard pistol models, \
+		Of note, featuring a three round burst and heavier construction. It is used mostly \
+		by police forces, with most variants made going to supply companies like \
+		Lopland Securities."
+
+	return .
+
 /obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/no_mag
 	spawnwithmagazine = FALSE
 
@@ -79,6 +102,16 @@
 
 /obj/item/gun/ballistic/automatic/pistol/luna/pocket/add_seclight_point()
 	return
+
+/obj/item/gun/ballistic/automatic/pistol/luna/pocket/examine_more(mob/user)
+	. = ..()
+
+	. += "This particular variant is modified significantly from standard pistol models, \
+		Of note, it is significantly smaller than its counterparts. This decreased size \
+		allows it to be easily concealed, making it a popular self defense option in Sol \
+		space."
+
+	return .
 
 /obj/item/gun/ballistic/automatic/pistol/luna/pocket/no_mag
 	spawnwithmagazine = FALSE

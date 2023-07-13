@@ -41,3 +41,15 @@
 
 /obj/item/gun/ballistic/automatic/luna_sport_shooter/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
+
+/obj/item/gun/ballistic/automatic/luna_sport_shooter/examine_more(mob/user)
+	. = ..()
+
+	. += "The 'Lunfiŝo' is a civilian market conversion of the standard Luno \
+		military rifle. Much of the military furniture has been exchanged for \
+		less expensive, off the shelf parts. Despite the drastic differences \
+		between the civilian and military market versions of the weapons, \
+		this weapon remains popular due to its stopping power, interoperatbility \
+		with SolFed military magazines and ammunition, and consistent precision."
+
+	return .

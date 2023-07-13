@@ -47,6 +47,19 @@
 /obj/item/gun/ballistic/automatic/luna_rifle/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_LUNA)
 
+/obj/item/gun/ballistic/automatic/luna_rifle/examine_more(mob/user)
+	. = ..()
+
+	. += "The Luna Orbital infanteria fusilo line, a line of rifles built to meet the \
+		requirements of the SolFed department of defense for a modern military rifle platform. \
+		Though the list of requirements was extensive, two stand out as the most important. \
+		The new weapon was to use the newly developed .40 Sol Long caseless rifle ammunition, \
+		and had to be reliable enough to operate in any of the environments that SolFed's military \
+		forces may find themselves in. The result of this is the weapon you are looking at now, in \
+		consistent use by SolFed militaries and police forces since 2554."
+
+	return .
+
 // Military short rifle
 
 /obj/item/gun/ballistic/automatic/luna_rifle/short
@@ -60,6 +73,17 @@
 	spread = 5
 
 	suppressor_x_offset = 8
+
+/obj/item/gun/ballistic/automatic/luna_rifle/short/examine_more(mob/user)
+	. = ..()
+
+	. += "This particular variant is a shortened version of the original rifle, \
+		reduced in size for soldiers that are typically required to carry large amounts \
+		of kit. Commanders, combat engineers, even medics can be seen using this variant \
+		for the savings in weight and size. Police forces needing a rifle almost \
+		exclusively use this short variant."
+
+	return .
 
 // Police short rifle
 
@@ -98,6 +122,18 @@
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 1.2)
+
+/obj/item/gun/ballistic/automatic/luna_rifle/machinegun/examine_more(mob/user)
+	. = ..()
+
+	. += "This particular variant is a heavier version of the original rifle. \
+		Converted into a squad machinegun, the heavier barrel and electronically \
+		operated firing system allow for significantly higher firerates over the \
+		standard rifle. As a tradeoff, a heavy battery pack is mounted above the \
+		barrel for powering the new electronic systems. This weapon is not for \
+		the weak armed."
+
+	return .
 
 // Magazines
 
