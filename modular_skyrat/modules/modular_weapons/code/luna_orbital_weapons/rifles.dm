@@ -160,10 +160,10 @@
 
 /obj/item/ammo_box/magazine/c40sol_rifle/drum
 	name = "\improper Luno rifle drum magazine"
-	desc = "A massive drum magazine for Luno rifles, holds fifty rounds."
+	desc = "A massive drum magazine for Luno rifles, holds fourty-five rounds."
 
 	icon_state = "rifledrum"
 
 	w_class = WEIGHT_CLASS_NORMAL
 
-	max_ammo = 50
+	max_ammo = 45
