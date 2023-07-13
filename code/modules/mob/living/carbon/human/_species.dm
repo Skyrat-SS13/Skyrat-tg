@@ -1,4 +1,6 @@
 GLOBAL_LIST_EMPTY(roundstart_races)
+///List of all roundstart languages by path
+GLOBAL_LIST_EMPTY(roundstart_languages)
 
 /// An assoc list of species types to their features (from get_features())
 GLOBAL_LIST_EMPTY(features_by_species)
@@ -23,7 +25,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	///Whether or not the race has sexual characteristics (biological genders). At the moment this is only FALSE for skeletons and shadows
 	var/sexes = TRUE
-	///A bitfield of "bodytypes", updated by /datum/obj/item/bodypart/proc/synchronize_bodytypes()
+	///A bitfield of "bodytypes", updated by /obj/item/bodypart/proc/synchronize_bodytypes()
 	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 	///The maximum number of bodyparts this species can have.
@@ -64,7 +66,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
 	var/say_mod = "says"
 	///What languages this species can understand and say. Use a [language holder datum][/datum/language_holder] in this var.
-	var/species_language_holder = /datum/language_holder
+	var/datum/language_holder/species_language_holder = /datum/language_holder
 	/**
 	  * Visible CURRENT bodyparts that are unique to a species.
 	  * DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK
@@ -199,8 +201,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	/// This supresses the "dosen't appear to be himself" examine text for if the mob is run by an AI controller. Should be used on any NPC human subtypes. Monkeys are the prime example.
 	var/ai_controlled_species = FALSE
 
-	/// Was on_species_gain ever actually called?
-	/// Species code is really odd...
+	/**
+	 * Was on_species_gain ever actually called?
+	 * Species code is really odd...
+	 **/
 	var/properly_gained = FALSE
 
 ///////////
@@ -221,23 +225,28 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	RETURN_TYPE(/list)
 
 	if (!GLOB.roundstart_races.len)
-		GLOB.roundstart_races = generate_selectable_species()
+		GLOB.roundstart_races = generate_selectable_species_and_languages()
 
 	return GLOB.roundstart_races
-
 /**
  * Generates species available to choose in character setup at roundstart
  *
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
-/proc/generate_selectable_species()
+/proc/generate_selectable_species_and_languages()
 	var/list/selectable_species = list()
 
 	for(var/species_type in subtypesof(/datum/species))
 		var/datum/species/species = new species_type
 		if(species.check_roundstart_eligible())
 			selectable_species += species.id
+			var/datum/language_holder/temp_holder = new species.species_language_holder
+			for(var/datum/language/spoken_languages as anything in temp_holder.understood_languages)
+				if(spoken_languages in GLOB.roundstart_languages)
+					continue
+				GLOB.roundstart_languages += spoken_languages
+			qdel(temp_holder)
 			qdel(species)
 
 	if(!selectable_species.len)
@@ -249,7 +258,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * Checks if a species is eligible to be picked at roundstart.
  *
  * Checks the config to see if this species is allowed to be picked in the character setup menu.
- * Used by [/proc/generate_selectable_species].
+ * Used by [/proc/generate_selectable_species_and_languages].
  */
 /datum/species/proc/check_roundstart_eligible()
 	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
@@ -457,14 +466,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	// Drop the items the new species can't wear
-	if((AGENDER in species_traits))
+
+	if(AGENDER in species_traits)
 		C.gender = PLURAL
+
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
-
-	if(inherent_biotypes & MOB_MINERAL && !(old_species.inherent_biotypes & MOB_MINERAL)) // if the mob was previously not of the MOB_MINERAL biotype when changing to MOB_MINERAL
-		C.adjustToxLoss(-C.getToxLoss(), forced = TRUE) // clear the organic toxin damage upon turning into a MOB_MINERAL, as they are now immune
 
 	C.mob_biotypes = inherent_biotypes
 	C.mob_respiration_type = inherent_respiration_type
@@ -474,6 +481,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	regenerate_organs(C, old_species, visual_only = C.visual_only_organs)
 
+	// Drop the items the new species can't wear
 	INVOKE_ASYNC(src, PROC_REF(worn_items_fit_body_check), C, TRUE)
 
 	//Assigns exotic blood type if the species has one
@@ -497,32 +505,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(length(inherent_traits))
 		C.add_traits(inherent_traits, SPECIES_TRAIT)
 
-	if(TRAIT_VIRUSIMMUNE in inherent_traits)
-		for(var/datum/disease/A in C.diseases)
-			A.cure(FALSE)
-
-	if(TRAIT_TOXIMMUNE in inherent_traits)
-		C.setToxLoss(0, TRUE, TRUE)
-
-	// SKYRAT EDIT ADDITION
-	if(TRAIT_OXYIMMUNE in inherent_traits)
-		C.setOxyLoss(0, TRUE, TRUE)
-
-	for(var/obj/item/bodypart/limb in C.bodyparts)
-		limb.alpha = specific_alpha
-	// SKYRAT EDIT END
-
-	if(TRAIT_NOMETABOLISM in inherent_traits)
-		C.reagents.end_metabolization(C, keep_liverless = TRUE)
-
-	if(TRAIT_GENELESS in inherent_traits)
-		C.dna.remove_all_mutations() // Radiation immune mobs can't get mutations normally
-
 	if(inherent_factions)
 		for(var/i in inherent_factions)
 			C.faction += i //Using +=/-= for this in case you also gain the faction from a different source.
 
-	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
@@ -596,7 +583,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		quirk.mail_goodies = mail_goodies
 		return
 	if(istype(quirk, /datum/quirk/blooddeficiency))
-		if(HAS_TRAIT(recipient, TRAIT_NOBLOOD) && isnull(recipient.dna.species.exotic_blood)) // no blood packs should be sent in this case (like if a mob transforms into a plasmaman)
+		if(HAS_TRAIT(recipient, TRAIT_NOBLOOD)) // no blood packs should be sent in this case (like if a mob transforms into a plasmaman)
 			quirk.mail_goodies = list()
 			return
 
@@ -866,13 +853,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	return
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
-	if(HAS_TRAIT(H, TRAIT_NOBREATH))
-		H.setOxyLoss(0)
-		H.losebreath = 0
-
-		var/takes_crit_damage = (!HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
-		if((H.health < H.crit_threshold) && takes_crit_damage && H.stat != DEAD)
-			H.adjustBruteLoss(0.5 * seconds_per_tick)
+	if(HAS_TRAIT(H, TRAIT_NOBREATH) && H.stat != DEAD && (H.health < H.crit_threshold) && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
+		H.adjustBruteLoss(0.5 * seconds_per_tick)
 
 /datum/species/proc/spec_death(gibbed, mob/living/carbon/human/H)
 	return
@@ -1355,7 +1337,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((human.maxHealth - human.health) * 0.5))) // rev deconversion through blunt trauma. // SKYRAT EDIT CHANGE
 					var/datum/antagonist/rev/rev = human.mind.has_antag_datum(/datum/antagonist/rev)
 					if(rev)
-						rev.remove_revolutionary(FALSE, user)
+						rev.remove_revolutionary(user)
 
 			if(bloody) //Apply blood
 				if(human.wear_mask)
