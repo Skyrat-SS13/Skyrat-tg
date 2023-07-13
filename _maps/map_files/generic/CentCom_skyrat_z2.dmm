@@ -70,8 +70,8 @@
 "aeG" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	name = "Nanotrasen Consultant's Shutters";
-	id = "ntrep_shutters"
+	id = "ntrep_shutters";
+	name = "Nanotrasen Consultant's Shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -1654,7 +1654,7 @@
 	},
 /area/centcom/holding/cafe)
 "axY" = (
-/obj/effect/overlay/palmtree_l,
+/obj/structure/flora/tree/palm,
 /turf/open/misc/beach/coast/corner{
 	dir = 4
 	},
@@ -2347,11 +2347,7 @@
 "aFe" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
-/area/centcom/interlink)
-"aFh" = (
-/obj/effect/overlay/palmtree_r,
-/turf/open/misc/beach/sand,
-/area/centcom/holding/cafepark)
+/area/centcom/interlink/dorm_rooms)
 "aFn" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ghostcafekitchen";
@@ -3339,6 +3335,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/centcom/holding/cafedorms)
+"aPY" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "aPZ" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -3380,9 +3382,9 @@
 	dir = 10
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Bar Shutter Control";
 	id = "il_bar";
+	name = "Bar Shutter Control";
+	pixel_y = -8;
 	req_access = list("bar")
 	},
 /turf/open/floor/iron/dark,
@@ -4313,8 +4315,8 @@
 "bae" = (
 /obj/structure/table,
 /obj/machinery/computer/libraryconsole{
-	pixel_y = 6;
-	dir = 1
+	dir = 1;
+	pixel_y = 6
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -4460,6 +4462,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"bsj" = (
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "bsT" = (
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
@@ -4500,7 +4505,7 @@
 /area/centcom/interlink)
 "buX" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -4727,15 +4732,15 @@
 /obj/structure/bed/double,
 /obj/item/bedsheet/random/double,
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "bVx" = (
 /obj/machinery/vending/boozeomat/cafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "bVH" = (
 /obj/machinery/door/poddoor/shutters/window/indestructible{
-	name = "Windowed Interlink Access Shutters";
-	id = "interlink_hall"
+	id = "interlink_hall";
+	name = "Windowed Interlink Access Shutters"
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/iron,
@@ -4750,9 +4755,9 @@
 /area/centcom/interlink)
 "bWy" = (
 /obj/machinery/button/door/directional/east{
-	pixel_y = -8;
 	id = "arr_hall_lookout";
 	name = "Lookout Shutters Control";
+	pixel_y = -8;
 	req_access = list("command")
 	},
 /turf/open/floor/iron/dark,
@@ -4784,14 +4789,14 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	pixel_x = -8;
+	id = "room4";
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "room4"
+	pixel_x = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "cdj" = (
 /obj/structure/table/wood,
 /obj/item/clipboard{
@@ -4826,6 +4831,10 @@
 /obj/item/fishing_rod,
 /turf/open/misc/dirt/planet,
 /area/centcom/holding/cafepark)
+"chZ" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "ckg" = (
 /obj/machinery/door/window/left/directional/north{
 	name = "Resort Bar"
@@ -5023,12 +5032,6 @@
 "cGG" = (
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/interlink)
-"cHa" = (
-/obj/machinery/modular_computer/console/preset/command,
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/turf_decal/siding/wood,
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "cHY" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -5072,8 +5075,8 @@
 "cMs" = (
 /obj/structure/table/wood,
 /obj/item/stamp/centcom{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/stamp{
 	pixel_y = 10
@@ -5156,7 +5159,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "cWG" = (
 /obj/machinery/light/directional/west,
 /obj/structure/table{
@@ -5205,7 +5208,7 @@
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
 "cZJ" = (
-/obj/effect/overlay/palmtree_l,
+/obj/structure/flora/tree/palm,
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "dai" = (
@@ -5271,6 +5274,9 @@
 /obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
+"dgV" = (
+/turf/open/floor/iron/white,
+/area/centcom/interlink/dorm_rooms)
 "djn" = (
 /obj/effect/turf_decal/tile/red/half{
 	dir = 1
@@ -5417,8 +5423,8 @@
 /area/centcom/interlink)
 "dFF" = (
 /obj/structure/sign/directions/security{
-	pixel_y = -8;
-	dir = 8
+	dir = 8;
+	pixel_y = -8
 	},
 /obj/structure/sign/directions/medical,
 /obj/structure/sign/directions/arrival{
@@ -5483,8 +5489,8 @@
 /area/cruiser_dock)
 "dPd" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Locker Room";
-	dir = 4
+	dir = 4;
+	name = "Interlink Locker Room"
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -5671,9 +5677,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported{
 	default_price = 0;
+	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	extended_inventory = 1
+	fair_market_price = 0
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -5709,6 +5715,12 @@
 /obj/machinery/shower/directional/south,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"etn" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "evd" = (
 /obj/structure/closet/crate/wooden,
 /obj/item/stack/sheet/mineral/stone,
@@ -5788,10 +5800,10 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
+	id = "stall1";
 	name = "Door Lock";
-	id = "stall1"
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -5813,8 +5825,8 @@
 	pixel_y = 5
 	},
 /obj/item/folder/yellow{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /obj/item/stamp{
 	pixel_x = 8;
@@ -6002,8 +6014,8 @@
 	pixel_y = 6
 	},
 /obj/item/paper/crumpled{
-	pixel_y = -4;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -4
 	},
 /obj/item/paper/crumpled,
 /obj/effect/turf_decal/tile/green/opposingcorners,
@@ -6042,8 +6054,8 @@
 /area/centcom/interlink)
 "fua" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Longue";
-	dir = 8
+	dir = 8;
+	name = "Interlink Longue"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -6110,7 +6122,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "fFe" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/chair/sofa/corp/left{
@@ -6290,8 +6302,8 @@
 /area/centcom/holding/cafepark)
 "gfW" = (
 /obj/structure/sign/directions/security{
-	pixel_y = -8;
-	dir = 8
+	dir = 8;
+	pixel_y = -8
 	},
 /obj/structure/sign/directions/medical,
 /obj/structure/sign/directions/arrival{
@@ -6331,8 +6343,8 @@
 "gjK" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	name = "Interlink Bar Shutters";
-	id = "il_bar"
+	id = "il_bar";
+	name = "Interlink Bar Shutters"
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
@@ -6437,14 +6449,14 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Door Lock";
 	id = "room5";
-	specialfunctions = 4;
-	normaldoorcontrol = 1
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "guS" = (
 /obj/machinery/armament_station/assault_operatives,
 /turf/open/floor/iron/dark/textured_large,
@@ -6521,8 +6533,8 @@
 	name = "Jim Norton's Quebecois Coffee table"
 	},
 /obj/item/reagent_containers/condiment/sugar{
-	pixel_y = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/condiment/sugar{
 	pixel_y = 4
@@ -6668,9 +6680,7 @@
 /turf/closed/indestructible/weeb,
 /area/centcom/holding/cafedorms)
 "hjy" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/trimline/dark_green/line,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
@@ -6691,7 +6701,7 @@
 	},
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "hlh" = (
 /obj/item/toy/plush/lizard_plushie/green{
 	name = "Hisses-At-Mappers"
@@ -6899,8 +6909,8 @@
 	pixel_y = 7
 	},
 /obj/item/folder/blue{
-	pixel_y = -2;
-	pixel_x = -9
+	pixel_x = -9;
+	pixel_y = -2
 	},
 /obj/item/pen/blue{
 	pixel_x = 3;
@@ -6978,7 +6988,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "hWy" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/donut_box,
@@ -7081,6 +7091,12 @@
 /obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
+"ijv" = (
+/obj/machinery/modular_computer/preset/command,
+/obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "ikG" = (
 /obj/structure/table,
 /obj/machinery/computer/libraryconsole,
@@ -7178,8 +7194,8 @@
 /area/centcom/holding/cafepark)
 "iwK" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Cafe";
-	dir = 4
+	dir = 4;
+	name = "Interlink Cafe"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -7308,9 +7324,7 @@
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "iQP" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/trimline/dark_green/line{
 	dir = 1
 	},
@@ -7351,6 +7365,11 @@
 /obj/machinery/griddle,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
+"iVr" = (
+/obj/structure/sink/directional/south,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/iron/white,
+/area/centcom/interlink/dorm_rooms)
 "iVW" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -7423,9 +7442,21 @@
 "iZr" = (
 /obj/structure/table/wood,
 /obj/machinery/reagentgrinder{
+	pixel_x = -2;
 	pixel_y = 8
 	},
 /obj/structure/sign/poster/contraband/pwr_game/directional/north,
+/obj/item/reagent_containers/cup/soda_cans/skyrat/welding_fizz{
+	pixel_x = 14;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/cup/soda_cans/skyrat/welding_fizz{
+	pixel_x = 14;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/cup/soda_cans/skyrat/welding_fizz{
+	pixel_x = 14
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "jaf" = (
@@ -7495,9 +7526,9 @@
 /area/centcom/interlink)
 "jnu" = (
 /obj/machinery/button/door/directional/east{
-	pixel_y = -8;
 	id = "interlink_hall2";
 	name = "Arrivals Hall Shutter Control";
+	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/structure/closet/crate/bin,
@@ -7517,9 +7548,9 @@
 	},
 /obj/machinery/light/cold/directional/east,
 /obj/machinery/button/door/directional/east{
-	pixel_y = 8;
 	id = "arriv_hall";
 	name = "Arrivals Access Shutter Control";
+	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -7669,8 +7700,8 @@
 	pixel_y = -8
 	},
 /obj/structure/sign/directions/dorms{
-	pixel_y = 8;
-	dir = 4
+	dir = 4;
+	pixel_y = 8
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -7679,8 +7710,8 @@
 	dir = 4
 	},
 /obj/structure/chair/sofa/bench/right{
-	greyscale_colors = "#AA8A61";
-	dir = 1
+	dir = 1;
+	greyscale_colors = "#AA8A61"
 	},
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/wood,
@@ -7692,10 +7723,6 @@
 /obj/structure/bed,
 /turf/open/floor/iron,
 /area/centcom/interlink)
-"jKv" = (
-/obj/item/toy/plush/bubbleplush,
-/turf/open/lava/fake,
-/area/centcom/holding/cafepark)
 "jNs" = (
 /obj/effect/turf_decal/loading_area/white{
 	dir = 4
@@ -7763,8 +7790,8 @@
 "jUm" = (
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box{
-	pixel_y = 10;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 10
 	},
 /obj/item/storage/fancy/donut_box{
 	pixel_x = -4;
@@ -7806,9 +7833,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported/mothic{
 	default_price = 0;
+	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	extended_inventory = 1
+	fair_market_price = 0
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -7830,7 +7857,7 @@
 "kdU" = (
 /obj/machinery/shower/directional/west,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "keK" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 4
@@ -7850,9 +7877,9 @@
 /area/centcom/interlink)
 "khC" = (
 /obj/machinery/button/door/directional/north{
-	pixel_x = -8;
-	name = "Kitchen Shutter Control";
 	id = "il_kitchen";
+	name = "Kitchen Shutter Control";
+	pixel_x = -8;
 	req_access = list("kitchen")
 	},
 /turf/open/floor/iron/cafeteria,
@@ -7876,8 +7903,8 @@
 	height = 50;
 	json_key = "emergency";
 	name = "CentCom Emergency Shuttle Dock";
-	width = 50;
-	shuttle_id = "emergency_away"
+	shuttle_id = "emergency_away";
+	width = 50
 	},
 /turf/open/space/basic,
 /area/space)
@@ -7941,8 +7968,8 @@
 "kqK" = (
 /obj/structure/table/wood,
 /obj/machinery/fax{
-	pixel_y = 5;
-	fax_name = "Interlink Meeting Room"
+	fax_name = "Interlink Meeting Room";
+	pixel_y = 5
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
@@ -8165,6 +8192,16 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"kZQ" = (
+/obj/machinery/modular_computer/preset/command{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "lba" = (
 /obj/machinery/computer/records/medical{
 	dir = 8
@@ -8181,6 +8218,9 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding/cafedorms)
+"lcR" = (
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink/dorm_rooms)
 "lgh" = (
 /obj/item/stack/sheet/mineral/wood/fifty,
 /turf/open/misc/dirt/planet,
@@ -8496,9 +8536,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported/yangyu{
 	default_price = 0;
+	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	extended_inventory = 1
+	fair_market_price = 0
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -8562,9 +8602,7 @@
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
 "mcO" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/machinery/light/warm/directional/north,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
@@ -8591,8 +8629,8 @@
 	name = "Coffee Counter"
 	},
 /obj/item/reagent_containers/cup/glass/coffee_cup{
-	pixel_y = 12;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 12
 	},
 /obj/item/reagent_containers/cup/glass/coffee_cup{
 	pixel_y = 4
@@ -8668,9 +8706,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "moG" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "mpl" = (
@@ -8688,14 +8724,14 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Door Lock";
 	id = "room8";
-	specialfunctions = 4;
-	normaldoorcontrol = 1
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "mtr" = (
 /obj/structure/toilet/snappop{
 	dir = 4
@@ -8903,14 +8939,14 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	pixel_x = -8;
+	id = "room3";
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "room3"
+	pixel_x = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "mVc" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Custodial Closet"
@@ -9091,6 +9127,12 @@
 /obj/structure/shipping_container/gorlex,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
+"nsT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "ntJ" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/rag,
@@ -9129,7 +9171,7 @@
 /obj/item/bedsheet/random/double,
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "nDE" = (
 /turf/open/floor/carpet/purple,
 /area/centcom/holding/cafepark)
@@ -9150,9 +9192,9 @@
 "nHC" = (
 /obj/machinery/photocopier,
 /obj/machinery/button/door/directional/south{
-	pixel_x = 8;
 	id = "bs_shutters";
 	name = "Privacy Shutter Comtrol";
+	pixel_x = 8;
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/bot,
@@ -9218,8 +9260,8 @@
 	pixel_y = 8
 	},
 /obj/item/folder/blue{
-	pixel_y = 5;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /obj/item/folder/yellow,
 /obj/item/stamp{
@@ -9299,6 +9341,10 @@
 /obj/effect/landmark/latejoin,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"nYF" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/centcom/interlink/dorm_rooms)
 "nZP" = (
 /obj/machinery/light/cold/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -9433,14 +9479,14 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	pixel_x = -8;
+	id = "room1";
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "room1"
+	pixel_x = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "ouF" = (
 /obj/item/toy/plush/moth{
 	name = "Buzz Buzz"
@@ -9670,15 +9716,15 @@
 "oYa" = (
 /obj/structure/chair/office,
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Evac Hall Shutter Control";
 	id = "interlink_hall";
+	name = "Evac Hall Shutter Control";
+	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = 8;
-	name = "Evac Access Shutter Control";
 	id = "evac_hall";
+	name = "Evac Access Shutter Control";
+	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/west,
@@ -9827,7 +9873,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "prT" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -9915,9 +9961,9 @@
 	name = "Administrative Offices"
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
 	id = "evac_hall_lookout";
 	name = "Lookout Shutters Control";
+	pixel_y = -8;
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/trimline/dark_green/corner{
@@ -9934,7 +9980,7 @@
 "pDN" = (
 /obj/structure/table,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "pET" = (
 /obj/structure/flora/bush/flowers_yw,
 /turf/open/misc/grass/planet,
@@ -10058,8 +10104,8 @@
 	height = 13;
 	name = "tram dock";
 	roundstart_template = /datum/map_template/shuttle/arrivals_skyrat;
-	width = 5;
-	shuttle_id = "arrivals_shuttle"
+	shuttle_id = "arrivals_shuttle";
+	width = 5
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -10146,10 +10192,10 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
+	id = "stall2";
 	name = "Door Lock";
-	id = "stall2"
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -10175,9 +10221,9 @@
 "pVh" = (
 /obj/machinery/photocopier,
 /obj/machinery/button/door/directional/north{
-	pixel_x = 8;
-	name = "Privacy Shutter Comtrol";
 	id = "ntrep_shutters";
+	name = "Privacy Shutter Comtrol";
+	pixel_x = 8;
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/bot,
@@ -10192,9 +10238,9 @@
 /area/centcom/interlink)
 "pXn" = (
 /obj/machinery/button/door/directional/east{
-	pixel_y = -8;
 	id = "evac_hall_lookout";
 	name = "Lookout Shutters Control";
+	pixel_y = -8;
 	req_access = list("command")
 	},
 /turf/open/floor/iron/dark,
@@ -10319,24 +10365,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -10566,8 +10612,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Cafe";
-	dir = 4
+	dir = 4;
+	name = "Interlink Cafe"
 	},
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
@@ -10646,15 +10692,15 @@
 "rbo" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	pixel_y = 7;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 7
 	},
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
 "rbT" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "rcq" = (
 /obj/structure/table/reinforced,
 /obj/item/restraints/handcuffs/fake,
@@ -10674,9 +10720,9 @@
 	dir = 8;
 	dwidth = 17;
 	height = 13;
-	shuttle_id = "goldeneye_cruiser_dock";
 	name = "Goldeneye Satellite Dock";
 	roundstart_template = /datum/map_template/shuttle/goldeneye_cruiser;
+	shuttle_id = "goldeneye_cruiser_dock";
 	width = 27
 	},
 /turf/open/floor/plating,
@@ -10687,8 +10733,8 @@
 	pixel_y = 7
 	},
 /obj/item/folder/yellow{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
@@ -10713,14 +10759,14 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Door Lock";
 	id = "room7";
-	specialfunctions = 4;
-	normaldoorcontrol = 1
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "rmZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/dish_drive{
@@ -10765,8 +10811,8 @@
 /area/centcom/holding/cafe)
 "rAe" = (
 /obj/structure/chair/sofa/bench/left{
-	greyscale_colors = "#AA8A61";
-	dir = 1
+	dir = 1;
+	greyscale_colors = "#AA8A61"
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -10791,8 +10837,8 @@
 /area/centcom/interlink)
 "rGI" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Aux Garden";
-	dir = 4
+	dir = 4;
+	name = "Interlink Aux Garden"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -10806,7 +10852,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/condom_pack,
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "rJC" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/libraryconsole/bookmanagement,
@@ -10915,9 +10961,7 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "rPJ" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "rQF" = (
@@ -11015,8 +11059,8 @@
 	dir = 1
 	},
 /obj/structure/sign/directions/dorms{
-	pixel_y = 8;
-	dir = 4
+	dir = 4;
+	pixel_y = 8
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -11220,7 +11264,7 @@
 	},
 /obj/machinery/light/warm/no_nightlight/directional/north,
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "sDJ" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood,
@@ -11413,9 +11457,7 @@
 /turf/open/floor/carpet/blue,
 /area/centcom/holding/cafedorms)
 "sZV" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/machinery/light/warm/directional/south,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
@@ -11459,8 +11501,8 @@
 "tdP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	name = "BlueShields Shutters";
-	id = "bs_shutters"
+	id = "bs_shutters";
+	name = "BlueShields Shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -11468,7 +11510,7 @@
 /obj/structure/window/reinforced/tinted/spawner/directional/west,
 /obj/machinery/shower/directional/south,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "tfI" = (
 /obj/item/paper_bin/bundlenatural,
 /turf/open/floor/sepia,
@@ -11723,11 +11765,11 @@
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/light,
-/obj/machinery/vending/imported/tizirian{
+/obj/machinery/vending/imported/tiziran{
 	default_price = 0;
+	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	extended_inventory = 1
+	fair_market_price = 0
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -11770,13 +11812,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -11826,15 +11868,15 @@
 "ucr" = (
 /obj/structure/chair/office,
 /obj/machinery/button/door/directional/east{
-	pixel_y = -8;
 	id = "interlink_hall";
 	name = "Evac Hall Shutter Control";
+	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/machinery/button/door/directional/east{
-	pixel_y = 8;
 	id = "evac_hall";
 	name = "Evac Access Shutter Control";
+	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/east,
@@ -11920,8 +11962,8 @@
 /area/centcom/holding/cafe)
 "uji" = (
 /obj/machinery/door/poddoor/shutters/window/indestructible{
-	name = "Windowed Interlink Access Shutters";
-	id = "interlink_hall2"
+	id = "interlink_hall2";
+	name = "Windowed Interlink Access Shutters"
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/iron,
@@ -11933,9 +11975,7 @@
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "ujZ" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -12042,14 +12082,14 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	pixel_x = -8;
+	id = "room2";
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "room2"
+	pixel_x = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "uEn" = (
 /obj/structure/table,
 /obj/machinery/light/cold/directional/south,
@@ -12067,8 +12107,8 @@
 "uFG" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	name = "Interlink Kitchen Shutters";
-	id = "il_kitchen"
+	id = "il_kitchen";
+	name = "Interlink Kitchen Shutters"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
@@ -12082,8 +12122,8 @@
 "uGU" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
@@ -12204,16 +12244,16 @@
 	pixel_y = -1
 	},
 /obj/item/coffee_cartridge/fancy{
-	pixel_y = 8;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 8
 	},
 /obj/item/coffee_cartridge/fancy{
-	pixel_y = 3;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 3
 	},
 /obj/item/reagent_containers/cup/coffeepot{
-	pixel_y = 20;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 20
 	},
 /obj/machinery/light/cold/directional/west,
 /turf/open/floor/iron/dark/textured_large,
@@ -12261,9 +12301,7 @@
 /area/centcom/interlink)
 "vdv" = (
 /obj/machinery/light/directional/west,
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "veh" = (
@@ -12354,14 +12392,14 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Door Lock";
 	id = "room6";
-	specialfunctions = 4;
-	normaldoorcontrol = 1
+	name = "Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -8;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "vxh" = (
 /obj/item/instrument/accordion,
 /obj/item/instrument/banjo,
@@ -12455,9 +12493,9 @@
 /area/centcom/interlink)
 "vLt" = (
 /obj/structure/closet/crate/cardboard/tiziran,
-/obj/item/storage/box/foodpack/tiziria/roll,
-/obj/item/storage/box/foodpack/tiziria/roll,
-/obj/item/storage/box/foodpack/tiziria/stir_fry,
+/obj/item/storage/box/foodpack/tizira/roll,
+/obj/item/storage/box/foodpack/tizira/roll,
+/obj/item/storage/box/foodpack/tizira/stir_fry,
 /obj/item/storage/box/tiziran_meats,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
@@ -12466,8 +12504,8 @@
 /area/centcom/interlink)
 "vLY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Bar";
-	dir = 4
+	dir = 4;
+	name = "Interlink Bar"
 	},
 /obj/effect/turf_decal/trimline/green/corner{
 	dir = 8
@@ -12485,8 +12523,8 @@
 /area/centcom/holding/cafepark)
 "vRf" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Interlink Garden";
-	dir = 4
+	dir = 4;
+	name = "Interlink Garden"
 	},
 /obj/effect/turf_decal/trimline/green/arrow_ccw,
 /obj/effect/turf_decal/siding/white{
@@ -12533,7 +12571,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafedorms)
 "vYR" = (
-/obj/effect/overlay/coconut,
+/obj/structure/flora/coconuts,
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "vZv" = (
@@ -12568,17 +12606,18 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/cornmeal,
 /obj/item/reagent_containers/condiment/cornmeal,
+/obj/item/reagent_containers/condiment/vinegar,
 /turf/open/indestructible/hoteltile{
 	icon_state = "cafeteria"
 	},
@@ -12659,7 +12698,7 @@
 "wlA" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "wmW" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/arrow_cw{
 	dir = 8
@@ -12712,8 +12751,8 @@
 	pixel_y = 2
 	},
 /obj/item/pen{
-	pixel_y = 10;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 10
 	},
 /turf/open/floor/carpet/executive,
 /area/centcom/interlink)
@@ -12740,8 +12779,8 @@
 /area/centcom/interlink)
 "wyF" = (
 /obj/structure/sign/directions/security{
-	pixel_y = -8;
-	dir = 8
+	dir = 8;
+	pixel_y = -8
 	},
 /obj/structure/sign/directions/medical{
 	dir = 8
@@ -12927,16 +12966,6 @@
 /obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
-"wVp" = (
-/obj/machinery/modular_computer/console/preset/command{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "wXe" = (
 /obj/structure/bookcase/random/adult,
 /obj/effect/turf_decal/siding/wood{
@@ -12954,7 +12983,7 @@
 	name = "Bathroom"
 	},
 /turf/open/floor/iron/white,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "wYH" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -13217,7 +13246,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/centcom/interlink)
+/area/centcom/interlink/dorm_rooms)
 "xPD" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -13281,16 +13310,16 @@
 /area/centcom/interlink)
 "xVv" = (
 /obj/machinery/button/door/directional/west{
-	pixel_y = -8;
-	name = "Arrivals Hall Shutter Control";
 	id = "interlink_hall2";
+	name = "Arrivals Hall Shutter Control";
+	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/west,
 /obj/machinery/button/door/directional/west{
-	pixel_y = 8;
-	name = "Arrivals Access Shutter Control";
 	id = "arriv_hall";
+	name = "Arrivals Access Shutter Control";
+	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -13299,10 +13328,10 @@
 "xVV" = (
 /obj/machinery/recharge_station,
 /obj/machinery/button/door/directional/south{
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
+	id = "stall3";
 	name = "Door Lock";
-	id = "stall3"
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -13314,6 +13343,10 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/centcom/holding/cafe)
+"xWg" = (
+/obj/item/toy/plush/bubbleplush,
+/turf/open/misc/dirt/planet,
+/area/centcom/holding/cafepark)
 "xXc" = (
 /obj/effect/light_emitter/interlink,
 /obj/structure/fence,
@@ -22560,7 +22593,7 @@ pVh
 mpl
 kiU
 aQY
-wVp
+kZQ
 tvw
 vdv
 cuM
@@ -23060,7 +23093,7 @@ tvw
 sNg
 fMM
 tvw
-cHa
+ijv
 aQY
 vgs
 cMh
@@ -27929,13 +27962,13 @@ tvw
 iMY
 nJp
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 wXo
-bxz
-aQY
-pnH
+nsT
+bsj
+nYF
 tvw
 vzH
 nJp
@@ -28189,10 +28222,10 @@ tvw
 tfe
 wlA
 fEg
-tvw
+lcR
 pry
-aQY
-sci
+bsj
+chZ
 pMg
 dGD
 nJp
@@ -28445,10 +28478,10 @@ nJp
 tvw
 tvw
 tvw
-tvw
-tvw
+lcR
+lcR
 hVC
-aQY
+bsj
 osk
 tvw
 iMY
@@ -28703,10 +28736,10 @@ kOZ
 sga
 tvw
 cWF
-aQY
-aQY
-aQY
-aQY
+bsj
+bsj
+bsj
+bsj
 tvw
 iMY
 nJp
@@ -28961,8 +28994,8 @@ aPe
 tvw
 aFe
 xPx
-aQY
-aQY
+bsj
+bsj
 bUO
 tvw
 ukp
@@ -29471,13 +29504,13 @@ pPI
 dGD
 nJp
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 wXo
-bxz
-aQY
-pnH
+nsT
+bsj
+nYF
 tvw
 iMY
 nJp
@@ -29731,10 +29764,10 @@ tvw
 tfe
 wlA
 fEg
-tvw
+lcR
 pry
-aQY
-sci
+bsj
+chZ
 dVh
 dGD
 nJp
@@ -29987,10 +30020,10 @@ nJp
 tvw
 tvw
 tvw
-tvw
-tvw
+lcR
+lcR
 hVC
-aQY
+bsj
 uDT
 tvw
 iMY
@@ -30245,10 +30278,10 @@ kOZ
 ubH
 tvw
 cWF
-aQY
-aQY
-aQY
-aQY
+bsj
+bsj
+bsj
+bsj
 tvw
 iMY
 nJp
@@ -30503,8 +30536,8 @@ jTQ
 tvw
 aFe
 xPx
-aQY
-aQY
+bsj
+bsj
 bUO
 tvw
 iMY
@@ -31013,13 +31046,13 @@ fGC
 hvQ
 nJp
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 wXo
-bxz
-aQY
-pnH
+nsT
+bsj
+nYF
 tvw
 iMY
 nJp
@@ -31273,10 +31306,10 @@ tvw
 tfe
 wlA
 fEg
-tvw
+lcR
 pry
-aQY
-sci
+bsj
+chZ
 wdB
 dGD
 nJp
@@ -31529,10 +31562,10 @@ nJp
 tvw
 tvw
 tvw
-tvw
-tvw
+lcR
+lcR
 hVC
-aQY
+bsj
 mUC
 tvw
 iMY
@@ -31787,10 +31820,10 @@ kOZ
 sga
 tvw
 cWF
-aQY
-aQY
-aQY
-aQY
+bsj
+bsj
+bsj
+bsj
 tvw
 iMY
 nJp
@@ -32045,8 +32078,8 @@ aPe
 tvw
 aFe
 xPx
-aQY
-aQY
+bsj
+bsj
 bUO
 tvw
 ukp
@@ -32555,13 +32588,13 @@ tvw
 tvw
 tvw
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 wXo
-bxz
-aQY
-pnH
+nsT
+bsj
+nYF
 tvw
 iMY
 nJp
@@ -32815,10 +32848,10 @@ tvw
 tfe
 wlA
 fEg
-tvw
+lcR
 pry
-aQY
-sci
+bsj
+chZ
 yln
 dGD
 nJp
@@ -33071,10 +33104,10 @@ ayj
 tvw
 tvw
 tvw
-tvw
-tvw
+lcR
+lcR
 hVC
-aQY
+bsj
 cbF
 tvw
 iMY
@@ -33329,10 +33362,10 @@ tvw
 pCw
 tvw
 cWF
-aQY
-aQY
-aQY
-aQY
+bsj
+bsj
+bsj
+bsj
 tvw
 iMY
 nJp
@@ -33587,8 +33620,8 @@ qJA
 tvw
 aFe
 xPx
-aQY
-aQY
+bsj
+bsj
 bUO
 tvw
 iMY
@@ -35122,19 +35155,19 @@ aaa
 tvw
 rHY
 mqS
-iVW
+aPY
 tvw
 rHY
 rmA
-iVW
+aPY
 tvw
 rHY
 vuV
-iVW
+aPY
 tvw
 rHY
 gup
-iVW
+aPY
 tvw
 aaa
 aaa
@@ -35378,20 +35411,20 @@ aaa
 aaa
 tvw
 sBZ
-aQY
-aQY
+bsj
+bsj
 tvw
 sBZ
-aQY
-aQY
+bsj
+bsj
 tvw
 sBZ
-aQY
-aQY
+bsj
+bsj
 tvw
 sBZ
-aQY
-aQY
+bsj
+bsj
 tvw
 aaa
 aaa
@@ -35636,19 +35669,19 @@ aaa
 tvw
 cWF
 nCY
-vRE
+etn
 tvw
 cWF
 nCY
-vRE
+etn
 tvw
 cWF
 nCY
-vRE
+etn
 tvw
 cWF
 nCY
-vRE
+etn
 tvw
 aaa
 aaa
@@ -35891,20 +35924,20 @@ aaa
 aaa
 aaa
 tvw
-tvw
-tvw
+lcR
+lcR
 wXo
 tvw
-tvw
-tvw
+lcR
+lcR
 wXo
 tvw
-tvw
-tvw
+lcR
+lcR
 wXo
 tvw
-tvw
-tvw
+lcR
+lcR
 wXo
 tvw
 aaa
@@ -36148,21 +36181,21 @@ aaa
 aaa
 aaa
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 tvw
-kdy
+iVr
 rbT
-aWb
+dgV
 tvw
 aaa
 aaa
@@ -51103,7 +51136,7 @@ aFP
 aFP
 ajj
 aUm
-aFh
+cZJ
 aUm
 auR
 aUm
@@ -71122,7 +71155,7 @@ aiA
 aiA
 aiA
 aiA
-jKv
+xWg
 aPf
 aPf
 pNf
@@ -71378,8 +71411,8 @@ aiA
 aiA
 aiA
 aPf
-aiA
-aiA
+ayI
+ayI
 aPf
 aPf
 aFP
@@ -74497,7 +74530,7 @@ ajj
 ajj
 ajj
 ajj
-aFh
+cZJ
 wZS
 aUm
 jzL

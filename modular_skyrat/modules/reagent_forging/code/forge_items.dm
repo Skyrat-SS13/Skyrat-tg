@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(allowed_forging_materials, list(
 	. = ..()
 	var/turf/src_turf = get_turf(src)
 	for(var/i in 1 to spawning_amount)
-		new /obj/item/ammo_casing/caseless/arrow/(src_turf)
+		new /obj/item/ammo_casing/arrow/(src_turf)
 	qdel(src)
 
 /obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
