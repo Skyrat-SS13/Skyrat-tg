@@ -25,24 +25,27 @@
 // Boxes of non-shotgun ammo
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes
-	subcategory = "Ammunition Boxes"
-	lower_cost = CARGO_CRATE_VALUE * 0.75
-	upper_cost = CARGO_CRATE_VALUE * 1.25
+	subcategory = "Small Arms Ammunition Boxes"
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/pepperball
 	item_type = /obj/item/ammo_box/advanced/pepperballs
 
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol_pistol
+	item_type = /obj/item/ammo_box/c35sol
+
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol_pistol_incapacitator
+	item_type = /obj/item/ammo_box/c35sol/incapacitator
+
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol_pistol_piercing
+	item_type = /obj/item/ammo_box/c35sol/pierce
+
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol_pistol_ripper
+	item_type = /obj/item/ammo_box/c35sol/ripper
+
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/m1911_lethals
 	item_type = /obj/item/ammo_box/c45
-
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/wt550_lethals
-	item_type = /obj/item/ammo_box/c46x30mm
-
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/wt550_piercing
-	item_type = /obj/item/ammo_box/c46x30mm/ap
-
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/wt550_rubber
-	item_type = /obj/item/ammo_box/c46x30mm/rubber
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/peacekeeper_lethal
 	item_type = /obj/item/ammo_box/c9mm
@@ -62,25 +65,50 @@
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/auto10mm_rubber
 	item_type = /obj/item/ammo_box/c10mm/rubber
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_lethal
+// Long arms ammo boxes category to break up the monolithic ammo box section before
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes
+	subcategory = "Long Arms Ammunition Boxes"
+	lower_cost = PAYCHECK_CREW * 4
+	upper_cost = PAYCHECK_CREW * 6
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/wt550_lethals
+	item_type = /obj/item/ammo_box/c46x30mm
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/wt550_piercing
+	item_type = /obj/item/ammo_box/c46x30mm/ap
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/wt550_rubber
+	item_type = /obj/item/ammo_box/c46x30mm/rubber
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sol_rifle
+	item_type = /obj/item/ammo_box/c40sol
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sol_rifle_frag
+	item_type = /obj/item/ammo_box/c40sol/fragmentation
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sol_rifle_incendiary
+	item_type = /obj/item/ammo_box/c40sol/incendiary
+
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sabel_lethal
 	item_type = /obj/item/ammo_box/c56mm
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_rubber
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sabel_rubber
 	item_type = /obj/item/ammo_box/c56mm/rubber
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_hunting
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sabel_hunting
 	item_type = /obj/item/ammo_box/c56mm/hunting
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_blank
+/datum/armament_entry/company_import/vitezstvi/long_ammo_boxes/sabel_blank
 	item_type = /obj/item/ammo_box/c56mm/blank
-	lower_cost = CARGO_CRATE_VALUE * 0.1
-	upper_cost = CARGO_CRATE_VALUE * 0.3
+	lower_cost = PAYCHECK_CREW * 0.5
+	upper_cost = PAYCHECK_CREW
 
 // Revolver speedloaders
 

@@ -120,14 +120,13 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/luna/pocket/no_mag
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/ballistic/automatic/pistol/luna/pocket/no_mag,
 		/obj/item/ammo_box/magazine/c35sol_pistol,
 		/obj/item/ammo_box/magazine/c35sol_pistol,
 		/obj/item/ammo_box/magazine/c35sol_pistol,
@@ -149,7 +148,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
+	l_pocket = /obj/item/gun/energy/e_gun/mini
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)

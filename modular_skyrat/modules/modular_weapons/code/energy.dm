@@ -1,33 +1,4 @@
 /*
-*	BOLT RESPONDER
-*	A mini disabler
-*	12 shot capacity VS normal disabler's 20.
-*/
-
-
-/obj/item/gun/energy/disabler/bolt_disabler
-	name = "Bolt Responder"
-	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
-	icon_state = "cfa-disabler"
-	inhand_icon_state = null
-	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
-	ammo_x_offset = 2
-	w_class = WEIGHT_CLASS_SMALL
-	cell_type = /obj/item/stock_parts/cell/mini_egun
-	ammo_x_offset = 2
-	charge_sections = 3
-
-/obj/item/gun/energy/disabler/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
-
-/obj/item/gun/energy/disabler/bolt_disabler/give_gun_safeties()
-	return
-
-/obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
-	return
-
-/*
 *	BOUNCE DISABLER
 *	A disabler that will always ricochet.
 */

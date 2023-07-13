@@ -103,7 +103,7 @@
 
 /obj/item/ammo_box/magazine/c40sol_rifle
 	name = "\improper Luno rifle short magazine"
-	desc = "A shortened magazine for Luno rifles, holds twenty rounds."
+	desc = "A shortened magazine for Luno rifles, holds fifteen rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
 	icon_state = "rifleshort"
@@ -112,7 +112,7 @@
 
 	ammo_type = /obj/item/ammo_casing/c40sol
 	caliber = CALIBER_SOL40LONG
-	max_ammo = 20
+	max_ammo = 15
 
 /obj/item/ammo_box/magazine/c40sol_rifle/thirty
 	name = "\improper Luno rifle magazine"
