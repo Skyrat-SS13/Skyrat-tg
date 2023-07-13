@@ -91,7 +91,6 @@
 	/// Suit armor
 /datum/armor/wetsuit_under
 	bio = 10
-	wound = 5
 
 /obj/item/clothing/under/akula_wetsuit/job
 	/// Our large examine text
@@ -177,7 +176,7 @@
 		The systems inside have been reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect."
 	icon_state = "sec"
 	base_icon_state = "sec"
-	armor_type = /datum/armor/rank_security
+	armor_type = /datum/armor/clothing_under/rank_security
 
 /obj/item/clothing/under/akula_wetsuit/job/command
 	name = "command Shoredress wetsuit"

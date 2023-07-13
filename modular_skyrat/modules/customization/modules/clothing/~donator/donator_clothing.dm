@@ -213,9 +213,11 @@
 	icon_state = "black_turtleneck"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
-	can_adjust = FALSE //There wasnt an adjustable sprite anyways
 	armor_type = /datum/armor/clothing_under/none
+	can_adjust = FALSE //There wasnt an adjustable sprite anyways
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
+
+/datum/armor/clothing_under/none
 
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
@@ -569,7 +571,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	supports_variations_flags = NONE
-	armor_type = /datum/armor/clothing_under/none
+	armor_type = /datum/armor/none
 
 // Donation reward for inferno707
 /obj/item/clothing/mask/hheart
