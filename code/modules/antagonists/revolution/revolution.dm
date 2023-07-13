@@ -12,16 +12,6 @@
 	var/deconversion_source
 
 /datum/antagonist/rev/can_be_owned(datum/mind/new_owner)
-<<<<<<< HEAD
-	. = ..()
-	if(.)
-		if(new_owner.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND))//SKYRAT EDIT CHANGE
-			return FALSE
-		if(new_owner.unconvertable)
-			return FALSE
-		if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))
-			return FALSE
-=======
 	if(new_owner.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 		return FALSE
 	if(new_owner.unconvertable)
@@ -29,7 +19,6 @@
 	if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))
 		return FALSE
 	return ..()
->>>>>>> 32afa856dbb (Makes cult leader handling work off of the Cult datum (#76556))
 
 /datum/antagonist/rev/admin_add(datum/mind/new_owner, mob/admin)
 	// No revolution exists which means admin adding this will create a new revolution team
