@@ -96,13 +96,3 @@
 	))
 
 	return to_add
-<<<<<<< HEAD
-
-/// Remove nutrient value from non-mineral food, wish this was on an organ and not species but such is life
-/datum/species/golem/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
-	if(istype(chem, /datum/reagent/consumable) && !istype(chem, /datum/reagent/consumable/nutriment/mineral))
-		var/datum/reagent/consumable/yummy_chem = chem
-		yummy_chem.nutriment_factor = 0
-	return ..()
-=======
->>>>>>> 6da96bef842 (SPECIES NUKING 2023: Mein leber! Allows livers to handle reagents in special ways, instead of the species datum doing it (#76184))
