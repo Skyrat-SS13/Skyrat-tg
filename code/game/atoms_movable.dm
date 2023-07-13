@@ -100,8 +100,14 @@
 	/// The voice that this movable makes when speaking
 	var/voice
 
+	/// The pitch adjustment that this movable uses when speaking.
+	var/pitch = 0
+
 	/// The filter to apply to the voice when processing the TTS audio message.
 	var/voice_filter = ""
+
+	/// Set to anything other than "" to activate the silicon voice effect for TTS messages.
+	var/tts_silicon_voice_effect = ""
 
 	/// Value used to increment ex_act() if reactionary_explosions is on
 	/// How much we as a source block explosions by
@@ -1240,8 +1246,11 @@
 	if(impact_signal & COMPONENT_MOVABLE_IMPACT_FLIP_HITPUSH)
 		hitpush = FALSE // hacky, tie this to something else or a proper workaround later
 
-	if(!(impact_signal && (impact_signal & COMPONENT_MOVABLE_IMPACT_NEVERMIND))) // in case a signal interceptor broke or deleted the thing before we could process our hit
-		return hit_atom.hitby(src, throwingdatum=throwingdatum, hitpush=hitpush)
+	if(impact_signal && (impact_signal & COMPONENT_MOVABLE_IMPACT_NEVERMIND))
+		return // in case a signal interceptor broke or deleted the thing before we could process our hit
+	if(SEND_SIGNAL(hit_atom, COMSIG_ATOM_PREHITBY, src, throwingdatum) & COMSIG_HIT_PREVENTED)
+		return
+	return hit_atom.hitby(src, throwingdatum=throwingdatum, hitpush=hitpush)
 
 /atom/movable/hitby(atom/movable/hitting_atom, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
 	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
@@ -1447,6 +1456,10 @@
 
 /// Gets or creates the relevant language holder. For mindless atoms, gets the local one. For atom with mind, gets the mind one.
 /atom/movable/proc/get_language_holder(get_minds = TRUE)
+	if(QDELING(src))
+		CRASH("get_language_holder() called on a QDELing atom, \
+			this will try to re-instantiate the language holder that's about to be deleted, which is bad.")
+
 	if(!language_holder)
 		language_holder = new initial_language_holder(src)
 	return language_holder

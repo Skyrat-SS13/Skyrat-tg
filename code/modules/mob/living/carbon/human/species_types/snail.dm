@@ -1,18 +1,9 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	/*SKYRAT EDIT - ORIGINAL
 	species_traits = list(
 		MUTCOLORS,
-		NO_UNDERWEAR,
-	)
-	*/
-	//SKYRAT EDIT - Snails deserve hair, and get to wear underwear, and have eye colour
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR
+		// NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
 	)
 	inherent_traits = list(
 		TRAIT_NO_SLIP_ALL,
@@ -20,7 +11,6 @@
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
-	burnmod = 2
 	speedmod = 6
 	siemens_coeff = 2 //snails are mostly water
 	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs

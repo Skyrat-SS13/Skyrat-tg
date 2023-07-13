@@ -22,7 +22,8 @@
 	inhand_icon_state = "revolving"
 
 /obj/item/gun/ballistic/revolver/rifle/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
+
 /obj/item/gun/ballistic/revolver/rifle/gold
 	name = "\improper .45 revolving rifle"
 	desc = "A gold trimmed revolving rifle! It fires .45 bullets."

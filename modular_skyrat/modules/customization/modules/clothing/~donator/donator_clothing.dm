@@ -3,22 +3,38 @@
 /obj/item/clothing/suit/hooded/wintercoat/colourable
 	name = "custom winter coat"
 	icon_state = "winter_coat"
+	icon = null
+	worn_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
 	greyscale_config = /datum/greyscale_config/winter_coat
 	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
 	greyscale_colors = "#666666#CCBBAA#0000FF"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	hood_down_overlay_suffix = ""
+	/// Whether the hood is flipped up
+	var/hood_up = FALSE
+
+/// Called when the hood is worn
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_up(obj/item/clothing/head/hooded/hood)
+	hood_up = TRUE
+
+/// Called when the hood is hidden
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_down(obj/item/clothing/head/hooded/hood)
+	hood_up = FALSE
 
 //In case colors are changed after initialization
 /obj/item/clothing/suit/hooded/wintercoat/colourable/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
 	. = ..()
-	if(hood)
-		var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
-		var/list/new_coat_colors = coat_colors.Copy(1,3)
-		hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
+
+	if(!hood)
+		return
+
+	var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
+	var/list/new_coat_colors = coat_colors.Copy(1,3)
+	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
 //But also keep old method in case the hood is (re-)created later
-/obj/item/clothing/suit/hooded/wintercoat/colourable/MakeHood()
+/obj/item/clothing/suit/hooded/wintercoat/colourable/on_hood_created(obj/item/clothing/head/hooded/hood)
 	. = ..()
 	var/list/coat_colors = (SSgreyscale.ParseColorString(greyscale_colors))
 	var/list/new_coat_colors = coat_colors.Copy(1,3)
@@ -197,14 +213,11 @@
 	icon_state = "black_turtleneck"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
+	armor_type = /datum/armor/clothing_under/none
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor_type = /datum/armor/tacticool_black
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
-// Donation reward for Thedragmeme
-
-/datum/armor/tacticool_black
-	wound = 5
+/datum/armor/clothing_under/none
 
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
@@ -253,18 +266,51 @@
 
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "FAR-14C IRU"
-	desc = "A close-fitting respirator designed by Forestiian Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
+	name = "FIR-36 Rebreather"
+	desc = "A close-fitting respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-36 Rebreather is commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "far14c"
+	actions_types = list(/datum/action/item_action/adjust)
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
-	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_inv = HIDEFACE | HIDESNOUT
 	flags_cover = NONE
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
-	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_inv = HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
+
+/obj/item/clothing/mask/gas/nightlight/attack_self(mob/user)
+	adjustmask(user)
+
+/obj/item/clothing/mask/gas/nightlight/AltClick(mob/user)
+	..()
+	if(user.can_perform_action(src, NEED_DEXTERITY))
+		adjustmask(user)
+
+/obj/item/clothing/mask/gas/nightlight/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt-click [src] to adjust it.")
+
+/obj/item/clothing/mask/gas/nightlight/alldono //different itempath so regular donators can have it, too
+
+// Donation reward for ChillyLobster
+/obj/item/clothing/suit/jacket/brasspriest
+	name = "brasspriest coat"
+	desc = "A reddish coat with brass-clad parts embed into said coat. You can hear the faint noise of some cogs turning from time to time inside."
+	icon_state = "brasspriest"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+
+// Donation reward for ChillyLobster
+/obj/item/clothing/suit/jacket/hydrogenrobes
+	name = "metallic-hydrogen robes"
+	desc = "An incredibly shiny dress that seems to be covered in a very thin sheet of metallic hydrogen all over the textiles. Not very protective."
+	icon_state = "hydrogenrobes"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle

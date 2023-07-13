@@ -7,6 +7,8 @@
 	setup_mood()
 	// This needs to be called very very early in human init (before organs / species are created at the minimum)
 	setup_organless_effects()
+	// Physiology needs to be created before species, as some species modify physiology
+	setup_physiology()
 
 	create_dna()
 	dna.species.create_fresh_body(src)
@@ -16,8 +18,6 @@
 	set_species(dna.species.type)
 
 	prepare_huds() //Prevents a nasty runtime on human init
-
-	physiology = new()
 
 	. = ..()
 
@@ -33,6 +33,9 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	GLOB.human_list += src
 	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
+
+/mob/living/carbon/human/proc/setup_physiology()
+	physiology = new()
 
 /mob/living/carbon/human/proc/setup_mood()
 	if (CONFIG_GET(flag/disable_human_mood))
@@ -57,7 +60,8 @@
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
-	QDEL_LIST(bioware)
+	if(biowares)
+		QDEL_LIST(biowares)
 	GLOB.human_list -= src
 
 	if (mob_mood)

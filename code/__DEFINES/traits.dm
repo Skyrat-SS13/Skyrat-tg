@@ -140,6 +140,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESTRAINED "restrained"
 /// Doesn't miss attacks
 #define TRAIT_PERFECT_ATTACKER "perfect_attacker"
+///Recolored by item/greentext
+#define TRAIT_GREENTEXT_CURSED "greentext_curse"
 #define TRAIT_INCAPACITATED "incapacitated"
 /// In some kind of critical condition. Is able to succumb.
 #define TRAIT_CRITICAL_CONDITION "critical-condition"
@@ -316,6 +318,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WEB_WEAVER "web_weaver"
 /// Can navigate the web without getting stuck
 #define TRAIT_WEB_SURFER "web_surfer"
+/// A web is being spun on this turf presently
+#define TRAIT_SPINNING_WEB_TURF "spinning_web_turf"
 #define TRAIT_ABDUCTOR_TRAINING "abductor-training"
 #define TRAIT_ABDUCTOR_SCIENTIST_TRAINING "abductor-scientist-training"
 #define TRAIT_SURGEON "surgeon"
@@ -492,6 +496,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HATED_BY_DOGS "hated_by_dogs"
 /// Mobs with this trait will not be immobilized when held up
 #define TRAIT_NOFEAR_HOLDUPS "no_fear_holdup"
+/// Mob has gotten an armor buff from adamantine extract
+#define TRAIT_ADAMANTINE_EXTRACT_ARMOR "adamantine_extract_armor"
+/// Mobs with this trait won't be able to dual wield guns.
+#define TRAIT_NO_GUN_AKIMBO "no_gun_akimbo"
+
+/// Projectile with this trait will always hit the defined zone of a struck living mob.
+#define TRAIT_ALWAYS_HIT_ZONE "always_hit_zone"
 
 /// Mobs with this trait do care about a few grizzly things, such as digging up graves. They also really do not like bringing people back to life or tending wounds, but love autopies, dissections and amputations.
 #define TRAIT_MORBID "morbid"
@@ -512,6 +523,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
 #define TRAIT_BALLMER_SCIENTIST "ballmer_scientist"
 #define TRAIT_MAINTENANCE_METABOLISM "maintenance_metabolism"
+#define TRAIT_CORONER_METABOLISM "coroner_metabolism"
 
 //LUNG TRAITS
 /// Lungs always breathe normally when in vacuum/space.
@@ -667,7 +679,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SELF_AWARE "self_aware"
 #define TRAIT_FREERUNNING "freerunning"
 #define TRAIT_SKITTISH "skittish"
-#define TRAIT_POOR_AIM "poor_aim"
 #define TRAIT_PROSOPAGNOSIA "prosopagnosia"
 #define TRAIT_TAGGER "tagger"
 #define TRAIT_PHOTOGRAPHER "photographer"
@@ -769,6 +780,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Trait given to a mob with a ckey currently in a temporary body, allowing people to know someone will re-enter the round later.
 #define TRAIT_MIND_TEMPORARILY_GONE "temporarily_gone"
 
+/// Trait given to mechs that can have orebox functionality on movement
+#define TRAIT_OREBOX_FUNCTIONAL "orebox_functional"
+
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define UNCONSCIOUS_TRAIT "unconscious"
@@ -851,11 +865,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SWORDPLAY_TRAIT "swordplay"
 /// Trait given by being recruited as a nuclear operative
 #define NUKE_OP_MINION_TRAIT "nuke-op-minion"
+/// Trait given by mech equipment
+#define TRAIT_MECH_EQUIPMENT(equipment_type) "mech_equipment_[equipment_type]"
 
 ///generic atom traits
 /// Trait from [/datum/element/rust]. Its rusty and should be applying a special overlay to denote this.
 #define TRAIT_RUSTY "rust_trait"
-///stops someone from splashing their reagent_container on an object with this trait
+/// Stops someone from splashing their reagent_container on an object with this trait
 #define TRAIT_DO_NOT_SPLASH "do_not_splash"
 /// Marks an atom when the cleaning of it is first started, so that the cleaning overlay doesn't get removed prematurely
 #define TRAIT_CURRENTLY_CLEANING "currently_cleaning"
@@ -953,8 +969,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define BEAUTY_ELEMENT_TRAIT "beauty_element"
 #define MOOD_DATUM_TRAIT "mood_datum"
 #define DRONE_SHY_TRAIT "drone_shy"
-/// Pacifism trait given by stabilized light pink extracts.
-#define STABILIZED_LIGHT_PINK_TRAIT "stabilized_light_pink"
+/// Trait given by stabilized light pink extracts
+#define STABILIZED_LIGHT_PINK_EXTRACT_TRAIT "stabilized_light_pink"
+/// Trait given by adamantine extracts
+#define ADAMANTINE_EXTRACT_TRAIT "adamantine_extract"
 /// Given by the multiple_lives component to the previous body of the mob upon death.
 #define EXPIRED_LIFE_TRAIT "expired_life"
 /// Trait given to an atom/movable when they orbit something.
@@ -1101,3 +1119,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SPEAKING_FROM_TONGUE "tongue"
 ///trait source that sign language should use
 #define SPEAKING_FROM_HANDS "hands"
+
+///Trait given by /datum/component/germ_sensitive
+#define TRAIT_GERM_SENSITIVE "germ_sensitive"

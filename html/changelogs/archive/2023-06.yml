@@ -1031,3 +1031,116 @@
   vinylspiders:
   - bugfix: the mothic mantella and mothic flightsuit will now always hide moth wings
       again
+2023-06-25:
+  LT3:
+  - bugfix: Nanotrasen sent a crew in the night to fix the poorly installed clocks
+      and incident displays on Void Raptor
+  SkyratBot:
+  - bugfix: bubble gum crate actually looks correct
+  - image: Added new Space Beer sprite
+  - image: Added new Carp Lite sprite
+  - image: Added new Ale Bottle sprite
+  - image: Added new Two-Time Root Beer sprite
+  - rscadd: Adds digital clocks, can be found in all the stations' hallways! Most
+      noticeably in bars or the bridge. They can also be lathed.
+  - admin: The Debug and Admin MODsuits now take a lot less time to (de)activate.
+      2 and 0.5 seconds respectively, compared to the default of 10s.
+  - image: Resprited the Limb Grower
+  Wallem:
+  - image: Resprites plumbing machines
+  softcerv:
+  - rscadd: soulcatcher souls can now be renamed by themselves or the owner of the
+      soulcatcher
+  - qol: soulcatcher souls now have their own dedicated UI
+  tf-4:
+  - bugfix: Multi-tile airlocks will no longer close on you if you stand on the "wrong"
+      tile.
+  - bugfix: Multi-tile airlock assemblies are no longer only half dense.
+2023-06-27:
+  LT3:
+  - qol: Crew have learned how to properly hold their alcohol
+  - qol: Crew can smoke a cigarette without falling into an instant coughing fit
+  - bugfix: Fixed nicotine addiction side effects being applied twice each time
+  OrionTheFox:
+  - image: Stock Parts, Bluespace Crystals, and Telecrystals are now using TG's sprites
+  zydras:
+  - qol: Improved a donator gas mask's sprite, function and gave it general donator
+      access
+2023-06-28:
+  Hatterhat:
+  - rscadd: Breaching hammers (like the ones found in the armory) are now usable to
+      break kneecaps on immobilized, buckled, or floored targets.
+  SkyratBot:
+  - bugfix: Added the missing medical laptop to the morgue on Northstar.
+  - qol: '[Birdshot] Adds layer adapters to gas tank output hookups in atmospherics'
+  - qol: '[Birdshot] Adds additional navigation verb landmarks'
+  - bugfix: '[Birdshot] Fixes entrances to some departments from maints not requiring
+      department access'
+  - bugfix: '[Birdshot] Converts the guard locker in perma to a normal security officer''s
+      locker'
+  - bugfix: '[Birdshot] Adds an exterior outlet vent for the incinerator'
+  - bugfix: Science department hallways now have unrestricted one-way exits on Delta,
+      Birdshot, and Icebox, to make these maps consistent with the others.
+  YakumoChen:
+  - balance: Deforest Medical imports now have a selection of Medical-themed MODsuit
+      modules for sale, as well as some cyber augments.
+  dolphinemote:
+  - bugfix: replaces sofas in VR medbay break room with correctly turned versions
+  - bugfix: replaces the bench in the VR medbay lobby with a correctly edged version
+  - bugfix: replaces the reinforced table in the VR maint that was adjacent to the
+      basic iron tables with an iron version
+  - bugfix: changes decals in the VR evidence room
+  - bugfix: removes one air alarm from the VR evidence room (it had two)
+  zydras:
+  - rscadd: Added 2 new donator items for someone
+  - bugfix: fixed incorrect/missing ckeys on donator items
+  - bugfix: fixed all-donator item not being selectable due to lacking a duplicate
+      path
+2023-06-29:
+  LT3:
+  - refactor: Refactored maptext (those floating words)
+  - bugfix: Fixed special chat bubbles for yelling, clown, redtext, greentext
+  - bugfix: Fixed alignment of status display text
+  - code_imp: Status displays now synchronize their message lines when scrolling
+  Melbert:
+  - rscadd: 'Wizarditis Improved. Those infected will now randomly cast one of the
+      following (weakened) spells at max stage: Teleport, Disable Tech, Mutate, Knock,
+      Forcewall, Blink, Smoke, Spacetime Distortion, Timestop, Repulse, Blind, Lightning
+      Bolt, or Swap'
+  - rscadd: A source of antimagic will prevent Wizarditis's ill effects, but won't
+      cure you.
+  Nerev4r:
+  - refactor: Podperson hair is now colorable, properly layered, and able to be emissive.
+  SkyratBot:
+  - sound: Adds unique sounds to library barcode scanner
+  - image: Removes soul from library
+  - sound: One (1) new space ambience track has been added. Good luck and godspeed.
+  - bugfix: Brand intelligence can no longer affect off-station vendors in some specific
+      circumstances.
+  - bugfix: glass bottles with reagents can be used for crafting, empty glass bottles
+      will be used as tools(e.g. empty glass bottle as rolling pin)
+  - bugfix: glass bottle with welding fuel can be used for crafting improvised shotgun
+      shells
+  - bugfix: The lavaproof tracks cyborg upgrade now protects against liquid plasma,
+      the Icebox equivalent of lava.
+  - bugfix: fixed hostile mobs trying to attack supermatter discharge bolts
+  - image: the mosin and prime nagants' mob sprites have been updated
+  - bugfix: Items that shouldn't have been stacking should no longer stack.
+  - balance: Syndicate simplemob fire-rate raised to one shot per second.
+  - bugfix: Symbols display correctly when sending messages via mind link
+  axietheaxolotl / viro:
+  - image: resprited surgery tables, and stasis beds
+2023-06-30:
+  Iamgoofball, Nadare, ddPn08, Mangio621, the rest of the RVC dev team:
+  - rscadd: Improves the audio quality and speaker fidelity by implementing Retrieval
+      Voice Conversion as an intermediary layer, utilizing the repository at https://github.com/ddPn08/rvc-webui.
+  - rscadd: Leverages RVC to allow players to set a pitch for their voice.
+  - rscadd: Makes silicons utilize a player's chosen voice preference on their character
+      slot, and adds a preview button to hear the voice as a silicon on character
+      creation.
+  - rscadd: Adds a toggle on character creation to disable having a voice on a specific
+      character slot.
+  - rscadd: Adds support for per-tongue voice filters.
+  - rscadd: Reworks the silicon voice effect to be a special effect done on the TTS
+      server level instead of via normal filters.
+  - rscadd: Reworks the vending machine effect to use the new robotic voicebox effect.

@@ -441,7 +441,7 @@
 /obj/structure/ethereal_crystal
 	name = "ethereal resurrection crystal"
 	desc = "It seems to contain the corpse of an ethereal mending its wounds."
-	icon = 'icons/obj/ethereal_crystal.dmi'
+	icon = 'icons/mob/effects/ethereal_crystal.dmi'
 	icon_state = "ethereal_crystal"
 	damage_deflection = 0
 	max_integrity = 100
@@ -454,6 +454,9 @@
 	var/crystal_heal_timer
 	///Is the crystal still being built? True by default, gets changed after a timer.
 	var/being_built = TRUE
+
+/obj/structure/ethereal_crystal/relaymove()
+	return
 
 /obj/structure/ethereal_crystal/Initialize(mapload, obj/item/organ/internal/heart/ethereal/ethereal_heart)
 	. = ..()

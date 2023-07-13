@@ -1,8 +1,8 @@
 //Bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
-/obj/item/stack/ore/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/ore/bluespace_crystal
 	name = "bluespace crystal"
 	desc = "A glowing bluespace crystal, not much is known about how they work. It looks very delicate."
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "bluespace_crystal"
 	singular_name = "bluespace crystal"
 	dye_color = DYE_COSMIC
@@ -62,9 +62,9 @@
 	merge_type = /obj/item/stack/ore/bluespace_crystal/artificial
 
 //Polycrystals, aka stacks
-/obj/item/stack/sheet/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/bluespace_crystal
 	name = "bluespace polycrystal"
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "polycrystal"
 	inhand_icon_state = null
 	singular_name = "bluespace polycrystal"
