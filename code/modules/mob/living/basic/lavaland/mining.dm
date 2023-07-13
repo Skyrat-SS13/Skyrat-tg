@@ -2,6 +2,7 @@
 /mob/living/basic/mining
 
 	combat_mode = TRUE
+	mob_size = MOB_SIZE_LARGE
 	faction = list(FACTION_MINING)
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0
