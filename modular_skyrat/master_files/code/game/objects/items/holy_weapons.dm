@@ -62,7 +62,7 @@
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
 	desc = "A strange dagger said to be once used by a sinister group.. "
-	icon = 'icons/obj/cult/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
 	worn_icon_state = "render"
@@ -161,7 +161,7 @@
 /obj/item/nullrod/scythe/sickle
 	name = "damned sickle"
 	desc = "A green crescent blade, decorated with an ornamental eye. The pupil has faded..."
-	icon = 'icons/obj/eldritch.dmi'
+	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
