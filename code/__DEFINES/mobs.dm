@@ -971,8 +971,5 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Flag which stops you from attacking while observed
 #define NO_OBSERVED_ATTACKS (1<<2)
 
-<<<<<<< HEAD
-=======
 /// Types of bullets that mining mobs take full damage from
 #define MINING_MOB_PROJECTILE_VULNERABILITY list(BRUTE)
->>>>>>> 61a9a9e1c38 (Elementises mining mob resistance to being attacked from off screen (#76625))
