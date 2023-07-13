@@ -215,36 +215,6 @@
 	gain_text = span_notice("Some of the words of the people around you certainly aren't common. Good thing you studied for this.")
 	lose_text = span_notice("You seem to have forgotten your second language.")
 	medical_record_text = "Patient speaks multiple languages."
-<<<<<<< HEAD
-	var/list/possible_languages = list(
-		/datum/language/aphasia,
-		/datum/language/beachbum,
-		/datum/language/calcic,
-		/datum/language/draconic,
-		/datum/language/moffic,
-		/datum/language/monkey,
-		/datum/language/mushroom,
-		/datum/language/nekomimetic,
-		/datum/language/piratespeak,
-		/datum/language/shadowtongue,
-		/datum/language/slime,
-		/datum/language/sylvan,
-		/datum/language/terrum,
-		/datum/language/voltaic,
-		// SKYRAT ADD
-		/datum/language/skrell,
-		/datum/language/yangyu,
-		/datum/language/vox,
-		/datum/language/schechi,
-		/datum/language/siiktajr,
-		/datum/language/xerxian,
-		/datum/language/canilunzt,
-		/datum/language/panslavic,
-		// SKYRAT ADD END
-	)
-	var/datum/language/extra_language
-=======
->>>>>>> a2c8cce5359 (Bilingual can now choose their language (#76609))
 	mail_goodies = list(/obj/item/taperecorder, /obj/item/clothing/head/frenchberet, /obj/item/clothing/mask/fakemoustache/italian)
 
 /datum/quirk/bilingual/add_unique(client/client_source)

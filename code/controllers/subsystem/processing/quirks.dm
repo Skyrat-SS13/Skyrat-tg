@@ -32,16 +32,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Social Anxiety"),
 		list("Mute", "Soft-Spoken"),
 		list("Stormtrooper Aim", "Big Hands"),
-<<<<<<< HEAD
+		list("Bilingual", "Foreigner"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Big Hands", "Stormtrooper Aim"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
-=======
-		list("Bilingual", "Foreigner"),
->>>>>>> a2c8cce5359 (Bilingual can now choose their language (#76609))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
