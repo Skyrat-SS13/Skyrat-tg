@@ -123,4 +123,4 @@
 
 	ammo_type = /obj/item/ammo_casing/c35sol
 	caliber = CALIBER_SOL35SHORT
-	max_ammo = 25
+	max_ammo = 27
