@@ -24,9 +24,16 @@
 	///radio channels, need null to actually broadcast on common, lol.
 	var/emergency_channel = null
 	var/warning_channel = RADIO_CHANNEL_ENGINEERING
+	///someone really wants the sm to explode
+	var/admin_disabled = FALSE
 
 /obj/machinery/atmospherics/components/unary/delam_scram/Initialize(mapload)
 	. = ..()
+
+	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system in GLOB.machines)
+		if(system != src)
+			stack_trace("Multiple Delam SCRAM units found on map! They should be unique, yell at a mapper!")
+
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/atmospherics/components/unary/delam_scram/LateInitialize()
@@ -82,6 +89,12 @@
 	SIGNAL_HANDLER
 
 	if(on)
+		return
+
+	if(admin_disabled)
+		investigate_log("Delam SCRAM tried to activate but an admin disabled it", INVESTIGATE_ATMOS)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
+		audible_message(span_danger("The [src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES && trigger_reason != DIVINE_INTERVENTION)

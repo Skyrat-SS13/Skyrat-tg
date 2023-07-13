@@ -7,20 +7,9 @@
 	if(!holder || !check_rights(R_FUN))
 		return
 
-	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system in GLOB.machines)
-		if(!suppression_system)
-			suppression_system = system
-		else
-			message_admins("Delam SCRAM failed: Multiple Delam SCRAM units found on map! Someone should fix that.")
-			stack_trace("Multiple Delam SCRAM units found on map! They should be unique, yell at a mapper!") // We could fire anyways, but who knows where the mystery extra machine(s) are.
-			return
+	suppression_system = validate_suppression_status()
 
 	if(!suppression_system)
-		message_admins("Delam SCRAM failed: No active delam SCRAM units found on map! Either it's not mapped or it's already been used!")
-		return
-
-	if(suppression_system.on)
-		message_admins("Delam SCRAM failed: It's already been triggered!")
 		return
 
 	if(world.time - SSticker.round_start_time < 30 MINUTES)
@@ -50,3 +39,47 @@
 		ghost_sound = 'sound/machines/warning-buzzer.ogg',
 		notify_volume = 75
 	)
+
+/client/proc/toggle_delam_suppression()
+	set name = "Delam Suppression Toggle"
+	set category = "Admin.Events"
+	var/obj/machinery/atmospherics/components/unary/delam_scram/suppression_system = null
+
+	if(!holder || !check_rights(R_FUN))
+		return
+
+	suppression_system = validate_suppression_status()
+
+	if(!suppression_system)
+		return
+
+	if(!suppression_system.admin_disabled)
+		suppression_system.admin_disabled = TRUE
+	else
+		suppression_system.admin_disabled = FALSE
+
+	log_admin("[key_name_admin(usr)] toggled Delam suppression [suppression_system.admin_disabled ? "OFF" : "ON"].")
+	message_admins("[key_name_admin(usr)] toggled Delam suppression [suppression_system.admin_disabled ? "OFF" : "ON"].")
+
+/client/proc/validate_suppression_status()
+	if(!holder || !check_rights(R_FUN))
+		return
+
+	var/obj/machinery/atmospherics/components/unary/delam_scram/my_one_and_only = null
+	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system in GLOB.machines)
+		if(!my_one_and_only)
+			my_one_and_only = system
+		else
+			message_admins("Delam suppression request FAILED: Multiple Delam SCRAM units found on map! Someone should fix that, but right now it's on YOU! Go delete the extra unit and try again.")
+			stack_trace("Multiple Delam SCRAM units found on map! Either someone spawned in a duplicate or you need to yell at a mapper!") // We could fire anyways, but who knows where the mystery extra machine(s) are.
+			return FALSE
+
+	if(!my_one_and_only)
+		message_admins("No active delam SCRAM units found on map! Either it's not mapped or it's already been used!")
+		return FALSE
+
+	if(my_one_and_only.on)
+		message_admins("Delam suppression request FAILED: It's already been triggered!")
+		return FALSE
+
+	return my_one_and_only
