@@ -12,6 +12,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/mammal
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
@@ -24,9 +25,6 @@
 		"head_acc" = "None",
 		"neck_acc" = "None"
 	)
-	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS | GORE
-	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
@@ -37,6 +35,13 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
+
+
+/obj/item/organ/internal/tongue/mammal
+	liked_foodtypes = GRAIN | MEAT
+	disliked_foodtypes = CLOTH | GROSS | GORE
+	toxic_foodtypes = TOXIC
+
 
 /datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color

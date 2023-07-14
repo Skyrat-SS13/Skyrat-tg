@@ -25,8 +25,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	///Whether or not the race has sexual characteristics (biological genders). At the moment this is only FALSE for skeletons and shadows
 	var/sexes = TRUE
-	///A bitfield of "bodytypes", updated by /obj/item/bodypart/proc/synchronize_bodytypes()
-	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 	///The maximum number of bodyparts this species can have.
 	var/max_bodypart_count = 6
@@ -53,12 +51,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/meat = /obj/item/food/meat/slab/human
 	///What skin the species drops when gibbed by a gibber machine.
 	var/skinned_type
-	///Bitfield for food types that the species likes, giving them a mood boost. Lizards like meat, for example.
-	var/liked_food = NONE
-	///Bitfield for food types that the species dislikes, giving them disgust. Humans hate raw food, for example.
-	var/disliked_food = GROSS
-	///Bitfield for food types that the species absolutely hates, giving them even more disgust than disliked food. Meat is "toxic" to moths, for example.
-	var/toxic_food = TOXIC
 	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/no_equip_flags
 	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
@@ -89,9 +81,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
 	)
-	///Internal organs that are unique to this race, like a tail.
+	///Internal organs that are unique to this race, like a tail. list(typepath of organ 1, typepath of organ 2s)
 	var/list/mutant_organs = list()
-
 	///List of external organs to generate like horns, frills, wings, etc. list(typepath of organ = "Round Beautiful BDSM Snout"). Still WIP
 	var/list/external_organs = list()
 	///Replaces default brain with a different organ
@@ -538,8 +529,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	if(C.dna.species.exotic_bloodtype)
-		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 	for(var/obj/item/organ/external/organ in C.organs)
@@ -696,7 +685,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				working_shirt.pixel_y += height_offset
 				standing += working_shirt
 
-		if(species_human.socks && species_human.num_legs >= 2 && !(src.bodytype & BODYTYPE_DIGITIGRADE))
+		if(species_human.socks && species_human.num_legs >= 2 && !(species_human.bodytype & BODYTYPE_DIGITIGRADE))
 			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[species_human.socks]
 			if(socks)
 				standing += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
@@ -926,7 +915,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(H.num_legs < 2)
 				return FALSE
 			/* SKYRAT EDIT REMOVAL
-			if((bodytype & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
+			if((H.bodytype & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
 					if(!disable_warning)
 						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
@@ -1063,7 +1052,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		chem.overdosed = TRUE
 		chem.overdose_start(affected)
 		affected.log_message("has started overdosing on [chem.name] at [chem.volume] units.", LOG_GAME)
-	return SEND_SIGNAL(affected, COMSIG_SPECIES_HANDLE_CHEMICAL, chem, affected, seconds_per_tick, times_fired)
+	return SEND_SIGNAL(affected, COMSIG_SPECIES_HANDLE_CHEMICAL, chem, seconds_per_tick, times_fired)
 
 /datum/species/proc/check_species_weakness(obj/item, mob/living/attacker)
 	return 1 //This is not a boolean, it's the multiplier for the damage that the user takes from the item. The force of the item is multiplied by this value
@@ -1923,15 +1912,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * Returns a list, or null if they have no diet.
  */
 /datum/species/proc/get_species_diet()
-	if(TRAIT_NOHUNGER in inherent_traits)
+	if((TRAIT_NOHUNGER in inherent_traits) || !mutanttongue)
 		return null
 
-	var/list/food_flags = FOOD_FLAGS
+	var/static/list/food_flags = FOOD_FLAGS
+	var/obj/item/organ/internal/tongue/fake_tongue = mutanttongue
 
 	return list(
-		"liked_food" = bitfield_to_list(liked_food, food_flags),
-		"disliked_food" = bitfield_to_list(disliked_food, food_flags),
-		"toxic_food" = bitfield_to_list(toxic_food, food_flags),
+		"liked_food" = bitfield_to_list(initial(fake_tongue.liked_foodtypes), food_flags),
+		"disliked_food" = bitfield_to_list(initial(fake_tongue.disliked_foodtypes), food_flags),
+		"toxic_food" = bitfield_to_list(initial(fake_tongue.toxic_foodtypes), food_flags),
 	)
 
 /**
