@@ -191,7 +191,7 @@
 		fire_sound = 'sound/items/syringeproj.ogg'
 	else
 		fired_projectile = new /obj/projectile/beam(loc)
-		fired_projectile.icon = 'icons/effects/genetics.dmi'
+		fired_projectile.icon = 'icons/mob/effects/genetics.dmi'
 		fired_projectile.icon_state = "eyelasers"
 		fire_sound = 'sound/weapons/taser.ogg'
 

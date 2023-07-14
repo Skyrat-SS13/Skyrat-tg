@@ -28,8 +28,6 @@
 	meat = /obj/item/food/meat/slab/human/mutant/lizard
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	exotic_bloodtype = "L"
-	disliked_food = GRAIN | DAIRY | CLOTH | GROSS
-	liked_food = GORE | MEAT | SEAFOOD | NUTS | BUGS
 	inert_mutation = /datum/mutation/human/firebreath
 	death_sound = 'sound/voice/lizard/deathsound.ogg'
 	wing_types = list(/obj/item/organ/external/wings/functional/dragon)
@@ -179,8 +177,8 @@ Lizard subspecies: SILVER SCALED
 	)
 	mutantlungs = null
 	damage_modifier = 10 //very light silvery scales soften blows
-	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: species_language_holder = /datum/language_holder/lizard/silver
-	mutanttongue = /obj/item/organ/internal/tongue/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
+	species_language_holder = /datum/language_holder/lizard/silver
+	mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	examine_limb_id = SPECIES_LIZARD
 	///stored mutcolor for when we turn back off of a silverscale.
