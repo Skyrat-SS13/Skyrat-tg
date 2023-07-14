@@ -17,10 +17,6 @@ export const GENDERS = {
   },
 
   [Gender.Other]: {
-<<<<<<< HEAD
-    icon: 'question', // SKYRAT EDIT CHANGE - ORIGINAL: icon: "tg-non-binary"
-    text: 'Other',
-=======
     icon: 'transgender',
     text: 'They/Them',
   },
@@ -28,6 +24,5 @@ export const GENDERS = {
   [Gender.Other2]: {
     icon: 'neuter',
     text: 'It/Its',
->>>>>>> 823b9a53a59 (Adds support for it/its pronouns (#76799))
   },
 };

@@ -626,16 +626,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!has_dna())
 		return
 
-<<<<<<< HEAD
-	switch(deconstruct_block(get_uni_identity_block(dna.unique_identity, DNA_GENDER_BLOCK), 3))
-=======
 	//Always plural gender if agender
 	if(HAS_TRAIT(src, TRAIT_AGENDER))
 		gender = PLURAL
 		return
 
 	switch(deconstruct_block(get_uni_identity_block(dna.unique_identity, DNA_GENDER_BLOCK), GENDERS))
->>>>>>> 823b9a53a59 (Adds support for it/its pronouns (#76799))
 		if(G_MALE)
 			gender = MALE
 		if(G_FEMALE)
