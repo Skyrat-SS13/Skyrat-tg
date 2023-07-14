@@ -18,9 +18,6 @@
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	toxic_food = DAIRY | MEAT
-	disliked_food = RAW | CLOTH
-	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 0.75
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -103,6 +100,9 @@
 		/datum/language/nekomimetic,
 		/datum/language/skrell,
 	))
+	liked_foodtypes = TOXIC | FRUIT | VEGETABLES
+	disliked_foodtypes = RAW | CLOTH
+	toxic_foodtypes = DAIRY | MEAT
 
 /obj/item/organ/internal/tongue/skrell/get_possible_languages()
 	return languages_possible_skrell

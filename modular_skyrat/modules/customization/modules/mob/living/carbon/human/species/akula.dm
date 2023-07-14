@@ -18,6 +18,7 @@
 	)
 	eyes_icon = 'modular_skyrat/modules/organs/icons/akula_eyes.dmi'
 	mutanteyes = /obj/item/organ/internal/eyes/akula
+	mutanttongue = /obj/item/organ/internal/tongue/akula
 	species_traits = list(
 		MUTCOLORS,
 	)
@@ -37,9 +38,6 @@
 	)
 	outfit_important_for_life = /datum/outfit/akula
 	payday_modifier = 0.75
-	liked_food = SEAFOOD | RAW
-	disliked_food = CLOTH | DAIRY
-	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
@@ -106,6 +104,13 @@
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
 	eyes_layer = HAIR_LAYER-0.1
+
+
+/obj/item/organ/internal/tongue/akula
+	liked_foodtypes = SEAFOOD | RAW
+	disliked_foodtypes = CLOTH | DAIRY
+	toxic_foodtypes = TOXIC
+
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
 	var/datum/body_marking_set/body_marking_set = GLOB.body_marking_sets["Akula"]
