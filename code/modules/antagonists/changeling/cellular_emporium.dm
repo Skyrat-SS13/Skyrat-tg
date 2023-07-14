@@ -62,46 +62,10 @@
 	var/list/data = list()
 
 	data["can_readapt"] = changeling.can_respec
-<<<<<<< HEAD
-
-	var/genetic_points_remaining = changeling.genetic_points
-	data["genetic_points_remaining"] = genetic_points_remaining
-
-	var/list/abilities = list()
-	for(var/datum/action/changeling/ability_path as anything in changeling.all_powers)
-
-		var/dna_cost = initial(ability_path.dna_cost)
-
-		if(dna_cost < 0)
-			continue
-
-		var/list/ability_data = list()
-		ability_data["name"] = initial(ability_path.name)
-		ability_data["desc"] = initial(ability_path.desc)
-		ability_data["path"] = ability_path
-		ability_data["helptext"] = initial(ability_path.helptext)
-		ability_data["owned"] = !!changeling.purchased_powers[ability_path]
-		ability_data["dna_cost"] = dna_cost
-
-		var/can_purchase = TRUE
-		if(initial(ability_path.req_absorbs) > changeling.true_absorbs)
-			can_purchase = FALSE
-		if(initial(ability_path.req_dna) > changeling.absorbed_count)
-			can_purchase = FALSE
-		if(dna_cost > 0 && dna_cost > genetic_points_remaining)
-			can_purchase = FALSE
-
-		ability_data["can_purchase"] = can_purchase
-
-		abilities += list(ability_data)
-
-	data["abilities"] = abilities
-=======
 	data["owned_abilities"] = assoc_to_keys(changeling.purchased_powers)
 	data["genetic_points_count"] = changeling.genetic_points
 	data["absorb_count"] = changeling.true_absorbs
 	data["dna_count"] = changeling.absorbed_count
->>>>>>> 810a80561b8 (Changeling emporium QoL (#76801))
 
 	return data
 
