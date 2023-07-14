@@ -19,9 +19,6 @@
 	eyes_icon = 'modular_skyrat/modules/organs/icons/akula_eyes.dmi'
 	mutanteyes = /obj/item/organ/internal/eyes/akula
 	mutanttongue = /obj/item/organ/internal/tongue/akula
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -29,6 +26,7 @@
 		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING,
 		TRAIT_SLICK_SKIN,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()

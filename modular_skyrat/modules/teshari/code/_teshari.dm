@@ -6,15 +6,13 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
-	species_traits = list(
-		MUTCOLORS,
-		NO_UNDERWEAR,
-		HAS_MARKINGS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
+		TRAIT_HAS_MARKINGS,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,

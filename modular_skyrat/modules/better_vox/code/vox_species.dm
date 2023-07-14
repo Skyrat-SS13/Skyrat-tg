@@ -5,14 +5,12 @@
 	can_augment = FALSE
 	body_size_restricted = TRUE
 	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID
 	mutantlungs = /obj/item/organ/internal/lungs/nitrogen/vox

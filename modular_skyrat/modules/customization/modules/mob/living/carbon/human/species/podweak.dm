@@ -16,13 +16,11 @@
 	name = "Podperson"
 	id = SPECIES_PODPERSON_WEAK
 	examine_limb_id = SPECIES_PODPERSON
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 
 	always_customizable = FALSE
