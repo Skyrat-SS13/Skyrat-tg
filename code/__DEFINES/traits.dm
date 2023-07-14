@@ -140,6 +140,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESTRAINED "restrained"
 /// Doesn't miss attacks
 #define TRAIT_PERFECT_ATTACKER "perfect_attacker"
+///Recolored by item/greentext
+#define TRAIT_GREENTEXT_CURSED "greentext_curse"
 #define TRAIT_INCAPACITATED "incapacitated"
 /// In some kind of critical condition. Is able to succumb.
 #define TRAIT_CRITICAL_CONDITION "critical-condition"
@@ -316,6 +318,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WEB_WEAVER "web_weaver"
 /// Can navigate the web without getting stuck
 #define TRAIT_WEB_SURFER "web_surfer"
+/// A web is being spun on this turf presently
+#define TRAIT_SPINNING_WEB_TURF "spinning_web_turf"
 #define TRAIT_ABDUCTOR_TRAINING "abductor-training"
 #define TRAIT_ABDUCTOR_SCIENTIST_TRAINING "abductor-scientist-training"
 #define TRAIT_SURGEON "surgeon"
@@ -519,6 +523,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
 #define TRAIT_BALLMER_SCIENTIST "ballmer_scientist"
 #define TRAIT_MAINTENANCE_METABOLISM "maintenance_metabolism"
+#define TRAIT_CORONER_METABOLISM "coroner_metabolism"
 
 //LUNG TRAITS
 /// Lungs always breathe normally when in vacuum/space.
@@ -570,6 +575,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RADSTORM_IMMUNE "radstorm_immune"
 #define TRAIT_VOIDSTORM_IMMUNE "voidstorm_immune"
 #define TRAIT_WEATHER_IMMUNE "weather_immune" //Immune to ALL weather effects.
+
+/// Cannot be grabbed by goliath tentacles
+#define TRAIT_TENTACLE_IMMUNE "tentacle_immune"
 
 //non-mob traits
 /// Used for limb-based paralysis, where replacing the limb will fix it.
@@ -775,6 +783,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Trait given to a mob with a ckey currently in a temporary body, allowing people to know someone will re-enter the round later.
 #define TRAIT_MIND_TEMPORARILY_GONE "temporarily_gone"
 
+/// Trait given to mechs that can have orebox functionality on movement
+#define TRAIT_OREBOX_FUNCTIONAL "orebox_functional"
+
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define UNCONSCIOUS_TRAIT "unconscious"
@@ -857,11 +868,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SWORDPLAY_TRAIT "swordplay"
 /// Trait given by being recruited as a nuclear operative
 #define NUKE_OP_MINION_TRAIT "nuke-op-minion"
+/// Trait given by mech equipment
+#define TRAIT_MECH_EQUIPMENT(equipment_type) "mech_equipment_[equipment_type]"
 
 ///generic atom traits
 /// Trait from [/datum/element/rust]. Its rusty and should be applying a special overlay to denote this.
 #define TRAIT_RUSTY "rust_trait"
-///stops someone from splashing their reagent_container on an object with this trait
+/// Stops someone from splashing their reagent_container on an object with this trait
 #define TRAIT_DO_NOT_SPLASH "do_not_splash"
 /// Marks an atom when the cleaning of it is first started, so that the cleaning overlay doesn't get removed prematurely
 #define TRAIT_CURRENTLY_CLEANING "currently_cleaning"

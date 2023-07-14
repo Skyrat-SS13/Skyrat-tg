@@ -67,11 +67,11 @@
 	icon_state = "[base_icon_state]_[current_color]_[toy_on? "on" : "off"]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/vibroring/equipped(mob/living/carbon/human/user, slot, initial)
+/obj/item/clothing/sextoy/vibroring/lewd_equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
-	if(istype(user))
+	if(!istype(user))
 		return
-	if(src == user.penis)
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/vibroring/dropped(mob/user, silent)

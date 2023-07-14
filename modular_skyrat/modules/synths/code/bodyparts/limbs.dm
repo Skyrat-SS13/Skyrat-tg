@@ -12,6 +12,7 @@
 	burn_reduction = 0
 	brute_modifier = SYNTH_BRUTE_MODIFIER
 	burn_modifier = SYNTH_BURN_MODIFIER
+	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
