@@ -71,8 +71,21 @@
 
 	SSliquids.add_active_turf(src)
 
+/**
+ * Adds liquid to a turf from a given reagents list.
+ *
+ * Tries to add liquid to an atom's turf location. The atom could also be the turf itself.
+ * Calls add_liquid_list() on this turf if it exists.
+ *
+ * Arguments:
+ * * datum/reagents/giver - the reagents to add to the liquid_turf
+ * * no_react - whether or not we want to react immediately upon adding the reagents
+ * * reagent_multiplier - multiplies the individual reagents' volumes by this value
+ * * atom/thrown_from - the atom that the liquid is being thrown from (like a beaker). Null by default.
+ *
+ */
 /atom/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1, atom/thrown_from = null)
-	// if we are throwing something, we will try to bounce the liquid off of it instead of placing it inside the closed turf
+	// if we are throwing something, see if we should bounce the liquid off the target atom
 	if(thrown_from)
 		var/turf/bounced_to = throw_back_liquid(thrown_from)
 		if(bounced_to)
