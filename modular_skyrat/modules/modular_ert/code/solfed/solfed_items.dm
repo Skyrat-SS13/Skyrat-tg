@@ -99,10 +99,10 @@
 	name = "advanced atmospherics uniform"
 	desc = "A jumpsuit worn by advanced atmospherics crews."
 	icon_state = "util_eng"
-	armor_type = /datum/armor/atmos_adv
+	armor_type = /datum/armor/clothing_under/atmos_adv
 	can_adjust = FALSE
 
-/datum/armor/atmos_adv
+/datum/armor/clothing_under/atmos_adv
 	bio = 40
 	fire = 70
 	acid = 70
