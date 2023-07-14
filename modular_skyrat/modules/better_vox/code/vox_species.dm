@@ -7,10 +7,6 @@
 	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -27,7 +23,6 @@
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Primalis Tail",
 	)
-	liked_food = MEAT | FRIED
 	payday_modifier = 0.75
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox

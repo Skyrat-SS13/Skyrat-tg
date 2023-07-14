@@ -60,4 +60,10 @@
 /obj/item/organ/internal/eyes/low_light_adapted
 	color_cutoffs = list(30, 15, 15)
 
+
+// Tongue
+/obj/item/organ/internal/tongue/cat/primitive
+	liked_foodtypes = SEAFOOD | MEAT | GORE
+
+
 #undef GAS_TOLERANCE

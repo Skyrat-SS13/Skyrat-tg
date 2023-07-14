@@ -156,7 +156,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "aB" = (
-/obj/machinery/vending/imported/tizirian,
+/obj/machinery/vending/imported/tiziran,
 /obj/effect/turf_decal/tile/bar/opposingcorners{
 	dir = 8
 	},
@@ -3781,15 +3781,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"qa" = (
-/obj/machinery/griddle,
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/turf/open/floor/iron/kitchen{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "qc" = (
 /obj/structure/bed/double{
 	dir = 1
@@ -4095,9 +4086,7 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "rj" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
@@ -4453,10 +4442,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "sZ" = (
-/obj/machinery/oven,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -6013,9 +6002,7 @@
 	name = "Interrogation Room shutters control";
 	req_access = list("syndicate")
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "AX" = (
@@ -6358,6 +6345,10 @@
 "CH" = (
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
+"CJ" = (
+/obj/machinery/oven/range,
+/turf/open/floor/iron/white/textured_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "CS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -6972,9 +6963,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "FD" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /obj/machinery/button/door/directional/north{
 	desc = "Keep out the paperwork.";
 	id = "scorpliaison";
@@ -7612,9 +7601,7 @@
 /obj/structure/chair/sofa/bench/corner{
 	dir = 1
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-18"
-	},
+/obj/item/kirbyplants/organic/plant18,
 /obj/machinery/light/cold/directional/south,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/syndicate_access,
@@ -8180,10 +8167,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
-"Lr" = (
-/obj/machinery/oven,
-/turf/open/floor/iron/white/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ls" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 4
@@ -9232,6 +9215,15 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
+"PB" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/griddle,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "PM" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/purple/corner{
@@ -9401,7 +9393,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 6
 	},
-/mob/living/simple_animal/pet/fox{
+/mob/living/basic/pet/fox{
 	name = "Rhials"
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -9535,9 +9527,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "QM" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-10"
-	},
+/obj/item/kirbyplants/organic/plant10,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
 	},
@@ -9946,7 +9936,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/machinery/modular_computer/console/preset/curator,
+/obj/machinery/modular_computer/preset/curator,
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "Sx" = (
@@ -11253,8 +11243,8 @@
 "Xx" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
-	pixel_y = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /obj/structure/sign/poster/contraband/moffuchis_pizza/directional/east,
 /obj/effect/turf_decal/siding/dark{
@@ -11378,8 +11368,8 @@
 /obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/storage/box/beakers{
 	pixel_x = 8;
@@ -11694,9 +11684,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -12156,7 +12144,7 @@ BN
 PP
 lJ
 kF
-Lr
+CJ
 dI
 ct
 lb
@@ -14222,7 +14210,7 @@ xk
 Od
 Ui
 pO
-sZ
+PB
 Cf
 tT
 SG
@@ -14277,7 +14265,7 @@ bw
 bw
 bw
 bw
-qa
+sZ
 Cf
 Cf
 aC

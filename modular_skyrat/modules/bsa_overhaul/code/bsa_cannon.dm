@@ -131,7 +131,7 @@
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
-	icon = 'icons/obj/lavaland/cannon.dmi'
+	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.
 	pixel_y = -32
@@ -330,7 +330,7 @@
 	system_state = BSA_SYSTEM_RELOADING
 	set_light(0)
 	STOP_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/ready_cannon), BSA_RELOAD_TIME)
+	addtimer(CALLBACK(src, PROC_REF(ready_cannon)), BSA_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
 	if(capacitor_power < BSA_FIRE_POWER_THRESHOLD)

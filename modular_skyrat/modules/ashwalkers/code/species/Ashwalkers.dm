@@ -1,7 +1,13 @@
 /datum/species/lizard/ashwalker
 	mutanteyes = /obj/item/organ/internal/eyes/night_vision/ashwalker
-	burnmod = 0.8
-	brutemod = 0.9
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/lizard/ashwalker,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/lizard/ashwalker,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/lizard/ashwalker,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/lizard/ashwalker,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/lizard/ashwalker,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard/ashwalker,
+	)
 
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/carbon_target, datum/species/old_species)
 	. = ..()
@@ -50,7 +56,7 @@
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
 	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, PROC_REF(check_evolution))
-	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(human_target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER
@@ -68,7 +74,7 @@
 			ADD_TRAIT(human_target, TRAIT_ASHSTORM_IMMUNE, REF(src))
 			to_chat(human_target, span_notice("The biting wind seems to sting less..."))
 		if(2)
-			species_target.armor += 10
+			species_target.damage_modifier += 10
 			to_chat(human_target, span_notice("Your body seems to be sturdier..."))
 		if(3)
 			var/obj/item/bodypart/arm/left/left_arm = human_target.get_bodypart(BODY_ZONE_L_ARM)

@@ -59,6 +59,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Rainbow Jumpskirt"
 	item_path = /obj/item/clothing/under/color/jumpskirt/rainbow
 
+/datum/loadout_item/under/jumpsuit/akula_wetsuit
+	name = "Shoredress Wetsuit"
+	item_path = /obj/item/clothing/under/akula_wetsuit
+
 /datum/loadout_item/under/jumpsuit/impcap
 	name = "Captain's Naval Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
@@ -340,6 +344,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/pentagramdress
 	name = "Recolorable Pentagram Strapped Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/pentagram
+
+/datum/loadout_item/under/miscellaneous/jacarta_dress
+	name = "Jacarta Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/jute
+
+/datum/loadout_item/under/miscellaneous/striped_skirt
+	name = "Red Striped Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/striped_skirt
+
+/datum/loadout_item/under/miscellaneous/red_skirt
+	name = "Red Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/red_skirt
+
+/datum/loadout_item/under/miscellaneous/black_skirt
+	name = "Black Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/black_skirt
 
 /datum/loadout_item/under/miscellaneous/swept_skirt
 	name = "Swept Skirt"
@@ -858,6 +878,30 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/pencil/green
 	name = "Green Pencilskirt"
 	item_path = /obj/item/clothing/under/suit/skyrat/pencil/green
+
+/datum/loadout_item/under/formal/azulea_oldblood
+	name = " Oldblood's Royal regalia"
+	item_path = /obj/item/clothing/under/rank/azulean/old_blood
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
+
+/datum/loadout_item/under/formal/azulea_oldblood/skirt
+	name = " Oldblood's Royal regalia (Skirt)"
+	item_path = /obj/item/clothing/under/rank/azulean/old_blood/skirt
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
+
+/datum/loadout_item/under/formal/azulea_upstart
+	name = "Upstart's Noble Getup"
+	item_path = /obj/item/clothing/under/rank/azulean/upstart
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
+
+/datum/loadout_item/under/formal/azulea_upstart/skirt
+	name = "Upstart's Noble Getup (Skirt)"
+	item_path = /obj/item/clothing/under/rank/azulean/upstart/skirt
+	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list(SPECIES_AKULA)
 
 /// DONATOR
 /datum/loadout_item/under/donator

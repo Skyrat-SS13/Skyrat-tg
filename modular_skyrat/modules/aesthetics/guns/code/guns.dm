@@ -44,6 +44,11 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
+/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -83,7 +88,7 @@
 	can_suppress = FALSE
 
 /obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -280,7 +285,7 @@
 	weapon_weight = WEAPON_LIGHT
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -329,7 +334,7 @@
 	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
 	It still feels uncomfortably moist."
 
-/obj/item/gun/ballistic/rifle/boltaction/quartermaster
+/obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper FTU 'Archangel' precision rifle"
 	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
@@ -340,13 +345,19 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
+/obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
+	bolt_locked = TRUE // so the bolt starts visibly open
+	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 8
-	multiload = TRUE
+
+/obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+	start_empty = TRUE
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
@@ -364,7 +375,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"

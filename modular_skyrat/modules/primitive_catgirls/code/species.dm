@@ -18,14 +18,13 @@
 
 	mutantlungs = /obj/item/organ/internal/lungs/icebox_adapted
 	mutanteyes = /obj/item/organ/internal/eyes/low_light_adapted
+	mutanttongue = /obj/item/organ/internal/tongue/cat/primitive
 
 	species_language_holder = /datum/language_holder/primitive_felinid
 
 	bodytemp_normal = 270 // If a normal human gets hugged by one its gonna feel cold
 	bodytemp_heat_damage_limit = 283 // To them normal station atmos would be sweltering
 	bodytemp_cold_damage_limit = 213 // Man up bro its not even that cold out here
-
-	liked_food = SEAFOOD | MEAT | GORE // Yum
 
 	inherent_traits = list(
 		TRAIT_VIRUSIMMUNE,
