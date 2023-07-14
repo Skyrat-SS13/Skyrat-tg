@@ -9,7 +9,7 @@
 GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 /obj/machinery/conveyor
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "conveyor_map"
 	base_icon_state = "conveyor"
 	name = "conveyor belt"
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor_switch
 	name = "conveyor switch"
 	desc = "A conveyor control switch."
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "switch-off"
 	base_icon_state = "switch"
 	processing_flags = START_PROCESSING_MANUALLY
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/item/conveyor_switch_construct
 	name = "conveyor switch assembly"
 	desc = "A conveyor control switch assembly."
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "switch-off"
 	w_class = WEIGHT_CLASS_BULKY
 	// ID of the switch-in-the-making, to link conveyor belts to it.
@@ -497,7 +497,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/item/stack/conveyor
 	name = "conveyor belt assembly"
 	desc = "A conveyor belt assembly."
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "conveyor_construct"
 	max_amount = 30
 	singular_name = "conveyor belt"

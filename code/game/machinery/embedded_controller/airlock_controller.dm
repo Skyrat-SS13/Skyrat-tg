@@ -5,8 +5,13 @@
 #define AIRLOCK_STATE_DEPRESSURIZE "depressurize"
 #define AIRLOCK_STATE_OUTOPEN "outopen"
 
+<<<<<<< HEAD
 /obj/machinery/airlock_controller // SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon = 'icons/obj/airlock_machines.dmi'
+=======
+/obj/machinery/airlock_controller
+	icon = 'icons/obj/machines/wallmounts.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "airlock_control_standby"
 	base_icon_state = "airlock_control"
 

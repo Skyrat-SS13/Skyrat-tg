@@ -345,8 +345,13 @@
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
+<<<<<<< HEAD
 	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
 	icon = 'icons/obj/janitor.dmi'
+=======
+	desc = "It's a bucket."
+	icon = 'icons/obj/service/janitor.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"

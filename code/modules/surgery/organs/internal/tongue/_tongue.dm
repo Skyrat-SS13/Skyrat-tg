@@ -566,6 +566,11 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 /obj/item/organ/internal/tongue/mush
 	name = "mush-tongue-room"
 	desc = "You poof with this. Got it?"
+<<<<<<< HEAD
+=======
+	icon = 'icons/obj/service/hydroponics/seeds.dmi'
+	icon_state = "mycelium-angel"
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	say_mod = "poofs"
 
 	icon = 'icons/obj/hydroponics/seeds.dmi'

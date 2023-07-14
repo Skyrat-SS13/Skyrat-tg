@@ -1,8 +1,12 @@
 
 /obj/item/kirbyplants
 	name = "potted plant"
+<<<<<<< HEAD
 	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
+=======
+	icon = 'icons/obj/fluff/flora/plants.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
 	desc = "A little bit of nature contained in a pot."
@@ -102,12 +106,12 @@
 	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE - ORIGINAL:random_plant_states += "applebush"
 
 /obj/item/kirbyplants/random
-	icon = 'icons/obj/flora/_flora.dmi'
+	icon = 'icons/obj/fluff/flora/_flora.dmi'
 	icon_state = "random_plant"
 
 /obj/item/kirbyplants/random/Initialize(mapload)
 	. = ..()
-	icon = 'icons/obj/flora/plants.dmi'
+	icon = 'icons/obj/fluff/flora/plants.dmi'
 	randomize_base_icon_state()
 
 //Handles randomizing the icon during initialize()

@@ -7,7 +7,11 @@
 	anchored = FALSE
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN
+<<<<<<< HEAD
 	icon = 'icons/obj/atmospherics/atmos.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/pipes_n_cables/atmos.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"

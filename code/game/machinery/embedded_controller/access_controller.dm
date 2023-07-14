@@ -37,8 +37,13 @@
 /obj/machinery/door_buttons/proc/removeMe()
 
 
+<<<<<<< HEAD
 /obj/machinery/door_buttons/access_button//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon = 'icons/obj/airlock_machines.dmi'
+=======
+/obj/machinery/door_buttons/access_button
+	icon = 'icons/obj/machines/wallmounts.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "access_button_standby"
 	base_icon_state = "access_button"
 	name = "access button"
@@ -100,7 +105,7 @@
 
 
 /obj/machinery/door_buttons/airlock_controller
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "access_control_standby"
 	base_icon_state = "access_control"
 	name = "access console"

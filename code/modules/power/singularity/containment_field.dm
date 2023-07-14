@@ -3,7 +3,11 @@
 /obj/machinery/field/containment
 	name = "containment field"
 	desc = "An energy field."
+<<<<<<< HEAD
 	icon = 'icons/obj/engine/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/machines/engine/singularity.dmi'
+>>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "Contain_F"
 	density = FALSE
 	move_resist = INFINITY
