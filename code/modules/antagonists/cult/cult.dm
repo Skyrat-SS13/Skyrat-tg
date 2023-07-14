@@ -50,54 +50,6 @@
 
 	return ..()
 
-/datum/antagonist/cult/get_preview_icon()
-	var/icon/icon = render_preview_outfit(preview_outfit)
-
-	// The longsword is 64x64, but getFlatIcon crunches to 32x32.
-	// So I'm just going to add it in post, screw it.
-
-	// Center the dude, because item icon states start from the center.
-	// This makes the image 64x64.
-	icon.Crop(-15, -15, 48, 48)
-
-	var/obj/item/melee/cultblade/longsword = new
-	icon.Blend(icon(longsword.lefthand_file, longsword.inhand_icon_state), ICON_OVERLAY)
-	qdel(longsword)
-
-	// Move the guy back to the bottom left, 32x32.
-	icon.Crop(17, 17, 48, 48)
-
-	return finish_preview_icon(icon)
-
-/datum/antagonist/cult/proc/equip_cultist(metal=TRUE)
-	var/mob/living/carbon/H = owner.current
-	if(!istype(H))
-		return
-	. += cult_give_item(/obj/item/melee/cultblade/dagger, H)
-	if(metal)
-		. += cult_give_item(/obj/item/stack/sheet/runed_metal/ten, H)
-	to_chat(owner, "These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
-
-
-/datum/antagonist/cult/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/mob)
-	var/list/slots = list(
-		"backpack" = ITEM_SLOT_BACKPACK,
-		"left pocket" = ITEM_SLOT_LPOCKET,
-		"right pocket" = ITEM_SLOT_RPOCKET
-	)
-
-	var/T = new item_path(mob)
-	var/item_name = initial(item_path.name)
-	var/where = mob.equip_in_one_of_slots(T, slots, indirect_action = TRUE)
-	if(!where)
-		to_chat(mob, span_userdanger("Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1)."))
-		return FALSE
-	else
-		to_chat(mob, span_danger("You have a [item_name] in your [where]."))
-		if(where == "backpack")
-			mob.back.atom_storage?.show_contents(mob)
-		return TRUE
-
 /datum/antagonist/cult/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/current = owner.current || mob_override
