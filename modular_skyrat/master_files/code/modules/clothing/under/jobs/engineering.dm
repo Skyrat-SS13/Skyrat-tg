@@ -24,7 +24,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser
@@ -39,12 +39,11 @@
 	name = "chemical hazard jumpsuit"
 	desc = "A high visibility jumpsuit with additional protection from gas and chemical hazards, at the cost of less fire-proofing."
 	icon_state = "hazard_green"
-	armor_type = /datum/armor/skyrat_hazard_chem
+	armor_type = /datum/armor/clothing_under/skyrat_hazard_chem
 	resistance_flags = ACID_PROOF
 	alt_covers_chest = TRUE
 
-/datum/armor/skyrat_hazard_chem
-	bio = 10
+/datum/armor/clothing_under/skyrat_hazard_chem
 	fire = 20
 	acid = 60
 
@@ -52,14 +51,13 @@
 	name = "chemical hazard EMT jumpsuit"
 	desc = "An EMT jumpsuit used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"
-	armor_type = /datum/armor/hazard_chem_emt
+	armor_type = /datum/armor/clothing_under/hazard_chem_emt
 
 /*
 *	CHIEF ENGINEER
 */
 
-/datum/armor/hazard_chem_emt
-	bio = 10
+/datum/armor/clothing_under/hazard_chem_emt
 	fire = 10
 	acid = 50
 

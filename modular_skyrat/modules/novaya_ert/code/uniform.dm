@@ -7,13 +7,13 @@
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/uniform.dmi'
 	icon_state = "nri_soldier"
 	inhand_icon_state = "hostrench"
-	armor_type = /datum/armor/costume_nri
+	armor_type = /datum/armor/clothing_under/costume_nri
 	strip_delay = 50
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 	can_adjust = FALSE
 
-/datum/armor/costume_nri
+/datum/armor/clothing_under/costume_nri
 	melee = 10
 	fire = 30
 	acid = 30
