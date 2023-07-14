@@ -1438,12 +1438,11 @@
 	fully_replace_character_name(real_name, new_name)
 
 ///Show the language menu for this mob
-/mob/verb/open_language_menu()
+/mob/verb/open_language_menu_verb()
 	set name = "Open Language Menu"
 	set category = "IC"
 
-	var/datum/language_holder/H = get_language_holder()
-	H.open_language_menu(usr)
+	get_language_holder().open_language_menu(usr)
 
 ///Adjust the nutrition of a mob
 /mob/proc/adjust_nutrition(change) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
@@ -1473,6 +1472,11 @@
 	. = stat
 	stat = new_stat
 	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
+
+/// Proc used for custom metabolization of reagents, if any
+/mob/proc/reagent_check(datum/reagent/chem, seconds_per_tick, times_fired)
+	SHOULD_CALL_PARENT(TRUE)
+	return SEND_SIGNAL(src, COMSIG_MOB_REAGENT_CHECK, chem, seconds_per_tick, times_fired)
 
 /mob/vv_edit_var(var_name, var_value)
 	switch(var_name)
