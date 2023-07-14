@@ -44,6 +44,11 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
+/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -83,7 +88,7 @@
 	can_suppress = FALSE
 
 /obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -280,7 +285,7 @@
 	weapon_weight = WEAPON_LIGHT
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -370,7 +375,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"

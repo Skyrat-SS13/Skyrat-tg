@@ -3,9 +3,6 @@
 	id = SPECIES_TAJARAN
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

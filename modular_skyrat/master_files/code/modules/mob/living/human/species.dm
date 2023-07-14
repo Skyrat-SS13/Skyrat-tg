@@ -16,6 +16,7 @@
 		if ( \
 			(preference.relevant_mutant_bodypart in default_mutant_bodyparts) \
 			|| (preference.relevant_species_trait in species_traits) \
+			|| (preference.relevant_head_flag && check_head_flags(preference.relevant_head_flag)) \
 		)
 			features += preference.savefile_key
 
