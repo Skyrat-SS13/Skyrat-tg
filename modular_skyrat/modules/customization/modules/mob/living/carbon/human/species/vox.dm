@@ -25,7 +25,6 @@
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)
-	liked_food = MEAT | FRIED
 	payday_modifier = 0.75
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
