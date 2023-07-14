@@ -228,13 +228,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		dna.update_body_size()
 
 		dna.species.on_species_gain(src, old_species, pref_load)
-
-
-		if(ishuman(src))
-			qdel(language_holder)
-			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src)
-		update_atom_languages()
 		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 

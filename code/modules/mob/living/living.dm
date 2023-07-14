@@ -1133,6 +1133,10 @@
 			altered_grab_state-- //SKYRAT EDIT END
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
 		//SKYRAT EDIT ADDITION
+		// Akula grab resist
+		if(HAS_TRAIT(src, TRAIT_SLIPPERY))
+			resist_chance += AKULA_GRAB_RESIST_BONUS
+		// Oversized grab resist
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
 			resist_chance += OVERSIZED_GRAB_RESIST_BONUS
 		if(HAS_TRAIT(pulledby, TRAIT_OVERSIZED))
@@ -1140,6 +1144,17 @@
 		//SKYRAT EDIT END
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
+			//SKYRAT EDIT ADDITION
+			// Akula break-out flavor
+			if(HAS_TRAIT(src, TRAIT_SLIPPERY))
+				visible_message(span_cyan("[src] slips free of [pulledby]'s grip!"), \
+								span_cyan("You slip free of [pulledby]'s grip!"), null, null, pulledby)
+				to_chat(pulledby, span_cyan("[src] slips free of your grip!"))
+				playsound(loc, 'sound/misc/slip.ogg', 50, TRUE, -1)
+				log_combat(pulledby, src, "broke grab")
+				pulledby.stop_pulling()
+				return FALSE
+			//SKYRAT EDIT END
 			visible_message(span_danger("[src] breaks free of [pulledby]'s grip!"), \
 							span_danger("You break free of [pulledby]'s grip!"), null, null, pulledby)
 			to_chat(pulledby, span_warning("[src] breaks free of your grip!"))
@@ -1450,6 +1465,7 @@
 				/mob/living/basic/cow,
 				/mob/living/basic/giant_spider,
 				/mob/living/basic/giant_spider/hunter,
+				/mob/living/basic/mining/goliath,
 				/mob/living/basic/headslug,
 				/mob/living/basic/killer_tomato,
 				/mob/living/basic/lizard,
@@ -1457,12 +1473,12 @@
 				/mob/living/basic/pet/dog/breaddog,
 				/mob/living/basic/pet/dog/corgi,
 				/mob/living/basic/pet/dog/pug,
+				/mob/living/basic/pet/fox,
 				/mob/living/basic/statue,
 				/mob/living/basic/stickman,
 				/mob/living/basic/stickman/dog,
 				/mob/living/simple_animal/crab,
 				/mob/living/simple_animal/hostile/asteroid/basilisk/watcher,
-				/mob/living/simple_animal/hostile/asteroid/goliath/beast,
 				/mob/living/simple_animal/hostile/bear,
 				/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
 				/mob/living/simple_animal/hostile/gorilla,
@@ -1473,7 +1489,6 @@
 				/mob/living/simple_animal/parrot,
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/simple_animal/pet/cat/cak,
-				/mob/living/simple_animal/pet/fox,
 			)
 			new_mob = new picked_animal(loc)
 

@@ -437,6 +437,7 @@
 #define OFFSET_NECK "neck"
 #define OFFSET_HELD "held"
 #define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
+#define OFFSET_HAIR "hair" // Skyrat edit - addition - Akulas
 
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
@@ -820,6 +821,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
 /// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
 #define EXTERNAL_FRONT_OVER (1 << 5)
+/// Draws organ on the HEAD_LAYER, for things that need to be above hair but below hats.
+#define EXTERNAL_FRONT_ABOVE_HAIR (1 << 6)
 // SKYRAT EDIT END (not touching what comes next because we don't actually have to (nor want to))
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
@@ -873,6 +876,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define VOMIT_TOXIC 1
 /// The mob will vomit a purple color
 #define VOMIT_PURPLE 2
+/// The mob will vomit a nebula color
+#define VOMIT_NEBULA 3
 
 /// Possible value of [/atom/movable/buckle_lying]. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.
 #define NO_BUCKLE_LYING -1
@@ -966,3 +971,5 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Flag which stops you from attacking while observed
 #define NO_OBSERVED_ATTACKS (1<<2)
 
+/// Types of bullets that mining mobs take full damage from
+#define MINING_MOB_PROJECTILE_VULNERABILITY list(BRUTE)

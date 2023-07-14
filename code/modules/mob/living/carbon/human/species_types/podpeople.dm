@@ -5,7 +5,6 @@
 	id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
 	)
 	inherent_traits = list(
 		TRAIT_PLANT_SAFE,
@@ -16,7 +15,6 @@
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
 
-	burnmod = 1.25
 	heatmod = 1.5
 	payday_modifier = 0.75
 	meat = /obj/item/food/meat/slab/human/mutant/plant
@@ -48,6 +46,7 @@
 	return ..()
 
 /datum/species/pod/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat == DEAD)
 		return
 
@@ -66,14 +65,13 @@
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(brute = 1 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
-	..()
 
-/datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
+/datum/species/pod/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
+	. = ..()
+	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
+		return
 	if(chem.type == /datum/reagent/toxin/plantbgone)
-		H.adjustToxLoss(3 * REM * seconds_per_tick)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
-		return TRUE
-	return ..()
+		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()

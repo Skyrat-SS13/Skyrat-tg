@@ -159,10 +159,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!try_speak(original_message, ignore_spam, forced, filterproof))
 		return
 
-	language = message_mods[LANGUAGE_EXTENSION]
-
-	if(!language)
-		language = get_selected_language()
+	language = message_mods[LANGUAGE_EXTENSION] || get_selected_language()
 
 	var/succumbed = FALSE
 
@@ -344,7 +341,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		is_speaker_whispering = TRUE
 
 	var/list/listening = get_hearers_in_view(message_range + whisper_range, source)
-
 	if(client) //client is so that ghosts don't have to listen to mice
 		for(var/mob/player_mob as anything in GLOB.player_list)
 			if(QDELETED(player_mob)) //Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
@@ -397,7 +393,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(length(tts_filter) > 0)
 			filter += tts_filter.Join(",")
 
-		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(tts_message_to_use), message_language, voice, filter.Join(","), listened, message_range = message_range)
+		INVOKE_ASYNC(SStts, TYPE_PROC_REF(/datum/controller/subsystem/tts, queue_tts_message), src, html_decode(tts_message_to_use), message_language, voice, filter.Join(","), listened, message_range = message_range, pitch = pitch, silicon = tts_silicon_voice_effect)
 
 	var/image/say_popup = image('icons/mob/effects/talk.dmi', src, "[bubble_type][talk_icon_state]", FLY_LAYER)
 	SET_PLANE_EXPLICIT(say_popup, ABOVE_GAME_PLANE, src)
@@ -565,8 +561,3 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!message)
 		return
 	say("#[message]", bubble_type, spans, sanitize, language, ignore_spam, forced, filterproof)
-
-/mob/living/get_language_holder(get_minds = TRUE)
-	if(get_minds && mind)
-		return mind.get_language_holder()
-	. = ..()
