@@ -112,7 +112,7 @@
 	name = "\improper SolFed Marshal uniform"
 	desc = "A turtleneck and cargo pants worn by SolFed's civil Marshals."
 	icon_state = "sol_marshal"
-	armor_type = /datum/armor/rank_security
+	armor_type = /datum/armor/clothing_under/rank_security
 
 //Marshal Helmet - part of their Evasion kit
 /obj/item/clothing/head/helmet/sol
