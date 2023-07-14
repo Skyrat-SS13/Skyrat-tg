@@ -252,11 +252,6 @@
 	if(reac_volume >= 5 && HAS_TRAIT_FROM(patient, TRAIT_HUSK, BURN) && patient.getFireLoss() < UNHUSK_DAMAGE_THRESHOLD) //One carp yields 12u rezadone.
 		patient.cure_husk(BURN)
 		patient.visible_message(span_nicegreen("[patient]'s body rapidly absorbs moisture from the environment, taking on a more healthy appearance."))
-	// SKYRAT EDIT ADDITION BEGIN - non-modular changeling balancing
-	if(HAS_TRAIT_FROM(exposed_mob, TRAIT_HUSK, CHANGELING_DRAIN) && (patient.reagents.get_reagent_amount(/datum/reagent/medicine/rezadone) + reac_volume >= SYNTHFLESH_LING_UNHUSK_AMOUNT))//Costs a little more than a normal husk
-		patient.cure_husk(CHANGELING_DRAIN)
-		patient.visible_message("<span class='nicegreen'>A rubbery liquid coats [patient]'s tissues. [patient] looks a lot healthier!")
-	// SKYRAT EDIT ADDITION END
 
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
@@ -375,9 +370,7 @@
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
-	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	metabolizer.clear_alert("numbed") // SKYRAT EDIT ADD END
-	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 /datum/reagent/medicine/omnizine
 	name = "Omnizine"
@@ -646,13 +639,9 @@
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/affected_mob)
 	..()
 	affected_mob.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END -- i should probably have worked these both into a status effect, maybe
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/affected_mob)
 	affected_mob.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	affected_mob.clear_alert("numbed") // SKYRAT EDIT ADD END
 	..()
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
@@ -1201,9 +1190,6 @@
 	exposed_human.hair_color = "#CC22FF"
 	exposed_human.facial_hair_color = "#CC22FF"
 	exposed_human.update_body_parts()
-	// SKYRAT EDIT ADDITION BEGIN
-	exposed_human.update_mutant_bodyparts(force_update=TRUE)
-	// SKYRAT EDIT END
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	affected_mob.adjustBruteLoss(-1.5 * REM * seconds_per_tick, FALSE, required_bodytype = affected_bodytype)
