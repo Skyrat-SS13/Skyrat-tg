@@ -17,7 +17,7 @@
 	base_icon_state = "default"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
-	armor_type = /datum/armor/wetsuit_under
+	armor_type = /datum/armor/clothing_under/wetsuit
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	can_adjust = FALSE
 	female_sprite_flags = NO_FEMALE_UNIFORM
@@ -89,9 +89,8 @@
 		user.add_overlay(tail_overlay)
 
 	/// Suit armor
-/datum/armor/wetsuit_under
+/datum/armor/clothing_under/wetsuit
 	bio = 10
-	wound = 5
 
 /obj/item/clothing/under/akula_wetsuit/job
 	/// Our large examine text
@@ -120,9 +119,9 @@
 		Additionally, the materials used to construct this wetsuit have rendered it extremely hardy against corrosive liquids and gasses."
 	icon_state = "engi"
 	base_icon_state = "engi"
-	armor_type = /datum/armor/wetsuit_under/engineering
+	armor_type = /datum/armor/clothing_under/wetsuit/engineering
 
-/datum/armor/wetsuit_under/engineering
+/datum/armor/clothing_under/wetsuit/engineering
 	fire = 95
 	acid = 95
 
@@ -136,9 +135,9 @@
 		and the temperature-control pumps are some of the best available to those that aren't royalty."
 	icon_state = "cargo"
 	base_icon_state = "cargo"
-	armor_type = /datum/armor/wetsuit_under/cargo
+	armor_type = /datum/armor/clothing_under/wetsuit/cargo
 
-/datum/armor/wetsuit_under/cargo
+/datum/armor/clothing_under/wetsuit/cargo
 	fire = 40
 
 /obj/item/clothing/under/akula_wetsuit/job/science
@@ -149,9 +148,9 @@
 		such as abandoned naval or land-based mines, and features an inbuilt external sterilization field to protect against biohazards typically found in strange places."
 	icon_state = "sci"
 	base_icon_state = "sci"
-	armor_type = /datum/armor/wetsuit_under/science
+	armor_type = /datum/armor/clothing_under/wetsuit/science
 
-/datum/armor/wetsuit_under/science
+/datum/armor/clothing_under/wetsuit/science
 	bomb = 40
 	acid = 95
 
@@ -163,9 +162,9 @@
 		This has made it convenient for the Company's medical division, let alone the plush interior to allow for greater comfortable standing hours."
 	icon_state = "medical"
 	base_icon_state = "medical"
-	armor_type = /datum/armor/wetsuit_under/medical
+	armor_type = /datum/armor/clothing_under/wetsuit/medical
 
-/datum/armor/wetsuit_under/medical
+/datum/armor/clothing_under/wetsuit/medical
 	acid = 95
 	bio = 95
 
@@ -177,7 +176,7 @@
 		The systems inside have been reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect."
 	icon_state = "sec"
 	base_icon_state = "sec"
-	armor_type = /datum/armor/rank_security
+	armor_type = /datum/armor/clothing_under/rank_security
 
 /obj/item/clothing/under/akula_wetsuit/job/command
 	name = "command Shoredress wetsuit"
@@ -187,6 +186,7 @@
 			The temperature systems have been upgraded, as well as the choice to use more comfortable fabrics in the construction."
 	icon_state = "command"
 	base_icon_state = "command"
+	armor_type = /datum/armor/clothing_under/rank_security
 
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit
