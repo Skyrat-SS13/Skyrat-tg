@@ -12,8 +12,6 @@
 		return ..()
 
 	var/initial_cell_charge = cell.charge
-	
-	initial_cell_charge = get_charge_ratio()
 
 	. = ..()
 	
