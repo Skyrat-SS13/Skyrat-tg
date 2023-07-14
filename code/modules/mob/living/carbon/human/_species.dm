@@ -475,7 +475,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	C.mob_biotypes = inherent_biotypes
 	C.mob_respiration_type = inherent_respiration_type
-	C.butcher_results = knife_butcher_results?.Copy()
 
 	if(old_species.type != type)
 		replace_body(C, src)
@@ -537,10 +536,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	C.butcher_results = null
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
-
 	for(var/obj/item/organ/external/organ in C.organs)
 		organ.Remove(C)
 		qdel(organ)
