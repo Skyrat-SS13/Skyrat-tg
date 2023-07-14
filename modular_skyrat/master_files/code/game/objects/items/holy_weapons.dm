@@ -62,7 +62,7 @@
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
 	desc = "A strange dagger said to be once used by a sinister group.. "
-	icon = 'icons/obj/cult/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
 	worn_icon_state = "render"
@@ -80,7 +80,7 @@
 	if(narsian)
 	else if(user.mind && (user.mind.holy_role))
 		to_chat(user, span_cultlarge("\"Partake in the language of blood..\""))
-		user.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_MIND)
+		user.grant_language(/datum/language/narsie, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
 
@@ -94,7 +94,7 @@
 	if(narsian)
 	else if(user.mind && (user.mind.holy_role))
 		to_chat(user, span_cultlarge("\"Partake in the language of blood..\""))
-		user.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_MIND)
+		user.grant_language(/datum/language/narsie, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
 
@@ -109,7 +109,7 @@
 		return ..()
 	else if(user.mind?.holy_role)
 		to_chat(user, span_bigbrass("The sound of cogs permeates your head..."))
-		user.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_MIND)
+		user.grant_language(/datum/language/ratvar, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		ratvarian = TRUE
 
@@ -161,7 +161,7 @@
 /obj/item/nullrod/scythe/sickle
 	name = "damned sickle"
 	desc = "A green crescent blade, decorated with an ornamental eye. The pupil has faded..."
-	icon = 'icons/obj/eldritch.dmi'
+	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'

@@ -84,7 +84,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
 
 /obj/item/gun/energy/laser/hellgun/blueshield/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_ALLSTAR)
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire
