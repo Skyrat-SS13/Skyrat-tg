@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - Custom HTML Lobby Screen
-=======
 #define SHUTTER_MOVEMENT_DURATION 0.4 SECONDS
 #define SHUTTER_WAIT_DURATION 0.2 SECONDS
 
@@ -413,9 +411,6 @@
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
 	new_player.handle_player_polling()
-<<<<<<< HEAD
-*/ // SKYRAT EDIT END
-=======
 
 /atom/movable/screen/lobby/button/collapse
 	name = "Collapse Lobby Menu"
@@ -491,4 +486,5 @@
 
 #undef SHUTTER_MOVEMENT_DURATION
 #undef SHUTTER_WAIT_DURATION
->>>>>>> d12cab7a498 (Collapsible lobby buttons (#76443))
+
+*/ // SKYRAT EDIT END
