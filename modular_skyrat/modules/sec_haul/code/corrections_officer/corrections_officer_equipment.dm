@@ -4,14 +4,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "corrections_officer"
-	armor_type = /datum/armor/security_corrections_officer
+	armor_type = /datum/armor/clothing_under/security_corrections_officer
 	can_adjust = FALSE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/security_corrections_officer
+/datum/armor/clothing_under/security_corrections_officer
 	melee = 10
-	melee = 5
 
 /obj/item/clothing/under/rank/security/corrections_officer/skirt
 	desc = "A white satin shirt with some bronze rank pins at the neck."

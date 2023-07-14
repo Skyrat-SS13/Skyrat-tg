@@ -25,7 +25,7 @@
 	recoil = 0.1
 
 /obj/item/gun/ballistic/automatic/ak25/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/ak25
 	name = "\improper AK-25 magazine"
