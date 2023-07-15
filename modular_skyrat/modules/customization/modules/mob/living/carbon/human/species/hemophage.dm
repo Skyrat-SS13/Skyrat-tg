@@ -62,9 +62,6 @@
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
-	species_traits = list(
-		DRINKSBLOOD,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -73,6 +70,7 @@
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_DRINKS_BLOOD,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	default_mutant_bodyparts = list(

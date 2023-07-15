@@ -1,11 +1,9 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	species_traits = list(
-		MUTCOLORS,
-		// NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)

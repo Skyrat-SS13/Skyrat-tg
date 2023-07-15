@@ -2,9 +2,6 @@
 	name = "Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
-	species_traits = list(
-		DYNCOLORS,
-	)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(
@@ -20,6 +17,8 @@
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_FIXED_MUTANT_COLORS,
 	)
 	payday_modifier = 0.75 //-- "Equality"
 	stunmod = 1.25 //multiplier for stun durations
