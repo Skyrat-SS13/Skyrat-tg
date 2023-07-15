@@ -22,7 +22,7 @@
 		return
 
 	var/mob/living/carbon/human/user_human = user
-	if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
+	if(HAS_TRAIT(user_human, TRAIT_REVIVES_BY_HEALING) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
 		user_human.revive(FALSE)
 
 /obj/item/organ/internal/brain/synth/emp_act(severity)
