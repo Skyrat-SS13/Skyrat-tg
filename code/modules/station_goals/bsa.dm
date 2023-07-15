@@ -395,7 +395,13 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
+<<<<<<< HEAD
 	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out."))
 */
+=======
+	balloon_alert(user, "rigged to explode")
+	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+	return TRUE
+>>>>>>> ccf547c1428 (Adds an extra malf AI ability: Remote emagging. Also tidies up emag code and coverts a lot of things to balloon alerts (#76669))
