@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO DANCE_MACHINE.DM
-=======
+/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO 'modular_skyrat/modules/jukebox/code/dance_machine.dm'
 /// Helper macro to check if the passed mob has jukebox sound preference enabled
 #define HAS_JUKEBOX_PREF(mob) (!QDELETED(mob) && !isnull(mob.client) && mob.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
 
->>>>>>> 70178a17c0e (Jukebox bugfixing and slight code cleanup (#76582))
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
-	icon = 'icons/obj/machines/basic_machines.dmi'
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "jukebox"
 	verb_say = "states"
 	density = TRUE
@@ -515,13 +512,6 @@
 
 /obj/machinery/jukebox/disco/process()
 	. = ..()
-<<<<<<< HEAD
-	if(active)
-		for(var/mob/living/M in rangers)
-			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
-				dance(M)
-*/ //SKYRAT EDIT REMOVAL END
-=======
 	if(!active)
 		return
 
@@ -533,4 +523,4 @@
 			dance(to_dance)
 
 #undef HAS_JUKEBOX_PREF
->>>>>>> 70178a17c0e (Jukebox bugfixing and slight code cleanup (#76582))
+*/ //SKYRAT EDIT REMOVAL END
