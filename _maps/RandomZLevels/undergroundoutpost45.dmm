@@ -168,6 +168,18 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"aA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "aC" = (
 /turf/closed/wall,
 /area/awaymission/undergroundoutpost45/central)
@@ -193,6 +205,7 @@
 	name = "Call Elevator";
 	pixel_x = -6
 	},
+/obj/item/flashlight/flare,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -288,6 +301,10 @@
 "aV" = (
 /obj/structure/table/wood,
 /obj/item/newspaper,
+/obj/item/flashlight/flare{
+	pixel_x = 5;
+	pixel_y = 12
+	},
 /turf/open/floor/iron/grimy{
 	heat_capacity = 1e+006
 	},
@@ -295,6 +312,9 @@
 "aW" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/soda_cans/cola,
+/obj/item/flashlight/flare{
+	pixel_y = 15
+	},
 /turf/open/floor/iron/grimy{
 	heat_capacity = 1e+006
 	},
@@ -331,6 +351,11 @@
 /area/awaymission/undergroundoutpost45/central)
 "ba" = (
 /obj/structure/table/wood,
+/obj/item/storage/box/hecu_rations{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/storage/box/hecu_rations,
 /turf/open/floor/iron/grimy{
 	heat_capacity = 1e+006
 	},
@@ -338,6 +363,10 @@
 "bb" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/ripley_build_and_repair,
+/obj/item/reagent_containers/cup/glass/waterbottle{
+	pixel_x = 8;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/grimy{
 	heat_capacity = 1e+006
 	},
@@ -422,6 +451,10 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
+/obj/item/storage/box/hecu_rations{
+	pixel_x = -6;
+	pixel_y = -5
+	},
 /turf/open/floor/iron/grimy{
 	heat_capacity = 1e+006
 	},
@@ -493,6 +526,7 @@
 /area/awaymission/undergroundoutpost45/central)
 "bx" = (
 /obj/machinery/firealarm/directional/east,
+/obj/structure/bed/maint,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -587,6 +621,7 @@
 /area/awaymission/undergroundoutpost45/central)
 "bH" = (
 /obj/machinery/light/blacklight/directional/east,
+/obj/structure/bed/maint,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -866,6 +901,18 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"cx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Foyer"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "cB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/structure/table/wood,
@@ -1196,6 +1243,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/awaymission/undergroundoutpost45/central)
+"dw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "dx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 5
@@ -1775,6 +1836,15 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"eM" = (
+/obj/structure/cable,
+/obj/machinery/computer/station_alert{
+	dir = 1
+	},
+/obj/machinery/status_display/ai/directional/south,
+/obj/effect/turf_decal/tile/red/half/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "eN" = (
 /obj/structure/chair{
 	dir = 4
@@ -2163,7 +2233,6 @@
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "fQ" = (
 /obj/structure/table/wood,
-/obj/machinery/newscaster/directional/south,
 /turf/open/floor/carpet{
 	heat_capacity = 1e+006
 	},
@@ -4272,7 +4341,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 5
 	},
-/obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
@@ -4841,16 +4909,8 @@
 "mq" = (
 /obj/structure/table,
 /obj/item/newspaper,
-/obj/machinery/newscaster/directional/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron{
-	heat_capacity = 1e+006
-	},
-/area/awaymission/undergroundoutpost45/crew_quarters)
-"mr" = (
-/obj/structure/table/wood,
-/obj/machinery/newscaster/directional/north,
-/turf/open/floor/carpet{
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
@@ -4863,7 +4923,6 @@
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "mu" = (
 /obj/structure/table/wood,
-/obj/machinery/newscaster/directional/west,
 /turf/open/floor/carpet{
 	heat_capacity = 1e+006
 	},
@@ -5067,7 +5126,6 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/obj/machinery/newscaster/directional/west,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 1
 	},
@@ -6200,6 +6258,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/genswitch{
+	pixel_y = -28
+	},
 /turf/open/floor/iron/cafeteria{
 	dir = 5;
 	heat_capacity = 1e+006
@@ -6323,6 +6384,21 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"pw" = (
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "engdoor";
+	name = "Engineering Cell"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "px" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible{
 	dir = 4
@@ -6932,7 +7008,6 @@
 /area/awaymission/undergroundoutpost45/research)
 "qY" = (
 /obj/structure/table/wood,
-/obj/machinery/newscaster/directional/south,
 /obj/item/pen,
 /turf/open/floor/carpet{
 	heat_capacity = 1e+006
@@ -7061,7 +7136,6 @@
 /obj/item/clothing/mask/breath{
 	pixel_x = 4
 	},
-/obj/machinery/newscaster/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
@@ -7135,15 +7209,16 @@
 	},
 /area/awaymission/undergroundoutpost45/engineering)
 "rs" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	locked = 0;
-	req_access = list("away_maintenance")
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/effect/decal/cleanable/blood/tracks{
+	desc = "Your instincts say you shouldn't be following these.";
+	dir = 8;
+	icon_state = "ltrails_1"
 	},
-/obj/item/clothing/under/misc/pj/blue,
-/turf/open/floor/carpet{
+/turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
-/area/awaymission/undergroundoutpost45/mining)
+/area/awaymission/undergroundoutpost45/crew_quarters)
 "rt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
 	dir = 4
@@ -8295,6 +8370,15 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"tJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "tK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 5
@@ -8645,6 +8729,9 @@
 "uw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/door/airlock/external/ruin,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -8704,6 +8791,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/genswitch{
+	pixel_x = 28
+	},
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -8798,6 +8888,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/burnt_floor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -8842,27 +8938,9 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
-"uU" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/computer/atmos_control/fixed{
-	atmos_chambers = list("uo45waste","uo45distro");
-	dir = 4;
-	name = "Distribution and Waste Monitoring"
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/corner{
-	dir = 1;
-	heat_capacity = 1e+006
-	},
-/area/awaymission/undergroundoutpost45/engineering)
 "uV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 5
-	},
-/obj/structure/chair/office{
-	dir = 8
 	},
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
@@ -8972,6 +9050,12 @@
 	},
 /area/awaymission/undergroundoutpost45/research)
 "vk" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
 /obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
@@ -9031,9 +9115,6 @@
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "vs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/computer/atmos_alert{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
@@ -9245,6 +9326,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"vU" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/awaymission/undergroundoutpost45/mining)
 "vV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
@@ -9316,20 +9405,18 @@
 /area/awaymission/undergroundoutpost45/mining)
 "wc" = (
 /obj/machinery/light/small/directional/north,
-/obj/structure/chair/wood{
-	dir = 8
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/mining)
 "wd" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/bed,
-/obj/item/bedsheet,
-/turf/open/floor/carpet{
+/turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/mining)
@@ -9418,7 +9505,8 @@
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/turf/open/floor/carpet{
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/mining)
@@ -9426,10 +9514,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock{
-	id_tag = "awaydorm8";
-	name = "Mining Dorm 1"
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Foyer"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -10013,6 +10101,43 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"yt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/obj/effect/mob_spawn/corpse/human/nanotrasensoldier,
+/obj/item/gun/ballistic/automatic/pistol/g17,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
+"yy" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"yE" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"yG" = (
+/obj/machinery/light/blacklight/directional/west,
+/obj/structure/bed/maint,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/central)
 "yN" = (
 /obj/structure/chair/office/light{
 	dir = 1;
@@ -10050,6 +10175,10 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"yZ" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/r_wall,
+/area/awaymission/undergroundoutpost45/mining)
 "za" = (
 /obj/effect/decal/cleanable/blood,
 /turf/closed/mineral/random/labormineral,
@@ -10111,9 +10240,6 @@
 /obj/structure/table,
 /obj/machinery/recharger{
 	pixel_y = 4
-	},
-/obj/machinery/newscaster{
-	pixel_x = -30
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -10286,6 +10412,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"Bg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Bh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -10370,12 +10504,7 @@
 /area/awaymission/undergroundoutpost45/caves)
 "Ce" = (
 /obj/machinery/light/small/directional/north,
-/turf/open/misc/asteroid{
-	heat_capacity = 1e+006;
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	name = "Cave Floor";
-	temperature = 363.9
-	},
+/turf/closed/wall/r_wall/rust,
 /area/awaymission/undergroundoutpost45/research)
 "Cj" = (
 /obj/structure/table/reinforced,
@@ -10434,6 +10563,13 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"CA" = (
+/obj/structure/chair/office,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "CH" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -10447,6 +10583,25 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"CI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"Dc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/maint,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/central)
 "De" = (
 /obj/machinery/computer/monitor{
 	name = "primary power monitoring console"
@@ -10489,6 +10644,22 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"Dw" = (
+/obj/structure/cable,
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
+"Dx" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/right{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/awaymission/undergroundoutpost45/mining)
 "Dz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10520,6 +10691,20 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"DF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "DJ" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -10551,6 +10736,19 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"DW" = (
+/obj/structure/cable,
+/obj/machinery/camera/directional/east{
+	c_tag = "Security Post - Engineering"
+	},
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Ea" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/secure_area/directional/south{
@@ -10645,6 +10843,18 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"EW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "EZ" = (
 /obj/item/watertank,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
@@ -10668,6 +10878,19 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"Fs" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Fw" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -10711,6 +10934,17 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"FN" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/radio,
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "FS" = (
 /obj/machinery/biogenerator,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -10729,6 +10963,17 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/caves)
+"Gb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Gc" = (
 /obj/machinery/light/blacklight/directional/west,
 /obj/machinery/airalarm/directional/west,
@@ -10780,6 +11025,16 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/research)
+"Gw" = (
+/obj/effect/turf_decal/tile/red/anticorner/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
+"GF" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/plating,
+/area/awaymission/undergroundoutpost45/mining)
 "GI" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -10794,6 +11049,25 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"Ho" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 4
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
+"Hu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "HM" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /obj/structure/bed{
@@ -10849,6 +11123,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"Ii" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "IK" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
@@ -10907,6 +11189,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"JA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "JD" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -10990,6 +11280,18 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"Ku" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/structure/extinguisher_cabinet/directional/south{
+	pixel_x = 32
+	},
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
+/obj/machinery/status_display/evac/directional/south,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "KE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -11046,6 +11348,20 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/caves)
+"Lh" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet{
+	icon_state = "sec";
+	name = "security officer's locker";
+	req_access = list("away_maintenance")
+	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/assembly/flash/handheld,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Lk" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/mob_spawn/corpse/human,
@@ -11064,6 +11380,13 @@
 	temperature = 351.9
 	},
 /area/awaymission/undergroundoutpost45/caves)
+"LA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "LC" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/effect/landmark/awaystart,
@@ -11080,6 +11403,12 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"LI" = (
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "LM" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/iron/dark{
@@ -11113,6 +11442,27 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"Mo" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"Ms" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Mu" = (
 /obj/machinery/door/window/right/directional/south{
 	name = "Bar Door";
@@ -11222,6 +11572,15 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"Nq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Nv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 4
@@ -11294,6 +11653,15 @@
 	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
 	name = "Cave Floor";
 	temperature = 363.9
+	},
+/area/awaymission/undergroundoutpost45/central)
+"Oc" = (
+/obj/item/storage/box/hecu_rations{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
 "Oe" = (
@@ -11381,6 +11749,12 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"Pz" = (
+/obj/item/trash/flare,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/central)
 "PD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/nest,
@@ -11389,6 +11763,37 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"PK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"PU" = (
+/obj/structure/bed/maint,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/central)
+"PV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 1
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Qc" = (
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
@@ -11469,6 +11874,13 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/caves)
+"Qv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "QC" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -11582,6 +11994,9 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"RU" = (
+/turf/open/space/basic,
+/area/awaymission/undergroundoutpost45/caves)
 "RX" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 1
@@ -11683,6 +12098,15 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/central)
+"SN" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/obj/machinery/computer/security{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "SO" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -11706,6 +12130,34 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"Tc" = (
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/effect/mob_spawn/corpse/human/bartender,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/crew_quarters)
+"Te" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
+"Tn" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Tp" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -11726,6 +12178,18 @@
 	temperature = 363.9
 	},
 /area/awaymission/undergroundoutpost45/caves)
+"Tt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Tu" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -11763,6 +12227,26 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"TS" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
+"TZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/mining)
 "Uk" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/cafeteria{
@@ -11770,6 +12254,13 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/research)
+"Un" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "UG" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/misc/asteroid{
@@ -11827,7 +12318,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron{
@@ -11940,6 +12430,23 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"WR" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "engdoor";
+	name = "Engineering Cell"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "WT" = (
 /obj/structure/table/glass,
 /obj/item/stock_parts/servo,
@@ -11960,6 +12467,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
+"Xb" = (
+/obj/structure/cable,
+/obj/machinery/computer/records/security{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted,
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Xg" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -11970,6 +12485,14 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
+"Xn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/anticorner/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/awaymission/undergroundoutpost45/mining)
 "Xq" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/light/small/directional/south,
@@ -12099,7 +12622,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/newscaster/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -12107,6 +12629,15 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/engineering)
+"YX" = (
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/undergroundoutpost45/crew_quarters)
 "Zs" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/misc/asteroid{
@@ -40581,11 +41112,11 @@ tn
 tS
 hc
 hc
-hc
+gz
 Ce
-zq
-ad
-ad
+vJ
+vJ
+vJ
 ad
 ad
 ad
@@ -40838,11 +41369,11 @@ tp
 tT
 gy
 uN
-hH
-ah
-zq
-ad
-ad
+gy
+Tn
+xC
+Nq
+vI
 ad
 ad
 ad
@@ -41096,10 +41627,10 @@ tU
 uw
 uO
 vk
-ah
-zq
-zq
-ad
+aA
+dw
+Te
+vJ
 ad
 ad
 ad
@@ -41352,13 +41883,13 @@ tr
 tV
 ux
 uP
-hH
-ah
-zq
-zq
-zq
-ad
-ad
+gy
+yE
+wd
+wu
+vJ
+vJ
+vJ
 ad
 ad
 ad
@@ -41608,18 +42139,18 @@ mJ
 nM
 tW
 hc
+gz
 hc
-hc
-zq
-zq
-zq
-zq
-ad
-ad
-ad
-ad
-ad
-ad
+vI
+EW
+Hu
+pw
+TS
+vJ
+vJ
+vJ
+vJ
+vJ
 ad
 ad
 ad
@@ -41867,16 +42398,16 @@ ad
 zq
 zq
 zq
-zq
-zq
-zq
-zq
-zq
-ad
-ad
-ad
-ad
-ad
+vJ
+wd
+wu
+vJ
+WR
+vJ
+Dw
+LI
+Lh
+vJ
 ad
 ad
 ad
@@ -42124,16 +42655,16 @@ zq
 zq
 zq
 zq
-zq
-zq
-zq
-XQ
-zq
-ad
-ad
-ad
-ad
-ad
+vJ
+TZ
+Hu
+vU
+PV
+Xn
+JA
+LA
+eM
+vJ
 ad
 ad
 ad
@@ -42332,8 +42863,8 @@ aS
 aS
 bk
 aS
-bA
-aF
+yG
+Dc
 bP
 ce
 aC
@@ -42381,16 +42912,16 @@ zq
 zq
 zq
 zq
-zq
-zq
-zq
-zq
-ad
-ad
-ad
-ad
-ad
-ad
+vJ
+wd
+ws
+GF
+Un
+Ii
+Bg
+CA
+SN
+vJ
 ad
 ad
 ad
@@ -42582,7 +43113,7 @@ ag
 af
 an
 aS
-aS
+Pz
 aO
 aS
 az
@@ -42638,16 +43169,16 @@ zq
 XQ
 zq
 zq
-zq
-zq
-zq
-XQ
-ad
-ad
-ad
-ad
-ad
-ad
+vJ
+Ms
+Hu
+Dx
+Ho
+Gw
+yt
+Qv
+Xb
+vJ
 ad
 ad
 ad
@@ -42895,16 +43426,16 @@ zq
 zq
 zq
 zq
-zq
-ad
-ad
-zq
-ad
-ad
-ad
-ad
-ad
-ad
+vI
+tJ
+wu
+vJ
+yZ
+vJ
+DW
+FN
+Ku
+vJ
 ad
 ad
 ad
@@ -43152,17 +43683,17 @@ zq
 zq
 zq
 zq
-zq
+ww
+TZ
+yy
+vJ
 ad
-ad
-zq
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+vJ
+vJ
+vJ
+vJ
+vJ
+RU
 ad
 ad
 ad
@@ -43409,10 +43940,10 @@ zq
 zq
 zq
 zq
-zq
-zq
-zq
-zq
+ww
+xC
+Tt
+vJ
 ad
 ad
 ad
@@ -43666,10 +44197,10 @@ zq
 zq
 XQ
 zq
-zq
-zq
-zq
-zq
+ww
+DF
+Fs
+vJ
 ad
 ad
 ad
@@ -43907,7 +44438,7 @@ gr
 WK
 gs
 fN
-mr
+mu
 mX
 pS
 oe
@@ -43923,10 +44454,10 @@ zq
 zq
 zq
 ad
-ad
-zq
-zq
-zq
+vJ
+CI
+wd
+vI
 ad
 ad
 ad
@@ -44127,12 +44658,12 @@ aI
 aS
 aR
 aS
-aS
+Oc
 aS
 aS
 bx
 bH
-aS
+PU
 bQ
 ck
 aC
@@ -44180,10 +44711,10 @@ zq
 zq
 ad
 ad
-ad
-zq
-zq
-zq
+vJ
+PK
+Mo
+vJ
 zq
 ad
 ad
@@ -44437,10 +44968,10 @@ zq
 zq
 zq
 ad
-zq
-zq
-zq
-zq
+vJ
+Gb
+wu
+vJ
 zq
 ad
 ad
@@ -44694,10 +45225,10 @@ zq
 zq
 zq
 XQ
-zq
-zq
-zq
-zq
+vI
+TZ
+Hu
+ww
 zq
 zq
 zq
@@ -44951,10 +45482,10 @@ XQ
 zq
 zq
 zq
-zq
-zq
-zq
-zq
+vJ
+wd
+ws
+ww
 zq
 zq
 zq
@@ -45208,10 +45739,10 @@ gg
 zq
 zq
 zq
-zq
-zq
-zq
-zq
+vJ
+TZ
+Hu
+ww
 zq
 zq
 zq
@@ -45466,8 +45997,8 @@ gg
 zq
 zq
 vI
-vI
-vI
+wd
+Hu
 vI
 vJ
 vI
@@ -45723,8 +46254,8 @@ gg
 zq
 Qu
 vJ
-wb
-rs
+EW
+Hu
 vK
 wM
 wb
@@ -45981,7 +46512,7 @@ gr
 vm
 vJ
 wc
-wp
+wu
 vL
 wp
 Oq
@@ -46214,7 +46745,7 @@ hm
 hN
 hK
 hK
-hK
+Tc
 jx
 hL
 hK
@@ -46237,7 +46768,7 @@ fN
 uQ
 vn
 vK
-wd
+TZ
 wq
 vL
 wN
@@ -46470,8 +47001,8 @@ gg
 hn
 hO
 hK
-hK
-hK
+rs
+YX
 Mu
 EA
 kr
@@ -46494,7 +47025,7 @@ uy
 uR
 vo
 vL
-we
+cx
 wr
 vL
 wO
@@ -47775,9 +48306,9 @@ rP
 sE
 gg
 gr
-gr
-gr
 fK
+rP
+sE
 vI
 vI
 ww
@@ -48032,10 +48563,10 @@ rQ
 sF
 gr
 zq
-zq
-zq
-zq
-zq
+gr
+rQ
+sF
+gr
 MC
 zq
 zq
@@ -48289,10 +48820,10 @@ rR
 sG
 gr
 zq
-zq
-zq
-zq
-zq
+gr
+rR
+sG
+gr
 zq
 zq
 zq
@@ -48546,10 +49077,10 @@ rS
 sF
 gr
 zq
-zq
-zq
-zq
-zq
+gr
+rS
+sF
+gr
 zq
 zq
 zq
@@ -48803,10 +49334,10 @@ BI
 sH
 gg
 UG
-zq
-zq
-zq
-zq
+gg
+BI
+sH
+gg
 zq
 zq
 zq
@@ -49060,10 +49591,10 @@ rQ
 sF
 gr
 zq
-zq
-zq
-zq
-zq
+gr
+rQ
+sF
+gr
 zq
 zq
 zq
@@ -49316,11 +49847,11 @@ gr
 rU
 sI
 gr
-Ga
 zq
-zq
-zq
-zq
+gr
+rU
+sI
+gr
 zq
 zq
 zq
@@ -49573,11 +50104,11 @@ rg
 rV
 sJ
 rg
-Cv
 zq
-zq
-zq
-zq
+gr
+rV
+sJ
+rg
 zq
 zq
 zq
@@ -49831,10 +50362,10 @@ rW
 sK
 fK
 zq
-zq
-zq
-zq
-zq
+fK
+rW
+sK
+fK
 zq
 zq
 zq
@@ -50088,10 +50619,10 @@ rX
 sL
 ln
 ni
-ni
-qb
-qb
-ni
+ln
+rX
+sL
+ln
 ni
 zq
 zq
@@ -50346,7 +50877,7 @@ sM
 tv
 uc
 uA
-uU
+vs
 vs
 vP
 ni

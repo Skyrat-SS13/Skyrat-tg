@@ -23,8 +23,14 @@
 	sneaky_beaky_evenmore.Grant(src)
 	var/datum/action/cooldown/spell/pointed/hardstun/main_character_ism = new(src)
 	main_character_ism.Grant(src)
+	var/datum/action/cooldown/spell/pointed/hardstun/hard/i_want_everyone_to_die = new(src)
+	i_want_everyone_to_die.Grant(src)
 	var/datum/action/cooldown/spell/pointed/decap/too_lazy_to_add_headbite = new(src)
 	too_lazy_to_add_headbite.Grant(src)
+	var/datum/action/cooldown/spell/pointed/gibchest/i_thought_this_would_be_cool = new(src)
+	i_thought_this_would_be_cool.Grant(src)
+	var/datum/action/cooldown/spell/pointed/giblimbs/horror_movie = new(src)
+	horror_movie.Grant(src)
 
 
 /mob/living/carbon/alien/adult/skyrat/drone/Destroy()

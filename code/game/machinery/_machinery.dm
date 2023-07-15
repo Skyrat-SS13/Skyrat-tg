@@ -154,6 +154,47 @@
 	var/appearance_power_state = -1
 	armor_type = /datum/armor/obj_machinery
 
+/obj/machinery/genswitch
+	name = "locator beacon switch"
+	desc = "Looks to be a switch for the colony's locator beacon. A small label says \"SWITCHES MUST BE PULLED IN TANDEM\", hm."
+	icon = 'icons/obj/machines/turret_control.dmi'
+	icon_state = "control_standby"
+	use_power = 0
+	var/flipped = FALSE
+	var/static/flip_succeeded = FALSE
+
+/obj/machinery/genswitch/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(flipped)
+		to_chat(user, span_notice("[src] is already flipped."))
+		return
+
+	user.visible_message(span_notice("[user] flips [src]."), span_notice("You flip [src]."))
+	flipped = TRUE
+	icon_state = "control_kill"
+	for(var/obj/machinery/genswitch/switch_machine in GLOB.machines)
+		if(switch_machine.flipped)
+			continue
+		addtimer(CALLBACK(src, PROC_REF(unflip)), 5 SECONDS)
+		return
+	flip_succeeded = TRUE
+	visible_message(span_notice("[src] hums as it comes online."))
+	for(var/obj/machinery/genswitch/switch_machine in GLOB.machines)
+		switch_machine.succeed()
+
+/obj/machinery/genswitch/proc/unflip()
+	if(flip_succeeded)
+		return
+	visible_message(span_warning("[src] unflips. Fuck."))
+	flipped = FALSE
+	icon_state = "control_standby"
+
+/obj/machinery/genswitch/proc/succeed()
+	set waitfor = 0
+
+	sleep(1)
+	say("LOCATOR BEACON RESTARTED.")
+
 /datum/armor/obj_machinery
 	melee = 25
 	bullet = 10

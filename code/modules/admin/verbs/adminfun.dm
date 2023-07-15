@@ -227,6 +227,8 @@
 
 	for(var/obj/content_object in target.get_all_contents())
 		content_object.AddElement(/datum/element/light_eaten)
+	ADD_TRAIT(target, TRAIT_DNR, "innate")
+
 
 ///"Turns" people into bread. Really, we just add them to the contents of the bread food item.
 /proc/breadify(atom/movable/target)

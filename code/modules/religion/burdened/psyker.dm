@@ -289,6 +289,7 @@
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 	cast_range = 9
 	active_msg = "Whose career do you want to end"
+	var/stuntime = 10 SECONDS
 
 /datum/action/cooldown/spell/pointed/hardstun/is_valid_target(atom/cast_on)
 	. = ..()
@@ -301,9 +302,13 @@
 /datum/action/cooldown/spell/pointed/hardstun/cast(mob/living/cast_on)
 	. = ..()
 	to_chat(cast_on, span_userdanger("You feel yourself be paralyzed with fear!"))
-	cast_on.Stun(10 SECONDS, TRUE)
+	to_chat(owner, span_notice("Passed."))
+	cast_on.Stun(stuntime, TRUE)
 	return TRUE
 
+/datum/action/cooldown/spell/pointed/hardstun/hard
+	name = "Hardstun x2.5"
+	stuntime = 2.5 SECONDS
 
 /datum/action/cooldown/spell/pointed/decap
 	name = "Decapitate"
@@ -330,6 +335,7 @@
 /datum/action/cooldown/spell/pointed/decap/cast(mob/living/cast_on)
 	. = ..()
 	cast_on.visible_message(span_boldwarning("[owner] draws back a grabber, readying their claws!"), span_warning("You prepare to decapitate [cast_on]..."))
+	cast_on.Stun(4 SECONDS)
 	if(!do_after(owner, 4 SECONDS, cast_on))
 		return
 	cast_on.visible_message(span_boldwarning("[owner] swings a set of claws at [cast_on], decapitating them instantly!"), span_warning("You decapitate [cast_on]!"))
@@ -337,6 +343,84 @@
 	var/obj/item/bodypart/head/head = living_target.get_bodypart("head")
 	head.dismember()
 	return TRUE
+
+
+/datum/action/cooldown/spell/pointed/gibchest
+	name = "Tailspike"
+	desc = "End them."
+	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
+	button_icon_state = "declaration"
+	school = SCHOOL_PSYCHIC
+	cooldown_time = 1
+	antimagic_flags = MAGIC_RESISTANCE_MIND
+	spell_max_level = 1
+	invocation_type = INVOCATION_NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
+	cast_range = 1
+	active_msg = "You get ready to un-inside their chest"
+
+/datum/action/cooldown/spell/pointed/gibchest/is_valid_target(atom/cast_on)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!isliving(cast_on))
+		return FALSE
+	return TRUE
+
+/datum/action/cooldown/spell/pointed/gibchest/cast(mob/living/cast_on)
+	. = ..()
+	cast_on.visible_message(span_boldwarning("[owner]'s tail ominously pulls back..."), span_warning("You prepare to dismbember [cast_on]'s chest..."))
+	cast_on.Stun(4 SECONDS)
+	if(!do_after(owner, 4 SECONDS, cast_on))
+		return
+	cast_on.visible_message(span_boldwarning("[owner]'s tail whips forward, piercing [cast_on] through the chest before pulling backwards, spilling their organs!"), span_warning("You finish [cast_on]!"))
+	var/mob/living/living_target = cast_on
+	var/obj/item/bodypart/chest/head = living_target.get_bodypart("chest")
+	head.dismember()
+	living_target.emote("scream")
+	living_target.Knockdown(3 SECONDS)
+	living_target.Stun(3 SECONDS)
+	playsound(cast_on, 'sound/effects/dismember.ogg', 100, TRUE)
+	return TRUE
+
+
+/datum/action/cooldown/spell/pointed/giblimbs
+	name = "Rend"
+	desc = "End them."
+	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
+	button_icon_state = "zap"
+	school = SCHOOL_PSYCHIC
+	cooldown_time = 1
+	antimagic_flags = MAGIC_RESISTANCE_MIND
+	spell_max_level = 1
+	invocation_type = INVOCATION_NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
+	cast_range = 1
+	active_msg = "NUGGET TIME MOTHERFUCKER"
+
+/datum/action/cooldown/spell/pointed/giblimbs/is_valid_target(atom/cast_on)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!isliving(cast_on))
+		return FALSE
+	return TRUE
+
+/datum/action/cooldown/spell/pointed/giblimbs/cast(mob/living/cast_on)
+	. = ..()
+	cast_on.visible_message(span_boldwarning("[owner] violently grabs hold of [cast_on]!"), span_warning("You prepare to nugget [cast_on]."))
+	cast_on.Stun(4 SECONDS)
+	if(!do_after(owner, 4 SECONDS, cast_on))
+		return
+	var/list/limbs_to_cut_in_order = list(BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_HEAD)
+	for(var/zone in limbs_to_cut_in_order)
+		var/mob/living/living_target = cast_on
+		var/obj/item/bodypart/part = living_target.get_bodypart(zone)
+		cast_on.visible_message(span_boldwarning("[owner]'s grabber flies forward, cutting off [cast_on]'s [part.name] in one motion!"), span_warning("You delimb [cast_on]!"))
+		part.dismember()
+		sleep(2 SECONDS)
+	return TRUE
+
 
 /// Status effect that adds a weird view to its owner and causes them to rapidly shoot a firearm in their general direction.
 /datum/status_effect/psychic_projection

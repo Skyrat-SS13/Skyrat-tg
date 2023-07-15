@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 /// Attempts to devour the passed in thing in devour_time seconds
 /// The mob needs to be consumable, as decided by [/mob/living/carbon/alien/adult/proc/can_consume]
 /// Returns FALSE if the attempt never even started, TRUE otherwise
-/mob/living/carbon/alien/adult/proc/devour_lad(atom/movable/candidate, devour_time = 13.5 SECONDS)
+/mob/living/carbon/alien/adult/proc/devour_lad(atom/movable/candidate, devour_time = 2.5 SECONDS)
 	setDir(get_dir(src, candidate))
 	if(!can_consume(candidate))
 		return FALSE
