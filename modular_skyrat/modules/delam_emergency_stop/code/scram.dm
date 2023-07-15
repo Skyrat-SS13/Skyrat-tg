@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(delam_machines)
 	if(!prereq_check())
 		return
 
-	send_warning()
+	send_warning(source, trigger_reason)
 
 /// Check for admin intervention or a fault in the signal validation, we don't exactly want to fire this on accident
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/prereq_check(source, trigger_reason)
