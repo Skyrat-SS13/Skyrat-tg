@@ -3,7 +3,6 @@
 *	A disabler that will always ricochet.
 */
 
-
 /obj/item/ammo_casing/energy/disabler/bounce
 	projectile_type = /obj/projectile/beam/disabler/bounce
 	select_name  = "disable"

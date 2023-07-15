@@ -14,8 +14,6 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 		return
 	if(isnull(new_crewmember.mind))
 		return
-	if(isnull(new_crewmember.mind.language_holder))
-		return
 
 	var/mob/living/carbon/human/new_human = new_crewmember
 	var/datum/language_holder/language_holder = new_human.get_language_holder()

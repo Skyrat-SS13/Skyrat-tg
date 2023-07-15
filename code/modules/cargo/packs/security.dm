@@ -235,7 +235,7 @@
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/gun/energy/e_gun/dragnet = 3)
 	crate_name = "\improper DRAGnet crate"
-	
+
 // SKYRAT EDIT REMOVAL BEGIN - CARGO ARMAMENTS
 /*
 /datum/supply_pack/security/armory/energy
@@ -318,38 +318,6 @@
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/shield/riot = 3)
 	crate_name = "riot shields crate"
-
-/* SKYRAT EDIT REMOVAL START
-/datum/supply_pack/security/armory/russian
-	name = "Russian Surplus Crate"
-	desc = "Hello Comrade, we have the most modern russian military equipment the \
-		black market can offer, for the right price of course. Sadly we couldn't remove \
-		the lock, so it"
-	cost = CARGO_CRATE_VALUE * 12
-	contraband = TRUE
-	contains = list(/obj/item/food/rationpack,
-					/obj/item/ammo_box/a762,
-					/obj/item/storage/toolbox/ammo,
-					/obj/item/storage/toolbox/maint_kit,
-					/obj/item/clothing/suit/armor/vest/russian,
-					/obj/item/clothing/head/helmet/rus_helmet,
-					/obj/item/clothing/shoes/russian,
-					/obj/item/clothing/gloves/tackler/combat,
-					/obj/item/clothing/under/syndicate/rus_army,
-					/obj/item/clothing/under/costume/soviet,
-					/obj/item/clothing/mask/russian_balaclava,
-					/obj/item/clothing/head/helmet/rus_ushanka,
-					/obj/item/clothing/suit/armor/vest/russian_coat,
-					/obj/item/gun/ballistic/rifle/boltaction = 2,
-				)
-	crate_name = "surplus military crate"
-
-/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/C)
-	for(var/i in 1 to 10)
-		var/item = pick(contains)
-		new item(C)
-*/ // SKYRAT EDIT REMOVAL END
-
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
