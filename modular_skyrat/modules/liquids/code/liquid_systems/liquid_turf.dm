@@ -82,13 +82,15 @@
  * * no_react - whether or not we want to react immediately upon adding the reagents
  * * reagent_multiplier - multiplies the individual reagents' volumes by this value
  * * atom/thrown_from - the atom that the liquid is being thrown from (like a beaker). Null by default.
+ * * atom/thrown_target - the atom that the liquid is being thrown at. Null by default.
  *
  */
-/atom/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1, atom/thrown_from = null)
+/atom/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, reagent_multiplier = 1, atom/thrown_from = null, atom/thrown_to = null)
 	// if we are throwing something, see if we should bounce the liquid off the target atom
 	if(thrown_from)
 		var/turf/bounced_to = throw_back_liquid(thrown_from)
 		if(bounced_to)
+			giver.expose(thrown_to, TOUCH) // make sure we expose the hit target, since we aren't directly adding liquid there
 			bounced_to.add_liquid_from_reagents(giver, no_react, reagent_multiplier)
 			return
 
