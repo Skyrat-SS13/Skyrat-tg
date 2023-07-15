@@ -264,7 +264,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
 	interest_required = COMPANY_SOME_INTEREST
 	contraband = TRUE
-	
+
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/rave
 	item_type = /obj/item/mod/module/visor/rave
 	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER
@@ -285,8 +285,8 @@
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
-/datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/antigrav
-	item_type = /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
+/datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/power_kick
+	item_type = /obj/item/mod/module/power_kick
 	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
