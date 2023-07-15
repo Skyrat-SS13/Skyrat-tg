@@ -1,17 +1,16 @@
 /datum/species/unathi
 	name = "Unathi"
 	id = SPECIES_UNATHI
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/unathi
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
@@ -21,9 +20,6 @@
 		"body_markings" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	disliked_food = GRAIN | DAIRY | CLOTH | GROSS
-	liked_food = GORE | MEAT | SEAFOOD | NUTS
-	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_LIZARD
@@ -37,6 +33,13 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/lizard,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard,
 	)
+
+
+/obj/item/organ/internal/tongue/unathi
+	liked_foodtypes = GORE | MEAT | SEAFOOD | NUTS
+	disliked_foodtypes = GRAIN | DAIRY | CLOTH | GROSS
+	toxic_foodtypes = TOXIC
+
 
 /datum/species/unathi/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
