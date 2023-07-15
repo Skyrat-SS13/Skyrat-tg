@@ -145,12 +145,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		caller_card.use_charge(user)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(summon_battlecruiser), caller_card.team), rand(20 SECONDS, 1 MINUTES))
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
-<<<<<<< HEAD
-		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //skyrat add: announcement on battlecruiser call
-		return
-=======
+		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //SKYRAT EDIT ADDITION: announcement on battlecruiser call
 		return TRUE
->>>>>>> ccf547c1428 (Adds an extra malf AI ability: Remote emagging. Also tidies up emag code and coverts a lot of things to balloon alerts (#76669))
 
 	if(obj_flags & EMAGGED)
 		return FALSE
