@@ -355,7 +355,7 @@
 	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
 
 	// No going back now!
-	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, BUTTON_PUSHED)
+	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, MANUAL_INTERVENTION)
 
 	// Temporarily let anyone escape the engine room before it becomes spicy
 	for(var/obj/machinery/door/airlock/escape_route in range(7, src))
