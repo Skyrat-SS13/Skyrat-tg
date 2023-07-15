@@ -31,15 +31,6 @@
 			continue
 		INVOKE_ASYNC(escape_route, TYPE_PROC_REF(/obj/machinery/door/airlock, temp_emergency_exit), 45 SECONDS)
 
-	notify_ghosts(
-		"The [suppression_system] has been activated!",
-		source = suppression_system,
-		header = "Divine Intervention",
-		action = NOTIFY_ORBIT,
-		ghost_sound = 'sound/machines/warning-buzzer.ogg',
-		notify_volume = 75
-	)
-
 /client/proc/toggle_delam_suppression()
 	set name = "Delam Suppression Toggle"
 	set category = "Admin.Events"
