@@ -31,9 +31,6 @@
 
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
-/obj/item/gun/ballistic/automatic/fg42/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
-
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92x57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'

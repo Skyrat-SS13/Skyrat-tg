@@ -865,7 +865,7 @@
 			quirk_holder.mind.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS)
 
 /datum/quirk/item_quirk/junkie/process(seconds_per_tick)
-	if(HAS_TRAIT(quirk_holder, TRAIT_NOMETABOLISM))
+	if(HAS_TRAIT(quirk_holder, TRAIT_LIVERLESS_METABOLISM))
 		return
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	if(world.time > next_process)
@@ -946,7 +946,7 @@
 	var/datum/disease/chronic_illness/hms = new /datum/disease/chronic_illness()
 	quirk_holder.ForceContractDisease(hms)
 	give_item_to_holder(/obj/item/storage/pill_bottle/sansufentanyl, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK),flavour_text = "You've been provided with medication to help manage your condition. Take it regularly to avoid complications.")
-	give_item_to_holder(/obj/item/healthanalyzer/disease, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK))
+	give_item_to_holder(/obj/item/healthanalyzer/simple/disease, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK))
 
 /datum/quirk/unstable
 	name = "Unstable"

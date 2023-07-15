@@ -14,9 +14,9 @@
 	wound = 20
 
 /obj/item/clothing/under/suit/blacktwopiece/armoured
-	armor_type = /datum/armor/blacktwopiece_armoured
+	armor_type = /datum/armor/clothing_under/blacktwopiece_armoured
 
-/datum/armor/blacktwopiece_armoured
+/datum/armor/clothing_under/blacktwopiece_armoured
 	melee = 10
 	bullet = 10
 	laser = 10
