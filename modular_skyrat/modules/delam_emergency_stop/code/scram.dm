@@ -38,9 +38,6 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/Initialize(mapload)
 	. = ..()
 
-	// We don't want to blow up if we've been errantly mapped somewhere else
-	REGISTER_REQUIRED_MAP_ITEM(1, 1)
-
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/atmospherics/components/unary/delam_scram/LateInitialize()
