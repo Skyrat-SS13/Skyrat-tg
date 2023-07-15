@@ -50,7 +50,7 @@
 /mob/living/proc/can_suicide()
 	// SKYRAT EDIT ADDITION
 	if(CONFIG_GET(flag/disable_suicide))
-		to_chat(usr, span_warning("Suicide is disabled on this server."))
+		to_chat(src, span_warning("Suicide is disabled on this server."))
 		return FALSE
 	// SKYRAT EDIT END
 
