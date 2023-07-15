@@ -9,8 +9,8 @@
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	icon_state = "dispenser-idle"
 	name = "delamination suppression system"
-	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems. You don't want to be in the chamber when it's activated! \
-	Come to think of it, CentCom would rather you didn't activate it at all. These things are expensive!"
+	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems.<br>You don't want to be in the chamber when it's activated!<br>\
+	Come to think of it, CentCom would rather you didn't activate it at all.<br>These things are expensive!"
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE // comedy option, what if unwrenching trying to steal it throws you into the crystal for a nice dusting
 	shift_underlay_only = FALSE
