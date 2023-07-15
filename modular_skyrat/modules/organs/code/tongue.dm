@@ -40,26 +40,36 @@
 	name = "vox tongue"
 	desc = "A fleshy muscle mostly used for skreeing."
 	say_mod = "skrees"
+	liked_foodtypes = MEAT | FRIED
 
 /obj/item/organ/internal/tongue/dwarven
 	name = "dwarven tongue"
 	desc = "A fleshy muscle mostly used for bellowing."
 	say_mod = "bellows"
+	liked_foodtypes = ALCOHOL | MEAT | DAIRY //Dwarves like alcohol, meat, and dairy products.
+	disliked_foodtypes = JUNKFOOD | FRIED | CLOTH //Dwarves hate foods that have no nutrition other than alcohol.
 
 /obj/item/organ/internal/tongue/ghoul
 	name = "ghoulish tongue"
 	desc = "A fleshy muscle mostly used for rasping."
 	say_mod = "rasps"
+	liked_foodtypes = RAW | MEAT
+	disliked_foodtypes = VEGETABLES | FRUIT | CLOTH
+	toxic_foodtypes = DAIRY | PINEAPPLE
 
 /obj/item/organ/internal/tongue/insect
 	name = "insect tongue"
 	desc = "A fleshy muscle mostly used for chittering."
 	say_mod = "chitters"
+	liked_foodtypes = GROSS | RAW | TOXIC | GORE
+	disliked_foodtypes = CLOTH | GRAIN | FRIED
+	toxic_foodtypes = DAIRY
 
 /obj/item/organ/internal/tongue/xeno // like lizard tongue but without taste sensitivity modifiers
 	name = "xenomorph tongue"
 	desc = "A fleshy muscle mostly used for hissing."
 	say_mod = "hisses"
+	liked_foodtypes = MEAT
 
 /obj/item/organ/internal/tongue/skrell
 	name = "skrell tongue"
