@@ -139,7 +139,14 @@
 		notify_volume = 75
 		)
 	else
-		investigate_log("Delam SCRAM was activated by [trigger_reason ? "automatic safeties" : "manual intervention"]", INVESTIGATE_ATMOS)
+		var/reason
+		switch(trigger_reason)
+			if(AUTOMATIC_SAFETIES)
+				reason = "automatic safeties"
+			if(MANUAL_INTERVENTION)
+				reason = "manual intervention"
+
+		investigate_log("Delam SCRAM was activated by [reason]", INVESTIGATE_ATMOS)
 		// They're probably already deadchat engineering discussing what you did wrong
 		notify_ghosts(
 			"[src] has been activated!",
