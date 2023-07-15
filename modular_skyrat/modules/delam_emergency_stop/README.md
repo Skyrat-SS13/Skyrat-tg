@@ -27,7 +27,7 @@ File Location | Changed TG Proc
 
 File Location | Defines
 ------------- | -------
-code/__DEFINES/~skyrat_defines/events.dm		| `#define COMSIG_MAIN_SM_DELAMINATING "delam_time"`
+code/__DEFINES/~skyrat_defines/signals.dm		| `#define COMSIG_MAIN_SM_DELAMINATING "delam_time"`
 
 ### Master file additions
 
