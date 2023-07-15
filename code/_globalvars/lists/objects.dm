@@ -98,10 +98,6 @@ GLOBAL_LIST_EMPTY(joinable_mobs)
 /// List of all station alert consoles, /obj/machinery/computer/station_alert
 GLOBAL_LIST_EMPTY(alert_consoles)
 
-<<<<<<< HEAD
-GLOBAL_LIST_EMPTY(roundstart_station_borgcharger_areas) // List of area names of roundstart station cyborg rechargers, for the low charge/no charge cyborg screen alert tooltips.
-GLOBAL_LIST_EMPTY(roundstart_station_mechcharger_areas) // List of area names of roundstart station mech rechargers, for the low charge/no charge mech screen alert tooltips.
-=======
 /// List of area names of roundstart station cyborg rechargers, for the low charge/no charge cyborg screen alert tooltips.
 GLOBAL_LIST_EMPTY(roundstart_station_borgcharger_areas)
 /// List of area names of roundstart station mech rechargers, for the low charge/no charge mech screen alert tooltips.
@@ -109,4 +105,3 @@ GLOBAL_LIST_EMPTY(roundstart_station_mechcharger_areas)
 
 /// Associative list of alcoholic container typepath to instances, currently used by the alcoholic quirk
 GLOBAL_LIST_INIT(alcohol_containers, init_alcohol_containers())
->>>>>>> 2ee79d70778 (Bots no longer require PAIs to become sapient (#76691))

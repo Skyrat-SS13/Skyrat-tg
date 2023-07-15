@@ -108,7 +108,7 @@
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
-<<<<<<< HEAD
+#define ROLE_BOT "Bot"
 //SKYRAT EDIT START
 #define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
 #define ROLE_DS2 "DS2 Syndicate"
@@ -116,10 +116,7 @@
 #define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
 #define ROLE_PORT_TARKON "Port Tarkon Survivor"
 //SKYRAT EDIT END
-=======
-#define ROLE_BOT "Bot"
 
->>>>>>> 2ee79d70778 (Bots no longer require PAIs to become sapient (#76691))
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's

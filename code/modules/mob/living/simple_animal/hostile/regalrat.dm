@@ -56,49 +56,10 @@
 	riot.Grant(src)
 
 /mob/living/simple_animal/hostile/regalrat/Destroy()
-	. = ..()
 	QDEL_NULL(domain)
 	QDEL_NULL(riot)
 	return ..()
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/regalrat/proc/get_player()
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to play as the Regal Rat, cheesey be their crown?", ROLE_SENTIENCE, ROLE_SENTIENCE, 100, POLL_IGNORE_REGAL_RAT)
-	if(LAZYLEN(candidates) && !mind)
-		var/mob/dead/observer/C = pick(candidates)
-		key = C.key
-		notify_ghosts("All rise for the rat king, ascendant to the throne in \the [get_area(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Sentient Rat Created")
-	to_chat(src, span_notice("You are an independent, invasive force on the station! Horde coins, trash, cheese, and the like from the safety of darkness!"))
-
-/mob/living/simple_animal/hostile/regalrat/attack_ghost(mob/user)
-	. = ..()
-	if(. || !(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		return
-	get_clicked_player(user)
-
-/**
- * Sets a ghost to control the rat if the rat is eligible
- *
- * Asks the interacting ghost if they would like to control the rat.
- * If they answer yes, and another ghost hasn't taken control, sets the ghost to control the rat.
- * Arguments:
- * * mob/user - The ghost to possibly control the rat
- */
-/mob/living/simple_animal/hostile/regalrat/proc/get_clicked_player(mob/user)
-	if(key || stat)
-		return
-	if(!SSticker.HasRoundStarted())
-		to_chat(user, span_warning("You cannot assume control of this until after the round has started!"))
-		return
-	var/rat_ask = tgui_alert(usr, "Become the Royal Rat?", "Are you sure?", list("Yes", "No"))
-	if(rat_ask != "Yes" || QDELETED(src))
-		return
-	if(key)
-		to_chat(user, span_warning("Someone else already took the rat!"))
-		return
-	key = user.key
-	src.log_message("took control of [name].", LOG_GAME)
-=======
 /mob/living/simple_animal/hostile/regalrat/proc/became_player_controlled()
 	notify_ghosts(
 		"All rise for the rat king, ascendant to the throne in \the [get_area(src)].",
@@ -107,7 +68,6 @@
 		flashwindow = FALSE,
 		header = "Sentient Rat Created",
 	)
->>>>>>> 2ee79d70778 (Bots no longer require PAIs to become sapient (#76691))
 
 /mob/living/simple_animal/hostile/regalrat/handle_automated_action()
 	if(prob(20))
