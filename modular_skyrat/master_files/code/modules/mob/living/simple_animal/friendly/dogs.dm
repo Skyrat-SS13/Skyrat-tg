@@ -79,8 +79,6 @@
 	light_power = 0.8
 	light_on = FALSE
 
-	/// Has E-N been emagged already?
-	var/emagged = FALSE
 	/// A list of the things dropped when it dies
 	var/static/list/borgi_drops = list(/obj/effect/decal/cleanable/oil/slippery)
 	/// The threshold of HP before the borgi attacks non-friends
@@ -226,10 +224,10 @@
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_emag_act(mob/living/basic/pet/dog/target, mob/user)
 	SIGNAL_HANDLER
 
-	if(emagged)
-		return
+	if(obj_flags & EMAGGED)
+		return FALSE
 
-	emagged = TRUE
+	obj_flags |= EMAGGED
 
 	// Emote sleeps.
 	INVOKE_ASYNC(src, PROC_REF(emote), "exclaim")
@@ -241,6 +239,8 @@
 
 	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
+
+	return TRUE
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/explode_imminent()
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
@@ -278,7 +278,7 @@
 
 	// Emagged borgi?
 	var/mob/living/basic/pet/dog/corgi/borgi/borgi_pawn = controller.pawn
-	if(!istype(borgi_pawn) || !borgi_pawn.emagged)
+	if(!istype(borgi_pawn) || !(borgi_pawn.obj_flags & EMAGGED))
 		return
 
 	// Target if not already targetted and prob check passes.
