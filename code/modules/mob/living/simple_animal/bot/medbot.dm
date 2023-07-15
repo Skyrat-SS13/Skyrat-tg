@@ -71,7 +71,11 @@
 	COOLDOWN_DECLARE(last_tipping_action_voice)
 
 /mob/living/simple_animal/bot/medbot/autopatrol
+<<<<<<< HEAD
 	bot_mode_flags = BOT_MODE_ON | BOT_MODE_AUTOPATROL | BOT_MODE_REMOTE_ENABLED | BOT_MODE_PAI_CONTROLLABLE
+=======
+	bot_mode_flags = BOT_MODE_ON | BOT_MODE_AUTOPATROL | BOT_MODE_REMOTE_ENABLED | BOT_MODE_CAN_BE_SAPIENT
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 
 /mob/living/simple_animal/bot/medbot/stationary
 	medical_mode_flags = MEDBOT_DECLARE_CRIT | MEDBOT_STATIONARY_MODE | MEDBOT_SPEAK_MODE

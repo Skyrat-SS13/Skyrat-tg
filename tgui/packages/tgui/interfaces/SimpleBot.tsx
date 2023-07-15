@@ -23,6 +23,13 @@ type Settings = {
   airplane_mode: number;
   maintenance_lock: number;
   patrol_station: number;
+<<<<<<< HEAD
+=======
+  allow_possession: number;
+  possession_enabled: number;
+  has_personality: number;
+  pai_inserted: boolean;
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 };
 
 type Controls = {
@@ -59,13 +66,29 @@ export const SimpleBot = (props, context) => {
 /** Creates a lock button at the top of the controls */
 const TabDisplay = (props, context) => {
   const { act, data } = useBackend<SimpleBotContext>(context);
+<<<<<<< HEAD
   const { can_hack, has_access, locked, pai } = data;
   const { allow_pai } = pai;
+=======
+  const { can_hack, has_access, locked } = data;
+  const { allow_possession } = data.settings;
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 
   return (
     <>
       {!!can_hack && <HackButton />}
+<<<<<<< HEAD
       {!!allow_pai && <PaiButton />}
+=======
+      {!!allow_possession && <PaiButton />}
+      <Button
+        color="transparent"
+        icon="fa-poll-h"
+        onClick={() => act('rename')}
+        tooltip="Update the bot's name registration.">
+        Rename
+      </Button>
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
       <Button
         color="transparent"
         disabled={!has_access && !can_hack}
@@ -104,9 +127,15 @@ const HackButton = (props, context) => {
 /** Creates a button indicating PAI status and offers the eject action */
 const PaiButton = (props, context) => {
   const { act, data } = useBackend<SimpleBotContext>(context);
+<<<<<<< HEAD
   const { card_inserted } = data.pai;
 
   if (!card_inserted) {
+=======
+  const { pai_inserted } = data.settings;
+
+  if (!pai_inserted) {
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
     return (
       <Button
         color="transparent"
@@ -118,7 +147,11 @@ const PaiButton = (props, context) => {
   } else {
     return (
       <Button
+<<<<<<< HEAD
         disabled={!card_inserted}
+=======
+        disabled={!pai_inserted}
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
         icon="eject"
         onClick={() => act('eject_pai')}
         tooltip={multiline`Ejects the current PAI.`}>

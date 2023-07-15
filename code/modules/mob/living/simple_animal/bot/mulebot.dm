@@ -265,6 +265,12 @@
 	data["reportDelivery"] = report_delivery
 	data["haspai"] = paicard ? TRUE : FALSE
 	data["id"] = id
+<<<<<<< HEAD
+=======
+	data["allow_possession"] = bot_mode_flags & BOT_MODE_CAN_BE_SAPIENT
+	data["possession_enabled"] = can_be_possessed
+	data["pai_inserted"] = !!paicard
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	return data
 
 /mob/living/simple_animal/bot/mulebot/ui_act(action, params)

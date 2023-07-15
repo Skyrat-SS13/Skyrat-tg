@@ -9,7 +9,11 @@
 	radio_key = /obj/item/encryptionkey/headset_service //doesn't have security key
 	radio_channel = RADIO_CHANNEL_SERVICE //Doesn't even use the radio anyway.
 	bot_type = HONK_BOT
+<<<<<<< HEAD
 	bot_mode_flags = BOT_MODE_ON | BOT_MODE_REMOTE_ENABLED | BOT_MODE_PAI_CONTROLLABLE | BOT_MODE_AUTOPATROL
+=======
+	bot_mode_flags = BOT_MODE_ON | BOT_MODE_REMOTE_ENABLED | BOT_MODE_CAN_BE_SAPIENT | BOT_MODE_AUTOPATROL
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	hackables = "sound control systems"
 	path_image_color = "#FF69B4"
 	data_hud_type = DATA_HUD_SECURITY_BASIC //show jobs

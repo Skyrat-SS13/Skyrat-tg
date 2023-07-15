@@ -19,6 +19,12 @@ export const Mule = (props, context) => {
     destination,
     home,
     id,
+<<<<<<< HEAD
+=======
+    allow_possession,
+    possession_enabled,
+    pai_inserted,
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
     destinations = [],
   } = data;
   const locked = data.locked && !data.siliconUser;
@@ -74,11 +80,19 @@ export const Mule = (props, context) => {
                     onClick={() => act('unload')}
                   />
                 )}
+<<<<<<< HEAD
                 {!!haspai && (
                   <Button
                     icon="eject"
                     content="Eject PAI"
                     onClick={() => act('ejectpai')}
+=======
+                {!!pai_inserted && (
+                  <Button
+                    icon="eject"
+                    content="Eject PAI"
+                    onClick={() => act('eject_pai')}
+>>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
                   />
                 )}
               </>
