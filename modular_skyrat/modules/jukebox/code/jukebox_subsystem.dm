@@ -1,3 +1,5 @@
+#define HAS_JUKEBOX_PREF(mob) (!QDELETED(mob) && !isnull(mob.client) && mob.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox) && mob.can_hear())
+
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
 	wait = 5
@@ -57,7 +59,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		CRASH("Tried to remove jukebox with invalid ID")
 
 /datum/controller/subsystem/jukeboxes/proc/findjukeboxindex(obj/machinery/jukebox)
-	if(activejukeboxes.len)
+	if(length(activejukeboxes))
 		for(var/list/jukeinfo in activejukeboxes)
 			if(jukebox in jukeinfo)
 				return activejukeboxes.Find(jukeinfo)
@@ -81,10 +83,10 @@ SUBSYSTEM_DEF(jukeboxes)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/jukeboxes/fire()
-	if(!activejukeboxes.len)
+	if(!length(activejukeboxes))
 		return
 	for(var/list/jukeinfo in activejukeboxes)
-		if(!jukeinfo.len)
+		if(!length(jukeinfo))
 			stack_trace("Active jukebox without any associated metadata.")
 			continue
 		var/datum/track/juketrack = jukeinfo[1]
@@ -101,9 +103,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		song_played.falloff = jukeinfo[4]
 
 		for(var/mob/M in GLOB.player_list)
-			if(!M.client)
-				continue
-			if(!(M.client.prefs.read_preference(/datum/preference/toggle/sound_instruments)) || !M.can_hear())
+			if(!HAS_JUKEBOX_PREF(M))
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 
@@ -115,3 +115,5 @@ SUBSYSTEM_DEF(jukeboxes)
 			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], sound_to_use = song_played)
 			CHECK_TICK
 	return
+
+#undef HAS_JUKEBOX_PREF

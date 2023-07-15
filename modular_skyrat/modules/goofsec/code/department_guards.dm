@@ -694,7 +694,10 @@
 							span_hear("You hear a faint electrical spark."))
 		balloon_alert(user, "emagged")
 		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		obj_flags |= EMAGGED
 		emagged = TRUE
+		return TRUE
+	return FALSE
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"
