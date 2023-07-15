@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	///Whether or not the race has sexual characteristics (biological genders). At the moment this is only FALSE for skeletons and shadows
 	var/sexes = TRUE
-	///A bitfield of "bodytypes", updated by /datum/obj/item/bodypart/proc/synchronize_bodytypes()
+	///A bitfield of "bodytypes", updated by /obj/item/bodypart/proc/synchronize_bodytypes()
 	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 	///The maximum number of bodyparts this species can have.
@@ -65,8 +65,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/nojumpsuit = FALSE
 	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
 	var/say_mod = "says"
-	///What languages this species can understand and say. Use a [language holder datum][/datum/language_holder] in this var.
-	var/datum/language_holder/species_language_holder = /datum/language_holder
+	/// What languages this species can understand and say.
+	/// Use a [language holder datum][/datum/language_holder] typepath in this var.
+	/// Should never be null.
+	var/datum/language_holder/species_language_holder = /datum/language_holder/human_basic
 	/**
 	  * Visible CURRENT bodyparts that are unique to a species.
 	  * DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK
@@ -201,8 +203,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	/// This supresses the "dosen't appear to be himself" examine text for if the mob is run by an AI controller. Should be used on any NPC human subtypes. Monkeys are the prime example.
 	var/ai_controlled_species = FALSE
 
-	/// Was on_species_gain ever actually called?
-	/// Species code is really odd...
+	/**
+	 * Was on_species_gain ever actually called?
+	 * Species code is really odd...
+	 **/
 	var/properly_gained = FALSE
 
 ///////////
@@ -464,14 +468,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	// Drop the items the new species can't wear
-	if((AGENDER in species_traits))
+
+	if(AGENDER in species_traits)
 		C.gender = PLURAL
+
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
-
-	if(inherent_biotypes & MOB_MINERAL && !(old_species.inherent_biotypes & MOB_MINERAL)) // if the mob was previously not of the MOB_MINERAL biotype when changing to MOB_MINERAL
-		C.adjustToxLoss(-C.getToxLoss(), forced = TRUE) // clear the organic toxin damage upon turning into a MOB_MINERAL, as they are now immune
 
 	C.mob_biotypes = inherent_biotypes
 	C.mob_respiration_type = inherent_respiration_type
@@ -481,6 +483,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	regenerate_organs(C, old_species, visual_only = C.visual_only_organs)
 
+	// Drop the items the new species can't wear
 	INVOKE_ASYNC(src, PROC_REF(worn_items_fit_body_check), C, TRUE)
 
 	//Assigns exotic blood type if the species has one
@@ -504,32 +507,20 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(length(inherent_traits))
 		C.add_traits(inherent_traits, SPECIES_TRAIT)
 
-	if(TRAIT_VIRUSIMMUNE in inherent_traits)
-		for(var/datum/disease/A in C.diseases)
-			A.cure(FALSE)
-
-	if(TRAIT_TOXIMMUNE in inherent_traits)
-		C.setToxLoss(0, TRUE, TRUE)
-
-	// SKYRAT EDIT ADDITION
-	if(TRAIT_OXYIMMUNE in inherent_traits)
-		C.setOxyLoss(0, TRUE, TRUE)
-
-	for(var/obj/item/bodypart/limb in C.bodyparts)
-		limb.alpha = specific_alpha
-	// SKYRAT EDIT END
-
-	if(TRAIT_NOMETABOLISM in inherent_traits)
-		C.reagents.end_metabolization(C, keep_liverless = TRUE)
-
-	if(TRAIT_GENELESS in inherent_traits)
-		C.dna.remove_all_mutations() // Radiation immune mobs can't get mutations normally
-
 	if(inherent_factions)
 		for(var/i in inherent_factions)
 			C.faction += i //Using +=/-= for this in case you also gain the faction from a different source.
 
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+	// All languages associated with this language holder are added with source [LANGUAGE_SPECIES]
+	// rather than source [LANGUAGE_ATOM], so we can track what to remove if our species changes again
+	var/datum/language_holder/gaining_holder = GLOB.prototype_language_holders[species_language_holder]
+	for(var/language in gaining_holder.understood_languages)
+		C.grant_language(language, UNDERSTOOD_LANGUAGE, LANGUAGE_SPECIES)
+	for(var/language in gaining_holder.spoken_languages)
+		C.grant_language(language, SPOKEN_LANGUAGE, LANGUAGE_SPECIES)
+	for(var/language in gaining_holder.blocked_languages)
+		C.add_blocked_language(language, LANGUAGE_SPECIES)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
@@ -547,8 +538,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
-	if(C.dna.species.exotic_bloodtype)
-		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 	for(var/obj/item/organ/external/organ in C.organs)
@@ -572,6 +561,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	clear_tail_moodlets(C)
 
 	C.remove_movespeed_modifier(/datum/movespeed_modifier/species)
+	// Removes all languages previously associated with [LANGUAGE_SPECIES], gaining our new species will add new ones back
+	var/datum/language_holder/losing_holder = GLOB.prototype_language_holders[species_language_holder]
+	for(var/language in losing_holder.understood_languages)
+		C.remove_language(language, UNDERSTOOD_LANGUAGE, LANGUAGE_SPECIES)
+	for(var/language in losing_holder.spoken_languages)
+		C.remove_language(language, SPOKEN_LANGUAGE, LANGUAGE_SPECIES)
+	for(var/language in losing_holder.blocked_languages)
+		C.remove_blocked_language(language, LANGUAGE_SPECIES)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
@@ -603,7 +600,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		quirk.mail_goodies = mail_goodies
 		return
 	if(istype(quirk, /datum/quirk/blooddeficiency))
-		if(HAS_TRAIT(recipient, TRAIT_NOBLOOD) && isnull(recipient.dna.species.exotic_blood)) // no blood packs should be sent in this case (like if a mob transforms into a plasmaman)
+		if(HAS_TRAIT(recipient, TRAIT_NOBLOOD)) // no blood packs should be sent in this case (like if a mob transforms into a plasmaman)
 			quirk.mail_goodies = list()
 			return
 
@@ -873,13 +870,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	return
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
-	if(HAS_TRAIT(H, TRAIT_NOBREATH))
-		H.setOxyLoss(0)
-		H.losebreath = 0
-
-		var/takes_crit_damage = (!HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
-		if((H.health < H.crit_threshold) && takes_crit_damage && H.stat != DEAD)
-			H.adjustBruteLoss(0.5 * seconds_per_tick)
+	SHOULD_CALL_PARENT(TRUE)
+	if(H.stat == DEAD)
+		return
+	if(HAS_TRAIT(H, TRAIT_NOBREATH) && (H.health < H.crit_threshold) && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
+		H.adjustBruteLoss(0.5 * seconds_per_tick)
 
 /datum/species/proc/spec_death(gibbed, mob/living/carbon/human/H)
 	return
@@ -1049,22 +1044,24 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	return
 
 /**
- * Handling special reagent types.
+ * Handling special reagent interactions.
  *
- * Return False to run the normal on_mob_life() for that reagent.
- * Return True to not run the normal metabolism effects.
- * NOTE: If you return TRUE, that reagent will not be removed liike normal! You must handle it manually.
- */
-/datum/species/proc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
+ * Return null continue running the normal on_mob_life() for that reagent.
+ * Return COMSIG_MOB_STOP_REAGENT_CHECK to not run the normal metabolism effects.
+ *
+ * NOTE: If you return COMSIG_MOB_STOP_REAGENT_CHECK, that reagent will not be removed liike normal! You must handle it manually.
+ **/
+/datum/species/proc/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
 	SHOULD_CALL_PARENT(TRUE)
 	if(chem.type == exotic_blood)
-		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
-		H.reagents.del_reagent(chem.type)
-		return TRUE
+		affected.blood_volume = min(affected.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
+		affected.reagents.del_reagent(chem.type)
+		return COMSIG_MOB_STOP_REAGENT_CHECK
 	if(!chem.overdosed && chem.overdose_threshold && chem.volume >= chem.overdose_threshold)
 		chem.overdosed = TRUE
-		chem.overdose_start(H)
-		H.log_message("has started overdosing on [chem.name] at [chem.volume] units.", LOG_GAME)
+		chem.overdose_start(affected)
+		affected.log_message("has started overdosing on [chem.name] at [chem.volume] units.", LOG_GAME)
+	return SEND_SIGNAL(affected, COMSIG_SPECIES_HANDLE_CHEMICAL, chem, seconds_per_tick, times_fired)
 
 /datum/species/proc/check_species_weakness(obj/item, mob/living/attacker)
 	return 1 //This is not a boolean, it's the multiplier for the damage that the user takes from the item. The force of the item is multiplied by this value
@@ -2303,21 +2300,23 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * Returns a list containing perks, or an empty list.
  */
 /datum/species/proc/create_pref_language_perk()
-	var/list/to_add = list()
 
 	// Grab galactic common as a path, for comparisons
 	var/datum/language/common_language = /datum/language/common
 
 	// Now let's find all the languages they can speak that aren't common
 	var/list/bonus_languages = list()
-	var/datum/language_holder/temp_holder = new species_language_holder()
-	for(var/datum/language/language_type as anything in temp_holder.spoken_languages)
+	var/datum/language_holder/basic_holder = GLOB.prototype_language_holders[species_language_holder]
+	for(var/datum/language/language_type as anything in basic_holder.spoken_languages)
 		if(ispath(language_type, common_language))
 			continue
 		bonus_languages += initial(language_type.name)
 
-	// If we have any languages we can speak: create a perk for them all
-	if(length(bonus_languages))
+	if(!length(bonus_languages))
+		return // You're boring
+
+	var/list/to_add = list()
+	if(common_language in basic_holder.spoken_languages)
 		to_add += list(list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "comment",
@@ -2329,7 +2328,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			// SKYRAT EDIT END
 		))
 
-	qdel(temp_holder)
+	else
+		to_add += list(list(
+			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+			SPECIES_PERK_ICON = "comment",
+			SPECIES_PERK_NAME = "Foreign Speaker",
+			SPECIES_PERK_DESC = "[plural_form] may not speak [initial(common_language.name)], but they can speak [english_list(bonus_languages)].",
+		))
 
 	return to_add
 

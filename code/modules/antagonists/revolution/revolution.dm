@@ -522,7 +522,6 @@
 	for (var/datum/mind/rev_head as anything in ex_headrevs)
 		if(!isnull(rev_head.current))
 			ADD_TRAIT(rev_head.current, TRAIT_DEFIB_BLACKLISTED, REF(src))
-			rev_head.current.med_hud_set_status()
 
 	for(var/datum/objective/mutiny/head_tracker in objectives)
 		var/mob/living/head_of_staff = head_tracker.target?.current

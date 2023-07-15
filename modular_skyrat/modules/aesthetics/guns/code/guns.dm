@@ -44,6 +44,11 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
+/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
