@@ -230,7 +230,7 @@
 
 	damaged_sm.name = "partially delaminated supermatter crystal"
 	damaged_sm.desc = "This crystal has seen better days, the glow seems off and the shards look brittle. Central says it's still \"relatively safe.\" They'd never lie to us, right?"
-	damaged_sm.explosion_power = SUPERMATTER_DAMAGED // if you fuck up again, yeesh
+	damaged_sm.explosion_power = SM_DAMAGED_EXPLOSION_POWER // if you fuck up again, yeesh
 
 	if(damaged_sm.damage > SM_PREVENT_EXPLOSION_THRESHOLD)
 		damaged_sm.damage = SM_PREVENT_EXPLOSION_THRESHOLD
