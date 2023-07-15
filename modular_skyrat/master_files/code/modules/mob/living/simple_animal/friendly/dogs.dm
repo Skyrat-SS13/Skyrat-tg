@@ -79,6 +79,8 @@
 	light_power = 0.8
 	light_on = FALSE
 
+	/// Has E-N been emagged already?
+	var/emagged = FALSE
 	/// A list of the things dropped when it dies
 	var/static/list/borgi_drops = list(/obj/effect/decal/cleanable/oil/slippery)
 	/// The threshold of HP before the borgi attacks non-friends
@@ -224,10 +226,10 @@
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_emag_act(mob/living/basic/pet/dog/target, mob/user)
 	SIGNAL_HANDLER
 
-	if(obj_flags & EMAGGED)
+	if(emagged)
 		return FALSE
 
-	obj_flags |= EMAGGED
+	emagged = TRUE
 
 	// Emote sleeps.
 	INVOKE_ASYNC(src, PROC_REF(emote), "exclaim")
@@ -278,7 +280,7 @@
 
 	// Emagged borgi?
 	var/mob/living/basic/pet/dog/corgi/borgi/borgi_pawn = controller.pawn
-	if(!istype(borgi_pawn) || !(borgi_pawn.obj_flags & EMAGGED))
+	if(!istype(borgi_pawn) || !borgi_pawn.emagged)
 		return
 
 	// Target if not already targetted and prob check passes.
