@@ -19,11 +19,8 @@
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
 		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
-	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
+		TRAIT_ROBOTIC_DNA_ORGANS,
+		TRAIT_NO_TRANSFORMATION_STING,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -125,7 +122,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		target.add_traits(list(TRAIT_MUTANT_COLORS), SPECIES_TRAIT)
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
