@@ -57,11 +57,11 @@
 		if(HAS_TRAIT(drinker, TRAIT_LIGHT_DRINKER))
 			booze_power *= 2
 		// Volume, power, and server alcohol rate effect how quickly one gets drunk
-		drinker.adjust_drunk_effect(sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
+		drinker.adjust_drunk_effect(sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick * 0.25) // SKYRAT EDIT CHANGE - Alcohol Tolerance - Original: (sqrt(volume) * booze_power * ALCOHOL_RATE * REM * seconds_per_tick)
 		if(boozepwr > 0)
 			var/obj/item/organ/internal/liver/liver = drinker.get_organ_slot(ORGAN_SLOT_LIVER)
 			if (istype(liver))
-				liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * seconds_per_tick, 0))/150))
+				liver.apply_organ_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * seconds_per_tick, 0))/300)) // SKYRAT EDIT CHANGE - Alcohol Tolerance - Original: (((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * liver.alcohol_tolerance * seconds_per_tick, 0))/150))
 	return ..()
 
 /datum/reagent/consumable/ethanol/expose_obj(obj/exposed_obj, reac_volume)
@@ -129,7 +129,7 @@
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety is dyed a festive green."
-	color = "#A8E61D"
+	color = COLOR_CRAYON_GREEN
 	taste_description = "green piss water"
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -2002,17 +2002,18 @@
 	taste_description = "the pain of ten thousand slain mosquitos"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
+/datum/reagent/consumable/ethanol/bug_spray/on_new(data)
+	. = ..()
+	AddElement(/datum/element/bugkiller_reagent)
+
 /datum/reagent/consumable/ethanol/bug_spray/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	//Bugs should not drink Bug spray.
-	if(ismoth(drinker) || isflyperson(drinker))
-		drinker.adjustToxLoss(1 * REM * seconds_per_tick, FALSE, required_biotype = affected_biotype)
-	return ..()
-
-/datum/reagent/consumable/ethanol/bug_spray/on_mob_metabolize(mob/living/carbon/drinker)
-
-	if(ismoth(drinker) || isflyperson(drinker))
+	// Does some damage to bug biotypes
+	var/did_damage = drinker.adjustToxLoss(1 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = MOB_BUG)
+	// Random chance of causing a screm if we did some damage
+	if(did_damage && SPT_PROB(2, seconds_per_tick))
 		drinker.emote("scream")
-	return ..()
+
+	return ..() || did_damage
 
 /datum/reagent/consumable/ethanol/applejack
 	name = "Applejack"

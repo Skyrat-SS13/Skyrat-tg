@@ -3,18 +3,15 @@
 	desc = "We fall into a stasis, allowing us to regenerate and trick our enemies. Costs 15 chemicals."
 	button_icon_state = "fake_death"
 	chemical_cost = 15
-	dna_cost = 0
+	dna_cost = CHANGELING_POWER_INNATE
 	req_dna = 1
 	req_stat = DEAD
 	ignores_fakedeath = TRUE
-<<<<<<< HEAD
-=======
 
 	/// How long it takes for revival to ready upon entering stasis.
 	/// The changeling can opt to stay in fakedeath for longer, though.
 	var/fakedeath_duration = 40 SECONDS
 	/// If TRUE, we're ready to revive and can click the button to heal.
->>>>>>> 0e85aa3220f (Lets you enter fakedeath when dead (#76666))
 	var/revive_ready = FALSE
 
 //Fake our own death and fully heal. You will appear to be dead but regenerate fully after a short delay.
@@ -22,18 +19,6 @@
 	..()
 	if(revive_ready)
 		INVOKE_ASYNC(src, PROC_REF(revive), user)
-<<<<<<< HEAD
-		revive_ready = FALSE
-		chemical_cost = 15
-		to_chat(user, span_notice("We have revived ourselves."))
-		build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
-	else
-		to_chat(user, span_notice("We begin our stasis, preparing energy to arise once more."))
-		user.fakedeath(CHANGELING_TRAIT) //play dead
-		addtimer(CALLBACK(src, PROC_REF(ready_to_regenerate), user), LING_FAKEDEATH_TIME, TIMER_UNIQUE)
-	return TRUE
-
-=======
 		disable_revive(user) // this should be already called via signal, but just incase something wacky happens
 
 	else if(enable_fakedeath(user))
@@ -95,9 +80,10 @@
 	source.cure_fakedeath(CHANGELING_TRAIT)
 	to_chat(source, span_changeling("We exit our stasis early."))
 
->>>>>>> 0e85aa3220f (Lets you enter fakedeath when dead (#76666))
 /datum/action/changeling/fakedeath/proc/revive(mob/living/carbon/user)
 	if(!istype(user))
+		return
+	if(!HAS_TRAIT_FROM(user, TRAIT_DEATHCOMA, CHANGELING_TRAIT))
 		return
 
 	user.cure_fakedeath(CHANGELING_TRAIT)
@@ -105,10 +91,7 @@
 	var/flags_to_heal = (HEAL_DAMAGE|HEAL_BODY|HEAL_STATUS|HEAL_CC_STATUS)
 	// but leave out limbs so we can do it specially
 	user.revive(flags_to_heal & ~HEAL_LIMBS)
-<<<<<<< HEAD
-=======
 	to_chat(user, span_changeling("We have revived ourselves."))
->>>>>>> 0e85aa3220f (Lets you enter fakedeath when dead (#76666))
 
 	var/static/list/dont_regenerate = list(BODY_ZONE_HEAD) // headless changelings are funny
 	if(!length(user.get_missing_limbs() - dont_regenerate))
@@ -125,22 +108,17 @@
 	user.regenerate_limbs(dont_regenerate)
 
 /datum/action/changeling/fakedeath/proc/ready_to_regenerate(mob/user)
-	if(!user?.mind)
+	if(QDELETED(src) || QDELETED(user))
 		return
 
-	var/datum/antagonist/changeling/ling = user.mind.has_antag_datum(/datum/antagonist/changeling)
-	if(!ling || !(src in ling.innate_powers))
+	var/datum/antagonist/changeling/ling = user.mind?.has_antag_datum(/datum/antagonist/changeling)
+	if(QDELETED(ling) || !(src in ling.innate_powers + ling.purchased_powers)) // checking both innate and purchased for full coverage
+		return
+	if(!HAS_TRAIT_FROM(user, TRAIT_DEATHCOMA, CHANGELING_TRAIT))
 		return
 
-<<<<<<< HEAD
-	to_chat(user, span_notice("We are ready to revive."))
-	chemical_cost = 0
-	revive_ready = TRUE
-	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
-=======
 	to_chat(user, span_changeling("We are ready to revive."))
 	enable_revive(user)
->>>>>>> 0e85aa3220f (Lets you enter fakedeath when dead (#76666))
 
 /datum/action/changeling/fakedeath/can_sting(mob/living/user)
 	if(revive_ready)

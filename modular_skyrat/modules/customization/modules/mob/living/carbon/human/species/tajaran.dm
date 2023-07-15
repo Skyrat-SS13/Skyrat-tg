@@ -1,17 +1,15 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_HATED_BY_DOGS,
+		TRAIT_MUTANT_COLORS,
 	)
-	mutanttongue = /obj/item/organ/internal/tongue/cat
+	mutanttongue = /obj/item/organ/internal/tongue/cat/tajaran
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -20,8 +18,6 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	disliked_food = CLOTH
-	liked_food = GRAIN | MEAT
 	payday_modifier = 0.75
 	species_language_holder = /datum/language_holder/tajaran
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -34,6 +30,12 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
+
+
+/obj/item/organ/internal/tongue/cat/tajaran
+	liked_foodtypes = GRAIN | MEAT
+	disliked_foodtypes = CLOTH
+
 
 /datum/species/tajaran/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color

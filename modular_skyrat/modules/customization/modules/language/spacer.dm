@@ -1,6 +1,6 @@
 /datum/language/spacer
 	name = "Spacer"
-	desc = "A rough, informal language used infrequently by humans as a last resort when attempts to establish dialogue in more proper languages fail and no autotranslators are available."
+	desc = "A rough, informal tongue used as a last resort when attempts to establish dialogue in more proper languages fail and no automatic translators are available. It relies heavily on tone, body language, signing, and a multitude of creole loanwords. While its use has fallen severely over the years, it's still practiced by a quantity of Frontier crews and favored by the Free Trade Union."
 	key = "j"
 	flags = TONGUELESS_SPEECH
 	syllables = list(

@@ -1,14 +1,12 @@
 /datum/species/humanoid
 	name = "Humanoid"
 	id = SPECIES_HUMANOID
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
