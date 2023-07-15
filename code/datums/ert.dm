@@ -118,8 +118,6 @@
 	polldesc = "a Centcom-hired bounty hunting gang"
 	random_names = FALSE
 	ert_template = /datum/map_template/shuttle/ert/bounty
-<<<<<<< HEAD
-=======
 
 /datum/ert/militia
 	roles = list(/datum/antagonist/ert/militia)
@@ -130,4 +128,3 @@
 	mission = "Having heard the station's request for aid, assist the crew in defending themselves."
 	polldesc = "an independent station defense militia"
 	random_names = TRUE
->>>>>>> 982c4bcad4c (Frontier Militia ERT Fix [NO GBP] (#76454))

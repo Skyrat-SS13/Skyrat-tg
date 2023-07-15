@@ -537,8 +537,6 @@
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	glasses = /obj/item/clothing/glasses/hud/diagnostic/sunglasses
 	additional_radio = /obj/item/encryptionkey/heads/ce
-<<<<<<< HEAD
-=======
 
 /datum/outfit/centcom/militia
 	name = "Militia Man"
@@ -568,4 +566,3 @@
 	head = /obj/item/clothing/head/beret/militia
 	l_hand = /obj/item/megaphone
 	suit_store = /obj/item/gun/energy/laser/musket/prime
->>>>>>> 982c4bcad4c (Frontier Militia ERT Fix [NO GBP] (#76454))
