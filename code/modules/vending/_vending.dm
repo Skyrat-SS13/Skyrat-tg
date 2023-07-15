@@ -64,7 +64,7 @@
 	payment_department = ACCOUNT_SRV
 	light_power = 0.7
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
-	voice_filter = "aderivative"
+	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
 
 	/// Is the machine active (No sales pitches if off)!
 	var/active = 1
@@ -165,10 +165,11 @@
 	  * Is this item on station or not
 	  *
 	  * if it doesn't originate from off-station during mapload, everything is free
+	  * if it's off-station during mapload, it's also safe from the brand intelligence event
 	  */
-	var/onstation = TRUE //if it doesn't originate from off-station during mapload, everything is free
-	///A variable to change on a per instance basis on the map that allows the instance to force cost and ID requirements
-	var/onstation_override = FALSE //change this on the object on the map to override the onstation check. DO NOT APPLY THIS GLOBALLY.
+	var/onstation = TRUE
+	///A variable to change on a per instance basis on the map that allows the instance to force cost and ID requirements. DO NOT APPLY THIS GLOBALLY.
+	var/onstation_override = FALSE
 
 	var/list/vending_machine_input = list()
 	///Display header on the input view
@@ -206,7 +207,7 @@
 		circuit = null
 		build_inv = TRUE
 	. = ..()
-	wires = new /datum/wires/vending(src)
+	set_wires(new /datum/wires/vending(src))
 
 	if(SStts.tts_enabled)
 		var/static/vendor_voice_by_type = list()
@@ -712,7 +713,7 @@
 						buckle_mob(C, force=TRUE)
 						C.visible_message(span_danger("[C] is pinned underneath [src]!"), \
 							span_userdanger("You are pinned down by [src]!"))
-					if(3) // glass candy
+					if(3, 4) // glass candy // SKYRAT EDIT CHANGE - Original 3
 						crit_rebate = 50
 						for(var/i in 1 to num_shards)
 							var/obj/item/shard/shard = new /obj/item/shard(get_turf(C))
@@ -721,11 +722,11 @@
 							C.hitby(shard, skipcatch = TRUE, hitpush = FALSE)
 							shard.embedding = list()
 							shard.updateEmbedding()
-					if(4) // paralyze this binch
+					if(4, 5) // paralyze this binch // SKYRAT EDIT CHANGE - Original 4
 						// the new paraplegic gets like 4 lines of losing their legs so skip them
 						visible_message(span_danger("[C]'s spinal cord is obliterated with a sickening crunch!"), ignored_mobs = list(C))
 						C.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic)
-					if(5) // limb squish!
+					if(6) // limb squish! // SKYRAT EDIT CHANGE - Original 5
 						for(var/i in C.bodyparts)
 							var/obj/item/bodypart/squish_part = i
 							if(IS_ORGANIC_LIMB(squish_part))
@@ -735,6 +736,8 @@
 								squish_part.receive_damage(brute=30)
 						C.visible_message(span_danger("[C]'s body is maimed underneath the mass of [src]!"), \
 							span_userdanger("Your body is maimed underneath the mass of [src]!"))
+					// SKYRAT EDIT REMOVAL BEGIN
+					/*
 					if(6) // skull squish!
 						var/obj/item/bodypart/head/O = C.get_bodypart(BODY_ZONE_HEAD)
 						if(O)
@@ -744,13 +747,15 @@
 								O.drop_organs()
 								qdel(O)
 								new /obj/effect/gibspawner/human/bodypartless(get_turf(C))
+					*/
+					// SKYRAT EDIT REMOVAL END
 
 				if(prob(30))
 					C.apply_damage(max(0, squish_damage - crit_rebate), forced=TRUE, spread_damage=TRUE) // the 30% chance to spread the damage means you escape breaking any bones
 				else
 					C.take_bodypart_damage((squish_damage - crit_rebate)*0.5, wound_bonus = 5) // otherwise, deal it to 2 random limbs (or the same one) which will likely shatter something
 					C.take_bodypart_damage((squish_damage - crit_rebate)*0.5, wound_bonus = 5)
-				C.AddElement(/datum/element/squish, 80 SECONDS)
+				// C.AddElement(/datum/element/squish, 80 SECONDS) // SKYRAT EDIT REMOVAL
 			else
 				L.visible_message(span_danger("[L] is crushed by [src]!"), \
 				span_userdanger("You are crushed by [src]!"))

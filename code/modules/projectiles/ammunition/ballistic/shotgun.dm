@@ -94,7 +94,6 @@
 	pellets = 6
 	variance = 20
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2)
-	harmful = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "custom incapacitating shot"
@@ -162,3 +161,10 @@
 	reagents.add_reagent(/datum/reagent/toxin/mutetoxin, 6) //;HELP OPS IN MAINT
 	reagents.add_reagent(/datum/reagent/toxin/coniine, 6)
 	reagents.add_reagent(/datum/reagent/toxin/sodium_thiopental, 6)
+
+/obj/item/ammo_casing/shotgun/breacher
+	name = "breaching slug"
+	desc = "A 12 gauge anti-material slug. Great for breaching airlocks and windows, quickly and efficiently."
+	icon_state = "breacher"
+	projectile_type = /obj/projectile/bullet/shotgun_breaching
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2)

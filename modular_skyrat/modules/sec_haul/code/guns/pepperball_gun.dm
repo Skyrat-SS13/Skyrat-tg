@@ -13,7 +13,7 @@
 	fire_sound_volume = 50
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -60,7 +60,7 @@
 	name = "Pepperball Ammo Box"
 	id = "pepperballs"
 	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 5000)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)
 	build_path = /obj/item/ammo_box/advanced/pepperballs
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
@@ -68,7 +68,7 @@
 /obj/item/ammo_box/advanced/pepperballs
 	name = "pepperball ammo box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box10x24-full"
+	icon_state = "box10x24"
 	ammo_type = /obj/item/ammo_casing/pepperball
-	custom_materials = list(/datum/material/iron = 5000)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)
 	max_ammo = 15

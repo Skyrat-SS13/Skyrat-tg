@@ -76,7 +76,7 @@
 	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/thermal_regulator,
-		/obj/item/mod/module/status_readout/generic,
+		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/auto_doc,
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/mod/module/jetpack/advanced,
@@ -158,7 +158,7 @@
 	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/thermal_regulator,
-		/obj/item/mod/module/status_readout/generic,
+		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/paper_dispenser,
@@ -170,12 +170,14 @@
 	)
 
 ///Unrelated-to-Spider-Clan version of the module.
-/obj/item/mod/module/status_readout/generic
-	name = "MOD status readout module"
-	desc = "A once-common module, this technology went unfortunately out of fashion; \
-		but still remaining in older suit variations. This hooks into the suit's spine, \
+/obj/item/mod/module/status_readout/operational
+	name = "MOD operational status readout module"
+	desc = "A once-common module, this technology unfortunately went out of fashion in the safer regions of space; \
+		however, it remained in use everywhere else. This particular unit hooks into the suit's spine, \
 		capable of capturing and displaying all possible biometric data of the wearer; sleep, nutrition, fitness, fingerprints, \
-		and even useful information such as their overall health and wellness."
+		and even useful information such as their overall health and wellness. The vitals monitor also comes with a speaker, loud enough \
+		to alert anyone nearby that someone has, in fact, died. This specific unit has a clock and operational ID readout."
+	show_time = TRUE
 
 ///Blatant copy of the adrenaline boost module.
 /obj/item/mod/module/auto_doc
@@ -298,10 +300,10 @@
 	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
-	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(mod, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 
 /obj/item/mod/module/auto_doc/on_uninstall(deleting)
-	UnregisterSignal(mod, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
 
 /obj/item/mod/module/auto_doc/attackby(obj/item/attacking_item, mob/user, params)
 	if(charge_boost(attacking_item, user))

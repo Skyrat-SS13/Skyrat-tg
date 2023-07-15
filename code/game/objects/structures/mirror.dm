@@ -3,6 +3,7 @@
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
+	movement_type = FLOATING
 	density = FALSE
 	anchored = TRUE
 	max_integrity = 200
@@ -10,10 +11,14 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
-/obj/structure/mirror/Initialize(mapload)
+/obj/structure/mirror/broken
+	icon_state = "mirror_broke"
+
+/obj/structure/mirror/broken/Initialize(mapload)
 	. = ..()
-	if(icon_state == "mirror_broke" && !broken)
-		atom_break(null, mapload)
+	atom_break(null, mapload)
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
@@ -105,7 +110,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	if(!broken)
 		return TRUE
 
-	if(!I.tool_start_check(user, amount=0))
+	if(!I.tool_start_check(user, amount=1))
 		return TRUE
 
 	balloon_alert(user, "repairing...")
@@ -211,7 +216,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 					amazed_human.skin_tone = new_s_tone
 					amazed_human.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
-			if(MUTCOLORS in amazed_human.dna.species.species_traits)
+			if(HAS_TRAIT(amazed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(amazed_human, TRAIT_FIXED_MUTANT_COLORS))
 				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", amazed_human.dna.features["mcolor"]) as color|null
 				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return TRUE

@@ -16,12 +16,15 @@
 
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
+		var/currently_targeted = (room == targeted_soulcatcher_room)
+
 		var/list/room_data = list(
 		"name" = html_decode(room.name),
 		"description" = html_decode(room.room_description),
 		"reference" = REF(room),
 		"joinable" = room.joinable,
 		"color" = room.room_color,
+		"currently_targeted" = currently_targeted,
 		)
 
 		for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
@@ -35,12 +38,13 @@
 				"outside_sight" = soul.outside_sight,
 				"able_to_emote" = soul.able_to_emote,
 				"able_to_speak" = soul.able_to_speak,
-				"ooc_notes" = soul.ooc_notes
+				"able_to_rename" = soul.able_to_rename,
+				"ooc_notes" = soul.ooc_notes,
+				"scan_needed" = soul.body_scan_needed,
 			)
 			room_data["souls"] += list(soul_list)
 
 		data["current_rooms"] += list(room_data)
-
 
 	return data
 
@@ -74,7 +78,12 @@
 				return FALSE
 
 			soulcatcher_rooms -= target_room
+			targeted_soulcatcher_room = soulcatcher_rooms[1]
 			qdel(target_room)
+			return TRUE
+
+		if("change_targeted_room")
+			targeted_soulcatcher_room = target_room
 			return TRUE
 
 		if("create_room")
@@ -182,6 +191,24 @@
 
 			return TRUE
 
+		if("toggle_soul_renaming")
+			target_soul.able_to_rename = !target_soul.able_to_rename
+			return TRUE
+
+		if("change_name")
+			var/new_name = tgui_input_text(usr, "Enter a new name for [target_soul]", "Soulcatcher", target_soul)
+			if(!new_name)
+				return FALSE
+
+			target_soul.change_name(new_name)
+			return TRUE
+
+		if("reset_name")
+			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+				return FALSE
+
+			target_soul.reset_name()
+
 		if("send_message")
 			var/message_to_send = ""
 			var/emote = params["emote"]
@@ -196,3 +223,90 @@
 
 			target_room.send_message(message_to_send, message_sender, emote)
 			return TRUE
+
+/datum/component/soulcatcher_user/New()
+	. = ..()
+	var/mob/living/soulcatcher_soul/parent_soul = parent
+	if(!istype(parent_soul))
+		return COMPONENT_INCOMPATIBLE
+
+	return TRUE
+
+/datum/component/soulcatcher_user/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(usr, src, ui)
+	if(!ui)
+		ui = new(usr, src, "SoulcatcherUser")
+		ui.open()
+
+/datum/component/soulcatcher_user/ui_state(mob/user)
+	return GLOB.conscious_state
+
+/datum/component/soulcatcher_user/ui_data(mob/user)
+	var/list/data = list()
+
+	var/mob/living/soulcatcher_soul/user_soul = parent
+	if(!istype(user_soul))
+		return FALSE //uhoh
+
+	data["user_data"] = list(
+		"name" = user_soul.name,
+		"description" = user_soul.soul_desc,
+		"reference" = REF(user_soul),
+		"internal_hearing" = user_soul.internal_hearing,
+		"internal_sight" = user_soul.internal_sight,
+		"outside_hearing" = user_soul.outside_hearing,
+		"outside_sight" = user_soul.outside_sight,
+		"able_to_emote" = user_soul.able_to_emote,
+		"able_to_speak" = user_soul.able_to_speak,
+		"able_to_rename" = user_soul.able_to_rename,
+		"ooc_notes" = user_soul.ooc_notes,
+		"scan_needed" = user_soul.body_scan_needed,
+	)
+
+	var/datum/soulcatcher_room/current_room = user_soul.current_room.resolve()
+	data["current_room"] = list(
+		"name" = html_decode(current_room.name),
+		"description" = html_decode(current_room.room_description),
+		"reference" = REF(current_room),
+		"color" = current_room.room_color,
+		"owner" = current_room.outside_voice,
+		)
+
+	for(var/mob/living/soulcatcher_soul/soul in current_room.current_souls)
+		if(soul == user_soul)
+			continue
+
+		var/list/soul_list = list(
+			"name" = soul.name,
+			"description" = soul.soul_desc,
+			"ooc_notes" = soul.ooc_notes,
+			"reference" = REF(soul),
+		)
+		data["souls"] += list(soul_list)
+
+	return data
+
+/datum/component/soulcatcher_user/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/soulcatcher_soul/user_soul = parent
+	if(!istype(user_soul))
+		return FALSE
+
+	switch(action)
+		if("change_name")
+			var/new_name = tgui_input_text(usr, "Enter a new name", "Soulcatcher", user_soul.name)
+			if(!new_name)
+				return FALSE
+
+			user_soul.change_name(new_name)
+			return TRUE
+
+		if("reset_name")
+			if(tgui_alert(usr, "Do you wish to reset your name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+				return FALSE
+
+			user_soul.reset_name()
+

@@ -40,7 +40,10 @@
 	. = ..()
 	force = force_unwielded
 	//decent in a pinch, but pretty bad.
-	AddComponent(/datum/component/jousting)
+	AddComponent(/datum/component/jousting, \
+		max_tile_charge = 9, \
+		min_tile_charge = 6, \
+		)
 
 	AddComponent(/datum/component/butchering, \
 		speed = 10 SECONDS, \
@@ -217,8 +220,12 @@
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
-	force_unwielded = 12
-	force_wielded = 20
+	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
+	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
+
+	//SKYRAT EDIT ADDITION BEGIN - increases bone spear range to 2
+	reach = 2
+	//SKYRAT EDIT ADDITION END
 
 /*
  * Bamboo Spear

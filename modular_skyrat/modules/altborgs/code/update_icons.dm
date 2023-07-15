@@ -44,7 +44,7 @@
 	else
 		icon_state = "[model.cyborg_base_icon]"
 
-	if((R_TRAIT_UNIQUETIP in model.model_features) && (TRAIT_IMMOBILIZED in status_traits))
+	if((R_TRAIT_UNIQUETIP in model.model_features) && (TRAIT_IMMOBILIZED in _status_traits))
 		icon_state = "[model.cyborg_base_icon]-tipped"
 		if(particles)
 			dissipate()

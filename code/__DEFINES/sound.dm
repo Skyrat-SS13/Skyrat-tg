@@ -138,6 +138,7 @@
 #define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
+#define ANNOUNCER_TRANSLOCATION "announcer_translocation"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
 #define ANNOUNCER_FLUXANOMALIES "announcer_fluxanomalies"
 #define ANNOUNCER_GRAVANOMALIES "announcer_gravanomalies"
@@ -184,6 +185,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_VORTEXANOMALIES,
 	ANNOUNCER_CAPTAIN,
 	ANNOUNCER_MASSIVEBSPACEANOMALIES,
+	ANNOUNCER_TRANSLOCATION,
 	ANNOUNCER_PYROANOMALIES,
 	ANNOUNCER_FLUXANOMALIES,
 	ANNOUNCER_GRAVANOMALIES,
@@ -216,6 +218,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_EXPLOSION_CREAKING "explosion_creaking"
 #define SFX_HISS "hiss"
 #define SFX_HONKBOT_E "honkbot_e"
+#define SFX_GOOSE "goose"
 #define SFX_HULL_CREAKING "hull_creaking"
 #define SFX_HYPERTORUS_CALM "hypertorus_calm"
 #define SFX_HYPERTORUS_MELTING "hypertorus_melting"
@@ -237,3 +240,4 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_CRUNCHY_BUSH_WHACK "crunchy_bush_whack"
 #define SFX_TREE_CHOP "tree_chop"
 #define SFX_ROCK_TAP "rock_tap"
+#define SFX_SEAR "sear"

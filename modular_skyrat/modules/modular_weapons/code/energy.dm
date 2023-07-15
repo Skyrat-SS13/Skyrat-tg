@@ -19,7 +19,7 @@
 	charge_sections = 3
 
 /obj/item/gun/energy/disabler/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/energy/disabler/bolt_disabler/give_gun_safeties()
 	return
@@ -46,7 +46,7 @@
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
 	return
@@ -67,7 +67,7 @@
 	charge_sections = 5
 
 /obj/item/gun/energy/laser/cfa_paladin/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
 	return
@@ -213,35 +213,35 @@
 *	Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
 */
 
-/obj/item/ammo_casing/caseless/laser
+/obj/item/ammo_casing/laser
 	name = "type I plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "plasma_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/single
 
-/obj/item/ammo_casing/caseless/laser/double
+/obj/item/ammo_casing/laser/double
 	name = "type II plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon_state = "plasma_shell2"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/double
 
-/obj/item/ammo_casing/caseless/laser/bounce
+/obj/item/ammo_casing/laser/bounce
 	name = "type III reflective projectile (lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
 	caliber = "Beam Shell"
-	custom_materials = list(/datum/material/iron=4000,/datum/material/plasma=250)
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/bounce
 
-/obj/item/ammo_casing/caseless/laser/bounce/disabler
+/obj/item/ammo_casing/laser/bounce/disabler
 	name = "type III reflective projectile (disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"

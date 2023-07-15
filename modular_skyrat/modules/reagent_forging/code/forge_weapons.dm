@@ -174,7 +174,7 @@
 	worn_icon_state = "buckler_back"
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
-	custom_materials = list(/datum/material/iron=1000)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT)
 	resistance_flags = FIRE_PROOF
 	block_chance = 30
 	transparent = FALSE
@@ -239,22 +239,22 @@
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
-/obj/item/ammo_casing/caseless/arrow/forged
+/obj/item/ammo_casing/arrow/forged
 	desc = "An arrow made of wood, typically fired from a bow. It can be reinforced with sinew."
-	projectile_type = /obj/projectile/bullet/reusable/arrow/forged
+	projectile_type = /obj/projectile/bullet/arrow/forged
 
-/obj/item/ammo_casing/caseless/arrow/forged/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/ammo_casing/arrow/forged/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
 		var/obj/item/stack/stack_item = attacking_item
 		if(!stack_item.use(1))
 			return
-		new /obj/item/ammo_casing/caseless/arrow/ash(get_turf(src))
+		new /obj/item/ammo_casing/arrow/ash(get_turf(src))
 		qdel(src)
 		return
 	return ..()
 
-/obj/projectile/bullet/reusable/arrow/forged
-	ammo_type = /obj/item/ammo_casing/caseless/arrow/forged
+/obj/projectile/bullet/arrow/forged
+	projectile_type = /obj/item/ammo_casing/arrow/forged
 
 #define INCREASE_BLOCK_CHANGE 2
 

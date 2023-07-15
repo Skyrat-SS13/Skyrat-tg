@@ -99,7 +99,7 @@
 
 	// Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(src, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hitby))
 	// For traitor objectives
 	RegisterSignal(src, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
@@ -185,13 +185,13 @@
 	var/obj/projectile/fired_projectile
 	var/fire_sound
 	if(harmless)
-		fired_projectile = new /obj/projectile/bullet/reusable/foam_dart(loc)
+		fired_projectile = new /obj/item/ammo_casing/foam_dart(loc)
 		fired_projectile.icon = 'icons/obj/weapons/guns/toy.dmi'
 		fired_projectile.icon_state = "foamdart_proj"
 		fire_sound = 'sound/items/syringeproj.ogg'
 	else
 		fired_projectile = new /obj/projectile/beam(loc)
-		fired_projectile.icon = 'icons/effects/genetics.dmi'
+		fired_projectile.icon = 'icons/mob/effects/genetics.dmi'
 		fired_projectile.icon_state = "eyelasers"
 		fire_sound = 'sound/weapons/taser.ogg'
 
@@ -215,7 +215,7 @@
 		return FALSE
 
 	UnregisterSignal(src, COMSIG_ATOM_ATTACK_HAND)
-	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(src, COMSIG_ATOM_ATTACKBY)
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 

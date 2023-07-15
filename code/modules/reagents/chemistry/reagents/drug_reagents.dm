@@ -325,9 +325,13 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/stimulants = 6) //2.6 per 2 seconds
 
-/datum/reagent/drug/pumpup/on_mob_metabolize(mob/living/L)
+/datum/reagent/drug/pumpup/on_mob_metabolize(mob/living/carbon/L)
 	..()
 	ADD_TRAIT(L, TRAIT_BATON_RESISTANCE, type)
+	var/obj/item/organ/internal/liver/liver = L.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(HAS_TRAIT(liver, TRAIT_MAINTENANCE_METABOLISM))
+		L.add_mood_event("maintenance_fun", /datum/mood_event/maintenance_high)
+		metabolization_rate *= 0.8
 
 /datum/reagent/drug/pumpup/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_BATON_RESISTANCE, type)
@@ -363,6 +367,12 @@
 /datum/reagent/drug/maint
 	name = "Maintenance Drugs"
 	chemical_flags = NONE
+
+/datum/reagent/drug/pumpup/on_mob_metabolize(mob/living/carbon/L)
+	var/obj/item/organ/internal/liver/liver = L.get_organ_slot(ORGAN_SLOT_LIVER)
+	if(HAS_TRAIT(liver, TRAIT_MAINTENANCE_METABOLISM))
+		L.add_mood_event("maintenance_fun", /datum/mood_event/maintenance_high)
+		metabolization_rate *= 0.8
 
 /datum/reagent/drug/maint/powder
 	name = "Maintenance Powder"
@@ -701,16 +711,12 @@
 			return
 		if(invisible_man.undergoing_liver_failure())
 			return
-		if(HAS_TRAIT(invisible_man, TRAIT_NOMETABOLISM))
+		if(HAS_TRAIT(invisible_man, TRAIT_LIVERLESS_METABOLISM))
 			return
 	if(invisible_man.has_status_effect(/datum/status_effect/grouped/stasis))
 		return
 
-	invisible_man.add_traits(list(TRAIT_INVISIBLE_MAN, TRAIT_HIDE_EXTERNAL_ORGANS), name)
-
-	var/datum/dna/druggy_dna = invisible_man.has_dna()
-	if(druggy_dna?.species)
-		druggy_dna.species.species_traits += NOBLOODOVERLAY
+	invisible_man.add_traits(list(TRAIT_INVISIBLE_MAN, TRAIT_HIDE_EXTERNAL_ORGANS, TRAIT_NO_BLOOD_OVERLAY), type)
 
 	invisible_man.update_body()
 	invisible_man.remove_from_all_data_huds()
@@ -718,15 +724,11 @@
 
 /datum/reagent/drug/saturnx/on_mob_end_metabolize(mob/living/carbon/invisible_man)
 	. = ..()
-	if(HAS_TRAIT(invisible_man, TRAIT_INVISIBLE_MAN))
+	if(HAS_TRAIT_FROM(invisible_man, TRAIT_INVISIBLE_MAN, type))
 		invisible_man.add_to_all_human_data_huds() //Is this safe, what do you think, Floyd?
-		invisible_man.remove_traits(list(TRAIT_INVISIBLE_MAN, TRAIT_HIDE_EXTERNAL_ORGANS), name)
+		invisible_man.remove_traits(list(TRAIT_INVISIBLE_MAN, TRAIT_HIDE_EXTERNAL_ORGANS, TRAIT_NO_BLOOD_OVERLAY), type)
 
 		to_chat(invisible_man, span_notice("As you sober up, opacity once again returns to your body meats."))
-
-		var/datum/dna/druggy_dna = invisible_man.has_dna()
-		if(druggy_dna?.species)
-			druggy_dna.species.species_traits -= NOBLOODOVERLAY
 
 	invisible_man.update_body()
 	invisible_man.sound_environment_override = NONE

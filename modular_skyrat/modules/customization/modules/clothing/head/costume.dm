@@ -53,6 +53,7 @@
 	inhand_icon_state = "rus_ushanka"
 	upsprite = "ushankablueup"
 	downsprite = "ushankablue"
+	armor_type = /datum/armor/head_helmet
 
 //Pelts
 //Not made into a subtype of /costume but stored in the same file

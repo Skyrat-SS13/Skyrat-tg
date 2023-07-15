@@ -307,7 +307,7 @@
 	if(!is_station_level(z))
 		to_chat(user, span_warning("[src]'s metal doesn't react to [welder]'s heat."))
 		return
-	if(!welder.tool_start_check(user, amount=0))
+	if(!welder.tool_start_check(user, amount=1))
 		return TRUE
 	to_chat(user, span_notice("Now welding the scrubber."))
 	if(welder.use_tool(src, user, 20, volume=50))

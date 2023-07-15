@@ -5,7 +5,7 @@
 			/mob/living/basic/pet/dog/corgi/ian,
 			/mob/living/basic/pet/dog/corgi/puppy/ian
 		),
-		JOB_CAPTAIN = /mob/living/simple_animal/pet/fox/renault,
+		JOB_CAPTAIN = /mob/living/basic/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
 		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
 		JOB_QUARTERMASTER = list(
@@ -34,13 +34,13 @@
 		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy the Safety Inspector into the supermatter engine "
 		telecrystal_reward = 4
 
-		// Cleaning up the original success_signals which are `list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH)`
+		// Cleaning up the original success_signals which are `list(COMSIG_QDELETING, COMSIG_LIVING_DEATH)`
 		for(var/datum/component/traitor_objective_register/old_objective as anything in GetComponents(/datum/component/traitor_objective_register))
 			if(old_objective.target == target_pet)
 				qdel(old_objective)
 		// Adding our own signal component, targeting `target_pet`
 		AddComponent(/datum/component/traitor_objective_register, target_pet, \
-			succeed_signals = list(COMSIG_PARENT_QDELETING)) // Until dusting gets its own component, this has to make do
+			succeed_signals = list(COMSIG_QDELETING)) // Until dusting gets its own component, this has to make do
 
 	// Emag E-N so it overloads
 	if(istype(target_pet, /mob/living/basic/pet/dog/corgi/borgi))

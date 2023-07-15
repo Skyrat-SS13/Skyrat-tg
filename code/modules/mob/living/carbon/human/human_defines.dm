@@ -12,6 +12,7 @@
 	buckle_lying = 0
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
+	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
 
 	maxHealth = 135 //SKYRAT EDIT ADDITION
 	health = 135 //SKYRAT EDIT ADDITION
@@ -64,11 +65,9 @@
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
-	var/name_override //For temporary visible name changes
-
 	var/datum/physiology/physiology
 
-	var/list/datum/bioware = list()
+	var/list/datum/bioware/biowares
 
 	/// What types of mobs are allowed to ride/buckle to this mob
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
