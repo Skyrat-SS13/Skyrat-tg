@@ -352,7 +352,7 @@ Doesn't work on other aliens/AI.*/
 	overlay_icon_state = "bg_alien_border"
 	sneak_alpha = 25
 
-/datum/action/cooldown/alien/sneak/total
+/datum/action/cooldown/sneak/alien/total
 	name = "Sneak (TOTAL)"
 	sneak_alpha = 0
 
