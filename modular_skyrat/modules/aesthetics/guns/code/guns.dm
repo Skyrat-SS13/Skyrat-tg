@@ -701,5 +701,5 @@
 /obj/item/ammo_box/a762/surplus
 	name = "stripper clip (.244 Acia surplus)"
 
-/obj/item/storage/toolbox/a762
+/obj/item/storage/toolbox/ammobox/a762
 	name = ".244 Acia ammo box (Surplus?)"
