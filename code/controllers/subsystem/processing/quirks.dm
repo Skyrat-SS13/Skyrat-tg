@@ -27,7 +27,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
-		list("Quadruple Amputee", "Paraplegic"),
+		list("Quadruple Amputee", "Paraplegic", "Hemiplegic"),
 		list("Quadruple Amputee", "Frail"),
 		list("Mute", "Social Anxiety"),
 		list("Mute", "Soft-Spoken"),

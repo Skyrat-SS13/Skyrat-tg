@@ -216,9 +216,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESISTLOWPRESSURE "resist_low_pressure"
 /// This human is immune to the effects of being exploded. (ex_act)
 #define TRAIT_BOMBIMMUNE "bomb_immunity"
+/// Immune to being irradiated
 #define TRAIT_RADIMMUNE "rad_immunity"
-#define TRAIT_GENELESS "geneless"
+/// This mob won't get gibbed by nukes going off
+#define TRAIT_NUKEIMMUNE "nuke_immunity"
+/// Can't be given viruses
 #define TRAIT_VIRUSIMMUNE "virus_immunity"
+/// Reduces the chance viruses will spread to this mob, and if the mob has a virus, slows its advancement
+#define TRAIT_VIRUS_RESISTANCE "virus_resistance"
+#define TRAIT_GENELESS "geneless"
 #define TRAIT_PIERCEIMMUNE "pierce_immunity"
 #define TRAIT_NODISMEMBER "dismember_immunity"
 #define TRAIT_NOFIRE "nonflammable"
@@ -279,10 +285,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_VAL_CORRIN_MEMBER "val_corrin_member"
 /// reduces the use time of syringes, pills, patches and medigels but only when using on someone
 #define TRAIT_FASTMED "fast_med_use"
-#define TRAIT_ANTIMAGIC "anti_magic"
+/// The mob is holy and resistance to cult magic
 #define TRAIT_HOLY "holy"
+/// This mob is antimagic, and immune to spells / cannot cast spells
+#define TRAIT_ANTIMAGIC "anti_magic"
 /// This allows a person who has antimagic to cast spells without getting blocked
 #define TRAIT_ANTIMAGIC_NO_SELFBLOCK "anti_magic_no_selfblock"
+/// This mob recently blocked magic with some form of antimagic
+#define TRAIT_RECENTLY_BLOCKED_MAGIC "recently_blocked_magic"
 #define TRAIT_DEPRESSION "depression"
 #define TRAIT_BLOOD_DEFICIENCY "blood_deficiency"
 #define TRAIT_JOLLY "jolly"

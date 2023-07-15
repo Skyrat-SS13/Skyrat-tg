@@ -166,7 +166,7 @@
 	. = ..()
 	if(obj_flags & EMAGGED)
 		to_chat(user, "[src] happens to be already overcharged.")
-		return
+		return FALSE
 	//all these are 0
 	inject_wait = COMBAT_WAIT_INJECT
 	spray_wait = COMBAT_WAIT_SPRAY
