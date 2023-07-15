@@ -155,8 +155,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.body_markings = body_markings.Copy()
 	new_dna.update_body_size()
 	//SKYRAT EDIT ADDITION END
-	new_dna.species = new species.type
-	new_dna.species.species_traits = species.species_traits
 	//if the new DNA has a holder, transform them immediately, otherwise save it
 	if(new_dna.holder)
 		new_dna.holder.set_species(species.type, icon_update = 0)
@@ -201,6 +199,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	. = ""
 	var/list/L = new /list(DNA_UNI_IDENTITY_BLOCKS)
 
+	//ignores TRAIT_AGENDER so that a "real" gender can be stored in the DNA if later use is needed
 	switch(holder.gender)
 		if(MALE)
 			L[DNA_GENDER_BLOCK] = construct_block(G_MALE, 3)
@@ -538,11 +537,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			old_species.on_species_loss(src, new_race, pref_load)
 
 		dna.species.on_species_gain(src, old_species, pref_load)
-		if(ishuman(src))
-			qdel(language_holder)
-			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src)
-		update_atom_languages()
 		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 */
@@ -620,6 +614,11 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 //proc used to update the mob's appearance after its dna UI has been changed
 /mob/living/carbon/proc/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	if(!has_dna())
+		return
+
+	//Always plural gender if agender
+	if(HAS_TRAIT(src, TRAIT_AGENDER))
+		gender = PLURAL
 		return
 
 	switch(deconstruct_block(get_uni_identity_block(dna.unique_identity, DNA_GENDER_BLOCK), 3))
@@ -927,7 +926,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			if(2)
 				investigate_log("has been transformed into a statue by DNA instability.", INVESTIGATE_DEATHS)
 				death()
-				petrify(INFINITY)
+				petrify(statue_timer = INFINITY, save_brain = FALSE)
 				ghostize(FALSE)
 			if(3)
 				if(prob(95))

@@ -28,6 +28,8 @@
 	icon = initial(icon)
 	invisibility = 0
 	set_species(/datum/species/monkey)
+	name = "monkey"
+	set_name()
 	SEND_SIGNAL(src, COMSIG_HUMAN_MONKEYIZE)
 	uncuff()
 	regenerate_icons()
@@ -213,7 +215,6 @@
 
 	new_xeno.set_combat_mode(TRUE)
 	new_xeno.key = key
-	update_atom_languages()
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	. = new_xeno
