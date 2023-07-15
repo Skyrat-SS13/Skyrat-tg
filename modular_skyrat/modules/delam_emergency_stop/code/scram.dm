@@ -3,7 +3,6 @@
 #define SM_COOLING_MIXTURE_MOLES 64000
 #define SM_COOLING_MIXTURE_TEMP 120
 #define DAMAGED_SUPERMATTER_COLOR list(1,0.1,0.2,0, 0,0.9,0.1,0, 0.1,-0.05,0.85,0, 0,0,0,0.9, 0,0,0,0)
-GLOBAL_LIST_EMPTY(delam_machines)
 
 /// An atmos device that uses freezing cold air to attempt an emergency shutdown of the supermatter engine
 /obj/machinery/atmospherics/components/unary/delam_scram
@@ -40,10 +39,7 @@ GLOBAL_LIST_EMPTY(delam_machines)
 	. = ..()
 
 	// We don't want to blow up if we've been errantly mapped somewhere else
-	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system in GLOB.machines)
-		if(system != src)
-			stack_trace("Multiple Delam SCRAM units found on map! They should be unique, yell at a mapper!")
-	GLOB.delam_machines += src
+	REGISTER_REQUIRED_MAP_ITEM(1, 1)
 
 	return INITIALIZE_HINT_LATELOAD
 
