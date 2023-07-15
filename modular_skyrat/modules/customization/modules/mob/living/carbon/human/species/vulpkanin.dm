@@ -1,26 +1,22 @@
 /datum/species/vulpkanin
 	name = "Vulpkanin"
 	id = SPECIES_VULP
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/vulpkanin
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	liked_food = RAW | MEAT
-	disliked_food = CLOTH
-	toxic_food = TOXIC
 	species_language_holder = /datum/language_holder/vulpkanin
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -33,6 +29,13 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
+
+
+/obj/item/organ/internal/tongue/vulpkanin
+	liked_foodtypes = RAW | MEAT
+	disliked_foodtypes = CLOTH
+	toxic_foodtypes = TOXIC
+
 
 /datum/species/vulpkanin/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color

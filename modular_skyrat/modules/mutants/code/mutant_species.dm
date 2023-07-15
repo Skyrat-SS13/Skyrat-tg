@@ -5,14 +5,11 @@
 	id = SPECIES_MUTANT
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
-	species_traits = list(
-		NOZOMBIE,
-	)
 	inherent_traits = list(
 		TRAIT_NOBLOOD,
 		TRAIT_NODISMEMBER,
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_NOMETABOLISM,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_TOXIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
@@ -20,12 +17,11 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NOBREATH,
-		TRAIT_NOCLONELOSS
-		)
+		TRAIT_NOCLONELOSS,
+		TRAIT_NO_ZOMBIFY,
+	)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
-	disliked_food = NONE
-	liked_food = GROSS | MEAT | RAW | GORE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // Take damage at fire temp
@@ -191,7 +187,7 @@
 		target.AddComponent(/datum/component/mutant_infection)
 		return TRUE
 
-	if(NOZOMBIE in target.dna.species.species_traits)
+	if(HAS_TRAIT(target, TRAIT_NO_ZOMBIFY))
 		// cannot infect any NOZOMBIE subspecies (such as high functioning
 		// mutants)
 		return FALSE
