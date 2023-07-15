@@ -37,6 +37,9 @@
 	#define COMPONENT_NO_CELL  (1<<1)
 	#define COMPONENT_NO_CHARGE (1<<2)
 
+/// Sent when supermatter begins its delam countdown/when the suppression system is triggered: (var/trigger_reason)
+#define COMSIG_MAIN_SM_DELAMINATING "delam_time"
+
 // Health signals
 /// /mob/living/proc/updatehealth()
 #define COMSIG_MOB_RUN_ARMOR "mob_run_armor"

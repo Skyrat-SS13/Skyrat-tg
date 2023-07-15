@@ -12,13 +12,5 @@
 #define EVENT_MIDPOP_TIMER_MULTIPLIER 1.5
 #define EVENT_HIGHPOP_TIMER_MULTIPLIER 1
 
-// Delam emergency suppression system - DELAM_SCRAM
-/// Sent when supermatter begins its delam countdown and when the suppression system is triggered: (var/trigger_reason)
-#define COMSIG_MAIN_SM_DELAMINATING "delam_time"
-#define BUTTON_PUSHED 0
-#define BUTTON_IDLE 1
-#define BUTTON_AWAKE 2
-#define BUTTON_ARMED 3
-#define SUPERMATTER_DAMAGED 41
-#define MISTAKES_WERE_MADE 0
+/// Reason for delam suppression: admin command
 #define DIVINE_INTERVENTION 3

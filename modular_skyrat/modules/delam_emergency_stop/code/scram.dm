@@ -3,6 +3,12 @@
 #define SM_COOLING_MIXTURE_MOLES 64000
 #define SM_COOLING_MIXTURE_TEMP 120
 #define DAMAGED_SUPERMATTER_COLOR list(1,0.1,0.2,0, 0,0.9,0.1,0, 0.1,-0.05,0.85,0, 0,0,0,0.9, 0,0,0,0)
+#define BUTTON_PUSHED 0
+#define BUTTON_IDLE 1
+#define BUTTON_AWAKE 2
+#define BUTTON_ARMED 3
+#define SUPERMATTER_DAMAGED 41
+#define MISTAKES_WERE_MADE 0
 
 /// An atmos device that uses freezing cold air to attempt an emergency shutdown of the supermatter engine
 /obj/machinery/atmospherics/components/unary/delam_scram
@@ -415,3 +421,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_s
 #undef SM_PREVENT_EXPLOSION_THRESHOLD
 #undef SM_COOLING_MIXTURE_MOLES
 #undef SM_COOLING_MIXTURE_TEMP
+#undef BUTTON_PUSHED
+#undef BUTTON_IDLE
+#undef BUTTON_AWAKE
+#undef BUTTON_ARMED
+#undef SUPERMATTER_DAMAGED
+#undef MISTAKES_WERE_MADE
