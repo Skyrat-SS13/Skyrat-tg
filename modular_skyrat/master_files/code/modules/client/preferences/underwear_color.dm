@@ -14,7 +14,7 @@
 
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
-	return !(NO_UNDERWEAR in species.species_traits)
+	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
 
 // SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
 /datum/preference/color/undershirt_color
@@ -31,7 +31,7 @@
 
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
-	return !(NO_UNDERWEAR in species.species_traits)
+	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
 
 /datum/preference/color/socks_color
 	savefile_key = "socks_color"
@@ -47,5 +47,5 @@
 
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
-	return !(NO_UNDERWEAR in species.species_traits)
+	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
 // SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks

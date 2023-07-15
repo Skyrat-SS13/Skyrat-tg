@@ -5,7 +5,7 @@
 	priority = PREFERENCE_PRIORITY_GENDER
 
 /datum/preference/choiced/gender/init_possible_values()
-	return list(MALE, FEMALE, PLURAL)
+	return list(MALE, FEMALE, PLURAL, NEUTER)
 
 /datum/preference/choiced/gender/apply_to_human(mob/living/carbon/human/target, value)
 	/* SKYRAT REMOVAL START - Did you just assume my gender???

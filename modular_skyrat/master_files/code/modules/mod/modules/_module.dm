@@ -47,10 +47,10 @@
 		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
 			return
 
-		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
+		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
-		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.bodytype & BODYTYPE_SNOUTED)
+		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.bodytype & BODYTYPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)
