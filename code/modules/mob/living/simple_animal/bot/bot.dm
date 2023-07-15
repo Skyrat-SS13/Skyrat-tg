@@ -240,8 +240,8 @@
 	. = ..()
 	if(bot_cover_flags & BOT_COVER_LOCKED) //First emag application unlocks the bot's interface. Apply a screwdriver to use the emag again.
 		bot_cover_flags &= ~BOT_COVER_LOCKED
-		to_chat(user, span_notice("You bypass [src]'s [hackables]."))
-		return
+		balloon_alert(user, "cover unlocked")
+		return TRUE
 	if(!(bot_cover_flags & BOT_COVER_LOCKED) && bot_cover_flags & BOT_COVER_OPEN) //Bot panel is unlocked by ID or emag, and the panel is screwed open. Ready for emagging.
 		bot_cover_flags |= BOT_COVER_EMAGGED
 		bot_cover_flags &= ~BOT_COVER_LOCKED //Manually emagging the bot locks out the panel.
@@ -251,9 +251,10 @@
 		to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
 		if(user)
 			log_combat(user, src, "emagged")
-		return
+		return TRUE
 	else //Bot is unlocked, but the maint panel has not been opened with a screwdriver (or through the UI) yet.
-		to_chat(user, span_warning("You need to open maintenance panel first!"))
+		balloon_alert(user, "open maintenance panel first!")
+		return FALSE
 
 /mob/living/simple_animal/bot/examine(mob/user)
 	. = ..()
@@ -428,8 +429,7 @@
 		ejectpai(0)
 
 	if(prob(70/severity))
-		var/datum/language_holder/bot_languages = get_language_holder()
-		bot_languages.selected_language = bot_languages.get_random_spoken_language()
+		set_active_language(get_random_spoken_language())
 
 	if(bot_mode_flags & BOT_MODE_ON)
 		turn_off()
