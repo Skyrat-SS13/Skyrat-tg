@@ -76,15 +76,16 @@
 
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
 	var/body_damage_coeff = 1
-	///Used in determining overlays for limb damage states. As the mob receives more burn/brute damage, their limbs update to reflect.
-	var/brutestate = 0
-	var/burnstate = 0
 	///The current amount of brute damage the limb has
 	var/brute_dam = 0
 	///The current amount of burn damage the limb has
 	var/burn_dam = 0
 	///The maximum brute OR burn damage a bodypart can take. Once we hit this cap, no more damage of either type!
 	var/max_damage = 0
+
+	//Used in determining overlays for limb damage states. As the mob receives more burn/brute damage, their limbs update to reflect.
+	var/brutestate = 0
+	var/burnstate = 0
 
 	///Gradually increases while burning when at full damage, destroys the limb when at 100
 	var/cremation_progress = 0

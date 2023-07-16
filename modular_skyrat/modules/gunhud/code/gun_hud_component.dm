@@ -56,7 +56,7 @@
 			return
 
 		var/indicator
-		var/rounds = num2text(pew.get_ammo(TRUE))
+		var/rounds = num2text(istype(parent, /obj/item/gun/ballistic/revolver) ? pew.get_ammo(FALSE, FALSE) : pew.get_ammo(TRUE)) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
 		var/oth_o
 		var/oth_t
 		var/oth_h

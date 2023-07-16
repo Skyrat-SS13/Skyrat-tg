@@ -13,8 +13,6 @@
 /datum/mood_event/drunk/remove_effects()
 	QDEL_NULL(blush_overlay)
 
-<<<<<<< HEAD
-=======
 /datum/mood_event/wrong_brandy
 	description = "I hate that type of drink."
 	mood_change = -2
@@ -25,7 +23,6 @@
 	mood_change = -8
 	timeout = 7 MINUTES
 
->>>>>>> cfd40aeef5d (Imports and Contraband 2: Landfill Gacha Addiction (I put trash randomizers into cargo crates and called it content) (#76771))
 /datum/mood_event/quality_nice
 	description = "That drink wasn't bad at all."
 	mood_change = 2
