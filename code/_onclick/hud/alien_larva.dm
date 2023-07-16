@@ -26,20 +26,10 @@
 	using.screen_loc = ui_alien_language_menu
 	static_inventory += using
 
-<<<<<<< HEAD
-	zone_select = new /atom/movable/screen/zone_sel/alien()
-	zone_select.hud = src
-=======
 	using = new /atom/movable/screen/navigate(null, src)
 	using.screen_loc = ui_alien_navigate_menu
 	static_inventory += using
 
 	zone_select = new /atom/movable/screen/zone_sel/alien(null, src)
->>>>>>> 06ca7a4481f (Hud screens now set hud owner in Initialize. (#76772))
 	zone_select.update_appearance()
 	static_inventory += zone_select
-
-	using = new /atom/movable/screen/navigate
-	using.screen_loc = ui_alien_navigate_menu
-	using.hud = src
-	static_inventory += using

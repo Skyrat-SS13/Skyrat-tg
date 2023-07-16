@@ -629,13 +629,8 @@
 	var/client/holder
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-/atom/movable/screen/splash/Initialize(mapload, client/C, visible, use_previous_title)
-=======
-
 /atom/movable/screen/splash/Initialize(mapload, datum/hud/hud_owner, client/C, visible, use_previous_title)
->>>>>>> 06ca7a4481f (Hud screens now set hud owner in Initialize. (#76772))
 	. = ..()
 	if(!istype(C))
 		return
