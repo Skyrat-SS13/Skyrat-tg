@@ -291,11 +291,16 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/old_person = user
 		sent_prob = old_person.age >= 30 ? 25 : sent_prob
+<<<<<<< HEAD
 	if (prob(sent_prob))
 		message += " Sent from my PDA"
 	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
 	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE)
 	//SKYRAT EDIT END
+=======
+	if (computer && prob(sent_prob))
+		message += " [computer.get_messenger_ending()]"
+>>>>>>> e55c077b8ca (Clear PDAs now specify they are a crystal PDA in messenger (#76675))
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,
