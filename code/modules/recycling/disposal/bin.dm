@@ -3,11 +3,7 @@
 #define SEND_PRESSURE (0.05*ONE_ATMOSPHERE)
 
 /obj/machinery/disposal
-<<<<<<< HEAD
-	icon = 'icons/obj/atmospherics/pipes/disposal.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
->>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	density = TRUE
 	armor_type = /datum/armor/machinery_disposal
 	max_integrity = 200

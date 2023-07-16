@@ -14,11 +14,7 @@
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
-<<<<<<< HEAD
-	icon = 'icons/obj/status_display.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/machines/status_display.dmi'
->>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
+	icon = 'icons/obj/machines/status_display.dmi' //// SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame"
 	verb_say = "beeps"
 	verb_ask = "beeps"

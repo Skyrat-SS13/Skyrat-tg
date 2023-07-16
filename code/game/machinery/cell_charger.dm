@@ -24,12 +24,8 @@
 		. += mutable_appearance('icons/obj/machines/cell_charger.dmi', "grown_wires")
 	. += "ccharger-[charging.connector_type]-on"
 	if((charging.charge > 0.01) && charging.charge_light_type)
-<<<<<<< HEAD
-		. += mutable_appearance('icons/obj/power.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
-*/
-=======
 		. += mutable_appearance('icons/obj/machines/cell_charger.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
->>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
+*/
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()

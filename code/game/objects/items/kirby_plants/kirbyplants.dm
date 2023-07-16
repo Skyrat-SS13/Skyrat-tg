@@ -1,12 +1,8 @@
 
 /obj/item/kirbyplants
 	name = "potted plant"
-<<<<<<< HEAD
-	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
+	//icon = 'icons/obj/fluff/flora/plants.dmi' // ORIGINAL
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
-=======
-	icon = 'icons/obj/fluff/flora/plants.dmi'
->>>>>>> fb101210225 (Icons folder cleaning wave two (#76788))
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
 	desc = "A little bit of nature contained in a pot."
