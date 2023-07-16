@@ -80,6 +80,10 @@
 /datum/nifsoft/proc/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif?.resolve()
 
+	if(!installed_nif)
+		stack_trace("NIFSoft [src] activated on a null parent!") // NIFSoft is -really- broken
+		return FALSE
+
 	if(installed_nif.broken)
 		installed_nif.balloon_alert(installed_nif.linked_mob, "your NIF is broken")
 		return FALSE
@@ -111,6 +115,8 @@
 ///Refunds the activation cost of a NIFSoft.
 /datum/nifsoft/proc/refund_activation_cost()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif?.resolve()
+	if(!installed_nif)
+		return
 	installed_nif.change_power_level(-activation_cost)
 
 ///Removes the cooldown from a NIFSoft
