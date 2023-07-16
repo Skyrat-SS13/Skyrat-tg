@@ -74,6 +74,7 @@
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()
+				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // this is normally done by handle_magazine so we have to do it manually here
 				A.update_appearance()
 				update_appearance()
 			return

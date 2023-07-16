@@ -71,7 +71,7 @@
 	// Every tick, the drunk value decrases by
 	// 4% the current drunk_value + 0.01
 	// (until it reaches 0 and terminates)
-	set_drunk_value(drunk_value - (0.01 + drunk_value * 0.04))
+	set_drunk_value(drunk_value - (0.0075 + drunk_value * 0.0075)) // SKYRAT EDIT CHANGE - Alcohol Tolerance - Original: set_drunk_value(drunk_value - (0.01 + drunk_value * 0.04)
 	if(QDELETED(src))
 		return
 

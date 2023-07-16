@@ -76,15 +76,16 @@
 
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
 	var/body_damage_coeff = 1
-	///Used in determining overlays for limb damage states. As the mob receives more burn/brute damage, their limbs update to reflect.
-	var/brutestate = 0
-	var/burnstate = 0
 	///The current amount of brute damage the limb has
 	var/brute_dam = 0
 	///The current amount of burn damage the limb has
 	var/burn_dam = 0
 	///The maximum brute OR burn damage a bodypart can take. Once we hit this cap, no more damage of either type!
 	var/max_damage = 0
+
+	//Used in determining overlays for limb damage states. As the mob receives more burn/brute damage, their limbs update to reflect.
+	var/brutestate = 0
+	var/burnstate = 0
 
 	///Gradually increases while burning when at full damage, destroys the limb when at 100
 	var/cremation_progress = 0
@@ -94,11 +95,6 @@
 	var/brute_modifier = 1
 	/// Burn damage gets multiplied by this on receive_damage()
 	var/burn_modifier = 1
-	// Damage reduction variables for damage handled on the limb level. Handled after worn armor.
-	/// Amount subtracted from brute damage inflicted on the limb.
-	var/brute_reduction = 0
-	/// Amount subtracted from burn damage inflicted on the limb.
-	var/burn_reduction = 0
 
 	//Coloring and proper item icon update
 	var/skin_tone = ""
@@ -111,11 +107,6 @@
 	var/px_x = 0
 	var/px_y = 0
 
-	/**
-	 * A copy of the original owner's species datum species_traits list (very hacky)
-	 * It sucks that we have to do this, but due to MUTCOLORS and others, we have to. For now.
-	 */
-	var/species_flags_list = list()
 	///the type of damage overlay (if any) to use when this bodypart is bruised/burned.
 	var/dmg_overlay_type = "human"
 	/// If we're bleeding, which icon are we displaying on this part
@@ -475,8 +466,6 @@
 	var/dmg_multi = CONFIG_GET(number/damage_multiplier) * hit_percent
 	brute = round(max(brute * dmg_multi * brute_modifier, 0), DAMAGE_PRECISION)
 	burn = round(max(burn * dmg_multi * burn_modifier, 0), DAMAGE_PRECISION)
-	brute = max(0, brute - brute_reduction)
-	burn = max(0, burn - burn_reduction)
 
 	if(!brute && !burn)
 		return FALSE
@@ -604,7 +593,7 @@
 			owner.updatehealth()
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		//Consider moving this to a new species proc "spec_heal" maybe?
-		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+		if(owner.stat == DEAD && HAS_TRAIT(owner, TRAIT_REVIVES_BY_HEALING))
 			if(owner.health > 50)
 				owner.revive(FALSE)
 		//SKYRAT EDIT ADDITION END
@@ -847,7 +836,6 @@
 	// No, xenos don't actually use bodyparts. Don't ask.
 	var/mob/living/carbon/human/human_owner = owner
 	var/datum/species/owner_species = human_owner.dna.species
-	species_flags_list = owner_species.species_traits.Copy()
 	limb_gender = (human_owner.physique == MALE) ? "m" : "f"
 
 	if(owner_species.use_skintones)
@@ -855,7 +843,7 @@
 	else
 		skin_tone = ""
 
-	if(((MUTCOLORS in owner_species.species_traits) || (DYNCOLORS in owner_species.species_traits))) //Ethereal code. Motherfuckers.
+	if(HAS_TRAIT(owner, TRAIT_MUTANT_COLORS))
 		if(owner_species.fixed_mut_color)
 			species_color = owner_species.fixed_mut_color
 		else

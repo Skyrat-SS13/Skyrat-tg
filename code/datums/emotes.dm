@@ -145,7 +145,6 @@
 				if(viewer.is_blind() && !viewer.can_hear())
 					to_chat(viewer, msg)
 	// SKYRAT EDIT -- END
-	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
