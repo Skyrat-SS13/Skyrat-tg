@@ -1,7 +1,7 @@
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "A heavy-duty industrial laser, often used in containment fields and power generation."
-	icon = 'icons/obj/engine/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/engine/singularity.dmi' //SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "emitter"
 	base_icon_state = "emitter"
 
