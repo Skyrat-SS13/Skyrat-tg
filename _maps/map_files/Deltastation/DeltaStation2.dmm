@@ -2017,16 +2017,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"awe" = (
-/obj/machinery/door/window/brigdoor/left/directional/south{
-	req_access = list("morgue_secure");
-	name = "Coroner's Office"
-	},
-/obj/effect/turf_decal/siding/dark_blue,
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
 "awi" = (
 /obj/structure/table/glass,
 /obj/effect/decal/cleanable/dirt,
@@ -38032,21 +38022,6 @@
 /obj/effect/spawner/random/structure/tank_holder,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
-"jyb" = (
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/table/reinforced,
-/obj/item/storage/box/syringes{
-	pixel_y = 5
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/petridish,
-/obj/effect/turf_decal/siding/purple,
-/obj/effect/turf_decal/tile/purple/anticorner/contrasted,
-/turf/open/floor/iron,
-/area/station/science/xenobiology)
 "jyc" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -52275,6 +52250,23 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/brown/visible,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
+"ncm" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/table/reinforced,
+/obj/item/storage/box/syringes{
+	pixel_y = 5
+	},
+/obj/item/storage/box/beakers{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/petridish,
+/obj/effect/turf_decal/siding/purple,
+/obj/effect/turf_decal/tile/purple/anticorner/contrasted,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
+/turf/open/floor/iron,
+/area/station/science/xenobiology)
 "ncu" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -52601,6 +52593,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
+"nhv" = (
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	name = "Coroner's Office";
+	req_access = list("morgue_secure")
+	},
+/obj/effect/turf_decal/siding/dark_blue,
+/obj/effect/turf_decal/tile/dark_blue/half/contrasted,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/station/medical/morgue)
 "nhA" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -79065,6 +79067,16 @@
 	dir = 1
 	},
 /area/station/hallway/secondary/exit/departure_lounge)
+"tOC" = (
+/obj/structure/table/wood,
+/obj/machinery/light/directional/north,
+/obj/item/storage/secure/safe/directional/east,
+/obj/item/storage/lockbox/loyalty,
+/obj/item/storage/backpack/satchel/leather/withwallet{
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/station/command/heads_quarters/hop)
 "tOE" = (
 /obj/machinery/camera/directional/north{
 	c_tag = "Engineering - Supermatter Emitters";
@@ -89447,16 +89459,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage)
-"wqG" = (
-/obj/structure/table/wood,
-/obj/machinery/light/directional/north,
-/obj/item/storage/secure/safe/directional/east,
-/obj/item/storage/lockbox/loyalty,
-/obj/item/storage/backpack/satchel/leather/withwallet{
-	pixel_y = 6
-	},
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/hop)
 "wqQ" = (
 /obj/item/radio/intercom/directional/east,
 /obj/structure/window/reinforced/spawner/directional/south,
@@ -122193,7 +122195,7 @@ qcM
 pTC
 pTC
 ycx
-jyb
+ncm
 wDq
 sEc
 xNv
@@ -133733,7 +133735,7 @@ lAv
 nAz
 jce
 lZx
-wqG
+tOC
 lbt
 iVT
 nuY
@@ -137647,7 +137649,7 @@ omb
 qYL
 vcg
 rDd
-awe
+nhv
 uyI
 iKB
 vns

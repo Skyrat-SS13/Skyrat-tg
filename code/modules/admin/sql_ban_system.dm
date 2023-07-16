@@ -364,6 +364,7 @@
 		var/list/long_job_lists = list(
 			"Ghost and Other Roles" = list(
 				ROLE_PAI,
+				ROLE_BOT,
 				ROLE_BRAINWASHED,
 				ROLE_DEATHSQUAD,
 				ROLE_DRONE,
