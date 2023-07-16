@@ -61,7 +61,7 @@
 		return
 
 	var/obj/machinery/atmospherics/components/unary/delam_scram/my_one_and_only = null
-	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system as anything in SSmachines.get_machines_by_type(obj/machinery/atmospherics/components/unary/delam_scram))
 		if(!my_one_and_only)
 			my_one_and_only = system
 		else
