@@ -57,5 +57,5 @@
 
 /// Set all APCs to start (or stop) arcing
 /proc/force_apc_arcing(force_mode = FALSE)
-	for(var/obj/machinery/power/apc/controller as anything in GLOB.apcs_list)
+	for(var/obj/machinery/power/apc/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
 		controller.force_arcing = force_mode
