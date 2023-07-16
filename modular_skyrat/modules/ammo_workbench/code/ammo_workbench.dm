@@ -476,7 +476,6 @@
 		loaded_magazine.forceMove(loc)
 		loaded_magazine = null
 
-	. = ..()
 	return ..()
 
 /obj/machinery/ammo_workbench/proc/shock(mob/user, prb)
