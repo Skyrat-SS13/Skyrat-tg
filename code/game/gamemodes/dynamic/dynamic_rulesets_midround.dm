@@ -194,6 +194,7 @@
 		return
 
 	mode.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
+	return
 
 ///subtype to handle checking players
 /datum/dynamic_ruleset/midround/from_living
