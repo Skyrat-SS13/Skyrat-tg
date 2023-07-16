@@ -289,8 +289,7 @@
 	infodisplay += combo_display
 
 	//SKYRAT EDIT ADDITION
-	ammo_counter = new /atom/movable/screen/ammo_counter()
-	ammo_counter.hud = src
+	ammo_counter = new /atom/movable/screen/ammo_counter(null, src)
 	infodisplay += ammo_counter
 	//SKYRAT EDIT END
 
