@@ -250,7 +250,7 @@
 /// Dims the lights and consumes a bit of APC power, summoning that electricity to stop the delam... somehow
 /datum/controller/subsystem/nightshift/proc/suck_light_power()
 	SSnightshift.can_fire = FALSE
-	for(var/obj/machinery/power/apc/light_to_suck in GLOB.machines)
+	for(var/obj/machinery/power/apc/light_to_suck as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
 		light_to_suck.cell.charge -= DELAM_MACHINE_POWER_CONSUMPTION
 		light_to_suck.lighting = APC_CHANNEL_OFF
 		light_to_suck.nightshift_lights = TRUE
