@@ -280,9 +280,9 @@
 /datum/antagonist/ert/militia
 	name = "Frontier Militia"
 	outfit = /datum/outfit/centcom/militia
-	role = "Minuteman"
+	role = "Volunteer"
 
 /datum/antagonist/ert/militia/general
 	name = "Frontier Militia General"
 	outfit = /datum/outfit/centcom/militia/general
-	role = "Minuteman Leader"
+	role = "General"

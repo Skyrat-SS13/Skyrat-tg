@@ -98,7 +98,7 @@
 		return FALSE
 	var/mob/living/carbon/human/blessed = target
 	for(var/obj/item/bodypart/bodypart as anything in blessed.bodyparts)
-		if(!IS_ORGANIC_LIMB(bodypart))
+		if(IS_ROBOTIC_LIMB(bodypart))
 			to_chat(chap, span_warning("[GLOB.deity] refuses to heal this metallic taint!"))
 			return TRUE
 
@@ -216,9 +216,6 @@
 		),
 	))
 
-//candle sect bibles don't heal or do anything special apart from the standard holy water blessings
-/datum/religion_sect/pyre/sect_bless(mob/living/target, mob/living/chap)
-	return TRUE
 
 /datum/religion_sect/pyre/on_sacrifice(obj/item/flashlight/flare/candle/offering, mob/living/user)
 	if(!istype(offering))
@@ -227,7 +224,7 @@
 		to_chat(user, span_notice("The candle needs to be lit to be offered!"))
 		return
 	to_chat(user, span_notice("[GLOB.deity] is pleased with your sacrifice."))
-	adjust_favor(20, user) //it's not a lot but hey there's a pacifist favor option at least
+	adjust_favor(50, user) //it's not a lot but hey there's a pacifist favor option at least
 	qdel(offering)
 	return TRUE
 
@@ -258,7 +255,7 @@
 		return FALSE
 	var/mob/living/carbon/human/blessed = blessed_living
 	for(var/obj/item/bodypart/robolimb as anything in blessed.bodyparts)
-		if(!IS_ORGANIC_LIMB(robolimb))
+		if(IS_ROBOTIC_LIMB(robolimb))
 			to_chat(chap, span_warning("[GLOB.deity] refuses to heal this metallic taint!"))
 			return TRUE
 

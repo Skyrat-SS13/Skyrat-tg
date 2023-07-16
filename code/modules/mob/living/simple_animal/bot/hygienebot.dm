@@ -15,11 +15,7 @@
 	maints_access_required = list(ACCESS_ROBOTICS, ACCESS_JANITOR)
 	radio_key = /obj/item/encryptionkey/headset_service
 	radio_channel = RADIO_CHANNEL_SERVICE //Service
-<<<<<<< HEAD
-	bot_mode_flags = ~BOT_MODE_PAI_CONTROLLABLE
-=======
 	bot_mode_flags = ~BOT_MODE_CAN_BE_SAPIENT
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	bot_type = HYGIENE_BOT
 	hackables = "cleaning service protocols"
 	path_image_color = "#993299"

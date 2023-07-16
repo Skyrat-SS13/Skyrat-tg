@@ -12,38 +12,41 @@ export const Mule = (props, context) => {
     load,
     mode,
     modeStatus,
-    haspai,
     autoReturn,
     autoPickup,
     reportDelivery,
     destination,
     home,
     id,
-<<<<<<< HEAD
-=======
     allow_possession,
     possession_enabled,
     pai_inserted,
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
     destinations = [],
   } = data;
   const locked = data.locked && !data.siliconUser;
   return (
-    <Window width={350} height={425}>
+    <Window width={350} height={445}>
       <Window.Content>
         <InterfaceLockNoticeBox />
         <Section
           title="Status"
           minHeight="110px"
           buttons={
-            !locked && (
+            <>
               <Button
-                icon={on ? 'power-off' : 'times'}
-                content={on ? 'On' : 'Off'}
-                selected={on}
-                onClick={() => act('on')}
+                icon="fa-poll-h"
+                content="Rename"
+                onClick={() => act('rename')}
               />
-            )
+              {!locked && (
+                <Button
+                  icon={on ? 'power-off' : 'times'}
+                  content={on ? 'On' : 'Off'}
+                  selected={on}
+                  onClick={() => act('on')}
+                />
+              )}
+            </>
           }>
           <ProgressBar
             value={cell ? cellPercent / 100 : 0}
@@ -80,19 +83,11 @@ export const Mule = (props, context) => {
                     onClick={() => act('unload')}
                   />
                 )}
-<<<<<<< HEAD
-                {!!haspai && (
-                  <Button
-                    icon="eject"
-                    content="Eject PAI"
-                    onClick={() => act('ejectpai')}
-=======
                 {!!pai_inserted && (
                   <Button
                     icon="eject"
                     content="Eject PAI"
                     onClick={() => act('eject_pai')}
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
                   />
                 )}
               </>
@@ -151,6 +146,14 @@ export const Mule = (props, context) => {
                   content="Report Delivery"
                   onClick={() => act('report')}
                 />
+                <br />
+                {allow_possession && (
+                  <Button.Checkbox
+                    checked={possession_enabled}
+                    content="Download Personality"
+                    onClick={() => act('toggle_personality')}
+                  />
+                )}
               </LabeledList.Item>
             </LabeledList>
           </Section>

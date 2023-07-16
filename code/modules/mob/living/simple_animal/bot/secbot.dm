@@ -15,14 +15,11 @@
 	radio_key = /obj/item/encryptionkey/secbot //AI Priv + Security
 	radio_channel = RADIO_CHANNEL_SECURITY //Security channel
 	bot_type = SEC_BOT
-<<<<<<< HEAD
-	bot_mode_flags = ~BOT_MODE_PAI_CONTROLLABLE
-=======
 	bot_mode_flags = ~BOT_MODE_CAN_BE_SAPIENT
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	data_hud_type = DATA_HUD_SECURITY_ADVANCED
 	hackables = "target identification systems"
 	path_image_color = "#FF0000"
+	possessed_message = "You are a securitron! Guard the station to the best of your ability!"
 
 	///The type of baton this Secbot will use
 	var/baton_type = /obj/item/melee/baton/security
@@ -68,21 +65,13 @@
 /mob/living/simple_animal/bot/secbot/beepsky/ofitser
 	name = "Prison Ofitser"
 	desc = "Powered by the tears and sweat of laborers."
-<<<<<<< HEAD
-	bot_mode_flags = ~(BOT_MODE_PAI_CONTROLLABLE|BOT_MODE_AUTOPATROL)
-=======
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 
 /mob/living/simple_animal/bot/secbot/beepsky/armsky
 	name = "Sergeant-At-Armsky"
 	desc = "It's Sergeant-At-Armsky! He's a disgruntled assistant to the warden that would probably shoot you if he had hands."
 	health = 45
-<<<<<<< HEAD
-	bot_mode_flags = ~(BOT_MODE_PAI_CONTROLLABLE|BOT_MODE_AUTOPATROL)
-=======
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	security_mode_flags = SECBOT_DECLARE_ARRESTS | SECBOT_CHECK_IDS | SECBOT_CHECK_RECORDS
 
 /mob/living/simple_animal/bot/secbot/beepsky/jr
@@ -98,11 +87,7 @@
 	name = "Officer Pingsky"
 	desc = "It's Officer Pingsky! Delegated to satellite guard duty for harbouring anti-human sentiment."
 	radio_channel = RADIO_CHANNEL_AI_PRIVATE
-<<<<<<< HEAD
-	bot_mode_flags = ~(BOT_MODE_PAI_CONTROLLABLE|BOT_MODE_AUTOPATROL)
-=======
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 	security_mode_flags = SECBOT_DECLARE_ARRESTS | SECBOT_CHECK_IDS | SECBOT_CHECK_RECORDS
 
 /mob/living/simple_animal/bot/secbot/genesky
@@ -249,12 +234,12 @@
 		retaliate(user)
 		special_retaliate_after_attack(user)
 
-/mob/living/simple_animal/bot/secbot/emag_act(mob/user)
-	..()
+/mob/living/simple_animal/bot/secbot/emag_act(mob/user, obj/item/card/emag/emag_card)
+	. = ..()
 	if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 		return
 	if(user)
-		to_chat(user, span_danger("You short out [src]'s target assessment circuits."))
+		balloon_alert(user, "target assessment circuits shorted")
 		oldtarget_name = user.name
 
 	if(bot_type == HONK_BOT)
@@ -265,6 +250,7 @@
 
 	security_mode_flags &= ~SECBOT_DECLARE_ARRESTS
 	update_appearance()
+	return TRUE
 
 /mob/living/simple_animal/bot/secbot/bullet_act(obj/projectile/Proj)
 	if(istype(Proj, /obj/projectile/beam) || istype(Proj, /obj/projectile/bullet))

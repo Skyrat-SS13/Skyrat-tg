@@ -95,13 +95,8 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 #define BOT_MODE_AUTOPATROL (1<<1)
 ///The Bot is currently allowed to be remote controlled by Silicon.
 #define BOT_MODE_REMOTE_ENABLED (1<<2)
-<<<<<<< HEAD
-///The Bot is allowed to have a pAI placed in control of it.
-#define BOT_MODE_PAI_CONTROLLABLE (1<<3)
-=======
 ///The Bot is allowed to have a ghost placed in control of it.
 #define BOT_MODE_CAN_BE_SAPIENT (1<<3)
->>>>>>> 52c8da7ea49 (PAI Holochassis are now leashed to an area around their card (#76763))
 
 //Bot cover defines indicating the Bot's status
 ///The Bot's cover is open and can be modified/emagged by anyone.

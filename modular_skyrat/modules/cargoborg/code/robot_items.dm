@@ -297,7 +297,7 @@
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
 	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	storage_capacity = 100
 	loading_time = 0.25 SECONDS
