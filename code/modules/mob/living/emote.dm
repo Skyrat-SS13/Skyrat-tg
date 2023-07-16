@@ -646,7 +646,7 @@
 	return TRUE
 
 /datum/emote/living/custom/proc/get_custom_emote_from_user()
-	return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+	return stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
 	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
@@ -674,29 +674,6 @@
 	if(user.client && user.client.prefs.muted & MUTE_IC)
 		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
 		return FALSE
-<<<<<<< HEAD
-	else if(!params)
-		//SKYRAT EDIT CHANGE BEGIN
-		//custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
-		custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
-		//SKYRAT EDIT CHANGE END
-		if(custom_emote && !check_invalid(user, custom_emote))
-			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
-			switch(type)
-				if("Visible")
-					custom_emote_type = EMOTE_VISIBLE
-				if("Hearable")
-					custom_emote_type = EMOTE_AUDIBLE
-				else
-					tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
-					return
-	else
-		custom_emote = params
-		if(type_override)
-			custom_emote_type = type_override
-	message = user.say_emphasis(custom_emote) //SKYRAT EDIT ADDITION - EMOTES
-	emote_type = custom_emote_type
-=======
 
 	message = params ? params : get_custom_emote_from_user()
 
@@ -714,7 +691,8 @@
 	else if(type_override)
 		emote_type = type_override
 
->>>>>>> 1ddd14b3666 (Applies the IC word filters to emotes. (#76483))
+	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
+
 	. = ..()
 
 	message = null
