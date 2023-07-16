@@ -1,3 +1,6 @@
+/// Helper macro to check if the passed mob has jukebox sound preference enabled
+#define HAS_JUKEBOX_PREF(mob) (!QDELETED(mob) && !isnull(mob.client) && mob.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
@@ -6,10 +9,15 @@
 	verb_say = "states"
 	density = TRUE
 	req_access = list(ACCESS_BAR)
+	/// Whether we're actively playing music
 	var/active = FALSE
-	var/list/rangers = list()
+	/// List of weakrefs to mobs listening to the current song
+	var/list/datum/weakref/rangers = list()
+	/// World.time when the current song will stop playing, but also a cooldown between activations
 	var/stop = 0
+	/// List of /datum/tracks we can play
 	var/list/songs = list()
+	/// Current song selected
 	var/datum/track/selection = null
 	/// Volume of the songs played
 	var/volume = 100
@@ -33,11 +41,13 @@
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
 	songs = SSjukeboxes.songs
-	if(songs.len)
+	if(length(songs))
 		selection = pick(songs)
 
 /obj/machinery/jukebox/Destroy()
 	dance_over()
+	selection = null
+	songs.Cut()
 	return ..()
 
 /obj/machinery/jukebox/attackby(obj/item/O, mob/user, params)
@@ -150,7 +160,8 @@
 	var/jukeboxslottotake = SSjukeboxes.addjukebox(src, selection, 2)
 	if(jukeboxslottotake)
 		active = TRUE
-		update_icon()
+		update_use_power(ACTIVE_POWER_USE)
+		update_appearance(UPDATE_ICON_STATE)
 		START_PROCESSING(SSobj, src)
 		stop = world.time + selection.song_length
 		return TRUE
@@ -272,8 +283,8 @@
 						glow.set_light_on(TRUE)
 					else
 						glow.set_light_on(FALSE)
-						glow.set_light_color(LIGHT_COLOR_BRIGHT_YELLOW)
-				if(LIGHT_COLOR_BRIGHT_YELLOW)
+						glow.set_light_color(LIGHT_COLOR_DIM_YELLOW)
+				if(LIGHT_COLOR_DIM_YELLOW)
 					if(glow.even_cycle)
 						glow.set_light_on(FALSE)
 						glow.set_light_color(LIGHT_COLOR_CYAN)
@@ -366,16 +377,20 @@
 		sleep(0.1 SECONDS)
 	M.lying_fix()
 
-/obj/machinery/jukebox/disco/proc/dance4(mob/living/M)
+/obj/machinery/jukebox/disco/proc/dance4(mob/living/lead_dancer)
 	var/speed = rand(1,3)
 	set waitfor = 0
 	var/time = 30
 	while(time)
 		sleep(speed)
 		for(var/i in 1 to speed)
-			M.setDir(pick(GLOB.cardinals))
-			for(var/mob/living/carbon/NS in rangers)
-				NS.set_resting(!NS.resting, TRUE, TRUE)
+			lead_dancer.setDir(pick(GLOB.cardinals))
+			// makes people dance with us nearby
+			for(var/datum/weakref/weak_dancer as anything in rangers)
+				var/mob/living/carbon/dancer = weak_dancer.resolve()
+				if(!istype(dancer))
+					continue
+				dancer.set_resting(!dancer.resting, silent = TRUE, instant = TRUE)
 		time--
 
 /obj/machinery/jukebox/disco/proc/dance5(mob/living/M)
@@ -425,7 +440,7 @@
 		return
 	SSjukeboxes.removejukebox(position)
 	STOP_PROCESSING(SSobj, src)
-	rangers = list()
+	rangers.Cut()
 
 /obj/machinery/jukebox/disco/dance_over()
 	..()
@@ -435,15 +450,23 @@
 /obj/machinery/jukebox/process()
 	if(active && world.time >= stop)
 		active = FALSE
+		update_use_power(IDLE_POWER_USE)
 		STOP_PROCESSING(SSobj, src)
 		dance_over()
 		playsound(src,'sound/machines/terminal_off.ogg',50,TRUE)
-		update_icon()
+		update_appearance(UPDATE_ICON_STATE)
 		stop = world.time + 100
 
 /obj/machinery/jukebox/disco/process()
 	. = ..()
-	if(active)
-		for(var/mob/living/M in rangers)
-			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
-				dance(M)
+	if(!active)
+		return
+
+	for(var/datum/weakref/weak_dancer as anything in rangers)
+		var/mob/living/to_dance = weak_dancer.resolve()
+		if(!istype(to_dance) || !(to_dance.mobility_flags & MOBILITY_MOVE))
+			continue
+		if(prob(5 + (allowed(to_dance) * 4)))
+			dance(to_dance)
+
+#undef HAS_JUKEBOX_PREF

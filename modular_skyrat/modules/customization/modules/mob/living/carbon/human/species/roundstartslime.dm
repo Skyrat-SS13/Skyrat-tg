@@ -1,7 +1,4 @@
 /datum/species/jelly
-	species_traits = list(
-		MUTCOLORS,
-	)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
 		"snout" = "None",
@@ -373,7 +370,7 @@
 			alterer.dna.species.mutant_bodyparts -= chosen_key
 	else
 		if(selected_sprite_accessory.organ_type)
-			var/robot_organs = (ROBOTIC_DNA_ORGANS in alterer.dna.species.species_traits)
+			var/robot_organs = HAS_TRAIT(alterer, TRAIT_ROBOTIC_DNA_ORGANS)
 
 			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
 			var/slot = initial(organ_path.slot)
@@ -392,9 +389,7 @@
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 
 			if(robot_organs)
-				replacement_organ.status = ORGAN_ROBOTIC
-				replacement_organ.organ_flags |= ORGAN_SYNTHETIC
-
+				replacement_organ.organ_flags |= ORGAN_ROBOTIC
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
 			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
 		else
