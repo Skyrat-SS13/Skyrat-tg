@@ -36,7 +36,7 @@
 	var/speed_mod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speed_mod)
 	var/obj/item/organ/internal/stomach/old_stomach = human_holder.get_organ_slot(ORGAN_SLOT_STOMACH)
-	if(!(old_stomach.type == /obj/item/organ/internal/stomach))
+	if(!istype(old_stomach))
 		return
 	old_stomach.Remove(human_holder, special = TRUE)
 	qdel(old_stomach)
