@@ -20,8 +20,6 @@
 	expected_types += /mob/living/basic/pet/dog/corgi/ian
 	expected_types += /mob/living/simple_animal/parrot/poly
 	expected_types += /obj/machinery/drone_dispenser
-	expected_types += /obj/machinery/atmospherics/components/unary/delam_scram // SKYRAT EDIT ADDITION - DELAM_SCRAM
-	expected_types += /obj/machinery/button/delam_scram // SKYRAT EDIT ADDITION - DELAM_SCRAM
 
 /datum/unit_test/required_map_items/Run()
 	setup_expected_types()

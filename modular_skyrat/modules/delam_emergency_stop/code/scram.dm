@@ -47,9 +47,6 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/Initialize(mapload)
 	. = ..()
 
-	// We don't want to blow up if we've been errantly mapped somewhere else
-	REGISTER_REQUIRED_MAP_ITEM(1, 1)
-
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/atmospherics/components/unary/delam_scram/LateInitialize()
@@ -292,9 +289,6 @@
 	radio.keyslot = new radio_key
 	radio.set_listening(FALSE)
 	radio.recalculateChannels()
-
-	// Make sure we actually mapped the button for the machine or the engineers will be sad
-	REGISTER_REQUIRED_MAP_ITEM(1, 2)
 
 /obj/machinery/button/delam_scram/Destroy()
 	QDEL_NULL(radio)
