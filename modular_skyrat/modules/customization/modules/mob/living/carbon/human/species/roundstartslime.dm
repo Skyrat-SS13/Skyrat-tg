@@ -389,9 +389,7 @@
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 
 			if(robot_organs)
-				replacement_organ.status = ORGAN_ROBOTIC
-				replacement_organ.organ_flags |= ORGAN_SYNTHETIC
-
+				replacement_organ.organ_flags |= ORGAN_ROBOTIC
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
 			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
 		else

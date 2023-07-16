@@ -86,7 +86,7 @@
  */
 /obj/machinery
 	name = "machinery"
-	icon = 'icons/obj/machines/basic_machines.dmi'
+	icon = 'icons/obj/machines/fax.dmi'
 	desc = "Some kind of machine."
 	verb_say = "beeps"
 	verb_yell = "blares"
@@ -163,7 +163,7 @@
 
 /obj/machinery/Initialize(mapload)
 	. = ..()
-	GLOB.machines += src
+	SSmachines.register_machine(src)
 
 	if(ispath(circuit, /obj/item/circuitboard))
 		circuit = new circuit(src)
@@ -194,7 +194,7 @@
 	setup_area_power_relationship()
 
 /obj/machinery/Destroy()
-	GLOB.machines.Remove(src)
+	SSmachines.unregister_machine(src)
 	end_processing()
 	dump_inventory_contents()
 
