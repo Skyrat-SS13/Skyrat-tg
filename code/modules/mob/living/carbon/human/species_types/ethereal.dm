@@ -10,17 +10,17 @@
 	exotic_bloodtype = "LE"
 	siemens_coeff = 0.5 //They thrive on energy
 	payday_modifier = 0.75
-	species_traits = list(
-		DYNCOLORS,
-		AGENDER,
-		// NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
+	inherent_traits = list(
+		// TRAIT_NO_UNDERWEAR, // SKYRAT EDIT - LET THEM WEAR PANTIES
+		TRAIT_MUTANT_COLORS,
+		TRAIT_FIXED_MUTANT_COLORS,
+		TRAIT_AGENDER,
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_cookie = /obj/item/food/energybar
 	species_language_holder = /datum/language_holder/ethereal
 	sexes = FALSE //no fetish content allowed
-	toxic_food = NONE
-	// Body temperature for ethereals is much higher then humans as they like hotter environments
+	// Body temperature for ethereals is much higher than humans as they like hotter environments
 	bodytemp_normal = (BODYTEMP_NORMAL + 50)
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // about 150C
 	// Cold temperatures hurt faster as it is harder to move with out the heat energy
@@ -39,16 +39,16 @@
 	)
 
 	var/current_color
-	var/EMPeffect = FALSE
-	var/emageffect = FALSE
+	var/default_color
 	var/r1
 	var/g1
 	var/b1
 	var/static/r2 = 237
 	var/static/g2 = 164
 	var/static/b2 = 149
+	var/EMPeffect = FALSE
+	var/emageffect = FALSE
 	var/obj/effect/dummy/lighting_obj/ethereal_light
-	var/default_color
 
 /datum/species/ethereal/Destroy(force)
 	QDEL_NULL(ethereal_light)
@@ -122,9 +122,8 @@
 	else
 		ethereal_light.set_light_on(FALSE)
 		fixed_mut_color = rgb(128,128,128)
-	ethereal.hair_color = current_color
-	ethereal.facial_hair_color = current_color
-	ethereal.update_body()
+	ethereal.set_facial_haircolor(current_color, update = FALSE)
+	ethereal.set_haircolor(current_color, update = TRUE)
 
 /datum/species/ethereal/proc/on_emp_act(mob/living/carbon/human/H, severity)
 	SIGNAL_HANDLER
@@ -140,13 +139,14 @@
 /datum/species/ethereal/proc/on_emag_act(mob/living/carbon/human/H, mob/user)
 	SIGNAL_HANDLER
 	if(emageffect)
-		return
+		return FALSE
 	emageffect = TRUE
 	if(user)
 		to_chat(user, span_notice("You tap [H] on the back with your card."))
 	H.visible_message(span_danger("[H] starts flickering in an array of colors!"))
 	handle_emag(H)
 	addtimer(CALLBACK(src, PROC_REF(stop_emag), H), 2 MINUTES) //Disco mode for 2 minutes! This doesn't affect the ethereal at all besides either annoying some players, or making someone look badass.
+	return TRUE
 
 /// Special handling for getting hit with a light eater
 /datum/species/ethereal/proc/on_light_eater(mob/living/carbon/human/source, datum/light_eater)

@@ -227,7 +227,7 @@
 	SIGNAL_HANDLER
 
 	if(emagged)
-		return
+		return FALSE
 
 	emagged = TRUE
 
@@ -241,6 +241,8 @@
 
 	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
+
+	return TRUE
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/explode_imminent()
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
