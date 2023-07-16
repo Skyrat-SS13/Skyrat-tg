@@ -1,20 +1,10 @@
 //Each lists stores ckeys for "Never for this round" option category
 
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
-<<<<<<< HEAD
 #define POLL_IGNORE_CORTICAL_BORER "cortical_borer" // SKYRAT EDIT - Cortical Borer
-#define POLL_IGNORE_PAI "pai"
-#define POLL_IGNORE_VENUSHUMANTRAP "venus_human_trap"
-#define POLL_IGNORE_REGAL_RAT "regal_rat"
-#define POLL_IGNORE_CARGORILLA "cargorilla"
-#define POLL_IGNORE_MONKEY_HELMET "mind_magnified_monkey"
-#define POLL_IGNORE_LAVALAND_ELITE "lavaland_elite"
-#define POLL_IGNORE_SHUTTLE_DENIZENS "shuttle_denizens"
-=======
 #define POLL_IGNORE_ALIEN_LARVA "alien_larva"
 #define POLL_IGNORE_ASH_SPIRIT "ash_spirit"
 #define POLL_IGNORE_ASHWALKER "ashwalker"
->>>>>>> 2e144f72a38 (You can opt out of heretic rolls for the rest of the round (#76854))
 #define POLL_IGNORE_BOTS "bots"
 #define POLL_IGNORE_CARGORILLA "cargorilla"
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
@@ -49,20 +39,10 @@
 //Skyrat Edit Start: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
-<<<<<<< HEAD
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
-	POLL_IGNORE_PAI = JOB_PERSONAL_AI,
-	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
-	POLL_IGNORE_REGAL_RAT = "Regal rat",
-	POLL_IGNORE_CARGORILLA = "Cargorilla",
-	POLL_IGNORE_MONKEY_HELMET = "Mind magnified monkey",
-	POLL_IGNORE_LAVALAND_ELITE = "Lavaland elite",
-	POLL_IGNORE_SHUTTLE_DENIZENS = "Shuttle denizens",
-=======
 	POLL_IGNORE_ALIEN_LARVA = "Xenomorph larva",
 	POLL_IGNORE_ASH_SPIRIT = "Ash Spirit",
 	POLL_IGNORE_ASHWALKER = "Ashwalker eggs",
->>>>>>> 2e144f72a38 (You can opt out of heretic rolls for the rest of the round (#76854))
 	POLL_IGNORE_BOTS = "Bots",
 	POLL_IGNORE_CARGORILLA = "Cargorilla",
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
