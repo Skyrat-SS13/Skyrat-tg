@@ -2,7 +2,7 @@
 	name = "\improper Automatic Robotic Factory 5000"
 	desc = "A large metallic machine with an entrance and an exit. A sign on \
 		the side reads, 'Mass robot production facility'"
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
 	density = TRUE

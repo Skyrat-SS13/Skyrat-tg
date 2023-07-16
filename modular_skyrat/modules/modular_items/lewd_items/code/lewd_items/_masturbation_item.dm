@@ -3,7 +3,7 @@
 /obj/item/hand_item/coom
 	name = "cum"
 	desc = "C-can I watch...?"
-	icon = 'icons/obj/hydroponics/harvest.dmi'
+	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "eggplant"
 	inhand_icon_state = "nothing"
 

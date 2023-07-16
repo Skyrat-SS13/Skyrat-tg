@@ -76,7 +76,7 @@
 	icon_state = random_plant_states[next]
 
 /obj/item/kirbyplants/random
-	icon = 'icons/obj/flora/_flora.dmi'
+	icon = 'icons/obj/fluff/flora/_flora.dmi'
 	icon_state = "random_plant"
 
 /obj/item/kirbyplants/random/Initialize(mapload)
