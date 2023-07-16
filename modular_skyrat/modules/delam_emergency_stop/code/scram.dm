@@ -259,7 +259,7 @@
 
 /// Restores the lighting after the delam suppression
 /datum/controller/subsystem/nightshift/proc/restore_light_power()
-	for(var/obj/machinery/power/apc/light_to_restore in GLOB.machines)
+	for(var/obj/machinery/power/apc/light_to_restore as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
 		light_to_restore.lighting = APC_CHANNEL_AUTO_ON
 		light_to_restore.update_appearance()
 		light_to_restore.update()
