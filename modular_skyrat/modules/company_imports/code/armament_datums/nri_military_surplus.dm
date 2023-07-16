@@ -99,7 +99,7 @@
 	subcategory = "Firearms"
 
 /datum/armament_entry/company_import/nri_surplus/firearm/makarov
-	item_type = /obj/item/gun/ballistic/automatic/pistol
+	item_type = /obj/item/gun/ballistic/automatic/pistol/makarov
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
 	interest_required = COMPANY_SOME_INTEREST
