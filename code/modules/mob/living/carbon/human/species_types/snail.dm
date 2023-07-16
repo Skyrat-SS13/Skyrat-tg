@@ -76,6 +76,7 @@
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	//SKYRAT EDIT BEGIN - Roundstart Snails
+	slowdown = 6 // The snail's shell is what's making them slow.
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
