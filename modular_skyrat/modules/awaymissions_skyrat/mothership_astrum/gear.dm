@@ -30,7 +30,7 @@
 /obj/item/clothing/suit/armor/abductor/astrum
 	name = "agent vest"
 	desc = "You feel like you're wearing the suit wrong, and you have no idea how to operate its systems."
-	icon = 'icons/obj/abductor.dmi'
+	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "vest_combat"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
