@@ -68,6 +68,7 @@
 			gravity_on = TRUE
 			icon_state = antigravity_state
 			worn_icon_state = antigravity_state
+			
 		if(MODE_EXTRAGRAVITY)
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
@@ -77,11 +78,13 @@
 			to_chat(user, span_notice("Your harness shudders and hisses, projecting a local extra-gravity field."))
 			gravity_on = TRUE
 			worn_icon_state = extragravity_state
+			
 		if(MODE_GRAVOFF)
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
 				to_chat(user, span_notice("Your harness lets out a soft whine as your gravity field dissipates, your body free-floating once again."))
+			
 			else
 				if(user.has_gravity())
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
@@ -145,6 +148,7 @@
 /obj/item/gravityharness/Destroy()
 	if(isatom(cell))
 		QDEL_NULL(cell)
+		
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -174,6 +178,8 @@
 				. += "The cell slot is empty, showing bare connectors."
 			else
 				. += "\The [cell] is firmly in place."
+		
+	return .
 
 /obj/item/gravityharness/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	balloon_alert(user, "[cell_cover_open ? "closing" : "opening"] cover...")
@@ -217,11 +223,9 @@
 		balloon_alert(user, "cell installed")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return TRUE
+		
 	return ..()
 
-/obj/item/gravityharness/get_cell()
-	if(cell_cover_open)
-		return cell
 
 #undef MODE_GRAVOFF
 #undef MODE_ANTIGRAVITY
