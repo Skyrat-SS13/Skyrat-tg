@@ -43,8 +43,3 @@
 	base_lighting_alpha = 255
 	name = "Test Room"
 	icon_state = "test_room"
-
-/area/misc/testroom/gateway_room
-	name = "Gateway Room"
-	icon = 'icons/area/areas_station.dmi'
-	icon_state = "gateway"

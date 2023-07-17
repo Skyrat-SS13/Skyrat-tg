@@ -16,10 +16,6 @@
 	name = "MO19 Arrivals"
 	icon_state = "awaycontent2"
 
-/area/awaymission/moonoutpost19/arrivals/shed
-	name = "MO19 Arrivals Shed"
-	icon_state = "awaycontent9"
-
 /area/awaymission/moonoutpost19/research
 	name = "MO19 Research"
 	icon_state = "awaycontent3"
