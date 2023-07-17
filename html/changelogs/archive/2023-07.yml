@@ -572,8 +572,8 @@
       people.
   - rscadd: Increased the force, throwforce, and wound bonus of inert ritual knives
       and scythes.
-  - rscadd: 'Coroner gloves can quickly apply medicine like nitrile gloves.'
-  - code_imp: 'mat per unit values of materials now scale with material defines'
+  - rscadd: Coroner gloves can quickly apply medicine like nitrile gloves.
+  - code_imp: mat per unit values of materials now scale with material defines
   Zydras & Juniper:
   - image: Kugelblitz 4utomation Technologies has unveiled its competing lineup of
       cyborg chassis, the K4Ts.
@@ -585,7 +585,7 @@
   - balance: Guard spider web statues despawn as the ability comes back off cooldown.
   - balance: Spiderlings now only move at light speed if they're on webs, stay safe
       little guys.
-  - bugfix: 'Spiders once again have random numbers after their names.'
+  - bugfix: Spiders once again have random numbers after their names.
 2023-07-14:
   LT3:
   - bugfix: Maptext should now properly show superscript characters when performing
@@ -662,12 +662,12 @@
   Melbert:
   - qol: Changeling Emporium is now sorted alphabetically.
   - qol: Changeling Emporium now has a search bar!
-  - bugfix: 'Fix Tinea Luxor exposing not increasing light duration'
+  - bugfix: Fix Tinea Luxor exposing not increasing light duration
   - refactor: Refactored language holders, making species changes not delete all of
       your known languages
   - bugfix: Fixed an exploit involving observers
-  - bugfix: 'Fixed EMPing a cybernetic heart not implanted in a body not applying
-      effects (stopping the heartbeat temporarily)'
+  - bugfix: Fixed EMPing a cybernetic heart not implanted in a body not applying effects
+      (stopping the heartbeat temporarily)
   - bugfix: Fix certain emote interactions happening twice at the same time
   - bugfix: Ling Augmented Eyesight now no longer causes you to lose the effects of
       your Meson glasses
@@ -726,7 +726,7 @@
       lathe.
   - qol: Scientists can also print this scanner.
   - sound: A new ambient track will now play in space
-  - bugfix: 'silicons can depower airlocks via their UI again'
+  - bugfix: silicons can depower airlocks via their UI again
 2023-07-16:
   ChungusGamer666, GoldenAlpharex for all of the Skyrat-side fixes:
   - refactor: A significant species refactor happened, report any issues on the github.
@@ -789,15 +789,15 @@
   vinylspiders:
   - qol: drains can now be deconstructed using the plumbing rcd
   - bugfix: you can no longer construct multiple drains on the same tile
-  - image: 'Siding now uses the correct sprite on corners and endpieces.'
+  - image: Siding now uses the correct sprite on corners and endpieces.
   - bugfix: revolvers will now display an accurate count of live (not empty) rounds
       in the ammo counter HUD
   - rscadd: Added Hemiplegic quirk.
   - bugfix: changes to thrown liquid behavior--now they will ricochet off of walls
       and other dense objects and spill where the beaker lands instead of inside of
       the wall.
-  - bugfix: 'Gas, like plasma, will now properly display on multiz stations'
-  - rscadd: 'rcd can make girders now'
+  - bugfix: Gas, like plasma, will now properly display on multiz stations
+  - rscadd: rcd can make girders now
   - qol: Leather satchels and wallets have been issued to the offices of Head of Personnel
       all across the sector. Studies suggest a fashion increase of 34%
   - bugfix: the Bolt Responder and Mk II Phalanx energy guns now have inhand sprites
@@ -807,3 +807,94 @@
       already know, it can be worn as more than a mask: use in-hand to wear as a hat,
       and alt-click to wear it on your neck!'
   - rscadd: Added Alcoholic as a negative quirk.
+2023-07-17:
+  ChungusGamer666:
+  - refactor: Species speed is now stored in bodyparts. Leg transplants from slower
+      species will make you slower.
+  - bugfix: Bodyparts that should slow you down, will slow you down.
+  - bugfix: Hair and facial hair gradients work again now
+  - bugfix: Facial hair colors apply properly again
+  - bugfix: Admin spawned characters will get hair color preferences applied properly
+  - refactor: Head rendering code has been updated significantly... Again. Please
+      report any issues with hair, facial hair, lipstick and such.
+  Iamgoofball:
+  - rscdel: Resets Human, Lizard, and Moth screams to /tg/ stock.
+  - bugfix: Fixes screaming easter eggs.
+  Jolly:
+  - qol: '[DS-2] - The code for some of the lockers internally has been altered. Please
+      report any missing content from said lockers on Github.'
+  Jolly, timothymtorres:
+  - code_imp: 'Jolly: Armories across all maps have been tweaked slightly. Report
+      to a Nanotrasen security advisor for any missing guns, armor, helmets or anything
+      else that was there previously (that means, post an issue on Github if theres
+      an issue!!)'
+  - code_imp: 'timothymtorres: Random item spawners now support better control of
+      their X/Y pixel offset.'
+  Melbert:
+  - bugfix: Punpun has gotten properly fitting clothes for his little chimp body
+  - code_imp: AI cards should react more snap-ily to having their occupant perish
+  SkyratBot:
+  - rscadd: Personal AI holograms are now limited to an area around their PAI card.
+      The size of this are can be configured via the PAI card.
+  - rscadd: pAI cards can now be placed inside bots in order to grant them control
+      of the bot.
+  - qol: in the event the Gravity Generator becomes damaged, examining the main part
+      will now give repair hints!
+  - balance: Pyre Sect can now heal with their bible as normal.
+  - qol: Some of Pyre Sect's rituals have been shortened slightly
+  - bugfix: fixed energy cost on floor tiles for engi borgs.
+  - bugfix: engi borgs can now properly merge base floor tiles with other base floor
+      tiles.
+  - bugfix: transformed jellypeople with the blood deficiency quirk will now receive
+      the right bloodpacks as mail goodies
+  - refactor: Arcane Barrage and Blood Barrage are magic gun subtypes and not rifle
+      subtypes. Also they have sprites again.
+  - qol: The barrage spells now use the automatic component to do its thing.
+  - bugfix: Blood Barrage once again heals cultists and constructs without hurting
+      them.
+  - code_imp: Cleans up how Blood Rites finds blood to draw in. You can now just click
+      turfs as well as blood, and it should now be much more accurate about it.
+  - qol: Blood trails contribute to charges gained using Blood Rites. You can also
+      activate Blood Rite's blood draw using blood trails.
+  - rscadd: The 'Sent from my PDA' message is different for Clear PDAs now (specifying
+      they are crystal).
+  - bugfix: replaces icebox genetics' regular science headset with a medisci headset,
+      making it more in line with other genetics offices
+  - balance: Changed damage reduction for robotic limbs to be multiplicative instead
+      of additive
+  - qol: laser muskets' inhand sprites will show now whether or not they are charged
+  - image: new inhand sprites for the laser muskets
+  - bugfix: Stops manifest generation runtiming when a cargo crate is empty.
+  - rscadd: Abandoned crates are now available via cargo imports.
+  - rscadd: Dumpsters full of maintenance trash are now available via cargo imports.
+  - rscadd: An ultra-rare can of Shambler's Juice is now available via cargo imports.
+  - rscadd: Animal hides and leathers can be (unreliably) ordered via cargo imports.
+  - rscadd: The Dreadnog has entered this realm. To consume, purchase it via cargo
+      imports.
+  - balance: Contraband Crates (and as a consequence, smuggler's satchels) now generate
+      more varied goods. Mostly the same, but sometimes you get something quite different
+      or even valuable.
+  - balance: Mosins generated via the Russian supply crate are a bit more random,
+      weighing more heavily towards bad mosins than good mosins.
+  - balance: Buffed both the shocktrooper and special op crate. Shocktrooper now has
+      an armored helmet and vest, and special op now has 5 mirage grenades and a chameleon
+      belt. The survival knife in the special op crate is now a switchblade.
+  - bugfix: The AI can no longer untip vendors remotely/spam sparks from shocked vendors
+  - bugfix: Emotes now respect word filters.
+  - bugfix: Fixed the AI vox announcement interrupting every other sound being played.
+  - bugfix: The preference menu has had its weird index lowered (Assets are no longer
+      semi garbled)
+  - bugfix: The malf AI emag ability now works
+  - bugfix: Carp, Trees, and Festivus Poles will once more sometimes emote at you
+      if they think you are looking at them the wrong way, before they come over to
+      beat you up.
+  - qol: People with deviant tastes now don't care about dirt on the food.
+  - bugfix: Station traits can once again allow vending machines and bots to speak
+      a random language
+  - bugfix: EMPed bots and vending machines once again speak a random language
+  - bugfix: Onehuman and Freeform ai modules now have proper material prices.
+  Zonespace27:
+  - balance: Traitors, changelings, and heretics have been removed from rotation,
+      with their powers moved to the OPFOR menu.
+  itseasytosee:
+  - rscadd: A new traitor item has been added, Polarized Contacts!
