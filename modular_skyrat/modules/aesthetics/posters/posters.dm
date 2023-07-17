@@ -129,3 +129,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_engineer, 
 	icon_state = "nri_radar"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/nri_radar, 32)
+
+/obj/structure/sign/poster/official/luna_rifle
+	name = "Luno 'Lunfiŝo' Precision Rifle - Available Now"
+	desc = "A poster prominently displaying a new Luna Orbital precision rifle, supposedly on sale through most galactic retailers. Alongside the image of the weapon is an endless listing of random, useless details about the weapon."
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
+	icon_state = "luna_rifle"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/luna_rifle, 32)
+
+/obj/structure/sign/poster/official/luna_collection
+	name = "Luno Orbital Pafilafrabriko - Affordable Personal Defense"
+	desc = "A poster proudly displaying a new line of Luna Orbital civilian defense weapons, supposedly on sale through most galactic retailers. 'Sol Defense Imports' is printed alongside the Luna Orbital logo."
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
+	icon_state = "luna_collection"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/luna_collection, 32)
