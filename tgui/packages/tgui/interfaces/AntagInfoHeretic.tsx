@@ -52,7 +52,7 @@ type Info = {
 };
 
 const IntroductionSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+  const { data } = useBackend<Info>(context); // SKYRAT EDIT BELOW - ORIGINAL: In order to ascend, you have these tasks to fulfill:
   const { objectives } = data;
 
   return (
@@ -72,7 +72,7 @@ const IntroductionSection = (props, context) => {
             <Stack.Item>
               <ObjectivePrintout
                 fill
-                titleMessage="In order to ascend, you have these tasks to fulfill:"
+                titleMessage="Your OPFOR objectives are your primary ones, but to ascend, your objectives are:"
                 objectives={objectives}
               />
             </Stack.Item>
@@ -198,32 +198,6 @@ const InformationSection = (props, context) => {
   );
 };
 
-<<<<<<< HEAD
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { objectives } = data; // SKYRAT EDIT BELOW - ORIGINAL: In order to ascend, you have these tasks to fulfill:
-  return (
-    <Stack.Item>
-      <Stack vertical fill>
-        <Stack.Item bold>
-          Your OPFOR objectives are your primary ones, but to ascend, your
-          objectives are:
-        </Stack.Item>
-        <Stack.Item>
-          {(!objectives && 'None!') ||
-            objectives.map((objective) => (
-              <Stack.Item key={objective.count}>
-                {objective.count}: {objective.explanation}
-              </Stack.Item>
-            ))}
-        </Stack.Item>
-      </Stack>
-    </Stack.Item>
-  );
-};
-
-=======
->>>>>>> 5dac4b7d0ff (Cuts copypaste from Antag Info UIs (#76736))
 const ResearchedKnowledge = (props, context) => {
   const { data } = useBackend<KnowledgeInfo>(context);
   const { learnedKnowledge } = data;
