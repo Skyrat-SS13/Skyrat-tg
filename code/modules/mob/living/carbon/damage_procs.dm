@@ -116,11 +116,7 @@
  * * maximum - currently an arbitrarily large number, can be set so as to limit damage
  * * required_organtype - targets only a specific organ type if set to ORGAN_ORGANIC or ORGAN_ROBOTIC
  */
-<<<<<<< HEAD
-/mob/living/carbon/adjustOrganLoss(slot, amount, maximum, required_organtype)
-=======
 /mob/living/carbon/adjustOrganLoss(slot, amount, maximum, required_organ_flag = NONE)
->>>>>>> f2705eeaa59 (Fix organ damage being uncapped (#76438))
 	var/obj/item/organ/affected_organ = get_organ_slot(slot)
 	if(!affected_organ || (status_flags & GODMODE))
 		return
