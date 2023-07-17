@@ -62,7 +62,7 @@
 	/// A reference to our cellular emporium datum.
 	var/datum/cellular_emporium/cellular_emporium
 	/// A reference to our cellular emporium action (which opens the UI for the datum).
-	var/datum/action/innate/cellular_emporium/emporium_action
+	var/datum/action/cellular_emporium/emporium_action
 
 	/// UI displaying how many chems we have
 	var/atom/movable/screen/ling/chems/lingchemdisplay
@@ -381,8 +381,8 @@
  * [sting_path] - the power that's being purchased / evolved.
  */
 /datum/antagonist/changeling/proc/purchase_power(datum/action/changeling/sting_path)
-	if(!ispath(sting_path))
-		CRASH("Changeling purchase_power attempted to purchase an invalid typepath!")
+	if(!ispath(sting_path, /datum/action/changeling))
+		CRASH("Changeling purchase_power attempted to purchase an invalid typepath! (got: [sting_path])")
 
 	if(purchased_powers[sting_path])
 		to_chat(owner.current, span_warning("We have already evolved this ability!"))
@@ -504,7 +504,7 @@
 		if(verbose)
 			to_chat(user, span_warning("We already have this DNA in storage!"))
 		return FALSE
-	if(NO_DNA_COPY in target.dna.species?.species_traits)
+	if(HAS_TRAIT(target, TRAIT_NO_DNA_COPY))
 		if(verbose)
 			to_chat(user, span_warning("[target] is not compatible with our biology."))
 		return FALSE
@@ -830,8 +830,7 @@
 	chosen_dna.transfer_identity(user, TRUE)
 
 	for(var/obj/item/bodypart/limb as anything in user.bodyparts)
-		if(IS_ORGANIC_LIMB(limb))
-			limb.update_limb(is_creating = TRUE)
+		limb.update_limb(is_creating = TRUE)
 
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE) // SKYRAT EDIT
 	user.domutcheck()

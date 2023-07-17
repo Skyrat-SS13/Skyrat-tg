@@ -8,10 +8,11 @@
 
 /obj/machinery/computer/shuttle/pod/advanced/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
 	locked = FALSE
 	to_chat(user, span_warning("You fry the pod's alert level checking system."))
+	return TRUE
 
 /obj/machinery/computer/emergency_shuttle/advanced
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/computer.dmi'

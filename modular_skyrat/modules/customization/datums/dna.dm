@@ -244,7 +244,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
-/mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0, eyeorgancolor_update=0)
+/mob/living/carbon/human/updateappearance(icon_update = TRUE, mutcolor_update = FALSE, mutations_overlay_update = FALSE, eyeorgancolor_update = FALSE)
 	..()
 	var/structure = dna.unique_identity
 

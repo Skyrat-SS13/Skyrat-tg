@@ -5,14 +5,11 @@
 	id = SPECIES_MUTANT
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
-	species_traits = list(
-		NOZOMBIE,
-	)
 	inherent_traits = list(
 		TRAIT_NOBLOOD,
 		TRAIT_NODISMEMBER,
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_NOMETABOLISM,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_TOXIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
@@ -20,12 +17,11 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NOBREATH,
-		TRAIT_NOCLONELOSS
-		)
+		TRAIT_NOCLONELOSS,
+		TRAIT_NO_ZOMBIFY,
+	)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
-	disliked_food = NONE
-	liked_food = GROSS | MEAT | RAW | GORE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // Take damage at fire temp
@@ -61,10 +57,17 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	id = SPECIES_MUTANT_INFECTIOUS
-	speedmod = 1
 	damage_modifier = 10
 	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant_zombie/infectious,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant_zombie/infectious,
+	)
 	var/hands_to_give = /obj/item/hnz_mutant_hand
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1
@@ -75,6 +78,12 @@
 	. = ..()
 	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
 
+/obj/item/bodypart/leg/left/mutant_zombie/infectious
+	speed_modifier = 0.5
+
+/obj/item/bodypart/leg/right/mutant_zombie/infectious
+	speed_modifier = 0.5
+
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
 	id = SPECIES_MUTANT_FAST
@@ -82,15 +91,41 @@
 	damage_modifier = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
-	speedmod = 0.5
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant_zombie/fast,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant_zombie/fast,
+	)
+
+/obj/item/bodypart/leg/left/mutant_zombie/fast
+	speed_modifier = 0.25
+
+/obj/item/bodypart/leg/right/mutant_zombie/fast
+	speed_modifier = 0.25
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
 	id = SPECIES_MUTANT_SLOW
 	damage_modifier = 15
-	speedmod = 1.5
 	/// The rate the mutants regenerate at
 	heal_rate = 1.5
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant_zombie/slow,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant_zombie/slow,
+	)
+
+/obj/item/bodypart/leg/left/mutant_zombie/slow
+	speed_modifier = 0.75
+
+/obj/item/bodypart/leg/right/mutant_zombie/slow
+	speed_modifier = 0.75
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
@@ -191,7 +226,7 @@
 		target.AddComponent(/datum/component/mutant_infection)
 		return TRUE
 
-	if(NOZOMBIE in target.dna.species.species_traits)
+	if(HAS_TRAIT(target, TRAIT_NO_ZOMBIFY))
 		// cannot infect any NOZOMBIE subspecies (such as high functioning
 		// mutants)
 		return FALSE

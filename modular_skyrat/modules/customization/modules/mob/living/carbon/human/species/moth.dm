@@ -5,10 +5,12 @@
 		"wings" = ACC_RANDOM,
 		"moth_antennae" = ACC_RANDOM,
 	)
-	species_traits = list(
-		HAS_MARKINGS,
+	inherent_traits = list(
+		TRAIT_HAS_MARKINGS,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_TACKLING_WINGED_ATTACKER,
 		TRAIT_ANTENNAE,
-		MUTCOLORS,
+		TRAIT_MUTANT_COLORS,
 	)
 
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
