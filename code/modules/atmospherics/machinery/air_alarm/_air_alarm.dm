@@ -3,7 +3,7 @@
 /obj/machinery/airalarm
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "alarmp"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.02
@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 
 /obj/machinery/airalarm/Initialize(mapload, ndir, nbuild)
 	. = ..()
-	wires = new /datum/wires/airalarm(src)
+	set_wires(new /datum/wires/airalarm(src))
 	if(ndir)
 		setDir(ndir)
 

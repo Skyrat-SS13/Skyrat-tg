@@ -623,6 +623,10 @@
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
 	return
 
+/// Sets the wire datum of an atom
+/atom/proc/set_wires(datum/wires/new_wires)
+	wires = new_wires
+
 /**
  * React to an EMP of the given severity
  *
@@ -1088,10 +1092,15 @@
 /**
  * Respond to an emag being used on our atom
  *
- * Default behaviour is to send [COMSIG_ATOM_EMAG_ACT] and return
+ * Args:
+ * * mob/user: The mob that used the emag. Nullable.
+ * * obj/item/card/emag/emag_card: The emag that was used. Nullable.
+ *
+ * Returns:
+ * TRUE if the emag had any effect, falsey otherwise.
  */
 /atom/proc/emag_act(mob/user, obj/item/card/emag/emag_card)
-	SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT, user, emag_card)
+	return (SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT, user, emag_card))
 
 /**
  * Respond to narsie eating our atom
@@ -2064,7 +2073,7 @@
 		active_hud.screentip_text.maptext = ""
 		return
 
-	active_hud.screentip_text.maptext_y = 7 // 7px lines us up with the action buttons top left corner
+	active_hud.screentip_text.maptext_y = 10 // 10px lines us up with the action buttons top left corner
 	var/lmb_rmb_line = ""
 	var/ctrl_lmb_ctrl_rmb_line = ""
 	var/alt_lmb_alt_rmb_line = ""
@@ -2131,15 +2140,15 @@
 					extra_lines++
 
 				if(extra_lines)
-					extra_context = "<br><span style='font-size: 6pt'>[lmb_rmb_line][ctrl_lmb_ctrl_rmb_line][alt_lmb_alt_rmb_line][shift_lmb_ctrl_shift_lmb_line]</span>"
-					//first extra line pushes atom name line up 8px, subsequent lines push it up 10px, this offsets that and keeps the first line in the same place
-					active_hud.screentip_text.maptext_y = -1 + (extra_lines - 1) * -10
+					extra_context = "<br><span class='subcontext'>[lmb_rmb_line][ctrl_lmb_ctrl_rmb_line][alt_lmb_alt_rmb_line][shift_lmb_ctrl_shift_lmb_line]</span>"
+					//first extra line pushes atom name line up 11px, subsequent lines push it up 9px, this offsets that and keeps the first line in the same place
+					active_hud.screentip_text.maptext_y = -1 + (extra_lines - 1) * -9
 
 	if (screentips_enabled == SCREENTIP_PREFERENCE_CONTEXT_ONLY && extra_context == "")
 		active_hud.screentip_text.maptext = ""
 	else
 		//We inline a MAPTEXT() here, because there's no good way to statically add to a string like this
-		active_hud.screentip_text.maptext = "<span class='maptext' style='text-align: center; font-size: 12pt; color: [active_hud.screentip_color]'>[name][extra_context]</span>"
+		active_hud.screentip_text.maptext = "<span class='context' style='text-align: center; color: [active_hud.screentip_color]'>[name][extra_context]</span>"
 
 /// Gets a merger datum representing the connected blob of objects in the allowed_types argument
 /atom/proc/GetMergeGroup(id, list/allowed_types)

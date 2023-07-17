@@ -22,7 +22,7 @@
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /*
-*	"Yangyu" Snacks
+*	Yangyu Snacks
 */
 
 /obj/item/reagent_containers/cup/glass/dry_ramen/prepared
@@ -231,7 +231,7 @@
 	return .
 
 /*
-*	Lizard Snacks
+*	Tiziran Snacks
 */
 
 /obj/item/food/vendor_snacks/lizard_bag
@@ -242,7 +242,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
 	tastes = list("savouriness" = 1, "sweetness" = 1)
 	foodtypes = SUGAR | VEGETABLES
-	custom_price = PAYCHECK_LOWER * 1.4 //Tizirian imports are a bit more expensive overall
+	custom_price = PAYCHECK_LOWER * 1.4 //Tiziran imports are a bit more expensive overall
 
 /obj/item/food/vendor_snacks/lizard_bag/make_leave_trash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
@@ -257,13 +257,13 @@
 	custom_price = PAYCHECK_LOWER * 1.6
 
 /obj/item/trash/vendor_trash/lizard_bag
-	name = "empty tizirian snack bag"
-	desc = "All that money importing tizirian snacks just to end at this?"
-	icon_state = "tiziria_bag_trash"
+	name = "empty tiziran snack bag"
+	desc = "All that money importing tiziran snacks just to end at this?"
+	icon_state = "tizira_bag_trash"
 
 /obj/item/food/vendor_snacks/lizard_box
-	name = "tizirian dumplings"
-	desc = "A three pack of tizirian style dumplings, not actually stuffed with anything."
+	name = "tiziran dumplings"
+	desc = "A three pack of tiziran style dumplings, not actually stuffed with anything."
 	icon_state = "dumpling"
 	trash_type = /obj/item/trash/vendor_trash/lizard_box
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
@@ -281,13 +281,13 @@
 	custom_price = PAYCHECK_LOWER *1.8
 
 /obj/item/trash/vendor_trash/lizard_box
-	name = "empty tizirian snack box"
-	desc = "Tiziria, contributing to the space plastic crisis since 2530."
-	icon_state = "tiziria_box_trash"
+	name = "empty tiziran snack box"
+	desc = "Tizira, contributing to the space plastic crisis since 2530."
+	icon_state = "tizira_box_trash"
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom
 	name = "bottle of mushroom tea"
-	desc = "A bottle of somewhat bitter mushroom tea, a favorite of the Tizirian empire."
+	desc = "A bottle of somewhat bitter mushroom tea, a favorite of the Tiziran empire."
 	icon_state = "tea_bottle_grey"
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
 	custom_price = PAYCHECK_LOWER * 2

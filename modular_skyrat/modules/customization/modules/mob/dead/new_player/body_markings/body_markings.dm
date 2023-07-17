@@ -67,6 +67,12 @@
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 
+/datum/body_marking/other/cyclops
+	name = "Cyclopean Eye"
+	icon_state = "cyclops"
+	default_color = "#CCCCCC"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/other/blank_face
 	name = "Blank round face (use with monster mouth)"
 	icon_state = "blankface"
