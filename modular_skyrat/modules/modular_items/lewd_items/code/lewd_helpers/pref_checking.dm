@@ -1,13 +1,16 @@
 /**
  * Checks to see if the parent mob has `pref_to_check` enabled, returns `FALSE` if the pref cannot be found or is set to False, otherwise returns `TRUE`
  *
+ * This proc should be used when checking direct one-time interactions where logging would be benefical.
+ * If you don't need to use logging, please use the `read_preference` proc
+ *
  * Arguments
  * * `pref_to_check` - The toggle preference that we want to check to make sure works.
- * * `mechanic_user` - The person using the erp mechanic on the parent mob, this is here for logging.
+ * * `mechanic_user` - The person using the erp mechanic on the parent mob?
  * * `used_item` - What item, if any, is being used on the parent mob?
  */
 /mob/living/proc/check_erp_prefs(datum/preference/toggle/pref_to_check, mob/living/mechanic_user = FALSE, obj/item/used_item = FALSE)
-	if(!client?.prefs || !istype(pref_to_check))
+	if(!client?.prefs || !ispath(pref_to_check))
 		return FALSE
 
 	if(client.prefs.read_preference(pref_to_check))

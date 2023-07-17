@@ -101,7 +101,7 @@
 	var/list/parts = list()
 
 	if(ishuman(user) && can_lewd_strip(user, self))
-		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(self.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user))
 			if(self.has_vagina())
 				parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
 			if(self.has_penis())
