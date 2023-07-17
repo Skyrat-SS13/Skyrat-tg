@@ -101,19 +101,6 @@
 	},
 /turf/open/floor/iron/white/small,
 /area/station/commons/fitness/recreation)
-"aaX" = (
-/obj/structure/table/wood,
-/obj/item/folder/yellow{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/folder/blue,
-/obj/machinery/light/small/directional/west,
-/obj/item/hand_labeler{
-	pixel_y = 8
-	},
-/turf/open/floor/wood/large,
-/area/station/command/heads_quarters/hop)
 "aba" = (
 /obj/structure/railing/corner,
 /obj/structure/cable,
@@ -3524,7 +3511,7 @@
 /obj/machinery/shower/directional/west,
 /obj/structure/fluff{
 	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/lavaland/survival_pod.dmi';
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
 	icon_state = "fan_tiny";
 	name = "shower drain"
 	},
@@ -10844,20 +10831,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor2/port/aft)
-"cGI" = (
-/obj/structure/table,
-/obj/item/paper_bin/construction,
-/obj/item/pen/fountain{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/pen/fountain,
-/obj/item/pen/fountain{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/open/floor/carpet/blue,
-/area/station/command/heads_quarters/hop)
 "cGQ" = (
 /obj/machinery/modular_computer/preset/civilian{
 	dir = 4
@@ -11064,9 +11037,7 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/rack,
 /obj/effect/turf_decal/tile/red/fourcorners,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/effect/spawner/random/armory/laser_gun,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "cJh" = (
@@ -12526,6 +12497,12 @@
 /obj/machinery/light/small/red/directional/south,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor3/port/aft)
+"ddt" = (
+/obj/structure/table,
+/obj/item/paper_bin/construction,
+/obj/item/pen/fountain,
+/turf/open/floor/carpet/blue,
+/area/station/command/heads_quarters/hop)
 "ddv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/bronze,
@@ -13127,16 +13104,8 @@
 /obj/structure/rack,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/red/fourcorners,
-/obj/item/gun/energy/disabler{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/structure/cable,
+/obj/effect/spawner/random/armory/disablers,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "dnJ" = (
@@ -17634,6 +17603,12 @@
 /obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
+"euU" = (
+/obj/structure/table,
+/obj/machinery/status_display/evac/directional/north,
+/obj/item/papercutter,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hop)
 "euW" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Bulkhead"
@@ -18200,12 +18175,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/hallway/floor1/fore)
-"eCZ" = (
-/obj/effect/turf_decal/trimline/brown/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/service)
 "eDe" = (
 /turf/closed/wall,
 /area/station/hallway/floor3/fore)
@@ -22605,6 +22574,10 @@
 /area/station/ai_monitored/command/storage/eva)
 "fQG" = (
 /obj/structure/table/wood,
+/obj/item/storage/backpack/satchel/leather/withwallet{
+	pixel_y = 6;
+	pixel_x = -2
+	},
 /obj/item/paper/fluff/ids_for_dummies,
 /obj/machinery/light/small/directional/north,
 /obj/machinery/newscaster/directional/north,
@@ -23065,6 +23038,13 @@
 /obj/structure/ladder,
 /turf/open/floor/pod/dark,
 /area/station/maintenance/floor3/starboard/aft)
+"fWA" = (
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 1
+	},
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/service)
 "fWD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -27068,7 +27048,7 @@
 "gYI" = (
 /obj/structure/fluff{
 	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/lavaland/survival_pod.dmi';
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
 	icon_state = "fan_tiny";
 	name = "shower drain"
 	},
@@ -27449,28 +27429,13 @@
 /area/station/service/library)
 "hdK" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/shield/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/shield/riot,
-/obj/item/shield/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/sign/nanotrasen{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/riot_armor,
+/obj/effect/spawner/random/armory/riot_helmet,
+/obj/effect/spawner/random/armory/riot_shield,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "hdL" = (
@@ -27969,15 +27934,6 @@
 	dir = 1
 	},
 /area/station/hallway/floor1/aft)
-"hkj" = (
-/obj/structure/bed/dogbed/renault,
-/mob/living/simple_animal/pet/fox/renault,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/firealarm/directional/west,
-/obj/structure/cable,
-/turf/open/floor/wood/tile,
-/area/station/command/heads_quarters/captain/private)
 "hkk" = (
 /obj/structure/railing{
 	dir = 4
@@ -28049,16 +28005,6 @@
 /obj/effect/turf_decal/tile/green/full,
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics)
-"hlG" = (
-/obj/structure/closet/mini_fridge{
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill.";
-	name = "mini-fridge";
-	pixel_x = 6;
-	pixel_y = 5
-	},
-/obj/structure/table,
-/turf/open/floor/iron/checker,
-/area/station/commons/dorms/apartment2)
 "hlM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -31146,18 +31092,6 @@
 /obj/item/hand_tele,
 /turf/open/floor/iron/dark,
 /area/station/command/teleporter)
-"idM" = (
-/obj/structure/table,
-/obj/machinery/status_display/evac/directional/north,
-/obj/item/paper_bin/construction{
-	pixel_x = -6
-	},
-/obj/item/paper_bin,
-/obj/item/storage/box/pdas{
-	pixel_x = 10
-	},
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hop)
 "iea" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -32035,6 +31969,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/eva)
+"iqp" = (
+/obj/structure/closet/mini_fridge{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/structure/table,
+/turf/open/floor/iron/checker,
+/area/station/commons/dorms/apartment1)
 "iqt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -33455,30 +33397,10 @@
 /area/station/maintenance/floor2/starboard/fore)
 "iKy" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/item/storage/secure/safe/directional/east,
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/bulletproof_armor,
+/obj/effect/spawner/random/armory/bulletproof_helmet,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "iKz" = (
@@ -37905,6 +37827,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
+"jSu" = (
+/obj/structure/table/wood,
+/obj/item/folder/yellow{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/folder/blue,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/wood/large,
+/area/station/command/heads_quarters/hop)
 "jSy" = (
 /obj/machinery/smartfridge,
 /obj/machinery/door/firedoor,
@@ -38946,6 +38878,14 @@
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/space/nearstation)
+"kgX" = (
+/obj/structure/closet/mini_fridge{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/structure/table,
+/turf/open/floor/iron/checker,
+/area/station/commons/dorms/apartment2)
 "kgY" = (
 /obj/effect/turf_decal/stripes,
 /turf/open/floor/iron,
@@ -39968,14 +39908,8 @@
 "kvk" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/rack,
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_y = 3
-	},
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/shotgun,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "kvw" = (
@@ -42959,13 +42893,6 @@
 /obj/machinery/light/dim/directional/west,
 /turf/open/floor/grass,
 /area/station/maintenance/floor3/starboard)
-"lji" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1
-	},
-/mob/living/simple_animal/pet/fox,
-/turf/open/floor/noslip,
-/area/station/maintenance/floor1/port)
 "ljs" = (
 /obj/machinery/flasher/portable,
 /obj/machinery/camera/directional/east{
@@ -44258,7 +44185,7 @@
 /obj/item/bikehorn/rubberducky,
 /obj/structure/fluff{
 	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/lavaland/survival_pod.dmi';
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
 	icon_state = "fan_tiny";
 	name = "shower drain"
 	},
@@ -46963,6 +46890,13 @@
 /obj/machinery/holopad,
 /turf/open/floor/carpet/red,
 /area/station/service/library)
+"miJ" = (
+/obj/machinery/door/window/brigdoor{
+	dir = 1
+	},
+/mob/living/basic/pet/fox,
+/turf/open/floor/noslip,
+/area/station/maintenance/floor1/port)
 "miV" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -54830,6 +54764,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/vacant_room/commissary)
+"ofb" = (
+/obj/structure/bed/dogbed/renault,
+/mob/living/basic/pet/fox/renault,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/firealarm/directional/west,
+/obj/structure/cable,
+/turf/open/floor/wood/tile,
+/area/station/command/heads_quarters/captain/private)
 "ofg" = (
 /obj/effect/turf_decal/trimline/green/filled/arrow_cw{
 	dir = 8
@@ -55721,7 +55664,7 @@
 "oqc" = (
 /obj/structure/fluff{
 	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/lavaland/survival_pod.dmi';
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
 	icon_state = "fan_tiny";
 	name = "shower drain"
 	},
@@ -56312,27 +56255,11 @@
 /turf/open/openspace,
 /area/station/medical/psychology)
 "ozE" = (
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/table/reinforced,
 /obj/structure/sign/poster/official/random/directional/south,
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/rubbershot,
+/obj/effect/spawner/random/armory/rubbershot,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "ozF" = (
@@ -57213,25 +57140,13 @@
 /turf/open/floor/iron,
 /area/station/commons/vacant_room/commissary)
 "oMn" = (
-/obj/item/grenade/barrier{
-	pixel_x = -3;
-	pixel_y = 1
-	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = 3;
-	pixel_y = -1
-	},
-/obj/item/grenade/barrier{
-	pixel_x = 6;
-	pixel_y = -2
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/camera/directional/south{
 	c_tag = "Armory - Interior"
 	},
 /obj/effect/turf_decal/tile/red/fourcorners,
 /obj/structure/cable,
+/obj/effect/spawner/random/armory/barrier_grenades,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "oMz" = (
@@ -57649,26 +57564,10 @@
 /area/station/science/lower)
 "oSf" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/vest,
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet/sec{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/sec,
-/obj/item/clothing/head/helmet/sec{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/sign/poster/official/random/directional/east,
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/bulletproof_armor,
+/obj/effect/spawner/random/armory/bulletproof_helmet,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "oSg" = (
@@ -63100,14 +62999,8 @@
 "qsN" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/rack,
-/obj/item/gun/energy/e_gun,
-/obj/item/gun/energy/e_gun{
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun{
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/spawner/random/armory/e_gun,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "qsP" = (
@@ -66691,23 +66584,6 @@
 /obj/machinery/computer/records/medical,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/paramedic)
-"rmm" = (
-/obj/structure/table,
-/obj/item/storage/box/ids{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/silver_ids,
-/obj/machinery/camera/autoname/directional/north,
-/obj/machinery/requests_console/directional/north{
-	department = "Head of Personnel's Desk";
-	name = "Head of Personnel's Requests Console"
-	},
-/obj/effect/mapping_helpers/requests_console/announcement,
-/obj/effect/mapping_helpers/requests_console/information,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hop)
 "rmu" = (
 /obj/machinery/airalarm/directional/west,
 /obj/structure/cable,
@@ -68860,6 +68736,21 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"rSF" = (
+/obj/structure/table,
+/obj/machinery/camera/autoname/directional/north,
+/obj/machinery/requests_console/directional/north{
+	department = "Head of Personnel's Desk";
+	name = "Head of Personnel's Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/item/hand_labeler{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hop)
 "rSJ" = (
 /obj/structure/chair/plastic{
 	dir = 8
@@ -76181,16 +76072,6 @@
 	dir = 4
 	},
 /area/station/cargo/sorting)
-"tSD" = (
-/obj/structure/closet/mini_fridge{
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill.";
-	name = "mini-fridge";
-	pixel_x = 6;
-	pixel_y = 5
-	},
-/obj/structure/table,
-/turf/open/floor/iron/checker,
-/area/station/commons/dorms/apartment1)
 "tSK" = (
 /obj/structure/chair/sofa/bench/corner{
 	dir = 1
@@ -81080,7 +80961,7 @@
 "vlh" = (
 /obj/structure/fluff{
 	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/lavaland/survival_pod.dmi';
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
 	icon_state = "fan_tiny";
 	name = "shower drain"
 	},
@@ -123006,7 +122887,7 @@ dyS
 xgH
 bvi
 eVk
-lji
+miJ
 xgH
 wVn
 xgH
@@ -248930,7 +248811,7 @@ aUy
 gBr
 sRh
 tUG
-eCZ
+fWA
 vuC
 gyr
 sng
@@ -256121,7 +256002,7 @@ cdF
 ftv
 jiL
 wTW
-tSD
+iqp
 xkT
 xpA
 jFi
@@ -261004,7 +260885,7 @@ cdF
 ftv
 jiL
 wfR
-hlG
+kgX
 vOM
 lkP
 sVY
@@ -311362,7 +311243,7 @@ glw
 aNs
 gZJ
 per
-hkj
+ofb
 jvM
 nSV
 pHT
@@ -317531,9 +317412,9 @@ gDy
 gDy
 mYF
 nPE
-idM
+euU
 ipn
-cGI
+ddt
 geD
 hUY
 liQ
@@ -317788,13 +317669,13 @@ gDy
 sNe
 xby
 nPE
-rmm
+rSF
 ipn
 qLH
 geD
 wHu
 jmR
-aaX
+jSu
 qXg
 hZe
 liQ

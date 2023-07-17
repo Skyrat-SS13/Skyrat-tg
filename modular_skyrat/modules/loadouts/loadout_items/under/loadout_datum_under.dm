@@ -345,6 +345,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Pentagram Strapped Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/pentagram
 
+/datum/loadout_item/under/miscellaneous/jacarta_dress
+	name = "Jacarta Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/jute
+
+/datum/loadout_item/under/miscellaneous/striped_skirt
+	name = "Red Striped Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/striped_skirt
+
+/datum/loadout_item/under/miscellaneous/red_skirt
+	name = "Red Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/red_skirt
+
+/datum/loadout_item/under/miscellaneous/black_skirt
+	name = "Black Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/black_skirt
+
 /datum/loadout_item/under/miscellaneous/swept_skirt
 	name = "Swept Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/swept

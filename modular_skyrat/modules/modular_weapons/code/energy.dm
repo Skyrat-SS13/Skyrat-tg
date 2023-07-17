@@ -10,7 +10,8 @@
 	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
-	inhand_icon_state = null
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
 	w_class = WEIGHT_CLASS_SMALL
@@ -19,14 +20,13 @@
 	charge_sections = 3
 
 /obj/item/gun/energy/disabler/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/energy/disabler/bolt_disabler/give_gun_safeties()
 	return
 
 /obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
 	return
-
 /*
 *	CFA PHALANX
 *	Similar to the HoS's laser
@@ -38,6 +38,8 @@
 	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "phalanx1"
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/bounce, /obj/item/ammo_casing/energy/laser/bounce, /obj/item/ammo_casing/energy/electrode/knockdown)
@@ -46,7 +48,7 @@
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/e_gun/cfa_phalanx/give_gun_safeties()
 	return
@@ -55,7 +57,6 @@
 *	CFA PALADIN
 *	Identical to a heavy laser.
 */
-
 
 /obj/item/gun/energy/laser/cfa_paladin
 	name = "\improper Mk.IV Paladin plasma carbine"
@@ -67,7 +68,7 @@
 	charge_sections = 5
 
 /obj/item/gun/energy/laser/cfa_paladin/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/energy/laser/cfa_paladin/give_gun_safeties()
 	return
@@ -76,7 +77,6 @@
 *	BOUNCE DISABLER
 *	A disabler that will always ricochet.
 */
-
 
 /obj/item/ammo_casing/energy/disabler/bounce
 	projectile_type = /obj/projectile/beam/disabler/bounce
@@ -213,7 +213,7 @@
 *	Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
 */
 
-/obj/item/ammo_casing/caseless/laser
+/obj/item/ammo_casing/laser
 	name = "type I plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
@@ -223,7 +223,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/single
 
-/obj/item/ammo_casing/caseless/laser/double
+/obj/item/ammo_casing/laser/double
 	name = "type II plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon_state = "plasma_shell2"
@@ -232,7 +232,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/double
 
-/obj/item/ammo_casing/caseless/laser/bounce
+/obj/item/ammo_casing/laser/bounce
 	name = "type III reflective projectile (lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
@@ -241,7 +241,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2,/datum/material/plasma=HALF_SHEET_MATERIAL_AMOUNT)
 	projectile_type = /obj/projectile/beam/laser/bounce
 
-/obj/item/ammo_casing/caseless/laser/bounce/disabler
+/obj/item/ammo_casing/laser/bounce/disabler
 	name = "type III reflective projectile (disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"
