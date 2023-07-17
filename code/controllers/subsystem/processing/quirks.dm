@@ -33,12 +33,16 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Soft-Spoken"),
 		list("Stormtrooper Aim", "Big Hands"),
 		list("Bilingual", "Foreigner"),
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Big Hands", "Stormtrooper Aim"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
+=======
+		list("Spacer", "Paraplegic")
+>>>>>>> a8e0d7c8d20 (Adds a new positive quirk, "Spacer Born".  (#76809))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
