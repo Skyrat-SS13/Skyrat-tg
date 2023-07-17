@@ -23,7 +23,7 @@
 	/// If the reagents inside of this container will splash out when the container tries to splash onto someone or something
 	var/spillable = FALSE
 	/**
-	 * The different thresholds at which the reagent fill overlay will change. See reagentfillings.dmi.
+	 * The different thresholds at which the reagent fill overlay will change. See medical/reagent_fillings.dmi.
 	 *
 	 * Should be a list of integers which correspond to a reagent unit threshold.
 	 * If null, no automatic fill overlays are generated.
@@ -36,7 +36,7 @@
 	/// If not set, uses the current icon state.
 	var/fill_icon_state = null
 	/// The icon file to take fill icon appearances from
-	var/fill_icon = 'icons/obj/reagentfillings.dmi'
+	var/fill_icon = 'icons/obj/medical/reagent_fillings.dmi'
 
 /obj/item/reagent_containers/Initialize(mapload, vol)
 	. = ..()
@@ -225,16 +225,16 @@
 			log_combat(thrown_by, M, "splashed", R)
 		reagents.expose(target, TOUCH, splash_multiplier)
 		reagents.expose(target_turf, TOUCH, (1 - splash_multiplier)) // 1 - splash_multiplier because it's what didn't hit the target
-		target_turf.add_liquid_from_reagents(reagents, reagent_multiplier = (1 - splash_multiplier)) // skyrat edit: liquid spills (molotov buff) (huge)
+		target_turf.add_liquid_from_reagents(reagents, reagent_multiplier = (1 - splash_multiplier)) // SKYRAT EDIT ADDITION - liquid spills (molotov buff) (huge)
 
 	else if(bartender_check(target) && thrown)
 		visible_message(span_notice("[src] lands onto the [target.name] without spilling a single drop."))
 		return
 
 	else
-		if(isturf(target)) //SKYRAT EDIT CHANGE
-			var/turf/T = target
-			T.add_liquid_from_reagents(reagents)
+		//SKYRAT EDIT CHANGE START - liquid spills on non-mobs
+		if(target.can_liquid_spill_on_hit())
+			target.add_liquid_from_reagents(reagents, thrown_from = src, thrown_to = target)
 			if(reagents.reagent_list.len && thrown_by)
 				log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
 				log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")

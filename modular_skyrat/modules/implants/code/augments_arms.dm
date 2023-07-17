@@ -29,6 +29,8 @@
 	icon_state = "mantis_blade"
 
 /obj/item/organ/internal/cyberimp/arm/armblade/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated energy arm blade! You madman!"))
 	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
@@ -66,9 +68,12 @@
 	toolspeed = 1
 
 /obj/item/organ/internal/cyberimp/arm/botany/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
 	items_list += WEAKREF(new /obj/item/implant_mounted_chainsaw(src)) //time to landscape the station
+	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/multitool/abductor/implant
@@ -83,10 +88,13 @@
 	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/cup/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
 
 /obj/item/organ/internal/cyberimp/arm/janitor/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated deluxe cleaning supplies!"))
 	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
 	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg_lube(src))
+	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/arm/lighter
@@ -95,7 +103,10 @@
 	items_to_create = list(/obj/item/lighter/greyscale) //Hilariously useless.
 
 /obj/item/organ/internal/cyberimp/arm/lighter/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!"))
 	items_list += WEAKREF(new /obj/item/lighter(src)) //Now you can choose between bad and worse!
+	obj_flags |= EMAGGED
 	return TRUE

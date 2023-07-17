@@ -138,6 +138,7 @@
 #define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
+#define ANNOUNCER_TRANSLOCATION "announcer_translocation"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
 #define ANNOUNCER_FLUXANOMALIES "announcer_fluxanomalies"
 #define ANNOUNCER_GRAVANOMALIES "announcer_gravanomalies"
@@ -184,6 +185,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_VORTEXANOMALIES,
 	ANNOUNCER_CAPTAIN,
 	ANNOUNCER_MASSIVEBSPACEANOMALIES,
+	ANNOUNCER_TRANSLOCATION,
 	ANNOUNCER_PYROANOMALIES,
 	ANNOUNCER_FLUXANOMALIES,
 	ANNOUNCER_GRAVANOMALIES,
