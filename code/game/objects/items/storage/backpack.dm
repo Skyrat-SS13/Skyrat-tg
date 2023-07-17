@@ -395,8 +395,6 @@
 	/// If this bag is zipped (contents hidden) up or not
 	/// Starts enabled so people need to figure it out to use the thing
 	var/zipped_up = TRUE
-	//slowdown = 1 //ORIGINAL
-	slowdown = 0.5 //SKYRAT EDIT CHANGE
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
