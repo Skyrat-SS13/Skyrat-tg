@@ -63,3 +63,19 @@
 /obj/item/clothing/head/helmet/space/santahat
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION
+
+// For toggling visibility of hair & other features with surgery caps
+/obj/item/clothing/head/utility/surgerycap/attack_self(mob/user)
+	to_chat(user, span_notice("You begin to [flags_inv ? "loosen" : "tighten"] the strings on \the [src]..."))
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	if(!flags_inv)
+		flags_inv = HIDEHAIR
+		to_chat(user, span_notice("You tighten the strings on \the [src]."))
+	else
+		flags_inv = NONE
+		to_chat(user, span_notice("You loosen the strings on \the [src]."))
+
+/obj/item/clothing/head/utility/surgerycap/examine(mob/user)
+	. = ..()
+	. += span_notice("Use in hand to [flags_inv ? "loosen" : "tighten"] the strings.")
