@@ -43,14 +43,13 @@
 	name = "orange gloves"
 	desc = "A pair of gloves, they don't look special in any way."
 	icon_state = "orange"
-	greyscale_colors = "#ff9300"
+	greyscale_colors = COLOR_CRAYON_ORANGE
 
 /obj/item/clothing/gloves/color/red
 	name = "red gloves"
 	desc = "A pair of gloves, they don't look special in any way."
 	icon_state = "red"
-	greyscale_colors = "#da0000"
-
+	greyscale_colors = COLOR_CRAYON_RED
 
 /obj/item/clothing/gloves/color/red/insulated
 	name = "insulated gloves"
@@ -73,7 +72,7 @@
 	name = "blue gloves"
 	desc = "A pair of gloves, they don't look special in any way."
 	icon_state = "blue"
-	greyscale_colors = "#00b7ef"
+	greyscale_colors = COLOR_CRAYON_BLUE
 
 /obj/item/clothing/gloves/color/purple
 	name = "purple gloves"
@@ -85,7 +84,7 @@
 	name = "green gloves"
 	desc = "A pair of gloves, they don't look special in any way."
 	icon_state = "green"
-	greyscale_colors = "#a8e61d"
+	greyscale_colors = COLOR_CRAYON_GREEN
 
 /obj/item/clothing/gloves/color/grey
 	name = "grey gloves"
@@ -119,5 +118,5 @@
 	name = "white gloves"
 	desc = "These look pretty fancy."
 	icon_state = "white"
-	greyscale_colors = "#ffffff"
+	greyscale_colors = COLOR_WHITE
 	custom_price = PAYCHECK_CREW

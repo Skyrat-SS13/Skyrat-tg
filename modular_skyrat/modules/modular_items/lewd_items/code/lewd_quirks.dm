@@ -6,6 +6,9 @@
 	///Whether the trauma will be displayed on a scanner or kiosk
 	var/display_scanner = TRUE
 
+/datum/brain_trauma/very_special
+	abstract_type = /datum/brain_trauma/very_special
+
 /datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."

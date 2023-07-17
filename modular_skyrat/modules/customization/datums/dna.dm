@@ -228,13 +228,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		dna.update_body_size()
 
 		dna.species.on_species_gain(src, old_species, pref_load)
-
-
-		if(ishuman(src))
-			qdel(language_holder)
-			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src)
-		update_atom_languages()
 		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 
@@ -251,7 +244,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
-/mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0, eyeorgancolor_update=0)
+/mob/living/carbon/human/updateappearance(icon_update = TRUE, mutcolor_update = FALSE, mutations_overlay_update = FALSE, eyeorgancolor_update = FALSE)
 	..()
 	var/structure = dna.unique_identity
 

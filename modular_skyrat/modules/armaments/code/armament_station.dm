@@ -13,7 +13,7 @@
 /obj/machinery/armament_station
 	name = "Armament Outfitting Station"
 	desc = "A versatile station for equipping your weapons."
-	icon = 'icons/obj/vending.dmi'
+	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "liberationstation"
 	density = TRUE
 	/// The armament entry type path that will fill the armament station's list.
