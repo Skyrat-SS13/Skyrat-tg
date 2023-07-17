@@ -44,8 +44,7 @@
 		RegisterSignal(user, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 
 	if(!slot == ITEM_SLOT_BACK)
-		switch(current_mode)
-			return MODE_GRAVOFF
+		mode = MODE_GRAVOFF
 
 /obj/item/gravityharness/proc/toggle_mode(mob/user, voluntary)
 
@@ -62,10 +61,9 @@
 
 	gravity_on = !gravity_on
 
-	mode = get_next_mode(mode)
-
 	switch(mode)
-		if(MODE_ANTIGRAVITY)
+		if(MODE_GRAVOFF)
+			mode = MODE_ANTIGRAVITY
 			if(user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust(get_turf(src))
 			user.AddElement(/datum/element/forced_gravity, 0)
@@ -75,17 +73,20 @@
 			icon_state = ANTIGRAVITY_STATE
 			worn_icon_state = ANTIGRAVITY_STATE
 
-		if(MODE_EXTRAGRAVITY)
+		if(MODE_ANTIGRAVITY)
+			mode = MODE_EXTRAGRAVITY
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 			user.RemoveElement(/datum/element/forced_gravity, 0)
-			ADD_TRAIT(user, TRAIT_NEGATES_GRAVITY)
+			ADD_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
 			to_chat(user, span_notice("Your harness shudders and hisses, projecting a local extra-gravity field."))
 			gravity_on = TRUE
-			worn_icon_state = extragravity_state
+			icon_state = EXTRAGRAVITY_STATE
+			worn_icon_state = EXTRAGRAVITY_STATE
 
-		if(MODE_GRAVOFF)
+		if(MODE_EXTRAGRAVITY)
+			mode = MODE_GRAVOFF
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
@@ -97,7 +98,7 @@
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
 					to_chat(user, span_notice("Your harness lets out a soft whine as your gravity field dissipates, leaving your body grounded once again."))
 			user.RemoveElement(/datum/element/forced_gravity, 0)
-			REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY)
+			REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 			icon_state = OFF_STATE
 			worn_icon_state = OFF_STATE
 			gravity_on = FALSE
@@ -116,17 +117,16 @@
 		if(MODE_EXTRAGRAVITY)
 			return MODE_GRAVOFF
 
-/obj/item/gravityharness/dropped(mob/user, current_mode)
+/obj/item/gravityharness/dropped(mob/user)
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(user, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
-	switch(current_mode)
-		return MODE_GRAVOFF
+	mode = MODE_GRAVOFF
 
 /obj/item/gravityharness/attack_self(mob/user)
 	toggle_mode(user, TRUE)
 
-/obj/item/gravityharness/proc/get_status_tab_item(mob/living/source, list/items, current_mode)
+/obj/item/gravityharness/proc/get_status_tab_item(mob/living/source, list/items)
 	SIGNAL_HANDLER
 	items += "Personal Gravitational Field: [mode]"
 	items += "Cell Charge: [cell ? "[round(cell.percent(), 0.1)]%" : "No Cell!"]"
@@ -142,14 +142,12 @@
 
 	// If we got here, the gravity field is on. If there's no cell, turn that shit off
 	if(!cell)
-		switch(current_mode)
-			return MODE_GRAVOFF
+		mode = MODE_GRAVOFF
 
 	// cell.use will return FALSE if charge is lower than GRAVITY_FIELD_COST
 	if(!cell.use(GRAVITY_FIELD_COST))
 		to_chat(user, span_warning("The gravitic engine cuts off as [cell] runs out of charge."))
-		switch(current_mode)
-			return MODE_GRAVOFF
+		mode = MODE_GRAVOFF
 
 /obj/item/gravityharness/Destroy()
 	if(isatom(cell))
@@ -195,18 +193,19 @@
 	return TRUE
 
 /obj/item/gravityharness/attack_hand(mob/user)
-	if(cell_cover_open && loc == user)
-		if(!cell)
-			balloon_alert(user, "no cell!")
-			return
-		balloon_alert(user, "removing cell...")
-		if(!do_after(user, 1.5 SECONDS, target = src))
-			balloon_alert(user, "interrupted!")
-			return
-		balloon_alert(user, "cell removed")
-		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-		if(!user.put_in_hands(cell))
-			cell.forceMove(drop_location())
+	if(cell_cover_open || (loc == user))
+		return ..()
+	if(!cell)
+		balloon_alert(user, "no cell!")
+		return
+	balloon_alert(user, "removing cell...")
+	if(!do_after(user, 1.5 SECONDS, target = src))
+		balloon_alert(user, "interrupted!")
+		return
+	balloon_alert(user, "cell removed")
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
+	if(!user.put_in_hands(cell))
+		cell.forceMove(drop_location())
 		return
 	return ..()
 
