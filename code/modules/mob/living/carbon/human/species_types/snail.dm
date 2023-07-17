@@ -1,20 +1,15 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	species_traits = list(
-		MUTCOLORS,
-		// NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
-	speedmod = 6
 	siemens_coeff = 2 //snails are mostly water
-	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
-	disliked_food = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
 
@@ -33,13 +28,15 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/snail
 	)
 
-/datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
+/datum/species/snail/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
 	. = ..()
+	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
+		return
 	if(istype(chem,/datum/reagent/consumable/salt))
-		H.adjustFireLoss(2 * REM * seconds_per_tick)
-		playsound(H, 'sound/weapons/sear.ogg', 30, TRUE)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
-		return TRUE
+		playsound(affected, SFX_SEAR, 30, TRUE)
+		affected.adjustFireLoss(2 * REM * seconds_per_tick)
+		affected.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
+		return COMSIG_MOB_STOP_REAGENT_CHECK
 
 /datum/species/snail/on_species_gain(mob/living/carbon/new_snailperson, datum/species/old_species, pref_load)
 	. = ..()
@@ -79,6 +76,7 @@
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	//SKYRAT EDIT BEGIN - Roundstart Snails
+	slowdown = 6 // The snail's shell is what's making them slow.
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(

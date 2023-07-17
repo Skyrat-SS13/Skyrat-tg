@@ -7,7 +7,7 @@
 	bomb = 20
 	bio = 10
 
-/datum/armor/ash_robes
+/datum/armor/clothing_under/ash_robes
 	melee = 15
 	bullet = 25
 	laser = 15
@@ -61,7 +61,7 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "robes"
-	armor_type = /datum/armor/ash_robes
+	armor_type = /datum/armor/clothing_under/ash_robes
 
 	greyscale_colors = null
 	greyscale_config = null

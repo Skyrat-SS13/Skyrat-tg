@@ -380,18 +380,17 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-	armor_type = /datum/armor/under_chameleon
+	armor_type = /datum/armor/clothing_under/chameleon
 
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
-/datum/armor/under_chameleon
+/datum/armor/clothing_under/chameleon
 	melee = 10
 	bullet = 10
 	laser = 10
-	bio = 10
 	fire = 50
 	acid = 50
 	wound = 10
