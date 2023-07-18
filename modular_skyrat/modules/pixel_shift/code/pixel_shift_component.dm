@@ -1,6 +1,3 @@
-#define MAXIMUM_PIXEL_SHIFT 12
-#define PASSABLE_SHIFT_THRESHOLD 8
-
 /datum/component/pixel_shift
 	var/mob/living/owner
 	/// Whether the mob is pixel shifted or not
@@ -9,6 +6,8 @@
 	var/shifting = FALSE
 	/// Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.
 	var/passthroughable = NONE
+	var/maximum_pixel_shift = 16
+	var/passable_shift_threshold = 8
 
 /datum/component/pixel_shift/Initialize(...)
 	. = ..()
@@ -43,10 +42,6 @@
 	if(passthroughable & border_dir)
 		return COMPONENT_LIVING_PASSABLE
 
-/datum/component/pixel_shift/proc/check_shifting()
-	if(shifting)
-		return COMPONENT_LIVING_PIXEL_SHIFTING
-
 /datum/component/pixel_shift/proc/change_shifting(mob/source, active)
 	shifting = active
 
@@ -61,32 +56,29 @@
 	passthroughable = NONE
 	switch(direct)
 		if(NORTH)
-			if(owner.pixel_y <= MAXIMUM_PIXEL_SHIFT + owner.base_pixel_y)
+			if(owner.pixel_y <= maximum_pixel_shift + owner.base_pixel_y)
 				owner.pixel_y++
 				is_shifted = TRUE
 		if(EAST)
-			if(owner.pixel_x <= MAXIMUM_PIXEL_SHIFT + owner.base_pixel_x)
+			if(owner.pixel_x <= maximum_pixel_shift + owner.base_pixel_x)
 				owner.pixel_x++
 				is_shifted = TRUE
 		if(SOUTH)
-			if(owner.pixel_y >= -MAXIMUM_PIXEL_SHIFT + owner.base_pixel_y)
+			if(owner.pixel_y >= -maximum_pixel_shift + owner.base_pixel_y)
 				owner.pixel_y--
 				is_shifted = TRUE
 		if(WEST)
-			if(owner.pixel_x >= -MAXIMUM_PIXEL_SHIFT + owner.base_pixel_x)
+			if(owner.pixel_x >= -maximum_pixel_shift + owner.base_pixel_x)
 				owner.pixel_x--
 				is_shifted = TRUE
 
 	// Yes, I know this sets it to true for everything if more than one is matched.
 	// Movement doesn't check diagonals, and instead just checks EAST or WEST, depending on where you are for those.
-	if(owner.pixel_y > PASSABLE_SHIFT_THRESHOLD)
+	if(owner.pixel_y > passable_shift_threshold)
 		passthroughable |= EAST | SOUTH | WEST
-	if(owner.pixel_x > PASSABLE_SHIFT_THRESHOLD)
+	if(owner.pixel_x > passable_shift_threshold)
 		passthroughable |= NORTH | SOUTH | WEST
-	if(owner.pixel_y < -PASSABLE_SHIFT_THRESHOLD)
+	if(owner.pixel_y < -passable_shift_threshold)
 		passthroughable |= NORTH | EAST | WEST
-	if(owner.pixel_x < -PASSABLE_SHIFT_THRESHOLD)
+	if(owner.pixel_x < -passable_shift_threshold)
 		passthroughable |= NORTH | EAST | SOUTH
-
-#undef MAXIMUM_PIXEL_SHIFT
-#undef PASSABLE_SHIFT_THRESHOLD
