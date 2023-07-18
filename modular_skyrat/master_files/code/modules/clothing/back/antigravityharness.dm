@@ -59,8 +59,6 @@
 			to_chat(user, span_warning("The gravitic engine on [src] has no charge."))
 		return
 
-	gravity_on = !gravity_on
-
 	switch(mode)
 		if(MODE_GRAVOFF)
 			mode = MODE_ANTIGRAVITY
@@ -119,9 +117,11 @@
 
 /obj/item/gravityharness/dropped(mob/user)
 	. = ..()
+	mode = MODE_GRAVOFF
+	user.RemoveElement(/datum/element/forced_gravity, 0)
+	REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(user, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
-	mode = MODE_GRAVOFF
 
 /obj/item/gravityharness/attack_self(mob/user)
 	toggle_mode(user, TRUE)
@@ -193,7 +193,7 @@
 	return TRUE
 
 /obj/item/gravityharness/attack_hand(mob/user)
-	if(cell_cover_open || (loc == user))
+	if(!cell_cover_open || (loc == user))
 		return ..()
 	if(!cell)
 		balloon_alert(user, "no cell!")
@@ -206,8 +206,7 @@
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(!user.put_in_hands(cell))
 		cell.forceMove(drop_location())
-		return
-	return ..()
+	return
 
 /obj/item/gravityharness/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/stock_parts/cell))
