@@ -15,8 +15,4 @@
 	anomaly_path = /obj/effect/anomaly/flux
 
 /datum/round_event/anomaly/anomaly_flux/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Hyper-energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT]. [impact_area.name].", "Anomaly Alert", ANNOUNCER_FLUXANOMALIES) //SKYRAT EDIT CHANGE
-=======
-	priority_announce("Hyper-energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 37e2be09feb (Fixes punctuation on the flux anomaly announcement (#76874))
+	priority_announce("Hyper-energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_FLUXANOMALIES) //SKYRAT EDIT CHANGE
