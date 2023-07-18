@@ -33,6 +33,8 @@
 		if(isnull(H.selected_scream)) //For things that don't have a selected scream(npcs)
 			var/datum/species/userspecies = H.dna.species
 			if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
+				if(prob(1))
+					return 'sound/voice/human/wilhelm_scream.ogg'
 				return pick(userspecies.screamsounds)
 			else
 				return pick(userspecies.femalescreamsounds)

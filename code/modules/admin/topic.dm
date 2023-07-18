@@ -1349,7 +1349,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/code = random_nukecode()
-		for(var/obj/machinery/nuclearbomb/selfdestruct/SD in GLOB.nuke_list)
+		for(var/obj/machinery/nuclearbomb/selfdestruct/SD as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/nuclearbomb/selfdestruct))
 			SD.r_code = code
 		message_admins("[key_name_admin(usr)] has set the self-destruct \
 			code to \"[code]\".")
@@ -1799,6 +1799,16 @@
 		if(!paper_to_show)
 			return
 		paper_to_show.ui_interact(usr)
+	// SKYRAT ADDITION START
+	else if(href_list["pass_opfor_candidate"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/datum/game_mode/dynamic/dynamic = SSticker.mode
+		if(!dynamic.picking_specific_rule(/datum/dynamic_ruleset/midround/from_living/opfor_candidate, forced = TRUE, ignore_cost = TRUE))
+			message_admins("An OPFOR candidate could not be selected.")
+
+	// SKYRAT ADDITION END
 	else if(href_list["play_internet"])
 		if(!check_rights(R_SOUND))
 			return

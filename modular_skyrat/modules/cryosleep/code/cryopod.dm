@@ -222,7 +222,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
 
 		var/mob/living/carbon/human/human_occupant = occupant
-		if(human_occupant && human_occupant.mind)
+		if(istype(human_occupant) && human_occupant.mind)
 			human_occupant.save_individual_persistence(stored_ckey)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
