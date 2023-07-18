@@ -248,13 +248,12 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	..()
 	var/structure = dna.unique_identity
 
-	hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK))
-	facial_hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK))
-
 	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
 
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
+	set_haircolor(sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK)), update = FALSE)
+	set_facial_haircolor(sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK)), update = FALSE)
 
 	if(eyeorgancolor_update)
 		var/obj/item/organ/internal/eyes/eye_organ = get_organ_slot(ORGAN_SLOT_EYES)
@@ -264,14 +263,16 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		eye_organ.old_eye_color_right = eye_color_right
 
 	if(HAS_TRAIT(src, TRAIT_SHAVED))
-		hairstyle = "Shaved"
+		set_facial_hairstyle("Shaved", update = FALSE)
 	else
-		facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+		var/style = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+		set_facial_hairstyle(style, update = FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_BALD))
-		hairstyle = "Bald"
+		set_hairstyle("Bald", update = FALSE)
 	else
-		hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+		var/style = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+		set_hairstyle(style, update = FALSE)
 
 	var/features = dna.unique_features
 	if(dna.features["mcolor"])
@@ -286,9 +287,9 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		dna.features["skin_color"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_SKIN_COLOR_BLOCK))
 
 	if(icon_update)
-		dna.species.handle_body(src) // We want 'update_body_parts(update_limb_data = TRUE)' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
-		update_body_parts() //We can call this because it doesnt refresh limb data, and it handles hair and such.
 		if(mutcolor_update)
-			update_body_parts(update_limb_data = TRUE)
+			update_body(is_creating = TRUE)
+		else
+			update_body()
 		if(mutations_overlay_update)
 			update_mutations_overlay()
