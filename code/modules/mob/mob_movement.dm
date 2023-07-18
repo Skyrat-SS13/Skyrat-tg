@@ -85,13 +85,6 @@
 		return FALSE
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, new_loc, direct) & COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE)
 		return FALSE
-	//SKYRAT EDIT ADDITION BEGIN - PIXEL_SHIFT
-	if(mob.shifting)
-		mob.pixel_shift(direct)
-		return FALSE
-	else if(mob.is_shifted)
-		mob.unpixel_shift()
-	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob //Already checked for isliving earlier
 	if(L.incorporeal_move && !is_secret_level(mob.z)) //Move though walls
