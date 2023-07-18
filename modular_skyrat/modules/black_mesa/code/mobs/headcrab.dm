@@ -102,7 +102,7 @@
 	AddElement(/datum/element/wall_smasher, strength_flag = ENVIRONMENT_SMASH_STRUCTURES)
 	movement_type = GROUND
 	icon_state = ""
-	zombified_human.hairstyle = null
+	zombified_human.set_hairstyle(null, update = FALSE)
 	zombified_human.update_body_parts()
 	zombified_human.forceMove(src)
 	oldguy = zombified_human
