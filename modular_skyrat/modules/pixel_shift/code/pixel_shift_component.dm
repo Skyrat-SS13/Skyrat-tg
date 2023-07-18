@@ -19,7 +19,6 @@
 	. = ..()
 	RegisterSignal(owner, COMSIG_KB_MOB_PIXEL_SHIFT_DOWN, PROC_REF(change_shifting))
 	RegisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT, PROC_REF(unpixel_shift))
-	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT, PROC_REF(pixel_shift))
 	RegisterSignal(owner, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
 	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE, PROC_REF(check_passable))
 
@@ -27,7 +26,6 @@
 	. = ..()
 	UnregisterSignal(owner, COMSIG_KB_MOB_PIXEL_SHIFT_DOWN)
 	UnregisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT)
-	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT)
 	UnregisterSignal(owner, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(unpixel_shift))
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE)
 
