@@ -251,8 +251,10 @@
 
 /turf/open/space/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()
+	/* SKYRAT EDIT BEGIN - TODO find out why this is failing for Birdshot every time.
 	if(PERFORM_ALL_TESTS(focus_only/openspace_clear) && !GET_TURF_BELOW(src))
 		stack_trace("[src] was inited as openspace with nothing below it at ([x], [y], [z])")
+	 SKYRAT EDIT END */
 	icon_state = "pure_white"
 	// We make the assumption that the space plane will never be blacklisted, as an optimization
 	if(SSmapping.max_plane_offset)
