@@ -235,11 +235,18 @@
 	icon_state_preview = "prisonsuit"
 	inhand_icon_state = "jumpsuit"
 	greyscale_colors = "#ff8300"
+<<<<<<< HEAD
 	greyscale_config = /datum/greyscale_config/jumpsuit_prison
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+	greyscale_config = /datum/greyscale_config/jumpsuit/prison
+	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
+>>>>>>> ad43eece560 (Standardizes a majority of the GAGS configs for Clothing (#76384))
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -251,11 +258,18 @@
 	icon_preview = 'icons/obj/fluff/previews.dmi'
 	icon_state_preview = "prisonskirt"
 	greyscale_colors = "#ff8300"
+<<<<<<< HEAD
 	greyscale_config = /datum/greyscale_config/jumpsuit_prison
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
 	greyscale_config_worn_digi = null //SKYRAT EDIT ADDITION - DigiGreyscale
+=======
+	greyscale_config = /datum/greyscale_config/jumpsuit/prison
+	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
+>>>>>>> ad43eece560 (Standardizes a majority of the GAGS configs for Clothing (#76384))
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
