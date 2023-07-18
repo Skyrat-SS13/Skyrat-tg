@@ -26,9 +26,6 @@
 
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
-/obj/item/gun/ballistic/automatic/mp40/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
-
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'

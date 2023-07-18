@@ -66,7 +66,7 @@
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
-	wires = new /datum/wires/scanner_gate(src)
+	set_wires(new /datum/wires/scanner_gate(src))
 	set_scanline("passive")
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
@@ -75,7 +75,7 @@
 
 /obj/machinery/scanner_gate/Destroy()
 	qdel(wires)
-	wires = null
+	set_wires(null)
 	. = ..()
 
 /obj/machinery/scanner_gate/examine(mob/user)
@@ -122,13 +122,14 @@
 			wires.interact(user)
 	return ..()
 
-/obj/machinery/scanner_gate/emag_act(mob/user)
+/obj/machinery/scanner_gate/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("You fry the ID checking system."))
+	balloon_alert(user, "id checker disabled")
+	return TRUE
 
 /obj/machinery/scanner_gate/proc/perform_scan(mob/living/M)
 	var/beep = FALSE

@@ -11,6 +11,26 @@
 	canRturf = TRUE
 	upgrade = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING
 
+// Check for drains - we only want one per tile
+/obj/item/construction/plumbing/canPlace(turf/destination)
+	if(ispath(blueprint, /obj/structure/drain))
+		for(var/obj/structure/drain/other_drain in destination.contents)
+			if(istype(other_drain))
+				return FALSE
+	return ..()
+
+// Drain deconstruction
+/obj/item/construction/plumbing/afterattack(atom/target, mob/user, proximity)
+	if(!proximity)
+		return
+	if(istype(target, /obj/structure/drain))
+		var/obj/structure/drain/drain_target = target
+		if(do_after(user, 20, target = target))
+			drain_target.deconstruct() //Let's not substract matter
+			playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
+	else
+		return ..()
+
 /// add the drain design to the plumbing RCD designs list
 /obj/item/construction/plumbing/set_plumbing_designs()
 	. = ..()

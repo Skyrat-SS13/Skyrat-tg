@@ -89,72 +89,87 @@
 
 /obj/item/razor/proc/shave(mob/living/carbon/human/target_human, location = BODY_ZONE_PRECISE_MOUTH)
 	if(location == BODY_ZONE_PRECISE_MOUTH)
-		target_human.facial_hairstyle = "Shaved"
+		target_human.set_facial_hairstyle("Shaved", update = TRUE)
 	else
-		target_human.hairstyle = "Bald"
+		target_human.set_hairstyle("Bald", update = TRUE)
 
-	target_human.update_body_parts()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 
 /obj/item/razor/attack(mob/attacked_mob, mob/living/user)
-	if(ishuman(attacked_mob))
-		var/mob/living/carbon/human/target_human = attacked_mob
-		var/location = user.zone_selected
-		if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
-			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+	if(!ishuman(attacked_mob))
+		return ..()
+
+	var/mob/living/carbon/human/target_human = attacked_mob
+	var/location = user.zone_selected
+	var/obj/item/bodypart/head/noggin = target_human.get_bodypart(BODY_ZONE_HEAD)
+	var/static/list/head_zones = list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)
+
+	if(!noggin && (location in head_zones))
+		to_chat(user, span_warning("[target_human] doesn't have a head!"))
+		return
+
+	if(!(location in head_zones) && !user.combat_mode)
+		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+		return
+
+	if(location == BODY_ZONE_PRECISE_MOUTH)
+		if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
+			to_chat(user, span_warning("There is no facial hair to shave!"))
 			return
-		if((location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !target_human.get_bodypart(BODY_ZONE_HEAD))
-			to_chat(user, span_warning("[target_human] doesn't have a head!"))
+
+		if(!get_location_accessible(target_human, location))
+			to_chat(user, span_warning("The mask is in the way!"))
 			return
 
-		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(!(FACEHAIR in target_human.dna.species.species_traits))
-				to_chat(user, span_warning("There is no facial hair to shave!"))
-				return
-			if(!get_location_accessible(target_human, location))
-				to_chat(user, span_warning("The mask is in the way!"))
-				return
-			if(HAS_TRAIT(target_human, TRAIT_SHAVED))
-				to_chat(user, span_warning("[target_human] is just way too shaved. Like, really really shaved."))
-				return
-			if(target_human.facial_hairstyle == "Shaved")
-				to_chat(user, span_warning("Already clean-shaven!"))
-				return
+		if(HAS_TRAIT(target_human, TRAIT_SHAVED))
+			to_chat(user, span_warning("[target_human] is just way too shaved. Like, really really shaved."))
+			return
 
-			var/self_shaving = target_human == user // Shaving yourself?
-			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
-				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
-			if(do_after(user, shaving_time, target = target_human))
-				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
-					span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
-				shave(target_human, location)
+		if(target_human.facial_hairstyle == "Shaved")
+			to_chat(user, span_warning("Already clean-shaven!"))
+			return
 
-		else if(location == BODY_ZONE_HEAD)
-			if(!(HAIR in target_human.dna.species.species_traits))
-				to_chat(user, span_warning("There is no hair to shave!"))
-				return
-			if(!get_location_accessible(target_human, location))
-				to_chat(user, span_warning("The headgear is in the way!"))
-				return
-			if(target_human.hairstyle == "Bald" || target_human.hairstyle == "Balding Hair" || target_human.hairstyle == "Skinhead")
-				to_chat(user, span_warning("There is not enough hair left to shave!"))
-				return
-			if(HAS_TRAIT(target_human, TRAIT_SHAVED))
-				to_chat(user, span_warning("[target_human] is just way too shaved. Like, really really shaved."))
-				return
+		var/self_shaving = target_human == user // Shaving yourself?
+		user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
+			span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
 
-			var/self_shaving = target_human == user // Shaving yourself?
-			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
-				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
-			if(do_after(user, shaving_time, target = target_human))
-				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
-					span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
-				shave(target_human, location)
-		else
-			..()
-	else
-		..()
+		if(do_after(user, shaving_time, target = target_human))
+			user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
+				span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
+
+			shave(target_human, location)
+
+	else if(location == BODY_ZONE_HEAD)
+		if(!(noggin.head_flags & HEAD_HAIR))
+			to_chat(user, span_warning("There is no hair to shave!"))
+			return
+
+		if(!get_location_accessible(target_human, location))
+			to_chat(user, span_warning("The headgear is in the way!"))
+			return
+
+		if(target_human.hairstyle == "Bald" || target_human.hairstyle == "Balding Hair" || target_human.hairstyle == "Skinhead")
+			to_chat(user, span_warning("There is not enough hair left to shave!"))
+			return
+
+		if(HAS_TRAIT(target_human, TRAIT_SHAVED))
+			to_chat(user, span_warning("[target_human] is just way too shaved. Like, really really shaved."))
+			return
+
+		var/self_shaving = target_human == user // Shaving yourself?
+		user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
+			span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
+
+		if(do_after(user, shaving_time, target = target_human))
+			user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
+				span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
+
+			shave(target_human, location)
+
+		return
+
+	return ..()
 
 /obj/structure/sign/barber
 	name = "barbershop sign"
