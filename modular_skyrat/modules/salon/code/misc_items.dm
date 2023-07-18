@@ -89,11 +89,10 @@
 
 /obj/item/razor/proc/shave(mob/living/carbon/human/target_human, location = BODY_ZONE_PRECISE_MOUTH)
 	if(location == BODY_ZONE_PRECISE_MOUTH)
-		target_human.facial_hairstyle = "Shaved"
+		target_human.set_facial_hairstyle("Shaved", update = TRUE)
 	else
-		target_human.hairstyle = "Bald"
+		target_human.set_hairstyle("Bald", update = TRUE)
 
-	target_human.update_body_parts()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 
