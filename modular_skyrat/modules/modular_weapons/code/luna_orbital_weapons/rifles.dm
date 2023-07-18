@@ -60,6 +60,9 @@
 
 	return .
 
+/obj/item/gun/ballistic/automatic/luna_rifle/no_mag
+	spawnwithmagazine = FALSE
+
 // Military short rifle
 
 /obj/item/gun/ballistic/automatic/luna_rifle/short
@@ -71,6 +74,8 @@
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/luna_weapons_factory/rifle_short.ogg'
 
 	spread = 5
+
+	recoil = 0.25
 
 	suppressor_x_offset = 8
 
@@ -85,6 +90,9 @@
 
 	return .
 
+/obj/item/gun/ballistic/automatic/luna_rifle/short/no_mag
+	spawnwithmagazine = FALSE
+
 // Police short rifle
 
 /obj/item/gun/ballistic/automatic/luna_rifle/short/police
@@ -98,6 +106,10 @@
 	inhand_icon_state = "police_rifle"
 
 	mag_type = /obj/item/ammo_box/magazine/c40sol_rifle
+
+/obj/item/gun/ballistic/automatic/luna_rifle/short/police/no_mag
+	spawnwithmagazine = FALSE
+
 // Heavy weapons guy
 
 /obj/item/gun/ballistic/automatic/luna_rifle/machinegun
@@ -113,6 +125,8 @@
 
 	fire_delay = 1
 	spread = 10
+
+	recoil = 1
 
 	suppressor_x_offset = 9
 
@@ -134,6 +148,9 @@
 		the weak armed."
 
 	return .
+
+/obj/item/gun/ballistic/automatic/luna_rifle/machinegun/no_mag
+	spawnwithmagazine = FALSE
 
 // Magazines
 

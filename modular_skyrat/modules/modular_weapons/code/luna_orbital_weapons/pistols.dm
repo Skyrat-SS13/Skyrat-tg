@@ -59,27 +59,30 @@
 
 /obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator
 	name = "\improper Luno 'Kirasfiŝo' Peacekeeper Pistol"
-	desc = "A modificaiton of the standard Luno peacekeeper pistol. It has a higher firerate and a burst selector. Due to the fact it expends some of the fired round's gas to accelerate fire, some lethality is lost."
+	desc = "A modificaiton of the standard Luno peacekeeper pistol. It has a higher firerate and automatic fire capability. Due to the fact it expends some of the fired round's gas to accelerate fire, some lethality is lost."
 
 	icon_state = "kirasfiso"
 
-	projectile_damage_multiplier = 0.72 // Makes it exactly 18 damage per normal round, rather than 25
+	projectile_damage_multiplier = 0.8 // Makes it exactly 20 damage per normal round
 
-	burst_size = 3
-	fire_delay = 1.75
-	spread = 5
+	fire_delay = 1.8
+	spread = 10
 
 	suppressor_x_offset = 11
 
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 
+/obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
 /obj/item/gun/ballistic/automatic/pistol/luna/police/glockinator/examine_more(mob/user)
 	. = ..()
 
 	. += "This particular variant is modified significantly from standard pistol models, \
-		Of note, featuring a three round burst and heavier construction. It is used mostly \
-		by police forces, with most variants made going to supply companies like \
-		Lopland Securities."
+		Of note, featuring automatic fire capability and heavier construction. It is used mostly \
+		by police forces, with most variants made to arm companies like Lopland Securities."
 
 	return .
 

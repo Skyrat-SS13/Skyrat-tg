@@ -32,6 +32,9 @@
 
 	burst_size = 1
 	fire_delay = 3
+
+	recoil = 0.25
+
 	actions_types = list()
 
 /obj/item/gun/ballistic/automatic/luna_sport_shooter/Initialize(mapload)
@@ -53,3 +56,6 @@
 		with SolFed military magazines and ammunition, and consistent precision."
 
 	return .
+
+/obj/item/gun/ballistic/automatic/luna_sport_shooter/no_mag
+	spawnwithmagazine = FALSE

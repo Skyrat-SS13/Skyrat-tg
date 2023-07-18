@@ -90,6 +90,8 @@
 	burst_size = 2
 	fire_delay = 1
 
+	recoil = 1
+
 	spread = 10
 
 /obj/item/gun/ballistic/automatic/luna_pdw/give_manufacturer_examine()
