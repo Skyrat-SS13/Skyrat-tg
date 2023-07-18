@@ -875,6 +875,7 @@
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
 	// SKYRAT EDIT ADDITION
+	var/datum/species/owner_species = human_owner.dna.species
 	markings = LAZYCOPY(owner_species.body_markings[body_zone])
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
