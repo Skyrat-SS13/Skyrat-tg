@@ -44,8 +44,7 @@
 
 
 		if(do_after(user, haircut_duration, target_human))
-			target_human.hairstyle = hair_id
-			target_human.update_body_parts()
+			target_human.set_hairstyle(hair_id, update = TRUE)
 			user.visible_message(span_notice("[target_human]'s hair changes!"), span_notice("The nanites successfully alter [target_human]'s hair!"))
 	else
 		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.facial_hairstyles_list)
@@ -58,8 +57,7 @@
 		to_chat(user, "Nanites begin to reform [target_human]'s facial hair!")
 
 		if(do_after(user, facial_haircut_duration, target_human))
-			target_human.facial_hairstyle = facial_hair_id
-			target_human.update_body_parts()
+			target_human.set_facial_hairstyle(facial_hair_id, update = TRUE)
 			user.visible_message(span_notice("[target_human]'s facial hair changes!"), span_notice("The nanites successfully alter [target_human]'s facial hair!"))
 
 /obj/item/storage/box/syndie_kit/chameleon/PopulateContents()
