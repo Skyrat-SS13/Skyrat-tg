@@ -65,20 +65,20 @@
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_NOHUNGER,
-		TRAIT_NOBREATH,
-		TRAIT_OXYIMMUNE,
-		TRAIT_VIRUSIMMUNE,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_LITERATE,
 		TRAIT_DRINKS_BLOOD,
+		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NOBREATH,
+		TRAIT_NOHUNGER,
+		TRAIT_OXYIMMUNE,
+		TRAIT_VIRUSIMMUNE
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	default_mutant_bodyparts = list(
 		"legs" = "Normal Legs"
 	)
 	exotic_bloodtype = "U"
-	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
 	mutantliver = /obj/item/organ/internal/liver/hemophage
 	mutantstomach = /obj/item/organ/internal/stomach/hemophage
