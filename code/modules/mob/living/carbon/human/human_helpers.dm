@@ -258,6 +258,7 @@
 			preference.apply_to_human(src, preference.create_random_value(preferences))
 
 	fully_replace_character_name(real_name, dna.species.random_name())
+
 /**
  * Setter for mob height
  *
