@@ -36,8 +36,7 @@
 		if(!do_after(usr, 3 SECONDS, target))
 			return
 
-		human_target.hair_color = sanitize_hexcolor(new_color)
-		human_target.update_body_parts()
+		human_target.set_haircolor(sanitize_hexcolor(new_color), update = TRUE)
 
 	else
 		var/beard_or_hair = input(user, "What do you want to dye?", "Character Preference")  as null|anything in list("Hair", "Facial Hair")
@@ -60,10 +59,10 @@
 			return
 
 		if(beard_or_hair == "Hair")
-			human_target.set_hair_gradient_color(new_grad_color, update = FALSE)
+			human_target.set_hair_gradient_color(sanitize_hexcolor(new_grad_color), update = FALSE)
 			human_target.set_hair_gradient_style(new_grad_style, update = TRUE)
 		else
-			human_target.set_facial_hair_gradient_color(new_grad_color, update = FALSE)
+			human_target.set_facial_hair_gradient_color(sanitize_hexcolor(new_grad_color), update = FALSE)
 			human_target.set_facial_hair_gradient_style(new_grad_style, update = TRUE)
 
 	playsound(src, 'sound/effects/spray.ogg', 10, vary = TRUE)
