@@ -74,7 +74,7 @@ const IntroductionSection = (props, context) => {
 
 const FlavorSection = (props, context) => {
   const { data } = useBackend<Info>(context);
-  const { allies, goal } = data; // SKYRAT EDIT BELOW - TOOLTIP
+  const { allies, goal } = data;
   return (
     <Section
       fill
@@ -84,6 +84,12 @@ const FlavorSection = (props, context) => {
           mr={-0.8}
           mt={-0.5}
           icon="hammer"
+          /* SKYRAT EDIT: ORIGINAL TOOLTIP
+          tooltip={multiline`
+            This is a gameplay suggestion for bored ais.
+            You don't have to follow it, unless you want some
+            ideas for how to spend the round.`}
+          */
           tooltip={multiline`
             Please refer to the 'Antagonist Policy' section of the wiki
             if you have any questions.`}
