@@ -1,3 +1,5 @@
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/870
+
 ## Title: Pixel shifting for RP positioning
 
 MODULE ID: PIXEL_SHIFT
@@ -6,18 +8,21 @@ MODULE ID: PIXEL_SHIFT
 
 Adds the ability for living mobs to shift their sprite to fit an RP situation better (standing against a wall for example). Not appended to proc due to it being a busy proc
 
-### TG Proc Changes:
+### TG Proc/File Changes:
 
- - ADDITION: \code\modules\mob\living > /mob/living/Moved()
- - CHANGE: Skyrat-tg\code\datums\keybinding\mob.dm > /datum/keybinding/mob/prevent_movement - Keybind changed to ctrl.
+- N/A
+
+### Modular Overrides:
+
+- `modular_skyrat/master_files/code/datums/keybinding/mob.dm`: `var/list/hotkey_keys`
 
 ### Defines:
 
- - Skyrat-tg\code\modules\mob\mob_movement.dm > /client/Move(n, direct)
+- N/A
 
-### Included files:
+### Included files that are not contained in this module:
 
-N/A
+- N/A
 
 ### Credits:
 
