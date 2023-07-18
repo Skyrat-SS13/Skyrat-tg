@@ -12,12 +12,6 @@
 	if(!suicide_alert())
 		return
 
-	// SKYRAT EDIT ADDITION
-	if(CONFIG_GET(flag/disable_suicide))
-		to_chat(usr, span_warning("Suicide is disabled on this server."))
-		return
-	// SKYRAT EDIT END
-
 	set_suicide(TRUE)
 	send_applicable_messages()
 	final_checkout()
@@ -54,6 +48,12 @@
 
 /// Checks if we are in a valid state to suicide (not already suiciding, capable of actually killing ourselves, area checks, etc.) Returns TRUE if we can suicide, FALSE if we can not.
 /mob/living/proc/can_suicide()
+	// SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/disable_suicide))
+		to_chat(src, span_warning("Suicide is disabled on this server."))
+		return FALSE
+	// SKYRAT EDIT END
+
 	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDED, REF(src)))
 		to_chat(src, span_warning("You are already commiting suicide!"))
 		return FALSE

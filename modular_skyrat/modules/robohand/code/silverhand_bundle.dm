@@ -21,15 +21,14 @@
 /obj/item/clothing/under/pants/black/robohand
 	name = "badass pants"
 	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
-	armor_type = /datum/armor/black_robohand
+	armor_type = /datum/armor/clothing_under/black_robohand
 
-/datum/armor/black_robohand
+/datum/armor/clothing_under/black_robohand
 	melee = 20
 	bullet = 20
 	laser = 20
 	energy = 20
 	bomb = 20
-	wound = 5
 
 /obj/item/autosurgeon/syndicate/nodrop
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/anti_drop

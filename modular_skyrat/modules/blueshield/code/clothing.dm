@@ -57,11 +57,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
 	icon_state = "bs_envirosuit"
-	armor_type = /datum/armor/under_plasmaman_blueshield
+	armor_type = /datum/armor/clothing_under/under_plasmaman_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/under_plasmaman_blueshield
+/datum/armor/clothing_under/under_plasmaman_blueshield
 	melee = 10
 	laser = 10
 	bomb = 5
