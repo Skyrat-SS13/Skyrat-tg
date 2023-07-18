@@ -41,8 +41,6 @@
 	QDEL_NULL(stored_dna)
 	return ..()
 
-<<<<<<< HEAD
-=======
 /// Override parent here because... the blind message doesn't really work given what's happen when a brain suicides. Can't hear a brain going grey. So, we omit the "blind" message.
 /mob/living/brain/send_applicable_messages()
 	visible_message(span_danger(get_visible_suicide_message()), span_userdanger(get_visible_suicide_message()))
@@ -52,7 +50,6 @@
 
 /mob/living/brain/apply_suicide_damage(obj/item/suicide_tool, damage_type = NONE) // we don't really care about applying damage to the brain mob and is just needless work.
 	return FALSE
->>>>>>> dfd4801122e (Adds p_They (and friends) for capitalized pronoun helpers (#76910))
 
 /mob/living/brain/ex_act() //you cant blow up brainmobs because it makes transfer_to() freak out when borgs blow up.
 	return FALSE
