@@ -25,33 +25,36 @@
 		var/list/types = bitfield_to_list(drink_type, FOOD_FLAGS)
 		. += span_notice("It is [lowertext(english_list(types))].")
 
-/obj/item/reagent_containers/cup/proc/checkLiked(fraction, mob/M)
-	if(last_check_time + 50 >= world.time)
-		return
-	if(!ishuman(M))
-		return
-	var/mob/living/carbon/human/H = M
-	if(HAS_TRAIT(H, TRAIT_AGEUSIA))
-		if(drink_type & H.dna.species.toxic_food)
-			to_chat(H, span_warning("You don't feel so good..."))
-			H.adjust_disgust(25 + 30 * fraction)
-	else
-		if(drink_type & H.dna.species.toxic_food)
-			to_chat(H,span_warning("What the hell was that thing?!"))
-			H.adjust_disgust(25 + 30 * fraction)
-			H.add_mood_event("toxic_food", /datum/mood_event/disgusting_food)
-		else if(drink_type & H.dna.species.disliked_food)
-			to_chat(H,span_notice("That didn't taste very good..."))
-			H.adjust_disgust(11 + 15 * fraction)
-			H.add_mood_event("gross_food", /datum/mood_event/gross_food)
-		else if(drink_type & H.dna.species.liked_food)
-			to_chat(H,span_notice("I love this taste!"))
-			H.adjust_disgust(-5 + -2.5 * fraction)
-			H.add_mood_event("fav_food", /datum/mood_event/favorite_food)
-
+/**
+ * Checks if the mob actually liked drinking this cup.
+ *
+ * This is a bunch of copypaste from the edible component, consider reworking this to use it!
+ */
+/obj/item/reagent_containers/cup/proc/checkLiked(fraction, mob/eater)
+	if(last_check_time + 5 SECONDS > world.time)
+		return FALSE
+	if(!ishuman(eater))
+		return FALSE
+	var/mob/living/carbon/human/gourmand = eater
+	//Bruh this breakfast thing is cringe and shouldve been handled separately from food-types, remove this in the future (Actually, just kill foodtypes in general)
 	if((drink_type & BREAKFAST) && world.time - SSticker.round_start_time < STOP_SERVING_BREAKFAST)
-		H.add_mood_event("breakfast", /datum/mood_event/breakfast)
+		gourmand.add_mood_event("breakfast", /datum/mood_event/breakfast)
 	last_check_time = world.time
+
+	var/food_taste_reaction = gourmand.get_food_taste_reaction(src, drink_type)
+	switch(food_taste_reaction)
+		if(FOOD_TOXIC)
+			to_chat(gourmand,span_warning("What the hell was that thing?!"))
+			gourmand.adjust_disgust(25 + 30 * fraction)
+			gourmand.add_mood_event("toxic_food", /datum/mood_event/disgusting_food)
+		if(FOOD_DISLIKED)
+			to_chat(gourmand,span_notice("That didn't taste very good..."))
+			gourmand.adjust_disgust(11 + 15 * fraction)
+			gourmand.add_mood_event("gross_food", /datum/mood_event/gross_food)
+		if(FOOD_LIKED)
+			to_chat(gourmand,span_notice("I love this taste!"))
+			gourmand.adjust_disgust(-5 + -2.5 * fraction)
+			gourmand.add_mood_event("fav_food", /datum/mood_event/favorite_food)
 
 /obj/item/reagent_containers/cup/attack(mob/living/target_mob, mob/living/user, obj/target)
 	if(!canconsume(target_mob, user))
@@ -345,8 +348,8 @@
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
-	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
-	icon = 'icons/obj/janitor.dmi'
+	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE - ORIGINAL: desc = "It's a bucket."
+	icon = 'icons/obj/service/janitor.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
@@ -404,32 +407,46 @@
 	melee = 10
 	acid = 50
 
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
-	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
+// SKYRAT EDIT CHANGE START - LIQUIDS
+/* Original
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
+	if(istype(O, /obj/item/mop))
+		if(reagents.total_volume < 1)
+			user.balloon_alert(user, "empty!")
+		else
+			reagents.trans_to(O, 5, transfered_by = user)
+			user.balloon_alert(user, "doused [O]")
+			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+		return
+*/
+/obj/item/reagent_containers/cup/bucket/attackby(obj/mop, mob/living/user, params)
+	if(istype(mop, /obj/item/mop))
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
 		if(is_right_clicking)
-			if(O.reagents.total_volume == 0)
-				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
+			if(mop.reagents.total_volume == 0)
+				user.balloon_alert(user, "mop is dry!")
 				return
 			if(reagents.total_volume == reagents.maximum_volume)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				user.balloon_alert(user, "mop is full!")
 				return
-			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
-			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
-			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
+			mop.reagents.remove_any(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			mop.reagents.trans_to(src, mop.reagents.total_volume, transfered_by = user)
+			user.balloon_alert(user, "mop squeezed")
 		else
 			if(reagents.total_volume < 1)
-				to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+				user.balloon_alert(user, "container empty!")
 			else
-				reagents.trans_to(O, 5, transfered_by = user)
-				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
-				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE) //SKYRAT EDIT CHANGE END
-	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
-		to_chat(user, span_notice("You add [O] to [src]."))
-		qdel(O)
+				reagents.trans_to(mop, 5, transfered_by = user)
+				user.balloon_alert(user, "mop wet")
+				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+
+	else if(isprox(mop)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
+		to_chat(user, span_notice("You add [mop] to [src]."))
+		qdel(mop)
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
+// SKYRAT EDIT CHANGE END - LIQUIDS
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()

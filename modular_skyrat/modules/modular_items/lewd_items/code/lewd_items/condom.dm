@@ -87,7 +87,7 @@
 			update_icon()
 
 //When condom equipped we doing stuff
-/obj/item/clothing/sextoy/condom/equipped(mob/user, slot, initial)
+/obj/item/clothing/sextoy/condom/lewd_equipped(mob/user, slot, initial)
 	. = ..()
 	if((slot == LEWD_SLOT_PENIS) && condom_state == "unused")
 		condom_state = "used"

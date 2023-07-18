@@ -36,6 +36,7 @@
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
 	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
 	burn_modifier = 2
+	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT - Moved the movespeed to the shell.
 
 /obj/item/bodypart/leg/right/snail
 	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
@@ -43,6 +44,7 @@
 	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
 	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
 	burn_modifier = 2
+	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT - Moved the movespeed to the shell.
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
@@ -203,6 +205,16 @@
 /obj/item/bodypart/leg/right/zombie
 	limb_id = SPECIES_ZOMBIE
 	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/left/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.8 //braaaaains
+
+/obj/item/bodypart/leg/right/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.8 //braaaaains
 
 ///PODPEOPLE
 /obj/item/bodypart/head/pod
@@ -387,6 +399,7 @@
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
 	burn_modifier = 1.25
+	speed_modifier = 0.75 //big big fungus
 
 /obj/item/bodypart/leg/right/mushroom
 	limb_id = SPECIES_MUSHROOM
@@ -394,6 +407,7 @@
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 14
 	burn_modifier = 1.25
+	speed_modifier = 0.75 //big fungus big fungus
 
 //GOLEM
 /obj/item/bodypart/head/golem
@@ -477,6 +491,17 @@
 	)
 	return ..()
 
+/obj/item/bodypart/arm/left/golem/set_owner(new_owner)
+	. = ..()
+	if (. == FALSE)
+		return
+	if (owner)
+		owner.AddComponentFrom(REF(src), /datum/component/shovel_hands)
+	if (isnull(.))
+		return
+	var/mob/living/carbon/old_owner = .
+	old_owner.RemoveComponentSource(REF(src), /datum/component/shovel_hands)
+
 /obj/item/bodypart/arm/right/golem
 	icon = 'icons/mob/species/golems.dmi'
 	icon_static = 'icons/mob/species/golems.dmi'
@@ -499,6 +524,17 @@
 		offset_y = list("south" = -2),
 	)
 	return ..()
+
+/obj/item/bodypart/arm/right/golem/set_owner(new_owner)
+	. = ..()
+	if (. == FALSE)
+		return
+	if (owner)
+		owner.AddComponentFrom(REF(src), /datum/component/shovel_hands)
+	if (isnull(.))
+		return
+	var/mob/living/carbon/old_owner = .
+	old_owner.RemoveComponentSource(REF(src), /datum/component/shovel_hands)
 
 /obj/item/bodypart/leg/left/golem
 	icon = 'icons/mob/species/golems.dmi'
