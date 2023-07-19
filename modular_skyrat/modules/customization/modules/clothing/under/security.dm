@@ -11,7 +11,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under/none
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"

@@ -130,10 +130,10 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		if(!SSmapping.plane_offset_blacklist["[plane]"])
 			plane = plane - (PLANE_RANGE * SSmapping.z_level_to_plane_offset[z])
 
-		var/turf/T = SSmapping.get_turf_above(src)
+		var/turf/T = GET_TURF_ABOVE(src)
 		if(T)
 			T.multiz_turf_new(src, DOWN)
-		T = SSmapping.get_turf_below(src)
+		T = GET_TURF_BELOW(src)
 		if(T)
 			T.multiz_turf_new(src, UP)
 
@@ -187,10 +187,10 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
 	if(GET_LOWEST_STACK_OFFSET(z))
-		var/turf/T = SSmapping.get_turf_above(src)
+		var/turf/T = GET_TURF_ABOVE(src)
 		if(T)
 			T.multiz_turf_del(src, DOWN)
-		T = SSmapping.get_turf_below(src)
+		T = GET_TURF_BELOW(src)
 		if(T)
 			T.multiz_turf_del(src, UP)
 	if(force)
@@ -603,11 +603,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(QDELETED(src)) //skyrat edit: fix createanddestroy
 		return FALSE
 	AddComponent(/datum/component/acid, acidpwr, acid_volume, GLOB.acid_overlay)
-	for(var/atom/movable/movable_atom as anything in src)
-		if(underfloor_accessibility < UNDERFLOOR_INTERACTABLE && HAS_TRAIT(movable_atom, TRAIT_T_RAY_VISIBLE))
-			continue
-
-		movable_atom.acid_act(acidpwr, acid_volume)
 
 	return . || TRUE
 

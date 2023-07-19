@@ -289,7 +289,7 @@
 *	FMJ | JHP | IHDF | RUBBER
 */
 
-/obj/item/ammo_casing/caseless/b473
+/obj/item/ammo_casing/b473
 	name = "4.73x33mm FMJ bullet"
 	desc = "A 4.73x33mm FMJ bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
@@ -297,12 +297,16 @@
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/b473
 
+/obj/item/ammo_casing/b473/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
+
 /obj/projectile/bullet/b473
 	name = "4.73x33mm FMJ bullet"
 	damage = 20
 	speed = 0.7
 
-/obj/item/ammo_casing/caseless/b473/hp
+/obj/item/ammo_casing/b473/hp
 	name = "4.73x33mm JHP bullet"
 	desc = "A 4.73x33mm JHP bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
@@ -318,7 +322,7 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-/obj/item/ammo_casing/caseless/b473/rubber
+/obj/item/ammo_casing/b473/rubber
 	name = "4.73x33mm rubber bullet"
 	desc = "A 4.73x33mm rubber bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
@@ -339,7 +343,7 @@
 	sharpness = NONE
 	embedding = null
 
-/obj/item/ammo_casing/caseless/b473/ihdf
+/obj/item/ammo_casing/b473/ihdf
 	name = "4.73x33mm IHDF bullet"
 	desc = "A 4.73x33mm intelligent high-impact dispersal foam bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
