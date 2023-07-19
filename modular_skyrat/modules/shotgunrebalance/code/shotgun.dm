@@ -92,6 +92,7 @@
 	<br><br>\
 	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
 	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
+
 /obj/item/ammo_casing/shotgun/hp
 	name = "hollow point slug"
 	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
