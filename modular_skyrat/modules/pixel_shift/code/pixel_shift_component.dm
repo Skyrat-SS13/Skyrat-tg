@@ -1,5 +1,4 @@
 /datum/component/pixel_shift
-	var/mob/living/owner
 	/// Whether the mob is pixel shifted or not
 	var/is_shifted = FALSE
 	/// If we are in the shifting setting.
@@ -13,23 +12,23 @@
 	. = ..()
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
-	owner = parent
 
 /datum/component/pixel_shift/RegisterWithParent()
-	. = ..()
-	RegisterSignal(owner, COMSIG_KB_MOB_PIXEL_SHIFT_DOWN, PROC_REF(change_shifting))
-	RegisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT, PROC_REF(unpixel_shift))
-	RegisterSignal(owner, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
-	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE, PROC_REF(check_passable))
+	RegisterSignal(parent, COMSIG_KB_MOB_PIXELSHIFT, PROC_REF(change_shifting))
+	RegisterSignal(parent, COMSIG_LIVING_RESET_PULL_OFFSETS, PROC_REF(unpixel_shift))
+	RegisterSignal(parent, COMSIG_LIVING_SET_PULL_OFFSET, PROC_REF(unpixel_shift))
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
+	RegisterSignal(parent, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE, PROC_REF(check_passable))
 
 /datum/component/pixel_shift/UnregisterFromParent()
-	. = ..()
-	UnregisterSignal(owner, COMSIG_KB_MOB_PIXEL_SHIFT_DOWN)
-	UnregisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT)
-	UnregisterSignal(owner, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(unpixel_shift))
-	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE)
+	UnregisterSignal(parent, COMSIG_KB_MOB_PIXELSHIFT)
+	UnregisterSignal(parent, COMSIG_LIVING_RESET_PULL_OFFSETS)
+	UnregisterSignal(parent, COMSIG_LIVING_SET_PULL_OFFSET)
+	UnregisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
+	UnregisterSignal(parent, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE)
 
 /datum/component/pixel_shift/proc/pre_move_check(mob/source, new_loc, direct)
+	SIGNAL_HANDLER
 	if(shifting)
 		pixel_shift(source, direct)
 		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE
@@ -37,21 +36,26 @@
 		unpixel_shift()
 
 /datum/component/pixel_shift/proc/check_passable(mob/source, border_dir)
+	SIGNAL_HANDLER
 	if(passthroughable & border_dir)
 		return COMPONENT_LIVING_PASSABLE
 
 /datum/component/pixel_shift/proc/change_shifting(mob/source, active)
+	SIGNAL_HANDLER
 	shifting = active
 
 /datum/component/pixel_shift/proc/unpixel_shift()
+	SIGNAL_HANDLER
 	passthroughable = NONE
 	if(is_shifted)
+		var/mob/living/owner = parent
 		is_shifted = FALSE
 		owner.pixel_x = owner.body_position_pixel_x_offset + owner.base_pixel_x
 		owner.pixel_y = owner.body_position_pixel_y_offset + owner.base_pixel_y
 
 /datum/component/pixel_shift/proc/pixel_shift(mob/source, direct)
 	passthroughable = NONE
+	var/mob/living/owner = parent
 	switch(direct)
 		if(NORTH)
 			if(owner.pixel_y <= maximum_pixel_shift + owner.base_pixel_y)
