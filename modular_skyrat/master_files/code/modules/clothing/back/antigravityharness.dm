@@ -15,12 +15,10 @@
 	icon_state = "gravityharness-off"
 	worn_icon_state = "gravityharness-off"
 	actions_types = list(/datum/action/item_action/toggle_mode)
-	/// Off, Anti-Gravity, and Guaranteed Gravity™
-	var/list/modes = list(MODE_GRAVOFF, MODE_ANTIGRAVITY, MODE_EXTRAGRAVITY) //Off, Anti-Gravity, and Guaranteed Gravity™
 	/// The current operating mode
-	var/mode
-	/// The cell the harness requires to function
-	var/obj/item/stock_parts/cell/cell
+	var/mode = MODE_GRAVOFF
+	/// The cell that the harness is currently using
+	var/obj/item/stock_parts/cell/current_cell
 	/// If the cell cover is open or not
 	var/cell_cover_open = FALSE
 	/// If it's manipulating gravity at all.
@@ -31,11 +29,8 @@
 /obj/item/gravityharness/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_BACK)
-	if(ispath(cell))
-		cell = new cell(src)
-
-	// Set our initial values
-	mode = MODE_GRAVOFF
+	if(ispath(current_cell))
+		current_cell = new current_cell(src)
 
 /obj/item/gravityharness/equipped(mob/living/user, slot, current_mode)
 	. = ..()
@@ -49,18 +44,47 @@
 /obj/item/gravityharness/proc/toggle_mode(mob/user, voluntary)
 
 	if(!istype(user) || user.incapacitated())
-		return
+		return FALSE
 
-	if(mode == modes[mode])
-		return // If there is only really one mode to cycle through, early return
-
-	if(!gravity_on && (!cell || cell.charge < GRAVITY_FIELD_COST))
+	if(!gravity_on && (!current_cell || current_cell.charge < GRAVITY_FIELD_COST))
 		if(user)
 			to_chat(user, span_warning("The gravitic engine on [src] has no charge."))
-		return
+
+		return FALSE
 
 	switch(mode)
 		if(MODE_GRAVOFF)
+			change_mode(MODE_ANTIGRAVITY)
+
+		if(MODE_ANTIGRAVITY)
+			change_mode(MODE_EXTRAGRAVITY)
+
+		if(MODE_EXTRAGRAVITY)
+			change_mode(MODE_GRAVOFF)
+
+	playsound(src, modeswitch_sound, 50, TRUE)
+	update_item_action_buttons()
+	update_appearance()
+
+///Changes the mode to `target_mode`, returns False if the mode cannot be changed
+/obj/item/gravityharness/proc/change_mode(target_mode)
+	if(!target_mode)
+		return FALSE
+
+	var/mob/living/user = loc
+	if(!istype(user))
+		mode = MODE_GRAVOFF
+		icon_state = OFF_STATE
+		worn_icon_state = OFF_STATE
+		gravity_on = FALSE
+		return FALSE
+
+	gravity_on = FALSE
+	user.RemoveElement(/datum/element/forced_gravity, 0)
+	REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
+
+	switch(target_mode)
+		if(MODE_ANTIGRAVITY)
 			mode = MODE_ANTIGRAVITY
 			if(user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust(get_turf(src))
@@ -71,11 +95,11 @@
 			icon_state = ANTIGRAVITY_STATE
 			worn_icon_state = ANTIGRAVITY_STATE
 
-		if(MODE_ANTIGRAVITY)
+		if(MODE_EXTRAGRAVITY)
 			mode = MODE_EXTRAGRAVITY
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
-			user.RemoveElement(/datum/element/forced_gravity, 0)
+
 			ADD_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
 			to_chat(user, span_notice("Your harness shudders and hisses, projecting a local extra-gravity field."))
@@ -83,7 +107,7 @@
 			icon_state = EXTRAGRAVITY_STATE
 			worn_icon_state = EXTRAGRAVITY_STATE
 
-		if(MODE_EXTRAGRAVITY)
+		if(MODE_GRAVOFF)
 			mode = MODE_GRAVOFF
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
@@ -95,29 +119,19 @@
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
 					to_chat(user, span_notice("Your harness lets out a soft whine as your gravity field dissipates, leaving your body grounded once again."))
-			user.RemoveElement(/datum/element/forced_gravity, 0)
-			REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
+
 			icon_state = OFF_STATE
 			worn_icon_state = OFF_STATE
-			gravity_on = FALSE
 
-	playsound(src, modeswitch_sound, 50, TRUE)
-	update_item_action_buttons()
-	update_appearance()
+		else
+			return FALSE
 
+	return TRUE
 
-/obj/item/gravityharness/proc/get_next_mode(current_mode)
-	switch(current_mode)
-		if(MODE_GRAVOFF)
-			return MODE_ANTIGRAVITY
-		if(MODE_ANTIGRAVITY)
-			return MODE_EXTRAGRAVITY
-		if(MODE_EXTRAGRAVITY)
-			return MODE_GRAVOFF
 
 /obj/item/gravityharness/dropped(mob/user)
 	. = ..()
-	mode = MODE_GRAVOFF
+	change_mode(MODE_GRAVOFF)
 	user.RemoveElement(/datum/element/forced_gravity, 0)
 	REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 	STOP_PROCESSING(SSobj, src)
@@ -129,11 +143,14 @@
 /obj/item/gravityharness/proc/get_status_tab_item(mob/living/source, list/items)
 	SIGNAL_HANDLER
 	items += "Personal Gravitational Field: [mode]"
-	items += "Cell Charge: [cell ? "[round(cell.percent(), 0.1)]%" : "No Cell!"]"
+	items += "Cell Charge: [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "No Cell!"]"
 
 /obj/item/gravityharness/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!user || !ishuman(user) || user.back != src)
+		if(mode != MODE_GRAVOFF)
+			change_mode(MODE_GRAVOFF)
+
 		return
 
 	// Do nothing if the harness isn't emitting gravity of any kind.area
@@ -141,29 +158,29 @@
 		return
 
 	// If we got here, the gravity field is on. If there's no cell, turn that shit off
-	if(!cell)
-		mode = MODE_GRAVOFF
+	if(!current_cell)
+		change_mode(MODE_GRAVOFF)
 
 	// cell.use will return FALSE if charge is lower than GRAVITY_FIELD_COST
-	if(!cell.use(GRAVITY_FIELD_COST))
-		to_chat(user, span_warning("The gravitic engine cuts off as [cell] runs out of charge."))
-		mode = MODE_GRAVOFF
+	if(!current_cell.use(GRAVITY_FIELD_COST))
+		to_chat(user, span_warning("The gravitic engine cuts off as [current_cell] runs out of charge."))
+		change_mode(MODE_GRAVOFF)
 
 /obj/item/gravityharness/Destroy()
-	if(isatom(cell))
-		QDEL_NULL(cell)
+	if(isatom(current_cell))
+		QDEL_NULL(current_cell)
 
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/gravityharness/get_cell()
 	if(cell_cover_open)
-		return cell
+		return current_cell
 
 /obj/item/gravityharness/handle_atom_del(atom/harnesscell)
-	if(harnesscell == cell)
-		cell = null
-		gravity_on = FALSE
+	if(harnesscell == current_cell)
+		change_mode(MODE_GRAVOFF)
+
 	return ..()
 
 // Show the status of the harness and cell
@@ -171,61 +188,70 @@
 	. = ..()
 	if(in_range(src,user) || isobserver(user))
 		. += "The gravity harness is [gravity_on ? "on" : "off"] and the field is set to [mode]"
-		. += "The power meter shows [cell ? "[round(cell.percent(), 0.1)]%" : "!invalid!"] charge remaining."
+		. += "The power meter shows [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "!invalid!"] charge remaining."
+
 		if(cell_cover_open)
 			. += "The cell cover is open, exposing the battery."
-			if(!cell)
+			if(!current_cell)
 				. += "The cell slot is empty, showing bare connectors."
 			else
-				. += "\The [cell] is firmly in place."
+				. += "\The [current_cell] is firmly in place."
 
 	return .
 
 /obj/item/gravityharness/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	balloon_alert(user, "[cell_cover_open ? "closing" : "opening"] cover...")
 	screwdriver.play_tool_sound(src, 100)
-	if(screwdriver.use_tool(src, user, 1 SECONDS))
-		screwdriver.play_tool_sound(src, 100)
-		balloon_alert(user, "cover [cell_cover_open ? "closed" : "opened"]")
-		cell_cover_open = !cell_cover_open
-	else
+
+	if(!screwdriver.use_tool(src, user, 1 SECONDS))
 		balloon_alert(user, "interrupted!")
+		return FALSE
+
+	screwdriver.play_tool_sound(src, 100)
+	balloon_alert(user, "cover [cell_cover_open ? "closed" : "opened"]")
+	cell_cover_open = !cell_cover_open
 	return TRUE
 
 /obj/item/gravityharness/attack_hand(mob/user)
-	if(!cell_cover_open || (loc == user))
+	if(!cell_cover_open)
 		return ..()
-	if(!cell)
+
+	if(!current_cell)
 		balloon_alert(user, "no cell!")
 		return
+
 	balloon_alert(user, "removing cell...")
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		balloon_alert(user, "interrupted!")
 		return
+
 	balloon_alert(user, "cell removed")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-	if(!user.put_in_hands(cell))
-		cell.forceMove(drop_location())
+	if(!user.put_in_hands(current_cell))
+		current_cell.forceMove(drop_location())
+
+	current_cell = FALSE
 	return
 
 /obj/item/gravityharness/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(istype(attacking_item, /obj/item/stock_parts/cell))
-		if(!cell_cover_open)
-			balloon_alert(user, "open the cell cover first!")
-			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-			return FALSE
-		if(cell)
-			balloon_alert(user, "cell already installed!")
-			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-			return FALSE
-		attacking_item.forceMove(src)
-		cell = attacking_item
-		balloon_alert(user, "cell installed")
-		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-		return TRUE
+	if(!istype(attacking_item, /obj/item/stock_parts/cell))
+		return ..()
 
-	return ..()
+	if(!cell_cover_open)
+		balloon_alert(user, "open the cell cover first!")
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		return FALSE
 
+	if(current_cell)
+		balloon_alert(user, "cell already installed!")
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		return FALSE
+
+	attacking_item.forceMove(src)
+	current_cell = attacking_item
+	balloon_alert(user, "cell installed")
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
+	return TRUE
 
 #undef MODE_GRAVOFF
 #undef MODE_ANTIGRAVITY
