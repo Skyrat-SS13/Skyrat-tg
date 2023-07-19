@@ -1,12 +1,14 @@
-/mob/Initialize(mapload)
+/mob/living/Login()
 	. = ..()
-	add_pixel_shift_component()
+	if(.)
+		add_pixel_shift_component()
 
 /mob/proc/add_pixel_shift_component()
 	return
 
 /mob/living/add_pixel_shift_component()
-	AddComponent(/datum/component/pixel_shift)
+	if(!GetComponent(/datum/component/pixel_shift))
+		AddComponent(/datum/component/pixel_shift)
 
 /mob/living/set_pull_offsets(mob/living/pull_target, grab_state)
 	SEND_SIGNAL(pull_target, COMSIG_MOB_UNPIXEL_SHIFT)
