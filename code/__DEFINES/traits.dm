@@ -116,6 +116,8 @@
 /// Returns a list of trait sources for this trait. Only useful for wacko cases and internal futzing
 /// You should not be using this
 #define GET_TRAIT_SOURCES(target, trait) target._status_traits?[trait] || list()
+/// A simple helper for checking traits in a mob's mind
+#define HAS_MIND_TRAIT(target, trait) (HAS_TRAIT(target, trait) || (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 
 /*
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
@@ -216,9 +218,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESISTLOWPRESSURE "resist_low_pressure"
 /// This human is immune to the effects of being exploded. (ex_act)
 #define TRAIT_BOMBIMMUNE "bomb_immunity"
+/// Immune to being irradiated
 #define TRAIT_RADIMMUNE "rad_immunity"
-#define TRAIT_GENELESS "geneless"
+/// This mob won't get gibbed by nukes going off
+#define TRAIT_NUKEIMMUNE "nuke_immunity"
+/// Can't be given viruses
 #define TRAIT_VIRUSIMMUNE "virus_immunity"
+/// Reduces the chance viruses will spread to this mob, and if the mob has a virus, slows its advancement
+#define TRAIT_VIRUS_RESISTANCE "virus_resistance"
+#define TRAIT_GENELESS "geneless"
 #define TRAIT_PIERCEIMMUNE "pierce_immunity"
 #define TRAIT_NODISMEMBER "dismember_immunity"
 #define TRAIT_NOFIRE "nonflammable"
@@ -226,17 +234,50 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Prevents plasmamen from self-igniting if only their helmet is missing
 #define TRAIT_NOSELFIGNITION_HEAD_ONLY "no_selfignition_head_only"
 #define TRAIT_NOGUNS "no_guns"
-///This carbon doesn't get hungry
-#define TRAIT_NOHUNGER "no_hunger"
-///This carbon doesn't bleed
-#define TRAIT_NOBLOOD "noblood"
-///This carbon doesn't show an overlay when they have no brain
+/// Species with this trait are genderless
+#define TRAIT_AGENDER "agender"
+/// Species with this trait have a blood clan mechanic
+#define TRAIT_BLOOD_CLANS "blood_clans"
+/// Species with this trait have markings (this SUCKS, remove this later in favor of bodypart overlays)
+#define TRAIT_HAS_MARKINGS "has_markings"
+/// Species with this trait use skin tones for coloration
+#define TRAIT_USES_SKINTONES "uses_skintones"
+/// Species with this trait use mutant colors for coloration
+#define TRAIT_MUTANT_COLORS "mutcolors"
+/// Species with this trait have mutant colors that cannot be chosen by the player, nor altered ingame by external means
+#define TRAIT_FIXED_MUTANT_COLORS "fixed_mutcolors"
+/// Species with this trait have a haircolor that cannot be chosen by the player, nor altered ingame by external means
+#define TRAIT_FIXED_HAIRCOLOR "fixed_haircolor"
+/// Humans with this trait won't get bloody hands, nor bloody feet
+#define TRAIT_NO_BLOOD_OVERLAY "no_blood_overlay"
+/// Humans with this trait cannot have underwear
+#define TRAIT_NO_UNDERWEAR "no_underwear"
+/// This carbon doesn't show an overlay when they have no brain
 #define TRAIT_NO_DEBRAIN_OVERLAY "no_debrain_overlay"
-#define TRAIT_NOMETABOLISM "no_metabolism"
-// Use when you want a mob to be able to metabolize plasma temporarily (e.g. plasma fixation disease symptom)
-#define TRAIT_PLASMA_LOVER_METABOLISM "plasma_lover_metabolism"
+/// Humans with this trait cannot get augmentation surgery
+#define TRAIT_NO_AUGMENTS "no_augments"
+/// This carbon doesn't get hungry
+#define TRAIT_NOHUNGER "no_hunger"
+/// This carbon doesn't bleed
+#define TRAIT_NOBLOOD "noblood"
+/// This just means that the carbon will always have functional liverless metabolism
+#define TRAIT_LIVERLESS_METABOLISM "liverless_metabolism"
+/// Humans with this trait cannot be turned into zombies
+#define TRAIT_NO_ZOMBIFY "no_zombify"
+/// Humans with this trait cannot be affected by changeling transformation stings
+#define TRAIT_NO_TRANSFORMATION_STING "no_transformation_sting"
+/// Carbons with this trait can't have their DNA copied by diseases nor changelings
+#define TRAIT_NO_DNA_COPY "no_dna_copy"
+/// Carbons with this trait can eat blood to regenerate their own blood volume, instead of injecting it
+#define TRAIT_DRINKS_BLOOD "drinks_blood"
+/// Mob is immune to clone (cellular) damage
 #define TRAIT_NOCLONELOSS "no_cloneloss"
+/// Mob is immune to toxin damage
 #define TRAIT_TOXIMMUNE "toxin_immune"
+/// Mob is immune to oxygen damage, does not need to breathe
+#define TRAIT_NOBREATH "no_breath"
+/// Use when you want a mob to be able to metabolize plasma temporarily (e.g. plasma fixation disease symptom)
+#define TRAIT_PLASMA_LOVER_METABOLISM "plasma_lover_metabolism"
 #define TRAIT_EASYDISMEMBER "easy_dismember"
 #define TRAIT_LIMBATTACHMENT "limb_attach"
 #define TRAIT_NOLIMBDISABLE "no_limb_disable"
@@ -250,11 +291,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_VAL_CORRIN_MEMBER "val_corrin_member"
 /// reduces the use time of syringes, pills, patches and medigels but only when using on someone
 #define TRAIT_FASTMED "fast_med_use"
-#define TRAIT_NOBREATH "no_breath"
-#define TRAIT_ANTIMAGIC "anti_magic"
+/// The mob is holy and resistance to cult magic
 #define TRAIT_HOLY "holy"
+/// This mob is antimagic, and immune to spells / cannot cast spells
+#define TRAIT_ANTIMAGIC "anti_magic"
 /// This allows a person who has antimagic to cast spells without getting blocked
 #define TRAIT_ANTIMAGIC_NO_SELFBLOCK "anti_magic_no_selfblock"
+/// This mob recently blocked magic with some form of antimagic
+#define TRAIT_RECENTLY_BLOCKED_MAGIC "recently_blocked_magic"
 #define TRAIT_DEPRESSION "depression"
 #define TRAIT_BLOOD_DEFICIENCY "blood_deficiency"
 #define TRAIT_JOLLY "jolly"
@@ -576,6 +620,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_VOIDSTORM_IMMUNE "voidstorm_immune"
 #define TRAIT_WEATHER_IMMUNE "weather_immune" //Immune to ALL weather effects.
 
+/// Cannot be grabbed by goliath tentacles
+#define TRAIT_TENTACLE_IMMUNE "tentacle_immune"
+
 //non-mob traits
 /// Used for limb-based paralysis, where replacing the limb will fix it.
 #define TRAIT_PARALYSIS "paralysis"
@@ -583,6 +630,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DISABLED_BY_WOUND "disabled-by-wound"
 /// This movable atom has the explosive block element
 #define TRAIT_BLOCKING_EXPLOSIVES "blocking_explosives"
+
+///Lava will be safe to cross while it has this trait.
+#define TRAIT_LAVA_STOPPED "lava_stopped"
+///Chasms will be safe to cross while they've this trait.
+#define TRAIT_CHASM_STOPPED "chasm_stopped"
+///Turf slowdown will be ignored when this trait is added to a turf.
+#define TRAIT_TURF_IGNORE_SLOWDOWN "turf_ignore_slowdown"
+///Mobs won't slip on a wet turf while it has this trait
+#define TRAIT_TURF_IGNORE_SLIPPERY "turf_ignore_slippery"
 
 /// Mobs with this trait can't send the mining shuttle console when used outside the station itself
 #define TRAIT_FORBID_MINING_SHUTTLE_CONSOLE_OUTSIDE_STATION "forbid_mining_shuttle_console_outside_station"
@@ -668,6 +724,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE "alcohol_tolerance"
+#define TRAIT_HEAVY_DRINKER "heavy_drinker"
 #define TRAIT_AGEUSIA "ageusia"
 #define TRAIT_HEAVY_SLEEPER "heavy_sleeper"
 #define TRAIT_NIGHT_VISION "night_vision"

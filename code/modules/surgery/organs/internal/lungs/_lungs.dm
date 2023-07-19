@@ -463,8 +463,9 @@
 		var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(max_symptoms = min(round(max(miasma_pp / 2, 1), 1), 6), max_level = min(round(max(miasma_pp, 1), 1), 8))
 		// tl;dr the first argument chooses the smaller of miasma_pp/2 or 6(typical max virus symptoms), the second chooses the smaller of miasma_pp or 8(max virus symptom level)
 		// Each argument has a minimum of 1 and rounds to the nearest value. Feel free to change the pp scaling I couldn't decide on good numbers for it.
-		miasma_disease.name = "Unknown"
-		miasma_disease.try_infect(breather)
+		if(breather.CanContractDisease(miasma_disease))
+			miasma_disease.name = "Unknown"
+			breather.AirborneContractDisease(miasma_disease, TRUE)
 	// Miasma side effects
 	switch(miasma_pp)
 		if(0.25 to 5)
@@ -820,7 +821,7 @@
 	name = "basic cybernetic lungs"
 	desc = "A basic cybernetic version of the lungs found in traditional humanoid entities."
 	icon_state = "lungs-c"
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.5
 
 	var/emp_vulnerability = 80 //Chance of permanent effects if emp-ed.
@@ -855,7 +856,7 @@
 		owner.losebreath += 20
 		COOLDOWN_START(src, severe_cooldown, 30 SECONDS)
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
-		organ_flags |= ORGAN_SYNTHETIC_EMP //Starts organ faliure - gonna need replacing soon.
+		organ_flags |= ORGAN_EMP //Starts organ faliure - gonna need replacing soon.
 
 
 /obj/item/organ/internal/lungs/lavaland

@@ -227,7 +227,7 @@
 /mob/living/simple_animal/examine(mob/user)
 	. = ..()
 	if(stat == DEAD)
-		if(HAS_TRAIT(user.mind, TRAIT_NAIVE))
+		if(HAS_MIND_TRAIT(user, TRAIT_NAIVE))
 			. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be asleep.")
 		else
 			. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be dead.")
@@ -251,6 +251,8 @@
  * Reduces the stamina loss by stamina_recovery
  */
 /mob/living/simple_animal/update_stamina()
+	if(damage_coeff[STAMINA] <= 0) //we shouldn't reset our speed to its initial value if we don't need to, as that can mess with things like mulebot motor wires
+		return
 	set_varspeed(initial(speed) + (staminaloss * 0.06))
 
 /mob/living/simple_animal/proc/handle_automated_action()

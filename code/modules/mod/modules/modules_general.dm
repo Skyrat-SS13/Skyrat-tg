@@ -492,7 +492,7 @@
 
 /obj/item/mod/module/dna_lock/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
-	on_emag(src, user, emag_card)
+	return on_emag(src, user, emag_card)
 
 /obj/item/mod/module/dna_lock/proc/dna_check(mob/user)
 	if(!iscarbon(user))
@@ -512,6 +512,7 @@
 	SIGNAL_HANDLER
 
 	dna = null
+	return TRUE
 
 /obj/item/mod/module/dna_lock/proc/on_mod_activation(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -746,7 +747,7 @@
 	)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_obj_entered),
-		COMSIG_ATOM_INITIALIZED_ON = PROC_REF(on_atom_initialized_on),
+		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(on_atom_initialized_on),
 	)
 	var/datum/component/connect_loc_behalf/connector
 
