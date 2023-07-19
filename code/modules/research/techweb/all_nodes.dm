@@ -1202,11 +1202,8 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
-<<<<<<< HEAD
 		"time_clock_frame", //SKYRAT EDIT ADDITION - TIME CLOCKS
-=======
 		"bankmachine",
->>>>>>> 1108af52c3c (Adds circuit for bank machine. (#76861))
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
