@@ -65,10 +65,15 @@ const FlavorSection = (props, context) => {
           mr={-0.8}
           mt={-0.5}
           icon="hammer"
+          /* SKYRAT EDIT: ORIGINAL TOOLTIP
           tooltip={multiline`
             This is a gameplay suggestion for bored ais.
             You don't have to follow it, unless you want some
             ideas for how to spend the round.`}
+          */
+          tooltip={multiline`
+            Please refer to the 'Antagonist Policy' section of the wiki
+            if you have any questions.`}
           tooltipPosition="bottom-start">
           Policy
         </Button>
