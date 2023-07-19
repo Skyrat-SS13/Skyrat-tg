@@ -201,7 +201,7 @@
 	desc = "A .34 incendiary bullet casing."
 	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/incendiary/c34_incendiary
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/incendiary/c34_incendiary
@@ -231,7 +231,7 @@
 	name = "4.2x30mm incendiary bullet casing"
 	desc = "A 4.2x30mm incendiary bullet casing."
 	projectile_type = /obj/projectile/bullet/incendiary/c42x30mm
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c42x30mm
@@ -297,7 +297,7 @@
 /obj/item/ammo_casing/c12mm/fire
 	name = "12mm Magnum incendiary bullet casing"
 	desc = "A 12mm Magnum bullet casing with a magnesium coated tip meant for setting things on fire."
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	projectile_type = /obj/projectile/bullet/incendiary/c12mm
 	advanced_print_req = TRUE
 

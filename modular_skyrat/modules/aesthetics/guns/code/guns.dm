@@ -5,9 +5,9 @@
  * gotta redefine EVERY goddamn ammo type irt to new mat costs for the ammobench's sake
  * previously, SMALL_MATERIAL_AMOUNT was 100 units out of 2000 from a sheet (5%)
  * so the old cost of SMALL_MATERIAL_AMOUNT * 5 was 500/2000 from a sheet (25%)
- * experimental material balance PR makes it so that it's 10 units out of 100 (10%)
- * this makes it so that the old assumed value of SMALL_MATERIAL_AMOUNT * 5 is 50/100 (50% of a sheet for a single bullet) (suboptimal)
- * as it stands, tentative values make it so that a single round's total materials are 20% of a sheet
+ * experimental material balance PR makes it so that SMALL_MATERIAL_AMOUNT is actually 10 units out of 100 (10%)
+ * which made it so that the old assumed value of SMALL_MATERIAL_AMOUNT * 5 is 50/100 (50% of a sheet for a single bullet) (suboptimal)
+ * these updated, more consistent defines make it so that a single round's total materials should total 20% of a sheet, or 2 SMALL_MATERIAL_AMOUNT
 */
 
 #define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
@@ -15,7 +15,7 @@
 #define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
 							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
 
-#define AMMO_MATS_INC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+#define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
 							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
 
 #define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
@@ -27,6 +27,10 @@
 #define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
 							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
 							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
+
+// for .35 Sol Ripper. one day, anon. one day
+#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4)
 
 /obj/item/ammo_casing
 	custom_materials = AMMO_MATS_BASIC
@@ -485,7 +489,7 @@
 	desc = "An 8mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45
@@ -505,7 +509,7 @@
 	desc = "An incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/a50ae
@@ -537,11 +541,11 @@
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/hotshot
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/iceblox
-	custom_materials = AMMO_MATS_INC // plasma's wack.
+	custom_materials = AMMO_MATS_TEMP // plasma's wack.
 	advanced_print_req = TRUE
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot

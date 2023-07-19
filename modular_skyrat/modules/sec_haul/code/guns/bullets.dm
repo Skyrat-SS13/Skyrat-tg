@@ -80,7 +80,7 @@
 /obj/item/ammo_casing/c9mm/fire
 	name = "9x25mm Mk.12 incendiary bullet casing"
 	desc = "A modern 9x25mm Mk.12 bullet casing. This incendiary round leaves a trail of fire and ignites its target."
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c9mm/ihdf
@@ -132,7 +132,7 @@
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c10mm/fire
-	custom_materials = AMMO_MATS_INC
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c10mm/rubber
