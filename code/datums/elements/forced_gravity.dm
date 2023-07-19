@@ -6,7 +6,11 @@
 	///whether we will override the turf if it forces no gravity
 	var/ignore_turf_gravity
 
+<<<<<<< HEAD
 /datum/element/forced_gravity/Attach(datum/target, gravity = 1, ignore_turf_gravity = FALSE, can_override = FALSE) ////TODO : SKYRAT EDIT - TEMP CI FIX
+=======
+/datum/element/forced_gravity/Attach(datum/target, gravity = 1, ignore_turf_gravity = FALSE, can_override = FALSE)
+>>>>>>> 1a0a8e6e9af (Attempts to fix an issue with gravity generators triggering CI failures (#76764))
 	. = ..()
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
@@ -18,9 +22,15 @@
 	src.gravity = gravity
 	src.ignore_turf_gravity = ignore_turf_gravity
 
+<<<<<<< HEAD
 	RegisterSignal(target, COMSIG_ATOM_HAS_GRAVITY, PROC_REF(gravity_check), override = can_override) ////TODO : SKYRAT EDIT - TEMP CI FIX
 	if(isturf(target))
 		RegisterSignal(target, COMSIG_TURF_HAS_GRAVITY, PROC_REF(turf_gravity_check), override = can_override) ////TODO : SKYRAT EDIT - TEMP CI FIX
+=======
+	RegisterSignal(target, COMSIG_ATOM_HAS_GRAVITY, PROC_REF(gravity_check), override = can_override)
+	if(isturf(target))
+		RegisterSignal(target, COMSIG_TURF_HAS_GRAVITY, PROC_REF(turf_gravity_check), override = can_override)
+>>>>>>> 1a0a8e6e9af (Attempts to fix an issue with gravity generators triggering CI failures (#76764))
 
 	ADD_TRAIT(target, TRAIT_FORCED_GRAVITY, our_ref)
 
