@@ -15,11 +15,7 @@
 		return
 	if(HAS_TRAIT(target, TRAIT_FORCED_GRAVITY))
 		return
-<<<<<<< HEAD
-	target.AddElement(/datum/element/forced_gravity, gravity_value, can_override = TRUE) //TODO : SKYRAT EDIT - TEMP CI FIX
-=======
 	target.AddElement(/datum/element/forced_gravity, gravity_value, can_override = TRUE)
->>>>>>> 1a0a8e6e9af (Attempts to fix an issue with gravity generators triggering CI failures (#76764))
 	modified_turfs[target] = gravity_value
 
 /datum/proximity_monitor/advanced/gravity/cleanup_field_turf(turf/target)
