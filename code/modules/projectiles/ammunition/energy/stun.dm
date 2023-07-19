@@ -25,12 +25,6 @@
 /obj/item/ammo_casing/energy/disabler/hos
 	e_cost = 60
 
-<<<<<<< HEAD
-// SKYRAT ADDITION START
-/obj/item/ammo_casing/energy/disabler/skyrat
-	e_cost = 1000
-// SKYRAT ADDITION END
-=======
 /obj/item/ammo_casing/energy/disabler/smoothbore
 	projectile_type = /obj/projectile/beam/disabler/smoothbore
 	e_cost = 1000
@@ -38,4 +32,8 @@
 /obj/item/ammo_casing/energy/disabler/smoothbore/prime
 	projectile_type = /obj/projectile/beam/disabler/smoothbore/prime
 	e_cost = 500
->>>>>>> 63d6c2e9628 (Adds in the smoothbore disablers. (#76773))
+
+// SKYRAT ADDITION START
+/obj/item/ammo_casing/energy/disabler/skyrat
+	e_cost = 1000
+// SKYRAT ADDITION END
