@@ -13,6 +13,7 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
+	facial_hair_alpha = 160
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
@@ -29,7 +30,7 @@
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 	mutanteyes = /obj/item/organ/internal/eyes
-	mutanttongue = /obj/item/organ/internal/tongue
+	mutanttongue = /obj/item/organ/internal/tongue/jelly
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,

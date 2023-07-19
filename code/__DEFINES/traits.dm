@@ -116,6 +116,8 @@
 /// Returns a list of trait sources for this trait. Only useful for wacko cases and internal futzing
 /// You should not be using this
 #define GET_TRAIT_SOURCES(target, trait) target._status_traits?[trait] || list()
+/// A simple helper for checking traits in a mob's mind
+#define HAS_MIND_TRAIT(target, trait) (HAS_TRAIT(target, trait) || (target.mind ? HAS_TRAIT(target.mind, trait) : FALSE))
 
 /*
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
@@ -238,10 +240,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BLOOD_CLANS "blood_clans"
 /// Species with this trait have markings (this SUCKS, remove this later in favor of bodypart overlays)
 #define TRAIT_HAS_MARKINGS "has_markings"
-/// Species with this trait have mutant colors
+/// Species with this trait use skin tones for coloration
+#define TRAIT_USES_SKINTONES "uses_skintones"
+/// Species with this trait use mutant colors for coloration
 #define TRAIT_MUTANT_COLORS "mutcolors"
-/// Species with this trait have mutant colors that cannot be chosen by the player
+/// Species with this trait have mutant colors that cannot be chosen by the player, nor altered ingame by external means
 #define TRAIT_FIXED_MUTANT_COLORS "fixed_mutcolors"
+/// Species with this trait have a haircolor that cannot be chosen by the player, nor altered ingame by external means
+#define TRAIT_FIXED_HAIRCOLOR "fixed_haircolor"
 /// Humans with this trait won't get bloody hands, nor bloody feet
 #define TRAIT_NO_BLOOD_OVERLAY "no_blood_overlay"
 /// Humans with this trait cannot have underwear

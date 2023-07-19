@@ -100,7 +100,7 @@
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	if(!initial(species_type.use_skintones))
+	if(!(TRAIT_USES_SKINTONES in initial(species_type.inherent_traits)))
 		return FALSE
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
@@ -110,7 +110,7 @@
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
 	var/datum/species/species_type = preferences?.read_preference(/datum/preference/choiced/species)
-	if(!species_type  || !initial(species_type.use_skintones))
+	if(!species_type  || !(TRAIT_USES_SKINTONES in initial(species_type.inherent_traits)))
 		return FALSE
 
 	return TRUE
