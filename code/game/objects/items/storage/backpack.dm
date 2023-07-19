@@ -399,7 +399,88 @@
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	atom_storage.max_total_storage = 30
+=======
+	set_zipper(TRUE)
+
+/obj/item/storage/backpack/duffelbag/update_desc(updates)
+	. = ..()
+	desc = "[initial(desc)]<br>[zipped_up ? "It's zipped up, preventing you from accessing its contents." : "It's unzipped, and harder to move in."]"
+
+/obj/item/storage/backpack/duffelbag/attack_self(mob/user, modifiers)
+	if(loc != user) // God fuck TK
+		return ..()
+	if(zipped_up)
+		return attack_hand(user, modifiers)
+	else
+		return attack_hand_secondary(user, modifiers)
+
+/obj/item/storage/backpack/duffelbag/attack_self_secondary(mob/user, modifiers)
+	attack_self(user, modifiers)
+	return ..()
+
+// If we're zipped, click to unzip
+/obj/item/storage/backpack/duffelbag/attack_hand(mob/user, list/modifiers)
+	if(loc != user)
+		// Hacky, but please don't be cringe yeah?
+		atom_storage.silent = TRUE
+		. = ..()
+		atom_storage.silent = initial(atom_storage.silent)
+		return
+	if(!zipped_up)
+		return ..()
+
+	balloon_alert(user, "unzipping...")
+	playsound(src, 'sound/items/un_zip.ogg', 100, FALSE)
+	var/datum/callback/can_unzip = CALLBACK(src, PROC_REF(zipper_matches), TRUE)
+	if(!do_after(user, 2.1 SECONDS, src, extra_checks = can_unzip))
+		user.balloon_alert(user, "unzip failed!")
+		return
+	balloon_alert(user, "unzipped")
+	set_zipper(FALSE)
+	return TRUE
+
+// Vis versa
+/obj/item/storage/backpack/duffelbag/attack_hand_secondary(mob/user, list/modifiers)
+	if(loc != user)
+		return ..()
+	if(zipped_up)
+		return SECONDARY_ATTACK_CALL_NORMAL
+
+	balloon_alert(user, "zipping...")
+	playsound(src, 'sound/items/zip_up.ogg', 100, FALSE)
+	var/datum/callback/can_zip = CALLBACK(src, PROC_REF(zipper_matches), FALSE)
+	if(!do_after(user, 0.5 SECONDS, src, extra_checks = can_zip))
+		user.balloon_alert(user, "zip failed!")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	balloon_alert(user, "zipped")
+	set_zipper(TRUE)
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+/// Checks to see if the zipper matches the passed in state
+/// Returns true if so, false otherwise
+/obj/item/storage/backpack/duffelbag/proc/zipper_matches(matching_value)
+	return zipped_up == matching_value
+
+/obj/item/storage/backpack/duffelbag/proc/set_zipper(new_zip)
+	zipped_up = new_zip
+	SEND_SIGNAL(src, COMSIG_DUFFEL_ZIP_CHANGE, new_zip)
+	if(zipped_up)
+		slowdown = initial(slowdown)
+		atom_storage.locked = STORAGE_SOFT_LOCKED
+		atom_storage.display_contents = FALSE
+		atom_storage.close_all()
+	else
+		slowdown = zip_slowdown
+		atom_storage.locked = STORAGE_NOT_LOCKED
+		atom_storage.display_contents = TRUE
+
+	if(isliving(loc))
+		var/mob/living/wearer = loc
+		wearer.update_equipment_speed_mods()
+	update_appearance()
+>>>>>>> 2eb0c65743e (balloon alerts for storage failures (#76779))
 
 /obj/item/storage/backpack/duffelbag/cursed
 	name = "living duffel bag"
