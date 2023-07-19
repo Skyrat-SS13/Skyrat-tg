@@ -63,8 +63,6 @@
 			change_mode(MODE_GRAVOFF)
 
 	playsound(src, modeswitch_sound, 50, TRUE)
-	update_item_action_buttons()
-	update_appearance()
 
 ///Changes the mode to `target_mode`, returns False if the mode cannot be changed
 /obj/item/gravityharness/proc/change_mode(target_mode)
@@ -77,6 +75,8 @@
 		icon_state = OFF_STATE
 		worn_icon_state = OFF_STATE
 		gravity_on = FALSE
+		update_item_action_buttons()
+		update_appearance()
 		return FALSE
 
 	gravity_on = FALSE
@@ -125,6 +125,9 @@
 
 		else
 			return FALSE
+
+		update_item_action_buttons()
+		update_appearance()
 
 	return TRUE
 
