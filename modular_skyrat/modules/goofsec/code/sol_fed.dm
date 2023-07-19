@@ -256,9 +256,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	var/mob/living/M = mob_override || owner.current
 	if(M.hud_used)
 		var/datum/hud/H = M.hud_used
-		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted()
+		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted(null, H)
 		H.wanted_lvl = giving_wanted_lvl
-		giving_wanted_lvl.hud = H
 		H.infodisplay += giving_wanted_lvl
 		H.mymob.client.screen += giving_wanted_lvl
 

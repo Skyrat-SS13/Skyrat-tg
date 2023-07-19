@@ -72,13 +72,13 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_DRINKS_BLOOD,
+		TRAIT_USES_SKINTONES,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	default_mutant_bodyparts = list(
 		"legs" = "Normal Legs"
 	)
 	exotic_bloodtype = "U"
-	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
 	mutantliver = /obj/item/organ/internal/liver/hemophage
 	mutantstomach = /obj/item/organ/internal/stomach/hemophage
