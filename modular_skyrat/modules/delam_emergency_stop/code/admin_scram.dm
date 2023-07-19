@@ -16,11 +16,11 @@
 	if(world.time - SSticker.round_start_time < 30 MINUTES)
 		var/go_early = tgui_alert(usr, "The [suppression_system.name] is set to automatically start at the programmed time. \
 			Are you sure you want to override this and fire it early? It's less scary that way.", "Suffering premature delamination?", list("No", "Yes"))
-		if(!go_early || go_early == "No")
+		if(go_early != "Yes")
 			return FALSE
 
 	var/double_check = tgui_alert(usr, "You really sure that you want to push this?", "Reticulating Splines", list("No", "Yes"))
-	if(!double_check || double_check == "No")
+	if(double_check != "Yes")
 		return FALSE
 
 	// Send the signal to start, unlock the temp emergency exits
@@ -37,20 +37,16 @@
 /client/proc/toggle_delam_suppression()
 	set name = "Delam Suppression Toggle"
 	set category = "Admin.Events"
-	var/obj/machinery/atmospherics/components/unary/delam_scram/suppression_system = null
 
 	if(!holder || !check_rights(R_FUN))
 		return
 
-	suppression_system = validate_suppression_status()
+	var/obj/machinery/atmospherics/components/unary/delam_scram/suppression_system = validate_suppression_status()
 
 	if(!suppression_system)
 		return
 
-	if(!suppression_system.admin_disabled)
-		suppression_system.admin_disabled = TRUE
-	else
-		suppression_system.admin_disabled = FALSE
+	suppression_system.admin_disabled = !suppression_system.admin_disabled
 
 	log_admin("[key_name_admin(usr)] toggled Delam suppression [suppression_system.admin_disabled ? "OFF" : "ON"].")
 	message_admins("[key_name_admin(usr)] toggled Delam suppression [suppression_system.admin_disabled ? "OFF" : "ON"].")

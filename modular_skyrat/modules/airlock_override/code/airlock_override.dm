@@ -164,12 +164,17 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 	normalspeed = FALSE
 	update_appearance()
 
-/// Make the airlock unrestricted as a temporary emergency exit. arg: duration until it reverts to normal
+/**
+ * Make the airlock unrestricted as a temporary emergency exit.
+ *
+ * Arguments:
+ * * duration - How long the airlock will be on temporary emergency access for.
+ */```
+(just double-check in the code, look for `* Arguments:` and you should find plenty of examples in files written by me, there might be a difference or two because I don't have the repo opened right now)
 /obj/machinery/door/airlock/proc/temp_emergency_exit(duration)
 	if(!emergency)
-		emergency = TRUE
+		set_emergency_exit(TRUE)
 		addtimer(CALLBACK(src, PROC_REF(set_emergency_exit), FALSE), duration)
-		update_appearance()
 
 /// Set the airlock's emergency exit status arg: active TRUE/FALSE
 /obj/machinery/door/airlock/proc/set_emergency_exit(active)
