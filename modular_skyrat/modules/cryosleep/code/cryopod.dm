@@ -483,7 +483,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 // Allows admins to enable players to override SSD Time check.
 	if(allow_timer_override)
 		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
-			to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+			to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()] in the cryopod."))
 			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
 			message_admins("[key_name(user)] has put [key_name(target)] into a overridden stasis pod. [ADMIN_JMP(src)]")
 
@@ -504,7 +504,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
 					if(target.mind.assigned_role.req_admin_notify)
 						tgui_alert(user, "They are an important role! [AHELP_FIRST_MESSAGE]")
-					to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+					to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()]] in the cryopod."))
 					log_admin("[key_name(user)] has put [key_name(target)] into a stasis pod.")
 					message_admins("[key_name(user)] has put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 
@@ -514,9 +514,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					name = "[name] ([target.name])"
 
 		else if(iscyborg(target))
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] online."))
+			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()]] online."))
 		else
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
+			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()]] conscious."))
 		return
 
 	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
