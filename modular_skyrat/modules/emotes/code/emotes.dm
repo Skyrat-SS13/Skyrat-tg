@@ -459,9 +459,9 @@
 	flick_overlay_view(gloveimg, 1 SECONDS)
 
 	// And animate the attack!
-	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = .3 SECONDS)
-	animate(time = .1 SECONDS)
-	animate(alpha = 0, time = .3 SECONDS, easing = CIRCULAR_EASING|EASE_OUT)
+	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 0.3 SECONDS)
+	animate(time = 0.1 SECONDS)
+	animate(alpha = 0, time = 0.3 SECONDS, easing = CIRCULAR_EASING|EASE_OUT)
 
 //Froggie Revolution
 /datum/emote/living/warble
