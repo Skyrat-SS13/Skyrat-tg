@@ -743,7 +743,7 @@
 	for(var/organ_slot in possible_organ_slots)
 		var/organ_path = possible_organ_slots[organ_slot]
 		var/obj/item/organ/new_organ = new organ_path()
-		new_organ.Insert(human_holder, special = TRUE)
+		new_organ.Insert(human_holder, special = TRUE, drop_if_replaced = FALSE)
 
 /datum/quirk/tin_man/post_add()
 	to_chat(quirk_holder, span_boldannounce("Most of your internal organs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. \
@@ -1192,8 +1192,7 @@
 	medical_record_text = "Patient's immune system responds violently to [allergy_string]"
 
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/clothing/accessory/allergy_dogtag/dogtag = new(get_turf(human_holder))
-	dogtag.display = allergy_string
+	var/obj/item/clothing/accessory/dogtag/allergy/dogtag = new(get_turf(human_holder), allergy_string)
 
 	give_item_to_holder(dogtag, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS), flavour_text = "Make sure medical staff can see this...")
 
