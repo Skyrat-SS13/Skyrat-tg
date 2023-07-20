@@ -15,10 +15,13 @@ Adds the ability for living mobs to shift their sprite to fit an RP situation be
 ### Modular Overrides:
 
 - `modular_skyrat/master_files/code/datums/keybinding/mob.dm`: `var/list/hotkey_keys`
+- `modular_skyrat/master_files/code/modules/mob/living/living.dm`: `proc/set_pull_offsets`, `proc/reset_pull_offsets`
+- `modular_skyrat/master_files/code/modules/mob/living/living_movement.dm`: `proc/CanAllowThrough`
 
 ### Defines:
 
-- N/A
+- `code/__DEFINES/~skyrat_defines/keybindings.dm`: `COMSIG_KB_MOB_PIXEL_SHIFT_DOWN`, `COMSIG_KB_MOB_PIXEL_SHIFT_UP`
+- `code/__DEFINES/~skyrat_defines/living.dm`: `COMSIG_LIVING_SET_PULL_OFFSET`, `COMSIG_LIVING_RESET_PULL_OFFSETS`, `COMSIG_LIVING_CAN_ALLOW_THROUGH`, `COMPONENT_LIVING_PASSABLE`
 
 ### Included files that are not contained in this module:
 
