@@ -907,3 +907,123 @@
   vinylspiders:
   - bugfix: fixed a bug with the liquid output pump's height regulator that was causing
       it to never output anything so long as a height was set
+2023-07-19:
+  Melbert:
+  - bugfix: Fix organ damage being uncapped
+  - qol: Wizard Spellbook is now alphabetized
+  - qol: Wizard Spellbook now has a search bar!
+  - bugfix: Cyborgs no longer drop their radio key when deleted, only when deconstructed
+      first
+  - bugfix: Cyborgs no longer drop their MMI on deletion, only prior to deletion.
+      This may result in bad code rearing its ugly head, open an issue report on the
+      github if you're a cyborg and get ghosted when you feel like you shouldn't
+  - bugfix: Runtime from syndie cyborgs spawning
+  - bugfix: AI deaths are reported to black box
+  - refactor: Refactored display-ing of antag objectives in their UIs
+  Rhials:
+  - spellcheck: removes an errant period from the flux anomaly announcement.
+  SkyratBot:
+  - bugfix: Triple carp player controlled shuttle event works again
+  - bugfix: Sniper rifles have a range that allows them to aim more smoothly (and
+      still decently long ranged)
+  - rscdel: There is no longer a 50% chance of catching a heretic out when examining
+      them drawing influences.
+  - spellcheck: Maints fridge doesn't have _ in its name anymore
+  - bugfix: Multi-z maps should now work again.
+  - rscadd: Ambient tracks for icebox.
+  - rscadd: Independent global_list for icebox.
+  - qol: techfabs now use sheets(TM) as the default unit of measurement
+  - bugfix: mechfab icons aren't perpetually gray
+  - bugfix: Replaces direct calls of try_infect() with appropriate procs so that CRISPR
+      and Miasma aren't forcing diseases on the disease immune.
+  - rscadd: Add healing boost to organs while mob is sleeping (does not apply to robotic
+      or dying organs)
+  - rscadd: You can now toggle the visibility for hair on your noggin when wearing
+      surgery caps.
+  - bugfix: replaces the unspawnable cannonballs in birdshot maintenance with a stack
+      so that the 4 cannonballs properly spawn, make sure to point them away from
+      medical!
+  - spellcheck: More elaborate explanation for what exactly the sinister shard does
+      when you look at the explanation in the null rod selection UI.
+  - bugfix: Creampies will no longer irreparably stain your face
+  - bugfix: anti-breach shields wont be dragged away during shuttle flight anymore
+  - refactor: Huds now have their hud owner set in Initialize
+  - image: updated most tank sprites.
+  - bugfix: Fixes a runtime on inserting the vorpal scythe into your arm. You should
+      now gain the Morbid trait, as expected.
+  - code_imp: apc's update_icon_state proc will no longer set the icon file path
+  - refactor: the penguin is a basic animal
+  - rscadd: the penguin now layed eggs
+  - rscadd: the penguin and the chicken babys will go look for adult penguin or chicken
+      and be happy when he is near the adult
+  - spellcheck: A spelling error in the name of the Tiziran fish case has been corrected.
+  - bugfix: ethereal hair will now go out when they die again
+  - bugfix: adds a BCI implanter to northstar circuit lab as it didn't come with one
+      before
+  - bugfix: Abductor posters can no longer randomly spawn
+  - spellcheck: Fix duplicate sentence in space comms agent flavor text
+  - bugfix: Cleans up the lavaland exports to the modern loot table lists.
+  - bugfix: Megafauna can be consumed by the singularity.
+  Vekter:
+  - rscadd: Added 2 new brain damage lines. Beat your skull in with a wrench and discover
+      them today!
+  itseasytosee:
+  - balance: the Syndicate Tome traitor item now grants anti-magic while held and
+      can be used to clear cult runes.
+  vinylspiders:
+  - refactor: Replaced hardcoded "safeties" for lava, chasms and ignoring turf slowdowns
+      on catwalks with traits.
+  - balance: much like catwalks, tables and conveyors also disable turf slowdowns.
+  - balance: 'slippery turfs won''t slip you when walking on a table. fix: Fixed an
+      edge case in which a mob standing on a lava turf would be left visually but
+      permanently on fire if the lava is changed to another kind of turf.'
+  - bugfix: fixes hairstyles and hair colors not being applied properly outside of
+      character creation
+  - bugfix: fixes hairstyles and hair colors not changing when using alter form (jellyfolk)
+  - code_imp: 'replaced hardcoded values in volume_pump.dm with __DEFINES vars doc:
+      Volume Pump''s basic introduction was copied and pasted from the Pressure Pump
+      documentation, and made mention of trying to ''perfect the pressure''. Volume
+      pump doesn''t care about pressure until it exceeds it, so there is no ''perfecting''
+      going on.'
+2023-07-20:
+  GoldenAlpharex:
+  - qol: Skyrat's voices for humans and moths are back, and the different versions
+      were added back as alternatives.
+  - bugfix: Xenobiological Slime Hybrids will now get translucent mutant bodyparts
+      once more.
+  - bugfix: Slime people will now get translucent facial hair too.
+  - bugfix: Xenobiological Slime Hybrids also can taste things like any slime should,
+      again.
+  - bugfix: Fixed skintones not applying properly to preferences they should affect.
+  SkyratBot:
+  - bugfix: Fixed the alien limbgrower UI
+  - bugfix: Fixed being able to order negative or more than 20 items in mining order
+      console
+  - bugfix: turbine does not runtime when its input or output turf is destroyed while
+      its running
+  - qol: add warning examine for rotor when its parts are not connected
+  - bugfix: fixes gravity generators causing CI failures from overriding a signal
+  - rscadd: Bank machine now has a circuit for it. Spawns in secure tech storage and
+      researchable in the same nod as comms console.
+  - balance: Due to possibility of creating area and making there bank machines that
+      aren't roundstart will have gps signals.
+  - bugfix: Bank machine now doesn't yell about unauthorized credit withdrawal when
+      its authorized.
+  - qol: terminals built by left-clicking on SMES and APC units will now be on the
+      same layer as the machine.
+  - bugfix: constructing a terminal on a specific layer with right-click now works
+      for APCs, not just SMES units
+  - bugfix: Cult spells, bloodsense, and pylon healing now follow cultists through
+      mind transfer (such as body swapping)
+  - rscadd: 'New air alarm mode: Vent siphon, which disables scrubbers and forces
+      vents to siphon air with no pressure regulation'
+  - bugfix: Cryo cells no longer appear on when off.
+  - rscadd: Added the smoothbore disabler and it's prime variant. You can now craft
+      a disabler with only one shot and terrible accuracy.
+  - code_imp: Gun cranking has been made a component and could theoretically be used
+      on more than guns.
+  - image: .50 incendiary magazine now has sprite.
+  Tattle:
+  - spellcheck: Fixed the grammar on a few revenant messages
+  larentoun:
+  - bugfix: Adds some decals to exceptions, allowing them to spawn and removing runtimes
