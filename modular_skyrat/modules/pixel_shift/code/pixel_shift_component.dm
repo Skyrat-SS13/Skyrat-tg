@@ -1,4 +1,5 @@
 /datum/component/pixel_shift
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// Whether the mob is pixel shifted or not
 	var/is_shifted = FALSE
 	/// If we are in the shifting setting.
@@ -15,17 +16,16 @@
 
 /datum/component/pixel_shift/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_KB_MOB_PIXELSHIFT, PROC_REF(change_shifting))
-	RegisterSignal(parent, COMSIG_LIVING_RESET_PULL_OFFSETS, PROC_REF(unpixel_shift))
-	RegisterSignal(parent, COMSIG_LIVING_SET_PULL_OFFSET, PROC_REF(unpixel_shift))
+	RegisterSignals(parent, list(COMSIG_LIVING_RESET_PULL_OFFSETS, COMSIG_LIVING_SET_PULL_OFFSET), PROC_REF(unpixel_shift))
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
-	RegisterSignal(parent, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE, PROC_REF(check_passable))
+	RegisterSignal(parent, COMSIG_LIVING_CAN_ALLOW_THROUGH, PROC_REF(check_passable))
 
 /datum/component/pixel_shift/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_KB_MOB_PIXELSHIFT)
 	UnregisterSignal(parent, COMSIG_LIVING_RESET_PULL_OFFSETS)
 	UnregisterSignal(parent, COMSIG_LIVING_SET_PULL_OFFSET)
 	UnregisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
-	UnregisterSignal(parent, COMSIG_MOB_PIXEL_SHIFT_CHECK_PASSABLE)
+	UnregisterSignal(parent, COMSIG_LIVING_CAN_ALLOW_THROUGH)
 
 /datum/component/pixel_shift/proc/pre_move_check(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
@@ -35,12 +35,13 @@
 	if(is_shifted)
 		unpixel_shift()
 
-/datum/component/pixel_shift/proc/check_passable(mob/source, border_dir)
+/datum/component/pixel_shift/proc/check_passable(mob/source, atom/movable/mover, border_dir)
 	SIGNAL_HANDLER
-	if(passthroughable & border_dir)
+	// Make sure to not allow projectiles of any kind past where they normally wouldn't.
+	if(!isprojectile(mover) && !mover.throwing && passthroughable & border_dir)
 		return COMPONENT_LIVING_PASSABLE
 
-/datum/component/pixel_shift/proc/change_shifting(mob/source, active)
+/datum/component/pixel_shift/proc/change_shifting()
 	SIGNAL_HANDLER
 	shifting = active
 
