@@ -365,7 +365,7 @@
 			if (SOUTH)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(0,-3)
-				animate(M, transform = initial_matrix, time = 0.1 SECONDS1, loop = 0)
+				animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 			if (EAST)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(3,0)
