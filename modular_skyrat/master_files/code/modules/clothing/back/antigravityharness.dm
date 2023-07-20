@@ -1,7 +1,7 @@
 #define MODE_GRAVOFF "Off"
 #define MODE_ANTIGRAVITY "Anti-Gravity Field"
 #define MODE_EXTRAGRAVITY "Extra-Gravity Field"
-#define GRAVITY_FIELD_COST 10
+#define GRAVITY_FIELD_COST 20
 #define OFF_STATE "gravityharness-off"
 #define ANTIGRAVITY_STATE "gravityharness-anti"
 #define EXTRAGRAVITY_STATE "gravityharness-extra"
@@ -10,11 +10,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "gravity suspension harness"
-	desc = "A derivative of common Skrellian construction equipment, these lower-tech variants are commonly seen in use by Deep Spacer tribes when visiting gravity wells."
+	desc = "A bootleg derivative of common Skrellian construction equipment, manufactured and heavily used by Deep Spacer tribes, this harness employs suspensor tech to either nullify or magnify gravity around the wearer."
 	slot_flags = ITEM_SLOT_BACK
 	icon_state = "gravityharness-off"
 	worn_icon_state = "gravityharness-off"
 	actions_types = list(/datum/action/item_action/toggle_mode)
+	w_class = WEIGHT_CLASS_HUGE
 	/// The current operating mode
 	var/mode = MODE_GRAVOFF
 	/// The cell that the harness is currently using
@@ -25,12 +26,19 @@
 	var/gravity_on = FALSE
 	/// Defines sound to be played upon mode switching
 	var/modeswitch_sound = 'sound/effects/pop.ogg'
+	/// Max weight class of items in the storage.
+	var/max_w_class = WEIGHT_CLASS_NORMAL
+	/// Max combined weight of all items in the storage.
+	var/max_combined_w_class = 15
+	/// Max amount of items in the storage.
+	var/max_items = 7
 
 /obj/item/gravityharness/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_BACK)
 	if(ispath(current_cell))
 		current_cell = new current_cell(src)
+	create_storage(max_specific_storage = max_w_class, max_total_storage = max_combined_w_class, max_slots = max_items)
 
 /obj/item/gravityharness/equipped(mob/living/user, slot, current_mode)
 	. = ..()
@@ -108,17 +116,18 @@
 			worn_icon_state = EXTRAGRAVITY_STATE
 
 		if(MODE_GRAVOFF)
-			mode = MODE_GRAVOFF
-			if(!user.has_gravity())
+			if(!user.has_gravity() && mode != MODE_GRAVOFF)
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-				to_chat(user, span_notice("Your harness lets out a soft whine as your gravity field dissipates, your body free-floating once again."))
+				to_chat(user, span_notice("Your harness lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+				mode = MODE_GRAVOFF
 
 			else
-				if(user.has_gravity())
+				if(user.has_gravity() && mode != MODE_GRAVOFF)
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
-					to_chat(user, span_notice("Your harness lets out a soft whine as your gravity field dissipates, leaving your body grounded once again."))
+					to_chat(user, span_notice("Your harness lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+					mode = MODE_GRAVOFF
 
 			icon_state = OFF_STATE
 			worn_icon_state = OFF_STATE
@@ -236,21 +245,28 @@
 	current_cell = FALSE
 	return
 
+/obj/item/gravityharness/emp_act(severity)
+	. = ..()
+	if(current_cell)
+		current_cell.emp_act(severity)
+		change_mode(MODE_GRAVOFF)
+
 /obj/item/gravityharness/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/stock_parts/cell))
 		return ..()
 
 	if(!cell_cover_open)
 		balloon_alert(user, "open the cell cover first!")
-		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 
 	if(current_cell)
 		balloon_alert(user, "cell already installed!")
-		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 
-	attacking_item.forceMove(src)
+	/// Shadow realm? I'm sending you to Lake City, FL!
+	attacking_item.moveToNullspace()
 	current_cell = attacking_item
 	balloon_alert(user, "cell installed")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
