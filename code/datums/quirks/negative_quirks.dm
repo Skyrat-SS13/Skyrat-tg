@@ -643,8 +643,115 @@
 	human_holder.del_and_replace_bodypart(new /obj/item/bodypart/leg/right/robot/surplus, special = TRUE)
 
 /datum/quirk/quadruple_amputee/post_add()
+<<<<<<< HEAD:code/datums/quirks/negative_quirks.dm
 	to_chat(quirk_holder, span_boldannounce("All your limbs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. Additionally, \
 	you need to use a welding tool and cables to repair them, instead of bruise packs and ointment."))
+=======
+	to_chat(quirk_holder, span_boldannounce("All your limbs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. \
+	Additionally, you need to use a welding tool and cables to repair them, instead of bruise packs and ointment."))
+
+/datum/quirk/prosthetic_organ
+	name = "Prosthetic Organ"
+	desc = "An accident caused you to lose one of your organs. Because of this, you now have a surplus prosthetic!"
+	icon = FA_ICON_LUNGS
+	value = -3
+	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic organ. \
+		<b>Removal of these organs is known to be dangerous to the patient as well as the practitioner.</b>"
+	hardcore_value = 3
+	mail_goodies = list(/obj/item/storage/organbox)
+	/// The slot to replace, in string form
+	var/slot_string = "organ"
+	/// The original organ from before the prosthetic was applied
+	var/obj/item/organ/old_organ
+
+/datum/quirk/prosthetic_organ/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/static/list/organ_slots = list(
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
+	var/list/possible_organ_slots = organ_slots.Copy()
+	if(HAS_TRAIT(human_holder, TRAIT_NOBLOOD))
+		possible_organ_slots -= ORGAN_SLOT_HEART
+	if(HAS_TRAIT(human_holder, TRAIT_NOBREATH))
+		possible_organ_slots -= ORGAN_SLOT_LUNGS
+	if(HAS_TRAIT(human_holder, TRAIT_LIVERLESS_METABOLISM))
+		possible_organ_slots -= ORGAN_SLOT_LIVER
+	if(HAS_TRAIT(human_holder, TRAIT_NOHUNGER))
+		possible_organ_slots -= ORGAN_SLOT_STOMACH
+	if(!length(organ_slots)) //what the hell
+		return
+	var/organ_slot = pick(possible_organ_slots)
+	var/obj/item/organ/prosthetic
+	switch(organ_slot)
+		if(ORGAN_SLOT_HEART)
+			prosthetic = new /obj/item/organ/internal/heart/cybernetic/surplus
+			slot_string = "heart"
+		if(ORGAN_SLOT_LUNGS)
+			prosthetic = new /obj/item/organ/internal/lungs/cybernetic/surplus
+			slot_string = "lungs"
+		if(ORGAN_SLOT_LIVER)
+			prosthetic = new /obj/item/organ/internal/liver/cybernetic/surplus
+			slot_string = "liver"
+		if(ORGAN_SLOT_STOMACH)
+			prosthetic = new /obj/item/organ/internal/stomach/cybernetic/surplus
+			slot_string = "stomach"
+	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic [slot_string]. \
+	<b>Removal of these organs is known to be dangerous to the patient as well as the practitioner.</b>"
+	old_organ = human_holder.get_organ_slot(organ_slot)
+	if(prosthetic.Insert(human_holder, special = TRUE, drop_if_replaced = TRUE))
+		old_organ.moveToNullspace()
+		STOP_PROCESSING(SSobj, old_organ)
+
+/datum/quirk/prosthetic_organ/post_add()
+	to_chat(quirk_holder, span_boldannounce("Your [slot_string] has been replaced with a surplus organ. It is fragile and will easily come apart under duress. \
+	Additionally, any EMP will make it stop working entirely."))
+
+/datum/quirk/prosthetic_organ/remove()
+	if(old_organ)
+		old_organ.Insert(quirk_holder, special = TRUE)
+	old_organ = null
+
+/datum/quirk/tin_man
+	name = "Tin Man"
+	desc = "Oops! All Prosthetics! Due to some truly cruel cosmic punishment, most of your internal organs have been replaced with surplus prosthetics."
+	icon = FA_ICON_ROBOT
+	value = -6
+	medical_record_text = "During physical examination, patient was found to have numerous low-budget prosthetic internal organs. \
+		<b>Removal of these organs is known to be dangerous to the patient as well as the practitioner.</b>"
+	hardcore_value = 6
+	mail_goodies = list(/obj/item/storage/organbox)
+
+/datum/quirk/tin_man/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/static/list/organ_slots = list(
+		ORGAN_SLOT_HEART = /obj/item/organ/internal/heart/cybernetic/surplus,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/internal/lungs/cybernetic/surplus,
+		ORGAN_SLOT_LIVER = /obj/item/organ/internal/liver/cybernetic/surplus,
+		ORGAN_SLOT_STOMACH = /obj/item/organ/internal/stomach/cybernetic/surplus,
+	)
+	var/list/possible_organ_slots = organ_slots.Copy()
+	if(HAS_TRAIT(human_holder, TRAIT_NOBLOOD))
+		possible_organ_slots -= ORGAN_SLOT_HEART
+	if(HAS_TRAIT(human_holder, TRAIT_NOBREATH))
+		possible_organ_slots -= ORGAN_SLOT_LUNGS
+	if(HAS_TRAIT(human_holder, TRAIT_LIVERLESS_METABOLISM))
+		possible_organ_slots -= ORGAN_SLOT_LIVER
+	if(HAS_TRAIT(human_holder, TRAIT_NOHUNGER))
+		possible_organ_slots -= ORGAN_SLOT_STOMACH
+	if(!length(organ_slots)) //what the hell
+		return
+	for(var/organ_slot in possible_organ_slots)
+		var/organ_path = possible_organ_slots[organ_slot]
+		var/obj/item/organ/new_organ = new organ_path()
+		new_organ.Insert(human_holder, special = TRUE, drop_if_replaced = FALSE)
+
+/datum/quirk/tin_man/post_add()
+	to_chat(quirk_holder, span_boldannounce("Most of your internal organs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. \
+	Additionally, any EMP will make them stop working entirely."))
+>>>>>>> 5c0ffa31a8a (Tin man no longer causes you to drop all of your regular organs when you spawn in (#76908)):code/datums/quirks/negative_quirks/negative_quirks.dm
 
 /datum/quirk/pushover
 	name = "Pushover"
