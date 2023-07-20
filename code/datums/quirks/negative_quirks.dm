@@ -643,10 +643,6 @@
 	human_holder.del_and_replace_bodypart(new /obj/item/bodypart/leg/right/robot/surplus, special = TRUE)
 
 /datum/quirk/quadruple_amputee/post_add()
-<<<<<<< HEAD:code/datums/quirks/negative_quirks.dm
-	to_chat(quirk_holder, span_boldannounce("All your limbs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. Additionally, \
-	you need to use a welding tool and cables to repair them, instead of bruise packs and ointment."))
-=======
 	to_chat(quirk_holder, span_boldannounce("All your limbs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. \
 	Additionally, you need to use a welding tool and cables to repair them, instead of bruise packs and ointment."))
 
@@ -751,7 +747,6 @@
 /datum/quirk/tin_man/post_add()
 	to_chat(quirk_holder, span_boldannounce("Most of your internal organs have been replaced with surplus prosthetics. They are fragile and will easily come apart under duress. \
 	Additionally, any EMP will make them stop working entirely."))
->>>>>>> 5c0ffa31a8a (Tin man no longer causes you to drop all of your regular organs when you spawn in (#76908)):code/datums/quirks/negative_quirks/negative_quirks.dm
 
 /datum/quirk/pushover
 	name = "Pushover"
