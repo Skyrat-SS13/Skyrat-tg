@@ -61,7 +61,6 @@
 	lose_text = span_notice("You feel vigorous again.")
 	medical_record_text = "Patient requires regular treatment for blood loss due to low production of blood."
 	hardcore_value = 8
-	quirk_flags = QUIRK_HUMAN_ONLY
 	mail_goodies = list(/obj/item/reagent_containers/blood/o_minus) // universal blood type that is safe for all
 	var/min_blood = BLOOD_VOLUME_SAFE - 25 // just barely survivable without treatment
 
@@ -586,10 +585,10 @@
 
 /datum/quirk/prosthetic_limb
 	name = "Prosthetic Limb"
-	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
+	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a surplus prosthetic!"
 	icon = "tg-prosthetic-leg"
 	value = -3
-	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
+	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic limb."
 	hardcore_value = 3
 	quirk_flags = QUIRK_HUMAN_ONLY // while this technically changes appearance, we don't want it to be shown on the dummy because it's randomized at roundstart
 	mail_goodies = list(/obj/item/weldingtool/mini, /obj/item/stack/cable_coil/five)
@@ -615,6 +614,7 @@
 		if(BODY_ZONE_R_LEG)
 			prosthetic = new /obj/item/bodypart/leg/right/robot/surplus
 			slot_string = "right leg"
+	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic [slot_string]."
 	old_limb = human_holder.return_and_replace_bodypart(prosthetic, special = TRUE)
 
 /datum/quirk/prosthetic_limb/post_add()
@@ -628,12 +628,13 @@
 
 /datum/quirk/quadruple_amputee
 	name = "Quadruple Amputee"
-	desc = "Oops! All Prosthetics! Due to some truly cruel cosmic punishment, all your limbs have been taken from you."
+	desc = "Oops! All Prosthetics! Due to some truly cruel cosmic punishment, all your limbs have been replaced with surplus prosthetics."
 	icon = "tg-prosthetic-full"
 	value = -6
-	medical_record_text = "During physical examination, patient was found to have all prosthetic limbs."
+	medical_record_text = "During physical examination, patient was found to have all low-budget prosthetic limbs."
 	hardcore_value = 6
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+	mail_goodies = list(/obj/item/weldingtool/mini, /obj/item/stack/cable_coil/five)
 
 /datum/quirk/quadruple_amputee/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
