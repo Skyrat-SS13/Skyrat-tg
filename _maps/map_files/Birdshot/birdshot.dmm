@@ -423,6 +423,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/east,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/light/small/directional/east,
+/obj/machinery/power/shieldwallgen/xenobiologyaccess,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
 "ajg" = (
@@ -2365,10 +2372,12 @@
 /turf/open/floor/iron/white/small,
 /area/station/medical/storage)
 "bbe" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 5
+	},
 /turf/open/floor/iron/white/side{
 	dir = 10
 	},
@@ -21028,6 +21037,10 @@
 /obj/structure/sign/poster/official/random/directional/north,
 /turf/open/misc/sandy_dirt,
 /area/station/commons)
+"hWf" = (
+/obj/structure/chair/stool/directional/north,
+/turf/open/floor/iron/kitchen/small,
+/area/station/maintenance/aft)
 "hWs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32164,9 +32177,6 @@
 /turf/open/floor/iron/white/small,
 /area/station/science/lobby)
 "lPc" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/corner{
 	dir = 1
@@ -32612,11 +32622,13 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/security/checkpoint/supply)
 "lXd" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 6
+	},
 /turf/open/floor/iron/white/side{
 	dir = 9
 	},
@@ -32747,11 +32759,13 @@
 /turf/open/floor/iron/grimy,
 /area/station/command/heads_quarters/qm)
 "lYD" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 1
+	},
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -33305,7 +33319,7 @@
 /area/station/service/abandoned_gambling_den/gaming)
 "mjP" = (
 /obj/structure/cable,
-/obj/machinery/power/shieldwallgen/xenobiologyaccess,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
 "mjQ" = (
@@ -35355,6 +35369,10 @@
 /area/station/science/xenobiology)
 "mWN" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -35721,10 +35739,6 @@
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/science/lab)
-"nev" = (
-/obj/structure/chair/stool/directional/south,
-/turf/open/floor/iron/kitchen/small,
-/area/station/maintenance/aft)
 "neZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -38199,9 +38213,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "oag" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
-	dir = 6
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron/white/side,
@@ -39797,7 +39808,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
 "oFQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -39808,6 +39818,7 @@
 	pixel_y = -2;
 	req_access = list("xenobiology")
 	},
+/obj/machinery/atmospherics/components/binary/pump,
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -42255,9 +42266,6 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/cafeteria)
 "pyf" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
-	dir = 5
-	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -43388,9 +43396,6 @@
 /turf/open/floor/engine,
 /area/station/hallway/secondary/entry)
 "pQX" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/corner{
 	dir = 8
@@ -51123,7 +51128,6 @@
 /area/station/maintenance/fore/greater)
 "skJ" = (
 /obj/effect/mapping_helpers/broken_floor,
-/obj/structure/chair/stool/directional/east,
 /turf/open/floor/iron/kitchen/small,
 /area/station/maintenance/aft)
 "skP" = (
@@ -55747,6 +55751,13 @@
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /obj/machinery/light/small/directional/east,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/light/small/directional/east,
+/obj/machinery/power/shieldwallgen/xenobiologyaccess,
+/obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
 "tKl" = (
@@ -71255,6 +71266,16 @@
 /area/station/command/corporate_suite)
 "ykk" = (
 /obj/structure/cable,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/cable,
+/obj/structure/sign/warning/no_smoking/circle/directional/north,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/iron/white/corner{
 	dir = 8
 	},
@@ -114985,7 +115006,7 @@ xlP
 xlP
 epN
 xlP
-eWI
+rfJ
 eWI
 eWI
 eWI
@@ -115241,10 +115262,10 @@ sYa
 rQw
 xlP
 bAo
+xlP
 tGp
 eWI
 asc
-usJ
 usJ
 lCN
 jsX
@@ -115499,9 +115520,9 @@ xlP
 xlP
 jMC
 xlP
+rfJ
 eWI
 eKf
-usJ
 skJ
 vlV
 jbb
@@ -115756,10 +115777,10 @@ axN
 rfJ
 iHH
 xlP
+rfJ
 eWI
-eWI
-nev
 fxN
+hWf
 vlV
 fSB
 eWI
