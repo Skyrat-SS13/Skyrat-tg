@@ -126,8 +126,8 @@
 		else
 			return FALSE
 
-		update_item_action_buttons()
-		update_appearance()
+	update_item_action_buttons()
+	update_appearance()
 
 	return TRUE
 
