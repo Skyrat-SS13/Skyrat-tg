@@ -3,12 +3,8 @@
 	desc = "A pair of comfy shorts."
 	icon_state = "shorts"
 	greyscale_config = /datum/greyscale_config/shorts
-<<<<<<< HEAD
-	greyscale_config_worn = /datum/greyscale_config/shorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/shorts_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
 	greyscale_config_worn = /datum/greyscale_config/shorts/worn
->>>>>>> ad43eece560 (Standardizes a majority of the GAGS configs for Clothing (#76384))
+	greyscale_config_worn_digi = /datum/greyscale_config/shorts/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#575757#3E3E3E#75634F"
 	gender = PLURAL
 	body_parts_covered = GROIN
@@ -23,12 +19,8 @@
 	desc = "A nondescript pair of tough jean shorts."
 	icon_state = "jeanshorts"
 	greyscale_config = /datum/greyscale_config/jeanshorts
-<<<<<<< HEAD
-	greyscale_config_worn = /datum/greyscale_config/jeanshorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
 	greyscale_config_worn = /datum/greyscale_config/jeanshorts/worn
->>>>>>> ad43eece560 (Standardizes a majority of the GAGS configs for Clothing (#76384))
+	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 
 /obj/item/clothing/under/shorts/red
