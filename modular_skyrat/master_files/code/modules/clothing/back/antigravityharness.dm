@@ -14,6 +14,8 @@
 	slot_flags = ITEM_SLOT_BACK
 	icon_state = "gravityharness-off"
 	worn_icon_state = "gravityharness-off"
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi'
 	actions_types = list(/datum/action/item_action/toggle_mode)
 	w_class = WEIGHT_CLASS_HUGE
 	/// The current operating mode
