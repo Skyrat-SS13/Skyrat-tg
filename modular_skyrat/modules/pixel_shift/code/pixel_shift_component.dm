@@ -55,7 +55,6 @@
 	passthroughable = NONE
 	if(is_shifted)
 		var/mob/living/owner = parent
-		is_shifted = FALSE
 		owner.pixel_x = owner.body_position_pixel_x_offset + owner.base_pixel_x
 		owner.pixel_y = owner.body_position_pixel_y_offset + owner.base_pixel_y
 	qdel(src)
