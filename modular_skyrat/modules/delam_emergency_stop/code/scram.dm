@@ -21,6 +21,8 @@
 #define POWER_CUT_MIN_DURATION 19 SECONDS
 #define POWER_CUT_MAX_DURATION 21 SECONDS
 #define AIR_INJECT_RATE 33
+#define BUTTON_SOUND_FALLOFF_DISTANCE 7
+#define MACHINE_SOUND_FALLOFF_DISTANCE 10
 
 /// An atmos device that uses freezing cold air to attempt an emergency shutdown of the supermatter engine
 /obj/machinery/atmospherics/components/unary/delam_scram
@@ -127,7 +129,7 @@
 
 	if(admin_disabled)
 		investigate_log("Delam SCRAM tried to activate but an admin disabled it", INVESTIGATE_ATMOS)
-		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 		audible_message(span_danger("\The [src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
@@ -178,7 +180,7 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 40, ignore_walls = TRUE, use_reverb = TRUE)
+	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 30, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
@@ -220,7 +222,7 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/goodbye_friends()
 
 	// good job buddy, sacrificing yourself for the greater good
-	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
+	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	audible_message(span_danger("\The [src] beeps a sorrowful melody!"))
 	visible_message(span_danger("\The [src] collapses into a pile of twisted metal and foam!"))
 	deconstruct(FALSE)
@@ -330,7 +332,7 @@
 
 	// For roundstart only, after that it's on you!
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 7)
+		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 10, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
 		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
@@ -356,7 +358,7 @@
 		return
 
 	// Make scary sound and flashing light
-	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE)
+	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
 	button_stage = BUTTON_PUSHED
 	visible_message(span_danger("[user] smashes the [src] with their hand!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] pushed the [src]!")
