@@ -191,19 +191,14 @@
 	//SKYRAT EDIT END
 	if(neckgrab_throw)
 		power_throw++
-<<<<<<< HEAD
-	do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
-	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
-	visible_message(span_danger("[src] throws [thrown_thing][power_throw ? " really hard!" : "."]"), \
-					span_danger("You throw [thrown_thing][power_throw ? " really hard!" : "."]"))
-=======
 	if(isitem(thrown_thing))
 		var/obj/item/thrown_item = thrown_thing
 		if(thrown_item.throw_verb)
 			verb_text = thrown_item.throw_verb
+	do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
+	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
 	visible_message(span_danger("[src] [plural_s(verb_text)] [thrown_thing][power_throw ? " really hard!" : "."]"), \
 					span_danger("You [verb_text] [thrown_thing][power_throw ? " really hard!" : "."]"))
->>>>>>> 88f259980ba (The Leaning Update (and Density Refractor) (#76704))
 	log_message("has thrown [thrown_thing] [power_throw > 0 ? "really hard" : ""]", LOG_ATTACK)
 	var/extra_throw_range = HAS_TRAIT(src, TRAIT_THROWINGARM) ? 2 : 0
 	newtonian_move(get_dir(target, src))
