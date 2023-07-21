@@ -7,11 +7,12 @@
 	description = "A wall fungus will infest a random wall on the station, eating away at it. If left unchecked, it will spread to other walls and eventually destroy the station."
 
 /datum/round_event/wall_fungus/announce(fake)
-	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_FUNGI)
+	priority_announce("Harmful fungi detected on the station, station structures may be contaminated. Enabling emergency maintenance access is advised to provide immediate response in [get_area(starting_wall)].", "Harmful Fungi", ANNOUNCER_FUNGI)
 
 /datum/round_event/wall_fungus
-	announce_when = 180 // 6 minutes
+	announce_when = 240 EVENT_SECONDS
 	announce_chance = 100
+	var/turf/closed/wall/starting_wall
 
 /datum/round_event/wall_fungus/start()
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance))
@@ -25,8 +26,8 @@
 		for(var/turf/closed/wall/iterating_wall in iterating_area)
 			possible_start_walls += iterating_wall
 
-	var/turf/closed/wall/picked_wall = pick(possible_start_walls)
+	starting_wall = pick(possible_start_walls)
 
-	picked_wall.AddComponent(/datum/component/wall_fungus)
+	starting_wall.AddComponent(/datum/component/wall_fungus)
 
-	notify_ghosts("[picked_wall] has been infested with wall eating mushrooms!!", source = picked_wall, action = NOTIFY_JUMP, header = "Fungus Amongus!")
+	notify_ghosts("[starting_wall] has been infested with wall eating mushrooms!!", source = starting_wall, action = NOTIFY_JUMP, header = "Fungus Amongus!")
