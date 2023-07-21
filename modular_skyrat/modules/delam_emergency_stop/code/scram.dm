@@ -74,7 +74,11 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/update_icon_nopipes()
 	return
 
-/// The magical mystery that is atmospherics pumping the coolant into the SM chamber
+/**
+ * The atmos code is functionally identical to /obj/machinery/atmospherics/components/unary/outlet_injector
+ * However this is a hardened all-in-one unit that can't have its controls
+ * tampered with like an outlet injector
+*/
 /obj/machinery/atmospherics/components/unary/delam_scram/process_atmos()
 	..()
 	if(!on || !is_operational)
@@ -158,11 +162,6 @@
 		)
 
 	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
-	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded // yeah that's right Skyrat, no more cheating the counter by deleting the SM
-	SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
-
-	for(var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
-		INVOKE_ASYNC(sign, TYPE_PROC_REF(/obj/machinery/incident_display, update_delam_count), MISTAKES_WERE_MADE)
 
 	// fight power with power
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
@@ -259,6 +258,7 @@
 
 /// Restores the lighting after the delam suppression
 /datum/controller/subsystem/nightshift/proc/restore_light_power()
+	SSnightshift.can_fire = FALSE
 	for(var/obj/machinery/power/apc/light_to_restore as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
 		light_to_restore.lighting = APC_CHANNEL_AUTO_ON
 		light_to_restore.update_appearance()
@@ -376,14 +376,6 @@
 		icon_state += "-armed"
 	else if(machine_stat & (NOPOWER|BROKEN))
 		icon_state += "-nopower"
-
-/obj/machinery/power/supermatter_crystal/Destroy() // I wish I could set the sign to negatives if you manage to still screw it up
-	if(is_main_engine && GLOB.main_supermatter_engine == src)
-		SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded
-		SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
-		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
-			sign.update_delam_count(MISTAKES_WERE_MADE)
-	return ..()
 
 /obj/machinery/power/emitter/LateInitialize(mapload)
 	. = ..()
