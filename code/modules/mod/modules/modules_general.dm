@@ -19,17 +19,17 @@
 	. = ..()
 	create_storage(max_specific_storage = max_w_class, max_total_storage = max_combined_w_class, max_slots = max_items)
 	atom_storage.allow_big_nesting = TRUE
-	atom_storage.locked = TRUE
+	atom_storage.locked = STORAGE_FULLY_LOCKED
 
 /obj/item/mod/module/storage/on_install()
 	var/datum/storage/modstorage = mod.create_storage(max_specific_storage = max_w_class, max_total_storage = max_combined_w_class, max_slots = max_items)
 	modstorage.set_real_location(src)
-	atom_storage.locked = FALSE
+	atom_storage.locked = STORAGE_NOT_LOCKED
 	RegisterSignal(mod.chestplate, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(on_chestplate_unequip))
 
 /obj/item/mod/module/storage/on_uninstall(deleting = FALSE)
 	var/datum/storage/modstorage = mod.atom_storage
-	atom_storage.locked = TRUE
+	atom_storage.locked = STORAGE_FULLY_LOCKED
 	qdel(modstorage)
 	if(!deleting)
 		atom_storage.remove_all(get_turf(src))
@@ -38,9 +38,12 @@
 /obj/item/mod/module/storage/proc/on_chestplate_unequip(obj/item/source, force, atom/newloc, no_move, invdrop, silent)
 	if(QDELETED(source) || !mod.wearer || newloc == mod.wearer || !mod.wearer.s_store)
 		return
-	to_chat(mod.wearer, span_notice("[src] tries to store [mod.wearer.s_store] inside itself."))
-	if(atom_storage?.attempt_insert(mod.wearer.s_store, mod.wearer, override = TRUE))
-		mod.wearer.temporarilyRemoveItemFromInventory(mod.wearer.s_store)
+	if(!atom_storage?.attempt_insert(mod.wearer.s_store, mod.wearer, override = TRUE))
+		balloon_alert(mod.wearer, "storage failed!")
+		to_chat(mod.wearer, span_warning("[src] fails to store [mod.wearer.s_store] inside itself!"))
+		return
+	to_chat(mod.wearer, span_notice("[src] stores [mod.wearer.s_store] inside itself."))
+	mod.wearer.temporarilyRemoveItemFromInventory(mod.wearer.s_store)
 
 /obj/item/mod/module/storage/large_capacity
 	name = "MOD expanded storage module"
@@ -214,7 +217,7 @@
 		virus_data["cure"] = virus.cure_text
 		viruses += list(virus_data)
 	.["statusviruses"] = viruses
-	
+
 	return .
 
 /obj/item/mod/module/status_readout/on_suit_activation()
@@ -489,7 +492,7 @@
 
 /obj/item/mod/module/dna_lock/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
-	on_emag(src, user, emag_card)
+	return on_emag(src, user, emag_card)
 
 /obj/item/mod/module/dna_lock/proc/dna_check(mob/user)
 	if(!iscarbon(user))
@@ -509,6 +512,7 @@
 	SIGNAL_HANDLER
 
 	dna = null
+	return TRUE
 
 /obj/item/mod/module/dna_lock/proc/on_mod_activation(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -743,7 +747,7 @@
 	)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_obj_entered),
-		COMSIG_ATOM_INITIALIZED_ON = PROC_REF(on_atom_initialized_on),
+		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(on_atom_initialized_on),
 	)
 	var/datum/component/connect_loc_behalf/connector
 

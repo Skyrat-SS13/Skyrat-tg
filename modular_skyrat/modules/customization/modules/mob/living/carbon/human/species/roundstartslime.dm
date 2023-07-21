@@ -1,7 +1,4 @@
 /datum/species/jelly
-	species_traits = list(
-		MUTCOLORS,
-	)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
 		"snout" = "None",
@@ -16,6 +13,7 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
+	facial_hair_alpha = 160
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
@@ -32,7 +30,7 @@
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 	mutanteyes = /obj/item/organ/internal/eyes
-	mutanttongue = /obj/item/organ/internal/tongue
+	mutanttongue = /obj/item/organ/internal/tongue/jelly
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/slime/roundstart,
@@ -252,13 +250,11 @@
 		if("Hair")
 			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", GLOB.hairstyles_list)
 			if(new_style)
-				alterer.hairstyle = new_style
-				alterer.update_body_parts()
+				alterer.set_hairstyle(new_style, update = TRUE)
 		if("Facial Hair")
 			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
 			if(new_style)
-				alterer.facial_hairstyle = new_style
-				alterer.update_body_parts()
+				alterer.set_facial_hairstyle(new_style, update = TRUE)
 		if("Hair Color")
 			var/hair_area = tgui_alert(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
 			if(!hair_area)
@@ -270,15 +266,12 @@
 			switch(hair_area)
 
 				if("Hairstyle")
-					alterer.hair_color = new_hair_color
-					alterer.update_body_parts()
+					alterer.set_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
 				if("Facial Hair")
-					alterer.facial_hair_color = new_hair_color
-					alterer.update_body_parts()
+					alterer.set_facial_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
 				if("Both")
-					alterer.hair_color = new_hair_color
-					alterer.facial_hair_color = new_hair_color
-					alterer.update_body_parts()
+					alterer.set_haircolor(sanitize_hexcolor(new_hair_color), update = FALSE)
+					alterer.set_facial_haircolor(sanitize_hexcolor(new_hair_color), update = TRUE)
 
 /**
  * Alter DNA is an intermediary proc for the most part
@@ -373,7 +366,7 @@
 			alterer.dna.species.mutant_bodyparts -= chosen_key
 	else
 		if(selected_sprite_accessory.organ_type)
-			var/robot_organs = (ROBOTIC_DNA_ORGANS in alterer.dna.species.species_traits)
+			var/robot_organs = HAS_TRAIT(alterer, TRAIT_ROBOTIC_DNA_ORGANS)
 
 			var/obj/item/organ/organ_path = selected_sprite_accessory.organ_type
 			var/slot = initial(organ_path.slot)
@@ -392,9 +385,7 @@
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 
 			if(robot_organs)
-				replacement_organ.status = ORGAN_ROBOTIC
-				replacement_organ.organ_flags |= ORGAN_SYNTHETIC
-
+				replacement_organ.organ_flags |= ORGAN_ROBOTIC
 			replacement_organ.build_from_dna(alterer.dna, chosen_key)
 			replacement_organ.Insert(alterer, special = TRUE, drop_if_replaced = FALSE)
 		else
