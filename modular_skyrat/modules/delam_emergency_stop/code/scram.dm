@@ -180,7 +180,7 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 30, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 30, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
@@ -397,6 +397,10 @@
 
 /obj/machinery/power/emitter/proc/emergency_stop()
 	SIGNAL_HANDLER
+
+	var/area/my_area = get_area(src)
+	if(!istype(my_area, /area/station/engineering/supermatter/room))
+		return
 
 	active = FALSE
 	update_appearance()
