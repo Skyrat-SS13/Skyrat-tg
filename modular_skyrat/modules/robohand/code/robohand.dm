@@ -86,9 +86,9 @@
 	if(display_message)
 		to_chat(user, span_notice("You pull the [magazine_wording] out of \the [src]."))
 	update_appearance()
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand again
-	animate(transform = turn(matrix(), 240), time = 2)
-	animate(transform = null, time = 2)
+	animate(src, transform = turn(matrix(), 120), time = 0.2 SECONDS, loop = 1) //Le johnny robohand again
+	animate(transform = turn(matrix(), 240), time = 0.2 SECONDS)
+	animate(transform = null, time = 0.2 SECONDS)
 
 //Magazine stuff
 
