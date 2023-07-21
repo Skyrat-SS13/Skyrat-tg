@@ -31,13 +31,13 @@
 /datum/controller/subsystem/job/proc/is_skeleton_engineering(crew_threshold)
 	var/engineers = 0
 	for(var/datum/record/crew/target in GLOB.manifest.general)
-		if(target.trim == "Chief Engineer")
+		if(target.trim == JOB_CHIEF_ENGINEER)
 			return FALSE
 
-		if(target.trim == "Station Engineer")
+		if(target.trim == JOB_STATION_ENGINEER)
 			engineers++
 
-		if(target.trim == "Atmospheric Technician")
+		if(target.trim == JOB_ATMOSPHERIC_TECHNICIAN)
 			engineers++
 
 	if(engineers > crew_threshold)
