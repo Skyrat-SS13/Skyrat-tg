@@ -14,15 +14,18 @@
 		return ELEMENT_INCOMPATIBLE
 
 	handle_organ_corruption_on_existing_organs(target)
-	RegisterSignal(target, COMSIG_ORGAN_IMPLANTED, PROC_REF(try_corrupt_new_organ))
+	RegisterSignal(target, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(try_corrupt_new_organ))
 
 
 /datum/element/tumor_corruption/Detach(datum/source, ...)
 	. = ..()
 
-	UnregisterSignal(source, COMSIG_ORGAN_IMPLANTED)
+	UnregisterSignal(source, COMSIG_CARBON_GAIN_ORGAN)
 
 
+/**
+ * Handles corrupting already-existing organs upon having the tumor be inserted in the mob.
+ */
 /datum/element/tumor_corruption/proc/handle_organ_corruption_on_existing_organs(mob/living/carbon/organ_enjoyer)
 	var/obj/item/organ/internal/liver/liver = organ_enjoyer.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(liver && !(liver.organ_flags & ORGAN_TUMOR_CORRUPTED))
@@ -41,7 +44,10 @@
 		tongue.AddComponent(/datum/component/organ_corruption/tongue)
 
 
-/datum/element/tumor_corruption/proc/try_corrupt_new_organ(obj/item/organ/new_organ, mob/living/carbon/receiver)
+/**
+ * Handles corrupting any new organ that's inserted into the affected mob, if needed.
+ */
+/datum/element/tumor_corruption/proc/try_corrupt_new_organ(mob/living/carbon/receiver, obj/item/organ/new_organ)
 	SIGNAL_HANDLER
 
 	var/static/list/corruptable_organ_slots = list(

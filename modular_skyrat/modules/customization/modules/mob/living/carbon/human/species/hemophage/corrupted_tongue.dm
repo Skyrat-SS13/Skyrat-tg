@@ -17,7 +17,10 @@
 	if(!.)
 		return
 
-	corruption_target.add_item_action(tongue_action_type)
+	var/datum/action/tongue_action = corruption_target.add_item_action(tongue_action_type)
+
+	if(corruption_target.owner)
+		tongue_action.Grant(corruption_target.owner)
 
 
 /datum/action/cooldown/hemophage/drain_victim

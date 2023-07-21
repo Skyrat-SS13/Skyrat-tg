@@ -16,7 +16,6 @@
 		AddComponent(/datum/component/action_item_overlay, target)
 
 
-
 /datum/action/cooldown/hemophage/toggle_dormant_state
 	name = "Enter Dormant State"
 	desc = "Causes the tumor inside of you to enter a dormant state, causing it to need just a minimum amount of blood to survive. However, as the tumor living in your body is the only thing keeping you still alive, rendering it latent cuts both it and you to just the essential functions to keep standing. It will no longer mend your body even in the darkness, and the lack of blood pumping through you will have you the weakest you've ever felt; and leave you hardly able to run. It is not on a switch, and it will take some time for it to awaken."
@@ -24,7 +23,7 @@
 
 
 /datum/action/cooldown/hemophage/toggle_dormant_state/Activate(atom/action_target)
-	if(!owner || !ishemophage(owner) || !target) // Sorry, but blood drain and the likes are only usable by Hemophages.
+	if(!owner || !ishuman(owner) || !target)
 		return
 
 	var/obj/item/organ/internal/heart/hemophage/tumor = target
@@ -39,24 +38,17 @@
 
 	to_chat(owner, span_notice("[tumor.is_dormant ? DORMANT_STATE_END_MESSAGE : DORMANT_STATE_START_MESSAGE]"))
 
-	var/mob/living/carbon/human/hemophage = owner
-	var/datum/species/hemophage/hemophage_species = hemophage.dna.species
-
-	tumor.toggle_dormant_state()
-
 	StartCooldown()
 
-	hemophage_species.tumor_status = tumor.is_dormant
-	hemophage_species.toggle_dormant_tumor_vulnerabilities(hemophage)
+	tumor.toggle_dormant_state()
+	tumor.toggle_dormant_tumor_vulnerabilities(owner)
 
 	if(tumor.is_dormant)
 		name = "Exit Dormant State"
 		desc =  "Causes the pitch-black mass living inside of you to awaken, allowing your circulation to return and blood to pump freely once again. It fills your legs to let you run again, and longs for the darkness as it did before. You start to feel strength rather than the weakness you felt before. However, the tumor giving you life is not on a switch, and it will take some time to subdue it again."
-		hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 	else
 		name = initial(name)
 		desc = initial(desc)
-		hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 #undef DORMANT_STATE_START_MESSAGE

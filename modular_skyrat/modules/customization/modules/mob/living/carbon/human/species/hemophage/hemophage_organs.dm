@@ -7,59 +7,6 @@
 #define ORGAN_CORRUPTION_INSTANT 0
 
 
-/obj/item/organ/internal/heart/hemophage
-	name = "pulsating tumor"
-	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
-	icon_state = "tumor-on"
-	base_icon_state = "tumor"
-	desc = "This pulsating organ nearly resembles a normal heart, but it's been twisted beyond any human appearance, having turned to the color of coal. The way it barely fits where the original organ was sends shivers down your spine... <i>The fact that it's what keeps them alive makes it all the more terrifying.</i>"
-	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
-	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
-	var/is_dormant = PULSATING_TUMOR_ACTIVE
-
-
-/obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-	. = ..()
-	if(!ishemophage(reciever))
-		return
-
-	var/mob/living/carbon/human/tumorful_hemophage = reciever
-	var/datum/species/hemophage/tumorful_species = tumorful_hemophage.dna.species
-
-	tumorful_species.tumor_status = is_dormant
-
-	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
-	if(is_dormant)
-		tumorful_species.toggle_dormant_tumor_vulnerabilities(tumorful_hemophage)
-		tumorful_hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-
-/obj/item/organ/internal/heart/hemophage/Remove(mob/living/carbon/tumorless, special = FALSE)
-	. = ..()
-
-	SEND_SIGNAL(tumorless, COMSIG_PULSATING_TUMOR_REMOVED)
-
-	if(!ishemophage(tumorless))
-		return
-
-	var/mob/living/carbon/human/tumorless_hemophage = tumorless
-	var/datum/species/hemophage/tumorless_species = tumorless_hemophage.dna.species
-
-	tumorless_species.tumor_status = PULSATING_TUMOR_MISSING
-
-	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
-	if(is_dormant)
-		tumorless_species.toggle_dormant_tumor_vulnerabilities(tumorless_hemophage)
-		tumorless_hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-
-/// Simple helper proc that toggles the dormant state of the tumor, which also switches its appearance to reflect said change.
-/obj/item/organ/internal/heart/hemophage/proc/toggle_dormant_state()
-	is_dormant = !is_dormant
-	base_icon_state = is_dormant ? "[base_icon_state]-dormant" : initial(base_icon_state)
-	update_appearance()
-
-
 /obj/item/organ/internal/liver/hemophage
 	name = "liver" // Name change is handled by /datum/component/organ_corruption/corrupt_organ()
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
