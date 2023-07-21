@@ -845,7 +845,7 @@
 	if(variable_color)
 		draw_color = variable_color
 	else if(should_draw_greyscale)
-		draw_color = (species_color) || (skin_tone && skintone2hex(skin_tone))
+		draw_color = species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 	else
 		draw_color = null
 
@@ -855,27 +855,31 @@
 	// There should technically to be an ishuman(owner) check here, but it is absent because no basetype carbons use bodyparts
 	// No, xenos don't actually use bodyparts. Don't ask.
 	var/mob/living/carbon/human/human_owner = owner
-	var/datum/species/owner_species = human_owner.dna.species
+
 	limb_gender = (human_owner.physique == MALE) ? "m" : "f"
-
-	if(owner_species.use_skintones)
+	if(HAS_TRAIT(human_owner, TRAIT_USES_SKINTONES))
 		skin_tone = human_owner.skin_tone
-	else
+	else if(HAS_TRAIT(human_owner, TRAIT_MUTANT_COLORS))
 		skin_tone = ""
-
-	if(HAS_TRAIT(owner, TRAIT_MUTANT_COLORS))
+		var/datum/species/owner_species = human_owner.dna.species
 		if(owner_species.fixed_mut_color)
 			species_color = owner_species.fixed_mut_color
 		else
 			species_color = human_owner.dna.features["mcolor"]
 	else
-		species_color = null
+		skin_tone = ""
+		species_color = ""
 
 	draw_color = variable_color
 	if(should_draw_greyscale) //Should the limb be colored?
-		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
+		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
 	// SKYRAT EDIT ADDITION
+	var/datum/species/owner_species = human_owner.dna.species
+
+	if(owner_species && owner_species.specific_alpha != 255)
+		alpha = owner_species.specific_alpha
+
 	markings = LAZYCOPY(owner_species.body_markings[body_zone])
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
@@ -963,7 +967,7 @@
 
 		if(draw_color)
 			//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+			var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)

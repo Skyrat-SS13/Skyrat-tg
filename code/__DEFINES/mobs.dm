@@ -103,6 +103,7 @@
 #define SPECIES_ANDROID "android"
 #define SPECIES_DULLAHAN "dullahan"
 #define SPECIES_ETHEREAL "ethereal"
+#define SPECIES_ETHEREAL_LUSTROUS "lustrous"
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
 #define SPECIES_HUMAN "human"
@@ -372,6 +373,8 @@
 #define GALOSHES_DONT_HELP (1<<3)
 /// Slip works even if you're already on the ground
 #define SLIP_WHEN_CRAWLING (1<<4)
+/// the mob won't slip if the turf has the TRAIT_TURF_IGNORE_SLIPPERY trait.
+#define SLIPPERY_TURF (1<<5)
 
 #define MAX_CHICKENS 50
 

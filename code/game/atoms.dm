@@ -60,7 +60,7 @@
 	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
 	var/list/managed_overlays
 
-	/// Lazylist of all images (hopefully attached to us) to update when we change z levels
+	/// Lazylist of all images (or atoms, I'm sorry) (hopefully attached to us) to update when we change z levels
 	/// You will need to manage adding/removing from this yourself, but I'll do the updating for you
 	var/list/image/update_on_z
 
@@ -243,9 +243,6 @@
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
-
-	if(loc)
-		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src, mapload) /// Sends a signal that the new atom `src`, has been created at `loc`
 
 	SET_PLANE_IMPLICIT(src, plane)
 
