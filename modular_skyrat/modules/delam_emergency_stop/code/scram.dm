@@ -130,6 +130,7 @@
 	if(admin_disabled)
 		investigate_log("Delam SCRAM tried to activate but an admin disabled it", INVESTIGATE_ATMOS)
 		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+		radio.talk_into(src, "System fault! Unable to trigger.", engineering_channel)
 		audible_message(span_danger("\The [src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
