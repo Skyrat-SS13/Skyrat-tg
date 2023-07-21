@@ -399,7 +399,7 @@
 	SIGNAL_HANDLER
 
 	var/area/my_area = get_area(src)
-	if(!istype(my_area, /area/station/engineering/supermatter/room))
+	if(!istype(my_area, /area/station/engineering))
 		return
 
 	active = FALSE
