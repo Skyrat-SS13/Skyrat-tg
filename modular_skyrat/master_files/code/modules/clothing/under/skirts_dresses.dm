@@ -128,3 +128,35 @@
 	greyscale_config_worn = /datum/greyscale_config/pentagram_dress/worn
 	greyscale_colors = "#403c46"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/dress/skyrat/jute
+	name = "Jacarta Dress"
+	desc = "A thick dress with a strong rough exterior layer; lined with a soft breathable thin layer. It's loose-fitting, and has a tag inside that says 'Made in Jacarta'."
+	icon_state = "jute"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/skyrat/striped_skirt
+	name = "Striped Skirt"
+	desc = "A red side-slit skirt with stripes! Comes with a matching two-tone bra."
+	icon_state = "striped_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/skyrat/red_skirt
+	name = "Red Skirt"
+	desc = "An eye-catching knee-length red skirt, with a golden-yellow trim, comes with a two-tone bra."
+	icon_state = "red_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/skyrat/black_skirt
+	name = "Black Skirt"
+	desc = "A black side-slit skirt with a golden-yellow trim. Screams 'affluent goth'. Comes with a funky-looking matching bra."
+	icon_state = "black_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

@@ -77,6 +77,7 @@
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
+	flags_for_organ = SPRITE_ACCESSORY_WAG_ABLE
 	genetic = FALSE
 
 //Synth Antennae

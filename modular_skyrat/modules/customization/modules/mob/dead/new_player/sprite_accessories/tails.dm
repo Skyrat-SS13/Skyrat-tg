@@ -188,7 +188,7 @@
 	name = "Horse"
 	icon_state = "horse"
 	color_src = USE_ONE_COLOR
-	default_color = HAIR
+	default_color = DEFAULT_PRIMARY
 
 /datum/sprite_accessory/tails/mammal/wagging/husky
 	name = "Husky"

@@ -104,18 +104,16 @@ There are several things that need to be remembered:
 		var/woman
 		var/mutant_styles = NONE // SKYRAT EDIT ADDITON - mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
-		if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src)
-		else if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // SKYRAT EDIT CHANGE
+		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
-
 		// SKYRAT EDIT ADDITION - birbs
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src)
+		else if(bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
 		// SKYRAT EDIT END
-
 		//Female sprites have lower priority than digitigrade sprites
-		else if(dna.species.sexes && (dna.species.bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
+		else if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
 			woman = TRUE
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(uniform)))
@@ -123,7 +121,7 @@ There are several things that need to be remembered:
 			handled_by_bodytype = FALSE
 
 		// SKYRAT EDIT ADDITION START - Taur-friendly suits!
-		if(dna.species.bodytype & BODYTYPE_TAUR)
+		if(bodytype & BODYTYPE_TAUR)
 			if(istype(uniform) && uniform.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
 		// SKYRAT EDIT END
@@ -201,7 +199,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -211,7 +209,8 @@ There are several things that need to be remembered:
 		var/mutable_appearance/gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		var/feature_y_offset = 0
-		for (var/obj/item/bodypart/arm/my_hand as anything in hand_bodyparts)
+		//needs to be typed, hand_bodyparts can have nulls
+		for (var/obj/item/bodypart/arm/my_hand in hand_bodyparts)
 			var/list/glove_offset = my_hand.worn_glove_offset?.get_offset()
 			if (glove_offset && (!feature_y_offset || glove_offset["y"] > feature_y_offset))
 				feature_y_offset = glove_offset["y"]
@@ -243,7 +242,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -282,7 +281,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -316,7 +315,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -356,17 +355,17 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION START
 		var/mutant_override = FALSE
 
-		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE // SKYRAT EDIT ADDITION
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		else if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		else if(dna.species.bodytype & BODYTYPE_HIDE_SHOES)
+		else if(bodytype & BODYTYPE_HIDE_SHOES)
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// SKYRAT EDIT END
 
@@ -429,12 +428,12 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -471,7 +470,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -506,18 +505,18 @@ There are several things that need to be remembered:
 		var/mutant_styles = NONE
 
 		//More currently unused digitigrade handling
-		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
+		if(bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE
 
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		else if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
 
-		if(dna.species.bodytype & BODYTYPE_TAUR)
+		if(bodytype & BODYTYPE_TAUR)
 			var/obj/item/clothing/suit/worn_suit = wear_suit
 			if(istype(worn_suit) && worn_suit.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
@@ -580,12 +579,12 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/mask.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/mask.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -618,7 +617,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -930,40 +929,12 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-	if (!istype(my_head))
+	if(!istype(my_head))
 		return
 
 	my_head.update_limb(is_creating = update_limb_data)
 
 	add_overlay(my_head.get_limb_icon())
-	update_damage_overlays()
-
-	if(my_head && !(HAS_TRAIT(src, TRAIT_HUSK)))
-		// lipstick
-		if(lip_style && (LIPS in dna.species.species_traits))
-			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "lips_[lip_style]", -BODY_LAYER)
-			lip_overlay.color = lip_color
-			my_head.worn_face_offset?.apply_offset(lip_overlay)
-			add_overlay(lip_overlay)
-
-		// eyes
-		if(!(NOEYESPRITES in dna.species.species_traits))
-			var/obj/item/organ/internal/eyes/parent_eyes = get_organ_slot(ORGAN_SLOT_EYES)
-			if(parent_eyes)
-				add_overlay(parent_eyes.generate_body_overlay(src))
-			else
-				var/mutable_appearance/missing_eyes = mutable_appearance('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER)
-				my_head.worn_face_offset?.apply_offset(missing_eyes)
-				add_overlay(missing_eyes)
-
-			//SKYRAT EDIT ADDITION
-			if (parent_eyes && parent_eyes.is_emissive)
-				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/species/human/human_face.dmi', parent_eyes ? parent_eyes.eye_icon_state : "eyes_missing", -BODY_LAYER)
-				emissive_appearance.appearance_flags &= ~RESET_TRANSFORM
-				my_head.worn_face_offset?.apply_offset(emissive_appearance)
-				add_overlay(emissive_appearance)
-			//SKYRAT EDIT END
-
 	update_worn_head()
 	update_worn_mask()
 

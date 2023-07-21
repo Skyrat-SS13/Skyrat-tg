@@ -28,7 +28,7 @@
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/akm/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/akm
 	name = "\improper Krinkov magazine"

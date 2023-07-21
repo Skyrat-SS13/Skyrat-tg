@@ -14,7 +14,7 @@
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
-	icon = 'icons/obj/status_display.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/status_display.dmi' //// SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame"
 	verb_say = "beeps"
 	verb_ask = "beeps"
@@ -229,10 +229,10 @@
 /obj/machinery/status_display/proc/display_shuttle_status(obj/docking_port/mobile/shuttle)
 	if(!shuttle)
 		// the shuttle is missing - no processing
-		set_messages("shutl?","")
+		set_messages("shutl","not in service")
 		return PROCESS_KILL
 	else if(shuttle.timer)
-		var/line1 = "- [shuttle.getModeStr()] -"
+		var/line1 = "<<< [shuttle.getModeStr()]"
 		var/line2 = shuttle.getTimerStr()
 
 		set_messages(line1, line2)
@@ -248,7 +248,7 @@
  * Nice overlay to make text smoothly scroll with no client updates after setup.
  */
 /obj/effect/overlay/status_display_text
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/machines/status_display.dmi'
 	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
 	/// The message this overlay is displaying.
@@ -387,8 +387,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	if(!SSshuttle.supply)
 		// Might be missing in our first update on initialize before shuttles
 		// have loaded. Cross our fingers that it will soon return.
-		line1 = "CARGO"
-		line2 = "shutl?"
+		line1 = "shutl"
+		line2 = "not in service"
 	else if(SSshuttle.supply.mode == SHUTTLE_IDLE)
 		if(is_station_level(SSshuttle.supply.z))
 			line1 = "CARGO"
@@ -397,7 +397,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 			line1 = ""
 			line2 = ""
 	else
-		line1 = "- [SSshuttle.supply.getModeStr()] -"
+		line1 = "<<< [SSshuttle.supply.getModeStr()]"
 		line2 = SSshuttle.supply.getTimerStr()
 	set_messages(line1, line2)
 
@@ -442,21 +442,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 
-/obj/machinery/status_display/ai/Initialize(mapload)
-	. = ..()
-	GLOB.ai_status_displays.Add(src)
-
-/obj/machinery/status_display/ai/Destroy()
-	GLOB.ai_status_displays.Remove(src)
-	. = ..()
-
 /obj/machinery/status_display/ai/attack_ai(mob/living/silicon/ai/user)
 	if(!isAI(user))
 		return
 	var/list/choices = list()
 	for(var/emotion_const in GLOB.ai_status_display_emotes)
 		var/icon_state = GLOB.ai_status_display_emotes[emotion_const]
-		choices[emotion_const] = image(icon = 'icons/obj/status_display.dmi', icon_state = icon_state)
+		choices[emotion_const] = image(icon = 'icons/obj/machines/status_display.dmi', icon_state = icon_state)
 
 	var/emotion_result = show_radial_menu(user, src, choices, tooltips = TRUE)
 	for(var/_emote in typesof(/datum/emote/ai/emotion_display))

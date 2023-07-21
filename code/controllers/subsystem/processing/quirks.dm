@@ -27,16 +27,20 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
-		list("Quadruple Amputee", "Paraplegic"),
+		list("Prosthetic Organ", "Tin Man", "Body Purist"),
+		list("Quadruple Amputee", "Paraplegic", "Hemiplegic"),
 		list("Quadruple Amputee", "Frail"),
-		list("Mute", "Social Anxiety"),
+		list("Social Anxiety", "Mute"),
 		list("Mute", "Soft-Spoken"),
 		list("Stormtrooper Aim", "Big Hands"),
+		list("Bilingual", "Foreigner"),
+		list("Spacer", "Paraplegic"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Big Hands", "Stormtrooper Aim"),
-		list("No Guns", "Pacifist")
+		list("No Guns", "Pacifist"),
+		list("Spacer", "Oversized"),
 		//SKYRAT EDIT ADDITION END
 	)
 
