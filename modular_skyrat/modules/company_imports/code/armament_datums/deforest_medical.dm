@@ -300,6 +300,7 @@
 	subcategory = "Personal Defense Equipment"
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	interest_required = COMPANY_SOME_INTEREST
+	contraband = TRUE
 
 /datum/armament_entry/company_import/deforest/defense/firefly
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
