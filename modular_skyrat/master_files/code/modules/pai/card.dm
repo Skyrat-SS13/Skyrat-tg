@@ -9,7 +9,9 @@
 	. = ..()
 	if(.)
 		return TRUE
+
 	if(pai && action == "toggle_leash")
 		pai.toggle_leash()
 		return TRUE
+
 	return FALSE
