@@ -21,14 +21,17 @@
 #define POWER_CUT_MIN_DURATION 19 SECONDS
 #define POWER_CUT_MAX_DURATION 21 SECONDS
 #define AIR_INJECT_RATE 33
+#define BUTTON_SOUND_RANGE 7
 #define BUTTON_SOUND_FALLOFF_DISTANCE 7
+#define MACHINE_SOUND_RANGE 15
+#define MACHINE_RUMBLE_SOUND_RANGE 30
 #define MACHINE_SOUND_FALLOFF_DISTANCE 10
 
 /// An atmos device that uses freezing cold air to attempt an emergency shutdown of the supermatter engine
 /obj/machinery/atmospherics/components/unary/delam_scram
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	icon_state = "dispenser-idle"
-	name = "delamination suppression system"
+	name = "\improper delamination suppression system"
 	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems.<br>You don't want to be in the chamber when it's activated!<br>\
 		Come to think of it, CentCom would rather you didn't activate it at all.<br>These things are expensive!"
 	use_power = IDLE_POWER_USE
@@ -129,9 +132,9 @@
 
 	if(admin_disabled)
 		investigate_log("Delam SCRAM tried to activate but an admin disabled it", INVESTIGATE_ATMOS)
-		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, MACHINE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 		radio.talk_into(src, "System fault! Unable to trigger.", warning_channel)
-		audible_message(span_danger("\The [src] makes a series of sad beeps. Someone has corrupted its software!"))
+		audible_message(span_danger("[src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
 	return TRUE
@@ -181,7 +184,7 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, 30, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
@@ -215,7 +218,7 @@
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()
-	visible_message(span_danger("The [src] shatters in the freon fire!"))
+	visible_message(span_danger("[src] shatters in the freon fire!"))
 	explosion(src, SHATTER_DEVASTATION_RANGE, SHATTER_HEAVY_RANGE, SHATTER_LIGHT_RANGE, SHATTER_FLAME_RANGE, SHATTER_FLASH_RANGE)
 	qdel(src)
 
@@ -223,8 +226,8 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/goodbye_friends()
 
 	// good job buddy, sacrificing yourself for the greater good
-	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
-	visible_message(span_danger("\The [src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"), blind_message = span_danger("\The [src] beeps a sorrowful melody!"))
+	playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, MACHINE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+	visible_message(span_danger("[src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"), blind_message = span_danger("[src] beeps a sorrowful melody!"))
 	deconstruct(FALSE)
 
 /// Drain the internal energy, if the crystal damage is above 100 we heal it a bit. Not much, but should be good to let them recover.
@@ -319,16 +322,17 @@
 		return
 
 	if(!validate_suppression_status())
-		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE, 10, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
-		audible_message(span_danger("The [src] makes a sad buzz and goes dark.")) // Look through the window, buddy
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE, BUTTON_SOUND_RANGE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
+		audible_message(span_danger("[src] makes a sad buzz and goes dark.")) // Look through the window, buddy
 		burn_out()
+		return
 
 	if(.)
 		return
 
 	// Give them a cheeky instructions card. But only one! If you lost it, question your engineering prowess in this moment
 	if(button_stage == BUTTON_IDLE)
-		visible_message(span_danger("A biscuit card falls out of the [src]!"))
+		visible_message(span_danger("A biscuit card falls out of [src]!"))
 		user.put_in_hands(new /obj/item/folder/biscuit/confidential/delam(get_turf(user)))
 		button_stage = BUTTON_AWAKE
 		return
@@ -340,8 +344,8 @@
 
 	// For roundstart only, after that it's on you!
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 10, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
-		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, BUTTON_SOUND_RANGE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
+		audible_message(span_danger("[src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
 
@@ -349,11 +353,11 @@
 	button_stage = BUTTON_ARMED
 	update_appearance()
 	radio.talk_into(src, "SUPERMATTER EMERGENCY STOP BUTTON ARMED!", RADIO_CHANNEL_ENGINEERING)
-	visible_message(span_danger("[user] swings open the plastic cover of the [src]!"))
+	visible_message(span_danger("[user] swings open the plastic cover of [src]!"))
 
 	// Let the admins know someone's fucked up
-	message_admins("[ADMIN_LOOKUPFLW(user)] just opened the cover of the [src].")
-	investigate_log("[key_name(user)] opened the cover of the [src].", INVESTIGATE_ATMOS)
+	message_admins("[ADMIN_LOOKUPFLW(user)] just opened the cover of [src].")
+	investigate_log("[key_name(user)] opened the cover of [src].", INVESTIGATE_ATMOS)
 
 	confirm_action(user)
 
@@ -361,16 +365,16 @@
 /obj/machinery/button/delam_scram/proc/confirm_action(mob/user, list/modifiers)
 	if(tgui_alert(usr, "Are you really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
 		button_stage = BUTTON_AWAKE
-		visible_message(span_danger("[user] slowly closes the plastic cover of the [src]!"))
+		visible_message(span_danger("[user] slowly closes the plastic cover of [src]!"))
 		update_appearance()
 		return
 
 	// Make scary sound and flashing light
-	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
+	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, BUTTON_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
 	button_stage = BUTTON_PUSHED
-	visible_message(span_danger("[user] smashes the [src] with their hand!"))
+	visible_message(span_danger("[user] smashes [src] with their hand!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] pushed [src]!")
-	investigate_log("[key_name(user)] pushed the [src]!", INVESTIGATE_ATMOS)
+	investigate_log("[key_name(user)] pushed [src]!", INVESTIGATE_ATMOS)
 	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
 
 	// No going back now!
@@ -387,6 +391,7 @@
 /obj/machinery/button/delam_scram/proc/burn_out()
 	if(!(machine_stat & BROKEN))
 		set_machine_stat(machine_stat | BROKEN)
+		//
 		update_appearance()
 
 /obj/machinery/button/delam_scram/update_icon_state()
@@ -461,3 +466,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_s
 #undef POWER_CUT_MIN_DURATION
 #undef POWER_CUT_MAX_DURATION
 #undef AIR_INJECT_RATE
+#undef BUTTON_SOUND_RANGE
+#undef BUTTON_SOUND_FALLOFF_DISTANCE
+#undef MACHINE_SOUND_RANGE
+#undef MACHINE_RUMBLE_SOUND_RANGE
+#undef MACHINE_SOUND_FALLOFF_DISTANCE
