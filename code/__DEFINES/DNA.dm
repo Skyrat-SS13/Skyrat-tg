@@ -29,21 +29,20 @@
 
 #define DNA_BLOCK_SIZE_COLOR DEFAULT_HEX_COLOR_LEN
 
-#define DNA_EYE_COLOR_LEFT_BLOCK 4
+#define DNA_GENDER_BLOCK 1
+#define DNA_SKIN_TONE_BLOCK 2
+#define DNA_EYE_COLOR_LEFT_BLOCK 3
 #define DNA_EYE_COLOR_RIGHT_BLOCK 4
-#define DNA_FACIAL_HAIR_COLOR_BLOCK 2
-#define DNA_FACIAL_HAIRSTYLE_BLOCK 6
-#define DNA_GENDER_BLOCK 5
-#define DNA_HAIR_COLOR_BLOCK 1
-#define DNA_HAIRSTYLE_BLOCK 7
-#define DNA_SKIN_TONE_BLOCK 3
-#define DNA_UNI_IDENTITY_BLOCKS 7
+#define DNA_HAIRSTYLE_BLOCK 5
+#define DNA_HAIR_COLOR_BLOCK 6
+#define DNA_FACIAL_HAIRSTYLE_BLOCK 7
+#define DNA_FACIAL_HAIR_COLOR_BLOCK 8
+
+#define DNA_UNI_IDENTITY_BLOCKS 8
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/_DEFINES/DNA.dm)
 /*
 /// This number needs to equal the total number of DNA blocks
-#define DNA_FEATURE_BLOCKS 15
-
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
 #define DNA_LIZARD_MARKINGS_BLOCK 3
@@ -58,6 +57,9 @@
 #define DNA_MOTH_ANTENNAE_BLOCK 12
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
+#define DNA_POD_HAIR_BLOCK 15
+
+#define DNA_FEATURE_BLOCKS 15
 */ //SKYRAT EDIT CHANGE - ORIGINAL
 #define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
 
@@ -68,32 +70,13 @@
 #define DNA_ETHEREAL_COLOR_BLOCK 4
 #define DNA_SKIN_COLOR_BLOCK 5
 
-// SKYRAT EDIT CHANGE END
-
 #define DNA_POD_HAIR_BLOCK 15
+
+// SKYRAT EDIT CHANGE END
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
 #define DNA_UNIQUE_ENZYMES_LEN 32
-
-// species_traits list on /datum/species, please avoid adding more and use inherent_traits instead where possible
-#define MUTCOLORS 1
-#define NOTRANSSTING 2
-#define NOZOMBIE 3
-#define NO_UNDERWEAR 4
-#define NO_DNA_COPY 5
-#define DRINKSBLOOD 6
-/// Use this if you want to change the race's color without the player being able to pick their own color. AKA special color shifting
-#define DYNCOLORS 7
-#define AGENDER 8
-///If we have a limb-specific overlay sprite
-#define HAS_MARKINGS 9
-/// Do not draw blood overlay
-#define NOBLOODOVERLAY 10
-///No augments, for monkeys in specific because they will turn into fucking freakazoids https://cdn.discordapp.com/attachments/326831214667235328/791313258912153640/102707682-fa7cad80-4294-11eb-8f13-8c689468aeb0.png
-#define NOAUGMENTS 11
-///will be assigned a universal vampire themed last name shared by their department. this is preferenced!
-#define BLOOD_CLANS 12
 
 //organ slots
 #define ORGAN_SLOT_ADAMANTINE_RESONATOR "adamantine_resonator"
@@ -151,9 +134,11 @@
 #define CHROMOSOME_USED 2
 
 //used for mob's genetic gender (mainly just for pronouns, members of sexed species with plural gender refer to their physique for the actual sprites, which is not genetic)
+#define GENDERS 4
 #define G_MALE 1
 #define G_FEMALE 2
 #define G_PLURAL 3
+#define G_NEUTER 4
 
 /// Defines how a mob's organs_slot is ordered
 /// Exists so Life()'s organ process order is consistent

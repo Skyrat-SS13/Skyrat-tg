@@ -6,6 +6,9 @@
 	///Whether the trauma will be displayed on a scanner or kiosk
 	var/display_scanner = TRUE
 
+/datum/brain_trauma/very_special
+	abstract_type = /datum/brain_trauma/very_special
+
 /datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
@@ -259,7 +262,7 @@
 
 /datum/brain_trauma/very_special/sadism/on_life(seconds_per_tick, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
-	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(!owner.has_status_effect(/datum/status_effect/climax_cooldown) && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp) && someone_suffering())
 		affected_mob.adjust_arousal(2)
 		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else

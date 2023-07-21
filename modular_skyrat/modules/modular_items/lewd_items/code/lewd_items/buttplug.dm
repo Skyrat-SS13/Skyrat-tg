@@ -83,7 +83,7 @@
 	icon_state = "[base_icon_state]_[current_color]_[current_size]"
 	worn_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/buttplug/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/sextoy/buttplug/lewd_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!istype(user))
 		return
