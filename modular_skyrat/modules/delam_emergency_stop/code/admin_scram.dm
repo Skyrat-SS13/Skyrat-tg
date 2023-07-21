@@ -67,7 +67,7 @@
 		return FALSE
 
 	if(my_one_and_only.on)
-		message_admins("[system] can't fire, it's already been triggered!")
+		message_admins("[my_one_and_only] can't fire, it's already been triggered!")
 		return FALSE
 
 	return my_one_and_only
