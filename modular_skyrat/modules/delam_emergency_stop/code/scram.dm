@@ -353,11 +353,11 @@
 	button_stage = BUTTON_ARMED
 	update_appearance()
 	radio.talk_into(src, "SUPERMATTER EMERGENCY STOP BUTTON ARMED!", RADIO_CHANNEL_ENGINEERING)
-	visible_message(span_danger("[user] swings open the plastic cover of [src]!"))
+	visible_message(span_danger("[user] swings open the plastic cover on [src]!"))
 
 	// Let the admins know someone's fucked up
-	message_admins("[ADMIN_LOOKUPFLW(user)] just opened the cover of [src].")
-	investigate_log("[key_name(user)] opened the cover of [src].", INVESTIGATE_ATMOS)
+	message_admins("[ADMIN_LOOKUPFLW(user)] just uncovered [src].")
+	investigate_log("[key_name(user)] uncovered [src].", INVESTIGATE_ATMOS)
 
 	confirm_action(user)
 
@@ -365,7 +365,7 @@
 /obj/machinery/button/delam_scram/proc/confirm_action(mob/user, list/modifiers)
 	if(tgui_alert(usr, "Are you really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
 		button_stage = BUTTON_AWAKE
-		visible_message(span_danger("[user] slowly closes the plastic cover of [src]!"))
+		visible_message(span_danger("[user] slowly closes the plastic cover on [src]!"))
 		update_appearance()
 		return
 
