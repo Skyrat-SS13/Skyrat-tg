@@ -45,6 +45,7 @@
 /datum/component/pixel_shift/proc/pixel_shift_down()
 	SIGNAL_HANDLER
 	shifting = TRUE
+	return COMSIG_KB_ACTIVATED
 
 /datum/component/pixel_shift/proc/pixel_shift_up()
 	SIGNAL_HANDLER

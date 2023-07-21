@@ -8,6 +8,8 @@
 
 /datum/keybinding/mob/pixel_shift/down(client/user)
 	. = ..()
+	if(.)
+		return
 	user.mob.add_pixel_shift_component()
 
 /datum/keybinding/mob/pixel_shift/up(client/user)
