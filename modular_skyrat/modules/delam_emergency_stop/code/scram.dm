@@ -272,7 +272,7 @@
 
 /// A big red button you can smash to stop the supermatter engine, oh how tempting!
 /obj/machinery/button/delam_scram
-	name = "supermatter emergency stop"
+	name = "\improper supermatter emergency stop button"
 	desc = "Your last hope to try and save the crystal during a delamination.<br>\
 		While it is indeed a big red button, pressing it outside of an emergency \
 		will probably get the engineering department out for your blood."
