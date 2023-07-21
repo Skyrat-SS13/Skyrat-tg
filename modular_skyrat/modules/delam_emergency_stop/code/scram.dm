@@ -323,7 +323,7 @@
 
 	if(!validate_suppression_status())
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE, BUTTON_SOUND_RANGE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
-		audible_message(span_danger("[src] makes a sad buzz and goes dark.")) // Look through the window, buddy
+		audible_message(span_danger("[src] makes a sad buzz and goes dark. Did someone activate it already?")) // Look through the window, buddy
 		burn_out()
 		return
 
@@ -345,7 +345,7 @@
 	// For roundstart only, after that it's on you!
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
 		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, BUTTON_SOUND_RANGE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
-		audible_message(span_danger("[src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		audible_message(span_danger("[src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering! Looks like it's all on you to save the day."))
 		burn_out()
 		return
 
@@ -390,8 +390,8 @@
 /// When the button is pushed but it's too late to save you!
 /obj/machinery/button/delam_scram/proc/burn_out()
 	if(!(machine_stat & BROKEN))
+		src.desc += span_warning("The light is off, indicating it is not currently functional.")
 		set_machine_stat(machine_stat | BROKEN)
-		//
 		update_appearance()
 
 /obj/machinery/button/delam_scram/update_icon_state()

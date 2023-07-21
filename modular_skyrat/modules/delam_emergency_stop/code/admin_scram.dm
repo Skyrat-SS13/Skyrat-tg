@@ -55,12 +55,11 @@
 /proc/validate_suppression_status()
 	var/obj/machinery/atmospherics/components/unary/delam_scram/my_one_and_only = null
 	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/delam_scram))
-		message_admins("Found [system.name] at [ADMIN_COORDJMP(system)]")
 		if(!my_one_and_only)
 			my_one_and_only = system
 		else
-			message_admins("Delam suppression request FAILED: Multiple Delam SCRAM units found on map! Someone should fix that, but right now it's on YOU! Go delete the extra unit and try again.")
-			stack_trace("Multiple Delam SCRAM units found on map! Either someone spawned in a duplicate or you need to yell at a mapper!") // We could fire anyways, but who knows where the mystery extra machine(s) are.
+			message_admins("Delam suppression request FAILED: Multiple Delam SCRAM units found on map! Delete the extra unit at [ADMIN_COORDJMP(system)] if applicable and try again.")
+			stack_trace("Multiple Delam SCRAM units found on map at [system.loc]. Either someone spawned in a duplicate or you need to yell at a mapper!") // We could fire anyways, but who knows where the mystery extra machine(s) are.
 			return FALSE
 
 	if(!my_one_and_only)
@@ -68,7 +67,7 @@
 		return FALSE
 
 	if(my_one_and_only.on)
-		message_admins("Delam suppression request FAILED: It's already been triggered!")
+		message_admins("[system] can't fire, it's already been triggered!")
 		return FALSE
 
 	return my_one_and_only
