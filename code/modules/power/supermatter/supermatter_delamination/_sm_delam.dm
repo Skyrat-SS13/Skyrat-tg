@@ -37,15 +37,11 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 	if(sm.damage <= sm.warning_point) // Damage is too low, lets not
 		return FALSE
 
+	notify_delam_suppression(sm) // SKYRAT EDIT ADDITION - DELAM_SCRAM
+
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
 		message_admins("[sm] has entered the emergency point [ADMIN_VERBOSEJMP(sm)].")
-		// SKYRAT EDIT ADDITION BEGIN - maybe the botanist can come to the rescue
-		if(world.time - SSticker.round_start_time < 30 MINUTES)
-			log_admin("DELAM: Round timer under 30 minutes! Supermatter will perform an automatic delam suppression at strength 0%. To cancel this, delete the delamination suppression system inside the chamber.")
-			message_admins(span_adminnotice("DELAM: Round timer under 30 minutes! [sm] will perform an automatic delam suppression at strength 0%. To cancel this, delete the delamination suppression system inside the chamber. [ADMIN_VERBOSEJMP(sm)]."))
-		SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, TRUE)
-		// SKYRAT EDIT ADDITION END
 
 	if((REALTIMEOFDAY - sm.lastwarning) < SUPERMATTER_WARNING_DELAY)
 		return FALSE
