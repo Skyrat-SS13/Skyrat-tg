@@ -10,8 +10,6 @@
 		check_distance() // yoink them back
 
 /mob/living/silicon/pai/check_distance()
-	SIGNAL_HANDLER
-
 	if(!leashed)
 		return
 
