@@ -7,24 +7,20 @@
 	description = "A wall fungus will infest a random wall on the station, eating away at it. If left unchecked, it will spread to other walls and eventually destroy the station."
 
 /datum/round_event/wall_fungus/announce(fake)
-	priority_announce("Harmful fungi detected on the station, station structures may be contaminated. Enabling emergency maintenance access is advised to provide immediate response in [get_area(starting_wall)].", "Harmful Fungi", ANNOUNCER_FUNGI)
+	priority_announce("Harmful fungi detected on the station, station structures may be contaminated. Crew are advised to provide immediate response in [get_area(starting_wall)].", "Harmful Fungi", ANNOUNCER_FUNGI)
 
 /datum/round_event/wall_fungus
 	announce_when = 180 EVENT_SECONDS
 	announce_chance = 100
+	fakeable = FALSE
 	var/turf/closed/wall/starting_wall
 
 /datum/round_event/wall_fungus/start()
-	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance))
 	var/list/possible_start_walls = list()
+	var/starting_area = get_area(pick(GLOB.generic_maintenance_landmarks))
 
-	for(var/area/iterating_area as anything in GLOB.areas)
-		if(!is_station_level(iterating_area.z))
-			continue
-		if(!is_type_in_typecache(iterating_area, possible_spawn_areas))
-			continue
-		for(var/turf/closed/wall/iterating_wall in iterating_area)
-			possible_start_walls += iterating_wall
+	for(var/turf/closed/wall/iterating_wall in starting_area)
+		possible_start_walls += iterating_wall
 
 	starting_wall = pick(possible_start_walls)
 
