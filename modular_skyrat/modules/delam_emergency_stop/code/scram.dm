@@ -223,8 +223,7 @@
 
 	// good job buddy, sacrificing yourself for the greater good
 	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 15, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
-	audible_message(span_danger("\The [src] beeps a sorrowful melody!"))
-	visible_message(span_danger("\The [src] collapses into a pile of twisted metal and foam!"))
+	visible_message(span_danger("\The [src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"), blind_message = span_danger("\The [src] beeps a sorrowful melody!"))
 	deconstruct(FALSE)
 
 /// Drain the internal energy, if the crystal damage is above 100 we heal it a bit. Not much, but should be good to let them recover.
@@ -311,9 +310,17 @@
 /obj/machinery/button/delam_scram/attack_hand(mob/user, list/modifiers)
 	. = ..()
 
+	if((machine_stat & BROKEN))
+		return
+
 	if(!COOLDOWN_FINISHED(src, scram_button))
 		balloon_alert(user, "on cooldown!")
 		return
+
+	if(!validate_suppression_status())
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE, 10, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
+		audible_message(span_danger("The [src] makes a sad buzz and goes dark.")) // Look through the window, buddy
+		burn_out()
 
 	if(.)
 		return
@@ -347,7 +354,7 @@
 	message_admins("[ADMIN_LOOKUPFLW(user)] just opened the cover of the [src].")
 	investigate_log("[key_name(user)] opened the cover of the [src].", INVESTIGATE_ATMOS)
 
-	confirm_action()
+	confirm_action(user)
 
 /// Confirms with the user that they really want to push the red button. Do it, you won't!
 /obj/machinery/button/delam_scram/proc/confirm_action(mob/user, list/modifiers)
