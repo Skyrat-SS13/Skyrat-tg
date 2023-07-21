@@ -399,9 +399,6 @@
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	atom_storage.max_total_storage = 30
-=======
 	set_zipper(TRUE)
 
 /obj/item/storage/backpack/duffelbag/update_desc(updates)
@@ -480,7 +477,6 @@
 		var/mob/living/wearer = loc
 		wearer.update_equipment_speed_mods()
 	update_appearance()
->>>>>>> 2eb0c65743e (balloon alerts for storage failures (#76779))
 
 /obj/item/storage/backpack/duffelbag/cursed
 	name = "living duffel bag"

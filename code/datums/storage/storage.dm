@@ -325,23 +325,13 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!isitem(to_insert))
 		return FALSE
 
-<<<<<<< HEAD
-	if(locked && !force)
-=======
 	if(locked > force)
 		user.balloon_alert(user, "closed!")
->>>>>>> 2eb0c65743e (balloon alerts for storage failures (#76779))
 		return FALSE
 
 	if((to_insert == resolve_parent) || (to_insert == real_location))
 		return FALSE
 
-<<<<<<< HEAD
-	if(to_insert.w_class > max_specific_storage && !is_type_in_typecache(to_insert, exception_hold))
-		if(messages && user)
-			to_chat(user, span_warning("\The [to_insert] is too big for \the [resolve_parent]!"))
-		return FALSE
-=======
 	if(to_insert.w_class > max_specific_storage)
 		if(!is_type_in_typecache(to_insert, exception_hold))
 			if(messages && user)
@@ -351,7 +341,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			if(messages && user)
 				user.balloon_alert(user, "no room!")
 			return FALSE
->>>>>>> 2eb0c65743e (balloon alerts for storage failures (#76779))
 
 	if(resolve_location.contents.len >= max_slots)
 		if(messages && user && !silent_for_user)
