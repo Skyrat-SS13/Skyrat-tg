@@ -10,7 +10,7 @@
 	priority_announce("Harmful fungi detected on the station, station structures may be contaminated. Enabling emergency maintenance access is advised to provide immediate response in [get_area(starting_wall)].", "Harmful Fungi", ANNOUNCER_FUNGI)
 
 /datum/round_event/wall_fungus
-	announce_when = 240 EVENT_SECONDS
+	announce_when = 180 EVENT_SECONDS
 	announce_chance = 100
 	var/turf/closed/wall/starting_wall
 
