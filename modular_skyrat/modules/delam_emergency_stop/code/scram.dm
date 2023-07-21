@@ -11,7 +11,16 @@
 #define BUTTON_AWAKE 2
 #define BUTTON_ARMED 3
 #define SM_DAMAGED_EXPLOSION_POWER 41
-
+#define SHATTER_DEVASTATION_RANGE 0
+#define SHATTER_HEAVY_RANGE 0
+#define SHATTER_LIGHT_RANGE 0
+#define SHATTER_FLAME_RANGE 3
+#define SHATTER_FLASH_RANGE 5
+#define SHATTER_MIN_TIME 13 SECONDS
+#define SHATTER_MAX_TIME 15 SECONDS
+#define POWER_CUT_MIN_DURATION 19 SECONDS
+#define POWER_CUT_MAX_DURATION 21 SECONDS
+#define AIR_INJECT_RATE 33
 
 /// An atmos device that uses freezing cold air to attempt an emergency shutdown of the supermatter engine
 /obj/machinery/atmospherics/components/unary/delam_scram
@@ -30,7 +39,7 @@
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 4
 
 	///Rate of operation of the device (L/s)
-	var/volume_rate = 33
+	var/volume_rate = AIR_INJECT_RATE
 	///weakref to our SM
 	var/datum/weakref/my_sm
 	///Our internal radio
@@ -122,12 +131,6 @@
 		audible_message(span_danger("\The [src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
-	if(world.time - SSticker.round_start_time > 30 MINUTES && trigger_reason != DIVINE_INTERVENTION)
-		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
-		audible_message(span_danger("\The [src] makes a series of sad beeps. The internal cell only lasts about 30 minutes... What a feat of engineering!"))
-		stack_trace("Delam SCRAM was triggered with an invalid time or trigger reason!")
-		return FALSE
-
 	return TRUE
 
 /// Tells the station (they probably already know) and starts the procedure
@@ -199,18 +202,18 @@
 
 	// The windows can only protect you for so long
 	for(var/obj/structure/window/reinforced/plasma/fucked_window in range(3, src))
-		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, shatter_window)), rand(13 SECONDS, 15 SECONDS))
+		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, shatter_window)), rand(SHATTER_MIN_TIME, SHATTER_MAX_TIME))
 
 	// Let the gas work for a few seconds to cool the crystal. If it has damage beyond repair, heal it a bit
 	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 9 SECONDS)
 
 	// Restore the power that we were 'channelling' to the SM
-	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(19 SECONDS, 21 SECONDS))
+	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(POWER_CUT_MIN_DURATION, POWER_CUT_MAX_DURATION))
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()
 	visible_message(span_danger("The [src] shatters in the freon fire!"))
-	explosion(src, 0, 0, 0, 3, 5)
+	explosion(src, SHATTER_DEVASTATION_RANGE, SHATTER_HEAVY_RANGE, SHATTER_LIGHT_RANGE, SHATTER_FLAME_RANGE, SHATTER_FLASH_RANGE)
 	qdel(src)
 
 /// The valiant little machine falls apart, one time use only!
@@ -283,6 +286,7 @@
 	var/obj/item/radio/radio
 	///radio key
 	var/radio_key = /obj/item/encryptionkey/headset_eng
+	COOLDOWN_DECLARE(scram_button)
 
 /obj/machinery/button/delam_scram/Initialize(mapload)
 	. = ..()
@@ -304,6 +308,11 @@
 /// Proc for arming the red button, it hasn't been pushed yet
 /obj/machinery/button/delam_scram/attack_hand(mob/user, list/modifiers)
 	. = ..()
+
+	if(!COOLDOWN_FINISHED(src, scram_button))
+		balloon_alert(user, "on cooldown!")
+		return
+
 	if(.)
 		return
 
@@ -317,9 +326,11 @@
 	if(button_stage != BUTTON_AWAKE)
 		return
 
+	COOLDOWN_START(src, scram_button, 15 SECONDS)
+
 	// For roundstart only, after that it's on you!
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
-		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 15)
+		playsound(src.loc, 'sound/misc/compiler-failure.ogg', 50, FALSE, 7)
 		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
 		burn_out()
 		return
@@ -426,3 +437,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_s
 #undef BUTTON_AWAKE
 #undef BUTTON_ARMED
 #undef SM_DAMAGED_EXPLOSION_POWER
+#undef SHATTER_DEVASTATION_RANGE
+#undef SHATTER_HEAVY_RANGE
+#undef SHATTER_LIGHT_RANGE
+#undef SHATTER_FLAME_RANGE
+#undef SHATTER_FLASH_RANGE
+#undef SHATTER_MIN_TIME
+#undef SHATTER_MAX_TIME
+#undef POWER_CUT_MIN_DURATION
+#undef POWER_CUT_MAX_DURATION
+#undef AIR_INJECT_RATE
