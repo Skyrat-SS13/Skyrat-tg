@@ -36,7 +36,7 @@
 	target_size = (chosen_size * 0.01)
 	return TRUE
 
-/obj/item/clothing/neck/size_collar/mob_can_equip(mob/living/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+/obj/item/clothing/neck/size_collar/mob_can_equip(mob/living/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
 	if(!warning_given)
 		return FALSE
 

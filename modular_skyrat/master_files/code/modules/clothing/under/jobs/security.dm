@@ -61,4 +61,4 @@
 */
 
 /obj/item/clothing/under/rank/prisoner
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_prison_worn/monkey
+	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit/prison/worn/monkey
