@@ -19,7 +19,7 @@
 	icon_state = "dispenser-idle"
 	name = "delamination suppression system"
 	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems.<br>You don't want to be in the chamber when it's activated!<br>\
-	Come to think of it, CentCom would rather you didn't activate it at all.<br>These things are expensive!"
+		Come to think of it, CentCom would rather you didn't activate it at all.<br>These things are expensive!"
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE // comedy option, what if unwrenching trying to steal it throws you into the crystal for a nice dusting
 	shift_underlay_only = FALSE
@@ -115,12 +115,12 @@
 	if(admin_disabled)
 		investigate_log("Delam SCRAM tried to activate but an admin disabled it", INVESTIGATE_ATMOS)
 		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
-		audible_message(span_danger("The [src] makes a series of sad beeps. Someone has corrupted its software!"))
+		audible_message(span_danger("\The [src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES && trigger_reason != DIVINE_INTERVENTION)
 		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
-		audible_message(span_danger("The [src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		audible_message(span_danger("\The [src] makes a series of sad beeps. The internal cell only lasts about 30 minutes... What a feat of engineering!"))
 		stack_trace("Delam SCRAM was triggered with an invalid time or trigger reason!")
 		return FALSE
 
@@ -131,12 +131,12 @@
 	if(trigger_reason == DIVINE_INTERVENTION)
 		investigate_log("Delam SCRAM was activated by admin intervention", INVESTIGATE_ATMOS)
 		notify_ghosts(
-		"[src] has been activated!",
-		source = src,
-		header = "Divine Intervention",
-		action = NOTIFY_ORBIT,
-		ghost_sound = 'sound/machines/warning-buzzer.ogg',
-		notify_volume = 75
+			"[src] has been activated!",
+			source = src,
+			header = "Divine Intervention",
+			action = NOTIFY_ORBIT,
+			ghost_sound = 'sound/machines/warning-buzzer.ogg',
+			notify_volume = 75,
 		)
 	else
 		var/reason
@@ -154,10 +154,10 @@
 			header = "Mistakes Were Made",
 			action = NOTIFY_ORBIT,
 			ghost_sound = 'sound/machines/warning-buzzer.ogg',
-			notify_volume = 75
+			notify_volume = 75,
 		)
 
-	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE SUPERMATTER ENGINE ROOM!", emergency_channel)
+	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
 	SSpersistence.delam_highscore = SSpersistence.rounds_since_engine_exploded // yeah that's right Skyrat, no more cheating the counter by deleting the SM
 	SSpersistence.rounds_since_engine_exploded = MISTAKES_WERE_MADE
 
@@ -193,6 +193,7 @@
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/scrubby_boi in range(3, src))
 		scrubby_boi.on = FALSE
 		scrubby_boi.update_appearance()
+
 	for(var/obj/machinery/atmospherics/components/unary/vent_pump/venti_boi in range(3, src))
 		venti_boi.on = FALSE
 		venti_boi.update_appearance()
@@ -218,8 +219,8 @@
 
 	// good job buddy, sacrificing yourself for the greater good
 	playsound(src, 'sound/misc/compiler-failure.ogg', 80, FALSE, 20, ignore_walls = TRUE, use_reverb = TRUE)
-	audible_message(span_danger("The [src] beeps a sorrowful melody!"))
-	visible_message(span_danger("The [src] collapses into a pile of twisted metal and foam!"))
+	audible_message(span_danger("\The [src] beeps a sorrowful melody!"))
+	visible_message(span_danger("\The [src] collapses into a pile of twisted metal and foam!"))
 	deconstruct(FALSE)
 
 /// Drain the internal energy, if the crystal damage is above 100 we heal it a bit. Not much, but should be good to let them recover.
@@ -268,8 +269,8 @@
 /obj/machinery/button/delam_scram
 	name = "supermatter emergency stop"
 	desc = "Your last hope to try and save the crystal during a delamination.<br>\
-	While it is indeed a big red button, pressing it outside of an emergency \
-	will probably get the engineering department out for your blood."
+		While it is indeed a big red button, pressing it outside of an emergency \
+		will probably get the engineering department out for your blood."
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	can_alter_skin = FALSE
 	silicon_access_disabled = TRUE
@@ -337,7 +338,7 @@
 
 /// Confirms with the user that they really want to push the red button. Do it, you won't!
 /obj/machinery/button/delam_scram/proc/confirm_action(mob/user, list/modifiers)
-	if(tgui_alert(usr, "You really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
+	if(tgui_alert(usr, "Are you really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
 		button_stage = BUTTON_AWAKE
 		visible_message(span_danger("[user] slowly closes the plastic cover of the [src]!"))
 		update_appearance()
