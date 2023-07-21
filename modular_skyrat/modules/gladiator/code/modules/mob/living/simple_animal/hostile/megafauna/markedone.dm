@@ -319,7 +319,7 @@
 						)
 	say(message = pick(spin_messages))
 	spinning = TRUE
-	animate(src, color = "#ff6666", 10)
+	animate(src, color = "#ff6666", 1 SECONDS)
 	SLEEP_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
@@ -348,7 +348,7 @@
 		if(!spinning)
 			break
 		sleep(0.75) //addtimer(CALLBACK(src, PROC_REF(convince_zonespace_to_let_me_use_sleeps)), 2 WEEKS)
-	animate(src, color = initial(color), 3)
+	animate(src, color = initial(color), 0.3 SECONDS)
 	sleep(1)
 	spinning = FALSE
 
@@ -365,7 +365,7 @@
 							"COME ON!!",
 						)
 	say(message = pick(charge_messages))
-	animate(src, color = "#ff6666", 3)
+	animate(src, color = "#ff6666", 0.3 SECONDS)
 	SLEEP_CHECK_DEATH(4, src)
 	face_atom(target)
 	minimum_distance = 0
@@ -379,7 +379,7 @@
 	minimum_distance = initial(minimum_distance)
 	chargetiles = 0
 	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
-	animate(src, color = initial(color), 5)
+	animate(src, color = initial(color), 0.5 SECONDS)
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE

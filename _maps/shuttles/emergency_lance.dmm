@@ -72,17 +72,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"ce" = (
-/obj/structure/sign/warning/vacuum/external/directional/east,
-/obj/effect/turf_decal/trimline/dark_blue/arrow_ccw{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
-	dir = 4
-	},
-/obj/structure/marker_beacon/indigo,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "cw" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners{
@@ -123,6 +112,34 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"du" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/emergency{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/emergency{
+	pixel_x = -2
+	},
+/obj/effect/turf_decal/tile/dark_blue,
+/turf/open/floor/iron/dark/side{
+	dir = 9
+	},
+/area/shuttle/escape)
+"dv" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "escape_cockpit_windows";
+	name = "Cockpit Window Blast Doors";
+	pixel_x = -7;
+	req_access = list("command")
+	},
+/obj/machinery/recharger{
+	pixel_x = 5
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/escape)
 "dW" = (
 /obj/machinery/door/airlock/external/ruin{
 	name = "Emegency Shuttle External Airlock"
@@ -134,6 +151,17 @@
 /obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
 	dir = 1
 	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/escape)
+"dY" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/rack,
+/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment{
+	pixel_x = 5
+	},
+/obj/item/stack/medical/bone_gel,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
 "eD" = (
@@ -157,6 +185,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
+"fE" = (
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/trimline/dark_blue/arrow_ccw{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "gr" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Shuttle Medical Center"
@@ -175,6 +213,16 @@
 /obj/machinery/power/shuttle_engine/heater,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /turf/open/floor/plating/airless,
+/area/shuttle/escape)
+"gQ" = (
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/obj/effect/turf_decal/trimline/dark_blue/arrow_ccw{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "hp" = (
 /obj/item/radio/intercom/directional/east,
@@ -231,12 +279,6 @@
 	dir = 1
 	},
 /turf/open/floor/iron/checker,
-/area/shuttle/escape)
-"iy" = (
-/obj/structure/bed/roller,
-/obj/machinery/iv_drip,
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
 "iz" = (
 /obj/structure/chair/comfy/shuttle,
@@ -299,6 +341,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"ka" = (
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/dark/side,
+/area/shuttle/escape)
 "kb" = (
 /obj/item/borg/upgrade/defib,
 /obj/structure/closet/crate/medical{
@@ -358,6 +410,16 @@
 	},
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron,
+/area/shuttle/escape)
+"lK" = (
+/obj/effect/turf_decal/trimline/dark_blue/arrow_ccw{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "mb" = (
 /obj/structure/chair/comfy/shuttle{
@@ -702,14 +764,6 @@
 	dir = 4
 	},
 /area/shuttle/escape)
-"xc" = (
-/obj/machinery/iv_drip,
-/obj/structure/bed/roller,
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted,
-/turf/open/floor/iron/dark/side{
-	dir = 1
-	},
-/area/shuttle/escape)
 "xj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -717,12 +771,6 @@
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"xR" = (
-/obj/structure/bed/roller,
-/obj/machinery/iv_drip,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
 "yB" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
@@ -773,15 +821,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/escape/brig)
-"AE" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/side,
-/area/shuttle/escape)
 "AS" = (
 /obj/structure/table/optable,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -790,16 +829,16 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/shuttle/escape)
-"Bk" = (
-/obj/effect/turf_decal/bot_white,
-/obj/structure/rack,
-/obj/item/stack/medical/gauze,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/stack/medical/ointment{
-	pixel_x = 5
+"AT" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
 	},
-/obj/item/stack/medical/bone_gel,
-/turf/open/floor/iron/dark/textured,
+/obj/effect/turf_decal/tile/dark_blue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 6
+	},
 /area/shuttle/escape)
 "BC" = (
 /obj/machinery/porta_turret/syndicate/energy/raven{
@@ -811,16 +850,13 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
-"BS" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/obj/machinery/light/directional/west,
-/obj/effect/turf_decal/tile/dark_blue{
-	dir = 4
-	},
+"BP" = (
+/obj/machinery/iv_drip,
+/obj/structure/bed/roller,
+/obj/effect/turf_decal/tile/dark_blue/half/contrasted,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/side{
-	dir = 10
+	dir = 1
 	},
 /area/shuttle/escape)
 "Cv" = (
@@ -1014,21 +1050,6 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
-"Hv" = (
-/obj/structure/table/reinforced,
-/obj/machinery/button/door{
-	id = "escape_cockpit_windows";
-	name = "Cockpit Window Blast Doors";
-	pixel_x = -7;
-	req_access = list("command")
-	},
-/obj/machinery/recharger{
-	pixel_x = 5
-	},
-/obj/machinery/light/directional/north,
-/obj/item/radio/intercom/directional/east,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/escape)
 "HJ" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/blood/universal{
@@ -1192,11 +1213,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"Mi" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/escape)
 "MA" = (
 /obj/machinery/vending/wallmed/directional/west,
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
@@ -1227,6 +1243,17 @@
 /obj/item/storage/medkit/advanced,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
+"Na" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_blue{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 10
+	},
+/area/shuttle/escape)
 "Nk" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
@@ -1247,20 +1274,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
-"Of" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/medkit/emergency{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/storage/medkit/emergency{
-	pixel_x = -2
-	},
-/obj/machinery/light/directional/west,
-/obj/effect/turf_decal/tile/dark_blue,
-/turf/open/floor/iron/dark/side{
-	dir = 9
-	},
+"NW" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
 "Ol" = (
 /obj/machinery/power/terminal,
@@ -1296,16 +1313,6 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/shuttle/escape)
-"OM" = (
-/obj/machinery/computer/crew,
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/tile/dark_blue{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 5
-	},
-/area/shuttle/escape)
 "OY" = (
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
 	dir = 8
@@ -1313,6 +1320,11 @@
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
+/area/shuttle/escape)
+"OZ" = (
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
+/turf/open/floor/iron/dark/textured,
 /area/shuttle/escape)
 "Pe" = (
 /obj/structure/sign/nanotrasen{
@@ -1326,18 +1338,6 @@
 	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/white/textured_large,
-/area/shuttle/escape)
-"Pv" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/tile/dark_blue{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 6
-	},
 /area/shuttle/escape)
 "Px" = (
 /obj/machinery/suit_storage_unit/standard_unit,
@@ -1400,17 +1400,6 @@
 	dir = 1
 	},
 /area/shuttle/escape)
-"Sg" = (
-/obj/effect/turf_decal/trimline/dark_blue/arrow_ccw{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_blue/arrow_cw{
-	dir = 4
-	},
-/obj/structure/marker_beacon/indigo,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "So" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -1442,6 +1431,15 @@
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
+/area/shuttle/escape)
+"Ty" = (
+/obj/machinery/computer/crew,
+/obj/effect/turf_decal/tile/dark_blue{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 5
+	},
 /area/shuttle/escape)
 "TE" = (
 /obj/structure/chair/comfy/shuttle{
@@ -1621,6 +1619,14 @@
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron,
 /area/shuttle/escape)
+"ZI" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/tile/dark_blue/half/contrasted,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/shuttle/escape)
 "ZZ" = (
 /mob/living/simple_animal/bot/medbot{
 	name = "\improper emergency medibot";
@@ -1724,7 +1730,7 @@ MZ
 Lj
 Gw
 YN
-mx
+vf
 WQ
 nS
 Lg
@@ -1884,7 +1890,7 @@ QP
 WQ
 ol
 WQ
-Of
+du
 Lk
 GA
 GA
@@ -1930,7 +1936,7 @@ WQ
 WQ
 dn
 WQ
-Hv
+dv
 ai
 UG
 WQ
@@ -1941,7 +1947,7 @@ WI
 WI
 WI
 vy
-BS
+Na
 WQ
 uX
 uX
@@ -1967,7 +1973,7 @@ WQ
 CR
 WQ
 WQ
-Mi
+NW
 JN
 Hu
 WQ
@@ -1993,7 +1999,7 @@ TQ
 WI
 WI
 WI
-AE
+ka
 WQ
 pK
 Kz
@@ -2040,7 +2046,7 @@ gF
 WQ
 XA
 WQ
-re
+ZI
 eD
 EX
 WI
@@ -2057,10 +2063,10 @@ qH
 bV
 WQ
 WQ
-Bk
+dY
 kN
 So
-iy
+OZ
 Px
 WQ
 GA
@@ -2105,14 +2111,14 @@ cz
 "}
 (10,1,1) = {"
 jo
-Sg
-Yq
-ce
+jY
+fE
+gQ
 jM
 jY
+lK
 Yq
-Yq
-Yq
+lK
 Yq
 Hq
 cw
@@ -2162,7 +2168,7 @@ bV
 WQ
 WQ
 mx
-xR
+OZ
 zc
 hp
 Px
@@ -2248,7 +2254,7 @@ nb
 WQ
 qH
 WQ
-xc
+BP
 WI
 WI
 jG
@@ -2305,7 +2311,7 @@ WI
 WI
 WI
 ao
-AE
+ka
 WQ
 pK
 pK
@@ -2357,7 +2363,7 @@ WI
 WI
 WI
 TQ
-Pv
+AT
 WQ
 uX
 uX
@@ -2404,7 +2410,7 @@ Dx
 YM
 JS
 WQ
-OM
+Ty
 Qv
 OY
 OY

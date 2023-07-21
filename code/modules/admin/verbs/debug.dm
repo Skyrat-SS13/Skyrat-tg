@@ -177,7 +177,7 @@
 				id.forceMove(W)
 				W.update_icon()
 		else
-			H.equip_to_slot(id,ITEM_SLOT_ID)
+			H.equip_to_slot(id, ITEM_SLOT_ID)
 
 	else
 		tgui_alert(usr,"Invalid mob")
@@ -705,6 +705,8 @@
 		themed_names = list()
 		for (var/name in SSmapping.themed_ruins[theme])
 			var/datum/map_template/ruin/ruin = SSmapping.themed_ruins[theme][name]
+			if(names[name])
+				name = "[theme] [name]"
 			themed_names[name] = list(ruin, theme, list(ruin.default_area))
 		names += sort_list(themed_names)
 
