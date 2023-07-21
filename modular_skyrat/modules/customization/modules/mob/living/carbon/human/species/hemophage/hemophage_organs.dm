@@ -100,6 +100,7 @@
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
+	liked_foodtypes = BLOODY
 
 
 /obj/item/organ/internal/tongue/hemophage/Initialize(mapload)
