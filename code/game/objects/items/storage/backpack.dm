@@ -22,10 +22,10 @@
 	slot_flags = ITEM_SLOT_BACK //ERROOOOO
 	resistance_flags = NONE
 	max_integrity = 300
+	storage_type = /datum/storage/backpack
 
 /obj/item/storage/backpack/Initialize(mapload)
 	. = ..()
-	create_storage(max_slots = 21, max_total_storage = 21)
 	AddElement(/datum/element/attack_equip)
 
 /*
@@ -57,16 +57,11 @@
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
 	armor_type = /datum/armor/backpack_holding
+	storage_type = /datum/storage/bag_of_holding
 
 /datum/armor/backpack_holding
 	fire = 60
 	acid = 50
-
-/obj/item/storage/backpack/holding/Initialize(mapload)
-	. = ..()
-
-	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, storage_type = /datum/storage/bag_of_holding)
-	atom_storage.allow_big_nesting = TRUE
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide."))
@@ -83,15 +78,11 @@
 	icon_state = "giftbag0"
 	inhand_icon_state = "giftbag"
 	w_class = WEIGHT_CLASS_BULKY
+	storage_type = /datum/storage/backpack/santabag
 
 /obj/item/storage/backpack/santabag/Initialize(mapload)
 	. = ..()
 	regenerate_presents()
-
-/obj/item/storage/backpack/santabag/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-	atom_storage.max_total_storage = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit..."))
@@ -106,7 +97,7 @@
 	if(HAS_MIND_TRAIT(user, TRAIT_CANNOT_OPEN_PRESENTS))
 		var/turf/floor = get_turf(src)
 		var/obj/item/thing = new /obj/item/a_gift/anything(floor)
-		if(!atom_storage.attempt_insert(thing, user, override = TRUE))
+		if(!atom_storage.attempt_insert(thing, user, override = TRUE, force = STORAGE_SOFT_LOCKED))
 			qdel(thing)
 
 
@@ -394,8 +385,12 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
-	//slowdown = 1 //ORIGINAL
-	slowdown = 0.5 //SKYRAT EDIT CHANGE
+	actions_types = list(/datum/action/item_action/zipper)
+	storage_type = /datum/storage/duffel
+	var/zip_slowdown = 1
+	/// If this bag is zipped (contents hidden) up or not
+	/// Starts enabled so people need to figure it out to use the thing
+	var/zipped_up = TRUE
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
@@ -485,7 +480,7 @@
 		then it might have negative effects on the bag..."
 	icon_state = "duffel-curse"
 	inhand_icon_state = "duffel-curse"
-	slowdown = 2
+	zip_slowdown = 2
 	max_integrity = 100
 
 /obj/item/storage/backpack/duffelbag/cursed/Initialize(mapload)
@@ -630,14 +625,10 @@
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
-	slowdown = 0
+	storage_type = /datum/storage/duffel/syndicate
 	resistance_flags = FIRE_PROOF
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
-
-/obj/item/storage/backpack/duffelbag/syndie/Initialize(mapload)
-	. = ..()
-	atom_storage.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
 	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
@@ -792,10 +783,8 @@
 	new /obj/item/grenade/syndieminibomb(src)
 
 // For ClownOps.
-/obj/item/storage/backpack/duffelbag/clown/syndie/Initialize(mapload)
-	. = ..()
-	slowdown = 0
-	atom_storage.silent = TRUE
+/obj/item/storage/backpack/duffelbag/clown/syndie
+	storage_type = /datum/storage/duffel/syndicate
 
 /obj/item/storage/backpack/duffelbag/clown/syndie/PopulateContents()
 	new /obj/item/modular_computer/pda/clown(src)
@@ -814,11 +803,10 @@
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"
 	desc = "A large duffel bag for holding extra police gear."
-	slowdown = 0
 
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"
-	desc = "A kit containing everything a crewmember needs to support a shaft miner in the field."
+	desc = "A duffel bag containing everything a crewmember needs to support a shaft miner in the field."
 	icon_state = "duffel-explorer"
 	inhand_icon_state = "duffel-explorer"
 
