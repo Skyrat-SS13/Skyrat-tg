@@ -264,7 +264,7 @@
 
 /// Restores the lighting after the delam suppression
 /datum/controller/subsystem/nightshift/proc/restore_light_power()
-	SSnightshift.can_fire = FALSE
+	SSnightshift.can_fire = TRUE
 	for(var/obj/machinery/power/apc/light_to_restore as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
 		light_to_restore.lighting = APC_CHANNEL_AUTO_ON
 		light_to_restore.update_appearance()
@@ -369,7 +369,7 @@
 	playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, FALSE, 7, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = BUTTON_SOUND_FALLOFF_DISTANCE)
 	button_stage = BUTTON_PUSHED
 	visible_message(span_danger("[user] smashes the [src] with their hand!"))
-	message_admins("[ADMIN_LOOKUPFLW(user)] pushed the [src]!")
+	message_admins("[ADMIN_LOOKUPFLW(user)] pushed [src]!")
 	investigate_log("[key_name(user)] pushed the [src]!", INVESTIGATE_ATMOS)
 	flick_overlay_view("[base_icon_state]-overlay-active", 20 SECONDS)
 

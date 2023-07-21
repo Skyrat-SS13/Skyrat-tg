@@ -14,7 +14,7 @@
 
 	sm.station_notified = TRUE
 	log_admin("DELAM: Round timer under 30 minutes! Supermatter will perform an automatic delam suppression at strength 0%.")
-	message_admins(span_adminnotice("DELAM: Round timer under 30 minutes! [ADMIN_VERBOSEJMP(sm)] will perform an automatic delam suppression at strength 0%. To cancel this, press the 'Toggle Delam Suppression' verb on the EVENTS status tab."))
+	message_admins(span_adminnotice("DELAM: Round timer under 30 minutes! [ADMIN_VERBOSEJMP(sm)] will perform an automatic delam suppression once integrity reaches 0%. To cancel this, press the 'Toggle Delam Suppression' verb on the EVENTS status tab."))
 
 	if(!SSjob.is_skeleton_engineering(3)) // Don't bother if there's command or a well staffed department, they -should- be paying attention.
 		return
