@@ -387,9 +387,10 @@
 	inhand_icon_state = "duffel"
 	actions_types = list(/datum/action/item_action/zipper)
 	storage_type = /datum/storage/duffel
+	// How much to slow you down if your bag isn't zipped up
 	var/zip_slowdown = 1
 	/// If this bag is zipped (contents hidden) up or not
-	/// Starts enabled so people need to figure it out to use the thing
+	/// Starts enabled so you're forced to interact with it to "get" it
 	var/zipped_up = TRUE
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
@@ -427,6 +428,7 @@
 	playsound(src, 'sound/items/un_zip.ogg', 100, FALSE)
 	var/datum/callback/can_unzip = CALLBACK(src, PROC_REF(zipper_matches), TRUE)
 	if(!do_after(user, 2.1 SECONDS, src, extra_checks = can_unzip))
+		user.balloon_alert(user, "unzip failed!")
 		return
 	balloon_alert(user, "unzipped")
 	set_zipper(FALSE)
@@ -443,6 +445,7 @@
 	playsound(src, 'sound/items/zip_up.ogg', 100, FALSE)
 	var/datum/callback/can_zip = CALLBACK(src, PROC_REF(zipper_matches), FALSE)
 	if(!do_after(user, 0.5 SECONDS, src, extra_checks = can_zip))
+		user.balloon_alert(user, "zip failed!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	balloon_alert(user, "zipped")
 	set_zipper(TRUE)
@@ -457,7 +460,6 @@
 	zipped_up = new_zip
 	SEND_SIGNAL(src, COMSIG_DUFFEL_ZIP_CHANGE, new_zip)
 	if(zipped_up)
-
 		slowdown = initial(slowdown)
 		atom_storage.locked = STORAGE_SOFT_LOCKED
 		atom_storage.display_contents = FALSE
@@ -620,14 +622,14 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "tactical duffel bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
+	name = "tactical duffel bag" //SKYRAT EDIT CHANGE, was "suspicious-looking duffel bag". It's just a black duffel.
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	storage_type = /datum/storage/duffel/syndicate
 	resistance_flags = FIRE_PROOF
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // SKYRAT EDIT ADDITION
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
 	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
@@ -652,9 +654,11 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT, to match the security surgery bag
+	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT CHANGE, to match the security surgery bag
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // SKYRAT EDIT ADDITION
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery/PopulateContents()
 	new /obj/item/scalpel/advanced(src)
