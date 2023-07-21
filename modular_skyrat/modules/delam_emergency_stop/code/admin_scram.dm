@@ -52,12 +52,10 @@
 	message_admins("[key_name_admin(usr)] toggled Delam suppression [suppression_system.admin_disabled ? "OFF" : "ON"].")
 
 /// Check if the delam suppression setup is valid on the map
-/client/proc/validate_suppression_status()
-	if(!holder || !check_rights(R_FUN))
-		return
-
+/proc/validate_suppression_status()
 	var/obj/machinery/atmospherics/components/unary/delam_scram/my_one_and_only = null
 	for(var/obj/machinery/atmospherics/components/unary/delam_scram/system as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/delam_scram))
+		message_admins("Found [system.name] at [ADMIN_COORDJMP(system)]")
 		if(!my_one_and_only)
 			my_one_and_only = system
 		else
