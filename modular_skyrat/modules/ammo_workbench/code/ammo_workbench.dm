@@ -616,7 +616,7 @@
 			A.disabled = !A.disabled
 			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 
-/datum/wires/ammo_workbench/on_cut(wire, mend)
+/datum/wires/ammo_workbench/on_cut(wire, mend, source)
 	var/obj/machinery/ammo_workbench/A = holder
 	switch(wire)
 		if(WIRE_HACK)
