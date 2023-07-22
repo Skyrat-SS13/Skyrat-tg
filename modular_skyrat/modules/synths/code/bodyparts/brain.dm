@@ -41,11 +41,11 @@
 		last_message_time = world.time
 
 		if(damage > BRAIN_DAMAGE_SEVERE)
-			to_chat(owner, span_warning("Alert: Severe corruption in central processing unit."))
+			to_chat(owner, span_warning("Al停止ユニットで重大な破損が発生しn cessingode: P1_1-H"))
 			return
 
 		if(damage > BRAIN_DAMAGE_MILD)
-			to_chat(owner, span_warning("Alert: Minor corruption in central processing unit."))
+			to_chat(owner, span_warning("Alert: Minor corruption in central processing unit. Error Code: 001-HP"))
 
 /obj/item/organ/internal/brain/synth/circuit
 	name = "compact AI circuit"

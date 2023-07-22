@@ -1315,13 +1315,13 @@
 	owner.visible_message(span_danger("[owner]'s [src.name] seems to malfunction!"))
 
 	var/time_needed = 10 SECONDS
-	var/brute_damage = 5 + 1.5 // Augments reduce brute damage by 5.
-	var/burn_damage = 4 + 2.5 // As above, but for burn it's 4.
+	var/brute_damage = 2.5 // SKYRAT EDIT : OLD is 5 + 1.5
+	var/burn_damage = 2 // SKYRAT EDIT : OLD is 4 + 2.5
 
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
-		brute_damage *= 2
-		burn_damage *= 2
+		brute_damage *= 1.3 // SKYRAT EDIT : Makes Total Brute damage ~30
+		burn_damage *= 1.3 // SKYRAT EDIT : Makes Total Brute damage ~24
 
 	receive_damage(brute_damage, burn_damage)
 	do_sparks(number = 1, cardinal_only = FALSE, source = owner)
