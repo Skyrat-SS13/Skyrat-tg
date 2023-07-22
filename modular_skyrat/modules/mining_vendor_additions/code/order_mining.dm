@@ -19,6 +19,7 @@
 	attack_verb_continuous = list("slices", "slashes", "cleaves", "chops", "stabs")
 	attack_verb_simple = list("slice", "slash", "cleave", "chop", "stab")
 	icon = 'modular_skyrat/master_files/icons/obj/kinetic_glaive.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/weapons/hammers_righthand.dmi'
 	icon_state = "crusher-glaive"
