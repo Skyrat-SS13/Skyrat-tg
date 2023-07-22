@@ -19,7 +19,7 @@
 	UnregisterSignal(parent, COMSIG_STOMACH_AFTER_EAT)
 
 
-/datum/component/organ_corruption/stomach/proc/on_stomach_after_eat(atom/edible)
+/datum/component/organ_corruption/stomach/proc/on_stomach_after_eat(obj/item/organ/internal/stomach/tummy, atom/edible)
 	SIGNAL_HANDLER
 
 	if(!istype(edible, /obj/item/food))
