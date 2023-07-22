@@ -710,7 +710,7 @@
 				for (var/M in subtypesof(/datum/mutation/human))
 					// SKYRAT EDIT ADDITION
 					var/datum/mutation/human/iterating_mutation = M
-					if(iterating_mutation.disabled)
+					if(initial(iterating_mutation.disabled))
 						continue
 					// SKYRAT EDIT END
 					var/true_sequence = GET_SEQUENCE(M)
