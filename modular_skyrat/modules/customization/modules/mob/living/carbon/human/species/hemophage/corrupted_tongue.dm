@@ -17,6 +17,10 @@
 	if(!.)
 		return
 
+	var/obj/item/organ/internal/tongue/corrupted_tongue = corruption_target
+	corrupted_tongue.liked_foodtypes = BLOODY
+	corrupted_tongue.disliked_foodtypes = NONE
+
 	var/datum/action/tongue_action = corruption_target.add_item_action(tongue_action_type)
 
 	if(corruption_target.owner)
