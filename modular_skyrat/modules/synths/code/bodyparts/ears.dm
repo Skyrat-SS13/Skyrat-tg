@@ -2,7 +2,7 @@
 	name = "auditory sensors"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
-	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
+	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
@@ -33,7 +33,7 @@
 
 /datum/design/synth_ears
 	name = "Auditory Sensors"
-	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
+	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
 	id = "synth_ears"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 40

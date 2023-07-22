@@ -31,7 +31,7 @@
 			apply_organ_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
 			to_chat(owner, span_warning("Alert: Minor battery discharge!"))
 
-/datum/design/synth_ears
+/datum/design/synth_stomach
 	name = "Synthetic Bio-Reactor"
 	desc = "A specialised mini reactor, for synthetic use only. Has a low-power mode to ensure baselin functions. Without this, synthetics are unable to stay powered."
 	id = "synth_stomach"
