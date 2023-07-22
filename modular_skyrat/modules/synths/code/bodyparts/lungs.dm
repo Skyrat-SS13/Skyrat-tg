@@ -1,5 +1,5 @@
 /obj/item/organ/internal/lungs/synth
-	name = "heat sink"
+	name = "heatsink"
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs." //Purposefully left the 'fluid medium' ambigious for interpretation of the character, whether it be air or fluid cooling
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "lungs-ipc"
@@ -31,3 +31,16 @@
 		if(EMP_LIGHT)
 			to_chat(owner, span_warning("Alert: Major cooling system failure!"))
 			owner.adjust_bodytemperature(SYNTH_LIGHT_EMP_TEMPERATURE_POWER * TEMPERATURE_DAMAGE_COEFFICIENT)
+
+/datum/design/synth_heatsink
+	name = "Heatsink"
+	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs."
+	id = "synth_lungs"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
+	build_path = /obj/item/organ/internal/lungs/synth
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE

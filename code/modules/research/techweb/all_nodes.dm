@@ -306,6 +306,13 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"hospital_gown",
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 

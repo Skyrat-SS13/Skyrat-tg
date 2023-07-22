@@ -1,8 +1,8 @@
 /obj/item/organ/internal/tongue/synth
 	name = "synthetic voicebox"
-	desc = "A voice synthesizer that allows synths to communicate with lifeforms. Tuned to sound less agressive than robotic voiceboxes."
-	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
-	icon_state = "tongue-ipc"
+	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
+	icon_state = "cybertongue"
 	say_mod = "beeps"
 	attack_verb_continuous = list("beeps", "boops")
 	attack_verb_simple = list("beep", "boop")
@@ -18,3 +18,16 @@
 
 /obj/item/organ/internal/tongue/synth/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
+
+/datum/design/synth_tongue
+	name = "Synthetic Tongue"
+	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	id = "synth_tongue"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
+	build_path = /obj/item/organ/internal/tongue/synth
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
