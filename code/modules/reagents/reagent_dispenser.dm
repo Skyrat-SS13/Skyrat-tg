@@ -345,7 +345,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 /obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "liquid cooler"
 	desc = "A machine that dispenses liquid to drink."
-	icon = 'icons/obj/vending.dmi'
+	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "water_cooler"
 	anchored = TRUE
 	tank_volume = 500
@@ -403,7 +403,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 /obj/structure/reagent_dispensers/servingdish
 	name = "serving dish"
 	desc = "A dish full of food slop for your bowl."
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "serving"
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/nutraslop

@@ -26,7 +26,7 @@
 	. += "The plasma globs have <b>reduced effectiveness against blobs</b>."
 
 /obj/item/gun/energy/laser/plasma_thrower/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/energy/laser/plasma_thrower/examine_more(mob/user)
 	. = ..()
@@ -78,7 +78,7 @@
 	spread = SAWN_OFF_ACC_PENALTY
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/examine_more(mob/user)
 	. = ..()
@@ -140,7 +140,7 @@
 
 /obj/item/gun/ballistic/automatic/cin_amr/give_manufacturer_examine()
 
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/automatic/cin_amr/examine_more(mob/user)
 	. = ..()

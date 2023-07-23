@@ -44,6 +44,11 @@
 	worn_icon = null
 	worn_icon_state = "gun"
 
+/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -83,7 +88,7 @@
 	can_suppress = FALSE
 
 /obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -173,12 +178,16 @@
 
 /obj/item/gun/energy/e_gun/nuclear/emag_act(mob/user, obj/item/card/emag/E)
 	. = ..()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	if(pin)
 		to_chat(user, span_warning("You probably want to do this on a new gun!"))
 		return FALSE
 	to_chat(user, "<font color='#ff2700'>T</font><font color='#ff4e00'>h</font><font color='#ff7500'>e</font> <font color='#ffc400'>g</font><font color='#ffeb00'>u</font><font color='#ebff00'>n</font> <font color='#9cff00'>s</font><font color='#75ff00'>u</font><font color='#4eff00'>d</font><font color='#27ff00'>d</font><font color='#00ff00'>e</font><font color='#00ff27'>n</font><font color='#00ff4e'>l</font><font color='#00ff75'>y</font> <font color='#00ffc4'>f</font><font color='#00ffeb'>e</font><font color='#00ebff'>e</font><font color='#00c4ff'>l</font><font color='#009cff'>s</font> <font color='#004eff'>q</font><font color='#0027ff'>u</font><font color='#0000ff'>i</font><font color='#2700ff'>t</font><font color='#4e00ff'>e</font> <font color='#9c00ff'>f</font><font color='#c400ff'>a</font><font color='#eb00ff'>n</font><font color='#ff00eb'>t</font><font color='#ff00c4'>a</font><font color='#ff009c'>s</font><font color='#ff0075'>t</font><font color='#ff004e'>i</font><font color='#ff0027'>c</font><font color='#ff0000'>!</font>")
 	new /obj/item/gun/energy/e_gun/nuclear/rainbow(get_turf(user))
+	obj_flags |= EMAGGED
 	qdel(src)
+	return TRUE
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow/update_overlays()
 	. = ..()
@@ -280,7 +289,7 @@
 	weapon_weight = WEAPON_LIGHT
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -370,7 +379,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
@@ -696,5 +705,5 @@
 /obj/item/ammo_box/a762/surplus
 	name = "stripper clip (.244 Acia surplus)"
 
-/obj/item/storage/toolbox/a762
+/obj/item/storage/toolbox/ammobox/a762
 	name = ".244 Acia ammo box (Surplus?)"
