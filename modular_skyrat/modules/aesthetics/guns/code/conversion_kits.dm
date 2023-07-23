@@ -38,7 +38,7 @@
 	blacklist |= subtypesof(/obj/item/gun/ballistic/rifle/boltaction) - list(/obj/item/gun/ballistic/rifle/boltaction/surplus)
 
 /datum/crafting_recipe/mosin_pro/check_requirements(mob/user, list/collected_requirements)
-	var/obj/item/gun/ballistic/rifle/boltaction/the_piece = collected_requirements[/obj/item/gun/ballistic/rifle/boltaction][1]
+	var/obj/item/gun/ballistic/rifle/boltaction/surplus/the_piece = collected_requirements[/obj/item/gun/ballistic/rifle/boltaction/surplus][1]
 	if(!the_piece.bolt_locked)
 		return FALSE
 	if(LAZYLEN(the_piece.magazine.stored_ammo))
