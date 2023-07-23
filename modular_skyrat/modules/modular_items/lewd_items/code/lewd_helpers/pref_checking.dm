@@ -24,7 +24,10 @@
 	if(parent_turf)
 		message_to_log += " at [loc_name(parent_turf)]"
 
-	if(mechanic_user && (mechanic_user != src))
+	if(mechanic_user)
+		if(mechanic_user != src)
+			return FALSE
+
 		message_to_log += ", by [mechanic_user]"
 
 	log_message(message_to_log, LOG_GAME)
