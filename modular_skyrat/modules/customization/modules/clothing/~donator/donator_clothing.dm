@@ -320,7 +320,7 @@
 	icon_state = "wetsuit"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	armor_type = /datum/armor/wetsuit_under
+	armor_type = /datum/armor/clothing_under/wetsuit
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	can_adjust = FALSE
 	female_sprite_flags = NO_FEMALE_UNIFORM
