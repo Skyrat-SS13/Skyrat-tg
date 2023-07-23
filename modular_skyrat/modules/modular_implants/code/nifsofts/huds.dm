@@ -1,6 +1,6 @@
 /datum/nifsoft/hud
-	name = "blank HUD"
-	program_desc = "Provides the overlay of a hud on compatible eyewear."
+	name = "Scrying Lens"
+	program_desc = "An umbrella term for all sorts of NIFsofts dealing with heads-up displays, this sort of technology dates back almost to the beginning of NIFsoft development. These 'softs are commonly used in the civilian field for integration with all sorts of activities; piloting, swordplay, scientific research, or even AI copiloting for important social interactions. While normally the nanomachines involved in the program's operation are used as a sort of artificial contact lens over the user's visual organs, NanoTrasen regulations have bid these particular forks to instead integrate with glasses the user's already wearing."
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 	active_mode = TRUE
 	active_cost = 0.5
@@ -74,35 +74,30 @@
 //
 
 /datum/nifsoft/hud/job/medical
-	name = "medical HUD"
-	program_desc = "Allows the user to view a medical HUD when wearing compatible eyewear."
+	name = "Medical Scrying Lens"
 	ui_icon = "staff-snake"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
 	hud_trait = TRAIT_MEDICAL_HUD
 
 /datum/nifsoft/hud/job/diagnostic
-	name = "diagnostic HUD"
-	program_desc = "Allows the user to view a diagnostic HUD when wearing compatible eyewear."
+	name = "Diagnostic Scrying Lens"
 	ui_icon = "robot"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
 	hud_trait = TRAIT_DIAGNOSTIC_HUD
 
 /datum/nifsoft/hud/job/security
-	name = "security HUD"
-	program_desc = "Allows the user to view a security HUD when wearing compatible eyewear."
+	name = "Security Scrying Lens"
 	ui_icon = "shield"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	hud_trait = TRAIT_SECURITY_HUD
 
 /datum/nifsoft/hud/job/cargo_tech
-	name = "permit HUD"
-	program_desc = "Allows the user to view a permit HUD when wearing compatible eyewear."
+	name = "Permit Scrying Lens"
 	ui_icon = "gun"
 	hud_type = DATA_HUD_PERMIT
 
 /datum/nifsoft/hud/job/science
-	name = "science HUD"
-	program_desc = "Allows the user to view a science HUD when wearing compatible eyewear."
+	name = "Science Scrying Lens"
 	ui_icon = "flask"
 	added_eyewear_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 
@@ -111,23 +106,23 @@
 //
 
 /obj/item/disk/nifsoft_uploader/med_hud
-	name = "Medical HUD"
+	name = "Medical Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/medical
 
 /obj/item/disk/nifsoft_uploader/diag_hud
-	name = "Diagnostic HUD"
+	name = "Diagnostic Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/diagnostic
 
 /obj/item/disk/nifsoft_uploader/sec_hud
-	name = "Security HUD"
+	name = "Security Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/security
 
 /obj/item/disk/nifsoft_uploader/permit_hud
-	name = "Permit HUD"
+	name = "Permit Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/cargo_tech
 
 /obj/item/disk/nifsoft_uploader/sci_hud
-	name = "Science HUD"
+	name = "Science Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/science
 
 

@@ -100,7 +100,7 @@
 		qdel(src)
 
 /obj/item/nif_hud_adapter
-	name = "NIF HUD retrofitter"
+	name = "Scrying Lens Adapter"
 	desc = "A kit that modifies select glasses to display HUDs for NIFs"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
