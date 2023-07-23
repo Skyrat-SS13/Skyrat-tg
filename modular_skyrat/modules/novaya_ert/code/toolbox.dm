@@ -8,9 +8,6 @@
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
 
-/obj/item/storage/toolbox/ammobox/PopulateContents()
-	return
-
 /obj/item/storage/toolbox/ammobox/full
 	var/ammo_type = null ///Type of mags/casings/clips we spawn in.
 	var/amount = 0 ///Amount of mags/casings/clips we spawn in.
