@@ -216,6 +216,8 @@
 	var/offensive_notes
 	/// Used in obj/item/examine to determines whether or not to detail an item's statistics even if it does not meet the force requirements
 	var/override_notes = FALSE
+	/// Used if we want to have a custom verb text for throwing. "John Spaceman flicks the ciggerate" for example.
+	var/throw_verb
 	// SKYRAT EDIT ADDITION START
 	/// Does this use the advanced reskinning setup?
 	var/uses_advanced_reskins = FALSE

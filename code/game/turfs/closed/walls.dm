@@ -1,4 +1,5 @@
 #define MAX_DENT_DECALS 15
+#define LEANING_OFFSET 11
 
 /turf/closed/wall
 	name = "wall"
@@ -33,8 +34,6 @@
 
 	var/list/dent_decals
 
-<<<<<<< HEAD
-=======
 /turf/closed/wall/MouseDrop_T(mob/living/carbon/carbon_mob, mob/user)
 	..()
 	if(carbon_mob != user)
@@ -79,7 +78,6 @@
 	REMOVE_TRAIT(src, TRAIT_EXPANDED_FOV, LEANING_TRAIT)
 	update_fov()
 
->>>>>>> d4b44117ed7 (Fixes getting stuck in the leaning condition when you try to lean facing the wrong direction (#77002))
 /turf/closed/wall/Initialize(mapload)
 	. = ..()
 	if(!can_engrave)
@@ -366,3 +364,4 @@
 	girder_type = /obj/structure/foamedmetal
 
 #undef MAX_DENT_DECALS
+#undef LEANING_OFFSET
