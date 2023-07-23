@@ -13,8 +13,9 @@
 	var/amount = 0 ///Amount of mags/casings/clips we spawn in.
 
 /obj/item/storage/toolbox/ammobox/full/PopulateContents()
-	for(var/i in 1 to amount)
-		new ammo_type(src)
+	if(!isnull(ammo_type))
+		for(var/i in 1 to amount)
+			new ammo_type(src)
 
 /obj/item/storage/toolbox/ammobox/full/mosin
 	name = "ammo box (Sportiv)"
