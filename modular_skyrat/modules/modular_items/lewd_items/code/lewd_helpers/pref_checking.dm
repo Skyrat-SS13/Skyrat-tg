@@ -10,11 +10,14 @@
  * * `used_item` - What item, if any, is being used on the parent mob?
  */
 /mob/living/proc/check_erp_prefs(datum/preference/toggle/pref_to_check, mob/living/mechanic_user = FALSE, obj/item/used_item = FALSE)
-	if(!client?.prefs || !ispath(pref_to_check))
+	if(!ispath(pref_to_check))
 		return FALSE
 
-	if(client.prefs.read_preference(pref_to_check))
+	if(client?.prefs?.read_preference(pref_to_check))
 		return TRUE // We are good to go!
+
+	if(!client?.prefs)
+		return FALSE // Clients are a fickle mistress
 
 	var/message_to_log = "[src] had an ERP mechanic attempted to be used on them while their prefs were disabled"
 	if(used_item)
