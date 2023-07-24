@@ -2,6 +2,8 @@
 	. = ..()
 	// make sure we get food preferences too, because those are now tied to tongues for some reason
 	liked_foodtypes = old_tongue.liked_foodtypes
+	disliked_foodtypes = old_tongue.disliked_foodtypes
+	toxic_foodtypes = old_tongue.toxic_foodtypes
 
 /obj/item/organ/internal/tongue/dog
 	name = "long tongue"
