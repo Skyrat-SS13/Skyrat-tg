@@ -42,8 +42,8 @@
 
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
-	if(eyewear_check && !active && (!istype(worn_glasses) || !(worn_glasses.obj_flags & NIF_HUD_GRANTER)))
-		linked_mob.balloon_alert("no compatible eyewear!")
+	if(eyewear_check && !active && (!istype(worn_glasses) || !HAS_TRAIT(worn_glasses, TRAIT_NIFSOFT_HUD_GRANTER)))
+		linked_mob.balloon_alert(linked_mob ,"no compatible eyewear!")
 		return FALSE
 
 	. = ..() // active = !active
@@ -65,6 +65,26 @@
 		RegisterSignal(worn_glasses, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(activate))
 
 	return TRUE
+
+/datum/element/nifsoft_hud/Attach(datum/target)
+	. = ..()
+	if(!istype(target, /obj/item/clothing/glasses))
+		return ELEMENT_INCOMPATIBLE
+
+	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	ADD_TRAIT(target, TRAIT_NIFSOFT_HUD_GRANTER, INNATE_TRAIT)
+
+/// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
+/datum/element/nifsoft_hud/proc/on_examine(datum/source, mob/user, list/examine_text)
+	SIGNAL_HANDLER
+
+	examine_text += span_cyan("Wearing this item in your glasses slot will allow you to use NIFSoft HUDs.")
+
+/datum/element/nifsoft_hud/Detach(datum/target)
+	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
+	REMOVE_TRAIT(target, TRAIT_NIFSOFT_HUD_GRANTER, INNATE_TRAIT)
+
+	return ..()
 
 /datum/nifsoft/hud/job
 	mutually_exclusive_programs = list(/datum/nifsoft/hud/job) //We don't want people stacking job HUDs
@@ -133,4 +153,8 @@
 /obj/item/clothing/glasses/trickblindfold/obsolete/nif
 	name = "modernized fake blindfold"
 	desc = "A restored version of the obsolete fake blindfold, retrofitted with the proper electronics to work as a NIF HUD."
-	obj_flags = NIF_HUD_GRANTER
+
+/obj/item/clothing/glasses/trickblindfold/obsolete/nif/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/nifsoft_hud)
+

@@ -8,6 +8,3 @@
 
 /// Whether something is repairable by the anvil
 #define ANVIL_REPAIR (1<<0)
-
-/// This object gives the user access to NIF HUDs when wearing it in their glasses slot.
-#define NIF_HUD_GRANTER (1<<0)

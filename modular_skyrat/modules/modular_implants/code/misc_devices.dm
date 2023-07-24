@@ -147,20 +147,15 @@
 		balloon_alert("incompatible!")
 		return FALSE
 
-	if(target_glasses.obj_flags & NIF_HUD_GRANTER)
+	if(HAS_TRAIT(target_glasses, TRAIT_NIFSOFT_HUD_GRANTER))
 		balloon_alert("already upgraded!")
 		return FALSE
 
 	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]."), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))
 	target_glasses.name = "\improper HUD-upgraded " + target_glasses.name
-	target_glasses.obj_flags |= NIF_HUD_GRANTER
+	target_glasses.AddElement(/datum/element/nifsoft_hud)
 	playsound(target_glasses.loc, 'sound/weapons/circsawhit.ogg', 50, vary = TRUE)
 
 	if(!multiple_uses)
 		qdel(src)
-
-/obj/item/clothing/glasses/examine(mob/user)
-	. = ..()
-	if(obj_flags & NIF_HUD_GRANTER)
-		. += span_cyan("Wearing this item in your glasses slot will allow you to use NIFSoft HUDs.")
 
