@@ -1,4 +1,39 @@
-// open to suggestions on where to put these ammobox overrides
+// open to suggestions on where to put these overrides
+// hugely not a fan of this but we do what we gotta
+
+/*
+ * gotta redefine EVERY goddamn ammo type irt to new mat costs for the ammobench's sake
+ * previously, SMALL_MATERIAL_AMOUNT was 100 units out of 2000 from a sheet (5%)
+ * so the old cost of SMALL_MATERIAL_AMOUNT * 5 was 500/2000 from a sheet (25%)
+ * experimental material balance PR makes it so that SMALL_MATERIAL_AMOUNT is actually 10 units out of 100 (10%)
+ * which made it so that the old assumed value of SMALL_MATERIAL_AMOUNT * 5 is 50/100 (50% of a sheet for a single bullet) (suboptimal)
+ * these updated, more consistent defines make it so that a single round's total materials should total 20% of a sheet, or 2 SMALL_MATERIAL_AMOUNT
+*/
+
+#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
+
+#define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
+
+// for .35 Sol Ripper. one day, anon. one day
+#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4)
+
+/obj/item/ammo_casing
+	custom_materials = AMMO_MATS_BASIC
 
 /obj/item/ammo_box
 	/// When inserted into an ammo workbench, does this ammo box check for parent ammunition to search for subtypes of? Relevant for surplus clips, multi-sprite magazines.
@@ -421,77 +456,9 @@
 	<br><br>\
 	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
 	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT)
+	custom_materials = AMMO_MATS_PHASIC
 
-/obj/item/ammo_casing/shotgun
-	desc = "A 12 gauge iron slug."
-
-// THE BELOW TWO SLUGS ARE NOTED AS ADMINONLY AND HAVE ***EIGHTY*** WOUND BONUS. NOT BARE WOUND BONUS. FLAT WOUND BONUS.
-/obj/item/ammo_casing/shotgun/executioner
-	name = "expanding shotgun slug"
-	desc = "A 12 gauge fragmenting slug purpose-built to annihilate flesh on impact."
-	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm.
-
-/obj/item/ammo_casing/shotgun/pulverizer
-	name = "pulverizer shotgun slug"
-	desc = "A 12 gauge uranium slug purpose-built to break bones on impact."
-	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm
-
-/obj/item/ammo_casing/shotgun/incendiary
-	name = "incendiary slug"
-	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
-	<br><br>\
-	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 9.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
-
-/obj/item/ammo_casing/shotgun/techshell
-	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
-
-/obj/item/ammo_casing/shotgun/improvised
-	can_be_printed = FALSE // this is literally made out of scrap why would you use this if you have a perfectly good ammolathe
-
-/obj/item/ammo_casing/shotgun/dart/bioterror
-	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
-
-/obj/item/ammo_casing/shotgun/dragonsbreath
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/stunslug
-	name = "taser slug"
-	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
-	can_be_printed = FALSE // comment out if you want rocket tag shotgun ammo being printable
-
-/obj/item/ammo_casing/shotgun/meteorslug
-	name = "meteor slug"
-	desc = "A 12 gauge shell rigged with CMC technology which launches a heap of matter with great force when fired.\
-	<br><br>\
-	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/frag12
-	name = "FRAG-12 slug"
-	desc = "A 12 gauge shell containing high explosives designed for defeating some barriers and light vehicles, disrupting IEDs, or intercepting assistants.\
-	<br><br>\
-	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/pulseslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/laserslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/ion
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/incapacitate
-	name = "hornet's nest shell"
-	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets, \
-	sacrificing individual pellet strength for sheer stopping power in what's best described as \"spitting distance\".\
-	<br><br>\
-	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
-	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
+// shotgun ammo overrides moved to modular_skyrat\modules\shotgunrebalance\code\shotgun.dm
 
 // i'd've put more can_be_printed overrides for the cargo shells but, like... some of them actually do have defined materials so you can't just shit them out with metal?
 // kinda weird that none of these others do but, whatever??
@@ -523,7 +490,7 @@
 	desc = "An 8mm armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c46x30mm/inc
@@ -531,7 +498,7 @@
 	desc = "An 8mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45
@@ -543,7 +510,7 @@
 	desc = "An armor-piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45/inc
@@ -551,7 +518,7 @@
 	desc = "An incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/a50ae
@@ -576,22 +543,18 @@
 	caliber = CALIBER_38
 
 /obj/item/ammo_casing/c38/trac
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
-						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
+	custom_materials = AMMO_MATS_TRAC
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/dumdum
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/hotshot
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/iceblox
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
+	custom_materials = AMMO_MATS_TEMP // plasma's wack.
 	advanced_print_req = TRUE
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
@@ -642,7 +605,7 @@
 	name = "8mm incendiary bullet"
 
 /obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
-	name =".416 tranquilizer"
+	name = ".416 tranquilizer"
 
 /obj/projectile/bullet/p50/penetrator
 	name = ".416 penetrator bullet"
