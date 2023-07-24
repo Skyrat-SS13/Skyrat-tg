@@ -342,10 +342,8 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/storage/belt/holster/energy/thermal = 2)
 	crate_name = "thermal pistol crate"
-<<<<<<< HEAD
 */
 // SKYRAT EDIT REMOVAL END
-=======
 
 /datum/supply_pack/security/sunglasses
 	name = "Sunglasses Crate"
@@ -354,4 +352,3 @@
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/clothing/glasses/sunglasses = 1)
 	crate_name = "sunglasses crate"
->>>>>>> 83205e7651f (Various tweaks to cargo/bounties (#76982))
