@@ -13,7 +13,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub/give_gun_safeties()
 	return
@@ -32,7 +32,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby/give_gun_safeties()
 	return

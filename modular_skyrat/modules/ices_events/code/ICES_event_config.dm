@@ -543,11 +543,11 @@
 /**
  * Spess Vines
  *
- * Disabled: Needs rebalancing
+ * 
  */
 /datum/round_event_control/spacevine
-	max_occurrences = 0
-	intensity_restriction = TRUE
+	max_occurrences = 1
+	weight = MED_EVENT_FREQ
 /**
  * Spiders
  *
