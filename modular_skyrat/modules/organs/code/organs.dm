@@ -3,9 +3,6 @@
 	if(isnull(old_organ))
 		return
 
-	// make sure the organ gets the actions from any species specific things (like hemophage blood drain, etc)
+	// make sure the organ gets the actions from any species specific things (like hemophage Drain Victim, etc)
 	for(var/datum/action/action as anything in old_organ.actions)
 		add_item_action(action.type)
-	// copy corruption flag from hemophage if applicable
-	if(old_organ.organ_flags & ORGAN_TUMOR_CORRUPTED)
-		organ_flags |= ORGAN_TUMOR_CORRUPTED
