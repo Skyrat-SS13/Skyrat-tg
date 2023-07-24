@@ -259,8 +259,6 @@
 /mob/living/proc/on_loc_force_gravity(datum/source)
 	SIGNAL_HANDLER
 	refresh_gravity()
-<<<<<<< HEAD
-=======
 
 /// Called in [/datum/element/immerse/apply_filter]
 /mob/living/proc/edit_immerse_overlay(datum/source, atom/movable/immerse_overlay/vis_overlay)
@@ -274,4 +272,3 @@
 /mob/living/proc/undense_changed(datum/source)
 	SIGNAL_HANDLER
 	update_density()
->>>>>>> c1122a0ae97 (Adds an element to water turfs that makes things... look like they're actually immersed in water. (#76208))
