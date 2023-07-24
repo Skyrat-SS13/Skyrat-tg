@@ -71,9 +71,12 @@
 	if(istype(weapon, /obj/item/mining_voucher))
 		redeem_voucher(weapon, user)
 		return
-	//SKYRAT EDIT ADDITON BEGIN - SEVA
+	//SKYRAT EDIT ADDITON BEGIN - SEVA & GLAIVE
 	if(istype(weapon, /obj/item/suit_voucher))
 		redeem_suit_voucher(weapon, user)
+		return
+	if(istype(weapon, /obj/item/kinetic_crusher))
+		exchange_crusher(weapon, user)
 		return
 	//SKYRAT EDIT ADDITON END
 	return ..()
