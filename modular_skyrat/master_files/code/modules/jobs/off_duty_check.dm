@@ -9,7 +9,7 @@
  * This typically applies for jobs like assistant where clock status probably wouldn't really matter.
 */
 
-/mob/living/proc/check_if_off_duty(list/whitelisted_deparments = list(), list/blacklisted_jobs = list(/datum/job/assistant))
+/mob/living/carbon/human/proc/check_if_off_duty(list/whitelisted_deparments = list(), list/blacklisted_jobs = list(/datum/job/assistant))
 	if(!mind?.assigned_role)
 		return TRUE //If someone lacks a job or mind, we probably don't need to worry about their clock status.
 
@@ -41,11 +41,14 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	inhand_icon_state = "electronic"
 
-/obj/item/duty_checker/attack(mob/living/target_mob, mob/living/user, params)
+/obj/item/duty_checker/attack(mob/living/carbon/human/target_human, mob/living/user, params)
 	. = ..()
-	if(target_mob.check_if_off_duty(list(/datum/job_department/security)))
-		to_chat(user, span_notice("[target_mob] is off-duty!"))
+	if(!istype(target_human))
+		return FALSE
+
+	if(target_human.check_if_off_duty(list(/datum/job_department/security)))
+		to_chat(user, span_notice("[target_human] is off-duty!"))
 		return TRUE
 
-	to_chat(user, span_notice("[target_mob] is not off-duty!"))
+	to_chat(user, span_notice("[target_human] is not off-duty!"))
 	return FALSE
