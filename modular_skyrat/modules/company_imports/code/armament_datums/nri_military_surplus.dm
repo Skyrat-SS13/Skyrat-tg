@@ -83,7 +83,7 @@
 	upper_cost = CARGO_CRATE_VALUE
 
 /datum/armament_entry/company_import/nri_surplus/misc/food_replicator
-	item_type = /obj/item/storage/box/colonial_rations
+	item_type = /obj/item/circuitboard/machine/biogenerator/food_replicator
 	lower_cost = CARGO_CRATE_VALUE * 7.5
 	upper_cost = CARGO_CRATE_VALUE * 11
 	interest_required = COMPANY_SOME_INTEREST
