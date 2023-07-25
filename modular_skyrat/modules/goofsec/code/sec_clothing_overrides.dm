@@ -524,9 +524,11 @@
 */
 //Officer
 /obj/item/clothing/under/rank/security/officer
+	desc = "A tactical security uniform for officers, complete with a Lopland belt buckle."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_black"
+	alt_covers_chest = TRUE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -542,6 +544,9 @@
 			RESKIN_WORN_ICON_STATE = "security_white"
 		),
 	)
+
+/obj/item/clothing/under/rank/security/officer/formal
+	unique_reskin = null // prevents you from losing the unique sprite
 
 //Warden
 /obj/item/clothing/under/rank/security/warden
