@@ -715,7 +715,7 @@
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(
 		/obj/item/crucifix = 3,
-		/obj/item/storage/box/nri_rations = 3,
+		/obj/item/storage/box/colonial_rations = 3,
 		/obj/item/storage/toolbox/ammobox/a762 = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/gun/ballistic/rifle/boltaction = 1,

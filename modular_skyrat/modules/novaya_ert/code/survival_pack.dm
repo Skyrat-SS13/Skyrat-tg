@@ -10,7 +10,7 @@
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
 	new /obj/item/stack/spacecash/c1000(src)
 	new /obj/item/storage/pill_bottle/iron(src)
-	new /obj/item/storage/box/nri_rations(src)
+	new /obj/item/storage/box/colonial_rations(src)
 	new /obj/item/storage/box/nri_pens(src)
 	new /obj/item/storage/box/nri_flares(src)
 	new /obj/item/crowbar/red(src)
