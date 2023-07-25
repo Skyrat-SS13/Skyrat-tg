@@ -156,7 +156,7 @@
 	inhand_icon_state = "clockwork_bow"
 	base_icon_state = "bow_clockwork"
 	force = 10
-	mag_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
 	/// Time between bolt recharges
 	var/recharge_time = 1.5 SECONDS
 	/// Typecache of valid turfs to have the weapon's special effect on
@@ -247,7 +247,7 @@
 	icon_state = "clockwork_rifle"
 	inhand_icon_state = "clockwork_rifle"
 	worn_icon_state = "clockwork_rifle"
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	show_bolt_icon = FALSE
 
