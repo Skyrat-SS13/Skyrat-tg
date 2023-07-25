@@ -22,7 +22,7 @@
 	print_command_report(., "Central Command Status Summary", announce = FALSE)
 	priority_announce("Hello, crew of [station_name()]. Our intern has finished their shift-start divergency and goals evaluation, which has been sent to your communications console. Have a secure shift!", "Divergency Report", SSstation.announcer.get_rand_report_sound())
 
-/datum/game_mode/dynamic/
+/datum/game_mode/dynamic
 	/// Desired median point for midrounds, plus or minus the midround_roll_distance.
 	var/midround_median_frequency = 36000
 
