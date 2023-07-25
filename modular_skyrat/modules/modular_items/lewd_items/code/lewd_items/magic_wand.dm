@@ -158,7 +158,7 @@
 		target.try_lewd_autoemote(pick("twitch_s", "moan"))
 
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, ignore_walls = FALSE)
+	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, pref_to_check = /datum/preference/toggle/erp/sex_toy_sounds)
 
 /obj/item/clothing/sextoy/magic_wand/attack_self(mob/user)
 	toggle_mode()
