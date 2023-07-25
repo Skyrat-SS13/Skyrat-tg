@@ -3,8 +3,8 @@
 #define RND_CATEGORY_NRI_CLOTHING "Apparel"
 
 /obj/machinery/biogenerator/food_replicator
-	name = "food replicator"
-	desc = "it replicates food and clothing and medicine <br> write me a better description"
+	name = "\improper BEEP colonial supplier"
+	desc = "This handy, ancient machine replicates food and clothing and medicine previously utilised by the pioneer colonists of what's now known as the NRI."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/biogenerator.dmi'
 	circuit = /obj/item/circuitboard/machine/biogenerator/food_replicator
 	efficiency = 0.75
