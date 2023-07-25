@@ -1,6 +1,97 @@
+#define AMMO_MATS_SHOTGUN list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4) // not quite as thick as a half-sheet
+
+#define AMMO_MATS_SHOTGUN_PT20 list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5,\
+									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5) // plastitanium slug
+
+#define AMMO_MATS_SHOTGUN_RIP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
+									/datum/material/bronze = SMALL_MATERIAL_AMOUNT * 1) // the bronze is because real RIP shells are made with copper, apparently
+
+#define AMMO_MATS_SHOTGUN_FLECH list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2)
+
+#define AMMO_MATS_SHOTGUN_HIVE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
+									/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1)
+
+#define AMMO_MATS_SHOTGUN_TIDE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/gold = SMALL_MATERIAL_AMOUNT * 1,\
+									/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 1) // i mean. i - i guess?
+
+#define AMMO_MATS_SHOTGUN_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2) // covers both iceblox and incendiary
+
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
-	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT) //We will be using this to prevent refund scamming mats
+	desc = "A 12 gauge iron slug."
+	custom_materials = AMMO_MATS_SHOTGUN
+
+// THE BELOW TWO SLUGS ARE NOTED AS ADMINONLY AND HAVE ***EIGHTY*** WOUND BONUS. NOT BARE WOUND BONUS. FLAT WOUND BONUS.
+/obj/item/ammo_casing/shotgun/executioner
+	name = "expanding shotgun slug"
+	desc = "A 12 gauge fragmenting slug purpose-built to annihilate flesh on impact."
+	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm.
+
+/obj/item/ammo_casing/shotgun/pulverizer
+	name = "pulverizer shotgun slug"
+	desc = "A 12 gauge uranium slug purpose-built to break bones on impact."
+	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm
+
+/obj/item/ammo_casing/shotgun/incendiary
+	name = "incendiary slug"
+	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
+	<br><br>\
+	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_SHOTGUN_TEMP
+
+/obj/item/ammo_casing/shotgun/techshell
+	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
+
+/obj/item/ammo_casing/shotgun/improvised
+	can_be_printed = FALSE // this is literally made out of scrap why would you use this if you have a perfectly good ammolathe
+
+/obj/item/ammo_casing/shotgun/dart/bioterror
+	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
+
+/obj/item/ammo_casing/shotgun/dragonsbreath
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/stunslug
+	name = "taser slug"
+	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
+	can_be_printed = FALSE // comment out if you want rocket tag shotgun ammo being printable
+
+/obj/item/ammo_casing/shotgun/meteorslug
+	name = "meteor slug"
+	desc = "A 12 gauge shell rigged with CMC technology which launches a heap of matter with great force when fired.\
+	<br><br>\
+	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/frag12
+	name = "FRAG-12 slug"
+	desc = "A 12 gauge shell containing high explosives designed for defeating some barriers and light vehicles, disrupting IEDs, or intercepting assistants.\
+	<br><br>\
+	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/pulseslug
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/laserslug
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/ion
+	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
+
+/obj/item/ammo_casing/shotgun/incapacitate
+	name = "hornet's nest shell"
+	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets, \
+	sacrificing individual pellet strength for sheer stopping power in what's best described as \"spitting distance\".\
+	<br><br>\
+	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
+	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
 
 /obj/item/ammo_casing/shotgun/hp
 	name = "hollow point slug"
@@ -21,9 +112,7 @@
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7.5,
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2.5,
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5)
+	custom_materials = AMMO_MATS_SHOTGUN_PT20
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/pt20
@@ -36,8 +125,7 @@
 	desc = "A Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4,
-							/datum/material/bronze = SMALL_MATERIAL_AMOUNT)
+	custom_materials = AMMO_MATS_SHOTGUN_RIP
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/shotgun_slug/rip
@@ -106,8 +194,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
@@ -128,9 +215,7 @@
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
 	harmful = FALSE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = AMMO_MATS_SHOTGUN_HIVE
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
@@ -161,9 +246,7 @@
 	variance = 30
 	harmful = FALSE
 	fire_sound = 'sound/weapons/taser.ogg'
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = AMMO_MATS_SHOTGUN_TIDE
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
@@ -197,8 +280,7 @@
 	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
 	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 5)
+	custom_materials = AMMO_MATS_SHOTGUN_TEMP
 	pellets = 5
 	variance = 20
 	advanced_print_req = TRUE

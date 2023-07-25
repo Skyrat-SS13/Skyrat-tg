@@ -42,6 +42,7 @@
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1,
+		/obj/item/healthanalyzer/simple = 1,
 	)
 	generate_items_inside(items_inside,src)
 
@@ -54,7 +55,7 @@
 	if(empty)
 		return
 	var/static/items_inside = list(
-		/obj/item/healthanalyzer/wound = 1,
+		/obj/item/healthanalyzer/simple = 1,
 		/obj/item/stack/medical/gauze = 1,
 		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture/emergency = 1,
@@ -200,10 +201,12 @@
 	if(empty)
 		return
 	var/static/items_inside = list(
-	    /obj/item/storage/pill_bottle/multiver/less = 1,
+		/obj/item/storage/pill_bottle/multiver/less = 1,
 		/obj/item/reagent_containers/syringe/syriniver = 3,
 		/obj/item/storage/pill_bottle/potassiodide = 1,
-		/obj/item/reagent_containers/hypospray/medipen/penacid = 1)
+		/obj/item/reagent_containers/hypospray/medipen/penacid = 1,
+		/obj/item/healthanalyzer/simple/disease = 1,
+		)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/o2
@@ -246,7 +249,9 @@
 		/obj/item/stack/medical/gauze = 1,
 		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/storage/pill_bottle/probital = 1,
-		/obj/item/reagent_containers/hypospray/medipen/salacid = 1)
+		/obj/item/reagent_containers/hypospray/medipen/salacid = 1,
+		/obj/item/healthanalyzer/simple = 1,
+		)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/advanced
@@ -656,6 +661,14 @@
 /obj/item/storage/pill_bottle/naturalbait/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/food/bait/natural(src)
+
+/obj/item/storage/pill_bottle/ondansetron
+	name = "ondansetron patches"
+	desc = "A bottle containing patches of ondansetron, a drug used to treat nausea and vomiting. May cause drowsiness."
+
+/obj/item/storage/pill_bottle/ondansetron/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/patch/ondansetron(src)
 
 /// A box which takes in coolant and uses it to preserve organs and body parts
 /obj/item/storage/organbox

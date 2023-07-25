@@ -12,8 +12,32 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/human
 	name = "Human Scream"
-	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg')
-	female_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
+	male_screamsounds = list(
+		'modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg',
+		'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg',
+	)
+	female_screamsounds = list(
+		'modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg',
+		'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg',
+	)
+
+/datum/scream_type/human_two
+	name = "Human Scream 2"
+	male_screamsounds = list(
+		'sound/voice/human/malescream_1.ogg',
+		'sound/voice/human/malescream_2.ogg',
+		'sound/voice/human/malescream_3.ogg',
+		'sound/voice/human/malescream_4.ogg',
+		'sound/voice/human/malescream_5.ogg',
+		'sound/voice/human/malescream_6.ogg',
+	)
+	female_screamsounds = list(
+		'sound/voice/human/femalescream_1.ogg',
+		'sound/voice/human/femalescream_2.ogg',
+		'sound/voice/human/femalescream_3.ogg',
+		'sound/voice/human/femalescream_4.ogg',
+		'sound/voice/human/femalescream_5.ogg',
+	)
 
 /datum/scream_type/robotic
 	name = "Robotic Scream"
@@ -22,7 +46,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/lizard
 	name = "Lizard Scream"
-	male_screamsounds = list('sound/voice/lizard/lizard_scream_1.ogg', 'sound/voice/lizard/lizard_scream_3.ogg')
+	male_screamsounds = list(
+		'sound/voice/lizard/lizard_scream_1.ogg',
+		'sound/voice/lizard/lizard_scream_2.ogg',
+		'sound/voice/lizard/lizard_scream_3.ogg',
+	)
 	female_screamsounds = null
 
 /datum/scream_type/lizard2
@@ -33,6 +61,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 /datum/scream_type/moth
 	name = "Moth Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/moth_two
+	name = "Moth Scream 2"
+	male_screamsounds = list('sound/voice/moth/scream_moth.ogg')
 	female_screamsounds = null
 
 /datum/scream_type/jelly

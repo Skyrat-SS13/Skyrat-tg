@@ -6,15 +6,13 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
-	species_traits = list(
-		MUTCOLORS,
-		NO_UNDERWEAR,
-		HAS_MARKINGS,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
+		TRAIT_HAS_MARKINGS,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
@@ -22,10 +20,9 @@
 		"legs" = "Normal Legs"
 	)
 	digitigrade_customization = DIGITIGRADE_NEVER
-	disliked_food = GROSS | GRAIN
-	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
+	mutanttongue = /obj/item/organ/internal/tongue/teshari
 	custom_worn_icons = list(
 		LOADOUT_ITEM_HEAD = TESHARI_HEAD_ICON,
 		LOADOUT_ITEM_MASK = TESHARI_MASK_ICON,
@@ -55,6 +52,12 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/teshari,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/teshari,
 	)
+
+
+/obj/item/organ/internal/tongue/teshari
+	liked_foodtypes = MEAT
+	disliked_foodtypes = GROSS | GRAIN
+
 
 /datum/species/teshari/random_name(gender, unique, lastname)
 	if(unique)

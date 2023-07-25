@@ -254,7 +254,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 
 /obj/machinery/plumbing/floor_pump/output/should_regulator_permit(turf/affected_turf)
 	// 0 means keep pumping forever.
-	return !height_regulator || affected_turf.liquids.height < height_regulator
+	return (height_regulator == 0) || (affected_turf.liquids?.height < height_regulator)
 
 /obj/machinery/plumbing/floor_pump/output/process()
 	over_pressure = FALSE

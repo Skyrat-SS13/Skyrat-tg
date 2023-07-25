@@ -26,10 +26,6 @@
 	item_path = /obj/item/storage/belt/mining
 	cost_per_order = 500
 
-/datum/orderable_item/mining/point_card
-	item_path = /obj/item/card/mining_point_card
-	cost_per_order = 500
-
 /datum/orderable_item/mining/jaunter
 	item_path = /obj/item/wormhole_jaunter
 	cost_per_order = 750
@@ -72,6 +68,7 @@
 
 /datum/orderable_item/mining/conscription_kit
 	item_path = /obj/item/storage/backpack/duffelbag/mining_conscript
+	desc = "A kit containing everything a crewmember needs to support a shaft miner in the field."
 	cost_per_order = 1500
 
 /datum/orderable_item/mining/capsule

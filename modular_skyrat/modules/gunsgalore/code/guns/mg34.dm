@@ -32,9 +32,6 @@
 
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/gun/ballistic/automatic/mg34/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
-
 /obj/item/gun/ballistic/automatic/mg34/examine(mob/user)
 	. = ..()
 	. += "<b>RMB with an empty hand</b> to [cover_open ? "close" : "open"] the dust cover."
