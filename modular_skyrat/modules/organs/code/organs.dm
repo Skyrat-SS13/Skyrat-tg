@@ -4,6 +4,6 @@
 		return
 
 	if(copy_actions)
-		// make sure the organ gets the actions from any species specific things (like hemophage Drain Victim, etc)
+		// for when you want to make sure the organ gets any actions from the old one
 		for(var/datum/action/action as anything in old_organ.actions)
 			add_item_action(action.type)
