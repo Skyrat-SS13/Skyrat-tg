@@ -1,26 +1,26 @@
 /datum/supply_pack/security/ammo
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/armor
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/disabler
 	cost = CARGO_CRATE_VALUE * 5
 
 /datum/supply_pack/security/helmets
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/laser
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/securityclothes
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/armory/ballistic
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/armory/energy
-	hidden = TRUE
+	special = TRUE
 
 /datum/supply_pack/security/armory/thermal
-	hidden = TRUE
+	special = TRUE
