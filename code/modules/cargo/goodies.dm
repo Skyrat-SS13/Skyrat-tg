@@ -3,7 +3,7 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-/* // SKYRAT EDIT START - CARGO GUN
+
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -31,7 +31,6 @@
 	cost = PAYCHECK_CREW * 40 //they really mean a premium here
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/gun/ballistic/revolver/c38/detective)
-*/ //SKYRAT EDIT END
 
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
@@ -40,7 +39,6 @@
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/grenade/stingbang)
 
-/* //SKYRAT EDIT START - GUN CARGO
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
@@ -88,7 +86,6 @@
 	cost = PAYCHECK_COMMAND * 15
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/storage/belt/holster/energy/thermal)
-*/ //SKYRAT EDIT END
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
@@ -162,15 +159,11 @@
 	cost = PAYCHECK_COMMAND * 4
 	contains = list(/obj/item/dog_bone)
 
-// SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/supply_pack/goody/dyespray
 	name = "Hair Dye Spray"
 	desc = "A cool spray to dye your hair with awesome colors!"
 	cost = PAYCHECK_CREW * 2
 	contains = list(/obj/item/dyespray)
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/goody/beach_ball
 	name = "Beach Ball"
