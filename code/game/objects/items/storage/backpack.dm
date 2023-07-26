@@ -630,27 +630,25 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-<<<<<<< HEAD
-	name = "tactical duffel bag" //SKYRAT EDIT CHANGE, was "suspicious-looking duffel bag". It's just a black duffel.
-	desc = "A large duffel bag for holding extra tactical supplies."
-=======
 	name = "suspicious looking duffel bag"
 	desc = "A large duffel bag for holding extra tactical supplies. It contains an oiled plastitanium zipper for maximum speed tactical zipping, and is better balanced on your back than an average duffelbag. Can hold two bulky items!"
->>>>>>> 1e27ce031ba (Syndicate Duffelbag Rerework (#77060))
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	storage_type = /datum/storage/duffel/syndicate
 	resistance_flags = FIRE_PROOF
-<<<<<<< HEAD
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
-	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // SKYRAT EDIT ADDITION
-=======
 	// Less slowdown while unzipped. Still bulky, but it won't halve your movement speed in an active combat situation.
 	zip_slowdown = 0.3
 	// Faster unzipping. Utilizes the same noise as zipping up to fit the unzip duration.
 	unzip_duration = 0.5 SECONDS
 	unzip_sfx = 'sound/items/zip_up.ogg'
->>>>>>> 1e27ce031ba (Syndicate Duffelbag Rerework (#77060))
+
+//SKYRAT EDIT CHANGE START - It's just a black duffel.
+/obj/item/storage/backpack/duffelbag/syndie
+	name = "tactical duffel bag"
+	desc = "A large duffel bag for holding extra tactical supplies."
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials, and features an oiled plastitanium zipper for maximum speed tactical zipping."
+//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
 	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
