@@ -155,11 +155,8 @@
 		eye_right.alpha = 0
 
 	if (is_emissive) // Because it was done all weird up there.
-		var/mutable_appearance/emissive_left = emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, eye_left.alpha)
-		var/mutable_appearance/emissive_right = emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, eye_right.alpha)
-
-		emissive_left.appearance_flags &= ~RESET_TRANSFORM
-		emissive_right.appearance_flags &= ~RESET_TRANSFORM
+		var/mutable_appearance/emissive_left = emissive_appearance_copy(eye_left, owner)
+		var/mutable_appearance/emissive_right = emissive_appearance_copy(eye_right, owner)
 
 		if(my_head.worn_face_offset)
 			my_head.worn_face_offset.apply_offset(emissive_right)
