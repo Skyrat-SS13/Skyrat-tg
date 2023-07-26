@@ -41,7 +41,7 @@
 	icon_state = "mp5"
 	inhand_icon_state = "arg"
 	selector_switch_icon = TRUE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
 	can_suppress = FALSE
 	fire_delay = 1.25
 	spread = 5
@@ -73,7 +73,7 @@
 	icon_state = "cfa-lynx"
 	inhand_icon_state = "arg"
 	selector_switch_icon = FALSE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	can_suppress = FALSE
 	fire_delay = 1.90 //Previously 0.5. Changed due to it being the Blueshield's default firearm.
 	spread = 2
