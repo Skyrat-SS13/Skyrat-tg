@@ -389,7 +389,7 @@
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				if(HAS_TRAIT(src, TRAIT_STRONG_GRABBER))
-					C.grippedby(src)
+					C.grabbedby(src)
 
 			update_pull_movespeed()
 
