@@ -14,20 +14,20 @@
 	build_path = /obj/item/stack/medical/mesh
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
-/datum/design/bruise_pack
-	name = "bruise packs"
+/datum/design/bruise_patch
+	name = "bruise patch"
 	id = "slavic_bruise"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
-	build_path = /obj/item/stack/medical/bruise_pack
+	build_path = /obj/item/reagent_containers/pill/patch/libital
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
-/datum/design/ointment
-	name = "ointments"
-	id = "slavic_ointment"
+/datum/design/burn_patch
+	name = "burn patch"
+	id = "slavic_burn"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
-	build_path = /obj/item/stack/medical/ointment
+	build_path = /obj/item/reagent_containers/pill/patch/aiuri
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/gauze

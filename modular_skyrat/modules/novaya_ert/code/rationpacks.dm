@@ -62,7 +62,9 @@
 /obj/item/reagent_containers/cup/glass/coffee/colonial
 	name = "colonial thermocup"
 	desc = "Technically, used to drink hot beverages. But since it's the only cup design that was available, you gotta make do."
+	special_desc = "A small instruction on the side reads: <i>\"For use in food replicators; mix water and powdered solutions in one-to-one proportions.</i>"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	list_reagents = list(/datum/reagent/consumable/powdered_coffee = 25)
 
 /obj/item/reagent_containers/cup/glass/coffee/colonial/empty
 	list_reagents = null
@@ -87,17 +89,69 @@
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT*0.5)
 	icon_state = "blin_trash"
 
+/obj/item/storage/box/gum/colonial
+	name = "mixed bubblegum packet"
+	desc = "The packaging is entirely, -finally-, is written in something intelligible: Pan-Slavic, with a small text of Sol Common. That can be examined."
+	special_desc = "Examining the small text reveals the following: <i>\"Foreign colonization ration, model J: mixed origin, adult. Bubblegum package, medicinal, recreational. <br>\
+	Do not overconsume. Certain strips contain nicotine.\"</i>"
+	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon_state = "bubblegum"
+
+/obj/item/storage/box/gum/PopulateContents()
+	new /obj/item/food/bubblegum(src)
+	new /obj/item/food/bubblegum(src)
+	new /obj/item/food/bubblegum/nicotine(src)
+	new /obj/item/food/bubblegum/nicotine(src)
+
+/obj/item/storage/box/utensil
+	name = "utensils package"
+	desc = "A small package containing various utensils required for <i>human</i> consumption of various foods. \
+	In a normal situation contains a plastic fork, a plastic spoon, and a single serviette."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon_state = "utensil_box"
+	w_class = WEIGHT_CLASS_TINY
+	illustration = null
+	foldable_result = null
+
+/obj/item/storage/box/utensil/Initialize(mapload)
+	. = ..()
+	atom_storage.set_holdable(list(/obj/item/kitchen/spoon/plastic,
+									/obj/item/kitchen/fork/plastic,
+									/obj/item/serviette,
+	))
+	atom_storage.max_slots = 4
+
+/obj/item/storage/box/utensil/PopulateContents()
+	new /obj/item/kitchen/spoon/plastic(src)
+	new /obj/item/kitchen/fork/plastic(src)
+	new /obj/item/serviette/colonial(src)
+	new /obj/item/serviette/colonial(src)
+
+/obj/item/serviette/colonial
+	name = "colonial napkin"
+	desc = "To clean all the mess. Comes with a custom <i>combined</i> design of red and blue."
+	icon_state = "napkin_unused"
+	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	used_serviette = /obj/item/serviette_used/colonial
+
+/obj/item/serviette_used/colonial
+	name = "dirty colonial napkin"
+	desc = "No longer useful, super dirty, or soaked, or otherwise unrecognisable."
+	icon_state = "napkin_used"
+	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+
 /obj/item/storage/box/colonial_rations
 	name = "foreign colonization ration"
 	desc = "A freshly printed civilian MRE, or more specifically a lunchtime food package, for use in the early colonization times by the first settlers of what is now known as the NRI. <br>\
 	The lack of any imprinted dates, as well as its origin, -the food replicator-, should probably give you a good enough hint at its short, if reasonable, expiry time."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "mre_package"
+	foldable_result = null
 	illustration = null
 
 /obj/item/storage/box/colonial_rations/Initialize(mapload)
 	. = ..()
-	atom_storage.max_slots = 7
+	atom_storage.max_slots = 6
 	atom_storage.locked = TRUE
 
 /obj/item/storage/box/colonial_rations/attack_self(mob/user, modifiers)
@@ -118,6 +172,5 @@
 	new /obj/item/food/colonial_course/nachos(src)
 	new /obj/item/food/colonial_course/blins(src)
 	new /obj/item/reagent_containers/cup/glass/coffee/colonial(src)
-	new /obj/item/food/bubblegum(src)
-	new /obj/item/food/bubblegum/nicotine(src)
-	new /obj/item/serviette(src)
+	new /obj/item/storage/box/gum/colonial(src)
+	new /obj/item/storage/box/utensil(src)

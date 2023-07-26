@@ -3,8 +3,11 @@
 #define RND_CATEGORY_NRI_CLOTHING "Apparel"
 
 /obj/machinery/biogenerator/food_replicator
-	name = "\improper BEEP colonial supplier"
-	desc = "This handy, ancient machine replicates food and clothing and medicine previously utilised by the pioneer colonists of what's now known as the NRI."
+	name = "\improper Type 34 'Colonial Supply Core'"
+	desc = "The Type 34 'Colonial Supply Core,' colloquially known as the 'Gencrate/CSC' is an ancient, boxy design first put in use by the pioneer colonists of what's now known \
+	as the NRI. The Gencrate is at its core a matter resequencer, a highly specialized subtype of biogenerator which performs a sort of transmutation using organic \
+	compounds; normally from large-scale crops or waste product. With sufficient supply, the machine is capable of making a wide variety of provisions, \
+	from clothes to food to first-aid medical supplies."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/biogenerator.dmi'
 	circuit = /obj/item/circuitboard/machine/biogenerator/food_replicator
 	efficiency = 0.75
@@ -16,5 +19,5 @@
 	)
 
 /obj/item/circuitboard/machine/biogenerator/food_replicator
-	name = "Food Replicator"
+	name = "Colonial Supply Core"
 	build_path = /obj/machinery/biogenerator/food_replicator
