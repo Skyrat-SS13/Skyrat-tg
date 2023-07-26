@@ -2,7 +2,7 @@
 	lawupdate = FALSE
 	scrambledcodes = TRUE // Roleplay borgs aren't real
 	set_model = /obj/item/robot_model/roleplay
-	radio = null
+	radio = null 
 
 /mob/living/silicon/robot/model/roleplay/Initialize(mapload)
 	. = ..()
@@ -14,6 +14,17 @@
 
 /mob/living/silicon/robot/model/roleplay/binarycheck()
 	return FALSE //Roleplay borgs aren't truly borgs
+
+/obj/item/modular_computer/pda/silicon/cyborg/roleplay 
+	starting_programs = list( //Imaginary cyborgs do not get a PDA
+		/datum/computer_file/program/filemanager,
+		/datum/computer_file/program/robotact
+
+/mob/living/silicon/robot/model/roleplay/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/pda/silicon/cyborg/roleplay(src)
+		modularInterface.saved_job = "Cyborg"
+	return ..()
 
 /datum/ai_laws/roleplay
 	name = "Roleplay"
