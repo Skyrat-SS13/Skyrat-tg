@@ -137,6 +137,12 @@
 		audible_message(span_danger("[src] makes a series of sad beeps. Someone has corrupted its software!"))
 		return FALSE
 
+	if(world.time - SSticker.round_start_time > 30 MINUTES && trigger_reason != DIVINE_INTERVENTION)
+		playsound(src, 'sound/misc/compiler-failure.ogg', 100, FALSE, MACHINE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+		audible_message(span_danger("[src] makes a series of sad beeps. The internal charge only lasts about 30 minutes... what a feat of engineering!"))
+		investigate_log("Delam SCRAM signal was received but failed precondition check. (Round time or trigger reason)", INVESTIGATE_ATMOS)
+		return FALSE
+
 	return TRUE
 
 /// Tells the station (they probably already know) and starts the procedure
