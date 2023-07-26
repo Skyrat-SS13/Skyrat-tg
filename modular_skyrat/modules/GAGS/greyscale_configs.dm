@@ -333,6 +333,15 @@
 	name = "Choker (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/choker_worn.json'
 
+// Thin Choker
+/datum/greyscale_config/collar/thinchoker
+	name = "Thin Choker"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/thinchoker.json'
+
+/datum/greyscale_config/collar/thinchoker/worn
+	name = "Thin Choker (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/thinchoker_worn.json'
+
 // Cow
 /datum/greyscale_config/collar/cow
 	name = "Cowbell Collar"
