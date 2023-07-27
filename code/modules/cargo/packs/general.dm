@@ -67,7 +67,18 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/tiziran = 2)
 	crate_name = "tiziran fish crate"
+<<<<<<< HEAD
 /* SKYRAT REMOVAL
+=======
+
+/datum/supply_pack/misc/fish_analyzers
+	name = "Fish Analyzers"
+	desc = "A pack containing three analyzers to monitor fish's status and traits with."
+	cost = CARGO_CRATE_VALUE * 2.5
+	contains = list(/obj/item/fish_analyzer = 3)
+	crate_name = "fish analyzers crate"
+
+>>>>>>> d9c8bd9baef ([READY] Fishing and aquarium expansion. (#76531))
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
