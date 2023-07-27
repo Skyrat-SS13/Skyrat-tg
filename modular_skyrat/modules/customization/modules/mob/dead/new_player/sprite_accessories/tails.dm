@@ -420,3 +420,7 @@
 	name = "Slim reptile"
 	icon_state = "reptileslim"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/australianshepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
