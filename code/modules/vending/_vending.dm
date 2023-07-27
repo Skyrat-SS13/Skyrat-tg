@@ -676,105 +676,12 @@
 	if(Adjacent(fatty))
 		. = fall_and_crush(get_turf(fatty), squish_damage, local_crit_chance, forced_crit, 6 SECONDS, rotation = picked_rotation)
 
-<<<<<<< HEAD
-			SEND_SIGNAL(L, COMSIG_ON_VENDOR_CRUSH)
-
-
-			if(istype(C))
-				var/crit_rebate = 0 // lessen the normal damage we deal for some of the crits
-
-				if(crit_case < 5) // the body/head asplode case has its own description
-					C.visible_message(span_danger("[C] is crushed by [src]!"), \
-						span_userdanger("You are crushed by [src]!"))
-
-				switch(crit_case) // only carbons can have the fun crits
-					if(1) // shatter their legs and bleed 'em
-						crit_rebate = 60
-						C.bleed(150)
-						var/obj/item/bodypart/leg/left/l = C.get_bodypart(BODY_ZONE_L_LEG)
-						if(l)
-							l.receive_damage(brute=200)
-						var/obj/item/bodypart/leg/right/r = C.get_bodypart(BODY_ZONE_R_LEG)
-						if(r)
-							r.receive_damage(brute=200)
-						if(l || r)
-							C.visible_message(span_danger("[C]'s legs shatter with a sickening crunch!"), \
-								span_userdanger("Your legs shatter with a sickening crunch!"))
-					if(2) // pin them beneath the machine until someone untilts it
-						forceMove(get_turf(C))
-						buckle_mob(C, force=TRUE)
-						C.visible_message(span_danger("[C] is pinned underneath [src]!"), \
-							span_userdanger("You are pinned down by [src]!"))
-					if(3, 4) // glass candy // SKYRAT EDIT CHANGE - Original 3
-						crit_rebate = 50
-						for(var/i in 1 to num_shards)
-							var/obj/item/shard/shard = new /obj/item/shard(get_turf(C))
-							shard.embedding = list(embed_chance = 100, ignore_throwspeed_threshold = TRUE, impact_pain_mult=1, pain_chance=5)
-							shard.updateEmbedding()
-							C.hitby(shard, skipcatch = TRUE, hitpush = FALSE)
-							shard.embedding = list()
-							shard.updateEmbedding()
-					if(4, 5) // paralyze this binch // SKYRAT EDIT CHANGE - Original 4
-						// the new paraplegic gets like 4 lines of losing their legs so skip them
-						visible_message(span_danger("[C]'s spinal cord is obliterated with a sickening crunch!"), ignored_mobs = list(C))
-						C.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic)
-					if(6) // limb squish! // SKYRAT EDIT CHANGE - Original 5
-						for(var/i in C.bodyparts)
-							var/obj/item/bodypart/squish_part = i
-							if(IS_ORGANIC_LIMB(squish_part))
-								var/type_wound = pick(list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate))
-								squish_part.force_wound_upwards(type_wound, wound_source = "crushing by vending machine")
-							else
-								squish_part.receive_damage(brute=30)
-						C.visible_message(span_danger("[C]'s body is maimed underneath the mass of [src]!"), \
-							span_userdanger("Your body is maimed underneath the mass of [src]!"))
-					// SKYRAT EDIT REMOVAL BEGIN
-					/*
-					if(6) // skull squish!
-						var/obj/item/bodypart/head/O = C.get_bodypart(BODY_ZONE_HEAD)
-						if(O)
-							if(O.dismember())
-								C.visible_message(span_danger("[O] explodes in a shower of gore beneath [src]!"), \
-									span_userdanger("Oh f-"))
-								O.drop_organs()
-								qdel(O)
-								new /obj/effect/gibspawner/human/bodypartless(get_turf(C))
-					*/
-					// SKYRAT EDIT REMOVAL END
-
-				if(prob(30))
-					C.apply_damage(max(0, squish_damage - crit_rebate), forced=TRUE, spread_damage=TRUE) // the 30% chance to spread the damage means you escape breaking any bones
-				else
-					C.take_bodypart_damage((squish_damage - crit_rebate)*0.5, wound_bonus = 5) // otherwise, deal it to 2 random limbs (or the same one) which will likely shatter something
-					C.take_bodypart_damage((squish_damage - crit_rebate)*0.5, wound_bonus = 5)
-				// C.AddElement(/datum/element/squish, 80 SECONDS) // SKYRAT EDIT REMOVAL
-			else
-				L.visible_message(span_danger("[L] is crushed by [src]!"), \
-				span_userdanger("You are crushed by [src]!"))
-				L.apply_damage(squish_damage, forced=TRUE)
-				if(crit_case)
-					L.apply_damage(squish_damage, forced=TRUE)
-			if(was_alive && L.stat == DEAD && L.client)
-				L.client.give_award(/datum/award/achievement/misc/vendor_squish, L) // good job losing a fight with an inanimate object idiot
-
-			L.Paralyze(60)
-			L.emote("scream")
-			. = TRUE
-			playsound(L, 'sound/effects/blobattack.ogg', 40, TRUE)
-			playsound(L, 'sound/effects/splat.ogg', 50, TRUE)
-			add_memory_in_range(L, 7, /datum/memory/witness_vendor_crush, protagonist = L, antagonist = src)
-
-	var/matrix/M = matrix()
-	M.Turn(pick(90, 270))
-	transform = M
-=======
 		if (. & SUCCESSFULLY_FELL_OVER)
 			visible_message(span_danger("[src] tips over!"))
 			tilted = TRUE
 			tilted_rotation = picked_rotation
 			layer = ABOVE_MOB_LAYER
 			SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
->>>>>>> f44adfde1ea (Refactors vendor tipping and adds 2 new malf modules: Remote vendor tipping, and the ability to roll around and crush anything in your path. (#76635))
 
 	if(get_turf(fatty) != get_turf(src))
 		throw_at(get_turf(fatty), 1, 1, spin = FALSE, quickstart = FALSE)
@@ -929,8 +836,8 @@
 
 	weighted_crits[CRUSH_CRIT_SHATTER_LEGS] = 100
 	weighted_crits[CRUSH_CRIT_PARAPALEGIC] = 80
-	weighted_crits[CRUSH_CRIT_HEADGIB] = 20
-	weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 100
+	//weighted_crits[CRUSH_CRIT_HEADGIB] = 20 // SKYRAT EDIT REMOVAL
+	weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 80 // SKYRAT EDIT CHANGE - ORIGINAL: weighted_crits[CRUSH_CRIT_SQUISH_LIMB] = 100
 
 	return weighted_crits
 
