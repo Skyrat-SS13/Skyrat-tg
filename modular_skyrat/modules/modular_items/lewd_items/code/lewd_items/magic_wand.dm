@@ -12,11 +12,11 @@
 	/// What mode the vibrator is on
 	var/vibration_mode = "off"
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/lewd/vibrator/low/soundloop1
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop2
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/high/soundloop3
+	var/datum/looping_sound/lewd/vibrator/high/soundloop3
 	/// Mutable appearance for the human overlay of this itme
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY

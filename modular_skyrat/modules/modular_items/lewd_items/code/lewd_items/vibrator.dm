@@ -23,11 +23,11 @@
 	/// Assoc list of modes and what they'll convert to
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/lewd/vibrator/low/soundloop1
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop2
 	/// Looping sound used for the toy's audible bit
-	var/datum/looping_sound/vibrator/high/soundloop3
+	var/datum/looping_sound/lewd/vibrator/high/soundloop3
 	/// Static list of designs of the toy, used for the color selection radial menu
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY

@@ -13,7 +13,7 @@
 	/// A list of designs, used in the radial color selection menu
 	var/static/list/vibroring_designs
 	/// Looping sound called on process
-	var/datum/looping_sound/vibrator/medium/soundloop
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop
 	w_class = WEIGHT_CLASS_TINY
 	lewd_slot_flags = LEWD_SLOT_PENIS
 	clothing_flags = INEDIBLE_CLOTHING
