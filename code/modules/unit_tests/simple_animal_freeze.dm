@@ -32,12 +32,6 @@
 		/mob/living/simple_animal/bot/secbot/honkbot,
 		/mob/living/simple_animal/bot/secbot/pingsky,
 		/mob/living/simple_animal/bot/vibebot,
-		/mob/living/simple_animal/crab,
-		/mob/living/simple_animal/crab/coffee,
-		/mob/living/simple_animal/crab/evil,
-		/mob/living/simple_animal/crab/evil/kreb,
-		/mob/living/simple_animal/crab/jon,
-		/mob/living/simple_animal/crab/kreb,
 		/mob/living/simple_animal/drone,
 		/mob/living/simple_animal/drone/classic,
 		/mob/living/simple_animal/drone/derelict,
@@ -281,7 +275,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/crab/shuffle,
 		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/blackmesa,
