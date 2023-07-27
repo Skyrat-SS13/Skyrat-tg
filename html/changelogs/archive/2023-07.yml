@@ -1113,3 +1113,162 @@
       by default. the leash can be toggled on or off at will, giving an option to
       allow PAIs to roam freely or stick within a specified range.
   - qol: also bumps the max range for the leash up to 25 (from 9 previously)
+2023-07-24:
+  Melbert:
+  - rscadd: 'Wizards have a new Right and Wrong: Mass Teaching, allowing them to grant
+      everyone on the station one spell or relic of their choice!'
+  SkyratBot:
+  - bugfix: fixed third person throw verbs displaying as just an s
+  - rscadd: You can now use the genetic sequencer secondary click (RMB) to scan someone
+  - bugfix: Cable connections on various structures including electrified grilles,
+      APC terminals, and SMES terminals have been rectified and will shock as expected
+      again.
+  - bugfix: Gas miners draw power properly again.
+  - bugfix: fixed a bug that would cause you to be unable to lean again if you tried
+      leaning while facing the wrong direction
+  Thebleh:
+  - bugfix: Fixed several APC related issues.
+  itseasytosee:
+  - rscadd: You can now lean against walls! Simply turn your back to the wall and
+      clickdrag yourself onto it.
+  - bugfix: There should no longer be any instances of spacemen being able to run
+      straight through eachother as if they weren't even there.
+  - spellcheck: Added more variance to item throwing text.
+  - refactor: Mob density has been refactored
+2023-07-25:
+  Hatterhat:
+  - balance: Base material costs for ammunition have been sharply reduced across the
+      board, because a single 9mm casing or equivalent costing half a sheet was egregious.
+      This mainly only applies to the ammo bench; lathe recipes are their own system
+      and remain untouched.
+  LT3:
+  - bugfix: Autotransfer calls votes based on actual round time, not server initialization
+      time
+  SkyratBot:
+  - bugfix: Dish drive no longer spams the bar/kitchen/etc when its idle with empty
+      messages.
+  - qol: Ice cream vats now count as elevated surfaces for preventing germs from getting
+      onto germ-sensitive items (food).
+  - qol: Ice cream vats now dispense cones into your hands first, if possible.
+  - bugfix: Germ-sensitive items that fail to be placed in-hand now check for all
+      elevated surfaces, not just tables.
+  - image: Railing ends now exist.
+  - rscdel: removed floating light fixture from the Deltastation security hallway
+  - qol: ID cards tooltips now show how to assign a new account.
+  - image: walking on water will now immerse you in it... visually, at least.
+  - bugfix: fixed possessed sword spirits summoned during destruction of the sword
+      spawning in the error room. those fellas are in godmode, and y'all don't need
+      an immortal spirit haunting your station, m'kay?
+  - qol: The TTS and TTS Blips option is now one choiced preference.
+  - bugfix: Removed duplicate and incorrect Yaki Imo recipe
+  - qol: "Swapped out the flour in \xC6losterrm\xE6sch with two dough slices, to avoid\
+      \ competing reactions while preparing or cooking"
+  - spellcheck: Chicken nugget will have a description in the craft menu, and fiesta
+      skewers will have a description in general
+  - rscadd: Bounty pads can now be upgraded, to reduce the time until you can pick
+      a new bounty
+  - rscadd: Sunglasses can now be bought from cargo if you have security access.
+  - balance: Gripper gloves single-pack is now gorilla gloves singlepack
+  - rscdel: Removed shady jims bounty
+  - qol: Bounty pads can now be screwdrivered/crowbarred with left click like every
+      other machine
+  - balance: Changes some cooldowns and upgrades of spells.
+  - balance: the bee now can fly over the machines so its easy for him to go to the
+      hydroponics machine
+  - bugfix: player bees now will not be stuck inside the hive if he entered it, they
+      can now leave it
+  - bugfix: fixed a har deleted when the hive is deleted all the bees still have a
+      refence to the hive now its fixed
+  - bugfix: now when a player interacted with the bee hive the bees will now leave
+      the hive to defend the hive (it was glitched)
+  - refactor: the bees now are a basic insect.
+  Thebleh:
+  - bugfix: South Bronx Paradise Bars are once again the best weight loss aid on station
+  vinylspiders:
+  - bugfix: the IRS have found their missing shuttle and will now be able to spawn
+      properly. the station will have to find a new way to commit tax evasion from
+      here on out
+  - bugfix: the pda item name will now match alt job titles
+  - bugfix: fixes a bug that was causing some types of ammo boxes to spawn empty
+2023-07-26:
+  Cyprex:
+  - balance: Electric shocks from cables deal less damage.
+  GoldenAlpharex:
+  - qol: The mix of sugar and Bloody Mary used to make Bloodshot is now its own reagent,
+      called "Bloodshot Base", just to make it easier to ask for from Bartenders.
+      Hemophages beware, however, it doesn't contain enough blood-regenerating reagents
+      to appeal to the tumor on its own, so it won't be going through smoothly if
+      you try to drink it.
+  Hatterhat:
+  - bugfix: The security uniform no longer exposes your chest when all you did was
+      roll the sleeves up.
+  - bugfix: The security formal uniform no longer inherits altsprites from the base
+      uniform, since it didn't have any.
+  - spellcheck: The security uniform's description now mentions a Lopland belt buckle,
+      and not a Nanotrasen belt buckle.
+  LT3:
+  - bugfix: Random events and autotransfer subsystems should play nice with each other
+      again
+  Melbert:
+  - bugfix: Prisoner slots can no longer be controlled by Plexagon HR Core. (special
+      things to distributivgesetz)
+  - bugfix: HoPs can open more assistant job slots if a non-assistant job is the overflow
+      role
+  - code_imp: Dehardcode the HR core blacklist for jobs which cannot have more slots
+      opened by the HoP
+  Rhials:
+  - qol: Modifies the contents of some Mafia lockers. Go check 'em out!
+  Senefi:
+  - rscadd: Some Metastation Medbay lights have been moved and adjusted.
+  SkyratBot:
+  - bugfix: items can be printed from autolathe & protolathe when the exact material
+      amounts are present in them after upgrading
+  - bugfix: max printable amount now shows the correct value & updates when items
+      are printed, materials are removed in the autolathe & protolathe
+  - bugfix: component printer material bar is not greyed out when there are sufficient
+      materials to eject
+  - bugfix: rcd and other devices that uses the silo link upgrade now have the correct
+      material usages
+  - bugfix: silo hold actually works
+  - bugfix: machines using local storage to hold materials will eject it's materials
+      as sheets when deconstructed/destroyed
+  - refactor: Autolathe Material bars now display number of sheets available
+  - refactor: printing an item that does not have enough materials will fail silently
+      with no error messages
+  - refactor: Drone dispenser will eject sheets upon deconstruction
+  - refactor: all things that store materials will auto ejects its sheets(if there
+      is sufficient material) when destroyed
+  - refactor: inserting an item into the material container will display the units
+      consumed as sheets not absolute units
+  - refactor: removed x25 & x50 print buttons from the autolathe
+  - bugfix: Plasmaman DNA can no longer be stolen by changelings.
+  - spellcheck: Phobia warnings have the same glowy text now as they would in messages.
+  - bugfix: Crates no longer stun you when you climb onto them.
+  - balance: Mmmh, butter on a stick. Now for americanbots.
+  - refactor: The mag_type variable on guns has been split between accepted_magazine_type
+      and spawn_magazine_type, allowing weapons to safely spawn with subtypes of their
+      normal magazines without breaking the weapon
+  - bugfix: Several weapons that spawned with special magazines, the riot dart pre-loaded
+      donk pistol for example, will now be able to accept normal donksoft magazines
+      that don't spawn loaded with riot darts.
+  - bugfix: some fixes to spess IRS pirates.
+  - balance: IRS armor is now bulky
+  - bugfix: Makes radiation nebula space work on high-pop by applying the radiation
+      more directly
+  - balance: Internal nebula storm no longer gives 10 seconds of immunity and has
+      a very, very small chance to apply mutations
+  - balance: Rudes nebula rad immunity from 10 seconds to 6 seconds (shouldn't differ
+      too much since we use a different system now)
+  - spellcheck: Head of Personnel's roundstart text now says that they should answer
+      to the captain now instead of themselves.
+  jjpark-kb:
+  - balance: Reagent Imbuing (from forging) is strictly for ashwalkers & icecats
+  - balance: Forges can only be fully upgraded (legendary smiths) by ashwalkers &
+      icecats
+  - balance: Some of the forge upgrades have been moved around to accommodate reagent
+      imbuing being ashwalker/icecat only
+  oranges:
+  - balance: holodeck spawned banners no longer give the inspiration effects
+  vinylspiders:
+  - bugfix: fixes the nitrogen breather quirk not giving the correct lungs or spawning
+      the breathing dogtag
