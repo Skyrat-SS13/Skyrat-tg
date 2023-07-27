@@ -35,6 +35,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Stormtrooper Aim", "Big Hands"),
 		list("Bilingual", "Foreigner"),
 		list("Spacer", "Paraplegic"),
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
@@ -42,6 +43,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("No Guns", "Pacifist"),
 		list("Spacer", "Oversized"),
 		//SKYRAT EDIT ADDITION END
+=======
+		list("Photophobia", "Nyctophobia"),
+>>>>>>> 6fc996353f8 (Photophobia quirk (#77032))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
