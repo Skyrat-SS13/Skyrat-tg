@@ -133,6 +133,18 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/flatcap/flatcap_worn.json'
 
+// CAP
+
+/datum/greyscale_config/cap
+	name = "Cap"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cap/cap.json'
+
+/datum/greyscale_config/cap/worn
+	name = "Cap (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cap/cap_worn.json'
+
 // FLOWER PIN
 
 /datum/greyscale_config/flowerpin

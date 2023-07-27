@@ -6,6 +6,7 @@
 			"products" = list(
 				/obj/item/clothing/head/beret/badge = 5,
 				/obj/item/clothing/head/colourable_flatcap= 5,
+				/obj/item/clothing/head/poly_cap = 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman = 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman/wide = 5,
 				/obj/item/clothing/head/cowboy/skyrat/wide = 5,

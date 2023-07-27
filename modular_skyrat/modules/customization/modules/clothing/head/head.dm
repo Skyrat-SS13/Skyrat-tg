@@ -91,6 +91,16 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/head/poly_cap
+	name = "Cap"
+	desc = "It's a baseball hat."
+	icon_state = "cap"
+	greyscale_config = /datum/greyscale_config/cap
+	greyscale_config_worn = /datum/greyscale_config/cap/worn
+	greyscale_colors = "#FFFFFF"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/head/hats/imperial
 	name = "grey naval officer cap"
 	desc = "A grey naval cap with a silver disk in the center."
