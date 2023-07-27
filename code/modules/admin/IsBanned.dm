@@ -44,10 +44,6 @@
 
 		var/client_is_in_db = query_client_in_db.NextRow()
 		if(!client_is_in_db)
-<<<<<<< HEAD
-
-=======
->>>>>>> ae8d72bfd6f (Fixes undeleted SQL queries in `IsBanned()` (#77105))
 			var/reject_message = "Failed Login: [ckey] [address]-[computer_id] - New Account attempting to connect during panic bunker, but was rejected due to no prior connections to game servers (no database entry)"
 			log_access(reject_message)
 			if (message)
