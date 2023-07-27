@@ -33,6 +33,8 @@ type SuitStatus = {
   complexity: number;
   selected_module: string;
   ai_name: string;
+  pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
+  ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
 };
 
 type UserStatus = {
@@ -313,6 +315,8 @@ const SuitStatusSection = (props, context) => {
     malfunctioning,
     locked,
     ai_name,
+    pAI,
+    ispAI,
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
@@ -386,8 +390,19 @@ const SuitStatusSection = (props, context) => {
         {!!ai_name && (
           <LabeledList.Item label="AI Core">{ai_name}</LabeledList.Item>
         )}
+        {/* SKYRAT EDIT START - pAIs in MODsuits*/}
+        <LabeledList.Item label="Onboard pAI">
+          {pAI || 'None'} &nbsp;
+          {!!pAI && !ispAI && (
+            <Button
+              icon="eject"
+              content="Eject pAI"
+              onClick={() => act('remove_pai')}
+            />
+          )}
+        </LabeledList.Item>
+        {/* SKYRAT EDIT END */}
       </LabeledList>
-
       {!!display_time && (
         <Section title="Operation" mt={2}>
           <LabeledList.Item label="Time">
@@ -405,12 +420,12 @@ const SuitStatusSection = (props, context) => {
 const HardwareSection = (props, context) => {
   const { act, data } = useBackend<MODsuitData>(context);
   const { control, helmet, chestplate, gauntlets, boots } = data;
-  const { ai_name, core_name } = data.suit_status;
+  const { pAI, core_name } = data.suit_status; /* SKYRAT EDIT CHANGE - pAI */
   return (
     <Section title="Hardware" style={{ 'text-transform': 'capitalize' }}>
       <LabeledList>
-        <LabeledList.Item label="AI Card">
-          {ai_name || 'No AI Card Detected'}
+        <LabeledList.Item label="pAI Card" /* SKYRAT EDIT CHANGE - pAI */>
+          {pAI || 'No pAI Card Detected' /* SKYRAT EDIT CHANGE - pAI */}
         </LabeledList.Item>
         <LabeledList.Item label="Core">
           {core_name || 'No Core Detected'}

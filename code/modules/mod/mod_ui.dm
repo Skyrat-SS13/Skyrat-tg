@@ -6,31 +6,13 @@
 
 /obj/item/mod/control/ui_data(mob/user)
 	var/data = list()
-<<<<<<< HEAD
-	data["interface_break"] = interface_break
-	data["malfunctioning"] = malfunctioning
-	data["open"] = open
-	data["active"] = active
-	data["locked"] = locked
-	data["complexity"] = complexity
-	data["selected_module"] = selected_module?.name
-	data["wearer_name"] = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "No Occupant"
-	data["wearer_job"] = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "No Job"
-	// SKYRAT EDIT START - pAIs in MODsuits
-	data["pAI"] = mod_pai?.name
-	data["ispAI"] = mod_pai ? mod_pai == user : FALSE
-	// SKYRAT EDIT END
-	data["core"] = core?.name
-	data["charge"] = get_charge_percent()
-	data["modules"] = list()
-=======
 	// Suit information
 	var/suit_status = list(
 		"core_name" = core?.name,
 		"cell_charge_current" = get_charge(),
 		"cell_charge_max" = get_max_charge(),
 		"active" = active,
-		"ai_name" = ai?.name,
+		//"ai_name" = ai?.name, // SKYRAT EDIT REMOVAL - pAIs in MODsuits
 		// Wires
 		"open" = open,
 		"seconds_electrified" = seconds_electrified,
@@ -39,6 +21,10 @@
 		"interface_break" = interface_break,
 		// Modules
 		"complexity" = complexity,
+		// SKYRAT EDIT START - pAIs in MODsuits
+		"pAI" = mod_pai?.name,
+		"ispAI" = mod_pai ? mod_pai == user : FALSE,
+		// SKYRAT EDIT END
 	)
 	data["suit_status"] = suit_status
 	// User information
@@ -50,7 +36,6 @@
 	// Module information
 	var/module_custom_status = list()
 	var/module_info = list()
->>>>>>> f83e03252f3 (New MOD Suit UI (#77022))
 	for(var/obj/item/mod/module/module as anything in modules)
 		module_custom_status += module.add_ui_data()
 		module_info += list(list(
@@ -89,7 +74,7 @@
 	if(.)
 		return
 	// allowed() doesn't allow for pAIs
-	if((!allowed(usr) || !ispAI(usr)) && locked) // SKYRAT EDIT - pAIs in MODsuits
+	if(((locked && !ispAI(usr)) && !allowed(usr))) // SKYRAT EDIT CHANGE - ORIGINAL: if(locked && !allowed(usr))
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
