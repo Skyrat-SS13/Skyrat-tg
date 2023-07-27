@@ -5,13 +5,19 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
+/mob/living/carbon/human
+	/// Used to prevent nightmare scenarios.
+	var/refractory_period
+
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 
 	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual)
 		return
-
+	if(refractory_period > REALTIMEOFDAY)
+		return
+	refractory_period = REALTIMEOFDAY + 30 SECONDS
 	if(has_status_effect(/datum/status_effect/climax_cooldown) || !client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
@@ -124,7 +130,7 @@
 						to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [self_their] load into it."))
 
 			var/obj/item/organ/external/genital/testicles/testicles = get_organ_slot(ORGAN_SLOT_TESTICLES)
-			testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
+			testicles.transfer_internal_fluid(null, testicles.internal_fluid_count * 0.6) // yep. we are sending semen to nullspace
 			if(create_cum_decal)
 				add_cum_splatter_floor(get_turf(src))
 

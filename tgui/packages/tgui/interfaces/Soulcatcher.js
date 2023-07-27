@@ -130,16 +130,46 @@ export const Soulcatcher = (props, context) => {
                       <Collapsible
                         title={soul.name}
                         buttons={
-                          <Button
-                            icon="paper-plane"
-                            tooltip="Transfer a soul to another room"
-                            onClick={() =>
-                              act('transfer_soul', {
-                                room_ref: room.reference,
-                                target_soul: soul.reference,
-                              })
-                            }
-                          />
+                          <>
+                            {soul.scan_needed ? (
+                              <> </>
+                            ) : (
+                              <>
+                                <Button
+                                  color="green"
+                                  icon="pen"
+                                  tooltip="Change the soul's name."
+                                  onClick={() =>
+                                    act('change_name', {
+                                      target_soul: soul.reference,
+                                      room_ref: room.reference,
+                                    })
+                                  }
+                                />
+                                <Button
+                                  color="red"
+                                  icon="arrow-rotate-left"
+                                  tooltip="Reset the soul's name."
+                                  onClick={() =>
+                                    act('reset_name', {
+                                      target_soul: soul.reference,
+                                      room_ref: room.reference,
+                                    })
+                                  }
+                                />
+                              </>
+                            )}
+                            <Button
+                              icon="paper-plane"
+                              tooltip="Transfer a soul to another room"
+                              onClick={() =>
+                                act('transfer_soul', {
+                                  room_ref: room.reference,
+                                  target_soul: soul.reference,
+                                })
+                              }
+                            />
+                          </>
                         }>
                         <Box textAlign="center" fontSize="13px" opacity={0.8}>
                           <b>Flavor Text</b>
@@ -246,6 +276,20 @@ export const Soulcatcher = (props, context) => {
                                 })
                               }>
                               {soul.able_to_emote ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
+                          <LabeledList.Item label="Rename">
+                            <Button
+                              color={soul.able_to_rename ? 'green' : 'red'}
+                              fluid
+                              tooltip="Is the soul able to rename themselves?"
+                              onClick={() =>
+                                act('toggle_soul_renaming', {
+                                  target_soul: soul.reference,
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_rename ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                         </LabeledList>

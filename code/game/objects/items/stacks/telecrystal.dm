@@ -1,8 +1,8 @@
-/obj/item/stack/telecrystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/telecrystal
 	name = "telecrystal"
 	desc = "It seems to be pulsing with suspiciously enticing energies."
 	singular_name = "telecrystal"
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "telecrystal"
 	dye_color = DYE_SYNDICATE
 	w_class = WEIGHT_CLASS_TINY

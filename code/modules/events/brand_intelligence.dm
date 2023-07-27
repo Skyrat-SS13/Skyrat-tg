@@ -34,8 +34,8 @@
 
 /datum/round_event/brand_intelligence/setup()
 	//select our origin machine (which will also be the type of vending machine affected.)
-	for(var/obj/machinery/vending/vendor in GLOB.machines)
-		if(!is_station_level(vendor.z))
+	for(var/obj/machinery/vending/vendor as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/vending))
+		if(!vendor.onstation)
 			continue
 		if(!vendor.density)
 			continue
@@ -48,7 +48,7 @@
 	origin_machine = pick_n_take(vending_machines)
 
 /datum/round_event/brand_intelligence/announce(fake)
-	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please inspect any [origin_machine] brand vendors for aggressive marketing tactics, and reboot them if necessary.", "Machine Learning Alert")
+	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please inspect any [origin_machine] brand vendors for aggressive marketing tactics, and reboot them if necessary.", "Machine Learning Alert", ANNOUNCER_BRANDINTELLIGENCE) //SKYRAT EDIT CHANGE
 
 /datum/round_event/brand_intelligence/start()
 	origin_machine.shut_up = FALSE

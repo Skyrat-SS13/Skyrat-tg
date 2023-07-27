@@ -26,7 +26,7 @@
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
 		/obj/item/gun/ballistic,
-		/obj/item/melee/hammer,
+		/obj/item/melee/breaching_hammer,
 	)
 	skins = list(
 		"marine" = list(

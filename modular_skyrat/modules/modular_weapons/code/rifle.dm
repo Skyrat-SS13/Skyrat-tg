@@ -13,7 +13,7 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	worn_icon_state = "gun"
-	mag_type = /obj/item/ammo_box/magazine/cm68
+	accepted_magazine_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 1
@@ -31,7 +31,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/give_gun_safeties()
 	return

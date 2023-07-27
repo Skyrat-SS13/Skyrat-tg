@@ -62,36 +62,31 @@
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
-	species_traits = list(
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		DRINKSBLOOD,
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOHUNGER,
 		TRAIT_NOBREATH,
+		TRAIT_OXYIMMUNE,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_DRINKS_BLOOD,
+		TRAIT_USES_SKINTONES,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	default_mutant_bodyparts = list(
 		"legs" = "Normal Legs"
 	)
 	exotic_bloodtype = "U"
-	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
 	mutantliver = /obj/item/organ/internal/liver/hemophage
 	mutantstomach = /obj/item/organ/internal/stomach/hemophage
 	mutanttongue = /obj/item/organ/internal/tongue/hemophage
+	mutantlungs = null
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
-	liked_food = BLOODY
 	/// Current multiplier for how fast their blood drains on spec_life(). Higher values mean it goes down faster.
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
@@ -109,11 +104,28 @@
 	return ..()
 
 
-/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species)
+/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species, pref_load)
 	. = ..()
 	to_chat(new_hemophage, HEMOPHAGE_SPAWN_TEXT)
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
+
+
+/datum/species/hemophage/on_species_loss(mob/living/carbon/human/former_hemophage, datum/species/new_species, pref_load)
+	. = ..()
+
+	// if we are still a hemophage for whatever reason then we don't want to do any of this (this can happen with the Pride Mirror)
+	if(ishemophage(former_hemophage))
+		return
+
+	var/obj/item/organ/internal/heart/hemophage/tumor = former_hemophage.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
+
+	// make sure we clear dormant status when changing species
+	if(tumor?.is_dormant)
+		tumor.toggle_dormant_state()
+		tumor_status = tumor.is_dormant
+		toggle_dormant_tumor_vulnerabilities(former_hemophage)
+		former_hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, seconds_per_tick, times_fired)
@@ -487,6 +499,7 @@
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
+	liked_foodtypes = BLOODY
 
 
 /datum/action/cooldown/hemophage

@@ -26,7 +26,7 @@
 	. += "The plasma globs have <b>reduced effectiveness against blobs</b>."
 
 /obj/item/gun/energy/laser/plasma_thrower/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/energy/laser/plasma_thrower/examine_more(mob/user)
 	. = ..()
@@ -69,7 +69,7 @@
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver
 	name = "\improper Tkach 'Ya-Sui' 12 GA revolver"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. A revolver type design with a three shell cylinder. That's right, shell, this one shoots twelve guage."
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	recoil = SAWN_OFF_RECOIL
 	weapon_weight = WEAPON_HEAVY
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
@@ -78,7 +78,7 @@
 	spread = SAWN_OFF_ACC_PENALTY
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/examine_more(mob/user)
 	. = ..()
@@ -122,7 +122,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BACK
 
-	mag_type = /obj/item/ammo_box/magazine/cin_amr
+	accepted_magazine_type = /obj/item/ammo_box/magazine/cin_amr
 	can_suppress = FALSE
 	can_bayonet = FALSE
 
@@ -140,7 +140,7 @@
 
 /obj/item/gun/ballistic/automatic/cin_amr/give_manufacturer_examine()
 
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/automatic/cin_amr/examine_more(mob/user)
 	. = ..()
@@ -168,19 +168,23 @@
 	icon_state = "amr_mag"
 	base_icon_state = "amr_mag"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	ammo_type = /obj/item/ammo_casing/caseless/p60strela
+	ammo_type = /obj/item/ammo_casing/p60strela
 	max_ammo = 3
 	caliber = CALIBER_60STRELA
 
 // AMR bullet
 
-/obj/item/ammo_casing/caseless/p60strela
+/obj/item/ammo_casing/p60strela
 	name = ".60 Strela caseless cartridge"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
 	icon_state = "amr_bullet"
 	desc = "A massive block of propellant with an equally massive round sticking out the top of it."
 	caliber = CALIBER_60STRELA
 	projectile_type = /obj/projectile/bullet/p60strela
+
+/obj/item/ammo_casing/p60strela/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)
 
 /obj/projectile/bullet/p60strela // The funny thing is, these are wild but you only get three of them
 	name =".60 Strela bullet"

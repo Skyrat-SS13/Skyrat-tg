@@ -23,7 +23,7 @@
 		on_cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(remove_cooldown)), cooldown_timer)
 
-	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, .proc/attempt_unlock)
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(attempt_unlock))
 
 /datum/component/off_duty_timer/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_ATOM_ATTACKBY)

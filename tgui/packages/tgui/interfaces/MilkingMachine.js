@@ -88,7 +88,7 @@ const MilkingMachineContent = (props, context) => {
         <Stack>
           <Stack.Item grow>
             <Stack vertical>
-              <Stack.Item grow={1}>
+              <Stack.Item>
                 <Section
                   bold
                   backgroundColor={palette.SectionBackgroundColor}
@@ -129,7 +129,7 @@ const MilkingMachineContent = (props, context) => {
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item grow={1}>
+              <Stack.Item>
                 <Section
                   bold
                   backgroundColor={palette.SectionBackgroundColor}
@@ -319,7 +319,7 @@ const MilkingMachineContent = (props, context) => {
           </Stack.Item>
           <Stack.Item grow>
             <Stack vertical>
-              <Stack.Item grow>
+              <Stack.Item>
                 {beaker !== null && (
                   <Section
                     bold

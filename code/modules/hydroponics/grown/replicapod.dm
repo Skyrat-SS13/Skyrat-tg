@@ -15,7 +15,7 @@
 	yield = 4
 	instability = 10
 	growthstages = 1
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/replicapod)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
@@ -196,8 +196,8 @@
 	podman.faction |= factions
 	if(!features["mcolor"])
 		features["mcolor"] = "#59CE00"
-	if(!features["pod_hair"])
-		features["pod_hair"] = pick(GLOB.pod_hair_list)
+	/*if(!features["pod_hair"])
+		features["pod_hair"] = pick(GLOB.pod_hair_list)*/ //SKYRAT EDIT - Tricolor Pod Hair
 
 	for(var/V in quirks)
 		new V(podman)

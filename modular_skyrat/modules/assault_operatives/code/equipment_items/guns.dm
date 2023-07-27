@@ -5,13 +5,13 @@
 	desc = "A pistol chambered in 10mm magnum and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 
 /obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/gun/energy/e_gun/advtaser/assault_ops
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/energy/e_gun/advtaser/assault_ops/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 // Rifle
 
@@ -32,7 +32,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 4
@@ -47,7 +47,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/gun/ballistic/automatic/assault_ops_rifle/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	name = "\improper IGE-110 magazine"
@@ -87,7 +87,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	can_suppress = TRUE
 	burst_size = 1
@@ -102,7 +102,7 @@
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/assault_ops_smg/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	name = "\improper IGE-260 magazine"
@@ -142,7 +142,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 4
@@ -153,7 +153,7 @@
 	pin = /obj/item/firing_pin/implant/pindicate
 
 /obj/item/gun/ballistic/automatic/assault_ops_shotgun/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	name = "\improper IGE-340 magazine"
@@ -206,7 +206,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	internal_magazine = FALSE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 6
@@ -224,7 +224,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 2.5)
 
 /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_REMOVED)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_REMOVED)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	name = "\improper IGE-410 magazine"

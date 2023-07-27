@@ -1,4 +1,4 @@
-/obj/item/melee/hammer
+/obj/item/melee/breaching_hammer
 	name = "D-4 tactical hammer"
 	desc = "A metallic-plastic composite breaching hammer, looks like a whack with this would severly harm or tire someone."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
@@ -26,7 +26,11 @@
 	/// the amount that the force is multiplied by , that is then applied as damage to the door.
 	var/breaching_multipler = 2.5
 
-/obj/item/melee/hammer/afterattack(atom/target, mob/user, proximity)
+/obj/item/melee/breaching_hammer/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/kneecapping)
+
+/obj/item/melee/breaching_hammer/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
 		return
@@ -42,7 +46,7 @@
 		breaching_target = target
 
 /// Removes any form of tracking from the user and the item , make sure to call it on he proper item
-/obj/item/melee/hammer/proc/remove_track(mob/living/carbon/human/user)
+/obj/item/melee/breaching_hammer/proc/remove_track(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	if(!registered)
 		return FALSE
@@ -55,7 +59,7 @@
 	breacher = null
 
 /// Does the checks for breaching
-/obj/item/melee/hammer/proc/try_breaching(obj/target, mob/living/carbon/human/user)
+/obj/item/melee/breaching_hammer/proc/try_breaching(obj/target, mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	if(breaching || (user == breacher))
 		return FALSE
@@ -64,20 +68,20 @@
 		return NONE
 	var/mob/living/carbon/human/breach_buddy = breacher
 	var/target_item = breach_buddy.held_items.Find(src, 1, 0)
-	var/obj/item/melee/hammer/second_hammer = null
+	var/obj/item/melee/breaching_hammer/second_hammer = null
 	if(target_item)
 		second_hammer = breach_buddy.held_items[target_item]
 	if(!second_hammer)
 		remove_track(user)
 		return FALSE
 	breaching = TRUE
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/melee/hammer, breaching_loop ), user, target)
-	INVOKE_ASYNC(second_hammer, TYPE_PROC_REF(/obj/item/melee/hammer, breaching_loop ), breacher, target)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/melee/breaching_hammer, breaching_loop ), user, target)
+	INVOKE_ASYNC(second_hammer, TYPE_PROC_REF(/obj/item/melee/breaching_hammer, breaching_loop ), breacher, target)
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
 	to_chat(user, text = "You begin forcefully smashing the [target]")
 
 /// Keeps looping under the door is no more , or someone moves , gets shot , dies , incapacitated , stunned , etc
-/obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
+/obj/item/melee/breaching_hammer/proc/breaching_loop(mob/living/user, obj/target)
 	if(user.stat || !target)
 		remove_track(user)
 		return FALSE
