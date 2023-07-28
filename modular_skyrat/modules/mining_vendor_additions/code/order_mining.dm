@@ -30,7 +30,7 @@
 	if(icon_state == "crusher-glaive")
 		name = "proto-kinetic glaive"
 		desc = "A modified proto-kinetic crusher, it is still little more than various mining tools cobbled together \
-		into a high-tech knife on a stick with a handguard and goliath-leather grip. While equally as effective as its unmodified compatriots, \
+			into a high-tech knife on a stick with a handguard and goliath-leather grip. While equally as effective as its unmodified compatriots, \
 		it still does little to aid any but the most skilled - or suicidal."
 		attack_verb_continuous = list("slices", "slashes", "cleaves", "chops", "stabs")
 		attack_verb_simple = list("slice", "slash", "cleave", "chop", "stab")
