@@ -109,7 +109,7 @@
 
 			user.AddElement(/datum/element/forced_gravity, 0)
 			playsound(src, 'sound/effects/gravhit.ogg', 50)
-			to_chat(user, span_notice("Your [src] releases a metallic hum, projecting a local anti-gravity field."))
+			to_chat(user, span_notice("[src] releases a metallic hum, projecting a local anti-gravity field."))
 			gravity_on = TRUE
 			icon_state = ANTIGRAVITY_STATE
 			worn_icon_state = ANTIGRAVITY_STATE
@@ -122,7 +122,7 @@
 
 			ADD_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-			to_chat(user, span_notice("Your [src] shudders and hisses, projecting a local extra-gravity field."))
+			to_chat(user, span_notice("[src] shudders and hisses, projecting a local extra-gravity field."))
 			gravity_on = TRUE
 			icon_state = EXTRAGRAVITY_STATE
 			worn_icon_state = EXTRAGRAVITY_STATE
@@ -131,14 +131,14 @@
 			if(!user.has_gravity() && mode != MODE_GRAVOFF)
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-				to_chat(user, span_notice("Your [src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+				to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
 				mode = MODE_GRAVOFF
 
 			else
 				if(user.has_gravity() && mode != MODE_GRAVOFF)
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
-					to_chat(user, span_notice("Your [src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+					to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
 					mode = MODE_GRAVOFF
 
 			icon_state = OFF_STATE
