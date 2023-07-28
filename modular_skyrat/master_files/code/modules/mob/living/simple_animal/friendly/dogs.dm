@@ -67,7 +67,7 @@
 	)
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
-	nofur = TRUE
+	can_be_shaved = FALSE
 	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0

@@ -17,6 +17,16 @@
 /datum/station_trait/distant_supply_lines/on_round_start()
 	SSeconomy.pack_price_modifier *= 1.2
 
+///A negative trait that reduces the amount of products available from vending machines throughout the station.
+/datum/station_trait/vending_shortage
+	name = "Vending products shortage"
+	trait_type = STATION_TRAIT_NEGATIVE
+	weight = 3
+	show_in_report = TRUE
+	can_revert = FALSE //Because it touches every maploaded vending machine on the station.
+	report_message = "We haven't had the time to take care of the station's vending machines. Some may be tilted, and some products may be unavailable."
+	trait_to_give = STATION_TRAIT_VENDING_SHORTAGE
+
 /datum/station_trait/late_arrivals
 	name = "Late Arrivals"
 	trait_type = STATION_TRAIT_NEGATIVE
@@ -389,7 +399,7 @@
 				if(istype(current_thing, /obj/machinery/vending) && prob(45))
 					var/obj/machinery/vending/vendor_to_trash = current_thing
 					if(prob(50))
-						vendor_to_trash.tilt(get_turf(vendor_to_trash))
+						vendor_to_trash.tilt(get_turf(vendor_to_trash), 0) // crit effects can do some real weird shit, lets disable it
 
 					if(prob(50))
 						vendor_to_trash.take_damage(150)
@@ -571,6 +581,10 @@
 	if(!send_supply_pod_to_area(supply_pack_shielding.generate(null), /area/station/engineering/main, /obj/structure/closet/supplypod/centcompod))
 		//if engineering isnt valid, just send it to the bridge
 		send_supply_pod_to_area(supply_pack_shielding.generate(null), /area/station/command/bridge, /obj/structure/closet/supplypod/centcompod)
+
+	// Let the viro know resistence is futile
+	send_fax_to_area(new /obj/item/paper/fluff/radiation_nebula_virologist(), /area/station/medical/virology, "NT Virology Department", \
+	force = TRUE, force_pod_type = /obj/structure/closet/supplypod/centcompod)
 
 	//Disables radstorms, they don't really make sense since we already have the nebula causing storms
 	var/datum/round_event_control/modified_event = locate(/datum/round_event_control/radiation_storm) in SSevents.control
