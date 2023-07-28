@@ -1,4 +1,4 @@
-/obj/item/organ/internal/tongue/copy_traits_from(obj/item/organ/internal/tongue/old_tongue)
+/obj/item/organ/internal/tongue/copy_traits_from(obj/item/organ/internal/tongue/old_tongue, copy_actions = FALSE)
 	. = ..()
 	// make sure we get food preferences too, because those are now tied to tongues for some reason
 	liked_foodtypes = old_tongue.liked_foodtypes
