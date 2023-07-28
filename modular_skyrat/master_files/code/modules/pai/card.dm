@@ -3,7 +3,7 @@
 	if(!pai)
 		return
 
-	.["pai"]["leash_enabled"] = pai.leashed
+	.["pai"]["leash_enabled"] = pai.leash.enabled
 
 /obj/item/pai_card/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -11,7 +11,7 @@
 		return TRUE
 
 	if(pai && action == "toggle_leash")
-		pai.toggle_leash()
+		pai.leash.toggle_leash()
 		return TRUE
 
 	return FALSE
