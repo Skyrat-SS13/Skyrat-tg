@@ -75,7 +75,7 @@
 	desc = "A back-mounted suspensor harness powered by cells, designed by Deep Spacer tribes to either nullify or amplify gravity. \
 	While it's a pretty cheap bootleg of the personal gravitic engines in-use by the Skrell, this one's been fitted with straps and a basic storage module."
 	cost = CARGO_CRATE_VALUE * 6 // 1200 credits
-	contains = list(/obj/item/gravityharness)
+	contains = list(/obj/item/gravity_harness)
 
 /*
 *	CARPET PACKS

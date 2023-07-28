@@ -6,7 +6,7 @@
 #define ANTIGRAVITY_STATE "gravityharness-anti"
 #define EXTRAGRAVITY_STATE "gravityharness-extra"
 
-/obj/item/gravityharness
+/obj/item/gravity_harness
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "gravity suspension harness"
@@ -35,14 +35,21 @@
 	/// Max amount of items in the storage.
 	var/max_items = 7
 
-/obj/item/gravityharness/Initialize(mapload)
+/obj/item/gravity_harness/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_BACK)
 	if(ispath(current_cell))
 		current_cell = new current_cell(src)
 	create_storage(max_specific_storage = max_w_class, max_total_storage = max_combined_w_class, max_slots = max_items)
 
-/obj/item/gravityharness/equipped(mob/living/user, slot, current_mode)
+/obj/item/gravity_harness/Destroy()
+	if(isatom(current_cell))
+		QDEL_NULL(current_cell)
+
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/gravity_harness/equipped(mob/living/user, slot, current_mode)
 	. = ..()
 	if(slot & ITEM_SLOT_BACK)
 		START_PROCESSING(SSobj, src)
@@ -50,8 +57,8 @@
 
 	if(!slot == ITEM_SLOT_BACK)
 		mode = MODE_GRAVOFF
-
-/obj/item/gravityharness/proc/toggle_mode(mob/user, voluntary)
+/// This cycles the harness's current mode to the next one, likely using the action button. Goes from Off to Anti to Extra, always.
+/obj/item/gravity_harness/proc/toggle_mode(mob/user, voluntary)
 
 	if(!istype(user) || user.incapacitated())
 		return FALSE
@@ -75,7 +82,7 @@
 	playsound(src, modeswitch_sound, 50, TRUE)
 
 ///Changes the mode to `target_mode`, returns False if the mode cannot be changed
-/obj/item/gravityharness/proc/change_mode(target_mode)
+/obj/item/gravity_harness/proc/change_mode(target_mode)
 	if(!target_mode)
 		return FALSE
 
@@ -143,7 +150,7 @@
 	return TRUE
 
 
-/obj/item/gravityharness/dropped(mob/user)
+/obj/item/gravity_harness/dropped(mob/user)
 	. = ..()
 	change_mode(MODE_GRAVOFF)
 	user.RemoveElement(/datum/element/forced_gravity, 0)
@@ -151,15 +158,15 @@
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(user, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
 
-/obj/item/gravityharness/attack_self(mob/user)
+/obj/item/gravity_harness/attack_self(mob/user)
 	toggle_mode(user, TRUE)
-
-/obj/item/gravityharness/proc/get_status_tab_item(mob/living/source, list/items)
+/// This outputs the harness's current mode and cell charge to your status tab, so you don't need to examine it every time.
+/obj/item/gravity_harness/proc/get_status_tab_item(mob/living/source, list/items)
 	SIGNAL_HANDLER
 	items += "Personal Gravitational Field: [mode]"
 	items += "Cell Charge: [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "No Cell!"]"
 
-/obj/item/gravityharness/process(seconds_per_tick)
+/obj/item/gravity_harness/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!user || !ishuman(user) || user.back != src)
 		if(mode != MODE_GRAVOFF)
@@ -180,25 +187,19 @@
 		to_chat(user, span_warning("The gravitic engine cuts off as [current_cell] runs out of charge."))
 		change_mode(MODE_GRAVOFF)
 
-/obj/item/gravityharness/Destroy()
-	if(isatom(current_cell))
-		QDEL_NULL(current_cell)
-
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/gravityharness/get_cell()
+/obj/item/gravity_harness/get_cell()
 	if(cell_cover_open)
 		return current_cell
 
-/obj/item/gravityharness/handle_atom_del(atom/harnesscell)
+/obj/item/gravity_harness/handle_atom_del(atom/harnesscell)
 	if(harnesscell == current_cell)
 		change_mode(MODE_GRAVOFF)
+		current_cell = null
 
 	return ..()
 
 // Show the status of the harness and cell
-/obj/item/gravityharness/examine(mob/user)
+/obj/item/gravity_harness/examine(mob/user)
 	. = ..()
 	if(in_range(src,user) || isobserver(user))
 		. += "The gravity harness is [gravity_on ? "on" : "off"] and the field is set to [mode]"
@@ -207,13 +208,13 @@
 		if(cell_cover_open)
 			. += "The cell cover is open, exposing the battery."
 			if(!current_cell)
-				. += "The cell slot is empty, showing bare connectors."
+				. += span_warning("The cell slot is empty, showing bare connectors.")
 			else
 				. += "\The [current_cell] is firmly in place."
 
 	return .
 
-/obj/item/gravityharness/screwdriver_act(mob/living/user, obj/item/screwdriver)
+/obj/item/gravity_harness/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	balloon_alert(user, "[cell_cover_open ? "closing" : "opening"] cover...")
 	screwdriver.play_tool_sound(src, 100)
 
@@ -226,7 +227,7 @@
 	cell_cover_open = !cell_cover_open
 	return TRUE
 
-/obj/item/gravityharness/attack_hand(mob/user)
+/obj/item/gravity_harness/attack_hand(mob/user)
 	if(!cell_cover_open)
 		return ..()
 
@@ -247,13 +248,13 @@
 	current_cell = FALSE
 	return
 
-/obj/item/gravityharness/emp_act(severity)
+/obj/item/gravity_harness/emp_act(severity)
 	. = ..()
 	if(current_cell)
 		current_cell.emp_act(severity)
 		change_mode(MODE_GRAVOFF)
 
-/obj/item/gravityharness/attackby(obj/item/attacking_item, mob/living/user, params)
+/obj/item/gravity_harness/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/stock_parts/cell))
 		return ..()
 
