@@ -74,7 +74,7 @@
 
 	playsound(src, modeswitch_sound, 50, TRUE)
 
-///Changes the mode to `target_mode`, returns False if the mode cannot be changed
+///Changes the mode to `target_mode`, returns `FALSE` if the mode cannot be changed
 /obj/item/gravityharness/proc/change_mode(target_mode)
 	if(!target_mode)
 		return FALSE
@@ -96,8 +96,10 @@
 	switch(target_mode)
 		if(MODE_ANTIGRAVITY)
 			mode = MODE_ANTIGRAVITY
+
 			if(user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust(get_turf(src))
+
 			user.AddElement(/datum/element/forced_gravity, 0)
 			playsound(src, 'sound/effects/gravhit.ogg', 50)
 			to_chat(user, span_notice("Your harness releases a metallic hum, projecting a local anti-gravity field."))
@@ -107,6 +109,7 @@
 
 		if(MODE_EXTRAGRAVITY)
 			mode = MODE_EXTRAGRAVITY
+
 			if(!user.has_gravity())
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 
@@ -121,14 +124,14 @@
 			if(!user.has_gravity() && mode != MODE_GRAVOFF)
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-				to_chat(user, span_notice("Your harness lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+				to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
 				mode = MODE_GRAVOFF
 
 			else
 				if(user.has_gravity() && mode != MODE_GRAVOFF)
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
-					to_chat(user, span_notice("Your harness lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+					to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
 					mode = MODE_GRAVOFF
 
 			icon_state = OFF_STATE
@@ -191,8 +194,8 @@
 	if(cell_cover_open)
 		return current_cell
 
-/obj/item/gravityharness/handle_atom_del(atom/harnesscell)
-	if(harnesscell == current_cell)
+/obj/item/gravity_harness/handle_atom_del(atom/harness_cell)
+	if(harness_cell == current_cell)
 		change_mode(MODE_GRAVOFF)
 
 	return ..()
@@ -200,9 +203,9 @@
 // Show the status of the harness and cell
 /obj/item/gravityharness/examine(mob/user)
 	. = ..()
-	if(in_range(src,user) || isobserver(user))
+	if(in_range(src, user) || isobserver(user))
 		. += "The gravity harness is [gravity_on ? "on" : "off"] and the field is set to [mode]"
-		. += "The power meter shows [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "!invalid!"] charge remaining."
+		. += "The power meter shows [current_cell ? "<b>[round(current_cell.percent(), 0.1)]%</b> charge remaining." : "[span_warning("\"MISSING CELL\"")]"]"
 
 		if(cell_cover_open)
 			. += "The cell cover is open, exposing the battery."
