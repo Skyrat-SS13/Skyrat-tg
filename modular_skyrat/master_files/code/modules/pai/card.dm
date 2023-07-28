@@ -1,4 +1,4 @@
-/obj/item/pai_card/proc/download_candidate(mob/user, ckey)
+/obj/item/pai_card/download_candidate(mob/user, ckey)
 	. = ..()
 
 	if(!.)
