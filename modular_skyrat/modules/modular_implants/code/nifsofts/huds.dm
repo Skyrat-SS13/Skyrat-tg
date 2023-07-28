@@ -14,7 +14,7 @@
 	/// A list of traits that we want to add while the NIFSoft is active. This is here to emulate things like sci-goggles
 	var/list/added_eyewear_traits = list()
 
-// Attemps to add the hud variables from the NIFSoft to the user.
+/// Attemps to add the hud variables from the NIFSoft to the user.
 /datum/nifsoft/hud/proc/add_huds()
 	if(hud_type)
 		var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
@@ -43,7 +43,7 @@
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active && (!istype(worn_glasses) || !HAS_TRAIT(worn_glasses, TRAIT_NIFSOFT_HUD_GRANTER)))
-		linked_mob.balloon_alert(linked_mob ,"no compatible eyewear!")
+		linked_mob.balloon_alert(linked_mob, "no compatible eyewear!")
 		return FALSE
 
 	. = ..() // active = !active
