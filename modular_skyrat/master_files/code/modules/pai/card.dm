@@ -4,7 +4,7 @@
 	if(!.)
 		return
 
-	mod_pai.leash.disable_leash() // leash starts off disabled by default
+	pai.leash.disable_leash() // leash starts off disabled by default
 
 /obj/item/pai_card/ui_data(mob/user)
 	. = ..()
