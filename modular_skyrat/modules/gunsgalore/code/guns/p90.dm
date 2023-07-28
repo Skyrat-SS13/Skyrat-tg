@@ -9,7 +9,7 @@
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "p90"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	mag_type = /obj/item/ammo_box/magazine/p90
+	accepted_magazine_type = /obj/item/ammo_box/magazine/p90
 	can_suppress = FALSE
 	fire_delay = 1
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/p90_fire.ogg'

@@ -18,7 +18,7 @@
 	gender = MALE
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/crab/shuffle
+/mob/living/basic/crab/shuffle
 	name = "Shuffle"
 	real_name = "Shuffle"
 	desc = "Oh no, it's him!"
@@ -26,7 +26,7 @@
 	gender = MALE
 	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/crab/shuffle/Initialize(mapload)
+/mob/living/basic/crab/shuffle/Initialize(mapload)
 	. = ..()
 	update_transform(0.5)
 

@@ -15,7 +15,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	inhand_icon_state = "c20r"
 	selector_switch_icon = TRUE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
 	fire_delay = 2 //Slightly buffed firespeed over the last cmg because the bullets are a bit weaker
 	burst_size = 1
 	actions_types = list()
