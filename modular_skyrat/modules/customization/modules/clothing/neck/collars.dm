@@ -54,7 +54,7 @@
 
 /obj/item/clothing/neck/human_petcollar/thinchoker
 	name = "thin choker"
-	desc = "Like the thicker one, but just a bit thinner!"
+	desc = "Like the normal one, but thinner!"
 	icon_state = "thinchoker"
 	greyscale_config = /datum/greyscale_config/collar/thinchoker
 	greyscale_config_worn = /datum/greyscale_config/collar/thinchoker/worn
