@@ -116,7 +116,6 @@
 		return FALSE
 
 	human_parent.dna.features["body_size"] = size_to_apply
-	human_parent.maptext_height = 32 * human_parent.dna.features["body_size"]
 	human_parent.dna.update_body_size()
 	return TRUE
 

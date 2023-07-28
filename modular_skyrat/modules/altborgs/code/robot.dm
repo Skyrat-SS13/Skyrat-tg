@@ -14,7 +14,8 @@
 	density = FALSE // We lose density and stop bumping passable dense things.
 
 	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
-		maptext_height = 32 //Offset base chat-height value
+		var/tallbot_offset = TALLBOT_MAPTEXT_OFFSET(current_size)
+		maptext_height -= tallbot_offset
 
 		// Resting effects
 		var/turf/sit_pos = get_turf(src)
@@ -45,7 +46,15 @@
 		layer = initial(layer)
 	density = initial(density) // We were prone before, so we become dense and things can bump into us again.
 	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
-		maptext_height = 48 //Offset value of tallborgs
+		var/tallbot_offset = TALLBOT_MAPTEXT_OFFSET(current_size)
+		maptext_height += tallbot_offset
+
+/mob/living/silicon/update_transform(resize = RESIZE_DEFAULT_SIZE)
+	var/old_tallbot_offset = TALLBOT_MAPTEXT_OFFSET(current_size)
+	. = ..()
+	if(resize != RESIZE_DEFAULT_SIZE && body_position == STANDING_UP)
+		var/tallbot_offset = TALLBOT_MAPTEXT_OFFSET(current_size)
+		maptext_height += tallbot_offset - old_tallbot_offset
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"

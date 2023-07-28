@@ -11,7 +11,8 @@
 	if (!istype(robot))
 		return
 	if (model_features && (R_TRAIT_TALL in model_features))
-		cyborg.maptext_height = 48 //Runechat blabla
+		if(cyborg.body_position == STANDING_UP)
+			cyborg.maptext_height += TALLBOT_MAPTEXT_OFFSET(cyborg.current_size)
 		cyborg.AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 		switch(cyborg_base_icon)
@@ -20,7 +21,8 @@
 			else
 
 	else
-		cyborg.maptext_height = initial(cyborg.maptext_height)
+		if(cyborg.body_position == STANDING_UP)
+			cyborg.maptext_height -= TALLBOT_MAPTEXT_OFFSET(cyborg.current_size)
 		cyborg.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 		if(cyborg.GetComponent(/datum/component/robot_smoke))
