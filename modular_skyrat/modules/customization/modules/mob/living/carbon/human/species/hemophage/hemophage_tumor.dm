@@ -88,13 +88,16 @@
 
 	bloodloss_rate *= is_dormant ? 1 / DORMANT_BLOODLOSS_MULTIPLIER : DORMANT_BLOODLOSS_MULTIPLIER
 
+	update_appearance()
+
+	if(isnull(owner))
+		return
+
 	if(is_dormant)
 		owner.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 	else
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
-
-	update_appearance()
 
 
 /// Simple helper proc that returns whether or not the given hemophage is in a closet subtype (but not in any bodybag subtype).
