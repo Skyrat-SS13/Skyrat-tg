@@ -37,8 +37,11 @@
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs."
 	id = "synth_lungs"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 40
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5, /datum/material/glass = SMALL_MATERIAL_AMOUNT*5)
+	construction_time = 4 SECONDS
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
 	build_path = /obj/item/organ/internal/lungs/synth
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1

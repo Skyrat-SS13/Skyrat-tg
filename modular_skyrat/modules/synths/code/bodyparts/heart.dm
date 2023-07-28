@@ -32,8 +32,11 @@
 	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs. Without this, synthetics are unable to move."
 	id = "synth_heart"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 40
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5, /datum/material/glass = SMALL_MATERIAL_AMOUNT*5)
+	construction_time = 4 SECONDS
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
 	build_path = /obj/item/organ/internal/heart/synth
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1

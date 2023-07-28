@@ -26,8 +26,11 @@
 	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	id = "synth_eyes"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 40
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5, /datum/material/glass = SMALL_MATERIAL_AMOUNT*5)
+	construction_time = 4 SECONDS
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
 	build_path = /obj/item/organ/internal/eyes/synth
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
