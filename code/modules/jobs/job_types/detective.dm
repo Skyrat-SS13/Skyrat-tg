@@ -64,8 +64,8 @@
 	mask = /obj/item/clothing/mask/cigarette
 	neck = /obj/item/clothing/neck/tie/detective
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	l_pocket = /obj/item/toy/crayon/white
-	r_pocket = /obj/item/modular_computer/pda/detective // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/modular_computer/pda/detective
+	l_pocket = /obj/item/modular_computer/pda/detective // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/toy/crayon/white
+	r_pocket = /obj/item/lighter
 
 	chameleon_extras = list(
 		/obj/item/clothing/glasses/sunglasses,
