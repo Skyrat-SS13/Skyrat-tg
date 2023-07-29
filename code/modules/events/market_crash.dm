@@ -22,13 +22,8 @@
 /datum/round_event/market_crash/announce(fake)
 	var/list/poss_reasons = list("the alignment of the moon and the sun",\
 		"some risky housing market outcomes",\
-<<<<<<< HEAD
-		"The B.E.P.I.S. team's untimely downfall",\
-		"speculative SolFed grants backfiring",\
-		"greatly exaggerated reports of Nanotrasen accountancy personnel committing mass suicide") //Skyrat Edit; original was "speculative Terragov grants backfiring"
-=======
 		"the B.E.P.I.S. team's untimely downfall",\
-		"speculative Terragov grants backfiring",\
+		"speculative SolFed grants backfiring",\  //Skyrat Edit; original was "speculative Terragov grants backfiring"
 		"greatly exaggerated reports of Nanotrasen accountancy personnel being \"laid off\"",\
 		"a \"great investment\" into \"non-fungible tokens\" by a \"moron\"",\
 		"a number of raids from Tiger Cooperative agents",\
@@ -37,7 +32,6 @@
 		"the \"Nanotrasen+\" social media network's unfortunate success",\
 		"uhh, bad luck, we guess"
 	)
->>>>>>> 72379e9e8d2 (Arconomy: Balance Update 2023 (#77055))
 	var/reason = pick(poss_reasons)
 	priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
 
