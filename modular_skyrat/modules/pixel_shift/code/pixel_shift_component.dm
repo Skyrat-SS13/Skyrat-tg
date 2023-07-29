@@ -6,7 +6,9 @@
 	var/shifting = TRUE
 	/// Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.
 	var/passthroughable = NONE
+	/// The maximum amount of pixels allowed to move in the turf.
 	var/maximum_pixel_shift = 16
+	/// The amount of pixel shift required to make the parent passthroughable.
 	var/passable_shift_threshold = 8
 
 /datum/component/pixel_shift/Initialize(...)
@@ -30,27 +32,31 @@
 	UnregisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
 	UnregisterSignal(parent, COMSIG_LIVING_CAN_ALLOW_THROUGH)
 
+/// Overrides Move to Pixel Shift.
 /datum/component/pixel_shift/proc/pre_move_check(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
 	if(shifting)
 		pixel_shift(source, direct)
 		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE
 
+/// Checks if the parent is considered passthroughable from a direction. Projectiles will ignore the check and hit.
 /datum/component/pixel_shift/proc/check_passable(mob/source, atom/movable/mover, border_dir)
 	SIGNAL_HANDLER
-	// Make sure to not allow projectiles of any kind past where they normally wouldn't.
 	if(!isprojectile(mover) && !mover.throwing && passthroughable & border_dir)
 		return COMPONENT_LIVING_PASSABLE
 
+/// Activates Pixel Shift on Keybind down. Only Pixel Shift movement will be allowed.
 /datum/component/pixel_shift/proc/pixel_shift_down()
 	SIGNAL_HANDLER
 	shifting = TRUE
 	return COMSIG_KB_ACTIVATED
 
+/// Disables Pixel Shift on Keybind up. Allows to Move.
 /datum/component/pixel_shift/proc/pixel_shift_up()
 	SIGNAL_HANDLER
 	shifting = FALSE
 
+/// Sets parent pixel offsets to default and deletes the component.
 /datum/component/pixel_shift/proc/unpixel_shift()
 	SIGNAL_HANDLER
 	passthroughable = NONE
@@ -60,6 +66,7 @@
 		owner.pixel_y = owner.body_position_pixel_y_offset + owner.base_pixel_y
 	qdel(src)
 
+/// In-turf pixel movement which can allow things to pass through if the threshold is met.
 /datum/component/pixel_shift/proc/pixel_shift(mob/source, direct)
 	passthroughable = NONE
 	var/mob/living/owner = parent
