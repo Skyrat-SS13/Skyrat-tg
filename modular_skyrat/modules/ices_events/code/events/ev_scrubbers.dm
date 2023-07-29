@@ -56,7 +56,7 @@
 	)
 
 /datum/round_event/scrubber_overflow/ices/setup()
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_scrubber))
 		var/turf/scrubber_turf = get_turf(temp_vent)
 		var/area/scrubber_area = get_area(temp_vent)
 		if(!scrubber_turf)

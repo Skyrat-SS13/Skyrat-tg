@@ -42,10 +42,10 @@
 	. = ..()
 	if(!.)
 		return
-	new_head_owner.become_blind(limb_id)
+	new_head_owner.become_blind(bodypart_trait_source)
 
 /obj/item/bodypart/head/psyker/drop_limb(special, dismembered)
-	owner.cure_blind(limb_id)
+	owner.cure_blind(bodypart_trait_source)
 	return ..()
 
 /// flavorful variant of psykerizing that deals damage and sends messages before calling psykerize()
@@ -129,7 +129,7 @@
 	icon_state = "lucky"
 	force = 10
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/revchap
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/revchap
 	obj_flags = UNIQUE_RENAME
 	custom_materials = null
 	actions_types = list(/datum/action/item_action/pray_refill)
