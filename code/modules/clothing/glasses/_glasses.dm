@@ -545,9 +545,7 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	chameleon_action.emp_randomise()
-=======
 	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
->>>>>>> c92d338dade (Refactors chameleon actions, Adds chameleon outfit saving, Adds chameleon scanner (#77140))
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "thermoncle"
