@@ -57,6 +57,7 @@
 
 	if(!slot == ITEM_SLOT_BACK)
 		mode = MODE_GRAVOFF
+
 /// This cycles the harness's current mode to the next one, likely using the action button. Goes from Off to Anti to Extra, always.
 /obj/item/gravity_harness/proc/toggle_mode(mob/user, voluntary)
 
