@@ -87,22 +87,11 @@
 	var/start_time = REALTIMEOFDAY
 	string_gen = rustg_cnoise_generate("[initial_closed_chance]", "[smoothing_iterations]", "[birth_limit]", "[death_limit]", "[world.maxx]", "[world.maxy]") //Generate the raw CA data
 
-<<<<<<< HEAD
-	// Area var pullouts to make accessing in the loop faster
-	var/flora_allowed = (generate_in.area_flags & FLORA_ALLOWED) && length(flora_spawn_list)
-	var/feature_allowed = (generate_in.area_flags & FLORA_ALLOWED) && length(feature_spawn_list)
-	var/mobs_allowed = (generate_in.area_flags & MOB_SPAWN_ALLOWED) && length(mob_spawn_list)
-	var/megas_allowed = (generate_in.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && length(megafauna_spawn_list)
-
-	for(var/i in turfs) //Go through all the turfs and generate them
-		var/turf/gen_turf = i
+	for(var/turf/gen_turf as anything in turfs) //Go through all the turfs and generate them
 		//SKYRAT EDIT ADDITION
 		if(istype(gen_turf, /turf/open/space/mirage))
 			continue
 		//SKYRAT EDIT END
-=======
-	for(var/turf/gen_turf as anything in turfs) //Go through all the turfs and generate them
->>>>>>> 61abab479b6 (Planetary station traits: Forever Storm and Forested (#76957))
 
 		var/closed = string_gen[world.maxx * (gen_turf.y - 1) + gen_turf.x] != "0"
 		var/turf/new_turf = pick(closed ? closed_turf_types : open_turf_types)
