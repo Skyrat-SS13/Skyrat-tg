@@ -287,12 +287,20 @@
 
 /datum/round_event/vent_clog/strange/get_mob()
 	var/static/list/mob_list = list(
+<<<<<<< HEAD
+=======
+		/mob/living/basic/bear,
+		/mob/living/basic/cockroach/glockroach/mobroach,
+>>>>>>> cc64ed0ca47 (convert the bear to a basic mobster (#77143))
 		/mob/living/basic/lightgeist,
 		/mob/living/basic/mothroach,
 		/mob/living/basic/cockroach/glockroach/mobroach,
 		/mob/living/basic/viscerator,
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/bear,
 		/mob/living/simple_animal/hostile/mushroom,
+=======
+>>>>>>> cc64ed0ca47 (convert the bear to a basic mobster (#77143))
 		/mob/living/simple_animal/hostile/retaliate/goose, //Janitors HATE geese.
 		/mob/living/simple_animal/pet/gondola,
 	)
