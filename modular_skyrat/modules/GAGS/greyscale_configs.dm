@@ -412,6 +412,19 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
+//Flannel Shirt
+
+/datum/greyscale_config/flannelgags
+	name = "Flannel Shirt"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flannel/flannel.json'
+
+/datum/greyscale_config/flannelgags/worn
+	name = "Flannel Shirt (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flannel/flannel_worn.json'
+
+
 // ARMOR
 
 /datum/greyscale_config/heck_suit/worn/digi
