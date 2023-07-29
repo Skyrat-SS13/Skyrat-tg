@@ -12,19 +12,20 @@
 /obj/item/food/colonial_course/attack_self(mob/user, modifiers)
 	preserved_food = FALSE
 	icon_state = "[initial(icon_state)]_unwrapped"
-	to_chat(user, span_notice("You unpackage the [src]."))
+	to_chat(user, span_notice("You unpackage \the [src]."))
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 
 /obj/item/food/colonial_course/attack(mob/living/target, mob/user, def_zone)
 	if(preserved_food)
 		to_chat(user, span_warning("[src] is still packaged!"))
 		return FALSE
+
 	return ..()
 
 /obj/item/food/colonial_course/pljeskavica
 	name = "pljeskavica"
 	desc = "Freshly-printed steaming hot burger consisting of a biogenerator-produced handcraft-imitating buns, with a minced meat patty inbetween, among various vegetables and sauces.\
-	<br> Looks good <i>enough</i> for something as replicated as this. Its packaging is covered in copious amounts of information on its nutritional facts, contents and the expiry date. Sadly, it's all written in Pan-Slavic."
+		<br> Looks good <i>enough</i> for something as replicated as this. Its packaging is covered in copious amounts of information on its nutritional facts, contents and the expiry date. Sadly, it's all written in Pan-Slavic."
 	trash_type = /obj/item/trash/pljeskavica
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -37,7 +38,7 @@
 /obj/item/food/colonial_course/nachos
 	name = "plain nachos tray"
 	desc = "A vacuum-sealed package with what seems to be a generous serving of triangular corn chips, with three sections reserved for a salsa, cheese and guacamole sauces.\
-	<br> Probably the best-looking food you can find in these rations, perhaps due to its simplicity."
+		<br> Probably the best-looking food you can find in these rations, perhaps due to its simplicity."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -50,7 +51,7 @@
 /obj/item/food/colonial_course/blins
 	name = "condensed milk crepes"
 	desc = "A vacuum-sealed four-pack of stuffed crepes with a minimal amount of markings. There is nothing else to it, to be frank.\
-	<br> Surprisingly tasty for its looks, as long as you're not lactose intolerant, on diet, or vegan. The back of the packaging is covered in a mass of information detailing the product."
+		<br> Surprisingly tasty for its looks, as long as you're not lactose intolerant, on diet, or vegan. The back of the packaging is covered in a mass of information detailing the product."
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2,
 						/datum/reagent/consumable/caramel = 3,
 						/datum/reagent/consumable/milk = 4)
@@ -86,14 +87,14 @@
 	name = "empty crepes wrapper"
 	desc = "Empty torn wrapper that used to hold something ridiculously sweet. It's probably best to recycle it."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
-	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT*0.5)
+	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT * 0.5)
 	icon_state = "blin_trash"
 
 /obj/item/storage/box/gum/colonial
 	name = "mixed bubblegum packet"
-	desc = "The packaging is entirely, -finally-, is written in something intelligible: Pan-Slavic, with a small text of Sol Common. That can be examined."
+	desc = "The packaging is entirely written in Pan-Slavic, with a small blurb of Sol Common. You would need to take a better look to read it, though, as it is written quite small."
 	special_desc = "Examining the small text reveals the following: <i>\"Foreign colonization ration, model J: mixed origin, adult. Bubblegum package, medicinal, recreational. <br>\
-	Do not overconsume. Certain strips contain nicotine.\"</i>"
+		Do not overconsume. Certain strips contain nicotine.\"</i>"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "bubblegum"
 
@@ -103,7 +104,7 @@
 	new /obj/item/food/bubblegum/nicotine(src)
 	new /obj/item/food/bubblegum/nicotine(src)
 
-/obj/item/storage/box/utensil
+/obj/item/storage/box/utensils
 	name = "utensils package"
 	desc = "A small package containing various utensils required for <i>human</i> consumption of various foods. \
 	In a normal situation contains a plastic fork, a plastic spoon, and a single serviette."
@@ -115,9 +116,10 @@
 
 /obj/item/storage/box/utensil/Initialize(mapload)
 	. = ..()
-	atom_storage.set_holdable(list(/obj/item/kitchen/spoon/plastic,
-									/obj/item/kitchen/fork/plastic,
-									/obj/item/serviette,
+	atom_storage.set_holdable(list(
+		/obj/item/kitchen/spoon/plastic,
+		/obj/item/kitchen/fork/plastic,
+		/obj/item/serviette,
 	))
 	atom_storage.max_slots = 4
 
@@ -143,7 +145,7 @@
 /obj/item/storage/box/colonial_rations
 	name = "foreign colonization ration"
 	desc = "A freshly printed civilian MRE, or more specifically a lunchtime food package, for use in the early colonization times by the first settlers of what is now known as the NRI. <br>\
-	The lack of any imprinted dates, as well as its origin, -the food replicator-, should probably give you a good enough hint at its short, if reasonable, expiry time."
+		The lack of any imprinted dates, as well as its origin, <i>the food replicator</i>, should probably give you a good enough hint at its short, if reasonable, expiry time."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "mre_package"
 	foldable_result = null

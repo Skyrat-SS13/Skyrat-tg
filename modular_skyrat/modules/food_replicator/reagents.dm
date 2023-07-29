@@ -18,7 +18,10 @@
 	. = TRUE
 
 /datum/chemical_reaction/food/unpowdered_tea
-	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/powdered_tea = 1)
+	required_reagents = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/consumable/powdered_tea = 1,
+	)
 	results = list(/datum/reagent/consumable/tea = 2)
 	mix_message = "The mixture instantly heats up."
 	reaction_flags = REACTION_INSTANT
@@ -49,14 +52,17 @@
 	. = TRUE
 
 /datum/chemical_reaction/food/unpowdered_coffee
-	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/powdered_coffee = 1)
+	required_reagents = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/consumable/powdered_coffee = 1,
+	)
 	results = list(/datum/reagent/consumable/coffee = 2)
 	mix_message = "The mixture instantly heats up."
 	reaction_flags = REACTION_INSTANT
 
 /datum/reagent/consumable/powdered_coco
 	name = "Powdered Coco"
-	description = "Made with love (citation needed)! And reclaimed biomass."
+	description = "Made with love (citation needed), and reclaimed biomass."
 	nutriment_factor = 0
 	color = "#403010" // rgb: 64, 48, 16
 	taste_description = "creamy'ish dry chocolate"
@@ -73,7 +79,10 @@
 	..()
 
 /datum/chemical_reaction/food/unpowdered_coco
-	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/powdered_coco = 1)
+	required_reagents = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/consumable/powdered_coco = 1,
+	)
 	results = list(/datum/reagent/consumable/hot_coco = 2)
 	mix_message = "The mixture instantly heats up."
 	reaction_flags = REACTION_INSTANT
@@ -88,7 +97,10 @@
 	default_container = /obj/item/reagent_containers/cup/soda_cans/lemon_lime
 
 /datum/chemical_reaction/food/unpowdered_lemonade
-	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/powdered_lemonade = 1)
+	required_reagents = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/consumable/powdered_lemonade = 1,
+	)
 	results = list(/datum/reagent/consumable/lemonade = 2)
 	mix_message = "The mixture instantly cools down."
 	reaction_flags = REACTION_INSTANT
@@ -111,14 +123,17 @@
 
 /datum/reagent/consumable/powdered_milk/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(affected_mob.getBruteLoss() && SPT_PROB(5, seconds_per_tick))
-		affected_mob.heal_bodypart_damage(0.5,0)
+		affected_mob.heal_bodypart_damage(0.5, 0)
 		. = TRUE
 	if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
 		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 0.5 * seconds_per_tick)
 	..()
 
 /datum/chemical_reaction/food/unpowdered_milk
-	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/powdered_milk = 1)
+	required_reagents = list(
+		/datum/reagent/water = 1,
+		/datum/reagent/consumable/powdered_milk = 1,
+	)
 	results = list(/datum/reagent/consumable/milk = 2)
 	mix_message = "The mixture cools down."
 	reaction_flags = REACTION_INSTANT

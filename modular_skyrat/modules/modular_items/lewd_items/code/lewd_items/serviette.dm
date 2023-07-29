@@ -9,7 +9,6 @@
 	var/used_serviette = /obj/item/serviette_used
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
-	gender = PLURAL
 
 /obj/item/serviette_used
 	name = "dirty serviette"

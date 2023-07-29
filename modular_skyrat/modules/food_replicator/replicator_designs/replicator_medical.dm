@@ -7,7 +7,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/mesh
-	name = "regenerative meshes"
+	name = "regenerative mesh"
 	id = "slavic_mesh"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
@@ -31,7 +31,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/gauze
-	name = "medical gauzes"
+	name = "medical gauze"
 	id = "slavic_gauze"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
