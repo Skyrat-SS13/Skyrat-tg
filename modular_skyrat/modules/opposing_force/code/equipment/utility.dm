@@ -67,15 +67,6 @@
 	item_type = /obj/item/reagent_containers/syringe/mulligan
 	description = "A syringe containing a chemical that can completely change the user's identity."
 
-/datum/opposing_force_equipment/gear/borer_egg
-	name = "Cortical Borer Egg"
-	item_type = /obj/effect/gibspawner/generic
-	description = "The egg of a cortical borer. The cortical borer is a parasite that can produce chemicals upon command, as well as learn new chemicals through the blood if old enough."
-	admin_note = "Allows a ghost to take control of a Cortical Borer."
-
-/datum/opposing_force_equipment/gear/borer_egg/on_issue(mob/living/target)
-	new /obj/effect/mob_spawn/ghost_role/borer_egg/opfor(get_turf(target))
-
 
 /datum/opposing_force_equipment/gear/holoparasite
 	item_type = /obj/item/guardiancreator/tech/choose/traitor
