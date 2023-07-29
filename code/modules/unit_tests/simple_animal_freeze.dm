@@ -90,12 +90,6 @@
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
 		/mob/living/simple_animal/hostile/asteroid/polarbear/lesser,
 		/mob/living/simple_animal/hostile/asteroid/wolf,
-		/mob/living/simple_animal/hostile/bear,
-		/mob/living/simple_animal/hostile/bear/butter,
-		/mob/living/simple_animal/hostile/bear/fightpit,
-		/mob/living/simple_animal/hostile/bear/hudson,
-		/mob/living/simple_animal/hostile/bear/russian,
-		/mob/living/simple_animal/hostile/bear/snow,
 		/mob/living/simple_animal/hostile/big_legion,
 		/mob/living/simple_animal/hostile/blob,
 		/mob/living/simple_animal/hostile/blob/blobbernaut,
@@ -274,7 +268,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/blackops,
