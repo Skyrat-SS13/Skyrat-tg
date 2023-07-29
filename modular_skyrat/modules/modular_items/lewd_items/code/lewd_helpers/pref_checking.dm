@@ -17,11 +17,11 @@
 		return TRUE // We are good to go!
 
 	if(!client?.prefs || (mechanic_user == src))
-		return FALSE // Clients are a fickle mistress
+		return FALSE // Clients are a fickle mistress, but also no need for any further checks if someone is doing it on themselves without the prefs to allow it.
 
 	var/message_to_log = "[src] had an ERP mechanic attempted to be used on them while their prefs were disabled"
 	if(used_item)
-		message_to_log = "[used_item] was attempted to be used on [src] while their prefs were disabled "
+		message_to_log = "[used_item] was attempted to be used on [src] while their prefs were disabled"
 
 	var/turf/parent_turf = get_turf(src)
 	if(parent_turf)
@@ -30,6 +30,6 @@
 	if(mechanic_user)
 		message_to_log += ", by [mechanic_user]"
 
-	log_message(message_to_log, LOG_GAME)
+	log_message(message_to_log + ".", LOG_GAME)
 
 	return FALSE
