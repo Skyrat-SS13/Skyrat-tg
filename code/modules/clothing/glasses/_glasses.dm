@@ -527,11 +527,9 @@
 /obj/item/clothing/glasses/thermal/syndi
 	name = "chameleon thermals"
 	desc = "A pair of thermal optic goggles with an onboard chameleon generator."
-<<<<<<< HEAD
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT, I don't think the regular description persists through chameleon changes.
-
-	var/datum/action/item_action/chameleon/change/chameleon_action
+	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
+	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT ADDITION, I don't think the regular description persists through chameleon changes.
 
 /obj/item/clothing/glasses/thermal/syndi/Initialize(mapload)
 	. = ..()
