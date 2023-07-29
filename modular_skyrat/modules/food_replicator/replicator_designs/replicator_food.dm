@@ -1,5 +1,5 @@
 /datum/design/ration
-	name = "foreign colonization ration"
+	name = "Foreign Colonization Ration"
 	id = "slavic_mre"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 550)
@@ -7,7 +7,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/pljeskavica
-	name = "foreign colonization ration, main course"
+	name = "Foreign Colonization Ration, Main Course"
 	id = "slavic_burger"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 200)
@@ -15,7 +15,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/nachos
-	name = "foreign colonization ration, side dish"
+	name = "Foreign Colonization Ration, Side Dish"
 	id = "mexican_chips"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
@@ -23,7 +23,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/blins
-	name = "foreign colonization ration, dessert"
+	name = "Foreign Colonization Ration, Dessert"
 	id = "slavic_crepes"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
@@ -31,15 +31,15 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/spork
-	name = "foreign colonization ration, utensils"
+	name = "Foreign Colonization Ration, Utensils"
 	id = "slavic_utens"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
-	build_path = /obj/item/storage/box/utensil
+	build_path = /obj/item/storage/box/utensils
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
-/datum/design/fasani
-	name = "foreign colonization ration, bubblegum pack"
+/datum/design/bubblegum
+	name = "Foreign Colonization Ration, Bubblegum Pack"
 	id = "slavic_gum"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
@@ -47,7 +47,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/cup
-	name = "paper cup, stylised, empty"
+	name = "Empty Paper Cup"
 	id = "slavic_cup"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 10)
@@ -55,7 +55,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/tea
-	name = "black tea, powdered"
+	name = "Powdered Black Tea"
 	id = "slavic_tea"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 4)
@@ -63,7 +63,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/coffee
-	name = "coffee, powdered"
+	name = "Powdered Coffee"
 	id = "slavic_covfefe"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 4)
@@ -71,7 +71,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/cacoca
-	name = "hot chocolate, powdered"
+	name = "Powdered Hot Chocolate"
 	id = "slavic_coco"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 4)
@@ -79,23 +79,23 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/lemonade
-	name = "lemonade, powdered"
+	name = "Powdered Lemonade"
 	id = "slavic_lemon"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 4)
 	make_reagent = /datum/reagent/consumable/powdered_lemonade
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
-/datum/design/sugar
-	name = "sugar"
+/datum/design/replicator_sugar
+	name = "Sugar"
 	id = "slavic_sugar"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 5)
 	make_reagent = /datum/reagent/consumable/sugar
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
-/datum/design/milk
-	name = "milk, powdered"
+/datum/design/powdered_milk
+	name = "Powdered Milk"
 	id = "slavic_milk"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 4)
@@ -103,7 +103,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_FOOD)
 
 /datum/design/water
-	name = "water"
+	name = "Water"
 	id = "slavic_water"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 1)

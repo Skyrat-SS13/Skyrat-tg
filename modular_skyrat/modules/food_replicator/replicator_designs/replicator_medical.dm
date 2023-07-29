@@ -1,5 +1,5 @@
 /datum/design/sutures
-	name = "sutures"
+	name = "Sutures"
 	id = "slavic_suture"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
@@ -7,7 +7,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/mesh
-	name = "regenerative mesh"
+	name = "Regenerative Mesh"
 	id = "slavic_mesh"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
@@ -15,7 +15,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/bruise_patch
-	name = "bruise patch"
+	name = "Bruise Patch"
 	id = "slavic_bruise"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
@@ -23,7 +23,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/burn_patch
-	name = "burn patch"
+	name = "Burn Patch"
 	id = "slavic_burn"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
@@ -31,7 +31,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/gauze
-	name = "medical gauze"
+	name = "Medical Gauze"
 	id = "slavic_gauze"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
@@ -39,23 +39,23 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/epi_pill
-	name = "epinephrine pill"
+	name = "Epinephrine Pill"
 	id = "slavic_epi"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
 	build_path = /obj/item/reagent_containers/pill/epinephrine
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
-/datum/design/salb_pill
-	name = "salbutamol pill"
-	id = "slavic_salb"
+/datum/design/conv_pill
+	name = "Convermol Pill"
+	id = "slavic_conv"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
-	build_path = /obj/item/reagent_containers/pill/salbutamol
+	build_path = /obj/item/reagent_containers/pill/convermol
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/multiver_pill
-	name = "multiver pill"
+	name = "Multiver Pill"
 	id = "slavic_multiver"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)

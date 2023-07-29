@@ -3,6 +3,7 @@
 	desc = "Something you shouldn't see. But it's edible."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "borgir"
+	base_icon_state = "borgir"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	tastes = list("crayon powder" = 1)
 	foodtypes = VEGETABLES | GRAIN
@@ -11,7 +12,7 @@
 
 /obj/item/food/colonial_course/attack_self(mob/user, modifiers)
 	preserved_food = FALSE
-	icon_state = "[initial(icon_state)]_unwrapped"
+	icon_state = "[base_icon_state]_unwrapped"
 	to_chat(user, span_notice("You unpackage \the [src]."))
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 
@@ -45,6 +46,7 @@
 	)
 	trash_type = /obj/item/trash/nachos
 	icon_state = "nacho"
+	base_icon_state = "nacho"
 	tastes = list("corn chips" = 5, "'artificial' organic sauces" = 5)
 	foodtypes = GRAIN | FRIED | DAIRY
 
@@ -57,6 +59,7 @@
 						/datum/reagent/consumable/milk = 4)
 	trash_type = /obj/item/trash/blins
 	icon_state = "blin"
+	base_icon_state = "blin"
 	tastes = list("insane amount of sweetness" = 10, "crepes" = 3)
 	foodtypes = SUGAR | GRAIN | DAIRY | BREAKFAST
 
@@ -107,14 +110,14 @@
 /obj/item/storage/box/utensils
 	name = "utensils package"
 	desc = "A small package containing various utensils required for <i>human</i> consumption of various foods. \
-	In a normal situation contains a plastic fork, a plastic spoon, and a single serviette."
+	In a normal situation contains a plastic fork, a plastic spoon, and two serviettes."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "utensil_box"
 	w_class = WEIGHT_CLASS_TINY
 	illustration = null
 	foldable_result = null
 
-/obj/item/storage/box/utensil/Initialize(mapload)
+/obj/item/storage/box/utensils/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(
 		/obj/item/kitchen/spoon/plastic,
@@ -123,7 +126,7 @@
 	))
 	atom_storage.max_slots = 4
 
-/obj/item/storage/box/utensil/PopulateContents()
+/obj/item/storage/box/utensils/PopulateContents()
 	new /obj/item/kitchen/spoon/plastic(src)
 	new /obj/item/kitchen/fork/plastic(src)
 	new /obj/item/serviette/colonial(src)
@@ -175,4 +178,4 @@
 	new /obj/item/food/colonial_course/blins(src)
 	new /obj/item/reagent_containers/cup/glass/coffee/colonial(src)
 	new /obj/item/storage/box/gum/colonial(src)
-	new /obj/item/storage/box/utensil(src)
+	new /obj/item/storage/box/utensils(src)

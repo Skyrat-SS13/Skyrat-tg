@@ -1,5 +1,5 @@
 /datum/design/utility
-	name = "utility uniform"
+	name = "Utility Uniform"
 	id = "slavic_util"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 200)
@@ -7,7 +7,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_CLOTHING)
 
 /datum/design/jackboots
-	name = "jackboots"
+	name = "Jackboots"
 	id = "slavic_boots"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
@@ -15,7 +15,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_CLOTHING)
 
 /datum/design/winter_coat
-	name = "modern winter coat"
+	name = "Modern Winter Coat"
 	id = "slavic_coat"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
@@ -23,7 +23,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_CLOTHING)
 
 /datum/design/cool_gloves
-	name = "black gloves"
+	name = "Black Gloves"
 	id = "slavic_gloves"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
@@ -31,7 +31,7 @@
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_CLOTHING)
 
 /datum/design/cool_hat
-	name = "black beanie"
+	name = "Black Beanie"
 	id = "slavic_beanie"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
