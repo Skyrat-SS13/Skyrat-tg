@@ -269,7 +269,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/blackops,
