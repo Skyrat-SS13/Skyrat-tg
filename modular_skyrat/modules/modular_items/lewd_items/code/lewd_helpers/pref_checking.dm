@@ -9,7 +9,7 @@
  * * `mechanic_user` - The person using the erp mechanic on the parent mob?
  * * `used_item` - What item, if any, is being used on the parent mob?
  */
-/mob/living/proc/check_erp_prefs(datum/preference/toggle/pref_to_check, mob/living/mechanic_user = FALSE, obj/item/used_item = FALSE)
+/mob/living/proc/check_erp_prefs(datum/preference/toggle/pref_to_check, mob/living/mechanic_user = null, obj/item/used_item = FALSE)
 	if(!ispath(pref_to_check))
 		return FALSE
 
