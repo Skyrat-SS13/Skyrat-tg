@@ -47,6 +47,8 @@
 	if(last_midround_injection_attempt == 0)
 		last_midround_injection_attempt = SSticker.round_start_time
 
-	return last_midround_injection_attempt + rand((midround_median_frequency - midround_roll_distance), (midround_median_frequency + midround_roll_distance))
+	next_midround_injection = last_midround_injection_attempt + rand((midround_median_frequency - midround_roll_distance), (midround_median_frequency + midround_roll_distance))
+
+	return next_midround_injection
 
 #undef MIN_MIDROUND_COST
