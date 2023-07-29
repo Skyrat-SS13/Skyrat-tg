@@ -524,9 +524,10 @@
 	. = ..()
 	REMOVE_TRAIT(user, TRAIT_XRAY_VISION, GLASSES_TRAIT)
 
-/obj/item/clothing/glasses/thermal/syndi //These are now a traitor item, concealed as mesons. -Pete
+/obj/item/clothing/glasses/thermal/syndi
 	name = "chameleon thermals"
 	desc = "A pair of thermal optic goggles with an onboard chameleon generator."
+<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT, I don't think the regular description persists through chameleon changes.
 
@@ -546,6 +547,9 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	chameleon_action.emp_randomise()
+=======
+	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
+>>>>>>> c92d338dade (Refactors chameleon actions, Adds chameleon outfit saving, Adds chameleon scanner (#77140))
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "thermoncle"
