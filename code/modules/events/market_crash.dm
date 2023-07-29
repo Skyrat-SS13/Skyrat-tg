@@ -23,7 +23,7 @@
 	var/list/poss_reasons = list("the alignment of the moon and the sun",\
 		"some risky housing market outcomes",\
 		"the B.E.P.I.S. team's untimely downfall",\
-		"speculative SolFed grants backfiring",\  //Skyrat Edit; original was "speculative Terragov grants backfiring"
+		"speculative SolFed grants backfiring",  /*SKYRAT EDIT CHANGE; original was "speculative Terragov grants backfiring"*/\
 		"greatly exaggerated reports of Nanotrasen accountancy personnel being \"laid off\"",\
 		"a \"great investment\" into \"non-fungible tokens\" by a \"moron\"",\
 		"a number of raids from Tiger Cooperative agents",\
