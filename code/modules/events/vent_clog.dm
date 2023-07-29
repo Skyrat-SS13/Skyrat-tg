@@ -291,7 +291,7 @@
 		/mob/living/basic/cockroach/glockroach/mobroach,
 		/mob/living/basic/lightgeist,
 		/mob/living/basic/mothroach,
-		/mob/living/simple_animal/hostile/mushroom,
+		/mob/living/basic/mushroom,
 		/mob/living/basic/viscerator,
 		/mob/living/simple_animal/hostile/retaliate/goose, //Janitors HATE geese.
 		/mob/living/simple_animal/pet/gondola,
