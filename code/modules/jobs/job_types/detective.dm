@@ -57,7 +57,7 @@
 		/obj/item/melee/baton = 1,
 		/obj/item/storage/box/evidence = 1,
 		)
-	belt = /obj/item/modular_computer/pda/detective
+	belt = /obj/item/storage/belt/holster/detective/full(src) // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/modular_computer/pda/detective
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/fedora/det_hat
@@ -65,7 +65,7 @@
 	neck = /obj/item/clothing/neck/tie/detective
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	l_pocket = /obj/item/toy/crayon/white
-	r_pocket = /obj/item/lighter
+	r_pocket = /obj/item/modular_computer/pda/detective // SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/modular_computer/pda/detective
 
 	chameleon_extras = list(
 		/obj/item/clothing/glasses/sunglasses,
