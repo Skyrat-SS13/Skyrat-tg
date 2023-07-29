@@ -90,12 +90,6 @@
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
 		/mob/living/simple_animal/hostile/asteroid/polarbear/lesser,
 		/mob/living/simple_animal/hostile/asteroid/wolf,
-		/mob/living/simple_animal/hostile/bear,
-		/mob/living/simple_animal/hostile/bear/butter,
-		/mob/living/simple_animal/hostile/bear/fightpit,
-		/mob/living/simple_animal/hostile/bear/hudson,
-		/mob/living/simple_animal/hostile/bear/russian,
-		/mob/living/simple_animal/hostile/bear/snow,
 		/mob/living/simple_animal/hostile/big_legion,
 		/mob/living/simple_animal/hostile/blob,
 		/mob/living/simple_animal/hostile/blob/blobbernaut,
@@ -192,7 +186,6 @@
 		/mob/living/simple_animal/hostile/mimic/xenobio,
 		/mob/living/simple_animal/hostile/mining_drone,
 		/mob/living/simple_animal/hostile/morph,
-		/mob/living/simple_animal/hostile/mushroom,
 		/mob/living/simple_animal/hostile/nanotrasen,
 		/mob/living/simple_animal/hostile/nanotrasen/elite,
 		/mob/living/simple_animal/hostile/nanotrasen/ranged,
@@ -275,7 +268,6 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
-		/mob/living/simple_animal/hostile/bear/wojtek,
 		/mob/living/simple_animal/hostile/bigcrab,
 		/mob/living/simple_animal/hostile/blackmesa,
 		/mob/living/simple_animal/hostile/blackmesa/blackops,
