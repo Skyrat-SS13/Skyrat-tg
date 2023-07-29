@@ -6,24 +6,39 @@
 
 /obj/item/mod/control/ui_data(mob/user)
 	var/data = list()
-	data["interface_break"] = interface_break
-	data["malfunctioning"] = malfunctioning
-	data["open"] = open
-	data["active"] = active
-	data["locked"] = locked
-	data["complexity"] = complexity
-	data["selected_module"] = selected_module?.name
-	data["wearer_name"] = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "No Occupant"
-	data["wearer_job"] = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "No Job"
-	// SKYRAT EDIT START - pAIs in MODsuits
-	data["pAI"] = mod_pai?.name
-	data["ispAI"] = mod_pai ? mod_pai == user : FALSE
-	// SKYRAT EDIT END
-	data["core"] = core?.name
-	data["charge"] = get_charge_percent()
-	data["modules"] = list()
+	// Suit information
+	var/suit_status = list(
+		"core_name" = core?.name,
+		"cell_charge_current" = get_charge(),
+		"cell_charge_max" = get_max_charge(),
+		"active" = active,
+		//"ai_name" = ai?.name, // SKYRAT EDIT REMOVAL - pAIs in MODsuits
+		// Wires
+		"open" = open,
+		"seconds_electrified" = seconds_electrified,
+		"malfunctioning" = malfunctioning,
+		"locked" = locked,
+		"interface_break" = interface_break,
+		// Modules
+		"complexity" = complexity,
+		// SKYRAT EDIT START - pAIs in MODsuits
+		"pAI" = mod_pai?.name,
+		"ispAI" = mod_pai ? mod_pai == user : FALSE,
+		// SKYRAT EDIT END
+	)
+	data["suit_status"] = suit_status
+	// User information
+	var/user_status = list(
+		"user_name" = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "",
+		"user_assignment" = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "",
+	)
+	data["user_status"] = user_status
+	// Module information
+	var/module_custom_status = list()
+	var/module_info = list()
 	for(var/obj/item/mod/module/module as anything in modules)
-		var/list/module_data = list(
+		module_custom_status += module.add_ui_data()
+		module_info += list(list(
 			"module_name" = module.name,
 			"description" = module.desc,
 			"module_type" = module.module_type,
@@ -38,9 +53,9 @@
 			"id" = module.tgui_id,
 			"ref" = REF(module),
 			"configuration_data" = module.get_configuration()
-		)
-		module_data += module.add_ui_data()
-		data["modules"] += list(module_data)
+		))
+	data["module_custom_status"] = module_custom_status
+	data["module_info"] = module_info
 	return data
 
 /obj/item/mod/control/ui_static_data(mob/user)
@@ -59,7 +74,7 @@
 	if(.)
 		return
 	// allowed() doesn't allow for pAIs
-	if((!allowed(usr) || !ispAI(usr)) && locked) // SKYRAT EDIT - pAIs in MODsuits
+	if(((locked && !ispAI(usr)) && !allowed(usr))) // SKYRAT EDIT CHANGE - ORIGINAL: if(locked && !allowed(usr))
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return

@@ -41,14 +41,16 @@
 		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
 		//SKYRAT EDIT CHANGE END
 
-	var/mob/living/carbon/human/M = loc
-	if(!ishuman(M) || !M.w_uniform)
+	var/mob/living/carbon/human/wearer = loc
+	if(!ishuman(wearer) || !wearer.w_uniform)
 		return
-	var/obj/item/clothing/under/U = M.w_uniform
-	if(istype(U) && U.attached_accessory)
-		var/obj/item/clothing/accessory/A = U.attached_accessory
-		if(A.above_suit)
-			. += U.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
+	var/obj/item/clothing/under/undershirt = wearer.w_uniform
+	if(!istype(undershirt) || !LAZYLEN(undershirt.attached_accessories))
+		return
+
+	var/obj/item/clothing/accessory/displayed = undershirt.attached_accessories[1]
+	if(displayed.above_suit)
+		. += undershirt.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += undershirt.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()

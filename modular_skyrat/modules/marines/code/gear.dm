@@ -15,7 +15,7 @@
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = FALSE
-	mag_type = /obj/item/ammo_box/magazine/m44a
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m44a
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BELT
 
@@ -25,7 +25,7 @@
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/m44a
 	name = "m44a magazine (.300 compressed)"
@@ -68,7 +68,7 @@
 	name = "\improper M2 auto-shotgun underbarrel"
 	desc = "This shouldn't be heeere!"
 	can_suppress = FALSE
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2/ubsg
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/as2/ubsg
 
 /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/give_gun_safeties()
 	return

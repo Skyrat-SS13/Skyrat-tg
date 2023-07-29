@@ -17,7 +17,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	spread = 18
-	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
+	accepted_magazine_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
 	fire_delay = 0.15
 	bolt_type = BOLT_TYPE_OPEN
@@ -42,7 +42,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
@@ -77,7 +77,7 @@
 	return ..()
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/attack_item, mob/user, params)
-	if(!cover_open && istype(attack_item, mag_type))
+	if(!cover_open && istype(attack_item, accepted_magazine_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()

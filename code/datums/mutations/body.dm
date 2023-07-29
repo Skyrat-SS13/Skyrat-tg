@@ -90,7 +90,7 @@
 		owner.emote("cough")
 		if(GET_MUTATION_POWER(src) > 1)
 			var/cough_range = GET_MUTATION_POWER(src) * 4
-			var/turf/target = get_ranged_target_turf(owner, turn(owner.dir, 180), cough_range)
+			var/turf/target = get_ranged_target_turf(owner, REVERSE_DIR(owner.dir), cough_range)
 			owner.throw_at(target, cough_range, GET_MUTATION_POWER(src))
 
 /datum/mutation/human/paranoia
@@ -133,10 +133,10 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1)
-		to_chat(owner, "You feel relief as the pressure building inside you subsides.")
+		to_chat(owner, "You feel relief as your organs cease to strain against your insides.")
+		REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
 
@@ -407,9 +407,9 @@
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))

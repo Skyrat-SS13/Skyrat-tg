@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/m16
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	fire_delay = 1.90
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/scar_fire.ogg'
