@@ -183,11 +183,6 @@
 				spawned_something = TRUE
 		CHECK_TICK
 
-<<<<<<< HEAD
-	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	add_startup_message(message) //SKYRAT EDIT CHANGE
-=======
 	var/message = "[name] terrain population finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	to_chat(world, span_boldannounce("[message]"))
->>>>>>> 61abab479b6 (Planetary station traits: Forever Storm and Forested (#76957))
+	add_startup_message(message) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, span_boldannounce("[message]"))
 	log_world(message)
