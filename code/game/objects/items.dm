@@ -1440,6 +1440,12 @@
 		var/mob/living/carbon/human/wearer = M
 		wearer.regenerate_icons() // update that mf
 	to_chat(M, "[src] is now skinned as '[pick].'")
+	post_reskin(M)
+
+/// Automatically called after a reskin, for any extra variable changes.
+/obj/item/proc/post_reskin(mob/our_mob)
+	return
+
 /// SKYRAT EDIT ADDITION END
 
 /// Special stuff you want to do when an outfit equips this item.
