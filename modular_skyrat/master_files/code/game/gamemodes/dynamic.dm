@@ -1,4 +1,6 @@
 #define MIN_MIDROUND_COST 20
+#define ALT_MIDROUND_LOWER_TIME 4500
+#define ALT_MIDROUND_UPPER_TIME 10500
 
 // A lite version of the intercept, which only sends a paper with goals and a trait report (or a lack thereof)
 /datum/game_mode/dynamic/proc/send_trait_report()
@@ -40,6 +42,7 @@
 
 	return 100 * heavy_coefficient
 
+/// Determines the next midround injection attempt based on the set median and roll distance.
 /datum/game_mode/dynamic/next_midround_injection()
 	if(!isnull(next_midround_injection))
 		return next_midround_injection
@@ -51,4 +54,11 @@
 
 	return next_midround_injection
 
+/// If a midround injection fails to run, this can be called by the particular rule (if required) to attempt an alternate.
+/datum/game_mode/dynamic/proc/alternate_midround_injection()
+	next_midround_injection = world.time + rand(ALT_MIDROUND_LOWER_TIME, ALT_MIDROUND_UPPER_TIME)
+	log_dynamic_and_announce("Alternate midround injection in [DisplayTimeText(next_midround_injection - world.time)]")
+
 #undef MIN_MIDROUND_COST
+#undef ALT_MIDROUND_LOWER_TIME
+#undef ALT_MIDROUND_UPPER_TIME
