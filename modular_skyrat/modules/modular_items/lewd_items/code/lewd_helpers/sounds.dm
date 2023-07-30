@@ -14,7 +14,20 @@
  * falloff_distance - Distance at which falloff begins. Sound is at peak volume (in regards to falloff) aslong as it is in this range.
  * pref_to_check - the path of the pref that we want to check
  */
-/proc/play_lewd_sound(atom/source, soundin, vol as num, vary, extrarange as num, falloff_exponent = SOUND_FALLOFF_EXPONENT, frequency = null, channel = 0, pressure_affected = TRUE, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, use_reverb = TRUE, pref_to_check = /datum/preference/toggle/erp/sex_toy_sounds)
+/proc/play_lewd_sound(
+	atom/source,
+	soundin,
+	vol as num,
+	vary,
+	extrarange as num,
+	falloff_exponent = SOUND_FALLOFF_EXPONENT,
+	frequency = null,
+	channel = 0,
+	pressure_affected = TRUE,
+	falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE,
+	use_reverb = TRUE,
+	pref_to_check = /datum/preference/toggle/erp/sex_toy_sounds,
+)
 	if(isarea(source))
 		CRASH("playsound(): source is an area")
 
