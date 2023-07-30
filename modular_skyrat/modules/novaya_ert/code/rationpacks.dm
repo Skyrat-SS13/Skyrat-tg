@@ -173,6 +173,7 @@
 			return ..()
 		else
 			atom_storage.locked = TRUE
+			atom_storage.close_all()
 			icon_state = "mre_package"
 			balloon_alert(user, "resealed!")
 			return
