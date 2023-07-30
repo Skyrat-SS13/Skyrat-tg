@@ -4,7 +4,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
 	build_path = /obj/item/stack/medical/suture
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/mesh
 	name = "Regenerative Mesh"
@@ -12,7 +13,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
 	build_path = /obj/item/stack/medical/mesh
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/bruise_patch
 	name = "Bruise Patch"
@@ -20,7 +22,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
 	build_path = /obj/item/reagent_containers/pill/patch/libital
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/burn_patch
 	name = "Burn Patch"
@@ -28,7 +31,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
 	build_path = /obj/item/reagent_containers/pill/patch/aiuri
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/gauze
 	name = "Medical Gauze"
@@ -36,7 +40,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/stack/medical/gauze
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/epi_pill
 	name = "Epinephrine Pill"
@@ -44,7 +49,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
 	build_path = /obj/item/reagent_containers/pill/epinephrine
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/conv_pill
 	name = "Convermol Pill"
@@ -52,7 +58,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
 	build_path = /obj/item/reagent_containers/pill/convermol
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 /datum/design/multiver_pill
 	name = "Multiver Pill"
@@ -60,7 +67,8 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 75)
 	build_path = /obj/item/reagent_containers/pill/multiver
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_NRI_MEDICAL)
+	category = list(RND_CATEGORY_INITIAL,
+					RND_CATEGORY_NRI_MEDICAL)
 
 #undef RND_CATEGORY_NRI_FOOD
 #undef RND_CATEGORY_NRI_MEDICAL
