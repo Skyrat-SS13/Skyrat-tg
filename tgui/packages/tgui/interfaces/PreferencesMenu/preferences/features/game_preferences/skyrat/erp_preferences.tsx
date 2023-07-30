@@ -47,7 +47,7 @@ export const sextoy_pref: FeatureToggle = {
 export const sextoy_sounds_pref: FeatureToggle = {
   name: 'Sex toy sounds',
   category: 'ERP',
-  description: 'toggles if you will hear sounds from sex toys.',
+  description: 'Toggles if you will hear sounds from sex toys.',
   component: CheckboxInput,
 };
 
