@@ -54,9 +54,11 @@
 	name = "condensed milk crepes"
 	desc = "A vacuum-sealed four-pack of stuffed crepes with a minimal amount of markings. There is nothing else to it, to be frank.\
 		<br> Surprisingly tasty for its looks, as long as you're not lactose intolerant, on diet, or vegan. The back of the packaging is covered in a mass of information detailing the product."
-	food_reagents = list(/datum/reagent/consumable/nutriment = 2,
-						/datum/reagent/consumable/caramel = 3,
-						/datum/reagent/consumable/milk = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 2,
+		/datum/reagent/consumable/caramel = 3,
+		/datum/reagent/consumable/milk = 4,
+	)
 	trash_type = /obj/item/trash/blins
 	icon_state = "blin"
 	base_icon_state = "blin"
@@ -101,7 +103,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
 	icon_state = "bubblegum"
 
-/obj/item/storage/box/gum/PopulateContents()
+/obj/item/storage/box/gum/colonial/PopulateContents()
 	new /obj/item/food/bubblegum(src)
 	new /obj/item/food/bubblegum(src)
 	new /obj/item/food/bubblegum/nicotine(src)

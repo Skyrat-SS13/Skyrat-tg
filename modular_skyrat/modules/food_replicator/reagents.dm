@@ -45,7 +45,7 @@
 
 /datum/chemical_reaction/food/unpowdered_coco
 	required_reagents = list(
-		/datum/reagent/water = 1,
+		/datum/reagent/milk = 1,
 		/datum/reagent/consumable/powdered_coco = 1,
 	)
 	results = list(/datum/reagent/consumable/hot_coco = 2)
