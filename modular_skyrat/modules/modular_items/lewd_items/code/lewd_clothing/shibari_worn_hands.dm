@@ -9,8 +9,8 @@
 	breakouttime = 5 SECONDS
 	item_flags = DROPDEL
 
-	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
-	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
+	greyscale_config = /datum/greyscale_config/shibari/hands
+	greyscale_config_worn = /datum/greyscale_config/shibari/hands/worn
 	greyscale_colors = "#bd8fcf"
 
 	///should this clothing item use the emissive system
