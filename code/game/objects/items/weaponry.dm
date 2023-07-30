@@ -499,9 +499,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	inhand_icon_state = "crutch"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	force = 5
-	throwforce = 5
-	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6)
 	attack_verb_continuous = list("bludgeons", "whacks", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "thrash")
