@@ -32,6 +32,7 @@
 		/obj/item/toy/cards/deck/tarot/nanite, //The arcana is the means by which all is revealed
 		/obj/item/toy/cards/deck/kotahi/nanite,
 		/obj/item/toy/foamblade/nanite,
+		/obj/item/cane/crutch/nanite,
 		/obj/item/cane/white/nanite,
 		/obj/item/lighter/nanite,
 		/obj/item/clothing/mask/holocigarette/nanite,
@@ -170,6 +171,13 @@
 /obj/item/cane/nanite
 	name = "staff"
 	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
+
+	force = 0
+	throwforce = 0
+
+	/obj/item/cane/crutch/nanite
+	name = "crutch"
+	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. A pattern was also developed for injured individuals both by incident, birth, and biology."
 
 	force = 0
 	throwforce = 0

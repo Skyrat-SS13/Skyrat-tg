@@ -491,6 +491,21 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb_continuous = list("bludgeons", "whacks", "disciplines", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "discipline", "thrash")
 
+/obj/item/cane/crutch
+	name = "crutch"
+	desc = "A crutch usually employed by those recovering from a leg injury."
+	icon = 'icons/obj/weapons/staff.dmi'
+	icon_state = "crutch"
+	inhand_icon_state = "crutch"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	force = 5
+	throwforce = 5
+	w_class = WEIGHT_CLASS_SMALL
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6)
+	attack_verb_continuous = list("bludgeons", "whacks", "thrashes")
+	attack_verb_simple = list("bludgeon", "whack", "thrash")
+
 /obj/item/cane/white
 	name = "white cane"
 	desc = "A cane traditionally used by the blind to help them see. Folds down to be easier to transport."
