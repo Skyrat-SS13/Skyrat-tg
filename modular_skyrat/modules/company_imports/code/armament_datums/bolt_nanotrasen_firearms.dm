@@ -51,6 +51,16 @@
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/g17
+	item_type = /obj/item/gun/ballistic/automatic/pistol/g17
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/mk58
+	item_type = /obj/item/gun/ballistic/automatic/pistol/mk58
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	lower_cost = CARGO_CRATE_VALUE * 5
@@ -71,6 +81,11 @@
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/riot_shotgun
 	item_type = /obj/item/gun/ballistic/shotgun/riot
+	lower_cost = CARGO_CRATE_VALUE * 10
+	upper_cost = CARGO_CRATE_VALUE * 15
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/m23
+	item_type = /obj/item/gun/ballistic/shotgun/m23
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 15
 
