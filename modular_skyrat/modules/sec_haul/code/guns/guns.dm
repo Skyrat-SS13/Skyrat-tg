@@ -838,6 +838,19 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	max_ammo = 8
 
+/obj/item/gun/ballistic/shotgun/automatic/combat
+	name = "\improper Peacekeeper combat shotgun"
+	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	inhand_icon_state = "shotgun_combat"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 auto-shotgun"
 	desc = "A semi-automatic twelve-gauge shotgun with a four-round internal tube."
