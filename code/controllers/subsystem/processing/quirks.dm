@@ -35,6 +35,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Stormtrooper Aim", "Big Hands"),
 		list("Bilingual", "Foreigner"),
 		list("Spacer", "Paraplegic"),
+		list("Photophobia", "Nyctophobia"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
