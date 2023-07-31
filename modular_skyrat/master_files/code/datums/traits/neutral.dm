@@ -184,17 +184,10 @@
 
 /datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 
-	// make sure the new tongue gets the actions from any species specific things (like hemophage blood drain, etc)
-	for(var/datum/action/action as anything in old_tongue.actions)
-		new_tongue.add_item_action(action.type)
-	// as well as the flags from the old tongue (like corruption from hemophage)
-	new_tongue.organ_flags |= old_tongue.organ_flags
-	old_tongue.Remove(human_holder)
-	qdel(old_tongue)
-	new_tongue.Insert(human_holder)
+	new_tongue.copy_traits_from(human_holder.get_organ_slot(ORGAN_SLOT_TONGUE))
+	new_tongue.Insert(human_holder, special = TRUE, drop_if_replaced = FALSE)
 
 /datum/quirk/sensitivesnout
 	name = "Sensitive Snout"
