@@ -9,3 +9,4 @@
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6)
 	attack_verb_continuous = list("bludgeons", "whacks", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "thrash")
+	
