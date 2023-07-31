@@ -66,7 +66,7 @@
 	desc = "A NIFSoft datadisk containing the Science HUD NIFsoft."
 	id = "nifsoft_hud_science"
 	build_path = /obj/item/disk/nifsoft_uploader/sci_hud
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/nif_hud_kit
 	name = "NIF HUD Retrofitter"
