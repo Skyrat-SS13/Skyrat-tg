@@ -63,3 +63,6 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 // Minimum alert level for pods to actually evacuate people
 /datum/config_entry/number/minimum_alert_for_pods
+
+// How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn
+/datum/config_entry/number/arrivals_wait
