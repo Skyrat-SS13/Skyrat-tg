@@ -267,11 +267,6 @@
 		)
 
 /obj/machinery/vending/wardrobe/law_wardrobe/ghost_cafe
-	name = "LawDrobe"
-	desc = "Objection! This wardrobe dispenses the rule of law... and lawyer clothing."
-	icon_state = "lawdrobe"
-	product_ads = "OBJECTION! Get the rule of law for yourself!"
-	vend_reply = "Thank you for using the LawDrobe!"
 	products = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/bluesuit = 1,
 		/obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt = 1,
@@ -298,11 +293,6 @@
 	)
 
 /obj/machinery/vending/wardrobe/jani_wardrobe/ghost_cafe
-	name = "JaniDrobe"
-	desc = "A self cleaning vending machine capable of dispensing clothing for janitors."
-	icon_state = "janidrobe"
-	product_ads = "Come and get your janitorial clothing, now endorsed by lizard janitors everywhere!"
-	vend_reply = "Thank you for using the JaniDrobe!"
 	products = list(
 		/obj/item/clothing/under/rank/civilian/janitor = 2,
 		/obj/item/clothing/under/rank/civilian/janitor/skirt = 2,
@@ -327,11 +317,6 @@
 	)
 
 /obj/machinery/vending/wardrobe/coroner_wardrobe/ghost_cafe
-	name = "MortiDrobe"
-	desc = "A favorite among nihilists."
-	icon_state = "coroner_drobe"
-	product_ads = "Any day above ground is a good one!;My day starts when yours ends!;And they call this a dying business!;See you when you're dead!"
-	vend_reply = "Don't forget your \"Buy one get one free\" burial deal!"
 	products = list(
 		/obj/item/storage/box/bodybags = 3,
 		/obj/item/storage/medkit/coroner = 1,
@@ -352,11 +337,6 @@
 	)
 
 /obj/machinery/vending/wardrobe/curator_wardrobe/ghost_cafe
-	name = "CuraDrobe"
-	desc = "A lowstock vendor only capable of vending clothing for curators and librarians."
-	icon_state = "curadrobe"
-	product_ads = "Glasses for your eyes and literature for your soul, Curadrobe has it all!; Impress & enthrall your library guests with Curadrobe's extended line of pens!"
-	vend_reply = "Thank you for using the CuraDrobe!"
 	products = list(
 		/obj/item/pen = 4,
 		/obj/item/pen/red = 2,
@@ -374,4 +354,107 @@
 		/obj/item/clothing/glasses/regular = 2,
 		/obj/item/clothing/glasses/regular/jamjar = 1,
 		/obj/item/storage/bag/books = 1,
+	)
+
+/obj/machinery/vending/wardrobe/chap_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/choice_beacon/unholy = 1,
+		/obj/item/clothing/accessory/pocketprotector/cosmetology = 1,
+		/obj/item/clothing/under/rank/civilian/chaplain = 1,
+		/obj/item/clothing/under/rank/civilian/chaplain/skirt = 2,
+		/obj/item/clothing/shoes/sneakers/black = 1,
+		/obj/item/clothing/suit/chaplainsuit/nun = 1,
+		/obj/item/clothing/head/chaplain/nun_hood = 1,
+		/obj/item/clothing/suit/chaplainsuit/holidaypriest = 1,
+		/obj/item/clothing/suit/hooded/chaplainsuit/monkhabit = 1,
+		/obj/item/clothing/head/chaplain/kippah = 3,
+		/obj/item/clothing/suit/chaplainsuit/whiterobe = 1,
+		/obj/item/clothing/head/chaplain/taqiyah/white = 1,
+		/obj/item/clothing/head/chaplain/taqiyah/red = 3,
+		/obj/item/clothing/suit/chaplainsuit/monkrobeeast = 1,
+		/obj/item/clothing/head/rasta = 1,
+		/obj/item/clothing/suit/chaplainsuit/shrinehand = 1,
+		/obj/item/storage/backpack/cultpack = 1,
+		/obj/item/storage/fancy/candle_box = 2,
+		/obj/item/radio/headset/headset_srv = 0,
+	)
+
+/obj/machinery/vending/wardrobe/gene_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/clothing/under/rank/rnd/geneticist = 2,
+		/obj/item/clothing/under/rank/rnd/geneticist/skirt = 2,
+		/obj/item/clothing/suit/toggle/labcoat/genetics = 2,
+		/obj/item/clothing/suit/hooded/wintercoat/science/genetics = 2,
+		/obj/item/clothing/gloves/latex = 2,
+		/obj/item/clothing/shoes/sneakers/white = 2,
+		/obj/item/storage/backpack/genetics = 2,
+		/obj/item/storage/backpack/satchel/gen = 2,
+		/obj/item/storage/backpack/duffelbag/genetics = 2,
+		/obj/item/radio/headset/headset_sci = 0,
+	)
+
+/obj/machinery/vending/wardrobe/chem_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/clothing/head/beret/medical = 2,
+		/obj/item/clothing/under/rank/medical/chemist = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skirt = 2,
+		/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
+		/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
+		/obj/item/clothing/gloves/latex = 2,
+		/obj/item/clothing/shoes/sneakers/white = 2,
+		/obj/item/storage/backpack/chemistry = 2,
+		/obj/item/storage/backpack/satchel/chem = 2,
+		/obj/item/storage/backpack/duffelbag/chemistry = 2,
+		/obj/item/storage/bag/chemistry = 2,
+		/obj/item/ph_booklet = 3,
+		/obj/item/radio/headset/headset_med = 0,
+	)
+
+/obj/machinery/vending/wardrobe/viro_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/clothing/mask/surgical = 2,
+		/obj/item/clothing/under/rank/medical/virologist = 2,
+		/obj/item/clothing/under/rank/medical/virologist/skirt = 2,
+		/obj/item/clothing/head/beret/medical = 2,
+		/obj/item/clothing/shoes/sneakers/white = 2,
+		/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
+		/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
+		/obj/item/clothing/gloves/latex = 2,
+		/obj/item/storage/backpack/virology = 2,
+		/obj/item/storage/backpack/satchel/vir = 2,
+		/obj/item/storage/backpack/duffelbag/virology = 2,
+		/obj/item/radio/headset/headset_med = 0,
+	)
+
+/obj/machinery/vending/wardrobe/robo_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/clothing/glasses/hud/diagnostic = 2,
+		/obj/item/clothing/head/soft/black = 2,
+		/obj/item/clothing/mask/bandana/skull/black = 2,
+		/obj/item/clothing/under/rank/rnd/roboticist = 2,
+		/obj/item/clothing/under/rank/rnd/roboticist/skirt = 2,
+		/obj/item/clothing/suit/toggle/labcoat/roboticist = 2,
+		/obj/item/clothing/suit/hooded/wintercoat/science/robotics = 2,
+		/obj/item/clothing/gloves/fingerless = 2,
+		/obj/item/clothing/shoes/sneakers/black = 2,
+		/obj/item/storage/backpack/science = 3,
+		/obj/item/storage/backpack/satchel/science = 3,
+		/obj/item/storage/backpack/duffelbag/science = 3,
+		/obj/item/radio/headset/headset_sci = 0,
+	)
+
+/obj/machinery/vending/wardrobe/hydro_wardrobe/ghost_cafe
+	products = list(
+		/obj/item/clothing/accessory/armband/hydro = 3,
+		/obj/item/clothing/mask/bandana/striped/botany = 3,
+		/obj/item/clothing/under/rank/civilian/hydroponics = 3,
+		/obj/item/clothing/under/rank/civilian/hydroponics/skirt = 3,
+		/obj/item/clothing/suit/apron = 3,
+		/obj/item/clothing/suit/apron/overalls = 3,
+		/obj/item/clothing/suit/apron/waders = 3,
+		/obj/item/clothing/suit/hooded/wintercoat/hydro = 3,
+		/obj/item/storage/backpack/botany = 3,
+		/obj/item/storage/backpack/satchel/hyd = 3,
+		/obj/item/storage/backpack/duffelbag/hydroponics = 3,
+		/obj/item/radio/headset/headset_srv = 0,
 	)
