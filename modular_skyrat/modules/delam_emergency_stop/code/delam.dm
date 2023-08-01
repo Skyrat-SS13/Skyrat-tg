@@ -12,18 +12,29 @@
 	if(world.time - SSticker.round_start_time > 30 MINUTES)
 		return
 
-	sm.station_notified = TRUE
-	log_admin("DELAM: Round timer under 30 minutes! Supermatter will perform an automatic delam suppression at strength 0%.")
-	message_admins("<font color='[COLOR_ADMIN_PINK]'>DELAM: Round timer under 30 minutes! [ADMIN_VERBOSEJMP(sm)] will perform an automatic delam suppression once integrity reaches 0%. To cancel this, press the 'Toggle Delam Suppression' verb on the EVENTS status tab.</font>")
+	if(SSjob.is_skeleton_engineering(3)) // Don't bother if there's command or a well staffed department, they -should- be paying attention.
+		var/obj/machinery/announcement_system/system = pick(GLOB.announcement_systems)
+		SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, FALSE) // Give the skeleton crew a warning
+		system.broadcast("The supermatter delamination early warning system has been triggered due to anomalous conditions. Please investigate the engine as soon as possible.", list(RADIO_CHANNEL_COMMAND))
+		system.broadcast("In the event of uncontrolled delamination, please consult the documentation packet regarding usage of the supermatter emergency stop button.", list(RADIO_CHANNEL_COMMAND))
+		system.broadcast("Failure to stabilise the engine may result in an automatic deployment of the suppression system.", list(RADIO_CHANNEL_COMMAND))
 
-	if(!SSjob.is_skeleton_engineering(3)) // Don't bother if there's command or a well staffed department, they -should- be paying attention.
+	log_admin("DELAM: Round timer under 30 minutes! Supermatter will perform an automatic delam suppression at strength 0%.")
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
+	message_admins("<font color='[COLOR_ADMIN_PINK]'>DELAM: Round timer under 30 minutes! [ADMIN_VERBOSEJMP(sm)] will perform an automatic delam suppression once integrity reaches 0%. <a href='?src=[REF(src)];togglesuppression=yes'>TOGGLE AUTOMATIC INTERVENTION</a></font>")
+	sm.station_notified = TRUE
+
+/datum/sm_delam/Topic(href, href_list)
+	if(..())
 		return
 
-	var/obj/machinery/announcement_system/system = pick(GLOB.announcement_systems)
-	SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, FALSE) // Give the skeleton crew a warning
-	system.broadcast("The supermatter delamination early warning system has been triggered due to anomalous conditions. Please investigate the engine as soon as possible.", list(RADIO_CHANNEL_COMMAND))
-	system.broadcast("In the event of uncontrolled delamination, please consult the documentation packet regarding usage of the supermatter emergency stop button.", list(RADIO_CHANNEL_COMMAND))
-	system.broadcast("Failure to stabilise the engine may result in an automatic deployment of the suppression system.", list(RADIO_CHANNEL_COMMAND))
+	if(!check_rights(R_FUN))
+		return
+
+	if(href_list["togglesuppression"])
+		usr.client?.toggle_delam_suppression()
 
 /**
  * Check if the station manifest has at least a certain amount of this staff type
