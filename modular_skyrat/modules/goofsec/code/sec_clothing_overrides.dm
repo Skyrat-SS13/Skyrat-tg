@@ -548,6 +548,15 @@
 /obj/item/clothing/under/rank/security/officer/formal
 	unique_reskin = null // prevents you from losing the unique sprite
 
+/obj/item/clothing/under/rank/security/officer/skirt
+	name = "security battle dress"
+	desc = "An asymmetrical, unisex uniform with the legs replaced by a utility skirt."
+	worn_icon_state = "security_skirt"
+	icon_state = "security_skirt"
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
+	alt_covers_chest = FALSE
+
 //Warden
 /obj/item/clothing/under/rank/security/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -606,21 +615,16 @@
 //
 // This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
 //
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/affected_mob)
-	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
-		affected_mob.jumpsuit_style = PREF_SUIT
-	. = ..()
 
 /datum/outfit/job/hos/pre_equip(mob/living/carbon/human/affected_mob)
 	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		to_chat(affected_mob, span_alertwarning("Lopland Head of Security uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
 		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
 
 /datum/outfit/job/warden/pre_equip(mob/living/carbon/human/affected_mob)
 	if(affected_mob.jumpsuit_style == PREF_SKIRT)
-		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		to_chat(affected_mob, span_alertwarning("Lopland Warden uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
 		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
 
