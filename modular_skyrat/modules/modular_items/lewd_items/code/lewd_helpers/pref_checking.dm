@@ -40,21 +40,21 @@
 	if(!ispath(pref_to_check))
 		return FALSE
 
-	var/non_viewer_with_false_prefs = TRUE
+	var/no_viewer_with_false_prefs = TRUE
 	for(var/mob/living/viewer in view())
 		if(!viewer?.client) // It doens't really matter if these people see it.
 			continue
 
 		if(!viewer.client.prefs) // Better safe than sorry
-			non_viewer_with_false_prefs = FALSE
+			no_viewer_with_false_prefs = FALSE
 			continue
 
 		if(viewer.client.prefs.read_preference(pref_to_check))
 			continue
 
-		non_viewer_with_false_prefs = FALSE
+		no_viewer_with_false_prefs = FALSE
 
 		viewer.log_message("[src] used a mechanic that checked for those without [pref_to_check] in view, [viewer] had the pref disabled.", LOG_GAME)
 		log_message("[src] used a mechanic that checked for those without [pref_to_check] in view, [viewer] had the pref disabled.", LOG_GAME)
 
-	return non_viewer_with_false_prefs
+	return no_viewer_with_false_prefs
