@@ -405,14 +405,15 @@
 			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 			forceMove(targeted)
 			var/static/list/tele_messages = list(
-							"Hi.",
-							"Hello there.",
-							"Hello.",
-							"Hey.",
-							"Yo.",
-							"Boo.",
-							"Sup.",
-						)
+				"Hi.",
+				"Hello there.",
+				"Hello.",
+				"Hey.",
+				"Yo.",
+				"Boo.",
+				"Sup.",
+			)
+
 			if(prob(20))
 				say(message = pick(tele_messages))
 
