@@ -333,6 +333,15 @@
 	name = "Choker (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/choker_worn.json'
 
+// Thin Choker
+/datum/greyscale_config/collar/thinchoker
+	name = "Thin Choker"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/thinchoker.json'
+
+/datum/greyscale_config/collar/thinchoker/worn
+	name = "Thin Choker (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/thinchoker_worn.json'
+
 // Cow
 /datum/greyscale_config/collar/cow
 	name = "Cowbell Collar"
@@ -411,6 +420,19 @@
 
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
+
+//Flannel Shirt
+
+/datum/greyscale_config/flannelgags
+	name = "Flannel Shirt"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flannel/flannel.json'
+
+/datum/greyscale_config/flannelgags/worn
+	name = "Flannel Shirt (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flannel/flannel_worn.json'
+
 
 // ARMOR
 

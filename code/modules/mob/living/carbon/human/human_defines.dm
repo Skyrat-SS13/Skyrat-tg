@@ -14,8 +14,8 @@
 	can_be_shoved_into = TRUE
 	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
 
-	maxHealth = 135 //SKYRAT EDIT ADDITION
-	health = 135 //SKYRAT EDIT ADDITION
+	maxHealth = 100 * HUMAN_HEALTH_MODIFIER //SKYRAT EDIT ADDITION
+	health = 100 * HUMAN_HEALTH_MODIFIER //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
 	var/hair_color = "#000000"

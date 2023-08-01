@@ -382,7 +382,7 @@
 		return TRUE
 	if(ispath(MP, /mob/living/basic/carp))
 		return TRUE
-	if(ispath(MP, /mob/living/simple_animal/hostile/mushroom))
+	if(ispath(MP, /mob/living/basic/mushroom))
 		return TRUE
 	if(ispath(MP, /mob/living/simple_animal/shade))
 		return TRUE
@@ -390,7 +390,7 @@
 		return TRUE
 	if(ispath(MP, /mob/living/basic/mouse))
 		return TRUE
-	if(ispath(MP, /mob/living/simple_animal/hostile/bear))
+	if(ispath(MP, /mob/living/basic/bear))
 		return TRUE
 	if(ispath(MP, /mob/living/simple_animal/parrot))
 		return TRUE //Parrots are no longer unfinished! -Nodrak

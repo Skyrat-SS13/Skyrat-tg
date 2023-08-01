@@ -62,7 +62,7 @@
 	desc = "The Curator's pet bnuuy."
 	gender = FEMALE
 
-/mob/living/simple_animal/hostile/bear/wojtek
+/mob/living/basic/bear/wojtek
 	name = "Wojtek"
 	real_name = "Wojtek"
 	desc = "The bearer of Bluespace Artillery."
