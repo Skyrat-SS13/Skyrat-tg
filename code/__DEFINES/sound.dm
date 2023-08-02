@@ -5,12 +5,21 @@
 /* SKYRAT REMOVAL BEGIN - JUKEBOX - ORIGINAL
 #define CHANNEL_JUKEBOX 1021
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
+<<<<<<< HEAD
 #define CHANNEL_AMBIENCE 1019
 #define CHANNEL_BUZZ 1018
 */ // SKYRAT EDIT END
 #define CHANNEL_TRAITOR 1017
 #define CHANNEL_CHARGED_SPELL 1016
 #define CHANNEL_ELEVATOR 1015
+=======
+#define CHANNEL_BOSS_MUSIC 1019
+#define CHANNEL_AMBIENCE 1018
+#define CHANNEL_BUZZ 1017
+#define CHANNEL_TRAITOR 1016
+#define CHANNEL_CHARGED_SPELL 1015
+#define CHANNEL_ELEVATOR 1014
+>>>>>>> cf86250ce46 (Adds boss music functionality and gives hierophant it's own thematic fight song! (#77149))
 
 // SKYRAT EDIT START - JUKEBOX
 #define CHANNEL_JUKEBOX 1021
