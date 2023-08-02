@@ -386,18 +386,8 @@
 			products.Remove(typepath)
 	return ..()
 
-/obj/machinery/vending/wardrobe/hydro_wardrobe/ghost_cafe
-	products = list(
-		/obj/item/clothing/accessory/armband/hydro = 3,
-		/obj/item/clothing/mask/bandana/striped/botany = 3,
-		/obj/item/clothing/under/rank/civilian/hydroponics = 3,
-		/obj/item/clothing/under/rank/civilian/hydroponics/skirt = 3,
-		/obj/item/clothing/suit/apron = 3,
-		/obj/item/clothing/suit/apron/overalls = 3,
-		/obj/item/clothing/suit/apron/waders = 3,
-		/obj/item/clothing/suit/hooded/wintercoat/hydro = 3,
-		/obj/item/storage/backpack/botany = 3,
-		/obj/item/storage/backpack/satchel/hyd = 3,
-		/obj/item/storage/backpack/duffelbag/hydroponics = 3,
-		/obj/item/radio/headset/headset_srv = 0,
-	)
+/obj/machinery/vending/wardrobe/hydro_wardrobe/ghost_cafe/Initialize(mapload)
+	for(var/typepath as anything in products)
+		if(ispath(typepath, /obj/item/radio/headset))
+			products.Remove(typepath)
+	return ..()
