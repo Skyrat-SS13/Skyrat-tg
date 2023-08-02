@@ -20,16 +20,16 @@
 	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
 	icon = FA_ICON_BOOK_ATLAS
 
-/datum/quirk/razorgirl
-	name = "Razorgirl"
-	desc = "Whether it's razor-sharp retractable augmented blades, or literally just claws, your unarmed attacks are sharper than normal."
+/datum/quirk/sharpclaws
+	name = "Sharp Claws"
+	desc = "Whether it's a hunter's inherent biology, or your stubborn refusal to clip your nails ahead of your Jiu-Jitsu classes, your unarmed attacks are sharper and might make folks bleed."
 	value = 6 // It's still not really as strong as a kitchen knife in terms of wounding, but we can go to eight if we gotta.
-	gain_text = span_notice("Your palms hurt a bit from the sharpness of your hands.")
+	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
 	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
-	medical_record_text = "Patient has been inquired about regular nail clipping and related hygiene."
+	medical_record_text = "Patient ended up scratching through the examination table's cushions; recommended they look into clipping their claws."
 	icon = FA_ICON_HAND
 
-/datum/quirk/razorgirl/add(client/client_source)
+/datum/quirk/sharpclaws/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -47,7 +47,7 @@
 		right_arm.unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
 		right_arm.unarmed_sharpness = SHARP_EDGED
 
-/datum/quirk/razorgirl/remove(client/client_source)
+/datum/quirk/sharpclaws/remove(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
