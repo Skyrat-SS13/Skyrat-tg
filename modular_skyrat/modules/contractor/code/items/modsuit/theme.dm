@@ -63,6 +63,6 @@
 	energy = 15
 	bomb = 35
 	bio = 100
-	fire = 50
+	fire = 100
 	acid = 90
 	wound = 25
