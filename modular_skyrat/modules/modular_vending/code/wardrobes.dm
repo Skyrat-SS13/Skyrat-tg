@@ -362,19 +362,11 @@
 			products.Remove(typepath)
 	return ..()
 
-/obj/machinery/vending/wardrobe/gene_wardrobe/ghost_cafe
-	products = list(
-		/obj/item/clothing/under/rank/rnd/geneticist = 2,
-		/obj/item/clothing/under/rank/rnd/geneticist/skirt = 2,
-		/obj/item/clothing/suit/toggle/labcoat/genetics = 2,
-		/obj/item/clothing/suit/hooded/wintercoat/science/genetics = 2,
-		/obj/item/clothing/gloves/latex = 2,
-		/obj/item/clothing/shoes/sneakers/white = 2,
-		/obj/item/storage/backpack/genetics = 2,
-		/obj/item/storage/backpack/satchel/gen = 2,
-		/obj/item/storage/backpack/duffelbag/genetics = 2,
-		/obj/item/radio/headset/headset_sci = 0,
-	)
+/obj/machinery/vending/wardrobe/gene_wardrobe/ghost_cafe/Initialize(mapload)
+	for(var/typepath as anything in products)
+		if(ispath(typepath, /obj/item/radio/headset))
+			products.Remove(typepath)
+	return ..()
 
 /obj/machinery/vending/wardrobe/chem_wardrobe/ghost_cafe
 	products = list(
