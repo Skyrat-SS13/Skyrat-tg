@@ -489,6 +489,7 @@ DEFINE_BITFIELD(liked_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
 ))
 
 DEFINE_BITFIELD(disliked_foodtypes, list(
@@ -513,6 +514,7 @@ DEFINE_BITFIELD(disliked_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
 ))
 
 DEFINE_BITFIELD(toxic_foodtypes, list(
@@ -537,6 +539,7 @@ DEFINE_BITFIELD(toxic_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"BLOODY" = BLOODY, // SKYRAT EDIT - Hemophage Food
 ))
 
 DEFINE_BITFIELD(sharpness, list(
