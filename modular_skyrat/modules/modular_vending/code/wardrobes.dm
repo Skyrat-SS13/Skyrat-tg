@@ -356,28 +356,11 @@
 		/obj/item/storage/bag/books = 1,
 	)
 
-/obj/machinery/vending/wardrobe/chap_wardrobe/ghost_cafe
-	products = list(
-		/obj/item/choice_beacon/unholy = 1,
-		/obj/item/clothing/accessory/pocketprotector/cosmetology = 1,
-		/obj/item/clothing/under/rank/civilian/chaplain = 1,
-		/obj/item/clothing/under/rank/civilian/chaplain/skirt = 2,
-		/obj/item/clothing/shoes/sneakers/black = 1,
-		/obj/item/clothing/suit/chaplainsuit/nun = 1,
-		/obj/item/clothing/head/chaplain/nun_hood = 1,
-		/obj/item/clothing/suit/chaplainsuit/holidaypriest = 1,
-		/obj/item/clothing/suit/hooded/chaplainsuit/monkhabit = 1,
-		/obj/item/clothing/head/chaplain/kippah = 3,
-		/obj/item/clothing/suit/chaplainsuit/whiterobe = 1,
-		/obj/item/clothing/head/chaplain/taqiyah/white = 1,
-		/obj/item/clothing/head/chaplain/taqiyah/red = 3,
-		/obj/item/clothing/suit/chaplainsuit/monkrobeeast = 1,
-		/obj/item/clothing/head/rasta = 1,
-		/obj/item/clothing/suit/chaplainsuit/shrinehand = 1,
-		/obj/item/storage/backpack/cultpack = 1,
-		/obj/item/storage/fancy/candle_box = 2,
-		/obj/item/radio/headset/headset_srv = 0,
-	)
+/obj/machinery/vending/wardrobe/chap_wardrobe/unholy/ghost_cafe/Initialize(mapload)
+	for(var/typepath as anything in products)
+		if(ispath(typepath, /obj/item/radio/headset))
+			products.Remove(typepath)
+	return ..()
 
 /obj/machinery/vending/wardrobe/gene_wardrobe/ghost_cafe
 	products = list(
