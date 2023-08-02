@@ -41,7 +41,7 @@
 		return FALSE
 
 	var/no_viewer_with_false_prefs = TRUE
-	for(var/mob/living/viewer in view())
+	for(var/mob/living/viewer in dview())
 		if(!viewer?.client) // It doens't really matter if these people see it.
 			continue
 
