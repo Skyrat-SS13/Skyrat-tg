@@ -160,6 +160,11 @@
 	remove_products(excluded_products)
 	return ..()
 
+/obj/machinery/vending/wardrobe/cargo_wardrobe/ghost_cafe
+	excluded_products = list(
+		/obj/item/radio/headset,
+	)
+
 /obj/machinery/vending/wardrobe/science_wardrobe/ghost_cafe
 	excluded_products = list(
 		/obj/item/radio/headset,
