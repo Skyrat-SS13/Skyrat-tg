@@ -140,7 +140,7 @@
 	if(!lit)
 		to_chat(user, span_danger("[src] needs to be lit to produce wax!"))
 		return
-	if(!attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("It looks like [attacked] don't want you to do that."))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna wax

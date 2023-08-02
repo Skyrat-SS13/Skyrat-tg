@@ -99,7 +99,7 @@
 		to_chat(user, span_warning("You must turn on the toy, to use it!"))
 		return FALSE
 
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
 		return FALSE
 

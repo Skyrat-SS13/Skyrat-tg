@@ -3733,6 +3733,11 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
+"la" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/mining_dock)
 "lb" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
@@ -8001,7 +8006,7 @@
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/minipost)
 "AG" = (
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/snowdin/post/minipost)
 "AH" = (
@@ -8741,7 +8746,7 @@
 /area/awaymission/snowdin/cave)
 "DY" = (
 /obj/effect/turf_decal/weather/snow,
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/floor/iron/dark/snowdin,
 /area/awaymission/snowdin/cave)
 "Ea" = (
@@ -9029,6 +9034,10 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 4
 	},
+/turf/open/floor/iron,
+/area/awaymission/snowdin/post/mining_dock)
+"Fs" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/mining_dock)
 "Ft" = (
@@ -10049,7 +10058,7 @@
 	set_cap = 3;
 	set_luminosity = 6
 	},
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/outside)
 "Li" = (
@@ -10073,7 +10082,7 @@
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/snowdin/post/minipost)
 "Lm" = (
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow{
 	floor_variance = 0;
 	icon_state = "snow_dug";
@@ -10381,7 +10390,7 @@
 /area/awaymission/snowdin/cave/cavern)
 "MV" = (
 /obj/item/shard,
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow{
 	floor_variance = 0;
 	icon_state = "snow_dug";
@@ -10564,11 +10573,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/outside)
-"NK" = (
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/awaymission/snowdin/post/mining_dock)
 "NL" = (
 /obj/machinery/airalarm/directional/north,
 /obj/structure/spider/stickyweb,
@@ -11331,7 +11335,7 @@
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/garage)
 "Sa" = (
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/cave)
 "Sb" = (
@@ -11583,12 +11587,9 @@
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/cavern2)
 "Tf" = (
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/outside)
-"Tg" = (
-/turf/open/floor/iron,
-/area/awaymission/snowdin/post/mining_dock)
 "Tk" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/misc/asteroid/snow{
@@ -11647,10 +11648,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/cave)
-"Tx" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/awaymission/snowdin/post/mining_dock)
 "Ty" = (
 /obj/machinery/light/broken/directional/east,
 /turf/open/floor/iron,
@@ -11895,6 +11892,9 @@
 /obj/structure/flora/rock/pile/icy/style_random,
 /turf/open/misc/asteroid/snow/ice,
 /area/awaymission/snowdin/cave/cavern)
+"UZ" = (
+/turf/open/floor/iron,
+/area/awaymission/snowdin/post/mining_dock)
 "Va" = (
 /obj/structure/fence{
 	dir = 4
@@ -11925,7 +11925,7 @@
 /area/awaymission/snowdin/cave)
 "Vi" = (
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/simple_animal/hostile/bear/snow,
+/mob/living/basic/bear/snow,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/cave)
 "Vl" = (
@@ -58719,17 +58719,17 @@ xW
 wL
 xN
 li
-Tx
+Fs
 xy
-Tg
+UZ
 wL
 wL
 le
 TF
 Ow
 tj
-Tx
-Tg
+Fs
+UZ
 xy
 xy
 wD
@@ -58987,7 +58987,7 @@ Eh
 AB
 wL
 xy
-Tg
+UZ
 xy
 wD
 eJ
@@ -59231,7 +59231,7 @@ OU
 wL
 Lj
 xy
-Tg
+UZ
 xy
 Xz
 fq
@@ -59244,7 +59244,7 @@ wD
 wD
 wD
 tj
-Tx
+Fs
 Md
 wD
 eJ
@@ -59490,9 +59490,9 @@ Lj
 xy
 xy
 wL
-Tg
-Tx
-Tg
+UZ
+Fs
+UZ
 kD
 wD
 wM
@@ -59758,7 +59758,7 @@ Qz
 wL
 YS
 tj
-Tx
+Fs
 xy
 wD
 eJ
@@ -60009,7 +60009,7 @@ ya
 ya
 yN
 wD
-NK
+la
 wD
 Xr
 qJ
@@ -60530,9 +60530,9 @@ tn
 tn
 rg
 wL
-Tx
+Fs
 wL
-Tg
+UZ
 wD
 bh
 bh

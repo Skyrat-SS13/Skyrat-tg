@@ -103,7 +103,7 @@
 		return
 	if(!ishuman(attacked))
 		return
-	if(!attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [attacked] doesn't want you to do that."))
 		return
 	switch(user.zone_selected)
