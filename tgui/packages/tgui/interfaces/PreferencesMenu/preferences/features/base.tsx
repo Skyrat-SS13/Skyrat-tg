@@ -3,13 +3,9 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
 import { VNodeFlags } from 'inferno-vnode-flags';
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-<<<<<<< HEAD
-// SKYRAT EDIT
-import { Box, Button, Dropdown, Input, NumberInput, Stack, TextArea } from '../../../../components';
+// SKYRAT EDIT - adds TextArea to imports
+import { Box, Button, Dropdown, Input, NumberInput, Slider, Stack, TextArea } from '../../../../components';
 // SKYRAT EDIT END
-=======
-import { Box, Button, Dropdown, Input, NumberInput, Slider, Stack } from '../../../../components';
->>>>>>> 286997d70ba (Adds slider component for preferences, converts TTS volume, and pitch to use it (#77304))
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
