@@ -12,13 +12,11 @@
 		"cell_charge_current" = get_charge(),
 		"cell_charge_max" = get_max_charge(),
 		"active" = active,
-<<<<<<< HEAD
-		//"ai_name" = ai?.name, // SKYRAT EDIT REMOVAL - pAIs in MODsuits
-=======
+		/* SKYRAT EDIT REMOVAL START = pAIs (only) in MODsuits
 		"ai_name" = ai_assistant?.name,
 		"has_pai" = ispAI(ai_assistant),
 		"is_ai" = ai_assistant && ai_assistant == user,
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
+		SKYRAT EDIT REMOVAL END */
 		// Wires
 		"open" = open,
 		"seconds_electrified" = seconds_electrified,
@@ -84,12 +82,7 @@
 	. = ..()
 	if(.)
 		return
-<<<<<<< HEAD
-	// allowed() doesn't allow for pAIs
-	if(((locked && !ispAI(usr)) && !allowed(usr))) // SKYRAT EDIT CHANGE - ORIGINAL: if(locked && !allowed(usr))
-=======
 	if(locked && (!allowed(usr) || !ispAI(usr))) // pAIs automatically fail out of allowed()
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -117,17 +110,14 @@
 			if(!module)
 				return
 			module.pin(usr)
-<<<<<<< HEAD
+		if("eject_pai")
+			if (!ishuman(usr))
+				return
+			remove_pai(usr)
 		// SKYRAT EDIT START - pAIs in MODsuits
 		if("remove_pai")
 			if(ishuman(usr)) // Only the MODsuit's wearer should be removing the pAI.
 				var/mob/user = usr
 				extract_pai(user)
 		// SKYRAT EDIT END
-=======
-		if("eject_pai")
-			if (!ishuman(usr))
-				return
-			remove_pai(usr)
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 	return TRUE
