@@ -83,10 +83,8 @@
 	var/list/modules = list()
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
-	/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 	/// AI or pAI mob inhabiting the MOD.
 	var/mob/living/silicon/ai_assistant
-	*/ // SKYRAT EDIT END
 	/// Delay between moves as AI.
 	var/static/movedelay = 0
 	/// Cooldown for AI moves.
