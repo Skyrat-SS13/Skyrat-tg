@@ -319,8 +319,8 @@ const SuitStatusSection = (props, context) => {
     ai_name,
     has_pai,
     is_ai,
-    pAI, /* SKYRAT EDIT ADDITION */
-    ispAI, /* SKYRAT EDIT ADDITION */
+    pAI /* SKYRAT EDIT ADDITION */,
+    ispAI /* SKYRAT EDIT ADDITION */,
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
