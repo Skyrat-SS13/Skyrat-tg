@@ -1,3 +1,5 @@
+#define LOOC_RANGE 7
+
 /atom/proc/do_jiggle(targetangle = 45, timer = 20)
 	var/matrix/OM = matrix(transform)
 	var/matrix/M = matrix(transform)
