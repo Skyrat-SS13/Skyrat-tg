@@ -34,7 +34,8 @@
 
 /mob/living/basic/abductor/Initialize(mapload)
 	. = ..()
-	if(length(loot))
+	if(LAZYLEN(loot))
+		loot = string_list(loot)
 		AddElement(/datum/element/death_drops, loot)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE)
 

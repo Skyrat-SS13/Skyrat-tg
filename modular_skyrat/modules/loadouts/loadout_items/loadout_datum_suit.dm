@@ -327,6 +327,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	FLANNELS
 */
 
+/datum/loadout_item/suit/flannel_gags
+	name = "Flannel Shirt"
+	item_path = /obj/item/clothing/suit/toggle/jacket/flannel/gags
+
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
 	item_path = /obj/item/clothing/suit/toggle/jacket/flannel

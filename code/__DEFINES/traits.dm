@@ -359,6 +359,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define IGNORING_GRAVITY_NEGATION "ignoring_gravity_negation"
 /// We have some form of forced gravity acting on us
 #define TRAIT_FORCED_GRAVITY "forced_gravity"
+/// Makes whispers clearly heard from seven tiles away, the full hearing range
+#define TRAIT_GOOD_HEARING "good_hearing"
+/// Allows you to hear speech through walls
+#define TRAIT_XRAY_HEARING "xray_hearing"
 
 /// Lets us scan reagents
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
@@ -417,6 +421,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FREE_HYPERSPACE_SOFTCORDON_MOVEMENT "free_hyperspace_softcordon_movement"
 ///Deletes the object upon being dumped into space, usually from exiting hyperspace. Useful if you're spawning in a lot of stuff for hyperspace events that dont need to flood the entire game
 #define TRAIT_DEL_ON_SPACE_DUMP "del_on_hyperspace_leave"
+/// We can walk up or around cliffs, or at least we don't fall off of it
+#define TRAIT_CLIFF_WALKER "cliff_walker"
 /// Gets double arcade prizes
 #define TRAIT_GAMERGOD "gamer-god"
 #define TRAIT_GIANT "giant"
@@ -763,6 +769,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_POSTERBOY "poster_boy"
 #define TRAIT_THROWINGARM "throwing_arm"
 
+///if the atom has a sticker attached to it
+#define TRAIT_STICKERED "stickered"
+
 // Debug traits
 /// This object has light debugging tools attached to it
 #define TRAIT_LIGHTING_DEBUGGED "lighting_debugged"
@@ -851,6 +860,17 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait given to mechs that can have orebox functionality on movement
 #define TRAIT_OREBOX_FUNCTIONAL "orebox_functional"
+
+///fish traits
+#define TRAIT_RESIST_EMULSIFY "resist_emulsify"
+#define TRAIT_FISH_SELF_REPRODUCE "fish_self_reproduce"
+#define TRAIT_FISH_NO_MATING "fish_no_mating"
+#define TRAIT_YUCKY_FISH "yucky_fish"
+#define TRAIT_FISH_TOXIN_IMMUNE "fish_toxin_immune"
+#define TRAIT_FISH_CROSSBREEDER "fish_crossbreeder"
+#define TRAIT_FISH_AMPHIBIOUS "fish_amphibious"
+///Trait needed for the lubefish evolution
+#define TRAIT_FISH_FED_LUBE "fish_fed_lube"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
@@ -1114,6 +1134,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATION_TRAIT_SPIDER_INFESTATION "station_trait_spider_infestation"
 #define STATION_TRAIT_REVOLUTIONARY_TRASHING "station_trait_revolutionary_trashing"
 #define STATION_TRAIT_RADIOACTIVE_NEBULA "station_trait_radioactive_nebula"
+#define STATION_TRAIT_FORESTED "station_trait_forested"
+#define STATION_TRAIT_VENDING_SHORTAGE "station_trait_vending_shortage"
 
 ///From the market_crash event
 #define MARKET_CRASH_EVENT_TRAIT "crashed_market_event"
@@ -1188,6 +1210,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// the object has a label applied
 #define TRAIT_HAS_LABEL "labeled"
+
+///coming from a fish trait datum.
+#define FISH_TRAIT_DATUM "fish_trait_datum"
+///coming from a fish evolution datum
+#define FISH_EVOLUTION "fish_evolution"
 
 /// some trait sorces dirived from bodyparts BODYPART_TRAIT is generic.
 #define BODYPART_TRAIT "bodypart"
