@@ -18,29 +18,17 @@
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
-<<<<<<< HEAD
 	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
-=======
-	if(ai_action && user != mod.ai_assistant)
-		return
-	else if(!ai_action && user == mod.ai_assistant)
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
 	var/obj/item/mod/control/mod = target
-<<<<<<< HEAD
 	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
-=======
-	if(ai_action && user != mod.ai_assistant)
-		return
-	else if(!ai_action && user == mod.ai_assistant)
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		return
 	return ..()
 
@@ -141,17 +129,13 @@
 	var/mob/pinner
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
-<<<<<<< HEAD
 	// SKYRAT EDIT START - pAIs in MODsuits
 	var/obj/item/mod/control/mod = Target // We have to do this otherwise it's going to runtime
 	if(user == mod.mod_pai)
 		pai_action = TRUE
 	// SKYRAT EDIT END
-	if(isAI(user))
-=======
 	var/obj/item/mod/control/mod = Target
 	if(user == mod.ai_assistant)
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		ai_action = TRUE
 	button_icon = linked_module.icon
 	button_icon_state = linked_module.icon_state
