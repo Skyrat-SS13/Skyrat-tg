@@ -377,12 +377,8 @@
 /obj/item/modular_computer/pda/curator/Initialize(mapload)
 	. = ..()
 	for(var/datum/computer_file/program/messenger/msg in stored_files)
-<<<<<<< HEAD
-		msg.ringer_status = FALSE
-*/ // SKYRAT EDIT REMOVAL END
-=======
 		msg.alert_silenced = TRUE
->>>>>>> ebbc45b1616 (Improved PDA Direct Messenger (#75820))
+*/ // SKYRAT EDIT REMOVAL END
 
 /obj/item/modular_computer/pda/psychologist
 	name = "psychologist PDA"
