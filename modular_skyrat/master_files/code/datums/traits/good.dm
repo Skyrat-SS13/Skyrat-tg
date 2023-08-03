@@ -23,7 +23,7 @@
 /datum/quirk/sharpclaws
 	name = "Sharp Claws"
 	desc = "Whether it's a hunter's inherent biology, or your stubborn refusal to clip your nails ahead of your Jiu-Jitsu classes, your unarmed attacks are sharper and might make folks bleed."
-	value = 6 // It's still not really as strong as a kitchen knife in terms of wounding, but we can go to eight if we gotta.
+	value = 2
 	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
 	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
 	medical_record_text = "Patient ended up scratching through the examination table's cushions; recommended they look into clipping their claws."
@@ -31,6 +31,9 @@
 
 /datum/quirk/sharpclaws/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
+	if(!istype(human_holder))
+		return FALSE
+
 	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
 		left_arm.unarmed_attack_verb = "slash"

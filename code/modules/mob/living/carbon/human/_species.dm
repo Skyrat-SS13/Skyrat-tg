@@ -1217,6 +1217,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
 		else//other attacks deal full raw damage + 1.5x in stamina damage
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT CHANGE: Applies sharpness if it does.
+			//target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction) //SKYRAT EDIT - Original of the line above.
 			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			if(damage >= 9)
 				target.force_say()
