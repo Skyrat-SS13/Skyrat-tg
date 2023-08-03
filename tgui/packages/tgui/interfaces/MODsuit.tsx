@@ -33,13 +33,10 @@ type SuitStatus = {
   complexity: number;
   selected_module: string;
   ai_name: string;
-<<<<<<< HEAD
-  pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
-  ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
-=======
   has_pai: boolean;
   is_ai: boolean;
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
+  pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
+  ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
 };
 
 type UserStatus = {
@@ -320,13 +317,10 @@ const SuitStatusSection = (props, context) => {
     malfunctioning,
     locked,
     ai_name,
-<<<<<<< HEAD
-    pAI,
-    ispAI,
-=======
     has_pai,
     is_ai,
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
+    pAI, /* SKYRAT EDIT ADDITION */
+    ispAI, /* SKYRAT EDIT ADDITION */
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
