@@ -257,9 +257,14 @@
 	. = ..()
 	if(. != MOD_CANCEL_ACTIVATE || !isliving(user))
 		return
+<<<<<<< HEAD
 	// SKYRAT EDIT CHANGE BEGIN - pAIs in MODsuits - `ai` replaced with `mod_pai`
 	if(mod.mod_pai == user)
 		to_chat(mod.mod_pai, span_danger("<B>fATaL EERRoR</B>: 381200-*#00CODE <B>BLUE</B>\nAI INTErFERenCE DEtECted\nACTi0N DISrEGArdED"))
+=======
+	if(mod.ai_assistant == user)
+		to_chat(mod.ai_assistant, span_danger("<B>fATaL EERRoR</B>: 381200-*#00CODE <B>BLUE</B>\nAI INTErFERenCE DEtECted\nACTi0N DISrEGArdED"))
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		return
 	// SKYRAT EDIT CHANGE END
 	var/mob/living/living_user = user

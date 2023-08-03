@@ -83,10 +83,15 @@
 	var/list/modules = list()
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
+<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 	/// AI mob inhabiting the MOD.
 	var/mob/living/silicon/ai/ai
 	*/ // SKYRAT EDIT END
+=======
+	/// AI or pAI mob inhabiting the MOD.
+	var/mob/living/silicon/ai_assistant
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 	/// Delay between moves as AI.
 	var/static/movedelay = 0
 	/// Cooldown for AI moves.
@@ -189,7 +194,18 @@
 		var/obj/item/overslot = overslotting_parts[part]
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
+<<<<<<< HEAD
 	remove_pai() // SKYRAT EDIT - pAIs in MODsuits
+=======
+	if(ai_assistant)
+		if(ispAI(ai_assistant))
+			INVOKE_ASYNC(src, PROC_REF(remove_pai), /* user = */ null, /* forced = */ TRUE) // async to appease spaceman DMM because the branch we don't run has a do_after
+		else
+			for(var/datum/action/action as anything in actions)
+				if(action.owner == ai_assistant)
+					action.Remove(ai_assistant)
+			new /obj/item/mod/ai_minicard(drop_location(), ai_assistant)
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)
@@ -211,12 +227,19 @@
 			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
+<<<<<<< HEAD
 		if(!mod_pai) // SKYRAT EDIT BEGIN - PAI in Modsuits
 			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
 /* 		if(ai)
 			. += span_notice("You could remove [ai] with an <b>intellicard</b>.")
 		else
 			. += span_notice("You could install an AI with an <b>intellicard</b>.") SKYRAT EDIT END */
+=======
+		if(isnull(ai_assistant))
+			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
+		else if(isAI(ai_assistant))
+			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 	. += span_notice("<i>You could examine it more thoroughly...</i>")
 
 /obj/item/mod/control/examine_more(mob/user)
@@ -255,6 +278,13 @@
 /obj/item/mod/control/item_action_slot_check(slot)
 	if(slot & slot_flags)
 		return TRUE
+
+// Grant pinned actions to pin owners, gives AI pinned actions to the AI and not the wearer
+/obj/item/mod/control/grant_action_to_bearer(datum/action/action)
+	if (!istype(action, /datum/action/item_action/mod/pinned_module))
+		return ..()
+	var/datum/action/item_action/mod/pinned_module/pinned = action
+	give_item_action(action, pinned.pinner, slot_flags)
 
 /obj/item/mod/control/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -317,10 +347,15 @@
 	return ..()
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
+<<<<<<< HEAD
 	// SKYRAT EDIT START - pAIs in MODsuits
 	. = ..()
 	if(.)
 	// SKYRAT EDIT END
+=======
+	. = ..()
+	if(.)
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 		return TRUE
 	if(active || activating || ai_controller)
 		balloon_alert(user, "deactivate suit first!")
@@ -370,6 +405,7 @@
 	return FALSE
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
+<<<<<<< HEAD
 	// SKYRAT EDIT START - pAIs in MODsuits
 	if(istype(attacking_item, /obj/item/pai_card))
 		if(!open) //mod must be open
@@ -378,6 +414,14 @@
 		insert_pai(user, attacking_item)
 		return TRUE
 	// SKYRAT EDIT END
+=======
+	if(istype(attacking_item, /obj/item/pai_card))
+		if(!open)
+			balloon_alert(user, "open the cover first!")
+			return FALSE
+		insert_pai(user, attacking_item)
+		return TRUE
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 	if(istype(attacking_item, /obj/item/mod/module))
 		if(!open)
 			balloon_alert(user, "open the cover first!")

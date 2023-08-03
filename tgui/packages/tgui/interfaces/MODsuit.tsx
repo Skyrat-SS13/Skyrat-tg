@@ -33,8 +33,13 @@ type SuitStatus = {
   complexity: number;
   selected_module: string;
   ai_name: string;
+<<<<<<< HEAD
   pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
   ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
+=======
+  has_pai: boolean;
+  is_ai: boolean;
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
 };
 
 type UserStatus = {
@@ -315,8 +320,13 @@ const SuitStatusSection = (props, context) => {
     malfunctioning,
     locked,
     ai_name,
+<<<<<<< HEAD
     pAI,
     ispAI,
+=======
+    has_pai,
+    is_ai,
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
@@ -388,7 +398,16 @@ const SuitStatusSection = (props, context) => {
           </LabeledList.Item>
         )}
         {!!ai_name && (
-          <LabeledList.Item label="AI Core">{ai_name}</LabeledList.Item>
+          <LabeledList.Item label="pAI Control">
+            {has_pai && (
+              <Button
+                icon="eject"
+                content="Eject pAI"
+                disabled={is_ai}
+                onClick={() => act('eject_pai')}
+              />
+            )}
+          </LabeledList.Item>
         )}
         {/* SKYRAT EDIT START - pAIs in MODsuits*/}
         <LabeledList.Item label="Onboard pAI">
@@ -424,8 +443,13 @@ const HardwareSection = (props, context) => {
   return (
     <Section title="Hardware" style={{ 'text-transform': 'capitalize' }}>
       <LabeledList>
+<<<<<<< HEAD
         <LabeledList.Item label="pAI Card" /* SKYRAT EDIT CHANGE - pAI */>
           {pAI || 'No pAI Card Detected' /* SKYRAT EDIT CHANGE - pAI */}
+=======
+        <LabeledList.Item label="AI Assistant">
+          {ai_name || 'No AI Detected'}
+>>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
         </LabeledList.Item>
         <LabeledList.Item label="Core">
           {core_name || 'No Core Detected'}
