@@ -77,3 +77,74 @@
       pieces of eyewear compatible with HUD NIFSofts
   vinylspiders:
   - bugfix: fixed flashlights having an invalid overlay
+2023-08-03:
+  GoldenAlpharex:
+  - rscadd: A Hemophage's pulsating tumor will now corrupt nearby internal organs,
+      hijacking them for its own purposes... Meaning that a Hemophage's organs (outside
+      of the tumor itself) can be replaced by any other organs of the same kind, and
+      after a minute, get corrupted and become functional Hemophage organs again.
+  - qol: Corrupted organs now decay 10 times slower when no tumor is present in their
+      body, taking around 100 seconds instead of 10 to fully decay. That means you
+      finally have time to deal with it before the organs are fully dead, but still
+      not that much.
+  - qol: A Hemophage's pulsating tumor can now be coronary-bypassed more than once,
+      granted that it spent at least some time in an alive person's body between the
+      two bypasses! Yay for regeneration!
+  - bugfix: Hemophage's corrupted organs no longer start rapidly decaying after going
+      through the SAD, getting your preferences re-applied or otherwise even getting
+      ahealed.
+  - refactor: Hemophage code has been severely refactored, moving all of the organ-specific
+      behavior to the actual organs, meaning that the species itself doesn't handle
+      Hemophage-specific bodily functions anymore. Yay for customizability!
+  - code_imp: Hemophage code has been better spread out across multiple files, to
+      be easier to sift through and find exactly what you want.
+  Melbert:
+  - bugfix: Traitors using the sneak suit and heretics under the effects of cloak
+      no longer leak their identity via Text to Speech
+  SkyratBot:
+  - bugfix: Fix ethereal crystal destruction not removing light
+  - rscadd: Fugitive shuttles now have a "Fugitive Tracker" machine, which gives a
+      readout on the location of a random fugitive on a 40 second cooldown.
+  - spellcheck: Renames the fugitive pinpointer to the bounty shuttle pinpointer.
+  - bugfix: bluespace RPED can be put in bags again without dragging them into their
+      storage slots
+  - bugfix: normal RPED exchanges parts & displays part info again
+  - bugfix: BoH bombing now correctly requires two bags to be done.
+  - balance: The strong-arm implant's punches now respect armor.
+  - spellcheck: While using an arm with the strong-arm implant to punch people, you
+      no longer kick them; your implant's in your arm, after all!
+  - qol: The random parallax layer moves more slowly, giving a more deep feel
+  - bugfix: Your pAI card won't pop out of your PDA onto the floor alongside its hologram
+      if it enters hologram form while inside a PDA.
+  - balance: Xenomorph neurotoxin has been buffed (50 -> 65 stamina damage)
+  - rscadd: Adds boss music functionality.
+  - sound: Adds hierophants boss track, tweaks hierophant boss noises.
+  - bugfix: CentCom can no longer be raided by teleporting out of the Super Secret
+      Room
+  - bugfix: The Administrative Storage and ERT Armoury blast doors can no longer be
+      opened by building a door button.
+  SpaceVampire:
+  - bugfix: 'VoidRaptor security made more accessible to the inquisitively inclined
+      on their staff.
+
+      <!-- Both :cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->
+
+      <!-- You can use multiple of the same prefix (they''re only used for the icon
+      ingame) and delete the unneeded ones. Despite some of the tags, changelogs should
+      generally represent how a player might be affected by the changes rather than
+      a summary of the PR''s contents. -->'
+  Useroth:
+  - rscadd: Added two variants of impala style horns, a smaller and bigger version
+  YakumoChen:
+  - bugfix: Once more, ghosts in the cafe cannot use vendor radios to communicate
+      with the living.
+  dawsonkeyes:
+  - balance: the Marked One has reduced attack cooldowns and rebalanced attack strategies
+      in his final phase
+  - balance: dragonslayer does slightly less fauna damage and the roll does slightly
+      more stamina damage
+  - bugfix: charge attacks no longer grant John Marked One infinite superspeed
+  distributivgesetz:
+  - bugfix: Fixes holoparasites not dusting their owners on death sometimes.
