@@ -304,7 +304,7 @@
 		/datum/job/mime = /obj/item/organ/internal/tongue/robot, //...
 		/datum/job/paramedic = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/prisoner = /obj/item/organ/internal/eyes/robotic/shield,
-		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/upgraded,
+		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/whisper,
 		/datum/job/quartermaster = /obj/item/organ/internal/stomach/cybernetic/tier3,
 		/datum/job/research_director = /obj/item/organ/internal/cyberimp/bci,
 		/datum/job/roboticist = /obj/item/organ/internal/cyberimp/eyes/hud/diagnostic,
@@ -317,7 +317,7 @@
 		// SKYRAT EDIT ADDITION START - MODULAR JOBS
 		/datum/job/blueshield = /obj/item/organ/internal/cyberimp/brain/anti_stun,
 		/datum/job/nanotrasen_consultant = /obj/item/organ/internal/heart/cybernetic/tier3,
-		/datum/job/barber = /obj/item/organ/internal/ears/cybernetic/upgraded,
+		/datum/job/barber = /obj/item/organ/internal/ears/cybernetic/whisper,
 		/datum/job/corrections_officer = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/orderly = /obj/item/organ/internal/cyberimp/brain/anti_drop,
 		/datum/job/science_guard = /obj/item/organ/internal/cyberimp/arm/flash,
