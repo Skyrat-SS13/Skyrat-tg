@@ -188,6 +188,7 @@
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
 	remove_pai() // SKYRAT EDIT ADDITION - pAIs in MODsuits
+	/* SKYRAT EDIT REMOVAL pAIs in MODsuits
 	if(ai_assistant)
 		if(ispAI(ai_assistant))
 			INVOKE_ASYNC(src, PROC_REF(remove_pai), /* user = */ null, /* forced = */ TRUE) // async to appease spaceman DMM because the branch we don't run has a do_after
@@ -196,6 +197,7 @@
 				if(action.owner == ai_assistant)
 					action.Remove(ai_assistant)
 			new /obj/item/mod/ai_minicard(drop_location(), ai_assistant)
+	SKYRAT EDIT REMOVAL END */
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)
