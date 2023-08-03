@@ -317,7 +317,7 @@
 		// SKYRAT EDIT ADDITION START - MODULAR JOBS
 		/datum/job/blueshield = /obj/item/organ/internal/cyberimp/brain/anti_stun,
 		/datum/job/nanotrasen_consultant = /obj/item/organ/internal/heart/cybernetic/tier3,
-		/datum/job/barber = /obj/item/organ/internal/ears/cybernetic/upgraded,
+		/datum/job/barber = /obj/item/organ/internal/ears/cybernetic/whisper,
 		/datum/job/corrections_officer = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/orderly = /obj/item/organ/internal/cyberimp/brain/anti_drop,
 		/datum/job/science_guard = /obj/item/organ/internal/cyberimp/arm/flash,
