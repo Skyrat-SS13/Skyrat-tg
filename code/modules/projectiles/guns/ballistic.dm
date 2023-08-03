@@ -362,8 +362,8 @@
 		return
 	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
 		// SKYRAT EDIT ADDITION START - this return is intentional; we do not want to run TG's version of this case handling
-		handle_magazine(user, A)
-		return
+		if(handle_magazine(user, A))
+			return
 		// SKYRAT EDIT ADDITION END
 		var/obj/item/ammo_box/magazine/AM = A
 		if (!magazine)
