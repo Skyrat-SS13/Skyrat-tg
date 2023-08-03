@@ -177,7 +177,8 @@ GLOBAL_VAR(first_officer)
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/nri/officer
-	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
+	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. \
+	Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/apply_codename(mob/living/carbon/human/spawned_human)
 	var/callsign = pick(GLOB.callsigns_nri)
@@ -186,6 +187,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
 	. = ..()
+	spawned_human.mind.add_antag_datum(/datum/antagonist/cop)
 	spawned_human.grant_language(/datum/language/uncommon, source = LANGUAGE_SPAWNER)
 	spawned_human.grant_language(/datum/language/yangyu, source = LANGUAGE_SPAWNER)
 	spawned_human.grant_language(/datum/language/panslavic, source = LANGUAGE_SPAWNER)
@@ -259,7 +261,7 @@ GLOBAL_VAR(first_officer)
 /obj/projectile/bullet/ciws
 	name = "anti-projectile salvo"
 	icon_state = "guardian"
-	damage = 30
+	damage = 15
 	armour_penetration = 10
 
 /obj/docking_port/mobile/pirate/nri_raider
@@ -498,3 +500,138 @@ GLOBAL_VAR(first_officer)
 		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
 	else
 		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+
+/datum/antagonist/cop
+	name = "\improper NRI Police Officer"
+	job_rank = ROLE_TRAITOR
+	roundend_category = "nri cops"
+	antagpanel_category = "NRI Police"
+	show_in_antagpanel = FALSE
+	show_to_ghosts = TRUE
+	suicide_cry = "God, save the Empress!!"
+	var/datum/team/cop/crew
+
+/datum/antagonist/cop/greet()
+	. = ..()
+	to_chat(owner, "<B>The station has overriden the response system for the reasons unkown, keep the ship intact, communicate with the station, perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate.</B>")
+	owner.announce_objectives()
+
+/datum/antagonist/cop/get_team()
+	return crew
+
+/datum/antagonist/cop/create_team(datum/team/cop/new_team)
+	if(!new_team)
+		for(var/datum/antagonist/cop/R in GLOB.antagonists)
+			if(!R.owner)
+				stack_trace("Antagonist datum without owner in GLOB.antagonists: [R]")
+				continue
+			if(R.crew)
+				crew = R.crew
+				return
+		if(!new_team)
+			crew = new /datum/team/cop
+			crew.forge_objectives()
+			return
+	if(!istype(new_team))
+		stack_trace("Wrong team type passed to [type] initialization.")
+	crew = new_team
+
+/datum/antagonist/cop/on_gain()
+	if(crew)
+		objectives |= crew.objectives
+	. = ..()
+
+/datum/antagonist/cop/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	var/mob/living/owner_mob = mob_override || owner.current
+	var/datum/language_holder/holder = owner_mob.get_language_holder()
+	holder.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_PIRATE)
+	holder.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_PIRATE)
+	holder.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_PIRATE)
+
+/datum/antagonist/cop/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/owner_mob = mob_override || owner.current
+	owner_mob.remove_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_PIRATE)
+	owner_mob.remove_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_PIRATE)
+	owner_mob.remove_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_PIRATE)
+	return ..()
+
+/datum/team/cop
+	name = "\improper NRI police patrol"
+
+/datum/team/cop/proc/forge_objectives()
+	add_objective(new /datum/objective/policing)
+	add_objective(new /datum/objective/inspect_area)
+	add_objective(new /datum/objective/survey)
+	add_objective(new /datum/objective/steal_n_of_type/contraband)
+	add_objective(new /datum/objective/fortify)
+	add_objective(new /datum/objective/survive)
+	for(var/datum/mind/M in members)
+		var/datum/antagonist/cop/R = M.has_antag_datum(/datum/antagonist/cop)
+		if(R)
+			R.objectives |= objectives
+
+/datum/objective/policing
+	name = "policing"
+	explanation_text = "Contact the station to perform an inspection. Delegate responsibilities among the ship's crew. Minimise civilian casualties."
+	martyr_compatible = TRUE
+
+/datum/objective/inspect_area
+	name = "inspect area"
+	explanation_text = "Inspect certain department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	var/inspection_area
+	martyr_compatible = TRUE
+
+/datum/objective/inspect_area/New(text)
+	. = ..()
+	inspection_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+
+/datum/objective/inspect_area/update_explanation_text()
+	..()
+	if(inspection_area)
+		explanation_text = "Inspect [inspection_area] department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	else
+		explanation_text = "Perform a general station inspection and make sure it's up to any loose specifications you can think of."
+
+/datum/objective/survey
+	name = "survey"
+	martyr_compatible = TRUE
+	admin_grantable = TRUE
+	var/survey_area
+
+/datum/objective/survey/New(text)
+	. = ..()
+	survey_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+
+/datum/objective/survey/update_explanation_text()
+	..()
+	if(survey_area)
+		explanation_text = "Execute continuous crime prevention and citizen surveying procedures over [survey_area] department. Prevent crime in a given department and perform a public survey to collect people's opinions on various matters."
+	else
+		explanation_text = "Execute continuous crime prevention and citizen surveying procedures around the station. Prevent crime around the area and perform a public survey to collect people's opinions on various matters."
+
+/datum/objective/steal_n_of_type/contraband
+	name = "confiscate contraband"
+	explanation_text = "Confiscate at least cool number pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	amount = 5
+
+/datum/objective/steal_n_of_type/contraband/New()
+	. = ..()
+	amount = rand(10,25)
+	explanation_text = "Confiscate at least [amount] pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	update_explanation_text()
+	return
+
+/datum/objective/steal_n_of_type/contraband/check_completion()
+	return completed ///I am letting them roleplay this out.
+
+/datum/objective/fortify
+	name = "fortify"
+	explanation_text = "Establish an outpost orbiting the station."
+	martyr_compatible = TRUE
+
+/datum/objective/fortify/New()
+	. = ..()
+	explanation_text = "Establish an outpost orbiting the [station_name()]."
+	update_explanation_text()
+	return
