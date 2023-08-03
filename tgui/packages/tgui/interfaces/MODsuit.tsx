@@ -437,13 +437,8 @@ const HardwareSection = (props, context) => {
   return (
     <Section title="Hardware" style={{ 'text-transform': 'capitalize' }}>
       <LabeledList>
-<<<<<<< HEAD
         <LabeledList.Item label="pAI Card" /* SKYRAT EDIT CHANGE - pAI */>
           {pAI || 'No pAI Card Detected' /* SKYRAT EDIT CHANGE - pAI */}
-=======
-        <LabeledList.Item label="AI Assistant">
-          {ai_name || 'No AI Detected'}
->>>>>>> a1483790921 (pAIs can be inserted into a MODsuit (#77212))
         </LabeledList.Item>
         <LabeledList.Item label="Core">
           {core_name || 'No Core Detected'}
