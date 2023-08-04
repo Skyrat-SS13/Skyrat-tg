@@ -204,6 +204,7 @@
 		)
 
 /turf/closed/mineral/strange_rock/ice
+	icon = MAP_SWITCH('icons/turf/walls/icerock_wall.dmi', 'modular_skyrat/modules/xenoarch/icons/mining.dmi')
 	icon_state = "icerock_strange"
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
@@ -263,6 +264,7 @@
 	defer_change = TRUE
 
 /turf/closed/mineral/strange_rock/asteroid
+	icon = MAP_SWITCH('modular_skyrat/modules/xenoarch/icons/mining.dmi', 'icons/turf/mining.dmi')
 	icon_state = "redrock_strange"
 	base_icon_state = "red_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
