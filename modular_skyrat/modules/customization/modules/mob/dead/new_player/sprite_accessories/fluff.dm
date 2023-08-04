@@ -121,5 +121,5 @@
 
 /datum/sprite_accessory/fluff/moth/teshari/front
 	name = "Teshari Mane (Top)"
-	icon_state = "teshmane"
+	icon_state = "teshmane_top"
 	default_color = DEFAULT_TERTIARY
