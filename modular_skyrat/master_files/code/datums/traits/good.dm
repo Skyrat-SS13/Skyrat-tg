@@ -22,7 +22,7 @@
 
 /datum/quirk/sharpclaws
 	name = "Sharp Claws"
-	desc = "Whether it's a hunter's inherent biology, or your stubborn refusal to clip your nails ahead of your Jiu-Jitsu classes, your unarmed attacks are sharper and might make folks bleed."
+	desc = "Whether it's a hunter's inherent biology, or your stubborn refusal to clip your nails ahead of your Jiu-Jitsu classes, your unarmed attacks are sharper and will make people bleed."
 	value = 2
 	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
 	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
