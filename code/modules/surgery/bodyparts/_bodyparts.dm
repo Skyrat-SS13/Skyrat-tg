@@ -1332,13 +1332,13 @@
 	owner.visible_message(span_danger("[owner]'s [src.name] seems to malfunction!"))
 
 	var/time_needed = 10 SECONDS
-	var/brute_damage = 5 + 1.5 // Augments reduce brute damage by 5.
-	var/burn_damage = 4 + 2.5 // As above, but for burn it's 4.
+	var/brute_damage = 2.5 // SKYRAT EDIT : Balances direct EMP damage for Brute - SR's synth values are multiplied 3x 2.5 * 1.3 * 1.3
+	var/burn_damage = 2 // SKYRAT EDIT : Balances direct EMP damage for Burn - SR's synth values are multiplied 3x 2 * 1.3 * 1.3
 
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
-		brute_damage *= 2
-		burn_damage *= 2
+		brute_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~125 Brute to ~30
+		burn_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~104 Burn to ~24
 
 	receive_damage(brute_damage, burn_damage)
 	do_sparks(number = 1, cardinal_only = FALSE, source = owner)

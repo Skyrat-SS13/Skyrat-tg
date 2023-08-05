@@ -193,6 +193,10 @@
 	name = "Harpy (Alt)"
 	icon_state = "harpyalt"
 
+/datum/sprite_accessory/wings/mammal/harpy/alt/fluffless
+	name = "Harpy (Alt - Fluffless)"
+	icon_state = "harpyalt_fluffless"
+
 /datum/sprite_accessory/wings/mammal/harpy/bat
 	name = "Harpy (Bat)"
 	icon_state = "harpybat"
@@ -200,6 +204,10 @@
 /datum/sprite_accessory/wings/mammal/top/harpy/alt
 	name = "Harpy (Top - Alt)"
 	icon_state = "harpyalt_top"
+
+/datum/sprite_accessory/wings/mammal/top/harpy/alt/fluffless
+	name = "Harpy (Top - Alt - Fluffless)"
+	icon_state = "harpyalt_fluffless_top"
 
 /datum/sprite_accessory/wings/mammal/top/harpy/bat
 	name = "Harpy (Top - Bat)"
