@@ -215,7 +215,7 @@
 		if(isnull(ai_assistant))
 			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
 		/* SKYRAT EDIT BEGIN - PAI in Modsuits - ORIGINAL:
- 		if(isnull(ai_assistant))
+		if(isnull(ai_assistant))
 			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
 		else if(isAI(ai_assistant))
 			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
