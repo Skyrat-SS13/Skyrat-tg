@@ -40,6 +40,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/footstep_override, priority = STEP_SOUND_CONVEYOR_PRIORITY)
+	var/static/list/give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN)
+	AddElement(/datum/element/give_turf_traits, give_turf_traits)
 
 /obj/machinery/conveyor/examine(mob/user)
 	. = ..()
@@ -88,7 +90,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_EXITED = PROC_REF(conveyable_exit),
 		COMSIG_ATOM_ENTERED = PROC_REF(conveyable_enter),
-		COMSIG_ATOM_INITIALIZED_ON = PROC_REF(conveyable_enter)
+		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(conveyable_enter)
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	update_move_direction()
@@ -134,7 +136,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		if(QDELETED(valid))
 			continue
 		neighbors["[direction]"] = TRUE
-		valid.neighbors["[DIRFLIP(direction)]"] = TRUE
+		valid.neighbors["[REVERSE_DIR(direction)]"] = TRUE
 		RegisterSignal(valid, COMSIG_MOVABLE_MOVED, PROC_REF(nearby_belt_changed), override=TRUE)
 		RegisterSignal(valid, COMSIG_QDELETING, PROC_REF(nearby_belt_changed), override=TRUE)
 		valid.RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(nearby_belt_changed), override=TRUE)

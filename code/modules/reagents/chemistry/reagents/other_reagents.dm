@@ -32,9 +32,22 @@
 			if((strain.spread_flags & DISEASE_SPREAD_SPECIAL) || (strain.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
 				continue
 
-			if(methods & (INJECT|INGEST|PATCH))
+			if(methods & INGEST)
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_STOMACH))
+					continue
+
 				exposed_mob.ForceContractDisease(strain)
-			else if((methods & (TOUCH|VAPOR)) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+			else if(methods & (INJECT|PATCH))
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_HEART))
+					continue
+
+				exposed_mob.ForceContractDisease(strain)
+			else if((methods & VAPOR) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_LUNGS))
+					continue
+
+				exposed_mob.ContactContractDisease(strain)
+			else if((methods & TOUCH) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
 				exposed_mob.ContactContractDisease(strain)
 
 	if(iscarbon(exposed_mob))
@@ -501,7 +514,7 @@
 	if(ishuman(exposed_mob))
 		if(methods & (PATCH|VAPOR))
 			var/mob/living/carbon/human/exposed_human = exposed_mob
-			if(exposed_human.dna.species.use_skintones)
+			if(HAS_TRAIT(exposed_human, TRAIT_USES_SKINTONES))
 				switch(exposed_human.skin_tone)
 					if("african1")
 						exposed_human.skin_tone = "african2"
@@ -525,9 +538,8 @@
 						exposed_human.skin_tone = "caucasian2"
 					if("albino")
 						exposed_human.skin_tone = "caucasian1"
-
 			//take current alien color and darken it slightly
-			if(HAS_TRAIT(exposed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(exposed_human, TRAIT_FIXED_MUTANT_COLORS))
+			else if(HAS_TRAIT(exposed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(exposed_human, TRAIT_FIXED_MUTANT_COLORS))
 				var/newcolor = ""
 				var/string = exposed_human.dna.features["mcolor"]
 				var/len = length(string)
@@ -573,7 +585,7 @@
 		if(!HAS_TRAIT(affected_human, TRAIT_BALD))
 			affected_human.set_hairstyle("Spiky", update = FALSE)
 		affected_human.set_haircolor("#000000", update = FALSE)
-		if(affected_human.dna.species.use_skintones)
+		if(HAS_TRAIT(affected_human, TRAIT_USES_SKINTONES))
 			affected_human.skin_tone = "orange"
 		else if(HAS_TRAIT(affected_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(affected_human, TRAIT_FIXED_MUTANT_COLORS)) //Aliens with custom colors simply get turned orange
 			affected_human.dna.features["mcolor"] = "#ff8800"
@@ -937,9 +949,7 @@
 	if(isspaceturf(exposed_turf))
 		return
 
-	var/obj/effect/decal/cleanable/dirt/dirt_decal = (locate() in exposed_turf.contents)
-	if(!dirt_decal)
-		dirt_decal = new(exposed_turf)
+	exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/dirt)
 
 /datum/reagent/chlorine
 	name = "Chlorine"
@@ -1105,9 +1115,7 @@
 	if((reac_volume < 3) || isspaceturf(exposed_turf))
 		return
 
-	var/obj/effect/decal/cleanable/greenglow/glow = locate() in exposed_turf.contents
-	if(!glow)
-		glow = new(exposed_turf)
+	var/obj/effect/decal/cleanable/greenglow/glow = exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/greenglow)
 	if(!QDELETED(glow))
 		glow.reagents.add_reagent(type, reac_volume)
 
@@ -1209,7 +1217,9 @@
 	if((reac_volume < 5))
 		return
 
-	new /obj/effect/decal/cleanable/fuel_pool(exposed_turf, round(reac_volume / 5))
+	var/obj/effect/decal/cleanable/fuel_pool/pool = exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/fuel_pool)
+	if(pool)
+		pool.burn_amount = max(min(round(reac_volume / 5), 10), 1)
 
 /datum/reagent/space_cleaner
 	name = "Space Cleaner"
@@ -2368,7 +2378,7 @@
 	. = ..()
 	if(!istype(exposed_turf))
 		return
-	new glitter_type(exposed_turf)
+	exposed_turf.spawn_unique_cleanable(glitter_type)
 
 /datum/reagent/glitter/pink
 	name = "Pink Glitter"
@@ -2629,7 +2639,7 @@
 /datum/reagent/gravitum/expose_obj(obj/exposed_obj, volume)
 	. = ..()
 	exposed_obj.AddElement(/datum/element/forced_gravity, 0)
-	addtimer(CALLBACK(exposed_obj, PROC_REF(_RemoveElement), list(/datum/element/forced_gravity, 0)), volume * time_multiplier)
+	addtimer(CALLBACK(exposed_obj, PROC_REF(_RemoveElement), list(/datum/element/forced_gravity, 0)), volume * time_multiplier, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /datum/reagent/gravitum/on_mob_metabolize(mob/living/affected_mob)
 	affected_mob.AddElement(/datum/element/forced_gravity, 0) //0 is the gravity, and in this case weightless
@@ -2806,9 +2816,10 @@
 	if((reac_volume <= 10)) // Makes sure people don't duplicate ants.
 		return
 
-	var/obj/effect/decal/cleanable/ants/pests = locate() in exposed_turf.contents
+	var/obj/effect/decal/cleanable/ants/pests = exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/ants)
 	if(!pests)
-		pests = new(exposed_turf)
+		return
+		
 	var/spilled_ants = (round(reac_volume,1) - 5) // To account for ant decals giving 3-5 ants on initialize.
 	pests.reagents.add_reagent(/datum/reagent/ants, spilled_ants)
 	pests.update_ant_damage()

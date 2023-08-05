@@ -66,7 +66,14 @@
 	)
 
 /obj/machinery/ammo_workbench/Initialize(mapload)
-	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 200000, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
+	AddComponent( \
+		/datum/component/material_container, \
+		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		200000, \
+		MATCONTAINER_EXAMINE, \
+		allowed_items = /obj/item/stack, \
+		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/autolathe, AfterMaterialInsert)) \
+	)
 	. = ..()
 	set_wires(new /datum/wires/ammo_workbench(src))
 
@@ -616,7 +623,7 @@
 			A.disabled = !A.disabled
 			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 
-/datum/wires/ammo_workbench/on_cut(wire, mend)
+/datum/wires/ammo_workbench/on_cut(wire, mend, source)
 	var/obj/machinery/ammo_workbench/A = holder
 	switch(wire)
 		if(WIRE_HACK)

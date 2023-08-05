@@ -122,9 +122,9 @@
 
 /datum/wound/burn/get_examine_description(mob/user)
 	if(strikes_to_lose_limb <= 0)
-		return span_deadsay("<B>[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] has locked up completely and is non-functional. Amputate or augment limb immediately, or place the patient in a cryotube.</B>")
+		return span_deadsay("<B>[victim.p_Their()] [parse_zone(limb.body_zone)] has locked up completely and is non-functional. Amputate or augment limb immediately, or place the patient in a cryotube.</B>")
 
-	var/list/condition = list("[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] [examine_desc]")
+	var/list/condition = list("[victim.p_Their()] [parse_zone(limb.body_zone)] [examine_desc]")
 	if(limb.current_gauze)
 		var/bandage_condition
 		switch(limb.current_gauze.absorption_capacity)
@@ -147,7 +147,7 @@
 			if(WOUND_INFECTION_CRITICAL to WOUND_INFECTION_SEPTIC)
 				condition += ", <span class='deadsay'>with streaks of rotten, pulsating infection!</span>"
 			if(WOUND_INFECTION_SEPTIC to INFINITY)
-				return span_deadsay("<B>[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] is a mess of charred skin and infected rot!</B>")
+				return span_deadsay("<B>[victim.p_Their()] [parse_zone(limb.body_zone)] is a mess of charred skin and infected rot!</B>")
 			else
 				condition += "!"
 

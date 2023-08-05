@@ -47,10 +47,12 @@
 	///Whether our gun clicks when it approaches an empty magazine/chamber
 	var/click_on_low_ammo = TRUE
 
-	///Whether the gun will spawn loaded with a magazine
+	/// What type (includes subtypes) of magazine will this gun accept being put into it
+	var/obj/item/ammo_box/magazine/accepted_magazine_type = /obj/item/ammo_box/magazine/m10mm
+	/// Whether the gun will spawn loaded with a magazine
 	var/spawnwithmagazine = TRUE
-	///Compatible magazines with the gun
-	var/obj/item/ammo_box/magazine/mag_type = /obj/item/ammo_box/magazine/m10mm //Removes the need for max_ammo and caliber info
+	/// Change this if the gun should spawn with a different magazine type to what accepted_magazine_type defines. Will create errors if not a type or subtype of accepted magazine.
+	var/obj/item/ammo_box/magazine/spawn_magazine_type
 	///Whether the sprite has a visible magazine or not
 	var/mag_display = TRUE
 	///Whether the sprite has a visible ammo display or not
@@ -130,12 +132,16 @@
 
 /obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
+	if(!spawn_magazine_type)
+		spawn_magazine_type = accepted_magazine_type
 	if (!spawnwithmagazine)
 		bolt_locked = TRUE
 		update_appearance()
 		return
 	if (!magazine)
-		magazine = new mag_type(src)
+		magazine = new spawn_magazine_type(src)
+		if(!istype(magazine, accepted_magazine_type))
+			CRASH("[src] spawned with a magazine type that isn't allowed by its accepted_magazine_type!")
 	if(bolt_type == BOLT_TYPE_STANDARD || internal_magazine) //Internal magazines shouldn't get magazine + 1.
 		chamber_round()
 	else
@@ -151,7 +157,7 @@
 	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_ballistic))
 
 /obj/item/gun/ballistic/fire_sounds()
-	var/max_ammo = magazine?.max_ammo || initial(mag_type.max_ammo)
+	var/max_ammo = magazine?.max_ammo || initial(spawn_magazine_type.max_ammo)
 	var/current_ammo = get_ammo()
 	var/frequency_to_use = sin((90 / max_ammo) * current_ammo)
 	var/click_frequency_to_use = 1 - frequency_to_use * 0.75
@@ -303,7 +309,7 @@
 
 ///Handles all the logic needed for magazine insertion
 /obj/item/gun/ballistic/proc/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message = TRUE)
-	if(!istype(AM, mag_type))
+	if(!istype(AM, accepted_magazine_type))
 		balloon_alert(user, "[AM.name] doesn't fit!")
 		return FALSE
 	if(user.transferItemToLoc(AM, src))
@@ -350,12 +356,15 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered?.loaded_projectile
 
-/* SKYRAT EDIT REMOVAL MOVED TO MODULAR BALLISTIC_MASTER.DM
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if (.)
 		return
 	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
+		// SKYRAT EDIT ADDITION START - this return is intentional; we do not want to run TG's version of this case handling
+		if(handle_magazine(user, A))
+			return
+		// SKYRAT EDIT ADDITION END
 		var/obj/item/ammo_box/magazine/AM = A
 		if (!magazine)
 			insert_magazine(user, AM)
@@ -371,14 +380,16 @@
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())
-				magazine?.stored_ammo -= chambered
+				if(chambered != magazine?.stored_ammo[1])
+					magazine.stored_ammo -= chambered
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
 			if (num_loaded)
-				balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
+				handle_box_reload(user, A, num_loaded) // SKYRAT EDIT CHANGE - ORIGINAL: balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()
+				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - this is normally done by handle_magazine which does not get called so we have to do it manually here
 				A.update_appearance()
 				update_appearance()
 			return
@@ -406,7 +417,6 @@
 			return
 
 	return FALSE
-*/ // SKYRAT EDIT END
 
 /obj/item/gun/ballistic/proc/check_if_held(mob/user)
 	if(src != user.get_inactive_held_item())
@@ -571,7 +581,7 @@
 			var/turf/T = get_turf(user)
 			process_fire(user, user, FALSE, null, BODY_ZONE_HEAD)
 			user.visible_message(span_suicide("[user] blows [user.p_their()] brain[user.p_s()] out with [src]!"))
-			var/turf/target = get_ranged_target_turf(user, turn(user.dir, 180), BRAINS_BLOWN_THROW_RANGE)
+			var/turf/target = get_ranged_target_turf(user, REVERSE_DIR(user.dir), BRAINS_BLOWN_THROW_RANGE)
 			B.Remove(user)
 			B.forceMove(T)
 			var/datum/callback/gibspawner = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_atom_to_turf), /obj/effect/gibspawner/generic, B, 1, FALSE, user)
@@ -702,9 +712,9 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	if(magazine)
 		magazine.top_off()
 	else
-		if(!mag_type)
+		if(!spawn_magazine_type)
 			return
-		magazine = new mag_type(src)
+		magazine = new spawn_magazine_type(src)
 	chamber_round()
 	update_appearance()
 

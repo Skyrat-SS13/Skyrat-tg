@@ -277,6 +277,7 @@
 		"bonesetter",
 		"cautery",
 		"circular_saw",
+		"cybernetic_ears",
 		"cybernetic_eyes",
 		"cybernetic_heart",
 		"cybernetic_liver",
@@ -306,6 +307,13 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"hospital_gown",
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -1203,6 +1211,7 @@
 		"cargorequest",
 		"comconsole",
 		"time_clock_frame", //SKYRAT EDIT ADDITION - TIME CLOCKS
+		"bankmachine",
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
@@ -1307,6 +1316,12 @@
 		"science_hud_projector",
 		"permit_glasses",
 		"nifsoft_money_sense",
+		"nifsoft_hud_kit",
+		"nifsoft_hud_science",
+		"nifsoft_hud_medical",
+		"nifsoft_hud_security",
+		"nifsoft_hud_diagnostic",
+		"nifsoft_hud_cargo",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1374,7 +1389,7 @@
 	description = "We have the technology to rebuild him."
 	prereq_ids = list("biotech")
 	design_ids = list(
-		"cybernetic_ears",
+		"cybernetic_ears_u",
 		"cybernetic_eyes_improved",
 		"cybernetic_heart_tier2",
 		"cybernetic_liver_tier2",
@@ -1395,7 +1410,10 @@
 	description = "We have the technology to upgrade him."
 	prereq_ids = list("adv_biotech", "cyber_organs")
 	design_ids = list(
-		"cybernetic_ears_u",
+		"cybernetic_ears_whisper",
+		"cybernetic_ears_xray",
+		"ci-gloweyes",
+		"ci-welding",
 		"cybernetic_heart_tier3",
 		"cybernetic_liver_tier3",
 		"cybernetic_lungs_tier3",
@@ -1416,11 +1434,9 @@
 	design_ids = list(
 		"ci-breather",
 		"ci-diaghud",
-		"ci-gloweyes",
 		"ci-medhud",
 		"ci-nutriment",
 		"ci-sechud",
-		"ci-welding",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1757,6 +1773,12 @@
 		"mod_storage_expanded",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
+
+/datum/techweb_node/mod_advanced_engineering/New()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_RADIOACTIVE_NEBULA)) //we'll really need the rad protection modsuit module
+		starting_node = TRUE
+
+	return ..()
 
 /datum/techweb_node/mod_medical
 	id = "mod_medical"
@@ -2417,7 +2439,9 @@
 	description = "Cutting edge fishing advancements."
 	prereq_ids = list("base")
 	design_ids = list(
-		"fishing_rod_tech"
+		"fishing_rod_tech",
+		"stabilized_hook",
+		"fish_analyzer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE

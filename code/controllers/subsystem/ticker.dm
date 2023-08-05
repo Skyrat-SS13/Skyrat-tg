@@ -10,8 +10,10 @@ SUBSYSTEM_DEF(ticker)
 
 	/// state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/current_state = GAME_STATE_STARTUP
-	/// Boolean to track if round was ended by admin intervention or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc.
-	var/force_ending = FALSE
+	/// Boolean to track if round should be forcibly ended next ticker tick.
+	/// Set by admin intervention ([ADMIN_FORCE_END_ROUND])
+	/// or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc. ([FORCE_END_ROUND])
+	var/force_ending = END_ROUND_AS_NORMAL
 	/// If TRUE, there is no lobby phase, the game starts immediately.
 	var/start_immediately = FALSE
 	/// Boolean to track and check if our subsystem setup is done.
@@ -220,7 +222,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 
-			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+			if(!roundend_check_paused && (mode.check_finished() || force_ending))
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(TRUE) // Turn it on
 				toggle_dooc(TRUE)
@@ -282,7 +284,8 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
-	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
+	real_round_start_time = REALTIMEOFDAY //SKYRAT EDIT ADDITION
+	SSautotransfer.new_shift(real_round_start_time) //SKYRAT EDIT ADDITION
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))

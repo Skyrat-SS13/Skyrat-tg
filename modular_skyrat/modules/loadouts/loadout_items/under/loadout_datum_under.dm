@@ -614,8 +614,8 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal
 
 /datum/loadout_item/under/formal/amish_suit
-	name = "Amish Suit"
-	item_path = /obj/item/clothing/under/suit/sl
+	name = "White Buttondown Shirt with Black Slacks"
+	item_path = /obj/item/clothing/under/costume/buttondown/slacks/service
 
 /datum/loadout_item/under/formal/formaldressred
 	name = "Formal Red Dress"
@@ -748,10 +748,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/sailor_skirt
 	name = "Sailor Dress"
 	item_path = /obj/item/clothing/under/dress/sailor
-
-/datum/loadout_item/under/formal/scratch_suit
-	name = "Scratch Suit"
-	item_path = /obj/item/clothing/under/suit/white_on_white
 
 /datum/loadout_item/under/formal/sensible_suit
 	name = "Sensible Suit"
