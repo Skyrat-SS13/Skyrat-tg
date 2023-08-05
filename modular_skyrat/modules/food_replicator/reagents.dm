@@ -92,5 +92,5 @@
 	name = "convermol pill"
 	desc = "Used to treat oxygen deprivation. Intoxicates the body."
 	icon_state = "pill16"
-	list_reagents = list(/datum/reagent/medicine/c2/convermol = 30)
+	list_reagents = list(/datum/reagent/medicine/c2/convermol = 15)
 	rename_with_volume = TRUE
