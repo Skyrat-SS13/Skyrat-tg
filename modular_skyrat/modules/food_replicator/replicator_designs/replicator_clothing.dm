@@ -4,8 +4,10 @@
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 200)
 	build_path = /obj/item/clothing/under/misc/skyrat/utility
-	category = list(RND_CATEGORY_INITIAL,
-					RND_CATEGORY_NRI_CLOTHING)
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_NRI_CLOTHING,
+	)
 
 /datum/design/jackboots
 	name = "Jackboots"
