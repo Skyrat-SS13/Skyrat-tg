@@ -28,13 +28,7 @@
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
 
 /obj/item/bodypart/arm/right/moth
-<<<<<<< HEAD
-	icon = 'icons/mob/species/moth/bodyparts.dmi'
-	icon_state = "moth_l_leg"
-	icon = 'icons/mob/species/moth/bodyparts.dmi'
-=======
 	icon = 'icons/mob/human/species/moth/bodyparts.dmi'
->>>>>>> fc4de530ce2 (reorganizes the human sprite folder and replaces the human_basic sprite with an updated one (#77323))
 	icon_state = "moth_r_arm"
 	icon_static = 'icons/mob/human/species/moth/bodyparts.dmi'
 	limb_id = SPECIES_MOTH
