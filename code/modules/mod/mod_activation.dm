@@ -165,10 +165,6 @@
 		module.on_deactivation(display_message = FALSE)
 	activating = TRUE
 	to_chat(wearer, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(mod_pai)
-		to_chat(mod_pai, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
-	// SKYRAT EDIT END
 
 	if (ai_assistant)
 		to_chat(ai_assistant, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
@@ -190,10 +186,6 @@
 		seal_part(helmet, seal = !active)
 	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("Systems [active ? "shut down. Parts unsealed. Goodbye" : "started up. Parts sealed. Welcome"], [wearer]."))
-		// SKYRAT EDIT START - pAIs in MODsuits
-		if(mod_pai)
-			to_chat(mod_pai, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[mod_pai]\"</b>"))
-		// SKYRAT EDIT END
 		if(ai_assistant)
 			to_chat(ai_assistant, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[ai_assistant]\"</b>"))
 		finish_activation(on = !active)

@@ -35,8 +35,6 @@ type SuitStatus = {
   ai_name: string;
   has_pai: boolean;
   is_ai: boolean;
-  pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
-  ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
 };
 
 type UserStatus = {
@@ -319,8 +317,6 @@ const SuitStatusSection = (props, context) => {
     ai_name,
     has_pai,
     is_ai,
-    pAI /* SKYRAT EDIT ADDITION */,
-    ispAI /* SKYRAT EDIT ADDITION */,
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
@@ -403,18 +399,6 @@ const SuitStatusSection = (props, context) => {
             )}
           </LabeledList.Item>
         )}
-        {/* SKYRAT EDIT START - pAIs in MODsuits*/}
-        <LabeledList.Item label="Onboard pAI">
-          {pAI || 'None'} &nbsp;
-          {!!pAI && !ispAI && (
-            <Button
-              icon="eject"
-              content="Eject pAI"
-              onClick={() => act('remove_pai')}
-            />
-          )}
-        </LabeledList.Item>
-        {/* SKYRAT EDIT END */}
       </LabeledList>
       {!!display_time && (
         <Section title="Operation" mt={2}>
@@ -433,12 +417,12 @@ const SuitStatusSection = (props, context) => {
 const HardwareSection = (props, context) => {
   const { act, data } = useBackend<MODsuitData>(context);
   const { control, helmet, chestplate, gauntlets, boots } = data;
-  const { pAI, core_name } = data.suit_status; /* SKYRAT EDIT CHANGE - pAI */
+  const { ai_name, core_name } = data.suit_status;
   return (
     <Section title="Hardware" style={{ 'text-transform': 'capitalize' }}>
       <LabeledList>
-        <LabeledList.Item label="pAI Card" /* SKYRAT EDIT CHANGE - pAI */>
-          {pAI || 'No pAI Card Detected' /* SKYRAT EDIT CHANGE - pAI */}
+        <LabeledList.Item label="AI Assistant">
+          {ai_name || 'No AI Detected'}
         </LabeledList.Item>
         <LabeledList.Item label="Core">
           {core_name || 'No Core Detected'}

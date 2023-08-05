@@ -12,11 +12,9 @@
 		"cell_charge_current" = get_charge(),
 		"cell_charge_max" = get_max_charge(),
 		"active" = active,
-		/* SKYRAT EDIT REMOVAL START = pAIs (only) in MODsuits
 		"ai_name" = ai_assistant?.name,
 		"has_pai" = ispAI(ai_assistant),
 		"is_ai" = ai_assistant && ai_assistant == user,
-		SKYRAT EDIT REMOVAL END */
 		// Wires
 		"open" = open,
 		"seconds_electrified" = seconds_electrified,
@@ -25,10 +23,6 @@
 		"interface_break" = interface_break,
 		// Modules
 		"complexity" = complexity,
-		// SKYRAT EDIT START - pAIs in MODsuits
-		"pAI" = mod_pai?.name,
-		"ispAI" = mod_pai ? mod_pai == user : FALSE,
-		// SKYRAT EDIT END
 	)
 	data["suit_status"] = suit_status
 	// User information
@@ -114,10 +108,4 @@
 			if (!ishuman(usr))
 				return
 			remove_pai(usr)
-		// SKYRAT EDIT START - pAIs in MODsuits
-		if("remove_pai")
-			if(ishuman(usr)) // Only the MODsuit's wearer should be removing the pAI.
-				var/mob/user = usr
-				extract_pai(user)
-		// SKYRAT EDIT END
 	return TRUE

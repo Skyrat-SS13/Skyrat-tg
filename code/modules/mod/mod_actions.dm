@@ -11,24 +11,22 @@
 	if(!istype(Target, /obj/item/mod/control))
 		qdel(src)
 		return
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(pai_action)
-		background_icon_state = "bg_tech"
-	// SKYRAT EDIT END
+	if(ai_action)
+		background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	if(ai_action && user != mod.ai_assistant)
 		return
-	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	else if(!ai_action && user == mod.ai_assistant)
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	if(ai_action && user != mod.ai_assistant)
 		return
-	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	else if(!ai_action && user == mod.ai_assistant)
 		return
 	return ..()
 
@@ -130,10 +128,6 @@
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
 	var/obj/item/mod/control/mod = Target
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(user == mod.mod_pai)
-		pai_action = TRUE
-	// SKYRAT EDIT END
 	if(user == mod.ai_assistant)
 		ai_action = TRUE
 	button_icon = linked_module.icon
