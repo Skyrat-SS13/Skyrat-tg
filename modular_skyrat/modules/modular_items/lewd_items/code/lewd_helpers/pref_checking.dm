@@ -36,7 +36,7 @@
 
 
 /// Checks the prefs of all mobs in `view()`. If there is a mob with the `pref_to_check` set to false, we return `FALSE` otherwise, we return `TRUE`
-/mob/living/proc/check_sight_prefs(datum/preference/toggle/pref_to_check)
+/mob/living/proc/check_prefs_in_view(datum/preference/toggle/pref_to_check)
 	if(!ispath(pref_to_check))
 		return FALSE
 
