@@ -48,8 +48,9 @@
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/detective_revolver
 	item_type = /obj/item/gun/ballistic/revolver/c38/detective
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 2.5
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
