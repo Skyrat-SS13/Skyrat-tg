@@ -199,27 +199,6 @@ const PaiOptions = (props, context) => {
         </LabeledList.Item>
         {/* SKYRAT EDIT ADDITION END */}
         <LabeledList.Item label="Holoform Range">
-<<<<<<< HEAD
-          <Stack>
-            <Stack.Item>
-              <Button
-                icon="fa-circle-minus"
-                onClick={() => act('decrease_range')}
-                /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
-                disabled={!leash_enabled || range === range_min}
-              />
-            </Stack.Item>
-            <Stack.Item mt={0.5}>{range}</Stack.Item>
-            <Stack.Item>
-              <Button
-                icon="fa-circle-plus"
-                onClick={() => act('increase_range')}
-                /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
-                disabled={!leash_enabled || range === range_max}
-              />
-            </Stack.Item>
-          </Stack>
-=======
           {emagged ? (
             '∞'
           ) : (
@@ -228,7 +207,8 @@ const PaiOptions = (props, context) => {
                 <Button
                   icon="fa-circle-minus"
                   onClick={() => act('decrease_range')}
-                  disabled={range === range_min}
+                  /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
+                  disabled={!leash_enabled || range === range_min}
                 />
               </Stack.Item>
               <Stack.Item mt={0.5}>{range}</Stack.Item>
@@ -236,12 +216,12 @@ const PaiOptions = (props, context) => {
                 <Button
                   icon="fa-circle-plus"
                   onClick={() => act('increase_range')}
-                  disabled={range === range_max}
+                  /* SKYRAT EDIT CHANGE ORIGINAL: disabled={range === range_max} */
+                  disabled={!leash_enabled || range === range_max}
                 />
               </Stack.Item>
             </Stack>
           )}
->>>>>>> 1d40ed488c4 (Add pAI movement freedom when emagged (#77325))
         </LabeledList.Item>
         <LabeledList.Item label="Transmit">
           <Button
