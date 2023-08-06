@@ -188,15 +188,17 @@ const PaiOptions = (props, context) => {
           </Button>
         </LabeledList.Item>
         {/* SKYRAT EDIT ADDITION START */}
-        <LabeledList.Item label="Holoform Leashed">
-          <Button
-            icon={leash_enabled ? 'toggle-off' : 'toggle-on'}
-            onClick={() => act('toggle_leash')}
-            selected={leash_enabled}
-            tooltip="Whether or not the holoform is able to roam freely outside of its range.">
-            Toggle
-          </Button>
-        </LabeledList.Item>
+        {!emagged && (
+          <LabeledList.Item label="Holoform Leashed">
+            <Button
+              icon={leash_enabled ? 'toggle-off' : 'toggle-on'}
+              onClick={() => act('toggle_leash')}
+              selected={leash_enabled}
+              tooltip="Whether or not the holoform is able to roam freely outside of its range.">
+              Toggle
+            </Button>
+          </LabeledList.Item>
+        )}
         {/* SKYRAT EDIT ADDITION END */}
         <LabeledList.Item label="Holoform Range">
           {emagged ? (
