@@ -45,36 +45,7 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			switch(group)
-				if ("Donator")
-					for(var/a_donator as anything in GLOB.donator_list)
-						if(player_to_be == a_donator)
-							to_chat(usr, span_warning("\"[player_to_be]\" is already a [group_title]!"))
-							return
-					// Now that we know that the ckey is valid and they're not already apart of that group, let's add them to it!
-					GLOB.donator_list[player_to_be] = TRUE
-					text2file(player_to_be, SKYRAT_DONATOR_CONFIG_FILE)
-
-				if("Mentor")
-					for(var/a_mentor as anything in GLOB.mentor_datums)
-						if(player_to_be == a_mentor)
-							to_chat(usr, span_warning("\"[player_to_be]\" is already a [group_title]!"))
-							return
-					// Now that we know that the ckey is valid and they're not already apart of that group, let's add them to it!
-					new /datum/mentors(player_to_be)
-					text2file(player_to_be, SKYRAT_MENTOR_CONFIG_FILE)
-
-				if ("Veteran")
-					for(var/a_veteran as anything in GLOB.veteran_players)
-						if(player_to_be == a_veteran)
-							to_chat(usr, span_warning("\"[player_to_be]\" is already a [group_title]!"))
-							return
-					// Now that we know that the ckey is valid and they're not already apart of that group, let's add them to it!
-					GLOB.veteran_players[player_to_be] = TRUE
-					text2file(player_to_be, SKYRAT_VETERAN_CONFIG_FILE)
-
-				else
-					return
+			SSplayer_ranks.add_player_to_group(key_name(usr), player_to_be, group_title)
 
 			message_admins("[key_name(usr)] has granted [group_title] status to [player_to_be].")
 			log_admin_private("[key_name(usr)] has granted [group_title] status to [player_to_be].")
@@ -100,7 +71,7 @@
 					if(!changes)
 						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
 						return
-					save_donators()
+					// save_donators()
 
 				if("Mentor")
 					for(var/a_mentor as anything in GLOB.mentor_datums)
@@ -110,7 +81,7 @@
 							changes = TRUE
 					if(!changes)
 						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
-					save_mentors()
+					// save_mentors()
 
 				if("Veteran")
 					for(var/a_veteran as anything in GLOB.veteran_players)
@@ -120,7 +91,7 @@
 					if(!changes)
 						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
 						return
-					save_veteran_players()
+					// save_veteran_players()
 
 				else
 					return

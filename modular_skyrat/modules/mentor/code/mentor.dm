@@ -1,12 +1,8 @@
-#define SKYRAT_MENTOR_CONFIG_FILE "[global.config.directory]/skyrat/mentors.txt"
-
 GLOBAL_LIST_EMPTY(mentor_datums)
 GLOBAL_PROTECT(mentor_datums)
 
 GLOBAL_VAR_INIT(mentor_href_token, GenerateToken())
 GLOBAL_PROTECT(mentor_href_token)
-
-//#define SKYRAT_MENTOR_CONFIG_FILE "[global.config.directory]/skyrat/mentors.txt"
 
 /datum/mentors
 	var/name = "someone's mentor datum"
@@ -70,6 +66,7 @@ GLOBAL_PROTECT(mentor_href_token)
 /proc/MentorHrefToken(forceGlobal = FALSE)
 	return "mentor_token=[RawMentorHrefToken(forceGlobal)]"
 
+/*
 /proc/load_mentors()
 	usr = null
 	GLOB.mentor_datums.Cut()
@@ -93,7 +90,7 @@ GLOBAL_PROTECT(mentor_href_token)
 			CONFIG_SET(flag/mentor_legacy_system, TRUE)
 			load_mentors()
 			return
-		var/datum/DBQuery/query_load_mentors = SSdbcore.NewQuery("SELECT ckey FROM [format_table_name("mentor")]")
+		var/datum/db_query/query_load_mentors = SSdbcore.NewQuery("SELECT ckey FROM [format_table_name("mentor")]")
 		if(!query_load_mentors.Execute())
 			return
 		while(query_load_mentors.NextRow())
@@ -124,10 +121,8 @@ GLOBAL_PROTECT(mentor_href_token)
 		if(existing_mentors[mentor] == TRUE)
 			mentor_list += mentor + "\n"
 	rustg_file_write(mentor_list, SKYRAT_MENTOR_CONFIG_FILE)
+*/
 
-
-// new client var: mentor_datum. Acts the same way holder does towards admin: it holds the mentor datum. if set, the guy's a mentor.
 /client
+	/// Acts the same way holder does towards admin: it holds the mentor datum. if set, the guy's a mentor.
 	var/datum/mentors/mentor_datum
-
-#undef SKYRAT_MENTOR_CONFIG_FILE

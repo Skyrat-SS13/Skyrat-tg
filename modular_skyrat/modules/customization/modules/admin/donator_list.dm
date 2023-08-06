@@ -1,6 +1,5 @@
 #define DONATORLISTFILE "[global.config.directory]/skyrat/donators.txt"
 
-GLOBAL_LIST(donator_list)
 
 /proc/load_donators()
 	GLOB.donator_list = list()
