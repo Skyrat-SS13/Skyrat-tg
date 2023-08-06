@@ -169,7 +169,7 @@
 		allowed_configs += "[initial(colored_item.greyscale_config_inhand_right)]"
 
 	var/slot_starting_colors = initial(colored_item.greyscale_colors)
-	if(INFO_GREYSCALE in owner.prefs.loadout_list[colored_item])
+	if(colored_item in owner.prefs.loadout_list && INFO_GREYSCALE in owner.prefs.loadout_list[colored_item])
 		slot_starting_colors = owner.prefs.loadout_list[colored_item][INFO_GREYSCALE]
 
 	menu = new(
