@@ -1,8 +1,3 @@
-/// The defines for the appropriate config files
-#define SKYRAT_DONATOR_CONFIG_FILE "[global.config.directory]/skyrat/donators.txt"
-#define SKYRAT_MENTOR_CONFIG_FILE "[global.config.directory]/skyrat/mentors.txt"
-#define SKYRAT_VETERAN_CONFIG_FILE "[global.config.directory]/skyrat/veteran_players.txt"
-
 /// The list of the available special player ranks
 #define SKYRAT_PLAYER_RANKS list("Donator", "Mentor", "Veteran")
 
@@ -84,14 +79,7 @@
 					// save_mentors()
 
 				if("Veteran")
-					for(var/a_veteran as anything in GLOB.veteran_players)
-						if(player_that_was == a_veteran)
-							GLOB.veteran_players -= player_that_was
-							changes = TRUE
-					if(!changes)
-						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
-						return
-					// save_veteran_players()
+
 
 				else
 					return
@@ -101,7 +89,4 @@
 		else
 			return
 
-#undef SKYRAT_DONATOR_CONFIG_FILE
-#undef SKYRAT_MENTOR_CONFIG_FILE
-#undef SKYRAT_VETERAN_CONFIG_FILE
 #undef SKYRAT_PLAYER_RANKS
