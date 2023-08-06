@@ -356,12 +356,15 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered?.loaded_projectile
 
-/* SKYRAT EDIT REMOVAL MOVED TO MODULAR BALLISTIC_MASTER.DM
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if (.)
 		return
 	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
+		// SKYRAT EDIT ADDITION START - this return is intentional; we do not want to run TG's version of this case handling
+		if(handle_magazine(user, A))
+			return
+		// SKYRAT EDIT ADDITION END
 		var/obj/item/ammo_box/magazine/AM = A
 		if (!magazine)
 			insert_magazine(user, AM)
@@ -377,14 +380,16 @@
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())
-				magazine?.stored_ammo -= chambered
+				if(chambered != magazine?.stored_ammo[1])
+					magazine.stored_ammo -= chambered
 				chambered = null
 			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
 			if (num_loaded)
-				balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
+				handle_box_reload(user, A, num_loaded) // SKYRAT EDIT CHANGE - ORIGINAL: balloon_alert(user, "[num_loaded] [cartridge_wording]\s loaded")
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
 				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
 					chamber_round()
+				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - this is normally done by handle_magazine which does not get called so we have to do it manually here
 				A.update_appearance()
 				update_appearance()
 			return
@@ -412,7 +417,6 @@
 			return
 
 	return FALSE
-*/ // SKYRAT EDIT END
 
 /obj/item/gun/ballistic/proc/check_if_held(mob/user)
 	if(src != user.get_inactive_held_item())
@@ -577,7 +581,7 @@
 			var/turf/T = get_turf(user)
 			process_fire(user, user, FALSE, null, BODY_ZONE_HEAD)
 			user.visible_message(span_suicide("[user] blows [user.p_their()] brain[user.p_s()] out with [src]!"))
-			var/turf/target = get_ranged_target_turf(user, turn(user.dir, 180), BRAINS_BLOWN_THROW_RANGE)
+			var/turf/target = get_ranged_target_turf(user, REVERSE_DIR(user.dir), BRAINS_BLOWN_THROW_RANGE)
 			B.Remove(user)
 			B.forceMove(T)
 			var/datum/callback/gibspawner = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_atom_to_turf), /obj/effect/gibspawner/generic, B, 1, FALSE, user)

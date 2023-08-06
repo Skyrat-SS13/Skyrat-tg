@@ -167,7 +167,7 @@
 		/datum/reagent/medicine/insulin = -2) //depletes hunny.
 
 	virus_suspectibility = 2
-	resulting_atoms = list(/mob/living/simple_animal/hostile/bear = 1)
+	resulting_atoms = list(/mob/living/basic/bear = 1)
 
 /datum/micro_organism/cell_line/carp
 	desc = "Cyprinid cells"
@@ -629,7 +629,7 @@
 		/datum/reagent/copper = -1)
 
 	virus_suspectibility = 0
-	resulting_atoms = list(/mob/living/simple_animal/hostile/mushroom = 1)
+	resulting_atoms = list(/mob/living/basic/mushroom = 1)
 
 /datum/micro_organism/cell_line/queen_bee
 	desc = "aphid cells"

@@ -25,6 +25,9 @@
 /obj/item/gun/ballistic/automatic/pistol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
+/obj/item/gun/ballistic/automatic/pistol/m45a5/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
+
 /obj/item/gun/ballistic/revolver/c38/detective/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 

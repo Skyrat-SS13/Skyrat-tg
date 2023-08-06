@@ -3,8 +3,8 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
 import { VNodeFlags } from 'inferno-vnode-flags';
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-// SKYRAT EDIT
-import { Box, Button, Dropdown, Input, NumberInput, Stack, TextArea } from '../../../../components';
+// SKYRAT EDIT - adds TextArea to imports
+import { Box, Button, Dropdown, Input, NumberInput, Slider, Stack, TextArea } from '../../../../components';
 // SKYRAT EDIT END
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
@@ -300,6 +300,27 @@ export const FeatureNumberInput = (
       maxValue={props.serverData.maximum}
       step={props.serverData.step}
       value={props.value}
+    />
+  );
+};
+
+export const FeatureSliderInput = (
+  props: FeatureValueProps<number, number, FeatureNumericData>
+) => {
+  if (!props.serverData) {
+    return <Box>Loading...</Box>;
+  }
+
+  return (
+    <Slider
+      onChange={(e, value) => {
+        props.handleSetValue(value);
+      }}
+      minValue={props.serverData.minimum}
+      maxValue={props.serverData.maximum}
+      step={props.serverData.step}
+      value={props.value}
+      stepPixelSize={10}
     />
   );
 };

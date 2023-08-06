@@ -277,6 +277,7 @@
 		"bonesetter",
 		"cautery",
 		"circular_saw",
+		"cybernetic_ears",
 		"cybernetic_eyes",
 		"cybernetic_heart",
 		"cybernetic_liver",
@@ -306,6 +307,13 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"hospital_gown",
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -1308,6 +1316,12 @@
 		"science_hud_projector",
 		"permit_glasses",
 		"nifsoft_money_sense",
+		"nifsoft_hud_kit",
+		"nifsoft_hud_science",
+		"nifsoft_hud_medical",
+		"nifsoft_hud_security",
+		"nifsoft_hud_diagnostic",
+		"nifsoft_hud_cargo",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1335,6 +1349,7 @@
 	prereq_ids = list("biotech")
 	design_ids = list(
 		"dna_disk",
+		"dnainfuser",
 		"dnascanner",
 		"scan_console",
 		"self_actualization_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
@@ -1375,7 +1390,7 @@
 	description = "We have the technology to rebuild him."
 	prereq_ids = list("biotech")
 	design_ids = list(
-		"cybernetic_ears",
+		"cybernetic_ears_u",
 		"cybernetic_eyes_improved",
 		"cybernetic_heart_tier2",
 		"cybernetic_liver_tier2",
@@ -1396,7 +1411,10 @@
 	description = "We have the technology to upgrade him."
 	prereq_ids = list("adv_biotech", "cyber_organs")
 	design_ids = list(
-		"cybernetic_ears_u",
+		"cybernetic_ears_whisper",
+		"cybernetic_ears_xray",
+		"ci-gloweyes",
+		"ci-welding",
 		"cybernetic_heart_tier3",
 		"cybernetic_liver_tier3",
 		"cybernetic_lungs_tier3",
@@ -1417,11 +1435,9 @@
 	design_ids = list(
 		"ci-breather",
 		"ci-diaghud",
-		"ci-gloweyes",
 		"ci-medhud",
 		"ci-nutriment",
 		"ci-sechud",
-		"ci-welding",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

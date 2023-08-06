@@ -320,6 +320,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Stops all slipping and sliding from ocurring
 #define TRAIT_NO_SLIP_ALL "noslip_all"
 
+/// Unlinks gliding from movement speed, meaning that there will be a delay between movements rather than a single move movement between tiles
+#define TRAIT_NO_GLIDE "no_glide"
+
 #define TRAIT_NODEATH "nodeath"
 #define TRAIT_NOHARDCRIT "nohardcrit"
 #define TRAIT_NOSOFTCRIT "nosoftcrit"
@@ -359,6 +362,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define IGNORING_GRAVITY_NEGATION "ignoring_gravity_negation"
 /// We have some form of forced gravity acting on us
 #define TRAIT_FORCED_GRAVITY "forced_gravity"
+/// Makes whispers clearly heard from seven tiles away, the full hearing range
+#define TRAIT_GOOD_HEARING "good_hearing"
+/// Allows you to hear speech through walls
+#define TRAIT_XRAY_HEARING "xray_hearing"
 
 /// Lets us scan reagents
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
@@ -417,6 +424,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FREE_HYPERSPACE_SOFTCORDON_MOVEMENT "free_hyperspace_softcordon_movement"
 ///Deletes the object upon being dumped into space, usually from exiting hyperspace. Useful if you're spawning in a lot of stuff for hyperspace events that dont need to flood the entire game
 #define TRAIT_DEL_ON_SPACE_DUMP "del_on_hyperspace_leave"
+/// We can walk up or around cliffs, or at least we don't fall off of it
+#define TRAIT_CLIFF_WALKER "cliff_walker"
 /// Gets double arcade prizes
 #define TRAIT_GAMERGOD "gamer-god"
 #define TRAIT_GIANT "giant"
@@ -762,6 +771,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SMOKER "smoker"
 #define TRAIT_POSTERBOY "poster_boy"
 #define TRAIT_THROWINGARM "throwing_arm"
+
+///if the atom has a sticker attached to it
+#define TRAIT_STICKERED "stickered"
 
 // Debug traits
 /// This object has light debugging tools attached to it
@@ -1125,6 +1137,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATION_TRAIT_SPIDER_INFESTATION "station_trait_spider_infestation"
 #define STATION_TRAIT_REVOLUTIONARY_TRASHING "station_trait_revolutionary_trashing"
 #define STATION_TRAIT_RADIOACTIVE_NEBULA "station_trait_radioactive_nebula"
+#define STATION_TRAIT_FORESTED "station_trait_forested"
+#define STATION_TRAIT_VENDING_SHORTAGE "station_trait_vending_shortage"
 
 ///From the market_crash event
 #define MARKET_CRASH_EVENT_TRAIT "crashed_market_event"
