@@ -185,6 +185,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
+	var/datum/component/soulcatcher_user/soul_component = new_soul.AddComponent(/datum/component/soulcatcher_user)
+
 	new_soul.name = mind_to_add.name
 
 	if(mind_to_add.current)

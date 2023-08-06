@@ -224,14 +224,6 @@
 			target_room.send_message(message_to_send, message_sender, emote)
 			return TRUE
 
-/datum/component/soulcatcher_user/New()
-	. = ..()
-	var/mob/living/soulcatcher_soul/parent_soul = parent
-	if(!istype(parent_soul))
-		return COMPONENT_INCOMPATIBLE
-
-	return TRUE
-
 /datum/component/soulcatcher_user/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(usr, src, ui)
 	if(!ui)

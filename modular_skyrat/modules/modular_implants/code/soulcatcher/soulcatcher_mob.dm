@@ -39,14 +39,6 @@
 	if(!outside_hearing)
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
-	var/datum/action/innate/leave_soulcatcher/leave_action = new
-	leave_action.Grant(src)
-
-	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new
-	soulcatcher_action.Grant(src)
-	var/datum/component/soulcatcher_user/user_component = AddComponent(/datum/component/soulcatcher_user)
-	soulcatcher_action.soulcatcher_user_component = WEAKREF(user_component)
-
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
 	outside_sight = !outside_sight
