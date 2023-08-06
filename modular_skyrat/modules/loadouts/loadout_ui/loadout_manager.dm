@@ -20,10 +20,6 @@
 	var/view_job_clothes = TRUE
 	/// Our currently open greyscaling menu.
 	var/datum/greyscale_modify_menu/menu
-	/// Whether we need to update our dummy sprite next ui_data or not.
-	var/update_dummysprite = TRUE
-	/// Our preview sprite.
-	var/icon/dummysprite
 
 /datum/loadout_manager/Destroy(force, ...)
 	owner = null
@@ -197,6 +193,9 @@
 	if(!open_menu)
 		CRASH("set_slot_greyscale called without a greyscale menu!")
 
+	if(isnull(owner))
+		CRASH("set_slot_greyscale called without an owner!")
+
 	if(!(path in owner.prefs.loadout_list))
 		to_chat(owner, span_warning("Select the item before attempting to apply greyscale to it!"))
 		return
@@ -204,7 +203,7 @@
 	var/list/colors = open_menu.split_colors
 	if(colors)
 		owner.prefs.loadout_list[path][INFO_GREYSCALE] = colors.Join("")
-		update_dummysprite = TRUE
+		owner.prefs?.character_preview_view.update_body()
 
 /// Set [item]'s name to input provided.
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
