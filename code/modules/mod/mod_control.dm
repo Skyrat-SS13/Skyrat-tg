@@ -21,6 +21,10 @@
 		/datum/action/item_action/mod/sprite_accessories, // SKYRAT EDIT - Hide mutant parts action
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
+		/datum/action/item_action/mod/deploy/ai,
+		/datum/action/item_action/mod/activate/ai,
+		/datum/action/item_action/mod/panel/ai,
+		/datum/action/item_action/mod/module/ai,
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
@@ -213,16 +217,9 @@
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
 		if(isnull(ai_assistant))
-			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
-		/* SKYRAT EDIT BEGIN - PAI in Modsuits - ORIGINAL:
-		if(isnull(ai_assistant))
-			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
+			. += span_notice("You could install a pAI with a <b>pAI card</b>.") // SKYRAT EDIT CHANGE - ORIGINAL: . += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
 		else if(isAI(ai_assistant))
 			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
-		*/ // ORIGINAL END - SKYRAT EDIT START:
-		if(isnull(ai_assistant))
-			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
-		// SKYRAT EDIT END
 	. += span_notice("<i>You could examine it more thoroughly...</i>")
 
 /obj/item/mod/control/examine_more(mob/user)
