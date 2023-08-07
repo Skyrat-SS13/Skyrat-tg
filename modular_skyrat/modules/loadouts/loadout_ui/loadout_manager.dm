@@ -20,10 +20,6 @@
 	var/view_job_clothes = TRUE
 	/// Our currently open greyscaling menu.
 	var/datum/greyscale_modify_menu/menu
-	/// Whether we need to update our dummy sprite next ui_data or not.
-	var/update_dummysprite = TRUE
-	/// Our preview sprite.
-	var/icon/dummysprite
 
 /datum/loadout_manager/Destroy(force, ...)
 	owner = null
@@ -169,7 +165,7 @@
 		allowed_configs += "[initial(colored_item.greyscale_config_inhand_right)]"
 
 	var/slot_starting_colors = initial(colored_item.greyscale_colors)
-	if(INFO_GREYSCALE in owner.prefs.loadout_list[colored_item])
+	if((colored_item in owner.prefs.loadout_list) && (INFO_GREYSCALE in owner.prefs.loadout_list[colored_item]))
 		slot_starting_colors = owner.prefs.loadout_list[colored_item][INFO_GREYSCALE]
 
 	menu = new(
@@ -180,6 +176,7 @@
 		starting_icon_state = initial(colored_item.icon_state),
 		starting_config = initial(colored_item.greyscale_config),
 		starting_colors = slot_starting_colors,
+		vv_mode = TRUE,
 	)
 	RegisterSignal(menu, COMSIG_PREQDELETED, TYPE_PROC_REF(/datum/loadout_manager, cleanup_greyscale_menu))
 	menu.ui_interact(usr)
@@ -196,6 +193,9 @@
 	if(!open_menu)
 		CRASH("set_slot_greyscale called without a greyscale menu!")
 
+	if(isnull(owner))
+		CRASH("set_slot_greyscale called without an owner!")
+
 	if(!(path in owner.prefs.loadout_list))
 		to_chat(owner, span_warning("Select the item before attempting to apply greyscale to it!"))
 		return
@@ -203,7 +203,7 @@
 	var/list/colors = open_menu.split_colors
 	if(colors)
 		owner.prefs.loadout_list[path][INFO_GREYSCALE] = colors.Join("")
-		update_dummysprite = TRUE
+		owner.prefs?.character_preview_view.update_body()
 
 /// Set [item]'s name to input provided.
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
