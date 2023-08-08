@@ -17,6 +17,7 @@
 		/obj/item/extinguisher,
 		/obj/item/universal_scanner,
 		/obj/item/cargo_teleporter,
+		/obj/item/boxcutter,
 	)
 	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(

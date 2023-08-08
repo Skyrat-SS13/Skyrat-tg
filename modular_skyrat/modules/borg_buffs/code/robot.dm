@@ -90,6 +90,20 @@
 	maxHealth = 135
 	health = 135
 
+/mob/living/silicon/robot/updatehealth()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN))
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
+		return
+	var/health_deficiency = maxHealth - health
+	if(health_deficiency >= 40)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_deficiency / 40)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying, TRUE, multiplicative_slowdown = health_deficiency / 20)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
+
 /obj/item/reagent_containers/borghypo/borgshaker/specific
 	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
 	icon_state = "misc"
