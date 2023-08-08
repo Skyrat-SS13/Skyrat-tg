@@ -748,7 +748,18 @@
 	purchasable_from = UPLINK_NUKE_OPS
 	restricted = TRUE
 
+<<<<<<< HEAD
 /datum/uplink_item/implants/reviver
+=======
+/datum/uplink_item/implants/nuclear/deniability
+	name = "Tactical Deniability Implant"
+	desc = "An implant injected into the brain, and later activated either manually or automatically upon entering critical condition. \
+			Prevents collapsing from critical condition, but explodes after a while."
+	item = /obj/item/storage/box/syndie_kit/imp_deniability
+	cost = 6
+
+/datum/uplink_item/implants/nuclear/reviverplus
+>>>>>>> faf405b0837 (Adds in the Tactical Deniability Implant for nukeops. (#77214))
 	name = "Reviver Implant"
 	desc = "This implant will attempt to revive and heal you if you lose consciousness. Comes with an autosurgeon."
 	item = /obj/item/autosurgeon/syndicate/reviver
