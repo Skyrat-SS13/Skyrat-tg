@@ -16,6 +16,7 @@
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher,
 		/obj/item/universal_scanner,
+		/obj/item/cargo_teleporter,
 	)
 	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(

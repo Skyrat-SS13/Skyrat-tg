@@ -86,6 +86,9 @@
 		/datum/reagent/pax/catnip\
 	)
 
+/mob/living/silicon/robot
+	maxHealth = 135
+	health = 135
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific
 	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
