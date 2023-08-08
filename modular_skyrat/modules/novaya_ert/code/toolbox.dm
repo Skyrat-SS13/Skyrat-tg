@@ -62,7 +62,7 @@
 /obj/item/storage/toolbox/ammobox/full/l6_saw
 	name = "ammo box (L6 SAW)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/mm712x82
+	ammo_type = /obj/item/ammo_box/magazine/m7mm
 	amount = 7
 
 /obj/item/storage/toolbox/ammobox/full/makarov
