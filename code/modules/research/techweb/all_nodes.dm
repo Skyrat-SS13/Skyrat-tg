@@ -429,7 +429,7 @@
 		"soda_dispenser",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/dissection/human)
+	required_experiments = list(/datum/experiment/autopsy/human)
 
 
 // SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
@@ -465,11 +465,8 @@
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	required_experiments = list(/datum/experiment/dissection/nonhuman)
-	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
-	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000)
-	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
-
+	required_experiments = list(/datum/experiment/autopsy/nonhuman)
+	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) // SKYRAT EDIT CHANGE - ORIGINAL : discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -486,7 +483,7 @@
 	discount_experiments = list(
 		/datum/experiment/scanning/random/cytology/easy = 1000,
 		/datum/experiment/scanning/points/slime/hard = 5000,
-		/datum/experiment/dissection/xenomorph = 5000,
+		/datum/experiment/autopsy/xenomorph = 5000,
 	)
 
 /datum/techweb_node/bio_process
