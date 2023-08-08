@@ -119,7 +119,7 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
-	r_pocket = /obj/item/storage/bag/ammo
+	r_pocket = /obj/item/storage/pouch/ammo
 	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
@@ -149,7 +149,7 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
-	r_pocket = /obj/item/storage/bag/ammo
+	r_pocket = /obj/item/storage/pouch/ammo
 	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
