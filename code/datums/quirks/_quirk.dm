@@ -199,8 +199,9 @@
  * Arguments:
  * * Medical- If we want the long, fancy descriptions that show up in medical records, or if not, just the name
  * * Category- Which types of quirks we want to print out. Defaults to everything
+ * * from_scan- If the source of this call is like a health analyzer or HUD, in which case QUIRK_HIDE_FROM_MEDICAL hides the quirk.
  */
-/mob/living/proc/get_quirk_string(medical, category = CAT_QUIRK_ALL) //helper string. gets a string of all the quirks the mob has
+/mob/living/proc/get_quirk_string(medical = FALSE, category = CAT_QUIRK_ALL, from_scan = FALSE)
 	var/list/dat = list()
 
 	// SKYRAT EDIT START
@@ -213,29 +214,33 @@
 
 	// SKYRAT EDIT END
 
-	switch(category)
-		if(CAT_QUIRK_ALL)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				dat += medical ? T.medical_record_text : T.name
-		//Major Disabilities
-		if(CAT_QUIRK_MAJOR_DISABILITY)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value < -4)
+	for(var/datum/quirk/candidate as anything in quirks)
+		if(from_scan & candidate.quirk_flags & QUIRK_HIDE_FROM_SCAN)
+			continue
+
+		switch(category)
+			if(CAT_QUIRK_ALL)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
 					dat += medical ? T.medical_record_text : T.name
-		//Minor Disabilities
-		if(CAT_QUIRK_MINOR_DISABILITY)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value >= -4 && T.value < 0)
-					dat += medical ? T.medical_record_text : T.name
-		//Neutral and Positive quirks
-		if(CAT_QUIRK_NOTES)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value > -1)
-					dat += medical ? T.medical_record_text : T.name
+			//Major Disabilities
+			if(CAT_QUIRK_MAJOR_DISABILITY)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value < -4)
+						dat += medical ? T.medical_record_text : T.name
+			//Minor Disabilities
+			if(CAT_QUIRK_MINOR_DISABILITY)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value >= -4 && T.value < 0)
+						dat += medical ? T.medical_record_text : T.name
+			//Neutral and Positive quirks
+			if(CAT_QUIRK_NOTES)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value > -1)
+						dat += medical ? T.medical_record_text : T.name
 	if(!dat.len)
 		return medical ? "No issues have been declared." : "None"
 	return medical ?  dat.Join("<br>") : dat.Join(", ")
