@@ -184,3 +184,20 @@
 		/obj/item/disk/nifsoft_uploader/summoner,
 	)
 
+/datum/supply_pack/goody/firstaid_pouch
+	name = "Mini-Medkit First Aid Pouch"
+	desc = "Contains a single surplus first-aid pouch, complete with pocket clip. Repackaged with station-standard medical supplies, \
+	but nothing's stopping you from repacking it yourself, though."
+	cost = PAYCHECK_CREW * 6
+	contains = list(
+		/obj/item/storage/pouch/medical/firstaid/loaded,
+	)
+
+/datum/supply_pack/goody/stabilizer_pouch
+	name = "Stabilizer First Aid Pouch"
+	desc = "Contains a single surplus first-aid pouch, complete with pocket clip. Repackaged with a wound stabilizing-focused loadout, \
+	but nothing's stopping you from repacking it yourself, though."
+	cost = PAYCHECK_CREW * 6
+	contains = list(
+		/obj/item/storage/pouch/medical/firstaid/stabilizer,
+	)
