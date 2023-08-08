@@ -1343,6 +1343,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/delam_scram/directional/east,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "atS" = (
@@ -18652,12 +18653,10 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "fvn" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/machinery/camera/directional/north{
 	dir = 9
 	},
+/obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "fvr" = (
@@ -19093,6 +19092,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/sorting)
+"fCh" = (
+/obj/machinery/button/delam_scram,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
 "fCo" = (
 /obj/machinery/status_display/ai/directional/north,
 /obj/effect/landmark/start/corrections_officer,
@@ -27170,6 +27173,11 @@
 	},
 /turf/open/floor/pod/dark,
 /area/station/service/chapel/office)
+"hTn" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/item/folder/biscuit/confidential/delam,
+/turf/open/floor/plating/airless,
+/area/station/engineering/supermatter/room)
 "hTr" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 10
@@ -38755,9 +38763,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/atmos/hfr_room)
 "lcn" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 6
-	},
+/obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
 "lcr" = (
@@ -39776,9 +39782,6 @@
 /obj/structure/rack,
 /obj/item/gun/energy/e_gun/dragnet,
 /obj/item/gun/energy/e_gun/dragnet,
-/obj/item/melee/breaching_hammer,
-/obj/item/melee/breaching_hammer,
-/obj/item/melee/breaching_hammer,
 /obj/effect/turf_decal/tile/dark_red/half,
 /obj/machinery/camera/directional/south{
 	c_tag = "Armory - Interior"
@@ -76072,9 +76075,11 @@
 /area/station/ai_monitored/turret_protected/aisat/service)
 "vqa" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/firealarm/directional/south,
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/south{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "vqt" = (
@@ -121106,7 +121111,7 @@ xMx
 iPJ
 mTO
 hYs
-hLh
+hTn
 cju
 tUK
 orq
@@ -121363,7 +121368,7 @@ bOD
 leI
 jvd
 lcn
-oCl
+fCh
 fvn
 oiv
 oiv
