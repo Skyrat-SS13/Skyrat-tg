@@ -563,7 +563,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			GLOB.solfed_responder_info[type_of_callers][SOLFED_DECLARED] = TRUE
 			if(fine_station)
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-				station_balance?._adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
+				station_balance?.adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
 
 			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE)
 			var/list/candidates = poll_ghost_candidates(ghost_poll_msg, jobban_to_check)

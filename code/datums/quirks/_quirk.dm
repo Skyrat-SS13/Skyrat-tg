@@ -203,7 +203,6 @@
  */
 /mob/living/proc/get_quirk_string(medical = FALSE, category = CAT_QUIRK_ALL, from_scan = FALSE)
 	var/list/dat = list()
-<<<<<<< HEAD
 
 	// SKYRAT EDIT START
 	// The health analyzer will first check if the target is a changeling, and if they are, load the quirks of the person they're disguising as.
@@ -215,46 +214,33 @@
 
 	// SKYRAT EDIT END
 
-	switch(category)
-		if(CAT_QUIRK_ALL)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				dat += medical ? T.medical_record_text : T.name
-		//Major Disabilities
-		if(CAT_QUIRK_MAJOR_DISABILITY)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value < -4)
-					dat += medical ? T.medical_record_text : T.name
-		//Minor Disabilities
-		if(CAT_QUIRK_MINOR_DISABILITY)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value >= -4 && T.value < 0)
-					dat += medical ? T.medical_record_text : T.name
-		//Neutral and Positive quirks
-		if(CAT_QUIRK_NOTES)
-			for(var/V in target_quirks)		// SKYRAT EDIT
-				var/datum/quirk/T = V
-				if(T.value > -1)
-					dat += medical ? T.medical_record_text : T.name
-=======
 	for(var/datum/quirk/candidate as anything in quirks)
 		if(from_scan & candidate.quirk_flags & QUIRK_HIDE_FROM_SCAN)
 			continue
-		switch(category)
-			if(CAT_QUIRK_MAJOR_DISABILITY)
-				if(candidate.value >= -4)
-					continue
-			if(CAT_QUIRK_MINOR_DISABILITY)
-				if(!ISINRANGE(candidate.value, -4, -1))
-					continue
-			if(CAT_QUIRK_NOTES)
-				if(candidate.value < 0)
-					continue
-		dat += medical ? candidate.medical_record_text : candidate.name
 
->>>>>>> 52e46385367 (Adds an Indebted negative quirk to the game. (#77138))
+		switch(category)
+			if(CAT_QUIRK_ALL)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					dat += medical ? T.medical_record_text : T.name
+			//Major Disabilities
+			if(CAT_QUIRK_MAJOR_DISABILITY)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value < -4)
+						dat += medical ? T.medical_record_text : T.name
+			//Minor Disabilities
+			if(CAT_QUIRK_MINOR_DISABILITY)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value >= -4 && T.value < 0)
+						dat += medical ? T.medical_record_text : T.name
+			//Neutral and Positive quirks
+			if(CAT_QUIRK_NOTES)
+				for(var/V in target_quirks)		// SKYRAT EDIT
+					var/datum/quirk/T = V
+					if(T.value > -1)
+						dat += medical ? T.medical_record_text : T.name
 	if(!dat.len)
 		return medical ? "No issues have been declared." : "None"
 	return medical ?  dat.Join("<br>") : dat.Join(", ")

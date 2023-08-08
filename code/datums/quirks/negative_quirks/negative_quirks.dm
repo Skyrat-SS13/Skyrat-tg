@@ -1496,10 +1496,8 @@
 
 /datum/quirk/cursed/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
-<<<<<<< HEAD
 */
 // SKYRAT EDIT REMOVAL END
-=======
 
 /datum/quirk/indebted
 	name = "Indebted"
@@ -1541,4 +1539,3 @@
 	SIGNAL_HANDLER
 	quirk_holder.client.give_award(/datum/award/achievement/misc/debt_extinguished, quirk_holder)
 	UnregisterSignal(source, COMSIG_MOB_LOGIN)
->>>>>>> 52e46385367 (Adds an Indebted negative quirk to the game. (#77138))
