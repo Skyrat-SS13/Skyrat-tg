@@ -84,15 +84,12 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
-<<<<<<< HEAD
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
 #include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
-=======
 // BEGIN_INCLUDE
 #include "abductor_baton_spell.dm"
->>>>>>> 7721e96d3dc (Abductor / general "Summon Item" spell QoL (#77419))
 #include "ablative_hud.dm"
 #include "achievements.dm"
 #include "anchored_mobs.dm"
