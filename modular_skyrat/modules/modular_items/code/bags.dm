@@ -47,8 +47,8 @@
 /// It's a pocket medkit. Use sparingly?
 /obj/item/storage/pouch/medical
 	name = "medkit pouch"
-	desc = "A standard medkit pouch that can contain all sorts of medical supplies and equipment, made with fireproof kevlar \
-	(but hopefully you never have to test that). Comes with a pocket clip. Cannot, itself, contain a medkit."
+	desc = "A standard medkit pouch compartmentalized for the bare essentials of field medical care, made with fireproof kevlar \
+	(but hopefully you never have to test that). Cannot, itself, contain a medkit. Comes with a pocket clip."
 	resistance_flags = FIRE_PROOF
 	icon_state = "medkit"
 	/// The list of things that medical pouches can hold. Stolen from what medkits can hold, but modified for things you would probably want at pocket-access.
@@ -67,25 +67,10 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
 		/obj/item/flashlight/pen,
-		/obj/item/extinguisher/mini,
-		/obj/item/clothing/gloves,
-		/obj/item/lazarus_injector,
-		/obj/item/bikehorn/rubberducky,
-		/obj/item/clothing/mask/surgical,
-		/obj/item/clothing/mask/breath,
-		/obj/item/clothing/mask/breath/medical,
 		/obj/item/bonesetter,
 		/obj/item/cautery,
 		/obj/item/hemostat,
-		/obj/item/shears,
-		/obj/item/geiger_counter,
 		/obj/item/reagent_containers/blood,
-		/obj/item/tank/internals/emergency_oxygen,
-		/obj/item/gun/syringe/syndicate,
-		/obj/item/implantcase,
-		/obj/item/implant,
-		/obj/item/implanter,
-		/obj/item/pinpointer/crew,
 		/obj/item/stack/sticky_tape,
 	)
 
@@ -112,38 +97,35 @@
 /// It's... not as egregious as a full pocket medkit.
 /obj/item/storage/pouch/medical/firstaid
 	name = "first aid pouch"
-	desc = "A standard nondescript first-aid pouch, made with fireproof kevlar (but hopefully you never have to test that). Slightly smaller than a full-on medkit, \
+	desc = "A standard nondescript first-aid pouch, compartmentalized for the bare essentials of field medical care. Made with fireproof kevlar \
+	(but hopefully you never have to test that). Slightly smaller than a full-on medkit, \
 	but has better weight distribution, making it more comfortable to wear. Comes with a pocket-clip."
 	icon_state = "firstaid"
 
 /obj/item/storage/pouch/medical/firstaid/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
-	atom_storage.max_slots = 6
-	atom_storage.max_total_storage = 12
+	atom_storage.max_slots = 4
+	atom_storage.max_total_storage = 8
 
 /obj/item/storage/pouch/medical/firstaid/loaded/Initialize(mapload)
 	. = ..()
 	desc += " Repackaged with station-standard medical supplies."
 	var/static/items_inside = list(
-		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/stack/medical/suture = 1,
 		/obj/item/stack/medical/mesh = 1,
-		/obj/item/flashlight/pen/paramedic = 1,
+		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 1,
-		/obj/item/healthanalyzer/simple = 1,
 	)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/pouch/medical/firstaid/stabilizer/Initialize(mapload)
 	. = ..()
-	desc += " Repackaged with a more wound stabilization-focused loadout."
+	desc += " Repackaged with a wound stabilization-focused loadout."
 	var/static/items_inside = list(
-		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/cautery = 1,
 		/obj/item/bonesetter = 1,
-		/obj/item/flashlight/pen/paramedic = 1,
+		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 1,
-		/obj/item/healthanalyzer/simple = 1,
 	)
 	generate_items_inside(items_inside,src)
