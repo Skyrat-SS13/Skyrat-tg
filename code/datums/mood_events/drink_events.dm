@@ -53,4 +53,9 @@
 	description = "<span class='nicegreen'>That drink was made for me!</span>\n"
 	mood_change = 12
 	timeout = 9 MINUTES
+	
 //SKYRAT ADD END
+/datum/mood_event/wellcheers
+	description = "What a tasty can of Wellcheers! The salty grape taste is a great pick-me-up."
+	mood_change = 3
+	timeout = 7 MINUTES
