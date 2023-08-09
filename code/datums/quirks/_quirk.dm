@@ -214,7 +214,7 @@
 
 	// SKYRAT EDIT END
 
-	for(var/datum/quirk/candidate as anything in target_quirks) // SKYRAT EDIT - ORIGINAL : for(var/datum/quirk/candidate as anything in quirks)
+	for(var/datum/quirk/candidate as anything in target_quirks) // SKYRAT EDIT CHANGE - ORIGINAL : for(var/datum/quirk/candidate as anything in quirks)
 		if(from_scan & candidate.quirk_flags & QUIRK_HIDE_FROM_SCAN)
 			continue
 		switch(category)
