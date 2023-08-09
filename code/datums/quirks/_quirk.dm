@@ -217,16 +217,16 @@
 	for(var/datum/quirk/candidate as anything in target_quirks) // SKYRAT EDIT - ORIGINAL : for(var/datum/quirk/candidate as anything in quirks)
 		if(from_scan & candidate.quirk_flags & QUIRK_HIDE_FROM_SCAN)
 				continue
-			switch(category)
-				if(CAT_QUIRK_MAJOR_DISABILITY)
-					if(candidate.value >= -4)
-						continue
-				if(CAT_QUIRK_MINOR_DISABILITY)
-					if(!ISINRANGE(candidate.value, -4, -1))
-						continue
-				if(CAT_QUIRK_NOTES)
-					if(candidate.value < 0)
-						continue
+		switch(category)
+			if(CAT_QUIRK_MAJOR_DISABILITY)
+				if(candidate.value >= -4)
+					continue
+			if(CAT_QUIRK_MINOR_DISABILITY)
+				if(!ISINRANGE(candidate.value, -4, -1))
+					continue
+			if(CAT_QUIRK_NOTES)
+				if(candidate.value < 0)
+					continue
 			dat += medical ? candidate.medical_record_text : candidate.name
 	if(!dat.len)
 		return medical ? "No issues have been declared." : "None"
