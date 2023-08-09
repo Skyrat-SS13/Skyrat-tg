@@ -227,7 +227,8 @@
 			if(CAT_QUIRK_NOTES)
 				if(candidate.value < 0)
 					continue
-			dat += medical ? candidate.medical_record_text : candidate.name
+		dat += medical ? candidate.medical_record_text : candidate.name
+
 	if(!dat.len)
 		return medical ? "No issues have been declared." : "None"
 	return medical ?  dat.Join("<br>") : dat.Join(", ")
