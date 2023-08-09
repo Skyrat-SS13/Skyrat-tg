@@ -98,10 +98,6 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-<<<<<<< HEAD
-//	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
-=======
->>>>>>> b3cb7025c27 (Removes armor bloat from sec lockers (#77061))
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
 	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src)
