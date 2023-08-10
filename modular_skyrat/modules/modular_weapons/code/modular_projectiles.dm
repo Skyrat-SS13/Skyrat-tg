@@ -73,16 +73,16 @@
 *	.277 Aestus
 */
 
-/obj/item/ammo_casing/a556/rubber
+/obj/item/ammo_casing/a277/rubber
 	name = ".277 rubber bullet casing"
 	desc = "A .277 rubber bullet casing.\
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
-	caliber = CALIBER_A556
-	projectile_type = /obj/projectile/bullet/a556/rubber
+	caliber = CALIBER_A277
+	projectile_type = /obj/projectile/bullet/a277/rubber
 	harmful = FALSE
 
-/obj/projectile/bullet/a556/rubber
+/obj/projectile/bullet/a277/rubber
 	name = ".277 rubber bullet"
 	damage = 10
 	armour_penetration = 10
@@ -96,17 +96,17 @@
 	embedding = null
 	wound_bonus = -50
 
-/obj/item/ammo_casing/a556/ap
+/obj/item/ammo_casing/a277/ap
 	name = ".277 Aestus armor-piercing bullet casing"
 	desc = "A .277 armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
-	caliber = CALIBER_A556
-	projectile_type = /obj/projectile/bullet/a556/ap
+	caliber = CALIBER_A277
+	projectile_type = /obj/projectile/bullet/a277/ap
 	advanced_print_req = TRUE
 	custom_materials = AMMO_MATS_AP
 
-/obj/projectile/bullet/a556/ap
+/obj/projectile/bullet/a277/ap
 	name = ".277 armor-piercing bullet"
 	armour_penetration = 60
 

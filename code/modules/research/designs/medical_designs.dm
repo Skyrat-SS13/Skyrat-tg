@@ -248,15 +248,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
-/datum/design/hospital_gown	//SKYRAT EDIT ADDITION START
-	name = "Hospital Gown"
-	id = "hospital_gown"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 2500)
-	build_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE	//SKYRAT EDIT ADDITION END
-
 /datum/design/laserscalpel
 	name = "Laser Scalpel"
 	desc = "A laser scalpel used for precise cutting."
@@ -347,32 +338,6 @@
 /////////////////////////////////////////
 //////////Cybernetic Implants////////////
 /////////////////////////////////////////
-
-/datum/design/cyberimp_welding
-	name = "Welding Shield Eyes"
-	desc = "These reactive micro-shields will protect you from welders and flashes without obscuring your vision."
-	id = "ci-welding"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 40
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass = SMALL_MATERIAL_AMOUNT*4)
-	build_path = /obj/item/organ/internal/eyes/robotic/shield
-	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_MISC
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
-
-/datum/design/cyberimp_gloweyes
-	name = "Luminescent Eyes"
-	desc = "A pair of cybernetic eyes that can emit multicolored light"
-	id = "ci-gloweyes"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 40
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT)
-	build_path = /obj/item/organ/internal/eyes/robotic/glow
-	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_MISC
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_breather
 	name = "Breathing Tube Implant"
@@ -845,10 +810,48 @@
 	id = "cybernetic_ears_u"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 40
-	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/silver =SMALL_MATERIAL_AMOUNT*5)
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/silver = SMALL_MATERIAL_AMOUNT*5,
+	)
 	build_path = /obj/item/organ/internal/ears/cybernetic/upgraded
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_2
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cybernetic_ears_whisper
+	name = "Whisper-sensitive Cybernetic Ears"
+	desc = "A pair of whisper-sensitive cybernetic ears."
+	id = "cybernetic_ears_whisper"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/silver = SMALL_MATERIAL_AMOUNT*5,
+	)
+	build_path = /obj/item/organ/internal/ears/cybernetic/whisper
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_3
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cybernetic_ears_xray
+	name = "Wall-penetrating Cybernetic Ears"
+	desc = "A pair of wall-penetrating cybernetic ears."
+	id = "cybernetic_ears_xray"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/silver = SMALL_MATERIAL_AMOUNT*5,
+	)
+	build_path = /obj/item/organ/internal/ears/cybernetic/xray
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_3
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
@@ -872,6 +875,32 @@
 	build_path = /obj/item/organ/internal/eyes/robotic
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_2
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cyberimp_welding
+	name = "Welding Shield Eyes"
+	desc = "These reactive micro-shields will protect you from welders and flashes without obscuring your vision."
+	id = "ci-welding"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass = SMALL_MATERIAL_AMOUNT*4)
+	build_path = /obj/item/organ/internal/eyes/robotic/shield
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_3
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cyberimp_gloweyes
+	name = "Luminescent Eyes"
+	desc = "A pair of cybernetic eyes that can emit multicolored light"
+	id = "ci-gloweyes"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 40
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/organ/internal/eyes/robotic/glow
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_3
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
