@@ -59,7 +59,8 @@
 		if(initial(possible_area.outdoors) || !is_type_in_typecache(possible_area, area_whitelist) || is_type_in_typecache(possible_area, area_blacklist))
 			possible_areas -= possible_area
 
-	selected_area = pick(possible_areas)
+	if(length(possible_areas))
+		selected_area = pick(possible_areas)
 	validate_area()
 
 
