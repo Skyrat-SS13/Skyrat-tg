@@ -6,7 +6,7 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 /datum/language_holder_adjustor/New()
 	RegisterSignal(SSdcs, COMSIG_GLOB_CREWMEMBER_JOINED, PROC_REF(handle_new_player))
 
-/datum/language_holder_adjustor/proc/handle_new_player(datum/source, /mob/living/carbon/human/new_crewmember, rank)
+/datum/language_holder_adjustor/proc/handle_new_player(datum/source, mob/living/carbon/human/new_crewmember, rank)
 	SIGNAL_HANDLER
 
 	// sanity checking because we really do not want to be causing any runtimes
