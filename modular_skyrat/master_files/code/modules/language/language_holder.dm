@@ -34,14 +34,24 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 
 	// remove the innate languages (like common, and other species languages) and instead use the language prefs
 	// do not remove any languages granted by spawners, which are denoted by source = LANGUAGE_SPAWNER
-	remove_all_languages(source = LANGUAGE_MIND)
-	remove_all_languages(source = LANGUAGE_ATOM)
-	remove_all_languages(source = LANGUAGE_SPECIES)
+	remove_languages_by_source(list(LANGUAGE_MIND, LANGUAGE_ATOM, LANGUAGE_SPECIES))
 
 	for(var/lang_path in preferences.languages)
 		grant_language(lang_path)
 
 	get_selected_language()
+
+/// Removes every language whose source(s) matches the provided arg source list
+/datum/language_holder/proc/remove_languages_by_source(list/sources)
+	if(!length(sources))
+		return
+	for(var/language in understood_languages)
+		for(var/source in sources)
+			remove_language(language, ALL, source)
+	// in most cases spoken_languages should be empty by now, but just in case we should remove what's left
+	for(var/language in spoken_languages)
+		for(var/source in sources)
+			remove_language(language, ALL, source)
 
 //************************************************
 //*        Specific language holders              *
