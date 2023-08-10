@@ -36,6 +36,7 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 	// do not remove any languages granted by spawners, which are denoted by source = LANGUAGE_SPAWNER
 	remove_all_languages(source = LANGUAGE_MIND)
 	remove_all_languages(source = LANGUAGE_ATOM)
+	remove_all_languages(source = LANGUAGE_SPECIES)
 
 	for(var/lang_path in preferences.languages)
 		grant_language(lang_path)
