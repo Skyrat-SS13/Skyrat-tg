@@ -41,7 +41,7 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 
 	get_selected_language()
 
-/// Removes every language whose source(s) matches the provided arg source list
+/// Removes every language whose source(s) matche the provided arg source list
 /datum/language_holder/proc/remove_languages_by_source(list/sources)
 	if(!length(sources))
 		return
