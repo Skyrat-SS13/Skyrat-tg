@@ -136,6 +136,7 @@
 				filler.set_light(l_range = pre_light_range, l_power = pre_light_power, l_color = pre_light_color, l_on = TRUE)
 	else
 		lights_overlay = ""
+		set_light(l_on = FALSE)
 
 	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 
