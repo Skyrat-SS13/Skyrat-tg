@@ -267,6 +267,7 @@
 
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
+<<<<<<< HEAD
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
 
 	// SKYRAT EDIT ADDITION START
@@ -277,6 +278,8 @@
 			item.post_equip_item(humanc.client?.prefs, humanc)
 	// SKYRAT EDIT END
 
+=======
+>>>>>>> d39657bdfa5 (Fix double send of `COMSIG_GLOB_CREWMEMBER_JOINED` for latejoins (#77474))
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
 	for(var/C in GLOB.employmentCabinets)
