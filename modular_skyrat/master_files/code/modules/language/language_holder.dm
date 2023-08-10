@@ -6,22 +6,21 @@ GLOBAL_DATUM_INIT(language_holder_adjustor, /datum/language_holder_adjustor, new
 /datum/language_holder_adjustor/New()
 	RegisterSignal(SSdcs, COMSIG_GLOB_CREWMEMBER_JOINED, PROC_REF(handle_new_player))
 
-/datum/language_holder_adjustor/proc/handle_new_player(datum/source, mob/living/new_crewmember, rank)
+/datum/language_holder_adjustor/proc/handle_new_player(datum/source, /mob/living/carbon/human/new_crewmember, rank)
 	SIGNAL_HANDLER
 
 	// sanity checking because we really do not want to be causing any runtimes
-	if(!ishuman(new_crewmember))
+	if(!istype(new_crewmember))
 		return
 	if(isnull(new_crewmember.mind))
 		return
 
-	var/mob/living/carbon/human/new_human = new_crewmember
-	var/datum/language_holder/language_holder = new_human.get_language_holder()
+	var/datum/language_holder/language_holder = new_crewmember.get_language_holder()
 
 	if(isnull(language_holder))
 		return
 
-	language_holder.adjust_languages_to_prefs(new_human.client?.prefs)
+	language_holder.adjust_languages_to_prefs(new_crewmember.client?.prefs)
 
 /datum/language_holder_adjustor/Destroy()
 	..()
