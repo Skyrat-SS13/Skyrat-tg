@@ -102,6 +102,7 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_blueshield"
+	inhand_icon_state = "backpack_blueshield"
 
 /obj/item/storage/backpack/satchel/blueshield
 	name = "blueshield satchel"
@@ -111,15 +112,17 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "satchel_blueshield"
+	inhand_icon_state = "satchel_blueshield"
 
 /obj/item/storage/backpack/duffelbag/blueshield
 	name = "blueshield duffelbag"
 	desc = "A robust duffelbag issued to Nanotrasen's finest."
-icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_blueshield"
+	inhand_icon_state = "duffel_blueshield"
 
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield

@@ -15,6 +15,7 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_robo"
+	inhand_icon_state = "backpack_robo"
 
 /obj/item/storage/backpack/satchel/science/robo
 	name = "robotics satchel"
@@ -24,6 +25,7 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "satchel_robo"
+	inhand_icon_state = "satchel_robo"
 
 /obj/item/storage/backpack/duffelbag/science/robo
 	name = "robotics duffelbag"
@@ -33,3 +35,4 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_robo"
+	inhand_icon_state = "duffel_robo"

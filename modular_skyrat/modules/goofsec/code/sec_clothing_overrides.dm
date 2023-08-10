@@ -50,15 +50,18 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_security_black"
+	inhand_icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_black",
-			RESKIN_WORN_ICON_STATE = "backpack_security_black"
+			RESKIN_WORN_ICON_STATE = "backpack_security_black",
+			RESKIN_INHAND_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_white",
-			RESKIN_WORN_ICON_STATE = "backpack_security_white"
+			RESKIN_WORN_ICON_STATE = "backpack_security_white",
+			RESKIN_INHAND_STATE = "backpack_security_white"
 		),
 	)
 
@@ -68,15 +71,18 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "satchel_security_black"
+	inhand_icon_state = "satchel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "satchel_security_black",
-			RESKIN_WORN_ICON_STATE = "satchel_security_black"
+			RESKIN_WORN_ICON_STATE = "satchel_security_black",
+			RESKIN_INHAND_STATE = "satchel_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "satchel_security_white",
-			RESKIN_WORN_ICON_STATE = "satchel_security_white"
+			RESKIN_WORN_ICON_STATE = "satchel_security_white",
+			RESKIN_INHAND_STATE = "satchel_security_white"
 		),
 	)
 
@@ -86,15 +92,18 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_security_black"
+	inhand_icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_black",
-			RESKIN_WORN_ICON_STATE = "duffel_security_black"
+			RESKIN_WORN_ICON_STATE = "duffel_security_black",
+			RESKIN_INHAND_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_white",
-			RESKIN_WORN_ICON_STATE = "duffel_security_white"
+			RESKIN_WORN_ICON_STATE = "duffel_security_white",
+			RESKIN_INHAND_STATE = "duffel_security_white"
 		),
 	)
 
