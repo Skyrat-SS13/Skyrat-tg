@@ -205,6 +205,7 @@
 	if(!gauzeable_wound && !splintable_wound)
 		patient.balloon_alert(user, "can't heal those!")
 		return
+	// SKYRAT EDIT CHANGE END - MEDICAL
 
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
