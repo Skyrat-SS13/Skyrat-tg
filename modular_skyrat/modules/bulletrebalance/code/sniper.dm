@@ -14,7 +14,6 @@
 	dismemberment = 0
 	catastropic_dismemberment = FALSE
 	object_damage = 0
-	mecha_damage = 100
 
 /obj/projectile/bullet/p50/soporific/on_hit(atom/target, blocked = FALSE)
 	. = ..()
