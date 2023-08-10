@@ -192,8 +192,14 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+<<<<<<< HEAD
 	wound_bonus = 20 //SKYRAT EDIT - ORIGINAL: -20
 	bare_wound_bonus = 30 //SKYRAT EDIT: ORIGINAL: 20
+=======
+	wound_bonus = 10
+	bare_wound_bonus = 10
+	armour_penetration = 35
+>>>>>>> 385ab7a1667 (Changeling armblade gets 35% armour penetration + better wounding. (#77416))
 	var/can_drop = FALSE
 	var/fake = FALSE
 
