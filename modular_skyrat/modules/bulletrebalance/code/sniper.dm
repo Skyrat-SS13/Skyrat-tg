@@ -10,7 +10,6 @@
 /obj/projectile/bullet/p50/soporific
 	name = ".416 Stabilis tranquilizer casing"
 	damage_type = STAMINA
-	paralyze = 0
 	dismemberment = 0
 	catastropic_dismemberment = FALSE
 	object_damage = 0
