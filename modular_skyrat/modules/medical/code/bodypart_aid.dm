@@ -96,7 +96,7 @@
 	name = "splint"
 	overlay_prefix = "splint"
 	desc_prefix = "fastened"
-	stack_to_drop = /obj/item/stack/medical/splint
+	stack_to_drop = /obj/item/stack/medical/gauze
 	/// How effective are we in keeping the bodypart rigid
 	var/splint_factor = 0.3
 	/// Whether the splint prevents the limb from being disabled, with a ruptured tendon or a shattered bone
@@ -133,14 +133,8 @@
 	name = "improvised splint"
 	splint_factor = 0.6
 	helps_disabled= FALSE
-	stack_to_drop = /obj/item/stack/medical/splint/improvised
+	stack_to_drop = /obj/item/stack/medical/gauze/improvised
 	overlay_prefix = "splint_improv"
-
-/datum/bodypart_aid/splint/tribal
-	name = "tribal splint"
-	splint_factor = 0.5
-	stack_to_drop = /obj/item/stack/medical/splint/tribal
-	overlay_prefix = "splint_tribal"
 
 /datum/bodypart_aid/gauze
 	name = "gauze"
