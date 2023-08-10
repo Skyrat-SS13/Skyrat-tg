@@ -163,8 +163,6 @@
 	splint_factor = 0.7
 	burn_cleanliness_bonus = 0.35
 	merge_type = /obj/item/stack/medical/gauze
-	var/gauze_type = /datum/bodypart_aid/gauze //SKYRAT EDIT ADDITION - MEDICAL
-	var/splint_type = /datum/bodypart_aid/splint //SKYRAT EDIT ADDITION - MEDICAL
 
 // gauze is only relevant for wounds, which are handled in the wounds themselves
 /obj/item/stack/medical/gauze/try_heal(mob/living/patient, mob/user, silent)
@@ -180,12 +178,8 @@
 		return
 
 	var/gauzeable_wound = FALSE
-	// SKYRAT EDIT ADDITION - MEDICAL
-	var/splintable_wound = FALSE
 	var/datum/wound/woundies
 	for(var/i in limb.wounds)
-	// SKYRAT EDIT CHANGE BEGIN - MEDICAL
-	/*
 		woundies = i
 		if(woundies.wound_flags & ACCEPTS_GAUZE)
 			gauzeable_wound = TRUE
@@ -193,34 +187,10 @@
 	if(!gauzeable_wound)
 		patient.balloon_alert(user, "can't heal those!")
 		return
-	*/
-		woundies = i
-		if(woundies.wound_flags & (ACCEPTS_GAUZE | ACCEPTS_SPLINT))
-			if(woundies.wound_flags & ACCEPTS_GAUZE)
-				gauzeable_wound = TRUE
-				continue
-			if(woundies.wound_flags & ACCEPTS_SPLINT)
-				splintable_wound = TRUE
-				continue
-	if(!gauzeable_wound && !splintable_wound)
-		patient.balloon_alert(user, "can't heal those!")
-		return
-	// SKYRAT EDIT CHANGE END - MEDICAL
 
-	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
-	/*
 	if(limb.current_gauze && (limb.current_gauze.absorption_capacity * 1.2 > absorption_capacity)) // ignore if our new wrap is < 20% better than the current one, so someone doesn't bandage it 5 times in a row
 		patient.balloon_alert(user, pick("already bandaged!", "bandage is clean!")) // good enough
 		return
-	*/
-	if(limb.current_gauze && gauzeable_wound)
-		gauzeable_wound = FALSE
-	if(limb.current_splint && splintable_wound)
-		splintable_wound = FALSE
-	if(!gauzeable_wound && !splintable_wound)
-		balloon_alert(user, "already bandaged!")
-		return
-	//SKYRAT EDIT CHANGE END
 
 	if(HAS_TRAIT(woundies, TRAIT_WOUND_SCANNED))
 		treatment_delay *= 0.5
@@ -235,14 +205,7 @@
 		return
 
 	user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] to [patient]'s [limb.plaintext_zone].</span></span>", "<span class='infoplain'><span class='green'>You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone].</span></span>")
-	// SKYRAT EDIT CHANGE BEGIN - MEDICAL
-	// limb.apply_gauze(src)
-	if(gauzeable_wound)
-		limb.apply_gauze(src)
-		return
-	if(splintable_wound)
-		limb.apply_splint(src)
-		return
+	limb.apply_gauze(src)
 
 /obj/item/stack/medical/gauze/twelve
 	amount = 12
@@ -279,8 +242,6 @@
 	absorption_rate = 0.075
 	absorption_capacity = 4
 	merge_type = /obj/item/stack/medical/gauze/improvised
-	gauze_type = /datum/bodypart_aid/gauze/improvised //SKYRAT EDIT ADDITION - MEDICAL
-	splint_type = /datum/bodypart_aid/splint/improvised // SKYRAT EDIT ADDITION - MEDICAL
 
 	/*
 	The idea is for the following medical devices to work like a hybrid of the old brute packs and tend wounds,
