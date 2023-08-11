@@ -35,23 +35,24 @@
 
 	if(!wait_time) //0 disables autoreturn
 		return
+
 	if(mode != SHUTTLE_IDLE)
 		return
+
 	if(waiting && !timer)
 		SSshuttle.moveShuttle(shuttle_id, ARRIVALS_INTERLINK, TRUE) // times up, we're leaving
 		waiting = FALSE
+
 	var/current_dock = getDockedId()
 	if (current_dock && current_dock == ARRIVALS_STATION)
-		for (var/P in GLOB.player_list)
-			var/mob/M = P
-			if(is_in_shuttle_bounds(M) && M.stat != DEAD)
-				if (waiting == TRUE)
-					timer = 0
-					waiting = FALSE
-					if(console && console.last_cancel_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
-						console.say("Lifesigns detected onboard, automatic return aborted.")
-						console.last_cancel_announce = world.time
-				return
+		if (check_occupied())
+			if (waiting)
+				timer = 0
+				waiting = FALSE
+				if(console && console.last_cancel_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
+					console.say("Lifesigns detected onboard, automatic return aborted.")
+					console.last_cancel_announce = world.time
+			return
 		if (!timer && !waiting)
 			setTimer(wait_time)
 			waiting = TRUE
@@ -62,6 +63,22 @@
 /obj/docking_port/mobile/arrivals_skyrat/getModeStr()
 	. = ..()
 	return waiting ? "RTN" : .
+
+/**
+ * Checks if our shuttle is occupied by someone or not. Ignores camera eyes and ghosts.
+*/
+/obj/docking_port/mobile/arrivals_skyrat/proc/check_occupied()
+	for(var/P in GLOB.player_list)
+		var/mob/M = P
+		if (iscameramob(M))
+			continue
+
+		if (M.stat == DEAD)
+			continue
+
+		if (get_area(M) in shuttle_areas)
+			return TRUE
+	return FALSE
 
 /obj/machinery/computer/shuttle/arrivals
 	name = "arrivals shuttle control"
