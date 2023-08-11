@@ -382,11 +382,20 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/highsec.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/highsec/overlays.dmi'
 
-//GLASS
-/obj/machinery/door/airlock/glass_large
-	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/multi_tile.dmi'
-	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/overlays.dmi'
-	multi_tile = TRUE
+//MULTI-TILE
+
+/obj/machinery/door/airlock/multi_tile
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
+	bound_width = 64
+
+/obj/machinery/door/airlock/multi_tile/glass
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
+
+/obj/machinery/door/airlock/multi_tile/metal
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal_overlays.dmi'
 
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public

@@ -230,7 +230,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	current_souls -= soul_to_remove
 	soul_to_remove.current_room = null
+
+	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
+
 	return TRUE
 
 /// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
