@@ -1160,8 +1160,6 @@
 			drinker.adjust_hallucinations(60 SECONDS * REM * seconds_per_tick)
 
 	return ..()
-<<<<<<< HEAD
-=======
 
 /datum/reagent/consumable/t_letter
 	name = "T"
