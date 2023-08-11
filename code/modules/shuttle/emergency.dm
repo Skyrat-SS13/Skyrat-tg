@@ -525,15 +525,12 @@
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
 				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority")
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
-<<<<<<< HEAD
 				bolt_all_doors() //SKYRAT EDIT ADDITION
-=======
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
 				if(!is_reserved_level(z))
 					CRASH("Emergency shuttle did not move to transit z-level!")
 
->>>>>>> b3831e5fa60 (Prevents shuttle events running in-case of catastrophic failure (#77479))
 				//Tell the events we're starting, so they can time their spawns or do some other stuff
 				for(var/datum/shuttle_event/event as anything in event_list)
 					event.start_up_event(SSshuttle.emergency_escape_time * engine_coeff)
