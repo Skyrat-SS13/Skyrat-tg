@@ -388,6 +388,10 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
 
+/obj/machinery/door/airlock/multi_tile/glass
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
+
 /obj/machinery/door/airlock/multi_tile/metal
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal_overlays.dmi'
