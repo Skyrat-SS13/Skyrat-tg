@@ -32,9 +32,22 @@
 			if((strain.spread_flags & DISEASE_SPREAD_SPECIAL) || (strain.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
 				continue
 
-			if(methods & (INJECT|INGEST|PATCH))
+			if(methods & INGEST)
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_STOMACH))
+					continue
+
 				exposed_mob.ForceContractDisease(strain)
-			else if((methods & (TOUCH|VAPOR)) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+			else if(methods & (INJECT|PATCH))
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_HEART))
+					continue
+
+				exposed_mob.ForceContractDisease(strain)
+			else if((methods & VAPOR) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+				if(!strain.has_required_infectious_organ(exposed_mob, ORGAN_SLOT_LUNGS))
+					continue
+
+				exposed_mob.ContactContractDisease(strain)
+			else if((methods & TOUCH) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
 				exposed_mob.ContactContractDisease(strain)
 
 	if(iscarbon(exposed_mob))
@@ -506,7 +519,7 @@
 					if("african1")
 						exposed_human.skin_tone = "african2"
 					if("indian")
-						exposed_human.skin_tone = "african1"
+						exposed_human.skin_tone = "mixed2"
 					if("arab")
 						exposed_human.skin_tone = "indian"
 					if("asian2")
@@ -514,7 +527,7 @@
 					if("asian1")
 						exposed_human.skin_tone = "asian2"
 					if("mediterranean")
-						exposed_human.skin_tone = "african1"
+						exposed_human.skin_tone = "mixed1"
 					if("latino")
 						exposed_human.skin_tone = "mediterranean"
 					if("caucasian3")
@@ -525,6 +538,14 @@
 						exposed_human.skin_tone = "caucasian2"
 					if("albino")
 						exposed_human.skin_tone = "caucasian1"
+					if("mixed1")
+						exposed_human.skin_tone = "mixed2"
+					if("mixed2")
+						exposed_human.skin_tone = "mixed3"
+					if("mixed3")
+						exposed_human.skin_tone = "african1"
+					if("mixed4")
+						exposed_human.skin_tone = "mixed3"
 			//take current alien color and darken it slightly
 			else if(HAS_TRAIT(exposed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(exposed_human, TRAIT_FIXED_MUTANT_COLORS))
 				var/newcolor = ""
@@ -2806,7 +2827,7 @@
 	var/obj/effect/decal/cleanable/ants/pests = exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/ants)
 	if(!pests)
 		return
-		
+
 	var/spilled_ants = (round(reac_volume,1) - 5) // To account for ant decals giving 3-5 ants on initialize.
 	pests.reagents.add_reagent(/datum/reagent/ants, spilled_ants)
 	pests.update_ant_damage()

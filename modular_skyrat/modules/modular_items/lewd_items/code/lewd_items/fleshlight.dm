@@ -77,9 +77,9 @@
 			target.adjust_arousal(6)
 			target.adjust_pleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
+			play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1, ignore_walls = FALSE)
+								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
