@@ -508,3 +508,31 @@
   vinylspiders:
   - bugfix: quirks list will now be displayed normally in examine text again instead
       of duplicating itself
+2023-08-11:
+  Melbert:
+  - bugfix: Fix some missing wizard spellbook flavor
+  - bugfix: Fixed latejoiners being affected by certain things twice, such as Summon
+      Guns and Summon Magic
+  SkyratBot:
+  - bugfix: The bulbs of lights will now have an emissive glow when on, making it
+      so they appear active no matter how dark the area surrounding them happens to
+      be.
+  - bugfix: crafting recipes without a name, such as the mothic pizzas, will inherit
+      the name of the item they make
+  - balance: Space Ninja's energy net uses a projectile to catch people now.
+  - bugfix: Fixed an oddity with morgue corpses being shakeable like they're just
+      unconscious.
+  - admin: 'Added new lua functions: SS13.is_valid, SS13.stop_tracking, SS13.new_untracked,
+      SS13.type and SS13.qdel'
+  - bugfix: Mirror reflections no longer display progress bars or runechat.
+  - qol: Drill module automatically disables if it's about to drill into gibtonite
+  - bugfix: Fixed an oversight with processable items that lead to the same chat message
+      being sent multiple times.
+  - rscadd: Add admin blackhole shuttle event with a normal version and suicidal version.
+  - bugfix: Fix several shuttle event runtimes
+  Vekter:
+  - bugfix: FRAG-12 shells no longer require sulfuric acid, instead needing 10 fluorosulfuric
+      acid. This should prevent them from leaving byproducts if crafted in a specific
+      way.
+  softcerv:
+  - bugfix: fixes soulcatchers not properly returning minds back to bodies.
