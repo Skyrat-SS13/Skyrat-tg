@@ -86,11 +86,8 @@
 	emag_only = TRUE
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
-<<<<<<< HEAD:code/datums/shuttles.dm
-	who_can_purchase = null //SKYRAT EDIT CHANGE
-=======
 	occupancy_limit = "70"
->>>>>>> 995dce77a1b (Emergency shuttle information display improvements (#77457)):code/datums/shuttles/emergency.dm
+	who_can_purchase = null //SKYRAT EDIT ADDITION
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
