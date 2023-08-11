@@ -446,11 +446,12 @@
 	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
 	can_be_printed = FALSE
 
-/obj/item/ammo_casing/a556
+/obj/item/ammo_casing/a277
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
+	caliber = CALIBER_A277
 
-/obj/item/ammo_casing/a556/phasic
+/obj/item/ammo_casing/a277/phasic
 	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
@@ -559,10 +560,10 @@
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
-/obj/projectile/bullet/a556
+/obj/projectile/bullet/a277
 	name = ".277 Aestus bullet"
 
-/obj/projectile/bullet/a556/phasic
+/obj/projectile/bullet/a277/phasic
 	name = ".277 PHASE bullet"
 
 /obj/projectile/bullet/a762

@@ -365,7 +365,8 @@
 	// SKYRAT REMOVAL START - MOD PAI
 	/*else if(istype(potential_storage, /obj/item/mod/control))
 		var/obj/item/mod/control/suit = potential_storage
-		being = suit.ai
+		if(isAI(suit.ai_assistant))
+			being = suit.ai_assistant
 	*/ // SKYRAT REMOVAL END
 	else
 		stack_trace("check_special_completion() called on [src] with [potential_storage] ([potential_storage.type])! That's not supposed to happen!")
