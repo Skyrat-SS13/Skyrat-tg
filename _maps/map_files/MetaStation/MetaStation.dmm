@@ -29762,16 +29762,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
-"kRR" = (
-/obj/structure/table/wood,
-/obj/machinery/fax{
-	fax_name = "Law Office";
-	name = "Law Office Fax Machine"
-	},
-/obj/machinery/light/small/directional/south,
-/obj/machinery/button/door/directional/west,
-/turf/open/floor/wood,
-/area/station/service/lawoffice)
 "kRV" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -30331,25 +30321,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen/coldroom)
-"laW" = (
-/obj/structure/table,
-/obj/machinery/microwave,
-/obj/effect/turf_decal/trimline/brown/warning{
-	dir = 6
-	},
-/obj/machinery/camera/directional/west{
-	c_tag = "Kitchen"
-	},
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "lbh" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -49980,6 +49951,19 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"seC" = (
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	fax_name = "Law Office";
+	name = "Law Office Fax Machine"
+	},
+/obj/machinery/light/small/directional/south,
+/obj/machinery/button/door/directional/west{
+	name = "Privacy Shutters";
+	id = "lawyer_shutters"
+	},
+/turf/open/floor/wood,
+/area/station/service/lawoffice)
 "seN" = (
 /obj/structure/sign/directions/evac,
 /turf/closed/wall/r_wall,
@@ -58162,20 +58146,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
-"uYI" = (
-/obj/machinery/vending/dinnerware,
-/obj/effect/turf_decal/trimline/brown/warning{
-	dir = 5
-	},
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron/cafeteria,
-/area/station/service/kitchen)
 "uYP" = (
 /obj/structure/cable,
 /obj/machinery/door/window/left/directional/north{
@@ -66236,6 +66206,25 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+"xPh" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 6
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Kitchen"
+	},
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "xPm" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
@@ -67133,6 +67122,20 @@
 /obj/effect/turf_decal/trimline/dark_red/line,
 /turf/open/floor/iron/white/smooth_half,
 /area/station/commons/fitness)
+"yfn" = (
+/obj/machinery/vending/dinnerware,
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 5
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/cafeteria,
+/area/station/service/kitchen)
 "yfq" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -98155,7 +98158,7 @@ iJd
 nVy
 tGI
 daC
-kRR
+seC
 xNU
 eFJ
 usP
@@ -102296,8 +102299,8 @@ mal
 rFO
 pmZ
 qdI
-laW
-uYI
+xPh
+yfn
 wDh
 uIs
 amu
