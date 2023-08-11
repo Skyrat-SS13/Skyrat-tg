@@ -1239,19 +1239,6 @@
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
 	sleep(0.1 SECONDS)
 	set_opacity(0)
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-	if(multi_tile)
-		filler.set_opacity(FALSE)
-	//SKYRAT EDIT END
-	update_freelook_sight()
-	sleep(0.4 SECONDS)
-	set_density(FALSE)
-	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-	if(multi_tile)
-		filler.set_density(FALSE)
-	//SKYRAT EDIT END
-=======
 	if(multi_tile)
 		filler.set_opacity(FALSE)
 	update_freelook_sight()
@@ -1259,7 +1246,6 @@
 	set_density(FALSE)
 	if(multi_tile)
 		filler.set_density(FALSE)
->>>>>>> ed2c74c8b39 (Multi-tile airlocks (#76732))
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
 	sleep(0.1 SECONDS)
@@ -1310,16 +1296,9 @@
 
 	var/dangerous_close = !safe || force_crush
 	if(!dangerous_close)
-<<<<<<< HEAD
-		for(var/turf/checked_turf in get_turfs()) // SKYRAT EDIT ADD
-			//for(var/atom/movable/M in get_turf(src)) // Original
-			for(var/atom/movable/M in checked_turf) // SKYRAT EDIT CHANGE
-				if(M.density && M != src) //something is blocking the door
-=======
 		for(var/turf/checked_turf in locs)
 			for(var/atom/movable/blocking in checked_turf)
 				if(blocking.density && blocking != src)
->>>>>>> ed2c74c8b39 (Multi-tile airlocks (#76732))
 					autoclose_in(DOOR_CLOSE_WAIT)
 					return FALSE
 
@@ -1357,11 +1336,7 @@
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
-<<<<<<< HEAD
-		set_opacity(1)
-=======
 		set_opacity(TRUE)
->>>>>>> ed2c74c8b39 (Multi-tile airlocks (#76732))
 		if(multi_tile)
 			filler.set_opacity(TRUE)
 	update_freelook_sight()
