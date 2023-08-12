@@ -93,6 +93,12 @@
 
 	return TAUR_DIMENSION_X
 
+/datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/target_mob)
+	var/species = target_mob?.dna.species.id
+	if(!species == SPECIES_TESHARI)
+		return icon
+	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_penis_onmob.dmi'
+
 /datum/sprite_accessory/genital/penis/none
 	icon_state = "none"
 	name = "None"
@@ -168,6 +174,12 @@
 
 	return TAUR_DIMENSION_X
 
+/datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/target_mob)
+	var/species = target_mob?.dna.species.id
+	if(!species == SPECIES_TESHARI)
+		return icon
+	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_testicles_onmob.dmi'
+
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
 	name = "None"
@@ -191,10 +203,17 @@
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = ORGAN_SLOT_VAGINA
 	always_color_customizable = TRUE
+	special_icon_case = TRUE
 	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/alt_aroused = TRUE
+
+/datum/sprite_accessory/genital/vagina/get_special_icon(mob/living/carbon/human/target_mob)
+	var/species = target_mob?.dna.species.id
+	if(!species == SPECIES_TESHARI)
+		return icon
+	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_vagina_onmob.dmi'
 
 /datum/sprite_accessory/genital/vagina/none
 	icon_state = "none"
@@ -277,11 +296,18 @@
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = ORGAN_SLOT_BREASTS
 	always_color_customizable = TRUE
+	special_icon_case = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	has_skintone_shading = TRUE
 	genital_location = CHEST
 	genetic = TRUE
+
+/datum/sprite_accessory/genital/breasts/get_special_icon(mob/living/carbon/human/target_mob)
+	var/species = target_mob?.dna.species.id
+	if(!species == SPECIES_TESHARI)
+		return icon
+	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_breasts_onmob.dmi'
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
