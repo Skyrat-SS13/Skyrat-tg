@@ -1,24 +1,9 @@
-<<<<<<< HEAD
-/obj/item/circuitboard/machine/spaceship_navigation_beacon
-	name = "Bluespace Navigation Gigabeacon (Machine Board)"
-	build_path = /obj/machinery/spaceship_navigation_beacon
-	req_components = list()
-
-
-/obj/machinery/spaceship_navigation_beacon//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	name = "Bluespace Navigation Gigabeacon"
-	desc = "A device that creates a bluespace anchor that allow ships jump near to it."
-	icon = 'icons/obj/antags/abductor.dmi'
-	icon_state = "core"
-	base_icon_state = "core"
-=======
 /obj/machinery/spaceship_navigation_beacon
 	name = "radio navigation gigabeacon"
 	desc = "A device that constantly transmits its position over several different commonly used maritime navigation frequencies. Used to create shuttle navigation waypoints in unexplored or undeveloped areas."
 	icon = 'icons/obj/machines/navigation_beacon.dmi'
 	icon_state = "beacon_active"
 	base_icon_state = "beacon"
->>>>>>> b52f671be67 (Makes bluespace navigation gigabeacons both significantly nicer to use, and significantly cooler (#77223))
 	density = TRUE
 	flags_1 = NODECONSTRUCT_1
 
