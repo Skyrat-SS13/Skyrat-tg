@@ -321,7 +321,7 @@
 			send_message("Multiple of [loaded_nifsoft] cannot be installed.", TRUE)
 			return FALSE
 
-		if(current_nifsoft.type in loaded_nifsoft.mutually_exclusive_programs)
+		if(is_type_in_list(current_nifsoft, loaded_nifsoft.mutually_exclusive_programs))
 			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed.", TRUE)
 			return FALSE
 
@@ -406,7 +406,7 @@
 		broken = TRUE
 		addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
 
-	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(make_vulnerable)), 3 MINUTES)
 
 	switch(severity)
 		if(1)
@@ -448,7 +448,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(add_examine))
 
 /datum/component/nif_examine/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)

@@ -57,12 +57,12 @@
 	)
 
 /datum/armor/mod_theme_contractor
-	melee = 30
-	bullet = 40
-	laser = 20
-	energy = 30
-	bomb = 30
-	bio = 30
+	melee = 15
+	bullet = 20
+	laser = 15
+	energy = 15
+	bomb = 35
+	bio = 100
 	fire = 80
-	acid = 85
-	wound = 30
+	acid = 90
+	wound = 25

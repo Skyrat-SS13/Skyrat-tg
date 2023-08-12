@@ -33,6 +33,9 @@ SUBSYSTEM_DEF(mapping)
 	/// List of z level (as number) -> plane offset of that z level
 	/// Used to maintain the plane cube
 	var/list/z_level_to_plane_offset = list()
+	/// List of z level (as number) -> list of all z levels vertically connected to ours
+	/// Useful for fast grouping lookups and such
+	var/list/z_level_to_stack = list()
 	/// List of z level (as number) -> The lowest plane offset in that z stack
 	var/list/z_level_to_lowest_plane_offset = list()
 	// This pair allows for easy conversion between an offset plane, and its true representation
@@ -147,9 +150,11 @@ SUBSYSTEM_DEF(mapping)
 
 #endif
 	// Run map generation after ruin generation to prevent issues
-	run_map_generation()
+	run_map_terrain_generation()
 	// Generate our rivers, we do this here so the map doesn't load on top of them
 	setup_rivers()
+	// now that the terrain is generated, including rivers, we can safely populate it with objects and mobs
+	run_map_terrain_population()
 	// Add the first transit level
 	var/datum/space_level/base_transit = add_reservation_zlevel()
 	require_area_resort()
@@ -206,13 +211,13 @@ SUBSYSTEM_DEF(mapping)
 	if(multiz_levels.len < z_level)
 		multiz_levels.len = z_level
 
-	var/linked_down = level_trait(z_level, ZTRAIT_DOWN)
-	var/linked_up = level_trait(z_level, ZTRAIT_UP)
-	multiz_levels[z_level] = list()
-	if(linked_down)
-		multiz_levels[z_level]["[DOWN]"] = TRUE
-	if(linked_up)
-		multiz_levels[z_level]["[UP]"] = TRUE
+	var/z_above = level_trait(z_level, ZTRAIT_UP)
+	var/z_below = level_trait(z_level, ZTRAIT_DOWN)
+	if(!(z_above == TRUE || z_above == FALSE || z_above == null) || !(z_below == TRUE || z_below == FALSE || z_below == null))
+		stack_trace("Warning, numeric mapping offsets are deprecated. Instead, mark z level connections by setting UP/DOWN to true if the connection is allowed")
+	multiz_levels[z_level] = new /list(LARGEST_Z_LEVEL_INDEX)
+	multiz_levels[z_level][Z_LEVEL_UP] = !!z_above
+	multiz_levels[z_level][Z_LEVEL_DOWN] = !!z_below
 
 /datum/controller/subsystem/mapping/proc/calculate_z_level_gravity(z_level_number)
 	if(!isnum(z_level_number) || z_level_number < 1)
@@ -265,7 +270,8 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	for (var/ice_z in ice_ruins)
-		spawn_rivers(ice_z, 4, /turf/open/openspace/icemoon, /area/icemoon/surface/outdoors/unexplored/rivers)
+		var/river_type = HAS_TRAIT(SSstation, STATION_TRAIT_FORESTED) ? /turf/open/lava/plasma/ice_moon : /turf/open/openspace/icemoon
+		spawn_rivers(ice_z, 4, river_type, /area/icemoon/surface/outdoors/unexplored/rivers)
 
 	var/list/ice_ruins_underground = levels_by_trait(ZTRAIT_ICE_RUINS_UNDERGROUND)
 	for (var/ice_z in ice_ruins_underground)
@@ -474,9 +480,15 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(!GLOB.the_station_areas.len)
 		log_world("ERROR: Station areas list failed to generate!")
 
-/datum/controller/subsystem/mapping/proc/run_map_generation()
+/// Generate the turfs of the area
+/datum/controller/subsystem/mapping/proc/run_map_terrain_generation()
 	for(var/area/A as anything in GLOB.areas)
-		A.RunGeneration()
+		A.RunTerrainGeneration()
+
+/// Populate the turfs of the area
+/datum/controller/subsystem/mapping/proc/run_map_terrain_population()
+	for(var/area/A as anything in GLOB.areas)
+		A.RunTerrainPopulation()
 
 /datum/controller/subsystem/mapping/proc/maprotate()
 	if(map_voted || SSmapping.next_map_config) //If voted or set by other means.
@@ -781,8 +793,11 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	// We are guarenteed that we'll always grow bottom up
 	// Suck it jannies
 	z_level_to_plane_offset.len += 1
-	z_level_to_lowest_plane_offset += 1
+	z_level_to_lowest_plane_offset.len += 1
 	gravity_by_z_level.len += 1
+	z_level_to_stack.len += 1
+	// Bare minimum we have ourselves
+	z_level_to_stack[z_value] = list(z_value)
 	// 0's the default value, we'll update it later if required
 	z_level_to_plane_offset[z_value] = 0
 	z_level_to_lowest_plane_offset[z_value] = 0
@@ -814,24 +829,25 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/update_plane_tracking(datum/space_level/update_with)
 	// We're essentially going to walk down the stack of connected z levels, and set their plane offset as we go
-	// Yes this will cause infinite loops if our templating is fucked. Fuck off
-	var/below_offset = 0
-	// I'm sorry, it needs to start at 0
-	var/current_level = -1
-	var/current_z = update_with.z_value
+	var/plane_offset = 0
+	var/datum/space_level/current_z = update_with
 	var/list/datum/space_level/levels_checked = list()
-	do
-		current_level += 1
-		current_z += below_offset
-		z_level_to_plane_offset[current_z] = current_level
-		var/datum/space_level/next_level = z_list[current_z]
-		below_offset = next_level.traits[ZTRAIT_DOWN]
-		levels_checked += next_level
-	while(below_offset)
+	var/list/z_stack = list()
+	while(TRUE)
+		var/z_level = current_z.z_value
+		z_stack += z_level
+		z_level_to_plane_offset[z_level] = plane_offset
+		levels_checked += current_z
+		if(!current_z.traits[ZTRAIT_DOWN]) // If there's nothing below, stop looking
+			break
+		// Otherwise, down down down we go
+		current_z = z_list[z_level - 1]
+		plane_offset += 1
 
 	/// Updates the lowest offset value
 	for(var/datum/space_level/level_to_update in levels_checked)
-		z_level_to_lowest_plane_offset[level_to_update.z_value] = current_level
+		z_level_to_lowest_plane_offset[level_to_update.z_value] = plane_offset
+		z_level_to_stack[level_to_update.z_value] = z_stack
 
 	// This can be affected by offsets, so we need to update it
 	// PAIN
@@ -839,7 +855,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		generate_lighting_appearance_by_z(i)
 
 	var/old_max = max_plane_offset
-	max_plane_offset = max(max_plane_offset, current_level)
+	max_plane_offset = max(max_plane_offset, plane_offset)
 	if(max_plane_offset == old_max)
 		return
 
@@ -889,6 +905,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 				true_to_offset_planes[string_real] = list()
 
 			true_to_offset_planes[string_real] |= offset_plane
+
+/// Takes a turf or a z level, and returns a list of all the z levels that are connected to it
+/datum/controller/subsystem/mapping/proc/get_connected_levels(turf/connected)
+	var/z_level = connected
+	if(isturf(z_level))
+		z_level = connected.z
+	return z_level_to_stack[z_level]
 
 /datum/controller/subsystem/mapping/proc/lazy_load_template(template_key, force = FALSE)
 	RETURN_TYPE(/datum/turf_reservation)

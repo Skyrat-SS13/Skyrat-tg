@@ -3,7 +3,7 @@
 /obj/item/hand_item/coom
 	name = "cum"
 	desc = "C-can I watch...?"
-	icon = 'icons/obj/hydroponics/harvest.dmi'
+	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "eggplant"
 	inhand_icon_state = "nothing"
 
@@ -48,11 +48,11 @@
 			var/datum/reagents/applied_reagents = new/datum/reagents(50)
 			applied_reagents.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
-			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(target, SFX_DESECRATION, 50, TRUE)
 			applied_reagents.trans_to(target, cum_volume)
 		else
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(target, SFX_DESECRATION, 50, TRUE)
 			affected_human.add_cum_splatter_floor(get_turf(target))
 
 		log_combat(user, target, "came on")

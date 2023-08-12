@@ -44,7 +44,7 @@
 	savefile_key = "eye_emissives"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_species_trait = EYECOLOR
+	relevant_head_flag = HEAD_EYECOLOR
 
 /datum/preference/toggle/eye_emissives/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	value = value && preferences && is_allowed(preferences)
@@ -171,7 +171,7 @@
 		our_head.bodytype |= BODYTYPE_SNOUTED
 	else
 		our_head.bodytype &= ~BODYTYPE_SNOUTED
-	our_head.synchronize_bodytypes(target)
+	target.synchronize_bodytypes()
 
 /datum/preference/tri_color/snout
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -815,7 +815,7 @@
 /datum/preference/choiced/mutant_choice/pod_hair/init_possible_values()
 	var/list/values = list()
 
-	var/icon/pod_head = icon('icons/mob/species/human/bodyparts_greyscale.dmi', "pod_head_m")
+	var/icon/pod_head = icon('icons/mob/human/bodyparts_greyscale.dmi', "pod_head_m")
 	pod_head.Blend(COLOR_GREEN, ICON_MULTIPLY)
 
 	for (var/pod_name in GLOB.pod_hair_list)

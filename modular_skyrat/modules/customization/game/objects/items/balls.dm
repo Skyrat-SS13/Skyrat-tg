@@ -3,6 +3,7 @@
 	desc = "A classical tennis ball. It appears to have faint bite marks scattered all over its surface."
 	icon = 'modular_skyrat/master_files/icons/obj/balls.dmi'
 	icon_state = "tennis_classic"
+	worn_icon_state = "tennis_classic"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/balls_left.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/balls_right.dmi'
 	inhand_icon_state = "tennis_classic"
@@ -15,6 +16,7 @@
 	name = "pseudo-euclidean interdimensional tennis sphere"
 	desc = "A tennis ball from another plane of existance. Really groovy."
 	icon_state = "tennis_rainbow"
+	worn_icon_state = "tennis_rainbow"
 	inhand_icon_state = "tennis_rainbow"
 	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unilimted honks would be annoying
 
@@ -26,12 +28,14 @@
 	name = "Katlin's ball"
 	desc = "A tennis ball that's seen a good bit of love, being covered in a few black and white hairs and slobber."
 	icon_state = "tennis_izzy"
+	worn_icon_state = "tennis_izzy"
 	inhand_icon_state = "tennis_izzy"
 
 /obj/item/toy/tennis/red	//da red wuns go fasta
 	name = "red tennis ball"
 	desc = "A red tennis ball. It goes three times faster!"
 	icon_state = "tennis_red"
+	worn_icon_state = "tennis_red"
 	inhand_icon_state = "tennis_red"
 	throw_speed = 9
 
@@ -39,6 +43,7 @@
 	name = "yellow tennis ball"
 	desc = "A yellow tennis ball. It seems to have a flame-retardant coating."
 	icon_state = "tennis_yellow"
+	worn_icon_state = "tennis_yellow"
 	inhand_icon_state = "tennis_yellow"
 	resistance_flags = FIRE_PROOF
 
@@ -46,12 +51,14 @@
 	name = "green tennis ball"
 	desc = "A green tennis ball. It seems to have an impermeable coating."
 	icon_state = "tennis_green"
+	worn_icon_state = "tennis_green"
 	inhand_icon_state = "tennis_green"
 
 /obj/item/toy/tennis/cyan	//electric
 	name = "cyan tennis ball"
 	desc = "A cyan tennis ball. It seems to have odd electrical properties."
 	icon_state = "tennis_cyan"
+	worn_icon_state = "tennis_cyan"
 	inhand_icon_state = "tennis_cyan"
 	siemens_coefficient = 0.9
 
@@ -59,6 +66,7 @@
 	name = "blue tennis ball"
 	desc = "A blue tennis ball. It seems ever so slightly more robust than normal."
 	icon_state = "tennis_blue"
+	worn_icon_state = "tennis_blue"
 	inhand_icon_state = "tennis_blue"
 	max_integrity = 300
 
@@ -66,6 +74,7 @@
 	name = "purple tennis ball"
 	desc = "A purple tennis ball. It seems to have an acid-resistant coating."
 	icon_state = "tennis_purple"
+	worn_icon_state = "tennis_purple"
 	inhand_icon_state = "tennis_purple"
 	resistance_flags = ACID_PROOF
 

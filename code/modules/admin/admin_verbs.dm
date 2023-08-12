@@ -153,6 +153,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
 	/client/proc/intensity_credits_panel,		/*SKYRAT EDIT ADDITION*/
 	/client/proc/toggle_bsa,					/*SKYRAT EDIT ADDITION*/
+	/client/proc/try_stop_delam, /*SKYRAT EDIT ADDITION*/
+	/client/proc/toggle_delam_suppression, /*SKYRAT EDIT ADDITION*/
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -965,7 +967,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		new_guy.mind.name = "[rank] Dummy"
 
 		// Assign the rank to the new player dummy.
-		if(!SSjob.AssignRole(new_guy, job))
+		if(!SSjob.AssignRole(new_guy, job, do_eligibility_checks = FALSE))
 			qdel(new_guy)
 			to_chat(admin, "[rank] wasn't able to be spawned.")
 			continue

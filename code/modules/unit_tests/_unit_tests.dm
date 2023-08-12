@@ -55,8 +55,13 @@
 #define TEST_DEFAULT 1
 /// After most test steps, used for tests that run long so shorter issues can be noticed faster
 #define TEST_LONGER 10
-/// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
-#define TEST_CREATE_AND_DESTROY INFINITY
+/// This must be the one of last tests to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
+#define TEST_CREATE_AND_DESTROY 9001
+/**
+ * For tests that rely on create and destroy having iterated through every (tangible) atom so they don't have to do something similar.
+ * Keep in mind tho that create and destroy will absolutely break the test platform, anything that relies on its shape cannot come after it.
+ */
+#define TEST_AFTER_CREATE_AND_DESTROY INFINITY
 
 /// Change color to red on ANSI terminal output, if enabled with -DANSICOLORS.
 #ifdef ANSICOLORS
@@ -79,10 +84,12 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+// BEGIN_INCLUDE
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
 #include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
+#include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
 #include "anchored_mobs.dm"
@@ -100,6 +107,7 @@
 #include "blindness.dm"
 #include "bloody_footprints.dm"
 #include "breath.dm"
+#include "burning.dm"
 #include "cable_powernets.dm"
 #include "card_mismatch.dm"
 #include "cardboard_cutouts.dm"
@@ -107,6 +115,7 @@
 #include "chat_filter.dm"
 #include "circuit_component_category.dm"
 #include "closets.dm"
+#include "clothing_under_armor_subtype_check.dm"
 #include "combat.dm"
 #include "component_tests.dm"
 #include "confusion.dm"
@@ -114,6 +123,7 @@
 #include "container_sanity.dm"
 #include "crayons.dm"
 #include "create_and_destroy.dm"
+#include "dcs_check_list_arguments.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
 #include "door_access.dm"
@@ -124,6 +134,7 @@
 #include "egg_glands.dm"
 #include "emoting.dm"
 #include "explosion_action.dm"
+#include "fish_unit_tests.dm"
 #include "focus_only_tests.dm"
 #include "font_awesome_icons.dm"
 #include "food_edibility_check.dm"
@@ -135,6 +146,7 @@
 #include "hallucination_icons.dm"
 #include "heretic_knowledge.dm"
 #include "heretic_rituals.dm"
+#include "high_five.dm"
 #include "holidays.dm"
 #include "human_through_recycler.dm"
 #include "hunger_curse.dm"
@@ -146,10 +158,13 @@
 #include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
 #include "knockoff_component.dm"
+#include "language_transfer.dm"
+#include "leash.dm"
 #include "lesserform.dm"
 #include "limbsanity.dm"
-#include "lungs.dm"
+#include "liver.dm"
 #include "load_map_security.dm"
+#include "lungs.dm"
 #include "machine_disassembly.dm"
 #include "map_landmarks.dm"
 #include "mapload_space_verification.dm"
@@ -218,12 +233,14 @@
 #include "species_unique_id.dm"
 #include "species_whitelists.dm"
 #include "spell_invocations.dm"
+#include "spell_jaunt.dm"
 #include "spell_mindswap.dm"
 #include "spell_names.dm"
 #include "spell_shapeshift.dm"
 #include "spritesheets.dm"
 #include "stack_singular_name.dm"
 #include "station_trait_tests.dm"
+#include "status_effect_ticks.dm"
 #include "stomach.dm"
 #include "strange_reagent.dm"
 #include "strippable.dm"
@@ -237,6 +254,7 @@
 #include "trait_addition_and_removal.dm"
 #include "traitor.dm"
 #include "traitor_mail_content_check.dm"
+#include "trauma_granting.dm"
 #include "turf_icons.dm"
 #include "tutorial_sanity.dm"
 #include "unit_test.dm"

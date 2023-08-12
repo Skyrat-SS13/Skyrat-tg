@@ -1,6 +1,6 @@
 /// Makes sure turf icons actually exist. :)
 /datum/unit_test/turf_icons
-	var/modular_mineral_turf_file //= 'icons/turf/mining.dmi' //MODULARITY SUPPORT - insert your snowflake MAP_SWITCH icon file here if you use that define.
+	var/modular_mineral_turf_file = 'modular_skyrat/modules/xenoarch/icons/mining.dmi' //= 'icons/turf/mining.dmi' //MODULARITY SUPPORT - insert your snowflake MAP_SWITCH icon file here if you use that define. // SKYRAT EDIT - Added our modular file here (thanks)
 
 /datum/unit_test/turf_icons/Run()
 	for(var/turf/turf_path as anything in (subtypesof(/turf) - typesof(/turf/closed/mineral)))

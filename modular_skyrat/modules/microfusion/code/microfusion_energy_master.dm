@@ -63,7 +63,7 @@
 	/// The heat dissipation bonus granted by the weapon.
 	var/heat_dissipation_bonus = 0
 	/// What slots does this gun have?
-	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
+	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE, GUN_SLOT_CAMO)
 	/// Our base firedelay.
 	var/base_fire_delay = 0
 	/// Do we use more power because of attachments?
@@ -328,8 +328,12 @@
 
 // To maintain modularity, I am moving this proc override here.
 /obj/item/gun/microfusion/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	var/base_bonus_spread = 0
 	if(user)
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, user, target, params, zone_override)
+		var/list/bonus_spread_values = list(base_bonus_spread, bonus_spread)
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, target, params, zone_override, bonus_spread_values)
+		base_bonus_spread = bonus_spread_values[MIN_BONUS_SPREAD_INDEX]
+		bonus_spread = bonus_spread_values[MAX_BONUS_SPREAD_INDEX]
 
 	SEND_SIGNAL(src, COMSIG_GUN_FIRED, user, target, params, zone_override)
 
@@ -339,32 +343,28 @@
 		return
 
 	//Vary by at least this much
-	var/base_bonus_spread = 0
-	var/calculated_spread = 0
-	var/randomized_gun_spread = 0
-	var/random_spread = rand()
-	if(user && HAS_TRAIT(user, TRAIT_POOR_AIM)) //Nice job hotshot
-		bonus_spread += 35
-		base_bonus_spread += 10
-
-	if(spread)
-		randomized_gun_spread =	rand(0,spread)
 	var/randomized_bonus_spread = rand(base_bonus_spread, bonus_spread)
+	var/randomized_gun_spread = spread ? rand(0, spread) : 0
+	var/total_random_spread = max(0, randomized_bonus_spread + randomized_gun_spread)
+	var/burst_spread_mult = rand()
+
+	var/modified_delay = fire_delay
+	if(phase_emitter)
+		modified_delay = phase_emitter.fire_delay
+	if(user && HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
+		modified_delay = ROUND_UP(fire_delay * 0.5)
 
 	if(burst_size > 1)
 		firing_burst = TRUE
-		var/fire_delay_to_add = 0
-		if(phase_emitter)
-			fire_delay_to_add = phase_emitter.fire_delay
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
+			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, total_random_spread, burst_spread_mult, i), modified_delay * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 				if(chambered.harmful) // Is the bullet chambered harmful?
 					balloon_alert(user, "lethally chambered!")
 					return
-			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+			var/calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * total_random_spread)
 			before_firing(target,user)
 			process_microfusion()
 			if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, calculated_spread, src))
@@ -395,7 +395,17 @@
 	return TRUE
 
 // Same goes for this!
-/obj/item/gun/microfusion/process_burst(mob/living/user, atom/target, message = TRUE, params=null, zone_override = "", calculated_spread = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, random_spread= 0, iteration = 0)
+/obj/item/gun/microfusion/process_burst(
+		mob/living/user,
+		atom/target,
+		message = TRUE,
+		params = null,
+		zone_override = "",
+		random_spread = 0,
+		burst_spread_mult = 0,
+		iteration = 0,
+	)
+
 	if(!user || !firing_burst)
 		firing_burst = FALSE
 		return FALSE
@@ -413,10 +423,11 @@
 			if(chambered.harmful) // Is the bullet chambered harmful?
 				balloon_alert(user, "lethally chambered!")
 				return
+		var/calculated_spread
 		if(randomspread)
-			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+			calculated_spread = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (random_spread))
 		else //Smart spread
-			calculated_spread = round((((random_spread/burst_size) * iteration) - (0.5 + (random_spread * 0.25))) * (randomized_gun_spread + randomized_bonus_spread))
+			calculated_spread = round((((burst_spread_mult/burst_size) * iteration) - (0.5 + (burst_spread_mult * 0.25))) * (random_spread))
 		before_firing(target,user)
 		process_microfusion()
 		if(!chambered.fire_casing(target, user, params, ,suppressed, zone_override, calculated_spread, src))

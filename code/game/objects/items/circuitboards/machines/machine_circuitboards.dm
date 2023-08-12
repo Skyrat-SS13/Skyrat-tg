@@ -658,7 +658,7 @@
 		/obj/machinery/vending/imported = "NT Sustenance Supplier", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/mothic = "Nomad Fleet Ration Chit Exchange", //SKYRAT EDIT ADDITION
-		/obj/machinery/vending/imported/tizirian = "Tizirian Imported Delicacies",) //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported/tiziran = "Tiziran Imported Delicacies",) //SKYRAT EDIT ADDITION
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)
 	var/static/list/display_vending_names_paths
@@ -1505,3 +1505,13 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/navbeacon
 	req_components = list()
+
+/obj/item/circuitboard/machine/radioactive_nebula_shielding
+	name = "Radioactive Nebula Shielding"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/nebula_shielding/radiation
+	req_components = list(
+		/datum/stock_part/capacitor = 2,
+		/obj/item/mod/module/rad_protection = 1,
+		/obj/item/stack/sheet/plasteel = 2,
+	)

@@ -25,6 +25,7 @@
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
+	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/mutant
 	icon_greyscale = BODYPART_ICON_MAMMAL

@@ -8,7 +8,6 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
-		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
 		TRAIT_NOCLONELOSS,
@@ -18,15 +17,9 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
-	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
+		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
+		TRAIT_ROBOTIC_DNA_ORGANS,
+		TRAIT_NO_TRANSFORMATION_STING,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -63,8 +56,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
-	burnmod = 1.3 // Every 0.1 is 10% above the base.
-	brutemod = 1.3
 	coldmod = 1.2
 	heatmod = 2 // TWO TIMES DAMAGE FROM BEING TOO HOT?! WHAT?! No wonder lava is literal instant death for us.
 	siemens_coeff = 1.4 // Not more because some shocks will outright crit you, which is very unfun
@@ -75,6 +66,8 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
+	. = ..()
+
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
 		human.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		human.adjust_bodytemperature(13) //We're overheating!!
@@ -128,7 +121,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		target.add_traits(list(TRAIT_MUTANT_COLORS), SPECIES_TRAIT)
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)

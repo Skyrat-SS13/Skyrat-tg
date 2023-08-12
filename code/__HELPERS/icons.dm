@@ -949,7 +949,7 @@ world
 			letter = lowertext(letter)
 
 	var/image/text_image = new(loc = A)
-	text_image.maptext = MAPTEXT_TINY_UNICODE("[letter]")
+	text_image.maptext = MAPTEXT("<span style='font-size: 24pt'>[letter]</span>")
 	text_image.pixel_x = 7
 	text_image.pixel_y = 5
 	qdel(atom_icon)
@@ -1433,3 +1433,16 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		if(scream)
 			stack_trace("Icon Lookup for state: [state] in file [file] failed.")
 		return FALSE
+
+/**
+ * Returns the size of the sprite in tiles.
+ * Takes the icon size and divides it by the world icon size (default 32).
+ * This gives the size of the sprite in tiles.
+ *
+ * @return size of the sprite in tiles
+ */
+/proc/get_size_in_tiles(obj/target)
+	var/icon/size_check = icon(target.icon, target.icon_state)
+	var/size = size_check.Width() / world.icon_size
+
+	return size

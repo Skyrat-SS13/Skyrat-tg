@@ -127,6 +127,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Choker"
 	item_path = /obj/item/clothing/neck/human_petcollar/choker
 
+/datum/loadout_item/neck/thinchoker
+	name = "Thin Choker"
+	item_path = /obj/item/clothing/neck/human_petcollar/thinchoker
+
 /datum/loadout_item/neck/collar
 	name = "Collar"
 	item_path = /obj/item/clothing/neck/human_petcollar

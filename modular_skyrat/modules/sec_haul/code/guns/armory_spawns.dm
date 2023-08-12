@@ -32,7 +32,7 @@
 					var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
 					spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
 					for(var/i in 1 to mags_to_spawn)
-						new spawned_ballistic_gun.mag_type (spawned_box)
+						new spawned_ballistic_gun.spawn_magazine_type (spawned_box)
 
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"

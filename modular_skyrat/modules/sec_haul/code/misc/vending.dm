@@ -45,6 +45,7 @@
 					/obj/item/storage/backpack/satchel/sec = 5,
 					/obj/item/storage/backpack/duffelbag/sec = 5,
 					/obj/item/clothing/under/rank/security/officer = 10,
+					/obj/item/clothing/under/rank/security/officer/skirt = 10,
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
@@ -74,7 +75,7 @@
 	desc = "A vending machine for security and security-related clothing!"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
-	icon = 'icons/obj/vending.dmi'
+	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "secdrobe"
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/redsec = 3,
 					/obj/item/storage/backpack/security/redsec = 3,
