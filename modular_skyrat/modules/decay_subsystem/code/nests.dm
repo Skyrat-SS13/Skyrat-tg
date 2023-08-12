@@ -140,7 +140,7 @@
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
-	monster_types = list(/mob/living/basic/giant_spider/hunter, /mob/living/basic/giant_spider)
+	monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/giant_spider)
 	loot = list(/obj/item/spider_egg = 4)
 
 /obj/item/spider_egg
