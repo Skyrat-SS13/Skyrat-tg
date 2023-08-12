@@ -2,10 +2,7 @@
 "aa" = (
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/light/cold/directional/west,
-/obj/structure/closet/secure_closet{
-	name = "prisoner item locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/prisoner_locker,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/structure/cable,
@@ -16,11 +13,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet{
-	icon_state = "syndicate";
-	name = "MODsuit module locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/mod_locker,
 /obj/item/mod/module/stealth,
 /obj/item/mod/module/projectile_dampener{
 	pixel_x = 8;
@@ -372,11 +365,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet{
-	icon_state = "sec";
-	name = "brig officer gear locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
 /obj/item/clothing/mask/gas/syndicate/ds,
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
@@ -787,11 +776,7 @@
 /obj/item/gun/energy/recharge/kinetic_accelerator,
 /obj/item/storage/bag/ore,
 /obj/item/mining_scanner,
-/obj/structure/closet/secure_closet{
-	icon_state = "mining";
-	name = "mining gear locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/mining_locker,
 /obj/item/storage/belt/mining/alt,
 /obj/item/clothing/under/syndicate/skyrat/overalls{
 	pixel_y = -2
@@ -2415,11 +2400,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "jW" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "science";
-	name = "roboticist gear locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/robotics,
 /obj/item/clothing/suit/hooded/techpriest,
 /obj/item/clothing/suit/toggle/labcoat/roboticist{
 	pixel_y = 3
@@ -2676,11 +2657,7 @@
 /obj/item/card/id/advanced/chameleon/black,
 /obj/item/card/id/advanced/chameleon/black,
 /obj/item/card/id/advanced/chameleon/black,
-/obj/structure/closet/secure_closet{
-	icon_state = "hop";
-	name = "\proper corporate liaison's locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/cl_locker,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
@@ -3804,15 +3781,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"qa" = (
-/obj/machinery/griddle,
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/turf/open/floor/iron/kitchen{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "qc" = (
 /obj/structure/bed/double{
 	dir = 1
@@ -4118,9 +4086,7 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "rj" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
@@ -4476,10 +4442,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "sZ" = (
-/obj/machinery/oven,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/machinery/oven/range,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4977,11 +4943,7 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "vx" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "cap";
-	name = "\proper station admiral's locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/sa_locker,
 /obj/item/clothing/head/hats/hos/cap/syndicate,
 /obj/item/clothing/head/hats/hos/beret/syndicate,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
@@ -5520,10 +5482,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "yL" = (
 /obj/effect/turf_decal/siding/dark,
-/obj/structure/closet/secure_closet{
-	name = "prisoner item locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/prisoner_locker,
 /obj/item/restraints/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -5995,13 +5954,7 @@
 	pixel_x = -9;
 	pixel_y = -5
 	},
-/obj/structure/closet/secure_closet{
-	anchored = 1;
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
-	icon_state = "riot";
-	name = "armory munitions locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/armory_gear_locker,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
@@ -6049,9 +6002,7 @@
 	name = "Interrogation Room shutters control";
 	req_access = list("syndicate")
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "AX" = (
@@ -6394,6 +6345,10 @@
 "CH" = (
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
+"CJ" = (
+/obj/machinery/oven/range,
+/turf/open/floor/iron/white/textured_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "CS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -7008,9 +6963,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "FD" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
+/obj/item/kirbyplants/organic/plant21,
 /obj/machinery/button/door/directional/north{
 	desc = "Keep out the paperwork.";
 	id = "scorpliaison";
@@ -7050,11 +7003,7 @@
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "FO" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "med_secure";
-	name = "medical gear locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/medical,
 /obj/item/clothing/gloves/latex/nitrile/ntrauma,
 /obj/item/clothing/suit/toggle/labcoat/interdyne,
 /obj/item/clothing/suit/toggle/labcoat/interdyne,
@@ -7652,9 +7601,7 @@
 /obj/structure/chair/sofa/bench/corner{
 	dir = 1
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-18"
-	},
+/obj/item/kirbyplants/organic/plant18,
 /obj/machinery/light/cold/directional/south,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/syndicate_access,
@@ -7725,7 +7672,7 @@
 	icon_state = "box_1";
 	state = 2
 	},
-/obj/item/disk/ammo_workbench/lethal,
+/obj/item/disk/ammo_workbench/advanced,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
@@ -7847,11 +7794,7 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "JD" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "warden";
-	name = "master at arms' locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/maa_locker,
 /obj/item/storage/belt/security/full,
 /obj/item/radio/headset/interdyne,
 /obj/item/clothing/suit/armor/vest/warden/syndicate,
@@ -8224,10 +8167,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
-"Lr" = (
-/obj/machinery/oven,
-/turf/open/floor/iron/white/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ls" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 4
@@ -8241,12 +8180,7 @@
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet{
-	icon_door = "eng_weld";
-	icon_state = "eng";
-	name = "welding supplies locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/electrical_supplies,
 /obj/item/weldingtool/largetank{
 	pixel_y = 4
 	},
@@ -8314,13 +8248,7 @@
 	pixel_x = 6;
 	pixel_y = -11
 	},
-/obj/structure/closet/secure_closet{
-	anchored = 1;
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
-	icon_state = "riot";
-	name = "armory gear locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/armory_gear_locker,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Lw" = (
@@ -8859,11 +8787,7 @@
 	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
 	name = "brig officer armband"
 	},
-/obj/structure/closet/secure_closet{
-	icon_state = "sec";
-	name = "brig officer gear locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
 /obj/item/clothing/mask/gas/syndicate/ds,
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
@@ -9068,11 +8992,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet{
-	icon_state = "sec";
-	name = "brig officer gear locker";
-	req_access = list("syndicate_leader")
-	},
+/obj/structure/closet/secure_closet/interdynefob/brig_officer_locker,
 /obj/item/clothing/mask/gas/syndicate/ds,
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
@@ -9275,11 +9195,7 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/north,
-/obj/structure/closet/secure_closet{
-	icon_state = "science";
-	name = "scientist gear locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/science_gear,
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate,
 /obj/item/clothing/suit/hooded/wintercoat/science,
 /obj/item/clothing/suit/toggle/labcoat/science,
@@ -9299,6 +9215,15 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
+"PB" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/griddle,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "PM" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/purple/corner{
@@ -9602,9 +9527,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "QM" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-10"
-	},
+/obj/item/kirbyplants/organic/plant10,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
 	},
@@ -10013,7 +9936,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/machinery/modular_computer/console/preset/curator,
+/obj/machinery/modular_computer/preset/curator,
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "Sx" = (
@@ -10294,11 +10217,7 @@
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate,
 /obj/item/clothing/suit/jacket/gorlex_harness,
 /obj/item/clothing/suit/hazardvest,
-/obj/structure/closet/secure_closet{
-	icon_state = "eng_secure";
-	name = "engine technician gear locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/engie_locker,
 /obj/item/clothing/accessory/armband/engine{
 	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
 	name = "engine technician armband"
@@ -11162,12 +11081,7 @@
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet{
-	icon_door = "eng_elec";
-	icon_state = "eng";
-	name = "electrical supplies locker";
-	req_access = list("syndicate")
-	},
+/obj/structure/closet/secure_closet/interdynefob/electrical_supplies,
 /obj/item/electronics/airlock{
 	pixel_x = 5;
 	pixel_y = -7
@@ -11770,9 +11684,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-22"
-	},
+/obj/item/kirbyplants/organic/plant22,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -12232,7 +12144,7 @@ BN
 PP
 lJ
 kF
-Lr
+CJ
 dI
 ct
 lb
@@ -14298,7 +14210,7 @@ xk
 Od
 Ui
 pO
-sZ
+PB
 Cf
 tT
 SG
@@ -14353,7 +14265,7 @@ bw
 bw
 bw
 bw
-qa
+sZ
 Cf
 Cf
 aC

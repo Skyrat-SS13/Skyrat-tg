@@ -10,7 +10,7 @@
 	. = ..()
 
 	if(polarizer_id_on_spawn)
-		AddComponent(/datum/component/polarization_controller, polarizer_id_on_spawn)
+		AddComponent(/datum/component/polarization_controller, polarizer_id = polarizer_id_on_spawn)
 
 
 /obj/effect/spawner/structure/window

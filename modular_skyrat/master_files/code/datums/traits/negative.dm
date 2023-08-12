@@ -46,16 +46,6 @@
 	var/mob/living/carbon/human/user = quirk_holder
 	user?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/quirk/ashwalkertalons
-	name = "Chunky Fingers"
-	desc = "Your digits are thick and tough and unable to use modular computers including tablets, certain devices like laser pointers, and non-adapted firearms."
-	gain_text = span_notice("Your fingers feel thicker and slightly less dextrous. You expect you'll have a difficult time using computers, certain small devices and firearms.")
-	lose_text = span_notice("Your digits feel lithe and capable once more.")
-	medical_record_text = "Patient's digits are thick and lack the dexterity for operating some small devices, computers and non-adapted firearms."
-	value = -8
-	mob_trait = TRAIT_CHUNKYFINGERS
-	icon = FA_ICON_HAND_MIDDLE_FINGER
-
 /datum/quirk/no_guns
 	name = "No Guns"
 	desc = "For whatever reason, you are unable to use guns. The reasoning may vary, but is up to you to decide."

@@ -56,6 +56,8 @@
 		handle_magazine(user, A)
 		return
 	if (istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/ammo_box))
+		if (must_hold_to_load && !check_if_held(user))
+			return
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())

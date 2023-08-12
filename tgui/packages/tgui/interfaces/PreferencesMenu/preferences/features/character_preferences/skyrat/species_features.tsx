@@ -858,3 +858,16 @@ export const vox_bodycolor: Feature<string> = {
     return <FeatureDropdownInput buttons {...props} />;
   },
 };
+
+export const pod_hair_color: Feature<string[]> = {
+  name: 'Floral Hair Color',
+  description:
+    "If your podperson hair is greyscale enabled, then it'll take on this color.",
+  component: FeatureTriColorInput,
+};
+
+export const pod_hair_emissive: Feature<boolean> = {
+  name: 'Floral Hair Emissive',
+  description: 'Want your flowers to glow in the dark?',
+  component: CheckboxInput,
+};

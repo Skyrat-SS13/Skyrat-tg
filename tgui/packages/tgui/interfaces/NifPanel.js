@@ -107,7 +107,9 @@ export const NifPanel = (props, context) => {
                           </TableRow>
                         </Table>
                         <br />
-                        <BlockQuote>{nifsoft.desc}</BlockQuote>
+                        <BlockQuote preserveWhitespace>
+                          {nifsoft.desc}
+                        </BlockQuote>
                         <box>
                           <br />
                           <Button.Confirm

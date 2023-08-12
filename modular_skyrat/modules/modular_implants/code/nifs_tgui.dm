@@ -26,6 +26,11 @@
 /obj/item/organ/internal/cyberimp/brain/nif/ui_state(mob/user)
 	return GLOB.conscious_state
 
+/obj/item/organ/internal/cyberimp/brain/nif/ui_status(mob/user)
+	if(user == linked_mob)
+		return UI_INTERACTIVE
+	return UI_CLOSE
+
 /obj/item/organ/internal/cyberimp/brain/nif/ui_static_data(mob/user)
 	var/list/data = list()
 

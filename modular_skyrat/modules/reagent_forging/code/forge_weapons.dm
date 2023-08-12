@@ -174,7 +174,7 @@
 	worn_icon_state = "buckler_back"
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
-	custom_materials = list(/datum/material/iron=1000)
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT)
 	resistance_flags = FIRE_PROOF
 	block_chance = 30
 	transparent = FALSE

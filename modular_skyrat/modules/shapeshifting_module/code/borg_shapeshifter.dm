@@ -28,7 +28,7 @@
 	var/disguise_special_light_key
 	var/mob/listeningTo
 	var/list/signalCache = list( // list here all signals that should break the camouflage
-			COMSIG_PARENT_ATTACKBY,
+			COMSIG_ATOM_ATTACKBY,
 			COMSIG_ATOM_ATTACK_HAND,
 			COMSIG_MOVABLE_IMPACT_ZONE,
 			COMSIG_ATOM_BULLET_ACT,

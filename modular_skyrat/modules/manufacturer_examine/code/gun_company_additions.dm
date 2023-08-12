@@ -43,7 +43,7 @@
 /obj/item/gun/ballistic/shotgun/toy/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_DONK)
 
-/obj/item/gun/ballistic/rifle/boltaction/quartermaster/give_manufacturer_examine()
+/obj/item/gun/ballistic/rifle/boltaction/sporterized/give_manufacturer_examine()
 	return
 
 /obj/item/gun/ballistic/rifle/boltaction/prime/give_manufacturer_examine()

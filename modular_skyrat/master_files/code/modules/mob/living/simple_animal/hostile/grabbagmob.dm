@@ -890,7 +890,6 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
 	status_flags = 0
-	var/projectile_deflect_chance = 0
 
 /mob/living/simple_animal/hostile/vox/ranged
 	name = "Vox Gunman"

@@ -61,9 +61,31 @@
 /*
 *	9x25mm Mk.12
 */
+
+/obj/item/ammo_casing/c9mm
+	name = "9x25mm Mk.12 bullet casing"
+	desc = "A modern 9x25mm Mk.12 bullet casing."
+
+/obj/item/ammo_casing/c9mm/ap
+	name = "9x25mm Mk.12 armor-piercing bullet casing"
+	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires an armor-piercing projectile."
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c9mm/hp
+	name = "9x25mm Mk.12 hollow-point bullet casing"
+	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires a hollow-point projectile. Very lethal to unarmored opponents."
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c9mm/fire
+	name = "9x25mm Mk.12 incendiary bullet casing"
+	desc = "A modern 9x25mm Mk.12 bullet casing. This incendiary round leaves a trail of fire and ignites its target."
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
+
 /obj/item/ammo_casing/c9mm/ihdf
 	name = "9x25mm Mk.12 IHDF casing"
-	desc = "A modern 9x25mm Mk.12 bullet casing. 'Intelligent High-Impact Dispersal Foam', or in layman's terms, a really strong donk soft riot dart."
+	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires a bullet of 'Intelligent High-Impact Dispersal Foam', which is best compared to a riot-grade foam dart."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	projectile_type = /obj/projectile/bullet/c9mm/ihdf
@@ -101,6 +123,17 @@
 /*
 *	10mm Auto
 */
+
+/obj/item/ammo_casing/c10mm/ap
+	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/ammo_casing/c10mm/hp
+	advanced_print_req = TRUE
+
+/obj/item/ammo_casing/c10mm/fire
+	advanced_print_req = TRUE
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/ammo_casing/c10mm/rubber
 	name = "10mm rubber bullet casing"
@@ -186,6 +219,7 @@
 	icon_state = "sh-casing"
 	caliber = CALIBER_12MM
 	projectile_type = /obj/projectile/bullet/b12mm/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/b12mm/hp
 	name = "12mm hollowpoint bullet"
@@ -275,6 +309,7 @@
 	icon_state = "sh-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/b473/hp
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/b473/hp
 	name = "4.73x33mm JHP bullet"

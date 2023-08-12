@@ -1,5 +1,5 @@
 /// How many seconds between each fuel depletion tick ("use" proc)
-#define WELDER_FUEL_BURN_INTERVAL 26
+#define WELDER_FUEL_BURN_INTERVAL 5
 /obj/item/weldingtool
 	name = "welding tool"
 	desc = "A standard edition welder provided by Nanotrasen."
@@ -223,7 +223,6 @@
 
 	if(get_fuel() >= used)
 		reagents.remove_reagent(/datum/reagent/fuel, used)
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		check_fuel()
 		return TRUE
 	else
@@ -237,7 +236,6 @@
 	. = welding
 	welding = new_value
 	set_light_on(welding)
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 
 /// Turns off the welder if there is no more fuel (does this really need to be its own proc?)
@@ -333,7 +331,7 @@
 			to_chat(user, span_warning("You need one rod to start building a flamethrower!"))
 
 /obj/item/weldingtool/ignition_effect(atom/ignitable_atom, mob/user)
-	if(use_tool(ignitable_atom, user, 0, amount=1))
+	if(use_tool(ignitable_atom, user, 0))
 		return span_notice("[user] casually lights [ignitable_atom] with [src], what a badass.")
 	else
 		return ""
@@ -396,7 +394,6 @@
 /obj/item/weldingtool/abductor/process()
 	if(get_fuel() <= max_fuel)
 		reagents.add_reagent(/datum/reagent/fuel, 1)
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 	..()
 
 /obj/item/weldingtool/hugetank
@@ -427,7 +424,6 @@
 	if(get_fuel() < max_fuel && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10
 		reagents.add_reagent(/datum/reagent/fuel, 1)
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 
 #undef WELDER_FUEL_BURN_INTERVAL

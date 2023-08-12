@@ -1,6 +1,6 @@
 /obj/item/organ/external/genital
 	color = "#fcccb3"
-	organ_flags = ORGAN_EDIBLE | ORGAN_NO_DISMEMBERMENT
+	organ_flags = ORGAN_NO_DISMEMBERMENT
 	///Size value of the genital, needs to be translated to proper lengths/diameters/cups
 	var/genital_size = 1
 	///Sprite name of the genital, it's what shows up on character creation

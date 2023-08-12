@@ -18,17 +18,17 @@
 	one_per_turf = set_turf_limit
 	pixel_shift = set_shift
 	//now lets register the signals
-	RegisterSignal(atom_parent, COMSIG_PARENT_ATTACKBY, PROC_REF(check_attack))
-	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, PROC_REF(check_examine))
+	RegisterSignal(atom_parent, COMSIG_ATOM_ATTACKBY, PROC_REF(check_attack))
+	RegisterSignal(atom_parent, COMSIG_ATOM_EXAMINE, PROC_REF(check_examine))
 
 /datum/component/simple_farm/Destroy(force, silent)
 	//lets not hard del
-	UnregisterSignal(atom_parent, list(COMSIG_PARENT_ATTACKBY, COMSIG_PARENT_EXAMINE))
+	UnregisterSignal(atom_parent, list(COMSIG_ATOM_ATTACKBY, COMSIG_ATOM_EXAMINE))
 	atom_parent = null
 	return ..()
 
 /**
- * check_attack is meant to listen for the comsig_parent_attackby signal, where it essentially functions like the attackby proc
+ * check_attack is meant to listen for the COMSIG_ATOM_ATTACKBY signal, where it essentially functions like the attackby proc
  */
 /datum/component/simple_farm/proc/check_attack(datum/source, obj/item/attacking_item, mob/user)
 	SIGNAL_HANDLER
@@ -58,7 +58,7 @@
 		locate_farm.late_setup()
 
 /**
- * check_examine is meant to listen for the comsig_parent_examine signal, where it will put additional information in the examine
+ * check_examine is meant to listen for the COMSIG_ATOM_EXAMINE signal, where it will put additional information in the examine
  */
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
 	if(allow_plant)

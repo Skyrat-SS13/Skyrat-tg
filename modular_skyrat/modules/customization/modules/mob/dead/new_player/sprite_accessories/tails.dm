@@ -163,10 +163,6 @@
 	icon_state = "fennec"
 	fluffy = TRUE
 
-/datum/sprite_accessory/tails/mammal/wagging/fish
-	name = "Fish"
-	icon_state = "fish"
-
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
@@ -313,6 +309,10 @@
 	name = "Shade (Striped)"
 	icon_state = "shadekinlongstriped_large"
 
+/datum/sprite_accessory/tails/mammal/wagging/akula/akula
+	name = "Akula"
+	icon_state = "akula"
+
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
@@ -320,6 +320,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark_no_fin
 	name = "Shark (No Fin)"
 	icon_state = "sharknofin"
+
+/datum/sprite_accessory/tails/mammal/wagging/akula/fish
+	name = "Fish"
+	icon_state = "fish"
 
 /datum/sprite_accessory/tails/mammal/wagging/shepherd
 	name = "Shepherd"

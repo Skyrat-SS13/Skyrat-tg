@@ -70,6 +70,7 @@
 	desc = "A 5.6x40mm match bullet casing."
 	special_desc = "MATCH: Ricochets everywhere. Like crazy."
 	projectile_type = /obj/projectile/bullet/a762x39/ricochet
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/a762x39/ricochet
 	name = "5.6mm match bullet"
@@ -89,6 +90,8 @@
 	desc = "A 5.6x40mm incendiary bullet casing."
 	special_desc = "TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame."
 	projectile_type = /obj/projectile/bullet/incendiary/a762x39
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/incendiary/a762x39
 	name = "5.6mm incendiary bullet"
@@ -104,6 +107,8 @@
 	desc = "A 5.6x40mm armor-piercing bullet casing."
 	special_desc = "ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	projectile_type = /obj/projectile/bullet/a762x39
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	advanced_print_req = TRUE
 
 /obj/projectile/bullet/a762x39/ap
 	name = "5.6mm armor-piercing bullet"
@@ -115,6 +120,7 @@
 	name = "5.6x40mm ion bullet casing"
 	desc = "A 5.6x40mm ion bullet casing."
 	special_desc = "EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely."
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.5)
 	projectile_type = /obj/projectile/bullet/a762x39/emp
 
 /obj/projectile/bullet/a762x39/emp

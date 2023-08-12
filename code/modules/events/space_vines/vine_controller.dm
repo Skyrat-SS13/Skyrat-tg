@@ -1,5 +1,3 @@
-/// SKYRAT EDIT REMOVAL BEGIN
-/*
 ///A list of the possible mutations for a vine
 GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 
@@ -160,5 +158,3 @@ GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 		if((FACTION_VINES in victim.faction) || (FACTION_PLANTS in victim.faction))
 			return TRUE
 	return FALSE
-*/
-/// SKYRAT EDIT REMOVAL END

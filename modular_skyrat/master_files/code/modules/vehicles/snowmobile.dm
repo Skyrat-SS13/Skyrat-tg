@@ -25,7 +25,14 @@
 /datum/component/riding/vehicle/atv/snowmobile/snowcurity
 	keytype = /obj/item/key/security
 
-/obj/vehicle/ridden/atv/snowmobile/snowcurity/proc/make_ridable()
+// This should eventually be fixed upstream by adding make_ridable to the base ATV definition
+// or, ideally, to /obj/vehicle/ridden so that it's not duplicated all over the codebase
+// for wheelchairs, scooters, and snowmobiles alike.
+/obj/vehicle/ridden/atv/snowmobile/snowcurity/Initialize()
+	. = ..()
+	// We shouldn't have the ridable component added while still in Initialize,
+	// so this is hopefully safe to do.
+	RemoveElement(/datum/element/ridable)
 	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/atv/snowmobile/snowcurity)
 
 

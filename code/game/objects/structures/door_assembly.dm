@@ -60,7 +60,7 @@
 		created_name = t
 
 	else if((W.tool_behaviour == TOOL_WELDER) && (mineral || glass || !anchored ))
-		if(!W.tool_start_check(user, amount=0))
+		if(!W.tool_start_check(user, amount=1))
 			return
 
 		if(mineral)
@@ -261,7 +261,7 @@
 	door.setDir(dir)
 	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOORS
 	if(door.multi_tile)
-		door.SetBounds()
+		door.set_bounds()
 	//SKYRAT EDIT END
 	door.unres_sides = electronics.unres_sides
 	//door.req_access = req_access

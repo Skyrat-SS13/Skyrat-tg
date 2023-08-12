@@ -298,10 +298,10 @@
 	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
-	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(mod, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 
 /obj/item/mod/module/auto_doc/on_uninstall(deleting)
-	UnregisterSignal(mod, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(mod, COMSIG_ATOM_ATTACKBY)
 
 /obj/item/mod/module/auto_doc/attackby(obj/item/attacking_item, mob/user, params)
 	if(charge_boost(attacking_item, user))

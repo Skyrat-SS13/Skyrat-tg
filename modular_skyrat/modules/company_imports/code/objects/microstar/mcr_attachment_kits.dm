@@ -5,7 +5,7 @@
 
 /obj/item/storage/secure/briefcase/white/mcr_loadout/hellfire/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/microfusion_gun_attachment/hellfire = 1,
+		/obj/item/microfusion_gun_attachment/barrel/hellfire = 1,
 		/obj/item/microfusion_gun_attachment/rail = 1,
 		/obj/item/microfusion_gun_attachment/grip = 1,
 		)
@@ -15,7 +15,7 @@
 
 /obj/item/storage/secure/briefcase/white/mcr_loadout/scatter/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/microfusion_gun_attachment/scatter = 1,
+		/obj/item/microfusion_gun_attachment/barrel/scatter = 1,
 		/obj/item/microfusion_gun_attachment/rail = 1,
 		/obj/item/microfusion_gun_attachment/grip = 1,
 		)
@@ -25,7 +25,7 @@
 
 /obj/item/storage/secure/briefcase/white/mcr_loadout/lance/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/microfusion_gun_attachment/lance = 1,
+		/obj/item/microfusion_gun_attachment/barrel/lance = 1,
 		/obj/item/microfusion_gun_attachment/scope = 1,
 		/obj/item/microfusion_gun_attachment/heatsink = 1,
 		)
@@ -35,7 +35,7 @@
 
 /obj/item/storage/secure/briefcase/white/mcr_loadout/repeater/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/microfusion_gun_attachment/repeater = 1,
+		/obj/item/microfusion_gun_attachment/barrel/repeater = 1,
 		/obj/item/microfusion_gun_attachment/rail = 1,
 		/obj/item/microfusion_gun_attachment/heatsink = 1,
 		)
@@ -48,7 +48,7 @@
 		/obj/item/microfusion_gun_attachment/suppressor = 1,
 		/obj/item/microfusion_gun_attachment/rail = 1,
 		/obj/item/microfusion_gun_attachment/grip = 1,
-		/obj/item/microfusion_gun_attachment/black_camo = 1,
+		/obj/item/microfusion_gun_attachment/camo = 1,
 		)
 	generate_items_inside(items_inside,src)
 

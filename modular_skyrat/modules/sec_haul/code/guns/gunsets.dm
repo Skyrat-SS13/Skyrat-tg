@@ -404,7 +404,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 
 /*
-*	SEC MEDIC
+*	OLD SECMED SIDEARM
 */
 
 /obj/item/storage/box/gunset/firefly

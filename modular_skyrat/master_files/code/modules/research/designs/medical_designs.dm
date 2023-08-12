@@ -4,7 +4,7 @@
 	id = "cybernetic_tongue"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
-	materials = list(/datum/material/iron = 250, /datum/material/glass = 300, /datum/material/silver = 250)
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 2, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 2)
 	build_path = /obj/item/organ/internal/tongue/cybernetic
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1

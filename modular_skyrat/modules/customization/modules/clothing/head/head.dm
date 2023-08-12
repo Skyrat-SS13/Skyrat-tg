@@ -62,6 +62,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "policeofficercap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/head_helmet
 
 /obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
 	name = "sol police chief cap"
@@ -78,6 +79,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "policetrafficcap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/head_helmet
 
 /obj/item/clothing/head/colourable_flatcap
 	name = "colourable flat cap"
@@ -126,6 +128,8 @@
 	name = "head of security's naval officer cap"
 	desc = "A tar black naval cap with a silver disk in the center."
 	icon_state = "imphos"
+	armor_type = /datum/armor/hats_hos
+	
 /obj/item/clothing/head/hats/imperial/cmo
 	name = "chief medical officer's naval cap"
 	desc = "A teal naval cap with a silver disk in the center."

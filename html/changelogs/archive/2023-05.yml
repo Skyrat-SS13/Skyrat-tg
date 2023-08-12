@@ -1133,3 +1133,47 @@
   - bugfix: Several elevators which should not have played music now do not.
   axietheaxolotl / viro:
   - image: new medkit sprites, again.
+2023-05-30:
+  Guillaume Prata:
+  - rscadd: Air alarms will now talk about their atmospheric problems (low/high pressure/temperature)
+      so players can understand what is the room's issue easier.
+  Jolly:
+  - bugfix: '[MetaStation] - One of the chem heaters in the pharmacy is no longer
+      nudged and awkwardly four pixels to the right.'
+  - bugfix: '[TramStation] - The chem heater in the Xenobiology lab was replaced with
+      the proper one that every other station uses.'
+  - image: The chem heater sprite was nudged a SINGLE pixel to the right. This should,
+      hopefully, make them appear more centered.
+  - code_imp: The code for posters internally has been tweaked slightly. If you see
+      posters floating in hallways, please report them ASAP!!
+  Seven:
+  - bugfix: Fixes epipens, pillbottles, and test tubes missing texture when put into
+      suit storage
+  - bugfix: A paper hat no longer appears on your head when putting paper into suit
+      storage
+  - rscadd: The paper hat is now a craftable item
+  - image: Pills and patches are no longer visible on a person when put into suit
+      storage
+  SkyratBot:
+  - balance: Newly created areas in Icemoon and Space are no longer valid Cult areas
+      for Runes and such.
+  - bugfix: stabilized metal slime extract properly increments stacks so that it's
+      appearance & weight are updated correctly & is picked up by material sniffers.
+  - bugfix: Adds a drone dispenser to Tramstation.
+  - bugfix: The stacking machine on Tramstation no longer has incorrect input and
+      output directions at roundstart.
+  - config: Drone dispensers are now listed as required map items for passing unit
+      tests. If one is not present on your map, it will fail the test.
+  - qol: Solar control console now shows power generation history
+2023-05-31:
+  Guillaume Prata:
+  - bugfix: Air Alarms will properly shut up when atmos is fixed.
+  SkyratBot:
+  - qol: dead potted plant can be revived with a seed
+  - rscadd: '[Birdshot], [Tram] Added a lightswitch to warehouse.'
+  - rscadd: '[Birdshot], [Deltastation], [Metastation], [Tram] and [Icebox] warehouses
+      now have lights off roundstart.'
+  - bugfix: '[Metastation] Warehouse now has lights. Finally.'
+  SomeRandomOwl:
+  - sound: reduced the file size as well as shortened the length for the suppressed
+      Mp5 firing sound

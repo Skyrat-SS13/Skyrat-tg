@@ -517,7 +517,10 @@
 			return FALSE
 
 		visible_message(span_notice("[src] performs CPR on [target.name]!"), span_notice("You perform CPR on [target.name]."))
-		add_mood_event("saved_life", /datum/mood_event/saved_life)
+		if(HAS_TRAIT(src, TRAIT_MORBID))
+			add_mood_event("morbid_saved_life", /datum/mood_event/morbid_saved_life)
+		else
+			add_mood_event("saved_life", /datum/mood_event/saved_life)
 		log_combat(src, target, "CPRed")
 
 		if (HAS_TRAIT(target, TRAIT_NOBREATH))
@@ -775,6 +778,7 @@
 			HUMAN_HEIGHT_SHORT,
 			HUMAN_HEIGHT_MEDIUM,
 			HUMAN_HEIGHT_TALL,
+			HUMAN_HEIGHT_TALLER,
 			HUMAN_HEIGHT_TALLEST
 		)
 		if(!(var_value in heights))

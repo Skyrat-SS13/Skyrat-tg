@@ -30,10 +30,12 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Quadruple Amputee", "Paraplegic"),
 		list("Quadruple Amputee", "Frail"),
 		list("Mute", "Social Anxiety"),
+		list("Mute", "Soft-Spoken"),
+		list("Stormtrooper Aim", "Big Hands"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
-		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
+		list("No Guns", "Big Hands", "Stormtrooper Aim"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
 	)

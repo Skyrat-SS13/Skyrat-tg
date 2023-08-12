@@ -3,10 +3,6 @@
 	desc = "An Armadyne peacekeeper equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
-	icon_state = "sec"
-	icon_deny = "sec-deny"
-	light_mask = "sec-light-mask"
-	req_access = list(ACCESS_SECURITY)
 	products = list(
 		/obj/item/restraints/handcuffs = 8,
 		/obj/item/restraints/handcuffs/cable/zipties = 12,
@@ -16,10 +12,6 @@
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 6,
 		/obj/item/restraints/legcuffs/bola/energy = 10,
-	)
-	contraband = list(
-		/obj/item/clothing/glasses/sunglasses = 2,
-		/obj/item/storage/fancy/donut_box = 2,
 	)
 	premium = list(
 		/obj/item/storage/belt/security/webbing = 4,
@@ -32,18 +24,6 @@
 		/obj/item/watertank/pepperspray = 2
 	)
 	refill_canister = /obj/item/vending_refill/security_peacekeeper
-	default_price = PAYCHECK_CREW
-	extra_price = PAYCHECK_COMMAND * 1.5
-	payment_department = ACCOUNT_SEC
-
-/obj/machinery/vending/security/pre_throw(obj/item/I)
-	if(istype(I, /obj/item/grenade))
-		var/obj/item/grenade/G = I
-		G.arm_grenade()
-	else if(istype(I, /obj/item/flashlight))
-		var/obj/item/flashlight/F = I
-		F.on = TRUE
-		F.update_brightness()
 
 /obj/item/vending_refill/security_peacekeeper
 	icon_state = "refill_sec"

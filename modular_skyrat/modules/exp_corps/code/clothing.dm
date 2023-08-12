@@ -151,9 +151,9 @@
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
 	desc = "An armored vest that provides okay protection against most types of damage."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "exp_corps"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
 	armor_type = /datum/armor/vest_expeditionary_corps
 	cold_protection = CHEST|GROIN|ARMS

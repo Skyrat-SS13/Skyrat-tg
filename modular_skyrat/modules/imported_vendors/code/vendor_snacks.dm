@@ -19,7 +19,7 @@
 	desc = "The leftovers of what was likely a great snack in a past time."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
-	custom_materials = list(/datum/material/plastic = 1000)
+	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /*
 *	"Yangyu" Snacks

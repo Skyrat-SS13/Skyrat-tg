@@ -16,7 +16,7 @@
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/vitezstvi/ammo_bench
-	item_type = /obj/item/disk/ammo_workbench/lethal
+	item_type = /obj/item/disk/ammo_workbench/advanced
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 20
 	interest_required = COMPANY_HIGH_INTEREST

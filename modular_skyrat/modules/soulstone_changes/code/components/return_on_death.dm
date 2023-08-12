@@ -7,7 +7,7 @@
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(return_to_old_body))
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(return_to_old_body))
+	RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(return_to_old_body))
 	sourcemob = source
 
 /datum/component/return_on_death/proc/return_to_old_body()
@@ -34,4 +34,4 @@
 
 
 /datum/component/return_on_death/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING))
+	UnregisterSignal(parent, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING))

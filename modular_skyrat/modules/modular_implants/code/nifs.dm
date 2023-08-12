@@ -138,7 +138,6 @@
 	linked_mob = insertee
 	stored_ckey = linked_mob.ckey
 
-	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
@@ -327,7 +326,7 @@
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
-	loaded_nifsoft.parent_nif = src
+	loaded_nifsoft.parent_nif = WEAKREF(src)
 	loaded_nifsoft.linked_mob = linked_mob
 	rewards_points += (loaded_nifsoft.rewards_points_rate * loaded_nifsoft.purchase_price)
 
@@ -449,7 +448,7 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, .proc/add_examine)
 
 /datum/component/nif_examine/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
@@ -503,6 +502,7 @@
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
+	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END

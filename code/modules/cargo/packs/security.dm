@@ -225,6 +225,8 @@
 	contains = list(/obj/item/gun/ballistic/shotgun/automatic/combat = 3,
 					/obj/item/storage/belt/bandolier = 3)
 	crate_name = "combat shotguns crate"
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/security/armory/dragnet
 	name = "DRAGnet Crate"
@@ -233,7 +235,9 @@
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/gun/energy/e_gun/dragnet = 3)
 	crate_name = "\improper DRAGnet crate"
-
+	
+// SKYRAT EDIT REMOVAL BEGIN - CARGO ARMAMENTS
+/*
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains two Energy Guns, capable of firing both nonlethal and lethal \

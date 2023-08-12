@@ -94,7 +94,6 @@
 	pellets = 6
 	variance = 20
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2)
-	harmful = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "custom incapacitating shot"

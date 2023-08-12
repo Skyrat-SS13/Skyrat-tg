@@ -36,6 +36,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = null
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/attack(mob/M, mob/living/user)
 	if(istype(M, /mob/living/carbon) && !reagents.total_volume && user.combat_mode && user.zone_selected == BODY_ZONE_HEAD)

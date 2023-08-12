@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	if(initial(outfit_important_for_life.neck))
 		.. ()
 		return TRUE
-		
+
 /datum/loadout_item/neck/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(override_items == LOADOUT_OVERRIDE_BACKPACK)
 		if(outfit.neck)
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	item_path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/neck/maid
 	name = "Maid Neck Cover"

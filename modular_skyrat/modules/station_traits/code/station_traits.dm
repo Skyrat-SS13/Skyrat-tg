@@ -20,4 +20,4 @@
 	log_game("[src.name] attempted to run, but was disabled.")
 
 /datum/station_trait/birthday
-	weight = 10
+	weight = 3

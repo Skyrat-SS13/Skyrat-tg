@@ -112,42 +112,6 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Greatcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
-			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
-			RESKIN_WORN_ICON_STATE = "hos"
-		),
-		"Trenchcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
-			RESKIN_ICON_STATE = "hostrench",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
-			RESKIN_WORN_ICON_STATE = "hostrench"
-		),
-		"Navy Blue Jacket" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hosbluejacket",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hosbluejacket"
-		),
-		"Trenchcloak" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "trenchcloak",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "trenchcloak"
-		),
-		"Black" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hos_black",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_black",
-			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /datum/armor/armor_hos
 	melee = 30
@@ -179,7 +143,6 @@
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
-	current_skin = "hosformal"	//SKYRAT EDIT ADDITION - prevents reskinning (but not toggling!)
 
 /obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
 	. = ..()
@@ -206,15 +169,15 @@
 			RESKIN_WORN_ICON_STATE = "warden_alt"
 		),
 		"Standard" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "vest_warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "vest_warden",
 		),
 		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "peacekeeper_trench_warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_warden",
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)

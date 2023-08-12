@@ -37,8 +37,8 @@
 	mob_to_register.update_appearance()
 	var/datum/beam/created_beam = Beam(mob_to_register, icon_state = "red_lightning", time = 10 MINUTES, maxdistance = shield_range)
 	shielded_mobs[mob_to_register] = created_beam
-	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, PROC_REF(beam_died))
-	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, PROC_REF(mob_died))
+	RegisterSignal(created_beam, COMSIG_QDELETING, PROC_REF(beam_died))
+	RegisterSignal(mob_to_register, COMSIG_QDELETING, PROC_REF(mob_died))
 
 /obj/machinery/door/puzzle/keycard/xen/freeman_boss_entry
 	name = "entry door"

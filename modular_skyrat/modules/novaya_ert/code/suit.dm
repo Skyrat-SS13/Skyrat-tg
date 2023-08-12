@@ -1,7 +1,3 @@
-#define NRI_ARMOR_POWEROFF list(25, 25, 25, 25, 25, 25, 30, 30, 30, 10)
-
-#define NRI_ARMOR_POWERON list(40, 50, 30, 40, 60, 75, 50, 50, 50, 40)
-
 #define NRI_POWERUSE_HIT 100
 #define NRI_POWERUSE_HEAL 150
 
@@ -15,8 +11,8 @@
 /obj/item/clothing/suit/armor/vest/russian/nri
 	name = "\improper B42M combined armor vest"
 	desc = "A B42M combined body armor designed to protect the torso from bullets, shrapnel and blunt force. This vest performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the bodies) of insurgents."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_green_armor"
 	armor_type = /datum/armor/russian_nri
@@ -47,8 +43,8 @@
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_heavy_armor"
 	armor_type = /datum/armor/heavy_nri
@@ -72,9 +68,8 @@
 /obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper REDUT armor system"
 	desc = "A strong set of full-body armor designed for harsh environments. After the NRI withdrew them, these models found their way onto the black market and have been rarely used by freelance mercenaries and planetary militias ever since, because of their relatively low cost."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "russian_heavy_armor_old"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	armor_type = /datum/armor/nri_old
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
@@ -109,45 +104,10 @@
 
 	activation_song = null //No nice song.
 
-	logon_sound = 'modular_skyrat/modules/hev_suit/sound/nri/01_hev_logon.ogg' //don't tell anyone that we've used russian HEV sounds
-	armor_sound = 'modular_skyrat/modules/hev_suit/sound/nri/02_powerarmor_on.ogg'
-	atmospherics_sound = 'modular_skyrat/modules/hev_suit/sound/nri/03_atmospherics_on.ogg'
-	vitalsigns_sound = 'modular_skyrat/modules/hev_suit/sound/nri/04_vitalsigns_on.ogg'
-	automedic_sound = 'modular_skyrat/modules/hev_suit/sound/nri/05_automedic_on.ogg'
-	weaponselect_sound = 'modular_skyrat/modules/hev_suit/sound/nri/06_weaponselect_on.ogg'
-	munitions_sound = 'modular_skyrat/modules/hev_suit/sound/nri/07_munitionview_on.ogg'
-	communications_sound = 'modular_skyrat/modules/hev_suit/sound/nri/08_communications_on.ogg'
-	safe_day_sound = 'modular_skyrat/modules/hev_suit/sound/nri/09_safe_day.ogg'
-
-	batt_50_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fifty.ogg'
-	batt_40_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fourty.ogg'
-	batt_30_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_thirty.ogg'
-	batt_20_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_twenty.ogg'
-	batt_10_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_ten.ogg'
-
-	near_death_sound = 'modular_skyrat/modules/hev_suit/sound/nri/near_death.ogg'
-	health_critical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_critical.ogg'
-	health_dropping_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_dropping.ogg'
-
-	blood_loss_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_loss.ogg'
-	blood_toxins_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_toxins.ogg'
-	biohazard_sound = 'modular_skyrat/modules/hev_suit/sound/nri/biohazard_detected.ogg'
-	chemical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/chemical_detected.ogg'
-
-	minor_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_fracture.ogg'
-	major_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_fracture.ogg'
-	minor_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_lacerations.ogg'
-	major_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_lacerations.ogg'
-
-	morphine_sound = 'modular_skyrat/modules/hev_suit/sound/nri/morphine_shot.ogg'
-	wound_sound = 'modular_skyrat/modules/hev_suit/sound/nri/wound_sterilized.ogg'
-	antitoxin_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antitoxin_shot.ogg'
-	antidote_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antidote_shot.ogg'
-
 	radio_channel = RADIO_CHANNEL_CENTCOM
 
-	armor_poweroff = NRI_ARMOR_POWEROFF
-	armor_poweron = NRI_ARMOR_POWERON
+	armor_unpowered = /datum/armor/hev_suit_nri
+	armor_powered = /datum/armor/hev_suit_nri/powered
 	heal_amount = NRI_HEAL_AMOUNT
 	blood_replenishment = NRI_BLOOD_REPLENISHMENT
 	health_static_cooldown = NRI_COOLDOWN_HEAL
@@ -164,10 +124,23 @@
 	laser = 25
 	energy = 25
 	bomb = 25
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
+	bio = 25
+	fire = 30
+	acid = 30
+	wound = 30
+	consume = 10
+
+/datum/armor/hev_suit_nri/powered
+	melee = 40
+	bullet = 50
+	laser = 30
+	energy = 40
+	bomb = 60
+	bio = 75
+	fire = 50
+	acid = 50
+	wound = 50
+	consume = 40
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"

@@ -266,7 +266,7 @@
 	return exposed_temperature > 300
 
 /obj/item/clothing/accessory/medal/plasma/atmos_expose(datum/gas_mixture/air, exposed_temperature)
-	atmos_spawn_air("plasma=20;TEMP=[exposed_temperature]")
+	atmos_spawn_air("[GAS_PLASMA]=20;[TURF_TEMPERATURE(exposed_temperature)]")
 	visible_message(span_danger("\The [src] bursts into flame!"), span_userdanger("Your [src] bursts into flame!"))
 	qdel(src)
 
@@ -482,18 +482,18 @@
 
 /obj/item/clothing/accessory/allergy_dogtag/on_uniform_equip(obj/item/clothing/under/U, user)
 	. = ..()
-	RegisterSignal(U,COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(U,COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /obj/item/clothing/accessory/allergy_dogtag/on_uniform_dropped(obj/item/clothing/under/U, user)
 	. = ..()
-	UnregisterSignal(U,COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(U,COMSIG_ATOM_EXAMINE)
 
 ///What happens when we examine the uniform
 /obj/item/clothing/accessory/allergy_dogtag/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	examine_list += "The dogtag has a listing of allergies : [display]"
 
-
+/* MODULAR SKYRAT - OVERRIDDEN IN (\modular_skyrat\modules\customization\modules\clothing\under\accessories.dm)
 /// Reskins for the pride pin accessory, mapped by display name to icon state
 GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Rainbow Pride" = "pride",
@@ -505,7 +505,7 @@ GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Intersex Pride" = "pride_intersex",
 	"Lesbian Pride" = "pride_lesbian",
 ))
-
+*/
 /obj/item/clothing/accessory/pride
 	name = "pride pin"
 	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your pride, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"

@@ -49,13 +49,13 @@
 
 /datum/component/wall_fungus/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 
 /datum/component/wall_fungus/Destroy(force, silent)
 	var/turf/closed/wall/parent_wall = parent
 	STOP_PROCESSING(SSobj, src)
-	UnregisterSignal(parent, list(COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS))
+	UnregisterSignal(parent, list(COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_ATOM_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS))
 	parent_wall.update_icon(UPDATE_OVERLAYS)
 	return ..()
 

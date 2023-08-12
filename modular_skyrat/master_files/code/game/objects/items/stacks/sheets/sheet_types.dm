@@ -21,9 +21,9 @@
 // Iron
 
 GLOBAL_LIST_INIT(skyrat_metal_recipes, list(
-	new/datum/stack_recipe("pool floor tile", /obj/item/stack/tile/iron/pool, 1, 1, 4, check_density = FALSE, category = CAT_TILES),
-	new/datum/stack_recipe("lowered floor tile", /obj/item/stack/tile/iron/lowered, 1, 1, 4, check_density = FALSE, category = CAT_TILES),
-	new/datum/stack_recipe("elevated floor tile", /obj/item/stack/tile/iron/elevated, 1, 1, 4, check_density = FALSE, category = CAT_TILES),
+	new/datum/stack_recipe("pool floor tile", /obj/item/stack/tile/iron/pool, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
+	new/datum/stack_recipe("lowered floor tile", /obj/item/stack/tile/iron/lowered, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
+	new/datum/stack_recipe("elevated floor tile", /obj/item/stack/tile/iron/elevated, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
 	new/datum/stack_recipe("wrestling turnbuckle", /obj/structure/wrestling_corner, 3, time = 2.5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("metal barricade", /obj/structure/deployable_barricade/metal, 2, time = 1 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),

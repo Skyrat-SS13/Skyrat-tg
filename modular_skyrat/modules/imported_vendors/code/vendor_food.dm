@@ -5,14 +5,14 @@
 	desc = "The condensation and what you can only hope are the leftovers of food make this a bit hard to reuse."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_empty"
-	custom_materials = list(/datum/material/plastic = 1000)
+	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/trash/empty_side_pack
 	name = "empty side wrapper"
 	desc = "Unfortunately, this no longer holds any sides to distract you from the other 'food'."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
-	custom_materials = list(/datum/material/plastic = 1000)
+	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/trash/empty_side_pack/nt
 	icon_state = "foodpack_nt_trash"

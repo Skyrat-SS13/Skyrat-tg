@@ -13,11 +13,11 @@
 	src.company_flag = given_company_flag
 
 /datum/component/manufacturer_examine/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/manufacturer_examine/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-		COMSIG_PARENT_EXAMINE,
+		COMSIG_ATOM_EXAMINE,
 	))
 
 /// Reads the company flag and sticks a message in the examine list appropriate to the given flag. TODO EVENTUALLY: MAKE THIS NOT A HUGE SWITCH CASE

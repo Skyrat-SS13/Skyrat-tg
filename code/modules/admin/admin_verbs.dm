@@ -50,6 +50,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/trophy_manager,
 	/datum/admins/proc/view_all_circuits,
 	/datum/verbs/menu/Admin/verb/playerpanel, /* It isn't /datum/admin but it fits no less */
+	/datum/admins/proc/change_shuttle_events, //allows us to change the shuttle events
 // Client procs
 	/client/proc/admin_call_shuttle, /*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle, /*allows us to cancel the emergency shuttle, sending it back to centcom*/
@@ -96,15 +97,17 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggle_combo_hud, /* toggle display of the combination pizza antag and taco sci/med/eng hud */
 	/client/proc/toggle_view_range, /*changes how far we can see*/
 	/client/proc/cmd_admin_law_panel,
-	/datum/admins/proc/toggleaooc,		/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
-	/datum/admins/proc/toggledchat, 	/*SKYRAT EDIT ADDITION*/
-	/datum/admins/proc/togglesooc,		/*Toggle Security OOC - SKYRAT EDIT ADDITION*/
-
+	/client/proc/log_viewer_new,
+	/client/proc/player_ticket_history,
+	/datum/admins/proc/toggleaooc,					/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
+	/datum/admins/proc/toggledchat, 				/*SKYRAT EDIT ADDITION*/
+	/datum/admins/proc/togglesooc,					/*Toggle Security OOC - SKYRAT EDIT ADDITION*/
 	/client/proc/admin_open_event_spawners_menu,	/*EVENTS - SKYRAT EDIT ADDITION*/
 	/client/proc/request_help,						/*SKYRAT EDIT ADDITION*/
 	/client/proc/view_opfors,						/*OPFOR - SKYRAT EDIT ADDITION*/
+	/client/proc/lorecaster_story_manager,          /* SKYRAT EDIT ADDITION */
 	)
-GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
+GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel, /client/proc/library_control))
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client/proc/play_direct_mob_sound, /client/proc/play_sound, /client/proc/set_round_end_sound))
 GLOBAL_PROTECT(admin_verbs_sounds)
@@ -1057,3 +1060,14 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	message_admins("[key_name_admin(usr)] has loaded lazy template '[choice]'")
 	to_chat(usr, span_boldnicegreen("Template loaded, you have been moved to the bottom left of the reservation."))
+
+/client/proc/library_control()
+	set name = "Library Management"
+	set category = "Admin"
+	if(!check_rights(R_BAN))
+		return
+
+	if(!holder.library_manager)
+		holder.library_manager = new()
+	holder.library_manager.ui_interact(usr)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Library Management") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!

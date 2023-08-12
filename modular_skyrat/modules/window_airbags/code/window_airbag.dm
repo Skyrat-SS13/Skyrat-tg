@@ -22,12 +22,12 @@
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(target, COMSIG_ATOM_DESTRUCTION, PROC_REF(deploy_airbag))
-	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(target, COMSIG_CLICK_ALT, PROC_REF(on_altclick))
 
 /datum/element/airbag/Detach(datum/target)
 	. = ..()
-	UnregisterSignal(target, list(COMSIG_ATOM_DESTRUCTION, COMSIG_PARENT_EXAMINE, COMSIG_CLICK_ALT))
+	UnregisterSignal(target, list(COMSIG_ATOM_DESTRUCTION, COMSIG_ATOM_EXAMINE, COMSIG_CLICK_ALT))
 
 /datum/element/airbag/proc/deploy_airbag(atom/movable/destroying_atom, damage_flag)
 	SIGNAL_HANDLER

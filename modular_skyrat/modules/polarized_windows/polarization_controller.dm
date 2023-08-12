@@ -33,8 +33,8 @@ GLOBAL_LIST_EMPTY(polarization_controllers)
 		// But why make it a string here? Otherwise it won't be an associative list and it kind of explodes. Shitty, I know.
 		LAZYADDASSOC(GLOB.polarization_controllers, id, list(src))
 
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_window_attackby))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_window_examine))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(on_window_attackby))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_window_examine))
 	RegisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL), PROC_REF(on_window_multitool_act))
 
 
@@ -154,8 +154,8 @@ GLOBAL_LIST_EMPTY(polarization_controllers)
 
 	used_capacitor = null
 
-	UnregisterSignal(parent, COMSIG_PARENT_ATTACKBY)
-	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(parent, COMSIG_ATOM_ATTACKBY)
+	UnregisterSignal(parent, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL))
 
 	managed_window.balloon_alert(user, "removed polarization controller")

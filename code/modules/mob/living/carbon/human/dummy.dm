@@ -102,7 +102,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	*/ // ORIGINAL END - SKYRAT EDIT START
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
-	target.dna.features["pod_hair"] = "Ivy"
+	//target.dna.features["pod_hair"] = "Ivy" SKYRAT EDIT - Tricolor Pod Hair
 
 /// Provides a dummy that is consistently bald, white, naked, etc.
 /mob/living/carbon/human/dummy/consistent

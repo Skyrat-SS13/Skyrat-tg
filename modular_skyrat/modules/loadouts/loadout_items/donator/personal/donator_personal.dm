@@ -73,13 +73,13 @@
 	name = "Peacekeeper jacket"
 	item_path = /obj/item/clothing/suit/armor/vest/warden/rax
 	ckeywhitelist = list("raxraus")
-	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/under/jumpsuit/rax_banded_uniform
 	name = "Banded Uniform"
 	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
-	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/rax_aerostatic_jacket
 	name = "Navy Aerostatic Jacket"
@@ -96,12 +96,6 @@
 	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
 	ckeywhitelist = list("goldenalpharex")
 
-/datum/loadout_item/head/bio_jax
-	name = "XuraCorp Biohazard Hood"
-	item_path = /obj/item/clothing/head/bio_hood/jax
-	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_SCIENCE_GUARD, JOB_VIROLOGIST, JOB_GENETICIST)
-
 /datum/loadout_item/under/jumpsuit/plasmaman_jax
 	name = "XuraCorp Biohazard Underfitting"
 	item_path = /obj/item/clothing/under/plasmaman/jax2
@@ -113,14 +107,19 @@
 	item_path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/head/anahelm
+	name = "Azulean's Enviro-Helmet"
+	item_path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax2
+	ckeywhitelist = list("candlejax")
+
 /datum/loadout_item/under/jumpsuit/emissionsuit
 	name = "Emission's Suit"
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
-/datum/loadout_item/suit/cjax
-	name = "XuraCorp Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
+/datum/loadout_item/under/jumpsuit/anasuit
+	name = "Azulean's Enviro-Suit"
+	item_path = /obj/item/clothing/under/plasmaman/candlejax2
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -154,9 +153,19 @@
 	ckeywhitelist = list("enzoman")
 
 /datum/loadout_item/mask/nightlight_mask
-	name = "FAR-14C IRU"
+	name = "FIR-36 Rebreather"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee")
+
+/datum/loadout_item/suit/brasspriest
+	name = "Brasspriest Coat"
+	item_path = /obj/item/clothing/suit/jacket/brasspriest
+	ckeywhitelist = list("ChillyLobster")
+
+/datum/loadout_item/suit/hydrogenrobes
+	name = "Metallic-Hydrogen robes"
+	item_path = /obj/item/clothing/suit/jacket/hydrogenrobes
+	ckeywhitelist = list("ChillyLobster")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -684,3 +693,8 @@
 	name = "Official Cat Stamp"
 	item_path = /obj/item/stamp/cat
 	ckeywhitelist = list("kathrinbailey")
+
+/datum/loadout_item/inhand/hardlight_wheelchair
+	name = "Hardlight Wheelchair Projector"
+	item_path = /obj/item/holosign_creator/hardlight_wheelchair
+	ckeywhitelist = list("sqnztb")

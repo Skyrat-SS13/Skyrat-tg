@@ -178,8 +178,8 @@
 
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
-#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
+#define LIGHT_ON_DELAY_UPPER (2 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (0.25 SECONDS)
 //SKYRAT EDIT END
 
 // Area sensitivity is traditionally tied directly to power use, as an optimization
@@ -355,13 +355,6 @@
 // attack with item - insert light (if right type), otherwise try to break the light
 
 /obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
-
-	//Light replacer code
-	if(istype(tool, /obj/item/lightreplacer))
-		var/obj/item/lightreplacer/replacer = tool
-		replacer.replace_light(src, user)
-		return
-
 	// attempt to insert light
 	if(istype(tool, /obj/item/light))
 		if(status == LIGHT_OK)
