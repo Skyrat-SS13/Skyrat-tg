@@ -256,15 +256,9 @@
 		else
 			outmsg = span_warning("You miss the lens of [target_camera] with [src]!")
 
-<<<<<<< HEAD
-	//catpeople
-	for(var/mob/living/carbon/human/H in view(1,targloc))
-		if(!isfeline(H) || H.incapacitated() || H.is_blind()) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
-=======
 	//catpeople: make any felinid near the target to face the target, chance for felinids to pounce at the light, stepping to the target
 	for(var/mob/living/carbon/human/target_felinid in view(1, targloc))
-		if(!isfelinid(target_felinid) || target_felinid.stat == DEAD || target_felinid.is_blind() || target_felinid.incapacitated())
->>>>>>> b22ff1a4ebf (Laser pointer update: Shining Through Walls Edition (feat. fixes!) (#77007))
+		if(!isfeline(target_felinid) || target_felinid.stat == DEAD || target_felinid.is_blind() || target_felinid.incapacitated()) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
 			continue
 		if(target_felinid.body_position == STANDING_UP)
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
