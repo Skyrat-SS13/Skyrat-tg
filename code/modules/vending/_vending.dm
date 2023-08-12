@@ -1346,11 +1346,7 @@
 					sec_radio = new (src)
 					sec_radio.set_listening(FALSE)
 				sec_radio.set_frequency(FREQ_SECURITY)
-<<<<<<< HEAD
-				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) // SKYRAT EDIT CHANGE
-=======
-				sec_radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [item_record.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
->>>>>>> f21e88c2258 (Makes labor camp sustenance vendor cost labor points (#76976))
+				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [item_record.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) // SKYRAT EDIT CHANGE
 				GLOB.narcd_underages += usr
 			flick(icon_deny,src)
 			vend_ready = TRUE
