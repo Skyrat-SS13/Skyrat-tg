@@ -25556,6 +25556,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/mine/eva/lower)
+"igs" = (
+/obj/structure/closet,
+/obj/item/clothing/under/suit/black,
+/obj/item/clothing/under/suit/black/skirt,
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/turf/open/floor/iron/cafeteria,
+/area/station/commons/dorms/laundry)
 "igx" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
 	dir = 5
@@ -28618,10 +28627,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
-"jcC" = (
-/obj/machinery/requests_console/directional/north,
-/turf/open/floor/iron/white,
-/area/station/science/ordnance)
 "jcP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral{
@@ -40566,19 +40571,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/hallway/secondary/service)
-"mYs" = (
-/obj/machinery/computer/records/security{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
-	},
-/obj/machinery/light/directional/east,
-/obj/machinery/requests_console/directional/east,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/effect/mapping_helpers/requests_console/information,
-/turf/open/floor/iron,
-/area/station/security/checkpoint/supply)
 "mYG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -44493,6 +44485,12 @@
 /obj/structure/sign/warning/electric_shock,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
+"oiv" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/coroner/surgery,
+/turf/open/floor/iron/dark,
+/area/station/medical/morgue)
 "oiy" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/turret_protected/aisat/service)
@@ -45099,6 +45097,22 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted,
 /turf/open/floor/iron/white,
 /area/station/medical/break_room)
+"oqZ" = (
+/obj/machinery/computer/records/security{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/machinery/requests_console/directional/east{
+	department = "Security";
+	name = "Security Requests Console"
+	},
+/turf/open/floor/iron,
+/area/station/security/checkpoint/supply)
 "orf" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -46509,12 +46523,6 @@
 "oMT" = (
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/rd)
-"oNj" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/table/reinforced,
-/obj/item/storage/backpack/duffelbag/coroner/surgery,
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
 "oNp" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 9
@@ -62968,15 +62976,6 @@
 /obj/structure/sign/warning/electric_shock,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
-"ucZ" = (
-/obj/structure/closet,
-/obj/item/clothing/under/suit/black,
-/obj/item/clothing/under/suit/black/skirt,
-/obj/effect/turf_decal/tile/blue/opposingcorners{
-	dir = 1
-	},
-/turf/open/floor/iron/cafeteria,
-/area/station/commons/dorms/laundry)
 "udc" = (
 /obj/structure/cable/multilayer/multiz,
 /obj/machinery/light/small/dim/directional/west,
@@ -74880,6 +74879,13 @@
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /turf/open/floor/iron/white,
 /area/station/maintenance/port/fore)
+"xQF" = (
+/obj/machinery/requests_console/directional/north{
+	department = "Ordnance";
+	name = "Ordnance Lab Requests Console"
+	},
+/turf/open/floor/iron/white,
+/area/station/science/ordnance)
 "xQG" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -160516,7 +160522,7 @@ iwS
 iqT
 tDG
 tDG
-ucZ
+igs
 iwS
 tKI
 wkj
@@ -181339,7 +181345,7 @@ fwB
 btU
 cJa
 fDp
-oNj
+oiv
 vAO
 jUB
 oXs
@@ -190093,7 +190099,7 @@ thA
 rcY
 iDt
 uIf
-jcC
+xQF
 pOL
 pOL
 pOL
@@ -231209,7 +231215,7 @@ rMr
 bgK
 nZh
 iOS
-mYs
+oqZ
 fxn
 pRj
 kCn
