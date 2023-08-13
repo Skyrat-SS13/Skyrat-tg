@@ -6,6 +6,11 @@
 /obj/structure/closet/secure_closet/quartermaster/PopulateContents()
 	..()
 	new /obj/item/storage/lockbox/medal/cargo(src)
+<<<<<<< HEAD
+=======
+	new /obj/item/radio/weather_monitor (src)
+	new /obj/item/radio/headset/heads/qm(src)
+>>>>>>> 36274f2b620 (Adds Mining Weather Radios (#76961))
 	new /obj/item/megaphone/cargo(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
 	new /obj/item/universal_scanner(src)
