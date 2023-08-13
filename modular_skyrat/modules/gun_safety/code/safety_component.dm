@@ -65,6 +65,8 @@
 		span_notice("You toggle [parent]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
 	)
 
+	SEND_SIGNAL(parent, COMSIG_GUN_SAFETY_TOGGLED)
+
 /// Adds the gun safety's current status to the gun's examine
 /datum/component/gun_safety/proc/on_examine(obj/item/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER

@@ -101,3 +101,6 @@
 
 /// Whenever we need to get the soul of the mob inside of the soulcatcher.
 #define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"
+
+/// When a gun's safety is toggled.
+#define COMSIG_GUN_SAFETY_TOGGLED "gun_safety_toggled"
