@@ -209,7 +209,6 @@
 	vis_overlay.overlay_appearance = overlay_appearance
 
 	generated_visual_overlays["[is_below_water][width]x[height]"] = vis_overlay
-	return vis_overlay
 
 ///This proc removes the vis_overlay, the keep together trait and some signals from the movable.
 /datum/element/immerse/proc/remove_immerse_overlay(atom/movable/movable)
