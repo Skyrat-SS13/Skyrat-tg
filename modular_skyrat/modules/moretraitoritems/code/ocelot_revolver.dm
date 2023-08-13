@@ -4,7 +4,7 @@
 	// this could probably be made funnier by reducing its damage multiplier but also making it so that every fired bullet has the wacky ricochets
 	// but that's a different plate of cookies for a different glass of milk
 	icon_state = "c38_panther"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder
 
 /obj/item/ammo_casing/a357/peacemaker
 	name = ".357 Peacemaker bullet casing"

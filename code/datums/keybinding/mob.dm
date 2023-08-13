@@ -200,7 +200,7 @@
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTLEG_DOWN
 
 /datum/keybinding/mob/prevent_movement
-	hotkey_keys = list("Ctrl") //SKYRAT EDIT CHANGE ALT > CTRL - PIXEL_SHIFT
+	hotkey_keys = list("Alt")
 	name = "block_movement"
 	full_name = "Block movement"
 	description = "Prevents you from moving"

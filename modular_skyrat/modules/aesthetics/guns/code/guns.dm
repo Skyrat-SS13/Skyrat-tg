@@ -267,7 +267,7 @@
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	recoil = 2
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	accepted_magazine_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 6 SECONDS
 	burst_size = 1
 	w_class = WEIGHT_CLASS_NORMAL
@@ -341,7 +341,7 @@
 	can_unsuppress = TRUE
 	recoil = 1.8
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	accepted_magazine_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
 	slot_flags = ITEM_SLOT_BACK
@@ -381,12 +381,12 @@
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	worn_icon_state = "bubba"
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
 	bolt_locked = TRUE // so the bolt starts visibly open
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
@@ -411,7 +411,7 @@
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
 	fire_delay = 5
 	fire_sound_volume = 90
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
@@ -446,11 +446,12 @@
 	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
 	can_be_printed = FALSE
 
-/obj/item/ammo_casing/a556
+/obj/item/ammo_casing/a277
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
+	caliber = CALIBER_A277
 
-/obj/item/ammo_casing/a556/phasic
+/obj/item/ammo_casing/a277/phasic
 	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
@@ -559,10 +560,10 @@
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
-/obj/projectile/bullet/a556
+/obj/projectile/bullet/a277
 	name = ".277 Aestus bullet"
 
-/obj/projectile/bullet/a556/phasic
+/obj/projectile/bullet/a277/phasic
 	name = ".277 PHASE bullet"
 
 /obj/projectile/bullet/a762

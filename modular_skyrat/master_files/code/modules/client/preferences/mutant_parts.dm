@@ -815,7 +815,7 @@
 /datum/preference/choiced/mutant_choice/pod_hair/init_possible_values()
 	var/list/values = list()
 
-	var/icon/pod_head = icon('icons/mob/species/human/bodyparts_greyscale.dmi', "pod_head_m")
+	var/icon/pod_head = icon('icons/mob/human/bodyparts_greyscale.dmi', "pod_head_m")
 	pod_head.Blend(COLOR_GREEN, ICON_MULTIPLY)
 
 	for (var/pod_name in GLOB.pod_hair_list)

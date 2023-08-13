@@ -9,7 +9,7 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/akm
+	accepted_magazine_type = /obj/item/ammo_box/magazine/akm
 	can_suppress = FALSE
 	fire_delay = 2
 	actions_types = list()
@@ -95,7 +95,7 @@
 	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. The internal modifications made to the firearm in order to accommodate for non-military use made it incompatible with conventional munitions and gave it the inability to fire fully automatic. It's purpose-built to fire low-grade civilian ammo, anything stronger would obliterate the rifling and render the firearm useless."
 	icon_state = "akm_civ"
 	inhand_icon_state = "akm_civ"
-	mag_type = /obj/item/ammo_box/magazine/akm/civvie
+	accepted_magazine_type = /obj/item/ammo_box/magazine/akm/civvie
 	fire_delay = 5
 	dual_wield_spread = 15
 	spread = 5
