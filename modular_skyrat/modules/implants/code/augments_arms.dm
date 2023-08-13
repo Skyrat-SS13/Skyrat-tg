@@ -36,6 +36,84 @@
 	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
 	return TRUE
 
+/obj/item/melee/knife/razorclaws
+	name = "implanted razor claws"
+	desc = "A set of sharp, retractable claws built into the fingertips, five double-edged blades sure to turn people into mincemeat. Capable of shifting into 'Precision' mode to act similar to wirecutters."
+	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
+	righthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_lefthand.dmi'
+	icon_state = "wolverine"
+	var/knife_force = 10
+	w_class = WEIGHT_CLASS_BULKY
+	var/knife_hitsound = 'sound/weapons/bladeslice.ogg'
+	var/knife_attack_verb_continuous = list("slashes", "tears", "slices", "tears", "lacerates", "rips", "dices", "cuts", "rends")
+	var/knife_attack_verb_simple = list("slash", "tear", "slice", "tear", "lacerate", "rip", "dice", "cut", "rend")
+	var/knife_sharpness = SHARP_EDGED
+	var/knife_wound_bonus = 5
+	var/knife_bare_wound_bonus = 15
+	tool_behaviour = TOOL_KNIFE
+
+/obj/item/melee/knife/razorclaws/attack_self(mob/user)
+	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
+	if(tool_behaviour != TOOL_WIRECUTTER)
+		tool_behaviour = TOOL_WIRECUTTER
+		to_chat(user, span_notice("You shift [src] into Precision mode, for wirecutting."))
+		icon_state = "precision_wolverine"
+		flags_1 = CONDUCT_1
+		force = 6
+		sharpness = NONE
+		hitsound = 'sound/items/wirecutter.ogg'
+		usesound = 'sound/items/wirecutter.ogg'
+		attack_verb_continuous = list("bashes", "batters", "bludgeons", "thrashes", "whacks")
+		attack_verb_simple = list("bash", "batter", "bludgeon", "thrash", "whack")
+		toolspeed = 1
+
+	else
+		tool_behaviour = TOOL_KNIFE
+		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
+		icon_state = "wolverine"
+		force = knife_force
+		sharpness = knife_sharpness
+		wound_bonus = knife_wound_bonus
+		bare_wound_bonus = knife_bare_wound_bonus
+		hitsound = 'sound/weapons/bladeslice.ogg'
+		attack_verb_continuous = knife_attack_verb_continuous
+		attack_verb_simple = knife_attack_verb_simple
+
+/obj/item/melee/knife/razorclaws/attackby(obj/item/stone, mob/user, param)
+	if(!istype(stone, /obj/item/scratchingstone))
+		return ..()
+
+	knife_force = 15
+	knife_wound_bonus = 15
+	armour_penetration = 10 //Let's give them some AP for the trouble.
+	name = "enhanced razor claws"
+	desc = "[desc] These have undergone a special honing process; they'll kill people even faster than they used to."
+	user.visible_message(span_notice("[user] sharpens [src], the stone disintegrating!"), span_notice("You sharpen [src], making it much more deadly than before; but the stone disintegrates under the stress."))
+	playsound(src, 'sound/items/unsheath.ogg', 25, TRUE)
+	qdel(stone)
+	return TRUE
+
+/obj/item/organ/internal/cyberimp/arm/razorclaws
+	name = "razor claws implant"
+	desc = "A set of hidden, retractable blades built into the fingertips; cyborg mercenary approved."
+	items_to_create = list(/obj/item/melee/knife/razorclaws)
+	actions_types = list(/datum/action/item_action/organ_action/toggle/razorclaws)
+	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
+	icon_state = "wolverine"
+	extend_sound = 'sound/items/unsheath.ogg'
+	retract_sound = 'sound/items/sheath.ogg'
+
+/obj/item/organ/internal/cyberimp/arm/razorclaws/lefthand
+	zone = BODY_ZONE_L_ARM
+	slot = ORGAN_SLOT_LEFT_ARM_AUG //This is for the loadout because things tend to get tricky in there.
+
+/datum/action/item_action/organ_action/toggle/razorclaws
+	name = "Extend Claws"
+	desc = "You can also activate the claws in your hand to change their mode."
+	button_icon = 'modular_skyrat/master_files/icons/hud/actions.dmi'
+	button_icon_state = "wolverine"
+
 /obj/item/organ/internal/cyberimp/arm/hacker
 	name = "hacking arm implant"
 	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."

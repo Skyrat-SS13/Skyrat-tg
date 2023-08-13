@@ -19,9 +19,19 @@
 /datum/augment_item/implant/l_arm
 	slot = AUGMENT_SLOT_LEFT_ARM_IMPLANT
 
+/datum/augment_item/implant/l_arm/razorclaws/lefthand
+	name = "Razor Claws"
+	cost = 4
+	path = /obj/item/organ/internal/cyberimp/arm/razorclaws/lefthand
+
 //RIGHT ARM IMPLANTS
 /datum/augment_item/implant/r_arm
 	slot = AUGMENT_SLOT_RIGHT_ARM_IMPLANT
+
+/datum/augment_item/implant/r_arm/razorclaws
+	name = "Razor Claws"
+	cost = 4
+	path = /obj/item/organ/internal/cyberimp/arm/razorclaws
 
 //EYES IMPLANTS
 /datum/augment_item/implant/eyes

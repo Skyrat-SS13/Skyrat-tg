@@ -77,6 +77,13 @@
 	cost = CARGO_CRATE_VALUE * 6 // 1200 credits
 	contains = list(/obj/item/gravity_harness)
 
+/datum/supply_pack/goody/scratchingstone
+	name = "Scratching Stone"
+	desc = "You dunno what this is chummer? Little scrap here sharpens your razorclaws. Preem, arctic shit if you're a metalhead type. Catch is, whatever bakebrain catgirls we got it from already used it. A lot. WYSIWYG \
+	Fork the creds and we'll send it over real quick."
+	cost = CARGO_CRATE_VALUE * 4 //800 credits
+	contains = list(/obj/item/scratchingstone)
+
 /*
 *	CARPET PACKS
 */
