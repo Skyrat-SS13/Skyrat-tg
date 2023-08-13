@@ -508,3 +508,161 @@
   vinylspiders:
   - bugfix: quirks list will now be displayed normally in examine text again instead
       of duplicating itself
+2023-08-11:
+  Melbert:
+  - bugfix: Fix some missing wizard spellbook flavor
+  - bugfix: Fixed latejoiners being affected by certain things twice, such as Summon
+      Guns and Summon Magic
+  SkyratBot:
+  - bugfix: The bulbs of lights will now have an emissive glow when on, making it
+      so they appear active no matter how dark the area surrounding them happens to
+      be.
+  - bugfix: crafting recipes without a name, such as the mothic pizzas, will inherit
+      the name of the item they make
+  - balance: Space Ninja's energy net uses a projectile to catch people now.
+  - bugfix: Fixed an oddity with morgue corpses being shakeable like they're just
+      unconscious.
+  - admin: 'Added new lua functions: SS13.is_valid, SS13.stop_tracking, SS13.new_untracked,
+      SS13.type and SS13.qdel'
+  - bugfix: Mirror reflections no longer display progress bars or runechat.
+  - qol: Drill module automatically disables if it's about to drill into gibtonite
+  - bugfix: Fixed an oversight with processable items that lead to the same chat message
+      being sent multiple times.
+  - rscadd: Add admin blackhole shuttle event with a normal version and suicidal version.
+  - bugfix: Fix several shuttle event runtimes
+  Vekter:
+  - bugfix: FRAG-12 shells no longer require sulfuric acid, instead needing 10 fluorosulfuric
+      acid. This should prevent them from leaving byproducts if crafted in a specific
+      way.
+  softcerv:
+  - bugfix: fixes soulcatchers not properly returning minds back to bodies.
+2023-08-12:
+  CliffracerX:
+  - image: redid skyrat's bespoke duffelbags to match the rework upstream
+  - image: made robotics backpacks look more ruggedized
+  - image: minor polish to HOP storage palette, added white sec satchels as an option
+  - refactor: interlink isn't INCLUDED anymore!  rejoice in quicker builds and dead
+      bugs!
+  - bugfix: elevators show the correct labels now!
+  EOBGames, MrMelbert:
+  - rscadd: Mars celebrates the 250th anniversary of the Martian Concession this year,
+      and this has brought Martian cuisine to new heights of popularity. Find a new
+      selection of Martian foods and drinks available in your crafting menu today!
+  GoldenAlpharex:
+  - bugfix: Certain organs that should have been unremovable for a long time, are
+      now properly unremovable. You know exactly why.
+  LT3:
+  - bugfix: Airlock lighting works again
+  - bugfix: Large airlocks are now a subtype and function on both tiles
+  Melbert:
+  - bugfix: Fix antimagic effect not expiring
+  SkyratBot:
+  - balance: Lepton Violet (wabbajack) shuttle must be unlocked by having some form
+      of polymorph happen in-game first (Pride Mirror or the cursed springs are the
+      most accessible sources)
+  - balance: Scrapheap shuttle can only be bought if the Cargo budget is below 600
+      credits, and the shuttle has just less than half of its usual refueling time
+      left. However, it gives the cargo budget an influx of 3000 credits!
+  - qol: Uncle Pete's Rollerdome has had its price increased, and the disco machine
+      is no longer unbreakable.
+  - bugfix: fixes kinesis not actually immobilizing or blocking hands of grabbed mobs
+  - rscadd: Adds Summon Simians, a spell that summons four monkeys or lesser gorillas,
+      with the amount increasing per upgrade. The monkeys have various fun gear depending
+      on how lucky you get and how leveled the spell is. If the spell is maximum level,
+      it only summons normal gorillas.
+  - balance: Wizard Mutate spell works on non-human races. It also gives you Gigantism
+      now (funny). If the Race can't support tinted bodyparts, your whole sprite is
+      temporarily turned green.
+  - balance: Made Laser eyes projectiles a subtype of actual lasers, which has various
+      properties such as on-hit effects and upping the damage to 30.
+  - rscadd: 'Added further support for nonhuman robed casting: Monkeys, cyborgs, and
+      drones can all now cast robed spells as long as they''re wearing a wizardly
+      hat as well.'
+  - balance: Made monkeys able to wield two-handed things again.
+  - spellcheck: improvised fire extinguishers aren't full of typoes now
+  Wallem:
+  - rscadd: T
+  iain0:
+  - bugfix: A small clerical error fixed which will cause the Ukrainian station naming
+      prefix to be properly applied to the Independence Day of Ukraine holiday on
+      24th August, rather than overwriting the Indigenous People's Day station prefixes.
+  vinylspiders:
+  - bugfix: Fixed fired foam darts, gumballs and (harmless) lollipops being embeddable.
+  - bugfix: 'Projectiles that should embed while being reusable will now do so correctly,
+      actually embedding the reusable casing instead of a shrapnel. balance: Arrows
+      are generally more likely to embed now, except for blazing ones, that kind of
+      just blaze.'
+  - qol: the quiver storage now uses numerical stacking (like botany and ore bags,
+      or the RPED, for example).
+2023-08-13:
+  Melbert:
+  - bugfix: Fixes Shadow Walk
+  MortoSasye (Mystral Mom):
+  - rscadd: 'Two new sets of cosmetic sprites are now available: Arfel Harpy Wings
+      and Australian Shepherd tail. Enjoy, new harpies and canids players.'
+  SkyratBot:
+  - balance: Change mousetraps to kill mice instead of damaging them (except regal
+      rats)
+  - qol: North Star's Cytology and Xenobiology are now significantly more usable.
+  - rscadd: North Star's Genetics has been tweaked.
+  - bugfix: The North Star's AI SAT has a working vent and it's service hall has a
+      working lightswitch
+  - rscadd: you can upgrade laser pointers with a bluespace crystal to let them shine
+      through walls at double the power cost, if the laser in the pointer is of tier
+      3 or higher.
+  - qol: laser pointer charge can be seen by examining it
+  - bugfix: fixed laser pointers luring dead cats when shone upon
+  - code_imp: laser pointer code cleaned up a tad
+  - bugfix: Giant Spiders only have an antag datum if created by the round event.
+  - balance: Flesh spider eggs hatch into adult spiders instead of baby spiders.
+  - balance: The eggs spawned by the start of the spider infestation event hatch into
+      adult Midwife spiders instead of baby ones.
+  - rscadd: Lets you grind things into a hauntium reagent which works similarly to
+      the solid form but is versatile and has some unique effects.
+  - bugfix: X'ing out of the podpeople no soul prompt will no longer harvest the seeds.
+  - qol: Gigabeacons no longer need to be constructed like standard machines, instead
+      being printed as items that can be deployed quickly inhand without tools.
+  - qol: Gigabeacons are no longer their own research node, instead being a part of
+      telecomms tech (due to the fact they're RADIO navigation beacons)
+  - image: Navigation gigabeacons now have their own unique sprites, inspired by maritime
+      EPIRB devices. If you find a yellow box with an antenna on it, you probably
+      found a nav beacon!
+  - code_imp: The deployable component now gives you an option to disable the examine
+      blurb it adds to its parent
+  - bugfix: rabbits are now small-sized rather than human-sized, as well as capable
+      of being picked up
+  - bugfix: baseballs are now small sized rather than large
+  - bugfix: fixed missing departments and names in request consoles
+  - qol: Gateway access no longer requires a Silver ID.
+  - rscadd: Added Pulse of Entropy, a new ritual for rust heretic unlocked after leeching
+      walk. This ritual can be completed with 20 iron sheets, 2 garbage items to rust
+      in a 4 tiles radius round the rune. Useful for establishing bases and fighting
+      area.
+  - bugfix: fixed detect_room not running correctly when break_if_found is not passed
+  - bugfix: Growing spiders will now retaliate against you like they were always meant
+      to.
+  - bugfix: After a collective brain fart lasting for 6 months, monkeys and xenomorphs
+      now know how to remove embedded objects from their own bodies.
+  - qol: The mining order console is now a bit more compact, and the search bar works
+      regardless of which tab you are currently on.
+  - qol: The flowers in Meta's chapel are no longer stacked atop eachother
+  - bugfix: Plumbing Constructors can now deconstruct every machine they can make,
+      including the plumbing IV.
+  - bugfix: Plumbing IV drips no longer drop metal when deconstructed
+  - bugfix: The Nuke Op/Lone Op sniper briefcase now properly contains a sniper rifle.
+  - bugfix: Mime spell books don't eat itself when used in the dark or cancelled out
+      of.
+  - qol: Emergency shuttle now gracefully display occupancy limits and prerequisites
+      in the communication console.
+  - refactor: Morphs are now basic mobs with a nice new ability to help you change
+      forms rather than the old shift-click method, much more intuitive.
+  - admin: With the morph rework comes a new ability you can add to mobs, "Assume
+      Form". Feel free to add that to any simple or basic mob for le funnies as Runtime
+      turns into a pen or something.
+  - bugfix: The metastation law office's shutters now function again.
+  - bugfix: Fixed wheelchairs being silent.
+  - bugfix: Labor Camp Sustenance vendor is no longer free; instead, it takes your
+      labor points that you'd otherwise use for paying off your point goal.
+  vinylspiders:
+  - bugfix: fixes Common being always granted regardless of language prefs deliberately
+      excluding it
