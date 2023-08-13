@@ -91,7 +91,7 @@
 		/obj/item/reagent_containers/hypospray/medipen = 1,
 		/obj/item/healthanalyzer = 1,
 	)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 	desc += " Repackaged with station-standard medical supplies."
 
 /// It's... not as egregious as a full pocket medkit.
@@ -117,7 +117,7 @@
 		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 1,
 	)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
 /obj/item/storage/pouch/medical/firstaid/stabilizer/Initialize(mapload)
 	. = ..()
@@ -128,4 +128,4 @@
 		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 1,
 	)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
