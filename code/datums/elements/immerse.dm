@@ -88,6 +88,8 @@
 	RegisterSignal(source, COMSIG_ATOM_ABSTRACT_EXITED, PROC_REF(on_atom_exited))
 	attached_turfs_and_movables += source
 	for(var/atom/movable/movable as anything in source)
+		if(!(movable.flags_1 & INITIALIZED_1))
+			continue
 		on_init_or_entered(source, movable)
 
 ///Stops the element from affecting on the turf and its contents. Called on Detach() or when TRAIT_IMMERSE_STOPPED is added.
@@ -137,9 +139,6 @@
  * without otherwise affecting other movables with identical overlays.
  */
 /datum/element/immerse/proc/add_immerse_overlay(atom/movable/movable)
-	if(!(movable.flags_1 & INITIALIZED_1))
-		return
-
 	var/icon/movable_icon = icon(movable.icon)
 	var/width = movable_icon.Width() || world.icon_size
 	var/height = movable_icon.Height() || world.icon_size
