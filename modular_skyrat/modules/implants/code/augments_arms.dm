@@ -104,9 +104,15 @@
 	extend_sound = 'sound/items/unsheath.ogg'
 	retract_sound = 'sound/items/sheath.ogg'
 
+/// bespoke subtypes for augs menu since it's a bit wonky
+/obj/item/organ/internal/cyberimp/arm/razorclaws/righthand
+    zone = BODY_ZONE_R_ARM
+    slot = ORGAN_SLOT_RIGHT_ARM_AUG
+
 /obj/item/organ/internal/cyberimp/arm/razorclaws/lefthand
-	zone = BODY_ZONE_L_ARM
-	slot = ORGAN_SLOT_LEFT_ARM_AUG //This is for the loadout because things tend to get tricky in there.
+    zone = BODY_ZONE_L_ARM
+    slot = ORGAN_SLOT_LEFT_ARM_AUG
+
 
 /datum/action/item_action/organ_action/toggle/razorclaws
 	name = "Extend Claws"
