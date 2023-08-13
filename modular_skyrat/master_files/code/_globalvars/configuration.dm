@@ -64,5 +64,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 // Minimum alert level for pods to actually evacuate people
 /datum/config_entry/number/minimum_alert_for_pods
 
-/// Split roundstart threat between roundstart and midrounds
+/// Split the threat budget between roundstart and midrounds
 /datum/config_entry/flag/split_threat_budget
