@@ -20,7 +20,7 @@
 	 */
 	var/immerse_overlay_color = "#5AAA88"
 
-/turf/open/water/Initialize(mapload)
+/turf/open/water/LateInitialize() // SKYRAT EDIT CHANGE - ORIGINAL Initialize(mapload) : testing
 	. = ..()
 	AddElement(/datum/element/immerse, icon, icon_state, "immerse", immerse_overlay_color)
 
