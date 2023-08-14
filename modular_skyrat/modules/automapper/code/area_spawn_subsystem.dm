@@ -288,7 +288,7 @@ SUBSYSTEM_DEF(area_spawn)
 	if(!LAZYLEN(available_turfs))
 		if(!optional)
 			log_mapping("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
-			SSarea_spawn.failed_area_spawns += WEAKREF(src)
+			SSarea_spawn.failed_area_spawns += src.type
 		return
 
 	for(var/i in 1 to amount_to_spawn)
