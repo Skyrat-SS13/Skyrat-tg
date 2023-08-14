@@ -28,6 +28,6 @@
 /datum/unit_test/area_spawn
 
 /datum/unit_test/area_spawn/Run()
-	for(var/datum/area_spawn as anything in SSarea_spawn.failed_area_spawns)
+	for(var/datum/area_spawn/area_spawn as anything in SSarea_spawn.failed_area_spawns)
 		TEST_FAIL("[area_spawn] could not find any suitable turfs among [english_list(initial(area_spawn.target_areas))].")
 
