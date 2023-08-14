@@ -137,9 +137,6 @@
  * without otherwise affecting other movables with identical overlays.
  */
 /datum/element/immerse/proc/add_immerse_overlay(atom/movable/movable)
-	if(!(movable.flags_1 & INITIALIZED_1))
-		return
-
 	var/icon/movable_icon = icon(movable.icon)
 	var/width = movable_icon.Width() || world.icon_size
 	var/height = movable_icon.Height() || world.icon_size
