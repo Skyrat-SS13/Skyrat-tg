@@ -10,27 +10,34 @@
  * these updated, more consistent defines make it so that a single round's total materials should total 20% of a sheet, or 2 SMALL_MATERIAL_AMOUNT
 */
 
-#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
+#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,)
 
 #define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4,)
 
 #define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4,)
 
 #define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4)
+							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4,)
 
 #define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4)
+							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4,)
 
 #define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
 							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
-							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2,)
+
+#define AMMO_MATS_HOMING list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1, \
+							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/diamond = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2,)
 
 // for .35 Sol Ripper. one day, anon. one day
 #define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4)
+							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4,)
 
 /obj/item/ammo_casing
 	custom_materials = AMMO_MATS_BASIC
@@ -446,12 +453,11 @@
 	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
 	can_be_printed = FALSE
 
-/obj/item/ammo_casing/a277
+/obj/item/ammo_casing/a223
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
-	caliber = CALIBER_A277
 
-/obj/item/ammo_casing/a277/phasic
+/obj/item/ammo_casing/a223/phasic
 	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
@@ -460,9 +466,6 @@
 	custom_materials = AMMO_MATS_PHASIC
 
 // shotgun ammo overrides moved to modular_skyrat\modules\shotgunrebalance\code\shotgun.dm
-
-// i'd've put more can_be_printed overrides for the cargo shells but, like... some of them actually do have defined materials so you can't just shit them out with metal?
-// kinda weird that none of these others do but, whatever??
 
 /obj/item/ammo_casing/p50
 	name = ".416 Stabilis polymer casing"
@@ -535,10 +538,23 @@
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
 
 /obj/item/ammo_casing/a357/match
-	name = ".357 match bullet casing"
 	desc = "A .357 bullet casing, manufactured to exceedingly high standards.\
 	<br><br>\
 	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
+
+/obj/item/ammo_casing/a357/phasic
+	desc = "A .357 phasic bullet casing.\
+	<br><br>\
+	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_PHASIC
+
+/obj/item/ammo_casing/a357/heartseeker
+	desc = "A .357 heartseeker bullet casing.\
+	<br><br>\
+	<i>HEARTSEEKER: Has homing capabilities, methodology unknown.</i>"
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_PHASIC // bluespace is bs
 
 /obj/item/ammo_box/c38
 	caliber = CALIBER_38
@@ -560,11 +576,11 @@
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
-/obj/projectile/bullet/a277
+/obj/projectile/bullet/a223
 	name = ".277 Aestus bullet"
 
-/obj/projectile/bullet/a277/phasic
-	name = ".277 PHASE bullet"
+/obj/projectile/bullet/a223/phasic
+	name = ".277 phasic bullet"
 
 /obj/projectile/bullet/a762
 	name = ".244 bullet"

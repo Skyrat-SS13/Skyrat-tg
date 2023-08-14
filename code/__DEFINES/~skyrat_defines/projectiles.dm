@@ -23,9 +23,7 @@
 #define CALIBER_B577 ".577 Snider"
 
 /// The caliber used by the Oldarms 'Mk.11.4 rifle'
-#define CALIBER_223 ".223 Stinger"
+#define CALIBER_223_BAD ".223 Stinger"
 
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
-
-#define CALIBER_A277 "a277"
