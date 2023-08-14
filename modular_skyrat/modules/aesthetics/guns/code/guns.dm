@@ -554,7 +554,7 @@
 	<br><br>\
 	<i>HEARTSEEKER: Has homing capabilities, methodology unknown.</i>"
 	advanced_print_req = TRUE
-	custom_materials = AMMO_MATS_PHASIC // bluespace is bs
+	custom_materials = AMMO_MATS_HOMING // meme ammo. meme print option
 
 /obj/item/ammo_box/c38
 	caliber = CALIBER_38
