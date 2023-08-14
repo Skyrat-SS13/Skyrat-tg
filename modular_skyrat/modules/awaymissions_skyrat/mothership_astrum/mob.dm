@@ -85,7 +85,7 @@
 
 /mob/living/basic/abductor/ranged/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/ranged_attacks, null, 'sound/weapons/laser.ogg', /obj/projectile/beam/laser)
+	AddComponent(/datum/component/ranged_attacks, projectile_sound = 'sound/weapons/laser.ogg', projectile_type = /obj/projectile/beam/laser)
 
 
 // Tankier variant
