@@ -68,15 +68,8 @@
  * Checks if our shuttle is occupied by someone or not. Ignores camera eyes and ghosts.
 */
 /obj/docking_port/mobile/arrivals_skyrat/proc/check_occupied()
-	for(var/P in GLOB.player_list)
-		var/mob/M = P
-		if (iscameramob(M))
-			continue
-
-		if (M.stat == DEAD)
-			continue
-
-		if (get_area(M) in shuttle_areas)
+	for(var/alive_player in GLOB.alive_player_list)
+		if (get_area(alive_player) in shuttle_areas)
 			return TRUE
 	return FALSE
 
