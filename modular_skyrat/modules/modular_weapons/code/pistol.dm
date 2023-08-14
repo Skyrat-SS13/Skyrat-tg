@@ -43,15 +43,16 @@
 /obj/item/gun/ballistic/automatic/pistol/enforcer
 	name = "\improper Enforcer-TEN handgun"
 	desc = "A robust, full-size handgun, chambered in 10mm. Built for the discerning customer, and derived from a higher-caliber design. \
-	Uses the same magazines as the Ansem, but lacks a threaded barrel, leaving it unable to be suppressed."
+	Lacks a threaded barrel, leaving it unable to be suppressed, but has enough heft to be used as a decent improvised weapon in a pinch."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "baymagnum"
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/guns_right.dmi'
 	inhand_icon_state = "magnum"
-	force = 12 // every problem a nail
+	force = 17 // when all you have is a hammer
+	throwforce = 20 // every problem is a nail (i really wanna see someone clutch a fight by throwing their gun)
 	can_suppress = FALSE
-	accepted_magazine_type = /obj/item/ammo_box/magazine/m10mm
+	accepted_magazine_type = /obj/item/ammo_box/magazine/enforcer
 	fire_sound_volume = 120
 	w_class = WEIGHT_CLASS_NORMAL
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/gunshot_strong.ogg'
@@ -63,6 +64,7 @@
 	eject_sound = 'modular_skyrat/modules/modular_weapons/sounds/hpistol_magout.ogg'
 	eject_empty_sound = 'modular_skyrat/modules/modular_weapons/sounds/hpistol_magout.ogg'
 	empty_indicator = TRUE
+	obj_flags = UNIQUE_RENAME
 	/// Do we show the loaded chamber indicator? If changing the icon, either have both this and a safety indicator, or turn these off.
 	var/chamber_indicator_overlay = TRUE
 	/// Do we show the safety light indicator?
@@ -78,10 +80,10 @@
 /obj/item/gun/ballistic/automatic/pistol/enforcer/examine_more(mob/user)
 	. = ..()
 	. += "The Enforcer series of full-frame handguns is defined by their common base chassis and single-stack magazines, \
-	allowing for reduced weight and thinner profiles. This makes them popular choices in regards to ease of use, ease of (non-concealed) carry - \
+	allowing for reduced weight and slimmer profiles. This makes them popular choices in regards to ease of use, ease of (non-concealed) carry - \
 	and still being upheld to Scarborough Arms's high standards in terms of reliability and performance. While not as concealable as \
 	some of their other more popular (or, to Nanotrasen, infamous) offerings, such as the Makarov or the Ansem handguns, and not offering enough stopping power \
-	to be classified as a true \"hand cannon,\" the 10mm offering is popular amongst those looking for a no-frills handgun \
+	to be classified as a true \"hand cannon\" like its larger-caliber siblings, the 10mm offering is popular amongst those looking for a no-frills handgun \
 	that can reliably drop a target - and not break the bank, nor the wrist, while doing so."
 	return .
 
@@ -163,3 +165,44 @@
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/incendiary
 	ammo_type = /obj/item/ammo_casing/c12mm/fire
 	round_type = AMMO_TYPE_INCENDIARY
+
+/obj/item/ammo_box/magazine/enforcer
+	name = "Enforcer magazine (10mm)"
+	desc = "A robust single-stack magazine, for a robust handgun."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
+	icon_state = "baypistol"
+	base_icon_state = "baypistol"
+	ammo_type = /obj/item/ammo_casing/c10mm
+	caliber = CALIBER_10MM
+	max_ammo = 10
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	multiple_sprite_use_base = TRUE
+	ammo_band_icon = "+baypistol_band"
+	ammo_band_color = null
+
+/obj/item/ammo_box/magazine/enforcer/empty
+	start_empty = TRUE
+
+/obj/item/ammo_box/magazine/enforcer/rubber
+	name = "Enforcer magazine (10mm Rubber)"
+	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	desc = "A robust single-stack magazine, for a robust handgun. The band on the side suggests it's loaded with rubber bullets."
+	ammo_band_color = "#5A8250"
+
+/obj/item/ammo_box/magazine/enforcer/ap
+	name = "Enforcer magazine (10mm AP)"
+	desc = "A robust single-stack magazine, for a robust handgun. The band on the side suggests it's loaded with armor-piercing bullets."
+	ammo_type = /obj/item/ammo_casing/c10mm/ap
+	ammo_band_color = "#3787BF"
+
+/obj/item/ammo_box/magazine/enforcer/hp
+	name = "Enforcer magazine (10mm HP)"
+	desc = "A robust single-stack magazine, for a robust handgun. The band on the side suggests it's loaded with hollow-point bullets."
+	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	ammo_band_color = "#B4B446"
+
+/obj/item/ammo_box/magazine/enforcer/inc
+	name = "Enforcer magazine (10mm INC)"
+	desc = "A robust single-stack magazine, for a robust handgun. The band on the side suggests it's loaded with incendiary bullets."
+	ammo_type = /obj/item/ammo_casing/c10mm/fire
+	ammo_band_color = "#C87832"
