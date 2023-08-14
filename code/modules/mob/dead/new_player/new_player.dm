@@ -132,6 +132,8 @@
 			return "[jobtitle] is restricted due to your selected species."
 		if(JOB_UNAVAILABLE_FLAVOUR)
 			return "[jobtitle] requires you to have flavour text for your character."
+		if(JOB_UNAVAILABLE_AUGMENT)
+			return "[jobtitle] is restricted due to your selected body augments."
 		//SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."

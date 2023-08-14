@@ -5,6 +5,8 @@
 	var/loadout = TRUE
 	//List of banned quirks in their names(dont blame me, that's how they're stored), players can't join as the job if they have the quirk. Associative for the purposes of performance
 	var/list/banned_quirks
+	/// List of banned augments
+	var/list/banned_augments
 	///A list of slots that can't have loadout items assigned to them if no_dresscode is applied, used for important items such as ID, PDA, backpack and headset
 	var/list/blacklist_dresscode_slots
 	//Whitelist of allowed species for this job. If not specified then all roundstart races can be used. Associative with TRUE
@@ -41,6 +43,16 @@
 		return TRUE
 	return FALSE
 
+/datum/job/proc/has_banned_augment(datum/preferences/pref)
+	if(!pref)
+		return FALSE
+	if(banned_augments)
+		var/list/player_augments = pref.augments
+		for(var/key in player_augments)
+			if(player_augments[key] in banned_augments)
+				return TRUE
+	return FALSE
+
 // Misc
 /datum/job/assistant
 	no_dresscode = TRUE
@@ -53,18 +65,23 @@
 //Security
 /datum/job/security_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 /datum/job/detective
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 /datum/job/warden
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 /datum/job/corrections_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 // Command
 /datum/job/captain
@@ -75,6 +92,7 @@
 
 /datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(SEC_RESTRICTED_AUGMENTS)
 
 /datum/job/chief_medical_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)

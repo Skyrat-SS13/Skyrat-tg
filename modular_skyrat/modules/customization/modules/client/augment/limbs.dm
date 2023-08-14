@@ -70,7 +70,7 @@
 /datum/augment_item/limb/l_arm/self_destruct
 	name = "No Left Arm"
 	path = /obj/item/bodypart/arm/left/self_destruct
-	cost = -2
+	cost = -3
 	uses_robotic_styles = FALSE
 
 //RIGHT ARMS
@@ -94,7 +94,7 @@
 /datum/augment_item/limb/r_arm/self_destruct
 	name = "No Right Arm"
 	path = /obj/item/bodypart/arm/right/self_destruct
-	cost = -2
+	cost = -3
 	uses_robotic_styles = FALSE
 
 //LEFT LEGS
@@ -118,7 +118,7 @@
 /datum/augment_item/limb/l_leg/self_destruct
 	name = "No Left Leg"
 	path = /obj/item/bodypart/leg/left/self_destruct
-	cost = -2
+	cost = -3
 	uses_robotic_styles = FALSE
 
 //RIGHT LEGS
@@ -142,5 +142,5 @@
 /datum/augment_item/limb/r_leg/self_destruct
 	name = "No Right Leg"
 	path = /obj/item/bodypart/leg/right/self_destruct
-	cost = -2
+	cost = -3
 	uses_robotic_styles = FALSE
