@@ -121,10 +121,7 @@
 	icon_state = "310_strip"
 	ammo_type = /obj/item/ammo_casing/strilka310
 	max_ammo = 5
-<<<<<<< HEAD
-=======
 	caliber = CALIBER_STRILKA310
->>>>>>> e3a22f5e91c (Reflavors the Mosin to be a surplus rifle from the past IC 200 years, rather than from 670 years ago in game. Allergy warning: May contain microscopic silverscale buff (#77169))
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 /obj/item/ammo_box/strilka310/surplus
