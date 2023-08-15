@@ -111,21 +111,19 @@
 	armour_penetration = 60
 
 /*
-*	.244 Acia
+*	.310 Strilka
 */
 
-/obj/item/ammo_casing/a762/rubber
-	name = ".244 Acia rubber bullet casing"
-	desc = "A .244 rubber bullet casing.\
+/obj/item/ammo_casing/strilka310/rubber
+	name = ".310 Strilka rubber bullet casing"
+	desc = "A .310 rubber bullet casing. Casing is a bit of a fib, there isn't one.\
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
-	icon_state = "762-casing"
-	caliber = CALIBER_A762
-	projectile_type = /obj/projectile/bullet/a762/rubber
+	projectile_type = /obj/projectile/bullet/strilka310/rubber
 	harmful = FALSE
 
-/obj/projectile/bullet/a762/rubber
-	name = ".244 rubber bullet"
+/obj/projectile/bullet/strilka310/rubber
+	name = ".310 rubber bullet"
 	damage = 15
 	stamina = 55
 	ricochets_max = 5
@@ -136,16 +134,16 @@
 	sharpness = NONE
 	embedding = null
 
-/obj/item/ammo_casing/a762/ap
-	name = ".244 Acia armor-piercing bullet casing"
-	desc = "A .244 armor-piercing bullet casing.\
+/obj/item/ammo_casing/strilka310/ap
+	name = ".310 Strilka armor-piercing bullet casing"
+	desc = "A .310 armor-piercing bullet casing. Note, does not actually contain a casing.\
 	<br><br>\
 	<i>ARMOR-PIERCING: Improved armor-piercing capabilities, in return for less outright damage.</i>"
-	projectile_type = /obj/projectile/bullet/a762/ap
+	projectile_type = /obj/projectile/bullet/strilka310/ap
 	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
-/obj/projectile/bullet/a762/ap
+/obj/projectile/bullet/strilka310/ap
 	name = ".244 armor-piercing bullet"
 	damage = 50
 	armour_penetration = 60

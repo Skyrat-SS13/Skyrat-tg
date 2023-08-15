@@ -40,9 +40,6 @@
 	/// Maybe don't enable this for shotgun ammo boxes.
 	var/multitype = TRUE
 
-/obj/item/ammo_box/a762
-	caliber = CALIBER_A762
-
 /obj/item/gun/energy/e_gun
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -360,27 +357,16 @@
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
-/obj/item/gun/ballistic/rifle/boltaction
-	name = "\improper Sportiv precision rifle"
-	desc = "A rather antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt."
-	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/rifle/boltaction/surplus
-	desc = "An unnervingly antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt. It looks poorly kept, \
-	and feels uncomfortably moist."
-	sawn_desc = "An extremely sawn-off, unnervingly antique Sportiv rifle, popularly known as an \"obrez\". \
-	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
-	It still feels uncomfortably moist."
-
 /obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
+	desc = "A very... \"modernized\" Sakhno rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	worn_icon_state = "bubba"
+	inhand_icon_state = "enchanted_rifle" // Not actually magical looking, just looks closest to this one
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
@@ -389,10 +375,10 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "sportiv extended internal magazine"
+	name = "archangel extended internal magazine"
 	desc = "How did you get it out?"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
+	ammo_type = /obj/item/ammo_casing/strilka310
+	caliber = CALIBER_STRILKA310
 	max_ammo = 8
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
@@ -405,7 +391,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT chambered for .244 Acia. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
+	desc = "A contemporary rifle manufactured by NT chambered for .310 Strilka. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
@@ -418,33 +404,14 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
-	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .244 Acia."
+	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .310 Strilka."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
+	ammo_type = /obj/item/ammo_casing/strilka310
+	caliber = CALIBER_STRILKA310
 	max_ammo = 20
 
 // GUBMAN3 - FULL BULLET RENAME
-
-/obj/item/ammo_casing/a762
-	name = ".244 Acia casing"
-	desc = "A .244 bullet casing."
-
-/obj/item/ammo_casing/a762/surplus
-	name = ".244 Acia surplus casing"
-	desc = "A .244 surplus bullet casing."
-
-// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
-/obj/item/ammo_casing/a762/lionhunter
-	name = "lionhunter's casing"
-	desc = "There's something unnatural about this casing."
-	can_be_printed = FALSE
-
-/obj/item/ammo_casing/a762/enchanted
-	name = "enchanted .244 Acia casing"
-	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
-	can_be_printed = FALSE
 
 /obj/item/ammo_casing/a277
 	name = ".277 Aestus casing"
@@ -566,15 +533,6 @@
 /obj/projectile/bullet/a277/phasic
 	name = ".277 PHASE bullet"
 
-/obj/projectile/bullet/a762
-	name = ".244 bullet"
-
-/obj/projectile/bullet/a762/surplus
-	name = ".244 surplus bullet"
-
-/obj/projectile/bullet/a762/enchanted
-	name = "enchanted .244 bullet"
-
 /obj/projectile/bullet/c9mm
 	name = "9x25mm bullet"
 
@@ -662,12 +620,3 @@
 /obj/item/ammo_box/magazine/m50
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
-
-/obj/item/ammo_box/a762
-	name = "stripper clip (.244 Acia)"
-
-/obj/item/ammo_box/a762/surplus
-	name = "stripper clip (.244 Acia surplus)"
-
-/obj/item/storage/toolbox/ammobox/a762
-	name = ".244 Acia ammo box (Surplus?)"
