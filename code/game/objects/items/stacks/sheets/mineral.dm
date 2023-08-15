@@ -66,6 +66,7 @@ GLOBAL_LIST_INIT(clay_recipes, list ( \
 	inhand_icon_state = null
 	throw_speed = 3
 	throw_range = 5
+	merge_type = /obj/item/stack/sheet/mineral/clay
 
 /obj/item/stack/sheet/mineral/clay/get_main_recipes()
 	. = ..()
