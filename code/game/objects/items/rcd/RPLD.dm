@@ -62,7 +62,14 @@
 			/obj/machinery/plumbing/bottler = 50,
 			/obj/machinery/plumbing/pill_press = 20,
 			/obj/machinery/iv_drip/plumbing = 20
-		)
+		), // SKYRAT EDIT CHANGE: ORIGINAL - no comma
+		// SKYRAT EDIT ADDITION START - static list so we have no choice but to skyrat edit these here
+
+		//category 4 liquids
+		"Liquids" = list(
+			/obj/structure/drain = 5,
+		),
+		// SKYRAT EDIT ADDITION END
 	)
 
 /obj/item/construction/plumbing/Initialize(mapload)
@@ -325,7 +332,16 @@
 		"Storage" = list(
 			/obj/machinery/plumbing/tank = 20,
 			/obj/machinery/plumbing/acclimator = 10,
-		)
+		), // SKYRAT EDIT CHANGE: ORIGINAL - no comma
+		// SKYRAT EDIT ADDITION START - static list so we have no choice but to skyrat edit these here
+
+		//category 4 liquids
+		"Liquids" = list(
+			/obj/structure/drain = 5,
+			/obj/machinery/plumbing/floor_pump/input = 20,
+			/obj/machinery/plumbing/floor_pump/output = 20,
+		),
+		// SKYRAT EDIT ADDITION END
 	)
 
 /obj/item/construction/plumbing/research/Initialize(mapload)
@@ -366,7 +382,14 @@
 			/obj/machinery/plumbing/bottler = 50,
 			/obj/machinery/plumbing/tank = 20,
 			/obj/machinery/plumbing/acclimator = 10,
-		)
+		), // SKYRAT EDIT CHANGE: ORIGINAL - no comma
+		// SKYRAT EDIT ADDITION START - static list so we have no choice but to skyrat edit these here
+
+		//category 4 liquids
+		"Liquids" = list(
+			/obj/structure/drain = 5,
+		),
+		// SKYRAT EDIT ADDITION END
 	)
 
 /obj/item/construction/plumbing/service/Initialize(mapload)
