@@ -37,6 +37,9 @@
 	#define COMPONENT_NO_CELL  (1<<1)
 	#define COMPONENT_NO_CHARGE (1<<2)
 
+/// Sent when supermatter begins its delam countdown/when the suppression system is triggered: (var/trigger_reason)
+#define COMSIG_MAIN_SM_DELAMINATING "delam_time"
+
 // Health signals
 /// /mob/living/proc/updatehealth()
 #define COMSIG_MOB_RUN_ARMOR "mob_run_armor"
@@ -70,6 +73,13 @@
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
 
+/// From /obj/item/organ/internal/stomach/after_eat(atom/edible)
+#define COMSIG_STOMACH_AFTER_EAT "stomach_after_eat"
+
+/// For when a Hemophage's pulsating tumor gets added to their body.
+#define COMSIG_PULSATING_TUMOR_ADDED "pulsating_tumor_added"
+/// For when a Hemophage's pulsating tumor gets removed from their body.
+#define COMSIG_PULSATING_TUMOR_REMOVED "pulsating_tumor_removed"
 
 /// when someone attempts to evolve through the rune
 #define COMSIG_RUNE_EVOLUTION "rune_evolution"
