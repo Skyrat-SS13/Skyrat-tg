@@ -186,12 +186,18 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+<<<<<<< HEAD
 /datum/design/a762surplus
 	name = "7.62 Surplus Bullet Casing"
 	id = "a762surplus"
+=======
+/datum/design/strilka310_surplus
+	name = ".310 Surplus Bullet Casing (VERY Lethal)"
+	id = "strilka310_surplus"
+>>>>>>> e3a22f5e91c (Reflavors the Mosin to be a surplus rifle from the past IC 200 years, rather than from 670 years ago in game. Allergy warning: May contain microscopic silverscale buff (#77169))
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*2)
-	build_path = /obj/item/ammo_casing/a762/surplus
+	build_path = /obj/item/ammo_casing/strilka310/surplus
 	category = list(
 		RND_CATEGORY_HACKED,
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO,
