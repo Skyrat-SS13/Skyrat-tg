@@ -204,19 +204,12 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
-<<<<<<< HEAD
-/obj/vehicle/sealed/mecha/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/mmi))
-		if(mmi_move_inside(W,user))
-			to_chat(user, span_notice("[src]-[W] interface initialized successfully."))
-=======
 /obj/vehicle/sealed/mecha/attackby(obj/item/weapon, mob/living/user, params)
 	if(user.combat_mode)
 		return ..()
 	if(istype(weapon, /obj/item/mmi))
 		if(mmi_move_inside(weapon,user))
 			balloon_alert(user, "weapon initialized.")
->>>>>>> 2d34c7433a0 (New Mech UI and equipment refactor (#77221))
 		else
 			balloon_alert(user, "weapon initialization failed!")
 		return
