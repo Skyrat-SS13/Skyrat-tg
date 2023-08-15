@@ -18,8 +18,8 @@
 	icon_state = "bubba_wit_no_bubba"
 
 /datum/crafting_recipe/mosin_pro
-	name = "Sportiv to FTU 'Archangel' Conversion"
-	desc = "It's actually really easy to change the stock on your Sportiv. Anyone can do it. It takes roughly thirty seconds and a screwdriver."
+	name = "Sakhno to FTU 'Archangel' Conversion"
+	desc = "It's actually really easy to change the stock on your Sakhno. Anyone can do it. It takes roughly thirty seconds and a screwdriver."
 	result = /obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
 	reqs = list(
 		/obj/item/gun/ballistic/rifle/boltaction = 1,

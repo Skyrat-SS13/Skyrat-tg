@@ -375,7 +375,7 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "sportiv extended internal magazine"
+	name = "archangel extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/strilka310
 	caliber = CALIBER_STRILKA310
