@@ -6,7 +6,7 @@
 * Check some of the wings that make use of them for examples on how to make it look decent.
 */
 /datum/sprite_accessory/wings
-	icon = 'icons/mob/species/wings.dmi'
+	icon = 'icons/mob/human/species/wings.dmi'
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
@@ -395,3 +395,8 @@
 /datum/sprite_accessory/wings/moth/moffra
 	name = "Moth (Moffra)"
 	icon_state = "moffra"
+
+/datum/sprite_accessory/wings/mammal/top/arfel_harpy
+	name = "Arfel Harpy"
+	icon_state = "arfelharpy_top"
+	color_src = USE_ONE_COLOR

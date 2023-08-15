@@ -97,10 +97,12 @@
 	if(tgui_alert(src, "Are you really sure about this?", "Soulcatcher", list("Yes", "No")) != "Yes")
 		return FALSE
 
+	return_to_body()
 	qdel(src)
 
 /mob/living/soulcatcher_soul/ghost()
 	. = ..()
+	return_to_body()
 	qdel(src)
 
 /mob/living/soulcatcher_soul/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof, message_range, datum/saymode/saymode)
@@ -155,6 +157,21 @@
 	set hidden = TRUE
 	return FALSE
 
+/// Assuming we have a previous body a present mind on our soul, we are going to transfer the mind back to the old body.
+/mob/living/soulcatcher_soul/proc/return_to_body()
+	if(!previous_body || !mind)
+		return FALSE
+
+	var/mob/target_body = previous_body.resolve()
+	if(!target_body)
+		return FALSE
+
+	mind.transfer_to(target_body)
+	SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
+
+	if(target_body.stat != DEAD)
+		target_body.grab_ghost(TRUE)
+
 /mob/living/soulcatcher_soul/Destroy()
 	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
 	if(current_room)
@@ -163,17 +180,6 @@
 			room.current_souls -= src
 
 		current_room = null
-
-	if(previous_body && mind)
-		var/mob/target_body = previous_body.resolve()
-		if(!target_body)
-			return FALSE
-
-		mind.transfer_to(target_body)
-		SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
-
-		if(target_body.stat != DEAD)
-			target_body.grab_ghost(TRUE)
 
 	return ..()
 

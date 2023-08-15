@@ -239,6 +239,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Buttondown Shirt with Shorts"
 	item_path = /obj/item/clothing/under/costume/buttondown/shorts
 
+/datum/loadout_item/under/miscellaneous/buttondown_skirt
+	name = "Recolorable Buttondown Shirt with Skirt"
+	item_path = /obj/item/clothing/under/costume/buttondown/skirt
+
 /datum/loadout_item/under/miscellaneous/vicvest
 	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
 	item_path = /obj/item/clothing/under/pants/skyrat/vicvest
