@@ -8,10 +8,14 @@
 
 	if(!check_rights(R_PERMISSIONS))
 		return
+
 	usr.client?.holder.manage_player_ranks()
 
 /// Proc for admins to change people's "player" ranks (donator, mentor, veteran, etc.)
 /datum/admins/proc/manage_player_ranks()
+	if(IsAdminAdvancedProcCall())
+		return
+
 	if(!check_rights(R_PERMISSIONS))
 		return
 
@@ -21,8 +25,18 @@
 
 	manage_player_rank_in_group(choice)
 
-/// Proc that helps a bit with repetition, basically an extension of `manage_player_ranks()`
+/**
+ * Handles managing player ranks based on the name of the group that was chosen.
+ *
+ * Arguments:
+ * * group - The title of the player rank that was chosen to be managed.
+ */
 /datum/admins/proc/manage_player_rank_in_group(group)
+	PROTECTED_PROC(TRUE)
+
+	if(IsAdminAdvancedProcCall())
+		return
+
 	if(!(group in SKYRAT_PLAYER_RANKS))
 		CRASH("[key_name(usr)] attempted to add someone to an invalid \"[group]\" group.")
 
@@ -56,37 +70,46 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			var/changes = FALSE
-			switch(group)
-				if ("Donator")
-					for(var/a_donator as anything in GLOB.donator_list)
-						if(player_that_was == a_donator)
-							GLOB.donator_list -= player_that_was
-							changes = TRUE
-					if(!changes)
-						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
-						return
-					// save_donators()
+			SSplayer_ranks.remove_player_from_group(key_name(usr), player_that_was, group_title)
 
-				if("Mentor")
-					for(var/a_mentor as anything in GLOB.mentor_datums)
-						if(player_that_was == a_mentor)
-							var/datum/mentors/mentor_datum = GLOB.mentor_datums[a_mentor]
-							mentor_datum.remove_mentor()
-							changes = TRUE
-					if(!changes)
-						to_chat(usr, span_warning("\"[player_that_was]\" was already not a [group_title]."))
-					// save_mentors()
-
-				if("Veteran")
-
-
-				else
-					return
 			message_admins("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
 			log_admin_private("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
 
 		else
 			return
+
+
+
+/client/proc/migrate_player_ranks()
+	set category = "Debug"
+	set name = "Migrate Player Ranks"
+	set desc = "Individually migrate the various player ranks from their legacy system to the SQL-based one."
+
+	if(!check_rights(R_PERMISSIONS | R_DEBUG | R_SERVER))
+		return
+
+	usr.client?.holder.migrate_player_ranks()
+
+
+/datum/admins/proc/migrate_player_ranks()
+	if(IsAdminAdvancedProcCall())
+		return
+
+	if(!check_rights(R_PERMISSIONS | R_DEBUG | R_SERVER))
+		return
+
+	if(!CONFIG_GET(flag/sql_enabled))
+		return
+
+	var/choice = tgui_alert(usr, "Which rank would you like to migrate?", "Migrate Player Ranks", SKYRAT_PLAYER_RANKS)
+	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
+		return
+
+	if(tgui_alert(usr, "Are you sure that you would like to migrate [choice]s to the SQL-based system?", "Migrate Player Ranks", list("Yes", "No")) != "Yes")
+		return
+
+	log_admin("[key_name(usr)] is migrating the [choice] player rank from its legacy system to the SQL-based one.")
+	SSplayer_ranks.migrate_player_rank_to_sql(choice)
+
 
 #undef SKYRAT_PLAYER_RANKS

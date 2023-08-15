@@ -1,6 +1,10 @@
 /// The name of the table on the database containing the player ranks.
 /// See `skyrat_schema.sql` for the schema of the table.
 #define PLAYER_RANK_TABLE_NAME "player_rank"
+/// The index of the ckey in the items of a given row in a query for player ranks.
+#define INDEX_CKEY 1
+/// The name entered in the database for the admin_ckey for legacy migrations.
+#define LEGACY_MIGRATION_ADMIN_CKEY "LEGACY"
 
 
 SUBSYSTEM_DEF(player_ranks)
@@ -168,7 +172,10 @@ SUBSYSTEM_DEF(player_ranks)
 
 
 /**
- * Handles populating the player rank from the database, 
+ * Handles populating the player rank from the database.
+ *
+ * Arguments:
+ * * rank_controller - The player rank controller of the rank to load.
  */
 /datum/controller/subsystem/player_ranks/proc/load_player_rank_sql(datum/player_rank_controller/rank_controller)
 	PROTECTED_PROC(TRUE)
@@ -205,7 +212,9 @@ SUBSYSTEM_DEF(player_ranks)
 	if(rank_title == veteran_controller.rank_title)
 		return veteran_controller
 
-	return null
+	. = null // We do this to ensure that we return null.
+
+	CRASH("Invalid player_rank_controller \"[rank_title || "*null*"]\" used in get_controller_for_group()!")
 
 
 /**
@@ -349,4 +358,71 @@ SUBSYSTEM_DEF(player_ranks)
 	return TRUE
 
 
+/**
+ * Handles migrating a player rank system from the legacy system to the
+ * SQL-based version, from its `rank_title`
+ *
+ * Arguments:
+ * * admin - The admin trying to do the migration.
+ * * rank_title - String of the name of the player rank to migrate
+ * (case-sensitive).
+ */
+/datum/controller/subsystem/player_ranks/proc/migrate_player_rank_to_sql(client/admin, rank_title)
+	if(IsAdminAdvancedProcCall())
+		return
+
+	if(!check_rights_for(admin, R_PERMISSIONS | R_DEBUG | R_SERVER))
+		to_chat(admin, span_warning("You do not possess the permissions to do this."))
+		return
+
+	var/datum/player_rank_controller/controller = get_controller_for_group(rank_title)
+
+	if(!controller)
+		return
+
+	migrate_player_rank_to_sql_from_controller(controller)
+
+
+/**
+ * Handles migrating the ckeys of the players that were stored in a legacy
+ * player rank system into the SQL-based one instead. It will ensure to only
+ * add ckeys that were not already present in the database.
+ *
+ * Arguments:
+ * * controller - The player rank controller you want to migrate from the
+ * legacy system to the SQL one.
+ */
+/datum/controller/subsystem/player_ranks/proc/migrate_player_rank_to_sql_from_controller(datum/player_rank_controller/controller)
+	PROTECTED_PROC(TRUE)
+
+	if(IsAdminAdvancedProcCall())
+		return
+
+	var/list/ckeys_to_migrate = controller.get_ckeys_to_migrate()
+
+	// We explicitly don't check if they were deleted or not, because we
+	// EXPLICITLY want to avoid any kind of duplicates.
+	var/datum/db_query/query_get_existing_entries = SSdbcore.NewQuery(
+		"SELECT ckey FROM [format_table_name(PLAYER_RANK_TABLE_NAME)] WHERE rank = :rank",
+		list("rank" = controller.rank_title),
+	)
+
+	if(!query_get_existing_entries.warn_execute())
+		return
+
+	while(query_get_existing_entries.NextRow())
+		var/ckey = ckey(query_get_existing_entries.item[INDEX_CKEY])
+		ckeys_to_migrate -= ckey
+
+	var/list/rows_to_insert = list()
+
+	for(var/ckey in ckeys_to_migrate)
+		rows_to_insert += list("ckey" = ckey, "rank" = controller.rank_title, "admin_ckey" = LEGACY_MIGRATION_ADMIN_CKEY)
+
+	log_config("Migrating [length(rows_to_insert)] entries from \the [controller.rank_title] legacy system to the SQL-based system.")
+	SSdbcore.MassInsert(format_table_name(PLAYER_RANK_TABLE_NAME), rows_to_insert, warn = TRUE)
+
+
 #undef PLAYER_RANK_TABLE_NAME
+#undef INDEX_CKEY
+#undef LEGACY_MIGRATION_ADMIN_CKEY

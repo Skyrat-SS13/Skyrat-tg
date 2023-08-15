@@ -161,6 +161,35 @@
 
 
 /**
+ * Handles returning a list of all the legacy ckeys that should be migrated
+ * from the legacy system to the database one.
+ *
+ * Returns a list of ckeys as strings.
+ */
+/datum/player_rank_controller/proc/get_ckeys_to_migrate()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	RETURN_TYPE(/list)
+
+	var/list/ckeys_to_migrate = list()
+
+	for(var/line in world.file2list(legacy_file_path))
+		if(!line)
+			continue
+
+		if(findtextEx(line, "#", 1, 2))
+			continue
+
+		var/to_migrate = ckey(line)
+
+		if(!to_migrate)
+			continue
+
+		ckeys_to_migrate += to_migrate
+
+	return ckeys_to_migrate
+
+
+/**
  * Simple proc for subtypes to override for their own handling of obtaining
  * a list of ckeys to save during a legacy save.
  *
