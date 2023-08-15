@@ -135,7 +135,7 @@
 
 /datum/tinker_cache_item/clockwork_rifle_ammo
 	name = "Clockwork Rifle Ammunition"
-	item_path = /obj/item/ammo_box/a762/lionhunter/clock
+	item_path = /obj/item/ammo_box/strilka310/lionhunter/clock
 	power_use = 200
 	time_delay_mult = 0.5
 	research_locked = TRUE
