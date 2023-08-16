@@ -1,20 +1,42 @@
+/datum/design/pocket_medkit
+	name = "Empty Colonial First Aid Kit"
+	id = "slavic_cfap"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 250)
+	build_path = /obj/item/storage/bag/pocket_medkit
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_NRI_MEDICAL,
+	)
+
+/datum/design/medipouch
+	name = "Empty Medipen Pouch"
+	id = "slavic_medipouch"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 250)
+	build_path = /obj/item/storage/bag/medipen
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_NRI_MEDICAL,
+	)
+
 /datum/design/sutures
-	name = "Sutures"
+	name = "Hemostatic Sutures"
 	id = "slavic_suture"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
-	build_path = /obj/item/stack/medical/suture
+	build_path = /obj/item/stack/medical/suture/bloody
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_NRI_MEDICAL,
 	)
 
 /datum/design/mesh
-	name = "Regenerative Mesh"
+	name = "Hemostatic Mesh"
 	id = "slavic_mesh"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
-	build_path = /obj/item/stack/medical/mesh
+	build_path = /obj/item/stack/medical/mesh/bloody
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_NRI_MEDICAL,

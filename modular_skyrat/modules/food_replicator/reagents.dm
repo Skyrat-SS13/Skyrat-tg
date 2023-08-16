@@ -94,3 +94,22 @@
 	icon_state = "pill16"
 	list_reagents = list(/datum/reagent/medicine/c2/convermol = 15)
 	rename_with_volume = TRUE
+
+/datum/reagent/consumable/nutriment/glucose
+	name = "Synthetic Glucose"
+	description = "A sticky yellow liquid, simple carbohydrate, allotrope of organic glucose. Gives your body a short-term energy boost."
+	nutriment_factor = 1
+	color = "#f3d00d"
+	taste_description = "strong sweetness"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	var/delayed_satiety_drain = 30
+
+/datum/reagent/consumable/nutriment/glucose/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
+	if(M.satiety < MAX_SATIETY)
+		M.adjust_nutrition(15)
+		delayed_satiety_drain += 15
+	return ..()
+
+/datum/reagent/consumable/nutriment/glucose/on_mob_delete(mob/living/carbon/M)
+	M.adjust_nutrition(-delayed_satiety_drain)
+	return ..()

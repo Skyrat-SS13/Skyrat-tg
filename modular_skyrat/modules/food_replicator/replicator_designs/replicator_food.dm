@@ -42,6 +42,18 @@
 		RND_CATEGORY_NRI_FOOD,
 	)
 
+///Despite being in the medical.dm file, it's still used to fill your hunger up, as such, technically, is food.
+/datum/design/glucose
+	name = "EVA Glucose Injector"
+	id = "slavic_glupen"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 150)
+	build_path = /obj/item/reagent_containers/hypospray/medipen/glucose
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_NRI_FOOD,
+	)
+
 /datum/design/spork
 	name = "Foreign Colonization Ration, Utensils"
 	id = "slavic_utens"
