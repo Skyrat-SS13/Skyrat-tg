@@ -105,6 +105,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(CONFIG_GET(flag/donator_legacy_system))
 		donator_controller.load_legacy()
+		update_all_prefs_unlock_contents()
 		return
 
 	if(!SSdbcore.Connect())
@@ -117,6 +118,15 @@ SUBSYSTEM_DEF(player_ranks)
 		return
 
 	load_player_rank_sql(donator_controller)
+	update_all_prefs_unlock_contents()
+
+
+
+/datum/controller/subsystem/player_ranks/proc/update_all_prefs_unlock_contents()
+	for(var/datum/preferences/prefs as anything in GLOB.preferences_datums)
+		prefs.unlock_content = !!prefs.parent.IsByondMember() || is_donator(prefs.parent)
+		if(prefs.unlock_content)
+			prefs.max_save_slots = 50
 
 
 /// Handles loading mentors either via SQL or using the legacy system,
