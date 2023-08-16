@@ -45,3 +45,4 @@
 /obj/item/storage/toolbox/guncase/soviet/sakhno
 	desc = "A weapon's case. This one is green and looks pretty old, but is otherwise in decent condition."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/cases.dmi'
+	material_flags = NONE // ????? Why do these have materials enabled??
