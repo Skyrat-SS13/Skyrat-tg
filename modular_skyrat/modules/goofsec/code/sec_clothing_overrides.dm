@@ -787,6 +787,35 @@
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
 		))
 
+/obj/item/storage/belt/holster/chameleon
+	desc = "A hip holster that uses chameleon technology to disguise itself and conceal its extra pockets."
+
+// same storage parity as the det holster, but can hold the ebow
+/obj/item/storage/belt/holster/chameleon/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 4
+	atom_storage.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/ammo_box/magazine, // Just magazine, because the sec-belt can hold these aswell
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/ammo_box/c38, // Revolver speedloaders.
+		/obj/item/ammo_box/a357,
+		/obj/item/ammo_box/strilka310,
+		/obj/item/gun/energy/e_gun/mini,
+		/obj/item/gun/energy/disabler,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/food/grown/banana,
+		/obj/item/gun/energy/dueling,
+		/obj/item/gun/energy/laser/thermal,
+		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/recharge/ebow,
+		/obj/item/gun/energy/e_gun/mini,
+		))
+
+/obj/item/storage/belt/holster/nukie/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 4
+
 /*
 *	HEAD
 */
