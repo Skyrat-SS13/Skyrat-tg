@@ -45,6 +45,7 @@
 		RESKIN_NT = "tactifool_blue",
 		RESKIN_CHARCOAL = "tactifool"
 	)
+	resistance_flags = FLAMMABLE
 
 /obj/item/clothing/under/syndicate/tacticool/reskin_obj(mob/M)
 	..()
@@ -127,25 +128,16 @@
 /*
 *	ENCLAVE
 */
-/obj/item/clothing/under/syndicate/skyrat/enclaveo
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclaveo"
-	can_adjust = TRUE
-	armor_type = /datum/armor/clothing_under/none
-
 /obj/item/clothing/under/syndicate/skyrat/enclave
-	name = "neo american sergeant uniform"
+	name = "neo-American sergeant uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	can_adjust = TRUE
 	armor_type = /datum/armor/clothing_under/none
 
-/obj/item/clothing/under/syndicate/skyrat/enclaveo/real
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+/obj/item/clothing/under/syndicate/skyrat/enclave/officer
+	name = "neo-American officer uniform"
 	icon_state = "enclaveo"
-	armor_type = /datum/armor/clothing_under/enclaveo_real
 
 /datum/armor/clothing_under/enclaveo_real
 	melee = 10
@@ -154,10 +146,11 @@
 	wound = 10
 
 /obj/item/clothing/under/syndicate/skyrat/enclave/real
-	name = "neo american sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon_state = "enclave"
 	armor_type = /datum/armor/clothing_under/enclaveo_real
+
+/obj/item/clothing/under/syndicate/skyrat/enclave/real/officer
+	name = "neo-American officer uniform"
+	icon_state = "enclaveo"
 
 #undef RESKIN_CHARCOAL
 #undef RESKIN_NT
