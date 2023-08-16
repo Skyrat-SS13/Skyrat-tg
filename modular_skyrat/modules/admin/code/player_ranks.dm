@@ -54,7 +54,10 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			SSplayer_ranks.add_player_to_group(usr.client, player_to_be, group_title)
+			var/success = SSplayer_ranks.add_player_to_group(usr.client, player_to_be, group_title)
+
+			if(!success)
+				return
 
 			message_admins("[key_name(usr)] has granted [group_title] status to [player_to_be].")
 			log_admin_private("[key_name(usr)] has granted [group_title] status to [player_to_be].")
@@ -70,7 +73,10 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			SSplayer_ranks.remove_player_from_group(usr.client, player_that_was, group_title)
+			var/success = SSplayer_ranks.remove_player_from_group(usr.client, player_that_was, group_title)
+
+			if(!success)
+				return
 
 			message_admins("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
 			log_admin_private("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
