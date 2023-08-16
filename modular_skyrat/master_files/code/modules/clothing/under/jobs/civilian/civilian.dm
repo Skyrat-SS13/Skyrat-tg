@@ -4,6 +4,9 @@
 /obj/item/clothing/under/rank/civilian/lawyer // Lawyers' suits are in TG's suits.dmi
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
 
+/obj/item/clothing/under/rank/civilian/lawyer/bluesuit // EXCEPT THIS ONE.
+	worn_icon_digi = null
+
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
