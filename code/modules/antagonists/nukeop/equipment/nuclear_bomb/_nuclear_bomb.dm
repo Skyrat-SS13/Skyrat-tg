@@ -523,6 +523,8 @@ GLOBAL_VAR(station_nuke_source)
 	sound_to_playing_players('sound/machines/alarm.ogg')
 	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg') // SKYRAT EDIT ADDITION
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NUKE_DEVICE_DETONATING, src)
+
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
 	addtimer(CALLBACK(src, PROC_REF(actually_explode)), 10 SECONDS)

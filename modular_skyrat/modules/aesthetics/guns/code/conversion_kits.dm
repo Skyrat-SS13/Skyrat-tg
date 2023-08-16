@@ -12,14 +12,14 @@
 
 /obj/item/crafting_conversion_kit/mosin_pro
 	name = "\improper FTU 'Archangel' precision rifle stock (desert tan)"
-	desc = "It's a plastic rifle stock, an extended .244 Acia magazine, and some off-brand sight. Unfortunately, it lacks the actual bits that make it go bang. \
+	desc = "It's a plastic rifle stock, an extended .310 Strilka magazine, and some off-brand sight. Unfortunately, it lacks the actual bits that make it go bang. \
 	It's probably a safe assumption that fixing that is an exercise left to the buyer."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba_wit_no_bubba"
 
 /datum/crafting_recipe/mosin_pro
-	name = "Sportiv to FTU 'Archangel' Conversion"
-	desc = "It's actually really easy to change the stock on your Sportiv. Anyone can do it. It takes roughly thirty seconds and a screwdriver."
+	name = "Sakhno to FTU 'Archangel' Conversion"
+	desc = "It's actually really easy to change the stock on your Sakhno. Anyone can do it. It takes roughly thirty seconds and a screwdriver."
 	result = /obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
 	reqs = list(
 		/obj/item/gun/ballistic/rifle/boltaction = 1,
