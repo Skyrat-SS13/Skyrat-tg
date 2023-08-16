@@ -4,6 +4,7 @@
 
 /obj/item/clothing/under/syndicate
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate_digi.dmi' // Anything that was in the syndicate.dmi, should be in the syndicate_digi.dmi
+	resistance_flags = NONE // this actually should make syndicate clothes not innately vulnerable to ignition, see the shaft miner's jumpsuit for inspiration
 
 
 /obj/item/clothing/under/syndicate/skyrat
@@ -28,6 +29,7 @@
 	melee = 10
 	fire = 50
 	acid = 40
+	wound = 10 // copied from the base syndicate type
 
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
@@ -80,7 +82,7 @@
 // (Multiple non-syndicate things use the base tactical turtleneck, they cant have it red nor reskinnable. OUR version, however, can be.)
 /obj/item/clothing/under/syndicate/skyrat/tactical
 	name = "tactical turtleneck"
-	desc = "A snug syndicate-red turtleneck with carcoal-black cargo pants. Good luck arguing allegiance with this on."
+	desc = "A snug syndicate-red turtleneck with charcoal-black cargo pants. Good luck arguing allegiance with this on."
 	icon_state = "syndicate_red"
 	inhand_icon_state = "r_suit"
 	can_adjust = TRUE
@@ -95,6 +97,7 @@
 	melee = 10
 	fire = 50
 	acid = 40
+	wound = 10
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/reskin_obj(mob/M)
 	..()
@@ -104,7 +107,7 @@
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/skirt
 	name = "tactical skirtleneck"
-	desc = "A snug syndicate-red skirtleneck with a carcoal-black skirt. Good luck arguing allegiance with this on."
+	desc = "A snug syndicate-red skirtleneck with a charcoal-black skirt. Good luck arguing allegiance with this on."
 	icon_state = "syndicate_red_skirt"
 	inhand_icon_state = "r_suit"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
@@ -126,21 +129,21 @@
 */
 /obj/item/clothing/under/syndicate/skyrat/enclaveo
 	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
 	can_adjust = TRUE
 	armor_type = /datum/armor/clothing_under/none
 
 /obj/item/clothing/under/syndicate/skyrat/enclave
 	name = "neo american sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	can_adjust = TRUE
 	armor_type = /datum/armor/clothing_under/none
 
 /obj/item/clothing/under/syndicate/skyrat/enclaveo/real
 	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
 	armor_type = /datum/armor/clothing_under/enclaveo_real
 
@@ -148,10 +151,11 @@
 	melee = 10
 	fire = 50
 	acid = 40
+	wound = 10
 
 /obj/item/clothing/under/syndicate/skyrat/enclave/real
 	name = "neo american sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	armor_type = /datum/armor/clothing_under/enclaveo_real
 
