@@ -202,6 +202,8 @@ SUBSYSTEM_DEF(player_ranks)
 	if(IsAdminAdvancedProcCall())
 		return null
 
+	rank_title = lowertext(rank_title)
+
 	// Can't make switch() statements with non-constant values.
 	if(rank_title == donator_controller.rank_title)
 		return donator_controller
