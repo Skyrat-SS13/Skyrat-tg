@@ -442,6 +442,7 @@
 	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
 	<br><br>\
 	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
+	projectile_type = /obj/projectile/bullet/p50/soporific
 
 /obj/item/ammo_casing/p50/penetrator
 	name = ".416 Stabilis APFSDS ++P bullet casing"
