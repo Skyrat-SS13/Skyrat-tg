@@ -54,7 +54,7 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			SSplayer_ranks.add_player_to_group(key_name(usr), player_to_be, group_title)
+			SSplayer_ranks.add_player_to_group(usr.client, player_to_be, group_title)
 
 			message_admins("[key_name(usr)] has granted [group_title] status to [player_to_be].")
 			log_admin_private("[key_name(usr)] has granted [group_title] status to [player_to_be].")
@@ -70,7 +70,7 @@
 				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
 				return
 
-			SSplayer_ranks.remove_player_from_group(key_name(usr), player_that_was, group_title)
+			SSplayer_ranks.remove_player_from_group(usr.client, player_that_was, group_title)
 
 			message_admins("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
 			log_admin_private("[key_name(usr)] has revoked [group_title] status from [player_that_was].")
@@ -109,7 +109,7 @@
 		return
 
 	log_admin("[key_name(usr)] is migrating the [choice] player rank from its legacy system to the SQL-based one.")
-	SSplayer_ranks.migrate_player_rank_to_sql(choice)
+	SSplayer_ranks.migrate_player_rank_to_sql(usr.client, choice)
 
 
 #undef SKYRAT_PLAYER_RANKS
