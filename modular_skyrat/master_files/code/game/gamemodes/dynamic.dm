@@ -31,11 +31,11 @@
 /// Divides threat budget based on the server config
 /datum/game_mode/dynamic/generate_budgets()
 	if(CONFIG_GET(flag/split_threat_budget))
-		..()
-	else
-		round_start_budget = 0
-		initial_round_start_budget = 0
-		mid_round_budget = threat_level
+		return ..()
+
+	round_start_budget = 0
+	initial_round_start_budget = 0
+	mid_round_budget = threat_level
 
 /// Gets the chance for a heavy ruleset midround injection, the dry_run argument is only used for forced injection.
 /datum/game_mode/dynamic/get_heavy_midround_injection_chance(dry_run)
