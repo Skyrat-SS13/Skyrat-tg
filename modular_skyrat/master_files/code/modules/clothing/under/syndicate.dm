@@ -130,7 +130,7 @@
 */
 /obj/item/clothing/under/syndicate/skyrat/enclave
 	name = "neo-American sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampant, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeants run rampant; of creatures in armor black as night, being led by men or women wearing this uniform. They share one thing: a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	can_adjust = TRUE
 	armor_type = /datum/armor/clothing_under/none
