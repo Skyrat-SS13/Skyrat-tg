@@ -61,7 +61,7 @@ INSERT INTO player_rank_log (ckey, rank, admin_ckey, `action`) VALUES (NEW.ckey,
 DROP TRIGGER IF EXISTS `log_player_rank_changes`;
 DELIMITER //
 CREATE TRIGGER `log_player_rank_changes`
-AFTER INSERT ON `player_rank`
+AFTER UPDATE ON `player_rank`
 FOR EACH ROW
 BEGIN
  IF NEW.deleted = 1 THEN
