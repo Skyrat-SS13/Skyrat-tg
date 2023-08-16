@@ -4045,6 +4045,19 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/main)
+"aZo" = (
+/obj/structure/table/reinforced,
+/obj/item/electronics/airalarm,
+/obj/item/electronics/apc,
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera"
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/engineering/storage/tech)
 "aZp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -22081,19 +22094,6 @@
 /obj/structure/sign/poster/random/directional/east,
 /turf/open/floor/wood,
 /area/station/service/theater)
-"fwl" = (
-/obj/structure/table/reinforced,
-/obj/item/electronics/airalarm,
-/obj/item/electronics/apc,
-/obj/machinery/camera/directional/west{
-	c_tag = "Technology Storage";
-	name = "engineering camera"
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/engineering/storage/tech)
 "fwt" = (
 /obj/effect/turf_decal/box/white/corners{
 	dir = 8
@@ -50457,18 +50457,6 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron,
 /area/station/service/kitchen/abandoned)
-"mDO" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Laundromat"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron,
-/area/station/commons/dorms/laundry)
 "mDP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/north,
@@ -61969,19 +61957,6 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
-"pEM" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Laundromat"
-	},
-/turf/open/floor/iron,
-/area/station/commons/dorms/laundry)
 "pEP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -85250,6 +85225,19 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"vqj" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	name = "Laundromat"
+	},
+/turf/open/floor/iron,
+/area/station/commons/dorms/laundry)
 "vqt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -93542,6 +93530,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"xwm" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	name = "Laundromat"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron,
+/area/station/commons/dorms/laundry)
 "xwo" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/lattice,
@@ -125887,7 +125887,7 @@ tbf
 sdB
 kSn
 urC
-fwl
+aZo
 jPJ
 aEQ
 oUk
@@ -145962,14 +145962,14 @@ pFO
 arL
 mVW
 cLm
-mDO
+xwm
 eJb
 oNy
 oNy
 vjz
 jcl
 cTc
-pEM
+vqj
 pLm
 vTd
 nyq
