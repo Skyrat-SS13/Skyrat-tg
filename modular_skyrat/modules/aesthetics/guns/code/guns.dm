@@ -1,12 +1,44 @@
-// open to suggestions on where to put these ammobox overrides
+// open to suggestions on where to put these overrides
+// hugely not a fan of this but we do what we gotta
+
+/*
+ * gotta redefine EVERY goddamn ammo type irt to new mat costs for the ammobench's sake
+ * previously, SMALL_MATERIAL_AMOUNT was 100 units out of 2000 from a sheet (5%)
+ * so the old cost of SMALL_MATERIAL_AMOUNT * 5 was 500/2000 from a sheet (25%)
+ * experimental material balance PR makes it so that SMALL_MATERIAL_AMOUNT is actually 10 units out of 100 (10%)
+ * which made it so that the old assumed value of SMALL_MATERIAL_AMOUNT * 5 is 50/100 (50% of a sheet for a single bullet) (suboptimal)
+ * these updated, more consistent defines make it so that a single round's total materials should total 20% of a sheet, or 2 SMALL_MATERIAL_AMOUNT
+*/
+
+#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
+
+#define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4)
+
+#define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
+							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
+
+// for .35 Sol Ripper. one day, anon. one day
+#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
+							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4)
+
+/obj/item/ammo_casing
+	custom_materials = AMMO_MATS_BASIC
 
 /obj/item/ammo_box
 	/// When inserted into an ammo workbench, does this ammo box check for parent ammunition to search for subtypes of? Relevant for surplus clips, multi-sprite magazines.
 	/// Maybe don't enable this for shotgun ammo boxes.
 	var/multitype = TRUE
-
-/obj/item/ammo_box/a762
-	caliber = CALIBER_A762
 
 /obj/item/gun/energy/e_gun
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -232,7 +264,7 @@
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	recoil = 2
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	accepted_magazine_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 6 SECONDS
 	burst_size = 1
 	w_class = WEIGHT_CLASS_NORMAL
@@ -306,7 +338,7 @@
 	can_unsuppress = TRUE
 	recoil = 1.8
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	accepted_magazine_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
 	slot_flags = ITEM_SLOT_BACK
@@ -325,39 +357,28 @@
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
-/obj/item/gun/ballistic/rifle/boltaction
-	name = "\improper Sportiv precision rifle"
-	desc = "A rather antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt."
-	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/rifle/boltaction/surplus
-	desc = "An unnervingly antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt. It looks poorly kept, \
-	and feels uncomfortably moist."
-	sawn_desc = "An extremely sawn-off, unnervingly antique Sportiv rifle, popularly known as an \"obrez\". \
-	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
-	It still feels uncomfortably moist."
-
 /obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
+	desc = "A very... \"modernized\" Sakhno rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	worn_icon_state = "bubba"
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
+	inhand_icon_state = "enchanted_rifle" // Not actually magical looking, just looks closest to this one
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
 	bolt_locked = TRUE // so the bolt starts visibly open
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "sportiv extended internal magazine"
+	name = "archangel extended internal magazine"
 	desc = "How did you get it out?"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
+	ammo_type = /obj/item/ammo_casing/strilka310
+	caliber = CALIBER_STRILKA310
 	max_ammo = 8
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
@@ -370,128 +391,42 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT chambered for .244 Acia. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
+	desc = "A contemporary rifle manufactured by NT chambered for .310 Strilka. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
 	fire_delay = 5
 	fire_sound_volume = 90
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
-	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .244 Acia."
+	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .310 Strilka."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
+	ammo_type = /obj/item/ammo_casing/strilka310
+	caliber = CALIBER_STRILKA310
 	max_ammo = 20
 
 // GUBMAN3 - FULL BULLET RENAME
 
-/obj/item/ammo_casing/a762
-	name = ".244 Acia casing"
-	desc = "A .244 bullet casing."
-
-/obj/item/ammo_casing/a762/surplus
-	name = ".244 Acia surplus casing"
-	desc = "A .244 surplus bullet casing."
-
-// these two are here just so i have a place to rename them and make it VERY clear that these Should Not Be Printing
-/obj/item/ammo_casing/a762/lionhunter
-	name = "lionhunter's casing"
-	desc = "There's something unnatural about this casing."
-	can_be_printed = FALSE
-
-/obj/item/ammo_casing/a762/enchanted
-	name = "enchanted .244 Acia casing"
-	desc = "A .244 Acia casing. Under the right conditions, it shimmers." // these shouldn't be appearing because LSG makes you throw your gun without working the bolt
-	can_be_printed = FALSE
-
-/obj/item/ammo_casing/a556
+/obj/item/ammo_casing/a277
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
+	caliber = CALIBER_A277
 
-/obj/item/ammo_casing/a556/phasic
+/obj/item/ammo_casing/a277/phasic
 	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
 	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
 	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT)
+	custom_materials = AMMO_MATS_PHASIC
 
-/obj/item/ammo_casing/shotgun
-	desc = "A 12 gauge iron slug."
-
-// THE BELOW TWO SLUGS ARE NOTED AS ADMINONLY AND HAVE ***EIGHTY*** WOUND BONUS. NOT BARE WOUND BONUS. FLAT WOUND BONUS.
-/obj/item/ammo_casing/shotgun/executioner
-	name = "expanding shotgun slug"
-	desc = "A 12 gauge fragmenting slug purpose-built to annihilate flesh on impact."
-	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm.
-
-/obj/item/ammo_casing/shotgun/pulverizer
-	name = "pulverizer shotgun slug"
-	desc = "A 12 gauge uranium slug purpose-built to break bones on impact."
-	can_be_printed = FALSE // noted as adminonly in code/modules/projectiles/projectile/bullets/shotgun.dm
-
-/obj/item/ammo_casing/shotgun/incendiary
-	name = "incendiary slug"
-	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
-	<br><br>\
-	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 9.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
-
-/obj/item/ammo_casing/shotgun/techshell
-	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
-
-/obj/item/ammo_casing/shotgun/improvised
-	can_be_printed = FALSE // this is literally made out of scrap why would you use this if you have a perfectly good ammolathe
-
-/obj/item/ammo_casing/shotgun/dart/bioterror
-	can_be_printed = FALSE // PRELOADED WITH TERROR CHEMS MAYBE LET'S NOT
-
-/obj/item/ammo_casing/shotgun/dragonsbreath
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/stunslug
-	name = "taser slug"
-	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
-	can_be_printed = FALSE // comment out if you want rocket tag shotgun ammo being printable
-
-/obj/item/ammo_casing/shotgun/meteorslug
-	name = "meteor slug"
-	desc = "A 12 gauge shell rigged with CMC technology which launches a heap of matter with great force when fired.\
-	<br><br>\
-	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/frag12
-	name = "FRAG-12 slug"
-	desc = "A 12 gauge shell containing high explosives designed for defeating some barriers and light vehicles, disrupting IEDs, or intercepting assistants.\
-	<br><br>\
-	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/pulseslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/laserslug
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/ion
-	can_be_printed = FALSE // techshell. assumed intended balance being a pain to assemble
-
-/obj/item/ammo_casing/shotgun/incapacitate
-	name = "hornet's nest shell"
-	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets, \
-	sacrificing individual pellet strength for sheer stopping power in what's best described as \"spitting distance\".\
-	<br><br>\
-	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
-	// ...you know what if you're confident you can get up in there, you might as well get to use it if you're able to print Weird Shells.
+// shotgun ammo overrides moved to modular_skyrat\modules\shotgunrebalance\code\shotgun.dm
 
 // i'd've put more can_be_printed overrides for the cargo shells but, like... some of them actually do have defined materials so you can't just shit them out with metal?
 // kinda weird that none of these others do but, whatever??
@@ -507,6 +442,7 @@
 	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
 	<br><br>\
 	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
+	projectile_type = /obj/projectile/bullet/p50/soporific
 
 /obj/item/ammo_casing/p50/penetrator
 	name = ".416 Stabilis APFSDS ++P bullet casing"
@@ -523,7 +459,7 @@
 	desc = "An 8mm armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c46x30mm/inc
@@ -531,7 +467,7 @@
 	desc = "An 8mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45
@@ -543,7 +479,7 @@
 	desc = "An armor-piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c45/inc
@@ -551,7 +487,7 @@
 	desc = "An incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/a50ae
@@ -576,40 +512,27 @@
 	caliber = CALIBER_38
 
 /obj/item/ammo_casing/c38/trac
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.25,
-						/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.25)
+	custom_materials = AMMO_MATS_TRAC
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/dumdum
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/hotshot
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c38/iceblox
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5,
-						/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5) // plasma is wack
+	custom_materials = AMMO_MATS_TEMP // plasma's wack.
 	advanced_print_req = TRUE
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
-/obj/projectile/bullet/a556
+/obj/projectile/bullet/a277
 	name = ".277 Aestus bullet"
 
-/obj/projectile/bullet/a556/phasic
+/obj/projectile/bullet/a277/phasic
 	name = ".277 PHASE bullet"
-
-/obj/projectile/bullet/a762
-	name = ".244 bullet"
-
-/obj/projectile/bullet/a762/surplus
-	name = ".244 surplus bullet"
-
-/obj/projectile/bullet/a762/enchanted
-	name = "enchanted .244 bullet"
 
 /obj/projectile/bullet/c9mm
 	name = "9x25mm bullet"
@@ -642,7 +565,7 @@
 	name = "8mm incendiary bullet"
 
 /obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
-	name =".416 tranquilizer"
+	name = ".416 tranquilizer"
 
 /obj/projectile/bullet/p50/penetrator
 	name = ".416 penetrator bullet"
@@ -698,12 +621,3 @@
 /obj/item/ammo_box/magazine/m50
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
-
-/obj/item/ammo_box/a762
-	name = "stripper clip (.244 Acia)"
-
-/obj/item/ammo_box/a762/surplus
-	name = "stripper clip (.244 Acia surplus)"
-
-/obj/item/storage/toolbox/ammobox/a762
-	name = ".244 Acia ammo box (Surplus?)"

@@ -103,7 +103,7 @@
 		return
 	if(!ishuman(attacked))
 		return
-	if(!attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [attacked] doesn't want you to do that."))
 		return
 	switch(user.zone_selected)
@@ -317,15 +317,15 @@
 	switch(tightness)
 		if(ROPE_TIGHTNESS_HIGH)
 			tightness = ROPE_TIGHTNESS_LOW
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 25)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 25)
 			balloon_alert(user, span_notice("You slightly tightened the ropes"))
 		if(ROPE_TIGHTNESS_LOW)
 			tightness = ROPE_TIGHTNESS_MED
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 50)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 50)
 			balloon_alert(user, span_notice("You moderately tightened the ropes"))
 		if(ROPE_TIGHTNESS_MED)
 			tightness = ROPE_TIGHTNESS_HIGH
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 75)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 75)
 			balloon_alert(user, span_notice("You strongly tightened the ropes"))
 
 #undef ROPE_TIGHTNESS_LOW

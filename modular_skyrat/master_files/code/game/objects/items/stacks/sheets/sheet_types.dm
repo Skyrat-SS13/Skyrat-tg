@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
 	new/datum/stack_recipe("towel bin", /obj/structure/towel_bin/empty, 2, time = 0.5 SECONDS, one_per_turf = FALSE, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("guard rail", /obj/structure/deployable_barricade/guardrail, 2, time = 1 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 1.8 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, check_density = FALSE, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("crutch", /obj/item/cane/crutch, 3, time = 10, one_per_turf = FALSE, category = CAT_TOOLS),
 ))
 
 /obj/item/stack/rods/get_main_recipes()

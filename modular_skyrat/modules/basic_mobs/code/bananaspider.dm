@@ -49,7 +49,7 @@
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 
-/mob/living/basic/giant_spider/badnana_spider
+/mob/living/basic/spider/giant/badnana_spider
 	name = "badnana spider"
 	desc = "WHY WOULD GOD ALLOW THIS?!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'

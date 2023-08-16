@@ -9,8 +9,8 @@
 	desc = "Contains two crabs. Get your crab on!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
-		/mob/living/simple_animal/crab,
-		/mob/living/simple_animal/crab,
+		/mob/living/basic/crab,
+		/mob/living/basic/crab,
 	)
 	crate_name = "look sir free crabs"
 
@@ -716,10 +716,10 @@
 	contains = list(
 		/obj/item/crucifix = 3,
 		/obj/item/storage/box/colonial_rations = 3,
-		/obj/item/storage/toolbox/ammobox/a762 = 1,
+		/obj/item/storage/toolbox/ammobox/strilka310 = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/gun/ballistic/rifle/boltaction = 1,
-		/obj/item/ammo_box/a762 = 3,
+		/obj/item/ammo_box/strilka310 = 3,
 		/obj/item/gun/ballistic/automatic/plastikov = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm = 3,
 		/obj/item/gun/ballistic/automatic/pistol/makarov = 1,

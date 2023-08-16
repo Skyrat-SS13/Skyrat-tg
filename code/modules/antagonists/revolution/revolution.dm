@@ -219,7 +219,7 @@
 	if(flashed.stat == DEAD)
 		return
 	if(flashed.stat != CONSCIOUS)
-		to_chat(source, span_warning("[flashed.p_they(capitalized = TRUE)] must be conscious before you can convert [flashed.p_them()]!"))
+		to_chat(source, span_warning("[flashed.p_They()] must be conscious before you can convert [flashed.p_them()]!"))
 		return
 
 	if(isnull(flashed.mind) || !GET_CLIENT(flashed))
@@ -369,7 +369,7 @@
 			"left pocket" = ITEM_SLOT_LPOCKET,
 			"right pocket" = ITEM_SLOT_RPOCKET
 		)
-		var/where = C.equip_in_one_of_slots(T, slots)
+		var/where = C.equip_in_one_of_slots(T, slots, indirect_action = TRUE)
 		if (!where)
 			to_chat(C, "The Syndicate were unfortunately unable to get you a flash.")
 		else
@@ -474,8 +474,7 @@
 	for(var/datum/mind/rev_mind in get_head_revolutionaries())
 		var/turf/rev_turf = get_turf(rev_mind.current)
 		if(!considered_afk(rev_mind) && considered_alive(rev_mind) && is_station_level(rev_turf.z))
-			if(ishuman(rev_mind.current))
-				return FALSE
+			return FALSE
 	return TRUE
 
 /// Updates the state of the world depending on if revs won or loss.

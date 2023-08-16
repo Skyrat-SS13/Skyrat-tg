@@ -7,7 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	inhand_icon_state = "pps"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	mag_type = /obj/item/ammo_box/magazine/pps
+	accepted_magazine_type = /obj/item/ammo_box/magazine/pps
 	can_suppress = FALSE
 	fire_delay = 3
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'

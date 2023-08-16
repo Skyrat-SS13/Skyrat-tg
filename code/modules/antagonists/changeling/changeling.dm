@@ -165,12 +165,10 @@
 	if(living_mob.hud_used)
 		var/datum/hud/hud_used = living_mob.hud_used
 
-		lingchemdisplay = new /atom/movable/screen/ling/chems()
-		lingchemdisplay.hud = hud_used
+		lingchemdisplay = new /atom/movable/screen/ling/chems(null, hud_used)
 		hud_used.infodisplay += lingchemdisplay
 
-		lingstingdisplay = new /atom/movable/screen/ling/sting()
-		lingstingdisplay.hud = hud_used
+		lingstingdisplay = new /atom/movable/screen/ling/sting(null, hud_used)
 		hud_used.infodisplay += lingstingdisplay
 
 		hud_used.show_hud(hud_used.hud_version)
@@ -204,12 +202,10 @@
 
 	var/datum/hud/ling_hud = owner.current.hud_used
 
-	lingchemdisplay = new
-	lingchemdisplay.hud = ling_hud
+	lingchemdisplay = new(null, ling_hud)
 	ling_hud.infodisplay += lingchemdisplay
 
-	lingstingdisplay = new
-	lingstingdisplay.hud = ling_hud
+	lingstingdisplay = new(null, ling_hud)
 	ling_hud.infodisplay += lingstingdisplay
 
 	ling_hud.show_hud(ling_hud.hud_version)
@@ -826,6 +822,7 @@
 	// SKYRAT EDIT END
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
+	user.voice_style = chosen_profile.voice_style
 
 	chosen_dna.transfer_identity(user, TRUE)
 
@@ -918,7 +915,7 @@
 			flesh_id.hud_icon = chosen_profile.id_icon
 
 		if(equip)
-			user.equip_to_slot_or_del(new_flesh_item, slot2slot[slot])
+			user.equip_to_slot_or_del(new_flesh_item, slot2slot[slot], indirect_action = TRUE)
 			if(!QDELETED(new_flesh_item))
 				ADD_TRAIT(new_flesh_item, TRAIT_NODROP, CHANGELING_TRAIT)
 
@@ -1003,6 +1000,9 @@
 	var/voice
 	/// The TTS filter of the profile filter
 	var/voice_filter = ""
+	/// The TTS voice style.
+	/// Valid values are TTS_VOICE_STYLE_* in the tts.dm defines.
+	var/voice_style = TTS_VOICE_STYLE_SPEECH
 
 
 /datum/changeling_profile/Destroy()
@@ -1060,6 +1060,7 @@
 
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
+	new_profile.voice_style = voice_style
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()

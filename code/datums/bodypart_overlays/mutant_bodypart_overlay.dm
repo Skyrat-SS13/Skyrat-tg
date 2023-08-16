@@ -96,11 +96,13 @@
 /datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/ownerlimb, force)
 	if(isnull(ownerlimb))
 		draw_color = null
+		alpha = 255 // SKYRAT EDIT - Mutant bodyparts transparency are based on limb transparency
 		return TRUE
 
 	if(draw_color && !force)
 		return FALSE
 
+	alpha = ownerlimb.alpha // SKYRAT EDIT - Mutant bodyparts transparency are based on limb transparency
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
 			draw_color = override_color(ownerlimb.draw_color)

@@ -210,7 +210,7 @@ SUBSYSTEM_DEF(goldeneye)
 		linked_antagonist = null
 	return ..()
 
-/datum/status_effect/goldeneye_pinpointer/tick()
+/datum/status_effect/goldeneye_pinpointer/tick(seconds_between_ticks)
 	if(!owner)
 		qdel(src)
 		return

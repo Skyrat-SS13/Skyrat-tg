@@ -304,6 +304,9 @@ NOTIFY_NEW_PLAYER_ACCOUNT_AGE 1
 ##	Requres database
 #IRC_FIRST_CONNECTION_ALERT
 
+## Discord ID of a role that should be pinged when a new player makes their first connection
+#NEW_PLAYER_ALERT_ROLE_ID 1138188190604341308
+
 ## Deny all new connections by ckeys we haven't seen before (exempts admins and only denies the connection if the database is enabled and connected)
 ##	Requires database
 #PANIC_BUNKER
@@ -581,9 +584,6 @@ PR_ANNOUNCEMENTS_PER_ROUND 5
 ## Add voices to the TTS voice blacklist.
 #TTS_VOICE_BLACKLIST Sans Undertale
 #TTS_VOICE_BLACKLIST Papyrus Undertale
-
-## Uncomment this to allow players to disable having a voice on their character for TTS.
-#TTS_ALLOW_PLAYER_VOICE_DISABLING
 
 ## Comment to disable sending a toast notification on the host server when initializations complete.
 ## Even if this is enabled, a notification will only be sent if there are no clients connected.

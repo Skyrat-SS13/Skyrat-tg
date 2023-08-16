@@ -10,7 +10,7 @@
 	desc = "A revolving rifle chambered in .38. "
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "revolving-rifle"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38 //This is just a detective's revolver but it's too big for bags..
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38 //This is just a detective's revolver but it's too big for bags..
 	pixel_x = -4 // It's centred on a 40x32 pixel spritesheet.
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY // The entire purpose of this is that it's a bulky rifle instead of a revolver.
@@ -28,7 +28,7 @@
 	name = "\improper .45 revolving rifle"
 	desc = "A gold trimmed revolving rifle! It fires .45 bullets."
 	icon_state = "revolving-rifle-gold"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev45	//Gold! We're using .45 because TG's 10mm does 40 damage, this does 30.
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev45	//Gold! We're using .45 because TG's 10mm does 40 damage, this does 30.
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "revolving_gold"
 

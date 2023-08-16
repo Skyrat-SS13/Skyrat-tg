@@ -229,32 +229,37 @@
 
 /obj/item/clothing/under/rank/prisoner
 	name = "prison jumpsuit"
-	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "jumpsuit"
 	icon_preview = 'icons/obj/fluff/previews.dmi'
 	icon_state_preview = "prisonsuit"
 	inhand_icon_state = "jumpsuit"
 	greyscale_colors = "#ff8300"
-	greyscale_config = /datum/greyscale_config/jumpsuit_prison
-	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
-	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	greyscale_config = /datum/greyscale_config/jumpsuit/prison
+	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
+/obj/item/clothing/under/rank/prisoner/nosensor
+	desc = "Standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"OFF\" position."
+	has_sensor = NO_SENSORS
+	sensor_mode = SENSOR_OFF
+
 /obj/item/clothing/under/rank/prisoner/skirt
 	name = "prison jumpskirt"
-	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "jumpskirt"
 	icon_preview = 'icons/obj/fluff/previews.dmi'
 	icon_state_preview = "prisonskirt"
 	greyscale_colors = "#ff8300"
-	greyscale_config = /datum/greyscale_config/jumpsuit_prison
-	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
-	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
+	greyscale_config = /datum/greyscale_config/jumpsuit/prison
+	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
 	greyscale_config_worn_digi = null //SKYRAT EDIT ADDITION - DigiGreyscale
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
