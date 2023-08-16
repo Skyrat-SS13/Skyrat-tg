@@ -7,6 +7,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()
 	//We'll spawn everything here
 	var/turf/spawn_at = run_loc_floor_bottom_left
+<<<<<<< HEAD
 	var/list/ignore = list(
 		//Never meant to be created, errors out the ass for mobcode reasons
 		/mob/living/carbon,
@@ -122,6 +123,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// Can't spawn openspace above nothing, it'll get pissy at me
 	ignore += typesof(/turf/open/space/openspace)
 	ignore += typesof(/turf/open/openspace)
+=======
+>>>>>>> 63f7eb1a6a0 (Fixes Ticked File Enforcement and Missing Unit Test (and makes said Unit Test Compile) (and genericizes the C&D list to the base unit test datum) (#77632))
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type
@@ -129,7 +132,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	var/original_baseturf_count = length(original_baseturfs)
 
 	GLOB.running_create_and_destroy = TRUE
-	for(var/type_path in typesof(/atom/movable, /turf) - ignore) //No areas please
+	for(var/type_path in typesof(/atom/movable, /turf) - uncreatables) //No areas please
 		if(ispath(type_path, /turf))
 			spawn_at.ChangeTurf(type_path)
 			//We change it back to prevent baseturfs stacking and hitting the limit
