@@ -34,14 +34,14 @@
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/oldarms/a223s
-	caliber = CALIBER_223_BAD
+	caliber = CALIBER_223S
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_casing/oldarms/a223s
 	name = ".223 Stinger bullet casing"
 	desc = "A cheaply made .223 Stinger bullet casing."
-	caliber = CALIBER_223_BAD
+	caliber = CALIBER_223S
 	projectile_type = /obj/projectile/bullet/oldarms/a223s
 
 /obj/projectile/bullet/oldarms/a223s

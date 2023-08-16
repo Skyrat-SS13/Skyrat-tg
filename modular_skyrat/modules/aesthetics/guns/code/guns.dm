@@ -419,8 +419,19 @@
 	max_ammo = 20
 
 // GUBMAN3 - FULL BULLET RENAME
+// i loathe the above
 
-/obj/item/ammo_casing/a277
+// overrides for .310 Strilka-derived ammo, e.g. lionhunter ammo, because you don't want to give security the ability to print infinite wallhack ammo, right?
+/obj/item/ammo_casing/strilka310/lionhunter
+	name = "hunter's rifle round"
+	can_be_printed = FALSE // trust me bro you dont wanna give security homing wallhack Better Rubbers
+
+/obj/item/ammo_casing/strilka310/enchanted
+	name = "enchanted rifle round"
+	can_be_printed = FALSE // these are Really Really Better Rubbers
+
+// overrides for tgcode's .223 (formerly 5.56), used in the M90-gl - renamed to .277 Aestus
+/obj/item/ammo_casing/a223
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
 
@@ -434,6 +445,7 @@
 
 // shotgun ammo overrides moved to modular_skyrat\modules\shotgunrebalance\code\shotgun.dm
 
+// overrides for tgcode .50cal, used in their sniper/anti-materiel rifles
 /obj/item/ammo_casing/p50
 	name = ".416 Stabilis polymer casing"
 	desc = "A .416 bullet casing."
@@ -452,6 +464,7 @@
 	<br><br>\
 	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
 
+// overrides for tgcode 4.6x30mm, used in the WT-550
 /obj/item/ammo_casing/c46x30mm
 	name = "8mm Usurpator bullet casing"
 	desc = "An 8mm bullet casing."
@@ -472,6 +485,7 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+// overrides for tgcode .45, used in the M1911 and C20-r
 /obj/item/ammo_casing/c45
 	name = ".460 Ceres bullet casing"
 	desc = "A .460 bullet casing."
@@ -492,12 +506,14 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+// overrides for .50AE, used in the deagle
 /obj/item/ammo_casing/a50ae
 	name = ".454 Trucidator bullet casing"
 	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
 	<br><br>\
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
 
+// overrides for .357, used in the .357 revolver
 /obj/item/ammo_casing/a357    //We can keep the Magnum classic.
 	name = ".357 bullet casing"
 	desc = "A .357 bullet casing.\
@@ -521,8 +537,9 @@
 	<br><br>\
 	<i>HEARTSEEKER: Has homing capabilities, methodology unknown.</i>"
 	advanced_print_req = TRUE
-	custom_materials = AMMO_MATS_HOMING // meme ammo. meme print option
+	custom_materials = AMMO_MATS_HOMING // meme ammo. meme print cost
 
+// overrides for .38 Special, used in the .38 revolvers, including the det's
 /obj/item/ammo_box/c38
 	caliber = CALIBER_38
 
