@@ -2,6 +2,12 @@
 	/// Does this object get cropped when worn by a taur on their suit or uniform slot?
 	var/gets_cropped_on_taurs = TRUE
 
+/obj/item/clothing/suit/Initialize(mapload)
+	. = ..()
+	if(islist(allowed))
+		allowed += list(/obj/item/gun,
+						/obj/item/storage/belt/holster,)
+
 //Define worn_icon_digi below here for suits so we don't have to make whole new .dm files for each
 /obj/item/clothing/suit/armor
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor_digi.dmi'
