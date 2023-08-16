@@ -1,3 +1,4 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -16,11 +17,11 @@ DROP TABLE IF EXISTS `player_rank`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `player_rank` (
   `ckey` VARCHAR(32) NOT NULL,
-	`rank` VARCHAR(12) NOT NULL,
+  `rank` VARCHAR(12) NOT NULL,
   `admin_ckey` VARCHAR(32) NOT NULL,
   `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`last_modified` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`deleted` BOOLEAN NOT NULL DEFAULT FALSE,
+  `last_modified` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`ckey`, `rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,10 +36,10 @@ DROP TABLE IF EXISTS `player_rank_log`;
 CREATE TABLE `player_rank_log` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ckey` VARCHAR(32) NOT NULL,
-	`rank` VARCHAR(12) NOT NULL,
+  `rank` VARCHAR(12) NOT NULL,
   `admin_ckey` VARCHAR(32) NOT NULL,
-	`action` ENUM('ADDED', 'REMOVED') NOT NULL DEFAULT 'ADDED',
-	`date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `action` ENUM('ADDED', 'REMOVED') NOT NULL DEFAULT 'ADDED',
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,7 +48,7 @@ CREATE TABLE `player_rank_log` (
 --
 -- Trigger structure for trigger `log_player_rank_additions`.
 --
-DROP TRIGGER IF EXISTS `log_player_rank_additions`
+DROP TRIGGER IF EXISTS `log_player_rank_additions`;
 CREATE TRIGGER `log_player_rank_additions`
 AFTER INSERT ON `player_rank`
 FOR EACH ROW
@@ -57,7 +58,7 @@ INSERT INTO player_rank_log (ckey, rank, admin_ckey, `action`) VALUES (NEW.ckey,
 --
 -- Trigger structure for trigger `log_player_rank_changes`.
 --
-DROP TRIGGER IF EXISTS `log_player_rank_changes`
+DROP TRIGGER IF EXISTS `log_player_rank_changes`;
 DELIMITER //
 CREATE TRIGGER `log_player_rank_changes`
 AFTER INSERT ON `player_rank`
