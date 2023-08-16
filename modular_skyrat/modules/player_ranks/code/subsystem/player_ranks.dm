@@ -419,7 +419,7 @@ SUBSYSTEM_DEF(player_ranks)
 	var/list/rows_to_insert = list()
 
 	for(var/ckey in ckeys_to_migrate)
-		rows_to_insert += list("ckey" = ckey, "rank" = controller.rank_title, "admin_ckey" = LEGACY_MIGRATION_ADMIN_CKEY)
+		rows_to_insert += list(list("ckey" = ckey, "rank" = controller.rank_title, "admin_ckey" = LEGACY_MIGRATION_ADMIN_CKEY))
 
 	log_config("Migrating [length(rows_to_insert)] entries from \the [controller.rank_title] legacy system to the SQL-based system.")
 	SSdbcore.MassInsert(format_table_name(PLAYER_RANK_TABLE_NAME), rows_to_insert, warn = TRUE)
