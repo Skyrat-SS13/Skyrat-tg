@@ -35,7 +35,7 @@
 
 /obj/item/stack/medical/mesh/bloody/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
-	if(healed_mob.blood_volume <= BLOOD_VOLUME_OKAY)
+	if(healed_mob.blood_volume <= BLOOD_VOLUME_SAFE)
 		healed_mob.blood_volume += blood_recover
 		healed_mob.adjustOxyLoss(-amount_healed)
 
