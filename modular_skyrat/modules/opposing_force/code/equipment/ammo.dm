@@ -180,6 +180,26 @@
 	name = "Revolution-8 'Spurmaster' Speedloader"
 	item_type = /obj/item/ammo_box/revolver/revolution/full
 
+/datum/opposing_force_equipment/ammo/enforcer
+	name = "Enforcer-TEN Magazine"
+	item_type = /obj/item/ammo_box/magazine/enforcer
+
+/datum/opposing_force_equipment/ammo/enforcer_rubber
+	name = "Enforcer-TEN Magazine (rubber)"
+	item_type = /obj/item/ammo_box/magazine/enforcer/rubber
+
+/datum/opposing_force_equipment/ammo/enforcer_hp
+	name = "Enforcer-TEN Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/enforcer/hp
+
+/datum/opposing_force_equipment/ammo/enforcer_ap
+	name = "Enforcer-TEN Magazine (AP)"
+	item_type = /obj/item/ammo_box/magazine/enforcer/ap
+
+/datum/opposing_force_equipment/ammo/enforcer_inc
+	name = "Enforcer-TEN Magazine (INC)"
+	item_type = /obj/item/ammo_box/magazine/enforcer/inc
+
 /datum/opposing_force_equipment/ammo/g11
 	name = "G11 K-490 Magazine"
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/g11

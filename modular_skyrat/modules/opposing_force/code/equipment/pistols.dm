@@ -66,3 +66,8 @@
 
 /datum/opposing_force_equipment/pistol/pepperball
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
+
+/datum/opposing_force_equipment/pistol/enforcer
+	item_type = /obj/item/gun/ballistic/automatic/pistol/enforcer
+	desc = "Ten rounds of 10mm in a very visually distinct package. Normal-size, so it can't be pocketed, and incompatible with silencers. Not entirely useless as a melee weapon, either."
+	admin_note = "40 damage per shot, with 10 shots per magazine. 17 force, 20 throwforce."
