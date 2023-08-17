@@ -712,27 +712,23 @@
 	name = "CIN Military Surplus Crate"
 	desc = "A collection of surplus equipment sourced from the Coalition of Independent Nations' military stockpiles. Likely to contain old and outdated equipment, as is the nature of surplus."
 	contraband = TRUE
-	cost = CARGO_CRATE_VALUE * 15
+	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/crucifix = 3,
-		/obj/item/storage/box/nri_rations = 3,
-		/obj/item/storage/toolbox/ammobox/strilka310 = 1,
-		/obj/item/storage/toolbox/maint_kit = 1,
-		/obj/item/gun/ballistic/rifle/boltaction = 1,
-		/obj/item/ammo_box/strilka310 = 3,
-		/obj/item/gun/ballistic/automatic/plastikov = 1,
-		/obj/item/ammo_box/magazine/plastikov9mm = 3,
-		/obj/item/gun/ballistic/automatic/pistol/makarov = 1,
-		/obj/item/ammo_box/magazine/multi_sprite/makarov = 3,
-		/obj/item/clothing/suit/armor/vest/cin_surplus_vest = 3,
-		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color = 3,
-		/obj/item/storage/backpack/industrial/cin_surplus/random_color = 3,
-		/obj/item/storage/belt/military/cin_surplus/random_color = 3,
-		/obj/item/clothing/gloves/tackler/combat = 3,
-		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color = 3,
-		/obj/item/clothing/shoes/jackboots = 3,
-		/obj/item/clothing/mask/gas/hecu2 = 3,
-		/obj/item/clothing/mask/balaclavaadjust = 3,
+		/obj/item/storage/box/nri_rations,
+		/obj/item/storage/toolbox/ammobox/strilka310,
+		/obj/item/storage/toolbox/ammobox/strilka310/surplus,
+		/obj/item/storage/toolbox/maint_kit,
+		/obj/item/storage/toolbox/guncase/soviet/sakhno = 2,
+		/obj/item/ammo_box/strilka310,
+		/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
+		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color,
+		/obj/item/storage/backpack/industrial/cin_surplus/random_color,
+		/obj/item/storage/belt/military/cin_surplus/random_color,
+		/obj/item/clothing/gloves/tackler/combat,
+		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color,
+		/obj/item/clothing/shoes/jackboots,
+		/obj/item/clothing/mask/gas/hecu2,
+		/obj/item/clothing/mask/balaclavaadjust,
 	)
 
 /datum/supply_pack/imports/cin_surplus/fill(obj/structure/closet/crate/we_are_filling_this_crate)

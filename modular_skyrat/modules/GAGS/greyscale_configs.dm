@@ -553,18 +553,17 @@
 
 // OVERALLS
 
-/datum/greyscale_config/overalls
-	name = "Overalls"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls.json'
-
-/datum/greyscale_config/overalls/worn
-	name = "Overalls (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls_worn.json'
-
 /datum/greyscale_config/overalls/worn/digi
 	name = "Overalls (Worn, Digi)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+
+/datum/greyscale_config/overalls/worn/vox
+	name = "Overalls (Worn, Vox)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/suit.dmi'
+
+/datum/greyscale_config/overalls/worn/better_vox
+	name = "Overalls (Worn, Better Vox)"
+	icon_file = 'modular_skyrat/modules/better_vox/icons/clothing/suit.dmi'
 
 // URBAN COAT
 
@@ -698,11 +697,11 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
 /datum/greyscale_config/jumpsuit/worn/better_vox
-	name = "Jumpsuit (Worn) - Better Vox"
+	name = "Jumpsuit (Worn, Better Vox)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
 
 /datum/greyscale_config/jumpsuit/prison/worn/better_vox
-	name = "Prison Jumpsuit (Worn) - Better Vox"
+	name = "Prison Jumpsuit (Worn, Better Vox)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
 
 /datum/greyscale_config/jumpsuit/worn/taur_snake
