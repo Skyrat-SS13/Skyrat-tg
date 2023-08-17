@@ -136,13 +136,16 @@
 	name = "Methamphetamine"
 	description = "Reduces stun times by about 300%, speeds the user up, and allows the user to quickly recover stamina while dealing a small amount of Brain damage. If overdosed the subject will move randomly, laugh randomly, drop items and suffer from Toxin and Brain damage. If addicted the subject will constantly jitter and drool, before becoming dizzy and losing motor control and eventually suffer heavy toxin damage."
 	reagent_state = LIQUID
-	color = "#78C8FA" //best case scenario is the "default", gets muddled depending on purity
+	color = "#fafafa" //best case scenario is the "default", gets muddled depending on purity //SKYRAT EDIT - changes meth color to white
 	overdose_threshold = 20
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 	ph = 5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/stimulants = 12) //4.8 per 2 seconds
 
+// SKYRAT REMOVAL START - more narcotics
+// pure IRL meth is completely white
+/*
 /datum/reagent/drug/methamphetamine/on_new(data)
 	. = ..()
 	//the more pure, the less non-blue colors get involved - best case scenario is rgb(135, 200, 250) AKA #78C8FA
@@ -157,6 +160,8 @@
 	. = ..()
 	var/effective_impurity = min(1, (1 - creation_purity)/0.5)
 	color = BlendRGB(initial(color), "#FAFAFA", effective_impurity)
+*/
+// SKYRAT REMOVAL END
 
 /datum/reagent/drug/methamphetamine/on_mob_metabolize(mob/living/L)
 	..()

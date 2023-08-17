@@ -1,9 +1,9 @@
 /obj/item/bong
 	name = "bong"
 	desc = "Technically known as a water pipe."
-	icon = 'modular_skyrat/modules/bongs/icons/bong.dmi'
-	lefthand_file = 'modular_skyrat/modules/bongs/icons/lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/bongs/icons/righthand.dmi'
+	icon = 'modular_skyrat/modules/morenarcotics/icons/bong.dmi'
+	lefthand_file = 'modular_skyrat/modules/morenarcotics/icons/lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/morenarcotics/icons/righthand.dmi'
 	icon_state = "bongoff"
 	inhand_icon_state = "bongoff"
 
@@ -51,7 +51,7 @@
 			reagent_transfer_per_use = reagents.total_volume / max_hits
 		qdel(grown_item)
 
-	else if(istype(used_item, /obj/item/reagent_containers/hash)) //for hash/dabs
+	else if(istype(used_item, /obj/item/bongable))
 		if(packed_item)
 			balloon_alert(user, "already packed!")
 			return

@@ -30,7 +30,7 @@
 		var/datum/reagent/used_reagent = holder.has_reagent(used_reagent_type)
 		if (!used_reagent)
 			continue
-		saved_purity += used_reagent.purity
+		saved_purity += used_reagent.creation_purity
 	saved_purity /= required_reagents.len
 
 	// create the result

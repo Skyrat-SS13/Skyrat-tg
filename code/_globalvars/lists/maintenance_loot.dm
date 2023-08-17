@@ -219,6 +219,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 			) = 1,
 		list(//medical chems
 			/obj/item/reagent_containers/cup/bottle/multiver = 1,
+			/obj/item/reagent_containers/cup/bottle/promethazine = 1, // SKYRAT ADDITION - more narcotics
 			/obj/item/reagent_containers/hypospray/medipen = 1,
 			/obj/item/reagent_containers/syringe/convermol = 1,
 			) = 1,

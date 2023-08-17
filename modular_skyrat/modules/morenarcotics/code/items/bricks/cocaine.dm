@@ -21,6 +21,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crackbrick"
 	packed_item = /obj/item/smokable/crack
+	packed_amount = 4
 	brick_reagent = /datum/reagent/drug/cocaine/freebase_cocaine
 	reagent_amount = 40
 

@@ -4,14 +4,18 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocainebrick"
 
-	var/obj/item/packed_item // leave blank for nothing
-	var/datum/reagent/brick_reagent // leave blank for nothing
-	var/reagent_amount = 0 // how much of powder_reagent the powder has in it
-	var/extra_amount = 0 // how much of extra volume there should be for other reagents
+	/// What the brick will split into.
+	var/obj/item/packed_item
+	/// How many of packed_item will be made when the brick is split up.
+	var/packed_amount = 5
+	/// The reagent contained in the item. Set blank for nothing.
+	var/datum/reagent/brick_reagent
+	/// How much of the reagent is in the item.
+	var/reagent_amount = 0
 
 /obj/item/reagent_brick/Initialize(mapload)
 	. = ..()
-	create_reagents(reagent_amount) // allow 5 extra units so powders can be spiked
+	create_reagents(reagent_amount)
 	if(brick_reagent)
 		reagents.add_reagent(brick_reagent, reagent_amount)
 
@@ -21,7 +25,7 @@
 		if(do_after(user,10))
 			to_chat(user, span_notice("You finish breaking up the [src]."))
 			var/datum/reagent/packed_brick_reagent = locate(brick_reagent) in reagents.reagent_list
-			for(var/i = 1 to 5)
+			for(var/i = 1 to packed_amount)
 				var/obj/item/reagent_containers/created_item = new packed_item(user.loc)
 				var/datum/reagent/split_brick_reagent = locate(brick_reagent) in created_item.reagents.reagent_list
 				split_brick_reagent.creation_purity = packed_brick_reagent.creation_purity

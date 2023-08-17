@@ -4,8 +4,10 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crack"
 
-	var/datum/reagent/smokable_reagent // leave blank for nothing
-	var/reagent_amount = 0 // how much of powder_reagent the powder has in it
+	/// The reagent contained in the item. Set blank for nothing.
+	var/datum/reagent/smokable_reagent
+	/// How much of the reagent is in the item.
+	var/reagent_amount = 0
 
 /obj/item/smokable/Initialize(mapload)
 	. = ..()

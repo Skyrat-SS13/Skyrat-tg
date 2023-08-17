@@ -12,7 +12,7 @@
 /datum/chemical_reaction/hash/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to created_volume)
-		new /obj/item/reagent_containers/hash(location)
+		new /obj/item/bongable/hash(location)
 
 /datum/chemical_reaction/dabs
 	required_reagents = list(/datum/reagent/drug/thc = 20)
@@ -23,7 +23,7 @@
 /datum/chemical_reaction/dabs/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to created_volume)
-		new /obj/item/reagent_containers/hash/dabs(location)
+		new /obj/item/bongable/dab(location)
 
 //shit for effects
 /datum/mood_event/stoned
@@ -82,5 +82,8 @@
 
 /datum/reagent/drug/thc/hash //only exists to generate hash object
 	name = "hashish"
-	description = "Concentrated cannabis extract. Delivers a much better high when used in a bong."
+	description = "Concentrated cannabis extract."
 	color = "#cfa40c"
+
+/datum/reagent/drug/thc/processed // to prevent self duplication
+	name = "Processed THC"

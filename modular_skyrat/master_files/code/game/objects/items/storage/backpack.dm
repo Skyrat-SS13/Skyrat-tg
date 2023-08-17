@@ -16,7 +16,7 @@
 		/obj/item/smokable/crack = 10,
 		/obj/item/snortable/cocaine = 9,
 		/obj/item/reagent_brick/cocaine = 4,
-		/obj/item/reagent_containers/hashbrick = 13, //not contraband, but it'll be good padding, and there'll still be a black market for bulk goods
+		/obj/item/reagent_brick/hash = 13, //not contraband, but it'll be good padding, and there'll still be a black market for bulk goods
 		/obj/item/snortable/heroin = 8,
 		/obj/item/reagent_brick/heroin = 3,
 		/obj/item/smokable/blacktar = 12,
