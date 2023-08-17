@@ -434,8 +434,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/autopsy/human)
 
-
-// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
 /datum/techweb_node/adv_biotech
 	id = "adv_biotech"
 	display_name = "Advanced Biotechnology"
@@ -454,22 +452,10 @@
 		"piercesyringe",
 		"plasmarefiller",
 		"smoke_machine",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"monkey_helmet",
-		"brute2medicell",
-		"burn2medicell",
-		"toxin2medicell",
-		"oxy2medicell",
-		"relocatemedicell",
-		"tempmedicell",
-		"bodymedicell",
-		"clotmedicell",
-		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/autopsy/nonhuman)
-	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) // SKYRAT EDIT CHANGE - ORIGINAL : discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
+	discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -1474,17 +1460,14 @@
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
 	prereq_ids = list("adv_cyber_implants","weaponry","NVGtech","high_efficiency")
-// SKYRAT EDIT - REMOVED: X-rays+Thermals from here
 	design_ids = list(
 		"ci-antidrop",
 		"ci-antistun",
+		"ci-thermals",
 		"ci-thrusters",
-<<<<<<< HEAD
-=======
 		"ci-xray",
 		"ci-thermals-moth",
 		"ci-xray-moth",
->>>>>>> 8ffd321fc01 (Cybernetic Moth Eyes : Cybermoff 2077 (#77617))
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
