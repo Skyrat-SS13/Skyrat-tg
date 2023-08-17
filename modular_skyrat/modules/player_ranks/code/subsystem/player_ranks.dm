@@ -121,12 +121,30 @@ SUBSYSTEM_DEF(player_ranks)
 	update_all_prefs_unlock_contents()
 
 
-
+/**
+ * Handles updating all of the preferences datums to have the appropriate
+ * `unlock_content` and `max_save_slots` once donators are loaded.
+ */
 /datum/controller/subsystem/player_ranks/proc/update_all_prefs_unlock_contents()
 	for(var/datum/preferences/prefs as anything in GLOB.preferences_datums)
 		prefs.unlock_content = !!prefs.parent.IsByondMember() || is_donator(prefs.parent)
 		if(prefs.unlock_content)
 			prefs.max_save_slots = 50
+
+
+/**
+ * Updates the `unlock_contents` and the `max_save_slots`
+ *
+ * Arguments:
+ * * prefs - The preferences datum to check the unlock_content eligibility.
+ */
+/datum/controller/subsystem/player_ranks/proc/update_prefs_unlock_content(datum/preferences/prefs)
+	if(!prefs)
+		return
+
+	prefs.unlock_content = !!prefs.parent.IsByondMember() || is_donator(prefs.parent)
+	if(prefs.unlock_content)
+		prefs.max_save_slots = 50
 
 
 /// Handles loading mentors either via SQL or using the legacy system,
