@@ -62,6 +62,26 @@
 	if(genital?.uses_skin_color && HAS_TRAIT(human, TRAIT_USES_SKINTONES))
 		return skintone2hex(human.skin_tone)
 
+
+/datum/sprite_accessory/genital/get_special_icon(mob/living/carbon/human/target_human, passed_state)
+	var/species = target_human?.dna.species.id
+	if(species != SPECIES_TESHARI)
+		return icon
+
+	return get_teshari_icon()
+
+
+/**
+ * Returns the appropriate Teshari icon for this sprite_accessory, defaults to
+ * `icon` if not implemented by its children.
+ *
+ * Done like this because static variables can't be re-defined on children and
+ * only affect them.
+ */
+/datum/sprite_accessory/genital/proc/get_teshari_icon()
+	return icon
+
+
 /datum/sprite_accessory/genital/penis
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/penis
@@ -81,7 +101,7 @@
 	var/taur_mode = target_mob?.get_taur_mode()
 
 	if(!taur_mode || !target_mob.dna.features["penis_taur_mode"] || taur_mode & STYLE_TAUR_SNAKE)
-		return icon
+		return ..()
 
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
 
@@ -93,11 +113,10 @@
 
 	return TAUR_DIMENSION_X
 
-/datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/target_mob)
-	var/species = target_mob?.dna.species.id
-	if(!species == SPECIES_TESHARI)
-		return icon
+
+/datum/sprite_accessory/genital/penis/get_teshari_icon()
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_penis_onmob.dmi'
+
 
 /datum/sprite_accessory/genital/penis/none
 	icon_state = "none"
@@ -162,7 +181,7 @@
 	var/taur_mode = target_mob?.get_taur_mode()
 
 	if(!taur_mode || !target_mob.dna.features["penis_taur_mode"] || taur_mode & STYLE_TAUR_SNAKE)
-		return icon
+		return ..()
 
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
 
@@ -174,11 +193,10 @@
 
 	return TAUR_DIMENSION_X
 
-/datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/target_mob)
-	var/species = target_mob?.dna.species.id
-	if(!species == SPECIES_TESHARI)
-		return icon
+
+/datum/sprite_accessory/genital/testicles/get_teshari_icon()
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_testicles_onmob.dmi'
+
 
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
@@ -209,11 +227,10 @@
 	genetic = TRUE
 	var/alt_aroused = TRUE
 
-/datum/sprite_accessory/genital/vagina/get_special_icon(mob/living/carbon/human/target_mob)
-	var/species = target_mob?.dna.species.id
-	if(!species == SPECIES_TESHARI)
-		return icon
+
+/datum/sprite_accessory/genital/vagina/get_teshari_icon()
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_vagina_onmob.dmi'
+
 
 /datum/sprite_accessory/genital/vagina/none
 	icon_state = "none"
@@ -303,11 +320,10 @@
 	genital_location = CHEST
 	genetic = TRUE
 
-/datum/sprite_accessory/genital/breasts/get_special_icon(mob/living/carbon/human/target_mob)
-	var/species = target_mob?.dna.species.id
-	if(!species == SPECIES_TESHARI)
-		return icon
+
+/datum/sprite_accessory/genital/breasts/get_teshari_icon()
 	return 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/teshari_breasts_onmob.dmi'
+
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
