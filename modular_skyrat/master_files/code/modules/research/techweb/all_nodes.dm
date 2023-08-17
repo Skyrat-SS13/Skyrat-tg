@@ -217,7 +217,7 @@
 		"ci-xray-moth",
 	)
 
-/datum/techweb_node/cyborg_upg_med
+/datum/techweb_node/cyborg_upg_med/New()
 	..()
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
