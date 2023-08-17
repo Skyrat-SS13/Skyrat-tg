@@ -44,33 +44,44 @@
 		waiting = FALSE
 
 	var/current_dock = getDockedId()
-	if (current_dock && current_dock == ARRIVALS_STATION)
-		if (check_occupied())
-			if (waiting)
-				timer = 0
-				waiting = FALSE
-				if(console && console.last_cancel_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
-					console.say("Lifesigns detected onboard, automatic return aborted.")
-					console.last_cancel_announce = world.time
+	if (current_dock != ARRIVALS_STATION)
+		return
+
+	if(check_occupied())
+		if(!waiting)
 			return
-		if (!timer && !waiting)
-			setTimer(wait_time)
-			waiting = TRUE
-			if(console && console.last_depart_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
-				console.say("Commencing automatic return subroutine in [wait_time / 10] seconds.")
-				console.last_depart_announce = world.time
+
+		timer = 0
+		waiting = FALSE
+
+		if(console && console.last_cancel_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
+			console.say("Lifesigns detected onboard, automatic return aborted.")
+			console.last_cancel_announce = world.time
+
+		return
+
+	if(timer || waiting)
+		return
+
+	setTimer(wait_time)
+	waiting = TRUE
+
+	if(console && console.last_depart_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
+		console.say("Commencing automatic return subroutine in [wait_time / 10] seconds.")
+		console.last_depart_announce = world.time
 
 /obj/docking_port/mobile/arrivals_skyrat/getModeStr()
 	. = ..()
 	return waiting ? "RTN" : .
 
 /**
- * Checks if our shuttle is occupied by someone or not. Ignores camera eyes and ghosts.
+ * Checks if our shuttle is occupied by someone alive, and returns `TRUE` if it is, `FALSE` otherwise.
 */
 /obj/docking_port/mobile/arrivals_skyrat/proc/check_occupied()
 	for(var/alive_player in GLOB.alive_player_list)
 		if (get_area(alive_player) in shuttle_areas)
 			return TRUE
+
 	return FALSE
 
 /obj/machinery/computer/shuttle/arrivals
