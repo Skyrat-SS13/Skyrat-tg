@@ -357,33 +357,6 @@
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
-/obj/item/gun/ballistic/rifle/boltaction/sporterized
-	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... \"modernized\" Sakhno rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
-	<br><br>\
-	<i>BRAND NEW: Cannot be sawn off.</i>"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	icon_state = "bubba"
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "bubba"
-	inhand_icon_state = "enchanted_rifle" // Not actually magical looking, just looks closest to this one
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	can_be_sawn_off = FALSE
-
-/obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
-	bolt_locked = TRUE // so the bolt starts visibly open
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
-
-/obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "archangel extended internal magazine"
-	desc = "How did you get it out?"
-	ammo_type = /obj/item/ammo_casing/strilka310
-	caliber = CALIBER_STRILKA310
-	max_ammo = 8
-
-/obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
-	start_empty = TRUE
-
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
