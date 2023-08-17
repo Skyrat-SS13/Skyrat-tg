@@ -712,7 +712,7 @@
 	name = "CIN Military Surplus Crate"
 	desc = "A collection of surplus equipment sourced from the Coalition of Independent Nations' military stockpiles. Likely to contain old and outdated equipment, as is the nature of surplus."
 	contraband = TRUE
-	cost = CARGO_CRATE_VALUE * 12
+	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
 		/obj/item/storage/box/nri_rations,
 		/obj/item/storage/toolbox/ammobox/strilka310,
