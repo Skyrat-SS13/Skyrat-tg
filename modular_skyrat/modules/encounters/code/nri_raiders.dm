@@ -521,25 +521,30 @@ GLOBAL_VAR(first_officer)
 
 /datum/antagonist/cop/create_team(datum/team/cop/new_team)
 	if(!new_team)
-		for(var/datum/antagonist/cop/R in GLOB.antagonists)
-			if(!R.owner)
-				stack_trace("Antagonist datum without owner in GLOB.antagonists: [R]")
+		for(var/datum/antagonist/cop/cop in GLOB.antagonists)
+			if(!cop.owner)
+				stack_trace("Antagonist datum without owner in GLOB.antagonists: [cop]")
 				continue
-			if(R.crew)
-				crew = R.crew
+
+			if(cop.crew)
+				crew = cop.crew
 				return
-		if(!new_team)
-			crew = new /datum/team/cop
-			crew.forge_objectives()
-			return
+
+		// No existing team was found, time to create one.
+		crew = new /datum/team/cop
+		crew.forge_objectives()
+		return
+
 	if(!istype(new_team))
-		stack_trace("Wrong team type passed to [type] initialization.")
+		stack_trace("Wrong team type passed to [type] initialization: [new_team.type].")
+
 	crew = new_team
 
 /datum/antagonist/cop/on_gain()
 	if(crew)
 		objectives |= crew.objectives
-	. = ..()
+
+	return ..()
 
 /datum/antagonist/cop/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -566,10 +571,14 @@ GLOBAL_VAR(first_officer)
 	add_objective(new /datum/objective/steal_n_of_type/contraband)
 	add_objective(new /datum/objective/fortify)
 	add_objective(new /datum/objective/survive)
-	for(var/datum/mind/M in members)
-		var/datum/antagonist/cop/R = M.has_antag_datum(/datum/antagonist/cop)
-		if(R)
-			R.objectives |= objectives
+
+	for(var/datum/mind/member_mind in members)
+		var/datum/antagonist/cop/cop = member_mind.has_antag_datum(/datum/antagonist/cop)
+
+		if(!cop)
+			continue	
+
+		cop.objectives |= objectives
 
 /datum/objective/policing
 	name = "policing"
