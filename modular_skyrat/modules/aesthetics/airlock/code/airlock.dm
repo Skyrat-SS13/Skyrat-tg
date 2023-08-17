@@ -131,11 +131,12 @@
 		pre_light_range = door_light_range
 		pre_light_power = door_light_power
 		if(has_environment_lights)
-			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
+			set_light(l_range = pre_light_range, l_power = pre_light_power, l_color = pre_light_color, l_on = TRUE)
 			if(multi_tile)
-				filler.set_light(pre_light_range, pre_light_power, pre_light_color)
+				filler.set_light(l_range = pre_light_range, l_power = pre_light_power, l_color = pre_light_color, l_on = TRUE)
 	else
 		lights_overlay = ""
+		set_light(l_on = FALSE)
 
 	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 
