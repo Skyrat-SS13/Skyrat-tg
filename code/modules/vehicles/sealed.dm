@@ -49,15 +49,6 @@
 /obj/vehicle/sealed/proc/mob_try_enter(mob/rider)
 	if(!istype(rider))
 		return FALSE
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION
-	if(HAS_TRAIT(M, TRAIT_OVERSIZED))
-		to_chat(M, span_warning("You are far too big for this!"))
-		return FALSE
-	//SKYRAT EDIT END
-	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(enter_checks), M)))
-		mob_enter(M)
-=======
 	var/enter_delay = get_enter_delay(rider)
 	if (enter_delay == 0)
 		if (enter_checks(rider))
@@ -66,7 +57,6 @@
 		return FALSE
 	if (do_after(rider, enter_delay, src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(enter_checks), rider)))
 		mob_enter(rider)
->>>>>>> 32b554a180a (The speedwagon is now a car (#77672))
 		return TRUE
 	return FALSE
 
