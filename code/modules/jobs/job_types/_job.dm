@@ -288,6 +288,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
+	var/messenger = /obj/item/storage/backpack/messenger //SKYRAT EDIT - Messenger Bags
 
 	var/pda_slot = ITEM_SLOT_BELT
 
@@ -302,8 +303,12 @@
 				back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
 			if(LSATCHEL)
 				back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
+			if(GMESSENGER)
+				back = /obj/item/storage/backpack/messenger //SKYRAT EDIT - Messenger Bags
 			if(DSATCHEL)
 				back = satchel //Department satchel
+			if(DMESSENGER)
+				back = messenger //SKYRAT EDIT - Messenger Bags
 			if(DDUFFELBAG)
 				back = duffelbag //Department duffel bag
 			else

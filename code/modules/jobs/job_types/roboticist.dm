@@ -52,6 +52,7 @@
 	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags
 	satchel = /obj/item/storage/backpack/satchel/science/robo //SKYRAT CHANGE - Roboticist Bags
 	duffelbag = /obj/item/storage/backpack/duffelbag/science/robo //SKYRAT ADDITION - Roboticist Bags
+	messenger = /obj/item/storage/backpack/messenger/science/robo // SKYRAT ADDITION - Roboticist Bags
 
 	pda_slot = ITEM_SLOT_LPOCKET
 	skillchips = list(/obj/item/skillchip/job/roboticist)

@@ -285,6 +285,7 @@
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt = 1,
 		/obj/item/clothing/suit/toggle/lawyer/greyscale = 1,
 		/obj/item/storage/backpack/satchel/explorer = 1,
+		/obj/item/storage/backpack/messenger/explorer = 1, //SKYRAT ADDITION - Messenger Bags
 		/obj/item/storage/bag/books = 1,
 		/obj/item/radio/headset/headset_srv = 2,
 	)

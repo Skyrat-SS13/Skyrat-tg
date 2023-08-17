@@ -39,6 +39,7 @@
 	values[GSATCHEL] = /obj/item/storage/backpack/satchel
 	values[LSATCHEL] = /obj/item/storage/backpack/satchel/leather
 	values[GDUFFELBAG] = /obj/item/storage/backpack/duffelbag
+	values[GMESSENGER] = /obj/item/storage/backpack/messenger //SKYRAT EDIT - Messenger Bags
 
 	// In a perfect world, these would be your department's backpack.
 	// However, this doesn't factor in assistants, or no high slot, and would
@@ -47,6 +48,7 @@
 	values[DBACKPACK] = /obj/item/storage/backpack/medic
 	values[DSATCHEL] = /obj/item/storage/backpack/satchel/med
 	values[DDUFFELBAG] = /obj/item/storage/backpack/duffelbag/med
+	values[DMESSENGER] = /obj/item/storage/backpack/messenger/med //SKYRAT EDIT - Messenger Bags
 
 	return values
 

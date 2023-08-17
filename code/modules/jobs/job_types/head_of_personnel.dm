@@ -66,6 +66,7 @@
 	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	duffelbag = /obj/item/storage/backpack/duffelbag/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
+	messenger = /obj/item/storage/backpack/messenger/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
 	chameleon_extras = list(
 		/obj/item/gun/energy/e_gun,

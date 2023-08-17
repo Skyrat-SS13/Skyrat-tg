@@ -51,6 +51,7 @@
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	messenger = /obj/item/storage/backpack/messenger/sec
 	head = /obj/item/clothing/head/corrections_officer
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/security

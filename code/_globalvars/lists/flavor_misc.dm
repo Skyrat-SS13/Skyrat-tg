@@ -147,17 +147,21 @@ GLOBAL_LIST_INIT(security_depts_prefs, sort_list(list(
 #define DBACKPACK "Department Backpack"
 #define DDUFFELBAG "Department Duffel Bag"
 #define DSATCHEL "Department Satchel"
+#define DMESSENGER "Department Messenger Bag" //SKYRAT EDIT - Messenger Bags
 #define GBACKPACK "Grey Backpack"
 #define GDUFFELBAG "Grey Duffel Bag"
 #define GSATCHEL "Grey Satchel"
+#define GMESSENGER "Grey Messenger Bag" //SKYRAT EDIT - Messenger Bags
 #define LSATCHEL "Leather Satchel"
 GLOBAL_LIST_INIT(backpacklist, list(
 	DBACKPACK,
 	DDUFFELBAG,
 	DSATCHEL,
+	DMESSENGER, //SKYRAT EDIT - Messenger Bags
 	GBACKPACK,
 	GDUFFELBAG,
 	GSATCHEL,
+	GMESSENGER, //SKYRAT EDIT - Messenger Bags
 	LSATCHEL,
 ))
 

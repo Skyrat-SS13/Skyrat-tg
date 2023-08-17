@@ -52,6 +52,7 @@
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
 	duffelbag = /obj/item/storage/backpack/duffelbag/science
+	messenger = /obj/item/storage/backpack/messenger/science // SKYRAT ADDITION - Messenger Bags
 
 /datum/outfit/job/scientist/pre_equip(mob/living/carbon/human/H)
 	..()
