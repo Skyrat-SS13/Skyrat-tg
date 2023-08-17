@@ -1542,7 +1542,7 @@
 	prereq_ids = list("biotech")
 	design_ids = list(
 		"biogenerator",
-		"flora_gun"
+		"flora_gun",
 		"gene_shears",
 		//SKYRAT EDIT - ADDITION MEDIGUNS
 		"salvemedicell",
