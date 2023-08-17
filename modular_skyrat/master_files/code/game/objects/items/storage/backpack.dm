@@ -55,7 +55,7 @@
 	name = "industrial messenger bag"
 	desc = "A tough messenger bag made of advanced treated leather for fireproofing. It also has more pockets than usual."
 	icon_state = "messenger_engineering"
-	inhand_icon_state = "messenger_eng"
+	inhand_icon_state = "messenger_engineering"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/messenger/med
@@ -129,7 +129,7 @@
 	name = "captain's messenger bag"
 	desc = "An exclusive messenger bag for NanoTrasen officers, made of real whaleleather."
 	icon_state = "messenger_captain"
-	inhand_icon_state = "messenger_cap"
+	inhand_icon_state = "messenger_captain"
 
 /obj/item/storage/backpack/messenger/head_of_personnel
 	name = "head of personnel's messenger bag"
