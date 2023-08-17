@@ -230,7 +230,7 @@
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/combat_cyber_implants/New()
-	. = . = ..()
+	. = ..()
 	design_ids -= list(
 		"ci-thermals",
 		"ci-xray",
