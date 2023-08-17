@@ -16,6 +16,7 @@
 
 // MODULAR ADDITIONS
 
+//Base Nodes
 /datum/techweb_node/base/New()
 	. = ..()
 	design_ids += list(
@@ -50,6 +51,8 @@
 		"synth_heart",
 	)
 
+/////////////////////////Biotech/////////////////////////
+
 /datum/techweb_node/adv_biotech/New()
 	. = . = ..()
 	design_ids += list(
@@ -71,6 +74,8 @@
 		"smartdartgun",
 	)
 
+/////////////////////////EMP tech/////////////////////////
+
 /datum/techweb_node/emp_basic/New()
 	. = ..()
 	design_ids += list(
@@ -78,6 +83,8 @@
 		"bedmedicell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+////////////////////////Computer tech////////////////////////
 
 /datum/techweb_node/comptech/New()
 	. = ..()
@@ -112,17 +119,21 @@
 		"nifsoft_hud_cargo",
 	)
 
-/datum/techweb_node/cyber_organs/New()
-	. = ..()
-	design_ids += list(
-		"cybernetic_tongue",
-	)
+////////////////////////Medical////////////////////////
 
 /datum/techweb_node/genetics/New()
 	. = ..()
 	design_ids += list(
 		"self_actualization_device",
 	)
+
+/datum/techweb_node/cyber_organs/New()
+	. = ..()
+	design_ids += list(
+		"cybernetic_tongue",
+	)
+
+////////////////////////Tools////////////////////////
 
 /datum/techweb_node/botany/New()
 	. = ..()
@@ -135,6 +146,8 @@
 	design_ids += list(
 		"nifsoft_remover",
 	)
+
+/////////////////////////weaponry tech/////////////////////////
 
 /datum/techweb_node/weaponry/New()
 	. = ..()
@@ -154,6 +167,8 @@
 		"medigun_speed",
 	)
 
+////////////////////////Alien technology////////////////////////
+
 /datum/techweb_node/alien_bio/New()
 	. = ..()
 	design_ids += list(
@@ -162,6 +177,8 @@
 		"oxy3medicell",
 		"toxin3medicell",
 	)
+
+/////////////////////////engineering tech/////////////////////////
 
 /datum/techweb_node/adv_engi/New()
 	. = ..()
@@ -172,6 +189,8 @@
 		"tray_goggles_prescription",
 		"plumbing_eng",
 	)
+
+/////////////////////////robotics tech/////////////////////////
 
 /datum/techweb_node/robotics/New()
 	. = ..()
@@ -207,6 +226,8 @@
 
 // MODULAR REMOVALS
 
+////////////////////////Medical////////////////////////
+
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/combat_cyber_implants/New()
 	. = . = ..()
@@ -216,6 +237,8 @@
 		"ci-thermals-moth",
 		"ci-xray-moth",
 	)
+
+/////////////////////////robotics tech/////////////////////////
 
 /datum/techweb_node/cyborg_upg_med/New()
 	. = ..()
