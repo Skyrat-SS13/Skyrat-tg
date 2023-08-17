@@ -14,3 +14,9 @@
 	parts = list(/obj/item/bongable/hash = 4)
 	time = 20
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
+
+/datum/export/crack/hashbrick
+	cost = CARGO_CRATE_VALUE * 2
+	unit_name = "hash brick"
+	export_types = list(/obj/item/reagent_brick/hash)
+	include_subtypes = FALSE

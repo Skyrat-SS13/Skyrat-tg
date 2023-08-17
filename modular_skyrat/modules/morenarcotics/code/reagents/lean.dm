@@ -7,7 +7,7 @@
 
 /datum/chemical_reaction/lean
 	results = list(/datum/reagent/drug/lean = 5)
-	required_reagents = list(/datum/chemical_reaction/promethazine = 1, /datum/reagent/consumable/space_up = 5)
+	required_reagents = list(/datum/reagent/medicine/promethazine = 1, /datum/reagent/consumable/space_up = 5)
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG
 
 /datum/reagent/medicine/promethazine

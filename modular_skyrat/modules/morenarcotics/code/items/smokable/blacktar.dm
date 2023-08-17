@@ -6,3 +6,9 @@
 
 	smokable_reagent = /datum/reagent/drug/blacktar
 	reagent_amount = 5
+
+/datum/export/blacktar
+	cost = CARGO_CRATE_VALUE * 0.4
+	unit_name = "black tar heroin"
+	export_types = list(/obj/item/smokable/blacktar)
+	include_subtypes = FALSE

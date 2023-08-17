@@ -21,3 +21,15 @@
 	var/effective_impurity = min(1, (1 - purity)/0.5)
 	color = BlendRGB(initial(color), "#FAFAFA", effective_impurity)
 	update_icon()
+
+/datum/export/meth
+	cost = CARGO_CRATE_VALUE * 0.75
+	unit_name = "crack"
+	export_types = list(/obj/item/smokable/meth)
+	include_subtypes = FALSE
+
+/datum/export/bluesky
+	cost = CARGO_CRATE_VALUE * 0.6
+	unit_name = "crack"
+	export_types = list(/obj/item/smokable/bluesky)
+	include_subtypes = FALSE

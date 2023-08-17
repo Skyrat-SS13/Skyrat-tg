@@ -47,3 +47,15 @@
 	var/datum/reagent/drug/cocaine/powder_cocaine/brick_cocaine_reagent = crafted_brick.reagents.has_reagent(/datum/reagent/drug/cocaine/freebase_cocaine)
 	brick_cocaine_reagent.creation_purity = purity_hash[user]
 	brick_cocaine_reagent.purity = purity_hash[user]
+
+/datum/export/crack/crackbrick
+	cost = CARGO_CRATE_VALUE * 2.5
+	unit_name = "crack brick"
+	export_types = list(/obj/item/reagent_brick/crack)
+	include_subtypes = FALSE
+
+/datum/export/cocainebrick
+	cost = CARGO_CRATE_VALUE * 2
+	unit_name = "cocaine brick"
+	export_types = list(/obj/item/reagent_brick/cocaine)
+	include_subtypes = FALSE
