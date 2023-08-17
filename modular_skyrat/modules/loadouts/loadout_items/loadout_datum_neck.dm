@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 */
 
 /datum/loadout_item/neck/bowtie_black
-	name = "Recolorable Bowtie"
+	name = "Black Bowtie"
 	item_path = /obj/item/clothing/neck/bowtie
 
 /datum/loadout_item/neck/necktie_black
