@@ -17,20 +17,20 @@
 // MODULAR ADDITIONS
 
 /datum/techweb_node/base/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"polarizer",
 		"vox_gas_filter",
 	)
 
 /datum/techweb_node/cyborg/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"affection_module",
 	)
 
 /datum/techweb_node/basic_tools/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"bowl",
 		"drinking_glass",
@@ -38,7 +38,7 @@
 	)
 
 /datum/techweb_node/basic_medical/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"hospital_gown",
 		"synth_eyes",
@@ -51,7 +51,7 @@
 	)
 
 /datum/techweb_node/adv_biotech/New()
-	. = ..()
+	. = . = ..()
 	design_ids += list(
 		"monkey_helmet",
 		"brute2medicell",
@@ -65,14 +65,14 @@
 	)
 
 /datum/techweb_node/biotech/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"anesthetic_machine",
 		"smartdartgun",
 	)
 
 /datum/techweb_node/emp_basic/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"gownmedicell",
 		"bedmedicell",
@@ -80,13 +80,13 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/comptech/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"time_clock_frame",
 	)
 
 /datum/techweb_node/integrated_hud/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"health_hud_prescription",
 		"security_hud_prescription",
@@ -113,49 +113,49 @@
 	)
 
 /datum/techweb_node/cyber_organs/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"cybernetic_tongue",
 	)
 
 /datum/techweb_node/genetics/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"self_actualization_device",
 	)
 
 /datum/techweb_node/botany/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"salvemedicell",
 	)
 
 /datum/techweb_node/sec_basic/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"nifsoft_remover",
 	)
 
 /datum/techweb_node/weaponry/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"ammoworkbench_disk_lethal",
 	)
 
 /datum/techweb_node/adv_weaponry/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"ammo_workbench",
 	)
 
 /datum/techweb_node/electric_weapons/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"medigun_speed",
 	)
 
 /datum/techweb_node/alien_bio/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"brute3medicell",
 		"burn3medicell",
@@ -164,7 +164,7 @@
 	)
 
 /datum/techweb_node/adv_engi/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"engine_goggles_prescription",
 		"mesons_prescription",
@@ -174,33 +174,33 @@
 	)
 
 /datum/techweb_node/robotics/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
 	)
 
 /datum/techweb_node/neural_programming/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
 	)
 
 /datum/techweb_node/cyborg_upg_util/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"borg_upgrade_clamp",
 		"borg_upgrade_brush",
 	)
 
 /datum/techweb_node/cyborg_upg_engiminer/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"advanced_materials",
 		"inducer_module",
 	)
 
 /datum/techweb_node/cyborg_upg_med/New()
-	..()
+	. = ..()
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
 	)
@@ -209,7 +209,7 @@
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/combat_cyber_implants/New()
-	. = ..()
+	. = . = ..()
 	design_ids -= list(
 		"ci-thermals",
 		"ci-xray",
@@ -218,7 +218,7 @@
 	)
 
 /datum/techweb_node/cyborg_upg_med/New()
-	..()
+	. = ..()
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
 	)
