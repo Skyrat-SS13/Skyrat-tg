@@ -36,7 +36,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bilingual", "Foreigner"),
 		list("Spacer", "Paraplegic", "Settler"),
 		list("Photophobia", "Nyctophobia"),
-<<<<<<< HEAD
+		list("Settler", "Freerunning"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
@@ -44,9 +44,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("No Guns", "Pacifist"),
 		list("Spacer", "Oversized"),
 		//SKYRAT EDIT ADDITION END
-=======
-		list("Settler", "Freerunning"),
->>>>>>> c8266cf0a2e (Settler Quirk: Tame the Outdoors! Have trouble with tall shelves... (#77654))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
