@@ -648,7 +648,7 @@
 
 	if(QDELETED(eye_owner) || !ishuman(eye_owner)) //Other carbon mobs don't have eye color.
 		return
-
+	
 	if(!eye.on)
 		eye_icon_state = initial(eye_icon_state)
 		overlay_ignore_lighting = FALSE
