@@ -1124,7 +1124,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(attacker_style?.help_act(user, target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 
-	if(target.body_position == STANDING_UP || target.appears_alive())
+	if(target.body_position == STANDING_UP || (target.appears_alive() && target.stat != SOFT_CRIT && target.stat != HARD_CRIT))
 		target.help_shake_act(user)
 		if(target != user)
 			log_combat(user, target, "shaken")
@@ -1208,6 +1208,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		var/attack_direction = get_dir(user, target)
 		var/attack_type = attacking_bodypart.attack_type
+		var/unarmed_sharpness = attacking_bodypart.unarmed_sharpness //SKYRAT EDIT - If unarmed damage sharpness needs to be taken into account.
 		if(atk_effect == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
 			if(damage >= 9)
 				target.force_say()
@@ -1215,7 +1216,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
 		else//other attacks deal full raw damage + 1.5x in stamina damage
-			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
+			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT - Applies sharpness if it does - ORIGINAL: target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
 			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			if(damage >= 9)
 				target.force_say()

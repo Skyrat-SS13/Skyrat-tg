@@ -324,7 +324,6 @@
 	mob_biotypes = MOB_ROBOTIC
 	health = 75
 	maxHealth = 75
-	healable = 0
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	attack_verb_continuous = "claws"

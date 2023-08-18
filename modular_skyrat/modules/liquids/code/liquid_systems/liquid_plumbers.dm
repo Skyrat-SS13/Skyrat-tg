@@ -28,9 +28,6 @@
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
 
-	///category for plumbing RCD
-	category = "Liquids"
-
 /obj/machinery/plumbing/floor_pump/Initialize(mapload, bolt, layer)
 	. = ..()
 	RegisterSignal(src, COMSIG_OBJ_HIDE, PROC_REF(on_hide))
@@ -301,21 +298,40 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
 	icon_state = "plumberer_engi"
+	var/static/list/engineering_design_types = list(
+		//category 1 Synthesizers i.e devices which creates , reacts & destroys chemicals
+		"Synthesizers" = list(
+			/obj/machinery/plumbing/disposer = 10,
+		),
 
-/obj/item/construction/plumbing/engineering/set_plumbing_designs()
-	plumbing_design_types = list(
-		/obj/machinery/duct = 1,
-		/obj/machinery/plumbing/input = 5,
-		/obj/machinery/plumbing/output = 5,
-		/obj/machinery/plumbing/tank = 20,
-		/obj/machinery/plumbing/acclimator = 10,
-		/obj/machinery/plumbing/filter = 5,
-		/obj/machinery/plumbing/splitter = 5,
-		/obj/machinery/plumbing/disposer = 10,
-		/obj/machinery/plumbing/floor_pump/input = 20,
-		/obj/machinery/plumbing/floor_pump/output = 20,
-		/obj/structure/drain = 5,
+		//category 2 distributors i.e devices which inject , move around , remove chemicals from the network
+		"Distributors" = list(
+			/obj/machinery/duct = 1,
+			/obj/machinery/plumbing/layer_manifold = 5,
+			/obj/machinery/plumbing/input = 5,
+			/obj/machinery/plumbing/filter = 5,
+			/obj/machinery/plumbing/splitter = 5,
+			/obj/machinery/plumbing/sender = 20,
+			/obj/machinery/plumbing/output = 5,
+		),
+
+		//category 3 Storage i.e devices which stores & makes the processed chemicals ready for consumption
+		"Storage" = list(
+			/obj/machinery/plumbing/tank = 20,
+			/obj/machinery/plumbing/acclimator = 10,
+		),
+
+		//category 4 liquids
+		"Liquids" = list(
+			/obj/structure/drain = 5,
+			/obj/machinery/plumbing/floor_pump/input = 20,
+			/obj/machinery/plumbing/floor_pump/output = 20,
+		),
 	)
+
+/obj/item/construction/plumbing/engineering/Initialize(mapload)
+	. = ..()
+	plumbing_design_types = engineering_design_types
 
 // Helpers for maps
 /obj/machinery/duct/supply

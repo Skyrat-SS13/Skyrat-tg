@@ -111,46 +111,6 @@
 	armour_penetration = 60
 
 /*
-*	.244 Acia
-*/
-
-/obj/item/ammo_casing/a762/rubber
-	name = ".244 Acia rubber bullet casing"
-	desc = "A .244 rubber bullet casing.\
-	<br><br>\
-	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
-	icon_state = "762-casing"
-	caliber = CALIBER_A762
-	projectile_type = /obj/projectile/bullet/a762/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/a762/rubber
-	name = ".244 rubber bullet"
-	damage = 15
-	stamina = 55
-	ricochets_max = 5
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.7
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/obj/item/ammo_casing/a762/ap
-	name = ".244 Acia armor-piercing bullet casing"
-	desc = "A .244 armor-piercing bullet casing.\
-	<br><br>\
-	<i>ARMOR-PIERCING: Improved armor-piercing capabilities, in return for less outright damage.</i>"
-	projectile_type = /obj/projectile/bullet/a762/ap
-	custom_materials = AMMO_MATS_AP
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/a762/ap
-	name = ".244 armor-piercing bullet"
-	damage = 50
-	armour_penetration = 60
-
-/*
 *	.34 ACP
 */
 

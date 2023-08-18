@@ -822,6 +822,7 @@
 	// SKYRAT EDIT END
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
+	user.voice_style = chosen_profile.voice_style
 
 	chosen_dna.transfer_identity(user, TRUE)
 
@@ -999,6 +1000,9 @@
 	var/voice
 	/// The TTS filter of the profile filter
 	var/voice_filter = ""
+	/// The TTS voice style.
+	/// Valid values are TTS_VOICE_STYLE_* in the tts.dm defines.
+	var/voice_style = TTS_VOICE_STYLE_SPEECH
 
 
 /datum/changeling_profile/Destroy()
@@ -1056,6 +1060,7 @@
 
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
+	new_profile.voice_style = voice_style
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()

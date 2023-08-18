@@ -267,8 +267,6 @@
 
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
-
 	// SKYRAT EDIT ADDITION START
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
