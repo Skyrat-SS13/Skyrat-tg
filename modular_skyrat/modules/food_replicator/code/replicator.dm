@@ -19,5 +19,5 @@
 	)
 
 /obj/item/circuitboard/machine/biogenerator/food_replicator
-	name = "Colonial Supply Core (Machine Board)"
+	name = "Colonial Supply Core"
 	build_path = /obj/machinery/biogenerator/food_replicator
