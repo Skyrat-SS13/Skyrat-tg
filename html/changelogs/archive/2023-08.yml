@@ -785,3 +785,144 @@
       ship, renamed)
   - bugfix: Fixed an issue that made mapload medibots unable to load custom skins.
   - bugfix: fixed missing seating at the All American Diner
+2023-08-17:
+  Erol509:
+  - bugfix: Fixes .416 stabilis tranquilizer bullets, they no longer kill you, but
+      put you into sleep like they suposed to work.
+  LT3:
+  - admin: New config flag to split threat budget
+  SkyratBot:
+  - balance: Hunter and viper spider toxins no longer deal liver damage.
+  - balance: Tangle spider's acid injection per bite reduced from 5 to 2.5.
+  - bugfix: Colored ammo bands, such as those on .357 and .38 speedloaders, no longer
+      permanently disappear upon icon update.
+  - rscadd: Added the Bowtie! Bartenders start with one on, but they can also be found
+      in the Bardrobe, Autodrobe, and Clothesmate. No need to tie it either, it's
+      just a clip-on.
+  - rscadd: Added a Greyscale "Formal Jacket" of the style that most suits use, for
+      crew who want to make their own using the buttondown shirt.
+  - rscdel: Removed the generic Cook/Bartender uniforms and changed them to use the
+      Service buttondown w/ slacks.
+  - image: updated the majority of Lawyer suit sprites, along with the Cook's Apron-Jacket
+      and Hat, and updated/greyscaled Botany's Overalls! Also the Overalls are available
+      in the clothesmate, and the Cook Jorts' shirt is less crusty.
+  - balance: Ascending as an Ash Heretic now reduces the cooldown of Nightwatchers
+      Rebirth to ten seconds, additionally Ash ascension has Bomb immunity added to
+      the resistances it offers (no stun immunity though)
+  - qol: the chemistry heater can now be unwrenched.
+  - rscadd: 'Add policy for sentient mobs that were revived by lazarus injector (depends
+      on config)
+
+      add; Sentient mobs that were revived by malfunctioning lazarus injector now
+      get enslaved to whoever revived them.'
+  - bugfix: Servant golems get their master's real name (Won't be serving "Unknown"
+      if their master is wearing a mask)
+  - bugfix: Skeletons now heal burn damage with milk once again.
+  - balance: metal bat damage changed from 12 -> 20
+  - bugfix: Gravitational Anomalies will now correctly clean up after themselves,
+      instead of leaving an area of the station permanently heavy or with no gravity
+      at all.
+  - bugfix: items implanted on arms no longer become permanently stuck in-hand when
+      their limb is dismembered
+  - bugfix: quickly sheathing and unsheathing the vorpal scythe can no longer bug
+      out and prevent its effects from being applied
+  - bugfix: Head Revolutionaries no longer count towards a revolution's defeat if
+      they have become simplemobs, basic mobs, or xenomorphs.
+  - bugfix: fixed a disconnected APC in Delta's tech storage.
+  - bugfix: Beam rifles will no longer inappropriately retain any bonuses they may
+      gain from wizardry.
+  - bugfix: Inappropriate stack traces over bonuses being applied to components that
+      gain bonuses innately (like Mythril stacks) should cease.
+  - bugfix: Makes the ectoplasm anomaly not randomly move so deadchat can actually
+      control it
+  - bugfix: fixed border-only firedoors being able to be walked through while closed
+  - rscadd: You can now set your voice to just blips.
+  - bugfix: multiple balloon alerts when the plumbing RCD is low on ammo
+  - code_imp: organized all plumbing designs into static lists for memory savings
+  - refactor: removed unused vars for further memory savings
+  - bugfix: fixes a harddel in particle holders
+  - rscadd: Added 28 new food recipes!
+  - bugfix: Goliaths will try to attack mechs with their tentacles.
+  - spellcheck: fixed the rat king text saying that they're summoning rats
+  - bugfix: dismemberment moodlets are replaced by a lesser mood debuff when you recover
+      the limb in question.
+  - balance: dismemberment moodlets can now stack for each limb you lose, and are
+      cleared separately. Their descriptions have been updated to reflect this.
+  - bugfix: Spaceacillin will once again provide antiviral effects for the deceased
+2023-08-18:
+  AnywayFarus:
+  - bugfix: Player Loadout in Select Equipment(or Ctrl+Click on ghost mob) option
+      has been fixed.
+  Hatterhat:
+  - bugfix: For consistency's sake, piru dough is now a chemical reaction and not
+      a crafting recipe.
+  Iajret:
+  - bugfix: Mapped or spawned in rusted walls (such as on Birdstation or on charlie
+      ghost role) can now be fully cleaned without needing to deconstruct them.
+  LT3:
+  - bugfix: Base large airlock subtype no longer spawns a normal sized airlock
+  - image: Added mapping icons for large airlocks
+  - code_imp: Repathed all public airlocks to consistent naming
+  Melbert:
+  - balance: Red toolboxes go faster
+  Paxilmaniac:
+  - balance: The CIN military surplus crate's item table and corresponding weights
+      have been changed, the RC Makarov, pp-95, associated ammo for both of those,
+      and the crucifix can no longer spawn. Bolt action rifles mimic what they do
+      on tg, where they come in a case with a 20/80 percent chance to spawn either
+      a good, normal rifle/a rifle that can jam on occasion. All items in the crate
+      now have an equal chance of spawning when picked from, aside from the gun cases
+      which spawn at a slightly higher rate than everything else does.
+  - image: The Quartermaster's Archangel rifle has been given a new sprite and identity
+      to match the other boltactions that its based on
+  - image: AP and rubber .310 bullet casings now have a small colored bit at the bottom
+      to show that they are different from the normal all red bullets
+  - spellcheck: .310 ammo in the autolathe now has its (Lethality Warning) attached
+      to the end of the name like it should
+  SkyratBot:
+  - rscadd: Settler quirk! Conqueror the great outdoors....in space. Just make sure
+      nobody asks you to get anything from the top shelf.
+  - balance: Changeling arm blade has an armour penetration of 35%.
+  - balance: Changeling arm blade has a wound bonus of 10, from -20.
+  - balance: Changeling has a bare wound bonus of 10, from 20.
+  - bugfix: Moved the RD's plant to its proper place in Northstar
+  - admin: The Add Mob Ability menu now prefixes the typepath of the ability with
+      the ability's name, so you can much more quickly see what the ability is.
+  - bugfix: formal closet will no longer spawn with two 'error' icon suits inside
+      of it
+  - qol: Xenomorph Sentinel and Ambusher Spider's sneak ability now has a transition
+      to a lower alpha as opposed to being immediate.
+  - qol: The sneak ability now uses balloon alerts as opposed to chat alerts.
+  - bugfix: Fixed the Xenomorph Sentinel's Sneak ability icon being an error.
+  - spellcheck: Fixed a lack of plurality when ejecting multiple casings from a revolver.
+  - bugfix: fixes all the martian drinks having 20 boozepower
+  - rscadd: Engineers now have an RCD round start.
+  - balance: RCD construction/deconstruction effects can now be attacked in order
+      to cancel them. You can get the anti-disruption upgrade disk to prevent this.
+  - balance: RCD construction/deconstruction is now slower if you already have another
+      effect up. This does not effect reconstruction.
+  - balance: Both of the above effects do not effect the CE's roundstart RCD, nor
+      any other RCDs such as combat RCDs.
+  - image: bowtie sprite has been tweaked slightly to look a little bit more bowtie-ish
+  - bugfix: Turning into a space dragon with the polymorphic inverter will no longer
+      leave you existing in two places
+  - balance: You can no longer use the belt to transform into monkeys or xenomorphs,
+      for technical reasons.
+  - balance: you cant speed up the big slappy with slime potion
+  - bugfix: Fixed some jank with the dynamic threat curve.
+  - bugfix: replaced injector with working passive vent in birdshot incinerator
+  - bugfix: conveyor lever in birdshot incinerator
+  - rscadd: cybernetic moth eyes and their variants
+  - bugfix: luminescent eyes no longer make you look like a cyclops in the dark
+  - admin: Adds Spider, Goliath, and Meteor Heart actions to the "Grant Mob Action"
+      menu.
+  - rscdel: Removed tiny mob sprite abilities for large mobs
+  - rscadd: Add a Self Seethrough ability, given to most large mobs and all mobs affected
+      by a fugu gland
+  - bugfix: Space Dragon's overlay will no longer vanish at times
+  - spellcheck: fixes the name of the incline bench press
+  timothymtorres:
+  - qol: Add pickaxe to basic tools techweb
+  vinylspiders:
+  - bugfix: the new recolorable bowties are no longer missing from loadouts
+  - bugfix: fixes generic tanks not being printable

@@ -11,14 +11,14 @@
 	pickup_sound = 'sound/items/handling/component_pickup.ogg'
 
 /obj/item/crafting_conversion_kit/mosin_pro
-	name = "\improper FTU 'Archangel' precision rifle stock (desert tan)"
-	desc = "It's a plastic rifle stock, an extended .310 Strilka magazine, and some off-brand sight. Unfortunately, it lacks the actual bits that make it go bang. \
-	It's probably a safe assumption that fixing that is an exercise left to the buyer."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	icon_state = "bubba_wit_no_bubba"
+	name = "\improper Xhihao 'Rengo' rifle conversion kit"
+	desc = "All the parts you need to make a 'Rengo' rifle, outside of the parts that make the gun actually a gun. \
+		It looks like this stuff could fit on an old Sakhno rifle, if only you had one of those around."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/cases.dmi'
+	icon_state = "xhihao_conversion_kit"
 
 /datum/crafting_recipe/mosin_pro
-	name = "Sakhno to FTU 'Archangel' Conversion"
+	name = "Sakhno to Xhihao 'Rengo' Conversion"
 	desc = "It's actually really easy to change the stock on your Sakhno. Anyone can do it. It takes roughly thirty seconds and a screwdriver."
 	result = /obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
 	reqs = list(

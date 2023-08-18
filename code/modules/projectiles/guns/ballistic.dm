@@ -518,7 +518,7 @@
 			if(T && is_station_level(T.z))
 				SSblackbox.record_feedback("tally", "station_mess_created", 1, CB.name)
 		if (num_unloaded)
-			balloon_alert(user, "[num_unloaded] [cartridge_wording] unloaded")
+			balloon_alert(user, "[num_unloaded] [cartridge_wording]\s unloaded")
 			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - this is normally handled by eject_magazine() but internal magazines are a special case
 			playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
 			update_appearance()
