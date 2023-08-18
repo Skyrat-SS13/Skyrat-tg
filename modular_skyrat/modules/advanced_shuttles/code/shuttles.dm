@@ -61,6 +61,7 @@
 	suffix = "skyrat"
 	name = "Standard Emergency Shuttle"
 	description = "Nanotrasen's standard issue emergency shuttle."
+	occupancy_limit = 60
 
 /datum/map_template/shuttle/labour/skyrat
 	name = "NMC Drudge (Labour)"

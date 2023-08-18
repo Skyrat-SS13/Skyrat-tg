@@ -87,14 +87,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/rank/civilian/bartender/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
-/obj/item/clothing/under/rank/civilian/chef/skirt
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	gets_cropped_on_taurs = FALSE
-
 /obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
