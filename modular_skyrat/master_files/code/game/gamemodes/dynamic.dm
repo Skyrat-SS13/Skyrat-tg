@@ -28,8 +28,11 @@
 	/// Desired median point for midrounds, plus or minus the midround_roll_distance.
 	var/midround_median_frequency = 36000
 
-/// Divides threat budget, in this case pure midround because Skyrat doesn't have roundstart antags.
+/// Divides threat budget based on the server config
 /datum/game_mode/dynamic/generate_budgets()
+	if(CONFIG_GET(flag/split_threat_budget))
+		return ..()
+
 	round_start_budget = 0
 	initial_round_start_budget = 0
 	mid_round_budget = threat_level
