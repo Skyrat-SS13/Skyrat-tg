@@ -1312,6 +1312,17 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"avS" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	name = "The Girly Boar"
+	},
+/turf/open/floor/iron/dark/textured_half,
+/area/station/service/bar/atrium)
 "awa" = (
 /turf/open/openspace,
 /area/station/science/ordnance)
@@ -3653,9 +3664,21 @@
 "bhK" = (
 /obj/structure/table,
 /obj/item/folder/blue{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/item/paper_bin/carbon{
+	pixel_x = 5;
+	pixel_y = 18
+	},
+/obj/item/stamp/head/hop{
+	pixel_y = 5;
 	pixel_x = 8
 	},
-/obj/item/papercutter,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hop)
 "bhV" = (
@@ -8204,7 +8227,10 @@
 "cyF" = (
 /obj/structure/table/wood,
 /obj/machinery/recharger,
-/obj/item/melee/chainofcommand,
+/obj/item/coin/plasma{
+	pixel_y = 13;
+	pixel_x = -6
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "cyG" = (
@@ -9042,13 +9068,6 @@
 /mob/living/simple_animal/bot/secbot/beepsky,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
-"cKp" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Hydroponics"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
-/turf/open/floor/iron/textured_half,
-/area/station/service/hydroponics)
 "cKq" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10499,7 +10518,9 @@
 /area/station/security/checkpoint/medical)
 "dho" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/secure/briefcase{
+	pixel_y = 5
+	},
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron,
 /area/station/command/bridge)
@@ -10827,8 +10848,7 @@
 /area/station/service/bar/backroom)
 "dmG" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/coin/plasma,
+/obj/item/camera,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "dmI" = (
@@ -10982,8 +11002,10 @@
 /turf/open/floor/wood/large,
 /area/mine/eva/lower)
 "doT" = (
-/obj/item/hand_labeler,
-/obj/item/assembly/timer,
+/obj/item/assembly/timer{
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /obj/structure/table,
 /turf/open/floor/wood,
 /area/station/command/meeting_room)
@@ -16249,7 +16271,10 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/pen,
+/obj/item/pen{
+	pixel_x = 11;
+	pixel_y = 2
+	},
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/station/command/meeting_room)
@@ -17424,8 +17449,13 @@
 /area/station/maintenance/starboard/aft)
 "fue" = (
 /obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 14
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "fum" = (
@@ -20328,6 +20358,9 @@
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /obj/machinery/newscaster/directional/west,
+/obj/item/wrench{
+	pixel_y = 17
+	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "grD" = (
@@ -21350,7 +21383,9 @@
 "gKk" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/secure/safe/caps_spare/directional/east,
-/obj/item/papercutter,
+/obj/item/papercutter{
+	pixel_x = 7
+	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "gKl" = (
@@ -22167,7 +22202,9 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/pen,
+/obj/item/pen{
+	pixel_x = 12
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "gYG" = (
@@ -22197,11 +22234,18 @@
 /area/station/medical/virology)
 "gZj" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/emergency,
-/obj/item/wrench,
+/obj/item/storage/toolbox/emergency{
+	pixel_y = 9
+	},
 /obj/item/assembly/timer,
-/obj/item/assembly/signaler,
-/obj/item/assembly/signaler,
+/obj/item/assembly/signaler{
+	pixel_y = -7;
+	pixel_x = 7
+	},
+/obj/item/assembly/signaler{
+	pixel_y = -12;
+	pixel_x = -8
+	},
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron,
 /area/station/command/bridge)
@@ -23022,7 +23066,15 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Captain's Office"
 	},
-/obj/item/storage/lockbox/medal,
+/obj/item/storage/lockbox/medal{
+	pixel_y = 8
+	},
+/obj/item/pinpointer/nuke{
+	pixel_y = -9
+	},
+/obj/item/disk/nuclear{
+	pixel_y = -8
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "hpm" = (
@@ -23848,7 +23900,10 @@
 /area/station/commons/lounge)
 "hCV" = (
 /obj/structure/table/wood,
-/obj/item/hand_tele,
+/obj/item/hand_tele{
+	pixel_y = 11
+	},
+/obj/item/melee/chainofcommand,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "hDb" = (
@@ -27512,17 +27567,6 @@
 /obj/machinery/duct,
 /turf/open/floor/wood/tile,
 /area/station/service/theater)
-"iMh" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "The Girly Boar"
-	},
-/turf/open/floor/iron/dark/textured_half,
-/area/station/service/bar/atrium)
 "iMj" = (
 /obj/structure/closet/lasertag/blue,
 /obj/effect/landmark/start/hangover/closet,
@@ -28628,6 +28672,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"jcC" = (
+/obj/machinery/requests_console/directional/north{
+	department = "Ordnance";
+	name = "Ordnance Lab Requests Console"
+	},
+/turf/open/floor/iron/white,
+/area/station/science/ordnance)
 "jcP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral{
@@ -30566,6 +30617,17 @@
 "jNp" = (
 /turf/closed/wall/r_wall,
 /area/station/security/holding_cell)
+"jNq" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	name = "The Girly Boar"
+	},
+/turf/open/floor/iron/dark/textured_half,
+/area/station/service/bar/atrium)
 "jNA" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/junction{
@@ -32354,13 +32416,11 @@
 /area/station/security/holding_cell)
 "kpp" = (
 /obj/structure/table/wood,
-/obj/item/storage/box/matches,
-/obj/item/razor{
-	pixel_x = -4;
-	pixel_y = 2
+/obj/item/clothing/mask/cigarette/cigar{
+	pixel_y = 10;
+	pixel_x = 7
 	},
-/obj/item/clothing/mask/cigarette/cigar,
-/obj/item/reagent_containers/cup/glass/flask/gold,
+/obj/item/storage/box/matches,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
 "kpu" = (
@@ -33088,6 +33148,10 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
+/obj/item/multitool{
+	pixel_x = 9;
+	pixel_y = 4
+	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "kzG" = (
@@ -33221,7 +33285,9 @@
 /area/station/science/robotics/mechbay)
 "kBr" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular{
+	pixel_y = 5
+	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "kBL" = (
@@ -36866,6 +36932,10 @@
 /obj/structure/sink/directional/west,
 /obj/structure/mirror/directional/east,
 /obj/machinery/light/small/directional/north,
+/obj/item/razor{
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/iron/freezer,
 /area/station/command/heads_quarters/captain)
 "lIs" = (
@@ -38566,6 +38636,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
+"mnD" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	name = "Hydroponics"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/turf/open/floor/iron/textured_half,
+/area/station/service/hydroponics)
 "mnE" = (
 /obj/item/vending_refill/cigarette,
 /obj/structure/table/wood,
@@ -39395,9 +39472,8 @@
 "mBX" = (
 /obj/structure/table/wood,
 /obj/machinery/airalarm/directional/east,
-/obj/item/camera,
 /obj/item/storage/photo_album{
-	pixel_y = -10
+	pixel_y = -1
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
@@ -40572,6 +40648,22 @@
 	},
 /turf/open/floor/wood,
 /area/station/hallway/secondary/service)
+"mYs" = (
+/obj/machinery/computer/records/security{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/machinery/requests_console/directional/east{
+	department = "Security";
+	name = "Security Requests Console"
+	},
+/turf/open/floor/iron,
+/area/station/security/checkpoint/supply)
 "mYG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -43107,7 +43199,10 @@
 /area/station/security/checkpoint/medical)
 "nKe" = (
 /obj/structure/table,
-/obj/item/hand_tele,
+/obj/item/hand_tele{
+	pixel_y = 13;
+	pixel_x = 3
+	},
 /turf/open/floor/iron,
 /area/station/command/teleporter)
 "nKj" = (
@@ -45098,22 +45193,6 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted,
 /turf/open/floor/iron/white,
 /area/station/medical/break_room)
-"oqZ" = (
-/obj/machinery/computer/records/security{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red/half/contrasted{
-	dir = 4
-	},
-/obj/machinery/light/directional/east,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/effect/mapping_helpers/requests_console/information,
-/obj/machinery/requests_console/directional/east{
-	department = "Security";
-	name = "Security Requests Console"
-	},
-/turf/open/floor/iron,
-/area/station/security/checkpoint/supply)
 "orf" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -46645,14 +46724,9 @@
 /area/station/science/lab)
 "oPt" = (
 /obj/structure/table,
-/obj/item/paper_bin/carbon{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/pen,
-/obj/item/stamp/head/hop,
-/obj/item/storage/wallet/random{
-	pixel_x = 9
+/obj/item/papercutter{
+	pixel_y = 6;
+	pixel_x = 8
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hop)
@@ -54486,8 +54560,9 @@
 /area/station/security/brig)
 "rns" = (
 /obj/structure/table/reinforced,
-/obj/item/aicard,
-/obj/item/multitool,
+/obj/item/aicard{
+	pixel_y = 6
+	},
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
 	},
@@ -58617,6 +58692,9 @@
 /area/station/service/library)
 "sEl" = (
 /obj/structure/table,
+/obj/item/hand_labeler{
+	pixel_y = 2
+	},
 /turf/open/floor/wood,
 /area/station/command/meeting_room)
 "sEp" = (
@@ -60975,6 +61053,10 @@
 /obj/machinery/recharger{
 	pixel_x = 5;
 	pixel_y = 2
+	},
+/obj/item/storage/wallet/random{
+	pixel_x = 6;
+	pixel_y = -24
 	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
@@ -70404,8 +70486,6 @@
 /area/station/engineering/atmos)
 "wwB" = (
 /obj/structure/table/wood,
-/obj/item/pinpointer/nuke,
-/obj/item/disk/nuclear,
 /obj/item/storage/secure/safe/directional/east,
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood,
@@ -71122,17 +71202,6 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
-"wJd" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "The Girly Boar"
-	},
-/turf/open/floor/iron/dark/textured_half,
-/area/station/service/bar/atrium)
 "wJe" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -71222,7 +71291,13 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "wKw" = (
 /obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/glass/flask/gold{
+	pixel_x = 6;
+	pixel_y = 5
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
 "wKA" = (
@@ -74881,13 +74956,6 @@
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /turf/open/floor/iron/white,
 /area/station/maintenance/port/fore)
-"xQF" = (
-/obj/machinery/requests_console/directional/north{
-	department = "Ordnance";
-	name = "Ordnance Lab Requests Console"
-	},
-/turf/open/floor/iron/white,
-/area/station/science/ordnance)
 "xQG" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -190101,7 +190169,7 @@ thA
 rcY
 iDt
 uIf
-xQF
+jcC
 pOL
 pOL
 pOL
@@ -231217,7 +231285,7 @@ rMr
 bgK
 nZh
 iOS
-oqZ
+mYs
 fxn
 pRj
 kCn
@@ -240957,7 +241025,7 @@ idw
 eZj
 iuE
 bPg
-cKp
+mnD
 kDP
 kmQ
 xgy
@@ -242498,13 +242566,13 @@ tGZ
 tqZ
 mrF
 iFc
-wJd
+avS
 mIB
 uUV
 fmD
 fmD
 fmD
-iMh
+jNq
 lso
 lso
 lCi
