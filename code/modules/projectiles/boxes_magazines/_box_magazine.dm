@@ -93,7 +93,7 @@
 		return
 
 	for(var/i in max(1, stored_ammo.len) to max_ammo)
-		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		stored_ammo += new round_check(src)
 	update_appearance()
 
 ///gets a round from the magazine, if keep is TRUE the round will be moved to the bottom of the list.
@@ -115,7 +115,7 @@
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		R.forceMove(src)
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -126,7 +126,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+				R.forceMove(src)
 				return TRUE
 	return FALSE
 
@@ -182,7 +182,6 @@
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 
 /obj/item/ammo_box/update_icon_state()
-	. = ..()
 	var/shells_left = LAZYLEN(stored_ammo)
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
@@ -190,19 +189,20 @@
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
 
-/obj/item/ammo_box/update_overlays()
-	. = ..()
 	if(ammo_band_color && ammo_band_icon)
-		. += update_ammo_band()
+		update_ammo_band()
+
+	return ..()
 
 /obj/item/ammo_box/proc/update_ammo_band()
+	overlays.Cut()
 	var/band_icon = ammo_band_icon
 	if(!(length(stored_ammo)) && ammo_band_icon_empty)
 		band_icon = ammo_band_icon_empty
 	var/image/ammo_band_image = image(icon, src, band_icon)
 	ammo_band_image.color = ammo_band_color
 	ammo_band_image.appearance_flags = RESET_COLOR|KEEP_APART
-	return ammo_band_image
+	overlays += ammo_band_image
 
 ///Count of number of bullets in the magazine
 /obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)
@@ -222,17 +222,3 @@
 	for(var/obj/item/ammo in stored_ammo)
 		ammo.forceMove(turf_mag)
 		stored_ammo -= ammo
-<<<<<<< HEAD
-
-/obj/item/ammo_box/magazine/handle_atom_del(atom/A)
-	stored_ammo -= A
-	update_appearance()
-
-//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
-/obj/item/ammo_box/Destroy()
-	. = ..()
-	for(var/i in stored_ammo)
-		qdel(i)
-//SKYRAT EDIT END
-=======
->>>>>>> 1be27a4ffe9 (Dunking handle_atom_del() in the trash bin. (#77339))
