@@ -11,10 +11,11 @@
 	preserved_food = TRUE
 
 /obj/item/food/colonial_course/attack_self(mob/user, modifiers)
-	preserved_food = FALSE
-	icon_state = "[base_icon_state]_unwrapped"
-	to_chat(user, span_notice("You unpackage \the [src]."))
-	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
+	if(preserved_food)
+		preserved_food = FALSE
+		icon_state = "[base_icon_state]_unwrapped"
+		to_chat(user, span_notice("You unpackage \the [src]."))
+		playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 
 /obj/item/food/colonial_course/attack(mob/living/target, mob/user, def_zone)
 	if(preserved_food)
