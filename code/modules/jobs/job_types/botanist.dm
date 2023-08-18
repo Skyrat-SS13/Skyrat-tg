@@ -54,4 +54,3 @@
 	backpack = /obj/item/storage/backpack/botany
 	satchel = /obj/item/storage/backpack/satchel/hyd
 	duffelbag = /obj/item/storage/backpack/duffelbag/hydroponics
-	messenger = /obj/item/storage/backpack/messenger/hyd // SKYRAT ADDITION - Messenger Bags

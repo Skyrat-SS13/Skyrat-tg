@@ -110,12 +110,12 @@
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "messenger_security_black",
 			RESKIN_WORN_ICON_STATE = "messenger_security_black",
-			RESKIN_INHAND_STATE = "messenger_security_black"
+			RESKIN_INHAND_STATE = "messenger_security_black",
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "messenger_security_white",
 			RESKIN_WORN_ICON_STATE = "messenger_security_white",
-			RESKIN_INHAND_STATE = "messenger_security_white"
+			RESKIN_INHAND_STATE = "messenger_security_white",
 		),
 	)
 

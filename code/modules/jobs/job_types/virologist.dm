@@ -55,6 +55,5 @@
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/virology
-	messenger = /obj/item/storage/backpack/messenger/vir // SKYRAT ADDITION - Messenger Bags
 
 	box = /obj/item/storage/box/survival/medical

@@ -48,4 +48,3 @@
 	backpack = /obj/item/storage/backpack/genetics
 	satchel = /obj/item/storage/backpack/satchel/gen
 	duffelbag = /obj/item/storage/backpack/duffelbag/genetics
-	messenger = /obj/item/storage/backpack/messenger/gen // SKYRAT ADDITION - Messenger Bags

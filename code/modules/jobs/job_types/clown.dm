@@ -66,7 +66,6 @@
 	backpack = /obj/item/storage/backpack/clown
 	satchel = /obj/item/storage/backpack/clown
 	duffelbag = /obj/item/storage/backpack/duffelbag/clown //strangely has a duffel
-	messenger = /obj/item/storage/backpack/messenger/clown // SKYRAT ADDITION - Messenger Bags
 
 	box = /obj/item/storage/box/survival/hug
 	chameleon_extras = /obj/item/stamp/clown
