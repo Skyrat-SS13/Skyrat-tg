@@ -5,8 +5,10 @@
 /obj/item/clothing/suit/Initialize(mapload)
 	. = ..()
 	if(islist(allowed))
-		allowed += list(/obj/item/gun,
-						/obj/item/storage/belt/holster,)
+		allowed += list(/obj/item/gun/ballistic,
+					/obj/item/gun/energy,
+					/obj/item/gun/microfusion,
+					)
 
 //Define worn_icon_digi below here for suits so we don't have to make whole new .dm files for each
 /obj/item/clothing/suit/armor
