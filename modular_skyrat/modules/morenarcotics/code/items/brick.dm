@@ -21,7 +21,7 @@
 
 /obj/item/reagent_brick/attack_self(mob/user)
 	if(packed_item) // if this doesnt have a reagent in it, youre fucked
-		user.visible_message(span_notice("[user] starts breaking up the [src]."))
+		user.visible_message(span_notice("[user] starts breaking up [src]."))
 		if(do_after(user, 1 SECONDS))
 			to_chat(user, span_notice("You finish breaking up [src]."))
 			var/datum/reagent/packed_brick_reagent = locate(brick_reagent) in reagents.reagent_list
