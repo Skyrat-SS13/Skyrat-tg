@@ -259,6 +259,7 @@
 		"wirebrush",
 		"wirecutters",
 		"wrench",
+		"pickaxe",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"bowl",
@@ -281,6 +282,7 @@
 		"circular_saw",
 		"cybernetic_ears",
 		"cybernetic_eyes",
+		"cybernetic_eyes_moth",
 		"cybernetic_heart",
 		"cybernetic_liver",
 		"cybernetic_lungs",
@@ -433,8 +435,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/autopsy/human)
 
-
-// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
 /datum/techweb_node/adv_biotech
 	id = "adv_biotech"
 	display_name = "Advanced Biotechnology"
@@ -453,22 +453,10 @@
 		"piercesyringe",
 		"plasmarefiller",
 		"smoke_machine",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"monkey_helmet",
-		"brute2medicell",
-		"burn2medicell",
-		"toxin2medicell",
-		"oxy2medicell",
-		"relocatemedicell",
-		"tempmedicell",
-		"bodymedicell",
-		"clotmedicell",
-		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/autopsy/nonhuman)
-	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) // SKYRAT EDIT CHANGE - ORIGINAL : discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
+	discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -624,6 +612,7 @@
 		"emitter",
 		"firealarm_electronics",
 		"firelock_board",
+		"generic_tank",
 		"grounding_rod",
 		"high_cell",
 		"high_micro_laser",
@@ -1393,6 +1382,7 @@
 	design_ids = list(
 		"cybernetic_ears_u",
 		"cybernetic_eyes_improved",
+		"cybernetic_eyes_improved_moth",
 		"cybernetic_heart_tier2",
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
@@ -1416,6 +1406,8 @@
 		"cybernetic_ears_xray",
 		"ci-gloweyes",
 		"ci-welding",
+		"ci-gloweyes-moth",
+		"ci-welding-moth",
 		"cybernetic_heart_tier3",
 		"cybernetic_liver_tier3",
 		"cybernetic_lungs_tier3",
@@ -1470,11 +1462,14 @@
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
 	prereq_ids = list("adv_cyber_implants","weaponry","NVGtech","high_efficiency")
-// SKYRAT EDIT - REMOVED: X-rays+Thermals from here
 	design_ids = list(
 		"ci-antidrop",
 		"ci-antistun",
+		"ci-thermals",
 		"ci-thrusters",
+		"ci-xray",
+		"ci-thermals-moth",
+		"ci-xray-moth",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1546,10 +1541,11 @@
 	id = "botany"
 	display_name = "Botanical Engineering"
 	description = "Botanical tools"
-	prereq_ids = list("adv_engi", "biotech")
+	prereq_ids = list("biotech")
 	design_ids = list(
 		"biogenerator",
 		"flora_gun",
+		"gene_shears",
 		//SKYRAT EDIT - ADDITION MEDIGUNS
 		"salvemedicell",
 		//SKYRAT EDIT END
@@ -1559,7 +1555,8 @@
 		"adv_watering_can",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 3000)
+	required_experiments = list(/datum/experiment/scanning/random/plants/wild)
+	discount_experiments = list(/datum/experiment/scanning/random/plants/traits = 3000)
 
 /datum/techweb_node/exp_tools
 	id = "exp_tools"
@@ -1568,7 +1565,6 @@
 	prereq_ids = list("adv_engi")
 	design_ids = list(
 		"exwelder",
-		"gene_shears",
 		"handdrill",
 		"jawsoflife",
 		"laserscalpel",
@@ -1602,6 +1598,8 @@
 	description = "Unlocks new designs that improve rapid devices."
 	prereq_ids = list("adv_engi")
 	design_ids = list(
+		"rcd_upgrade_anti_interrupt",
+		"rcd_upgrade_cooling",
 		"rcd_upgrade_frames",
 		"rcd_upgrade_furnishing",
 		"rcd_upgrade_simple_circuits",
