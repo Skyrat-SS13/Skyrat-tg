@@ -132,14 +132,14 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-	if(to_handle == cell)
+/obj/item/gun/microfusion/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == cell)
 		cell = null
 		update_appearance()
-	if(to_handle == phase_emitter)
+	else if(gone == phase_emitter)
 		phase_emitter = null
 		update_appearance()
-	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
