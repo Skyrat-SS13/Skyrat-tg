@@ -33,7 +33,7 @@
 		"tongue" = "Tongue",
 		"Mouth implant" = "Mouth implant",
 		"Left Arm implant" = "Left Arm implant",
-		"Right Arm implant" = "Right Arm implant"
+		"Right Arm implant" = "Right Arm implant",
 	)
 
 	var/list/aug_support = list(

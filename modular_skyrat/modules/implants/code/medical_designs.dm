@@ -16,9 +16,13 @@
 	desc = "Long, sharp, double-edged razors installed within the fingers, functional for cutting. All kinds of cutting."
 	id = "ci-razor"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
+	materials = list (
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT
+	)
 	construction_time = 200
-	build_path = /obj/item/organ/internal/cyberimp/arm/razorclaws
+	build_path = /obj/item/organ/internal/cyberimp/arm/razor_claws
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_TOOLS
 	)

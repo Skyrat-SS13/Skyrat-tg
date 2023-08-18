@@ -1,4 +1,4 @@
-/obj/item/scratchingstone
+/obj/item/scratching_stone
 	name = "scratching stone"
 	icon = 'modular_skyrat/master_files/icons/obj/kitchen.dmi'
 	icon_state = "scratchingstone"

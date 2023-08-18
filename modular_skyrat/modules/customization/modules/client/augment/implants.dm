@@ -19,19 +19,19 @@
 /datum/augment_item/implant/l_arm
 	slot = AUGMENT_SLOT_LEFT_ARM_IMPLANT
 
-/datum/augment_item/implant/l_arm/razorclaws
+/datum/augment_item/implant/l_arm/razor_claws
     name = "Left Razor Claws"
     cost = 4
-    path = /obj/item/organ/internal/cyberimp/arm/razorclaws/lefthand
+    path = /obj/item/organ/internal/cyberimp/arm/razor_claws/lefthand
 
 //RIGHT ARM IMPLANTS
 /datum/augment_item/implant/r_arm
 	slot = AUGMENT_SLOT_RIGHT_ARM_IMPLANT
 
-/datum/augment_item/implant/r_arm/razorclaws
+/datum/augment_item/implant/r_arm/razor_claws
     name = "Right Razor Claws"
     cost = 4
-    path = /obj/item/organ/internal/cyberimp/arm/razorclaws/righthand
+    path = /obj/item/organ/internal/cyberimp/arm/razor_claws/righthand
 
 //EYES IMPLANTS
 /datum/augment_item/implant/eyes
