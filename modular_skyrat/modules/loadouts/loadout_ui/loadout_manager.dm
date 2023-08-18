@@ -244,6 +244,15 @@
 
 	to_chat(owner, examine_block(composed_message))
 
+/datum/loadout_manager/proc/display_quirk_restrictions(datum/loadout_item/item)
+	if(!length(item.restricted_species))
+		return
+	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
+	for(var/species_type in item.restricted_species)
+		composed_message += span_green("[species_type] <br>")
+
+	to_chat(owner, examine_block(composed_message))
+
 /// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
 /datum/loadout_manager/proc/rotate_model_dir(dir)
 	if(dir == "left")

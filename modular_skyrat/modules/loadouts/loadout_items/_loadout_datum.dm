@@ -52,6 +52,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/restricted_roles
 	/// If set, is a list of species which can get the loadout item
 	var/list/restricted_species
+	/// If set, is a list of quirks which can get the loadout item
+	var/list/restricted_quirks
 	/// Whether the item is restricted to supporters
 	var/donator_only
 	/// Whether the item requires a specific season in order to be available

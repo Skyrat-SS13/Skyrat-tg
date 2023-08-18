@@ -27,6 +27,9 @@
 /// Allows the user to instantly reload.
 #define TRAIT_INSTANT_RELOAD "instant_reload"
 
+/// Gives user a GUN roundstart.
+#define TRAIT_GUN_NUT "gun_nut"
+
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
 
