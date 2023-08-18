@@ -95,7 +95,7 @@
 		if(needed_amount > 0)
 			return FALSE
 
-	return R.check_requirements(a, requirements_list) // skjdfhjsk
+	return R.check_requirements(a, requirements_list)
 
 /datum/component/personal_crafting/proc/get_environment(atom/a, list/blacklist = null, radius_range = 1)
 	. = list()
@@ -464,7 +464,7 @@
 						result.forceMove(user.drop_location())
 				to_chat(user, span_notice("Constructed [crafting_recipe.name]."))
 				user.investigate_log("crafted [crafting_recipe]", INVESTIGATE_CRAFTING)
-				crafting_recipe.on_craft_completion(user, result) //asdasdlasd
+				crafting_recipe.on_craft_completion(user, result)
 			else
 				to_chat(user, span_warning("Construction failed[result]"))
 			busy = FALSE

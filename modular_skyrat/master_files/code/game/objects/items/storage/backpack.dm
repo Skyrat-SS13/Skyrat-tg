@@ -19,7 +19,7 @@
 		/obj/item/reagent_brick/hash = 13, //not contraband, but it'll be good padding, and there'll still be a black market for bulk goods
 		/obj/item/snortable/heroin = 8,
 		/obj/item/reagent_brick/heroin = 3,
-		/obj/item/smokable/blacktar = 12,
+		/obj/item/smokable/black_tar = 12,
 		/obj/item/storage/pill_bottle/stimulant = 9, //ephedrine and coffee. Can actually change whether someone gets out of a runaway situation
 		/obj/item/clothing/mask/cigarette/pipe/crackpipe = 15,
 		/obj/item/toy/cards/deck/syndicate = 10, //1tc, not balance breaking, small but premium commodity

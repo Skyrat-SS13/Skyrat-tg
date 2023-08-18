@@ -48,13 +48,13 @@
 	brick_cocaine_reagent.creation_purity = purity_hash[user]
 	brick_cocaine_reagent.purity = purity_hash[user]
 
-/datum/export/crack/crackbrick
+/datum/export/crack/crack_brick
 	cost = CARGO_CRATE_VALUE * 2.5
 	unit_name = "crack brick"
 	export_types = list(/obj/item/reagent_brick/crack)
 	include_subtypes = FALSE
 
-/datum/export/cocainebrick
+/datum/export/cocaine_brick
 	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "cocaine brick"
 	export_types = list(/obj/item/reagent_brick/cocaine)

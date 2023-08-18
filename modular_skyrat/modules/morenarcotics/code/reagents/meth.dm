@@ -26,25 +26,25 @@
 	for(var/used_reagent_type in required_reagents)//this is not an object
 		holder.remove_reagent(used_reagent_type, (created_volume * required_reagents[used_reagent_type]), safety = 1)
 
-/datum/chemical_reaction/crystal_bluesky
-	required_reagents = list(/datum/reagent/drug/bluesky = 10, /datum/reagent/hydrogen = 5, /datum/reagent/chlorine = 5)
+/datum/chemical_reaction/crystal_blue_sky
+	required_reagents = list(/datum/reagent/drug/blue_sky = 10, /datum/reagent/hydrogen = 5, /datum/reagent/chlorine = 5)
 	is_cold_recipe = TRUE
 	required_temp = 250 //freeze it
 	reaction_flags = REACTION_INSTANT
 	reaction_flags_skyrat = REACTION_KEEP_INSTANT_REQUIREMENTS
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
-/datum/chemical_reaction/crystal_bluesky/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+/datum/chemical_reaction/crystal_blue_sky/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	// get the purity from the holder (can only do this because we arent deleting the ingredients yet)
-	var/datum/reagent/used_reagent = holder.has_reagent(/datum/reagent/drug/bluesky)
+	var/datum/reagent/used_reagent = holder.has_reagent(/datum/reagent/drug/blue_sky)
 	var/saved_purity = used_reagent.creation_purity
 
 	// create the result
 	for(var/i in 1 to created_volume)
-		var/obj/item/smokable/bluesky/created_meth = new(location)
-		var/datum/reagent/drug/bluesky/crystal/created_reagent = created_meth.reagents.has_reagent(/datum/reagent/drug/bluesky/crystal)
+		var/obj/item/smokable/blue_sky/created_meth = new(location)
+		var/datum/reagent/drug/blue_sky/crystal/created_reagent = created_meth.reagents.has_reagent(/datum/reagent/drug/blue_sky/crystal)
 		created_reagent.creation_purity = saved_purity
 		created_reagent.purity = saved_purity
 		created_meth.update_icon_purity(saved_purity)
@@ -58,15 +58,15 @@
 // blue sky
 
 // speed modifier
-/datum/movespeed_modifier/reagent/bluesky
+/datum/movespeed_modifier/reagent/blue_sky
 	multiplicative_slowdown = -0.4
 
 // the recipe
 
 // this is a little easier and less dangerous than regular meth synthesis, but more affected by impurity
 // no weird shit with purity affecting rate of heating up, and if you do blow it up the results are much less catastrophic
-/datum/chemical_reaction/bluesky
-	results = list(/datum/reagent/drug/bluesky = 4)
+/datum/chemical_reaction/blue_sky
+	results = list(/datum/reagent/drug/blue_sky = 4)
 	required_reagents = list(/datum/reagent/acetone = 1, /datum/reagent/ammonia = 1, /datum/reagent/hydrogen = 1)
 	required_temp = 374
 	overheat_temp = 400 // more forgiving heat range
@@ -83,19 +83,19 @@
 	reaction_tags = REACTION_TAG_MODERATE | REACTION_TAG_DRUG | REACTION_TAG_DANGEROUS
 
 // nice going dumbass
-/datum/chemical_reaction/bluesky/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
+/datum/chemical_reaction/blue_sky/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
 	. = ..()
 	explode_deafen(holder, equilibrium)
 	clear_reagents(holder)
 
-/datum/chemical_reaction/bluesky/overly_impure(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
+/datum/chemical_reaction/blue_sky/overly_impure(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
 	. = ..()
 	explode_deafen(holder, equilibrium)
 	clear_reagents(holder)
 
 // the chemical
 
-/datum/reagent/drug/bluesky
+/datum/reagent/drug/blue_sky
 	name = "Blue Sky"
 	description = "A variant of methamphetamine synthsized via reductive amination. Easier to produce, but more prone to quality issues."
 	reagent_state = LIQUID
@@ -106,25 +106,25 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/stimulants = 24) // i know im gonna get shit for tweaking meth so ill just set this to something modest
 
-/datum/reagent/drug/bluesky/on_new(data)
+/datum/reagent/drug/blue_sky/on_new(data)
 	. = ..()
 	var/effective_impurity = min(1, (1 - creation_purity)/0.5)
 	color = BlendRGB(initial(color), "#FAFAFA", effective_impurity)
 
-/datum/reagent/drug/bluesky/on_merge(data, amount)
+/datum/reagent/drug/blue_sky/on_merge(data, amount)
 	. = ..()
 	var/effective_impurity = min(1, (1 - creation_purity)/0.5)
 	color = BlendRGB(initial(color), "#FAFAFA", effective_impurity)
 
-/datum/reagent/drug/bluesky/on_mob_metabolize(mob/living/L)
+/datum/reagent/drug/blue_sky/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/methamphetamine)
 
-/datum/reagent/drug/bluesky/on_mob_end_metabolize(mob/living/L)
+/datum/reagent/drug/blue_sky/on_mob_end_metabolize(mob/living/L)
 	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/methamphetamine)
 	..()
 
-/datum/reagent/drug/bluesky/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+/datum/reagent/drug/blue_sky/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(SPT_PROB(2.5, seconds_per_tick))
 		var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
 		to_chat(affected_mob, span_notice("[high_message]"))
@@ -144,7 +144,7 @@
 	..()
 	. = TRUE
 
-/datum/reagent/drug/bluesky/overdose_process(mob/living/affected_mob, seconds_per_tick, times_fired)
+/datum/reagent/drug/blue_sky/overdose_process(mob/living/affected_mob, seconds_per_tick, times_fired)
 	if(!HAS_TRAIT(affected_mob, TRAIT_IMMOBILIZED) && !ismovable(affected_mob.loc))
 		for(var/i in 1 to round(4 * REM * seconds_per_tick, 1))
 			step(affected_mob, pick(GLOB.cardinals))
@@ -162,7 +162,7 @@
 	. = TRUE
 
 // so self duplication shit cant happen, also more addictive if you smoke it
-/datum/reagent/drug/bluesky/crystal
+/datum/reagent/drug/blue_sky/crystal
 	name = "Crystal Blue Sky"
 	addiction_types = list(/datum/addiction/stimulants = 66)
 	metabolization_rate = 0.05

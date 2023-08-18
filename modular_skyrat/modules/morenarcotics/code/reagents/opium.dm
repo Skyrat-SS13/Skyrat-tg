@@ -91,7 +91,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	inverse_chem = /datum/reagent/drug/blacktar/liquid
+	inverse_chem = /datum/reagent/drug/black_tar/liquid
 	addiction_types = list(/datum/addiction/opioids = 66)
 
 /datum/reagent/drug/heroin/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
@@ -125,7 +125,7 @@
 	name = "Powder heroin"
 	description = "The powder form of heroin."
 
-/datum/reagent/drug/blacktar
+/datum/reagent/drug/black_tar
 	name = "Black tar heroin"
 	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
 	reagent_state = LIQUID
@@ -137,7 +137,7 @@
 	metabolization_rate = 0.05
 	addiction_types = list(/datum/addiction/opioids = 66)
 
-/datum/reagent/drug/blacktar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
+/datum/reagent/drug/black_tar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(M, span_notice("[high_message]"))
@@ -148,17 +148,17 @@
 	M.adjustToxLoss(0.5 * REM * seconds_per_tick, 0) //toxin damage
 	return ..()
 
-/datum/reagent/drug/blacktar/liquid //prevents self-duplication by going one step down when mixed
+/datum/reagent/drug/black_tar/liquid //prevents self-duplication by going one step down when mixed
 	name = "Liquid black tar heroin"
 
-/datum/chemical_reaction/blacktar
-	required_reagents = list(/datum/reagent/drug/blacktar/liquid = 5)
+/datum/chemical_reaction/black_tar
+	required_reagents = list(/datum/reagent/drug/black_tar/liquid = 5)
 	required_temp = 480
 	reaction_flags = REACTION_INSTANT
 	reaction_flags_skyrat = REACTION_KEEP_INSTANT_REQUIREMENTS
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
-/datum/chemical_reaction/blacktar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+/datum/chemical_reaction/black_tar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 
 	// get the purity from the holder (can only do this because we arent deleting the ingredients yet)
@@ -172,8 +172,8 @@
 
 	// create the result
 	for(var/i in 1 to created_volume)
-		var/obj/item/smokable/blacktar/created_heroin = new(location)
-		var/datum/reagent/drug/blacktar/created_reagent = created_heroin.reagents.has_reagent(/datum/reagent/drug/blacktar)
+		var/obj/item/smokable/black_tar/created_heroin = new(location)
+		var/datum/reagent/drug/black_tar/created_reagent = created_heroin.reagents.has_reagent(/datum/reagent/drug/black_tar)
 		created_reagent.creation_purity = saved_purity
 		created_reagent.purity = saved_purity
 		created_heroin.pixel_x = rand(-6, 6)
