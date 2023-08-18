@@ -43,7 +43,7 @@
 
 /obj/item/clothing/head/hats/colonial
 	name = "colonial cap"
-	desc = "The cap is sturdy and comfortable, and seems to retain its form very well."
+	desc = "A puffy cap made out of tarpaulin covered by some textile. It is sturdy and comfortable, and seems to retain its form very well."
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
