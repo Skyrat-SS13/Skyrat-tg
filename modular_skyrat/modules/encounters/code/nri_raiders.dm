@@ -1,3 +1,35 @@
+/// Possible places/departments to inspect
+#define INSPECTION_LIST pick("Cargo",\
+							"Command",\
+							"Engineering",\
+							"Medical",\
+							"Science",\
+							"Service",\
+							"Security")
+
+/// List of possible decorative job titles for additional roleplay potential
+#define NRI_JOB_LIST pick("NRI Patrol Officer",\
+					"NRI Satellite-Patrol Officer",\
+					"NRI Yefreitor-Patrol Officer",\
+					"NRI Junior Patrol Officer",\
+					"NRI Government Investigator",\
+					"NRI Field Inspector",\
+					"NRI Counter-Truancy Officer",\
+					)
+
+/// List of possible decorative leader job titles for additional roleplay potential
+#define NRI_LEADER_JOB_LIST pick("NRI Lieutenant Officer",\
+					"NRI Sergeant Officer",\
+					"NRI Senior Patrol Officer",\
+					"NRI Lead Investigator",\
+					"NRI Lead Inspector",\
+					)
+
+/// Amount of items to "confiscate", lower amount
+#define CONFISCATE_LOWER 10
+/// Amount of items to "confiscate", higher amount
+#define CONFISCATE_HIGHER 25
+
 /// To know whether or not we have an officer already
 GLOBAL_VAR(first_officer)
 
@@ -175,10 +207,11 @@ GLOBAL_VAR(first_officer)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer
 	name = "NRI Officer sleeper"
-	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
+	prompt_name = "a NRI Field Officer"
+	mob_name = "Novaya Rossiyskaya Imperiya police patrol's field officer"
 	outfit = /datum/outfit/pirate/nri/officer
-	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. \
-	Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
+	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, as a consequence you are here to perform a prolonged inspection."
+	important_text = "Allowed races are humans, Akulas, IPCs. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/apply_codename(mob/living/carbon/human/spawned_human)
 	var/callsign = pick(GLOB.callsigns_nri)
@@ -195,13 +228,30 @@ GLOBAL_VAR(first_officer)
 	// if this is the first officer, keep a reference to them
 	if(!GLOB.first_officer)
 		GLOB.first_officer = spawned_human
-
+		to_chat(spawned_human, "<B>With you being the leader of the group and having a special designation, 'Actual', it's your duty to make sure this entire operation \
+		goes smoothly. As in, doesn't result in an intergalactic political scandal, or an unneecessary shooting. It's also very likely expected for you to be performing \
+		all the necessary negotiations, so do prepare yourself for that.")
+	to_chat(spawned_human, "<B>The station has overriden the response system for the reasons unknown, keep the ship intact, communicate with the station, \
+	perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate. \
+	In any case, perform your predefined duties and uphold some semblance of intergalactic law and professionalism, even if just for show.</B> <BR><BR>\
+	Also, a small OOC clarification: none of your objectives are meant to be completable mechanically, so don't stress yourself over not greentexting or anything; \
+	If you have a better plan than 'completing' them, like an idea for a gimmick, it's better to communicate with the admins and your colleagues to possibly allow you to \
+	do something custom.")
 	apply_codename(spawned_human)
 
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
 	. = ..()
 	apply_codename(spawned_human)
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/equip(mob/living/carbon/human/spawned_human)
+	. = ..()
+	var/obj/item/card/id/advanced/card = spawned_human.get_idcard()
+	if(GLOB.first_officer == spawned_human)
+		card.assignment = NRI_LEADER_JOB_LIST
+	else
+		card.assignment = NRI_JOB_LIST
+	card.update_label()
 
 /datum/map_template/shuttle/pirate/nri_raider
 	prefix = "_maps/shuttles/skyrat/"
@@ -238,7 +288,7 @@ GLOBAL_VAR(first_officer)
 	name = "anti-projectile turret"
 	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
 	scan_range = 9
-	shot_delay = 3
+	shot_delay = 15
 	faction = list(FACTION_RAIDER)
 	icon = 'modular_skyrat/modules/encounters/icons/turrets.dmi'
 	icon_state = "gun_turret"
@@ -253,9 +303,9 @@ GLOBAL_VAR(first_officer)
 	if(target)
 		setDir(get_dir(base, target))//even if you can't shoot, follow the target
 		shootAt(target)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 4)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 8)
-		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 12)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 15)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 30)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 45)
 		return TRUE
 
 /obj/projectile/bullet/ciws
@@ -503,17 +553,18 @@ GLOBAL_VAR(first_officer)
 
 /datum/antagonist/cop
 	name = "\improper NRI Police Officer"
-	job_rank = ROLE_TRAITOR
+	//Even if their goal's almost a complete antithesis to what pirates normally do, their spawn is, well, done via pirate code.
+	job_rank = ROLE_SPACE_PIRATE
 	roundend_category = "nri cops"
 	antagpanel_category = "NRI Police"
 	show_in_antagpanel = FALSE
 	show_to_ghosts = TRUE
 	suicide_cry = "God, save the Empress!!"
+	///Team datum for admin tracking
 	var/datum/team/cop/crew
 
 /datum/antagonist/cop/greet()
 	. = ..()
-	to_chat(owner, "<B>The station has overriden the response system for the reasons unkown, keep the ship intact, communicate with the station, perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate.</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/cop/get_team()
@@ -569,14 +620,14 @@ GLOBAL_VAR(first_officer)
 	add_objective(new /datum/objective/inspect_area)
 	add_objective(new /datum/objective/survey)
 	add_objective(new /datum/objective/steal_n_of_type/contraband)
-	add_objective(new /datum/objective/fortify)
+	add_objective(new /datum/objective/dock)
 	add_objective(new /datum/objective/survive)
 
 	for(var/datum/mind/member_mind in members)
 		var/datum/antagonist/cop/cop = member_mind.has_antag_datum(/datum/antagonist/cop)
 
 		if(!cop)
-			continue	
+			continue
 
 		cop.objectives |= objectives
 
@@ -588,12 +639,13 @@ GLOBAL_VAR(first_officer)
 /datum/objective/inspect_area
 	name = "inspect area"
 	explanation_text = "Inspect certain department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	///Area picked for an entirely roleplay objective.
 	var/inspection_area
 	martyr_compatible = TRUE
 
 /datum/objective/inspect_area/New(text)
 	. = ..()
-	inspection_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+	inspection_area = INSPECTION_LIST
 
 /datum/objective/inspect_area/update_explanation_text()
 	..()
@@ -606,11 +658,12 @@ GLOBAL_VAR(first_officer)
 	name = "survey"
 	martyr_compatible = TRUE
 	admin_grantable = TRUE
+	///Area picked for an entirely roleplay objective.
 	var/survey_area
 
 /datum/objective/survey/New(text)
 	. = ..()
-	survey_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+	survey_area = INSPECTION_LIST
 
 /datum/objective/survey/update_explanation_text()
 	..()
@@ -622,25 +675,24 @@ GLOBAL_VAR(first_officer)
 /datum/objective/steal_n_of_type/contraband
 	name = "confiscate contraband"
 	explanation_text = "Confiscate at least cool number pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
-	amount = 5
 
 /datum/objective/steal_n_of_type/contraband/New()
 	. = ..()
-	amount = rand(10,25)
+	amount = rand(CONFISCATE_LOWER,CONFISCATE_HIGHER)
 	explanation_text = "Confiscate at least [amount] pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
 	update_explanation_text()
 	return
 
 /datum/objective/steal_n_of_type/contraband/check_completion()
-	return completed ///I am letting them roleplay this out.
+	return completed //I am letting them roleplay this out, just like the other objectives.
 
-/datum/objective/fortify
-	name = "fortify"
-	explanation_text = "Establish an outpost orbiting the station."
+/datum/objective/dock
+	name = "dock"
+	explanation_text = "Dock to, or generally attempt to stay in the same sector the station is; to extend your on-site presence."
 	martyr_compatible = TRUE
 
-/datum/objective/fortify/New()
+/datum/objective/dock/New()
 	. = ..()
-	explanation_text = "Establish an outpost orbiting the [station_name()]."
+	explanation_text = "Dock to, or generally attempt to stay in the same sector the [station_name()] is; to extend your on-site presence."
 	update_explanation_text()
 	return
