@@ -1,0 +1,57 @@
+/obj/item/clothing/under/colonial
+	name = "colonial outfit"
+	desc = "Fancy white satin shirt and a pair of cotton-blend pants with a black synthleather belt."
+	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
+	icon_state = "under_colonial"
+
+/obj/item/clothing/under/colonial/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/shoes/jackboots/colonial
+	name = "colonial half-boots"
+	desc = "Good old laceless boots, with a sturdy plastic toe to, theoretically, keep your toes uncrushed."
+	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
+	icon_state = "boots_colonial"
+
+/obj/item/clothing/shoes/jackboots/colonial/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/neck/cloak/colonial
+	name = "colonial cloak"
+	desc = "A cloak made from heavy tarpaulin. Nigh wind- and waterproof thanks to its design."
+	slot_flags = ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK
+	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
+	icon_state = "cloak_colonial"
+
+/obj/item/clothing/neck/cloak/colonial/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/head/hats/colonial
+	name = "colonial cap"
+	desc = "The cap is sturdy and comfortable, and seems to retain its form very well."
+	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
+	icon_state = "cap_colonial"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/hats/colonial/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()

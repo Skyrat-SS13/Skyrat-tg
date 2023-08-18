@@ -1,7 +1,7 @@
 /obj/item/food/colonial_course
 	name = "undefined colonial course"
 	desc = "Something you shouldn't see. But it's edible."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "borgir"
 	base_icon_state = "borgir"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
@@ -71,7 +71,7 @@
 	<br> This particular one comes prefilled with a single serving of coffee powder."
 	special_desc = "A small instruction on the side reads: <i>\"For use in food replicators; mix water and powdered solutions in one-to-one proportions. \
 	<br> For cocoa, mix milk and powdered solution in one-to-one proportion.\"</i>"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	list_reagents = list(/datum/reagent/consumable/powdered_coffee = 25)
 
 /obj/item/reagent_containers/cup/glass/coffee/colonial/empty
@@ -81,20 +81,20 @@
 /obj/item/trash/pljeskavica
 	name = "pljeskavica wrapping paper"
 	desc = "Covered in sauce smearings and smaller pieces of the dish on the inside, crumpled into a ball. It's probably best to dispose of it."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "borgir_trash"
 
 /obj/item/trash/nachos
 	name = "empty nachos tray"
 	desc = "Covered in sauce smearings and smaller pieces of the dish on the inside, a plastic food tray with not much use anymore. It's probably best to dispose of it or recycle it."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 	icon_state = "nacho_trash"
 
 /obj/item/trash/blins
 	name = "empty crepes wrapper"
 	desc = "Empty torn wrapper that used to hold something ridiculously sweet. It's probably best to recycle it."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT * 0.5)
 	icon_state = "blin_trash"
 
@@ -103,7 +103,7 @@
 	desc = "The packaging is entirely written in Pan-Slavic, with a small blurb of Sol Common. You would need to take a better look to read it, though, as it is written quite small."
 	special_desc = "Examining the small text reveals the following: <i>\"Foreign colonization ration, model J: mixed origin, adult. Bubblegum package, medicinal, recreational. <br>\
 		Do not overconsume. Certain strips contain nicotine.\"</i>"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "bubblegum"
 
 /obj/item/storage/box/gum/colonial/PopulateContents()
@@ -116,7 +116,7 @@
 	name = "utensils package"
 	desc = "A small package containing various utensils required for <i>human</i> consumption of various foods. \
 	In a normal situation contains a plastic fork, a plastic spoon, and two serviettes."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "utensil_box"
 	w_class = WEIGHT_CLASS_TINY
 	illustration = null
@@ -141,20 +141,20 @@
 	name = "colonial napkin"
 	desc = "To clean all the mess. Comes with a custom <i>combined</i> design of red and blue."
 	icon_state = "napkin_unused"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	used_serviette = /obj/item/serviette_used/colonial
 
 /obj/item/serviette_used/colonial
 	name = "dirty colonial napkin"
 	desc = "No longer useful, super dirty, or soaked, or otherwise unrecognisable."
 	icon_state = "napkin_used"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 
 /obj/item/storage/box/colonial_rations
 	name = "foreign colonization ration"
 	desc = "A freshly printed civilian MRE, or more specifically a lunchtime food package, for use in the early colonization times by the first settlers of what is now known as the NRI. <br>\
 		The lack of any imprinted dates, as well as its origin, <i>the food replicator</i>, should probably give you a good enough hint at its short, if reasonable, expiry time."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/rationpack.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "mre_package"
 	foldable_result = null
 	illustration = null

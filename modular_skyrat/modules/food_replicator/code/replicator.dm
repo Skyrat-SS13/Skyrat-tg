@@ -8,7 +8,7 @@
 		as the NRI. The Gencrate is at its core a matter resequencer, a highly specialized subtype of biogenerator which performs a sort of transmutation using organic \
 		compounds; normally from large-scale crops or waste product. With sufficient supply, the machine is capable of making a wide variety of provisions, \
 	from clothes to food to first-aid medical supplies."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/biogenerator.dmi'
+	icon = 'modular_skyrat/modules/food_replicator/icons/biogenerator.dmi'
 	circuit = /obj/item/circuitboard/machine/biogenerator/food_replicator
 	efficiency = 0.75
 	productivity = 0.75
