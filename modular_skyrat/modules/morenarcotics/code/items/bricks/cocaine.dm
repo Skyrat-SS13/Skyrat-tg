@@ -11,7 +11,7 @@
 	result = /obj/item/reagent_brick/cocaine
 	reqs = list(/obj/item/snortable/cocaine = 5)
 	parts = list(/obj/item/snortable/cocaine = 5)
-	time = 20
+	time = 2 SECONDS
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
 
 
@@ -29,7 +29,7 @@
 	result = /obj/item/reagent_brick/crack
 	reqs = list(/obj/item/smokable/crack = 4)
 	parts = list(/obj/item/smokable/crack = 4)
-	time = 20
+	time = 2 SECONDS
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
 	var/list/purity_hash = list() // im sorry man but there is literally no other fucking idea i have for how to pull this off
 

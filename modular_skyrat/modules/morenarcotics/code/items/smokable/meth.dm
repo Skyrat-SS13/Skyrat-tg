@@ -18,7 +18,7 @@
 	reagent_amount = 10
 
 /obj/item/smokable/bluesky/proc/update_icon_purity(purity)
-	var/effective_impurity = min(1, (1 - purity)/0.5)
+	var/effective_impurity = min(1, (1 - purity) / 0.5)
 	color = BlendRGB(initial(color), "#FAFAFA", effective_impurity)
 	update_icon()
 

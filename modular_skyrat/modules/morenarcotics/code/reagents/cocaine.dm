@@ -15,7 +15,11 @@
 
 
 /datum/chemical_reaction/freebase_cocaine
-	required_reagents = list(/datum/reagent/drug/cocaine = 10, /datum/reagent/water = 5, /datum/reagent/ash = 10)
+	required_reagents = list(
+		/datum/reagent/drug/cocaine = 10,
+		/datum/reagent/water = 5,
+		/datum/reagent/ash = 10,
+	)
 	required_temp = 480 //heat it up
 	reaction_flags = REACTION_INSTANT
 	reaction_flags_skyrat = REACTION_KEEP_INSTANT_REQUIREMENTS
@@ -30,7 +34,9 @@
 		var/datum/reagent/used_reagent = holder.has_reagent(used_reagent_type)
 		if (!used_reagent)
 			continue
+
 		saved_purity += used_reagent.creation_purity
+
 	saved_purity /= required_reagents.len
 
 	// create the result

@@ -125,9 +125,10 @@
 	..()
 
 /datum/reagent/drug/bluesky/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
 	if(SPT_PROB(2.5, seconds_per_tick))
+		var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
 		to_chat(affected_mob, span_notice("[high_message]"))
+
 	var/strength_multiplier = creation_purity**3
 	affected_mob.add_mood_event("tweaking", /datum/mood_event/stimulant_medium, name)
 	affected_mob.AdjustStun(-35 * strength_multiplier * REM * seconds_per_tick)
@@ -147,12 +148,15 @@
 	if(!HAS_TRAIT(affected_mob, TRAIT_IMMOBILIZED) && !ismovable(affected_mob.loc))
 		for(var/i in 1 to round(4 * REM * seconds_per_tick, 1))
 			step(affected_mob, pick(GLOB.cardinals))
+
 	if(SPT_PROB(10, seconds_per_tick))
 		affected_mob.emote("laugh")
+
 	if(SPT_PROB(18, seconds_per_tick))
 		affected_mob.visible_message(span_danger("[affected_mob]'s hands flip out and flail everywhere!"))
 		affected_mob.drop_all_held_items()
-	..()
+
+	. = ..()
 	affected_mob.adjustToxLoss(1 * REM * seconds_per_tick, FALSE, required_biotype = affected_biotype)
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, (rand(5, 10) / 10) * REM * seconds_per_tick)
 	. = TRUE

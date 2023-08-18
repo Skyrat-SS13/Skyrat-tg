@@ -12,7 +12,7 @@
 	result = /obj/item/reagent_brick/hash
 	reqs = list(/obj/item/bongable/hash = 4)
 	parts = list(/obj/item/bongable/hash = 4)
-	time = 20
+	time = 2 SECONDS
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
 
 /datum/export/crack/hashbrick

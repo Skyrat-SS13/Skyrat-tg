@@ -19,23 +19,34 @@
 	if(!iscarbon(user))
 		return
 	var/covered = ""
+
 	if(user.is_mouth_covered(ITEM_SLOT_HEAD))
 		covered = "headgear"
+
 	else if(user.is_mouth_covered(ITEM_SLOT_MASK))
 		covered = "mask"
+
 	if(covered)
 		to_chat(user, span_warning("You have to remove your [covered] first!"))
 		return
-	user.visible_message(span_notice("'[user] starts snorting the [src]."))
-	if(do_after(user, 30))
-		to_chat(user, span_notice("You finish snorting the [src]."))
-		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
-		qdel(src)
+
+	user.visible_message(span_notice("'[user] starts snorting [src]."))
+
+	if(!do_after(user, 3 SECONDS))
+		return
+
+	if(reagents.total_volume)
+		reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+
+		
+	to_chat(user, span_notice("You finish snorting [src]."))
+	qdel(src)
 
 /obj/item/snortable/attack(mob/target, mob/user)
-	if(target == user)
-		snort(user)
+	if(target != user)
+		return ..()
+
+	snort(user)
 
 /obj/item/snortable/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()

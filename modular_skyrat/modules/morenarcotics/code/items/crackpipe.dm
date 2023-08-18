@@ -32,9 +32,11 @@
 /datum/crafting_recipe/crackpipe
 	name = "Crack pipe"
 	result = /obj/item/clothing/mask/cigarette/pipe/crackpipe
-	reqs = list(/obj/item/stack/cable_coil = 5,
-				/obj/item/shard = 1,
-				/obj/item/stack/rods = 10)
+	reqs = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/shard = 1,
+		/obj/item/stack/rods = 10,
+	)
 	parts = list(/obj/item/shard = 1)
-	time = 20
+	time = 2 SECONDS
 	category = CAT_CHEMISTRY

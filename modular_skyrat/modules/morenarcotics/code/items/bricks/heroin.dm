@@ -11,7 +11,7 @@
 	result = /obj/item/reagent_brick/heroin
 	reqs = list(/obj/item/snortable/heroin = 5)
 	parts = list(/obj/item/snortable/heroin = 5)
-	time = 20
+	time = 2 SECONDS
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
 	var/list/purity_hash = list()
 
