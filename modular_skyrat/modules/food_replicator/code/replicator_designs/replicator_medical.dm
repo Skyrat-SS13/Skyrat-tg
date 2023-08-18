@@ -1,5 +1,5 @@
 /datum/design/pocket_medkit
-	name = "Empty Colonial First Aid Kit"
+	name = "Empty Pocket First Aid Kit"
 	id = "slavic_cfap"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
