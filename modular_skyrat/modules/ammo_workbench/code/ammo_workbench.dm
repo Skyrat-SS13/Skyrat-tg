@@ -277,8 +277,10 @@
 /obj/machinery/ammo_workbench/proc/ejectItem(mob/living/user)
 	if(loaded_magazine)
 		loaded_magazine.forceMove(drop_location())
+
 		if(user)
 			try_put_in_hand(loaded_magazine, user)
+
 		loaded_magazine = null
 	busy = FALSE
 	error_message = ""
@@ -503,10 +505,13 @@
 
 /obj/machinery/ammo_workbench/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
+
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH|FORBID_TELEKINESIS_REACH))
+
+	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH | FORBID_TELEKINESIS_REACH))
 		return
+
 	ejectItem(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
