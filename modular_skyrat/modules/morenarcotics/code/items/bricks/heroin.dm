@@ -21,7 +21,7 @@
 	brick_heroin_reagent.creation_purity = purity_hash[user]
 	brick_heroin_reagent.purity = purity_hash[user]
 
-/datum/export/heroinbrick
+/datum/export/heroin_brick
 	cost = CARGO_CRATE_VALUE * 2.5
 	unit_name = "heroin brick"
 	export_types = list(/obj/item/reagent_brick/heroin)

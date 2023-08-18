@@ -95,10 +95,12 @@
 	addiction_types = list(/datum/addiction/opioids = 66)
 
 /datum/reagent/drug/heroin/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
-	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
-	var/strength_multiplier = creation_purity**2
+	var/strength_multiplier = creation_purity ** 2
+
 	if(SPT_PROB(2.5, seconds_per_tick))
+		var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
 		to_chat(M, span_notice("[high_message]"))
+
 	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
 	M.adjustBruteLoss(-0.5 * strength_multiplier * REM * seconds_per_tick, 0) //more powerful as a painkiller, possibly actually useful to medical now
 	M.adjustFireLoss(-0.5 * strength_multiplier * REM * seconds_per_tick, 0)
