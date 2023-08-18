@@ -49,6 +49,7 @@
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
 	icon_state = "cap_colonial"
 	inhand_icon_state = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hats/colonial/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
 	if(is_species(M, /datum/species/teshari))
