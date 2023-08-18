@@ -3,7 +3,6 @@
 	desc = "Bloodclotting agent-infused sterile sutures used to seal up cuts and lacerations and reverse critical bleedings."
 	icon = 'modular_skyrat/modules/food_replicator/icons/medicine.dmi'
 	icon_state = "hemo_suture"
-	var/blood_recover = 5
 	heal_brute = 7
 	stop_bleeding = 1
 	grind_results = list(/datum/reagent/medicine/coagulant = 2)
@@ -20,7 +19,6 @@
 	desc = "A hemostatic mesh used to dress burns and stimulate hemopoiesis. Due to its blood-related purpose, is worse at sanitizing infections."
 	icon = 'modular_skyrat/modules/food_replicator/icons/medicine.dmi'
 	icon_state = "hemo_mesh"
-	var/blood_recover = 5
 	heal_burn = 7
 	sanitization = 0.5
 	flesh_regeneration = 1.75
