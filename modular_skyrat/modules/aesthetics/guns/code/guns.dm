@@ -13,24 +13,24 @@
 #define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,)
 
 #define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4,
+			/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4,\
 			)
 
 #define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4,
+			/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4,\
 			)
 
 #define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4,
+			/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4,\
 			)
 
 #define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4,
+			/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4,\
 			)
 
 #define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
 			/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
-			/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2,
+			/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2,\
 			)
 
 #define AMMO_MATS_HOMING list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1, \
@@ -38,12 +38,12 @@
 			/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2,\
 			/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.2,\
 			/datum/material/diamond = SMALL_MATERIAL_AMOUNT * 0.2,\
-			/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2,
+			/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2,\
 			)
 
 // for .35 Sol Ripper. one day, anon. one day
 #define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4,
+			/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4,\
 			)
 
 /obj/item/ammo_casing
