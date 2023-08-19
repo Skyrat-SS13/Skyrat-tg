@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(
 /// If this wound marks the limb as being allowed to have gauze applied
 #define ACCEPTS_GAUZE (1<<4)
 //SKYRAT EDIT ADDITION BEGIN - MEDICAL
-/// If this wound marks the limb as being allowed to have splints applied
+/// If this wound marks the limb as being allowed to have gauze applied as a splint
 #define ACCEPTS_SPLINT (1<<5)
 //SKYRAT EDIT ADDITION END
 
