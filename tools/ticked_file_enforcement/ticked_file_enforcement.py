@@ -86,6 +86,8 @@ for code_file in scannable_files:
     else:
         dm_path = os.path.basename(code_file)
 
+    print(blue(f"Filename: {dm_path}] Code_File: {code_file}."))
+
     included = f"#include \"{dm_path}\"" in lines
 
     forbid_include = False
