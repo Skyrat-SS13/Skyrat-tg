@@ -95,7 +95,7 @@
 #include "area_contents.dm"
 #include "armor_verification.dm"
 #include "atmospherics_sanity.dm"
-#include "automapper.dm" // SKYRAT EDIT ADDITION
+#include "~skyrat/automapper.dm" // SKYRAT EDIT ADDITION
 #include "autowiki.dm"
 #include "barsigns.dm"
 #include "baseturfs.dm"
@@ -187,7 +187,7 @@
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
 #include "operating_table.dm"
-#include "opposing_force.dm" // SKYRAT EDIT ADDITION
+#include "~skyrat/opposing_force.dm" // SKYRAT EDIT ADDITION
 #include "orderable_items.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
