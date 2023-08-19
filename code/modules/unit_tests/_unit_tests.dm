@@ -85,6 +85,10 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // BEGIN_INCLUDE
+// SKYRAT EDIT START
+#include "~skyrat/opposing_force.dm"
+#include "~skyrat/automapper.dm"
+//SKYRAT EDIT END
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
@@ -261,10 +265,6 @@
 #include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
 #include "worn_icons.dm"
-// SKYRAT EDIT START
-#include "~skyrat\opposing_force.dm"
-#include "~skyrat\automapper.dm"
-//SKYRAT EDIT END
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
