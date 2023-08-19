@@ -70,6 +70,8 @@ with open(file_reference, 'r') as file:
         elif "skyrat edit end" in line.lower():
             if not modular_unit_tests:
                 reading = True
+            else:
+                break
             continue
         # SKYRAT EDIT END
 
