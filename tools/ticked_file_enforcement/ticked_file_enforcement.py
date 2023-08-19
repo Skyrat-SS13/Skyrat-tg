@@ -26,7 +26,6 @@ subdirectories = schema["subdirectories"]
 FORBIDDEN_INCLUDES = schema["forbidden_includes"]
 excluded_files = schema["excluded_files"]
 
-
 def post_error(string):
     print(red(f"Ticked File Enforcement [{file_reference}]: " + string))
     if on_github:
@@ -113,7 +112,7 @@ for code_file in scannable_files:
         if(dm_path in excluded_files):
             continue
 
-        post_error(f"Missing include for {dm_path}. Code_File: {code_file}.")
+        post_error(f"Missing include for {dm_path}.")
         fail_no_include = True
 
 if fail_no_include:
