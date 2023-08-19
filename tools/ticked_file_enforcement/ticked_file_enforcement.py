@@ -86,8 +86,6 @@ for code_file in scannable_files:
     else:
         dm_path = os.path.basename(code_file)
 
-    print(blue(f"Filename: {dm_path}] Code_File: {code_file}."))
-
     included = f"#include \"{dm_path}\"" in lines
 
     forbid_include = False
@@ -111,7 +109,7 @@ for code_file in scannable_files:
         if(dm_path in excluded_files):
             continue
 
-        post_error(f"Missing include for {dm_path}.")
+        post_error(f"Missing include for {dm_path}. Code_File: {code_file}.")
         fail_no_include = True
 
 if fail_no_include:
