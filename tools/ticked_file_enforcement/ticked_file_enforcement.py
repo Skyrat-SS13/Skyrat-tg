@@ -55,6 +55,10 @@ with open(file_reference, 'r') as file:
             break
         elif not reading:
             continue
+        # SKYRAT EDIT START - ignore skyrat edits
+        elif "skyrat edit" in line.lower():
+            continue
+        # SKYRAT EDIT END
 
         lines.append(line)
 
