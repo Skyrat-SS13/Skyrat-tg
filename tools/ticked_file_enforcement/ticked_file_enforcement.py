@@ -26,7 +26,7 @@ subdirectories = schema["subdirectories"]
 FORBIDDEN_INCLUDES = schema["forbidden_includes"]
 excluded_files = schema["excluded_files"]
 # SKYRAT EDIT START
-if(scannable_directory == "code/modules/unit_tests/~skyrat":
+if scannable_directory == "code/modules/unit_tests/~skyrat":
     modular_unit_tests = True
 else:
     modular_unit_tests = False
