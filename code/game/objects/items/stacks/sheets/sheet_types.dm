@@ -164,16 +164,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	)
 	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
 
-/obj/item/stack/sheet/iron/Initialize(mapload)
-	. = ..()
-	var/static/list/tool_behaviors = list(
-		TOOL_WELDER = list(
-			SCREENTIP_CONTEXT_LMB = "Craft iron rods",
-			SCREENTIP_CONTEXT_RMB = "Craft floor tiles",
-		),
-	)
-	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
-
 /obj/item/stack/sheet/iron/examine(mob/user)
 	. = ..()
 	. += span_notice("You can build a wall girder (unanchored) by right clicking on an empty floor.")
@@ -869,6 +859,7 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	merge_type = /obj/item/stack/sheet/hauntium
 	material_type = /datum/material/hauntium
 	material_modifier = 1 //None of that wussy stuff
+	grind_results = list(/datum/reagent/hauntium = 20)
 
 /obj/item/stack/sheet/hauntium/fifty
 	amount = 50

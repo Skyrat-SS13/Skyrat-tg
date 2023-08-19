@@ -63,7 +63,7 @@
 	/// The heat dissipation bonus granted by the weapon.
 	var/heat_dissipation_bonus = 0
 	/// What slots does this gun have?
-	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
+	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE, GUN_SLOT_CAMO)
 	/// Our base firedelay.
 	var/base_fire_delay = 0
 	/// Do we use more power because of attachments?
@@ -132,14 +132,14 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-	if(to_handle == cell)
+/obj/item/gun/microfusion/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == cell)
 		cell = null
 		update_appearance()
-	if(to_handle == phase_emitter)
+	else if(gone == phase_emitter)
 		phase_emitter = null
 		update_appearance()
-	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
@@ -347,7 +347,6 @@
 	var/randomized_gun_spread = spread ? rand(0, spread) : 0
 	var/total_random_spread = max(0, randomized_bonus_spread + randomized_gun_spread)
 	var/burst_spread_mult = rand()
-
 
 	var/modified_delay = fire_delay
 	if(phase_emitter)

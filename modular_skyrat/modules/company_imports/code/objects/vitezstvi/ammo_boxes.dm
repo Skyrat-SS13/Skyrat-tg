@@ -4,7 +4,7 @@
 /obj/item/ammo_box/magazine
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/ammo_box/a762
+/obj/item/ammo_box/strilka310
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_box/a357

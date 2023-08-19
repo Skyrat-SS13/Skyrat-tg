@@ -239,7 +239,7 @@
 	add_fingerprint(user)
 	update_icon_state()
 	update_icon()
-	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+	play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
 //Place the mob in the desired position after buckling
 /obj/structure/chair/x_stand/post_buckle_mob(mob/living/affected_mob)

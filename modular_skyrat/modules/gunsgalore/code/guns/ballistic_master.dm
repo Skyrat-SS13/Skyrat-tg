@@ -48,71 +48,27 @@
 				inhand_icon_state = "[initial(icon_state)]"
 				worn_icon_state = "[initial(icon_state)]"
 
-/obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
-	. = ..()
-	if (.)
-		return
-	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
-		handle_magazine(user, A)
-		return
-	if (istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/ammo_box))
-		if (must_hold_to_load && !check_if_held(user))
-			return
-		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
-			if (chambered && !chambered.loaded_projectile)
-				chambered.forceMove(drop_location())
-				magazine?.stored_ammo -= chambered
-				chambered = null
-			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
-			if(num_loaded)
-				var/box_load = FALSE // if you're reloading with an ammo box, inflicts a cooldown
-				if(istype(A, /obj/item/ammo_box) && box_reload_penalty)
-					box_load = TRUE
-					user.changeNext_move(box_reload_delay) // cooldown to simulate having to fumble for another round
-					balloon_alert(user, "reload encumbered!")
-				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
-				playsound(src, load_sound, load_sound_volume, load_sound_vary)
-				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
-					chamber_round()
-				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // this is normally done by handle_magazine so we have to do it manually here
-				A.update_appearance()
-				update_appearance()
-			return
-	if(istype(A, /obj/item/suppressor))
-		var/obj/item/suppressor/S = A
-		if(!can_suppress)
-			to_chat(user, span_warning("You can't seem to figure out how to fit [S] on [src]!"))
-			return
-		if(!user.is_holding(src))
-			to_chat(user, span_warning("You need be holding [src] to fit [S] to it!"))
-			return
-		if(suppressed)
-			to_chat(user, span_warning("[src] already has a suppressor!"))
-			return
-		if(user.transferItemToLoc(A, src))
-			to_chat(user, span_notice("You screw [S] onto [src]."))
-			install_suppressor(A)
-			return
-	if (can_be_sawn_off)
-		if (sawoff(user, A))
-			return
-
-	if(can_misfire && istype(A, /obj/item/stack/sheet/cloth))
-		if(guncleaning(user, A))
-			return
-
-	return FALSE
-
 /obj/item/gun/ballistic/proc/handle_magazine(mob/user, obj/item/ammo_box/magazine/inserting_magazine)
 	if(magazine) // If we already have a magazine inserted, we're going to begin tactically reloading it.
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) // Check if we have a reload time to tactical reloading, or if we have the instant reload trait.
 			to_chat(user, span_notice("You start to insert the magazine into [src]!"))
 			if(!do_after(user, reload_time, src, IGNORE_USER_LOC_CHANGE)) // We are allowed to move while reloading.
 				to_chat(user, span_danger("You fail to insert the magazine into [src]!"))
-				return
+				return TRUE
 		eject_magazine(user, FALSE, inserting_magazine) // We eject the magazine then insert the new one, while putting the old one in hands.
 	else
 		insert_magazine(user, inserting_magazine) // Otherwise, just insert it.
+
+	return TRUE
+
+/// Reloading with ammo box can incur penalty with some guns
+/obj/item/gun/ballistic/proc/handle_box_reload(mob/user, obj/item/ammo_box/ammobox, num_loaded)
+	var/box_load = FALSE // if you're reloading with an ammo box, inflicts a cooldown
+	if(istype(ammobox, /obj/item/ammo_box) && box_reload_penalty)
+		box_load = TRUE
+		user.changeNext_move(box_reload_delay) // cooldown to simulate having to fumble for another round
+		balloon_alert(user, "reload encumbered!")
+	to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
 
 //CRATES
 

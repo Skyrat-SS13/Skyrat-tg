@@ -58,7 +58,7 @@
 	if(wave_name == "threatening" || wave_name == "spooky")
 		INVOKE_ASYNC(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level/, minimum_security_level), SEC_LEVEL_ORANGE, TRUE, FALSE)
 
-/datum/round_event/meteor_wave/tick()
+/datum/round_event/meteor_wave/tick(seconds_between_ticks)
 	if(ISMULTIPLE(activeFor, METEOR_TICKS_BETWEEN_WAVES))
 		spawn_meteors(METEORS_PER_WAVE, wave_type) //meteor list types defined in gamemode/meteor/meteors.dm
 
