@@ -95,6 +95,7 @@
 #include "area_contents.dm"
 #include "armor_verification.dm"
 #include "atmospherics_sanity.dm"
+#include "automapper.dm" // SKYRAT EDIT ADDITION
 #include "autowiki.dm"
 #include "barsigns.dm"
 #include "baseturfs.dm"
@@ -186,6 +187,7 @@
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
 #include "operating_table.dm"
+#include "opposing_force.dm" // SKYRAT EDIT ADDITION
 #include "orderable_items.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
@@ -261,10 +263,6 @@
 #include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
 #include "worn_icons.dm"
-// SKYRAT EDIT START
-#include "opposing_force.dm"
-#include "automapper.dm"
-//SKYRAT EDIT END
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
