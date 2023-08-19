@@ -64,11 +64,11 @@ with open(file_reference, 'r') as file:
             continue
         # SKYRAT EDIT START - Modular unit tests
         elif "skyrat edit start" in line.lower():
-            if modular_unit_tests
+            if modular_unit_tests:
                 reading = False
             continue
         elif "skyrat edit end" in line.lower():
-            if modular_unit_tests
+            if modular_unit_tests:
                 reading = True
             continue
         # SKYRAT EDIT END
