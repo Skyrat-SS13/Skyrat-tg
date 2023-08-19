@@ -98,7 +98,7 @@
 #include "autowiki.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
-//SKYRAT EDIT END
+// SKYRAT EDIT END
 #include "barsigns.dm"
 #include "baseturfs.dm"
 #include "bespoke_id.dm"
@@ -191,7 +191,7 @@
 #include "operating_table.dm"
 // SKYRAT EDIT START
 #include "~skyrat\opposing_force.dm"
-//SKYRAT EDIT END
+// SKYRAT EDIT END
 #include "orderable_items.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
