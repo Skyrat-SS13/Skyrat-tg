@@ -54,14 +54,14 @@ with open(file_reference, 'r') as file:
             continue
         elif line == "// END_INCLUDE":
             break
+        elif not reading:
+            continue
         # SKYRAT EDIT START - Modular unit tests
         elif line == "// SKYRAT EDIT START":
             continue
         elif line == "// SKYRAT EDIT END":
             continue
         # SKYRAT EDIT END
-        elif not reading:
-            continue
 
         lines.append(line)
 
