@@ -85,10 +85,6 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // BEGIN_INCLUDE
-// SKYRAT EDIT START
-#include "~skyrat\opposing_force.dm"
-#include "~skyrat\automapper.dm"
-//SKYRAT EDIT END
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
@@ -100,6 +96,9 @@
 #include "armor_verification.dm"
 #include "atmospherics_sanity.dm"
 #include "autowiki.dm"
+// SKYRAT EDIT START
+#include "~skyrat\automapper.dm"
+//SKYRAT EDIT END
 #include "barsigns.dm"
 #include "baseturfs.dm"
 #include "bespoke_id.dm"
@@ -190,6 +189,9 @@
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
 #include "operating_table.dm"
+// SKYRAT EDIT START
+#include "~skyrat\opposing_force.dm"
+//SKYRAT EDIT END
 #include "orderable_items.dm"
 #include "organ_set_bonus.dm"
 #include "organs.dm"
