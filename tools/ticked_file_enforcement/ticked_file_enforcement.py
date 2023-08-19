@@ -25,6 +25,13 @@ scannable_directory = schema["scannable_directory"]
 subdirectories = schema["subdirectories"]
 FORBIDDEN_INCLUDES = schema["forbidden_includes"]
 excluded_files = schema["excluded_files"]
+# SKYRAT EDIT START
+if(scannable_directory == "code/modules/unit_tests/~skyrat":
+    modular_unit_tests = True
+else:
+    modular_unit_tests = False
+# SKYRAT EDIT END
+
 
 def post_error(string):
     print(red(f"Ticked File Enforcement [{file_reference}]: " + string))
@@ -55,8 +62,14 @@ with open(file_reference, 'r') as file:
             break
         elif not reading:
             continue
-        # SKYRAT EDIT START - ignore skyrat edits
-        elif "skyrat edit" in line.lower():
+        # SKYRAT EDIT START - Modular unit tests
+        elif "skyrat edit start" in line.lower():
+            if modular_unit_tests
+                reading = False
+            continue
+        elif "skyrat edit end" in line.lower():
+            if modular_unit_tests
+                reading = True
             continue
         # SKYRAT EDIT END
 
