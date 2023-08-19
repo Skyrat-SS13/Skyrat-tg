@@ -4,6 +4,8 @@
 
 #define HUMAN_HEALTH_MODIFIER 1.35
 
+#define HUMAN_MAXHEALTH MAX_LIVING_HEALTH * HUMAN_HEALTH_MODIFIER
+
 /// Used for Nanite Slurry vomit. The mob will vomit a nanite puddle.
 #define VOMIT_NANITE 3
 
