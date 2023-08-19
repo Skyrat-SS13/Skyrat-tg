@@ -79,8 +79,7 @@
 
 /datum/supply_pack/goody/scratching_stone
 	name = "Scratching Stone"
-	desc = "You dunno what this is chummer? Little scrap here sharpens your razorclaws. Preem, arctic shit if you're a metalhead type. Catch is, whatever bakebrain catgirls we got it from already used it. A lot. WYSIWYG \
-	Fork the creds and we'll send it over real quick."
+	desc = "A high-grade sharpening stone made of specialized alloys, meant to sharpen razor-claws. Unfortunately, this particular one has by far seen better days."
 	cost = CARGO_CRATE_VALUE * 4 //800 credits
 	contains = list(/obj/item/scratching_stone)
 
