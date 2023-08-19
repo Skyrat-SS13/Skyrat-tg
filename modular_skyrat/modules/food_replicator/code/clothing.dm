@@ -30,6 +30,7 @@
 	name = "colonial cloak"
 	desc = "A cloak made from heavy tarpaulin. Nigh wind- and waterproof thanks to its design."
 	slot_flags = ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK
+	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
