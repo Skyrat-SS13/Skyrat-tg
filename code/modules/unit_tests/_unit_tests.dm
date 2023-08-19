@@ -86,8 +86,8 @@
 
 // BEGIN_INCLUDE
 // SKYRAT EDIT START
-#include "~skyrat\opposing_force.dm"
-#include "~skyrat\automapper.dm"
+#include "opposing_force.dm"
+#include "automapper.dm"
 //SKYRAT EDIT END
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
