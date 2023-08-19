@@ -63,11 +63,11 @@ with open(file_reference, 'r') as file:
         elif not reading:
             continue
         # SKYRAT EDIT START - Modular unit tests
-        elif "skyrat edit start" in line.lower():
+        elif line == "// SKYRAT EDIT START":
             if not modular_unit_tests:
                 reading = False
             continue
-        elif "skyrat edit end" in line.lower():
+        elif line == "// SKYRAT EDIT END":
             if not modular_unit_tests:
                 reading = True
             else:
