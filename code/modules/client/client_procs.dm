@@ -1,11 +1,6 @@
 	////////////
 	//SECURITY//
 	////////////
-<<<<<<< HEAD
-#define UPLOAD_LIMIT 524288 //Restricts client uploads to the server to 0.5MB
-#define UPLOAD_LIMIT_ADMIN 5550000 //Restricts admin client uploads to the server to 2.5MB //SKYRAT EDIT CHANGE - CHANGED TO 5.55 MB
-=======
->>>>>>> bf6648b3a95 (Makes client upload limit a config, bumps admin file size upload limit to 5mb (from 2.5mb) (#77708))
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
