@@ -18,6 +18,9 @@ def red(text):
 def blue(text):
     return "\033[34m" + str(text) + "\033[0m"
 
+# SKYRAT EDIT ADDITION - Modular Unit Tests
+skyrat_subdir = "~skyrat\\"
+
 schema = json.load(sys.stdin)
 file_reference = schema["file"]
 file_reference_basename = os.path.basename(file_reference)
@@ -85,9 +88,9 @@ for code_file in scannable_files:
         dm_path = code_file.replace('/', '\\')
     else:
         dm_path = os.path.basename(code_file)
-        # SKYRAT EDIT START - Modular unit tests
-        if("~skyrat/" in code_file):
-            dm_path = "~skyrat\\" + dm_path
+        # SKYRAT EDIT START - Modular unit tests - have to append this again after it gets removed
+        if(skyrat_subdir in code_file):
+            dm_path = skyrat_subdir + dm_path
         # SKYRAT EDIT END
 
     included = f"#include \"{dm_path}\"" in lines
