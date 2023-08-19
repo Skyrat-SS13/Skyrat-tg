@@ -62,14 +62,8 @@ with open(file_reference, 'r') as file:
             break
         # SKYRAT EDIT START - Modular unit tests
         elif line == "// SKYRAT EDIT START":
-            if not modular_unit_tests:
-                reading = False
             continue
         elif line == "// SKYRAT EDIT END":
-            if not modular_unit_tests:
-                reading = True
-            else:
-                break
             continue
         # SKYRAT EDIT END
         elif not reading:
