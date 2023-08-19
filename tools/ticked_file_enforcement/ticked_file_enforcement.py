@@ -85,6 +85,10 @@ for code_file in scannable_files:
         dm_path = code_file.replace('/', '\\')
     else:
         dm_path = os.path.basename(code_file)
+        # SKYRAT EDIT START - Modular unit tests
+        if("~skyrat/" in code_file):
+            dm_path = "~skyrat\\" + dm_path
+        # SKYRAT EDIT END
 
     included = f"#include \"{dm_path}\"" in lines
 
