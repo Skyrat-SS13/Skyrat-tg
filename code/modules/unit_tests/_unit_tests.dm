@@ -263,7 +263,6 @@
 #include "worn_icons.dm"
 // SKYRAT EDIT START
 #include "~skyrat\automapper.dm"
-#include "~skyrat\opposing_force.dm"
 // SKYRAT EDIT END
 // END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
