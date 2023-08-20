@@ -9,11 +9,10 @@
 							)
 
 ///Gun you get on spawn.
-#define STARTER_GUN_LIST list(/obj/item/gun/ballistic/automatic/pistol/pepperball,\
-							/obj/item/gun/ballistic/revolver/c38,\
-							/obj/item/gun/ballistic/automatic/pistol/g17,\
+#define STARTER_GUN_LIST list(/obj/item/gun/ballistic/automatic/pistol/g17,\
 							/obj/item/gun/ballistic/automatic/pistol/mk58,\
-							/obj/item/gun/ballistic/automatic/pistol/makarov,\
+							/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper,\
+							/obj/item/gun/ballistic/automatic/dozer,\
 							/obj/item/gun/ballistic/automatic/pistol/cfa_snub,\
 							)
 
@@ -23,9 +22,10 @@
 	icon = FA_ICON_GUN
 	value = 6
 	mob_trait = TRAIT_GUN_NUT
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
 	gain_text = span_notice("Man, I sure do love guns!")
 	lose_text = span_danger("Maybe having a gun isn't that a good idea...") //man so stupid
-	medical_record_text = "Patient has passed a psychological evaluation and has been authorised with firearms and ammunition handling."
+	medical_record_text = "Patient has passed a psychological evaluation and has been authorised with firearms and ammunition handling." //shouldn't show up anyways so whatever
 	mail_goodies = GUN_MAIL_LIST
 
 /datum/quirk/item_quirk/gun_nut/add_unique(client/client_source)
@@ -37,10 +37,15 @@
 /obj/item/storage/toolbox/guncase/gun_nut
 	name = "personal gun case"
 	desc = "Used for safe storaging of guns."
-	weapon_to_spawn = null
+	icon_state = "lockbox"
+	var/obj/item/gun/ballistic/gun = null
 	extra_to_spawn = null
 
 /obj/item/storage/toolbox/guncase/gun_nut/Initialize()
+	gun = pick(STARTER_GUN_LIST)
+	weapon_to_spawn = gun
+	extra_to_spawn = gun.accepted_magazine_type
 	. = ..()
-	weapon_to_spawn = pick(STARTER_GUN_LIST)
-		extra_to_spawn = weapon_to_spawn.accepted_magazine_type
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = 9
+	atom_storage.max_slots = 4
