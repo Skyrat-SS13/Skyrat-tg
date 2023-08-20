@@ -19,7 +19,7 @@
 /datum/quirk/item_quirk/gun_nut
 	name = "Gun Nut"
 	desc = "You own a firearm, presumably for self defense or boasting about how cool it is; and you thought it's such a good idea to bring it on station with you."
-	icon = FA_ICON_GUN
+	icon = FA_ICON_PERSON_RIFLE
 	value = 6
 	mob_trait = TRAIT_GUN_NUT
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
@@ -39,13 +39,17 @@
 	desc = "Used for safe storaging of guns."
 	icon_state = "lockbox"
 	var/obj/item/gun/ballistic/gun = null
-	extra_to_spawn = null
 
 /obj/item/storage/toolbox/guncase/gun_nut/Initialize()
-	gun = pick(STARTER_GUN_LIST)
-	weapon_to_spawn = gun
-	extra_to_spawn = gun.accepted_magazine_type
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 9
 	atom_storage.max_slots = 4
+
+/obj/item/storage/toolbox/guncase/gun_nut/PopulateContents()
+	gun = pick(STARTER_GUN_LIST)
+	weapon_to_spawn = gun
+	extra_to_spawn = gun.accepted_magazine_type
+	new weapon_to_spawn (src)
+	for(var/i in 1 to 3)
+		new extra_to_spawn (src)
