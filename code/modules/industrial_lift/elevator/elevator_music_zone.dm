@@ -16,10 +16,6 @@ GLOBAL_LIST_EMPTY(elevator_music)
 	/// Proximity monitor which handles playing sounds to clients
 	var/datum/proximity_monitor/advanced/elevator_music_area/sound_player
 
-/atom/Initialize(mapload)
-	log_mapping("Initializing [src] [AREACOORD(src)].")
-	return ..()
-
 /obj/effect/abstract/elevator_music_zone/Initialize(mapload)
 	. = ..()
 	if (!linked_elevator_id)
