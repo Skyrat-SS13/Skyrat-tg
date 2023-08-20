@@ -4,8 +4,6 @@
 
 /obj/item/clothing/under/syndicate
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate_digi.dmi' // Anything that was in the syndicate.dmi, should be in the syndicate_digi.dmi
-	resistance_flags = NONE // this actually should make syndicate clothes not innately vulnerable to ignition, see the shaft miner's jumpsuit for inspiration
-
 
 /obj/item/clothing/under/syndicate/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/syndicate.dmi'
@@ -24,12 +22,6 @@
 */
 
 //This is an overwrite, not a fully new item, but still fits best here.
-
-/datum/armor/clothing_under/syndicate_skyrat
-	melee = 10
-	fire = 50
-	acid = 40
-	wound = 10 // copied from the base syndicate type
 
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
@@ -88,17 +80,11 @@
 	inhand_icon_state = "r_suit"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
-	armor_type = /datum/armor/clothing_under/skyrat_tactical
+	armor_type = /datum/armor/clothing_under/syndicate
 	unique_reskin = list(
 		RESKIN_SYNDIE = "syndicate_red",
 		RESKIN_CHARCOAL = "syndicate"
 	)
-
-/datum/armor/clothing_under/skyrat_tactical
-	melee = 10
-	fire = 50
-	acid = 40
-	wound = 10
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/reskin_obj(mob/M)
 	..()
@@ -139,14 +125,8 @@
 	name = "neo-American officer uniform"
 	icon_state = "enclaveo"
 
-/datum/armor/clothing_under/enclaveo_real
-	melee = 10
-	fire = 50
-	acid = 40
-	wound = 10
-
 /obj/item/clothing/under/syndicate/skyrat/enclave/real
-	armor_type = /datum/armor/clothing_under/enclaveo_real
+	armor_type = /datum/armor/clothing_under/syndicate
 
 /obj/item/clothing/under/syndicate/skyrat/enclave/real/officer
 	name = "neo-American officer uniform"
