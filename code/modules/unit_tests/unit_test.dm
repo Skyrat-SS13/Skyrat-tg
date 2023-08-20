@@ -334,6 +334,8 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	// These two are locked to one type only, and shouldn't be widely available, hence why they runtime otherwise.
 	// Can't be bothered adding more to them.
 	returnable_list += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
+	// Testing - could this be what's causing the segfault?
+	returnable_list += /obj/structure/destructible/clockwork/gear_base/technologists_lectern
 	//SKYRAT EDIT ADDITION END
 
 	return returnable_list
