@@ -69,7 +69,7 @@
 /datum/clockwork_research/proc/validate_area(failed_validation)
 	if(!selected_area || !length(get_area_turfs(selected_area)))
 		if(failed_validation)
-			log_mapping("Clockwork research node [src] at [AREACOORD(src)] was unable to find a ritual area! Defaulting to base /area/station type.")
+			log_mapping("Clockwork research node [src] was unable to find a ritual area! Defaulting to base /area/station type.")
 			selected_area = /area/station
 			return TRUE
 		set_new_area(failed_validation = TRUE) // we will retry this once and only once
