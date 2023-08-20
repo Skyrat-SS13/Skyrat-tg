@@ -10,7 +10,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate.dmi'
 	//These are pre-set for ease and reference, as syndie under items SHOULDNT have sensors and should have similar stats; also its better to start with adjust = false
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under/syndicate_skyrat
 	can_adjust = FALSE
 
 //Related files:
