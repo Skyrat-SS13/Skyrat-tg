@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-/proc/generate_values_for_underwear(list/accessory_list, list/icons, color, icon_offset) //SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
-	var/icon/lower_half = icon('icons/blanks/32x32.dmi', "nothing")
-=======
-/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color)
+/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, icon_offset) //SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
 	var/icon/final_icon = new(base_icon)
->>>>>>> 380ce9c300e (Separate init_possible_values() from icon generation (#77660))
 
 	if (!isnull(accessory))
 		var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
@@ -12,30 +7,10 @@
 			accessory_icon.Blend(color, ICON_MULTIPLY)
 		final_icon.Blend(accessory_icon, ICON_OVERLAY)
 
-	final_icon.Crop(10, 1, 22, 13)
+	final_icon.Crop(10, 1+icon_offset, 22, 13+icon_offset)	//SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
 	final_icon.Scale(32, 32)
 
-<<<<<<< HEAD
-	for (var/accessory_name in accessory_list)
-		var/icon/icon_with_socks = new(lower_half)
-		var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
-		//SKYRAT EDIT CHANGE
-		if (accessory_name != "Nude" && accessory)
-			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state)
-		//SKYRAT EDIT CHANGE END
-			if (color && !accessory.use_static)
-				accessory_icon.Blend(color, ICON_MULTIPLY)
-			icon_with_socks.Blend(accessory_icon, ICON_OVERLAY)
-		icon_with_socks.Crop(10, 1+icon_offset, 22, 13+icon_offset)	//SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
-
-		icon_with_socks.Scale(32, 32)
-
-		values[accessory_name] = icon_with_socks
-
-	return values
-=======
 	return final_icon
->>>>>>> 380ce9c300e (Separate init_possible_values() from icon generation (#77660))
 
 /// Backpack preference
 /datum/preference/choiced/backpack
