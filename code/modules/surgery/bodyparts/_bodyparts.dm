@@ -282,12 +282,16 @@
 	var/shown_burn = limb_damage[BURN]
 	var/status = ""
 	var/self_aware = HAS_TRAIT(examiner, TRAIT_SELF_AWARE)
+	var/pain_numb = HAS_TRAIT (examiner, TRAIT_PAIN_NUMB)
 
 	if(self_aware)
 		if(!shown_brute && !shown_burn)
 			status = "no damage"
 		else
 			status = "[shown_brute] brute damage and [shown_burn] burn damage"
+
+	if(pain_numb)
+		status = "You cannot determine the severety of your wounds."
 
 	else
 		if(shown_brute > (max_damage * 0.8))

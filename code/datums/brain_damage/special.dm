@@ -270,6 +270,27 @@
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT, TRAIT_NOHARDCRIT), TRAUMA_TRAIT)
 	..()
 
+/datum/brain_trauma/special/numbness
+	name = "Numbness"
+	desc = "Patient cannot feel or percieve pain and injuries no matter their gravity."
+	scan_desc = "Neurotic Analgesia"
+	gain_text = span_warning("Your wounds do not hurt anymore.")
+	lose_text = span_warning("You feel your injuries sting again.")
+
+/datum/brain_trauma/special/numbness/on_gain()
+	owner.add_traits(list(TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
+	owner.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	..()
+
+/datum/brain_trauma/special/numbness/on_lose()
+	owner.remove_traits(list(TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
+	owner.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	..()
+
+/datum/brain_trauma/special/numbness
+	random_gain = FALSE
+	resilience = TRAUMA_RESILIENCE_ABSOLUTE
+
 /datum/brain_trauma/special/death_whispers
 	name = "Functional Cerebral Necrosis"
 	desc = "Patient's brain is stuck in a functional near-death state, causing occasional moments of lucid hallucinations, which are often interpreted as the voices of the dead."

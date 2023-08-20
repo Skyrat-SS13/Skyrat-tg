@@ -1298,6 +1298,22 @@
 			carbon_quirk_holder.vomit()
 			carbon_quirk_holder.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),10)
 
+/datum/quirk/numbness
+	name = "Phisically Numb"
+	desc = "For whatever reason, you cannot feel pain at all. You take more time to inspect yourself for wounds without specialized equipment."
+	icon = ""
+	mob_trait = TRAIT_PAIN_NUMB
+	value = -4
+	gain_text = null //handled by trauma
+	lose_text = null
+	medical_record_text = "Patient cannot feel pain of any sort. Potentially deadly with certain activites."
+	mail_goodies = list(/obj/item/healthanalyzer) // It's dangerous to go alone! Take this with you.
+
+/datum/quirk/numbness/add(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	human_holder.gain_trauma(/datum/brain_trauma/special/numbness, TRAUMA_RESILIENCE_ABSOLUTE)
+
+
 /datum/quirk/bad_touch
 	name = "Bad Touch"
 	desc = "You don't like hugs. You'd really prefer if people just left you alone."
