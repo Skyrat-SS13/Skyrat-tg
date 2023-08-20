@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-/proc/generate_lizard_side_shots(list/sprite_accessories, key, include_snout = TRUE)
-	var/list/values = list()
-=======
 /proc/generate_lizard_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/icon/lizard
 	var/static/icon/lizard_with_snout
->>>>>>> 380ce9c300e (Separate init_possible_values() from icon generation (#77660))
 
 	if (isnull(lizard))
 		lizard = icon('icons/mob/human/species/lizard/bodyparts.dmi', "lizard_head", EAST)
