@@ -191,7 +191,7 @@
 
 			buyer = account
 
-	if(issilicon(user))
+	if(issilicon(user) && (console_state == IRN_CONSOLE))
 		parent_prog.can_approve_requests = TRUE
 		parent_prog.requestonly = FALSE
 
@@ -199,7 +199,7 @@
 		to_chat(user, span_warning("No budget found!"))
 		return
 
-	if(!ishuman(user) || !issilicon(user))
+	if(!ishuman(user) && !issilicon(user))
 		return
 
 	if(!buyer.has_money(armament_entry.cost))
