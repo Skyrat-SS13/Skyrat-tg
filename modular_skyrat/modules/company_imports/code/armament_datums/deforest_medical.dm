@@ -128,7 +128,6 @@
 
 /datum/armament_entry/company_import/deforest/medical_modules
 	subcategory = "MOD Medical Modules"
-	interest_required = COMPANY_SOME_INTEREST
 	cost = PAYCHECK_COMMAND * 2
 
 /datum/armament_entry/company_import/deforest/medical_modules/injector
@@ -209,25 +208,3 @@
 /datum/armament_entry/company_import/deforest/defense/firefly
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
 	cost = PAYCHECK_COMMAND * 4
-
-#undef PRICE_FIRST_AID_BASIC_LOWER
-#undef PRICE_FIRST_AID_BASIC_HIGHER
-#undef PRICE_FIRST_AID_MEDIUM_LOWER
-#undef PRICE_FIRST_AID_MEDIUM_HIGHER
-#undef PRICE_FIRST_AID_PREMIUM_LOWER
-#undef PRICE_FIRST_AID_PREMIUM_HIGHER
-
-#undef PRICE_CHEM_CHEAP_LOWER
-#undef PRICE_CHEM_CHEAP_HIGHER
-#undef PRICE_CHEM_MEDIUM_LOWER
-#undef PRICE_CHEM_MEDIUM_HIGHER
-#undef PRICE_CHEM_PREMIUM_LOWER
-#undef PRICE_CHEM_PREMIUM_HIGHER
-
-#undef MODULE_MID_LOWER
-#undef MODULE_MID_UPPER
-
-#undef PRICE_CYBER_ORGAN_LOWER
-#undef PRICE_CYBER_ORGAN_HIGHER
-#undef PRICE_CYBER_AUGMENT_LOWER
-#undef PRICE_CYBER_AUGMENT_HIGHER
