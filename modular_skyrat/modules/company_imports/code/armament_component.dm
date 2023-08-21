@@ -250,7 +250,7 @@
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
-		created_order = new(created_pack, name, rank, ckey, reason = reason)
+		created_order = new(created_pack, name, rank, ckey, paying_account = SSeconomy.get_dep_account(ACCOUNT_CAR), reason = reason)
 	created_order.selected_entry = armament_entry
 	created_order.used_component = src
 	if(console_state == CARGO_CONSOLE)
@@ -267,114 +267,6 @@
 		else
 			SSshuttle.shopping_list += created_order
 
-/datum/component/armament/company_imports/buy_ammo(mob/user, datum/armament_entry/company_import/armament_entry)
-	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	var/obj/machinery/computer/cargo/possible_console
-	var/obj/item/modular_computer/possible_downloader
-
-	if(console_state == CARGO_CONSOLE)
-		possible_console = parent
-
-	else if(console_state == IRN_CONSOLE)
-		possible_downloader = parent
-
-	var/mob/living/carbon/human/the_person = user
-
-	if(!istype(the_person))
-		return
-
-	var/obj/item/card/id/id_card
-
-	if(console_state == IRN_CONSOLE)
-		id_card = parent_prog.computer.computer_id_slot?.GetID()
-	else
-		id_card = the_person.get_idcard(TRUE)
-
-	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
-			parent_prog.requestonly = FALSE
-			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
-			parent_prog.can_approve_requests = TRUE
-		else
-			parent_prog.requestonly = TRUE
-			parent_prog.can_approve_requests = FALSE
-	else
-		parent_prog?.requestonly = TRUE
-
-	if(self_paid)
-		if(!istype(id_card))
-			to_chat(user, span_warning("No ID card detected."))
-			return
-
-		if(istype(id_card, /obj/item/card/id/departmental_budget))
-			to_chat(user, span_warning("[id_card] cannot be used to make purchases."))
-			return
-
-		var/datum/bank_account/account = id_card.registered_account
-
-		if(!istype(account))
-			to_chat(user, span_warning("Invalid bank account."))
-			return
-
-		buyer = account
-
-	if(!armament_entry.magazine)
-		return
-
-	if(!buyer)
-		to_chat(user, span_warning("No budget found!"))
-		return
-
-	var/quantity_cost = armament_entry.magazine_cost * ammo_purchase_num
-
-	if(!buyer.has_money(quantity_cost))
-		to_chat(user, span_warning("Not enough money!"))
-		return
-
-	var/name = the_person.get_authentification_name()
-	var/reason = ""
-
-	if(possible_console)
-		if(possible_console.requestonly && !self_paid)
-			reason = tgui_input_text(user, "Reason", name)
-			if(isnull(reason))
-				return
-
-	else if(possible_downloader)
-		var/datum/computer_file/program/budgetorders/parent_file = parent_prog
-		if((parent_file.requestonly && !self_paid) || !(possible_downloader.computer_id_slot?.GetID()))
-			reason = tgui_input_text(user, "Reason", name)
-			if(isnull(reason))
-				return
-
-
-	var/datum/supply_pack/created_pack = new
-	var/assembled_name = "[initial(armament_entry.item_type.name)] Ammunition (x[ammo_purchase_num])"
-	created_pack.name = assembled_name
-	created_pack.cost = cost_calculate(quantity_cost)
-	created_pack.contains = list()
-	for(var/i in 1 to ammo_purchase_num)
-		created_pack.contains += armament_entry.magazine
-	var/rank = the_person.get_assignment(hand_first = TRUE)
-	var/ckey = the_person.ckey
-	var/datum/supply_order/company_import/created_order
-	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
-		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
-	else
-		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	var/datum/computer_file/program/budgetorders/file_p = parent_prog
-	if(console_state == CARGO_CONSOLE)
-		created_order.generateRequisition(get_turf(parent))
-		if(possible_console.requestonly && !self_paid)
-			SSshuttle.request_list += created_order
-		else
-			SSshuttle.shopping_list += created_order
-	else if(console_state == IRN_CONSOLE)
-		if(file_p.requestonly && !self_paid)
-			SSshuttle.request_list += created_order
-		else
-			SSshuttle.shopping_list += created_order
-
 /datum/component/armament/company_imports/proc/cost_calculate(cost)
 	. = cost
 	. *= SSeconomy.pack_price_modifier
@@ -385,10 +277,6 @@
 		return
 
 	switch(action)
-		if("set_ammo_amount")
-			var/target = text2num(params["chosen_amount"])
-			ammo_purchase_num = clamp(target, 1, MAX_AMMO_AMOUNT)
-
 		if("toggleprivate")
 			var/obj/item/card/id/id_card
 			var/mob/living/carbon/human/the_person = usr
