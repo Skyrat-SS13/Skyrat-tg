@@ -13,11 +13,7 @@
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/door_remote/chief_engineer(src)
-<<<<<<< HEAD
-	new /obj/item/pipe_dispenser/bluespace(src) // SKYRAT EDIT -- BLUESPACE RPD -- ORIGINAL: new /obj/item/pipe_dispenser(src)
-=======
 
->>>>>>> 2d4d23dbf1e (Replaces the poster and graffiti objectives with assault and early steal & destroy ones. (#77029))
 	new /obj/item/circuitboard/machine/techfab/department/engineering(src)
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
@@ -31,7 +27,7 @@
 
 	// Traitor steal objective
 	new /obj/item/areaeditor/blueprints(src)
-	new /obj/item/pipe_dispenser(src)
+	new /obj/item/pipe_dispenser/bluespace(src) // SKYRAT EDIT -- BLUESPACE RPD -- ORIGINAL: new /obj/item/pipe_dispenser(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
