@@ -2,6 +2,7 @@
 
 /datum/supply_pack/armament
 	goody = TRUE
+	crate_type = /obj/structure/closet/crate/cardboard
 
 /datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account)
 	. = ..()
