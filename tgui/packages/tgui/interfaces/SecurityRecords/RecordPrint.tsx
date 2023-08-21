@@ -93,12 +93,18 @@ export const RecordPrint = (props, context) => {
             icon="file-alt"
             onClick={() => swapTabs(PRINTOUT.Rapsheet)}
             selected={printType === PRINTOUT.Rapsheet}
+<<<<<<< HEAD
             // SKYRAT EDIT MODIFY - REMOVE "REQUIRES CRIMES" FROM TOOLTIP
             // tooltip={`Prints a standard paper with the record on it. ${
             // innocent && ' (Requires crimes)'
             // }`}
             tooltip={`Prints a standard paper with the record on it.`}
             // SKYRAT EDIT MODIFY END
+=======
+            tooltip={`Prints a standard paper with the record on it.${
+              innocent ? ' (Requires crimes)' : ''
+            }`}
+>>>>>>> a0d60ab52ed (Fixes some `false`s in the sec records ui (#77800))
             tooltipPosition="bottom">
             Rapsheet
           </Button>
@@ -108,7 +114,7 @@ export const RecordPrint = (props, context) => {
             onClick={() => swapTabs(PRINTOUT.Wanted)}
             selected={printType === PRINTOUT.Wanted}
             tooltip={`Prints a poster with mugshot and crimes.${
-              innocent && ' (Requires crimes)'
+              innocent ? ' (Requires crimes)' : ''
             }`}
             tooltipPosition="bottom">
             Wanted
