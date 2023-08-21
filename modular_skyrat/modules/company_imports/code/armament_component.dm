@@ -206,7 +206,13 @@
 		to_chat(user, span_warning("Not enough money!"))
 		return
 
-	var/name = the_person.get_authentification_name()
+	var/name
+
+	if(issilicon(user))
+		name = user.real_name
+	else
+		the_person.get_authentification_name()
+
 	var/reason = ""
 
 	if(possible_console)
@@ -238,7 +244,7 @@
 	else
 		rank = the_person.get_assignment(hand_first = TRUE)
 
-	var/ckey = the_person.ckey
+	var/ckey = user.ckey
 
 	var/datum/supply_order/company_import/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
