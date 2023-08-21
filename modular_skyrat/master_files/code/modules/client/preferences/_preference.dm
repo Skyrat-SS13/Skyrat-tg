@@ -108,7 +108,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 
 	/// Path to the default sprite accessory
-	var/datum/sprite_accessory/default_accessory_type
+	var/datum/sprite_accessory/default_accessory_type = /datum/sprite_accessory/blank
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/datum/preference/toggle/type_to_check
 	/// Generates icons from the provided mutant bodypart for use in icon-enabled selection boxes in the prefs window.
@@ -123,6 +123,11 @@
 	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = is_part_enabled(preferences)
 	return (passed_initial_check || overriding) && part_enabled
+
+// icons are cached
+/datum/preference/choiced/mutant_choice/icon_for(value)
+	var/list/cached_icons = get_choices()
+	return cached_icons[value]
 
 /// Allows for dynamic assigning of icon states.
 /datum/preference/choiced/mutant_choice/proc/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
@@ -160,7 +165,7 @@
 	return list_of_accessories
 
 /datum/preference/choiced/mutant_choice/create_default_value()
-	return initial(default_accessory_type?.name) || "None"
+	return initial(default_accessory_type.name)
 
 /**
  * Is this part enabled by the player?

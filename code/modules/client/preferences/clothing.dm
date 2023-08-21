@@ -2,7 +2,7 @@
 	var/icon/final_icon = new(base_icon)
 
 	if (!isnull(accessory))
-		var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
+		var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) // SKYRAT EDIT CHANGE: ORIGINAL - var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
 		if (color && !accessory.use_static)
 			accessory_icon.Blend(color, ICON_MULTIPLY)
 		final_icon.Blend(accessory_icon, ICON_OVERLAY)
@@ -130,7 +130,7 @@
 
 	if (value != "Nude")
 		var/datum/sprite_accessory/accessory = GLOB.undershirt_list[value]
-		icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
+		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY) // SKYRAT EDIT CHANGE: ORIGINAL - icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
 
 	icon_with_undershirt.Crop(9, 9, 23, 23)
 	icon_with_undershirt.Scale(32, 32)
