@@ -54,7 +54,7 @@
 /////////////////////////Biotech/////////////////////////
 
 /datum/techweb_node/adv_biotech/New()
-	. = . = ..()
+	. = ..()
 	design_ids += list(
 		"monkey_helmet",
 		"brute2medicell",
