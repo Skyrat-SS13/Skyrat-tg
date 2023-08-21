@@ -154,49 +154,52 @@
 
 	var/mob/living/carbon/human/the_person = user
 
-	if(!istype(the_person))
-		return
+	if(istype(the_person))
 
-	var/obj/item/card/id/id_card
+		var/obj/item/card/id/id_card
 
-	if(console_state == IRN_CONSOLE)
-		id_card = parent_prog.computer.computer_id_slot?.GetID()
-	else
-		id_card = the_person.get_idcard(TRUE)
-
-	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
-			parent_prog.requestonly = FALSE
-			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
-			parent_prog.can_approve_requests = TRUE
+		if(console_state == IRN_CONSOLE)
+			id_card = parent_prog.computer.computer_id_slot?.GetID()
 		else
-			parent_prog.requestonly = TRUE
-			parent_prog.can_approve_requests = FALSE
-	else
-		parent_prog?.requestonly = TRUE
+			id_card = the_person.get_idcard(TRUE)
 
-	if(self_paid)
-		if(!istype(id_card))
-			to_chat(user, span_warning("No ID card detected."))
-			return
+		if(id_card?.registered_account && (console_state == IRN_CONSOLE))
+			if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
+				parent_prog.requestonly = FALSE
+				buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
+				parent_prog.can_approve_requests = TRUE
+			else
+				parent_prog.requestonly = TRUE
+				parent_prog.can_approve_requests = FALSE
+		else
+			parent_prog?.requestonly = TRUE
 
-		if(istype(id_card, /obj/item/card/id/departmental_budget))
-			to_chat(user, span_warning("[id_card] cannot be used to make purchases."))
-			return
+		if(self_paid)
+			if(!istype(id_card))
+				to_chat(user, span_warning("No ID card detected."))
+				return
 
-		var/datum/bank_account/account = id_card.registered_account
+			if(istype(id_card, /obj/item/card/id/departmental_budget))
+				to_chat(user, span_warning("[id_card] cannot be used to make purchases."))
+				return
 
-		if(!istype(account))
-			to_chat(user, span_warning("Invalid bank account."))
-			return
+			var/datum/bank_account/account = id_card.registered_account
 
-		buyer = account
+			if(!istype(account))
+				to_chat(user, span_warning("Invalid bank account."))
+				return
+
+			buyer = account
+
+	if(issilicon(user))
+		parent_prog.can_approve_requests = TRUE
+		parent_prog.requestonly = FALSE
 
 	if(!buyer)
 		to_chat(user, span_warning("No budget found!"))
 		return
 
-	if(!ishuman(user))
+	if(!ishuman(user) || !issilicon(user))
 		return
 
 	if(!buyer.has_money(armament_entry.cost))
@@ -227,8 +230,16 @@
 	created_pack.name = initial(armament_entry.item_type.name)
 	created_pack.cost = cost_calculate(armament_entry.cost) //Paid for seperately
 	created_pack.contains = list(armament_entry.item_type)
-	var/rank = the_person.get_assignment(hand_first = TRUE)
+
+	var/rank
+
+	if(issilicon(user))
+		rank = "Silicon"
+	else
+		rank = the_person.get_assignment(hand_first = TRUE)
+
 	var/ckey = the_person.ckey
+
 	var/datum/supply_order/company_import/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
@@ -377,7 +388,8 @@
 			var/mob/living/carbon/human/the_person = usr
 
 			if(!istype(the_person))
-				self_paid = FALSE
+				if(issilicon(the_person))
+					self_paid = FALSE
 				return
 
 			if(console_state == IRN_CONSOLE)
