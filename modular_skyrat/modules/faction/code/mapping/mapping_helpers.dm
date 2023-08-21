@@ -44,7 +44,7 @@
 	var/used_preset
 
 //Generic inventory
-/obj/structure/closet/crate/tradership_cargo/PopulateContents()
+/obj/structure/closet/crate/tradership_cargo/populate_contents_immediate()
 	. = ..()
 	var/random = used_preset || rand(1,5)
 	switch(random)
