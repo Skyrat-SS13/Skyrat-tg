@@ -59,10 +59,12 @@
 /datum/export/ceramics
 	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "ceramic product"
-	export_types = list(/obj/item/plate/ceramic,
-						/obj/item/plate/oven_tray/material/ceramic,
-						/obj/item/reagent_containers/cup/bowl/ceramic,
-						/obj/item/reagent_containers/cup/beaker/large/ceramic)
+	export_types = list(
+		/obj/item/plate/ceramic,
+		/obj/item/plate/oven_tray/material/ceramic,
+		/obj/item/reagent_containers/cup/bowl/ceramic,
+		/obj/item/reagent_containers/cup/beaker/large/ceramic,
+	)
 
 /datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
