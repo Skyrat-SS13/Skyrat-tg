@@ -281,8 +281,6 @@
 	purchased_items[armament_entry]++
 	armament_entry.stock--
 
-	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-
 	var/datum/supply_pack/armament/created_pack = new
 	created_pack.name = initial(armament_entry.item_type.name)
 	created_pack.cost = cost_calculate(armament_entry.cost) //Paid for seperately

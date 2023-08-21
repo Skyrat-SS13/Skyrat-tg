@@ -1,6 +1,7 @@
 #define CARGO_CUT 0.05
 
 /datum/supply_pack/armament
+	goody = TRUE
 
 /datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account)
 	. = ..()
