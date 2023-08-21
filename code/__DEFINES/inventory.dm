@@ -206,11 +206,8 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
-<<<<<<< HEAD
-	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
 	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
->>>>>>> 37d8f6162bb (Compact shotgun re-added (#77759))
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
 GLOBAL_LIST_INIT(security_vest_allowed, list(
