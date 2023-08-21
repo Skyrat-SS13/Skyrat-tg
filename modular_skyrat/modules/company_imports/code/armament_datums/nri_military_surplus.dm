@@ -53,7 +53,7 @@
 
 /datum/armament_entry/company_import/nri_surplus/misc/screwdriver_pen
 	item_type = /obj/item/pen/screwdriver
-	cost = PAYCHECK_CREWUL
+	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/nri_surplus/misc/trench_tool
 	item_type = /obj/item/trench_tool
