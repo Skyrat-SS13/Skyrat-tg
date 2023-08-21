@@ -81,25 +81,6 @@
 	data["armaments_list"] = list()
 
 	for(var/armament_category as anything in SSarmaments.entries)
-		var/illegal_failure
-
-		for(var/company as anything in SScargo_companies.companies)
-			if(company != armament_category)
-				continue
-
-			var/datum/cargo_company/selected_company = SScargo_companies.companies[company]
-
-			if(!(console_state == CARGO_CONSOLE) && selected_company.illegal)
-				illegal_failure = TRUE
-				break
-
-			var/obj/machinery/computer/cargo/cargo_comp = parent
-			if(selected_company.illegal && !(cargo_comp.obj_flags & EMAGGED))
-				illegal_failure = TRUE
-				break
-
-		if(illegal_failure)
-			continue
 
 		var/list/armament_subcategories = list()
 
@@ -146,10 +127,6 @@
 		var/purchased_company = FALSE
 		var/company_cost = 0
 		var/handout_company = FALSE
-
-		for(var/company as anything in SScargo_companies.companies)
-			if(company != armament_category)
-				continue
 
 		data["armaments_list"] += list(list(
 			"category" = armament_category,
@@ -372,7 +349,6 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.item_amount = ammo_purchase_num
 	var/datum/computer_file/program/budgetorders/file_p = parent_prog
 	if(console_state == CARGO_CONSOLE)
 		created_order.generateRequisition(get_turf(parent))
