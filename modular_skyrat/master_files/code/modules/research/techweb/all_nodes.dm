@@ -14,7 +14,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 
-// MODULAR ADDITIONS
+// MODULAR ADDITIONS AND REMOVALS
 
 //Base Nodes
 /datum/techweb_node/base/New()
@@ -132,6 +132,16 @@
 		"cybernetic_tongue",
 	)
 
+// Modularly removes x-ray and thermals from here, it's in adv_vision instead
+/datum/techweb_node/combat_cyber_implants/New()
+	. = ..()
+	design_ids -= list(
+		"ci-thermals",
+		"ci-xray",
+		"ci-thermals-moth",
+		"ci-xray-moth",
+	)
+
 ////////////////////////Tools////////////////////////
 
 /datum/techweb_node/botany/New()
@@ -223,24 +233,6 @@
 		"borg_upgrade_surgicaltools",
 	)
 
-// MODULAR REMOVALS
-
-////////////////////////Medical////////////////////////
-
-// Modularly removes x-ray and thermals from here, it's in adv_vision instead
-/datum/techweb_node/combat_cyber_implants/New()
-	. = ..()
-	design_ids -= list(
-		"ci-thermals",
-		"ci-xray",
-		"ci-thermals-moth",
-		"ci-xray-moth",
-	)
-
-/////////////////////////robotics tech/////////////////////////
-
-/datum/techweb_node/cyborg_upg_med/New()
-	. = ..()
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
 	)
