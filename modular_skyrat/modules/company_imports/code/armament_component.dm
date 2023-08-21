@@ -124,10 +124,6 @@
 		if(!LAZYLEN(armament_subcategories))
 			continue
 
-		var/purchased_company = FALSE
-		var/company_cost = 0
-		var/handout_company = FALSE
-
 		data["armaments_list"] += list(list(
 			"category" = armament_category,
 			"category_uses" = used_categories[armament_category],
