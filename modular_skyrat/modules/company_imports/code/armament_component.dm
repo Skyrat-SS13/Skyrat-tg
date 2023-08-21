@@ -199,7 +199,7 @@
 	if(!ishuman(user))
 		return
 
-	if(!buyer.has_money(armament_entry.cost)) //so you can't "stash" guns for later merchant cycles
+	if(!buyer.has_money(armament_entry.cost))
 		to_chat(user, span_warning("Not enough money!"))
 		return
 
@@ -377,6 +377,7 @@
 			var/mob/living/carbon/human/the_person = usr
 
 			if(!istype(the_person))
+				self_paid = FALSE
 				return
 
 			if(console_state == IRN_CONSOLE)
