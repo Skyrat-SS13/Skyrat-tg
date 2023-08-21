@@ -714,21 +714,21 @@
 	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/storage/box/nri_rations,
-		/obj/item/storage/toolbox/ammobox/strilka310,
-		/obj/item/storage/toolbox/ammobox/strilka310/surplus,
-		/obj/item/storage/toolbox/maint_kit,
+		/obj/item/storage/box/nri_rations = 1,
+		/obj/item/storage/toolbox/ammobox/strilka310 = 1,
+		/obj/item/storage/toolbox/ammobox/strilka310/surplus = 1,
+		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/storage/toolbox/guncase/soviet/sakhno = 2,
-		/obj/item/ammo_box/strilka310,
-		/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
-		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color,
-		/obj/item/storage/backpack/industrial/cin_surplus/random_color,
-		/obj/item/storage/belt/military/cin_surplus/random_color,
-		/obj/item/clothing/gloves/tackler/combat,
-		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color,
-		/obj/item/clothing/shoes/jackboots,
-		/obj/item/clothing/mask/gas/hecu2,
-		/obj/item/clothing/mask/balaclavaadjust,
+		/obj/item/ammo_box/strilka310 = 1,
+		/obj/item/clothing/suit/armor/vest/cin_surplus_vest = 1,
+		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color = 1,
+		/obj/item/storage/backpack/industrial/cin_surplus/random_color = 1,
+		/obj/item/storage/belt/military/cin_surplus/random_color = 1,
+		/obj/item/clothing/gloves/tackler/combat = 1,
+		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color = 1,
+		/obj/item/clothing/shoes/jackboots = 1,
+		/obj/item/clothing/mask/gas/hecu2 = 1,
+		/obj/item/clothing/mask/balaclavaadjust = 1,
 	)
 
 /datum/supply_pack/imports/cin_surplus/fill(obj/structure/closet/crate/we_are_filling_this_crate)
