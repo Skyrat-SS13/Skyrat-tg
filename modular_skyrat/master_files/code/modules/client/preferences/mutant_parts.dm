@@ -89,7 +89,6 @@
 	default_accessory_type = /datum/sprite_accessory/body_markings/none
 
 /datum/preference/choiced/mutant_choice/body_markings/icon_for(value)
-	return
 
 /datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.
