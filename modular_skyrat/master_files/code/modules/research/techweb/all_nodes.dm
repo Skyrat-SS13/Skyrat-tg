@@ -82,7 +82,6 @@
 		"gownmedicell",
 		"bedmedicell",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 ////////////////////////Computer tech////////////////////////
 
