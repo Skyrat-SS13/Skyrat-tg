@@ -78,6 +78,9 @@
 	. = ..() // Got to do this because of linters.
 	return FALSE
 
+/datum/preference/toggle/mutant_toggle/body_markings/icon_for(value)
+	return
+
 /datum/preference/toggle/mutant_toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 

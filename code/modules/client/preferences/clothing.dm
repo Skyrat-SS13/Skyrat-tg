@@ -1,4 +1,4 @@
-/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color, icon_offset) //SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
+/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color, icon_offset = 0) //SKYRAT EDIT CHANGE : adds icon_offset - Colorable Undershirt/Socks
 	var/icon/final_icon = new(base_icon)
 
 	if (!isnull(accessory))
@@ -99,7 +99,7 @@
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_r_leg"), ICON_OVERLAY)
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_l_leg"), ICON_OVERLAY)
 
-	return generate_underwear_icon(GLOB.socks_list[value], lower_half, icon_offset = 0) // SKYRAT EDIT CHANGE : ICON_OFFSET
+	return generate_underwear_icon(GLOB.socks_list[value], lower_half)
 
 /datum/preference/choiced/socks/apply_to_human(mob/living/carbon/human/target, value)
 	target.socks = value
@@ -132,7 +132,7 @@
 		var/datum/sprite_accessory/accessory = GLOB.undershirt_list[value]
 		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY) // SKYRAT EDIT CHANGE: ORIGINAL - icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
 
-	icon_with_undershirt.Crop(9, 9, 23, 23)
+	icon_with_undershirt.Crop(10, 11, 22, 23) // SKYRAT EDIT CHANGE : ORIGINAL - icon_with_undershirt.Crop(9, 9, 23, 23)
 	icon_with_undershirt.Scale(32, 32)
 	return icon_with_undershirt
 
