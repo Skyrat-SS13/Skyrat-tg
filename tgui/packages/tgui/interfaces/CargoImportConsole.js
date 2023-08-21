@@ -44,35 +44,12 @@ export const CargoImportConsole = (props, context) => {
                 <Stack vertical>
                   {armaments_list.map((armament_category) => (
                     <Stack.Item key={armament_category.category}>
-                      {armament_category.category_purchased ? (
-                        <Button
-                          width="100%"
-                          content={armament_category.category}
-                          selected={category === armament_category.category}
-                          onClick={() =>
-                            setCategory(armament_category.category)
-                          }
-                        />
-                      ) : (
-                        <Button
-                          width="100%"
-                          color="bad"
-                          onClick={() =>
-                            act('buy_company', {
-                              selected_company: armament_category.category,
-                            })
-                          }
-                          content={
-                            'Purchase ' +
-                            armament_category.category +
-                            ' (' +
-                            (armament_category.handout
-                              ? 'Handout [Choose One]'
-                              : armament_category.cost) +
-                            ' Cr)'
-                          }
-                        />
-                      )}
+                      <Button
+                        width="100%"
+                        content={armament_category.category}
+                        selected={category === armament_category.category}
+                        onClick={() => setCategory(armament_category.category)}
+                      />
                     </Stack.Item>
                   ))}
                 </Stack>
@@ -95,13 +72,7 @@ export const CargoImportConsole = (props, context) => {
                                 fontSize="15px"
                                 textAlign="center"
                                 selected={weapon === item.ref}
-                                color={
-                                  item.cant_purchase
-                                    ? 'bad'
-                                    : item.purchased >= item.quantity
-                                      ? 'bad'
-                                      : 'default'
-                                }
+                                color={item.cant_purchase ? 'bad' : 'default'}
                                 width="100%"
                                 key={item.ref}
                                 onClick={() => setArmament(item.ref)}>
@@ -147,13 +118,6 @@ export const CargoImportConsole = (props, context) => {
                               </Box>
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
-                            {!!item.cant_purchase && (
-                              <Stack.Item textColor={'red'}>
-                                {
-                                  'Company interest needs to be higher to buy this item!'
-                                }
-                              </Stack.Item>
-                            )}
                             {!!cant_buy_restricted && !!item.restricted && (
                               <Stack.Item textColor={'red'}>
                                 {
@@ -161,10 +125,6 @@ export const CargoImportConsole = (props, context) => {
                                 }
                               </Stack.Item>
                             )}
-                            <Stack.Item
-                              textColor={item.quantity <= 0 ? 'red' : 'green'}>
-                              {'Quantity Remaining: ' + item.quantity}
-                            </Stack.Item>
                             <Stack.Item
                               textColor={
                                 item.cost > budget_points ? 'red' : 'green'
@@ -188,8 +148,6 @@ export const CargoImportConsole = (props, context) => {
                                 width="100%"
                                 disabled={
                                   item.cost > budget_points ||
-                                  0 >= item.quantity ||
-                                  !!item.cant_purchase ||
                                   (!!cant_buy_restricted && !!item.restricted)
                                 }
                                 onClick={() =>

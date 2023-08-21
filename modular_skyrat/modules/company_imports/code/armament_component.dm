@@ -118,16 +118,6 @@
 					if(!parent_console.contraband)
 						continue
 
-				var/cant_purchase = FALSE
-
-				if(gun_entry.interest_required)
-					for(var/company_interested as anything in SScargo_companies.companies)
-						if(company_interested != armament_category)
-							continue
-						var/datum/cargo_company/company_datum = SScargo_companies.companies[company_interested]
-						if(company_datum.interest < gun_entry.interest_required)
-							cant_purchase = TRUE
-
 				subcategory_items += list(list(
 					"ref" = REF(armament_entry),
 					"icon" = armament_entry.cached_base64,
@@ -135,12 +125,10 @@
 					"cost" = armament_entry.cost,
 					"buyable_ammo" = armament_entry.magazine ? TRUE : FALSE,
 					"magazine_cost" = armament_entry.magazine_cost,
-					"quantity" = gun_entry.stock,
 					"purchased" = purchased_items[armament_entry] ? purchased_items[armament_entry] : 0,
 					"description" = armament_entry.description,
 					"armament_category" = armament_entry.category,
 					"equipment_subcategory" = armament_entry.subcategory,
-					"cant_purchase" = !!cant_purchase,
 					"restricted" = !!armament_entry.restricted,
 				))
 
@@ -163,24 +151,10 @@
 			if(company != armament_category)
 				continue
 
-			if(company in SScargo_companies.purchased_companies)
-				purchased_company = TRUE
-
-			var/datum/cargo_company/company_datum = SScargo_companies.companies[company]
-
-			if((company_datum in SScargo_companies.chosen_handouts) && !SScargo_companies.handout_picked)
-				handout_company = TRUE
-
-			company_cost = company_datum.cost
-
-
 		data["armaments_list"] += list(list(
 			"category" = armament_category,
-			"category_purchased" = !!purchased_company,
 			"category_uses" = used_categories[armament_category],
 			"subcategories" = armament_subcategories,
-			"cost" = company_cost,
-			"handout" = !!handout_company,
 		))
 
 	return data
@@ -249,10 +223,6 @@
 		to_chat(user, span_warning("No budget found!"))
 		return
 
-	if(!armament_entry.stock)
-		to_chat(user, span_warning("No stock of this item left!"))
-		return
-
 	if(!ishuman(user))
 		return
 
@@ -279,7 +249,6 @@
 	used_categories[armament_entry.category]++
 
 	purchased_items[armament_entry]++
-	armament_entry.stock--
 
 	var/datum/supply_pack/armament/created_pack = new
 	created_pack.name = initial(armament_entry.item_type.name)
@@ -292,7 +261,6 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.interest_addition = armament_entry.interest_addition
 	created_order.selected_entry = armament_entry
 	created_order.used_component = src
 	if(console_state == CARGO_CONSOLE)
@@ -404,7 +372,6 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.interest_addition = ammo_purchase_num
 	created_order.item_amount = ammo_purchase_num
 	var/datum/computer_file/program/budgetorders/file_p = parent_prog
 	if(console_state == CARGO_CONSOLE)
@@ -432,77 +399,6 @@
 		if("set_ammo_amount")
 			var/target = text2num(params["chosen_amount"])
 			ammo_purchase_num = clamp(target, 1, MAX_AMMO_AMOUNT)
-
-		if("buy_company")
-			var/target = params["selected_company"]
-			var/obj/machinery/computer/cargo/possible_console
-
-			if(console_state == CARGO_CONSOLE)
-				possible_console = parent
-				if(possible_console.requestonly && !self_paid)
-					return
-			else if(console_state == IRN_CONSOLE)
-				if(!self_paid)
-					to_chat(usr, span_warning("You cannot purchase companies on a tablet without privately ordering them!"))
-					return
-
-			for(var/find_company in SScargo_companies.unpurchased_companies)
-				if(find_company != target)
-					continue
-
-				var/datum/cargo_company/found_company = SScargo_companies.unpurchased_companies[target]
-				var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
-
-				var/mob/living/carbon/human/user = usr
-
-				if(!istype(user))
-					return
-
-				var/obj/item/card/id/id_card = user.get_idcard(TRUE)
-
-				if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-					if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
-						parent_prog.requestonly = FALSE
-						buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
-						parent_prog.can_approve_requests = TRUE
-					else
-						parent_prog.requestonly = TRUE
-						parent_prog.can_approve_requests = FALSE
-				else
-					parent_prog?.requestonly = TRUE
-
-				if(self_paid)
-
-					if(!istype(id_card))
-						to_chat(user, span_warning("No ID card detected."))
-						return
-
-					if(istype(id_card, /obj/item/card/id/departmental_budget))
-						to_chat(user, span_warning("[id_card] cannot be used to make purchases."))
-						return
-
-					var/datum/bank_account/account = id_card.registered_account
-
-					if(!istype(account))
-						to_chat(user, span_warning("Invalid bank account."))
-						return
-
-					buyer = account
-
-				var/assigned_cost = -found_company.cost
-				var/do_payment = TRUE
-				if(!SScargo_companies.handout_picked && (found_company in SScargo_companies.chosen_handouts))
-					do_payment = FALSE
-					SScargo_companies.handout_picked = TRUE
-				if(do_payment)
-					if(!buyer.adjust_money(assigned_cost))
-						return
-				if(possible_console)
-					possible_console.radio_wrapper(possible_console, "[find_company] has been purchased by [user] on [self_paid ? "[buyer.account_holder]'s balance" : "Cargo Budget"] for [abs(assigned_cost)].", RADIO_CHANNEL_SUPPLY)
-
-				SScargo_companies.purchased_companies[find_company] = found_company
-				SScargo_companies.unpurchased_companies.Remove(find_company)
-				break
 
 		if("toggleprivate")
 			var/obj/item/card/id/id_card
