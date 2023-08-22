@@ -501,15 +501,6 @@
 		return ..()
 	return charger.summoner == user
 
-<<<<<<< HEAD
-
-//SKYRAT EDIT START: Human Riding Defines
-#undef OVERSIZED_OFFSET
-#undef OVERSIZED_SIDE_OFFSET
-#undef REGULAR_OFFSET
-#undef REGULAR_SIDE_OFFSET
-//SKYRAT EDIT END
-=======
 /datum/component/riding/creature/goldgrub
 
 /datum/component/riding/creature/goldgrub/handle_specials()
@@ -519,4 +510,10 @@
 	set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 	set_vehicle_dir_layer(EAST, OBJ_LAYER)
 	set_vehicle_dir_layer(WEST, OBJ_LAYER)
->>>>>>> 81e59f7ff2a (Goldgrub basic  (#77733))
+
+//SKYRAT EDIT START: Human Riding Defines
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END
