@@ -93,7 +93,7 @@ export const RecordPrint = (props, context) => {
             icon="file-alt"
             onClick={() => swapTabs(PRINTOUT.Rapsheet)}
             selected={printType === PRINTOUT.Rapsheet}
-            tooltip={`Prints a standard paper with the record on it.`} // SKYRAT EDIT CHANGE START - ORIGINAL: 
+            tooltip={`Prints a standard paper with the record on it.`} // SKYRAT EDIT CHANGE START - ORIGINAL:
             // tooltip={`Prints a standard paper with the record on it.${
             //  innocent ? ' (Requires crimes)' : ''
             // }`}
