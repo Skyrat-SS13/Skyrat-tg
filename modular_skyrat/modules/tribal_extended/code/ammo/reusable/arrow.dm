@@ -43,7 +43,7 @@
 	faction_bonus_force = 90
 	damage = 30
 	armour_penetration = 30
-	nemesis_path = list(
+	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/megafauna,
 	)
 	projectile_type = /obj/item/ammo_casing/arrow/bronze
