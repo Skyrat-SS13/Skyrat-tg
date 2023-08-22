@@ -34,13 +34,17 @@
 	if(!target_soul || !target_soul.body_scan_needed)
 		return FALSE
 
+	var/datum/component/soulcatcher_user/user_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
+	if(!user_component)
+		return FALSE
+
 	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
-	target_soul.name = source_mob.real_name
+	user_component.name = source_mob.real_name
 	target_soul.body_scan_needed = FALSE
 
 	var/datum/preferences/preferences = target_soul.client?.prefs
 	if(preferences)
-		target_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
+		user_component.desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	return TRUE
 

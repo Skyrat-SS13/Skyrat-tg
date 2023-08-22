@@ -187,8 +187,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
 	var/datum/component/soulcatcher_user/soul_component = new_soul.AddComponent(/datum/component/soulcatcher_user)
 
-	new_soul.name = mind_to_add.name
+	if(!soul_component)
+		return FALSE
 
+	soul_component.name = mind_to_add.name
 	if(mind_to_add.current)
 		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
 		body_component.soulcatcher_soul = WEAKREF(new_soul)
@@ -197,18 +199,18 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		new_soul.body_scan_needed = TRUE
 
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
-		new_soul.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
-		new_soul.soul_desc = "[new_soul] lacks a discernible form."
+		soul_component.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
+		soul_component.desc = "[new_soul] lacks a discernible form."
 
 	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
-	new_soul.current_room = WEAKREF(src)
+	soul_component.current_room = WEAKREF(src)
 
 	var/datum/preferences/preferences = new_soul.client?.prefs
 	if(preferences)
-		new_soul.ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
+		soul_component.ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
 		if(!new_soul.body_scan_needed)
-			new_soul.soul_desc = preferences.read_preference(/datum/preference/text/flavor_text)
+			soul_component.desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(new_soul, span_notice(room_description))
@@ -230,8 +232,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soul_to_remove || !(soul_to_remove in current_souls))
 		return FALSE
 
+	var/datum/component/soulcatcher_user/soul_component = soul_to_remove.GetComponent(/datum/component/soulcatcher_user)
+	if(!soul_component)
+		return FALSE
+
 	current_souls -= soul_to_remove
-	soul_to_remove.current_room = null
+	soul_component.current_room = null
 
 	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
@@ -243,11 +249,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!(target_soul in current_souls) || !target_room)
 		return FALSE
 
+	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
+	if(!soul_component)
+		return FALSE
+
 	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
 	if(target_master_soulcatcher != master_soulcatcher.resolve())
 		target_soul.forceMove(target_master_soulcatcher.parent)
 
-	target_soul.current_room = WEAKREF(target_room)
+	soul_component.current_room = WEAKREF(target_room)
 	current_souls -= target_soul
 	target_room.current_souls += target_soul
 
@@ -291,8 +301,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
 		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
-	for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
-		if((emote && !soul.internal_sight) || (!emote && !soul.internal_hearing))
+	for(var/mob/living/soul as anything in current_souls)
+		var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
+		if(!soul_component)
+			continue
+
+		if((emote && !soul_component.internal_sight) || (!emote && !soul_component.internal_hearing))
 			continue
 
 		to_chat(soul, message)

@@ -1,78 +1,12 @@
 /mob/living/soulcatcher_soul
-	/// What does our soul look like?
-	var/soul_desc = "It's a soul."
-	/// What are the ooc notes for the soul?
-	var/ooc_notes = ""
-
-	/// Assuming we died inside of the round? What is our previous body?
-	var/datum/weakref/previous_body
-	/// What is the weakref of the soulcatcher room are we currently in?
-	var/datum/weakref/current_room
-
-	/// Is the soul able to see things in the outside world?
-	var/outside_sight = TRUE
-	/// Is the soul able to hear things from the outside world?
-	var/outside_hearing = TRUE
-	/// Is the soul able to "see" things from inside of the soulcatcher?
-	var/internal_sight = TRUE
-	/// Is the soul able to "hear" things from inside of the soulcatcher?
-	var/internal_hearing = TRUE
-	/// Is the soul able to emote inside the soulcatcher room?
-	var/able_to_emote = TRUE
-	/// Is the soul able to speak inside the soulcatcher room?
-	var/able_to_speak = TRUE
-	/// Is the soul able to change their own name?
-	var/able_to_rename = TRUE
-
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
 	/// Did the soul live within the round? This is checked if we want to transfer the soul to another body.
 	var/round_participant = FALSE
 	/// Does the body need scanned?
 	var/body_scan_needed = FALSE
-
-/mob/living/soulcatcher_soul/Initialize(mapload)
-	. = ..()
-	if(!outside_sight)
-		become_blind(NO_EYES)
-
-	if(!outside_hearing)
-		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
-
-/// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
-/mob/living/soulcatcher_soul/proc/toggle_sight()
-	outside_sight = !outside_sight
-	if(outside_sight)
-		cure_blind(NO_EYES)
-	else
-		become_blind(NO_EYES)
-
-	return outside_sight
-
-/// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_hearing` variable.
-/mob/living/soulcatcher_soul/proc/toggle_hearing()
-	outside_hearing = !outside_hearing
-	if(outside_hearing)
-		REMOVE_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
-	else
-		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
-
-	return outside_hearing
-
-/// Changes the soul's name based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
-/mob/living/soulcatcher_soul/proc/change_name(new_name)
-	if(!new_name || (round_participant && body_scan_needed))
-		return FALSE
-
-	name = new_name
-	return TRUE
-
-/// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
-/mob/living/soulcatcher_soul/proc/reset_name()
-	if(!mind?.name || change_name(mind.name))
-		return FALSE
-
-	return TRUE
+	/// Assuming we died inside of the round? What is our previous body?
+	var/datum/weakref/previous_body
 
 /// Checks if the mob wants to leave the soulcatcher. If they do and are able to leave, they are booted out.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
@@ -97,6 +31,7 @@
 	return_to_body()
 	qdel(src)
 
+/*
 /mob/living/soulcatcher_soul/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof, message_range, datum/saymode/saymode)
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(!message || message == "")
@@ -128,6 +63,8 @@
 
 	room.send_message(message, src, TRUE)
 	return TRUE
+
+*/
 
 /mob/living/soulcatcher_soul/subtle()
 	set hidden = TRUE
@@ -166,12 +103,13 @@
 
 /mob/living/soulcatcher_soul/Destroy()
 	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
-	if(current_room)
-		var/datum/soulcatcher_room/room = current_room.resolve()
+	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	if(soul_component && soul_component.current_room)
+		var/datum/soulcatcher_room/room = soul_component.current_room.resolve()
 		if(room)
 			room.current_souls -= src
 
-		current_room = null
+		soul_component.current_room = null
 
 	return ..()
 

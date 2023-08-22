@@ -27,20 +27,25 @@
 		"currently_targeted" = currently_targeted,
 		)
 
-		for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
+		for(var/mob/living/soul in room.current_souls)
+			var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
+			if(!soul_component)
+				continue
+
+			var/mob/living/soulcatcher_soul/soul_to_check = soul // So that we can check if a body scan is needed if we are working with a soul
 			var/list/soul_list = list(
-				"name" = soul.name,
-				"description" = soul.soul_desc,
+				"name" = soul_component.name,
+				"description" = soul_component.desc,
 				"reference" = REF(soul),
-				"internal_hearing" = soul.internal_hearing,
-				"internal_sight" = soul.internal_sight,
-				"outside_hearing" = soul.outside_hearing,
-				"outside_sight" = soul.outside_sight,
-				"able_to_emote" = soul.able_to_emote,
-				"able_to_speak" = soul.able_to_speak,
-				"able_to_rename" = soul.able_to_rename,
-				"ooc_notes" = soul.ooc_notes,
-				"scan_needed" = soul.body_scan_needed,
+				"internal_hearing" = soul_component.internal_hearing,
+				"internal_sight" = soul_component.internal_sight,
+				"outside_hearing" = soul_component.outside_hearing,
+				"outside_sight" = soul_component.outside_sight,
+				"able_to_emote" = soul_component.able_to_emote,
+				"able_to_speak" = soul_component.able_to_speak,
+				"able_to_rename" = soul_component.able_to_rename,
+				"ooc_notes" = soul_component.ooc_notes,
+				"scan_needed" = soul_to_check?.body_scan_needed,
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -67,9 +72,14 @@
 			return FALSE
 
 	var/mob/living/soulcatcher_soul/target_soul
+	var/datum/component/soulcatcher_user/user_component
 	if(params["target_soul"])
 		target_soul = locate(params["target_soul"]) in target_room.current_souls
 		if(!target_soul)
+			return FALSE
+
+		user_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
+		if(!user_component)
 			return FALSE
 
 	switch(action)
@@ -169,30 +179,30 @@
 
 		if("toggle_soul_outside_sense")
 			if(params["sense_to_change"] == "hearing")
-				target_soul.toggle_hearing()
+				user_component.toggle_external_hearing()
 			else
-				target_soul.toggle_sight()
+				user_component.toggle_external_sight()
 
 			return TRUE
 
 		if("toggle_soul_sense")
 			if(params["sense_to_change"] == "hearing")
-				target_soul.internal_hearing = !target_soul.internal_hearing
+				user_component.internal_hearing = !user_component.internal_hearing
 			else
-				target_soul.internal_sight = !target_soul.internal_sight
+				user_component.internal_sight = !user_component.internal_sight
 
 			return TRUE
 
 		if("toggle_soul_communication")
 			if(params["communication_type"] == "emote")
-				target_soul.able_to_emote = !target_soul.able_to_emote
+				user_component.able_to_emote = !user_component.able_to_emote
 			else
-				target_soul.able_to_speak = !target_soul.able_to_speak
+				user_component.able_to_speak = !user_component.able_to_speak
 
 			return TRUE
 
 		if("toggle_soul_renaming")
-			target_soul.able_to_rename = !target_soul.able_to_rename
+			user_component.able_to_rename = !user_component.able_to_rename
 			return TRUE
 
 		if("change_name")
@@ -200,14 +210,14 @@
 			if(!new_name)
 				return FALSE
 
-			target_soul.change_name(new_name)
+			user_component.change_name(new_name)
 			return TRUE
 
 		if("reset_name")
 			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
-			target_soul.reset_name()
+			user_component.reset_name()
 
 		if("send_message")
 			var/message_to_send = ""
@@ -241,37 +251,41 @@
 		return FALSE //uhoh
 
 	data["user_data"] = list(
-		"name" = user_soul.name,
-		"description" = user_soul.soul_desc,
+		"name" = name,
+		"description" = desc,
 		"reference" = REF(user_soul),
-		"internal_hearing" = user_soul.internal_hearing,
-		"internal_sight" = user_soul.internal_sight,
-		"outside_hearing" = user_soul.outside_hearing,
-		"outside_sight" = user_soul.outside_sight,
-		"able_to_emote" = user_soul.able_to_emote,
-		"able_to_speak" = user_soul.able_to_speak,
-		"able_to_rename" = user_soul.able_to_rename,
-		"ooc_notes" = user_soul.ooc_notes,
+		"internal_hearing" = internal_hearing,
+		"internal_sight" = internal_sight,
+		"outside_hearing" = outside_hearing,
+		"outside_sight" = outside_sight,
+		"able_to_emote" = able_to_emote,
+		"able_to_speak" = able_to_speak,
+		"able_to_rename" = able_to_rename,
+		"ooc_notes" = ooc_notes,
 		"scan_needed" = user_soul.body_scan_needed,
 	)
 
-	var/datum/soulcatcher_room/current_room = user_soul.current_room.resolve()
+	var/datum/soulcatcher_room/current_soulcatcher_room = current_room.resolve()
 	data["current_room"] = list(
-		"name" = html_decode(current_room.name),
-		"description" = html_decode(current_room.room_description),
-		"reference" = REF(current_room),
-		"color" = current_room.room_color,
-		"owner" = current_room.outside_voice,
+		"name" = html_decode(current_soulcatcher_room.name),
+		"description" = html_decode(current_soulcatcher_room.room_description),
+		"reference" = REF(current_soulcatcher_room),
+		"color" = current_soulcatcher_room.room_color,
+		"owner" = current_soulcatcher_room.outside_voice,
 		)
 
-	for(var/mob/living/soulcatcher_soul/soul in current_room.current_souls)
+	for(var/mob/living/soul in current_soulcatcher_room.current_souls)
 		if(soul == user_soul)
 			continue
 
+		var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
+		if(!soul_component)
+			continue
+
 		var/list/soul_list = list(
-			"name" = soul.name,
-			"description" = soul.soul_desc,
-			"ooc_notes" = soul.ooc_notes,
+			"name" = soul_component.name,
+			"description" = soul_component.desc,
+			"ooc_notes" = soul_component.ooc_notes,
 			"reference" = REF(soul),
 		)
 		data["souls"] += list(soul_list)
@@ -283,22 +297,19 @@
 	if(.)
 		return
 
-	var/mob/living/soulcatcher_soul/user_soul = parent
-	if(!istype(user_soul))
-		return FALSE
-
 	switch(action)
 		if("change_name")
-			var/new_name = tgui_input_text(usr, "Enter a new name", "Soulcatcher", user_soul.name)
+			var/new_name = tgui_input_text(usr, "Enter a new name", "Soulcatcher", name)
 			if(!new_name)
 				return FALSE
 
-			user_soul.change_name(new_name)
+			change_name(new_name)
 			return TRUE
 
 		if("reset_name")
 			if(tgui_alert(usr, "Do you wish to reset your name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
-			user_soul.reset_name()
+			reset_name()
+			return TRUE
 
