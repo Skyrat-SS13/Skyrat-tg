@@ -5,11 +5,7 @@
 // Mining PPE, SEVAs and hardhats, have you passed your OSHA inspection today?
 
 /datum/armament_entry/company_import/kahraman/ppe
-	subcategory = "OSHA Certified Protective Equipment"
-
-/datum/armament_entry/company_import/kahraman/ppe/hardhat
-	item_type = /obj/item/clothing/head/utility/hardhat/orange
-	cost = PAYCHECK_LOWER
+	subcategory = "FOHSA Certified Protective Equipment"
 
 /datum/armament_entry/company_import/kahraman/ppe/weldhat
 	item_type = /obj/item/clothing/head/utility/hardhat/welding/orange

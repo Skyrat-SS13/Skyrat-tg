@@ -5,7 +5,7 @@
 // Basic first aid supplies like gauze, sutures, mesh, so on
 
 /datum/armament_entry/company_import/deforest/first_aid
-	subcategory = "First-Aid Supplies"
+	subcategory = "First-Aid Consumables"
 
 /datum/armament_entry/company_import/deforest/first_aid/gauze
 	item_type = /obj/item/stack/medical/gauze/twelve
@@ -37,6 +37,34 @@
 /datum/armament_entry/company_import/deforest/first_aid/advanced_mesh
 	item_type = /obj/item/stack/medical/mesh/advanced
 	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/deforest/medpens
+	subcategory = "Autoinjectors"
+	cost = PAYCHECK_COMMAND * 1.5
+
+/datum/armament_entry/company_import/deforest/medpens/epipen
+	item_type = /obj/item/reagent_containers/hypospray/medipen
+
+/datum/armament_entry/company_import/deforest/medpens/emergency_pen
+	item_type = /obj/item/reagent_containers/hypospray/medipen/ekit
+
+/datum/armament_entry/company_import/deforest/medpens/blood_loss
+	item_type = /obj/item/reagent_containers/hypospray/medipen/blood_loss
+
+/datum/armament_entry/company_import/deforest/medpens/atropine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/atropine
+
+/datum/armament_entry/company_import/deforest/medpens/roxxane
+	item_type = /obj/item/reagent_containers/hypospray/medipen/oxandrolone
+
+/datum/armament_entry/company_import/deforest/medpens/salacid
+	item_type = /obj/item/reagent_containers/hypospray/medipen/salacid
+
+/datum/armament_entry/company_import/deforest/medpens/penacid
+	item_type = /obj/item/reagent_containers/hypospray/medipen/penacid
+
+/datum/armament_entry/company_import/deforest/medpens/salbutamol
+	item_type = /obj/item/reagent_containers/hypospray/medipen/salbutamol
 
 // Various chemicals, with a box of syringes to come with
 
@@ -208,3 +236,11 @@
 /datum/armament_entry/company_import/deforest/defense/firefly
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
 	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/deforest/defense/firefly_mag
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/deforest/defense/firefly_mag_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
+	cost = PAYCHECK_CREW

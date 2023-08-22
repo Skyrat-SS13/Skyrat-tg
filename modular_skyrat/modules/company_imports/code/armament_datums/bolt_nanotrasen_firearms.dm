@@ -51,9 +51,30 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	cost = PAYCHECK_COMMAND * 4
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/energy_holster
-	item_type = /obj/item/storage/belt/holster/energy/thermal
-	cost = PAYCHECK_COMMAND * 6
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+	subcategory = "Sidearm Magazines"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader
+	item_type = /obj/item/ammo_box/c38
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader_rubber
+	item_type = /obj/item/ammo_box/c38/match/bouncy
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+	item_type = /obj/item/ammo_box/magazine/m45
 
 // Lethal anything that's not a pistol, requires high company interest
 
@@ -76,3 +97,16 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/cmg
 	item_type = /obj/item/gun/ballistic/automatic/cmg
 	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines
+	subcategory = "Longarm Magazines"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/wt550
+	item_type = /obj/item/ammo_box/magazine/wt550m9
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg

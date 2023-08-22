@@ -81,3 +81,18 @@
 /datum/armament_entry/company_import/nri_surplus/firearm/anti_materiel_rifle
 	item_type = /obj/item/gun/ballistic/automatic/cin_amr
 	cost = PAYCHECK_COMMAND * 12
+
+/datum/armament_entry/company_import/nri_surplus/firearm/sakhno_rifle
+	item_type = /obj/item/gun/ballistic/rifle/boltaction
+	cost = PAYCHECK_COMMAND * 12
+
+/datum/armament_entry/company_import/nri_surplus/firearm_ammo
+	subcategory = "Firearm Magazines"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nri_surplus/firearm_ammo/amr_magazine
+	item_type = /obj/item/ammo_box/magazine/cin_amr
+
+/datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno_stripper
+	item_type = /obj/item/ammo_box/strilka310
+

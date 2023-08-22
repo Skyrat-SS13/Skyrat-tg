@@ -77,15 +77,7 @@
 // Donksoft weapons
 
 /datum/armament_entry/company_import/donk/foamforce
-	subcategory = "Foam Force (TM) Weapons"
-
-/datum/armament_entry/company_import/donk/foamforce/darts
-	item_type = /obj/item/ammo_box/foambox
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/donk/foamforce/riot_darts
-	item_type = /obj/item/ammo_box/foambox/riot
-	cost = PAYCHECK_CREW * 1.5
+	subcategory = "Foam Force (TM) Blasters"
 
 /datum/armament_entry/company_import/donk/foamforce/foam_pistol
 	item_type = /obj/item/gun/ballistic/automatic/pistol/toy
@@ -106,3 +98,27 @@
 /datum/armament_entry/company_import/donk/foamforce/foam_lmg
 	item_type = /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted
 	cost = PAYCHECK_COMMAND * 5
+
+/datum/armament_entry/company_import/donk/foamforce_ammo
+	subcategory = "Foam Force (TM) Dart Accessories"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/donk/foamforce_ammo/darts
+	item_type = /obj/item/ammo_box/foambox
+	cost = PAYCHECK_LOWER
+
+/datum/armament_entry/company_import/donk/foamforce_ammo/riot_darts
+	item_type = /obj/item/ammo_box/foambox/riot
+	cost = PAYCHECK_COMMAND * 1.5
+
+/datum/armament_entry/company_import/donk/foamforce_ammo
+	item_type = /obj/item/ammo_box/magazine/toy/pistol
+
+/datum/armament_entry/company_import/donk/foamforce_ammo
+	item_type = /obj/item/ammo_box/magazine/toy/smg
+
+/datum/armament_entry/company_import/donk/foamforce_ammo
+	item_type = /obj/item/ammo_box/magazine/toy/smgm45
+
+/datum/armament_entry/company_import/donk/foamforce_ammo
+	item_type = /obj/item/ammo_box/magazine/toy/m762

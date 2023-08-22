@@ -7,10 +7,6 @@
 /datum/armament_entry/company_import/nakamura_tooling/basic
 	subcategory = "Standard Engineering Equipment"
 
-/datum/armament_entry/company_import/nakamura_tooling/basic/analyzer
-	item_type = /obj/item/analyzer
-	cost = PAYCHECK_LOWER
-
 /datum/armament_entry/company_import/nakamura_tooling/basic/mechanical_toolbox
 	item_type = /obj/item/storage/toolbox/mechanical
 	cost = PAYCHECK_COMMAND * 2
@@ -25,7 +21,7 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/inducer
 	item_type = /obj/item/inducer
-	cost = PAYCHECK_CREW
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/magboots
 	item_type = /obj/item/clothing/shoes/magboots

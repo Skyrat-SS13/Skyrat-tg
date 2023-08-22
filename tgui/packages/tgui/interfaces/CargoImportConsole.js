@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button, NumberInput } from '../components';
+import { Section, Stack, Box, Divider, Button } from '../components';
 import { Window } from '../layouts';
 
 export const CargoImportConsole = (props, context) => {
@@ -10,7 +10,6 @@ export const CargoImportConsole = (props, context) => {
     armaments_list = [],
     budget_points,
     budget_name,
-    ammo_amount,
     self_paid,
     cant_buy_restricted,
   } = data;
@@ -131,16 +130,6 @@ export const CargoImportConsole = (props, context) => {
                               }>
                               {'Cost: ' + item.cost}
                             </Stack.Item>
-                            {!!item.buyable_ammo && (
-                              <Stack.Item
-                                textColor={
-                                  item.magazine_cost > budget_points
-                                    ? 'red'
-                                    : 'green'
-                                }>
-                                {'Ammo Cost: ' + item.magazine_cost}
-                              </Stack.Item>
-                            )}
                             <Stack.Item>
                               <Button
                                 content="Buy"
@@ -157,36 +146,6 @@ export const CargoImportConsole = (props, context) => {
                                 }
                               />
                             </Stack.Item>
-                            {!!item.buyable_ammo && (
-                              <Stack.Item>
-                                <Button
-                                  content="Buy Ammo"
-                                  textAlign="center"
-                                  width="100%"
-                                  disabled={item.magazine_cost > budget_points}
-                                  onClick={() =>
-                                    act('buy_ammo', {
-                                      armament_ref: item.ref,
-                                    })
-                                  }
-                                />
-                              </Stack.Item>
-                            )}
-                            {!!item.buyable_ammo && (
-                              <NumberInput
-                                value={ammo_amount}
-                                width="59px"
-                                minValue={0}
-                                maxValue={10}
-                                step={1}
-                                stepPixelSize={2}
-                                onChange={(e, value) =>
-                                  act('set_ammo_amount', {
-                                    chosen_amount: value,
-                                  })
-                                }
-                              />
-                            )}
                           </Stack>
                         )
                     )

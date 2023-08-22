@@ -30,15 +30,15 @@
 
 /datum/armament_entry/company_import/blacksteel/forging_tools/billows
 	item_type = /obj/item/forging/billow
-	cost = PAYCHECK_CREW
+	cost = PAYCHECK_LOWER
 
 /datum/armament_entry/company_import/blacksteel/forging_tools/hammer
 	item_type = /obj/item/forging/hammer
-	cost = PAYCHECK_CREW
+	cost = PAYCHECK_LOWER
 
 /datum/armament_entry/company_import/blacksteel/forging_tools/tongs
 	item_type = /obj/item/forging/tongs
-	cost = PAYCHECK_CREW
+	cost = PAYCHECK_LOWER
 
 // Fancy sounding and looking bars of metal that most definitely aren't just common metals with a fancy sounding name
 

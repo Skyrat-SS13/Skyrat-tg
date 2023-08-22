@@ -5,7 +5,7 @@
 // Basic lethal/disabler beam weapons, includes the base mcr
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons
-	subcategory = "Basic Energy Weapons"
+	subcategory = "Basic Energy Smallarms"
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler
 	item_type = /obj/item/gun/energy/disabler
@@ -15,20 +15,26 @@
 	item_type = /obj/item/gun/energy/e_gun/mini
 	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/microstar/basic_energy_weapons/sc1
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/energy_holster
+	item_type = /obj/item/storage/belt/holster/energy/thermal
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons
+	subcategory = "Basic Energy Longarms"
+
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/sc1
 	item_type = /obj/item/gun/energy/laser
 	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/microstar/basic_energy_weapons/sc2
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/sc2
 	item_type = /obj/item/gun/energy/e_gun
 	cost = PAYCHECK_COMMAND * 4
 
-/datum/armament_entry/company_import/microstar/basic_energy_weapons/basic_mcr
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/basic_mcr
 	item_type = /obj/item/gun/microfusion/mcr01
 	cost = PAYCHECK_COMMAND * 4
 
 // More expensive, unique energy weapons
-
 /datum/armament_entry/company_import/microstar/experimental_energy
 	subcategory = "Experimental Energy Weapons"
 	cost = PAYCHECK_COMMAND * 6
