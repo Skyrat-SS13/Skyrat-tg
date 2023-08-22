@@ -49,6 +49,7 @@
 
 /datum/job/prisoner
 	required_languages = null
+	banned_quirks = list(PRISON_RESTRICTED_QUIRKS)
 
 //Security
 /datum/job/security_officer

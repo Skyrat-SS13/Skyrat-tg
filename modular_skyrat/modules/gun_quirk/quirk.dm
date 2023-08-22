@@ -1,6 +1,5 @@
 ///Mail goodie list.
-#define GUN_MAIL_LIST list(
-	/obj/item/gun_maintenance_supplies, \
+#define GUN_MAIL_LIST list(/obj/item/gun_maintenance_supplies, \
 	/obj/item/bedsheet/patriot, \
 	/obj/item/clothing/mask/gas/hecu2, \
 	/obj/item/storage/backpack/industrial/cin_surplus/random_color, \
@@ -9,8 +8,7 @@
 )
 
 ///Gun you get on spawn.
-#define STARTER_GUN_LIST list(
-	/obj/item/gun/ballistic/automatic/pistol/g17, \
+#define STARTER_GUN_LIST list(/obj/item/gun/ballistic/automatic/pistol/g17, \
 	/obj/item/gun/ballistic/automatic/pistol/mk58, \
 	/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper, \
 )
@@ -20,7 +18,6 @@
 	desc = "You own a firearm, presumably for self defense or boasting about how cool it is; and you thought it's such a good idea to bring it on station with you."
 	icon = FA_ICON_PERSON_RIFLE
 	value = 8
-	mob_trait = TRAIT_GUN_NUT
 	quirk_flags = QUIRK_HUMAN_ONLY | QUIRK_HIDE_FROM_SCAN
 	gain_text = span_notice("Man, I sure do love guns!")
 	lose_text = span_danger("Maybe having a gun isn't that a good idea...") //man so stupid
@@ -37,13 +34,14 @@
 	name = "personal gun case"
 	desc = "Used for safe storaging of guns."
 	icon_state = "lockbox"
-	var/obj/item/gun/ballistic/gun = null
 
 /obj/item/storage/toolbox/guncase/gun_nut/Initialize()
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 9
 	atom_storage.max_slots = 4
+	atom_storage.can_hold = typecacheof(list(/obj/item/gun/ballistic/automatic/pistol, /obj/item/ammo_box, /obj/item/ammo_casing))
+	atom_storage.cant_hold = typecacheof(list(/obj/item/ammo_casing/rocket))
 
 /obj/item/storage/toolbox/guncase/gun_nut/PopulateContents()
 	var/gun_type_to_spawn = pick(STARTER_GUN_LIST)
