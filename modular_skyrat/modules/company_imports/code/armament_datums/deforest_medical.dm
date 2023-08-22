@@ -54,7 +54,7 @@
 /datum/armament_entry/company_import/deforest/medpens/atropine
 	item_type = /obj/item/reagent_containers/hypospray/medipen/atropine
 
-/datum/armament_entry/company_import/deforest/medpens/roxxane
+/datum/armament_entry/company_import/deforest/medpens/oxandrolone
 	item_type = /obj/item/reagent_containers/hypospray/medipen/oxandrolone
 
 /datum/armament_entry/company_import/deforest/medpens/salacid
