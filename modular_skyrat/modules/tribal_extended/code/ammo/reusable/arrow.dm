@@ -20,7 +20,7 @@
 		/mob/living/basic/mining,
 		/mob/living/basic/wumborian_fugu,
 	)
-	projectile_type = /obj/item/ammo_casing/arrow/ash
+	shrapnel_type = /obj/item/ammo_casing/arrow/ash
 
 /obj/projectile/bullet/arrow/bone
 	name = "bone arrow"
@@ -34,8 +34,17 @@
 		/mob/living/basic/mining,
 		/mob/living/basic/wumborian_fugu,
 	)
-	projectile_type = /obj/item/ammo_casing/arrow/bone
-	embedding = list(embed_chance = 33, fall_chance = 3, jostle_chance = 4, ignore_throwspeed_threshold = TRUE, pain_stam_pct = 0.4, pain_mult = 5, jostle_pain_mult = 6, rip_time = 5)
+	shrapnel_type = /obj/item/ammo_casing/arrow/bone
+	embedding = list(
+		embed_chance = 33,
+		fall_chance = 3,
+		jostle_chance = 4,
+		ignore_throwspeed_threshold = TRUE,
+		pain_stam_pct = 0.4,
+		pain_mult = 5,
+		jostle_pain_mult = 6,
+		rip_time = 0.5 SECONDS
+	)
 
 /obj/projectile/bullet/arrow/bronze
 	name = "bronze arrow"
@@ -46,4 +55,4 @@
 	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/megafauna,
 	)
-	projectile_type = /obj/item/ammo_casing/arrow/bronze
+	shrapnel_type = /obj/item/ammo_casing/arrow/bronze
