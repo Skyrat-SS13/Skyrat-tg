@@ -17,7 +17,6 @@
 	damage = 15//lower me to 20 or 15
 	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/asteroid,
-		/mob/living/basic/lavaland,
 		/mob/living/basic/mining,
 		/mob/living/basic/wumborian_fugu,
 	)
@@ -32,7 +31,6 @@
 	wound_bonus = -30
 	nemesis_paths = list(
 		/mob/living/simple_animal/hostile/asteroid,
-		/mob/living/basic/lavaland,
 		/mob/living/basic/mining,
 		/mob/living/basic/wumborian_fugu,
 	)
