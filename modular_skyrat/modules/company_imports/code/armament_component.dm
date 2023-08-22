@@ -31,6 +31,58 @@
 /datum/component/armament/company_imports/on_attackby(atom/target, obj/item, mob/user)
 	return
 
+/datum/component/armament/company_imports/ui_static_data(mob/user)
+	var/list/data = list()
+
+	for(var/armament_category as anything in SSarmaments.entries)
+
+		var/list/armament_subcategories = list()
+
+		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
+			var/list/subcategory_items = list()
+			for(var/datum/armament_entry/armament_entry as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY][subcategory])
+				if(products && !(armament_entry.type in products))
+					continue
+
+				var/datum/armament_entry/company_import/gun_entry = armament_entry
+
+				if(gun_entry.contraband)
+					if(!(console_state == CARGO_CONSOLE))
+						continue
+					var/obj/machinery/computer/cargo/parent_console = parent
+					if(!parent_console.contraband)
+						continue
+
+				subcategory_items += list(list(
+					"ref" = REF(armament_entry),
+					"icon" = armament_entry.cached_base64,
+					"name" = armament_entry.name,
+					"cost" = armament_entry.cost,
+					"description" = armament_entry.description,
+					"armament_category" = armament_entry.category,
+					"equipment_subcategory" = armament_entry.subcategory,
+					"restricted" = !!armament_entry.restricted,
+				))
+
+			if(!LAZYLEN(subcategory_items))
+				continue
+
+			armament_subcategories += list(list(
+				"subcategory" = subcategory,
+				"items" = subcategory_items,
+			))
+
+		if(!LAZYLEN(armament_subcategories))
+			continue
+
+		data["armaments_list"] += list(list(
+			"category" = armament_category,
+			"category_uses" = used_categories[armament_category],
+			"subcategories" = armament_subcategories,
+		))
+
+	return data
+
 /datum/component/armament/company_imports/ui_data(mob/user)
 	var/list/data = list()
 
@@ -79,56 +131,6 @@
 	data["ammo_amount"] = ammo_purchase_num
 	data["self_paid"] = !!self_paid
 	data["armaments_list"] = list()
-
-	for(var/armament_category as anything in SSarmaments.entries)
-
-		var/list/armament_subcategories = list()
-
-		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
-			var/list/subcategory_items = list()
-			for(var/datum/armament_entry/armament_entry as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY][subcategory])
-				if(products && !(armament_entry.type in products))
-					continue
-
-				var/datum/armament_entry/company_import/gun_entry = armament_entry
-
-				if(gun_entry.contraband)
-					if(!(console_state == CARGO_CONSOLE))
-						continue
-					var/obj/machinery/computer/cargo/parent_console = parent
-					if(!parent_console.contraband)
-						continue
-
-				subcategory_items += list(list(
-					"ref" = REF(armament_entry),
-					"icon" = armament_entry.cached_base64,
-					"name" = armament_entry.name,
-					"cost" = armament_entry.cost,
-					"buyable_ammo" = armament_entry.magazine ? TRUE : FALSE,
-					"magazine_cost" = armament_entry.magazine_cost,
-					"purchased" = purchased_items[armament_entry] ? purchased_items[armament_entry] : 0,
-					"description" = armament_entry.description,
-					"armament_category" = armament_entry.category,
-					"equipment_subcategory" = armament_entry.subcategory,
-					"restricted" = !!armament_entry.restricted,
-				))
-
-			if(!LAZYLEN(subcategory_items))
-				continue
-
-			armament_subcategories += list(list(
-				"subcategory" = subcategory,
-				"items" = subcategory_items,
-			))
-
-		if(!LAZYLEN(armament_subcategories))
-			continue
-
-		data["armaments_list"] += list(list(
-			"category" = armament_category,
-			"category_uses" = used_categories[armament_category],
-			"subcategories" = armament_subcategories,
-		))
 
 	return data
 
