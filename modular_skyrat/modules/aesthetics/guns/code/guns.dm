@@ -40,60 +40,17 @@
 	/// Maybe don't enable this for shotgun ammo boxes.
 	var/multitype = TRUE
 
-/obj/item/gun/energy/e_gun
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "energy"
-	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/advtaser
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/cfa_phalanx
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/mini
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/stun
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/old
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/hos
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/dragnet
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
+///GUN SPRITE OVERWRITES
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/energy/laser
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
-/obj/item/gun/energy/e_gun/stun
-	charge_sections = 5
-	ammo_x_offset = 2
+/obj/item/gun/energy/ionrifle/carbine
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 /obj/item/gun/ballistic/shotgun/riot
 	name = "\improper Peacekeeper shotgun"
@@ -169,20 +126,6 @@
 	worn_icon_state = "gun"
 	worn_icon = null
 
-/obj/item/gun/energy/laser/thermal
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
-/obj/item/gun/energy/lasercannon
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	fire_sound_volume = 100
-	ammo_x_offset = 2
-	charge_sections = 5
-	inhand_icon_state = ""
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
 /obj/item/gun/energy/e_gun/nuclear/rainbow
 	name = "fantastic energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell. This one seems quite fancy!"
@@ -227,11 +170,6 @@
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
-
-// We don't customize CTF
-/obj/item/gun/energy/laser/instakill/ctf
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
@@ -351,11 +289,6 @@
 	icon_state = "arg"
 	inhand_icon_state = "arg"
 	can_suppress = FALSE
-
-//SOLFED PILOT RIFLE GONE, TO BE ADDED TO ERT FACTIONS FOLDER
-
-/obj/item/gun/energy/kinetic_accelerator
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
