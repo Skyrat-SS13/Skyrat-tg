@@ -16,7 +16,7 @@
 
 /obj/item/stack/medical/mesh/bloody
 	name = "hemostatic mesh"
-	desc = "A hemostatic mesh used to dress burns and stimulate hemopoiesis. Due to its blood-related purpose, is worse at sanitizing infections."
+	desc = "A hemostatic mesh used to dress burns and stimulate hemopoiesis. Due to its blood-related purpose, it is worse at sanitizing infections."
 	icon = 'modular_skyrat/modules/food_replicator/icons/medicine.dmi'
 	icon_state = "hemo_mesh"
 	heal_burn = 7
@@ -29,6 +29,7 @@
 /obj/item/stack/medical/mesh/bloody/update_icon_state()
 	if(is_open)
 		return ..()
+
 	icon_state = "hemo_mesh_closed"
 
 /obj/item/stack/medical/mesh/bloody/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)

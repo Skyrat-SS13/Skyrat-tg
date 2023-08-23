@@ -104,10 +104,11 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	var/delayed_satiety_drain = 30
 
-/datum/reagent/consumable/nutriment/glucose/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
-	if(M.satiety < MAX_SATIETY)
-		M.adjust_nutrition(15)
+/datum/reagent/consumable/nutriment/glucose/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	if(affected_mob.satiety < MAX_SATIETY)
+		affected_mob.adjust_nutrition(15)
 		delayed_satiety_drain += 15
+
 	return ..()
 
 /datum/reagent/consumable/nutriment/glucose/on_mob_delete(mob/living/carbon/M)
