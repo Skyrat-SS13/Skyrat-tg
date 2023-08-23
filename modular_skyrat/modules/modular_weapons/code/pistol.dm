@@ -98,13 +98,11 @@
 	if(chamber_indicator_overlay)
 		if(chambered)
 			. += "[icon_state]_chambered"
+
 	// safety indicator
 	if(safety_indicator_overlay)
 		var/datum/component/gun_safety/our_safety = GetComponent(/datum/component/gun_safety)
-		if(our_safety.safety_currently_on)
-			. += "[icon_state]_safety-on"
-		else
-			. += "[icon_state]_safety-off"
+		. += "[icon_state]_safety-[our_safety.safety_currently_on ? "on" : "off"]"
 
 /*
 *	AMMO
