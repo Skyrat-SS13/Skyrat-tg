@@ -526,8 +526,8 @@ this thing... and it scares me
 */
 
 /obj/item/microfusion_gun_attachment/barrel/disabler
-	name = "bananium phase emitter upgrade"
-	desc = "A standard NT barrel attachment that makes your MCR a non lethal weapon."
+	name = "disabler phase emitter upgrade"
+	desc = "A standard NT barrel attachment that makes your MCR a non lethal weapon. And much safer for firing into crowd of people."
 	icon_state = "attachment_disabler"
 	attachment_overlay_icon_state = "attachment_disabler"
 	projectile_override = /obj/projectile/beam/microfusion_disabler
