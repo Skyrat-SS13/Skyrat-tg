@@ -36,16 +36,19 @@
 /datum/armament_entry/company_import/nakamura_tooling/advanced
 	subcategory = "Advanced Engineering Equipment"
 	restricted = TRUE
-	cost = PAYCHECK_COMMAND
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/ranged_analyzer
 	item_type = /obj/item/analyzer/ranged
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/forcefield
 	item_type = /obj/item/forcefield_projector
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/atmos_fan
 	item_type = /obj/item/holosign_creator/atmos
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/powerdrill
 	item_type = /obj/item/screwdriver/power
@@ -60,7 +63,7 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental
 	subcategory = "Experimental Engineering Equipment"
-	cost = PAYCHECK_COMMAND * 5
+	cost = PAYCHECK_COMMAND * 8
 	restricted = TRUE
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/sprayon_insuls

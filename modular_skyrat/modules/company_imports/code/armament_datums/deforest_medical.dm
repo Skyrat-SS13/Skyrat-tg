@@ -126,7 +126,7 @@
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_health_analyer
 	item_type = /obj/item/healthanalyzer/advanced
-	cost = PAYCHECK_COMMAND
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/penlite_defib_mount
 	item_type = /obj/item/wallframe/defib_mount/charging
@@ -134,15 +134,15 @@
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_scalpel
 	item_type = /obj/item/scalpel/advanced
-	cost = PAYCHECK_COMMAND
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_retractor
 	item_type = /obj/item/retractor/advanced
-	cost = PAYCHECK_COMMAND
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_cautery
 	item_type = /obj/item/cautery/advanced
-	cost = PAYCHECK_COMMAND
+	cost = PAYCHECK_COMMAND * 3
 
 /datum/armament_entry/company_import/deforest/equipment/medigun_upgrade
 	item_type = /obj/item/device/custom_kit/medigun_fastcharge
