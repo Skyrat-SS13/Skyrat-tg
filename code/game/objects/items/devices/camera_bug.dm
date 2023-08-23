@@ -5,7 +5,7 @@
 
 
 
-/obj/item/camera_bug//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/camera_bug //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "camera bug"
 	desc = "For illicit snooping through the camera network."
 	icon = 'icons/obj/device.dmi'
