@@ -33,6 +33,7 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/backpack/init_possible_values()
+<<<<<<< HEAD
 	var/list/values = list()
 
 	values[GBACKPACK] = /obj/item/storage/backpack
@@ -49,6 +50,45 @@
 	values[DDUFFELBAG] = /obj/item/storage/backpack/duffelbag/med
 
 	return values
+=======
+	return list(
+		GBACKPACK,
+		GSATCHEL,
+		LSATCHEL,
+		GDUFFELBAG,
+		GMESSENGER,
+		DBACKPACK,
+		DSATCHEL,
+		DDUFFELBAG,
+		DMESSENGER,
+	)
+
+/datum/preference/choiced/backpack/icon_for(value)
+	switch (value)
+		if (GBACKPACK)
+			return /obj/item/storage/backpack
+		if (GSATCHEL)
+			return /obj/item/storage/backpack/satchel
+		if (LSATCHEL)
+			return /obj/item/storage/backpack/satchel/leather
+		if (GDUFFELBAG)
+			return /obj/item/storage/backpack/duffelbag
+		if (GMESSENGER)
+			return /obj/item/storage/backpack/messenger
+
+		// In a perfect world, these would be your department's backpack.
+		// However, this doesn't factor in assistants, or no high slot, and would
+		// also increase the spritesheet size a lot.
+		// I play medical doctor, and so medical doctor you get.
+		if (DBACKPACK)
+			return /obj/item/storage/backpack/medic
+		if (DSATCHEL)
+			return /obj/item/storage/backpack/satchel/med
+		if (DDUFFELBAG)
+			return /obj/item/storage/backpack/duffelbag/med
+		if (DMESSENGER)
+			return /obj/item/storage/backpack/messenger/med
+>>>>>>> 0345de35824 (New Backpack Type: Messenger Bags! (#77871))
 
 /datum/preference/choiced/backpack/apply_to_human(mob/living/carbon/human/target, value)
 	target.backpack = value
