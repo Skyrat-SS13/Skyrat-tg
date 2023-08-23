@@ -40,60 +40,17 @@
 	/// Maybe don't enable this for shotgun ammo boxes.
 	var/multitype = TRUE
 
-/obj/item/gun/energy/e_gun
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "energy"
-	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/advtaser
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/cfa_phalanx
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/mini
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/stun
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/old
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/hos
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/dragnet
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
+///GUN SPRITE OVERWRITES
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/energy/laser
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
-/obj/item/gun/energy/e_gun/stun
-	charge_sections = 5
-	ammo_x_offset = 2
+/obj/item/gun/energy/ionrifle/carbine
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 /obj/item/gun/ballistic/shotgun/riot
 	name = "\improper Peacekeeper shotgun"
@@ -169,20 +126,6 @@
 	worn_icon_state = "gun"
 	worn_icon = null
 
-/obj/item/gun/energy/laser/thermal
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
-/obj/item/gun/energy/lasercannon
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	fire_sound_volume = 100
-	ammo_x_offset = 2
-	charge_sections = 5
-	inhand_icon_state = ""
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
 /obj/item/gun/energy/e_gun/nuclear/rainbow
 	name = "fantastic energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell. This one seems quite fancy!"
@@ -227,11 +170,6 @@
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
-
-// We don't customize CTF
-/obj/item/gun/energy/laser/instakill/ctf
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
@@ -352,38 +290,6 @@
 	inhand_icon_state = "arg"
 	can_suppress = FALSE
 
-//SOLFED PILOT RIFLE GONE, TO BE ADDED TO ERT FACTIONS FOLDER
-
-/obj/item/gun/energy/kinetic_accelerator
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-
-/obj/item/gun/ballistic/rifle/boltaction/sporterized
-	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... \"modernized\" Sakhno rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
-	<br><br>\
-	<i>BRAND NEW: Cannot be sawn off.</i>"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	icon_state = "bubba"
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "bubba"
-	inhand_icon_state = "enchanted_rifle" // Not actually magical looking, just looks closest to this one
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	can_be_sawn_off = FALSE
-
-/obj/item/gun/ballistic/rifle/boltaction/sporterized/empty
-	bolt_locked = TRUE // so the bolt starts visibly open
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
-
-/obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "archangel extended internal magazine"
-	desc = "How did you get it out?"
-	ammo_type = /obj/item/ammo_casing/strilka310
-	caliber = CALIBER_STRILKA310
-	max_ammo = 8
-
-/obj/item/ammo_box/magazine/internal/boltaction/bubba/empty
-	start_empty = TRUE
-
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
@@ -442,6 +348,7 @@
 	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
 	<br><br>\
 	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
+	projectile_type = /obj/projectile/bullet/p50/soporific
 
 /obj/item/ammo_casing/p50/penetrator
 	name = ".416 Stabilis APFSDS ++P bullet casing"
