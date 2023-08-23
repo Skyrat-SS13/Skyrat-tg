@@ -82,6 +82,7 @@
 	desc = "A high-grade sharpening stone made of specialized alloys, meant to sharpen razor-claws. Unfortunately, this particular one has by far seen better days."
 	cost = CARGO_CRATE_VALUE * 4 //800 credits
 	contains = list(/obj/item/scratching_stone)
+	contraband = TRUE
 
 /*
 *	CARPET PACKS
