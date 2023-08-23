@@ -85,10 +85,6 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // BEGIN_INCLUDE
-// SKYRAT EDIT START
-#include "~skyrat/opposing_force.dm"
-#include "~skyrat/automapper.dm"
-//SKYRAT EDIT END
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
@@ -108,12 +104,14 @@
 #include "bloody_footprints.dm"
 #include "breath.dm"
 #include "burning.dm"
+#include "byond_status.dm"
 #include "cable_powernets.dm"
 #include "card_mismatch.dm"
 #include "cardboard_cutouts.dm"
 #include "chain_pull_through_space.dm"
 #include "chat_filter.dm"
 #include "circuit_component_category.dm"
+#include "client_colours.dm"
 #include "closets.dm"
 #include "clothing_under_armor_subtype_check.dm"
 #include "combat.dm"
@@ -126,6 +124,7 @@
 #include "dcs_check_list_arguments.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
+#include "dismemberment.dm"
 #include "door_access.dm"
 #include "dragon_expiration.dm"
 #include "drink_icons.dm"
@@ -133,6 +132,7 @@
 #include "dynamic_ruleset_sanity.dm"
 #include "egg_glands.dm"
 #include "emoting.dm"
+#include "ensure_subtree_operational_datum.dm"
 #include "explosion_action.dm"
 #include "fish_unit_tests.dm"
 #include "focus_only_tests.dm"
@@ -177,6 +177,7 @@
 #include "missing_icons.dm"
 #include "mob_faction.dm"
 #include "mob_spawn.dm"
+#include "modify_fantasy_variable.dm"
 #include "modsuit.dm"
 #include "modular_map_loader.dm"
 #include "monkey_business.dm"
@@ -188,8 +189,8 @@
 #include "objectives.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
-#include "organs.dm"
 #include "organ_set_bonus.dm"
+#include "organs.dm"
 #include "outfit_sanity.dm"
 #include "paintings.dm"
 #include "pills.dm"
@@ -218,8 +219,8 @@
 #include "screenshot_humanoids.dm"
 #include "screenshot_husk.dm"
 #include "screenshot_saturnx.dm"
-#include "security_officer_distribution.dm"
 #include "security_levels.dm"
+#include "security_officer_distribution.dm"
 #include "serving_tray.dm"
 #include "simple_animal_freeze.dm"
 #include "siunit.dm"
@@ -233,6 +234,7 @@
 #include "species_unique_id.dm"
 #include "species_whitelists.dm"
 #include "spell_invocations.dm"
+#include "spell_jaunt.dm"
 #include "spell_mindswap.dm"
 #include "spell_names.dm"
 #include "spell_shapeshift.dm"
@@ -261,6 +263,11 @@
 #include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
 #include "worn_icons.dm"
+// SKYRAT EDIT START
+#include "~skyrat\automapper.dm"
+#include "~skyrat\opposing_force.dm"
+// SKYRAT EDIT END
+// END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif
