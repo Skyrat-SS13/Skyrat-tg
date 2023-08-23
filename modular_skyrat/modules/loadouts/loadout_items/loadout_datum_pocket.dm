@@ -183,15 +183,18 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/toolbox/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(override_items == LOADOUT_OVERRIDE_BACKPACK || LOADOUT_OVERRIDE_CASE && !visuals_only)
-		if(outfit.belt)
-			LAZYADD(outfit.l_hand, outfit.r_hand)
-		outfit.l_hand = item_path
-	else
-		outfit.r_hand = item_path
+		if(outfit.l_hand)
+			LAZYADD(outfit.r_hand, item_path)
+		else
+			LAZYADD(outfit.l_hand, item_path)
 
 /datum/loadout_item/pocket_items/moth_mre
 	name = "Mothic Rations Pack"
 	item_path = /obj/item/storage/box/mothic_rations
+
+/datum/loadout_item/pocket_items/cloth_ten
+	name = "Ten Cloth Sheets"
+	item_path = /obj/item/stack/sheet/cloth/ten
 
 /datum/loadout_item/pocket_items/medkit
 	name = "First-Aid Kit"
@@ -209,6 +212,29 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Soda Six-Pack"
 	item_path = /obj/item/storage/cans/sixsoda
 
+/datum/loadout_item/pocket_items/power_cell
+	name = "Standard Power Cell"
+	item_path = /obj/item/stock_parts/cell
+
+/datum/loadout_item/pocket_items/drugs_happy
+	name = "Happy Pills"
+	item_path = /obj/item/storage/pill_bottle/happy
+
+/datum/loadout_item/pocket_items/drugs_maint
+	name = "Maintenance Pills"
+	item_path = /obj/item/storage/pill_bottle/maintenance_pill
+
+/datum/loadout_item/pocket_items/drugs_weed
+	name = "Weed Seeds"
+	item_path = /obj/item/seeds/cannabis
+
+/datum/loadout_item/pocket_items/drugs_reishi
+	name = "Reishi Seeds"
+	item_path = /obj/item/seeds/reishi
+
+/datum/loadout_item/pocket_items/drugs_liberty
+	name = "Liberty Cap Seeds"
+	item_path = /obj/item/seeds/liberty
 /*
 *	FRAGRANCES
 */
