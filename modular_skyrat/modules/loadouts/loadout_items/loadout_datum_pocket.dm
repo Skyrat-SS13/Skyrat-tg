@@ -235,6 +235,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/drugs_liberty
 	name = "Liberty Cap Seeds"
 	item_path = /obj/item/seeds/liberty
+
 /*
 *	FRAGRANCES
 */
