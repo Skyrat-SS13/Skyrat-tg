@@ -658,11 +658,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
 
 /datum/loadout_item/under/formal/blue_suit
-	name = "Blue Suit"
+	name = "Blue Buttondown Suit"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 
 /datum/loadout_item/under/formal/blue_suitskirt
-	name = "Blue Suitskirt"
+	name = "Blue Buttondown Suitskirt"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt
 
 /datum/loadout_item/under/formal/blue_lawyer_suit

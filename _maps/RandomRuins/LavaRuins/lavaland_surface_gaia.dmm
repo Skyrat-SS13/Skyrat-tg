@@ -55,6 +55,10 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
+"o" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/bronze/filled/lavaland,
+/area/ruin/unpowered/gaia)
 "p" = (
 /mob/living/basic/lightgeist{
 	light_color = "#42ECFF"
@@ -79,16 +83,17 @@
 /obj/structure/flora/bush/sunny/style_random,
 /turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
-"u" = (
-/obj/structure/flora/grass/jungle/b/style_random,
-/turf/open/floor/bronze/filled/lavaland,
-/area/ruin/unpowered/gaia)
 "v" = (
 /obj/structure/flora/tree/jungle/style_random,
 /turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
 "w" = (
 /turf/closed/mineral/volcanic/lava_land_surface,
+/area/ruin/unpowered/gaia)
+"x" = (
+/obj/structure/flora/bush/sunny/style_random,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
 "A" = (
 /obj/structure/flora/bush/stalky/style_random,
@@ -110,45 +115,40 @@
 /turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
 "E" = (
+/turf/open/floor/bronze/filled/lavaland,
+/area/ruin/unpowered/gaia)
+"I" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/bronze/filled/lavaland,
 /area/ruin/unpowered/gaia)
-"F" = (
-/obj/structure/flora/grass/jungle/b/style_random,
+"J" = (
 /turf/closed/wall/mineral/bronze,
-/area/ruin/unpowered/gaia)
-"H" = (
-/turf/closed/wall/mineral/bronze,
-/area/ruin/unpowered/gaia)
-"I" = (
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/floor/bronze/filled/lavaland,
 /area/ruin/unpowered/gaia)
 "K" = (
-/obj/structure/flora/grass/jungle/a/style_random,
-/turf/open/floor/bronze/filled/lavaland,
-/area/ruin/unpowered/gaia)
-"N" = (
-/obj/structure/flora/grass/jungle/b/style_random,
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/misc/grass/lavaland,
-/area/ruin/unpowered/gaia)
-"O" = (
-/obj/item/mod/construction/lavalandcore,
-/turf/open/misc/grass/lavaland,
-/area/ruin/unpowered/gaia)
-"P" = (
 /obj/structure/flora/bush/stalky/style_random,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/bronze/filled/lavaland,
 /area/ruin/unpowered/gaia)
-"R" = (
-/obj/structure/flora/bush/sunny/style_random,
+"N" = (
+/obj/structure/flora/grass/jungle/b/style_random,
+/turf/open/floor/bronze/filled/lavaland,
+/area/ruin/unpowered/gaia)
+"P" = (
+/obj/structure/flora/grass/jungle/b/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/grass/lavaland,
 /area/ruin/unpowered/gaia)
-"V" = (
+"T" = (
+/obj/structure/flora/grass/jungle/a/style_random,
 /turf/open/floor/bronze/filled/lavaland,
+/area/ruin/unpowered/gaia)
+"V" = (
+/obj/item/mod/construction/lavalandcore,
+/turf/open/misc/grass/lavaland,
+/area/ruin/unpowered/gaia)
+"Z" = (
+/obj/structure/flora/grass/jungle/b/style_random,
+/turf/closed/wall/mineral/bronze,
 /area/ruin/unpowered/gaia)
 
 (1,1,1) = {"
@@ -177,7 +177,7 @@ a
 w
 w
 c
-u
+N
 c
 b
 c
@@ -214,7 +214,7 @@ c
 d
 c
 i
-K
+T
 C
 n
 c
@@ -249,9 +249,9 @@ g
 d
 c
 c
-V
+E
 v
-K
+T
 c
 c
 h
@@ -285,7 +285,7 @@ d
 c
 n
 c
-u
+N
 B
 n
 d
@@ -305,7 +305,7 @@ d
 c
 d
 h
-I
+o
 f
 j
 c
@@ -316,19 +316,19 @@ w
 (10,1,1) = {"
 w
 c
-E
+I
 h
 b
-E
+I
 c
-H
-R
-F
+J
+x
+Z
+T
+c
 K
-c
-P
 b
-E
+I
 w
 "}
 (11,1,1) = {"
@@ -336,14 +336,14 @@ w
 d
 e
 i
-I
+o
 d
 c
-R
-O
-E
+x
+V
+I
 n
-E
+I
 c
 q
 c
@@ -351,20 +351,20 @@ w
 "}
 (12,1,1) = {"
 w
-E
+I
 b
 c
 p
 g
 k
-H
-N
-H
+J
+P
+J
 h
-K
+T
 n
 c
-u
+N
 w
 "}
 (13,1,1) = {"
@@ -377,7 +377,7 @@ d
 b
 c
 c
-I
+o
 c
 c
 b
@@ -394,7 +394,7 @@ n
 c
 c
 b
-E
+I
 b
 j
 h
@@ -411,7 +411,7 @@ l
 j
 c
 n
-E
+I
 c
 g
 c
@@ -431,7 +431,7 @@ c
 c
 g
 c
-E
+I
 c
 n
 c
@@ -466,7 +466,7 @@ c
 b
 n
 c
-E
+I
 j
 g
 c

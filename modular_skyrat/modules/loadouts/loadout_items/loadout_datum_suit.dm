@@ -60,24 +60,28 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	SUITS / SUIT JACKETS
 */
 
+/datum/loadout_item/suit/recolorable
+	name = "Recolorable Formal Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/greyscale
+
 /datum/loadout_item/suit/black_suit_jacket
-	name = "Black Suit Jacket"
+	name = "Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black
 
 /datum/loadout_item/suit/blue_suit_jacket
-	name = "Blue Suit Jacket"
+	name = "Blue Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer
 
 /datum/loadout_item/suit/purple_suit_jacket
-	name = "Purple Suit Jacket"
+	name = "Purple Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
 /datum/loadout_item/suit/white_suit_jacket
-	name = "White Suit Jacket"
+	name = "White Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/white
 
 /datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
+	name = "Light Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
 
 /datum/loadout_item/suit/suitwhite
@@ -279,20 +283,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	MISC
 */
 
-/datum/loadout_item/suit/purple_apron
-	name = "Purple Apron"
-	item_path = /obj/item/clothing/suit/apron/purple_bartender
-
 /datum/loadout_item/suit/recolorable_apron
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
 
 /datum/loadout_item/suit/recolorable_overalls
 	name = "Recolorable Overalls"
-	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
-
-/datum/loadout_item/suit/denim_overalls
-	name = "Denim Overalls"
 	item_path = /obj/item/clothing/suit/apron/overalls
 
 /datum/loadout_item/suit/redhood

@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(decay)
 	init_order = INIT_ORDER_DECAY
 
 	/// This is used to determine what maps we should not spawn on.
-	var/list/station_filter = list("Birdshot Station", "Runtime Station", "MultiZ Debug")
+	var/list/station_filter = list("Birdshot Station", "Runtime Station", "MultiZ Debug", "Gateway Test")
 	var/list/possible_turfs = list()
 	var/list/possible_areas = list()
 	var/severity_modifier = 1
