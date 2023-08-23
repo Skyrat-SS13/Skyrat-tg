@@ -15,6 +15,7 @@
 /datum/element/clockwork_structure_info/Detach(datum/target)
 	. = ..()
 	UnregisterSignal(target, COMSIG_ATOM_AFTER_ATTACKEDBY)
+	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
 
 /**
  *

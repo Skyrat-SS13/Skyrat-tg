@@ -10,7 +10,7 @@
 
 
 
-/obj/item/multitool//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/multitool //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "multitool"
 	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors."
 	icon = 'icons/obj/device.dmi'
@@ -97,10 +97,6 @@
 /obj/item/multitool/ai_detect/proc/multitool_detect()
 	var/turf/our_turf = get_turf(src)
 	detect_state = PROXIMITY_NONE
-	for(var/mob/living/silicon/ai/AI as anything in GLOB.ai_list)
-		if(AI.cameraFollow == src)
-			detect_state = PROXIMITY_ON_SCREEN
-			return
 
 	for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
 		if(!AI_eye.ai_detector_visible)
