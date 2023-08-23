@@ -1158,7 +1158,10 @@
 	use_static = TRUE
 
 
+
+//SKYRATS EDIT - Going to just recreate these over in the skyrats modular file since I'm splitting up their sprites.
 //FEMALE UNDERWEAR
+/*
 /datum/sprite_accessory/underwear/female_bikini
 	name = "Bikini"
 	icon_state = "female_bikini"
@@ -1259,6 +1262,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
+*/
 
 ////////////////////////////
 // Undershirt Definitions //

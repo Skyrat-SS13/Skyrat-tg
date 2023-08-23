@@ -243,6 +243,8 @@
 	destination.underwear_color = underwear_color
 	destination.undershirt = undershirt
 	destination.socks = socks
+	destination.bra = bra //SKYRATS EDIT ADDITION
+	destination.bra_color = bra_color //SKYRATS EDIT ADDITION
 	destination.jumpsuit_style = jumpsuit_style
 
 

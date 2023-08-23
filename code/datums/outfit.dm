@@ -121,6 +121,7 @@
 	var/datum/sprite_accessory/undershirt = null
 	var/datum/sprite_accessory/underwear = null
 	var/datum/sprite_accessory/socks = null
+	var/datum/sprite_accessory/bra = null
 
 /**
  * Called at the start of the equip proc
@@ -219,6 +220,9 @@
 
 	if(socks)
 		user.socks = initial(socks.name)
+
+	if(bra)
+		user.bra = initial(bra.name)
 
 	if(accessory)
 		var/obj/item/clothing/under/U = user.w_uniform

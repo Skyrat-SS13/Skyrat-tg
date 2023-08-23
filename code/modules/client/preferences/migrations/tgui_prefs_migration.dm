@@ -70,6 +70,8 @@
 		"random_undershirt" = "undershirt",
 		"random_underwear" = "underwear",
 		"random_underwear_color" = "underwear_color",
+		"random_bra" = "bra", //SKYRATS EDIT ADDITION
+		"random_bra_color" = "bra_color", //SKYRATS EDIT ADDITION
 	)
 
 	var/static/list/random_antag_settings = list(

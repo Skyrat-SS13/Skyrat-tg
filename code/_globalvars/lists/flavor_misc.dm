@@ -18,6 +18,10 @@ GLOBAL_LIST_EMPTY(undershirt_m)  //stores only undershirt name
 GLOBAL_LIST_EMPTY(undershirt_f)  //stores only undershirt name
 	//Socks
 GLOBAL_LIST_EMPTY(socks_list) //stores /datum/sprite_accessory/socks indexed by name
+	//Bras
+GLOBAL_LIST_EMPTY(bra_list) //stores /datum/sprite_accessory/bra indexed by name
+GLOBAL_LIST_EMPTY(bra_m) //stores only bra name
+GLOBAL_LIST_EMPTY(bra_f) //stores only bra name
 	//Lizard Bits (all datum lists indexed by name)
 //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 /*
