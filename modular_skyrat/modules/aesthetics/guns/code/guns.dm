@@ -42,8 +42,8 @@
 			)
 
 // for .35 Sol Ripper. one day, anon. one day
-#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-			/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4,\
+#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+			/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4, \
 			)
 
 /obj/item/ammo_casing
