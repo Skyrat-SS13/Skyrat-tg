@@ -517,3 +517,18 @@ Hail Nanotrasen.
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
 	icon_state = "attachment_nt_camo"
 	attachment_overlay_icon_state = "attachment_nt_camo"
+
+/*
+Disabler Barrel
+
+Because you're a psychopath who want to turn a viable weapon into..
+this thing... and it scares me
+*/
+
+/obj/item/microfusion_gun_attachment/barrel/disabler
+	name = "bananium phase emitter upgrade"
+	desc = "A standard NT barrel attachment that makes your MCR a non lethal weapon."
+	icon_state = "attachment_disabler"
+	attachment_overlay_icon_state = "attachment_disabler"
+	projectile_override = /obj/projectile/beam/microfusion_disabler
+
