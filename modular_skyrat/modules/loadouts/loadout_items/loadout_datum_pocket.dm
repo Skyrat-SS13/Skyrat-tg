@@ -177,12 +177,12 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 *	UTILITY
 */
 
-/datum/loadout_item/pocket_items/toolbelt
-	name = "Full Toolbelt"
-	item_path = /obj/item/storage/belt/utility/full
+/datum/loadout_item/pocket_items/toolbox
+	name = "Full Toolbox"
+	item_path = /obj/item/storage/toolbox/mechanical
 
-/datum/loadout_item/pocket_items/toolbelt/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+/datum/loadout_item/pocket_items/toolbox/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
+	if(override_items == LOADOUT_OVERRIDE_BACKPACK || LOADOUT_OVERRIDE_CASE && !visuals_only)
 		if(outfit.belt)
 			LAZYADD(outfit.l_hand, outfit.r_hand)
 		outfit.l_hand = item_path
@@ -197,17 +197,17 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "First-Aid Kit"
 	item_path = /obj/item/storage/medkit/regular
 
-/datum/loadout_item/pocket_items/universal_scanner
-	name = "Universal Cargo Scanner"
-	item_path = /obj/item/universal_scanner
+/datum/loadout_item/pocket_items/ingredients
+	name = "Random Ingredient Box"
+	item_path = /obj/item/storage/box/ingredients/random
 
-/datum/loadout_item/pocket_items/health_analyzer
-	name = "Health Analyzer"
-	item_path = /obj/item/healthanalyzer
+/datum/loadout_item/pocket_items/six_beer
+	name = "Beer Six-Pack"
+	item_path = /obj/item/storage/cans/sixbeer
 
-/datum/loadout_item/pocket_items/experi_scanner
-	name = "Experi-Scanner"
-	item_path = /obj/item/experi_scanner
+/datum/loadout_item/pocket_items/six_soda
+	name = "Soda Six-Pack"
+	item_path = /obj/item/storage/cans/sixsoda
 
 /*
 *	FRAGRANCES
