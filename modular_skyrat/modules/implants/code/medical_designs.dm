@@ -21,7 +21,7 @@
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT
 	)
-	construction_time = 200
+	construction_time = 20 SECONDS
 	build_path = /obj/item/organ/internal/cyberimp/arm/razor_claws
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_TOOLS

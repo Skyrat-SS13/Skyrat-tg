@@ -11,8 +11,8 @@
 		"ci-botany",
 		"ci-janitor",
 		"ci-lighter",
-		"ci-razor"
-		)
+		"ci-razor",
+	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
 /datum/techweb_node/adv_cyber_implants
