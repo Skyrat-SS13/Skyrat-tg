@@ -234,6 +234,14 @@
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/microfusion_gun_attachment/barrel/xray
 
+/datum/design/microfusion/attachment/barrel/disabler
+	name = "Disabler Emitter Upgrade"
+	desc = "An upgrade for the MCR that utilise the disabler beam technology but scaled up, NOTICE: NON LETHAL WEAPON"
+	id = "microfusion_gun_attachment_disabler"
+	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/microfusion_gun_attachment/barrel/disabler
+	category = list(RND_CATEGORY_MICROFUSION_WEAPONS + RND_MICROFUSION_EMITTERS)
+
 // COSMETICS
 
 /datum/design/microfusion/attachment/unique

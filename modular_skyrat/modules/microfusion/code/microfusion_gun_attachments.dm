@@ -527,8 +527,11 @@ this thing... and it scares me
 
 /obj/item/microfusion_gun_attachment/barrel/disabler
 	name = "disabler phase emitter upgrade"
-	desc = "A standard NT barrel attachment that makes your MCR a non lethal weapon. And much safer for firing into crowd of people."
+	desc = "A standard NT barrel attachment that makes your MCR a non lethal weapon. Significantly increases the accuracy and reduce heat builds up."
+	slot = GUN_SLOT_BARREL
 	icon_state = "attachment_disabler"
 	attachment_overlay_icon_state = "attachment_disabler"
 	projectile_override = /obj/projectile/beam/microfusion_disabler
-
+	spread_adjust = -10
+	recoil_adjust = -1
+	heat_addition = -10
