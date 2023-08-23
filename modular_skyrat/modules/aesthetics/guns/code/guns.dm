@@ -135,6 +135,9 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact
 	icon = 'icons/obj/weapons/guns/ballistic.dmi' // de-overrides this particular gun, it uses the tg file
+	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/64x_guns_right.dmi'
+	worn_icon = null
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
