@@ -12,7 +12,7 @@
 	icon_state = "nri_smg"
 	inhand_icon_state = "nri_smg"
 	w_class = WEIGHT_CLASS_BULKY
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 5
@@ -32,7 +32,7 @@
 		'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm_aps
 	burst_size = 3
 	fire_delay = 3
 

@@ -233,8 +233,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				replacement.relevant_layers = mutant_accessory.relevent_layers
 
 				if(robot_organs)
-					replacement.status = ORGAN_ROBOTIC
-					replacement.organ_flags |= ORGAN_SYNTHETIC
+					replacement.organ_flags |= ORGAN_ROBOTIC
 
 				// If there's an existing mutant organ, we're technically replacing it.
 				// Let's abuse the snowflake proc that skillchips added. Basically retains

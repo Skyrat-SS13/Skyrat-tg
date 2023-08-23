@@ -170,7 +170,7 @@
 	return ban_cache
 
 
-/datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key, global_ban) // SKYRAT EDIT CHANGE - MULTISERVER
+/datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key, global_ban = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
 	if (duration == BAN_PANEL_PERMANENT)
 		duration = null
 
@@ -364,6 +364,7 @@
 		var/list/long_job_lists = list(
 			"Ghost and Other Roles" = list(
 				ROLE_PAI,
+				ROLE_BOT,
 				ROLE_BRAINWASHED,
 				ROLE_DEATHSQUAD,
 				ROLE_DRONE,

@@ -88,7 +88,7 @@
 
 	var/list/msg = list()
 	if(!limb.current_splint)
-		msg += "[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] [examine_desc]"
+		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] [examine_desc]"
 	else
 		var/sling_condition = ""
 		// how much life we have left in these bandages
@@ -102,7 +102,7 @@
 			if(4 to INFINITY)
 				sling_condition = "tightly"
 
-		msg += "[victim.p_their(TRUE)] [parse_zone(limb.body_zone)] is [sling_condition] fastened with a [limb.current_splint.name]!"
+		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] is [sling_condition] fastened with a [limb.current_splint.name]!"
 
 	return "<B>[msg.Join()]</B>"
 

@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 			if(cops_to_send == /datum/antagonist/ert/request_911/atmos) // charge for atmos techs
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-				station_balance?._adjust_money(GLOB.solfed_tech_charge)
+				station_balance?.adjust_money(GLOB.solfed_tech_charge)
 			else
 				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 				phone.gang_id = cell_phone_number
@@ -256,9 +256,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	var/mob/living/M = mob_override || owner.current
 	if(M.hud_used)
 		var/datum/hud/H = M.hud_used
-		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted()
+		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted(null, H)
 		H.wanted_lvl = giving_wanted_lvl
-		giving_wanted_lvl.hud = H
 		H.infodisplay += giving_wanted_lvl
 		H.mymob.client.screen += giving_wanted_lvl
 
@@ -564,7 +563,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			GLOB.solfed_responder_info[type_of_callers][SOLFED_DECLARED] = TRUE
 			if(fine_station)
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-				station_balance?._adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
+				station_balance?.adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
 
 			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE)
 			var/list/candidates = poll_ghost_candidates(ghost_poll_msg, jobban_to_check)

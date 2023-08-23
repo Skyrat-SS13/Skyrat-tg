@@ -312,6 +312,20 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 
+// Donation reward for ChillyLobster
+
+/obj/item/clothing/under/wetsuit_norm
+	name = "fitted wetsuit"
+	desc = "A fitted wetsuit for trapping in heat and water. Protects against outside elements ever-so-slightly."
+	icon_state = "wetsuit"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	armor_type = /datum/armor/clothing_under/wetsuit
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	can_adjust = FALSE
+	female_sprite_flags = NO_FEMALE_UNIFORM
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
 	name = "wolf mask"

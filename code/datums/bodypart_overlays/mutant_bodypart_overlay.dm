@@ -96,11 +96,13 @@
 /datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/ownerlimb, force)
 	if(isnull(ownerlimb))
 		draw_color = null
+		alpha = 255 // SKYRAT EDIT - Mutant bodyparts transparency are based on limb transparency
 		return TRUE
 
 	if(draw_color && !force)
 		return FALSE
 
+	alpha = ownerlimb.alpha // SKYRAT EDIT - Mutant bodyparts transparency are based on limb transparency
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
 			draw_color = override_color(ownerlimb.draw_color)
@@ -110,7 +112,12 @@
 			if(!ishuman(ownerlimb.owner))
 				return
 			var/mob/living/carbon/human/human_owner = ownerlimb.owner
-			draw_color = human_owner.hair_color
+			var/obj/item/bodypart/head/my_head = human_owner.get_bodypart(BODY_ZONE_HEAD) //not always the same as ownerlimb
+			//head hair color takes priority, owner hair color is a backup if we lack a head or something
+			if(my_head)
+				draw_color = my_head.hair_color
+			else
+				draw_color = human_owner.hair_color
 
 	return TRUE
 

@@ -64,8 +64,7 @@
 		if(visited_body_zone) // Only limb augments should be returning those, and only in visuals_only mode.
 			visited_body_zones += visited_body_zone
 
-	var/obj/item/bodypart/first_bodypart = target.bodyparts[1]
-	first_bodypart.synchronize_bodytypes(target) // We call this here to ensure that by this point, bodytypes are synchronized, after all changes to the limbs.
+	target.synchronize_bodytypes() // We call this here to ensure that by this point, bodytypes are synchronized, after all changes to the limbs.
 
 	// We don't need to go any further if this isn't visuals only, as we will have fully replaced each limb
 	// affected by a limb augmentation.

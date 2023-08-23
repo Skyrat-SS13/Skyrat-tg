@@ -24,3 +24,4 @@
 		pda = equipping.l_store
 	if(istype(pda))
 		pda.saved_job = chosen_title
+		pda.UpdateDisplay()

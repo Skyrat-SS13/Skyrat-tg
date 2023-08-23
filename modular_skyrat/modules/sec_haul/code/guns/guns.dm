@@ -8,7 +8,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/g17
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -51,7 +51,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g18
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/g18
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -99,7 +99,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ladon // C o m p a t i b i l i t y .
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ladon // C o m p a t i b i l i t y .
 	fire_sound = 'modular_skyrat/master_files/sound/weapons/glock17_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -125,7 +125,7 @@
 	icon_state = "pdh"
 	inhand_icon_state = "pdh"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -143,7 +143,7 @@
 	desc = "A prestigious 12mm sidearm normally seen in the hands of SolFed special operation units due to its reliable and time-tested design. Now's one of those times that pays to be the strong, silent type."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
 	fire_delay = 8
@@ -178,7 +178,7 @@
 	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to high-ranking corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
 	icon_state = "pdh_corpo"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	burst_size = 3
@@ -209,7 +209,7 @@
 	desc = "A sidearm used by Armadyne corporate agents who didn't make the cut for the Corpo model. Chambered in .38 special."
 	icon_state = "pdh_striker"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	burst_size = 3
@@ -239,7 +239,7 @@
 	desc = "A modern ballistic sidearm, used primarily by law enforcement, chambered in 9x25mm."
 	fire_delay = 1.95
 	icon_state = "pdh_peacekeeper"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	projectile_damage_multiplier = 0.5
 
@@ -278,7 +278,7 @@
 	icon_state = "ladon"
 	inhand_icon_state = "ladon"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ladon
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ladon
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -325,7 +325,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/makarov.dmi'
 	icon_state = "makarov"
 	w_class = WEIGHT_CLASS_SMALL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/makarov
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/makarov
 	can_suppress = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -367,7 +367,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mk58.dmi'
 	icon_state = "mk58"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -414,7 +414,7 @@
 	inhand_icon_state = "firefly"
 	fire_delay = 1.95
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.5
 
@@ -459,7 +459,7 @@
 	icon_state = "croon"
 	inhand_icon_state = "croon"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/croon
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/croon
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
@@ -507,7 +507,7 @@
 	icon_state = "dozer"
 	inhand_icon_state = "dozer"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/dozer
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/dozer
 	can_suppress = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -561,7 +561,7 @@
 	inhand_icon_state = "dmr"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
-	mag_type = /obj/item/ammo_box/magazine/dmr
+	accepted_magazine_type = /obj/item/ammo_box/magazine/dmr
 	fire_delay = 1.7
 	can_suppress = FALSE
 	can_bayonet = FALSE
@@ -599,7 +599,7 @@
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	icon_state = "zeta"
 	inhand_icon_state = "zeta"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 3
 
@@ -638,7 +638,7 @@
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	icon_state = "revolution"
 	inhand_icon_state = "revolution"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/revolution
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 1.90
 	projectile_damage_multiplier = 0.5
@@ -683,7 +683,7 @@
 	inhand_icon_state = "smartgun_worn"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	worn_icon_state = "smartgun_worn"
-	mag_type = /obj/item/ammo_box/magazine/smartgun
+	accepted_magazine_type = /obj/item/ammo_box/magazine/smartgun
 	actions_types = null
 	can_suppress = FALSE
 	can_bayonet = FALSE
@@ -780,7 +780,7 @@
 	worn_icon_state = "g11_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g11
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/g11
 	can_suppress = FALSE
 	fire_delay = 0.5
 	spread = 10
@@ -825,7 +825,7 @@
 	icon_state = "riotshotgun"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	inhand_icon_state = "shotgun"
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/m23
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 
@@ -856,7 +856,7 @@
 	vary_fire_sound = TRUE
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 	fire_delay = 5
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/as2
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 
@@ -888,7 +888,7 @@
 	worn_icon_state = "norwind_worn"
 	alt_icons = TRUE
 	alt_icon_state = "norwind_worn"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
 	can_suppress = FALSE
 	can_bayonet = TRUE
 	mag_display = TRUE
@@ -946,7 +946,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "vintorez"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	suppressed = TRUE
 	can_unsuppress = FALSE
 	can_bayonet = FALSE
@@ -1005,7 +1005,7 @@
 	icon_state = "pcr"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	w_class = WEIGHT_CLASS_BULKY
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
 	fire_delay = 1.80
 	can_suppress = FALSE
 	spread = 10
@@ -1060,7 +1060,7 @@
 	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	fire_delay = 4.20
 	can_suppress = FALSE
 	burst_size = 3
@@ -1123,7 +1123,7 @@
 	alt_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	spread = 10
 	fire_delay = 2
 	can_suppress = FALSE

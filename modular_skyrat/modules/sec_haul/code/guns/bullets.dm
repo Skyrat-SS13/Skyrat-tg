@@ -69,7 +69,7 @@
 /obj/item/ammo_casing/c9mm/ap
 	name = "9x25mm Mk.12 armor-piercing bullet casing"
 	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires an armor-piercing projectile."
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c9mm/hp
@@ -80,7 +80,7 @@
 /obj/item/ammo_casing/c9mm/fire
 	name = "9x25mm Mk.12 incendiary bullet casing"
 	desc = "A modern 9x25mm Mk.12 bullet casing. This incendiary round leaves a trail of fire and ignites its target."
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c9mm/ihdf
@@ -125,15 +125,15 @@
 */
 
 /obj/item/ammo_casing/c10mm/ap
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/ammo_casing/c10mm/hp
 	advanced_print_req = TRUE
 
 /obj/item/ammo_casing/c10mm/fire
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/ammo_casing/c10mm/rubber
 	name = "10mm rubber bullet casing"

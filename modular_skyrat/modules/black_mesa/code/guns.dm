@@ -3,7 +3,7 @@
 	desc = "A special laser beam sniper rifle designed by a certain now defunct research facility."
 	icon_state = "ctfmarksman"
 	inhand_icon_state = "ctfmarksman"
-	mag_type = /obj/item/ammo_box/magazine/recharge/marksman
+	accepted_magazine_type = /obj/item/ammo_box/magazine/recharge/marksman
 	force = 15
 	weapon_weight = WEAPON_HEAVY
 	fire_delay = 4 SECONDS
@@ -42,7 +42,7 @@
 	righthand_file ='modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "mp5"
-	mag_type = /obj/item/ammo_box/magazine/mp5
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mp5
 	bolt_type = BOLT_TYPE_LOCKING
 	can_suppress = TRUE
 	fire_delay = 1.25

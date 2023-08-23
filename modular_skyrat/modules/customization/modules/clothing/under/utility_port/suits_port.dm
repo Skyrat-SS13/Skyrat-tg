@@ -112,3 +112,11 @@
 /obj/item/clothing/suit/toggle/jacket/flannel/brown
 	name = "brown flannel jacket"
 	icon_state = "flannel_brown"
+
+/obj/item/clothing/suit/toggle/jacket/flannel/gags
+	name = "flannel shirt"
+	icon_state = "flannelgags"
+	greyscale_config = /datum/greyscale_config/flannelgags
+	greyscale_config_worn = /datum/greyscale_config/flannelgags/worn
+	greyscale_colors = "#a61e1f"
+	flags_1 = IS_PLAYER_COLORABLE_1

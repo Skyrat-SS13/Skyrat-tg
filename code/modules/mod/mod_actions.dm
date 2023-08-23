@@ -11,24 +11,22 @@
 	if(!istype(Target, /obj/item/mod/control))
 		qdel(src)
 		return
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(pai_action)
-		background_icon_state = "bg_tech"
-	// SKYRAT EDIT END
+	if(ai_action)
+		background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	if(ai_action && user != mod.ai_assistant)
 		return
-	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	else if(!ai_action && user == mod.ai_assistant)
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	if(ai_action && user != mod.ai_assistant)
 		return
-	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
+	else if(!ai_action && user == mod.ai_assistant)
 		return
 	return ..()
 
@@ -125,40 +123,36 @@
 	var/override = FALSE
 	/// Module we are linked to.
 	var/obj/item/mod/module/module
-	/// A ref to the mob we are pinned to.
-	var/pinner_ref
+	/// A reference to the mob we are pinned to.
+	var/mob/pinner
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
-	// SKYRAT EDIT START - pAIs in MODsuits
-	var/obj/item/mod/control/mod = Target // We have to do this otherwise it's going to runtime
-	if(user == mod.mod_pai)
-		pai_action = TRUE
-	// SKYRAT EDIT END
-	if(isAI(user))
+	var/obj/item/mod/control/mod = Target
+	if(user == mod.ai_assistant)
 		ai_action = TRUE
 	button_icon = linked_module.icon
 	button_icon_state = linked_module.icon_state
-	..()
+	. = ..()
 	module = linked_module
+	pinner = user
+	module.pinned_to[REF(user)] = src
 	if(linked_module.allow_flags & MODULE_ALLOW_INCAPACITATED)
 		// clears check hands and check conscious
 		check_flags = NONE
 	name = "Activate [capitalize(linked_module.name)]"
 	desc = "Quickly activate [linked_module]."
 	RegisterSignals(linked_module, list(COMSIG_MODULE_ACTIVATED, COMSIG_MODULE_DEACTIVATED, COMSIG_MODULE_USED), PROC_REF(module_interacted_with))
+	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(pinner_deleted))
 
 /datum/action/item_action/mod/pinned_module/Destroy()
 	UnregisterSignal(module, list(COMSIG_MODULE_ACTIVATED, COMSIG_MODULE_DEACTIVATED, COMSIG_MODULE_USED))
-	module.pinned_to -= pinner_ref
+	module.pinned_to -= REF(pinner)
 	module = null
+	pinner = null
 	return ..()
 
 /datum/action/item_action/mod/pinned_module/Grant(mob/user)
-	var/user_ref = REF(user)
-	if(!pinner_ref)
-		pinner_ref = user_ref
-		module.pinned_to[pinner_ref] = src
-	else if(pinner_ref != user_ref)
+	if(pinner != user)
 		return
 	return ..()
 
@@ -167,6 +161,11 @@
 	if(!.)
 		return
 	module.on_select()
+
+/// If the guy whose UI we are pinned to got deleted
+/datum/action/item_action/mod/pinned_module/proc/pinner_deleted()
+	pinner = null
+	qdel(src)
 
 /datum/action/item_action/mod/pinned_module/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force)
 	current_button.cut_overlays()

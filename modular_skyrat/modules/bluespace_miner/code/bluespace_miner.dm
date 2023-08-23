@@ -128,10 +128,11 @@
 /obj/machinery/bluespace_miner/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		balloon_alert(user, "already emagged!")
-		return
+		return FALSE
 	ore_chance += list(/obj/item/stack/sheet/mineral/bananium = 1)
 	obj_flags |= EMAGGED
 	balloon_alert_to_viewers("fizzles!")
+	return TRUE
 
 /obj/item/circuitboard/machine/bluespace_miner
 	name = "Bluespace Miner"

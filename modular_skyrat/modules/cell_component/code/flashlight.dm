@@ -24,7 +24,7 @@
 	register_context()
 
 	if(uses_battery)
-		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(turn_off)))
+		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(turn_off)), _has_cell_overlays = FALSE)
 
 /obj/item/flashlight/examine(mob/user)
 	. = ..()

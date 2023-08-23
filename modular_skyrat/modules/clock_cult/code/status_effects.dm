@@ -2,12 +2,12 @@
 	id = "interdicted"
 	duration = 2.5 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
-	tick_interval = 1
+	tick_interval = 0.2 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/interdiction
 	/// If we kicked the owner out of running mode
 	var/running_toggled = FALSE
 
-/datum/status_effect/interdiction/tick()
+/datum/status_effect/interdiction/tick(seconds_between_ticks)
 	if(owner.m_intent == MOVE_INTENT_RUN)
 		owner.toggle_move_intent(owner)
 		owner.adjust_confusion_up_to(1 SECONDS, 1 SECONDS)

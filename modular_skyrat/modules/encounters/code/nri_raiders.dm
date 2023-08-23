@@ -291,7 +291,7 @@ GLOBAL_VAR(first_officer)
 	icon_state = "automag"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/automag
+	accepted_magazine_type = /obj/item/ammo_box/magazine/automag
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/automag.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'

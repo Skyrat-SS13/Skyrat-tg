@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(gangster_cell_phones)
 /obj/item/gangster_cellphone
 	name = "cell phone"
 	desc = "TODO: funny joke about the 80s, brick phones"
-	icon = 'icons/obj/gang/cell_phone.dmi'
+	icon = 'icons/obj/antags/gang/cell_phone.dmi'
 	icon_state = "phone_off"
 	throwforce = 15 // these things are dense as fuck
 	var/gang_id = "Grove Street Families"

@@ -93,7 +93,6 @@
 		/obj/item/clothing/under/rank/rnd/research_director = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/alt = 1,
-		/obj/item/clothing/under/rank/rnd/research_director/alt/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit = 1,

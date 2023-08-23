@@ -26,7 +26,7 @@
 	name = "greentext"
 	desc = "No one knows what this massive tome does, but it feels <i><font color='green'>desirable</font></i> all the same..."
 	w_class = WEIGHT_CLASS_BULKY
-	icon = 'icons/obj/lavaland/artefacts.dmi'
+	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "greentext"
 	resistance_flags = FIRE_PROOF | ACID_PROOF | INDESTRUCTIBLE
 	///The current holder of the greentext.
@@ -67,7 +67,7 @@
 
 /obj/item/greentext/Destroy(force)
 	LAZYREMOVE(SSticker.round_end_events, roundend_callback)
-	QDEL_NULL(roundend_callback) //This ought to free the callback datum, and prevent us from harddeling
+	roundend_callback = null //This ought to free the callback datum, and prevent us from harddeling
 	if(LAZYLEN(color_altered_mobs))
 		INVOKE_ASYNC(src, PROC_REF(release_victims))
 	return ..()

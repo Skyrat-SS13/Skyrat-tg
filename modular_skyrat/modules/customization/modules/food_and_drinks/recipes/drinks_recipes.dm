@@ -188,9 +188,14 @@
 	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
+/datum/chemical_reaction/drink/bloodshot_base
+	results = list(/datum/reagent/consumable/ethanol/bloodshot_base = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
 /datum/chemical_reaction/drink/bloodshot
 	results = list(/datum/reagent/consumable/ethanol/bloodshot = 5)
-	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloodshot_base = 2)
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 

@@ -25,12 +25,12 @@
 			return
 		var/mob/living/carbon/C = usr
 		var/self = (C == bodypart.owner)
-		C.visible_message(span_notice("[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]..."))
+		C.visible_message(span_notice("[C] begins removing [name] from [self ? "[bodypart.owner.p_Their()]" : "[bodypart.owner]'s" ] [bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]..."))
 		if(!do_after(C, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target=bodypart.owner))
 			return
 		if(QDELETED(src))
 			return
-		C.visible_message(span_notice("[C] removes [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name]."))
+		C.visible_message(span_notice("[C] removes [name] from [self ? "[bodypart.owner.p_Their()]" : "[bodypart.owner]'s" ] [bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name]."))
 		var/obj/item/gotten = rip_off()
 		if(gotten && !C.put_in_hands(gotten))
 			gotten.forceMove(get_turf(C))
@@ -96,7 +96,7 @@
 	name = "splint"
 	overlay_prefix = "splint"
 	desc_prefix = "fastened"
-	stack_to_drop = /obj/item/stack/medical/splint
+	stack_to_drop = /obj/item/stack/medical/gauze
 	/// How effective are we in keeping the bodypart rigid
 	var/splint_factor = 0.3
 	/// Whether the splint prevents the limb from being disabled, with a ruptured tendon or a shattered bone
@@ -133,14 +133,8 @@
 	name = "improvised splint"
 	splint_factor = 0.6
 	helps_disabled= FALSE
-	stack_to_drop = /obj/item/stack/medical/splint/improvised
+	stack_to_drop = /obj/item/stack/medical/gauze/improvised
 	overlay_prefix = "splint_improv"
-
-/datum/bodypart_aid/splint/tribal
-	name = "tribal splint"
-	splint_factor = 0.5
-	stack_to_drop = /obj/item/stack/medical/splint/tribal
-	overlay_prefix = "splint_tribal"
 
 /datum/bodypart_aid/gauze
 	name = "gauze"
@@ -163,6 +157,8 @@
 /datum/bodypart_aid/gauze/get_description()
 	var/desc
 	switch(absorption_capacity)
+		if(-INFINITY to 0)
+			desc = "unusable"
 		if(0 to 1.25)
 			desc = "nearly ruined"
 		if(1.25 to 2.75)

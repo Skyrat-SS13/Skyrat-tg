@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 		if(DEFAULT_MATRIXED)
 			colors = list(features["mcolor"], features["mcolor2"], features["mcolor3"])
 		if(DEFAULT_SKIN_OR_PRIMARY)
-			if(pref_species && pref_species.use_skintones)
+			if(pref_species && !(TRAIT_USES_SKINTONES in pref_species.inherent_traits))
 				colors = list(features["skin_color"])
 			else
 				colors = list(features["mcolor"])

@@ -7,7 +7,7 @@
 	desc = "An  easily-concealable pistol chambered for 4.2x30mm."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-snub"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
 	can_suppress = TRUE
 	fire_sound_volume = 30
 	w_class = WEIGHT_CLASS_SMALL
@@ -26,7 +26,7 @@
 	desc = "A heavy-duty sidearm chambered in 12x27mm."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa_ruby"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
 	can_suppress = FALSE
 	fire_sound_volume = 120
 	w_class = WEIGHT_CLASS_NORMAL

@@ -29,6 +29,7 @@
 	inherent_traits = list(
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_RESISTCOLD,
+		TRAIT_USES_SKINTONES,
 	)
 
 	always_customizable = TRUE

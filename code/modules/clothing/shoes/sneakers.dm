@@ -6,11 +6,11 @@
 	righthand_file = 'icons/mob/inhands/clothing/shoes_righthand.dmi'
 	greyscale_colors = "#2d2d33#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers
-	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
-	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_inhand_right
+	greyscale_config_worn = /datum/greyscale_config/sneakers/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/sneakers/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/sneakers/inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
@@ -81,21 +81,16 @@
 	icon_state_preview = "prisonshoes"
 	greyscale_colors = "#d15b1b#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers_orange
-	greyscale_config_worn = /datum/greyscale_config/sneakers_orange_worn
-	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_orange_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange_inhand_right
+	greyscale_config_worn = /datum/greyscale_config/sneakers_orange/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_orange/inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange/inhand_right
 	flags_1 = NONE
 	var/obj/item/restraints/handcuffs/attached_cuffs
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 
 /obj/item/clothing/shoes/sneakers/orange/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_HANDCUFFED)
-
-/obj/item/clothing/shoes/sneakers/orange/handle_atom_del(atom/deleting_atom)
-	if(deleting_atom == attached_cuffs)
-		moveToNullspace(attached_cuffs)
-	return ..()
 
 /obj/item/clothing/shoes/sneakers/orange/Destroy()
 	QDEL_NULL(attached_cuffs)

@@ -59,7 +59,7 @@
 
 /datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/human, render_state)
 	var/obj/item/organ/external/genital/genital = human.get_organ_slot(associated_organ_slot)
-	if(genital?.uses_skin_color && human.dna.species.use_skintones)
+	if(genital?.uses_skin_color && HAS_TRAIT(human, TRAIT_USES_SKINTONES))
 		return skintone2hex(human.skin_tone)
 
 /datum/sprite_accessory/genital/penis

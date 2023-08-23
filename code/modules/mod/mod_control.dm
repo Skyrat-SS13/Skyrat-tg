@@ -21,10 +21,10 @@
 		/datum/action/item_action/mod/sprite_accessories, // SKYRAT EDIT - Hide mutant parts action
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
-		/datum/action/item_action/mod/deploy/pai, // SKYRAT EDIT - pAIs in MODsuits
-		/datum/action/item_action/mod/activate/pai, // SKYRAT EDIT - pAIs in MODsuits
-		/datum/action/item_action/mod/panel/pai, // SKYRAT EDIT - pAIs in MODsuits
-		/datum/action/item_action/mod/module/pai, // SKYRAT EDIT - pAIs in MODsuits
+		/datum/action/item_action/mod/deploy/ai,
+		/datum/action/item_action/mod/activate/ai,
+		/datum/action/item_action/mod/panel/ai,
+		/datum/action/item_action/mod/module/ai,
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
@@ -83,10 +83,12 @@
 	var/list/modules = list()
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
-	/* SKYRAT EDIT REMOVAL - MODsuit pAIs
-	/// AI mob inhabiting the MOD.
-	var/mob/living/silicon/ai/ai
-	*/ // SKYRAT EDIT END
+	/// AI or pAI mob inhabiting the MOD.
+	var/mob/living/silicon/ai_assistant
+	/// The MODlink datum, letting us call people from the suit.
+	var/datum/mod_link/mod_link
+	/// The starting MODlink frequency, overridden on subtypes that want it to be something.
+	var/starting_frequency = null
 	/// Delay between moves as AI.
 	var/static/movedelay = 0
 	/// Cooldown for AI moves.
@@ -144,10 +146,10 @@
 	for(var/obj/item/mod/module/module as anything in theme.inbuilt_modules)
 		module = new module(src)
 		install(module)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/mod/control/Destroy()
-	if(active)
-		STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
 	for(var/obj/item/mod/module/module as anything in modules)
 		uninstall(module, deleting = TRUE)
 	for(var/obj/item/part as anything in mod_parts)
@@ -176,6 +178,7 @@
 	if(core)
 		QDEL_NULL(core)
 	QDEL_NULL(wires)
+	QDEL_NULL(mod_link)
 	return ..()
 
 /obj/item/mod/control/atom_destruction(damage_flag)
@@ -189,7 +192,14 @@
 		var/obj/item/overslot = overslotting_parts[part]
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
-	remove_pai() // SKYRAT EDIT - pAIs in MODsuits
+	if(ai_assistant)
+		if(ispAI(ai_assistant))
+			INVOKE_ASYNC(src, PROC_REF(remove_pai), /* user = */ null, /* forced = */ TRUE) // async to appease spaceman DMM because the branch we don't run has a do_after
+		else
+			for(var/datum/action/action as anything in actions)
+				if(action.owner == ai_assistant)
+					action.Remove(ai_assistant)
+			new /obj/item/mod/ai_minicard(drop_location(), ai_assistant)
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)
@@ -211,12 +221,11 @@
 			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
-		if(!mod_pai) // SKYRAT EDIT BEGIN - PAI in Modsuits
-			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
-/* 		if(ai)
-			. += span_notice("You could remove [ai] with an <b>intellicard</b>.")
-		else
-			. += span_notice("You could install an AI with an <b>intellicard</b>.") SKYRAT EDIT END */
+		if(isnull(ai_assistant))
+			. += span_notice("You could install a pAI with a <b>pAI card</b>.") // SKYRAT EDIT CHANGE - ORIGINAL: . += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
+		else if(isAI(ai_assistant))
+			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
+	. += span_notice("You could copy/set link frequency with a <b>multitool</b>.")
 	. += span_notice("<i>You could examine it more thoroughly...</i>")
 
 /obj/item/mod/control/examine_more(mob/user)
@@ -226,13 +235,17 @@
 /obj/item/mod/control/process(seconds_per_tick)
 	if(seconds_electrified > MACHINE_NOT_ELECTRIFIED)
 		seconds_electrified--
+	if(mod_link.link_call)
+		subtract_charge((DEFAULT_CHARGE_DRAIN * 0.25) * seconds_per_tick)
+	if(!active)
+		return
 	if(!get_charge() && active && !activating)
 		power_off()
-		return PROCESS_KILL
+		return
 	var/malfunctioning_charge_drain = 0
 	if(malfunctioning)
 		malfunctioning_charge_drain = rand(1,20)
-	subtract_charge((charge_drain + malfunctioning_charge_drain)*seconds_per_tick)
+	subtract_charge((charge_drain + malfunctioning_charge_drain) * seconds_per_tick)
 	update_charge_alert()
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(malfunctioning && module.active && SPT_PROB(5, seconds_per_tick))
@@ -255,6 +268,13 @@
 /obj/item/mod/control/item_action_slot_check(slot)
 	if(slot & slot_flags)
 		return TRUE
+
+// Grant pinned actions to pin owners, gives AI pinned actions to the AI and not the wearer
+/obj/item/mod/control/grant_action_to_bearer(datum/action/action)
+	if (!istype(action, /datum/action/item_action/mod/pinned_module))
+		return ..()
+	var/datum/action/item_action/mod/pinned_module/pinned = action
+	give_item_action(action, pinned.pinner, slot_flags)
 
 /obj/item/mod/control/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -317,10 +337,8 @@
 	return ..()
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	// SKYRAT EDIT START - pAIs in MODsuits
 	. = ..()
 	if(.)
-	// SKYRAT EDIT END
 		return TRUE
 	if(active || activating || ai_controller)
 		balloon_alert(user, "deactivate suit first!")
@@ -370,14 +388,12 @@
 	return FALSE
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
-	// SKYRAT EDIT START - pAIs in MODsuits
 	if(istype(attacking_item, /obj/item/pai_card))
-		if(!open) //mod must be open
-			balloon_alert(user, "suit must be open to transfer!")
+		if(!open)
+			balloon_alert(user, "open the cover first!")
 			return FALSE
 		insert_pai(user, attacking_item)
 		return TRUE
-	// SKYRAT EDIT END
 	if(istype(attacking_item, /obj/item/mod/module))
 		if(!open)
 			balloon_alert(user, "open the cover first!")
@@ -423,9 +439,10 @@
 	else
 		return ..()
 
-/obj/item/mod/control/emag_act(mob/user)
+/obj/item/mod/control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	locked = !locked
 	balloon_alert(user, "suit access [locked ? "locked" : "unlocked"]")
+	return TRUE
 
 /obj/item/mod/control/emp_act(severity)
 	. = ..()
@@ -499,6 +516,7 @@
 		retract(null, part)
 	if(active)
 		finish_activation(on = FALSE)
+		mod_link?.end_call()
 	var/mob/old_wearer = wearer
 	unset_wearer()
 	old_wearer.temporarilyRemoveItemFromInventory(src)
@@ -575,12 +593,6 @@
 		new_module.on_equip()
 	if(active)
 		new_module.on_suit_activation()
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(mod_pai)
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
-		if(action)
-			action.Grant(mod_pai)
-	// SKYRAT EDIT END
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -598,6 +610,10 @@
 	old_module.on_uninstall(deleting = deleting)
 	QDEL_LIST_ASSOC_VAL(old_module.pinned_to)
 	old_module.mod = null
+
+/// Intended for callbacks, don't use normally, just get wearer by itself.
+/obj/item/mod/control/proc/get_wearer()
+	return wearer
 
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
 	if(!allowed(user))

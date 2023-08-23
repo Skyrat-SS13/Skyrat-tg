@@ -137,7 +137,7 @@
 
 /// Dispel the sigil and delete itself
 /obj/structure/destructible/clockwork/sigil/proc/dispel()
-	animate(src, transform = matrix() * 1.5, alpha = 0, time = 3)
+	animate(src, transform = matrix() * 1.5, alpha = 0, time = 0.3 SECONDS)
 	QDEL_IN(src, 0.3 SECONDS)
 
 #undef SIGIL_INVOCATION_ALPHA

@@ -13,7 +13,7 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	worn_icon_state = "gun"
-	mag_type = /obj/item/ammo_box/magazine/cm68
+	accepted_magazine_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 1

@@ -18,6 +18,7 @@
 #define ROLE_WIZARD "Wizard"
 // SKYRAT EDIT START
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+#define ROLE_OPFOR_CANDIDATE "OPFOR Candidate"
 // SKYRAT EDIT END
 
 // Midround roles
@@ -68,8 +69,11 @@
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
 #define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
+#define ROLE_LAZARUS_GOOD "Friendly Revived Mob"
+#define ROLE_LAZARUS_BAD "Slaved Revived Mob"
 #define ROLE_POSIBRAIN "Posibrain"
 #define ROLE_DRONE "Drone"
+#define ROLE_EMAGGED_BOT "Malfunctioning Bot"
 #define ROLE_DEATHSQUAD "Deathsquad"
 #define ROLE_LAVALAND "Lavaland"
 
@@ -105,9 +109,12 @@
 #define ROLE_SKELETON "Skeleton"
 #define ROLE_ZOMBIE "Zombie"
 #define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
+#define ROLE_DERELICT_DRONE "Derelict Drone"
+#define ROLE_SYNDICATE_DRONE "Syndicate Drone"
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
+#define ROLE_BOT "Bot"
 //SKYRAT EDIT START
 #define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
 #define ROLE_DS2 "DS2 Syndicate"
@@ -115,6 +122,7 @@
 #define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
 #define ROLE_PORT_TARKON "Port Tarkon Survivor"
 //SKYRAT EDIT END
+
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's

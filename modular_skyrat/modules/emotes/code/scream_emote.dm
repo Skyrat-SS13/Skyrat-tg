@@ -6,7 +6,7 @@
 /datum/emote/living/scream/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
-	if(!user.is_muzzled() && !HAS_TRAIT(user, TRAIT_MIMING))
+	if(!user.is_muzzled() && !HAS_MIND_TRAIT(user, TRAIT_MIMING))
 		var/sound = get_sound(user, TRUE)
 		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
 
@@ -33,6 +33,8 @@
 		if(isnull(H.selected_scream)) //For things that don't have a selected scream(npcs)
 			var/datum/species/userspecies = H.dna.species
 			if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
+				if(prob(1))
+					return 'sound/voice/human/wilhelm_scream.ogg'
 				return pick(userspecies.screamsounds)
 			else
 				return pick(userspecies.femalescreamsounds)

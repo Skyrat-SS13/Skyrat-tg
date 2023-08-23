@@ -7,11 +7,23 @@
 /obj/item/gun/ballistic/automatic/pistol/aps/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
+/obj/item/gun/ballistic/rifle/boltaction/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SAKHNO)
+
+/obj/item/gun/ballistic/rifle/boltaction/prime/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_XHIHAO)
+
+/obj/item/gun/ballistic/rifle/boltaction/pipegun/give_manufacturer_examine()
+	return
+
+/obj/item/gun/ballistic/rifle/boltaction/harpoon/give_manufacturer_examine()
+	return
+
+/obj/item/gun/ballistic/rifle/boltaction/lionhunter/give_manufacturer_examine()
+	return
+
 /obj/item/gun/ballistic/revolver/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
-
-/obj/item/gun/ballistic/rifle/boltaction/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/gun/ballistic/shotgun/riot/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
@@ -25,6 +37,9 @@
 /obj/item/gun/ballistic/automatic/pistol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
+/obj/item/gun/ballistic/automatic/pistol/m45a5/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
+
 /obj/item/gun/ballistic/revolver/c38/detective/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
 
@@ -33,15 +48,6 @@
 
 /obj/item/gun/ballistic/shotgun/toy/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_DONK)
-
-/obj/item/gun/ballistic/rifle/boltaction/sporterized/give_manufacturer_examine()
-	return
-
-/obj/item/gun/ballistic/rifle/boltaction/prime/give_manufacturer_examine()
-	return
-
-/obj/item/gun/ballistic/rifle/boltaction/pipegun/give_manufacturer_examine()
-	return
 
 /obj/item/gun/ballistic/automatic/c20r/toy/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_DONK)

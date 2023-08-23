@@ -9,7 +9,7 @@
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "mp40"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	mag_type = /obj/item/ammo_box/magazine/mp40
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mp40
 	can_suppress = FALSE
 	burst_size = 1
 	fire_delay = 1.7

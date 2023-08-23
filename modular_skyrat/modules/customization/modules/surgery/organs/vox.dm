@@ -16,13 +16,11 @@
 	cold_level_1_threshold = 0 // Vox should be able to breathe in cold gas without issues?
 	cold_level_2_threshold = 0
 	cold_level_3_threshold = 0
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
 /obj/item/organ/internal/brain/vox
 	name = "vox brain"
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
 /obj/item/organ/internal/brain/vox/emp_act(severity)
 	. = ..()

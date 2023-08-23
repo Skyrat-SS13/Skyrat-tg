@@ -1,3 +1,10 @@
+/obj/item/organ/internal/tongue/copy_traits_from(obj/item/organ/internal/tongue/old_tongue, copy_actions = FALSE)
+	. = ..()
+	// make sure we get food preferences too, because those are now tied to tongues for some reason
+	liked_foodtypes = old_tongue.liked_foodtypes
+	disliked_foodtypes = old_tongue.disliked_foodtypes
+	toxic_foodtypes = old_tongue.toxic_foodtypes
+
 /obj/item/organ/internal/tongue/dog
 	name = "long tongue"
 	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
@@ -12,7 +19,7 @@
 	signer.verb_whisper = "whimpers"
 	signer.verb_yell = "barks"
 
-/obj/item/organ/internal/tongue/dog/Remove(mob/living/carbon/speaker, special = 0)
+/obj/item/organ/internal/tongue/dog/Remove(mob/living/carbon/speaker, special = FALSE)
 	..()
 	speaker.verb_ask = initial(verb_ask)
 	speaker.verb_exclaim = initial(verb_exclaim)
@@ -30,8 +37,7 @@
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue"
 	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC
+	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	say_mod = "says"
 	// Not as good as organic tongues, not as bad as the robotic voicebox.
 	taste_sensitivity = 20

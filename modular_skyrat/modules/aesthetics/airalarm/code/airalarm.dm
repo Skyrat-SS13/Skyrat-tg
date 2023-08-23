@@ -18,4 +18,4 @@
 	set_light(1.5, 1, color)
 
 /obj/item/wallframe/airalarm
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi'

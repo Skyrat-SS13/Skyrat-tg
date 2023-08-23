@@ -12,11 +12,11 @@
 	/// What mode the vibrator is on
 	var/vibration_mode = "off"
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/lewd/vibrator/low/soundloop1
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/lewd/vibrator/medium/soundloop2
 	/// Looping sound called on process()
-	var/datum/looping_sound/vibrator/high/soundloop3
+	var/datum/looping_sound/lewd/vibrator/high/soundloop3
 	/// Mutable appearance for the human overlay of this itme
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY
@@ -99,7 +99,7 @@
 		to_chat(user, span_warning("You must turn on the toy, to use it!"))
 		return FALSE
 
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
 		return FALSE
 
@@ -158,7 +158,7 @@
 		target.try_lewd_autoemote(pick("twitch_s", "moan"))
 
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, ignore_walls = FALSE)
+	play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, pref_to_check = /datum/preference/toggle/erp/sex_toy_sounds)
 
 /obj/item/clothing/sextoy/magic_wand/attack_self(mob/user)
 	toggle_mode()
@@ -178,7 +178,7 @@
 /// Toggle between toy modes in a specific order
 /obj/item/clothing/sextoy/magic_wand/proc/toggle_mode()
 	if(vibration_mode != "high")
-		playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+		play_lewd_sound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
 	switch(vibration_mode)
 		if("off")
@@ -196,6 +196,6 @@
 			vibration_mode = "high"
 
 		if("high")
-			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			play_lewd_sound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
 			vibration_mode = "off"

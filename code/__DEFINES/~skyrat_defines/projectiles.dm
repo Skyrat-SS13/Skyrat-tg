@@ -27,3 +27,5 @@
 
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
+
+#define CALIBER_A277 "a277"

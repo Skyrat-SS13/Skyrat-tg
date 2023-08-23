@@ -401,7 +401,6 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "Mass driver Router"
 	description = "An old, still functional router for some long destroyed system."
 
-
 /datum/map_template/ruin/space/prey_pod
 	id = "prey"
 	suffix = "prey_pod.dmm"
@@ -452,7 +451,7 @@ suffix = "whiteshipruin_box.dmm"*/
 
 /datum/map_template/ruin/space/mimesvclowns
 	id = "mimesvclowns"
-	suffix = "mimesvclowns.dmm"
+	suffix = "mimesvsclowns.dmm"
 	name = "Abandoned Mime Outpost"
 	description = "When you fight mimes, you better bring more than slips."
 

@@ -599,6 +599,15 @@
 	return ..()
 
 
+/datum/reagent/consumable/ethanol/bloodshot_base
+	name = "Bloodshot Base"
+	description = "The bootleg blend of nutrients and alcohol that goes into making Bloodshots. Doesn't taste too great on its own, for Hemophages at least."
+	color = "#c29ca1"
+	boozepwr = 25 // Still more concentrated than in Bloodshot.
+	taste_description = "nutritious mix with an alcoholic kick to it"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+
 /datum/reagent/consumable/ethanol/bloodshot
 	name = "Bloodshot"
 	description = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."

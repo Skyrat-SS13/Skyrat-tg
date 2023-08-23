@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/blueshield/icons/M45A5.dmi'
 	icon_state = "m45a5"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/m45a5
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m45a5
 	can_suppress = FALSE
 	fire_delay = 4.25 //Originally 1.75 which was unintentionally extremely fast.
 	fire_sound_volume = 60

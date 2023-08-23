@@ -17,7 +17,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	spread = 15
-	mag_type = /obj/item/ammo_box/magazine/mg34
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mg34
 	can_suppress = FALSE
 	fire_delay = 1
 	bolt_type = BOLT_TYPE_OPEN
@@ -64,7 +64,7 @@
 	return ..()
 
 /obj/item/gun/ballistic/automatic/mg34/attackby(obj/item/A, mob/user, params)
-	if(!cover_open && istype(A, mag_type))
+	if(!cover_open && istype(A, accepted_magazine_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()
@@ -84,7 +84,7 @@
 	fire_delay = 0.04
 	burst_size = 5
 	spread = 5
-	mag_type = /obj/item/ammo_box/magazine/mg34/packapunch
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mg34/packapunch
 
 /obj/item/ammo_box/magazine/mg34/packapunch
 	max_ammo = 999
@@ -111,7 +111,7 @@
 	fire_sound_volume = 100
 	fire_delay = 0.5
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
-	mag_type = /obj/item/ammo_box/magazine/mg42
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mg42
 	spread = SPREAD_UNDEPLOYED
 	/// If we are resting, the bipod is deployed.
 	var/bipod_deployed = FALSE

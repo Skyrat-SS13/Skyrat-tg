@@ -20,7 +20,7 @@
 	mutantlungs = null
 	inherent_biotypes = MOB_HUMANOID|MOB_MINERAL
 	damage_modifier = 10 //golem is stronk
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	siemens_coeff = 0
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING | ITEM_SLOT_SUITSTORE
 	nojumpsuit = 1
