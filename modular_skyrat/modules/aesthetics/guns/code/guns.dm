@@ -133,10 +133,13 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 
+// de-overrides this particular gun, it uses the tg file
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact
-	icon = 'icons/obj/weapons/guns/ballistic.dmi' // de-overrides this particular gun, it uses the tg file
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/64x_guns_right.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	worn_icon = null
 
 /obj/item/gun/grenadelauncher
