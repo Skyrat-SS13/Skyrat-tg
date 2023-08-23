@@ -133,6 +133,9 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 
+/obj/item/gun/ballistic/shotgun/automatic/combat/compact
+	icon = 'icons/obj/weapons/guns/ballistic.dmi' // de-overrides this particular gun, it uses the tg file
+
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
