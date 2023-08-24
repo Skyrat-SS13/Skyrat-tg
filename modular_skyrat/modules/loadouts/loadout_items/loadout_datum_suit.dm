@@ -618,7 +618,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/cargo_tech
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
-/datum/loadout_item/under/miscellaneous/qm_jacket
+/datum/loadout_item/suit/qm_jacket
 	name = "Quartermaster's Overcoat"
 	item_path = /obj/item/clothing/suit/jacket/quartermaster
 	restricted_roles = list(JOB_QUARTERMASTER)
