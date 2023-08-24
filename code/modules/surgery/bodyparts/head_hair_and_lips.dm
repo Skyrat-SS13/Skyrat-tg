@@ -299,6 +299,10 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_style(new_style, update = TRUE)
+	if(new_style == "None")
+		new_style = null
+	if(LAZYACCESS(grad_style, GRADIENT_HAIR_KEY) == new_style)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)
@@ -320,6 +324,8 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_color(new_color, update = TRUE)
+	if(LAZYACCESS(grad_color, GRADIENT_HAIR_KEY) == new_color)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 
@@ -379,6 +385,10 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_style(new_style, update = TRUE)
+	if(new_style == "None")
+		new_style = null
+	if(LAZYACCESS(grad_style, GRADIENT_FACIAL_HAIR_KEY) == new_style)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)
@@ -400,6 +410,8 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_color(new_color, update = TRUE)
+	if(LAZYACCESS(grad_color, GRADIENT_FACIAL_HAIR_KEY) == new_color)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)

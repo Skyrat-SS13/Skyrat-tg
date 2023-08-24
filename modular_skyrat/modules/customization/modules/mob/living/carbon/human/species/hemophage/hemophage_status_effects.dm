@@ -97,7 +97,7 @@
 	to_chat(owner, span_notice("You feel the pulse of the tumor in your chest returning back to normal."))
 
 
-/datum/status_effect/blood_regen_active/tick(seconds_per_tick, times_fired)
+/datum/status_effect/blood_regen_active/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/regenerator = owner
 
 	var/max_blood_for_regen = regenerator.blood_volume - MINIMUM_VOLUME_FOR_REGEN
@@ -108,7 +108,7 @@
 
 	// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
 	if(brute_damage && length(regenerator.get_damaged_bodyparts(brute = TRUE, burn = FALSE, required_bodytype = BODYTYPE_ORGANIC)))
-		brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * seconds_per_tick)
+		brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * seconds_between_ticks)
 		blood_used += brutes_to_heal * blood_to_health_multiplier
 		max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
 
@@ -116,7 +116,7 @@
 	var/burn_damage = regenerator.getFireLoss()
 
 	if(burn_damage && max_blood_for_regen > NONE && length(regenerator.get_damaged_bodyparts(brute = FALSE, burn = TRUE, required_bodytype = BODYTYPE_ORGANIC)))
-		burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * seconds_per_tick)
+		burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * seconds_between_ticks)
 		blood_used += burns_to_heal * blood_to_health_multiplier
 		max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
 
@@ -126,7 +126,7 @@
 	var/toxin_damage = regenerator.getToxLoss()
 
 	if(toxin_damage && max_blood_for_regen > NONE)
-		var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * seconds_per_tick)
+		var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * seconds_between_ticks)
 		blood_used += toxins_to_heal * blood_to_health_multiplier
 		max_blood_for_regen -= toxins_to_heal * blood_to_health_multiplier
 		regenerator.adjustToxLoss(-toxins_to_heal)
@@ -134,7 +134,7 @@
 	var/cellular_damage = regenerator.getCloneLoss()
 
 	if(cellular_damage && max_blood_for_regen > NONE)
-		var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * seconds_per_tick)
+		var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * seconds_between_ticks)
 		blood_used += cells_to_heal * blood_to_health_multiplier
 		max_blood_for_regen -= cells_to_heal * blood_to_health_multiplier
 		regenerator.adjustCloneLoss(-cells_to_heal)

@@ -33,3 +33,28 @@
 	log_message(message_to_log + ".", LOG_GAME)
 
 	return FALSE
+
+
+/// Checks the prefs of all mobs in `view()`. If there is a mob with the `pref_to_check` set to false, we return `FALSE` otherwise, we return `TRUE`
+/mob/living/proc/check_prefs_in_view(datum/preference/toggle/pref_to_check)
+	if(!ispath(pref_to_check))
+		return FALSE
+
+	var/no_viewer_with_false_prefs = TRUE
+	for(var/mob/living/viewer in dview())
+		if(!viewer?.client) // It doens't really matter if these people see it.
+			continue
+
+		if(!viewer.client.prefs) // Better safe than sorry
+			no_viewer_with_false_prefs = FALSE
+			continue
+
+		if(viewer.client.prefs.read_preference(pref_to_check))
+			continue
+
+		no_viewer_with_false_prefs = FALSE
+
+		viewer.log_message("[src] used a mechanic that checked for those without [pref_to_check] in view, [viewer] had the pref disabled.", LOG_GAME)
+		log_message("[src] used a mechanic that checked for those without [pref_to_check] in view, [viewer] had the pref disabled.", LOG_GAME)
+
+	return no_viewer_with_false_prefs

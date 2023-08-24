@@ -395,3 +395,8 @@
 /datum/sprite_accessory/wings/moth/moffra
 	name = "Moth (Moffra)"
 	icon_state = "moffra"
+
+/datum/sprite_accessory/wings/mammal/top/arfel_harpy
+	name = "Arfel Harpy"
+	icon_state = "arfelharpy_top"
+	color_src = USE_ONE_COLOR

@@ -319,3 +319,6 @@
 /datum/wound/slash/critical/cleave/update_descriptions()
 	if(no_bleeding)
 		occur_text = "is ruptured"
+
+/datum/wound/slash/get_limb_examine_description()
+	return span_warning("The flesh on this limb appears badly lacerated.")

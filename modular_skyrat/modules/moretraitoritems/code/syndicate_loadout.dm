@@ -41,7 +41,7 @@
 	new /obj/item/clothing/mask/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
-	new /obj/item/camera_bug(src)
+	new /obj/item/computer_disk/syndicate/camera_app(src)
 	new /obj/item/multitool/ai_detect(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/reagent_containers/syringe/mulligan(src)
@@ -72,7 +72,7 @@
 	new /obj/item/ai_module/toy_ai(src)
 	new /obj/item/multitool/ai_detect(src)
 	new /obj/item/storage/toolbox/syndicate(src)
-	new /obj/item/camera_bug(src)
+	new /obj/item/computer_disk/syndicate/camera_app(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 
