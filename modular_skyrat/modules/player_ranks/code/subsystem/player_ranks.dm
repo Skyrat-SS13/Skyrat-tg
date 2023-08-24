@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(player_ranks)
 	if(GLOB.donator_list[user.ckey])
 		return TRUE
 
-	if(is_admin(user.ckey))
+	if(is_admin(user))
 		return TRUE
 
 	return FALSE
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(player_ranks)
 	if(GLOB.veteran_list[user.ckey])
 		return TRUE
 
-	if(is_admin(user.ckey))
+	if(is_admin(user))
 		return TRUE
 
 	return FALSE
@@ -126,10 +126,8 @@ SUBSYSTEM_DEF(player_ranks)
  * `unlock_content` and `max_save_slots` once donators are loaded.
  */
 /datum/controller/subsystem/player_ranks/proc/update_all_prefs_unlock_contents()
-	for(var/datum/preferences/prefs as anything in GLOB.preferences_datums)
-		prefs.unlock_content = !!prefs.parent.IsByondMember() || is_donator(prefs.parent)
-		if(prefs.unlock_content)
-			prefs.max_save_slots = 50
+	for(var/ckey as anything in GLOB.preferences_datums)
+		update_prefs_unlock_content(GLOB.preferences_datums[ckey])
 
 
 /**
