@@ -307,6 +307,8 @@
 				back = /obj/item/storage/backpack/messenger //Grey messenger bag
 			if(DSATCHEL)
 				back = satchel //Department satchel
+			if(DMESSENGER)
+				back = messenger //SKYRAT EDIT - Messenger Bags
 			if(DDUFFELBAG)
 				back = duffelbag //Department duffel bag
 			if(DMESSENGER)
