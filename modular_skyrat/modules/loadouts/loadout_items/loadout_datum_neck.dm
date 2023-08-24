@@ -94,10 +94,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 *	NECKTIES
 */
 
-/datum/loadout_item/neck/bowtie_black
-	name = "Black Bowtie"
-	item_path = /obj/item/clothing/neck/bowtie
-
 /datum/loadout_item/neck/necktie_black
 	name = "Black Necktie"
 	item_path = /obj/item/clothing/neck/tie/black
@@ -130,10 +126,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/choker
 	name = "Choker"
 	item_path = /obj/item/clothing/neck/human_petcollar/choker
-
-/datum/loadout_item/neck/thinchoker
-	name = "Thin Choker"
-	item_path = /obj/item/clothing/neck/human_petcollar/thinchoker
 
 /datum/loadout_item/neck/collar
 	name = "Collar"
