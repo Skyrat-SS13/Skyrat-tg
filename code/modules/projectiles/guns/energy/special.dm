@@ -1,4 +1,4 @@
-/obj/item/gun/energy/ionrifle
+/obj/item/gun/energy/ionrifle //SKYRAT EDIT - ICON OVERRIDDEN IN AESTHETICS MODULE
 	name = "ion rifle"
 	desc = "A man-portable anti-armor weapon designed to disable mechanical threats at range."
 	icon_state = "ionrifle"

@@ -153,20 +153,10 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			var/area/local_area = get_area(src)
-			//SKYRAT EDIT BEGIN - Original
-			/*
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
-			*/
-			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
-			else if(major_emergency || (local_area?.fire))
-				icon_state = "[base_state]_emergency"
-			else
-				icon_state = "[base_state]"
-			// SKYRAT EDIT END
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)

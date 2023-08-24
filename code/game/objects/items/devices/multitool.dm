@@ -10,7 +10,7 @@
 
 
 
-/obj/item/multitool//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/multitool //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "multitool"
 	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors."
 	icon = 'icons/obj/device.dmi'
@@ -42,8 +42,8 @@
 	return OXYLOSS//theres a reason it wasn't recommended by doctors
 
 /obj/item/multitool/proc/set_buffer(datum/buffer)
-	if(buffer)
-		UnregisterSignal(buffer, COMSIG_QDELETING)
+	if(src.buffer)
+		UnregisterSignal(src.buffer, COMSIG_QDELETING)
 	if(QDELETED(buffer))
 		return
 	src.buffer = buffer
