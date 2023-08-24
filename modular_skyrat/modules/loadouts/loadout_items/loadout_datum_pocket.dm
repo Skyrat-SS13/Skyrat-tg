@@ -196,13 +196,17 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Ten Cloth Sheets"
 	item_path = /obj/item/stack/sheet/cloth/ten
 
+/datum/loadout_item/pocket_items/margherita_pizza
+	name = "Margherita Pizza Box"
+	item_path = /obj/item/pizzabox/margherita
+
 /datum/loadout_item/pocket_items/medkit
 	name = "First-Aid Kit"
 	item_path = /obj/item/storage/medkit/regular
 
 /datum/loadout_item/pocket_items/ingredients
-	name = "Random Ingredient Box"
-	item_path = /obj/item/storage/box/ingredients/random
+	name = "Wildcard Ingredient Box"
+	item_path = /obj/item/storage/box/ingredients/wildcard
 
 /datum/loadout_item/pocket_items/six_beer
 	name = "Beer Six-Pack"
@@ -215,6 +219,18 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/power_cell
 	name = "Standard Power Cell"
 	item_path = /obj/item/stock_parts/cell
+
+/datum/loadout_item/pocket_items/soap
+	name = "Bar Of Soap"
+	item_path = /obj/item/soap
+
+/datum/loadout_item/pocket_items/mini_extinguisher
+	name = "Mini Fire Extinguisher"
+	item_path = /obj/item/extinguisher/mini
+
+/datum/loadout_item/pocket_items/binoculars
+	name = "Pair Of Binoculars"
+	item_path = /obj/item/binoculars
 
 /datum/loadout_item/pocket_items/drugs_happy
 	name = "Happy Pills"
