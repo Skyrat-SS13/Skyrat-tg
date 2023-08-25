@@ -16,6 +16,7 @@
 	new /obj/item/clothing/under/syndicate/skyrat/overalls(src)
 	new /obj/item/storage/backpack/satchel/explorer(src)
 	new /obj/item/storage/backpack/explorer(src)
+	new /obj/item/storage/backpack/messenger/explorer(src)
 	new /obj/item/clothing/accessory/armband/cargo/syndicate(src)
 
 /obj/structure/closet/secure_closet/interdynefob/mining_locker/populate_contents_immediate()

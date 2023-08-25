@@ -258,7 +258,7 @@
 /obj/item/modular_computer/pda/shaftminer
 	name = "shaft miner PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
-	greyscale_colors = "#927444#D6B328#6C3BA1"
+	greyscale_colors = "#927444#8b4c31#4c202d"
 	starting_programs = list(
 		/datum/computer_file/program/skill_tracker,
 	)
