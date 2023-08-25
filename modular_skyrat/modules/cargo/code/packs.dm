@@ -189,9 +189,9 @@
 	desc = "Contains three material pouches."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
 	)
 	cost = CARGO_CRATE_VALUE * 15
 	crate_name = "material pouches crate"

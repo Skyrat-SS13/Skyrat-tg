@@ -26,7 +26,7 @@
 	. = ..()
 
 	new /obj/item/gun/ballistic/automatic/cfa_rifle(src)
-	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/storage/pouch/ammo(src)
 	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/storage/belt/utility/syndicate(src)
 	new /obj/item/gps/mining(src)

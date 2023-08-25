@@ -27,7 +27,7 @@
 	cost = 3
 
 /datum/armament_entry/assault_operatives/utility/pouch
-	item_type = /obj/item/storage/bag/ammo
+	item_type = /obj/item/storage/pouch/ammo
 	cost = 1
 
 /datum/armament_entry/assault_operatives/utility/noslip

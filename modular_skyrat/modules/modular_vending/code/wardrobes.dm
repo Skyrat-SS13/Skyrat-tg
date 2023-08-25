@@ -8,7 +8,8 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
-		/obj/item/clothing/suit/toggle/labcoat/medical = 4
+		/obj/item/clothing/suit/toggle/labcoat/medical = 4,
+		/obj/item/storage/backpack/messenger/med = 4,
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
@@ -23,13 +24,15 @@
 		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/red = 2
+		/obj/item/clothing/head/utility/hardhat/red = 2,
+		/obj/item/storage/backpack/messenger/eng = 3,
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/glasses/meson/engine = 2,
 		/obj/item/clothing/head/beret/atmos = 4,
+		/obj/item/storage/backpack/messenger/eng = 3,
 	)
 
 /obj/machinery/vending/wardrobe/cargo_wardrobe
@@ -43,6 +46,7 @@
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
 		/obj/item/clothing/glasses/hud/gun_permit = 5, //from company imports module
+		/obj/item/storage/backpack/messenger = 3,
 	)
 
 	skyrat_contraband = list(
@@ -61,6 +65,7 @@
 		/obj/item/storage/backpack/science/robo = 2,
 		/obj/item/storage/backpack/satchel/science/robo = 2,
 		/obj/item/storage/backpack/duffelbag/science/robo = 2,
+		/obj/item/storage/backpack/messenger/science/robo = 2,
 	)
 
 /obj/machinery/vending/wardrobe/science_wardrobe
@@ -68,6 +73,7 @@
 		/obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience = 3,
 		/obj/item/clothing/under/rank/rnd/scientist/skyrat/utility = 3,
 		/obj/item/clothing/suit/toggle/jacket/sci = 3,
+		/obj/item/storage/backpack/messenger/science = 3,
 	)
 
 /obj/machinery/vending/wardrobe/hydro_wardrobe
@@ -75,6 +81,7 @@
 		/obj/item/clothing/under/suit/skyrat/scarface = 2,
 		/obj/item/clothing/under/misc/skyrat/gear_harness/adam = 2,
 		/obj/item/clothing/under/misc/skyrat/gear_harness/eve = 2,
+		/obj/item/storage/backpack/messenger/hyd = 3,
 	)
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
@@ -110,11 +117,13 @@
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
 		/obj/item/clothing/head/beret/medical/chemist = 2,
+		/obj/item/storage/backpack/messenger/chem = 2,
 	)
 
 /obj/machinery/vending/wardrobe/viro_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/head/beret/medical/virologist = 2,
+		/obj/item/storage/backpack/messenger/vir = 2,
 	)
 
 /obj/machinery/vending/wardrobe/det_wardrobe
@@ -130,6 +139,7 @@
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
 		/obj/item/clothing/suit/jacket/det_suit/cowboyvest = 2,
+		/obj/item/storage/backpack/messenger/sec = 2,
 	)
 
 /obj/machinery/vending/wardrobe/law_wardrobe
