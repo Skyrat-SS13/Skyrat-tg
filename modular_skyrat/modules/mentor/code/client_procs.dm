@@ -32,7 +32,7 @@
 
 /client/proc/mentor_datum_set()
 	mentor_datum = GLOB.mentor_datums[ckey]
-	if(!mentor_datum && is_admin(ckey)) // admin with no mentor datum? let's fix that
+	if(!mentor_datum && is_admin(src)) // admin with no mentor datum? let's fix that
 		new /datum/mentors(ckey)
 
 	if(mentor_datum)
