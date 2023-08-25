@@ -88,7 +88,9 @@
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
 	default_accessory_type = /datum/sprite_accessory/body_markings/none
 
+// because of the way the unit tests are set up, we need this to crash.
 /datum/preference/choiced/mutant_choice/body_markings/icon_for(value)
+	CRASH("`icon_for()` was not implemented for [type], even though should_generate_icons = TRUE!")
 
 /datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.
