@@ -111,6 +111,6 @@
 
 	return ..()
 
-/datum/reagent/consumable/nutriment/glucose/on_mob_delete(mob/living/carbon/M)
-	M.adjust_nutrition(-delayed_satiety_drain)
+/datum/reagent/consumable/nutriment/glucose/on_mob_delete(mob/living/carbon/detoxed_mob)
+	detoxed_mob.adjust_nutrition(-delayed_satiety_drain)
 	return ..()
