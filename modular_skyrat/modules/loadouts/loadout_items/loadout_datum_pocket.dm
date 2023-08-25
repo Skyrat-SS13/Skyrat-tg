@@ -196,9 +196,9 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Ten Cloth Sheets"
 	item_path = /obj/item/stack/sheet/cloth/ten
 
-/datum/loadout_item/pocket_items/margherita_pizza
-	name = "Margherita Pizza Box"
-	item_path = /obj/item/pizzabox/margherita
+/datum/loadout_item/pocket_items/random_pizza
+	name = "Random Pizza Box"
+	item_path = /obj/item/pizzabox/random
 
 /datum/loadout_item/pocket_items/medkit
 	name = "First-Aid Kit"
@@ -236,9 +236,9 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Happy Pills"
 	item_path = /obj/item/storage/pill_bottle/happy
 
-/datum/loadout_item/pocket_items/drugs_maint
-	name = "Maintenance Pills"
-	item_path = /obj/item/storage/pill_bottle/maintenance_pill
+/datum/loadout_item/pocket_items/drugs_lsd
+	name = "Mindbreaker Pills"
+	item_path = /obj/item/storage/pill_bottle/lsd
 
 /datum/loadout_item/pocket_items/drugs_weed
 	name = "Weed Seeds"
