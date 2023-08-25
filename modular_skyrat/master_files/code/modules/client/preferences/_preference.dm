@@ -126,6 +126,9 @@
 
 // icons are cached
 /datum/preference/choiced/mutant_choice/icon_for(value)
+	if(!should_generate_icons)
+		// because of the way the unit tests are set up, we need this to crash here
+		CRASH("`icon_for()` was not implemented for [type], even though should_generate_icons = TRUE!")
 	var/list/cached_icons = get_choices()
 	return cached_icons[value]
 

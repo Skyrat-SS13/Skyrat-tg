@@ -81,16 +81,11 @@
 /datum/preference/toggle/mutant_toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-
 /datum/preference/choiced/mutant_choice/body_markings
 	savefile_key = "feature_body_markings"
 	relevant_mutant_bodypart = "body_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
 	default_accessory_type = /datum/sprite_accessory/body_markings/none
-
-// because of the way the unit tests are set up, we need this to crash.
-/datum/preference/choiced/mutant_choice/body_markings/icon_for(value)
-	CRASH("`icon_for()` was not implemented for [type], even though should_generate_icons = TRUE!")
 
 /datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
 	. = ..() // Got to do this because of linters.
@@ -98,7 +93,6 @@
 
 /datum/preference/choiced/mutant_choice/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
-
 
 /datum/preference/tri_color/body_markings
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -127,7 +121,6 @@
 
 /datum/preference/tri_bool/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
-
 
 /// Tails
 
