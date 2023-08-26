@@ -230,7 +230,7 @@
 /datum/loadout_manager/proc/display_job_restrictions(datum/loadout_item/item)
 	if(!length(item.restricted_roles))
 		return
-	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following roles: <br>")
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is whitelisted to the following roles: <br>")
 	for(var/job_type in item.restricted_roles)
 		composed_message += span_green("[job_type] <br>")
 
@@ -252,7 +252,7 @@
 		return
 	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
 	for(var/species_type in item.restricted_species)
-		composed_message += span_green("[species_type] <br>")
+		composed_message += span_grey("[species_type] <br>")
 
 	to_chat(owner, examine_block(composed_message))
 

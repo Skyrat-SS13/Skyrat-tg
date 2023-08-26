@@ -103,7 +103,7 @@ export const LoadoutManager = (props, context) => {
                             {!!item.is_job_restricted && (
                               <Stack.Item>
                                 <Button
-                                  icon="lock"
+                                  icon="briefcase"
                                   onClick={() =>
                                     act('display_restrictions', {
                                       path: item.path,
@@ -127,7 +127,7 @@ export const LoadoutManager = (props, context) => {
                             {!!item.is_species_restricted && (
                               <Stack.Item>
                                 <Button
-                                  icon="lock"
+                                  icon="spaghetti-monster-flying"
                                   onClick={() =>
                                     act('display_restrictions', {
                                       path: item.path,
