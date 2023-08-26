@@ -1159,7 +1159,7 @@
 
 
 
-//SKYRATS EDIT - Going to just recreate these over in the skyrats modular file since I'm splitting up their sprites.
+//SKYRAT EDIT - Going to just recreate these over in the skyrat modular file since I'm splitting up their sprites.
 //FEMALE UNDERWEAR
 /*
 /datum/sprite_accessory/underwear/female_bikini

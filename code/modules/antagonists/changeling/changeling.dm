@@ -970,8 +970,6 @@
 	var/undershirt
 	/// The socks worn by the profile source
 	var/socks
-	/// The bra worn by the profile source - Skyrats addition
-	var/bra
 	/// A list of paths for any skill chips the profile source had installed
 	var/list/skillchips = list()
 	/// What scars the profile sorce had, in string form (like persistent scars)
@@ -981,28 +979,6 @@
 	/// ID HUD icon associated with the profile
 	var/id_icon
 
-	/// SKYRAT EDIT START
-	var/underwear_color
-	var/undershirt_color
-	var/socks_color
-	var/bra_color
-	var/eye_color_left
-	var/eye_color_right
-	var/emissive_eyes
-	var/list/grad_style = list("None", "None")
-	var/list/grad_color = list(null, null)
-
-	var/physique
-	var/list/worn_icon_digi_list = list()
-	var/list/worn_icon_monkey_list = list()
-	var/list/worn_icon_teshari_list = list()
-	var/list/worn_icon_vox_list = list()
-	var/list/supports_variations_flags_list = list()
-	var/scream_type
-	var/laugh_type
-	var/age
-	var/list/quirks = list()
-	/// SKYRAT EDIT END
 
 	/// The TTS voice of the profile source
 	var/voice
@@ -1034,7 +1010,6 @@
 	new_profile.underwear = underwear
 	new_profile.undershirt = undershirt
 	new_profile.socks = socks
-	new_profile.bra = bra //SKYRAT EDIT ADDITION 
 	new_profile.worn_icon_list = worn_icon_list.Copy()
 	new_profile.worn_icon_state_list = worn_icon_state_list.Copy()
 	new_profile.skillchips = skillchips.Copy()
@@ -1046,7 +1021,8 @@
 	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
-	new_profile.bra_color = bra_color //SKYRAT EDIT ADDITION 
+	new_profile.bra = bra
+	new_profile.bra_color = bra_color
 	new_profile.eye_color_left = eye_color_left
 	new_profile.eye_color_right = eye_color_right
 	new_profile.emissive_eyes = emissive_eyes
