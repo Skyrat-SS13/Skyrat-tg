@@ -162,16 +162,19 @@
 		var/datum/sprite_accessory/sprite_datum = GLOB.bra_list[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
+
 		GLOB.bra_list -= sprite_name
 
 	for(var/sprite_name in GLOB.bra_f)
 		var/datum/sprite_accessory/sprite_datum = GLOB.bra_f[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
+
 		GLOB.bra_f -= sprite_name
 
 	for(var/sprite_name in GLOB.bra_m)
 		var/datum/sprite_accessory/sprite_datum = GLOB.bra_m[sprite_name]
 		if(!sprite_datum?.erp_accessory)
 			continue
+
 		GLOB.bra_m -= sprite_name
