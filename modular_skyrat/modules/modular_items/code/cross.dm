@@ -5,10 +5,10 @@
 	icon_state = "cross_ornate"
 	lefthand_file = 'modular_skyrat/modules/modular_items/icons/cross_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/icons/cross_right.dmi'
-	force = 10 //Gem-encrusted and reinforced with GOD
+	force = 5 //Gem-encrusted and reinforced with GOD
 	throw_speed = 3
 	throw_range = 4
-	throwforce = 15
+	throwforce = 10
 	w_class = WEIGHT_CLASS_TINY
 
 /datum/crafting_recipe/cross

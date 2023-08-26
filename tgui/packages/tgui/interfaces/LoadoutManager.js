@@ -112,6 +112,30 @@ export const LoadoutManager = (props, context) => {
                                 />
                               </Stack.Item>
                             )}
+                            {!!item.is_job_blacklisted && (
+                              <Stack.Item>
+                                <Button
+                                  icon="lock"
+                                  onClick={() =>
+                                    act('display_restrictions', {
+                                      path: item.path,
+                                    })
+                                  }
+                                />
+                              </Stack.Item>
+                            )}
+                            {!!item.is_species_restricted && (
+                              <Stack.Item>
+                                <Button
+                                  icon="lock"
+                                  onClick={() =>
+                                    act('display_restrictions', {
+                                      path: item.path,
+                                    })
+                                  }
+                                />
+                              </Stack.Item>
+                            )}
                             {!!item.is_donator_only && (
                               <Stack.Item>
                                 <Button

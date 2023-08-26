@@ -50,6 +50,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/ckeywhitelist
 	/// If set, is a list of job names of which can get the loadout item
 	var/list/restricted_roles
+	/// If set, is a list of job names of which can't get the loadout item
+	var/list/blacklisted_roles
 	/// If set, is a list of species which can get the loadout item
 	var/list/restricted_species
 	/// Whether the item is restricted to supporters

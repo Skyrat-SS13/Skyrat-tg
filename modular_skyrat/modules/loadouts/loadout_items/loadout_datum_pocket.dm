@@ -177,17 +177,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 *	UTILITY
 */
 
-/datum/loadout_item/pocket_items/toolbox
-	name = "Full Toolbox"
-	item_path = /obj/item/storage/toolbox/mechanical
-
-/datum/loadout_item/pocket_items/toolbox/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(!visuals_only && (override_items == LOADOUT_OVERRIDE_BACKPACK || override_items == LOADOUT_OVERRIDE_CASE))
-		if(outfit.l_hand)
-			LAZYADD(outfit.r_hand, item_path)
-		else
-			LAZYADD(outfit.l_hand, item_path)
-
 /datum/loadout_item/pocket_items/moth_mre
 	name = "Mothic Rations Pack"
 	item_path = /obj/item/storage/box/mothic_rations
