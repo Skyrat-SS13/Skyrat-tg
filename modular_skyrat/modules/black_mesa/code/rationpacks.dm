@@ -1,5 +1,6 @@
 /// Handpicked list of various pizzas and "pizzas" to make sure it's both 'safe' (human-edible) and doesn't spawn the base type like the bomb pizza can.
-#define EDIBLE_PIZZA_LIST list(/obj/item/food/pizza/margherita, \
+#define EDIBLE_PIZZA_LIST list( \
+	/obj/item/food/pizza/margherita, \
 	/obj/item/food/pizza/meat, \
 	/obj/item/food/pizza/mushroom, \
 	/obj/item/food/pizza/vegetable, \
@@ -128,5 +129,5 @@
 /obj/item/pizzabox/random/Initialize(mapload)
 	. = ..()
 	if(!pizza)
-		var/randompizza = pick(EDIBLE_PIZZA_LIST)
-		pizza = new randompizza(src)
+		var/random_pizza = pick(EDIBLE_PIZZA_LIST)
+		pizza = new random_pizza(src)

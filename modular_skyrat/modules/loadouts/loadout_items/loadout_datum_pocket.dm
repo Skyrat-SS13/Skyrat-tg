@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/storage/toolbox/mechanical
 
 /datum/loadout_item/pocket_items/toolbox/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(override_items == LOADOUT_OVERRIDE_BACKPACK || LOADOUT_OVERRIDE_CASE && !visuals_only)
+	if(!visuals_only && (override_items == LOADOUT_OVERRIDE_BACKPACK || override_items == LOADOUT_OVERRIDE_CASE))
 		if(outfit.l_hand)
 			LAZYADD(outfit.r_hand, item_path)
 		else
@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/stock_parts/cell
 
 /datum/loadout_item/pocket_items/soap
-	name = "Bar Of Soap"
+	name = "Bar of Soap"
 	item_path = /obj/item/soap
 
 /datum/loadout_item/pocket_items/mini_extinguisher
@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/extinguisher/mini
 
 /datum/loadout_item/pocket_items/binoculars
-	name = "Pair Of Binoculars"
+	name = "Pair of Binoculars"
 	item_path = /obj/item/binoculars
 
 /datum/loadout_item/pocket_items/drugs_happy
