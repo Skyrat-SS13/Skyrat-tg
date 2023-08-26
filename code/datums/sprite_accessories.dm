@@ -1261,7 +1261,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
-*/
+*/ // SKYRAT EDIT END
 
 ////////////////////////////
 // Undershirt Definitions //
