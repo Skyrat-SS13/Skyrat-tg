@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 */
 
 
-//BRAS and all the fun stuff of moving these about.
+/// BRAS and all the fun stuff of moving these about.
 /datum/sprite_accessory/bra
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = FALSE
