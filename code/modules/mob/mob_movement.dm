@@ -509,17 +509,13 @@
 	if(move_intent == MOVE_INTENT_RUN)
 		move_intent = MOVE_INTENT_WALK
 	else
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 		if (HAS_TRAIT(src,TRAIT_NORUNNING))
 			to_chat(src, "You find yourself unable to run.")
 			return FALSE
 		//SKYRAT EDIT ADDITION END
-		m_intent = MOVE_INTENT_RUN
-	SET_PLANE_IMPLICIT(src, (m_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE) //SKYRAT EDIT ADDITION - Oversized Overhaul
-=======
 		move_intent = MOVE_INTENT_RUN
->>>>>>> ef352ca7310 (minor changes to living and mob vars (#77820))
+	SET_PLANE_IMPLICIT(src, (move_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE) //SKYRAT EDIT ADDITION - Oversized Overhaul
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_appearance()
