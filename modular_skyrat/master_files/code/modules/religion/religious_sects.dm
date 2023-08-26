@@ -52,6 +52,7 @@
 		if(!actual_successor)
 			GLOB.holy_successors -= successor
 			continue
+
 		if(!actual_successor.key || !actual_successor.mind)
 			continue
 
@@ -81,6 +82,7 @@
 		if(!actual_successor)
 			GLOB.holy_successors -= successor
 			continue
+
 		holy_successors += actual_successor
 
 	return holy_successors
