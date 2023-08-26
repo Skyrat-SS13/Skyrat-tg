@@ -298,7 +298,7 @@
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight/fir22
 	name = "FIR-22 full-face rebreather"
-	desc = "A full-face respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-22 Rebreather is a snout-covering variant often seen used by Tajaran Military Personnel. It reeks of Militarism."
+	desc = "A full-face respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-22 Rebreather is a snout-covering variant often seen used by Tajaran Military Personnel. It reeks of militarism."
 	icon_state = "fir22"
 
 // Donation reward for Raxraus
