@@ -232,16 +232,16 @@ GLOBAL_VAR(first_officer)
 	// if this is the first officer, keep a reference to them
 	if(!GLOB.first_officer)
 		GLOB.first_officer = spawned_human
-		to_chat(spawned_human, "<b>With you being the leader of the group and having a special designation, 'Actual', it's your duty to make sure this entire operation \
+		to_chat(spawned_human, span_bold("With you being the leader of the group and having a special designation, 'Actual', it's your duty to make sure this entire operation \
 			goes smoothly. As in, doesn't result in an intergalactic political scandal, or an unneecessary shooting. It's also very likely expected for you to be performing \
-			all the necessary negotiations, so do prepare yourself for that.</b>")
+			all the necessary negotiations, so do prepare yourself for that."))
 
-	to_chat(spawned_human, "<b>The station has overriden the response system for the reasons unknown, keep the ship intact, communicate with the station, \
+	to_chat(spawned_human, "[span_bold("The station has overriden the response system for the reasons unknown, keep the ship intact, communicate with the station, \
 		perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate. \
-		In any case, perform your predefined duties and uphold some semblance of intergalactic law and professionalism, even if just for show.</b> <br><br>\
-		Also, a small OOC clarification: none of your objectives are meant to be completable mechanically, so don't stress yourself over not greentexting or anything; \
+		In any case, perform your predefined duties and uphold some semblance of intergalactic law and professionalism, even if just for show.")] <br><br>\
+		[span_small("Also, a small OOC clarification: none of your objectives are meant to be completable mechanically, so don't stress yourself over not greentexting or anything; \
 		If you have a better plan than 'completing' them, like an idea for a gimmick, it's better to communicate with the admins and your colleagues to possibly allow you to \
-		do something custom.")
+		do something custom.")]")
 	apply_codename(spawned_human)
 
 
@@ -701,3 +701,10 @@ GLOBAL_VAR(first_officer)
 	explanation_text = "Dock to, or generally attempt to stay in the same sector the [station_name()] is; to extend your on-site presence."
 	update_explanation_text()
 	return
+
+
+#undef INSPECTION_LIST
+#undef NRI_JOB_LIST
+#undef NRI_LEADER_JOB_LIST
+#undef CONFISCATE_LOWER
+#undef CONFISCATE_HIGHER
