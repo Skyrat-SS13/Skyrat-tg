@@ -55,17 +55,6 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
 	return pick(GLOB.socks_list)
 
-/proc/random_bra(gender)
-	if(!GLOB.bra_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/bra, GLOB.bra_list, GLOB.bra_m, GLOB.bra_f)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.bra_m)
-		if(FEMALE)
-			return pick(GLOB.bra_f)
-		else
-			return pick(GLOB.bra_list)
-
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 

@@ -98,7 +98,7 @@
 		human_attacker.underwear = "Nude"
 		human_attacker.undershirt = "Nude"
 		human_attacker.socks = "Nude"
-		human_attacker.bra = "Nude"
+		human_attacker.bra = "Nude" // SKYRAT EDIT ADDITION - Underwear and bra split
 		human_attacker.update_body()
 
 	var/turf/boomspot = get_turf(user)

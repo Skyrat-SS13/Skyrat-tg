@@ -103,3 +103,8 @@ GLOBAL_LIST_INIT(color_list_ghoul, list( \
 	"Plutonium Blue" = "a5cfcc", \
 	"Marked Red" = "f05b68" \
 ))
+
+//Bras
+GLOBAL_LIST_EMPTY(bra_list) //stores /datum/sprite_accessory/bra indexed by name
+GLOBAL_LIST_EMPTY(bra_m) //stores only bra name
+GLOBAL_LIST_EMPTY(bra_f) //stores only bra name
