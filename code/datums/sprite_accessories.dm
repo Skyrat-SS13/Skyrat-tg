@@ -1159,9 +1159,8 @@
 
 
 
-//SKYRAT EDIT - Going to just recreate these over in the skyrat modular file since I'm splitting up their sprites.
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 //FEMALE UNDERWEAR
-/*
 /datum/sprite_accessory/underwear/female_bikini
 	name = "Bikini"
 	icon_state = "female_bikini"
@@ -1262,7 +1261,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
-*/
+*/ // SKYRAT EDIT END
 
 ////////////////////////////
 // Undershirt Definitions //
