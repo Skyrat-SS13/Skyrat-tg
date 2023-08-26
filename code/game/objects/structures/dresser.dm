@@ -68,14 +68,17 @@
 			var/new_socks_color = input(dressing_human, "Choose your socks color", "Socks Color", dressing_human.socks_color) as color|null
 			if(new_socks_color)
 				dressing_human.socks_color = sanitize_hexcolor(new_socks_color)
+
 		if("Bra")
 			var/new_bra = tgui_input_list(user, "Select your Bra", "Changing", GLOB.bra_list)
 			if(new_bra)
 				dressing_human.bra = new_bra
+
 		if("Bra Color")
 			var/new_bra_color = input(dressing_human, "Choose your Bra color", "Bra Color", dressing_human.bra_color) as color|null
 			if(new_bra_color)
 				dressing_human.bra_color = sanitize_hexcolor(new_bra_color)
+
 		//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks/Bras
 
 	add_fingerprint(dressing_human)
