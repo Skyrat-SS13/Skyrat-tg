@@ -102,7 +102,7 @@
 /obj/item/modular_computer/pda/heads/quartermaster
 	name = "quartermaster PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
-	greyscale_colors = "#D6B328#6506CA#927444"
+	greyscale_colors = "#c4b787#18191e#8b4c31"
 	inserted_item = /obj/item/pen/survival
 	stored_paper = 20
 	starting_programs = list(
@@ -247,7 +247,7 @@
 
 /obj/item/modular_computer/pda/cargo
 	name = "cargo technician PDA"
-	greyscale_colors = "#D6B328#6506CA"
+	greyscale_colors = "#8b4c31#2c2e32"
 	stored_paper = 20
 	starting_programs = list(
 		/datum/computer_file/program/shipping,
@@ -258,7 +258,10 @@
 /obj/item/modular_computer/pda/shaftminer
 	name = "shaft miner PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
-	greyscale_colors = "#927444#D6B328#6C3BA1"
+	greyscale_colors = "#927444#8b4c31#4c202d"
+	starting_programs = list(
+		/datum/computer_file/program/skill_tracker,
+	)
 
 /**
  * Service
@@ -268,6 +271,7 @@
 	name = "janitor PDA"
 	greyscale_colors = "#933ea8#235AB2"
 	starting_programs = list(
+		/datum/computer_file/program/skill_tracker,
 		/datum/computer_file/program/radar/custodial_locator,
 	)
 

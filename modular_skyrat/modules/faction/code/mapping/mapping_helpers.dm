@@ -41,13 +41,20 @@
 	shuttlekeys = list("tradership")
 
 /obj/structure/closet/crate/tradership_cargo
+	/// Determines which items will be spawned, overriding itemspawn_seed
 	var/used_preset
+	/// Determines which items will be spawned
+	var/itemspawn_seed
+
+/obj/structure/closet/crate/tradership_cargo/Initialize(mapload)
+	itemspawn_seed = used_preset || rand(1,5)
+	return ..()
 
 //Generic inventory
 /obj/structure/closet/crate/tradership_cargo/PopulateContents()
-	. = ..()
-	var/random = used_preset || rand(1,5)
-	switch(random)
+	..()
+
+	switch(itemspawn_seed)
 		if(1)
 			for(var/i in 1 to 10)
 				new /obj/item/food/canned/beans(src)
@@ -87,10 +94,17 @@
 			new /obj/item/storage/toolbox/electrical(src)
 			new /obj/item/storage/toolbox/mechanical(src)
 			new /obj/item/storage/toolbox/mechanical(src)
-			new /obj/item/clothing/gloves/color/yellow(src)
-			new /obj/item/clothing/gloves/color/yellow(src)
 			name = "engineering crate"
 			icon_state = "engi_crate"
+
+// traitor objective items
+/obj/structure/closet/crate/tradership_cargo/populate_contents_immediate()
+	. = ..()
+
+	switch(itemspawn_seed)
+		if(5)
+			new /obj/item/clothing/gloves/color/yellow(src)
+			new /obj/item/clothing/gloves/color/yellow(src)
 
 /obj/structure/closet/crate/freezer/tradership_cargo_freezer
 	var/used_preset
@@ -146,7 +160,7 @@
 		if(1) //Random traitor items
 			new /obj/item/storage/box/syndie_kit/chameleon(src)
 			new /obj/item/storage/backpack/duffelbag/syndie/c4(src)
-			new /obj/item/camera_bug(src)
+			new /obj/item/computer_disk/syndicate/camera_app(src)
 			new /obj/item/gun/chem(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/card/emag/doorjack(src)
