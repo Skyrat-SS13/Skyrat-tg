@@ -67,13 +67,13 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17_rubber
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58_rubber
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/m1911
 	item_type = /obj/item/ammo_box/magazine/m45
 
 // Lethal anything that's not a pistol, requires high company interest
