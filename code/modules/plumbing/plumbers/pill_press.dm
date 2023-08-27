@@ -5,8 +5,6 @@
 	icon_state = "pill_press"
 	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
-	///category for plumbing RCD
-	category="Storage"
 
 	///maximum size of a pill
 	var/max_pill_volume = 50

@@ -37,6 +37,8 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 	if(sm.damage <= sm.warning_point) // Damage is too low, lets not
 		return FALSE
 
+	notify_delam_suppression(sm) // SKYRAT EDIT ADDITION - DELAM_SCRAM
+
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
 		message_admins("[sm] has entered the emergency point [ADMIN_VERBOSEJMP(sm)].")

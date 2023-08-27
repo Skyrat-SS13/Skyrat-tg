@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/m16
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	burst_size = 3
 	fire_delay = 2
@@ -28,8 +28,8 @@
 	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16e"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
+	ammo_type = /obj/item/ammo_casing/a223
+	caliber = CALIBER_A223
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -38,8 +38,6 @@
 	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -64,7 +62,7 @@
 	icon_state = "m16_modern2"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"
-	mag_type = /obj/item/ammo_box/magazine/m16/patriot
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m16/patriot
 	burst_size = 4
 	fire_delay = 0.5
 
@@ -73,7 +71,5 @@
 	desc = "A double-stack solid polymer drum made for use with the Amans Patriae rifle. Holds 50 rounds of .277 ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY

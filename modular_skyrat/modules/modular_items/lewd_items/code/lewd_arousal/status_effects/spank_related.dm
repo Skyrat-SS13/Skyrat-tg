@@ -2,7 +2,7 @@
 
 /datum/status_effect/subspace
 	id = "subspace"
-	tick_interval = 10
+	tick_interval = 1 SECONDS
 	duration = 5 MINUTES
 	alert_type = null
 

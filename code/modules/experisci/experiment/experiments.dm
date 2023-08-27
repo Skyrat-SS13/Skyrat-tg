@@ -142,15 +142,10 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/halon
 
-// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
-// ORIGINAL: /datum/experiment/scanning/random/material/meat
-/datum/experiment/scanning/random/material/silver
+/datum/experiment/scanning/random/material/meat
 	name = "Biological Material Scanning Experiment"
-// ORIGINAL: description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	description = "Supposedly silver has an inert anti-microbial effect; scan a few samples to test this."
-// ORIGINAL: possible_material_types = list(/datum/material/meat)
-	possible_material_types = list(/datum/material/silver)
-// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
+	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
+	possible_material_types = list(/datum/material/meat)
 
 /datum/experiment/scanning/random/material/easy
 	name = "Low Grade Material Scanning Experiment"
@@ -189,7 +184,7 @@
 
 /datum/experiment/scanning/random/plants/wild
 	name = "Wild Biomatter Mutation Sample"
-	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate with little reason. Scan one of these samples for us."
+	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate upon harvest. Scan one of these samples for us."
 	performance_hint = "\"Wild\" mutations have been recorded to occur above 30 points of instability, while species mutations occur above 60 points of instability."
 	total_requirement = 1
 
@@ -352,3 +347,43 @@
 	description = "As an extension of testing exosuit damage results, scanning examples of complete structural failure will accelerate our material stress simulations."
 	possible_types = list(/obj/structure/mecha_wreckage)
 	total_requirement = 2
+
+/// Scan for organs you didn't start the round with
+/datum/experiment/scanning/people/novel_organs
+	name = "Human Field Research: Divergent Biology"
+	description = "We need data on organic compatibility between species. Scan some samples of humanoid organisms with organs they don't usually have. \
+		Data on mechanical organs isn't of any use to us."
+	performance_hint = "Unusual organs can be introduced manually by transplant, genetic infusion, or very rapidly via a Bioscrambler anomaly effect."
+	required_traits_desc = "non-synthetic organs not typical for their species"
+	/// Disallow prosthetic organs
+	var/organic_only = TRUE
+
+/datum/experiment/scanning/people/novel_organs/is_valid_scan_target(mob/living/carbon/human/check)
+	. = ..()
+	if (!.)
+		return
+	// Organs which are valid for get_mutant_organ_type_for_slot
+	var/static/list/vital_organ_slots = list(
+		ORGAN_SLOT_BRAIN,
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_APPENDIX,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_TONGUE,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
+
+	for (var/obj/item/organ/organ as anything in check.organs)
+		if (organic_only && !IS_ORGANIC_ORGAN(organ))
+			continue
+		var/datum/species/target_species = check.dna.species
+		if (organ.slot in vital_organ_slots)
+			if (organ.type == target_species.get_mutant_organ_type_for_slot(organ.slot))
+				continue
+		else
+			if ((organ.type in target_species.mutant_organs) || (organ.type in target_species.external_organs))
+				continue
+		return TRUE
+	return FALSE

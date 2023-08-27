@@ -21,7 +21,7 @@
 
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
-	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/storage/pouch/ammo(src)
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()

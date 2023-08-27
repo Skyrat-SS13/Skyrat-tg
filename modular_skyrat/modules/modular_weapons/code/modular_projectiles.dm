@@ -9,7 +9,7 @@
 // whatever goblin decided to spread out bullets over like 3 files and god knows however many overrides i wish you a very stubbed toe
 
 /*
-*	.460 Ceres
+*	.460 Ceres (renamed tgcode .45)
 */
 
 /obj/item/ammo_casing/c45/rubber
@@ -45,7 +45,7 @@
 	weak_against_armour = TRUE
 
 /*
-*	8mm Usurpator
+*	8mm Usurpator (renamed tg c46x30mm, used in the WT550)
 */
 
 /obj/projectile/bullet/c46x30mm_rubber
@@ -70,19 +70,18 @@
 	harmful = FALSE
 
 /*
-*	.277 Aestus
+*	.277 Aestus (renamed tgcode .223, used in the M-90gl)
 */
 
-/obj/item/ammo_casing/a556/rubber
+/obj/item/ammo_casing/a223/rubber
 	name = ".277 rubber bullet casing"
 	desc = "A .277 rubber bullet casing.\
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
-	caliber = CALIBER_A556
-	projectile_type = /obj/projectile/bullet/a556/rubber
+	projectile_type = /obj/projectile/bullet/a223/rubber
 	harmful = FALSE
 
-/obj/projectile/bullet/a556/rubber
+/obj/projectile/bullet/a223/rubber
 	name = ".277 rubber bullet"
 	damage = 10
 	armour_penetration = 10
@@ -96,58 +95,17 @@
 	embedding = null
 	wound_bonus = -50
 
-/obj/item/ammo_casing/a556/ap
+/obj/item/ammo_casing/a223/ap
 	name = ".277 Aestus armor-piercing bullet casing"
 	desc = "A .277 armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
-	caliber = CALIBER_A556
-	projectile_type = /obj/projectile/bullet/a556/ap
+	projectile_type = /obj/projectile/bullet/a223/ap
 	advanced_print_req = TRUE
 	custom_materials = AMMO_MATS_AP
 
-/obj/projectile/bullet/a556/ap
+/obj/projectile/bullet/a223/ap
 	name = ".277 armor-piercing bullet"
-	armour_penetration = 60
-
-/*
-*	.244 Acia
-*/
-
-/obj/item/ammo_casing/a762/rubber
-	name = ".244 Acia rubber bullet casing"
-	desc = "A .244 rubber bullet casing.\
-	<br><br>\
-	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
-	icon_state = "762-casing"
-	caliber = CALIBER_A762
-	projectile_type = /obj/projectile/bullet/a762/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/a762/rubber
-	name = ".244 rubber bullet"
-	damage = 15
-	stamina = 55
-	ricochets_max = 5
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.7
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/obj/item/ammo_casing/a762/ap
-	name = ".244 Acia armor-piercing bullet casing"
-	desc = "A .244 armor-piercing bullet casing.\
-	<br><br>\
-	<i>ARMOR-PIERCING: Improved armor-piercing capabilities, in return for less outright damage.</i>"
-	projectile_type = /obj/projectile/bullet/a762/ap
-	custom_materials = AMMO_MATS_AP
-	advanced_print_req = TRUE
-
-/obj/projectile/bullet/a762/ap
-	name = ".244 armor-piercing bullet"
-	damage = 50
 	armour_penetration = 60
 
 /*

@@ -41,7 +41,7 @@
 	)
 
 	veteran_only = TRUE
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
@@ -60,6 +60,7 @@
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
 	duffelbag = /obj/item/storage/backpack/duffelbag/blueshield
+	messenger = /obj/item/storage/backpack/messenger/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/security

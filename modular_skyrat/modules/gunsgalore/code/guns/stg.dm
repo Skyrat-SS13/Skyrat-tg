@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/stg
+	accepted_magazine_type = /obj/item/ammo_box/magazine/stg
 	can_suppress = FALSE
 	fire_delay = 1.5
 	burst_size = 1

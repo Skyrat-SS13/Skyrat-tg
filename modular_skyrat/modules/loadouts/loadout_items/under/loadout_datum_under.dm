@@ -239,6 +239,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Buttondown Shirt with Shorts"
 	item_path = /obj/item/clothing/under/costume/buttondown/shorts
 
+/datum/loadout_item/under/miscellaneous/buttondown_skirt
+	name = "Recolorable Buttondown Shirt with Skirt"
+	item_path = /obj/item/clothing/under/costume/buttondown/skirt
+
 /datum/loadout_item/under/miscellaneous/vicvest
 	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
 	item_path = /obj/item/clothing/under/pants/skyrat/vicvest
@@ -569,6 +573,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
+/datum/loadout_item/under/miscellaneous/cargo_shorts
+	name = "Cargo Tech Shorts"
+	item_path = /obj/item/clothing/under/rank/cargo/tech/alt
+	restricted_roles = list(JOB_CARGO_TECHNICIAN)
+
 /datum/loadout_item/under/miscellaneous/cargo_black
 	name = "Black Cargo Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
@@ -614,8 +623,8 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal
 
 /datum/loadout_item/under/formal/amish_suit
-	name = "Amish Suit"
-	item_path = /obj/item/clothing/under/suit/sl
+	name = "White Buttondown Shirt with Black Slacks"
+	item_path = /obj/item/clothing/under/costume/buttondown/slacks/service
 
 /datum/loadout_item/under/formal/formaldressred
 	name = "Formal Red Dress"
@@ -654,11 +663,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
 
 /datum/loadout_item/under/formal/blue_suit
-	name = "Blue Suit"
+	name = "Blue Buttondown Suit"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 
 /datum/loadout_item/under/formal/blue_suitskirt
-	name = "Blue Suitskirt"
+	name = "Blue Buttondown Suitskirt"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt
 
 /datum/loadout_item/under/formal/blue_lawyer_suit
@@ -748,10 +757,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/sailor_skirt
 	name = "Sailor Dress"
 	item_path = /obj/item/clothing/under/dress/sailor
-
-/datum/loadout_item/under/formal/scratch_suit
-	name = "Scratch Suit"
-	item_path = /obj/item/clothing/under/suit/white_on_white
 
 /datum/loadout_item/under/formal/sensible_suit
 	name = "Sensible Suit"

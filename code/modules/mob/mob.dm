@@ -655,7 +655,7 @@
 	//you can only initiate exaimines if you have a hand, it's not disabled, and only as many examines as you have hands
 	/// our active hand, to check if it's disabled/detatched
 	var/obj/item/bodypart/active_hand = has_active_hand()? get_active_hand() : null
-	if(!active_hand || active_hand.bodypart_disabled || LAZYLEN(do_afters) >= usable_hands)
+	if(!active_hand || active_hand.bodypart_disabled || do_after_count() >= usable_hands)
 		to_chat(src, span_warning("You don't have a free hand to examine this!"))
 		return FALSE
 
@@ -1083,7 +1083,7 @@
 
 	mob_light(range = 2, color = antimagic_color, duration = 5 SECONDS)
 	add_overlay(antimagic_effect)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay)), antimagic_effect, 5 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), antimagic_effect), 5 SECONDS)
 
 /**
  * Buckle a living mob to this mob. Also turns you to face the other mob
@@ -1265,7 +1265,7 @@
 		else if( search_pda && istype(A, /obj/item/modular_computer/pda) )
 			var/obj/item/modular_computer/pda/PDA = A
 			if(PDA.saved_identification == oldname)
-				PDA.saved_identification = newname
+				PDA.imprint_id(name = newname)
 				PDA.UpdateDisplay()
 				if(!search_id)
 					break
@@ -1504,6 +1504,8 @@
 
 /mob/proc/update_equipment_speed_mods()
 	var/speedies = equipped_speed_mods()
+	if(speedies > 0 && HAS_TRAIT(src, TRAIT_SETTLER)) //if our movespeed mod is in the negatives, we don't modify it since that's a benefit
+		speedies *= 0.2
 	if(!speedies)
 		remove_movespeed_modifier(/datum/movespeed_modifier/equipment_speedmod)
 	else

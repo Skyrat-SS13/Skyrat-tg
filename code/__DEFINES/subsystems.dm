@@ -208,6 +208,7 @@
 #define FIRE_PRIORITY_NPC_MOVEMENT 21
 #define FIRE_PRIORITY_NPC_ACTIONS 22
 #define FIRE_PRIORITY_PATHFINDING 23
+#define FIRE_PRIORITY_CLIFF_FALLING 24
 #define FIRE_PRIORITY_PROCESS 25
 #define FIRE_PRIORITY_THROWING 25
 #define FIRE_PRIORITY_REAGENTS 26
@@ -258,6 +259,14 @@
 /// Game has round finished
 #define GAME_STATE_FINISHED 4
 
+// Used for SSticker.force_ending
+/// Default, round is not being forced to end.
+#define END_ROUND_AS_NORMAL 0
+/// End the round now as normal
+#define FORCE_END_ROUND 1
+/// For admin forcing roundend, can be used to distinguish the two
+#define ADMIN_FORCE_END_ROUND 2
+
 /**
 	Create a new timer and add it to the queue.
 	* Arguments:
@@ -283,8 +292,8 @@
 #define SSAIR_REBUILD_QUEUE 2
 
 // Explosion Subsystem subtasks
-#define SSEXPLOSIONS_MOVABLES 1
-#define SSEXPLOSIONS_TURFS 2
+#define SSEXPLOSIONS_TURFS 1
+#define SSEXPLOSIONS_MOVABLES 2
 #define SSEXPLOSIONS_THROWS 3
 
 // Wardrobe subsystem tasks

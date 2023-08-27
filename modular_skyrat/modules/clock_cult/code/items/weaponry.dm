@@ -156,7 +156,7 @@
 	inhand_icon_state = "clockwork_bow"
 	base_icon_state = "bow_clockwork"
 	force = 10
-	mag_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
 	/// Time between bolt recharges
 	var/recharge_time = 1.5 SECONDS
 	/// Typecache of valid turfs to have the weapon's special effect on
@@ -247,7 +247,7 @@
 	icon_state = "clockwork_rifle"
 	inhand_icon_state = "clockwork_rifle"
 	worn_icon_state = "clockwork_rifle"
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	show_bolt_icon = FALSE
 
@@ -259,16 +259,16 @@
 
 /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	name = "brass rifle internal magazine"
-	ammo_type = /obj/item/ammo_casing/a762/lionhunter/clock
+	ammo_type = /obj/item/ammo_casing/strilka310/lionhunter/clock
 
 
-/obj/item/ammo_casing/a762/lionhunter/clock
+/obj/item/ammo_casing/strilka310/lionhunter/clock
 	name = "brass rifle round"
-	projectile_type = /obj/projectile/bullet/a762/lionhunter/clock
+	projectile_type = /obj/projectile/bullet/strilka310/lionhunter/clock
 	min_distance = 3
 
 
-/obj/item/ammo_casing/a762/lionhunter/clock/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
+/obj/item/ammo_casing/strilka310/lionhunter/clock/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/fired_gun = fired_from
 
 	if(istype(get_turf(user), /turf/open/floor/bronze) && istype(fired_gun, /obj/item/gun/ballistic/rifle/lionhunter/clockwork))
@@ -277,29 +277,29 @@
 	return ..()
 
 
-/obj/projectile/bullet/a762/lionhunter/clock
-	name = "brass 7.62 bullet"
+/obj/projectile/bullet/strilka310/lionhunter/clock
+	name = "brass .310 bullet"
 	// These stats are only applied if the weapon is fired fully aimed
 	// If fired without aiming or at someone too close, it will do much less
 	damage = 45
 	stamina = 45
 
 
-/obj/item/ammo_box/a762/lionhunter/clock
-	name = "stripper clip (7.62mm brass)"
+/obj/item/ammo_box/strilka310/lionhunter/clock
+	name = "stripper clip (.310 brass)"
 	desc = "A stripper clip that's just as brass as the rounds it holds."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/ammo.dmi'
 	icon_state = "762_brass"
-	ammo_type = /obj/item/ammo_casing/a762/lionhunter/clock
+	ammo_type = /obj/item/ammo_casing/strilka310/lionhunter/clock
 	max_ammo = 3
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 
-/obj/item/storage/bag/ammo/clock
+/obj/item/storage/pouch/ammo/clock
 
-/obj/item/storage/bag/ammo/clock/PopulateContents()
+/obj/item/storage/pouch/ammo/clock/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/ammo_box/a762/lionhunter/clock = 3
+		/obj/item/ammo_box/strilka310/lionhunter/clock = 3
 	)
 
 	generate_items_inside(items_inside, src)

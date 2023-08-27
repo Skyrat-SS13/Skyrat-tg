@@ -52,6 +52,14 @@
 	greyscale_config_worn = /datum/greyscale_config/collar/choker/worn
 	greyscale_colors = "#222222"
 
+/obj/item/clothing/neck/human_petcollar/thinchoker
+	name = "thin choker"
+	desc = "Like the normal one, but thinner!"
+	icon_state = "thinchoker"
+	greyscale_config = /datum/greyscale_config/collar/thinchoker
+	greyscale_config_worn = /datum/greyscale_config/collar/thinchoker/worn
+	greyscale_colors = "#222222"
+
 /obj/item/key/collar
 	name = "collar key"
 	desc = "A key for a tiny lock on a collar or bag."

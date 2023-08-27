@@ -32,7 +32,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 4
@@ -87,7 +87,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	can_suppress = TRUE
 	burst_size = 1
@@ -142,7 +142,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 4
@@ -206,7 +206,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	internal_magazine = FALSE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
+	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 	can_suppress = TRUE
 	suppressor_x_offset = 6

@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pepperball.dmi'
 	icon_state = "peppergun"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/pepperball
+	accepted_magazine_type = /obj/item/ammo_box/magazine/pepperball
 	can_suppress = FALSE
 	fire_sound = 'sound/effects/pop_expl.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'

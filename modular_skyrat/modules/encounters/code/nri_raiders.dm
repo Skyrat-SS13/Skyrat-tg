@@ -94,7 +94,7 @@ GLOBAL_VAR(first_officer)
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/folder/blue/nri_cop
-	r_pocket = /obj/item/storage/bag/ammo
+	r_pocket = /obj/item/storage/pouch/ammo
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/officer
@@ -121,7 +121,7 @@ GLOBAL_VAR(first_officer)
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/storage/bag/ammo
+	r_pocket = /obj/item/storage/pouch/ammo
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider
@@ -291,7 +291,7 @@ GLOBAL_VAR(first_officer)
 	icon_state = "automag"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/automag
+	accepted_magazine_type = /obj/item/ammo_box/magazine/automag
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/automag.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'

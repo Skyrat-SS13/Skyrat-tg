@@ -159,13 +159,13 @@
 	desc = "Summons a random, wild monster from another region in space."
 	required_components = list(
 		"north" = /obj/item/organ/internal/monster_core/regenerative_core,
-		"south" = /mob/living/simple_animal/hostile/asteroid/ice_whelp,
+		"south" = /mob/living/basic/mining/ice_whelp,
 		"east" = /obj/item/stack/ore/bluespace_crystal,
 		"west" = /obj/item/stack/ore/bluespace_crystal,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/monster_core/regenerative_core,
-		/mob/living/simple_animal/hostile/asteroid/ice_whelp,
+		/mob/living/basic/mining/ice_whelp,
 		/obj/item/stack/ore/bluespace_crystal,
 	)
 
@@ -175,8 +175,8 @@
 		/mob/living/basic/mining/goliath,
 		/mob/living/simple_animal/hostile/asteroid/hivelord/legion,
 		/mob/living/simple_animal/hostile/asteroid/brimdemon,
-		/mob/living/simple_animal/hostile/asteroid/basilisk/watcher,
-		/mob/living/simple_animal/hostile/asteroid/lobstrosity/lava,
+		/mob/living/basic/mining/watcher,
+		/mob/living/basic/mining/lobstrosity/lava,
 	)
 	new mob_type(success_rune.loc)
 
@@ -199,8 +199,8 @@
 	. = ..()
 	var/mob_type = pick(
 		/mob/living/simple_animal/hostile/asteroid/ice_demon,
-		/mob/living/simple_animal/hostile/asteroid/ice_whelp,
-		/mob/living/simple_animal/hostile/asteroid/lobstrosity,
+		/mob/living/basic/mining/ice_whelp,
+		/mob/living/basic/mining/lobstrosity,
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
 		/mob/living/simple_animal/hostile/asteroid/wolf,
 	)

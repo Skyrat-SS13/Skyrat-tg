@@ -16,6 +16,14 @@
 	var/list/modkits = list()
 	gun_flags = NOT_A_REAL_GUN
 
+/obj/item/gun/energy/recharge/kinetic_accelerator/apply_fantasy_bonuses(bonus)
+	. = ..()
+	max_mod_capacity = modify_fantasy_variable("max_mod_capacity", max_mod_capacity, bonus * 10)
+
+/obj/item/gun/energy/recharge/kinetic_accelerator/remove_fantasy_bonuses(bonus)
+	max_mod_capacity = reset_fantasy_variable("max_mod_capacity", max_mod_capacity)
+	return ..()
+
 /obj/item/gun/energy/recharge/kinetic_accelerator/Initialize(mapload)
 	. = ..()
 
@@ -538,7 +546,7 @@
 
 //Cosmetic
 
-/obj/item/borg/upgrade/modkit/chassis_mod /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
+/obj/item/borg/upgrade/modkit/chassis_mod
 	name = "super chassis"
 	desc = "Makes your KA yellow. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
@@ -565,7 +573,7 @@
 		holder.update_held_items()
 	..()
 
-/obj/item/borg/upgrade/modkit/chassis_mod/orange /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
+/obj/item/borg/upgrade/modkit/chassis_mod/orange
 	name = "hyper chassis"
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
 	chassis_icon = "kineticgun_h"

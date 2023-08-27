@@ -38,7 +38,7 @@
 	)
 
 	veteran_only = TRUE
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 
 /datum/outfit/job/nanotrasen_consultant
 	name = "Nanotrasen Consultant"
@@ -62,6 +62,7 @@
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
+	messenger = /obj/item/storage/backpack/messenger
 
 	implants = list(/obj/item/implant/mindshield)
 	accessory = /obj/item/clothing/accessory/medal/gold/nanotrasen_consultant

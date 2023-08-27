@@ -90,6 +90,7 @@
 				/obj/item/clothing/under/dress/skyrat/pentagram = 5,
 				/obj/item/clothing/suit/varsity = 5,
 				/obj/item/clothing/suit/toggle/jacket = 5,
+				/obj/item/clothing/suit/toggle/jacket/flannel/gags = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,

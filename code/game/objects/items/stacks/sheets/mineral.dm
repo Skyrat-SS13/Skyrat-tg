@@ -50,6 +50,29 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	amount = 30
 
 /*
+ * Clay Bricks
+ */
+
+GLOBAL_LIST_INIT(clay_recipes, list ( \
+	new/datum/stack_recipe("clay range", /obj/machinery/primitive_stove, 10, time = 5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_MISC), \
+	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, one_per_turf = FALSE, on_solid_ground = TRUE, category = CAT_MISC) \
+	))
+
+/obj/item/stack/sheet/mineral/clay
+	name = "clay brick"
+	desc = "A heavy clay brick."
+	singular_name = "clay brick"
+	icon_state = "sheet-clay"
+	inhand_icon_state = null
+	throw_speed = 3
+	throw_range = 5
+	merge_type = /obj/item/stack/sheet/mineral/clay
+
+/obj/item/stack/sheet/mineral/clay/get_main_recipes()
+	. = ..()
+	. += GLOB.clay_recipes
+
+/*
  * Sandbags
  */
 
@@ -346,6 +369,10 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 	new/datum/stack_recipe("snowball", /obj/item/toy/snowball, 1, check_density = FALSE, category = CAT_WEAPON_RANGED), \
 	new/datum/stack_recipe("snow tile", /obj/item/stack/tile/mineral/snow, 1, 4, 20, check_density = FALSE, category = CAT_TILES), \
 ))
+
+/obj/item/stack/sheet/mineral/snow/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
+	. = ..()
+	AddComponent(/datum/component/storm_hating)
 
 /obj/item/stack/sheet/mineral/snow/get_main_recipes()
 	. = ..()

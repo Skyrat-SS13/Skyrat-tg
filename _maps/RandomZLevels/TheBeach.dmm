@@ -34,10 +34,25 @@
 "ak" = (
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
+"al" = (
+/obj/structure/flora/tree/palm{
+	desc = "How did you get here?";
+	icon_state = "palm2";
+	name = "\proper island palm tree"
+	},
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "am" = (
 /turf/open/misc/beach/coast{
 	dir = 4
 	},
+/area/awaymission/beach)
+"an" = (
+/obj/structure/flora/coconuts{
+	pixel_x = 17;
+	pixel_y = 7
+	},
+/turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "ao" = (
 /turf/open/misc/beach/coast{
@@ -117,12 +132,20 @@
 	dir = 8
 	},
 /area/awaymission/beach)
+"aA" = (
+/obj/structure/flora/tree/palm,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "aB" = (
-/mob/living/simple_animal/crab/kreb,
+/mob/living/basic/crab/kreb,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "aC" = (
 /obj/item/flashlight/flare/torch,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
+"aD" = (
+/obj/structure/flora/coconuts,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "aE" = (
@@ -154,7 +177,7 @@
 /turf/open/water/beach,
 /area/awaymission/beach)
 "aK" = (
-/mob/living/simple_animal/crab,
+/mob/living/basic/crab,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "aO" = (
@@ -372,6 +395,16 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/beach)
+"bE" = (
+/obj/structure/flora/tree/palm{
+	pixel_y = 25
+	},
+/obj/structure/flora/coconuts{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "bF" = (
 /obj/structure/bedsheetbin,
 /obj/effect/turf_decal/sand,
@@ -555,6 +588,11 @@
 "cg" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/vending/cola/space_up,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
+"ch" = (
+/obj/structure/flora/tree/palm,
+/obj/structure/flora/coconuts,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "ci" = (
@@ -799,6 +837,13 @@
 /obj/structure/fluff/beach_umbrella/science,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
+"cV" = (
+/obj/structure/flora/coconuts{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/misc/beach/coast,
+/area/awaymission/beach)
 "cW" = (
 /obj/item/reagent_containers/cup/soda_cans/lemon_lime{
 	pixel_x = -12
@@ -914,31 +959,10 @@
 /obj/item/food/burger/crab,
 /turf/open/floor/wood,
 /area/awaymission/beach)
-"pK" = (
-/obj/structure/flora/tree/palm{
-	pixel_y = 25
-	},
-/obj/structure/flora/coconuts{
-	pixel_x = -7;
-	pixel_y = 7
-	},
-/turf/open/misc/beach/sand,
-/area/awaymission/beach)
-"qU" = (
-/obj/structure/flora/tree/palm,
-/turf/open/misc/beach/sand,
-/area/awaymission/beach)
 "sG" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/sign/poster/contraband/smoke/directional/south,
 /obj/machinery/vending/cigarette/beach,
-/turf/open/misc/beach/sand,
-/area/awaymission/beach)
-"uo" = (
-/obj/structure/flora/coconuts{
-	pixel_x = 17;
-	pixel_y = 7
-	},
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "wr" = (
@@ -1003,13 +1027,6 @@
 	dir = 4
 	},
 /area/awaymission/beach)
-"Dg" = (
-/obj/structure/flora/coconuts{
-	pixel_x = -5;
-	pixel_y = 4
-	},
-/turf/open/misc/beach/coast,
-/area/awaymission/beach)
 "EG" = (
 /obj/item/flashlight/flare/torch{
 	pixel_x = -2;
@@ -1031,11 +1048,6 @@
 "HN" = (
 /obj/machinery/griddle,
 /turf/open/floor/wood,
-/area/awaymission/beach)
-"HW" = (
-/obj/structure/flora/tree/palm,
-/obj/structure/flora/coconuts,
-/turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "Jr" = (
 /obj/machinery/oven/range,
@@ -1067,18 +1079,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer,
 /obj/item/reagent_containers/cup/glass/bottle/beer,
 /obj/item/reagent_containers/cup/glass/bottle/beer,
-/turf/open/misc/beach/sand,
-/area/awaymission/beach)
-"PK" = (
-/obj/structure/flora/tree/palm{
-	desc = "How did you get here?";
-	icon_state = "palm2";
-	name = "\proper island palm tree"
-	},
-/turf/open/misc/beach/sand,
-/area/awaymission/beach)
-"QN" = (
-/obj/structure/flora/coconuts,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "QQ" = (
@@ -5036,7 +5036,7 @@ ay
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -5145,7 +5145,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -5248,9 +5248,9 @@ ag
 ak
 ak
 ak
-qU
+aA
 ak
-QN
+aD
 ak
 ak
 ak
@@ -5272,7 +5272,7 @@ av
 av
 ag
 MD
-qU
+aA
 ak
 ak
 ak
@@ -5354,13 +5354,13 @@ av
 ag
 ak
 ak
-qU
+aA
 ak
 ak
 ak
 ak
 ak
-QN
+aD
 ak
 ak
 ak
@@ -5467,7 +5467,7 @@ Kg
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -5579,7 +5579,7 @@ ak
 ak
 ak
 ak
-QN
+aD
 ak
 ak
 ak
@@ -5674,18 +5674,18 @@ av
 av
 ag
 ak
-qU
+aA
 ak
 ak
 aG
 ak
-QN
+aD
 ak
 ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -5811,7 +5811,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 bo
 aq
@@ -5894,7 +5894,7 @@ ak
 MP
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -5918,7 +5918,7 @@ ak
 ak
 ak
 ak
-QN
+aD
 ak
 ap
 av
@@ -5997,7 +5997,7 @@ ag
 ak
 ak
 ak
-QN
+aD
 ak
 ak
 ak
@@ -6017,7 +6017,7 @@ ak
 ak
 ak
 ak
-HW
+ch
 ak
 ak
 ak
@@ -6103,13 +6103,13 @@ av
 ag
 ak
 ak
-qU
+aA
 ak
 ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -6118,7 +6118,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -6213,7 +6213,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -6538,7 +6538,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 bf
 bp
 bx
@@ -6757,7 +6757,7 @@ bh
 br
 bz
 ak
-qU
+aA
 aX
 bM
 bR
@@ -6864,7 +6864,7 @@ ak
 ba
 ak
 ak
-QN
+aD
 aX
 aX
 aX
@@ -7523,7 +7523,7 @@ xA
 cH
 ba
 ak
-qU
+aA
 cS
 ak
 ap
@@ -8140,7 +8140,7 @@ ag
 aE
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -8152,7 +8152,7 @@ ba
 bG
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -8248,7 +8248,7 @@ ak
 aH
 dg
 ak
-QN
+aD
 ak
 ak
 ak
@@ -8370,7 +8370,7 @@ ak
 ak
 ak
 ak
-QN
+aD
 ak
 ak
 QU
@@ -8485,7 +8485,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ap
@@ -8593,7 +8593,7 @@ ak
 ak
 ak
 ak
-QN
+aD
 ak
 ap
 av
@@ -8688,14 +8688,14 @@ bH
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
-qU
+aA
 ak
 ak
-qU
+aA
 ak
 ak
 aK
@@ -8998,7 +8998,7 @@ av
 av
 av
 ag
-qU
+aA
 ak
 ak
 ak
@@ -9118,7 +9118,7 @@ ak
 ak
 ak
 ak
-HW
+ch
 ak
 ak
 cu
@@ -9235,7 +9235,7 @@ ak
 ak
 cu
 ak
-qU
+aA
 bo
 aq
 av
@@ -9664,7 +9664,7 @@ ak
 cu
 ak
 ak
-Dg
+cV
 av
 av
 av
@@ -9760,7 +9760,7 @@ bT
 ca
 aX
 ak
-qU
+aA
 ak
 ak
 cu
@@ -9868,7 +9868,7 @@ aX
 aX
 ak
 ak
-QN
+aD
 ak
 cu
 ak
@@ -9958,7 +9958,7 @@ av
 av
 af
 ay
-qU
+aA
 ak
 ak
 ak
@@ -10298,7 +10298,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -10405,7 +10405,7 @@ ak
 ak
 ak
 ak
-QN
+aD
 ak
 ak
 ak
@@ -10516,7 +10516,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -10703,14 +10703,14 @@ av
 av
 av
 ag
-qU
+aA
 aB
 ak
 ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -10820,7 +10820,7 @@ ak
 ak
 ak
 ak
-HW
+ch
 ak
 ba
 ba
@@ -10833,7 +10833,7 @@ ak
 ak
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -11160,8 +11160,8 @@ ak
 ak
 ak
 ak
-qU
-QN
+aA
+aD
 bo
 aq
 av
@@ -11259,7 +11259,7 @@ ca
 aX
 ak
 ak
-qU
+aA
 ak
 ak
 ak
@@ -11456,7 +11456,7 @@ av
 av
 av
 ag
-qU
+aA
 ak
 ak
 ak
@@ -11465,7 +11465,7 @@ ak
 ak
 ak
 ak
-pK
+bE
 ak
 ak
 ak
@@ -14954,7 +14954,7 @@ aa
 av
 ag
 au
-uo
+an
 ak
 ap
 av
@@ -15060,7 +15060,7 @@ aa
 aa
 av
 ag
-PK
+al
 ak
 MD
 ap

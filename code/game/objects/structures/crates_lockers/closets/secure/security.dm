@@ -9,6 +9,7 @@
 	new /obj/item/storage/backpack/captain(src)
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
+	new /obj/item/storage/backpack/messenger/cap(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
@@ -72,6 +73,7 @@
 	// Traitor steal objectives
 	new /obj/item/gun/energy/e_gun/hos(src)
 	new /obj/item/pinpointer/nuke(src)
+	new /obj/item/gun/ballistic/shotgun/automatic/combat/compact(src)
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
@@ -98,7 +100,6 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-//	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
 	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src)
@@ -178,7 +179,7 @@
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/reagent_containers/spray/pepper(src)
 	new /obj/item/clothing/suit/armor/vest/det_suit(src)
-	new /obj/item/storage/belt/holster/detective/full(src)
+	new /obj/item/toy/crayon/white(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/storage/belt/holster/detective/full(src)
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
@@ -343,6 +344,6 @@
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/clothing/under/rank/security/officer(src)
-	//new /obj/item/clothing/under/rank/security/officer/skirt(src) SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/under/rank/security/officer/skirt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/flashlight/seclite(src)

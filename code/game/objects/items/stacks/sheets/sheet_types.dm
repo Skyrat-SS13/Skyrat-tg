@@ -164,16 +164,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	)
 	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
 
-/obj/item/stack/sheet/iron/Initialize(mapload)
-	. = ..()
-	var/static/list/tool_behaviors = list(
-		TOOL_WELDER = list(
-			SCREENTIP_CONTEXT_LMB = "Craft iron rods",
-			SCREENTIP_CONTEXT_RMB = "Craft floor tiles",
-		),
-	)
-	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
-
 /obj/item/stack/sheet/iron/examine(mob/user)
 	. = ..()
 	. += span_notice("You can build a wall girder (unanchored) by right clicking on an empty floor.")
@@ -436,6 +426,8 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white bandana", /obj/item/clothing/mask/bandana/white, 2, check_density = FALSE, category = CAT_CLOTHING), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4, check_density = FALSE, category = CAT_CONTAINERS), \
+	new/datum/stack_recipe("satchel", /obj/item/storage/backpack/satchel, 4, check_density = FALSE, category = CAT_CONTAINERS), \
+	new/datum/stack_recipe("messenger bag", /obj/item/storage/backpack/messenger, 4, check_density = FALSE, category = CAT_CONTAINERS), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6, check_density = FALSE, category = CAT_CONTAINERS), \
 	null, \
 	new/datum/stack_recipe("plant bag", /obj/item/storage/bag/plants, 4, check_density = FALSE, category = CAT_CONTAINERS), \
@@ -869,6 +861,7 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	merge_type = /obj/item/stack/sheet/hauntium
 	material_type = /datum/material/hauntium
 	material_modifier = 1 //None of that wussy stuff
+	grind_results = list(/datum/reagent/hauntium = 20)
 
 /obj/item/stack/sheet/hauntium/fifty
 	amount = 50

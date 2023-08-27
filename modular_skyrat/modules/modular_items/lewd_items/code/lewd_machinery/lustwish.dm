@@ -58,6 +58,7 @@
 					/obj/item/clothing/neck/kink_collar = 8,
 					/obj/item/clothing/neck/human_petcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/choker = 8,
+					/obj/item/clothing/neck/human_petcollar/thinchoker = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cow = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/bell = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
