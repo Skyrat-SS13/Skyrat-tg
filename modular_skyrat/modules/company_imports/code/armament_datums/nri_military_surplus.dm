@@ -59,10 +59,6 @@
 	item_type = /obj/item/trench_tool
 	cost = PAYCHECK_CREW
 
-/datum/armament_entry/company_import/nri_surplus/misc/rations
-	item_type = /obj/item/storage/box/nri_rations
-	cost = PAYCHECK_CREW
-
 /datum/armament_entry/company_import/nri_surplus/misc/food_replicator
 	description = "Once widespread technology used by numerous fringe colonies of NRI origin and even in some SolFed territories, that ultimately went out of fashion due to \
 	SolFed propaganda deeming it unprofitable and imposing severe trading fees on anyone trying to sell them. A small portion of government-backed manufacturers still produce \
