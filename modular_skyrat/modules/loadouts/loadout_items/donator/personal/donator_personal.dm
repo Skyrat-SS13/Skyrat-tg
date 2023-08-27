@@ -705,6 +705,3 @@
 	ckeywhitelist = list("sqnztb")
 
 
-/datum/loadout_item/inhand/plush_janiborg
-	name = "Friendly Janiborg Plush"
-	item_path = /obj/item/toy/plush/skyrat/plush_janiborg
