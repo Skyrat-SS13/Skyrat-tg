@@ -24,12 +24,13 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/photophobia, /datum/quirk/nyctophobia),
 	list(/datum/quirk/item_quirk/settler, /datum/quirk/freerunning),
 	//SKYRAT EDIT ADDITION BEGIN
-	list(/datum/quirk/equipping/nerve_staple, /datum/quirk/nonviolent),
+	list(/datum/quirk/equipping/nerve_staple, /datum/quirk/nonviolent, /datum/quirk/item_quirk/gun_nut),
 	list(/datum/quirk/equipping/nerve_staple, /datum/quirk/item_quirk/nearsighted),
 	list(/datum/quirk/no_guns, /datum/quirk/bighands, /datum/quirk/poor_aim),
-	list(/datum/quirk/no_guns, /datum/quirk/nonviolent),
+	list(/datum/quirk/no_guns, /datum/quirk/nonviolent, /datum/quirk/item_quirk/gun_nut),
 	list(/datum/quirk/spacer_born, /datum/quirk/oversized),
-	list(/datum/quirk/item_quirk/gun_nut, /datum/quirk/no_guns, /datum/quirk/nonviolent, /datum/quirk/equipping/nerve_staple, /datum/quirk/insanity, /datum/quirk/unstable)
+	list(/datum/quirk/item_quirk/gun_nut, /datum/quirk/insanity),
+	list(/datum/quirk/item_quirk/gun_nut, /datum/quirk/unstable),
 	//SKYRAT EDIT ADDITION END
 ))
 
