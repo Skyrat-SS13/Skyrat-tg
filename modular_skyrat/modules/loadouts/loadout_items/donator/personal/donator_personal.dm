@@ -703,3 +703,8 @@
 	name = "Hardlight Wheelchair Projector"
 	item_path = /obj/item/holosign_creator/hardlight_wheelchair
 	ckeywhitelist = list("sqnztb")
+
+/datum/loadout_item/inhand/plush_janiborg
+	name = "Friendly Janiborg Plush"
+	item_path = /icons/donator/obj/custom
+//	ckeywhitelist = list("olirant") // Public please.
