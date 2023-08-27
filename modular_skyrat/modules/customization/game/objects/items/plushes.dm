@@ -144,6 +144,8 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
 
+
+
 /obj/item/toy/plush/skyrat/szaplush
 	name = "suspicious spider"
 	desc = "A plushie of a shy looking drider, colored in floortile gray."
@@ -653,4 +655,13 @@
 	icon_state = "plushie_courier"
 	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
 	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+//Donation reward for olirant
+/obj/item/toy/plush/skyrat/plush_janiborg
+	name = "Friendly Janiborg Plush"
+	desc = "A miniature Lockstep Omnidroid straight from the Lockstep Enterprises Corporation marketing department in handsome janitorial purple. Now with real squirting action!"
+	icon_state = "plush_janiborg"
+	attack_verb_continuous = list("beeps", "washes", "mops", "squirts", "soaps")
+	attack_verb_simple = list("beep", "wash", "mop", "squirt", "soap")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
