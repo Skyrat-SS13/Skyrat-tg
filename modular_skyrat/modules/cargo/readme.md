@@ -18,7 +18,7 @@ Adds more stuff to cargo.
 
 ### Master file additions
 
-- `modular_skyrat/master_files/code/modules/cargo/packs/security.dm`: `var/hidden`
+- `modular_skyrat/master_files/code/modules/cargo/packs/security.dm`: `var/special`
 
 ### Included files that are not contained in this module:
 

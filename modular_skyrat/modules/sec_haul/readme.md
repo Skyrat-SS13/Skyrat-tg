@@ -16,8 +16,8 @@ Completely overhauls security to something that will hopefully fit us.
 
 ### Master file additions
 
-- `modular_skyrat/master_files/code/modules/cargo/packs/vending_restock.dm`: `var/hidden`
-- `modular_skyrat/master_files/code/modules/cargo/packs/security.dm`: `var/hidden`, `var/cost`
+- `modular_skyrat/master_files/code/modules/cargo/packs/vending_restock.dm`: `var/special`
+- `modular_skyrat/master_files/code/modules/cargo/packs/security.dm`: `var/special`, `var/cost`
 
 ### Included files that are not contained in this module:
 
