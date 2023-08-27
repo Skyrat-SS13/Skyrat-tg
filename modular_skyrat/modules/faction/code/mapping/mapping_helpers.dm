@@ -160,7 +160,7 @@
 		if(1) //Random traitor items
 			new /obj/item/storage/box/syndie_kit/chameleon(src)
 			new /obj/item/storage/backpack/duffelbag/syndie/c4(src)
-			new /obj/item/camera_bug(src)
+			new /obj/item/computer_disk/syndicate/camera_app(src)
 			new /obj/item/gun/chem(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/card/emag/doorjack(src)

@@ -450,3 +450,6 @@
 	else if(limb.body_zone == BODY_ZONE_CHEST && victim.blood_volume)
 		. += "Ribcage Trauma Detected: Further trauma to chest is likely to worsen internal bleeding until bone is repaired."
 	. += "</div>"
+
+/datum/wound/blunt/get_limb_examine_description()
+	return span_warning("The bones in this limb appear badly cracked.")

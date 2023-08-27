@@ -295,9 +295,9 @@
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 
-/obj/item/storage/bag/ammo/clock
+/obj/item/storage/pouch/ammo/clock
 
-/obj/item/storage/bag/ammo/clock/PopulateContents()
+/obj/item/storage/pouch/ammo/clock/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/ammo_box/strilka310/lionhunter/clock = 3
 	)
