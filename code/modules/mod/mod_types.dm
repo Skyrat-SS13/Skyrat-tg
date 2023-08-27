@@ -53,10 +53,12 @@
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
 		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/tether, // SKYRAT EDIT ADDITION - Adds the Emergency Tether to the roundstart engineering MODsuits
 		/obj/item/mod/module/magboot,
 	)
 	default_pins = list(
 		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/tether, // SKYRAT EDIT ADDITION - Adds the Emergency Tether to the roundstart engineering MODsuits
 	)
 
 /obj/item/mod/control/pre_equipped/atmospheric
