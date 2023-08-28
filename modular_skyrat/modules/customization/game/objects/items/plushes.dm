@@ -144,8 +144,6 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
 
-
-
 /obj/item/toy/plush/skyrat/szaplush
 	name = "suspicious spider"
 	desc = "A plushie of a shy looking drider, colored in floortile gray."

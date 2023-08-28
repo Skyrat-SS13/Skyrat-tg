@@ -703,5 +703,3 @@
 	name = "Hardlight Wheelchair Projector"
 	item_path = /obj/item/holosign_creator/hardlight_wheelchair
 	ckeywhitelist = list("sqnztb")
-
-
