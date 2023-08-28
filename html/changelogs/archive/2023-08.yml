@@ -1293,3 +1293,48 @@
   vinylspiders:
   - bugfix: fixed a bug that could cause the altar's religion selection ui to bug
       out if a previous chaplain left via cryo without selecting a religion themselves.
+2023-08-28:
+  Guillaume Prata:
+  - bugfix: Unary vents have a pressure cap on both their pressuring and siphoning
+      mode now, preventing the bypass trick of putting "infinite" pressure on tiles/pipelines.
+  - balance: Overclocked Volume Pumps do not have a pressure cap anymore.
+  LT3:
+  - bugfix: Using an airlock painter on a GAGS airlock works properly
+  - bugfix: Tram will no longer fly off into space when admins try to reset the contents
+  Paxilmaniac:
+  - balance: heads of security are no longer given a gk-18 in their backpack on spawn,
+      instead being given a hybrid energy gun to hold them over until they reach the
+      already quite strong weapons in their locker.
+  SkyratBot:
+  - rscadd: New rotator disposal pipe.
+  - bugfix: Flipped transit tube stations are now accessible in the RPD again.
+  - image: New rotator disposal pipe sprite.
+  - bugfix: Fixed an issue with the "recolor from string" option in the greyscale
+      modify menu that resulted in invisible icons.
+  - qol: Stabilized yellow slime extracts no longer spam a message every charge pulse
+      (but examining characters will still show that it's active).
+  - bugfix: Fixed Phazon construction message typo
+  - qol: Crafting menu "Can Make" category shows complex recipes first.
+  - bugfix: Woundscans no longer runtime
+  - bugfix: Normal health analyzers can no longer give the first aid bonus when woundscanning
+  - bugfix: after a long 6 years, alien alloy once again unlocks the Alien Technology
+      node (the one that lets you print alien alloy)
+  - qol: rats no longer spawn on multiz cable hubs
+  - bugfix: fixes a runtime with arrow projectiles
+  - bugfix: You can't use the bioscrambler belt to turn yourself into a changeling.
+  - qol: Display case chassis now uses balloon alerts, screentips, examine hints,
+      etc. Basically, the construction steps are more visible to players.
+  - rscadd: Added associative list variables and associative list variable manipulation
+      for finer data manipulation and storage.
+  - rscadd: List Find components will now return the index of the element it has found.
+  - code_imp: fixed some typos
+  - bugfix: fixed corn cobs not making seeds and lying to you in the text box.
+  - bugfix: Big fuel tanks' capacity is back to 5000.
+  Stalkeros for code, nzzy and Zydras for the sprites, Juniper for descriptions:
+  - rscadd: Proto-NRI/CIN food (and not only food) replicator
+  - rscdel: Green IRP-B (or whatever it was idk idc) NRI MRE, replaced with a new
+      unique one.
+  distributivgesetz:
+  - rscadd: Add an achievement for saving a cascading engine from the final countdown.
+  - balance: Damaging synchronous mesh blobs now incorporates damage resistance of
+      other blob structures when dealing shared damage to those nearby.
