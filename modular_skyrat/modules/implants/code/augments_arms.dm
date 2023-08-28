@@ -77,7 +77,6 @@
 		to_chat(user, span_notice("You shift [src] into Precision mode, for wirecutting."))
 		icon_state = "precision_wolverine"
 		inhand_icon_state = "precision_wolverine"
-		flags_1 = CONDUCT_1
 		force = cutter_force
 		wound_bonus = cutter_wound_bonus
 		bare_wound_bonus = cutter_bare_wound_bonus
@@ -86,7 +85,6 @@
 		usesound = CUTTER_USESOUND
 		attack_verb_continuous = CUTTER_ATTACK_VERB_CONTINUOUS
 		attack_verb_simple = CUTTER_ATTACK_VERB_SIMPLE
-
 	else
 		tool_behaviour = TOOL_KNIFE
 		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
@@ -108,12 +106,15 @@
 	knife_force = ENHANCED_KNIFE_FORCE
 	knife_wound_bonus = ENHANCED_KNIFE_WOUND_BONUS
 	armour_penetration = ENHANCED_KNIFE_ARMOR_PENETRATION //Let's give them some AP for the trouble.
+	if(tool_behaviour == TOOL_KNIFE)
+		force = knife_force
+		wound_bonus = knife_wound_bonus
 	name = "enhanced razor claws"
 	desc += span_warning("\n\nThese have undergone a special honing process; they'll kill people even faster than they used to.")
 	user.visible_message(span_warning("[user] sharpens [src], [stone] disintegrating!"), span_warning("You sharpen [src], making it much more deadly than before, but [stone] disintegrates under the stress."))
 	playsound(src, 'sound/items/unsheath.ogg', 25, TRUE)
 	qdel(stone)
-	return TRUE
+	return ..()
 
 /obj/item/organ/internal/cyberimp/arm/razor_claws
 	name = "razor claws implant"
