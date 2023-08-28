@@ -59,6 +59,29 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/large_mortar/attackby(obj/item/attacking_item, mob/living/carbon/human/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+		
+		if(!attacking_item.contents.len)
+			balloon_alert(user, "bag empty")
+			return TRUE
+			
+		for(var/obj/item/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+				
+			if(target_item.juice_results || target_item.grind_results)
+				target_item.forceMove(src)
+
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "mortar filled")
+		else
+			balloon_alert(user, "bag emptied")
+			
+		return TRUE
+	
 	if(istype(attacking_item, /obj/item/pestle))
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
