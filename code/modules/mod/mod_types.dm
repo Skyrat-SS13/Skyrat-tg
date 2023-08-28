@@ -53,12 +53,21 @@
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
 		/obj/item/mod/module/flashlight,
+<<<<<<< HEAD
 		/obj/item/mod/module/tether, // SKYRAT EDIT ADDITION - Adds the Emergency Tether to the roundstart engineering MODsuits
+=======
+		/obj/item/mod/module/tether,
+>>>>>>> ab28619838b (Engineering/atmos modsuit changes (#77951))
 		/obj/item/mod/module/magboot,
 	)
 	default_pins = list(
 		/obj/item/mod/module/magboot,
+<<<<<<< HEAD
 		/obj/item/mod/module/tether, // SKYRAT EDIT ADDITION - Adds the Emergency Tether to the roundstart engineering MODsuits
+=======
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/tether,
+>>>>>>> ab28619838b (Engineering/atmos modsuit changes (#77951))
 	)
 
 /obj/item/mod/control/pre_equipped/atmospheric
@@ -68,8 +77,13 @@
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
 		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/magboot,
 		/obj/item/mod/module/t_ray,
 		/obj/item/mod/module/quick_carry,
+	)
+	default_pins = list(
+		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/flashlight,
 	)
 
 /obj/item/mod/control/pre_equipped/advanced
@@ -83,8 +97,9 @@
 		/obj/item/mod/module/jetpack,
 	)
 	default_pins = list(
-		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/magboot/advanced,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/jetpack,
 	)
 
 /obj/item/mod/control/pre_equipped/loader
