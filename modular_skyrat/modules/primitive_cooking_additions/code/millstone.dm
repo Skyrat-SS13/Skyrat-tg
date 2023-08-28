@@ -66,6 +66,28 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/millstone/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+		
+		if(!attacking_item.contents.len)
+			balloon_alert(user, "bag empty")
+			return TRUE
+			
+		for(var/obj/item/food/grown/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+				
+			target_item.forceMove(src)
+		
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "millstone filled")
+		else
+			balloon_alert(user, "bag emptied")
+			
+		return TRUE
+	
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
 		balloon_alert(user, "can only mill plants")
 		return ..()
