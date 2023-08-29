@@ -75,3 +75,24 @@
 /obj/item/ammo_box/magazine/c40sol_rifle/extended/starts_empty
 
 	start_empty = TRUE
+
+//
+// .40 Sol machinegun boxes
+//
+
+/obj/item/ammo_box/magazine/c40sol_machinegun
+	name = "\improper Sol light machinegun ammo box"
+	desc = "A large box for holding a chain of .40 Sol rifle rounds inside of. Can hold sixty rounds."
+
+	icon = 'modular_skyrat/modules/modular_weapons/code/company_and_or_faction_based/carwo_defense_systems/ammo.dm'
+	icon_state = "lmg_box"
+
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+	ammo_type = /obj/item/ammo_casing/c40sol
+	caliber = CALIBER_SOL40LONG
+	max_ammo = 60
+
+/obj/item/ammo_box/magazine/c40sol_machinegun/starts_empty
+
+	start_empty = TRUE

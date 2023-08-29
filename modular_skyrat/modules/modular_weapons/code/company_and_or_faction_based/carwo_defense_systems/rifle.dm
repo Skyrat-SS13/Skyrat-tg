@@ -24,7 +24,10 @@
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/rifle_heavy.ogg'
+	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_rifle.ogg'
 	can_suppress = TRUE
+
+	can_bayonet = FALSE
 
 	suppressor_x_offset = 12
 
@@ -37,6 +40,10 @@
 
 	SET_BASE_PIXEL(-8, 0)
 
+	give_autofire()
+
+/// Separate proc for handling auto fire just because one of these subtypes isn't otomatica
+/obj/item/gun/ballistic/automatic/sol_rifle/proc/give_autofire()
 	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/sol_rifle/give_manufacturer_examine()
@@ -45,15 +52,90 @@
 /obj/item/gun/ballistic/automatic/sol_rifle/examine_more(mob/user)
 	. = ..()
 
-	. += "The Luna Orbital infanteria fusilo line, a line of rifles built to meet the \
-		requirements of the SolFed department of defense for a modern military rifle platform. \
-		Though the list of requirements was extensive, two stand out as the most important. \
-		The new weapon was to use the newly developed .40 Sol Long caseless rifle ammunition, \
-		and had to be reliable enough to operate in any of the environments that SolFed's military \
-		forces may find themselves in. The result of this is the weapon you are looking at now, in \
-		consistent use by SolFed militaries and police forces since 2554."
+	. += "The d'Infanterie rifles are, as the name may imply, built by Carwo for \
+		use by SolFed's various infantry branches. Following the rather reasonable \
+		military requirements of using the same few cartridges and magazines, \
+		the lifespans of logistics coordinators and quartermasters everywhere \
+		were lengthened by several years. While typically only for military sale \
+		in the past, the recent collapse of certain unnamed weapons manufacturers \
+		has caused Carwo to open many of its military weapons to civilian sale, \
+		which includes this one."
 
 	return .
 
 /obj/item/gun/ballistic/automatic/sol_rifle/no_mag
+	spawnwithmagazine = FALSE
+
+// Sol marksman rifle
+
+/obj/item/gun/ballistic/automatic/sol_rifle/marksman
+	name = "\improper Carwo 'd'Elite' Marksman Rifle"
+	desc = "A heavy marksman rifle commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
+
+	icon_state = "elite"
+	worn_icon_state = "elite"
+	inhand_icon_state = "elite"
+
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
+
+	fire_delay = 3
+
+	projectile_damage_multiplier = 1.25 // Does slightly more damage in exchange for the slower firing rate and lack of automatic fire
+
+/obj/item/gun/ballistic/automatic/sol_rifle/marksman/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/scope, range_modifier = 2)
+
+/obj/item/gun/ballistic/automatic/sol_rifle/marksman/give_autofire()
+	return
+
+/obj/item/gun/ballistic/automatic/sol_rifle/marksman/examine_more(mob/user)
+	. = ..()
+
+	. += "This particlar variant, often called 'd'Elite', is a marksman rifle. \
+		Automatic fire was forsaken for a semi-automatic setup, a more fitting \
+		stock, and more often than not a scope. Typically also seen with smaller \
+		magazines for convenience for the shooter, but as with any other Sol \
+		rifle, all standard magazine types will work."
+
+	return .
+
+/obj/item/gun/ballistic/automatic/sol_rifle/marksman/no_mag
+	spawnwithmagazine = FALSE
+
+// Machinegun based on the base Sol rifle
+
+/obj/item/gun/ballistic/automatic/sol_rifle/machinegun
+	name = "\improper Carwo 'd'Outomaties' Machinegun"
+	desc = "A heavy machinegun commonly seen in the hands of SolFed military types. Accepts any standard SolFed light machinegun box."
+
+	icon_state = "outomaties"
+	worn_icon_state = "outomaties"
+	inhand_icon_state = "outomaties"
+
+	special_mags = FALSE
+
+	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_machinegun
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_machinegun
+
+	fire_delay = 1
+
+	recoil = 1
+	spread = 5
+
+/obj/item/gun/ballistic/automatic/sol_rifle/machinegun/examine_more(mob/user)
+	. = ..()
+
+	. += "The d'Outomaties variant of the rifle, what you are looking at now, \
+		is a modification to turn the weapon into a passable, if sub-optimal \
+		light machinegun. To support the machinegun role, the internals were \
+		converted to make the gun into an open bolt, belt fed machine. These \
+		additions, combined with a battle rifle not meant to be used fully auto \
+		much to begin with, made for a relatively unwieldy weapon. A machinegun, \
+		however, is still a machinegun, no matter how hard it is to keep on target."
+
+	return .
+
+/obj/item/gun/ballistic/automatic/sol_rifle/machinegun/no_mag
 	spawnwithmagazine = FALSE
