@@ -46,7 +46,7 @@
 	caliber = CALIBER_SOL40LONG
 	max_ammo = 15
 
-/obj/item/ammo_box/magazine/c40sol_rifle/empty
+/obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
 
 	start_empty = TRUE
 
@@ -58,6 +58,10 @@
 
 	max_ammo = 30
 
+/obj/item/ammo_box/magazine/c40sol_rifle/standard/starts_empty
+
+	start_empty = TRUE
+
 /obj/item/ammo_box/magazine/c40sol_rifle/extended
 	name = "\improper Sol rifle extended magazine"
 	desc = "A massive drum magazine for SolFed rifles, holds fourty-five rounds."
@@ -67,3 +71,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 45
+
+/obj/item/ammo_box/magazine/c40sol_rifle/extended/starts_empty
+
+	start_empty = TRUE
