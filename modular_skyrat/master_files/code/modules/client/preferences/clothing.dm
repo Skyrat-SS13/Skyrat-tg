@@ -37,7 +37,7 @@
 	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
 
 /datum/preference/choiced/bra/init_possible_values()
-	return generate_values_for_underwear(GLOB.bra_list, list("human_chest_m"), COLOR_ALMOST_BLACK, 10)
+	return assoc_to_keys_features(GLOB.bra_list)
 
 /datum/preference/choiced/bra/compile_constant_data()
 	var/list/data = ..()
@@ -62,7 +62,7 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/bra/init_possible_values()
-	return generate_values_for_underwear(GLOB.bra_list, list("human_chest_m"), COLOR_ALMOST_BLACK)
+	return assoc_to_keys_features(GLOB.bra_list)
 
 /datum/preference/choiced/bra/apply_to_human(mob/living/carbon/human/target, value)
 	target.bra = value
