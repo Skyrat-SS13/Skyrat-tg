@@ -27,3 +27,8 @@
 
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
+
+/// Standard Sol rifle caliber
+#define CALIBER_SOL40LONG ".40 Sol Long"
+/// Standard Sol pistol caliber
+#define CALIBER_SOL35SHORT ".35 Sol Short"
