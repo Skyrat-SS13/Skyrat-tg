@@ -195,8 +195,9 @@
 	if(cell_cover_open)
 		return current_cell
 
-/obj/item/gravity_harness/handle_atom_del(atom/harness_cell)
-	if(harness_cell == current_cell)
+/obj/item/gravity_harness/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == current_cell)
 		change_mode(MODE_GRAVOFF)
 		current_cell = null
 

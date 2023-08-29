@@ -53,20 +53,26 @@
 
 
 /// Pick an an area for this research to take place in
-/datum/clockwork_research/proc/set_new_area()
+/datum/clockwork_research/proc/set_new_area(failed_validation = FALSE)
 	var/list/possible_areas = GLOB.the_station_areas.Copy()
 	for(var/area/possible_area as anything in possible_areas)
 		if(initial(possible_area.outdoors) || !is_type_in_typecache(possible_area, area_whitelist) || is_type_in_typecache(possible_area, area_blacklist))
 			possible_areas -= possible_area
 
-	selected_area = pick(possible_areas)
-	validate_area()
+	if(length(possible_areas))
+		selected_area = pick(possible_areas)
+
+	validate_area(failed_validation)
 
 
-/// Makes sure the selected area is correct, and regenerates it if not. Potentially dangerous if there are no station areas, somehow.
-/datum/clockwork_research/proc/validate_area()
+/// Makes sure the selected area is correct, and regenerates it if not. Only gets one reattempt before defaulting to the base station area (allowing it to happen anywhere).
+/datum/clockwork_research/proc/validate_area(failed_validation)
 	if(!selected_area || !length(get_area_turfs(selected_area)))
-		set_new_area()
+		if(failed_validation)
+			log_mapping("Clockwork research node [src] was unable to find a ritual area! Defaulting to base /area/station type.")
+			selected_area = /area/station
+			return TRUE
+		set_new_area(failed_validation = TRUE) // we will retry this once and only once
 		return FALSE
 	return TRUE
 

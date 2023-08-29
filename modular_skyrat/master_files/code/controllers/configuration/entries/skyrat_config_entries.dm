@@ -49,3 +49,18 @@
 // NEVER set this value to 0!!
 /datum/config_entry/number/flavor_text_character_requirement
 	default = 150
+
+/// Defines whether or not mentors can see ckeys alongside mobnames.
+/datum/config_entry/flag/mentors_mobname_only
+
+/// Defines whether the server uses the legacy donator system with donators.txt or the SQL system.
+/datum/config_entry/flag/donator_legacy_system
+	protection = CONFIG_ENTRY_LOCKED
+
+/// Defines whether the server uses the legacy mentor system with mentors.txt or the SQL system.
+/datum/config_entry/flag/mentor_legacy_system
+	protection = CONFIG_ENTRY_LOCKED
+
+/// Defines whether the server uses the legacy veteran system with veteran_players.txt or the SQL system.
+/datum/config_entry/flag/veteran_legacy_system
+	protection = CONFIG_ENTRY_LOCKED

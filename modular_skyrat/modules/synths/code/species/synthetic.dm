@@ -34,7 +34,7 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
+	payday_modifier = 1.0 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/internal/brain/synth

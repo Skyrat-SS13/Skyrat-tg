@@ -84,7 +84,6 @@
 		"plastitanium",
 		"plastitaniumglass",
 		"plate",
-		"polarizer", // SKYRAT EDIT ADDITION - Polarized windows
 		"prox_sensor",
 		"radio_headset",
 		"rdconsole",
@@ -126,7 +125,6 @@
 		"turret_control",
 		"universal_scanner",
 		"voice_analyzer",
-		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 
@@ -158,10 +156,6 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"affection_module",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mech
@@ -259,12 +253,7 @@
 		"wirebrush",
 		"wirecutters",
 		"wrench",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"bowl",
-		"drinking_glass",
-		"shot_glass",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
+		"pickaxe",
 	)
 
 /datum/techweb_node/basic_medical
@@ -307,17 +296,6 @@
 		"swab",
 		"syringe",
 		"xlarge_beaker",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"hospital_gown",
-		"synth_eyes",
-		"synth_tongue",
-		"synth_liver",
-		"synth_lungs",
-		"synth_stomach",
-		"synth_ears",
-		"synth_heart",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/basic_circuitry
@@ -330,6 +308,8 @@
 		"comp_access_checker",
 		"comp_arithmetic",
 		"comp_assoc_list_pick",
+		"comp_assoc_list_remove",
+		"comp_assoc_list_set",
 		"comp_binary_convert",
 		"comp_clock",
 		"comp_comparison",
@@ -414,10 +394,6 @@
 		"chem_dispenser",
 		"chem_heater",
 		"chem_mass_spec",
-		//SKYRAT EDIT - RESEARCH DESIGNS
-		"anesthetic_machine",
-		"smartdartgun",
-		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
 		"defibmount",
@@ -611,6 +587,7 @@
 		"emitter",
 		"firealarm_electronics",
 		"firelock_board",
+		"generic_tank",
 		"grounding_rod",
 		"high_cell",
 		"high_micro_laser",
@@ -662,13 +639,6 @@
 		"sheetifier",
 		"weldingmask",
 		"bolter_wrench",
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"engine_goggles_prescription",
-		"mesons_prescription",
-		"multi_cell_charger",
-		"tray_goggles_prescription",
-		"plumbing_eng",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
 	discount_experiments = list(
@@ -919,7 +889,6 @@
 		"paicard",
 		"mecha_camera",
 		"botnavbeacon",
-		"borg_upgrade_snacks", // SKYRAT ADDITION - BETTER BORG SNACK DISPENSORS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -964,7 +933,6 @@
 	prereq_ids = list("biotech", "datatheory")
 	design_ids = list(
 		"skill_station",
-		"soulcatcher_device", //SKYRAT EDIT SOULCATCHERS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -981,11 +949,6 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"borg_upgrade_clamp",
-		"borg_upgrade_brush",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1020,10 +983,6 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
-		// SKYRAT EDIT ADD START
-		"advanced_materials",
-		"inducer_module",
-		// SKYRAT EDIT ADD END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1037,12 +996,8 @@
 		"borg_upgrade_defibrillator",
 		"borg_upgrade_expandedsynthesiser",
 		"borg_upgrade_piercinghypospray",
-		//"borg_upgrade_pinpointer", // SKYRAT EDIT REMOVAL
+		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"borg_upgrade_surgicaltools",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1126,10 +1081,6 @@
 		"inducer",
 		"tray_goggles",
 		"holopad",
-		//SKYRAT EDIT - ADDITION MEDIGUNS
-		"gownmedicell",
-		"bedmedicell",
-		//SKYRAT EDIT END
 		"vendatray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -1197,7 +1148,6 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
-		"time_clock_frame", //SKYRAT EDIT ADDITION - TIME CLOCKS
 		"bankmachine",
 		"crewconsole",
 		"idcard",
@@ -1286,31 +1236,6 @@
 		"health_hud",
 		"scigoggles",
 		"security_hud",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"health_hud_prescription",
-		"security_hud_prescription",
-		"diagnostic_hud_prescription",
-		"science_hud_prescription",
-		"health_hud_aviator",
-		"security_hud_aviator",
-		"diagnostic_hud_aviator",
-		"meson_hud_aviator",
-		"science_hud_aviator",
-		"health_hud_projector",
-		"security_hud_projector",
-		"diagnostic_hud_projector",
-		"meson_hud_projector",
-		"science_hud_projector",
-		"permit_glasses",
-		"nifsoft_money_sense",
-		"nifsoft_hud_kit",
-		"nifsoft_hud_science",
-		"nifsoft_hud_medical",
-		"nifsoft_hud_security",
-		"nifsoft_hud_diagnostic",
-		"nifsoft_hud_cargo",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
@@ -1340,7 +1265,6 @@
 		"dnainfuser",
 		"dnascanner",
 		"scan_console",
-		"self_actualization_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1385,7 +1309,6 @@
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
 		"cybernetic_stomach_tier2",
-		"cybernetic_tongue", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -1539,20 +1462,19 @@
 	id = "botany"
 	display_name = "Botanical Engineering"
 	description = "Botanical tools"
-	prereq_ids = list("adv_engi", "biotech")
+	prereq_ids = list("biotech")
 	design_ids = list(
 		"biogenerator",
 		"flora_gun",
-		//SKYRAT EDIT - ADDITION MEDIGUNS
-		"salvemedicell",
-		//SKYRAT EDIT END
+		"gene_shears",
 		"hydro_tray",
 		"portaseeder",
 		"seed_extractor",
 		"adv_watering_can",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 3000)
+	required_experiments = list(/datum/experiment/scanning/random/plants/wild)
+	discount_experiments = list(/datum/experiment/scanning/random/plants/traits = 3000)
 
 /datum/techweb_node/exp_tools
 	id = "exp_tools"
@@ -1561,7 +1483,6 @@
 	prereq_ids = list("adv_engi")
 	design_ids = list(
 		"exwelder",
-		"gene_shears",
 		"handdrill",
 		"jawsoflife",
 		"laserscalpel",
@@ -1585,7 +1506,6 @@
 		"seclite",
 		"zipties",
 		"inspector",
-		"nifsoft_remover", //SKYRAT EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -1595,6 +1515,8 @@
 	description = "Unlocks new designs that improve rapid devices."
 	prereq_ids = list("adv_engi")
 	design_ids = list(
+		"rcd_upgrade_anti_interrupt",
+		"rcd_upgrade_cooling",
 		"rcd_upgrade_frames",
 		"rcd_upgrade_furnishing",
 		"rcd_upgrade_simple_circuits",
@@ -1625,7 +1547,6 @@
 	design_ids = list(
 		"pin_testing",
 		"tele_shield",
-		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000)
 	discount_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb = 10000)
@@ -1637,7 +1558,6 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
-		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
@@ -1649,10 +1569,6 @@
 	design_ids = list(
 		"ioncarbine",
 		"stunrevolver",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"medigun_speed",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1736,6 +1652,7 @@
 		"mod_clamp",
 		"mod_drill",
 		"mod_orebag",
+		"modlink_scryer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1965,6 +1882,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_mechbay = 2500)
+
 /datum/techweb_node/savannah_ivanov
 	id = "mecha_savannah_ivanov"
 	display_name = "EXOSUIT: Savannah-Ivanov"
@@ -1983,7 +1901,7 @@
 		"savannah_ivanov_targ",
 		"savannah_ivanov_torso",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_mechbay = 3000)
 
 /datum/techweb_node/adv_mecha_tools
@@ -2174,6 +2092,7 @@
 	description = "Things used by the greys."
 	prereq_ids = list("biotech","engineering")
 	boost_item_paths = list(
+		/obj/item/stack/sheet/mineral/abductor,
 		/obj/item/abductor,
 		/obj/item/cautery/alien,
 		/obj/item/circuitboard/machine/abductor,
@@ -2213,12 +2132,6 @@
 		"alien_retractor",
 		"alien_saw",
 		"alien_scalpel",
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"brute3medicell",
-		"burn3medicell",
-		"oxy3medicell",
-		"toxin3medicell",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 	boost_item_paths = list(
