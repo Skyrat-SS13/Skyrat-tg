@@ -133,6 +133,16 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					underwear_overlay.color = species_human.underwear_color
 				standing += underwear_overlay
 
+		if(species_human.bra && !(species_human.underwear_visibility & UNDERWEAR_HIDE_BRA))
+			var/datum/sprite_accessory/bra/bra = GLOB.bra_list[species_human.bra]
+			var/mutable_appearance/bra_overlay
+			if(bra)
+				var/icon_state = bra.icon_state
+				bra_overlay = mutable_appearance(bra.icon, icon_state, -BODY_LAYER)
+				if(!bra.use_static)
+					bra_overlay.color = species_human.bra_color
+				standing += bra_overlay
+
 		if(species_human.undershirt && !(species_human.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
 			var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[species_human.undershirt]
 			if(undershirt)
@@ -156,16 +166,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				if(!socks.use_static)
 					socks_overlay.color = species_human.socks_color
 				standing += socks_overlay
-
-		if(species_human.bra && !(species_human.underwear_visibility & UNDERWEAR_HIDE_BRA))
-			var/datum/sprite_accessory/bra/bra = GLOB.bra_list[species_human.bra]
-			var/mutable_appearance/bra_overlay
-			if(bra)
-				var/icon_state = bra.icon_state
-				bra_overlay = mutable_appearance(bra.icon, icon_state, -BODY_LAYER)
-				if(!bra.use_static)
-					bra_overlay.color = species_human.bra_color
-				standing += bra_overlay
 
 	if(standing.len)
 		species_human.overlays_standing[BODY_LAYER] = standing

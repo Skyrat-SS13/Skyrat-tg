@@ -84,22 +84,22 @@
 	var/undershirt_button = underwear_visibility & UNDERWEAR_HIDE_SHIRT ? "Show shirt" : "Hide shirt"
 	var/socks_button = underwear_visibility & UNDERWEAR_HIDE_SOCKS ? "Show socks" : "Hide socks"
 	var/bra_button = underwear_visibility & UNDERWEAR_HIDE_BRA ? "Show bra" : "Hide bra"
-	var/list/choice_list = list("[underwear_button]" = 1, "[bra_button]" = 2, "[undershirt_button]" = 3,"[socks_button]" = 4,"Show all" = 5, "Hide all" = 6)
+	var/list/choice_list = list("[underwear_button]" = "underwear", "[bra_button]" = "bra", "[undershirt_button]" = "shirt", "[socks_button]" = "socks","show all" = "show", "Hide all" = "hide")
 	var/picked_visibility = input(src, "Choose visibility setting", "Show/Hide underwear") as null|anything in choice_list
 	if(picked_visibility)
 		var/picked_choice = choice_list[picked_visibility]
 		switch(picked_choice)
-			if(1)
+			if("underwear")
 				underwear_visibility ^= UNDERWEAR_HIDE_UNDIES
-			if(2)
+			if("bra")
 				underwear_visibility ^= UNDERWEAR_HIDE_BRA
-			if(3)
+			if("shirt")
 				underwear_visibility ^= UNDERWEAR_HIDE_SHIRT
-			if(4)
+			if("socks")
 				underwear_visibility ^= UNDERWEAR_HIDE_SOCKS
-			if(5)
+			if("show")
 				underwear_visibility = NONE
-			if(6)
+			if("hide")
 				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS | UNDERWEAR_HIDE_BRA
 		update_body()
 	return
