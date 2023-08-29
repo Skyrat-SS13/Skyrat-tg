@@ -64,7 +64,7 @@
 
 /obj/item/ammo_box/magazine/c40sol_rifle/extended
 	name = "\improper Sol rifle extended magazine"
-	desc = "A massive drum magazine for SolFed rifles, holds fourty-five rounds."
+	desc = "A long magazine for SolFed rifles, holds fourty-five rounds."
 
 	icon_state = "rifle_long"
 
@@ -76,23 +76,16 @@
 
 	start_empty = TRUE
 
-//
-// .40 Sol machinegun boxes
-//
+/obj/item/ammo_box/magazine/c40sol_rifle/drum
+	name = "\improper Sol rifle drum magazine"
+	desc = "A massive drum magazine for SolFed rifles, holds sixty rounds."
 
-/obj/item/ammo_box/magazine/c40sol_machinegun
-	name = "\improper Sol light machinegun ammo box"
-	desc = "A large box for holding a chain of .40 Sol rifle rounds inside of. Can hold sixty rounds."
+	icon_state = "rifle_drum"
 
-	icon = 'modular_skyrat/modules/modular_weapons/code/company_and_or_faction_based/carwo_defense_systems/ammo.dm'
-	icon_state = "lmg_box"
+	w_class = WEIGHT_CLASS_NORMAL
 
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
-
-	ammo_type = /obj/item/ammo_casing/c40sol
-	caliber = CALIBER_SOL40LONG
 	max_ammo = 60
 
-/obj/item/ammo_box/magazine/c40sol_machinegun/starts_empty
+/obj/item/ammo_box/magazine/c40sol_rifle/drum/starts_empty
 
 	start_empty = TRUE

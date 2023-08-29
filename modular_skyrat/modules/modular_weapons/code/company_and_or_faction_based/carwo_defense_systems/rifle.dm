@@ -108,16 +108,13 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
 	name = "\improper Carwo 'd'Outomaties' Machinegun"
-	desc = "A heavy machinegun commonly seen in the hands of SolFed military types. Accepts any standard SolFed light machinegun box."
+	desc = "A hefty machinegun commonly seen in the hands of SolFed military types. Accepts any standard SolFed rifle magazine."
 
 	icon_state = "outomaties"
 	worn_icon_state = "outomaties"
 	inhand_icon_state = "outomaties"
 
-	special_mags = FALSE
-
-	accepted_magazine_type = /obj/item/ammo_box/magazine/c40sol_machinegun
-	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_machinegun
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
 	fire_delay = 1
 
@@ -130,7 +127,7 @@
 	. += "The d'Outomaties variant of the rifle, what you are looking at now, \
 		is a modification to turn the weapon into a passable, if sub-optimal \
 		light machinegun. To support the machinegun role, the internals were \
-		converted to make the gun into an open bolt, belt fed machine. These \
+		converted to make the gun into an open bolt, faster firing machine. These \
 		additions, combined with a battle rifle not meant to be used fully auto \
 		much to begin with, made for a relatively unwieldy weapon. A machinegun, \
 		however, is still a machinegun, no matter how hard it is to keep on target."
@@ -138,4 +135,16 @@
 	return .
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun/no_mag
+	spawnwithmagazine = FALSE
+
+// Evil version of the rifle (nothing different its just black)
+
+/obj/item/gun/ballistic/automatic/sol_rifle/evil
+	desc = "A heavy battle rifle, this one seems to be painted tacticool black. Accepts any standard SolFed rifle magazine."
+
+	icon_state = "infanterie_evil"
+	worn_icon_state = "infanterie_evil"
+	inhand_icon_state = "infanterie_evil"
+
+/obj/item/gun/ballistic/automatic/sol_rifle/evil/no_mag
 	spawnwithmagazine = FALSE
