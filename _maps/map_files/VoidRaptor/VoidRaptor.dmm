@@ -10282,15 +10282,12 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/aft/greater)
 "ddB" = (
-/obj/structure/table,
-/obj/machinery/computer/records/security/laptop{
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/purple/fourcorners,
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
-/obj/structure/cable,
-/obj/item/storage/fancy/donut_box{
-	pixel_y = 17
-	},
-/obj/effect/turf_decal/tile/purple/fourcorners,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/security/corrections_officer)
 "ddH" = (
@@ -18038,7 +18035,7 @@
 "fkI" = (
 /obj/structure/railing,
 /obj/structure/table/glass,
-/obj/structure/bedsheetbin,
+/obj/structure/towel_bin,
 /turf/open/floor/iron/white/small,
 /area/station/common/pool)
 "fkM" = (
@@ -39032,6 +39029,7 @@
 /area/station/hallway/secondary/entry)
 "lcd" = (
 /obj/structure/table,
+/obj/item/storage/fancy/donut_box,
 /turf/open/floor/glass/reinforced,
 /area/station/security/execution/transfer)
 "lcf" = (
@@ -61464,7 +61462,8 @@
 /area/station/commons/fitness/recreation/entertainment)
 "riy" = (
 /obj/structure/closet/secure_closet/evidence{
-	name = "Brig Officer's Locker"
+	name = "Brig Officer's Locker";
+	req_one_access = list("brig")
 	},
 /obj/machinery/requests_console/auto_name/directional/west,
 /obj/machinery/light_switch/directional/south,
@@ -75929,6 +75928,13 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/science/xenobiology)
+"vfE" = (
+/obj/structure/table,
+/obj/structure/towel_bin,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 4
+	},
+/area/station/security/prison)
 "vfJ" = (
 /obj/structure/sign/departments/security/directional/east,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -135076,7 +135082,7 @@ iID
 kFZ
 kFZ
 tyY
-kFZ
+vfE
 mxe
 pEu
 pEu
