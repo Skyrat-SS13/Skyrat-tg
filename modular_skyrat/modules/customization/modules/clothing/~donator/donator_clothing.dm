@@ -267,7 +267,7 @@
 /******CALIGRA DONATIONS******/
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "FIR-36 half-face rebreather"
+	name = "\improper FIR-36 half-face rebreather"
 	desc = "A close-fitting respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-36 Rebreather is commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
@@ -297,13 +297,13 @@
 
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight/fir22
-	name = "FIR-22 full-face rebreather"
+	name = "\improper FIR-22 full-face rebreather"
 	desc = "A full-face respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-22 Rebreather is a snout-covering variant often seen used by Tajaran Military Personnel. It reeks of militarism."
 	icon_state = "fir22"
 
 // Donation reward for Raxraus
 /obj/item/clothing/head/caligram_cap_tan
-	name = "Caligram tan softcap"
+	name = "\improper Caligram tan softcap"
 	desc = "A Caligram's Fleet-branded hat in a '/surprisingly/' tasteful shade of brown."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
@@ -311,7 +311,7 @@
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/jumpsuit/caligram_fatigues_tan
-	name = "Caligram tan fatigues"
+	name = "\improper Caligram tan fatigues"
 	desc = "A set of tan and brown work fatigues bearing a Caligram's Fleet insigna on an armband. Lacks the typical Tajaran extravagance."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
@@ -321,7 +321,7 @@
 
 // Donation reward for Raxraus
 /obj/item/clothing/suit/jacket/caligram_parka_tan
-	name = "Caligram tan parka"
+	name = "\improper Caligram tan parka"
 	desc = "A tan parka with a fancy black belt and '/Caligram's Fleet/' stitched onto its armband."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
@@ -331,7 +331,7 @@
 
 // Donation reward for Raxraus
 /obj/item/clothing/suit/armor/vest/caligram_parka_vest_tan
-	name = "Caligram armored tan parka"
+	name = "\improper Caligram armored tan parka"
 	desc = "A tan parka with a fancy black belt, a lightly armored vest and '/Caligram's Fleet/' stitched onto its armband."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
@@ -339,7 +339,6 @@
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|LEGS|ARMS|HANDS
-
 
 
 // Donation reward for ChillyLobster
