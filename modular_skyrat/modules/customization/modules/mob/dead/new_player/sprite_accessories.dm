@@ -662,6 +662,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "bra_swimming"
 	gender = FEMALE
 	use_static = null
+
 /datum/sprite_accessory/bra/sports_bra
 	name = "Bra, Sports"
 	icon_state = "sports_bra"
@@ -756,19 +757,19 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 	erp_accessory = TRUE
 
-/datum/sprite_accessory/bra/swim
+/datum/sprite_accessory/bra/swimsuit
 	name = "Swimsuit Top"
 	icon_state = "bikini_bra"
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/bra/strapless_swim
+/datum/sprite_accessory/bra/strapless_swimsuit
 	name = "Strapless Swimsuit Top"
 	icon_state = "strapless_biki_bra"
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/bra/strapless_swim_alt
+/datum/sprite_accessory/bra/strapless_swimsuit_alt
 	name = "Strapless Swimsuit Top (Alt)"
 	icon_state = "strapless_biki_bra_alt"
 	gender = FEMALE
