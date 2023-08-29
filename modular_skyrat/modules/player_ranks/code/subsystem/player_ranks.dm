@@ -48,8 +48,8 @@ SUBSYSTEM_DEF(player_ranks)
  * * user - The client to verify the donator status of.
  */
 /datum/controller/subsystem/player_ranks/proc/is_donator(client/user)
-	if(isnull(user))
-		return FALSE
+	if(!istype(user))
+		CRASH("Invalid user type provided to is_donator(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	if(GLOB.donator_list[user.ckey])
 		return TRUE
@@ -68,8 +68,8 @@ SUBSYSTEM_DEF(player_ranks)
  * * user - The client to verify the mentor status of.
  */
 /datum/controller/subsystem/player_ranks/proc/is_mentor(client/user)
-	if(isnull(user))
-		return FALSE
+	if(!istype(user))
+		CRASH("Invalid user type provided to is_mentor(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	return user.is_mentor()
 
@@ -81,8 +81,8 @@ SUBSYSTEM_DEF(player_ranks)
  * * user - The client to verify the veteran status of.
  */
 /datum/controller/subsystem/player_ranks/proc/is_veteran(client/user)
-	if(isnull(user))
-		return FALSE
+	if(!istype(user))
+		CRASH("Invalid user type provided to is_veteran(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	if(GLOB.veteran_list[user.ckey])
 		return TRUE
@@ -239,8 +239,6 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(rank_title == veteran_controller.rank_title)
 		return veteran_controller
-
-	. = null // We do this to ensure that we return null.
 
 	CRASH("Invalid player_rank_controller \"[rank_title || "*null*"]\" used in get_controller_for_group()!")
 
