@@ -1095,3 +1095,270 @@
   - rscadd: Northstar and Birdshot Xenobiology have been outfitted with a new shower.
   - code_imp: Replaced the magic strings in slime code with macros. Also included
       some warnings to anyone daring to touch the macros.
+2023-08-23:
+  Melbert:
+  - bugfix: Fixed some tooltips in the sec records UI showing "false"s where they
+      shouldn't.
+  OrionTheFox:
+  - image: 'removed some obsolete Skyrat icon overrides, moving these items to TG
+      standard: Eguns, Laz/Borg hypos, Lights, and Surgery Tables.'
+  - bugfix: PKAs now have no safeties, as intended
+  SkyratBot:
+  - bugfix: pda messages are no longer hidden from dead players who are not observers
+  - refactor: the goldgrub has been refactored please report any bugs
+  - rscadd: the goldgrub can now be tamed and he can have babys
+  - code_imp: removed unused procs in ore silo
+  - code_imp: merged repeated code segments when using materials from the ore silo
+      into a single proc
+  - code_imp: added auto docs & cleaned up some procs
+  - refactor: logging when an item is inserted or sheets are ejected from the silo
+      is now handled directly by the silo itself
+  - bugfix: Mobs whose human appearance is set dynamically will once again have their
+      bespoke names and descriptions, instead of Unknown, with a blank description.
+  - bugfix: Metastation's arrivals area no longer has an intercom overlapping with
+      the request console.
+  - balance: Lasers now have increased energy cost, reverting the cost back to the
+      initial value before the laser buff.
+  - bugfix: Taking a nap can once again heal minor wounds
+  - bugfix: A breath of healium will no longer knock you out for eternity
+  - bugfix: Healium sleep now respects sleep immunity
+  vinylspiders:
+  - bugfix: interdyne siphon vents will siphon properly again
+  - refactor: moves ALL of the skyrat edits out of modules/research/techweb/all_nodes.dm
+      and into modular overrides
+  xXPawnStarrXx:
+  - rscadd: Added new crafting options to throwing wheels
+  - rscadd: Added clay bricks as a material type. (Incase anyone wants to add onto
+      it)
+2023-08-24:
+  Hatterhat:
+  - code_imp: Removed some redundant Syndicate underclothes' armor values.
+  - bugfix: All Syndicate undersuit items now have wound armor matching their base
+      tg variants.
+  - bugfix: Cut down on some of the copy-pasted code regarding the Enclave uniforms,
+      which are apparently in the donator tab.
+  - spellcheck: Cleaned up some typos in Syndicate uniforms' descriptions.
+  Melbert:
+  - code_imp: Cleans up limb wound examine text code a tad.
+  Rhials:
+  - rscadd: The roundend report will now read out any achievements ("cheevos" as you
+      may know them) earned by players over the course of the round.
+  SkyratBot:
+  - rscadd: Added compact shotgun to the hos locker
+  - rscadd: Added compact shotgun as a traitor objective
+  - balance: gives the compact shotgun 1 extra shot
+  - bugfix: Birdshot pharmacy airlock now requires pharmacy access
+  - rscadd: wizards are now introverts
+  - balance: The Traitor's Camera bug is now a tablet app that works like a silent
+      camera console with an extra ability to track people through their nearby cameras.
+  - rscadd: You can now fully color your hair with a hair spray!
+  - qol: splits hair sprays are now smoother on the transition, similar to the short
+      fades.
+  - qol: Icebox perma now has holopads.
+  - bugfix: Moussaka now only uses eggplants instead of eggplants and potatoes
+  - bugfix: Pita bread no longer burns on the griddle/oven
+  Vekter:
+  - balance: Grilles will now take 0-1 damage every time they shock something.
+  - balance: Powersinks are now available earlier in traitor progression.
+2023-08-25:
+  Guillaume Prata:
+  - qol: QM jumpsuit/skirt expose the torso when adjusted.
+  Hatterhat:
+  - rscadd: Cargo now stocks pocket-clip-equipped personal first-aid pouches in their
+      goodies tab for the low, low price of 6 crew paychecks (300 cr at the time of
+      writing).
+  - code_imp: The pouch path now exists in the code, for pocket-fitting storage items
+      that don't require the item-scooping that proper bags have.
+  - bugfix: The ammo workbench no longer runtime errors when inserting material.
+  - bugfix: The ammo workbench storage capacity now scales like the autolathe does.
+  - bugfix: .277 Aestus (renamed a223, formerly a556), uh, works properly in guns,
+      again, or something.
+  - bugfix: .310 Strilka no longer has duplicate nor brass ammunition because they're
+      magic and also better rubbers. Go... be a heretic or clockwork cultist or something
+      if you want magic bullets.
+  - qol: Right-clicking on an ammo workbench that has a magazine loaded now ejects
+      it. Into your hand, presumably.
+  LT3:
+  - rscadd: Immovable rod will now battle the unstoppable tram should they cross paths
+  - bugfix: Birdshot's maint tram doors now work properly
+  - bugfix: Tramstation's exterior light fixtures no longer get destroyed as soon
+      as the tram moves
+  - code_imp: Tram landmarks are now all subtyped instead of map varedits
+  SkyratBot:
+  - balance: ninja's stealth module gives silent footsteps when active
+  - balance: all ninjas now have the light step and freerunning quirks
+  - balance: ninja's hacker module shove no longer stuns in 1 hit. first shove knocks
+      down and pushes away, second one stuns
+  - bugfix: fixes ninja shoves not causing sparks
+  - qol: the person in an energy net is now reasonable to hit, the dark part of the
+      sprite is now an underlay, so you can click the person inside the net pretty
+      easily and if you wanna hit the net you click the green part or the darker sides
+      that the human sprite doesnt cover
+  - bugfix: Rotated a water tank in icebox's lower service hall, connecting the plumbing
+      to the water source.
+  - qol: Adds air supply for cycling airlocks in ordnance and atmos incinerator on
+      all stations
+  - qol: Makes internal incinerator chamber a vacuum
+  - bugfix: Adds missing incinerator airlock control console to Tram station
+  - bugfix: fixes multitools possibly randomly losing their buffer
+  - bugfix: fixes modlinks checking battery charge without a battery and working without
+      charge
+  - qol: modlink stuff is a bit more explained
+  - bugfix: modlinks printed from rnd no longer start with a frequency (remember to
+      copy it from another one with a multitool buffer, robotics starts with 2 NT
+      frequency linked ones)
+  - rscadd: becoming a felinid makes your brain smaller (visually)
+  - bugfix: Some incident display adverts on Northstar and Birdshot have been unobstructed.
+  vinylspiders:
+  - bugfix: fixes ashen arrows not doing the bonus damage to goliaths, basilisks,
+      watchers, ice whelps, wumborian fugus, and goldgrubs
+  - bugfix: microfusion suppressors will now spawn correctly in MCR attachment kits
+      and they actually work now
+  - qol: Janitors and Shaft Miners start with the ExperTrak Skill Tracker preinstalled
+      on their PDAs.
+2023-08-26:
+  Guillaume Prata:
+  - qol: Medical Kiosk now have their wand removed with a right click, got new screentips
+      and have a few of its chat messages turned into balloon alerts.
+  Nerev4r & Zydras:
+  - image: Adds messenger bags to character setup and drobes/lockers!
+  Skyrat:
+  - rscdel: Removed the meteors and space dust emergency shuttle events
+  SkyratBot:
+  - admin: The "HREF Dock Exploit" message should now contain a bit more usable information
+      (such as a jump link) so you can investigate if something is really going wacky
+      with shuttles.
+  - bugfix: You should be able to click on lattices on icebox with the RCD and construct
+      a floor now
+  - refactor: fixed a bunch of instances of callbacks being qdeleted and cleaned up
+      related code
+  - bugfix: regal rats now run away from whoever attacked them
+  - rscadd: new pet behavior which makes pets defend their owners if they got attacked
+  - bugfix: You should no longer attack RCD effects when they're done constructing.
+  - qol: Messenger bags can be crafted with 4 cloth.
+  - bugfix: fixed apocalypse rune applying invisibility to mobs.
+  - bugfix: Unholy water preview icon is now similar with the icon it has.
+  - rscdel: Removes miscellaneous sources of clone damage from the game.
+  - balance: removes the access restrictions from all animals found under the livestocks
+      tab of the cargo order console, now assistants can private order animals for
+      their farms without access hunting
+  distributivgesetz:
+  - rscadd: Replaces decloning clone damage with a strike system that you can replenish
+      with Mutadone.
+  - bugfix: The decloning virus is curable with rezadone again.
+  tf-4:
+  - spellcheck: Fixed examine text for gemital.
+2023-08-27:
+  GoldenAlpharex:
+  - bugfix: Fixes the recycler being able to grind the server to a halt by trying
+      to recycle the same sheet worth of material over and over and over again.
+  SkyratBot:
+  - bugfix: Watchers won't retain an ethereal outline of their wings hovering over
+      their dead body.
+  - balance: Railings now only cost 2 rods and are much easier to construct. But they
+      can now be destroyed much easier and cut with wirecutters without unwrenching.
+  - bugfix: Borgs no longer get permastunned by emotes
+  - bugfix: Borg hud should not fuck up in few situations
+  - rscadd: Adds a syndicate AI card for nuke ops. Costs 12 TC, can be refunded. Activating
+      it in-hand opens up a ghost poll like normal reinforcements. Base interaction
+      range for syndicate AIs is one, which means they can handle electronics only
+      in proximity.
+  - rscadd: Adds a syndicate AI interaction range upgrade for nuke ops, costs 4 TC
+      and can be applied onto a syndicate AI (inside any container) to increase its
+      interaction range by two per. (Three purchases are recommended for seven tiles
+      of range!)
+  - bugfix: greyscale colors will now update on the mob when modifying them via the
+      VV menu
+  - bugfix: the coroner medkit can now hold every item it spawns with
+  - bugfix: multitool can be used on APC/Teslacoil/SMES/emitter if it has exposed
+      wires.
+  - bugfix: Light eaters can no longer be eaten by their higher-grade brothers, the
+      trash eaters. (recyclers)
+  - spellcheck: Fixed a spelling error with the daps emote.
+  - bugfix: Ops wanting to get the CQC kit will actually get given the kit, and not
+      just the CQC book.
+  - bugfix: Fixed the double-barreled shotgun not working properly
+  - qol: Icebox monsters no longer spawn close enough to aggro Lia at round start
+  - rscadd: 'Gave snow legions a separate corpse-drop pool: ash walkers excluded,
+      but eskimos included.'
+  - qol: inserting new high luminosity eyes will now properly remember the previous
+      eyes' color and default to that initially
+  - bugfix: quartermasters get their voice of god power boost correctly
+  - qol: The Achievements UI now shows how many people have unlocked a given achievement.
+  - bugfix: The "Skills" Category for achievements should no longer be hidden.
+  - bugfix: zipping a duffle bag closes the UI of all storage items opened inside
+      it
+  TheSS13Melon:
+  - qol: Adds the Emergency Tether to Engineering Modsuits
+  vinylspiders:
+  - bugfix: fixed a bug that could cause the altar's religion selection ui to bug
+      out if a previous chaplain left via cryo without selecting a religion themselves.
+2023-08-28:
+  Guillaume Prata:
+  - bugfix: Unary vents have a pressure cap on both their pressuring and siphoning
+      mode now, preventing the bypass trick of putting "infinite" pressure on tiles/pipelines.
+  - balance: Overclocked Volume Pumps do not have a pressure cap anymore.
+  LT3:
+  - bugfix: Using an airlock painter on a GAGS airlock works properly
+  - bugfix: Tram will no longer fly off into space when admins try to reset the contents
+  Paxilmaniac:
+  - balance: heads of security are no longer given a gk-18 in their backpack on spawn,
+      instead being given a hybrid energy gun to hold them over until they reach the
+      already quite strong weapons in their locker.
+  SkyratBot:
+  - rscadd: New rotator disposal pipe.
+  - bugfix: Flipped transit tube stations are now accessible in the RPD again.
+  - image: New rotator disposal pipe sprite.
+  - bugfix: Fixed an issue with the "recolor from string" option in the greyscale
+      modify menu that resulted in invisible icons.
+  - qol: Stabilized yellow slime extracts no longer spam a message every charge pulse
+      (but examining characters will still show that it's active).
+  - bugfix: Fixed Phazon construction message typo
+  - qol: Crafting menu "Can Make" category shows complex recipes first.
+  - bugfix: Woundscans no longer runtime
+  - bugfix: Normal health analyzers can no longer give the first aid bonus when woundscanning
+  - bugfix: after a long 6 years, alien alloy once again unlocks the Alien Technology
+      node (the one that lets you print alien alloy)
+  - qol: rats no longer spawn on multiz cable hubs
+  - bugfix: fixes a runtime with arrow projectiles
+  - bugfix: You can't use the bioscrambler belt to turn yourself into a changeling.
+  - qol: Display case chassis now uses balloon alerts, screentips, examine hints,
+      etc. Basically, the construction steps are more visible to players.
+  - rscadd: Added associative list variables and associative list variable manipulation
+      for finer data manipulation and storage.
+  - rscadd: List Find components will now return the index of the element it has found.
+  - code_imp: fixed some typos
+  - bugfix: fixed corn cobs not making seeds and lying to you in the text box.
+  - bugfix: Big fuel tanks' capacity is back to 5000.
+  Stalkeros for code, nzzy and Zydras for the sprites, Juniper for descriptions:
+  - rscadd: Proto-NRI/CIN food (and not only food) replicator
+  - rscdel: Green IRP-B (or whatever it was idk idc) NRI MRE, replaced with a new
+      unique one.
+  distributivgesetz:
+  - rscadd: Add an achievement for saving a cascading engine from the final countdown.
+  - balance: Damaging synchronous mesh blobs now incorporates damage resistance of
+      other blob structures when dealing shared damage to those nearby.
+2023-08-29:
+  Iajret:
+  - bugfix: changed contractor's modlink frequency to syndicate
+  LT3:
+  - balance: Pre-equipped engineering modsuit now includes emergency tether
+  - balance: Pre-equipped atmospherics modsuit now includes magboots
+  SkyratBot:
+  - bugfix: mobs do not get stuck when running away from danger
+  - bugfix: Quartermaster's Overcoat and Cargo's gorka can now hold stamps in their
+      suit slots, just like their winter coat counterpart
+  - bugfix: Made it easier to place tiles on multi z level holes
+  - rscadd: The Lavaland Cursed Slot Machine of Greed suddenly seems a lot more sinister...
+  - refactor: Instead of taking clone damage from the cursed slot machine, you now
+      get a status effect with a number of curses associated with it. There's some
+      interesting florid language associated with the status effect as a nicety until
+      your eventual gibbing from chasing that prize.
+  - bugfix: Non-surgically debraining someone no longer makes their brain unusuable
+  - bugfix: Items worn on a void cloak's suit storage are no longer visible on the
+      stripping menu.
+  - qol: Misclicking the turf below a heretic influence no longer leaves a fingerprint.
+  - bugfix: Railings no longer give more metal than they take
+  - bugfix: roundstart modlink scryers now come with the nt frequency
+  softcerv:
+  - bugfix: Skyrat species now use the new TG non-human pay modifier

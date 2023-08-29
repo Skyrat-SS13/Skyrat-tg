@@ -189,9 +189,9 @@
 	desc = "Contains three material pouches."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
 	)
 	cost = CARGO_CRATE_VALUE * 15
 	crate_name = "material pouches crate"
@@ -714,7 +714,7 @@
 	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/storage/box/nri_rations = 1,
+		/obj/item/storage/box/colonial_rations = 1,
 		/obj/item/storage/toolbox/ammobox/strilka310 = 1,
 		/obj/item/storage/toolbox/ammobox/strilka310/surplus = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
