@@ -106,9 +106,11 @@
 	knife_force = ENHANCED_KNIFE_FORCE
 	knife_wound_bonus = ENHANCED_KNIFE_WOUND_BONUS
 	armour_penetration = ENHANCED_KNIFE_ARMOR_PENETRATION //Let's give them some AP for the trouble.
+
 	if(tool_behaviour == TOOL_KNIFE)
 		force = knife_force
 		wound_bonus = knife_wound_bonus
+
 	name = "enhanced razor claws"
 	desc += span_warning("\n\nThese have undergone a special honing process; they'll kill people even faster than they used to.")
 	user.visible_message(span_warning("[user] sharpens [src], [stone] disintegrating!"), span_warning("You sharpen [src], making it much more deadly than before, but [stone] disintegrates under the stress."))
@@ -127,11 +129,11 @@
 	retract_sound = 'sound/items/sheath.ogg'
 
 /// bespoke subtypes for augs menu since it's a bit wonky
-/obj/item/organ/internal/cyberimp/arm/razor_claws/righthand
+/obj/item/organ/internal/cyberimp/arm/razor_claws/right_arm
     zone = BODY_ZONE_R_ARM
     slot = ORGAN_SLOT_RIGHT_ARM_AUG
 
-/obj/item/organ/internal/cyberimp/arm/razor_claws/lefthand
+/obj/item/organ/internal/cyberimp/arm/razor_claws/left_arm
     zone = BODY_ZONE_L_ARM
     slot = ORGAN_SLOT_LEFT_ARM_AUG
 
