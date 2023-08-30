@@ -1,6 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
-
 /*
 	Piercing wounds
 */
@@ -180,13 +177,8 @@
 /datum/wound/pierce/get_limb_examine_description()
 	return span_warning("The flesh on this limb appears badly perforated.")
 
-<<<<<<< HEAD
-/datum/wound/pierce/moderate
-	name = "Minor Breakage"
-=======
 /datum/wound/pierce/bleed/moderate
 	name = "Minor Skin Breakage"
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))
 	desc = "Patient's skin has been broken open, causing severe bruising and minor internal bleeding in affected area."
 	treat_text = "Treat affected site with bandaging or exposure to extreme cold. In dire cases, brief exposure to vacuum may suffice." // space is cold in ss13, so it's like an ice pack!
 	examine_desc = "has a small, circular hole, gently bleeding"
@@ -254,14 +246,9 @@
 	threshold_penalty = 50
 	status_effect_type = /datum/status_effect/wound/pierce/critical
 	scar_keyword = "piercecritical"
-<<<<<<< HEAD
-	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
-*/
-=======
 	wound_flags = (ACCEPTS_GAUZE | MANGLES_FLESH)
 
 /datum/wound_pregen_data/flesh_pierce/cavity
 	abstract = FALSE
 
 	wound_path_to_generate = /datum/wound/pierce/bleed/critical
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))

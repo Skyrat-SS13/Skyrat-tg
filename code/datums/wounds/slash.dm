@@ -1,5 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
 
 /*
 	Slashing wounds
@@ -227,7 +225,7 @@
 
 /datum/wound/slash/flesh/on_xadone(power)
 	. = ..()
-	
+
 	if (limb) // parent can cause us to be removed, so its reasonable to check if we're still applied
 		adjust_blood_flow(-0.03 * power) // i think it's like a minimum of 3 power, so .09 blood_flow reduction per tick is pretty good for 0 effort
 
@@ -407,12 +405,8 @@
 	if(no_bleeding)
 		occur_text = "is ruptured"
 
-<<<<<<< HEAD
-*/
-=======
 /datum/wound_pregen_data/flesh_slash/cleave
 	abstract = FALSE
 	can_be_randomly_generated = FALSE
 
 	wound_path_to_generate = /datum/wound/slash/flesh/critical/cleave
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))

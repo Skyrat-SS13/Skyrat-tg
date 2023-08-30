@@ -6,9 +6,8 @@
 /datum/wound/muscle
 	name = "Muscle Wound"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
-	wound_type = WOUND_MUSCLE
+	wound_type = WOUND_BLUNT
 	wound_flags = (ACCEPTS_GAUZE)
-	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
 	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
 
@@ -19,9 +18,10 @@
 	var/regen_ticks_current = 0
 
 /datum/wound_pregen_data/muscle
-	abstract = FALSE
+	abstract = TRUE
 
-
+	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	required_limb_biostate = BIO_FLESH
 
 /*
 	Overwriting of base procs
@@ -155,6 +155,11 @@
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
 	regen_ticks_needed = 90
 
+/datum/wound_pregen_data/muscle/tear
+	abstract = FALSE
+
+	wound_path_to_generate = /datum/wound/muscle/moderate
+
 /*
 	Severe (Ruptured Tendon)
 */
@@ -174,6 +179,11 @@
 	disabling = TRUE
 	status_effect_type = /datum/status_effect/wound/muscle/severe
 	regen_ticks_needed = 150
+
+/datum/wound_pregen_data/muscle/tendon
+	abstract = FALSE
+
+	wound_path_to_generate = /datum/wound/muscle/severe
 
 /datum/status_effect/wound/muscle
 

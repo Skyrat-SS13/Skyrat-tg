@@ -523,38 +523,6 @@
 		var/mangled_state = get_mangled_state()
 		var/easy_dismember = HAS_TRAIT(owner, TRAIT_EASYDISMEMBER) // if we have easydismember, we don't reduce damage when redirecting damage to different types (slashing weapons on mangled/skinless limbs attack at 100% instead of 50%)
 
-<<<<<<< HEAD
-		//Handling for bone only/flesh only(none right now)/flesh and bone targets
-		switch(biological_state)
-			// if we're bone only, all cutting attacks go straight to the bone
-			if(BIO_BONE)
-				if(wounding_type == WOUND_SLASH)
-					wounding_type = WOUND_BLUNT
-					wounding_dmg *= (easy_dismember ? 1 : 0.6)
-				else if(wounding_type == WOUND_PIERCE)
-					wounding_type = WOUND_BLUNT
-					wounding_dmg *= (easy_dismember ? 1 : 0.75)
-				if((mangled_state & BODYPART_MANGLED_BONE) && try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
-					return
-			// note that there's no handling for BIO_FLESH since we don't have any that are that right now (slimepeople maybe someday)
-			// standard humanoids
-			if(BIO_FLESH_BONE)
-				//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-				//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
-				if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
-					wounding_type = WOUND_MUSCLE
-				//SKYRAT EDIT ADDITION END
-				// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
-				// So a big sharp weapon is still all you need to destroy a limb
-				if((mangled_state & BODYPART_MANGLED_FLESH) && !(mangled_state & BODYPART_MANGLED_BONE) && sharpness)
-					playsound(src, "sound/effects/wounds/crackandbleed.ogg", 100)
-					if(wounding_type == WOUND_SLASH && !easy_dismember)
-						wounding_dmg *= 0.6 // edged weapons pass along 60% of their wounding damage to the bone since the power is spread out over a larger area
-					if(wounding_type == WOUND_PIERCE && !easy_dismember)
-						wounding_dmg *= 0.75 // piercing weapons pass along 75% of their wounding damage to the bone since it's more concentrated
-					wounding_type = WOUND_BLUNT
-				else if((mangled_state & BODYPART_MANGLED_FLESH) && (mangled_state & BODYPART_MANGLED_BONE) && try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
-=======
 		var/has_exterior = FALSE
 		var/has_interior = FALSE
 
@@ -620,7 +588,6 @@
 			var/percent_to_total_max = (get_damage() / max_damage)
 			if (percent_to_total_max >= hp_percent_to_dismemberable)
 				if (try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))
 					return
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
@@ -1334,7 +1301,6 @@
  * Arguments:
  * * gauze- Just the gauze stack we're taking a sheet from to apply here
  */
-/* SKYRAT EDIT REMOVAL
 /obj/item/bodypart/proc/apply_gauze(obj/item/stack/gauze)
 	if(!istype(gauze) || !gauze.absorption_capacity)
 		return
@@ -1346,7 +1312,6 @@
 	gauze.use(1)
 	if(newly_gauzed)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZED, gauze)
-*/
 
 /**
  * seep_gauze() is for when a gauze wrapping absorbs blood or pus from wounds, lowering its absorption capacity.
@@ -1356,7 +1321,6 @@
  * Arguments:
  * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
  */
-/* SKYRAT EDIT REMOVAL
 /obj/item/bodypart/proc/seep_gauze(seep_amt = 0)
 	if(!current_gauze)
 		return
@@ -1365,7 +1329,6 @@
 		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
-*/
 
 ///Loops through all of the bodypart's external organs and update's their color.
 /obj/item/bodypart/proc/recolor_external_organs()
@@ -1423,14 +1386,9 @@
 	// 3 + 2 = 5, with 6 limbs thats 30, on a heavy 60
 	// 60 * 0.8 = 48
 	var/time_needed = 10 SECONDS
-<<<<<<< HEAD
-	var/brute_damage = 2.5 // SKYRAT EDIT : Balances direct EMP damage for Brute - SR's synth values are multiplied 3x 2.5 * 1.3 * 1.3
-	var/burn_damage = 2 // SKYRAT EDIT : Balances direct EMP damage for Burn - SR's synth values are multiplied 3x 2 * 1.3 * 1.3
 
-=======
 	var/brute_damage = AUGGED_LIMB_EMP_BRUTE_DAMAGE
 	var/burn_damage = AUGGED_LIMB_EMP_BURN_DAMAGE
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
 		brute_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~125 Brute to ~30

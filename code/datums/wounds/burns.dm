@@ -1,6 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
-
 /*
 	Burn wounds
 */
@@ -364,13 +361,9 @@
 
 /datum/wound/burn/flesh/severe/cursed_brand/get_limb_examine_description()
 	return span_warning("The flesh on this limb has several ornate symbols burned into it, with pitting throughout.")
-<<<<<<< HEAD
-*/
-=======
 
 /datum/wound_pregen_data/flesh_burn/cursed_brand
 	abstract = FALSE
 	can_be_randomly_generated = FALSE
 
 	wound_path_to_generate = /datum/wound/burn/flesh/severe/cursed_brand
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))

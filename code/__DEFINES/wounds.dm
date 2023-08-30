@@ -31,12 +31,6 @@
 /// any brute weapon/attack with sharpness = SHARP_POINTY. rolls for piercing wounds
 #define WOUND_PIERCE 3
 /// any concentrated burn attack (lasers really). rolls for burning wounds
-#define WOUND_BURN 4
-//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-/// any brute attacks, rolled on a chance
-#define WOUND_MUSCLE 5
-//SKYRAT EDIT ADDITION END
-
 
 // ~determination second wind defines
 // How much determination reagent to add each time someone gains a new wound in [/datum/wound/proc/second_wind]
