@@ -1362,3 +1362,31 @@
   - bugfix: roundstart modlink scryers now come with the nt frequency
   softcerv:
   - bugfix: Skyrat species now use the new TG non-human pay modifier
+2023-08-30:
+  GoldenAlpharex:
+  - refactor: Refactored the player ranks system to separate the legacy file-based
+      system from a new SQL-based system, allowing the various systems to be interacted
+      with far easier outside of the game.
+  - refactor: Player ranks are now working off of a subsystem, rather than being completely
+      disjointed, making it easier to interface with. If you're having issues with
+      your Donator status, simply reconnect and that should fix it!
+  - config: Added three separate configs for forcing the usage of the legacy Donator,
+      Mentor and Veteran systems, defaulting to on (so this should hopefully not change
+      anything on servers that have not done any migration yet).
+  Seven:
+  - bugfix: Syndicate ranged mobs (and probably other basic mobs) properly update
+      their shell's description to show they are spent.
+  SkyratBot:
+  - qol: The coroner can now store scythes in their labcoat and winter coat suit storage.
+      Ask not for whom the bell tolls...
+  - image: progress bars and cleaning particles are now centered on the tile occupied
+      by the target, if it is a big sprite
+  - qol: Various jobs have gotten additional programs uploaded at roundstart, engineers
+      now have the canary and atmospheric scanner programs, atmospheric technicians
+      now have the supermatter monitor, and Robotisists/RDs now have the silliconnect
+      program.
+  - bugfix: Ash drakes, colossi, and Bubblegum spawn on Lavaland more often; a sharp
+      increase from the previous bugged amount of "basically never".
+  zydras:
+  - rscadd: Added a set of new donator items
+  - rscdel: Removed older, unused (and broken) donator items
