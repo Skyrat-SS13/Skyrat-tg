@@ -235,3 +235,15 @@
 	desc = "...And the earth opened its mouth and swallowed them and their station- all the HOP's men and all their possessions."
 	database_id = MEDAL_EARTHQUAKE_VICTIM
 	icon = "earthquake"
+
+/datum/award/achievement/misc/debt_extinguished
+	name = "Outdebted"
+	desc = "I've paid my dues, shift after shift... I've done my sentence but commited no griff..."
+	database_id = MEDAL_DEBT_EXTINGUISHED
+	icon = "outdebted"
+
+/datum/award/achievement/misc/theoretical_limits
+	name = "All Within Theoretical Limits"
+	desc = "I never thought I'd see a resonance cascade, let alone prevent one..."
+	database_id = MEDAL_THEORETICAL_LIMITS
+	icon = "theoreticallimits"

@@ -617,16 +617,6 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/tracymrowr.ogg' = 1)
 	gender = FEMALE
 
-// Donation reward for isthatdan
-/obj/item/toy/plush/skyrat/dog
-	name = "bad dog plushie"
-	desc = "A collared, black dog plushie."
-	icon_state = "plush_dan"
-	attack_verb_continuous = list("barks at", "borks at", "woofs at")
-	attack_verb_simple = list("bark at", "bork at", "woof at")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
-	gender = MALE
-
 //Donation reward for Frixit
 /obj/item/toy/plush/skyrat/plushie_synthia
 	name = "adventurous synth plushie"
