@@ -1,6 +1,6 @@
 // SolFed shotgun (this was gonna be in a proprietary shotgun shell type outside of 12ga at some point, wild right?)
 
-/obj/item/gun/ballistic/shotgun/sol
+/obj/item/gun/ballistic/shotgun/riot/sol
 	name = "\improper Carwo 'Renoster' Shotgun"
 	desc = "A twleve guage shotgun with an eight shell capacity underneath. Made for and used by SolFed's various military branches."
 
@@ -25,7 +25,7 @@
 
 	suppressor_x_offset = 11
 
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/sol
+	accepted_mag_type = /obj/item/ammo_box/magazine/internal/shot/sol
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING

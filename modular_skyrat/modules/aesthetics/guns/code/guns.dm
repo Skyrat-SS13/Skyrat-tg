@@ -75,33 +75,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
-/obj/item/gun/ballistic/shotgun/riot
-	name = "\improper Peacekeeper shotgun"
-	desc = "A Nanotrasen-made riot control shotgun fitted with an extended tube and a fixed tactical stock."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	inhand_icon_state = "riot_shotgun"
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
-	can_suppress = TRUE
-	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
-	suppressed_volume = 100
-	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate
-	name = "\improper Peacebreaker shotgun"
-	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
-	icon_state = "riotshotgun_syndie"
-	inhand_icon_state = "riot_shotgun_syndie"
-	can_be_sawn_off = FALSE
-	can_suppress = FALSE
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
-
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
 	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
