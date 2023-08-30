@@ -13,6 +13,8 @@
 	caliber = CALIBER_SOL40LONG
 	projectile_type = /obj/projectile/bullet/c40sol
 
+	is_cased_ammo = FALSE
+
 /obj/item/ammo_casing/c40sol/Initialize(mapload)
 	. = ..()
 
@@ -20,7 +22,7 @@
 
 /obj/projectile/bullet/c40sol
 	name = ".40 Sol Long bullet"
-	damage = 40
+	damage = 35
 
 /obj/item/ammo_box/c40sol
 	name = "ammo box (.40 Sol Long lethal)"
@@ -62,6 +64,7 @@
 
 /obj/item/ammo_box/c40sol/fragmentation
 	name = "ammo box (.40 Sol Long fragmentation)"
+	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The blue stripe indicates this should hold less lethal ammunition."
 
 	icon_state = "40box_disabler"
 
@@ -76,12 +79,11 @@
 	icon_state = "40sol_pierce"
 
 	projectile_type = /obj/projectile/bullet/c40sol/pierce
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4.5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c40sol/pierce
 	name = ".40 Sol armor-piercing bullet"
-	damage = 15
+	damage = 25
 	armour_penetration = 40
 	wound_bonus = -30
 
@@ -105,6 +107,7 @@
 
 /obj/item/ammo_box/c40sol/pierce
 	name = "ammo box (.40 Sol Short piercing)"
+	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The yellow stripe indicates this should hold armor piercing ammunition."
 
 	icon_state = "40box_pierce"
 
@@ -138,6 +141,7 @@
 
 /obj/item/ammo_box/c40sol/incendiary
 	name = "ammo box (.40 Sol Long incendiary)"
+	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The orange stripe indicates this should hold incendiary ammunition."
 
 	icon_state = "40box_flame"
 

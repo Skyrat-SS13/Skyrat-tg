@@ -35,6 +35,8 @@
 	fire_delay = 2
 	actions_types = list()
 
+	spread = 5
+
 /obj/item/gun/ballistic/automatic/sol_rifle/Initialize(mapload)
 	. = ..()
 
@@ -80,7 +82,7 @@
 
 	fire_delay = 3
 
-	projectile_damage_multiplier = 1.25 // Does slightly more damage in exchange for the slower firing rate and lack of automatic fire
+	spread = 0
 
 /obj/item/gun/ballistic/automatic/sol_rifle/marksman/Initialize(mapload)
 	. = ..()
@@ -119,7 +121,7 @@
 	fire_delay = 1
 
 	recoil = 1
-	spread = 5
+	spread = 10
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun/examine_more(mob/user)
 	. = ..()

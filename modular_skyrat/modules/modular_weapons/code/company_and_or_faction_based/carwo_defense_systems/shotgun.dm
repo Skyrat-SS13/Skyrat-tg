@@ -25,15 +25,13 @@
 
 	suppressor_x_offset = 11
 
-	accepted_mag_type = /obj/item/ammo_box/magazine/internal/shot/sol
-
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 
-/obj/item/gun/ballistic/shotgun/sol/give_manufacturer_examine()
+/obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
 
-/obj/item/gun/ballistic/shotgun/sol/examine_more(mob/user)
+/obj/item/gun/ballistic/shotgun/riot/sol/examine_more(mob/user)
 	. = ..()
 
 	. += "The Renoster was designed at its core as a police shotgun. \
@@ -46,15 +44,15 @@
 
 	return .
 
-/obj/item/ammo_box/magazine/internal/shot/sol
-	name = "\improper Sol Shotgun Internal Tube"
-	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun
-	max_ammo = 8
+/obj/item/gun/ballistic/shotgun/riot/sol/update_appearance(updates)
+	if(sawn_off)
+		suppressor_x_offset = -6
+
+	. = ..()
 
 // Shotgun but EVIL!
 
-/obj/item/gun/ballistic/shotgun/sol/evil
+/obj/item/gun/ballistic/shotgun/riot/sol/evil
 	desc = "A twleve guage shotgun with an eight shell capacity underneath. This one is painted in a tacticool black."
 
 	icon_state = "renoster_evil"

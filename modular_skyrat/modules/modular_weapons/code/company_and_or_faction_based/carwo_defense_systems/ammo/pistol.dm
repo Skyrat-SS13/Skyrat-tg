@@ -13,6 +13,8 @@
 	caliber = CALIBER_SOL35SHORT
 	projectile_type = /obj/projectile/bullet/c35sol
 
+	is_cased_ammo = FALSE
+
 /obj/item/ammo_casing/c35sol/Initialize(mapload)
 	. = ..()
 
@@ -25,7 +27,7 @@
 
 /obj/item/ammo_box/c35sol
 	name = "ammo box (.35 Sol Short lethal)"
-	desc = "A box of .35 Sol Short pistol rounds, holds thirty-six bullets."
+	desc = "A box of .35 Sol Short pistol rounds, holds twenty-four rounds."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/ammo.dmi'
 	icon_state = "35box"
@@ -69,6 +71,7 @@
 
 /obj/item/ammo_box/c35sol/incapacitator
 	name = "ammo box (.35 Sol Short incapacitator)"
+	desc = "A box of .35 Sol Short pistol rounds, holds twenty-four rounds. The blue stripe indicates this should hold less-lethal ammunition."
 
 	icon_state = "35box_disabler"
 
@@ -82,7 +85,6 @@
 
 	icon_state = "35sol_shrapnel"
 	projectile_type = /obj/projectile/bullet/c35sol/ripper
-	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c35sol/ripper
@@ -100,6 +102,7 @@
 
 /obj/item/ammo_box/c35sol/ripper
 	name = "ammo box (.35 Sol Short ripper)"
+	desc = "A box of .35 Sol Short pistol rounds, holds twenty-four rounds. The purple stripe indicates this should hold hollowpoint-like ammunition."
 
 	icon_state = "35box_shrapnel"
 

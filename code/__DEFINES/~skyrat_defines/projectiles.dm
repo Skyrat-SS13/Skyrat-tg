@@ -32,3 +32,6 @@
 #define CALIBER_SOL40LONG ".40 Sol Long"
 /// Standard Sol pistol caliber
 #define CALIBER_SOL35SHORT ".35 Sol Short"
+
+/// Large caliber pistol round for Sol hand cannons
+#define CALIBER_585TRAPPISTE ".585 Trappiste"
