@@ -156,15 +156,8 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
-	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
-	*/
-	/// If we have a gauze wrapping currently applied
-	var/datum/bodypart_aid/gauze/current_gauze
-	/// If we have a splint currently applied
-	var/datum/bodypart_aid/splint/current_splint
 	/// What icon do we use to render this limb? Ususally used by robotic limb augments.
 	var/rendered_bp_icon
 	/// Do we use an organic render for this robotic limb?
@@ -429,11 +422,7 @@
 	var/atom/drop_loc = drop_location()
 	if(IS_ORGANIC_LIMB(src))
 		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	//seep_gauze(9999) // destroy any existing gauze if any exists
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
+	seep_gauze(9999) // destroy any existing gauze if any exists
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/organ/external/external in external_organs)
@@ -602,9 +591,7 @@
 				wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg + (damaged_percent * DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
 
 			if(current_gauze)
-				current_gauze.take_damage()
-			if(current_splint)
-				current_splint.take_damage()
+				current_gauze.get_hit()
 			//SKYRAT EDIT ADDITION END - MEDICAL
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction, damage_source = damage_source)
 

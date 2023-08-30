@@ -23,6 +23,43 @@
 	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	required_limb_biostate = BIO_FLESH
 
+/datum/wound_pregen_data/muscle/can_be_applied_to(obj/item/bodypart/limb, wound_type = initial(wound_path_to_generate.wound_type), datum/wound/old_wound, random_roll = FALSE)
+	SHOULD_BE_PURE(TRUE)
+
+	if (!istype(limb) || !limb.owner)
+		return FALSE
+
+	if (random_roll && !can_be_randomly_generated)
+		return FALSE
+
+	if (HAS_TRAIT(limb.owner, TRAIT_NEVER_WOUNDED) || (limb.owner.status_flags & GODMODE))
+		return FALSE
+
+	if (random_roll && !prob(35)) // 8/30/23: please fucking change this to use the upcoming wound type proc oh my god i hate this override
+		return FALSE
+	else
+		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
+			if (preexisting_wound.wound_series == initial(wound_path_to_generate.wound_series))
+				if (preexisting_wound.severity >= initial(wound_path_to_generate.severity))
+					return FALSE
+
+	if (!ignore_cannot_bleed && ((required_limb_biostate & BIO_BLOODED) && !limb.can_bleed()))
+		return FALSE
+
+	if (!biostate_valid(limb.biological_state))
+		return FALSE
+
+	if (!(limb.body_zone in viable_zones))
+		return FALSE
+
+	// we accept promotions and demotions, but no point in redundancy. This should have already been checked wherever the wound was rolled and applied for (see: bodypart damage code), but we do an extra check
+	// in case we ever directly add wounds
+	if (!duplicates_allowed)
+		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
+			if (preexisting_wound.type == wound_path_to_generate && (preexisting_wound != old_wound))
+				return FALSE
+	return TRUE
+
 /*
 	Overwriting of base procs
 */
