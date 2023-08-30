@@ -162,8 +162,6 @@
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
 
-// SKYRAT EDIT REMOVAL BEGIN - GUN CARGO
-/*
 /datum/supply_pack/service/survivalknives
 	name = "Survival Knives Crate"
 	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly \
@@ -171,8 +169,6 @@
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/knife/combat/survival = 3)
 	crate_name = "survival knife crate"
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"

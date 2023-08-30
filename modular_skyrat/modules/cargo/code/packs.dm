@@ -147,9 +147,9 @@
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
 
-/datum/supply_pack/security/armor
+/datum/supply_pack/security/armor_skyrat
 	name = "Armor Crate"
-	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
+	desc = "Three vests of well-rounded, decently-protective armor."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(
@@ -159,15 +159,11 @@
 	)
 	crate_name = "armor crate"
 
-/datum/supply_pack/security/helmets
+/datum/supply_pack/security/helmets_skyrat
 	name = "Helmets Crate"
-	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
+	desc = "Contains three standard-issue brain buckets."
 	cost = CARGO_CRATE_VALUE * 2
-	contains = list(
-		/obj/item/clothing/head/helmet/sec/redsec,
-		/obj/item/clothing/head/helmet/sec/redsec,
-		/obj/item/clothing/head/helmet/sec/redsec,
-	)
+	contains = list(/obj/item/clothing/head/helmet/sec/redsec = 3)
 	crate_name = "helmet crate"
 
 /datum/supply_pack/security/deployablebarricades
