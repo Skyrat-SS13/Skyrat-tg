@@ -651,7 +651,7 @@ GLOBAL_VAR(first_officer)
 
 /datum/objective/inspect_area/New(text)
 	. = ..()
-	inspection_area = INSPECTION_LIST
+	inspection_area = pick(INSPECTION_LIST)
 
 /datum/objective/inspect_area/update_explanation_text()
 	..()
@@ -669,7 +669,7 @@ GLOBAL_VAR(first_officer)
 
 /datum/objective/survey/New(text)
 	. = ..()
-	survey_area = INSPECTION_LIST
+	survey_area = pick(INSPECTION_LIST)
 
 /datum/objective/survey/update_explanation_text()
 	..()
