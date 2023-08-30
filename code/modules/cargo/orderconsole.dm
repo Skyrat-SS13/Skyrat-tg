@@ -274,11 +274,6 @@
 		if(order.applied_coupon)
 			say("Coupon refunded.")
 			order.applied_coupon.forceMove(get_turf(src))
-		//SKYRAT EDIT START
-		if(istype(order, /datum/supply_order/company_import))
-			var/datum/supply_order/company_import/the_order = order
-			the_order.reimburse_armament()
-		//SKYRAT EDIT END
 		SSshuttle.shopping_list -= order
 		. = TRUE
 		break
