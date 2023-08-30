@@ -12,7 +12,7 @@
 		"taur" = "None",
 		"wings" = "None",
 	)
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color = "#[random_color()]"

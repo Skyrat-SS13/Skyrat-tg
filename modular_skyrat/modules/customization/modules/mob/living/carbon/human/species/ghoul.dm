@@ -20,7 +20,7 @@
 		TRAIT_MUTANT_COLORS,
 		TRAIT_FIXED_MUTANT_COLORS,
 	)
-	payday_modifier = 0.75 //-- "Equality"
+	payday_modifier = 1.0 //-- "Equality"
 	stunmod = 1.25 //multiplier for stun durations
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
