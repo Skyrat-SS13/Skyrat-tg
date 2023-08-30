@@ -46,19 +46,16 @@
 	bodypart = null
 	..()
 
-/**
- * take_damage() called when the bandage gets damaged
- *
- * This proc will subtract integrity and delete the bandage with a to_chat message to whoever was bandaged
- *
- */
+/obj/item/bodypart/apply_gauze(obj/item/stack/gauze) // can maybe be replaced by a good 'ol loc check on gauze new
 
-/datum/bodypart_aid/proc/take_damage()
-	integrity--
-	if(integrity <= 0)
-		if(bodypart.owner)
-			to_chat(bodypart.owner, span_warning("The [name] on your [bodypart.name] tears and falls off!"))
-		qdel(src)
+	RegisterSignal(src, COMSIG_BODYPART_GAUZED, PROC_REF(got_gauzed))
+	. = ..()
+	UnregisterSignal(src, COMSIG_BODYPART_GAUZED)
+
+/obj/item/bodypart/proc/got_gauzed(obj/item/stack/gauze)
+	SIGNAL_HANDLER
+
+	gauze.set_limb(src)
 
 /**
  * rip_off() called when someone rips it off
@@ -153,6 +150,7 @@
 	var/blood_stained = FALSE
 	/// Is it pus stained? For description
 	var/pus_stained = FALSE
+	var/splint_factor = 0.3
 
 /datum/bodypart_aid/gauze/get_description()
 	var/desc
