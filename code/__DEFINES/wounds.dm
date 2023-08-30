@@ -50,37 +50,6 @@
 /// While someone has determination in their system, their bleed rate is slightly reduced
 #define WOUND_DETERMINATION_BLEED_MOD 0.85
 
-<<<<<<< HEAD
-// ~wound global lists
-// list in order of highest severity to lowest
-GLOBAL_LIST_INIT(global_wound_types, list(
-	WOUND_BLUNT = list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate),
-	WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
-	WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
-	WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate),
-	WOUND_MUSCLE = list(/datum/wound/muscle/severe, /datum/wound/muscle/moderate), /* SKYRAT EDIT ADD */
-))
-
-// every single type of wound that can be rolled naturally, in case you need to pull a random one
-GLOBAL_LIST_INIT(global_all_wound_types, list(
-	/datum/wound/blunt/critical,
-	/datum/wound/blunt/severe,
-	/datum/wound/blunt/moderate,
-	/datum/wound/slash/critical,
-	/datum/wound/slash/severe,
-	/datum/wound/slash/moderate,
-	/datum/wound/pierce/critical,
-	/datum/wound/pierce/severe,
-	/datum/wound/pierce/moderate,
-	/datum/wound/burn/critical,
-	/datum/wound/burn/severe,
-	/datum/wound/burn/moderate,
-	/* SKYRAT EDIT ADD START */
-	/datum/wound/muscle/severe,
-	/datum/wound/muscle/moderate,
-	/* SKYRAT EDIT ADD END */
-))
-=======
 // ~biology defines
 // What kind of biology a limb has, and what wounds it can suffer
 /// Has absolutely fucking nothing, no wounds
@@ -124,8 +93,6 @@ GLOBAL_LIST_INIT(bio_state_states, list(
 // Wound series
 // A "wound series" is just a family of wounds that logically follow eachother
 // Multiple wounds in a single series cannot be on a limb - the highest severity will always be prioritized, and lower ones will be skipped
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))
-
 /// T1-T3 Bleeding slash wounds. Requires flesh. Can cause bleeding, but doesn't require it. From: slash.dm
 #define WOUND_SERIES_FLESH_SLASH_BLEED 1
 /// T1-T3 Basic blunt wounds. T1 requires jointed, but 2-3 require bone. From: bone.dm
@@ -176,16 +143,7 @@ GLOBAL_LIST_INIT(bio_state_states, list(
 /// If having this wound counts as mangled bone for dismemberment
 #define MANGLES_BONE (1<<1)
 /// If this wound marks the limb as being allowed to have gauze applied
-<<<<<<< HEAD
-#define ACCEPTS_GAUZE (1<<4)
-//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-/// If this wound marks the limb as being allowed to have gauze applied as a splint
-#define ACCEPTS_SPLINT (1<<5)
-//SKYRAT EDIT ADDITION END
-=======
 #define ACCEPTS_GAUZE (1<<2)
-
->>>>>>> 554edc60e93 ([TEST-MERGE FIRST] Allows all limbs to be dismembered and significantly refactors wounds (#77813))
 
 // ~scar persistence defines
 // The following are the order placements for persistent scar save formats

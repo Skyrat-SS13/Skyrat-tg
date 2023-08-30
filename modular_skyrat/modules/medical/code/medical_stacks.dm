@@ -28,9 +28,6 @@
 			if(woundies.wound_flags & ACCEPTS_GAUZE)
 				gauzeable_wound = TRUE
 				continue
-			if(woundies.wound_flags & ACCEPTS_SPLINT)
-				splintable_wound = TRUE
-				continue
 	if(!gauzeable_wound && !splintable_wound)
 		patient.balloon_alert(user, "can't heal those!")
 		return

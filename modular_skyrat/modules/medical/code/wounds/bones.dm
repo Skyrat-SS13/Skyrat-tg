@@ -8,7 +8,7 @@
 	name = "Blunt (Bone) Wound"
 	sound_effect = 'sound/effects/wounds/crack1.ogg'
 	wound_type = WOUND_BLUNT
-	wound_flags = (BONE_WOUND | ACCEPTS_SPLINT)
+	wound_flags = (BONE_WOUND)
 
 	/// Have we been taped?
 	var/taped

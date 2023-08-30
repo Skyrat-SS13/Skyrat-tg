@@ -7,13 +7,21 @@
 	name = "Muscle Wound"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
 	wound_type = WOUND_MUSCLE
-	wound_flags = (FLESH_WOUND | ACCEPTS_SPLINT)
+	wound_flags = (ACCEPTS_GAUZE)
 	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+
+	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
+
 	processes = TRUE
 	/// How much do we need to regen. Will regen faster if we're splinted and or laying down
 	var/regen_ticks_needed
 	/// Our current counter for healing
 	var/regen_ticks_current = 0
+
+/datum/wound_pregen_data/muscle
+	abstract = FALSE
+
+
 
 /*
 	Overwriting of base procs
