@@ -1,5 +1,5 @@
 /// Possible places/departments to inspect
-#define INSPECTION_LIST pick( \
+#define INSPECTION_LIST list( \
 	"Cargo", \
 	"Command", \
 	"Engineering", \
@@ -10,7 +10,7 @@
 )
 
 /// List of possible decorative job titles for additional roleplay potential
-#define NRI_JOB_LIST pick( \
+#define NRI_JOB_LIST list( \
 	"NRI Patrol Officer", \
 	"NRI Satellite-Patrol Officer", \
 	"NRI Yefreitor-Patrol Officer", \
@@ -21,7 +21,7 @@
 )
 
 /// List of possible decorative leader job titles for additional roleplay potential
-#define NRI_LEADER_JOB_LIST pick( \
+#define NRI_LEADER_JOB_LIST list( \
 	"NRI Lieutenant Officer", \
 	"NRI Sergeant Officer", \
 	"NRI Senior Patrol Officer", \
@@ -253,9 +253,10 @@ GLOBAL_VAR(first_officer)
 	. = ..()
 	var/obj/item/card/id/advanced/card = spawned_human.get_idcard()
 	if(GLOB.first_officer == spawned_human)
-		card.assignment = NRI_LEADER_JOB_LIST
+		card.assignment = pick(NRI_LEADER_JOB_LIST)
 	else
-		card.assignment = NRI_JOB_LIST
+		card.assignment = pick(NRI_JOB_LIST)
+
 	card.update_label()
 
 /datum/map_template/shuttle/pirate/nri_raider
