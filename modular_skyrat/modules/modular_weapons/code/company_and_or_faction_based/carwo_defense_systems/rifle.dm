@@ -118,6 +118,8 @@
 	worn_icon_state = "outomaties"
 	inhand_icon_state = "outomaties"
 
+	bolt_type = BOLT_TYPE_OPEN
+
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
 	fire_delay = 1
