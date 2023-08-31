@@ -3,11 +3,14 @@
 /obj/item/storage/toolbox/guncase/trappiste_small_case
 	desc = "A thick yellow gun case with foam inserts laid out to fit a weapon, magazines, and gear securely. The five square grid of Trappiste Fabriek is displayed prominently on the top."
 
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
 	icon_state = "case_trappiste"
 
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_righthand.dmi'
 	inhand_icon_state = "yellowcase"
+
+	material_flags = NONE
 
 	w_class = WEIGHT_CLASS_NORMAL
 

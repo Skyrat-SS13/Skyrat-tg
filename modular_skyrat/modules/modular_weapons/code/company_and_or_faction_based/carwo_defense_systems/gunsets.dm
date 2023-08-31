@@ -3,11 +3,14 @@
 /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case
 	desc = "A thick yellow gun case with foam inserts laid out to fit a weapon, magazines, and gear securely."
 
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
 	icon_state = "case_carwo"
 
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_righthand.dmi'
 	inhand_icon_state = "yellowcase"
+
+	material_flags = NONE
 
 // Sindano in a box, how innovative!
 
@@ -40,9 +43,8 @@
 /obj/structure/closet/crate/large/import/armory_grenade_launcher/PopulateContents()
 	. = ..()
 
-	generate_items_inside(list(
-		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/kiboko_magless = 1,
-		/obj/item/ammo_box/c980grenade = 2,
-		/obj/item/ammo_box/c980grenade/smoke = 1,
-		/obj/item/ammo_box/c980grenade/riot = 1,
-	),src)
+	new /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/kiboko_magless(src)
+	new /obj/item/ammo_box/c980grenade(src)
+	new /obj/item/ammo_box/c980grenade(src)
+	new /obj/item/ammo_box/c980grenade/smoke(src)
+	new /obj/item/ammo_box/c980grenade/riot(src)
