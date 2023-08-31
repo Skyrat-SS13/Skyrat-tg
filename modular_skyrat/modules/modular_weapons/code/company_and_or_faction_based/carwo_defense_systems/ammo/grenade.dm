@@ -102,6 +102,7 @@
 /obj/projectile/bullet/c980grenade/shrapnel/fuse_activation(atom/target)
 	var/obj/item/grenade/shrapnel_maker = new casing_to_spawn(get_turf(src))
 	shrapnel_maker.detonate()
+	qdel(shrapnel_maker)
 
 /obj/item/ammo_box/c980grenade/shrapnel
 	name = "ammo box (.980 Tydhouer shrapnel)"
@@ -112,12 +113,15 @@
 	ammo_type = /obj/item/ammo_casing/c980grenade/shrapnel
 
 /obj/item/grenade/c980payload
-	shrapnel_type = /obj/projectile/bullet/shrapnel
+	shrapnel_type = /obj/projectile/bullet/shrapnel/short_range
 	shrapnel_radius = 2
 	ex_dev = 0
 	ex_heavy = 0
 	ex_light = 0
 	ex_flame = 0
+
+/obj/projectile/bullet/shrapnel/short_range
+	range = 2
 
 // .980 phosphor grenade
 
@@ -132,7 +136,7 @@
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 	name = ".980 Tydhouer phosphor grenade"
 
-	var/casing_to_spawn = /obj/item/grenade/c980payload/phosphor
+	casing_to_spawn = /obj/item/grenade/c980payload/phosphor
 
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor/fuse_activation(atom/target)
 	. = ..()
