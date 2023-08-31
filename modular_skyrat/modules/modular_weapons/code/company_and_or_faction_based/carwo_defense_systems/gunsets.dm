@@ -10,8 +10,6 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_righthand.dmi'
 	inhand_icon_state = "yellowcase"
 
-	material_flags = NONE
-
 // Sindano in a box, how innovative!
 
 /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano

@@ -3,6 +3,8 @@
 */
 
 /obj/item/storage/toolbox/guncase/skyrat
+	material_flags = NONE
+
 	/// Is the case visually opened or not
 	var/opened = FALSE
 
