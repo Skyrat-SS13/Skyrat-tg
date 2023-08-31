@@ -41,6 +41,15 @@
 		hud.turn_off()
 		hud = null
 
+/// Returns get_ammo() with the appropriate args passed to it - some guns like the revolver and bow are special cases
+/datum/component/ammo_hud/proc/get_accurate_ammo_count(obj/item/gun/ballistic/the_gun, count_chambered = TRUE, count_empties = FALSE)
+	if(istype(the_gun, /obj/item/gun/ballistic/revolver))
+		return the_gun.get_ammo(FALSE, FALSE) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
+	if(istype(the_gun, /obj/item/gun/ballistic/bow)) // bows are also weird and shouldn't count the chambered
+		return the_gun.get_ammo(FALSE)
+	return the_gun.get_ammo(TRUE)
+
+
 /datum/component/ammo_hud/proc/update_hud()
 	SIGNAL_HANDLER
 	if(istype(parent, /obj/item/gun/ballistic))
@@ -56,7 +65,7 @@
 			return
 
 		var/indicator
-		var/rounds = num2text(istype(parent, /obj/item/gun/ballistic/revolver) ? pew.get_ammo(FALSE, FALSE) : pew.get_ammo(TRUE)) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
+		var/rounds = num2text(get_accurate_ammo_count(pew))
 		var/oth_o
 		var/oth_t
 		var/oth_h
