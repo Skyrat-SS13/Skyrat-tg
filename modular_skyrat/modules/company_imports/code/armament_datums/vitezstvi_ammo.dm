@@ -132,3 +132,26 @@
 /datum/armament_entry/company_import/vitezstvi/shot_shells/confetti
 	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
 	description = "A box of 35 confetti shells, firing a spread of harmless confetti everywhere, yippie!"
+
+// Boxes of kiboko launcher ammo
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells
+	subcategory = "Grenade Shells"
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells/practice
+	item_type = /obj/item/ammo_box/c980grenade
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells/smoke
+	item_type = /obj/item/ammo_box/c980grenade/smoke
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells/riot
+	item_type = /obj/item/ammo_box/c980grenade/riot
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells/shrapnel
+	item_type = /obj/item/ammo_box/c980grenade/shrapnel
+	contraband = TRUE
+
+/datum/armament_entry/company_import/vitezstvi/grenade_shells/phoshpor
+	item_type = /obj/item/ammo_box/c980grenade/shrapnel/phosphor
+	contraband = TRUE
