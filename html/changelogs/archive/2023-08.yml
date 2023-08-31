@@ -1390,3 +1390,75 @@
   zydras:
   - rscadd: Added a set of new donator items
   - rscdel: Removed older, unused (and broken) donator items
+2023-08-31:
+  Guillaume Prata:
+  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
+      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
+      are not working less often for now on.
+  Ldip999:
+  - qol: Space hotel and Tarkon now comes with range ovens
+  Motho:
+  - rscadd: MODLink Scryer necklaces are now available in the loadout.
+  Paxilmaniac:
+  - qol: When ordering multiple items with a personal account or with a department
+      budget, all of those items will arrive in the same container, case or crate
+      depending on the number of items.
+  - balance: Company imports companies no longer need to be purchased
+  - balance: Company interest no longer exists at all
+  - balance: Company import items cannot run out of stock anymore
+  - balance: Company import items are overall significantly cheaper than they used
+      to be
+  - balance: Some items in company imports have either been added, removed, or tweaked
+      in nearly all companies due to not quite fitting anymore, or missing where I
+      felt they should have been. Most of the removed items are comically easy to
+      attain or otherwise useless and were only there to raise interest before, but
+      now that interest is gone they are not necessary.
+  - bugfix: Cyborgs can use company imports to order things off of the cargo budget
+      now
+  - image: Added a new wooden box sprite for import items that come from the cargo
+      budget, to prevent infinite money generation at the same time
+  ReezeBL:
+  - image: added 2 ear's sprites and 1 snout's sprite
+  Shadow-Quill:
+  - spellcheck: Fixed the ] appearing in cryopod action text.
+  SkyratBot:
+  - bugfix: autolathe prints the correct amount of stacks and merges it with existing
+      stacks on the turf
+  - bugfix: autolathe takes constant time when printing stacks
+  - code_imp: autolathe will attempt to award you the "getting an upgrade" award only
+      once when printing multiple items & updates UI immediately
+  - sound: Unlocking an achievement now plays a sound by default. You can change it
+      in the Sound category of the game preferences.
+  - bugfix: Compact fishing toolboxes no longer break space and time to contain any
+      normal-sized object. Instead, they only break space and time to contain fishing
+      rods. Settlers migrating to Nanotrasen space have no reasonable explanation
+      for this phenomenon.
+  - refactor: sheets are merged in a better way when ejected from machines & material
+      related stuff
+  - bugfix: Probital overdose no longer causes plasmamen and other inorganics to receive
+      the longest nap in their lives.
+  - bugfix: Changed icebox permabrig door type to be correct
+  - bugfix: Fixes Star Gazer getting buckled
+  - image: Removes Star Gazer alpha pixels
+  - bugfix: fixed skeleton wings not being visible from behind while closed
+  - bugfix: Space heaters no longer give extra cells when deconstructed
+  - bugfix: rcd can build wallmounts on reinforced walls
+  - qol: rcd can build directional windows without requiring/building a grill
+  Stalkeros:
+  - rscadd: NRI cops antag datum.
+  - rscdel: Removes green NRI armor vest and helmet, heavy variants included.
+  Stalkeros, Motho for the sound:
+  - sound: New unique sound for the operational status readout module.
+  SyncIt21:
+  - bugfix: autolathe prints the correct amount of stacks and merges it with existing
+      stacks on the turf
+  - bugfix: 'autolathe takes constant time when printing stacks code: autolathe will
+      attempt to award you the "getting an upgrade" award only once when printing
+      multiple items & updates UI immediately'
+  YakumoChen:
+  - bugfix: Made it less trivial for snailpeople to crawl around at meth speeds.
+  larentoun:
+  - refactor: Moves cargo supply edits to master_files, company imports ui_act to
+      master_files
+  olirant:
+  - rscadd: 1 donator plush

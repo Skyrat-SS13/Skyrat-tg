@@ -3,6 +3,7 @@
 /obj/item/storage/backpack/snail
 	/// Whether or not a bluespace anomaly core has been inserted
 	var/storage_core = FALSE
+	obj_flags = IMMUTABLE_SLOW
 
 /obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
