@@ -82,6 +82,7 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
+<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT REMOVAL END
 	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
@@ -111,6 +112,10 @@
 		/datum/reagent/medicine/morphine
 	)
 	//SKYRAT EDIT ADDITION END
+=======
+	/// Starting purity of the created reagents
+	var/base_reagent_purity = 1
+>>>>>>> b1c5e5e0f6a (Foodening (#77887))
 
 	var/list/recording_recipe
 
@@ -319,7 +324,7 @@
 					if(!cell?.use(to_dispense / powerefficiency))
 						say("Not enough energy to complete operation!")
 						return
-					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature)
+					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 
 					work_animation()
 			else
@@ -359,7 +364,7 @@
 					if(!cell?.use(to_dispense / powerefficiency))
 						say("Not enough energy to complete operation!")
 						return
-					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature)
+					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 					work_animation()
 				else
 					recording_recipe[key] += dispense_amount
@@ -457,7 +462,7 @@
 	if(beaker?.reagents)
 		R += beaker.reagents
 	for(var/i in 1 to total)
-		Q.add_reagent(pick(dispensable_reagents), 10, reagtemp = dispensed_temperature)
+		Q.add_reagent(pick(dispensable_reagents), 10, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 	R += Q
 	chem_splash(get_turf(src), null, 3, R)
 	if(beaker?.reagents)
@@ -607,6 +612,7 @@
 		/datum/reagent/toxin/mindbreaker,
 		/datum/reagent/toxin/staminatoxin
 	)
+	base_reagent_purity = 0.5
 
 /obj/machinery/chem_dispenser/drinks/Initialize(mapload)
 	. = ..()
