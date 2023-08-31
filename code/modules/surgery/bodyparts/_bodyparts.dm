@@ -249,12 +249,6 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
-	//SKYRAT EDIT ADDITION END
 
 	if(length(external_organs))
 		for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -423,11 +417,7 @@
 	var/atom/drop_loc = drop_location()
 	if(IS_ORGANIC_LIMB(src))
 		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	//seep_gauze(9999) // destroy any existing gauze if any exists
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
+	seep_gauze(9999) // destroy any existing gauze if any exists
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/organ/external/external in external_organs)
@@ -595,7 +585,9 @@
 					damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
 				wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg + (damaged_percent * DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
 
-			current_gauze?.get_hit()
+			if (istype(current_gauze, /obj/item/stack/medical/gauze))
+				var/obj/item/stack/medical/gauze/our_gauze = current_gauze
+				our_gauze.get_hit()
 			//SKYRAT EDIT ADDITION END - MEDICAL
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction, damage_source = damage_source)
 

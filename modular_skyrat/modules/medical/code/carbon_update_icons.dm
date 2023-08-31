@@ -6,9 +6,9 @@
 
 	for(var/b in bodyparts)
 		var/obj/item/bodypart/BP = b
-		var/obj/item/stack/medical/gauze = BP.current_gauze
-		if (!gauze)
+		var/obj/item/stack/medical/gauze/our_gauze = BP.current_gauze
+		if (!our_gauze)
 			continue
-		overlays.add_overlay(gauze.get_overlay_prefix())
+		overlays.add_overlay(our_gauze.get_overlay_prefix())
 
 	apply_overlay(BANDAGE_LAYER)
