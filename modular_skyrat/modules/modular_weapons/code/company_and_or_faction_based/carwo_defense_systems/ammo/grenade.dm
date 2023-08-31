@@ -72,7 +72,7 @@
 /obj/projectile/bullet/c980grenade/smoke/fuse_activation(atom/target)
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	var/datum/effect_system/fluid_spread/smoke/bad/smoke = new
-	smoke.set_up(2, holder = src, location = src)
+	smoke.set_up(0.75, holder = src, location = src)
 	smoke.start()
 
 /obj/item/ammo_box/c980grenade/smoke
@@ -97,17 +97,11 @@
 	name = ".980 Tydhouer shrapnel grenade"
 
 	/// What type of casing should we put inside the bullet to act as shrapnel later
-	var/casing_to_spawn = /obj/item/ammo_casing/shrapnel_exploder
-	/// Stored casing inside the bullet to explode into shrapnel later
-	var/obj/item/ammo_casing/shrapnel_casing
-
-/obj/projectile/bullet/c980grenade/shrapnel/Initialize(mapload)
-	. = ..()
-
-	shrapnel_casing = new casing_to_spawn(src)
+	var/casing_to_spawn = /obj/item/grenade/c980payload
 
 /obj/projectile/bullet/c980grenade/shrapnel/fuse_activation(atom/target)
-	shrapnel_casing.fire_casing(target, firer)
+	var/obj/item/grenade/shrapnel_maker = new casing_to_spawn(get_turf(src))
+	shrapnel_maker.detonate()
 
 /obj/item/ammo_box/c980grenade/shrapnel
 	name = "ammo box (.980 Tydhouer shrapnel)"
@@ -117,13 +111,13 @@
 
 	ammo_type = /obj/item/ammo_casing/c980grenade/shrapnel
 
-/obj/item/ammo_casing/shrapnel_exploder
-	name = "explosive payload"
-
-	variance = 360
-	pellets = 12
-
-	projectile_type = /obj/projectile/bullet/shrapnel
+/obj/item/grenade/c980payload
+	shrapnel_type = /obj/projectile/bullet/shrapnel
+	shrapnel_radius = 2
+	ex_dev = 0
+	ex_heavy = 0
+	ex_light = 0
+	ex_flame = 0
 
 // .980 phosphor grenade
 
@@ -138,14 +132,14 @@
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 	name = ".980 Tydhouer phosphor grenade"
 
-	casing_to_spawn = /obj/item/ammo_casing/shrapnel_exploder/phosphor
+	var/casing_to_spawn = /obj/item/grenade/c980payload/phosphor
 
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor/fuse_activation(atom/target)
 	. = ..()
 
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	var/datum/effect_system/fluid_spread/smoke/quick/smoke = new
-	smoke.set_up(2, holder = src, location = src)
+	smoke.set_up(0.75, holder = src, location = src)
 	smoke.start()
 
 /obj/item/ammo_box/c980grenade/shrapnel/phosphor
@@ -160,6 +154,9 @@
 	pellets = 8
 
 	projectile_type = /obj/projectile/bullet/incendiary/fire/backblast/short_range
+
+/obj/item/grenade/c980payload/phosphor
+	shrapnel_type = /obj/projectile/bullet/incendiary/fire/backblast/short_range
 
 /obj/projectile/bullet/incendiary/fire/backblast/short_range
 	range = 2
@@ -180,8 +177,8 @@
 /obj/projectile/bullet/c980grenade/riot/fuse_activation(atom/target)
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new()
-	smoke.chemholder.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 30)
-	smoke.set_up(2, holder = src, location = src)
+	smoke.chemholder.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 10)
+	smoke.set_up(0.75, holder = src, location = src)
 	smoke.start()
 
 /obj/item/ammo_box/c980grenade/riot
