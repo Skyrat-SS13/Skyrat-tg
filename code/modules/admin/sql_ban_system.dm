@@ -49,14 +49,14 @@
 		"player_ckey" = player_ckey,
 		"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
 	)
-  	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
 	var/ssqlname = CONFIG_GET(string/serversqlname)
 	var/server_check
 	if(CONFIG_GET(flag/respect_global_bans))
 		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
 	else
 		server_check = "server_name = '[ssqlname]'"
- 	// SKYRAT EDIT ADDITION END - MULTISERVER
+	// SKYRAT EDIT ADDITION END - MULTISERVER
 	var/sql_roles
 	if(islist(roles))
 		var/list/sql_roles_list = list()
@@ -176,12 +176,14 @@
 	var/is_admin = FALSE
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		is_admin = TRUE
-	var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/ssqlname = CONFIG_GET(string/serversqlname)
 	var/server_check
 	if(CONFIG_GET(flag/respect_global_bans))
 		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
 	else
-		server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
+		server_check = "server_name = '[ssqlname]'"
+	// SKYRAT EDIT ADDITION END - MULTISERVER
 	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
 		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW()) AND [server_check]", //skyrat edit
 		list("ckey" = ckey)
@@ -693,12 +695,12 @@
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
-	//SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
+	// SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
 	if(BAN_PACIFICATION in roles_to_ban)
 		var/client/C = GLOB.directory[player_ckey]
 		if(ismob(C.mob))
 			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
-	//SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
 
 	//var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]") // SKYRAT EDIT ORIGINAL
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]", FALSE) // SKYRAT EDIT --  Player ticket viewing
@@ -997,7 +999,7 @@
 		"ip" = player_ip || null,
 		"cid" = player_cid || null,
 		"change_message" = change_message,
-		"global_ban" = global_ban //SKYRAT EDIT ADDITION - MULTISERVER
+		"global_ban" = global_ban // SKYRAT EDIT ADDITION - MULTISERVER
 	)
 	var/where
 	if(text2num(mirror_edit))
