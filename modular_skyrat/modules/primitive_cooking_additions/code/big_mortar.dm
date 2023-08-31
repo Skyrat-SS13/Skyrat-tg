@@ -64,8 +64,8 @@
 			balloon_alert(user, "already full")
 			return TRUE
 		
-		if(!attacking_item.contents.len)
-			balloon_alert(user, "bag empty")
+		if(!length(attacking_item.contents))
+			balloon_alert(user, "[attacking_item] empty")
 			return TRUE
 			
 		for(var/obj/item/target_item in attacking_item.contents)
@@ -76,7 +76,7 @@
 				target_item.forceMove(src)
 
 		if (length(contents) >= maximum_contained_items)
-			balloon_alert(user, "mortar filled")
+			balloon_alert(user, "[src] filled")
 		else
 			balloon_alert(user, "bag emptied")
 			
