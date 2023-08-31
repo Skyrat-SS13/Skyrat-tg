@@ -44,11 +44,11 @@
 /// Returns get_ammo() with the appropriate args passed to it - some guns like the revolver and bow are special cases
 /datum/component/ammo_hud/proc/get_accurate_ammo_count(obj/item/gun/ballistic/the_gun, count_chambered = TRUE, count_empties = FALSE)
 	if(istype(the_gun, /obj/item/gun/ballistic/revolver))
-		return the_gun.get_ammo(FALSE, FALSE) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
+		return the_gun.get_ammo(countchambered = FALSE, countempties = FALSE) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
 	if(istype(the_gun, /obj/item/gun/ballistic/bow)) // bows are also weird and shouldn't count the chambered
-		return the_gun.get_ammo(FALSE)
+		return the_gun.get_ammo(countchambered = FALSE)
 
-	return the_gun.get_ammo(TRUE)
+	return the_gun.get_ammo(countchambered = TRUE, countempties = TRUE)
 
 
 /datum/component/ammo_hud/proc/update_hud()
