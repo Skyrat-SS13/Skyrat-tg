@@ -78,3 +78,13 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/no_mag
 	spawnwithmagazine = FALSE
+
+// fun & games but evil this time
+
+/obj/item/gun/ballistic/automatic/sol_grenade_launcher/evil
+	icon_state = "kiboko_evil"
+	worn_icon_state = "kiboko_evil"
+	inhand_icon_state = "kiboko_evil"
+
+/obj/item/gun/ballistic/automatic/sol_grenade_launcher/evil/no_mag
+	spawnwithmagazine = FALSE
