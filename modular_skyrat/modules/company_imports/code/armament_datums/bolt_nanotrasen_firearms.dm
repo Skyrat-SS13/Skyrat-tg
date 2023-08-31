@@ -17,96 +17,73 @@
 	item_type = /obj/item/clothing/suit/armor/vest/alt
 	cost = PAYCHECK_CREW * 3
 
-// Fully non-lethal weapons
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm
+	subcategory = "Sidearms"
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal
-	subcategory = "Non-Lethal Weapons"
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal/responder
-	item_type = /obj/item/gun/energy/disabler/bolt_disabler
-	cost = PAYCHECK_CREW * 5
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal/pepperball
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/pepperball
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
 	cost = PAYCHECK_CREW * 5
 
-// Lethal pistols, requires some company interest first
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm
-	subcategory = "Lethal Sidearms"
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/detective_revolver
-	item_type = /obj/item/gun/ballistic/revolver/c38/detective
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/eland
+	item_type = /obj/item/gun/ballistic/revolver/sol
 	cost = PAYCHECK_COMMAND * 4
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/g17
-	item_type = /obj/item/gun/ballistic/automatic/pistol/g17
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/wespe
+	item_type = /obj/item/gun/ballistic/automatic/pistol/sol
 	cost = PAYCHECK_COMMAND * 4
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/mk58
-	item_type = /obj/item/gun/ballistic/automatic/pistol/mk58
-	cost = PAYCHECK_COMMAND * 4
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/skild
+	item_type = /obj/item/gun/ballistic/automatic/pistol/trappiste
+	cost = PAYCHECK_COMMAND * 6
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/m1911
-	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
-	cost = PAYCHECK_COMMAND * 4
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
-	subcategory = "Sidearm Magazines"
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader
-	item_type = /obj/item/ammo_box/c38
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader_rubber
-	item_type = /obj/item/ammo_box/c38/match/bouncy
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17_rubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58_rubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/m1911
-	item_type = /obj/item/ammo_box/magazine/m45
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/takbok
+	item_type = /obj/item/gun/ballistic/revolver/sol/heavy
+	cost = PAYCHECK_COMMAND * 6
 
 // Lethal anything that's not a pistol, requires high company interest
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm
-	subcategory = "Lethal Longarms"
+	subcategory = "Longarms"
 	restricted = TRUE
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/riot_shotgun
-	item_type = /obj/item/gun/ballistic/shotgun/riot
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/renoster
+	item_type = /obj/item/gun/ballistic/shotgun/riot/sol
 	cost = PAYCHECK_COMMAND * 6
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/m23
-	item_type = /obj/item/gun/ballistic/shotgun/m23
-	cost = PAYCHECK_COMMAND * 8
-
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/wt550
-	item_type = /obj/item/gun/ballistic/automatic/wt550
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/sindano
+	item_type = /obj/item/gun/ballistic/automatic/sol_smg
 	cost = PAYCHECK_COMMAND * 6
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/cmg
-	item_type = /obj/item/gun/ballistic/automatic/cmg
-	cost = PAYCHECK_COMMAND * 6
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/infanterie
+	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
+	cost = PAYCHECK_COMMAND * 10
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines
-	subcategory = "Longarm Magazines"
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines
+	subcategory = "Magazines"
 	cost = PAYCHECK_CREW
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/wt550
-	item_type = /obj/item/ammo_box/magazine/wt550m9
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/c35_mag
+	item_type = /obj/item/ammo_box/magazine/c35sol_pistol
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/c35_extended
+	item_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg_rubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/c585_mag
+	item_type = /obj/item/ammo_box/magazine/c585trappiste_pistol
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/sol_rifle_short
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/sol_rifle_standard
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/sol_rifle_extended
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/extended
+	cost = PAYCHECK_CREW * 3
+	contraband = TRUE
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/magazines/sol_rifle_drum
+	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
+	cost = PAYCHECK_COMMAND * 3
+	contraband = TRUE
