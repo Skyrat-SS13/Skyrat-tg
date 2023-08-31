@@ -49,7 +49,14 @@
 		"player_ckey" = player_ckey,
 		"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
 	)
-
+  	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/ssqlname = CONFIG_GET(string/serversqlname)
+	var/server_check
+	if(CONFIG_GET(flag/respect_global_bans))
+		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
+	else
+		server_check = "server_name = '[ssqlname]'"
+ 	// SKYRAT EDIT ADDITION END - MULTISERVER
 	var/sql_roles
 	if(islist(roles))
 		var/list/sql_roles_list = list()
@@ -58,49 +65,10 @@
 			sql_roles_list += ":role[i]"
 		sql_roles = sql_roles_list.Join(", ")
 	else
-<<<<<<< HEAD
-		var/values = list(
-			"player_ckey" = player_ckey,
-			"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
-		)
-		var/ssqlname = CONFIG_GET(string/serversqlname)  // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
-		var/server_check
-		if(CONFIG_GET(flag/respect_global_bans))
-			server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
-		else
-			server_check = "server_name = '[ssqlname]'" // SKYRAT EDIT ADDITION END - MULTISERVER
-		var/sql_roles
-		if(islist(roles))
-			var/list/sql_roles_list = list()
-			for (var/i in 1 to roles.len)
-				values["role[i]"] = roles[i]
-				sql_roles_list += ":role[i]"
-			sql_roles = sql_roles_list.Join(", ")
-		else
-			values["role"] = roles
-			sql_roles = ":role"
-		var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
-			SELECT 1
-			FROM [format_table_name("ban")]
-			WHERE
-				ckey = :player_ckey AND
-				role IN ([sql_roles]) AND
-				unbanned_datetime IS NULL AND
-				(expiration_time IS NULL OR expiration_time > NOW())
-				AND [server_check]
-				AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
-		"}, values)
-		if(!query_check_ban.warn_execute())
-			qdel(query_check_ban)
-			return
-		if(query_check_ban.NextRow())
-			qdel(query_check_ban)
-			return TRUE
-=======
 		values["role"] = roles
 		sql_roles = ":role"
 
-	var/datum/db_query/query_check_ban = SSdbcore.NewQuery({"
+	var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 		SELECT 1
 		FROM [format_table_name("ban")]
 		WHERE
@@ -108,12 +76,12 @@
 			role IN ([sql_roles]) AND
 			unbanned_datetime IS NULL AND
 			(expiration_time IS NULL OR expiration_time > NOW())
+			AND [server_check]
 			AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
 	"}, values)
 
 	// If there's an SQL error, return FALSE.
 	if(!query_check_ban.warn_execute())
->>>>>>> a56270cb05b (Fixes issue where role banned players can still play roles they're banned from. (#77738))
 		qdel(query_check_ban)
 		return FALSE
 
