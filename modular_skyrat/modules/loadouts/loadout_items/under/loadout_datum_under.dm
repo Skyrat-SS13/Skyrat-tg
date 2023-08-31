@@ -174,10 +174,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
 
-/datum/loadout_item/under/jumpsuit/utility
-	name = "Utility Uniform"
-	item_path = /obj/item/clothing/under/misc/skyrat/utility
-
 /datum/loadout_item/under/jumpsuit/cargo
 	name = "Cargo Technician's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/cargo/tech
@@ -199,6 +195,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Quartermaster's Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/qm
 	restricted_roles = list(JOB_QUARTERMASTER)
+
+/datum/loadout_item/under/jumpsuit/utility
+	name = "Utility Uniform"
+	item_path = /obj/item/clothing/under/misc/skyrat/utility
 
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"
