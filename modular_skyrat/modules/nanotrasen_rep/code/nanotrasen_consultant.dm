@@ -54,7 +54,7 @@
 	head = /obj/item/clothing/head/nanotrasen_consultant
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/trappiste_small_case/skild = 1,
+		/obj/item/storage/toolbox/guncase/trappiste_small_case/skild = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
