@@ -1,5 +1,7 @@
 /obj/effect/spawner/armory_spawn
 	icon_state = "loot"
+	icon = 'icons/effects/random_spawners.dmi'
+
 	layer = OBJ_LAYER
 	/// A list of possible guns to spawn.
 	var/list/guns
@@ -34,7 +36,6 @@
 						new spawned_ballistic_gun.spawn_magazine_type (spawned_box)
 
 /obj/effect/spawner/armory_spawn/shotguns
-	icon_state = "random_shotgun"
 	guns = list(
 		/obj/item/gun/ballistic/shotgun/riot/sol,
 		/obj/item/gun/ballistic/shotgun/riot/sol,
@@ -69,7 +70,6 @@
 	new /obj/item/stock_parts/cell/microfusion(src)
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
-	icon_state = "random_rifle"
 	guns = list(
 		/obj/item/gun/ballistic/automatic/sol_rifle,
 		/obj/item/gun/ballistic/automatic/sol_rifle,
@@ -84,7 +84,6 @@
 	)
 
 /obj/effect/spawner/armory_spawn/smg
-	icon_state = "random_rifle"
 	vertical_guns = FALSE
 	guns = list(
 		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
