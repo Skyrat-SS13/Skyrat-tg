@@ -1,4 +1,5 @@
 /obj/effect/spawner/armory_spawn
+	icon_state = "loot"
 	layer = OBJ_LAYER
 	/// A list of possible guns to spawn.
 	var/list/guns

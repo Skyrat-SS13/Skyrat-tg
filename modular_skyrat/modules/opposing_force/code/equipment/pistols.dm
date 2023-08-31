@@ -17,7 +17,7 @@
 	admin_note = "WARNING: Roughly on-par with the .357, can use AP rounds."
 
 /datum/opposing_force_equipment/pistol/nri_pistol
-	item_type = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	item_type = /obj/item/gun/ballistic/automatic/pistol/nri
 	admin_note = "WARNING: Roughly on-par with the .357, can use AP rounds. Essentially a reflavored APS."
 
 /datum/opposing_force_equipment/pistol/g357
