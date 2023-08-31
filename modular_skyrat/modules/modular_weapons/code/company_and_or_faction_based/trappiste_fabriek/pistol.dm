@@ -63,6 +63,7 @@
 	icon_state = "skild"
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/pistol_heavy.ogg'
+	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
 
 	w_class = WEIGHT_CLASS_NORMAL
 

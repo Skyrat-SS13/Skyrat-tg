@@ -34,6 +34,7 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	caliber = CALIBER_SOL35SHORT
 	ammo_type = /obj/item/ammo_casing/c35sol
 	max_ammo = 24
 

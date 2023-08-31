@@ -7,7 +7,7 @@
 	name = ".40 Sol Long lethal bullet casing"
 	desc = "A SolFed standard caseless lethal rifle round."
 
-	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/ammo.dmi'
 	icon_state = "40sol"
 
 	caliber = CALIBER_SOL40LONG
@@ -28,11 +28,12 @@
 	name = "ammo box (.40 Sol Long lethal)"
 	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets."
 
-	icon = 'modular_skyrat/modules/modular_weapons/icons/luna_orbital_weapons/magazines.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/ammo.dmi'
 	icon_state = "40box"
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	caliber = CALIBER_SOL40LONG
 	ammo_type = /obj/item/ammo_casing/c40sol
 	max_ammo = 30
 
@@ -89,19 +90,13 @@
 
 	projectile_piercing = PASSMOB
 
-	/// How many times has this bullet penetrated something?
-	var/penetrations = 0
-
 /obj/projectile/bullet/c40sol/pierce/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/poor_sap = target
 
 		// If the target mob has enough armor to stop the bullet, or the bullet has already gone through two people, stop it on this hit
-		if((poor_sap.run_armor_check(def_zone, BULLET, "", "", silent = TRUE) > 20) || (penetrations > 2))
+		if((poor_sap.run_armor_check(def_zone, BULLET, "", "", silent = TRUE) > 20) || (pierces > 2))
 			projectile_piercing = NONE
-
-		else
-			penetrations += 1
 
 	return ..()
 

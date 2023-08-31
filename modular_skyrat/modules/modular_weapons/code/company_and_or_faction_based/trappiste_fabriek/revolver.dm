@@ -43,6 +43,7 @@
 	icon_state = "takbok"
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/revolver_heavy.ogg'
+	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/c585trappiste
 

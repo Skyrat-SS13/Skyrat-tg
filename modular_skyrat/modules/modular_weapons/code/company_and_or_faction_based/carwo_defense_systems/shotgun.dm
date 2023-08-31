@@ -28,6 +28,11 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 
+/obj/item/gun/ballistic/shotgun/riot/sol/Initialize(mapload)
+	. = ..()
+
+	SET_BASE_PIXEL(-8, 0)
+
 /obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
 
