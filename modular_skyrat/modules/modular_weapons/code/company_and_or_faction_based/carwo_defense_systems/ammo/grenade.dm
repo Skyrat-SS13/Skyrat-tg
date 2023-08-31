@@ -120,7 +120,7 @@
 /obj/item/ammo_casing/shrapnel_exploder
 	name = "explosive payload"
 
-	spread = 360
+	variance = 360
 	pellets = 12
 
 	projectile_type = /obj/projectile/bullet/shrapnel
