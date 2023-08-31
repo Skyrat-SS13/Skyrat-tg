@@ -46,16 +46,6 @@
 	build_path = /obj/item/ammo_casing/c45/rubber
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
-// .460 Rowland magnum, for the M45A5
-
-/datum/design/b460
-	name = ".460 Rowland magnum"
-	id = "b460"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 8)
-	build_path = /obj/item/ammo_casing/b460
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
 // 10mm
 /datum/design/c10mm_lethal
 	name = "10mm Bullet"

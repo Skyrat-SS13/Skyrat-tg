@@ -10,7 +10,7 @@
 	lefthand_file = 'modular_skyrat/modules/projectiles/icons/inhands/lefthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	spawnwithmagazine = FALSE
-	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+	accepted_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'

@@ -20,10 +20,6 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm
 	subcategory = "Sidearms"
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/pepperball
-	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
-	cost = PAYCHECK_CREW * 5
-
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm/eland
 	item_type = /obj/item/gun/ballistic/revolver/sol
 	cost = PAYCHECK_COMMAND * 4

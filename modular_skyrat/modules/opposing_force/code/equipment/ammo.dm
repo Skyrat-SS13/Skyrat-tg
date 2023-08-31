@@ -122,7 +122,3 @@
 /datum/opposing_force_equipment/ammo/c20rfire
 	name = "C-20r Magazine (Incendiary)"
 	item_type = /obj/item/ammo_box/magazine/smgm45/incen
-
-/datum/opposing_force_equipment/ammo/pepperball
-	name = "Pepperball Magazine"
-	item_type = /obj/item/ammo_box/magazine/pepperball

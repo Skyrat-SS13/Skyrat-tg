@@ -34,18 +34,4 @@
 	admin_note = "WARNING: This weapon is very powerful, firing semi-auto 60 damage bullets."
 
 /datum/opposing_force_equipment/pistol/wespe
-	item_type = /obj/item/gun/ballistic/automatic/pistol/sol
-	admin_note = "Fires 25 damage bullets."
-
-/datum/opposing_force_equipment/pistol/skild
-	item_type = /obj/item/gun/ballistic/automatic/pistol/trappiste
-	admin_note = "Fires 45 damage bullets."
-
-/datum/opposing_force_equipment/pistol/eland
-	item_type = /obj/item/gun/ballistic/revolver/sol
-
-/datum/opposing_force_equipment/pistol/takbok
-	item_type = /obj/item/gun/ballistic/revolver/sol/heavy
-
-/datum/opposing_force_equipment/pistol/pepperball
-	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
+	item_type = /obj/item/gun/ballistic/automatic/pistol/sol/evil

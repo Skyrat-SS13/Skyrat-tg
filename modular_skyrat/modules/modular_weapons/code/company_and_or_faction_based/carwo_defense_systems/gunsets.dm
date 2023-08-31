@@ -8,3 +8,18 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_righthand.dmi'
 	inhand_icon_state = "yellowcase"
+
+// Sindano in a box, how innovative!
+
+/obj/item/storage/box/gunset/carwo_large_case/sindano
+	name = "Carwo 'Sindano' gunset"
+
+/obj/item/storage/box/gunset/carwo_large_case/sindano/PopulateContents()
+	. = ..()
+
+	generate_items_inside(list(
+		/obj/item/gun/ballistic/automatic/sol_smg/no_mag = 1,
+		/obj/item/ammo_box/magazine/c35sol_pistol/stendo = 3,
+		/obj/item/ammo_box/c35sol/incapacitator = 1,
+		/obj/item/ammo_box/c35sol = 1,
+	),src)

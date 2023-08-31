@@ -300,28 +300,6 @@
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
-/obj/item/gun/ballistic/automatic/ar/modular/model75
-	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT chambered for .310 Strilka. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
-	icon_state = "arg75"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
-	fire_delay = 5
-	fire_sound_volume = 90
-	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-
-/obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	name = "\improper ARG-75 magazine"
-	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .310 Strilka."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/strilka310
-	caliber = CALIBER_STRILKA310
-	max_ammo = 20
-
 // GUBMAN3 - FULL BULLET RENAME
 // i loathe the above
 

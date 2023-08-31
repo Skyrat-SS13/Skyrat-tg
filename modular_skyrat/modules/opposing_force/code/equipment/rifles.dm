@@ -10,10 +10,4 @@
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 38 damage bullets."
 
 /datum/opposing_force_equipment/rifle/infanterie
-	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
-
-/datum/opposing_force_equipment/rifle/elite
-	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
-
-/datum/opposing_force_equipment/rifle/otomatic
-	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
+	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/evil

@@ -1,6 +1,4 @@
 /obj/effect/spawner/armory_spawn
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/spawner.dmi'
-	icon_state = "random_gun"
 	layer = OBJ_LAYER
 	/// A list of possible guns to spawn.
 	var/list/guns
@@ -56,16 +54,14 @@
 /obj/item/storage/box/ammo_box
 	name = "ammo box"
 	desc = "A box filled with ammunition."
-	icon_state = "boxhrifle"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
+	icon_state = "microfusion_box"
 	illustration = null
 	layer = 2.9
 
 /obj/item/storage/box/ammo_box/microfusion
 	name = "microfusion cell container"
 	desc = "A box filled with microfusion cells."
-	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
-	icon_state = "microfusion_box"
 
 /obj/item/storage/box/ammo_box/microfusion/PopulateContents()
 	new /obj/item/stock_parts/cell/microfusion(src)
@@ -75,23 +71,23 @@
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	icon_state = "random_rifle"
 	guns = list(
-		/obj/item/gun/ballistic/automatic/ar,
-		/obj/item/gun/ballistic/automatic/m16,
-		/obj/item/gun/ballistic/automatic/cfa_rifle,
+		/obj/item/gun/ballistic/automatic/sol_rifle,
+		/obj/item/gun/ballistic/automatic/sol_rifle,
+		/obj/item/gun/ballistic/automatic/sol_rifle/machinegun,
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
 	guns = list(
 		/obj/item/gun/energy/laser,
-		/obj/item/gun/energy/laser/cfa_paladin,
+		/obj/item/gun/energy/laser,
 		/obj/item/gun/energy/e_gun,
 	)
 
-/obj/effect/spawner/armory_spawn/cmg
+/obj/effect/spawner/armory_spawn/smg
 	icon_state = "random_rifle"
 	vertical_guns = FALSE
 	guns = list(
-		/obj/item/storage/box/gunset/cmg,
-		/obj/item/storage/box/gunset/cmg,
-		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/box/gunset/carwo_large_case/sindano,
+		/obj/item/storage/box/gunset/carwo_large_case/sindano,
+		/obj/item/storage/box/gunset/carwo_large_case/sindano,
 	)

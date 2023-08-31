@@ -6,7 +6,7 @@
 	name = "gun case"
 	desc = "A gun case with foam inserts laid out to fit a weapon, magazines, and gear securely."
 
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
 	icon_state = "guncase"
 
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'

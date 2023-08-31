@@ -12,7 +12,7 @@
 	icon_state = "nri_smg"
 	inhand_icon_state = "nri_smg"
 	w_class = WEIGHT_CLASS_BULKY
-	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	accepted_magazine_type = /obj/item/ammo_box/magazine/uzim9mm
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 5
