@@ -5,23 +5,33 @@
 /obj/item/storage/box/gunset
 	name = "gun case"
 	desc = "A gun case with foam inserts laid out to fit a weapon, magazines, and gear securely."
-	icon_state = "guncase" //Currently only comes as a generic gray, though there's sprites for Armadyne branded ones in the icon file. There's also sprites for smaller ones!
-	inhand_icon_state = "sec-case"
+
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon_state = "guncase"
+
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
+	inhand_icon_state = "sec-case"
+
+	illustration = null
+
 	w_class = WEIGHT_CLASS_BULKY
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
+
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
-	illustration = null
+
+	/// If the guncase sprite shows as visually being opened
 	var/opened = FALSE
+	/// If the guncase spawns with an ammo pouch
+	var/comes_with_pouch = FALSE
 
 //Add this extra line to examine() if you make an armadyne variant: "It has a textured carbon grip, and the <b>[span_red("Armadyne Corporation")]</b> logo etched into the top."
 
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
-	new /obj/item/storage/pouch/ammo(src)
+	if(comes_with_pouch)
+		new /obj/item/storage/pouch/ammo(src)
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()

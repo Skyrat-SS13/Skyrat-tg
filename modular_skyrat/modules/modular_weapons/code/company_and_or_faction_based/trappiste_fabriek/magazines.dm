@@ -14,3 +14,6 @@
 	ammo_type = /obj/item/ammo_casing/c585trappiste
 	caliber = CALIBER_585TRAPPISTE
 	max_ammo = 6
+
+/obj/item/ammo_box/magazine/c585trappiste_pistol/spawns_empty
+	start_empty = TRUE
