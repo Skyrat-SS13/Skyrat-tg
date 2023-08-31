@@ -107,7 +107,7 @@
 	shrapnel_casing = new casing_to_spawn(src)
 
 /obj/projectile/bullet/c980grenade/shrapnel/fuse_activation(atom/target)
-	shrapnel_casing.fire_casing(target)
+	shrapnel_casing.fire_casing(target, firer)
 
 /obj/item/ammo_box/c980grenade/shrapnel
 	name = "ammo box (.980 Tydhouer shrapnel)"
