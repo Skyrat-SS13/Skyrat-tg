@@ -16,6 +16,8 @@
 
 	special_mags = TRUE
 
+	bolt_type = BOLT_TYPE_LOCKING
+
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING

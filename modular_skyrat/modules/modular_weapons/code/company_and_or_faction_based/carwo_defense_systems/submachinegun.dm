@@ -11,6 +11,8 @@
 
 	special_mags = TRUE
 
+	bolt_type = BOLT_TYPE_OPEN
+
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 	slot_flags = ITEM_SLOT_OCLOTHING | ITEM_SLOT_BELT
