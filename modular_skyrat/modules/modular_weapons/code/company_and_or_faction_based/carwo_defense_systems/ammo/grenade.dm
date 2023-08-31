@@ -148,13 +148,13 @@
 	smoke.set_up(2, holder = src, location = src)
 	smoke.start()
 
-/obj/item/ammo_box/c980grenade/shrapnel
+/obj/item/ammo_box/c980grenade/shrapnel/phosphor
 	name = "ammo box (.980 Tydhouer phosphor)"
 	desc = "A box of four .980 Tydhouer phosphor grenades. Instructions on the box indicate these are incendiary explosive rounds. Its also covered in hazard signs, odd."
 
 	icon_state = "980box_gas_alternate"
 
-	ammo_type = /obj/item/ammo_casing/c980grenade/shrapnel
+	ammo_type = /obj/item/ammo_casing/c980grenade/shrapnel/phosphor
 
 /obj/item/ammo_casing/shrapnel_exploder/phosphor
 	pellets = 8
