@@ -52,9 +52,6 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(
-		/obj/item/storage/box/gunset/carwo_large_case/sindano = 1,
-	)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -63,6 +60,8 @@
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/security
+
+	l_hand = /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano
 
 	id_trim = /datum/id_trim/job/blueshield
 

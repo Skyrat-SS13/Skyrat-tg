@@ -17,7 +17,7 @@
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/sol_smg/no_mag
 	extra_to_spawn = /obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty
 
-/obj/item/storage/box/gunset/carwo_large_case/sindano/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano/PopulateContents()
 	. = ..()
 
 	generate_items_inside(list(

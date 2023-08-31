@@ -35,10 +35,9 @@
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
 	guns = list(
-		/obj/item/gun/ballistic/shotgun/riot,
-		/obj/item/gun/ballistic/shotgun/riot,
-		/obj/item/gun/ballistic/shotgun/riot,
-		/obj/item/gun/ballistic/shotgun/riot,
+		/obj/item/gun/ballistic/shotgun/riot/sol,
+		/obj/item/gun/ballistic/shotgun/riot/sol,
+		/obj/item/gun/ballistic/shotgun/riot/sol,
 	)
 
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
@@ -87,7 +86,7 @@
 	icon_state = "random_rifle"
 	vertical_guns = FALSE
 	guns = list(
-		/obj/item/storage/box/gunset/carwo_large_case/sindano,
-		/obj/item/storage/box/gunset/carwo_large_case/sindano,
-		/obj/item/storage/box/gunset/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
 	)
