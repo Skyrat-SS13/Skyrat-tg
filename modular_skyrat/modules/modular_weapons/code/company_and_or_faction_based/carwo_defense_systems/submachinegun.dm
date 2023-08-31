@@ -28,9 +28,9 @@
 	suppressor_x_offset = 11
 
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 3
 
-	spread = 5
+	spread = 10
 
 /obj/item/gun/ballistic/automatic/sol_smg/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)

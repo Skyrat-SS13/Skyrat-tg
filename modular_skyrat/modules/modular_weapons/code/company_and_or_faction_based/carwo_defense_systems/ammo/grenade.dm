@@ -71,6 +71,7 @@
 	name = ".980 Tydhouer smoke grenade"
 
 /obj/projectile/bullet/c980grenade/smoke/fuse_activation(atom/target)
+	playsound(src, 'modular_skyrat/modules/modular_weapons/sounds/grenade_burst.ogg', 50, TRUE, -3)
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	var/datum/effect_system/fluid_spread/smoke/bad/smoke = new
 	smoke.set_up(0.75, holder = src, location = src)
@@ -183,6 +184,7 @@
 	name = ".980 Tydhouer smoke grenade"
 
 /obj/projectile/bullet/c980grenade/riot/fuse_activation(atom/target)
+	playsound(src, 'modular_skyrat/modules/modular_weapons/sounds/grenade_burst.ogg', 50, TRUE, -3)
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new()
 	smoke.chemholder.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 10)

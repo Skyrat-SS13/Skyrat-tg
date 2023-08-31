@@ -1,6 +1,6 @@
 // Base yellow with symbol trappiste case
 
-/obj/item/storage/box/gunset/trappiste_small_case
+/obj/item/storage/toolbox/guncase/trappiste_small_case
 	desc = "A thick yellow gun case with foam inserts laid out to fit a weapon, magazines, and gear securely. The five square grid of Trappiste Fabriek is displayed prominently on the top."
 
 	icon_state = "case_trappiste"
@@ -9,28 +9,24 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/cases_righthand.dmi'
 	inhand_icon_state = "yellowcase"
 
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/toolbox/guncase/trappiste_small_case/Initialize(mapload)
+	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+
 // Gunset for the Wespe pistol
 
-/obj/item/storage/box/gunset/trappiste_small_case/wespe
+/obj/item/storage/toolbox/guncase/trappiste_small_case/wespe
 	name = "Trappiste 'Wespe' gunset"
 
-/obj/item/storage/box/gunset/trappiste_small_case/wespe/PopulateContents()
-	. = ..()
-
-	generate_items_inside(list(
-		/obj/item/gun/ballistic/automatic/pistol/sol/no_mag = 1,
-		/obj/item/ammo_box/magazine/c35sol_pistol = 4,
-	),src)
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/sol/no_mag
+	extra_to_spawn = /obj/item/ammo_box/magazine/c35sol_pistol
 
 // Gunset for the Skild heavy pistol
 
-/obj/item/storage/box/gunset/trappiste_small_case/skild
+/obj/item/storage/toolbox/guncase/trappiste_small_case/skild
 	name = "Trappiste 'Skild' gunset"
 
-/obj/item/storage/box/gunset/trappiste_small_case/skild/PopulateContents()
-	. = ..()
-
-	generate_items_inside(list(
-		/obj/item/gun/ballistic/automatic/pistol/trappiste/no_mag = 1,
-		/obj/item/ammo_box/magazine/c585trappiste_pistol = 4,
-	),src)
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/trappiste/no_mag
+	extra_to_spawn = /obj/item/ammo_box/magazine/c585trappiste_pistol
