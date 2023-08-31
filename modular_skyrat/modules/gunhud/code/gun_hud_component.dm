@@ -47,6 +47,7 @@
 		return the_gun.get_ammo(FALSE, FALSE) // fucking revolvers indeed - do not count empty or chambered rounds for the display HUD
 	if(istype(the_gun, /obj/item/gun/ballistic/bow)) // bows are also weird and shouldn't count the chambered
 		return the_gun.get_ammo(FALSE)
+
 	return the_gun.get_ammo(TRUE)
 
 
