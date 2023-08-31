@@ -128,12 +128,8 @@
 	recharge_rate = 2
 	no_den_usage = 1
 	school = SCHOOL_FORBIDDEN //this staff is evil. okay? it just is. look at this projectile type list. this is wrong.
-<<<<<<< HEAD
-	/// Static list of all projectiles we can fire from our staff.
-=======
 
 	/// List of all projectiles we can fire from our staff.
->>>>>>> d93dfbc35c4 (Adds Summon Cheese (#77778))
 	/// Doesn't contain all subtypes of magic projectiles, unlike what it looks like
 	var/list/allowed_projectile_types = list(
 		/obj/projectile/magic/animate,
