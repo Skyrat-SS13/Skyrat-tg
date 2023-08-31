@@ -13,6 +13,8 @@
 
 	suppressor_x_offset = 3
 
+	can_suppress = TRUE
+
 /obj/item/gun/ballistic/revolver/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_TRAPPISTE)
 

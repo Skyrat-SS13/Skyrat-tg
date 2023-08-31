@@ -41,6 +41,7 @@
 	return ..()
 
 /obj/projectile/bullet/c980grenade/proc/fuse_activation(atom/target)
+	playsound(src, 'modular_skyrat/modules/modular_weapons/sounds/grenade_burst.ogg', 50, TRUE, -3)
 	do_sparks(3, FALSE, src)
 
 /obj/item/ammo_box/c980grenade
@@ -101,8 +102,11 @@
 
 /obj/projectile/bullet/c980grenade/shrapnel/fuse_activation(atom/target)
 	var/obj/item/grenade/shrapnel_maker = new casing_to_spawn(get_turf(src))
+
 	shrapnel_maker.detonate()
 	qdel(shrapnel_maker)
+
+	playsound(src, 'modular_skyrat/modules/modular_weapons/sounds/grenade_burst.ogg', 50, TRUE, -3)
 
 /obj/item/ammo_box/c980grenade/shrapnel
 	name = "ammo box (.980 Tydhouer shrapnel)"
