@@ -82,7 +82,7 @@
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
 /datum/cargo_company/nanotrasen_bolt_weapons
-	name = BOLT_NANOTRASEN_DEFENSE_NAME
+	name = SOL_DEFENSE_DEFENSE_NAME
 	company_flag = CARGO_COMPANY_BOLT_NANOTRASEN
 	cost = 6000
 	cost_change_lower = -1000

@@ -18,7 +18,7 @@
 #define DONK_CO_NAME "Donk Corporation"
 #define KAHRAMAN_INDUSTRIES_NAME "Kahraman Heavy Industries"
 #define NAKAMURA_ENGINEERING_TOOLING_NAME "Nakamura Engineering Tooling Divison"
-#define BOLT_NANOTRASEN_DEFENSE_NAME "Nanotrasen-Bolt Personal Defense Coalition"
+#define SOL_DEFENSE_DEFENSE_NAME "Sol Defense Imports"
 #define MICROSTAR_ENERGY_NAME "MicroStar Energy Weapon Coalition"
 #define VITEZSTVI_AMMO_NAME "Vitezstvi Ammo & Weapon Accessories"
 
