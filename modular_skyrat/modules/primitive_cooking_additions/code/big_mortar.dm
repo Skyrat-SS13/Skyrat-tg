@@ -122,7 +122,7 @@
 
 ///Grinds the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
-	reagents.grind(src, user)
+	to_be_ground.grind(src, user)
 
 	to_chat(user, span_notice("You break [to_be_ground] into a fine powder."))
 	QDEL_NULL(to_be_ground)
