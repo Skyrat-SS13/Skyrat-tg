@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bite_consumption_mod = 0.5
 	foodtypes = FRUIT
-	juice_results = list(/datum/reagent/consumable/frostoil = 0)
+	juice_typepath = /datum/reagent/consumable/frostoil
 	tastes = list("snow" = 1)
