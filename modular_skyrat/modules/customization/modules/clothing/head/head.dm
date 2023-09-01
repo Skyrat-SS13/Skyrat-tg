@@ -55,32 +55,6 @@
 	acid = 50
 	wound = 6
 
-/obj/item/clothing/head/hats/sec/peacekeeper/sol
-	name = "sol police cap"
-	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policeofficercap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/head_helmet
-
-/obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
-	name = "sol police chief cap"
-	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policechiefcap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic
-	name = "sol traffic cop cap"
-	desc = "You think that's Shitcurrity? That's just Civil Shitsputes, I'll show you REAL Shitcurrity."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policetrafficcap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/head_helmet
-
 /obj/item/clothing/head/colourable_flatcap
 	name = "colourable flat cap"
 	desc = "You in the computers son? You work the computers?"
@@ -129,7 +103,7 @@
 	desc = "A tar black naval cap with a silver disk in the center."
 	icon_state = "imphos"
 	armor_type = /datum/armor/hats_hos
-	
+
 /obj/item/clothing/head/hats/imperial/cmo
 	name = "chief medical officer's naval cap"
 	desc = "A teal naval cap with a silver disk in the center."

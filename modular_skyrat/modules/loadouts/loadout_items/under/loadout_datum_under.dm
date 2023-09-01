@@ -114,19 +114,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
-/datum/loadout_item/under/jumpsuit/solwarden
-	name = "Sol Warden Uniform"
-	item_path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
-	restricted_roles = list(JOB_WARDEN)
-
 /datum/loadout_item/under/jumpsuit/security_trousers
 	name = "Security Trousers"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
-
-/datum/loadout_item/under/jumpsuit/solofficer
-	name = "Sol Officer Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/under/jumpsuit/disco

@@ -119,10 +119,8 @@
 	access_lists["[ACCESS_HOS]"] = list(
 		/obj/item/clothing/head/hats/hos/cap = 1,
 		/obj/item/clothing/head/hats/hos/beret/navyhos = 1,
-		/obj/item/clothing/head/hats/hos/cap/peacekeeper/sol = 1,
 		/obj/item/clothing/head/hats/imperial/hos = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
-		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial = 1,

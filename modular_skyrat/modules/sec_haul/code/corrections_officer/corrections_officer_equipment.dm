@@ -31,14 +31,6 @@
 	icon_state = "sec_headset"
 	keyslot = new /obj/item/encryptionkey/headset_sec
 
-/obj/item/clothing/head/corrections_officer
-	name = "corrections officer's cap"
-	desc = "A black visor cap with a round Nanotrasen logo made out of silver in the center, the most it'll do is protect you from some light rain...Or a prisoner slopping out."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "corrections_officer"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/toggle/jacket/corrections_officer
 	name = "corrections officer's suit jacket"
 	desc = "A pressed and ironed suit jacket, it has light armor against stabbings. There's some rank badges on the right breast."
