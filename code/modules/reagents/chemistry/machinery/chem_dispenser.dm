@@ -82,7 +82,6 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT REMOVAL END
 	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
@@ -112,10 +111,8 @@
 		/datum/reagent/medicine/morphine
 	)
 	//SKYRAT EDIT ADDITION END
-=======
 	/// Starting purity of the created reagents
 	var/base_reagent_purity = 1
->>>>>>> b1c5e5e0f6a (Foodening (#77887))
 
 	var/list/recording_recipe
 
