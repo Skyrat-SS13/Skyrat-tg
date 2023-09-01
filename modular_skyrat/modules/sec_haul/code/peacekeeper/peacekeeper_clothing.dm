@@ -103,14 +103,6 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "zipper")
 
-/obj/item/clothing/suit/armor/vest/warden/peacekeeper
-	name = "warden's peacekeeper jacket"
-	desc = "A deep blue jacket with some simple body armor strapped over the top."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "peacekeeper_trench_warden"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat
 	name = "peacekeeper sleek coat"
 	desc = "An incredibly stylish and heavy black coat made of synthetic kangaroo leather, padded with durathread and lined with kevlar."

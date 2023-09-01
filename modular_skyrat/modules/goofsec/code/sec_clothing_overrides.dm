@@ -497,10 +497,6 @@
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
 	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "vest_bulletproof"
-	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
