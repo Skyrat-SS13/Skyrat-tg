@@ -201,19 +201,12 @@
 				return ", missing component."
 			if(!check_tools(crafter, recipe, contents))
 				return ", missing tool."
-<<<<<<< HEAD
-			var/list/parts = del_reqs(R, a)
-			var/atom/movable/I
-			if(ispath(R.result, /obj/item/stack))
-				I = new R.result (get_turf(a.loc), R.result_amount || 1)
-=======
 			var/list/parts = del_reqs(recipe, crafter)
 			var/atom/movable/result
 			if(ispath(recipe.result, /obj/item/stack))
 				result = new recipe.result(get_turf(crafter.loc), recipe.result_amount || 1)
 			else if (ispath(recipe.result, /obj/item/food))
 				result = new recipe.result(get_turf(crafter.loc), no_base_reagents = TRUE)
->>>>>>> dd2784c29db (Fixes an edge case in personal crafting that could result in the crafting window getting stuck forever (#77994))
 			else
 				result = new recipe.result(get_turf(crafter.loc))
 				if(result.atom_storage && recipe.delete_contents)
@@ -477,7 +470,7 @@
 				else
 					if(!istype(result, /obj/effect/spawner))
 						result.forceMove(user.drop_location())
-				to_chat(user, span_notice("Constructed [crafting_recipe.name]."))
+				to_chat(user, span_notice("[crafting_recipe.name] crafted."))
 				user.investigate_log("crafted [crafting_recipe]", INVESTIGATE_CRAFTING)
 				crafting_recipe.on_craft_completion(user, result)
 			else
