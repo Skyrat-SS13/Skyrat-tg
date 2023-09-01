@@ -2,7 +2,7 @@
 /datum/reagent/drug/aphrodisiac
 	name = "liquid ERP"
 	description = "ERP in its liquified form. Complain to a coder."
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
+	chemical_flags = REAGENT_NO_RANDOM_RECIPE
 
 	/// What preference you need enabled for effects on life
 	var/life_pref_datum = /datum/preference/toggle/erp
