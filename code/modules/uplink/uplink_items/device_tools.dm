@@ -83,7 +83,7 @@
 			Comes with 4 charges, recharges randomly. Warranty null and void if exposed to an electromagnetic pulse."
 	item = /obj/item/storage/box/syndie_kit/syndicate_teleporter
 	cost = 8
-*/
+*/ //END SKYRAT EDIT
 
 /datum/uplink_item/device_tools/camera_app
 	name = "SyndEye Program"
