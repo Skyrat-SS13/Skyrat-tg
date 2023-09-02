@@ -70,16 +70,14 @@
 	var/speed_modifier = 0
 
 	// Limb disabling variables
+	///Whether it is possible for the limb to be disabled whatsoever. TRUE means that it is possible.
+	var/can_be_disabled = FALSE //Defaults to FALSE, as only human limbs can be disabled, and only the appendages.
 	///Controls if the limb is disabled. TRUE means it is disabled (similar to being removed, but still present for the sake of targeted interactions).
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
-	//var/disabling_threshold_percentage = 0 //ORIGINAL
-	var/disabling_threshold_percentage = 1 //SKYRAT EDIT CHANGE - COMBAT
-	///Whether it is possible for the limb to be disabled whatsoever. TRUE means that it is possible.
-	var/can_be_disabled = FALSE //Defaults to FALSE, as only human limbs can be disabled, and only the appendages.
+	var/disabling_threshold_percentage = 1 //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL : var/disabling_threshold_percentage = 0
 
-	// Damage state variables
-
+	// Damage variables
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
 	var/body_damage_coeff = 1
 	///The current amount of brute damage the limb has
@@ -1361,7 +1359,7 @@
 
 /obj/item/bodypart/emp_act(severity)
 	. = ..()
-	if(. & EMP_PROTECT_WIRES || !(bodytype & BODYTYPE_ROBOTIC))
+	if(. & EMP_PROTECT_WIRES || !IS_ROBOTIC_LIMB(src))
 		return FALSE
 	owner.visible_message(span_danger("[owner]'s [src.name] seems to malfunction!"))
 
