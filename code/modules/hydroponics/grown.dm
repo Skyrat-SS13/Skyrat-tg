@@ -146,6 +146,7 @@
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)
 		reagents.del_reagent(/datum/reagent/consumable/nutriment/vitamin)
 
+<<<<<<< HEAD
 /obj/item/food/grown/on_juice()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
 	if(juice_results?.len)
@@ -153,6 +154,20 @@
 			juice_results[juice_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)
 		reagents.del_reagent(/datum/reagent/consumable/nutriment/vitamin)
+=======
+	var/grind_results_num = LAZYLEN(grind_results)
+	if(grind_results_num)
+		var/average_purity = reagents.get_average_purity()
+		var/total_nutriment_amount = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment, include_subtypes = TRUE)
+		var/single_reagent_amount = grind_results_num > 1 ? round(total_nutriment_amount / grind_results_num, CHEMICAL_QUANTISATION_LEVEL) : total_nutriment_amount
+		reagents.remove_all_type(/datum/reagent/consumable/nutriment, total_nutriment_amount)
+		for(var/reagent in grind_results)
+			reagents.add_reagent(reagent, single_reagent_amount, added_purity = average_purity)
+
+	if(reagents && target_holder)
+		reagents.trans_to(target_holder, reagents.total_volume, transferred_by = user)
+	return TRUE
+>>>>>>> 69f51c6c65c (Fixes typo 'transfered', olive oil reaction repath (#78064))
 
 #undef BITE_SIZE_POTENCY_MULTIPLIER
 #undef BITE_SIZE_VOLUME_MULTIPLIER
