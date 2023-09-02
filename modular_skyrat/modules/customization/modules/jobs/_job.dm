@@ -46,11 +46,15 @@
 /datum/job/proc/has_banned_augment(datum/preferences/pref)
 	if(!pref)
 		return FALSE
-	if(banned_augments)
-		var/list/player_augments = pref.augments
-		for(var/key in player_augments)
-			if(player_augments[key] in banned_augments)
-				return TRUE
+
+	if(!banned_augments)
+		return FALSE
+
+	var/list/player_augments = pref.augments
+	for(var/key in player_augments)
+		if(player_augments[key] in banned_augments)
+			return TRUE
+
 	return FALSE
 
 // Misc
