@@ -8,7 +8,7 @@
 	var/running_toggled = FALSE
 
 /datum/status_effect/interdiction/tick(seconds_between_ticks)
-	if(owner.m_intent == MOVE_INTENT_RUN)
+	if(owner.move_intent == MOVE_INTENT_RUN)
 		owner.toggle_move_intent(owner)
 		owner.adjust_confusion_up_to(1 SECONDS, 1 SECONDS)
 		running_toggled = TRUE
@@ -19,7 +19,7 @@
 /datum/status_effect/interdiction/on_remove()
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/clock_interdiction)
 
-	if(running_toggled && owner.m_intent == MOVE_INTENT_WALK)
+	if(running_toggled && owner.move_intent == MOVE_INTENT_WALK)
 		owner.toggle_move_intent(owner)
 
 /atom/movable/screen/alert/status_effect/interdiction

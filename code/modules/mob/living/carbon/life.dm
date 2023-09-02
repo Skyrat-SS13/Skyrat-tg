@@ -124,8 +124,8 @@
 						failed_last_breath = FALSE
 						clear_alert("not_enough_oxy")
 						return FALSE
-					adjustOxyLoss(3)
-					failed_last_breath = TRUE
+					breath = null // uh oh where'd the air go
+					check_breath(breath)
 					if(oxyloss <= OXYGEN_DAMAGE_CHOKING_THRESHOLD && stat == CONSCIOUS)
 						to_chat(src, "<span class='userdanger'>You hold in your breath!</span>")
 					else

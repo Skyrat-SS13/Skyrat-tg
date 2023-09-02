@@ -178,6 +178,7 @@
 		and even useful information such as their overall health and wellness. The vitals monitor also comes with a speaker, loud enough \
 		to alert anyone nearby that someone has, in fact, died. This specific unit has a clock and operational ID readout."
 	display_time = TRUE
+	death_sound = 'modular_skyrat/modules/novaya_ert/sound/flatline.ogg'
 
 ///Blatant copy of the adrenaline boost module.
 /obj/item/mod/module/auto_doc

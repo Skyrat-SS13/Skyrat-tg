@@ -69,9 +69,19 @@
 	name = "Cybernetic eyes"
 	path = /obj/item/organ/internal/eyes/robotic
 
+/datum/augment_item/organ/eyes/cybernetic/moth
+	name = "Cybernetic moth eyes"
+	path = /obj/item/organ/internal/eyes/robotic/moth
+
 /datum/augment_item/organ/eyes/highlumi
 	name = "High-luminosity eyes"
 	path = /obj/item/organ/internal/eyes/robotic/glow
+	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
+	cost = 1
+
+/datum/augment_item/organ/eyes/highlumi/moth
+	name = "High Luminosity Moth Eyes"
+	path = /obj/item/organ/internal/eyes/robotic/glow/moth
 	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	cost = 1
 

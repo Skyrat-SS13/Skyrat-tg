@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button, NumberInput } from '../components';
+import { Section, Stack, Box, Divider, Button } from '../components';
 import { Window } from '../layouts';
 
 export const CargoImportConsole = (props, context) => {
@@ -10,7 +10,6 @@ export const CargoImportConsole = (props, context) => {
     armaments_list = [],
     budget_points,
     budget_name,
-    ammo_amount,
     self_paid,
     cant_buy_restricted,
   } = data;
@@ -44,35 +43,12 @@ export const CargoImportConsole = (props, context) => {
                 <Stack vertical>
                   {armaments_list.map((armament_category) => (
                     <Stack.Item key={armament_category.category}>
-                      {armament_category.category_purchased ? (
-                        <Button
-                          width="100%"
-                          content={armament_category.category}
-                          selected={category === armament_category.category}
-                          onClick={() =>
-                            setCategory(armament_category.category)
-                          }
-                        />
-                      ) : (
-                        <Button
-                          width="100%"
-                          color="bad"
-                          onClick={() =>
-                            act('buy_company', {
-                              selected_company: armament_category.category,
-                            })
-                          }
-                          content={
-                            'Purchase ' +
-                            armament_category.category +
-                            ' (' +
-                            (armament_category.handout
-                              ? 'Handout [Choose One]'
-                              : armament_category.cost) +
-                            ' Cr)'
-                          }
-                        />
-                      )}
+                      <Button
+                        width="100%"
+                        content={armament_category.category}
+                        selected={category === armament_category.category}
+                        onClick={() => setCategory(armament_category.category)}
+                      />
                     </Stack.Item>
                   ))}
                 </Stack>
@@ -95,13 +71,7 @@ export const CargoImportConsole = (props, context) => {
                                 fontSize="15px"
                                 textAlign="center"
                                 selected={weapon === item.ref}
-                                color={
-                                  item.cant_purchase
-                                    ? 'bad'
-                                    : item.purchased >= item.quantity
-                                      ? 'bad'
-                                      : 'default'
-                                }
+                                color={item.cant_purchase ? 'bad' : 'default'}
                                 width="100%"
                                 key={item.ref}
                                 onClick={() => setArmament(item.ref)}>
@@ -147,13 +117,6 @@ export const CargoImportConsole = (props, context) => {
                               </Box>
                             </Stack.Item>
                             <Stack.Item>{item.description}</Stack.Item>
-                            {!!item.cant_purchase && (
-                              <Stack.Item textColor={'red'}>
-                                {
-                                  'Company interest needs to be higher to buy this item!'
-                                }
-                              </Stack.Item>
-                            )}
                             {!!cant_buy_restricted && !!item.restricted && (
                               <Stack.Item textColor={'red'}>
                                 {
@@ -162,25 +125,11 @@ export const CargoImportConsole = (props, context) => {
                               </Stack.Item>
                             )}
                             <Stack.Item
-                              textColor={item.quantity <= 0 ? 'red' : 'green'}>
-                              {'Quantity Remaining: ' + item.quantity}
-                            </Stack.Item>
-                            <Stack.Item
                               textColor={
                                 item.cost > budget_points ? 'red' : 'green'
                               }>
                               {'Cost: ' + item.cost}
                             </Stack.Item>
-                            {!!item.buyable_ammo && (
-                              <Stack.Item
-                                textColor={
-                                  item.magazine_cost > budget_points
-                                    ? 'red'
-                                    : 'green'
-                                }>
-                                {'Ammo Cost: ' + item.magazine_cost}
-                              </Stack.Item>
-                            )}
                             <Stack.Item>
                               <Button
                                 content="Buy"
@@ -188,8 +137,6 @@ export const CargoImportConsole = (props, context) => {
                                 width="100%"
                                 disabled={
                                   item.cost > budget_points ||
-                                  0 >= item.quantity ||
-                                  !!item.cant_purchase ||
                                   (!!cant_buy_restricted && !!item.restricted)
                                 }
                                 onClick={() =>
@@ -199,36 +146,6 @@ export const CargoImportConsole = (props, context) => {
                                 }
                               />
                             </Stack.Item>
-                            {!!item.buyable_ammo && (
-                              <Stack.Item>
-                                <Button
-                                  content="Buy Ammo"
-                                  textAlign="center"
-                                  width="100%"
-                                  disabled={item.magazine_cost > budget_points}
-                                  onClick={() =>
-                                    act('buy_ammo', {
-                                      armament_ref: item.ref,
-                                    })
-                                  }
-                                />
-                              </Stack.Item>
-                            )}
-                            {!!item.buyable_ammo && (
-                              <NumberInput
-                                value={ammo_amount}
-                                width="59px"
-                                minValue={0}
-                                maxValue={10}
-                                step={1}
-                                stepPixelSize={2}
-                                onChange={(e, value) =>
-                                  act('set_ammo_amount', {
-                                    chosen_amount: value,
-                                  })
-                                }
-                              />
-                            )}
                           </Stack>
                         )
                     )

@@ -12,3 +12,6 @@
 	/// Department of the person buying the crate if buying via the NIRN app.
 	var/datum/bank_account/department/department_account
 
+/obj/structure/closet/crate/large/import
+	name = "heavy-duty wooden crate"
+	icon = 'modular_skyrat/modules/company_imports/icons/import_crate.dmi'

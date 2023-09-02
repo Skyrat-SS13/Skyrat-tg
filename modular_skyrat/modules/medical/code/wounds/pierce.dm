@@ -193,3 +193,6 @@
 	status_effect_type = /datum/status_effect/wound/pierce/critical
 	scar_keyword = "piercecritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
+
+/datum/wound/pierce/get_limb_examine_description()
+	return span_warning("The flesh on this limb appears badly perforated.")
