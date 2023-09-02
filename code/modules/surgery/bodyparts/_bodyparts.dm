@@ -154,14 +154,8 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
-	/// What icon do we use to render this limb? Ususally used by robotic limb augments.
-	var/rendered_bp_icon
-	/// Do we use an organic render for this robotic limb?
-	var/organic_render = TRUE
-	//SKYRAT EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
