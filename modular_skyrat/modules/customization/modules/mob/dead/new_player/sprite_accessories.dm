@@ -384,6 +384,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	has_digitigrade = TRUE
 	gender = MALE
 	use_static = TRUE
+
 /datum/sprite_accessory/underwear/panties_basic
 	name = "Panties - Basic"
 	icon_state = "panties"
