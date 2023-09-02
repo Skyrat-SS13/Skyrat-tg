@@ -265,6 +265,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
 
+/datum/loadout_item/neck/link_scryer
+	name = "MODlink Scryer"
+	item_path = /obj/item/clothing/neck/link_scryer
+
 /*
 *	DONATOR
 */

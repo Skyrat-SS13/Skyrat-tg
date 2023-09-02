@@ -26,26 +26,6 @@
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
 
-/datum/outfit/centcom/ert/nri/heavy
-	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
-	head = /obj/item/clothing/head/helmet/nri_heavy
-	suit = /obj/item/clothing/suit/armor/heavy/nri
-	glasses = /obj/item/clothing/glasses/hud/security/night
-	mask = /obj/item/clothing/mask/gas/hecu2
-	belt = /obj/item/storage/belt/military/nri/heavy
-	suit_store = null
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/storage/medkit/emergency,
-							/obj/item/advanced_choice_beacon/nri/heavy,
-							/obj/item/beamout_tool,
-							/obj/item/crucifix)
-	l_pocket = /obj/item/wrench/combat
-
-	l_hand = /obj/item/gun/ballistic/automatic/pistol/aps
-
-	id_trim = /datum/id_trim/nri/heavy
-
 /datum/outfit/centcom/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
 	head = null
