@@ -1,16 +1,3 @@
-
-//PEACEKEEPER HELMET
-/obj/item/clothing/head/helmet/sec/peacekeeper
-	name = "peacekeeper helmet"
-	desc = "A standard issue combat helmet for peacekeeper operators. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
-	icon_state = "peacekeeper_helmet"
-	base_icon_state = "peacekeeper_helmet"
-	can_toggle = FALSE
-	actions_types = null
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
