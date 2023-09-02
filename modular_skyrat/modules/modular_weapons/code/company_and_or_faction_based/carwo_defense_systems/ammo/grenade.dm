@@ -95,6 +95,8 @@
 
 	projectile_type = /obj/projectile/bullet/c980grenade/shrapnel
 
+	advanced_print_req = TRUE
+
 /obj/projectile/bullet/c980grenade/shrapnel
 	name = ".980 Tydhouer shrapnel grenade"
 

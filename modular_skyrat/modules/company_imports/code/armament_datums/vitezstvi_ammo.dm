@@ -15,6 +15,15 @@
 	item_type = /obj/item/disk/ammo_workbench/advanced
 	cost = PAYCHECK_COMMAND * 5
 
+// Weapon accessories (nothing but a suppressor as of now)
+
+/datum/armament_entry/company_import/vitezstvi/accessory
+	subcategory = "Weapon Accessories"
+
+/datum/armament_entry/company_import/vitezstvi/accessory/suppressor
+	item_type = /obj/item/suppressor
+	cost = PAYCHECK_COMMAND
+
 // Boxes of non-shotgun ammo
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes
