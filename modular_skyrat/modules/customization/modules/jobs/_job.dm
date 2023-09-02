@@ -90,9 +90,11 @@
 // Command
 /datum/job/captain
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/nanotrasen_consultant
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
@@ -100,18 +102,23 @@
 
 /datum/job/chief_medical_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/chief_engineer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/head_of_personnel
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 //Silicon
 /datum/job/ai
@@ -169,12 +176,16 @@
 // Nanotrasen Fleet
 /datum/job/fleetmaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/operations_inspector
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/deck_crew
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
 
 /datum/job/bridge_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_augments = list(HEAD_RESTRICTED_AUGMENTS)
