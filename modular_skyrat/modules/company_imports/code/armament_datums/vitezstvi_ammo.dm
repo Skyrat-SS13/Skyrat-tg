@@ -1,7 +1,6 @@
 /datum/armament_entry/company_import/vitezstvi
 	category = VITEZSTVI_AMMO_NAME
 	company_bitflag = CARGO_COMPANY_VITEZSTVI_AMMO
-	stock_mult = 3
 
 // Ammo bench and the lethals disk
 
@@ -10,24 +9,17 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_bench/bench_itself
 	item_type = /obj/item/circuitboard/machine/ammo_workbench
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 20
-	interest_required = COMPANY_SOME_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
+	cost = PAYCHECK_COMMAND * 5
 
 /datum/armament_entry/company_import/vitezstvi/ammo_bench
 	item_type = /obj/item/disk/ammo_workbench/advanced
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 20
-	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
+	cost = PAYCHECK_COMMAND * 5
 
 // Boxes of non-shotgun ammo
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes
 	subcategory = "Ammunition Boxes"
-	lower_cost = CARGO_CRATE_VALUE * 0.75
-	upper_cost = CARGO_CRATE_VALUE * 1.25
+	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/pepperball
 	item_type = /obj/item/ammo_box/advanced/pepperballs
@@ -64,30 +56,24 @@
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_lethal
 	item_type = /obj/item/ammo_box/c56mm
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_rubber
 	item_type = /obj/item/ammo_box/c56mm/rubber
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_hunting
 	item_type = /obj/item/ammo_box/c56mm/hunting
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_blank
 	item_type = /obj/item/ammo_box/c56mm/blank
-	lower_cost = CARGO_CRATE_VALUE * 0.1
-	upper_cost = CARGO_CRATE_VALUE * 0.3
 
 // Revolver speedloaders
 
 /datum/armament_entry/company_import/vitezstvi/speedloader
 	subcategory = "Speedloaders"
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE
+	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/vitezstvi/speedloader/detective_lethal
 	item_type = /obj/item/ammo_box/c38
@@ -102,8 +88,7 @@
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells
 	subcategory = "Shotgun Shells"
-	lower_cost = CARGO_CRATE_VALUE * 1.25
-	upper_cost = CARGO_CRATE_VALUE * 2
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/slugs
 	item_type = /obj/item/ammo_box/advanced/s12gauge

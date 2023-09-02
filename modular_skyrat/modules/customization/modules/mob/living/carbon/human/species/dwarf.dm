@@ -13,7 +13,7 @@
 	mutanttongue = /obj/item/organ/internal/tongue/dwarven
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	body_size_restricted = TRUE
 
 /datum/species/dwarf/get_species_description()

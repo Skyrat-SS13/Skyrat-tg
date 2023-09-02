@@ -26,7 +26,7 @@
 	source.face_atom(target)
 	source.visible_message(span_danger("[source.name] aims at [target.name] with the [aimed_gun.name]!"))
 
-	was_running = (source.m_intent == MOVE_INTENT_RUN)
+	was_running = (source.move_intent == MOVE_INTENT_RUN)
 	if(was_running)
 		source.toggle_move_intent()
 	ADD_TRAIT(source, TRAIT_NORUNNING, "gunpoint")
