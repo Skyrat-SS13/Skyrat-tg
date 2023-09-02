@@ -10,11 +10,8 @@
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and they've degraded beyond revival...")
 
 ///copies over clothing preferences like underwear to another human
-/mob/living/carbon/human/proc/copy_clothing_prefs(mob/living/carbon/human/destination)
-	destination.underwear = underwear
-	destination.underwear_color = underwear_color
-	destination.undershirt = undershirt
-	destination.socks = socks
-	destination.bra = bra //SKYRAT EDIT ADDITION
-	destination.bra_color = bra_color //SKYRAT EDIT ADDITION
-	destination.jumpsuit_style = jumpsuit_style
+/mob/living/carbon/human/copy_clothing_prefs(mob/living/carbon/human/destination)
+	. = ..()
+
+	destination.bra = bra
+	destination.bra_color = bra_color

@@ -44,8 +44,9 @@
 	return body_markings
 
 /proc/random_bra(gender)
-	if(!GLOB.bra_list.len)
+	if(!length(GLOB.bra_list))
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/bra, GLOB.bra_list, GLOB.bra_m, GLOB.bra_f)
+
 	switch(gender)
 		if(MALE)
 			return pick(GLOB.bra_m)

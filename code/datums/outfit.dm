@@ -221,10 +221,10 @@
 		user.socks = initial(socks.name)
 
 
-// SKYRAT EDIT ADDITION START - Underwear and bra split
+	// SKYRAT EDIT ADDITION START - Underwear and bra split
 	if(bra)
 		user.bra = initial(bra.name)
-// SKYRAT EDIT END
+	// SKYRAT EDIT END
 
 	if(accessory)
 		var/obj/item/clothing/under/U = user.w_uniform

@@ -105,6 +105,9 @@ GLOBAL_LIST_INIT(color_list_ghoul, list( \
 ))
 
 //Bras
-GLOBAL_LIST_EMPTY(bra_list) //stores /datum/sprite_accessory/bra indexed by name
-GLOBAL_LIST_EMPTY(bra_m) //stores only bra name
-GLOBAL_LIST_EMPTY(bra_f) //stores only bra name
+/// Stores all /datum/sprite_accessory/bra indexed by name.
+GLOBAL_LIST_EMPTY(bra_list)
+/// Stores only the bra names for male-compatible bras.
+GLOBAL_LIST_EMPTY(bra_m)
+/// Stores only the bra names for female-compatible bras.
+GLOBAL_LIST_EMPTY(bra_f)

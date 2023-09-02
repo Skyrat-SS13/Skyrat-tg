@@ -184,13 +184,13 @@
 			var/new_socks = tgui_input_list(user, "Select the mannequin's socks", "Changing", GLOB.socks_list)
 			if(new_socks)
 				socks_name = new_socks
-//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
+		//SKYRAT EDIT ADDITION BEGIN - Underwear and Bra split
 		if("Bra")
 			var/new_bra = tgui_input_list(user, "Select the mannequin's bra", "Changing", GLOB.bra_list)
 			if(new_bra)
 				bra_name = new_bra
+		//SKYRAT EDIT END
 	update_appearance()
-//SKYRAT EDIT END
 
 /obj/structure/mannequin/wood
 	material = MANNEQUIN_WOOD
