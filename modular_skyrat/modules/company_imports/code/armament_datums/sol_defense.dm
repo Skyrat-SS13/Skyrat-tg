@@ -52,7 +52,7 @@
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
-	cost = PAYCHECK_COMMAND * 10
+	cost = PAYCHECK_COMMAND * 14
 
 /datum/armament_entry/company_import/sol_defense/magazines
 	subcategory = "Magazines"
