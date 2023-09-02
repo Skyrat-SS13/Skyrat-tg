@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/datum/sprite_accessory/bra/bra = GLOB.bra_list[species_human.bra]
 
 			if(bra)
-					var/mutable_appearance/bra_overlay
+				var/mutable_appearance/bra_overlay
 				var/icon_state = bra.icon_state
 				bra_overlay = mutable_appearance(bra.icon, icon_state, -BODY_LAYER)
 				if(!bra.use_static)
