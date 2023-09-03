@@ -46,5 +46,5 @@
 		ANNOUNCER_FUNGI = 'modular_skyrat/modules/alerts/sound/alerts/fungi.ogg',
 		ANNOUNCER_DEPARTMENTAL = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
 		ANNOUNCER_SHUTTLE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
-		ANNOUNCER_VOTE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
+		ANNOUNCER_VOTE = 'sound/misc/announce_dig.ogg',
 		)
