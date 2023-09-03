@@ -320,7 +320,6 @@
 /// Proc for arming the red button, it hasn't been pushed yet
 /obj/machinery/button/delam_scram/attack_hand(mob/user, list/modifiers)
 	. = ..()
-
 	if((machine_stat & BROKEN))
 		return
 
@@ -436,7 +435,6 @@
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/examine(mob/user)
 	. = ..()
-
 	ui_interact(user)
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -472,6 +470,10 @@
 	melee = 60
 	acid = 70
 	fire = 90
+
+/obj/structure/sign/delam_procedure/examine(mob/user)
+	. = ..()
+	ui_interact(user)
 
 /obj/structure/sign/delam_procedure/attack_hand(mob/user, list/modifiers)
 	. = ..()
