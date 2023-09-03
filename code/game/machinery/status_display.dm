@@ -498,6 +498,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		"Red Alert" = "redalert",
 		"Blue Alert" = "bluealert",
 		"Green Alert" = "greenalert",
+		"Violet Alert" = "violetalert", // SKYRAT EDIT ADD - Alert Levels
+		"Orange Alert" = "orangealert", // SKYRAT EDIT ADD - Alert Levels
+		"Amber Alert" = "amberalert", // SKYRAT EDIT ADD - Alert Levels
+		"Gamma Alert" = "gammaalert", // SKYRAT EDIT ADD - Alert Levels
 		"Biohazard" = "biohazard",
 		"Lockdown" = "lockdown",
 		"Radiation" = "radiation",

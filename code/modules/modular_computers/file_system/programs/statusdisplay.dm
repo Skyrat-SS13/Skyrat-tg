@@ -68,6 +68,16 @@
 					post_status("alert", "bluealert")
 				if(SEC_LEVEL_GREEN)
 					post_status("alert", "greenalert")
+				// SKYRAT EDIT ADD START - Alert Levels
+				if(SEC_LEVEL_VIOLET)
+					post_status("alert", "violetalert")
+				if(SEC_LEVEL_ORANGE)
+					post_status("alert", "orangealert")
+				if(SEC_LEVEL_AMBER)
+					post_status("alert", "amberalert")
+				if(SEC_LEVEL_GAMMA)
+					post_status("alert", "gammaalert")
+				// SKYRAT EDIT ADD END - Alert Levels
 		else
 			post_status("alert", picture)
 
