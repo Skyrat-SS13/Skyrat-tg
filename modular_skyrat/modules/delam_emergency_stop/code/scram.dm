@@ -289,6 +289,7 @@
 	can_alter_skin = FALSE
 	silicon_access_disabled = TRUE
 	resistance_flags = FREEZE_PROOF | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	use_power = NO_POWER_USE
 	light_color = LIGHT_COLOR_INTENSE_RED
 	light_power = 0.7
 	///one use only!
@@ -427,27 +428,66 @@
 /obj/item/folder/biscuit/confidential/delam
 	name = "NT-approved delam emergency procedure"
 	contained_slip = /obj/item/paper/paperslip/corporate/fluff/delam_procedure
-	layer = SIGN_LAYER
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/Initialize(mapload)
 	name = "delam emergency procedure"
 	desc = "Now you're a REAL engineer!"
-	default_raw_text = "<b>EMERGENCY PROCEDURE: SUPERMATTER DELAMINATION</b><br><br>\
-		<b>So you've found yourself in a bit of a pickle with a delamination of a supermatter reactor.<br>Don't worry, saving the day is just a few steps away!</b><br><br>\
-		- Locate the ever-elusive red emergency stop button. It's probably hiding in plain sight, so take your time, have a laugh, and enjoy the anticipation. Remember, it's like a treasure hunt, only with the added bonus of preventing a nuclear disaster.<br><br>\
-		- Once you've uncovered the button, muster all your courage and push it like there's no tomorrow. Well, actually, you're pushing it to ensure there is a tomorrow. But hey, who doesn't love a little paradoxical button-pushing?<br><br>\
-		- Prepare for the impending suppression of the supermatter engine room, because things are about to get real quiet. Just make sure everyone has evacuated, or else they'll be in for a surprise. The system needs its space, and it's not known for being the friendliest neighbour.<br><br>\
-		- After the delamination is successfully suppressed, take a moment to appreciate the delicate beauty of crystal-based electricity. Take a look around and fix any damage to those fragile glass components. Feel free to put on your finest overalls and channel your inner engiborg while doing so.<br><br>\
-		- Keep an eye out for fires and the infamous air mix. It's always an adventure trying to strike the perfect balance between breathable air and potential suffocation. Remember, oxygen plus a spark equals fireworks – the kind you definitely don't want inside a reactor.<br><br>\
-		- To avoid singeing your eyebrows off, consider enlisting the help of a synth or a trusty borg. After all, nothing says \"safety first\" like outsourcing your firefighting to non-living, non-breathing assistants.<br><br>\
-		- Clear out any lightly radioactive debris (The cargo department will probably love to dispose it for you.)<br><br>\
-		- Finally, revel in the satisfaction of knowing that you've single-handedly prevented a delamination. But, of course, don't forget to feel guilty because SAFETY MOTH Knows. SAFETY MOTH knows everything. It's always watching, judging, and probably taking notes for its next safety briefing. So bask in the glory of your heroism, but know that the all-knowing Moff is onto you.<br><br>\
-		<b>(Optional step, for the true daredevils out there)</b><br><br>\
-		- When it comes time for your second attempt at starting the SM: Fold these instructions into a paper plane, give it a good toss towards the crystal, and watch it soar through the air. Because nothing says \"I'm dealing with a potentially catastrophic situation\" like engaging in some whimsical paper airplane shenanigans.<br><br>\
-		<b>Hopefully you'll never need to use this. However, good luck!</b>"
 	return ..()
 
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/examine(mob/user)
+	. = ..()
+
+	ui_interact(user)
+
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(burn_paper_product_attackby_check(attacking_item, user))
+		SStgui.close_uis(src)
+		return
+
+	// Enable picking paper up by clicking on it with the clipboard or folder
+	if(istype(attacking_item, /obj/item/clipboard) || istype(attacking_item, /obj/item/folder) || istype(attacking_item, /obj/item/paper_bin))
+		attacking_item.attackby(src, user)
+		return
+
+	ui_interact(user)
+	return ..()
+
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DelamProcedure")
+		ui.open()
+
+/obj/structure/sign/delam_procedure
+	name = "Safety Moth - Delamination Emergency Procedure"
+	desc = "This informational sign uses Safety Moth™ to tell the viewer how to use the emergency stop button if the Supermatter Crystal is delaminating."
+	icon = 'icons/obj/poster.dmi'
+	icon_state = "aspev_delam"
+	pixel_y = 4
+	armor_type = /datum/armor/sign_delam
+	anchored = TRUE
+	buildable_sign = FALSE
+
+/datum/armor/sign_delam
+	melee = 60
+	acid = 70
+	fire = 90
+
+/obj/structure/sign/delam_procedure/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	if(. || user.is_blind())
+		return
+
+	ui_interact(user)
+
+/obj/structure/sign/delam_procedure/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DelamProcedure")
+		ui.open()
+
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/delam_procedure, 32)
 
 #undef DELAM_MACHINE_POWER_CONSUMPTION
 #undef DAMAGED_SUPERMATTER_COLOR
