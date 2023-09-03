@@ -464,7 +464,6 @@
 	pixel_y = 4
 	armor_type = /datum/armor/sign_delam
 	anchored = TRUE
-	buildable_sign = FALSE
 
 /datum/armor/sign_delam
 	melee = 60
