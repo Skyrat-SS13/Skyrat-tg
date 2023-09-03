@@ -55,7 +55,7 @@
 	var/timed_out = FALSE
 
 /datum/leash_wait/New()
-	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 1 SECONDS)
+	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 2 SECONDS) // SKYRAT EDIT TEST
 
 /datum/leash_wait/proc/completed()
 	completed = TRUE
