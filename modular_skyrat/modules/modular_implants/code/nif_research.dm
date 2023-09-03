@@ -26,7 +26,7 @@
 	build_path = /obj/item/handheld_soulcatcher
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)
 	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL) // look, the anesthetic machine's there too
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/nifsoft_hud
 	build_type = PROTOLATHE | AWAY_LATHE

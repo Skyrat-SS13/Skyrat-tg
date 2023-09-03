@@ -75,7 +75,6 @@
 	contains = list(/obj/item/fish_analyzer = 3)
 	crate_name = "fish analyzers crate"
 
-/* SKYRAT REMOVAL
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -83,7 +82,6 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "bicycle crate"
 	crate_type = /obj/structure/closet/crate/large
-SKYRAT REMOVAL END */
 
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"

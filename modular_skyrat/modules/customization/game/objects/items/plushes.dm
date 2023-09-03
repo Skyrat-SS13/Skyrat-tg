@@ -644,3 +644,12 @@
 	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
 	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+//Donation reward for olirant
+/obj/item/toy/plush/skyrat/plush_janiborg
+	name = "Friendly Janiborg Plush"
+	desc = "A miniature omnidroid toy straight from the Lockstep Enterprises Corporation marketing department in handsome janitorial purple. Now with real squirting action!"
+	icon_state = "plush_janiborg"
+	attack_verb_continuous = list("beeps", "washes", "mops", "squirts", "soaps")
+	attack_verb_simple = list("beep", "wash", "mop", "squirt", "soap")
+	squeak_override = list('sound/machines/twobeep.ogg' = 1)

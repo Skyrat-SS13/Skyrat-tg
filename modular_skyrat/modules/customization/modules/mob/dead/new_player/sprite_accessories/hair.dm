@@ -475,6 +475,10 @@
 	name = "Tri Bun Long"
 	icon_state = "hair_tri_bun_long"
 
+/datum/sprite_accessory/hair/skyrat/hairfre // Original sprite from Hyper-Station-13
+	name = "Hairfre"
+	icon_state = "hair_hairfre"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat

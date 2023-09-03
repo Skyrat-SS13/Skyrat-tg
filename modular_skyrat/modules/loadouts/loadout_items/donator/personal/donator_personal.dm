@@ -54,16 +54,6 @@
 	item_path = /obj/item/clothing/gloves/ring/hypno/bippys
 	ckeywhitelist = list("bippys")
 
-/datum/loadout_item/suit/kimjacket
-	name = "Aerostatic Bomber Jacket"
-	item_path = /obj/item/clothing/suit/kimjacket
-	ckeywhitelist = list("raxraus")
-
-/datum/loadout_item/under/jumpsuit/rax_turtleneck
-	name = "Black Turtleneck"
-	item_path = /obj/item/clothing/under/rax_turtleneck
-	ckeywhitelist = list("raxraus")
-
 /datum/loadout_item/shoes/rax_armadyne_boots
 	name = "Tactical Boots"
 	item_path = /obj/item/clothing/shoes/combat/rax
@@ -80,16 +70,6 @@
 	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
 	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
-
-/datum/loadout_item/suit/rax_aerostatic_jacket
-	name = "Navy Aerostatic Jacket"
-	item_path = /obj/item/clothing/suit/jacket/rax
-	ckeywhitelist = list("raxraus")
-
-/datum/loadout_item/under/jumpsuit/rax_gray_turtleneck
-	name = "Gray Turtleneck"
-	item_path = /obj/item/clothing/under/rax_turtleneck_gray
-	ckeywhitelist = list("raxraus")
 
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
@@ -155,7 +135,33 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FIR-36 Rebreather"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+
+/datum/loadout_item/mask/fir22
+	name = "FIR-22 Full-Face Rebreather"
+	item_path = /obj/item/clothing/mask/gas/nightlight/fir22
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+
+/datum/loadout_item/head/caligram_cap_tan
+	name = "Caligram Tan Softcap"
+	item_path = /obj/item/clothing/head/caligram_cap_tan
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+
+/datum/loadout_item/under/jumpsuit/caligram_fatigues_tan
+	name = "Caligram Tan Fatigues"
+	item_path = /obj/item/clothing/under/jumpsuit/caligram_fatigues_tan
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+
+/datum/loadout_item/suit/caligram_parka_tan
+	name = "Caligram Tan Parka"
+	item_path = /obj/item/clothing/suit/jacket/caligram_parka_tan
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+
+/datum/loadout_item/suit/caligram_parka_vest_tan
+	name = "Caligram Armored Tan Parka"
+	item_path = /obj/item/clothing/suit/armor/vest/caligram_parka_vest_tan
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371", "AvianAviator", "Katty Kat", "Investigator77", "Dalao Azure", "Socialistion", "ChillyLobster", "Sylvara", "AmZee", "Tf4", "rb303", "Kay_Nite", "whataboutism", "taac", "Halkyon", "Lupo_di_rosa", "Merek2", "lowpowermia", "RyeanBread", "Jesterz7", "Saund_Minah", "Ruediger4")
+	restricted_roles = list(JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/brasspriest
 	name = "Brasspriest Coat"
