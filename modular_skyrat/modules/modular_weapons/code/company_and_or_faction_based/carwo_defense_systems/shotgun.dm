@@ -21,8 +21,6 @@
 	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
 	can_suppress = TRUE
 
-	can_be_sawn_off = FALSE // Lets just be safe
-
 	suppressor_x_offset = 11
 
 	w_class = WEIGHT_CLASS_BULKY
