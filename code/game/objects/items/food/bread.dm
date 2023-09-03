@@ -46,7 +46,6 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
-	burns_in_oven = TRUE
 	slice_type = /obj/item/food/breadslice/plain
 
 /obj/item/food/bread/plain/Initialize(mapload)
@@ -496,7 +495,11 @@
 	tastes = list("french toast" = 1, "syrup" = 1, "golden deliciousness" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/raw_breadstick
 	name = "raw breadstick"
@@ -526,7 +529,11 @@
 	tastes = list("fluffy bread" = 1, "butter" = 2)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/raw_croissant
 	name = "raw croissant"
@@ -550,7 +557,11 @@
 	tastes = list("fluffy bread" = 1, "butter" = 2)
 	foodtypes = GRAIN | DAIRY | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 // Enhanced weaponised bread
 /obj/item/food/croissant/throwing

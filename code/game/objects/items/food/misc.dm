@@ -96,6 +96,12 @@
 	if(stink_particles)
 		particles = new stink_particles
 
+// We override the parent procs here to prevent burned messes from cooking into burned messes.
+/obj/item/food/badrecipe/make_grillable()
+	return
+/obj/item/food/badrecipe/make_bakeable()
+	return
+
 /obj/item/food/badrecipe/moldy
 	name = "moldy mess"
 	desc = "A rancid, disgusting culture of mold and ants. Somewhere under there, at <i>some point,</i> there was food."
@@ -351,7 +357,11 @@
 	)
 	tastes = list("bell pepper" = 1, "char" = 1)
 	foodtypes = VEGETABLES
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/pierogi
 	name = "pierogi"
@@ -599,8 +609,6 @@
 	tastes = list("pita bread" = 2)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
-	burns_on_grill = TRUE
-	burns_in_oven = TRUE
 
 /obj/item/food/tzatziki_sauce
 	name = "tzatziki sauce"

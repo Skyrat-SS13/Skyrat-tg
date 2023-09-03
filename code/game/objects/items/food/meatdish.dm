@@ -408,7 +408,6 @@
 	foodtypes = MEAT
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
-	burns_on_grill = TRUE
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/meatball/human
@@ -476,7 +475,11 @@
 	tastes = list("meat" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 ///Exists purely for the crafting recipe (because itll take subtypes)
 /obj/item/food/patty/plain
@@ -531,7 +534,6 @@
 	food_flags = FOOD_FINGER_FOOD
 	eatverbs = list("bite", "chew", "nibble", "deep throat", "gobble", "chomp")
 	w_class = WEIGHT_CLASS_SMALL
-	burns_on_grill = TRUE
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/sausage/make_processable()
@@ -590,7 +592,11 @@
 	tastes = list("meat" = 1, "onions" = 1, "garlic" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_3
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meatbun
 	name = "meat bun"
@@ -633,7 +639,11 @@
 	tastes = list("hot peppers" = 1, "cobwebs" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/spidereggsham
 	name = "green eggs and ham"
@@ -945,7 +955,11 @@
 	tastes = list("juicy meat" = 3, "onions" = 1, "garlic" = 1, "ketchup" = 1)
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_NORMAL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_3
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meatloaf/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE,  /obj/item/food/meatloaf_slice, 4, 3 SECONDS, table_required = TRUE,  screentip_verb = "Cut")

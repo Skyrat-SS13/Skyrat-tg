@@ -26,8 +26,6 @@
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/sandwich/cheese/make_grillable()
-	if(burns_on_grill)
-		return ..()
 	AddComponent(/datum/component/grillable, /obj/item/food/sandwich/cheese/grilled, rand(30 SECONDS, 60 SECONDS), TRUE)
 
 /obj/item/food/sandwich/cheese/grilled
@@ -40,8 +38,13 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/carbon = 4,
 	)
+<<<<<<< HEAD
 	foodtypes = GRAIN | DAIRY
 	burns_on_grill = TRUE
+=======
+	tastes = list("toast" = 2, "cheese" = 3, "butter" = 1)
+	crafting_complexity = FOOD_COMPLEXITY_3
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/sandwich/jelly
 	name = "jelly sandwich"
@@ -79,7 +82,6 @@
 	tastes = list("toast" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
-	burns_on_grill = TRUE
 	slot_flags = ITEM_SLOT_MASK
 
 /obj/item/food/butteredtoast

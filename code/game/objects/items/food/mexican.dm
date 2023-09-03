@@ -234,7 +234,11 @@
 	tastes = list("hard corn tortilla" = 1)
 	foodtypes = GRAIN | FRIED
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/hard_taco_shell/Initialize(mapload)
 	. = ..()

@@ -198,7 +198,11 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	tastes = list("egg" = 4)
 	foodtypes = MEAT | FRIED | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_on_grill = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/rawegg
 	name = "raw egg"

@@ -24,7 +24,11 @@
 	tastes = list("sweet potato" = 1)
 	foodtypes = VEGETABLES | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/roastparsnip
 	name = "roast parsnip"
@@ -74,7 +78,11 @@
 	tastes = list("baked potato" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_1
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/buttered_baked_potato
 	name = "buttered baked potato"

@@ -414,7 +414,11 @@
 	tastes = list("brownie" = 1, "chocolatey goodness" = 1)
 	foodtypes = GRAIN | JUNKFOOD | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/brownie_sheet/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/brownie, 4, 3 SECONDS, table_required = TRUE,  screentip_verb = "Slice")
@@ -461,7 +465,11 @@
 	tastes = list("brownie" = 1, "chocolatey goodness" = 1, "peanut butter" = 1)
 	foodtypes = GRAIN | JUNKFOOD | SUGAR | NUTS
 	w_class = WEIGHT_CLASS_SMALL
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_3
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/peanut_butter_brownie_sheet/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/peanut_butter_brownie, 4, 3 SECONDS, table_required = TRUE,  screentip_verb = "Slice")

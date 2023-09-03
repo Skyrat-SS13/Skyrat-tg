@@ -35,7 +35,11 @@
 	)
 	tastes = list("pie" = 1)
 	foodtypes = GRAIN
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/pie/cream
 	name = "banana cream pie"
@@ -402,4 +406,8 @@
 	)
 	tastes = list("pie" = 1, "the far off year of 2010" = 1)
 	foodtypes = GRAIN
+<<<<<<< HEAD
 	burns_in_oven = TRUE
+=======
+	crafting_complexity = FOOD_COMPLEXITY_2
+>>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
