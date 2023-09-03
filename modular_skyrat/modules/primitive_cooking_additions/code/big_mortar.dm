@@ -134,6 +134,7 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
