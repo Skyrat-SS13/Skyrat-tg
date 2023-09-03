@@ -579,6 +579,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /*
 	End of adding hides_breasts to TG stuff, start of adding has_digitigrade to TG stuff
 */
+/datum/sprite_accessory/underwear/male_briefs
+	has_digitigrade = TRUE
+
 /datum/sprite_accessory/underwear/male_boxers
 	has_digitigrade = TRUE
 
