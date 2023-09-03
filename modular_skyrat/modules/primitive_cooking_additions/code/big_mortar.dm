@@ -63,25 +63,24 @@
 		if(length(contents) >= maximum_contained_items)
 			balloon_alert(user, "already full")
 			return TRUE
-		
+
 		if(!length(attacking_item.contents))
-			balloon_alert(user, "[attacking_item] empty")
+			balloon_alert(user, "nothing to transfer!")
 			return TRUE
-			
+
 		for(var/obj/item/target_item in attacking_item.contents)
 			if(length(contents) >= maximum_contained_items)
 				break
-				
+
 			if(target_item.juice_results || target_item.grind_results)
 				target_item.forceMove(src)
 
 		if (length(contents) >= maximum_contained_items)
-			balloon_alert(user, "[src] filled")
+			balloon_alert(user, "filled!")
 		else
-			balloon_alert(user, "bag emptied")
-			
+			balloon_alert(user, "transferred")
 		return TRUE
-	
+
 	if(istype(attacking_item, /obj/item/pestle))
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
