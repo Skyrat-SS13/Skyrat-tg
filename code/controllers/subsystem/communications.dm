@@ -37,7 +37,14 @@ SUBSYSTEM_DEF(communications)
 		COOLDOWN_START(src, silicon_message_cooldown, COMMUNICATION_COOLDOWN_AI)
 	else
 		var/list/message_data = user.treat_message(input)
+<<<<<<< HEAD
 		priority_announce(html_decode(message_data["message"]), null, ANNOUNCER_CAPTAIN, "[syndicate? "Syndicate " : ""]Captain", has_important_message = TRUE, players = players)
+=======
+		if(syndicate)
+			priority_announce(html_decode(message_data["message"]), null, 'sound/misc/announce_syndi.ogg', "Syndicate Captain", has_important_message = TRUE, players = players)
+		else
+			priority_announce(html_decode(message_data["message"]), null, 'sound/misc/announce.ogg', "Captain", has_important_message = TRUE, players = players)
+>>>>>>> a49b804ab3b (Better alert/announcment sounds and Status displays (#78047))
 		COOLDOWN_START(src, nonsilicon_message_cooldown, COMMUNICATION_COOLDOWN)
 	user.log_talk(input, LOG_SAY, tag="priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has made a priority announcement.")
