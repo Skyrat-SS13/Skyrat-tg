@@ -97,6 +97,7 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 /// Takes the content's seeds and spits them out on the turf, as well as grinding whatever the contents may be
 /obj/structure/millstone/proc/mill_it_up(mob/living/carbon/human/user)
