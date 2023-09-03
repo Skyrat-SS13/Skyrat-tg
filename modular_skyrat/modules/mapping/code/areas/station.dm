@@ -64,6 +64,16 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "aslyum"
 
+/area/station/medical/chemistry/eva //Ringworm addition
+	name = "EVA Chemistry"
+	has_gravity = FALSE
+
+// Cargo areas
+/area/station/cargo/breakroom
+	name = "Cargo Break Room"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "cargo_breakroom"
+
 // Science Areas
 /area/station/science/tele_sci
 	name = "Tele Sci Room"
@@ -71,6 +81,11 @@
 	icon_state = "tele_sci"
 
 // Security areas
+/area/station/security/checkpoint/service
+	name = "Security Post - Service"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "checkpoint_serv"
+
 // CO Office
 /area/station/security/corrections_officer
 	name = "Corrections Officer Lounge"
@@ -129,6 +144,16 @@
 	name = "Pool"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "pool"
+
+/area/station/common/spa
+	name = "Public Spa"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "spa"
+
+/area/station/common/carpshop
+	name = "Carp Pro Shop"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "carp_pro_shop"
 
 /area/station/common/cryopods
 	name = "Cryopods Room"

@@ -128,6 +128,16 @@
 /datum/map_template/shuttle/cargo/skyrat/delta
 	suffix = "delta_skyrat"	//I hate this. Delta station is one tile different docking-wise, which fucks it ALL up unless we either a) change the map (this would be nonmodular and also press the engine against disposals) or b) this (actually easy, just dumb)
 
+/datum/map_template/shuttle/cargo/skyrat/delta
+	suffix = "ringworm"
+
+/datum/map_template/shuttle/whiteship/ringworm
+	name = "JN Chasse-Galerie"
+	description = "A small Jim Nortons shuttle meant to be a mobile cafe. No hostiles onboard, but multiple corpses of Jim Nortons employees."
+	prefix = "_maps/shuttles/skyrat/"
+	port_id = "whiteship"
+	suffix = "ringworm"
+
 /datum/map_template/shuttle/arrivals_skyrat
 	name = "NTV Relay (Arrivals)"
 	prefix = "_maps/shuttles/skyrat/"
