@@ -275,4 +275,16 @@
 					shave(human_target, location)
 				return
 	return ..()
+<<<<<<< HEAD
 */
+=======
+
+/obj/item/razor/surgery
+	name = "surgical razor"
+	desc = "A medical grade razor. Its precision blades provide a clean shave for surgical preparation."
+	icon = 'icons/obj/cosmetic.dmi'
+	icon_state = "medrazor"
+
+/obj/item/razor/surgery/get_surgery_tool_overlay(tray_extended)
+	return "razor"
+>>>>>>> 3c0159b1433 (replaces surgical and coroner duffels with surgery trays and medical carts, resprites razor (#77975))
