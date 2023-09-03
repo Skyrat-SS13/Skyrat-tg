@@ -72,9 +72,9 @@
 			return TRUE
 		
 		if(!length(attacking_item.contents))
-			balloon_alert(user, "[attacking_item] empty")
+			balloon_alert(user, "nothing to transfer!")
 			return TRUE
-			
+			balloon_alert(user, "transferring...")
 		for(var/obj/item/food/grown/target_item in attacking_item.contents)
 			if(length(contents) >= maximum_contained_items)
 				break
@@ -82,9 +82,9 @@
 			target_item.forceMove(src)
 		
 		if (length(contents) >= maximum_contained_items)
-			balloon_alert(user, "[src] filled")
+			balloon_alert(user, "filled!")
 		else
-			balloon_alert(user, "[attacking_item] emptied")
+			balloon_alert(user, "transferred")
 			
 		return TRUE
 	
