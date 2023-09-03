@@ -459,8 +459,8 @@
 /obj/structure/sign/delam_procedure
 	name = "Safety Moth - Delamination Emergency Procedure"
 	desc = "This informational sign uses Safety Moth™ to tell the viewer how to use the emergency stop button if the Supermatter Crystal is delaminating."
-	icon = 'icons/obj/poster.dmi'
-	icon_state = "aspev_delam"
+	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
+	icon_state = "moff-poster"
 	pixel_y = 4
 	armor_type = /datum/armor/sign_delam
 	anchored = TRUE
