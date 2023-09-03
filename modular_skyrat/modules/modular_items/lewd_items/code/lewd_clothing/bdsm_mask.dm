@@ -170,17 +170,25 @@
 
 // Open the valve when press the button
 /datum/action/item_action/mask_inhale/Trigger(trigger_flags)
-	if(istype(target, /obj/item/clothing/mask/gas/bdsm_mask))
-		var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
-		if(mask.breath_status == FALSE)
-			mask.time_to_choke_left = mask.time_to_choke
-			mask.breath_status = TRUE
-			var/mob/living/carbon/affected_mob = usr
-			affected_mob.try_lewd_autoemote("inhale")
-			var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
-			filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
-		return
-	return ..()
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(!istype(mask))
+		return ..()
+
+	if(mask.breath_status)
+		return FALSE
+
+	mask.time_to_choke_left = mask.time_to_choke
+	mask.breath_status = TRUE
+
+	var/mob/living/carbon/affected_mob = usr
+	if(!istype(affected_mob))
+		return FALSE
+
+	affected_mob.try_lewd_autoemote("inhale")
+	var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
+	filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
+
+	return TRUE
 
 // Adding breath_manually on equip
 /obj/item/clothing/mask/gas/bdsm_mask/equipped(/mob/user, slot)
@@ -232,6 +240,8 @@
 /obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
 	var/mob/living/affected_mob = loc
 	var/mob/living/carbon/affected_carbon = affected_mob
+	if(!istype(affected_carbon))
+		return FALSE
 
 	if(time_to_choke_left < time_to_choke/2 && breath_status == TRUE)
 		if(temp_check == FALSE && affected_mob.stat == CONSCIOUS) // If user passed out while wearing this we should continue when he wakes up
@@ -239,15 +249,14 @@
 			time_to_choke_left = time_to_choke
 			temp_check = TRUE
 
-		if(ispath(affected_carbon))
-			if(affected_mob.stat == CONSCIOUS)
-				affected_carbon.try_lewd_autoemote("exhale")
-				breath_status = FALSE
-				if(rand(0, 3) == 0)
-					affected_carbon.try_lewd_autoemote("moan")
-			else
-				breath_status = TRUE
-				temp_check = FALSE
+		if(affected_mob.stat == CONSCIOUS)
+			affected_carbon.try_lewd_autoemote("exhale")
+			breath_status = FALSE
+			if(rand(0, 3) == 0)
+				affected_carbon.try_lewd_autoemote("moan")
+		else
+			breath_status = TRUE
+			temp_check = FALSE
 
 	if(time_to_choke_left <= 0)
 		if(tt <= 0)
