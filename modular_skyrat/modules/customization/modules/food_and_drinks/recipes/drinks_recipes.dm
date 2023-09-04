@@ -215,7 +215,7 @@
 
 /datum/chemical_reaction/drink/beerbatter
 	results = list(/datum/reagent/consumable/ethanol/beerbatter = 4)
-	required_reagents = list(/datum/reagent/consumable/cooking_oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
 	mix_message = "Sizzling and cracking is heard as you beat the mixture into submission."
 
 /datum/chemical_reaction/drink/shakiri_spritz
