@@ -26,7 +26,6 @@
 	tastes = list("minty bread" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
-	burns_on_grill = TRUE
 
 /obj/item/food/piru_loaf/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/piru, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -66,7 +65,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("minty flatbread" = 1)
 	foodtypes = VEGETABLES
-	burns_on_grill = TRUE
 
 /obj/item/food/piru_pasta
 	name = "piru pasta"
@@ -84,10 +82,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_kiri"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6, 
+		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/kiri_jelly = 6
 	)
-	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy sweetness" = 1, "caramelized jelly" = 1)
 	foodtypes = FRUIT | SUGAR
@@ -98,11 +95,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_muli"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4, 
-		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/muli_juice = 4
 	)
-	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("zesty mintyness" = 1)
 	foodtypes = VEGETABLES
@@ -113,7 +109,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "spiced_jerky"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/protein = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -126,8 +122,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_wrap"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -141,9 +137,9 @@
 	icon_state = "sweet_piru_noodles"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/kiri_jelly = 4, 
-		/datum/reagent/consumable/muli_juice = 4, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/kiri_jelly = 4,
+		/datum/reagent/consumable/muli_juice = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -157,9 +153,9 @@
 	icon_state = "kiri_curry"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/kiri_jelly = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/kiri_jelly = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -172,9 +168,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 24, 
-		/datum/reagent/consumable/nutriment/protein = 16, 
-		/datum/reagent/consumable/muli_juice = 12, 
+		/datum/reagent/consumable/nutriment = 24,
+		/datum/reagent/consumable/nutriment/protein = 16,
+		/datum/reagent/consumable/muli_juice = 12,
 		/datum/reagent/consumable/nutriment/vitamin = 16
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -190,9 +186,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread_slice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/muli_juice = 3, 
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/muli_juice = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -205,7 +201,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisp"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4, 
+		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -218,8 +214,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisps_and_dip"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 12, 
-		/datum/reagent/consumable/muli_juice = 8, 
+		/datum/reagent/consumable/nutriment = 12,
+		/datum/reagent/consumable/muli_juice = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -233,9 +229,9 @@
 	icon_state = "stewed_muli"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 10, 
-		/datum/reagent/consumable/nutriment/protein = 8, 
-		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/nutriment/protein = 8,
+		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/muli_juice = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -248,9 +244,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "stuffed_muli_pod"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/muli_juice = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -263,7 +259,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "caramel_jelly_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
@@ -276,8 +272,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "kiri_jellypuff"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/kiri_jelly = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
