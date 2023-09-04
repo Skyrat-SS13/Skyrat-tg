@@ -180,6 +180,7 @@
 
 	// fight power with power
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
+	playsound(src, 'sound/misc/bloblarm.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
 
 /// Stop the delamination. Let the fireworks begin
@@ -190,7 +191,6 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
