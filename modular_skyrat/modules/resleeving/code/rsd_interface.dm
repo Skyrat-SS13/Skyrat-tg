@@ -22,7 +22,7 @@
 
 /datum/element/rsd_interface/Attach(datum/target)
 	. = ..()
-	if(!istype(target, /obj/item/clothing/rsd_interface))
+	if(!istype(target, /obj/item/organ/internal/brain))
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
