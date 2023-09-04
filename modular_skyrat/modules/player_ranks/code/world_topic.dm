@@ -32,6 +32,8 @@
 	if(!target_rank)
 		return "Invalid target rank provided."
 
+	target_rank = capitalize(target_rank)
+
 	var/desired_rank_status = !!input["desired_rank_status"]
 
 	if(desired_rank_status)
