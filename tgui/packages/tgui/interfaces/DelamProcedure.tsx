@@ -6,20 +6,18 @@ export const DelamProcedure = (context) => {
     <Window
       title="Safety Moth - Delamination Emergency Procedure"
       width={666}
-      height={746}
+      height={795}
       theme="dark">
       <Window.Content>
         <Section title="NT-approved delam emergency procedure">
-          <Box m={2}>
+          <NoticeBox danger m={2}>
             <b>
               So you&apos;ve found yourself in a bit of a pickle with a
               delamination of a supermatter reactor.
               <br />
-              <br />
               Don&apos;t worry, saving the day is just a few steps away!
-              <br />
             </b>
-          </Box>
+          </NoticeBox>
           <BlockQuote m={2}>
             Locate the ever-elusive red emergency stop button. It&apos;s
             probably hiding in plain sight, so take your time, have a laugh, and
@@ -53,6 +51,13 @@ export const DelamProcedure = (context) => {
             fireworks - the kind you definitely don&apos;t want inside a
             reactor.
           </BlockQuote>
+          <NoticeBox info m={2}>
+            <b>
+              Did you know freon catches fire at low temperatures?
+              <br />
+              It even forms hot ice between 120K and 160K!
+            </b>
+          </NoticeBox>
           <BlockQuote m={2}>
             To avoid singeing your eyebrows off, consider enlisting the help of
             a synth or a trusty borg. After all, nothing says &quot;safety
@@ -60,8 +65,8 @@ export const DelamProcedure = (context) => {
             non-breathing assistants.
           </BlockQuote>
           <BlockQuote m={2}>
-            Clear out any lightly radioactive debris (The cargo department will
-            probably love to dispose it for you.)
+            Clear out any lightly radioactive debris and/or hot ice (The cargo
+            department will probably love to dispose it for you.)
           </BlockQuote>
           <BlockQuote m={2}>
             Finally, revel in the satisfaction of knowing that you&apos;ve
