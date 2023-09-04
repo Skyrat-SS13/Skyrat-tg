@@ -3,8 +3,8 @@
 	loaded_nifsoft = /datum/nifsoft/scryer
 
 /datum/nifsoft/scryer
-	name = "Scryer"
-	program_desc = "Allows the user to summon a MODSuit Scryer"
+	name = "NIFLink Holocaller"
+	program_desc = "This ubiquitous NIFSoft adds Scryer functionality similar to MODSuits to the user's NIF; allowing for real-time communication through AR hologlass screens from a hardlight projector sat around the wearer's neck"
 	active_mode = TRUE
 	active_cost = 1
 	activation_cost = 20
@@ -53,8 +53,8 @@
 	var/custom_examine_controls = FALSE
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft
-	name = "\improper NIFSoft scryer"
-	desc = "A modified version of the MODlink scryer, conjured using a NIF."
+	name = "\improper NIFLink Holocaller"
+	desc = "A nanomachine construct working as a modified version of the MODlink scryer, conjured using a NIF; functionally the same, but able to carry out holocalls in a more portable format."
 	custom_examine_controls = TRUE
 	/// A weakref of the parent NIFSoft that the scryer belongs to.
 	var/datum/weakref/parent_nifsoft
