@@ -341,11 +341,7 @@
 	)
 	tastes = list("bacon" = 1)
 	foodtypes = MEAT | BREAKFAST
-<<<<<<< HEAD
-	burns_on_grill = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meat/slab/gondola
 	name = "gondola meat"
@@ -407,11 +403,7 @@
 	)
 	tastes = list("crab" = 1)
 	foodtypes = SEAFOOD
-<<<<<<< HEAD
-	burns_on_grill = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meat/slab/chicken
 	name = "chicken meat"
@@ -452,11 +444,7 @@
 	)
 	foodtypes = MEAT
 	tastes = list("meat" = 1)
-<<<<<<< HEAD
-	burns_on_grill = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meat/steak/Initialize(mapload)
 	. = ..()
@@ -671,11 +659,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("meat" = 1)
 	foodtypes = MEAT
-<<<<<<< HEAD
-	burns_on_grill = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/meat/cutlet/Initialize(mapload)
 	. = ..()

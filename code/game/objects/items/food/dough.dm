@@ -40,11 +40,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7)
 	tastes = list("bread" = 1)
 	foodtypes = GRAIN
-<<<<<<< HEAD
-	burns_in_oven = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/pizzabread/Initialize(mapload)
 	. = ..()
@@ -75,11 +71,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("bun" = 1) // the bun tastes of bun.
 	foodtypes = GRAIN
-<<<<<<< HEAD
-	burns_in_oven = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/bun/Initialize(mapload)
 	. = ..()
@@ -137,8 +129,4 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("pastry" = 1)
 	foodtypes = GRAIN | DAIRY
-<<<<<<< HEAD
-	burns_in_oven = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_2
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))

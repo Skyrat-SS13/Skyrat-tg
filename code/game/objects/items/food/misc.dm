@@ -357,11 +357,7 @@
 	)
 	tastes = list("bell pepper" = 1, "char" = 1)
 	foodtypes = VEGETABLES
-<<<<<<< HEAD
-	burns_in_oven = TRUE
-=======
 	crafting_complexity = FOOD_COMPLEXITY_1
->>>>>>> a92843744bd (Simplifies the way burning food is handled, kills burns_in_oven and burns_on_grill (#77570))
 
 /obj/item/food/pierogi
 	name = "pierogi"
