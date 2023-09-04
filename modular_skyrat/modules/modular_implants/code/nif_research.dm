@@ -68,7 +68,7 @@
 	build_path = /obj/item/disk/nifsoft_uploader/sci_hud
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/design/nifsoft_hud/science
+/datum/design/nifsoft_hud/meson
 	name = "Meson HUD NIFSoft"
 	desc = "A NIFSoft datadisk containing the Meson HUD NIFsoft."
 	id = "nifsoft_hud_meson"
