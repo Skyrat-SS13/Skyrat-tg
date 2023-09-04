@@ -56,7 +56,7 @@
 	if(do_after(user, 30))
 		to_chat(user, span_notice("You finish snorting the [src]."))
 		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
 
 /obj/item/reagent_containers/cocaine/attack(mob/target, mob/user)
