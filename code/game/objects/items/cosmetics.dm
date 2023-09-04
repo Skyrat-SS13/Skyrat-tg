@@ -275,9 +275,7 @@
 					shave(human_target, location)
 				return
 	return ..()
-<<<<<<< HEAD
 */
-=======
 
 /obj/item/razor/surgery
 	name = "surgical razor"
@@ -287,4 +285,3 @@
 
 /obj/item/razor/surgery/get_surgery_tool_overlay(tray_extended)
 	return "razor"
->>>>>>> 3c0159b1433 (replaces surgical and coroner duffels with surgery trays and medical carts, resprites razor (#77975))
