@@ -1,5 +1,5 @@
 /obj/item/rsd_interface
-	name = "RSD Interface"
+	name = "RSD brain interface"
 	desc = "A small device that when inserted to an inert brain, allows the brain to recieve souls from an RSD Soulcatcher."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit" //Make something better later
