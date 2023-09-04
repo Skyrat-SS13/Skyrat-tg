@@ -25,6 +25,8 @@
 	med_hud_set_health()
 	med_hud_set_status()
 
+	update_dnr_hud() // SKYRAT EDIT ADDITION - DNR HUD
+
 /mob/living/Destroy()
 	for(var/datum/status_effect/effect as anything in status_effects)
 		// The status effect calls on_remove when its mob is deleted
