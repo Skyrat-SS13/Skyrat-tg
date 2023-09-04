@@ -59,6 +59,28 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/large_mortar/attackby(obj/item/attacking_item, mob/living/carbon/human/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+
+		if(!length(attacking_item.contents))
+			balloon_alert(user, "nothing to transfer!")
+			return TRUE
+
+		for(var/obj/item/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+
+			if(target_item.juice_results || target_item.grind_results)
+				target_item.forceMove(src)
+
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "filled!")
+		else
+			balloon_alert(user, "transferred")
+		return TRUE
+
 	if(istype(attacking_item, /obj/item/pestle))
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
@@ -112,6 +134,7 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
