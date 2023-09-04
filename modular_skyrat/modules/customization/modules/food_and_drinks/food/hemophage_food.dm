@@ -4,7 +4,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/hemophage_food.dmi'
 	foodtypes = GORE | BLOODY
 
-
 /obj/item/food/hemophage/blood_rice_pearl
 	name = "kessen shinju"
 	desc = "A fun finger food. Little clumps of sticky rice with a bit of ground pork and green onion, all soaked and rolled in fresh blood; giving it a crimson hue. Recommended to serve hot!"
@@ -15,7 +14,7 @@
 	)
 	tastes = list("rice" = 3, "blood" = 5)
 	foodtypes = GRAIN | GORE | BLOODY
-
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/hemophage/blood_rice_pearl/raw
 	name = "uncooked blood rice"
@@ -29,10 +28,10 @@
 	tastes = list("raw rice" = 3, "blood" = 5)
 	color = "#810000"
 	foodtypes = GRAIN | GORE | BLOODY | RAW
+	crafting_complexity = FOOD_COMPLEXITY_0
 
 /obj/item/food/hemophage/blood_rice_pearl/raw/make_microwaveable()
 	AddElement(/datum/element/microwavable, /obj/item/food/hemophage/blood_rice_pearl)
-
 
 /obj/item/food/hemophage/blood_noodles
 	name = "boiled blood noodles"
@@ -46,7 +45,7 @@
 	)
 	tastes = list("blood" = 5, "pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY
-
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/hemophage/blood_noodles/raw
 	name = "raw blood noodles"
@@ -58,10 +57,10 @@
 	)
 	tastes = list("blood" = 5, "raw pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY | RAW
+	crafting_complexity = FOOD_COMPLEXITY_0
 
 /obj/item/food/hemophage/blood_noodles/raw/make_microwaveable()
 	AddElement(/datum/element/microwavable, /obj/item/food/hemophage/blood_noodles)
-
 
 /obj/item/food/hemophage/blood_noodles/boat_noodles
 	name = "boat noodles"
@@ -76,7 +75,7 @@
 	)
 	tastes = list("blood" = 5, "congealed blood" = 3, "pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY
-
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/hemophage/blood_curd
 	name = "blood curd"
@@ -88,7 +87,7 @@
 	)
 	tastes = list("congealed blood" = 1)
 	foodtypes = GORE | BLOODY | RAW
-
+	crafting_complexity = FOOD_COMPLEXITY_0
 
 /obj/item/food/hemophage/blood_cake
 	name = "ti hoeh koe"
@@ -101,7 +100,7 @@
 	)
 	tastes = list("blood" = 5, "crunchy rice" = 2, "peanut butter" = 2)
 	foodtypes = GRAIN | GORE | BLOODY | SUGAR | NUTS
-
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/soup/hemophage/blood_soup
 	name = "dinuguan"
@@ -115,3 +114,4 @@
 	)
 	tastes = list("blood" = 5, "congealed blood" = 2, "chili" = 3, "vinegar" = 1, "garlic" = 1)
 	foodtypes = GORE | BLOODY | VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_4
