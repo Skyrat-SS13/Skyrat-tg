@@ -6,7 +6,7 @@ export const DelamProcedure = (context) => {
     <Window
       title="Safety Moth - Delamination Emergency Procedure"
       width={666}
-      height={795}
+      height={865}
       theme="dark">
       <Window.Content>
         <Section title="NT-approved delam emergency procedure">
@@ -14,6 +14,7 @@ export const DelamProcedure = (context) => {
             <b>
               So you&apos;ve found yourself in a bit of a pickle with a
               delamination of a supermatter reactor.
+              <br />
               <br />
               Don&apos;t worry, saving the day is just a few steps away!
             </b>
@@ -55,7 +56,12 @@ export const DelamProcedure = (context) => {
             <b>
               Did you know freon catches fire at low temperatures?
               <br />
+              <br />
               It even forms hot ice between 120K and 160K!
+              <br />
+              <br />
+              Remember you can always turn the engine room air alarm to
+              contaminated to assist in removing harmful gases!
             </b>
           </NoticeBox>
           <BlockQuote m={2}>
