@@ -60,7 +60,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	. = ..()
 
 	if (stat != DEAD && HAS_TRAIT(src, TRAIT_DNR))
-		. += "\n[span_boldwarning("This individual is unable to be revived, and can suffer final death!")]"
+		. += "\n[span_boldwarning("This individual is unable to be revived! Once dead, they will be gone for the rest of the round!")]"
 
 // uncontrollable laughter
 /datum/quirk/item_quirk/joker
