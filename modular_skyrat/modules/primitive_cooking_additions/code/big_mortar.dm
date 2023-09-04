@@ -72,7 +72,7 @@
 			if(length(contents) >= maximum_contained_items)
 				break
 
-			if(target_item.juice_results || target_item.grind_results)
+			if(target_item.juice_typepath || target_item.grind_results)
 				target_item.forceMove(src)
 
 		if (length(contents) >= maximum_contained_items)
