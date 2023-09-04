@@ -338,8 +338,8 @@
 
 	// Give them a cheeky instructions card. But only one! If you lost it, question your engineering prowess in this moment
 	if(button_stage == BUTTON_IDLE)
-		visible_message(span_danger("A biscuit card falls out of [src]!"))
-		user.put_in_hands(new /obj/item/folder/biscuit/confidential/delam(get_turf(user)))
+		visible_message(span_danger("A plastic card falls out of [src]!"))
+		user.put_in_hands(new /obj/item/paper/paperslip/corporate/fluff/delam_procedure(get_turf(user)))
 		button_stage = BUTTON_AWAKE
 		return
 
@@ -424,12 +424,8 @@
 	active = FALSE
 	update_appearance()
 
-/obj/item/folder/biscuit/confidential/delam
-	name = "NT-approved delam emergency procedure"
-	contained_slip = /obj/item/paper/paperslip/corporate/fluff/delam_procedure
-
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/Initialize(mapload)
-	name = "delam emergency procedure"
+	name = "NT-approved delam emergency procedure"
 	desc = "Now you're a REAL engineer!"
 	return ..()
 
