@@ -63,15 +63,6 @@
 	deconstruct(disassembled = TRUE)
 	return TRUE
 
-<<<<<<< HEAD
-/*
- * Roller beds
- */
-/obj/structure/bed/roller
-	name = "roller bed"
-	icon = 'icons/obj/medical/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "down"
-=======
 /// Medical beds
 /obj/structure/bed/medical
 	name = "medical bed"
@@ -79,7 +70,6 @@
 	desc = "A medical bed with wheels for assisted patient movement or medbay racing tournaments."
 	icon_state = "med_down"
 	base_icon_state = "med"
->>>>>>> 3594c3d1fb6 (Medical/roller beds (#78078))
 	anchored = FALSE
 	resistance_flags = NONE
 	build_stack_type = /obj/item/stack/sheet/mineral/titanium
@@ -197,17 +187,10 @@
 
 /obj/item/emergency_bed
 	name = "roller bed"
-<<<<<<< HEAD
-	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/medical/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "folded"
-	inhand_icon_state = "rollerbed"
-=======
 	desc = "A collapsed medical bed that can be carried around."
 	icon = 'icons/obj/medical/medical_bed.dmi'
 	icon_state = "emerg_folded"
 	inhand_icon_state = "emergencybed"
->>>>>>> 3594c3d1fb6 (Medical/roller beds (#78078))
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
