@@ -12,6 +12,7 @@
 	foodtypes = GRAIN | VEGETABLES
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/sandwich/cheese
 	name = "cheese sandwich"
@@ -24,6 +25,7 @@
 	tastes = list("bread" = 1, "cheese" = 1)
 	foodtypes = GRAIN | DAIRY
 	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/sandwich/cheese/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/sandwich/cheese/grilled, rand(30 SECONDS, 60 SECONDS), TRUE)
@@ -48,6 +50,7 @@
 	bite_consumption = 3
 	tastes = list("bread" = 1, "jelly" = 1)
 	foodtypes = GRAIN
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/sandwich/jelly/slime
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/slimejelly = 10, /datum/reagent/consumable/nutriment/vitamin = 4)
@@ -67,6 +70,7 @@
 	)
 	tastes = list("nothing suspicious" = 1)
 	foodtypes = GRAIN | GROSS
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/griddle_toast
 	name = "griddle toast"
@@ -78,6 +82,7 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_MASK
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/butteredtoast
 	name = "buttered toast"
@@ -93,6 +98,7 @@
 	foodtypes = GRAIN | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/jelliedtoast
 	name = "jellied toast"
@@ -104,6 +110,7 @@
 	foodtypes = GRAIN | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/jelliedtoast/cherry
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/cherryjelly = 8, /datum/reagent/consumable/nutriment/vitamin = 4)
@@ -126,6 +133,7 @@
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/hotdog
 	name = "hotdog"
@@ -143,6 +151,7 @@
 	foodtypes = GRAIN | MEAT //Ketchup is not a vegetable
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 // Used for unit tests, do not delete
 /obj/item/food/hotdog/debug
@@ -164,6 +173,7 @@
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/sandwich/blt
 	name = "\improper BLT"
@@ -177,6 +187,7 @@
 	)
 	tastes = list("bacon" = 3, "lettuce" = 2, "tomato" = 2, "bread" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES | BREAKFAST
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/sandwich/peanut_butter_jelly
 	name = "peanut butter and jelly sandwich"
@@ -189,6 +200,7 @@
 	)
 	tastes = list("peanut butter" = 1, "jelly" = 1, "bread" = 2)
 	foodtypes = GRAIN | FRUIT | NUTS
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/sandwich/peanut_butter_banana
 	name = "peanut butter and banana sandwich"
@@ -202,6 +214,7 @@
 	)
 	tastes = list("peanut butter" = 1, "banana" = 1, "bread" = 2)
 	foodtypes = GRAIN | FRUIT | NUTS
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/sandwich/philly_cheesesteak
 	name = "Philly cheesesteak"
@@ -214,6 +227,7 @@
 	)
 	tastes = list("bread" = 1, "juicy meat" = 1, "melted cheese" = 1, "onions" = 1)
 	foodtypes = GRAIN | MEAT | DAIRY | VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/sandwich/toast_sandwich
 	name = "toast sandwich"
@@ -226,6 +240,7 @@
 	)
 	tastes = list("bread" = 2, "Britain" = 1, "butter" = 1, "toast" = 1)
 	foodtypes = GRAIN
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/sandwich/death
 	name = "death sandwich"

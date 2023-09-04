@@ -7,6 +7,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/food/flat_piru_dough, 1, 3 SECONDS, table_required = TRUE, screentip_verb = "Flatten")
@@ -26,6 +27,7 @@
 	tastes = list("minty bread" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_loaf/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/piru, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -38,6 +40,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("minty bread" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/flat_piru_dough
 	name = "flattened piru dough"
@@ -47,6 +50,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/flat_piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/piru_pasta, 3, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -65,6 +69,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("minty flatbread" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_pasta
 	name = "piru pasta"
@@ -75,6 +80,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty pasta" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/baked_kiri
 	name = "baked kiri fruit"
@@ -88,6 +94,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy sweetness" = 1, "caramelized jelly" = 1)
 	foodtypes = FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/baked_muli
 	name = "baked muli pod"
@@ -102,6 +109,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("zesty mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/spiced_jerky
 	name = "spiced jerky"
@@ -115,6 +123,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("tough, spicy jerky" = 1)
 	foodtypes = MEAT
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/sirisai_wrap
 	name = "sirisai wrap"
@@ -129,6 +138,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("cooked cabbage" = 1, "spiced meat" = 1, "minty piru bread" = 1)
 	foodtypes = MEAT | VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/sweet_piru_noodles
 	name = "sweet piru noodles"
@@ -145,6 +155,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru noodles" = 1, "minty muli juice" = 1, "sugary kiri jelly" = 1, "baked carrots" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/kiri_curry
 	name = "kiri curry"
@@ -161,6 +172,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("heavily seasoned meat" = 1, "sweetened minty piru noodles" = 1, "zesty chilis" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_5
 
 /obj/item/food/sirisai_flatbread
 	name = "sirisai flatbread"
@@ -176,6 +188,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/sirisai_flatbread/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/sirisai_flatbread_slice, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -194,6 +207,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/bluefeather_crisp
 	name = "bluefeather crisp"
@@ -207,6 +221,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "zesty spice" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/bluefeather_crisps_and_dip
 	name = "bluefeather crisps and dip"
@@ -221,6 +236,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "tangy dip" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/stewed_muli
 	name = "stewed muli"
@@ -237,6 +253,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("hearty spiced meat" = 1, "baked carrots" = 1, "baked cabbage" = 1, "minty broth" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_5
 
 /obj/item/food/stuffed_muli_pod
 	name = "stuffed muli pod"
@@ -252,6 +269,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("spiced meat" = 1, "minty muli pod" = 1, "super-sweet kiri fruit" = 1, "chili" = 1)
 	foodtypes = VEGETABLES | FRUIT | MEAT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/caramel_jelly_toast
 	name = "caramel jelly toast"
@@ -265,6 +283,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru bread" = 1, "sweet caramel" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/kiri_jellypuff
 	name = "kiri jellypuff"
@@ -279,3 +298,4 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("puffed minty piru bread" = 1, "rich cream" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4
