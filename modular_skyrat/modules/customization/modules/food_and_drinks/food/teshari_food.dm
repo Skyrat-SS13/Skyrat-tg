@@ -7,6 +7,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/food/flat_piru_dough, 1, 3 SECONDS, table_required = TRUE, screentip_verb = "Flatten")
@@ -27,6 +28,7 @@
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	burns_on_grill = TRUE
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_loaf/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/piru, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -39,6 +41,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("minty bread" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/flat_piru_dough
 	name = "flattened piru dough"
@@ -48,6 +51,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/flat_piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/piru_pasta, 3, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -67,6 +71,7 @@
 	tastes = list("minty flatbread" = 1)
 	foodtypes = VEGETABLES
 	burns_on_grill = TRUE
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_pasta
 	name = "piru pasta"
@@ -77,6 +82,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty pasta" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/baked_kiri
 	name = "baked kiri fruit"
@@ -84,13 +90,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_kiri"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6, 
+		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/kiri_jelly = 6
 	)
 	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy sweetness" = 1, "caramelized jelly" = 1)
 	foodtypes = FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/baked_muli
 	name = "baked muli pod"
@@ -98,14 +105,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_muli"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4, 
-		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/muli_juice = 4
 	)
 	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("zesty mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/spiced_jerky
 	name = "spiced jerky"
@@ -113,12 +121,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "spiced_jerky"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/protein = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("tough, spicy jerky" = 1)
 	foodtypes = MEAT
+	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/sirisai_wrap
 	name = "sirisai wrap"
@@ -126,13 +135,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_wrap"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("cooked cabbage" = 1, "spiced meat" = 1, "minty piru bread" = 1)
 	foodtypes = MEAT | VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/sweet_piru_noodles
 	name = "sweet piru noodles"
@@ -141,14 +151,15 @@
 	icon_state = "sweet_piru_noodles"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/kiri_jelly = 4, 
-		/datum/reagent/consumable/muli_juice = 4, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/kiri_jelly = 4,
+		/datum/reagent/consumable/muli_juice = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru noodles" = 1, "minty muli juice" = 1, "sugary kiri jelly" = 1, "baked carrots" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/kiri_curry
 	name = "kiri curry"
@@ -157,14 +168,15 @@
 	icon_state = "kiri_curry"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/kiri_jelly = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/kiri_jelly = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("heavily seasoned meat" = 1, "sweetened minty piru noodles" = 1, "zesty chilis" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_5
 
 /obj/item/food/sirisai_flatbread
 	name = "sirisai flatbread"
@@ -172,14 +184,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 24, 
-		/datum/reagent/consumable/nutriment/protein = 16, 
-		/datum/reagent/consumable/muli_juice = 12, 
+		/datum/reagent/consumable/nutriment = 24,
+		/datum/reagent/consumable/nutriment/protein = 16,
+		/datum/reagent/consumable/muli_juice = 12,
 		/datum/reagent/consumable/nutriment/vitamin = 16
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/sirisai_flatbread/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/sirisai_flatbread_slice, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
@@ -190,14 +203,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread_slice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/muli_juice = 3, 
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/muli_juice = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/bluefeather_crisp
 	name = "bluefeather crisp"
@@ -205,12 +219,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisp"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4, 
+		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "zesty spice" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/bluefeather_crisps_and_dip
 	name = "bluefeather crisps and dip"
@@ -218,13 +233,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisps_and_dip"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 12, 
-		/datum/reagent/consumable/muli_juice = 8, 
+		/datum/reagent/consumable/nutriment = 12,
+		/datum/reagent/consumable/muli_juice = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "tangy dip" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/stewed_muli
 	name = "stewed muli"
@@ -233,14 +249,15 @@
 	icon_state = "stewed_muli"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 10, 
-		/datum/reagent/consumable/nutriment/protein = 8, 
-		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/nutriment/protein = 8,
+		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/muli_juice = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("hearty spiced meat" = 1, "baked carrots" = 1, "baked cabbage" = 1, "minty broth" = 1)
 	foodtypes = VEGETABLES | MEAT
+	crafting_complexity = FOOD_COMPLEXITY_5
 
 /obj/item/food/stuffed_muli_pod
 	name = "stuffed muli pod"
@@ -248,14 +265,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "stuffed_muli_pod"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/protein = 4, 
-		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/muli_juice = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("spiced meat" = 1, "minty muli pod" = 1, "super-sweet kiri fruit" = 1, "chili" = 1)
 	foodtypes = VEGETABLES | FRUIT | MEAT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/caramel_jelly_toast
 	name = "caramel jelly toast"
@@ -263,12 +281,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "caramel_jelly_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 6
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru bread" = 1, "sweet caramel" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/kiri_jellypuff
 	name = "kiri jellypuff"
@@ -276,10 +295,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "kiri_jellypuff"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 8, 
-		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/kiri_jelly = 4
 	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("puffed minty piru bread" = 1, "rich cream" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
+	crafting_complexity = FOOD_COMPLEXITY_4

@@ -78,9 +78,6 @@
 	seed.prepare_result(src)
 	transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
 
-	if(seed.get_gene(/datum/plant_gene/trait/brewing))
-		ferment()
-
 /obj/item/food/grown/Destroy()
 	if(isatom(seed))
 		QDEL_NULL(seed)
@@ -111,50 +108,37 @@
 
 /// Turns the nutriments and vitamins into the distill reagent or fruit wine
 /obj/item/food/grown/proc/ferment()
+	var/reagent_purity = seed.get_reagent_purity()
+	var/purity_above_base = clamp((reagent_purity - 0.5) * 2, 0, 1)
+	var/quality_min = 0
+	var/quality_max = DRINK_FANTASTIC
+	var/quality = round(LERP(quality_min, quality_max, purity_above_base))
 	for(var/datum/reagent/reagent in reagents.reagent_list)
-		if(reagent.type != /datum/reagent/consumable/nutriment && reagent.type != /datum/reagent/consumable/nutriment/vitamin)
+		if(!istype(reagent, /datum/reagent/consumable))
 			continue
-		var/purity = clamp(seed.lifespan/200 + seed.endurance/200, 0, 1)
-		var/quality_min = 0
-		var/quality_max = DRINK_FANTASTIC
-		var/quality = round(LERP(quality_min, quality_max, purity))
 		if(distill_reagent)
 			var/data = list()
 			var/datum/reagent/consumable/ethanol/booze = distill_reagent
 			data["quality"] = quality
-			data["boozepwr"] = round(initial(booze.boozepwr) * purity)
-			reagents.add_reagent(distill_reagent, reagent.volume, data, added_purity = purity)
+			data["boozepwr"] = round(initial(booze.boozepwr) * reagent_purity * 2) // default boozepwr at 50% purity
+			reagents.add_reagent(distill_reagent, reagent.volume, data, added_purity = reagent_purity)
 		else
 			var/data = list()
 			data["names"] = list("[initial(name)]" = 1)
 			data["color"] = filling_color
-			data["boozepwr"] = round(wine_power * purity)
+			data["boozepwr"] = round(wine_power * reagent_purity * 2) // default boozepwr at 50% purity
 			data["quality"] = quality
 			if(wine_flavor)
 				data["tastes"] = list(wine_flavor = 1)
 			else
 				data["tastes"] = list(tastes[1] = 1)
-			reagents.add_reagent(/datum/reagent/consumable/ethanol/fruit_wine, reagent.volume, data, added_purity = purity)
+			reagents.add_reagent(/datum/reagent/consumable/ethanol/fruit_wine, reagent.volume, data, added_purity = reagent_purity)
 		reagents.del_reagent(reagent.type)
 
-/obj/item/food/grown/on_grind()
-	. = ..()
-	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(grind_results?.len)
-		for(var/i in 1 to grind_results.len)
-			grind_results[grind_results[i]] = nutriment
-		reagents.del_reagent(/datum/reagent/consumable/nutriment)
-		reagents.del_reagent(/datum/reagent/consumable/nutriment/vitamin)
+/obj/item/food/grown/grind(datum/reagents/target_holder, mob/user)
+	if(on_grind() == -1)
+		return FALSE
 
-<<<<<<< HEAD
-/obj/item/food/grown/on_juice()
-	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(juice_results?.len)
-		for(var/i in 1 to juice_results.len)
-			juice_results[juice_results[i]] = nutriment
-		reagents.del_reagent(/datum/reagent/consumable/nutriment)
-		reagents.del_reagent(/datum/reagent/consumable/nutriment/vitamin)
-=======
 	var/grind_results_num = LAZYLEN(grind_results)
 	if(grind_results_num)
 		var/average_purity = reagents.get_average_purity()
@@ -167,7 +151,6 @@
 	if(reagents && target_holder)
 		reagents.trans_to(target_holder, reagents.total_volume, transferred_by = user)
 	return TRUE
->>>>>>> 69f51c6c65c (Fixes typo 'transfered', olive oil reaction repath (#78064))
 
 #undef BITE_SIZE_POTENCY_MULTIPLIER
 #undef BITE_SIZE_VOLUME_MULTIPLIER
