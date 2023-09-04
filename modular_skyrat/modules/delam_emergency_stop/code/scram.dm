@@ -18,8 +18,9 @@
 #define SHATTER_FLASH_RANGE 5
 #define SHATTER_MIN_TIME 13 SECONDS
 #define SHATTER_MAX_TIME 15 SECONDS
-#define POWER_CUT_MIN_DURATION 19 SECONDS
-#define POWER_CUT_MAX_DURATION 21 SECONDS
+#define EVAC_WARNING_TIMER 5 SECONDS
+#define POWER_CUT_MIN_DURATION_SECONDS 19
+#define POWER_CUT_MAX_DURATION_SECONDS 21
 #define AIR_INJECT_RATE 33
 #define BUTTON_SOUND_RANGE 7
 #define BUTTON_SOUND_FALLOFF_DISTANCE 7
@@ -179,9 +180,9 @@
 	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
 
 	// fight power with power
-	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), EVAC_WARNING_TIMER)
 	playsound(src, 'sound/misc/bloblarm.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
-	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
+	power_fail((EVAC_WARNING_TIMER / 10) + POWER_CUT_MAX_DURATION_SECONDS, (EVAC_WARNING_TIMER / 10) + POWER_CUT_MAX_DURATION_SECONDS)
 
 /// Stop the delamination. Let the fireworks begin
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
@@ -218,9 +219,6 @@
 
 	// Let the gas work for a few seconds to cool the crystal. If it has damage beyond repair, heal it a bit
 	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 9 SECONDS)
-
-	// Restore the power that we were 'channelling' to the SM
-	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(POWER_CUT_MIN_DURATION, POWER_CUT_MAX_DURATION))
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()
@@ -260,24 +258,6 @@
 	delam_juice.gases[/datum/gas/freon][MOLES] = SM_COOLING_MIXTURE_MOLES
 	delam_juice.temperature = SM_COOLING_MIXTURE_TEMP
 	airs[1] = delam_juice
-
-/// Dims the lights and consumes a bit of APC power, summoning that electricity to stop the delam... somehow
-/datum/controller/subsystem/nightshift/proc/suck_light_power()
-	SSnightshift.can_fire = FALSE
-	for(var/obj/machinery/power/apc/light_to_suck as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
-		light_to_suck.cell.charge -= DELAM_MACHINE_POWER_CONSUMPTION
-		light_to_suck.lighting = APC_CHANNEL_OFF
-		light_to_suck.nightshift_lights = TRUE
-		light_to_suck.update_appearance()
-		light_to_suck.update()
-
-/// Restores the lighting after the delam suppression
-/datum/controller/subsystem/nightshift/proc/restore_light_power()
-	SSnightshift.can_fire = TRUE
-	for(var/obj/machinery/power/apc/light_to_restore as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
-		light_to_restore.lighting = APC_CHANNEL_AUTO_ON
-		light_to_restore.update_appearance()
-		light_to_restore.update()
 
 /// A big red button you can smash to stop the supermatter engine, oh how tempting!
 /obj/machinery/button/delam_scram
@@ -506,8 +486,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/delam_procedure, 32)
 #undef SHATTER_FLASH_RANGE
 #undef SHATTER_MIN_TIME
 #undef SHATTER_MAX_TIME
-#undef POWER_CUT_MIN_DURATION
-#undef POWER_CUT_MAX_DURATION
+#undef EVAC_WARNING_TIMER
+#undef POWER_CUT_MIN_DURATION_SECONDS
+#undef POWER_CUT_MAX_DURATION_SECONDS
 #undef AIR_INJECT_RATE
 #undef BUTTON_SOUND_RANGE
 #undef BUTTON_SOUND_FALLOFF_DISTANCE
