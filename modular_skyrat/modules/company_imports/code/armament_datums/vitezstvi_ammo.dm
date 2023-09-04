@@ -15,7 +15,7 @@
 	item_type = /obj/item/disk/ammo_workbench/advanced
 	cost = PAYCHECK_COMMAND * 5
 
-/datum/armament_entry/company_import/vitezstvi/bullet_drive
+/datum/armament_entry/company_import/vitezstvi/ammo_bench/bullet_drive
 	item_type = /obj/item/circuitboard/machine/dish_drive/bullet
 	cost = PAYCHECK_COMMAND * 2
 
