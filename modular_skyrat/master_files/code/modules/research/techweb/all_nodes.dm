@@ -112,6 +112,7 @@
 		"nifsoft_money_sense",
 		"nifsoft_hud_kit",
 		"nifsoft_hud_science",
+		"nifsoft_hud_meson",
 		"nifsoft_hud_medical",
 		"nifsoft_hud_security",
 		"nifsoft_hud_diagnostic",
