@@ -136,27 +136,17 @@
 	if(isnull(eye_icon_state))
 		return list()
 
-<<<<<<< HEAD
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human/human_face.dmi' // SKYRAT EDIT ADDITION
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
-	var/list/eye_overlays = list(eye_left, eye_right) //SKYRAT EDIT ADDITION - Add all the overlays to this list instead of adding emissive blockers/eye emissives to the eye overlays' overlays
-
-	var/obscured = parent.check_obscured_slots(TRUE)
-	if(overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-		eye_overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, alpha = eye_left.alpha) //SKYRAT EDIT CHANGE - TODO fix upstream
-		eye_overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, alpha = eye_right.alpha) //SKYRAT EDIT CHANGE - TODO fix upstream
-=======
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
 	var/list/overlays = list(eye_left, eye_right)
 
 	var/obscured = parent.check_obscured_slots(TRUE)
 	if(overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-		overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
-		overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -BODY_LAYER, alpha = eye_right.alpha)
->>>>>>> 0a6a909ef82 (eye emissive appearances now rotate with the person (#78101))
+		overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, alpha = eye_left.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
+		overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, alpha = eye_right.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
+
 	var/obj/item/bodypart/head/my_head = parent.get_bodypart(BODY_ZONE_HEAD)
 	if(my_head)
 		if(my_head.head_flags & HEAD_EYECOLOR)
@@ -166,7 +156,6 @@
 			my_head.worn_face_offset.apply_offset(eye_left)
 			my_head.worn_face_offset.apply_offset(eye_right)
 
-<<<<<<< HEAD
 	// SKYRAT EDIT START - Customization (Synths + Emissives)
 	if(eye_icon_state == "None")
 		eye_left.alpha = 0
@@ -180,15 +169,12 @@
 			my_head.worn_face_offset.apply_offset(emissive_right)
 			my_head.worn_face_offset.apply_offset(emissive_left)
 
-		eye_overlays += emissive_left
-		eye_overlays += emissive_right
+		overlays += emissive_left
+		overlays += emissive_right
 
 	// SKYRAT EDIT END
 
-	return eye_overlays // SKYRAT EDIT CHANGE - return all the overlays together in a list so height gets applied correctly
-=======
 	return overlays
->>>>>>> 0a6a909ef82 (eye emissive appearances now rotate with the person (#78101))
 
 #undef OFFSET_X
 #undef OFFSET_Y
