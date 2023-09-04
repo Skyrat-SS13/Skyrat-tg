@@ -62,13 +62,9 @@
 		M.visible_message(span_warning("[user] fed [M] from [src]."), \
 			span_warning("[user] fed you from [src]."))
 		log_combat(user, M, "fed", reagents.get_reagent_log_string())
-<<<<<<< HEAD
 
 	SEND_SIGNAL(M, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
-	reagents.trans_to(M, 10, transfered_by = user, methods = INGEST)
-=======
 	reagents.trans_to(M, 10, transferred_by = user, methods = INGEST)
->>>>>>> 69f51c6c65c (Fixes typo 'transfered', olive oil reaction repath (#78064))
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
 	return TRUE
 
