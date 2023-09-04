@@ -430,13 +430,13 @@
 				user.balloon_alert(user, "mop is full!")
 				return
 			mop.reagents.remove_any(mop.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
-			mop.reagents.trans_to(src, mop.reagents.total_volume, transfered_by = user)
+			mop.reagents.trans_to(src, mop.reagents.total_volume, transferred_by = user)
 			user.balloon_alert(user, "mop squeezed")
 		else
 			if(reagents.total_volume < 1)
 				user.balloon_alert(user, "container empty!")
 			else
-				reagents.trans_to(mop, 5, transfered_by = user)
+				reagents.trans_to(mop, 5, transferred_by = user)
 				user.balloon_alert(user, "mop wet")
 				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 
