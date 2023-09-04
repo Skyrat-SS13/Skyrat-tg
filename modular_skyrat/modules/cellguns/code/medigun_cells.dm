@@ -542,6 +542,8 @@
 	name = "hardlight medical bed"
 	desc = "A medical bed made out of Hardlight"
 	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "hardlight_down"
+	base_icon_state = "hardlight"
 	max_integrity = 1
 	flags_1 = NODECONSTRUCT_1 //Made from nothing, can't deconstruct
 	build_stack_type = null //It would not be good if people could use this to farm materials.
