@@ -26,7 +26,7 @@
 	build_path = /obj/item/handheld_soulcatcher
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)
 	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL) // look, the anesthetic machine's there too
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/nifsoft_hud
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -67,6 +67,13 @@
 	id = "nifsoft_hud_science"
 	build_path = /obj/item/disk/nifsoft_uploader/sci_hud
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/nifsoft_hud/meson
+	name = "Meson HUD NIFSoft"
+	desc = "A NIFSoft datadisk containing the Meson HUD NIFsoft."
+	id = "nifsoft_hud_meson"
+	build_path = /obj/item/disk/nifsoft_uploader/meson_hud
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/nif_hud_kit
 	name = "NIF HUD Retrofitter"
