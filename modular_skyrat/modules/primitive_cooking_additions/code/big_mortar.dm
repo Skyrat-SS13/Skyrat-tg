@@ -90,7 +90,7 @@
 		switch(picked_option)
 			if("Juice")
 				for(var/obj/item/target_item as anything in contents)
-					if(target_item.juice_results)
+					if(target_item.juice_typepath)
 						juice_target_item(target_item, user)
 					else
 						grind_target_item(target_item, user)
@@ -103,7 +103,7 @@
 						juice_target_item(target_item, user)
 		return
 
-	if(!attacking_item.juice_results && !attacking_item.grind_results)
+	if(!attacking_item.grind_results && !attacking_item.juice_typepath)
 		balloon_alert(user, "can't grind this")
 		return ..()
 
@@ -115,24 +115,16 @@
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
-	to_be_juiced.on_juice()
-	reagents.add_reagent_list(to_be_juiced.juice_results)
+	to_be_juiced.juice(src, user)
 
-	if(to_be_juiced.reagents) //If juiced item has reagents within, transfer them to the mortar
-		to_be_juiced.reagents.trans_to(src, to_be_juiced.reagents.total_volume, transfered_by = user)
-
-	to_chat(user, span_notice("You juice [to_be_juiced] into a fine liquid."))
+	to_chat(user, span_notice("You juice [to_be_juiced] into a liquid."))
 	QDEL_NULL(to_be_juiced)
 
 ///Grinds the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
-	to_be_ground.on_grind()
-	reagents.add_reagent_list(to_be_ground.grind_results)
+	to_be_ground.grind(src, user)
 
-	if(to_be_ground.reagents) //If grinded item has reagents within, transfer them to the mortar
-		to_be_ground.reagents.trans_to(src, to_be_ground.reagents.total_volume, transfered_by = user)
-
-	to_chat(user, span_notice("You break [to_be_ground] into powder."))
+	to_chat(user, span_notice("You break [to_be_ground] into a fine powder."))
 	QDEL_NULL(to_be_ground)
 
 #undef LARGE_MORTAR_STAMINA_MINIMUM
