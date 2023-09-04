@@ -8154,7 +8154,6 @@
 	},
 /obj/effect/landmark/start/coroner,
 /obj/effect/turf_decal/bot_white,
-/obj/structure/bed/roller,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 8
 	},
@@ -14752,9 +14751,9 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "eBc" = (
-/obj/structure/bed/roller,
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/warm/directional/west,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "eBi" = (
@@ -17291,21 +17290,15 @@
 /area/station/science/research)
 "fnL" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/shaker{
-	pixel_x = -6;
-	pixel_y = 12
-	},
-/obj/item/holosign_creator/robot_seat/bar{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/cup/rag{
-	pixel_y = 3
-	},
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/pollution_scrubber{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/structure/desk_bell,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/service/bar)
 "fnP" = (
@@ -26203,6 +26196,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/bartender,
+/obj/structure/chair/plastic,
 /turf/open/floor/wood/large,
 /area/station/service/bar)
 "iaX" = (
@@ -35474,9 +35468,9 @@
 /obj/effect/turf_decal/tile/blue/opposingcorners{
 	dir = 1
 	},
-/obj/structure/bed/roller,
-/obj/structure/railing,
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/bed/medical/emergency,
+/obj/structure/railing,
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/central/fore)
 "kMW" = (
@@ -39539,8 +39533,8 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/wrestling/arena)
 "lWk" = (
-/obj/structure/bed/roller,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "lWp" = (
@@ -40257,9 +40251,11 @@
 /obj/effect/turf_decal/tile/blue/opposingcorners{
 	dir = 1
 	},
-/obj/structure/bed/roller,
-/obj/structure/railing,
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/bed/medical/emergency{
+	dir = 4
+	},
+/obj/structure/railing,
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/central)
 "mhK" = (
@@ -45041,8 +45037,10 @@
 /obj/effect/turf_decal/tile/blue/opposingcorners{
 	dir = 1
 	},
-/obj/structure/bed/roller,
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/bed/medical/emergency{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/central)
 "nBe" = (
@@ -45411,20 +45409,6 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
-"nHq" = (
-/obj/structure/table/wood,
-/obj/structure/desk_bell{
-	pixel_x = 12
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/pollution_scrubber{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/station/service/bar)
 "nHx" = (
 /obj/item/folder/blue{
 	pixel_y = 4
@@ -48271,10 +48255,10 @@
 /obj/effect/turf_decal/tile/blue/opposingcorners{
 	dir = 1
 	},
-/obj/structure/bed/roller,
-/obj/structure/railing,
 /obj/effect/turf_decal/bot_blue,
 /obj/machinery/airalarm/directional/west,
+/obj/structure/bed/medical/emergency,
+/obj/structure/railing,
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/central/fore)
 "oCF" = (
@@ -66262,17 +66246,17 @@
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/nt_rep)
 "ugG" = (
-/obj/item/roller,
-/obj/item/roller{
-	pixel_y = 3
-	},
-/obj/item/roller{
-	pixel_y = 6
-	},
 /obj/structure/rack/shelf,
 /obj/item/toy/figure/paramedic{
 	pixel_y = 17;
 	pixel_x = -5
+	},
+/obj/item/emergency_bed,
+/obj/item/emergency_bed{
+	pixel_y = 3
+	},
+/obj/item/emergency_bed{
+	pixel_y = 6
 	},
 /turf/open/floor/iron/white/small,
 /area/station/medical/paramedic)
@@ -74910,14 +74894,22 @@
 /area/station/security/courtroom)
 "wJY" = (
 /obj/structure/table/wood,
-/obj/structure/displaycase/forsale/kitchen{
-	pixel_y = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
+	},
+/obj/item/reagent_containers/cup/glass/shaker{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/holosign_creator/robot_seat/bar{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/cup/rag{
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/service/bar)
@@ -107416,7 +107408,7 @@ hRy
 bmi
 uGd
 iaT
-nHq
+hJs
 wPD
 rrw
 sxz
