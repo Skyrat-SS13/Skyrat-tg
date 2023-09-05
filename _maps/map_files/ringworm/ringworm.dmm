@@ -227,6 +227,26 @@
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
+"aet" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "aux_base_shutters";
+	name = "Auxiliary Base Shutters";
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/button/door/directional/north{
+	id = "aux_base_shutters";
+	name = "Public Shutters Control";
+	req_access = list("aux_base")
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/cargo/lobby)
 "aex" = (
 /turf/closed/wall,
 /area/station/science/genetics)
@@ -16524,7 +16544,7 @@
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/security/brig)
 "faT" = (
-/obj/structure/chair/sofa/bench/right{
+/obj/structure/chair/sofa/bench/left{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -26991,6 +27011,7 @@
 	name = "Genetics Desk";
 	req_access = list("genetics")
 	},
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/science/genetics)
 "ilV" = (
@@ -28280,13 +28301,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/structure/table/glass,
-/obj/structure/desk_bell{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/checker,
 /area/station/hallway/primary/central/aft)
@@ -34803,10 +34817,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/full,
 /obj/effect/spawner/random/maintenance,
-/obj/machinery/power/apc/auto_name/directional/west,
 /obj/machinery/light/warm/directional/west,
 /obj/structure/cable,
 /obj/effect/landmark/start/hangover,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/lobby)
 "kBV" = (
@@ -38761,11 +38775,11 @@
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningoffice)
 "lLw" = (
-/obj/machinery/door/airlock/research{
-	name = "Genetics Lab"
-	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/science/genetics,
+/obj/machinery/door/airlock/medical{
+	name = "Genetics Lab"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/science/genetics)
 "lLC" = (
@@ -57098,6 +57112,17 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/explab)
+"rrs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/central/aft)
 "rrw" = (
 /turf/open/floor/wood/tile,
 /area/station/service/bar)
@@ -68871,12 +68896,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/yellow,
-/obj/machinery/button/door/directional/north{
-	id = "aux_base_shutters";
-	name = "Public Shutters Control";
-	pixel_x = 24;
-	req_access = list("aux_base")
-	},
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -75408,10 +75427,10 @@
 /obj/effect/turf_decal/tile/dark_red/opposingcorners{
 	dir = 1
 	},
-/obj/structure/chair/sofa/bench/left{
-	dir = 8
-	},
 /obj/machinery/airalarm/directional/south,
+/obj/structure/table/glass,
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
 /turf/open/floor/iron/dark/side{
 	dir = 6
 	},
@@ -165224,7 +165243,7 @@ jvz
 vnr
 ewo
 ewo
-idm
+aet
 idm
 cdl
 ewo
@@ -172147,7 +172166,7 @@ pkM
 tbD
 rBc
 ilB
-vkz
+lLw
 rBc
 rBc
 rBc
@@ -173430,7 +173449,7 @@ rhM
 xTA
 cmF
 ocz
-cyZ
+rrs
 faT
 wQW
 pxq
