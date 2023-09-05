@@ -57,6 +57,7 @@
 	if(!json_config)
 		stack_trace("Greyscale config object [DebugName()] is missing a json configuration, make sure `json_config` has been assigned a value.")
 	string_json_config = "[json_config]"
+<<<<<<< HEAD
 	/* SKYRAT EDIT - Added recognition for the Skyrat GAGS folder - ORIGINAL:
 	if(findtext(string_json_config, "code/datums/greyscale/json_configs/") != 1)
 		stack_trace("All greyscale json configuration files should be located within 'code/datums/greyscale/json_configs/'")
@@ -65,6 +66,10 @@
 	if(findtext(string_json_config, "code/datums/greyscale/json_configs/") != 1 && skyrat_gags_regex.Find(string_json_config) != 1)
 		stack_trace("All greyscale json configuration files should be located within '/greyscale/json_configs/' or 'modular_skyrat/modules/GAGS/json_configs/'.")
 	// SKYRAT EDIT END
+=======
+	if(findtext(string_json_config, "code/datums/greyscale/json_configs/") != 1)
+		stack_trace("All greyscale json configuration files should be located within 'code/datums/greyscale/json_configs/'")
+>>>>>>> 6dd42926c7f (Revert "Only checks for greyscale json config folder (#74782)" (#78028))
 	if(!icon_file)
 		stack_trace("Greyscale config object [DebugName()] is missing an icon file, make sure `icon_file` has been assigned a value.")
 	string_icon_file = "[icon_file]"
