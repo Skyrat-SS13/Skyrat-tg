@@ -60,7 +60,7 @@
 	var/distance = 0
 
 /datum/leash_wait/New()
-	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 1 SECONDS) // SKYRAT EDIT TEST
+	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 80 SECONDS) // SKYRAT EDIT TEST
 
 /datum/leash_wait/proc/completed(distance_moved)
 	distance = distance_moved
