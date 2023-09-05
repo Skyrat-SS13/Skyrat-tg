@@ -13,15 +13,11 @@
 	treatable_by = list(/obj/item/stack/medical/suture)
 	treatable_tool = TOOL_CAUTERY
 	base_treat_time = 3 SECONDS
-<<<<<<< HEAD
-	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE)
-=======
 	wound_flags = (ACCEPTS_GAUZE)
 
 	wound_series = WOUND_SERIES_FLESH_PUNCTURE_BLEED
 
 	scar_file = FLESH_SCAR_FILE
->>>>>>> d99ff40b431 ([GBP NO UPDATE] Fixes a incorrect wound series (#78075))
 
 	/// How much blood we start losing when this wound is first applied
 	var/initial_flow
