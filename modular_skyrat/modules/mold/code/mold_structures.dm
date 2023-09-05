@@ -132,7 +132,7 @@
 	icon_state = "blob_floor"
 	density = FALSE
 	plane = FLOOR_PLANE
-	layer = ABOVE_NORMAL_TURF_LAYER
+	layer = LOW_SIGIL_LAYER
 	max_integrity = 50
 	var/blooming = FALSE
 	/// Are we a floor resin? If not then we're a wall resin
@@ -193,7 +193,7 @@
 					pixel_x = -32
 			icon_state = "blob_wall"
 			plane = GAME_PLANE
-			layer = ABOVE_NORMAL_TURF_LAYER
+			layer = LOW_SIGIL_LAYER
 
 	if(prob(7))
 		blooming = TRUE
@@ -331,7 +331,7 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_spawner.dmi'
 	icon_state = "blob_vent"
 	density = FALSE
-	layer = LOW_OBJ_LAYER
+	layer = SIGIL_LAYER
 	max_integrity = 150
 	/// The mold atmosphere conditioner will spawn the mold's preferred atmosphere every so often.
 	var/happy_atmos = null
@@ -370,7 +370,7 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_spawner.dmi'
 	icon_state = "blob_spawner"
 	density = FALSE
-	layer = LOW_OBJ_LAYER
+	layer = SIGIL_LAYER
 	max_integrity = 150
 
 /obj/structure/mold/structure/spawner/Destroy()

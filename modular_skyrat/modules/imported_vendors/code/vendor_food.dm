@@ -27,9 +27,9 @@
 
 /obj/item/trash/empty_side_pack/tizira
 	icon_state = "foodpack_tizira_trash"
-	
+
 /* MEALS */
-	
+
 /*
 *	NT Meals
 */
@@ -75,7 +75,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/capsaicin = 10)
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY
-	
+
 /*
 *	Yangyu Meals
 */
@@ -125,7 +125,7 @@
 	icon_state = "foodtray_fuel_jacks_meal"
 	tastes = list("potato" = 2, "cabbage" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = DAIRY | VEGETABLES
-	
+
 /*
 *	Tiziran Meals
 */
@@ -157,7 +157,7 @@
 	name = "random side spawner"
 	desc = "I hope I get one that actually matches my meal."
 	icon_state = "loot"
-	
+
 /*
 *	NT Sides
 */
@@ -195,7 +195,7 @@
 	desc = "A small stack of tough flatbread, and a small spread of cheese for each."
 	tastes = list("tough bread" = 2, "cheese" = 2)
 	foodtypes = GRAIN | DAIRY
-	
+
 /*
 *	Yangyu Sides
 */
@@ -234,7 +234,7 @@
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("vinegar" = 4)
 	foodtypes = VEGETABLES
-	
+
 /*
 *	Mothic Sides
 */
@@ -273,7 +273,7 @@
 	trash_type = /obj/item/trash/empty_side_pack/moth
 	tastes = list("seeds" = 2, "char" = 2)
 	foodtypes = NUTS
-	
+
 /*
 *	Tiziran Sides
 */

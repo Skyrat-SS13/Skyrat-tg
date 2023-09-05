@@ -26,6 +26,8 @@
 	for(var/trait as anything in added_eyewear_traits)
 		ADD_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
 
+	linked_mob.update_sight()
+
 /// Attempts to remove the HUDs given to the user by the NIFSoft
 /datum/nifsoft/hud/proc/remove_huds()
 	if(hud_type)
@@ -38,6 +40,7 @@
 	for(var/trait in added_eyewear_traits)
 		REMOVE_TRAIT(linked_mob, trait, NIFSOFT_TRAIT)
 
+	linked_mob.update_sight()
 	return TRUE
 
 /datum/nifsoft/hud/activate()
@@ -121,6 +124,11 @@
 	ui_icon = "flask"
 	added_eyewear_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 
+/datum/nifsoft/hud/job/meson
+	name = "Meson Scrying Lens"
+	ui_icon = "radiation"
+	added_eyewear_traits = list(TRAIT_MADNESS_IMMUNE, TRAIT_MESON_VISION)
+
 //
 // UPLOADER DISKS
 //
@@ -145,6 +153,9 @@
 	name = "Science Scrying Lens"
 	loaded_nifsoft = /datum/nifsoft/hud/job/science
 
+/obj/item/disk/nifsoft_uploader/meson_hud
+	name = "Meson Scrying Lens"
+	loaded_nifsoft = /datum/nifsoft/hud/job/meson
 
 //
 // NIFSOFT HUD GLASSES
