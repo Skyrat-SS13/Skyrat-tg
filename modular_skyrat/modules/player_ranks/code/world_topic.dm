@@ -6,7 +6,7 @@
 /datum/world_topic/set_player_rank/Run(list/input)
 	. = list()
 
-	var/sender_discord_id = text2num(input["sender_discord_id"])
+	var/sender_discord_id = input["sender_discord_id"]
 
 	if(!sender_discord_id)
 		.["success"] = FALSE
