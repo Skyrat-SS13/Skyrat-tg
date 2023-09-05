@@ -102,6 +102,8 @@
 		spawn_resin(iterated_turf)
 		if(iterated_turf == our_turf)
 			continue
+		if(isopenspaceturf(iterated_turf))
+			continue
 
 		if(hatcheries_to_spawn && prob(40))
 			hatcheries_to_spawn--
