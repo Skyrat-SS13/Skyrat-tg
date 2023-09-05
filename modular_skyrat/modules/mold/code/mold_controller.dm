@@ -174,7 +174,8 @@
 				CALCULATE_ADJACENT_TURFS(T, NORMAL_TURF)
 
 		else
-			possible_locs += T
+			if(!isopenspaceturf(T)) // no spawning in openspace turfs
+				possible_locs += T
 
 	for(var/T in possible_locs)
 		var/turf/iterated_turf = T
