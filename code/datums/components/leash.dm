@@ -130,6 +130,7 @@
 	performing_path_move = TRUE
 
 	var/atom/movable/movable_parent = parent
+	var/distance_moved = 0
 
 	for (var/turf/to_move as anything in path)
 		// Could be an older path, don't make us teleport back
@@ -139,7 +140,10 @@
 		if (!movable_parent.Move(to_move))
 			force_teleport_back("bad path step")
 			performing_path_move = FALSE
+			SEND_SIGNAL(parent, COMSIG_LEASH_PATH_COMPLETE, distance_moved)
 			return
+
+		distance_moved++
 
 	if (get_dist(parent, owner) > distance)
 		force_teleport_back("incomplete path")

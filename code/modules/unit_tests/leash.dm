@@ -5,6 +5,7 @@
 	var/atom/movable/pet
 
 	var/max_distance = 3
+	var/actual_distance_moved = max_distance
 
 	var/forcibly_teleported = FALSE
 	var/datum/leash_wait/leash_wait
@@ -31,9 +32,9 @@
 	SIGNAL_HANDLER
 	forcibly_teleported = TRUE
 
-/datum/unit_test/leash/proc/on_leash_path_complete()
+/datum/unit_test/leash/proc/on_leash_path_complete(atom/source, distance_moved = max_distance)
 	SIGNAL_HANDLER
-	leash_wait?.completed()
+	leash_wait?.completed(distance_moved)
 
 /datum/unit_test/leash/proc/on_leash_path_started()
 	SIGNAL_HANDLER
@@ -57,7 +58,8 @@
 /datum/leash_wait/New()
 	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 5 SECONDS) // SKYRAT EDIT TEST
 
-/datum/leash_wait/proc/completed()
+/datum/leash_wait/proc/completed(distance_moved)
+	actual_distance_moved = distance_moved
 	completed = TRUE
 
 /datum/leash_wait/proc/started()
@@ -81,7 +83,7 @@
 	TEST_ASSERT_EQUAL(get_dist(owner, pet), 1, "Pet should not have moved")
 
 	move_away(owner, max_distance).wait() // max_distance + 1 = we move closer, but don't teleport
-	TEST_ASSERT_EQUAL(get_dist(owner, pet), max_distance, "Pet should have stayed directly outside range of owner")
+	TEST_ASSERT_EQUAL(get_dist(owner, pet), actual_distance_moved, "Pet should have stayed directly outside range of owner")
 
 	TEST_ASSERT(!forcibly_teleported, "Pet should not have been forcibly teleported")
 
