@@ -19703,6 +19703,20 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible/layer5{
 	dir = 4
 	},
+/obj/machinery/button/door/directional/north{
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	id = "ordmix_airlock_exterior";
+	name = "Burn Chamber Bolt Control";
+	pixel_x = 6
+	},
+/obj/machinery/button/door/directional/north{
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	id = "ordmix_airlock_interior";
+	name = "Mixing Room Bolt Control";
+	pixel_x = -6
+	},
 /turf/open/floor/plating,
 /area/station/science/ordnance)
 "gca" = (
@@ -21564,13 +21578,6 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible/layer5,
-/obj/machinery/button/door/directional/west{
-	id = "ordmix_airlock_exterior";
-	name = "Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_y = -24
-	},
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -34951,17 +34958,6 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/open/floor/wood/tile,
 /area/station/cargo/breakroom)
-"kDQ" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/button/door/directional/west{
-	id = "ordmix_airlock_interior";
-	name = "Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_y = 24
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
 "kEi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -100680,7 +100676,7 @@ sli
 hHz
 laO
 gqp
-kDQ
+wmi
 fYS
 wmi
 lNq
@@ -101965,7 +101961,7 @@ obu
 obu
 bev
 bev
-kxX
+bev
 gbP
 kxX
 qQb
