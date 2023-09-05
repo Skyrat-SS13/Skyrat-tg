@@ -47,7 +47,7 @@
 	for (var/_ in 1 to distance)
 		mover.Move(get_step(mover, EAST))
 
-	actual_distance_moved += distance_moved
+	actual_distance_moved += leash_wait.distance
 
 	return leash_wait
 
@@ -56,13 +56,13 @@
 	var/started = FALSE
 
 	var/timed_out = FALSE
-	var/distance_moved = 0
+	var/distance = 0
 
 /datum/leash_wait/New()
 	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 1 SECONDS) // SKYRAT EDIT TEST
 
 /datum/leash_wait/proc/completed(distance_moved)
-	src.distance_moved = distance_moved
+	distance = distance_moved
 	completed = TRUE
 
 /datum/leash_wait/proc/started()
@@ -86,7 +86,7 @@
 	TEST_ASSERT_EQUAL(get_dist(owner, pet), 1, "Pet should not have moved")
 
 	move_away(owner, max_distance).wait() // max_distance + 1 = we move closer, but don't teleport
-	TEST_ASSERT_EQUAL(get_dist(owner, pet), actual_distance_moved, "Pet should have stayed directly outside range of owner")
+	TEST_ASSERT_EQUAL(get_dist(owner, pet), max_distance, "Pet should have stayed directly outside range of owner")
 
 	TEST_ASSERT(!forcibly_teleported, "Pet should not have been forcibly teleported")
 
