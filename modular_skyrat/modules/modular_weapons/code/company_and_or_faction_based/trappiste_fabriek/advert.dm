@@ -22,7 +22,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/trappiste_suppre
 	desc = "This poster depicts, alongside the prominent logo of Trappiste Fabriek, a variety of colors that one may find on .585 Trappiste rounds. \
 		A plain white case usually means lethal, while a blue stripe is less-lethal and a purple stripe is more lethal. How informative."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/propaganda.dmi'
-	icon_state = "mag_size"
+	icon_state = "know_the_difference"
 
 /obj/structure/sign/poster/official/trappiste_ammunition/examine_more(mob/user)
 	. = ..()
