@@ -6,7 +6,7 @@
 /datum/world_topic/set_player_rank/Run(list/input)
 	. = list()
 
-	var/sender_discord_id = input["sender_discord_id"]
+	var/sender_discord_id = text2num(input["sender_discord_id"])
 
 	if(!sender_discord_id)
 		.["success"] = FALSE
@@ -26,7 +26,7 @@
 
 	if(!sender_ckey)
 		.["success"] = FALSE
-		.["message"] = "No ckey was found to be attached to this Discord account. Please verify your Discord account following the instructions of the in-game verb before trying this command again."
+		.["message"] = "No ckey was found to be attached to the provided Discord account ID, **[sender_discord_id]**. Please verify your Discord account following the instructions of the in-game verb before trying this command again."
 		message_admins(.["message"])
 		return
 
