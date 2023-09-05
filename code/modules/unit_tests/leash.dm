@@ -1,5 +1,6 @@
 /datum/unit_test/leash
 	abstract_type = /datum/unit_test/leash
+	priority = TEST_LONGER
 
 	var/atom/movable/owner
 	var/atom/movable/pet
