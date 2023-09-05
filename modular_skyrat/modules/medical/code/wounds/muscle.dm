@@ -6,14 +6,57 @@
 /datum/wound/muscle
 	name = "Muscle Wound"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
-	wound_type = WOUND_MUSCLE
-	wound_flags = (FLESH_WOUND | ACCEPTS_SPLINT)
-	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	wound_type = WOUND_BLUNT
+	wound_flags = (ACCEPTS_GAUZE | SPLINT_OVERLAY)
+
+	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
+
 	processes = TRUE
 	/// How much do we need to regen. Will regen faster if we're splinted and or laying down
 	var/regen_ticks_needed
 	/// Our current counter for healing
 	var/regen_ticks_current = 0
+
+/datum/wound_pregen_data/muscle
+	abstract = TRUE
+
+	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	required_limb_biostate = BIO_FLESH
+
+/datum/wound_pregen_data/muscle/can_be_applied_to(obj/item/bodypart/limb, wound_type, datum/wound/old_wound, random_roll)
+	if (!istype(limb) || !limb.owner)
+		return FALSE
+
+	if (random_roll && !can_be_randomly_generated)
+		return FALSE
+
+	if (HAS_TRAIT(limb.owner, TRAIT_NEVER_WOUNDED) || (limb.owner.status_flags & GODMODE))
+		return FALSE
+	// THIS IS HIGHLY TEMPORARY A PROC WILL COME FROM UPSTREAM THAT SHOULD REPLACE THIS!! REPLACE IT!!!!!!!!!!!! REMOVE THE OVERRIDE 8/31/23 ~Niko
+	if (wound_type != (WOUND_BLUNT) && wound_type != (WOUND_SLASH) && wound_type != (WOUND_PIERCE))
+		return FALSE
+	else
+		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
+			if (preexisting_wound.wound_series == initial(wound_path_to_generate.wound_series))
+				if (preexisting_wound.severity >= initial(wound_path_to_generate.severity))
+					return FALSE
+
+	if (!ignore_cannot_bleed && ((required_limb_biostate & BIO_BLOODED) && !limb.can_bleed()))
+		return FALSE
+
+	if (!biostate_valid(limb.biological_state))
+		return FALSE
+
+	if (!(limb.body_zone in viable_zones))
+		return FALSE
+
+	// we accept promotions and demotions, but no point in redundancy. This should have already been checked wherever the wound was rolled and applied for (see: bodypart damage code), but we do an extra check
+	// in case we ever directly add wounds
+	if (!duplicates_allowed)
+		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
+			if (preexisting_wound.type == wound_path_to_generate && (preexisting_wound != old_wound))
+				return FALSE
+	return TRUE
 
 /*
 	Overwriting of base procs
@@ -51,8 +94,8 @@
 		if(victim.IsSleeping())
 			regen_ticks_current += 0.5
 
-	if(limb.current_splint)
-		regen_ticks_current += (1-limb.current_splint.splint_factor)
+	if(limb.current_gauze)
+		regen_ticks_current += (1-limb.current_gauze.splint_factor)
 
 	if(regen_ticks_current > regen_ticks_needed)
 		if(!victim || !limb)
@@ -83,26 +126,26 @@
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/wound/muscle/get_examine_description(mob/user)
-	if(!limb.current_splint)
+	if(!limb.current_gauze)
 		return ..()
 
 	var/list/msg = list()
-	if(!limb.current_splint)
+	if(!limb.current_gauze)
 		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] [examine_desc]"
 	else
-		var/sling_condition = ""
+		var/absorption_capacity = ""
 		// how much life we have left in these bandages
-		switch(limb.current_splint.sling_condition)
+		switch(limb.current_gauze.absorption_capacity)
 			if(0 to 1.25)
-				sling_condition = "just barely"
+				absorption_capacity = "just barely"
 			if(1.25 to 2.75)
-				sling_condition = "loosely"
+				absorption_capacity = "loosely"
 			if(2.75 to 4)
-				sling_condition = "mostly"
+				absorption_capacity = "mostly"
 			if(4 to INFINITY)
-				sling_condition = "tightly"
+				absorption_capacity = "tightly"
 
-		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] is [sling_condition] fastened with a [limb.current_splint.name]!"
+		msg += "[victim.p_Their()] [parse_zone(limb.body_zone)] is [absorption_capacity] fastened with a [limb.current_gauze.name]!"
 
 	return "<B>[msg.Join()]</B>"
 
@@ -113,19 +156,19 @@
 /datum/wound/muscle/proc/update_inefficiencies()
 	SIGNAL_HANDLER
 	if(limb.body_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
-		if(limb.current_splint)
-			limp_slowdown = initial(limp_slowdown) * limb.current_splint.splint_factor
+		if(limb.current_gauze)
+			limp_slowdown = initial(limp_slowdown) * limb.current_gauze.splint_factor
 		else
 			limp_slowdown = initial(limp_slowdown)
 		victim.apply_status_effect(/datum/status_effect/limp)
 	else if(limb.body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		if(limb.current_splint)
-			interaction_efficiency_penalty = 1 + ((interaction_efficiency_penalty - 1) * limb.current_splint.splint_factor)
+		if(limb.current_gauze)
+			interaction_efficiency_penalty = 1 + ((interaction_efficiency_penalty - 1) * limb.current_gauze.splint_factor)
 		else
 			interaction_efficiency_penalty = interaction_efficiency_penalty
 
 	if(initial(disabling))
-		if(limb.current_splint && limb.current_splint.helps_disabled)
+		if(limb.current_gauze)
 			set_disabling(FALSE)
 		else
 			set_disabling(TRUE)
@@ -147,6 +190,11 @@
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
 	regen_ticks_needed = 90
 
+/datum/wound_pregen_data/muscle/tear
+	abstract = FALSE
+
+	wound_path_to_generate = /datum/wound/muscle/moderate
+
 /*
 	Severe (Ruptured Tendon)
 */
@@ -166,6 +214,11 @@
 	disabling = TRUE
 	status_effect_type = /datum/status_effect/wound/muscle/severe
 	regen_ticks_needed = 150
+
+/datum/wound_pregen_data/muscle/tendon
+	abstract = FALSE
+
+	wound_path_to_generate = /datum/wound/muscle/severe
 
 /datum/status_effect/wound/muscle
 
