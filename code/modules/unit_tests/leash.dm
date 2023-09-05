@@ -5,7 +5,7 @@
 	var/atom/movable/pet
 
 	var/max_distance = 3
-	var/actual_distance_moved = max_distance
+	var/actual_distance_moved
 
 	var/forcibly_teleported = FALSE
 	var/datum/leash_wait/leash_wait
