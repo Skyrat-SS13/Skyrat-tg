@@ -47,6 +47,8 @@
 	for (var/_ in 1 to distance)
 		mover.Move(get_step(mover, EAST))
 
+	actual_distance_moved += distance_moved
+
 	return leash_wait
 
 /datum/leash_wait
@@ -54,12 +56,13 @@
 	var/started = FALSE
 
 	var/timed_out = FALSE
+	var/distance_moved = 0
 
 /datum/leash_wait/New()
-	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 5 SECONDS) // SKYRAT EDIT TEST
+	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 1 SECONDS) // SKYRAT EDIT TEST
 
 /datum/leash_wait/proc/completed(distance_moved)
-	actual_distance_moved = distance_moved
+	src.distance_moved = distance_moved
 	completed = TRUE
 
 /datum/leash_wait/proc/started()
