@@ -117,7 +117,7 @@
 	var/list/path = get_path_to(parent, owner, mintargetdist = distance)
 
 	if (last_completed_path_tick > our_path_tick)
-		SEND_SIGNAL(parent, COMSIG_LEASH_PATH_COMPLETE
+		SEND_SIGNAL(parent, COMSIG_LEASH_PATH_COMPLETE)
 		return
 
 	last_completed_path_tick = our_path_tick
