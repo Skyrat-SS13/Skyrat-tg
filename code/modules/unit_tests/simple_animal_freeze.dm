@@ -298,7 +298,6 @@
 		/mob/living/simple_animal/hostile/megafauna/bubblegum/no_gps,
 		/mob/living/simple_animal/hostile/megafauna/gladiator,
 		/mob/living/simple_animal/hostile/megafauna/hierophant/astrum,
-		/mob/living/simple_animal/hostile/mining_drone/interdyne,
 		/mob/living/simple_animal/hostile/mutantliz,
 		/mob/living/simple_animal/hostile/plantmutant,
 		/mob/living/simple_animal/hostile/scorpion,
