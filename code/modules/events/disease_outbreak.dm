@@ -62,7 +62,7 @@
 		if(length(candidate.diseases)) //Is our candidate already sick?
 			continue
 		// SKYRAT EDIT ADD START - Station/area event candidate filtering
-		if(engaged_role_play_check(candidate))
+		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
 			continue
 		// SKYRAT EDIT ADD END
 		disease_candidates += candidate

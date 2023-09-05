@@ -35,7 +35,7 @@
 		if(!(candidate.mind.assigned_role.job_flags & JOB_CREW_MEMBER))//only crewmembers can get one, a bit unfair for some ghost roles and it wastes the event
 			continue
 		// SKYRAT EDIT ADD START - Station/area event candidate filtering
-		if(engaged_role_play_check(candidate))
+		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
 			continue
 		// SKYRAT EDIT ADD END
 		if(candidate.satiety <= -60 && !candidate.has_status_effect(/datum/status_effect/exercised)) //Multiple junk food items recently //No foodmaxxing for the achievement
