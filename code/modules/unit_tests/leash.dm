@@ -32,7 +32,7 @@
 	SIGNAL_HANDLER
 	forcibly_teleported = TRUE
 
-/datum/unit_test/leash/proc/on_leash_path_complete(atom/source)
+/datum/unit_test/leash/proc/on_leash_path_complete()
 	SIGNAL_HANDLER
 	leash_wait?.completed()
 
@@ -54,7 +54,6 @@
 	var/started = FALSE
 
 	var/timed_out = FALSE
-	var/distance = 0
 
 /datum/leash_wait/New()
 	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 80 SECONDS)
