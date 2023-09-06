@@ -6,9 +6,6 @@
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()
-	//We're loading donators here because it's the least intrusive way modularly
-	load_donators()
-	load_veteran_players()
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories

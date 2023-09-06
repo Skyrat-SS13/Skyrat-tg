@@ -3,6 +3,7 @@
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/opfor(
 			null,
+			/* hud_owner = */ src,
 			src,
 			"OPFOR",
 			/* offset = */ 3,
@@ -13,6 +14,7 @@
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/leave_body(
 			null,
+			/* hud_owner = */ src,
 			src,
 			"Ghost",
 			/* offset = */ 4,
@@ -23,6 +25,7 @@
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/respawn(
 			null,
+			/* hud_owner = */ src,
 			src,
 			"Respawn",
 			/* offset = */ 5,

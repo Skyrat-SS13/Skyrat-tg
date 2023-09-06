@@ -17,7 +17,7 @@
 	open = round(rand(0, 1))
 	update_appearance()
 	if(mapload && SSmapping.level_trait(z, ZTRAIT_STATION))
-		AddElement(/datum/element/lazy_fishing_spot, FISHING_SPOT_PRESET_TOILET)
+		AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/toilet)
 
 /obj/structure/toilet/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -389,7 +389,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 			return FALSE
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
-				reagents.trans_to(RG, RG.amount_per_transfer_from_this, transfered_by = user)
+				reagents.trans_to(RG, RG.amount_per_transfer_from_this, transferred_by = user)
 				begin_reclamation()
 				to_chat(user, span_notice("You fill [RG] from [src]."))
 				return TRUE
@@ -412,7 +412,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		if(reagents.total_volume <= 0)
 			to_chat(user, span_notice("\The [src] is dry."))
 			return FALSE
-		reagents.trans_to(O, 5, transfered_by = user)
+		reagents.trans_to(O, 5, transferred_by = user)
 		begin_reclamation()
 		to_chat(user, span_notice("You wet [O] in [src]."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
@@ -742,6 +742,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 	var/open = TRUE
 	/// if it can be seen through when closed
 	var/opaque_closed = FALSE
+
+/obj/structure/curtain/Initialize(mapload)
+	// see-through curtains should let emissives shine through
+	if(!opaque_closed)
+		blocks_emissive = EMISSIVE_BLOCK_NONE
+	return ..()
 
 /obj/structure/curtain/proc/toggle()
 	open = !open

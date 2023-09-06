@@ -264,13 +264,14 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FIRE_PROOF
 
+/******CALIGRA DONATIONS******/
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "FIR-36 Rebreather"
+	name = "\improper FIR-36 half-face rebreather"
 	desc = "A close-fitting respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-36 Rebreather is commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
-	icon_state = "far14c"
+	icon_state = "fir36"
 	actions_types = list(/datum/action/item_action/adjust)
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACE | HIDESNOUT
@@ -293,6 +294,52 @@
 	. += span_notice("Alt-click [src] to adjust it.")
 
 /obj/item/clothing/mask/gas/nightlight/alldono //different itempath so regular donators can have it, too
+
+// Donation reward for Farsighted Nightlight
+/obj/item/clothing/mask/gas/nightlight/fir22
+	name = "\improper FIR-22 full-face rebreather"
+	desc = "A full-face respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-22 Rebreather is a snout-covering variant often seen used by Tajaran Military Personnel. It reeks of militarism."
+	icon_state = "fir22"
+
+// Donation reward for Raxraus
+/obj/item/clothing/head/caligram_cap_tan
+	name = "\improper Caligram tan softcap"
+	desc = "A Caligram's Fleet-branded hat in a '/surprisingly/' tasteful shade of brown."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "caligram_cap_tan"
+
+// Donation reward for Raxraus
+/obj/item/clothing/under/jumpsuit/caligram_fatigues_tan
+	name = "\improper Caligram tan fatigues"
+	desc = "A set of tan and brown work fatigues bearing a Caligram's Fleet insigna on an armband. Lacks the typical Tajaran extravagance."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon_state = "caligram_fatigues_tan"
+	worn_icon_state = "caligram_fatigues_tan"
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/jacket/caligram_parka_tan
+	name = "\improper Caligram tan parka"
+	desc = "A tan parka with a fancy black belt and '/Caligram's Fleet/' stitched onto its armband."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "caligram_parka_tan"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS|HANDS
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/armor/vest/caligram_parka_vest_tan
+	name = "\improper Caligram armored tan parka"
+	desc = "A tan parka with a fancy black belt, a lightly armored vest and '/Caligram's Fleet/' stitched onto its armband."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "caligram_parka_vest_tan"
+	inhand_icon_state = "armor"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS|HANDS
+
 
 // Donation reward for ChillyLobster
 /obj/item/clothing/suit/jacket/brasspriest
@@ -791,16 +838,6 @@
 	icon_state = "plasmaman_jax"
 
 // Donation reward for Raxraus
-/obj/item/clothing/under/rax_turtleneck
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
-	name = "black turtleneck"
-	desc = "A stylish black turtleneck."
-	icon_state = "hosalt"
-	inhand_icon_state = "bl_suit"
-	alt_covers_chest = TRUE
-
-// Donation reward for Raxraus
 /obj/item/clothing/shoes/combat/rax
 	name = "tactical boots"
 	desc = "Tactical and sleek. This model seems to resemble Armadyne's."
@@ -824,24 +861,6 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-// Donation reward for Raxraus
-/obj/item/clothing/under/rax_turtleneck_gray
-	name = "gray turtleneck"
-	desc = "A stylish gray turtleneck."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/command.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/command_digi.dmi'
-	icon_state = "bs_turtleneck"
-	can_adjust = FALSE
-
-// Donation reward for Raxraus
-/obj/item/clothing/suit/jacket/rax
-	name = "navy aerostatic jacket"
-	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "blueshield"
 
 // Donation reward for DeltaTri
 /obj/item/clothing/suit/jacket/delta

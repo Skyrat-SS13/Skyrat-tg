@@ -705,11 +705,7 @@
 
 		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 		if(body_part.current_gauze)
-			var/datum/bodypart_aid/current_gauze = body_part.current_gauze
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.")]"
-		if(body_part.current_splint)
-			var/datum/bodypart_aid/current_splint = body_part.current_splint
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
+			combined_msg += "\t [span_notice("Your [body_part.name] is [body_part.current_gauze.get_gauze_usage_prefix()] with <a href='?src=[REF(body_part.current_gauze)];remove=1'>[body_part.current_gauze.get_gauze_description()]</a>.")]"
 		//SKYRAT EDIT END
 
 	for(var/t in missing)
@@ -886,7 +882,7 @@
  *
  */
 
-/mob/living/carbon/human/proc/burn_clothing(seconds_per_tick, times_fired, stacks)
+/mob/living/carbon/human/proc/burn_clothing(seconds_per_tick, stacks)
 	var/list/burning_items = list()
 	var/obscured = check_obscured_slots(TRUE)
 	//HEAD//
@@ -933,10 +929,10 @@
 	for(var/obj/item/burning in burning_items)
 		burning.fire_act((stacks * 25 * seconds_per_tick)) //damage taken is reduced to 2% of this value by fire_act()
 
-/mob/living/carbon/human/on_fire_stack(seconds_per_tick, times_fired, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+/mob/living/carbon/human/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
 	SEND_SIGNAL(src, COMSIG_HUMAN_BURNING)
-	burn_clothing(seconds_per_tick, times_fired, fire_handler.stacks)
+	burn_clothing(seconds_per_tick, fire_handler.stacks)
 	var/no_protection = FALSE
 	if(dna && dna.species)
-		no_protection = dna.species.handle_fire(src, seconds_per_tick, times_fired, no_protection)
-	fire_handler.harm_human(seconds_per_tick, times_fired, no_protection)
+		no_protection = dna.species.handle_fire(src, seconds_per_tick, no_protection)
+	fire_handler.harm_human(seconds_per_tick, no_protection)

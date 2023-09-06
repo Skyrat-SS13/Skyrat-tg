@@ -343,8 +343,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	return TRUE
 
 ///Called each time the target falls down a z level possibly making their trajectory come to a halt. see __DEFINES/movement.dm.
-/turf/proc/zImpact(atom/movable/falling, levels = 1, turf/prev_turf)
-	var/flags = NONE
+/turf/proc/zImpact(atom/movable/falling, levels = 1, turf/prev_turf, flags = NONE)
 	var/list/falling_movables = falling.get_z_move_affected()
 	var/list/falling_mov_names
 	for(var/atom/movable/falling_mov as anything in falling_movables)
@@ -672,7 +671,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(!belly?.reagents.total_volume)
 		return
 	var/chemicals_lost = belly.reagents.total_volume * purge_ratio
-	belly.reagents.trans_to(V, chemicals_lost, transfered_by = M)
+	belly.reagents.trans_to(V, chemicals_lost, transferred_by = M)
 	//clear the stomach of anything even not food
 	for(var/bile in belly.reagents.reagent_list)
 		var/datum/reagent/reagent = bile

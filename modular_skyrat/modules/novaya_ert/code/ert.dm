@@ -1,5 +1,5 @@
 /datum/ert/nri
-	roles = list(/datum/antagonist/ert/nri, /datum/antagonist/ert/nri/medic, /datum/antagonist/ert/nri/engineer, /datum/antagonist/ert/nri/heavy)
+	roles = list(/datum/antagonist/ert/nri, /datum/antagonist/ert/nri/medic, /datum/antagonist/ert/nri/engineer)
 	leader_role = /datum/antagonist/ert/nri/commander
 	rename_team = "NRI border patrol"
 	code = "Red"
@@ -54,10 +54,6 @@
 /datum/antagonist/ert/nri/commander
 	role = "Commander"
 	outfit = /datum/outfit/centcom/ert/nri/commander
-
-/datum/antagonist/ert/nri/heavy
-	role = "Heavy Soldier"
-	outfit = /datum/outfit/centcom/ert/nri/heavy
 
 /datum/antagonist/ert/nri/medic
 	role = "Corpsman"

@@ -153,6 +153,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
 	/client/proc/intensity_credits_panel,		/*SKYRAT EDIT ADDITION*/
 	/client/proc/toggle_bsa,					/*SKYRAT EDIT ADDITION*/
+	/client/proc/try_stop_delam, /*SKYRAT EDIT ADDITION*/
+	/client/proc/toggle_delam_suppression, /*SKYRAT EDIT ADDITION*/
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -263,7 +265,8 @@ GLOBAL_PROTECT(admin_verbs_possess)
 /// SKYRAT EDIT BEGIN - Player Rank Manager - ORIGINAL: GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/edit_admin_permissions,
-	/client/proc/manage_player_ranks
+	/client/proc/manage_player_ranks,
+	/client/proc/migrate_player_ranks,
 	))
 /// SKYRAT EDIT END
 GLOBAL_PROTECT(admin_verbs_permissions)

@@ -103,13 +103,12 @@ Possible to do for anyone motivated enough:
 	SET_PLANE_IMPLICIT(src, FLOOR_PLANE)
 	update_appearance()
 
-	AddElement( \
-		/datum/element/contextual_screentip_mob_typechecks, \
-		list(/mob/living/silicon = list( \
-				SCREENTIP_CONTEXT_ALT_LMB = "Disconnect all active calls" \
-			) \
-		) \
+	var/static/list/hovering_mob_typechecks = list(
+		/mob/living/silicon = list(
+			SCREENTIP_CONTEXT_ALT_LMB = "Disconnect all active calls",
+		)
 	)
+	AddElement(/datum/element/contextual_screentip_mob_typechecks, hovering_mob_typechecks)
 
 /obj/machinery/holopad/secure
 	name = "secure holopad"
@@ -692,16 +691,16 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	if(!LAZYLEN(masters) || !masters[owner])
 		return TRUE
 	var/obj/effect/overlay/holo_pad_hologram/holo = masters[owner]
-	var/transfered = FALSE
+	var/transferred = FALSE
 	if(!validate_location(new_turf))
 		if(!transfer_to_nearby_pad(new_turf, owner))
 			return FALSE
 		else
-			transfered = TRUE
+			transferred = TRUE
 	//All is good.
 	holo.abstract_move(new_turf)
 	SET_PLANE(holo, ABOVE_GAME_PLANE, new_turf)
-	if(!transfered)
+	if(!transferred)
 		update_holoray(owner, new_turf)
 	return TRUE
 

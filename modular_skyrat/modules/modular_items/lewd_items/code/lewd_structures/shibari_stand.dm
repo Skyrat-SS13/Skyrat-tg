@@ -70,7 +70,7 @@
 
 /obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckled, mob/user, check_loc = TRUE)
 
-	if(!buckled.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!buckled.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("Looks like [buckled] doesn't want you to do that."))
 		return FALSE
 

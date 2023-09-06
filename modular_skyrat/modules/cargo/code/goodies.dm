@@ -70,6 +70,20 @@
 	cost = PAYCHECK_CREW * 35 // 1750 credit goody? do bounties
 	contains = list(/obj/item/skillchip/xenoarch_magnifier)
 
+/datum/supply_pack/goody/gravity_harness
+	name = "Gravity Suspension Harness"
+	desc = "A back-mounted suspensor harness powered by cells, designed by Deep Spacer tribes to either nullify or amplify gravity. \
+		While it's a pretty cheap bootleg of the personal gravitic engines used by the Skrell, this one's been fitted with straps and a basic storage module."
+	cost = CARGO_CRATE_VALUE * 6 // 1200 credits
+	contains = list(/obj/item/gravity_harness)
+
+/datum/supply_pack/goody/scratching_stone
+	name = "Scratching Stone"
+	desc = "A high-grade sharpening stone made of specialized alloys, meant to sharpen razor-claws. Unfortunately, this particular one has by far seen better days."
+	cost = CARGO_CRATE_VALUE * 4 //800 credits
+	contains = list(/obj/item/scratching_stone)
+	contraband = TRUE
+
 /*
 *	CARPET PACKS
 */
@@ -177,3 +191,20 @@
 		/obj/item/disk/nifsoft_uploader/summoner,
 	)
 
+/datum/supply_pack/goody/firstaid_pouch
+	name = "Mini-Medkit First Aid Pouch"
+	desc = "Contains a single surplus first-aid pouch, complete with pocket clip. Repackaged with station-standard medical supplies, \
+	but nothing's stopping you from repacking it yourself, though."
+	cost = PAYCHECK_CREW * 6
+	contains = list(
+		/obj/item/storage/pouch/medical/firstaid/loaded,
+	)
+
+/datum/supply_pack/goody/stabilizer_pouch
+	name = "Stabilizer First Aid Pouch"
+	desc = "Contains a single surplus first-aid pouch, complete with pocket clip. Repackaged with a wound stabilizing-focused loadout, \
+	but nothing's stopping you from repacking it yourself, though."
+	cost = PAYCHECK_CREW * 6
+	contains = list(
+		/obj/item/storage/pouch/medical/firstaid/stabilizer,
+	)

@@ -132,7 +132,7 @@
 	// say goodbye to that shuttle of yours
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
 		priority_announce("Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
-			"Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+			"Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
 	else
 	// except if you are on it already, then you are safe c:
 		minor_announce("ERROR: Corruption detected in navigation protocols. Connection with Transponder #XCC-P5831-ES13 lost. \
@@ -205,7 +205,7 @@
 	sleep(10 SECONDS)
 
 	SSticker.news_report = SUPERMATTER_CASCADE
-	SSticker.force_ending = TRUE
+	SSticker.force_ending = FORCE_END_ROUND
 
 /// Scatters crystal mass over the event spawns as long as they are at least 30 tiles away from whatever we want to avoid.
 /datum/sm_delam/proc/effect_crystal_mass(obj/machinery/power/supermatter_crystal/sm, avoid)
