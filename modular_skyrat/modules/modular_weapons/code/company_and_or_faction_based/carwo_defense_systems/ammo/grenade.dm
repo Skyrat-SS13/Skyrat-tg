@@ -1,3 +1,9 @@
+#define AMMO_MATS_GRENADE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4)
+#define AMMO_MATS_GRENADE_SHRAPNEL list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2)
+#define AMMO_MATS_GRENADE_INCENDIARY list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2)
+
 //
 // .980 grenades
 // Grenades that can be given a range to detonate at by their firing gun
@@ -13,7 +19,7 @@
 	caliber = CALIBER_980TYDHOUER
 	projectile_type = /obj/projectile/bullet/c980grenade
 
-	custom_materials = AMMO_MATS_SHOTGUN
+	custom_materials = AMMO_MATS_GRENADE
 
 /obj/item/ammo_casing/c980grenade/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/automatic/sol_grenade_launcher/firing_launcher = fired_from
@@ -97,7 +103,7 @@
 
 	projectile_type = /obj/projectile/bullet/c980grenade/shrapnel
 
-	custom_materials = AMMO_MATS_SHOTGUN_FLECH
+	custom_materials = AMMO_MATS_GRENADE_SHRAPNEL
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c980grenade/shrapnel
@@ -143,7 +149,7 @@
 
 	projectile_type = /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 
-	custom_materials = AMMO_MATS_SHOTGUN_TEMP
+	custom_materials = AMMO_MATS_GRENADE_INCENDIARY
 
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 	name = ".980 Tydhouer phosphor grenade"
@@ -205,3 +211,7 @@
 	icon_state = "980box_gas"
 
 	ammo_type = /obj/item/ammo_casing/c980grenade/riot
+
+#undef AMMO_MATS_GRENADE
+#undef AMMO_MATS_GRENADE_SHRAPNEL
+#undef AMMO_MATS_GRENADE_INCENDIARY
