@@ -65,10 +65,9 @@
 #define BASE_SHAKER_MISC_REAGENTS list(\
 		/datum/reagent/blood,\
 		/datum/reagent/pax/catnip,\
-		/datum/reagent/toxin/coffeepowder,\
+		/datum/reagent/consumable/coffee,\
 		/datum/reagent/consumable/cream,\
 		/datum/reagent/consumable/grenadine,\
-		/datum/reagent/toxin/teapowder,\
 		/datum/reagent/consumable/ice,\
 		/datum/reagent/iron,\
 		/datum/reagent/consumable/menthol,\
@@ -76,6 +75,7 @@
 		/datum/reagent/toxin/mushroom_powder,\
 		/datum/reagent/consumable/nutriment,\
 		/datum/reagent/consumable/soymilk,\
+		/datum/reagent/consumable/tea,\
 		/datum/reagent/consumable/tonic,\
 		/datum/reagent/consumable/enzyme,\
 		/datum/reagent/water\
