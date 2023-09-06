@@ -32,9 +32,9 @@
 	SIGNAL_HANDLER
 	forcibly_teleported = TRUE
 
-/datum/unit_test/leash/proc/on_leash_path_complete(atom/source, distance_moved = max_distance)
+/datum/unit_test/leash/proc/on_leash_path_complete(atom/source)
 	SIGNAL_HANDLER
-	leash_wait?.completed(distance_moved)
+	leash_wait?.completed()
 
 /datum/unit_test/leash/proc/on_leash_path_started()
 	SIGNAL_HANDLER
@@ -47,8 +47,6 @@
 	for (var/_ in 1 to distance)
 		mover.Move(get_step(mover, EAST))
 
-	leash_wait.completed()
-
 	return leash_wait
 
 /datum/leash_wait
@@ -59,10 +57,9 @@
 	var/distance = 0
 
 /datum/leash_wait/New()
-	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 80 SECONDS) // SKYRAT EDIT TEST
+	addtimer(VARSET_CALLBACK(src, timed_out, TRUE), 80 SECONDS)
 
-/datum/leash_wait/proc/completed(distance_moved)
-	distance = distance_moved
+/datum/leash_wait/proc/completed()
 	completed = TRUE
 
 /datum/leash_wait/proc/started()
