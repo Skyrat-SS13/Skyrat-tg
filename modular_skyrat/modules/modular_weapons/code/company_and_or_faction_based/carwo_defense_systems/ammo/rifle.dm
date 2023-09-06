@@ -80,6 +80,8 @@
 	icon_state = "40sol_pierce"
 
 	projectile_type = /obj/projectile/bullet/c40sol/pierce
+
+	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c40sol/pierce
@@ -118,6 +120,7 @@
 
 	projectile_type = /obj/projectile/bullet/c40sol/incendiary
 
+	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c40sol/incendiary

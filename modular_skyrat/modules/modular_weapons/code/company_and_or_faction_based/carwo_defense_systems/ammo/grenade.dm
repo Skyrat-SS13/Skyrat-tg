@@ -13,6 +13,8 @@
 	caliber = CALIBER_980TYDHOUER
 	projectile_type = /obj/projectile/bullet/c980grenade
 
+	custom_materials = AMMO_MATS_SHOTGUN
+
 /obj/item/ammo_casing/c980grenade/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/automatic/sol_grenade_launcher/firing_launcher = fired_from
 	if(istype(firing_launcher))
@@ -95,6 +97,7 @@
 
 	projectile_type = /obj/projectile/bullet/c980grenade/shrapnel
 
+	custom_materials = AMMO_MATS_SHOTGUN_FLECH
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c980grenade/shrapnel
@@ -140,6 +143,8 @@
 
 	projectile_type = /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 
+	custom_materials = AMMO_MATS_SHOTGUN_TEMP
+
 /obj/projectile/bullet/c980grenade/shrapnel/phosphor
 	name = ".980 Tydhouer phosphor grenade"
 
@@ -183,7 +188,7 @@
 	projectile_type = /obj/projectile/bullet/c980grenade/riot
 
 /obj/projectile/bullet/c980grenade/riot
-	name = ".980 Tydhouer smoke grenade"
+	name = ".980 Tydhouer tear gas grenade"
 
 /obj/projectile/bullet/c980grenade/riot/fuse_activation(atom/target)
 	playsound(src, 'modular_skyrat/modules/modular_weapons/sounds/grenade_burst.ogg', 50, TRUE, -3)

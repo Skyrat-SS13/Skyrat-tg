@@ -86,6 +86,8 @@
 
 	icon_state = "35sol_shrapnel"
 	projectile_type = /obj/projectile/bullet/c35sol/ripper
+
+	custom_materials = AMMO_MATS_RIPPER
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c35sol/ripper

@@ -70,6 +70,7 @@
 
 	icon_state = "585trappiste_shrapnel"
 	projectile_type = /obj/projectile/bullet/c585trappiste/hollowpoint
+
 	advanced_print_req = TRUE
 
 /obj/projectile/bullet/c585trappiste/hollowpoint
