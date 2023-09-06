@@ -331,10 +331,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Messy Ian Shirt"
 	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/ian
 
-/datum/loadout_item/suit/messy_gamershirt
-	name = "Gamer Shirt"
-	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/gamer
-
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
 	item_path = /obj/item/clothing/suit/wornshirt
