@@ -117,7 +117,6 @@
 	var/list/path = get_path_to(parent, owner, mintargetdist = distance)
 
 	if (last_completed_path_tick > our_path_tick)
-		SEND_SIGNAL(parent, COMSIG_LEASH_PATH_COMPLETE)
 		return
 
 	last_completed_path_tick = our_path_tick
@@ -141,7 +140,6 @@
 		if (!movable_parent.Move(to_move))
 			force_teleport_back("bad path step")
 			performing_path_move = FALSE
-			SEND_SIGNAL(parent, COMSIG_LEASH_PATH_COMPLETE, distance_moved)
 			return
 
 		distance_moved++
