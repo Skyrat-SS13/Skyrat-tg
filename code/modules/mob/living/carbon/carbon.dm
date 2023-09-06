@@ -218,7 +218,7 @@
 
 /mob/living/carbon/Topic(href, href_list)
 	..()
-	if(href_list["embedded_object"] && usr.can_perform_action(src, NEED_DEXTERITY))
+	if(href_list["embedded_object"])
 		var/obj/item/bodypart/L = locate(href_list["embedded_limb"]) in bodyparts
 		if(!L)
 			return
@@ -481,7 +481,7 @@
 
 	var/turf/floor = get_turf(src)
 	var/obj/effect/decal/cleanable/vomit/spew = new(floor, get_static_viruses())
-	bite.reagents.trans_to(spew, amount, transfered_by = src)
+	bite.reagents.trans_to(spew, amount, transferred_by = src)
 
 /mob/living/carbon/proc/spew_organ(power = 5, amt = 1)
 	for(var/i in 1 to amt)
@@ -606,9 +606,6 @@
 
 	if(HAS_TRAIT(src, TRAIT_XRAY_VISION))
 		new_sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-
-	if(see_override)
-		set_invis_see(see_override)
 
 	if(SSmapping.level_trait(z, ZTRAIT_NOXRAY))
 		new_sight = NONE
@@ -830,6 +827,8 @@
 		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 			death()
 			return
+		if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED, AUTOPSY_TRAIT))
+			REMOVE_TRAIT(src, TRAIT_DISSECTED, AUTOPSY_TRAIT)
 		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
 			set_stat(HARD_CRIT)
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
@@ -1269,12 +1268,17 @@
 			else
 				wound_type = forced_type
 		else
-			wound_type = pick(GLOB.global_all_wound_types)
+			for (var/datum/wound/path as anything in shuffle(GLOB.all_wound_pregen_data))
+				var/datum/wound_pregen_data/pregen_data = GLOB.all_wound_pregen_data[path]
+				if (pregen_data.can_be_applied_to(scar_part, random_roll = TRUE))
+					wound_type = path
+					break
 
-		var/datum/wound/phantom_wound = new wound_type
-		scaries.generate(scar_part, phantom_wound)
-		scaries.fake = TRUE
-		QDEL_NULL(phantom_wound)
+		if (wound_type) // can feasibly happen, if its an inorganic limb/cant be wounded/scarred
+			var/datum/wound/phantom_wound = new wound_type
+			scaries.generate(scar_part, phantom_wound)
+			scaries.fake = TRUE
+			QDEL_NULL(phantom_wound)
 
 /mob/living/carbon/is_face_visible()
 	return !(wear_mask?.flags_inv & HIDEFACE) && !(head?.flags_inv & HIDEFACE)

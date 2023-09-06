@@ -53,7 +53,7 @@
 // Speech handler for moansing when talking
 /obj/item/clothing/mask/leatherwhip/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
-	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
+	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
@@ -176,7 +176,7 @@
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
 				target.adjust_pain(5)
-				playsound(loc, 'sound/weapons/whip.ogg', 100)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 100)
 			else
 				message = (user == target) ? pick("knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
 				if(target.stat != DEAD)
@@ -186,7 +186,7 @@
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)
 				target.adjust_pain(3)
-				playsound(loc, 'sound/weapons/whip.ogg', 60)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_R_LEG)
 			targetedsomewhere = TRUE
@@ -202,7 +202,7 @@
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
 				target.adjust_pain(5)
-				playsound(loc, 'sound/weapons/whip.ogg', 100)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 100)
 			else
 				message = (user == target) ? pick("Knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
 				if(target.stat != DEAD)
@@ -212,7 +212,7 @@
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)
 				target.adjust_pain(3)
-				playsound(loc, 'sound/weapons/whip.ogg', 60)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_HEAD)
 			targetedsomewhere = TRUE
@@ -221,7 +221,7 @@
 				target.try_lewd_autoemote(pick("gasp", "choke", "moan"))
 			target.adjust_arousal(3)
 			target.adjust_pain(5)
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
@@ -240,7 +240,7 @@
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
-				playsound(loc, 'sound/weapons/whip.ogg', 60)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 60)
 
 			if(current_whip_type == "hard")
 				message = (user == target) ? pick("roughly flogs [target.p_them()]self with [src]", "flogs [target.p_them()]self with [src]") : pick("playfully flogs [target]'s thighs with [src]", "flogs [target] with [src]", "mercilessly flogs [target] with [src]")
@@ -254,7 +254,7 @@
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
-				playsound(loc, 'sound/weapons/whip.ogg', 100)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 100)
 		else
 			if(current_whip_type == "hard")
 				message = (user == target) ? pick("disciplines [target.p_them()]self with [src]", "lashes [target.p_them()]self with [src]") : pick("lashes [target] with [src]", "Uses [src] to discipline [target]", "disciplines [target] with [src]")
@@ -265,7 +265,7 @@
 						target.apply_status_effect(/datum/status_effect/subspace)
 					target.do_jitter_animation()
 				target.adjust_pain(7)
-				playsound(loc, 'sound/weapons/whip.ogg', 100)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 100)
 
 			else
 				message = (user == target) ? pick("whips [target.p_them()]self with [src]", "lashes [target.p_them()]self with [src]") : pick("playfully lashes [target] with [src]", "disciplines [target] with [src]", "gently lashes [target] with [src]")
@@ -277,7 +277,7 @@
 					target.do_jitter_animation()
 				target.adjust_pain(4)
 				target.adjust_arousal(5)
-				playsound(loc, 'sound/weapons/whip.ogg', 60)
+				play_lewd_sound(loc, 'sound/weapons/whip.ogg', 60)
 	if(!targetedsomewhere)
 		return
 	user.visible_message(span_purple("[user] [message]!"))

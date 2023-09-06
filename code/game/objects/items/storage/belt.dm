@@ -643,11 +643,10 @@
 
 /obj/item/storage/belt/grenade/full/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/grenade/chem_grenade/facid = 1,
 		/obj/item/grenade/chem_grenade/incendiary = 2,
 		/obj/item/grenade/empgrenade = 2,
 		/obj/item/grenade/frag = 10,
-		/obj/item/grenade/flashbang = 1,
+		/obj/item/grenade/flashbang = 2,
 		/obj/item/grenade/gluon = 4,
 		/obj/item/grenade/smokebomb = 4,
 		/obj/item/grenade/syndieminibomb = 2,
@@ -734,13 +733,13 @@
 	atom_storage.max_total_storage = 18
 	atom_storage.numerical_stacking = TRUE
 	atom_storage.set_holdable(list(
-		/obj/item/ammo_casing/a762,
+		/obj/item/ammo_casing/strilka310,
 		/obj/item/ammo_casing/shotgun,
 	))
 
 /obj/item/storage/belt/fannypack
 	name = "fannypack"
-	desc = "A dorky fannypack for keeping small items in."
+	desc = "A dorky fannypack for keeping small items in. Concealed enough, or ugly enough to avert their eyes, that others won't see what you put in or take out easily."
 	icon_state = "fannypack_leather"
 	inhand_icon_state = null
 	worn_icon_state = "fannypack_leather"
@@ -751,6 +750,7 @@
 	. = ..()
 	atom_storage.max_slots = 3
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
+	atom_storage.silent = TRUE
 
 /obj/item/storage/belt/fannypack/black
 	name = "black fannypack"

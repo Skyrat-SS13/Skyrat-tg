@@ -153,20 +153,10 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			var/area/local_area = get_area(src)
-			//SKYRAT EDIT BEGIN - Original
-			/*
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
-			*/
-			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
-			else if(major_emergency || (local_area?.fire))
-				icon_state = "[base_state]_emergency"
-			else
-				icon_state = "[base_state]"
-			// SKYRAT EDIT END
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -180,12 +170,11 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	/* SKYRAT EDIT START - ORIGINAL:
-	var/area/local_area = get_area(src)
-	if(emergency_mode || (local_area?.fire))
-	*/
-	var/area/local_area = get_area(src)
-	if(low_power_mode || major_emergency || (local_area?.fire)) // SKYRAT EDIT END
+	. += emissive_appearance(overlay_icon, "[base_state]", src, alpha = src.alpha)
+
+	var/area/local_area = get_room_area(src)
+
+	if(low_power_mode || major_emergency || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)

@@ -736,6 +736,9 @@
 
 
 /mob/living/carbon/adjustOxyLoss(amount, updating_health = TRUE, forced, required_biotype, required_respiration_type)
+	if(!forced && HAS_TRAIT(src, TRAIT_NOBREATH))
+		amount = min(amount, 0) //Prevents oxy damage but not healing
+
 	. = ..()
 	check_passout(.)
 
@@ -772,7 +775,6 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
 	if(!grasped_part?.get_modified_bleed_rate())
 		return
@@ -792,9 +794,8 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
-	*/
+	*/ // SKYRAT EDIT REMOVAL - MODULARIZED INTO grasp.dm's self_grasp_bleeding_limb !! IF THIS PROC IS UPDATED, PUT IT IN THERE !!
 	self_grasp_bleeding_limb(grasped_part, supress_message)
-	//SKYRAT EDIT CHANGE END
 
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
 /obj/item/hand_item/self_grasp

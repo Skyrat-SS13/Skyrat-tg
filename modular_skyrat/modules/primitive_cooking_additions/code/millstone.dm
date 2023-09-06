@@ -66,6 +66,28 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/millstone/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/storage/bag))
+		if(length(contents) >= maximum_contained_items)
+			balloon_alert(user, "already full")
+			return TRUE
+
+		if(!length(attacking_item.contents))
+			balloon_alert(user, "nothing to transfer!")
+			return TRUE
+
+		for(var/obj/item/food/grown/target_item in attacking_item.contents)
+			if(length(contents) >= maximum_contained_items)
+				break
+
+			target_item.forceMove(src)
+
+		if (length(contents) >= maximum_contained_items)
+			balloon_alert(user, "filled!")
+		else
+			balloon_alert(user, "transferred")
+
+		return TRUE
+
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
 		balloon_alert(user, "can only mill plants")
 		return ..()
@@ -75,6 +97,7 @@
 		return
 
 	attacking_item.forceMove(src)
+	return ..()
 
 /// Takes the content's seeds and spits them out on the turf, as well as grinding whatever the contents may be
 /obj/structure/millstone/proc/mill_it_up(mob/living/carbon/human/user)

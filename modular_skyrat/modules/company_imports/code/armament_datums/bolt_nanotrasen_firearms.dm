@@ -10,77 +10,103 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/armor/slim_vest
 	name = "type I vest - slim"
 	item_type = /obj/item/clothing/suit/armor/vest
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
-	stock_mult = 2
+	cost = PAYCHECK_CREW * 3
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/armor/normal_vest
 	name = "type I vest - normal"
 	item_type = /obj/item/clothing/suit/armor/vest/alt
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
-	stock_mult = 2
+	cost = PAYCHECK_CREW * 3
 
 // Fully non-lethal weapons
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal
 	subcategory = "Non-Lethal Weapons"
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal/responder
 	item_type = /obj/item/gun/energy/disabler/bolt_disabler
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 4
-	stock_mult = 2
+	cost = PAYCHECK_CREW * 5
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/nonlethal/pepperball
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 4
-	stock_mult = 2
+	cost = PAYCHECK_CREW * 5
 
 // Lethal pistols, requires some company interest first
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm
 	subcategory = "Lethal Sidearms"
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/detective_revolver
 	item_type = /obj/item/gun/ballistic/revolver/c38/detective
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 2.5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/g17
+	item_type = /obj/item/gun/ballistic/automatic/pistol/g17
+	cost = PAYCHECK_COMMAND * 4
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/mk58
+	item_type = /obj/item/gun/ballistic/automatic/pistol/mk58
+	cost = PAYCHECK_COMMAND * 4
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
-	lower_cost = CARGO_CRATE_VALUE * 5
-	upper_cost = CARGO_CRATE_VALUE * 7
+	cost = PAYCHECK_COMMAND * 4
 
-/datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/energy_holster
-	item_type = /obj/item/storage/belt/holster/energy/thermal
-	lower_cost = CARGO_CRATE_VALUE * 5
-	upper_cost = CARGO_CRATE_VALUE * 9
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines
+	subcategory = "Sidearm Magazines"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader
+	item_type = /obj/item/ammo_box/c38
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/c38speedloader_rubber
+	item_type = /obj/item/ammo_box/c38/match/bouncy
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/g17_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/mk58_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/sidearm_magazines/m1911
+	item_type = /obj/item/ammo_box/magazine/m45
 
 // Lethal anything that's not a pistol, requires high company interest
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm
 	subcategory = "Lethal Longarms"
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/riot_shotgun
 	item_type = /obj/item/gun/ballistic/shotgun/riot
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 15
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/m23
+	item_type = /obj/item/gun/ballistic/shotgun/m23
+	cost = PAYCHECK_COMMAND * 8
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/wt550
 	item_type = /obj/item/gun/ballistic/automatic/wt550
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 15
+	cost = PAYCHECK_COMMAND * 6
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/cmg
 	item_type = /obj/item/gun/ballistic/automatic/cmg
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 15
+	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines
+	subcategory = "Longarm Magazines"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/wt550
+	item_type = /obj/item/ammo_box/magazine/wt550m9
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
+
+/datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm_magazines/cmg_rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cmg

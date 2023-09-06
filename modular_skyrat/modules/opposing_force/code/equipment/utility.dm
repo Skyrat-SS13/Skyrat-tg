@@ -78,9 +78,9 @@
 	description = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to eight tiles away from the briefcase. \
 			Also includes a remote control, disguised as an ordinary folder. Touch the briefcase with the remote to link it."
 
-/datum/opposing_force_equipment/gear/camera_bug
-	name = "Camera Bug"
-	item_type = /obj/item/camera_bug
+/datum/opposing_force_equipment/gear/camera_app
+	name = "SyndEye Program"
+	item_type = /obj/item/computer_disk/syndicate/camera_app
 
 /datum/opposing_force_equipment/gear/microlaser
 	name = "Radioactive Microlaser"

@@ -109,6 +109,7 @@
 	new /obj/item/clothing/under/rank/rnd/research_director(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/skirt(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/alt(src)
+	new /obj/item/clothing/under/rank/rnd/research_director/alt/skirt(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt(src)
 	new /obj/item/clothing/suit/toggle/labcoat/skyrat/rd(src) //SKYRAT EDIT ADDITION
@@ -147,6 +148,7 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/cargo/qm(src)
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
 	new /obj/item/clothing/gloves/fingerless(src)
+	new /obj/item/clothing/suit/jacket/quartermaster(src)
 	new /obj/item/clothing/head/soft(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/clothing/neck/cloak/qm(src)

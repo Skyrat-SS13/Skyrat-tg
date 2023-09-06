@@ -49,10 +49,6 @@
 	ears = /obj/item/radio/headset/headset_sci
 	l_pocket = /obj/item/modular_computer/pda/roboticist
 
-	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags
-	satchel = /obj/item/storage/backpack/satchel/science/robo //SKYRAT CHANGE - Roboticist Bags
-	duffelbag = /obj/item/storage/backpack/duffelbag/science/robo //SKYRAT ADDITION - Roboticist Bags
-
 	pda_slot = ITEM_SLOT_LPOCKET
 	skillchips = list(/obj/item/skillchip/job/roboticist)
 

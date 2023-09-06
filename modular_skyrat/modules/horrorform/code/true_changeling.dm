@@ -22,7 +22,6 @@
 	minbodytemp = 0
 	maxHealth = 750 //Very durable
 	health = 500
-	healable = FALSE
 	lighting_cutoff_red = 0
 	lighting_cutoff_green = 35
 	lighting_cutoff_blue = 20

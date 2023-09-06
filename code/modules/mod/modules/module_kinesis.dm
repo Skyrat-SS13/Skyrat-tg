@@ -159,7 +159,7 @@
 /obj/item/mod/module/anomaly_locked/kinesis/proc/grab_atom(atom/movable/target)
 	grabbed_atom = target
 	if(isliving(grabbed_atom))
-		add_traits(grabbed_atom, list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
+		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 		RegisterSignal(grabbed_atom, COMSIG_MOB_STATCHANGE, PROC_REF(on_statchange))
 	ADD_TRAIT(grabbed_atom, TRAIT_NO_FLOATING_ANIM, REF(src))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
@@ -187,7 +187,7 @@
 	grabbed_atom.cut_overlay(kinesis_icon)
 	QDEL_NULL(kinesis_beam)
 	if(isliving(grabbed_atom))
-		remove_traits(grabbed_atom, list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
+		grabbed_atom.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	REMOVE_TRAIT(grabbed_atom, TRAIT_NO_FLOATING_ANIM, REF(src))
 	if(!isitem(grabbed_atom))
 		animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x, pixel_y = grabbed_atom.base_pixel_y)

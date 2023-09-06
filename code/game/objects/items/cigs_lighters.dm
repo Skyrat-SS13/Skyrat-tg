@@ -237,7 +237,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!istype(glass)) //you can dip cigarettes into beakers
 		return
 
-	if(glass.reagents.trans_to(src, chem_volume, transfered_by = user)) //if reagents were transfered, show the message
+	if(glass.reagents.trans_to(src, chem_volume, transferred_by = user)) //if reagents were transferred, show the message
 		to_chat(user, span_notice("You dip \the [src] into \the [glass]."))
 	//if not, either the beaker was empty, or the cigarette was full
 	else if(!glass.reagents.total_volume)
@@ -334,9 +334,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	var/to_smoke = smoke_all ? (reagents.total_volume * (dragtime / smoketime)) : REAGENTS_METABOLISM
 	var/mob/living/carbon/smoker = loc
-	if(!istype(smoker) || src != smoker.wear_mask)
-		reagents.remove_any(to_smoke)
-		return
+	// These checks are a bit messy but at least they're fairly readable
+	// Check if the smoker is a carbon mob, since it needs to have wear_mask
+	if(!istype(smoker))
+		// If not, check if it's a gas mask
+		if(!istype(smoker, /obj/item/clothing/mask/gas))
+			reagents.remove_any(to_smoke)
+			return
+
+		smoker = smoker.loc
+
+		// If it is, check if that mask is on a carbon mob
+		if(!istype(smoker) || smoker.get_item_by_slot(ITEM_SLOT_MASK) != loc)
+			reagents.remove_any(to_smoke)
+			return
 
 	reagents.expose(smoker, INGEST, min(to_smoke / reagents.total_volume, 1))
 	var/obj/item/organ/internal/lungs/lungs = smoker.get_organ_slot(ORGAN_SLOT_LUNGS)
@@ -676,7 +687,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	packeditem = to_smoke.name
 	update_name()
 	if(to_smoke.reagents)
-		to_smoke.reagents.trans_to(src, to_smoke.reagents.total_volume, transfered_by = user)
+		to_smoke.reagents.trans_to(src, to_smoke.reagents.total_volume, transferred_by = user)
 	qdel(to_smoke)
 
 

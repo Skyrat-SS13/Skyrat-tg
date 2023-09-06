@@ -23,7 +23,7 @@
 	new /obj/item/storage/medkit/regular(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/radio(src)
-	new /obj/item/storage/bag/ammo/marksman(src)
+	new /obj/item/storage/pouch/ammo/marksman(src)
 	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)

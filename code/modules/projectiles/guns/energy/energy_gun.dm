@@ -1,4 +1,4 @@
-/obj/item/gun/energy/e_gun //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/energy/e_gun
 	name = "energy gun"
 	desc = "A basic hybrid energy gun with two settings: disable and kill."
 	icon_state = "energy"
@@ -110,7 +110,7 @@
 /obj/item/gun/energy/e_gun/turret/add_seclight_point()
 	return
 
-/obj/item/gun/energy/e_gun/nuclear
+/obj/item/gun/energy/e_gun/nuclear //SKYRAT EDIT - ICON OVERRIDDEN IN AESTHETICS MODULE
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"

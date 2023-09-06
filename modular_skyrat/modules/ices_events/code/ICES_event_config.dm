@@ -548,6 +548,7 @@
 /datum/round_event_control/spacevine
 	max_occurrences = 2
 	weight = MED_EVENT_FREQ
+
 /**
  * Spiders
  *
