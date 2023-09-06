@@ -33,6 +33,8 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	w_class = WEIGHT_CLASS_NORMAL
+
 	caliber = CALIBER_SOL40LONG
 	ammo_type = /obj/item/ammo_casing/c40sol
 	max_ammo = 30

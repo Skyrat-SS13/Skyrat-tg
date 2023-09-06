@@ -11,6 +11,8 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	w_class = WEIGHT_CLASS_TINY
+
 	ammo_type = /obj/item/ammo_casing/c35sol
 	caliber = CALIBER_SOL35SHORT
 	max_ammo = 12
@@ -23,6 +25,8 @@
 	desc = "An extended magazine for SolFed pistols, holds twenty-four rounds."
 
 	icon_state = "pistol_35_stended"
+
+	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 24
 
@@ -42,6 +46,8 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	w_class = WEIGHT_CLASS_TINY
+
 	ammo_type = /obj/item/ammo_casing/c40sol
 	caliber = CALIBER_SOL40LONG
 	max_ammo = 15
@@ -56,6 +62,8 @@
 
 	icon_state = "rifle_standard"
 
+	w_class = WEIGHT_CLASS_SMALL
+
 	max_ammo = 30
 
 /obj/item/ammo_box/magazine/c40sol_rifle/standard/starts_empty
@@ -67,6 +75,8 @@
 	desc = "A long magazine for SolFed rifles, holds fourty-five rounds."
 
 	icon_state = "rifle_long"
+
+	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 45
 
@@ -101,6 +111,8 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	w_class = WEIGHT_CLASS_SMALL
+
 	ammo_type = /obj/item/ammo_casing/c980grenade
 	caliber = CALIBER_980TYDHOUER
 	max_ammo = 4
@@ -113,6 +125,8 @@
 	desc = "A drum for .980 grenades, holds six shells."
 
 	icon_state = "granata_drum"
+
+	w_class = WEIGHT_CLASS_NORMAL
 
 	max_ammo = 6
 

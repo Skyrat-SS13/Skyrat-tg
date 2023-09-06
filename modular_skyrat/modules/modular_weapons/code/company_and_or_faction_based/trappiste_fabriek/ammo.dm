@@ -27,6 +27,8 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+	w_class = WEIGHT_CLASS_NORMAL
+
 	caliber = CALIBER_585TRAPPISTE
 	ammo_type = /obj/item/ammo_casing/c585trappiste
 	max_ammo = 12
