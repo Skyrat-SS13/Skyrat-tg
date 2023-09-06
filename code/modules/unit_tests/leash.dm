@@ -6,7 +6,6 @@
 	var/atom/movable/pet
 
 	var/max_distance = 3
-	var/actual_distance_moved
 
 	var/forcibly_teleported = FALSE
 	var/datum/leash_wait/leash_wait
@@ -48,7 +47,7 @@
 	for (var/_ in 1 to distance)
 		mover.Move(get_step(mover, EAST))
 
-	actual_distance_moved += leash_wait.distance
+	leash_wait.completed()
 
 	return leash_wait
 
