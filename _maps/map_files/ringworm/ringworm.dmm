@@ -1628,7 +1628,7 @@
 	},
 /obj/machinery/recharger,
 /obj/machinery/airalarm/directional/east,
-/obj/machinery/light/blacklight/directional/east,
+/obj/machinery/light/no_nightlight/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/common/laser_tag)
 "aBA" = (
@@ -10883,7 +10883,7 @@
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 4
 	},
-/obj/structure/girder,
+/obj/structure/window/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "dvg" = (
@@ -13940,6 +13940,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/white,
+/obj/structure/window/reinforced/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "enA" = (
@@ -28214,7 +28215,7 @@
 	},
 /obj/effect/turf_decal/siding/blue,
 /obj/machinery/recharger,
-/obj/machinery/light/blacklight/directional/north,
+/obj/machinery/light/no_nightlight/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/common/laser_tag)
 "iCU" = (
@@ -30247,6 +30248,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
+/obj/structure/window/reinforced/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "jhJ" = (
@@ -38938,6 +38940,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
+/obj/structure/window/reinforced/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "lMc" = (
@@ -45997,7 +46000,7 @@
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 8
 	},
-/obj/structure/girder,
+/obj/structure/window/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "nSa" = (
@@ -56246,6 +56249,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/item/skub{
+	name = "medicinal skub"
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/coldroom)
 "raK" = (
@@ -57131,7 +57137,7 @@
 	},
 /obj/machinery/recharger,
 /obj/machinery/airalarm/directional/west,
-/obj/machinery/light/blacklight/directional/south,
+/obj/machinery/light/no_nightlight/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/common/laser_tag)
 "rpn" = (
@@ -57460,6 +57466,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
+/obj/structure/window/reinforced/fulltile,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/common/laser_tag)
 "rwl" = (
@@ -69928,14 +69935,13 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/bridge)
 "viz" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	name = "medical bed"
-	},
 /obj/effect/turf_decal/tile/blue/full,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/treatment_center)
 "viD" = (
@@ -73825,7 +73831,7 @@
 	dir = 1
 	},
 /obj/machinery/recharger,
-/obj/machinery/light/blacklight/directional/west,
+/obj/machinery/light/no_nightlight/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/common/laser_tag)
 "wqf" = (
@@ -74720,14 +74726,10 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/science/ordnance/office)
 "wFm" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	dir = 4;
-	name = "medical bed"
-	},
 /obj/effect/turf_decal/tile/blue/full,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/bed/medical,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/treatment_center)
 "wFp" = (
