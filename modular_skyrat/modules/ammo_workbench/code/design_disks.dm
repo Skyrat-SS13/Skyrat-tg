@@ -1,5 +1,5 @@
 /obj/item/disk/ammo_workbench
-	name = "Munitions blueprint datadisk"
+	name = "munitions blueprint datadisk"
 	desc = "You shouldn't be seeing this!"
 
 /// For doing things when installed/downloaded onto an ammo bench.
