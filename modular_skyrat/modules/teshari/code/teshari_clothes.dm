@@ -140,6 +140,9 @@
 /obj/item/clothing/head/nanotrasen_consultant/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
+/obj/item/clothing/head/beret/sec/peacekeeper/armadyne
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge_fancy/worn/teshari
+
 /obj/item/clothing/head/beret/sec/peacekeeper
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
