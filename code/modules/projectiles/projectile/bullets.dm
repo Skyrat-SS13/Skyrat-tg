@@ -12,7 +12,6 @@
 	wound_bonus = 0
 	wound_falloff_tile = -5
 	embed_falloff_tile = -3
-	wound_bonus = 20 //SKYRAT EDIT ADDITION
 
 /obj/projectile/bullet/smite
 	name = "divine retribution"
