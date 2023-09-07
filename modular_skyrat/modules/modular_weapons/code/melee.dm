@@ -12,6 +12,8 @@
 
 /obj/item/melee/sabre
 	force = 20
+	wound_bonus = 5 // 5 less
+	bare_wound_bonus = 20 // 5 less: Both down slightly, to make up for the damage buff, since it'd get a bit wacky ontop of the armor pen.
 
 /obj/item/melee/sabre/cargo
 	name = "authentic shamshir sabre"
@@ -21,8 +23,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/swords_righthand.dmi'
 	block_chance = 20
 	armour_penetration = 25
-	wound_bonus = 5
-	bare_wound_bonus = 10 // Less then the bowie, in exchange for the armor pen
+
 
 // This is here so that people can't buy the Sabres and craft them into powercrepes
 /datum/crafting_recipe/food/powercrepe
