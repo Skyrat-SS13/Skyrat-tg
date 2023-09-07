@@ -29,6 +29,8 @@
 
 	custom_materials = AMMO_MATS_GRENADE
 
+	harmful = FALSE //Erm, technically
+
 
 /obj/item/ammo_casing/c980grenade/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/automatic/sol_grenade_launcher/firing_launcher = fired_from
@@ -127,6 +129,8 @@
 
 	custom_materials = AMMO_MATS_GRENADE_SHRAPNEL
 	advanced_print_req = TRUE
+
+	harmful = TRUE
 
 
 /obj/projectile/bullet/c980grenade/shrapnel

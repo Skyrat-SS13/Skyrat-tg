@@ -65,7 +65,7 @@
 	bare_wound_bonus = 30
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embedding = list(
-		embed_chance = 110,
+		embed_chance = 75,
 		fall_chance = 3,
 		jostle_chance = 5,
 		ignore_throwspeed_threshold = TRUE,
