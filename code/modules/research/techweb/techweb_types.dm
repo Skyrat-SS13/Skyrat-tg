@@ -6,11 +6,6 @@
 	organization = "Nanotrasen"
 	should_generate_points = TRUE
 
-<<<<<<< HEAD
-
-//When something is researched, triggers the proc for this techweb only
-=======
->>>>>>> aa820c08fe0 (Oldstation now has their own RND (#78132))
 /datum/techweb/science/research_node(datum/techweb_node/node, force = FALSE, auto_adjust_cost = TRUE, get_that_dosh = TRUE)
 	. = ..()
 	if(.)
