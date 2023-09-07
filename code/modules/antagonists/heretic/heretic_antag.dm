@@ -470,7 +470,6 @@
 	if(length(objectives))
 		var/count = 1
 		for(var/datum/objective/objective as anything in objectives)
-<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
 			if(!objective.check_completion())
