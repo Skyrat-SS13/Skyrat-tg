@@ -34,7 +34,7 @@
 	suppressor_x_offset = 12
 
 	burst_size = 1
-	fire_delay = 0.5 SECONDS
+	fire_delay = 0.3 SECONDS
 	actions_types = list()
 
 	spread = 5
@@ -82,7 +82,7 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 
-	fire_delay = 0.75 SECONDS
+	fire_delay = 0.6 SECONDS
 
 	spread = 0
 
@@ -122,7 +122,7 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-	fire_delay = 0.3 SECONDS
+	fire_delay = 0.15 SECONDS
 
 	recoil = 1
 	spread = 10
