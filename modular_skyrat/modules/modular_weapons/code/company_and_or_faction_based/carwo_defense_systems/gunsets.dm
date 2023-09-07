@@ -24,7 +24,7 @@
 	generate_items_inside(list(
 		/obj/item/ammo_box/c35sol/incapacitator = 1,
 		/obj/item/ammo_box/c35sol = 1,
-	),src)
+	), src)
 
 // Boxed grenade launcher, grenades sold seperately on this one
 
@@ -48,6 +48,6 @@
 		/obj/item/ammo_box/c980grenade = 2,
 		/obj/item/ammo_box/c980grenade/smoke = 1,
 		/obj/item/ammo_box/c980grenade/riot = 1,
-	),src)
+	), src)
 
 

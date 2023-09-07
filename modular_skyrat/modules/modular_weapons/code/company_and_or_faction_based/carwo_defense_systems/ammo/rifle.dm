@@ -1,7 +1,5 @@
-//
 // .40 Sol Long
 // Rifle caliber caseless ammo that kills people good
-//
 
 /obj/item/ammo_casing/c40sol
 	name = ".40 Sol Long lethal bullet casing"
@@ -15,14 +13,17 @@
 
 	is_cased_ammo = FALSE
 
+
 /obj/item/ammo_casing/c40sol/Initialize(mapload)
 	. = ..()
 
 	AddElement(/datum/element/caseless)
 
+
 /obj/projectile/bullet/c40sol
 	name = ".40 Sol Long bullet"
 	damage = 35
+
 
 /obj/item/ammo_box/c40sol
 	name = "ammo box (.40 Sol Long lethal)"
@@ -39,6 +40,7 @@
 	ammo_type = /obj/item/ammo_casing/c40sol
 	max_ammo = 30
 
+
 // .40 Sol fragmentation rounds, embeds shrapnel in the target almost every time at close to medium range. Teeeechnically less lethals.
 
 /obj/item/ammo_casing/c40sol/fragmentation
@@ -51,6 +53,7 @@
 
 	advanced_print_req = TRUE
 
+
 /obj/projectile/bullet/c40sol/fragmentation
 	name = ".40 Sol Long fragmentation bullet"
 	damage = 20
@@ -61,9 +64,19 @@
 	sharpness = SHARP_EDGED
 	bare_wound_bonus = 30
 	shrapnel_type = /obj/item/shrapnel/stingball
-	embedding = list(embed_chance=110, fall_chance=3, jostle_chance=5, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
+	embedding = list(
+		embed_chance = 110,
+		fall_chance = 3,
+		jostle_chance = 5,
+		ignore_throwspeed_threshold = TRUE,
+		pain_stam_pct = 0.4,
+		pain_mult = 5,
+		jostle_pain_mult = 6,
+		rip_time = 1 SECONDS,
+	)
 	wound_falloff_tile = -2
 	embed_falloff_tile = -5
+
 
 /obj/item/ammo_box/c40sol/fragmentation
 	name = "ammo box (.40 Sol Long fragmentation)"
@@ -72,6 +85,7 @@
 	icon_state = "40box_disabler"
 
 	ammo_type = /obj/item/ammo_casing/c40sol/fragmentation
+
 
 // .40 Sol armor piercing, if there's less than 20 bullet armor on wherever these hit, it'll go completely through the target and out the other side
 
@@ -86,6 +100,7 @@
 	custom_materials = AMMO_MATS_AP
 	advanced_print_req = TRUE
 
+
 /obj/projectile/bullet/c40sol/pierce
 	name = ".40 Sol armor-piercing bullet"
 	damage = 25
@@ -93,6 +108,7 @@
 	wound_bonus = -30
 
 	projectile_piercing = PASSMOB
+
 
 /obj/projectile/bullet/c40sol/pierce/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
@@ -104,6 +120,7 @@
 
 	return ..()
 
+
 /obj/item/ammo_box/c40sol/pierce
 	name = "ammo box (.40 Sol Short piercing)"
 	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The yellow stripe indicates this should hold armor piercing ammunition."
@@ -111,6 +128,7 @@
 	icon_state = "40box_pierce"
 
 	ammo_type = /obj/item/ammo_casing/c40sol/pierce
+
 
 // .40 Sol incendiary
 
@@ -125,19 +143,25 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+
 /obj/projectile/bullet/c40sol/incendiary
 	name = ".40 Sol Long incendiary bullet"
 	icon_state = "redtrac"
 
 	damage = 25
 
+	/// How many firestacks the bullet should impart upon a target when impacting
+	var/firestacks_to_give = 4
+
+
 /obj/projectile/bullet/c40sol/incendiary/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 
 	if(iscarbon(target))
 		var/mob/living/carbon/gaslighter = target
-		gaslighter.adjust_fire_stacks(4)
+		gaslighter.adjust_fire_stacks(firestacks_to_give)
 		gaslighter.ignite_mob()
+
 
 /obj/item/ammo_box/c40sol/incendiary
 	name = "ammo box (.40 Sol Long incendiary)"

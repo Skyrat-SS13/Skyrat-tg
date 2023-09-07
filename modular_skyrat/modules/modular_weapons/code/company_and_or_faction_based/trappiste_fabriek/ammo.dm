@@ -1,7 +1,5 @@
-//
 // .585 Trappiste
 // High caliber round used in large pistols and revolvers
-//
 
 /obj/item/ammo_casing/c585trappiste
 	name = ".585 Trappiste lethal bullet casing"

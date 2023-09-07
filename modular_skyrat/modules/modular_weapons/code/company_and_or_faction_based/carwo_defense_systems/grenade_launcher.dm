@@ -74,6 +74,7 @@
 	if(distance_ranged > maximum_target_range)
 		user.balloon_alert(user, "out of range")
 		return
+
 	target_range = distance_ranged
 	user.balloon_alert(user, "range set: [target_range]")
 

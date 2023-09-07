@@ -1,6 +1,4 @@
-//
 // .585 pistol magazines
-//
 
 /obj/item/ammo_box/magazine/c585trappiste_pistol
 	name = "\improper Trappiste pistol magazine"

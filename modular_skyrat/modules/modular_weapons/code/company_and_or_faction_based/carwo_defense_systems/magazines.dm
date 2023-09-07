@@ -1,6 +1,4 @@
-//
 // .35 Sol pistol magazines
-//
 
 /obj/item/ammo_box/magazine/c35sol_pistol
 	name = "\improper Sol pistol magazine"
@@ -33,9 +31,7 @@
 /obj/item/ammo_box/magazine/c35sol_pistol/stendo/starts_empty
 	start_empty = TRUE
 
-//
 // .40 Sol rifle magazines
-//
 
 /obj/item/ammo_box/magazine/c40sol_rifle
 	name = "\improper Sol rifle short magazine"
@@ -67,7 +63,6 @@
 	max_ammo = 30
 
 /obj/item/ammo_box/magazine/c40sol_rifle/standard/starts_empty
-
 	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/c40sol_rifle/extended
@@ -81,7 +76,6 @@
 	max_ammo = 45
 
 /obj/item/ammo_box/magazine/c40sol_rifle/extended/starts_empty
-
 	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/c40sol_rifle/drum
@@ -95,12 +89,9 @@
 	max_ammo = 60
 
 /obj/item/ammo_box/magazine/c40sol_rifle/drum/starts_empty
-
 	start_empty = TRUE
 
-//
 // .980 grenade magazines
-//
 
 /obj/item/ammo_box/magazine/c980_grenade
 	name = "\improper Kiboko grenade box"
