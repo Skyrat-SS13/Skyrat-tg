@@ -51,8 +51,8 @@
 
 	suppressor_x_offset = 5
 
-	fire_delay = 3
-	recoil = 2
+	fire_delay = 1 SECONDS
+	recoil = 3
 
 /obj/item/gun/ballistic/revolver/sol/heavy/examine_more(mob/user)
 	. = ..()
