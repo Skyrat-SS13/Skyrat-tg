@@ -108,6 +108,7 @@
 	name = "DO NOT TOUCH!"
 	default_raw_text = "This is a spare pre-charged APC battery for emergencies ONLY. DO NOT use it for stun prods, Bob.<br><br> \
 	Note: Use crowbar to remove the APC cover and take out the malfunctioning battery."
+<<<<<<< HEAD:code/modules/mapfluff/ruins/spaceruin_code/oldstation.dm
 
 /obj/machinery/mod_installer
 	name = "modular outerwear device installator"
@@ -264,3 +265,5 @@
 	icon_keyboard = pick("generic_key", "med_key")
 	icon_screen = pick("generic", "comm_monitor", "comm_logs")
 	. = ..()
+=======
+>>>>>>> aa820c08fe0 (Oldstation now has their own RND (#78132)):code/modules/mapfluff/ruins/spaceruin_code/oldstation/oldstation_fluff.dm
