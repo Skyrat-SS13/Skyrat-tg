@@ -7,8 +7,6 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "eland"
 
-	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/revolver_light.ogg'
-
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/c35sol
 
 	suppressor_x_offset = 3
