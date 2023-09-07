@@ -429,6 +429,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "DelamProcedure")
+		ui.autoupdate = FALSE
 		ui.open()
 
 /obj/structure/sign/delam_procedure
