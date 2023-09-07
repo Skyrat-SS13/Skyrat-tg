@@ -460,8 +460,13 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "DelamProcedure")
+		ui.autoupdate = FALSE
 		ui.open()
 
+/obj/structure/sign/delam_procedure/ui_status(mob/user)
+	if(user.is_blind())
+		return UI_CLOSE
+	return ..()
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/delam_procedure, 32)
 
