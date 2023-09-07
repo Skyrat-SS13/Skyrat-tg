@@ -53,13 +53,8 @@ type Info = {
 };
 
 const IntroductionSection = (props, context) => {
-<<<<<<< HEAD
-  const { data } = useBackend<Info>(context); // SKYRAT EDIT BELOW - ORIGINAL: In order to ascend, you have these tasks to fulfill:
-  const { objectives } = data;
-=======
   const { data, act } = useBackend<Info>(context);
   const { objectives, ascended, can_change_objective } = data;
->>>>>>> 6d258e55276 (Choose your own Objective (#78118))
 
   return (
     <Stack justify="space-evenly" height="100%" width="100%">
@@ -72,24 +67,15 @@ const IntroductionSection = (props, context) => {
             <Stack.Divider />
             <InformationSection />
             <Stack.Divider />
-<<<<<<< HEAD
 
-            <Stack.Item>
-              <ObjectivePrintout
-                fill
-                titleMessage="Your OPFOR objectives are your primary ones, but to ascend, your objectives are:"
-                objectives={objectives}
-              />
-            </Stack.Item>
-=======
             {!ascended && (
               <Stack.Item>
                 <ObjectivePrintout
                   fill
                   titleMessage={
                     can_change_objective
-                      ? 'In order to ascend, you have these tasks to fulfill'
-                      : 'Use your dark knowledge to fulfil your personal goal'
+                      ? 'Your OPFOR objectives are your primary ones, but in order to ascend, you have these tasks to fulfill' /* SKYRAT EDIT CHANGE - opfor objectives */
+                      : 'Your OPFOR objectives are your primary ones. Use your dark knowledge to fulfill your personal goal' /* SKYRAT EDIT CHANGE - opfor objectives  */
                   }
                   objectives={objectives}
                   objectiveFollowup={
@@ -105,7 +91,6 @@ const IntroductionSection = (props, context) => {
                 />
               </Stack.Item>
             )}
->>>>>>> 6d258e55276 (Choose your own Objective (#78118))
           </Stack>
         </Section>
       </Stack.Item>
