@@ -23,6 +23,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
 	var/require_approval = TRUE
+	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
+	var/max_souls = FALSE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -133,6 +135,20 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		var/obj/item/handheld_soulcatcher/parent_device = parent
 		playsound(parent_device, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 		parent_device.visible_message(span_notice("[parent_device] beeps: [parent_body] is now scanned."))
+
+	return TRUE
+
+/// Checks the total number of souls present and compares it with `max_souls` returns `TRUE` if there is room (or no limit), otherwise returns `FALSE`
+/datum/component/soulcatcher/proc/check_for_vacancy()
+	if(!max_souls)
+		return TRUE
+
+	var/current_soul_count = 0
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
+			current_soul_count += 1
+			if(current_soul_count >= max_souls)
+				return FALSE
 
 	return TRUE
 
@@ -334,7 +350,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent))
+		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
 			continue
 
 		var/obj/item/soulcatcher_parent = soulcatcher.parent
@@ -360,6 +376,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/datum/soulcatcher_room/room_to_join
 	if(length(rooms_to_join) < 1)
+		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE
 
 	if(length(rooms_to_join) == 1)
