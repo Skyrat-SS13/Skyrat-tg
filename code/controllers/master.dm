@@ -353,12 +353,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	// var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
 	// SKYRAT EDIT REMOVAL END
 
-<<<<<<< HEAD
-	add_startup_message(message, chat_warning) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, chat_message)
-=======
 	if(result != SS_INIT_NO_MESSAGE)
-		to_chat(world, chat_message)
->>>>>>> 1be0841d98f (Removes COMSIG_AREA_INITIALIZED_IN (#78143))
+		add_startup_message(message, chat_warning) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, chat_message)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
