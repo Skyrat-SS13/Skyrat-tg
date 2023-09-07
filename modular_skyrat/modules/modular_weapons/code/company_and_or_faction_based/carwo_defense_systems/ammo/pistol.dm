@@ -11,8 +11,6 @@
 	caliber = CALIBER_SOL35SHORT
 	projectile_type = /obj/projectile/bullet/c35sol
 
-	is_cased_ammo = FALSE
-
 
 /obj/item/ammo_casing/c35sol/Initialize(mapload)
 	. = ..()
