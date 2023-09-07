@@ -122,7 +122,7 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-	fire_delay = 0.15 SECONDS
+	fire_delay = 0.1 SECONDS
 
 	recoil = 1
 	spread = 10
