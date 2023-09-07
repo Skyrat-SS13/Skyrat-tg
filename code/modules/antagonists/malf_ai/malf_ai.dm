@@ -8,6 +8,8 @@
 	job_rank = ROLE_MALF
 	antag_hud_name = "traitor"
 	ui_name = "AntagInfoMalf"
+	can_assign_self_objectives = TRUE
+	default_custom_objective = "Make sure your precious crew are incapable of ever, ever leaving you."
 	///the name of the antag flavor this traitor has.
 	var/employer
 	///assoc list of strings set up after employer is given
@@ -192,6 +194,7 @@
 	data["allies"] = malfunction_flavor["allies"]
 	data["goal"] = malfunction_flavor["goal"]
 	data["objectives"] = get_objectives()
+	data["can_change_objective"] = can_assign_self_objectives
 
 	//module picker data
 
@@ -249,6 +252,7 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
+<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
 			if(objective.check_completion())
@@ -259,6 +263,11 @@
 			*/
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
 			// SKYRAT EDIT END - No greentext
+=======
+			if(!objective.check_completion())
+				malf_ai_won = FALSE
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
+>>>>>>> 6d258e55276 (Choose your own Objective (#78118))
 			count++
 
 	result += objectives_text
