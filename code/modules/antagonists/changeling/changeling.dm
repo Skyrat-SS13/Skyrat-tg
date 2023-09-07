@@ -1072,22 +1072,14 @@
 	if(objectives.len)
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
-			if(objective.check_completion())
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_greentext("Success!</b>")]"
-			else
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
-				changeling_win = FALSE
-			*/
-			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
-=======
 			if(!objective.check_completion())
 				changeling_win = FALSE
 			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
->>>>>>> 6d258e55276 (Choose your own Objective (#78118))
+			*/
+			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
+			// SKYRAT EDIT END - No greentext
 			count++
 
 	// SKYRAT EDIT REMOVAL START - No greentext
