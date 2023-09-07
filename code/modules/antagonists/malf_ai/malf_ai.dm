@@ -252,22 +252,14 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-<<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
-			if(objective.check_completion())
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
-			else
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
-				malf_ai_won = FALSE
-			*/
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
-=======
 			if(!objective.check_completion())
 				malf_ai_won = FALSE
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
->>>>>>> 6d258e55276 (Choose your own Objective (#78118))
+			*/
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
+			// SKYRAT EDIT END - No greentext
 			count++
 
 	result += objectives_text
