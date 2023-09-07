@@ -473,19 +473,12 @@
 <<<<<<< HEAD
 			// SKYRAT EDIT START - No greentext
 			/*
-			if(objective.check_completion())
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_greentext("Success!")]"
-			else
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
-				succeeded = FALSE
-			*/
-			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
-=======
 			if(!objective.check_completion())
 				succeeded = FALSE
 			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
->>>>>>> 6d258e55276 (Choose your own Objective (#78118))
+			*/
+			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
+			// SKYRAT EDIT END - No greentext
 			count++
 
 	// SKYRAT EDIT START - No greentext
