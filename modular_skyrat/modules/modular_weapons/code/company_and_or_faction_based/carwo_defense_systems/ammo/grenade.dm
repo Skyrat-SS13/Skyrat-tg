@@ -1,15 +1,15 @@
-#define AMMO_MATS_GRENADE list(
-	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4
+#define AMMO_MATS_GRENADE list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4, \
 )
 
-#define AMMO_MATS_GRENADE_SHRAPNEL list(
+#define AMMO_MATS_GRENADE_SHRAPNEL list( \
 	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-	/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2
+	/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2, \
 )
 
-#define AMMO_MATS_GRENADE_INCENDIARY list(
+#define AMMO_MATS_GRENADE_INCENDIARY list( \
 	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-	/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2
+	/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2, \
 )
 
 #define GRENADE_SMOKE_RANGE 0.75
