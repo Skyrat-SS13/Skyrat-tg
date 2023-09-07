@@ -11424,7 +11424,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/storage)
 "dFi" = (
-/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/n2{
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8
 	},
 /turf/open/floor/engine,
@@ -17526,9 +17526,6 @@
 /area/station/science/xenobiology)
 "frm" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
@@ -37366,9 +37363,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
-	},
 /obj/machinery/rnd/production/protolathe/department/science,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -46174,7 +46168,8 @@
 /area/station/security/checkpoint/escape)
 "nVk" = (
 /obj/machinery/light/warm/directional/south,
-/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/n2{
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
+	filter_type = list(/datum/gas/nitrogen);
 	dir = 8
 	},
 /turf/open/floor/engine,
@@ -56532,6 +56527,10 @@
 	},
 /obj/structure/cable,
 /obj/effect/landmark/event_spawn,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "Cooling Loop Bypass"
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "rgh" = (
