@@ -78,7 +78,7 @@
 		/datum/reagent/consumable/soymilk,\
 		/datum/reagent/consumable/tonic,\
 		/datum/reagent/consumable/enzyme,\
-		/datum/reagent/water\
+		/datum/reagent/water,\
 	)
 
 #define BASE_SHAKER_CONDIMENT_REAGENTS list(\
