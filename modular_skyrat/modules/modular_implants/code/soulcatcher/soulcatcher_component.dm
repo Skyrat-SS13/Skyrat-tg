@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/max_souls = FALSE
 	/// Are are the souls inside able to emote/speak as the parent?
 	var/communicate_as_parent = FALSE
+	/// Is the soulcatcher removable from the parent object?
+	var/removable = FALSE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -158,6 +160,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	return TRUE
+
+/// Attempts to remove the soulcatcher from the attached object
+/datum/component/soulcatcher/proc/remove_self()
+	if(!removable)
+		return FALSE
+
+	qdel(src)
 
 /**
  * Soulcatcher Room

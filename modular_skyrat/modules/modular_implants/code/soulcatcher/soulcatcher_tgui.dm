@@ -16,6 +16,7 @@
 	data["communicate_as_parent"] = communicate_as_parent
 	data["current_soul_count"] = get_soul_count()
 	data["max_souls"] = max_souls
+	data["removable"] = removable
 
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
@@ -235,6 +236,13 @@
 				return FALSE
 
 			target_room.send_message(message_to_send, message_sender, emote)
+			return TRUE
+
+		if("delete_self")
+			if(tgui_alert(usr, "Are you sure you want to detatch the soulcatcher? This will boot any souls out.", parent, list("Yes", "No")) != "Yes")
+				return FALSE
+
+			remove_self()
 			return TRUE
 
 /datum/component/soulcatcher_user/New()

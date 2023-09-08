@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList } from '../components';
+import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList, ProgressBar } from '../components';
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
@@ -10,6 +10,7 @@ export const Soulcatcher = (props, context) => {
     ghost_joinable,
     current_soul_count,
     max_souls,
+    removable,
     communicate_as_parent,
   } = data;
 
@@ -285,48 +286,54 @@ export const Soulcatcher = (props, context) => {
                               {soul.able_to_emote ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
-                          <LabeledList.Item label="External Speech">
-                            <Button
-                              color={
-                                soul.able_to_speak_as_container
-                                  ? 'green'
-                                  : 'red'
-                              }
-                              fluid
-                              tooltip="Is the soul able to speak the container?"
-                              onClick={() =>
-                                act('toggle_soul_external_communication', {
-                                  target_soul: soul.reference,
-                                  communication_type: 'speech',
-                                  room_ref: room.reference,
-                                })
-                              }>
-                              {soul.able_to_speak_as_container
-                                ? 'Enabled'
-                                : 'Disabled'}
-                            </Button>
-                          </LabeledList.Item>
-                          <LabeledList.Item label="External Emote">
-                            <Button
-                              color={
-                                soul.able_to_emote_as_container
-                                  ? 'green'
-                                  : 'red'
-                              }
-                              fluid
-                              tooltip="Is the soul able to emote as the container?"
-                              onClick={() =>
-                                act('toggle_soul_external_communication', {
-                                  target_soul: soul.reference,
-                                  communication_type: 'emote',
-                                  room_ref: room.reference,
-                                })
-                              }>
-                              {soul.able_to_emote_as_container
-                                ? 'Enabled'
-                                : 'Disabled'}
-                            </Button>
-                          </LabeledList.Item>
+                          {communicate_as_parent ? (
+                            <>
+                              <LabeledList.Item label="External Speech">
+                                <Button
+                                  color={
+                                    soul.able_to_speak_as_container
+                                      ? 'green'
+                                      : 'red'
+                                  }
+                                  fluid
+                                  tooltip="Is the soul able to speak the container?"
+                                  onClick={() =>
+                                    act('toggle_soul_external_communication', {
+                                      target_soul: soul.reference,
+                                      communication_type: 'speech',
+                                      room_ref: room.reference,
+                                    })
+                                  }>
+                                  {soul.able_to_speak_as_container
+                                    ? 'Enabled'
+                                    : 'Disabled'}
+                                </Button>
+                              </LabeledList.Item>
+                              <LabeledList.Item label="External Emote">
+                                <Button
+                                  color={
+                                    soul.able_to_emote_as_container
+                                      ? 'green'
+                                      : 'red'
+                                  }
+                                  fluid
+                                  tooltip="Is the soul able to emote as the container?"
+                                  onClick={() =>
+                                    act('toggle_soul_external_communication', {
+                                      target_soul: soul.reference,
+                                      communication_type: 'emote',
+                                      room_ref: room.reference,
+                                    })
+                                  }>
+                                  {soul.able_to_emote_as_container
+                                    ? 'Enabled'
+                                    : 'Disabled'}
+                                </Button>
+                              </LabeledList.Item>
+                            </>
+                          ) : (
+                            <> </>
+                          )}
                           <LabeledList.Item label="Rename">
                             <Button
                               color={soul.able_to_rename ? 'green' : 'red'}
@@ -366,9 +373,16 @@ export const Soulcatcher = (props, context) => {
           </Section>
         ))}
         {max_souls ? (
-          <Box textAlign="center" opacity={0.8}>
-            Current soul capacity: {current_soul_count}/{max_souls}
-          </Box>
+          <Section>
+            <ProgressBar
+              textAlign="left"
+              minValue={0}
+              color="blue"
+              maxValue={max_souls}
+              value={max_souls - current_soul_count}>
+              Remaining soul capacity: {max_souls - current_soul_count}
+            </ProgressBar>
+          </Section>
         ) : (
           <> </>
         )}
@@ -393,6 +407,18 @@ export const Soulcatcher = (props, context) => {
           onClick={() => act('toggle_approval', {})}>
           Approval is {require_approval ? '' : 'not'} required to join
         </Button>
+        {removable ? (
+          <Button
+            require_approval
+            fluid
+            color="red"
+            icon="eject"
+            onClick={() => act('delete_self', {})}>
+            Remove soulcatcher from parent object
+          </Button>
+        ) : (
+          <> </>
+        )}
       </Window.Content>
     </Window>
   );
