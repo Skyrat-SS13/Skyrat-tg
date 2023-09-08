@@ -59,7 +59,7 @@
 		/datum/reagent/consumable/sodawater,\
 		/datum/reagent/consumable/sol_dry,\
 		/datum/reagent/consumable/spacemountainwind,\
-		/datum/reagent/consumable/space_up\
+		/datum/reagent/consumable/space_up,\
 	)
 
 #define BASE_SHAKER_MISC_REAGENTS list(\
