@@ -100,7 +100,7 @@
 	/datum/reagent/consumable/capsaicin, \
 	/datum/reagent/consumable/ketchup, \
 	/datum/reagent/consumable/astrotame, \
-	/datum/reagent/consumable/frostoil\
+	/datum/reagent/consumable/frostoil,\
 )
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific
