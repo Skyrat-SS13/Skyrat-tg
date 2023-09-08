@@ -16,7 +16,7 @@
 		/datum/reagent/consumable/potato_juice,\
 		/datum/reagent/consumable/pumpkinjuice,\
 		/datum/reagent/consumable/tomatojuice,\
-		/datum/reagent/consumable/watermelonjuice\
+		/datum/reagent/consumable/watermelonjuice,\
 	)
 
 #define BASE_SHAKER_ALCOHOL_REAGENTS list(\
