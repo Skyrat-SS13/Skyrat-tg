@@ -35,7 +35,7 @@
 
 /obj/item/attachable_soulcatcher
 	name = "mini-soulcatcher kit"
-	desc = "A kit that when attached to an object allows it to function as a soulcatcher"
+	desc = "A kit that allows an attached object to function as a soulcatcher"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
 	/// Do we want to destory the item once it is attached to an item?
