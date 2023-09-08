@@ -28,7 +28,7 @@
 	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL) // look, the anesthetic machine's there too
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
-/datum/design/soulcatcher_device
+/datum/design/mini_soulcatcher
 	name = "Mini-soulcatcher"
 	desc = "A small soulcatcher device that can be attached to various objects."
 	id = "mini_soulcatcher"
