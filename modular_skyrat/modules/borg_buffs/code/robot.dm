@@ -47,7 +47,7 @@
 		/datum/reagent/consumable/ethanol/whiskey,\
 		/datum/reagent/consumable/ethanol/wine,\
 		/datum/reagent/consumable/laughter,\
-		/datum/reagent/consumable/nothing\
+		/datum/reagent/consumable/nothing,\
 	)
 
 #define BASE_SHAKER_SODA_REAGENTS list(\
