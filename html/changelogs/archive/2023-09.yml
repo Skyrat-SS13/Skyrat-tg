@@ -270,3 +270,29 @@
   vinylspiders:
   - bugfix: mold on multi-z maps will no longer spawn in or spread resin to openspace
       turfs
+2023-09-08:
+  LT3:
+  - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
+  SkyratBot:
+  - bugfix: fixes creamatorium not producing any suspicious ice cream, and fixes a
+      dead mouse related harrdel
+  - refactor: If you transform into another mob and notice bugs with interacting with
+      the game world, please create a bug report as this framework was recently refactored.
+  - image: The glow shoes from the ClothesMate now actually glow and can be recolored,
+      even with a spraycan.
+  - bugfix: Megafauna now correctly prints the victim's name after a kill
+  - bugfix: leash unit test will time out less often and increases the timer until
+      it is considered 'timed out', to reduce false CI failures
+  - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
+      rod" from the more generic "fishing rod"
+  - balance: colossus' near-death attack now starts after a 0.5 seconds delay
+  - image: adds special sprites for lungs when you use the smoker quirk
+  - bugfix: basic mobs can now use ranged burst attacks
+  - balance: gas mixer output now accurate to set ratio regardless of input temperatures
+  - rscadd: Traitors, Changelings, Heretics, Wizards, Malfunctioning AIs, and Ninjas
+      can now all reject their original objectives and provide one of their own in
+      its place. A Heretic doing this will no longer be able to ascend.
+  - rscadd: '"Custom" objectives which aren''t mechanically tracked will no longer
+      report success or failure upon round end.'
+  - qol: Space Ninja spider charges will now display where they can be detonated when
+      examined, if you are a ninja.
