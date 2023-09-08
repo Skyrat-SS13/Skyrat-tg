@@ -41,7 +41,7 @@
 /area/ruin/syndicate_lava_base/cargo)
 "ay" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "aF" = (
 /obj/machinery/door/airlock{
@@ -195,11 +195,6 @@
 "bF" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/west,
-/obj/machinery/fax{
-	fax_name = "Interdyne";
-	pixel_y = 7;
-	syndicate_network = 1
-	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "bG" = (
@@ -880,7 +875,6 @@
 /obj/machinery/button/door/directional/west{
 	id = DyneWC
 	},
-/obj/machinery/light/small/directional/north,
 /obj/machinery/dryer{
 	pixel_x = 8;
 	pixel_y = 20
@@ -1036,7 +1030,7 @@
 /obj/machinery/flasher/directional/north{
 	id = "DyneBrigFlash"
 	},
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "jA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -1253,6 +1247,16 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
+"ma" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "mb" = (
 /obj/structure/dresser,
 /turf/open/floor/wood,
@@ -1400,7 +1404,7 @@
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
 /obj/item/kirbyplants/random,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "nq" = (
 /obj/structure/dresser,
@@ -1418,6 +1422,10 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/cargo)
+"nB" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/checker,
+/area/ruin/syndicate_lava_base/bar)
 "nT" = (
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -1552,7 +1560,7 @@
 /area/ruin/syndicate_lava_base/main)
 "pe" = (
 /obj/effect/decal/cleanable/oil/streak,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "pq" = (
 /obj/machinery/door/airlock/mining/glass{
@@ -1807,7 +1815,7 @@
 	pixel_x = -6;
 	id = "DyneBrigFlash"
 	},
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "sl" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
@@ -2512,6 +2520,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/thinplating/terracotta,
+/obj/machinery/light/directional/east,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "Ac" = (
@@ -3413,8 +3422,8 @@
 /area/ruin/syndicate_lava_base/engineering)
 "HY" = (
 /obj/machinery/door/airlock{
-	name = "Unisex Restrooms";
-	id_tag = DyneWC
+	name = "Unisex Restroom";
+	id_tag = "DyneWC"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
@@ -3454,6 +3463,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/smooth_corner,
 /area/ruin/syndicate_lava_base/medbay)
+"IB" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/grass,
+/area/ruin/syndicate_lava_base/bar)
 "IC" = (
 /turf/open/floor/iron/checker,
 /area/ruin/syndicate_lava_base/bar)
@@ -3566,8 +3579,9 @@
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "Ju" = (
-/obj/machinery/vending/dinnerware,
-/obj/structure/table/reinforced,
+/obj/machinery/vending/dinnerware{
+	onstation = 0
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "JB" = (
@@ -3739,7 +3753,7 @@
 /area/ruin/syndicate_lava_base/main)
 "KT" = (
 /obj/structure/bed/maint,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "KX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4368,9 +4382,6 @@
 /obj/structure/table,
 /turf/open/floor/iron/smooth_large,
 /area/ruin/syndicate_lava_base/cargo)
-"Rf" = (
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/cargo)
 "Ro" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4846,6 +4857,12 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "Wm" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/table,
+/obj/machinery/fax{
+	fax_name = "Interdyne";
+	pixel_y = 7;
+	name = "Interdyne Fax Machine"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "Wq" = (
@@ -4862,7 +4879,11 @@
 /area/ruin/syndicate_lava_base/main)
 "WA" = (
 /obj/machinery/button/door/directional/north{
-	id = "DyneBrig"
+	id = "DyneBrig";
+	normaldoorcontrol = 1;
+	name = "Brig Bolt Control";
+	specialfunctions = 4;
+	req_access = list("syndicate")
 	},
 /obj/machinery/button/flasher{
 	id = "DyneBrigFlash";
@@ -4876,7 +4897,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "WG" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
@@ -6506,7 +6527,7 @@ KK
 KK
 Zz
 JB
-Zq
+ma
 Zq
 Zq
 Zq
@@ -6973,8 +6994,8 @@ Sr
 Fc
 Zz
 KT
-Rf
-Rf
+dn
+dn
 pe
 ur
 Zq
@@ -7032,7 +7053,7 @@ vi
 Fk
 Zz
 jy
-Rf
+dn
 ay
 si
 Zz
@@ -7108,7 +7129,7 @@ Zq
 JB
 Tx
 vm
-IC
+nB
 IC
 St
 Tx
@@ -7476,7 +7497,7 @@ sL
 Ge
 qK
 Hp
-Hp
+IB
 Tx
 ab
 ab
