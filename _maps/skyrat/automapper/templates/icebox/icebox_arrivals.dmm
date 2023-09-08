@@ -5,7 +5,7 @@
 	},
 /obj/machinery/status_display/shuttle{
 	pixel_x = -32;
-	shuttle_id = "arrival"
+	shuttle_id = "arrivals_shuttle"
 	},
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/stripes/corner{
@@ -132,9 +132,17 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
 "en" = (
-/obj/structure/sign/warning/docking/directional/east,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/computer/shuttle/arrivals/recall,
+/turf/open/floor/iron/white/corner{
+	dir = 4
+	},
+/area/station/hallway/secondary/entry)
 "ep" = (
 /obj/effect/turf_decal/stripes{
 	dir = 6
@@ -269,10 +277,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
-"ju" = (
-/obj/structure/sign/warning/docking/directional/east,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
 "jT" = (
 /obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron/grimy,
@@ -1059,7 +1063,7 @@
 	},
 /obj/machinery/status_display/shuttle{
 	pixel_x = -32;
-	shuttle_id = "arrival"
+	shuttle_id = "arrivals_shuttle"
 	},
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/stripes/corner{
@@ -1926,13 +1930,13 @@ XM
 EN
 OJ
 ej
-OJ
 ej
-en
+ej
+cp
 iy
 iy
 iy
-ju
+cp
 ej
 IC
 yO
@@ -1958,11 +1962,11 @@ iy
 iy
 EN
 ej
-ej
-ej
+pd
+OJ
 cp
 iy
-iy
+Nt
 iy
 cp
 ej
@@ -1990,13 +1994,13 @@ iy
 iy
 iy
 EN
-pd
-OJ
+ej
+ej
+rR
 cp
-iy
-Nt
-iy
+Gc
 cp
+rR
 OJ
 IC
 wQ
@@ -2022,12 +2026,12 @@ iy
 iy
 iy
 LM
-ej
-ej
-rR
-cp
-Gc
-cp
+OJ
+UH
+OQ
+qD
+co
+tV
 rR
 ej
 IC
@@ -2054,12 +2058,12 @@ iy
 iy
 iy
 LM
+Ck
 OJ
-UH
-OQ
-qD
-co
-tV
+rR
+cp
+Xp
+yV
 rR
 ks
 IC
@@ -2086,12 +2090,12 @@ iy
 iy
 iy
 iy
-Ck
-OJ
-rR
-cp
-Xp
-yV
+IC
+IC
+IC
+IC
+sm
+LN
 rR
 ej
 IC
@@ -2118,13 +2122,13 @@ iy
 iy
 iy
 iy
+Zb
+co
+co
+dG
+Dr
+tv
 IC
-IC
-IC
-IC
-sm
-LN
-rR
 OJ
 cp
 Ci
@@ -2150,11 +2154,11 @@ iy
 iy
 iy
 iy
-Zb
-co
-co
-dG
-Dr
+IC
+IC
+IC
+xC
+uG
 tv
 IC
 OJ
@@ -2182,11 +2186,11 @@ iy
 iy
 iy
 iy
+AH
 IC
-IC
-IC
-xC
-uG
+Xj
+Uj
+oZ
 tv
 IC
 OJ
@@ -2214,12 +2218,12 @@ iy
 iy
 iy
 iy
-AH
+iy
 IC
-Xj
-Uj
-oZ
-tv
+en
+LL
+aK
+Th
 IC
 OJ
 IC
@@ -2246,11 +2250,11 @@ iy
 iy
 iy
 iy
-iy
+LM
 IC
 VD
 LL
-aK
+LL
 Th
 IC
 OJ
