@@ -10,7 +10,6 @@
 	suffix = "icemoon_underground_syndicate_base1_skyrat.dmm"
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/lavaland/skyrat/syndicate_base)
-	always_place = TRUE
 
 /datum/map_template/ruin/icemoon/underground/skyrat/mining_site_below
 	name = "Mining Site Underground"
