@@ -81,6 +81,22 @@ export const SoulcatcherUser = (props, context) => {
               <LabeledList.Item label="Ability to emote">
                 {user_data.able_to_emote ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
+              {communicate_as_parent ? (
+                <>
+                  <LabeledList.Item label="Ability to speak as container">
+                    {user_data.able_to_speak_as_container
+                      ? 'Enabled'
+                      : 'Disabled'}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Ability to emote as container">
+                    {user_data.able_to_emote_as_container
+                      ? 'Enabled'
+                      : 'Disabled'}
+                  </LabeledList.Item>
+                </>
+              ) : (
+                <> </>
+              )}
               <LabeledList.Item label="Ability to change name">
                 {user_data.able_to_rename && !user_data.scan_needed
                   ? 'Enabled'
