@@ -23,6 +23,12 @@
 	var/able_to_speak = TRUE
 	/// Is the soul able to change their own name?
 	var/able_to_rename = TRUE
+	/// Is the soul able to speak as the object it is inside?
+	var/able_to_speak_as_container = TRUE
+	/// Is the soul able to emote as the object it is inside?
+	var/able_to_emote_as_container = TRUE
+	/// Are emote's and Say's done through the container the mob is in?
+	var/communicating_externally = FALSE
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
@@ -110,7 +116,7 @@
 	if(!message || message == "")
 		return
 
-	if(!able_to_speak)
+	if((!able_to_speak && !communicating_externally) || (!able_to_speak_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to speak!"))
 		return FALSE
 
@@ -126,7 +132,7 @@
 	if(!message)
 		return FALSE
 
-	if(!able_to_emote)
+	if((!able_to_emote && !communicating_externally) || (!able_to_emote_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to emote!"))
 		return FALSE
 

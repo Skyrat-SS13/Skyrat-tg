@@ -4,7 +4,14 @@ import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledLi
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
-  const { require_approval, current_rooms = [], ghost_joinable } = data;
+  const {
+    require_approval,
+    current_rooms = [],
+    ghost_joinable,
+    current_soul_count,
+    max_souls,
+    communicate_as_parent,
+  } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -278,6 +285,48 @@ export const Soulcatcher = (props, context) => {
                               {soul.able_to_emote ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
+                          <LabeledList.Item label="External Speech">
+                            <Button
+                              color={
+                                soul.able_to_speak_as_container
+                                  ? 'green'
+                                  : 'red'
+                              }
+                              fluid
+                              tooltip="Is the soul able to speak the container?"
+                              onClick={() =>
+                                act('toggle_soul_external_communication', {
+                                  target_soul: soul.reference,
+                                  communication_type: 'speech',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_speak_as_container
+                                ? 'Enabled'
+                                : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
+                          <LabeledList.Item label="External Emote">
+                            <Button
+                              color={
+                                soul.able_to_emote_as_container
+                                  ? 'green'
+                                  : 'red'
+                              }
+                              fluid
+                              tooltip="Is the soul able to emote as the container?"
+                              onClick={() =>
+                                act('toggle_soul_external_communication', {
+                                  target_soul: soul.reference,
+                                  communication_type: 'emote',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_emote_as_container
+                                ? 'Enabled'
+                                : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
                           <LabeledList.Item label="Rename">
                             <Button
                               color={soul.able_to_rename ? 'green' : 'red'}
@@ -316,6 +365,13 @@ export const Soulcatcher = (props, context) => {
             )}
           </Section>
         ))}
+        {max_souls ? (
+          <Box textAlign="center" opacity={0.8}>
+            Current soul capacity: {current_soul_count}/{max_souls}
+          </Box>
+        ) : (
+          <> </>
+        )}
         <Button
           fluid
           color="green"

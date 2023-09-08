@@ -4,7 +4,7 @@ import { BlockQuote, Button, Divider, Box, Flex, Collapsible, LabeledList, Secti
 
 export const SoulcatcherUser = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_room, user_data, souls = [] } = data;
+  const { current_room, user_data, communicate_as_parent, souls = [] } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -38,6 +38,18 @@ export const SoulcatcherUser = (props, context) => {
                   onClick={() => act('reset_name', {})}
                 />
               </>
+            ) : (
+              <> </>
+            )}
+            {communicate_as_parent ? (
+              <Button
+                color={user_data.communicating_externally ? 'green' : 'red'}
+                icon={
+                  user_data.communicating_externally ? 'bullhorn' : 'microphone'
+                }
+                tooltip="Toggle sending messages as part of the soulcatcher."
+                onClick={() => act('toggle_external_communication', {})}
+              />
             ) : (
               <> </>
             )}

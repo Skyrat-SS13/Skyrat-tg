@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/require_approval = TRUE
 	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
 	var/max_souls = FALSE
+	/// Are are the souls inside able to emote/speak as the parent?
+	var/communicate_as_parent = FALSE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -138,17 +140,22 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
+/// Returns a total of the current number of souls inside of all of the occupied soulcatcher rooms.
+/datum/component/soulcatcher/proc/get_soul_count()
+	var/current_soul_count = 0
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
+			current_soul_count += 1
+
+	return current_soul_count
+
 /// Checks the total number of souls present and compares it with `max_souls` returns `TRUE` if there is room (or no limit), otherwise returns `FALSE`
 /datum/component/soulcatcher/proc/check_for_vacancy()
 	if(!max_souls)
 		return TRUE
 
-	var/current_soul_count = 0
-	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
-		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
-			current_soul_count += 1
-			if(current_soul_count >= max_souls)
-				return FALSE
+	if(get_soul_count() >= max_souls)
+		return FALSE
 
 	return TRUE
 
@@ -281,6 +288,22 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/soulcatcher_room/proc/send_message(message_to_send, message_sender, emote = FALSE)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
+
+	var/mob/living/soulcatcher_soul/soul_sender = message_sender
+	if(istype(soul_sender) && soul_sender.communicating_externally)
+		var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
+		var/obj/item/parent_object = parent_soulcatcher.parent
+		if(!istype(parent_object))
+			return FALSE
+
+		if(emote)
+			parent_object.manual_emote(message_to_send)
+			log_emote("[soul_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+		else
+			parent_object.say(message_to_send)
+			log_say("[soul_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
+
+		return TRUE
 
 	var/sender_name = ""
 	if(message_sender)
