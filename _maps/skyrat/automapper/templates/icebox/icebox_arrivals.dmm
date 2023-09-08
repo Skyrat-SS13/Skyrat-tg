@@ -718,18 +718,6 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
-"FG" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 3;
-	height = 15;
-	name = "arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/box;
-	shuttle_id = "arrival_stationary";
-	width = 7
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
 "FL" = (
 /obj/structure/fence/corner{
 	dir = 4
@@ -1106,6 +1094,20 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/entry)
+"Tq" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 1;
+	height = 13;
+	shuttle_id = "arrivals_stationary";
+	name = "arrivals";
+	width = 5
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "Tt" = (
 /obj/effect/turf_decal/stripes{
 	dir = 9
@@ -2438,7 +2440,7 @@ ej
 iy
 iy
 iy
-FG
+iy
 iy
 iy
 iy
@@ -2472,7 +2474,7 @@ JR
 iy
 iy
 iy
-JR
+Tq
 Xd
 OJ
 OJ
