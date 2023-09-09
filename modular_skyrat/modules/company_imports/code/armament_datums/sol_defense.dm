@@ -61,7 +61,7 @@
 
 /datum/armament_entry/company_import/sol_defense/longarm/outomaties
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
-	cost = PAYCHECK_COMMAND * 18
+	cost = PAYCHECK_COMMAND * 23
 	contraband = TRUE
 
 /datum/armament_entry/company_import/sol_defense/longarm/kiboko
