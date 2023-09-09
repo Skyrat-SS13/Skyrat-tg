@@ -49,14 +49,16 @@
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine_more(mob/user)
 	. = ..()
 
-	. += "The d'Infanterie rifles are, as the name may imply, built by Carwo for \
-		use by SolFed's various infantry branches. Following the rather reasonable \
-		military requirements of using the same few cartridges and magazines, \
-		the lifespans of logistics coordinators and quartermasters everywhere \
-		were lengthened by several years. While typically only for military sale \
-		in the past, the recent collapse of certain unnamed weapons manufacturers \
-		has caused Carwo to open many of its military weapons to civilian sale, \
-		which includes this one."
+	. += "The Kiboko is one of the strangest weapons Carwo offers. A grenade launcher, \
+		though not in the standard grenade size. The much lighter .980 Tydhouer grenades \
+		developed for the weapon offered many advantages over standard grenade launching \
+		ammunition. For a start, it was significantly lighter, and easier to carry large \
+		amounts of. What it also offered, however, and the reason SolFed funded the \
+		project: Variable time fuze. Using the large and expensive ranging sight on the \
+		launcher, its user can set an exact distance for the grenade to self detonate at. \
+		The dream of militaries for decades, finally realized. The smaller shells do not, \
+		however, make the weapon any more enjoyable to fire. The kick is only barely \
+		manageable thanks to the massive muzzle brake at the front."
 
 	return .
 
