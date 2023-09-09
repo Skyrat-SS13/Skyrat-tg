@@ -364,18 +364,10 @@ SUBSYSTEM_DEF(player_ranks)
 	var/datum/player_rank_controller/controller = get_controller_for_group(rank_title)
 
 	if(!controller)
-		stack_trace("Invalid player rank \"[rank_title]\" supplied in add_player_to_group()!")
+		stack_trace("Invalid player rank \"[rank_title]\" supplied in remove_player_from_group()!")
 		return FALSE
 
 	ckey = ckey(ckey)
-
-	var/already_in_config = controller.get_ckeys_for_legacy_save()
-
-	if(!already_in_config[ckey])
-		if(is_admin_client)
-			to_chat(admin, span_warning("\"[ckey]\" is already not a [rank_title]!"))
-
-		return FALSE
 
 	if(controller.should_use_legacy_system())
 		controller.remove_player_legacy(ckey)
