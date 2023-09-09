@@ -40,6 +40,14 @@
 	icon_state = "partskit"
 	/// Do we want to destory the item once it is attached to an item?
 	var/destroy_on_use = TRUE
+	/// What items do we want to prevent the viewer from attaching this to?
+	var/list/blacklisted_items = list(
+		/obj/item/organ,
+		/obj/item/mmi,
+		/obj/item/pai_card,
+		/obj/item/intellicard,
+		/obj/item/disk/nuclear, // Woah there
+	)
 
 /obj/item/attachable_soulcatcher/afterattack(obj/item/target_item, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -48,6 +56,10 @@
 
 	if(GetComponent(/datum/component/soulcatcher))
 		balloon_alert("already attached!")
+		return FALSE
+
+	if(!is_type_in_list(target_item, blacklisted_items))
+		balloon_alert("incompatible!")
 		return FALSE
 
 	target_item.AddComponent(/datum/component/soulcatcher/attachable_soulcatcher)
