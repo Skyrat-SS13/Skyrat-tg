@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/shotgun/riot/sol
 	name = "\improper Carwo 'Renoster' Shotgun"
-	desc = "A twelve gauge shotgun with an eight shell capacity underneath. Made for and used by SolFed's various military branches."
+	desc = "A twelve gauge shotgun with a six shell capacity underneath. Made for and used by SolFed's various military branches."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "renoster"
