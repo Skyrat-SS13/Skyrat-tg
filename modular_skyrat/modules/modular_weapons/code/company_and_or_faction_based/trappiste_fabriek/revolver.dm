@@ -11,6 +11,8 @@
 
 	suppressor_x_offset = 3
 
+	w_class = WEIGHT_CLASS_SMALL
+
 	can_suppress = TRUE
 
 /obj/item/gun/ballistic/revolver/sol/give_manufacturer_examine()

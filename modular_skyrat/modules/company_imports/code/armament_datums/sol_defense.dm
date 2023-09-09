@@ -66,7 +66,7 @@
 
 /datum/armament_entry/company_import/sol_defense/longarm/kiboko
 	item_type = /obj/item/gun/ballistic/automatic/sol_grenade_launcher
-	cost = PAYCHECK_COMMAND * 22
+	cost = PAYCHECK_COMMAND * 46
 	contraband = TRUE
 
 /datum/armament_entry/company_import/sol_defense/magazines
