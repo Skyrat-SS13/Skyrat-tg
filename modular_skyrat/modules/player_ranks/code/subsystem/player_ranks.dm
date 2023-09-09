@@ -266,15 +266,12 @@ SUBSYSTEM_DEF(player_ranks)
 	var/datum/admins/admin_holder = is_admin_client ? admin_client?.holder : (istype(admin, /datum/admins) ? admin : null)
 
 	if(!admin_holder)
-		message_admins("Could not find a admin_holder to verify admin ([admin || "*NULL*"]).")
-
 		return FALSE
 
 	if(!admin_holder.check_for_rights(R_PERMISSIONS))
 		if(is_admin_client)
 			to_chat(admin, span_warning("You do not possess the permissions to do this."))
 
-		message_admins("[admin_holder] ([admin_holder.type]) did failed the permission check in add_player_to_group.")
 		return FALSE
 
 
@@ -325,7 +322,6 @@ SUBSYSTEM_DEF(player_ranks)
 	)
 
 	if(!query_add_player_rank.warn_execute())
-		message_admins("Failed to run query [query_add_player_rank] ([query_add_player_rank.sql]).")
 		return FALSE
 
 	controller.add_player(ckey)
