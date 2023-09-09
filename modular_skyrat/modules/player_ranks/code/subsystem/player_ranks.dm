@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 		return FALSE
 
-	if(admin_holder.check_for_rights(R_PERMISSIONS))
+	if(!admin_holder.check_for_rights(R_PERMISSIONS))
 		if(is_admin_client)
 			to_chat(admin, span_warning("You do not possess the permissions to do this."))
 
@@ -357,7 +357,7 @@ SUBSYSTEM_DEF(player_ranks)
 	if(!admin_holder)
 		return FALSE
 
-	if(admin_holder.check_for_rights(R_PERMISSIONS))
+	if(!admin_holder.check_for_rights(R_PERMISSIONS))
 		if(is_admin_client)
 			to_chat(admin, span_warning("You do not possess the permissions to do this."))
 
