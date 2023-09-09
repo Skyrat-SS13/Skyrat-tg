@@ -27,8 +27,8 @@
 
 	suppressor_x_offset = 11
 
-	burst_size = 2
-	fire_delay = 0.25 SECONDS
+	burst_size = 3
+	fire_delay = 0.2 SECONDS
 
 	spread = 7.5
 
