@@ -53,11 +53,13 @@
 
 	advanced_print_req = TRUE
 
+	harmful = FALSE
+
 
 /obj/projectile/bullet/c40sol/fragmentation
 	name = ".40 Sol Long fragmentation bullet"
-	damage = 20
-	stamina = 15
+	damage = 15
+	stamina = 30
 
 	weak_against_armour = TRUE
 
