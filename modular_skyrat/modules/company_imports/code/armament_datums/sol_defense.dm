@@ -33,7 +33,7 @@
 	cost = PAYCHECK_COMMAND * 6
 
 /datum/armament_entry/company_import/sol_defense/sidearm/takbok
-	item_type = /obj/item/gun/ballistic/revolver/sol/heavy
+	item_type = /obj/item/gun/ballistic/revolver/takbok
 	cost = PAYCHECK_COMMAND * 6
 
 // Lethal anything that's not a pistol, requires high company interest

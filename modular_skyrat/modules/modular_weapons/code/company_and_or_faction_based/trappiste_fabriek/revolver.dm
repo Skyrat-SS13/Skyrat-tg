@@ -36,10 +36,11 @@
 
 // .585 super revolver
 
-/obj/item/gun/ballistic/revolver/sol/heavy
+/obj/item/gun/ballistic/revolver/takbok
 	name = "\improper Trappiste 'Takbok' Revolver"
 	desc = "A hefty revolver with an equally large cylinder capable of holding five .585 Trappiste rounds."
 
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "takbok"
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/revolver_heavy.ogg'
@@ -49,17 +50,19 @@
 
 	suppressor_x_offset = 5
 
+	can_suppress = TRUE
+
 	fire_delay = 1 SECONDS
 	recoil = 3
 
-/obj/item/gun/ballistic/revolver/sol/heavy/examine_more(mob/user)
+/obj/item/gun/ballistic/revolver/takbok/examine_more(mob/user)
 	. = ..()
 
 	. += "The Takbok is a unique design for Trappiste for the sole reason that it \
 		was made at first to be a one-off. Founder of partner company Carwo Defense, \
 		Darmaan Khaali Carwo herself, requested a sporting revolver from Trappiste. \
 		What was delivered wasn't a target revolver, it was a target crusher. The \
-		weapon became popular was Carwo crushed many shooting competitions using \
+		weapon became popular as Carwo crushed many shooting competitions using \
 		the Takbok, with the design going on several production runs up until \
 		2523 when the popularity of the gun fell off. Due to the number of revolvers \
 		made, they are still easy enough to find if you look despite production \
