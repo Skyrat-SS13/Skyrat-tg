@@ -61,8 +61,6 @@
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/pda/security
 
-	l_hand = /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano
-
 	id_trim = /datum/id_trim/job/blueshield
 
 /datum/outfit/plasmaman/blueshield
