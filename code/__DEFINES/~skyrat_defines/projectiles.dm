@@ -17,3 +17,6 @@
 
 /// Large caliber pistol round for Sol hand cannons
 #define CALIBER_585TRAPPISTE ".585 Trappiste"
+
+/// Caliber used by the pepperball gun
+#define CALIBER_PEPPERBALL "pepperball"
