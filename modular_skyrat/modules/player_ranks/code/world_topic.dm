@@ -54,7 +54,7 @@
 
 	target_rank = capitalize(target_rank)
 
-	var/desired_rank_status = !!input["desired_rank_status"]
+	var/desired_rank_status = !!text2num(input["desired_rank_status"])
 
 	if(desired_rank_status)
 		var/result = SSplayer_ranks.add_player_to_group(linked_admin_holder, target_ckey, target_rank)
