@@ -156,8 +156,19 @@
 /// Removes given list of products. Must be called before build_inventory() to actually prevent the records from being created.
 /obj/machinery/vending/proc/remove_products(list/paths_to_remove)
 	if(!length(paths_to_remove))
-		return
+		return FALSE
+
 	for(var/typepath as anything in products)
+		for(var/to_remove as anything in paths_to_remove)
+			if(ispath(typepath, to_remove))
+				products.Remove(typepath)
+
+	for(var/typepath as anything in contraband)
+		for(var/to_remove as anything in paths_to_remove)
+			if(ispath(typepath, to_remove))
+				products.Remove(typepath)
+
+	for(var/typepath as anything in premium)
 		for(var/to_remove as anything in paths_to_remove)
 			if(ispath(typepath, to_remove))
 				products.Remove(typepath)
