@@ -61,7 +61,7 @@
 /mob/living/simple_animal/parrot/poly/proc/command_perch(mob/living/carbon/human/human_target)
 	if (!buckled)
 		buckled_to_human = FALSE
-	if(human_target.buckled_mobs?.len >= human_target.max_buckled_mobs)
+	if(LAZYLEN(human_target.buckled_mobs) >= human_target.max_buckled_mobs)
 		return
 	if(buckled_to_human)
 		manual_emote("gives [human_target] a confused look, squawking softly.")
