@@ -170,6 +170,3 @@
 	id = "torn muscle"
 /datum/status_effect/wound/muscle/severe
 	id = "ruptured tendon"
-
-/datum/actionspeed_modifier/muscle_wound
-	variable = TRUE
