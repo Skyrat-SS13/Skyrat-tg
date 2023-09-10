@@ -3,6 +3,11 @@
 */
 
 /obj/item/storage/toolbox/guncase/skyrat
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/worn/cases.dmi'
+	worn_icon_state = "darkcase"
+
+	slot_flags = ITEM_SLOT_BACK
+
 	material_flags = NONE
 
 	/// Is the case visually opened or not

@@ -81,6 +81,8 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
 	icon_state = "guncase_s"
 
+	slot_flags = NONE
+
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/toolbox/guncase/skyrat/generic_pistol_case/Initialize(mapload)
