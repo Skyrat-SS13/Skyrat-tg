@@ -383,12 +383,11 @@
 	advanced_print_req = TRUE // you are NOT printing more ammo for this without effort.
 	// then again the offstations with ammo printers and sniper rifles come with an ammo disk anyway, so
 
-/obj/item/ammo_casing/p50/soporific
-	name = ".416 Stabilis tranquilizer casing"
+/obj/item/ammo_casing/p50/disruptor
+	name = ".416 Stabilis disruptor casing"
 	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
 	<br><br>\
-	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
-	projectile_type = /obj/projectile/bullet/p50/soporific
+	<i>DISRUPTOR: Forces humanoid targets to sleep, does heavy damage against cyborgs, EMPs struck targets.</i>"
 
 /obj/item/ammo_casing/p50/penetrator
 	name = ".416 Stabilis APFSDS ++P bullet casing"
@@ -528,8 +527,11 @@
 /obj/projectile/bullet/incendiary/c46x30mm
 	name = "8mm incendiary bullet"
 
-/obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
-	name = ".416 tranquilizer"
+/obj/projectile/bullet/p50
+	name = ".416 Stabilis bullet"
+
+/obj/projectile/bullet/p50/disruptor
+	name = ".416 disruptor bullet"
 
 /obj/projectile/bullet/p50/penetrator
 	name = ".416 penetrator bullet"

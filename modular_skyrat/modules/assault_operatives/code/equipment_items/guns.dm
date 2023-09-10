@@ -238,7 +238,7 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
-	ammo_type = /obj/item/ammo_casing/p50/soporific
+	ammo_type = /obj/item/ammo_casing/p50/disruptor
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
