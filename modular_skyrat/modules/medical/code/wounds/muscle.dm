@@ -47,6 +47,7 @@
 
 	if (new_victim)
 		RegisterSignal(new_victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
+
 	return ..()
 
 /datum/wound/muscle/remove_wound(ignore_limb, replaced)
