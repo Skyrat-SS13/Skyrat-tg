@@ -1308,6 +1308,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 4
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "ano" = (
@@ -7918,7 +7919,7 @@
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "ExternalAirlockAtmosEngines"s
+	cycle_id = "ExternalAirlockAtmosEngines"
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
@@ -15389,7 +15390,8 @@
 	height = 22;
 	id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
-	width = 35
+	width = 35;
+	shuttle_id = "whiteship_home"
 	},
 /turf/open/space/openspace,
 /area/space)
@@ -29147,6 +29149,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "fcw" = (
@@ -31429,6 +31432,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "fwI" = (
@@ -32795,6 +32799,12 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
+/obj/effect/mapping_helpers/apc/cell_10k,
+/obj/machinery/power/apc/auto_name{
+	pixel_y = 25;
+	dir = 1
+	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "fKP" = (
@@ -46997,8 +47007,8 @@
 "iqB" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name{
-	dir = 1;
-	pixel_y = 23
+	pixel_y = 25;
+	dir = 1
 	},
 /obj/effect/mapping_helpers/apc/cell_10k,
 /turf/open/floor/iron,
@@ -54833,6 +54843,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "jMn" = (
@@ -61555,7 +61566,8 @@
 	id = "laborcamp_home";
 	name = "fore bay 1";
 	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
-	width = 9
+	width = 9;
+	shuttle_id = "laborcamp_home"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
@@ -63640,7 +63652,8 @@
 	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
 	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
-	width = 7
+	width = 7;
+	shuttle_id = "commonmining_home"
 	},
 /turf/open/floor/iron/airless{
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi';
@@ -64457,7 +64470,8 @@
 	height = 18;
 	id = "emergency_home";
 	name = "Blueshift emergency evac bay";
-	width = 32
+	width = 32;
+	shuttle_id = "emergency_home"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -68668,6 +68682,7 @@
 "mjr" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "mjw" = (
@@ -73817,6 +73832,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "ngJ" = (
@@ -101395,6 +101411,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 4
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "rZk" = (
@@ -107077,7 +107094,8 @@
 	height = 13;
 	id = "arrivals_stationary";
 	name = "arrivals";
-	width = 5
+	width = 5;
+	shuttle_id = "arrivals_stationary"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -107571,7 +107589,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "ExternalAirlockAtmosEngines"s
+	cycle_id = "ExternalAirlockAtmosEngines"
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
@@ -115778,6 +115796,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/abandon_holding_cell)
 "uyx" = (
+/obj/item/toy/plush/skyrat/plushie_syntax1112,
 /turf/open/floor/plating,
 /area/station/medical/pharmacy)
 "uyC" = (
@@ -119856,7 +119875,7 @@
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "ExternalAirlockAtmosEngines"s
+	cycle_id = "ExternalAirlockAtmosEngines"
 	},
 /turf/open/floor/plating,
 /area/station/engineering/atmos/hfr_room)
@@ -121160,6 +121179,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "vwt" = (
@@ -123150,6 +123170,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "vMU" = (
@@ -125405,6 +125426,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "whJ" = (
@@ -135589,6 +135611,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "xZR" = (
