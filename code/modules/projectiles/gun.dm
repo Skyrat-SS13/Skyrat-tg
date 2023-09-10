@@ -44,7 +44,7 @@
 	var/weapon_weight = WEAPON_LIGHT
 	var/dual_wield_spread = 24 //additional spread when dual wielding
 	///Can we hold up our target with this? Default to yes
-	var/can_hold_up = TRUE
+	var/can_hold_up = FALSE // SKYRAT EDIT - DISABLED ORIGINAL: TRUE
 
 	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
 	var/projectile_damage_multiplier = 1
