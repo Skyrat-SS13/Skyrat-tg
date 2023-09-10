@@ -128,7 +128,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/storage/toolbox/guncase/skyrat/trappiste_small_case/wespe,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/wespe,
 		/obj/item/grenade/c4,
 		/obj/item/grenade/smokebomb
 	)
@@ -153,7 +153,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
 		/obj/item/melee/baton/telescopic,
-		/obj/item/storage/toolbox/guncase/skyrat/trappiste_small_case/skild,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
 		/obj/item/megaphone/command
 	)
 

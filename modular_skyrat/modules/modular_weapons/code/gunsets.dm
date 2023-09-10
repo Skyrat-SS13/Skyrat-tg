@@ -3,6 +3,11 @@
 */
 
 /obj/item/storage/toolbox/guncase/skyrat
+	desc = "A thick gun case with foam inserts laid out to fit a weapon, magazines, and gear securely."
+
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
+	icon_state = "guncase"
+
 	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/worn/cases.dmi'
 	worn_icon_state = "darkcase"
 
@@ -34,3 +39,32 @@
 	. = ..()
 	opened = !opened
 	update_icon()
+
+// Empty guncase
+
+/obj/item/storage/toolbox/guncase/skyrat/empty
+
+/obj/item/storage/toolbox/guncase/skyrat/empty/PopulateContents()
+	return
+
+// Small case for pistols and whatnot
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol
+	name = "small gun case"
+
+	icon_state = "guncase_s"
+
+	slot_flags = NONE
+
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/Initialize(mapload)
+	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+
+// Empty pistol case
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/empty
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/empty/PopulateContents()
+	return

@@ -73,25 +73,9 @@
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)
 	max_ammo = 15
 
-// Pepperball Gunset
-
-/obj/item/storage/toolbox/guncase/skyrat/generic_pistol_case
-	desc = "A thick gun case with foam inserts laid out to fit a weapon, magazines, and gear securely."
-
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/gunsets.dmi'
-	icon_state = "guncase_s"
-
-	slot_flags = NONE
-
-	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/toolbox/guncase/skyrat/generic_pistol_case/Initialize(mapload)
-	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
-
 // Gunset for the pepperball pistol
 
-/obj/item/storage/toolbox/guncase/skyrat/generic_pistol_case/pepperball
+/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball
 	name = "Pepperball AHG gunset"
 
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/pepperball
