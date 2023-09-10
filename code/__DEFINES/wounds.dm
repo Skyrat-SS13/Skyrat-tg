@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 // SKYRAT EDIT ADDITION BEGIN - MUSCLE WOUNDS
 // Have to put it here so I can use it in the global list of wound series
 /// See muscle.dm
-#define WOUND_SERIES_MUSCLE_DAMAGE 10000 // We use a super high number as realistically speaking TG will never increment to this amount of wound series
+#define WOUND_SERIES_MUSCLE_DAMAGE "skyrat_wound_series_muscle_damage" // We use a super high number as realistically speaking TG will never increment to this amount of wound series
 // SKYRAT EDIT ADDITION END
 
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.

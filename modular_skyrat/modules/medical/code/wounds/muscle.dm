@@ -25,7 +25,7 @@
 
 	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
 
-	weight = 5 // quite low chance to get
+	weight = 3 // very low chance to replace a normal wound. this is about 4.5%
 
 /*
 	Overwriting of base procs
@@ -41,7 +41,7 @@
 
 	return ..()
 
-/datum/wound/set_victim(new_victim)
+/datum/wound/muscle/set_victim(new_victim)
 	if (victim)
 		UnregisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
 
@@ -122,12 +122,13 @@
 /datum/wound/muscle/moderate
 	name = "Muscle Tear"
 	desc = "Patient's muscle has torn, causing serious pain and reduced limb functionality."
-	treat_text = "Recommended rest and sleep, or splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "appears unnaturallly red and swollen"
 	occur_text = "swells up, it's skin turning red"
 	severity = WOUND_SEVERITY_MODERATE
 	interaction_efficiency_penalty = 1.5
 	limp_slowdown = 2
+	limp_chance = 30
 	threshold_penalty = 15
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
 	regen_ticks_needed = 90
@@ -146,12 +147,13 @@
 	name = "Ruptured Tendon"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
 	desc = "Patient's tendon has been severed, causing significant pain and near uselessness of limb."
-	treat_text = "Recommended rest and sleep aswell as splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "is limp and awkwardly twitching, skin swollen and red"
 	occur_text = "twists in pain and goes limp, it's tendon ruptured"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 5
+	limp_chance = 40
 	threshold_penalty = 35
 	disabling = TRUE
 	status_effect_type = /datum/status_effect/wound/muscle/severe

@@ -622,8 +622,6 @@
 	var/sound_to_play
 
 	var/datum/wound_pregen_data/pregen_data = new_wound.get_pregen_data()
-	var/wound_series = pregen_data.wound_series
-	var/wound_type = new_wound.wound_type
 	var/wound_severity = new_wound.severity
 
 	var/is_laceration = pregen_data.wounding_types_valid(list(WOUND_SLASH, WOUND_PIERCE))
