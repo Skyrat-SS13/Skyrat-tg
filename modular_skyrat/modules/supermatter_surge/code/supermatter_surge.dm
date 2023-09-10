@@ -19,6 +19,9 @@
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	description = "The supermatter will increase in power and heat by a random amount, and announce it."
+	admin_setup = list(
+		/datum/event_admin_setup/input_number/surge_spiciness,
+	)
 
 /datum/round_event/supermatter_surge
 	announce_when = 1
@@ -31,12 +34,25 @@
 	var/obj/machinery/power/supermatter_crystal/our_main_engine
 	var/datum/sm_gas/nitrogen/our_sm_gas
 
+/datum/event_admin_setup/input_number/surge_spiciness
+	input_text = "Set surge intensity. (Higher is more severe.)"
+	min_value = 1
+	max_value = 4
+
+/datum/event_admin_setup/input_number/surge_spiciness/prompt_admins()
+	default_value = rand(1, 4)
+	return ..()
+
+/datum/event_admin_setup/input_number/surge_spiciness/apply_to_event(datum/round_event/supermatter_surge/event)
+	event.surge_class = chosen_value
+
 /datum/round_event/supermatter_surge/setup()
 	our_sm_gas = LAZYACCESS(GLOB.sm_gas_behavior, /datum/gas/nitrogen)
 	our_main_engine = GLOB.main_supermatter_engine
 	starting_bullet_energy = our_main_engine.bullet_energy
 	starting_heat_modifier = our_sm_gas.heat_modifier
-	surge_class = rand(SUPERMATTER_SURGE_CLASS_LOWER, SUPERMATTER_SURGE_CLASS_UPPER)
+	if(isnull(surge_class))
+		surge_class = rand(SUPERMATTER_SURGE_CLASS_LOWER, SUPERMATTER_SURGE_CLASS_UPPER)
 	end_when = rand(SUPERMATTER_SURGE_TIME_LOWER + (surge_class * 45 EVENT_SECONDS), SUPERMATTER_SURGE_TIME_UPPER)
 
 /datum/round_event/supermatter_surge/announce() // Yes internally class 4 is the most powerful, but the players are used to 1 being most severe
@@ -44,7 +60,7 @@
 
 /datum/round_event/supermatter_surge/start()
 	our_main_engine?.bullet_energy = SUPERMATTER_SURGE_BULLET_ENERGY_ADDITION + surge_class
-	our_sm_gas?.heat_modifier += SUPERMATTER_SURGE_HEAT_MODIFIER * surge_class
+	our_sm_gas?.heat_modifier += clamp(SUPERMATTER_SURGE_HEAT_MODIFIER * surge_class, 0.5, 2)
 	our_sm_gas?.powerloss_inhibition = SUPERMATTER_SURGE_POWERLOSS_INHIBITION * surge_class
 
 /datum/round_event/supermatter_surge/end()
