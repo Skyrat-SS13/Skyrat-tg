@@ -1540,7 +1540,7 @@
 /obj/structure/table,
 /obj/item/stack/sheet/plasteel/twenty,
 /obj/item/circuitboard/aicore,
-/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/folded_navigation_gigabeacon,
 /obj/item/stack/cable_coil,
 /turf/open/floor/circuit,
 /area/shuttle/abandoned/engine)
@@ -2526,8 +2526,8 @@
 /obj/structure/alien/weeds,
 /obj/machinery/light/small/directional/east,
 /obj/item/reagent_containers/cup/soup_pot{
-	pixel_y = 13;
-	pixel_x = -9
+	pixel_x = -9;
+	pixel_y = 13
 	},
 /obj/item/reagent_containers/condiment/enzyme{
 	pixel_x = -3;
@@ -2852,7 +2852,7 @@
 /obj/effect/turf_decal/box/white/corners,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/medical,
-/obj/item/roller{
+/obj/item/emergency_bed{
 	pixel_y = 4
 	},
 /obj/item/healthanalyzer/advanced,
@@ -3089,9 +3089,9 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/gun/ballistic/rocketlauncher,
-/obj/item/ammo_casing/caseless/rocket,
-/obj/item/ammo_casing/caseless/rocket,
-/obj/item/ammo_casing/caseless/rocket,
+/obj/item/ammo_casing/rocket,
+/obj/item/ammo_casing/rocket,
+/obj/item/ammo_casing/rocket,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
 "CY" = (
@@ -3743,12 +3743,12 @@
 	callTime = 250;
 	can_move_docking_ports = 1;
 	dir = 2;
-	shuttle_id = "whiteship";
 	launch_status = 0;
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
-	name = "Salvage Ship";
+	name = "SFS Antelope";
 	port_direction = 8;
-	preferred_direction = 4
+	preferred_direction = 4;
+	shuttle_id = "whiteship"
 	},
 /turf/open/floor/plating,
 /area/shuttle/abandoned/crew)

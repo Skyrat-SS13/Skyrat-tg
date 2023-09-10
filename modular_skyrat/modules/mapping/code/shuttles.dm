@@ -198,3 +198,11 @@
 /datum/map_template/shuttle/ruin/tarkon_driver/defcon2
 	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/
+
+/*----- Blueshift Whiteship -----*/
+/datum/map_template/shuttle/whiteship/blueshift
+	suffix = "blueshift"
+	prefix = "_maps/shuttles/skyrat/"
+	name = "SFS Antelope"
+	description = "A large corvette that seems to have come under attack by some kind of alien infestation. A true asset if it's cleared out and repaired."
+/*----- End of Blueshift Whiteship -----*/
