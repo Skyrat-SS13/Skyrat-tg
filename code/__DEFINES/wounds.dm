@@ -124,6 +124,12 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 /// Generic loss wounds. See loss.dm
 #define WOUND_SERIES_LOSS_BASIC "wound_series_loss_basic"
 
+// SKYRAT EDIT ADDITION BEGIN - MUSCLE WOUNDS
+// Have to put it here so I can use it in the global list of wound series
+/// See muscle.dm
+#define WOUND_SERIES_MUSCLE_DAMAGE 10000 // We use a super high number as realistically speaking TG will never increment to this amount of wound series
+// SKYRAT EDIT ADDITION END
+
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.
 GLOBAL_LIST_INIT_TYPED(all_wound_pregen_data, /datum/wound_pregen_data, generate_wound_static_data())
 
@@ -195,16 +201,19 @@ GLOBAL_LIST_INIT(wound_series_collections, generate_wound_series_collection())
 /// Allows for determining of which wound series are caused by what.
 GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_BLUNT = list(
-		WOUND_SERIES_BONE_BLUNT_BASIC
+		WOUND_SERIES_BONE_BLUNT_BASIC,
+		WOUND_SERIES_MUSCLE_DAMAGE // SKYRAT EDIT -- MUSCLE WOUNDS
 	),
 	WOUND_SLASH = list(
 		WOUND_SERIES_FLESH_SLASH_BLEED,
+		WOUND_SERIES_MUSCLE_DAMAGE // SKYRAT EDIT -- MUSCLE WOUNDS
 	),
 	WOUND_BURN = list(
 		WOUND_SERIES_FLESH_BURN_BASIC,
 	),
 	WOUND_PUNCTURE = list(
-		WOUND_SERIES_FLESH_PUNCTURE_BLEED
+		WOUND_SERIES_FLESH_PUNCTURE_BLEED,
+		WOUND_SERIES_MUSCLE_DAMAGE // SKYRAT EDIT -- MUSCLE WOUNDS
 	),
 ))
 
@@ -321,11 +330,8 @@ GLOBAL_LIST_INIT(biotypes_to_scar_file, list(
 #define MANGLES_INTERIOR (1<<1)
 /// If this wound marks the limb as being allowed to have gauze applied
 #define ACCEPTS_GAUZE (1<<2)
-<<<<<<< HEAD
-=======
 /// If this wound allows the victim to grasp it
 #define CAN_BE_GRASPED (1<<3)
->>>>>>> 009af8c2ce5 ([TEST-MERGE FIRST] Wound refactor number two: Full synthetic support (#78124))
 
 // ~scar persistence defines
 // The following are the order placements for persistent scar save formats
