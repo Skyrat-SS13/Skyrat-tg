@@ -64,10 +64,6 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "aslyum"
 
-/area/station/medical/chemistry/eva //Ringworm addition
-	name = "EVA Chemistry"
-	has_gravity = FALSE
-
 // Cargo areas
 /area/station/cargo/breakroom
 	name = "Cargo Break Room"
