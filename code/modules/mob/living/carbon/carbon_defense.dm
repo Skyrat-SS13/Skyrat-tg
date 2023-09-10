@@ -788,12 +788,8 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-<<<<<<< HEAD
 	/*
-	if(!grasped_part?.get_modified_bleed_rate())
-=======
 	if(!grasped_part?.can_be_grasped())
->>>>>>> 009af8c2ce5 ([TEST-MERGE FIRST] Wound refactor number two: Full synthetic support (#78124))
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)

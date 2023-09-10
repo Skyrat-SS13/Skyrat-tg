@@ -329,11 +329,7 @@
 	brain_trauma_group = BRAIN_TRAUMA_MILD
 	trauma_cycle_cooldown = 1.5 MINUTES
 	internal_bleeding_chance = 40
-<<<<<<< HEAD
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_BONE | SPLINT_OVERLAY) // SKYRAT EDIT - MEDICAL (SPLINT_OVERLAY)
-=======
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_INTERIOR)
->>>>>>> 009af8c2ce5 ([TEST-MERGE FIRST] Wound refactor number two: Full synthetic support (#78124))
+	wound_flags = (ACCEPTS_GAUZE | MANGLES_INTERIOR | SPLINT_OVERLAY) // SKYRAT EDIT - MEDICAL (SPLINT_OVERLAY)
 	regen_ticks_needed = 120 // ticks every 2 seconds, 240 seconds, so roughly 4 minutes default
 
 /datum/wound_pregen_data/bone/hairline
@@ -364,11 +360,7 @@
 	brain_trauma_group = BRAIN_TRAUMA_SEVERE
 	trauma_cycle_cooldown = 2.5 MINUTES
 	internal_bleeding_chance = 60
-<<<<<<< HEAD
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_BONE | SPLINT_OVERLAY) // SKYRAT EDIT - MEDICAL (SPLINT_OVERLAY)
-=======
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_INTERIOR)
->>>>>>> 009af8c2ce5 ([TEST-MERGE FIRST] Wound refactor number two: Full synthetic support (#78124))
+	wound_flags = (ACCEPTS_GAUZE | MANGLES_INTERIOR | SPLINT_OVERLAY) // SKYRAT EDIT - MEDICAL (SPLINT_OVERLAY)
 	regen_ticks_needed = 240 // ticks every 2 seconds, 480 seconds, so roughly 8 minutes default
 
 /datum/wound_pregen_data/bone/compound
