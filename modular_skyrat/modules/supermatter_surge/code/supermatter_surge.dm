@@ -36,8 +36,7 @@
 	our_main_engine = GLOB.main_supermatter_engine
 	starting_bullet_energy = our_main_engine.bullet_energy
 	starting_heat_modifier = our_sm_gas.heat_modifier
-	//surge_class = rand(SUPERMATTER_SURGE_CLASS_LOWER, SUPERMATTER_SURGE_CLASS_UPPER)
-	surge_class = 4
+	surge_class = rand(SUPERMATTER_SURGE_CLASS_LOWER, SUPERMATTER_SURGE_CLASS_UPPER)
 	end_when = rand(SUPERMATTER_SURGE_TIME_LOWER + (surge_class * 45 EVENT_SECONDS), SUPERMATTER_SURGE_TIME_UPPER)
 
 /datum/round_event/supermatter_surge/announce() // Yes internally class 4 is the most powerful, but the players are used to 1 being most severe
