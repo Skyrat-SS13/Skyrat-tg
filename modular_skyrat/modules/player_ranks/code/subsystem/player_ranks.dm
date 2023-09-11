@@ -46,15 +46,17 @@ SUBSYSTEM_DEF(player_ranks)
  *
  * Arguments:
  * * user - The client to verify the donator status of.
+ * * admin_bypass - Whether or not admins can succeed this check, even if they
+ * do not actually possess the role. Defaults to `TRUE`.
  */
-/datum/controller/subsystem/player_ranks/proc/is_donator(client/user)
+/datum/controller/subsystem/player_ranks/proc/is_donator(client/user, admin_bypass = TRUE)
 	if(!istype(user))
 		CRASH("Invalid user type provided to is_donator(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	if(GLOB.donator_list[user.ckey])
 		return TRUE
 
-	if(is_admin(user))
+	if(admin_bypass && is_admin(user))
 		return TRUE
 
 	return FALSE
@@ -66,12 +68,14 @@ SUBSYSTEM_DEF(player_ranks)
  *
  * Arguments:
  * * user - The client to verify the mentor status of.
+ * * admin_bypass - Whether or not admins can succeed this check, even if they
+ * do not actually possess the role. Defaults to `TRUE`.
  */
-/datum/controller/subsystem/player_ranks/proc/is_mentor(client/user)
+/datum/controller/subsystem/player_ranks/proc/is_mentor(client/user, admin_bypass = TRUE)
 	if(!istype(user))
 		CRASH("Invalid user type provided to is_mentor(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
-	return user.is_mentor()
+	return user.is_mentor(admin_bypass)
 
 
 /**
@@ -79,15 +83,17 @@ SUBSYSTEM_DEF(player_ranks)
  *
  * Arguments:
  * * user - The client to verify the veteran status of.
+ * * admin_bypass - Whether or not admins can succeed this check, even if they
+ * do not actually possess the role. Defaults to `TRUE`.
  */
-/datum/controller/subsystem/player_ranks/proc/is_veteran(client/user)
+/datum/controller/subsystem/player_ranks/proc/is_veteran(client/user, admin_bypass = TRUE)
 	if(!istype(user))
 		CRASH("Invalid user type provided to is_veteran(), expected 'client' and obtained '[user ? user.type : "null"]'.")
 
 	if(GLOB.veteran_list[user.ckey])
 		return TRUE
 
-	if(is_admin(user))
+	if(admin_bypass && is_admin(user))
 		return TRUE
 
 	return FALSE
