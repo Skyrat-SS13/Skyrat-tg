@@ -21,7 +21,7 @@
 		"taur" = "None"
 	)
 	external_organs = list()
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/xenohybrid,

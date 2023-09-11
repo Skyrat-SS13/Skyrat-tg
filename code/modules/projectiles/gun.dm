@@ -44,7 +44,7 @@
 	var/weapon_weight = WEAPON_LIGHT
 	var/dual_wield_spread = 24 //additional spread when dual wielding
 	///Can we hold up our target with this? Default to yes
-	var/can_hold_up = TRUE
+	var/can_hold_up = FALSE // SKYRAT EDIT - DISABLED ORIGINAL: TRUE
 
 	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
 	var/projectile_damage_multiplier = 1
@@ -111,22 +111,19 @@
 /obj/item/gun/proc/add_seclight_point()
 	return
 
-/obj/item/gun/handle_atom_del(atom/A)
-	if(A == pin)
+/obj/item/gun/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == pin)
 		pin = null
-	if(A == chambered)
+	if(gone == chambered)
 		chambered = null
 		update_appearance()
-	if(A == suppressed)
+	if(gone == suppressed)
 		clear_suppressor()
-	return ..()
-
-/obj/item/gun/Exited(atom/movable/gone, direction)
 	if(gone == bayonet)
 		bayonet = null
 		if(!QDELING(src))
 			update_appearance()
-	return ..()
 
 ///Clears var and updates icon. In the case of ballistic weapons, also updates the gun's weight.
 /obj/item/gun/proc/clear_suppressor()

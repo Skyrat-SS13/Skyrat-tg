@@ -705,11 +705,7 @@
 
 		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 		if(body_part.current_gauze)
-			var/datum/bodypart_aid/current_gauze = body_part.current_gauze
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.")]"
-		if(body_part.current_splint)
-			var/datum/bodypart_aid/current_splint = body_part.current_splint
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
+			combined_msg += "\t [span_notice("Your [body_part.name] is [body_part.current_gauze.get_gauze_usage_prefix()] with <a href='?src=[REF(body_part.current_gauze)];remove=1'>[body_part.current_gauze.get_gauze_description()]</a>.")]"
 		//SKYRAT EDIT END
 
 	for(var/t in missing)

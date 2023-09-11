@@ -88,6 +88,15 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 		if(EXODRONE_IDLE)
 			return "Idle."
 
+// Searches for blacklisted items hidden inside containers
+/obj/item/exodrone/proc/check_blacklist()
+	for(var/obj/item/contained_item in contents)
+		if(contained_item.contents)
+			for(var/subcontained_object in contained_item.get_all_contents())
+				if(is_type_in_typecache(subcontained_object, GLOB.blacklisted_cargo_types))
+					return FALSE
+	return TRUE
+
 /// Starts travel for site, does not validate if it's possible
 /obj/item/exodrone/proc/launch_for(datum/exploration_site/target_site)
 	if(!location) //We're launching from station, fuel up
@@ -418,8 +427,9 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 	playsound(src,'sound/effects/podwoosh.ogg',50, FALSE)
 	do_smoke(1, holder = src, location = get_turf(src))
 
-/obj/machinery/exodrone_launcher/handle_atom_del(atom/A)
-	if(A == fuel_canister)
+/obj/machinery/exodrone_launcher/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == fuel_canister)
 		fuel_canister = null
 		update_icon()
 

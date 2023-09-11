@@ -151,6 +151,8 @@
 #define ANNOUNCER_NRI_RAIDERS "announcer_nri_raiders"
 #define ANNOUNCER_OUTBREAK6 "announcer_outbreak6"
 #define ANNOUNCER_FUNGI "announcer_fungi"
+#define ANNOUNCER_DEPARTMENTAL "announcer_departmental"
+#define ANNOUNCER_SHUTTLE "announcer_shuttle"
 //SKYRAT EDIT END
 
 

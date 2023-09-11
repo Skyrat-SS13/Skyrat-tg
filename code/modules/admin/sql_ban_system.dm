@@ -3,61 +3,96 @@
 
 #define MAX_REASON_LENGTH 600
 
-//checks client ban cache or DB ban table if ckey is banned from one or more roles
-//doesn't return any details, use only for if statements
-/proc/is_banned_from(player_ckey, list/roles)
-	if(!player_ckey)
-		return
+/**
+ * Checks client ban cache or, if it doesn't exist, queries the DB ban table to see if the player's
+ * ckey is banned from at least one of the provided roles.
+ *
+ * Returns TRUE if the player matches with one or more role bans.
+ * Returns FALSE if the player doesn't match with any role bans. Possible errors states also return FALSE.
+ *
+ * Args:
+ * * player_key - Either key or ckey of the player you want to check for role bans.
+ * * roles - Accepts either a single role string, or a list of role strings.
+ */
+/proc/is_banned_from(player_key, list/roles)
+	if(!player_key)
+		stack_trace("Called is_banned_from without specifying a ckey.")
+		return FALSE
+
+	// Convert to ckey. This allows is_banned_from to take either key or ckey interchangably,
+	// and is officially a feature of the proc.
+	var/player_ckey = ckey(player_key)
+
 	var/client/player_client = GLOB.directory[player_ckey]
+
+	// If there's a player client, we try to set up their ban cache (if it doesn't already exist) and test from that.
 	if(player_client)
 		var/list/ban_cache = retrieve_ban_cache(player_client)
+
+		// If this isn't a list, the client disconnected while building it.
 		if(!islist(ban_cache))
-			return // Disconnected while building the list.
+			return FALSE
+
+		// If it is a list, check each role.
 		if(islist(roles))
 			for(var/role in roles)
 				if(role in ban_cache)
 					return TRUE //they're banned from at least one role, no need to keep checking
-		else if(roles in ban_cache)
-			return TRUE
+
+			return FALSE
+
+		// Otherwise, it's just a single role string. Return if it's in the ban cache.
+		return (roles in ban_cache)
+
+	// If there's no player client, we'll ask the database.
+	var/values = list(
+		"player_ckey" = player_ckey,
+		"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
+	)
+	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/ssqlname = CONFIG_GET(string/serversqlname)
+	var/server_check
+	if(CONFIG_GET(flag/respect_global_bans))
+		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
 	else
-		var/values = list(
-			"player_ckey" = player_ckey,
-			"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
-		)
-		var/ssqlname = CONFIG_GET(string/serversqlname)  // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
-		var/server_check
-		if(CONFIG_GET(flag/respect_global_bans))
-			server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
-		else
-			server_check = "server_name = '[ssqlname]'" // SKYRAT EDIT ADDITION END - MULTISERVER
-		var/sql_roles
-		if(islist(roles))
-			var/list/sql_roles_list = list()
-			for (var/i in 1 to roles.len)
-				values["role[i]"] = roles[i]
-				sql_roles_list += ":role[i]"
-			sql_roles = sql_roles_list.Join(", ")
-		else
-			values["role"] = roles
-			sql_roles = ":role"
-		var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
-			SELECT 1
-			FROM [format_table_name("ban")]
-			WHERE
-				ckey = :player_ckey AND
-				role IN ([sql_roles]) AND
-				unbanned_datetime IS NULL AND
-				(expiration_time IS NULL OR expiration_time > NOW())
-				AND [server_check]
-				AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
-		"}, values)
-		if(!query_check_ban.warn_execute())
-			qdel(query_check_ban)
-			return
-		if(query_check_ban.NextRow())
-			qdel(query_check_ban)
-			return TRUE
+		server_check = "server_name = '[ssqlname]'"
+	// SKYRAT EDIT ADDITION END - MULTISERVER
+	var/sql_roles
+	if(islist(roles))
+		var/list/sql_roles_list = list()
+		for (var/i in 1 to roles.len)
+			values["role[i]"] = roles[i]
+			sql_roles_list += ":role[i]"
+		sql_roles = sql_roles_list.Join(", ")
+	else
+		values["role"] = roles
+		sql_roles = ":role"
+
+	var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
+		SELECT 1
+		FROM [format_table_name("ban")]
+		WHERE
+			ckey = :player_ckey AND
+			role IN ([sql_roles]) AND
+			unbanned_datetime IS NULL AND
+			(expiration_time IS NULL OR expiration_time > NOW())
+			AND [server_check]
+			AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
+	"}, values)
+
+	// If there's an SQL error, return FALSE.
+	if(!query_check_ban.warn_execute())
 		qdel(query_check_ban)
+		return FALSE
+
+	// If there are any rows, we got a match and they're role banned from at least one role.
+	if(query_check_ban.NextRow())
+		qdel(query_check_ban)
+		return TRUE
+
+	// Otherwise, they're not banned from any roles in the DB.
+	qdel(query_check_ban)
+	return FALSE
 
 //checks DB ban table if a ckey, ip and/or cid is banned from a specific role
 //returns an associative nested list of each matching row's ban id, bantime, ban round id, expiration time, ban duration, applies to admins, reason, key, ip, cid and banning admin's key in that order
@@ -141,12 +176,14 @@
 	var/is_admin = FALSE
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		is_admin = TRUE
-	var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	// SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/ssqlname = CONFIG_GET(string/serversqlname)
 	var/server_check
 	if(CONFIG_GET(flag/respect_global_bans))
 		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
 	else
-		server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
+		server_check = "server_name = '[ssqlname]'"
+	// SKYRAT EDIT ADDITION END - MULTISERVER
 	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
 		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW()) AND [server_check]", //skyrat edit
 		list("ckey" = ckey)
@@ -658,12 +695,12 @@
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
-	//SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
+	// SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
 	if(BAN_PACIFICATION in roles_to_ban)
 		var/client/C = GLOB.directory[player_ckey]
 		if(ismob(C.mob))
 			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
-	//SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
 
 	//var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]") // SKYRAT EDIT ORIGINAL
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]", FALSE) // SKYRAT EDIT --  Player ticket viewing
@@ -962,7 +999,7 @@
 		"ip" = player_ip || null,
 		"cid" = player_cid || null,
 		"change_message" = change_message,
-		"global_ban" = global_ban //SKYRAT EDIT ADDITION - MULTISERVER
+		"global_ban" = global_ban // SKYRAT EDIT ADDITION - MULTISERVER
 	)
 	var/where
 	if(text2num(mirror_edit))

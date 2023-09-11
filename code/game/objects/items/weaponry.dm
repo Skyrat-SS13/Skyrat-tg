@@ -420,6 +420,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	/// Whether the switchblade starts extended or not.
 	var/start_extended = FALSE
 
+/obj/item/switchblade/get_all_tool_behaviours()
+	return list(TOOL_KNIFE)
+
 /obj/item/switchblade/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -832,8 +835,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	inhand_icon_state = "baseball_bat_metal"
 	custom_materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 3.5)
 	resistance_flags = NONE
-	force = 12
-	throwforce = 15
+	force = 20
+	throwforce = 20
 	mob_thrower = TRUE
 	block_sound = 'sound/weapons/effects/batreflect.ogg'
 
