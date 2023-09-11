@@ -49,7 +49,7 @@
 
 /obj/item/gun/ballistic/shotgun/riot/sol/update_appearance(updates)
 	if(sawn_off)
-		suppressor_x_offset = -6
+		suppressor_x_offset = 0
 
 	. = ..()
 
