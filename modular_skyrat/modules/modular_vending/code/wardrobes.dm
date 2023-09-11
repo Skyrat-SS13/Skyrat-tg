@@ -63,6 +63,7 @@
 		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/syringe = 2,
 		/obj/item/bonesetter = 2, // for dislocations
+		/obj/item/stack/medical/gauze = 4, // for ALL wounds
 		/obj/item/healthanalyzer/no_medibot = 4, // disallows medibot use so its not wasted immediately on medibots
 		/obj/item/storage/backpack/science/robo = 2,
 		/obj/item/storage/backpack/satchel/science/robo = 2,
