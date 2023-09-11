@@ -3063,7 +3063,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/maintenance/port)
 "aVv" = (
-/obj/structure/bed/roller,
 /obj/machinery/iv_drip,
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/plating,
@@ -7948,7 +7947,7 @@
 /obj/item/radio/intercom{
 	pixel_x = 28
 	},
-/obj/structure/bed/roller,
+/obj/structure/bed/medical,
 /turf/open/floor/iron/freezer,
 /area/station/medical/patients_rooms)
 "cLG" = (
@@ -18671,7 +18670,6 @@
 /obj/structure/rack,
 /obj/item/crowbar,
 /obj/item/storage/pill_bottle,
-/obj/item/roller,
 /obj/item/clothing/glasses/eyepatch,
 /obj/item/wrench,
 /obj/machinery/airalarm/directional/north{
@@ -22397,10 +22395,6 @@
 /obj/item/clothing/head/fedora{
 	pixel_x = -6
 	},
-/obj/item/clothing/suit/costume/nerdshirt{
-	pixel_x = 7;
-	pixel_y = -5
-	},
 /turf/open/floor/iron/checker,
 /area/station/maintenance/port/central)
 "hAO" = (
@@ -22513,7 +22507,6 @@
 /area/station/engineering/atmos)
 "hDD" = (
 /obj/structure/closet/secure_closet/hop,
-/obj/item/clothing/suit/costume/ianshirt,
 /obj/item/bedsheet/ian,
 /obj/item/radio/intercom{
 	pixel_x = -28
@@ -25766,7 +25759,6 @@
 /obj/structure/table/reinforced,
 /obj/item/computer_disk/engineering,
 /obj/item/computer_disk/engineering,
-/obj/item/computer_disk/atmos,
 /obj/item/folder,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
@@ -28619,6 +28611,7 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},
+/obj/structure/bed/medical,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "jIj" = (
@@ -32929,8 +32922,6 @@
 /turf/open/floor/iron/checker,
 /area/station/maintenance/port/central)
 "lfJ" = (
-/obj/structure/bed/roller,
-/obj/structure/bed/roller,
 /obj/item/radio/intercom{
 	pixel_x = 28
 	},
@@ -36380,6 +36371,9 @@
 /obj/effect/turf_decal/tile/neutral/opposingcorners{
 	dir = 1
 	},
+/obj/machinery/modular_computer/preset/engineering{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/storage/gas)
 "mmV" = (
@@ -39188,6 +39182,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
+"njT" = (
+/obj/structure/bed/medical,
+/turf/closed/wall,
+/area/station/medical/pharmacy)
 "nkn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -39741,7 +39739,7 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = 32
 	},
-/obj/structure/bed/roller,
+/obj/structure/bed/medical,
 /turf/open/floor/iron/freezer,
 /area/station/medical/patients_rooms)
 "ntV" = (
@@ -45998,7 +45996,7 @@
 /obj/machinery/iv_drip,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
-/obj/structure/bed/roller,
+/obj/structure/bed/medical,
 /turf/open/floor/iron/freezer,
 /area/station/medical/patients_rooms)
 "pEy" = (
@@ -46726,8 +46724,6 @@
 	pixel_y = -27;
 	use_power = 0
 	},
-/obj/structure/bed/roller,
-/obj/structure/bed/roller,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 8
 	},
@@ -47971,11 +47967,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "qit" = (
-/obj/structure/bed/roller,
 /obj/machinery/iv_drip,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/structure/bed/medical,
 /turf/open/floor/iron/freezer,
 /area/station/medical/patients_rooms)
 "qiB" = (
@@ -52520,7 +52516,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/backpack/duffelbag/med,
 /obj/item/flashlight/pen,
-/obj/item/roller,
 /obj/item/crowbar,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
@@ -54928,6 +54923,15 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"ssi" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "chemistbot";
+	name = "Chemistry Side Shutters"
+	},
+/obj/structure/bed/medical,
+/turf/open/floor/plating,
+/area/station/medical/pharmacy)
 "ssm" = (
 /obj/structure/bookcase/random/nonfiction,
 /obj/effect/turf_decal/siding/wood{
@@ -59605,8 +59609,8 @@
 	},
 /area/station/command/teleporter)
 "tTz" = (
-/obj/structure/bed/roller,
 /obj/machinery/iv_drip,
+/obj/structure/bed/medical,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "tTE" = (
@@ -65665,7 +65669,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Science - Fore hallway";
-	dir = 5;
+	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
 	},
@@ -103073,8 +103077,8 @@ kXx
 bqt
 mUN
 vbH
-maD
-bqt
+ssi
+njT
 sjx
 nOV
 vtj
@@ -103331,7 +103335,7 @@ pyN
 ocU
 mwm
 cQB
-bqt
+njT
 nGk
 nOV
 kME
