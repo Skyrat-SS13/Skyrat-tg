@@ -1055,6 +1055,16 @@ digi
 /datum/greyscale_config/wraps/worn/digi
 	name = "Cloth Wraps (Worn, Digi)"
 
+/datum/greyscale_config/arm_wraps
+	name = "Cloth Arm Wraps"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/arm_wraps/arm_wraps.json'
+
+/datum/greyscale_config/arm_wraps/worn
+	name = "Cloth Arm Wraps (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/arm_wraps/arm_wraps_worn.json'
+
 // MISC SHOES
 
 /datum/greyscale_config/heels
