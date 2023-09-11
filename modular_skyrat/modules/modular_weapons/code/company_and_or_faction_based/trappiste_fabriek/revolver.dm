@@ -57,6 +57,9 @@
 	fire_delay = 1 SECONDS
 	recoil = 3
 
+/obj/item/gun/ballistic/revolver/takbok/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_TRAPPISTE)
+
 /obj/item/gun/ballistic/revolver/takbok/examine_more(mob/user)
 	. = ..()
 
