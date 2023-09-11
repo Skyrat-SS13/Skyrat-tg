@@ -64,7 +64,7 @@
 
 /datum/bounty/item/medical/tongue
 	name = "Tongues"
-	description = "A recent attack by Mime extremists has left staff at Station 23 speechless. Ship some spare tongues."
+	description = "A recent attack by Mime extremists has left staff at Station 23 speechless. Ship some spare tongues. We'll accept cybernetic variants if need be."
 	reward = CARGO_CRATE_VALUE * 10
 	required_count = 3
 	wanted_types = list(/obj/item/organ/internal/tongue = TRUE)
