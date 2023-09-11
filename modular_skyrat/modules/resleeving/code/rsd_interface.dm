@@ -1,8 +1,11 @@
 /obj/item/rsd_interface
-	name = "RSD brain interface"
-	desc = "A small device that when inserted to an inert brain, allows the brain to recieve souls from an RSD Soulcatcher."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
-	icon_state = "partskit" //Make something better later
+	name = "RSD Phylactery"
+	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum' RSDs, much like the brains and CPUs they emulate, employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers.."
+	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
+	icon_state = "implanter0"
+	inhand_icon_state = "syringe_0"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 
 /// Attempts to use the item on the target brain.
 /obj/item/rsd_interface/afterattack(obj/item/organ/internal/brain/target_brain, mob/user, proximity_flag, click_parameters)

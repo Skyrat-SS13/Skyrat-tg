@@ -1,6 +1,6 @@
 /datum/design/rsd_interface
-	name = "RSD brain interface"
-	desc = "A brain interface that allows for transfer of souls from a handheld soulcatcher."
+	name = "RSD Phylactery"
+	desc = "A brain interface that allows for transfer of Resonance from a handheld RSD, such as the Evoker model."
 	id = "rsd_interface"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
