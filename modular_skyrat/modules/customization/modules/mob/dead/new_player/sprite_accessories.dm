@@ -655,6 +655,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	gender = FEMALE
 	use_static = null
 
+/datum/sprite_accessory/undershirt/hi_vis_bra
+	name = "Safekini"
+	icon_state = "hi_vis_bra"
+	gender = FEMALE
+	use_static = TRUE
+
 /datum/sprite_accessory/undershirt/bra_alt
 	name = "Bra - Alt"
 	icon_state = "bra_alt"
