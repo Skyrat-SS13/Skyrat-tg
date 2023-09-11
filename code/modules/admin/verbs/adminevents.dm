@@ -224,7 +224,7 @@
 	SSshuttle.admin_emergency_no_recall = TRUE
 	SSshuttle.emergency.setTimer(0)
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
-	priority_announce("Warning: Emergency Shuttle uplink failure, shuttle disabled until further notice.", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+	priority_announce("Warning: Emergency Shuttle uplink failure, shuttle disabled until further notice.", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
 
 /client/proc/admin_enable_shuttle()
 	set category = "Admin.Events"
@@ -250,7 +250,7 @@
 	if(SSshuttle.last_call_time < 10 SECONDS && SSshuttle.last_mode != SHUTTLE_IDLE)
 		SSshuttle.last_call_time = 10 SECONDS //Make sure no insta departures.
 	SSshuttle.emergency.setTimer(SSshuttle.last_call_time)
-	priority_announce("Warning: Emergency Shuttle uplink reestablished, shuttle enabled.", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+	priority_announce("Warning: Emergency Shuttle uplink reestablished, shuttle enabled.", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
 
 /client/proc/admin_hostile_environment()
 	set category = "Admin.Events"
@@ -352,13 +352,17 @@
 
 	var/mob/living/marked_mob = holder.marked_datum
 
-	var/list/all_mob_actions = sort_list(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/static/list/all_mob_actions = sort_list(subtypesof(/datum/action/cooldown/mob_cooldown), GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/static/list/actions_by_name = list()
+	if (!length(actions_by_name))
+		for (var/datum/action/cooldown/mob_cooldown as anything in all_mob_actions)
+			actions_by_name["[initial(mob_cooldown.name)] ([mob_cooldown])"] = mob_cooldown
 
-	var/ability_type = tgui_input_list(usr, "Choose an ability", "Ability", all_mob_actions)
-
-	if(!ability_type)
+	var/ability = tgui_input_list(usr, "Choose an ability", "Ability", actions_by_name)
+	if(isnull(ability))
 		return
 
+	var/ability_type = actions_by_name[ability]
 	var/datum/action/cooldown/mob_cooldown/add_ability
 
 	var/make_sequence = tgui_alert(usr, "Would you like this action to be a sequence of multiple abilities?", "Sequence Ability", list("Yes", "No"))

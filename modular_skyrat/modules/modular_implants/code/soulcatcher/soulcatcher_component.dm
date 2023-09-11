@@ -230,7 +230,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	current_souls -= soul_to_remove
 	soul_to_remove.current_room = null
+
+	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
+
 	return TRUE
 
 /// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
@@ -246,7 +249,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	current_souls -= target_soul
 	target_room.current_souls += target_soul
 
-	to_chat(target_soul, span_cyan("you've been transfered to [target_room]!"))
+	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE

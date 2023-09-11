@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/obj/item/swapper,
 		/obj/docking_port,
 		/obj/machinery/launchpad,
+		/obj/machinery/exodrone_launcher,
 		/obj/machinery/disposal,
 		/obj/structure/disposalpipe,
 		/obj/item/mail,
@@ -186,12 +187,22 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		if(buying_account_orders.len > GOODY_FREE_SHIPPING_MAX) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
 			our_crate.buyer_account = buying_account
+			/// SKYRAT EDIT ADDITION START - FIXES COMMAND BUDGET CASES BEING UNOPENABLE
+			if(istype(our_crate.buyer_account, /datum/bank_account/department))
+				our_crate.department_purchase = TRUE
+				our_crate.department_account = our_crate.buyer_account
+			/// SKYRAT EDIT ADDITION END
 			our_crate.name = "goody crate - purchased by [buyer]"
 			miscboxes[buyer] = our_crate
 		else //free shipping in a case
 			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
 			var/obj/item/storage/lockbox/order/our_case = miscboxes[buyer]
 			our_case.buyer_account = buying_account
+			/// SKYRAT EDIT ADDITION START - FIXES COMMAND BUDGET CASES BEING UNOPENABLE
+			if(istype(our_case.buyer_account, /datum/bank_account/department))
+				our_case.department_purchase = TRUE
+				our_case.department_account = our_case.buyer_account
+			/// SKYRAT EDIT ADDITION END
 			miscboxes[buyer].name = "goody case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 
@@ -200,38 +211,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				misc_contents[buyer] += item
 			misc_costs[buyer] += our_order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id] "
-	//SKYRAT EDIT START
-	for(var/briefcase_order in forced_briefcases)
-		var/list/buying_account_orders = forced_briefcases[briefcase_order]
-		var/datum/bank_account/buying_account = briefcase_order
-		var/buyer = buying_account.account_holder
-		var/buying_acc_order_num = length(buying_account_orders)
-		for(var/datum/supply_order/company_import/the_order in buying_account_orders)
-			if(!the_order.item_amount || (the_order.item_amount == 1))
-				continue
-			buying_acc_order_num += the_order.item_amount - 1
-
-		if(buying_acc_order_num > 2) // no free shipping, send a crate
-			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
-			our_crate.buyer_account = buying_account
-			our_crate.name = "special import crate - purchased by [buyer]"
-			miscboxes[buyer] = our_crate
-		else //free shipping in a case
-			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
-			var/obj/item/storage/lockbox/order/our_case = miscboxes[buyer]
-			our_case.buyer_account = buying_account
-			if(istype(our_case.buyer_account, /datum/bank_account/department))
-				our_case.department_purchase = TRUE
-				our_case.department_account = our_case.buyer_account
-			miscboxes[buyer].name = "special import case - purchased by [buyer]"
-		misc_contents[buyer] = list()
-
-		for(var/datum/supply_order/order in buying_account_orders)
-			for (var/item in order.pack.contains)
-				misc_contents[buyer] += item
-			misc_costs[buyer] += order.pack.cost
-			misc_order_num[buyer] = "[misc_order_num[buyer]]#[order.id]  "
-	//SKYRAT EDIT END
 
 	for(var/miscbox in miscboxes)
 		var/datum/supply_order/order = new/datum/supply_order()

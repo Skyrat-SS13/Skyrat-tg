@@ -1,4 +1,3 @@
-
 /**
  * # Vote Singleton
  *

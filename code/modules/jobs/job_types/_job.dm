@@ -288,6 +288,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
+	var/messenger = /obj/item/storage/backpack/messenger
 
 	var/pda_slot = ITEM_SLOT_BELT
 
@@ -302,10 +303,16 @@
 				back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
 			if(LSATCHEL)
 				back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
+			if(GMESSENGER)
+				back = /obj/item/storage/backpack/messenger //Grey messenger bag
 			if(DSATCHEL)
 				back = satchel //Department satchel
+			if(DMESSENGER)
+				back = messenger //SKYRAT EDIT - Messenger Bags
 			if(DDUFFELBAG)
 				back = duffelbag //Department duffel bag
+			if(DMESSENGER)
+				back = messenger //Department messenger bag
 			else
 				back = backpack //Department backpack
 
@@ -356,8 +363,7 @@
 	var/obj/item/modular_computer/pda/pda = equipped.get_item_by_slot(pda_slot)
 
 	if(istype(pda))
-		pda.saved_identification = equipped.real_name
-		pda.saved_job = equipped_job.title
+		pda.imprint_id(equipped.real_name, equipped_job.title)
 		pda.update_ringtone(equipped_job.job_tone)
 		pda.UpdateDisplay()
 

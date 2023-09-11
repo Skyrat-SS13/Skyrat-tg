@@ -74,8 +74,8 @@
 		return FALSE
 	if(!mob?.loc)
 		return FALSE
-	if(mob.notransform)
-		return FALSE //This is sota the goto stop mobs from moving var
+	if(HAS_TRAIT(mob, TRAIT_NO_TRANSFORM))
+		return FALSE //This is sorta the goto stop mobs from moving trait
 	if(mob.control_object)
 		return Move_object(direct)
 	if(!isliving(mob))
@@ -85,13 +85,6 @@
 		return FALSE
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, new_loc, direct) & COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE)
 		return FALSE
-	//SKYRAT EDIT ADDITION BEGIN - PIXEL_SHIFT
-	if(mob.shifting)
-		mob.pixel_shift(direct)
-		return FALSE
-	else if(mob.is_shifted)
-		mob.unpixel_shift()
-	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob //Already checked for isliving earlier
 	if(L.incorporeal_move && !is_secret_level(mob.z)) //Move though walls
@@ -503,28 +496,30 @@
 	set name = "toggle-walk-run"
 	set hidden = TRUE
 	set instant = TRUE
-	if(mob)
-		mob.toggle_move_intent(usr)
+	if(isliving(mob))
+		var/mob/living/user_mob = mob
+		user_mob.toggle_move_intent(usr)
 
 /**
  * Toggle the move intent of the mob
  *
  * triggers an update the move intent hud as well
  */
-/mob/proc/toggle_move_intent(mob/user)
-	if(m_intent == MOVE_INTENT_RUN)
-		m_intent = MOVE_INTENT_WALK
+/mob/living/proc/toggle_move_intent(mob/user)
+	if(move_intent == MOVE_INTENT_RUN)
+		move_intent = MOVE_INTENT_WALK
 	else
 		//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 		if (HAS_TRAIT(src,TRAIT_NORUNNING))
 			to_chat(src, "You find yourself unable to run.")
 			return FALSE
 		//SKYRAT EDIT ADDITION END
-		m_intent = MOVE_INTENT_RUN
-	SET_PLANE_IMPLICIT(src, (m_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE) //SKYRAT EDIT ADDITION - Oversized Overhaul
+		move_intent = MOVE_INTENT_RUN
+	SET_PLANE_IMPLICIT(src, (move_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE) //SKYRAT EDIT ADDITION - Oversized Overhaul
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_appearance()
+	update_move_intent_slowdown()
 
 ///Moves a mob upwards in z level
 /mob/verb/up()

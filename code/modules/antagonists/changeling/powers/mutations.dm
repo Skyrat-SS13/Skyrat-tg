@@ -184,7 +184,7 @@
 	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
 	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL
 	w_class = WEIGHT_CLASS_HUGE
-	force = 30 //SKYRAT EDIT - ORIGINAL: 25
+	force = 25
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
@@ -192,8 +192,9 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
-	wound_bonus = 20 //SKYRAT EDIT - ORIGINAL: -20
-	bare_wound_bonus = 30 //SKYRAT EDIT: ORIGINAL: 20
+	wound_bonus = 10
+	bare_wound_bonus = 10
+	armour_penetration = 35
 	var/can_drop = FALSE
 	var/fake = FALSE
 
@@ -277,6 +278,7 @@
 	flags_1 = NONE
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = NONE
+	antimagic_flags = NONE
 	pinless = TRUE
 	ammo_type = /obj/item/ammo_casing/magic/tentacle
 	fire_sound = 'sound/effects/splat.ogg'

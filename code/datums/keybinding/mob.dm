@@ -82,12 +82,12 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
+	var/mob/living/M = user.mob
 	M.toggle_move_intent()
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent/up(client/user)
-	var/mob/M = user.mob
+	var/mob/living/M = user.mob
 	M.toggle_move_intent()
 	return TRUE
 
@@ -102,7 +102,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
+	var/mob/living/M = user.mob
 	M.toggle_move_intent()
 	return TRUE
 
@@ -200,7 +200,7 @@
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTLEG_DOWN
 
 /datum/keybinding/mob/prevent_movement
-	hotkey_keys = list("Ctrl") //SKYRAT EDIT CHANGE ALT > CTRL - PIXEL_SHIFT
+	hotkey_keys = list("Alt")
 	name = "block_movement"
 	full_name = "Block movement"
 	description = "Prevents you from moving"

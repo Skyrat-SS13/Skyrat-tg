@@ -53,8 +53,6 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 ./code/_globalvars/lists/flavor_misc.dm > Removed accessory list defines
 .\code\datums\keybindings\living.dm > /datum/keybinding/living/look_up > from L to P
 
-./code/modules/surgery/bodyparts/_bodyparts.dm > var/rendered_bp_icon
-
 ./code/__DEFINES/~skyrat_defines/DNA.dm > A TON of defines
 ./code/__DEFINES/~skyrat_defines/obj_flags.dm  > Organ flags
 ./code/__DEFINES/~skyrat_defines/say.dm > MAX_FLAVOR_LEN

@@ -219,7 +219,7 @@
 	minimum_distance = 5
 	icon_state = "blackops_ranged"
 	icon_living = "blackops_ranged"
-	casingtype = /obj/item/ammo_casing/a556/weak
+	casingtype = /obj/item/ammo_casing/a223/weak
 	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	attack_sound = 'sound/weapons/punch1.ogg'
 	loot = list(/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)

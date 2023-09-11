@@ -169,6 +169,12 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	/// Only values greater or equal to the current one can change the strat.
 	var/delam_priority = SM_DELAM_PRIO_NONE
 
+	/// Lazy list of the crazy engineers who managed to turn a cascading engine around.
+	var/list/datum/weakref/saviors = null
+
+	/// Cooldown for sending emergency alerts to the common radio channel
+	COOLDOWN_DECLARE(common_radio_cooldown)
+
 /obj/machinery/power/supermatter_crystal/Initialize(mapload)
 	. = ..()
 	gas_percentage = list()
@@ -312,6 +318,16 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	processing_sound()
 	handle_high_power()
 	psychological_examination()
+
+	// handle the engineers that saved the engine from cascading, if there were any
+	if(get_status() < SUPERMATTER_EMERGENCY && !isnull(saviors))
+		for(var/datum/weakref/savior_ref as anything in saviors)
+			var/mob/living/savior = savior_ref.resolve()
+			if(!istype(savior)) // didn't live to tell the tale, sadly.
+				continue
+			savior.client?.give_award(/datum/award/achievement/jobs/theoretical_limits, savior)
+		LAZYNULL(saviors)
+
 	if(prob(15))
 		supermatter_pull(loc, min(internal_energy/850, 3))//850, 1700, 2550
 	update_appearance()
@@ -480,6 +496,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	final_countdown = TRUE
 
+	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, final_countdown) // SKYRAT EDIT ADDITION - DELAM_SCRAM
 	notify_ghosts("[src] has begun the delamination process!", source = src, header = "Meltdown Incoming")
 
 	var/datum/sm_delam/last_delamination_strategy = delamination_strategy
@@ -510,10 +527,21 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		else
 			message = "[i*0.1]..."
 
-		radio.talk_into(src, message, emergency_channel)
+		radio.talk_into(src, message, emergency_channel, list(SPAN_COMMAND))
 
 		if(healed)
 			final_countdown = FALSE
+
+			if(!istype(delamination_strategy, /datum/sm_delam/cascade))
+				return
+
+			for(var/mob/living/lucky_engi as anything in mobs_in_area_type(list(/area/station/engineering/supermatter)))
+				if(isnull(lucky_engi.client))
+					continue
+				if(isanimal_or_basicmob(lucky_engi))
+					continue
+				LAZYADD(saviors, WEAKREF(lucky_engi))
+
 			return // delam averted
 		sleep(1 SECONDS)
 
@@ -925,6 +953,14 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(zap_count > 1)
 			child_targets_hit = targets_hit.Copy() //Pass by ref begone
 		supermatter_zap(target, new_range, zap_str, zap_flags, child_targets_hit, zap_cutoff, power_level, zap_icon, color)
+
+// For /datum/sm_delam to check if it should be sending an alert on common radio channel
+/obj/machinery/power/supermatter_crystal/proc/should_alert_common()
+	if(!COOLDOWN_FINISHED(src, common_radio_cooldown))
+		return FALSE
+
+	COOLDOWN_START(src, common_radio_cooldown, SUPERMATTER_COMMON_RADIO_DELAY)
+	return TRUE
 
 #undef BIKE
 #undef COIL

@@ -829,7 +829,8 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "dy" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobn2";
 	dir = 4
 	},
 /turf/open/floor/engine/n2,
@@ -1131,8 +1132,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/structure/table,
-/obj/item/stack/sheet/mineral/plastitanium,
-/obj/item/stack/sheet/plastitaniumglass,
+/obj/item/stack/sheet/plasteel/twenty{
+	pixel_x = -2
+	},
+/obj/item/stack/sheet/mineral/titanium/fifty{
+	amount = 20;
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eO" = (
@@ -1993,7 +2000,7 @@
 	pixel_x = 10;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/condiment/quality_oil{
+/obj/item/reagent_containers/condiment/olive_oil{
 	pixel_x = 3;
 	pixel_y = -2
 	},
@@ -4562,14 +4569,15 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/light/cold/directional/west,
 /obj/item/seeds/tobacco,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/obj/item/seeds/korta_nut,
 /obj/item/reagent_containers/cup/watering_can,
 /obj/item/cultivator,
 /obj/item/plant_analyzer,
 /obj/item/secateurs,
 /obj/item/shovel/spade,
-/obj/effect/turf_decal/siding/dark/corner{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "tT" = (
@@ -5918,7 +5926,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/red/directional/north,
-/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/folded_navigation_gigabeacon,
 /obj/structure/frame/machine{
 	anchored = 1;
 	icon_state = "box_1";
@@ -9301,7 +9309,7 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/west,
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Ra" = (
@@ -10282,7 +10290,8 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Vf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobo2";
 	dir = 4
 	},
 /turf/open/floor/engine/o2,
@@ -10552,7 +10561,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "Wk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "interdynefobplasma";
 	dir = 4
 	},
 /turf/open/floor/engine/plasma,
@@ -10595,7 +10605,9 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Wt" = (
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /obj/item/bedsheet/medical,
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -11221,7 +11233,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Zs" = (
 /obj/item/bedsheet/medical,
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Zt" = (

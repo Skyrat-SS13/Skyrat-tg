@@ -37,6 +37,8 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 	if(sm.damage <= sm.warning_point) // Damage is too low, lets not
 		return FALSE
 
+	notify_delam_suppression(sm) // SKYRAT EDIT ADDITION - DELAM_SCRAM
+
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
 		message_admins("[sm] has entered the emergency point [ADMIN_VERBOSEJMP(sm)].")
@@ -45,17 +47,25 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 		return FALSE
 	sm.lastwarning = REALTIMEOFDAY
 
+	if(sm.damage_archived - sm.damage > SUPERMATTER_FAST_HEALING_RATE && sm.damage_archived >= sm.emergency_point) // Fast healing, engineers probably have it all sorted
+		if(sm.should_alert_common()) // We alert common once per cooldown period, otherwise alert engineering
+			sm.radio.talk_into(sm,"Crystalline hyperstructure returning to safe operating parameters. Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.emergency_channel)
+		else
+			sm.radio.talk_into(sm,"Crystalline hyperstructure returning to safe operating parameters. Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.warning_channel)
+		playsound(sm, 'sound/machines/terminal_alert.ogg', 75)
+		return FALSE
+
 	switch(sm.get_status())
 		if(SUPERMATTER_DELAMINATING)
 			// SKYRAT EDIT ADDITION
 			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/meltdown.ogg', override_volume = TRUE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg', override_volume = TRUE)
+			alert_sound_to_playing('sound/effects/alert.ogg', override_volume = TRUE)
 			// SKYRAT EDIT END
 			playsound(sm, 'sound/misc/bloblarm.ogg', 100, FALSE, 40, 30, falloff_distance = 10)
 		if(SUPERMATTER_EMERGENCY)
 			// SKYRAT EDIT ADDITION
 			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/core_overheating.ogg', override_volume = TRUE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg', override_volume = TRUE)
+			alert_sound_to_playing('sound/misc/notice1.ogg', override_volume = TRUE)
 			// SKYRAT EDIT END
 			playsound(sm, 'sound/machines/engine_alert1.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
 		if(SUPERMATTER_DANGER)
@@ -63,13 +73,12 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 		if(SUPERMATTER_WARNING)
 			playsound(sm, 'sound/machines/terminal_alert.ogg', 75)
 
-	if(sm.damage < sm.damage_archived) // Healing
-		sm.radio.talk_into(sm,"Crystalline hyperstructure returning to safe operating parameters. Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.damage_archived >= sm.emergency_point ? sm.emergency_channel : sm.warning_channel)
-		return FALSE
-
-	if(sm.damage >= sm.emergency_point) // Taking damage, in emergency
-		sm.radio.talk_into(sm, "CRYSTAL DELAMINATION IMMINENT Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.emergency_channel)
+	if(sm.damage >= sm.emergency_point) // In emergency
+		sm.radio.talk_into(sm, "CRYSTAL DELAMINATION IMMINENT! Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.emergency_channel)
 		sm.lastwarning = REALTIMEOFDAY - (SUPERMATTER_WARNING_DELAY / 2) // Cut the time to next announcement in half.
+	else if(sm.damage_archived > sm.damage) // Healing, in warning
+		sm.radio.talk_into(sm,"Crystalline hyperstructure returning to safe operating parameters. Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.warning_channel)
+		return FALSE
 	else // Taking damage, in warning
 		sm.radio.talk_into(sm, "Danger! Crystal hyperstructure integrity faltering! Integrity: [round(sm.get_integrity_percent(), 0.01)]%", sm.warning_channel)
 

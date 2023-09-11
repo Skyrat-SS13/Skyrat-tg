@@ -134,12 +134,24 @@
 	loot = list(/obj/effect/gibspawner/human)
 	ai_controller = /datum/ai_controller/basic_controller/syndicate/ranged
 	r_hand = /obj/item/gun/ballistic/automatic/pistol
+	/// Type of bullet we use
 	var/casingtype = /obj/item/ammo_casing/c9mm
+	/// Sound to play when firing weapon
 	var/projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
+	/// number of burst shots
+	var/burst_shots
+	/// Time between taking shots
+	var/ranged_cooldown = 1 SECONDS
 
 /mob/living/basic/syndicate/ranged/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/ranged_attacks, casingtype, projectilesound)
+	AddComponent(\
+		/datum/component/ranged_attacks,\
+		casing_type = casingtype,\
+		projectile_sound = projectilesound,\
+		cooldown_time = ranged_cooldown,\
+		burst_shots = burst_shots,\
+	)
 
 /mob/living/basic/syndicate/ranged/infiltrator //shuttle loan event
 	projectilesound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
@@ -168,6 +180,8 @@
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	ai_controller = /datum/ai_controller/basic_controller/syndicate/ranged/burst
+	burst_shots = 3
+	ranged_cooldown = 3 SECONDS
 	r_hand = /obj/item/gun/ballistic/automatic/c20r
 
 /mob/living/basic/syndicate/ranged/smg/pilot //caravan ambush ruin
@@ -197,6 +211,8 @@
 /mob/living/basic/syndicate/ranged/shotgun
 	casingtype = /obj/item/ammo_casing/shotgun/buckshot //buckshot (up to 72.5 brute) fired in a two-round burst
 	ai_controller = /datum/ai_controller/basic_controller/syndicate/ranged/shotgunner
+	ranged_cooldown = 3 SECONDS
+	burst_shots = 2
 	r_hand = /obj/item/gun/ballistic/shotgun/bulldog
 
 /mob/living/basic/syndicate/ranged/shotgun/space

@@ -440,7 +440,7 @@
 		quirk_holder.clear_mood_event("nyctophobia")
 		return
 
-	if(quirk_holder.m_intent == MOVE_INTENT_RUN)
+	if(quirk_holder.move_intent == MOVE_INTENT_RUN)
 		to_chat(quirk_holder, span_warning("Easy, easy, take it slow... you're in the dark..."))
 		quirk_holder.toggle_move_intent()
 	quirk_holder.add_mood_event("nyctophobia", /datum/mood_event/nyctophobia)
@@ -468,11 +468,15 @@
 	RegisterSignal(quirk_holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 	update_eyes(quirk_holder.get_organ_slot(ORGAN_SLOT_EYES))
 
+/datum/quirk/photophobia/remove()
 	UnregisterSignal(quirk_holder, list(
 		COMSIG_CARBON_GAIN_ORGAN,
 		COMSIG_CARBON_LOSE_ORGAN,
 		COMSIG_MOVABLE_MOVED,))
 	quirk_holder.clear_mood_event(MOOD_CATEGORY_PHOTOPHOBIA)
+	var/obj/item/organ/internal/eyes/normal_eyes = quirk_holder.get_organ_slot(ORGAN_SLOT_EYES)
+	if(istype(normal_eyes))
+		normal_eyes.flash_protect = initial(normal_eyes.flash_protect)
 
 /datum/quirk/photophobia/proc/check_eyes(obj/item/organ/internal/eyes/sensitive_eyes)
 	SIGNAL_HANDLER
@@ -1114,10 +1118,19 @@
 	. = ..()
 	quirk_holder.add_mob_memory(/datum/memory/key/quirk_smoker, protagonist = quirk_holder, preferred_brand = initial(drug_container_type.name))
 	// smoker lungs have 25% less health and healing
-	var/obj/item/organ/internal/lungs/smoker_lungs = quirk_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
-	if(smoker_lungs && IS_ORGANIC_ORGAN(smoker_lungs)) // robotic lungs aren't affected
-		smoker_lungs.maxHealth = smoker_lungs.maxHealth * 0.75
-		smoker_lungs.healing_factor = smoker_lungs.healing_factor * 0.75
+	var/mob/living/carbon/carbon_holder = quirk_holder
+	var/obj/item/organ/internal/lungs/smoker_lungs = null
+	var/obj/item/organ/internal/lungs/old_lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
+	if(old_lungs && IS_ORGANIC_ORGAN(old_lungs))
+		if(isplasmaman(carbon_holder))
+			smoker_lungs = /obj/item/organ/internal/lungs/plasmaman/plasmaman_smoker
+		else if(isethereal(carbon_holder))
+			smoker_lungs = /obj/item/organ/internal/lungs/ethereal/ethereal_smoker
+		else
+			smoker_lungs = /obj/item/organ/internal/lungs/smoker_lungs
+	if(!isnull(smoker_lungs))
+		smoker_lungs = new smoker_lungs
+		smoker_lungs.Insert(carbon_holder, special = TRUE, drop_if_replaced = FALSE)
 
 /datum/quirk/item_quirk/junkie/smoker/process(seconds_per_tick)
 	. = ..()
@@ -1494,3 +1507,61 @@
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
 */
 // SKYRAT EDIT REMOVAL END
+
+/datum/quirk/indebted
+	name = "Indebted"
+	desc = "Bad life decisions, medical bills, student loans, whatever it may be, you've incurred quite the debt. A portion of all you receive will go towards extinguishing it."
+	icon = FA_ICON_DOLLAR
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
+	value = -2
+	medical_record_text = "Alas, the patient struggled to scrape together enough money to pay the checkup bill."
+	hardcore_value = 2
+
+/datum/quirk/indebted/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	if(!human_holder.account_id)
+		return
+	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[human_holder.account_id]"]
+	var/debt = PAYCHECK_CREW * rand(275, 325)
+	account.account_debt += debt
+	RegisterSignal(account, COMSIG_BANK_ACCOUNT_DEBT_PAID, PROC_REF(on_debt_paid))
+	to_chat(client_source.mob, span_warning("You remember, you've a hefty, [debt] credits debt to pay..."))
+
+///Once the debt is extinguished, award an achievement and a pin for actually taking care of it.
+/datum/quirk/indebted/proc/on_debt_paid(datum/bank_account/source)
+	SIGNAL_HANDLER
+	if(source.account_debt)
+		return
+	UnregisterSignal(source, COMSIG_BANK_ACCOUNT_DEBT_PAID)
+	///The debt was extinguished while the quirk holder was logged out, so let's kindly award it once they come back.
+	if(!quirk_holder.client)
+		RegisterSignal(quirk_holder, COMSIG_MOB_LOGIN, PROC_REF(award_on_login))
+	else
+		quirk_holder.client.give_award(/datum/award/achievement/misc/debt_extinguished, quirk_holder)
+	podspawn(list(
+		"target" = get_turf(quirk_holder),
+		"style" = STYLE_BLUESPACE,
+		"spawn" = /obj/item/clothing/accessory/debt_payer_pin,
+	))
+
+/datum/quirk/indebted/proc/award_on_login(mob/source)
+	SIGNAL_HANDLER
+	quirk_holder.client.give_award(/datum/award/achievement/misc/debt_extinguished, quirk_holder)
+	UnregisterSignal(source, COMSIG_MOB_LOGIN)
+
+/datum/quirk/numb
+	name = "Numb"
+	desc = "You can't feel pain at all."
+	icon = FA_ICON_STAR_OF_LIFE
+	value = -4
+	gain_text = "You feel your body becoming numb."
+	lose_text = "The numbness subsides."
+	medical_record_text = "The patient exhibits congenital hypoesthesia, making them insensitive to pain stimuli."
+	hardcore_value = 4
+
+/datum/quirk/numb/add(client/client_source)
+	quirk_holder.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+
+/datum/quirk/numb/remove(client/client_source)
+	quirk_holder.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+

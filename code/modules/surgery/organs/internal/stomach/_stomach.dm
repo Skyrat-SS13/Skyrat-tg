@@ -214,6 +214,7 @@
 
 ///This gets called after the owner takes a bite of food
 /obj/item/organ/internal/stomach/proc/after_eat(atom/edible)
+	SEND_SIGNAL(src, COMSIG_STOMACH_AFTER_EAT, edible) // SKYRAT EDIT ADDITION - Hemophage Organs
 	return
 
 /obj/item/organ/internal/stomach/proc/handle_disgust(mob/living/carbon/human/disgusted, seconds_per_tick, times_fired)

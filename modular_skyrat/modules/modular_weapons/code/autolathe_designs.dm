@@ -2,20 +2,12 @@
 *	AMMO
 */
 
-/datum/design/a762
-	name = "7.62 Bullet"
-	id = "a762"
+/datum/design/strilka310_rubber
+	name = ".310 Rubber Bullet (Less Lethal)"
+	id = "astrilka310_rubber"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
-	build_path = /obj/item/ammo_casing/a762
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
-/datum/design/a762_rubber
-	name = "7.62 Rubber Bullet"
-	id = "a762_rubber"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
-	build_path = /obj/item/ammo_casing/a762/rubber
+	build_path = /obj/item/ammo_casing/strilka310/rubber
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
 // 4.6x30mm - SMG round, used in the WT550 and in numerous modular guns as a weaker alternative to 9mm.
