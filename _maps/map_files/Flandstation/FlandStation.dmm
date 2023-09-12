@@ -2580,7 +2580,9 @@
 /obj/machinery/door/airlock/external{
 	req_access_txt = "13"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "AirlockL"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "aPJ" = (
@@ -28990,7 +28992,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = EngiX
+	cycle_id = "EngiX"
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
@@ -44974,6 +44976,14 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron,
 /area/station/science/ordnance)
+"plR" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/sepia,
+/area/station/maintenance/department/engine)
 "plW" = (
 /turf/closed/wall,
 /area/station/engineering/supermatter/room)
@@ -54225,7 +54235,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = EngiX
+	cycle_id = "EngiX"
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
@@ -66564,7 +66574,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = EngiX
+	cycle_id = "EngiX"
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
@@ -66965,13 +66975,13 @@
 /turf/open/floor/iron/dark,
 /area/station/holodeck)
 "wjS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/iron/sepia,
-/area/station/maintenance/department/engine)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown/opposingcorners{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/checker,
+/area/station/cargo/storage)
 "wjZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/sepia,
@@ -73447,7 +73457,6 @@
 	c_tag = "Engineering Maintenance - Engine Entrance";
 	name = "engineering camera"
 	},
-/obj/machinery/firealarm/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -100375,7 +100384,7 @@ nfn
 cCZ
 tzR
 wpW
-sod
+wjS
 qoA
 nqi
 csJ
@@ -126311,9 +126320,9 @@ gIy
 hsN
 rHU
 vuH
-rHU
+plR
 xZz
-wjS
+rHU
 rHU
 hvT
 rHU
