@@ -14,7 +14,7 @@
 	. = ..()
 	summonable_items += subtypesof(/obj/item/book/manual/wiki) //That's right! all of the manual books!
 
-/datum/nifsoft/summoner/book/apply_custom_properties(/obj/item/book/generated_book)
+/datum/nifsoft/summoner/book/apply_custom_properties(obj/item/book/generated_book)
 	if(!istype(generated_book))
 		return FALSE
 
