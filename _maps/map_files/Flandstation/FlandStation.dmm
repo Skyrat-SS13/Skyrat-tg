@@ -7604,6 +7604,11 @@
 "cGp" = (
 /turf/closed/wall,
 /area/station/maintenance/disposal)
+"cGs" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/command)
 "cGB" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/effect/turf_decal/siding/wood{
@@ -19261,9 +19266,6 @@
 /turf/closed/wall,
 /area/station/science/server)
 "gwX" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/ordnance_burn_chamber_input{
 	dir = 8
 	},
@@ -28987,7 +28989,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = EngiX
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "jOT" = (
@@ -30540,7 +30544,6 @@
 /area/station/hallway/primary/port)
 "kru" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine,
@@ -45109,9 +45112,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/storage)
-"pnE" = (
-/turf/open/floor/iron/dark,
-/area/station/security/processing)
 "pnM" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -54224,7 +54224,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = EngiX
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "sfr" = (
@@ -57321,11 +57323,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"thP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/hallway/secondary/command)
 "thS" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/engine,
@@ -66566,7 +66563,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = EngiX
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "wbo" = (
@@ -69915,6 +69914,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/science/research)
+"xey" = (
+/turf/open/floor/iron/dark,
+/area/station/security/processing)
 "xeF" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -110350,7 +110352,7 @@ aVO
 fpN
 unH
 oXD
-tcz
+xey
 pPv
 nVS
 nVS
@@ -111378,7 +111380,7 @@ yfz
 nfI
 unH
 wlQ
-tcz
+xey
 pPz
 nVS
 nVS
@@ -111635,7 +111637,7 @@ wYw
 wYw
 unH
 xrp
-tcz
+xey
 csC
 unH
 nzY
@@ -123412,7 +123414,7 @@ jzM
 eXQ
 trD
 hKe
-thP
+cGs
 tpZ
 cLT
 lyn
