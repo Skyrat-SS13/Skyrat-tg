@@ -9,6 +9,7 @@
 	purchase_price = 0 // This is a tool intended to help out newer players.
 	max_summoned_items = 2
 	buying_category = NIFSOFT_CATEGORY_INFORMATION
+	ui_icon = "book"
 
 /datum/nifsoft/summoner/book/New()
 	. = ..()
