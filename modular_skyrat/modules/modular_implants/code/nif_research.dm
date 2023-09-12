@@ -29,8 +29,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/mini_soulcatcher
-	name = "Mini-soulcatcher"
-	desc = "A small soulcatcher device that can be attached to various objects."
+	name = "Poltergeist-Type RSD"
+	desc = "A miniature version of a Soulcatcher that can be attached to various objects."
 	id = "mini_soulcatcher"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/attachable_soulcatcher
