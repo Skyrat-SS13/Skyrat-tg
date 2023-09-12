@@ -3319,6 +3319,15 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/station/medical/pharmacy)
+"bdX" = (
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/warm/directional/north,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/station/engineering/atmos/hfr_room)
 "bdY" = (
 /obj/structure/chair{
 	dir = 8
@@ -29554,7 +29563,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/box/corners,
-/obj/item/radio/intercom/directional/east,
 /turf/open/floor/engine,
 /area/station/engineering/atmos/hfr_room)
 "iWY" = (
@@ -37088,6 +37096,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/atmos/hfr_room)
 "lhh" = (
@@ -50336,6 +50345,21 @@
 /obj/item/stack/rods/ten,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
+"piC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/engineering/atmos/hfr_room)
 "piH" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external/glass{
@@ -56132,9 +56156,19 @@
 	},
 /area/station/science/research)
 "qUQ" = (
-/obj/effect/spawner/random/trash/botanical_waste,
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/fore)
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/engineering/atmos/hfr_room)
 "qVf" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -63147,6 +63181,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/effect/spawner/random/trash/botanical_waste,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "sZH" = (
@@ -66728,6 +66763,7 @@
 "uio" = (
 /obj/structure/chair/office,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/north,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "uiA" = (
@@ -69851,9 +69887,10 @@
 /turf/open/floor/iron/dark/small,
 /area/station/science/explab)
 "veM" = (
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/fore)
+/obj/structure/lattice,
+/obj/structure/grille/broken,
+/turf/open/space/basic,
+/area/space/nearstation)
 "veQ" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -72164,7 +72201,10 @@
 /turf/open/floor/iron/dark/small,
 /area/station/science/ordnance)
 "vOe" = (
-/obj/machinery/light/warm/directional/east,
+/obj/machinery/camera/directional/east{
+	c_tag = "Atmospherics - HFR Core North";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hfr_room)
 "vOt" = (
@@ -78377,8 +78417,12 @@
 "xGX" = (
 /obj/machinery/holopad,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/light/warm/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/directional/east{
+	c_tag = "Atmospherics - HFR Core South";
+	network = list("ss13","engine");
+	dir = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hfr_room)
 "xGY" = (
@@ -78614,10 +78658,6 @@
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
-	},
-/obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics - HFR Core";
-	network = list("ss13","engine")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/atmos/hfr_room)
@@ -117021,7 +117061,7 @@ pKl
 pKl
 pKl
 pKl
-wZq
+bdX
 ujj
 otY
 xJQ
@@ -117279,11 +117319,11 @@ tRY
 aTU
 pKl
 pKl
-pKl
-pKl
-pKl
-pKl
-pKl
+qUQ
+qUQ
+qUQ
+qUQ
+piC
 pKl
 pKl
 sZG
@@ -117532,19 +117572,19 @@ laO
 laO
 laO
 laO
-tRY
-veM
+tbm
 ozX
-ozX
-ozX
-ozX
-fXT
-jGt
+gUb
+pKl
+pKl
+pKl
+pKl
+pKl
+pKl
+pKl
+aKs
 lXP
-mBp
-lXP
-lXP
-qUQ
+mtx
 oyB
 kPN
 uHb
@@ -117789,19 +117829,19 @@ laO
 laO
 laO
 laO
-tRY
-tRY
-mRn
-mvM
-jtO
+tbm
+tbm
 ozX
 ozX
 ozX
+ozX
+rnd
+lSt
 lXP
-tRY
-aKs
-mtx
-fmd
+mBp
+lXP
+ozX
+ozX
 fXT
 tRY
 asH
@@ -118047,12 +118087,12 @@ laO
 laO
 laO
 laO
-tRY
 tbm
 tbm
-tbm
-rnd
-lSt
+mvM
+mRn
+ozX
+jtO
 ozX
 lXP
 tRY
@@ -118305,12 +118345,12 @@ laO
 laO
 laO
 laO
-laO
-laO
 tbm
 tbm
 tRY
-cub
+ozX
+ozX
+ozX
 lXP
 tRY
 vbF
@@ -118564,10 +118604,10 @@ laO
 laO
 laO
 laO
-laO
-laO
 tRY
 tRY
+tRY
+cub
 vfo
 tRY
 uio
@@ -118823,7 +118863,7 @@ laO
 laO
 laO
 laO
-laO
+tRY
 tRY
 lXP
 mLj
@@ -119078,8 +119118,8 @@ eXf
 eXf
 eXf
 obu
-nOe
-nOe
+veM
+laO
 laO
 tRY
 jGt
@@ -126050,7 +126090,7 @@ laO
 laO
 laO
 laO
-laO
+obu
 laO
 laO
 laO
@@ -126307,7 +126347,7 @@ laO
 laO
 laO
 laO
-laO
+ans
 laO
 laO
 laO
@@ -126564,7 +126604,7 @@ laO
 laO
 laO
 laO
-laO
+obu
 laO
 laO
 laO
@@ -126821,7 +126861,7 @@ laO
 laO
 laO
 laO
-laO
+vky
 laO
 laO
 laO
@@ -127078,7 +127118,7 @@ laO
 laO
 laO
 laO
-laO
+obu
 laO
 laO
 laO
@@ -184613,7 +184653,7 @@ fac
 tbm
 gMr
 wqg
-ihu
+jGt
 tRY
 tRY
 xJu
@@ -185643,7 +185683,7 @@ tRY
 tRY
 tRY
 xpm
-xpm
+fmd
 hPV
 pNi
 pNi
