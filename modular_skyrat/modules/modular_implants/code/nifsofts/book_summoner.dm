@@ -13,3 +13,22 @@
 /datum/nifsoft/summoner/book/New()
 	. = ..()
 	summonable_items += subtypesof(/obj/item/book/manual/wiki) //That's right! all of the manual books!
+
+/datum/nifsoft/summoner/book/apply_custom_properties(/obj/item/book/generated_book)
+	if(!istype(generated_book))
+		return FALSE
+
+	generated_book.can_be_carved = FALSE
+	return TRUE
+
+// Need this code here so that we don't have people carving out the summoned books
+/obj/item/book
+	/// Can the parent book be carved? By default this is set to `TRUE`
+	var/can_be_carved = TRUE
+
+/obj/item/book/try_carve(obj/item/carving_item, mob/living/user, params)
+	if(!can_be_carved)
+		balloon_alert(user, "unable to be carved!")
+		return FALSE
+
+	return ..()
