@@ -45,7 +45,9 @@
 		/obj/item/organ,
 		/obj/item/mmi,
 		/obj/item/pai_card,
-		/obj/item/intellicard,
+		/obj/item/aicard,
+		/obj/item/card,
+		/obj/item/radio,
 		/obj/item/disk/nuclear, // Woah there
 	)
 
@@ -55,11 +57,11 @@
 		return FALSE
 
 	if(GetComponent(/datum/component/soulcatcher))
-		balloon_alert("already attached!")
+		balloon_alert(user, "already attached!")
 		return FALSE
 
-	if(!is_type_in_list(target_item, blacklisted_items))
-		balloon_alert("incompatible!")
+	if(is_type_in_list(target_item, blacklisted_items))
+		balloon_alert(user, "incompatible!")
 		return FALSE
 
 	target_item.AddComponent(/datum/component/soulcatcher/attachable_soulcatcher)

@@ -298,6 +298,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+	var/tag = sheet.icon_tag("nif-soulcatcher")
+	var/soulcatcher_icon = ""
+
+	if(tag)
+		soulcatcher_icon = tag
+
 	var/mob/living/soulcatcher_soul/soul_sender = message_sender
 	if(istype(soul_sender) && soul_sender.communicating_externally)
 		var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
@@ -305,25 +312,22 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		if(!istype(parent_object))
 			return FALSE
 
+		var/temp_name = parent_object.name
+		parent_object.name = "[parent_object.name] [soulcatcher_icon]"
+
 		if(emote)
-			parent_object.manual_emote(message_to_send)
+			parent_object.manual_emote(html_decode(message_to_send))
 			log_emote("[soul_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
 		else
-			parent_object.say(message_to_send)
+			parent_object.say(html_decode(message_to_send))
 			log_say("[soul_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
 
+		parent_object.name = temp_name
 		return TRUE
 
 	var/sender_name = ""
 	if(message_sender)
 		sender_name = "[message_sender] "
-
-	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
-	var/tag = sheet.icon_tag("nif-soulcatcher")
-	var/soulcatcher_icon = ""
-
-	if(tag)
-		soulcatcher_icon = tag
 
 	var/first_room_name_word = splittext(name, " ")
 	var/message = ""
