@@ -17025,12 +17025,6 @@
 /area/station/ai_monitored/turret_protected/ai)
 "fLG" = (
 /obj/effect/landmark/start/ai,
-/obj/machinery/turretid{
-	icon_state = "control_stun";
-	name = "AI Chamber turret control";
-	pixel_x = 3;
-	pixel_y = 28
-	},
 /obj/machinery/requests_console{
 	department = "AI";
 	name = "AI RC";
@@ -17150,8 +17144,8 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "fNE" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)
 "fOb" = (
@@ -18042,11 +18036,11 @@
 /turf/open/floor/iron/dark,
 /area/station/service/janitor)
 "gck" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/box/red,
 /obj/machinery/light_switch{
 	pixel_x = 24
 	},
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "gcp" = (
@@ -18718,8 +18712,8 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/starboard)
 "gnG" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/ai)
 "gnJ" = (
@@ -18767,6 +18761,11 @@
 	id = "aicoredoor";
 	name = "AI Core Shutter";
 	dir = 1
+	},
+/obj/machinery/turretid{
+	icon_state = "control_stun";
+	name = "AI Chamber turret control";
+	pixel_x = -28
 	},
 /turf/open/floor/engine,
 /area/station/ai_monitored/turret_protected/ai)
@@ -19513,11 +19512,11 @@
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
 "gAK" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/box/red,
 /obj/item/radio/intercom{
 	pixel_y = -28
 	},
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)
 "gAM" = (
@@ -19753,8 +19752,8 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/aft)
 "gDV" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "gDY" = (
@@ -20396,10 +20395,8 @@
 /turf/closed/wall/r_wall,
 /area/station/science/ordnance/bomb)
 "gOj" = (
-/obj/machinery/porta_turret/ai{
-	dir = 4
-	},
 /obj/effect/turf_decal/box/red,
+/obj/machinery/porta_turret/ai,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -21271,10 +21268,10 @@
 /area/station/maintenance/aft/lesser)
 "hex" = (
 /obj/machinery/turretid{
-	control_area = "/area/ai_monitored/turret_protected/ai_upload_foyer";
-	name = "AI Antechamber Turret Control";
-	pixel_x = 30;
-	req_access_txt = "65"
+	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
+	name = "Antechamber Turret Control";
+	pixel_x = 32;
+	req_access = list("minisat")
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
@@ -24008,17 +24005,17 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "icD" = (
-/obj/machinery/turretid{
-	control_area = "/area/ai_monitored/turret_protected/ai_upload";
-	icon_state = "control_stun";
-	name = "AI Upload turret control";
-	pixel_y = -32
-	},
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 6
 	},
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner{
 	dir = 1
+	},
+/obj/machinery/turretid{
+	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
+	icon_state = "control_stun";
+	name = "AI Upload Turret Control";
+	pixel_y = -32
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)
@@ -28508,13 +28505,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/checker,
 /area/station/commons/dorms/laundry)
-"jFf" = (
-/obj/machinery/porta_turret/ai{
-	dir = 4
-	},
-/obj/effect/turf_decal/box/red,
-/turf/open/floor/plating,
-/area/station/ai_monitored/turret_protected/ai)
 "jFj" = (
 /obj/machinery/button/door/directional/south{
 	id = "store_shuttr"
@@ -129321,7 +129311,7 @@ kOu
 aYu
 kOu
 kOu
-jFf
+gnG
 dii
 gcg
 hLs
@@ -129329,7 +129319,7 @@ jDi
 gcg
 gcg
 idt
-jFf
+gnG
 kOu
 kOu
 aYu
@@ -131634,7 +131624,7 @@ kOu
 aYu
 kOu
 kOu
-jFf
+gnG
 eZO
 gDi
 gDi
@@ -131642,7 +131632,7 @@ gQQ
 gDi
 gDi
 ifT
-jFf
+gnG
 kOu
 kOu
 aYu
