@@ -138,6 +138,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "team leader headset"
 	command = TRUE
 
+<<<<<<< HEAD
 /obj/item/radio/headset/syndicate/alt/psyker
 	name = "psychic headset"
 	desc = "A headset designed to boost psychic waves. Protects ears from flashbangs."
@@ -152,6 +153,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	. = ..()
 	REMOVE_CLOTHING_TRAIT(user, TRAIT_ECHOLOCATION_EXTRA_RANGE)
 
+=======
+>>>>>>> 4e28d5f191e ([NO GBP] Removes syndie comms from psyker headsets (#78270))
 /obj/item/radio/headset/binary
 	keyslot = /obj/item/encryptionkey/binary
 
