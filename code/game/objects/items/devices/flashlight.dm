@@ -34,21 +34,15 @@
 	/// Is the light turned on or off currently
 	var/on = FALSE
 
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
-/*
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE
 	update_brightness()
 	register_context()
-<<<<<<< HEAD
-*/
-// SKYRAT EDIT REMOVAL END
-=======
+
 	if(toggle_context)
 		RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
->>>>>>> ac18420676c (John Splintercell: a gun that is only good for shooting out lights (#78128))
 
 /obj/item/flashlight/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	// single use lights can be toggled on once
@@ -75,16 +69,9 @@
 	if(light_system == STATIC_LIGHT)
 		update_light()
 
-<<<<<<< HEAD
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
-/*
-/obj/item/flashlight/proc/toggle_light()
-	on = !on
-=======
 /obj/item/flashlight/proc/toggle_light(mob/user)
 	var/disrupted = FALSE
->>>>>>> ac18420676c (John Splintercell: a gun that is only good for shooting out lights (#78128))
-	playsound(src, on ? sound_on : sound_off, 40, TRUE)
+	//playsound(src, on ? sound_on : sound_off, 40, TRUE) SKYRAT EDIT REMOVAL - SOUND HANDLED IN MODULAR FLASHLIGHT.DM
 	on = !on
 	if(!COOLDOWN_FINISHED(src, disabled_time))
 		if(user)
@@ -96,13 +83,7 @@
 	return !disrupted
 
 /obj/item/flashlight/attack_self(mob/user)
-<<<<<<< HEAD
-	toggle_light()
-*/
-// SKYRAT EDIT REMOVAL END
-=======
 	toggle_light(user)
->>>>>>> ac18420676c (John Splintercell: a gun that is only good for shooting out lights (#78128))
 
 /obj/item/flashlight/attack_hand_secondary(mob/user, list/modifiers)
 	attack_self(user)
@@ -450,16 +431,15 @@
 	damtype = BURN
 	. = ..()
 
-/obj/item/flashlight/flare/turn_off() //SKYRAT EDIT CHANGE
-	//on = FALSE SKYRAT EDIT REMOVAL
+/obj/item/flashlight/flare/proc/turn_off()
+	on = FALSE
 	name = initial(name)
 	attack_verb_continuous = initial(attack_verb_continuous)
 	attack_verb_simple = initial(attack_verb_simple)
 	hitsound = initial(hitsound)
 	force = initial(force)
 	damtype = initial(damtype)
-	//update_brightness() - SKYRAT EDIT MOVED TO PARENT
-	. = ..() //SKYRAT EDIT - MODULAR PARENT PROC
+	update_brightness()
 
 /obj/item/flashlight/flare/extinguish()
 	. = ..()
@@ -779,11 +759,9 @@
 		turn_off()
 		STOP_PROCESSING(SSobj, src)
 
-/* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
 	update_appearance(UPDATE_ICON)
-*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()
