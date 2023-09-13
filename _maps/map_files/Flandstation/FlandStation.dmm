@@ -814,10 +814,6 @@
 	},
 /turf/open/floor/iron/checker,
 /area/station/cargo/storage)
-"aoy" = (
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/open/floor/iron/white,
-/area/station/maintenance/department/science/xenobiology)
 "aoH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6281,6 +6277,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
+"cfx" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/machinery/space_heater,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "cfM" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
@@ -9061,6 +9062,11 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
 /area/station/engineering/main)
+"deo" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "dep" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/grunge{
@@ -11152,6 +11158,11 @@
 /obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/cult,
 /area/station/service/chapel)
+"dTM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "dTQ" = (
 /obj/structure/rack,
 /obj/item/crowbar,
@@ -16740,6 +16751,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
+"fGP" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/effect/spawner/random/engineering/tool,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "fGU" = (
 /obj/structure/toilet{
 	dir = 1
@@ -20107,6 +20125,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/ce)
+"gIF" = (
+/turf/closed/wall/r_wall,
+/area/station/maintenance/department/science)
 "gIH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -20269,8 +20290,12 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "gLa" = (
-/turf/closed/wall,
-/area/space)
+/obj/structure/rack,
+/obj/item/clothing/gloves/color/fyellow,
+/obj/effect/spawner/random/techstorage/service_all,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "gLj" = (
 /obj/item/radio/intercom{
 	pixel_y = -28
@@ -20451,6 +20476,10 @@
 "gNy" = (
 /turf/closed/wall,
 /area/station/cargo/lobby)
+"gNG" = (
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "gNK" = (
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -22977,6 +23006,11 @@
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall,
 /area/station/maintenance/department/engine)
+"hKF" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "hKJ" = (
 /obj/item/storage/secure/briefcase{
 	pixel_x = -2;
@@ -24716,13 +24750,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
-"inM" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/open/floor/iron/white,
-/area/station/science/xenobiology)
 "inW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/structure/crate_empty,
@@ -30366,6 +30393,7 @@
 	name = "xenobiology camera";
 	network = list("ss13","xeno","rd")
 	},
+/obj/effect/landmark/atmospheric_sanity/start_area,
 /turf/open/floor/iron/white,
 /area/station/maintenance/department/science/xenobiology)
 "kmo" = (
@@ -31701,6 +31729,10 @@
 /obj/item/taperecorder,
 /turf/open/floor/carpet/green,
 /area/station/maintenance/port/aft)
+"kIP" = (
+/obj/effect/spawner/random/trash/bin,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "kIQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -36859,6 +36891,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/iron/checker,
 /area/station/maintenance/port/central)
 "mtP" = (
@@ -40320,6 +40355,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
+"nBo" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "nBx" = (
 /obj/machinery/vending/autodrobe/all_access,
 /obj/machinery/light/small/directional/east,
@@ -43155,6 +43194,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/starboard/aft)
+"oAi" = (
+/obj/effect/landmark/atmospheric_sanity/start_area,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
 "oAt" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch";
@@ -43350,11 +43393,6 @@
 /obj/structure/cable,
 /turf/open/floor/carpet/red,
 /area/station/maintenance/abandon_office)
-"oDy" = (
-/obj/machinery/light/directional/south,
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/open/floor/iron/dark,
-/area/station/science/xenobiology)
 "oDB" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/flashlight/lamp,
@@ -57389,6 +57427,10 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
+"tfx" = (
+/obj/effect/spawner/random/trash/grime,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "tfB" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line{
@@ -59002,6 +59044,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
+"tGp" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "tGs" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall,
@@ -61145,6 +61192,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint)
+"uqF" = (
+/obj/effect/spawner/random/trash/box,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "uqQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/side{
@@ -70083,6 +70134,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
+"xdY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/grille_or_waste,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "xeg" = (
 /obj/structure/table,
 /obj/item/clothing/under/color/random,
@@ -106003,7 +106059,7 @@ vNi
 wTe
 jdv
 vIp
-oDy
+xGz
 siW
 csJ
 nnx
@@ -107542,7 +107598,7 @@ ylW
 lLH
 qoF
 lBU
-aoy
+xsT
 lLH
 csJ
 nnx
@@ -108690,14 +108746,14 @@ aDZ
 aDZ
 uBA
 dOb
-lLM
-eey
-hqb
+uqF
+paS
+deo
 eey
 eey
 agn
 fsV
-fVk
+xdY
 jID
 qPk
 lHA
@@ -108951,8 +109007,8 @@ lLM
 eey
 eey
 eey
-eey
-eey
+paS
+paS
 fVk
 lHA
 jID
@@ -109065,7 +109121,7 @@ bhD
 oKb
 oKb
 hqc
-inM
+oKb
 oKb
 oKb
 oKb
@@ -109464,11 +109520,11 @@ jID
 eey
 hqb
 hqb
-lLM
+tfx
 fVk
-fVk
-eey
-hqb
+dTM
+nBo
+tGp
 jID
 jcs
 qPk
@@ -109718,14 +109774,14 @@ eey
 jID
 rCS
 jID
-eey
-qzt
-lLM
-lLM
-lLM
-lLM
-qzt
-hqb
+kIP
+cfx
+bDD
+rme
+gLa
+fGP
+hKF
+tGp
 jID
 xPD
 iPJ
@@ -111788,7 +111844,7 @@ jID
 eey
 eey
 eey
-eey
+gNG
 jID
 aIJ
 bsZ
@@ -112656,11 +112712,11 @@ fLe
 xEK
 kMf
 rwH
-xtu
-xtu
-qTZ
-xtu
-xtu
+xUN
+xUN
+gIF
+xUN
+xUN
 kHH
 kHH
 abN
@@ -112916,7 +112972,7 @@ lXI
 ioQ
 ioQ
 wtc
-gLa
+uLD
 kHH
 kHH
 kHH
@@ -113173,7 +113229,7 @@ ioQ
 ioQ
 ioQ
 xEK
-gLa
+uLD
 vXB
 vXB
 sNJ
@@ -113430,7 +113486,7 @@ wtc
 ioQ
 lXI
 xEK
-gLa
+uLD
 ivz
 inW
 bBv
@@ -113687,7 +113743,7 @@ xFN
 lXI
 lXI
 xEK
-gLa
+uLD
 ojv
 mYC
 xbI
@@ -113944,7 +114000,7 @@ bkP
 pOi
 lXI
 kVs
-gLa
+uLD
 bTw
 bBv
 fga
@@ -121115,7 +121171,7 @@ vNu
 tQa
 rmX
 aoe
-aoe
+oAi
 une
 ndo
 fiZ
