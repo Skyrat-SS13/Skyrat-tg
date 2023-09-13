@@ -11,9 +11,9 @@
 	update_appearance()
 
 /obj/item/melee/sabre
-	force = 20
-	wound_bonus = 5 // 5 less
-	bare_wound_bonus = 20 // 5 less: Both down slightly, to make up for the damage buff, since it'd get a bit wacky ontop of the armor pen.
+	force = 20 // Original: 15
+	wound_bonus = 5 // Original: 10
+	bare_wound_bonus = 20 // Original: 25 Both down slightly, to make up for the damage buff, since it'd get a bit wacky ontop of the armor pen.
 
 /obj/item/melee/sabre/cargo
 	name = "authentic shamshir sabre"
