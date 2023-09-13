@@ -658,7 +658,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/bra/swimsuit
+/datum/sprite_accessory/bra/halterneck_alt
 	name = "Bra - Halterneck (Alt)"
 	icon_state = "bra_swimming"
 	gender = FEMALE
