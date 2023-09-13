@@ -22,7 +22,7 @@
 		/obj/item/trash/tray,
 	)
 	/// List of items the drive detects as trash
-	var/list/disposable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
+	var/static/list/disposable_items = list(/obj/item/trash/waffles,
 		/obj/item/trash/waffles,
 		/obj/item/broken_bottle,
 		/obj/item/plate_shard,
