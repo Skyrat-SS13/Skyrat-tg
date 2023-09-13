@@ -2,7 +2,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Tabs, Button, BlockQuote } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike } from 'common/react';
-import { ObjectivePrintout, Objective } from './common/Objectives';
+import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
 
 const hereticRed = {
   color: '#e03c3c',
@@ -49,11 +49,12 @@ type Info = {
   total_sacrifices: number;
   ascended: BooleanLike;
   objectives: Objective[];
+  can_change_objective: BooleanLike;
 };
 
 const IntroductionSection = (props, context) => {
-  const { data } = useBackend<Info>(context); // SKYRAT EDIT BELOW - ORIGINAL: In order to ascend, you have these tasks to fulfill:
-  const { objectives } = data;
+  const { data, act } = useBackend<Info>(context);
+  const { objectives, ascended, can_change_objective } = data;
 
   return (
     <Stack justify="space-evenly" height="100%" width="100%">
@@ -62,20 +63,34 @@ const IntroductionSection = (props, context) => {
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
-
             <GuideSection />
             <Stack.Divider />
-
             <InformationSection />
             <Stack.Divider />
 
-            <Stack.Item>
-              <ObjectivePrintout
-                fill
-                titleMessage="Your OPFOR objectives are your primary ones, but to ascend, your objectives are:"
-                objectives={objectives}
-              />
-            </Stack.Item>
+            {!ascended && (
+              <Stack.Item>
+                <ObjectivePrintout
+                  fill
+                  titleMessage={
+                    can_change_objective
+                      ? 'Your OPFOR objectives are your primary ones, but in order to ascend, you have these tasks to fulfill' /* SKYRAT EDIT CHANGE - opfor objectives */
+                      : 'Your OPFOR objectives are your primary ones. Use your dark knowledge to fulfill your personal goal' /* SKYRAT EDIT CHANGE - opfor objectives  */
+                  }
+                  objectives={objectives}
+                  objectiveFollowup={
+                    <ReplaceObjectivesButton
+                      can_change_objective={can_change_objective}
+                      button_title={'Reject Ascension'}
+                      button_colour={'red'}
+                      button_tooltip={
+                        'Turn your back on the Mansus to accomplish a task of your choosing. Selecting this option will prevent you from ascending!'
+                      }
+                    />
+                  }
+                />
+              </Stack.Item>
+            )}
           </Stack>
         </Section>
       </Stack.Item>
@@ -292,7 +307,7 @@ export const AntagInfoHeretic = (props, context) => {
   const [currentTab, setTab] = useLocalState(context, 'currentTab', 0);
 
   return (
-    <Window width={675} height={625}>
+    <Window width={675} height={635}>
       <Window.Content
         style={{
           'background-image': 'none',

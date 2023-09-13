@@ -153,7 +153,6 @@
 #define ANNOUNCER_FUNGI "announcer_fungi"
 #define ANNOUNCER_DEPARTMENTAL "announcer_departmental"
 #define ANNOUNCER_SHUTTLE "announcer_shuttle"
-#define ANNOUNCER_VOTE "announcer_vote"
 //SKYRAT EDIT END
 
 
