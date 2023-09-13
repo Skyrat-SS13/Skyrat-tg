@@ -9,13 +9,9 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/dish_drive
 	pass_flags = PASSTABLE
-<<<<<<< HEAD
-	var/list/collectable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
-=======
 	/// List of dishes the drive can hold
-	var/static/list/collectable_items = list(
+	var/list/collectable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
 		/obj/item/trash/waffles,
->>>>>>> 1a40ea0f3df (Dish Drive QOL features (#78254))
 		/obj/item/broken_bottle,
 		/obj/item/kitchen/fork,
 		/obj/item/plate,
@@ -25,13 +21,9 @@
 		/obj/item/shard,
 		/obj/item/trash/tray,
 	)
-<<<<<<< HEAD
-	var/list/disposable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
-=======
 	/// List of items the drive detects as trash
-	var/static/list/disposable_items = list(
+	var/list/disposable_items = list(/obj/item/trash/waffles, // SKYRAT EDIT CHANGE - non-static list
 		/obj/item/trash/waffles,
->>>>>>> 1a40ea0f3df (Dish Drive QOL features (#78254))
 		/obj/item/broken_bottle,
 		/obj/item/plate_shard,
 		/obj/item/shard,
@@ -43,15 +35,12 @@
 	var/transmit_enabled = TRUE
 	/// List of dishes currently inside
 	var/list/dish_drive_contents
-<<<<<<< HEAD
-	var/succrange = 4 //SKYRAT EDIT ADDITION - SEC_HAUL
-	var/binrange = 7 //SKYRAT EDIT ADDITION - SEC_HAUL
-=======
 	/// Distance this is capable of sucking dishes up over. (2 + servo tier)
 	var/suck_distance = 0
+	var/succrange = 4 //SKYRAT EDIT ADDITION - SEC_HAUL
+	var/binrange = 7 //SKYRAT EDIT ADDITION - SEC_HAUL
 
 	COOLDOWN_DECLARE(time_since_dishes)
->>>>>>> 1a40ea0f3df (Dish Drive QOL features (#78254))
 
 /obj/machinery/dish_drive/Initialize(mapload)
 	. = ..()
@@ -137,21 +126,13 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
-<<<<<<< HEAD
-	for(var/obj/item/I in view(succrange, src)) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/obj/item/I in view(4, src))
-		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume) && (I.contents.len < 1))
-			if(I.Adjacent(src))
-				LAZYADD(dish_drive_contents, I)
-				visible_message(span_notice("[src] beams up [I]!"))
-				I.forceMove(src)
-=======
+
 	for(var/obj/item/dish in view(2 + suck_distance, src))
 		if(is_type_in_list(dish, collectable_items) && dish.loc != src && (!dish.reagents || !dish.reagents.total_volume) && (dish.contents.len < 1))
 			if(dish.Adjacent(src))
 				LAZYADD(dish_drive_contents, dish)
 				visible_message(span_notice("[src] beams up [dish]!"))
 				dish.forceMove(src)
->>>>>>> 1a40ea0f3df (Dish Drive QOL features (#78254))
 				playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 				flick("synthesizer_beam", src)
 			else
