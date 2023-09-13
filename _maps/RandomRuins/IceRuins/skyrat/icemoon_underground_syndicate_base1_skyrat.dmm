@@ -871,12 +871,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
-"gk" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/light_switch/directional/north,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/testlab)
 "gm" = (
 /obj/structure/bookcase/random/reference,
 /turf/open/floor/wood/tile,
@@ -1974,16 +1968,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
-"pO" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/main)
 "pU" = (
 /obj/machinery/camera/autoname/directional/west{
 	network = list("intd13")
@@ -2032,6 +2016,12 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
+/obj/structure/table,
+/obj/machinery/fax{
+	fax_name = "Interdyne";
+	pixel_y = 7;
+	name = "Interdyne Fax Machine"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "qH" = (
@@ -3361,12 +3351,6 @@
 /area/ruin/syndicate_lava_base/engineering)
 "DX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/table,
-/obj/machinery/fax{
-	fax_name = "Interdyne";
-	pixel_y = 7;
-	name = "Interdyne Fax Machine"
-	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "DY" = (
@@ -3911,7 +3895,10 @@
 /area/ruin/syndicate_lava_base/cargo)
 "Ip" = (
 /obj/machinery/button/door/directional/west{
-	id = "IDyneWC"
+	id = "IDyneWC";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	name = "Door Lock"
 	},
 /obj/machinery/dryer{
 	pixel_x = 8;
@@ -4334,6 +4321,13 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/south,
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "Mt" = (
@@ -6328,7 +6322,7 @@ yF
 yF
 DY
 kf
-gk
+kr
 kw
 Lf
 wa
@@ -6969,7 +6963,7 @@ Nv
 jI
 RV
 Zl
-pO
+Zo
 Zo
 Zo
 Zo
@@ -7067,7 +7061,7 @@ aa
 ac
 ac
 ab
-ab
+AR
 RV
 RV
 RV
