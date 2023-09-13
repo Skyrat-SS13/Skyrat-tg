@@ -458,12 +458,12 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
 	name = "P-T Abandoned Crew"
-	prompt_name = "an abandoned cargo member"
+	prompt_name = "a port deck worker"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	you_are_text = "You are an abandoned member of Port Tarkon, an attempt to create steady living vaults within large asteroids. You have no real idea who Interdyne is, And your last recollection of NT is the producer of some... Less than ethically obtained goods on the port."
-	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
+	you_are_text = "You are a member of Tarkon Industries, recently assigned to a recently recovered asset known as Port Tarkon. Your supervisors are the Ensign and Site Director"
+	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked to help finish construction and carry on any tasks given by the site director. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	important_text = "You are not to abandon Port Tarkon. Check other sleepers for alternative jobs. Listen to the Site Director and Ensign."
 	outfit = /datum/outfit/tarkon
 	spawner_job_path = /datum/job/tarkon
 	loadout_enabled = TRUE
@@ -497,7 +497,7 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
-	prompt_name = "an abandoned scientist"
+	prompt_name = "a port researcher"
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
@@ -510,7 +510,7 @@
 	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
-	prompt_name = "an abandoned medical resident"
+	prompt_name = "a port trauma medic"
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
@@ -523,7 +523,7 @@
 	r_pocket = /obj/item/stack/medical/suture/medicated
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/engi
-	prompt_name = "an abandoned maintenance engineer"
+	prompt_name = "a port maintenance engineer"
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
@@ -536,7 +536,7 @@
 	r_pocket = /obj/item/stack/cable_coil
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sec
-	prompt_name = "an abandoned security deputy"
+	prompt_name = "a port security member"
 	outfit = /datum/outfit/tarkon/sec
 
 /datum/outfit/tarkon/sec
@@ -554,16 +554,16 @@
 	prompt_name = "an abandoned ensign"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-o"
-	you_are_text = "You were tasked by Tarkon Industries to Port Tarkon as a low-level command member, Holding no actual command, but as just another scapegoat to blame should it failed... And failed it did. Scan were never done when the overseer commanded construction, and you were left, forever branded with a task not possible for you"
-	flavour_text = "The rest of command bailed, and left as nothing more than a glorified assistant, you are held responsible should you be unable to wrangle what hopes of success Headquarters has. Find the blueprints and keep them close, Lest looters and raiders plan to seize what isn't theirs. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "People aren't obligated to listen to you, and you are, otherwise, just another body with some remnant of control. Make sure important items aren't traded and do your best to survive in the hellscape left for you. Unwelcomed and uninvited guests are not obligated to your kindness."
+	you_are_text = "You were tasked by Tarkon Industries to Port Tarkon as a low-level command member. Your superior is the site director."
+	flavour_text = "Second in command, you are usually tasked with outward missions with other tarkon members while the site director stays at the port. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	important_text = "You are not to abandon Port Tarkon without reason. You are allowed to travel within available Z-levels and to the station, and are allowed to hold exploration parties."
 	outfit = /datum/outfit/tarkon/ensign
 	spawner_job_path = /datum/job/tarkon
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
 	name = "Port Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/misc/skyrat/utility
-	ears = /obj/item/radio/headset/tarkon/ensign
+	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate
 	gloves = /obj/item/clothing/gloves/combat
@@ -575,7 +575,7 @@
 	var/datum/bank_account/offstation_bank_account = new(owner.real_name)
 	owner.account_id = offstation_bank_account.account_id
 	offstation_bank_account.replaceable = FALSE
-	offstation_bank_account.account_job = new /datum/job/ghost_role //note to self: Replace later
+	offstation_bank_account.account_job = new /datum/job/ghost_role
 	owner.add_mob_memory(/datum/memory/key/account, remembered_id = owner.account_id)
 	if(owner.wear_id)
 		var/obj/item/card/id/id_card = owner.wear_id
@@ -597,8 +597,8 @@
 	freqlock = TRUE
 	keyslot = new /obj/item/encryptionkey/headset_cargo/tarkon
 
-/obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
-	name = "tarkon ensign headset"
+/obj/item/radio/headset/tarkon/command //spoiler for upcoming update
+	name = "tarkon command headset"
 	desc = "A headset personally handed to trusted crew of Tarkon. It fills you with will to do... Something."
 	command = TRUE
 
@@ -656,25 +656,38 @@
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personnel"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
+	department_color = COLOR_DARK_CYAN
+	subdepartment_color = COLOR_DARK_BROWN
+	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
+	subdepartment_color = COLOR_DARK_RED
+	sechud_icon_state = SECHUD_SECURITY_OFFICER
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
 	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
+	subdepartment_color = COLOR_MEDICAL_BLUE
+	sechud_icon_state = SECHUD_MEDICAL_DOCTOR
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
+	subdepartment_color = COLOR_ENGINEERING_ORANGE
+	sechud_icon_state = SECHUD_STATION_ENGINEER
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
 	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
+	subdepartment_color = COLOR_SCIENCE_PINK
+	sechud_icon_state = SECHUD_SCIENTIST
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = "Tarkon Ensign"
 	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
+	subdepartment_color = COLOR_COMMAND_BLUE
+	sechud_icon_state = SECHUD_BLUESHIELD
 
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
 	name = "P-T field researcher's access card"
