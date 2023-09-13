@@ -331,23 +331,47 @@
 
 /datum/ash_ritual/revive_animal/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
+	if(!revive_simple(success_rune))
+		revive_basic(success_rune)
+
+/datum/ash_ritual/revive_animal/proc/revive_simple(obj/effect/ash_rune/success_rune)
 	var/turf/src_turf = get_turf(success_rune)
 
 	var/mob/living/simple_animal/find_animal = locate() in src_turf
 
 	if(!find_animal)
-		return
+		return FALSE
 
 	if(find_animal.stat != DEAD)
-		return
+		return FALSE
 
 	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
-		return
+		return FALSE
 
-	find_animal.faction = list(FACTION_NEUTRAL)
+	find_animal.faction = list(FACTION_ASHWALKER)
 
 	if(ishostile(find_animal))
 		var/mob/living/simple_animal/hostile/hostile_animal = find_animal
 		hostile_animal.attack_same = FALSE
 
 	find_animal.revive(HEAL_ALL)
+	return TRUE
+
+/datum/ash_ritual/revive_animal/proc/revive_basic(obj/effect/ash_rune/success_rune)
+	var/turf/src_turf = get_turf(success_rune)
+
+	var/mob/living/basic/find_animal = locate() in src_turf
+
+	if(!find_animal)
+		return FALSE
+
+	if(find_animal.health > 0)
+		return FALSE
+
+	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
+		return FALSE
+
+	find_animal.faction = list(FACTION_ASHWALKER)
+
+	find_animal.revive()
+	return TRUE

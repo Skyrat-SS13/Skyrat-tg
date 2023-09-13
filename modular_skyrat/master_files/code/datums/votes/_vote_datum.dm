@@ -1,4 +1,3 @@
-
 /**
  * # Vote Singleton
  *
@@ -6,4 +5,4 @@
  */
 /datum/vote
 	/// The sound effect played to everyone when this vote is initiated.
-	vote_sound = ANNOUNCER_VOTE
+	vote_sound = 'sound/misc/announce_dig.ogg'
