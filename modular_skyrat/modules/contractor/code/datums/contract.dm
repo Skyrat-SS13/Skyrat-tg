@@ -213,8 +213,8 @@
 
 	for(var/i in 1 to 2)
 		var/obj/item/bodypart/limb = target.get_bodypart(pick_n_take(parts_to_fuck_up))
-		var/datum/wound/blunt/severe/severe_wound_type = /datum/wound/blunt/severe
-		var/datum/wound/blunt/critical/critical_wound_type = /datum/wound/blunt/critical
+		var/datum/wound/blunt/bone/severe/severe_wound_type = /datum/wound/blunt/bone/severe
+		var/datum/wound/blunt/bone/critical/critical_wound_type = /datum/wound/blunt/bone/critical
 		limb.receive_damage(brute = WOUND_MINIMUM_DAMAGE, wound_bonus = rand(initial(severe_wound_type.threshold_minimum), initial(critical_wound_type.threshold_minimum) + 10))
 		target.update_damage_overlays()
 
