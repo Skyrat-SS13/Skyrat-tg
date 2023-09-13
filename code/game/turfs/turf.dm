@@ -647,27 +647,11 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		throw_up = locate() in src
 	if(isnull(throw_up))
 		return
-<<<<<<< HEAD
-	// Apply the proper icon set based on vomit type
-	if(vomit_type == VOMIT_PURPLE)
-		vomit.icon_state = "vomitpurp_[pick(1,4)]"
-	else if (vomit_type == VOMIT_TOXIC)
-		vomit.icon_state = "vomittox_[pick(1,4)]"
-	//SKYRAT EDIT START - Nanite Slurry
-	else if (vomit_type == VOMIT_NANITE)
-		vomit.name = "metallic slurry"
-		vomit.desc = "A puddle of metallic slurry that looks vaguely like very fine sand. It almost seems like it's moving..."
-		vomit.icon_state = "vomitnanite_[pick(1,4)]"
-	// SKYRAT EDIT END
-	if (purge_ratio && iscarbon(M))
-		clear_reagents_to_vomit_pool(M, vomit, purge_ratio)
-=======
 
 	if(!iscarbon(vomiter) || (purge_ratio == 0))
 		return
 
 	clear_reagents_to_vomit_pool(vomiter, throw_up, purge_ratio)
->>>>>>> a7060641bb0 (Converts `vomit()` to use bitflags (#78191))
 
 /proc/clear_reagents_to_vomit_pool(mob/living/carbon/M, obj/effect/decal/cleanable/vomit/V, purge_ratio = 0.1)
 	var/obj/item/organ/internal/stomach/belly = M.get_organ_slot(ORGAN_SLOT_STOMACH)
