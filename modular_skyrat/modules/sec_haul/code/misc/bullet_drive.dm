@@ -6,7 +6,7 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/dish_drive/bullet
 	collectable_items = list(/obj/item/ammo_casing)
-	succrange = 10
+	suck_distance = 8
 	binrange = 10
 
 /obj/item/circuitboard/machine/dish_drive/bullet

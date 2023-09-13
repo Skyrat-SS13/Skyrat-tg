@@ -37,7 +37,6 @@
 	var/list/dish_drive_contents
 	/// Distance this is capable of sucking dishes up over. (2 + servo tier)
 	var/suck_distance = 0
-	var/succrange = 4 //SKYRAT EDIT ADDITION - SEC_HAUL
 	var/binrange = 7 //SKYRAT EDIT ADDITION - SEC_HAUL
 
 	COOLDOWN_DECLARE(time_since_dishes)
