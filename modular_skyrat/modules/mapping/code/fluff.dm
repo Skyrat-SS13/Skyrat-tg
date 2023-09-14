@@ -7,9 +7,11 @@
 	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
-/obj/item/card/id/away/tarkon
+/obj/item/card/id/advanced/tarkon
 	name = "Tarkon visitor's pass"
 	desc = "A dust-collected visitors pass, A small tagline reading \"Port Tarkon, The first step to Civilian Partnership in Space Homesteading\"."
+	icon = 'modular_skyrat/modules/tarkon/icons/misc/card.dmi'
+	icon_state = "tarkon"
 	trim = /datum/id_trim/away/tarkon
 
 /* ----------------- Lore ----------------- */

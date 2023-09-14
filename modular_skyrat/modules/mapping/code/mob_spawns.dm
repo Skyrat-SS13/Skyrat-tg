@@ -478,7 +478,8 @@
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id/away/tarkon/cargo
+	id = /obj/item/card/id/advanced/tarkon/cargo
+	id_trim = /datum/id_trim/away/tarkon
 	l_pocket = /obj/item/card/mining_point_card
 	r_pocket = /obj/item/mining_voucher
 	ears = /obj/item/radio/headset/tarkon
@@ -504,7 +505,8 @@
 	name = "Port Tarkon Science Outfit"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
-	id = /obj/item/card/id/away/tarkon/sci
+	id = /obj/item/card/id/advanced/tarkon/sci
+	id_trim = /datum/id_trim/away/tarkon/sci
 	l_hand = /obj/item/inducer
 	l_pocket = null
 	r_pocket = /obj/item/stock_parts/cell/high
@@ -517,7 +519,8 @@
 	name = "Port Tarkon Medical Outfit"
 	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
-	id = /obj/item/card/id/away/tarkon/med
+	id = /obj/item/card/id/advanced/tarkon/med
+	id_trim = /datum/id_trim/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
 	l_pocket = /obj/item/healthanalyzer
 	r_pocket = /obj/item/stack/medical/suture/medicated
@@ -530,7 +533,8 @@
 	name = "Port Tarkon Engineering Outfit"
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
-	id = /obj/item/card/id/away/tarkon/engi
+	id = /obj/item/card/id/advanced/tarkon/engi
+	id_trim = /datum/id_trim/away/tarkon/eng
 	gloves = /obj/item/clothing/gloves/combat
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	r_pocket = /obj/item/stack/cable_coil
@@ -544,7 +548,8 @@
 	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
 	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
-	id = /obj/item/card/id/away/tarkon/sec
+	id = /obj/item/card/id/advanced/tarkon/sec
+	id_trim = /datum/id_trim/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
 	r_pocket = /obj/item/grenade/barrier
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
@@ -564,7 +569,8 @@
 	name = "Port Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/misc/skyrat/utility
 	ears = /obj/item/radio/headset/tarkon/command
-	id = /obj/item/card/id/away/tarkon/ensign
+	id = /obj/item/card/id/advanced/tarkon/ensign
+	id_trim = /datum/id_trim/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate
 	gloves = /obj/item/clothing/gloves/combat
 	l_pocket = null
@@ -656,66 +662,74 @@
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personnel"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	department_color = COLOR_DARK_CYAN
-	subdepartment_color = COLOR_DARK_BROWN
+	department_color = COLOR_DARK_BROWN
+	department_state = "department"
+	subdepartment_color = COLOR_DARK_CYAN
 	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
+	trim_state = "trim_cargotechnician"
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	subdepartment_color = COLOR_DARK_RED
+	department_color = COLOR_DARK_RED
 	sechud_icon_state = SECHUD_SECURITY_OFFICER
+	trim_state = "trim_securityofficer"
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
 	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	subdepartment_color = COLOR_MEDICAL_BLUE
+	department_color = COLOR_MEDICAL_BLUE
 	sechud_icon_state = SECHUD_MEDICAL_DOCTOR
+	trim_state = "trim_medicaldoctor"
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
-	subdepartment_color = COLOR_ENGINEERING_ORANGE
+	department_color = COLOR_ENGINEERING_ORANGE
 	sechud_icon_state = SECHUD_STATION_ENGINEER
+	trim_state = "trim_stationengineer"
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
 	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	subdepartment_color = COLOR_SCIENCE_PINK
+	department_color = COLOR_SCIENCE_PINK
 	sechud_icon_state = SECHUD_SCIENTIST
+	trim_state = "trim_scientist"
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = "Tarkon Ensign"
 	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
-	subdepartment_color = COLOR_COMMAND_BLUE
+	department_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = SECHUD_BLUESHIELD
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_blueshield"
 
-/obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
+/obj/item/card/id/advanced/tarkon/sci  //original tarkon ID is defined in fluff
 	name = "P-T field researcher's access card"
 	desc = "An access card designated for \"the science team\". You are forgotten basically immediately when it comes to the lab."
 	trim = /datum/id_trim/away/tarkon/sci
 
-/obj/item/card/id/away/tarkon/med
+/obj/item/card/id/advanced/tarkon/med
 	name = "P-T trauma medic's access card"
 	desc = "An access card designated for \"medical staff\". You provide the medic bags."
 	trim = /datum/id_trim/away/tarkon/med
 
-/obj/item/card/id/away/tarkon/sec
+/obj/item/card/id/advanced/tarkon/sec
 	name = "P-T resident deputy's access card"
 	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
 	trim = /datum/id_trim/away/tarkon/sec
 
-/obj/item/card/id/away/tarkon/cargo
+/obj/item/card/id/advanced/tarkon/cargo
 	name = "P-T cargo hauler's access card"
 	desc = "An access card designated for \"cargo's finest\". You're also a part time space miner, when cargonia is quiet."
 	trim = /datum/id_trim/away/tarkon
 
 
-/obj/item/card/id/away/tarkon/engi
+/obj/item/card/id/advanced/tarkon/engi
 	name = "P-T maintenance engineer's access card"
 	desc = "An access card designated for \"engineering staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
 	trim = /datum/id_trim/away/tarkon/eng
 
-/obj/item/card/id/away/tarkon/ensign
+/obj/item/card/id/advanced/tarkon/ensign
 	name = "Tarkon ensign's access card"
 	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
 	trim = /datum/id_trim/away/tarkon/ensign
