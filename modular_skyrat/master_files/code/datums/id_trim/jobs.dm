@@ -19,32 +19,34 @@
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_ASSEMBLY_BLACK
 
-
-/datum/id_trim/job/chief_engineer/New()
-	. = ..()
-
-	minimal_access |= ACCESS_WEAPONS
-
 /datum/id_trim/job/atmospheric_technician/New()
 	. = ..()
 
 	minimal_access |= ACCESS_ENGINE_EQUIP
 
+/datum/id_trim/job/chief_engineer/New()
+	. = ..()
+
+	minimal_access |= ACCESS_WEAPONS
+	minimal_access -= list(ACCESS_SERVICE, ACCESS_CARGO, ACCESS_SCIENCE, ACCESS_SECURITY, ACCESS_MEDICAL, ACCESS_BRIG_ENTRANCE)
+
 /datum/id_trim/job/chief_medical_officer/New()
 	. = ..()
 
 	minimal_access |= ACCESS_WEAPONS
+	minimal_access -= list(ACCESS_SERVICE, ACCESS_CARGO, ACCESS_SCIENCE, ACCESS_SECURITY, ACCESS_ENGINEERING, ACCESS_BRIG_ENTRANCE)
 
 /datum/id_trim/job/research_director/New()
 	. = ..()
 
 	minimal_access |= ACCESS_WEAPONS
-
+	minimal_access -= list(ACCESS_SERVICE, ACCESS_CARGO, ACCESS_MEDICAL, ACCESS_SECURITY, ACCESS_ENGINEERING, ACCESS_BRIG_ENTRANCE)
 
 /datum/id_trim/job/head_of_personnel/New()
 	. = ..()
 
 	minimal_access |= ACCESS_WEAPONS
+	minimal_access -= list(ACCESS_MEDICAL, ACCESS_CARGO, ACCESS_SCIENCE, ACCESS_SECURITY, ACCESS_ENGINEERING, ACCESS_BRIG_ENTRANCE)
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
