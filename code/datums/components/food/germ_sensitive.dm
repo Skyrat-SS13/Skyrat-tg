@@ -1,7 +1,7 @@
 // Don't eat off the floor or hold parent object with dirty hands, you'll get sick
 
 /// Time needed for bacteria to infect the parent object
-#define GERM_EXPOSURE_DELAY (5 SECONDS) // Five-second rule
+#define GERM_EXPOSURE_DELAY (30 SECONDS) // Five-second rule	//Skyrat Edit: Original (5 SECONDS)
 
 /// Possible diseases
 GLOBAL_LIST_INIT(floor_diseases, list(
