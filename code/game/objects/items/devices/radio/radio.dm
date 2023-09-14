@@ -274,9 +274,10 @@
 		return
 	if(!talking_movable.try_speak(message))
 		return
-
-	if(use_command)
+	//SKYRAT EDIT BEGIN: Command radio mode is only usable during emergencies. This brings loud mode into compliance with server policy.
+	if(use_command && SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_VIOLET) // Violet is the first "emergency" tier on the alert list(2 over Blue's 1) and our official "is it an emergency" system is based on alert levels.
 		spans |= SPAN_COMMAND
+	// SKYRAT EDIT END
 
 	flick_overlay_view(overlay_mic_active, 5 SECONDS)
 
