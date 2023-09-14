@@ -48,6 +48,13 @@
 	minimal_access |= ACCESS_WEAPONS
 	minimal_access -= list(ACCESS_MEDICAL, ACCESS_CARGO, ACCESS_SCIENCE, ACCESS_SECURITY, ACCESS_ENGINEERING, ACCESS_BRIG_ENTRANCE)
 
+/datum/id_trim/job/quartermaster/New()
+	. = ..()
+
+	minimal_access |= ACCESS_WEAPONS
+	minimal_access -= list(ACCESS_MEDICAL, ACCESS_SERVICE, ACCESS_SCIENCE, ACCESS_SECURITY, ACCESS_ENGINEERING, ACCESS_BRIG_ENTRANCE) 
+	// Fun fact: Quartermaster does not have the additional accesses other /tg/ heads have, but this may be an oversight given the QM's recent-ish promotion to full head of staff upstrean so we'll keep this here on the off-chance it's fixed upstream.
+
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
