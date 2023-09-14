@@ -49,7 +49,7 @@
 	uniform = /obj/item/clothing/under/rank/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield/jacket
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	id = /obj/item/card/id/advanced/centcom
+	id = /obj/item/card/id/advanced/silver
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
