@@ -208,7 +208,11 @@
 	SIGNAL_HANDLER
 	. = NONE
 
+<<<<<<< HEAD
 	if(!CheckToolReach(src, source.target, cast_range))
+=======
+	if(!isturf(source.origin.loc) || !isturf(source.target.loc) || !CheckToolReach(src, source.target, cast_range))
+>>>>>>> db0b104f89f ([NO GBP] A big blunder with my latest fishing fix PR (#78344))
 		SEND_SIGNAL(source, COMSIG_FISHING_LINE_SNAPPED) //Stepped out of range or los interrupted
 		return BEAM_CANCEL_DRAW
 
