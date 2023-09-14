@@ -23,6 +23,8 @@
 	light_range = 4
 	light_power = 1
 	light_on = FALSE
+	/// If we've been forcibly disabled for a temporary amount of time.
+	COOLDOWN_DECLARE(disabled_time)
 	/// Can we toggle this light on and off (used for contexual screentips only)
 	var/toggle_context = TRUE
 	/// The sound the light makes when it's turned on
@@ -32,16 +34,15 @@
 	/// Is the light turned on or off currently
 	var/on = FALSE
 
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
-/*
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE
 	update_brightness()
 	register_context()
-*/
-// SKYRAT EDIT REMOVAL END
+
+	if(toggle_context)
+		RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 
 /obj/item/flashlight/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	// single use lights can be toggled on once
@@ -68,19 +69,21 @@
 	if(light_system == STATIC_LIGHT)
 		update_light()
 
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
-/*
-/obj/item/flashlight/proc/toggle_light()
+/obj/item/flashlight/proc/toggle_light(mob/user)
+	var/disrupted = FALSE
+	//playsound(src, on ? sound_on : sound_off, 40, TRUE) SKYRAT EDIT REMOVAL - SOUND HANDLED IN MODULAR FLASHLIGHT.DM
 	on = !on
-	playsound(src, on ? sound_on : sound_off, 40, TRUE)
+	if(!COOLDOWN_FINISHED(src, disabled_time))
+		if(user)
+			balloon_alert(user, "disrupted!")
+			on = FALSE
+			disrupted = TRUE
 	update_brightness()
 	update_item_action_buttons()
-	return TRUE
+	return !disrupted
 
 /obj/item/flashlight/attack_self(mob/user)
-	toggle_light()
-*/
-// SKYRAT EDIT REMOVAL END
+	toggle_light(user)
 
 /obj/item/flashlight/attack_hand_secondary(mob/user, list/modifiers)
 	attack_self(user)
@@ -262,6 +265,14 @@
 	if(istype(user) && dir != user.dir)
 		setDir(user.dir)
 
+/// when hit by a light disruptor - turns the light off, forces the light to be disabled for a few seconds
+/obj/item/flashlight/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	if(on)
+		toggle_light()
+	COOLDOWN_START(src, disabled_time, disrupt_duration)
+	return TRUE
+
 /obj/item/flashlight/pen
 	name = "penlight"
 	desc = "A pen-sized light, used by medical staff. It can also be used to create a hologram to alert people of incoming medical assistance."
@@ -420,16 +431,15 @@
 	damtype = BURN
 	. = ..()
 
-/obj/item/flashlight/flare/turn_off() //SKYRAT EDIT CHANGE
-	//on = FALSE SKYRAT EDIT REMOVAL
+/obj/item/flashlight/flare/proc/turn_off()
+	on = FALSE
 	name = initial(name)
 	attack_verb_continuous = initial(attack_verb_continuous)
 	attack_verb_simple = initial(attack_verb_simple)
 	hitsound = initial(hitsound)
 	force = initial(force)
 	damtype = initial(damtype)
-	//update_brightness() - SKYRAT EDIT MOVED TO PARENT
-	. = ..() //SKYRAT EDIT - MODULAR PARENT PROC
+	update_brightness()
 
 /obj/item/flashlight/flare/extinguish()
 	. = ..()
@@ -749,11 +759,9 @@
 		turn_off()
 		STOP_PROCESSING(SSobj, src)
 
-/* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
 	update_appearance(UPDATE_ICON)
-*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()

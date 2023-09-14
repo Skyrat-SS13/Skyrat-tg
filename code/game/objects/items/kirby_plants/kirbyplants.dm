@@ -75,21 +75,6 @@
 	var/next = WRAP(current+1,1,length(random_plant_states))
 	icon_state = random_plant_states[next]
 
-/obj/item/kirbyplants/random
-	icon = 'icons/obj/fluff/flora/_flora.dmi'
-	icon_state = "random_plant"
-
-/obj/item/kirbyplants/random/Initialize(mapload)
-	. = ..()
-	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
-	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
-	if(!random_plant_states)
-		generate_states()
-	var/current = random_plant_states.Find(icon_state)
-	var/next = WRAP(current+1,1,length(random_plant_states))
-	base_icon_state = random_plant_states[next]
-	update_appearance(UPDATE_ICON)
-
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
 	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 24)
@@ -107,7 +92,8 @@
 
 /obj/item/kirbyplants/random/Initialize(mapload)
 	. = ..()
-	icon = 'icons/obj/fluff/flora/plants.dmi'
+	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
+	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
 	randomize_base_icon_state()
 
 //Handles randomizing the icon during initialize()
