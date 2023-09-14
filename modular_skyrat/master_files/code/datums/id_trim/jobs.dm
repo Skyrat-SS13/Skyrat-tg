@@ -70,7 +70,7 @@
 	extra_access = list()
 	minimal_access = list(ACCESS_COURT, ACCESS_WEAPONS,
 				ACCESS_COMMAND,
-				ACCESS_MAINT_TUNNELS
+				ACCESS_MAINT_TUNNELS,
 				ACCESS_CENT_GENERAL)
 	minimal_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
