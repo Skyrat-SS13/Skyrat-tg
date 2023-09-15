@@ -1674,21 +1674,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plating,
 /area/station/engineering/atmos/project)
-"aKJ" = (
-/obj/structure/cable,
-/obj/machinery/door/airlock{
-	name = "Maintenance"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
-/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/aft)
 "aKZ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -7652,6 +7637,21 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+"cYR" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock{
+	name = "Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/aft)
 "cYT" = (
 /obj/structure/hedge,
 /obj/structure/sign/poster/contraband/random/directional/east,
@@ -9522,29 +9522,6 @@
 	},
 /turf/open/floor/iron/diagonal,
 /area/station/maintenance/department/engine/atmos)
-"dKq" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light_switch/directional/north{
-	pixel_x = -23
-	},
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/button/door/directional/west{
-	id = "com_guest";
-	name = "Privacy Bolts";
-	normaldoorcontrol = 1;
-	pixel_x = -32;
-	pixel_y = 26;
-	specialfunctions = 4
-	},
-/obj/machinery/button/door/directional/north{
-	id = "com_guest2";
-	name = "Privacy Shutters";
-	pixel_x = -32;
-	pixel_y = 35
-	},
-/turf/open/floor/wood/large,
-/area/station/command/corporate_suite)
 "dKA" = (
 /obj/machinery/door/airlock/external/glass{
 	name = "Abandoned Dock Airlock"
@@ -17959,6 +17936,29 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron/freezer,
 /area/station/service/kitchen/coldroom)
+"gHx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light_switch/directional/north{
+	pixel_x = -23
+	},
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/button/door/directional/west{
+	id = "com_guest";
+	name = "Privacy Bolts";
+	normaldoorcontrol = 1;
+	pixel_x = -32;
+	pixel_y = 35;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door/directional/north{
+	id = "com_guest2";
+	name = "Privacy Shutters";
+	pixel_x = -32;
+	pixel_y = 26
+	},
+/turf/open/floor/wood/large,
+/area/station/command/corporate_suite)
 "gHP" = (
 /obj/structure/hedge,
 /obj/effect/mapping_helpers/broken_floor,
@@ -30211,6 +30211,16 @@
 /obj/structure/broken_flooring/corner/directional/south,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
+"kWB" = (
+/obj/machinery/door/airlock{
+	name = "Kitchen Cold Room"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron/textured_half{
+	dir = 8
+	},
+/area/station/service/bar/backroom)
 "kWF" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/window/right/directional/north{
@@ -41411,13 +41421,6 @@
 /obj/structure/alien/weeds,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/greater)
-"oWl" = (
-/obj/machinery/door/airlock{
-	name = "Maintenance"
-	},
-/obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
-/turf/open/floor/plating,
-/area/station/maintenance/hallway/abandoned_command)
 "oWr" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock{
@@ -41918,16 +41921,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"pfU" = (
-/obj/machinery/door/airlock{
-	name = "Kitchen Cold Room"
-	},
-/obj/effect/mapping_helpers/airlock/abandoned,
-/obj/structure/barricade/wooden/crude,
-/turf/open/floor/iron/textured_half{
-	dir = 8
-	},
-/area/station/service/bar/backroom)
 "pgh" = (
 /obj/effect/turf_decal/tile/red/fourcorners,
 /obj/structure/table/reinforced/titaniumglass,
@@ -65721,6 +65714,13 @@
 /obj/structure/alien/weeds,
 /turf/open/floor/wood,
 /area/station/maintenance/starboard/greater)
+"wKH" = (
+/obj/machinery/door/airlock{
+	name = "Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/hallway/abandoned_command)
 "wKT" = (
 /obj/machinery/computer/security/mining,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -69214,16 +69214,6 @@
 	},
 /turf/open/floor/iron/terracotta/small,
 /area/station/security/checkpoint/escape)
-"xHm" = (
-/obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	id = "com_guest";
-	name = "Privacy Shutter"
-	},
-/turf/open/floor/plating,
-/area/station/command/corporate_suite)
 "xHv" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -93565,7 +93555,7 @@ jVM
 rpg
 jVM
 jVM
-pfU
+kWB
 sON
 vkh
 glb
@@ -98165,7 +98155,7 @@ qjy
 vPP
 otX
 hei
-xHm
+hei
 vPP
 hxJ
 jVe
@@ -98420,7 +98410,7 @@ txh
 vPP
 vPP
 vPP
-dKq
+gHx
 hej
 tdh
 txh
@@ -103819,7 +103809,7 @@ rvp
 xqC
 xqC
 xqC
-oWl
+wKH
 xqC
 wSZ
 sOs
@@ -124436,7 +124426,7 @@ dDB
 dDB
 hyE
 hyE
-aKJ
+cYR
 hyE
 hyE
 dDB
