@@ -36,8 +36,8 @@
 /obj/item/clothing/head/helmet/cin_surplus_helmet
 	name = "\improper GZ-03 combat helmet"
 	desc = "An outdated service helmet previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "helmet_plain"
 	greyscale_config = /datum/greyscale_config/cin_surplus_helmet/object
 	greyscale_config_worn = /datum/greyscale_config/cin_surplus_helmet
@@ -114,8 +114,8 @@
 /obj/item/clothing/under/syndicate/rus_army/cin_surplus
 	name = "\improper CIN combat uniform"
 	desc = "A CIN designed combat uniform that can come in any number of camouflauge variations. Despite this particular design being developed in the years leading up to the CIN-SolFed border war, the uniform is still in use by many member states to this day."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "undersuit_greyscale"
 	greyscale_config = /datum/greyscale_config/cin_surplus_undersuit/object
 	greyscale_config_worn = /datum/greyscale_config/cin_surplus_undersuit
@@ -150,8 +150,8 @@
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	name = "\improper GZ-03 armor vest"
 	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "vest_basic"
 	armor_type = /datum/armor/cin_surplus_armor
 	supports_variations_flags = CLOTHING_NO_VARIATION
@@ -191,8 +191,8 @@
 
 /obj/item/storage/belt/military/cin_surplus
 	desc = "A tactical webbing often used by the CIN's military forces."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "chestrig"
 	worn_icon_state = "chestrig"
 	greyscale_config = /datum/greyscale_config/cin_surplus_chestrig/object
@@ -228,8 +228,8 @@
 /obj/item/storage/backpack/industrial/cin_surplus
 	name = "\improper CIN military backpack"
 	desc = "A rugged backpack often used by the CIN's military forces."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "backpack"
 	greyscale_config = /datum/greyscale_config/cin_surplus_backpack/object
 	greyscale_config_worn = /datum/greyscale_config/cin_surplus_backpack

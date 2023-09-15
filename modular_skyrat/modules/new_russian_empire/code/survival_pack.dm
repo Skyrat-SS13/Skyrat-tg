@@ -2,7 +2,7 @@
 	name = "NRI survival pack"
 	desc = "A box filled with useful emergency items, supplied by the NRI."
 	icon_state = "survival_pack"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/survival_pack.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/survival_pack.dmi'
 	illustration = null
 
 /obj/item/storage/box/nri_survival_pack/PopulateContents()

@@ -4,7 +4,7 @@
 /obj/item/gun/energy/laser/plasma_thrower
 	name = "\improper Tkach 'Zirka' plasma projector"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/guns_32.dmi'
 	icon_state = "plasmathrower"
 
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
@@ -49,7 +49,7 @@
 
 /obj/projectile/beam/laser/plasma_glob
 	name = "plasma globule"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/ammo.dmi'
 	icon_state = "plasma_glob"
 	damage = 10
 	speed = 1.5
@@ -72,7 +72,7 @@
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	recoil = SAWN_OFF_RECOIL
 	weapon_weight = WEAPON_HEAVY
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/guns_32.dmi'
 	icon_state = "shawty_revolver"
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	spread = SAWN_OFF_ACC_PENALTY
@@ -108,14 +108,14 @@
 /obj/item/gun/ballistic/automatic/cin_amr
 	name = "\improper Tkach-Tsuneyo AMR"
 	desc = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, the massively overperforming penetration of which being the reason this weapon was discontinued."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_64.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/guns_64.dmi'
 	base_pixel_x = -16 // This baby is 64 pixels wide
 	pixel_x = -16
-	righthand_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/inhands_64_right.dmi'
-	lefthand_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/inhands_64_left.dmi'
+	righthand_file = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/inhands_64_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/inhands_64_left.dmi'
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/onmob.dmi'
+	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/onmob.dmi'
 	icon_state = "amr"
 	inhand_icon_state = "amr"
 	worn_icon_state = "amr"
@@ -126,7 +126,7 @@
 	can_suppress = FALSE
 	can_bayonet = FALSE
 
-	fire_sound = 'modular_skyrat/modules/novaya_ert/sound/amr_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/new_russian_empire/sound/amr_fire.ogg'
 	fire_sound_volume = 100 // BOOM BABY
 
 	recoil = 4
@@ -164,7 +164,7 @@
 
 /obj/item/ammo_box/magazine/cin_amr
 	name = "anti-materiel magazine (.60 Strela)"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/ammo.dmi'
 	icon_state = "amr_mag"
 	base_icon_state = "amr_mag"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
@@ -176,7 +176,7 @@
 
 /obj/item/ammo_casing/p60strela
 	name = ".60 Strela caseless cartridge"
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/surplus_guns/ammo.dmi'
 	icon_state = "amr_bullet"
 	desc = "A massive block of propellant with an equally massive round sticking out the top of it."
 	caliber = CALIBER_60STRELA

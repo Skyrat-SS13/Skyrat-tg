@@ -30,7 +30,7 @@
 	name = "\improper Szabo-Ivanek service pistol"
 	desc = "A mass produced NRI-made modified reproduction of the PDH-6 line of handguns rechambered in 9×25mm.\
 		'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/pistol.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm_aps
 	burst_size = 3

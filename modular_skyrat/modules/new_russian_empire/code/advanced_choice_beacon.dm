@@ -91,11 +91,11 @@
 /obj/item/storage/toolbox/emergency/turret/nri
 	name = "NRI stationary defense deployment system"
 	desc = "You feel a strange urge to hit this with a wrench."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/turret_deployable.dmi'
 	icon_state = "inventory"
 	inhand_icon_state = "held"
-	lefthand_file = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
-	righthand_file = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	lefthand_file = 'modular_skyrat/modules/new_russian_empire/icons/turret_deployable.dmi'
+	righthand_file = 'modular_skyrat/modules/new_russian_empire/icons/turret_deployable.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	has_latches = FALSE
 
@@ -118,7 +118,7 @@
 	..()
 
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri
-	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
 	stun_projectile = /obj/projectile/bullet/b12mm/rubber

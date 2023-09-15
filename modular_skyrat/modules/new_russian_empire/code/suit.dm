@@ -66,16 +66,16 @@
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"
-	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/new_russian_empire/icons/toggles.dmi'
 	background_icon_state = "bg_nri"
-	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/new_russian_empire/icons/toggles.dmi'
 	button_icon_state = "toggle"
 
 /datum/action/item_action/hev_toggle_notifs/nri
 	name = "Toggle VOSKHOD Suit Notifications"
-	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/new_russian_empire/icons/toggles.dmi'
 	background_icon_state = "bg_nri"
-	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/new_russian_empire/icons/toggles.dmi'
 	button_icon_state = "sound"
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain

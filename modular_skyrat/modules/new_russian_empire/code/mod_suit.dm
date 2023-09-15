@@ -26,8 +26,8 @@
 	)
 	skins = list(
 		"frontline" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/mod.dmi',
-			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/wornmod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/new_russian_empire/icons/mod.dmi',
+			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/new_russian_empire/icons/wornmod.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = HEAD_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,
@@ -115,8 +115,8 @@
 	)
 	skins = list(
 		"policing" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/mod.dmi',
-			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/wornmod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/new_russian_empire/icons/mod.dmi',
+			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/new_russian_empire/icons/wornmod.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = HEAD_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,
@@ -178,7 +178,7 @@
 		and even useful information such as their overall health and wellness. The vitals monitor also comes with a speaker, loud enough \
 		to alert anyone nearby that someone has, in fact, died. This specific unit has a clock and operational ID readout."
 	display_time = TRUE
-	death_sound = 'modular_skyrat/modules/novaya_ert/sound/flatline.ogg'
+	death_sound = 'modular_skyrat/modules/new_russian_empire/sound/flatline.ogg'
 
 ///Blatant copy of the adrenaline boost module.
 /obj/item/mod/module/auto_doc

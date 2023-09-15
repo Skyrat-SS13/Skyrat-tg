@@ -113,13 +113,13 @@ GLOBAL_VAR(first_officer)
 /datum/outfit/pirate/nri/officer
 	name = "NRI Field Officer"
 
-	head = /obj/item/clothing/head/beret/sec/nri
+	head = /obj/item/clothing/head/hats/colonial/nri_police
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
-	neck = /obj/item/clothing/neck/security_cape/armplate
+	neck = /obj/item/clothing/neck/cloak/colonial/nri_police
 
-	uniform = /obj/item/clothing/under/costume/nri/captain
+	uniform = /obj/item/clothing/under/colonial/nri_police
 	suit = null
 
 	gloves = /obj/item/clothing/gloves/combat
@@ -128,7 +128,7 @@ GLOBAL_VAR(first_officer)
 
 	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/nri_police = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/folder/blue/nri_cop
 	r_pocket = /obj/item/storage/pouch/ammo
 

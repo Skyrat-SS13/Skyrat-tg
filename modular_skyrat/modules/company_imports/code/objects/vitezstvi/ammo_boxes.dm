@@ -98,7 +98,7 @@
 	desc = "5.6x40mm ammunition specifically made for civilian use like recreation, hunting, self-defense or LARP. While the package itself lacks any real identification \
 	and does, in fact, appear like a bland green box with a colored stripe, the insides have a boatload of information, \
 	ranging from manufacturer advertisements and intended use to the cartridge's tactical and technical characteristics."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/ammo_boxes.dmi'
+	icon = 'modular_skyrat/modules/new_russian_empire/icons/ammo_boxes.dmi'
 	icon_state = "boxnrifle-lethal"
 	base_icon_state = "boxnrifle-lethal"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
