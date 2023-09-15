@@ -273,6 +273,10 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(istype(W, /obj/item/healthanalyzer))
+				var/obj/item/healthanalyzer/analyzer = W // SKYRAT EDIT ADDITION BEGIN -- EXTRA ROBOTICS HEALTH ANALYZERS
+				if (!analyzer.can_be_used_in_medibot())
+					user?.balloon_alert(user, "no attachment ports!")
+					return // SKYRAT EDIT ADDITION END
 				if(!user.temporarilyRemoveItemFromInventory(W))
 					return
 				healthanalyzer = W.type
