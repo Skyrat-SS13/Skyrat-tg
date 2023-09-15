@@ -118,11 +118,14 @@
 	return hook?.reason_we_cant_fish(target_fish_source)
 
 /obj/item/fishing_rod/proc/consume_bait(atom/movable/reward)
-	if(!reward)
+	// catching things that aren't fish or alive mobs doesn't consume baits.
+	if(isnull(reward) || isnull(bait))
 		return
-	var/mob/living/caught_mob = isliving(reward) ? reward : null
-	// catching non-fish, non-mob movables, or dead mobs (probably from a chasm) doesn't consume baits.
-	if(!bait || !isfish(reward) || !caught_mob || (caught_mob && caught_mob.stat == DEAD))
+	if(isliving(reward))
+		var/mob/living/caught_mob = reward
+		if(caught_mob.stat == DEAD)
+			return
+	else if(!isfish(reward))
 		return
 	QDEL_NULL(bait)
 	update_icon()
