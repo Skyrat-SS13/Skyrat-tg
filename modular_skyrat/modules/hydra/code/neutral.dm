@@ -28,7 +28,6 @@
 	desc = "Go back to speaking as a whole."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
-	var/firstuse = TRUE
 
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/hydra = owner
