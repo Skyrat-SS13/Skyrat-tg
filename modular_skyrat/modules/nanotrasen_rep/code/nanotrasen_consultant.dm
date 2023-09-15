@@ -73,14 +73,14 @@
 	id_trim = /datum/id_trim/job/nanotrasen_consultant
 
 /obj/item/radio/headset/heads/nanotrasen_consultant
-	name = "\proper the nanotrasen consultant's headset"
+	name = "\proper the Nanotrasen consultant's headset"
 	desc = "An official Central Command headset."
 	icon_state = "cent_headset"
 	keyslot = new /obj/item/encryptionkey/headset_com
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/heads/nanotrasen_consultant/alt
-	name = "\proper the nanotrasen consultant's bowman headset"
+	name = "\proper the Nanotrasen consultant's bowman headset"
 	desc = "An official Central Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
 
