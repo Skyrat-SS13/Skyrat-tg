@@ -85,7 +85,10 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 *	JOB-LOCKED
 */
 
-// Ain't a damn thing
+/datum/loadout_item/mask/rcm
+	name = "Imperial Police Gas Mask"
+	item_path = /obj/item/clothing/mask/gas/nri_police
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE)
 
 /*
 *	FAMILIES

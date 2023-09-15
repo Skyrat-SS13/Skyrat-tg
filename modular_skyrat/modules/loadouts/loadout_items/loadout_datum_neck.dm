@@ -180,6 +180,11 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Greyscale ranger poncho"
 	item_path = /obj/item/clothing/neck/ranger_poncho
 
+/datum/loadout_item/neck/rcm
+	name = "Imperial Police Boatcloak"
+	item_path = /obj/item/clothing/neck/cloak/colonial/nri_police
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE)
+
 /*
 *	GAGS
 */
