@@ -31,7 +31,7 @@
 
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/hydra = owner
-	if(!hydra.name_archive) // calling name_archive during add or post_add of a quirk doesn't yield the actual name.
+	if(!hydra.name_archive) // sets the archived 'real' name if not set.
 		hydra.name_archive = hydra.real_name 
 	hydra.real_name = hydra.name_archive
 	hydra.visible_message(span_notice("[hydra.name] pushes all three heads forwards; they seem to be talking as a collective."), \
@@ -39,7 +39,7 @@
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/hydra = owner
-	if(!hydra.name_archive)// calling name_archive during add or post_add of a quirk doesn't yield the actual name.
+	if(!hydra.name_archive) // sets the archived 'real' name if not set.
 		hydra.name_archive = hydra.real_name 
 	var/list/names = splittext(hydra.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
