@@ -1,22 +1,3 @@
-/turf/closed
-	layer = CLOSED_TURF_LAYER
-	plane = WALL_PLANE
-	turf_flags = IS_SOLID
-	opacity = TRUE
-	density = TRUE
-	blocks_air = TRUE
-	init_air = FALSE
-	rad_insulation = RAD_MEDIUM_INSULATION
-	pass_flags_self = PASSCLOSEDTURF
-
-/turf/closed/AfterChange()
-	. = ..()
-	SSair.high_pressure_delta -= src
-
-/turf/closed/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	return FALSE
-<<<<<<< HEAD
-
 /turf/closed/indestructible
 	name = "wall"
 	desc = "Effectively impervious to conventional methods of destruction."
@@ -119,7 +100,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 			if(NAMEOF(src, icon))
 				SStitle.icon = icon
 				handle_generic_titlescreen_sizes()
-*/
+
+/turf/closed/indestructible/splashscreen/examine()
+	desc = pick(strings(SPLASH_FILE, "splashes"))
+	return ..()
+SKYRAT EDIT REMOVAL END */
+
 /turf/closed/indestructible/start_area
 	name = null
 	desc = null
@@ -134,6 +120,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_WALLS
+
 
 /turf/closed/indestructible/riveted
 	icon = 'icons/turf/walls/riveted.dmi'
@@ -374,5 +361,3 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/grille/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance('icons/turf/floors.dmi', "plating")
-=======
->>>>>>> 24e89d7b612 (Adds explodable walls for space ruins (#78239))
