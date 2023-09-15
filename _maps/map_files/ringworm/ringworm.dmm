@@ -19906,6 +19906,10 @@
 	name = "Mixing Room Bolt Control";
 	pixel_x = -6
 	},
+/obj/machinery/button/ignition/incinerator/ordmix{
+	pixel_x = 6;
+	pixel_y = 35
+	},
 /turf/open/floor/plating,
 /area/station/science/ordnance)
 "gca" = (
@@ -59325,23 +59329,6 @@
 /obj/structure/industrial_lift/public,
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/primary/starboard)
-"rUj" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
-/obj/machinery/atmospherics/pipe/smart/simple/pink/visible/layer4{
-	dir = 4
-	},
-/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior{
-	name = "Mixing Room Airlock"
-	},
-/turf/open/floor/engine/vacuum,
-/area/station/science/ordnance/freezerchamber)
 "rUk" = (
 /obj/structure/lattice,
 /turf/open/openspace,
@@ -71664,7 +71651,8 @@
 "vDN" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 8
+	dir = 8;
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -72265,7 +72253,7 @@
 "vLA" = (
 /obj/machinery/atmospherics/components/tank/air,
 /obj/effect/turf_decal/bot_white,
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/station/medical/virology)
 "vLF" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -101087,7 +101075,7 @@ laO
 iJI
 vBN
 jcM
-rUj
+vBN
 iJI
 laO
 laO
