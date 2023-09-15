@@ -12,5 +12,5 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/skyrat/blueshield(src)
 	new /obj/item/storage/medkit/tactical/blueshield(src)
+	new /obj/item/storage/bag/garment/blueshield(src)
