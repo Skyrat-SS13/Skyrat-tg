@@ -71,12 +71,8 @@
 
 /obj/item/flashlight/proc/toggle_light(mob/user)
 	var/disrupted = FALSE
-<<<<<<< HEAD
-	//playsound(src, on ? sound_on : sound_off, 40, TRUE) SKYRAT EDIT REMOVAL - SOUND HANDLED IN MODULAR FLASHLIGHT.DM
-=======
->>>>>>> c6ac468b908 (second pass over the SC/FISHER code, incl. bitflags and PDAs (#78330))
 	on = !on
-	playsound(src, on ? sound_on : sound_off, 40, TRUE)
+	//playsound(src, on ? sound_on : sound_off, 40, TRUE) SKYRAT EDIT REMOVAL - SOUND HANDLED IN MODULAR FLASHLIGHT.DM
 	if(!COOLDOWN_FINISHED(src, disabled_time))
 		if(user)
 			balloon_alert(user, "disrupted!")
