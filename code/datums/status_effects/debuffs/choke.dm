@@ -110,7 +110,7 @@
 	if(choking_on && iscarbon(owner))
 		var/mob/living/carbon/carbon_owner = owner
 		// This will yeet the thing we're choking on out of us
-		carbon_owner.vomit(lost_nutrition = 20, force = TRUE, distance = 2)
+		carbon_owner.vomit(vomit_flags = (VOMIT_CATEGORY_DEFAULT | MOB_VOMIT_FORCE), lost_nutrition = 20, distance = 2)
 
 /datum/status_effect/choke/proc/on_vomit(mob/source, distance, force)
 	SIGNAL_HANDLER
@@ -216,7 +216,7 @@
 		var/mob/living/carbon/carbon_victim = victim
 		var/obj/item/bodypart/chest = carbon_victim.get_bodypart(BODY_ZONE_CHEST)
 		if(chest)
-			chest.force_wound_upwards(/datum/wound/blunt/severe, wound_source = "human force to the chest")
+			chest.force_wound_upwards(/datum/wound/blunt/bone/severe, wound_source = "human force to the chest")
 	playsound(owner, 'sound/creatures/crack_vomit.ogg', 120, extrarange = 5, falloff_exponent = 4)
 	vomit_up()
 

@@ -614,51 +614,30 @@
 /obj/item/clothing/suit/space/hev_suit/proc/process_wound(carbon, wound, bodypart)
 	SIGNAL_HANDLER
 
-	var/list/minor_fractures = list(
-		/datum/wound/blunt,
-		/datum/wound/blunt/moderate,
-		/datum/wound/muscle,
-		/datum/wound/muscle/moderate
-		)
-	var/list/major_fractures = list(
-		/datum/wound/blunt/severe,
-		/datum/wound/blunt/critical,
-		/datum/wound/muscle/severe,
-		/datum/wound/loss
-		)
-	var/list/minor_lacerations = list(
-		/datum/wound/burn,
-		/datum/wound/burn/moderate,
-		/datum/wound/pierce,
-		/datum/wound/pierce/moderate,
-		/datum/wound/slash,
-		/datum/wound/slash/moderate
-		)
-	var/list/major_lacerations = list(
-		/datum/wound/burn/severe,
-		/datum/wound/burn/critical,
-		/datum/wound/pierce/severe,
-		/datum/wound/pierce/critical,
-		/datum/wound/slash/severe,
-		/datum/wound/slash/critical
-		)
+	if (!istype(wound, /datum/wound))
+		return
 
-	if(wound in minor_fractures)
-		send_hev_sound(minor_fracture_sound)
-	else if(wound in major_fractures)
-		send_hev_sound(major_fracture_sound)
-	else if(wound in minor_lacerations)
-		send_hev_sound(minor_lacerations_sound)
-	else if(wound in major_lacerations)
-		send_hev_sound(major_lacerations_sound)
-	else
-		var/sound2play = pick(list(
-			minor_fracture_sound,
-			major_fracture_sound,
-			minor_lacerations_sound,
-			major_lacerations_sound
-		))
-		send_hev_sound(sound2play)
+	var/datum/wound/new_wound = wound
+
+	var/sound_to_play
+
+	var/wound_series = new_wound.wound_series
+	var/wound_type = new_wound.wound_type
+	var/wound_severity = new_wound.severity
+
+	if (wound_type == WOUND_SLASH || wound_type == WOUND_PIERCE)
+		if (wound_severity >= WOUND_SEVERITY_SEVERE)
+			sound_to_play = major_lacerations_sound
+		else
+			sound_to_play = minor_lacerations_sound
+	else if (wound_type == WOUND_BLUNT || wound_series == WOUND_SERIES_MUSCLE_DAMAGE)
+		if (wound_severity >= WOUND_SEVERITY_SEVERE)
+			sound_to_play = major_fracture_sound
+		else
+			sound_to_play = minor_fracture_sound
+
+	if (sound_to_play)
+		send_hev_sound(sound_to_play)
 
 /obj/item/clothing/suit/space/hev_suit/proc/process_acid()
 	SIGNAL_HANDLER

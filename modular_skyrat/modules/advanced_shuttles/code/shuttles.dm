@@ -1,3 +1,7 @@
+#define ARRIVALS_STATION "arrivals_stationary"
+#define ARRIVALS_INTERLINK "arrivals_shuttle"
+#define CONSOLE_ANNOUNCE_COOLDOWN 5 SECONDS
+
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "NTV Relay"
 	shuttle_id = "arrivals_shuttle"
@@ -9,6 +13,76 @@
 	rechargeTime = 15 SECONDS
 
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
+
+	///Our shuttle's control console
+	var/obj/machinery/computer/shuttle/arrivals/console
+	///How much time are we waiting before returning to interlink. Sets itself automatically from config file
+	var/wait_time
+	///State variable. True when our shuttle is waiting before autoreturn
+	var/waiting = FALSE // would've been better to use shuttle's mode variable, but check() resets it to SHUTTLE_IDLE so it's more sane way to make this fully modular
+
+/obj/docking_port/mobile/arrivals_skyrat/Initialize(mapload)
+	. = ..()
+	wait_time = CONFIG_GET(number/arrivals_wait)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/docking_port/mobile/arrivals_skyrat/LateInitialize()
+	. = ..()
+	console = get_control_console()
+
+/obj/docking_port/mobile/arrivals_skyrat/check()
+	. = ..()
+
+	if(!wait_time) //0 disables autoreturn
+		return
+
+	if(mode != SHUTTLE_IDLE)
+		return
+
+	if(waiting && !timer)
+		SSshuttle.moveShuttle(shuttle_id, ARRIVALS_INTERLINK, TRUE) // times up, we're leaving
+		waiting = FALSE
+
+	var/current_dock = getDockedId()
+	if (current_dock != ARRIVALS_STATION)
+		return
+
+	if(check_occupied())
+		if(!waiting)
+			return
+
+		timer = 0
+		waiting = FALSE
+
+		if(console && console.last_cancel_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
+			console.say("Lifesigns detected onboard, automatic return aborted.")
+			console.last_cancel_announce = world.time
+
+		return
+
+	if(timer || waiting)
+		return
+
+	setTimer(wait_time)
+	waiting = TRUE
+
+	if(console && console.last_depart_announce + CONSOLE_ANNOUNCE_COOLDOWN <= world.time)
+		console.say("Commencing automatic return subroutine in [wait_time / 10] seconds.")
+		console.last_depart_announce = world.time
+
+/obj/docking_port/mobile/arrivals_skyrat/getModeStr()
+	. = ..()
+	return waiting ? "RTN" : .
+
+/**
+ * Checks if our shuttle is occupied by someone alive, and returns `TRUE` if it is, `FALSE` otherwise.
+*/
+/obj/docking_port/mobile/arrivals_skyrat/proc/check_occupied()
+	for(var/alive_player in GLOB.alive_player_list)
+		if (get_area(alive_player) in shuttle_areas)
+			return TRUE
+
+	return FALSE
 
 /obj/machinery/computer/shuttle/arrivals
 	name = "arrivals shuttle control"
@@ -23,6 +97,11 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
 	no_destination_swap = TRUE
+
+	///[world.time] when console last announced departure
+	var/last_depart_announce
+	///[world.time] when console last announced canceling shuttle's return
+	var/last_cancel_announce
 
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"
@@ -96,3 +175,7 @@
 /datum/map_template/shuttle/mining/skyrat/large
 	name = "NMC Manticore (Mining)"
 	suffix = "large_skyrat"
+
+#undef ARRIVALS_STATION
+#undef ARRIVALS_INTERLINK
+#undef CONSOLE_ANNOUNCE_COOLDOWN
