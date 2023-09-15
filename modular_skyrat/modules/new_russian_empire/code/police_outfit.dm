@@ -1,17 +1,3 @@
-// Aggression levels
-#define AGGR_GOOD_COP 1
-#define AGGR_BAD_COP 2
-#define AGGR_SHIT_COP 3
-
-// Phrase list index markers
-#define GOOD_COP_HIGHER 4
-#define GOOD_COP_LOWER 1
-#define NEUTRAL_COP_HIGHER 8
-#define NEUTRAL_COP_LOWER 5
-#define BAD_COP_HIGHER 12
-#define BAD_COP_LOWER 9
-
-
 /obj/item/clothing/under/colonial/nri_police
 	name = "imperial police outfit"
 	desc = "Fancy blue durathread shirt and a pair of cotton-blend pants with a black synthleather belt. A time-tested design first employed by the NRI police's \
@@ -60,11 +46,3 @@
 	icon_state = "police_vest"
 	icon = 'modular_skyrat/modules/new_russian_empire/icons/armor.dmi'
 	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/wornarmor.dmi'
-
-#undef AGGR_GOOD_COP
-#undef AGGR_BAD_COP
-#undef AGGR_SHIT_COP
-
-#undef GOOD_COP_PHRASES
-#undef BAD_COP_PHRASES
-#undef ALL_PHRASES
