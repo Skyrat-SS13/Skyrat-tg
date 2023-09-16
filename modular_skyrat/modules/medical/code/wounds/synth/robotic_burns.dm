@@ -58,10 +58,10 @@
 	var/incoming_damage_heat_coeff = 3
 
 	/// The coefficient of heat transfer we will use when receiving heat from reagent contact.
-	var/base_reagent_temp_coefficient = 0.07
+	var/base_reagent_temp_coefficient = 0.03
 
 	/// The ratio of temp shift -> brute damage. Careful with this value, it can make stuff really really nasty.
-	var/heat_shock_delta_to_damage_ratio = 0.2
+	var/heat_shock_delta_to_damage_ratio = 0.12
 	/// The minimum heat difference we must have on reagent contact to cause heat shock damage.
 	var/heat_shock_minimum_delta = 5
 
@@ -190,7 +190,7 @@
 
 		if (victim)
 			var/gauze_or_not = (!isnull(gauze) ? ", but [gauze] helps to keep it together" : "")
-			var/clothing_text = (!get_location_accessible(victim, limb.body_zone) ? ", its clothing absorbing some of the heat" : "")
+			var/clothing_text = (!get_location_accessible(victim, limb.body_zone) ? ", [victim.p_their()] clothing absorbing some of the liquid" : "")
 			victim.visible_message(span_warning("[victim]'s [limb.plaintext_zone] strains from the thermal shock[clothing_text][gauze_or_not]!"))
 			playsound(victim, 'sound/items/welder.ogg', 25)
 
@@ -328,7 +328,7 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 375)
 	heating_threshold = (BODYTEMP_NORMAL + 800)
 
-	outgoing_bodytemp_coeff = 0.008
+	outgoing_bodytemp_coeff = 0.0065
 	bodytemp_coeff = 0.004
 
 	base_reagent_temp_coefficient = 0.03
@@ -377,7 +377,7 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 775)
 	heating_threshold = INFINITY
 
-	outgoing_bodytemp_coeff = 0.0076 // burn... BURN...
+	outgoing_bodytemp_coeff = 0.0054 // burn... BURN...
 	bodytemp_coeff = 0.002
 
 	base_reagent_temp_coefficient = 0.03
