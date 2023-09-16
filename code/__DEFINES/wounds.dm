@@ -133,7 +133,6 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 #define WOUND_SERIES_METAL_BURN_OVERHEAT "wound_series_metal_burn_basic"
 #define WOUND_SERIES_WIRE_SLASH_ELECTRICAL_DAMAGE "wound_series_metal_slash_electrical_damage_basic"
 #define WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE "wound_series_metal_pierce_electrical_damage_basic"
-
 // SKYRAT EDIT ADDITION END
 
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.
