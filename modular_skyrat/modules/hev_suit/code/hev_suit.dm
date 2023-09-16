@@ -621,16 +621,18 @@
 
 	var/sound_to_play
 
-	var/wound_series = new_wound.wound_series
-	var/wound_type = new_wound.wound_type
+	var/datum/wound_pregen_data/pregen_data = new_wound.get_pregen_data()
 	var/wound_severity = new_wound.severity
 
-	if (wound_type == WOUND_SLASH || wound_type == WOUND_PIERCE)
+	var/is_laceration = pregen_data.wounding_types_valid(list(WOUND_SLASH, WOUND_PIERCE))
+	var/is_fracture = pregen_data.wounding_types_valid(list(WOUND_BLUNT))
+
+	if (is_laceration)
 		if (wound_severity >= WOUND_SEVERITY_SEVERE)
 			sound_to_play = major_lacerations_sound
 		else
 			sound_to_play = minor_lacerations_sound
-	else if (wound_type == WOUND_BLUNT || wound_series == WOUND_SERIES_MUSCLE_DAMAGE)
+	else if (is_fracture)
 		if (wound_severity >= WOUND_SEVERITY_SEVERE)
 			sound_to_play = major_fracture_sound
 		else
