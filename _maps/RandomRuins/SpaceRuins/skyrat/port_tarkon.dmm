@@ -145,8 +145,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/operating/oldstation{
-	dir = 8
+/obj/machinery/button/door/directional/east{
+	id = "ptdisection"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -160,13 +160,12 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "bj" = (
-/obj/structure/table,
 /obj/effect/turf_decal/tile/purple/half,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/storage/part_replacer/cargo,
 /obj/item/experi_scanner,
 /obj/item/experi_scanner,
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "bl" = (
@@ -213,14 +212,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
-"bF" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters{
-	id = "ptcell1";
-	name = "solidarity shutters"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/port_tarkon/secoff)
 "bL" = (
 /obj/machinery/door/airlock/public,
 /obj/machinery/door/firedoor/solid,
@@ -744,9 +735,10 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/starboardhall)
 "fS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/loading_area,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "ptdisection"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "fW" = (
@@ -887,8 +879,10 @@
 /turf/open/misc/asteroid/airless,
 /area/solars/tarkon)
 "gX" = (
-/obj/structure/window/reinforced/tinted/spawner/directional/south,
+/obj/effect/turf_decal/tile/purple/half,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/item/autopsy_scanner,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "ha" = (
@@ -1166,10 +1160,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "iZ" = (
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/tile/purple/half,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "ptdisection"
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "jb" = (
 /obj/effect/turf_decal/stripes{
@@ -1311,6 +1306,9 @@
 "kD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/turf_decal/tile/purple/half,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "ptdisection"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "kE" = (
@@ -1343,19 +1341,6 @@
 	pixel_x = 7
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/secoff)
-"kO" = (
-/obj/machinery/button/door{
-	id = "ptcell2";
-	name = "shutter controls";
-	pixel_x = 8
-	},
-/obj/machinery/button/door{
-	id = "ptcell1";
-	name = "shutter controls";
-	pixel_x = -8
-	},
-/turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "kR" = (
 /obj/structure/closet,
@@ -1771,9 +1756,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/rdconsole{
-	dir = 8
-	},
+/obj/structure/table/reinforced,
+/obj/item/storage/part_replacer/cargo,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "nw" = (
@@ -1994,18 +1978,13 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "pe" = (
-/obj/structure/table/rolling,
-/obj/item/scalpel,
-/obj/item/hemostat,
-/obj/item/cautery,
-/obj/item/bonesetter,
-/obj/item/stack/medical/suture/medicated,
-/obj/item/retractor,
-/obj/item/clothing/gloves/latex,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/rdconsole{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "pf" = (
@@ -2414,6 +2393,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
+"rq" = (
+/obj/machinery/button/door{
+	id = "ptcell2";
+	name = "shutter controls";
+	pixel_x = 8
+	},
+/obj/machinery/button/door{
+	id = "ptcell1";
+	name = "shutter controls";
+	pixel_x = -8
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/port_tarkon/secoff)
 "rr" = (
 /obj/machinery/atmospherics/components/binary/pump/off/general{
 	dir = 4
@@ -3950,6 +3942,14 @@
 /obj/item/stock_parts/cell/super,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
+"Di" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptcell2";
+	name = "solidarity shutters"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/port_tarkon/secoff)
 "Dj" = (
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 1
@@ -4001,14 +4001,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
-"Dy" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters{
-	id = "ptcell2";
-	name = "solidarity shutters"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/port_tarkon/secoff)
 "Dz" = (
 /obj/structure/table/wood,
 /obj/item/paper/crumpled/fluff/tarkon,
@@ -4195,7 +4187,6 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "EE" = (
-/obj/structure/table,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 25
 	},
@@ -4203,6 +4194,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "EG" = (
@@ -4490,7 +4482,6 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "Hh" = (
-/obj/structure/table,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 25
 	},
@@ -4501,6 +4492,7 @@
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 30
 	},
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Hi" = (
@@ -4550,7 +4542,11 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/mecha_part_fabricator,
+/obj/structure/table/reinforced,
+/obj/item/stack/cable_coil,
+/obj/item/stack/sheet/glass{
+	amount = 25
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Ht" = (
@@ -4810,9 +4806,10 @@
 /turf/open/misc/asteroid/airless,
 /area/solars/tarkon)
 "Jd" = (
-/obj/structure/curtain,
-/obj/effect/turf_decal/tile/purple/half,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Je" = (
@@ -4884,9 +4881,10 @@
 /area/ruin/space/has_grav/port_tarkon/garden)
 "JI" = (
 /obj/effect/turf_decal/tile/purple/anticorner,
-/obj/structure/table/rolling,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/autopsy_scanner,
+/obj/machinery/computer/operating/oldstation{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "JL" = (
@@ -4897,7 +4895,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters{
-	id = "ptcell1";
+	id = "ptcell2";
 	name = "solidarity shutters"
 	},
 /turf/open/floor/iron,
@@ -5335,7 +5333,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/rnd/destructive_analyzer,
+/obj/machinery/mecha_part_fabricator,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Mw" = (
@@ -5349,11 +5347,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/glass{
-	amount = 25
-	},
-/obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -5437,7 +5430,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/rnd/server/oldstation,
+/obj/machinery/recharge_station,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Na" = (
@@ -5459,11 +5452,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "Nd" = (
-/obj/structure/table/optable,
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/rnd/server/oldstation,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Nf" = (
@@ -5558,10 +5551,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/storage)
-"NN" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/wood/large,
-/area/ruin/space/has_grav/port_tarkon/dorms)
 "NO" = (
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 1
@@ -5695,6 +5684,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/port_tarkon/atmos)
+"OA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/recharge_station,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/port_tarkon/centerhall)
 "OC" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/plasma_input/tarkon{
 	dir = 8
@@ -6098,6 +6092,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/afthall)
+"RG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptcell1";
+	name = "solidarity shutters"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/port_tarkon/secoff)
 "RJ" = (
 /obj/effect/turf_decal/tile/neutral/half,
 /obj/effect/decal/cleanable/dirt,
@@ -6166,12 +6168,12 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "Su" = (
-/obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/rnd/destructive_analyzer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Sw" = (
@@ -6386,13 +6388,13 @@
 /turf/open/misc/asteroid/airless,
 /area/solars/tarkon)
 "TF" = (
-/obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "TG" = (
@@ -6755,7 +6757,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/structure/curtain,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -8264,9 +8265,9 @@ PK
 qZ
 Yx
 jX
-gX
 jX
-iZ
+jX
+yG
 Yr
 TO
 dd
@@ -8337,9 +8338,9 @@ PK
 Ht
 vS
 jX
-gX
+jX
 Ws
-Jd
+yG
 Yr
 FS
 mp
@@ -8622,10 +8623,10 @@ GA
 EW
 EW
 gF
-EW
-EW
+fS
+fS
 kD
-PK
+iZ
 XA
 Qa
 jX
@@ -8698,9 +8699,9 @@ cM
 ZH
 jX
 xE
-PK
+iZ
 Hs
-fS
+Qa
 jX
 jX
 eC
@@ -8770,8 +8771,8 @@ jX
 cM
 ZH
 jX
-yG
-PK
+gX
+iZ
 ho
 Mx
 jX
@@ -8844,9 +8845,9 @@ cM
 ZH
 jX
 Qb
-PK
+iZ
 Dj
-jX
+Jd
 jX
 jX
 jX
@@ -8917,7 +8918,7 @@ jX
 Lk
 bf
 JI
-PK
+iZ
 Lu
 Mq
 nr
@@ -10529,7 +10530,7 @@ at
 KR
 rA
 ZR
-KR
+OA
 rh
 PG
 fP
@@ -10602,7 +10603,7 @@ Na
 IZ
 KH
 dO
-KR
+OA
 rh
 fP
 LW
@@ -11333,7 +11334,7 @@ ou
 ip
 rj
 qc
-bF
+RG
 kE
 Se
 OV
@@ -11406,7 +11407,7 @@ fX
 sv
 rj
 EG
-kO
+rq
 OV
 OV
 OV
@@ -11479,7 +11480,7 @@ UO
 ip
 rj
 qc
-Dy
+Di
 gy
 Se
 OV
@@ -11559,7 +11560,7 @@ OV
 Xs
 Xs
 Xs
-NN
+Xs
 Xs
 Xs
 Xs

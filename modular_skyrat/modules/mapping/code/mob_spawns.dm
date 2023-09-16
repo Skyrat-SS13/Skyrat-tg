@@ -597,16 +597,6 @@
 	desc = "The headset of the boss."
 	command = TRUE
 
-/obj/item/radio/headset/tarkon
-	name = "tarkon headset"
-	freerange = TRUE
-	freqlock = TRUE
-	keyslot = new /obj/item/encryptionkey/headset_cargo/tarkon
-
-/obj/item/radio/headset/tarkon/command //spoiler for upcoming update
-	name = "tarkon command headset"
-	desc = "A headset personally handed to trusted crew of Tarkon. It fills you with will to do... Something."
-	command = TRUE
 
 //OBJECTS//
 /obj/structure/showcase/machinery/oldpod/used
@@ -659,80 +649,6 @@
 /datum/id_trim/away/hotel/security
 	assignment = "Hotel Security"
 
-/datum/id_trim/away/tarkon
-	assignment = "P-T Cargo Personnel"
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	department_color = COLOR_DARK_BROWN
-	department_state = "department"
-	subdepartment_color = COLOR_DARK_CYAN
-	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
-	trim_state = "trim_cargotechnician"
-
-/datum/id_trim/away/tarkon/sec
-	assignment = "P-T Port Guard"
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	department_color = COLOR_DARK_RED
-	sechud_icon_state = SECHUD_SECURITY_OFFICER
-	trim_state = "trim_securityofficer"
-
-/datum/id_trim/away/tarkon/med
-	assignment = "P-T Trauma Medic"
-	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	department_color = COLOR_MEDICAL_BLUE
-	sechud_icon_state = SECHUD_MEDICAL_DOCTOR
-	trim_state = "trim_medicaldoctor"
-
-/datum/id_trim/away/tarkon/eng
-	assignment = "P-T Maintenance Crew"
-	department_color = COLOR_ENGINEERING_ORANGE
-	sechud_icon_state = SECHUD_STATION_ENGINEER
-	trim_state = "trim_stationengineer"
-
-/datum/id_trim/away/tarkon/sci
-	assignment = "P-T Field Researcher"
-	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
-	department_color = COLOR_SCIENCE_PINK
-	sechud_icon_state = SECHUD_SCIENTIST
-	trim_state = "trim_scientist"
-
-/datum/id_trim/away/tarkon/ensign
-	assignment = "Tarkon Ensign"
-	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
-	department_color = COLOR_COMMAND_BLUE
-	sechud_icon_state = SECHUD_BLUESHIELD
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_blueshield"
-
-/obj/item/card/id/advanced/tarkon/sci  //original tarkon ID is defined in fluff
-	name = "P-T field researcher's access card"
-	desc = "An access card designated for \"the science team\". You are forgotten basically immediately when it comes to the lab."
-	trim = /datum/id_trim/away/tarkon/sci
-
-/obj/item/card/id/advanced/tarkon/med
-	name = "P-T trauma medic's access card"
-	desc = "An access card designated for \"medical staff\". You provide the medic bags."
-	trim = /datum/id_trim/away/tarkon/med
-
-/obj/item/card/id/advanced/tarkon/sec
-	name = "P-T resident deputy's access card"
-	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
-	trim = /datum/id_trim/away/tarkon/sec
-
-/obj/item/card/id/advanced/tarkon/cargo
-	name = "P-T cargo hauler's access card"
-	desc = "An access card designated for \"cargo's finest\". You're also a part time space miner, when cargonia is quiet."
-	trim = /datum/id_trim/away/tarkon
-
-
-/obj/item/card/id/advanced/tarkon/engi
-	name = "P-T maintenance engineer's access card"
-	desc = "An access card designated for \"engineering staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
-	trim = /datum/id_trim/away/tarkon/eng
-
-/obj/item/card/id/advanced/tarkon/ensign
-	name = "Tarkon ensign's access card"
-	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
-	trim = /datum/id_trim/away/tarkon/ensign
 
 //CRYO CONSOLES
 /obj/machinery/computer/cryopod/interdyne
