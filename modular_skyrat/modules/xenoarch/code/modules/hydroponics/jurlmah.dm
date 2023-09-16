@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bite_consumption_mod = 0.5
 	foodtypes = FRUIT
-	juice_results = list(/datum/reagent/medicine/cryoxadone = 0)
+	juice_typepath = /datum/reagent/medicine/cryoxadone
 	tastes = list("cold" = 1)

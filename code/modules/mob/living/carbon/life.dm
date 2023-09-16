@@ -1,5 +1,5 @@
 /mob/living/carbon/Life(seconds_per_tick = SSMOBS_DT, times_fired)
-	if(notransform)
+	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
 		return
 
 	//SKYRAT EDIT ADDITION
@@ -124,8 +124,8 @@
 						failed_last_breath = FALSE
 						clear_alert("not_enough_oxy")
 						return FALSE
-					adjustOxyLoss(3)
-					failed_last_breath = TRUE
+					breath = null // uh oh where'd the air go
+					check_breath(breath)
 					if(oxyloss <= OXYGEN_DAMAGE_CHOKING_THRESHOLD && stat == CONSCIOUS)
 						to_chat(src, "<span class='userdanger'>You hold in your breath!</span>")
 					else
@@ -375,13 +375,13 @@
 				if(prob(5))
 					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
 					add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
-					vomit()
+					vomit(VOMIT_CATEGORY_DEFAULT)
 			if(30 to INFINITY)
 				//Higher chance to vomit. Let the horror start
 				if(prob(25))
 					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
 					add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
-					vomit()
+					vomit(VOMIT_CATEGORY_DEFAULT)
 			else
 				clear_mood_event("smell")
 
@@ -719,7 +719,7 @@
 		var/datum/reagent/bits = bile
 		if(istype(bits, /datum/reagent/consumable))
 			var/datum/reagent/consumable/goodbit = bile
-			fullness += goodbit.nutriment_factor * goodbit.volume / goodbit.metabolization_rate
+			fullness += goodbit.get_nutriment_factor() * goodbit.volume / goodbit.metabolization_rate
 			continue
 		fullness += 0.6 * bits.volume / bits.metabolization_rate //not food takes up space
 
