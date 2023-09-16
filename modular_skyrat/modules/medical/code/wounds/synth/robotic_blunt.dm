@@ -18,7 +18,7 @@
 	default_scar_file = METAL_SCAR_FILE
 
 	/// The minimum effective damage our limb must sustain before we try to daze our victim.
-	var/daze_attacked_minimum_score = 8
+	var/daze_attacked_minimum_score = 4
 
 	/// How much effective damage is multiplied against for purposes of determining our camerashake's duration when we are hit on the head.
 	var/head_attacked_shake_duration_ratio = 0.3
@@ -53,15 +53,15 @@
 	var/stagger_score_to_shake_duration_ratio = 0.1
 
 	/// In the stagger aftershock, the ratio score will be multiplied against for determining the chance of dropping held items.
-	var/stagger_drop_chance_ratio = 0.25
+	var/stagger_drop_chance_ratio = 1.25
 	/// In the stagger aftershock, the ratio score will be multiplied aginst for determining the chance of falling over.
-	var/stagger_fall_chance_ratio = 1
+	var/stagger_fall_chance_ratio = 1.5
 
 	/// In the stagger aftershock, the ratio score will be multiplied against for determining how long we are knocked down for.
 	var/stagger_aftershock_knockdown_ratio = 1
 
 	/// If the victim stops moving before the aftershock, aftershock effects will be multiplied against this.
-	var/aftershock_stopped_moving_score_mult = 0.25
+	var/aftershock_stopped_moving_score_mult = 0.1
 
 	/// The ratio damage applied will be multiplied against for determining our stagger score.
 	var/chest_attacked_stagger_mult = 2.5
@@ -75,8 +75,8 @@
 	/// The base chance of moving to trigger stagger().
 	var/chest_movement_stagger_chance = 1
 
-	var/base_stagger_shake_duration = 3 SECONDS
-	var/base_stagger_movement_shake_duration = 2 SECONDS
+	var/base_stagger_shake_duration = 1.5 SECONDS
+	var/base_stagger_movement_shake_duration = 1.5 SECONDS
 
 	/// The amount of x and y pixels we will be shaken around by during a movement stagger.
 	var/movement_stagger_shift = 1
@@ -99,6 +99,8 @@
 
 	/// The last time our victim has moved. Used for determining if we should increase or decrease the chance of having stagger aftershock.
 	var/last_time_victim_moved = 0
+
+	var/minimum_shake_duration = 1
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
@@ -244,7 +246,7 @@
 	var/limb_message = "causing "
 	var/limb_affected
 
-	var/stopped_moving_grace_threshold = (world.time - ((world.time - stagger_starting_time) / 1.5))
+	var/stopped_moving_grace_threshold = (world.time - ((world.time - stagger_starting_time) / 3)) // higher divisor = later grace period = more forgiving
 	var/victim_stopped_moving = (last_time_victim_moved <= stopped_moving_grace_threshold)
 	if (victim_stopped_moving)
 		stagger_score *= aftershock_stopped_moving_score_mult
@@ -313,10 +315,10 @@
 
 		if ((time_til_next_movement_shake_allowed <= world.time) && prob(shake_chance))
 
-			if (strength < 1 && prob(strength * 100)) // a bit of balancing so this can actually work at low strength
-				strength = 1
+			if (duration < minimum_shake_duration && prob((duration / minimum_shake_duration) * 100)) // a bit of balancing so this can actually work at low strength
+				duration = minimum_shake_duration
 
-			if (strength >= 1)
+			if (duration >= minimum_shake_duration)
 				shake_camera(victim, duration = duration, strength = strength)
 
 		if (prob(eyeblur_chance))
