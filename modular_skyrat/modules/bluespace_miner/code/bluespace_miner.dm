@@ -148,7 +148,7 @@
 	)
 	needs_anchored = TRUE
 
-/datum/supply_pack/engineering/bluespace_miner
+/datum/supply_pack/misc/bluespace_miner
 	name = "Bluespace Miner"
 	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
 	cost = CARGO_CRATE_VALUE * 50 // 10,000
