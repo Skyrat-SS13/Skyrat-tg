@@ -684,6 +684,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 						"description" = shuttle_template.description,
 						"occupancy_limit" = shuttle_template.occupancy_limit,
 						"creditCost" = shuttle_template.credit_cost,
+						"initial_cost" = initial(shuttle_template.credit_cost),
 						"emagOnly" = shuttle_template.emag_only,
 						"prerequisites" = shuttle_template.prerequisites,
 						"ref" = REF(shuttle_template),

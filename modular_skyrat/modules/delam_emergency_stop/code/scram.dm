@@ -17,7 +17,7 @@
 #define SHATTER_FLASH_RANGE 5
 #define SHATTER_MIN_TIME 13 SECONDS
 #define SHATTER_MAX_TIME 15 SECONDS
-#define EVAC_WARNING_TIMER 5 SECONDS
+#define EVAC_WARNING_TIMER 3 SECONDS
 #define POWER_CUT_MIN_DURATION_SECONDS 19
 #define POWER_CUT_MAX_DURATION_SECONDS 21
 #define AIR_INJECT_RATE 33
@@ -176,7 +176,7 @@
 			notify_volume = 75,
 		)
 
-	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN [EVAC_WARNING_TIMER / 10] SECONDS. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
+	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
 
 	// fight power with power
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), EVAC_WARNING_TIMER)
@@ -217,7 +217,7 @@
 		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, shatter_window)), rand(SHATTER_MIN_TIME, SHATTER_MAX_TIME))
 
 	// Let the gas work for a few seconds to cool the crystal. If it has damage beyond repair, heal it a bit
-	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 9 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 7 SECONDS)
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()
