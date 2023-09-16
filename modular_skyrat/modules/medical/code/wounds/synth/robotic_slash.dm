@@ -29,9 +29,6 @@
 
 	processes = TRUE
 
-	/// If our wiring is safe to manually manipultae. If false, attempts to use sutures/coils will shock the helper.
-	var/wiring_reset = TRUE
-
 	/// How many sparks do we spawn when we're gained?
 	var/initial_sparks_amount = 1
 
@@ -262,7 +259,17 @@
 
 	. += extra
 
-/datum/wound/electrical_damage/get_wound_status_info()
+/datum/wound/electrical_damage/get_scanner_description(mob/user)
+	. = ..()
+
+	. += "\nWound status: [get_wound_status_info()]"
+
+/datum/wound/electrical_damage/get_simple_scanner_description(mob/user)
+	. = ..()
+
+	. += "\nWound status: [get_wound_status_info()]"
+
+/datum/wound/electrical_damage/proc/get_wound_status_info()
 	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>0</b>")]% to remove the wound."
 
 /datum/wound/electrical_damage/get_xadone_progress_to_qdel()
@@ -314,10 +321,6 @@
 	var/their_or_other = (user == victim ? "their" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	var/replacing_or_suturing = (is_suture ? "repairing some" : "replacing")
-	if (!wiring_reset)
-		to_chat(user, span_warning("You notice the wiring within [your_or_other] [limb.plaintext_zone] is still loose... you might shock yourself! Maybe use some wirecutters first?"))
-		delay_mult *= 4
-
 	while (suturing_item.tool_start_check())
 		user?.visible_message(span_warning("[user] begins [replacing_or_suturing] wiring within [their_or_other] [limb.plaintext_zone] with [suturing_item]..."))
 		if (!suturing_item.use_tool(target = victim, user = user, delay = ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY * delay_mult, amount = 1, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
@@ -325,17 +328,12 @@
 
 		if (user != victim && user.combat_mode)
 			user?.visible_message(span_danger("[user] mangles some of [their_or_other] [limb.plaintext_zone]'s wiring!"))
-			adjust_intensity(change)
-			set_wiring_status(FALSE, user)
+			adjust_intensity(change * 2)
 		else
 			var/repairs_or_replaces = (is_suture ? "repairs" : "replaces")
 			user?.visible_message(span_notice("[user] [repairs_or_replaces] some of [their_or_other] [limb.plaintext_zone]'s wiring!"))
 			adjust_intensity(-change)
 			victim.balloon_alert(user, "intensity reduced to [get_intensity_mult() * 100]%")
-
-			if (!wiring_reset)
-				user?.electrocute_act(max(process_shock_spark_count_max * get_intensity_mult(), 1), limb)
-				set_wiring_status(TRUE, user)
 
 		if (fixed())
 			return TRUE
@@ -375,23 +373,15 @@
 
 		if (user != victim && user.combat_mode)
 			user?.visible_message(span_danger("[user] mangles some of [their_or_other] [limb.plaintext_zone]'s wiring!"))
-			adjust_intensity(change)
-			set_wiring_status(FALSE, user)
+			adjust_intensity(change * 2)
 		else
 			user?.visible_message(span_green("[user] resets some of [their_or_other] [limb.plaintext_zone]'s wiring!"))
 			adjust_intensity(-change)
 			victim.balloon_alert(user, "intensity reduced to [get_intensity_mult() * 100]%")
-			set_wiring_status(TRUE, user)
 
 		if (fixed())
 			return TRUE
 	return TRUE
-
-/datum/wound/electrical_damage/proc/set_wiring_status(reset, mob/user)
-	if (!wiring_reset && reset & !isnull(user))
-		var/your_or_other = (user == victim ? "your" : "[user]'s")
-		to_chat(user, span_green("The wires in [your_or_other]'s [limb.plaintext_zone] are set! You can now safely use wires/sutures."))
-	wiring_reset = reset
 
 /datum/wound/electrical_damage/proc/remove_if_fixed()
 	if (fixed())
@@ -500,8 +490,6 @@
 
 	wirecut_repair_percent = 0.085 // not even faster at this point
 	wire_repair_percent = 0.075
-
-	wiring_reset = TRUE
 
 	initial_sparks_amount = 1
 

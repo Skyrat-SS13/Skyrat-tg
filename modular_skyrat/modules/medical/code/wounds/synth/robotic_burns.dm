@@ -223,11 +223,11 @@
 			remove_wound()
 			return TRUE
 	else if (promotes_to && chassis_temperature >= heating_threshold)
-		victim.visible_message(span_warning("[victim]'s [limb.plaintext_zone] brightens as it overheats further!"), span_userdanger("Your [limb.plaintext_zone] sizzles and brightens as it overheats further!"))
+		victim.visible_message(span_danger("[victim]'s [limb.plaintext_zone] brightens as it overheats further!"), span_userdanger("Your [limb.plaintext_zone] sizzles and brightens as it overheats further!"))
 		replace_wound(new promotes_to(heating_threshold + heating_promote_buffer))
 		return TRUE
 
-/datum/wound/burn/robotic/overheat/get_wound_status_info()
+/datum/wound/burn/robotic/overheat/proc/get_wound_status_info()
 	var/current_temp_celcius = round(chassis_temperature - T0C, 0.1)
 	var/current_temp_fahrenheit = round(chassis_temperature * 1.8-459.67, 0.1)
 
@@ -241,6 +241,16 @@
 	and needs to cool to [span_nicegreen("[cool_celcius] &deg;C ([cool_fahrenheit] &deg;F)")], but \
 	will worsen if heated to [span_purple("[heat_celcius] &deg;C ([heat_fahrenheit] &deg;F)")]."
 
+/datum/wound/burn/robotic/overheat/get_scanner_description(mob/user)
+	. = ..()
+
+	. += "\nWound status: [get_wound_status_info()]"
+
+/datum/wound/burn/robotic/overheat/get_simple_scanner_description(mob/user)
+	. = ..()
+
+	. += "\nWound status: [get_wound_status_info()]"
+
 /datum/wound/burn/robotic/overheat/get_xadone_progress_to_qdel()
 	return INFINITY
 
@@ -253,7 +263,7 @@
 	treat_text = "Reduction of body temperature to expedite the passive heat dissipation - or, if thermal shock is to be risked, application of a fire extinguisher/shower."
 	severity = WOUND_SEVERITY_MODERATE
 
-	damage_multiplier_penalty = 1.1 //1.1x damage taken
+	damage_multiplier_penalty = 1.15 //1.15x damage taken
 
 	starting_temperature_min = (BODYTEMP_NORMAL + 350)
 	starting_temperature_max = (BODYTEMP_NORMAL + 400)
@@ -276,7 +286,7 @@
 	outgoing_bodytemp_coeff = 0.007
 	bodytemp_coeff = 0.006
 
-	base_reagent_temp_coefficient = 0.05
+	base_reagent_temp_coefficient = 0.03
 	heat_shock_delta_to_damage_ratio = 0.2
 
 	promotes_to = /datum/wound/burn/robotic/overheat/severe
@@ -357,7 +367,7 @@
 
 	status_effect_type = /datum/status_effect/wound/burn/robotic/critical
 
-	damage_multiplier_penalty = 1.4 //1.4x damage taken
+	damage_multiplier_penalty = 1.5 //1.5x damage taken
 
 	starting_temperature_min = (BODYTEMP_NORMAL + 1050)
 	starting_temperature_max = (BODYTEMP_NORMAL + 1100)
@@ -370,8 +380,8 @@
 	outgoing_bodytemp_coeff = 0.0076 // burn... BURN...
 	bodytemp_coeff = 0.002
 
-	base_reagent_temp_coefficient = 0.02
-	heat_shock_delta_to_damage_ratio = 0.25
+	base_reagent_temp_coefficient = 0.03
+	heat_shock_delta_to_damage_ratio = 0.2
 
 	demotes_to = /datum/wound/burn/robotic/overheat/severe
 
