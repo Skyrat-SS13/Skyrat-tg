@@ -14,6 +14,8 @@
 	/// Our current counter for healing
 	var/regen_ticks_current = 0
 
+	can_scar = FALSE
+
 /datum/wound_pregen_data/muscle
 	abstract = TRUE
 
