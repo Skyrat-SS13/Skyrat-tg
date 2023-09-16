@@ -61,4 +61,22 @@
 		/obj/item/ammo_box/c980grenade/riot = 1,
 	), src)
 
+/obj/structure/closet/secure_closet/armory_kiboko_but_evil
+	name = "heavy equipment locker"
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	icon_door = "riot"
+	icon_state = "riot"
+	req_access = list(ACCESS_SYNDICATE)
+	anchored = 1
 
+/obj/structure/closet/secure_closet/armory_kiboko_but_evil/PopulateContents()
+	. = ..()
+
+	generate_items_inside(list(
+		/obj/item/gun/ballistic/automatic/sol_grenade_launcher/evil/no_mag = 1,
+		/obj/item/ammo_box/magazine/c980_grenade/drum/starts_empty = 2,
+		/obj/item/ammo_box/c980grenade/shrapnel = 1,
+		/obj/item/ammo_box/c980grenade/shrapnel/phosphor = 1,
+		/obj/item/ammo_box/c980grenade/smoke = 1,
+		/obj/item/ammo_box/c980grenade/riot = 1,
+	), src)
