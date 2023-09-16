@@ -156,10 +156,10 @@ GLOBAL_VAR(first_officer)
 	desc = "A retro-looking card model modified to work with the modern identification systems."
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_nri_police"
+	assigned_icon_state = "assigned_nri_police"
 
 /datum/id_trim/nri_police
 	assignment = "NRI Field Officer"
-	assigned_icon_state = "assigned_nri_police"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri_police"
 	department_color = "#1f3347"
