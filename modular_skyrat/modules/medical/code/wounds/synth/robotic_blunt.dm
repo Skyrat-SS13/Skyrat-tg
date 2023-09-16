@@ -237,7 +237,7 @@
 		var/duration = (daze_mult * head_movement_base_shake_duration)
 		var/strength = (daze_mult * head_movement_base_shake_intensity)
 
-		if ((time_til_next_movement_shake_allowed <= world.time) && (can_shake_camera(duration, strength * head_movement_shake_dizziness_overtake_mult) && prob(shake_chance)))
+		if ((time_til_next_movement_shake_allowed <= world.time) && prob(shake_chance))
 			shake_camera(victim, duration = duration, strength = strength)
 
 		if (prob(dizzy_chance))
@@ -249,24 +249,6 @@
 
 		if (prob(chest_movement_organ_damage_chance * overall_mult))
 			attack_random_organs(get_chest_movement_organ_damage(), chest_movement_organ_damage_individual_max)
-
-/datum/wound/blunt/robotic/proc/can_shake_camera(strength, duration)
-	var/datum/status_effect/dizziness/dizzy_effect = get_dizzy_effect()
-	if (isnull(dizzy_effect) || !dizzy_effect.applying_dizziness)
-		return TRUE
-	var/amount = (dizzy_effect.duration - world.time) / 10
-	if (amount <= 0)
-		return TRUE
-
-	var/dizziness_strength = victim.resting ? 5 : 1
-
-	var/total_dizziness_strength = max((amount - (dizziness_strength * initial(dizzy_effect.tick_interval) * 0.1)), 0)
-
-	// 0.6 deciseconds is approx how long a dizzy proc lasts
-	if ((total_dizziness_strength * dizzy_effect.base_duration) < (strength * duration))
-		return TRUE
-
-	return FALSE
 
 /// Merely a wrapper proc for adjust_disgust that sends a to_chat.
 /datum/wound/blunt/robotic/proc/shake_organs_for_nausea(score, max)
@@ -380,6 +362,9 @@
 
 	a_or_from = "from"
 
+/datum/status_effect/wound/blunt/robotic/moderate
+	id = "unsecure_moderate"
+
 /datum/wound_pregen_data/blunt_metal/loose_screws
 	abstract = FALSE
 
@@ -412,8 +397,8 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.5
 
-	var/their_or_other = (user == victim ? "[user.p_their()]]" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	victim.visible_message(span_notice("[user] begins fastening the screws of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin fastening the screws of [your_or_other] [limb.plaintext_zone]..."))
 
@@ -448,31 +433,32 @@
 	if (!victim || IS_IN_STASIS(victim))
 		return
 
-	regen_time_elapsed += ((seconds_per_tick SECONDS) / 2)
-	if(victim.body_position == LYING_DOWN)
-		if(SPT_PROB(30, seconds_per_tick))
-			regen_time_elapsed += 1 SECONDS
-		if(victim.IsSleeping() && SPT_PROB(30, seconds_per_tick))
-			regen_time_elapsed += 1 SECONDS
+	if (gelled)
+		regen_time_elapsed += ((seconds_per_tick SECONDS) / 2)
+		if(victim.body_position == LYING_DOWN)
+			if(SPT_PROB(30, seconds_per_tick))
+				regen_time_elapsed += 1 SECONDS
+			if(victim.IsSleeping() && SPT_PROB(30, seconds_per_tick))
+				regen_time_elapsed += 1 SECONDS
 
-	var/effective_damage = ((gel_damage / (regen_time_needed / 10)) * seconds_per_tick)
-	var/obj/item/stack/gauze = limb.current_gauze
-	if (gauze)
-		effective_damage *= gauze.splint_factor
-	limb.receive_damage(effective_damage, wound_bonus = CANT_WOUND, damage_source = src)
-	if(effective_damage && prob(33))
-		var/gauze_text = (gauze?.splint_factor ? ", although the [gauze] helps to prevent some of the leakage" : "")
-		to_chat(victim, span_danger("Your [limb.plaintext_zone] sizzles as some gel leaks and warps the exterior metal[gauze_text]..."))
+		var/effective_damage = ((gel_damage / (regen_time_needed / 10)) * seconds_per_tick)
+		var/obj/item/stack/gauze = limb.current_gauze
+		if (gauze)
+			effective_damage *= gauze.splint_factor
+		limb.receive_damage(effective_damage, wound_bonus = CANT_WOUND, damage_source = src)
+		if(effective_damage && prob(33))
+			var/gauze_text = (gauze?.splint_factor ? ", although the [gauze] helps to prevent some of the leakage" : "")
+			to_chat(victim, span_danger("Your [limb.plaintext_zone] sizzles as some gel leaks and warps the exterior metal[gauze_text]..."))
 
-	if(regen_time_elapsed > regen_time_needed)
-		if(!victim || !limb)
-			qdel(src)
-			return
-		to_chat(victim, span_green("The gel within your [limb.plaintext_zone] has fully hardened, allowing you to re-solder it!"))
-		processes = FALSE
-		ready_to_resolder = TRUE
-		ready_to_secure_internals = FALSE
-		set_disabling(FALSE)
+		if(regen_time_elapsed > regen_time_needed)
+			if(!victim || !limb)
+				qdel(src)
+				return
+			to_chat(victim, span_green("The gel within your [limb.plaintext_zone] has fully hardened, allowing you to re-solder it!"))
+			gelled = FALSE
+			ready_to_resolder = TRUE
+			ready_to_secure_internals = FALSE
+			set_disabling(FALSE)
 
 /datum/wound/blunt/robotic/secures_internals/treat(obj/item/item, mob/user)
 	if (ready_to_secure_internals)
@@ -532,8 +518,8 @@
 
 	var/confused = (chance < 25) // generate chance beforehand, so we can use this var
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "their" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	if (user)
 		user.visible_message(span_notice("[user] begins the delicate operation of securing the internals of [their_or_other] [limb.plaintext_zone]..."))
 	if (confused)
@@ -575,7 +561,7 @@
 		user.visible_message(span_notice("[user] finishes applying [gel] to [victim]'s [limb.plaintext_zone], emitting a fizzing noise!"), span_notice("You finish applying [gel] to [victim]'s [limb.plaintext_zone]!"), ignored_mobs=victim)
 		to_chat(victim, span_userdanger("[user] finishes applying [gel] to your [limb.plaintext_zone], and you can almost hear the sizzling of the metal..."))
 	else
-		victim.visible_message(span_notice("[victim] finishes applying [gel] to [victim.p_their()] [limb.plaintext_zone], emitting a funny fizzing sound!"), span_notice("You finish applying [gel] to your [limb.plaintext_zone], and you can almost hear the sizzling of the metal..."))
+		user.visible_message(span_notice("[victim] finishes applying [gel] to [victim.p_their()] [limb.plaintext_zone], emitting a funny fizzing sound!"), span_notice("You finish applying [gel] to your [limb.plaintext_zone], and you can almost hear the sizzling of the metal..."))
 
 	gelled = TRUE
 	set_disabling(TRUE)
@@ -587,8 +573,10 @@
 	if (!welding_item.tool_start_check())
 		return TRUE
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
-	victim.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."))
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
+	user?.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."), \
+		span_notice("You begin re-soldering [your_or_other]'s [limb.plaintext_zone]..."))
 
 	var/delay_mult = 1
 	if (welding_item.tool_behaviour == TOOL_CAUTERY)
@@ -599,10 +587,10 @@
 	if (!welding_item.use_tool(target = victim, user = user, delay = 7 SECONDS * delay_mult, volume = 50,  extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
-	victim.visible_message(span_green("[user] finishes re-soldering [their_or_other] [limb.plaintext_zone]!"))
+	user?.visible_message(span_green("[user] finishes re-soldering [their_or_other] [limb.plaintext_zone]!"), \
+		span_green("You finish re-soldering [your_or_other] [limb.plaintext_zone]!"))
 	remove_wound()
 	return TRUE
-
 
 /datum/wound/blunt/robotic/severe
 	name = "Detached Fastenings"
@@ -666,6 +654,9 @@
 
 	scar_keyword = "bluntsevere"
 
+/datum/status_effect/wound/blunt/robotic/severe
+	id = "unsecure_severe"
+
 /datum/wound_pregen_data/blunt_metal/fastenings
 	abstract = FALSE
 
@@ -677,18 +668,16 @@
 	name = "Collapsed Superstructure"
 	desc = "The superstructure has totally collapsed in one or more locations, causing extreme internal oscillation with every move and massive limb dysfunction"
 	treat_text = "Reforming of superstructure via either RCD or manual molding, followed by typical treatment of loosened internals. \
-				To manually mold, the limb must be aggressively grabbed and welded held to it to make it malleable (though attacking it til thermal overload may be adequate) \
-				followed by firmly grasping and molding the limb with heat-resistant gloves."
-	occur_text = "caves in on itself, damaged solder and shrapnel flying out in a miniature explosion"
+				To manually mold, firmly grasp the limb with a welder and slowly heat, then use your hands (with heat-resistant gloves) to reform the metal."
 	examine_desc = "has caved in, with internal components visible through gaps in the metal"
 	severity = WOUND_SEVERITY_CRITICAL
 
 	disabling = TRUE
 
-	simple_treat_text = "<b>Bandaging</b> is useful for reducing <b>dysfunction</b>, and if on the head/chest, <b>walking slowly</b> or <b>using a chair/roller bed</b>. \
-	The superstructure will need to be <b>RCDed</b> or <b>firmly grasped and molded</b> while <b>severely heated</b> \
-	(can be done by firmly grasping and <b>using a heating instrument</b>), then <b>screwed/wrenched</b> or <b>bone gelled</b> and <b>re-soldered</b>."
-	homemade_treat_text = "When the limb is <b>heated</b>, a <b>plunger</b> or <b>percussive maintenance</b> can reform the superstructure!"
+	simple_treat_text = "The limb must be <b>heated</b> with an <b>firm grip</b> and a <b>welder</b>, then <b>molded</b> manually by hand. Alternatively, an <b>RCD</b> may be used. \
+	Afterwards, internals must be <b>secured</b> via a <b>screwdriver/wrench</b>, then <b>re-soldered</b>! As a temporary remedy, <b>bandaging</b> is generally effective."
+	homemade_treat_text = "When the limb is <b>heated</b>, a <b>plunger</b> or <b>percussive maintenance</b> can reform the superstructure, though it's ill-advised. \
+	When internals must be secured, <b>bone gel</b> can be used to act as a glue, and a <b>crowbar</b> can <b>tear the metal open</b>, though at risk of electric shock and massive damage to the limb."
 
 	interaction_efficiency_penalty = 2.8
 	limp_slowdown = 8
@@ -743,6 +732,9 @@
 
 	/// Has the first stage of our treatment been completed? E.g. RCDed, manually molded...
 	var/superstructure_remedied = FALSE
+
+/datum/status_effect/wound/blunt/robotic/critical
+	id = "unsecure_critical"
 
 /datum/wound_pregen_data/blunt_metal/superstructure
 	abstract = FALSE
