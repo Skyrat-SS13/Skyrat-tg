@@ -357,7 +357,6 @@
 	desc = "Patient is suffering extreme burns from a strange brand marking, creating serious risk of infection and greatly reduced limb integrity."
 	examine_desc = "appears to have holy symbols painfully branded into their flesh, leaving severe burns."
 	occur_text = "chars rapidly into a strange pattern of holy symbols, burned into the flesh."
-
 	simple_desc = "Patient's skin has had strange markings burned onto it, significantly weakening the limb and compounding further damage!!"
 
 /datum/wound_pregen_data/flesh_burn/third_degree/holy
@@ -365,8 +364,8 @@
 	can_be_randomly_generated = FALSE
 
 	wound_path_to_generate = /datum/wound/burn/flesh/severe/brand
+  
 /// special severe wound caused by the cursed slot machine.
-
 /datum/wound/burn/flesh/severe/third_degree/cursed_brand
 	name = "Ancient Brand"
 	desc = "Patient is suffering extreme burns with oddly ornate brand markings, creating serious risk of infection and greatly reduced limb integrity."

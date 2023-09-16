@@ -201,6 +201,10 @@
 	simple_treat_text = "<b>Bandaging</b> the wound will reduce its impact until treated with a bonesetter. Most commonly, it is treated by aggressively grabbing someone and helpfully wrenching the limb in place, though there's room for malfeasance when doing this."
 	homemade_treat_text = "Besides bandaging and wrenching, <b>bone setters</b> can be printed in lathes and utilized on oneself at the cost of great pain. As a last resort, <b>crushing</b> the patient with a <b>firelock</b> has sometimes been noted to fix their dislocated limb."
 
+	simple_desc = "Patient's bone has been dislocated, causing limping or reduced dexterity."
+	simple_treat_text = "<b>Bandaging</b> the wound will reduce its impact until treated with a bonesetter. Most commonly, it is treated by aggressively grabbing someone and helpfully wrenching the limb in place, though there's room for malfeasance when doing this."
+	homemade_treat_text = "Besides bandaging and wrenching, <b>bone setters</b> can be printed in lathes and utilized on oneself at the cost of great pain. As a last resort, <b>crushing</b> the patient with a <b>firelock</b> has sometimes been noted to fix their dislocated limb."
+
 /datum/wound_pregen_data/bone/dislocate
 	abstract = FALSE
 
