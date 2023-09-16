@@ -6,14 +6,14 @@
 
 #define ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD 0.5
 #define ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
-#define ROBOTIC_WOUND_DETERMINATION_HIT_NAUSEA_MULT 0.5
+#define ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT 0.5
 
 #define ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE 20
 #define ROBOTIC_BLUNT_CROWBAR_BLUNT_DAMAGE 20
 
 /datum/wound/blunt/robotic
 	name = "Robotic Blunt (Screws and bolts) Wound"
-	wound_flags = (ACCEPTS_GAUZE)
+	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY)
 
 	default_scar_file = METAL_SCAR_FILE
 
@@ -26,55 +26,63 @@
 	var/head_attacked_shake_intensity_ratio = 0.2
 
 	/// How much effective damage is multiplied against for purposes of determining how much dizziness a strike to the head will add.
-	var/head_attacked_dizzy_duration_ratio = 0.2
+	var/head_attacked_eyeblur_duration_ratio = 0.2
 
 	/// The base chance, in percent, for moving to shake our camera. Multiplied against many local modifiers, such as resting, being gauzed, etc.
 	var/head_movement_shake_chance = 100
 	/// The base chance, in percent, for moving to increase dizziness. Multiplied against many local modifiers, such as resting, being gauzed, etc.
-	var/head_movement_dizzy_chance = 100
+	var/head_movement_blur_chance = 10
+
+	/// The base duration of eyeblur on movement.
+	var/head_movement_eyeblur_base_duration = 0.25 SECONDS
 
 	/// The base duration, in deciseconds, for our camera shake on movement.
 	var/head_movement_base_shake_duration = 1
 	/// The base intensity, in tiles, for our camera shake on movement.
 	var/head_movement_base_shake_intensity = 1
 
-	/// The base duration increment, in deciseconds, for our dizziness to be increased by when we move.
-	var/head_movement_dizzy_base_duration = 1
+	/// The maximum time in deciseconds daze() may cause eyeblur for
+	var/daze_eyeblur_maximum_duration = 20 SECONDS
 
-	/// The maximum time in deciseconds daze() may cause dizziness for
-	var/daze_dizziness_maximum_duration = 20 SECONDS
+	/// The ratio stagger score will be multiplied against for determining the final chance of moving away from the attacker.
+	var/stagger_movement_chance_ratio = 1
+	/// The ratio stagger score will be multiplied against for determining the amount of pixelshifting we will do when we are hit.
+	var/stagger_shake_shift_ratio = 0.05
 
-	/// The maximum duration our nausea will last for. See _stomach.dm for the various levels of nausea.
-	var/max_nausea_duration = 20 SECONDS
-	/// The base amount of nausea we apply to our victim on movement.
-	var/chest_movement_base_nausea_score = 0.2 SECONDS
-	/// Percent chance, every time we move, to attempt to increase nausea of the victim if we are on the chest.
-	var/chest_movement_nausea_chance = 0
+	/// The ratio of stagger score to shake duration during a stagger() call
+	var/stagger_score_to_shake_duration_ratio = 0.1
 
-	/// The minimum damage the chest must sustain before we try to increase their nausea.
-	var/chest_attacked_nausea_minimum_score = 7
-	/// Assuming we sustain more damage than our minimum, this is the chance for a given attack to proc a nausea attempt.
-	var/chest_attacked_nausea_chance = 25
-	/// Damage the chest takes is multiplied against this for determining the amount of nausea to apply.
-	var/chest_attacked_nausea_mult = 0.25 // saw = 15, 1.5 seconds of disgust at x1
+	/// In the stagger aftershock, the ratio score will be multiplied against for determining the chance of dropping held items.
+	var/stagger_drop_chance_ratio = 0.25
+	/// In the stagger aftershock, the ratio score will be multiplied aginst for determining the chance of falling over.
+	var/stagger_fall_chance_ratio = 1
 
-	/// Percent chance, every time we move, to attempt to damage random organs if we are on the chest.
-	var/chest_movement_organ_damage_chance = 0
-	/// The minimum total damage we can roll when doing random movement organ damage.
-	var/chest_movement_organ_damage_min = 1
-	/// The maximum total damage we can roll when doing random movement organ damage.
-	var/chest_movement_organ_damage_max = 3
-	/// The max amount of damage any specific organ can take from being randomly damaged on movement.
-	var/chest_movement_organ_damage_individual_max = 2
+	/// In the stagger aftershock, the ratio score will be multiplied against for determining how long we are knocked down for.
+	var/stagger_aftershock_knockdown_ratio = 1
 
-	/// The max amount of damage any specific organ can take from being randomly damaged on attacked.
-	var/attacked_organ_damage_individual_max = 10
-	/// The chance for the internal organs of our limb to be damaged when the limb is attacked.
-	var/attacked_organ_damage_chance = 0
-	/// Score mult for overall organ damage on hit
-	var/attacked_organ_damage_mult = 0.5
-	/// Minimum score required to damage random organs on hit
-	var/attacked_organ_damage_minimum_score = 5
+	/// If the victim stops moving before the aftershock, aftershock effects will be multiplied against this.
+	var/aftershock_stopped_moving_score_mult = 0.25
+
+	/// The ratio damage applied will be multiplied against for determining our stagger score.
+	var/chest_attacked_stagger_mult = 2.5
+	/// The minimum score an attack must do to trigger a stagger.
+	var/chest_attacked_stagger_minimum_score = 5
+	/// The ratio of damage to stagger chance on hit.
+	var/chest_attacked_stagger_chance_ratio = 2
+
+	/// The base score given to stagger() when we successfully stagger on a move.
+	var/base_movement_stagger_score = 30
+	/// The base chance of moving to trigger stagger().
+	var/chest_movement_stagger_chance = 1
+
+	var/base_stagger_shake_duration = 3 SECONDS
+	var/base_stagger_movement_shake_duration = 2 SECONDS
+
+	/// The amount of x and y pixels we will be shaken around by during a movement stagger.
+	var/movement_stagger_shift = 1
+
+	/// If we are currently oscillating. If true, we cannot stagger().
+	var/oscillating = FALSE
 
 	/// % chance for hitting our limb to fix something.
 	var/percussive_maintenance_repair_chance = 10
@@ -86,11 +94,11 @@
 	/// The time, in world time, that we will be allowed to do another movement shake. Useful because it lets us prioritize attacked shakes over movement shakes.
 	var/time_til_next_movement_shake_allowed = 0
 
-	/// Multiplies the camera shake by this for the purposes of deciding if we should override dizziness.
-	var/head_movement_shake_dizziness_overtake_mult = 1
-
 	/// The percent our limb must get to max possible damage by burn damage alone to count as malleable if it has no T2 burn wound.
 	var/limb_burn_percent_to_max_threshold_for_malleable = 0.8 // must be 75% to max damage by burn damage alone
+
+	/// The last time our victim has moved. Used for determining if we should increase or decrease the chance of having stagger aftershock.
+	var/last_time_victim_moved = 0
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
@@ -163,24 +171,20 @@
 				return
 			var/strength = (daze_damage * head_attacked_shake_intensity_ratio)
 			var/duration = (daze_damage * head_attacked_shake_duration_ratio)
-			if (can_shake_camera(strength, duration))
-				shake_camera(victim, duration = duration, strength = strength)
-				time_til_next_movement_shake_allowed = (world.time + (duration SECONDS)) // not sure why, but seconds seems to be a necessity here
-				victim.adjust_dizzy_up_to(daze_damage * head_attacked_dizzy_duration_ratio, daze_dizziness_maximum_duration)
+			shake_camera(victim, duration = duration, strength = strength)
+			time_til_next_movement_shake_allowed = (world.time + (duration SECONDS)) // not sure why, but seconds seems to be a necessity here
+			victim.adjust_eye_blur_up_to(daze_damage * head_attacked_eyeblur_duration_ratio, daze_eyeblur_maximum_duration)
 
 		if (BODY_ZONE_CHEST)
-			var/nausea_prob_mult = 1
+			var/oscillation_mult = 1
 			if (victim.body_position == LYING_DOWN)
-				nausea_prob_mult *= 0.5
-			var/nausea_damage = effective_damage
+				oscillation_mult *= 0.5
+			var/oscillation_damage = effective_damage
+			var/stagger_damage = oscillation_damage * chest_attacked_stagger_mult
 			if (victim.has_status_effect(/datum/status_effect/determined))
-				nausea_damage *= ROBOTIC_WOUND_DETERMINATION_HIT_NAUSEA_MULT
-			if ((nausea_damage >= chest_attacked_nausea_minimum_score) && prob(chest_attacked_nausea_chance * nausea_prob_mult))
-				victim.adjust_disgust(nausea_damage * chest_attacked_nausea_mult, max_nausea_duration)
-				to_chat(victim, span_warning("You feel a wave of nausea as your [limb.plaintext_zone]'s internals jostle from the impact!"))
-
-	if (limb_essential() && (effective_damage >= attacked_organ_damage_minimum_score) && prob(attacked_organ_damage_chance))
-		attack_random_organs((effective_damage * attacked_organ_damage_mult), attacked_organ_damage_individual_max)
+				oscillation_damage *= ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
+			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(stagger_damage * chest_attacked_stagger_chance_ratio))
+				stagger(stagger_damage, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
 
 	if (!uses_percussive_maintenance() || damage < percussive_maintenance_damage_min || damage > percussive_maintenance_damage_max || damagetype != BRUTE || sharpness)
 		return
@@ -202,6 +206,73 @@
 		handle_percussive_maintenance_success(attacking_item, user)
 	else
 		handle_percussive_maintenance_failure(attacking_item, user)
+
+/datum/wound/blunt/robotic/proc/stagger(stagger_score, attack_direction, obj/item/attacking_item, from_movement, shake_duration = base_stagger_shake_duration, shift)
+	if (oscillating)
+		return
+
+	if (!attack_direction)
+		attack_direction = get_dir(victim, attacking_item)
+
+	var/self_message = "Your [limb.plaintext_zone] oscillates"
+	var/message = "[victim]'s [limb.plaintext_zone] oscillates"
+	if (attacking_item)
+		message += " from the impact"
+	else if (from_movement)
+		message += " from the movement"
+	message += "!"
+	self_message += "! You might be able to avoid an aftershock by stopping and waiting..."
+
+	if (attack_direction && prob(stagger_score * stagger_movement_chance_ratio))
+		to_chat(victim, span_warning("The force of the blow sends you reeling!"))
+		var/turf/target_loc = get_step(victim, attack_direction)
+		victim.Move(target_loc)
+
+	victim.visible_message(span_warning(message), ignored_mobs = victim)
+	to_chat(victim, span_warning(self_message))
+	victim.balloon_alert(victim, "oscillation! stop moving")
+
+	victim.Shake(pixelshiftx = shift, pixelshifty = shift, duration = shake_duration)
+	var/aftershock_delay = (shake_duration / 1.35)
+	addtimer(CALLBACK(src, PROC_REF(aftershock), stagger_score, attack_direction, attacking_item, from_movement, world.time, aftershock_delay), aftershock_delay)
+	oscillating = TRUE
+
+/datum/wound/blunt/robotic/proc/aftershock(stagger_score, attack_direction, obj/item/attacking_item, from_movement, stagger_starting_time, aftershock_delay)
+	if (!still_exists())
+		return FALSE
+	var/message = "The oscillations from your [limb.plaintext_zone] spread, "
+	var/limb_message = "causing "
+	var/limb_affected
+
+	var/stopped_moving_grace_threshold = (world.time - ((world.time - stagger_starting_time) / 1.5))
+	var/victim_stopped_moving = (last_time_victim_moved <= stopped_moving_grace_threshold)
+	if (victim_stopped_moving)
+		stagger_score *= aftershock_stopped_moving_score_mult
+
+	if (prob(stagger_score * stagger_drop_chance_ratio))
+		limb_message += "your <b>hands</b>"
+		victim.drop_all_held_items()
+		limb_affected = TRUE
+
+	if (prob(stagger_score * stagger_fall_chance_ratio))
+		if (limb_affected)
+			limb_message += " and "
+		limb_message += "your <b>legs</b>"
+		victim.Knockdown(stagger_score *= stagger_aftershock_knockdown_ratio)
+		limb_affected = TRUE
+
+	if (limb_affected)
+		message += "[limb_message] to shake uncontrollably!"
+	else
+		message += "but pass harmlessly"
+		if (victim_stopped_moving)
+			message += " thanks to your stillness"
+		message += "."
+
+	to_chat(victim, span_danger(message))
+	victim.balloon_alert(victim, "oscillation over")
+
+	oscillating = FALSE
 
 /// Called when percussive maintenance succeeds at its random roll.
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_success(attacking_item, mob/living/user)
@@ -232,66 +303,37 @@
 
 	if (can_daze())
 		var/shake_chance = head_movement_shake_chance
-		var/dizzy_chance = head_movement_dizzy_chance
+		var/eyeblur_chance = head_movement_blur_chance
 
-		shake_chance *= overall_mult
-		dizzy_chance *= overall_mult
-		var/daze_mult = LERP(1, 1.2, rand())
+		var/duration = (head_movement_base_shake_duration)
+		var/strength = (head_movement_base_shake_intensity)
 
-		var/duration = (daze_mult * head_movement_base_shake_duration)
-		var/strength = (daze_mult * head_movement_base_shake_intensity)
+		duration *= overall_mult
+		strength *= overall_mult
 
-		if ((time_til_next_movement_shake_allowed <= world.time) && can_shake_camera(duration, strength * head_movement_shake_dizziness_overtake_mult) && prob(shake_chance))
-			shake_camera(victim, duration = duration, strength = strength)
+		if ((time_til_next_movement_shake_allowed <= world.time) && prob(shake_chance))
 
-		if (prob(dizzy_chance))
-			victim.adjust_dizzy_up_to(head_movement_dizzy_base_duration * daze_mult, daze_dizziness_maximum_duration)
+			if (strength < 1 && prob(strength * 100)) // a bit of balancing so this can actually work at low strength
+				strength = 1
+
+			if (strength >= 1)
+				shake_camera(victim, duration = duration, strength = strength)
+
+		if (prob(eyeblur_chance))
+			victim.adjust_eye_blur_up_to(head_movement_eyeblur_base_duration * overall_mult, daze_eyeblur_maximum_duration)
 
 	if (limb.body_zone == BODY_ZONE_CHEST)
-		if (prob(chest_movement_nausea_chance * overall_mult))
-			shake_organs_for_nausea(chest_movement_base_nausea_score, max_nausea_duration)
+		if (prob(chest_movement_stagger_chance * overall_mult))
+			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift)
 
-		if (prob(chest_movement_organ_damage_chance * overall_mult))
-			attack_random_organs(get_chest_movement_organ_damage(), chest_movement_organ_damage_individual_max)
+	last_time_victim_moved = world.time
 
 /// Merely a wrapper proc for adjust_disgust that sends a to_chat.
 /datum/wound/blunt/robotic/proc/shake_organs_for_nausea(score, max)
 	victim.adjust_disgust(score, max)
 	to_chat(victim, span_warning("You feel a wave of nausea as your [limb.plaintext_zone]'s internals jostle..."))
 
-/// Iterates through all our limb's organs and applies randomized damage to them, and sends a to_chat.
-/datum/wound/blunt/robotic/proc/attack_random_organs(total_damage, max_damage_per_organ)
-	var/list/obj/item/organ/picked_organs = assign_damage_to_organs(total_damage, max_damage_per_organ)
-	for (var/obj/item/organ/organ as anything in picked_organs)
-		organ.apply_organ_damage(picked_organs[organ])
-	to_chat(victim, span_warning("You feel your [limb.plaintext_zone]'s internals jostle painfully!"))
-
-/// Randomly iterates through all our organs to assign damage to them.
-/// Returns a assoc list of (organ -> damage), where damage is capped at max_damage_per_organ, unless theres not enough organs to take all the damage.
-/datum/wound/blunt/robotic/proc/assign_damage_to_organs(damage_to_distribute, max_damage_per_organ)
-	RETURN_TYPE(/list)
-
-	var/obj/item/organ/picked_organs = list()
-	var/remaining_damage_distribution = damage_to_distribute
-
-	var/list/obj/item/organ/limb_organs = limb.get_organs()
-	if (!length(limb_organs)) // catches both null and empty
-		return list()
-	while (remaining_damage_distribution > 0)
-		for (var/obj/item/organ/organ as anything in shuffle(limb_organs))
-			picked_organs[organ] += min(remaining_damage_distribution, max_damage_per_organ)
-			remaining_damage_distribution -= picked_organs[organ]
-
-			if (remaining_damage_distribution < 0)
-				stack_trace("remaining_damage_distribution somehow went below 0!")
-				break
-
-			if (remaining_damage_distribution == 0)
-				break
-
-	return picked_organs
-
-/// Allows us to shake the camera of our victim/give them dizziness.
+/// Allows us to shake the camera of our victim/give them eyeblur.
 /datum/wound/blunt/robotic/proc/can_daze()
 	return (limb.body_zone == BODY_ZONE_HEAD)
 
@@ -304,17 +346,6 @@
 		return 0.05
 	else
 		return 0.5
-
-/datum/wound/blunt/robotic/proc/get_chest_movement_organ_damage()
-	return rand(chest_movement_organ_damage_min, chest_movement_organ_damage_max)
-
-/// Returns the dizziness status effect that our victim possesses. Nullable.
-/datum/wound/blunt/robotic/proc/get_dizzy_effect()
-	RETURN_TYPE(/datum/status_effect/dizziness)
-
-	for (var/datum/status_effect/effect as anything in victim.status_effects)
-		if (istype(effect, /datum/status_effect/dizziness))
-			return effect
 
 /// If this wound can be treated in its current state by just hitting it with a low force object. Exists for conditional logic, e.g. "Should we respond
 /// to percussive maintenance right now?". Critical blunt uses this to only react when the limb is malleable and superstructure is broken.
@@ -330,15 +361,13 @@
 	occur_text = "jostles awkwardly and seems to slightly unfasten"
 	severity = WOUND_SEVERITY_MODERATE
 
-	simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
+	/*simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
 	<b>someone else</b>, a <b>roboticist</b>, an <b>engineer</b>, or with a <b>diagnostic HUD</b>."
 	homemade_treat_text = "In a pinch, <b>percussive maintenance</b> can reset the screws - the chance of which is increased if done by <b>someone else</b> or \
 	with a <b>diagnostic HUD</b>!"
-
+*/
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/moderate
 	treatable_tools = list(TOOL_SCREWDRIVER)
-
-	max_nausea_duration = DISGUST_LEVEL_GROSS + 10
 
 	interaction_efficiency_penalty = 1.2
 	limp_slowdown = 2.5
@@ -347,21 +376,11 @@
 
 	daze_attacked_minimum_score = 8
 
-	daze_dizziness_maximum_duration = 10 SECONDS
-
-	chest_attacked_nausea_mult = 0.2
-
-	head_movement_dizzy_base_duration = 0.3 SECONDS
-
 	head_movement_base_shake_intensity = 0.05
 	head_movement_base_shake_duration = 1 // exxxtremely weak
 
-	head_attacked_dizzy_duration_ratio = 2.4
-
 	head_attacked_shake_duration_ratio = 0.05
 	head_attacked_shake_intensity_ratio = 0.08
-
-	daze_dizziness_maximum_duration = 22 SECONDS
 
 	can_scar = FALSE
 
@@ -485,12 +504,12 @@
 	if (!isnull(to_add))
 		. += "\nWound status: [to_add]"
 
-/datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
+/*/datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
 	. = ..()
 
 	var/to_add = get_wound_status()
 	if (!isnull(to_add))
-		. += "\nWound status: [to_add]"
+		. += "\nWound status: [to_add]"*/
 
 /datum/wound/blunt/robotic/secures_internals/proc/get_wound_status(mob/user)
 	if (crowbarred_open)
@@ -568,11 +587,8 @@
 	var/message
 	var/self_message
 
-	var/victim_message
-
 	if (user && limb_can_shock)
 		var/electrocute_flags = (SHOCK_KNOCKDOWN|SHOCK_NO_HUMAN_ANIM|SHOCK_SUPPRESS_MESSAGE)
-		var/shock_chance = 90
 		var/stun_chance = 100
 
 		if (HAS_TRAIT(user, TRAIT_SHOCKIMMUNE))
@@ -589,8 +605,8 @@
 			stun_chance *= carbon_user.dna.species.siemens_coeff
 
 		if (stun_chance && prob(stun_chance))
-			electrocute_flags & ~SHOCK_KNOCKDOWN
-			electrocute_flags & ~SHOCK_NO_HUMAN_ANIM
+			electrocute_flags &= ~SHOCK_KNOCKDOWN
+			electrocute_flags &= ~SHOCK_NO_HUMAN_ANIM
 			stunned = TRUE
 
 			message = span_boldwarning("[user] is shocked by [their_or_other] [limb.plaintext_zone], [user.p_their()] [crowbarring_item] slipping as [user.p_they()] briefly convulse!")
@@ -674,8 +690,8 @@
 		return TRUE
 
 	if (prob(chance))
-		user?.visible_message(span_green("[user] finishes securing the internals of [their_or_other] [limb.plaintext_zone]!", \
-			span_green("You finish securing the internals of [your_or_other] [limb.plaintext_zone]!")))
+		user?.visible_message(span_green("[user] finishes securing the internals of [their_or_other] [limb.plaintext_zone]!"), \
+			span_green("You finish securing the internals of [your_or_other] [limb.plaintext_zone]!"))
 		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]'s internals are now secure! Your next step is to weld/cauterize it."))
 		ready_to_secure_internals = FALSE
 		ready_to_resolder = TRUE
@@ -745,11 +761,11 @@
 	occur_text = "visibly cracks open, solder flying everywhere"
 	severity = WOUND_SEVERITY_SEVERE
 
-	simple_treat_text = "<b>Bandage it</b>, <b>walk slowly</b>, or <b>use a roller bed/wheelchair</b> to reduce movement effects, then have a \
+	/*simple_treat_text = "<b>Bandage it</b>, <b>walk slowly</b>, or <b>use a roller bed/wheelchair</b> to reduce movement effects, then have a \
 	<b>roboticist/engineer screwdriver/wrench</b> it and then <b>re-solder</b> it. <b>Diagnostic huds</b> make this all easier, and <b>robos/engis</b> have a <b>large boost</b> as well!"
 	homemade_treat_text = "<b>Bone gel</b> can be used instead of a <b>screwdriver/wrench</b> and is <b>guaranteed to work</b> - but it takes <b>time</b> and <b>damage</b>!"
-
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_EXTERIOR)
+*/
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY)
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/severe
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
@@ -762,34 +778,11 @@
 
 	daze_attacked_minimum_score = 6
 
-	daze_dizziness_maximum_duration = 20 SECONDS
-
-	max_nausea_duration = DISGUST_LEVEL_VERYGROSS + 2 // just BARELY above the vomit threshold
-
-	chest_movement_nausea_chance = 2
-	chest_attacked_nausea_chance = 75
-	chest_attacked_nausea_mult = 0.25 // saw = 15, 1.5 seconds of disgust at x1
-
-	chest_movement_organ_damage_chance = 0
-	chest_movement_organ_damage_min = 2
-	chest_movement_organ_damage_max = 7
-	chest_movement_organ_damage_individual_max = 2
-
-	attacked_organ_damage_individual_max = 3
-	attacked_organ_damage_chance = 25
-	attacked_organ_damage_mult = 0.25
-
 	head_movement_base_shake_intensity = 0.25
 	head_movement_base_shake_duration = 1
 
-	head_movement_dizzy_base_duration = 0.5 SECONDS
-
 	head_attacked_shake_duration_ratio = 0.18
 	head_attacked_shake_intensity_ratio = 0.1
-
-	daze_dizziness_maximum_duration = 40 SECONDS
-
-	head_attacked_dizzy_duration_ratio = 3.4
 
 	a_or_from = "from"
 
@@ -817,10 +810,10 @@
 
 	disabling = TRUE
 
-	simple_treat_text = "<b>Bandaging</b> is useful for reducing <b>dysfunction</b>, and if on the head/chest, <b>walking slowly</b> or <b>using a chair/roller bed</b>. \
+	/*simple_treat_text = "<b>Bandaging</b> is useful for reducing <b>dysfunction</b>, and if on the head/chest, <b>walking slowly</b> or <b>using a chair/roller bed</b>. \
 	The superstructure will need to be <b>RCDed</b> or <b>firmly grasped and molded</b> while <b>severely heated</b> \
 	(can be done by firmly grasping and <b>welding</b>), then <b>screwed/wrenched</b> and <b>re-soldered</b>."
-	homemade_treat_text = "When the limb is <b>heated</b>, a <b>plunger</b> or <b>percussive maintenance</b> can reform the superstructure!"
+	homemade_treat_text = "When the limb is <b>heated</b>, a <b>plunger</b> or <b>percussive maintenance</b> can reform the superstructure!"*/
 
 	interaction_efficiency_penalty = 2.8
 	limp_slowdown = 8
@@ -833,34 +826,12 @@
 
 	sound_effect = 'sound/effects/wounds/crack2.ogg'
 
-	wound_flags = (ACCEPTS_GAUZE | MANGLES_EXTERIOR)
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY)
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
 
 	daze_attacked_minimum_score = 1
-
-	daze_dizziness_maximum_duration = 80 SECONDS
-	head_movement_dizzy_base_duration = 0.8 SECONDS
-
-	max_nausea_duration = DISGUST_LEVEL_DISGUSTED + 5
-
-	attacked_organ_damage_individual_max = 4
-	attacked_organ_damage_chance = 75
-	attacked_organ_damage_mult = 0.25
-
-	chest_movement_nausea_chance = 12
-
-	chest_attacked_nausea_chance = 100
-	chest_attacked_nausea_mult = 0.5
-	chest_attacked_nausea_minimum_score = 4
-
-	chest_movement_organ_damage_chance = 2
-	chest_movement_organ_damage_min = 3
-	chest_movement_organ_damage_max = 6
-	chest_movement_organ_damage_individual_max = 4
-
-	head_movement_shake_dizziness_overtake_mult = 200
 
 	a_or_from = "a"
 
@@ -1148,6 +1119,6 @@
 
 #undef ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
 #undef ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT
-#undef ROBOTIC_WOUND_DETERMINATION_HIT_NAUSEA_MULT
+#undef ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
 #undef ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE
 #undef ROBOTIC_BLUNT_CROWBAR_BLUNT_DAMAGE

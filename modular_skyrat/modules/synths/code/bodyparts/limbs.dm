@@ -1,5 +1,5 @@
-#define SYNTH_BRUTE_MODIFIER 1.3
-#define SYNTH_BURN_MODIFIER 1.3
+#define SYNTH_BRUTE_MODIFIER 1.0
+#define SYNTH_BURN_MODIFIER 1.0
 
 // Synth bois!
 /obj/item/bodypart/head/robot/synth

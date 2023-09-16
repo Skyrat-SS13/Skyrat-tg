@@ -7,7 +7,7 @@
 /datum/wound/electrical_damage/pierce
 	heat_differential_healing_mult = 0.01
 
-	simple_desc = "Electrical conduits have been pierced open, resulting in a fault that <b>slowly</b> intensifies, but with <b>extreme</b> maximum voltage!"
+	//simple_desc = "Electrical conduits have been pierced open, resulting in a fault that <b>slowly</b> intensifies, but with <b>extreme</b> maximum voltage!"
 
 /datum/wound_pregen_data/electrical_damage/pierce
 	abstract = TRUE
@@ -26,7 +26,7 @@
 	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albiet at limited efficiency. In case of emergency, \
 				subject may be subjected to high temperatures to allow solder to reset."
 
-	sound_effect = 'sound/effects/wounds/robotic_slash_T1.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
 
 	severity = WOUND_SEVERITY_MODERATE
 
@@ -53,8 +53,6 @@
 	limp_slowdown = 2
 	limp_chance = 60
 
-	wiring_reset = TRUE
-
 	initial_sparks_amount = 1
 
 	status_effect_type = /datum/status_effect/wound/electrical_damage/pierce/moderate
@@ -77,7 +75,7 @@
 	examine_desc = "is shuddering significantly, servos briefly giving way in a rythmic pattern"
 	treat_text = "Containment of damaged wiring via gauze, securing of wires via a wirecutter/hemostat, then application of fresh wiring or sutures."
 
-	sound_effect = 'sound/effects/wounds/robotic_slash_T2.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
 
 	severity = WOUND_SEVERITY_SEVERE
 
@@ -130,9 +128,9 @@
 		If the fault has become uncontrollable, extreme heat therapy is reccomended."
 
 	severity = WOUND_SEVERITY_CRITICAL
-	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED)
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
 
-	sound_effect = 'sound/effects/wounds/robotic_slash_T3.ogg'
+	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T3.ogg'
 
 	sound_volume = 30
 

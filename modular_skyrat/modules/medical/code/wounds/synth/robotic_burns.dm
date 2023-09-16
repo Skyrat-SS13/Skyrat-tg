@@ -14,14 +14,14 @@
 /datum/wound/burn/robotic/overheat
 	treat_text = "Introduction of a cold environment or lowering of body temperature."
 
-	simple_desc = "Metals are overheated, increasing damage taken significantly and raising body temperature!"
+/*	simple_desc = "Metals are overheated, increasing damage taken significantly and raising body temperature!"
 	simple_treat_text = "Ideally <b>cryogenics</b>, but any source of <b>low body temperature</b> can work. <b>Fire exinguishers</b> and <b>showers</b> can quickly reduce \
 	the temperature, but <b>will damage the limb</b>. <b>Clothing</b> reduces the water that makes it to the metal, and <b>gauze</b> binds it and <b>reduces</b> the damage taken."
 	homemade_treat_text = "<b>Coffee vendors</b>, when hacked, dispense <b>ice water</b>, which can be used to lower your body temperature!"
-
+*/
 	default_scar_file = METAL_SCAR_FILE
 
-	wound_flags = (ACCEPTS_GAUZE) // gauze binds the metal and makes it resistant to thermal shock
+	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY) // gauze binds the metal and makes it resistant to thermal shock
 
 	processes = TRUE
 
@@ -246,10 +246,10 @@
 
 	. += "\nWound status: [get_wound_status_info()]"
 
-/datum/wound/burn/robotic/overheat/get_simple_scanner_description(mob/user)
+/*/datum/wound/burn/robotic/overheat/get_simple_scanner_description(mob/user)
 	. = ..()
 
-	. += "\nWound status: [get_wound_status_info()]"
+	. += "\nWound status: [get_wound_status_info()]"*/
 
 /datum/wound/burn/robotic/overheat/get_xadone_progress_to_qdel()
 	return INFINITY
@@ -263,7 +263,7 @@
 	treat_text = "Reduction of body temperature to expedite the passive heat dissipation - or, if thermal shock is to be risked, application of a fire extinguisher/shower."
 	severity = WOUND_SEVERITY_MODERATE
 
-	damage_multiplier_penalty = 1.15 //1.15x damage taken
+	damage_mulitplier_penalty = 1.15 //1.15x damage taken
 
 	starting_temperature_min = (BODYTEMP_NORMAL + 350)
 	starting_temperature_max = (BODYTEMP_NORMAL + 400)
@@ -318,7 +318,7 @@
 	threshold_penalty = 65
 
 	status_effect_type = /datum/status_effect/wound/burn/robotic/severe
-	damage_multiplier_penalty = 1.25 // 1.25x damage taken
+	damage_mulitplier_penalty = 1.25 // 1.25x damage taken
 
 	starting_temperature_min = (BODYTEMP_NORMAL + 550)
 	starting_temperature_max = (BODYTEMP_NORMAL + 600)
@@ -367,7 +367,7 @@
 
 	status_effect_type = /datum/status_effect/wound/burn/robotic/critical
 
-	damage_multiplier_penalty = 1.5 //1.5x damage taken
+	damage_mulitplier_penalty = 1.5 //1.5x damage taken
 
 	starting_temperature_min = (BODYTEMP_NORMAL + 1050)
 	starting_temperature_max = (BODYTEMP_NORMAL + 1100)
@@ -385,7 +385,7 @@
 
 	demotes_to = /datum/wound/burn/robotic/overheat/severe
 
-	wound_flags = (MANGLES_EXTERIOR|ACCEPTS_GAUZE)
+	wound_flags = (MANGLES_EXTERIOR|ACCEPTS_GAUZE|SPLINT_OVERLAY)
 
 	light_color = COLOR_VERY_SOFT_YELLOW
 	light_power = 1.3
