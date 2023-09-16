@@ -17,6 +17,8 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 
+	SET_BASE_PIXEL(-8, 0)
+
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/shotgun_heavy.ogg'
 	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
 	can_suppress = TRUE
@@ -25,11 +27,6 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-
-/obj/item/gun/ballistic/shotgun/riot/sol/Initialize(mapload)
-	. = ..()
-
-	SET_BASE_PIXEL(-8, 0)
 
 /obj/item/gun/ballistic/shotgun/riot/sol/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)
@@ -50,6 +47,7 @@
 /obj/item/gun/ballistic/shotgun/riot/sol/update_appearance(updates)
 	if(sawn_off)
 		suppressor_x_offset = 0
+		SET_BASE_PIXEL(0, 0)
 
 	. = ..()
 

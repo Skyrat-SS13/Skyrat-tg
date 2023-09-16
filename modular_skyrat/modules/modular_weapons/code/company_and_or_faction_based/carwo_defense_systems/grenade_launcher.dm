@@ -14,6 +14,8 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "kiboko"
 
+	SET_BASE_PIXEL(-8, 0)
+
 	special_mags = TRUE
 
 	bolt_type = BOLT_TYPE_LOCKING
@@ -37,11 +39,6 @@
 	var/target_range = 14
 	/// The maximum range we can set grenades to detonate at, just to be safe
 	var/maximum_target_range = 14
-
-/obj/item/gun/ballistic/automatic/sol_grenade_launcher/Initialize(mapload)
-	. = ..()
-
-	SET_BASE_PIXEL(-8, 0)
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_CARWO)

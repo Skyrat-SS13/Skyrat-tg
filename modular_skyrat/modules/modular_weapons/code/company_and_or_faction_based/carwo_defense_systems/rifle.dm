@@ -14,6 +14,8 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
 	inhand_icon_state = "infanterie"
 
+	SET_BASE_PIXEL(-8, 0)
+
 	special_mags = TRUE
 
 	bolt_type = BOLT_TYPE_LOCKING
@@ -41,8 +43,6 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/Initialize(mapload)
 	. = ..()
-
-	SET_BASE_PIXEL(-8, 0)
 
 	give_autofire()
 
