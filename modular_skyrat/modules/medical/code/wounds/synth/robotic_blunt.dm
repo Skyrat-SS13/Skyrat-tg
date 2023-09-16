@@ -9,7 +9,7 @@
 #define ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT 0.5
 
 #define ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE 20
-#define ROBOTIC_BLUNT_CROWBAR_BLUNT_DAMAGE 20
+#define ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE 20
 
 /datum/wound/blunt/robotic
 	name = "Robotic Blunt (Screws and bolts) Wound"
@@ -25,24 +25,12 @@
 	/// How much effective damage is multiplied against for purposes of determining our camerashake's intensity when we are hit on the head.
 	var/head_attacked_shake_intensity_ratio = 0.2
 
-	/// How much effective damage is multiplied against for purposes of determining how much dizziness a strike to the head will add.
-	var/head_attacked_eyeblur_duration_ratio = 0.2
-
 	/// The base chance, in percent, for moving to shake our camera. Multiplied against many local modifiers, such as resting, being gauzed, etc.
 	var/head_movement_shake_chance = 100
-	/// The base chance, in percent, for moving to increase dizziness. Multiplied against many local modifiers, such as resting, being gauzed, etc.
-	var/head_movement_blur_chance = 10
-
-	/// The base duration of eyeblur on movement.
-	var/head_movement_eyeblur_base_duration = 0.25 SECONDS
-
 	/// The base duration, in deciseconds, for our camera shake on movement.
 	var/head_movement_base_shake_duration = 1
 	/// The base intensity, in tiles, for our camera shake on movement.
 	var/head_movement_base_shake_intensity = 1
-
-	/// The maximum time in deciseconds daze() may cause eyeblur for
-	var/daze_eyeblur_maximum_duration = 20 SECONDS
 
 	/// The ratio stagger score will be multiplied against for determining the final chance of moving away from the attacker.
 	var/stagger_movement_chance_ratio = 1
@@ -52,13 +40,15 @@
 	/// The ratio of stagger score to shake duration during a stagger() call
 	var/stagger_score_to_shake_duration_ratio = 0.1
 
-	/// In the stagger aftershock, the ratio score will be multiplied against for determining the chance of dropping held items.
+	/// In the stagger aftershock, the stagger score will be multiplied against for determining the chance of dropping held items.
 	var/stagger_drop_chance_ratio = 1.25
-	/// In the stagger aftershock, the ratio score will be multiplied aginst for determining the chance of falling over.
-	var/stagger_fall_chance_ratio = 1.5
+	/// In the stagger aftershock, the stagger score will be multiplied aginst for determining the chance of falling over.
+	var/stagger_fall_chance_ratio = 1
 
-	/// In the stagger aftershock, the ratio score will be multiplied against for determining how long we are knocked down for.
-	var/stagger_aftershock_knockdown_ratio = 1
+	/// In the stagger aftershock, the stagger score will be multiplied against for determining how long we are knocked down for.
+	var/stagger_aftershock_knockdown_ratio = 0.5
+	/// In the stagger after shock, the stagger score will be multiplied against this (if caused by movement) for determining how long we are knocked down for.
+	var/stagger_aftershock_knockdown_movement_ratio = 0.1
 
 	/// If the victim stops moving before the aftershock, aftershock effects will be multiplied against this.
 	var/aftershock_stopped_moving_score_mult = 0.1
@@ -75,8 +65,17 @@
 	/// The base chance of moving to trigger stagger().
 	var/chest_movement_stagger_chance = 1
 
+	/// The base duration of a stagger()'s sprite shaking.
 	var/base_stagger_shake_duration = 1.5 SECONDS
+	/// The base duration of a stagger()'s sprite shaking if caused by movement.
 	var/base_stagger_movement_shake_duration = 1.5 SECONDS
+
+	/// The ratio of stagger score to camera shake chance.
+	var/stagger_camera_shake_chance_ratio = 0.75
+	/// The base duration of a stagger's aftershock's camerashake.
+	var/base_aftershock_camera_shake_duration = 1.5 SECONDS
+	/// The base strength of a stagger's aftershock's camerashake.
+	var/base_aftershock_camera_shake_strength = 0.5
 
 	/// The amount of x and y pixels we will be shaken around by during a movement stagger.
 	var/movement_stagger_shift = 1
@@ -100,7 +99,8 @@
 	/// The last time our victim has moved. Used for determining if we should increase or decrease the chance of having stagger aftershock.
 	var/last_time_victim_moved = 0
 
-	var/minimum_shake_duration = 1
+	/// The minimum duration that can be fed into shake_camera(). Anything below this will have a chance of being bumped up to 1.
+	var/daze_minimum_shake_duration = 1
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
@@ -174,8 +174,7 @@
 			var/strength = (daze_damage * head_attacked_shake_intensity_ratio)
 			var/duration = (daze_damage * head_attacked_shake_duration_ratio)
 			shake_camera(victim, duration = duration, strength = strength)
-			time_til_next_movement_shake_allowed = (world.time + (duration SECONDS)) // not sure why, but seconds seems to be a necessity here
-			victim.adjust_eye_blur_up_to(daze_damage * head_attacked_eyeblur_duration_ratio, daze_eyeblur_maximum_duration)
+			time_til_next_movement_shake_allowed = (world.time + (duration)) // not sure why, but seconds seems to be a necessity here
 
 		if (BODY_ZONE_CHEST)
 			var/oscillation_mult = 1
@@ -185,7 +184,7 @@
 			var/stagger_damage = oscillation_damage * chest_attacked_stagger_mult
 			if (victim.has_status_effect(/datum/status_effect/determined))
 				oscillation_damage *= ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
-			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(stagger_damage * chest_attacked_stagger_chance_ratio))
+			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(oscillation_damage * chest_attacked_stagger_chance_ratio))
 				stagger(stagger_damage, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
 
 	if (!uses_percussive_maintenance() || damage < percussive_maintenance_damage_min || damage > percussive_maintenance_damage_max || damagetype != BRUTE || sharpness)
@@ -209,7 +208,7 @@
 	else
 		handle_percussive_maintenance_failure(attacking_item, user)
 
-/datum/wound/blunt/robotic/proc/stagger(stagger_score, attack_direction, obj/item/attacking_item, from_movement, shake_duration = base_stagger_shake_duration, shift)
+/datum/wound/blunt/robotic/proc/stagger(stagger_score, attack_direction, obj/item/attacking_item, from_movement, shake_duration = base_stagger_shake_duration, shift, knockdown_ratio = stagger_aftershock_knockdown_ratio)
 	if (oscillating)
 		return
 
@@ -236,10 +235,11 @@
 
 	victim.Shake(pixelshiftx = shift, pixelshifty = shift, duration = shake_duration)
 	var/aftershock_delay = (shake_duration / 1.35)
-	addtimer(CALLBACK(src, PROC_REF(aftershock), stagger_score, attack_direction, attacking_item, from_movement, world.time, aftershock_delay), aftershock_delay)
+	var/knockdown_time = stagger_score * knockdown_ratio
+	addtimer(CALLBACK(src, PROC_REF(aftershock), stagger_score, attack_direction, attacking_item, world.time, knockdown_time), aftershock_delay)
 	oscillating = TRUE
 
-/datum/wound/blunt/robotic/proc/aftershock(stagger_score, attack_direction, obj/item/attacking_item, from_movement, stagger_starting_time, aftershock_delay)
+/datum/wound/blunt/robotic/proc/aftershock(stagger_score, attack_direction, obj/item/attacking_item, stagger_starting_time, knockdown_time)
 	if (!still_exists())
 		return FALSE
 	var/message = "The oscillations from your [limb.plaintext_zone] spread, "
@@ -260,7 +260,14 @@
 		if (limb_affected)
 			limb_message += " and "
 		limb_message += "your <b>legs</b>"
-		victim.Knockdown(stagger_score *= stagger_aftershock_knockdown_ratio)
+		victim.Knockdown(knockdown_time)
+		limb_affected = TRUE
+
+	if (prob(stagger_score * stagger_camera_shake_chance_ratio))
+		if (limb_affected)
+			limb_message += " and "
+		limb_message += "your <b>head</b>"
+		shake_camera(victim, base_aftershock_camera_shake_duration, base_aftershock_camera_shake_strength)
 		limb_affected = TRUE
 
 	if (limb_affected)
@@ -305,7 +312,6 @@
 
 	if (can_daze())
 		var/shake_chance = head_movement_shake_chance
-		var/eyeblur_chance = head_movement_blur_chance
 
 		var/duration = (head_movement_base_shake_duration)
 		var/strength = (head_movement_base_shake_intensity)
@@ -315,18 +321,15 @@
 
 		if ((time_til_next_movement_shake_allowed <= world.time) && prob(shake_chance))
 
-			if (duration < minimum_shake_duration && prob((duration / minimum_shake_duration) * 100)) // a bit of balancing so this can actually work at low strength
-				duration = minimum_shake_duration
+			if (duration < daze_minimum_shake_duration && prob((duration / daze_minimum_shake_duration) * 100)) // a bit of balancing so this can actually work at low strength
+				duration = daze_minimum_shake_duration
 
-			if (duration >= minimum_shake_duration)
+			if (duration >= daze_minimum_shake_duration)
 				shake_camera(victim, duration = duration, strength = strength)
-
-		if (prob(eyeblur_chance))
-			victim.adjust_eye_blur_up_to(head_movement_eyeblur_base_duration * overall_mult, daze_eyeblur_maximum_duration)
 
 	if (limb.body_zone == BODY_ZONE_CHEST)
 		if (prob(chest_movement_stagger_chance * overall_mult))
-			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift)
+			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift, knockdown_ratio = stagger_aftershock_knockdown_movement_ratio)
 
 	last_time_victim_moved = world.time
 
@@ -335,7 +338,7 @@
 	victim.adjust_disgust(score, max)
 	to_chat(victim, span_warning("You feel a wave of nausea as your [limb.plaintext_zone]'s internals jostle..."))
 
-/// Allows us to shake the camera of our victim/give them eyeblur.
+/// Allows us to shake the camera of our victim
 /datum/wound/blunt/robotic/proc/can_daze()
 	return (limb.body_zone == BODY_ZONE_HEAD)
 
@@ -443,7 +446,7 @@
 	/// If we have used bone gel to secure internals.
 	var/gelled = FALSE
 	/// Total brute damage taken over the span of [regen_time_needed] deciseconds when we gel our limb.
-	var/gel_damage = 40 // brute in total
+	var/gel_damage = 10 // brute in total
 
 	/// If we are ready to begin screwdrivering or gelling our limb.
 	var/ready_to_secure_internals = FALSE
@@ -579,7 +582,7 @@
 		victim_message = self_message
 	to_chat(victim, victim_message)
 
-	playsound(get_turf(crowbarring_item), 'sound/machines/airlock_alien_prying.ogg', 20, TRUE)
+	playsound(get_turf(crowbarring_item), 'sound/machines/airlock_alien_prying.ogg', 30, TRUE)
 	if (!crowbarring_item.use_tool(target = victim, user = user, delay = (7 SECONDS * delay_mult), volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
@@ -611,8 +614,8 @@
 			electrocute_flags &= ~SHOCK_NO_HUMAN_ANIM
 			stunned = TRUE
 
-			message = span_boldwarning("[user] is shocked by [their_or_other] [limb.plaintext_zone], [user.p_their()] [crowbarring_item] slipping as [user.p_they()] briefly convulse!")
-			self_message = span_userdanger("You are shocked by [your_or_other] [limb.plaintext_zone], causing your [crowbarring_item] to slip out!")
+			message = span_boldwarning("[user] is shocked by [their_or_other] [limb.plaintext_zone], [user.p_their()] crowbar slipping as [user.p_they()] briefly convulse!")
+			self_message = span_userdanger("You are shocked by [your_or_other] [limb.plaintext_zone], causing your crowbar to slip out!")
 			if (user != victim)
 				victim_message = span_userdanger("[user] is shocked by your [limb.plaintext_zone] in [user.p_their()] efforts to tear it open!")
 
@@ -627,14 +630,17 @@
 		if (!limb_can_shock)
 			other_shock_text = ", and is striken by golden bolts of electricity"
 			self_shock_text = ", but are immediately beset apon by the electricity contained within"
-		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] [crowbarring_item][other_shock_text]!")
-		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your [crowbarring_item][self_shock_text]!")
+		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] crowbar[other_shock_text]!")
+		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your crowbar[self_shock_text]!")
 		if (user != victim)
-			victim_message = span_userdanger("Your [limb.plaintext_zone] fragments and splinters as [user] tears it open with [user.p_their()] [crowbarring_item]!")
+			victim_message = span_userdanger("Your [limb.plaintext_zone] fragments and splinters as [user] tears it open with [user.p_their()] crowbar!")
 
-		playsound(get_turf(crowbarring_item), 'sound/effects/bang.ogg', 10, TRUE) // we did it!
+		playsound(get_turf(crowbarring_item), 'sound/effects/bang.ogg', 35, TRUE) // we did it!
 		to_chat(user, span_green("You've torn [your_or_other] [limb.plaintext_zone] open, heavily damaging it but making it a lot easier to screwdriver the internals!"))
-		limb.receive_damage(brute = ROBOTIC_BLUNT_CROWBAR_BLUNT_DAMAGE, wound_bonus = CANT_WOUND, damage_source = crowbarring_item)
+		var/damage = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
+		if (limb_essential()) // cant be disabled
+			damage *= 2
+		limb.receive_damage(brute = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE, wound_bonus = CANT_WOUND, damage_source = crowbarring_item)
 		set_torn_open(TRUE)
 
 	if (user == victim)
@@ -786,6 +792,15 @@
 	head_attacked_shake_duration_ratio = 0.18
 	head_attacked_shake_intensity_ratio = 0.1
 
+	base_movement_stagger_score = 40
+
+	chest_attacked_stagger_chance_ratio = 5
+	chest_attacked_stagger_mult = 3.5
+
+	chest_movement_stagger_chance = 2
+
+	stagger_aftershock_knockdown_ratio = 0.6
+
 	a_or_from = "from"
 
 	ready_to_secure_internals = TRUE
@@ -835,16 +850,33 @@
 
 	daze_attacked_minimum_score = 1
 
-	a_or_from = "a"
+	head_movement_base_shake_intensity = 0.5
+	head_movement_base_shake_duration = 0.8
+
+	base_movement_stagger_score = 50
+
+	base_aftershock_camera_shake_duration = 1.75 SECONDS
+	base_aftershock_camera_shake_strength = 1
+
+	chest_attacked_stagger_chance_ratio = 6.5
+	chest_attacked_stagger_mult = 4
+
+	chest_movement_stagger_chance = 6
+
+	aftershock_stopped_moving_score_mult = 0.3
+
+	stagger_aftershock_knockdown_ratio = 0.8
 
 	percussive_maintenance_repair_chance = 3
 	percussive_maintenance_damage_max = 6
 
 	regen_time_needed = 60 SECONDS
-	gel_damage = 60
+	gel_damage = 20
 
 	ready_to_secure_internals = FALSE
 	ready_to_resolder = FALSE
+
+	a_or_from = "a"
 
 	/// Has the first stage of our treatment been completed? E.g. RCDed, manually molded...
 	var/superstructure_remedied = FALSE
@@ -1011,8 +1043,8 @@
 	if (user)
 		var/misused_text = (misused ? "<b>unsteadily</b> " : "")
 
-		var/message = "[user]'s [treating_rcd] whirs to life as it begins [misused_text]replacing the damaged superstructure of [their_or_other] [limb.plaintext_zone]..."
-		var/self_message = "Your [treating_rcd] whirs to life as it begins [misused_text]replacing the damaged superstructure of [your_or_other] [limb.plaintext_zone]..."
+		var/message = "[user]'s RCD whirs to life as it begins [misused_text]replacing the damaged superstructure of [their_or_other] [limb.plaintext_zone]..."
+		var/self_message = "Your RCD whirs to life as it begins [misused_text]replacing the damaged superstructure of [your_or_other] [limb.plaintext_zone]..."
 
 		if (misused) // warning span if misused, notice span otherwise
 			message = span_danger(message)
@@ -1031,8 +1063,8 @@
 
 	if (user)
 		var/misused_text = (misused ? ", though it replaced a bit more than it should've..." : "!")
-		var/message = "[user]'s [treating_rcd] lets out a small ping as it finishes replacing the superstructure of [their_or_other] [limb.plaintext_zone][misused_text]"
-		var/self_message = "Your [treating_rcd] lets out a small ping as it finishes replacing the superstructure of [your_or_other] [limb.plaintext_zone][misused_text]"
+		var/message = "[user]'s RCD lets out a small ping as it finishes replacing the superstructure of [their_or_other] [limb.plaintext_zone][misused_text]"
+		var/self_message = "Your RCD lets out a small ping as it finishes replacing the superstructure of [your_or_other] [limb.plaintext_zone][misused_text]"
 		if (misused)
 			message = span_danger(message)
 			self_message = span_danger(self_message)
@@ -1123,4 +1155,4 @@
 #undef ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT
 #undef ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
 #undef ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE
-#undef ROBOTIC_BLUNT_CROWBAR_BLUNT_DAMAGE
+#undef ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
