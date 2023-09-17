@@ -1,4 +1,5 @@
 #define OVERHEAT_ON_STASIS_HEAT_MULT 0.25
+#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT 60
 
 /datum/wound_pregen_data/burnt_metal
 	abstract = TRUE
@@ -191,7 +192,7 @@
 
 	var/hercuri_percent = (hercuri_amount / total_reagent_amount)
 
-	var/hercuri_chem_temp_increment = (50 * hercuri_percent)
+	var/hercuri_chem_temp_increment = (ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT * hercuri_percent)
 	var/local_chem_temp = max(source.chem_temp - hercuri_chem_temp_increment, 0)
 
 	var/heat_shock_damage_mult = 1 - (0.2 * hercuri_percent)
@@ -427,3 +428,4 @@
 	threshold_minimum = 140
 
 #undef OVERHEAT_ON_STASIS_HEAT_MULT
+#undef ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT
