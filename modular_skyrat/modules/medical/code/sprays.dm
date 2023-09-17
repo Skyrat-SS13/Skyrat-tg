@@ -4,7 +4,7 @@
 	This one comes pre-chilled, making it especially good at cooling synthetic burns! \n\
 	It has a bold warning label near the nozzle: <b>ONLY USE IN EMERGENCIES! WILL CAUSE FREEZING!</b>"
 
-	var/starting_temperature = 252
+	var/starting_temperature = 100
 
 /obj/item/reagent_containers/spray/hercuri/chilled/add_initial_reagents()
 	. = ..()
