@@ -15,8 +15,9 @@
 	treat_text = "Introduction of a cold environment or lowering of body temperature."
 
 /*	simple_desc = "Metals are overheated, increasing damage taken significantly and raising body temperature!"
-	simple_treat_text = "Ideally <b>cryogenics</b>, but any source of <b>low body temperature</b> can work. <b>Fire exinguishers</b> and <b>showers</b> can quickly reduce \
-	the temperature, but <b>will damage the limb</b>. <b>Clothing</b> reduces the water that makes it to the metal, and <b>gauze</b> binds it and <b>reduces</b> the damage taken."
+	simple_treat_text = "Ideally <b>cryogenics</b>, but any source of <b>low body temperature</b> can work. <b>Spraying</b> with <b>spray bottles/extinguishers/showers</b> \
+	will quickly cool the limb, but <b>cause damage</b>. <b>Hercuri</b> is especially effective in quick cooling. \
+	<b>Clothing</b> reduces the water/hercuri that makes it to the metal, and <b>gauze</b> binds it and <b>reduces</b> the <b>damage</b> taken."
 	homemade_treat_text = "<b>Coffee vendors</b>, when hacked, dispense <b>ice water</b>, which can be used to lower your body temperature!"
 */
 	default_scar_file = METAL_SCAR_FILE
@@ -69,7 +70,7 @@
 	var/sprayed_with_reagent_clothed_mult = 0.25
 
 	/// The max damage a given thermal shock can do. Used for preventing things like spalshing a beaker to instantly kill someone.
-	var/heat_shock_max_damage_per_shock = 80
+	var/heat_shock_max_damage_per_shock = 40
 
 	/// The wound we demote to when we go below cooling threshold. If null, removes us.
 	var/datum/wound/burn/robotic/demotes_to
@@ -176,9 +177,28 @@
 		expose_temperature(source.chem_temp, (10 * volume_modifier * reagent_coeff), TRUE)
 		return
 
+	var/total_reagent_amount = 0
+	var/hercuri_amount = 0
+	for (var/datum/reagent/iterated_reagent as anything in reagents)
+		total_reagent_amount += reagents[iterated_reagent]
+		if (iterated_reagent.type == /datum/reagent/medicine/c2/hercuri)
+			hercuri_amount = reagents[iterated_reagent]
+
+	var/hercuri_percent = (hercuri_amount / total_reagent_amount)
+
+	var/hercuri_chem_temp_increment = (100 * hercuri_percent)
+	var/hercuri_reagent_amount_mult = 1 + (0.1 * hercuri_percent)
+	var/local_chem_temp = max(source.chem_temp, 0)
+	local_chem_temp -= hercuri_chem_temp_increment
+	total_reagent_amount *= hercuri_reagent_amount_mult
+
+	var/heat_shock_damage_mult = 1 - (0.5 * hercuri_percent)
+
+	expose_temperature(local_chem_temp, (0.02 * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = heat_shock_damage_mult)
+
 /// Adjusts chassis_temperature by the delta between temperature and itself, multiplied by coeff.
 /// If heat_shock is TRUE, limb will receive brute damage based on the delta.
-/datum/wound/burn/robotic/overheat/proc/expose_temperature(temperature, coeff = 0.02, heat_shock = FALSE)
+/datum/wound/burn/robotic/overheat/proc/expose_temperature(temperature, coeff = 0.02, heat_shock = FALSE, heat_shock_damage_mult = 1)
 	var/temp_delta = (temperature - chassis_temperature) * coeff
 	var/heating_temp_delta_mult = 1
 	if (heat_shock && abs(temp_delta) > heat_shock_minimum_delta)
@@ -194,7 +214,7 @@
 			victim.visible_message(span_warning("[victim]'s [limb.plaintext_zone] strains from the thermal shock[clothing_text][gauze_or_not]!"))
 			playsound(victim, 'sound/items/welder.ogg', 25)
 
-		var/unclamped_damage = (temp_delta * heat_shock_delta_to_damage_ratio) * gauze_mult
+		var/unclamped_damage = ((temp_delta * heat_shock_delta_to_damage_ratio) * gauze_mult) * heat_shock_damage_mult
 		var/damage = min(abs(unclamped_damage), heat_shock_max_damage_per_shock)
 		var/percent_remaining = (damage / abs(unclamped_damage))
 
