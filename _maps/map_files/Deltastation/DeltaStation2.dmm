@@ -8179,6 +8179,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+"bWw" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/status_display/door_timer{
+	id = "Isolation_Cell";
+	name = "Isolation Cell";
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/station/security/execution/transfer)
 "bWD" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -14464,25 +14475,6 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
 /area/station/commons/toilet/restrooms)
-"dAd" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/rglass{
-	amount = 50;
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/stock_parts/cell/emproof{
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/effect/turf_decal/bot,
-/obj/machinery/newscaster/directional/east,
-/obj/item/mod/module/plasma_stabilizer,
-/obj/item/mod/module/thermal_regulator,
-/obj/item/mod/module/magboot,
-/obj/item/mod/module/signlang_radio,
-/turf/open/floor/iron,
-/area/station/engineering/storage)
 "dAX" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/sign/poster/official/work_for_a_future/directional/south,
@@ -17327,7 +17319,9 @@
 	dir = 4;
 	id = "garbage"
 	},
-/obj/machinery/recycler,
+/obj/machinery/recycler{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -23598,6 +23592,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/teleporter)
+"fQC" = (
+/obj/structure/table,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/thermal_regulator,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/item/radio/intercom/directional/south,
+/obj/item/mod/module/signlang_radio,
+/turf/open/floor/iron/dark,
+/area/station/security/office)
 "fQF" = (
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/structure/cable,
@@ -28119,6 +28124,16 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/medical/cryo)
+"gTH" = (
+/obj/machinery/flasher/directional/south{
+	id = "Isolation_Cell"
+	},
+/obj/machinery/light/small/broken/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/security/prison/safe)
 "gTO" = (
 /obj/structure/table/wood,
 /obj/item/crowbar/red,
@@ -52084,17 +52099,6 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
-"mYU" = (
-/obj/structure/table,
-/obj/item/mod/module/plasma_stabilizer,
-/obj/item/mod/module/thermal_regulator,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 5
-	},
-/obj/item/radio/intercom/directional/south,
-/obj/item/mod/module/signlang_radio,
-/turf/open/floor/iron/dark,
-/area/station/security/office)
 "mZj" = (
 /obj/machinery/atmospherics/components/trinary/mixer{
 	color = "#FFFF00";
@@ -61086,6 +61090,16 @@
 /obj/structure/cable,
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai_upload)
+"ptA" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/item/mod/module/tether,
+/obj/item/mod/module/tether,
+/obj/item/stack/sheet/plasteel/fifty,
+/turf/open/floor/iron,
+/area/station/engineering/storage)
 "ptC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -69085,17 +69099,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/station/service/library)
-"ror" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/machinery/status_display/door_timer{
-	id = "Isolation_Cell";
-	name = "Isolation Cell";
-	pixel_x = -32
-	},
-/turf/open/floor/iron,
-/area/station/security/execution/transfer)
 "rov" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/lobby)
@@ -77961,16 +77964,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/ce)
-"tBx" = (
-/obj/structure/cable,
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/delivery,
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/item/mod/module/tether,
-/obj/item/mod/module/tether,
-/obj/item/stack/sheet/plasteel/fifty,
-/turf/open/floor/iron,
-/area/station/engineering/storage)
 "tBC" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /obj/machinery/holopad,
@@ -78421,6 +78414,25 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
+"tGm" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/rglass{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/stock_parts/cell/emproof{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/newscaster/directional/east,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/thermal_regulator,
+/obj/item/mod/module/magboot,
+/obj/item/mod/module/signlang_radio,
+/turf/open/floor/iron,
+/area/station/engineering/storage)
 "tGq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
@@ -79392,16 +79404,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/commons/vacant_room)
-"tRQ" = (
-/obj/machinery/flasher/directional/south{
-	id = "Isolation_Cell"
-	},
-/obj/machinery/light/small/broken/directional/south,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/security/prison/safe)
 "tRS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -93499,6 +93501,18 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/maintenance/fore)
+"xtS" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/thermal_regulator,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/digital_clock/directional/south,
+/obj/item/mod/module/signlang_radio,
+/turf/open/floor/iron,
+/area/station/medical/storage)
 "xtZ" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/delivery,
@@ -93720,18 +93734,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/science/robotics/mechbay)
-"xxv" = (
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/item/mod/module/plasma_stabilizer,
-/obj/item/mod/module/thermal_regulator,
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/machinery/digital_clock/directional/south,
-/obj/item/mod/module/signlang_radio,
-/turf/open/floor/iron,
-/area/station/medical/storage)
 "xxB" = (
 /turf/closed/wall,
 /area/station/cargo/lobby)
@@ -124182,8 +124184,8 @@ iqz
 kgi
 hps
 hkJ
-tBx
-dAd
+ptA
+tGm
 abO
 pTC
 sNd
@@ -138090,7 +138092,7 @@ nFO
 tqw
 kKy
 xhT
-xxv
+xtS
 ako
 ako
 gMX
@@ -146998,7 +147000,7 @@ qYo
 qYo
 mSe
 prB
-tRQ
+gTH
 mSe
 iiR
 log
@@ -147768,7 +147770,7 @@ hlr
 wDX
 biI
 iZG
-ror
+bWw
 kxj
 wDX
 xNU
@@ -150360,7 +150362,7 @@ bzi
 sWa
 gDY
 tKw
-mYU
+fQC
 vgK
 eOv
 tLx
