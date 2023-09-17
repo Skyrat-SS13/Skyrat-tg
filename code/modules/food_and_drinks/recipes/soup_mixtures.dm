@@ -584,8 +584,8 @@
 
 /datum/chemical_reaction/food/soup/chili_sin_carne
 	required_reagents = list(
-		/datum/reagent/water = 40,
-		/datum/reagent/consumable/salt = 5,
+		/datum/reagent/water = 30,
+		/datum/reagent/water/salt = 10,
 	)
 	required_ingredients = list(
 		/obj/item/food/grown/chili = 1,
@@ -1121,8 +1121,8 @@
 
 /datum/chemical_reaction/food/soup/electron
 	required_reagents = list(
-		/datum/reagent/water = 45,
-		/datum/reagent/consumable/salt = 5,
+		/datum/reagent/water = 40,
+		/datum/reagent/water/salt = 10,
 	)
 	required_ingredients = list(
 		/obj/item/food/grown/mushroom/jupitercup = 1,
@@ -1685,8 +1685,8 @@
 
 /datum/chemical_reaction/food/soup/rice_porridge
 	required_reagents = list(
-		/datum/reagent/water = 30,
-		/datum/reagent/consumable/salt = 5,
+		/datum/reagent/water = 20,
+		/datum/reagent/water/salt = 10,
 	)
 	required_ingredients = list(
 		/obj/item/food/boiledrice = 1,
@@ -1827,7 +1827,7 @@
 		/obj/item/food/spaghetti/rawnoodles = 1
 	)
 	required_catalysts = list(
-		/datum/reagent/water = 30
+		/datum/reagent/water/salt = 10,
 	)
 	resulting_food_path = /obj/item/food/spaghetti/boilednoodles
 	ingredient_reagent_multiplier = 0
