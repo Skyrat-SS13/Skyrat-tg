@@ -457,7 +457,7 @@
 //Port Tarkon, 6 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
-	name = "P-T Abandoned Crew"
+	name = "Port Tarkon Crew Member"
 	prompt_name = "a port deck worker"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
@@ -479,7 +479,7 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
 	id = /obj/item/card/id/advanced/tarkon/cargo
-	id_trim = /datum/id_trim/away/tarkon
+	id_trim = /datum/id_trim/away/tarkon/cargo
 	l_pocket = /obj/item/card/mining_point_card
 	r_pocket = /obj/item/mining_voucher
 	ears = /obj/item/radio/headset/tarkon
@@ -555,7 +555,7 @@
 	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/ensign
-	name = "P-T Abandoned Ensign"
+	name = "Port Tarkon Ensign"
 	prompt_name = "an abandoned ensign"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-o"
