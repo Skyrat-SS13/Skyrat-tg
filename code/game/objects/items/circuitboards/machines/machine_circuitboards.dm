@@ -1025,7 +1025,12 @@
 	build_path = /obj/machinery/rnd/server
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
-		/datum/stock_part/scanning_module = 1)
+		/datum/stock_part/scanning_module = 1,
+	)
+
+/obj/item/circuitboard/machine/rdserver/oldstation
+	name = "Ancient R&D Server"
+	build_path = /obj/machinery/rnd/server/oldstation
 
 /obj/item/circuitboard/machine/techfab/department/science
 	name = "\improper Departmental Techfab - Science"
