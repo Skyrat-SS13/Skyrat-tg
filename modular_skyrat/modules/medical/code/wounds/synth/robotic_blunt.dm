@@ -3,6 +3,7 @@
 
 /// Cost of an RCD to quickly fix our broken superstructure
 #define ROBOTIC_T3_BLUNT_WOUND_RCD_COST 25
+#define ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST ROBOTIC_T3_BLUNT_WOUND_RCD_COST / 4
 
 #define ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD 0.5
 #define ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
@@ -782,11 +783,12 @@
 	base_movement_stagger_score = 40
 
 	chest_attacked_stagger_chance_ratio = 5
-	chest_attacked_stagger_mult = 3.5
+	chest_attacked_stagger_mult = 3
 
-	chest_movement_stagger_chance = 2
+	chest_movement_stagger_chance = 3
 
-	stagger_aftershock_knockdown_ratio = 0.6
+	stagger_aftershock_knockdown_ratio = 0.3
+	stagger_aftershock_knockdown_movement_ratio = 0.2
 
 	a_or_from = "from"
 
@@ -838,7 +840,7 @@
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
 
-	base_movement_stagger_score = 50
+	base_movement_stagger_score = 55
 
 	base_aftershock_camera_shake_duration = 1.75 SECONDS
 	base_aftershock_camera_shake_strength = 1
@@ -846,11 +848,12 @@
 	chest_attacked_stagger_chance_ratio = 6.5
 	chest_attacked_stagger_mult = 4
 
-	chest_movement_stagger_chance = 6
+	chest_movement_stagger_chance = 14
 
 	aftershock_stopped_moving_score_mult = 0.3
 
-	stagger_aftershock_knockdown_ratio = 0.8
+	stagger_aftershock_knockdown_ratio = 0.5
+	stagger_aftershock_knockdown_movement_ratio = 0.3
 
 	percussive_maintenance_repair_chance = 3
 	percussive_maintenance_damage_max = 6
@@ -902,8 +905,10 @@
 			return rcd_superstructure(item, user)
 		if (uses_percussive_maintenance() && istype(item, /obj/item/plunger))
 			return plunge(item, user)
-		if (item.tool_behaviour == TOOL_WELDER && !limb_malleable())
-			return heat_metal(item, user)
+		if (item.tool_behaviour == TOOL_WELDER && !limb_malleable() && isliving(victim.pulledby))
+			var/mob/living/living_puller = victim.pulledby
+			if (living_puller.grab_state >= GRAB_AGGRESSIVE) // only let other people do this
+				return heat_metal(item, user)
 	return ..()
 
 /datum/wound/blunt/robotic/secures_internals/critical/try_handling(mob/living/carbon/human/user)
@@ -1003,7 +1008,13 @@
 
 // An RCD can be used on a T3 wound to finish its 1st treatment step with little risk and no burn wound
 /datum/wound/blunt/robotic/secures_internals/critical/proc/rcd_superstructure(obj/item/construction/rcd/treating_rcd, mob/user)
-	if (!treating_rcd.tool_use_check() || treating_rcd.get_matter(user) < ROBOTIC_T3_BLUNT_WOUND_RCD_COST)
+	if (!treating_rcd.tool_use_check())
+		return TRUE
+
+	var/has_enough_matter = (treating_rcd.get_matter(user) > ROBOTIC_T3_BLUNT_WOUND_RCD_COST)
+	var/silo_has_enough_materials = (treating_rcd.get_silo_iron() > ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST)
+
+	if (!silo_has_enough_materials && has_enough_matter)
 		return TRUE
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
@@ -1043,8 +1054,10 @@
 	if (!treating_rcd.use_tool(target = victim, user = user, delay = final_time, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 	playsound(get_turf(treating_rcd), 'sound/machines/ping.ogg', 75) // celebration! we did it
-	treating_rcd.useResource(ROBOTIC_T3_BLUNT_WOUND_RCD_COST, user)
 	set_superstructure_status(TRUE)
+
+	var/use_amount = (silo_has_enough_materials ? ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST : ROBOTIC_T3_BLUNT_WOUND_RCD_COST)
+	treating_rcd.useResource(use_amount, user)
 
 	if (user)
 		var/misused_text = (misused ? ", though it replaced a bit more than it should've..." : "!")
@@ -1135,6 +1148,7 @@
 #undef BLUNT_ATTACK_DAZE_MULT
 
 #undef ROBOTIC_T3_BLUNT_WOUND_RCD_COST
+#undef ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST
 
 #undef ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
 #undef ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT

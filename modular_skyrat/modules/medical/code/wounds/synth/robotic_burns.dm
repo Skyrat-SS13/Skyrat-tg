@@ -309,7 +309,7 @@
 
 	sound_volume = 20
 
-	outgoing_bodytemp_coeff = 0.006
+	outgoing_bodytemp_coeff = 0.0056
 	bodytemp_coeff = 0.006
 
 	base_reagent_temp_coefficient = 0.03
@@ -354,7 +354,7 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 375)
 	heating_threshold = (BODYTEMP_NORMAL + 800)
 
-	outgoing_bodytemp_coeff = 0.005
+	outgoing_bodytemp_coeff = 0.0053
 	bodytemp_coeff = 0.004
 
 	base_reagent_temp_coefficient = 0.03
@@ -403,7 +403,7 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 775)
 	heating_threshold = INFINITY
 
-	outgoing_bodytemp_coeff = 0.004 // burn... BURN...
+	outgoing_bodytemp_coeff = 0.0055 // burn... BURN...
 	bodytemp_coeff = 0.0025
 
 	base_reagent_temp_coefficient = 0.03
