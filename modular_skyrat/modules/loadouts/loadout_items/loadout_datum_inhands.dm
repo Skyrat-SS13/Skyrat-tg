@@ -102,3 +102,11 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/flag_azulea
 	name = "Folded Azulea Flag"
 	item_path = /obj/item/sign/flag/azulea
+
+/datum/loadout_item/inhand/flag_taroon
+	name = "Folded Taroonian Flag"
+	item_path = /obj/item/sign/flag/taroon
+
+/datum/loadout_item/inhand/flag_iseuria
+	name = "Folded Iseurian Flag"
+	item_path = /obj/item/sign/flag/iseuria
