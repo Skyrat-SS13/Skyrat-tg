@@ -191,7 +191,7 @@
 
 	var/hercuri_percent = (hercuri_amount / total_reagent_amount)
 
-	var/hercuri_chem_temp_increment = (100 * hercuri_percent)
+	var/hercuri_chem_temp_increment = (50 * hercuri_percent)
 	var/local_chem_temp = max(source.chem_temp - hercuri_chem_temp_increment, 0)
 
 	var/heat_shock_damage_mult = 1 - (0.2 * hercuri_percent)
