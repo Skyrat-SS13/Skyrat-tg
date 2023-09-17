@@ -366,11 +366,11 @@
 	occur_text = "jostles awkwardly and seems to slightly unfasten"
 	severity = WOUND_SEVERITY_MODERATE
 
-	/*simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
+	simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
 	<b>someone else</b>, a <b>roboticist</b>, an <b>engineer</b>, or with a <b>diagnostic HUD</b>."
 	homemade_treat_text = "In a pinch, <b>percussive maintenance</b> can reset the screws - the chance of which is increased if done by <b>someone else</b> or \
 	with a <b>diagnostic HUD</b>!"
-*/
+
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/moderate
 	treatable_tools = list(TOOL_SCREWDRIVER)
 
@@ -503,12 +503,12 @@
 	if (!isnull(to_add))
 		. += "\nWound status: [to_add]"
 
-/*/datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
+/datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
 	. = ..()
 
 	var/to_add = get_wound_status()
 	if (!isnull(to_add))
-		. += "\nWound status: [to_add]"*/
+		. += "\nWound status: [to_add]"
 
 /datum/wound/blunt/robotic/secures_internals/proc/get_wound_status(mob/user)
 	if (crowbarred_open)
@@ -762,10 +762,12 @@
 	occur_text = "visibly cracks open, solder flying everywhere"
 	severity = WOUND_SEVERITY_SEVERE
 
-	/*simple_treat_text = "<b>Bandage it</b>, <b>walk slowly</b>, or <b>use a roller bed/wheelchair</b> to reduce movement effects, then have a \
-	<b>roboticist/engineer screwdriver/wrench</b> it and then <b>re-solder</b> it. <b>Diagnostic huds</b> make this all easier, and <b>robos/engis</b> have a <b>large boost</b> as well!"
-	homemade_treat_text = "<b>Bone gel</b> can be used instead of a <b>screwdriver/wrench</b> and is <b>guaranteed to work</b> - but it takes <b>time</b> and <b>damage</b>!"
-*/
+	simple_treat_text = "<b>If on the <b>chest</b>, <b>walk</b>, <b>grasp it</b>, <b>splint</b>, <b>rest</b> or <b>buckle yourself</b> to something to reduce movement effects. \
+	Afterwards, get <b>someone else</b>, ideally a <b>robo/engi</b> to <b>screwdriver/wrench</b> it, and then <b>re-solder it</b>!"
+	homemade_treat_text = "If <b>unable to screw/wrench</b>, <b>bone gel</b> can, over time, secure inner components at risk of <b>corrossion</b>. \
+	Alternatively, <b>crowbar</b> the limb open to expose the internals - this will make it <b>easier</b> to re-secure them, but has a <b>high risk</b> of <b>shocking</b> you, \
+	so use insulated gloves. This will <b>cripple the limb</b>, so use it only as a last resort!"
+
 	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY|CAN_BE_GRASPED)
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/severe
@@ -816,10 +818,14 @@
 
 	disabling = TRUE
 
-	/*simple_treat_text = "<b>Bandaging</b> is useful for reducing <b>dysfunction</b>, and if on the head/chest, <b>walking slowly</b> or <b>using a chair/roller bed</b>. \
-	The superstructure will need to be <b>RCDed</b> or <b>firmly grasped and molded</b> while <b>severely heated</b> \
-	(can be done by firmly grasping and <b>welding</b>), then <b>screwed/wrenched</b> and <b>re-soldered</b>."
-	homemade_treat_text = "When the limb is <b>heated</b>, a <b>plunger</b> or <b>percussive maintenance</b> can reform the superstructure!"*/
+	simple_treat_text = "If on the <b>chest</b>, <b>walk</b>, <b>grasp it</b>, <b>splint</b>, <b>rest</b> or <b>buckle yourself</b> to something to reduce movement effects. \
+	Afterwards, get someone, ideally a <b>robo/engi</b> to <b>firmly grasp</b> the limb and hold a <b>welder</b> to it. Then, have them <b>use their hands</b> to <b>mold the metal</b> - \
+	careful though, it's <b>hot</b>! An <b>RCD</b> can skip all this, but is hard to come by. Afterwards, have them <b>screw/wrench</b> and then <b>re-solder</b> the limb!"
+
+	homemade_treat_text = "The metal can be made <b>malleable</b> by repeated application of a welder, to a <b>severe burn</b>. Afterwards, a <b>plunger</b> can reset the metal, \
+	as can <b>percussive maintenance</b>. After the metal is reset, if <b>unable to screw/wrench</b>, <b>bone gel</b> can, over time, secure inner components at risk of <b>corrossion</b>. \
+	Alternatively, <b>crowbar</b> the limb open to expose the internals - this will make it <b>easier</b> to re-secure them, but has a <b>high risk</b> of <b>shocking</b> you, \
+	so use insulated gloves. This will <b>cripple the limb</b>, so use it only as a last resort!"
 
 	interaction_efficiency_penalty = 2.8
 	limp_slowdown = 8
