@@ -125,20 +125,11 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-	fire_delay = 0.4 SECONDS
+	fire_delay = 0.1 SECONDS
 
 	recoil = 1
 	spread = 12.5
 	projectile_wound_bonus = -20
-
-/obj/item/gun/ballistic/automatic/sol_rifle/give_autofire()
-	AddComponent(/datum/component/automatic_fire, \
-		autofire_shot_delay = fire_delay, \
-		windup_autofire = TRUE, \
-		windup_autofire_reduction_multiplier = 0.1, \
-		windup_autofire_cap = 0.3 SECONDS, \
-		windup_spindown = 2 SECONDS, \
-	)
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun/examine_more(mob/user)
 	. = ..()
