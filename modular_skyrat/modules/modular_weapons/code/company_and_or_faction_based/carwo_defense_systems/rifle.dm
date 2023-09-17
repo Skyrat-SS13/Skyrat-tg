@@ -36,10 +36,11 @@
 	suppressor_x_offset = 12
 
 	burst_size = 1
-	fire_delay = 0.3 SECONDS
+	fire_delay = 0.45 SECONDS
 	actions_types = list()
 
-	spread = 5
+	spread = 7.5
+	projectile_wound_bonus = -10
 
 /obj/item/gun/ballistic/automatic/sol_rifle/Initialize(mapload)
 	. = ..()
@@ -82,9 +83,11 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle
 
-	fire_delay = 0.6 SECONDS
+	fire_delay = 0.75 SECONDS
 
 	spread = 0
+	projectile_damage_multiplier = 1.2
+	projectile_wound_bonus = 10
 
 /obj/item/gun/ballistic/automatic/sol_rifle/marksman/Initialize(mapload)
 	. = ..()
@@ -122,10 +125,20 @@
 
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
 
-	fire_delay = 0.1 SECONDS
+	fire_delay = 0.4 SECONDS
 
 	recoil = 1
-	spread = 10
+	spread = 12.5
+	projectile_wound_bonus = -20
+
+/obj/item/gun/ballistic/automatic/sol_rifle/give_autofire()
+	AddComponent(/datum/component/automatic_fire, \
+		autofire_shot_delay = fire_delay, \
+		windup_autofire = TRUE, \
+		windup_autofire_reduction_multiplier = 0.1, \
+		windup_autofire_cap = 0.3 SECONDS, \
+		windup_spindown = 2 SECONDS, \
+	)
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun/examine_more(mob/user)
 	. = ..()

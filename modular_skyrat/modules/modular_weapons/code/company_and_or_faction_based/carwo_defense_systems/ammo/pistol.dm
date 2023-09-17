@@ -21,7 +21,9 @@
 /obj/projectile/bullet/c35sol
 	name = ".35 Sol Short bullet"
 	damage = 25
+
 	wound_bonus = 10 // Normal bullets are 20
+	bare_wound_bonus = 20
 
 
 /obj/item/ammo_box/c35sol
@@ -56,7 +58,9 @@
 	name = ".35 Sol Short incapacitator bullet"
 	damage = 5
 	stamina = 30
+
 	wound_bonus = -40
+	bare_wound_bonus = -20
 
 	weak_against_armour = TRUE
 
@@ -103,8 +107,10 @@
 	weak_against_armour = TRUE
 
 	sharpness = SHARP_EDGED
+
 	wound_bonus = 20
 	bare_wound_bonus = 20
+
 	embedding = list(
 		embed_chance = 75,
 		fall_chance = 3,
@@ -115,7 +121,7 @@
 		jostle_pain_mult = 6,
 		rip_time = 1 SECONDS,
 	)
-	wound_falloff_tile = -3
+
 	embed_falloff_tile = -15
 
 

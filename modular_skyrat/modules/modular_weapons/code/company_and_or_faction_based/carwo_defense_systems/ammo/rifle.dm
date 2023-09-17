@@ -24,6 +24,9 @@
 	name = ".40 Sol Long bullet"
 	damage = 35
 
+	wound_bonus = 10
+	bare_wound_bonus = 20
+
 
 /obj/item/ammo_box/c40sol
 	name = "ammo box (.40 Sol Long lethal)"
@@ -64,19 +67,21 @@
 	weak_against_armour = TRUE
 
 	sharpness = SHARP_EDGED
-	bare_wound_bonus = 30
+	wound_bonus = 0
+	bare_wound_bonus = 10
+
 	shrapnel_type = /obj/item/shrapnel/stingball
 	embedding = list(
-		embed_chance = 75,
-		fall_chance = 3,
+		embed_chance = 50,
+		fall_chance = 5,
 		jostle_chance = 5,
 		ignore_throwspeed_threshold = TRUE,
 		pain_stam_pct = 0.4,
-		pain_mult = 5,
-		jostle_pain_mult = 6,
-		rip_time = 1 SECONDS,
+		pain_mult = 2,
+		jostle_pain_mult = 3,
+		rip_time = 0.5 SECONDS,
 	)
-	wound_falloff_tile = -2
+
 	embed_falloff_tile = -5
 
 
@@ -106,8 +111,10 @@
 /obj/projectile/bullet/c40sol/pierce
 	name = ".40 Sol armor-piercing bullet"
 	damage = 25
-	armour_penetration = 40
+	armour_penetration = 30
+
 	wound_bonus = -30
+	bare_wound_bonus = -10
 
 	projectile_piercing = PASSMOB
 
@@ -153,7 +160,7 @@
 	damage = 25
 
 	/// How many firestacks the bullet should impart upon a target when impacting
-	var/firestacks_to_give = 4
+	var/firestacks_to_give = 1
 
 
 /obj/projectile/bullet/c40sol/incendiary/on_hit(atom/target, blocked = FALSE)

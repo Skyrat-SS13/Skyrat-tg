@@ -31,10 +31,6 @@
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/starts_empty
 	cost = 0
 
-/datum/armament_entry/assault_operatives/primary/rifle_ammo/extended
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/extended/starts_empty
-	cost = 0
-
 /datum/armament_entry/assault_operatives/primary/rifle_ammo/drum
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum/starts_empty
 	cost = 0

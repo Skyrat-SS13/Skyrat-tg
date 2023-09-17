@@ -100,11 +100,6 @@
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard/starts_empty
 	cost = PAYCHECK_COMMAND
 
-/datum/armament_entry/company_import/sol_defense/magazines/sol_rifle_extended
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/extended/starts_empty
-	cost = PAYCHECK_CREW * 3
-	contraband = TRUE
-
 /datum/armament_entry/company_import/sol_defense/magazines/sol_rifle_drum
 	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum/starts_empty
 	cost = PAYCHECK_COMMAND * 3
