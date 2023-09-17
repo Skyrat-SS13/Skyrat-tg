@@ -98,6 +98,22 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/usa, 32)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 
+/obj/structure/sign/flag/taroon
+	name = "flag of Taroon"
+	desc = "The flag of Taroon. Seen in extremes everywhere Taroonians are present, made in New Hejaz."
+	icon_state = "flag_taroon"
+	item_flag = /obj/item/sign/flag/taroon
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/taroon, 32)
+
+/obj/structure/sign/flag/iseuria
+	name = "flag of Iseuria"
+	desc = "The flag of Iseuria. Often seen stapled over Taroonian flags."
+	icon_state = "flag_iseuria"
+	item_flag = /obj/item/sign/flag/iseuria
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/iseuria, 32)
+
 /obj/item/sign/flag
 	name = "folded blank flag"
 	desc = "The folded flag of nothing. It has nothing on it. Beautiful."
@@ -177,3 +193,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	desc = "The folded flag of the Sothran Syndicate."
 	icon_state = "folded_syndi"
 	sign_path = /obj/structure/sign/flag/syndicate
+
+/obj/item/sign/flag/taroon
+	name = "folded flag of Taroon"
+	desc = "The folded flag of Taroon."
+	icon_state = "folded_taroon"
+	sign_path = /obj/structure/sign/flag/taroon
+
+/obj/item/sign/flag/iseuria
+	name = "folded flag of Iseuria"
+	desc = "The folded flag of Iseuria."
+	icon_state = "folded_iseuria"
+	sign_path = /obj/structure/sign/flag/iseuria
