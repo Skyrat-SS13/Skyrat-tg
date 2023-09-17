@@ -590,7 +590,6 @@
 	var/stunned = FALSE
 
 	var/message
-	var/self_message
 
 	if (user && limb_can_shock)
 		var/electrocute_flags = (SHOCK_KNOCKDOWN|SHOCK_NO_HUMAN_ANIM|SHOCK_SUPPRESS_MESSAGE)
