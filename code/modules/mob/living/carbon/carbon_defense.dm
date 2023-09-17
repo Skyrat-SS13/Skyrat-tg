@@ -444,6 +444,7 @@
 		bodypart.emp_act(severity)
 
 ///Adds to the parent by also adding functionality to propagate shocks through pulling and doing some fluff effects.
+// SKYRAT EDIT BEGIN - Put a update from upstream (extra args, extra flags) down here early - let it overwrite 9/17/23, 3:25PM EST ~Niko
 /mob/living/carbon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE, jitter_time = 20 SECONDS, stutter_time = 4 SECONDS, stun_duration = 4 SECONDS)
 	. = ..()
 	if(!.)
@@ -489,6 +490,7 @@
 		StaminaKnockdown(stun_duration/6) // SKYRAT EDIT -- PARALYZE() -> STAMINAKNOCKDOWN
 	else
 		Knockdown(stun_duration)
+// SKYRAT EDIT END -- End of the update, started at electrocute_act()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
 	var/nosound = FALSE //SKYRAT EDIT ADDITION - EMOTES

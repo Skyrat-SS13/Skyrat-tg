@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 GLOBAL_LIST_INIT(biotypes_to_scar_file, list(
 	"[BIO_FLESH]" = FLESH_SCAR_FILE,
 	"[BIO_BONE]" = BONE_SCAR_FILE,
-	"[BIO_METAL]" = METAL_SCAR_FILE
+	"[BIO_METAL]" = METAL_SCAR_FILE // SKYRAT EDIT ADDITION - METAL SCARS (see robotic_blunt.dm)
 ))
 
 // ~burn wound infection defines

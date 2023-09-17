@@ -484,6 +484,7 @@
 
 
 ///Calculates the siemens coeff based on clothing and species, can also restart hearts.
+// SKYRAT EDIT BEGIN - Put a update from upstream (extra args, extra flags) down here early - let it overwrite 9/17/23, 3:25PM EST ~Niko
 /mob/living/carbon/human/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE, jitter_time = 20 SECONDS, stutter_time = 4 SECONDS, stun_duration = 4 SECONDS)
 	//Calculates the siemens coeff based on clothing. Completely ignores the arguments
 	if(flags & SHOCK_TESLA) //I hate this entire block. This gets the siemens_coeff for tesla shocks
@@ -523,6 +524,7 @@
 				to_chat(src, span_notice("You feel your heart beating again!"))
 	if (!(flags & SHOCK_NO_HUMAN_ANIM))
 		electrocution_animation(4 SECONDS)
+// SKYRAT EDIT END -- End of the update, started at electrocute_act()
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit) //todo: update this to utilize check_obscured_slots() //and make sure it's check_obscured_slots(TRUE) to stop aciding through visors etc
 	var/list/damaged = list()
