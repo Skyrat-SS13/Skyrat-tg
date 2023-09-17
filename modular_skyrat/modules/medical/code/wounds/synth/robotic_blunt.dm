@@ -8,12 +8,14 @@
 #define ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
 #define ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT 0.5
 
+#define ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT 0.7
+
 #define ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE 20
 #define ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE 20
 
 /datum/wound/blunt/robotic
 	name = "Robotic Blunt (Screws and bolts) Wound"
-	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY)
+	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY|CAN_BE_GRASPED)
 
 	default_scar_file = METAL_SCAR_FILE
 
@@ -307,6 +309,8 @@
 		overall_mult *= 0.25
 	if (victim.has_status_effect(/datum/status_effect/determined))
 		overall_mult *= ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
+	if (limb.grasped_by)
+		overall_mult *= ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT
 
 	overall_mult *= get_buckled_movement_consequence_mult(victim.buckled)
 
@@ -772,7 +776,7 @@
 	<b>roboticist/engineer screwdriver/wrench</b> it and then <b>re-solder</b> it. <b>Diagnostic huds</b> make this all easier, and <b>robos/engis</b> have a <b>large boost</b> as well!"
 	homemade_treat_text = "<b>Bone gel</b> can be used instead of a <b>screwdriver/wrench</b> and is <b>guaranteed to work</b> - but it takes <b>time</b> and <b>damage</b>!"
 */
-	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY)
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY|CAN_BE_GRASPED)
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/severe
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
@@ -842,7 +846,7 @@
 
 	sound_effect = 'sound/effects/wounds/crack2.ogg'
 
-	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY)
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|SPLINT_OVERLAY|CAN_BE_GRASPED)
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
@@ -1155,3 +1159,5 @@
 #undef ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
 #undef ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE
 #undef ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
+
+#undef ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT
