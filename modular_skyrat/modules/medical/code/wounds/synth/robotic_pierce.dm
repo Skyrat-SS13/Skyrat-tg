@@ -37,8 +37,8 @@
 	intensity = 10 SECONDS
 	processing_full_shock_threshold = 8 MINUTES
 
-	processing_shock_power_per_second_max = 1.3
-	processing_shock_power_per_second_min = 1.2
+	processing_shock_power_per_second_max = 1.2
+	processing_shock_power_per_second_min = 1.1
 
 	processing_shock_stun_chance = 0.5
 	processing_shock_spark_chance = 35
@@ -73,7 +73,7 @@
 	desc = "A major transformer has been pierced, causing slow-to-progess but eventually intense electrical damage."
 	occur_text = "sputters and goes limp for a moment as it ejects a stream of sparks"
 	examine_desc = "is shuddering significantly, servos briefly giving way in a rythmic pattern"
-	treat_text = "Containment of damaged wiring via gauze, securing of wires via a wirecutter/hemostat, then application of fresh wiring or sutures."
+	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
 
@@ -84,7 +84,7 @@
 	threshold_penalty = 40
 
 	intensity = 20 SECONDS
-	processing_full_shock_threshold = 7 MINUTES
+	processing_full_shock_threshold = 7.5 MINUTES
 
 	processing_shock_power_per_second_max = 1.6
 	processing_shock_power_per_second_min = 1.5
@@ -136,11 +136,11 @@
 
 	threshold_penalty = 60
 
-	intensity = 40 SECONDS
-	processing_full_shock_threshold = 6 MINUTES
+	intensity = 30 SECONDS
+	processing_full_shock_threshold = 6.5 MINUTES
 
-	processing_shock_power_per_second_max = 2.3
-	processing_shock_power_per_second_min = 2.2
+	processing_shock_power_per_second_max = 2.2
+	processing_shock_power_per_second_min = 2.1
 
 	processing_shock_stun_chance = 1
 	processing_shock_spark_chance = 90

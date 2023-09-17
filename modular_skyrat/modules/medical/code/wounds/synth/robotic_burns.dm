@@ -22,7 +22,7 @@
 */
 	default_scar_file = METAL_SCAR_FILE
 
-	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY) // gauze binds the metal and makes it resistant to thermal shock
+	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY|CAN_BE_GRASPED) // gauze binds the metal and makes it resistant to thermal shock
 
 	processes = TRUE
 
@@ -54,6 +54,9 @@
 	var/important_outgoing_mult = 1.2
 	/// The coefficient of heat transfer we will use when shifting our temp to a turf.
 	var/turf_coeff = 0.02
+
+	/// The maximum temperature we can cause by heating our victim.
+	var/max_outgoing_temperature = BODYTEMP_HEAT_WOUND_LIMIT - 1
 
 	/// If we are hit with burn damage, the damage will be multiplied against this to determine the effective heat we get.
 	var/incoming_damage_heat_coeff = 3
@@ -134,7 +137,9 @@
 	var/mult = outgoing_bodytemp_coeff
 	if (limb_essential())
 		mult *= important_outgoing_mult
-	victim.adjust_bodytemperature(((chassis_temperature - victim.bodytemperature) * mult) * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick * statis_mult)
+	var/adjustment_allowed = max((max_outgoing_temperature - victim.bodytemperature), 0)
+	var/amount_to_adjust = min((((chassis_temperature - victim.bodytemperature) * mult) * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick * statis_mult), adjustment_allowed)
+	victim.adjust_bodytemperature(amount_to_adjust)
 
 // Increase our temp based on burn damage it receives
 /datum/wound/burn/robotic/overheat/proc/victim_attacked(datum/source, damage, damagetype, def_zone, blocked, wound_bonus, bare_wound_bonus, sharpness, attack_direction, attacking_item)
@@ -187,12 +192,9 @@
 	var/hercuri_percent = (hercuri_amount / total_reagent_amount)
 
 	var/hercuri_chem_temp_increment = (100 * hercuri_percent)
-	var/hercuri_reagent_amount_mult = 1 + (0.1 * hercuri_percent)
-	var/local_chem_temp = max(source.chem_temp, 0)
-	local_chem_temp -= hercuri_chem_temp_increment
-	total_reagent_amount *= hercuri_reagent_amount_mult
+	var/local_chem_temp = max(source.chem_temp - hercuri_chem_temp_increment, 0)
 
-	var/heat_shock_damage_mult = 1 - (0.5 * hercuri_percent)
+	var/heat_shock_damage_mult = 1 - (0.2 * hercuri_percent)
 
 	expose_temperature(local_chem_temp, (0.02 * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = heat_shock_damage_mult)
 
@@ -207,6 +209,9 @@
 		var/obj/item/stack/gauze = limb.current_gauze
 		if (gauze)
 			gauze_mult *= (gauze.splint_factor) * 0.4 // very very effective
+
+		if (limb.grasped_by)
+			gauze_mult *= 0.7 // hold it down yourself
 
 		if (victim)
 			var/gauze_or_not = (!isnull(gauze) ? ", but [gauze] helps to keep it together" : "")
@@ -303,7 +308,7 @@
 
 	sound_volume = 20
 
-	outgoing_bodytemp_coeff = 0.007
+	outgoing_bodytemp_coeff = 0.006
 	bodytemp_coeff = 0.006
 
 	base_reagent_temp_coefficient = 0.03
@@ -348,7 +353,7 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 375)
 	heating_threshold = (BODYTEMP_NORMAL + 800)
 
-	outgoing_bodytemp_coeff = 0.0065
+	outgoing_bodytemp_coeff = 0.005
 	bodytemp_coeff = 0.004
 
 	base_reagent_temp_coefficient = 0.03
@@ -397,15 +402,17 @@
 	cooling_threshold = (BODYTEMP_NORMAL + 775)
 	heating_threshold = INFINITY
 
-	outgoing_bodytemp_coeff = 0.0054 // burn... BURN...
-	bodytemp_coeff = 0.002
+	outgoing_bodytemp_coeff = 0.004 // burn... BURN...
+	bodytemp_coeff = 0.0025
 
 	base_reagent_temp_coefficient = 0.03
 	heat_shock_delta_to_damage_ratio = 0.2
 
+	max_outgoing_temperature = BODYTEMP_HEAT_WOUND_LIMIT // critical CAN cause wounds, but only barely
+
 	demotes_to = /datum/wound/burn/robotic/overheat/severe
 
-	wound_flags = (MANGLES_EXTERIOR|ACCEPTS_GAUZE|SPLINT_OVERLAY)
+	wound_flags = (MANGLES_EXTERIOR|ACCEPTS_GAUZE|SPLINT_OVERLAY|CAN_BE_GRASPED)
 
 	light_color = COLOR_VERY_SOFT_YELLOW
 	light_power = 1.3

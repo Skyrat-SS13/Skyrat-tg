@@ -1,16 +1,16 @@
 /// How much damage and progress is reduced when on stasis.
-#define ELECTRICAL_DAMAGE_ON_STASIS_MULT 0.25
+#define ELECTRICAL_DAMAGE_ON_STASIS_MULT 0.15
 /// How much damage and progress is reduced when limb is grasped.
 #define ELECTRICAL_DAMAGE_GRASPED_MULT 0.7
 /// How much damage and progress is reduced when our victim lies down.
-#define ELECTRICAL_DAMAGE_LYING_DOWN_MULT 0.5
+#define ELECTRICAL_DAMAGE_LYING_DOWN_MULT 0.7
 /// How much progress is reduced when our victim is dead.
 #define ELECTRICAL_DAMAGE_DEAD_PROGRESS_MULT 0.2 // they'll be resting to, so this is more like 0.1
 
 /// Base time for a wirecutter being used.
 #define ELECTRICAL_DAMAGE_WIRECUTTER_BASE_DELAY 5 SECONDS
 /// Base time for a cable coil being used.
-#define ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY 1.5 SECONDS
+#define ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY 1.9 SECONDS
 
 /datum/wound/electrical_damage
 	name = "Electrical (Wires) Wound"
@@ -303,7 +303,7 @@
 	var/change = (processing_full_shock_threshold * wire_repair_percent)
 	var/delay_mult = 1
 	if (user == victim)
-		delay_mult *= 1.25
+		delay_mult *= 1.5
 	if (is_suture)
 		delay_mult *= 2
 		var/obj/item/stack/medical/suture/suture_item = suturing_item
@@ -334,8 +334,9 @@
 			adjust_intensity(change * 2)
 		else
 			var/repairs_or_replaces = (is_suture ? "repairs" : "replaces")
+			var/repair_or_replace = (is_suture ? "repair" : "replace")
 			user?.visible_message(span_notice("[user] [repairs_or_replaces] some of [their_or_other] [limb.plaintext_zone]'s wiring!"), \
-				span_notice("You [repairs_or_replaces] some of [your_or_other] [limb.plaintext_zone]'s wiring!"))
+				span_notice("You [repair_or_replace] some of [your_or_other] [limb.plaintext_zone]'s wiring!"))
 			adjust_intensity(-change)
 			victim.balloon_alert(user, "intensity reduced to [get_intensity_mult() * 100]%")
 
@@ -520,7 +521,7 @@
 	desc = "A number of wires have been completely cut, resulting in electrical faults that will intensify at a worrying rate."
 	occur_text = "sends some electrical fiber in the direction of the blow, beginning to profusely spark"
 	examine_desc = "has multiple severed wires visible to the outside"
-	treat_text = "Containment of damaged wiring via gauze, securing of wires via a wirecutter/retractor, then application of fresh wiring or sutures."
+	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
 
@@ -581,7 +582,7 @@
 	processing_full_shock_threshold = 1 MINUTES
 
 	processing_shock_power_per_second_max = 1.3
-	processing_shock_power_per_second_min = 1
+	processing_shock_power_per_second_min = 1.1
 
 	processing_shock_stun_chance = 5
 	processing_shock_spark_chance = 90
@@ -590,7 +591,7 @@
 	process_shock_spark_count_min = 2
 
 	wirecut_repair_percent = 0.1
-	wire_repair_percent = 0.065
+	wire_repair_percent = 0.067
 
 	initial_sparks_amount = 8
 
