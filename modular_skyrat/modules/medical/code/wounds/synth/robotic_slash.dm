@@ -82,7 +82,7 @@
 	/// The bodyheat our victim must be at or above to start getting passive healing.
 	var/heat_thresh_to_heal = (BODYTEMP_HEAT_DAMAGE_LIMIT + 30)
 	/// The mult that heat differences between normal and bodytemp thresh is multiplied against. Controls passive heat healing.
-	var/heat_differential_healing_mult = 0.02
+	var/heat_differential_healing_mult = 0.08
 
 	/// Percent chance for a heat repair to give the victim a message.
 	var/heat_heal_message_chance = 20
