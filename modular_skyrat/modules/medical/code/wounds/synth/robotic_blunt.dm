@@ -14,6 +14,9 @@
 #define ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE 20
 #define ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE 20
 
+/// Gloves must be above or at this threshold to cause the user to not be burnt apon trying to mold metal.
+#define ROBOTIC_BLUNT_MOLD_METAL_HEAT_RESISTANCE_THRESHOLD 1000 // less than the black gloves max resist
+
 /datum/wound/blunt/robotic
 	name = "Robotic Blunt (Screws and bolts) Wound"
 	wound_flags = (ACCEPTS_GAUZE|SPLINT_OVERLAY|CAN_BE_GRASPED)
@@ -973,7 +976,13 @@
 
 		limb.receive_damage(brute = 5, damage_source = user, wound_bonus = CANT_WOUND)
 
-	if (HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
+
+	var/sufficiently_insulated_gloves = FALSE
+	var/obj/item/clothing/gloves/worn_gloves = user.gloves
+	if ((worn_gloves?.heat_protection & HANDS) && worn_gloves?.max_heat_protection_temperature && worn_gloves.max_heat_protection_temperature >= ROBOTIC_BLUNT_MOLD_METAL_HEAT_RESISTANCE_THRESHOLD)
+		sufficiently_insulated_gloves = TRUE
+
+	if (sufficiently_insulated_gloves || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
 		return
 
 	to_chat(user, span_danger("You burn your hand on [victim]'s [limb.plaintext_zone]!"))
@@ -1163,3 +1172,5 @@
 #undef ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
 
 #undef ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT
+
+#undef ROBOTIC_BLUNT_MOLD_METAL_HEAT_RESISTANCE_THRESHOLD
