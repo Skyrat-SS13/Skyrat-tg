@@ -1391,9 +1391,7 @@
 
 /// Is this holder full or not
 /datum/reagents/proc/holder_full()
-	if(total_volume >= maximum_volume)
-		return TRUE
-	return FALSE
+	return total_volume >= maximum_volume
 
 /// Get the amount of this reagent
 /datum/reagents/proc/get_reagent_amount(reagent, include_subtypes = FALSE)
