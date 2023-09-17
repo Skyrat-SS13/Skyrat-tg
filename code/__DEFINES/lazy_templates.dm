@@ -9,10 +9,6 @@
 	"Wizard Den" = LAZY_TEMPLATE_KEY_WIZARDDEN, \
 	"Ninja Holding" = LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY, \
 	"Abductor Ships" = LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS, \
-<<<<<<< HEAD
+	"Heretic Sacrifice Level" = LAZY_TEMPLATE_KEY_HERETIC_SACRIFICE, \
 	"Outpost of Cogs" = LAZY_TEMPLATE_KEY_OUTPOST_OF_COGS, \
 ) // SKYRAT EDIT ABOVE - OUTPOST OF COGS
-=======
-	"Heretic Sacrifice Level" = LAZY_TEMPLATE_KEY_HERETIC_SACRIFICE, \
-)
->>>>>>> d2509b278db (heretic sac room is now lazyloaded (#78336))
