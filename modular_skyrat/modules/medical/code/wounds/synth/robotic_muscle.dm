@@ -1,12 +1,11 @@
 /datum/wound/muscle/robotic
-	sound_effect = 'sound/effects/wounds/crack1.ogg'
+	sound_effect = 'sound/effects/wounds/blood1.ogg'
 
 /datum/wound_pregen_data/muscle/robotic
-	required_limb_biostate = (BIO_ROBOTIC)
-	require_any_biostate = FALSE
+	required_limb_biostate = (BIO_METAL)
 
 /datum/wound/muscle/robotic/moderate
-	name = "Worn Servo"
+	name = "Overworked Servo"
 	desc = "A servo has been overworked, and will operate with reduced efficiency until rested."
 	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "appears to be moving sluggishly"
@@ -26,12 +25,12 @@
 	threshold_minimum = 35
 
 /datum/wound/muscle/robotic/severe
-	name = "Severed Hydraulic"
-	sound_effect = 'sound/effects/wounds/crack2.ogg'
-	desc = "A critical hydraulic has been severed, causing complete limb dysfunction."
+	name = "Exhausted Piston"
+	sound_effect = 'sound/effects/wounds/blood2.ogg'
+	desc = "A important hydraulic piston has been critically overused, resulting in total dysfunction until it recovers."
 	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
-	examine_desc = "is totally limp, with hydraulic fluid leaking out"
-	occur_text = "sprays out a jet of hydraulic fluid before going totally limp"
+	examine_desc = "is stiffly limp, extremities splayed out widely"
+	occur_text = "goes completely stiff, seeming to lock into position"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 5

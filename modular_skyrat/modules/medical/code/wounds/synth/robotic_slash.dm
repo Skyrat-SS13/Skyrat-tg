@@ -80,7 +80,7 @@
 	var/overall_effect_mult = 1
 
 	/// The bodyheat our victim must be at or above to start getting passive healing.
-	var/heat_thresh_to_heal = (BODYTEMP_NORMAL + 30)
+	var/heat_thresh_to_heal = (BODYTEMP_HEAT_DAMAGE_LIMIT + 30)
 	/// The mult that heat differences between normal and bodytemp thresh is multiplied against. Controls passive heat healing.
 	var/heat_differential_healing_mult = 0.02
 
@@ -362,7 +362,8 @@
 		delay_mult *= 2
 		change *= 0.8
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 0.5
+		delay_mult *= 0.4
+		change *= 1.1
 	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
 		delay_mult *= 0.75
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
@@ -543,7 +544,7 @@
 	process_shock_spark_count_max = 2
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.085
+	wirecut_repair_percent = 0.1
 	wire_repair_percent = 0.07
 
 	initial_sparks_amount = 3
@@ -579,7 +580,7 @@
 	threshold_penalty = 50
 
 	intensity = 10 SECONDS
-	processing_full_shock_threshold = 1 MINUTES
+	processing_full_shock_threshold = 1.25 MINUTES
 
 	processing_shock_power_per_second_max = 1.3
 	processing_shock_power_per_second_min = 1.1
@@ -590,8 +591,8 @@
 	process_shock_spark_count_max = 3
 	process_shock_spark_count_min = 2
 
-	wirecut_repair_percent = 0.1
-	wire_repair_percent = 0.067
+	wirecut_repair_percent = 0.14
+	wire_repair_percent = 0.069
 
 	initial_sparks_amount = 8
 

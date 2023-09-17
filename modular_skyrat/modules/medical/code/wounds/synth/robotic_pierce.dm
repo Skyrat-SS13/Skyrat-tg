@@ -46,8 +46,8 @@
 	process_shock_spark_count_max = 1
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.07 // not even faster at this point
-	wire_repair_percent = 0.065
+	wirecut_repair_percent = 0.065 // not even faster at this point
+	wire_repair_percent = 0.056
 
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 2
@@ -95,8 +95,8 @@
 	process_shock_spark_count_max = 2
 	process_shock_spark_count_min = 1
 
-	wirecut_repair_percent = 0.06
-	wire_repair_percent = 0.05
+	wirecut_repair_percent = 0.068
+	wire_repair_percent = 0.04
 
 	interaction_efficiency_penalty = 2.5
 	limp_slowdown = 4
@@ -148,8 +148,8 @@
 	process_shock_spark_count_max = 3
 	process_shock_spark_count_min = 2
 
-	wirecut_repair_percent = 0.06
-	wire_repair_percent = 0.04
+	wirecut_repair_percent = 0.067
+	wire_repair_percent = 0.03
 
 	interaction_efficiency_penalty = 3
 	limp_slowdown = 6

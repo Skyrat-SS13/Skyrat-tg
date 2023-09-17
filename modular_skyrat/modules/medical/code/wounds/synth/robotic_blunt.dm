@@ -19,20 +19,14 @@
 
 	default_scar_file = METAL_SCAR_FILE
 
-	/// The minimum effective damage our limb must sustain before we try to daze our victim.
-	var/daze_attacked_minimum_score = 4
-
-	/// How much effective damage is multiplied against for purposes of determining our camerashake's duration when we are hit on the head.
-	var/head_attacked_shake_duration_ratio = 0.3
-	/// How much effective damage is multiplied against for purposes of determining our camerashake's intensity when we are hit on the head.
-	var/head_attacked_shake_intensity_ratio = 0.2
-
-	/// The base chance, in percent, for moving to shake our camera. Multiplied against many local modifiers, such as resting, being gauzed, etc.
-	var/head_movement_shake_chance = 100
-	/// The base duration, in deciseconds, for our camera shake on movement.
-	var/head_movement_base_shake_duration = 1
-	/// The base intensity, in tiles, for our camera shake on movement.
-	var/head_movement_base_shake_intensity = 1
+	/// If we suffer severe head booboos, we can get brain traumas tied to them
+	var/datum/brain_trauma/active_trauma
+	/// What brain trauma group, if any, we can draw from for head wounds
+	var/brain_trauma_group
+	/// If we deal brain traumas, when is the next one due?
+	var/next_trauma_cycle
+	/// How long do we wait +/- 20% for the next trauma?
+	var/trauma_cycle_cooldown
 
 	/// The ratio stagger score will be multiplied against for determining the final chance of moving away from the attacker.
 	var/stagger_movement_chance_ratio = 1
@@ -101,8 +95,7 @@
 	/// The last time our victim has moved. Used for determining if we should increase or decrease the chance of having stagger aftershock.
 	var/last_time_victim_moved = 0
 
-	/// The minimum duration that can be fed into shake_camera(). Anything below this will have a chance of being bumped up to 1.
-	var/daze_minimum_shake_duration = 1
+	processes = TRUE
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
@@ -130,6 +123,41 @@
 
 /datum/wound/blunt/robotic/get_xadone_progress_to_qdel()
 	return INFINITY
+
+/datum/wound/blunt/robotic/wound_injury(datum/wound/old_wound, attack_direction)
+	. = ..()
+
+	// hook into gaining/losing gauze so crit bone wounds can re-enable/disable depending if they're slung or not
+	if(limb.body_zone == BODY_ZONE_HEAD && brain_trauma_group)
+		processes = TRUE
+		active_trauma = victim.gain_trauma_type(brain_trauma_group, TRAUMA_RESILIENCE_WOUND)
+		next_trauma_cycle = world.time + (rand(100-WOUND_BONE_HEAD_TIME_VARIANCE, 100+WOUND_BONE_HEAD_TIME_VARIANCE) * 0.01 * trauma_cycle_cooldown)
+
+	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
+		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
+		if(istype(I, /obj/item/offhand))
+			I = victim.get_inactive_held_item()
+
+		if(I && victim.dropItemToGround(I))
+			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [limb.plaintext_zone] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+
+/datum/wound/blunt/robotic/remove_wound(ignore_limb, replaced)
+	. = ..()
+
+	QDEL_NULL(active_trauma)
+
+/datum/wound/blunt/robotic/handle_process(seconds_per_tick, times_fired)
+	. = ..()
+
+	if (!victim || IS_IN_STASIS(victim))
+		return
+
+	if (limb.body_zone == BODY_ZONE_HEAD && brain_trauma_group && world.time > next_trauma_cycle)
+		if (active_trauma)
+			QDEL_NULL(active_trauma)
+		else
+			active_trauma = victim.gain_trauma_type(brain_trauma_group, TRAUMA_RESILIENCE_WOUND)
+		next_trauma_cycle = world.time + (rand(100-WOUND_BONE_HEAD_TIME_VARIANCE, 100+WOUND_BONE_HEAD_TIME_VARIANCE) * 0.01 * trauma_cycle_cooldown)
 
 /// If true, allows our superstructure to be modified if we are T3. RCDs can always fix our superstructure.
 /datum/wound/blunt/robotic/proc/limb_malleable()
@@ -165,18 +193,6 @@
 		effective_damage *= gauze.splint_factor
 
 	switch (limb.body_zone)
-		if (BODY_ZONE_HEAD)
-			var/daze_damage = effective_damage
-			if (!sharpness)
-				daze_damage *= BLUNT_ATTACK_DAZE_MULT
-			if (victim.has_status_effect(/datum/status_effect/determined))
-				daze_damage *= ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT
-			if (daze_damage < daze_attacked_minimum_score)
-				return
-			var/strength = (daze_damage * head_attacked_shake_intensity_ratio)
-			var/duration = (daze_damage * head_attacked_shake_duration_ratio)
-			shake_camera(victim, duration = duration, strength = strength)
-			time_til_next_movement_shake_allowed = (world.time + (duration)) // not sure why, but seconds seems to be a necessity here
 
 		if (BODY_ZONE_CHEST)
 			var/oscillation_mult = 1
@@ -314,23 +330,6 @@
 
 	overall_mult *= get_buckled_movement_consequence_mult(victim.buckled)
 
-	if (can_daze())
-		var/shake_chance = head_movement_shake_chance
-
-		var/duration = (head_movement_base_shake_duration)
-		var/strength = (head_movement_base_shake_intensity)
-
-		duration *= overall_mult
-		strength *= overall_mult
-
-		if ((time_til_next_movement_shake_allowed <= world.time) && prob(shake_chance))
-
-			if (duration < daze_minimum_shake_duration && prob((duration / daze_minimum_shake_duration) * 100)) // a bit of balancing so this can actually work at low strength
-				duration = daze_minimum_shake_duration
-
-			if (duration >= daze_minimum_shake_duration)
-				shake_camera(victim, duration = duration, strength = strength)
-
 	if (limb.body_zone == BODY_ZONE_CHEST)
 		if (prob(chest_movement_stagger_chance * overall_mult))
 			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift, knockdown_ratio = stagger_aftershock_knockdown_movement_ratio)
@@ -341,10 +340,6 @@
 /datum/wound/blunt/robotic/proc/shake_organs_for_nausea(score, max)
 	victim.adjust_disgust(score, max)
 	to_chat(victim, span_warning("You feel a wave of nausea as your [limb.plaintext_zone]'s internals jostle..."))
-
-/// Allows us to shake the camera of our victim
-/datum/wound/blunt/robotic/proc/can_daze()
-	return (limb.body_zone == BODY_ZONE_HEAD)
 
 /// Returns a multiplier to our movement effects based on what our victim is buckled to.
 /datum/wound/blunt/robotic/proc/get_buckled_movement_consequence_mult(atom/movable/buckled_to)
@@ -383,14 +378,6 @@
 	limp_chance = 30
 	threshold_penalty = 20
 
-	daze_attacked_minimum_score = 8
-
-	head_movement_base_shake_intensity = 0.05
-	head_movement_base_shake_duration = 1 // exxxtremely weak
-
-	head_attacked_shake_duration_ratio = 0.05
-	head_attacked_shake_intensity_ratio = 0.08
-
 	can_scar = FALSE
 
 	a_or_from = "from"
@@ -399,6 +386,7 @@
 	abstract = FALSE
 
 	wound_path_to_generate = /datum/wound/blunt/robotic/moderate
+	viable_zones = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
 	threshold_minimum = 30
 
@@ -465,31 +453,32 @@
 	if (!victim || IS_IN_STASIS(victim))
 		return
 
-	regen_time_elapsed += ((seconds_per_tick SECONDS) / 2)
-	if(victim.body_position == LYING_DOWN)
-		if(SPT_PROB(30, seconds_per_tick))
-			regen_time_elapsed += 1 SECONDS
-		if(victim.IsSleeping() && SPT_PROB(30, seconds_per_tick))
-			regen_time_elapsed += 1 SECONDS
+	if (gelled)
+		regen_time_elapsed += ((seconds_per_tick SECONDS) / 2)
+		if(victim.body_position == LYING_DOWN)
+			if(SPT_PROB(30, seconds_per_tick))
+				regen_time_elapsed += 1 SECONDS
+			if(victim.IsSleeping() && SPT_PROB(30, seconds_per_tick))
+				regen_time_elapsed += 1 SECONDS
 
-	var/effective_damage = ((gel_damage / (regen_time_needed / 10)) * seconds_per_tick)
-	var/obj/item/stack/gauze = limb.current_gauze
-	if (gauze)
-		effective_damage *= gauze.splint_factor
-	limb.receive_damage(effective_damage, wound_bonus = CANT_WOUND, damage_source = src)
-	if(effective_damage && prob(33))
-		var/gauze_text = (gauze?.splint_factor ? ", although the [gauze] helps to prevent some of the leakage" : "")
-		to_chat(victim, span_danger("Your [limb.plaintext_zone] sizzles as some gel leaks and warps the exterior metal[gauze_text]..."))
+		var/effective_damage = ((gel_damage / (regen_time_needed / 10)) * seconds_per_tick)
+		var/obj/item/stack/gauze = limb.current_gauze
+		if (gauze)
+			effective_damage *= gauze.splint_factor
+		limb.receive_damage(effective_damage, wound_bonus = CANT_WOUND, damage_source = src)
+		if(effective_damage && prob(33))
+			var/gauze_text = (gauze?.splint_factor ? ", although the [gauze] helps to prevent some of the leakage" : "")
+			to_chat(victim, span_danger("Your [limb.plaintext_zone] sizzles as some gel leaks and warps the exterior metal[gauze_text]..."))
 
-	if(regen_time_elapsed > regen_time_needed)
-		if(!victim || !limb)
-			qdel(src)
-			return
-		to_chat(victim, span_green("The gel within your [limb.plaintext_zone] has fully hardened, allowing you to re-solder it!"))
-		processes = FALSE
-		ready_to_resolder = TRUE
-		ready_to_secure_internals = FALSE
-		set_disabling(FALSE)
+		if(regen_time_elapsed > regen_time_needed)
+			if(!victim || !limb)
+				qdel(src)
+				return
+			to_chat(victim, span_green("The gel within your [limb.plaintext_zone] has fully hardened, allowing you to re-solder it!"))
+			gelled = FALSE
+			ready_to_resolder = TRUE
+			ready_to_secure_internals = FALSE
+			set_disabling(FALSE)
 
 /datum/wound/blunt/robotic/secures_internals/modify_desc_before_span(desc)
 	. = ..()
@@ -785,15 +774,10 @@
 	limp_slowdown = 6
 	limp_chance = 60
 
+	brain_trauma_group = BRAIN_TRAUMA_MILD
+	trauma_cycle_cooldown = 1.5 MINUTES
+
 	threshold_penalty = 40
-
-	daze_attacked_minimum_score = 6
-
-	head_movement_base_shake_intensity = 0.25
-	head_movement_base_shake_duration = 1
-
-	head_attacked_shake_duration_ratio = 0.18
-	head_attacked_shake_intensity_ratio = 0.1
 
 	base_movement_stagger_score = 40
 
@@ -840,6 +824,9 @@
 	limp_chance = 80
 	threshold_penalty = 60
 
+	brain_trauma_group = BRAIN_TRAUMA_SEVERE
+	trauma_cycle_cooldown = 2.5 MINUTES
+
 	scar_keyword = "bluntcritical"
 
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
@@ -850,11 +837,6 @@
 	treatable_by = list(/obj/item/stack/medical/bone_gel)
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/critical
 	treatable_tools = list(TOOL_WELDER, TOOL_CROWBAR)
-
-	daze_attacked_minimum_score = 1
-
-	head_movement_base_shake_intensity = 0.5
-	head_movement_base_shake_duration = 0.8
 
 	base_movement_stagger_score = 50
 
