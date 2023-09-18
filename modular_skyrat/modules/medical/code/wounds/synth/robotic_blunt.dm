@@ -1,17 +1,19 @@
-/// If a incoming attack is blunt, we increase the daze amount by this amount
-#define BLUNT_ATTACK_DAZE_MULT 1.5
-
-/// Cost of an RCD to quickly fix our broken superstructure
+/// Cost of an RCD to quickly fix our broken in raw matter
 #define ROBOTIC_T3_BLUNT_WOUND_RCD_COST 25
+/// Cost of an RCD to quickly fix our broken in silo material
 #define ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST ROBOTIC_T3_BLUNT_WOUND_RCD_COST / 4
 
-#define ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD 0.5
-#define ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
-#define ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT 0.5
+/// The multiplier put against our movement effects if our victim has the determined reagent
+#define ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD 0.7
+/// The multiplier of stagger intensity on hit if our victim has the determined reagent
+#define ROBOTIC_WOUND_DETERMINATION_STAGGER_MOVEMENT_MULT 0.7
 
+/// The multiplier put against our movement effects if our limb is grasped
 #define ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT 0.7
 
-#define ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE 20
+/// The "power" put into electrocute_act whenever someone gets shocked when they crowbar open our limb
+#define ROBOTIC_BLUNT_CROWBAR_SHOCK_POWER 20
+/// The brute damage done to this limb (doubled on essential limbs) when it is crowbarred open
 #define ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE 20
 
 /// Gloves must be above or at this threshold to cause the user to not be burnt apon trying to mold metal.
@@ -205,7 +207,7 @@
 			var/oscillation_damage = effective_damage
 			var/stagger_damage = oscillation_damage * chest_attacked_stagger_mult
 			if (victim.has_status_effect(/datum/status_effect/determined))
-				oscillation_damage *= ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
+				oscillation_damage *= ROBOTIC_WOUND_DETERMINATION_STAGGER_MOVEMENT_MULT
 			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(oscillation_damage * chest_attacked_stagger_chance_ratio))
 				stagger(stagger_damage, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
 
@@ -311,7 +313,7 @@
 		span_green("Your [limb.plaintext_zone] rattles into place!"))
 	remove_wound()
 
-/// Called when percussive maintenance faisl at its random roll.
+/// Called when percussive maintenance fails at its random roll.
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_failure(attacking_item, mob/living/user)
 	to_chat(victim, span_warning("Your [limb.plaintext_zone] rattles around, but you don't sense any sign of improvement."))
 
@@ -335,15 +337,11 @@
 	overall_mult *= get_buckled_movement_consequence_mult(victim.buckled)
 
 	if (limb.body_zone == BODY_ZONE_CHEST)
-		if (prob(chest_movement_stagger_chance * overall_mult))
+		var/stagger_chance = chest_movement_stagger_chance * overall_mult
+		if (prob(stagger_chance))
 			stagger(base_movement_stagger_score, shake_duration = base_stagger_movement_shake_duration, from_movement = TRUE, shift = movement_stagger_shift, knockdown_ratio = stagger_aftershock_knockdown_movement_ratio)
 
 	last_time_victim_moved = world.time
-
-/// Merely a wrapper proc for adjust_disgust that sends a to_chat.
-/datum/wound/blunt/robotic/proc/shake_organs_for_nausea(score, max)
-	victim.adjust_disgust(score, max)
-	to_chat(victim, span_warning("You feel a wave of nausea as your [limb.plaintext_zone]'s internals jostle..."))
 
 /// Returns a multiplier to our movement effects based on what our victim is buckled to.
 /datum/wound/blunt/robotic/proc/get_buckled_movement_consequence_mult(atom/movable/buckled_to)
@@ -615,7 +613,7 @@
 			if (user != victim)
 				victim_message = span_userdanger("[user] is shocked by your [limb.plaintext_zone] in [user.p_their()] efforts to tear it open!")
 
-		var/shock_damage = ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE
+		var/shock_damage = ROBOTIC_BLUNT_CROWBAR_SHOCK_POWER
 		if (limb.current_gauze)
 			shock_damage *= limb.current_gauze.splint_factor // always good to let gauze do something
 		user.electrocute_act(shock_damage, limb, flags = electrocute_flags)
@@ -1162,15 +1160,12 @@
 	superstructure_remedied = remedied
 	ready_to_secure_internals = remedied
 
-#undef BLUNT_ATTACK_DAZE_MULT
-
 #undef ROBOTIC_T3_BLUNT_WOUND_RCD_COST
 #undef ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST
 
 #undef ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
-#undef ROBOTIC_WOUND_DETERMINATION_HIT_DAZE_MULT
-#undef ROBOTIC_WOUND_DETERMINATION_HIT_STAGGER_MULT
-#undef ROBOTIC_BLUNT_CROWBAR_SHOCK_DAMAGE
+#undef ROBOTIC_WOUND_DETERMINATION_STAGGER_MOVEMENT_MULT
+#undef ROBOTIC_BLUNT_CROWBAR_SHOCK_POWER
 #undef ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
 
 #undef ROBOTIC_BLUNT_GRASPED_MOVEMENT_MULT

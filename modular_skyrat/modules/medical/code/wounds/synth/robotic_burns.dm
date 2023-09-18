@@ -1,5 +1,8 @@
 #define OVERHEAT_ON_STASIS_HEAT_MULT 0.25
+/// At 100% hercuri composition, a spray of reagents will have its effective chem temp reduced by this. 50%, reduced by half this, etc.
 #define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT 60
+/// At 100% hercuri composition, a spray of reagents will have its heat shock damage reduced by this. 50%, reduced by half this, etc.
+#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT 0.2
 
 /datum/wound_pregen_data/burnt_metal
 	abstract = TRUE
@@ -63,7 +66,7 @@
 	var/incoming_damage_heat_coeff = 3
 
 	/// The coefficient of heat transfer we will use when receiving heat from reagent contact.
-	var/base_reagent_temp_coefficient = 0.03
+	var/base_reagent_temp_coefficient = 0.02
 
 	/// The ratio of temp shift -> brute damage. Careful with this value, it can make stuff really really nasty.
 	var/heat_shock_delta_to_damage_ratio = 0.12
@@ -176,11 +179,11 @@
 		reagent_coeff *= sprayed_with_reagent_clothed_mult
 
 	if (istype(source.my_atom, /obj/effect/particle_effect/water/extinguisher)) // this used to be a lot, lot more modular, but sadly reagent temps/volumes and shit are horribly inconsistant
-		expose_temperature(source.chem_temp, 1.7 * reagent_coeff, TRUE)
+		expose_temperature(source.chem_temp, (2.55 * reagent_coeff), TRUE)
 		return
 
 	if (istype(source.my_atom, /obj/machinery/shower))
-		expose_temperature(source.chem_temp, (10 * volume_modifier * reagent_coeff), TRUE)
+		expose_temperature(source.chem_temp, (15 * volume_modifier * reagent_coeff), TRUE)
 		return
 
 	var/total_reagent_amount = 0
@@ -195,9 +198,9 @@
 	var/hercuri_chem_temp_increment = (ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT * hercuri_percent)
 	var/local_chem_temp = max(source.chem_temp - hercuri_chem_temp_increment, 0)
 
-	var/heat_shock_damage_mult = 1 - (0.2 * hercuri_percent)
+	var/heat_shock_damage_mult = 1 - (ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT * hercuri_percent)
 
-	expose_temperature(local_chem_temp, (0.02 * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = heat_shock_damage_mult)
+	expose_temperature(local_chem_temp, (reagent_coeff * volume_modifier * total_reagent_amount), TRUE, heat_shock_damage_mult = heat_shock_damage_mult)
 
 /// Adjusts chassis_temperature by the delta between temperature and itself, multiplied by coeff.
 /// If heat_shock is TRUE, limb will receive brute damage based on the delta.

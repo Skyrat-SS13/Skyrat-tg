@@ -27,7 +27,7 @@
 /datum/wound/muscle/robotic/severe
 	name = "Exhausted Piston"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
-	desc = "A important hydraulic piston has been critically overused, resulting in total dysfunction until it recovers."
+	desc = "An important hydraulic piston has been critically overused, resulting in total dysfunction until it recovers."
 	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "is stiffly limp, extremities splayed out widely"
 	occur_text = "goes completely stiff, seeming to lock into position"

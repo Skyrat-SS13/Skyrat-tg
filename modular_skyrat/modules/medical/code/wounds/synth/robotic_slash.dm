@@ -12,6 +12,11 @@
 /// Base time for a cable coil being used.
 #define ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY 1.9 SECONDS
 
+/// The minimum shock power we must have available to zap our victim. Must be at least one, since electrocute_act fails if its lower.
+#define ELECTRICAL_DAMAGE_MINIMUM_SHOCK_POWER_PER_ZAP 1
+/// The maximum burn damage our limb can have before we refuse to let people who havent aggrograbbed the limb repair it with wires. This is so people can opt to just fix the burn damage.
+#define ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR 5
+
 /datum/wound/electrical_damage
 	name = "Electrical (Wires) Wound"
 
@@ -117,7 +122,7 @@
 	if (!victim || victim.stat == DEAD)
 		return
 
-	var/damage_mult = base_mult * get_damage_mult(victim)
+	var/damage_mult = get_damage_mult(victim)
 	var/intensity_mult = get_intensity_mult()
 
 	damage_mult *= seconds_per_tick
@@ -125,7 +130,7 @@
 
 	var/picked_damage = LERP(processing_shock_power_per_second_min, processing_shock_power_per_second_max, rand())
 	processing_shock_power_this_tick += (picked_damage * damage_mult)
-	if (processing_shock_power_this_tick <= 1)
+	if (processing_shock_power_this_tick <= ELECTRICAL_DAMAGE_MINIMUM_SHOCK_POWER_PER_ZAP)
 		return
 
 	var/stun_chance = (processing_shock_stun_chance * intensity_mult) * base_mult
@@ -270,13 +275,13 @@
 	. += "\nWound status: [get_wound_status_info()]"
 
 /datum/wound/electrical_damage/proc/get_wound_status_info()
-	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>0</b>")]% to remove the wound."
+	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>[minimum_intensity]</b>")]% to remove the wound."
 
 /datum/wound/electrical_damage/get_xadone_progress_to_qdel()
 	return INFINITY
 
 /datum/wound/electrical_damage/item_can_treat(obj/item/potential_treater, mob/user)
-	if (istype(potential_treater, /obj/item/stack/cable_coil) && ((user.pulling == victim && user.grab_state >= GRAB_AGGRESSIVE) || (limb.burn_dam <= 5)))
+	if (istype(potential_treater, /obj/item/stack/cable_coil) && ((user.pulling == victim && user.grab_state >= GRAB_AGGRESSIVE) || (limb.burn_dam <= ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR)))
 		return TRUE
 
 	return ..()
@@ -365,9 +370,9 @@
 		delay_mult *= 0.4
 		change *= 1.1
 	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		delay_mult *= 0.75
+		delay_mult *= 0.6
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= 0.75
+		delay_mult *= 0.6
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		change *= 1.2
 
@@ -394,6 +399,7 @@
 			return TRUE
 	return TRUE
 
+/// If fixed() is true, we remove ourself and return TRUE. FALSE otherwise.
 /datum/wound/electrical_damage/proc/remove_if_fixed()
 	if (fixed())
 		to_chat(victim, span_green("Your [limb.plaintext_zone] has recovered from its [name]!"))
@@ -401,12 +407,15 @@
 		return TRUE
 	return FALSE
 
+/// Should we remove ourself?
 /datum/wound/electrical_damage/proc/fixed()
 	return (intensity <= minimum_intensity || isnull(limb))
 
+/// Returns the multiplier we apply to our outgoing damage based off our current intensity. Is always between 0-1. 
 /datum/wound/electrical_damage/proc/get_intensity_mult()
 	return (min((intensity / processing_full_shock_threshold), 1))
 
+/// Wrapper for electrocute_act
 /datum/wound/electrical_damage/proc/zap(
 	mob/living/target,
 	damage,
@@ -616,3 +625,6 @@
 
 #undef ELECTRICAL_DAMAGE_WIRECUTTER_BASE_DELAY
 #undef ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY
+
+#undef ELECTRICAL_DAMAGE_MINIMUM_SHOCK_POWER_PER_ZAP
+#undef ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR

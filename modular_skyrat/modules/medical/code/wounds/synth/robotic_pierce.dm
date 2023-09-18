@@ -1,6 +1,3 @@
-#define ELECTRICAL_DAMAGE_REPAIR_WELD_BASE_DELAY 3 SECONDS
-#define ELECTRICAL_DAMAGE_REPLACE_METALS_BASE_DELAY 4 SECONDS
-
 // Pierce
 // Slow to rise but high damage overall
 // Hard-ish to fix
@@ -169,6 +166,3 @@
 	wound_path_to_generate = /datum/wound/electrical_damage/pierce/critical
 
 	threshold_minimum = 110
-
-#undef ELECTRICAL_DAMAGE_REPAIR_WELD_BASE_DELAY
-#undef ELECTRICAL_DAMAGE_REPLACE_METALS_BASE_DELAY
