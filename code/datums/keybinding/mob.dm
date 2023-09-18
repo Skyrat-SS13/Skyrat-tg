@@ -71,6 +71,7 @@
 		user.mob.dropItemToGround(I)
 	return TRUE
 
+<<<<<<< HEAD
 /datum/keybinding/mob/toggle_move_intent
 	hotkey_keys = list("Alt") //SKYRAT EDIT CHANGE - COMBAT_INDICATOR
 	name = "toggle_move_intent"
@@ -106,6 +107,8 @@
 	M.toggle_move_intent()
 	return TRUE
 
+=======
+>>>>>>> b021f291722 (Fix a runtime in toggle_move_intent keybindings (#78384))
 /datum/keybinding/mob/target/down(client/user)
 	. = ..()
 	if(.)
