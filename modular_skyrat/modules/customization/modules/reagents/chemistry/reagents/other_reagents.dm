@@ -75,7 +75,7 @@
 
 /datum/reagent/medicine/dermagen
 	name = "Dermagen"
-	description = "Heals scars formed by past physical trauma when applied. Minimum 10u needed. Touch application only."
+	description = "Heals scars formed by past physical trauma when applied. Minimum 10u needed, only works when applied topically."
 	reagent_state = LIQUID
 	color = "#FFEBEB"
 	ph = 6
