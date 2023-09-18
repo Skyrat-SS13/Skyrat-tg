@@ -92,11 +92,13 @@
 	ammo_type = /obj/item/ammo_casing/c40sol/fragmentation
 
 
-// .40 Sol armor piercing, if there's less than 20 bullet armor on wherever these hit, it'll go completely through the target and out the other side
+// .40 Sol match grade, bounces a lot, and if there's less than 20 bullet armor on wherever these hit, it'll go completely through the target and out the other side
 
 /obj/item/ammo_casing/c40sol/pierce
-	name = ".40 Sol Long piercing bullet casing"
-	desc = "A SolFed standard caseless armor-piercing pistol round. Effective at penetrating armor and people, at expense of less injury than a standard bullet."
+	name = ".40 Sol Long match bullet casing"
+	desc = "A SolFed standard caseless match grade rifle round. Fires at a higher pressure and thus fires slightly faster projectiles. \
+		Rumors say you can do sick ass wall bounce trick shots with these, though the official suggestion is to just shoot your target and \
+		not the wall next to them."
 
 	icon_state = "40sol_pierce"
 
@@ -107,12 +109,22 @@
 
 
 /obj/projectile/bullet/c40sol/pierce
-	name = ".40 Sol armor-piercing bullet"
+	name = ".40 Sol match bullet"
+
+	icon_state = "gaussphase"
+
+	speed = 0.5
+
 	damage = 25
-	armour_penetration = 30
+	armour_penetration = 20
 
 	wound_bonus = -30
 	bare_wound_bonus = -10
+
+	ricochets_max = 2
+	ricochet_chance = 80
+	ricochet_auto_aim_range = 4
+	ricochet_incidence_leeway = 65
 
 	projectile_piercing = PASSMOB
 
@@ -125,12 +137,16 @@
 		if((poor_sap.run_armor_check(def_zone, BULLET, "", "", silent = TRUE) > 20) || (pierces > 2))
 			projectile_piercing = NONE
 
+			if(damage > 10) // Lets just be safe with this one
+				damage -= 5
+			armour_penetration -= 10
+
 	return ..()
 
 
 /obj/item/ammo_box/c40sol/pierce
-	name = "ammo box (.40 Sol Long piercing)"
-	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The yellow stripe indicates this should hold armor piercing ammunition."
+	name = "ammo box (.40 Sol Long match)"
+	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The yellow stripe indicates this should hold high performance ammuniton."
 
 	icon_state = "40box_pierce"
 
