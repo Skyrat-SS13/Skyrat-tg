@@ -72,6 +72,7 @@
 	..()
 
 #define DERMAGEN_SCAR_FIX_AMOUNT 10
+
 /datum/reagent/medicine/dermagen
 	name = "Dermagen"
 	description = "Heals scars formed by past physical trauma when applied. Minimum 10u needed. Touch application only."
