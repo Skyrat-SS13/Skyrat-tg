@@ -131,7 +131,7 @@
 
 
 /obj/item/ammo_box/c40sol/pierce
-	name = "ammo box (.40 Sol Short piercing)"
+	name = "ammo box (.40 Sol Long piercing)"
 	desc = "A box of .40 Sol Long rifle rounds, holds thirty bullets. The yellow stripe indicates this should hold armor piercing ammunition."
 
 	icon_state = "40box_pierce"
