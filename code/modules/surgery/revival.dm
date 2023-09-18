@@ -110,7 +110,7 @@
 /datum/surgery_step/revive/proc/on_revived(mob/surgeon, mob/living/patient)
 	patient.visible_message(span_notice("...[patient] wakes up, alive and aware!"))
 	patient.emote("gasp")
-	to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION - BLACKOUT POLICY
+	to_chat(patient, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION - BLACKOUT POLICY
 	if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID) && ishuman(surgeon)) // Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 		var/mob/living/carbon/human/morbid_weirdo = surgeon
 		morbid_weirdo.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
