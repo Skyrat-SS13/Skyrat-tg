@@ -71,6 +71,7 @@
 		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
 	..()
 
+#define DERMAGEN_SCAR_FIX_AMOUNT 10
 /datum/reagent/medicine/dermagen
 	name = "Dermagen"
 	description = "Heals scars formed by past physical trauma when applied. Minimum 10u needed. Touch application only."
@@ -79,7 +80,7 @@
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/medicine/c2/synthflesh/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE)
+/datum/reagent/medicine/dermagen/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE)
 	. = ..()
 	if(!iscarbon(exposed_mob))
 		return
@@ -90,6 +91,8 @@
 		return
 	if(show_message)
 		to_chat(scarred, span_danger("The scars on your body start to fade and disappear."))
-	if(reac_volume >= DERMAGEN_SCAR_FIX_AMOUNT))
-		for(var/i in M.all_scars)
+	if(reac_volume >= DERMAGEN_SCAR_FIX_AMOUNT)
+		for(var/i in scarred.all_scars)
 			qdel(i)
+
+#undef DERMAGEN_SCAR_FIX_AMOUNT
