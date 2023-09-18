@@ -95,35 +95,22 @@
 	target.adjustOxyLoss(-50, 0)
 	target.updatehealth()
 	if(target.revive())
-<<<<<<< HEAD
-		target.visible_message(span_notice("...[target] wakes up, alive and aware!"))
-		target.emote("gasp")
-		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
-		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION - BLACKOUT POLICY
-		if(HAS_MIND_TRAIT(user, TRAIT_MORBID) && ishuman(user)) //Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
-			var/mob/living/carbon/human/morbid_weirdo = user
-			morbid_weirdo.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
-		return TRUE
-	else
-	//SKYRAT EDIT ADDITION - DNR TRAIT - need this so that people dont just keep spamming the revival surgery; it runs success just bc the surgery steps are done
-		if(HAS_TRAIT(target, TRAIT_DNR))
-			target.visible_message(span_warning("...[target.p_they()] lies still, unaffected. Further attempts are futile, they're gone."))
-		else
-			target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
-	//SKYRAT EDIT ADDITION END - DNR TRAIT - ORIGINAL: target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
-		return FALSE
-=======
 		on_revived(user, target)
 		return TRUE
->>>>>>> 25b1203a971 (You can do revival surgery on Ian (#78288))
 
-	target.visible_message(span_warning("...[target.p_they()] convulse[target.p_s()], then lie[target.p_s()] still."))
+	//SKYRAT EDIT CHANGE - DNR TRAIT - need this so that people don't just keep spamming the revival surgery; it runs success just bc the surgery steps are done
+	if(HAS_TRAIT(target, TRAIT_DNR))
+		target.visible_message(span_warning("...[target.p_they()] lie[target.p_s()] still, unaffected. Further attempts are futile, target.p_theyre() gone."))
+	else
+		target.visible_message(span_warning("...[target.p_they()] convulse[target.p_s()], then lie[target.p_s()] still."))
+	//SKYRAT EDIT CHANGE END - DNR TRAIT - ORIGINAL: target.visible_message(span_warning("...[target.p_they()] convulse[target.p_s()], then lie[target.p_s()] still."))
 	return FALSE
 
 /// Called when you have been successfully raised from the dead
 /datum/surgery_step/revive/proc/on_revived(mob/surgeon, mob/living/patient)
 	patient.visible_message(span_notice("...[patient] wakes up, alive and aware!"))
 	patient.emote("gasp")
+	to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION - BLACKOUT POLICY
 	if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID) && ishuman(surgeon)) // Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 		var/mob/living/carbon/human/morbid_weirdo = surgeon
 		morbid_weirdo.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
