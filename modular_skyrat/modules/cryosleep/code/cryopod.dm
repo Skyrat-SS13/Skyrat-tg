@@ -560,7 +560,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	if(use_outfit_name)
 		return initial(outfit.name)
 
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
+/obj/effect/mob_spawn/ghost_role/human/interdyne
 	computer_area = /area/ruin/syndicate_lava_base/dormitories
 
 #undef AHELP_FIRST_MESSAGE

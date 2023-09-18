@@ -56,7 +56,7 @@
 	prompt_name = "a Syndicate prisoner"
 	you_are_text = "You are a syndicate prisoner aboard an unknown ship."
 	flavour_text = "Unaware of where you are, all you know is you are a prisoner. The plastitanium should clue you into who your captors are... as for why you're here? That's for you to know, and for us to find out."
-	important_text = "You are still subject to standard prisoner policy and must Adminhelp before antagonizing DS2."
+	important_text = "You are still subject to standard prisoner policy and must Opfor before antagonizing DS2."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/security/prison
@@ -68,9 +68,9 @@
 	prompt_name = "a Syndicate operative"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	you_are_text = "You are an operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB for reasons that are yours."
-	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base to Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
-	important_text = "You are not an antagonist. Adminhelp before antagonizing station crew."
+	you_are_text = "You are an operative of the a Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB for reasons that are yours."
+	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base to Sector 13 to passively monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
+	important_text = "You are not an antagonist. You must follow the ghost role policy closely, which includes remaining in your z-level and not antagonizing station crew in any way without an Opfor. Lastly, this requires a unique character; you cannot play your station (or Interdyne) character here."
 	outfit = /datum/outfit/ds2/syndicate
 	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/halls
 	spawner_job_path = /datum/job/ds2
@@ -83,7 +83,7 @@
 	icon_state = "sleeper_s"
 	you_are_text = "You are a command operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB to guide it forward in its goals."
 	flavour_text = "The Sothran Syndicate has found it fit to send you to help command the forward operating base in Sector 13. Your orders are commanding the crew of DS-2 while keeping a low profile as well as possible."
-	important_text = "Keep yourself to the same standards as Command Policy. You are not an antagonist and must Adminhelp before antagonizing station crew."
+	important_text = "Follow the ghost role policy and keep yourself to the same standards as command Policy. You are not an antagonist and must Opfor before antagonizing station crew or leaving the z-level."
 	outfit = /datum/outfit/ds2/syndicate_command
 	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/halls
 	spawner_job_path = /datum/job/ds2
@@ -144,7 +144,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/crew
 
 /datum/outfit/syndicatespace/syndicaptain
-	ears = /obj/item/radio/headset/cybersun/captain
+	ears = /obj/item/radio/headset/cybersun/command
 	id_trim = /datum/id_trim/syndicom/skyrat/captain
 
 /datum/outfit/ds2
@@ -173,7 +173,7 @@
 	name = "DS-2 Operative"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	shoes = /obj/item/clothing/shoes/combat
-	ears = /obj/item/radio/headset/interdyne
+	ears = /obj/item/radio/headset/cybersun
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
@@ -254,7 +254,6 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	r_pocket = /obj/item/flashlight/seclite
 	mask = /obj/item/clothing/mask/gas/syndicate
-	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/syndicate)
 	syndicate.faction |= ROLE_SYNDICATE
@@ -265,7 +264,7 @@
 	name = "DS-2 Command Operative"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	shoes = /obj/item/clothing/shoes/combat
-	ears = /obj/item/radio/headset/interdyne/command
+	ears = /obj/item/radio/headset/cybersun/command
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
@@ -584,11 +583,16 @@
 
 //ITEMS//
 /obj/item/radio/headset/cybersun
+	name = "cybersun headset"
+	desc = "A bowman headset with a a pair of red slashes as an ominious insignia. Protects the ears from flashbangs."
+	icon_state = "syndie_headset"
+	inhand_icon_state = null
+	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
 	keyslot = new /obj/item/encryptionkey/headset_syndicate/cybersun
 
-/obj/item/radio/headset/cybersun/captain
-	name = "cybersun captain headset"
-	desc = "The headset of the boss."
+/obj/item/radio/headset/cybersun/command
+	name = "cybersun command headset"
+	desc = "A bowman headset of the boss. Don't let it get to your head, operative."
 	command = TRUE
 
 /obj/item/radio/headset/tarkon
@@ -721,3 +725,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/interdyne, 32)
 	req_one_access = list("tarkon")
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
+
+/obj/machinery/computer/cryopod/cybersun
+	radio = /obj/item/radio/headset/cybersun
+	announcement_channel = RADIO_CHANNEL_CYBERSUN
+	req_one_access = list("syndicate_leader")
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/cybersun, 32)

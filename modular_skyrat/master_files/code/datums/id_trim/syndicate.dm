@@ -88,12 +88,19 @@
 /// Interdyne
 
 /datum/id_trim/syndicom/skyrat/interdyne
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	assignment = "Interdyne Operative"
+	trim_state = "trim_interdyne"
+	department_color = COLOR_VERY_LIGHT_GRAY // self note; experiment. colors in Skyrat-tg/code/__DEFINES/colors.dm
+	subdepartment_color = COLOR_SYNDIE_RED
+	sechud_icon_state = SECHUD_SYNDICATE_INTERDYNE
+	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
 
 /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	assignment = "Deck Officer"
-	trim_state = "trim_deckofficer"
-	department_color = COLOR_COMMAND_BLUE
-	subdepartment_color = COLOR_CARGO_BROWN
-	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER)
+	assignment = "Interdyne Administrator"
+	trim_state = "trim_administrator"
+	sechud_icon_state = SECHUD_SYNDICATE_INTERDYNE_HEAD
+	department_color = COLOR_VERY_LIGHT_GRAY
+	subdepartment_color = COLOR_SYNDIE_RED_HEAD
+	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER, ACCESS_MINERAL_STOREROOM)

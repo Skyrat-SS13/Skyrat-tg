@@ -80,3 +80,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-solfed"
 	dye_color = DYE_CE
+
+/obj/item/stamp/interdyne
+	name = "\improper Interdyne Pharmaceuticals stamp"
+	icon = 'modular_skyrat/master_files/icons/obj/bureaucracy.dmi'
+	icon_state = "stamp-interdyne"
+	dye_color = DYE_SYNDICATE
