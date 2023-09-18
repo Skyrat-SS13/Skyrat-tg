@@ -146,7 +146,8 @@ GLOBAL_VAR(first_officer)
 /obj/item/modular_computer/pda/nri_police
 	name = "\improper NRI police PDA"
 	desc = "A high quality personal data assistant model outfitted with a long-range subspace receivers allowing it to have connection to the local networks regardless of \
-	telecomms availability, as well as an ultraviolet light flashlight for peforming forensics. Standard issue police edition utilised by the NRI police."
+	telecomms availability, as well as a high power 'apparently' ultraviolet light flashlight for peforming forensics. Standard issue police edition utilised by the NRI police."
+	special_desc = "Further examination of its flashlight lens reveals that it's no different than your average one. Freaking cheapskates."
 	device_theme = PDA_THEME_TERMINAL
 	comp_light_luminosity = 6.3 //Matching a flashlight
 	comp_light_color = "#5c20aa" //Simulated ultraviolet light for finding blood and :flushed:
@@ -169,8 +170,8 @@ GLOBAL_VAR(first_officer)
 	assignment = "NRI Field Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri_police"
-	department_color = "#1f3347"
-	subdepartment_color = "#c0c0c0"
+	department_color = COLOR_NRI_POLICE_BLUE
+	subdepartment_color = COLOR_NRI_POLICE_SILVER
 	sechud_icon_state = "hud_nri_police"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
