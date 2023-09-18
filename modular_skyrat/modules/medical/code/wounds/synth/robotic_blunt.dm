@@ -953,6 +953,8 @@
 		chance *= 3
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		chance *= 2
+	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
+		chance *= 2
 
 	var/their_or_other = (user == victim ? "their" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
@@ -1042,12 +1044,12 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 3
+		delay_mult *= 0.5
 	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
 		delay_mult *= 0.5
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		delay_mult *= 0.5
-
+			
 	var/final_time = (base_time * delay_mult)
 	var/misused = (final_time > base_time) // if we damage the limb when we're done
 
