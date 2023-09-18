@@ -121,7 +121,7 @@
 	user_mob.set_combat_mode(FALSE, silent = FALSE)
 
 /datum/keybinding/living/toggle_move_intent
-	hotkey_keys = list("C")
+	hotkey_keys = list("Alt") //SKYRAT EDIT CHANGE - C IS FOR COMBAT INDICATOR - ORIGINAL: hotkey_keys = list("C")
 	name = "toggle_move_intent"
 	full_name = "Hold to toggle move intent"
 	description = "Held down to cycle to the other move intent, release to cycle back"
