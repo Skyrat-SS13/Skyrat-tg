@@ -652,3 +652,105 @@
       menu
   nikothedude:
   - bugfix: Msucle scars no longer cause general disfigurement
+2023-09-18:
+  Majkl-J:
+  - bugfix: laser magazines can now be reloaded correctly
+  SkyratBot:
+  - bugfix: Monkeys have their tails back.
+  - bugfix: Fixed a resource dupe in the ORM.
+  - rscadd: added the inspectors hat to the detectives cabinet, a special hat that
+      allows the wearer to say a phrase to dispense a stored item
+  - rscadd: climbing hooks that allow you to go up holes for multiz, found in internals
+      boxes (on planetary maps), the uplink, cargo and nukie personal lockers
+  - rscadd: A new ruin has appeared on lavaland, featuring the site of an ancient
+      battle.
+  - qol: '[Deltastation, Icebox, Metastation, Tramstation] Adds cell timers to isolation
+      cells. (they do not auto-open the doors)'
+  - qol: '[Birdshot, Deltastation, Icebox, Metastation, Northstar, Tramstation] Adds
+      translator glove modules to the stacks of "accessibility" (e.g. plasma fixation
+      / thermal regulator) modules found in security, medical, and engineering storage
+      rooms.'
+  - qol: '[Birdshot] Adds a roll of packaging paper to the cargo office.'
+  - qol: '[Icebox] Adds a hand labeler to security''s gear room.'
+  - qol: '[Northstar] Nudges the set of binoculars covering the mass driver controls
+      in ordnance over a few inches.'
+  - bugfix: '[Birdshot] Remaps the janitor''s closet such that the recycling machine
+      will now work.'
+  - bugfix: '[Icebox] Removes a duplicated hand labeler from the rack near security''s
+      brig cells.'
+  - bugfix: '[Metastation] Patches a broken corpse disposal pipe running from aux
+      surgery to the morgue.'
+  - bugfix: '[Northstar] Fixes the SM being hotwired at round-start (partially rewires
+      the SM room, moves the APC to the North wall).'
+  - code_imp: added some null checks for general juicing & grinding items
+  - bugfix: grinding stacks now grinds as many pieces/sheets from the stack as possible
+      that can fit in a beaker/container without wasting the whole stack
+  - bugfix: plumbing chemical grinder now actually works again
+  - bugfix: the plumbing chemical grinder allows stuff to enter from any direction
+      but not mobs and also accepts items put inside it via hand including bags
+  - bugfix: You can remove the beaker from the all in 1 grinder when power is off
+      via right click
+  - bugfix: All in 1 grinder now mixes faster with upgraded parts
+  - refactor: you can no longer walk into a plumbing chemical grinder
+  - bugfix: adds a few firelocks and alarms around IceBox
+  - bugfix: the nukie medibot (oppenheimer) has access to the doors of the infiltrator
+      and is not shot at by the turrets
+  - refactor: heretic sacrifice room is now lazyloaded
+  - bugfix: Lipolicide and other chems now puts you in crit, even if it is the only
+      source of damage
+  - bugfix: made the radiation protection crate's contents match it's description
+  - rscadd: Ghosts (observers) can eat ghost burgers and booberry muffins.
+  - balance: Ghost burgers will not decay or pick up germs due to the fact that they
+      moved themselves off a table.
+  - rscadd: NanoTrasen improved the quality of the local durathread strain; resulting
+      in it now being twice as filling!
+  - image: Hercuri spray now uses the same sprite as the yellow medical spray
+  - spellcheck: Added a missing space to hercuri spray's description
+  - bugfix: Manually constructed windoors have correct unrestricted accesses applied
+      to them
+  - bugfix: Windoors created via RCD now actually have electronics inside them
+  - bugfix: Airlocks constructed via RCD have the shell component correctly installed
+      inside them and have no other missing variables
+  - rscadd: Wall mounted objects (Things like APCs, Air Alarms, Light switches, Signs,
+      Posters, Newscasters, you name it) will now fall to the ground and break or
+      deconstruct when their attaching wall is changed or broken.
+  - spellcheck: Fixed some typos on QM's Overcoat
+  - bugfix: Forgetting to take dough out of the oven no longer progresses the server
+      to a crash-worthy state with infinite bread and ash and burned food products
+      for all.
+  - bugfix: Recipe paper in the ruins now shows a normal recipe for Metalgen and Secret
+      sauce.
+  - code_imp: Cleans up some unnecessary code left over from caseless ammo.
+  - qol: the recycler can now be rotated
+  - qol: Machines now transfer their local materials to silo during linking with multitool
+  SpaceLove:
+  - balance: Bluespace Miners have been made cheaper by Nanotrasen as they have found
+      a huge mine of materials recently!
+  TheOneAndOnlyCreeperJoe:
+  - bugfix: Hydra quirk now properly works instead of making you British.
+  Thebleh:
+  - bugfix: Bluespace RPEDs can now be rigged again
+  nikothedude:
+  - rscadd: Several common 'household' reagents can be used as improvised medicine
+      treatment.
+  - rscadd: Drinking tea will help mend (non-bone) wounds over time.
+  - rscadd: Flour and corn starch may be splashed onto wounds to help dry them up,
+      though they'll have a negative effect on burn wounds.
+  - rscadd: Added a new reagent, saltwater, made by combining table salt with water.
+  - rscadd: Table salt and saltwater can be splashed onto wounds as well, reducing
+      bleeding and improving sanitization and disinfection significantly. However,
+      the coarse undiluted salt will irritate the wounds, reducing clot rate and flesh
+      healing, and both of the reagents will increase a burn wound's infestation rate.
+  - rscadd: Altered Table Salt's recipe to just need sodium and chloride. Changed
+      the recipe of Pentetic Acid and Heparin to need table salt (sodium x chloride)
+      and thus slightly altered the total output of those reagents (pentacid went
+      from 5u per reaction to 4u, heparin 4u->3u)
+  - rscadd: Saline-Glucose Solution now needs 2u of saltwater and 1u of sugar, meaning
+      the overall recipe should be completely unchanged in practice. Contact me on
+      discord if any issues arise from these chemical changes!
+  - qol: First aid analyzers now give easy-to-understand direct information, with
+      the specific recommended treatments bolded in the analysis text. They also have
+      a 'unique' extra bit of info, telling you about improvised ways to remedy your
+      wound.
+  tf-4:
+  - bugfix: fixes being able to eat, use pills etc through gas masks and such
