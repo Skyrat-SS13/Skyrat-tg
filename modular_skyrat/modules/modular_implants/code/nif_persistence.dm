@@ -82,12 +82,13 @@
 	new_nif.is_calibrated = persistence.nif_is_calibrated
 	new_nif.rewards_points = persistence.stored_rewards_points
 
-	var/list/persistent_nifsoft_paths = splittext(persistence.persistent_nifsofts, "&")
-	for(var/path as anything in persistent_nifsoft_paths)
-		if(ispath(path))
+	var/list/persistent_nifsoft_paths = list()
+	for(var/text as anything in splittext(persistence.persistent_nifsofts, "&"))
+		var/path = text2path(text)
+		if(!ispath(path))
 			continue
 
-		persistent_nifsoft_paths.Remove(path)
+		persistent_nifsoft_paths.Add(path)
 
 	new_nif.persistent_nifsofts = persistent_nifsoft_paths.Copy()
 	new_nif.Insert(src)
