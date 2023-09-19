@@ -54,8 +54,35 @@
 	if(!reservation)
 		CRASH("Failed to reserve a block for lazy template: '[key]'")
 
+<<<<<<< HEAD
 	if(!loading.load(coords2turf(reservation.bottom_left_coords)))
 		CRASH("Failed to load lazy template: '[key]'")
+=======
+	var/list/loaded_atom_movables = list()
+	var/list/loaded_turfs = list()
+	var/list/loaded_areas = list()
+	for(var/z_idx in parsed_template.parsed_bounds[MAP_MAXZ] to 1 step -1)
+		var/turf/bottom_left = reservation.bottom_left_turfs[z_idx]
+		var/turf/top_right = reservation.top_right_turfs[z_idx]
+		load_map(
+			file(load_path),
+			bottom_left.x,
+			bottom_left.y,
+			bottom_left.z,
+			z_upper = z_idx,
+			z_lower = z_idx,
+		)
+		for(var/turf/turf as anything in block(bottom_left, top_right))
+			loaded_turfs += turf
+			loaded_areas |= get_area(turf)
+			for(var/thing in turf.get_all_contents())
+				// atoms can actually be in the contents of two or more turfs based on its icon/bound size
+				// see https://www.byond.com/docs/ref/index.html#/atom/var/contents
+				loaded_atom_movables |= thing
+
+	SSatoms.InitializeAtoms(loaded_atom_movables + loaded_turfs + loaded_areas)
+	SEND_SIGNAL(src, COMSIG_LAZY_TEMPLATE_LOADED, loaded_atom_movables, loaded_turfs, loaded_areas)
+>>>>>>> 11ec431834d (fixes lazy loading to not be lazy about initializing its children (#78435))
 	reservations += reservation
 
 	return reservation
