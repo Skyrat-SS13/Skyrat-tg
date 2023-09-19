@@ -63,7 +63,7 @@
 				to_chat(affected_mob, span_danger("[pick("You feel uncomfortably hot...", "You feel like unzipping your jumpsuit", "You feel like taking off some clothes...")]"))
 				affected_mob.adjust_bodytemperature(30)
 			if(SPT_PROB(5, seconds_per_tick))
-				affected_mob.vomit(20)
+				affected_mob.vomit(vomit_flags = VOMIT_CATEGORY_DEFAULT, lost_nutrition = 20)
 
 /datum/reagent/cryptococcus_spores
 	name = "Cryptococcus gattii microbes"

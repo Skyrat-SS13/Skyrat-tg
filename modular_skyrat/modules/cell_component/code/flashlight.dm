@@ -18,13 +18,10 @@
 
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
-	if(icon_state == "[initial(icon_state)]-on")
-		turn_on(FALSE)
-	update_brightness()
-	register_context()
+	update_item_action_buttons()
 
 	if(uses_battery)
-		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(turn_off)), _has_cell_overlays = FALSE)
+		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(quietly_turn_off)), _has_cell_overlays = FALSE)
 
 /obj/item/flashlight/examine(mob/user)
 	. = ..()
@@ -55,46 +52,37 @@
 				set_light_power(initial(light_power))
 				to_chat(user, span_notice("You set [src] to low."))
 
-/obj/item/flashlight/proc/toggle_light()
+/obj/item/flashlight/toggle_light(noisy = TRUE)
+	. = ..()
 	if(on)
-		turn_off()
-	else
+		after_turn_on()
 		if(uses_battery && !(item_use_power(power_use_amount, TRUE) & COMPONENT_POWER_SUCCESS))
 			return
-		turn_on(makes_noise_when_lit)
-	playsound(src, on ? sound_on : sound_off, 40, TRUE)
-	return TRUE
-
-/obj/item/flashlight/attack_self(mob/user)
-	. = ..()
-	toggle_light()
+	if(noisy)
+		playsound(src, on ? sound_on : sound_off, 40, TRUE)
 
 /**
  * Handles turning on the flashlight.
  * Parameters:
  * * noisy - Boolean on whether the flashlight should make an additional noise from being turned on or not. Defaults to TRUE.
  */
-/obj/item/flashlight/proc/turn_on(noisy = TRUE)
-	on = TRUE
-	if (uses_battery)
+/obj/item/flashlight/proc/after_turn_on(noisy = TRUE)
+	if(uses_battery)
 		START_PROCESSING(SSobj, src)
-	update_brightness()
 	if(noisy)
 		playsound(src, 'modular_skyrat/master_files/sound/effects/flashlight.ogg', 40, TRUE) //Credits to ERIS for the sound
-	update_item_action_buttons()
 
-/// Handles turning off the flashlight.
-/obj/item/flashlight/proc/turn_off()
-	on = FALSE
-	update_brightness()
-	update_item_action_buttons()
+/// Quietly turns the flashlight off if it was on (called by the battery running out of charge).
+/obj/item/flashlight/proc/quietly_turn_off()
+	if(on)
+		toggle_light(noisy = FALSE)
 
 /obj/item/flashlight/process(seconds_per_tick)
 	if(!on)
 		STOP_PROCESSING(SSobj, src)
 		return
 	if(uses_battery && !(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
-		turn_off()
+		quietly_turn_off()
 
 /obj/item/flashlight/update_icon_state()
 	. = ..()
