@@ -18,6 +18,11 @@
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(switched_off)))
 
+/obj/item/weldingtool/electric/no_cell/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cell, start_with_cell = FALSE)
+	cut_overlays()
+
 /obj/item/weldingtool/electric/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!powered)
@@ -92,6 +97,6 @@
 	id = "exwelder"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2)
-	build_path = /obj/item/weldingtool/electric
+	build_path = /obj/item/weldingtool/electric/no_cell
 	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
