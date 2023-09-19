@@ -209,6 +209,21 @@
 		else
 			return TRUE
 
+/// Returns true if the human has accessible tail for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
+/mob/living/carbon/human/proc/has_tail(required_state = REQUIRE_GENITAL_ANY)
+	var/obj/item/organ/genital = get_organ_slot(ORGAN_SLOT_TAIL)
+	if(!genital)
+		return FALSE
+
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ORGAN_SLOT_TAIL)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return get_item_by_slot(ORGAN_SLOT_TAIL)
+		else
+			return TRUE
 
 /*
 *	This code needed for changing character's gender by chems
@@ -363,3 +378,7 @@
 	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return FALSE
 	..()
+
+/// Checks if the tail is exposed.
+/obj/item/organ/external/tail/proc/is_exposed()
+	return TRUE // your tail is always exposed, dummy! why are you checking this

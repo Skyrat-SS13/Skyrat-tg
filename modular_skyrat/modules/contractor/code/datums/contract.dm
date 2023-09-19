@@ -213,9 +213,9 @@
 
 	for(var/i in 1 to 2)
 		var/obj/item/bodypart/limb = target.get_bodypart(pick_n_take(parts_to_fuck_up))
-		var/datum/wound/blunt/bone/severe/severe_wound_type = /datum/wound/blunt/bone/severe
-		var/datum/wound/blunt/bone/critical/critical_wound_type = /datum/wound/blunt/bone/critical
-		limb.receive_damage(brute = WOUND_MINIMUM_DAMAGE, wound_bonus = rand(initial(severe_wound_type.threshold_minimum), initial(critical_wound_type.threshold_minimum) + 10))
+		var/min_wound = limb.get_wound_threshold_of_wound_type(WOUND_BLUNT, WOUND_SEVERITY_SEVERE, return_value_if_no_wound = 40)
+		var/max_wound = limb.get_wound_threshold_of_wound_type(WOUND_BLUNT, WOUND_SEVERITY_CRITICAL, return_value_if_no_wound = 60)
+		limb.receive_damage(brute = WOUND_MINIMUM_DAMAGE, wound_bonus = rand(min_wound, max_wound))
 		target.update_damage_overlays()
 
 	addtimer(CALLBACK(src, PROC_REF(victim_stage_three), target), 6 SECONDS)
