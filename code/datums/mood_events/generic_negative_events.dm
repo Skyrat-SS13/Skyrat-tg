@@ -48,7 +48,11 @@
 	timeout = 4 MINUTES
 
 /datum/mood_event/cascade // Big boi delamination
+<<<<<<< HEAD
 	description = "I never thought I'd see a resonance cascade, let alone be near one..."
+=======
+	description = "I never thought I'd see a resonance cascade, let alone experience one..."
+>>>>>>> d911224c421 ([NO GBP] Unreverts resonance cascade message and applies Jacquerel's suggestion (#78442))
 	mood_change = -8
 	timeout = 5 MINUTES
 
