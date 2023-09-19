@@ -23,6 +23,7 @@
 /datum/outfit/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
+	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
