@@ -26,13 +26,13 @@
 	icon_state = "secure_bunker"
 
 // NT Consultant area
-/area/station/command/heads_quarters/captain/private/nt_rep
+/area/station/command/heads_quarters/nt_rep
 	name = "Nanotrasen Consultant's Office"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "nt_rep"
 
 // Blueshield area
-/area/station/command/blueshield
+/area/station/command/heads_quarters/blueshield
 	name = "Blueshield's Office"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "blueshield"
