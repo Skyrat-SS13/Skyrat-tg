@@ -17,6 +17,7 @@ Various changes to the medical system, from adding bandage overlays, to new woun
 
 - code/_DEFINES/wounds.dm: Added muscle/synth wound series, added them to the global list of wound series
 - cat2_medicine_reagents.dm: /datum/reagent/medicine/c2/hercuri/on_mob_life, Allowed hercuri to affect synthetics, also changed hercuri process flags for this purpose
+- quirks.dm: Commented out the quadruple_amputee/frail blacklist as frail can now apply to prosthetics
 <!-- If you edited any core procs, you should list them here. You should specify the files and procs you changed.
 E.g: 
 - `code/modules/mob/living.dm`: `proc/overriden_proc`, `var/overriden_var`
