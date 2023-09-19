@@ -45,6 +45,8 @@
 			"active_cost" = nifsoft.active_cost,
 			"reference" = REF(nifsoft),
 			"ui_icon" = nifsoft.ui_icon,
+			"able_to_keep" = nifsoft.able_to_keep,
+			"keep_installed" = nifsoft.keep_installed,
 		)
 		data["loaded_nifsofts"] += list(nifsoft_data)
 
@@ -126,3 +128,11 @@
 				return FALSE
 
 			activated_nifsoft.activate()
+
+		if("toggle_keeping_nifsoft")
+			var/datum/nifsoft/nifsoft_to_keep = locate(params["nifsoft_to_keep"]) in loaded_nifsofts
+			if(!nifsoft_to_keep || !nifsoft_to_keep.able_to_keep)
+				return FALSE
+
+			nifsoft_to_keep.keep_installed = !nifsoft_to_keep.keep_installed
+			update_static_data_for_all_viewers()

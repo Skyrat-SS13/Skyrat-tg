@@ -110,6 +110,29 @@ export const NifPanel = (props, context) => {
                         <BlockQuote preserveWhitespace>
                           {nifsoft.desc}
                         </BlockQuote>
+                        {nifsoft.able_to_keep ? (
+                          <box>
+                            <br />
+                            <Button
+                              icon="floppy-disk"
+                              content={
+                                nifsoft.keep_installed
+                                  ? 'The NIFSoft will stay saved'
+                                  : "The NIFSoft won't stay saved"
+                              }
+                              color={nifsoft.keep_installed ? 'green' : 'red'}
+                              fluid
+                              tooltip="Toggle if the NIFSoft will stay saved between shifts"
+                              onClick={() =>
+                                act('toggle_keeping_nifsoft', {
+                                  nifsoft_to_keep: nifsoft.reference,
+                                })
+                              }
+                            />
+                          </box>
+                        ) : (
+                          <> </>
+                        )}
                         <box>
                           <br />
                           <Button.Confirm

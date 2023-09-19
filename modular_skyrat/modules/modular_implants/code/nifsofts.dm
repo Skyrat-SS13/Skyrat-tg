@@ -47,6 +47,10 @@
 	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
+	/// Is the NIFSoft something that we want to allow the user to keep?
+	var/able_to_keep = FALSE
+	/// Are we keeping the NIFSoft installed between rounds? This is decided by the user
+	var/keep_installed = FALSE
 	///Is it a lewd item?
 	var/lewd_nifsoft = FALSE
 
