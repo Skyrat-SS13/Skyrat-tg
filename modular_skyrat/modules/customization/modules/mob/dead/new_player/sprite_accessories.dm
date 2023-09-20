@@ -206,6 +206,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+
 /datum/sprite_accessory/socks/socks_norm
 	name = "Normal (Greyscale)"
 	icon_state = "white_norm"
@@ -825,7 +826,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/babydoll
-	name = "Baby-Doll"
+	name = "Babydoll"
 	icon_state = "babydoll"
 	gender = FEMALE
 	use_static = null
