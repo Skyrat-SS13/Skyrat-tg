@@ -805,3 +805,40 @@
       instead of none (normal survival rules)
   - bugfix: End report screen will properly report hardcore random survival in case
       of station destruction
+2023-09-20:
+  LT3:
+  - rscadd: 'New random event: Supermatter Surge'
+  - refactor: It's different than the Supermatter Surge you're used to
+  - refactor: 'The scale is now 1: low severity to 4: most severe. Keep that in mind!'
+  - rscdel: Removed Skyrat version of Supermatter Surge
+  - code_imp: Individual supermatter crystals can have custom gas properties
+  SkyratBot:
+  - image: resprites t-ray scanner, gas analyzer, geiger counter and hand drill.
+  - qol: Surgery trays can now be crafted via the crafting menu (two rods, one silver),
+      and deconstructed via secondary click with a screwdriver!
+  - spellcheck: Unreverted and improved resonance cascade message.
+  - qol: Crafting R&D guns from gun kits no longer requires tools or cable coil. The
+      decloner and energy crossbow still need reagents.
+  - qol: Halved R&D gun crafting time. 20->10 seconds.
+  - bugfix: Fixed Mafia achievements
+  - balance: Unholy and Eldritch water are self-consuming like holy water! They don't
+      need a liver to be processed.
+  - bugfix: Fixes a selection window in the game rock-paper-scissors with death.
+  - bugfix: fixes inedible grown items (such as tower caps) becoming unclickable when
+      harvested, fixes their seeds disappearing when inserted into the seed machine
+  - refactor: Refactors the camera console UI.
+  - rscadd: heretic knock path and its respective items and award
+  - bugfix: Lava can no longer occasionally generate inside of previously loaded templates
+      and breach and/or destroy shit
+  - qol: mice and rats now are visually spaced out from eachother for visual clarity
+  - balance: Supermatter now takes 15 seconds to delaminate normally and 5 if a sliver
+      has been taken from it. Gives a little more time to escape in the case of the
+      sliver and also evens out the times to please perfectionists.
+  - bugfix: Supermatter now accurately reports it's detonation time.
+  - spellcheck: Supermatter mood descriptions have been reverted back to their old,
+      more flavorful selves.
+  Zergspower:
+  - qol: reworks the verb panel to be less of a CVS receipt
+  vinylspiders:
+  - bugfix: removed a deprecated loadout item 'Black Two-Piece Suit' which had an
+      invalid item path. The old item has been replaced with 'Black Suit'.
