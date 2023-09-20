@@ -188,7 +188,7 @@
 	new /obj/item/gun/ballistic/automatic/tommygun(src)
 	new /obj/item/ammo_box/magazine/tommygunm45(src)
 	new /obj/item/clothing/suit/jacket/det_suit/noir/mafioso(src)
-	new /obj/item/clothing/under/suit/blacktwopiece/armoured(src)
+	new /obj/item/clothing/under/suit/black/armoured(src)
 	new /obj/item/clothing/mask/fakemoustache/italian(src)
 	new /obj/item/switchblade(src)
 	new /obj/item/clothing/shoes/laceup(src)

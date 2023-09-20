@@ -1,4 +1,3 @@
-#define DELAM_MACHINE_POWER_CONSUMPTION 375
 #define SM_PREVENT_EXPLOSION_THRESHOLD 100
 #define SM_COOLING_MIXTURE_MOLES 64000
 #define SM_COOLING_MIXTURE_TEMP 120
@@ -18,8 +17,9 @@
 #define SHATTER_FLASH_RANGE 5
 #define SHATTER_MIN_TIME 13 SECONDS
 #define SHATTER_MAX_TIME 15 SECONDS
-#define POWER_CUT_MIN_DURATION 19 SECONDS
-#define POWER_CUT_MAX_DURATION 21 SECONDS
+#define EVAC_WARNING_TIMER 3 SECONDS
+#define POWER_CUT_MIN_DURATION_SECONDS 19
+#define POWER_CUT_MAX_DURATION_SECONDS 21
 #define AIR_INJECT_RATE 33
 #define BUTTON_SOUND_RANGE 7
 #define BUTTON_SOUND_FALLOFF_DISTANCE 7
@@ -176,11 +176,12 @@
 			notify_volume = 75,
 		)
 
-	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING IN 5 SECONDS. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
+	radio.talk_into(src, "DELAMINATION SUPPRESSION SYSTEM FIRING. EVACUATE THE SUPERMATTER ENGINE ROOM!", emergency_channel)
 
 	// fight power with power
-	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 5 SECONDS)
-	INVOKE_ASYNC(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, suck_light_power))
+	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), EVAC_WARNING_TIMER)
+	playsound(src, 'sound/misc/bloblarm.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
+	power_fail((EVAC_WARNING_TIMER / 10) + POWER_CUT_MAX_DURATION_SECONDS, (EVAC_WARNING_TIMER / 10) + POWER_CUT_MAX_DURATION_SECONDS)
 
 /// Stop the delamination. Let the fireworks begin
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()
@@ -190,7 +191,6 @@
 
 	// Fire bell close, that nice 'are we gonna die?' rumble out far
 	on = TRUE
-	playsound(src, 'sound/machines/hypertorus/HFR_critical_explosion.ogg', 100, FALSE, MACHINE_RUMBLE_SOUND_RANGE, ignore_walls = TRUE, use_reverb = TRUE, falloff_distance = MACHINE_SOUND_FALLOFF_DISTANCE)
 	alert_sound_to_playing('sound/misc/earth_rumble_distant3.ogg', override_volume = TRUE)
 	update_appearance()
 
@@ -217,10 +217,7 @@
 		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, shatter_window)), rand(SHATTER_MIN_TIME, SHATTER_MAX_TIME))
 
 	// Let the gas work for a few seconds to cool the crystal. If it has damage beyond repair, heal it a bit
-	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 9 SECONDS)
-
-	// Restore the power that we were 'channelling' to the SM
-	addtimer(CALLBACK(SSnightshift, TYPE_PROC_REF(/datum/controller/subsystem/nightshift, restore_light_power)), rand(POWER_CUT_MIN_DURATION, POWER_CUT_MAX_DURATION))
+	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 7 SECONDS)
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()
@@ -261,24 +258,6 @@
 	delam_juice.temperature = SM_COOLING_MIXTURE_TEMP
 	airs[1] = delam_juice
 
-/// Dims the lights and consumes a bit of APC power, summoning that electricity to stop the delam... somehow
-/datum/controller/subsystem/nightshift/proc/suck_light_power()
-	SSnightshift.can_fire = FALSE
-	for(var/obj/machinery/power/apc/light_to_suck as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
-		light_to_suck.cell.charge -= DELAM_MACHINE_POWER_CONSUMPTION
-		light_to_suck.lighting = APC_CHANNEL_OFF
-		light_to_suck.nightshift_lights = TRUE
-		light_to_suck.update_appearance()
-		light_to_suck.update()
-
-/// Restores the lighting after the delam suppression
-/datum/controller/subsystem/nightshift/proc/restore_light_power()
-	SSnightshift.can_fire = TRUE
-	for(var/obj/machinery/power/apc/light_to_restore as anything in SSmachines.get_machines_by_type(/obj/machinery/power/apc))
-		light_to_restore.lighting = APC_CHANNEL_AUTO_ON
-		light_to_restore.update_appearance()
-		light_to_restore.update()
-
 /// A big red button you can smash to stop the supermatter engine, oh how tempting!
 /obj/machinery/button/delam_scram
 	name = "\improper supermatter emergency stop button"
@@ -289,6 +268,7 @@
 	can_alter_skin = FALSE
 	silicon_access_disabled = TRUE
 	resistance_flags = FREEZE_PROOF | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	use_power = NO_POWER_USE
 	light_color = LIGHT_COLOR_INTENSE_RED
 	light_power = 0.7
 	///one use only!
@@ -319,7 +299,6 @@
 /// Proc for arming the red button, it hasn't been pushed yet
 /obj/machinery/button/delam_scram/attack_hand(mob/user, list/modifiers)
 	. = ..()
-
 	if((machine_stat & BROKEN))
 		return
 
@@ -338,8 +317,8 @@
 
 	// Give them a cheeky instructions card. But only one! If you lost it, question your engineering prowess in this moment
 	if(button_stage == BUTTON_IDLE)
-		visible_message(span_danger("A biscuit card falls out of [src]!"))
-		user.put_in_hands(new /obj/item/folder/biscuit/confidential/delam(get_turf(user)))
+		visible_message(span_danger("A plastic card falls out of [src]!"))
+		user.put_in_hands(new /obj/item/paper/paperslip/corporate/fluff/delam_procedure(get_turf(user)))
 		button_stage = BUTTON_AWAKE
 		return
 
@@ -424,32 +403,69 @@
 	active = FALSE
 	update_appearance()
 
-/obj/item/folder/biscuit/confidential/delam
-	name = "NT-approved delam emergency procedure"
-	contained_slip = /obj/item/paper/paperslip/corporate/fluff/delam_procedure
-	layer = SIGN_LAYER
-
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/Initialize(mapload)
-	name = "delam emergency procedure"
+	name = "NT-approved delam emergency procedure"
 	desc = "Now you're a REAL engineer!"
-	default_raw_text = "<b>EMERGENCY PROCEDURE: SUPERMATTER DELAMINATION</b><br><br>\
-		<b>So you've found yourself in a bit of a pickle with a delamination of a supermatter reactor.<br>Don't worry, saving the day is just a few steps away!</b><br><br>\
-		- Locate the ever-elusive red emergency stop button. It's probably hiding in plain sight, so take your time, have a laugh, and enjoy the anticipation. Remember, it's like a treasure hunt, only with the added bonus of preventing a nuclear disaster.<br><br>\
-		- Once you've uncovered the button, muster all your courage and push it like there's no tomorrow. Well, actually, you're pushing it to ensure there is a tomorrow. But hey, who doesn't love a little paradoxical button-pushing?<br><br>\
-		- Prepare for the impending suppression of the supermatter engine room, because things are about to get real quiet. Just make sure everyone has evacuated, or else they'll be in for a surprise. The system needs its space, and it's not known for being the friendliest neighbour.<br><br>\
-		- After the delamination is successfully suppressed, take a moment to appreciate the delicate beauty of crystal-based electricity. Take a look around and fix any damage to those fragile glass components. Feel free to put on your finest overalls and channel your inner engiborg while doing so.<br><br>\
-		- Keep an eye out for fires and the infamous air mix. It's always an adventure trying to strike the perfect balance between breathable air and potential suffocation. Remember, oxygen plus a spark equals fireworks – the kind you definitely don't want inside a reactor.<br><br>\
-		- To avoid singeing your eyebrows off, consider enlisting the help of a synth or a trusty borg. After all, nothing says \"safety first\" like outsourcing your firefighting to non-living, non-breathing assistants.<br><br>\
-		- Clear out any lightly radioactive debris (The cargo department will probably love to dispose it for you.)<br><br>\
-		- Finally, revel in the satisfaction of knowing that you've single-handedly prevented a delamination. But, of course, don't forget to feel guilty because SAFETY MOTH Knows. SAFETY MOTH knows everything. It's always watching, judging, and probably taking notes for its next safety briefing. So bask in the glory of your heroism, but know that the all-knowing Moff is onto you.<br><br>\
-		<b>(Optional step, for the true daredevils out there)</b><br><br>\
-		- When it comes time for your second attempt at starting the SM: Fold these instructions into a paper plane, give it a good toss towards the crystal, and watch it soar through the air. Because nothing says \"I'm dealing with a potentially catastrophic situation\" like engaging in some whimsical paper airplane shenanigans.<br><br>\
-		<b>Hopefully you'll never need to use this. However, good luck!</b>"
+	return ..()
+
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/examine(mob/user)
+	. = ..()
+	ui_interact(user)
+
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(burn_paper_product_attackby_check(attacking_item, user))
+		SStgui.close_uis(src)
+		return
+
+	// Enable picking paper up by clicking on it with the clipboard or folder
+	if(istype(attacking_item, /obj/item/clipboard) || istype(attacking_item, /obj/item/folder) || istype(attacking_item, /obj/item/paper_bin))
+		attacking_item.attackby(src, user)
+		return
+
+	ui_interact(user)
+	return ..()
+
+/obj/item/paper/paperslip/corporate/fluff/delam_procedure/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DelamProcedure")
+		ui.autoupdate = FALSE
+		ui.open()
+
+/obj/structure/sign/delam_procedure
+	name = "Safety Moth - Delamination Emergency Procedure"
+	desc = "This informational sign uses Safety Moth™ to tell the viewer how to use the emergency stop button if the Supermatter Crystal is delaminating."
+	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
+	icon_state = "moff-poster"
+	pixel_y = 4
+	armor_type = /datum/armor/sign_delam
+	anchored = TRUE
+
+/datum/armor/sign_delam
+	melee = 60
+	acid = 70
+	fire = 90
+
+/obj/structure/sign/delam_procedure/examine(mob/user)
+	. = ..()
+	ui_interact(user)
+
+/obj/structure/sign/delam_procedure/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DelamProcedure")
+		ui.autoupdate = FALSE
+		ui.open()
+
+/obj/structure/sign/delam_procedure/ui_status(mob/user)
+	if(user.is_blind())
+		return UI_CLOSE
+
 	return ..()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_scram, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/delam_procedure, 32)
 
-#undef DELAM_MACHINE_POWER_CONSUMPTION
 #undef DAMAGED_SUPERMATTER_COLOR
 #undef SM_PREVENT_EXPLOSION_THRESHOLD
 #undef SM_COOLING_MIXTURE_MOLES
@@ -469,8 +485,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/atmospherics/components/unary/delam_s
 #undef SHATTER_FLASH_RANGE
 #undef SHATTER_MIN_TIME
 #undef SHATTER_MAX_TIME
-#undef POWER_CUT_MIN_DURATION
-#undef POWER_CUT_MAX_DURATION
+#undef EVAC_WARNING_TIMER
+#undef POWER_CUT_MIN_DURATION_SECONDS
+#undef POWER_CUT_MAX_DURATION_SECONDS
 #undef AIR_INJECT_RATE
 #undef BUTTON_SOUND_RANGE
 #undef BUTTON_SOUND_FALLOFF_DISTANCE
