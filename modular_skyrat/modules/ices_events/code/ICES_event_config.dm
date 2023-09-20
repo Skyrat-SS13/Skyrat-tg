@@ -576,7 +576,7 @@
  * Supermatter Surge
  */
 /datum/round_event_control/supermatter_surge
-	max_occurrences = 2
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
