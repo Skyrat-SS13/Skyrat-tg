@@ -570,3 +570,8 @@
 /area/station/maintenance/eva_shed/starboard
 	name = "Starboard EVA Shed"
 	icon_state = "eva_shed_sb"
+
+// Department Rooms
+/area/station/science/xenobiology/control
+	name = "\improper Xenobiology Control Room"
+	icon_state = "xenobio"
