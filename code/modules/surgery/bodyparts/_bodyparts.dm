@@ -1388,20 +1388,12 @@
 	if(. & EMP_PROTECT_WIRES || !IS_ROBOTIC_LIMB(src))
 		return FALSE
 
-<<<<<<< HEAD
-	// with defines at the time of writing, this is 3 brute and 2 burn
-	// 3 + 2 = 5, with 6 limbs thats 30, on a heavy 60
-	// 60 * 0.8 = 48
-	var/time_needed = 10 SECONDS
-
-=======
 	// with defines at the time of writing, this is 2 brute and 1.5 burn
 	// 2 + 1.5 = 3,5, with 6 limbs thats 21, on a heavy 42
 	// 42 * 0.8 = 33.6
 	// 3 hits to crit with an ion rifle on someone fully augged at a total of 100.8 damage, although im p sure mood can boost max hp above 100
 	// dont forget emps pierce armor, debilitate augs, and usually comes with splash damage e.g. ion rifles or grenades
 	var/time_needed = AUGGED_LIMB_EMP_PARALYZE_TIME
->>>>>>> e742c5e742f (Nerfs EMP effect on synthetic limbs/organs (#78373))
 	var/brute_damage = AUGGED_LIMB_EMP_BRUTE_DAMAGE
 	var/burn_damage = AUGGED_LIMB_EMP_BURN_DAMAGE
 	if(severity == EMP_HEAVY)
