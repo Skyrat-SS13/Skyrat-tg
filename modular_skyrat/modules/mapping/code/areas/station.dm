@@ -222,6 +222,22 @@
 	name = "\improper Vacant Dorms Room"
 	icon_state = "vacant_room"
 
+/area/station/common/wrestling/beverage
+	name = "\improper Arena Beverage Stand"
+	icon_state = "wrestle_maint"
+
+/area/station/common/wrestling/concessions
+	name = "\improper Arena Concessions Stand"
+	icon_state = "wrestle_maint"
+
+/area/station/common/pool/sauna
+	name = "\improper Pool Sauna"
+	icon_state = "pool"
+
+/area/station/service/barber/spa
+	name = "\improper Spa"
+	icon_state = "barber"
+
 /*
 * Department/Generic maintenance areas
 */
