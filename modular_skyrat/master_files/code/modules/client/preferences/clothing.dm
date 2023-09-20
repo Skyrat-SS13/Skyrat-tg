@@ -82,11 +82,3 @@
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
 	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
-
-/datum/preference/choiced/bra/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
-	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
