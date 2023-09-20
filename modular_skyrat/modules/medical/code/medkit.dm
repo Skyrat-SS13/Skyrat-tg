@@ -173,3 +173,6 @@
 
 	new /obj/item/stack/medical/bone_gel(src)
 	new /obj/item/plunger/reinforced(src)
+
+/obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/unzipped
+	zipped_up = FALSE
