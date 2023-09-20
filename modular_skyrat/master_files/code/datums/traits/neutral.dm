@@ -62,7 +62,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 
 	if(HAS_TRAIT(src, TRAIT_DNR))
 		set_hud_image_active(DNR_HUD)
-		dnr_holder.icon_state = "hudDNR"
+		dnr_holder.icon_state = "hud_dnr"
 	else
 		set_hud_image_inactive(DNR_HUD)
 
