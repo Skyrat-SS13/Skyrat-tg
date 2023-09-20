@@ -484,7 +484,7 @@
 
 
 ///Calculates the siemens coeff based on clothing and species, can also restart hearts.
-// SKYRAT EDIT BEGIN - Put a update from upstream (extra args, extra flags) down here early - let it overwrite 9/17/23, 3:25PM EST ~Niko
+// SKYRAT EDIT BEGIN - Put a update (#78374) from upstream (extra args, extra flags) down here early - let it overwrite 9/17/23, 3:25PM EST ~Niko
 /mob/living/carbon/human/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE, jitter_time = 20 SECONDS, stutter_time = 4 SECONDS, stun_duration = 4 SECONDS)
 	//Calculates the siemens coeff based on clothing. Completely ignores the arguments
 	if(flags & SHOCK_TESLA) //I hate this entire block. This gets the siemens_coeff for tesla shocks

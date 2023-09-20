@@ -124,9 +124,9 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 /// Generic loss wounds. See loss.dm
 #define WOUND_SERIES_LOSS_BASIC "wound_series_loss_basic"
 
-// SKYRAT EDIT ADDITION BEGIN - MUSCLE WOUNDS
+// SKYRAT EDIT ADDITION BEGIN - MUSCLE AND SYNTH WOUNDS
 // Have to put it here so I can use it in the global list of wound series
-/// See muscle.dm
+/// See muscle.dm and robotic_blunt.dm
 #define WOUND_SERIES_MUSCLE_DAMAGE "skyrat_wound_series_muscle_damage"
 
 #define WOUND_SERIES_METAL_BLUNT_BASIC "wound_series_metal_blunt_basic"
