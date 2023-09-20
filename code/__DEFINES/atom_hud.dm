@@ -46,7 +46,7 @@
 /// Mech camera HUD
 #define DIAG_CAMERA_HUD "22"
 
-// SKYRAT EDIT ADDITION BEGIN - gun permits
+// SKYRAT EDIT ADDITION BEGIN - gun permits and DNR
 /// ammo of guns
 #define AMMO_HUD "25"
 /// if they have a gun permit
