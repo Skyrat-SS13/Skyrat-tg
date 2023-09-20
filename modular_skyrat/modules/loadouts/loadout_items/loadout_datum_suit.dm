@@ -295,9 +295,41 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Red cloak"
 	item_path = /obj/item/clothing/suit/hooded/cloak/david
 
+/datum/loadout_item/suit/wellwornshirt
+	name = "Well-worn Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt
+
+/datum/loadout_item/suit/wellworn_graphicshirt
+	name = "Well-worn Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic
+
 /datum/loadout_item/suit/ianshirt
-	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/costume/ianshirt
+	name = "Well-worn Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic/ian
+
+/datum/loadout_item/suit/wornoutshirt
+	name = "Worn-out Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout
+
+/datum/loadout_item/suit/wornout_graphicshirt
+	name = "Worn-out graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic
+
+/datum/loadout_item/suit/wornout_ianshirt
+	name = "Worn-out Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic/ian
+
+/datum/loadout_item/suit/messyshirt
+	name = "Messy Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy
+
+/datum/loadout_item/suit/messy_graphicshirt
+	name = "Messy Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic
+
+/datum/loadout_item/suit/messy_ianshirt
+	name = "Messy Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/ian
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
@@ -606,11 +638,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/supply_jacket
 	name = "Supply Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
-
-/datum/loadout_item/suit/supply_gorka_jacket
-	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka/supply
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/suit/cargo_gorka_jacket
