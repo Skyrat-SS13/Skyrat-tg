@@ -142,21 +142,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Returns a total of the current number of souls inside of all of the occupied soulcatcher rooms.
-/datum/component/soulcatcher/proc/get_soul_count()
-	var/current_soul_count = 0
+/// Returns a list containing all of the souls currently present within a soulcatcher.
+/datum/component/soulcatcher/proc/get_current_souls()
+	var/list/current_souls = list()
 	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
 		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
-			current_soul_count += 1
+			current_souls += soulcatcher_soul
 
-	return current_soul_count
+	return current_souls
 
 /// Checks the total number of souls present and compares it with `max_souls` returns `TRUE` if there is room (or no limit), otherwise returns `FALSE`
 /datum/component/soulcatcher/proc/check_for_vacancy()
 	if(!max_souls)
 		return TRUE
 
-	if(get_soul_count() >= max_souls)
+	if(length(get_current_souls()) >= max_souls)
 		return FALSE
 
 	return TRUE

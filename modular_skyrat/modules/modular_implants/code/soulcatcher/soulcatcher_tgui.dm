@@ -14,7 +14,7 @@
 	data["ghost_joinable"] = ghost_joinable
 	data["require_approval"] = require_approval
 	data["communicate_as_parent"] = communicate_as_parent
-	data["current_soul_count"] = get_soul_count()
+	data["current_soul_count"] = length(get_current_souls())
 	data["max_souls"] = max_souls
 	data["removable"] = removable
 
@@ -239,7 +239,7 @@
 			return TRUE
 
 		if("delete_self")
-			if(tgui_alert(usr, "Are you sure you want to detatch the soulcatcher? This will boot any souls out.", parent, list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Are you sure you want to detatch the soulcatcher?", parent, list("Yes", "No")) != "Yes")
 				return FALSE
 
 			remove_self()
