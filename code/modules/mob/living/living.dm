@@ -24,7 +24,6 @@
 /mob/living/proc/prepare_data_huds()
 	med_hud_set_health()
 	med_hud_set_status()
-
 	update_dnr_hud() // SKYRAT EDIT ADDITION - DNR HUD
 
 /mob/living/Destroy()
