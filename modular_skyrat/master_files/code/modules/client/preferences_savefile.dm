@@ -170,11 +170,11 @@
 	if(current_version < VERSION_UNDERSHIRT_BRA_SPLIT)
 		var/static/list/underwear_to_underwear_bra = list(
 			"Panties" = list("Panties - Basic", null), // Just a rename
-			"Bikini" = list("Panties - Basic", "Bra"),
+			"Bikini" = list("Panties - Slim", "Bra"),
 			"Lace Bikini" = list("Panties - Thin", "Bra - Thin"),
 			"Bralette w/ Boyshorts" = list("Boyshorts (Alt)", "Bra, Sports"),
 			"Sports Bra w/ Boyshorts" = list("Boyshorts", "Bra, Sports - Alt"),
-			"Strapless Bikini" = list("Panties - Basic", "Strapless Swimsuit Top (Alt)"),
+			"Strapless Bikini" = list("Panties - Slim", "Strapless Swimsuit Top (Alt)"),
 			"Babydoll" = list("Thong - Alt", null), // Got moved to an undershirt, actual underwear part is now a thong.
 			"Two-Piece Swimsuit" = list("Panties - Swimsuit", "Swimsuit Top"),
 			"Strapless Two-Piece Swimsuit" = list("Panties - Swimsuit", "Strapless Swimsuit Top"),
