@@ -263,7 +263,11 @@ SUBSYSTEM_DEF(player_ranks)
 	var/is_admin_client = istype(admin, /client)
 	var/client/admin_client = is_admin_client ? admin : null
 	// If it's not a client, then it should be an admins datum.
-	var/datum/admins/admin_holder = is_admin_client ? admin_client?.holder : (istype(admin, /datum/admins) ? admin : null)
+	var/datum/admins/admin_holder = null
+	if(is_admin_client)
+		admin_holder = admin_client?.holder
+	else if(istype(admin, /datum/admins))
+		admin_holder = admin
 
 	if(!admin_holder)
 		return FALSE
@@ -348,7 +352,11 @@ SUBSYSTEM_DEF(player_ranks)
 	var/is_admin_client = istype(admin, /client)
 	var/client/admin_client = is_admin_client ? admin : null
 	// If it's not a client, then it should be an admins datum.
-	var/datum/admins/admin_holder = is_admin_client ? admin_client?.holder : (istype(admin, /datum/admins) ? admin : null)
+	var/datum/admins/admin_holder = null
+	if(is_admin_client)
+		admin_holder = admin_client?.holder
+	else if(istype(admin, /datum/admins))
+		admin_holder = admin
 
 	if(!admin_holder)
 		return FALSE
