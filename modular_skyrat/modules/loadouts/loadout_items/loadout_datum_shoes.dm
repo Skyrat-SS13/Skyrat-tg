@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 	restricted_roles = list(JOB_CLOWN)
 
-/datum/loadout_item/shoes/rcm
+/datum/loadout_item/shoes/imperial_police_half_boots
 	name = "Imperial Police Half-Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/colonial
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE)
