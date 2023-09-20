@@ -241,6 +241,7 @@
 			"Shibari Sleeves" = "Shibari Sleeves",
 			"Binder" = "Binder",
 			"Binder - Strapless" = "Binder - Strapless",
+			"Safekini" = "Safekini",
 		)
 
 		var/migrated_bra_from_undershirt = undershirt_to_bra[current_undershirt]
