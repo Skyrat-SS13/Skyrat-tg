@@ -17,7 +17,7 @@
 /obj/item/clothing/head/hats/colonial/nri_police
 	name = "imperial police cap"
 	desc = "A puffy cap made out of tarpaulin covered by some textile. It is sturdy and comfortable, and seems to retain its form very well. <br>\
-	Silver NRI police insignia is woven right above its visor."
+		Silver NRI police insignia is woven right above its visor."
 	icon_state = "cap_police"
 
 /obj/item/clothing/mask/gas/nri_police
