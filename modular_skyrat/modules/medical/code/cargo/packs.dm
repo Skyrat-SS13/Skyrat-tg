@@ -11,11 +11,11 @@
 	access = FALSE
 	access_any = FALSE
 
-/datum/supply_pack/science/synth_trauma_kits
-	name = "Synthetic Trauma Kit"
-	desc = "Contains a trauma kit for synthetic lifeforms, filled to the brim with everything you need to treat an inorganic wound!"
+/datum/supply_pack/science/synth_treatment_kit
+	name = "Synthetic Treatment Kit"
+	desc = "Contains a treatment kit for synthetic lifeforms, filled to the brim with everything you need to treat an inorganic wound!"
 	cost = CARGO_CRATE_VALUE * 5 // you pay a premium for getting everything all at once
-	contains = list(/obj/item/storage/backpack/duffelbag/synth_trauma_kit = 1)
+	contains = list(/obj/item/storage/backpack/duffelbag/synth_treatment_kit = 1)
 
 	crate_type = /obj/structure/closet/crate/medical
 	crate_name = "synthetic trauma kit crate"
