@@ -20,6 +20,10 @@
 	return preferences?.parent?.is_green()
 
 /datum/preference/toggle/green_pin/apply_to_human(mob/living/carbon/human/wearer, value)
+	if(value && wearer.client && !wearer.client?.is_green())
+		// This way, it doesn't stick for those that had it set to TRUE before they got their 100 hours in.
+		wearer.client?.prefs?.write_preference(GLOB.preference_entries[/datum/preference/toggle/green_pin], FALSE)
+
 	return
 
 /client/proc/is_green()

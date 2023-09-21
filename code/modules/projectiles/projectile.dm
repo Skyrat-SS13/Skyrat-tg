@@ -231,12 +231,12 @@
 	SEND_SIGNAL(src, COMSIG_PROJECTILE_RANGE_OUT)
 	qdel(src)
 
-//to get the correct limb (if any) for the projectile hit message
-/mob/living/proc/check_limb_hit(hit_zone)
+/// Returns the string form of the def_zone we have hit.
+/mob/living/proc/check_hit_limb_zone_name(hit_zone)
 	if(has_limbs)
 		return hit_zone
 
-/mob/living/carbon/check_limb_hit(hit_zone)
+/mob/living/carbon/check_hit_limb_zone_name(hit_zone)
 	if(get_bodypart(hit_zone))
 		return hit_zone
 	else //when a limb is missing the damage is actually passed to the chest
@@ -250,21 +250,20 @@
  * blocked - percentage of hit blocked
  * pierce_hit - are we piercing through or regular hitting
  */
-/* SKYRAT EDIT REMOVAL - MOVED TO MASTER_FILES PROJECTILE.DM
 /obj/projectile/proc/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	// i know that this is probably more with wands and gun mods in mind, but it's a bit silly that the projectile on_hit signal doesn't ping the projectile itself.
 	// maybe we care what the projectile thinks! See about combining these via args some time when it's not 5AM
-	var/obj/item/bodypart/hit_limb
+	var/hit_limb_zone
 	if(isliving(target))
 		var/mob/living/L = target
-		hit_limb = L.check_limb_hit(def_zone)
+		hit_limb_zone = L.check_hit_limb_zone_name(def_zone)
 	if(fired_from)
-		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_ON_HIT, firer, target, Angle, hit_limb)
-	SEND_SIGNAL(src, COMSIG_PROJECTILE_SELF_ON_HIT, firer, target, Angle, hit_limb)
+		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_ON_HIT, firer, target, Angle, hit_limb_zone)
+	SEND_SIGNAL(src, COMSIG_PROJECTILE_SELF_ON_HIT, firer, target, Angle, hit_limb_zone)
 
 	if(QDELETED(src)) // in case one of the above signals deleted the projectile for whatever reason
 		return
-	var/turf/target_loca = get_turf(target)
+	var/turf/target_turf = get_turf(target)
 
 	var/hitx
 	var/hity
@@ -275,66 +274,89 @@
 		hitx = target.pixel_x + rand(-8, 8)
 		hity = target.pixel_y + rand(-8, 8)
 
-	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_loca) && prob(75))
-		var/turf/closed/wall/W = target_loca
-		if(impact_effect_type && !hitscan)
-			new impact_effect_type(target_loca, hitx, hity)
+	// SKYRAT EDIT ADDITION BEGIN - IMPACT SOUNDS
+	var/impact_sound
+	if(hitsound)
+		impact_sound = hitsound
+	else
+		impact_sound = target.impact_sound
+		get_sfx()
+	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
+	// SKYRAT EDIT ADDITION END
 
-		W.add_dent(WALL_DENT_SHOT, hitx, hity)
+	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_turf) && prob(75))
+		var/turf/closed/wall/target_wall = target_turf
+		if(impact_effect_type && !hitscan)
+			new impact_effect_type(target_wall, hitx, hity)
+
+		target_wall.add_dent(WALL_DENT_SHOT, hitx, hity)
 
 		return BULLET_ACT_HIT
 
 	if(!isliving(target))
 		if(impact_effect_type && !hitscan)
-			new impact_effect_type(target_loca, hitx, hity)
+			new impact_effect_type(target_turf, hitx, hity)
+		/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		if(isturf(target) && hitsound_wall)
 			var/volume = clamp(vol_by_damage() + 20, 0, 100)
 			if(suppressed)
 				volume = 5
 			playsound(loc, hitsound_wall, volume, TRUE, -1)
+		SKYRAT EDIT REMOVAL END */
 		return BULLET_ACT_HIT
 
-	var/mob/living/L = target
+	var/mob/living/living_target = target
 
 	if(blocked != 100) // not completely blocked
-		if(damage && L.blood_volume && damage_type == BRUTE)
-			var/splatter_dir = dir
-			if(starting)
-				splatter_dir = get_dir(starting, target_loca)
-			if(isalien(L))
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
-			else
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
-			if(prob(33))
-				L.add_splatter_floor(target_loca)
+		var/obj/item/bodypart/hit_bodypart = living_target.get_bodypart(hit_limb_zone)
+		if (damage)
+			if (living_target.blood_volume && damage_type == BRUTE && (isnull(hit_bodypart) || hit_bodypart.can_bleed()))
+				var/splatter_dir = dir
+				if(starting)
+					splatter_dir = get_dir(starting, target_turf)
+				if(isalien(living_target))
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
+				else
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
+				if(prob(33))
+					living_target.add_splatter_floor(target_turf)
+			else if (!isnull(hit_bodypart) && (hit_bodypart.biological_state & (BIO_METAL|BIO_WIRED)))
+				var/random_damage_mult = RANDOM_DECIMAL(0.85, 1.15) // SOMETIMES you can get more or less sparks
+				var/damage_dealt = ((damage / (1 - (blocked / 100))) * random_damage_mult)
+
+				var/spark_amount = round((damage_dealt / PROJECTILE_DAMAGE_PER_ROBOTIC_SPARK))
+				if (spark_amount > 0)
+					do_sparks(spark_amount, FALSE, living_target)
+
 		else if(impact_effect_type && !hitscan)
-			new impact_effect_type(target_loca, hitx, hity)
+			new impact_effect_type(target_turf, hitx, hity)
 
 		var/organ_hit_text = ""
-		var/limb_hit = hit_limb
-		if(limb_hit)
-			organ_hit_text = " in \the [parse_zone(limb_hit)]"
+		if(hit_limb_zone)
+			organ_hit_text = " in \the [parse_zone(hit_limb_zone)]"
 		if(suppressed == SUPPRESSED_VERY)
-			playsound(loc, hitsound, 5, TRUE, -1)
+			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		else if(suppressed)
-			playsound(loc, hitsound, 5, TRUE, -1)
-			to_chat(L, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
+			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
+			to_chat(living_target, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
 		else
+			/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 			if(hitsound)
 				var/volume = vol_by_damage()
 				playsound(src, hitsound, volume, TRUE, -1)
-			L.visible_message(span_danger("[L] is hit by \a [src][organ_hit_text]!"), \
+			SKYRAT EDIT REMOVAL END */
+			living_target.visible_message(span_danger("[living_target] is hit by \a [src][organ_hit_text]!"), \
 					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
-			if(L.is_blind())
-				to_chat(L, span_userdanger("You feel something hit you[organ_hit_text]!"))
-		L.on_hit(src)
+			if(living_target.is_blind())
+				to_chat(living_target, span_userdanger("You feel something hit you[organ_hit_text]!"))
+		living_target.on_hit(src)
 
 	var/reagent_note
 	if(reagents?.reagent_list)
 		reagent_note = "REAGENTS: [pretty_string_from_reagent_list(reagents.reagent_list)]"
 
 	if(ismob(firer))
-		log_combat(firer, L, "shot", src, reagent_note)
+		log_combat(firer, living_target, "shot", src, reagent_note)
 		return BULLET_ACT_HIT
 
 	if(isvehicle(firer))
@@ -344,12 +366,12 @@
 		if(!LAZYLEN(logging_mobs))
 			logging_mobs = firing_vehicle.return_drivers()
 		for(var/mob/logged_mob as anything in logging_mobs)
-			log_combat(logged_mob, L, "shot", src, "from inside [firing_vehicle][logging_mobs.len > 1 ? " with multiple occupants" : null][reagent_note ? " and contained [reagent_note]" : null]")
+			log_combat(logged_mob, living_target, "shot", src, "from inside [firing_vehicle][logging_mobs.len > 1 ? " with multiple occupants" : null][reagent_note ? " and contained [reagent_note]" : null]")
 		return BULLET_ACT_HIT
 
-	L.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_VICTIM, color="orange")
+	living_target.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_ATTACK, color="orange")
 	return BULLET_ACT_HIT
-*/
+
 /obj/projectile/proc/vol_by_damage()
 	if(src.damage)
 		return clamp((src.damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then CLAMP the value between 30 and 100
