@@ -136,7 +136,7 @@
 				user.adjust_pleasure(8)
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
-			if(!target.is_mouth_covered())
+			if(target.is_mouth_covered())
 				to_chat(user, span_danger("Looks like [target]'s mouth is covered!"))
 				return FALSE
 
