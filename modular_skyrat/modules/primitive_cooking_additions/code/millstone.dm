@@ -98,7 +98,8 @@
 		attacking_item.play_tool_sound(src)
 
 		for(var/i in 1 to 6)
-			new /obj/item/stack/sheet/mineral/stone(get_turf(src))
+			var/obj/item/stack/sheet/mineral/stone = new (get_turf(src))
+			transfer_fingerprints_to(stone)
 
 		Destroy()
 		return TRUE
