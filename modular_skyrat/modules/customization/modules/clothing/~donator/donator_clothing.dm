@@ -1646,3 +1646,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		)
 	)
 
+// Donation reward for grasshand
+/obj/item/clothing/under/rank/civilian/chaplain/divine_archer/noble
+	name = "noble gambeson"
+	desc = "These clothes make you feel a little closer to space."
+
+/obj/item/clothing/shoes/jackboots/noble
+	name = "noble boots"
+	desc = "These boots make you feel like you can walk on space."
+	icon_state = "archerboots"
+	inhand_icon_state = "archerboots"
