@@ -754,3 +754,126 @@
       wound.
   tf-4:
   - bugfix: fixes being able to eat, use pills etc through gas masks and such
+2023-09-19:
+  Ghommie (Thanks Sealed101):
+  - refactor: Reworked the fishing minigame into a game screen object from a TGUI
+      interface
+  Melbert:
+  - balance: Humanoids without tongues cannot cast spells with vocal components
+  - balance: Humanoids without arms cannot cast spells with emotive components
+  SkyratBot:
+  - bugfix: Makes sure pump-up properly grants the baton resistance trait.
+  - bugfix: The Nightmare's Light Eater can no longer suck the light out of space
+      tiles.
+  - bugfix: Fix wooden barricade description "This looks like it can be barricaded
+      with planks of wood" being spammed on objects.
+  - bugfix: basic mobs retaliate targetting now selects targets they can attack
+  - bugfix: Makes ethanol and sugar pure by default.
+  - balance: Player-controlled basic mobs attack as fast as those mobs can when controlled
+      by the AI
+  - balance: Player-controlled Faithless can paralyse people they attack, like the
+      AI does
+  - balance: Player-controlled Star Gazers (if an admin felt like making one) apply
+      the star mark on attack and deal damage to everything around them, like the
+      AI does
+  - rscadd: Many kinds of mobs can now be brought back to life through revival surgery.
+  - rscadd: Dogs can wear eyepatches.
+  - code_imp: Scars now stack trace if they fail to get a valid description
+  - rscdel: Removes the computer vendor.
+  - bugfix: pancake stack layering
+  - bugfix: pizzabox stack layering
+  - bugfix: pizzabox bombs that spawn unarmed now label their pizza correctly and
+      cannot spawn a spriteless pizza
+  - bugfix: Fixes a misplaced status display in Meta's medical storage.
+  - rscadd: mass drivers are now buildable, you activate them by attaching a signaler
+      to their launch wire, and can increase their power by pulsing the safeties wire,
+      and reset it back to normal by cutting the safeties wire.
+  - server: Default-configuration MINUTE_TOPIC_LIMIT has been increased
+  - bugfix: Fix a runtime when trying to cycle move intents with a hotkey as a dead
+      mob.
+  - bugfix: Nanotrasen has finally recalled their faulty multitools and replaced them
+      with working ones! The multitool's buffer now properly clears itself.
+  - qol: Moved multitool link messages to balloon alerts
+  - bugfix: added some missing firealarms on icebox in the hall towards departures
+      and the upper section of chapel
+  - bugfix: normal ethereal blood now works for electrolysis, the hydrogen and oxygen
+      output of the electrolysis recipe has been increased.
+  - balance: Only traitor, changeling, heretic, blood brother, headrev, wizard, obsessed,
+      magic/gun survivalists and greentext book holders can now double their hardcore
+      random score
+  - qol: Redtexting as antag with hardcore random score will pay you default points,
+      instead of none (normal survival rules)
+  - bugfix: End report screen will properly report hardcore random survival in case
+      of station destruction
+2023-09-20:
+  LT3:
+  - rscadd: 'New random event: Supermatter Surge'
+  - refactor: It's different than the Supermatter Surge you're used to
+  - refactor: 'The scale is now 1: low severity to 4: most severe. Keep that in mind!'
+  - rscdel: Removed Skyrat version of Supermatter Surge
+  - code_imp: Individual supermatter crystals can have custom gas properties
+  SkyratBot:
+  - image: resprites t-ray scanner, gas analyzer, geiger counter and hand drill.
+  - qol: Surgery trays can now be crafted via the crafting menu (two rods, one silver),
+      and deconstructed via secondary click with a screwdriver!
+  - spellcheck: Unreverted and improved resonance cascade message.
+  - qol: Crafting R&D guns from gun kits no longer requires tools or cable coil. The
+      decloner and energy crossbow still need reagents.
+  - qol: Halved R&D gun crafting time. 20->10 seconds.
+  - bugfix: Fixed Mafia achievements
+  - balance: Unholy and Eldritch water are self-consuming like holy water! They don't
+      need a liver to be processed.
+  - bugfix: Fixes a selection window in the game rock-paper-scissors with death.
+  - bugfix: fixes inedible grown items (such as tower caps) becoming unclickable when
+      harvested, fixes their seeds disappearing when inserted into the seed machine
+  - refactor: Refactors the camera console UI.
+  - rscadd: heretic knock path and its respective items and award
+  - bugfix: Lava can no longer occasionally generate inside of previously loaded templates
+      and breach and/or destroy shit
+  - qol: mice and rats now are visually spaced out from eachother for visual clarity
+  - balance: Supermatter now takes 15 seconds to delaminate normally and 5 if a sliver
+      has been taken from it. Gives a little more time to escape in the case of the
+      sliver and also evens out the times to please perfectionists.
+  - bugfix: Supermatter now accurately reports it's detonation time.
+  - spellcheck: Supermatter mood descriptions have been reverted back to their old,
+      more flavorful selves.
+  Zergspower:
+  - qol: reworks the verb panel to be less of a CVS receipt
+  vinylspiders:
+  - bugfix: removed a deprecated loadout item 'Black Two-Piece Suit' which had an
+      invalid item path. The old item has been replaced with 'Black Suit'.
+2023-09-21:
+  LT3:
+  - bugfix: Interdyne scientists get their Interdyne labcoat
+  Rhials:
+  - qol: Restores holiday hats for drones.
+  - qol: Extends holiday hat behavior to assistants. Get festive!
+  SkyratBot:
+  - bugfix: RCD Construction effects will no longer fall into chasms.
+  - bugfix: Gauze no longer falls off if a wound is demoted or promoted
+  - bugfix: The caller in a holopad call should now be able to hear people on the
+      other end.
+  - bugfix: wall mounted objects air alarms, fire alarms etc now actually falls off/gets
+      destroyed when their attached wall is deconstructed
+  - bugfix: wall mounts crafted in game also properly falls off/gets destroyed when
+      their attached wall is deconstructed
+  - bugfix: Fixes a bug allowing holopara injectors to be refundable when used.
+  - balance: Improvised shotgun shells now deal half as much damage to humans and
+      cause less wounds, but do 50% more damage to structures and machines. They also
+      require a glass shard for crafting.
+  - balance: 'EMP damage on augs: 2/1.5 from 3/2'
+  - balance: Augs now only get paralyzed by EMP for 3/6 seconds if they are damaged
+      below 70% HP,
+  - balance: Aug EMP knockdown reduced to 3 seconds
+  - balance: Synthetic ears now take far less EMP damage
+  - bugfix: rescue hooks will once again drop the mob next to the fisherman instead
+      of just displaying a balloon alert and doing nothing
+  - bugfix: Recipe that converts Vegetable Oil into Olive Oil works properly
+  - rscadd: Splashing antihol on a patient before surgery will make it to go slower.
+  honkpocket:
+  - rscadd: Adds garment bags to the blueshield and NTC lockers
+  - rscadd: Adds turtlenecks and the intern outfit to the NTC garment bag
+  vinylspiders:
+  - bugfix: spiritual quirk is no longer missing from the game
+  zydras:
+  - bugfix: properly paths NT Consultant and Blueshield areas

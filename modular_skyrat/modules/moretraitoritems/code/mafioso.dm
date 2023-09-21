@@ -13,10 +13,10 @@
 	acid = 30
 	wound = 20
 
-/obj/item/clothing/under/suit/blacktwopiece/armoured
-	armor_type = /datum/armor/clothing_under/blacktwopiece_armoured
+/obj/item/clothing/under/suit/black/armoured
+	armor_type = /datum/armor/clothing_under/black_armoured
 
-/datum/armor/clothing_under/blacktwopiece_armoured
+/datum/armor/clothing_under/black_armoured
 	melee = 10
 	bullet = 10
 	laser = 10
