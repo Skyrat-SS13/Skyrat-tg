@@ -227,6 +227,11 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		color_changed = TRUE
 		return TRUE
 
+/obj/item/clothing/sextoy/dildo/custom_dildo/Initialize(mapload)
+	. = ..()
+	if(!length(dildo_sizes))
+		populate_dildo_designs()
+
 /// Choose a color and transparency level for the toy
 /obj/item/clothing/sextoy/dildo/custom_dildo/proc/customize(mob/living/user)
 	if(!src || !user || user.incapacitated() || !in_range(user, src))
