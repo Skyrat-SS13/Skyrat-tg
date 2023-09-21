@@ -101,7 +101,7 @@
 			var/obj/item/stack/sheet/mineral/stone = new (get_turf(src))
 			transfer_fingerprints_to(stone)
 
-		Destroy()
+		qdel(src)
 		return TRUE
 
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
