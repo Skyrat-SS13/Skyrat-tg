@@ -280,8 +280,9 @@
 
 	. += "\nWound status: [get_wound_status_info()]"
 
-/datum/wound/burn/robotic/overheat/get_xadone_progress_to_qdel()
-	return INFINITY
+// this wound is unaffected by cryoxadone and pyroxadone
+/datum/wound/burn/robotic/overheat/on_xadone(power)
+	return
 
 /datum/wound/burn/robotic/overheat/moderate
 	name = "Transient Overheating"

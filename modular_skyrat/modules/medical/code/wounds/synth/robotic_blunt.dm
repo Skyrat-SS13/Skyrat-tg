@@ -127,8 +127,9 @@
 /datum/wound/blunt/robotic/get_limb_examine_description()
 	return span_warning("This limb looks loosely held together.")
 
-/datum/wound/blunt/robotic/get_xadone_progress_to_qdel()
-	return INFINITY
+// this wound is unaffected by cryoxadone and pyroxadone
+/datum/wound/blunt/robotic/on_xadone(power)
+	return
 
 /datum/wound/blunt/robotic/wound_injury(datum/wound/old_wound, attack_direction)
 	. = ..()

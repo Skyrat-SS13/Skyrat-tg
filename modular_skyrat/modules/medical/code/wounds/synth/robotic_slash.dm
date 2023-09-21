@@ -277,8 +277,9 @@
 /datum/wound/electrical_damage/proc/get_wound_status_info()
 	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>[minimum_intensity]</b>")]% to remove the wound."
 
-/datum/wound/electrical_damage/get_xadone_progress_to_qdel()
-	return INFINITY
+// this wound is unaffected by cryoxadone and pyroxadone
+/datum/wound/electrical_damage/on_xadone(power)
+	return
 
 /datum/wound/electrical_damage/item_can_treat(obj/item/potential_treater, mob/user)
 	if (istype(potential_treater, /obj/item/stack/cable_coil) && ((user.pulling == victim && user.grab_state >= GRAB_AGGRESSIVE) || (limb.burn_dam <= ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR)))
@@ -399,7 +400,7 @@
 			return TRUE
 	return TRUE
 
-/// If fixed() is true, we remove ourself and return TRUE. FALSE otherwise.
+/// If fixed() is true, we remove ourselves and return TRUE. FALSE otherwise.
 /datum/wound/electrical_damage/proc/remove_if_fixed()
 	if (fixed())
 		to_chat(victim, span_green("Your [limb.plaintext_zone] has recovered from its [name]!"))
@@ -407,7 +408,7 @@
 		return TRUE
 	return FALSE
 
-/// Should we remove ourself?
+/// Should we remove ourselves?
 /datum/wound/electrical_damage/proc/fixed()
 	return (intensity <= minimum_intensity || isnull(limb))
 
@@ -485,7 +486,7 @@
 	desc = "Internal wiring has suffered a slight abrasion, causing a slow electrical fault that will intensify over time."
 	occur_text = "lets out a few sparks, as a few frayed wires stick out"
 	examine_desc = "has a few frayed wires sticking out"
-	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albiet at limited efficiency. In case of emergency, \
+	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
 				subject may be subjected to high temperatures to allow solder to reset."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
