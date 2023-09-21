@@ -356,11 +356,7 @@
 			log_combat(logged_mob, living_target, "shot", src, "from inside [firing_vehicle][logging_mobs.len > 1 ? " with multiple occupants" : null][reagent_note ? " and contained [reagent_note]" : null]")
 		return BULLET_ACT_HIT
 
-<<<<<<< HEAD
-	L.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_VICTIM, color="orange")
-=======
 	living_target.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_ATTACK, color="orange")
->>>>>>> c9f44897ed2 (Augments/Prosthetic limbs now spark when shot instead of bleeding (#78248))
 	return BULLET_ACT_HIT
 */
 /obj/projectile/proc/vol_by_damage()
