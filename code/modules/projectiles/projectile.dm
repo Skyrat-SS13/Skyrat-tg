@@ -250,7 +250,6 @@
  * blocked - percentage of hit blocked
  * pierce_hit - are we piercing through or regular hitting
  */
-/* SKYRAT EDIT REMOVAL - MOVED TO MASTER_FILES PROJECTILE.DM
 /obj/projectile/proc/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	// i know that this is probably more with wands and gun mods in mind, but it's a bit silly that the projectile on_hit signal doesn't ping the projectile itself.
 	// maybe we care what the projectile thinks! See about combining these via args some time when it's not 5AM
@@ -275,6 +274,16 @@
 		hitx = target.pixel_x + rand(-8, 8)
 		hity = target.pixel_y + rand(-8, 8)
 
+	// SKYRAT EDIT ADDITION BEGIN - IMPACT SOUNDS
+	var/impact_sound
+	if(hitsound)
+		impact_sound = hitsound
+	else
+		impact_sound = target.impact_sound
+		get_sfx()
+	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
+	// SKYRAT EDIT ADDITION END
+
 	if(damage > 0 && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_turf) && prob(75))
 		var/turf/closed/wall/target_wall = target_turf
 		if(impact_effect_type && !hitscan)
@@ -287,11 +296,13 @@
 	if(!isliving(target))
 		if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_turf, hitx, hity)
+		/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		if(isturf(target) && hitsound_wall)
 			var/volume = clamp(vol_by_damage() + 20, 0, 100)
 			if(suppressed)
 				volume = 5
 			playsound(loc, hitsound_wall, volume, TRUE, -1)
+		SKYRAT EDIT REMOVAL END */
 		return BULLET_ACT_HIT
 
 	var/mob/living/living_target = target
@@ -324,14 +335,16 @@
 		if(hit_limb_zone)
 			organ_hit_text = " in \the [parse_zone(hit_limb_zone)]"
 		if(suppressed == SUPPRESSED_VERY)
-			playsound(loc, hitsound, 5, TRUE, -1)
+			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 		else if(suppressed)
-			playsound(loc, hitsound, 5, TRUE, -1)
+			//playsound(loc, hitsound, 5, TRUE, -1) SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 			to_chat(living_target, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
 		else
+			/* SKYRAT EDIT REMOVAL - IMPACT SOUNDS
 			if(hitsound)
 				var/volume = vol_by_damage()
 				playsound(src, hitsound, volume, TRUE, -1)
+			SKYRAT EDIT REMOVAL END */
 			living_target.visible_message(span_danger("[living_target] is hit by \a [src][organ_hit_text]!"), \
 					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
 			if(living_target.is_blind())
@@ -356,13 +369,9 @@
 			log_combat(logged_mob, living_target, "shot", src, "from inside [firing_vehicle][logging_mobs.len > 1 ? " with multiple occupants" : null][reagent_note ? " and contained [reagent_note]" : null]")
 		return BULLET_ACT_HIT
 
-<<<<<<< HEAD
-	L.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_VICTIM, color="orange")
-=======
 	living_target.log_message("has been shot by [firer] with [src][reagent_note ? " containing [reagent_note]" : null]", LOG_ATTACK, color="orange")
->>>>>>> c9f44897ed2 (Augments/Prosthetic limbs now spark when shot instead of bleeding (#78248))
 	return BULLET_ACT_HIT
-*/
+
 /obj/projectile/proc/vol_by_damage()
 	if(src.damage)
 		return clamp((src.damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then CLAMP the value between 30 and 100
