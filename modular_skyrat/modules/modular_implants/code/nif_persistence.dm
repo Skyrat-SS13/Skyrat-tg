@@ -83,7 +83,7 @@
 	new_nif.rewards_points = persistence.stored_rewards_points
 
 	var/list/persistent_nifsoft_paths = list()
-	for(var/text as anything in splittext(persistence.persistent_nifsofts, "&"))
+	for(var/text in splittext(persistence.persistent_nifsofts, "&"))
 		var/path = text2path(text)
 		if(!ispath(path))
 			continue
