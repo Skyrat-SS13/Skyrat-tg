@@ -86,12 +86,3 @@
 		inhand_icon_state = "[initial(inhand_icon_state)]"
 	return ..()
 
-/datum/design/exwelder
-	name = "Electrical Welding Tool"
-	desc = "An experimental welding tool capable of welding using electricity."
-	id = "exwelder"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2)
-	build_path = /obj/item/weldingtool/electric
-	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
