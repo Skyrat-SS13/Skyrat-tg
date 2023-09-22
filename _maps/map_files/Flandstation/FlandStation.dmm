@@ -2577,7 +2577,9 @@
 /obj/machinery/door/airlock/external{
 	name = "External Airlock"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "ex_cyc"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "aPJ" = (
@@ -6737,13 +6739,7 @@
 /turf/open/floor/iron/freezer,
 /area/station/service/kitchen/coldroom)
 "cqi" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 4
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/science/xenobiology)
+)
 "cqo" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet/royalblue,
@@ -25294,17 +25290,7 @@
 /area/station/commons/storage/tools)
 "iBF" = (
 /obj/machinery/door/airlock/research{
-	name = "Robotics Lab"
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/station/science/robotics/lab)
-"iBJ" = (
-/obj/machinery/airalarm/directional/south{
-	pixel_y = -22
+	name = "Robotics Lab"/obj/machinery/door/firedoor,/obj/structure/disposalpipe/segment,/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,/obj/structure/cable,/turf/open/floor/iron/white,/area/station/science/robotics/lab)"iBJ"=(/obj/machinery/airalarm/directional/south{pixel_y=-22
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -28452,23 +28438,7 @@
 /area/station/maintenance/port/central)
 "jIE" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Engineering Maintenance"
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/engineering/main)
-"jIP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/disposal/incinerator)
-"jIU" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/department/science)
-"jJj" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/loading_area{
-	dir = 1
+	name = "Engineering Maintenance"/obj/structure/cable,/turf/open/floor/catwalk_floor/iron_dark,/area/station/engineering/main)"jIP"=(/obj/effect/decal/cleanable/dirt,/obj/effect/turf_decal/delivery,/turf/open/floor/iron/dark,/area/station/maintenance/disposal/incinerator)"jIU"=(/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,/turf/open/floor/iron/dark,/area/station/maintenance/department/science)"jJj"=(/obj/effect/turf_decal/bot,/obj/effect/turf_decal/loading_area{dir=1
 	},
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
@@ -28773,7 +28743,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "engi_cyc"
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "jOT" = (
@@ -40676,12 +40648,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/station/holodeck)
-"nNH" = (
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/iron/dark{
-	initial_gas_mix = "n2=23;o2=14"
-	},
-/area/station/security/prison)
 "nNT" = (
 /obj/effect/landmark/blobstart,
 /obj/structure/cable,
@@ -46819,12 +46785,6 @@
 	spawn_scatter_radius = 1
 	},
 /turf/open/floor/wood,
-/area/station/maintenance/port/central)
-"pXu" = (
-/obj/machinery/power/apc/auto_name/directional/west{
-	pixel_x = -25
-	},
-/turf/open/floor/iron/dark/textured_large,
 /area/station/maintenance/port/central)
 "pXy" = (
 /obj/machinery/computer/security/qm{
@@ -53807,7 +53767,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "engi_cyc"
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "sfr" = (
@@ -62837,7 +62799,6 @@
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "vaE" = (
@@ -63084,9 +63045,9 @@
 /turf/open/floor/vault,
 /area/station/engineering/supermatter/room)
 "vfS" = (
-/obj/machinery/light/directional/south,
 /obj/machinery/power/apc/auto_name/directional/south,
-/turf/open/floor/iron/dark,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "vgi" = (
 /obj/structure/girder,
@@ -66086,7 +66047,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "engi_cyc"
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hallway)
 "wbo" = (
@@ -100354,7 +100317,7 @@ eUu
 rhZ
 ujW
 vJe
-jJj
+cqi
 uDn
 wcA
 eXX
@@ -101653,7 +101616,7 @@ ezw
 jof
 mQx
 iyk
-iBJ
+cqi
 krX
 aEP
 kdX
@@ -105294,7 +105257,7 @@ nnx
 nnx
 csJ
 siW
-cqi
+vax
 vax
 qLi
 vNi
@@ -105524,7 +105487,7 @@ xRe
 ohE
 ojF
 qVO
-jIU
+cqi
 nsS
 nsS
 ixh
@@ -106464,7 +106427,7 @@ aIJ
 uYO
 qFK
 qFK
-pXu
+qFK
 rme
 gbN
 qFK
@@ -106840,7 +106803,7 @@ ylW
 siW
 qoF
 lBU
-anB
+vfS
 siW
 csJ
 nnx
@@ -107852,7 +107815,7 @@ neg
 neg
 xJK
 tzS
-vfS
+xGz
 siW
 kgC
 idG
@@ -109306,7 +109269,7 @@ fHs
 uBI
 klg
 wYw
-nNH
+xFj
 xFj
 qBZ
 wYw
@@ -123253,7 +123216,7 @@ pIq
 tFy
 vDn
 seE
-jIP
+cqi
 uyt
 oqT
 ePY
