@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 #define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (3 MINUTES) //SKYRAT EDIT CHANGE
-#define NEVER_TRIGGERED_BY_WIZARDS -1
-=======
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
->>>>>>> 00fc613f07d (Dusting Poly causes a power surge (#78495))
 
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
