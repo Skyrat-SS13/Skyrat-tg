@@ -84,11 +84,11 @@
 
 	var/list/persistent_nifsoft_paths = list()
 	for(var/text as anything in splittext(persistence.persistent_nifsofts, "&"))
-		var/path = text2path(text)
-		if(!ispath(path))
+		var/datum/nifsoft/nifsoft_to_add = text2path(text)
+		if(!ispath(nifsoft_to_add, /datum/nifsoft) || !initial(nifsoft_to_add.able_to_keep))
 			continue
 
-		persistent_nifsoft_paths.Add(path)
+		persistent_nifsoft_paths.Add(nifsoft_to_add)
 
 	new_nif.persistent_nifsofts = persistent_nifsoft_paths.Copy()
 	new_nif.Insert(src)
