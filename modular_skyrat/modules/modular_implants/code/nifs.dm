@@ -176,7 +176,7 @@
 	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
 		new preinstalled_nifsoft(src)
 
-	for(var/datum/nifsoft/stored_nifsoft as anything in persistent_nifsofts)
+	for(var/stored_nifsoft in persistent_nifsofts)
 		var/datum/nifsoft/new_stored_nifsoft = new stored_nifsoft(src)
 		new_stored_nifsoft.keep_installed = TRUE
 
