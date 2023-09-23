@@ -15,6 +15,7 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_mobs.dmi'
 	gold_core_spawnable = NO_SPAWN
 	faction = list(FACTION_MOLD)
+	basic_mob_flags = DEL_ON_DEATH
 
 /**
  * OIL SHAMBLERS
