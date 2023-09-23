@@ -70,7 +70,7 @@
 	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, layer, plane, dir, alpha)
 	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, OIL_SHAMBLER_OVERLAY_LAYER, EMISSIVE_PLANE, dir, alpha)
 
-/mob/living/basic/mold/diseased_rat/melee_attack(atom/target, list/modifiers, ignore_cooldown)
+/mob/living/basic/mold/oil_shambler/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
 	if(!isliving(target))
 		return
@@ -143,8 +143,8 @@
 
 	var/mob/living/carbon/disease_target = target
 	if(can_inject(disease_target))
-		to_chat(disease_target, span_danger("[diseased_rat] manages to penetrate your clothing with its teeth!"))
-		disease_target.ForceContractDisease(new diseased_rat.given_disease(), FALSE, TRUE)
+		to_chat(disease_target, span_danger("[src] manages to penetrate your clothing with its teeth!"))
+		disease_target.ForceContractDisease(new given_disease(), FALSE, TRUE)
 
 /datum/ai_controller/basic_controller/diseased_rat
 	blackboard = list(
