@@ -573,8 +573,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/storage)
 "ey" = (
-/obj/structure/table,
-/obj/item/paper/crumpled,
+/obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/blue/anticorner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -1321,12 +1320,15 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "kF" = (
-/obj/structure/table,
-/obj/item/paper/crumpled,
+/obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "ptcomms";
+	name = "shutter controls"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "kG" = (
@@ -1772,10 +1774,17 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "nC" = (
-/obj/structure/chair/office,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/safe/floor,
+/obj/item/stack/sheet/bluespace_crystal{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 10
+	},
+/obj/effect/spawner/random/astrum/agent_loot,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
+/area/ruin/space/has_grav/port_tarkon/developement)
 "nE" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -2483,20 +2492,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
-"rK" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "ptcomms";
-	name = "shutter controls"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/entertainment/cigarette_pack,
-/obj/item/lighter,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "rN" = (
 /obj/effect/turf_decal/tile/neutral/half{
 	dir = 8
@@ -2774,15 +2769,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
-"ua" = (
-/obj/structure/table,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/folder/blue,
-/obj/item/pen,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "ud" = (
 /obj/effect/turf_decal/tile/brown/anticorner,
 /obj/effect/decal/cleanable/dirt,
@@ -3431,15 +3417,6 @@
 "zg" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/port_tarkon/comms)
-"zi" = (
-/obj/machinery/computer{
-	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	dir = 1;
-	name = "Broken Computer"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "zk" = (
 /obj/effect/turf_decal/tile/brown/half{
 	dir = 8
@@ -3735,15 +3712,6 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/safe/floor,
-/obj/item/circuitboard/machine/bluespace_miner,
-/obj/item/stack/sheet/mineral/diamond{
-	amount = 10
-	},
-/obj/item/stack/sheet/bluespace_crystal{
-	amount = 5
-	},
-/obj/item/weldingtool/abductor,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "BL" = (
@@ -4382,17 +4350,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
-"GB" = (
-/obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 4
-	},
-/obj/item/folder/red,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "GD" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/carbon_input/tarkon{
 	dir = 8
@@ -4572,14 +4529,9 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "HE" = (
-/obj/structure/table,
 /obj/effect/turf_decal/tile/blue/half,
-/obj/item/encryptionkey/headset_cargo/tarkon,
-/obj/item/encryptionkey/headset_cargo/tarkon,
-/obj/item/encryptionkey/headset_cargo/tarkon,
-/obj/item/encryptionkey/headset_cargo/tarkon,
-/obj/item/encryptionkey/headset_cargo/tarkon,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "HM" = (
@@ -4840,6 +4792,7 @@
 /obj/structure/safe/floor,
 /obj/item/areaeditor/blueprints/tarkon,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/bluespace_miner,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/power1)
 "Jq" = (
@@ -5498,7 +5451,6 @@
 /obj/effect/turf_decal/tile/red/anticorner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/noticeboard/directional/east,
-/obj/item/paper/fluff/ruins/tarkon/coupplans,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "Np" = (
@@ -5725,14 +5677,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
-"OL" = (
-/obj/structure/table,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/megaphone,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "OM" = (
 /obj/machinery/light_switch/directional/east,
 /obj/effect/turf_decal/tile/yellow/anticorner,
@@ -6089,10 +6033,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "Rx" = (
-/obj/structure/table,
-/obj/item/paper/crumpled,
+/obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/blue/half,
-/obj/item/folder,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
@@ -6672,13 +6614,6 @@
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
-"VF" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "VH" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -7001,14 +6936,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
-"Ym" = (
-/obj/machinery/computer{
-	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	name = "Broken Computer"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/port_tarkon/comms)
 "Yn" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 8
@@ -7175,6 +7102,11 @@
 "ZF" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "ZH" = (
@@ -8708,7 +8640,7 @@ yZ
 jX
 cM
 ZH
-jX
+nC
 xE
 iZ
 Hs
@@ -10347,8 +10279,8 @@ RY
 Vi
 Vi
 Vi
-ua
-OL
+Vi
+Vi
 Vi
 fr
 HE
@@ -10419,10 +10351,10 @@ Mf
 TZ
 lh
 TZ
-nC
-zi
-Ym
-VF
+TZ
+TZ
+TZ
+TZ
 lh
 qX
 Uk
@@ -10493,8 +10425,8 @@ eQ
 eQ
 xm
 eQ
-rK
-GB
+eQ
+eQ
 eQ
 Kc
 Ai
