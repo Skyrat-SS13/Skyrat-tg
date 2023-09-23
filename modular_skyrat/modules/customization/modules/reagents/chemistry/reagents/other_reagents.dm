@@ -85,11 +85,11 @@
 	. = ..()
 	if(!iscarbon(exposed_mob))
 		return
-	var/mob/living/carbon/scarred = exposed_mob
-	if(scarred.stat == DEAD)
-		show_message = 0
 	if(!(methods & (PATCH|TOUCH|VAPOR)))
 		return
+	var/mob/living/carbon/scarred = exposed_mob
+	if(scarred.stat == DEAD)
+		show_message = FALSE
 	if(show_message)
 		to_chat(scarred, span_danger("The scars on your body start to fade and disappear."))
 	if(reac_volume >= DERMAGEN_SCAR_FIX_AMOUNT)
