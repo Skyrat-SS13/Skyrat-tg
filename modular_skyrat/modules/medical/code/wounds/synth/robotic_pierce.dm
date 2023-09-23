@@ -3,12 +3,10 @@
 // Hard-ish to fix
 /datum/wound/electrical_damage/pierce
 	heat_differential_healing_mult = 0.01
-
 	simple_desc = "Electrical conduits have been pierced open, resulting in a fault that <b>slowly</b> intensifies, but with <b>extreme</b> maximum voltage!"
 
 /datum/wound_pregen_data/electrical_damage/pierce
 	abstract = TRUE
-
 	wound_series = WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE
 	required_wounding_types = list(WOUND_PIERCE)
 
@@ -20,7 +18,7 @@
 	desc = "A major capacitor has been broken open, causing slow but noticable electrical damage."
 	occur_text = "shoots out a short stream of sparks"
 	examine_desc = "is shuddering gently, movements a little weak"
-	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albiet at limited efficiency. In case of emergency, \
+	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
 				subject may be subjected to high temperatures to allow solder to reset."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
@@ -60,16 +58,14 @@
 
 /datum/wound_pregen_data/electrical_damage/pierce/moderate
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/pierce/moderate
-
 	threshold_minimum = 40
 
 /datum/wound/electrical_damage/pierce/severe
 	name = "Penetrated Transformer"
 	desc = "A major transformer has been pierced, causing slow-to-progess but eventually intense electrical damage."
 	occur_text = "sputters and goes limp for a moment as it ejects a stream of sparks"
-	examine_desc = "is shuddering significantly, servos briefly giving way in a rythmic pattern"
+	examine_desc = "is shuddering significantly, its servos briefly giving way in a rythmic pattern"
 	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
@@ -111,18 +107,16 @@
 
 /datum/wound_pregen_data/electrical_damage/pierce/severe
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/pierce/severe
-
 	threshold_minimum = 60
 
 /datum/wound/electrical_damage/pierce/critical
 	name = "Ruptured PSU"
 	desc = "The local PSU of this limb has suffered a core rupture, causing a progressive power failure that will slowly intensify into massive electrical damage."
-	occur_text = "flashes with radiant blue, emitting a noise not unlike a jacobs ladder"
+	occur_text = "flashes with radiant blue, emitting a noise not unlike a Jacob's Ladder"
 	examine_desc = "'s PSU is visible, with a sizable hole in the center"
 	treat_text = "Immediate securing via gauze, followed by emergency cable replacement and securing via wirecutters or hemostat. \
-		If the fault has become uncontrollable, extreme heat therapy is reccomended."
+		If the fault has become uncontrollable, extreme heat therapy is recommended."
 
 	severity = WOUND_SEVERITY_CRITICAL
 	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
@@ -162,7 +156,5 @@
 
 /datum/wound_pregen_data/electrical_damage/pierce/critical
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/pierce/critical
-
 	threshold_minimum = 110

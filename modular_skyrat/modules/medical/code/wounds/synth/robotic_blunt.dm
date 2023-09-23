@@ -44,7 +44,7 @@
 
 	/// In the stagger aftershock, the stagger score will be multiplied against for determining the chance of dropping held items.
 	var/stagger_drop_chance_ratio = 1.25
-	/// In the stagger aftershock, the stagger score will be multiplied aginst for determining the chance of falling over.
+	/// In the stagger aftershock, the stagger score will be multiplied against for determining the chance of falling over.
 	var/stagger_fall_chance_ratio = 1
 
 	/// In the stagger aftershock, the stagger score will be multiplied against for determining how long we are knocked down for.
@@ -107,7 +107,6 @@
 	abstract = TRUE
 
 	required_limb_biostate = BIO_METAL
-
 	wound_series = WOUND_SERIES_METAL_BLUNT_BASIC
 	required_wounding_types = list(WOUND_BLUNT)
 
@@ -140,13 +139,13 @@
 		active_trauma = victim.gain_trauma_type(brain_trauma_group, TRAUMA_RESILIENCE_WOUND)
 		next_trauma_cycle = world.time + (rand(100-WOUND_BONE_HEAD_TIME_VARIANCE, 100+WOUND_BONE_HEAD_TIME_VARIANCE) * 0.01 * trauma_cycle_cooldown)
 
-	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
-		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
-		if(istype(I, /obj/item/offhand))
-			I = victim.get_inactive_held_item()
+	var/obj/item/held_item = victim.get_item_for_held_index(limb.held_index || 0)
+	if(held_item && (disabling || prob(30 * severity)))
+		if(istype(held_item, /obj/item/offhand))
+			held_item = victim.get_inactive_held_item()
 
-		if(I && victim.dropItemToGround(I))
-			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [limb.plaintext_zone] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+		if(held_item && victim.dropItemToGround(held_item))
+			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), span_warning("<b>The force on your [limb.plaintext_zone] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 /datum/wound/blunt/robotic/remove_wound(ignore_limb, replaced)
 	. = ..()
@@ -189,7 +188,6 @@
 
 	if (def_zone != limb.body_zone) // use this proc since receive damage can also be called for like, chems and shit
 		return
-
 	if(!victim)
 		return
 
@@ -267,6 +265,7 @@
 /datum/wound/blunt/robotic/proc/aftershock(stagger_score, attack_direction, obj/item/attacking_item, stagger_starting_time, knockdown_time)
 	if (!still_exists())
 		return FALSE
+
 	var/message = "The oscillations from your [limb.plaintext_zone] spread, "
 	var/limb_message = "causing "
 	var/limb_affected
@@ -367,30 +366,23 @@
 	examine_desc = "appears to be loosely secured"
 	occur_text = "jostles awkwardly and seems to slightly unfasten"
 	severity = WOUND_SEVERITY_MODERATE
-
 	simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
 	<b>someone else</b>, a <b>roboticist</b>, an <b>engineer</b>, or with a <b>diagnostic HUD</b>."
 	homemade_treat_text = "In a pinch, <b>percussive maintenance</b> can reset the screws - the chance of which is increased if done by <b>someone else</b> or \
 	with a <b>diagnostic HUD</b>!"
-
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/moderate
 	treatable_tools = list(TOOL_SCREWDRIVER)
-
 	interaction_efficiency_penalty = 1.2
 	limp_slowdown = 2.5
 	limp_chance = 30
 	threshold_penalty = 20
-
 	can_scar = FALSE
-
 	a_or_from = "from"
 
 /datum/wound_pregen_data/blunt_metal/loose_screws
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/blunt/robotic/moderate
 	viable_zones = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-
 	threshold_minimum = 30
 
 /datum/wound/blunt/robotic/moderate/uses_percussive_maintenance()
@@ -564,7 +556,7 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.5
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
+	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 
 	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item]...")
@@ -594,7 +586,7 @@
 		if (HAS_TRAIT(user, TRAIT_SHOCKIMMUNE))
 			stun_chance = 0
 
-		else if (iscarbon(user)) // doesnt matter if we're shock immune, its set to 0 anyway
+		else if (iscarbon(user)) // doesn't matter if we're shock immune, it's set to 0 anyway
 			var/mob/living/carbon/carbon_user = user
 			if (carbon_user.gloves)
 				stun_chance *= carbon_user.gloves.siemens_coefficient
@@ -623,8 +615,8 @@
 		var/other_shock_text = ""
 		var/self_shock_text = ""
 		if (!limb_can_shock)
-			other_shock_text = ", and is striken by golden bolts of electricity"
-			self_shock_text = ", but are immediately beset apon by the electricity contained within"
+			other_shock_text = ", and is stricken by golden bolts of electricity"
+			self_shock_text = ", but are immediately beset upon by the electricity contained within"
 		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] crowbar[other_shock_text]!")
 		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your crowbar[self_shock_text]!")
 		if (user != victim)
@@ -633,7 +625,7 @@
 		playsound(get_turf(crowbarring_item), 'sound/effects/bang.ogg', 35, TRUE) // we did it!
 		to_chat(user, span_green("You've torn [your_or_other] [limb.plaintext_zone] open, heavily damaging it but making it a lot easier to screwdriver the internals!"))
 		var/damage = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
-		if (limb_essential()) // cant be disabled
+		if (limb_essential()) // can't be disabled
 			damage *= 2
 		limb.receive_damage(brute = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE, wound_bonus = CANT_WOUND, damage_source = crowbarring_item)
 		set_torn_open(TRUE)
@@ -646,7 +638,7 @@
 	return TRUE
 
 /datum/wound/blunt/robotic/secures_internals/proc/set_torn_open(torn_open_state)
-	// if we arent disabling but we were torn open, OR if we arent disabling by default
+	// if we aren't disabling but we were torn open, OR if we aren't disabling by default
 	var/should_update_disabling = ((!disabling && torn_open_state) || !initial(disabling))
 
 	crowbarred_open = torn_open_state
@@ -682,7 +674,7 @@
 
 	var/confused = (chance < 25) // generate chance beforehand, so we can use this var
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
+	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	user?.visible_message(span_notice("[user] begins the delicate operation of securing the internals of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin the delicate operation of securing the internals of [your_or_other] [limb.plaintext_zone]..."))
@@ -736,7 +728,7 @@
 	if (!welding_item.tool_start_check())
 		return TRUE
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
+	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	victim.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin re-soldering [your_or_other] [limb.plaintext_zone]..."))
@@ -879,13 +871,11 @@
 
 /datum/wound_pregen_data/blunt_metal/superstructure
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/blunt/robotic/secures_internals/critical
-
 	threshold_minimum = 125
 
-/datum/wound/blunt/robotic/secures_internals/critical/apply_wound(obj/item/bodypart/L, silent, datum/wound/old_wound, smited, attack_direction, wound_source)
-	var/turf/limb_turf = get_turf(L)
+/datum/wound/blunt/robotic/secures_internals/critical/apply_wound(obj/item/bodypart/limb, silent, datum/wound/old_wound, smited, attack_direction, wound_source)
+	var/turf/limb_turf = get_turf(limb)
 	if (limb_turf)
 		new /obj/effect/decal/cleanable/oil(limb_turf)
 	var/turf/next_turf = get_step(limb_turf, REVERSE_DIR(attack_direction))
@@ -930,7 +920,9 @@
 		to_chat(user, span_warning("You must have [victim] in an aggressive grab to manipulate [victim.p_their()] [lowertext(name)]!"))
 		return TRUE
 
-	user.visible_message(span_danger("[user] begins softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), span_notice("You begin softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), ignored_mobs=victim)
+	user.visible_message(span_danger("[user] begins softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), \
+	span_notice("You begin softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), \
+	ignored_mobs = victim)
 	to_chat(victim, span_userdanger("[user] begins softly pressing against your collapsed [limb.plaintext_zone]!"))
 
 	var/delay_mult = 1
@@ -955,7 +947,7 @@
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		chance *= 2
 
-	var/their_or_other = (user == victim ? "their" : "[user]'s")
+	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	if ((user != victim && user.combat_mode))
@@ -1145,7 +1137,7 @@
 		span_green("Your [limb.plaintext_zone] gets smashed into a proper shape!"))
 
 	var/user_message = "[capitalize(your_or_other)] [limb.plaintext_zone]'s superstructure has been reset! Your next step is to screwdriver/wrench the internals, \
-	though if you're desparate enough to use percussive maintenance, you might want to either use a crowbar or bone gel..."
+	though if you're desperate enough to use percussive maintenance, you might want to either use a crowbar or bone gel..."
 	to_chat(user, span_green(user_message))
 
 	set_superstructure_status(TRUE)

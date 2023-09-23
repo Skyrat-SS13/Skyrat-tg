@@ -16,7 +16,6 @@
 /datum/status_effect/wound/electrical_damage/slash/critical
 	id = "electric_slash_critical"
 
-// slash
 /datum/status_effect/wound/electrical_damage/pierce/moderate
 	id = "electric_pierce_moderate"
 

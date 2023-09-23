@@ -6,10 +6,8 @@
 
 /datum/wound_pregen_data/burnt_metal
 	abstract = TRUE
-
 	required_limb_biostate = BIO_METAL
 	required_wounding_types = list(WOUND_BURN)
-
 	wound_series = WOUND_SERIES_METAL_BURN_OVERHEAT
 
 /datum/wound_pregen_data/burnt_metal/generate_scar_priorities()
@@ -240,7 +238,7 @@
 
 	return check_temperature()
 
-// Removes, demotes, or promotes ourself to a new wound type if our temperature is past a heating/cooling threshold.
+// Removes, demotes, or promotes ourselves to a new wound type if our temperature is past a heating/cooling threshold.
 /datum/wound/burn/robotic/overheat/proc/check_temperature()
 	if (chassis_temperature < cooling_threshold)
 		if (demotes_to)
@@ -375,9 +373,7 @@
 
 /datum/wound_pregen_data/burnt_metal/severe
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/burn/robotic/overheat/severe
-
 	threshold_minimum = 80
 
 /datum/wound/burn/robotic/overheat/critical
@@ -427,7 +423,6 @@
 
 /datum/wound_pregen_data/burnt_metal/critical
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/burn/robotic/overheat/critical
 	threshold_minimum = 140
 

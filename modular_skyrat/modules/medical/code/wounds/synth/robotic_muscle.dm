@@ -20,7 +20,6 @@
 
 /datum/wound_pregen_data/muscle/robotic/servo
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/muscle/robotic/moderate
 	threshold_minimum = 35
 
@@ -29,7 +28,7 @@
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
 	desc = "An important hydraulic piston has been critically overused, resulting in total dysfunction until it recovers."
 	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
-	examine_desc = "is stiffly limp, extremities splayed out widely"
+	examine_desc = "is stiffly limp, the extremities splayed out widely"
 	occur_text = "goes completely stiff, seeming to lock into position"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2

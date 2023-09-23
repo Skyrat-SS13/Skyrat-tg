@@ -86,7 +86,7 @@
 
 	/// The bodyheat our victim must be at or above to start getting passive healing.
 	var/heat_thresh_to_heal = (BODYTEMP_HEAT_DAMAGE_LIMIT + 30)
-	/// The mult that heat differences between normal and bodytemp thresh is multiplied against. Controls passive heat healing.
+	/// The mult that heat differences between normal and bodytemp threshold is multiplied against. Controls passive heat healing.
 	var/heat_differential_healing_mult = 0.08
 
 	/// Percent chance for a heat repair to give the victim a message.
@@ -97,10 +97,8 @@
 
 /datum/wound_pregen_data/electrical_damage
 	abstract = TRUE
-
 	required_limb_biostate = (BIO_WIRED)
 	required_wounding_types = list(WOUND_SLASH)
-
 	wound_series = WOUND_SERIES_WIRE_SLASH_ELECTRICAL_DAMAGE
 
 /datum/wound_pregen_data/electrical_damage/generate_scar_priorities()
@@ -165,7 +163,7 @@
 	if (isliving(victim.pulledby))
 		var/mob/living/living_puller = victim.pulledby
 		if (living_puller.grab_state >= GRAB_AGGRESSIVE && living_puller.zone_selected == limb.body_zone)
-			progress_mult *= 0.5 // theyre holding it down
+			progress_mult *= 0.5 // they're holding it down
 
 	if (victim.stat == DEAD)
 		progress_mult *= ELECTRICAL_DAMAGE_DEAD_PROGRESS_MULT // doesnt totally stop it but slows it down a lot
@@ -198,7 +196,7 @@
 	if (victim.has_status_effect(/datum/status_effect/determined))
 		base_mult *= WOUND_DETERMINATION_BLEED_MOD
 
-	if (HAS_TRAIT(victim, TRAIT_SHOCKIMMUNE)) // itd be a bit cheesy to just become immune to this, so it only makes it a lot lot better
+	if (HAS_TRAIT(victim, TRAIT_SHOCKIMMUNE)) // it'd be a bit cheesy to just become immune to this, so it only makes it a lot lot better
 		base_mult *= shock_immunity_self_damage_reduction
 
 	var/splint_mult = (limb.current_gauze ? limb.current_gauze.splint_factor : 1)
@@ -522,9 +520,7 @@
 
 /datum/wound_pregen_data/electrical_damage/slash/moderate
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/slash/moderate
-
 	threshold_minimum = 35
 
 /datum/wound/electrical_damage/slash/severe
@@ -567,9 +563,7 @@
 
 /datum/wound_pregen_data/electrical_damage/slash/severe
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/slash/severe
-
 	threshold_minimum = 60
 
 /datum/wound/electrical_damage/slash/critical
@@ -578,7 +572,7 @@
 	occur_text = "lets out a violent \"zhwarp\" sound as angry electric arcs attack the surrounding air"
 	examine_desc = "has lots of wires mauled wires sticking out"
 	treat_text = "Immediate securing via gauze, followed by emergency cable replacement and securing via wirecutters or retractor. \
-		If the fault has become uncontrollable, extreme heat therapy is reccomended."
+		If the fault has become uncontrollable, extreme heat therapy is recommended."
 
 	severity = WOUND_SEVERITY_CRITICAL
 	wound_flags = (ACCEPTS_GAUZE|MANGLES_INTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
@@ -614,9 +608,7 @@
 
 /datum/wound_pregen_data/electrical_damage/slash/critical
 	abstract = FALSE
-
 	wound_path_to_generate = /datum/wound/electrical_damage/slash/critical
-
 	threshold_minimum = 100
 
 #undef ELECTRICAL_DAMAGE_ON_STASIS_MULT

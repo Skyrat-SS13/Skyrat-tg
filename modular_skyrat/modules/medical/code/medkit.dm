@@ -1,7 +1,6 @@
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit
 	name = "synthetic treatment kit"
 	desc = "A \"surgical\" duffel bag containing everything you need to treat the worst and <i>best</i> of inorganic wounds."
-
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
@@ -38,7 +37,6 @@
 	name = "synthetic trauma kit"
 	desc = "A \"surgical\" duffel bag containing everything you need to treat the worst and <i>best</i> of inorganic wounds. This one has extra tools and space \
 	for treatment of the WORST of the worst! However, it's highly specialized interior means it can ONLY hold synthetic repair tools."
-
 	storage_type = /datum/storage/duffel/synth_trauma_kit
 
 /datum/storage/duffel/synth_trauma_kit
@@ -92,7 +90,6 @@
 		/obj/item/clothing/glasses/sunglasses, // still provides some welding protection
 		/obj/item/clothing/head/utility/welding,
 		/obj/item/clothing/mask/gas/welding,
-
 		// Generic health items
 		/obj/item/healthanalyzer,
 	)
@@ -136,7 +133,7 @@
 /obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced
 	name = "advanced synth trauma kit"
 	desc = "An \"advanced\" \"surgical\" duffel bag containing <i>absolutely</i> everything you need to treat the worst and <i>best</i> of inorganic wounds. \
-	This one has extra tools and space for treatment of the ones even <i>worse</i> than the WORST of the worst! However, it's highly specialized interior \
+	This one has extra tools and space for treatment of the ones even <i>worse</i> than the WORST of the worst! However, its highly specialized interior \
 	means it can ONLY hold synthetic repair tools."
 
 	storage_type = /datum/storage/duffel/synth_trauma_kit/advanced
@@ -172,7 +169,7 @@
 	new /obj/item/stack/medical/gauze/twelve(src)
 	new /obj/item/healthanalyzer/advanced(src) // advanced, not a normal analyzer
 	new /obj/item/healthanalyzer/simple(src) // Buffs wound treatment and gives details of wounds it scans
-	// "Ghetto" tools, things you shouldnt ideally use but you might have to
+	// "Ghetto" tools, things you shouldn't ideally use but you might have to
 	new /obj/item/stack/medical/bone_gel(src) // Ghetto T2/3 option for securing internals
 	new /obj/item/plunger/reinforced(src) // Can be used to mold heated metal at T3 blunt
 
