@@ -396,7 +396,7 @@
 	name = "Loosened Screws"
 	desc = "Various semi-external fastening instruments have loosened, causing components to jostle, inhibiting limb control."
 	treat_text = "Recommend topical re-fastening of instruments with a screwdriver, though percussive maintenance via low-force bludgeoning may suffice - \
-	albiet at risk of worsening the injury."
+	albeit at risk of worsening the injury."
 	examine_desc = "appears to be loosely secured"
 	occur_text = "jostles awkwardly and seems to slightly unfasten"
 	severity = WOUND_SEVERITY_MODERATE
