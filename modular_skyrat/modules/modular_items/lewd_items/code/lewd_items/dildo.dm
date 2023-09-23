@@ -136,7 +136,7 @@
 				user.adjust_pleasure(8)
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
-			if(!target.is_mouth_covered())
+			if(target.is_mouth_covered())
 				to_chat(user, span_danger("Looks like [target]'s mouth is covered!"))
 				return FALSE
 
@@ -226,6 +226,11 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		customize(user)
 		color_changed = TRUE
 		return TRUE
+
+/obj/item/clothing/sextoy/dildo/custom_dildo/Initialize(mapload)
+	. = ..()
+	if(!length(dildo_sizes))
+		populate_dildo_designs()
 
 /// Choose a color and transparency level for the toy
 /obj/item/clothing/sextoy/dildo/custom_dildo/proc/customize(mob/living/user)
