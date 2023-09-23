@@ -142,7 +142,6 @@
 	if(held_item && (disabling || prob(30 * severity)))
 		if(istype(held_item, /obj/item/offhand))
 			held_item = victim.get_inactive_held_item()
-
 		if(held_item && victim.dropItemToGround(held_item))
 			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), span_warning("<b>The force on your [limb.plaintext_zone] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
