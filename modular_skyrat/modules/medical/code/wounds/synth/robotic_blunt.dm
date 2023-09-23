@@ -105,7 +105,6 @@
 
 /datum/wound_pregen_data/blunt_metal
 	abstract = TRUE
-
 	required_limb_biostate = BIO_METAL
 	wound_series = WOUND_SERIES_METAL_BLUNT_BASIC
 	required_wounding_types = list(WOUND_BLUNT)
@@ -114,10 +113,10 @@
 	return list("[BIO_METAL]")
 
 /datum/wound/blunt/robotic/set_victim(new_victim)
-	if (victim)
+	if(victim)
 		UnregisterSignal(victim, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(victim, COMSIG_MOB_AFTER_APPLY_DAMAGE)
-	if (new_victim)
+	if(new_victim)
 		RegisterSignal(new_victim, COMSIG_MOVABLE_MOVED, PROC_REF(victim_moved))
 		RegisterSignal(new_victim, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(victim_attacked))
 
@@ -194,12 +193,12 @@
 	var/effective_damage = (damage - blocked)
 
 	var/obj/item/stack/gauze = limb.current_gauze
-	if (gauze)
+	if(gauze)
 		effective_damage *= gauze.splint_factor
 
 	switch (limb.body_zone)
 
-		if (BODY_ZONE_CHEST)
+		if(BODY_ZONE_CHEST)
 			var/oscillation_mult = 1
 			if (victim.body_position == LYING_DOWN)
 				oscillation_mult *= 0.5
@@ -210,7 +209,7 @@
 			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(oscillation_damage * chest_attacked_stagger_chance_ratio))
 				stagger(stagger_damage, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
 
-	if (!uses_percussive_maintenance() || damage < percussive_maintenance_damage_min || damage > percussive_maintenance_damage_max || damagetype != BRUTE || sharpness)
+	if(!uses_percussive_maintenance() || damage < percussive_maintenance_damage_min || damage > percussive_maintenance_damage_max || damagetype != BRUTE || sharpness)
 		return
 	var/success_chance_mult = 1
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
@@ -642,7 +641,7 @@
 	var/should_update_disabling = ((!disabling && torn_open_state) || !initial(disabling))
 
 	crowbarred_open = torn_open_state
-	if (should_update_disabling)
+	if(should_update_disabling)
 		set_disabling(torn_open_state)
 
 /// The primary way to secure internals, with a screwdriver/wrench, very hard to do by yourself
@@ -876,34 +875,34 @@
 
 /datum/wound/blunt/robotic/secures_internals/critical/apply_wound(obj/item/bodypart/limb, silent, datum/wound/old_wound, smited, attack_direction, wound_source)
 	var/turf/limb_turf = get_turf(limb)
-	if (limb_turf)
+	if(limb_turf)
 		new /obj/effect/decal/cleanable/oil(limb_turf)
 	var/turf/next_turf = get_step(limb_turf, REVERSE_DIR(attack_direction))
-	if (next_turf)
+	if(next_turf)
 		new /obj/effect/decal/cleanable/oil(next_turf)
 
 	return ..()
 
 /datum/wound/blunt/robotic/secures_internals/critical/item_can_treat(obj/item/potential_treater)
-	if (!superstructure_remedied)
-		if (istype(potential_treater, /obj/item/construction/rcd))
+	if(!superstructure_remedied)
+		if(istype(potential_treater, /obj/item/construction/rcd))
 			return TRUE
-		if (limb_malleable() && istype(potential_treater, /obj/item/plunger))
+		if(limb_malleable() && istype(potential_treater, /obj/item/plunger))
 			return TRUE
 	return ..()
 
 /datum/wound/blunt/robotic/secures_internals/critical/check_grab_treatments(obj/item/potential_treater, mob/user)
-	if (potential_treater.tool_behaviour == TOOL_WELDER && (!superstructure_remedied && !limb_malleable()))
+	if(potential_treater.tool_behaviour == TOOL_WELDER && (!superstructure_remedied && !limb_malleable()))
 		return TRUE
 	return ..()
 
 /datum/wound/blunt/robotic/secures_internals/critical/treat(obj/item/item, mob/user)
-	if (!superstructure_remedied)
-		if (istype(item, /obj/item/construction/rcd))
+	if(!superstructure_remedied)
+		if(istype(item, /obj/item/construction/rcd))
 			return rcd_superstructure(item, user)
-		if (uses_percussive_maintenance() && istype(item, /obj/item/plunger))
+		if(uses_percussive_maintenance() && istype(item, /obj/item/plunger))
 			return plunge(item, user)
-		if (item.tool_behaviour == TOOL_WELDER && !limb_malleable() && isliving(victim.pulledby))
+		if(item.tool_behaviour == TOOL_WELDER && !limb_malleable() && isliving(victim.pulledby))
 			var/mob/living/living_puller = victim.pulledby
 			if (living_puller.grab_state >= GRAB_AGGRESSIVE) // only let other people do this
 				return heat_metal(item, user)
