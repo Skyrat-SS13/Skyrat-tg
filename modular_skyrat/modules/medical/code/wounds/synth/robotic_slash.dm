@@ -153,6 +153,8 @@
 	)
 	processing_shock_power_this_tick = 0
 
+/// If someone is aggrograbbing us and targetting our limb, intensity progress is multiplied against this.
+#define LIMB_AGGROGRABBED_PROGRESS_MULT 0.5
 /// Returns the multiplier used by our intensity progress. Intensity increment is multiplied against this.
 /datum/wound/electrical_damage/proc/get_progress_mult()
 	var/progress_mult = get_base_mult() * seconds_per_intensity_mult
@@ -163,12 +165,13 @@
 	if (isliving(victim.pulledby))
 		var/mob/living/living_puller = victim.pulledby
 		if (living_puller.grab_state >= GRAB_AGGRESSIVE && living_puller.zone_selected == limb.body_zone)
-			progress_mult *= 0.5 // they're holding it down
+			progress_mult *= LIMB_AGGROGRABBED_PROGRESS_MULT // they're holding it down
 
 	if (victim.stat == DEAD)
 		progress_mult *= ELECTRICAL_DAMAGE_DEAD_PROGRESS_MULT // doesnt totally stop it but slows it down a lot
 
-	return get_base_mult() * seconds_per_intensity_mult
+	return progress_mult
+#undef LIMB_AGGROGRABBED_PROGRESS_MULT
 
 /// Returns the multiplier used by the damage we deal.
 /datum/wound/electrical_damage/proc/get_damage_mult(mob/living/target)
@@ -410,7 +413,7 @@
 /datum/wound/electrical_damage/proc/fixed()
 	return (intensity <= minimum_intensity || isnull(limb))
 
-/// Returns the multiplier we apply to our outgoing damage based off our current intensity. Is always between 0-1. 
+/// Returns the multiplier we apply to our outgoing damage based off our current intensity. Is always between 0-1.
 /datum/wound/electrical_damage/proc/get_intensity_mult()
 	return (min((intensity / processing_full_shock_threshold), 1))
 

@@ -182,6 +182,16 @@
 			return found_wound
 	return null
 
+/// If our victim is lying down and is attacked in the chest, effective oscillation damage is multiplied against this.
+#define OSCILLATION_ATTACKED_LYING_DOWN_EFFECT_MULT 0.5
+
+/// If the attacker is wearing a diag hud, chance of percussive maintenance succeeding is multiplied against this.
+#define PERCUSSIVE_MAINTENANCE_DIAG_HUD_CHANCE_MULT 1.5
+/// If our wound has been scanned by a wound analyzer, chance of percussive maintenance succeeding is multiplied against this.
+#define PERCUSSIVE_MAINTENANCE_WOUND_SCANNED_CHANCE_MULT 1.5
+/// If the attacker is NOT our victim, chance of percussive maintenance succeeding is multiplied against this.
+#define PERCUSSIVE_MAINTENANCE_ATTACKER_NOT_VICTIM_CHANCE_MULT 2.5
+
 /datum/wound/blunt/robotic/proc/victim_attacked(datum/source, damage, damagetype, def_zone, blocked, wound_bonus, bare_wound_bonus, sharpness, attack_direction, attacking_item)
 	SIGNAL_HANDLER
 
@@ -201,19 +211,19 @@
 		if(BODY_ZONE_CHEST)
 			var/oscillation_mult = 1
 			if (victim.body_position == LYING_DOWN)
-				oscillation_mult *= 0.5
+				oscillation_mult *= OSCILLATION_ATTACKED_LYING_DOWN_EFFECT_MULT
 			var/oscillation_damage = effective_damage
 			var/stagger_damage = oscillation_damage * chest_attacked_stagger_mult
 			if (victim.has_status_effect(/datum/status_effect/determined))
 				oscillation_damage *= ROBOTIC_WOUND_DETERMINATION_STAGGER_MOVEMENT_MULT
 			if ((stagger_damage >= chest_attacked_stagger_minimum_score) && prob(oscillation_damage * chest_attacked_stagger_chance_ratio))
-				stagger(stagger_damage, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
+				stagger(stagger_damage * oscillation_mult, attack_direction, attacking_item, shift = stagger_damage * stagger_shake_shift_ratio)
 
 	if(!uses_percussive_maintenance() || damage < percussive_maintenance_damage_min || damage > percussive_maintenance_damage_max || damagetype != BRUTE || sharpness)
 		return
 	var/success_chance_mult = 1
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		success_chance_mult *= 1.5
+		success_chance_mult *= PERCUSSIVE_MAINTENANCE_WOUND_SCANNED_CHANCE_MULT
 	var/mob/living/user
 	if (isatom(attacking_item))
 		var/atom/attacking_atom = attacking_item
@@ -221,15 +231,22 @@
 
 		if (istype(user))
 			if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-				success_chance_mult *= 1.5
+				success_chance_mult *= PERCUSSIVE_MAINTENANCE_DIAG_HUD_CHANCE_MULT
 
 		if (user != victim)
-			success_chance_mult *= 2.5 // encourages people to get other people to beat the shit out of their limbs
+			success_chance_mult *= PERCUSSIVE_MAINTENANCE_ATTACKER_NOT_VICTIM_CHANCE_MULT // encourages people to get other people to beat the shit out of their limbs
 	if (prob(percussive_maintenance_repair_chance * success_chance_mult))
 		handle_percussive_maintenance_success(attacking_item, user)
 	else
 		handle_percussive_maintenance_failure(attacking_item, user)
 
+#undef OSCILLATION_ATTACKED_LYING_DOWN_EFFECT_MULT
+#undef PERCUSSIVE_MAINTENANCE_DIAG_HUD_CHANCE_MULT
+#undef PERCUSSIVE_MAINTENANCE_WOUND_SCANNED_CHANCE_MULT
+#undef PERCUSSIVE_MAINTENANCE_ATTACKER_NOT_VICTIM_CHANCE_MULT
+
+/// The percent, in decimal, of a stagger's shake() duration, that will be used in a addtimer() to queue aftershock().
+#define STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY 0.65 // 1 = happens at the end, .5 = happens halfway through
 /datum/wound/blunt/robotic/proc/stagger(stagger_score, attack_direction, obj/item/attacking_item, from_movement, shake_duration = base_stagger_shake_duration, shift, knockdown_ratio = stagger_aftershock_knockdown_ratio)
 	if (oscillating)
 		return
@@ -256,11 +273,14 @@
 	victim.balloon_alert(victim, "oscillation! stop moving")
 
 	victim.Shake(pixelshiftx = shift, pixelshifty = shift, duration = shake_duration)
-	var/aftershock_delay = (shake_duration / 1.35)
+	var/aftershock_delay = (shake_duration * STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY)
 	var/knockdown_time = stagger_score * knockdown_ratio
 	addtimer(CALLBACK(src, PROC_REF(aftershock), stagger_score, attack_direction, attacking_item, world.time, knockdown_time), aftershock_delay)
 	oscillating = TRUE
 
+#undef STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY
+
+#define AFTERSHOCK_GRACE_THRESHOLD_PERCENT 0.33 // lower mult = later grace period = more forgiving
 /datum/wound/blunt/robotic/proc/aftershock(stagger_score, attack_direction, obj/item/attacking_item, stagger_starting_time, knockdown_time)
 	if (!still_exists())
 		return FALSE
@@ -269,7 +289,7 @@
 	var/limb_message = "causing "
 	var/limb_affected
 
-	var/stopped_moving_grace_threshold = (world.time - ((world.time - stagger_starting_time) / 3)) // higher divisor = later grace period = more forgiving
+	var/stopped_moving_grace_threshold = (world.time - ((world.time - stagger_starting_time) * AFTERSHOCK_GRACE_THRESHOLD_PERCENT))
 	var/victim_stopped_moving = (last_time_victim_moved <= stopped_moving_grace_threshold)
 	if (victim_stopped_moving)
 		stagger_score *= aftershock_stopped_moving_score_mult
@@ -306,6 +326,8 @@
 
 	oscillating = FALSE
 
+#undef AFTERSHOCK_GRACE_THRESHOLD_PERCENT
+
 /// Called when percussive maintenance succeeds at its random roll.
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_success(attacking_item, mob/living/user)
 	victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] rattles from the impact, but looks a lot more secure!"), \
@@ -316,6 +338,10 @@
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_failure(attacking_item, mob/living/user)
 	to_chat(victim, span_warning("Your [limb.plaintext_zone] rattles around, but you don't sense any sign of improvement."))
 
+/// If our victim has no gravity, the effects of movement are multiplied by this.
+#define VICTIM_MOVED_NO_GRAVITY_EFFECT_MULT 0.5
+/// If our victim is resting, or is walking and isnt forced to move, the effects of movement are multiplied by this.
+#define VICTIM_MOVED_CAREFULLY_EFFECT_MULT 0.25
 /datum/wound/blunt/robotic/proc/victim_moved(datum/source, atom/old_loc, dir, forced, list/old_locs)
 	SIGNAL_HANDLER
 
@@ -325,9 +351,9 @@
 	if (gauze)
 		overall_mult *= gauze.splint_factor
 	if (!victim.has_gravity(get_turf(victim)))
-		overall_mult *= 0.5
+		overall_mult *= VICTIM_MOVED_NO_GRAVITY_EFFECT_MULT
 	else if (victim.body_position == LYING_DOWN || (!forced && victim.move_intent == MOVE_INTENT_WALK))
-		overall_mult *= 0.25
+		overall_mult *= VICTIM_MOVED_CAREFULLY_EFFECT_MULT
 	if (victim.has_status_effect(/datum/status_effect/determined))
 		overall_mult *= ROBOTIC_WOUND_DETERMINATION_MOVEMENT_EFFECT_MOD
 	if (limb.grasped_by)
@@ -342,15 +368,25 @@
 
 	last_time_victim_moved = world.time
 
+#undef VICTIM_MOVED_NO_GRAVITY_EFFECT_MULT
+#undef VICTIM_MOVED_CAREFULLY_EFFECT_MULT
+
+/// If our victim is buckled to a generic object, movement effects will be multiplied against this.
+#define VICTIM_BUCKLED_BASE_MOVEMENT_EFFECT_MULT 0.5
+/// If our victim is buckled to a medical bed (e.g. rollerbed), movement effects will be multiplied against this.
+#define VICTIM_BUCKLED_ROLLER_BED_MOVEMENT_EFFECT_MULT 0.05
 /// Returns a multiplier to our movement effects based on what our victim is buckled to.
 /datum/wound/blunt/robotic/proc/get_buckled_movement_consequence_mult(atom/movable/buckled_to)
 	if (!buckled_to)
 		return 1
 
 	if (istype(buckled_to, /obj/structure/bed/medical))
-		return 0.05
+		return VICTIM_BUCKLED_ROLLER_BED_MOVEMENT_EFFECT_MULT
 	else
-		return 0.5
+		return VICTIM_BUCKLED_BASE_MOVEMENT_EFFECT_MULT
+
+#undef VICTIM_BUCKLED_BASE_MOVEMENT_EFFECT_MULT
+#undef VICTIM_BUCKLED_ROLLER_BED_MOVEMENT_EFFECT_MULT
 
 /// If this wound can be treated in its current state by just hitting it with a low force object. Exists for conditional logic, e.g. "Should we respond
 /// to percussive maintenance right now?". Critical blunt uses this to only react when the limb is malleable and superstructure is broken.
@@ -537,6 +573,13 @@
 /datum/wound/blunt/robotic/secures_internals/proc/item_can_secure_internals(obj/item/potential_treater)
 	return (potential_treater.tool_behaviour == TOOL_SCREWDRIVER || potential_treater.tool_behaviour == TOOL_WRENCH || istype(potential_treater, /obj/item/stack/medical/bone_gel))
 
+#define CROWBAR_OPEN_SELF_TEND_DELAY_MULT 2
+#define CROWBAR_OPEN_KNOWS_ROBO_WIRES_DELAY_MULT 0.5
+#define CROWBAR_OPEN_KNOWS_ENGI_WIRES_DELAY_MULT 0.5
+#define CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT 0.5
+#define CROWBAR_OPEN_WOUND_SCANNED_DELAY_MULT 0.5
+/// If our limb is essential, damage dealt to it by tearing it open will be multiplied against this.
+#define CROWBAR_OPEN_ESSENTIAL_LIMB_DAMAGE_MULT 1.5
 // Can crowbar the limb to tear it open, inconsistant without shock protection, but massively increases the chance of normally securing internals
 /datum/wound/blunt/robotic/secures_internals/proc/crowbar_open(obj/item/crowbarring_item, mob/living/user)
 	if (!crowbarring_item.tool_start_check())
@@ -544,18 +587,18 @@
 
 	var/delay_mult = 1
 	if (user == victim)
-		delay_mult *= 2
+		delay_mult *= CROWBAR_OPEN_SELF_TEND_DELAY_MULT
 
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 0.5
+		delay_mult *= CROWBAR_OPEN_KNOWS_ROBO_WIRES_DELAY_MULT
 	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		delay_mult *= 0.5
+		delay_mult *= CROWBAR_OPEN_KNOWS_ENGI_WIRES_DELAY_MULT
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= 0.5
+		delay_mult *= CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		delay_mult *= 0.5
+		delay_mult *= CROWBAR_OPEN_WOUND_SCANNED_DELAY_MULT
 
-	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 
 	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item]...")
@@ -614,8 +657,8 @@
 		var/other_shock_text = ""
 		var/self_shock_text = ""
 		if (!limb_can_shock)
-			other_shock_text = ", and is stricken by golden bolts of electricity"
-			self_shock_text = ", but are immediately beset upon by the electricity contained within"
+			other_shock_text = ", and is striken by golden bolts of electricity"
+			self_shock_text = ", but are immediately shocked by the electricity contained within"
 		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] crowbar[other_shock_text]!")
 		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your crowbar[self_shock_text]!")
 		if (user != victim)
@@ -625,7 +668,7 @@
 		to_chat(user, span_green("You've torn [your_or_other] [limb.plaintext_zone] open, heavily damaging it but making it a lot easier to screwdriver the internals!"))
 		var/damage = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE
 		if (limb_essential()) // can't be disabled
-			damage *= 2
+			damage *= CROWBAR_OPEN_ESSENTIAL_LIMB_DAMAGE_MULT
 		limb.receive_damage(brute = ROBOTIC_BLUNT_CROWBAR_BRUTE_DAMAGE, wound_bonus = CANT_WOUND, damage_source = crowbarring_item)
 		set_torn_open(TRUE)
 
@@ -636,6 +679,13 @@
 	to_chat(victim, victim_message)
 	return TRUE
 
+#undef CROWBAR_OPEN_SELF_TEND_DELAY_MULT
+#undef CROWBAR_OPEN_KNOWS_ROBO_WIRES_DELAY_MULT
+#undef CROWBAR_OPEN_KNOWS_ENGI_WIRES_DELAY_MULT
+#undef CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT
+#undef CROWBAR_OPEN_WOUND_SCANNED_DELAY_MULT
+#undef CROWBAR_OPEN_ESSENTIAL_LIMB_DAMAGE_MULT
+
 /datum/wound/blunt/robotic/secures_internals/proc/set_torn_open(torn_open_state)
 	// if we aren't disabling but we were torn open, OR if we aren't disabling by default
 	var/should_update_disabling = ((!disabling && torn_open_state) || !initial(disabling))
@@ -644,6 +694,9 @@
 	if(should_update_disabling)
 		set_disabling(torn_open_state)
 
+/// If, on a secure internals attempt, we have less than this chance to succeed, we warn the user.
+#define SECURE_INTERNALS_CONFUSED_CHANCE_THRESHOLD 25
+#define SECURE_INTERNALS_FAILURE_BRUTE_DAMAGE 5
 /// The primary way to secure internals, with a screwdriver/wrench, very hard to do by yourself
 /datum/wound/blunt/robotic/secures_internals/proc/secure_internals_normally(obj/item/securing_item, mob/user)
 	if (!securing_item.tool_start_check())
@@ -671,9 +724,9 @@
 		chance *= 2
 		delay_mult *= 0.8
 
-	var/confused = (chance < 25) // generate chance beforehand, so we can use this var
+	var/confused = (chance < SECURE_INTERNALS_CONFUSED_CHANCE_THRESHOLD) // generate chance beforehand, so we can use this var
 
-	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	user?.visible_message(span_notice("[user] begins the delicate operation of securing the internals of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin the delicate operation of securing the internals of [your_or_other] [limb.plaintext_zone]..."))
@@ -691,9 +744,12 @@
 		ready_to_resolder = TRUE
 	else
 		user?.visible_message(span_danger("[user] screws up and accidentally damages [their_or_other] [limb.plaintext_zone]!"))
-		limb.receive_damage(brute = 5, damage_source = securing_item, wound_bonus = CANT_WOUND)
+		limb.receive_damage(brute = SECURE_INTERNALS_FAILURE_BRUTE_DAMAGE, damage_source = securing_item, wound_bonus = CANT_WOUND)
 
 	return TRUE
+
+#undef SECURE_INTERNALS_CONFUSED_CHANCE_THRESHOLD
+#undef SECURE_INTERNALS_FAILURE_BRUTE_DAMAGE
 
 // If we dont want to use a wrench/screwdriver, we can just use bone gel
 /datum/wound/blunt/robotic/secures_internals/proc/apply_gel(obj/item/stack/medical/bone_gel/gel, mob/user)
@@ -702,12 +758,15 @@
 		return TRUE
 
 	var/delay_mult = 1
+	if (victim == user)
+		delay_mult *= 0.5
+
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 
 	user.visible_message(span_danger("[user] begins hastily applying [gel] to [victim]'s [limb.plaintext_zone]..."), span_warning("You begin hastily applying [gel] to [user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone], disregarding the acidic effect it seems to have on the metal..."))
 
-	if (!do_after(user, (base_treat_time * 2 * (user == victim ? 1.5 : 1)) * delay_mult, target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
+	if (!do_after(user, (8 SECONDS * delay_mult), target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
 	gel.use(1)
@@ -727,14 +786,14 @@
 	if (!welding_item.tool_start_check())
 		return TRUE
 
-	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	victim.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin re-soldering [your_or_other] [limb.plaintext_zone]..."))
 
 	var/delay_mult = 1
 	if (welding_item.tool_behaviour == TOOL_CAUTERY)
-		delay_mult *= 3
+		delay_mult *= 3 // less efficient
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 
@@ -912,7 +971,7 @@
 	if(user.pulling != victim || user.zone_selected != limb.body_zone)
 		return FALSE
 
-	if (superstructure_remedied || !limb_malleable())
+	if(superstructure_remedied || !limb_malleable())
 		return FALSE
 
 	if(user.grab_state < GRAB_AGGRESSIVE)
@@ -933,6 +992,12 @@
 	mold_metal(user)
 	return TRUE
 
+/// If the user turns combat mode on after they start to mold metal, our limb takes this much brute damage.
+#define MOLD_METAL_SABOTAGE_BRUTE_DAMAGE 30 // really punishing
+/// Our limb takes this much brute damage on a failed mold metal attempt.
+#define MOLD_METAL_FAILURE_BRUTE_DAMAGE 5
+/// If the user's hand is unprotected from heat when they mold metal, we do this much burn damage to it.
+#define MOLD_METAL_HAND_BURNT_BURN_DAMAGE 5
 // Once our superstructure is heated (T2 robotic burn or 125% burn damage) we can aggro grab and start pushing the metal around
 /datum/wound/blunt/robotic/secures_internals/critical/proc/mold_metal(mob/living/carbon/human/user)
 	var/chance = 60
@@ -946,7 +1011,7 @@
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		chance *= 2
 
-	var/their_or_other = (user == victim ? "user.p_their()" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	if ((user != victim && user.combat_mode))
@@ -954,7 +1019,7 @@
 			span_danger("You maliciously mold [victim]'s [limb.plaintext_zone] into a weird shape, damaging it in the process!"), ignored_mobs = victim)
 		to_chat(victim, span_userdanger("[user] molds your [limb.plaintext_zone] into a weird shape, damaging it in the process!"))
 
-		limb.receive_damage(brute = 30, wound_bonus = CANT_WOUND, damage_source = user)
+		limb.receive_damage(brute = MOLD_METAL_SABOTAGE_BRUTE_DAMAGE, wound_bonus = CANT_WOUND, damage_source = user)
 	else if (prob(chance))
 		user.visible_message(span_green("[user] carefully molds [their_or_other] [limb.plaintext_zone] into the proper shape!"), \
 			span_green("You carefully mold [victim]'s [limb.plaintext_zone] into the proper shape!"), ignored_mobs = victim)
@@ -966,8 +1031,7 @@
 			span_danger("You accidentally mold [your_or_other] [limb.plaintext_zone] into the wrong shape!"), ignored_mobs = victim)
 		to_chat(victim, span_userdanger("[user] accidentally molds your [limb.plaintext_zone] into the wrong shape!"))
 
-		limb.receive_damage(brute = 5, damage_source = user, wound_bonus = CANT_WOUND)
-
+		limb.receive_damage(brute = MOLD_METAL_FAILURE_BRUTE_DAMAGE, damage_source = user, wound_bonus = CANT_WOUND)
 
 	var/sufficiently_insulated_gloves = FALSE
 	var/obj/item/clothing/gloves/worn_gloves = user.gloves
@@ -979,7 +1043,11 @@
 
 	to_chat(user, span_danger("You burn your hand on [victim]'s [limb.plaintext_zone]!"))
 	var/obj/item/bodypart/affecting = user.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-	affecting?.receive_damage(burn = 5, damage_source = limb)
+	affecting?.receive_damage(burn = MOLD_METAL_HAND_BURNT_BURN_DAMAGE, damage_source = limb)
+
+#undef MOLD_METAL_SABOTAGE_BRUTE_DAMAGE
+#undef MOLD_METAL_FAILURE_BRUTE_DAMAGE
+#undef MOLD_METAL_HAND_BURNT_BURN_DAMAGE
 
 // T2 burn wounds are required to mold metal, which finished the first step of treatment. Aggrograb someone and use a welder on them for a guaranteed wound with no damage
 /datum/wound/blunt/robotic/secures_internals/critical/proc/heat_metal(obj/item/welder, mob/living/user)
@@ -1039,7 +1107,7 @@
 		delay_mult *= 0.5
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		delay_mult *= 0.5
-			
+
 	var/final_time = (base_time * delay_mult)
 	var/misused = (final_time > base_time) // if we damage the limb when we're done
 
