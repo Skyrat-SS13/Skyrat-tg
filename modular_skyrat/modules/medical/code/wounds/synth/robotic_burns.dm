@@ -72,10 +72,7 @@
 	var/heat_shock_minimum_delta = 5
 
 	/// If we are sprayed with a extinguisher/shower with obscuring clothing on (think clothing that prevents surgery), the effect is multiplied against this.
-	var/sprayed_with_reagent_clothed_mult = 0.25
-
-	/// The max damage a given thermal shock can do. Used for preventing things like spalshing a beaker to instantly kill someone.
-	var/heat_shock_max_damage_per_shock = 40
+	var/sprayed_with_reagent_clothed_mult = 0.15
 
 	/// The wound we demote to when we go below cooling threshold. If null, removes us.
 	var/datum/wound/burn/robotic/demotes_to
@@ -204,9 +201,19 @@
 /// If heat_shock is TRUE, limb will receive brute damage based on the delta.
 /datum/wound/burn/robotic/overheat/proc/expose_temperature(temperature, coeff = 0.02, heat_shock = FALSE, heat_shock_damage_mult = 1)
 	var/temp_delta = (temperature - chassis_temperature) * coeff
-	var/heating_temp_delta_mult = 1
-	if (heat_shock && abs(temp_delta) > heat_shock_minimum_delta)
 
+	var/unclamped_new_temperature = (chassis_temperature + temp_delta)
+	var/clamped_new_temperature
+	var/heat_adjustment_used
+
+	if(temp_delta > 0)
+		clamped_new_temperature = min(min(chassis_temperature + max(temp_delta, 1), temperature), heating_threshold)
+		heat_adjustment_used = (clamped_new_temperature / unclamped_new_temperature)
+	else
+		clamped_new_temperature = max(max(chassis_temperature + min(temp_delta, -1), temperature), cooling_threshold)
+		heat_adjustment_used = (unclamped_new_temperature / clamped_new_temperature)
+
+	if (heat_shock && abs(temp_delta) > heat_shock_minimum_delta)
 		var/gauze_mult = 1
 		var/obj/item/stack/gauze = limb.current_gauze
 		if (gauze)
@@ -221,26 +228,16 @@
 			victim.visible_message(span_warning("[victim]'s [limb.plaintext_zone] strains from the thermal shock[clothing_text][gauze_or_not]!"))
 			playsound(victim, 'sound/items/welder.ogg', 25)
 
-		var/unclamped_damage = ((temp_delta * heat_shock_delta_to_damage_ratio) * gauze_mult) * heat_shock_damage_mult
-		var/damage = min(abs(unclamped_damage), heat_shock_max_damage_per_shock)
-		var/percent_remaining = (damage / abs(unclamped_damage))
-
-		heating_temp_delta_mult *= percent_remaining
-
+		var/damage = (((abs(temp_delta) * heat_shock_delta_to_damage_ratio) * gauze_mult) * heat_shock_damage_mult) * heat_adjustment_used
 		limb.receive_damage(brute = damage, wound_bonus = CANT_WOUND)
 
-	var/heating_temp_delta = temp_delta * heating_temp_delta_mult
-
-	if(temp_delta > 0)
-		chassis_temperature = min(chassis_temperature + max(heating_temp_delta, 1), temperature)
-	else
-		chassis_temperature = max(chassis_temperature + min(heating_temp_delta, -1), temperature)
+	chassis_temperature = clamped_new_temperature // can only be decimal or 1, so it can only reduce the intensity of the adjustment
 
 	return check_temperature()
 
 // Removes, demotes, or promotes ourselves to a new wound type if our temperature is past a heating/cooling threshold.
 /datum/wound/burn/robotic/overheat/proc/check_temperature()
-	if (chassis_temperature < cooling_threshold)
+	if (chassis_temperature <= cooling_threshold)
 		if (demotes_to)
 			victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] turns a more pleasant thermal color as it cools down a little..."), span_green("Your [limb.plaintext_zone] seems to cool down a little!"))
 			replace_wound(new demotes_to(cooling_threshold - cooling_demote_buffer))
