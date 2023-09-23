@@ -548,9 +548,12 @@
 	new_profile.socks = target.socks
 
 	// SKYRAT EDIT START
+	new_profile.bra = target.bra
+
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
 	new_profile.socks_color = target.socks_color
+	new_profile.bra_color = target.bra_color
 	new_profile.eye_color_left = target.eye_color_left
 	new_profile.eye_color_right = target.eye_color_right
 	new_profile.emissive_eyes = target.emissive_eyes
@@ -790,9 +793,12 @@
 	user.socks = chosen_profile.socks
 
 	// SKYRAT EDIT START
+	user.bra = chosen_profile.bra
+
 	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt_color = chosen_profile.undershirt_color
 	user.socks_color = chosen_profile.socks_color
+	user.bra_color = chosen_profile.bra_color
 	user.emissive_eyes = chosen_profile.emissive_eyes
 	user.dna.mutant_bodyparts = chosen_dna.mutant_bodyparts.Copy()
 	user.dna.body_markings = chosen_dna.body_markings.Copy()
@@ -974,27 +980,6 @@
 	/// ID HUD icon associated with the profile
 	var/id_icon
 
-	/// SKYRAT EDIT START
-	var/underwear_color
-	var/undershirt_color
-	var/socks_color
-	var/eye_color_left
-	var/eye_color_right
-	var/emissive_eyes
-	var/list/grad_style = list("None", "None")
-	var/list/grad_color = list(null, null)
-
-	var/physique
-	var/list/worn_icon_digi_list = list()
-	var/list/worn_icon_monkey_list = list()
-	var/list/worn_icon_teshari_list = list()
-	var/list/worn_icon_vox_list = list()
-	var/list/supports_variations_flags_list = list()
-	var/scream_type
-	var/laugh_type
-	var/age
-	var/list/quirks = list()
-	/// SKYRAT EDIT END
 
 	/// The TTS voice of the profile source
 	var/voice
@@ -1037,6 +1022,8 @@
 	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
+	new_profile.bra = bra
+	new_profile.bra_color = bra_color
 	new_profile.eye_color_left = eye_color_left
 	new_profile.eye_color_right = eye_color_right
 	new_profile.emissive_eyes = emissive_eyes
