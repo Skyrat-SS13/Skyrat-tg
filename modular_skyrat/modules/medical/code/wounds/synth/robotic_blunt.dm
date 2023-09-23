@@ -1069,11 +1069,10 @@
 
 	var/wound_path = /datum/wound/burn/robotic/overheat/severe
 	if (user != victim && user.combat_mode)
-		//wound_path = /datum/wound/burn/robotic/overheat/critical
+		wound_path = /datum/wound/burn/robotic/overheat/critical // it really isnt that bad, overheat wounds are a bit funky
 		user.visible_message(span_danger("[user] heats [victim]'s [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"), \
 			span_danger("You heat [victim]'s [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"), ignored_mobs = victim)
 		to_chat(victim, span_userdanger("[user] heats your [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"))
-		limb.receive_damage(burn = 20, damage_source = welder)
 
 	var/datum/wound/burn/robotic/overheat/overheat_wound = new wound_path
 	overheat_wound.apply_wound(limb, wound_source = welder)
