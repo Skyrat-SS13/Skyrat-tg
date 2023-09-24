@@ -56,17 +56,15 @@
 			continue
 		if (isnull(creature.mind))
 			trimmed_list.Remove(creature)
-		//SKYRAT EDIT ADDITION
-		if(is_banned_from(M.client.ckey, BAN_ANTAGONIST))
-			trimmed_list.Remove(M)
 			continue
-		if(!M.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
-			trimmed_list.Remove(M)
+		//SKYRAT EDIT ADDITION
+		if(is_banned_from(creature.client.ckey, BAN_ANTAGONIST))
+			trimmed_list.Remove(creature)
+			continue
+		if(!creature.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
+			trimmed_list.Remove(creature)
 			continue
 		//SKYRAT EDIT END
-		if(M.client.get_remaining_days(minimum_required_age) > 0)
-			trimmed_list.Remove(M)
-			continue
 		if(creature.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(creature)
 			continue
