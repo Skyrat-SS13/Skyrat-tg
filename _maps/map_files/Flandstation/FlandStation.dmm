@@ -20535,6 +20535,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/commons)
+"gSD" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/maintenance/aft)
 "gSE" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
@@ -25928,7 +25936,7 @@
 	id = "evastorage";
 	name = "E.V.A. Shutters";
 	pixel_x = 6;
-	pixel_y = 8;
+	pixel_y = 8
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
@@ -30570,8 +30578,7 @@
 /area/station/maintenance/port/fore)
 "ktg" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Laser Room";
-	req_access_txt = "10"
+	name = "Laser Room"
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
@@ -34154,7 +34161,6 @@
 /area/station/medical/patients_rooms)
 "lzs" = (
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12";
 	name = "Maintenance Access"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -38437,8 +38443,7 @@
 /area/station/maintenance/port/central)
 "mYd" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Supermatter Engine Room";
-	req_access_txt = "10"
+	name = "Supermatter Engine Room"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -47275,8 +47280,7 @@
 	id = "securestorage";
 	name = "Secure Storage Toggle";
 	pixel_x = 6;
-	pixel_y = -24;
-	req_access_txt = "11"
+	pixel_y = -24
 	},
 /obj/machinery/light_switch{
 	pixel_x = -24;
@@ -53064,8 +53068,7 @@
 /area/station/maintenance/starboard/central)
 "rLY" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Storage Office";
-	req_access_txt = "12"
+	name = "Storage Office"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -58204,15 +58207,14 @@
 "tvE" = (
 /obj/docking_port/stationary{
 	dir = 8;
-	dwidth = 3;
-	height = 15;
+	dwidth = 1;
+	height = 13;
 	name = "arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/box;
-	shuttle_id = "arrival_stationary";
-	width = 7
+	shuttle_id = "arrivals_stationary";
+	width = 5
 	},
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
 "tvG" = (
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/port)
@@ -58817,7 +58819,6 @@
 /area/station/science/research)
 "tGd" = (
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12";
 	name = "Maintenance Access"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -59081,8 +59082,7 @@
 "tKb" = (
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
-	name = "Supermatter Chamber";
-	req_access_txt = "10"
+	name = "Supermatter Chamber"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -65021,8 +65021,7 @@
 /area/space/nearstation)
 "vBm" = (
 /obj/machinery/door/airlock/command{
-	name = "Chief Engineer's Quarters";
-	req_access_txt = "56"
+	name = "Chief Engineer's Quarters"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -65777,8 +65776,7 @@
 /area/station/science/research)
 "vOj" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Supermatter Engine Room";
-	req_access_txt = "10"
+	name = "Supermatter Engine Room"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
@@ -67252,8 +67250,7 @@
 /area/space)
 "woN" = (
 /obj/machinery/door/airlock/atmos/glass{
-	name = "Atmospherics Desk";
-	req_access_txt = "24"
+	name = "Atmospherics Desk"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -69639,8 +69636,7 @@
 "wZZ" = (
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
-	name = "Supermatter Chamber";
-	req_access_txt = "10"
+	name = "Supermatter Chamber"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -91665,9 +91661,9 @@ csJ
 nnx
 nnx
 nnx
+nnx
+nnx
 tvE
-nnx
-nnx
 nnx
 csJ
 aUz
@@ -118691,7 +118687,7 @@ eGR
 eGR
 mze
 cMa
-qRg
+gSD
 isZ
 sGU
 mYC
