@@ -56,6 +56,8 @@
 		var/item = pick(contains)
 		new item(C)
 
+// SKYRAT EDIT START
+/*
 /datum/supply_pack/organic/exoticseeds
 	name = "Exotic Seeds Crate"
 	desc = "Any entrepreneuring botanist's dream. Contains twelve different seeds, \
@@ -78,6 +80,41 @@
 	)
 	crate_name = "exotic seeds crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
+*/
+
+/datum/supply_pack/organic/randomized/exoticseeds // Randomized seed crate, at least 9000 times less boring.
+	name = "Exotic Seeds Crate"
+	desc = "Any entrepreneuring botanist's dream. Contains twelve different seeds, \
+		including one replica-pod seed and two mystery seeds!"
+	cost = CARGO_CRATE_VALUE * 3
+	access_view = ACCESS_HYDROPONICS
+	contains = list( 	// copied from maintenance_loot_common.dm
+		/obj/item/seeds/random = 150,
+		/obj/item/seeds/aloe = 25,
+		/obj/item/seeds/amanita = 25,
+		/obj/item/seeds/cannabis = 25,
+		/obj/item/seeds/bamboo = 25,
+		/obj/item/seeds/cocaleaf = 10,
+		/obj/item/seeds/cocoapod = 25,
+		/obj/item/seeds/cotton = 25,
+		/obj/item/seeds/glowshroom = 10,
+		/obj/item/seeds/greenbean = 10,
+		/obj/item/seeds/herbs = 25,
+		/obj/item/seeds/kronkus = 200,
+		/obj/item/seeds/odious_puffball = 200,
+		/obj/item/seeds/replicapod = 75,
+		/obj/item/seeds/shrub = 25,
+		/obj/item/seeds/starthistle/corpse_flower = 10,
+		/obj/item/seeds/tea/catnip = 10,
+	)
+	crate_name = "exotic seeds crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
+
+/datum/supply_pack/organic/randomized/exoticseeds/fill(obj/structure/closet/crate/C)
+	for(var/i in 1 to 12)
+		var/item = pick_weight(contains)
+		new item(C)
+// SKYRAT EDIT END
 
 /datum/supply_pack/organic/food
 	name = "Food Crate"
