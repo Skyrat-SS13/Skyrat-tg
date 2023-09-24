@@ -444,7 +444,7 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.5
 
-	var/their_or_other = (user == victim ? "[user.p_their()]]" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
 	var/your_or_other = (user == victim ? "your" : "[user]'s")
 	victim.visible_message(span_notice("[user] begins fastening the screws of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin fastening the screws of [your_or_other] [limb.plaintext_zone]..."))
