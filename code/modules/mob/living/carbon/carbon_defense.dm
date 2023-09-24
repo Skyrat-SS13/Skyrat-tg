@@ -473,6 +473,7 @@
 	if (immediately_stun)
 		if (paralyze)
 			//Paralyze(40) - SKYRAT EDIT REMOVAL
+			StaminaKnockdown(10, TRUE) // SKYRAT EDIT ADDITION
 		else
 			Knockdown(stun_duration)
 	//Jitter and other fluff.
