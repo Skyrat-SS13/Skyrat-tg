@@ -444,8 +444,8 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.5
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	victim.visible_message(span_notice("[user] begins fastening the screws of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin fastening the screws of [your_or_other] [limb.plaintext_zone]..."))
 
@@ -597,8 +597,8 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= CROWBAR_OPEN_WOUND_SCANNED_DELAY_MULT
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item]...")
 
@@ -725,8 +725,8 @@
 
 	var/confused = (chance < SECURE_INTERNALS_CONFUSED_CHANCE_THRESHOLD) // generate chance beforehand, so we can use this var
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	user?.visible_message(span_notice("[user] begins the delicate operation of securing the internals of [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin the delicate operation of securing the internals of [your_or_other] [limb.plaintext_zone]..."))
 	if (confused)
@@ -785,8 +785,8 @@
 	if (!welding_item.tool_start_check())
 		return TRUE
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	victim.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."), \
 		span_notice("You begin re-soldering [your_or_other] [limb.plaintext_zone]..."))
 
@@ -1010,7 +1010,7 @@
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
 		chance *= 2
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	if ((user != victim && user.combat_mode))
@@ -1053,7 +1053,7 @@
 	if (!welder.tool_use_check())
 		return TRUE
 
-	var/their_or_other = (user == victim ? "[user.p_their()]" : "[user]'s")
+	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	user?.visible_message(span_danger("[user] carefully holds [welder] to [their_or_other] [limb.plaintext_zone], slowly heating it..."), \
@@ -1197,7 +1197,7 @@
 	return TRUE
 
 /datum/wound/blunt/robotic/secures_internals/critical/handle_percussive_maintenance_success(attacking_item, mob/living/user)
-	var/your_or_other = (user == victim ? "your" : "[user]'s")
+	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] gets smashed into a proper shape!"), \
 		span_green("Your [limb.plaintext_zone] gets smashed into a proper shape!"))
 
