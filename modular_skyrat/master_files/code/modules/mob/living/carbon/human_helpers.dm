@@ -8,3 +8,10 @@
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; they're still twitching on occasion, perhaps [p_they()] can still be saved..!")
 	else
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and they've degraded beyond revival...")
+
+///copies over clothing preferences like underwear to another human
+/mob/living/carbon/human/copy_clothing_prefs(mob/living/carbon/human/destination)
+	. = ..()
+
+	destination.bra = bra
+	destination.bra_color = bra_color
