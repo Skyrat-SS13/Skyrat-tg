@@ -67,7 +67,6 @@ const BASEICONS = {
   'Security Medic': 'heart-pulse',
   // SKYRAT EDIT END
 } as const;
-<<<<<<< HEAD
 
 // SKYRAT EDIT START - ALT TITLES
 const ALTTITLES = {
@@ -280,7 +279,3 @@ const ALTTITLES = {
 // Combine the Base icons and ALt titles
 export const JOB2ICON = { ...BASEICONS, ...ALTTITLES } as const;
 // SKYRAT EDIT END
-
-export type AvailableJob = keyof typeof JOB2ICON;
-=======
->>>>>>> a3849062b87 (Feature: bitrunner, a new supply role (READY) (#77259))

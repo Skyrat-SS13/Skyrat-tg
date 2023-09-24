@@ -54,7 +54,8 @@
 		if (isnull(creature.client)) // Are they connected?
 			trimmed_list.Remove(creature)
 			continue
-<<<<<<< HEAD
+		if (isnull(creature.mind))
+			trimmed_list.Remove(creature)
 		//SKYRAT EDIT ADDITION
 		if(is_banned_from(M.client.ckey, BAN_ANTAGONIST))
 			trimmed_list.Remove(M)
@@ -65,10 +66,6 @@
 		//SKYRAT EDIT END
 		if(M.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(M)
-=======
-		if (isnull(creature.mind))
-			trimmed_list.Remove(creature)
->>>>>>> a3849062b87 (Feature: bitrunner, a new supply role (READY) (#77259))
 			continue
 		if(creature.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(creature)

@@ -115,8 +115,7 @@
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
 #define ROLE_SYNDICATE_DRONE "Syndicate Drone"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
-<<<<<<< HEAD
-#define ROLE_BOT "Bot"
+#define ROLE_ZOMBIE "Zombie"
 //SKYRAT EDIT START
 #define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
 #define ROLE_DS2 "DS2 Syndicate"
@@ -124,10 +123,6 @@
 #define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
 #define ROLE_PORT_TARKON "Port Tarkon Survivor"
 //SKYRAT EDIT END
-=======
-#define ROLE_ZOMBIE "Zombie"
->>>>>>> a3849062b87 (Feature: bitrunner, a new supply role (READY) (#77259))
-
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
