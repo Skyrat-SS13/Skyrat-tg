@@ -171,6 +171,17 @@
 
 	var/reagent_coeff = base_reagent_temp_coefficient
 	if (!get_location_accessible(victim, limb.body_zone))
+		if (ishuman(victim))
+			// hi! its niko! small rant
+			// this proc has no goddamn reason to be on human, it could so easily just have used a proc on carbon that would get the required bodyparts to check
+			// but no. it had to hardcode the list in the proc itself so its impossible to modularly fix this
+			// so instead we just say fuck it and hope to god only human subtypes get this wound
+			// tldr; ryll why
+			var/mob/living/carbon/human/human_victim = victim
+			for (var/obj/item/clothing/iter_clothing as anything in human_victim.clothingonpart(limb))
+				if (iter_clothing.clothing_flags & THICKMATERIAL)
+					return
+
 		reagent_coeff *= sprayed_with_reagent_clothed_mult
 
 	if (istype(source.my_atom, /obj/effect/particle_effect/water/extinguisher)) // this used to be a lot, lot more modular, but sadly reagent temps/volumes and shit are horribly inconsistant
