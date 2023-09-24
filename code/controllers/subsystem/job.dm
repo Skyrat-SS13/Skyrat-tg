@@ -705,14 +705,10 @@ SUBSYSTEM_DEF(job)
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
 	unassigned -= player
-<<<<<<< HEAD
-	player.ready = PLAYER_NOT_READY
-	player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
-=======
 	if(!run_divide_occupation_pure)
 		to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 		player.ready = PLAYER_NOT_READY
->>>>>>> 41bba9931fe (Prevents players from getting antagonist if they can't qualify for any role beforehand. (#78511))
+		player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
 
 
 /datum/controller/subsystem/job/Recover()
