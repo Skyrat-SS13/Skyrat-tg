@@ -468,19 +468,13 @@
 			C.electrocute_act(shock_damage*0.75, src, 1, flags, jitter_time, stutter_time, stun_duration)
 	//Stun
 	var/should_stun = (!(flags & SHOCK_TESLA) || siemens_coeff > 0.5) && !(flags & SHOCK_NOSTUN)
-<<<<<<< HEAD
-	if(should_stun)
-		StaminaKnockdown(10, TRUE)
-		//Paralyze(40) - SKYRAT EDIT REMOVAL
-=======
 	var/paralyze = !(flags & SHOCK_KNOCKDOWN)
 	var/immediately_stun = should_stun && !(flags & SHOCK_DELAY_STUN)
 	if (immediately_stun)
 		if (paralyze)
-			Paralyze(stun_duration)
+			//Paralyze(40) - SKYRAT EDIT REMOVAL
 		else
 			Knockdown(stun_duration)
->>>>>>> e4764439992 (Adds some extra flags and args to electrocute_act (#78374))
 	//Jitter and other fluff.
 	do_jitter_animation(300)
 	adjust_jitter(jitter_time)
@@ -490,18 +484,12 @@
 	return shock_damage
 
 ///Called slightly after electrocute act to apply a secondary stun.
-<<<<<<< HEAD
-/mob/living/carbon/proc/secondary_shock(should_stun)
-	if(should_stun)
-		//Paralyze(60) - SKYRAT EDIT REMOVAL
-		StaminaKnockdown(10, TRUE) //SKYRAT EDIT ADDITION
-=======
 /mob/living/carbon/proc/secondary_shock(paralyze, stun_duration)
 	if (paralyze)
-		Paralyze(stun_duration)
+		//Paralyze(60) - SKYRAT EDIT REMOVAL
+		StaminaKnockdown(10, TRUE) //SKYRAT EDIT ADDITION
 	else
 		Knockdown(stun_duration)
->>>>>>> e4764439992 (Adds some extra flags and args to electrocute_act (#78374))
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
 	var/nosound = FALSE //SKYRAT EDIT ADDITION - EMOTES
