@@ -102,7 +102,7 @@ const ProductCategory = (props, context) => {
               </Box>
               {product.keepable ? (
                 <Box opacity={0.85} textAlign="center" bold>
-                  This NIFSoft carries between rounds
+                  This NIFSoft carries between shifts
                 </Box>
               ) : (
                 <> </>
