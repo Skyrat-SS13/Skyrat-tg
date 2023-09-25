@@ -26,7 +26,6 @@
 	},
 /obj/structure/fans/tiny/invisible,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "ef" = (
@@ -54,7 +53,7 @@
 "gu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "hH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -70,7 +69,6 @@
 /obj/machinery/door/airlock/titanium,
 /obj/structure/fans/tiny/invisible,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "ik" = (
@@ -80,6 +78,10 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/titanium,
+/area/shuttle/tarkon_driver)
+"io" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "iF" = (
 /obj/structure/cable,
@@ -96,7 +98,7 @@
 /area/shuttle/tarkon_driver)
 "ni" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "nn" = (
@@ -129,7 +131,10 @@
 /area/shuttle/tarkon_driver)
 "st" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/atmospherics/components/tank/oxygen,
+/obj/machinery/atmospherics/components/unary/portables_connector/layer4{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "tV" = (
@@ -142,10 +147,7 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "vo" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "zo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -239,11 +241,8 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "HI" = (
-/obj/structure/window/reinforced/shuttle/spaceship,
-/obj/machinery/door/poddoor{
-	id = "driverwindows"
-	},
-/turf/open/floor/mineral/titanium,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "HY" = (
 /obj/machinery/door/airlock/titanium,
@@ -300,8 +299,7 @@
 "Ml" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "Nj" = (
 /obj/structure/chair/comfy/shuttle{
@@ -313,10 +311,7 @@
 /area/shuttle/tarkon_driver)
 "Ow" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/binary/volume_pump/layer4{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "OJ" = (
 /obj/machinery/suit_storage_unit/industrial,
@@ -374,10 +369,6 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
-"Ub" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
-/turf/open/floor/mineral/titanium,
-/area/shuttle/tarkon_driver)
 "Ue" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -410,6 +401,11 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/mineral/titanium,
+/area/shuttle/tarkon_driver)
+"VM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/catwalk_floor/iron,
 /area/shuttle/tarkon_driver)
 "Ww" = (
 /obj/structure/rack/shelf,
@@ -472,7 +468,7 @@ OJ
 JF
 fy
 fy
-JF
+tV
 LG
 DF
 ef
@@ -499,9 +495,9 @@ hH
 zL
 "}
 (4,1,1) = {"
-GN
-HI
-LG
+JF
+fy
+tV
 JF
 Uu
 JF
@@ -517,7 +513,7 @@ LG
 GN
 "}
 (5,1,1) = {"
-HI
+fy
 JS
 fE
 Fi
@@ -529,13 +525,13 @@ fg
 Rg
 LG
 Rn
-Ub
+Rg
 ni
 st
 GN
 "}
 (6,1,1) = {"
-HI
+fy
 Al
 Zm
 Kv
@@ -547,31 +543,31 @@ gu
 gu
 Mh
 gu
-Rg
-XN
-Rg
+VM
+VM
+vo
 if
 "}
 (7,1,1) = {"
-HI
+fy
 JY
 Zm
 Ye
 gu
-Rg
+vo
 cP
-Rg
-XN
-Rg
+vo
+HI
+vo
 HY
-gu
+io
 vo
 Ml
 Ow
 cS
 "}
 (8,1,1) = {"
-HI
+fy
 Fp
 bF
 Ue
@@ -589,9 +585,9 @@ Jo
 GN
 "}
 (9,1,1) = {"
-GN
-HI
-LG
+JF
+fy
+tV
 JF
 Uu
 JF
@@ -634,7 +630,7 @@ nn
 JF
 fy
 fy
-JF
+tV
 LG
 Pn
 Vt

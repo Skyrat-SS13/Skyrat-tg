@@ -129,6 +129,7 @@
 	id_trim = /datum/id_trim/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate
 	gloves = /obj/item/clothing/gloves/combat
+	back = /obj/item/mod/control/pre_equipped/tarkon
 	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 5, /obj/item/multitool/abductor)
 
 /obj/effect/mob_spawn/corpse/human/tarkon
@@ -136,11 +137,11 @@
 	outfit = /datum/outfit/tarkon/loot
 
 /obj/structure/spawner/tarkon_xenos
-	name = "infested nest"
-	desc = "A deep tunnel lined with weeds, something can be heard stirring within..."
+	name = "infested warren"
+	desc = "A deep tunnel that goes deeper than any light can reach. A distant roaring could be heard within..."
 	icon_state = "hole"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
-	max_integrity = 300
+	max_integrity = 500
 	max_mobs = 7
 	spawn_time = 20 SECONDS
 	mob_types = list(
@@ -185,3 +186,25 @@
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(rustle)), 50)
 	do_jiggle()
+
+/obj/structure/spawner/tarkon_xenos/common
+	name = "infested nest"
+	desc = "A deep tunnel lined with weeds, something can be heard stirring within..."
+	icon_state = "hole"
+	icon = 'icons/mob/simple/lavaland/nest.dmi'
+	max_integrity = 300
+	max_mobs = 4
+	spawn_time = 30 SECONDS
+	boss_mob = /mob/living/simple_animal/hostile/alien/queen
+	loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
+
+/obj/structure/spawner/tarkon_xenos/minor
+	name = "infested tunnel"
+	desc = "A tunnel lined with weeds, something can be heard clicking deep within..."
+	icon_state = "hole"
+	icon = 'icons/mob/simple/lavaland/nest.dmi'
+	max_integrity = 150
+	max_mobs = 2
+	spawn_time = 30 SECONDS
+	boss_mob = /mob/living/simple_animal/hostile/alien/sentinel
+	loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
