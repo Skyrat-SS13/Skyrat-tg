@@ -1,7 +1,7 @@
 /obj/machinery/rnd/production/colony_lathe
 	name = "protolathe"
 	desc = "Converts raw materials into useful objects."
-	icon = 'modular_skyrat/modules/fancy_fabricators/icons/colony_fabricator.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "colony_lathe"
 	circuit = null
 	production_animation = "colony_lathe_n"
@@ -68,7 +68,7 @@
 		These bad boys are seen just about anywhere someone would want or need to build fast, damn the consequences. \
 		That tends to be colonies, especially on dangerous worlds, where the influences of this one machine can be seen \
 		in every bit of architecture."
-	icon = 'modular_skyrat/modules/fancy_fabricators/icons/colony_fabricator.dmi'
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "colony_lathe_packed"
 	w_class = WEIGHT_CLASS_BULKY
 	/// What structure is created by this item.
