@@ -24,3 +24,8 @@
 	results = list(/datum/reagent/medicine/taste_suppressor = 3, /datum/reagent/chlorine = 1) // The chlorine dissociated from the sodium to allow for the synthesis of the taste suppressor
 	required_reagents = list(/datum/reagent/consumable/salt = 2, /datum/reagent/sulfur = 1, /datum/reagent/water = 1)
 	required_temp = 300
+
+/datum/chemical_reaction/medicine/dermagen
+	results = list(/datum/reagent/medicine/dermagen = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol = 4, /datum/reagent/medicine/c2/synthflesh = 3, /datum/reagent/medicine/mine_salve = 3)
+	mix_message = "The slurry congeals into a thick cream."
