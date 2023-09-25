@@ -18,6 +18,7 @@
 	. = ..()
 
 	soundloop = new(src, FALSE)
+	update_designs()
 
 	if(!mapload)
 		flick("colony_lathe_deploy", src) // Sick ass deployment animation
@@ -61,22 +62,12 @@
 	efficiency_coeff = 1
 
 /obj/machinery/rnd/production/colony_lathe/update_designs()
-	var/previous_design_count = cached_designs.len
+	var/list/designs_to_pull_from = subtypesof(/datum/design/colony_fabricator)
 
-	cached_designs.Cut()
-
-	for(var/design_id in stored_research.researched_designs)
-		var/datum/design/colony_fabricator/design = SSresearch.techweb_design_by_id(design_id)
-
-		if(istype(design))
-			cached_designs |= design
-
-	var/design_delta = cached_designs.len - previous_design_count
-
-	if(design_delta > 0)
-		say("Received [design_delta] new design[design_delta == 1 ? "" : "s"].")
-		playsound(src, 'sound/machines/twobeep_high.ogg', 50, TRUE)
-
+	for(var/datum/design/colony_fabricator/design in designs_to_pull_from)
+		var/datum/design/new_design = new design
+		new_design.InitializeMaterials()
+		cached_designs |= new_design
 	update_static_data_for_all_viewers()
 
 // Item for carrying the lathe around and building it

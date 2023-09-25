@@ -6,13 +6,12 @@
 // Basetype for all of these to use
 
 /datum/design/colony_fabricator
+	id = DESIGN_ID_IGNORE
 
 // Solar panels and trackers
 
 /datum/design/colony_fabricator/flatpack_solar_panel
 	name = "Flatpacked Solar Panel"
-	id = "flatpack_solar_panel"
-	build_type = COLONY_PRINTER
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*1.75, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 3)
 	build_path = /obj/item/flatpacked_machine/solar
 	category = list(
@@ -23,8 +22,6 @@
 
 /datum/design/colony_fabricator/flatpack_solar_tracker
 	name = "Flatpacked Solar Tracker"
-	id = "flatpack_solar_tracker"
-	build_type = COLONY_PRINTER
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 3.5)
 	build_path = /obj/item/flatpacked_machine/solar_tracker
 	category = list(
