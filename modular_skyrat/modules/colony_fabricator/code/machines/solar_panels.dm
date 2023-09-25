@@ -2,6 +2,7 @@
 
 /obj/machinery/power/solar/quickdeploy
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
+	flags_1 = NODECONSTRUCT_1
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/solar
 
@@ -39,6 +40,7 @@
 
 /obj/machinery/power/tracker/quickdeploy
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
+	flags_1 = NODECONSTRUCT_1
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/solar_tracker
 
