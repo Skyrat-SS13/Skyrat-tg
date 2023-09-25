@@ -1,5 +1,5 @@
 /obj/machinery/rnd/production/colony_lathe
-	name = "protolathe"
+	name = "rapid construction fabricator"
 	desc = "Converts raw materials into useful objects."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "colony_lathe"
