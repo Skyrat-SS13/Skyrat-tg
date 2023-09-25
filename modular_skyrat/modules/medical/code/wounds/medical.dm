@@ -31,6 +31,8 @@
 /obj/item/stack/medical/gauze/Destroy()
 	bodypart?.current_gauze = null
 	bodypart?.owner?.update_bandage_overlays()
+	if (bodypart) // A PR upstream will come down and add this to base Destroy() of gauze, plesae let it override. PR number: PR NOT MADE, 9/24/23 ~Niko
+		SEND_SIGNAL(bodypart, COMSIG_BODYPART_GAUZE_DESTROYED)
 	set_limb(null)
 	return ..()
 
