@@ -61,13 +61,19 @@
 /obj/machinery/rnd/production/colony_lathe/calculate_efficiency()
 	efficiency_coeff = 1
 
+/obj/machinery/rnd/production/colony_lathe/on_techweb_update()
+	return
+
+/obj/machinery/rnd/production/colony_lathe/on_connected_techweb()
+	return
+
 /obj/machinery/rnd/production/colony_lathe/update_designs()
 	var/list/designs_to_pull_from = subtypesof(/datum/design/colony_fabricator)
 
 	for(var/datum/design/colony_fabricator/design in designs_to_pull_from)
 		var/datum/design/new_design = new design
 		new_design.InitializeMaterials()
-		cached_designs |= new_design
+		cached_designs += new_design
 	update_static_data_for_all_viewers()
 
 // Item for carrying the lathe around and building it
