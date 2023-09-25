@@ -5,7 +5,6 @@
 	icon_state = "colony_lathe"
 	circuit = null
 	production_animation = "colony_lathe_n"
-	allowed_buildtypes = COLONY_PRINTER
 	flags_1 = NODECONSTRUCT_1
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 5
@@ -54,11 +53,31 @@
 		set_light(l_range = 1.5)
 
 /obj/machinery/rnd/production/colony_lathe/do_print(path, amount)
+	. = ..()
 	soundloop.stop()
 	set_light(l_range = 0)
 
 /obj/machinery/rnd/production/colony_lathe/calculate_efficiency()
 	efficiency_coeff = 1
+
+/obj/machinery/rnd/production/colony_lathe/update_designs()
+	var/previous_design_count = cached_designs.len
+
+	cached_designs.Cut()
+
+	for(var/design_id in stored_research.researched_designs)
+		var/datum/design/colony_fabricator/design = SSresearch.techweb_design_by_id(design_id)
+
+		if(istype(design))
+			cached_designs |= design
+
+	var/design_delta = cached_designs.len - previous_design_count
+
+	if(design_delta > 0)
+		say("Received [design_delta] new design[design_delta == 1 ? "" : "s"].")
+		playsound(src, 'sound/machines/twobeep_high.ogg', 50, TRUE)
+
+	update_static_data_for_all_viewers()
 
 // Item for carrying the lathe around and building it
 

@@ -3,9 +3,13 @@
 #define FABRICATOR_CATEGORY_FLATPACK_MACHINES "/Flatpacked Machines"
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 
+// Basetype for all of these to use
+
+/datum/design/colony_fabricator
+
 // Solar panels and trackers
 
-/datum/design/flatpack_solar_panel
+/datum/design/colony_fabricator/flatpack_solar_panel
 	name = "Flatpacked Solar Panel"
 	id = "flatpack_solar_panel"
 	build_type = COLONY_PRINTER
@@ -17,7 +21,7 @@
 	)
 	construction_time = 5 SECONDS
 
-/datum/design/flatpack_solar_tracker
+/datum/design/colony_fabricator/flatpack_solar_tracker
 	name = "Flatpacked Solar Tracker"
 	id = "flatpack_solar_tracker"
 	build_type = COLONY_PRINTER
