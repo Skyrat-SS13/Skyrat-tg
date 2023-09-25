@@ -82,6 +82,10 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Maid Arm Covers"
 	item_path = /obj/item/clothing/gloves/maid
 
+/datum/loadout_item/gloves/arm_wraps
+	name = "Colourable Arm Wraps"
+	item_path = /obj/item/clothing/gloves/bracer/wraps
+
 /*
 *	RINGS
 */
@@ -108,7 +112,3 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves/donator/military
 	name = "Military Gloves"
 	item_path = /obj/item/clothing/gloves/military
-
-/datum/loadout_item/gloves/donator/arm_wraps
-	name = "Colourable Arm Wraps"
-	item_path = /obj/item/clothing/gloves/bracer/wraps
