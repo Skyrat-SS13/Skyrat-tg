@@ -68,8 +68,25 @@
 		if (!((antag_preference || antag_flag) in M.client.prefs.be_special))
 			trimmed_list.Remove(M)
 			continue
+<<<<<<< HEAD
 		if (is_banned_from(M.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			trimmed_list.Remove(M)
+=======
+		if (restrict_ghost_roles && (creature.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
+			trimmed_list.Remove(creature)
+			continue
+		if (creature.mind.assigned_role.title in restricted_roles) // Does their job allow it?
+			trimmed_list.Remove(creature)
+			continue
+		if (length(exclusive_roles) && !(creature.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
+			trimmed_list.Remove(creature)
+			continue
+		if(HAS_TRAIT(creature, TRAIT_MIND_TEMPORARILY_GONE)) // are they out of body?
+			trimmed_list.Remove(creature)
+			continue
+		if(HAS_TRAIT(creature, TRAIT_TEMPORARY_BODY)) // are they an avatar?
+			trimmed_list.Remove(creature)
+>>>>>>> ca00c19ce71 (bitrunning hotfixes [NO GBP] (#78530))
 			continue
 		if (M.mind)
 			if (restrict_ghost_roles && (M.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
