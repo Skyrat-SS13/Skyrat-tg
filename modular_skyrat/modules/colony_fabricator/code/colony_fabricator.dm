@@ -27,6 +27,10 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
+/obj/machinery/rnd/production/colony_lathe/examine(mob/user)
+	. = ..()
+	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
+
 /obj/machinery/rnd/production/colony_lathe/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
