@@ -709,3 +709,13 @@
 	name = "Hardlight Wheelchair Projector"
 	item_path = /obj/item/holosign_creator/hardlight_wheelchair
 	ckeywhitelist = list("sqnztb")
+
+/datum/loadout_item/under/jumpsuit/noble_gambeson
+	name = "Noble Gambeson"
+	item_path = /obj/item/clothing/under/rank/civilian/chaplain/divine_archer/noble
+	ckeywhitelist = list("grasshand")
+
+/datum/loadout_item/shoes/noble_boots
+	name = "Noble Boots"
+	item_path = /obj/item/clothing/shoes/jackboots/noble
+	ckeywhitelist = list("grasshand")

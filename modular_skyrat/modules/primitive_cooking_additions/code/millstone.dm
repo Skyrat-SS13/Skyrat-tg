@@ -88,6 +88,22 @@
 
 		return TRUE
 
+	if(attacking_item.tool_behaviour == TOOL_WRENCH)
+		attacking_item.play_tool_sound(src)
+		anchored = !anchored
+		balloon_alert(user, "[src] [anchored ? "anchored" : "unanchored"]")
+		return TRUE
+
+	if(attacking_item.tool_behaviour == TOOL_SCREWDRIVER)
+		attacking_item.play_tool_sound(src)
+
+		for(var/i in 1 to 6)
+			var/obj/item/stack/sheet/mineral/stone = new (get_turf(src))
+			transfer_fingerprints_to(stone)
+
+		qdel(src)
+		return TRUE
+
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
 		balloon_alert(user, "can only mill plants")
 		return ..()

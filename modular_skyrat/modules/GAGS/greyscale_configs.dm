@@ -740,6 +740,19 @@
 	name = "Jean Shorts (Worn, Digi)"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+/datum/greyscale_config/shortershorts
+	name = "Shorter Shorts"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shortershorts.json'
+
+/datum/greyscale_config/shortershorts/worn
+	name = "Shorter Shorts (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/shortershorts/worn/digi
+	name = "Ripped Shorts (Worn, Digi)"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'

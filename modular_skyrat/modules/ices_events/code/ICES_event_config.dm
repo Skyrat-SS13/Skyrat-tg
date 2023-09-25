@@ -576,7 +576,7 @@
  * Supermatter Surge
  */
 /datum/round_event_control/supermatter_surge
-	max_occurrences = 2
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
@@ -587,12 +587,6 @@
 /datum/round_event_control/tram_malfunction
 	max_occurrences = 2
 	weight = VERY_HIGH_EVENT_FREQ
-
-/**
- * Wall Fungus
- */
-/datum/round_event_control/wall_fungus
-	weight = MED_EVENT_FREQ
 
 /**
  * Wisdom Cow

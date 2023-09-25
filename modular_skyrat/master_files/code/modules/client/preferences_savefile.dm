@@ -3,9 +3,17 @@
  * You can't really use the non-modular version, least you eventually want asinine merge
  * conflicts and/or potentially disastrous issues to arise, so here's your own.
  */
-#define MODULAR_SAVEFILE_VERSION_MAX 3
+#define MODULAR_SAVEFILE_VERSION_MAX 4
 
 #define MODULAR_SAVEFILE_UP_TO_DATE -1
+
+#define VERSION_GENITAL_TOGGLES 1
+#define VERSION_BREAST_SIZE_CHANGE 2
+#define VERSION_SYNTH_REFACTOR 3
+#define VERSION_UNDERSHIRT_BRA_SPLIT 4
+
+#define INDEX_UNDERWEAR 1
+#define INDEX_BRA 2
 
 /**
  * Checks if the modular side of the savefile is up to date.
@@ -16,7 +24,9 @@
 
 	if(savefile_version < MODULAR_SAVEFILE_VERSION_MAX)
 		return savefile_version
+
 	return MODULAR_SAVEFILE_UP_TO_DATE
+
 
 /// Loads the modular customizations of a character from the savefile
 /datum/preferences/proc/load_character_skyrat(list/save_data)
@@ -89,9 +99,10 @@
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
 
+
 /// Brings a savefile up to date with modular preferences. Called if savefile_needs_update_skyrat() returned a value higher than 0
 /datum/preferences/proc/update_character_skyrat(current_version, list/save_data)
-	if(current_version < 1)
+	if(current_version < VERSION_GENITAL_TOGGLES)
 		// removed genital toggles, with the new choiced prefs paths as assoc
 		var/static/list/old_toggles
 		if(!old_toggles)
@@ -114,14 +125,14 @@
 			for(var/pref_type in subtypesof(/datum/preference/toggle/genital_skin_tone))
 				write_preference(GLOB.preference_entries[pref_type], TRUE)
 
-	if(current_version < 2)
+	if(current_version < VERSION_BREAST_SIZE_CHANGE)
 		var/list/old_breast_prefs
 		old_breast_prefs = save_data["breasts_size"]
 		if(isnum(old_breast_prefs)) // Can't be too careful
 			// You weren't meant to be able to pick sizes over this anyways.
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[min(old_breast_prefs, 10)]"])
 
-	if(current_version < 3)
+	if(current_version < VERSION_SYNTH_REFACTOR)
 		var/old_species = save_data["species"]
 		if(istext(old_species) && (old_species in list("synthhuman", "synthliz", "synthmammal", "ipc")))
 
@@ -156,10 +167,98 @@
 				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_chassis], new_color)
 				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_head], new_color)
 
+	if(current_version < VERSION_UNDERSHIRT_BRA_SPLIT)
+		var/static/list/underwear_to_underwear_bra = list(
+			"Panties" = list("Panties - Basic", null), // Just a rename
+			"Bikini" = list("Panties - Slim", "Bra"),
+			"Lace Bikini" = list("Panties - Thin", "Bra - Thin"),
+			"Bralette w/ Boyshorts" = list("Boyshorts (Alt)", "Bra, Sports"),
+			"Sports Bra w/ Boyshorts" = list("Boyshorts", "Bra, Sports - Alt"),
+			"Strapless Bikini" = list("Panties - Slim", "Strapless Swimsuit Top (Alt)"),
+			"Babydoll" = list("Thong - Alt", null), // Got moved to an undershirt, actual underwear part is now a thong.
+			"Two-Piece Swimsuit" = list("Panties - Swimsuit", "Swimsuit Top"),
+			"Strapless Two-Piece Swimsuit" = list("Panties - Swimsuit", "Strapless Swimsuit Top"),
+			"Halter Swimsuit" = list("Panties - Basic", "Bra - Halterneck - (Alt)"),
+			"Neko Bikini (White)" = list("Panties - Neko", "Bra - Neko"),
+			"Neko Bikini (Black)" = list("Panties - Neko", "Bra - Neko"),
+			"UK Biniki" = list("Panties - UK", "Bra - UK"),
+		)
+
+		var/current_underwear = save_data["underwear"]
+		var/migrated_underwear_bra = underwear_to_underwear_bra[current_underwear]
+
+		if(migrated_underwear_bra)
+			var/migrated_color = save_data["underwear_color"]
+			var/migrated_underwear = migrated_underwear_bra[INDEX_UNDERWEAR]
+			var/migrated_bra = migrated_underwear_bra[INDEX_BRA]
+
+			if(migrated_underwear)
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/underwear], migrated_underwear)
+
+			if(migrated_bra)
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/bra], migrated_bra)
+				write_preference(GLOB.preference_entries[/datum/preference/color/bra_color], migrated_color)
+
+		var/current_undershirt = save_data["undershirt"]
+
+		// This one has a different treatment because it's an underwear that has been moved mainly to an undershirt,
+		// ending up as a thong for the underwear part itself. We only want to override the undershirt if there's none,
+		// though.
+		if(current_underwear == "Babydoll" && current_undershirt == "Nude")
+			var/migrated_color = save_data["underwear_color"]
+
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/undershirt], "Babydoll")
+			write_preference(GLOB.preference_entries[/datum/preference/color/undershirt_color], migrated_color)
+
+		var/static/list/undershirt_to_bra = list(
+			"Bra, Sports" = "Bra, Sports",
+			"Sports Bra (Alt)" = "Sports Bra (Alt)",
+			"LIZARED Top" = "LIZARED Top",
+			"Bra" = "Bra",
+			"Bra - Alt" = "Bra - Alt",
+			"Bra - Thin" = "Bra - Thin",
+			"Bra - Kinky Black" = "Bra - Kinky Black",
+			"Bra - Freedom" = "Bra - Freedom",
+			"Bra - Commie" = "Bra - Commie",
+			"Bra - Bee-kini" = "Bra - Bee-kini",
+			"Bra - UK" = "Bra - UK",
+			"Bra - Neko" = "Bra - Neko",
+			"Bra - Halterneck" = "Bra - Halterneck",
+			"Bra - Sports - Alt" = "Bra - Sports - Alt",
+			"Bra - Strapless" = "Bra - Strapless",
+			"Bra - Latex" = "Bra - Latex",
+			"Bra - Striped" = "Bra - Striped",
+			"Bra - Sarashi" = "Bra - Sarashi",
+			"Fishnet - Sleeved" = "Fishnet - Sleeved",
+			"Fishnet - Sleeved (Greyscaled)" = "Fishnet - Sleeved (Greyscaled)",
+			"Fishnet - Sleeveless" = "Fishnet - Sleeveless",
+			"Fishnet - Sleeveless (Greyscaled)" = "Fishnet - Sleeveless (Greyscaled)",
+			"Swimsuit Top" = "Bra - Halterneck - (Alt)",
+			"Chastity Bra" = "Chastity Bra",
+			"Pasties" = "Pasties",
+			"Pasties - Alt" = "Pasties - Alt",
+			"Shibari" = "Shibari",
+			"Shibari Sleeves" = "Shibari Sleeves",
+			"Binder" = "Binder",
+			"Binder - Strapless" = "Binder - Strapless",
+			"Safekini" = "Safekini",
+		)
+
+		var/migrated_bra_from_undershirt = undershirt_to_bra[current_undershirt]
+
+		if(migrated_bra_from_undershirt)
+			var/migrated_color = save_data["undershirt_color"]
+
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/bra], migrated_bra_from_undershirt)
+			write_preference(GLOB.preference_entries[/datum/preference/color/bra_color], migrated_color)
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/undershirt], "Nude")
+
+
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
 		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
+
 
 /// Saves the modular customizations of a character on the savefile
 /datum/preferences/proc/save_character_skyrat(list/save_data)
@@ -175,6 +274,7 @@
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
+
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
@@ -202,6 +302,7 @@
 		if (part in mutant_bodyparts)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = value
 
+
 /datum/preferences/proc/update_markings(list/markings)
 	if (islist(markings))
 		for (var/marking in markings)
@@ -210,5 +311,11 @@
 					markings[marking][title] = list(sanitize_hexcolor(markings[marking][title]), FALSE)
 	return markings
 
+
 #undef MODULAR_SAVEFILE_VERSION_MAX
 #undef MODULAR_SAVEFILE_UP_TO_DATE
+
+#undef VERSION_GENITAL_TOGGLES
+#undef VERSION_BREAST_SIZE_CHANGE
+#undef VERSION_SYNTH_REFACTOR
+#undef VERSION_UNDERSHIRT_BRA_SPLIT
