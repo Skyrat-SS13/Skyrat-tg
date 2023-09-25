@@ -82,6 +82,7 @@
 		return
 
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
+<<<<<<< HEAD
 
 		// SKYRAT EDIT - Customization - ORIGINAL: bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
 		if(receiver.dna.features[bodypart_overlay.feature_key])
@@ -90,6 +91,12 @@
 		else
 			bodypart_overlay.set_appearance_from_dna(receiver.dna)
 		// SKYRAT EDIT END
+=======
+		var/feature_name = receiver.dna.features[bodypart_overlay.feature_key]
+		if (isnull(feature_name))
+			feature_name = receiver.dna.species.external_organs[type]
+		bodypart_overlay.set_appearance_from_name(feature_name)
+>>>>>>> af1ac5b9eee (Removes debug species from magic mirror (#78541))
 		bodypart_overlay.imprint_on_next_insertion = FALSE
 
 	ownerlimb = limb
