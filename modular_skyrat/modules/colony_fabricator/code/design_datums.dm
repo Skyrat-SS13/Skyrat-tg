@@ -3,6 +3,21 @@
 #define FABRICATOR_CATEGORY_FLATPACK_MACHINES "/Flatpacked Machines"
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 
+// Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
+
+/datum/techweb_node/colony_fabricator
+	id = "colony_fabricator"
+	display_name = "Colony Fabricator Designs"
+	description = "Advanced designs for the colony fabricator, though you shouldn't be seeing this."
+	design_ids = list(
+		"flatpack_solar_panel",
+		"flatpack_solar_tracker",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
+	hidden = TRUE
+	show_on_wiki = FALSE
+	starting_node = TRUE
+
 // Solar panels and trackers
 
 /datum/design/flatpack_solar_panel
