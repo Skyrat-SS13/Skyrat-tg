@@ -1043,17 +1043,29 @@ digi
 
 // WRAPS
 
-/datum/greyscale_config/wraps
+/datum/greyscale_config/clothwraps
 	name = "Cloth Wraps"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps.json'
 
-/datum/greyscale_config/wraps/worn
+/datum/greyscale_config/clothwraps/worn
 	name = "Cloth Wraps (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps_worn.json'
 
-/datum/greyscale_config/wraps/worn/digi
+/datum/greyscale_config/clothwraps/worn/digi
 	name = "Cloth Wraps (Worn, Digi)"
+
+/datum/greyscale_config/legwraps
+	name = "Leg Wraps"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/legwraps.json'
+
+/datum/greyscale_config/legwraps/worn
+	name = "Leg Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/legwraps_worn.json'
+
+/datum/greyscale_config/legwraps/worn/digi
+	name = "Leg Wraps (Worn, Digi)"
 
 /datum/greyscale_config/arm_wraps
 	name = "Cloth Arm Wraps"

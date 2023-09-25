@@ -1645,13 +1645,3 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 			RESKIN_WORN_ICON_STATE = "boots_whiteblue"
 		)
 	)
-
-/obj/item/clothing/gloves/bracer/wraps
-	name = "cloth arm wraps"
-	desc = "Cloth bracers, the colour all left up to the choice of the wearer."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
-	icon_state = "arm_wraps"
-	greyscale_config = /datum/greyscale_config/arm_wraps
-	greyscale_config_worn = /datum/greyscale_config/arm_wraps/worn
-	greyscale_colors = "#FFFFFF"
-	flags_1 = IS_PLAYER_COLORABLE_1

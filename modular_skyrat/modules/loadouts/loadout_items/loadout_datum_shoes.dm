@@ -158,9 +158,13 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Blue Leg Wraps"
 	item_path = /obj/item/clothing/shoes/wraps/blue
 
+/datum/loadout_item/shoes/cuffs/colourable
+	name = "Colourable Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/colourable
+
 /datum/loadout_item/shoes/clothwrap
 	name = "Colourable Cloth Wraps"
-	item_path = /obj/item/clothing/shoes/wraps/colourable
+	item_path = /obj/item/clothing/shoes/wraps/cloth
 
 /*
 *	MISC

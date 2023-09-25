@@ -31,5 +31,15 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 
+/obj/item/clothing/gloves/bracer/wraps
+	name = "cloth arm wraps"
+	desc = "Cloth bracers, the colour all left up to the choice of the wearer."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	icon_state = "arm_wraps"
+	greyscale_config = /datum/greyscale_config/arm_wraps
+	greyscale_config_worn = /datum/greyscale_config/arm_wraps/worn
+	greyscale_colors = "#FFFFFF"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
 /obj/item/clothing/gloves
 	worn_icon_teshari = TESHARI_HANDS_ICON
