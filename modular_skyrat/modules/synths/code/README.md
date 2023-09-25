@@ -10,6 +10,7 @@ Adds in a roundstart robotic race. Currently in a very sad state, and is being w
 
 ### TG Proc/File Changes:
 
+- defib.dm: remove_synth_trauma() added, /obj/item/shockpaddles/proc/do_help() modified
 - Will fill out as I discover what edits were made to acommodate these.
 
 ### Modular Overrides:
@@ -25,5 +26,6 @@ Adds in a roundstart robotic race. Currently in a very sad state, and is being w
 - N/A
 
 ### Credits:
+Niko - Making defibs fuck synths up
 Nerevar - Initial code, I think. Correct this file if wrong.
 RimiNosha - Updating the code and adding various QoL features.

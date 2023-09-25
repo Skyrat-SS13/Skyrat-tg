@@ -578,6 +578,11 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
+	var/target_synthetic = (user.mob_biotypes & MOB_ROBOTIC) // SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+	if (target_synthetic)
+		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrilator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
+		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
+	// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 	user.visible_message(span_warning("[user] begins to place [src] on [H]'s chest."), span_warning("You begin to place [src] on [H]'s chest..."))
 	busy = TRUE
 	update_appearance()
@@ -662,6 +667,21 @@
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
 					log_combat(user, H, "revived", defib)
+					// SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+					if (target_synthetic)
+						user.visible_message(span_boldwarning("[src] fire a powerful jolt of electricity into [H]'s vulnerable circuitry!"))
+						to_chat(H, span_userdanger("[user]'s defibrilator fires a powerful jolt of electricity into your vulnerable circuitry, overloading it!"))
+						for (var/obj/item/bodypart/iterated_part as anything in H.bodyparts)
+							iterated_part.emp_act(EMP_LIGHT)
+						for (var/obj/item/organ/iterated_organ as anything in H.organs)
+							iterated_organ.emp_act(EMP_LIGHT)
+						var/obj/item/organ/internal/brain/brain_organ = H.get_organ_slot(ORGAN_SLOT_BRAIN)
+						if (istype(brain_organ))
+							var/datum/brain_trauma/trauma = brain_organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_LIMIT_BASIC)
+							if (trauma)
+								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_trauma), brain_organ, trauma), 90 SECONDS)
+					// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
+
 				do_success()
 				return
 			else if (!H.get_organ_by_type(/obj/item/organ/internal/heart))
@@ -679,6 +699,14 @@
 				user.visible_message(span_warning("[req_defib ? "[defib]" : "[src]"] buzzes: Patient is not in a valid state. Operation aborted."))
 				playsound(src, 'sound/machines/defib_failed.ogg', 50, FALSE)
 	do_cancel()
+
+// SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+/proc/remove_synth_trauma(obj/item/organ/internal/brain/synth_brain, datum/brain_trauma/trauma)
+	if (QDELETED(synth_brain) || QDELETED(trauma))
+		return
+
+	qdel(trauma)
+// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 
 /obj/item/shockpaddles/proc/is_wielded()
 	return HAS_TRAIT(src, TRAIT_WIELDED)
