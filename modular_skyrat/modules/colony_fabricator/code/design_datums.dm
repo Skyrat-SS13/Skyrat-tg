@@ -2,6 +2,7 @@
 
 #define FABRICATOR_CATEGORY_FLATPACK_MACHINES "/Flatpacked Machines"
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
+#define FABRICATOR_SUBCATEGORY_MATERIALS "/Materials"
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
@@ -12,6 +13,7 @@
 	design_ids = list(
 		"flatpack_solar_panel",
 		"flatpack_solar_tracker",
+		"flatpack_arc_furnace",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -43,3 +45,21 @@
 		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
 	)
 	construction_time = 7 SECONDS
+
+// Arc furance
+
+/datum/design/flatpack_arc_furnace
+	name = "Flatpacked Arc Furnace"
+	id = "flatpack_arc_furnace"
+	build_type = COLONY_FABRICATOR
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3)
+	build_path = /obj/item/flatpacked_machine/arc_furnace
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_MATERIALS,
+	)
+	construction_time = 15 SECONDS
+
+#undef FABRICATOR_CATEGORY_FLATPACK_MACHINES
+#undef FABRICATOR_SUBCATEGORY_POWER
+#undef FABRICATOR_SUBCATEGORY_MATERIALS

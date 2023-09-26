@@ -3,6 +3,8 @@
 	desc = "Converts raw materials into useful objects."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "colony_lathe"
+	base_icon_state = "colony_lathe"
+	production_animation = null
 	circuit = null
 	production_animation = "colony_lathe_n"
 	flags_1 = NODECONSTRUCT_1
@@ -42,21 +44,29 @@
 	balloon_alert_to_viewers("repacking...")
 	if(do_after(user, 3 SECONDS, target = src))
 		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		new repacked_type(get_turf(src))
 		deconstruct(disassembled = TRUE)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/rnd/production/colony_lathe/deconstruct(disassembled = TRUE)
+	new repacked_type(get_turf(src))
+	return ..()
 
 /obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)
 	. = ..()
 	if(.)
 		soundloop.start()
 		set_light(l_range = 1.5)
+		icon_state = "colony_lathe_working"
+		update_appearance()
 
 /obj/machinery/rnd/production/colony_lathe/do_print(path, amount)
 	. = ..()
 	soundloop.stop()
 	set_light(l_range = 0)
+	flick("colony_lathe_finish_print")
+	icon_state = "colony_lathe_working"
+	update_appearance()
 
 /obj/machinery/rnd/production/colony_lathe/calculate_efficiency()
 	efficiency_coeff = 1

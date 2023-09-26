@@ -21,7 +21,6 @@
 	balloon_alert_to_viewers("repacking...")
 	if(do_after(user, 1 SECONDS, target = src))
 		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		new repacked_type(get_turf(src))
 		deconstruct(disassembled = TRUE)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -30,6 +29,7 @@
 	return
 
 /obj/machinery/power/solar/quickdeploy/deconstruct(disassembled = TRUE)
+	new repacked_type(get_turf(src))
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
@@ -68,7 +68,6 @@
 	balloon_alert_to_viewers("repacking...")
 	if(do_after(user, 1 SECONDS, target = src))
 		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		new repacked_type(get_turf(src))
 		deconstruct(disassembled = TRUE)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -77,6 +76,7 @@
 	return
 
 /obj/machinery/power/tracker/quickdeploy/deconstruct(disassembled = TRUE)
+	new repacked_type(get_turf(src))
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
