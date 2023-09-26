@@ -30,9 +30,4 @@
 		balloon_alert(user, "host not recognized")
 		return
 
-	// SKYRAT EDIT ADDITION START - For accurate health readings we need to cast them as a human here
-	var/mob/living/carbon/human/human_pilot
-	if(ishuman(pilot))
-		human_pilot = pilot
-	// SKYRAT EDIT ADDITION END
-	to_chat(user, span_notice("Current host health: [pilot.health / (human_pilot ? human_pilot.maxHealth : pilot.maxHealth)*100]%")) // SKYRAT EDIT CHANGE - ORIGINAL: to_chat(user, span_notice("Current host health: [pilot.health / pilot.maxHealth * 100]%"))
+	to_chat(user, span_notice("Current host health: [pilot.health / pilot.maxHealth * 100]%"))
