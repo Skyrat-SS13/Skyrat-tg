@@ -4,7 +4,7 @@
 	extended_desc = "."
 	default_skin = "tarkon"
 	armor_type = /datum/armor/mod_theme_tarkon
-	complexity_max = DEFAULT_MAX_COMPLEXITY
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
 	inbuilt_modules = list(/obj/item/mod/module/magboot/advanced)
 	allowed_suit_storage = list(
