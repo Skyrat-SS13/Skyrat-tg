@@ -373,5 +373,5 @@
 
 	find_animal.faction = list(FACTION_ASHWALKER)
 
-	find_animal.revive()
+	find_animal.revive(HEAL_ALL)
 	return TRUE
