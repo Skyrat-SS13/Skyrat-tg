@@ -32,7 +32,7 @@
 
 	soundloop = new(src, FALSE)
 
-	flick("arc_furnace_deploy")
+	flick("arc_furnace_deploy", src)
 
 /obj/machinery/arc_furnace/examine(mob/user)
 	. = ..()
@@ -165,7 +165,7 @@
 		succeed_smelting()
 		return
 
-	time - 1 SECONDS
+	time -= 1 SECONDS
 	use_power(active_power_usage)
 	addtimer(CALLBACK(src, PROC_REF(loop), time), 1 SECONDS)
 

@@ -64,7 +64,7 @@
 	. = ..()
 	soundloop.stop()
 	set_light(l_range = 0)
-	flick("colony_lathe_finish_print")
+	flick("colony_lathe_finish_print", src)
 	icon_state = "colony_lathe_working"
 	update_appearance()
 
