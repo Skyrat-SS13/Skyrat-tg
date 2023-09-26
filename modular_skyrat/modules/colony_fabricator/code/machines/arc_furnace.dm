@@ -38,7 +38,7 @@
 	. = ..()
 	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
 
-	if(contents[1])
+	if(length(contents))
 		. += span_notice("It has <b>[contents[1]]</b> sitting in it.")
 
 /obj/machinery/arc_furnace/attack_hand_secondary(mob/user, list/modifiers)
@@ -65,7 +65,7 @@
 	. = ..()
 	cut_overlays()
 
-	if(contents[1])
+	if(length(contents))
 		var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
 		overlayed_item.transform = matrix(, 0, 0, 0, 0.8, 0)
 		add_overlay(overlayed_item)
@@ -78,7 +78,7 @@
 		balloon_alert(user, "furnace busy")
 		return TRUE
 
-	if(contents[1])
+	if(length(contents))
 		balloon_alert(user, "furnace full")
 		return TRUE
 
@@ -98,7 +98,7 @@
 	if(isAI(user) && (machine_stat & NOPOWER))
 		return
 
-	if(!contents[1])
+	if(!length(contents))
 		balloon_alert(user, "it's empty!")
 		return
 
@@ -123,7 +123,7 @@
 
 	playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
 
-	if(!contents[1])
+	if(!length(contents))
 		return
 
 	var/atom/movable/thing_inside = contents[1]
@@ -157,7 +157,7 @@
 		end_smelting()
 		return
 
-	if(!contents[1])
+	if(!length(contents))
 		end_smelting()
 		return
 
@@ -191,5 +191,5 @@
 	desc = "An arc furnace, a specialist machine that can rapidly smelt ores using, as the name implies, massive \
 		amounts of electricity. While not nearly as fast and efficient as other ore refining methods, none are anywhere \
 		near as portable as these are."
-	icon_state = "solar_tracker_packed"
+	icon_state = "arc_furnace_folded"
 	type_to_deploy = /obj/machinery/arc_furnace
