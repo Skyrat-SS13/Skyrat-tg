@@ -78,8 +78,12 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		QDEL_NULL(sizzle)
 	if(particle_effect)
 		QDEL_NULL(particle_effect)
+<<<<<<< HEAD
 	if(process_effect)
 		process_effect = null
+=======
+	process_effect = null
+>>>>>>> 5ae576d39f0 (Fixes a callback qdeletion during acid component deletion (#78536))
 	return ..()
 
 /datum/component/acid/RegisterWithParent()
