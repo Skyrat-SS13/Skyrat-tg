@@ -4,8 +4,8 @@
 	id = "borg_suit"
 	build_type = MECHFAB
 	build_path = /obj/item/robot_suit
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*7.5)
-	construction_time = 500
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2) // SKYRAT EDIT
+	construction_time = 50 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -15,8 +15,8 @@
 	id = "borg_chest"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/chest/robot
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*20)
-	construction_time = 350
+	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5) // SKYRAT EDIT
+	construction_time = 35 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -26,8 +26,8 @@
 	id = "borg_head"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/head/robot
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 2.5)
-	construction_time = 350
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT) // SKYRAT EDIT
+	construction_time = 35 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -37,8 +37,8 @@
 	id = "borg_l_arm"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/arm/left/robot
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
-	construction_time = 200
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2) // SKYRAT EDIT
+	construction_time = 20 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -48,8 +48,8 @@
 	id = "borg_r_arm"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/arm/right/robot
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
-	construction_time = 200
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2) // SKYRAT EDIT
+	construction_time = 20 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -59,8 +59,8 @@
 	id = "borg_l_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/left/robot
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
-	construction_time = 200
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2) // SKYRAT EDIT
+	construction_time = 20 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
@@ -70,8 +70,8 @@
 	id = "borg_r_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/right/robot
-	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
-	construction_time = 200
+	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2) // SKYRAT EDIT
+	construction_time = 20 // SKYRAT EDIT
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
