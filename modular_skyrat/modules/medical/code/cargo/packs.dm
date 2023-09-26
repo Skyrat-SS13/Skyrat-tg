@@ -18,7 +18,7 @@
 	contains = list(/obj/item/storage/backpack/duffelbag/synth_treatment_kit = 2)
 
 	crate_type = /obj/structure/closet/crate/medical
-	crate_name = "synthetic treatment kit crate"
+	crate_name = "synthetic treatment kits crate"
 
 	access_view = FALSE
 	access = FALSE
