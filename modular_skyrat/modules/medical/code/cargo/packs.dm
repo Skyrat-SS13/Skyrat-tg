@@ -29,9 +29,9 @@
 	desc = "Contains a variety of synthetic-exclusive medicine. 2 pill bottles of liquid solder, 2 of nanite slurry, 2 of system cleaner."
 	cost = CARGO_CRATE_VALUE * 7 // rarely made, so it should be expensive(?)
 	contains = list(
-		/obj/item/reagent_containers/pill/liquid_solder = 2,
-		/obj/item/reagent_containers/pill/nanite_slurry = 2,
-		/obj/item/reagent_containers/pill/system_cleaner = 2
+		/obj/item/reagent_containers/pill_bottle/liquid_solder = 2,
+		/obj/item/reagent_containers/pill_bottle/nanite_slurry = 2,
+		/obj/item/reagent_containers/pill_bottle/system_cleaner = 2
 	)
 
 	crate_type = /obj/structure/closet/crate/medical
