@@ -10,7 +10,7 @@
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	circuit = null
-	light_color = LIGHT_COLOR_CYAN
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_power = 10
 	flags_1 = NODECONSTRUCT_1
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 10 // This baby consumes so much power
@@ -47,6 +47,10 @@
 		return
 
 	if(!can_interact(user) || !user.can_perform_action(src))
+		return
+
+	if(operating)
+		balloon_alert(user, "currently operating")
 		return
 
 	balloon_alert_to_viewers("repacking...")
@@ -182,6 +186,8 @@
 
 /obj/machinery/arc_furnace/proc/end_smelting()
 	operating = FALSE
+	soundloop.stop()
+	set_light(l_range = 0)
 	update_appearance()
 
 // Item for creating the arc furnace or carrying it around
