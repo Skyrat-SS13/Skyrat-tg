@@ -13,19 +13,16 @@
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
 	random_appearance = FALSE
-	computer_area = /area/ruin/space/has_grav/port_tarkon/centerhall
+	computer_area = /area/ruin/space/has_grav/port_tarkon
 
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
-	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	uniform = /obj/item/clothing/under/misc/skyrat/utility
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/winterboots
-	gloves = /obj/item/clothing/gloves/fingerless
-	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id/advanced/tarkon/cargo
-	id_trim = /datum/id_trim/away/tarkon/cargo
-	l_pocket = /obj/item/card/mining_point_card
-	r_pocket = /obj/item/mining_voucher
+	gloves = /obj/item/clothing/gloves/combat
+	id = /obj/item/card/id/advanced/tarkon
+	id_trim = /datum/id_trim/away/tarkon
 	ears = /obj/item/radio/headset/tarkon
 
 /datum/outfit/tarkon/post_equip(mob/living/carbon/human/tarkon, visualsOnly = FALSE)
@@ -41,6 +38,19 @@
 	handlebank(tarkon)
 	return ..()
 
+/obj/effect/mob_spawn/ghost_role/human/tarkon/cargo
+	prompt_name = "a port researcher"
+	outfit = /datum/outfit/tarkon/cargo
+
+/datum/outfit/tarkon/cargo
+	name = "Port Tarkon Cargo Outfit"
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	glasses = /obj/item/clothing/glasses/sunglasses
+	id = /obj/item/card/id/advanced/tarkon/cargo
+	id_trim = /datum/id_trim/away/tarkon/cargo
+	l_pocket = /obj/item/mining_voucher
+	r_pocket = /obj/item/stock_parts/cell/high
+
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
 	prompt_name = "a port researcher"
 	outfit = /datum/outfit/tarkon/sci
@@ -51,7 +61,6 @@
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/advanced/tarkon/sci
 	id_trim = /datum/id_trim/away/tarkon/sci
-	l_hand = /obj/item/inducer
 	l_pocket = null
 	r_pocket = /obj/item/stock_parts/cell/high
 
@@ -80,6 +89,7 @@
 	id = /obj/item/card/id/advanced/tarkon/engi
 	id_trim = /datum/id_trim/away/tarkon/eng
 	gloves = /obj/item/clothing/gloves/combat
+	l_hand = /obj/item/inducer
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	r_pocket = /obj/item/stack/cable_coil
 
@@ -206,5 +216,9 @@
 	max_integrity = 150
 	max_mobs = 2
 	spawn_time = 30 SECONDS
+	mob_types = list(
+		/mob/living/simple_animal/hostile/alien,
+		/mob/living/simple_animal/hostile/alien/drone
+	)
 	boss_mob = /mob/living/simple_animal/hostile/alien/sentinel
 	loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon

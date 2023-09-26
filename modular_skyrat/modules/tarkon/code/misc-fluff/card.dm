@@ -1,14 +1,14 @@
 /datum/id_trim/away/tarkon
-	assignment = "P-T Visitor"
+	assignment = "P-T Deck Worker"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 	department_color = COLOR_WHITE
 	department_state = "department"
 	subdepartment_color = COLOR_DARK_CYAN
-	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
+	sechud_icon_state = SECHUD_UNKNOWN
 	trim_state = "trim_unknown"
 
 /obj/item/card/id/advanced/tarkon
-	name = "Tarkon visitor's pass"
+	name = "Tarkon deck access pass"
 	desc = "A dust-collected visitors pass, A small tagline reading \"Port Tarkon, The first step to Civilian Partnership in Space Homesteading\"."
 	icon = 'modular_skyrat/modules/tarkon/icons/misc/card.dmi'
 	icon_state = "tarkon"
@@ -60,7 +60,7 @@
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
-	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 	department_color = COLOR_SCIENCE_PINK
 	sechud_icon_state = SECHUD_SCIENTIST
 	trim_state = "trim_scientist"
@@ -69,6 +69,14 @@
 	name = "P-T field researcher's access card"
 	desc = "An access card designated for \"the science team\". You are forgotten basically immediately when it comes to the lab."
 	trim = /datum/id_trim/away/tarkon/sci
+
+/datum/id_trim/away/tarkon/robo
+	access = list(ACCESS_ROBOTICS)
+
+/obj/item/card/id/away/tarkon
+	name = "Tarkon Robotics Card"
+	desc = "An access card designed to access robot's access ports, provided by Tarkon Industries."
+	trim = /datum/id_trim/away/tarkon/robo
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = "Tarkon Ensign"

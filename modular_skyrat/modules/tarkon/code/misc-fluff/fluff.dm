@@ -9,9 +9,9 @@
 		2 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>says, \"<span class=' '>... Yeesh... Its good we got here when we did...</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Janitor ???</span> <span class='message'>sighs, \"<span class=' '>Could have done sooner... Bloke got at me while i went to repaint the stripe on the floor</span>\"</span></span>",
 		4 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>I still need to talk to the Site Director about getting the safe moved... Its better than the cell, And the shutters are nice...</span>\"</span></span>",
-		5 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>scoffs, \"<span class=' '>Yeah, Another set of shutter tracks i'll have to clean out so they dont jam up...</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Janitor ???</span> <span class='message'>scoffs, \"<span class=' '>Yeah, Another set of shutter tracks i'll have to clean out so they dont jam up...</span>\"</span></span>",
 		6 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>grumbles, \"<span class=' '>If you dont like bucket work, You could go with the mining crew</span>\"</span></span>",
-		7 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>groans, \"<span class=' '>... If.. Anyone wakes up... If the Ensign... Is alive... They're in charge now... The.. The Tarkon Drill's designs are... In the solars room, in a hidden floorsafe... The... The future of Tarkon Industries... Is in those designs...</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Janitor ???</span> <span class='message'>groans, \"<span class=' '>... Atleast it wouldn't be one of the directors cleansing squads. Those bugs... They've been active recently, can hear them under the halls.</span>\"</span></span>",
 		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
 	)
 	timestamp = list(
@@ -32,12 +32,12 @@
 	used_capacity = 380
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
-		2 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>sighs, \"<span class=' '>Right... Scientist Arkus?</span>\"</span></span>",
-		3 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>says, \"<span class=' '>Ah, Foreman Verok... Come, We already got a spot chosen, a rather safe one to keep it..</span>\"</span></span>",
-		4 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>... Wait, Right next to that egg... Thing?</span>\"</span></span>",
-		5 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>pauses then says sharply, \"<span class=' '>... Is there a problem? Its been dormant ever since we've been here, If it was going to come alive it would have done so while putting the tiling down. Besides... I got lunch to attend...</span>\"</span></span>",
-		6 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>groans, \"<span class=' '>Right... Right I'll.. Get to work on it then... Just keep an ear out...</span>\"</span></span>",
-		7 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>Right... Calm down, Verok... Place the floor safe, scoot the tile back in place... And afterwards grab some money from the one by the financing console under the table... I dont think Tavus will notice an extra few credits missing...</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>sighs, \"<span class=' '>Right... Research near finish? Need to stash this back between the solar batteries before I sleep..</span>\"</span></span>",
+		3 = "<span class='game say'><span class='name'>Science Lead ???</span> <span class='message'>says, \"<span class=' '>We're getting the atmospheric scans done... Its definitely an odd find.</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>grumbles, \"<span class=' '>We've been finding some weird stuff in those tunnels.. Its a shame the machines framing was broken.</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Science Lead ???</span> <span class='message'>pauses then sighs out, \"<span class=' '>Yeah... Best we could figure from the wreckage was some sort of focusing device for a crystal..?</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>scoffs, \"<span class=' '>... A crystal?</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>quips, \"<span class=' '>Yes... We have some possible- Ah... The scan finished.. I'm sure you'd rather get to rest than listen to my ramble, so just go.</span>\"</span></span>",
 		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
 	)
 	timestamp = list(
@@ -81,7 +81,7 @@
 
 /obj/item/paper/fluff/ruins/tarkon
 	name = "paper - 'Port Integrity Printout'"
-	default_raw_text = "<B>*Warning, Integrity Compromised*</B><BR><BR>Automated Integrity Printout, If printout is inconsistent with results, Please recalibrate sensors.<br><ol><li><b>Aft Hallway:</b> Integrity Nominal.</li><li><b>Fore Hallway:</b> Integrity Compromised. Cause unknown.</li><li><b>Port Hallway:</b> Integrity Compromised, Breached into space.</li><li><b>Starboard Hallway:</b> Integrity Nominal.</li></ol><br> <b>Please inform any awake maintenance crew and standby for assistance.</b>"
+	default_raw_text = "<B>*Warning, Integrity Compromised*</B><BR><BR>Automated Integrity Printout, If printout is inconsistent with results, Please recalibrate sensors.<br><ol><li><b>Aft Hallway:</b> Integrity Nominal.</li><li><b>Fore Hallway:</b> Integrity Compromised. Cause unknown.</li><li><b>Port Hallway:</b> Integrity Compromised, Cause unknown.</li><li><b>Starboard Hallway:</b> Integrity Nominal.</li></ol><br> <b>Please inform any awake maintenance crew and standby for assistance.</b>"
 
 /obj/item/paper/fluff/ruins/tarkon/goals
 	name = "paper - 'Tarkon Industries'"
@@ -99,7 +99,25 @@
 	name = "paper - 'Tarkon Detainment Record'"
 	default_raw_text = "<h1>Tarkon Industries Detainment Record:</h1><br><br><b>Detainee:</b>Arcus Vilkov<br><b>Rank/Occupation:</b>Junior Scientist<br><b>Reason:</b> Attemptive sabotage of a working generator<br><br><b>Detainee:</b>Tilber Sinns<br><b>Rank/Occupation:</b>Apprentice Miner<br><b>Reason:</b>Detonated a volatile rock cluster close to a wall, Causing 3 hours of reconstruction.<br><br><b>Detainee:</b>Gearalt Antonov<br><b>Rank/Occupation:</b>Engineer Specialist<br><b>Reason:</b>Public Intoxication<br><br><b>Detainee:</b>Minke Arntz<br><b>Rank/Occupation:</b>Field Researcher<br><b>Reason:</b>Deconstructed an M6 to study the effects of space dust on ballistic firearms.<br><br><b>Detainee:</b>Renanta McCrory<br><b>Rank/Occupation:</b>Medical Surgeon<br><b>Reason:</b>Medical Malpractice, Swapped the thumbs of a patient with their big toes. Removed from Premises."
 
+/obj/item/paper/fluff/ruins/tarkon/scisafe
+	name = "paper - 'Science safe notice'"
+	default_raw_text = "<b>Until further notice,</b> we are not handing out the code to the safe.<br><br>Whoever took the research item is getting their ass thrown to the next cleansing squad.<br><br>Yes, Its still in the surgery room.<br>Yes, its code has been reset."
+
+/obj/item/paper/fluff/ruins/tarkon/cargosafe
+	name = "paper - 'Cargo safe note'"
+	default_raw_text = "Hey... Director wasn't happy about bumping their head on the table trying to check funding, so we moved it into the warehouse.  <br> Check in the owlcove by the air alarm, make sure to paint the tiling when you're finished. <br> P.S: 50 credits if you can write the code down"
+
 /obj/item/paper/crumpled/fluff/tarkon
 	name = "Crumpled note"
 	default_raw_text = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."
 
+/obj/item/storage/backpack/messenger/science/fluffer
+	name = "fluffer messenger bag"
+	desc = "A small bag for more discrete storage. Its fabric is stained with a rather peculiar scent."
+
+/obj/item/storage/backpack/messenger/science/fluffer/PopulateContents()
+	new /obj/item/clothing/mask/ballgag
+	new /obj/item/clothing/sextoy/eggvib
+	new /obj/item/restraints/handcuffs/lewd
+	new /obj/item/clothing/glasses/blindfold/kinky
+	new /obj/item/clothing/head/costume/rabbitears
