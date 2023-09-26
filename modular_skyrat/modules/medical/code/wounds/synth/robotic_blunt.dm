@@ -588,12 +588,18 @@
 	if (user == victim)
 		delay_mult *= CROWBAR_OPEN_SELF_TEND_DELAY_MULT
 
+	var/knows_wires = FALSE
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
 		delay_mult *= CROWBAR_OPEN_KNOWS_ROBO_WIRES_DELAY_MULT
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		knows_wires = TRUE
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
 		delay_mult *= CROWBAR_OPEN_KNOWS_ENGI_WIRES_DELAY_MULT
+		knows_wires = TRUE
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT
+		if (knows_wires)
+			delay_mult *= (CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT * 1.5)
+		else
+			delay_mult *= CROWBAR_OPEN_HAS_DIAG_HUD_DELAY_MULT
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= CROWBAR_OPEN_WOUND_SCANNED_DELAY_MULT
 
@@ -709,18 +715,24 @@
 			chance *= 0.2
 		delay_mult *= 2
 
+	var/knows_wires = FALSE
 	if (crowbarred_open)
 		chance *= 4 // even self-tends get a high chance of success if torn open!
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		chance *= 15 // almost guaranteed if its not self surgery
-		delay_mult *= 0.5
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		chance *= 8
+		chance *= 8 // almost guaranteed if its not self surgery - guaranteed with diag hud
+		delay_mult *= 0.75
+		knows_wires = TRUE
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		chance *= 5.5
 		delay_mult *= 0.85
+		knows_wires = TRUE
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		chance *= 3
+		if (knows_wires)
+			chance *= 1.25
+		else
+			chance *= 4
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		chance *= 2
+		chance *= 1.5 // youre not intended to fix this by yourself this way
 		delay_mult *= 0.8
 
 	var/confused = (chance < SECURE_INTERNALS_CONFUSED_CHANCE_THRESHOLD) // generate chance beforehand, so we can use this var
@@ -1001,14 +1013,20 @@
 /datum/wound/blunt/robotic/secures_internals/critical/proc/mold_metal(mob/living/carbon/human/user)
 	var/chance = 60
 
+	var/knows_wires = FALSE
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		chance *= 3
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		chance *= 3
+		chance *= 2
+		knows_wires = TRUE
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		chance *= 1.25
+		knows_wires = TRUE
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		chance *= 2
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		chance *= 2
+		if (knows_wires)
+			chance *= 1.25
+		else
+			chance *= 2
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
@@ -1095,16 +1113,22 @@
 
 	var/base_time = 10 SECONDS
 	var/delay_mult = 1
+	var/knows_wires = FALSE
 	if (victim == user)
 		delay_mult *= 3 // real slow
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
 		delay_mult *= 0.5
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		delay_mult *= 0.5
+		knows_wires = TRUE
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		delay_mult *= 0.5 // engis are accustomed to using RCDs
+		knows_wires = TRUE
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= 0.5
+		if (knows_wires)
+			delay_mult *= 0.85
+		else
+			delay_mult *= 0.5
 
 	var/final_time = (base_time * delay_mult)
 	var/misused = (final_time > base_time) // if we damage the limb when we're done
@@ -1177,10 +1201,10 @@
 
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
 		success_chance *= 1.25
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
 		success_chance *= 1.1
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		success_chance *= 1.25
+		success_chance *= 1.25 // its kinda alien to do this, so even people with the wires get the full bonus of diag huds
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		success_chance *= 1.5
 

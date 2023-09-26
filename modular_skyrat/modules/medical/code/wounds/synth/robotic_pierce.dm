@@ -30,7 +30,7 @@
 	threshold_penalty = 30
 
 	intensity = 10 SECONDS
-	processing_full_shock_threshold = 8 MINUTES
+	processing_full_shock_threshold = 7 MINUTES
 
 	processing_shock_power_per_second_max = 1.2
 	processing_shock_power_per_second_min = 1.1
@@ -42,11 +42,7 @@
 	process_shock_spark_count_min = 1
 
 	wirecut_repair_percent = 0.065 // not even faster at this point
-	wire_repair_percent = 0.056
-
-	interaction_efficiency_penalty = 2
-	limp_slowdown = 2
-	limp_chance = 60
+	wire_repair_percent = 0.022
 
 	initial_sparks_amount = 1
 
@@ -77,7 +73,7 @@
 	threshold_penalty = 40
 
 	intensity = 20 SECONDS
-	processing_full_shock_threshold = 7.5 MINUTES
+	processing_full_shock_threshold = 6.5 MINUTES
 
 	processing_shock_power_per_second_max = 1.6
 	processing_shock_power_per_second_min = 1.5
@@ -89,15 +85,9 @@
 	process_shock_spark_count_min = 1
 
 	wirecut_repair_percent = 0.068
-	wire_repair_percent = 0.04
-
-	interaction_efficiency_penalty = 2.5
-	limp_slowdown = 4
-	limp_chance = 90
+	wire_repair_percent = 0.02
 
 	initial_sparks_amount = 3
-
-	disable_at_intensity_mult = 1
 
 	status_effect_type = /datum/status_effect/wound/electrical_damage/pierce/moderate
 
@@ -128,7 +118,7 @@
 	threshold_penalty = 60
 
 	intensity = 30 SECONDS
-	processing_full_shock_threshold = 6.5 MINUTES
+	processing_full_shock_threshold = 5.5 MINUTES
 
 	processing_shock_power_per_second_max = 2.2
 	processing_shock_power_per_second_min = 2.1
@@ -140,11 +130,7 @@
 	process_shock_spark_count_min = 2
 
 	wirecut_repair_percent = 0.067
-	wire_repair_percent = 0.03
-
-	interaction_efficiency_penalty = 3
-	limp_slowdown = 6
-	limp_chance = 100
+	wire_repair_percent = 0.018
 
 	initial_sparks_amount = 8
 

@@ -8,9 +8,13 @@
 #define ELECTRICAL_DAMAGE_DEAD_PROGRESS_MULT 0.2 // they'll be resting to, so this is more like 0.1
 
 /// Base time for a wirecutter being used.
-#define ELECTRICAL_DAMAGE_WIRECUTTER_BASE_DELAY 5 SECONDS
+#define ELECTRICAL_DAMAGE_WIRECUTTER_BASE_DELAY 8 SECONDS
 /// Base time for a cable coil being used.
-#define ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY 1.9 SECONDS
+#define ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY 0.8 SECONDS
+/// Global damage multiplier for the power a given electrical damage wound will add per tick.
+#define ELECTRICAL_DAMAGE_POWER_PER_TICK_MULT 1
+/// Global damage multiplier for how much repairing wiring will reduce intensity. Higher is more.
+#define ELECTRICAL_DAMAGE_SUTURE_WIRE_HEALING_AMOUNT_MULT 1
 
 /// The minimum shock power we must have available to zap our victim. Must be at least one, since electrocute_act fails if its lower.
 #define ELECTRICAL_DAMAGE_MINIMUM_SHOCK_POWER_PER_ZAP 1
@@ -182,7 +186,7 @@
 	if (!limb_essential())
 		damage_mult *= limb_unimportant_damage_mult
 
-	return damage_mult
+	return damage_mult * ELECTRICAL_DAMAGE_POWER_PER_TICK_MULT
 
 /// Returns the global multiplier used by both progress and damage.
 /datum/wound/electrical_damage/proc/get_base_mult()
@@ -307,7 +311,7 @@
 
 	var/is_suture = (istype(suturing_item, /obj/item/stack/medical/suture))
 
-	var/change = (processing_full_shock_threshold * wire_repair_percent)
+	var/change = (processing_full_shock_threshold * wire_repair_percent) * ELECTRICAL_DAMAGE_SUTURE_WIRE_HEALING_AMOUNT_MULT
 	var/delay_mult = 1
 	if (user == victim)
 		delay_mult *= 1.5
@@ -316,12 +320,15 @@
 		var/obj/item/stack/medical/suture/suture_item = suturing_item
 		var/obj/item/stack/medical/suture/base_suture = /obj/item/stack/medical/suture
 		change += (suture_item.heal_brute - initial(base_suture.heal_brute))
+
+	// as this is the trauma treatment, there are less bonuses
+	// if youre doing this, youre probably doing this on-the-spot
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 0.5
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		delay_mult *= 0.75
+		delay_mult *= 0.8
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		delay_mult *= 0.9
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= 0.75
+		delay_mult *= 0.8
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		change *= 1.2
 
@@ -368,15 +375,21 @@
 	if (is_retractor)
 		delay_mult *= 2
 		change *= 0.8
+	var/knows_wires = FALSE
 	if (HAS_TRAIT(user, TRAIT_KNOW_ROBO_WIRES))
-		delay_mult *= 0.4
-		change *= 1.1
-	if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
-		delay_mult *= 0.6
+		delay_mult *= 0.9
+		change *= 1.7
+		knows_wires = TRUE
+	else if (HAS_TRAIT(user, TRAIT_KNOW_ENGI_WIRES))
+		change *= 1.35
+		knows_wires = TRUE
 	if (HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		delay_mult *= 0.6
+		if (knows_wires)
+			delay_mult *= 0.9
+		else
+			delay_mult *= 0.75
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		change *= 1.2
+		delay_mult *= 0.8
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
@@ -511,7 +524,7 @@
 	process_shock_spark_count_min = 1
 
 	wirecut_repair_percent = 0.085 // not even faster at this point
-	wire_repair_percent = 0.075
+	wire_repair_percent = 0.035
 
 	initial_sparks_amount = 1
 
@@ -554,7 +567,7 @@
 	process_shock_spark_count_min = 1
 
 	wirecut_repair_percent = 0.1
-	wire_repair_percent = 0.07
+	wire_repair_percent = 0.032
 
 	initial_sparks_amount = 3
 
@@ -598,8 +611,8 @@
 	process_shock_spark_count_max = 3
 	process_shock_spark_count_min = 2
 
-	wirecut_repair_percent = 0.14
-	wire_repair_percent = 0.069
+	wirecut_repair_percent = 0.12
+	wire_repair_percent = 0.03
 
 	initial_sparks_amount = 8
 
@@ -624,3 +637,5 @@
 
 #undef ELECTRICAL_DAMAGE_MINIMUM_SHOCK_POWER_PER_ZAP
 #undef ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR
+#undef ELECTRICAL_DAMAGE_POWER_PER_TICK_MULT
+#undef ELECTRICAL_DAMAGE_SUTURE_WIRE_HEALING_AMOUNT_MULT
