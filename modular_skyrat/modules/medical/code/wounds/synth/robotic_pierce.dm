@@ -42,7 +42,7 @@
 	process_shock_spark_count_min = 1
 
 	wirecut_repair_percent = 0.065 // not even faster at this point
-	wire_repair_percent = 0.022
+	wire_repair_percent = 0.026
 
 	initial_sparks_amount = 1
 
