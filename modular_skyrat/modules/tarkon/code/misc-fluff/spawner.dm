@@ -17,7 +17,7 @@
 
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
-	uniform = /obj/item/clothing/under/misc/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/combat
@@ -39,17 +39,16 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/cargo
-	prompt_name = "a port researcher"
+	prompt_name = "a port salvage tech"
 	outfit = /datum/outfit/tarkon/cargo
 
 /datum/outfit/tarkon/cargo
 	name = "Port Tarkon Cargo Outfit"
-	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
 	id = /obj/item/card/id/advanced/tarkon/cargo
 	id_trim = /datum/id_trim/away/tarkon/cargo
 	l_pocket = /obj/item/mining_voucher
-	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
 	prompt_name = "a port researcher"
@@ -57,11 +56,10 @@
 
 /datum/outfit/tarkon/sci
 	name = "Port Tarkon Science Outfit"
-	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/sci
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/advanced/tarkon/sci
 	id_trim = /datum/id_trim/away/tarkon/sci
-	l_pocket = null
 	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
@@ -70,7 +68,7 @@
 
 /datum/outfit/tarkon/med
 	name = "Port Tarkon Medical Outfit"
-	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/med
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/advanced/tarkon/med
 	id_trim = /datum/id_trim/away/tarkon/med
@@ -84,7 +82,7 @@
 
 /datum/outfit/tarkon/engi
 	name = "Port Tarkon Engineering Outfit"
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/eng
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/advanced/tarkon/engi
 	id_trim = /datum/id_trim/away/tarkon/eng
@@ -99,7 +97,7 @@
 
 /datum/outfit/tarkon/sec
 	name = "Port Tarkon Security Outfit"
-	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
+	uniform = /obj/item/clothing/under/tarkon/sec
 	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	id = /obj/item/card/id/advanced/tarkon/sec
@@ -121,7 +119,7 @@
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
 	name = "Port Tarkon Ensigns Outfit"
-	uniform = /obj/item/clothing/under/misc/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/com
 	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
@@ -133,14 +131,14 @@
 
 /datum/outfit/tarkon/loot
 	name = "Dead Tarkon Ensigns Outfit"
-	uniform = /obj/item/clothing/under/misc/skyrat/utility
+	uniform = /obj/item/clothing/under/tarkon/com
 	ears = /obj/item/radio/headset/tarkon/command
 	id = /obj/item/card/id/advanced/tarkon/ensign
 	id_trim = /datum/id_trim/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/mod/control/pre_equipped/tarkon
-	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 5, /obj/item/multitool/abductor)
+	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 5, /obj/effect/spawner/random/astrum/sci_loot)
 
 /obj/effect/mob_spawn/corpse/human/tarkon
 	icon_state = "corpseminer"

@@ -6,6 +6,7 @@
 	worn_icon_digi = 'modular_skyrat/modules/tarkon/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "tarkon"
 	body_parts_covered = CHEST|ARMS|GROIN|LEGS
+	armor_type = /datum/armor/clothing_under/tarkon
 
 /obj/item/clothing/under/tarkon/cargo
 	name = "tarkon cargo uniform"
@@ -31,3 +32,14 @@
 	name = "tarkon maintenance uniform"
 	desc = "A uniform worn by maintenance-ranked crew, provided by Tarkon Industries."
 	icon_state = "tarkon_eng"
+
+/obj/item/clothing/under/tarkon/com
+	name = "tarkon command uniform"
+	desc = "A uniform worn by command-ranked crew, provided by Tarkon Industries."
+	icon_state = "tarkon_com"
+
+/datum/armor/clothing_under/tarkon
+	melee = 10
+	fire = 50
+	acid = 50
+	wound = 10
