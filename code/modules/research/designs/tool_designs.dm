@@ -39,7 +39,6 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 	autolathe_exportable = FALSE
 
-/*	SKYRAT EDIT - MOVED TO modular_skyrat/modules/electric_welder/code/electric_welder.dm
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -51,7 +50,6 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
-*/
 
 /datum/design/rangedanalyzer
 	name = "Experimental Long-range Gas Analyzer"

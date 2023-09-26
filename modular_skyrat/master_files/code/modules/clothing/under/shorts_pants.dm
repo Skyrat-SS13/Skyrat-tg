@@ -74,6 +74,7 @@
 	icon_state = "shortershorts"
 	greyscale_config = /datum/greyscale_config/shortershorts
 	greyscale_config_worn = /datum/greyscale_config/shortershorts/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/shortershorts/worn/digi
 	greyscale_colors = "#787878#723E0E#202020"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
