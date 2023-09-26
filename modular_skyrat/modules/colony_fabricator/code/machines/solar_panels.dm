@@ -26,6 +26,15 @@
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+/obj/machinery/power/solar/quickdeploy/crowbar_act(mob/user, obj/item/I)
+	return
+
+/obj/machinery/power/solar/quickdeploy/deconstruct(disassembled = TRUE)
+	var/obj/item/solar_assembly/assembly = locate() in src
+	if(assembly)
+		qdel(assembly)
+	return ..()
+
 // Solar panel deployable item
 
 /obj/item/flatpacked_machine/solar
@@ -63,6 +72,15 @@
 		deconstruct(disassembled = TRUE)
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/power/tracker/quickdeploy/crowbar_act(mob/user, obj/item/I)
+	return
+
+/obj/machinery/power/tracker/quickdeploy/deconstruct(disassembled = TRUE)
+	var/obj/item/solar_assembly/assembly = locate() in src
+	if(assembly)
+		qdel(assembly)
+	return ..()
 
 // Solar tracker deployable item
 
