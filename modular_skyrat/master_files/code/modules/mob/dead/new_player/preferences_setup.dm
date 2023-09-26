@@ -23,14 +23,14 @@
 		if(PREVIEW_PREF_UNDERWEAR)
 			mannequin.underwear_visibility = NONE
 		if(PREVIEW_PREF_NAKED)
-			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS | UNDERWEAR_HIDE_BRA
 			for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
 				var/obj/item/organ/external/genital/gent = mannequin.get_organ_slot(organ_key)
 				if(gent)
 					gent.aroused = AROUSAL_NONE
 					gent.update_sprite_suffix()
 		if(PREVIEW_PREF_NAKED_AROUSED)
-			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS | UNDERWEAR_HIDE_BRA
 			for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
 				var/obj/item/organ/external/genital/gent = mannequin.get_organ_slot(organ_key)
 				if(gent)

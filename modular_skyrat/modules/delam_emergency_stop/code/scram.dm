@@ -1,6 +1,6 @@
 #define SM_PREVENT_EXPLOSION_THRESHOLD 100
-#define SM_COOLING_MIXTURE_MOLES 64000
-#define SM_COOLING_MIXTURE_TEMP 120
+#define SM_COOLING_MIXTURE_MOLES 16000
+#define SM_COOLING_MIXTURE_TEMP 170
 #define DAMAGED_SUPERMATTER_COLOR list(1,0.1,0.2,0, 0,0.9,0.1,0, 0.1,-0.05,0.85,0, 0,0,0,0.9, 0,0,0,0)
 #define MISTAKES_WERE_MADE 0
 #define MANUAL_INTERVENTION 0
@@ -15,12 +15,12 @@
 #define SHATTER_LIGHT_RANGE 0
 #define SHATTER_FLAME_RANGE 3
 #define SHATTER_FLASH_RANGE 5
-#define SHATTER_MIN_TIME 13 SECONDS
-#define SHATTER_MAX_TIME 15 SECONDS
+#define SHATTER_MIN_TIME 17 SECONDS
+#define SHATTER_MAX_TIME 19 SECONDS
 #define EVAC_WARNING_TIMER 3 SECONDS
-#define POWER_CUT_MIN_DURATION_SECONDS 19
-#define POWER_CUT_MAX_DURATION_SECONDS 21
-#define AIR_INJECT_RATE 33
+#define POWER_CUT_MIN_DURATION_SECONDS 21
+#define POWER_CUT_MAX_DURATION_SECONDS 23
+#define AIR_INJECT_RATE 175
 #define BUTTON_SOUND_RANGE 7
 #define BUTTON_SOUND_FALLOFF_DISTANCE 7
 #define MACHINE_SOUND_RANGE 15
@@ -217,7 +217,7 @@
 		addtimer(CALLBACK(fucked_window, TYPE_PROC_REF(/obj/structure/window/reinforced/plasma, shatter_window)), rand(SHATTER_MIN_TIME, SHATTER_MAX_TIME))
 
 	// Let the gas work for a few seconds to cool the crystal. If it has damage beyond repair, heal it a bit
-	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(prevent_explosion)), 9 SECONDS)
 
 /// Shatter the supermatter chamber windows
 /obj/structure/window/reinforced/plasma/proc/shatter_window()

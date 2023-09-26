@@ -301,6 +301,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Ripped Jean Shorts"
 	item_path = /obj/item/clothing/under/shorts/skyrat/shorts_ripped
 
+/datum/loadout_item/under/miscellaneous/shortershorts
+	name = "Recolorable Shorter Shorts"
+	item_path = /obj/item/clothing/under/shorts/skyrat/shortershorts
+
 /datum/loadout_item/under/miscellaneous/shorts
 	name = "Recolorable Shorts"
 	item_path = /obj/item/clothing/under/shorts
