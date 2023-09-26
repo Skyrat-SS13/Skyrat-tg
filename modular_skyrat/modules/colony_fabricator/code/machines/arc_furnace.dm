@@ -25,7 +25,7 @@
 	/// Radial options for using the arc furnace
 	var/static/list/radial_options = list("eject" = radial_eject, "use" = radial_use)
 	/// Soundloop for while we are smelting ores
-	var/datum/looping_sound/microwave/soundloop
+	var/datum/looping_sound/arc_furnace_running/soundloop
 
 /obj/machinery/arc_furnace/Initialize(mapload)
 	. = ..()
