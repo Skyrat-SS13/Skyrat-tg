@@ -18,7 +18,6 @@
 		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_2.wav' = 1,
 		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_3.wav' = 1,
 		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_4.wav' = 1,
-		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_5.wav' = 1,
 	)
 	mid_length = 1 SECONDS
 	volume = 100
