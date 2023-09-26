@@ -509,6 +509,7 @@
 	icon_state = "duffel-medical"
 	inhand_icon_state = "duffel-med"
 
+<<<<<<< HEAD
 /obj/item/storage/backpack/duffelbag/med/surgery
 	name = "surgical duffel bag"
 	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
@@ -527,27 +528,13 @@
 	new /obj/item/razor(src)
 	new /obj/item/blood_filter(src)
 
+=======
+>>>>>>> af0e29f3bb7 (adds a surgery tray to surgery supplies medical order, removes surgery duffelbags entirely (#78514))
 /obj/item/storage/backpack/duffelbag/coroner
 	name = "coroner duffel bag"
 	desc = "A large duffel bag for holding large amounts of organs at once."
 	icon_state = "duffel-coroner"
 	inhand_icon_state = "duffel-coroner"
-
-/obj/item/storage/backpack/duffelbag/coroner/surgery
-	name = "surgical coroner bag"
-	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding morbid surgical tools."
-
-/obj/item/storage/backpack/duffelbag/coroner/surgery/PopulateContents()
-	new /obj/item/scalpel/cruel(src)
-	new /obj/item/hemostat/cruel(src)
-	new /obj/item/retractor/cruel(src)
-	new /obj/item/circular_saw(src)
-	new /obj/item/surgicaldrill(src)
-	new /obj/item/cautery/cruel(src)
-	new /obj/item/bonesetter(src)
-	new /obj/item/surgical_drapes(src)
-	new /obj/item/razor(src)
-	new /obj/item/blood_filter(src)
 
 /obj/item/storage/backpack/duffelbag/explorer
 	name = "explorer duffel bag"
