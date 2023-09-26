@@ -122,6 +122,9 @@
 		other_message += " as best as they can while [target] has clothing on"
 
 	target.heal_bodypart_damage(healed_brute, healed_burn, 0, BODYTYPE_ROBOTIC)
+
+	self_message += get_progress(user, target, healed_brute, healed_burn)
+
 	display_results(user, target, span_notice("[self_message]."), "[other_message].", "[other_message].")
 
 	if(istype(surgery, /datum/surgery/robot_healing))
@@ -185,16 +188,49 @@
 	time = 2.5 SECONDS
 
 /datum/surgery_step/robot_heal/upgraded
-	brute_heal_amount = 13
-	burn_heal_amount = 13
+	brute_heal_amount = 12
+	burn_heal_amount = 12
 	missing_health_bonus = 11
-	time = 2.5 SECONDS
+	time = 2.3 SECONDS
 
 /datum/surgery_step/robot_heal/experimental
-	brute_heal_amount = 15
-	burn_heal_amount = 15
-	missing_health_bonus = 7
+	brute_heal_amount = 14
+	burn_heal_amount = 14
+	missing_health_bonus = 8
 	time = 2 SECONDS
+
+/datum/surgery_step/robot_heal/proc/get_progress(mob/user, mob/living/carbon/target, brute_healed, burn_healed)
+	var/estimated_remaining_steps = 0
+	if(brute_healed > 0)
+		estimated_remaining_steps = max(0, (target.getBruteLoss() / brute_healed))
+	if(burn_healed > 0)
+		estimated_remaining_steps = max(estimated_remaining_steps, (target.getFireLoss() / burn_healed)) // whichever is higher between brute or burn steps
+
+	var/progress_text
+
+	if(locate(/obj/item/healthanalyzer) in user.held_items)
+		if(target.getBruteLoss())
+			progress_text = ". Remaining brute: <font color='#ff3333'>[target.getBruteLoss()]</font>"
+		if(target.getFireLoss())
+			progress_text += ". Remaining burn: <font color='#ff9933'>[target.getFireLoss()]</font>"
+	else
+		switch(estimated_remaining_steps)
+			if(-INFINITY to 1)
+				return
+			if(1 to 3)
+				progress_text = ", finishing up the last few signs of damage"
+			if(3 to 6)
+				progress_text = ", counting down the last few patches of trauma"
+			if(6 to 9)
+				progress_text = ", continuing to plug away at [target.p_their()] extensive damages"
+			if(9 to 12)
+				progress_text = ", steadying yourself for the long surgery ahead"
+			if(12 to 15)
+				progress_text = ", though [target.p_they()] still look[target.p_s()] heavily battered"
+			if(15 to INFINITY)
+				progress_text = ", though you feel like you're barely making a dent in treating [target.p_their()] broken body"
+
+	return progress_text
 
 #undef DAMAGE_ROUNDING
 #undef FAIL_DAMAGE_MULTIPLIER
