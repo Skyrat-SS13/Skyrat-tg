@@ -672,6 +672,8 @@
 					if (target_synthetic)
 						user.visible_message(span_boldwarning("[src] fire a powerful jolt of electricity into [H]'s vulnerable circuitry!"))
 						to_chat(H, span_userdanger("[user]'s defibrilator fires a powerful jolt of electricity into your vulnerable circuitry, overloading it!"))
+						// You may ask, why not just call H.emp_act()?
+						// well my dear reader, that EMPs contents. I only want to EMP bodyparts and organs specifically
 						for (var/obj/item/bodypart/iterated_part as anything in H.bodyparts)
 							iterated_part.emp_act(EMP_LIGHT)
 						for (var/obj/item/organ/iterated_organ as anything in H.organs)
