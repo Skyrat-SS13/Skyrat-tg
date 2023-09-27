@@ -509,27 +509,6 @@
 	icon_state = "duffel-medical"
 	inhand_icon_state = "duffel-med"
 
-<<<<<<< HEAD
-/obj/item/storage/backpack/duffelbag/med/surgery
-	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
-
-/obj/item/storage/backpack/duffelbag/med/surgery/PopulateContents()
-	new /obj/item/scalpel(src)
-	new /obj/item/hemostat(src)
-	new /obj/item/retractor(src)
-	new /obj/item/circular_saw(src)
-	new /obj/item/surgicaldrill(src)
-	new /obj/item/cautery(src)
-	new /obj/item/bonesetter(src)
-	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown(src)	//SKYRAT EDIT ADDITION
-	new /obj/item/clothing/mask/surgical(src)
-	new /obj/item/razor(src)
-	new /obj/item/blood_filter(src)
-
-=======
->>>>>>> af0e29f3bb7 (adds a surgery tray to surgery supplies medical order, removes surgery duffelbags entirely (#78514))
 /obj/item/storage/backpack/duffelbag/coroner
 	name = "coroner duffel bag"
 	desc = "A large duffel bag for holding large amounts of organs at once."
