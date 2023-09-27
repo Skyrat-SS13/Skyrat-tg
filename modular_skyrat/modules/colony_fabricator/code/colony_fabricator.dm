@@ -49,7 +49,7 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/rnd/production/colony_lathe/deconstruct(disassembled = TRUE)
-	new repacked_type(get_turf(src))
+	new repacked_type(drop_location())
 	return ..()
 
 /obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)

@@ -29,7 +29,7 @@
 	return
 
 /obj/machinery/power/solar/quickdeploy/deconstruct(disassembled = TRUE)
-	new repacked_type(get_turf(src))
+	new repacked_type(drop_location())
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
@@ -44,6 +44,7 @@
 	icon_state = "solar_panel_packed"
 	type_to_deploy = /obj/machinery/power/solar/quickdeploy
 	deploy_time = 2 SECONDS
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*1.75, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT * 3)
 
 // Solar trackers
 
@@ -76,7 +77,7 @@
 	return
 
 /obj/machinery/power/tracker/quickdeploy/deconstruct(disassembled = TRUE)
-	new repacked_type(get_turf(src))
+	new repacked_type(drop_location())
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)

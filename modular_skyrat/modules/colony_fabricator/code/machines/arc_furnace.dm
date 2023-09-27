@@ -54,7 +54,7 @@
 		return
 
 	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 1 SECONDS, target = src))
+	if(do_after(user, 3 SECONDS, target = src))
 		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
 		deconstruct(disassembled = TRUE)
 
@@ -62,7 +62,7 @@
 
 /obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
 	eject_contents()
-	new repacked_type(get_turf(src))
+	new repacked_type(drop_location())
 	return ..()
 
 /obj/machinery/arc_furnace/update_appearance()
@@ -199,3 +199,4 @@
 		near as portable as these are."
 	icon_state = "arc_furnace_folded"
 	type_to_deploy = /obj/machinery/arc_furnace
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3)
