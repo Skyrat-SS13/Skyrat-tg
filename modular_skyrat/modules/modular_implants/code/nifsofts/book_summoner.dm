@@ -29,7 +29,7 @@
 	var/can_be_carved = TRUE
 
 /obj/item/book/try_carve(obj/item/carving_item, mob/living/user, params)
-	if(!can_be_carved)
+	if(cannot_carve)
 		balloon_alert(user, "unable to be carved!")
 		return FALSE
 
