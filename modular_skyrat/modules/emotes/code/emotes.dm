@@ -143,7 +143,7 @@
 	message = "squeaks!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'sound/effects/mousesqueek.ogg'
+	sound = 'sound/creatures/mousesqueek.ogg'
 
 /datum/emote/living/merp
 	key = "merp"
