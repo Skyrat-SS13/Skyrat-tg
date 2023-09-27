@@ -178,7 +178,7 @@
 			// so instead we just say fuck it and hope to god only human subtypes get this wound
 			// tldr; ryll why
 			var/mob/living/carbon/human/human_victim = victim
-			for (var/obj/item/clothing/iter_clothing as anything in human_victim.clothingonpart(limb))
+			for (var/obj/item/clothing/iter_clothing as anything in human_victim.get_clothing_on_part(limb))
 				if (iter_clothing.clothing_flags & THICKMATERIAL)
 					return
 
