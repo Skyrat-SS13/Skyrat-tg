@@ -174,9 +174,15 @@
 
 	var/turf/where_we_spawn_air = get_turf(src)
 	var/obj/item/stack/ore/ore_stack_to_check = contents[1]
-	switch(ore_stack_to_check)
-		if(istype(ore_stack_to_check, /obj/item/stack/ore/plasma))
-			where_we_spawn_air.atmos_spawn_air("co2=30;plasma=10,TEMP=1200")
+	switch(ore_stack_to_check.refined_type)
+		if(/obj/item/stack/sheet/mineral/silver)
+			where_we_spawn_air.atmos_spawn_air("n2=20;n2o=20;TEMP=1200")
+		if(/obj/item/stack/sheet/mineral/uranium)
+			where_we_spawn_air.atmos_spawn_air("co2=80;miasma=20;TEMP=1200")
+		if(/obj/item/stack/sheet/mineral/titanium)
+			where_we_spawn_air.atmos_spawn_air("n2=20;co2=20;TEMP=1200")
+		else
+			where_we_spawn_air.atmos_spawn_air("co2=30;miasma=10;TEMP=1200")
 
 	addtimer(CALLBACK(src, PROC_REF(loop), time), 1 SECONDS)
 

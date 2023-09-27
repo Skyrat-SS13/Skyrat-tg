@@ -5,7 +5,7 @@
 		<b>higher maximum output</b> than some larger units. Most commonly seen being used not for their ability to store \
 		power, but rather for use in regulating power input and output."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/power_storage_unit/small_battery.dmi'
-	capacity = 125e4
+	capacity = 75e4
 	input_level_max = 4e5
 	output_level_max = 4e5
 	circuit = null
