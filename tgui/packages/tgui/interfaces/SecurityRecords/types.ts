@@ -23,14 +23,11 @@ export type SecurityRecord = {
   rank: string;
   species: string;
   wanted_status: string;
-<<<<<<< HEAD
+  voice: string;
   // SKYRAT EDIT START - RP Records
   past_general_records: string;
   past_security_records: string;
   // SKYRAT EDIT END
-=======
-  voice: string;
->>>>>>> dd877888778 (TTS: Gas Mask muffling, Hailer Mask voice effects, support for more filters that use samplerate, voice effects for lizards, ethereals, and xenomorphs. (#78567))
 };
 
 export type Crime = {
