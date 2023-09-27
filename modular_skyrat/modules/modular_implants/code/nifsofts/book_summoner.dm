@@ -4,7 +4,8 @@
 
 /datum/nifsoft/summoner/book
 	name = "Grimoire Akasha"
-	program_desc = "Grimoire Akasha is a fork of the Grimoire Caeruleam NIFSoft, that is designed around giving the user access to various educational hardlight books. Due to it's educational nature and miniscule size, Grimoire Akasha is typically provided for free at most NIFSoft marketplaces."
+	program_desc = "Grimoire Akasha is a fork of the Grimoire Caeruleam NIFSoft that is designed around giving the user access to various educational hardlight books. \
+	Due to its educational nature and miniscule size, Grimoire Akasha is typically provided for free at most NIFSoft marketplaces."
 	summonable_items = list()
 	purchase_price = 0 // This is a tool intended to help out newer players.
 	max_summoned_items = 2
