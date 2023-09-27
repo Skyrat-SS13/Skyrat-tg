@@ -118,7 +118,6 @@
 
 /obj/item/ammo_casing/smart
 	firing_effect_type = null
-	is_cased_ammo = FALSE
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()

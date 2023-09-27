@@ -151,7 +151,7 @@
 /datum/supply_pack/misc/bluespace_miner
 	name = "Bluespace Miner"
 	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
-	cost = CARGO_CRATE_VALUE * 150 // 30,000
+	cost = CARGO_CRATE_VALUE * 50 // 10,000
 	contains = list(/obj/item/circuitboard/machine/bluespace_miner)
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate

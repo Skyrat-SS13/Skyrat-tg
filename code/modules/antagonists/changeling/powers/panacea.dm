@@ -27,7 +27,7 @@
 		O.Remove(user)
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
-			C.vomit(0)
+			C.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 0)
 		O.forceMove(get_turf(user))
 	//Skyrat Edit Start: Cortical Borer
 	var/mob/living/basic/cortical_borer/cb_inside = user.has_borer()
