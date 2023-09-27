@@ -19,7 +19,7 @@
 	src.repacking_time = repacking_time
 	src.disassemble_objects = disassemble_objects
 
-	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
+	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	RegisterSignal(target, COMSIG_ATOM_ATTACK_HAND_SECONDARY, PROC_REF(on_right_click))
 
 /datum/element/repackable/Detach(datum/target)
@@ -32,18 +32,23 @@
 
 	examine_list += span_notice("It can be <b>repacked</b> with <b>right click</b>.")
 
-/datum/element/repackable/proc/on_right_click(datum/source, mob/user)
+/// Checks if the user can actually interact with the structures in question, then invokes the proc to make it repack
+/datum/element/repackable/proc/on_right_click(atom/source, mob/user)
 	SIGNAL_HANDLER
 
 	if(!source.can_interact(user) || !user.can_perform_action(source))
 		return
 
+	INVOKE_ASYNC(src, PROC_REF(repack), source, user)
+
+/// Removes the element target and spawns a new one of whatever item_to_pack_into is
+/datum/element/repackable/proc/repack(atom/source, mob/user)
 	source.balloon_alert_to_viewers("repacking...")
 	if(!do_after(user, 3 SECONDS, target = source))
 		return
 	new item_to_pack_into(source.drop_location())
 	source.playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
 	if(istype(source, /obj))
-		deconstruct(disassembled = TRUE)
+		source.deconstruct(disassembled = TRUE)
 	else
 		qdel(source)
