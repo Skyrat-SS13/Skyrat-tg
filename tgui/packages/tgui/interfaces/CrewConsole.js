@@ -10,8 +10,16 @@ const HEALTH_COLOR_BY_LEVEL = [
   '#e67e22',
   '#ed5100',
   '#e74c3c',
+<<<<<<< HEAD
   '#ed2814',
 ];
+=======
+  '#801308',
+];
+
+const STAT_LIVING = 0;
+const STAT_DEAD = 4;
+>>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
 
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
@@ -40,7 +48,21 @@ const jobToColor = (jobId) => {
   return COLORS.department.other;
 };
 
+<<<<<<< HEAD
 const healthToColor = (oxy, tox, burn, brute) => {
+=======
+const statToIcon = (life_status) => {
+  switch (life_status) {
+    case STAT_LIVING:
+      return 'heart';
+    case STAT_DEAD:
+      return 'skull';
+  }
+  return 'heartbeat';
+};
+
+const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
+>>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
   return HEALTH_COLOR_BY_LEVEL[level];
@@ -116,8 +138,25 @@ const CrewTableEntry = (props, context) => {
         {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
+<<<<<<< HEAD
         {life_status ? (
           <ColorBox color={healthToColor(oxydam, toxdam, burndam, brutedam)} />
+=======
+        {oxydam !== undefined ? (
+          <Icon
+            name={statToIcon(life_status)}
+            color={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_COLOR_BY_LEVEL
+            )}
+            size={1}
+          />
+        ) : life_status !== STAT_DEAD ? (
+          <Icon name="heart" color="#17d568" size={1} />
+>>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
         ) : (
           <ColorBox color={'#ed2814'} />
         )}
@@ -133,7 +172,7 @@ const CrewTableEntry = (props, context) => {
             {'/'}
             <HealthStat type="brute" value={brutedam} />
           </Box>
-        ) : life_status ? (
+        ) : life_status !== STAT_DEAD ? (
           'Alive'
         ) : (
           'Dead'

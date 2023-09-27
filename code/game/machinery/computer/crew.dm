@@ -256,14 +256,18 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
 
+<<<<<<< HEAD
 		// SKYRAT EDIT BEGIN: Checking for robotic race
 		if (issynthetic(tracked_human))
 			entry["is_robot"] = TRUE
 		// SKYRAT EDIT END
 
 		// Binary living/dead status
+=======
+		// Current status
+>>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
 		if (sensor_mode >= SENSOR_LIVING)
-			entry["life_status"] = (tracked_living_mob.stat != DEAD)
+			entry["life_status"] = tracked_living_mob.stat
 
 		// Damage
 		if (sensor_mode >= SENSOR_VITALS)
