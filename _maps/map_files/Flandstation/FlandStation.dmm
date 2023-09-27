@@ -3482,6 +3482,7 @@
 	pixel_y = 24
 	},
 /obj/structure/bed/dogbed/runtime,
+/mob/living/simple_animal/pet/cat/runtime,
 /turf/open/floor/iron/cafeteria,
 /area/station/command/heads_quarters/cmo)
 "beq" = (
@@ -4675,14 +4676,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "bBu" = (
-/obj/structure/sign/map/left{
-	desc = "A framed detailed picture of the station. there's even the permanent prison wing in the bottom left!";
-	icon_state = "map-left-fland";
-	pixel_y = 32
+/obj/docking_port/stationary/escape_pod{
+	dir = 4
 	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/starboard)
+/turf/open/space/basic,
+/area/space/nearstation)
 "bBv" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/effect/turf_decal/bot,
@@ -5395,14 +5393,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "bQy" = (
-/obj/structure/sign/map/right{
-	desc = "A framed detailed picture of the station. there's even the permanent prison wing in the bottom left!";
-	icon_state = "map-right-fland";
-	pixel_y = 32
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/starboard)
+/obj/structure/sign/map/left,
+/turf/closed/wall/r_wall,
+/area/station/command/heads_quarters/captain)
 "bQD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/cardboard,
@@ -17519,6 +17512,9 @@
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "fWL" = (
@@ -18367,6 +18363,7 @@
 /obj/item/storage/secure/safe{
 	pixel_x = 32
 	},
+/obj/structure/closet/secure_closet/chief_medical,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/cmo)
 "giC" = (
@@ -21960,7 +21957,12 @@
 /turf/open/floor/iron/dark/side,
 /area/station/hallway/primary/starboard)
 "hvr" = (
-/obj/structure/rack,
+/obj/machinery/modular_computer/preset/id{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "hvt" = (
@@ -46959,6 +46961,8 @@
 /obj/machinery/status_display/evac{
 	pixel_x = -32
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/announcement,
 /turf/open/floor/carpet/orange,
 /area/station/command/heads_quarters/qm)
 "pXT" = (
@@ -50743,6 +50747,8 @@
 /obj/machinery/modular_computer/preset/id{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/ce)
 "reM" = (
@@ -56373,12 +56379,12 @@
 	pixel_y = -24
 	},
 /obj/effect/turf_decal/bot,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/effect/mapping_helpers/requests_console/announcement,
-/obj/effect/mapping_helpers/requests_console/information,
 /obj/machinery/computer/mecha{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/vault,
 /area/station/command/heads_quarters/rd)
 "sWT" = (
@@ -56847,6 +56853,9 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Security - Head of Security's Office"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/hos)
 "teE" = (
@@ -65912,6 +65921,10 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/explab)
+"vWR" = (
+/obj/structure/sign/map/right,
+/turf/closed/wall/r_wall,
+/area/station/command/heads_quarters/captain)
 "vXB" = (
 /turf/closed/wall,
 /area/station/maintenance/aft)
@@ -68513,6 +68526,9 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/department/engine)
 "wRQ" = (
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/iron/cafeteria,
 /area/station/command/heads_quarters/cmo)
 "wSr" = (
@@ -119352,8 +119368,8 @@ dSZ
 iVZ
 wHQ
 hvr
-tar
-bBu
+bQy
+wAB
 ojo
 mqi
 mqi
@@ -119609,8 +119625,8 @@ aPc
 jjr
 wHQ
 oFa
-tar
-bQy
+vWR
+wAB
 uMW
 too
 too
@@ -129405,7 +129421,7 @@ uiN
 nnx
 lKB
 nnx
-kkx
+bBu
 nnx
 lKB
 uMO
