@@ -9,7 +9,6 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	cut_type = /obj/item/clothing/gloves/fingerless
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -27,7 +26,6 @@
 		)
 	)
 	// SKYRAT EDIT ADDITION END
-=======
 
 /obj/item/clothing/gloves/color/black/Initialize(mapload)
 	. = ..()
@@ -38,7 +36,6 @@
 		slapcraft_recipes = slapcraft_recipe_list,\
 	)
 
->>>>>>> 8d57758420b (Converts slapcrafting into a component (#78450))
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
 	desc = "Plain black gloves without fingertips for the hard-working."
