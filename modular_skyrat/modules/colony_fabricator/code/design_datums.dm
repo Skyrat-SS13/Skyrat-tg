@@ -94,23 +94,6 @@
 	)
 	construction_time = 15 SECONDS
 
-// Arc furance
-
-/datum/design/flatpack_arc_furnace
-	name = "Flatpacked Arc Furnace"
-	id = "flatpack_arc_furnace"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 3,
-	)
-	build_path = /obj/item/flatpacked_machine/arc_furnace
-	category = list(
-		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_MATERIALS,
-	)
-	construction_time = 15 SECONDS
-
 // Power storage structures
 
 /datum/design/flatpack_power_storage

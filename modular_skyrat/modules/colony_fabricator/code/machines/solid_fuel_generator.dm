@@ -4,7 +4,7 @@
 		Similarly to other portable generators, this design burns plasma sheets in order to produce \
 		power. Unlike other generators however, this one isn't as portable, or as safe to operate, \
 		but at least it makes a hell of a lot more power. Must be <b>bolted to the ground</b> \
-		before use. A massive warning label wants you to know that this generator \
+		and <b>attached to a wire</b> before use. A massive warning label wants you to know that this generator \
 		<b>outputs waste heat and gasses to the air around it</b>."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "fuel_generator_0"
@@ -48,7 +48,7 @@
 		power. Unlike other generators however, this one isn't as portable, or as safe to operate, \
 		but at least it makes a hell of a lot more power. A massive warning label wants you to know \
 		that this generator <b>outputs waste heat and gasses to the air around it</b>."
-	icon_state = "arc_furnace_folded"
+	icon_state = "fuel_generator_packed"
 	type_to_deploy = /obj/machinery/power/port_gen/pacman/solid_fuel
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
