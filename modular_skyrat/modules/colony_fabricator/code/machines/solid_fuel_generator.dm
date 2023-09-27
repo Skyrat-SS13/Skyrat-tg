@@ -15,6 +15,8 @@
 	power_gen = 50000
 	drag_slowdown = 1.5
 	sheet_path = /obj/item/stack/sheet/mineral/plasma
+	/// The item we turn into when repacked
+	var/repacked_type = /obj/item/flatpacked_machine/fuel_generator
 
 /obj/machinery/power/port_gen/pacman/solid_fuel/Initialize(mapload)
 	. = ..()
@@ -53,3 +55,21 @@
 	if(active)
 		var/turf/where_we_spawn_air = get_turf(src)
 		where_we_spawn_air.atmos_spawn_air("co2=10;TEMP=480") // Standard UK diesel engine operating temp is about 220 celsius or ~473 K
+
+// Item for creating the arc furnace or carrying it around
+
+/obj/item/flatpacked_machine/fuel_generator
+	name = "\improper flatpacked solid fuel generator"
+	desc = "The second most common generator design in the galaxy, second only to the PACMAN. \
+		Similarly to other portable generators, this design burns plasma sheets in order to produce \
+		power. Unlike other generators however, this one isn't as portable, or as safe to operate, \
+		but at least it makes a hell of a lot more power. A massive warning label wants you to know \
+		that this generator <b>outputs waste heat and gasses to the air around it</b>."
+	icon_state = "arc_furnace_folded"
+	type_to_deploy = /obj/machinery/power/port_gen/pacman
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+	)

@@ -144,6 +144,25 @@
 	)
 	construction_time = 40 SECONDS
 
+// Power storage structures
+
+/datum/design/flatpack_power_storage
+	name = "Flatpacked Solid Fuel Generator"
+	id = "flatpack_fuel_generator"
+	build_type = COLONY_FABRICATOR
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/flatpacked_machine/fuel_generator
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 30 SECONDS
+
 #undef FABRICATOR_CATEGORY_FLATPACK_MACHINES
 #undef FABRICATOR_SUBCATEGORY_MANUFACTURING
 #undef FABRICATOR_SUBCATEGORY_POWER
