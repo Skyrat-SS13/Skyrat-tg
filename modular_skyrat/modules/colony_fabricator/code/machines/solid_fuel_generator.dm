@@ -11,6 +11,7 @@
 	base_icon_state = "fuel_generator"
 	circuit = null
 	flags_1 = NODECONSTRUCT_1
+	anchored = TRUE
 	max_sheets = 25
 	time_per_sheet = 100
 	power_gen = 12500
