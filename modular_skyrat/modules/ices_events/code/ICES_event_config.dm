@@ -589,12 +589,6 @@
 	weight = VERY_HIGH_EVENT_FREQ
 
 /**
- * Wall Fungus
- */
-/datum/round_event_control/wall_fungus
-	weight = MED_EVENT_FREQ
-
-/**
  * Wisdom Cow
  *
  * TODO: Make it not consume an event slot
