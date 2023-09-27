@@ -20,7 +20,7 @@
 	if(!istype(generated_book))
 		return FALSE
 
-	generated_book.can_be_carved = FALSE
+	generated_book.cannot_carve = TRUE
 	return TRUE
 
 // Need this code here so that we don't have people carving out the summoned books
