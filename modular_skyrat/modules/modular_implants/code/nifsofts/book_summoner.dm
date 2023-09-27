@@ -1,4 +1,4 @@
-/obj/item/disk/nifsoft_uploader/summoner
+/obj/item/disk/nifsoft_uploader/summoner/book
 	name = "Grimoire Akasha"
 	loaded_nifsoft = /datum/nifsoft/summoner/book
 
