@@ -9,4 +9,3 @@
 /datum/design/board/powermonitor/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
-

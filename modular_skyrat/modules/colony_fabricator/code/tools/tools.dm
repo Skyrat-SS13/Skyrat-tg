@@ -1,0 +1,109 @@
+// Like the power drill, except no speed buff but has wirecutters as well? Just trust me on this one.
+
+/obj/item/omni_drill
+	name = "powered driver"
+	desc = "The ultimate in multi purpose construction tools. With heads for wire cutting, bolt driving, and getting \
+		a little screwy, what's not to love? Well, the slow speed. Compared to other power drills these tend to be \
+		<b>not much quicker than unpowered tools</b>."
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
+	icon_state = "drill"
+	belt_icon_state = null
+	inhand_icon_state = "drill"
+	worn_icon_state = "drill"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	flags_1 = CONDUCT_1
+	force = 10
+	throwforce = 6
+	w_class = WEIGHT_CLASS_SMALL
+	tool_behaviour = TOOL_SCREWDRIVER
+	toolspeed = 1
+	usesound = 'sound/items/drill_use.ogg'
+	attack_verb_continuous = list("bashes", "bludgeons", "thrashes", "whacks")
+	attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
+	wound_bonus = 5
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+
+/obj/item/omni_drill/get_all_tool_behaviours()
+	return list(TOOL_WIRECUTTER, TOOL_SCREWDRIVER, TOOL_WRENCH)
+
+/obj/item/omni_drill/examine(mob/user)
+	. = ..()
+	. += span_notice("Use <b>in hand</b> to switch configuration.")
+	. += span_notice("It functions as a <b>[tool_behaviour]</b> tool.")
+	. += span_danger("<i>-100% random critical hit chance.</i>")
+
+/obj/item/omni_drill/update_icon_state()
+	. = ..()
+	switch(tool_behaviour)
+		if(TOOL_SCREWDRIVER)
+			icon_state = initial(icon_state)
+		if(TOOL_WRENCH)
+			icon_state = "[initial(icon_state)]_bolt"
+		if(TOOL_WIRECUTTER)
+			icon_state = "[initial(icon_state)]_cut"
+
+/obj/item/omni_drill/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!user)
+		return
+	var/list/tool_list = list(
+		"Screwdriver" = image(icon = icon, icon_state = "drill"),
+		"Wrench" = image(icon = icon, icon_state = "drill_bolt"),
+		"Wirecutters" = image(icon = icon, icon_state = "drill_cut"),
+		)
+	var/tool_result = show_radial_menu(user, src, tool_list, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user) || !tool_result)
+		return
+	switch(tool_result)
+		if("Wrench")
+			tool_behaviour = TOOL_WRENCH
+			sharpness = NONE
+		if("Wirecutters")
+			tool_behaviour = TOOL_WIRECUTTER
+			sharpness = NONE
+		if("Screwdriver")
+			tool_behaviour = TOOL_SCREWDRIVER
+			sharpness = SHARP_POINTY
+	playsound(src, 'sound/items/change_drill.ogg', 50, vary = TRUE)
+	update_appearance(UPDATE_ICON)
+
+/obj/item/omni_drill/proc/check_menu(mob/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated() || !user.Adjacent(src))
+		return FALSE
+	return TRUE
+
+// Just a completely normal crowbar except its normal sized and can force doors like jaws of life can
+
+/obj/item/crowbar/large/doorforcer
+	name = "prybar"
+	desc = "A large, well look its a big crowbar, painted orange. This one just happens to be tough enough to \
+		survive <b>forcing doors open</b>."
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
+	icon_state = "prybar"
+	toolspeed = 1
+	force_opens = TRUE
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+
+// Backpackable mining drill
+
+/obj/item/pickaxe/drill/compact
+	name = "compact mining drill"
+	desc = "A powered mining drill, it drills all over the place. Compact enough to hopefully fit in a backpack."
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
+	icon_state = "drilla"
+	w_class = WEIGHT_CLASS_NORMAL
+	toolspeed = 0.8 // Slightly slower than a normal drill
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+	)
