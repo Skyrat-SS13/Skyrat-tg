@@ -77,12 +77,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-/obj/structure/mirror/attack_hand(mob/user, list/modifiers)
-=======
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
->>>>>>> c4ac48f3826 (Refactored Mirrors (#77842))
 	. = ..()
 
 	if(. || !ishuman(user) || broken)
