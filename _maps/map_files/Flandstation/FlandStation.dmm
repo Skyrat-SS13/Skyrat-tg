@@ -4384,7 +4384,7 @@
 "bvJ" = (
 /obj/docking_port/stationary/escape_pod,
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
 "bvM" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch"
@@ -4594,9 +4594,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"bzV" = (
-/obj/structure/railing,
-/turf/open/floor/plating)
 "bAb" = (
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/storage/belt/utility,
@@ -7154,9 +7151,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons)
-"cxT" = (
-/obj/effect/turf_decal/caution/stand_clear,
-/turf/open/floor/plating)
 "cyb" = (
 /turf/closed/wall/r_wall,
 /area/station/hallway/secondary/command)
@@ -13846,17 +13840,6 @@
 /obj/item/target/clown,
 /turf/open/floor/plating/airless,
 /area/station/science/ordnance/bomb)
-"ePq" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/bridge_pipe/yellow/visible{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/station/engineering/atmos)
 "ePw" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
 	dir = 6
@@ -21398,8 +21381,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "hiQ" = (
-/obj/structure/sign/warning/docking,
-/turf/closed/wall)
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
 "hiR" = (
 /obj/effect/landmark/start/assistant,
 /obj/structure/disposalpipe/segment{
@@ -30073,7 +30059,7 @@
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/open/space/basic,
-/area/space)
+/area/space/nearstation)
 "kkW" = (
 /turf/closed/wall/r_wall,
 /area/station/hallway/primary/fore)
@@ -41905,10 +41891,12 @@
 /turf/open/floor/wood,
 /area/station/hallway/primary/aft)
 "ohY" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 1
+/obj/machinery/atmospherics/pipe/smart/manifold/green/visible{
+	dir = 4
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/station/engineering/atmos)
 "oii" = (
 /obj/structure/cable,
@@ -44811,8 +44799,8 @@
 /turf/open/floor/iron/dark,
 /area/station/service/cafeteria)
 "pmG" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/green/visible{
-	dir = 8
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 5
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
@@ -47507,10 +47495,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
 /area/station/science/ordnance/storage)
-"qgi" = (
-/obj/structure/fans/tiny/invisible,
-/turf/open/space/basic,
-/area/space)
 "qgl" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
@@ -52821,11 +52805,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hos)
-"rMB" = (
-/obj/machinery/light/small/directional/west,
-/obj/structure/closet/emcloset,
-/obj/structure/railing,
-/turf/open/floor/plating)
 "rMT" = (
 /obj/structure/rack,
 /obj/item/flashlight,
@@ -55013,12 +54992,6 @@
 "sxf" = (
 /obj/structure/table,
 /obj/item/healthanalyzer,
-/obj/item/stack/medical/bruise_pack{
-	pixel_x = 4
-	},
-/obj/item/stack/medical/ointment{
-	pixel_y = 4
-	},
 /obj/item/stack/medical/gauze,
 /obj/machinery/camera{
 	c_tag = "Medbay - Side Storage";
@@ -62995,9 +62968,6 @@
 "vcf" = (
 /obj/structure/table,
 /obj/item/healthanalyzer,
-/obj/item/stack/medical/ointment{
-	pixel_y = 4
-	},
 /obj/item/stack/medical/gauze,
 /obj/machinery/newscaster{
 	pixel_x = -28;
@@ -68689,7 +68659,8 @@
 /area/station/construction/mining/aux_base)
 "wUr" = (
 /obj/structure/sign/warning/docking,
-/turf/closed/wall/r_wall)
+/turf/closed/wall,
+/area/space)
 "wUt" = (
 /obj/effect/spawner/random/entertainment/plushie,
 /turf/open/floor/iron/dark,
@@ -69249,15 +69220,8 @@
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/obj/item/melee/baseball_bat{
-	desc = "Don't tell anyone you put any points into dex, though.";
-	icon_state = "swordon";
-	item_state = "swordon";
-	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi';
-	name = "moonlight greatsword";
-	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
-	},
 /obj/effect/mapping_helpers/burnt_floor,
+/obj/item/sord,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "xaL" = (
@@ -70654,7 +70618,9 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "xtu" = (
-/turf/closed/wall/r_wall)
+/obj/structure/sign/warning/docking,
+/turf/closed/wall/r_wall,
+/area/space)
 "xtB" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 4
@@ -92474,7 +92440,7 @@ uMd
 gkH
 aAp
 pUj
-qgi
+nnx
 nnx
 nnx
 nnx
@@ -92988,7 +92954,7 @@ xuO
 xAA
 qAY
 gKH
-qgi
+nnx
 nnx
 nnx
 nnx
@@ -96992,7 +96958,7 @@ vLM
 nnx
 nnx
 nnx
-qgi
+nnx
 cTR
 cdD
 bXk
@@ -97506,7 +97472,7 @@ vLM
 nnx
 nnx
 nnx
-qgi
+nnx
 rAD
 cdD
 bXk
@@ -121254,9 +121220,9 @@ fAu
 aoe
 sdZ
 pmG
-ohY
-ePq
-iVa
+aoe
+syh
+hiQ
 lQU
 gwS
 usE
@@ -121403,13 +121369,13 @@ nnx
 nnx
 nnx
 nnx
+nnx
+nnx
 wMM
-csJ
-csJ
+bXh
 wRA
-wUr
 xtu
-xtu
+qTZ
 cyb
 cyb
 xJG
@@ -121513,7 +121479,7 @@ gAP
 tee
 hiT
 gXc
-hiT
+ohY
 shM
 gsT
 gFC
@@ -121660,13 +121626,13 @@ nnx
 nnx
 nnx
 nnx
+nnx
+nnx
 vLM
 nnx
 nnx
 nnx
 nnx
-qgi
-rMB
 xJG
 wpw
 tpZ
@@ -121917,13 +121883,13 @@ nnx
 nnx
 nnx
 nnx
+nnx
+nnx
 ctR
 nnx
 nnx
 nnx
-nnx
 bvJ
-cxT
 diU
 ijR
 lDH
@@ -122174,13 +122140,13 @@ nnx
 nnx
 nnx
 nnx
+nnx
+nnx
 vLM
 nnx
 nnx
 nnx
 nnx
-qgi
-bzV
 xJG
 dWT
 dMC
@@ -122431,13 +122397,13 @@ nnx
 nnx
 nnx
 nnx
+nnx
+nnx
 wMM
-csJ
-csJ
+bXh
 wRA
-hiQ
-xtu
-xtu
+wUr
+qTZ
 cyb
 cyb
 cyb
@@ -125639,9 +125605,9 @@ abN
 abN
 abN
 vXB
-qgi
+nnx
 kkx
-qgi
+nnx
 vXB
 abN
 abN
@@ -129436,9 +129402,9 @@ uiN
 uiN
 nnx
 lKB
-qgi
+nnx
 kkx
-qgi
+nnx
 lKB
 uMO
 aKv
