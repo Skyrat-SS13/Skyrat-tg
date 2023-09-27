@@ -56,10 +56,14 @@ const RecordInfo = (props, context) => {
     rank,
     species,
     wanted_status,
+<<<<<<< HEAD
     // SKYRAT EDIT START - RP Records
     past_general_records,
     past_security_records,
     // SKYRAT EDIT END
+=======
+    voice,
+>>>>>>> dd877888778 (TTS: Gas Mask muffling, Hailer Mask voice effects, support for more filters that use samplerate, voice effects for lizards, ethereals, and xenomorphs. (#78567))
   } = foundRecord;
 
   const hasValidCrimes = !!crimes.find((crime) => !!crime.valid);
@@ -171,6 +175,9 @@ const RecordInfo = (props, context) => {
                 target_ref={crew_ref}
                 text={fingerprint}
               />
+            </LabeledList.Item>
+            <LabeledList.Item label="Voice">
+              <EditableText field="voice" target_ref={crew_ref} text={voice} />
             </LabeledList.Item>
             <LabeledList.Item label="Note">
               <EditableText
