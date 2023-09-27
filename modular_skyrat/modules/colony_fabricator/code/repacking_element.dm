@@ -47,8 +47,9 @@
 	if(!do_after(user, 3 SECONDS, target = source))
 		return
 	new item_to_pack_into(source.drop_location())
-	source.playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
 	if(istype(source, /obj))
-		source.deconstruct(disassembled = TRUE)
+		var/obj/source_object = source
+		source_object.playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
+		source_object.deconstruct(disassembled = TRUE)
 	else
 		qdel(source)
