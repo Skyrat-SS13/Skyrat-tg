@@ -25,10 +25,6 @@
 	if(!can_interact(user) || !user.can_perform_action(src))
 		return
 
-	if(operating)
-		balloon_alert(user, "currently operating")
-		return
-
 	balloon_alert_to_viewers("repacking...")
 	if(do_after(user, 3 SECONDS, target = src))
 		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
