@@ -13,6 +13,10 @@
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/station_battery
 
+/obj/machinery/power/smes/battery_pack/Initialize(mapload)
+	. = ..()
+	flick("smes_deploy", src)
+
 /obj/machinery/power/smes/battery_pack/examine(mob/user)
 	. = ..()
 	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
@@ -32,9 +36,23 @@
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
+/obj/machinery/power/smes/battery_pack/deconstruct(disassembled = TRUE)
 	new repacked_type(drop_location())
 	return ..()
+
+/obj/machinery/power/smes/battery_pack/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
+	if(screwdriver.tool_behaviour != TOOL_SCREWDRIVER)
+		return FALSE
+
+	screwdriver.play_tool_sound(src, 50)
+	toggle_panel_open()
+	if(panel_open)
+		icon_state = icon_state_open
+		to_chat(user, span_notice("You open the maintenance hatch of [src]."))
+	else
+		icon_state = icon_state_closed
+		to_chat(user, span_notice("You close the maintenance hatch of [src]."))
+	return TRUE
 
 // We don't care about the parts updates because we don't want them to change
 /obj/machinery/power/smes/battery_pack/RefreshParts()

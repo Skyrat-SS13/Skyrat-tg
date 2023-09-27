@@ -26,7 +26,7 @@
 
 // Lets the colony lathe make more colony lathes but at very hihg cost, for fun
 
-/datum/design/flatpack_solar_panel
+/datum/design/flatpack_colony_fabricator
 	name = "Flatpacked Colony Fabricator"
 	id = "flatpack_colony_fab"
 	build_type = COLONY_FABRICATOR

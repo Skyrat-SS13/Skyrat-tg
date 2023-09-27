@@ -1,0 +1,55 @@
+/obj/machinery/power/port_gen/pacman/solid_fuel
+	name = "solid fuel generator"
+	desc = "The second most common generator design in the galaxy, second only to the PACMAN. \
+		Similarly to other portable generators, this design burns plasma sheets in order to produce \
+		power. Unlike other generators however, this one isn't as portable, or as safe to operate, \
+		but at least it makes a hell of a lot more power. A massive warning label wants you to know \
+		that this generator <b>outputs waste heat and gasses to the air around it</b>."
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
+	icon_state = "fuel_generator_0"
+	base_icon_state = "fuel_generator"
+	circuit = null
+	flags_1 = NODECONSTRUCT_1
+	max_sheets = 25
+	time_per_sheet = 100
+	power_gen = 50000
+	drag_slowdown = 1.5
+	sheet_path = /obj/item/stack/sheet/mineral/plasma
+
+/obj/machinery/power/port_gen/pacman/solid_fuel/Initialize(mapload)
+	. = ..()
+
+	flick("fuel_generator_deploy", src)
+
+/obj/machinery/power/port_gen/pacman/solid_fuel/examine(mob/user)
+	. = ..()
+	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
+
+/obj/machinery/power/port_gen/pacman/solid_fuel/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	if(!can_interact(user) || !user.can_perform_action(src))
+		return
+
+	balloon_alert_to_viewers("repacking...")
+	if(do_after(user, 3 SECONDS, target = src))
+		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
+		deconstruct(disassembled = TRUE)
+
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/power/port_gen/pacman/deconstruct(disassembled = TRUE)
+	new repacked_type(drop_location())
+	return ..()
+
+// We don't need to worry about the board, this machine doesn't have one!
+/obj/machinery/power/port_gen/pacman/solid_fuel/on_construction(mob/user)
+	return
+
+/obj/machinery/power/port_gen/pacman/solid_fuel/process()
+	. = ..()
+	if(active)
+		var/turf/where_we_spawn_air = get_turf(src)
+		where_we_spawn_air.atmos_spawn_air("co2=10;TEMP=480") // Standard UK diesel engine operating temp is about 220 celsius or ~473 K

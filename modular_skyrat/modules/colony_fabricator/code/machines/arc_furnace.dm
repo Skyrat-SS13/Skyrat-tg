@@ -152,7 +152,7 @@
 	loop(smelting_time)
 
 	soundloop.start()
-	set_light(l_range = 3)
+	set_light(l_range = 1.5)
 
 	update_appearance()
 
@@ -171,6 +171,13 @@
 
 	time -= 1 SECONDS
 	use_power(active_power_usage)
+
+	var/turf/where_we_spawn_air = get_turf(src)
+	var/obj/item/stack/ore/ore_stack_to_check = contents[1]
+	switch(ore_stack_to_check)
+		if(istype(ore_stack_to_check, /obj/item/stack/ore/plasma))
+			where_we_spawn_air.atmos_spawn_air("co2=30;plasma=10,TEMP=1200")
+
 	addtimer(CALLBACK(src, PROC_REF(loop), time), 1 SECONDS)
 
 /obj/machinery/arc_furnace/proc/succeed_smelting()
