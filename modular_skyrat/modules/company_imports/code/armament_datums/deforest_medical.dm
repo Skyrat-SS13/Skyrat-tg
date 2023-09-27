@@ -121,7 +121,7 @@
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/deforest/equipment/surgical_tools
-	item_type = /obj/item/storage/backpack/duffelbag/med/surgery
+	item_type = /obj/item/surgery_tray/full
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_health_analyer
