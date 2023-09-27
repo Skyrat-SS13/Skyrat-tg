@@ -25,8 +25,8 @@
 
 // Need this code here so that we don't have people carving out the summoned books
 /obj/item/book
-	/// Can the parent book be carved? By default this is set to `TRUE`
-	var/can_be_carved = TRUE
+	/// Is the parent book unable to be carved? TRUE prevents carving. By default this is unset
+	var/cannot_carve
 
 /obj/item/book/try_carve(obj/item/carving_item, mob/living/user, params)
 	if(cannot_carve)
