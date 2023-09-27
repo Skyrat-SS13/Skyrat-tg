@@ -53,7 +53,7 @@
 
 	cached_designs.Cut()
 
-	for(var/datum/design/design = SSresearch.techweb_designs)
+	for(var/datum/design/design in SSresearch.techweb_designs)
 
 		if((isnull(allowed_department_flags) || (design.departmental_flags & allowed_department_flags)) && (design.build_type & allowed_buildtypes))
 			cached_designs |= design

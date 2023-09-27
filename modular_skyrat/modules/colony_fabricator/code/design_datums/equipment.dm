@@ -1,39 +1,93 @@
 // This file is going to be just all bitflag additions
 
-/datum/design/atmos_thermal
+/datum/design/atmos_thermal/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/bounced_radio
+/datum/design/bounced_radio/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/radio_navigation_beacon
+/datum/design/radio_navigation_beacon/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/engine_goggles
+/datum/design/engine_goggles/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/engine_goggles_prescription
+/datum/design/engine_goggles_prescription/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/magboots
+/datum/design/magboots/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/pneumatic_seal
+/datum/design/pneumatic_seal/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/welding_goggles
+/datum/design/welding_goggles/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/welding_mask
+/datum/design/welding_mask/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/welding_helmet
+/datum/design/welding_helmet/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/gas_filter
+/datum/design/gas_filter/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/plasmaman_gas_filter
+/datum/design/plasmaman_gas_filter/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/vox_gas_filter
+/datum/design/vox_gas_filter/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/plasmarefiller
+/datum/design/plasmarefiller/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/emergency_oxygen_engi
+/datum/design/emergency_oxygen_engi/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/plasmaman_tank_belt
+/datum/design/plasmaman_tank_belt/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/generic_gas_tank
+/datum/design/generic_gas_tank/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/plasma_tank
+/datum/design/plasma_tank/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/diagnostic_hud/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/sticky_tape/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+// Stock parts are going here too because there's not many of them
+
+/datum/design/water_recycler/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/super_cell/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
 

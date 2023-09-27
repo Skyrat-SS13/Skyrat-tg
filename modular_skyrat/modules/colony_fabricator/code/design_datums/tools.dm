@@ -38,7 +38,7 @@
 	id = "colony_arc_welder"
 	build_type = COLONY_FABRICATOR
 	build_path = /obj/item/arc_welder
-	custom_materials = list(
+	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
 		/datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT * 1.5,
@@ -55,7 +55,7 @@
 	id = "colony_compact_drill"
 	build_type = COLONY_FABRICATOR
 	build_path = /obj/item/pickaxe/drill/compact
-	custom_materials = list(
+	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
