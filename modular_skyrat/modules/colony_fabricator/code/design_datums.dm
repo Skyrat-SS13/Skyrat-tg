@@ -150,7 +150,7 @@
 	name = "Flatpacked Solid Fuel Generator"
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR
-	custom_materials = list(
+	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,

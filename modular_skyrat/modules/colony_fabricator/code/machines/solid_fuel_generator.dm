@@ -42,7 +42,7 @@
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/machinery/power/port_gen/pacman/deconstruct(disassembled = TRUE)
+/obj/machinery/power/port_gen/pacman/solid_fuel/deconstruct(disassembled = TRUE)
 	new repacked_type(drop_location())
 	return ..()
 
@@ -66,7 +66,7 @@
 		but at least it makes a hell of a lot more power. A massive warning label wants you to know \
 		that this generator <b>outputs waste heat and gasses to the air around it</b>."
 	icon_state = "arc_furnace_folded"
-	type_to_deploy = /obj/machinery/power/port_gen/pacman
+	type_to_deploy = /obj/machinery/power/port_gen/pacman/solid_fuel
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
