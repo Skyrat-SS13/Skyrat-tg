@@ -1005,3 +1005,61 @@
       instead of a random one.
   honkpocket:
   - rscdel: Removed wall-mushroom outbreak event
+2023-09-26:
+  LT3:
+  - spellcheck: Improved wording in greyscale JSON error message
+  - admin: Successful restart votes will now restart on the current map
+  - code_imp: End round and persistence data will be saved before executing successful
+      restart vote
+  Rhials:
+  - bugfix: '"Spooky" meteors will now properly spawn during halloween.'
+  SkyratBot:
+  - image: the security records suspected status is now teal instead of orange
+  - bugfix: Intellicards in computers are no longer deleted when the computer is destroyed.
+  - bugfix: Modular consoles can now be deconstructed by right clicking with a wrench.
+  - bugfix: cigarettes no longer smoke themselves from inside your pockets or on your
+      hands.
+  - admin: First time user connections are now logged
+  - qol: NT CIMs shows how much power the supermatter is releasing.
+  - qol: NT CIMs internal energy will adjust its prefix.
+  - qol: Energy displays (such as multitooling grid) will use the full range of SI
+      prefixes available, up to the peta prefix if you somehow managed to reach that.
+  - rscdel: Removes the per cubic centimeter part of internal energy.
+  - bugfix: Fix unnecessary delta time scaling on inactive supermatters.
+  - bugfix: Fix high energy zaps not scaling with delta time.
+  - bugfix: Fixes grounding rods lying about potential power you can generate.
+  - code_imp: Convert supermatter_zap() and tesla_zap() zap_str argument unit to be
+      in joules, and scales everything that uses that argument.
+  - rscadd: Adds an advanced plastic surgery procedure, allowing you to imitate people
+      in pictures. Simply hold a picture in your offhand of the person you wish to
+      imitate as while conducting the surgery! Remember, it's not foolproof, it only
+      changes your name and voice!
+  - rscadd: You can obtain the disk containing the afromentioned surgery. as a role-restricted
+      item to doctors and roboticists for 1TC, as a rare maint loot and BEPIS technode
+      reward
+  - bugfix: Centcom now rejects contraband that somehow makes it way onto the cargo
+      shuttle mid-transit and returns it.
+  - bugfix: you can no longer push watchers (and any other lavaland basic mob) around
+      by running into them
+  - bugfix: posibrains can be inserted again
+  - bugfix: Metalgen can no longer be used to transmute indestructible turfs.
+  - image: adds a frog holoform for pAIs
+  - bugfix: The custom error message for when there is only one map to vote for should
+      pop up in all cases rather than just a select few.
+  - bugfix: Stun immune people should no longer have issues with gripper gloves and
+      other tackle gloves.
+  sqnztb:
+  - rscadd: New medicine to clear up scars, made from synthflesh, ethanol, and miner's
+      salve. Be sure to apply it via patches!
+2023-09-27:
+  SkyratBot:
+  - rscadd: added ranged attack friendly fire checks for basic mobs. minebots and
+      hivebots will now try to avoid shooting their friends
+  - bugfix: fixed Strong Stone ruin generation
+  - rscadd: Added a candle box crate for all your candle needs!
+  - bugfix: '[Tramstation] Mass Driver in chapel now has tiny fan so you don''t space
+      yourself.'
+  jjpark-kb:
+  - bugfix: actually fixed the ash revival ritual for basic mobs
+  - bugfix: basic animals now will have their health affected positively and negatively
+      by medicine and toxins respectively.
