@@ -50,6 +50,6 @@
 	new item_to_pack_into(source.drop_location())
 	if(istype(source, /obj))
 		var/obj/source_object = source
-		source_object.deconstruct(disassembled = TRUE)
+		source_object.deconstruct(TRUE)
 	else
 		qdel(source)

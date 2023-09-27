@@ -7,6 +7,7 @@
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
+/* I don't think we need this anymore? Lets find out
 /datum/techweb_node/colony_fabricator_flatpacks
 	id = "colony_fabricator_flatpacks"
 	display_name = "Colony Fabricator Flatpack Designs"
@@ -24,6 +25,7 @@
 	hidden = TRUE
 	show_on_wiki = FALSE
 	starting_node = TRUE
+*/
 
 // Lets the colony lathe make more colony lathes but at very hihg cost, for fun
 
@@ -41,7 +43,7 @@
 	build_path = /obj/item/flatpacked_machine
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_MANUFACTURING,
 	)
 	construction_time = 30 SECONDS
 
