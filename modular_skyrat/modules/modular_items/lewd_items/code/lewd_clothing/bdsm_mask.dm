@@ -34,7 +34,7 @@
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
 	/// Does the gasmask impede the user's ability to talk?
-	var/gagged = TRUE
+	var/speech_disabled
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -56,7 +56,7 @@
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
-	if(!gagged)
+	if(speech_disabled)
 		return
 
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
@@ -252,16 +252,15 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check_gag(user)
-	var/mob/living/carbon/affected_carbon = usr
+	var/mob/living/carbon/affected_carbon = user
 	if(src == affected_carbon.wear_mask)
-		to_chat(usr, span_notice("You can't reach the gag switch!"))
+		to_chat(user, span_notice("You can't reach the gag switch!"))
 	else
 		toggle_gag(affected_carbon)
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/toggle_gag(user)
-	gagged = !gagged
-	to_chat(user, span_notice("You [gagged ? "enable" : "disable"] the gag on the mask."))
-	update_icon_state()
+	speech_disabled = !speech_disabled
+	to_chat(user, span_notice("You [speech_disabled ? "disable" : "enable"] the gag on the mask."))
 	update_mob_action_buttonss()
 	update_icon()
 
