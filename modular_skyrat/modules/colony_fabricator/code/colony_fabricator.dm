@@ -21,35 +21,11 @@
 	. = ..()
 
 	soundloop = new(src, FALSE)
-
 	if(!mapload)
 		flick("colony_lathe_deploy", src) // Sick ass deployment animation
 
 /obj/machinery/rnd/production/colony_lathe/Destroy()
 	QDEL_NULL(soundloop)
-	return ..()
-
-/obj/machinery/rnd/production/colony_lathe/examine(mob/user)
-	. = ..()
-	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
-
-/obj/machinery/rnd/production/colony_lathe/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.can_perform_action(src))
-		return
-
-	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 3 SECONDS, target = src))
-		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		deconstruct(disassembled = TRUE)
-
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-/obj/machinery/rnd/production/colony_lathe/deconstruct(disassembled = TRUE)
-	new repacked_type(drop_location())
 	return ..()
 
 /obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)

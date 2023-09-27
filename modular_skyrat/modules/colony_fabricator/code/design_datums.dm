@@ -18,6 +18,7 @@
 		"flatpack_colony_fab",
 		"flatpack_station_battery",
 		"flatpack_station_battery_large",
+		"flatpack_fuel_generator",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -146,7 +147,7 @@
 
 // Power storage structures
 
-/datum/design/flatpack_power_storage
+/datum/design/flatpack_solids_generator
 	name = "Flatpacked Solid Fuel Generator"
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR

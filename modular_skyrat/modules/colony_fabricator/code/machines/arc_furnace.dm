@@ -29,40 +29,18 @@
 
 /obj/machinery/arc_furnace/Initialize(mapload)
 	. = ..()
-
 	soundloop = new(src, FALSE)
-
-	flick("arc_furnace_deploy", src)
+	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
+	if(!mapload)
+		flick("arc_furnace_deploy", src)
 
 /obj/machinery/arc_furnace/examine(mob/user)
 	. = ..()
-	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
-
 	if(length(contents))
 		. += span_notice("It has <b>[contents[1]]</b> sitting in it.")
 
-/obj/machinery/arc_furnace/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.can_perform_action(src))
-		return
-
-	if(operating)
-		balloon_alert(user, "currently operating")
-		return
-
-	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 3 SECONDS, target = src))
-		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		deconstruct(disassembled = TRUE)
-
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
 /obj/machinery/arc_furnace/deconstruct(disassembled = TRUE)
 	eject_contents()
-	new repacked_type(drop_location())
 	return ..()
 
 /obj/machinery/arc_furnace/update_appearance()

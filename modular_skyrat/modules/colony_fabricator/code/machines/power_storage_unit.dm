@@ -15,30 +15,9 @@
 
 /obj/machinery/power/smes/battery_pack/Initialize(mapload)
 	. = ..()
-	flick("smes_deploy", src)
-
-/obj/machinery/power/smes/battery_pack/examine(mob/user)
-	. = ..()
-	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
-
-/obj/machinery/power/smes/battery_pack/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.can_perform_action(src))
-		return
-
-	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 3 SECONDS, target = src))
-		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		deconstruct(disassembled = TRUE)
-
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-/obj/machinery/power/smes/battery_pack/deconstruct(disassembled = TRUE)
-	new repacked_type(drop_location())
-	return ..()
+	AddElement(/datum/element/repackable, repacked_type, 5 SECONDS)
+	if(!mapload)
+		flick("smes_deploy", src)
 
 /obj/machinery/power/smes/battery_pack/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
 	if(screwdriver.tool_behaviour != TOOL_SCREWDRIVER)

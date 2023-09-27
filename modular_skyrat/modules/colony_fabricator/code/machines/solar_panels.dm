@@ -6,30 +6,14 @@
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/solar
 
-/obj/machinery/power/solar/quickdeploy/examine(mob/user)
+/obj/machinery/power/solar/quickdeploy/Initialize(mapload)
 	. = ..()
-	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
-
-/obj/machinery/power/solar/quickdeploy/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.can_perform_action(src))
-		return
-
-	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 1 SECONDS, target = src))
-		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		deconstruct(disassembled = TRUE)
-
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
 
 /obj/machinery/power/solar/quickdeploy/crowbar_act(mob/user, obj/item/I)
 	return
 
 /obj/machinery/power/solar/quickdeploy/deconstruct(disassembled = TRUE)
-	new repacked_type(drop_location())
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
@@ -54,30 +38,14 @@
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/flatpacked_machine/solar_tracker
 
-/obj/machinery/power/tracker/quickdeploy/examine(mob/user)
+/obj/machinery/power/tracker/quickdeploy/Initialize(mapload)
 	. = ..()
-	. += span_notice("You could probably <b>repack</b> this with <b>right click</b>.")
-
-/obj/machinery/power/tracker/quickdeploy/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.can_perform_action(src))
-		return
-
-	balloon_alert_to_viewers("repacking...")
-	if(do_after(user, 1 SECONDS, target = src))
-		playsound(src, 'sound/items/ratchet.ogg', 50, TRUE)
-		deconstruct(disassembled = TRUE)
-
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
 
 /obj/machinery/power/tracker/quickdeploy/crowbar_act(mob/user, obj/item/I)
 	return
 
 /obj/machinery/power/tracker/quickdeploy/deconstruct(disassembled = TRUE)
-	new repacked_type(drop_location())
 	var/obj/item/solar_assembly/assembly = locate() in src
 	if(assembly)
 		qdel(assembly)
