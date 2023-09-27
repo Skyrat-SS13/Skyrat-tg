@@ -7,10 +7,10 @@
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
-/datum/techweb_node/colony_fabricator
-	id = "colony_fabricator"
-	display_name = "Colony Fabricator Designs"
-	description = "Advanced designs for the colony fabricator, though you shouldn't be seeing this."
+/datum/techweb_node/colony_fabricator_flatpacks
+	id = "colony_fabricator_flatpacks"
+	display_name = "Colony Fabricator Flatpack Designs"
+	description = "Contains all of the colony fabricator's flatpack machine designs."
 	design_ids = list(
 		"flatpack_solar_panel",
 		"flatpack_solar_tracker",
