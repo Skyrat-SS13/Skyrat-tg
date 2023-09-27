@@ -68,7 +68,6 @@
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
 		/mob/living/simple_animal/hostile/asteroid/polarbear/lesser,
 		/mob/living/simple_animal/hostile/asteroid/wolf,
-<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/big_legion,
 		/mob/living/simple_animal/hostile/blob,
 		/mob/living/simple_animal/hostile/blob/blobbernaut,
@@ -76,8 +75,6 @@
 		/mob/living/simple_animal/hostile/blob/blobspore,
 		/mob/living/simple_animal/hostile/blob/blobspore/independent,
 		/mob/living/simple_animal/hostile/blob/blobspore/weak,
-=======
->>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
 		/mob/living/simple_animal/hostile/construct,
 		/mob/living/simple_animal/hostile/construct/artificer,
 		/mob/living/simple_animal/hostile/construct/artificer/angelic,

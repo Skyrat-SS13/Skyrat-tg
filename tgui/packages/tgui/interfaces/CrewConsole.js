@@ -1,25 +1,20 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table } from '../components';
+import { Box, Button, Section, Table, Icon } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-  '#2ecc71',
+  '#c4cf2d',
   '#e67e22',
   '#ed5100',
   '#e74c3c',
-<<<<<<< HEAD
-  '#ed2814',
-];
-=======
   '#801308',
 ];
 
 const STAT_LIVING = 0;
 const STAT_DEAD = 4;
->>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
 
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
@@ -48,9 +43,6 @@ const jobToColor = (jobId) => {
   return COLORS.department.other;
 };
 
-<<<<<<< HEAD
-const healthToColor = (oxy, tox, burn, brute) => {
-=======
 const statToIcon = (life_status) => {
   switch (life_status) {
     case STAT_LIVING:
@@ -62,10 +54,9 @@ const statToIcon = (life_status) => {
 };
 
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
->>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
-  return HEALTH_COLOR_BY_LEVEL[level];
+  return attributeList[level];
 };
 
 const HealthStat = (props) => {
@@ -100,9 +91,11 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>Position</Table.Cell>
+        <Table.Cell bold textAlign="center">
+          Position
+        </Table.Cell>
         {!!data.link_allowed && (
-          <Table.Cell bold collapsing>
+          <Table.Cell bold collapsing textAlign="center">
             Tracking
           </Table.Cell>
         )}
@@ -138,10 +131,6 @@ const CrewTableEntry = (props, context) => {
         {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-<<<<<<< HEAD
-        {life_status ? (
-          <ColorBox color={healthToColor(oxydam, toxdam, burndam, brutedam)} />
-=======
         {oxydam !== undefined ? (
           <Icon
             name={statToIcon(life_status)}
@@ -156,9 +145,8 @@ const CrewTableEntry = (props, context) => {
           />
         ) : life_status !== STAT_DEAD ? (
           <Icon name="heart" color="#17d568" size={1} />
->>>>>>> f861532d240 (Basic Legion & Hivelord (#78624))
         ) : (
-          <ColorBox color={'#ed2814'} />
+          <Icon name="skull" color="#801308" size={1} />
         )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
@@ -178,7 +166,13 @@ const CrewTableEntry = (props, context) => {
           'Dead'
         )}
       </Table.Cell>
-      <Table.Cell>{area !== undefined ? area : 'N/A'}</Table.Cell>
+      <Table.Cell>
+        {area !== undefined ? (
+          area
+        ) : (
+          <Icon name="question" color="#ffffff" size={1} />
+        )}
+      </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
           <Button
