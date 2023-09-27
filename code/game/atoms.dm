@@ -705,6 +705,7 @@
 
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE_MORE, user, .)
+	SEND_SIGNAL(user, COMSIG_MOB_EXAMINING_MORE, src, .)
 
 /// Wrapper for _update_appearance that is only called when APPEARANCE_SUCCESS_TRACKING is defined
 #ifdef APPEARANCE_SUCCESS_TRACKING
