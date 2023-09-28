@@ -128,13 +128,8 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-<<<<<<< HEAD
 		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
-		species = person.dna.species.name,
-=======
-		rank = assignment,
 		species = record_dna.species.name,
->>>>>>> 99950517aaa (Quick Harddel Fixeees (#78253))
 		trim = assignment,
 		// Locked specifics
 		locked_dna = record_dna,
@@ -150,13 +145,8 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-<<<<<<< HEAD
 		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
-		species = person.dna.species.name,
-=======
-		rank = assignment,
 		species = record_dna.species.name,
->>>>>>> 99950517aaa (Quick Harddel Fixeees (#78253))
 		trim = assignment,
 		// Crew specific
 		lock_ref = REF(lockfile),
