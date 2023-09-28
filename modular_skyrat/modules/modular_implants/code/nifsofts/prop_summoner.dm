@@ -16,6 +16,7 @@
 	activation_cost = 100 // Around 1/10th the energy of a standard NIF
 	buying_category = NIFSOFT_CATEGORY_FUN
 	ui_icon = "book-open"
+	able_to_keep = TRUE // These NIFSofts are mostly for comsetic/fun reasons anyways.
 
 	/// Does the resulting object have a holographic like filter appiled to it?
 	var/holographic_filter = TRUE
@@ -88,8 +89,16 @@
 		refund_activation_cost()
 		return FALSE
 
+	apply_custom_properties(new_item)
 	summoned_items += new_item
 	new_item.AddComponent(/datum/component/summoned_item, holographic_filter)
+
+/// This proc is called while an item is being summoned, use this to modifiy aspects of the item that aren't modified by the component.
+/datum/nifsoft/summoner/proc/apply_custom_properties(obj/item/target_item)
+	if(!target_item)
+		return FALSE
+
+	return TRUE
 
 /datum/nifsoft/summoner/Destroy()
 	QDEL_LIST(summoned_items)
