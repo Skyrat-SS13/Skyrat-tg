@@ -16917,14 +16917,6 @@
 /area/station/ai_monitored/turret_protected/ai)
 "fLG" = (
 /obj/effect/landmark/start/ai,
-/obj/machinery/requests_console{
-	department = "AI";
-	name = "AI RC";
-	pixel_x = 30;
-	pixel_y = -30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
-	},
 /obj/item/radio/intercom{
 	freerange = 1;
 	name = "Common Channel";
@@ -18686,7 +18678,6 @@
 /area/station/ai_monitored/turret_protected/ai)
 "goT" = (
 /obj/machinery/mineral/stacking_unit_console{
-	machinedir = 8;
 	pixel_x = 32
 	},
 /turf/open/floor/iron,
@@ -19287,10 +19278,16 @@
 /turf/open/floor/iron,
 /area/station/medical/break_room)
 "gzN" = (
-/obj/structure/railing{
+/obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating)
+/obj/structure/cable,
+/obj/machinery/requests_console/directional/west{
+	department = "AI Chamber";
+	name = "AI Chamber Requests Console"
+	},
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/turret_protected/ai)
 "gzT" = (
 /obj/structure/table,
 /obj/item/folder/blue{
@@ -39441,11 +39438,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/library)
-"nrV" = (
-/obj/effect/turf_decal/caution/stand_clear{
-	dir = 8
-	},
-/turf/open/floor/plating)
 "nrX" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/green,
@@ -65924,12 +65916,8 @@
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "vXT" = (
-/obj/structure/closet/emcloset,
-/obj/machinery/light/small/directional/north,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plating)
+/turf/closed/wall/mineral/plastitanium,
+/area/station/holodeck)
 "vYc" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/side{
@@ -67100,8 +67088,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
-"wsQ" = (
-/turf/closed/mineral)
 "wtc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -97777,9 +97763,9 @@ nGE
 nGE
 nGE
 nGE
-lKB
-lKB
-lKB
+jzE
+jzE
+jzE
 afj
 qIi
 afj
@@ -99102,11 +99088,11 @@ gNy
 gNy
 gNy
 gNy
-lKB
-wsQ
-wsQ
-wsQ
-wsQ
+ggy
+kHH
+kHH
+kHH
+kHH
 woe
 qph
 dEc
@@ -113029,8 +113015,8 @@ dLN
 axD
 iaj
 sNJ
-soQ
-soQ
+kHH
+kHH
 abN
 abN
 nnx
@@ -113286,8 +113272,8 @@ qNd
 eYy
 iaj
 vXB
-soQ
-soQ
+kHH
+kHH
 abN
 nnx
 nnx
@@ -113543,7 +113529,7 @@ iaj
 iaj
 kGn
 vXB
-soQ
+kHH
 abN
 nnx
 nnx
@@ -113800,7 +113786,7 @@ eoP
 xbI
 kGn
 vXB
-soQ
+kHH
 abN
 nnx
 nnx
@@ -129143,11 +129129,11 @@ csJ
 csJ
 csJ
 nnx
-lKB
-vXT
-nrV
-gzN
-lKB
+wiE
+nnx
+bBu
+nnx
+wiE
 cGp
 cGp
 cGp
@@ -129400,11 +129386,11 @@ uiN
 uiN
 uiN
 nnx
-lKB
+wiE
 nnx
-bBu
 nnx
-lKB
+nnx
+wiE
 uMO
 aKv
 qBV
@@ -129657,11 +129643,11 @@ wWA
 wWA
 wWA
 csJ
-lKB
+wiE
 nnx
 nnx
 nnx
-lKB
+wiE
 uMO
 fIq
 pMq
@@ -129914,11 +129900,11 @@ nZw
 nZw
 uiN
 nnx
-lKB
+wiE
 nnx
 nnx
 nnx
-lKB
+wiE
 uMO
 gCM
 xvW
@@ -130171,11 +130157,11 @@ nnx
 nnx
 csJ
 nnx
-abI
-nnx
-nnx
-nnx
-abI
+vXT
+vLM
+tWB
+vLM
+vXT
 cGp
 xPI
 ceq
@@ -130429,9 +130415,9 @@ uiN
 uiN
 nnx
 wMM
-vLM
-tWB
-vLM
+wMM
+nnx
+wMM
 wMM
 cGp
 qzg
@@ -130907,7 +130893,7 @@ fTP
 paY
 hlk
 gQx
-hlk
+gzN
 paY
 ifR
 iEP
