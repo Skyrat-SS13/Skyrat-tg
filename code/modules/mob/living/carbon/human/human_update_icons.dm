@@ -87,7 +87,6 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_ICLOTHING)
 			return
 
-
 		var/target_overlay = uniform.icon_state
 		if(uniform.adjusted == ALT_STYLE)
 			target_overlay = "[target_overlay]_d"
@@ -157,7 +156,9 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
 		var/icon_file = 'icons/mob/clothing/id.dmi'
+
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
+
 		if(!id_overlay)
 			return
 
@@ -166,6 +167,7 @@ There are several things that need to be remembered:
 		overlays_standing[ID_LAYER] = id_overlay
 
 	apply_overlay(ID_LAYER)
+
 
 /mob/living/carbon/human/update_worn_gloves()
 	remove_overlay(GLOVES_LAYER)
@@ -878,7 +880,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	standing.color = color
 
 	return standing
-
 
 /// Returns offsets used for equipped item overlays in list(px_offset,py_offset) form.
 /obj/item/proc/get_worn_offsets(isinhands)
