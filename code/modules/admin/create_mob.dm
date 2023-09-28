@@ -10,13 +10,14 @@
 
 	user << browse(create_panel_helper(create_mob_html), "window=create_mob;size=425x475")
 
-/proc/randomize_human(mob/living/carbon/human/human)
-	if(human.dna.species.sexes)
-		human.gender = pick(MALE, FEMALE, PLURAL, NEUTER)
-	else
-		human.gender = PLURAL
+/**
+ * Randomizes everything about a human, including DNA and name
+ */
+/proc/randomize_human(mob/living/carbon/human/human, randomize_mutations = FALSE)
+	human.gender = human.dna.species.sexes ? pick(MALE, FEMALE, PLURAL, NEUTER) : PLURAL
 	human.physique = human.gender
 	human.real_name = human.dna?.species.random_name(human.gender) || random_unique_name(human.gender)
+<<<<<<< HEAD
 	human.name = human.real_name
 	human.hairstyle = random_hairstyle(human.gender)
 	human.facial_hairstyle = random_facial_hairstyle(human.gender)
@@ -39,7 +40,19 @@
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()
 	human.dna.species.body_markings = human.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
+=======
+	human.name = human.get_visible_name()
+	human.set_hairstyle(random_hairstyle(human.gender), update = FALSE)
+	human.set_facial_hairstyle(random_facial_hairstyle(human.gender), update = FALSE)
+	human.set_haircolor("#[random_color()]", update = FALSE)
+	human.set_facial_haircolor(human.hair_color, update = FALSE)
+	human.eye_color_left = random_eye_color()
+	human.eye_color_right = human.eye_color_left
+	human.skin_tone = random_skin_tone()
+	human.dna.species.randomize_active_underwear_only(human)
+	// Needs to be called towards the end to update all the UIs just set above
+	human.dna.initialize_dna(newblood_type = random_blood_type(), create_mutation_blocks = randomize_mutations, randomize_features = TRUE)
+	// Snowflake stuff (ethereals)
+>>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
 	human.dna.species.spec_updatehealth(human)
-	human.dna.update_dna_identity()
-	human.updateappearance()
-	human.update_body(is_creating = TRUE)
+	human.updateappearance(mutcolor_update = TRUE)

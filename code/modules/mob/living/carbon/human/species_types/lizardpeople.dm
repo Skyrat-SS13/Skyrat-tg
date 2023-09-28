@@ -74,6 +74,7 @@
 
 	return randname
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
@@ -81,6 +82,13 @@
 	randomize_external_organs(human_mob)
 */
 //SKYRAT EDIT REMOVAL END
+=======
+
+/datum/species/lizard/randomize_features()
+	var/list/features = ..()
+	features["body_markings"] = pick(GLOB.body_markings_list)
+	return features
+>>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
 
 /datum/species/lizard/get_scream_sound(mob/living/carbon/human/lizard)
 	return pick(
