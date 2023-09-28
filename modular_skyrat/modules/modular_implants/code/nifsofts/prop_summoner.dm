@@ -16,6 +16,7 @@
 	activation_cost = 100 // Around 1/10th the energy of a standard NIF
 	buying_category = NIFSOFT_CATEGORY_FUN
 	ui_icon = "book-open"
+	able_to_keep = TRUE // These NIFSofts are mostly for comsetic/fun reasons anyways.
 
 	/// Does the resulting object have a holographic like filter appiled to it?
 	var/holographic_filter = TRUE
