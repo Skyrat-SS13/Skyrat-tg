@@ -101,6 +101,7 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
+		var/female_sprite_flags = uniform.female_sprite_flags // SKYRAT EDIT ADDITION - digi gender shaping
 		var/mutant_styles = NONE // SKYRAT EDIT ADDITON - mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
 		if((bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
@@ -108,16 +109,16 @@ There are several things that need to be remembered:
 		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = DIGITIGRADE_UNIFORM_FILE
 			// SKYRAT EDIT ADDITION BEGIN - DIGI FEMALE SPRITES
-			if(!(uniform.female_sprite_flags & FEMALE_UNIFORM_DIGI_FULL))
-				uniform.female_sprite_flags &= ~FEMALE_UNIFORM_DIGI_FULL // clear the FEMALE_UNIFORM_DIGI_FULL bit if it was set, we don't want that.
-				uniform.female_sprite_flags |= FEMALE_UNIFORM_TOP_ONLY // And set the FEMALE_UNIFORM_TOP bit if it is unset.
+			if(!(female_sprite_flags & FEMALE_UNIFORM_DIGI_FULL))
+				female_sprite_flags &= ~FEMALE_UNIFORM_FULL // clear the FEMALE_UNIFORM_DIGI_FULL bit if it was set, we don't want that.
+				female_sprite_flags |= FEMALE_UNIFORM_TOP_ONLY // And set the FEMALE_UNIFORM_TOP bit if it is unset.
 			// SKYRAT EDIT ADDITION END - DIGI FEMALE SPRITES
 		// SKYRAT EDIT ADDITION - birbs
 		else if(bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
 		// SKYRAT EDIT END
 		//Female sprites have lower priority than digitigrade sprites
-		if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh // SKYRAT EDIT CHANGE - removes else
+		if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh // SKYRAT EDIT CHANGE - ORIGINAL: else if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM))
 			woman = TRUE
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(uniform)))
