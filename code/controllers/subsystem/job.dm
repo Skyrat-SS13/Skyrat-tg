@@ -1,5 +1,3 @@
-#define VERY_LATE_ARRIVAL_TOAST_PROB 20
-
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -555,12 +553,17 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
+<<<<<<< HEAD
 	if(player_client)
 		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
 	job.announce_job(equipping, chosen_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: job.announce_job(equipping)
+=======
+	equipping.on_job_equipping(job)
+	job.announce_job(equipping)
+>>>>>>> 9ebfb279409 (Fix roundstart crewmembers not getting their radio hint message / Examine blocks out starting job information (#78647))
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
@@ -568,6 +571,7 @@ SUBSYSTEM_DEF(job)
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
 
+<<<<<<< HEAD
 
 	if(player_client)
 		to_chat(player_client, span_infoplain("As the [chosen_title == job.title ? chosen_title : "[chosen_title] ([job.title])"] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this."))
@@ -608,6 +612,8 @@ SUBSYSTEM_DEF(job)
 				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
 			// SKYRAT EDIT CHANGE END - Lizards
 
+=======
+>>>>>>> 9ebfb279409 (Fix roundstart crewmembers not getting their radio hint message / Examine blocks out starting job information (#78647))
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -1010,5 +1016,3 @@ SUBSYSTEM_DEF(job)
 		return TRUE
 
 	return FALSE
-
-#undef VERY_LATE_ARRIVAL_TOAST_PROB
