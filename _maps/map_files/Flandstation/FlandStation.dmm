@@ -18618,13 +18618,6 @@
 /area/station/command/heads_quarters/hop)
 "gnN" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 1;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	obj_integrity = 300
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "aicoredoor";
 	name = "AI Core Shutter";
@@ -18634,6 +18627,13 @@
 	icon_state = "control_stun";
 	name = "AI Chamber turret control";
 	pixel_x = -28
+	},
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	obj_integrity = 300;
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/station/ai_monitored/turret_protected/ai)
@@ -21289,12 +21289,7 @@
 	name = "AI Core Shutter"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	obj_integrity = 300
-	},
+/obj/machinery/door/window,
 /turf/open/floor/engine,
 /area/station/ai_monitored/turret_protected/ai)
 "hij" = (
@@ -65916,8 +65911,8 @@
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "vXT" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/station/holodeck)
+/turf/open/floor/plating/airless,
+/area/station/hallway/secondary/command)
 "vYc" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/side{
@@ -67088,6 +67083,9 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
+"wsQ" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/holodeck)
 "wtc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -68452,7 +68450,7 @@
 /area/station/cargo/storage)
 "wRA" = (
 /turf/closed/wall/mineral/plastitanium,
-/area/space/nearstation)
+/area/station/hallway/secondary/command)
 "wRD" = (
 /obj/machinery/light/directional/north,
 /obj/item/storage/secure/briefcase,
@@ -68643,7 +68641,7 @@
 "wUr" = (
 /obj/structure/sign/warning/docking,
 /turf/closed/wall,
-/area/space)
+/area/station/hallway/secondary/command)
 "wUt" = (
 /obj/effect/spawner/random/entertainment/plushie,
 /turf/open/floor/iron/dark,
@@ -70605,7 +70603,7 @@
 "xtu" = (
 /obj/structure/sign/warning/docking,
 /turf/closed/wall/r_wall,
-/area/space)
+/area/station/hallway/secondary/command)
 "xtB" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 4
@@ -121357,10 +121355,10 @@ nnx
 nnx
 nnx
 wMM
-bXh
+vXT
 wRA
 xtu
-qTZ
+cyb
 cyb
 cyb
 xJG
@@ -122385,10 +122383,10 @@ nnx
 nnx
 nnx
 wMM
-bXh
+vXT
 wRA
 wUr
-qTZ
+cyb
 cyb
 cyb
 cyb
@@ -130157,11 +130155,11 @@ nnx
 nnx
 csJ
 nnx
-vXT
+wsQ
 vLM
 tWB
 vLM
-vXT
+wsQ
 cGp
 xPI
 ceq
