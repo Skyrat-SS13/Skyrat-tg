@@ -107,6 +107,11 @@ There are several things that need to be remembered:
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = MONKEY_UNIFORM_FILE
 		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE - ORIGINAL: icon_file = DIGITIGRADE_UNIFORM_FILE
+			// SKYRAT EDIT ADDITION BEGIN - DIGI FEMALE SPRITES
+			if(!(uniform.female_sprite_flags & FEMALE_UNIFORM_DIGI_FULL))
+				uniform.female_sprite_flags &= ~FEMALE_UNIFORM_DIGI_FULL // clear the FEMALE_UNIFORM_DIGI_FULL bit if it was set, we don't want that.
+				uniform.female_sprite_flags |= FEMALE_UNIFORM_TOP_ONLY // And set the FEMALE_UNIFORM_TOP bit if it is unset.
+			// SKYRAT EDIT ADDITION END - DIGI FEMALE SPRITES
 		// SKYRAT EDIT ADDITION - birbs
 		else if(bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
