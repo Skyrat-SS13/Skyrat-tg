@@ -68,6 +68,16 @@
 		right_arm.unarmed_miss_sound = initial(right_arm.unarmed_miss_sound)
 		right_arm.unarmed_sharpness = initial(right_arm.unarmed_sharpness)
 
+/datum/quirk/water_breathing
+	name = "Water breathing"
+	desc = "You are able to breathe underwater!"
+	value = 2
+	mob_trait = TRAIT_WATER_BREATHING
+	gain_text = span_notice("You feel the moisture of the air in your lungs.")
+	lose_text = span_danger("You feel normally wary around large bodies of water!")
+	medical_record_text = "Patient possesses biology compatable with aquatic respiration."
+	icon = FA_ICON_FISH
+
 // AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
 	name = "Water aspect (Emotes)"
