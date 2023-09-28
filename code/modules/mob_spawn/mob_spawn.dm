@@ -58,6 +58,7 @@
 		spawned_human.underwear = "Nude"
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
+		spawned_human.bra = "Nude" //SKYRAT EDIT ADDITION
 		if(hairstyle)
 			spawned_human.hairstyle = hairstyle
 		else

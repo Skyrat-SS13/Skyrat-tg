@@ -20,6 +20,7 @@
 GLOBAL_LIST_INIT(stone_recipes, list ( \
 	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_solid_ground = 1, applies_mats = TRUE, category = CAT_STRUCTURE), \
 	new/datum/stack_recipe("stone brick tile", /obj/item/stack/tile/mineral/stone, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
+	new/datum/stack_recipe("millstone", /obj/structure/millstone, 6, one_per_turf = 1, on_solid_ground = 1, category = CAT_STRUCTURE),
 	))
 
 /obj/item/stack/sheet/mineral/stone/get_main_recipes()
@@ -54,7 +55,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
 
 /obj/item/stack/stone/attackby(obj/item/attacking_item, mob/user, params)
-	if((attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
+	if((attacking_item.tool_behaviour != TOOL_MINING) && !(istype(attacking_item, /obj/item/chisel)))
 		return ..()
 	playsound(src, 'sound/effects/picaxe1.ogg', 50, TRUE)
 	balloon_alert_to_viewers("cutting...")
@@ -127,3 +128,9 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_STONE_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_STONE_WALLS
+
+/turf/closed/mineral/gets_drilled(mob/user, give_exp = FALSE)
+	if(prob(5))
+		new /obj/item/stack/stone(src)
+
+	return ..()

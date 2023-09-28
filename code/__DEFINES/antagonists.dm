@@ -80,6 +80,7 @@
 #define PATH_VOID "Void Path"
 #define PATH_BLADE "Blade Path"
 #define PATH_COSMIC "Cosmic Path"
+#define PATH_KNOCK "Knock Path"
 
 /// Defines are used in /proc/has_living_heart() to report if the heretic has no heart period, no living heart, or has a living heart.
 #define HERETIC_NO_HEART_ORGAN -1
@@ -330,8 +331,8 @@ GLOBAL_LIST_INIT(human_invader_antagonists, list(
 #define ANTAG_GROUP_PARADOX "Spacetime Aberrations"
 
 
-// If this flag is enabled the antagonist datum allows the antagonist to be inducted into a nuclear operative team.
-#define FLAG_ANTAG_CAN_BE_INDUCTED (1 << 0)
+// This flag disables certain checks that presume antagonist datums mean 'baddie'.
+#define FLAG_FAKE_ANTAG (1 << 0)
 
 #define HUNTER_PACK_COPS "Spacepol Fugitive Hunters"
 #define HUNTER_PACK_RUSSIAN "Russian Fugitive Hunters"

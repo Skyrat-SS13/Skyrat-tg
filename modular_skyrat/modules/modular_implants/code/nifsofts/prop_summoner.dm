@@ -88,8 +88,16 @@
 		refund_activation_cost()
 		return FALSE
 
+	apply_custom_properties(new_item)
 	summoned_items += new_item
 	new_item.AddComponent(/datum/component/summoned_item, holographic_filter)
+
+/// This proc is called while an item is being summoned, use this to modifiy aspects of the item that aren't modified by the component.
+/datum/nifsoft/summoner/proc/apply_custom_properties(obj/item/target_item)
+	if(!target_item)
+		return FALSE
+
+	return TRUE
 
 /datum/nifsoft/summoner/Destroy()
 	QDEL_LIST(summoned_items)
