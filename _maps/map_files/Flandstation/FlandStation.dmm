@@ -6736,7 +6736,6 @@
 "cqv" = (
 /obj/structure/lattice,
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland2";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -6927,13 +6926,8 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "ctR" = (
-/obj/structure/lattice,
-/obj/docking_port/stationary/random{
-	id = "pod_lavaland5";
-	name = "lavaland"
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/turf/open/floor/plating/airless,
+/area/station/hallway/secondary/command)
 "ctV" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -7720,7 +7714,8 @@
 /area/station/service/library/private)
 "cIQ" = (
 /obj/machinery/vending/coffee,
-/turf/open/floor/iron/dark)
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "cIU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19288,6 +19283,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/break_room)
+"gzN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/requests_console/directional/west{
+	department = "AI Chamber";
+	name = "AI Chamber Requests Console"
+	},
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/turret_protected/ai)
 "gzT" = (
 /obj/structure/table,
 /obj/item/folder/blue{
@@ -22131,7 +22137,6 @@
 /obj/structure/lattice,
 /obj/docking_port/stationary/random{
 	dir = 2;
-	id = "pod_lavaland1";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -39450,16 +39455,13 @@
 /turf/open/floor/iron/dark,
 /area/station/service/library)
 "nrV" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/structure/lattice,
+/obj/docking_port/stationary/random{
+	dir = 4;
+	name = "lavaland"
 	},
-/obj/structure/cable,
-/obj/machinery/requests_console/directional/west{
-	department = "AI Chamber";
-	name = "AI Chamber Requests Console"
-	},
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/turret_protected/ai)
+/turf/open/space/basic,
+/area/space/nearstation)
 "nrX" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/green,
@@ -64790,7 +64792,7 @@
 "vFg" = (
 /obj/machinery/vending/snack/blue,
 /turf/open/floor/iron/dark,
-/area/space)
+/area/station/command/bridge)
 "vFu" = (
 /obj/machinery/status_display/supply{
 	pixel_x = 32
@@ -65938,8 +65940,8 @@
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "vXT" = (
-/turf/open/floor/plating/airless,
-/area/station/hallway/secondary/command)
+/turf/closed/wall/mineral/plastitanium,
+/area/station/holodeck)
 "vYc" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/side{
@@ -66825,7 +66827,7 @@
 	pixel_y = -22
 	},
 /turf/open/floor/iron/dark,
-/area/space)
+/area/station/command/bridge)
 "wpi" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access"
@@ -67110,9 +67112,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
-"wsQ" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/station/holodeck)
 "wtc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -121382,7 +121381,7 @@ nnx
 nnx
 nnx
 wMM
-vXT
+ctR
 wRA
 xtu
 cyb
@@ -121895,7 +121894,7 @@ nnx
 nnx
 nnx
 nnx
-ctR
+cqv
 nnx
 nnx
 nnx
@@ -122410,7 +122409,7 @@ nnx
 nnx
 nnx
 wMM
-vXT
+ctR
 wRA
 wUr
 cyb
@@ -130182,11 +130181,11 @@ nnx
 nnx
 csJ
 nnx
-wsQ
+vXT
 vLM
-tWB
+nrV
 vLM
-wsQ
+vXT
 cGp
 xPI
 ceq
@@ -130918,7 +130917,7 @@ fTP
 paY
 hlk
 gQx
-nrV
+gzN
 paY
 ifR
 iEP
