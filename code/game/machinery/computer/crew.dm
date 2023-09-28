@@ -262,8 +262,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// SKYRAT EDIT END
 
 		// Binary living/dead status
+		// Current status
 		if (sensor_mode >= SENSOR_LIVING)
-			entry["life_status"] = (tracked_living_mob.stat != DEAD)
+			entry["life_status"] = tracked_living_mob.stat
 
 		// Damage
 		if (sensor_mode >= SENSOR_VITALS)
