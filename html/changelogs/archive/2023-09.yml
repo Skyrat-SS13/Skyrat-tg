@@ -1063,3 +1063,94 @@
   - bugfix: actually fixed the ash revival ritual for basic mobs
   - bugfix: basic animals now will have their health affected positively and negatively
       by medicine and toxins respectively.
+2023-09-28:
+  Melbert:
+  - rscadd: Doctors can now get head mirrors from their clothes vendor, to complete
+      the doctor outfit
+  SkyratBot:
+  - bugfix: Fixed job configs not being loaded properly.
+  - bugfix: You can no longer break the game by AI rolling in a card or APC
+  - qol: AI Roll now doesnt require you to click the exact turf to move you
+  - qol: AI roll cooldown and roll time is now a variable, making it possible for
+      AIs to become terrifying catamari damacy balls
+  - bugfix: Fixes full advanced surgery trays spawning with 'nothing'
+  - spellcheck: Tweaks the message that players get when not being able to qualify
+      for roundstart antag to be more accurate as to what's happening.
+  - qol: you can undeploy fulton beacons by clicking them with an empty hand
+  - qol: you can rename fulton beacons with a pen
+  - bugfix: Fix altars not allowing items to be sacrificed
+  - bugfix: Seeds will no longer be removed from existence after receiving the "You
+      can't seem to add [seed type] to the seed extractor" message
+  - bugfix: Some seeds that were previously not able to be added to the seed extractor
+      may now be added (starthistle for example)
+  - bugfix: fixes replica pod seeds spawning humans in nullspace
+  - qol: right clicking the seed extractor with a plant/food stores the extracted
+      seeds in the machine.
+  - bugfix: Valentines and ERTs will no longer get mood boosts from traitor moodener
+      items
+  - bugfix: Fixed zombies being able to infect headless corpses (Including former
+      zombies)
+  - bugfix: 'Fixed bio armor being totally useless against zombies. Now it checks
+      how hurt your limb is: If it''s more than the bio armor value, you get infected.
+      THICKMATERIAL clothing guarantees at least 25 damage required to infect you,
+      non-thick clothing reduces effective defence by 25. In practice this means people
+      with MODsuits, biosuits will resist infection unless they''re pummeled into
+      crit, and wearing a firesuit will save you from the first few slashes.'
+  - bugfix: Fixed the bomb hood armor not having the same bio armor value as bomb
+      armor.
+  - qol: Added a message to the zed when they succesfully infect someone.
+  - code_imp: Turned some proc names into snake_case rather than, uh, nospacecase.
+  - rscdel: removes surgical duffelbags
+  - bugfix: the surgery supply order now comes with a surgery tray
+  - bugfix: (skyrat) Hospital gowns will now spawn in surgery trays like they used
+      to in the surgery duffelbags
+  - bugfix: Left-clicking an empty surgery tray will now tell you exactly why it does
+      nothing.
+  - refactor: Turned slapcrafting into a component! You can examine compatible items
+      to see what recipes they can be used in, and what the ingredients for them are.
+      For example, spears and the head-on-spear crafting recipe.
+  - bugfix: The flight potion wings will no longer fail to work on lavaland/icemoon
+      on rare occasions.
+  - bugfix: Throwing things at cyborgs will now slow them down, as intended
+  - balance: Adjusted the calculation of throwforce -> slowdown for cyborgs such that
+      it is simply a flat duration for anything above a certain damage threshold (the
+      value of throwing iron rods)
+  - bugfix: Selecting "Monkey" on a magic mirror will now once again turn you into
+      a Monkey rather than a disgusting freak of nature.
+  - bugfix: Tall Boys have once again been barred from joining the Wizard Federation.
+  - rscadd: Contractor baton in traitor uplink for 12 TC
+  - balance: Ebow no longer has a reputation requirement.
+  - bugfix: Added complexity factors to foods that were missing them.
+  - balance: Gave the bluespace geode pirates 4 more teleporter bolt turrets.
+  - bugfix: The bluespace geode pirates no longer have a bluespace portal to the bottomless
+      pit dimension.
+  - rscadd: Station-safe dirt tiles for all your mapping needs, but surely no station
+      maps use the chasm baseturf ones, right? Right?
+  - bugfix: you can now deconstruct exodrone scanner arrays
+  - bugfix: the tree in space exodrone adventure no longer softlocks you
+  - qol: the exodrone launchers now tell you on examine how to remove their fuel canister
+      if you somehow needed to do that
+  - balance: exodrone wide scans are now capped at 10 minutes
+  - balance: exodrone travel times are 18% faster
+  - balance: you can now upgrade scanner arrays for faster wide scan
+  - balance: exodrone point scan and deep scan are faster
+  - spellcheck: fixes several typos related to exodrones and gives scanner control
+      console a description
+  - qol: Gas masks now muffle your voice with TTS.
+  - qol: Security Hailer masks now disguise your voice to protect your right to brutalize
+      greytiders.
+  - qol: Lizards, Ethereals, and Xenomorphs now have a vocal effect.
+  - qol: Security Records now show someone's voice name.
+  - bugfix: fixed geysers spawning on turfs with plants
+  Tattle:
+  - qol: drones now have individual names, instead of just "drone"
+  Vekter:
+  - rscadd: Added a holodeck to Birdshot Station. It can be reached via the Crew Facilities
+      hallway.
+  softcerv:
+  - rscadd: Adds in a wiki-book NIFSoft, allowing the user to access various wiki
+      books.
+  - qol: the speech impairment on the adult gas mask can now be toggled
+  tattle:
+  - qol: Basic animals now make sounds for audible emotes
+  - sound: Added new sound effects for chicks, chickens, crabs, and insects
