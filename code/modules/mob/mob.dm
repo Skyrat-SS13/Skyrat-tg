@@ -814,12 +814,29 @@
 	set name = "Respawn"
 	set category = "OOC"
 
+<<<<<<< HEAD
 	if (CONFIG_GET(flag/norespawn))
 		if (!check_rights_for(usr.client, R_ADMIN))
 			to_chat(usr, span_boldnotice("Respawning is not enabled!"))
 			return
 		else if (tgui_alert(usr, "Respawning is currently disabled, do you want to use your permissions to circumvent it?", "Respawn", list("Yes", "No")) != "Yes")
 			return
+=======
+	switch(CONFIG_GET(flag/allow_respawn))
+		if(RESPAWN_FLAG_NEW_CHARACTER)
+			if(tgui_alert(usr, "Note, respawning is only allowed as another character. If you don't have another free slot you may not be able to respawn.", "Respawn", list("Ok", "Nevermind")) != "Ok")
+				return
+
+		if(RESPAWN_FLAG_FREE)
+			pass() // Normal respawn
+
+		if(RESPAWN_FLAG_DISABLED)
+			if (!check_rights_for(usr.client, R_ADMIN))
+				to_chat(usr, span_boldnotice("Respawning is not enabled!"))
+				return
+			if (tgui_alert(usr, "Respawning is currently disabled, do you want to use your permissions to circumvent it?", "Respawn", list("Yes", "No")) != "Yes")
+				return
+>>>>>>> 9ffc03932ed (Fix respawning (#78670))
 
 	if (stat != DEAD)
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
