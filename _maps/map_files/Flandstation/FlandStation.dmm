@@ -17377,6 +17377,16 @@
 	name = "Private Channel";
 	pixel_y = -28
 	},
+/obj/machinery/door/window{
+	atom_integrity = 300;
+	base_state = "rightsecure";
+	dir = 8;
+	icon_state = "rightsecure";
+	layer = 4.1;
+	name = "Secondary AI Core Access";
+	pixel_x = -4;
+	req_access = list("ai_upload")
+	},
 /turf/open/floor/circuit/red,
 /area/station/ai_monitored/turret_protected/ai)
 "fTX" = (
@@ -18629,11 +18639,12 @@
 	pixel_x = -28
 	},
 /obj/machinery/door/window{
-	base_state = "rightsecure";
-	icon_state = "rightsecure";
+	atom_integrity = 300;
+	base_state = "leftsecure";
+	dir = 1;
+	icon_state = "leftsecure";
 	name = "Primary AI Core Access";
-	obj_integrity = 300;
-	dir = 1
+	req_access = list("ai_upload")
 	},
 /turf/open/floor/engine,
 /area/station/ai_monitored/turret_protected/ai)
@@ -19277,17 +19288,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/break_room)
-"gzN" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/requests_console/directional/west{
-	department = "AI Chamber";
-	name = "AI Chamber Requests Console"
-	},
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/turret_protected/ai)
 "gzT" = (
 /obj/structure/table,
 /obj/item/folder/blue{
@@ -21289,7 +21289,13 @@
 	name = "AI Core Shutter"
 	},
 /obj/effect/turf_decal/delivery,
-/obj/machinery/door/window,
+/obj/machinery/door/window{
+	atom_integrity = 300;
+	base_state = "rightsecure";
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	req_access = list("ai_upload")
+	},
 /turf/open/floor/engine,
 /area/station/ai_monitored/turret_protected/ai)
 "hij" = (
@@ -24341,6 +24347,16 @@
 	freerange = 1;
 	name = "Common Channel";
 	pixel_x = 28
+	},
+/obj/machinery/door/window{
+	atom_integrity = 300;
+	base_state = "leftsecure";
+	dir = 8;
+	icon_state = "leftsecure";
+	layer = 4.1;
+	name = "Tertiary AI Core Access";
+	pixel_x = -3;
+	req_access = list("ai_upload")
 	},
 /turf/open/floor/circuit/red,
 /area/station/ai_monitored/turret_protected/ai)
@@ -39433,6 +39449,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/library)
+"nrV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/requests_console/directional/west{
+	department = "AI Chamber";
+	name = "AI Chamber Requests Console"
+	},
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/turret_protected/ai)
 "nrX" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/green,
@@ -130891,7 +130918,7 @@ fTP
 paY
 hlk
 gQx
-gzN
+nrV
 paY
 ifR
 iEP
