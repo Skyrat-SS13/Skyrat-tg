@@ -129,6 +129,8 @@
 			else
 				living_observers.add_mood_event("oogabooga", /datum/mood_event/sacrifice_bad)
 
+		ashies.sacrifices_made++
+
 /**
  * Proc that will spawn the egg that will revive the ashwalker
  * This is also the Skyrat replacement for /proc/remake_walker
