@@ -112,6 +112,7 @@ There are several things that need to be remembered:
 			if(!(female_sprite_flags & FEMALE_UNIFORM_DIGI_FULL))
 				female_sprite_flags &= ~FEMALE_UNIFORM_FULL // clear the FEMALE_UNIFORM_DIGI_FULL bit if it was set, we don't want that.
 				female_sprite_flags |= FEMALE_UNIFORM_TOP_ONLY // And set the FEMALE_UNIFORM_TOP bit if it is unset.
+				mutant_styles |= STYLE_DIGI
 			// SKYRAT EDIT ADDITION END - DIGI FEMALE SPRITES
 		// SKYRAT EDIT ADDITION - birbs
 		else if(bodytype & BODYTYPE_CUSTOM)
@@ -136,7 +137,7 @@ There are several things that need to be remembered:
 			default_layer = UNIFORM_LAYER,
 			default_icon_file = icon_file,
 			isinhands = FALSE,
-			female_uniform = woman ? uniform.female_sprite_flags : null,
+			female_uniform = woman ? female_sprite_flags : null, // SKYRAT EDIT CHANGE - Digi female sprites - ORIGINAL: female_uniform = woman ? uniform.female_sprite_flags : null,
 			override_state = target_overlay,
 			override_file = handled_by_bodytype ? icon_file : null,
 			mutant_styles = mutant_styles, // SKYRAT EDIT ADDITION - Taur-friendly uniforms!
@@ -689,8 +690,8 @@ There are several things that need to be remembered:
 	overlays_standing[HANDS_LAYER] = hands
 	apply_overlay(HANDS_LAYER)
 
-/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
-	var/index = "[t_color]-[greyscale_colors]"
+/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors, mutant_styles) // SKYRAT EDIT CHANGE - Digi female sprites - /proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
+	var/index = "[t_color]-[greyscale_colors][(mutant_styles & STYLE_DIGI) ? "-d" : ""]" // SKYRAT EDIT CHANGE - Digi female sprites - Original: var/index = "[t_color]-[greyscale_colors]]"
 	var/icon/female_clothing_icon = GLOB.female_clothing_icons[index]
 	if(!female_clothing_icon) 	//Create standing/laying icons if they don't exist
 		generate_female_clothing(index, t_color, icon, type)
@@ -842,7 +843,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 
 	var/mutable_appearance/standing
 	if(female_uniform)
-		standing = wear_female_version(t_state, file2use, layer2use, female_uniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
+		standing = wear_female_version(t_state, file2use, layer2use, female_uniform, greyscale_colors, mutant_styles) //should layer2use be in sync with the adjusted value below? needs testing - shiz // SKYRAT EDIT CHANGE - ORIGINAL: standing = wear_female_version(t_state, file2use, layer2use, female_uniform, greyscale_colors)
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
 	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
