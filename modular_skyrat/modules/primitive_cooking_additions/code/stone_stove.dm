@@ -28,6 +28,7 @@
 /// Stove component subtype with changed visuals and not much else
 /datum/component/stove/primitive
 	flame_color = "#ff9900"
+	heat_coefficient = 1
 
 /datum/component/stove/primitive/on_overlay_update(obj/machinery/source, list/overlays)
 	update_smoke()
