@@ -690,7 +690,7 @@ There are several things that need to be remembered:
 	overlays_standing[HANDS_LAYER] = hands
 	apply_overlay(HANDS_LAYER)
 
-/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors, mutant_styles) // SKYRAT EDIT CHANGE - Digi female gender shaping - /proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
+/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors, mutant_styles) // SKYRAT EDIT CHANGE - Digi female gender shaping - ORIGINAL: /proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
 	var/index = "[t_color]-[greyscale_colors][(mutant_styles & STYLE_DIGI) ? "-d" : ""]" // SKYRAT EDIT CHANGE - Digi female gender shaping - Original: var/index = "[t_color]-[greyscale_colors]]"
 	var/icon/female_clothing_icon = GLOB.female_clothing_icons[index]
 	if(!female_clothing_icon) 	//Create standing/laying icons if they don't exist
