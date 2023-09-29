@@ -3,8 +3,13 @@
 	description = "Assist the crew, follow your laws, obey your AI."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
+<<<<<<< HEAD
 	total_positions = 3	// SKYRAT EDIT: Original value (0)
 	spawn_positions = 3	// SKYRAT EDIT: Original value (1)
+=======
+	total_positions = 0
+	spawn_positions = 3
+>>>>>>> b697ddf155f (Increases codeside roundstart Cyborg slots to 3. (#78599))
 	supervisors = "your laws and the AI" //Nodrak
 	spawn_type = /mob/living/silicon/robot
 	minimal_player_age = 21
