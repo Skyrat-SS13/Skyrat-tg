@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+///The multiplier given to the base overtime charge drain value if its flashlight is on.
+#define FLASHLIGHT_DRAIN_MULTIPLIER 1.1
+
+>>>>>>> 79e48dd7db2 (Flashlights wont cause your pda to drain faster endlessly (#78655))
 // Tries to draw power from charger or, if no operational charger is present, from power cell.
 /obj/item/modular_computer/proc/use_power(amount = 0)
 	if(check_power_override())
@@ -34,6 +40,18 @@
 // Handles power-related things, such as battery interaction, recharging, shutdown when it's discharged
 /obj/item/modular_computer/proc/handle_power(seconds_per_tick)
 	var/power_usage = screen_on ? base_active_power_usage : base_idle_power_usage
+<<<<<<< HEAD
+=======
+	if(light_on)
+		power_usage *= FLASHLIGHT_DRAIN_MULTIPLIER
+	if(active_program)
+		power_usage += active_program.power_cell_use
+	for(var/datum/computer_file/program/open_programs as anything in idle_threads)
+		if(!open_programs.power_cell_use)
+			continue
+		if(open_programs in idle_threads)
+			power_usage += (open_programs.power_cell_use / 2)
+>>>>>>> 79e48dd7db2 (Flashlights wont cause your pda to drain faster endlessly (#78655))
 
 	if(use_power(power_usage))
 		last_power_usage = power_usage
