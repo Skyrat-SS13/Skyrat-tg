@@ -94,6 +94,10 @@
 	greyscale_config_worn_vox = /datum/greyscale_config/respirator/worn/vox
 	greyscale_config_worn_teshari = /datum/greyscale_config/respirator/worn/teshari
 
+/obj/item/clothing/mask/gas/respirator/examine(mob/user)
+	. = ..()
+	. += span_notice("You can toggle its ability to muffle your TTS voice with <b>control click</b>.")
+
 /obj/item/clothing/mask/gas/respirator/CtrlClick(mob/living/user)
 	if(!isliving(user))
 		return
