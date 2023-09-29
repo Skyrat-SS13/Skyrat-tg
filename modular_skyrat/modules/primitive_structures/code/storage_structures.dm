@@ -3,6 +3,8 @@
 /obj/structure/rack/wooden
 	icon_state = "shelf_wood"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	flags_1 = NODECONSTRUCT_1
 
 /obj/structure/rack/wooden/MouseDrop_T(obj/object, mob/user, params)
 	. = ..()
@@ -21,3 +23,5 @@
 	icon_state = "barrel"
 	base_icon_state = "barrel"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	flags_1 = NODECONSTRUCT_1
