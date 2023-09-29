@@ -1154,3 +1154,73 @@
   tattle:
   - qol: Basic animals now make sounds for audible emotes
   - sound: Added new sound effects for chicks, chickens, crabs, and insects
+2023-09-29:
+  A.C.M.O.:
+  - bugfix: Fixes the death sandwich, making it safe to examine.
+  BurgerBB:
+  - bugfix: Scrubbers and Vents will no longer reset their settings on map load.
+  GoldenAlpharex:
+  - server: Added a way for calls to be made to interfere with player ranks on live
+      servers (updating the players if they're connected) from outside of the game.
+  Rhials:
+  - qol: The freedom implant has received minor feedback and other minor usage improvements.
+  - bugfix: The Polymorph Belt should now update its sprite when active.
+  SkyratBot:
+  - qol: allowed names to start with a number if AI/Borg
+  - rscadd: Add drinking water causes drunk mobs to become sober
+  - balance: Diabetics rejoice! Nerfed sugar OD/hyperglycaemic shock to be an immediate
+      KO followed by drowsiness afterwards until the OD is gone.
+  - code_imp: Robot Customers have recently been touched codewise, please report any
+      bugs or unexpected behavior as there really should not be any.
+  - admin: There is now a tool to apply a DNA Infuser entry to any human.
+  - bugfix: The Nuke Op MODsuit AI downloader only works once per purchase, as intended.
+  - code_imp: adds a gas connector component that allows connection to the atmos piping
+      system without the need of repathing
+  - refactor: changes the cryo machine to use this new system
+  - refactor: Hivelords and Legions now use the basic mob framework. Please report
+      any unusual behaviour.
+  - rscadd: Hivelords shed more spawn when they are attacked.
+  - rscadd: Legions have learned how to fling their skulls across long distances.
+  - rscadd: Legions can heal other lavaland mobs with their skulls.
+  - rscadd: Legions are better at preserving corpses they consume, and sometimes make
+      use of their radios.
+  - rscadd: Legions may leave behind an unpleasant surprise after you are rescued
+      from them.
+  - balance: The crew monitoring console will now display you as dead if you are dead,
+      an critically injured if in crit, rather than setting those icons purely based
+      on your current health.
+  - qol: You won't continue burning to a husk if consumed by a snow legion after being
+      set on fire by an ice drake.
+  - bugfix: removes incorrect stack traces when using some admin secrets
+  - balance: Head revolutionaries and heads of staff are no longer immediately considered
+      disqualified when going AFK or disconnecting and are given a 2 minute grace
+      period.
+  - admin: Admins now get a log when a head revolutionary or head of staff disconnects
+      or goes AFK during a revolution. They also get the same log 1 minute after to
+      give them a chance to act on the information.
+  - refactor: Snakes have been refactored into basic mobs. This means that they are
+      a bit more intelligent than previous snakes, making them more docile and averse
+      to harming people (unless otherwise provoked). They do chomp all sorts of mice
+      though. You can feed them a dead mouse to make them your friend if you'd want
+      that.
+  - sound: If you listen closely to snakes, you might be able to hear a small hissing
+      sound...
+  - bugfix: fixed lobstrosities becoming unmovable when killed during their charge
+      windup
+  - bugfix: Splattercasting resets your blood to normal values when you transsform
+      into a vampire.
+  - bugfix: Gaining a new species will set your blood volume down to the normal volume
+      levels if higher than normal.
+  - bugfix: Fix water puddle runtime when washing items
+  - bugfix: the parole status and discharged status are now green and blue respectively
+      in the security record interface
+  - bugfix: Dimensional Anomalies no longer destroy wall-mounted equipment.
+  - code_imp: Your bodytype now decides what gendered sounds you make.
+  - bugfix: Fixed crabs not correctly (kinda) walking sideway.
+  - bugfix: dead bodies now cool down to room temperature over time
+  - rscadd: Add candle design to biogenerator
+  sergeirocks100:
+  - bugfix: Undershirts will now look as they should if you have a body type that
+      differs from the gender default.
+  softcerv:
+  - rscadd: Adds in the ability for certain NIFSofts to be kept between rounds.
