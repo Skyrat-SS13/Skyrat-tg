@@ -54,13 +54,19 @@
 	var/static/list/stamina_damage_messages = list(
 		"Your muscles suddenly ache...",
 		"You feel tired...",
-		"You're striken by a dull body-wide pain..."
+		"You're striken by a body-wide pain..."
 	)
 
 /datum/brain_trauma/severe/death_consequences/on_gain()
 	. = ..()
 
 	RegisterSignal(owner, COMSIG_LIVING_REVIVE, PROC_REF(victim_revived))
+
+	var/datum/preferences/victim_prefs = owner.client?.prefs
+	if (!victim_prefs)
+		return
+
+	current_degradation = victim_prefs.read_preference()
 
 /datum/brain_trauma/severe/death_consequences/on_lose(silent)
 	. = ..()
@@ -112,7 +118,7 @@
 			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/toxin/formaldehyde)
 			if (!reagent_process_flags_valid(owner, reagent_instance))
 				return FALSE
-			increase += rezadone_degradation_decrease
+			decrease += rezadone_degradation_decrease
 
 	return decrease * get_degradation_decrease_mult()
 
@@ -244,8 +250,7 @@
 	message += span_danger("\nAll degradation reduction can be [span_blue("expedited")] by [span_blue("resting, sleeping, or being buckled to something comfortable")].")
 
 	if (permakill_if_at_max_degradation)
-
-	message += span_orange("\n\n <b><i>SUBJECT WILL BE PERMANENTLY KILLED IF DEGRADATION REACHES MAXIMUM!</i></b>")
+		message += span_orange("\n\n <b><i>SUBJECT WILL BE PERMANENTLY KILLED IF DEGRADATION REACHES MAXIMUM!</i></b>")
 
 	return message
 
@@ -253,9 +258,9 @@
 	if (owner.resting || owner.IsSleeping())
 		return TRUE
 
-	if (owner.buckled_to)
+	if (owner.buckled)
 		for (var/typepath in buckled_to_recovery_mult_table)
-			if (istype(buckled_to, typepath))
+			if (istype(owner.buckled, typepath))
 				return TRUE
 
 	return FALSE
