@@ -10,3 +10,10 @@
 #define DEATH_CONSEQUENCES_REAGENT_METABOLIZE "dc_reagent_should_be_metabolizing"
 /// If true, we will check to see if this can process. Ex. things like synths wont process formaldehyde
 #define DEATH_CONSEQUENCES_REAGENT_CHECK_PROCESSING_FLAGS "dc_check_reagent_processing_flags"
+
+/// Absolute maximum for prefereneces.
+#define DEATH_CONSEQUENCES_MAXIMUM_THEORETICAL_DEGRADATION 10000
+#define DEATH_CONSEQUENCES_DEFAULT_MAX_DEGRADATION 500 // arbitrary
+#define DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION 5
+#define DEATH_CONSEQUENCES_DEFAULT_LIVING_DEGRADATION_RECOVERY 0.05
+#define DEATH_CONSEQUENCES_DEFAULT_DEGRADATION_ON_DEATH 50

@@ -9,14 +9,14 @@
 	/// The current degradation we are currently at. Genreally speaking, things get worse the higher this is. Can never go below 0.
 	var/current_degradation = 0
 	/// The absolute maximum degradation we can receive. Will cause permadeath if [permakill_if_at_max_degradation] is TRUE.
-	var/max_degradation = 500 // arbitrary
+	var/max_degradation = DEATH_CONSEQUENCES_DEFAULT_MAX_DEGRADATION // arbitrary
 	/// The
-	var/base_degradation_reduction_per_second_while_alive = 0.05 // arbitrary
-	var/base_degradation_on_death = 0
+	var/base_degradation_reduction_per_second_while_alive = DEATH_CONSEQUENCES_DEFAULT_LIVING_DEGRADATION_RECOVERY // arbitrary
+	var/base_degradation_on_death = DEATH_CONSEQUENCES_DEFAULT_DEGRADATION_ON_DEATH
 	var/base_degradation_per_second_while_dead = 0
 
 	var/formaldehyde_death_degradation_mult = 0
-	var/rezadone_degradation_decrease = 5
+	var/rezadone_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
 
 	var/on_stasis_death_degradation_mult = 0
 
@@ -66,7 +66,14 @@
 	if (!victim_prefs)
 		return
 
-	current_degradation = victim_prefs.read_preference()
+	max_degradation = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_degradation)
+	current_degradation = clamp(victim_prefs.read_preference(/datum/preference/numeric/death_consequences/starting_degradation), 0, max_degradation - 1) // lets not let people instantly fucking die
+
+	base_degradation_reduction_per_second_while_alive = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/living_degradation_recovery_per_second)
+	base_degradation_per_second_while_dead = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/dead_degradation_per_second)
+	base_degradation_on_death = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/degradation_on_death)
+
+	update_effects()
 
 /datum/brain_trauma/severe/death_consequences/on_lose(silent)
 	. = ..()
