@@ -4,10 +4,10 @@ import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledLi
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
-  const { require_approval, current_rooms = [], ghost_joinable } = data;
+  const { require_approval, current_rooms = [], ghost_joinable, theme } = data;
 
   return (
-    <Window width={520} height={400} resizable>
+    <Window width={520} height={400} theme={theme} resizable>
       <Window.Content scrollable>
         {current_rooms.map((room) => (
           <Section

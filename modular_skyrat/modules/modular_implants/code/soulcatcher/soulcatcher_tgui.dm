@@ -13,6 +13,7 @@
 
 	data["ghost_joinable"] = ghost_joinable
 	data["require_approval"] = require_approval
+	data["theme"] = ui_theme
 
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
