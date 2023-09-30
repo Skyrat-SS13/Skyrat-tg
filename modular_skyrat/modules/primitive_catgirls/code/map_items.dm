@@ -32,7 +32,7 @@
 /turf/open/water/icebox_fishable/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/icecat_hot_spring)
-	if(prob(30))
+	if(prob(60))
 		particle_effect = new(src, /particles/hotspring_steam)
 
 /turf/open/water/icebox_fishable/Destroy()
@@ -76,7 +76,7 @@
 	spawning = 0.2
 	lifespan = 1 SECONDS
 	fade = 0.5 SECONDS
-	color = "#549EFF"
+	color = "#ffffff"
 	position = generator(GEN_BOX, list(-32,-32,0), list(32,32,0), NORMAL_RAND)
 	scale = generator(GEN_VECTOR, list(0.9,0.9), list(1.1,1.1), NORMAL_RAND)
 	drift = generator(GEN_VECTOR, list(-0.1,0), list(0.1,0.025), UNIFORM_RAND)

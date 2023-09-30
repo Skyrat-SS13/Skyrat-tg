@@ -35,7 +35,7 @@
 	else
 		. += span_notice("It can hold [maximum_contained_items] items, and there is nothing in it presently.")
 
-	. += span_notice("You can (un)secure [src] with <b>Control Click</b>.")
+	. += span_notice("You can (un)secure [src] with <b>Control Shift Click</b>.")
 	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
 
 /obj/structure/millstone/Destroy()
@@ -57,7 +57,7 @@
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
 
-/obj/structure/millstone/CtrlClick(mob/user)
+/obj/structure/millstone/CtrlShiftClick(mob/user)
 	set_anchored(!anchored)
 	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
 

@@ -7,7 +7,7 @@
 	icon_state = "fence"
 	layer = BELOW_OBJ_LAYER // I think this is the default but lets be safe?
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	flags_1 = NODECONSTRUCT_1 | ON_BORDER_1
 
 /obj/structure/railing/wooden_fencing/Initialize(mapload)
 	. = ..()
@@ -16,6 +16,7 @@
 		"fence_2",
 		"fence_3",
 	)
+	update_appearance(UPDATE_ICON)
 
 /obj/structure/railing/wooden_fencing/update_icon()
 	. = ..()
