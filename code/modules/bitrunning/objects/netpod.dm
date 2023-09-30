@@ -410,7 +410,6 @@
 	examine_text += span_notice("It can be pried open with a crowbar, but its safety mechanisms will alert the occupant.")
 
 
-
 /// When the server is upgraded, drops brain damage a little
 /obj/machinery/netpod/proc/on_server_upgraded(datum/source, servo_rating)
 	SIGNAL_HANDLER
