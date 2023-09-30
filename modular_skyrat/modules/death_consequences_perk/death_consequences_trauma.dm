@@ -30,6 +30,11 @@
 
 	// Higher = overall less intense threshold reduction but it still maxes out once it gets there
 	var/max_degradation_for_crit_threshold_reduction = 200
+	var/crit_threshold_reduction_per_percent = 1
+
+	var/max_degradation_for_stamina_damage = 500
+	var/stamina_damage_per_degradation_percent
+	var/stamina_damage_minimum_degradation = 100
 
 	var/crit_threshold_currently_reduced_by = 0
 
@@ -60,8 +65,11 @@
 /datum/brain_trauma/severe/death_consequences/on_gain()
 	. = ..()
 
-	RegisterSignal(owner, COMSIG_LIVING_REVIVE, PROC_REF(victim_revived))
+	//RegisterSignal(owner, COMSIG_LIVING_REVIVE, PROC_REF(victim_revived))
 
+	update_variables()
+
+/datum/brain_trauma/severe/death_consequences/proc/update_variables()
 	var/datum/preferences/victim_prefs = owner.client?.prefs
 	if (!victim_prefs)
 		return
@@ -72,6 +80,16 @@
 	base_degradation_reduction_per_second_while_alive = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/living_degradation_recovery_per_second)
 	base_degradation_per_second_while_dead = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/dead_degradation_per_second)
 	base_degradation_on_death = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/degradation_on_death)
+
+	var/crit_threshold_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_percent_of_max)
+	max_degradation_for_crit_threshold_reduction = (max_degradation * (crit_threshold_percent / 100))
+	crit_threshold_reduction_per_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_per_percent_to_max)
+
+	var/min_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_min_percent_of_max)
+	stamina_damage_minimum_degradation = (max_degradation * (min_stamina_damage_percent / 100))
+	var/max_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_percent_of_max)
+	max_degradation_for_stamina_damage = (max_degradation * (max_stamina_damage_percent / 100))
+	stamina_damage_per_degradation_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_per_percent_to_max)
 
 	update_effects()
 
@@ -175,7 +193,7 @@
 	var/clamped_degradation = min(current_degradation, max_degradation_for_crit_threshold_reduction)
 	var/percent_to_max = (clamped_degradation / max_degradation_for_crit_threshold_reduction)
 
-	var/proposed_alteration = (clamped_degradation * percent_to_max)
+	var/proposed_alteration = (clamped_degradation * percent_to_max) * crit_threshold_reduction_per_percent
 	var/proposed_threshold_reduction = ((owner.crit_threshold - crit_threshold_currently_reduced_by) - proposed_alteration)
 	var/clamped_threshold_reduction = max(proposed_threshold_reduction, DEATH_CONSEQUENCES_MINIMUM_VICTIM_CRIT_THRESHOLD)
 
@@ -237,13 +255,12 @@
 
 /datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_info()
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
-	var/message = span_boldwarning("Subject suffers from mortality-induced resonance instability.")
+	var/message = span_bolddanger("\nSubject suffers from mortality-induced resonance instability.")
 	if (final_death_delivered)
 		message += span_purple("<i> Neural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
-	message += span_danger("\nCurrent degradation: [span_blue("[current_degradation]")]. Maximum possible degradation: [span_blue("[max_degradation]")]")
-	if (base_degradation_per_second_while_dead)
+	message += span_danger("\nCurrent degradation: [span_blue("[current_degradation]")]. Maximum possible degradation: [span_blue("[max_degradation]")].")
 	if (base_degradation_reduction_per_second_while_alive)
 		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_green("[base_degradation_reduction_per_second_while_alive] per second")].")
 	if (base_degradation_per_second_while_dead)
@@ -252,6 +269,8 @@
 			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]x")].")
 		if (on_stasis_death_degradation_mult < 1)
 			message += span_danger(" Stasis may be effective in slowing, or even stopping, degradation.")
+	if (base_degradation_on_death)
+		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]<b> degradation penalty.")
 	if (owner_organic && rezadone_degradation_decrease)
 		message += span_danger("\nRezadone will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
 	message += span_danger("\nAll degradation reduction can be [span_blue("expedited")] by [span_blue("resting, sleeping, or being buckled to something comfortable")].")

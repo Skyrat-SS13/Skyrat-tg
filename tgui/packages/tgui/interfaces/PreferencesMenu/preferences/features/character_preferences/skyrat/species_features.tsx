@@ -871,3 +871,102 @@ export const pod_hair_emissive: Feature<boolean> = {
   description: 'Want your flowers to glow in the dark?',
   component: CheckboxInput,
 };
+
+// SKYRAT EDIT ADDITION BEGIN - DEATH CONSEQUENCES QUIRK
+// all will be prefixed with DC to keep them all in one place
+export const dc_expand_options: Feature<boolean> = {
+  name: 'DC Options',
+  description: 'Expand all options for the death consequences quirk.',
+  component: CheckboxInput,
+};
+
+export const dc_starting_degradation: Feature<number> = {
+  name: 'DC Starting Degradation',
+  description: 'The degradation you will start with.',
+  component: FeatureNumberInput,
+};
+
+export const dc_max_degradation: Feature<number> = {
+  name: 'DC Max Degradation',
+  description: 'The max degradation you can acquire.',
+  component: FeatureNumberInput,
+};
+
+export const dc_permakill_at_max: Feature<boolean> = {
+  name: 'DC Permakill at max deg.',
+  description:
+    'If enabled, you will be DNRed and ghosted when you reach max degradation.',
+  component: CheckboxInput,
+};
+
+export const dc_force_death_if_permakilled: Feature<boolean> = {
+  name: 'DC Permakill: Die if PKed',
+  description:
+    'If enabled, you will be killed if alive when you are DNRed from this quirk.',
+  component: CheckboxInput,
+};
+
+export const dc_living_degradation_recovery_per_second: Feature<number> = {
+  name: 'DC Deg. loss per second while alive',
+  description: 'Title.',
+  component: FeatureNumberInput,
+};
+
+export const dc_dead_degradation_per_second: Feature<number> = {
+  name: 'DC Deg. per second while dead',
+  description: 'Title.',
+  component: FeatureNumberInput,
+};
+
+export const dc_formeldahyde_dead_degradation_mult: Feature<number> = {
+  name: 'DC Passive death deg. formadahyde mult',
+  description:
+    'When dead, passive degradation will be reduced by this if you are formaldehyded.',
+  component: FeatureNumberInput,
+};
+
+export const dc_stasis_dead_degradation_mult: Feature<number> = {
+  name: 'DC Passive death deg. stasis mult',
+  description:
+    'When dead, passive degradation will be multiplied by this if you are on stasis.',
+  component: FeatureNumberInput,
+};
+
+export const dc_rezadone_living_degradation_reduction: Feature<number> = {
+  name: 'DC Rezadone deg. loss per second',
+  description:
+    'When alive, you will lose this much degradation every second when you are rezadoned.',
+  component: FeatureNumberInput,
+};
+
+export const dc_crit_threshold_reduction_percent_of_max: Feature<number> = {
+  name: 'DC Crit Threshold max deg.',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
+export const dc_crit_threshold_reduction_per_percent_to_max: Feature<number> = {
+  name: 'DC Crit Threshold ratio',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
+export const dc_stamina_damage_min_percent_of_max: Feature<number> = {
+  name: 'DC Stamina damage min deg.',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
+export const dc_stamina_damage_percent_of_max: Feature<number> = {
+  name: 'DC Stamina damage max deg.',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
+export const dc_stamina_damage_per_percent_to_max: Feature<number> = {
+  name: 'DC Stamina Damage ratio',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
+// SKYRAT EDIT END

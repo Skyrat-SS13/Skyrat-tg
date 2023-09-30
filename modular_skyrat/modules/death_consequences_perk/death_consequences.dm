@@ -3,21 +3,23 @@
 	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired."
 	medical_record_text = DEATH_CONSEQUENCES_QUIRK_DESC
 	icon = FA_ICON_BRAIN
-	cost = 0
+	value = 0 // due to its high customization, you can make it realllly good or reallllly bad
 
 /datum/quirk/death_consequences/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.gain_trauma(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
 
 	add_verb(human_holder, TYPE_VERB_REF(/mob, increase_degradation))
+	add_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
 /datum/quirk/death_consequences/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.cure_trauma_type(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
 
 	remove_verb(human_holder, TYPE_VERB_REF(/mob, increase_degradation))
+	remove_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
-/mob/verb/increase_degradation(increment)
+/mob/verb/increase_degradation(increment as num)
 	set name = "Increase resonance degradation"
 	set category = "IC"
 	set instant = TRUE
@@ -38,6 +40,21 @@
 		return*/
 
 	linked_trauma.adjust_degradation(increment)
+	to_chat(usr, span_notice("Degradation successfully adjusted!"))
+
+/mob/verb/refresh_death_consequences()
+	set name = "Refresh death consequence variables"
+	set category = "IC"
+	set instant = TRUE
+
+	var/datum/brain_trauma/severe/death_consequences/linked_trauma = get_death_consequences_trauma()
+	var/mob/living/carbon/trauma_holder = linked_trauma?.owner
+	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mind.current) // sanity
+		to_chat(usr, span_warning("You don't have a body with death consequences!"))
+		return
+
+	linked_trauma.update_variables()
+	to_chat(usr, span_notice("Variables successfully updated!"))
 
 /mob/proc/get_death_consequences_trauma()
 	RETURN_TYPE(/datum/brain_trauma/severe/death_consequences)
