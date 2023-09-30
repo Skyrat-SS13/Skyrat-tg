@@ -941,7 +941,28 @@ export const dc_stasis_dead_degradation_mult: Feature<number> = {
 export const dc_rezadone_living_degradation_reduction: Feature<number> = {
   name: 'DC Rezadone deg. loss per second',
   description:
-    'When alive, you will lose this much degradation every second when you are rezadoned.',
+    'When alive, you will lose this much degradation every second when you metabolize max purity rezadone.',
+  component: FeatureNumberInput,
+};
+
+export const dc_strange_reagent_degradation_reduction: Feature<number> = {
+  name: 'DC Strange Reagent deg. loss per second',
+  description:
+    'When alive, you will lose this much degradation every second when you have strange reagent in you.',
+  component: FeatureNumberInput,
+};
+
+export const dc_sansufentanyl_living_degradation_reduction: Feature<number> = {
+  name: 'DC Sansufentanyl deg. loss per second',
+  description:
+    'When alive, you will lose this much degradation every second when you metabolize Sansufentanyl.',
+  component: FeatureNumberInput,
+};
+
+export const dc_eigenstasium_degradation_reduction: Feature<number> = {
+  name: 'DC Eigenstasium deg. loss per second',
+  description:
+    'When alive, you will lose this much degradation every second when you are under the affects of Eigenstasium. Works on synths.',
   component: FeatureNumberInput,
 };
 

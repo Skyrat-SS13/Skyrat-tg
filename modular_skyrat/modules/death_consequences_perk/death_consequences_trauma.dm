@@ -7,7 +7,7 @@
 /datum/brain_trauma/severe/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
 	desc = DEATH_CONSEQUENCES_QUIRK_DESC
-	scan_desc = "mortality-induced resonance degradation"
+	scan_desc = "resonance degradation"
 	gain_text = span_warning("For a brief moment, you completely disassociate.")
 	lose_text = span_notice("You feel like you have a firm grasp on your conciousness again!")
 	random_gain = FALSE
@@ -32,6 +32,17 @@
 	var/formaldehyde_death_degradation_mult = 0
 	/// If our victim is alive and is metabolizing rezadone, we will reduce degradation by this amount every second.
 	var/rezadone_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
+	/// Only rezadone at or above this purity can reduce degradation.
+	var/rezadone_minimum_purity = 100
+
+	/// When strange reagent is metabolized, degradation is reduced by this.
+	var/strange_reagent_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_STRANGE_REAGENT_DEGRADATION_REDUCTION
+
+	/// When eigenstasium is metabolized, degradation is reduced by this.
+	var/eigenstasium_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_EIGENSTASIUM_DEGRADATION_REDUCTION
+
+	/// When sansufentanyl is metabolized, degradation is reduced by this.
+	var/sansufentanyl_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_SANSUFENTANYL_DEGRADATION_REDUCTION
 
 	/// If our victim is dead, their passive degradation will be multiplied against this if they are in stasis.
 	var/on_stasis_death_degradation_mult = 0
@@ -194,9 +205,22 @@
 
 		if (owner.has_reagent(/datum/reagent/medicine/rezadone, needs_metabolizing = TRUE))
 			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/rezadone)
-			if (!reagent_process_flags_valid(owner, reagent_instance))
-				return FALSE
-			decrease += rezadone_degradation_decrease
+			if ((reagent_instance.purity >= rezadone_minimum_purity) && reagent_process_flags_valid(owner, reagent_instance))
+				decrease += rezadone_degradation_decrease
+
+		if (owner.has_reagent(/datum/reagent/medicine/sansufentanyl, needs_metabolizing = TRUE))
+			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/sansufentanyl)
+			if (reagent_process_flags_valid(owner, reagent_instance))
+				decrease += sansufentanyl_degradation_decrease
+
+	if (owner.has_reagent(/datum/reagent/eigenstate))
+		decrease += eigenstasium_degradation_decrease
+
+	if (owner.has_reagent(/datum/reagent/medicine/strange_reagent, needs_metabolizing = TRUE))
+		var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/strange_reagent)
+		if (reagent_process_flags_valid(owner, reagent_instance))
+			decrease += strange_reagent_degradation_decrease
+
 
 	return (decrease * get_passive_degradation_decrease_mult())
 
@@ -248,7 +272,7 @@
 		else
 			current_degradation_level = DEGRADATION_LEVEL_CRITICAL
 
-	if (send_reminder_if_changed && (old_level != current_degradation_level))
+	if (send_reminder_if_changed && !final_death_delivered && (old_level != current_degradation_level))
 		send_reminder(FALSE)
 
 // EFFECTS
@@ -285,7 +309,12 @@
 	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
 	var/minimum_stamina_damage = max_stamina_damage * percent_to_max
 
-	if (owner.staminaloss >= minimum_stamina_damage)
+	if (minimum_stamina_damage <= 0)
+		return
+	if (owner.staminaloss > minimum_stamina_damage)
+		return
+	else if (owner.staminaloss == minimum_stamina_damage)
+		owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
 		return
 
 	var/final_adjustment = (minimum_stamina_damage - owner.staminaloss)
@@ -348,7 +377,7 @@
 /// Returns a large string intended for use at the bottom of health analyzers.
 /datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_info()
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
-	var/message = span_bolddanger("\nSubject suffers from mortality-induced resonance instability.")
+	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
 	if (final_death_delivered)
 		message += span_purple("<i> Neural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
 		return message
@@ -365,7 +394,14 @@
 	if (base_degradation_on_death)
 		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
 	if (owner_organic && rezadone_degradation_decrease)
-		message += span_danger("\nRezadone will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
+		message += span_danger("\nRezadone of purity at or above <i>[rezadone_minimum_purity]</i> will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
+	if (owner_organic && strange_reagent_degradation_decrease)
+		message += span_danger("\nStrange reagent will reduce degradation by [span_blue("[strange_reagent_degradation_decrease]")] per second when metabolized.")
+	if (owner_organic && sansufentanyl_degradation_decrease)
+		message += span_danger("\nSansufentanyl will reduce degradation by [span_blue("[sansufentanyl_degradation_decrease]")] per second when metabolized.")
+	if (eigenstasium_degradation_decrease)
+		message += span_danger("\nEigenstasium will reduce degradation by [span_blue("[eigenstasium_degradation_decrease]")] per second.")
+
 	message += span_danger("\nAll degradation reduction can be [span_blue("expedited")] by [span_blue("resting, sleeping, or being buckled to something comfortable")].")
 
 	if (permakill_if_at_max_degradation)
@@ -422,6 +458,11 @@
 
 	permakill_if_at_max_degradation = victim_prefs.read_preference(/datum/preference/toggle/death_consequences/permakill_at_max)
 	force_death_if_permakilled = victim_prefs.read_preference(/datum/preference/toggle/death_consequences/force_death_if_permakilled)
+
+	rezadone_degradation_decrease = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/rezadone_living_degradation_reduction)
+	strange_reagent_degradation_decrease = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/strange_reagent_degradation_reduction)
+	sansufentanyl_degradation_decrease = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/sansufentanyl_living_degradation_reduction)
+	eigenstasium_degradation_decrease = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/eigenstasium_degradation_reduction)
 
 	update_effects()
 

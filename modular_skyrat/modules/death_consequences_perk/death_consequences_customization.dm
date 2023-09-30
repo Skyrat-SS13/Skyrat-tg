@@ -111,6 +111,33 @@
 /datum/preference/numeric/death_consequences/rezadone_living_degradation_reduction/create_default_value()
 	return DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
 
+/datum/preference/numeric/death_consequences/strange_reagent_degradation_reduction
+	savefile_key = "dc_strange_reagent_degradation_reduction"
+
+	minimum = 0
+	maximum = 500
+
+/datum/preference/numeric/death_consequences/strange_reagent_degradation_reduction/create_default_value()
+	return DEATH_CONSEQUENCES_DEFAULT_STRANGE_REAGENT_DEGRADATION_REDUCTION
+
+/datum/preference/numeric/death_consequences/sansufentanyl_living_degradation_reduction
+	savefile_key = "dc_sansufentanyl_living_degradation_reduction"
+
+	minimum = 0
+	maximum = 500
+
+/datum/preference/numeric/death_consequences/sansufentanyl_living_degradation_reduction/create_default_value()
+	return DEATH_CONSEQUENCES_DEFAULT_SANSUFENTANYL_DEGRADATION_REDUCTION
+
+/datum/preference/numeric/death_consequences/eigenstasium_degradation_reduction
+	savefile_key = "dc_eigenstasium_degradation_reduction"
+
+	minimum = 0
+	maximum = 5000
+
+/datum/preference/numeric/death_consequences/eigenstasium_degradation_reduction/create_default_value()
+	return DEATH_CONSEQUENCES_DEFAULT_EIGENSTASIUM_DEGRADATION_REDUCTION
+
 /datum/preference/numeric/death_consequences/crit_threshold_reduction_min_percent_of_max
 	savefile_key = "dc_crit_threshold_reduction_min_percent_of_max"
 
