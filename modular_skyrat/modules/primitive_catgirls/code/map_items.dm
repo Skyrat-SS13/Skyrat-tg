@@ -26,12 +26,18 @@
 		can even catch a glimpse of the odd fish darting through the water."
 	baseturfs = /turf/open/openspace/icemoon
 	initial_gas_mix = "ICEMOON_ATMOS"
+	/// Holder for the steam particles that show up sometimes
+	var/obj/effect/abstract/particle_holder/particle_effect
 
 /turf/open/water/icebox_fishable/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/icecat_hot_spring)
 	if(prob(30))
-		particles = new /particles/hotspring_steam
+		particle_effect = new(src, /particles/hotspring_steam)
+
+/turf/open/water/icebox_fishable/Destroy()
+	QDEL_NULL(particle_effect)
+	return ..()
 
 /turf/open/water/icebox_fishable/Entered(atom/movable/arrived)
 	..()
