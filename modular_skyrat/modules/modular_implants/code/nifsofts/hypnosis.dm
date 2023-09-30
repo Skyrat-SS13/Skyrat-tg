@@ -11,12 +11,10 @@
 
 /datum/action/innate/nif_hypnotize
 	name = "Hypnotize"
-	slime_restricted =  FALSE
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 	button_icon_state = "hypnotize"
-	shapeshift_text = "closes their eyes to focus, their body subtly shifting and contorting."
 
 /datum/action/innate/nif_hypnotize/Activate()
 	var/mob/living/carbon/human/user = owner
@@ -24,7 +22,7 @@
 		return FALSE
 
 	var/mob/living/carbon/human/target_human = user.pulling
-	if(!istype(target_human) || user.grab_state < GRAB_AGRESSIVE)
+	if(!istype(target_human) || user.grab_state < GRAB_AGGRESSIVE)
 		to_chat(user, span_warning("You need to aggressively grab someone to hypnotize them."))
 		return FALSE
 
@@ -34,7 +32,7 @@
 
 	to_chat(user, span_notice("You begin to place [target_human] into a hypnotic trance."))
 
-	if(!do_mob(user, target_human, 12 SECONDS))
+	if(!do_after(user, 12 SECONDS, target_human))
 		return FALSE
 
 	var/choice = tgui_alert(target_human, "Do you belive in hypnosis? (This will allow [user] to issue hypnotic suggestions.)", "Hypnosis", list("Yes", "No"))
