@@ -308,12 +308,13 @@
 	var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
 	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
 	var/minimum_stamina_damage = max_stamina_damage * percent_to_max
+	// need to use a buffer because of some imprecision i noticed
 
 	if (minimum_stamina_damage <= 0)
 		return
-	if (owner.staminaloss > minimum_stamina_damage)
+	if (owner.staminaloss > (minimum_stamina_damage + 1))
 		return
-	else if (owner.staminaloss == minimum_stamina_damage)
+	else if ((owner.staminaloss >= (minimum_stamina_damage - 1)) && (owner.staminaloss <= (minimum_stamina_damage + 1)))
 		owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
 		return
 
