@@ -46,7 +46,9 @@
 /// Proc that checks if the gate is open or not, then closes/opens the gate repsectively
 /obj/structure/railing/wooden_fencing/gate/proc/open_or_close(mob/user)
 	if(!user.can_interact_with(src))
+		balloon_alert(user, "can't interact")
 		return
+	opened != opened
 	set_density(!opened)
 	icon_state = "[opened ? "gate_open" : "gate"]"
 	update_appearance(UPDATE_ICON)
