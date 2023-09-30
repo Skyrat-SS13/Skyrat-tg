@@ -92,6 +92,8 @@
 	var/list/loaded_nifsofts = list()
 	///What programs come already installed on the NIF?
 	var/list/preinstalled_nifsofts = list(/datum/nifsoft/soul_poem)
+	///What programs do we want to carry between rounds?
+	var/list/persistent_nifsofts = list()
 	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product."
 
@@ -147,8 +149,8 @@
 	linked_mob.AddComponent(/datum/component/nif_examine)
 	RegisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
-	if(preinstalled_nifsofts)
-		send_message("Loading preinstalled NIFSofts, please wait...")
+	if(preinstalled_nifsofts || persistent_nifsofts)
+		send_message("Loading preinstalled and stored NIFSofts, please wait...")
 		addtimer(CALLBACK(src, PROC_REF(install_preinstalled_nifsofts)), 3 SECONDS)
 
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
@@ -173,6 +175,10 @@
 
 	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
 		new preinstalled_nifsoft(src)
+
+	for(var/stored_nifsoft in persistent_nifsofts)
+		var/datum/nifsoft/new_stored_nifsoft = new stored_nifsoft(src)
+		new_stored_nifsoft.keep_installed = TRUE
 
 	return TRUE
 
