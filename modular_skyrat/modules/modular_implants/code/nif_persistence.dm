@@ -15,6 +15,8 @@
 	var/nif_is_calibrated
 	/// How many rewards points does the NIF have stored on it?
 	var/stored_rewards_points
+	/// A string containing programs that are transfered from one round to the next.
+	var/persistent_nifsofts
 
 /// Saves the NIF data for a individual user.
 /mob/living/carbon/human/proc/save_nif_data(datum/modular_persistence/persistence, remove_nif = FALSE)
@@ -51,14 +53,19 @@
 	persistence.stored_rewards_points = installed_nif.rewards_points
 
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
-
 	persistence.nif_examine_text = examine_component?.nif_examine_text
+
+	var/persistent_nifsoft_paths = ""  // We need to convert all of the paths in the list into a single string
 	for(var/datum/nifsoft/nifsoft as anything in installed_nif.loaded_nifsofts)
-		if(!nifsoft.persistence)
+		if(nifsoft.persistence)
+			nifsoft.save_persistence_data(persistence)
+
+		if(!nifsoft.able_to_keep || !nifsoft.keep_installed)
 			continue
 
-		nifsoft.save_persistence_data(persistence)
+		persistent_nifsoft_paths += "&[(nifsoft.type)]"
 
+	persistence.persistent_nifsofts = persistent_nifsoft_paths
 
 /// Loads the NIF data for an individual user.
 /mob/living/carbon/human/proc/load_nif_data(datum/modular_persistence/persistence)
@@ -74,6 +81,16 @@
 	new_nif.current_theme = persistence.nif_theme
 	new_nif.is_calibrated = persistence.nif_is_calibrated
 	new_nif.rewards_points = persistence.stored_rewards_points
+
+	var/list/persistent_nifsoft_paths = list()
+	for(var/text as anything in splittext(persistence.persistent_nifsofts, "&"))
+		var/datum/nifsoft/nifsoft_to_add = text2path(text)
+		if(!ispath(nifsoft_to_add, /datum/nifsoft) || !initial(nifsoft_to_add.able_to_keep))
+			continue
+
+		persistent_nifsoft_paths.Add(nifsoft_to_add)
+
+	new_nif.persistent_nifsofts = persistent_nifsoft_paths.Copy()
 	new_nif.Insert(src)
 
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)

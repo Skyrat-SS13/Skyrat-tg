@@ -762,6 +762,8 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
 /obj/item/storage/belt/holster/detective
@@ -785,6 +787,8 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
 /*
