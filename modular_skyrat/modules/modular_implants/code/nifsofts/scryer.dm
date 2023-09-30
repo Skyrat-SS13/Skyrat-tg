@@ -12,17 +12,17 @@
 	buying_category = NIFSOFT_CATEGORY_UTILITY
 	ui_icon = "video"
 	/// What is the scryer currently associated with the NIFSoft?
-	var/obj/item/clothing/neck/link_scryer/loaded/nifsoft/linked_scyer
+	var/obj/item/clothing/neck/link_scryer/loaded/nifsoft/linked_scryer
 
 /datum/nifsoft/scryer/New()
 	. = ..()
-	linked_scyer = new (parent_nif.resolve())
-	linked_scyer.parent_nifsoft = WEAKREF(src)
-	linked_scyer.label = linked_mob.name
+	linked_scryer = new (parent_nif.resolve())
+	linked_scryer.parent_nifsoft = WEAKREF(src)
+	linked_scryer.label = linked_mob.name
 
 /datum/nifsoft/scryer/Destroy()
 	if(!QDELETED(linked_scryer))
-		QDEL_NULL(linked_scyer)
+		QDEL_NULL(linked_scryer)
 
 	return ..()
 
@@ -32,10 +32,10 @@
 		return FALSE
 
 	if(!active)
-		if(linked_scyer)
+		if(linked_scryer)
 			var/parent_resolved = parent_nif.resolve()
 			if(parent_resolved)
-				linked_mob.transferItemToLoc(linked_scyer, parent_resolved, TRUE)
+				linked_mob.transferItemToLoc(linked_scryer, parent_resolved, TRUE)
 		return TRUE
 
 	if(linked_mob.handcuffed)
@@ -43,7 +43,7 @@
 		activate()
 		return FALSE
 
-	if(!linked_mob.equip_to_slot_if_possible(linked_scyer, ITEM_SLOT_NECK)) //This sends out a message to the mob if it can't be put on.
+	if(!linked_mob.equip_to_slot_if_possible(linked_scryer, ITEM_SLOT_NECK)) //This sends out a message to the mob if it can't be put on.
 		activate()
 		return FALSE
 
@@ -71,7 +71,7 @@
 	if(parent_nifsoft)
 		var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resolve()
 		if(!QDELETED(resolved_nifsoft))
-			resolved_nifsoft.linked_scyer = null
+			resolved_nifsoft.linked_scryer = null
 
 	return ..()
 
