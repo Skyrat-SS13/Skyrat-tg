@@ -68,7 +68,7 @@
 	cell = new /obj/item/stock_parts/cell/infinite/nif_cell(src)
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/Destroy()
-	var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resovle()
+	var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resolve()
 	if(resolved_nifsoft)
 		resolved_nifsoft.linked_scyer = null
 
