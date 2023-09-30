@@ -1162,6 +1162,8 @@
 	use_static = TRUE
 
 
+
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 //FEMALE UNDERWEAR
 /datum/sprite_accessory/underwear/female_bikini
 	name = "Bikini"
@@ -1263,6 +1265,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
+*/ // SKYRAT EDIT END
 
 ////////////////////////////
 // Undershirt Definitions //
@@ -1458,7 +1461,7 @@
 	name = "Short-sleeved Shirt (White)"
 	icon_state = "whiteshortsleeve"
 	gender = NEUTER
-
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Sports Bra"
 	icon_state = "sports_bra"
@@ -1468,7 +1471,7 @@
 	name = "Sports Bra (Alt)"
 	icon_state = "sports_bra_alt"
 	gender = NEUTER
-
+*/ // SKYRAT EDIT END
 /datum/sprite_accessory/undershirt/blueshirtsport
 	name = "Sports Shirt (Blue)"
 	icon_state = "blueshirtsport"

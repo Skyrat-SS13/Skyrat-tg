@@ -22,8 +22,7 @@
 
 /datum/nifsoft/scryer/Destroy()
 	if(linked_scyer)
-		qdel(linked_scyer)
-		linked_scyer = null
+		QDEL_NULL(linked_scyer)
 
 	return ..()
 
@@ -34,7 +33,9 @@
 
 	if(!active)
 		if(linked_scyer)
-			linked_mob.transferItemToLoc(linked_scyer, parent_nif.resolve(), TRUE)
+			var/parent_resolved = parent_nif.resolve()
+			if(parent_resolved)
+				linked_mob.transferItemToLoc(linked_scyer, parent_resolved, TRUE)
 		return TRUE
 
 	if(linked_mob.handcuffed)
@@ -62,8 +63,7 @@
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/Initialize(mapload)
 	. = ..()
 	if(cell)
-		qdel(cell)
-		cell = null
+		QDEL_NULL(cell)
 
 	cell = new /obj/item/stock_parts/cell/infinite/nif_cell(src)
 
@@ -77,7 +77,7 @@
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/examine(mob/user)
 	. = ..()
-	. += span_notice("The MODlink ID is [mod_link.id], frequency is [mod_link.frequency || "unset"]. <b>Right-click</b> with multitool to copy/imprint frequency.")
+	. += span_notice("The MODlink ID is [mod_link.id], frequency is [mod_link.frequency || "unset"]. <b>Right-click</b> with a multitool to copy/imprint the frequency.")
 	. += span_notice("<b>Right-click</b> with an empty hand to change the name.")
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/equipped(mob/living/user, slot)
@@ -93,7 +93,7 @@
 	return TRUE
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/screwdriver_act(mob/living/user, obj/item/tool)
-	balloon_alert(user, "cell non-removable")
+	balloon_alert(user, "cell non-removable!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/attack_hand_secondary(mob/user, list/modifiers)
@@ -102,7 +102,7 @@
 		balloon_alert(user, "invalid name!")
 		return
 	label = new_label
-	balloon_alert(user, "name set")
+	balloon_alert(user, "name set!")
 	update_name()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

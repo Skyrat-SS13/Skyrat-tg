@@ -100,7 +100,7 @@
 			if(SPT_PROB(10, seconds_per_tick))
 				var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
 				if(wound_area)
-					var/datum/wound/slash/moderate/rotting_wound = new
+					var/datum/wound/slash/flesh/moderate/rotting_wound = new
 					rotting_wound.apply_wound(wound_area)
 				host.emote(pick(list("cough", "sneeze", "scream")))
 	if(timer_id)
