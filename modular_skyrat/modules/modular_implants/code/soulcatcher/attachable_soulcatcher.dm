@@ -102,6 +102,7 @@
 	var/list/current_souls = linked_soulcatcher.get_current_souls()
 	if(current_souls)
 		for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
+			var/datum/soulcatcher_room/current_room = soul.current_room.resolve()
 			if(istype(current_room))
 				current_room.transfer_soul(soul, target_room)
 			current_room.transfer_soul(soul, target_room)
