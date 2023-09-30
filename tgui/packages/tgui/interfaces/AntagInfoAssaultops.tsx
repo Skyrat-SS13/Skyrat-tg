@@ -39,6 +39,7 @@ type Info = {
   goldeneye_keys: GoldeneyeKeys[];
 };
 
+// SKYRAT ADDITION <Rules />
 export const AntagInfoAssaultops = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { data } = useBackend<Info>(context);
@@ -116,6 +117,9 @@ export const AntagInfoAssaultops = (props, context) => {
             </Stack>
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
+          </Stack.Item>
+          <Stack.Item>
+            <Rules />
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -236,3 +240,44 @@ const KeyPrintout = (props, context) => {
     </Section>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          '- You are not in a permanently mechanical state until your presence has been announced, specifically.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- Your goal is the theft of heads of staff. Under no circumstances should you just hang around to gun people down.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- You should only use the big fancy laser once. Doing so is considered a victory.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- SSD Heads of staff suck, but leave them alone. You are allowed to ahelp and ask if any are SSD.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- If a Head of Staff goes SSD/Disconnects after being abducted, you may extract it and leave them somewhere.'
+        }
+      </Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          "There are no metaprotections for the Golden Eye Operatives, outside of determining whether they’re Nukies or GEO’s. Heads of staff are expected to guard themselves closely after determining that they’re GEO’s, however."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]

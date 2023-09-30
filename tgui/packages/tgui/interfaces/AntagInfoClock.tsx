@@ -6,11 +6,13 @@ type Info = {
   antag_name: string;
 };
 
+// SKYRAT ADDITION <Rules />
+// SKYRAT EDIT change height from 250 to 350
 export const AntagInfoClock = (props, context) => {
   const { data } = useBackend<Info>(context);
   const { antag_name } = data;
   return (
-    <Window width={620} height={250} theme="clockwork">
+    <Window width={620} height={350} theme="clockwork">
       <Window.Content>
         <Section scrollable fill>
           <Stack vertical>
@@ -18,6 +20,9 @@ export const AntagInfoClock = (props, context) => {
               <Icon name={'cog'} rotation={0} spin />
               {' You are the ' + antag_name + '! '}
               <Icon name={'cog'} rotation={35} spin />
+            </Stack.Item>
+            <Stack.Item>
+              <Rules />
             </Stack.Item>
             <Stack.Item>
               <ObjectivePrintout />
@@ -47,3 +52,34 @@ const ObjectivePrintout = (props, context) => {
     </Stack>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          '- Do not be surprised if you get arrested for doing clock-work stuff. '
+        }
+      </Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          '- The chaplain and curator know everything, and that ratvar himself is out-of-action for the foreseeable future.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          "- Elsewise, your characters can have a baseline knowledge of the cult, that they're as a baseline usually not immediately-aggressive, and more reactive then proactive."
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          "- Objects used by the cult (cogs, the jud-visor) are all up to common sense, what it looks like it's doing, it's probably doing."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]

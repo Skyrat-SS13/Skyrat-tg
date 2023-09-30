@@ -52,6 +52,7 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
+// SKYRAT ADDITION <Rules />
 const IntroductionSection = (props, context) => {
   const { data, act } = useBackend<Info>(context);
   const { objectives, ascended, can_change_objective } = data;
@@ -62,6 +63,10 @@ const IntroductionSection = (props, context) => {
         <Section title="You are the Heretic!" fill fontSize="14px">
           <Stack vertical>
             <FlavorSection />
+            <Stack.Divider />
+            <Stack.Item>
+              <Rules />
+            </Stack.Item>
             <Stack.Divider />
             <GuideSection />
             <Stack.Divider />
@@ -340,3 +345,38 @@ export const AntagInfoHeretic = (props, context) => {
     </Window>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          '- Heretics capable of teleporting (Void/Fire) are beholden to the same uncontainable rules as everyone else.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {'- Confirmed Ascended Heretics are in a permanent mechanical state.'}
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- The Mask of Madness places you in a permanent mechanical state while worn.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- All Sickles are Confiscatable by security. They are literally weapons, regardless of their magic.'
+        }
+      </Stack.Item>
+      <Stack.Item>{'- You have to ahelp before ascending.'}</Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          "Heretics are very esoteric things. While magic is something that’s left to the individual to believe in, men in ominous robes wearing visibly pulsating, glowing amulets are probably something worth being suspicious of. Obvious weapons can be confiscated, of course, such as Sickles, Carving Knives, etc. What Heretics are fully capable of is only known to Chaplains, and Curators. Everyone who isn’t a Heretic, Chaplain, or Curator, does not know what Heretic equipment does, aside from what it’s visibly doing. Such as being a sickle. You can claim it’s magical, but, as to its purpose, not much more than that. Giant green runes and a room splattered in viscera and organs, glass shards, etc, should probably be reported to security. As should automatons made of flesh, spewing rust or literal hellfire. In the event you’re short a chaplain or curator, CC is a single message away."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]

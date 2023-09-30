@@ -38,6 +38,7 @@ type Info = {
   objectives: Objective[];
 };
 
+// SKYRAT ADDITION: SPECIAL RULES AND METAPROTECTIONS
 const IntroductionSection = (props, context) => {
   const { act, data } = useBackend<Info>(context);
   const { intro, objectives } = data;
@@ -47,6 +48,37 @@ const IntroductionSection = (props, context) => {
         <Stack.Item fontSize="25px">{intro}</Stack.Item>
         <Stack.Item grow>
           <ObjectivePrintout objectives={objectives} />
+        </Stack.Item>
+        <Stack.Item grow>
+          <Stack vertical>
+            <Stack.Item bold>Special Rules:</Stack.Item>
+            <Stack.Item >
+              {
+                "- Most of your actions should be focused around your objectives, or the people directly related to them, you shouldn't be going after randoms, or bombing medbay just to do it."
+              }
+            </Stack.Item>
+            <Stack.Item>
+              {
+                "- If you want to do something targeting a player in specific, a department at large, or the station at large, make an opfor, else-wise, opfors are only required for actions of high-intensity (see: breaking into engineering and stealing the protolathe), where as low intensity (emagging into engineering and printing jaws) doesn't"
+              }
+            </Stack.Item>
+            <Stack.Item>
+              {
+                "- Regardless of having very-forward objectives, you should be trying to generate as much RP as you can while doing them, even something as simple as 'steal the hand tele' can have a story spark from it with a bit of effort."
+              }
+            </Stack.Item>
+            <Stack.Item bold>Metaprotections:</Stack.Item>
+            <Stack.Item>
+              {
+                '- https://wiki.skyrat13.space/w/index.php/Contraband'
+              }
+            </Stack.Item>
+            <Stack.Item>
+              {
+                "- If it's not in contraband, it's either not illegal, or else-wise unknown, and should be treated as it appears."
+              }
+            </Stack.Item>
+          </Stack>
         </Stack.Item>
       </Stack>
     </Section>
@@ -218,11 +250,12 @@ const CodewordsSection = (props, context) => {
   );
 };
 
+// SKYRAT EDIT: change height from 580 to 650
 export const AntagInfoTraitor = (props, context) => {
   const { data } = useBackend<Info>(context);
   const { theme } = data;
   return (
-    <Window width={620} height={580} theme={theme}>
+    <Window width={620} height={650} theme={theme}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>

@@ -54,9 +54,11 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
+// SKYRAT ADDITION <Rules />
+// SKYRAT EDIT change height from 750 to 900
 export const AntagInfoChangeling = (props, context) => {
   return (
-    <Window width={720} height={750}>
+    <Window width={720} height={900}>
       <Window.Content
         style={{
           'backgroundImage': 'none',
@@ -64,6 +66,9 @@ export const AntagInfoChangeling = (props, context) => {
         <Stack vertical fill>
           <Stack.Item maxHeight={16}>
             <IntroductionSection />
+          </Stack.Item>
+          <Stack.Item>
+            <Rules />
           </Stack.Item>
           <Stack.Item grow={4}>
             <AbilitiesSection />
@@ -259,3 +264,32 @@ const VictimPatternsSection = (props, context) => {
     </Section>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          '- If people can prove you’re a changeling, you are immediately sentenced to being placed in Perma, or the most convenient containment. Afterwards, if you prove uncontainable, or particularly violent, you’re valid for round removal.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- Undeniable Proof of Changeling includes: Arm Blade, Tentacle Arm, Chitinous Armor, Ling Space Suit, Ling Shield, Horror Form, Digital Camo, Cryo Sting, Self-Revival, Regeneration, Unexplainable Fast Healing.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {'- Horror Forms are in a Permanently Mechanical state.'}
+      </Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          "Everyone knows that changelings are real. Some people can deny this if they want. Crew that can produce arm blades, or organic armor or weapons, or shapeshift into other people, should be reported to security with all haste. Security, Science, and Medical are all aware that Changelings can be suppressed with BZ gas. Everyone is aware of the abilities listed prior as Undeniable Proof of Changelings. Anything not listed is unknown to the entire crew."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]

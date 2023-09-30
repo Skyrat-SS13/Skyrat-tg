@@ -48,12 +48,14 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
+// SKYRAT ADDITION <Rules />
+// SKYRAT CHANGE height from 630 to 700
 export const AntagInfoWizard = (props, context) => {
   const { data, act } = useBackend<Info>(context);
   const { ritual, objectives, can_change_objective } = data;
 
   return (
-    <Window width={620} height={630} theme="wizard">
+    <Window width={620} height={700} theme="wizard">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -77,6 +79,9 @@ export const AntagInfoWizard = (props, context) => {
                 </Stack.Item>
                 <Stack.Item>
                   <RitualPrintout ritual={ritual} />
+                </Stack.Item>
+                <Stack.Item>
+                <Rules />
                 </Stack.Item>
               </Stack>
             </Section>
@@ -171,3 +176,34 @@ const RitualPrintout = (props: { ritual: GrandRitual }, context) => {
     </Box>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          "- Do not use the Ghost Ritual."
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          "- Do not stay on the Wizard Shuttle."
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          "- Do not use the Wizard Events without Admin permission."
+        }
+      </Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          "The chaplain knows that he’s immune to you. Botanists know that Holy Melons protect people from magic."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]

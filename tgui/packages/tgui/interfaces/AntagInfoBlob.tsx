@@ -14,6 +14,7 @@ type Data = {
 
 const BLOB_COLOR = '#556b2f';
 
+// SKYRAT ADDITION <Rules />
 export const AntagInfoBlob = (props, context) => {
   return (
     <Window width={400} height={550}>
@@ -25,6 +26,7 @@ export const AntagInfoBlob = (props, context) => {
           <Structures />
           <Minions />
           <ObjectiveDisplay />
+          <Rules />
         </Section>
       </Window.Content>
     </Window>
@@ -192,3 +194,29 @@ const ObjectiveDisplay = (props, context) => {
     </Collapsible>
   );
 };
+
+// [SKYRAT ADDITION BEGIN]
+const Rules = (props, context) => {
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Special Rules:</Stack.Item>
+      <Stack.Item>
+        {
+          '- You are not allowed to spawn within a screen-length of Atmos, an Engine, the Icebox AI area, Grav Gen, or Toxins. OR DORMS.'
+        }
+      </Stack.Item>
+      <Stack.Item>
+        {
+          '- You may not, as a Networked Fiber Blob, immediately rush any of the areas mentioned prior, or the Nuke.'
+        }
+      </Stack.Item>
+      <Stack.Item bold>Metaprotections:</Stack.Item>
+      <Stack.Item>
+        {
+          "You are the most well-known Antagonist in the game. You have no metaprotections. People can know as much about you as they wish to know, even down to your individual strains."
+        }
+      </Stack.Item>
+    </Stack>
+  );
+};
+// [SKYRAT ADDITION END]
