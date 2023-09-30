@@ -342,6 +342,7 @@
 
 	owner.investigate_log(log_message)
 	owner.visible_message(visible_message, ignored_mobs = self_message_target) // finally, send it
+	owner.balloon_alert_to_viewers("something terrible has happened...")
 	to_chat(self_message_target, self_message)
 
 /// Returns a large string intended for use at the bottom of health analyzers.
