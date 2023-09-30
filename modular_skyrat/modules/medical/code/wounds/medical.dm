@@ -17,11 +17,11 @@
 	owner?.update_bandage_overlays()
 
 /obj/item/stack/medical/gauze/Destroy()
-	var/mob/living/carbon/cached_owner = gauzed_bodypart?.owner
+	var/mob/living/carbon/previously_gauzed = gauzed_bodypart?.owner
 
 	. = ..()
 
-	cached_owner?.update_bandage_overlays()
+	previously_gauzed?.update_bandage_overlays()
 
 /**
  * rip_off() called when someone rips it off
@@ -97,17 +97,17 @@
 			return
 		if(!in_range(usr, gauzed_bodypart.owner))
 			return
-		var/mob/living/carbon/C = usr
-		var/self = (C == gauzed_bodypart.owner)
-		C.visible_message(span_notice("[C] begins removing [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s"] [gauzed_bodypart.name]..."))
-		if(!do_after(C, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target = gauzed_bodypart.owner))
+		var/mob/living/carbon/carbon_user = usr
+		var/self = (carbon_user == gauzed_bodypart.owner)
+		carbon_user.visible_message(span_notice("[carbon_user] begins removing [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s"] [gauzed_bodypart.name]..."))
+		if(!do_after(carbon_user, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target = gauzed_bodypart.owner))
 			return
 		if(QDELETED(src))
 			return
-		C.visible_message(span_notice("[C] removes [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."))
+		carbon_user.visible_message(span_notice("[carbon_user] removes [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."))
 		var/obj/item/gotten = rip_off()
-		if(gotten && !C.put_in_hands(gotten))
-			gotten.forceMove(get_turf(C))
+		if(gotten && !carbon_user.put_in_hands(gotten))
+			gotten.forceMove(get_turf(carbon_user))
 
 /// Returns the name of ourself when used in a "owner is [usage_prefix] by [name]" examine_more situation/
 /obj/item/stack/proc/get_gauze_description()
