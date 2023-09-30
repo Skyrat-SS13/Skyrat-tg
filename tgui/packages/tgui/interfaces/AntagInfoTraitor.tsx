@@ -52,7 +52,7 @@ const IntroductionSection = (props, context) => {
         <Stack.Item grow>
           <Stack vertical>
             <Stack.Item bold>Special Rules:</Stack.Item>
-            <Stack.Item >
+            <Stack.Item>
               {
                 "- Most of your actions should be focused around your objectives, or the people directly related to them, you shouldn't be going after randoms, or bombing medbay just to do it."
               }
@@ -69,9 +69,7 @@ const IntroductionSection = (props, context) => {
             </Stack.Item>
             <Stack.Item bold>Metaprotections:</Stack.Item>
             <Stack.Item>
-              {
-                '- https://wiki.skyrat13.space/w/index.php/Contraband'
-              }
+              {'- https://wiki.skyrat13.space/w/index.php/Contraband'}
             </Stack.Item>
             <Stack.Item>
               {

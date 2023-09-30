@@ -286,7 +286,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          "Everyone knows that changelings are real. Some people can deny this if they want. Crew that can produce arm blades, or organic armor or weapons, or shapeshift into other people, should be reported to security with all haste. Security, Science, and Medical are all aware that Changelings can be suppressed with BZ gas. Everyone is aware of the abilities listed prior as Undeniable Proof of Changelings. Anything not listed is unknown to the entire crew."
+          'Everyone knows that changelings are real. Some people can deny this if they want. Crew that can produce arm blades, or organic armor or weapons, or shapeshift into other people, should be reported to security with all haste. Security, Science, and Medical are all aware that Changelings can be suppressed with BZ gas. Everyone is aware of the abilities listed prior as Undeniable Proof of Changelings. Anything not listed is unknown to the entire crew.'
         }
       </Stack.Item>
     </Stack>

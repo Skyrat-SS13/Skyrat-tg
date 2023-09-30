@@ -274,7 +274,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          "There are no metaprotections for the Golden Eye Operatives, outside of determining whether they’re Nukies or GEO’s. Heads of staff are expected to guard themselves closely after determining that they’re GEO’s, however."
+          'There are no metaprotections for the Golden Eye Operatives, outside of determining whether they’re Nukies or GEO’s. Heads of staff are expected to guard themselves closely after determining that they’re GEO’s, however.'
         }
       </Stack.Item>
     </Stack>

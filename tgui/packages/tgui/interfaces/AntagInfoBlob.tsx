@@ -213,7 +213,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          "You are the most well-known Antagonist in the game. You have no metaprotections. People can know as much about you as they wish to know, even down to your individual strains."
+          'You are the most well-known Antagonist in the game. You have no metaprotections. People can know as much about you as they wish to know, even down to your individual strains.'
         }
       </Stack.Item>
     </Stack>
