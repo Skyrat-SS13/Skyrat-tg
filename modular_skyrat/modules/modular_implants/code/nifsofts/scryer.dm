@@ -67,6 +67,14 @@
 
 	cell = new /obj/item/stock_parts/cell/infinite/nif_cell(src)
 
+/obj/item/clothing/neck/link_scryer/loaded/nifsoft/Destroy()
+	var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resovle()
+	if(resolved_nifsoft)
+		resolved_nifsoft.linked_scyer = null
+
+
+	return ..()
+
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/examine(mob/user)
 	. = ..()
 	. += span_notice("The MODlink ID is [mod_link.id], frequency is [mod_link.frequency || "unset"]. <b>Right-click</b> with multitool to copy/imprint frequency.")
