@@ -239,7 +239,7 @@
 			return TRUE
 
 		if("delete_self")
-			if(tgui_alert(usr, "Are you sure you want to detatch the soulcatcher?", parent, list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Are you sure you want to detach the soulcatcher?", parent, list("Yes", "No")) != "Yes")
 				return FALSE
 
 			remove_self()

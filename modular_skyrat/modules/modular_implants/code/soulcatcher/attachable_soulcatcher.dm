@@ -45,7 +45,7 @@
 	var/datum/soulcatcher_room/target_room = dropped_soulcatcher.soulcatcher_rooms[1]
 	var/list/current_souls = get_current_souls()
 
-	if(current_souls) // If we have souls inside of here, they should be transfered to the new object
+	if(current_souls) // If we have souls inside of here, they should be transferred to the new object
 		for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
 			var/datum/soulcatcher_room/current_room = soul.current_room.resolve()
 			current_room.transfer_soul(soul, target_room)
