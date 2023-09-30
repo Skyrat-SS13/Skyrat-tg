@@ -137,7 +137,7 @@
 			soul_list += soul
 
 	if(!length(soul_list))
-		to_chat(user, span_warning("There are no souls that can be transfered to [target_mob]."))
+		to_chat(user, span_warning("There are no souls that can be transferred to [target_mob]."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/mob/living/soulcatcher_soul/chosen_soul = tgui_input_list(user, "Choose a soul to transfer into the body", name, soul_list)

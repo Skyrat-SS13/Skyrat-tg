@@ -1,6 +1,6 @@
 /obj/item/rsd_interface
 	name = "RSD Phylactery"
-	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum' RSDs, much like the brains and CPUs they emulate, employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers.."
+	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum', RSDs--much like the brains and CPUs they emulate--employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers.."
 	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
 	icon_state = "implanter1"
 	inhand_icon_state = "syringe_0"
@@ -34,7 +34,7 @@
 /// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
 /datum/element/rsd_interface/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_cyan("Souls can be transfered to [source], assuming it is inert.")
+	examine_text += span_cyan("Souls can be transferred to [source], assuming it is inert.")
 
 /datum/element/rsd_interface/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
