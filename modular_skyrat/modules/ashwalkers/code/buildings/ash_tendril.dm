@@ -99,7 +99,7 @@
 			viewable_living.gib()
 			continue
 
-		if(viewable_living.mind?.has_antag_datum(/datum/antagonist/ashwalker) && (viewable_living.key || viewable_living.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
+		if(viewable_living.mind?.has_antag_datum(/datum/antagonist/ashwalker) && (viewable_living.ckey || viewable_living.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
 			revive_ashwalker(viewable_living)
 			continue
 
