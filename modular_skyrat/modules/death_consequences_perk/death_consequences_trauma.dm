@@ -193,7 +193,7 @@
 		decrease += base_degradation_reduction_per_second_while_alive
 
 		if (owner.has_reagent(/datum/reagent/medicine/rezadone, needs_metabolizing = TRUE))
-			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/toxin/formaldehyde)
+			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/rezadone)
 			if (!reagent_process_flags_valid(owner, reagent_instance))
 				return FALSE
 			decrease += rezadone_degradation_decrease
@@ -234,7 +234,7 @@
 		update_degradation_level()
 		update_effects()
 
-/datum/brain_trauma/severe/death_consequences/proc/update_degradation_level(send_reminder_if_changed)
+/datum/brain_trauma/severe/death_consequences/proc/update_degradation_level(send_reminder_if_changed = TRUE)
 	var/old_level = current_degradation_level
 	switch (current_degradation / max_degradation)
 		if (0 to 0.2)
@@ -316,7 +316,7 @@
 	if (owner.stat == DEAD)
 		visible_message = span_revenwarning("The air around [owner] seems to ripple for a moment.")
 		self_message = span_revendanger("The metaphorical \"tether\" binding you to your body finally gives way. You try holding on, but you soon find yourself \
-		falling into a deep, deep abyss...")
+		falling into a deep, dark abyss...")
 		log_message = "has been permanently ghosted by their resonance instability quirk."
 	else
 		if (force_death_if_permakilled) // kill them - a violent and painful end
@@ -357,9 +357,9 @@
 	if (base_degradation_reduction_per_second_while_alive)
 		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_green("[base_degradation_reduction_per_second_while_alive] per second")].")
 	if (base_degradation_per_second_while_dead)
-		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second.")].")
+		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second")].")
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
-			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]x")].")
+			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]")]</b>x.")
 		if (on_stasis_death_degradation_mult < 1)
 			message += span_danger(" Stasis may be effective in slowing, or even stopping, degradation.")
 	if (base_degradation_on_death)
