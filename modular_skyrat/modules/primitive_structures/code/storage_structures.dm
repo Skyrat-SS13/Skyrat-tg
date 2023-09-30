@@ -13,7 +13,7 @@
 		return
 
 	object.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/3), world.icon_size/3)
-	object.pixel_y = text2num(LAZYACCESS(modifiers, ICON_Y)) > 16 ? 8 : -6
+	object.pixel_y = text2num(LAZYACCESS(modifiers, ICON_Y)) > 16 ? 10 : -4
 
 // Barrel but it works like a crate
 
