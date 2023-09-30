@@ -100,7 +100,6 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 			balloon_alert(usr, "requires head of staff access!")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 			return
-
 		if(department_order && (department_order in SSshuttle.shopping_list))
 			GLOB.department_order_cooldowns[type] = 0
 			SSshuttle.shopping_list -= department_order
@@ -142,6 +141,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 		if(GLOB.areas_by_type[delivery_area_type])
 			chosen_delivery_area = delivery_area_type
 			break
+
 	department_order = new(pack, name, rank, ckey, "", null, chosen_delivery_area, null)
 	SSshuttle.shopping_list += department_order
 	if(!already_signalled)
