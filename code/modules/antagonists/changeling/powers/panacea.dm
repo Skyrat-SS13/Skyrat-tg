@@ -14,7 +14,9 @@
 	var/list/bad_organs = list(
 		user.get_organ_by_type(/obj/item/organ/internal/empowered_borer_egg), // SKYRAT EDIT ADDITION
 		user.get_organ_by_type(/obj/item/organ/internal/body_egg),
-		user.get_organ_by_type(/obj/item/organ/internal/zombie_infection))
+		user.get_organ_by_type(/obj/item/organ/internal/legion_tumour),
+		user.get_organ_by_type(/obj/item/organ/internal/zombie_infection),
+	)
 
 
 	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
