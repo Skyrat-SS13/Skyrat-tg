@@ -43,7 +43,6 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/utility = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
-		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
 		/obj/item/clothing/glasses/hud/gun_permit = 5, //from company imports module
 		/obj/item/storage/backpack/messenger = 3,
@@ -62,6 +61,9 @@
 		/obj/item/clothing/mask/breath = 2,
 		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/syringe = 2,
+		/obj/item/bonesetter = 2, // for dislocations
+		/obj/item/stack/medical/gauze = 4, // for ALL wounds
+		/obj/item/healthanalyzer/no_medibot = 2, // disallows medibot use so its not wasted immediately on medibots
 		/obj/item/storage/backpack/science/robo = 2,
 		/obj/item/storage/backpack/satchel/science/robo = 2,
 		/obj/item/storage/backpack/duffelbag/science/robo = 2,

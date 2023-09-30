@@ -53,16 +53,6 @@
 	desc = "A comfortable jacket in a neutral black"
 	icon_state = "off_dep_jacket"
 
-/obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/gorka/supply	//Put here for sorting purposes, considering the cargo gorkas are in the utility file too. The base Gorka and Jacket (to be added later) will most likely be elsewhere
-	name = "supply gorka jacket"
-	desc = "A snug jacket to wear over your gorka. This one matches with supply's colors."
-	icon_state = "gorka_jacket_supply"
-
 /obj/item/clothing/suit/toggle/jacket/supply/head
 	name = "quartermaster's jacket"
 	desc = "Even if people refuse to recognize you as a head, they can recognize you as a badass."

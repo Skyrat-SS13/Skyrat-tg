@@ -77,6 +77,7 @@
 	var/list/data = list()
 	var/list/descriptions = list()
 	var/list/categories = list()
+	var/list/display_categories = list()
 	var/list/colors = list()
 	for(var/datum/interaction/interaction in interactions)
 		if(!can_interact(interaction, user))
@@ -85,13 +86,15 @@
 			categories[interaction.category] = list(interaction.name)
 		else
 			categories[interaction.category] += interaction.name
+			var/list/sorted_category = sort_list(categories[interaction.category])
+			categories[interaction.category] = sorted_category
 		descriptions[interaction.name] = interaction.description
 		colors[interaction.name] = interaction.color
-	data["categories"] = list()
 	data["descriptions"] = descriptions
 	data["colors"] = colors
 	for(var/category in categories)
-		data["categories"] += category
+		display_categories += category
+	data["categories"] = sort_list(display_categories)
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
