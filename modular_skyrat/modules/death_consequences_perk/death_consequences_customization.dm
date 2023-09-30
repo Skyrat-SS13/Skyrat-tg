@@ -60,7 +60,7 @@
 /datum/preference/numeric/death_consequences/living_degradation_recovery_per_second
 	savefile_key = "dc_living_degradation_recovery_per_second"
 
-	minimum = 0
+	minimum = -100 // if you want, you can just die slowly
 	maximum = 1000
 
 /datum/preference/numeric/death_consequences/living_degradation_recovery_per_second/create_default_value()
@@ -90,7 +90,7 @@
 	minimum = 0
 	maximum = 1
 
-/datum/preference/numeric/death_consequences/formeldahyde_death_degradation_mult/create_default_value()
+/datum/preference/numeric/death_consequences/formeldahyde_dead_degradation_mult/create_default_value()
 	return 0
 
 /datum/preference/numeric/death_consequences/stasis_dead_degradation_mult
@@ -111,6 +111,15 @@
 /datum/preference/numeric/death_consequences/rezadone_living_degradation_reduction/create_default_value()
 	return DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
 
+/datum/preference/numeric/death_consequences/crit_threshold_reduction_min_percent_of_max
+	savefile_key = "dc_crit_threshold_reduction_min_percent_of_max"
+
+	minimum = 0
+	maximum = 100
+
+/datum/preference/numeric/death_consequences/crit_threshold_reduction_min_percent_of_max/create_default_value()
+	return 0 // percent
+
 /datum/preference/numeric/death_consequences/crit_threshold_reduction_percent_of_max
 	savefile_key = "dc_crit_threshold_reduction_percent_of_max"
 
@@ -120,14 +129,14 @@
 /datum/preference/numeric/death_consequences/crit_threshold_reduction_percent_of_max/create_default_value()
 	return 100 // percent
 
-/datum/preference/numeric/death_consequences/crit_threshold_reduction_per_percent_to_max
-	savefile_key = "dc_crit_threshold_reduction_per_percent_to_max"
+/datum/preference/numeric/death_consequences/max_crit_threshold_reduction
+	savefile_key = "dc_max_crit_threshold_reduction"
 
 	minimum = 0
-	maximum = 100
+	maximum = MAX_LIVING_HEALTH
 
-/datum/preference/numeric/death_consequences/crit_threshold_reduction_per_percent_to_max/create_default_value()
-	return 1 // percent
+/datum/preference/numeric/death_consequences/max_crit_threshold_reduction/create_default_value()
+	return 30
 
 /datum/preference/numeric/death_consequences/stamina_damage_percent_of_max
 	savefile_key = "dc_stamina_damage_percent_of_max"
@@ -136,7 +145,7 @@
 	maximum = 100
 
 /datum/preference/numeric/death_consequences/stamina_damage_percent_of_max/create_default_value()
-	return 80 // percent
+	return 100 // percent
 
 /datum/preference/numeric/death_consequences/stamina_damage_min_percent_of_max
 	savefile_key = "dc_stamina_damage_min_percent_of_max"
@@ -147,14 +156,14 @@
 /datum/preference/numeric/death_consequences/stamina_damage_min_percent_of_max/create_default_value()
 	return 20 // percent
 
-/datum/preference/numeric/death_consequences/stamina_damage_per_percent_to_max
-	savefile_key = "dc_stamina_damage_per_percent_to_max"
+/datum/preference/numeric/death_consequences/max_stamina_damage
+	savefile_key = "dc_max_stamina_damage"
 
 	minimum = 0
-	maximum = 100
+	maximum = 150
 
-/datum/preference/numeric/death_consequences/stamina_damage_per_percent_to_max/create_default_value()
-	return 0.3
+/datum/preference/numeric/death_consequences/max_stamina_damage/create_default_value()
+	return 80
 
 // BOOLEANS
 

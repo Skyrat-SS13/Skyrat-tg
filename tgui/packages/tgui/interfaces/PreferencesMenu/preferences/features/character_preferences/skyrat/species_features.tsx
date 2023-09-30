@@ -918,6 +918,12 @@ export const dc_dead_degradation_per_second: Feature<number> = {
   component: FeatureNumberInput,
 };
 
+export const dc_degradation_on_death: Feature<number> = {
+  name: 'DC Deg. on death',
+  description: 'Title.',
+  component: FeatureNumberInput,
+};
+
 export const dc_formeldahyde_dead_degradation_mult: Feature<number> = {
   name: 'DC Passive death deg. formadahyde mult',
   description:
@@ -939,14 +945,20 @@ export const dc_rezadone_living_degradation_reduction: Feature<number> = {
   component: FeatureNumberInput,
 };
 
+export const dc_crit_threshold_reduction_min_percent_of_max: Feature<number> = {
+  name: 'DC Crit Threshold min deg.',
+  description: 'TODO.',
+  component: FeatureNumberInput,
+};
+
 export const dc_crit_threshold_reduction_percent_of_max: Feature<number> = {
   name: 'DC Crit Threshold max deg.',
   description: 'TODO.',
   component: FeatureNumberInput,
 };
 
-export const dc_crit_threshold_reduction_per_percent_to_max: Feature<number> = {
-  name: 'DC Crit Threshold ratio',
+export const dc_max_crit_threshold_reduction: Feature<number> = {
+  name: 'DC Crit Threshold max reduction',
   description: 'TODO.',
   component: FeatureNumberInput,
 };
@@ -963,8 +975,8 @@ export const dc_stamina_damage_percent_of_max: Feature<number> = {
   component: FeatureNumberInput,
 };
 
-export const dc_stamina_damage_per_percent_to_max: Feature<number> = {
-  name: 'DC Stamina Damage ratio',
+export const dc_max_stamina_damage: Feature<number> = {
+  name: 'DC Stamina damage max',
   description: 'TODO.',
   component: FeatureNumberInput,
 };

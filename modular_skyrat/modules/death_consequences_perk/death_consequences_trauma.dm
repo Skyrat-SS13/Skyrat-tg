@@ -29,11 +29,12 @@
 	var/final_death_delivered = FALSE
 
 	// Higher = overall less intense threshold reduction but it still maxes out once it gets there
-	var/max_degradation_for_crit_threshold_reduction = 200
-	var/crit_threshold_reduction_per_percent = 1
+	var/crit_threshold_min_degradation = 0
+	var/crit_threshold_max_degradation = 200
+	var/max_crit_threshold_reduction = 100
 
-	var/max_degradation_for_stamina_damage = 500
-	var/stamina_damage_per_degradation_percent
+	var/max_stamina_damage = 80
+	var/stamina_damage_max_degradation = 500
 	var/stamina_damage_minimum_degradation = 100
 
 	var/crit_threshold_currently_reduced_by = 0
@@ -66,38 +67,22 @@
 	. = ..()
 
 	//RegisterSignal(owner, COMSIG_LIVING_REVIVE, PROC_REF(victim_revived))
+	RegisterSignal(owner, COMSIG_LIVING_POST_FULLY_HEAL, PROC_REF(victim_ahealed))
 
 	update_variables()
-
-/datum/brain_trauma/severe/death_consequences/proc/update_variables()
-	var/datum/preferences/victim_prefs = owner.client?.prefs
-	if (!victim_prefs)
-		return
-
-	max_degradation = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_degradation)
-	current_degradation = clamp(victim_prefs.read_preference(/datum/preference/numeric/death_consequences/starting_degradation), 0, max_degradation - 1) // lets not let people instantly fucking die
-
-	base_degradation_reduction_per_second_while_alive = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/living_degradation_recovery_per_second)
-	base_degradation_per_second_while_dead = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/dead_degradation_per_second)
-	base_degradation_on_death = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/degradation_on_death)
-
-	var/crit_threshold_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_percent_of_max)
-	max_degradation_for_crit_threshold_reduction = (max_degradation * (crit_threshold_percent / 100))
-	crit_threshold_reduction_per_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_per_percent_to_max)
-
-	var/min_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_min_percent_of_max)
-	stamina_damage_minimum_degradation = (max_degradation * (min_stamina_damage_percent / 100))
-	var/max_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_percent_of_max)
-	max_degradation_for_stamina_damage = (max_degradation * (max_stamina_damage_percent / 100))
-	stamina_damage_per_degradation_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_per_percent_to_max)
-
-	update_effects()
+	START_PROCESSING(SSprocessing, src)
 
 /datum/brain_trauma/severe/death_consequences/on_lose(silent)
-	. = ..()
+	//UnregisterSignal(owner, COMSIG_LIVING_REVIVE)
+	owner.crit_threshold -= crit_threshold_currently_reduced_by
+	STOP_PROCESSING(SSprocessing, src)
 
-	UnregisterSignal(owner, COMSIG_LIVING_REVIVE)
-	owner.crit_threshold += crit_threshold_currently_reduced_by
+	if (final_death_delivered)
+		REMOVE_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT)
+
+	UnregisterSignal(owner, COMSIG_LIVING_POST_FULLY_HEAL)
+
+	return ..()
 
 // DEGRADATION ALTERATION / PROCESS
 
@@ -114,7 +99,9 @@
 
 	adjust_degradation(degradation_increase - degradation_reduction)
 
-	damage_stamina(seconds_per_tick)
+	// Ensure our victims stamina is at or above our minimum stamina damage
+	if (!is_dead)
+		damage_stamina(seconds_per_tick)
 
 /datum/brain_trauma/severe/death_consequences/proc/get_degradation_increase(is_dead)
 	var/increase = 0
@@ -161,8 +148,10 @@
 	var/buckled_to_mult
 	if (owner.buckled)
 		buckled_to_mult = buckled_to_recovery_mult_table[owner.buckled.type]
+		if (isnull(buckled_to_mult))
+			buckled_to_mult = buckled_to_default_mult
 	else
-		buckled_to_mult = buckled_to_default_mult
+		buckled_to_mult = 1
 
 	reduction_mult *= buckled_to_mult
 
@@ -180,42 +169,44 @@
 // EFFECTS
 
 /datum/brain_trauma/severe/death_consequences/proc/update_effects()
-	var/threshold_reduction = get_crit_threshold_reduction()
-	owner.crit_threshold = ((owner.crit_threshold + crit_threshold_currently_reduced_by) - threshold_reduction)
-	crit_threshold_currently_reduced_by = threshold_reduction
+	var/threshold_adjustment = get_crit_threshold_adjustment()
+	owner.crit_threshold = ((owner.crit_threshold - crit_threshold_currently_reduced_by) + threshold_adjustment)
+	crit_threshold_currently_reduced_by = threshold_adjustment
 
 	if (permakill_if_at_max_degradation && (current_degradation >= max_degradation))
 		and_so_your_story_ends()
 
-/datum/brain_trauma/severe/death_consequences/proc/get_crit_threshold_reduction()
+/datum/brain_trauma/severe/death_consequences/proc/get_crit_threshold_adjustment()
 	SHOULD_BE_PURE(TRUE)
 
-	var/clamped_degradation = min(current_degradation, max_degradation_for_crit_threshold_reduction)
-	var/percent_to_max = (clamped_degradation / max_degradation_for_crit_threshold_reduction)
+	var/clamped_degradation = clamp((current_degradation - crit_threshold_min_degradation), 0, crit_threshold_max_degradation)
+	var/percent_to_max = (clamped_degradation / crit_threshold_max_degradation)
 
-	var/proposed_alteration = (clamped_degradation * percent_to_max) * crit_threshold_reduction_per_percent
-	var/proposed_threshold_reduction = ((owner.crit_threshold - crit_threshold_currently_reduced_by) - proposed_alteration)
-	var/clamped_threshold_reduction = max(proposed_threshold_reduction, DEATH_CONSEQUENCES_MINIMUM_VICTIM_CRIT_THRESHOLD)
+	var/proposed_alteration = max_crit_threshold_reduction * percent_to_max
+	var/proposed_threshold = ((owner.crit_threshold - crit_threshold_currently_reduced_by) + proposed_alteration)
+	var/overflow = max((proposed_threshold - DEATH_CONSEQUENCES_MINIMUM_VICTIM_CRIT_THRESHOLD), 0)
+	var/final_alteration = (proposed_alteration - overflow)
 
-	var/difference = (clamped_threshold_reduction - proposed_threshold_reduction)
-
-	return proposed_alteration - difference
+	return final_alteration
 
 /datum/brain_trauma/severe/death_consequences/proc/damage_stamina(seconds_per_tick)
 	if (victim_properly_resting())
 		return
 
-	var/clamped_degradation = min((current_degradation - stamina_damage_minimum_degradation), max_degradation_for_stamina_damage)
-	var/stamina_damage = (clamped_degradation / max_degradation_for_stamina_damage) * seconds_per_tick
-	if (owner.staminaloss >= stamina_damage)
-		return // lets not stack it
-	owner.adjustStaminaLoss(-stamina_damage)
-	to_chat(owner, span_warning(pick(stamina_damage_messages)))
+	var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
+	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
+	var/minimum_stamina_damage = max_stamina_damage * percent_to_max
+
+	if (owner.staminaloss >= minimum_stamina_damage)
+		return
+
+	var/final_adjustment = (minimum_stamina_damage - owner.staminaloss)
+	owner.adjustStaminaLoss(final_adjustment) // we adjust instead of set for things like stamina regen timer
 
 /// The proc we call when we permanently kill our victim due to being at maximum degradation. DNRs them, ghosts/kills them, and prints a series of highly dramatic messages,
 /// befitting for a death such as this.
 /datum/brain_trauma/severe/death_consequences/proc/and_so_your_story_ends()
-	ADD_TRAIT(owner, TRAIT_DNR, src) // youre gone bro
+	ADD_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT) // youre gone bro
 	final_death_delivered = TRUE
 
 	// this is a sufficiently dramatic event for some dramatic to_chats
@@ -227,6 +218,7 @@
 		visible_message = span_revenwarning("The air around [owner] seems to ripple for a moment.")
 		self_message = span_revendanger("The metaphorical \"tether\" binding you to your body finally gives way. You try holding on, but you soon find yourself \
 		falling into a deep, deep abyss...")
+		log_message = "has been permanently ghosted by their resonance instability quirk."
 	else
 		if (force_death_if_permakilled) // kill them - a violent and painful end
 			visible_message = span_revenwarning("[owner] suddenly lets out a harrowing gasp and falls to one knee, clutching their head! The remainder of their \
@@ -245,7 +237,7 @@
 	var/mob/dead/observer/owner_ghost = owner.get_ghost()
 	var/mob/self_message_target = (owner_ghost ? owner_ghost : owner) // if youre ghosted, you still get the message
 
-	visible_message += span_revendanger(" You sense something terrible has happened.") // append crucial info and context clues
+	visible_message += span_revenwarning(" <b>You sense something terrible has happened.</b>") // append crucial info and context clues
 	self_message += span_danger(" You have been killed by your resonance degradation, which prevents you from returning to your body or even being revived. \
 	You may roleplay this however you wish - this death may be temporary, permanent - you may or may not appear in soulcatchers - it's all up to you.")
 
@@ -270,13 +262,13 @@
 		if (on_stasis_death_degradation_mult < 1)
 			message += span_danger(" Stasis may be effective in slowing, or even stopping, degradation.")
 	if (base_degradation_on_death)
-		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]<b> degradation penalty.")
+		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
 	if (owner_organic && rezadone_degradation_decrease)
 		message += span_danger("\nRezadone will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
 	message += span_danger("\nAll degradation reduction can be [span_blue("expedited")] by [span_blue("resting, sleeping, or being buckled to something comfortable")].")
 
 	if (permakill_if_at_max_degradation)
-		message += span_orange("\n\n <b><i>SUBJECT WILL BE PERMANENTLY KILLED IF DEGRADATION REACHES MAXIMUM!</i></b>")
+		message += span_revenwarning("\n\n<b><i>SUBJECT WILL BE PERMANENTLY KILLED IF DEGRADATION REACHES MAXIMUM!</i></b>")
 
 	return message
 
@@ -290,3 +282,41 @@
 				return TRUE
 
 	return FALSE
+
+/datum/brain_trauma/severe/death_consequences/proc/victim_ahealed(heal_flags)
+	SIGNAL_HANDLER
+
+	if ((heal_flags & HEAL_AFFLICTIONS) == HEAL_AFFLICTIONS)
+		adjust_degradation(-INFINITY) // a good ol' regenerative extract can fix you up
+	if ((heal_flags & (ADMIN_HEAL_ALL)) == ADMIN_HEAL_ALL) // but only god can actually revive you
+		final_death_delivered = FALSE
+		REMOVE_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT)
+
+/datum/brain_trauma/severe/death_consequences/proc/update_variables()
+	var/datum/preferences/victim_prefs = owner.client?.prefs
+	if (!victim_prefs)
+		return
+
+	max_degradation = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_degradation)
+	current_degradation = clamp(victim_prefs.read_preference(/datum/preference/numeric/death_consequences/starting_degradation), 0, max_degradation - 1) // lets not let people instantly fucking die
+
+	base_degradation_reduction_per_second_while_alive = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/living_degradation_recovery_per_second)
+	base_degradation_per_second_while_dead = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/dead_degradation_per_second)
+	base_degradation_on_death = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/degradation_on_death)
+
+	var/min_crit_threshold_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_min_percent_of_max)
+	crit_threshold_min_degradation = (max_degradation * (min_crit_threshold_percent / 100))
+	var/max_crit_threshold_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/crit_threshold_reduction_percent_of_max)
+	crit_threshold_max_degradation = (max_degradation * (max_crit_threshold_percent / 100))
+	max_crit_threshold_reduction = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_crit_threshold_reduction)
+
+	var/min_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_min_percent_of_max)
+	stamina_damage_minimum_degradation = (max_degradation * (min_stamina_damage_percent / 100))
+	var/max_stamina_damage_percent = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/stamina_damage_percent_of_max)
+	max_stamina_damage = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_stamina_damage)
+	stamina_damage_max_degradation = (max_degradation * (max_stamina_damage_percent / 100))
+
+	permakill_if_at_max_degradation = victim_prefs.read_preference(/datum/preference/toggle/death_consequences/permakill_at_max)
+	force_death_if_permakilled = victim_prefs.read_preference(/datum/preference/toggle/death_consequences/force_death_if_permakilled)
+
+	update_effects()

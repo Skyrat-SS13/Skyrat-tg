@@ -9,18 +9,18 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.gain_trauma(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
 
-	add_verb(human_holder, TYPE_VERB_REF(/mob, increase_degradation))
+	add_verb(human_holder, TYPE_VERB_REF(/mob, adjust_degradation))
 	add_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
 /datum/quirk/death_consequences/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.cure_trauma_type(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
 
-	remove_verb(human_holder, TYPE_VERB_REF(/mob, increase_degradation))
+	remove_verb(human_holder, TYPE_VERB_REF(/mob, adjust_degradation))
 	remove_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
-/mob/verb/increase_degradation(increment as num)
-	set name = "Increase resonance degradation"
+/mob/verb/adjust_degradation(increment as num)
+	set name = "Adjust resonance degradation"
 	set category = "IC"
 	set instant = TRUE
 
