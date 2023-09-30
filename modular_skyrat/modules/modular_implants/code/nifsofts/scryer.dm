@@ -21,7 +21,7 @@
 	linked_scyer.label = linked_mob.name
 
 /datum/nifsoft/scryer/Destroy()
-	if(linked_scyer)
+	if(!QDELETED(linked_scryer))
 		QDEL_NULL(linked_scyer)
 
 	return ..()
@@ -68,10 +68,10 @@
 	cell = new /obj/item/stock_parts/cell/infinite/nif_cell(src)
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/Destroy()
-	var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resolve()
-	if(resolved_nifsoft)
-		resolved_nifsoft.linked_scyer = null
-
+	if(parent_nifsoft)
+		var/datum/nifsoft/scryer/resolved_nifsoft = parent_nifsoft.resolve()
+		if(!QDELETED(resolved_nifsoft))
+			resolved_nifsoft.linked_scyer = null
 
 	return ..()
 
