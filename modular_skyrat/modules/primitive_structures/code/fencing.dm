@@ -8,9 +8,13 @@
 	layer = BELOW_OBJ_LAYER // I think this is the default but lets be safe?
 	resistance_flags = FLAMMABLE
 	flags_1 = NODECONSTRUCT_1 | ON_BORDER_1
+	/// If we randomize our icon on spawning
+	var/random_icons = TRUE
 
 /obj/structure/railing/wooden_fencing/Initialize(mapload)
 	. = ..()
+	if(!random_icons)
+		return
 	icon_state = pick(
 		"fence",
 		"fence_2",
@@ -34,6 +38,7 @@
 	name = "wooden fence gate"
 	desc = "A basic wooden gate meant to prevent animals like you escaping."
 	icon_state = "gate"
+	random_icons = FALSE
 	/// Has the gate been opened or not?
 	var/opened
 
@@ -66,6 +71,8 @@
 	name = "large wooden gate"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_gate.dmi'
 	icon_state = "gate"
+	openSound = 'sound/machines/wooden_closet_open.ogg'
+	closeSound = 'sound/machines/wooden_closet_close.ogg'
 
 /obj/structure/mineral_door/wood/large_gate/Open()
 	playsound(src, openSound, 100, TRUE)
