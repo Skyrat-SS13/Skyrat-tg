@@ -30,6 +30,8 @@
 	flame_color = "#ff9900"
 
 /datum/component/stove/primitive/on_overlay_update(obj/machinery/source, list/overlays)
+	SIGNAL_HANDLER
+
 	update_smoke()
 
 	var/obj/real_parent = parent
