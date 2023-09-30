@@ -380,7 +380,7 @@
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
 	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
 	if (final_death_delivered)
-		message += span_purple("<i> Neural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
+		message += span_purple("<i>\nNeural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
 	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
