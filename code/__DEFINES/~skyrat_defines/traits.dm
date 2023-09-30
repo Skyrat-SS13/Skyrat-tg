@@ -92,4 +92,4 @@
 #define TRAIT_NIFSOFT_HUD_GRANTER "nifsoft_hud_granter"
 
 /// Trait given to a brain that is able to accept souls from a RSD
-#define TRAIT_RSD_COMPTAIBLE "rsd_compatible"
+#define TRAIT_RSD_COMPATIBLE "rsd_compatible"

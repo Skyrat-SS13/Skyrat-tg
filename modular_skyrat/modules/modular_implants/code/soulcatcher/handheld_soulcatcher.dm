@@ -120,7 +120,7 @@
 		to_chat(user, span_warning("[target_mob] lacks a brain!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	if(!HAS_TRAIT(target_brain, TRAIT_RSD_COMPTAIBLE))
+	if(!HAS_TRAIT(target_brain, TRAIT_RSD_COMPATIBLE))
 		to_chat(user, span_warning("[target_mob]'s brain isn't compatible."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

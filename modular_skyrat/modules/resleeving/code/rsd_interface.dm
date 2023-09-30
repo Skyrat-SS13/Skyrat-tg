@@ -29,7 +29,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-	ADD_TRAIT(target, TRAIT_RSD_COMPTAIBLE, INNATE_TRAIT)
+	ADD_TRAIT(target, TRAIT_RSD_COMPATIBLE, INNATE_TRAIT)
 
 /// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
 /datum/element/rsd_interface/proc/on_examine(datum/source, mob/user, list/examine_text)
@@ -38,7 +38,7 @@
 
 /datum/element/rsd_interface/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
-	REMOVE_TRAIT(target, TRAIT_RSD_COMPTAIBLE, INNATE_TRAIT)
+	REMOVE_TRAIT(target, TRAIT_RSD_COMPATIBLE, INNATE_TRAIT)
 
 	return ..()
 
