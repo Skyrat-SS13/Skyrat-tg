@@ -31,7 +31,7 @@
 	. = ..()
 	AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/icecat_hot_spring)
 	if(prob(30))
-		particle_effect = new(owner, /particles/hotspring_steam)
+		particles = new /particles/hotspring_steam
 
 /turf/open/water/icebox_fishable/Entered(atom/movable/arrived)
 	..()
