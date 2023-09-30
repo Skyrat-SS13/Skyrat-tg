@@ -1,8 +1,9 @@
 /datum/quirk/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
-	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired."
+	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired. This quirk is highly customizable - see your bottom right \
+	preferences section after selecting it."
 	medical_record_text = DEATH_CONSEQUENCES_QUIRK_DESC
-	icon = FA_ICON_BRAIN
+	icon = FA_ICON_DNA
 	value = 0 // due to its high customization, you can make it realllly good or reallllly bad
 
 /datum/quirk/death_consequences/add(client/client_source)
@@ -11,6 +12,12 @@
 
 	add_verb(human_holder, TYPE_VERB_REF(/mob, adjust_degradation))
 	add_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
+
+	to_chat(human_holder, span_danger("You suffer from [DEATH_CONSEQUENCES_QUIRK_NAME]. By default, you will \
+	degrade every time you die, and recover very slowly while alive. This may be expedited by resting, sleeping, being buckled \
+	to something cozy, or using rezadone. \n\
+	As your degradation rises, so too will negative effects, such as stamina damage or a worsened crit threshold. \n\
+	You can alter your degradation on the fly via the Adjust resonance degradation verb, and change your settings via the Refresh death consequence variables verb."))
 
 /datum/quirk/death_consequences/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -34,10 +41,6 @@
 		to_chat(usr, span_warning("You can artificially change the degradation of your resonance degradation with this verb. \
 		You can use this to cause degradation in ways the customization cannot. <b>You need to enter a number to use this verb.</b>"))
 		return
-
-	/*if (increment <= 0)
-		to_chat(usr, span_warning("You can only increase the severity of your degradation with this verb!"))
-		return*/
 
 	linked_trauma.adjust_degradation(increment)
 	to_chat(usr, span_notice("Degradation successfully adjusted!"))

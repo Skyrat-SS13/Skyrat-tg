@@ -57,23 +57,15 @@
 	// Only used if the thing we are buckled to is not in [buckled_to_recovery_mult_table]
 	var/static/buckled_to_default_mult = 1.15
 
-	var/static/list/stamina_damage_messages = list(
-		"Your muscles suddenly ache...",
-		"You feel tired...",
-		"You're striken by a body-wide pain..."
-	)
-
 /datum/brain_trauma/severe/death_consequences/on_gain()
 	. = ..()
 
-	//RegisterSignal(owner, COMSIG_LIVING_REVIVE, PROC_REF(victim_revived))
 	RegisterSignal(owner, COMSIG_LIVING_POST_FULLY_HEAL, PROC_REF(victim_ahealed))
 
 	update_variables()
 	START_PROCESSING(SSprocessing, src)
 
 /datum/brain_trauma/severe/death_consequences/on_lose(silent)
-	//UnregisterSignal(owner, COMSIG_LIVING_REVIVE)
 	owner.crit_threshold -= crit_threshold_currently_reduced_by
 	STOP_PROCESSING(SSprocessing, src)
 
@@ -89,13 +81,22 @@
 /datum/brain_trauma/severe/death_consequences/on_death()
 	. = ..()
 
-	adjust_degradation(base_degradation_on_death)
+	if (base_degradation_on_death > 0)
+		adjust_degradation(base_degradation_on_death)
+		if (!final_death_delivered) // already sends a very spooky message if they permadie
+			var/visible_message = span_revenwarning("[owner] writhes for a brief moment, before going limp. You get the sense that you might want to <b>prevent them from dying again...</b>")
+			var/self_message = span_revenwarning("As your mind reels from the shock of death, you feel the ethereal tether that binds you to your body strain...")
+
+			var/mob/dead/observer/ghost = owner.get_ghost()
+			var/mob/self_message_target = (ghost ? ghost : owner)
+			owner.visible_message(visible_message, ignored_mobs = self_message_target)
+			to_chat(self_message_target, self_message)
 
 /datum/brain_trauma/severe/death_consequences/process(seconds_per_tick)
 
 	var/is_dead = (owner.stat == DEAD)
-	var/degradation_increase = get_degradation_increase(is_dead) * seconds_per_tick
-	var/degradation_reduction = get_degradation_decrease(is_dead) * seconds_per_tick
+	var/degradation_increase = get_passive_degradation_increase(is_dead) * seconds_per_tick
+	var/degradation_reduction = get_passive_degradation_decrease(is_dead) * seconds_per_tick
 
 	adjust_degradation(degradation_increase - degradation_reduction)
 
@@ -103,7 +104,7 @@
 	if (!is_dead)
 		damage_stamina(seconds_per_tick)
 
-/datum/brain_trauma/severe/death_consequences/proc/get_degradation_increase(is_dead)
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_increase(is_dead)
 	var/increase = 0
 
 	if (is_dead)
@@ -120,7 +121,7 @@
 
 	return increase
 
-/datum/brain_trauma/severe/death_consequences/proc/get_degradation_decrease(is_dead)
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease(is_dead)
 	var/decrease = 0
 
 	if (!is_dead)
@@ -132,12 +133,12 @@
 				return FALSE
 			decrease += rezadone_degradation_decrease
 
-	return decrease * get_degradation_decrease_mult()
+	return decrease * get_passive_degradation_decrease_mult()
 
 #define DEGRADATION_REDUCTION_SLEEPING_MULT 3
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
-/// A global proc used for all scenarios we would decrease degradation.
-/datum/brain_trauma/severe/death_consequences/proc/get_degradation_decrease_mult()
+/// A global proc used for all scenarios we would decrease passive degradation.
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_mult()
 	var/reduction_mult = 1
 
 	if (owner.IsSleeping())
@@ -160,6 +161,7 @@
 #undef DEGRADATION_REDUCTION_SLEEPING_MULT
 #undef DEGRADATION_REDUCTION_RESTING_MULT
 
+/// Setter proc for [current_degradation] that clamps the incoming value and updates effects if the value changed.
 /datum/brain_trauma/severe/death_consequences/proc/adjust_degradation(adjustment)
 	var/old_degradation = current_degradation
 	current_degradation = clamp((current_degradation + adjustment), 0, max_degradation)
@@ -168,6 +170,7 @@
 
 // EFFECTS
 
+/// Refreshes all our effects and updates their values. Kills the victim if they opted in and their degradation equals their maximum.
 /datum/brain_trauma/severe/death_consequences/proc/update_effects()
 	var/threshold_adjustment = get_crit_threshold_adjustment()
 	owner.crit_threshold = ((owner.crit_threshold - crit_threshold_currently_reduced_by) + threshold_adjustment)
@@ -176,6 +179,7 @@
 	if (permakill_if_at_max_degradation && (current_degradation >= max_degradation))
 		and_so_your_story_ends()
 
+/// Calculates the amount that we should add to our victim's critical threshold.
 /datum/brain_trauma/severe/death_consequences/proc/get_crit_threshold_adjustment()
 	SHOULD_BE_PURE(TRUE)
 
@@ -189,6 +193,7 @@
 
 	return final_alteration
 
+/// Ensures our victim's stamina is at or above the minimum stamina they're supposed to have.
 /datum/brain_trauma/severe/death_consequences/proc/damage_stamina(seconds_per_tick)
 	if (victim_properly_resting())
 		return
@@ -245,6 +250,7 @@
 	owner.visible_message(visible_message, ignored_mobs = self_message_target) // finally, send it
 	to_chat(self_message_target, self_message)
 
+/// Returns a large string intended for use at the bottom of health analyzers.
 /datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_info()
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
 	var/message = span_bolddanger("\nSubject suffers from mortality-induced resonance instability.")
@@ -272,6 +278,7 @@
 
 	return message
 
+/// Used in stamina damage. Determines if our victim is resting, sleeping, or is buckled to something cozy.
 /datum/brain_trauma/severe/death_consequences/proc/victim_properly_resting()
 	if (owner.resting || owner.IsSleeping())
 		return TRUE
@@ -283,6 +290,7 @@
 
 	return FALSE
 
+/// Signal handler proc for healing our victim on an aheal. Permadeath can only be reversed by admin aheals.
 /datum/brain_trauma/severe/death_consequences/proc/victim_ahealed(heal_flags)
 	SIGNAL_HANDLER
 
@@ -292,6 +300,7 @@
 		final_death_delivered = FALSE
 		REMOVE_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT)
 
+/// Resets all our variables to our victim's preferences, if they have any. Used for the initial setup, then any time our victim manually refreshses variables.
 /datum/brain_trauma/severe/death_consequences/proc/update_variables()
 	var/datum/preferences/victim_prefs = owner.client?.prefs
 	if (!victim_prefs)
