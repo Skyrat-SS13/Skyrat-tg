@@ -124,7 +124,7 @@
 
 	use_power(500)
 
-/// Ejects the occupant as either their preference character, or as a monke based on emag status.
+/// Ejects the occupant after asking them if they want to accept the rejuvination. If yes, they exit as their preferences character.
 /obj/machinery/self_actualization_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
@@ -133,20 +133,27 @@
 	if(!ishuman(occupant))
 		return FALSE
 
-	var/mob/living/carbon/human/patient = occupant
-	var/original_name = patient.dna.real_name
+	// Allows unconcious people to reject unconsentual stuff
+	var/failure = (tgui_alert(occupant, "The SAD you are within is about to rejuvinate you. Do your genes accept or reject this?", "Rejuvinate", list("Yes", "No"), timeout = 10 SECONDS) == "No")
 
-	patient.client?.prefs?.safe_transfer_prefs_to_with_damage(patient)
-	patient.dna.update_dna_identity()
-	log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+	if (failure)
+		say("ERROR: Occupant genes have rejected the procedure. Please try again later.")
+		playsound(src, 'sound/machines/buzz-sigh.ogg')
+	else
+		var/mob/living/carbon/human/patient = occupant
+		var/original_name = patient.dna.real_name
 
-	if(patient.dna.real_name != original_name)
-		message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
-		Original Name: [original_name], New Name: [patient.dna.real_name]. \
-		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+		patient.client?.prefs?.safe_transfer_prefs_to_with_damage(patient)
+		patient.dna.update_dna_identity()
+		log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+
+		if(patient.dna.real_name != original_name)
+			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
+			Original Name: [original_name], New Name: [patient.dna.real_name]. \
+			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 	open_machine()
-	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 /obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/used_item)
 	. = TRUE
