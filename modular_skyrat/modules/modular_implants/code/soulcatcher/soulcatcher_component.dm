@@ -307,7 +307,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/mob/living/soulcatcher_soul/soul_sender = message_sender
 	if(istype(soul_sender) && soul_sender.communicating_externally)
-		var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
+		var/master_resolved = master_soulcatcher.resolve()
+		if(!master_resolved)
+			return FALSE
+		var/datum/component/soulcatcher/parent_soulcatcher = master_resolved
 		var/obj/item/parent_object = parent_soulcatcher.parent
 		if(!istype(parent_object))
 			return FALSE
