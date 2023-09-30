@@ -48,7 +48,7 @@
 	if(!user.can_interact_with(src))
 		balloon_alert(user, "can't interact")
 		return
-	opened != opened
+	opened = !opened
 	set_density(!opened)
 	icon_state = "[opened ? "gate_open" : "gate"]"
 	update_appearance(UPDATE_ICON)
