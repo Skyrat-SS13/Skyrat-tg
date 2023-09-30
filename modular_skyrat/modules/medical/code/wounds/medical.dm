@@ -4,8 +4,6 @@
 /obj/item/stack/medical/gauze
 	/// The amount of direct hits our limb can take before we fall off.
 	var/integrity = 2
-	/// The bodypart we are attached to. Nullable if we aren't applied to anything.
-	var/obj/item/bodypart/bodypart
 	/// If we are splinting a limb, this is the overlay prefix we will use.
 	var/splint_prefix = "splint"
 	/// If we are bandaging a limb, this is the overlay prefix we will use.
@@ -14,25 +12,16 @@
 	var/can_splint = TRUE
 
 /obj/item/bodypart/apply_gauze(obj/item/stack/gauze)
-	RegisterSignal(src, COMSIG_BODYPART_GAUZED, PROC_REF(got_gauzed))
+	. = ..()
+
+	owner?.update_bandage_overlays()
+
+/obj/item/stack/medical/gauze/Destroy()
+	var/mob/living/carbon/previously_gauzed = gauzed_bodypart?.owner
 
 	. = ..()
 
-	UnregisterSignal(src, COMSIG_BODYPART_GAUZED)
-
-/// Signal handler that allows us to modularly detect if we were applied to a limb or not.
-/obj/item/bodypart/proc/got_gauzed(datum/signal_source, obj/item/stack/medical/gauze/new_gauze)
-	SIGNAL_HANDLER
-
-	if (istype(current_gauze, /obj/item/stack/medical/gauze))
-		var/obj/item/stack/medical/gauze/applied_gauze = current_gauze
-		applied_gauze.set_limb(src) // new_gauze isnt actually the gauze that was applied weirdly
-
-/obj/item/stack/medical/gauze/Destroy()
-	bodypart?.current_gauze = null
-	bodypart?.owner?.update_bandage_overlays()
-	set_limb(null)
-	return ..()
+	previously_gauzed?.update_bandage_overlays()
 
 /**
  * rip_off() called when someone rips it off
@@ -43,7 +32,7 @@
 /obj/item/stack/medical/gauze/proc/rip_off()
 	if (is_pristine())
 		. = new src.type(null, 1)
-		bodypart?.owner?.update_bandage_overlays()
+
 	qdel(src)
 
 /// Returns either [splint_prefix] or [gauze_prefix] depending on if we are splinting or not. Suffixes it with a digitigrade flag if applicable for the limb.
@@ -56,8 +45,8 @@
 	else
 		prefix = gauze_prefix
 
-	var/suffix = bodypart.body_zone
-	if(bodypart.bodytype & BODYTYPE_DIGITIGRADE)
+	var/suffix = gauzed_bodypart.body_zone
+	if(gauzed_bodypart.bodytype & BODYTYPE_DIGITIGRADE)
 		suffix += "_digitigrade"
 
 	return "[prefix]_[suffix]"
@@ -69,7 +58,7 @@
 	if (!can_splint)
 		return FALSE
 
-	for (var/datum/wound/iterated_wound as anything in bodypart.wounds)
+	for (var/datum/wound/iterated_wound as anything in gauzed_bodypart.wounds)
 		if (iterated_wound.wound_flags & SPLINT_OVERLAY)
 			return TRUE
 
@@ -95,35 +84,30 @@
 /obj/item/stack/medical/gauze/proc/get_hit()
 	integrity--
 	if(integrity <= 0)
-		if(bodypart.owner)
-			to_chat(bodypart.owner, span_warning("The [name] on your [bodypart.name] tears and falls off!"))
+		if(gauzed_bodypart.owner)
+			to_chat(gauzed_bodypart.owner, span_warning("The [name] on your [gauzed_bodypart.name] tears and falls off!"))
 		qdel(src)
 
 /obj/item/stack/medical/gauze/Topic(href, href_list)
 	. = ..()
 	if(href_list["remove"])
-		if(!bodypart.owner)
+		if(!gauzed_bodypart.owner)
 			return
 		if(!iscarbon(usr))
 			return
-		if(!in_range(usr, bodypart.owner))
+		if(!in_range(usr, gauzed_bodypart.owner))
 			return
-		var/mob/living/carbon/C = usr
-		var/self = (C == bodypart.owner)
-		C.visible_message(span_notice("[C] begins removing [name] from [self ? "[bodypart.owner.p_Their()]" : "[bodypart.owner]'s" ] [bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]..."))
-		if(!do_after(C, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target=bodypart.owner))
+		var/mob/living/carbon/carbon_user = usr
+		var/self = (carbon_user == gauzed_bodypart.owner)
+		carbon_user.visible_message(span_notice("[carbon_user] begins removing [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s"] [gauzed_bodypart.name]..."))
+		if(!do_after(carbon_user, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target = gauzed_bodypart.owner))
 			return
 		if(QDELETED(src))
 			return
-		C.visible_message(span_notice("[C] removes [name] from [self ? "[bodypart.owner.p_Their()]" : "[bodypart.owner]'s" ] [bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name]."))
+		carbon_user.visible_message(span_notice("[carbon_user] removes [name] from [self ? "[gauzed_bodypart.owner.p_Their()]" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[gauzed_bodypart.owner]'s" ] [gauzed_bodypart.name]."))
 		var/obj/item/gotten = rip_off()
-		if(gotten && !C.put_in_hands(gotten))
-			gotten.forceMove(get_turf(C))
-
-/// Sets bodypart to limb, and then updates owner's bandage overlays. Limb is nullable.
-/obj/item/stack/medical/gauze/proc/set_limb(limb)
-	bodypart = limb
-	bodypart?.owner?.update_bandage_overlays()
+		if(gotten && !carbon_user.put_in_hands(gotten))
+			gotten.forceMove(get_turf(carbon_user))
 
 /// Returns the name of ourself when used in a "owner is [usage_prefix] by [name]" examine_more situation/
 /obj/item/stack/proc/get_gauze_description()
