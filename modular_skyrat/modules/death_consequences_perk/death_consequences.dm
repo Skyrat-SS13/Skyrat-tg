@@ -42,6 +42,10 @@
 		You can use this to cause degradation in ways the customization cannot. <b>You need to enter a number to use this verb.</b>"))
 		return
 
+	if (linked_trauma.permakill_if_at_max_degradation && ((linked_trauma.current_degradation + increment) >= linked_trauma.max_degradation))
+		if (tgui_alert(usr, "This will put you over/at your maximum degradation threshold and PERMANENTLY KILL YOU!!! Are you SURE you want to do this?", "WARNING", list("Yes", "No")) != "Yes", timeout = 7 SECONDS)
+			return
+
 	linked_trauma.adjust_degradation(increment)
 	to_chat(usr, span_notice("Degradation successfully adjusted!"))
 

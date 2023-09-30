@@ -1,3 +1,9 @@
+#define DEGRADATION_LEVEL_NONE "dc_level_none"
+#define DEGRADATION_LEVEL_LOW "dc_level_low"
+#define DEGRADATION_LEVEL_MEDIUM "dc_level_medium"
+#define DEGRADATION_LEVEL_HIGH "dc_level_high"
+#define DEGRADATION_LEVEL_CRITICAL "dc_level_critical"
+
 /datum/brain_trauma/severe/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
 	desc = DEATH_CONSEQUENCES_QUIRK_DESC
@@ -10,40 +16,63 @@
 	var/current_degradation = 0
 	/// The absolute maximum degradation we can receive. Will cause permadeath if [permakill_if_at_max_degradation] is TRUE.
 	var/max_degradation = DEATH_CONSEQUENCES_DEFAULT_MAX_DEGRADATION // arbitrary
-	/// The
-	var/base_degradation_reduction_per_second_while_alive = DEATH_CONSEQUENCES_DEFAULT_LIVING_DEGRADATION_RECOVERY // arbitrary
+	/// While alive, our victim will lose degradation by this amount per second.
+	var/base_degradation_reduction_per_second_while_alive = DEATH_CONSEQUENCES_DEFAULT_LIVING_DEGRADATION_RECOVERY
+	/// When our victim dies, they will degrade by this amount, but only if the last time they died was after [time_required_between_deaths_to_degrade] ago.
 	var/base_degradation_on_death = DEATH_CONSEQUENCES_DEFAULT_DEGRADATION_ON_DEATH
+	/// While dead, our victim will degrade by this amount every second. Reduced by stasis and formeldahyde.
 	var/base_degradation_per_second_while_dead = 0
 
+	/// The last time we caused immediate degradation on death.
+	var/last_time_degraded_on_death = -2 MINUTES // we do this to avoid a lil bug where it cant happen at roundstart
+	/// If the last time we degraded on death was less than this time ago, we won't immediately degrade when our victim dies. Used for preventing things like MDs constantly reviving someone and PKing them.
+	var/time_required_between_deaths_to_degrade = 2 MINUTES
+
+	/// If our victim is dead, their passive degradation will be multiplied against this if they have formal in their system.
 	var/formaldehyde_death_degradation_mult = 0
+	/// If our victim is alive and is metabolizing rezadone, we will reduce degradation by this amount every second.
 	var/rezadone_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
 
+	/// If our victim is dead, their passive degradation will be multiplied against this if they are in stasis.
 	var/on_stasis_death_degradation_mult = 0
 
-	var/list/global_reagent_effects = list()
-
+	/// If true, when [current_degradation] reaches [max_degradation], we will DNR and ghost our victim.
 	var/permakill_if_at_max_degradation = FALSE
+	/// If true, when [current_degradation] reaches [max_degradation], we will DNR and KILL our victim.
 	var/force_death_if_permakilled = FALSE
 
 	/// If we have killed our owner permanently.
 	var/final_death_delivered = FALSE
 
 	// Higher = overall less intense threshold reduction but it still maxes out once it gets there
+	/// The degradation we will begin reducing the crit threshold at.
 	var/crit_threshold_min_degradation = 0
+	/// The degradation we will stop reducing the crit threshold at.
 	var/crit_threshold_max_degradation = 200
+	/// The amount our victims crit threshold will be reduced by at [crit_threshold_max_degradation] degradation.
 	var/max_crit_threshold_reduction = 100
 
-	var/max_stamina_damage = 80
-	var/stamina_damage_max_degradation = 500
+	/// The degradation we will begin applying stamina damage at.
 	var/stamina_damage_minimum_degradation = 100
+	/// The degradation we will stop increasing the stamina damage at.
+	var/stamina_damage_max_degradation = 500
+	/// The amount our victims crit threshold will be reduced by at [stamina_damage_max_degradation] degradation.
+	var/max_stamina_damage = 80
 
+	/// Used for updating our crit threshold reduction. We store the previous value, then subtract it from crit threshold, to get the value we had before we adjusted.
 	var/crit_threshold_currently_reduced_by = 0
 
 	/// The last world.time we sent a message to our owner reminding them of their current degradation. Used for cooldowns and such.
-	var/time_of_last_message_sent = 0
+	var/time_of_last_message_sent = -DEATH_CONSEQUENCES_TIME_BETWEEN_REMINDERS
+	/// The time between each reminder ([degradation_messages]).
+	var/time_between_reminders = DEATH_CONSEQUENCES_TIME_BETWEEN_REMINDERS
+
+	/// The current level of degradation. Used mostly for reminder messages.
+	var/current_degradation_level = DEGRADATION_LEVEL_NONE
 
 	// Will be iterated through sequentially, so the higher a path is, the quicker itll be searched
 	// Make sure to put the larger bonuses and more specific types higher than the generic ones
+	/// A assoc list of (atom/movable typepath -> mult), where mult is used as a multiplier against passive living degradation reduction.
 	var/static/list/buckled_to_recovery_mult_table = list(
 		/obj/structure/bed/medical = 5,
 		/obj/structure/bed = 3,
@@ -54,8 +83,36 @@
 
 		/mob/living = 1.25, // being carried
 	)
-	// Only used if the thing we are buckled to is not in [buckled_to_recovery_mult_table]
+	/// Only used if the thing we are buckled to is not in [buckled_to_recovery_mult_table].
 	var/static/buckled_to_default_mult = 1.15
+
+	/// Messages that will be sent to our victim a. randombly, b. if their degradation moves to a new threshold.
+	var/static/list/degradation_messages = list(
+		DEGRADATION_LEVEL_LOW = list(
+			span_warning("Your body aches a little.") = 10,
+			span_warning("You feel a little detached from yourself.") = 10,
+			span_warning("You feel a little tired.") = 10,
+		),
+		DEGRADATION_LEVEL_MEDIUM = list(
+			span_danger("Your whole body aches...") = 10,
+			span_danger("You're starting to feel disassociated from yourself...") = 10,
+			span_danger("You're having a little difficulty thinking...") = 10,
+		),
+		DEGRADATION_LEVEL_HIGH = list(
+			span_bolddanger("Your entire body throbs!") = 10,
+			span_bolddanger("You feel like you're losing your grip on yourself!") = 10,
+			span_bolddanger("Your conciousness feels as fragile as a sheet of glass!") = 10,
+			span_bolddanger("You feel exhausted in every single possible way!") = 10,
+		),
+		DEGRADATION_LEVEL_CRITICAL = list(
+			span_revenwarning("<b>Every single part of your body is in AGONY!</b>") = 10,
+			span_revenwarning("<b>It's so hard to think... it's so hard... so hard...</b>") = 10,
+			span_revenwarning("<b>You disassociate for a moment, and when you return, you body feels alien.</b>") = 10,
+			span_revenwarning("<b>...who am I?</b>") = 1,
+			span_revenwarning("<b>...where am I?</b>") = 1,
+			span_revenwarning("<b>...what am I?</b>") = 1,
+		)
+	)
 
 /datum/brain_trauma/severe/death_consequences/on_gain()
 	. = ..()
@@ -82,6 +139,9 @@
 	. = ..()
 
 	if (base_degradation_on_death > 0)
+		if ((world.time - time_required_between_deaths_to_degrade) <= last_time_degraded_on_death)
+			return
+
 		adjust_degradation(base_degradation_on_death)
 		if (!final_death_delivered) // already sends a very spooky message if they permadie
 			var/visible_message = span_revenwarning("[owner] writhes for a brief moment, before going limp. You get the sense that you might want to <b>prevent them from dying again...</b>")
@@ -91,6 +151,8 @@
 			var/mob/self_message_target = (ghost ? ghost : owner)
 			owner.visible_message(visible_message, ignored_mobs = self_message_target)
 			to_chat(self_message_target, self_message)
+
+		last_time_degraded_on_death = world.time
 
 /datum/brain_trauma/severe/death_consequences/process(seconds_per_tick)
 
@@ -103,6 +165,9 @@
 	// Ensure our victims stamina is at or above our minimum stamina damage
 	if (!is_dead)
 		damage_stamina(seconds_per_tick)
+
+	if ((world.time - time_between_reminders) > time_of_last_message_sent)
+		send_reminder()
 
 /datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_increase(is_dead)
 	var/increase = 0
@@ -133,18 +198,18 @@
 				return FALSE
 			decrease += rezadone_degradation_decrease
 
-	return decrease * get_passive_degradation_decrease_mult()
+	return (decrease * get_passive_degradation_decrease_mult())
 
 #define DEGRADATION_REDUCTION_SLEEPING_MULT 3
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
 /// A global proc used for all scenarios we would decrease passive degradation.
 /datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_mult()
-	var/reduction_mult = 1
+	var/decrease_mult = 1
 
 	if (owner.IsSleeping())
-		reduction_mult *= DEGRADATION_REDUCTION_SLEEPING_MULT
+		decrease_mult *= DEGRADATION_REDUCTION_SLEEPING_MULT
 	else if (owner.resting)
-		reduction_mult *= DEGRADATION_REDUCTION_RESTING_MULT
+		decrease_mult *= DEGRADATION_REDUCTION_RESTING_MULT
 
 	var/buckled_to_mult
 	if (owner.buckled)
@@ -154,9 +219,9 @@
 	else
 		buckled_to_mult = 1
 
-	reduction_mult *= buckled_to_mult
+	decrease_mult *= buckled_to_mult
 
-	return reduction_mult
+	return decrease_mult
 
 #undef DEGRADATION_REDUCTION_SLEEPING_MULT
 #undef DEGRADATION_REDUCTION_RESTING_MULT
@@ -166,7 +231,25 @@
 	var/old_degradation = current_degradation
 	current_degradation = clamp((current_degradation + adjustment), 0, max_degradation)
 	if (current_degradation != old_degradation)
+		update_degradation_level()
 		update_effects()
+
+/datum/brain_trauma/severe/death_consequences/proc/update_degradation_level(send_reminder_if_changed)
+	var/old_level = current_degradation_level
+	switch (current_degradation / max_degradation)
+		if (0 to 0.2)
+			current_degradation_level = DEGRADATION_LEVEL_NONE
+		if (0.2 to 0.4)
+			current_degradation_level = DEGRADATION_LEVEL_LOW
+		if (0.4 to 0.6)
+			current_degradation_level = DEGRADATION_LEVEL_MEDIUM
+		if (0.6 to 0.8)
+			current_degradation_level = DEGRADATION_LEVEL_HIGH
+		else
+			current_degradation_level = DEGRADATION_LEVEL_CRITICAL
+
+	if (send_reminder_if_changed && (old_level != current_degradation_level))
+		send_reminder(FALSE)
 
 // EFFECTS
 
@@ -207,6 +290,17 @@
 
 	var/final_adjustment = (minimum_stamina_damage - owner.staminaloss)
 	owner.adjustStaminaLoss(final_adjustment) // we adjust instead of set for things like stamina regen timer
+
+/datum/brain_trauma/severe/death_consequences/proc/send_reminder(update_cooldown = TRUE)
+	var/message = pick_weight(degradation_messages[current_degradation_level])
+
+	if (!message)
+		return
+
+	to_chat(owner, message)
+
+	if (update_cooldown)
+		time_of_last_message_sent = world.time
 
 /// The proc we call when we permanently kill our victim due to being at maximum degradation. DNRs them, ghosts/kills them, and prints a series of highly dramatic messages,
 /// befitting for a death such as this.
@@ -258,7 +352,7 @@
 		message += span_purple("<i> Neural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
-	message += span_danger("\nCurrent degradation: [span_blue("[current_degradation]")]. Maximum possible degradation: [span_blue("[max_degradation]")].")
+	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
 	if (base_degradation_reduction_per_second_while_alive)
 		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_green("[base_degradation_reduction_per_second_while_alive] per second")].")
 	if (base_degradation_per_second_while_dead)
@@ -291,7 +385,7 @@
 	return FALSE
 
 /// Signal handler proc for healing our victim on an aheal. Permadeath can only be reversed by admin aheals.
-/datum/brain_trauma/severe/death_consequences/proc/victim_ahealed(heal_flags)
+/datum/brain_trauma/severe/death_consequences/proc/victim_ahealed(datum/signal_source, heal_flags)
 	SIGNAL_HANDLER
 
 	if ((heal_flags & HEAL_AFFLICTIONS) == HEAL_AFFLICTIONS)
@@ -329,3 +423,9 @@
 	force_death_if_permakilled = victim_prefs.read_preference(/datum/preference/toggle/death_consequences/force_death_if_permakilled)
 
 	update_effects()
+
+#undef DEGRADATION_LEVEL_NONE
+#undef DEGRADATION_LEVEL_LOW
+#undef DEGRADATION_LEVEL_MEDIUM
+#undef DEGRADATION_LEVEL_HIGH
+#undef DEGRADATION_LEVEL_CRITICAL

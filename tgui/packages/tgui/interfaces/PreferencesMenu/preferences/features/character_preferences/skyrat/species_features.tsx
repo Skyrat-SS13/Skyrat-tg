@@ -946,38 +946,42 @@ export const dc_rezadone_living_degradation_reduction: Feature<number> = {
 };
 
 export const dc_crit_threshold_reduction_min_percent_of_max: Feature<number> = {
-  name: 'DC Crit Threshold min deg.',
-  description: 'TODO.',
+  name: 'DC Crit Threshold min deg. %',
+  description:
+    'The % degradation to max wherein crit threshold will start being reduced.',
   component: FeatureNumberInput,
 };
 
 export const dc_crit_threshold_reduction_percent_of_max: Feature<number> = {
-  name: 'DC Crit Threshold max deg.',
-  description: 'TODO.',
+  name: 'DC Crit Threshold max deg. %',
+  description:
+    'The % degradation to max wherein crit threshold reduction will stop increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_max_crit_threshold_reduction: Feature<number> = {
   name: 'DC Crit Threshold max reduction',
-  description: 'TODO.',
+  description: 'The crit threshold reduction applied when at max deg. %',
   component: FeatureNumberInput,
 };
 
 export const dc_stamina_damage_min_percent_of_max: Feature<number> = {
   name: 'DC Stamina damage min deg.',
-  description: 'TODO.',
+  description:
+    'The % degradation to max wherein minimum stamina damage will start increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_stamina_damage_percent_of_max: Feature<number> = {
   name: 'DC Stamina damage max deg.',
-  description: 'TODO.',
+  description:
+    'The % degradation to max wherein minimum stamina damage will stop increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_max_stamina_damage: Feature<number> = {
   name: 'DC Stamina damage max',
-  description: 'TODO.',
+  description: 'The minimum stamina damage when at max deg. %',
   component: FeatureNumberInput,
 };
 
