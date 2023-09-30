@@ -56,6 +56,7 @@
 	opened = !opened
 	set_density(!opened)
 	icon_state = "[opened ? "gate_open" : "gate"]"
+	playsound(src, (opened ? 'sound/machines/wooden_closet_open.ogg' : 'sound/machines/wooden_closet_close.ogg'), 100, TRUE)
 	update_appearance(UPDATE_ICON)
 
 /obj/structure/railing/wooden_fencing/gate/update_icon()
