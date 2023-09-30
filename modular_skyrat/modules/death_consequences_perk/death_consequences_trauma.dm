@@ -105,7 +105,7 @@
 			span_bolddanger("You feel exhausted in every single possible way!") = 10,
 		),
 		DEGRADATION_LEVEL_CRITICAL = list(
-			span_revenwarning("<b>Every single part of your body is in AGONY!</b>") = 10,
+			span_revenwarning("<b>Everything hurts... it hurts so bad...</b>") = 10,
 			span_revenwarning("<b>It's so hard to think... it's so hard... so hard...</b>") = 10,
 			span_revenwarning("<b>Your body feels alien, like you don't belong in it...</b>") = 10,
 			span_revenwarning("<b>...who am I?</b>") = 1,
