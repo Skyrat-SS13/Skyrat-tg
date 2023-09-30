@@ -125,7 +125,7 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(target_mob.mind || target_mob.ckey || GetComponent(/datum/component/previous_body))
-		to_chat(user, span_warning("[target_mob] is not able to recieve a soul"))
+		to_chat(user, span_warning("[target_mob] is not able to receive a soul"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/list/soul_list = list()
