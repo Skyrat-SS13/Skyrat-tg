@@ -2,7 +2,7 @@
 /// At 100% hercuri composition, a spray of reagents will have its effective chem temp reduced by this. 50%, reduced by half this, etc.
 #define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_MAX_HEAT_DECREMENT 60
 /// At 100% hercuri composition, a spray of reagents will have its heat shock damage reduced by this. 50%, reduced by half this, etc.
-#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT 0.2
+#define ROBOTIC_BURN_REAGENT_EXPOSURE_HERCURI_HEAT_SHOCK_MULT_DECREMENT 0.3
 
 /datum/wound_pregen_data/burnt_metal
 	abstract = TRUE
