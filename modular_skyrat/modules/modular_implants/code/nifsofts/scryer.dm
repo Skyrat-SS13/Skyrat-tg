@@ -16,9 +16,7 @@
 
 /datum/nifsoft/scryer/New()
 	. = ..()
-	var/parent_resolved = parent_nif.resolve()
-	if(parent_resolved)
-		linked_scyer = new (parent_resolved)
+	linked_scyer = new (parent_nif.resolve())
 	linked_scyer.parent_nifsoft = WEAKREF(src)
 	linked_scyer.label = linked_mob.name
 
