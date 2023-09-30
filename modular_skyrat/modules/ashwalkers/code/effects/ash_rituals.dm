@@ -173,7 +173,7 @@
 	. = ..()
 	var/mob_type = pick(
 		/mob/living/basic/mining/goliath,
-		/mob/living/simple_animal/hostile/asteroid/hivelord/legion,
+		/mob/living/basic/mining/legion,
 		/mob/living/basic/mining/brimdemon,
 		/mob/living/basic/mining/watcher,
 		/mob/living/basic/mining/lobstrosity/lava,

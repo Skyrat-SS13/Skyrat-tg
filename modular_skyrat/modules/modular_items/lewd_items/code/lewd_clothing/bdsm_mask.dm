@@ -27,11 +27,14 @@
 	actions_types = list(
 		/datum/action/item_action/toggle_breathcontrol,
 		/datum/action/item_action/mask_inhale,
+		/datum/action/item_action/toggle_gag,
 	)
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
+	/// Does the gasmask impede the user's ability to talk?
+	var/speech_disabled
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -53,6 +56,9 @@
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
+	if(speech_disabled)
+		return
+
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
 	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
@@ -164,6 +170,15 @@
 	if(istype(mask))
 		mask.check()
 
+/datum/action/item_action/toggle_gag
+	name = "Toggle gag"
+	desc = "Toggles whether or not the wearer is able to speak."
+
+/datum/action/item_action/toggle_gag/Trigger(trigger_flags)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(istype(mask))
+		mask.check_gag()
+
 /datum/action/item_action/mask_inhale
 	name = "Inhale oxygen"
 	desc = "You must inhale oxygen!"
@@ -235,6 +250,19 @@
 			time_to_choke_left = time_to_choke
 	else
 		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/gas/bdsm_mask/proc/check_gag(user)
+	var/mob/living/carbon/affected_carbon = user
+	if(src == affected_carbon.wear_mask)
+		to_chat(user, span_notice("You can't reach the gag switch!"))
+	else
+		toggle_gag(affected_carbon)
+
+/obj/item/clothing/mask/gas/bdsm_mask/proc/toggle_gag(user)
+	speech_disabled = !speech_disabled
+	to_chat(user, span_notice("You [speech_disabled ? "disable" : "enable"] the gag on the mask."))
+	update_mob_action_buttonss()
+	update_icon()
 
 // Mask choke processor
 /obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
