@@ -26,8 +26,8 @@
 	prefix = "_maps/RandomRuins/IceRuins/skyrat/"
 	suffix = "icemoon_underground_icewalker_upper.dmm"
 	always_place = TRUE
-	allow_duplicates = FALSE
 	always_spawn_with = list(/datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp_below = PLACE_BELOW)
+	ruin_type = ZTRAIT_ICE_RUINS
 
 /datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp_below
 	name = "Ice Walker Camp Lower"

@@ -20,7 +20,7 @@
 		"fence_2",
 		"fence_3",
 	)
-	update_appearance(UPDATE_ICON)
+	update_appearance()
 
 /obj/structure/railing/wooden_fencing/update_icon()
 	. = ..()
@@ -57,7 +57,7 @@
 	set_density(!opened)
 	icon_state = "[opened ? "gate_open" : "gate"]"
 	playsound(src, (opened ? 'sound/machines/wooden_closet_open.ogg' : 'sound/machines/wooden_closet_close.ogg'), 100, TRUE)
-	update_appearance(UPDATE_ICON)
+	update_appearance()
 
 /obj/structure/railing/wooden_fencing/gate/update_icon()
 	. = ..()
