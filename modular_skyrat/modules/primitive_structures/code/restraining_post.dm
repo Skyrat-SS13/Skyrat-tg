@@ -30,8 +30,6 @@
 			var/mob/living/L = prisoner.pulledby
 			L.reset_pull_offsets(prisoner, TRUE)
 
-	if(!length(buckled_mobs))
-		RegisterSignal(src, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_set_anchored))
 	prisoner.set_buckled(src)
 	buckled_mobs |= prisoner
 	prisoner.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
