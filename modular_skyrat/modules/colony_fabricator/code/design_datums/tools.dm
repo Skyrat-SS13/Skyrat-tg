@@ -63,6 +63,23 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
 	)
 
+// Like an RCD or RLD, except it makes and places wallmounts
+
+/datum/design/colony_wallmount_device
+	name = "Rapid Wall Mounting Device"
+	id = "colony_wallmount_device"
+	build_type = COLONY_FABRICATOR
+	build_path = /obj/item/construction/rapid_fixture_device
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
+	)
+
 // Slightly slower drill that fits in backpacks
 
 /datum/design/colony_compact_drill
