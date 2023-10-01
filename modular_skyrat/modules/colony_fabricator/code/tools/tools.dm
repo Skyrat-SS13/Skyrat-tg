@@ -107,3 +107,23 @@
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
+
+// Electric welder but not quite as strong
+
+/obj/item/weldingtool/electric/arc_welder
+	name = "arc welding tool"
+	desc = "A specialized welding tool utilizing high powered arcs of electricity to weld things together. \
+		Compared to other electrically powered welders, this model is slow and highly power inefficient, \
+		but it still gets the job done and chances are you printed this bad boy off for free.
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
+	icon_state = "arc_welder"
+	usesound = list(
+		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_1.wav',
+		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_2.wav',
+		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_3.wav',
+		'modular_skyrat/modules/colony_fabricator/sound/arc_furnace/arc_furnace_mid_4.wav',
+	)
+	light_range = 2
+	light_power = 0.75
+	toolspeed = 1
+	power_use_amount = 500
