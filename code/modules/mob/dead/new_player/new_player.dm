@@ -125,13 +125,15 @@
 		if(JOB_NOT_VETERAN)
 			return "You need to be veteran to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_QUIRK)
-			return "[jobtitle] is restricted from your quirks."
+			return "[jobtitle] is restricted due to your selected quirks."
 		if(JOB_UNAVAILABLE_LANGUAGE)
-			return "[jobtitle] is restricted from your languages."
+			return "[jobtitle] is restricted due to your selected languages."
 		if(JOB_UNAVAILABLE_SPECIES)
-			return "[jobtitle] is restricted from your species."
+			return "[jobtitle] is restricted due to your selected species."
 		if(JOB_UNAVAILABLE_FLAVOUR)
 			return "[jobtitle] requires you to have flavour text for your character."
+		if(JOB_UNAVAILABLE_AUGMENT)
+			return "[jobtitle] is restricted due to your selected body augments."
 		//SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
@@ -214,14 +216,16 @@
 	#define IS_ACTING_CAPTAIN 1
 	#define IS_FULL_CAPTAIN 2
 	var/is_captain = IS_NOT_CAPTAIN
+	var/captain_sound = 'sound/misc/notice2.ogg'
 	// If we already have a captain, are they a "Captain" rank and are we allowing multiple of them to be assigned?
 	if(is_captain_job(job))
 		is_captain = IS_FULL_CAPTAIN
+		captain_sound = ANNOUNCER_DEPARTMENTAL // SKYRAT EDIT CHANGE - Announcer Sounds
 	// If we don't have an assigned cap yet, check if this person qualifies for some from of captaincy.
 	else if(!SSjob.assigned_captain && ishuman(character) && SSjob.chain_of_command[rank] && !is_banned_from(ckey, list(JOB_CAPTAIN)))
 		is_captain = IS_ACTING_CAPTAIN
 	if(is_captain != IS_NOT_CAPTAIN)
-		minor_announce(job.get_captaincy_announcement(character))
+		minor_announce(job.get_captaincy_announcement(character), sound_override = captain_sound)
 		SSjob.promote_to_captain(character, is_captain == IS_ACTING_CAPTAIN)
 	#undef IS_NOT_CAPTAIN
 	#undef IS_ACTING_CAPTAIN

@@ -318,6 +318,8 @@
 /atom/proc/CanPass(atom/movable/mover, border_dir)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_BE_PURE(TRUE)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_TRIED_PASS, mover, border_dir) & COMSIG_COMPONENT_PERMIT_PASSAGE)
+		return TRUE
 	if(mover.movement_type & PHASING)
 		return TRUE
 	. = CanAllowThrough(mover, border_dir)
@@ -541,6 +543,7 @@
 	SEND_SIGNAL(source, COMSIG_REAGENTS_EXPOSE_ATOM, src, reagents, methods, volume_modifier, show_message)
 	for(var/datum/reagent/current_reagent as anything in reagents)
 		. |= current_reagent.expose_atom(src, reagents[current_reagent])
+	SEND_SIGNAL(src, COMSIG_ATOM_AFTER_EXPOSE_REAGENTS, reagents, source, methods, volume_modifier, show_message)
 
 /// Are you allowed to drop this atom
 /atom/proc/AllowDrop()
@@ -704,6 +707,7 @@
 
 	. = list()
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE_MORE, user, .)
+	SEND_SIGNAL(user, COMSIG_MOB_EXAMINING_MORE, src, .)
 
 /// Wrapper for _update_appearance that is only called when APPEARANCE_SUCCESS_TRACKING is defined
 #ifdef APPEARANCE_SUCCESS_TRACKING

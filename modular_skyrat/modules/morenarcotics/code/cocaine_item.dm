@@ -52,11 +52,11 @@
 	if(covered)
 		to_chat(user, span_warning("You have to remove your [covered] first!"))
 		return
-	user.visible_message(span_notice("'[user] starts snorting the [src]."))
+	user.visible_message(span_notice("[user] starts snorting the [src]."))
 	if(do_after(user, 30))
 		to_chat(user, span_notice("You finish snorting the [src]."))
 		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
 
 /obj/item/reagent_containers/cocaine/attack(mob/target, mob/user)

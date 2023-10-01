@@ -449,7 +449,7 @@
 	if(!amount)
 		return
 
-	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transfered_by = user)
+	reagents.trans_to(target, amount * (1 - loss_factor), no_react = TRUE, transferred_by = user)
 
 	if(loss_factor && reagents.total_volume)
 		reagents.remove_any(amount * loss_factor)
@@ -483,7 +483,7 @@
 	if(!amount)
 		return
 
-	source.trans_to(reagents, amount, no_react = TRUE, transfered_by = user)
+	source.trans_to(reagents, amount, no_react = TRUE, transferred_by = user)
 
 	if(!wet)
 		set_wet(TRUE, !make_used || shape == TOWEL_USED)

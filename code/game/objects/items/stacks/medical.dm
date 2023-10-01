@@ -159,6 +159,15 @@
 	splint_factor = 0.7
 	burn_cleanliness_bonus = 0.35
 	merge_type = /obj/item/stack/medical/gauze
+	var/obj/item/bodypart/gauzed_bodypart
+
+/obj/item/stack/medical/gauze/Destroy(force)
+	. = ..()
+
+	if (gauzed_bodypart)
+		gauzed_bodypart.current_gauze = null
+		SEND_SIGNAL(gauzed_bodypart, COMSIG_BODYPART_UNGAUZED, src)
+	gauzed_bodypart = null
 
 // gauze is only relevant for wounds, which are handled in the wounds themselves
 /obj/item/stack/medical/gauze/try_heal(mob/living/patient, mob/user, silent)
@@ -415,6 +424,9 @@
 	novariants = TRUE
 	merge_type = /obj/item/stack/medical/bone_gel
 
+/obj/item/stack/medical/bone_gel/get_surgery_tool_overlay(tray_extended)
+	return "gel" + (tray_extended ? "" : "_out")
+
 /obj/item/stack/medical/bone_gel/attack(mob/living/patient, mob/user)
 	patient.balloon_alert(user, "no fractures!")
 	return
@@ -430,10 +442,10 @@
 
 	patient.emote("scream")
 	for(var/i in patient.bodyparts)
-		var/obj/item/bodypart/bone = i
-		var/datum/wound/blunt/severe/oof_ouch = new
+		var/obj/item/bodypart/bone = i // fine to just, use these raw, its a meme anyway
+		var/datum/wound/blunt/bone/severe/oof_ouch = new
 		oof_ouch.apply_wound(bone, wound_source = "bone gel")
-		var/datum/wound/blunt/critical/oof_OUCH = new
+		var/datum/wound/blunt/bone/critical/oof_OUCH = new
 		oof_OUCH.apply_wound(bone, wound_source = "bone gel")
 
 	for(var/i in patient.bodyparts)

@@ -31,7 +31,7 @@
 	if(!(C.mob_biotypes & MOB_ROBOTIC))
 		C.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			C.vomit(5, FALSE, FALSE)
+			C.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 5)
 	return ..()
 
 /datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/C, method=TOUCH, volume)

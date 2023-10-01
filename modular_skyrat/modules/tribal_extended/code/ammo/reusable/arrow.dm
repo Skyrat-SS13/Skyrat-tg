@@ -5,8 +5,12 @@
 /obj/projectile/bullet/arrow/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(isnull(target))
 		return ..()
-	if(target.type in nemesis_paths)
-		damage += faction_bonus_force
+
+	// check if target is a matching type and apply damage bonus if applicable
+	for(var/nemesis_path in nemesis_paths)
+		if(istype(target, nemesis_path))
+			damage += faction_bonus_force
+			break
 
 	return ..()
 

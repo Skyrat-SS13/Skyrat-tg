@@ -29,7 +29,7 @@
 		/obj/item/reagent_containers/hypospray/combat,\
 		/obj/item/gun/medbeam,\
 		/obj/item/storage/medkit/tactical/ntrauma,\
-		/obj/item/roller,\
+		/obj/item/emergency_bed,\
 		)
 
 /*

@@ -7,3 +7,5 @@
 /// The message displayed when someone received the View Crew Exploitables verb.
 #define VIEW_CREW_EXPLOITABLES_GAIN_TEXT "You now have access to the View Crew Exploitables verb, which shows all crew who currently have exploitable info and a link to view it!"
 
+/// How many characters will be displayed in the temporary flavor text preview before we cut it off?
+#define TEMPORARY_FLAVOR_PREVIEW_LIMIT 110

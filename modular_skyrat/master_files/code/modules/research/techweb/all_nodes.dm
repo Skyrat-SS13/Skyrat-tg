@@ -112,6 +112,7 @@
 		"nifsoft_money_sense",
 		"nifsoft_hud_kit",
 		"nifsoft_hud_science",
+		"nifsoft_hud_meson",
 		"nifsoft_hud_medical",
 		"nifsoft_hud_security",
 		"nifsoft_hud_diagnostic",
@@ -205,12 +206,14 @@
 	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
+		"mini_soulcatcher",
 	)
 
 /datum/techweb_node/neural_programming/New()
 	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
+		"rsd_interface",
 	)
 
 /datum/techweb_node/cyborg_upg_util/New()
