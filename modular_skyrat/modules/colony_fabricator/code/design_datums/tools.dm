@@ -6,6 +6,7 @@
 		"colony_power_drive",
 		"colony_prybar",
 		"colony_arc_welder",
+		"colony_wallmount_device",
 		"colony_compact_drill",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you

@@ -3,8 +3,9 @@
 /obj/item/construction/rapid_fixture_device
 	name = "Rapid Wall Mounting Device"
 	desc = "A device used to rapidly create wallmounts. Reload with iron, plasteel, glass or compressed matter cartridges."
-	icon = 'icons/obj/tools.dmi'
-	icon_state = "rld"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
+	icon_state = "fixture_maker"
+	inhand_icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	custom_materials = list(
@@ -46,9 +47,10 @@
 	. = ..()
 	populate_radial_choice_lists()
 
+/// Fills out radial_options and radial_name_to_path with items from construction_options
 /obj/item/construction/rapid_fixture_device/proc/populate_radial_choice_lists()
 	if(!length(radial_options) || !length(radial_name_to_path))
-		for(var/obj/thing as anything in construction_options)
+		for(var/obj/item/wallframe/thing in construction_options)
 			radial_name_to_path[initial(thing.name)] = thing
 			radial_options[initial(thing.name)] = image(icon = initial(thing.icon), icon_state = initial(thing.icon_state))
 
