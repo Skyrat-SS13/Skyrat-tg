@@ -9,6 +9,8 @@
 	shut_up = TRUE
 	vend_reply = null
 
+	onstation_override = FALSE
+
 	products = list(
 		/obj/item/clothing/under/dress/skirt/primitive_catgirl_body_wraps = 15,
 		/obj/item/clothing/suit/jacket/primitive_catgirl_coat = 15,
@@ -33,4 +35,6 @@
 
 /obj/machinery/vending/primitive_catgirl_clothing_vendor/Initialize(mapload)
 	. = ..()
-	onstation = FALSE
+
+/obj/machinery/vending/primitive_catgirl_clothing_vendor/speak(message)
+	return
