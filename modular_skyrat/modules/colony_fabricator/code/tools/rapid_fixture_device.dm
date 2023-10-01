@@ -69,7 +69,7 @@
 
 	mount_to_place = radial_name_to_path[choice]
 
-/obj/item/construction/rld/afterattack(atom/atom_we_attacked, mob/user)
+/obj/item/construction/rapid_fixture_device/afterattack(atom/atom_we_attacked, mob/user)
 	. = ..()
 	if(!range_check(atom_we_attacked,user))
 		return
