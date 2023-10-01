@@ -16,9 +16,13 @@
 
 /datum/nifsoft/scryer/New()
 	. = ..()
-	linked_scryer = new (parent_nif.resolve())
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_resolved = parent_nif.resolve()
+	if(!istype(parent_resolved))
+		stack_trace("[src] ([REF(src)]) tried to create a linked scryer but it had no parent_nif!")
+	if(!linked_scryer)
+		stack_trace("[src] ([REF(src)]) created with no linked scryer!")
+	linked_scyer = new (parent_resolved)
 	linked_scryer.parent_nifsoft = WEAKREF(src)
-	linked_scryer.label = linked_mob.name
 
 /datum/nifsoft/scryer/Destroy()
 	if(!QDELETED(linked_scryer))
@@ -35,8 +39,7 @@
 		if(linked_scryer)
 			var/parent_resolved = parent_nif.resolve()
 			if(parent_resolved)
-				linked_mob.transferItemToLoc(linked_scryer, parent_resolved, TRUE)
-		return TRUE
+				return linked_mob.transferItemToLoc(linked_scryer, parent_resolved, TRUE)
 
 	if(linked_mob.handcuffed)
 		linked_mob.balloon_alert(linked_mob, "handcuffed")
