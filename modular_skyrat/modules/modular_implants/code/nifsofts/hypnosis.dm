@@ -55,7 +55,7 @@
 
 		var/input_text = tgui_input_text(user, "What would you like to suggest?", "Hypnotic Suggestion")
 		to_chat(user, span_purple("You whisper into [target_human]'s ears in a soothing voice."))
-		to_chat(user, span_hypnophrase("[input_text]"))
+		to_chat(target_human, span_hypnophrase("[input_text]"))
 		secondary_choice = tgui_alert(user, "Would you like to give [target_human] an additional hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
 
 	user.visible_message(span_purple("You wake up from your deep, hypnotic slumber. The suggestions from [user] now settled into your mind."), span_purple("[target_human] wakes up from their slumber."))
