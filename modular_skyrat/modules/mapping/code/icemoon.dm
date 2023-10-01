@@ -18,22 +18,3 @@
 	description = "The Iceminer arena."
 	suffix = "icemoon_underground_mining_site_skyrat.dmm"
 	always_place = TRUE
-
-/datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp
-	name = "Ice Walker Camp"
-	id = "primitive_catgirl_den"
-	description = "A small, at times abandoned looking camp. Make no mistake however, as the inhabitants are usually just hibernating in a hole nearby"
-	prefix = "_maps/RandomRuins/IceRuins/skyrat/"
-	suffix = "icemoon_underground_icewalker_upper.dmm"
-	always_place = TRUE
-	always_spawn_with = list(/datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp_below = PLACE_BELOW)
-	ruin_type = ZTRAIT_ICE_RUINS
-
-/datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp_below
-	name = "Ice Walker Camp Lower"
-	id = "primitive_catgirl_den_bottom"
-	description = "A small, at times abandoned looking camp. Make no mistake however, as the inhabitants are usually just hibernating in a hole nearby"
-	prefix = "_maps/RandomRuins/IceRuins/skyrat/"
-	suffix = "icemoon_underground_icewalker_lower.dmm"
-	has_ceiling = FALSE
-	unpickable = TRUE
