@@ -125,6 +125,18 @@
 		)
 	)
 
+	/// Assoc list of (mob -> world.time + time_to_view_extra_data_after_scan). Used for determining if someone can use our health analyzer href
+	var/list/mob/time_til_scan_expires = list()
+	/// The amount of time someone has to view our extra info via health analyzer after scanning us.
+	var/time_to_view_extra_data_after_scan = 5 SECONDS
+
+/datum/brain_trauma/severe/death_consequences/Destroy()
+	for (var/mob/entry as anything in time_til_scan_expires)
+		UnregisterSignal(entry, COMSIG_QDELETING)
+		time_til_scan_expires -= entry
+
+	return ..()
+
 /datum/brain_trauma/severe/death_consequences/on_gain()
 	. = ..()
 
@@ -375,14 +387,48 @@
 	owner.balloon_alert_to_viewers("something terrible has happened...")
 	to_chat(self_message_target, self_message)
 
-/// Returns a large string intended for use at the bottom of health analyzers.
-/datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_info()
-	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
+/// Returns a short-ish string containing an href to [get_specific_data].
+/datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_link_text(mob/user)
 	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
 	if (final_death_delivered)
 		message += span_purple("<i>\nNeural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
+	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
+	message += span_notice("\n<a href='?src=[REF(src)];[DEATH_CONSEQUENCES_SHOW_HEALTH_ANALYZER_DATA]=1'>View degradation specifics?</a>")
+	if (permakill_if_at_max_degradation)
+		message += span_revenwarning("\n\n<b><i>SUBJECT WILL BE PERMANENTLY KILLED IF DEGRADATION REACHES MAXIMUM!</i></b>")
+
+	if (user)
+		if (isnull(time_til_scan_expires[user]))
+			RegisterSignal(user, COMSIG_QDELETING, PROC_REF(scanning_user_qdeleting))
+		time_til_scan_expires[user] = (world.time + time_to_view_extra_data_after_scan)
+
+	return message
+
+/datum/brain_trauma/severe/death_consequences/proc/scanning_user_qdeleting(datum/signal_source)
+	SIGNAL_HANDLER
+
+	time_til_scan_expires -= signal_source
+	UnregisterSignal(time_til_scan_expires, COMSIG_QDELETING)
+
+/datum/brain_trauma/severe/death_consequences/Topic(href, list/href_list)
+	. = ..()
+
+	if (href_list[DEATH_CONSEQUENCES_SHOW_HEALTH_ANALYZER_DATA])
+		if (world.time <= time_til_scan_expires[usr])
+			to_chat(usr, examine_block(get_specific_data()), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		else
+			to_chat(usr, span_warning("Your scan has expired! Try scanning again!"))
+
+/// Returns a large string intended to show specifics of how this degradation work.
+/datum/brain_trauma/severe/death_consequences/proc/get_specific_data()
+	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
+	if (final_death_delivered)
+		message += span_purple("<i>\nNeural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
+		return message
+
+	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
 	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
 	if (base_degradation_reduction_per_second_while_alive)
 		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_green("[base_degradation_reduction_per_second_while_alive] per second")].")
@@ -395,7 +441,7 @@
 	if (base_degradation_on_death)
 		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
 	if (owner_organic && rezadone_degradation_decrease)
-		message += span_danger("\nRezadone of purity at or above <i>[rezadone_minimum_purity]</i> will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
+		message += span_danger("\nRezadone of purity at or above <i>[rezadone_minimum_purity]</i>% will reduce degradation by [span_blue("[rezadone_degradation_decrease]")] per second when metabolized.")
 	if (owner_organic && strange_reagent_degradation_decrease)
 		message += span_danger("\nStrange reagent will reduce degradation by [span_blue("[strange_reagent_degradation_decrease]")] per second when metabolized.")
 	if (owner_organic && sansufentanyl_degradation_decrease)

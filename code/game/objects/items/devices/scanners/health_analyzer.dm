@@ -203,7 +203,7 @@
 				// SKYRAT EDIT ADDITION START: Death Consequences Quirk
 				if (istype(trauma, /datum/brain_trauma/severe/death_consequences))
 					var/datum/brain_trauma/severe/death_consequences/consequences_trauma = trauma
-					death_consequences_status_text = consequences_trauma.get_health_analyzer_info()
+					death_consequences_status_text = consequences_trauma.get_health_analyzer_link_text(user)
 				// SKYRAT EDIT ADDITION END: Death Consequences Quirk
 			render_list += "<span class='alert ml-1'>Cerebral traumas detected: subject appears to be suffering from [english_list(trauma_text)].</span>\n"
 		if(carbontarget.quirks.len)
