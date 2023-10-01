@@ -206,6 +206,7 @@
 	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
+		"mini_soulcatcher",
 	)
 
 /datum/techweb_node/neural_programming/New()
