@@ -106,6 +106,7 @@
 	desc = "A powered mining drill, it drills all over the place. Compact enough to hopefully fit in a backpack."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "drilla"
+	worn_icon_state = "drill"
 	w_class = WEIGHT_CLASS_NORMAL
 	toolspeed = 0.8 // Slightly slower than a normal drill
 	custom_materials = list(
