@@ -19,7 +19,7 @@
 	name = "Powered Driver"
 	id = "colony_power_drive"
 	build_type = COLONY_FABRICATOR
-	build_path = /obj/item/omni_drill
+	build_path = /obj/item/screwdriver/omni_drill
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
 		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,

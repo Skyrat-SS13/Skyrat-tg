@@ -20,6 +20,8 @@
 /obj/machinery/rnd/production/colony_lathe/Initialize(mapload)
 	. = ..()
 
+	// We don't get new designs but can't print stuff if something's not researched, so we use the web that has everything researched
+	stored_research = locate(/datum/techweb/admin) in SSresearch.techwebs
 	soundloop = new(src, FALSE)
 	if(!mapload)
 		flick("colony_lathe_deploy", src) // Sick ass deployment animation

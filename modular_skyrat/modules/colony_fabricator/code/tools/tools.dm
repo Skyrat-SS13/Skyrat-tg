@@ -1,6 +1,6 @@
 // Like the power drill, except no speed buff but has wirecutters as well? Just trust me on this one.
 
-/obj/item/omni_drill
+/obj/item/screwdriver/omni_drill
 	name = "powered driver"
 	desc = "The ultimate in multi purpose construction tools. With heads for wire cutting, bolt driving, and getting \
 		a little screwy, what's not to love? Well, the slow speed. Compared to other power drills these tend to be \
@@ -12,32 +12,37 @@
 	worn_icon_state = "drill"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	flags_1 = CONDUCT_1
-	force = 10
-	throwforce = 6
-	w_class = WEIGHT_CLASS_SMALL
-	tool_behaviour = TOOL_SCREWDRIVER
-	toolspeed = 1
-	usesound = 'sound/items/drill_use.ogg'
-	attack_verb_continuous = list("bashes", "bludgeons", "thrashes", "whacks")
-	attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
-	wound_bonus = 5
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
 		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
 	)
+	force = 10
+	throwforce = 8
+	throw_speed = 2
+	throw_range = 3
+	attack_verb_continuous = list("drills", "screws", "jabs", "whacks")
+	attack_verb_simple = list("drill", "screw", "jab", "whack")
+	hitsound = 'sound/items/drill_hit.ogg'
+	usesound = 'sound/items/drill_use.ogg'
+	w_class = WEIGHT_CLASS_SMALL
+	toolspeed = 1
+	random_color = FALSE
+	greyscale_config = null
+	greyscale_config_belt = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
 
-/obj/item/omni_drill/get_all_tool_behaviours()
+/obj/item/screwdriver/omni_drill/get_all_tool_behaviours()
 	return list(TOOL_WIRECUTTER, TOOL_SCREWDRIVER, TOOL_WRENCH)
 
-/obj/item/omni_drill/examine(mob/user)
+/obj/item/screwdriver/omni_drill/examine(mob/user)
 	. = ..()
 	. += span_notice("Use <b>in hand</b> to switch configuration.")
 	. += span_notice("It functions as a <b>[tool_behaviour]</b> tool.")
 	. += span_danger("<i>-100% random critical hit chance.</i>")
 
-/obj/item/omni_drill/update_icon_state()
+/obj/item/screwdriver/omni_drill/update_icon_state()
 	. = ..()
 	switch(tool_behaviour)
 		if(TOOL_SCREWDRIVER)
@@ -47,7 +52,7 @@
 		if(TOOL_WIRECUTTER)
 			icon_state = "[initial(icon_state)]_cut"
 
-/obj/item/omni_drill/attack_self(mob/user, modifiers)
+/obj/item/screwdriver/omni_drill/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!user)
 		return
@@ -72,7 +77,7 @@
 	playsound(src, 'sound/items/change_drill.ogg', 50, vary = TRUE)
 	update_appearance(UPDATE_ICON)
 
-/obj/item/omni_drill/proc/check_menu(mob/user)
+/obj/item/screwdriver/omni_drill/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
 	if(user.incapacitated() || !user.Adjacent(src))
