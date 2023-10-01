@@ -131,4 +131,4 @@
 	light_range = 2
 	light_power = 0.75
 	toolspeed = 1
-	power_use_amount = 500
+	power_use_amount = 100
