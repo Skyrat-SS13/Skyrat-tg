@@ -37,16 +37,17 @@
 
 	var/choice = tgui_alert(target_human, "Do you belive in hypnosis? (This will allow [user] to issue hypnotic suggestions.)", "Hypnosis", list("Yes", "No"))
 	if(choice != "Yes")
-		target_human.visible_message(span_warning("[target_human]'s attention breaks despite your efforts. They clearly don't seem interested!"), span_danger("Your attention breaks as you realize that you don't want to listen to [user]'s suggestions."))
+		to_chat(user, span_warning("[target_human]'s attention breaks despite your efforts. They clearly don't seem interested!"))
+		to_chat(target_human, span_warning("Your attention breaks as you realize that you don't want to listen to [user]'s suggestions."))
 		return FALSE
 
-	target_human.visible_message(span_purple("[target_human] falls into a deep, hypnotic slumber right at the snap of your finger."), span_purple("You suddenly fall limp at the snap of [user]'s fingers."))
-	target_human.emote("snap")
+	user.visible_message(span_purple("[target_human] falls into a deep, hypnotic slumber right at the snap of your finger."), span_purple("You suddenly fall limp at the snap of [user]'s fingers."))
+	user.emote("snap")
 	target_human.SetSleeping(60 SECONDS)
 	target_human.log_message("[target_human] was placed into a hypnotic sleep by [user].", LOG_GAME)
 
-	var/secondary_choice = tgui_alert(target_human, "Would you like to give [target_human] a hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
-	while(secondary_choice == "Suggestion" && target_human.IsUnconscious())
+	var/secondary_choice = tgui_alert(user, "Would you like to give [target_human] a hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
+	while(secondary_choice == "Suggestion" && target_human.IsSleeping())
 		if(!in_range(user, target_human))
 			to_chat(user, span_warning("You must be in whisper range to [target_human] in order to give hypnotic suggestions."))
 			target_human.SetSleeping(0)
@@ -54,8 +55,8 @@
 
 		var/input_text = tgui_input_text(user, "What would you like to suggest?", "Hypnotic Suggestion")
 		to_chat(user, span_purple("You whisper into [target_human]'s ears in a soothing voice."))
-		to_chat(target_human, span_hypnophrase("[input_text]"))
-		secondary_choice = tgui_alert(target_human, "Would you like to give [target_human] an additional hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
+		to_chat(user, span_hypnophrase("[input_text]"))
+		secondary_choice = tgui_alert(user, "Would you like to give [target_human] an additional hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
 
-	target_human.visible_message(span_purple("[target_human] wakes up from their slumber."), span_purple("You wake up from your deep, hypnotic slumber. The suggestions from [user] now settled into your mind."))
+	user.visible_message(span_purple("You wake up from your deep, hypnotic slumber. The suggestions from [user] now settled into your mind."), span_purple("[target_human] wakes up from their slumber."))
 	target_human.SetSleeping(0)
