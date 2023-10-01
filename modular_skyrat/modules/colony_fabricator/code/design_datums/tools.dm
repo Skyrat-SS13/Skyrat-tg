@@ -1,3 +1,18 @@
+/datum/techweb_node/colony_fabricator_special_tools
+	id = "colony_fabricator_tools"
+	display_name = "Colony Fabricator Tool Designs"
+	description = "Contains all of the colony fabricator's tool designs."
+	design_ids = list(
+		"colony_power_drive",
+		"colony_prybar",
+		"colony_arc_welder",
+		"colony_compact_drill",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
+	hidden = TRUE
+	show_on_wiki = FALSE
+	starting_node = TRUE
+
 // Screw-Wrench-Wirecutter combo machine
 
 /datum/design/colony_power_driver
@@ -37,7 +52,7 @@
 	name = "Arc Welder"
 	id = "colony_arc_welder"
 	build_type = COLONY_FABRICATOR
-	build_path = /obj/item/arc_welder
+	build_path = /obj/item/weldingtool/electric/arc_welder
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
