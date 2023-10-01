@@ -12,7 +12,7 @@
 // Tools that you could use the rapid fabricator for, but you're too lazy to actually do that
 
 /datum/armament_entry/company_import/kz_frontier/basic
-	subcategory = "Non-Standard Engineering Equipment"
+	subcategory = "Hand-Held Equipment"
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/basic/omni_drill
