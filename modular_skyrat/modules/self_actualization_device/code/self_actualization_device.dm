@@ -134,7 +134,7 @@
 		return FALSE
 
 	// Allows unconcious people to reject unconsentual stuff
-	var/failure = (tgui_alert(occupant, "The SAD you are within is about to rejuvinate you. Do your genes accept or reject this?", "Rejuvinate", list("Yes", "No"), timeout = 10 SECONDS) == "No")
+	var/failure = (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you. Do your genes accept or reject this?", "Rejuvenate", list("Accept", "Reject"), timeout = 10 SECONDS) == "Reject")
 
 	if (failure)
 		say("ERROR: Occupant genes have rejected the procedure. Please try again later.")
