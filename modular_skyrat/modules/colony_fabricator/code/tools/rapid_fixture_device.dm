@@ -21,6 +21,8 @@
 	var/mount_to_place
 	/// The matter cost of making a new wallmount of whatever type
 	var/build_cost = 10
+	/// How long do we take to construct?
+	var/construction_delay = 0.5 SECONDS
 	/// Icons for choosing which type of mount to place
 	var/static/list/construction_options = list(
 		/obj/item/wallframe/airalarm,
@@ -74,16 +76,16 @@
 	if(!range_check(atom_we_attacked,user))
 		return
 	var/turf/start = get_turf(src)
-	if(!checkResource(floorcost, user))
+	if(!checkResource(build_cost, user))
 		return FALSE
-	var/beam = user.Beam(atom_we_attacked,icon_state="light_beam", time = condelay)
+	var/beam = user.Beam(atom_we_attacked,icon_state="light_beam", time = construction_delay)
 	playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 	playsound(loc, 'sound/effects/light_flicker.ogg', 50, FALSE)
 
-	if(!do_after(user, condelay, target = atom_we_attacked))
+	if(!do_after(user, construction_delay, target = atom_we_attacked))
 		qdel(beam)
 		return FALSE
-	if(!checkResource(floorcost, user))
+	if(!checkResource(build_cost, user))
 		return FALSE
 	if(!iswallturf(atom_we_attacked))
 		return FALSE
