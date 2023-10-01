@@ -40,6 +40,8 @@
 			var/parent_resolved = parent_nif.resolve()
 			if(parent_resolved)
 				return linked_mob.transferItemToLoc(linked_scryer, parent_resolved, TRUE)
+				
+		return FALSE
 
 	if(linked_mob.handcuffed)
 		linked_mob.balloon_alert(linked_mob, "handcuffed")
