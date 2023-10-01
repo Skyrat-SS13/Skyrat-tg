@@ -1,5 +1,3 @@
-#define VERY_LATE_ARRIVAL_TOAST_PROB 20
-
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -546,21 +544,16 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
-	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
-	var/default_title = job.title
-	// SKYRAT EDIT ADDITION END - job.title
+	var/alt_title = player_client?.prefs.alt_job_titles[job.title]
+	// SKYRAT EDIT ADDITION END
 
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
-	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
-	if(player_client)
-		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
-
-	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
-
-	job.announce_job(equipping, chosen_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: job.announce_job(equipping)
+	equipping.mind?.set_assigned_role_with_greeting(job, player_client, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.mind?.set_assigned_role_with_greeting(job, player_client)
+	equipping.on_job_equipping(job, player_client?.prefs, player_client) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.on_job_equipping(job)
+	job.announce_job(equipping, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: job.announce_job(equipping)
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
@@ -568,46 +561,7 @@ SUBSYSTEM_DEF(job)
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
 
-
-	if(player_client)
-		to_chat(player_client, span_infoplain("As the [chosen_title == job.title ? chosen_title : "[chosen_title] ([job.title])"] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this."))
-
-	job.radio_help_message(equipping)
-
-	if(player_client)
-		if(job.req_admin_notify)
-			to_chat(player_client, span_infoplain("<b>You are playing a job that is important for Game Progression. \
-				If you have to disconnect, please notify the admins via adminhelp.</b>"))
-		if(CONFIG_GET(number/minimal_access_threshold))
-			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
-				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-				have been added to your ID card."))
-		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
-		if(chosen_title != default_title)
-			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
-			to_chat(player_client, span_infoplain(span_doyourjobidiot("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
-		//SKYRAT EDIT END
-		var/related_policy = get_policy(job.title)
-		if(related_policy)
-			to_chat(player_client, related_policy)
-			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
-				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-				have been added to your ID card."))
-
-	if(ishuman(equipping))
-		var/mob/living/carbon/human/wageslave = equipping
-		wageslave.add_mob_memory(/datum/memory/key/account, remembered_id = wageslave.account_id)
-
-		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
-
-		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
-			// SKYRAT EDIT CHANGE START - Lizards
-			if(islizard(equipping))
-				equipping.equip_to_slot_or_del(new /obj/item/food/breadslice/root(equipping), ITEM_SLOT_MASK)
-			else
-				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
-			// SKYRAT EDIT CHANGE END - Lizards
-
+	setup_alt_job_items(equipping, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -1010,5 +964,3 @@ SUBSYSTEM_DEF(job)
 		return TRUE
 
 	return FALSE
-
-#undef VERY_LATE_ARRIVAL_TOAST_PROB
