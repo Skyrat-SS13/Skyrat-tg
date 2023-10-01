@@ -114,7 +114,7 @@
 	name = "arc welding tool"
 	desc = "A specialized welding tool utilizing high powered arcs of electricity to weld things together. \
 		Compared to other electrically powered welders, this model is slow and highly power inefficient, \
-		but it still gets the job done and chances are you printed this bad boy off for free.
+		but it still gets the job done and chances are you printed this bad boy off for free."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "arc_welder"
 	usesound = list(
