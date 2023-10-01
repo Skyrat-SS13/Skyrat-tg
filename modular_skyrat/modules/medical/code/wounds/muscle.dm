@@ -6,10 +6,7 @@
 /datum/wound/muscle
 	name = "Muscle Wound"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
-	wound_type = WOUND_BLUNT
 	wound_flags = (ACCEPTS_GAUZE | SPLINT_OVERLAY)
-
-	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
 
 	processes = TRUE
 	/// How much do we need to regen. Will regen faster if we're splinted and or laying down
@@ -17,55 +14,25 @@
 	/// Our current counter for healing
 	var/regen_ticks_current = 0
 
+	can_scar = FALSE
+
 /datum/wound_pregen_data/muscle
 	abstract = TRUE
 
 	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	required_limb_biostate = BIO_FLESH
 
-/datum/wound_pregen_data/muscle/can_be_applied_to(obj/item/bodypart/limb, wound_type, datum/wound/old_wound, random_roll)
-	if (!istype(limb) || !limb.owner)
-		return FALSE
+	required_wounding_types = list(WOUND_BLUNT, WOUND_SLASH, WOUND_PIERCE)
+	match_all_wounding_types = FALSE
 
-	if (random_roll && !can_be_randomly_generated)
-		return FALSE
+	wound_series = WOUND_SERIES_MUSCLE_DAMAGE
 
-	if (HAS_TRAIT(limb.owner, TRAIT_NEVER_WOUNDED) || (limb.owner.status_flags & GODMODE))
-		return FALSE
-	// THIS IS HIGHLY TEMPORARY A PROC WILL COME FROM UPSTREAM THAT SHOULD REPLACE THIS!! REPLACE IT!!!!!!!!!!!! REMOVE THE OVERRIDE 8/31/23 ~Niko
-	if (wound_type != (WOUND_BLUNT) && wound_type != (WOUND_SLASH) && wound_type != (WOUND_PIERCE))
-		return FALSE
-	else
-		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
-			if (preexisting_wound.wound_series == initial(wound_path_to_generate.wound_series))
-				if (preexisting_wound.severity >= initial(wound_path_to_generate.severity))
-					return FALSE
-
-	if (!ignore_cannot_bleed && ((required_limb_biostate & BIO_BLOODED) && !limb.can_bleed()))
-		return FALSE
-
-	if (!biostate_valid(limb.biological_state))
-		return FALSE
-
-	if (!(limb.body_zone in viable_zones))
-		return FALSE
-
-	// we accept promotions and demotions, but no point in redundancy. This should have already been checked wherever the wound was rolled and applied for (see: bodypart damage code), but we do an extra check
-	// in case we ever directly add wounds
-	if (!duplicates_allowed)
-		for (var/datum/wound/preexisting_wound as anything in limb.wounds)
-			if (preexisting_wound.type == wound_path_to_generate && (preexisting_wound != old_wound))
-				return FALSE
-	return TRUE
+	weight = 3 // very low chance to replace a normal wound. this is about 4.5%
 
 /*
 	Overwriting of base procs
 */
 /datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
-	// hook into gaining/losing gauze so crit muscle wounds can re-enable/disable depending if they're slung or not
-	RegisterSignals(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), PROC_REF(update_inefficiencies))
-
-	RegisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
 	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
 		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
 		if(istype(I, /obj/item/offhand))
@@ -74,14 +41,19 @@
 		if(I && victim.dropItemToGround(I))
 			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
-	update_inefficiencies()
+	return ..()
+
+/datum/wound/muscle/set_victim(new_victim)
+	if (victim)
+		UnregisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
+
+	if (new_victim)
+		RegisterSignal(new_victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
+
+	return ..()
 
 /datum/wound/muscle/remove_wound(ignore_limb, replaced)
 	limp_slowdown = 0
-	if(limb)
-		UnregisterSignal(limb, list(COMSIG_BODYPART_GAUZED, COMSIG_BODYPART_GAUZE_DESTROYED))
-	if(victim)
-		UnregisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
 	return ..()
 
 /datum/wound/muscle/handle_process()
@@ -149,43 +121,17 @@
 
 	return "<B>[msg.Join()]</B>"
 
-/*
-	Common procs mostly copied from bone wounds, as their behaviour is very similar
-*/
-
-/datum/wound/muscle/proc/update_inefficiencies()
-	SIGNAL_HANDLER
-	if(limb.body_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
-		if(limb.current_gauze)
-			limp_slowdown = initial(limp_slowdown) * limb.current_gauze.splint_factor
-		else
-			limp_slowdown = initial(limp_slowdown)
-		victim.apply_status_effect(/datum/status_effect/limp)
-	else if(limb.body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		if(limb.current_gauze)
-			interaction_efficiency_penalty = 1 + ((interaction_efficiency_penalty - 1) * limb.current_gauze.splint_factor)
-		else
-			interaction_efficiency_penalty = interaction_efficiency_penalty
-
-	if(initial(disabling))
-		if(limb.current_gauze)
-			set_disabling(FALSE)
-		else
-			set_disabling(TRUE)
-
-	limb.update_wounds()
-
 /// Moderate (Muscle Tear)
 /datum/wound/muscle/moderate
 	name = "Muscle Tear"
 	desc = "Patient's muscle has torn, causing serious pain and reduced limb functionality."
-	treat_text = "Recommended rest and sleep, or splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "appears unnaturallly red and swollen"
 	occur_text = "swells up, it's skin turning red"
 	severity = WOUND_SEVERITY_MODERATE
 	interaction_efficiency_penalty = 1.5
 	limp_slowdown = 2
-	threshold_minimum = 35
+	limp_chance = 30
 	threshold_penalty = 15
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
 	regen_ticks_needed = 90
@@ -194,6 +140,7 @@
 	abstract = FALSE
 
 	wound_path_to_generate = /datum/wound/muscle/moderate
+	threshold_minimum = 35
 
 /*
 	Severe (Ruptured Tendon)
@@ -203,13 +150,13 @@
 	name = "Ruptured Tendon"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
 	desc = "Patient's tendon has been severed, causing significant pain and near uselessness of limb."
-	treat_text = "Recommended rest and sleep aswell as splinting the limb."
+	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
 	examine_desc = "is limp and awkwardly twitching, skin swollen and red"
 	occur_text = "twists in pain and goes limp, it's tendon ruptured"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 5
-	threshold_minimum = 80
+	limp_chance = 40
 	threshold_penalty = 35
 	disabling = TRUE
 	status_effect_type = /datum/status_effect/wound/muscle/severe
@@ -219,42 +166,10 @@
 	abstract = FALSE
 
 	wound_path_to_generate = /datum/wound/muscle/severe
-
-/datum/status_effect/wound/muscle
-
-/datum/status_effect/wound/muscle/on_apply()
-	. = ..()
-	RegisterSignal(owner, COMSIG_MOB_SWAP_HANDS, PROC_REF(on_swap_hands))
-	on_swap_hands()
-
-/datum/status_effect/wound/muscle/on_remove()
-	. = ..()
-	UnregisterSignal(owner, COMSIG_MOB_SWAP_HANDS)
-	var/mob/living/carbon/wound_owner = owner
-	wound_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound)
-
-/datum/status_effect/wound/muscle/proc/on_swap_hands()
-	SIGNAL_HANDLER
-
-	var/mob/living/carbon/wound_owner = owner
-	if(wound_owner.get_active_hand() == linked_limb)
-		wound_owner.add_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound, (linked_wound.interaction_efficiency_penalty - 1))
-	else
-		wound_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/muscle_wound)
-
-/datum/status_effect/wound/muscle/nextmove_modifier()
-	var/mob/living/carbon/C = owner
-
-	if(C.get_active_hand() == linked_limb)
-		return linked_wound.interaction_efficiency_penalty
-
-	return 1
+	threshold_minimum = 80
 
 // muscle
 /datum/status_effect/wound/muscle/moderate
 	id = "torn muscle"
 /datum/status_effect/wound/muscle/severe
 	id = "ruptured tendon"
-
-/datum/actionspeed_modifier/muscle_wound
-	variable = TRUE

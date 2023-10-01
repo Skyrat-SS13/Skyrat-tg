@@ -150,7 +150,6 @@
 #define ANNOUNCER_ICARUS "announcer_icarus"
 #define ANNOUNCER_NRI_RAIDERS "announcer_nri_raiders"
 #define ANNOUNCER_OUTBREAK6 "announcer_outbreak6"
-#define ANNOUNCER_FUNGI "announcer_fungi"
 #define ANNOUNCER_DEPARTMENTAL "announcer_departmental"
 #define ANNOUNCER_SHUTTLE "announcer_shuttle"
 //SKYRAT EDIT END
@@ -199,7 +198,6 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_ICARUS,
 	ANNOUNCER_NRI_RAIDERS,
 	ANNOUNCER_OUTBREAK6,
-	ANNOUNCER_FUNGI,
 	//SKYRAT EDIT END
 ))
 
