@@ -5,7 +5,7 @@
 /datum/armament_entry/company_import/kz_frontier/manufacturing
 	subcategory = "Manufacturing Equipment"
 
-/datum/armament_entry/company_import/kz_frontier/rapid_construction_fabricator
+/datum/armament_entry/company_import/kz_frontier/manufacturing/rapid_construction_fabricator
 	item_type = /obj/item/flatpacked_machine
 	cost = CARGO_CRATE_VALUE * 8
 
