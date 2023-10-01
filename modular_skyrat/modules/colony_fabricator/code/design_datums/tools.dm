@@ -6,7 +6,6 @@
 		"colony_power_drive",
 		"colony_prybar",
 		"colony_arc_welder",
-		"colony_wallmount_device",
 		"colony_compact_drill",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
@@ -58,23 +57,6 @@
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
 		/datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT * 1.5,
-	)
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED,
-	)
-
-// Like an RCD or RLD, except it makes and places wallmounts
-
-/datum/design/colony_wallmount_device
-	name = "Rapid Wall Mounting Device"
-	id = "colony_wallmount_device"
-	build_type = COLONY_FABRICATOR
-	build_path = /obj/item/construction/rapid_fixture_device
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
-		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
-		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,
 	)
 	category = list(
 		RND_CATEGORY_INITIAL,
