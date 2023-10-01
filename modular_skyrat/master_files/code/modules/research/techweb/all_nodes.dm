@@ -212,6 +212,7 @@
 	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
+		"rsd_interface",
 	)
 
 /datum/techweb_node/cyborg_upg_util/New()
