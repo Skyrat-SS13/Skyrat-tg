@@ -36,12 +36,12 @@
 	buckled_mobs |= prisoner
 	prisoner.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
 	prisoner.set_glide_size(glide_size)
-	prisoner.AddComponent(
-		/datum/component/leash,
-		owner = src,
-		distance = 2,
-		force_teleport_out_effect = null,
-		force_teleport_in_effect = null,
+	prisoner.AddComponent( \
+		/datum/component/leash, \
+		owner = src, \
+		distance = 2, \
+		force_teleport_out_effect = null, \
+		force_teleport_in_effect = null, \
 	)
 
 	//Something has unbuckled us in reaction to the above movement
