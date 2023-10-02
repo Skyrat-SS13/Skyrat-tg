@@ -1309,6 +1309,15 @@
 	req_components = list(
 		/datum/stock_part/card_reader = 1)
 
+/obj/item/circuitboard/machine/fishing_portal_generator
+	name = "Fishing Portal Generator"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/fishing_portal_generator
+	req_components = list(
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/capacitor = 1)
+	needs_anchored = FALSE
+
 //Supply
 /obj/item/circuitboard/machine/ore_redemption
 	name = "Ore Redemption"
@@ -1357,16 +1366,14 @@
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/rnd/production/techfab/department/cargo
 
-/obj/item/circuitboard/machine/bepis
-	name = "BEPIS Chamber"
+/obj/item/circuitboard/machine/materials_market
+	name = "Galactic Materials Market"
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
-	build_path = /obj/machinery/rnd/bepis
+	build_path = /obj/machinery/materials_market
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/datum/stock_part/capacitor = 1,
-		/datum/stock_part/servo = 1,
-		/datum/stock_part/micro_laser = 1,
-		/datum/stock_part/scanning_module = 1)
+		/datum/stock_part/scanning_module = 1,
+		/datum/stock_part/card_reader = 1)
 
 //Misc
 /obj/item/circuitboard/machine/sheetifier
@@ -1526,4 +1533,23 @@
 		/datum/stock_part/capacitor = 2,
 		/obj/item/mod/module/rad_protection = 1,
 		/obj/item/stack/sheet/plasteel = 2,
+	)
+
+/obj/item/circuitboard/machine/quantum_server
+	name = "Quantum Server"
+	greyscale_colors = CIRCUIT_COLOR_SUPPLY
+	build_path = /obj/machinery/quantum_server
+	req_components = list(
+		/datum/stock_part/servo = 2,
+		/datum/stock_part/scanning_module = 1,
+		/datum/stock_part/capacitor = 1,
+	)
+
+/obj/item/circuitboard/machine/netpod
+	name = "Netpod"
+	greyscale_colors = CIRCUIT_COLOR_SUPPLY
+	build_path = /obj/machinery/netpod
+	req_components = list(
+		/datum/stock_part/servo = 1,
+		/datum/stock_part/matter_bin = 2,
 	)
