@@ -36,6 +36,7 @@
 	desc = "Cloth bracers, the colour all left up to the choice of the wearer."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	icon_state = "arm_wraps"
+	inhand_icon_state = "greyscale_gloves"
 	greyscale_config = /datum/greyscale_config/armwraps
 	greyscale_config_worn = /datum/greyscale_config/armwraps/worn
 	greyscale_colors = "#FFFFFF"
