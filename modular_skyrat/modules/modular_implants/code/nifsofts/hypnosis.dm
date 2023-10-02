@@ -1,6 +1,6 @@
 /datum/nifsoft/action_granter/hypnosis
 	name = "Purpura Eye"
-	program_desc = "Based on the hypnotic equipment provided by the LustWish vendor, the purpura eyes NIFSoft allows the user to ensare others in a hypnotic trance. ((This is intended as a tool for ERP, don't use this for gameplay reasons.))"
+	program_desc = "Based on the hypnotic equipment provided by the LustWish vendor, the purpura eyes NIFSoft allows the user to ensnare others in a hypnotic trance. ((This is intended as a tool for ERP, don't use this for gameplay reasons.))"
 	buying_category = NIFSOFT_CATEGORY_FUN
 	lewd_nifsoft = TRUE
 	purchase_price = 150
@@ -35,13 +35,13 @@
 	if(!do_after(user, 12 SECONDS, target_human))
 		return FALSE
 
-	var/choice = tgui_alert(target_human, "Do you belive in hypnosis? (This will allow [user] to issue hypnotic suggestions.)", "Hypnosis", list("Yes", "No"))
+	var/choice = tgui_alert(target_human, "Do you believe in hypnosis? (This will allow [user] to issue hypnotic suggestions.)", "Hypnosis", list("Yes", "No"))
 	if(choice != "Yes")
 		to_chat(user, span_warning("[target_human]'s attention breaks despite your efforts. They clearly don't seem interested!"))
 		to_chat(target_human, span_warning("Your attention breaks as you realize that you don't want to listen to [user]'s suggestions."))
 		return FALSE
 
-	user.visible_message(span_purple("[target_human] falls into a deep, hypnotic slumber right at the snap of your finger."), span_purple("You suddenly fall limp at the snap of [user]'s fingers."))
+	user.visible_message(span_purple("[target_human] falls into a deep, hypnotic slumber right at the snap of your fingers."), span_purple("You suddenly fall limp at the snap of [user]'s fingers."))
 	user.emote("snap")
 	target_human.SetSleeping(60 SECONDS)
 	target_human.log_message("[target_human] was placed into a hypnotic sleep by [user].", LOG_GAME)

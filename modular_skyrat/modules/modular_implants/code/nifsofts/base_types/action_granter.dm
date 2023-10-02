@@ -19,8 +19,8 @@
 		granted_action.Remove(linked_mob)
 
 /datum/nifsoft/action_granter/Destroy()
-	. = ..()
 	if(granted_action)
 		QDEL_NULL(granted_action)
+	return ..()
 
 
