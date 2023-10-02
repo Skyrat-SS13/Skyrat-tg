@@ -2,8 +2,8 @@
 
 /obj/item/screwdriver/omni_drill
 	name = "powered driver"
-	desc = "The ultimate in multi purpose construction tools. With heads for wire cutting, bolt driving, and getting \
-		a little screwy, what's not to love? Well, the slow speed. Compared to other power drills these tend to be \
+	desc = "The ultimate in multi purpose construction tools. With heads for wire cutting, bolt driving, and driving \
+		screws, what's not to love? Well, the slow speed. Compared to other power drills these tend to be \
 		<b>not much quicker than unpowered tools</b>."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "drill"
@@ -88,7 +88,7 @@
 
 /obj/item/crowbar/large/doorforcer
 	name = "prybar"
-	desc = "A large, well look its a big crowbar, painted orange. This one just happens to be tough enough to \
+	desc = "A large, sturdy crowbar, painted orange. This one just happens to be tough enough to \
 		survive <b>forcing doors open</b>."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "prybar"

@@ -40,7 +40,7 @@
 		var/turf/where_we_spawn_air = get_turf(src)
 		where_we_spawn_air.atmos_spawn_air("co2=10;TEMP=480") // Standard UK diesel engine operating temp is about 220 celsius or ~473 K
 
-// Item for creating the arc furnace or carrying it around
+// Item for creating the generator or carrying it around
 
 /obj/item/flatpacked_machine/fuel_generator
 	name = "\improper flatpacked solid fuel generator"
