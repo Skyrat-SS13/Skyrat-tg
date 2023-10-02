@@ -19,6 +19,7 @@
 		"flatpack_station_battery",
 		"flatpack_station_battery_large",
 		"flatpack_fuel_generator",
+		"flatpack_rtg",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -128,7 +129,7 @@
 	)
 	construction_time = 40 SECONDS
 
-// Power storage structures
+// PACMAN generator but epic!!
 
 /datum/design/flatpack_solids_generator
 	name = "Flatpacked Solid Fuel Generator"
@@ -141,6 +142,23 @@
 		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/flatpacked_machine/fuel_generator
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 30 SECONDS
+
+// Buildable RTG that is quite radioactive
+
+/datum/design/flatpack_rtg
+	name = "Flatpacked Radioisotope Thermoelectric Generator"
+	id = "flatpack_rtg"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 2
+	)
+	build_path = /obj/item/flatpacked_machine/rtg
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_POWER,
