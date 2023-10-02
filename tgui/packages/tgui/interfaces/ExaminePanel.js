@@ -12,6 +12,7 @@ const formatURLs = (text) => {
     parts.push(text.substring(lastIndex, index));
     parts.push(
       <a
+        title={url}
         style={{
           'color': '#0591e3',
           'text-decoration': 'none',
