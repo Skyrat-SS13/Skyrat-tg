@@ -161,7 +161,7 @@
 /datum/brain_trauma/severe/death_consequences/on_death()
 	. = ..()
 
-	if (base_degradation_on_death > 0)
+	if (base_degradation_on_death != 0)
 		if ((world.time - time_required_between_deaths_to_degrade) <= last_time_degraded_on_death)
 			return
 
@@ -178,6 +178,8 @@
 		last_time_degraded_on_death = world.time
 
 /datum/brain_trauma/severe/death_consequences/process(seconds_per_tick)
+	if (owner.status_flags & GODMODE)
+		return
 
 	var/is_dead = (owner.stat == DEAD)
 	var/degradation_increase = get_passive_degradation_increase(is_dead) * seconds_per_tick
@@ -200,9 +202,11 @@
 
 		if (owner.has_reagent(/datum/reagent/toxin/formaldehyde, needs_metabolizing = FALSE))
 			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/toxin/formaldehyde)
-			if (!reagent_process_flags_valid(owner, reagent_instance))
-				return FALSE
-			increase *= formaldehyde_death_degradation_mult
+			if (reagent_process_flags_valid(owner, reagent_instance))
+				increase *= formaldehyde_death_degradation_mult
+	else
+		if (base_degradation_reduction_per_second_while_alive < 0) // if you wanna die slowly while alive, go ahead bud
+			increase -= base_degradation_reduction_per_second_while_alive
 
 	if (IS_IN_STASIS(owner))
 		increase *= on_stasis_death_degradation_mult
@@ -213,7 +217,8 @@
 	var/decrease = 0
 
 	if (!is_dead)
-		decrease += base_degradation_reduction_per_second_while_alive
+		if (base_degradation_reduction_per_second_while_alive > 0)
+			decrease += base_degradation_reduction_per_second_while_alive
 
 		if (owner.has_reagent(/datum/reagent/medicine/rezadone, needs_metabolizing = TRUE))
 			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/rezadone)
@@ -232,7 +237,6 @@
 		var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/strange_reagent)
 		if (reagent_process_flags_valid(owner, reagent_instance))
 			decrease += strange_reagent_degradation_decrease
-
 
 	return (decrease * get_passive_degradation_decrease_mult())
 
