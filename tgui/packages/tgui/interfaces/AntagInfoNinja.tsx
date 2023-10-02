@@ -13,7 +13,6 @@ type NinjaInfo = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT ADDITION <Rules />
 export const AntagInfoNinja = (props, context) => {
   const { data } = useBackend<NinjaInfo>(context);
   const { objectives, can_change_objective } = data;
@@ -49,9 +48,11 @@ export const AntagInfoNinja = (props, context) => {
                 what you can do!
               </Section>
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Item>
               <ObjectivePrintout
                 objectives={objectives}
@@ -71,7 +72,7 @@ export const AntagInfoNinja = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -106,4 +107,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

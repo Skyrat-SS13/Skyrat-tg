@@ -54,7 +54,6 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT ADDITION <Rules />
 // SKYRAT EDIT change height from 750 to 900
 export const AntagInfoChangeling = (props, context) => {
   return (
@@ -67,9 +66,11 @@ export const AntagInfoChangeling = (props, context) => {
           <Stack.Item maxHeight={16}>
             <IntroductionSection />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
           <Stack.Item grow={4}>
             <AbilitiesSection />
           </Stack.Item>
@@ -265,7 +266,7 @@ const VictimPatternsSection = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -292,4 +293,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

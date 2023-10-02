@@ -13,7 +13,6 @@ const noticestyle = {
   color: 'lightblue',
 };
 
-// SKYRAT ADDITION <Rules />
 export const AntagInfoMorph = (props, context) => {
   return (
     <Window width={620} height={170} theme="abductor">
@@ -49,16 +48,18 @@ export const AntagInfoMorph = (props, context) => {
               </span>{' '}
             </BlockQuote>
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -91,4 +92,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

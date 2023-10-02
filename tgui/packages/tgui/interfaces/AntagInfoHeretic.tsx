@@ -52,7 +52,6 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT ADDITION <Rules />
 const IntroductionSection = (props, context) => {
   const { data, act } = useBackend<Info>(context);
   const { objectives, ascended, can_change_objective } = data;
@@ -64,9 +63,11 @@ const IntroductionSection = (props, context) => {
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
+            {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Divider />
             <GuideSection />
             <Stack.Divider />
@@ -346,7 +347,7 @@ export const AntagInfoHeretic = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -379,4 +380,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

@@ -14,7 +14,6 @@ type Data = {
 
 const BLOB_COLOR = '#556b2f';
 
-// SKYRAT ADDITION <Rules />
 export const AntagInfoBlob = (props, context) => {
   return (
     <Window width={400} height={550}>
@@ -26,7 +25,7 @@ export const AntagInfoBlob = (props, context) => {
           <Structures />
           <Minions />
           <ObjectiveDisplay />
-          <Rules />
+          <Rules /* SKYRAT EDIT ADDITION */ />
         </Section>
       </Window.Content>
     </Window>
@@ -195,7 +194,7 @@ const ObjectiveDisplay = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION BEGIN
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -219,4 +218,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

@@ -9,7 +9,6 @@ const noticestyle = {
   color: 'lightblue',
 };
 
-// SKYRAT ADDITION <Rules />
 export const AntagInfoNightmare = (props, context) => {
   return (
     <Window width={620} height={340}>
@@ -69,16 +68,18 @@ export const AntagInfoNightmare = (props, context) => {
               </LabeledList>
             </Section>
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -112,4 +113,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

@@ -38,7 +38,6 @@ type Info = {
   objectives: Objective[];
 };
 
-// SKYRAT ADDITION: SPECIAL RULES AND METAPROTECTIONS
 const IntroductionSection = (props, context) => {
   const { act, data } = useBackend<Info>(context);
   const { intro, objectives } = data;
@@ -49,6 +48,7 @@ const IntroductionSection = (props, context) => {
         <Stack.Item grow>
           <ObjectivePrintout objectives={objectives} />
         </Stack.Item>
+        {/* SKYRAT EDIT ADDITION START */}
         <Stack.Item grow>
           <Stack vertical>
             <Stack.Item bold>Special Rules:</Stack.Item>
@@ -78,6 +78,7 @@ const IntroductionSection = (props, context) => {
             </Stack.Item>
           </Stack>
         </Stack.Item>
+        {/* SKYRAT EDIT ADDITION END */}
       </Stack>
     </Section>
   );

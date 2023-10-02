@@ -35,7 +35,6 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT ADDITION <Rules />
 const IntroductionSection = (props, context) => {
   const { act, data } = useBackend<Info>(context);
   const { intro, objectives, can_change_objective } = data;
@@ -56,7 +55,7 @@ const IntroductionSection = (props, context) => {
               />
             }
           />
-          <Rules />
+          <Rules /* SKYRAT EDIT ADDITION */ />
         </Stack.Item>
       </Stack>
     </Section>
@@ -251,7 +250,7 @@ export const AntagInfoMalf = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -301,4 +300,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

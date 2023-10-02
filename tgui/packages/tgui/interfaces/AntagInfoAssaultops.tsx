@@ -39,7 +39,6 @@ type Info = {
   goldeneye_keys: GoldeneyeKeys[];
 };
 
-// SKYRAT ADDITION <Rules />
 export const AntagInfoAssaultops = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { data } = useBackend<Info>(context);
@@ -118,9 +117,11 @@ export const AntagInfoAssaultops = (props, context) => {
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
@@ -241,7 +242,7 @@ const KeyPrintout = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION BEGIN
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -280,4 +281,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

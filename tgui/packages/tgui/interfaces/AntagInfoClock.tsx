@@ -6,7 +6,6 @@ type Info = {
   antag_name: string;
 };
 
-// SKYRAT ADDITION <Rules />
 // SKYRAT EDIT change height from 250 to 350
 export const AntagInfoClock = (props, context) => {
   const { data } = useBackend<Info>(context);
@@ -21,9 +20,11 @@ export const AntagInfoClock = (props, context) => {
               {' You are the ' + antag_name + '! '}
               <Icon name={'cog'} rotation={35} spin />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Item>
               <ObjectivePrintout />
             </Stack.Item>
@@ -53,7 +54,7 @@ const ObjectivePrintout = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -82,4 +83,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

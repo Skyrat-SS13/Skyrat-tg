@@ -8,7 +8,6 @@ type Info = {
   objectives: Objective[];
 };
 
-// SKYRAT ADDITION <Rules />
 // SKYRAT EDIT increase height from 250 to 500
 export const AntagInfoGeneric = (props, context) => {
   const { data } = useBackend<Info>(context);
@@ -21,9 +20,11 @@ export const AntagInfoGeneric = (props, context) => {
             <Stack.Item textColor="red" fontSize="20px">
               You are the {antag_name}!
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION START */}
             <Stack.Item>
               <Rules />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Item>
               <ObjectivePrintout objectives={objectives} />
             </Stack.Item>
@@ -34,7 +35,7 @@ export const AntagInfoGeneric = (props, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   const { data } = useBackend<Info>(context);
   const { antag_name } = data;
@@ -306,4 +307,4 @@ const Rules = (props, context) => {
       break;
   }
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END

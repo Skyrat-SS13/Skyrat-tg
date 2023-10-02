@@ -48,7 +48,6 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-// SKYRAT ADDITION <Rules />
 // SKYRAT CHANGE height from 630 to 700
 export const AntagInfoWizard = (props, context) => {
   const { data, act } = useBackend<Info>(context);
@@ -80,9 +79,11 @@ export const AntagInfoWizard = (props, context) => {
                 <Stack.Item>
                   <RitualPrintout ritual={ritual} />
                 </Stack.Item>
+                {/* SKYRAT EDIT ADDITION START */}
                 <Stack.Item>
                   <Rules />
                 </Stack.Item>
+                {/* SKYRAT EDIT ADDITION END */}
               </Stack>
             </Section>
           </Stack.Item>
@@ -177,7 +178,7 @@ const RitualPrintout = (props: { ritual: GrandRitual }, context) => {
   );
 };
 
-// [SKYRAT ADDITION BEGIN]
+// SKYRAT EDIT ADDITION START
 const Rules = (props, context) => {
   return (
     <Stack vertical>
@@ -196,4 +197,4 @@ const Rules = (props, context) => {
     </Stack>
   );
 };
-// [SKYRAT ADDITION END]
+// SKYRAT EDIT ADDITION END
