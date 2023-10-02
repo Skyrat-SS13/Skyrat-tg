@@ -67,7 +67,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              "- The Medical department: Is aware of Abductors, and their habit for replacing organs, once they're confirmed, medical should be on the prowl for people behaving weirdly, or else-wise, vanishing for periods of time, essentially:, everything science knows."
+              "- The Medical department: is aware of Abductors, and their habit for replacing organs, once they're confirmed, medical should be on the prowl for people behaving weirdly, or else-wise, vanishing for periods of time--essentially they know everything science knows."
             }
           </Stack.Item>
           <Stack.Item>
@@ -89,7 +89,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it, regardless of if you can afford a bomb or not, and stick to your goal of kidnapping."
+              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it--regardless of if you can afford a bomb or not--and stick to your goal of kidnapping."
             }
           </Stack.Item>
           <Stack.Item>
@@ -207,7 +207,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Metaprotections:</Stack.Item>
           <Stack.Item>
             {
-              'The Curator and Chaplain both have complete knowledge of what you are and what you’re capable of, and just as well, the Chaplain can, will, and should hunt you down. Everyone at the very least can know that the ashes left behind by the Revenant should be scattered to dismiss it. Aside from scattering ashes, however, the Curator and Chaplain, as well as CC, are the only people who know a Revenant’s weaknesses… besides just shooting them.'
+              'The Curator and Chaplain both have complete knowledge of what you are and what you’re capable of, and just as well, the Chaplain can, will, and should hunt you down. Everyone at the very least can know that the ashes left behind by the Revenant should be scattered to dismiss it. Aside from scattering ashes, however, the Curator and Chaplain--as well as CC--are the only people who know a Revenant’s weaknesses… besides just shooting them.'
             }
           </Stack.Item>
         </Stack>
@@ -249,7 +249,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              "- You come with a giant announcement telling everyone you're here for a fight, so expect to be attacked almost instantly, this means while you are not PMS; you are also not protected from validhunting in general, as you are actively a threat to everyone. The only exception is the 'NRI Police' / 'NRI Patrol' variation of pirates, which announce more neutral terms."
+              "- You come with a giant announcement telling everyone you're here for a fight, so expect to be attacked almost instantly. This means while you are not PMS; you are also not protected from validhunting in general, as you are actively a threat to everyone. The only exception is the 'NRI Police' / 'NRI Patrol' variation of pirates, which announce more neutral terms."
             }
           </Stack.Item>
           <Stack.Item>
@@ -280,17 +280,17 @@ const Rules = (props, context) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              "- Most of your actions should be focused around your objectives, or the people directly related to them, you shouldn't be going after randoms, or bombing medbay just to do it."
+              "- Most of your actions should be focused around your objectives, or the people directly related to them; you shouldn't be going after randoms, or bombing medbay just to do it."
             }
           </Stack.Item>
           <Stack.Item>
             {
-              "- If you want to do something targeting a player in specific, a department at large, or the station at large, make an opfor, else-wise, opfors are only required for actions of high-intensity (see: breaking into engineering and stealing the protolathe), where as low intensity (emagging into engineering and printing jaws) doesn't"
+              "- If you want to do something targeting a specific player, a department at large, or the station at large make an opfor; else-wise, opfors are only required for actions of high-intensity (see: breaking into engineering and stealing the protolathe). Whereas low intensity (emagging into engineering and printing jaws) doesn't."
             }
           </Stack.Item>
           <Stack.Item>
             {
-              "- Regardless of having very-forward objectives, you should be trying to generate as much RP as you can while doing them, even something as simple as 'steal the hand tele' can have a story spark from it with a bit of effort."
+              "- Regardless of having very-forward objectives, you should be trying to generate as much RP as you can while doing them. Even something as simple as 'steal the hand tele' can have a story spark from it with a bit of effort."
             }
           </Stack.Item>
           <Stack.Item bold>Metaprotections:</Stack.Item>
@@ -299,7 +299,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              "- If it's not in contraband, it's either not illegal, or else-wise unknown, and should be treated as it appears."
+              "- If it's not in contraband it's either not illegal or else-wise unknown and should be treated as it appears."
             }
           </Stack.Item>
         </Stack>

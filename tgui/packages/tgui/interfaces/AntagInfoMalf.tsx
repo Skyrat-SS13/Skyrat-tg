@@ -271,7 +271,7 @@ const Rules = (props, context) => {
       <Stack.Item>{'- Cyborgs on the Interlink do not exist.'}</Stack.Item>
       <Stack.Item>
         {
-          '- During the Doomsday countdown, every cyborg on the station, and you, are in a PMS. There is fundamentally no time to discern between the good and bad in the moment, and the clock is ticking.'
+          '- During the Doomsday countdown every cyborg on the station--and you--are in a PMS. There is fundamentally no time to discern between the good and bad in the moment, and the clock is ticking.'
         }
       </Stack.Item>
       <Stack.Item>
@@ -286,7 +286,7 @@ const Rules = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {
-          '- You are allowed to blow your own borgs, if they came out of a factory.'
+          '- You are allowed to blow your own borgs if they came out of a factory.'
         }
       </Stack.Item>
       <Stack.Item>{'- YOU NEED AN ACCEPTED OPFOR TO DOOMSDAY.'}</Stack.Item>

@@ -54,17 +54,17 @@ const IntroductionSection = (props, context) => {
             <Stack.Item bold>Special Rules:</Stack.Item>
             <Stack.Item>
               {
-                "- Most of your actions should be focused around your objectives, or the people directly related to them, you shouldn't be going after randoms, or bombing medbay just to do it."
+                "- Most of your actions should be focused around your objectives or the people directly related to them. You shouldn't be going after randoms, or bombing medbay just to do it."
               }
             </Stack.Item>
             <Stack.Item>
               {
-                "- If you want to do something targeting a player in specific, a department at large, or the station at large, make an opfor, else-wise, opfors are only required for actions of high-intensity (see: breaking into engineering and stealing the protolathe), where as low intensity (emagging into engineering and printing jaws) doesn't"
+                "- If you want to do something targeting a specific player, a department at large, or the station at large, make an opfor. Else-wise, opfors are only required for actions of high-intensity (see: breaking into engineering and stealing the protolathe), whereas low intensity (emagging into engineering and printing jaws) doesn't"
               }
             </Stack.Item>
             <Stack.Item>
               {
-                "- Regardless of having very-forward objectives, you should be trying to generate as much RP as you can while doing them, even something as simple as 'steal the hand tele' can have a story spark from it with a bit of effort."
+                "- Regardless of having very-forward objectives, you should be trying to generate as much RP as you can while doing them. Even something as simple as 'steal the hand tele' can have a story spark from it with a bit of effort."
               }
             </Stack.Item>
             <Stack.Item bold>Metaprotections:</Stack.Item>
@@ -73,7 +73,7 @@ const IntroductionSection = (props, context) => {
             </Stack.Item>
             <Stack.Item>
               {
-                "- If it's not in contraband, it's either not illegal, or else-wise unknown, and should be treated as it appears."
+                "- If it's not in contraband it's either not illegal or else-wise unknown and should be treated as it appears."
               }
             </Stack.Item>
           </Stack>

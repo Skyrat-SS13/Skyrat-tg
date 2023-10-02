@@ -67,17 +67,17 @@ const Rules = (props, context) => {
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          '- The chaplain and curator know everything, and that ratvar himself is out-of-action for the foreseeable future.'
+          '- The chaplain and curator know everything, including that ratvar himself is out-of-action for the foreseeable future.'
         }
       </Stack.Item>
       <Stack.Item>
         {
-          "- Elsewise, your characters can have a baseline knowledge of the cult, that they're as a baseline usually not immediately-aggressive, and more reactive then proactive."
+          "- Elsewise, your characters can have a baseline knowledge of the cult, that they're as a baseline usually not immediately-aggressive, and that they're more reactive then proactive."
         }
       </Stack.Item>
       <Stack.Item>
         {
-          "- Objects used by the cult (cogs, the jud-visor) are all up to common sense, what it looks like it's doing, it's probably doing."
+          "- Objects used by the cult (cogs, the jud-visor) are all up to common sense; what it looks like it's doing, it's probably doing."
         }
       </Stack.Item>
     </Stack>

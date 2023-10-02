@@ -80,7 +80,7 @@ const Rules = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {
-          '- Becomes PMS once they start eating (important stuff), or elsewise, attacking crew. (this will stick around until they can no longer eat techlathe-boards and the like)'
+          '- Becomes PMS once they start eating (important stuff), or elsewise, attacking crew (this will stick around until they can no longer eat techlathe-boards and the like).'
         }
       </Stack.Item>
       <Stack.Item bold>Metaprotections:</Stack.Item>
