@@ -56,6 +56,15 @@
 		"Barista",
 	)
 
+/datum/job/bitrunner
+	alt_titles = list(
+		"Bitrunner",
+		"VR Adventurer",
+		"Netminer",
+		"Data Retrieval Specialist",
+		"Junior Runner",
+	)
+
 /datum/job/blueshield
 	alt_titles = list(
 		"Blueshield",
@@ -77,6 +86,7 @@
 	alt_titles = list(
 		"Bouncer",
 		"Service Guard",
+		"Huscle",
 	)
 
 /datum/job/corrections_officer
@@ -164,6 +174,8 @@
 		"Coroner",
 		"Mortician",
 		"Funeral Director",
+		"Medical Examiner",
+		"Forensic Pathologist",
 	)
 
 /datum/job/curator
@@ -172,6 +184,7 @@
 		"Librarian",
 		"Journalist",
 		"Archivist",
+		"Conservator",
 	)
 
 /datum/job/customs_agent
