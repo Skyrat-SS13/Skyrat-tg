@@ -236,11 +236,7 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/allow_spawn(mob/user, silent = FALSE)
-<<<<<<< HEAD
-	if(!(user.ckey in team.players_spawned))//one per person unless you get a bonus spawn SKYRAT EDIT: Original: if(!(user.key in team.players_spawned))
-=======
 	if(!(user.ckey in team.players_spawned))//one per person unless you get a bonus spawn
->>>>>>> 13cfcdad6b6 (Ashwalkers team stores players_spawned via ckeys rather than keys now (#78688))
 		return TRUE
 	if(!silent)
 		to_chat(user, span_warning("You have exhausted your usefulness to the Necropolis."))
@@ -258,11 +254,7 @@
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
 
 	spawned_human.remove_language(/datum/language/common)
-<<<<<<< HEAD
-	team.players_spawned += (spawned_human.ckey) //SKYRAT EDIT: Original: team.players_spawned += (spawned_human.key)
-=======
 	team.players_spawned += (spawned_human.ckey)
->>>>>>> 13cfcdad6b6 (Ashwalkers team stores players_spawned via ckeys rather than keys now (#78688))
 	eggshell.egg = null
 	QDEL_NULL(eggshell)
 
