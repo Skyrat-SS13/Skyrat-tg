@@ -52,42 +52,50 @@
 	dead_players = trim_list(GLOB.dead_player_list)
 	list_observers = trim_list(GLOB.current_observers_list)
 
-/datum/dynamic_ruleset/midround/proc/trim_list(list/L = list())
-	var/list/trimmed_list = L.Copy()
-	for(var/mob/M in trimmed_list)
-		if (!istype(M, required_type))
-			trimmed_list.Remove(M)
+/datum/dynamic_ruleset/midround/proc/trim_list(list/to_trim = list())
+	var/list/trimmed_list = to_trim.Copy()
+	for(var/mob/creature in trimmed_list)
+		if (!istype(creature, required_type))
+			trimmed_list.Remove(creature)
 			continue
-		if (!M.client) // Are they connected?
-			trimmed_list.Remove(M)
+		if (isnull(creature.client)) // Are they connected?
+			trimmed_list.Remove(creature)
+			continue
+		if (isnull(creature.mind))
+			trimmed_list.Remove(creature)
 			continue
 		//SKYRAT EDIT ADDITION
-		if(is_banned_from(M.client.ckey, BAN_ANTAGONIST))
-			trimmed_list.Remove(M)
+		if(is_banned_from(creature.client.ckey, BAN_ANTAGONIST))
+			trimmed_list.Remove(creature)
 			continue
-		if(!M.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
-			trimmed_list.Remove(M)
+		if(!creature.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
+			trimmed_list.Remove(creature)
 			continue
 		//SKYRAT EDIT END
-		if(M.client.get_remaining_days(minimum_required_age) > 0)
-			trimmed_list.Remove(M)
+		if(creature.client.get_remaining_days(minimum_required_age) > 0)
+			trimmed_list.Remove(creature)
 			continue
-		if (!((antag_preference || antag_flag) in M.client.prefs.be_special))
-			trimmed_list.Remove(M)
+		if (!((antag_preference || antag_flag) in creature.client.prefs.be_special))
+			trimmed_list.Remove(creature)
 			continue
-		if (is_banned_from(M.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
-			trimmed_list.Remove(M)
+		if (is_banned_from(creature.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
+			trimmed_list.Remove(creature)
 			continue
-		if (M.mind)
-			if (restrict_ghost_roles && (M.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
-				trimmed_list.Remove(M)
-				continue
-			if (M.mind.assigned_role.title in restricted_roles) // Does their job allow it?
-				trimmed_list.Remove(M)
-				continue
-			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
-				trimmed_list.Remove(M)
-				continue
+		if (restrict_ghost_roles && (creature.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
+			trimmed_list.Remove(creature)
+			continue
+		if (creature.mind.assigned_role.title in restricted_roles) // Does their job allow it?
+			trimmed_list.Remove(creature)
+			continue
+		if (length(exclusive_roles) && !(creature.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
+			trimmed_list.Remove(creature)
+			continue
+		if(HAS_TRAIT(creature, TRAIT_MIND_TEMPORARILY_GONE)) // are they out of body?
+			trimmed_list.Remove(creature)
+			continue
+		if(HAS_TRAIT(creature, TRAIT_TEMPORARY_BODY)) // are they an avatar?
+			trimmed_list.Remove(creature)
+			continue
 	return trimmed_list
 
 // You can then for example prompt dead players in execute() to join as strike teams or whatever
@@ -366,6 +374,7 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
 	)
 	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
 	required_candidates = 5
@@ -873,6 +882,7 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
 	)
 	required_enemies = list(2, 2, 1, 1, 1, 1, 1, 0, 0, 0)
 	required_candidates = 1

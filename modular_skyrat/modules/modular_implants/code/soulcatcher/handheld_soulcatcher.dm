@@ -111,4 +111,52 @@
 
 	return TRUE
 
+/obj/item/handheld_soulcatcher/attack_secondary(mob/living/carbon/human/target_mob, mob/living/user, params)
+	if(!istype(target_mob))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	var/obj/item/organ/internal/brain/target_brain = target_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if(!istype(target_brain))
+		to_chat(user, span_warning("[target_mob] lacks a brain!"))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(!HAS_TRAIT(target_brain, TRAIT_RSD_COMPATIBLE))
+		to_chat(user, span_warning("[target_mob]'s brain isn't compatible."))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(target_mob.mind || target_mob.ckey || GetComponent(/datum/component/previous_body))
+		to_chat(user, span_warning("[target_mob] is not able to receive a soul"))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	var/list/soul_list = list()
+	for(var/datum/soulcatcher_room/room as anything in linked_soulcatcher.soulcatcher_rooms)
+		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_souls)
+			if(!soul.round_participant || soul.body_scan_needed)
+				continue
+
+			soul_list += soul
+
+	if(!length(soul_list))
+		to_chat(user, span_warning("There are no souls that can be transferred to [target_mob]."))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	var/mob/living/soulcatcher_soul/chosen_soul = tgui_input_list(user, "Choose a soul to transfer into the body", name, soul_list)
+	if(!chosen_soul)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(chosen_soul.previous_body)
+		var/mob/living/old_body = chosen_soul.previous_body.resolve()
+		if(!old_body)
+			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
+
+	chosen_soul.mind.transfer_to(target_mob, TRUE)
+	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
+	visible_message(span_notice("[src] beeps: Body transfer complete."))
+	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob].")
+
+	qdel(chosen_soul)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 #undef RSD_ATTEMPT_COOLDOWN

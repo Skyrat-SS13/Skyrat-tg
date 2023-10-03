@@ -15,7 +15,7 @@
 	human.set_hairstyle("Business Hair", update = TRUE)
 
 /datum/species/human/get_scream_sound(mob/living/carbon/human/human)
-	if(human.gender == MALE)
+	if(human.physique == MALE)
 		if(prob(1))
 			return 'sound/voice/human/wilhelm_scream.ogg'
 		return pick(
