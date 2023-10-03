@@ -100,11 +100,6 @@
 		return FALSE
 	return TRUE
 
-<<<<<<< HEAD
-/datum/action/changeling/sting/transformation/sting_action(mob/user, mob/target)
-	log_combat(user, target, "stung", "transformation sting", " new identity is '[selected_dna.dna.real_name]'")
-	var/datum/dna/NewDNA = selected_dna.dna
-=======
 /datum/action/changeling/sting/transformation/sting_action(mob/living/user, mob/living/target)
 	var/final_duration = sting_duration
 	var/final_message = span_notice("We transform [target] into [selected_dna.dna.real_name].")
@@ -118,16 +113,9 @@
 		to_chat(user, final_message)
 		return TRUE
 	return FALSE
->>>>>>> e68f12e652f (`sting_action` `SHOULD_CALL_PARENT`, fixes various stings not blackbox logging (#78718))
-
-	var/mob/living/carbon/C = target
-	. = TRUE
-	if(istype(C))
-		C.real_name = NewDNA.real_name
-		NewDNA.transfer_identity(C)
-		C.updateappearance(mutcolor_update=1)
 */
 //SKYRAT EDIT REMOVAL END
+
 /datum/action/changeling/sting/false_armblade
 	name = "False Armblade Sting"
 	desc = "We silently sting a human, injecting a retrovirus that mutates their arm to temporarily appear as an armblade. Costs 20 chemicals."
