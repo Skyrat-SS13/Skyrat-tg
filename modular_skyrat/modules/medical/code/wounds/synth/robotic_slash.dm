@@ -159,6 +159,7 @@
 
 /// If someone is aggrograbbing us and targetting our limb, intensity progress is multiplied against this.
 #define LIMB_AGGROGRABBED_PROGRESS_MULT 0.5
+
 /// Returns the multiplier used by our intensity progress. Intensity increment is multiplied against this.
 /datum/wound/electrical_damage/proc/get_progress_mult()
 	var/progress_mult = get_base_mult() * seconds_per_intensity_mult
@@ -279,6 +280,7 @@
 
 	. += "\nWound status: [get_wound_status_info()]"
 
+/// Returns a string with our fault intensity and threshold to removal for use in health analyzers.
 /datum/wound/electrical_damage/proc/get_wound_status_info()
 	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>[minimum_intensity]</b>")]% to remove the wound."
 
@@ -288,7 +290,7 @@
 
 /datum/wound/electrical_damage/item_can_treat(obj/item/potential_treater, mob/user)
 	if (istype(potential_treater, /obj/item/stack/cable_coil) && ((user.pulling == victim && user.grab_state >= GRAB_AGGRESSIVE) || (limb.burn_dam <= ELECTRICAL_DAMAGE_MAX_BURN_DAMAGE_TO_LET_WIRES_REPAIR)))
-		return TRUE
+		return TRUE // if we're aggrograbbed, or relatively undamaged, go ahead. else, we dont want to impede normal treatment
 
 	return ..()
 
@@ -301,10 +303,12 @@
 
 	return ..()
 
-// Ideally done with cables but sutures work with reduced efficiency
-// Intended to be the quick and inefficient way of doing it
-// High heal per second but also high resource use
-// Notably lower self-tend penalty than wirecutting
+/**
+ * The "trauma" treatment, done with cables/sutures. Sutures get a debuff.
+ * Low self-tend penalty.
+ * Very fast, but low value. Eats up wires for breakfast.
+ * Has limited wire/HUD bonuses. If you're a robo, use a wirecutter instead.
+ */
 /datum/wound/electrical_damage/proc/suture_wires(obj/item/stack/suturing_item, mob/living/carbon/human/user)
 	if (!suturing_item.tool_start_check())
 		return TRUE
@@ -358,10 +362,12 @@
 			return TRUE
 	return TRUE
 
-// Ideally done with wirecutters but retractors work with reduced efficiency
-// Intended to be the slower but more efficient treatment option
-// Only moderate heal per second and slow use time but zero resource use
-// High self-tend penalty
+/**
+ * The "proper" treatment, done with wirecutters/retractors. Retractors get a debuff.
+ * High self-tend penalty.
+ * Slow, but high value.
+ * Has high wire/HUD bonuses. The ideal treatment for a robo.
+ */
 /datum/wound/electrical_damage/proc/wirecut(obj/item/wirecutting_tool, mob/living/carbon/human/user)
 	if (!wirecutting_tool.tool_start_check())
 		return TRUE
@@ -469,25 +475,6 @@
 	target.electrocute_act(damage, limb, coeff, flags, jitter_time, stutter_time)
 	if (spark)
 		do_sparks(rand(process_shock_spark_count_min, process_shock_spark_count_max), FALSE, victim)
-
-/datum/wound/electrical_damage/proc/can_zap(atom/target = victim, atom/connecting_item, uses_victim_hands, uses_target_hands)
-	if (!isliving(target))
-		return FALSE
-	if (target == victim)
-		return TRUE
-
-	if (!isnull(connecting_item))
-		return FALSE
-	if (HAS_TRAIT(target, TRAIT_SHOCKIMMUNE))
-		return FALSE
-	if (uses_victim_hands && victim.wearing_shock_proof_gloves())
-		return FALSE
-	if (uses_target_hands && iscarbon(target))
-		var/mob/living/carbon/carbon_target = target
-		if (carbon_target.wearing_shock_proof_gloves())
-			return FALSE
-
-	return TRUE
 
 // Slash
 // Fast to rise, but lower damage overall

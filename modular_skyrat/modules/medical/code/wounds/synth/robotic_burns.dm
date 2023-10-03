@@ -140,7 +140,7 @@
 	var/amount_to_adjust = min((((chassis_temperature - victim.bodytemperature) * mult) * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick * statis_mult), adjustment_allowed)
 	victim.adjust_bodytemperature(amount_to_adjust)
 
-// Increase our temp based on burn damage it receives
+/// Signal proc for when our victim is externally attacked. Increases chassis temp based on burn damage received.
 /datum/wound/burn/robotic/overheat/proc/victim_attacked(datum/source, damage, damagetype, def_zone, blocked, wound_bonus, bare_wound_bonus, sharpness, attack_direction, attacking_item)
 	SIGNAL_HANDLER
 
@@ -162,10 +162,12 @@
 
 	expose_temperature((chassis_temperature + effective_damage), incoming_damage_heat_coeff)
 
-// Alternate method of cooling
-// Can do it quickly, can do it anywhere, just have a fire extinguisher/shower
-// The caveat is that this does a ton of brute damage if you're not gauzed up
-// Clothes block a lot of the reagents so its not a really effective weapon against most people
+/**
+ * Signal proc for when our victim is exposed to reagents, obviously.
+ *
+ * Equalizes temp to the reagent temp, but also causes thermal shock. Basically, does damage based on the temp differential.
+ * Clothes reduce the effects massively. Hercuri reduces the thermal shock and gets a special temp buff.
+ */
 /datum/wound/burn/robotic/overheat/proc/victim_exposed_to_reagents(datum/signal_source, list/reagents, datum/reagents/source, methods, volume_modifier, show_message)
 	SIGNAL_HANDLER
 
@@ -246,7 +248,7 @@
 
 	return check_temperature()
 
-// Removes, demotes, or promotes ourselves to a new wound type if our temperature is past a heating/cooling threshold.
+/// Removes, demotes, or promotes ourselves to a new wound type if our temperature is past a heating/cooling threshold.
 /datum/wound/burn/robotic/overheat/proc/check_temperature()
 	if (chassis_temperature <= cooling_threshold)
 		if (demotes_to)
@@ -262,6 +264,7 @@
 		replace_wound(new promotes_to(heating_threshold + heating_promote_buffer))
 		return TRUE
 
+/// Returns a string with our temperature and heating/cooling thresholds, for use in health analyzers.
 /datum/wound/burn/robotic/overheat/proc/get_wound_status_info()
 	var/current_temp_celcius = round(chassis_temperature - T0C, 0.1)
 	var/current_temp_fahrenheit = round(chassis_temperature * 1.8-459.67, 0.1)

@@ -3,8 +3,6 @@
 	desc = "Contains 2 pre-chilled bottles of hercuri, 100u each. Useful for dealing with severely burnt synthetics!"
 	cost = CARGO_CRATE_VALUE * 2.5
 	contains = list(/obj/item/reagent_containers/spray/hercuri/chilled = 2)
-
-	crate_type = /obj/structure/closet/crate/medical
 	crate_name = "chilled hercuri crate"
 
 	access_view = FALSE
@@ -16,8 +14,6 @@
 	desc = "Contains 2 treatment kits for synthetic lifeforms, filled with everything you need to treat an inorganic wound!"
 	cost = CARGO_CRATE_VALUE * 4.5
 	contains = list(/obj/item/storage/backpack/duffelbag/synth_treatment_kit = 2)
-
-	crate_type = /obj/structure/closet/crate/medical
 	crate_name = "synthetic treatment kits crate"
 
 	access_view = FALSE
@@ -33,8 +29,6 @@
 		/obj/item/storage/pill_bottle/nanite_slurry = 2,
 		/obj/item/storage/pill_bottle/system_cleaner = 2
 	)
-
-	crate_type = /obj/structure/closet/crate/medical
 	crate_name = "synthetic medicine crate"
 
 	access_view = FALSE
