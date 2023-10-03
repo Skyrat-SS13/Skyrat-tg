@@ -54,7 +54,7 @@
 	head = /obj/item/clothing/head/nanotrasen_consultant
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/nanotrasen_consultant = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -73,14 +73,14 @@
 	id_trim = /datum/id_trim/job/nanotrasen_consultant
 
 /obj/item/radio/headset/heads/nanotrasen_consultant
-	name = "\proper the nanotrasen consultant's headset"
+	name = "\proper the Nanotrasen consultant's headset"
 	desc = "An official Central Command headset."
 	icon_state = "cent_headset"
 	keyslot = new /obj/item/encryptionkey/headset_com
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/heads/nanotrasen_consultant/alt
-	name = "\proper the nanotrasen consultant's bowman headset"
+	name = "\proper the Nanotrasen consultant's bowman headset"
 	desc = "An official Central Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
 
@@ -111,21 +111,27 @@
 	inserted_item = /obj/item/pen/fountain/captain
 	greyscale_colors = "#017941#0060b8"
 
-/obj/item/storage/box/gunset/nanotrasen_consultant
-	name = "M45A5 gunset"
-	w_class = WEIGHT_CLASS_NORMAL
+/obj/item/storage/bag/garment/nanotrasen_consultant
+	name = "Nanotrasen consultant's garment bag"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the Nanotrasen consultant."
 
-/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/nanotrasen_consultant/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-
+/obj/item/storage/bag/garment/nanotrasen_consultant/PopulateContents()
+	new /obj/item/clothing/shoes/sneakers/brown(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/gloves/combat/naval/nanotrasen_consultant(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)
+	new /obj/item/clothing/under/rank/nanotrasen_consultant(src)
+	new /obj/item/clothing/under/rank/nanotrasen_consultant/skirt(src)
+	new /obj/item/clothing/under/rank/centcom/officer(src)
+	new /obj/item/clothing/under/rank/centcom/officer_skirt(src)
+	new /obj/item/clothing/head/nanotrasen_consultant(src)
+	new /obj/item/clothing/head/nanotrasen_consultant/beret(src)
+	new /obj/item/clothing/head/beret/centcom_formal/nt_consultant(src)
+	new /obj/item/clothing/head/hats/centhat(src)
+	new /obj/item/clothing/suit/armor/centcom_formal/nt_consultant(src)
+	new /obj/item/clothing/under/rank/centcom/intern(src)
+	new /obj/item/clothing/head/hats/intern(src)
 
 /obj/structure/closet/secure_closet/nanotrasen_consultant/station
 	name = "\proper nanotrasen consultant's locker"
@@ -139,14 +145,10 @@
 	new /obj/item/storage/backpack/satchel/leather(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/computer_disk/command/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
-	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/clothing/gloves/combat/naval/nanotrasen_consultant(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)
+	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)

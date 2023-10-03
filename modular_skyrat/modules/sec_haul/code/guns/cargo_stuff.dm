@@ -1,10 +1,10 @@
 /datum/supply_pack/security/armory/cmg
-	name = "NT CMG-2 PDW Crate"
-	desc = "Three entirely proprietary CMG-2 kits, chambered in 9x25mm. Each kit contains an ammo pouch, one less-lethal rubber magazine, and two lethal magazines."
+	name = "Carwo 'Sindano' Submachinegun Crate"
+	desc = "Three entirely proprietary Sindano kits, chambered in .35 Sol Short. Each kit contains three empty magazines and a box each of incapacitator and lethal rounds."
 	cost = CARGO_CRATE_VALUE * 20
 	contains = list(
-		/obj/item/storage/box/gunset/cmg,
-		/obj/item/storage/box/gunset/cmg,
-		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
+		/obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano,
 	)
-	crate_name = "NT CMG-2 PDW Crate"
+	crate_name = "Carwo 'Sindano' Submachinegun Crate"

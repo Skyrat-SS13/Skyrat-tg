@@ -247,7 +247,6 @@
 	destination.socks = socks
 	destination.jumpsuit_style = jumpsuit_style
 
-
 /// Fully randomizes everything according to the given flags.
 /mob/living/carbon/human/proc/randomize_human_appearance(randomize_flags = ALL)
 	var/datum/preferences/preferences = new(new /datum/client_interface)

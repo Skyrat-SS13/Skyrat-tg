@@ -45,6 +45,10 @@
 				else if(genital_location == CHEST && worn_underwear.hides_breasts)
 					return TRUE
 
+			//Are they wearing a bra?
+			if(target_mob.bra != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_BRA) && genital_location == CHEST)
+				return TRUE
+
 			//Nothing they're wearing will cover them
 			else
 				return FALSE
