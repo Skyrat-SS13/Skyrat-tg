@@ -17,7 +17,7 @@
 							/obj/item/beamout_tool,
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
@@ -157,7 +157,7 @@
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/gun/ballistic/automatic/pistol/ladon/nri,
+							/obj/item/gun/ballistic/automatic/pistol/nri,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/storage/medkit/expeditionary,
