@@ -83,7 +83,7 @@
 	/// What structure is created by this item.
 	var/type_to_deploy = /obj/machinery/rnd/production/colony_lathe
 	/// How long it takes to create the structure in question.
-	var/deploy_time = 5 SECONDS
+	var/deploy_time = 4 SECONDS
 
 /obj/item/flatpacked_machine/Initialize(mapload)
 	. = ..()
