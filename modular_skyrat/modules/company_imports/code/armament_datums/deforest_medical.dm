@@ -226,21 +226,3 @@
 /datum/armament_entry/company_import/deforest/cyber_organs/augments/breathing_tube
 	name = "breathing tube implant"
 	item_type = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
-
-// Personal Defense Weapons (For when the pharmacist must become the harmacist)
-
-/datum/armament_entry/company_import/deforest/defense
-	subcategory = "Personal Defense Equipment"
-	contraband = TRUE
-
-/datum/armament_entry/company_import/deforest/defense/firefly
-	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
-	cost = PAYCHECK_COMMAND * 4
-
-/datum/armament_entry/company_import/deforest/defense/firefly_mag
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/deforest/defense/firefly_mag_rubber
-	item_type = /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
-	cost = PAYCHECK_CREW
