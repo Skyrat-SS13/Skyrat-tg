@@ -22,6 +22,7 @@
 	name = "tarkon guard uniform"
 	desc = "A uniform worn by security-ranked crew, provided by Tarkon Industries."
 	icon_state = "tarkon_sec"
+	armor_type = /datum/armor/clothing_under/tarkon
 
 /obj/item/clothing/under/tarkon/med
 	name = "tarkon medical uniform"
@@ -31,12 +32,13 @@
 /obj/item/clothing/under/tarkon/eng
 	name = "tarkon maintenance uniform"
 	desc = "A uniform worn by maintenance-ranked crew, provided by Tarkon Industries."
-	icon_state = "tarkon_eng"
+	icon_state = "tarkon_engi"
 
 /obj/item/clothing/under/tarkon/com
 	name = "tarkon command uniform"
 	desc = "A uniform worn by command-ranked crew, provided by Tarkon Industries."
 	icon_state = "tarkon_com"
+	armor_type = /datum/armor/clothing_under/tarkon
 
 /datum/armor/clothing_under/tarkon
 	melee = 10
