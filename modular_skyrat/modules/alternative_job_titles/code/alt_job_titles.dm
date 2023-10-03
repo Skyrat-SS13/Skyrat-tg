@@ -86,7 +86,6 @@
 	alt_titles = list(
 		"Bouncer",
 		"Service Guard",
-		"Huscle",
 	)
 
 /datum/job/corrections_officer
@@ -111,6 +110,8 @@
 		"Mailman",
 		"Union Associate",
 		"Inventory Associate",
+		"Receiving Clerk",
+		"Supply Intern",
 	)
 
 /datum/job/chaplain
@@ -216,6 +217,7 @@
 		"General Practitioner",
 		"Medical Resident",
 		"Physician",
+		"Medical Student",
 	)
 
 /datum/job/engineering_guard //see orderly
@@ -373,6 +375,7 @@
 		"Spelunker",
 		"Drill Technician",
 		"Prospector",
+		"Apprentice Miner",
 	)
 
 /datum/job/station_engineer
