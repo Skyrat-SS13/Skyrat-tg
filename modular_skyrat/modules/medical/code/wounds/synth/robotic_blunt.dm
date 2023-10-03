@@ -246,6 +246,7 @@
 
 /// The percent, in decimal, of a stagger's shake() duration, that will be used in a addtimer() to queue aftershock().
 #define STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY 0.65 // 1 = happens at the end, .5 = happens halfway through
+
 /datum/wound/blunt/robotic/proc/stagger(stagger_score, attack_direction, obj/item/attacking_item, from_movement, shake_duration = base_stagger_shake_duration, shift, knockdown_ratio = stagger_aftershock_knockdown_ratio)
 	if (oscillating)
 		return
