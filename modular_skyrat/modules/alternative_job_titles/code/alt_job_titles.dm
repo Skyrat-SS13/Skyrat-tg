@@ -59,9 +59,10 @@
 /datum/job/bitrunner
 	alt_titles = list(
 		"Bitrunner",
-		"VR Adventurer",
-		"Netminer",
+		"Bitdomain Technician",
+		"Netdiver",
 		"Data Retrieval Specialist",
+		"Netpod Jockey",
 		"Junior Runner",
 	)
 
@@ -337,6 +338,7 @@
 /datum/job/roboticist
 	alt_titles = list(
 		"Roboticist",
+		"Machinist",
 		"Biomechanical Engineer",
 		"Mechatronic Engineer",
 		"Apprentice Roboticist",
