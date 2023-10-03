@@ -477,11 +477,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	unique_enzymes = generate_unique_enzymes()
 	unique_features = generate_unique_features()
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
-=======
 /**
  * Sets up DNA codes and initializes some features.
  *
@@ -490,17 +488,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
  * * randomize_features - If true, all entries in the features list will be randomized.
  */
 /datum/dna/proc/initialize_dna(newblood_type, create_mutation_blocks = TRUE, randomize_features = TRUE)
->>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
 	if(newblood_type)
 		blood_type = newblood_type
 	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
-<<<<<<< HEAD
-	features = random_features()
-	unique_features = generate_unique_features()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	if(randomize_features)
 		var/static/list/all_species_protoypes
 		if(isnull(all_species_protoypes))
@@ -514,7 +505,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		features["mcolor"] = "#[random_color()]"
 
 	update_dna_identity()
->>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 

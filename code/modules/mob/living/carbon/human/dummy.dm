@@ -87,11 +87,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	return consistent_entry
 
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
-<<<<<<< HEAD
-	target.dna.initialize_dna(skip_index = TRUE)
 	/* SKYRAT EDIT START - Customization - ORIGINAL:
-=======
->>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	target.dna.features["body_markings"] = get_consistent_feature_entry(GLOB.body_markings_list)
@@ -106,12 +102,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_cat"] = get_consistent_feature_entry(GLOB.tails_list_human) // it's a lie
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(GLOB.tails_list_lizard)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(GLOB.pod_hair_list)
-<<<<<<< HEAD
 	*/ // ORIGINAL END - SKYRAT EDIT START
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["ethcolor"] = COLOR_WHITE
 	// SKYRAT EDIT END
-=======
 	target.dna.initialize_dna(create_mutation_blocks = FALSE, randomize_features = FALSE)
 	// UF and UI are nondeterministic, even though the features are the same some blocks will randomize slightly
 	// In practice this doesn't matter, but this is for the sake of 100%(ish) consistency
@@ -123,7 +117,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	else
 		target.dna.unique_features = consistent_UF
 		target.dna.unique_identity = consistent_UI
->>>>>>> 9e1c71f794a (Reworks transformation sting to be temporarily in living mobs, forever in dead mobs (#78502))
 
 /// Provides a dummy that is consistently bald, white, naked, etc.
 /mob/living/carbon/human/dummy/consistent

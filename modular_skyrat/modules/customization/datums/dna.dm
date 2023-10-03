@@ -57,15 +57,35 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	///Current body size, used for proper re-sizing and keeping track of that
 	var/current_body_size = BODY_SIZE_NORMAL
 
-/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
+/**
+ * Sets up DNA codes and initializes some features.
+ *
+ * * newblood_type - Optional, the blood type to set the DNA to
+ * * create_mutation_blocks - If true, generate_dna_blocks is called, which is used to set up mutation blocks (what a mob can naturally mutate).
+ * * randomize_features - If true, all entries in the features list will be randomized.
+ */
+/datum/dna/proc/initialize_dna(newblood_type, create_mutation_blocks = TRUE, randomize_features = TRUE)
 	if(newblood_type)
 		blood_type = newblood_type
-	unique_enzymes = generate_unique_enzymes()
-	unique_identity = generate_unique_identity()
-	if(!skip_index) //I hate this
+	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
+
 	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
-	unique_features = generate_unique_features()
+	body_markings = species.get_random_body_markings(features)
+
+	if(randomize_features)
+		var/static/list/all_species_protoypes
+		if(isnull(all_species_protoypes))
+			all_species_protoypes = list()
+			for(var/species_path in subtypesof(/datum/species))
+				all_species_protoypes += new species_path()
+
+		for(var/datum/species/random_species as anything in all_species_protoypes)
+			features |= random_species.randomize_features()
+
+		features["mcolor"] = "#[random_color()]"
+
+	update_dna_identity()
 
 /datum/dna/proc/generate_unique_features()
 	var/list/data = list()
@@ -189,46 +209,52 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
-		death_sound = new_race.death_sound
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
+	if(isnull(mrace))
+		CRASH("set_species called without a species to set to")
+	if(!has_dna())
+		return
 
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
+	var/datum/species/new_race
+	if(ispath(mrace))
+		new_race = new mrace
+	else if(istype(mrace))
+		new_race = mrace
+	else
+		CRASH("set_species called with an invalid mrace [mrace]")
 
-		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
+	death_sound = new_race.death_sound
 
-		if(override_mutantparts && override_mutantparts.len)
-			for(var/feature in dna.mutant_bodyparts)
-				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-			dna.mutant_bodyparts = override_mutantparts
+	var/datum/species/old_species = dna.species
+	dna.species = new_race
 
-		if(override_markings && override_markings.len)
-			for(var/feature in dna.body_markings)
-				override_markings[feature] = dna.body_markings[feature]
-			dna.body_markings = override_markings
+	if (old_species.properly_gained)
+		old_species.on_species_loss(src, new_race, pref_load)
 
-		if(override_features && override_features.len)
-			for(var/feature in dna.features)
-				override_features[feature] = dna.features[feature]
-			dna.features = override_features
-		//END OF BODYPARTS AND FEATURES
+	//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
 
-		apply_customizable_dna_features_to_species()
-		dna.unique_features = dna.generate_unique_features()
+	if(override_mutantparts && override_mutantparts.len)
+		for(var/feature in dna.mutant_bodyparts)
+			override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+		dna.mutant_bodyparts = override_mutantparts
 
-		dna.update_body_size()
+	if(override_markings && override_markings.len)
+		for(var/feature in dna.body_markings)
+			override_markings[feature] = dna.body_markings[feature]
+		dna.body_markings = override_markings
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
+	if(override_features && override_features.len)
+		for(var/feature in dna.features)
+			override_features[feature] = dna.features[feature]
+		dna.features = override_features
+	//END OF BODYPARTS AND FEATURES
+
+	apply_customizable_dna_features_to_species()
+	dna.unique_features = dna.generate_unique_features()
+
+	dna.update_body_size()
+
+	dna.species.on_species_gain(src, old_species, pref_load)
+	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 
 /mob/living/carbon/proc/apply_customizable_dna_features_to_species()
