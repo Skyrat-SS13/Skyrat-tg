@@ -88,3 +88,11 @@
 /obj/item/flatpacked_machine/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
+
+/obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
+	. = ..()
+	storable += /obj/item/flatpacked_machine
+
+/obj/item/borg/apparatus/circuit/Initialize(mapload)
+	. = ..()
+	storable += /obj/item/flatpacked_machine
