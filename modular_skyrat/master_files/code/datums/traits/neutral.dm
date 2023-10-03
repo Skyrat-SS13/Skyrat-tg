@@ -2,6 +2,7 @@
 
 GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 
+/// Instantiates GLOB.DNR_trait_overlay by creating a new mutable_appearance instance of the overlay.
 /proc/generate_DNR_trait_overlay()
 	RETURN_TYPE(/mutable_appearance)
 
@@ -53,13 +54,19 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 
 	old_holder.update_dnr_hud()
 
+/mob/living/prepare_data_huds()
+	. = ..()
+
+	update_dnr_hud()
+
+/// Adds the DNR HUD element if src has TRAIT_DNR. Removes it otherwise.
 /mob/living/proc/update_dnr_hud()
 	var/image/dnr_holder = hud_list?[DNR_HUD]
 	if(isnull(dnr_holder))
 		return
 
-	var/icon/I = icon(icon, icon_state, dir)
-	dnr_holder.pixel_y = I.Height() - world.icon_size
+	var/icon/temporary_icon = icon(icon, icon_state, dir)
+	dnr_holder.pixel_y = temporary_icon.Height() - world.icon_size
 
 	if(HAS_TRAIT(src, TRAIT_DNR))
 		set_hud_image_active(DNR_HUD)
@@ -71,7 +78,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	. = ..()
 
 	if(stat != DEAD && HAS_TRAIT(src, TRAIT_DNR) && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)))
-		. += "\n[span_boldwarning("This individual is unable to be revived! Once dead, they will be gone for the rest of the round!")]"
+		. += "\n[span_boldwarning("This individual is unable to be revived, and may be permanently dead if allowed to die!")]"
 
 /datum/atom_hud/data/human/dnr
 	hud_icons = list(DNR_HUD)
