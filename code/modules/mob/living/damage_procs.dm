@@ -163,12 +163,7 @@
 /mob/living/proc/getBruteLoss()
 	return bruteloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_BRUTE, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	. = bruteloss
@@ -195,13 +190,7 @@
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
-
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL, required_respiration_type = ALL)
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	if(!forced)
 		if(status_flags & GODMODE)
 			return FALSE
@@ -212,12 +201,7 @@
 				return FALSE
 		else
 			if(!(affected_lungs.respiration_type & required_respiration_type)) // otherwise use the lungs' respiration_type
-<<<<<<< HEAD
-				return
-
-=======
 				return FALSE
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= oxyloss
@@ -237,12 +221,7 @@
 				return FALSE
 		else
 			if(!(affected_lungs.respiration_type & required_respiration_type))
-<<<<<<< HEAD
-				return
-
-=======
 				return FALSE
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	. = oxyloss
 	oxyloss = amount
 	. -= oxyloss
@@ -254,12 +233,7 @@
 /mob/living/proc/getToxLoss()
 	return toxloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_TOX, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL)
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(!forced && !(mob_biotypes & required_biotype))
@@ -288,12 +262,7 @@
 /mob/living/proc/getFireLoss()
 	return fireloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	. = fireloss
@@ -318,12 +287,7 @@
 /mob/living/proc/getCloneLoss()
 	return cloneloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_CLONE, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL)
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 	if(!forced && ( (status_flags & GODMODE) || HAS_TRAIT(src, TRAIT_NOCLONELOSS)) )
 		return FALSE
 	if(!forced && !(mob_biotypes & required_biotype))
@@ -350,7 +314,6 @@
 		updatehealth()
 
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organ_flag)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) //SKYRAT EDIT ADDITION
 	return
 
 /mob/living/proc/setOrganLoss(slot, amount, maximum, required_organ_flag)
@@ -374,11 +337,6 @@
 		return FALSE
 	if(updating_stamina)
 		updatehealth()
-<<<<<<< HEAD
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
-	return
-=======
->>>>>>> 68b798efa05 (A thorough audit of damage procs and specifically their use in on_mob_life() (with unit tests!) (#78657))
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype = ALL)
 	if(!forced && (status_flags & GODMODE))
