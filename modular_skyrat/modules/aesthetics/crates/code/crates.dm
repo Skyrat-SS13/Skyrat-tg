@@ -1,11 +1,11 @@
 /obj/structure/closet/crate
-	icon = 'icons/obj/storage/crates.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/crates/icons/crates.dmi'
 
 /obj/structure/closet/crate/syndicrate
 	icon = 'icons/obj/storage/crates.dmi'
 
 /obj/item/delivery
-	icon = 'icons/obj/storage/wrapping.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/crates/icons/crates.dmi'
 
 //Rather than have duplicate icons in our DMI for all of these, we just make sure these pull from the old file.
 /obj/structure/closet/crate/bin
