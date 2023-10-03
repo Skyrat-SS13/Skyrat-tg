@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/b12mm/rubber
+	stun_projectile = /obj/projectile/bullet/a762x39/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
