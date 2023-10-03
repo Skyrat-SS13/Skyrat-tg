@@ -9,6 +9,7 @@ GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 	DNR_trait_overlay.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	return DNR_trait_overlay
 
+
 // SKYRAT NEUTRAL TRAITS
 /datum/quirk/excitable
 	name = "Excitable!"
