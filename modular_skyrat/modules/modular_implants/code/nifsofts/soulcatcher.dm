@@ -100,6 +100,9 @@
 		return FALSE // uhoh
 
 	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	if(!istype(current_soulcatcher))
+		stack_trace("[src] ([REF(src)]) tried to update its theme when it was missing a linked_soulcatcher component!")
+		return FALSE
 	current_soulcatcher.ui_theme = ui_theme
 
 /datum/modular_persistence
