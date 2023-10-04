@@ -59,10 +59,10 @@
 	savefile_key = "antagOptIn_status_pref"
 
 /datum/preference/choiced/antagOptIn_status/init_possible_values()
-	return list("Ask", "No", "Yes")
+	return list("No", "Yes")
 
 /datum/preference/choiced/antagOptIn_status/create_default_value()
-	return "Ask"
+	return "No"
 
 /datum/preference/choiced/antagOptIn_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -89,10 +89,10 @@
 	savefile_key = "antagOptIn_status_pref_mechanics"
 
 /datum/preference/choiced/antagOptIn_status_mechanics/init_possible_values()
-	return list("Yes", "No", "Ask")
+	return list("No", "Yes")
 
 /datum/preference/choiced/antagOptIn_status_mechanics/create_default_value()
-	return "Ask"
+	return "No"
 
 /datum/preference/choiced/antagOptIn_status_mechanics/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
