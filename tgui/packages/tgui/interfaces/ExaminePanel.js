@@ -5,24 +5,23 @@ import { resolveAsset } from '../assets';
 
 const formatURLs = (text) => {
   const parts = [];
-  let regex = /\[([^\]]*?)\]\((.*?)\)/g;
+  let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
   let lastIndex = 0;
 
-  text.replace(regex, (match, title, url, index) => {
+  text.replace(regex, (url, index) => {
     parts.push(text.substring(lastIndex, index));
     parts.push(
       <a
-        title={url}
         style={{
           'color': '#0591e3',
           'text-decoration': 'none',
         }}
         href={url}>
-        {title}
+        {url}
       </a>
     );
-    lastIndex = index + match.length;
-    return match;
+    lastIndex = index + url.length;
+    return url;
   });
 
   parts.push(text.substring(lastIndex));
