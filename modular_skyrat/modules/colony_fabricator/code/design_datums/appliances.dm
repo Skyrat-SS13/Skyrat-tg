@@ -6,7 +6,7 @@
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
 /datum/techweb_node/colony_fabricator_appliances
-	id = "colony_fabricator_applicanes"
+	id = "colony_fabricator_appliances"
 	display_name = "Colony Fabricator Appliance Designs"
 	description = "Contains all of the colony fabricator's appliance machine designs."
 	design_ids = list(
@@ -17,7 +17,7 @@
 	show_on_wiki = FALSE
 	starting_node = TRUE
 
-// Lets the colony lathe make more colony lathes but at very hihg cost, for fun
+// Wall mountable multi cell charger
 
 /datum/design/wall_mounted_multi_charger
 	name = "Mounted Multi-Cell Charging Rack"

@@ -2,7 +2,8 @@
 	name = "arc furnace"
 	desc = "An arc furnace, a specialist machine that can rapidly smelt ores using, as the name implies, massive \
 		amounts of electricity. While not nearly as fast and efficient as other ore refining methods, none are anywhere \
-		near as portable as these are."
+		near as portable as these are. A sticker on the side notes that this may <b>exhaust waste gasses to the air</b> \
+		during operation."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "arc_furnace"
 	base_icon_state = "arc_furnace"

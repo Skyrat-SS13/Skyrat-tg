@@ -27,6 +27,15 @@
 /datum/armament_entry/company_import/kz_frontier/basic/compact_drill
 	item_type = /obj/item/pickaxe/drill/compact
 
+// Various smaller appliances than the deployable machines below
+
+/datum/armament_entry/company_import/kz_frontier/appliances
+	subcategory = "Appliances"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/kz_frontier/appliances/charger
+	item_type = /obj/item/wallframe/cell_charger_multi
+
 // Flatpacked, ready to deploy machines
 
 /datum/armament_entry/company_import/kz_frontier/deployables
@@ -50,4 +59,12 @@
 
 /datum/armament_entry/company_import/kz_frontier/deployables/arc_furnace
 	item_type = /obj/item/flatpacked_machine/arc_furnace
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/kz_frontier/deployables/solids_generator
+	item_type = /obj/item/flatpacked_machine/fuel_generator
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/kz_frontier/deployables/rtg
+	item_type = /obj/item/flatpacked_machine/rtg
 	cost = PAYCHECK_COMMAND

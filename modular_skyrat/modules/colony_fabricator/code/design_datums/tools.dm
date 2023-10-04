@@ -56,7 +56,7 @@
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
-		/datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT * 1.5,
 	)
 	category = list(
 		RND_CATEGORY_INITIAL,
