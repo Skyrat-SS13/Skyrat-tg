@@ -20,6 +20,7 @@
 	SET_BASE_PIXEL(-8, 0)
 
 	fire_sound = 'modular_skyrat/modules/modular_weapons/sounds/shotgun_heavy.ogg'
+	rack_sound = 'modular_skyrat/modules/modular_weapons/sounds/shotgun_rack.ogg'
 	suppressed_sound = 'modular_skyrat/modules/modular_weapons/sounds/suppressed_heavy.ogg'
 	can_suppress = TRUE
 
