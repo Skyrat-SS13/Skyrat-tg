@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/soulcatcher_rooms = list()
 	/// What soulcatcher room are verbs sending messages to?
 	var/datum/soulcatcher_room/targeted_soulcatcher_room
+	/// What theme are we using for our soulcatcher UI?
+	var/ui_theme = "default"
 
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
