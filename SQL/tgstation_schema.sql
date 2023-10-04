@@ -646,6 +646,7 @@ CREATE TABLE `discord_links` (
 ) ENGINE=InnoDB;
 
 --
+<<<<<<< HEAD
 -- Table structure for table `game_log`
 --
 DROP TABLE IF EXISTS `game_log`;
@@ -674,6 +675,8 @@ CREATE TABLE `text_adventures` (
 ) ENGINE=InnoDB;
 
 --
+=======
+>>>>>>> 44f7810e17f (exodrone adventures are no longer database based (#78636))
 -- Table structure for table `admin_connections`
 --
 DROP TABLE IF EXISTS `admin_connections`;
