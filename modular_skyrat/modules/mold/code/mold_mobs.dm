@@ -79,8 +79,7 @@
 	if(prob(ignite_chance))
 		ignite_target.adjust_fire_stacks(additional_fire_stacks)
 
-	if(ignite_target.fire_stacks)
-		ignite_target.ignite_mob()
+	ignite_target.ignite_mob()
 
 /datum/ai_controller/basic_controller/oil_shambler
 	blackboard = list(
