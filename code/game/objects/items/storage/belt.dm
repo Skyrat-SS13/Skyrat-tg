@@ -235,7 +235,7 @@
 		/obj/item/healthanalyzer,
 		/obj/item/hemostat,
 		/obj/item/holosign_creator/medical,
-		/obj/item/hypospray/mkii, //SKYRAT EDIT HYPOSPRAYS
+		/obj/item/hypospray/mkii, //SKYRAT EDIT ADDITION - HYPOSPRAYS
 		/obj/item/implant,
 		/obj/item/implantcase,
 		/obj/item/implanter,
@@ -248,7 +248,7 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
-		/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT HYPOSPRAYS
+		/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT ADDITION - HYPOSPRAYS
 		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
