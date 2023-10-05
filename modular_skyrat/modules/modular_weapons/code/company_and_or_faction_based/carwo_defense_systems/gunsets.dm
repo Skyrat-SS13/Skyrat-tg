@@ -38,7 +38,6 @@
 	), src)
 
 /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano/evil
-
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/sol_smg/evil/no_mag
 
 // Boxed grenade launcher, grenades sold seperately on this one
