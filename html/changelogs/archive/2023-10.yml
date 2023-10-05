@@ -134,3 +134,89 @@
   vinylspiders:
   - bugfix: the pollution system will no longer try (and fail) to pollute a turf from
       nullspace
+2023-10-04:
+  Coded by Jacquerel, Sprited by Dalmationer:
+  - rscadd: Added tongs to the kitchen, which you can use to manipulate food from
+      further away
+  Fazzie:
+  - rscadd: Added a budget solar crate to the derelict teleporter room
+  - rscadd: Added a solar panel control to the north derelict solar
+  - qol: The derelict's AI coridoor is now shorter and prettier
+  - rscadd: A lot of new content has been added to the beach away mission
+  - qol: It also looks substantially better, too!
+  Motho:
+  - bugfix: An anonymous visitor to the NSV Void Raptor has turned in security's biosuit
+      to the lost and found. Security officers everywhere rejoice.
+  Paxilmaniac:
+  - rscadd: A significantly smaller selection of new SolFed weapons has taken the
+      place of the now missing Armadyne selection.
+  - rscdel: So basically, all of Armadyne is gone.
+  - qol: A large number of weapons now use singular interchangeable magazine types,
+      rather than having seven different 9mm magazines to do the same thing
+  - balance: Any weapon that was replaced is going to have different stats from what
+      they used to be, numbers subject to change
+  - sound: Several new firing sounds from TGMC for the new weapons
+  - image: Whole collection of new ammo, gun, case, and so on sprites by myself
+  - image: Gun case worn on the back sprites done by Zydras
+  - code_imp: Where applicable, containers spawning gun stuff use generate_items_inside,
+      which is much neater than spamming new x(src)
+  SkyratBot:
+  - bugfix: The Syndicate have fired their previous construction company after poor
+      results in recent outposts.
+  - qol: Departmental order consoles now alert their department via radio when their
+      cooldown expires
+  - bugfix: Fix butchered monkeys to transfer reagents and diseases to meat
+  - bugfix: Fix organs having no DNA and become bloody when violently removed.
+  - refactor: Raw Prophets now use the basic mob framework. Please report any unusual
+      behaviour.
+  - bugfix: Cutting open a hand-pressed paper bundle no longer deletes all of the
+      paper.
+  - balance: Kudzu will now be destroyed by adverse weather.
+  - balance: Kudzu will no longer spread over holes.
+  - refactor: fixed many instances of updatehealth() either being called needlessly
+      or not at all within on_mob_life() and in various other parts of the code
+  - refactor: damage procs now return useful information--the actual net change in
+      damage on the mob. added a unit test for this
+  - bugfix: Some icons for selecting character preferences are no longer scaled incorrectly.
+  ninjanomnom:
+  - admin: Appearance vars in VV now display instead of being left blank
+2023-10-05:
+  FIoppie:
+  - sound: '*flap now makes a fluttering noise for moth wings'
+  - sound: Moths now have a death sound
+  - qol: '*tremble emote now is just "trembles!" instead of "trembles in fear!"'
+  LT3:
+  - image: Added colourable arm and leg wraps
+  Melbert:
+  - qol: Moved a lot of maintenance spawnpoints out of non-maintenance rooms. Some
+      antags (paradox clone, fugitives, nightmares, spiders) are now less likely to
+      spawn in obvious places like the morgue, tech storage, or dorms rooms.
+  Motho:
+  - image: Sector 13's station air alarms and fire alarms have been updated to be
+      more in line with other frontier station models.
+  SkyratBot:
+  - admin: Admins can turn off dynamic rulesets (or force them on despite not meeting
+      the qualification criteria) on a per-round basis.
+  - rscadd: The funds the syndicate have been saving by restricting galley access
+      has been suddenly funneled into a singular mosaic pattern in the experiments
+      wing.
+  - balance: CQC legsweeps now cause knockdown instead of paralysis.
+  - balance: CQC kicks now knockout a target on the floor for ten seconds if they
+      reach stam crit. Helmet protection shortens the knockout length.
+  - bugfix: Your heart will no longer be deleted if an admin heals you while you have
+      corazargh in your system.
+  - refactor: The cursed heart has been streamlined a bit, and now gives you a visual
+      cooldown for when you can beat your heart again.
+  Wallem:
+  - rscadd: Adds The Hand of Midas, an ancient Egyptian matchlock pistol.
+  honkpocket:
+  - bugfix: Extra magazines for all the Foam Force guns are now purchasable from cargo
+      imports
+  - rscadd: The Foam Force dart collector MOD modules are now purchasable from cargo
+      imports
+  - sound: added a unique racking sfx for the sol 'Renoster' shotgun
+  softcerv:
+  - qol: NIFSofts now use the same TGUI as their parent NIF.
+  tf-4:
+  - bugfix: Fixed some weirdness with mould mob attacks.
+  - qol: Mold mobs delete themselves on death.
