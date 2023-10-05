@@ -221,16 +221,16 @@
 		owner.adjustToxLoss(2)
 
 /datum/status_effect/inebriated/drunk/proc/attempt_to_blackout()
-	var/mob/living/carbon/drunkard = owner
 	/* SKYRAT EDIT REMOVAL - Blackout drunk begone
+	var/mob/living/carbon/drunkard = owner
 	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
 		drunk_value -= 50 //So that the drunk personality can spice things up without being killed by liver failure
 		return
 	else if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout) && prob(10))
 		to_chat(owner, span_warning("You stumbled and fall over!"))
 		owner.slip(1 SECONDS)
-	*/ // SKYRAT EDIT REMOVAL END
-	else if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
+	*/ // SKYRAT EDIT REMOVAL END (also removed the else on the line after)
+	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
 		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
 	else
 		owner.Sleeping(90 SECONDS)
