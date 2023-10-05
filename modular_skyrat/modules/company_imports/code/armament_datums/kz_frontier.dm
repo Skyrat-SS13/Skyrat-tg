@@ -20,6 +20,7 @@
 
 /datum/armament_entry/company_import/kz_frontier/basic/prybar
 	item_type = /obj/item/crowbar/large/doorforcer
+	restricted = TRUE
 
 /datum/armament_entry/company_import/kz_frontier/basic/arc_welder
 	item_type = /obj/item/weldingtool/electric/arc_welder
