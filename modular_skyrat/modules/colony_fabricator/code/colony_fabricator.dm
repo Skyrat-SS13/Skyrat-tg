@@ -81,7 +81,7 @@
 	icon_state = "colony_lathe_packed"
 	w_class = WEIGHT_CLASS_BULKY
 	/// What structure is created by this item.
-	var/type_to_deploy = /obj/machinery/rnd/production/colony_lathe
+	var/obj/type_to_deploy = /obj/machinery/rnd/production/colony_lathe
 	/// How long it takes to create the structure in question.
 	var/deploy_time = 4 SECONDS
 
