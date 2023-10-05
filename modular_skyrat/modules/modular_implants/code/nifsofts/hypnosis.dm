@@ -1,3 +1,7 @@
+/obj/item/disk/nifsoft_uploader/dorms/hypnosis
+	name = "Purpura Eye"
+	loaded_nifsoft = /datum/nifsoft/action_granter/hypnosis
+
 /datum/nifsoft/action_granter/hypnosis
 	name = "Purpura Eye"
 	program_desc = "Based on the hypnotic equipment provided by the LustWish vendor, the purpura eyes NIFSoft allows the user to ensnare others in a hypnotic trance. ((This is intended as a tool for ERP, don't use this for gameplay reasons.))"
