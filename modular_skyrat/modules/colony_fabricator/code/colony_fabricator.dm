@@ -74,7 +74,7 @@
 // Item for carrying the lathe around and building it
 
 /obj/item/flatpacked_machine
-	name = "\improper flatpacked rapid construction fabricator"
+	name = "flat-packed rapid construction fabricator"
 	desc = "All of the parts, tools, and a manual that you'd need to make a rapid construction fabricator. \
 		These bad boys are seen just about anywhere someone would want or need to build fast, damn the consequences. \
 		That tends to be colonies, especially on dangerous worlds, where the influences of this one machine can be seen \
