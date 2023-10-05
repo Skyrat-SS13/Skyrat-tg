@@ -132,7 +132,7 @@
 // PACMAN generator but epic!!
 
 /datum/design/flatpack_solids_generator
-	name = "Flatpacked S.O.F.I.E. Solid Fuel Generator"
+	name = "Flat-Packed S.O.F.I.E. Generator"
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR
 	materials = list(
