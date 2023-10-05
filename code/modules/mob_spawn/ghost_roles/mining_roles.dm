@@ -316,7 +316,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	shoes = /obj/item/clothing/shoes/combat
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_hand = /obj/item/gun/ballistic/rifle/sniper_rifle
+	r_hand = /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano/evil // SKYRAT EDIT - Original: /obj/item/gun/ballistic/rifle/sniper_rifle
 
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT
