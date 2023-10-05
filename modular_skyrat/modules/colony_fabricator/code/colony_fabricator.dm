@@ -32,11 +32,13 @@
 
 /obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)
 	. = ..()
-	if(.)
-		soundloop.start()
-		set_light(l_range = 1.5)
-		icon_state = "colony_lathe_working"
-		update_appearance()
+	if(!.)
+		return
+
+	soundloop.start()
+	set_light(l_range = 1.5)
+	icon_state = "colony_lathe_working"
+	update_appearance()
 
 /obj/machinery/rnd/production/colony_lathe/do_print(path, amount)
 	. = ..()
