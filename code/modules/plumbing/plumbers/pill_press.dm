@@ -69,13 +69,13 @@
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] bottle")
 			stored_products += P
-		//SKYRAT EDIT HYPOVIALS
+		//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
 		else if (product == "vial")
 			var/obj/item/reagent_containers/cup/vial/small/P = new(src)
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] vial")
 			stored_products += P
-		//SKYRAT EDIT HYPOVIALS END
+		//SKYRAT EDIT ADDITION END - HYPOVIALS
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
