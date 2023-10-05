@@ -3,13 +3,13 @@
 	name = "generic silver identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_silvergen"
-	assigned_icon_state = "assigned_silver"
+	assigned_icon_state = null
 
 /obj/item/card/id/advanced/gold/generic
 	name = "generic gold identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_goldgen"
-	assigned_icon_state = "assigned_gold"
+	assigned_icon_state = null
 
 // COLOURABLE
 /obj/item/card/id/advanced/colourable
