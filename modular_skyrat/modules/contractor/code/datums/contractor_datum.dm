@@ -18,7 +18,7 @@
 		// Special case for reinforcements, we want to show their ckey and name on round end.
 		if (istype(contractor_purchase, /datum/contractor_item/contractor_partner))
 			var/datum/contractor_item/contractor_partner/partner = contractor_purchase
-			var/mob/living/carbon/human/partner_mob = partner_mind.current
+			var/mob/living/carbon/human/partner_mob = partner.partner_mind.current
 			contractor_support_unit += "<br><b>[partner_mob.name]</b> was [partner_mob.p_their()] contractor support unit."
 
 	if (length(contractor_hub.purchased_items))
