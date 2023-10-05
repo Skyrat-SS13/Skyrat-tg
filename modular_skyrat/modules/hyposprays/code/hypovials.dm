@@ -45,7 +45,7 @@
 //Fit in all hypos
 /obj/item/reagent_containers/cup/vial/small
 	name = "hypovial"
-	desc = "A small, 60u capacity vial compatible with most hyposprays."
+	desc = "A small, 50u capacity vial compatible with most hyposprays."
 	volume = 50
 	possible_transfer_amounts = list(1,2,5,10,20,25,50)
 
@@ -53,7 +53,7 @@
 /obj/item/reagent_containers/cup/vial/large
 	name = "large hypovial"
 	icon_state = "hypoviallarge"
-	desc = "A large, 120u capacity vial that fits only in the most deluxe hyposprays."
+	desc = "A large, 100u capacity vial that fits only in the most deluxe hyposprays."
 	volume = 100
 	type_suffix = "-l"
 	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100)
