@@ -47,7 +47,7 @@
 	name = "hypovial"
 	desc = "A small, 50u capacity vial compatible with most hyposprays."
 	volume = 50
-	possible_transfer_amounts = list(1,2,5,10,20,25,50)
+	possible_transfer_amounts = list(1,2,5,10,15,25,50)
 
 //Fit in CMO hypo only
 /obj/item/reagent_containers/cup/vial/large
