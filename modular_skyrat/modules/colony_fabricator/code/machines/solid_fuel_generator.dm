@@ -1,5 +1,5 @@
 /obj/machinery/power/port_gen/pacman/solid_fuel
-	name = "S.O.F.I.E. solid fuel generator"
+	name = "\improper S.O.F.I.E.-type portable generator"
 	desc = "The second most common generator design in the galaxy, second only to the P.A.C.M.A.N. \
 		Similarly to other portable generators, this design burns plasma sheets in order to produce \
 		power. Unlike other generators however, this one isn't as portable, or as safe to operate, \
@@ -39,7 +39,7 @@
 // Item for creating the generator or carrying it around
 
 /obj/item/flatpacked_machine/fuel_generator
-	name = "flat-packed S.O.F.I.E. solid fuel generator"
+	name = "flat-packed S.O.F.I.E.-type portable generator"
 	icon_state = "fuel_generator_packed"
 	type_to_deploy = /obj/machinery/power/port_gen/pacman/solid_fuel
 	custom_materials = list(
