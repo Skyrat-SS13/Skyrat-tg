@@ -40,6 +40,7 @@
 
 /datum/armament_entry/company_import/kz_frontier/deployables
 	subcategory = "Deployable Equipment"
+	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/solar
 	item_type = /obj/item/flatpacked_machine/solar
@@ -51,20 +52,15 @@
 
 /datum/armament_entry/company_import/kz_frontier/deployables/station_battery
 	item_type = /obj/item/flatpacked_machine/station_battery
-	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/big_station_battery
 	item_type = /obj/item/flatpacked_machine/large_station_battery
-	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/arc_furnace
 	item_type = /obj/item/flatpacked_machine/arc_furnace
-	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/solids_generator
 	item_type = /obj/item/flatpacked_machine/fuel_generator
-	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/rtg
 	item_type = /obj/item/flatpacked_machine/rtg
-	cost = PAYCHECK_COMMAND

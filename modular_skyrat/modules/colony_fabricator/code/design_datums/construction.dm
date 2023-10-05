@@ -24,10 +24,6 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/polarizer/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/condenser/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR

@@ -1,3 +1,6 @@
+#define RADIAL_CHOICE_USE "use"
+#define RADIAL_CHOICE_EJECT "eject"
+
 /obj/machinery/arc_furnace
 	name = "arc furnace"
 	desc = "An arc furnace, a specialist machine that can rapidly smelt ores using, as the name implies, massive \
@@ -24,7 +27,7 @@
 	/// Image for the radial use button
 	var/static/radial_use = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_use")
 	/// Radial options for using the arc furnace
-	var/static/list/radial_options = list("eject" = radial_eject, "use" = radial_use)
+	var/static/list/radial_options = list(RADIAL_CHOICE_EJECT = radial_eject, RADIAL_CHOICE_USE = radial_use)
 	/// Soundloop for while we are smelting ores
 	var/datum/looping_sound/arc_furnace_running/soundloop
 
@@ -95,11 +98,12 @@
 
 	usr.set_machine(src) // What does this even do??
 	switch(choice)
-		if("eject")
+		if(RADIAL_CHOICE_EJECT)
 			eject_contents()
-		if("use")
+		if(RADIAL_CHOICE_USE)
 			smelt_it_up(user)
 
+/// Removes the first item in the contents list which should only ever be ore and if its not, we have problems
 /obj/machinery/arc_furnace/proc/eject_contents()
 	if(operating)
 		return
@@ -113,6 +117,7 @@
 	thing_inside.forceMove(drop_location())
 	update_appearance()
 
+/// Starts the smelting process, checking if the machine has power or if its broken at all
 /obj/machinery/arc_furnace/proc/smelt_it_up(mob/user)
 	if(machine_stat & (NOPOWER|BROKEN))
 		balloon_alert(user, "button doesn't respond")
@@ -135,6 +140,7 @@
 
 	update_appearance()
 
+/// The smelting loop for checking if we're done smelting or not. If we are, then we succeed smelting. If we have to stop for whatever reason, we stop.
 /obj/machinery/arc_furnace/proc/loop(time)
 	if(machine_stat & (NOPOWER|BROKEN))
 		end_smelting()
@@ -165,6 +171,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(loop), time), 1 SECONDS)
 
+/// Takes the ore contained and turns it into an equal stack amount of its smelt result
 /obj/machinery/arc_furnace/proc/succeed_smelting()
 	var/obj/item/stack/ore/ore_to_smelt = contents[1]
 	if(!istype(ore_to_smelt))
@@ -176,6 +183,7 @@
 	qdel(ore_to_smelt)
 	end_smelting()
 
+/// Turns the arc furnace off, removing its lights, sounds, so on.
 /obj/machinery/arc_furnace/proc/end_smelting()
 	operating = FALSE
 	soundloop.stop()
@@ -185,10 +193,13 @@
 // Item for creating the arc furnace or carrying it around
 
 /obj/item/flatpacked_machine/arc_furnace
-	name = "\improper flatpacked arc furnace"
-	desc = "An arc furnace, a specialist machine that can rapidly smelt ores using, as the name implies, massive \
-		amounts of electricity. While not nearly as fast and efficient as other ore refining methods, none are anywhere \
-		near as portable as these are."
+	name = "flat-packed arc furnace"
 	icon_state = "arc_furnace_folded"
 	type_to_deploy = /obj/machinery/arc_furnace
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 3,
+	)
+
+#undef RADIAL_CHOICE_USE
+#undef RADIAL_CHOICE_EJECT

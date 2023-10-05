@@ -46,8 +46,11 @@
 	source.balloon_alert_to_viewers("repacking...")
 	if(!do_after(user, 3 SECONDS, target = source))
 		return
+
 	playsound(source, 'sound/items/ratchet.ogg', 50, TRUE)
+
 	new item_to_pack_into(source.drop_location())
+
 	if(istype(source, /obj))
 		var/obj/source_object = source
 		source_object.deconstruct(TRUE)

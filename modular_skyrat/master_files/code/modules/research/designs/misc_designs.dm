@@ -59,7 +59,7 @@
 /datum/design/vox_gas_filter
 	name = "Vox Gas Filter"
 	id = "vox_gas_filter"
-	build_type = PROTOLATHE | AUTOLATHE
+	build_type = PROTOLATHE | AUTOLATHE | COLONY_FABRICATOR
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT)
 	build_path = /obj/item/gas_filter/vox
 	category = list(

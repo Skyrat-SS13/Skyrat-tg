@@ -132,7 +132,7 @@
 // PACMAN generator but epic!!
 
 /datum/design/flatpack_solids_generator
-	name = "Flatpacked Solid Fuel Generator"
+	name = "Flatpacked S.O.F.I.E. Solid Fuel Generator"
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -155,8 +155,10 @@
 	id = "flatpack_rtg"
 	build_type = COLONY_FABRICATOR
 	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 2
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/flatpacked_machine/rtg
 	category = list(

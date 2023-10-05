@@ -38,9 +38,8 @@
 
 /obj/item/screwdriver/omni_drill/examine(mob/user)
 	. = ..()
-	. += span_notice("Use <b>in hand</b> to switch configuration.")
+	. += span_notice("Use <b>in hand</b> to switch configuration.\n")
 	. += span_notice("It functions as a <b>[tool_behaviour]</b> tool.")
-	. += span_danger("<i>-100% random critical hit chance.</i>")
 
 /obj/item/screwdriver/omni_drill/update_icon_state()
 	. = ..()
@@ -60,7 +59,7 @@
 		"Screwdriver" = image(icon = icon, icon_state = "drill"),
 		"Wrench" = image(icon = icon, icon_state = "drill_bolt"),
 		"Wirecutters" = image(icon = icon, icon_state = "drill_cut"),
-		)
+	)
 	var/tool_result = show_radial_menu(user, src, tool_list, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user) || !tool_result)
 		return
@@ -119,7 +118,7 @@
 /obj/item/weldingtool/electric/arc_welder
 	name = "arc welding tool"
 	desc = "A specialized welding tool utilizing high powered arcs of electricity to weld things together. \
-		Compared to other electrically powered welders, this model is slow and highly power inefficient, \
+		Compared to other electrically-powered welders, this model is slow and highly power inefficient, \
 		but it still gets the job done and chances are you printed this bad boy off for free."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "arc_welder"

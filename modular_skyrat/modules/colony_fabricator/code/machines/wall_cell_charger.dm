@@ -24,7 +24,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 32)
 // Item for creating the arc furnace or carrying it around
 
 /obj/item/wallframe/cell_charger_multi
-	name = "\improper unmounted wall multi-cell charging rack"
+	name = "unmounted wall multi-cell charging rack"
 	desc = "The innovative technology of a cell charging rack, but able to be mounted neatly on a wall out of the way!"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/packed_machines.dmi'
 	icon_state = "cell_charger_packed"

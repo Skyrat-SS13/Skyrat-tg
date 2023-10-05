@@ -16,10 +16,6 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/engine_goggles_prescription/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/magboots/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -45,10 +41,6 @@
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/plasmaman_gas_filter/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/vox_gas_filter/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
