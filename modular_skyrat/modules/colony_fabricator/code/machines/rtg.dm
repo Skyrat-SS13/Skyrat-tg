@@ -30,7 +30,3 @@
 		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT,
 		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
 	)
-
-/obj/item/flatpacked_machine/rtg/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/radioactive)
