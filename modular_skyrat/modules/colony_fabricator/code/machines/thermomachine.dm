@@ -17,6 +17,8 @@
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	if(!mapload)
+		flick("thermo_deploy", src)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/deployable/RefreshParts()
 	. = ..()
