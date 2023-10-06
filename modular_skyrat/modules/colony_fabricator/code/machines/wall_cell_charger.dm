@@ -12,7 +12,6 @@
 
 /obj/machinery/cell_charger_multi/wall_mounted/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
 	find_and_hang_on_wall()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 32)
