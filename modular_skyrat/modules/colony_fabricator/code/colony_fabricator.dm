@@ -35,6 +35,7 @@
 
 /obj/machinery/rnd/production/colony_lathe/user_try_print_id(design_id, print_quantity)
 	. = ..()
+
 	if(!.)
 		return
 
