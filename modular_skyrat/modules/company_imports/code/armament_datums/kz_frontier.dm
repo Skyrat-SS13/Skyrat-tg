@@ -2,13 +2,6 @@
 	category = KZ_EQUIPMENT_NAME
 	company_bitflag = CARGO_COMPANY_KZ_EQUIPMENT
 
-/datum/armament_entry/company_import/kz_frontier/manufacturing
-	subcategory = "Manufacturing Equipment"
-
-/datum/armament_entry/company_import/kz_frontier/manufacturing/rapid_construction_fabricator
-	item_type = /obj/item/flatpacked_machine
-	cost = CARGO_CRATE_VALUE * 8
-
 // Tools that you could use the rapid fabricator for, but you're too lazy to actually do that
 
 /datum/armament_entry/company_import/kz_frontier/basic
@@ -39,8 +32,24 @@
 
 // Flatpacked, ready to deploy machines
 
+/datum/armament_entry/company_import/kz_frontier/deployables_misc
+	subcategory = "Deployable General Equipment"
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/kz_frontier/deployables_misc/rapid_construction_fabricator
+	item_type = /obj/item/flatpacked_machine
+	cost = CARGO_CRATE_VALUE * 8
+
+/datum/armament_entry/company_import/kz_frontier/deployables_misc/arc_furnace
+	item_type = /obj/item/flatpacked_machine/arc_furnace
+
+/datum/armament_entry/company_import/kz_frontier/deployables_misc/thermomachine
+	item_type = /obj/item/flatpacked_machine/thermomachine
+
+// Flatpacked, ready to deploy machines for power related activities
+
 /datum/armament_entry/company_import/kz_frontier/deployables
-	subcategory = "Deployable Equipment"
+	subcategory = "Deployable Power Equipment"
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/kz_frontier/deployables/solar
@@ -56,9 +65,6 @@
 
 /datum/armament_entry/company_import/kz_frontier/deployables/big_station_battery
 	item_type = /obj/item/flatpacked_machine/large_station_battery
-
-/datum/armament_entry/company_import/kz_frontier/deployables/arc_furnace
-	item_type = /obj/item/flatpacked_machine/arc_furnace
 
 /datum/armament_entry/company_import/kz_frontier/deployables/solids_generator
 	item_type = /obj/item/flatpacked_machine/fuel_generator

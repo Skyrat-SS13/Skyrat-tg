@@ -4,6 +4,7 @@
 #define FABRICATOR_SUBCATEGORY_MANUFACTURING "/Manufacturing"
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 #define FABRICATOR_SUBCATEGORY_MATERIALS "/Materials"
+#define FABRICATOR_SUBCATEGORY_ATMOS "/Atmospherics"
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
@@ -20,6 +21,7 @@
 		"flatpack_station_battery_large",
 		"flatpack_fuel_generator",
 		"flatpack_rtg",
+		"flatpack_thermo",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -29,7 +31,7 @@
 // Lets the colony lathe make more colony lathes but at very hihg cost, for fun
 
 /datum/design/flatpack_colony_fabricator
-	name = "Flatpacked Colony Fabricator"
+	name = "Flat-packed Colony Fabricator"
 	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
 		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
 		and moved to any location you see fit."
@@ -52,7 +54,7 @@
 // Solar panels and trackers
 
 /datum/design/flatpack_solar_panel
-	name = "Flatpacked Solar Panel"
+	name = "Flat-packed Solar Panel"
 	desc = "A deployable solar panel, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_panel"
 	build_type = COLONY_FABRICATOR
@@ -68,7 +70,7 @@
 	construction_time = 5 SECONDS
 
 /datum/design/flatpack_solar_tracker
-	name = "Flatpacked Solar Tracker"
+	name = "Flat-packed Solar Tracker"
 	desc = "A deployable solar tracker, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_tracker"
 	build_type = COLONY_FABRICATOR
@@ -86,7 +88,7 @@
 // Arc furance
 
 /datum/design/flatpack_arc_furnace
-	name = "Flatpacked Arc Furnace"
+	name = "Flat-packed Arc Furnace"
 	desc = "A deployable furnace for refining ores. While slower and less safe than conventional refining methods, \
 		it multiplies the output of refined materials enough to still outperform simply recycling ore."
 	id = "flatpack_arc_furnace"
@@ -105,7 +107,7 @@
 // Power storage structures
 
 /datum/design/flatpack_power_storage
-	name = "Flatpacked Stationary Battery"
+	name = "Flat-packed Stationary Battery"
 	desc = "A deployable station-scale power cell with an overall low capacity, but high input and output rate."
 	id = "flatpack_station_battery"
 	build_type = COLONY_FABRICATOR
@@ -122,7 +124,7 @@
 	construction_time = 20 SECONDS
 
 /datum/design/flatpack_power_storage_large
-	name = "Flatpacked Large Stationary Battery"
+	name = "Flat-packed Large Stationary Battery"
 	desc = "A deployable station-scale power cell with an overall extremely high capacity, but low input and output rate."
 	id = "flatpack_station_battery_large"
 	build_type = COLONY_FABRICATOR
@@ -162,7 +164,7 @@
 // Buildable RTG that is quite radioactive
 
 /datum/design/flatpack_rtg
-	name = "Flatpacked Radioisotope Thermoelectric Generator"
+	name = "Flat-packed Radioisotope Thermoelectric Generator"
 	desc = "A deployable radioisotope generator capable of producing a practically free trickle of power. \
 		Free if you can tolerate the radiation that the machine makes while deployed, that is."
 	id = "flatpack_rtg"
@@ -180,7 +182,27 @@
 	)
 	construction_time = 30 SECONDS
 
+// Thermomachine with decent temperature change rate, but a limited max/min temperature
+
+/datum/design/flatpack_thermomachine
+	name = "Flat-packed Atmospheric Temperature Regulator"
+	desc = "A deployable temperature control device for use with atmospherics pipe systems. \
+		Limited in its temperature range, however comes with a higher than normal heat capacity."
+	id = "flatpack_thermo"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/flatpacked_machine/thermomachine
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_ATMOS,
+	)
+	construction_time = 20 SECONDS
+
 #undef FABRICATOR_CATEGORY_FLATPACK_MACHINES
 #undef FABRICATOR_SUBCATEGORY_MANUFACTURING
 #undef FABRICATOR_SUBCATEGORY_POWER
 #undef FABRICATOR_SUBCATEGORY_MATERIALS
+#undef FABRICATOR_SUBCATEGORY_ATMOS
