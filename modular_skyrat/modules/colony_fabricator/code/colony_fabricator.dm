@@ -22,6 +22,7 @@
 /obj/machinery/rnd/production/colony_lathe/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 5 SECONDS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 	// We don't get new designs but can't print stuff if something's not researched, so we use the web that has everything researched
 	stored_research = locate(/datum/techweb/admin) in SSresearch.techwebs
 	soundloop = new(src, FALSE)
@@ -84,11 +85,15 @@
 	var/obj/type_to_deploy = /obj/machinery/rnd/production/colony_lathe
 	/// How long it takes to create the structure in question.
 	var/deploy_time = 4 SECONDS
+	/// If this isn't set to null, it'll give the flatpacked machine a manufacturer examine 4 tha lore
+	var/manufacturer = COMPANY_KZ_FRONTIER
 
 /obj/item/flatpacked_machine/Initialize(mapload)
 	. = ..()
 	desc = initial(type_to_deploy.desc)
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
+	if(manufacturer)
+		AddElement(/datum/element/manufacturer_examine, manufacturer)
 
 /obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
 	. = ..()

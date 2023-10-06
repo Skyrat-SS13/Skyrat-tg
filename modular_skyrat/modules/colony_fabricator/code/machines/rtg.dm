@@ -15,6 +15,7 @@
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/radioactive)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 	if(!mapload)
 		flick("rtg_deploy", src)
 

@@ -9,6 +9,7 @@
 /obj/machinery/power/solar/deployable/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 
 /obj/machinery/power/solar/deployable/crowbar_act(mob/user, obj/item/I)
 	return
@@ -42,6 +43,7 @@
 /obj/machinery/power/tracker/deployable/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 
 /obj/machinery/power/tracker/deployable/crowbar_act(mob/user, obj/item/item_acting)
 	return

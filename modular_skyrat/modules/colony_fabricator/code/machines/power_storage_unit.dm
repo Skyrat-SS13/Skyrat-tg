@@ -16,6 +16,7 @@
 /obj/machinery/power/smes/battery_pack/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 5 SECONDS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 	if(!mapload)
 		flick("smes_deploy", src)
 

@@ -37,6 +37,7 @@
 	. = ..()
 	soundloop = new(src, FALSE)
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 	if(!mapload)
 		flick("arc_furnace_deploy", src)
 

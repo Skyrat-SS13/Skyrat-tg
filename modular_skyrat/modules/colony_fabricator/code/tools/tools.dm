@@ -33,6 +33,10 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 
+/obj/item/screwdriver/omni_drill/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+
 /obj/item/screwdriver/omni_drill/get_all_tool_behaviours()
 	return list(TOOL_WIRECUTTER, TOOL_SCREWDRIVER, TOOL_WRENCH)
 
@@ -98,6 +102,10 @@
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
 	)
 
+/obj/item/crowbar/large/doorforcer/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+
 // Backpackable mining drill
 
 /obj/item/pickaxe/drill/compact
@@ -112,6 +120,10 @@
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
 	)
+
+/obj/item/pickaxe/drill/compact/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 
 // Electric welder but not quite as strong
 
@@ -132,3 +144,7 @@
 	light_power = 0.75
 	toolspeed = 1
 	power_use_amount = POWER_CELL_USE_INSANE
+
+/obj/item/weldingtool/electric/arc_welder/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)

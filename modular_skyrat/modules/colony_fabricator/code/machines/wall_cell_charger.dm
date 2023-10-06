@@ -14,6 +14,7 @@
 /obj/machinery/cell_charger_multi/wall_mounted/Initialize(mapload)
 	. = ..()
 	find_and_hang_on_wall()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 
 /obj/machinery/cell_charger_multi/wall_mounted/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
