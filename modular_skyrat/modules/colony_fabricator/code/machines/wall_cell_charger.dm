@@ -3,6 +3,7 @@
 	desc = "The innovative technology of a cell charging rack, but mounted neatly on a wall out of the way!"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/cell_charger.dmi'
 	icon_state = "wall_charger"
+	base_icon_state = "wall_charger"
 	circuit = null
 	flags_1 = NODECONSTRUCT_1
 	max_batteries = 3
