@@ -1,12 +1,14 @@
 #define RADIAL_CHOICE_USE "use"
 #define RADIAL_CHOICE_EJECT "eject"
 
+#define ARC_FURNACE_ORE_MULTIPLIER 1.5
+
 /obj/machinery/arc_furnace
 	name = "arc furnace"
 	desc = "An arc furnace, a specialist machine that can rapidly smelt ores using, as the name implies, massive \
-		amounts of electricity. While not nearly as fast and efficient as other ore refining methods, none are anywhere \
-		near as portable as these are. A sticker on the side notes that this may <b>exhaust waste gasses to the air</b> \
-		during operation."
+		amounts of electricity. While not nearly as fast and efficient as other ore refining methods, the arc furnace is \
+		capable of returning <b>larger amounts of refined material</b> than a standard refining process can. \
+		A sticker on the side notes that this may <b>exhaust waste gasses to the air</b> during operation."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "arc_furnace"
 	base_icon_state = "arc_furnace"
@@ -176,10 +178,26 @@
 	var/obj/item/stack/ore/ore_to_smelt = contents[1]
 	if(!istype(ore_to_smelt))
 		end_smelting()
-	/// Stack of product we just made and are going to fiddle with after spawning
-	var/obj/item/stack/smelting_product = new ore_to_smelt.refined_type(drop_location())
-	smelting_product.amount = ore_to_smelt.amount
-	smelting_product.update_appearance(UPDATE_ICON)
+
+	// We collect how many sheets of material we will need to spawn with the multiplier, whole sheets only!
+	var/how_much_material_to_spawn = round(ore_to_smelt.amount * ARC_FURNACE_ORE_MULTIPLIER)
+	// We also grab what the resulting refined type will be
+	var/obj/item/stack/ore_refined_type = ore_to_smelt.refined_type
+
+	// While the materials to spawn are greater than or equal to the max stack amount of the product, we can just safely spawn the max amount
+	// Variable with the max stack amount just for futureproofing, because why not?
+	while(how_much_material_to_spawn >= ore_refined_type.max_amount)
+		var/obj/item/stack/maxxed_smelting_product = new ore_refined_type(drop_location())
+		maxxed_smelting_product.amount = ore_refined_type.max_amount
+		maxxed_smelting_product.update_appearance(UPDATE_ICON)
+		how_much_material_to_spawn -= ore_refined_type.max_amount
+
+	// Now, we spawn a stack with whatever's left, if there is anything left
+	if(how_much_material_to_spawn)
+		var/obj/item/stack/smelting_product = new ore_refined_type(drop_location())
+		smelting_product.amount = how_much_material_to_spawn
+		smelting_product.update_appearance(UPDATE_ICON)
+
 	qdel(ore_to_smelt)
 	end_smelting()
 
@@ -203,3 +221,5 @@
 
 #undef RADIAL_CHOICE_USE
 #undef RADIAL_CHOICE_EJECT
+
+#undef ARC_FURNACE_ORE_MULTIPLIER
