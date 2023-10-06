@@ -36,7 +36,7 @@
 /datum/element/repackable/proc/on_right_click(atom/source, mob/user)
 	SIGNAL_HANDLER
 
-	if(!source.can_interact(user) || !user.can_perform_action(source))
+	if(!user.can_perform_action(source, NEED_DEXTERITY))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(repack), source, user)
