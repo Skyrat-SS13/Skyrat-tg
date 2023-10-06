@@ -1,12 +1,12 @@
 <!-- This should be copy-pasted into the root of your module folder as readme.md -->
 
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/24162
 
-## \<Title Here> <!--Title of your addition.-->
+## Science tools <!--Title of your addition.-->
 
-Module ID: <!-- Uppercase, UNDERSCORE_CONNECTED name of your module, that you use to mark files. This is so people can case-sensitive search for your edits, if any. -->
+Module ID: SCIENCE_TOOLS <!-- Uppercase, UNDERSCORE_CONNECTED name of your module, that you use to mark files. This is so people can case-sensitive search for your edits, if any. -->
 
-### Description:
+### Description: Lets sci print watered down engi tools, and robotics, medical tools.
 
 <!-- Here, try to describe what your PR does, what features it provides and any other directly useful information. -->
 
@@ -29,14 +29,16 @@ E.g:
 
 ### Defines:
 
-- N/A
+- 2 defines in research.dm
 <!-- If you needed to add any defines, mention the files you added those defines in, along with the name of the defines. -->
 
 ### Included files that are not contained in this module:
 
-- N/A
+- ~skyrat_defines/research.dm
 <!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here. Good examples are icons or sounds that are used between multiple modules, or other such edge-cases. -->
 
 ### Credits:
+
+- Niko: Author
 
 <!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code. -->
