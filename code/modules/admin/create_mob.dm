@@ -28,6 +28,7 @@
 	human.dna.blood_type = random_blood_type()
 	human.dna.features["mcolor"] = "#[random_color()]"
 	human.dna.species.randomize_active_underwear_only(human)
+<<<<<<< HEAD
 	/*SKYRAT EDIT OLD
 	for(var/datum/species/species_path as anything in subtypesof(/datum/species))
 		var/datum/species/new_species = new species_path
@@ -43,3 +44,10 @@
 	human.dna.update_dna_identity()
 	human.updateappearance()
 	human.update_body(is_creating = TRUE)
+=======
+	// Needs to be called towards the end to update all the UIs just set above
+	human.dna.initialize_dna(newblood_type = random_blood_type(), create_mutation_blocks = randomize_mutations, randomize_features = TRUE)
+	// Snowflake for Ethereals
+	human.updatehealth()
+	human.updateappearance(mutcolor_update = TRUE)
+>>>>>>> 59288d1a976 (Kills `spec_updatehealth`, replaces it with use of `COMSIG_LIVING_HEALTH_UPDATE` (#78772))
