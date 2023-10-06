@@ -21,11 +21,13 @@
 
 	RegisterSignal(target, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	RegisterSignal(target, COMSIG_ATOM_ATTACK_HAND_SECONDARY, PROC_REF(on_right_click))
+	RegisterSignal(target, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
 
 /datum/element/repackable/Detach(datum/target)
 	. = ..()
 	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(target, COMSIG_ATOM_ATTACK_HAND_SECONDARY)
+	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM))
 
 /datum/element/repackable/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -56,3 +58,13 @@
 		source_object.deconstruct(TRUE)
 	else
 		qdel(source)
+
+/// Adds screen context for hovering over the repackable items with your mouse
+/datum/element/repackable/proc/on_requesting_context_from_item(atom/source, list/context, obj/item/held_item, mob/user)
+	SIGNAL_HANDLER
+
+	if(isnull(held_item))
+		context[SCREENTIP_CONTEXT_RMB] = "Repack"
+		. = CONTEXTUAL_SCREENTIP_SET
+
+	return NONE
