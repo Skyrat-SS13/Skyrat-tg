@@ -11,7 +11,7 @@
 #define R_TRAIT_UNIQUEWRECK	"unique_wreck"
 /// Or when tipped over.
 #define R_TRAIT_UNIQUETIP	"unique_tip"
-/// Represents wide/quadruped/dogborg type models.
+/// 64x32 skins
 #define R_TRAIT_WIDE		"wide_borg"
 /// 32x64 skins
 #define R_TRAIT_TALL		"tall_borg"
