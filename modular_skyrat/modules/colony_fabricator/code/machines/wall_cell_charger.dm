@@ -11,6 +11,8 @@
 	/// The item we turn into when repacked
 	var/repacked_type = /obj/item/wallframe/cell_charger_multi
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 32)
+
 /obj/machinery/cell_charger_multi/wall_mounted/Initialize(mapload)
 	. = ..()
 	find_and_hang_on_wall()
@@ -29,8 +31,6 @@
 	if(disassembled)
 		new repacked_type(drop_location())
 	return ..()
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 32)
 
 /obj/machinery/cell_charger_multi/wall_mounted/RefreshParts()
 	. = ..()
