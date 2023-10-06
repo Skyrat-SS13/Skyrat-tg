@@ -14,12 +14,8 @@
 	if(!prev_lying)
 		gib_animation()
 
-<<<<<<< HEAD
-	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: spill_organs(no_brain, no_organs, no_bodyparts)
-=======
 	ghostize()
-	spill_organs(no_brain, no_organs, no_bodyparts)
->>>>>>> 29c5620166e (gibbing ghosts you before you get deleted by gibbing (#78765))
+	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: spill_organs(no_brain, no_organs, no_bodyparts)
 
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs)
