@@ -76,7 +76,7 @@
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 6, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 6, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 6, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT,)
 	build_path = /obj/item/organ/internal/eyes/night_vision/cyber
 	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_UTILITY
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
@@ -84,10 +84,46 @@
 	name = "CNS Jumpstarter Implant"
 	desc = "This implant will automatically attempt to jolt you awake from unconsciousness, with a short cooldown between jolts. Conflicts with the CNS Rebooter."
 	id = "ci-antisleep"
-	build_type = MECHFAB | PROTOLATHE
+	build_type = MECHFAB
 	construction_time = 60
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 6, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 6, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 5)
 	build_path = /obj/item/organ/internal/cyberimp/brain/anti_sleep
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cyberimp_antidrop
+	name = "Anti-Drop Implant"
+	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping. Twitch ear to toggle."
+	id = "ci-antidrop"
+	build_type = AWAY_LATHE | MECHFAB
+	construction_time = 60
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*6,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT*6,
+		/datum/material/silver = SMALL_MATERIAL_AMOUNT*4,
+		/datum/material/gold = SMALL_MATERIAL_AMOUNT*4,
+	)
+	build_path = /obj/item/organ/internal/cyberimp/brain/anti_drop
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/cyberimp_antistun
+	name = "CNS Rebooter Implant"
+	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
+	id = "ci-antistun"
+	build_type = AWAY_LATHE | MECHFAB
+	construction_time = 60
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*6,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT*6,
+		/datum/material/silver =SMALL_MATERIAL_AMOUNT*5,
+		/datum/material/gold =HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/organ/internal/cyberimp/brain/anti_stun
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
 	)
@@ -131,3 +167,56 @@
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_MISC
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
+
+/datum/design/cyberimp_xray
+	name = "X-ray Eyes"
+	desc = "These cybernetic eyes will give you X-ray vision. Blinking is futile."
+	id = "ci-xray"
+	build_type = AWAY_LATHE | MECHFAB
+	construction_time = 60
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT*6,	/datum/material/glass = SMALL_MATERIAL_AMOUNT*6, /datum/material/silver = SMALL_MATERIAL_AMOUNT*6, /datum/material/gold = SMALL_MATERIAL_AMOUNT*6, /datum/material/uranium = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/organ/internal/eyes/robotic/xray
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_xray/moth
+	name = "Moth X-ray Eyes"
+	id = "ci-xray-moth"
+	build_path = /obj/item/organ/internal/eyes/robotic/xray/moth
+
+/datum/design/cyberimp_thermals
+	name = "Thermal Eyes"
+	desc = "These cybernetic eyes will give you Thermal vision. Vertical slit pupil included."
+	id = "ci-thermals"
+	build_type = AWAY_LATHE | MECHFAB
+	construction_time = 60
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass = SMALL_MATERIAL_AMOUNT*6, /datum/material/silver = SMALL_MATERIAL_AMOUNT*6, /datum/material/gold = SMALL_MATERIAL_AMOUNT*6, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/organ/internal/eyes/robotic/thermals
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_thermals/moth
+	name = "Moth Thermal Eyes"
+	id = "ci-thermals-moth"
+	build_path = /obj/item/organ/internal/eyes/robotic/thermals/moth
+
+/datum/design/cyberimp_reviver
+	name = "Reviver Implant"
+	desc = "This implant will attempt to revive you if you lose consciousness. For the faint of heart!"
+	id = "ci-reviver"
+	build_type = AWAY_LATHE | MECHFAB
+	construction_time = 60
+	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*8, /datum/material/glass = SMALL_MATERIAL_AMOUNT*8, /datum/material/gold =SMALL_MATERIAL_AMOUNT * 3, /datum/material/uranium =SMALL_MATERIAL_AMOUNT*5,
+	)
+	build_path = /obj/item/organ/internal/cyberimp/chest/reviver
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
