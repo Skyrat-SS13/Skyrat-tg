@@ -30,6 +30,9 @@
 
 /datum/design/flatpack_colony_fabricator
 	name = "Flatpacked Colony Fabricator"
+	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
+		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
+		and moved to any location you see fit."
 	id = "flatpack_colony_fab"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -50,6 +53,7 @@
 
 /datum/design/flatpack_solar_panel
 	name = "Flatpacked Solar Panel"
+	desc = "A deployable solar panel, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_panel"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -65,6 +69,7 @@
 
 /datum/design/flatpack_solar_tracker
 	name = "Flatpacked Solar Tracker"
+	desc = "A deployable solar tracker, able to be repacked after placement for relocation or recycling."
 	id = "flatpack_solar_tracker"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -82,6 +87,8 @@
 
 /datum/design/flatpack_arc_furnace
 	name = "Flatpacked Arc Furnace"
+	desc = "A deployable furnace for refining ores. While slower and less safe than conventional refining methods, \
+		it multiplies the output of refined materials enough to still outperform simply recycling ore."
 	id = "flatpack_arc_furnace"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -99,6 +106,7 @@
 
 /datum/design/flatpack_power_storage
 	name = "Flatpacked Stationary Battery"
+	desc = "A deployable station-scale power cell with an overall low capacity, but high input and output rate."
 	id = "flatpack_station_battery"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -115,6 +123,7 @@
 
 /datum/design/flatpack_power_storage_large
 	name = "Flatpacked Large Stationary Battery"
+	desc = "A deployable station-scale power cell with an overall extremely high capacity, but low input and output rate."
 	id = "flatpack_station_battery_large"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -133,6 +142,8 @@
 
 /datum/design/flatpack_solids_generator
 	name = "Flat-Packed S.O.F.I.E. Generator"
+	desc = "A deployable plasma-burning generator capable of outperforming even upgraded P.A.C.M.A.N. type generators, \
+		at expense of creating hot carbon dioxide exhaust."
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -152,6 +163,8 @@
 
 /datum/design/flatpack_rtg
 	name = "Flatpacked Radioisotope Thermoelectric Generator"
+	desc = "A deployable radioisotope generator capable of producing a practically free trickle of power. \
+		Free if you can tolerate the radiation that the machine makes while deployed, that is."
 	id = "flatpack_rtg"
 	build_type = COLONY_FABRICATOR
 	materials = list(

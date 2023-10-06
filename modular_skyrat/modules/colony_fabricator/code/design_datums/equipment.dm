@@ -81,5 +81,3 @@
 /datum/design/super_cell/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
-
-
