@@ -86,15 +86,16 @@
 	var/obj/type_to_deploy = /obj/machinery/rnd/production/colony_lathe
 	/// How long it takes to create the structure in question.
 	var/deploy_time = 4 SECONDS
-	/// If this isn't set to null, it'll give the flatpacked machine a manufacturer examine 4 tha lore
-	var/manufacturer = COMPANY_KZ_FRONTIER
 
 /obj/item/flatpacked_machine/Initialize(mapload)
 	. = ..()
 	desc = initial(type_to_deploy.desc)
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
-	if(manufacturer)
-		AddElement(/datum/element/manufacturer_examine, manufacturer)
+	give_manufacturer_examine()
+
+/// Adds the manufacturer examine element to the flatpack machine, but can be overridden in the future
+/obj/item/flatpacked_machine/proc/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
 
 /obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
 	. = ..()
