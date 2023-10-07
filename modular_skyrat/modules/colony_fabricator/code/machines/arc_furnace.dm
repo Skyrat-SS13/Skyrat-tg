@@ -188,12 +188,12 @@
 	// While the materials to spawn are greater than or equal to the max stack amount of the product, we can just safely spawn the max amount
 	// Variable with the max stack amount just for futureproofing, because why not?
 	while(how_much_material_to_spawn >= ore_refined_type.max_amount)
-		var/obj/item/stack/maxxed_smelting_product = new ore_refined_type(drop_location(), ore_refined_type.max_amount)
+		new ore_refined_type(drop_location(), ore_refined_type.max_amount)
 		how_much_material_to_spawn -= ore_refined_type.max_amount
 
 	// Now, we spawn a stack with whatever's left, if there is anything left
 	if(how_much_material_to_spawn)
-		var/obj/item/stack/smelting_product = new ore_refined_type(drop_location(), how_much_material_to_spawn)
+		new ore_refined_type(drop_location(), how_much_material_to_spawn)
 
 	qdel(ore_to_smelt)
 	end_smelting()
