@@ -84,7 +84,6 @@
 			alternate_worn_layer = initial(alternate_worn_layer)
 			to_chat(user, "You sweep your hair under the mask.")
 
-
 		user.update_body_parts()
 		user.update_inv_ears(0)
 		user.update_worn_mask()
