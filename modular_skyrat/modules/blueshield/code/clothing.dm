@@ -21,8 +21,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
 	icon_state = "bshield_headset"
 	worn_icon_state = "bshield_headset"
-	keyslot = new /obj/item/encryptionkey/heads/blueshield
-	keyslot2 = new /obj/item/encryptionkey/headset_cent
+	keyslot = /obj/item/encryptionkey/heads/blueshield
+	keyslot2 = /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
@@ -132,13 +132,30 @@
 	desc = "A tight-fitting kevlar-lined vest with a blue badge on the chest of it."
 	icon_state = "blueshieldarmor"
 	body_parts_covered = CHEST
-	armor_type = /datum/armor/vest_blueshield
+	armor_type = /datum/armor/suit_armor/blueshield
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Slim" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "blueshieldarmor",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "blueshieldarmor",
+		),
+		"Marine" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "bs_marine",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "bs_marine",
+		),
+		"Bulky" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "vest_black",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "vest_black",
+		),
+	)
 
-/datum/armor/vest_blueshield
-	melee = 35
-	bullet = 25
-	laser = 25
-	energy = 25
+/datum/armor/suit_armor/blueshield
 	bomb = 30
 	fire = 75
 	acid = 75
@@ -148,6 +165,7 @@
 	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
 	icon_state = "blueshield"
 	body_parts_covered = CHEST|ARMS
+	unique_reskin = null
 
 /obj/item/clothing/suit/armor/vest/blueshield/jacket/Initialize(mapload)
 	. = ..()
@@ -159,16 +177,7 @@
 	desc = "A comfy kevlar-lined coat with blue highlights, fit to keep the blueshield armored and warm."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)
-	armor_type = /datum/armor/wintercoat_blueshield
-
-/datum/armor/wintercoat_blueshield
-	melee = 35
-	bullet = 25
-	laser = 25
-	energy = 25
-	bomb = 30
-	fire = 75
-	acid = 75
+	armor_type = /datum/armor/suit_armor/blueshield
 
 /obj/item/clothing/suit/hooded/wintercoat/skyrat/blueshield/Initialize(mapload)
 	. = ..()
@@ -177,13 +186,4 @@
 /obj/item/clothing/head/hooded/winterhood/skyrat/blueshield
 	icon_state = "hood_blueshield"
 	desc = "A comfy kevlar-lined hood to go with the comfy kevlar-lined coat."
-	armor_type = /datum/armor/winterhood_blueshield
-
-/datum/armor/winterhood_blueshield
-	melee = 35
-	bullet = 25
-	laser = 25
-	energy = 15
-	bomb = 25
-	fire = 75
-	acid = 75
+	armor_type = /datum/armor/suit_armor/blueshield
