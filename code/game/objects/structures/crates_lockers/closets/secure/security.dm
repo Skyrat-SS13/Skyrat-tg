@@ -17,7 +17,7 @@
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -25,7 +25,6 @@
 	name = "head of personnel's locker"
 	icon_state = "hop"
 	req_access = list(ACCESS_HOP)
-	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()

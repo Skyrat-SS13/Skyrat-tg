@@ -99,9 +99,6 @@
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	obj_flags = UNIQUE_RENAME // if you did the sidequest, you get the customization
 
-/obj/item/gun/ballistic/automatic/pistol/deagle/regal/no_mag
-	spawnwithmagazine = FALSE
-
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "\improper Stechkin APS machine pistol"
 	desc = "A modernized reproduction of an old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors." //SKYRAT EDIT
