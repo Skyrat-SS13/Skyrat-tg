@@ -14,6 +14,8 @@
 		"wall_multi_cell_rack",
 		"portable_lil_pump",
 		"portable_scrubbs",
+		"survival_knife", // I just don't want to make a whole new node for this one sorry
+		"soup_pot", // This one too
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
