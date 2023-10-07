@@ -327,9 +327,6 @@
 			send_message("Multiple of [loaded_nifsoft] cannot be installed.", TRUE)
 			return FALSE
 
-		if(is_type_in_list(current_nifsoft, loaded_nifsoft.mutually_exclusive_programs))
-			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed.", TRUE)
-			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
 	loaded_nifsoft.parent_nif = WEAKREF(src)

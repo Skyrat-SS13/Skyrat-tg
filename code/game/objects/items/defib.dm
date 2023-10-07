@@ -191,6 +191,18 @@
 	if (. & EMP_PROTECT_SELF)
 		return
 
+	if(combat) //酷酷除颤器go burrrn
+		visible_message(span_notice("[src] beeps: 安全协议不存在!"))
+		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, FALSE)
+	else if(safety)
+		safety = FALSE
+		visible_message(span_notice("[src] beeps: 安全协议已关闭!"))
+		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, FALSE)
+	else
+		safety = TRUE
+		visible_message(span_notice("[src] beeps: 安全协议已开启!"))
+		playsound(src, 'sound/machines/defib_saftyOn.ogg', 50, FALSE)
+
 	update_power()
 
 /obj/item/defibrillator/proc/toggle_paddles()
