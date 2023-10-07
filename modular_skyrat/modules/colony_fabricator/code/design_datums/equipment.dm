@@ -72,9 +72,13 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/portaseeder
+/datum/design/portaseeder/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
-/datum/design/oven_tray
+/datum/design/oven_tray/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
 
 /datum/design/survival_knife
 	name = "Survival Knife"
