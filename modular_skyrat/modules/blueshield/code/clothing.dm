@@ -39,16 +39,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/plasmaman_hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/plasmaman_head.dmi'
 	icon_state = "bs_envirohelm"
-	armor_type = /datum/armor/helmet_plasmaman_blueshield
+	armor_type = /datum/armor/head_helmet/plasmaman/blueshield
 
-/datum/armor/helmet_plasmaman_blueshield
-	melee = 30
-	bullet = 20
-	laser = 20
-	energy = 20
-	bomb = 25
-	bio = 100
-	fire = 100
+/datum/armor/head_helmet/plasmaman/blueshield
 	acid = 90
 
 /obj/item/clothing/under/plasmaman/blueshield
@@ -77,15 +70,10 @@
 	greyscale_colors = "#3A4E7D#DEB63D"
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/head_muzzled.dmi'
 	icon_state = "beret_badge_police"
-	armor_type = /datum/armor/beret_blueshield
+	armor_type = /datum/armor/head_helmet/blueshield
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/datum/armor/beret_blueshield
-	melee = 35
-	bullet = 25
-	laser = 25
-	energy = 15
-	bomb = 25
+/datum/armor/head_helmet/blueshield
 	fire = 75
 	acid = 75
 
