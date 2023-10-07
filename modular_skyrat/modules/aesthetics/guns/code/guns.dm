@@ -49,7 +49,7 @@
 	/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2, \
 )
 
-// for .35 Sol Ripper. one day, anon. one day
+// for .35 Sol Ripper
 #define AMMO_MATS_RIPPER list( \
 	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
 	/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4, \
@@ -302,6 +302,8 @@
 
 // GUBMAN3 - FULL BULLET RENAME
 // i loathe the above
+
+// overrides for 10mm ammo in modular_skyrat\modules\sec_haul\code\guns\bullets.dm
 
 // overrides for .310 Strilka-derived ammo, e.g. lionhunter ammo, because you don't want to give security the ability to print infinite wallhack ammo, right?
 /obj/item/ammo_casing/strilka310/lionhunter
