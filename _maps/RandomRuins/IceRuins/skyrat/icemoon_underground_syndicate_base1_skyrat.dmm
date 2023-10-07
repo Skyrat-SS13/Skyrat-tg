@@ -491,7 +491,8 @@
 /area/ruin/syndicate_lava_base/cargo)
 "dk" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "intdyno2";
 	dir = 1
 	},
 /turf/open/floor/engine/o2,
@@ -871,7 +872,7 @@
 /area/ruin/syndicate_lava_base/cargo)
 "gp" = (
 /obj/machinery/light/floor,
-/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/machinery/cryo_cell,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "gs" = (
@@ -1181,10 +1182,6 @@
 /obj/machinery/chem_master,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
-"jc" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/bar)
 "jf" = (
 /obj/effect/turf_decal/vg_decals/department/bar{
 	dir = 1
@@ -4404,7 +4401,8 @@
 /area/ruin/syndicate_lava_base/bar)
 "Ov" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "intdynn2";
 	dir = 1
 	},
 /turf/open/floor/engine/n2,
@@ -4412,7 +4410,8 @@
 "Ow" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "intdynserver";
 	dir = 1;
 	external_pressure_bound = 120;
 	name = "server vent"
@@ -4477,6 +4476,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/security/telescreen/entertainment/directional/east,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
 "Pc" = (
@@ -7233,7 +7233,7 @@ MT
 dR
 NY
 OV
-jc
+XT
 XT
 cZ
 xf

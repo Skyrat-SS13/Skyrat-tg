@@ -31,7 +31,7 @@
 	if(!(C.mob_biotypes & MOB_ROBOTIC))
 		C.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			C.vomit(5, FALSE, FALSE)
+			C.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 5)
 	return ..()
 
 /datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/C, method=TOUCH, volume)
@@ -597,6 +597,15 @@
 	else
 		quality = DRINK_GOOD
 	return ..()
+
+
+/datum/reagent/consumable/ethanol/bloodshot_base
+	name = "Bloodshot Base"
+	description = "The bootleg blend of nutrients and alcohol that goes into making Bloodshots. Doesn't taste too great on its own, for Hemophages at least."
+	color = "#c29ca1"
+	boozepwr = 25 // Still more concentrated than in Bloodshot.
+	taste_description = "nutritious mix with an alcoholic kick to it"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 
 /datum/reagent/consumable/ethanol/bloodshot

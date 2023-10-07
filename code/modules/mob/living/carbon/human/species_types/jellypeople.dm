@@ -10,11 +10,10 @@
 	name = "\improper Jellyperson"
 	plural_form = "Jellypeople"
 	id = SPECIES_JELLYPERSON
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-	)
+	examine_limb_id = SPECIES_JELLYPERSON
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_SLIME
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_TOXINLOVER,
 		TRAIT_NOBLOOD,
 	)
@@ -25,13 +24,9 @@
 	meat = /obj/item/food/meat/slab/human/mutant/slime
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	blood_deficiency_drain_rate = JELLY_REGEN_RATE + BLOOD_DEFICIENCY_MODIFIER
-	var/datum/action/innate/regenerate_limbs/regenerate_limbs
-	var/datum/action/innate/alter_form/alter_form //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	liked_food = MEAT | BUGS
-	toxic_food = NONE
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	inherent_factions = list(FACTION_SLIME)
 	species_language_holder = /datum/language_holder/jelly
@@ -45,6 +40,8 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/jelly,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
 	)
+	var/datum/action/innate/regenerate_limbs/regenerate_limbs
+	var/datum/action/innate/alter_form/alter_form //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 /datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
 	. = ..()
@@ -77,6 +74,7 @@
 	return ..()
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely
 		return
 
@@ -185,9 +183,9 @@
 	name = "\improper Slimeperson"
 	plural_form = "Slimepeople"
 	id = SPECIES_SLIMEPERSON
-	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR)
 	hair_color = "mutcolor"
 	hair_alpha = 150
+	facial_hair_alpha = 150
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	mutanteyes = /obj/item/organ/internal/eyes
 	var/datum/action/innate/split_body/slime_split
@@ -247,6 +245,7 @@
 	bodies = old_species.bodies
 
 /datum/species/jelly/slime/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 		if(SPT_PROB(2.5, seconds_per_tick))
 			to_chat(H, span_notice("You feel very bloated!"))
@@ -255,8 +254,6 @@
 		H.blood_volume += 1.5 * seconds_per_tick
 		if(H.blood_volume <= BLOOD_VOLUME_LOSE_NUTRITION)
 			H.adjust_nutrition(-1.25 * seconds_per_tick)
-
-	..()
 
 /datum/action/innate/split_body
 	name = "Split Body"
@@ -280,12 +277,12 @@
 	if(!isslimeperson(H))
 		return
 	CHECK_DNA_AND_SPECIES(H)
-	H.visible_message("<span class='notice'>[owner] gains a look of \
-		concentration while standing perfectly still.</span>",
-		"<span class='notice'>You focus intently on moving your body while \
-		standing perfectly still...</span>")
+	H.visible_message(
+		span_notice("[owner] gains a look of concentration while standing perfectly still."),
+		span_notice("You focus intently on moving your body while standing perfectly still..."),
+	)
 
-	H.notransform = TRUE
+	ADD_TRAIT(src, TRAIT_NO_TRANSFORM, REF(src))
 
 	if(do_after(owner, delay = 6 SECONDS, target = owner, timed_action_flags = IGNORE_HELD_ITEM))
 		if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
@@ -295,7 +292,7 @@
 	else
 		to_chat(H, span_warning("...but fail to stand perfectly still!"))
 
-	H.notransform = FALSE
+	REMOVE_TRAIT(src, TRAIT_NO_TRANSFORM, REF(src))
 
 /datum/action/innate/split_body/proc/make_dupe()
 	var/mob/living/carbon/human/H = owner
@@ -314,7 +311,7 @@
 	spare.Move(get_step(H.loc, pick(NORTH,SOUTH,EAST,WEST)))
 
 	H.blood_volume *= 0.45
-	H.notransform = 0
+	REMOVE_TRAIT(H, TRAIT_NO_TRANSFORM, REF(src))
 
 	var/datum/species/jelly/slime/origin_datum = H.dna.species
 	origin_datum.bodies |= spare
@@ -324,10 +321,10 @@
 
 	H.transfer_quirk_datums(spare)
 	H.mind.transfer_to(spare)
-	spare.visible_message("<span class='warning'>[H] distorts as a new body \
-		\"steps out\" of [H.p_them()].</span>",
-		"<span class='notice'>...and after a moment of disorentation, \
-		you're besides yourself!</span>")
+	spare.visible_message(
+		span_warning("[H] distorts as a new body \"steps out\" of [H.p_them()]."),
+		span_notice("...and after a moment of disorentation, you're besides yourself!"),
+	)
 
 
 /datum/action/innate/swap_body

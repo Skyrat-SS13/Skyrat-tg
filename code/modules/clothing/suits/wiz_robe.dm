@@ -55,7 +55,7 @@
 	icon_state = "witch_hat"
 	greyscale_colors = "#343640#e0cab8#e0cab8"
 	greyscale_config = /datum/greyscale_config/witch_hat
-	greyscale_config_worn = /datum/greyscale_config/witch_hat_worn
+	greyscale_config_worn = /datum/greyscale_config/witch_hat/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	dog_fashion = null
 
@@ -66,7 +66,7 @@
 	inhand_icon_state = "tapehat"
 	dog_fashion = null
 	worn_y_offset = 6
-	body_parts_covered = HEAD|HAIR
+	body_parts_covered = HEAD //this used to also cover HAIR, but that was never valid code as HAIR is not actually a body_part define!
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 
 /obj/item/clothing/head/wizard/magus

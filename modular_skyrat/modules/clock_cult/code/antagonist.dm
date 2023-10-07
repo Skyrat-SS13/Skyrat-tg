@@ -33,7 +33,7 @@
 	. = ..()
 	var/mob/living/current = owner.current
 	current.faction |= FACTION_CLOCK
-	current.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_CULTIST)
+	current.grant_language(/datum/language/ratvar, source = LANGUAGE_CULTIST)
 	communicate.Grant(current)
 	recall.Grant(current)
 	RegisterSignal(current, COMSIG_CLOCKWORK_SLAB_USED, PROC_REF(switch_recall_slab))

@@ -4,18 +4,12 @@
 	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/modules/organs/icons/vox_eyes.dmi'
 	can_augment = FALSE
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/vox
@@ -29,8 +23,7 @@
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)
-	liked_food = MEAT | FRIED
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

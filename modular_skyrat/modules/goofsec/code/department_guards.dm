@@ -200,12 +200,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/pink
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/science = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
 	duffelbag = /obj/item/storage/backpack/duffelbag/science
+	messenger = /obj/item/storage/backpack/messenger/science
 
 	id_trim = /datum/id_trim/job/science_guard
 
@@ -303,12 +304,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/blue
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/medical = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	messenger = /obj/item/storage/backpack/messenger/med
 	box = /obj/item/storage/box/survival/medical
 
 	id_trim = /datum/id_trim/job/orderly
@@ -400,12 +402,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/yellow
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/engineering = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	messenger = /obj/item/storage/backpack/messenger/eng
 	box = /obj/item/storage/box/survival/engineer
 
 	id_trim = /datum/id_trim/job/engineering_guard
@@ -504,12 +507,13 @@
 	l_pocket = /obj/item/restraints/handcuffs/cable/orange
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/cargo = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 	)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
+	messenger = /obj/item/storage/backpack/messenger
 
 	id_trim = /datum/id_trim/job/customs_agent
 
@@ -600,13 +604,14 @@
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/departmental/service = 1,
-		/obj/item/storage/box/gunset/pepperball = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/pepperball = 1,
 		)
 	glasses = /obj/item/clothing/glasses/sunglasses
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
+	messenger = /obj/item/storage/backpack/messenger
 
 	id_trim = /datum/id_trim/job/bouncer
 
@@ -694,7 +699,10 @@
 							span_hear("You hear a faint electrical spark."))
 		balloon_alert(user, "emagged")
 		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		obj_flags |= EMAGGED
 		emagged = TRUE
+		return TRUE
+	return FALSE
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"

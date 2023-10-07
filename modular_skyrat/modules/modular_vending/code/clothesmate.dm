@@ -36,6 +36,7 @@
 				/obj/item/clothing/glasses/betterunshit = 5,
 				/obj/item/clothing/glasses/thin = 5,
 				/obj/item/clothing/glasses/hud/ar/projector = 5,
+				/obj/item/clothing/gloves/bracer/wraps,
 			),
 		),
 
@@ -90,6 +91,7 @@
 				/obj/item/clothing/under/dress/skyrat/pentagram = 5,
 				/obj/item/clothing/suit/varsity = 5,
 				/obj/item/clothing/suit/toggle/jacket = 5,
+				/obj/item/clothing/suit/toggle/jacket/flannel/gags = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,
@@ -124,6 +126,7 @@
 				/obj/item/clothing/shoes/colorable_sandals = 5,
 				/obj/item/clothing/shoes/sports = 5,
 				/obj/item/clothing/shoes/wraps/colourable = 5,
+				/obj/item/clothing/shoes/wraps/cloth = 5,
 				/obj/item/clothing/shoes/jungleboots = 5,
 				/obj/item/clothing/shoes/jackboots/knee = 5,
 				/obj/item/clothing/shoes/jackboots/recolorable = 5,

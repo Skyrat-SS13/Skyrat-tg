@@ -131,7 +131,7 @@
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
-	icon = 'icons/obj/lavaland/cannon.dmi'
+	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.
 	pixel_y = -32

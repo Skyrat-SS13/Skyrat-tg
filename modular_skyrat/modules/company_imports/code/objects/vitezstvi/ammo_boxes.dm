@@ -4,7 +4,7 @@
 /obj/item/ammo_box/magazine
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/ammo_box/a762
+/obj/item/ammo_box/strilka310
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_box/a357
@@ -73,25 +73,6 @@
 /obj/item/ammo_box/c34/fire
 	name = "ammo box (.34 incendiary)"
 	ammo_type = /obj/item/ammo_casing/c34_incendiary
-
-/obj/item/ammo_box/c12mm
-	name = "ammo box (12mm)"
-	icon = 'modular_skyrat/modules/company_imports/icons/ammo.dmi'
-	icon_state = "ammo_12mm"
-	ammo_type = /obj/item/ammo_casing/c12mm
-	max_ammo = 20
-
-/obj/item/ammo_box/c12mm/ap
-	name = "ammo box (12mm AP)"
-	ammo_type = /obj/item/ammo_casing/c12mm/ap
-
-/obj/item/ammo_box/c12mm/hp
-	name = "ammo box (12mm HP)"
-	ammo_type = /obj/item/ammo_casing/c12mm/hp
-
-/obj/item/ammo_box/c12mm/fire
-	name = "ammo box (12mm incendiary)"
-	ammo_type = /obj/item/ammo_casing/c12mm/fire
 
 /obj/item/ammo_box/c56mm
 	name = "ammo box (5.6mm civilian)"

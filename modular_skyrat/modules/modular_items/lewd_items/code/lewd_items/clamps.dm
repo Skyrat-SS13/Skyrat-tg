@@ -36,7 +36,7 @@
 	. = ..()
 	worn_icon_state = "[initial(icon_state)]_[breast_type]_[breast_size]"
 
-/obj/item/clothing/sextoy/nipple_clamps/equipped(mob/living/carbon/human/user, slot, initial)
+/obj/item/clothing/sextoy/nipple_clamps/lewd_equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
 	if(!istype(user))
 		return

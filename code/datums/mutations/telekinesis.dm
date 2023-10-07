@@ -14,7 +14,8 @@
 	..()
 	if(!(type in visual_indicators))
 		visual_indicators[type] = list(mutable_appearance('modular_skyrat/master_files/icons/effects/tele_effects.dmi', "telekinesishead", -MUTATIONS_LAYER)) //SKYRAT EDIT, Old icon location: "icons/effects/genetics.dmi"
-		//visual_indicators[type] = list(mutable_appearance('icons/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER)) //non Skyrat version
+		//visual_indicators[type] = list(mutable_appearance('icons/mob/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER)) //non Skyrat version
+
 /datum/mutation/human/telekinesis/on_acquiring(mob/living/carbon/human/H)
 	. = ..()
 	if(.)

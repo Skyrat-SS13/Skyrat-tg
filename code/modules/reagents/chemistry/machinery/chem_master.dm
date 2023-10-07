@@ -29,8 +29,8 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 		/obj/item/reagent_containers/condiment/coldsauce,
 		/obj/item/reagent_containers/condiment/mayonnaise,
 		/obj/item/reagent_containers/condiment/ketchup,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/cooking_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/vegetable_oil,
 		/obj/item/reagent_containers/condiment/peanut_butter,
 		/obj/item/reagent_containers/condiment/cherryjelly,
 		/obj/item/reagent_containers/condiment/honey,
@@ -46,9 +46,10 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 		/obj/item/reagent_containers/pill/patch/style
 	)),
 	// SKYRAT EDIT ADDITION START
-	CAT_HYPOS = typecacheof(list(
-		/obj/item/reagent_containers/cup/vial
-	)),
+	CAT_HYPOS = list(
+		/obj/item/reagent_containers/cup/vial/small,
+		/obj/item/reagent_containers/cup/vial/large,
+	),
 	CAT_DARTS = typecacheof(list(
 		/obj/item/reagent_containers/syringe/smartdart
 	))
@@ -67,7 +68,7 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_master
 	/// Icons for different percentages of buffer reagents
-	var/fill_icon = 'icons/obj/reagentfillings.dmi'
+	var/fill_icon = 'icons/obj/medical/reagent_fillings.dmi'
 	var/fill_icon_state = "chemmaster"
 	var/list/fill_icon_thresholds = list(10,20,30,40,50,60,70,80,90,100)
 	/// Inserted reagent container
@@ -115,9 +116,9 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 	replace_beaker()
 	return ..()
 
-/obj/machinery/chem_master/handle_atom_del(atom/deleted_atom)
-	..()
-	if(deleted_atom == beaker)
+/obj/machinery/chem_master/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == beaker)
 		beaker = null
 		update_appearance(UPDATE_ICON)
 
@@ -422,7 +423,7 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 			adjust_item_drop_location(item)
 			item.name = item_name
 			item.reagents.clear_reagents()
-			reagents.trans_to(item, volume_in_each, transfered_by = src)
+			reagents.trans_to(item, volume_in_each, transferred_by = src)
 			printing_progress++
 			item_count--
 		update_appearance(UPDATE_ICON)

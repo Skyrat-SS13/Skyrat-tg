@@ -6,17 +6,19 @@
 	worn_icon = 'modular_skyrat/modules/space_vines/back.dmi'
 	lefthand_file = 'modular_skyrat/modules/space_vines/polearms_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/space_vines/polearms_righthand.dmi'
-	force = 10
+	force = 13
 	throwforce = 5
 	throw_speed = 2
 	throw_range = 3
+	wound_bonus = 10
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
-	armour_penetration = 10
+	armour_penetration = 20
 	slot_flags = ITEM_SLOT_BACK
 	attack_verb_continuous = list("chops", "slices", "cuts", "reaps")
 	attack_verb_simple = list("chop", "slice", "cut", "reap")
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	item_flags = CRUEL_IMPLEMENT //maybe they want to use it in surgery
 
 	var/hit_range = 0
 	var/swiping = FALSE
@@ -41,19 +43,19 @@
 /obj/item/scythe/tier2
 	name = "scythe (tier 2)"
 	icon_state = "scythe_t2"
-	force = 13
+	force = 15
 	hit_range = 1
 
 /obj/item/scythe/tier3
 	name = "scythe (tier 3)"
 	icon_state = "scythe_t3"
-	force = 16
+	force = 18
 	hit_range = 2
 
 /obj/item/scythe/tier4
 	name = "scythe (tier 4)"
 	icon_state = "scythe_t4"
-	force = 20
+	force = 22
 	hit_range = 3
 
 /datum/design/scythe

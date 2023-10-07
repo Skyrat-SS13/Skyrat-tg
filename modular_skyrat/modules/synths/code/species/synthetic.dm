@@ -8,7 +8,6 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
-		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
 		TRAIT_NOCLONELOSS,
@@ -18,15 +17,9 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
-	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
+		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
+		TRAIT_ROBOTIC_DNA_ORGANS,
+		TRAIT_NO_TRANSFORMATION_STING,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -41,7 +34,7 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
+	payday_modifier = 1.0 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/internal/brain/synth
@@ -73,6 +66,8 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
+	. = ..()
+
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
 		human.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		human.adjust_bodytemperature(13) //We're overheating!!
@@ -126,7 +121,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		target.add_traits(list(TRAIT_MUTANT_COLORS), SPECIES_TRAIT)
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
@@ -192,7 +187,7 @@
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Benefits",
 		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with a vacuum! Additionally, your chassis is built with such strength as to \
-		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry. On top of this, synthetics are unable to be wounded!"
+		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry."
 	))
 
 	perk_descriptions += list(list(
@@ -208,7 +203,7 @@
 		SPECIES_PERK_NAME = "Synthetic Oddities",
 		SPECIES_PERK_DESC = "[plural_form] are unable to gain nutrition from traditional foods. Instead, you must either consume welding fuel or extend a \
 		wire from your arm to draw power from an APC. In addition to this, welders and wires are your sutures and mesh and only specific chemicals even metabolize inside \
-		of you. This ranges from whiskey, to synthanol, to various obscure medicines."
+		of you. This ranges from whiskey, to synthanol, to various obscure medicines. Finally, you suffer from a set of wounds exclusive to synthetics."
 	))
 
 	return perk_descriptions

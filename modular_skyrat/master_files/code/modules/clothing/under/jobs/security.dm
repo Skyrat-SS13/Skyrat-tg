@@ -29,7 +29,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate
-	armor_type = /datum/armor/redsec_syndicate
+	armor_type = /datum/armor/clothing_under/redsec_syndicate
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
@@ -46,7 +46,7 @@
 *	HEAD OF SECURITY
 */
 
-/datum/armor/redsec_syndicate
+/datum/armor/clothing_under/redsec_syndicate
 	melee = 10
 	fire = 50
 	acid = 40
@@ -61,4 +61,4 @@
 */
 
 /obj/item/clothing/under/rank/prisoner
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_prison_worn/monkey
+	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit/prison/worn/monkey

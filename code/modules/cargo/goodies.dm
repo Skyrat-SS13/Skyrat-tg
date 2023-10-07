@@ -3,7 +3,7 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-/* // SKYRAT EDIT START - CARGO GUN
+
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -31,7 +31,6 @@
 	cost = PAYCHECK_CREW * 40 //they really mean a premium here
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/gun/ballistic/revolver/c38/detective)
-*/ //SKYRAT EDIT END
 
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
@@ -40,7 +39,6 @@
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/grenade/stingbang)
 
-/* //SKYRAT EDIT START - GUN CARGO
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
@@ -88,7 +86,6 @@
 	cost = PAYCHECK_COMMAND * 15
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/storage/belt/holster/energy/thermal)
-*/ //SKYRAT EDIT END
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
@@ -96,11 +93,11 @@
 	cost = PAYCHECK_CREW * 8
 	contains = list(/obj/item/clothing/gloves/color/yellow)
 
-/datum/supply_pack/goody/gripper_single
-	name = "Gripper Gloves Single-Pack"
-	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer)."
+/datum/supply_pack/goody/gorilla_single
+	name = "Gorilla Gloves Single-Pack"
+	desc = "A spare pair of gorilla gloves. Better for tackles than grippers from the security vendor."
 	cost = PAYCHECK_COMMAND * 6
-	contains = list(/obj/item/clothing/gloves/tackler)
+	contains = list(/obj/item/clothing/gloves/tackler/combat)
 
 /datum/supply_pack/goody/firstaidbruises_single
 	name = "Bruise Treatment Kit Single-Pack"
@@ -132,6 +129,12 @@
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/storage/medkit/toxin)
 
+/datum/supply_pack/goody/bandagebox_singlepack
+	name = "Box of Bandages Single-Pack"
+	desc = "A single box of DeForest brand bandages. For when you don't want to see your doctor."
+	cost = PAYCHECK_CREW * 3
+	contains = list(/obj/item/storage/box/bandages)
+
 /datum/supply_pack/goody/toolbox // mostly just to water down coupon probability
 	name = "Mechanical Toolbox"
 	desc = "A fully stocked mechanical toolbox, for when you're too lazy to just print them out."
@@ -162,15 +165,11 @@
 	cost = PAYCHECK_COMMAND * 4
 	contains = list(/obj/item/dog_bone)
 
-// SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/supply_pack/goody/dyespray
 	name = "Hair Dye Spray"
 	desc = "A cool spray to dye your hair with awesome colors!"
 	cost = PAYCHECK_CREW * 2
 	contains = list(/obj/item/dyespray)
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/goody/beach_ball
 	name = "Beach Ball"
@@ -243,6 +242,12 @@
 	cost = PAYCHECK_CREW
 	contains = list(/obj/item/bait_can/worm/premium)
 
+/datum/supply_pack/goody/telescopic_fishing_rod
+	name = "Telescopic Fishing Rod"
+	desc = "A collapsible fishing rod that can fit within a backpack."
+	cost = PAYCHECK_CREW * 8
+	contains = list(/obj/item/fishing_rod/telescopic)
+
 /datum/supply_pack/goody/coffee_mug
 	name = "Coffee Mug"
 	desc = "A bog standard coffee mug, for drinking coffee."
@@ -273,4 +278,14 @@
 	cost = PAYCHECK_CREW
 	contains = list(/obj/item/reagent_containers/cup/coffeepot)
 
+/datum/supply_pack/goody/climbing_hook
+	name = "Climbing hook"
+	desc = "A less cheap imported climbing hook. Absolutely no use outside of planetary stations."
+	cost = PAYCHECK_CREW * 5
+	contains = list(/obj/item/climbing_hook)
 
+/datum/supply_pack/goody/fish_analyzer
+	name = "Fish Analyzer"
+	desc = "A single analyzer to monitor fish's status and traits with, in case you don't have the technology to print one."
+	cost = CARGO_CRATE_VALUE * 2.5
+	contains = list(/obj/item/fish_analyzer)

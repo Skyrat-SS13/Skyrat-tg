@@ -53,7 +53,7 @@
 	Probably best to stay clear."
 	prefix = "_maps/RandomRuins/LavaRuins/skyrat/" // SKYRAT ADDITION
 	suffix = "lavaland_surface_ash_walker1_skyrat.dmm" // SKYRAT EDIT - ORIGINAL: lavaland_surface_ash_walker1.dmm
-	always_place = TRUE //SKYRAT EDIT CHANGE
+	cost = 1000 //SKYRAT EDIT: Original: 20
 	allow_duplicates = FALSE
 //SKYRAT EDIT REMOVAL BEGIN - MAPPING
 /*
@@ -278,3 +278,11 @@
 	suffix = "lavaland_surface_phonebooth.dmm"
 	allow_duplicates = FALSE
 	cost = 5
+
+/datum/map_template/ruin/lavaland/battle_site
+	name = "Battle Site"
+	id = "battle_site"
+	description = "The long past site of a battle between beast and humanoids. The victor is unknown, but the losers are clear."
+	suffix = "lavaland_battle_site.dmm"
+	allow_duplicates = TRUE
+	cost = 3

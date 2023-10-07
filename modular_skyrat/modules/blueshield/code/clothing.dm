@@ -57,11 +57,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
 	icon_state = "bs_envirosuit"
-	armor_type = /datum/armor/under_plasmaman_blueshield
+	armor_type = /datum/armor/clothing_under/under_plasmaman_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/under_plasmaman_blueshield
+/datum/armor/clothing_under/under_plasmaman_blueshield
 	melee = 10
 	laser = 10
 	bomb = 5
@@ -99,24 +99,30 @@
 	desc = "A robust backpack issued to Nanotrasen's finest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_blueshield"
-	inhand_icon_state = "securitypack"
+	inhand_icon_state = "backpack_blueshield"
 
 /obj/item/storage/backpack/satchel/blueshield
 	name = "blueshield satchel"
 	desc = "A robust satchel issued to Nanotrasen's finest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "satchel_blueshield"
-	inhand_icon_state = "satchel-sec"
+	inhand_icon_state = "satchel_blueshield"
 
 /obj/item/storage/backpack/duffelbag/blueshield
 	name = "blueshield duffelbag"
 	desc = "A robust duffelbag issued to Nanotrasen's finest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_blueshield"
-	inhand_icon_state = "duffel-sec"
+	inhand_icon_state = "duffel_blueshield"
 
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield

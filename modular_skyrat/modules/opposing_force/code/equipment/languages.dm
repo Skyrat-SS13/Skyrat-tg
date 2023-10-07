@@ -5,7 +5,7 @@
 	var/language
 
 /datum/opposing_force_equipment/language/on_issue(mob/living/target)
-	target.grant_language(language, TRUE, TRUE, LANGUAGE_MIND)
+	target.grant_language(language, source = LANGUAGE_MIND)
 
 /datum/opposing_force_equipment/language/codespeak
 	name = "Codespeak"

@@ -5,7 +5,7 @@
 /atom/movable/screen/wanted
 	name = "Space Police Alertness"
 	desc = "Shows the current level of hostility the space police is planning to rain down on you. Better be careful."
-	icon = 'icons/obj/gang/wanted_160x32.dmi'
+	icon = 'icons/obj/antags/gang/wanted_160x32.dmi'
 	icon_state = "wanted_0"
 	base_icon_state = "wanted"
 	screen_loc = ui_wanted_lvl

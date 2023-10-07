@@ -57,7 +57,6 @@ GLOBAL_VAR(station_nuke_source)
 /obj/machinery/nuclearbomb/Initialize(mapload)
 	. = ..()
 	countdown = new(src)
-	GLOB.nuke_list += src
 	core = new /obj/item/nuke_core(src)
 	STOP_PROCESSING(SSobj, core)
 	update_appearance()
@@ -69,7 +68,6 @@ GLOBAL_VAR(station_nuke_source)
 	if(!exploding)
 		// If we're not exploding, set the alert level back to normal
 		toggle_nuke_safety()
-	GLOB.nuke_list -= src
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	return ..()
@@ -525,6 +523,8 @@ GLOBAL_VAR(station_nuke_source)
 	sound_to_playing_players('sound/machines/alarm.ogg')
 	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg') // SKYRAT EDIT ADDITION
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NUKE_DEVICE_DETONATING, src)
+
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
 	addtimer(CALLBACK(src, PROC_REF(actually_explode)), 10 SECONDS)
@@ -628,6 +628,9 @@ GLOBAL_VAR(station_nuke_source)
  * Helper proc that handles gibbing someone who has been nuked.
  */
 /proc/nuke_gib(mob/living/gibbed, atom/source)
+	if(HAS_TRAIT(gibbed, TRAIT_NUKEIMMUNE))
+		return FALSE
+
 	if(istype(gibbed.loc, /obj/structure/closet/secure_closet/freezer))
 		var/obj/structure/closet/secure_closet/freezer/freezer = gibbed.loc
 		if(!freezer.jones)

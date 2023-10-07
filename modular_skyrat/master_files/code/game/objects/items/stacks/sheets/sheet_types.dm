@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
 	new/datum/stack_recipe("towel bin", /obj/structure/towel_bin/empty, 2, time = 0.5 SECONDS, one_per_turf = FALSE, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("guard rail", /obj/structure/deployable_barricade/guardrail, 2, time = 1 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 1.8 SECONDS, on_solid_ground = TRUE, check_direction = TRUE, check_density = FALSE, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("crutch", /obj/item/cane/crutch, 3, time = 10, one_per_turf = FALSE, category = CAT_TOOLS),
 ))
 
 /obj/item/stack/rods/get_main_recipes()
@@ -101,6 +102,7 @@ GLOBAL_LIST_INIT(skyrat_leather_belt_recipes, list(
 	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("medical bandolier", /obj/item/storage/belt/medbandolier, 5, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6, check_density = FALSE, category = CAT_CLOTHING),
+	new/datum/stack_recipe("ammo pouch", /obj/item/storage/pouch/ammo, 4, check_density = FALSE, category = CAT_CONTAINERS),
 ))
 
 /obj/item/stack/sheet/leather/get_main_recipes()

@@ -12,7 +12,7 @@
 	icon = 'modular_skyrat/modules/robohand/icons/3516.dmi'
 	icon_state = "3516"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/m14mm
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m14mm
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/robohand/sound/fire2.ogg'
 	load_sound = 'modular_skyrat/modules/robohand/sound/reload.ogg'
@@ -45,7 +45,7 @@
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/robohand/insert_magazine(mob/user, obj/item/ammo_box/magazine/inserted_mag, display_message)
-	if(!istype(inserted_mag, mag_type))
+	if(!istype(inserted_mag, accepted_magazine_type))
 		to_chat(user, span_warning("\The [inserted_mag] doesn't seem to fit into \the [src]..."))
 		return FALSE
 	if(!user.transferItemToLoc(inserted_mag, src))
@@ -86,9 +86,9 @@
 	if(display_message)
 		to_chat(user, span_notice("You pull the [magazine_wording] out of \the [src]."))
 	update_appearance()
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand again
-	animate(transform = turn(matrix(), 240), time = 2)
-	animate(transform = null, time = 2)
+	animate(src, transform = turn(matrix(), 120), time = 0.2 SECONDS, loop = 1) //Le johnny robohand again
+	animate(transform = turn(matrix(), 240), time = 0.2 SECONDS)
+	animate(transform = null, time = 0.2 SECONDS)
 
 //Magazine stuff
 

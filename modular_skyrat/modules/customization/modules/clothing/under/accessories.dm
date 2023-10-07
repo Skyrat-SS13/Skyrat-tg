@@ -68,7 +68,6 @@
 	icon_state = "holobadge"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/cord
 	icon_state = "holobadge-cord"
@@ -82,13 +81,14 @@
 	return ..()
 
 /obj/item/clothing/accessory/badge/holo/emag_act(remaining_charges, mob/user)
-	if (emagged)
-		to_chat(user, span_danger("\The [src] is already cracked."))
-		return
-	else
-		emagged = TRUE
-		to_chat(user, span_danger("You crack the holobadge security checks."))
-		return TRUE
+	if(obj_flags & EMAGGED)
+		balloon_alert(user, "already cracked")
+		return FALSE
+
+	obj_flags |= EMAGGED
+	balloon_alert(user, "security checks cracked!")
+	to_chat(user, span_danger("You crack the holobadge security checks."))
+	return TRUE
 
 /obj/item/clothing/accessory/badge/holo/attackby(obj/item/object as obj, mob/user as mob)
 	if(istype(object, /obj/item/card/id))
@@ -98,7 +98,7 @@
 		if(istype(object, /obj/item/card/id))
 			id_card = object
 
-		if(ACCESS_BRIG in id_card.access || emagged)
+		if(ACCESS_BRIG in id_card.access || (obj_flags & EMAGGED))
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 			badge_string = id_card.assignment

@@ -24,7 +24,8 @@
 		ANNOUNCER_GRAVANOMALIES= 'modular_skyrat/modules/alerts/sound/alerts/gravanomalies.ogg',
 		ANNOUNCER_SPANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/wormholes.ogg',
 		ANNOUNCER_VORTEXANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/vortex.ogg',
-		ANNOUNCER_BSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/bluespace_anomalies.ogg',
+		ANNOUNCER_MASSIVEBSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/bluespace_anomalies.ogg',
+		ANNOUNCER_TRANSLOCATION = 'modular_skyrat/modules/alerts/sound/alerts/transolcation.ogg',
 		ANNOUNCER_FLUXANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/flux.ogg',
 		ANNOUNCER_PYROANOMALIES = 'modular_skyrat/modules/alerts/sound/alerts/pyr_anomalies.ogg',
 		ANNOUNCER_CARP = 'modular_skyrat/modules/alerts/sound/alerts/carps.ogg',
@@ -42,5 +43,6 @@
 		ANNOUNCER_KLAXON = 'modular_skyrat/modules/black_mesa/sound/siren1_long.ogg',
 		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
 		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg',
-		ANNOUNCER_FUNGI = 'modular_skyrat/modules/alerts/sound/alerts/fungi.ogg',
+		ANNOUNCER_DEPARTMENTAL = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
+		ANNOUNCER_SHUTTLE = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
 		)

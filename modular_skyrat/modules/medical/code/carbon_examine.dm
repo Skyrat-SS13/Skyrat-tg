@@ -1,8 +1,8 @@
 /mob/living/carbon/examine_more(mob/user)
 	. = ..()
 	var/msg = list(span_notice("<i>You examine [src] closer, and note the following...</i>"))
-	var/t_His = p_their(TRUE)
-	var/t_He = p_they(TRUE)
+	var/t_His = p_Their()
+	var/t_He = p_They()
 	var/t_Has = p_have()
 
 	var/any_bodypart_damage = FALSE
@@ -49,11 +49,7 @@
 				if(WOUND_SEVERITY_CRITICAL)
 					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!!</b></span>"
 		if(LB.current_gauze)
-			var/datum/bodypart_aid/current_gauze = LB.current_gauze
-			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</i></span>"
-		if(LB.current_splint)
-			var/datum/bodypart_aid/current_splint = LB.current_splint
-			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</i></span>"
+			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [LB.current_gauze.get_gauze_usage_prefix()] with <a href='?src=[REF(LB.current_gauze)];remove=1'>[LB.current_gauze.get_gauze_description()]</a>.</i></span>"
 
 	if(!any_bodypart_damage)
 		msg += "\t<span class='smallnotice'><i>[t_He] [t_Has] no significantly damaged bodyparts.</i></span>"
@@ -82,7 +78,7 @@
 			if(part.body_zone in covered_zones)
 				continue
 			if(part.limb_id != (dna.species.examine_limb_id ? dna.species.examine_limb_id : dna.species.id))
-				. += "[span_info("[p_they(TRUE)] [p_have()] \an [part.name].")]"
+				. += "[span_info("[p_They()] [p_have()] \an [part.name].")]"
 
 
 	return msg

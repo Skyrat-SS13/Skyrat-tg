@@ -6,7 +6,7 @@
 /obj/item/key_card
 	name = "door keycard"
 	desc = "This feels like it belongs to a door."
-	icon = 'icons/obj/puzzle_small.dmi'
+	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "keycard"
 	force = 0
 	throwforce = 0

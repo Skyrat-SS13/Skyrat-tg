@@ -12,7 +12,7 @@
 	icon_state = "nri_smg"
 	inhand_icon_state = "nri_smg"
 	w_class = WEIGHT_CLASS_BULKY
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	accepted_magazine_type = /obj/item/ammo_box/magazine/uzim9mm
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 5
@@ -24,17 +24,18 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 
 /obj/item/gun/ballistic/automatic/nri_smg/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)
 
-/obj/item/gun/ballistic/automatic/pistol/ladon/nri
+/obj/item/gun/ballistic/automatic/pistol/nri
 	name = "\improper Szabo-Ivanek service pistol"
-	desc = "A mass produced NRI-made modified reproduction of the PDH-6 line of handguns rechambered in 9×25mm.\
+	desc = "A mass produced NRI-made modified reproduction of the Wespe line of handguns rechambered in 9×25mm.\
 		'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
+	icon_state = "ladon"
 	w_class = WEIGHT_CLASS_SMALL
-	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm_aps
 	burst_size = 3
 	fire_delay = 3
 
-/obj/item/gun/ballistic/automatic/pistol/ladon/nri/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
+/obj/item/gun/ballistic/automatic/pistol/nri/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_IZHEVSK)

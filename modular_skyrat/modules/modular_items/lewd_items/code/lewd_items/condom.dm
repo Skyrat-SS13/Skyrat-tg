@@ -31,7 +31,7 @@
 	to_chat(user, span_notice("You start to open the condom pack..."))
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
-	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
+	play_lewd_sound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
 	var/obj/item/clothing/sextoy/condom/removed_condom = new /obj/item/clothing/sextoy/condom
 
 	user.put_in_hands(removed_condom)
@@ -87,7 +87,7 @@
 			update_icon()
 
 //When condom equipped we doing stuff
-/obj/item/clothing/sextoy/condom/equipped(mob/user, slot, initial)
+/obj/item/clothing/sextoy/condom/lewd_equipped(mob/user, slot, initial)
 	. = ..()
 	if((slot == LEWD_SLOT_PENIS) && condom_state == "unused")
 		condom_state = "used"

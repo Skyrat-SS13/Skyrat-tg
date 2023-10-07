@@ -32,7 +32,7 @@
 	if(hit_mob.can_block_magic(MAGIC_RESISTANCE_HOLY))
 		hit_mob.mob_light(color = LIGHT_COLOR_HOLY_MAGIC, range = 2, duration = 10 SECONDS)
 
-		var/mutable_appearance/forbearance = mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
+		var/mutable_appearance/forbearance = mutable_appearance('icons/mob/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
 		hit_mob.add_overlay(forbearance)
 		addtimer(CALLBACK(hit_mob, TYPE_PROC_REF(/atom, cut_overlay), forbearance), 10 SECONDS)
 

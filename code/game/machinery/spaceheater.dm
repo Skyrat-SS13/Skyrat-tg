@@ -7,7 +7,7 @@
 	anchored = FALSE
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN
-	icon = 'icons/obj/atmospherics/atmos.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/pipes_n_cables/atmos.dmi' // SKYRAT EDIT CHANGE - ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"
@@ -77,7 +77,7 @@
 
 /obj/machinery/space_heater/on_construction()
 	set_panel_open(TRUE)
-	cell = null
+	QDEL_NULL(cell)
 
 /obj/machinery/space_heater/on_deconstruction()
 	if(cell)
@@ -108,7 +108,7 @@
 /obj/machinery/space_heater/on_set_panel_open()
 	update_appearance()
 	return ..()
-	
+
 /obj/machinery/space_heater/process_atmos()
 	if(!on || !is_operational)
 		if (on) // If it's broken, turn it off too

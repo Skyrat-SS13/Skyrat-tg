@@ -10,16 +10,8 @@
 	var/list/to_insert = list()
 
 	if(!GLOB.all_languages.len)
-		for(var/iterated_language in subtypesof(/datum/language))
-			var/datum/language/language = iterated_language
-			if(!initial(language.key))
-				continue
-
-			GLOB.all_languages += language
-
-			var/datum/language/instance = new language
-
-			GLOB.language_datum_instances[language] = instance
+		stack_trace("Warning: Language spritesheets could not be created because language subsystem has not been loaded yet. This should not happen--adjust the init_order in master_files/code/controllers/subsystem/language.dm.")
+		return
 
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]

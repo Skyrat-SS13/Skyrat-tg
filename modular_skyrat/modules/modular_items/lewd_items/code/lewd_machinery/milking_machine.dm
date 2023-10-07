@@ -6,7 +6,7 @@
 #define MILKING_PUMP_STATE_OFF "off"
 #define MILKING_PUMP_STATE_ON "on"
 
-#define CLIMAX_RETRIVE_MULTIPLIER 2
+#define CLIMAX_RETRIEVE_MULTIPLIER 2
 #define MILKING_PUMP_MAX_CAPACITY 100
 
 /obj/structure/chair/milking_machine
@@ -360,7 +360,7 @@
 	if(pump_state != MILKING_PUMP_STATE_ON)
 		pump_state = MILKING_PUMP_STATE_ON
 
-	retrive_liquids_from_selected_organ(seconds_per_tick)
+	retrieve_liquids_from_selected_organ(seconds_per_tick)
 	increase_current_mob_arousal(seconds_per_tick)
 
 	update_all_visuals()
@@ -368,15 +368,15 @@
 
 // Liquid intake handler
 
-/obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(seconds_per_tick)
+/obj/structure/chair/milking_machine/proc/retrieve_liquids_from_selected_organ(seconds_per_tick)
 	if(!current_mob || !current_selected_organ)
 		return FALSE
 
 	var/fluid_multiplier = 1
-	var/static/list/fluid_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+	var/static/list/fluid_retrieve_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 
 	if(current_mob.has_status_effect(/datum/status_effect/climax))
-		fluid_multiplier = CLIMAX_RETRIVE_MULTIPLIER
+		fluid_multiplier = CLIMAX_RETRIEVE_MULTIPLIER
 
 	var/obj/item/reagent_containers/target_container
 
@@ -388,10 +388,10 @@
 		if(/obj/item/organ/external/genital/testicles)
 			target_container = semen_vessel
 
-	if(!target_container || current_selected_organ.reagents.total_volume <= 0)
+	if(!target_container || current_selected_organ.internal_fluid_count <= 0)
 		return FALSE
 
-	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * seconds_per_tick)
+	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrieve_amount[current_mode] * fluid_multiplier * seconds_per_tick)
 	return TRUE
 
 // Handling the process of the impact of the machine on the organs of the mob
@@ -675,11 +675,12 @@
 		if (!beaker)
 			return FALSE
 
+		if(!current_vessel.reagents?.reagent_list.len)
+			return FALSE
+
 		var/amount = text2num(params["amount"])
 		current_vessel.reagents?.trans_to(beaker, amount)
-		current_vessel.reagents?.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr, span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 /obj/structure/chair/milking_machine/examine(mob/user)
@@ -694,5 +695,5 @@
 #undef MILKING_PUMP_STATE_OFF
 #undef MILKING_PUMP_STATE_ON
 
-#undef CLIMAX_RETRIVE_MULTIPLIER
+#undef CLIMAX_RETRIEVE_MULTIPLIER
 #undef MILKING_PUMP_MAX_CAPACITY

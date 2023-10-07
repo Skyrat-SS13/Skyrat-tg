@@ -57,10 +57,6 @@
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	// I just have to be REALLY sure they get those languages
-	spawned_human.language_holder = new /datum/language_holder/primitive_felinid
-	spawned_human.update_atom_languages()
-
 	team.players_spawned += (spawned_human.key)
 
 /datum/job/primitive_catgirl
@@ -70,7 +66,22 @@
 
 /datum/team/primitive_catgirls
 	name = "Icewalkers"
+	member_name = "Icewalker"
 	show_roundend_report = FALSE
+
+/datum/team/primitive_catgirls/roundend_report()
+	var/list/report = list()
+
+	report += span_header("An Ice Walker Tribe inhabited the wastes...</span><br>")
+	if(length(members))
+		report += "The [member_name]s were:"
+		report += printplayerlist(members)
+	else
+		report += "<b>But none of its members woke up!</b>"
+
+	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
+
+// Antagonist datum
 
 /datum/antagonist/primitive_catgirl
 	name = "\improper Icewalker"
@@ -94,17 +105,6 @@
 /datum/antagonist/primitive_catgirl/Destroy()
 	feline_team = null
 	return ..()
-
-/datum/antagonist/primitive_catgirl/apply_innate_effects(mob/living/mob_override)
-	. = ..()
-
-	var/mob/living/owner_mob = mob_override || owner.current
-	var/datum/language_holder/holder = owner_mob.get_language_holder()
-
-	holder.remove_language(/datum/language/common, TRUE, TRUE, LANGUAGE_ALL)
-
-	holder.grant_language(/datum/language/primitive_catgirl, TRUE, TRUE, LANGUAGE_ALL)
-	holder.selected_language = /datum/language/primitive_catgirl
 
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
 	if(team)

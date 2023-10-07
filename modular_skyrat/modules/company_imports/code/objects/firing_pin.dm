@@ -30,4 +30,9 @@ GLOBAL_VAR_INIT(permit_pin_unrestricted, FALSE)
 
 /obj/item/firing_pin/emag_act(mob/user)
 	. = ..()
+	if(obj_flags & EMAGGED)
+		return FALSE
+	balloon_alert(user, "firing pin unlocked!")
+	obj_flags |= EMAGGED
 	can_remove = TRUE
+	return TRUE

@@ -66,7 +66,13 @@
 	)
 
 /obj/machinery/ammo_workbench/Initialize(mapload)
-	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 200000, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
+	AddComponent( \
+		/datum/component/material_container, \
+		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		200000, \
+		MATCONTAINER_EXAMINE, \
+		allowed_items = /obj/item/stack, \
+	)
 	. = ..()
 	set_wires(new /datum/wires/ammo_workbench(src))
 
@@ -268,9 +274,13 @@
 		creation_efficiency = base_efficiency
 	update_ammotypes()
 
-/obj/machinery/ammo_workbench/proc/ejectItem()
+/obj/machinery/ammo_workbench/proc/ejectItem(mob/living/user)
 	if(loaded_magazine)
 		loaded_magazine.forceMove(drop_location())
+
+		if(user)
+			try_put_in_hand(loaded_magazine, user)
+
 		loaded_magazine = null
 	busy = FALSE
 	error_message = ""
@@ -445,7 +455,7 @@
 
 	var/mat_capacity = 0
 	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
-		mat_capacity += new_matter_bin.tier * 75000
+		mat_capacity += new_matter_bin.tier * (40 * SHEET_MATERIAL_AMOUNT)
 
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	materials.max_amount = mat_capacity
@@ -456,17 +466,6 @@
 	if(loaded_magazine)
 		. += "ammobench_loaded"
 
-/obj/machinery/ammo_workbench/proc/AfterMaterialInsert(obj/item/item_inserted, id_inserted, amount_inserted)
-	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
-		use_power(SHEET_MATERIAL_AMOUNT / 10)
-	else if(item_inserted.has_material_type(/datum/material/glass))
-		flick("autolathe_r", src)//plays glass insertion animation by default otherwise
-	else
-		flick("autolathe_o", src)//plays metal insertion animation
-
-		use_power(min(1000, amount_inserted / 100))
-	updateUsrDialog()
-
 /obj/machinery/ammo_workbench/Destroy()
 	QDEL_NULL(wires)
 	if(timer_id)
@@ -476,7 +475,6 @@
 		loaded_magazine.forceMove(loc)
 		loaded_magazine = null
 
-	. = ..()
 	return ..()
 
 /obj/machinery/ammo_workbench/proc/shock(mob/user, prb)
@@ -505,6 +503,23 @@
 	else
 		return ..()
 
+/obj/machinery/ammo_workbench/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH | FORBID_TELEKINESIS_REACH))
+		return
+
+	ejectItem(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/ammo_workbench/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/ammo_workbench/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
 
 /obj/machinery/ammo_workbench/proc/Insert_Item(obj/item/O, mob/living/user)
 	if(user.combat_mode)
@@ -617,7 +632,7 @@
 			A.disabled = !A.disabled
 			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 
-/datum/wires/ammo_workbench/on_cut(wire, mend)
+/datum/wires/ammo_workbench/on_cut(wire, mend, source)
 	var/obj/machinery/ammo_workbench/A = holder
 	switch(wire)
 		if(WIRE_HACK)

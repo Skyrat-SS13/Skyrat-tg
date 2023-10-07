@@ -204,7 +204,7 @@
 /datum/sprite_accessory/synth_chassis/default
 	name = "Default Chassis"
 	icon_state = "ipc"
-	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
+	color_src = MUTANT_COLOR //Here it's used to tell apart greyscalling
 
 /datum/sprite_accessory/synth_chassis/synth
 	name = "Dark Chassis"
@@ -214,7 +214,7 @@
 	name = "Human Chassis"
 	icon = BODYPART_ICON_HUMAN
 	icon_state = "human"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 
 /datum/sprite_accessory/synth_chassis/android
@@ -226,7 +226,7 @@
 	name = "Mammal Chassis"
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_state = "synthmammal"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 	is_digi_compatible = TRUE
 
@@ -234,7 +234,7 @@
 	name = "Lizard Chassis"
 	icon = BODYPART_ICON_SYNTHLIZARD
 	icon_state = "synthliz"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 	is_digi_compatible = TRUE
 
@@ -295,7 +295,7 @@
 
 /datum/sprite_accessory/synth_head/default
 	name = "Default Head"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 
 /datum/sprite_accessory/synth_head/synth
 	name = "Dark Head"
@@ -305,7 +305,7 @@
 	name = "Human Head"
 	icon = BODYPART_ICON_HUMAN
 	icon_state = "human"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 
 /datum/sprite_accessory/synth_head/android
@@ -317,20 +317,20 @@
 	name = "Mammal Head"
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_state = "synthmammal"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 
 /datum/sprite_accessory/synth_head/lizard
 	name = "Lizard Head"
 	icon = BODYPART_ICON_SYNTHLIZARD
 	icon_state = "synthliz"
-	color_src = MUTCOLORS
+	color_src = MUTANT_COLOR
 	dimorphic = TRUE
 
 /datum/sprite_accessory/synth_head/mcgreyscale
 	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
-	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
+	color_src = MUTANT_COLOR //Here it's used to tell apart greyscalling
 
 /datum/sprite_accessory/synth_head/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"

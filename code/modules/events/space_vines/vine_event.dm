@@ -1,9 +1,9 @@
 /datum/round_event_control/spacevine
 	name = "Space Vines"
 	typepath = /datum/round_event/spacevine
-	weight = 10 // SKYRAT EDIT CHANGE - Original: 15
-	max_occurrences = 1 // SKYRAT EDIT CHANGE - Original: 3
-	min_players = 60 // SKYRAT EDIT CHANGE - Original: 10
+	weight = 15
+	max_occurrences = 3
+	min_players = 10
 	category = EVENT_CATEGORY_ENTITIES
 	description = "Kudzu begins to overtake the station. Might spawn man-traps."
 	min_wizard_trigger_potency = 4

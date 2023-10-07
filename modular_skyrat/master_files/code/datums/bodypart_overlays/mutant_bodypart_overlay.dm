@@ -1,7 +1,11 @@
 /// The greatest amount of colors that can be in a matrixed bodypart_overlay.
 #define MAX_MATRIXED_COLORS 3
+/// Default value for alpha, making it fully opaque.
+#define ALPHA_OPAQUE 255
 
 /datum/bodypart_overlay/mutant
+	/// Alpha value associated to the overlay, to be inherited from the parent limb.
+	var/alpha = ALPHA_OPAQUE
 	/// An associative list of color indexes (i.e. "1") to boolean that says
 	/// whether or not that color should get an emissive overlay. Can be null.
 	var/list/emissive_eligibility_by_color_index
@@ -56,6 +60,9 @@
 
 	else
 		. += "[draw_color]"
+
+	if(alpha != ALPHA_OPAQUE)
+		. += "[alpha]"
 
 	if(emissive_eligibility_by_color_index)
 		for(var/index in emissive_eligibility_by_color_index)
@@ -149,16 +156,14 @@
 	if(!sprite_datum || !overlays)
 		return
 
-	/* Uncomment when the fact that the body is husked is stored on the limbs too.
-	if(HAS_TRAIT(limb, TRAIT_HUSK))
+	if(limb?.is_husked)
 		if(sprite_datum.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
 			draw_color = HUSK_COLOR_LIST
 		else
 			draw_color = "#AAA" //The gray husk color
-	*/
 
-	var/specific_alpha = limb?.alpha || 255
 	var/i = 1 // Starts at 1 for color layers.
+	alpha = limb?.alpha || ALPHA_OPAQUE
 
 	for(var/index_to_color in overlay_indexes_to_color)
 		if(index_to_color > length(overlays))
@@ -169,16 +174,16 @@
 		switch(sprite_datum.color_src)
 			if(USE_ONE_COLOR)
 				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 
 			if(USE_MATRIXED_COLORS)
 				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 				i++
 
 			else
 				overlay.color = limb?.color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 
 
 /**
@@ -293,3 +298,4 @@
 
 
 #undef MAX_MATRIXED_COLORS
+#undef ALPHA_OPAQUE

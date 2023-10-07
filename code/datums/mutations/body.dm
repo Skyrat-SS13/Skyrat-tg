@@ -90,7 +90,7 @@
 		owner.emote("cough")
 		if(GET_MUTATION_POWER(src) > 1)
 			var/cough_range = GET_MUTATION_POWER(src) * 4
-			var/turf/target = get_ranged_target_turf(owner, turn(owner.dir, 180), cough_range)
+			var/turf/target = get_ranged_target_turf(owner, REVERSE_DIR(owner.dir), cough_range)
 			owner.throw_at(target, cough_range, GET_MUTATION_POWER(src))
 
 /datum/mutation/human/paranoia
@@ -133,10 +133,10 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1)
-		to_chat(owner, "You feel relief as the pressure building inside you subsides.")
+		to_chat(owner, "You feel relief as your organs cease to strain against your insides.")
+		REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
 
@@ -407,9 +407,9 @@
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
-		
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
@@ -521,6 +521,7 @@
 	. = ..()
 	if(.)//cant add
 		return TRUE
+
 	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain)
 		brain.zone = BODY_ZONE_CHEST
@@ -529,11 +530,10 @@
 	if(head)
 		owner.visible_message(span_warning("[owner]'s head splatters with a sickening crunch!"), ignored_mobs = list(owner))
 		new /obj/effect/gibspawner/generic(get_turf(owner), owner)
-		head.dismember(BRUTE)
+		head.dismember(dam_type = BRUTE, silent = TRUE)
 		head.drop_organs()
 		qdel(head)
-		owner.regenerate_icons()
-	RegisterSignal(owner, COMSIG_ATTEMPT_CARBON_ATTACH_LIMB, PROC_REF(abortattachment))
+	RegisterSignal(owner, COMSIG_ATTEMPT_CARBON_ATTACH_LIMB, PROC_REF(abort_attachment))
 
 /datum/mutation/human/headless/on_losing()
 	. = ..()
@@ -541,7 +541,7 @@
 		return TRUE
 	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain) //so this doesn't instantly kill you. we could delete the brain, but it lets people cure brain issues they /really/ shouldn't be
-		brain.zone = BODY_ZONE_HEAD
+		brain.zone = initial(brain.zone)
 	UnregisterSignal(owner, COMSIG_ATTEMPT_CARBON_ATTACH_LIMB)
 	var/successful = owner.regenerate_limb(BODY_ZONE_HEAD)
 	if(!successful)
@@ -552,8 +552,7 @@
 	owner.visible_message(span_warning("[owner]'s head returns with a sickening crunch!"), span_warning("Your head regrows with a sickening crack! Ouch."))
 	new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 
-
-/datum/mutation/human/headless/proc/abortattachment(datum/source, obj/item/bodypart/new_limb, special) //you aren't getting your head back
+/datum/mutation/human/headless/proc/abort_attachment(datum/source, obj/item/bodypart/new_limb, special) //you aren't getting your head back
 	SIGNAL_HANDLER
 
 	if(istype(new_limb, /obj/item/bodypart/head))

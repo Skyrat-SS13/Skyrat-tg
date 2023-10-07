@@ -5,8 +5,6 @@
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
-	/// Holds the ability for making an alien's sprite smaller to only themselves
-	var/datum/action/small_sprite/skyrat_xeno/small_sprite
 	/// Holds the ability for quick resting without using the ic panel, and without editing xeno huds
 	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button
 	mob_size = MOB_SIZE_LARGE
@@ -35,8 +33,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/Initialize(mapload)
 	. = ..()
-	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
-	small_sprite.Grant(src)
+	AddComponent(/datum/component/seethrough_mob)
 
 	rest_button = new /datum/action/cooldown/alien/skyrat/sleepytime()
 	rest_button.Grant(src)
@@ -51,7 +48,6 @@
 	real_name = "alien [caste]"
 
 /mob/living/carbon/alien/adult/skyrat/Destroy()
-	QDEL_NULL(small_sprite)
 	QDEL_NULL(rest_button)
 	if(evolve_ability)
 		QDEL_NULL(evolve_ability)
@@ -86,10 +82,6 @@
 	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
 	if(!istype(owner_alien) || owner_alien.unable_to_use_abilities)
 		return FALSE
-
-/datum/action/small_sprite/skyrat_xeno
-	small_icon = 'icons/obj/toys/plushes.dmi'
-	small_icon_state = "rouny"
 
 /datum/action/cooldown/alien/skyrat/sleepytime //I don't think this has a mechanical advantage but they have cool resting sprites so...
 	name = "Rest"

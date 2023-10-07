@@ -133,6 +133,10 @@
 #define FEMALE_UNIFORM_TOP_ONLY (1<<1)
 /// For when you don't want the "breast" effect to be applied (the one that cuts two pixels in the middle of the front of the uniform when facing east or west).
 #define FEMALE_UNIFORM_NO_BREASTS (1<<2)
+// SKYRAT EDIT ADDITION START
+/// For when you -don't- want to apply FEMALE_UNIFORM_TOP_ONLY to the digi version (which happens by default).
+#define FEMALE_UNIFORM_DIGI_FULL (1<<3)
+// SKYRAT EDIT ADDITION END
 
 //flags for alternate styles: These are hard sprited so don't set this if you didn't put the effort in
 #define NORMAL_STYLE 0
@@ -148,7 +152,7 @@
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
-// SKYRAT EDIT ADDITION
+// SKYRAT EDIT ADDITION START
 /// The sprite works fine for snouts.
 #define CLOTHING_SNOUTED_VARIATION (1<<4)
 /// The sprite works fine for snouts as-is.
@@ -170,6 +174,7 @@
 #define MASKCOVERSMOUTH (1<<3) // on other items, these are just for mask/head
 #define HEADCOVERSMOUTH (1<<4)
 #define PEPPERPROOF (1<<5) //protects against pepperspray
+#define EARS_COVERED (1<<6)
 
 #define TINT_DARKENED 2 //Threshold of tint level to apply weld mask overlay
 #define TINT_BLIND 3 //Threshold of tint level to obscure vision fully
@@ -206,6 +211,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
@@ -224,6 +230,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
@@ -238,6 +245,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
@@ -252,6 +260,7 @@ GLOBAL_LIST_INIT(chaplain_suit_allowed, list(
 	/obj/item/tank/internals/emergency_oxygen,
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/gun/ballistic/bow/divine,
+	/obj/item/gun/ballistic/revolver/chaplain,
 ))
 
 /// String for items placed into the left pocket.

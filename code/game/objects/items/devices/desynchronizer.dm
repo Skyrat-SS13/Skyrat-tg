@@ -1,4 +1,4 @@
-/obj/item/desynchronizer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/desynchronizer //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "desynchronizer"
 	desc = "An experimental device that can temporarily desynchronize the user from spacetime, effectively making them disappear while it's active."
 	icon = 'icons/obj/device.dmi'

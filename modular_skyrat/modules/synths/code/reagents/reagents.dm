@@ -20,7 +20,7 @@
 
 /datum/reagent/medicine/system_cleaner
 	name = "System Cleaner"
-	description = "Neutralizes harmful chemical compounds inside synthetic systems."
+	description = "Neutralizes harmful chemical compounds inside synthetic systems and refreshes system software."
 	reagent_state = LIQUID
 	color = "#F1C40F"
 	taste_description = "ethanol"
@@ -29,6 +29,7 @@
 
 /datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	affected_mob.adjustToxLoss(-2 * REM * seconds_per_tick, 0)
+	affected_mob.adjust_disgust(-5 * REM * seconds_per_tick)
 	var/remove_amount = 1 * REM * seconds_per_tick;
 	for(var/thing in affected_mob.reagents.reagent_list)
 		var/datum/reagent/reagent = thing
@@ -77,7 +78,7 @@
 		return ..()
 	affected_mob.reagents.remove_reagent(type, NANITE_SLURRY_ORGANIC_PURGE_RATE) //gets removed from organics very fast
 	if(prob(NANITE_SLURRY_ORGANIC_VOMIT_CHANCE))
-		affected_mob.vomit(vomit_type = VOMIT_NANITE)
+		affected_mob.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM), vomit_type = /obj/effect/decal/cleanable/vomit/nanites)
 	return TRUE
 
 #undef NANITE_SLURRY_ORGANIC_PURGE_RATE

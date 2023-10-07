@@ -188,9 +188,14 @@
 	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
+/datum/chemical_reaction/drink/bloodshot_base
+	results = list(/datum/reagent/consumable/ethanol/bloodshot_base = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
 /datum/chemical_reaction/drink/bloodshot
 	results = list(/datum/reagent/consumable/ethanol/bloodshot = 5)
-	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloodshot_base = 2)
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 
@@ -210,7 +215,7 @@
 
 /datum/chemical_reaction/drink/beerbatter
 	results = list(/datum/reagent/consumable/ethanol/beerbatter = 4)
-	required_reagents = list(/datum/reagent/consumable/cooking_oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
 	mix_message = "Sizzling and cracking is heard as you beat the mixture into submission."
 
 /datum/chemical_reaction/drink/shakiri_spritz

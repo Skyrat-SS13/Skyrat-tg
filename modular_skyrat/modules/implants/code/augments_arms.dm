@@ -1,3 +1,19 @@
+#define KNIFE_HITSOUND 'sound/weapons/bladeslice.ogg'
+#define KNIFE_USESOUND 'sound/weapons/bladeslice.ogg'
+#define KNIFE_ATTACK_VERB_CONTINUOUS list("slashes", "tears", "slices", "tears", "lacerates", "rips", "dices", "cuts", "rends")
+#define KNIFE_ATTACK_VERB_SIMPLE list("slash", "tear", "slice", "tear", "lacerate", "rip", "dice", "cut", "rend")
+#define KNIFE_SHARPNESS SHARP_EDGED
+#define KNIFE_BARE_WOUND_BONUS 15
+#define CUTTER_HITSOUND 'sound/items/wirecutter.ogg'
+#define CUTTER_USESOUND 'sound/items/wirecutter.ogg'
+#define CUTTER_ATTACK_VERB_CONTINUOUS list("bashes", "batters", "bludgeons", "thrashes", "whacks")
+#define CUTTER_ATTACK_VERB_SIMPLE list("bash", "batter", "bludgeon", "thrash", "whack")
+#define CUTTER_FORCE 6
+#define CUTTER_WOUND_BONUS 0
+#define ENHANCED_KNIFE_FORCE 15
+#define ENHANCED_KNIFE_WOUND_BONUS 15
+#define ENHANCED_KNIFE_ARMOR_PENETRATION 10
+
 /obj/item/melee/implantarmblade
 	name = "implanted arm blade"
 	desc = "A long, sharp, mantis-like blade implanted into someones arm. Cleaves through flesh like its particularly strong butter."
@@ -29,10 +45,104 @@
 	icon_state = "mantis_blade"
 
 /obj/item/organ/internal/cyberimp/arm/armblade/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated energy arm blade! You madman!"))
 	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
 	return TRUE
+
+/obj/item/knife/razor_claws
+	name = "implanted razor claws"
+	desc = "A set of sharp, retractable claws built into the fingertips, five double-edged blades sure to turn people into mincemeat. Capable of shifting into 'Precision' mode to act similar to wirecutters."
+	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
+	righthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_lefthand.dmi'
+	icon_state = "wolverine"
+	inhand_icon_state = "wolverine"
+	var/knife_force = 10
+	w_class = WEIGHT_CLASS_BULKY
+	var/knife_wound_bonus = 5
+	var/cutter_force = CUTTER_FORCE
+	var/cutter_wound_bonus = CUTTER_WOUND_BONUS
+	var/cutter_bare_wound_bonus = CUTTER_WOUND_BONUS
+	tool_behaviour = TOOL_KNIFE
+	toolspeed = 1
+	item_flags = NEEDS_PERMIT //Beepers gets angry if you get caught with this.
+
+/obj/item/knife/razor_claws/attack_self(mob/user)
+	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
+	if(tool_behaviour != TOOL_WIRECUTTER)
+		tool_behaviour = TOOL_WIRECUTTER
+		to_chat(user, span_notice("You shift [src] into Precision mode, for wirecutting."))
+		icon_state = "precision_wolverine"
+		inhand_icon_state = "precision_wolverine"
+		force = cutter_force
+		wound_bonus = cutter_wound_bonus
+		bare_wound_bonus = cutter_bare_wound_bonus
+		sharpness = NONE
+		hitsound = CUTTER_HITSOUND
+		usesound = CUTTER_USESOUND
+		attack_verb_continuous = CUTTER_ATTACK_VERB_CONTINUOUS
+		attack_verb_simple = CUTTER_ATTACK_VERB_SIMPLE
+	else
+		tool_behaviour = TOOL_KNIFE
+		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
+		icon_state = "wolverine"
+		inhand_icon_state = "wolverine"
+		force = knife_force
+		sharpness = KNIFE_SHARPNESS
+		wound_bonus = knife_wound_bonus
+		bare_wound_bonus = KNIFE_BARE_WOUND_BONUS
+		hitsound = KNIFE_HITSOUND
+		usesound = KNIFE_USESOUND
+		attack_verb_continuous = KNIFE_ATTACK_VERB_CONTINUOUS
+		attack_verb_simple = KNIFE_ATTACK_VERB_SIMPLE
+
+/obj/item/knife/razor_claws/attackby(obj/item/stone, mob/user, param)
+	if(!istype(stone, /obj/item/scratching_stone))
+		return ..()
+
+	knife_force = ENHANCED_KNIFE_FORCE
+	knife_wound_bonus = ENHANCED_KNIFE_WOUND_BONUS
+	armour_penetration = ENHANCED_KNIFE_ARMOR_PENETRATION //Let's give them some AP for the trouble.
+
+	if(tool_behaviour == TOOL_KNIFE)
+		force = knife_force
+		wound_bonus = knife_wound_bonus
+
+	name = "enhanced razor claws"
+	desc += span_warning("\n\nThese have undergone a special honing process; they'll kill people even faster than they used to.")
+	user.visible_message(span_warning("[user] sharpens [src], [stone] disintegrating!"), span_warning("You sharpen [src], making it much more deadly than before, but [stone] disintegrates under the stress."))
+	playsound(src, 'sound/items/unsheath.ogg', 25, TRUE)
+	qdel(stone)
+	return ..()
+
+/obj/item/organ/internal/cyberimp/arm/razor_claws
+	name = "razor claws implant"
+	desc = "A set of hidden, retractable blades built into the fingertips; cyborg mercenary approved."
+	items_to_create = list(/obj/item/knife/razor_claws)
+	actions_types = list(/datum/action/item_action/organ_action/toggle/razor_claws)
+	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
+	icon_state = "wolverine"
+	extend_sound = 'sound/items/unsheath.ogg'
+	retract_sound = 'sound/items/sheath.ogg'
+
+/// bespoke subtypes for augs menu since it's a bit wonky
+/obj/item/organ/internal/cyberimp/arm/razor_claws/right_arm
+    zone = BODY_ZONE_R_ARM
+    slot = ORGAN_SLOT_RIGHT_ARM_AUG
+
+/obj/item/organ/internal/cyberimp/arm/razor_claws/left_arm
+    zone = BODY_ZONE_L_ARM
+    slot = ORGAN_SLOT_LEFT_ARM_AUG
+
+
+/datum/action/item_action/organ_action/toggle/razor_claws
+	name = "Extend Claws"
+	desc = "You can also activate the claws in your hand to change their mode."
+	button_icon = 'modular_skyrat/master_files/icons/hud/actions.dmi'
+	button_icon_state = "wolverine"
 
 /obj/item/organ/internal/cyberimp/arm/hacker
 	name = "hacking arm implant"
@@ -66,9 +176,12 @@
 	toolspeed = 1
 
 /obj/item/organ/internal/cyberimp/arm/botany/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
 	items_list += WEAKREF(new /obj/item/implant_mounted_chainsaw(src)) //time to landscape the station
+	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/multitool/abductor/implant
@@ -83,10 +196,13 @@
 	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/cup/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
 
 /obj/item/organ/internal/cyberimp/arm/janitor/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated deluxe cleaning supplies!"))
 	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
 	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg_lube(src))
+	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/arm/lighter
@@ -95,7 +211,26 @@
 	items_to_create = list(/obj/item/lighter/greyscale) //Hilariously useless.
 
 /obj/item/organ/internal/cyberimp/arm/lighter/emag_act()
+	if(obj_flags & EMAGGED)
+		return FALSE
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!"))
 	items_list += WEAKREF(new /obj/item/lighter(src)) //Now you can choose between bad and worse!
+	obj_flags |= EMAGGED
 	return TRUE
+
+#undef KNIFE_HITSOUND
+#undef KNIFE_USESOUND
+#undef KNIFE_ATTACK_VERB_CONTINUOUS
+#undef KNIFE_ATTACK_VERB_SIMPLE
+#undef KNIFE_SHARPNESS
+#undef KNIFE_BARE_WOUND_BONUS
+#undef CUTTER_HITSOUND
+#undef CUTTER_USESOUND
+#undef CUTTER_ATTACK_VERB_CONTINUOUS
+#undef CUTTER_ATTACK_VERB_SIMPLE
+#undef CUTTER_FORCE
+#undef CUTTER_WOUND_BONUS
+#undef ENHANCED_KNIFE_FORCE
+#undef ENHANCED_KNIFE_WOUND_BONUS
+#undef ENHANCED_KNIFE_ARMOR_PENETRATION

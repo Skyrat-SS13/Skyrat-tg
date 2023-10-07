@@ -415,7 +415,7 @@
 			priority_announce("A fatal power outage has occurred. Please ensure that all on-board devices are connected to an appropriate power generator.")
 
 			apc_loop:
-				for(var/obj/machinery/power/apc/controller as anything in GLOB.apcs_list)
+				for(var/obj/machinery/power/apc/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
 					var/area/apc_area = get_area(controller) // make sure that no "critical" APCs lose their power (SM, namely)
 					for(var/turf/turf as anything in apc_area.contained_turfs)
 						for(var/obj/machinery/depowered_machinery in turf)
@@ -424,7 +424,7 @@
 
 					controller.cell?.charge = 0
 
-			for(var/obj/machinery/power/smes/battery_pack in GLOB.machines)
+			for(var/obj/machinery/power/smes/battery_pack as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes))
 				battery_pack.charge = 0
 
 			GLOB.max_clock_power += 1500 // Extra bonus

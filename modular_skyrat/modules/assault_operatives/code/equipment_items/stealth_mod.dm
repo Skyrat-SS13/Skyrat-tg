@@ -87,7 +87,7 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/holster,
-		/obj/item/mod/module/status_readout/generic,
+		/obj/item/mod/module/status_readout/operational,
 	)
 
 /obj/machinery/suit_storage_unit/industrial/assault_operative

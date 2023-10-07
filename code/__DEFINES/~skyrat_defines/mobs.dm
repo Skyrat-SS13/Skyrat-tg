@@ -2,12 +2,14 @@
 
 #define PULL_OVERSIZED_SLOWDOWN 2
 
-/// Used for Nanite Slurry vomit. The mob will vomit a nanite puddle.
-#define VOMIT_NANITE 3
+#define HUMAN_HEALTH_MODIFIER 1.35
+
+#define HUMAN_MAXHEALTH MAX_LIVING_HEALTH * HUMAN_HEALTH_MODIFIER
 
 #define UNDERWEAR_HIDE_SOCKS (1<<0)
 #define UNDERWEAR_HIDE_SHIRT (1<<1)
 #define UNDERWEAR_HIDE_UNDIES (1<<2)
+#define UNDERWEAR_HIDE_BRA (1<<3)
 
 //Appends to the bottom of Defib fails - DNR TRAIT
 #define DEFIB_FAIL_DNR (1<<11)

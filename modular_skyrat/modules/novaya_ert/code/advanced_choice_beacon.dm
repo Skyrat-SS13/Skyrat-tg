@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/b12mm/rubber
+	stun_projectile = /obj/projectile/bullet/a762x39/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
@@ -225,12 +225,12 @@
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
-	new /obj/item/storage/toolbox/ammo/full/l6_saw(src)
-	new /obj/item/storage/toolbox/ammo/full/krinkov(src)
-	new /obj/item/storage/toolbox/ammo/full/krinkov/emp(src)
-	new /obj/item/storage/toolbox/ammo/full/krinkov/fire(src)
-	new /obj/item/storage/toolbox/ammo/full/krinkov/ricochet(src)
-	new /obj/item/storage/toolbox/ammo/full/krinkov/ap(src)
-	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
-	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
-	new /obj/item/storage/toolbox/ammo/full/aps(src)
+	new /obj/item/storage/toolbox/ammobox/full/l6_saw(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov/emp(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov/fire(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov/ricochet(src)
+	new /obj/item/storage/toolbox/ammobox/full/krinkov/ap(src)
+	new /obj/item/storage/toolbox/ammobox/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammobox/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammobox/full/aps(src)

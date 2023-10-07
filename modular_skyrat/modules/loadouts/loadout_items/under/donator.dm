@@ -7,7 +7,7 @@
 
 /datum/loadout_item/under/jumpsuit/donator/enclaveofficer
 	name = "Enclave - Officer"
-	item_path = /obj/item/clothing/under/syndicate/skyrat/enclaveo
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave/officer
 
 /datum/loadout_item/under/jumpsuit/donator/blondie
 	name = "Blonde Cowboy Uniform"

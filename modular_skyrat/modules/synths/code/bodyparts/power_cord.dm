@@ -14,7 +14,7 @@
 /obj/item/apc_powercord
 	name = "power cord"
 	desc = "An internal power cord. Useful if you run on electricity. Not so much otherwise."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire1"
 
 /obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)

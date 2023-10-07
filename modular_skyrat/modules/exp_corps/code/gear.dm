@@ -9,7 +9,6 @@
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
-	new /obj/item/stack/medical/splint(src)
 	new /obj/item/defibrillator/compact/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/stack/medical/mesh/advanced(src)
@@ -95,10 +94,10 @@
 	force = 12
 	throwforce = 30
 
-/obj/item/storage/bag/ammo/marksman
+/obj/item/storage/pouch/ammo/marksman
 	name = "marksman's knife pouch"
 
-/obj/item/storage/bag/ammo/marksman/Initialize(mapload)
+/obj/item/storage/pouch/ammo/marksman/Initialize(mapload)
 	. = ..()
 	create_storage(storage_type = /datum/storage/marksman)
 
@@ -112,7 +111,7 @@
 	. = ..()
 	can_hold = typecacheof(list(/obj/item/knife/combat))
 
-/obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
+/obj/item/storage/pouch/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
 	new /obj/item/knife/combat/marksman(src)
 	new /obj/item/knife/combat/marksman(src)
 	new /obj/item/knife/combat/marksman(src)

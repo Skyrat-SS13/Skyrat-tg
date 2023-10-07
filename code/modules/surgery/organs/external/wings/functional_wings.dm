@@ -107,12 +107,12 @@
 	if(!HAS_TRAIT_FROM(human, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT))
 		human.physiology.stun_mod *= 2
 		human.add_traits(list(TRAIT_NO_FLOATING_ANIM, TRAIT_MOVE_FLYING), SPECIES_FLIGHT_TRAIT)
-		passtable_on(human, SPECIES_TRAIT)
+		passtable_on(human, SPECIES_FLIGHT_TRAIT)
 		open_wings()
 	else
 		human.physiology.stun_mod *= 0.5
 		human.remove_traits(list(TRAIT_NO_FLOATING_ANIM, TRAIT_MOVE_FLYING), SPECIES_FLIGHT_TRAIT)
-		passtable_off(human, SPECIES_TRAIT)
+		passtable_off(human, SPECIES_FLIGHT_TRAIT)
 		close_wings()
 	human.update_body_parts()
 
@@ -186,6 +186,7 @@
 /obj/item/organ/external/wings/functional/robotic
 	name = "robotic wings"
 	desc = "Using microscopic hover-engines, or \"microwings,\" as they're known in the trade, these tiny devices are able to lift a few grams at a time. Gathering enough of them, and you can lift impressively large things."
+	organ_flags = ORGAN_ROBOTIC
 	sprite_accessory_override = /datum/sprite_accessory/wings/robotic
 
 ///skeletal wings, which relate to skeletal races.
@@ -205,3 +206,9 @@
 	name = "megamoth wings"
 	desc = "Don't get murderous."
 	sprite_accessory_override = /datum/sprite_accessory/wings/megamoth
+
+///fly wings, which relate to flies.
+/obj/item/organ/external/wings/functional/fly
+	name = "fly wings"
+	desc = "Fly as a fly."
+	sprite_accessory_override = /datum/sprite_accessory/wings/fly

@@ -4,17 +4,15 @@
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	armor_type = /datum/armor/rank_expeditionary_corps
+	armor_type = /datum/armor/clothing_under/rank_expeditionary_corps
 	strip_delay = 7 SECONDS
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/rank_expeditionary_corps
-	bio = 10
+/datum/armor/clothing_under/rank_expeditionary_corps
 	fire = 15
 	acid = 15
-	wound = 5
 
 /obj/item/storage/belt/military/expeditionary_corps
 	name = "expeditionary corps chest rig"

@@ -128,10 +128,11 @@
 /obj/machinery/bluespace_miner/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		balloon_alert(user, "already emagged!")
-		return
+		return FALSE
 	ore_chance += list(/obj/item/stack/sheet/mineral/bananium = 1)
 	obj_flags |= EMAGGED
 	balloon_alert_to_viewers("fizzles!")
+	return TRUE
 
 /obj/item/circuitboard/machine/bluespace_miner
 	name = "Bluespace Miner"
@@ -150,7 +151,7 @@
 /datum/supply_pack/misc/bluespace_miner
 	name = "Bluespace Miner"
 	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
-	cost = CARGO_CRATE_VALUE * 150 // 30,000
+	cost = CARGO_CRATE_VALUE * 50 // 10,000
 	contains = list(/obj/item/circuitboard/machine/bluespace_miner)
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate

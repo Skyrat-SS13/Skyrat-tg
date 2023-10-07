@@ -6,8 +6,6 @@
 	light_power = 1.25
 
 /obj/machinery/light
-	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
-	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = COLOR_FIRE_LIGHT_RED
@@ -112,12 +110,6 @@
 
 	if(roundstart_flicker)
 		start_flickering()
-
-/obj/item/light/tube
-	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_righthand.dmi'
-
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)

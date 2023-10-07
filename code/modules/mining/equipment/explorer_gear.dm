@@ -130,10 +130,6 @@
 	armor_type = /datum/armor/cloak_goliath
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
-	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/goliath/AltClick(mob/user)
 	. = ..()
@@ -174,10 +170,6 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
 	resistance_flags = FIRE_PROOF
-	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
 /datum/armor/cloakhood_goliath
 	melee = 35

@@ -14,6 +14,7 @@ GLOBAL_LIST_EMPTY(dynamic_human_appearances)
 	dummy.underwear = "Nude"
 	dummy.undershirt = "Nude"
 	dummy.socks = "Nude"
+	dummy.bra = "Nude" // SKYRAT EDIT ADDITION - Underwear and bra split
 	if(outfit_path)
 		var/datum/outfit/outfit = new outfit_path()
 		if(r_hand != NO_REPLACE) //we can still override to be null, no replace means just use outfit's
@@ -54,4 +55,6 @@ GLOBAL_LIST_EMPTY(dynamic_human_appearances)
 /proc/set_dynamic_human_appearance(list/arguments)
 	var/atom/target = arguments[1] //1st argument is the target
 	var/dynamic_appearance = get_dynamic_human_appearance(arglist(arguments.Copy(2))) //the rest of the arguments starting from 2 matter to the proc
-	target.appearance = dynamic_appearance
+	target.icon = 'icons/blanks/32x32.dmi'
+	target.icon_state = "nothing"
+	target.copy_overlays(dynamic_appearance, cut_old = TRUE)

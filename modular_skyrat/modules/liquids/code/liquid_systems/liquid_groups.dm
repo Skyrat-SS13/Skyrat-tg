@@ -213,7 +213,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		//Immutable check thing
 		if(T2.liquids && T2.liquids.immutable)
 			if(T.z != T2.z)
-				var/turf/Z_turf_below = SSmapping.get_turf_below(T)
+				var/turf/Z_turf_below = GET_TURF_BELOW(T)
 				if(T2 == Z_turf_below)
 					qdel(T.liquids, TRUE)
 					return
@@ -238,7 +238,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		//END OF IMMUTABLE MADNESS
 
 		if(T.z != T2.z)
-			var/turf/Z_turf_below = SSmapping.get_turf_below(T)
+			var/turf/Z_turf_below = GET_TURF_BELOW(T)
 			if(T2 == Z_turf_below)
 				if(!(T2.liquids && T2.liquids.height + T2.liquid_height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
 					T.liquid_fraction_share(T2, 1)

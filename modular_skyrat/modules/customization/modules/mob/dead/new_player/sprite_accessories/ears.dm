@@ -315,6 +315,14 @@
 	name = "Teshari Feathers Upright"
 	icon_state = "teshari_feathers_upright"
 
+/datum/sprite_accessory/ears/mutant/teshari/feathers_mane
+	name = "Teshari Feathers Mane"
+	icon_state = "teshari_feathers_mane"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_maneless
+	name = "Teshari Feathers Mane Fluffless"
+	icon_state = "teshari_feathers_maneless"
+
 /datum/sprite_accessory/ears/mutant/teshari/feathers_droopy
 	name = "Teshari Feathers Droopy"
 	icon_state = "teshari_feathers_droopy"
@@ -322,6 +330,10 @@
 /datum/sprite_accessory/ears/mutant/teshari/feathers_longway
 	name = "Teshari Feathers Longway"
 	icon_state = "teshari_feathers_longway"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_tree
+	name = "Teshari Feathers Tree"
+	icon_state = "teshari_feathers_tree"
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_ponytail
 	name = "Teshari Feathers Ponytail"
@@ -347,6 +359,14 @@
 	icon_state = "teshari_feathers_thin"
 	color_src = USE_ONE_COLOR
 
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
+	name = "Teshari Feathers Thin Mane"
+	icon_state = "teshari_feathers_thinmane"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmaneless
+	name = "Teshari Feathers Thin Mane Fluffless"
+	icon_state = "teshari_feathers_thinmaneless"
+
 /datum/sprite_accessory/ears/mutant/deer2
 	name = "Deer 2"
 	icon_state = "deer2"
@@ -371,3 +391,15 @@
 /datum/sprite_accessory/ears/mutant/big/fourears3
 	name = "Four Ears 3"
 	icon_state = "four_ears_3"
+
+/datum/sprite_accessory/ears/acrador
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/ears/acrador/long
+	icon_state = "acrador_long"
+	name = "Acrador (Long)"
+
+/datum/sprite_accessory/ears/acrador/short
+	icon_state = "acrador_short"
+	name = "Acrador (Short)"

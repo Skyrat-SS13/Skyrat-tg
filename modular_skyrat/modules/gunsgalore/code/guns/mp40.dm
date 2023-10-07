@@ -9,7 +9,7 @@
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "mp40"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	mag_type = /obj/item/ammo_box/magazine/mp40
+	accepted_magazine_type = /obj/item/ammo_box/magazine/mp40
 	can_suppress = FALSE
 	burst_size = 1
 	fire_delay = 1.7
@@ -25,9 +25,6 @@
 	. = ..()
 
 	AddComponent(/datum/component/automatic_fire, fire_delay)
-
-/obj/item/gun/ballistic/automatic/mp40/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"
