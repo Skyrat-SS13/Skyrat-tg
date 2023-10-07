@@ -5,7 +5,6 @@
 		Its upper and lower bounds for temperature are highly limited, though it has a higher than standard heat capacity \
 		and the benefit of being undeployable when you're done with it."
 	circuit = null
-	flags_1 = NODECONSTRUCT_1
 	greyscale_config = /datum/greyscale_config/thermomachine/deployable
 	min_temperature = T0C
 	max_temperature = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD + 50
@@ -25,6 +24,9 @@
 	heat_capacity = 10000
 	min_temperature = T0C
 	max_temperature = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD + 50
+
+/obj/machinery/atmospherics/components/unary/thermomachine/deployable/default_deconstruction_crowbar()
+	return
 
 // Item for creating the regulator and carrying it about
 
