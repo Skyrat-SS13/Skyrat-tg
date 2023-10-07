@@ -4,6 +4,7 @@
 	desc = "It's a nondescript pouch made with dark fabric. It has a clip, for fitting in pockets."
 	icon = 'modular_skyrat/modules/modular_items/icons/storage.dmi'
 	icon_state = "survival"
+	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_POCKETS
 
