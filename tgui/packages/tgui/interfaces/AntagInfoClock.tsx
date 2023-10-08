@@ -67,7 +67,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          '- The chaplain and curator know everything, including that ratvar himself is out-of-action for the foreseeable future.'
+          '- The Chaplain and Curator know everything, including that Ratvar himself is out-of-action for the foreseeable future.'
         }
       </Stack.Item>
       <Stack.Item>
