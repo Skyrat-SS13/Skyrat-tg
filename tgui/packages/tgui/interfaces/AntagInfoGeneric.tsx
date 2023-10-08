@@ -51,7 +51,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              '- Functionally PMS once called out, but you should avoid just running around doing nothing but mechanics if possible.'
+              '- Functionally Permanent Mechanical State (PMS) once called out, but you should avoid just running around doing nothing but mechanics if possible.'
             }
           </Stack.Item>
           <Stack.Item>
