@@ -269,7 +269,7 @@ const Rules = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         {
-          '- If a Head of Staff goes SSD/Disconnects after being abducted, you may extract it and leave them somewhere.'
+          '- If a Head of Staff goes SSD/disconnects after being abducted, you may extract them and leave them somewhere.'
         }
       </Stack.Item>
       <Stack.Item bold>Metaprotections:</Stack.Item>
