@@ -290,7 +290,6 @@ const Rules = (props, context) => {
         }
       </Stack.Item>
       <Stack.Item>{'- YOU NEED AN ACCEPTED OPFOR TO DOOMSDAY.'}</Stack.Item>
-      <Stack.Item>{'- You have to ahelp before ascending.'}</Stack.Item>
       <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
