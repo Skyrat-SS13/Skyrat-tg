@@ -30,6 +30,10 @@
 /datum/armament_entry/company_import/akh_frontier/appliances/charger
 	item_type = /obj/item/wallframe/cell_charger_multi
 
+/datum/armament_entry/company_import/akh_frontier/appliances/co2_cracker
+	item_type = /obj/machinery/electrolyzer/co2_cracker/spawns_with_cell
+	cost = PAYCHECK_COMMAND
+
 // Flatpacked, ready to deploy machines
 
 /datum/armament_entry/company_import/akh_frontier/deployables_misc

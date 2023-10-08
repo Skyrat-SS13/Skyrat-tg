@@ -115,7 +115,7 @@
 	icon_state = "drilla"
 	worn_icon_state = "drill"
 	w_class = WEIGHT_CLASS_NORMAL
-	toolspeed = 0.8 // Slightly slower than a normal drill
+	toolspeed = 0.6
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
