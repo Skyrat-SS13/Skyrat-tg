@@ -66,7 +66,22 @@
 
 /datum/team/primitive_catgirls
 	name = "Icewalkers"
+	member_name = "Icewalker"
 	show_roundend_report = FALSE
+
+/datum/team/primitive_catgirls/roundend_report()
+	var/list/report = list()
+
+	report += span_header("An Ice Walker Tribe inhabited the wastes...</span><br>")
+	if(length(members))
+		report += "The [member_name]s were:"
+		report += printplayerlist(members)
+	else
+		report += "<b>But none of its members woke up!</b>"
+
+	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
+
+// Antagonist datum
 
 /datum/antagonist/primitive_catgirl
 	name = "\improper Icewalker"

@@ -28,6 +28,16 @@
 	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL) // look, the anesthetic machine's there too
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
+/datum/design/mini_soulcatcher
+	name = "Poltergeist-Type RSD"
+	desc = "A miniature version of a Soulcatcher that can be attached to various objects."
+	id = "mini_soulcatcher"
+	build_type = PROTOLATHE | AWAY_LATHE
+	build_path = /obj/item/attachable_soulcatcher
+	materials = list(/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/iron = SMALL_MATERIAL_AMOUNT * 5)
+	category = list(RND_CATEGORY_AI + RND_SUBCATEGORY_AI_MISC) // look, the anesthetic machine's there too
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_MEDICAL
+
 /datum/design/nifsoft_hud
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SHEET_MATERIAL_AMOUNT)
