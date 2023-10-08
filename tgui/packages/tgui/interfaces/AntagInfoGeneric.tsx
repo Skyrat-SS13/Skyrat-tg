@@ -89,7 +89,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it--regardless of if you can afford a bomb or not--and stick to your goal of kidnapping."
+              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it, regardless of if you can afford a bomb or not, and stick to your goal of kidnapping."
             }
           </Stack.Item>
           <Stack.Item>
