@@ -308,3 +308,43 @@
       and synth medicine'
   - balance: Quadruple amputee can now be picked with frail
   - rscadd: Interdyne/DS2 now have advanced synthetic trauma kits in their medbays
+2023-10-08:
+  LT3:
+  - image: Text alignment on ID cards slightly adjusted
+  Melbert:
+  - bugfix: Fixed an error from reading an ID card closely when you can't read
+  - config: Adds a config option for player respawning that enables respawns, but
+      forces you pick a new character.
+  - config: '"NORESPAWN" has been replaced with "ALLOW_RESPAWN 0". Unlimited respawns
+      is "ALLOW_RESPAWN 1" and character limited respawns is "ALLOW_RESPAWN 2".'
+  SkyratBot:
+  - bugfix: Fix bodies now lose fire stacks while husked.
+  - bugfix: Flesh Worms will move smoothly more consistently.
+  - balance: You can now remove and replace power cells from PDAs (with screwdriver).
+  - balance: PDAs now drain their power cells harder, and also take into account active
+      programs & their flashlight being on.
+  - balance: PDAs running out of charge now turn their flashlights off.
+  - qol: allows janitor keys to be stored in janitor wintercoats and janibets
+  - bugfix: PDA flashlights wont cause the cell to constantly drain faster and faster.
+  - bugfix: People who are irremediably bald can still grow a beard with barber aid.
+  - qol: Added slapcrafting to unloaded tech shells, click on them with ingredients
+      to quickly craft your shell.
+  - qol: gives empty fireaxe and mech removal crowbars cabinets directional helpers
+  - bugfix: fixed a PDA's messenger TGUI issue with handling of destroyed recipients.
+  - qol: '"prison" intercoms have been renamed to "receive-only" intercoms to make
+      it clearer they cannot transmit.'
+  - refactor: Rust Walkers, Ash Spirits, Flesh Stalkers, and The Maid in the Mirror
+      now use the basic mob framework. Please report any unusual behaviour.
+  - spellcheck: '"offical" has been officially corrected to "official" in several
+      official locations.'
+  - refactor: Sloths are now basic mobs, however their overall sluggish behavior shouldn't
+      have changed much- let us know if anything is broken.
+  - refactor: Refactored goats into basic mobs! Not much should have changed beyond
+      their endless desire to retaliate should you attack them, they're still just
+      as good as chomping away plant life as ever.
+  - qol: Miners can now tag monster spawners (necropolis tendrils, animal dens, demonic
+      portals, and netherworld links) by using their mining scanner on it, which updates
+      their GPS tag (and/or gives them one) to give it a numerical designation and
+      a short identifier for what it's spawning.
+  oranges:
+  - rscadd: Dogs now react to centrist grillers more realistically
