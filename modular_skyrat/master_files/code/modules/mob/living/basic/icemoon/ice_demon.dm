@@ -1,7 +1,3 @@
-/mob/living/set_pull_offsets(mob/living/pull_target, grab_state)
-	. = ..()
-	SEND_SIGNAL(pull_target, COMSIG_LIVING_SET_PULL_OFFSET)
-
-/mob/living/reset_pull_offsets(mob/living/pull_target, override)
-	. = ..()
-	SEND_SIGNAL(pull_target, COMSIG_LIVING_RESET_PULL_OFFSETS)
+// crusher loot /obj/item/crusher_trophy/ice_demon_cube -> /obj/item/crusher_trophy/demon_core
+/mob/living/basic/mining/ice_demon
+	crusher_loot = /obj/item/crusher_trophy/demon_core
