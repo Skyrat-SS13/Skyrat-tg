@@ -67,3 +67,8 @@
 	var/new_heat_capacity = air_mixture.heat_capacity()
 	if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
 		air_mixture.temperature = max(air_mixture.temperature * old_heat_capacity / new_heat_capacity, TCMB)
+
+// Cracker type that spawns with a cell pre-installed
+
+/obj/machinery/electrolyzer/co2_cracker/spawns_with_cell
+	cell = /obj/item/stock_parts/cell/super
