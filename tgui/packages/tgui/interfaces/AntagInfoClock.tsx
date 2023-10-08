@@ -61,7 +61,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- Do not be surprised if you get arrested for doing clock-work stuff. '
+          '- Do not be surprised if you get arrested for doing clockwork-related activities. '
         }
       </Stack.Item>
       <Stack.Item bold>Metaprotections:</Stack.Item>
