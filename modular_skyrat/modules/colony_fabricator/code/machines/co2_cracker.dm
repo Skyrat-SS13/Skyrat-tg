@@ -17,6 +17,7 @@
 /obj/machinery/electrolyzer/co2_cracker/Initialize(mapload)
 	. = ..()
 	soundloop = new(src, FALSE)
+	reaction_to_run = new
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
