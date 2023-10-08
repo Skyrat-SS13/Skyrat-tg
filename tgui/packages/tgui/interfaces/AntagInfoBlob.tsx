@@ -201,7 +201,7 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- You are not allowed to spawn within a screen-length of Atmos, an Engine, the Icebox AI area, Grav Gen, or Toxins. OR DORMS.'
+          '- You are not allowed to spawn within a screen-length of Atmos, an Engine, the Icebox AI area, Grav Gen, Toxins nor Dormitories.'
         }
       </Stack.Item>
       <Stack.Item>
