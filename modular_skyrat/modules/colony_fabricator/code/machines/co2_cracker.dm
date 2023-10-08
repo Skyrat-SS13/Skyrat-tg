@@ -7,8 +7,6 @@
 	circuit = null
 	working_power = 2
 	efficiency = 1
-	/// The item we turn into when repacked
-	var/repacked_type = /obj/item/flatpacked_machine/thermomachine
 	/// Soundloop for while the cracker is turned on
 	var/datum/looping_sound/conditioner_running/soundloop
 	/// What type of reaction do we check and run for turf gasses?
@@ -18,7 +16,6 @@
 	. = ..()
 	soundloop = new(src, FALSE)
 	reaction_to_run = new
-	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 /obj/machinery/electrolyzer/co2_cracker/call_reactions(datum/gas_mixture/env)
