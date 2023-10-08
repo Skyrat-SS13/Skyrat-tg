@@ -1,21 +1,17 @@
 // MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
 
 /datum/id_trim/job/head_of_security
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	subdepartment_color = COLOR_ASSEMBLY_BLACK // This actually is the shade of grey formerly used by the static icons! Didn't have to add anything extra! Just thought that was neat.
 
 /datum/id_trim/job/warden
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_ASSEMBLY_BLACK
 
 /datum/id_trim/job/security_officer
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_ASSEMBLY_BLACK
 
 /datum/id_trim/job/detective
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	department_color = COLOR_ASSEMBLY_BLACK
 	subdepartment_color = COLOR_ASSEMBLY_BLACK
 

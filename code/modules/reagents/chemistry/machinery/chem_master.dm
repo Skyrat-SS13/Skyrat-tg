@@ -46,9 +46,10 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 		/obj/item/reagent_containers/pill/patch/style
 	)),
 	// SKYRAT EDIT ADDITION START
-	CAT_HYPOS = typecacheof(list(
-		/obj/item/reagent_containers/cup/vial
-	)),
+	CAT_HYPOS = list(
+		/obj/item/reagent_containers/cup/vial/small,
+		/obj/item/reagent_containers/cup/vial/large,
+	),
 	CAT_DARTS = typecacheof(list(
 		/obj/item/reagent_containers/syringe/smartdart
 	))

@@ -173,7 +173,7 @@
 	. = ..()
 	var/mob_type = pick(
 		/mob/living/basic/mining/goliath,
-		/mob/living/simple_animal/hostile/asteroid/hivelord/legion,
+		/mob/living/basic/mining/legion,
 		/mob/living/basic/mining/brimdemon,
 		/mob/living/basic/mining/watcher,
 		/mob/living/basic/mining/lobstrosity/lava,
@@ -198,7 +198,7 @@
 /datum/ash_ritual/summon_icemoon_creature/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
 	var/mob_type = pick(
-		/mob/living/simple_animal/hostile/asteroid/ice_demon,
+		/mob/living/basic/mining/ice_demon,
 		/mob/living/basic/mining/ice_whelp,
 		/mob/living/basic/mining/lobstrosity,
 		/mob/living/simple_animal/hostile/asteroid/polarbear,
@@ -373,5 +373,5 @@
 
 	find_animal.faction = list(FACTION_ASHWALKER)
 
-	find_animal.revive()
+	find_animal.revive(HEAL_ALL)
 	return TRUE
