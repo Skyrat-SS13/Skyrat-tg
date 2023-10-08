@@ -271,7 +271,7 @@ const Rules = (props, context) => {
       <Stack.Item>{'- Cyborgs on the Interlink do not exist.'}</Stack.Item>
       <Stack.Item>
         {
-          '- During the Doomsday countdown every cyborg on the station--and you--are in a PMS. There is fundamentally no time to discern between the good and bad in the moment, and the clock is ticking.'
+          '- During the Doomsday countdown, you, as well as every cyborg on the station, are in a PMS. There is fundamentally no time to discern between the good and bad in the moment, and the clock is ticking.'
         }
       </Stack.Item>
       <Stack.Item>
