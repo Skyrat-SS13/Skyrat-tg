@@ -22,7 +22,7 @@
 /obj/machinery/rnd/production/colony_lathe/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 5 SECONDS)
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	// We don't get new designs but can't print stuff if something's not researched, so we use the web that has everything researched
 	stored_research = locate(/datum/techweb/admin) in SSresearch.techwebs
 	soundloop = new(src, FALSE)
@@ -95,7 +95,7 @@
 
 /// Adds the manufacturer examine element to the flatpack machine, but can be overridden in the future
 /obj/item/flatpacked_machine/proc/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 /obj/item/borg/apparatus/sheet_manipulator/Initialize(mapload)
 	. = ..()

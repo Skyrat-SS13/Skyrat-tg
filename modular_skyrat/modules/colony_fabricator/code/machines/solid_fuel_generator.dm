@@ -24,7 +24,7 @@
 /obj/machinery/power/port_gen/pacman/solid_fuel/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/repackable, repacked_type, 1 SECONDS)
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	if(!mapload)
 		flick("fuel_generator_deploy", src)
 

@@ -73,9 +73,9 @@
 	cost_change_upper = 3000
 
 // Sells unique construction supplies that the station can't normally obtain
-/datum/cargo_company/kz_frontier
-	name = KZ_EQUIPMENT_NAME
-	company_flag = CARGO_COMPANY_KZ_EQUIPMENT
+/datum/cargo_company/akh_frontier
+	name = FRONTIER_EQUIPMENT_NAME
+	company_flag = CARGO_COMPANY_FRONTIER_EQUIPMENT
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
 /datum/cargo_company/nanotrasen_bolt_weapons

@@ -18,7 +18,7 @@
 	. = ..()
 	soundloop = new(src, FALSE)
 	AddElement(/datum/element/repackable, repacked_type, 2 SECONDS)
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	flick("thermo_deploy", src)
 
 /obj/machinery/atmospherics/components/unary/thermomachine/deployable/RefreshParts()

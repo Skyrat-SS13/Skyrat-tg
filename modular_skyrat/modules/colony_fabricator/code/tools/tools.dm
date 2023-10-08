@@ -35,7 +35,7 @@
 
 /obj/item/screwdriver/omni_drill/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 /obj/item/screwdriver/omni_drill/get_all_tool_behaviours()
 	return list(TOOL_WIRECUTTER, TOOL_SCREWDRIVER, TOOL_WRENCH)
@@ -104,7 +104,7 @@
 
 /obj/item/crowbar/large/doorforcer/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Backpackable mining drill
 
@@ -123,7 +123,7 @@
 
 /obj/item/pickaxe/drill/compact/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Electric welder but not quite as strong
 
@@ -147,4 +147,4 @@
 
 /obj/item/weldingtool/electric/arc_welder/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_KZ_FRONTIER)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
