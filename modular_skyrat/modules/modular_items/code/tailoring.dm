@@ -11,7 +11,7 @@
 	result = /obj/item/clothing/mask/paper
 	time = 30
 	tool_behaviors = list(TOOL_WIRECUTTER)
-	reqs = list(/obj/item/paper = 2, /obj/item/pen = 1)
+	reqs = list(/obj/item/paper = 5)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/crusader_belt
