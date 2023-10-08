@@ -199,6 +199,18 @@
 	missing_health_bonus = 8
 	time = 2 SECONDS
 
+// Mostly a copypaste of standard tend wounds get_progress(). In order to abstract this, I'd have to rework the hierarchy of surgery upstream, so I'll just do this. Pain.
+/**
+ * Args:
+ * * mob/user: The user performing this surgery.
+ * * mob/living/carbon/target: The target of the surgery.
+ * * brute_healed: The amount of brute we just healed.
+ * * burn_healed: The amount of burn we just healed.
+ *
+ * Returns:
+ * * A string containing either an estimation of how much longer the surgery will take, or exact numbers of the remaining damages, depending on if a health analyzer
+ * is held or not.
+ */
 /datum/surgery_step/robot_heal/proc/get_progress(mob/user, mob/living/carbon/target, brute_healed, burn_healed)
 	var/estimated_remaining_steps = 0
 	if(brute_healed > 0)
