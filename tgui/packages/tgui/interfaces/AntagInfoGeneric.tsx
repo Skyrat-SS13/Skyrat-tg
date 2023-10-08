@@ -94,7 +94,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              "- Confirmed contractors can be checked for their modsuit, regardless of it's stealth-status."
+              "- Confirmed contractors can be checked for their modsuit, regardless of it's stealth status."
             }
           </Stack.Item>
           <Stack.Item bold>Metaprotections:</Stack.Item>
