@@ -268,7 +268,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Metaprotections:</Stack.Item>
           <Stack.Item>
             {
-              "none; you literally come fresh with a massive announcement telling everyone you're here for a fight."
+              "None; you literally come fresh with a massive announcement telling everyone you're here for a fight."
             }
           </Stack.Item>
         </Stack>
