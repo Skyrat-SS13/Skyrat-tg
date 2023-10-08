@@ -174,7 +174,7 @@
 	icon_state = "nightclub_backstage"
 
 /area/station/common/night_club/changing_room
-	name = "Night Club Chaning Room"
+	name = "Night Club Changing Room"
 	icon_state = "nightclub_changing_room"
 
 // Rec related areas
