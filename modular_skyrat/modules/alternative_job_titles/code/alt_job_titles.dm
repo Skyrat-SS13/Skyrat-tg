@@ -203,7 +203,6 @@
 	alt_titles = list(
 		"Cyborg",
 		"Android",
-		"Machine",
 		"Robot",
 	)
 
@@ -231,7 +230,7 @@
 /datum/job/geneticist
 	alt_titles = list(
 		"Geneticist",
-		"Biologist",
+		"Gene Tailor",
 		"Mutation Researcher",
 	)
 
@@ -305,9 +304,6 @@
 /datum/job/prisoner
 	alt_titles = list(
 		"Prisoner",
-		"Convict",
-		"Felon",
-		"Inmate",
 		"Minimum Security Prisoner",
 		"Maximum Security Prisoner",
 		"SuperMax Security Prisoner",
