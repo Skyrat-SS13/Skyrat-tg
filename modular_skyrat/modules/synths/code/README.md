@@ -10,7 +10,7 @@ Adds in a roundstart robotic race. Currently in a very sad state, and is being w
 
 ### TG Proc/File Changes:
 
-- defib.dm: remove_synth_trauma() added, /obj/item/shockpaddles/proc/do_help() modified
+- defib.dm: /obj/item/shockpaddles/proc/do_help() modified
 - Will fill out as I discover what edits were made to acommodate these.
 
 ### Modular Overrides:
@@ -19,7 +19,8 @@ Adds in a roundstart robotic race. Currently in a very sad state, and is being w
 
 ### Defines:
 
-- Will fill out as I discover what defines were made to acommodate these.
+- ~skyrat_defines/medical_defines.dm: SYNTH_DEFIBBED_TRAUMA_DURATION
+- ~skyrat_defines/medical_defines.dm: SYNTH_DEFIBBED_TRAUMA_SEVERITY
 
 ### Included files that are not contained in this module:
 

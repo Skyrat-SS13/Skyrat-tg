@@ -682,9 +682,9 @@
 							iterated_organ.emp_act(EMP_LIGHT)
 						var/obj/item/organ/internal/brain/brain_organ = H.get_organ_slot(ORGAN_SLOT_BRAIN)
 						if (istype(brain_organ))
-							var/datum/brain_trauma/trauma = brain_organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_LIMIT_BASIC)
+							var/datum/brain_trauma/trauma = brain_organ.gain_trauma_type(SYNTH_DEFIBBED_TRAUMA_SEVERITY, TRAUMA_LIMIT_BASIC)
 							if (trauma)
-								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_trauma), brain_organ, trauma), 90 SECONDS)
+								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_defib_trauma), brain_organ, trauma), SYNTH_DEFIBBED_TRAUMA_DURATION)
 					// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 
 				do_success()
@@ -704,14 +704,6 @@
 				user.visible_message(span_warning("[req_defib ? "[defib]" : "[src]"] buzzes: Patient is not in a valid state. Operation aborted."))
 				playsound(src, 'sound/machines/defib_failed.ogg', 50, FALSE)
 	do_cancel()
-
-// SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
-/proc/remove_synth_trauma(obj/item/organ/internal/brain/synth_brain, datum/brain_trauma/trauma)
-	if (QDELETED(synth_brain) || QDELETED(trauma))
-		return
-
-	qdel(trauma)
-// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 
 /obj/item/shockpaddles/proc/is_wielded()
 	return HAS_TRAIT(src, TRAIT_WIELDED)
