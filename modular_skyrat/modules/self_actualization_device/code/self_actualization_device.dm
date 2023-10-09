@@ -132,13 +132,23 @@
 
 	if(!ishuman(occupant))
 		return FALSE
+	var/mob/living/carbon/human/human_occupant = occupant
 
-	// Allows unconscious people to reject non-consensual stuff
-	var/failure = (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you. Do your genes accept or reject this?", "Rejuvenate", list("Accept", "Reject"), timeout = 10 SECONDS) == "Reject")
+	// Allows unconscious people to reject non-consensual stuff, defaults to false
+
+	var/failure = FALSE
+	var/failure_text
+
+	if (!isnull(human_occupant.ckey) && isnull(human_occupant.client)) // player mob, currently disconnected
+		failure = TRUE
+		failure_text = "ERROR: Treatment illicited no response from occupant genes. Subject may be suffering from Sudden Sleep Disorder."
+	else if (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you, resetting your body to its default state (in character preferences). Do you consent?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) != "Yes")
+		failure = TRUE // defaults to rejecting it unless specified otherwise
+		failure_text = "ERROR: Occupant genes have willfully rejected the procedure. You may try again if you think this was an error."
 
 	if (failure)
-		say("ERROR: Occupant genes have willfully rejected the procedure. You may try again if you think this was an error.")
-		playsound(src, 'sound/machines/buzz-sigh.ogg')
+		say(failure_text)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 	else
 		var/mob/living/carbon/human/patient = occupant
 		var/original_name = patient.dna.real_name
