@@ -5,15 +5,15 @@
 	icon_state = "medipen_pouch"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/pouch/medipen/update_icon_state()
+/obj/item/storage/pouch/cin_medipens/update_icon_state()
 	icon_state = "[initial(icon_state)]_[contents.len]"
 	return ..()
 
-/obj/item/storage/pouch/medipen/Initialize(mapload)
+/obj/item/storage/pouch/cin_medipens/Initialize(mapload)
 	. = ..()
 	update_appearance()
 
-/obj/item/storage/pouch/medipen/Initialize(mapload)
+/obj/item/storage/pouch/cin_medipens/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_TINY
 	atom_storage.max_total_storage = 4
