@@ -18,9 +18,8 @@
 
 	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
-	var/attempted_dir = get_dir(loc, target)
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
 		if(istype(mover) && (mover.pass_flags & PASSGLASS))
 			return TRUE
@@ -30,12 +29,11 @@
 		if(projectile.trajectory && angle2dir_cardinal(projectile.trajectory.angle) == dir)
 			return TRUE
 		return FALSE
-	if(attempted_dir == dir)
+	if(border_dir == dir)
 		return FALSE
-	else if(attempted_dir != dir)
-		return TRUE
+	return TRUE
 
-/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
@@ -45,12 +43,12 @@
 	if(istype(leaving, /obj/projectile))
 		return
 
-	if(get_dir(leaving.loc, new_location) == dir)
+	if(direction == dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user)) //skyrat edit: no borer flipping
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
 	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
 	if(do_after(user, max_integrity * 0.25))
