@@ -22,16 +22,6 @@
 	)
 	update_appearance()
 
-/obj/structure/railing/wooden_fencing/update_icon()
-	. = ..()
-	switch(dir)
-		if(SOUTH)
-			layer = ABOVE_MOB_LAYER
-		if(NORTH)
-			layer = initial(layer) - 0.01
-		else
-			layer = initial(layer)
-
 // Fence gates for the above mentioned fences
 
 /obj/structure/railing/wooden_fencing/gate
@@ -40,7 +30,7 @@
 	icon_state = "gate"
 	random_icons = FALSE
 	/// Has the gate been opened or not?
-	var/opened
+	var/opened = FALSE
 
 /obj/structure/railing/wooden_fencing/gate/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -63,8 +53,6 @@
 	. = ..()
 	if(!opened)
 		return
-	if(dir == EAST)
-		layer = ABOVE_MOB_LAYER
 
 // Large wooden gate, used for big doors or entrances to camps
 

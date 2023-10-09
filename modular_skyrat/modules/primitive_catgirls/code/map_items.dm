@@ -44,7 +44,7 @@
 	wash_atom(arrived)
 	wash_atom(loc)
 
-// Cleans the given atom of whatever dirties it
+/// Cleans the given atom of whatever dirties it
 /turf/open/water/icebox_fishable/proc/wash_atom(atom/nasty)
 	nasty.wash(CLEAN_WASH)
 
@@ -53,7 +53,7 @@
 	if(istype(arrived, /mob/living))
 		hotspring_mood(arrived)
 
-// Applies the hot water mood buff on the passed mob
+/// Applies the hot water mood buff on the passed mob
 /turf/open/water/icebox_fishable/proc/hotspring_mood(mob/living/swimmer)
 	swimmer.add_mood_event("hotspring", /datum/mood_event/hotspring/nerfed)
 
@@ -66,9 +66,9 @@
 /particles/hotspring_steam
 	icon = 'icons/effects/particles/smoke.dmi'
 	icon_state = list(
-		"steam_1"=2,
-		"steam_2"=2,
-		"Steam_3"=1,
+		"steam_1" = 2,
+		"steam_2" = 2,
+		"steam_3" = 1,
 	)
 	width = 64
 	height = 64
@@ -92,7 +92,7 @@
 		/obj/item/fish/chasm_crab/ice = 5,
 		/obj/item/stack/sheet/bone = 5,
 	)
-	catalog_description = "Fish dimension (Fishing portal generator)"
+	catalog_description = "Hot Springs"
 
 // The area
 

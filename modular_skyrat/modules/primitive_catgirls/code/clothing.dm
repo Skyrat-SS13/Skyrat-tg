@@ -136,8 +136,3 @@
 
 /obj/item/forging/reagent_weapon/axe/fake_copper
 	custom_materials = list(/datum/material/copporcitite = SHEET_MATERIAL_AMOUNT)
-
-/obj/item/climbing_hook/strong
-	name = "strong climbing hook"
-	desc = "A climbing hook built to high quality, you aren't likely to break this thing in your lifetime."
-	uses = INFINITY

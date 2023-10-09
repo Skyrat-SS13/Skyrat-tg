@@ -27,6 +27,11 @@
 	var/new_tray_type_to_use = pick(random_oven_tray_types)
 	add_tray_to_oven(new new_tray_type_to_use(src))
 
+/obj/machinery/oven/stone/examine(mob/user)
+	. = ..()
+
+	. += span_notice("It can be taken apart with a <b>prying tool</b> of some kind.")
+
 /obj/machinery/oven/stone/add_tray_to_oven(obj/item/plate/oven_tray, mob/baker)
 	used_tray = oven_tray
 
@@ -46,5 +51,13 @@
 
 	if(particles)
 		particles.position = list(0, 10, 0)
+
+/obj/machinery/oven/stone/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume=100))
+		return
+	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
+	deconstruct(TRUE)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 #undef OVEN_TRAY_Y_OFFSET
