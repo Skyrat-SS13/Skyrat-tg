@@ -14,7 +14,7 @@
 	design_ids = list(
 		"frontier_headset",
 		"frontier_gas_mask",
-		"frontier_hazard",
+		"frontier_hazard_suit",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE

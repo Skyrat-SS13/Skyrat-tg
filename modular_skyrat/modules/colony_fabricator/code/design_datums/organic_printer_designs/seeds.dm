@@ -47,7 +47,7 @@
 	id = "oganic_rice_seed"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 25)
-	build_path = /obj/item/food/grown/rice
+	build_path = /obj/item/seeds/wheat/rice
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_AKHTER_SEEDS,
