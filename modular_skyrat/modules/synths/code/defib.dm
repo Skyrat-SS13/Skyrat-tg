@@ -9,4 +9,4 @@
 	if (QDELETED(synth_brain) || QDELETED(trauma))
 		return
 
-	qdel(trauma)
+	QDEL_NULL(trauma)

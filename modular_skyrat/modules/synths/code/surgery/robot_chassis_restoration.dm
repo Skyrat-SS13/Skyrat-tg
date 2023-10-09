@@ -1,6 +1,6 @@
 #define SYNTH_REVIVE_WELD_INTERNALS_DAMAGE 30
 
-// Should be a very quick surgery, its meant to replace defibs (mostly!)
+// Should be a very quick surgery, it's meant to replace defibs (mostly!)
 /datum/surgery/positronic_restoration
 	name = "Posibrain Reboot (Revival)"
 	steps = list(
