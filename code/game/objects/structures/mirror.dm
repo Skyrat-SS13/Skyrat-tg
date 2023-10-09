@@ -77,7 +77,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
-/* SKYRAT EDIT REMOVAL
+/* SKYRAT EDIT REMOVAL START
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 
@@ -109,6 +109,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 			change_eyes(user)
 
 	return display_radial_menu(user)
+SKYRAT EDIT REMOVAL END */
 
 /obj/structure/mirror/proc/change_beard(mob/living/carbon/human/beard_dresser)
 	if(beard_dresser.physique != FEMALE && !magical_mirror)
@@ -136,7 +137,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		return TRUE
 
 	hairdresser.set_hairstyle(new_style, update = TRUE)
-*/
 
 /obj/structure/mirror/proc/change_name(mob/living/carbon/human/user)
 	var/newname = sanitize_name(tgui_input_text(user, "Who are we again?", "Name change", user.name, MAX_NAME_LEN), allow_numbers = TRUE) //It's magic so whatever.
