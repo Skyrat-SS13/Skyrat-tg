@@ -80,6 +80,7 @@
 	flipped_table.icon_state = src.base_icon_state
 	var/new_dir = get_dir(user, flipped_table)
 	flipped_table.dir = new_dir
+
 	if(new_dir == NORTH)
 		flipped_table.layer = BELOW_MOB_LAYER
 	flipped_table.max_integrity = src.max_integrity
@@ -93,6 +94,17 @@
 	user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
 	playsound(src, 'sound/items/trayhit2.ogg', 100)
 	qdel(src)
+
+	var/atom/throw_target = get_step(flipped_table, new_dir)
+	if (!isnull(throw_target))
+		for (var/atom/movable/movable_entity in flipped_table.loc)
+			if (movable_entity == flipped_table)
+				continue
+			if (movable_entity.anchored)
+				continue
+			if (movable_entity.invisibility > SEE_INVISIBLE_LIVING)
+				continue
+			movable_entity.safe_throw_at(throw_target, range = 1, speed = 1, force = MOVE_FORCE_NORMAL, gentle = TRUE)
 
 /obj/structure/table
 	var/flipped_table_type = /obj/structure/flippedtable
