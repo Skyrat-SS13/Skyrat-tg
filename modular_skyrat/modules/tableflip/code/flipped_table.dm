@@ -94,7 +94,7 @@
 	playsound(src, 'sound/items/trayhit2.ogg', 100)
 	qdel(src)
 
-	var/atom/throw_target = get_step(flipped_table, new_dir)
+	var/turf/throw_target = get_step(flipped_table, flipped_table.dir)
 	if (!isnull(throw_target))
 		for (var/atom/movable/movable_entity in flipped_table.loc)
 			if (movable_entity == flipped_table)
