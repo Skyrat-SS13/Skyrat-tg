@@ -16,4 +16,4 @@
 	design_ids = list(
 		"robotic_heal_surgery_upgrade_2"
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1300) // less expensive than the organic surgery research equivilant since its JUST tend wounds
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1300) // less expensive than the organic surgery research equivalent since its JUST tend wounds
