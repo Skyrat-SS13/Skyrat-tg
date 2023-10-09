@@ -77,11 +77,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
-/* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 
-	if(. || !ishuman(user) || broken)
+	if(. || !ishuman(user) || broken || !magical_mirror) // SKYRAT EDIT CHANGE - MUNDANE MIRRORS DON'T LET YOU CHANGE - ORIGINAL: if(. || !ishuman(user) || broken)
 		return TRUE
 
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH) && !magical_mirror)
@@ -136,7 +135,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		return TRUE
 
 	hairdresser.set_hairstyle(new_style, update = TRUE)
-*/
 
 /obj/structure/mirror/proc/change_name(mob/living/carbon/human/user)
 	var/newname = sanitize_name(tgui_input_text(user, "Who are we again?", "Name change", user.name, MAX_NAME_LEN), allow_numbers = TRUE) //It's magic so whatever.
@@ -177,8 +175,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 				to_chat(race_changer, span_notice("Invalid color. Your color is not bright enough."))
 				return TRUE
 
-		race_changer.update_body(is_creating = TRUE)
-		race_changer.update_mutations_overlay() // no hulk lizard
+	race_changer.update_body(is_creating = TRUE) // SKYRAT EDIT CHANGE - TODO: Remove when fix comes downstream - unindented
+	race_changer.update_mutations_overlay() // no hulk lizard // SKYRAT EDIT CHANGE - TODO: Remove when fix comes downstream - unindented
 
 // possible Genders: MALE, FEMALE, PLURAL, NEUTER
 // possible Physique: MALE, FEMALE
@@ -209,6 +207,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	sexy.dna.update_ui_block(DNA_GENDER_BLOCK)
 	sexy.update_body()
 	sexy.update_mutations_overlay() //(hulk male/female)
+	sexy.update_clothing() // update gender variant clothing
 
 /obj/structure/mirror/proc/change_eyes(mob/living/carbon/human/user)
 	var/new_eye_color = input(user, "Choose your eye color", "Eye Color", user.eye_color_left) as color|null
@@ -326,128 +325,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(hairchoice == "Style") //So you just want to use a mirror then?
 		return ..()
 
-<<<<<<< HEAD
-	var/mob/living/carbon/human/amazed_human = user
-// SKYRAT EDIT BEGIN - Magic Mirror Character Application
-	var/choice
-	var/ask = tgui_alert(user, "Would you like to apply your loaded character?","Confirm", list("Yes!", "No, I want to manually edit my character here."))
-
-	if(ask == "Yes!")
-		user?.client?.prefs?.safe_transfer_prefs_to(amazed_human)
-	else
-		choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
-// SKYRAT EDIT END
-	if(isnull(choice))
-		return TRUE
-
-	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-		return TRUE
-
-	switch(choice)
-		if("name")
-			var/newname = sanitize_name(tgui_input_text(amazed_human, "Who are we again?", "Name change", amazed_human.name, MAX_NAME_LEN), allow_numbers = TRUE) //It's magic so whatever.
-			if(!newname)
-				return TRUE
-			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-				return TRUE
-			amazed_human.real_name = newname
-			amazed_human.name = newname
-			if(amazed_human.dna)
-				amazed_human.dna.real_name = newname
-			if(amazed_human.mind)
-				amazed_human.mind.name = newname
-
-		if("race")
-			var/racechoice = tgui_input_list(amazed_human, "What are we again?", "Race change", selectable_races)
-			if(isnull(racechoice))
-				return TRUE
-			if(!selectable_races[racechoice])
-				return TRUE
-			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-				return TRUE
-
-			var/datum/species/newrace = selectable_races[racechoice]
-			amazed_human.set_species(newrace, icon_update = FALSE)
-			if(HAS_TRAIT(amazed_human, TRAIT_USES_SKINTONES))
-				var/new_s_tone = tgui_input_list(user, "Choose your skin tone", "Race change", GLOB.skin_tones)
-				if(new_s_tone)
-					amazed_human.skin_tone = new_s_tone
-					amazed_human.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
-			else if(HAS_TRAIT(amazed_human, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(amazed_human, TRAIT_FIXED_MUTANT_COLORS))
-				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change", amazed_human.dna.features["mcolor"]) as color|null
-				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-					return TRUE
-				if(new_mutantcolor)
-					var/temp_hsv = RGBtoHSV(new_mutantcolor)
-
-					if(ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright
-						amazed_human.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
-						amazed_human.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
-
-					else
-						to_chat(amazed_human, span_notice("Invalid color. Your color is not bright enough."))
-						return TRUE
-
-			amazed_human.update_body(is_creating = TRUE)
-			amazed_human.update_mutations_overlay() // no hulk lizard
-
-		if("gender")
-			if(!(amazed_human.gender in list(MALE, FEMALE))) //blame the patriarchy
-				return TRUE
-			if(amazed_human.gender == MALE)
-				if(tgui_alert(amazed_human, "Become a Witch?", "Confirmation", list("Yes", "No")) == "Yes")
-					if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-						return TRUE
-					amazed_human.gender = FEMALE
-					amazed_human.physique = FEMALE
-					to_chat(amazed_human, span_notice("Man, you feel like a woman!"))
-				else
-					return TRUE
-			else
-				if(tgui_alert(amazed_human, "Become a Warlock?", "Confirmation", list("Yes", "No")) == "Yes")
-					if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-						return TRUE
-					amazed_human.gender = MALE
-					amazed_human.physique = MALE
-					to_chat(amazed_human, span_notice("Whoa man, you feel like a man!"))
-				else
-					return TRUE
-			amazed_human.dna.update_ui_block(DNA_GENDER_BLOCK)
-			amazed_human.update_body()
-			amazed_human.update_mutations_overlay() //(hulk male/female)
-
-		if("hair")
-			var/hairchoice = tgui_alert(amazed_human, "Hairstyle or hair color?", "Change Hair", list("Style", "Color"))
-			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-				return TRUE
-			if(hairchoice == "Style") //So you just want to use a mirror then?
-				return ..()
-			else
-				var/new_hair_color = input(amazed_human, "Choose your hair color", "Hair Color",amazed_human.hair_color) as color|null
-				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-					return TRUE
-				if(new_hair_color)
-					amazed_human.set_haircolor(sanitize_hexcolor(new_hair_color), update = FALSE)
-					amazed_human.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
-				if(amazed_human.gender == MALE)
-					var/new_face_color = input(amazed_human, "Choose your facial hair color", "Hair Color", amazed_human.facial_hair_color) as color|null
-					if(new_face_color)
-						amazed_human.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
-						amazed_human.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				amazed_human.update_body_parts()
-				amazed_human.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT - Mirrors are no longer scared of colored ears
-
-		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(amazed_human, "Choose your eye color", "Eye Color", amazed_human.eye_color_left) as color|null
-			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-				return TRUE
-			if(new_eye_color)
-				amazed_human.eye_color_left = sanitize_hexcolor(new_eye_color)
-				amazed_human.eye_color_right = sanitize_hexcolor(new_eye_color)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
-				amazed_human.update_body()
-=======
 	var/new_hair_color = input(user, "Choose your hair color", "Hair Color", user.hair_color) as color|null
 
 	if(new_hair_color)
@@ -459,7 +336,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 			user.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
 			user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 	user.update_body_parts()
->>>>>>> c4ac48f3826 (Refactored Mirrors (#77842))
+	user.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT ADDITION - Mirrors are no longer scared of colored ears
 
 /obj/structure/mirror/magic/lesser/Initialize(mapload)
 	// Roundstart species don't have a flag, so it has to be set on Initialize.
