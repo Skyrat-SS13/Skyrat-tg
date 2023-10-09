@@ -1,0 +1,5 @@
+/datum/opposing_force_equipment/bomb_chemical
+	category = OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM
+
+/datum/opposing_force_equipment/bomb_payload
+	category = OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD
