@@ -4,6 +4,7 @@
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 #define FABRICATOR_SUBCATEGORY_ATMOS "/Atmospherics"
 #define FABRICATOR_SUBCATEGORY_FLUIDS "/Liquids"
+#define FABRICATOR_SUBCATEGORY_HYDRO "/Hydroponics"
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
@@ -125,6 +126,26 @@
 	)
 	construction_time = 10 SECONDS
 
+// Plumbable chem machine that makes nothing but water
+
+/datum/design/organic_printer
+	name = "Organic Materials Printer"
+	id = "organic_printer"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5.5,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/biogenerator/organic_printer
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
+	)
+	construction_time = 45 SECONDS
+
 #undef FABRICATOR_CATEGORY_APPLIANCES
 #undef FABRICATOR_SUBCATEGORY_POWER
 #undef FABRICATOR_SUBCATEGORY_ATMOS
+#undef FABRICATOR_SUBCATEGORY_FLUIDS
+#undef FABRICATOR_SUBCATEGORY_HYDRO
