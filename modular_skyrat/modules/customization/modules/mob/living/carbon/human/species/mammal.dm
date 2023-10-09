@@ -41,7 +41,8 @@
 	toxic_foodtypes = TOXIC
 
 
-/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/mammal/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/third_color
@@ -75,9 +76,10 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = third_color
+	return features
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"

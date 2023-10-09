@@ -37,7 +37,8 @@
 	disliked_foodtypes = CLOTH
 
 
-/datum/species/tajaran/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/tajaran/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -58,9 +59,10 @@
 		if(5)
 			main_color = "#DDCC99"
 			second_color = "#DDCCAA"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/tajaran/get_random_body_markings(list/passed_features)
 	var/name = pick("Tajaran", "Floof", "Floofer")

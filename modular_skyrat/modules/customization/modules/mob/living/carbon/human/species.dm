@@ -75,7 +75,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	always_customizable = TRUE
 
 /datum/species/randomize_features(mob/living/carbon/human/human_mob)
-	return
+	var/list/features = ..()
+	return features
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()

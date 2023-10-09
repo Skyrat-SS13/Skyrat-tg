@@ -53,7 +53,7 @@
 
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
-	features["wings"] = pick(GLOB.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(GLOB.moth_markings_list)
+	features["moth_markings"] = pick(GLOB.moth_wings_list) // SKYRAT EDIT CHANGE - ORIGINAL: features["moth_markings"] = pick(GLOB.moth_markings_list)
 	return features
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/human)
