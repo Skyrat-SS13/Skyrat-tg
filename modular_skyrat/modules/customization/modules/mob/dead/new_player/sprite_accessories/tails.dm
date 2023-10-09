@@ -309,11 +309,6 @@
 	name = "Shade (Striped)"
 	icon_state = "shadekinlongstriped_large"
 
-/datum/sprite_accessory/tails/mammal/wagging/big/longfluff
-	name = "Fluffy (Long)"
-	icon_state = "longfluff_large"
-	color_src = USE_MATRIXED_COLORS
-
 /datum/sprite_accessory/tails/mammal/wagging/big/ringtail
 	name = "Ring Tail (Long)"
 	icon_state = "bigring_large"
