@@ -134,8 +134,6 @@
 		return FALSE
 	var/mob/living/carbon/human/human_occupant = occupant
 
-	// Allows unconscious people to reject non-consensual stuff, defaults to false
-
 	var/failure = FALSE
 	var/failure_text
 
