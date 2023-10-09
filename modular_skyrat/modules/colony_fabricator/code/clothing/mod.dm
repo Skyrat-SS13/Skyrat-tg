@@ -24,7 +24,23 @@
 		/obj/item/mod/module/springlock/contractor/no_complexity,
 		/obj/item/mod/module/plate_compression/permanent,
 	)
-	allowed_suit_storage = GLOB.colonist_suit_allowed
+	allowed_suit_storage = list(
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/flashlight,
+		/obj/item/gun,
+		/obj/item/melee,
+		/obj/item/tank/internals,
+		/obj/item/storage/belt/holster,
+		/obj/item/construction,
+		/obj/item/fireaxe,
+		/obj/item/pipe_dispenser,
+		/obj/item/storage/bag,
+		/obj/item/pickaxe,
+		/obj/item/resonator,
+		/obj/item/t_scanner,
+		/obj/item/analyzer,
+	)
 	skins = list(
 		"colonist" = list(
 			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/colony_fabricator/icons/modsuits/mod.dmi',
