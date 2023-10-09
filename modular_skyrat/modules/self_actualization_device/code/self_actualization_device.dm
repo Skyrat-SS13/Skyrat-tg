@@ -139,7 +139,7 @@
 
 	if (!isnull(human_occupant.ckey) && isnull(human_occupant.client)) // player mob, currently disconnected
 		failure = TRUE
-		failure_text = "ERROR: Treatment illicited no response from occupant genes. Subject may be suffering from Sudden Sleep Disorder."
+		failure_text = "ERROR: Treatment elicited no response from occupant genes. Subject may be suffering from Sudden Sleep Disorder."
 	else if (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you, resetting your body to its default state (in character preferences). Do you consent?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) != "Yes")
 		failure = TRUE // defaults to rejecting it unless specified otherwise
 		failure_text = "ERROR: Occupant genes have willfully rejected the procedure. You may try again if you think this was an error."
