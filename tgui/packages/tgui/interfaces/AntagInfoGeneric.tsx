@@ -67,7 +67,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              "- The Medical department: is aware of Abductors, and their habit for replacing organs, once they're confirmed, medical should be on the prowl for people behaving weirdly, or else-wise, vanishing for periods of time--essentially they know everything science knows."
+              "- The Medical department: is aware of Abductors, and their habit for replacing organs, once they're confirmed, medical should be on the prowl for people behaving weirdly, or else-wise, vanishing for periods of time; essentially they know everything science knows."
             }
           </Stack.Item>
           <Stack.Item>
@@ -77,7 +77,7 @@ const Rules = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             {
-              "- Everyone knows that abductors are bad-news-bears, have a bad habit of appearing where you don't want to be, and elsewise, know it's a good habit to disable your cameras if they're about, because they have a funny habit of tapping into them."
+              "- Everyone knows that Abductors are bad-news-bearers, have a bad habit of appearing where you don't want to be, and elsewise, know it's a good habit to disable your cameras if they're about, because they have a funny habit of tapping into them."
             }
           </Stack.Item>
         </Stack>
@@ -89,7 +89,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it, regardless of if you can afford a bomb or not, and stick to your goal of kidnapping."
+              "- You are bound to the same rules as other antags; that means you shouldn't just decide to blow up the SM because you feel like it—regardless of if you can afford a bomb or not—and stick to your goal of kidnapping."
             }
           </Stack.Item>
           <Stack.Item>
@@ -207,7 +207,7 @@ const Rules = (props, context) => {
           <Stack.Item bold>Metaprotections:</Stack.Item>
           <Stack.Item>
             {
-              'The Curator and Chaplain both have complete knowledge of what you are and what you’re capable of, and just as well, the Chaplain can, will, and should hunt you down. Everyone at the very least can know that the ashes left behind by the Revenant should be scattered to dismiss it. Aside from scattering ashes, however, the Curator and Chaplain--as well as CC--are the only people who know a Revenant’s weaknesses… besides just shooting them.'
+              'The Curator and Chaplain both have complete knowledge of what you are and what you’re capable of, and just as well, the Chaplain can, will, and should hunt you down. Everyone at the very least can know that the ashes left behind by the Revenant should be scattered to dismiss it. Aside from scattering ashes, however, the Curator and Chaplain—as well as CC—are the only people who know a Revenant’s weaknesses (besides just shooting them).'
             }
           </Stack.Item>
         </Stack>
