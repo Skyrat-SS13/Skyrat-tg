@@ -15,14 +15,7 @@
 	/// Reagents that should be added to the result
 	var/list/added_reagents
 
-<<<<<<< HEAD
-	/// What type of pollutant we spread around as we are grilleed, can be none  // SKYRAT EDIT ADDITION
-	var/pollutant_type // SKYRAT EDIT ADDITION
-
-/datum/component/grillable/Initialize(cook_result, required_cook_time, positive_result, use_large_steam_sprite, pollutant_type) //SKYRAT EDIT CHANGE
-=======
 /datum/component/grillable/Initialize(cook_result, required_cook_time, positive_result, use_large_steam_sprite, list/added_reagents)
->>>>>>> a6f52781d5d (Warm donk-pockets once again have omnizine in them (#78815))
 	. = ..()
 	if(!isitem(parent)) //Only items support grilling at the moment
 		return COMPONENT_INCOMPATIBLE
@@ -31,11 +24,7 @@
 	src.required_cook_time = required_cook_time
 	src.positive_result = positive_result
 	src.use_large_steam_sprite = use_large_steam_sprite
-<<<<<<< HEAD
-	src.pollutant_type = pollutant_type //SKYRAT EDIT ADDITION
-=======
 	src.added_reagents = added_reagents
->>>>>>> a6f52781d5d (Warm donk-pockets once again have omnizine in them (#78815))
 
 /datum/component/grillable/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_GRILL_PLACED, PROC_REF(on_grill_placed))
