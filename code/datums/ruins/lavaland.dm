@@ -53,7 +53,7 @@
 	Probably best to stay clear."
 	prefix = "_maps/RandomRuins/LavaRuins/skyrat/" // SKYRAT ADDITION
 	suffix = "lavaland_surface_ash_walker1_skyrat.dmm" // SKYRAT EDIT - ORIGINAL: lavaland_surface_ash_walker1.dmm
-	always_place = TRUE //SKYRAT EDIT CHANGE
+	cost = 1000 //SKYRAT EDIT: Original: 20
 	allow_duplicates = FALSE
 //SKYRAT EDIT REMOVAL BEGIN - MAPPING
 /*

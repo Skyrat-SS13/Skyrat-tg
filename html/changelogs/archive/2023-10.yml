@@ -1,0 +1,370 @@
+2023-10-01:
+  Hatterhat:
+  - balance: Bullets have had their base type's wound bonus reduced back to 0, down
+      from 20, because wounds are actually quite punishing. Funnily enough, most bullets
+      already have modified wound bonuses - except c9mm, c10mm, and most incendiaries,
+      so this probably doesn't change much.
+  - balance: .50 (used in the snipers and renamed to .416 or whatever) is now back
+      to TG balance standards. Knockdown on hit, 60 instead of 110 damage, etc. etc.
+  - bugfix: .50 Soporific was removed because disruptor ammo was right there and nobody
+      realized it existed.
+  - bugfix: After review of a missing equipment complaint, Nanotrasen remembered to
+      pay Lopland's quartermasters to put the customary flashbang and teargas grenade
+      boxes into the Void Raptor's armory.
+  Melbert:
+  - qol: Examine blocked out roundstart / latejoin job information.
+  - qol: Captain gets a little bit more information about how their radio works roundstart.
+  - bugfix: Fixed roundstart players not getting radio information.
+  Paxilmaniac:
+  - image: The buttondown shirts (underwear) have been updated with a better look
+      and more contrasted palette
+  SkyratBot:
+  - rscadd: A new export has arrived in the imports section, the Galactic Materials
+      Market! You can use this to buy and sell minerals for profit or cost, as well
+      as stock your station when you don't have any miners.
+  - rscadd: Insert sheets of minerals into the Galactic Materials Market to convert
+      them into a stock block, allowing you to lock in your price for 5 minutes. Wait
+      too long and it'll be subject to market value again!
+  - rscadd: Minerals can be bought on the market either using the station's cargo
+      budget by cargo crew, or privately by everyone else.
+  - rscdel: Any material stacks that can be bought and sold on the market before have
+      been removed from the cargo catalog.
+  - rscadd: Adds Bitrunning to supply department- a semi-offstation role that rewards
+      teamwork.
+  - rscadd: Adds new machines to complement the job- net pod, quantum server, quantum
+      consoles, and the nexacache vendor.
+  - rscadd: Adds several new maps which can be loaded and unloaded at will.
+  - rscadd: Some flair for the new bitrunning vendor.
+  - rscadd: Adds a new antagonist for the virtual domain only. Short lived ghost role
+      that fights bitrunners.
+  - rscdel: Removes the BEPIS machine, moves its tech into the Bitrunning vendor.
+  - bugfix: Fixes missing baseturfs and clowns in mining planet VDOM..
+  - qol: Font settings in the chat panel applies to all text now.
+  - image: new chaplain outfit
+  - bugfix: Blob spores will respond to rallies more reliably (it won't runtime every
+      time they try and pathfind).
+  - bugfix: Blobbernaut pain animation overlays should align with the direction the
+      mob is facing instead of always facing South
+  - refactor: Blob spores, zombies, and blobbernauts now all use the basic mob framework.
+      They should work the same, but please report any issues.
+  - bugfix: Added warden to list of default required enemies for rulesets.
+  - bugfix: Blob Zombies and Blobbernauts have had their attack speed restored to
+      its original value
+  - refactor: Supermatter Spiders have been refactored into basic mobs, on the extremely
+      off chance you spot one and also notice any weird bugs regarding it, please
+      report it.
+  - balance: There are now 3 roundstart cyborg job slots open by default.
+  - rscadd: Quantum servers now talk over supply channel when they're done cooling
+      off. Go outside!
+  - bugfix: You can no longer use dragon swoop to bypass cordons.
+  - bugfix: Netpod brain damage is now properly reduced upon server upgrades.
+  - bugfix: Fixed an bug where swapping bodies in vdom prevented you from disconnecting.
+  - bugfix: Fixed a bug where a quantum server could get locked out of loading new
+      domains.
+  - bugfix: Changed quantum console UI to display "no bandwidth" rather than "none"
+  - bugfix: Actually fixed the hooked item exploit.
+  - rscadd: Heretic Rebalance
+  - balance: Researching the Main Knowledge paths that unlock Side Paths will grant
+      one Side Point that can be used only on those side paths. You can still spend
+      normal knowledge points on them if you wish.
+  - balance: Rune drawing time has been reduced from 30->20 seconds. Codex drawing
+      time has been reduced from 15->8.
+  - balance: 'Codex Cicatrix is now a roundstart knowledge, works as an amber focus
+      when held in-hand and opened, and has had its recipe changed to: 1 of any non-standard
+      pen (literally anything that isn''t the base pen), any book, and either animal
+      hide OR a corpse, any kind.'
+  - code_imp: Added support for using a list inside ritual requirements and a special
+      'snowflake check' rituals can utilize.
+  - balance: The first non-path knowledge, the Mansus Hand Mark, has had its cost
+      reduced from 2->1 points.
+  - bugfix: Aloe and other baked foods that don't have reagents can be baked again
+      without turning to ash
+  Vekter:
+  - bugfix: Fixes the missing grinder in Birdshot's Virology department
+  jjpark-kb:
+  - bugfix: the ashwalker tendril will allow you to respawn again (the tendril blessing)
+  - bugfix: the round end report will accurately report ashwalker sacrifices
+  nikothedude:
+  - code_imp: Gauze removal is now handled by the gauze's destroy instead of seep_gauze
+  ninjanomnom:
+  - rscdel: An easter egg plushie that was spawning where it shouldn't has been brought
+      back home.
+  - rscadd: The secure closet can now spawn live gibtonite, enjoy your free bomb.
+2023-10-02:
+  SkyratBot:
+  - balance: Sci now has access to the materials & canisters section in their departmental
+      order console
+  - rscadd: Expanded the fishing portal generator. It now comes with several portal
+      options that can be unlocked by performing fish scanning experiments, which
+      also award a modest amount of techweb points.
+  - balance: The fishing portal generator is now buildable and no longer orderable.
+      The board can be printed from cargo, service and science lathes.
+  - balance: Advanced fishing tech is no longer a BEPIS design. It now requires the
+      base fish scanning experiment and 2000 points to be unlocked.
+  - rscadd: The advanced fishing rod now comes with an incorporated experiscanner
+      specific for fish scanning.
+  - rscadd: Added a new skillchip that may change the icon of the "fish" shown in
+      the minigame UI to less generic ones. Reaching master level in fishing also
+      does that.
+  - qol: The experiment handler UI no longer shows unselectable experiments.
+  - bugfix: Security officers can now download the crew manifest PDA app that they
+      start with.
+  - rscadd: Wizards who complete the grand ritual can now gift everyone with eternal
+      life
+  distributivgesetz:
+  - bugfix: Font scaling in TGUI chat has been reverted to its original implementation.
+  softcerv:
+  - rscadd: Adds the mini-soulcatcher, a more lightweight soulcatcher that can be
+      attached to objects
+  - rscadd: Adds in the RSD brain interface, an item that allows for soulcatcher souls,
+      that died within a round and were scanned, to be transferred to a new brain.
+  - rscadd: Adds in the NIFSoft Scryer, a NIFSoft that gives the user a Scryer they
+      can use to communicate with other Scryer users.
+2023-10-03:
+  SkyratBot:
+  - bugfix: fixed misplaced door on syndicate listening post
+  - rscadd: adds boxes of bandages, a quick healing item
+  - bugfix: Spiders, Morphs, Fire Sharks, and Regal Rats no longer have a reduced
+      click speed.
+  - image: Railings have had a visual update.
+  projectkepler-ru:
+  - balance: reverted the nerf on the X-01
+  softcerv:
+  - rscadd: Adds in Purpura Eye, a NIFSoft that allows for the user to hypnotize others.
+  vinylspiders:
+  - bugfix: the pollution system will no longer try (and fail) to pollute a turf from
+      nullspace
+2023-10-04:
+  Coded by Jacquerel, Sprited by Dalmationer:
+  - rscadd: Added tongs to the kitchen, which you can use to manipulate food from
+      further away
+  Fazzie:
+  - rscadd: Added a budget solar crate to the derelict teleporter room
+  - rscadd: Added a solar panel control to the north derelict solar
+  - qol: The derelict's AI coridoor is now shorter and prettier
+  - rscadd: A lot of new content has been added to the beach away mission
+  - qol: It also looks substantially better, too!
+  Motho:
+  - bugfix: An anonymous visitor to the NSV Void Raptor has turned in security's biosuit
+      to the lost and found. Security officers everywhere rejoice.
+  Paxilmaniac:
+  - rscadd: A significantly smaller selection of new SolFed weapons has taken the
+      place of the now missing Armadyne selection.
+  - rscdel: So basically, all of Armadyne is gone.
+  - qol: A large number of weapons now use singular interchangeable magazine types,
+      rather than having seven different 9mm magazines to do the same thing
+  - balance: Any weapon that was replaced is going to have different stats from what
+      they used to be, numbers subject to change
+  - sound: Several new firing sounds from TGMC for the new weapons
+  - image: Whole collection of new ammo, gun, case, and so on sprites by myself
+  - image: Gun case worn on the back sprites done by Zydras
+  - code_imp: Where applicable, containers spawning gun stuff use generate_items_inside,
+      which is much neater than spamming new x(src)
+  SkyratBot:
+  - bugfix: The Syndicate have fired their previous construction company after poor
+      results in recent outposts.
+  - qol: Departmental order consoles now alert their department via radio when their
+      cooldown expires
+  - bugfix: Fix butchered monkeys to transfer reagents and diseases to meat
+  - bugfix: Fix organs having no DNA and become bloody when violently removed.
+  - refactor: Raw Prophets now use the basic mob framework. Please report any unusual
+      behaviour.
+  - bugfix: Cutting open a hand-pressed paper bundle no longer deletes all of the
+      paper.
+  - balance: Kudzu will now be destroyed by adverse weather.
+  - balance: Kudzu will no longer spread over holes.
+  - refactor: fixed many instances of updatehealth() either being called needlessly
+      or not at all within on_mob_life() and in various other parts of the code
+  - refactor: damage procs now return useful information--the actual net change in
+      damage on the mob. added a unit test for this
+  - bugfix: Some icons for selecting character preferences are no longer scaled incorrectly.
+  ninjanomnom:
+  - admin: Appearance vars in VV now display instead of being left blank
+2023-10-05:
+  FIoppie:
+  - sound: '*flap now makes a fluttering noise for moth wings'
+  - sound: Moths now have a death sound
+  - qol: '*tremble emote now is just "trembles!" instead of "trembles in fear!"'
+  LT3:
+  - image: Added colourable arm and leg wraps
+  Melbert:
+  - qol: Moved a lot of maintenance spawnpoints out of non-maintenance rooms. Some
+      antags (paradox clone, fugitives, nightmares, spiders) are now less likely to
+      spawn in obvious places like the morgue, tech storage, or dorms rooms.
+  Motho:
+  - image: Sector 13's station air alarms and fire alarms have been updated to be
+      more in line with other frontier station models.
+  SkyratBot:
+  - admin: Admins can turn off dynamic rulesets (or force them on despite not meeting
+      the qualification criteria) on a per-round basis.
+  - rscadd: The funds the syndicate have been saving by restricting galley access
+      has been suddenly funneled into a singular mosaic pattern in the experiments
+      wing.
+  - balance: CQC legsweeps now cause knockdown instead of paralysis.
+  - balance: CQC kicks now knockout a target on the floor for ten seconds if they
+      reach stam crit. Helmet protection shortens the knockout length.
+  - bugfix: Your heart will no longer be deleted if an admin heals you while you have
+      corazargh in your system.
+  - refactor: The cursed heart has been streamlined a bit, and now gives you a visual
+      cooldown for when you can beat your heart again.
+  Wallem:
+  - rscadd: Adds The Hand of Midas, an ancient Egyptian matchlock pistol.
+  honkpocket:
+  - bugfix: Extra magazines for all the Foam Force guns are now purchasable from cargo
+      imports
+  - rscadd: The Foam Force dart collector MOD modules are now purchasable from cargo
+      imports
+  - sound: added a unique racking sfx for the sol 'Renoster' shotgun
+  softcerv:
+  - qol: NIFSofts now use the same TGUI as their parent NIF.
+  tf-4:
+  - bugfix: Fixed some weirdness with mould mob attacks.
+  - qol: Mold mobs delete themselves on death.
+2023-10-06:
+  LT3:
+  - image: Job icon for departmental guards, DS2 and other SR specific jobs are properly
+      aligned
+  Majkl-J:
+  - bugfix: Table to the cafe food processor
+  RatFromTheJungle:
+  - balance: Interdyne now spawns with Sidano SMG's, instead of .50 snipers
+  - bugfix: you can now actually wear the 'LIZARED' top, yippie!
+  SkyratBot:
+  - bugfix: The Galactic Materials Market now offers things for sale as it should.
+  - rscadd: Added blackout, happens when you drink...ALOT
+  - bugfix: plumbing reaction chamber now balances the ph of it's solution correctly
+      to the best of it's ability so no guarantees
+  - code_imp: converted plumbing reaction chamber & mixing chamber UI files to Typescript
+  - refactor: plumbing mixing chamber now also accepts an TGUI input list to input
+      it's chemicals
+  - image: We have received a new shipment of IDs, as the old ones were found out
+      to be haunted.
+  - image: Laser tag red team ID has received a massive nerf
+  - image: Station budget cards have gotten a facelift
+  - image: Emags and Doorjacks
+  - bugfix: Numbered prisoner IDs will now be legible
+  Wallem:
+  - rscadd: Buffs the Active Sonar module with a radial scan, and makes the power
+      costs more in-line with other modules.
+  softcerv:
+  - bugfix: the ghost role NIF boxes now contain the Purpura Eye NIFSoft
+  vinylspiders:
+  - bugfix: fixes gender shaping and height offsets on underwear
+  - bugfix: female gender shaping now works with digi jumpsuits
+  - bugfix: fixed rainbow jumpsuit digi sprite
+2023-10-07:
+  GoldenAlpharex:
+  - bugfix: The round end report will no longer expose people's ckeys for the achievements
+      they obtained through the round, nor when they're contractor support agents.
+  LT3:
+  - bugfix: Adjusted Void Raptor shutters and firelocks in the pharmacy, hallway and
+      HoP line
+  - balance: Hypovial capacity now matches bottle capacity
+  - bugfix: Broken and placeholder hypovials can no longer be printed in the ChemMaster
+  Melbert:
+  - qol: AI, cyborg, and PAI camera (photo taking) behavior now uses balloon alerts
+      and has sound effects associated
+  - refactor: Refactored AI, cyborg, and PAI camera (photo taking) code
+  - bugfix: fixed being unable to print photos as a cyborg when below 50% toner, even
+      though photos only take 5%
+  SkyratBot:
+  - bugfix: Engineering borgs can no longer grab and drop their own iron/glass sheet
+      module.
+  - bugfix: It is no longer possible to chasm yourself on the geode. Again.
+  - rscadd: Fish analyzers can now be used to perform fish scanning experiments.
+  - balance: They can now be singularly bought as a goodie pack for 125 cr each, instead
+      of a crate of three for 500 cr.
+  - bugfix: Borgs will no longer become permanently upside-down if tipped over by
+      multiple people at the same time.
+  - balance: Despite earlier reports suggesting that the famous lethality of the Regal
+      Condor was largely a myth, there has been rumors that the gun has once again
+      started to display its true killing potential on any station that it 'manifests'.
+  - bugfix: The AI can no longer turn you off if you shapeshift into a robot.
+  - bugfix: Blood once again appears as small drops instead of splatters during minor
+      bleeding.
+  - bugfix: you are now made a ghost faster if you get gibbed
+  - bugfix: fixed bad food not having bad food reagents
+  - rscadd: The laser carbine, a weak but fully automatic sidegrade to the normal
+      laser gun, can now be ordered from cargo.
+  - bugfix: Adminheal will now properly clear negative mutations as intended.
+  - bugfix: Ice whelps can now use spells given to them by admins, and people who
+      have polymorphed into ice whelps can now polymorph back to normal.
+  - bugfix: Fixed silent catwalks.
+  - rscadd: Fake moustaches are now poorly slapped on top of what you're wearing
+  jjpark-kb:
+  - rscadd: ashwalker nest is now in the NE corner of lavaland
+  neocloudy:
+  - bugfix: MetaStation disposal pipes from Cargo to Disposals/the rest of the station
+      are working again.
+  nikothedude:
+  - rscadd: Synthetic wounds! Blunt, Pierce, Slash, Burn, Muscle. See PR 23733 for
+      more information
+  - rscadd: Robodrobe now has 2 chilled hercuri sprays for treating synthetic burn
+      wounds
+  - rscadd: Robodrobe now has 2 pairs of black gloves to let robotics painlessly meld
+      T3 synthetic blunt wounds
+  - balance: 'Synthetic damage multiplier: 1.3 -> 1.0'
+  - rscadd: '3 new cargo packs to science: 2 chilled hercuri, a synth trauma kit,
+      and synth medicine'
+  - balance: Quadruple amputee can now be picked with frail
+  - rscadd: Interdyne/DS2 now have advanced synthetic trauma kits in their medbays
+2023-10-08:
+  LT3:
+  - image: Text alignment on ID cards slightly adjusted
+  Melbert:
+  - bugfix: Fixed an error from reading an ID card closely when you can't read
+  - config: Adds a config option for player respawning that enables respawns, but
+      forces you pick a new character.
+  - config: '"NORESPAWN" has been replaced with "ALLOW_RESPAWN 0". Unlimited respawns
+      is "ALLOW_RESPAWN 1" and character limited respawns is "ALLOW_RESPAWN 2".'
+  SkyratBot:
+  - bugfix: Fix bodies now lose fire stacks while husked.
+  - bugfix: Flesh Worms will move smoothly more consistently.
+  - balance: You can now remove and replace power cells from PDAs (with screwdriver).
+  - balance: PDAs now drain their power cells harder, and also take into account active
+      programs & their flashlight being on.
+  - balance: PDAs running out of charge now turn their flashlights off.
+  - qol: allows janitor keys to be stored in janitor wintercoats and janibets
+  - bugfix: PDA flashlights wont cause the cell to constantly drain faster and faster.
+  - bugfix: People who are irremediably bald can still grow a beard with barber aid.
+  - qol: Added slapcrafting to unloaded tech shells, click on them with ingredients
+      to quickly craft your shell.
+  - qol: gives empty fireaxe and mech removal crowbars cabinets directional helpers
+  - bugfix: fixed a PDA's messenger TGUI issue with handling of destroyed recipients.
+  - qol: '"prison" intercoms have been renamed to "receive-only" intercoms to make
+      it clearer they cannot transmit.'
+  - refactor: Rust Walkers, Ash Spirits, Flesh Stalkers, and The Maid in the Mirror
+      now use the basic mob framework. Please report any unusual behaviour.
+  - spellcheck: '"offical" has been officially corrected to "official" in several
+      official locations.'
+  - refactor: Sloths are now basic mobs, however their overall sluggish behavior shouldn't
+      have changed much- let us know if anything is broken.
+  - refactor: Refactored goats into basic mobs! Not much should have changed beyond
+      their endless desire to retaliate should you attack them, they're still just
+      as good as chomping away plant life as ever.
+  - qol: Miners can now tag monster spawners (necropolis tendrils, animal dens, demonic
+      portals, and netherworld links) by using their mining scanner on it, which updates
+      their GPS tag (and/or gives them one) to give it a numerical designation and
+      a short identifier for what it's spawning.
+  oranges:
+  - rscadd: Dogs now react to centrist grillers more realistically
+2023-10-09:
+  Nerev4r:
+  - image: The crew's knowledge of origami and papercrafting has been extended to
+      making paper masks. Find them in the loadout, or just make them!
+  SkyratBot:
+  - qol: Supermatter shards can now be fastened with right click too. Now, just don't
+      forget to use a wrench.
+  - bugfix: Slaughter/Laughter demon melee cooldowns have been fixed and now attack
+      at the regular player character attack speed
+  - balance: The chemical gun and PKA pressure mod traitor items are now purchasable
+      within 15 minutes of the round starting rather than 20/30.
+  - balance: All preset bundle kits, the cash briefcase, the makarov, the revolver,
+      the throwing weapon kit, c4, the detomatix cartridge, the large EMP bomb, gorillas,
+      advanced mimery tome, pie cannon, clown car, His Grace, and the origami kit
+      are now all purchasable at the start of a round.
+  - refactor: ice demons have been refactored into basic mbos. please report any bugs
+  - rscadd: ice demons now have a unique trophy
+  - bugfix: Spider types get properly checked again.
+  nikothedude:
+  - bugfix: Borers work now

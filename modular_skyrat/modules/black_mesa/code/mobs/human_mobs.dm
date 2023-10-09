@@ -162,7 +162,7 @@
 	icon_living = "security_guard_ranged"
 	casingtype = /obj/item/ammo_casing/c9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/sol)
 	rapid_melee = 1
 
 /mob/living/simple_animal/hostile/blackmesa/blackops

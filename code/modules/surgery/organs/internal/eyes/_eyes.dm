@@ -187,7 +187,7 @@
 /obj/item/organ/internal/eyes/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag)
 	. = ..()
 	if(!owner)
-		return
+		return FALSE
 	apply_damaged_eye_effects()
 
 /// Applies effects to our owner based on how damaged our eyes are
@@ -318,6 +318,7 @@
 	icon_state = "cybernetic_eyeballs"
 	desc = "Your vision is augmented."
 	organ_flags = ORGAN_ROBOTIC
+	failing_desc = "seems to be broken."
 
 /obj/item/organ/internal/eyes/robotic/emp_act(severity)
 	. = ..()
@@ -656,7 +657,7 @@
 
 	if(QDELETED(eye_owner) || !ishuman(eye_owner)) //Other carbon mobs don't have eye color.
 		return
-	
+
 	if(!eye.on)
 		eye_icon_state = initial(eye_icon_state)
 		overlay_ignore_lighting = FALSE
