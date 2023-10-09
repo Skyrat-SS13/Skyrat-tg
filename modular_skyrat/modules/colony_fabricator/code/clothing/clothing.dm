@@ -1,21 +1,3 @@
-GLOBAL_LIST_INIT(colonist_suit_allowed, list(
-	/obj/item/ammo_box,
-	/obj/item/ammo_casing,
-	/obj/item/flashlight,
-	/obj/item/gun,
-	/obj/item/melee,
-	/obj/item/tank/internals,
-	/obj/item/storage/belt/holster,
-	/obj/item/construction,
-	/obj/item/fireaxe,
-	/obj/item/pipe_dispenser,
-	/obj/item/storage/bag,
-	/obj/item/pickaxe,
-	/obj/item/resonator,
-	/obj/item/t_scanner,
-	/obj/item/analyzer,
-))
-
 // Jumpsuit
 
 /obj/item/clothing/under/frontier_colonist
