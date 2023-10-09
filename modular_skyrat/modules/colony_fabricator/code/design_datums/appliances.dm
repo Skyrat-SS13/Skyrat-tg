@@ -22,6 +22,7 @@
 		"water_synth",
 		"hydro_synth",
 		"organic_printer",
+		"global_positioning_beacon",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -129,7 +130,7 @@
 	)
 	construction_time = 10 SECONDS
 
-// Plumbable chem machine that makes nothing but water
+// Similar to a biogenerator, but with a unique selection of items
 
 /datum/design/organic_printer
 	name = "Organic Materials Printer"
@@ -146,6 +147,24 @@
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_HYDRO,
 	)
 	construction_time = 45 SECONDS
+
+// Large beacon to act as a GPS unit that's less portable
+
+/datum/design/global_positioning_beacon
+	name = "GPS Beacon"
+	id = "global_positioning_beacon"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/biogenerator/organic_printer
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 30 SECONDS
 
 #undef FABRICATOR_CATEGORY_APPLIANCES
 #undef FABRICATOR_SUBCATEGORY_POWER
