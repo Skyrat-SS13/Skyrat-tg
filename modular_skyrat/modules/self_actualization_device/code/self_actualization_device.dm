@@ -124,7 +124,7 @@
 
 	use_power(500)
 
-/// Ejects the occupant after asking them if they want to accept the rejuvination. If yes, they exit as their preferences character.
+/// Ejects the occupant after asking them if they want to accept the rejuvenation. If yes, they exit as their preferences character.
 /obj/machinery/self_actualization_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
@@ -133,11 +133,11 @@
 	if(!ishuman(occupant))
 		return FALSE
 
-	// Allows unconcious people to reject unconsentual stuff
+	// Allows unconscious people to reject non-consensual stuff
 	var/failure = (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you. Do your genes accept or reject this?", "Rejuvenate", list("Accept", "Reject"), timeout = 10 SECONDS) == "Reject")
 
 	if (failure)
-		say("ERROR: Occupant genes have rejected the procedure. Please try again later.")
+		say("ERROR: Occupant genes have willfully rejected the procedure. You may try again if you think this was an error.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg')
 	else
 		var/mob/living/carbon/human/patient = occupant
