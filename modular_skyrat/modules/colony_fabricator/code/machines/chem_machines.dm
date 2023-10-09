@@ -9,6 +9,10 @@
 		/datum/reagent/water,
 	)
 
+/obj/machinery/plumbing/synthesizer/water_synth/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
+
 /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
 	name = "hydroponics chemical synthesizer"
 	desc = "An infinitely useful device for those finding themselves in a frontier without a stable source of nutrients for crops. \
