@@ -407,15 +407,12 @@
 /obj/machinery/netpod/proc/on_domain_scrubbed(datum/source)
 	SIGNAL_HANDLER
 
-<<<<<<< HEAD
-=======
 	var/mob/living/current_avatar = avatar_ref?.resolve()
 	if(isnull(current_avatar))
 		return
 
 	QDEL_NULL(current_avatar)
 
->>>>>>> 235ebba7e0b (Bitrunning hotfix 3 (#78818))
 /// When the server is upgraded, drops brain damage a little
 /obj/machinery/netpod/proc/on_server_upgraded(datum/source, servo_rating)
 	SIGNAL_HANDLER
