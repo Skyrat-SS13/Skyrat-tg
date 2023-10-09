@@ -173,11 +173,34 @@ GLOBAL_LIST_INIT(colonist_suit_allowed, list(
 
 	armor_type = /datum/armor/colonist_hazard
 
+// Helmet (Is it a helmet? Questionable? I'm not sure what to call this thing)
+
+/obj/item/clothing/head/frontier_colonist_helmet
+	name = "frontier soft helmet"
+	desc = "A unusual piece of headwear somewhere between a proper helmet and a normal cap."
+
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing.dmi'
+	icon_state = "tanker"
+
+	worn_icon = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn.dmi'
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
+	worn_icon_state = "tanker"
+
+	inhand_icon_state = null
+
+	armor_type = /datum/armor/colonist_armor
+	resistance_flags = NONE
+
+	flags_inv = 0
+	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
+
 // Headset
 
 /obj/item/radio/headset/headset_frontier_colonist
 	name = "frontier radio headset"
-	desc = "A bulky headset that should hopefully survive exposure to the elements better than station headsets might."
+	desc = "A bulky headset that should hopefully survive exposure to the elements better than station headsets might. \
+		Has a built-in antenna allowing the headset to work independently of a communications network."
 
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing.dmi'
 	icon_state = "radio"
@@ -190,6 +213,8 @@ GLOBAL_LIST_INIT(colonist_suit_allowed, list(
 	inhand_icon_state = null
 
 	alternate_worn_layer = FACEMASK_LAYER + 0.5
+
+	subspace_transmission = FALSE
 
 /obj/item/radio/headset/headset_frontier_colonist/Initialize(mapload)
 	. = ..()

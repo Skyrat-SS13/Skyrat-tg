@@ -1,9 +1,5 @@
 // This file is going to be just all bitflag additions
 
-/datum/design/atmos_thermal/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/bounced_radio/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -25,10 +21,6 @@
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/welding_goggles/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/welding_mask/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 

@@ -91,7 +91,7 @@
 	)
 	construction_time = 30 SECONDS
 
-// CO2 cracker, portable machines that takes CO2 and turns it into oxygen
+// Plumbable chem machine that makes nothing but water
 
 /datum/design/water_synthesizer
 	name = "Water Synthesizer"
@@ -102,6 +102,23 @@
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/machinery/plumbing/synthesizer/water_synth
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_FLUIDS,
+	)
+	construction_time = 10 SECONDS
+
+// Plumbable chem machine that makes nothing but water
+
+/datum/design/hydro_synthesizer
+	name = "Hydroponics Chemical Synthesizer"
+	id = "hydro_synth"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_FLUIDS,

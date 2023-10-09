@@ -17,10 +17,13 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY
-	charge_drain = DEFAULT_CHARGE_DRAIN * 0.25
-	slowdown_inactive = 1
+	charge_drain = DEFAULT_CHARGE_DRAIN
+	slowdown_inactive = 0.5
 	slowdown_active = 0 // This suit has an irremovable compressed plates upgrade, which means you can't have storage modules. This seems fair to me.
-	inbuilt_modules = list(/obj/item/mod/module/springlock/contractor/no_complexity)
+	inbuilt_modules = list(
+		/obj/item/mod/module/springlock/contractor/no_complexity,
+		/obj/item/mod/module/plate_compression/permanent,
+	)
 	allowed_suit_storage = GLOB.colonist_suit_allowed
 	skins = list(
 		"colonist" = list(
@@ -57,7 +60,6 @@
 	applied_modules = list(
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/magboot,
-		/obj/item/mod/module/plate_compression,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/visor/meson,
@@ -70,3 +72,9 @@
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/thermal_regulator,
 	)
+
+// Plate compression module that cannot be removed
+
+/obj/item/mod/module/plate_compression/permanent
+	removable = FALSE
+	complexity = 0

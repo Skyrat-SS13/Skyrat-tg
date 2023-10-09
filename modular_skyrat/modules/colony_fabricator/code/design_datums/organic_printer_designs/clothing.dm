@@ -70,6 +70,17 @@
 		RND_CATEGORY_AKHTER_CLOTHING,
 	)
 
+/datum/design/frontier_tanker_helmet
+	name = "Frontier Soft Helmet"
+	id = "frontier_tanker_helmet"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 250)
+	build_path = /obj/item/clothing/head/frontier_colonist_helmet
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_AKHTER_CLOTHING,
+	)
+
 // Hats
 
 /datum/design/frontier_cap
