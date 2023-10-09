@@ -53,7 +53,7 @@
 	factor = list(
 		/datum/gas/carbon_dioxide = "1 mole CO2 is consumed",
 		/datum/gas/oxygen = "1 mole of O2 gets produced",
-		"Location" = "Can only happen on turfs with an active Electrolyzer.",
+		"Location" = "Can only happen on turfs with an active CO2 cracker.",
 	)
 
 /datum/electrolyzer_reaction/co2_cracking/react(turf/location, datum/gas_mixture/air_mixture, working_power)
