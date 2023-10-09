@@ -7,8 +7,8 @@
 /datum/opposing_force_equipment/clothing_sol
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_SOL
 
-/datum/opposing_force_equipment/clothing_akula
-	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_AKULA
+/datum/opposing_force_equipment/clothing_pirate
+	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_PIRATE
 
 /datum/opposing_force_equipment/clothing_magic
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_MAGIC
