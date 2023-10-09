@@ -80,7 +80,6 @@
 	flipped_table.icon_state = src.base_icon_state
 	var/new_dir = get_dir(user, flipped_table)
 	flipped_table.dir = new_dir
-
 	if(new_dir == NORTH)
 		flipped_table.layer = BELOW_MOB_LAYER
 	flipped_table.max_integrity = src.max_integrity
