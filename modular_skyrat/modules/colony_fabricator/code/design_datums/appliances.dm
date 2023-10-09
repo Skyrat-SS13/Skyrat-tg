@@ -3,6 +3,7 @@
 #define FABRICATOR_CATEGORY_APPLIANCES "/Appliances"
 #define FABRICATOR_SUBCATEGORY_POWER "/Power"
 #define FABRICATOR_SUBCATEGORY_ATMOS "/Atmospherics"
+#define FABRICATOR_SUBCATEGORY_FLUIDS "/Liquids"
 
 // Techweb node that shouldnt show up anywhere ever specifically for the fabricator to work with
 
@@ -89,6 +90,23 @@
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_ATMOS,
 	)
 	construction_time = 30 SECONDS
+
+// CO2 cracker, portable machines that takes CO2 and turns it into oxygen
+
+/datum/design/water_synthesizer
+	name = "Water Synthesizer"
+	id = "water_synth"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/plumbing/synthesizer/water_synth
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_FLUIDS,
+	)
+	construction_time = 10 SECONDS
 
 #undef FABRICATOR_CATEGORY_APPLIANCES
 #undef FABRICATOR_SUBCATEGORY_POWER

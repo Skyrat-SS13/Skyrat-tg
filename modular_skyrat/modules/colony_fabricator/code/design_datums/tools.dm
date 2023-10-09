@@ -177,10 +177,6 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/plumbing_rcd/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/plunger/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
