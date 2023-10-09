@@ -1,11 +1,3 @@
-/datum/design/board/electrolyzer/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/board/biogenerator/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/board/hydroponics/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -33,8 +25,3 @@
 /datum/design/board/range/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
-
-/datum/design/board/fax/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-

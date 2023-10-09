@@ -1,18 +1,10 @@
 // This file is going to be just all bitflag additions
 
-/datum/design/bounced_radio/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/radio_navigation_beacon/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/engine_goggles/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/magboots/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
@@ -57,10 +49,6 @@
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/diagnostic_hud/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/sticky_tape/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
