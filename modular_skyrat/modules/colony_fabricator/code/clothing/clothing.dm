@@ -217,7 +217,7 @@
 	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
 	worn_icon_state = "gloves"
 
-	greyscale_colors = "3a373e"
+	greyscale_colors = "#3a373e"
 	siemens_coefficient = 0
 
 	cold_protection = HANDS
