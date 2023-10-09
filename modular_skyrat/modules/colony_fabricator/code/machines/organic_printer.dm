@@ -1,9 +1,3 @@
-#define RND_CATEGORY_AKHTER_CLOTHING "Apparel"
-#define RND_CATEGORY_AKHTER_EQUIPMENT "Equipment"
-#define RND_CATEGORY_AKHTER_MEDICAL "Emergency Medical"
-#define RND_CATEGORY_AKHTER_RESOURCES "Resources"
-#define RND_CATEGORY_AKHTER_SEEDS "Synthesized Seeds"
-
 /obj/machinery/biogenerator/organic_printer
 	name = "organic materials printer"
 	desc = "An advanced machine seen in frontier outposts and colonies capable of turning organic plant matter into \

@@ -51,7 +51,7 @@
 	build_path = /obj/item/clothing/mask/gas/atmos/frontier_colonist
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_RESPIRATOR,
+		FABRICATOR_CATEGORY_WEARABLES + FABRICATOR_SUBCATEGORY_RESPIRATOR,
 	)
 	construction_time = 10 SECONDS
 
@@ -64,7 +64,7 @@
 	// This materials list is a slightly cheaper compilation of this modsuit's constituent parts
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 18,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 4
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 4,
 		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 5,
 		/datum/material/gold = SMALL_MATERIAL_AMOUNT * 5,
@@ -72,7 +72,7 @@
 	build_path = /obj/item/mod/control/pre_equipped/frontier_colonist
 	category = list(
 		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_FLATPACK_MACHINES + FABRICATOR_SUBCATEGORY_HAZARD_SUIT,
+		FABRICATOR_CATEGORY_WEARABLES + FABRICATOR_SUBCATEGORY_HAZARD_SUIT,
 	)
 	construction_time = 1 MINUTES
 
