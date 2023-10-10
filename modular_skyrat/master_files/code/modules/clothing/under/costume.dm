@@ -68,7 +68,6 @@
 	var/static/list/obj/item/clothing/suit/clothing_we_can_absorb = list(
 		/obj/item/clothing/suit/toggle/labcoat,
 	)
-	// TODO: make it so that its NOT nullspaced, and rather put in here, and just use signals to hook taking it out into drop_clothing or some shit
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/Destroy()
 	drop_clothing()
@@ -121,9 +120,11 @@
 		if (src in carbon_loc.get_all_worn_items())
 			balloon_alert(user, "take it off first!")
 			return FALSE
-	if (!isnull(clothing_to_absorb.atom_storage) && length(clothing_to_absorb.contents))
-		clothing_to_absorb.balloon_alert(user, "take things out first!") // put it on the insertee so we go "oh THIS has stuff in it"
-		return FALSE
+	if (!isnull(clothing_to_absorb.atom_storage))
+		var/atom/resolve_location = clothing_to_absorb.atom_storage.real_location.Resolve()
+		if (length(resolve_location?.contents))
+			clothing_to_absorb.balloon_alert(user, "take things out first!") // put it on the insertee so we go "oh THIS has stuff in it"
+			return FALSE
 
 	user.visible_message(span_notice("[user] starts putting [clothing_to_absorb] into [src]..."), span_notice("You start putting [clothing_to_absorb] into [src]..."))
 	if (!do_after(user, 3 SECONDS, src))
@@ -136,6 +137,7 @@
 	allowed = clothing_to_absorb.allowed
 	if (!isnull(clothing_to_absorb.atom_storage))
 		clone_storage(clothing_to_absorb.atom_storage)
+		atom_storage.set_real_location(clothing_to_absorb) // prevents the inserted item from showing up in storage
 
 	clothing_to_absorb.forceMove(src)
 	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
