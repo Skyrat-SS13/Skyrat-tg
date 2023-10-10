@@ -1,4 +1,4 @@
-// Standard tools
+// Standard tool overrides
 /datum/design/scalpel
 	construction_time = 1 SECONDS
 
@@ -72,7 +72,7 @@
 
 	return ..()
 
-// Advanced tools
+// Advanced tool overrides
 /datum/design/laserscalpel
 	construction_time = 1 SECONDS
 
@@ -109,7 +109,7 @@
 
 	return ..()
 
-// Alien tools
+// Alien tool overrides
 /datum/design/alienscalpel
 	construction_time = 1 SECONDS
 
