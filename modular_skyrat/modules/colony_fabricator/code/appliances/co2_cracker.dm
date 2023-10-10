@@ -49,14 +49,20 @@
 	desc = "Cracking of CO2 into breathable oxygen"
 	requirements = list(
 		/datum/gas/carbon_dioxide = MINIMUM_MOLE_COUNT,
-		"MIN_TEMP" = 30,
-		"MAX_TEMP" = 500,
 	)
 	factor = list(
 		/datum/gas/carbon_dioxide = "1 mole CO2 is consumed",
 		/datum/gas/oxygen = "1 mole of O2 gets produced",
 		"Location" = "Can only happen on turfs with an active CO2 cracker.",
 	)
+
+// We don't care about temperature for this, just if there's gas.
+/datum/electrolyzer_reaction/co2_cracking/reaction_check(datum/gas_mixture/air_mixture)
+	var/list/cached_gases = air_mixture.gases
+	for(var/id in requirements)
+		if(!cached_gases[id] || cached_gases[id][MOLES] < requirements[id])
+			return FALSE
+	return TRUE
 
 /datum/electrolyzer_reaction/co2_cracking/react(turf/location, datum/gas_mixture/air_mixture, working_power)
 	var/old_heat_capacity = air_mixture.heat_capacity()
