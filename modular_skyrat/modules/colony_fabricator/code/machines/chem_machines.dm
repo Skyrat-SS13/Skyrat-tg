@@ -46,8 +46,8 @@
 	anchored_tabletop_offset = 4
 	anchored = FALSE
 	circuit = null
-	powerefficiency = 0.25
-	recharge_amount = 20
+	powerefficiency = 0.5
+	recharge_amount = 50
 	show_ph = FALSE
 	base_reagent_purity = 0.5
 	// God's strongest coffee machine
@@ -70,7 +70,7 @@
 		/datum/reagent/consumable/nutraslop,
 	)
 	/// Since we don't have a board to take from, we use this to give the dispenser a cell on spawning
-	var/cell_we_spawn_with = /obj/item/stock_parts/cell/super/empty
+	var/cell_we_spawn_with = /obj/item/stock_parts/cell/crap
 
 /obj/machinery/chem_dispenser/frontier_appliance/Initialize(mapload)
 	. = ..()
@@ -83,11 +83,11 @@
 
 /obj/machinery/chem_dispenser/frontier_appliance/RefreshParts()
 	. = ..()
-	powerefficiency = 0.25
-	recharge_amount = 20
+	powerefficiency = 0.5
+	recharge_amount = 50
 
 /obj/machinery/chem_dispenser/frontier_appliance/default_deconstruction_crowbar()
 	return
 
 /obj/machinery/chem_dispenser/frontier_appliance/pre_charged
-	cell_we_spawn_with = /obj/item/stock_parts/cell/super
+	cell_we_spawn_with = /obj/item/stock_parts/cell/crap/empty
