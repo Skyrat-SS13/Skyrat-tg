@@ -89,8 +89,6 @@
 	icon_state = "jacket_med"
 	worn_icon_state = "jacket_med"
 
-	armor_type = /datum/armor/colonist_hazard
-
 // Flak Jacket
 
 /obj/item/clothing/suit/frontier_colonist_flak
@@ -153,8 +151,6 @@
 	soft_type = "cap_medical"
 	worn_icon_state = "cap_medical"
 
-	armor_type = /datum/armor/colonist_hazard
-
 // Helmet (Is it a helmet? Questionable? I'm not sure what to call this thing)
 
 /obj/item/clothing/head/frontier_colonist_helmet
@@ -200,7 +196,7 @@
 
 /obj/item/radio/headset/headset_frontier_colonist/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Gloves
 
