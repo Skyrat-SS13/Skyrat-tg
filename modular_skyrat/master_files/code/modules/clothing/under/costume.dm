@@ -109,7 +109,7 @@
 /// Deletes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
 	if (!isnull(absorbed_clothing_path))
-		to_chat(user, span_warning("[src] is already using [initial(absorbed_clothing_path.name)]!"))
+		balloon_alert(user, "already fitted!")
 		return FALSE
 
 	user.visible_message(span_notice("[user] starts putting [clothing_to_absorb] into [src]..."), span_notice("You start putting [clothing_to_absorb] into [src]..."))
