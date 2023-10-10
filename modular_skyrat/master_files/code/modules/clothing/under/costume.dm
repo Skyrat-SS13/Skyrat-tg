@@ -57,40 +57,43 @@
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator // special coat for niko
 	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material that feels quite pleasant to wear."
-	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgable in Tiziran politics or nobility, would be recognizable as the Kor'Yesh emblem, \
-	a relatively minor house of nobility within Tizira. \
+	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgable in Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
+	a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\
 	\n\
 	\n\
 	It has a strange structure, with many internal clasps, velcro straps, and attachment points. It looks like you could put some other article of clothing into it..."
-	/// The path of the article of clothing we have absorbed and are emulating the effects of. Nullable.
-	var/obj/item/clothing/suit/absorbed_clothing_path
+	/// The article of clothing we have absorbed and are emulating the effects of. Nullable.
+	var/obj/item/clothing/suit/absorbed_clothing
 	/// Any subtype of a typepath entered here will be insertable into the jacket.
 	var/static/list/obj/item/clothing/suit/clothing_we_can_absorb = list(
 		/obj/item/clothing/suit/toggle/labcoat,
 	)
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/Destroy()
-	absorbed_clothing_path = null
+	drop_clothing()
 
 	return ..()
+
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/examine(mob/user)
 	. = ..()
 
-	if (!isnull(absorbed_clothing_path))
-		. += "\nIt seems to have [initial(absorbed_clothing_path.name)] inside of it... you could try [span_notice("using it")] to remove the clothing!"
+	if (!isnull(absorbed_clothing))
+		. += "\nIt seems to have [absorbed_clothing] inside of it... you could try [span_notice("using it")] to remove the clothing!"
+
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/attack_self(mob/user, modifiers)
-	if (isnull(absorbed_clothing_path) || !isliving(user))
+	if (isnull(absorbed_clothing) || !isliving(user))
 		return ..()
 
 	var/mob/living/living_user = user
 
-	living_user.visible_message(span_notice("[living_user] starts removing [initial(absorbed_clothing_path.name)] from [src]..."), span_notice("You start removing [initial(absorbed_clothing_path.name)] from [src]..."))
+	living_user.visible_message(span_notice("[living_user] starts removing [absorbed_clothing] from [src]..."), span_notice("You start removing [absorbed_clothing] from [src]..."))
 	if (!do_after(living_user, 3 SECONDS, src))
 		return
-	living_user.visible_message(span_notice("[living_user] removes [initial(absorbed_clothing_path.name)] from [src]!"), span_notice("You remove [initial(absorbed_clothing_path.name)] from [src]!"))
+	living_user.visible_message(span_notice("[living_user] removes [absorbed_clothing] from [src]!"), span_notice("You remove [absorbed_clothing] from [src]!"))
 	drop_clothing(user)
+
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/attackby(obj/item/attacking_item, mob/user, params)
 	if (iscarbon(user))
@@ -106,9 +109,10 @@
 
 	return ..()
 
+
 /// Deletes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
-	if (!isnull(absorbed_clothing_path))
+	if (!isnull(absorbed_clothing))
 		balloon_alert(user, "already fitted!")
 		return FALSE
 
@@ -118,32 +122,49 @@
 	user.visible_message(span_notice("[user] puts [clothing_to_absorb] into [src]!"), span_notice("You put [clothing_to_absorb] into [src], applying its armor and storage to it!"))
 	playsound(user, clothing_to_absorb.drop_sound, 50, FALSE)
 
-	absorbed_clothing_path = clothing_to_absorb.type
+	absorbed_clothing = clothing_to_absorb
 	set_armor(clothing_to_absorb.get_armor())
 	allowed = clothing_to_absorb.allowed
-	if (clothing_to_absorb.atom_storage)
+	if (!isnull(clothing_to_absorb.atom_storage))
 		clone_storage(clothing_to_absorb.atom_storage)
 
-	qdel(clothing_to_absorb)
+	clothing_to_absorb.forceMove(src)
+	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
+
 
 /// Spawns a new instance of the clothing we absorbed earlier, and resets out armor, storage, and suit storage to the initial values.
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/drop_clothing(mob/target)
-	if (isnull(absorbed_clothing_path))
+	if (isnull(absorbed_clothing))
 		return FALSE
 
-	var/obj/item/clothing/suit/absorbed_clothing_instance = new absorbed_clothing_path(null)
 	if (iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		INVOKE_ASYNC(carbon_target, TYPE_PROC_REF(/mob/living/carbon, put_in_hands), absorbed_clothing_instance)
+		INVOKE_ASYNC(carbon_target, TYPE_PROC_REF(/mob/living/carbon, put_in_hands), absorbed_clothing)
 	else
-		absorbed_clothing_instance.loc = loc // put it on the ground
-	playsound(loc, absorbed_clothing_instance.drop_sound, 50, FALSE)
+		absorbed_clothing.forceMove(get_turf(src)) // put it on the ground
+	playsound(loc, absorbed_clothing.drop_sound, 50, FALSE)
 
-	absorbed_clothing_path = null
+	UnregisterSignal(absorbed_clothing, COMSIG_QDELETING)
+	absorbed_clothing = null
 
+	reset_variables()
+
+
+/// Signal handler proc that clears our ref to absorbed_clothing if it qdels.
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorbed_clothing_deleted(datum/signal_source)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(absorbed_clothing, COMSIG_QDELETING)
+	reset_variables()
+	absorbed_clothing = null
+
+
+/// Returns our absorbable variables to their initial states.
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/reset_variables()
 	set_armor(initial(armor))
 	allowed = initial(allowed)
-	atom_storage?.dump_content_at(get_turf(src))
+	if (!isnull(atom_storage))
+		INVOKE_ASYNC(atom_storage, TYPE_PROC_REF(/datum/storage, dump_content_at), get_turf(src))
 	QDEL_NULL(atom_storage)
 
 /*
