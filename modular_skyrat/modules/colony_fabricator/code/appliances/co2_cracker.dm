@@ -48,7 +48,9 @@
 	id = "co2_cracking"
 	desc = "Cracking of CO2 into breathable oxygen"
 	requirements = list(
-		/datum/gas/carbon_dioxide = MINIMUM_MOLE_COUNT
+		/datum/gas/carbon_dioxide = MINIMUM_MOLE_COUNT,
+		"MIN_TEMP" = 30,
+		"MAX_TEMP" = 500,
 	)
 	factor = list(
 		/datum/gas/carbon_dioxide = "1 mole CO2 is consumed",
