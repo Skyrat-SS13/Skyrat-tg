@@ -719,3 +719,8 @@
 	name = "Noble Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/noble
 	ckeywhitelist = list("grasshand")
+
+/datum/loadout_item/suit/victorian_dresscoat
+	name = "Victorian Dresscoat"
+	item_path = /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator
+	ckeywhitelist = list("nikotheguydude")
