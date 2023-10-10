@@ -73,8 +73,6 @@
 	if(!visuals_only)
 		return
 
-	// If you ever add chest and head augments, please add the body zones to this list.
-	// Removing them for now for optimization purposes.
 	for(var/body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_CHEST, BODY_ZONE_HEAD))
 		if(body_zone in visited_body_zones)
 			continue
