@@ -28,7 +28,7 @@
 	name = "Frontier Backpack"
 	id = "frontier_backpack"
 	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 200)
+	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/storage/backpack/industrial/frontier_colonist
 	category = list(
 		RND_CATEGORY_INITIAL,
@@ -39,7 +39,7 @@
 	name = "Frontier Satchel"
 	id = "frontier_satchel"
 	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 200)
+	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/storage/backpack/industrial/frontier_colonist/satchel
 	category = list(
 		RND_CATEGORY_INITIAL,
@@ -50,7 +50,7 @@
 	name = "Frontier Messenger Bag"
 	id = "frontier_messenger"
 	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 200)
+	materials = list(/datum/material/biomass = 100)
 	build_path = /obj/item/storage/backpack/industrial/frontier_colonist/messenger
 	category = list(
 		RND_CATEGORY_INITIAL,

@@ -8,7 +8,7 @@
 	circuit = null
 	anchored = FALSE
 	efficiency = 1
-	productivity = 0.75
+	productivity = 2
 	show_categories = list(
 		RND_CATEGORY_AKHTER_CLOTHING,
 		RND_CATEGORY_AKHTER_EQUIPMENT,
@@ -24,7 +24,7 @@
 /obj/machinery/biogenerator/organic_printer/RefreshParts()
 	. = ..()
 	efficiency = 1
-	productivity = 0.75
+	productivity = 2
 
 /obj/machinery/biogenerator/organic_printer/default_deconstruction_crowbar()
 	return
