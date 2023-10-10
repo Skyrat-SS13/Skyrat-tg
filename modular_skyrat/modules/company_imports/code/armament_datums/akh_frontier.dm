@@ -71,9 +71,6 @@
 /datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
 	item_type = /obj/item/flatpacked_machine/sustenance_machine
 
-/datum/armament_entry/company_import/akh_frontier/appliances/co2_cracker
-	item_type = /obj/item/flatpacked_machine/co2_cracker
-
 /datum/armament_entry/company_import/akh_frontier/appliances/organics_printer
 	item_type = /obj/item/flatpacked_machine/organics_printer
 	cost = PAYCHECK_COMMAND * 4.5

@@ -79,24 +79,6 @@
 	)
 	construction_time = 30 SECONDS
 
-// CO2 cracker, portable machines that takes CO2 and turns it into oxygen
-
-/datum/design/co2_cracker
-	name = "Portable Carbon Dioxide Cracker"
-	id = "co2_cracker"
-	build_type = COLONY_FABRICATOR
-	materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7.5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 3,
-		/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT, // We're gonna pretend plasma is the catalyst for co2 cracking
-	)
-	build_path = /obj/machinery/electrolyzer/co2_cracker
-	category = list(
-		RND_CATEGORY_INITIAL,
-		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_ATMOS,
-	)
-	construction_time = 30 SECONDS
-
 // Plumbable chem machine that makes nothing but water
 
 /datum/design/water_synthesizer
