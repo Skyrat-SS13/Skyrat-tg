@@ -1,7 +1,7 @@
 /datum/design/jawsoflife/science
 	name = "Hybrid cutters"
 	desc = "An off-shoot of the jaws of life that lacks the door-opening power"
-	id = SCIENCE_JAWS_OF_LIFE_DESIGN_ID // added one more requirment since the Jaws of Life are a bit OP
+	id = SCIENCE_JAWS_OF_LIFE_DESIGN_ID // added one more requirement since the Jaws of Life are a bit OP
 	build_path = /obj/item/crowbar/power/science
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
@@ -50,7 +50,7 @@
 
 	return ..()
 
-// its fine to give them health analyzers, the choke for medibot production is the medkits
+// it's fine to give them health analyzers, the choke for medibot production is the medkits
 /datum/design/healthanalyzer/New()
 	build_type |= MECHFAB
 	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
