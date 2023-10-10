@@ -59,7 +59,8 @@
 	desc = "An elaborate coat composed of a silky yet firm material that feels quite pleasant to wear."
 	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgable in Tiziran politics or nobility, would be recognizable as the Kor'Yesh emblem, \
 	a relatively minor house of nobility within Tizira. \
-	\n\n\
+	\n\
+	\n\
 	It has a strange structure, with many internal clasps, velcro straps, and attachment points. It looks like you could put some other article of clothing into it..."
 	/// The path of the article of clothing we have absorbed and are emulating the effects of. Nullable.
 	var/obj/item/clothing/suit/absorbed_clothing_path
@@ -105,6 +106,7 @@
 
 	return ..()
 
+/// Deletes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
 	if (!isnull(absorbed_clothing_path))
 		to_chat(user, span_warning("[src] is already using [initial(absorbed_clothing_path.name)]!"))
@@ -124,6 +126,7 @@
 
 	qdel(clothing_to_absorb)
 
+/// Spawns a new instance of the clothing we absorbed earlier, and resets out armor, storage, and suit storage to the initial values.
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/drop_clothing(mob/target)
 	if (isnull(absorbed_clothing_path))
 		return FALSE
