@@ -121,7 +121,7 @@
 			balloon_alert(user, "take it off first!")
 			return FALSE
 	if (!isnull(clothing_to_absorb.atom_storage))
-		var/atom/resolve_location = clothing_to_absorb.atom_storage.real_location.Resolve()
+		var/atom/resolve_location = clothing_to_absorb.atom_storage.real_location?.resolve()
 		if (length(resolve_location?.contents))
 			clothing_to_absorb.balloon_alert(user, "take things out first!") // put it on the insertee so we go "oh THIS has stuff in it"
 			return FALSE
