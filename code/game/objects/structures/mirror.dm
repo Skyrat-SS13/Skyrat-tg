@@ -175,13 +175,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 				to_chat(race_changer, span_notice("Invalid color. Your color is not bright enough."))
 				return TRUE
 
-<<<<<<< HEAD
-	race_changer.update_body(is_creating = TRUE) // SKYRAT EDIT CHANGE - TODO: Remove when fix comes downstream - unindented
-	race_changer.update_mutations_overlay() // no hulk lizard // SKYRAT EDIT CHANGE - TODO: Remove when fix comes downstream - unindented
-=======
 	race_changer.update_body(is_creating = TRUE)
 	race_changer.update_mutations_overlay() // no hulk lizard
->>>>>>> 92a6a8e2b9a (Fixes some issues with mirrors not updating mob appearance after making a selection (#78894))
 
 // possible Genders: MALE, FEMALE, PLURAL, NEUTER
 // possible Physique: MALE, FEMALE
@@ -210,15 +205,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		sexy.physique = (chosen_physique == "Warlock Physique") ? MALE : FEMALE
 
 	sexy.dna.update_ui_block(DNA_GENDER_BLOCK)
-<<<<<<< HEAD
-	sexy.update_body(is_creating = TRUE) // SKYRAT EDIT - TODO: UPSTREAM FIX INCOMING
-	sexy.update_mutations_overlay() //(hulk male/female)
-	sexy.update_clothing(ITEM_SLOT_ICLOTHING) // update gender variant clothing // SKYRAT EDIT - TODO: UPSTREAM FIX INCOMING
-=======
 	sexy.update_body(is_creating = TRUE) // or else physique won't change properly
 	sexy.update_mutations_overlay() //(hulk male/female)
 	sexy.update_clothing(ITEM_SLOT_ICLOTHING) // update gender shaped clothing
->>>>>>> 92a6a8e2b9a (Fixes some issues with mirrors not updating mob appearance after making a selection (#78894))
 
 /obj/structure/mirror/proc/change_eyes(mob/living/carbon/human/user)
 	var/new_eye_color = input(user, "Choose your eye color", "Eye Color", user.eye_color_left) as color|null
