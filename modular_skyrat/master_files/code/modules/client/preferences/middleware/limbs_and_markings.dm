@@ -162,7 +162,7 @@
 		usr,
 		"Select new color",
 		null,
-		preferences.body_markings[limb_slot][marking_entry_name],
+		preferences.body_markings[limb_slot][marking_entry_name][1],
 	) as color | null
 	if(!new_color)
 		return TRUE
