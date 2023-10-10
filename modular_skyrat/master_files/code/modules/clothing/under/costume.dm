@@ -116,6 +116,11 @@
 	if (!isnull(absorbed_clothing))
 		balloon_alert(user, "already fitted!")
 		return FALSE
+	if (iscarbon(loc))
+		var/mob/living/carbon/carbon_loc = loc
+		if (carbon_loc.get_item_by_slot(slot))
+			balloon_alert(user, "take it off first!")
+			return FALSE
 	if (!isnull(clothing_to_absorb.atom_storage) && length(clothing_to_absorb.contents))
 		clothing_to_absorb.balloon_alert(user, "take things out first!") // put it on the insertee so we go "oh THIS has stuff in it"
 		return FALSE
@@ -132,7 +137,7 @@
 	if (!isnull(clothing_to_absorb.atom_storage))
 		clone_storage(clothing_to_absorb.atom_storage)
 
-	clothing_to_absorb.forceMove(null) // put it in nullspace so it doesnt appear in our storage 
+	clothing_to_absorb.forceMove(src)
 	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
 
 
