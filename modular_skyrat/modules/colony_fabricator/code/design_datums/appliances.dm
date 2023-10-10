@@ -23,6 +23,7 @@
 		"hydro_synth",
 		"organic_printer",
 		"global_positioning_beacon",
+		"frontier_sustenance_dispenser",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000000000000000) // God save you
 	hidden = TRUE
@@ -163,6 +164,24 @@
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
+	)
+	construction_time = 30 SECONDS
+
+// Chem dispenser that dispenses various flavored beverages and nutrislop, yum!
+
+/datum/design/frontier_sustenance_dispenser
+	name = "Sustenance Dispenser"
+	id = "frontier_sustenance_dispenser"
+	build_type = COLONY_FABRICATOR
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/machinery/chem_dispenser/frontier_appliance
+	category = list(
+		RND_CATEGORY_INITIAL,
+		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_FLUIDS,
 	)
 	construction_time = 30 SECONDS
 

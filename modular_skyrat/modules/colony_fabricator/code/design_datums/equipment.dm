@@ -60,6 +60,18 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
+/datum/design/bowl/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/beaker/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/mauna_mug/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
 /datum/design/survival_knife
 	name = "Survival Knife"
 	id = "survival_knife"

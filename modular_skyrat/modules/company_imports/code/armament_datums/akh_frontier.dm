@@ -63,6 +63,9 @@
 /datum/armament_entry/company_import/akh_frontier/appliances/hydro_synth
 	item_type = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
 
+/datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
+	item_type = /obj/machinery/chem_dispenser/frontier_appliance
+
 /datum/armament_entry/company_import/akh_frontier/appliances/co2_cracker
 	item_type = /obj/machinery/electrolyzer/co2_cracker/spawns_with_cell
 
