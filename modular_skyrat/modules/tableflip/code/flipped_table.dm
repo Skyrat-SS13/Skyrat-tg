@@ -103,6 +103,10 @@
 				continue
 			if (movable_entity.invisibility > SEE_INVISIBLE_LIVING)
 				continue
+			if(!ismob(movable_entity) && !isobj(movable_entity))
+				continue
+			if(movable_entity.throwing || (movable_entity.movement_type & (FLOATING|FLYING)))
+				continue
 			movable_entity.safe_throw_at(throw_target, range = 1, speed = 1, force = MOVE_FORCE_NORMAL, gentle = TRUE)
 
 /obj/structure/table
