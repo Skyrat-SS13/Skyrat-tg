@@ -281,4 +281,3 @@
 
 /mob/living/basic/get_body_temp_cold_damage_limit()
 	return minimum_survivable_temperature
->>>>>>> 6d59d8eb910 (Hands management element (#78887))
