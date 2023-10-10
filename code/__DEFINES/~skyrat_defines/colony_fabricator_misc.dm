@@ -1,5 +1,5 @@
 /// Category for clothing in the organics printer
-#define RND_CATEGORY_AKHTER_CLOTHING "Apparel"
+#define RND_CATEGORY_AKHTER_CLOTHING "Clothing"
 /// Category for equipment like belts and bags in the organics printer
 #define RND_CATEGORY_AKHTER_EQUIPMENT "Equipment"
 /// Category for medical items in the organics printer
