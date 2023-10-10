@@ -25,3 +25,11 @@
 /datum/design/board/range/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
+
+/datum/design/board/griddle/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
+/datum/design/board/reagentgrinder/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
