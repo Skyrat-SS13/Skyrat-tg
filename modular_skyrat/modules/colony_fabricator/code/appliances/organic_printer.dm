@@ -29,5 +29,10 @@
 /obj/machinery/biogenerator/organic_printer/default_deconstruction_crowbar()
 	return
 
-/obj/machinery/biogenerator/organic_printer/spawns_anchored
-	anchored = TRUE
+// Deployable item for cargo for the organics printer
+
+/obj/item/flatpacked_machine/organics_printer
+	name = "organic materials printer parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/biogenerator.dmi'
+	icon_state = "biogenerator_parts"
+	type_to_deploy = /obj/machinery/biogenerator/organic_printer

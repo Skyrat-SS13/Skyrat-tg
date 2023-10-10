@@ -16,6 +16,16 @@
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
+// Deployable item for cargo for the water synth
+
+/obj/item/flatpacked_machine/water_synth
+	name = "water synthesizer parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
+	icon_state = "water_synth_parts"
+	w_class = WEIGHT_CLASS_NORMAL
+	type_to_deploy = /obj/machinery/plumbing/synthesizer/water_synth
+	deploy_time = 2 SECONDS
+
 // Machine that makes botany nutrients for hydroponics farming
 
 /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
@@ -33,6 +43,16 @@
 		/datum/reagent/toxin/plantbgone/weedkiller,
 		/datum/reagent/toxin/pestkiller,
 	)
+
+// Deployable item for cargo for the hydro synth
+
+/obj/item/flatpacked_machine/hydro_synth
+	name = "hydroponics chemical synthesizer parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
+	icon_state = "hydro_synth_parts"
+	w_class = WEIGHT_CLASS_NORMAL
+	type_to_deploy = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
+	deploy_time = 2 SECONDS
 
 // Chem dispenser with a limited range of thematic reagents to dispense
 
@@ -90,5 +110,12 @@
 /obj/machinery/chem_dispenser/frontier_appliance/default_deconstruction_crowbar()
 	return
 
-/obj/machinery/chem_dispenser/frontier_appliance/pre_charged
-	cell_we_spawn_with = /obj/item/stock_parts/cell/crap
+// Deployable item for cargo for the sustenance machine
+
+/obj/item/flatpacked_machine/sustenance_machine
+	name = "sustenance dispenser parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
+	icon_state = "dispenser_parts"
+	w_class = WEIGHT_CLASS_NORMAL
+	type_to_deploy = /obj/machinery/chem_dispenser/frontier_appliance
+	deploy_time = 2 SECONDS

@@ -63,19 +63,19 @@
 	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/akh_frontier/appliances/water_synth
-	item_type = /obj/machinery/plumbing/synthesizer/water_synth
+	item_type = /obj/item/flatpacked_machine/water_synth
 
 /datum/armament_entry/company_import/akh_frontier/appliances/hydro_synth
-	item_type = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
+	item_type = /obj/item/flatpacked_machine/hydro_synth
 
 /datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
-	item_type = /obj/machinery/chem_dispenser/frontier_appliance
+	item_type = /obj/item/flatpacked_machine/sustenance_machine
 
 /datum/armament_entry/company_import/akh_frontier/appliances/co2_cracker
 	item_type = /obj/machinery/electrolyzer/co2_cracker/spawns_with_cell
 
 /datum/armament_entry/company_import/akh_frontier/appliances/organics_printer
-	item_type = /obj/machinery/biogenerator/organic_printer
+	item_type = /obj/item/flatpacked_machine/organics_printer
 	cost = PAYCHECK_COMMAND * 4.5
 
 // Flatpacked, ready to deploy machines
