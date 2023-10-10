@@ -6333,23 +6333,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/station/ai_monitored/command/nuke_storage)
-"aYy" = (
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_red/warning{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/industrial_lift/public,
-/obj/machinery/elevator_control_panel/directional/east{
-	linked_elevator_id = "tram_lower_center_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/turf/open/floor/plating/elevatorshaft,
-/area/station/maintenance/tram/mid)
 "aYA" = (
 /turf/open/floor/iron,
 /area/station/hallway/primary/tram/right)
@@ -10122,6 +10105,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/cafeteria,
 /area/station/command/heads_quarters/rd)
+"csn" = (
+/obj/machinery/elevator_control_panel{
+	layer = 3.1;
+	linked_elevator_id = "tram_xeno_lift";
+	pixel_y = 2;
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/turf/closed/wall,
+/area/station/science/xenobiology)
 "csA" = (
 /turf/closed/wall,
 /area/station/solars/starboard/fore)
@@ -15163,6 +15155,26 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/grimy,
 /area/station/service/library/lounge)
+"ejJ" = (
+/obj/structure/rack,
+/obj/item/gun/energy/laser/carbine/practice{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/gun/energy/laser/practice{
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/item/gun/energy/laser/practice{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/white,
+/area/station/science/auxlab/firing_range)
 "ejK" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -17023,15 +17035,6 @@
 "eVz" = (
 /turf/open/floor/grass,
 /area/station/service/hydroponics)
-"eVA" = (
-/obj/machinery/elevator_control_panel{
-	layer = 3.1;
-	linked_elevator_id = "tram_xeno_lift";
-	pixel_y = 2;
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/turf/closed/wall/r_wall,
-/area/station/science/xenobiology)
 "eVC" = (
 /obj/effect/spawner/random/decoration/showcase,
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -19722,6 +19725,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/processing)
+"fWK" = (
+/obj/machinery/computer/atmos_control/oxygen_tank{
+	atmos_chambers = list("o2ordance"="Oxygen                                                                Supply")
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/science/ordnance/storage)
 "fWM" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/item/kirbyplants/random,
@@ -19891,20 +19902,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison/safe)
-"gaj" = (
-/obj/effect/turf_decal/caution/stand_clear/red{
-	dir = 1
-	},
-/obj/structure/industrial_lift/public,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/machinery/elevator_control_panel/directional/west{
-	linked_elevator_id = "tram_perma_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/turf/open/floor/plating/elevatorshaft,
-/area/station/security/execution/transfer)
 "gal" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner,
 /obj/effect/turf_decal/trimline/purple/filled/corner{
@@ -20294,6 +20291,20 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/tram/right)
+"giW" = (
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 9
+	},
+/obj/structure/industrial_lift/public,
+/obj/structure/railing{
+	dir = 9
+	},
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "tram_sci_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/science/lower)
 "giZ" = (
 /obj/structure/bed,
 /obj/effect/spawner/random/contraband/prison,
@@ -28519,16 +28530,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"jlP" = (
-/obj/effect/turf_decal/trimline/dark_red/warning,
-/obj/structure/industrial_lift/public,
-/obj/machinery/elevator_control_panel/directional/south{
-	linked_elevator_id = "tram_dorm_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/obj/structure/railing,
-/turf/open/floor/plating/elevatorshaft,
-/area/station/maintenance/tram/left)
 "jlQ" = (
 /obj/structure/rack,
 /obj/item/gun/energy/e_gun/dragnet,
@@ -29151,6 +29152,27 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/station/security/lockers)
+"jwP" = (
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "tram_cargo_lift"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 8
+	},
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "tram_cargo_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck");
+	req_access = list("mining")
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "tram_cargo_lift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/cargo/miningdock)
 "jwT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -35003,6 +35025,20 @@
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
+"lvz" = (
+/obj/effect/turf_decal/caution/stand_clear/red{
+	dir = 1
+	},
+/obj/structure/industrial_lift/public,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "tram_perma_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/security/execution/transfer)
 "lvH" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -39083,6 +39119,20 @@
 /obj/item/storage/secure/safe/directional/north,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
+"mUc" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/elevator_control_panel/directional/north{
+	linked_elevator_id = "tram_upper_center_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/structure/industrial_lift/public,
+/turf/open/floor/plating/elevatorshaft,
+/area/station/maintenance/tram/mid)
 "mUd" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/monitored/air_output{
 	dir = 1
@@ -43999,6 +44049,15 @@
 /obj/structure/grille,
 /turf/open/space/openspace,
 /area/space/nearstation)
+"oKn" = (
+/obj/machinery/elevator_control_panel{
+	layer = 3.1;
+	linked_elevator_id = "tram_xeno_lift";
+	pixel_y = 2;
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/turf/closed/wall/r_wall,
+/area/station/science/xenobiology)
 "oKZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -48467,20 +48526,6 @@
 /obj/machinery/microwave,
 /turf/open/floor/iron/white,
 /area/station/commons/vacant_room)
-"qoR" = (
-/obj/effect/turf_decal/trimline/dark_red/warning{
-	dir = 9
-	},
-/obj/structure/industrial_lift/public,
-/obj/structure/railing{
-	dir = 9
-	},
-/obj/machinery/elevator_control_panel/directional/west{
-	linked_elevator_id = "tram_sci_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/turf/open/floor/plating/elevatorshaft,
-/area/station/science/lower)
 "qoX" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 6
@@ -50432,20 +50477,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/security/medical)
-"qZz" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "tram_upper_center_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/obj/effect/turf_decal/trimline/dark_red/warning{
-	dir = 1
-	},
-/obj/structure/industrial_lift/public,
-/turf/open/floor/plating/elevatorshaft,
-/area/station/maintenance/tram/mid)
 "qZA" = (
 /obj/machinery/door/airlock/external{
 	name = "Construction Zone"
@@ -54532,14 +54563,6 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
-"swv" = (
-/obj/machinery/computer/atmos_control/oxygen_tank{
-	atmos_chambers = list("o2ordance"="Oxygen                                Supply")
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/science/ordnance/storage)
 "swC" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -56809,15 +56832,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
-"tmR" = (
-/obj/machinery/elevator_control_panel{
-	layer = 3.1;
-	linked_elevator_id = "tram_xeno_lift";
-	pixel_y = 2;
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck")
-	},
-/turf/closed/wall,
-/area/station/science/xenobiology)
 "tnj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
@@ -60235,6 +60249,23 @@
 /obj/effect/spawner/random/maintenance/five,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"uud" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "tram_lower_center_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/maintenance/tram/mid)
 "uue" = (
 /obj/machinery/power/turbine/turbine_outlet{
 	dir = 4
@@ -61744,6 +61775,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/arrivals)
+"uSl" = (
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/south{
+	linked_elevator_id = "tram_dorm_lift";
+	preset_destination_names = list("2"="Lower                                                                Deck","3"="Upper                                                                Deck")
+	},
+/obj/structure/railing,
+/turf/open/floor/plating/elevatorshaft,
+/area/station/maintenance/tram/left)
 "uSL" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/fluff/tram_rail/floor,
@@ -63969,26 +64010,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
-"vFK" = (
-/obj/structure/rack,
-/obj/item/gun/energy/laser/carbine/practice{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/gun/energy/laser/practice{
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/obj/item/gun/energy/laser/practice{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 5
-	},
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/white,
-/area/station/science/auxlab/firing_range)
 "vFQ" = (
 /obj/machinery/duct,
 /obj/structure/cable,
@@ -70395,27 +70416,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
-"yfk" = (
-/obj/effect/landmark/lift_id{
-	specific_lift_id = "tram_cargo_lift"
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_red/warning{
-	dir = 8
-	},
-/obj/structure/industrial_lift/public,
-/obj/machinery/elevator_control_panel/directional/west{
-	linked_elevator_id = "tram_cargo_lift";
-	preset_destination_names = list("2"="Lower                                Deck","3"="Upper                                Deck");
-	req_access = list("mining")
-	},
-/obj/effect/abstract/elevator_music_zone{
-	linked_elevator_id = "tram_cargo_lift"
-	},
-/turf/open/floor/plating/elevatorshaft,
-/area/station/cargo/miningdock)
 "yfw" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -80987,7 +80987,7 @@ aac
 aac
 aac
 aac
-aac
+aaR
 aac
 aac
 vXM
@@ -81244,7 +81244,7 @@ aac
 aac
 aac
 aac
-aaR
+aac
 aac
 aac
 vXM
@@ -86337,7 +86337,7 @@ jWs
 lDo
 ucA
 wox
-gaj
+lvz
 gTv
 jWs
 aaa
@@ -92544,7 +92544,7 @@ ncF
 ncF
 dFS
 tuU
-jlP
+uSl
 elr
 elr
 elr
@@ -99979,7 +99979,7 @@ uTz
 hJM
 nAa
 ekB
-qZz
+mUc
 jSV
 uuD
 qjU
@@ -104623,7 +104623,7 @@ qjU
 aaa
 qjU
 fok
-aYy
+uud
 sNq
 ceb
 pcx
@@ -113587,7 +113587,7 @@ aaa
 aaa
 uGW
 jdU
-yfk
+jwP
 rff
 uGW
 aaa
@@ -113885,7 +113885,7 @@ abM
 abM
 abM
 iix
-qoR
+giW
 boW
 iix
 abM
@@ -116479,7 +116479,7 @@ hDT
 keT
 iEF
 fof
-tmR
+csn
 sXX
 akC
 hFP
@@ -116708,7 +116708,7 @@ abM
 abM
 abM
 ePG
-vFK
+ejJ
 uel
 pNv
 hvJ
@@ -121086,7 +121086,7 @@ kkK
 jXE
 lwF
 dfz
-swv
+fWK
 qCP
 urA
 ygC
@@ -181761,7 +181761,7 @@ eJQ
 bNx
 aSt
 aSt
-eVA
+oKn
 aaa
 aaa
 aaa
