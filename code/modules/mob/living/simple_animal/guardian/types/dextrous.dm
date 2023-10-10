@@ -22,6 +22,7 @@
 		dropItemToGround(internal_storage)
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
+<<<<<<< HEAD
 	if(dextrous)
 		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 		for(var/obj/item/held_item in held_items)
@@ -33,6 +34,11 @@
 		. += "</span>"
 	else
 		return ..()
+=======
+	. = ..()
+	if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
+		. += span_info("It is holding [internal_storage.get_examine_string(user)] in its internal storage.")
+>>>>>>> 6d59d8eb910 (Hands management element (#78887))
 
 /mob/living/simple_animal/hostile/guardian/dextrous/recall_effects()
 	drop_all_held_items()
