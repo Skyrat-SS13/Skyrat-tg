@@ -34,32 +34,32 @@
 
 /datum/design/laserscalpel/New()
 	build_type |= MECHFAB
-	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 
 	return ..()
 
 /datum/design/mechanicalpinches/New()
 	build_type |= MECHFAB
-	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 
 	return ..()
 
 /datum/design/searingtool/New()
 	build_type |= MECHFAB
-	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 
 	return ..()
 
 // it's fine to give them health analyzers, the choke for medibot production is the medkits
 /datum/design/healthanalyzer/New()
 	build_type |= MECHFAB
-	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 
 	return ..()
 
 
 /datum/design/healthanalyzer_advanced/New()
 	build_type |= MECHFAB
-	category += (RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 
 	return ..()
