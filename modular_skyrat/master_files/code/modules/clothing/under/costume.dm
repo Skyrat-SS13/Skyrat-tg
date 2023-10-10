@@ -55,7 +55,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator // special coat for niko
-	name = "\improper nobility dresscoat"
+	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material that feels quite pleasant to wear."
 	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgable in Tiziran politics or nobility, would be recognizable as the Kor'Yesh emblem, \
 	a relatively minor house of nobility within Tizira. \
