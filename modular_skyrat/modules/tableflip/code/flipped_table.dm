@@ -88,9 +88,34 @@
 	//Finally, add the custom materials, so the flags still apply to it
 	flipped_table.set_custom_materials(custom_materials)
 
-	user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
-	playsound(src, 'sound/items/trayhit2.ogg', 100)
+	var/sound_volume = 100
+	var/visible_message = "[user] flips over the [src]!"
+	var/self_message = "You flip over the [src]!"
+	var/user_pacifist = HAS_TRAIT(user, TRAIT_PACIFISM)
+
+	if (user_pacifist)
+		visible_message = "[user] gently flips over the [src]."
+		self_message = "You gently flip over the [src]."
+		sound_volume = 40
+
+	user.visible_message(span_danger(visible_message), span_notice(self_message))
+	playsound(src, 'sound/items/trayhit2.ogg', sound_volume)
 	qdel(src)
+
+	var/turf/throw_target = get_step(flipped_table, flipped_table.dir)
+	if (!isnull(throw_target) && !user_pacifist)
+		for (var/atom/movable/movable_entity in flipped_table.loc)
+			if (movable_entity == flipped_table)
+				continue
+			if (movable_entity.anchored)
+				continue
+			if (movable_entity.invisibility > SEE_INVISIBLE_LIVING)
+				continue
+			if(!ismob(movable_entity) && !isobj(movable_entity))
+				continue
+			if(movable_entity.throwing || (movable_entity.movement_type & (FLOATING|FLYING)))
+				continue
+			movable_entity.safe_throw_at(throw_target, range = 1, speed = 1, force = MOVE_FORCE_NORMAL, gentle = TRUE)
 
 /obj/structure/table
 	var/flipped_table_type = /obj/structure/flippedtable
