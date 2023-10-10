@@ -27,6 +27,11 @@
 	subcategory = "Wearable Equipment"
 
 /datum/armament_entry/company_import/akh_frontier/wearables/hazard_mod
+	name = "Frontier Hazard Protective MOD Control Unit"
+	description = "The pinnacle of frontier cheap technology. Suits such as these are made specifically for the rare emergency that creates a hazard \
+		environment that other equipment just can't quite handle. Often, these suits are able to protect their users \
+		from not only electricity, but also radiation, biological hazards, other people, so on. This suit will not, \
+		however, protect you from yourself."
 	item_type = /obj/item/mod/control/pre_equipped/frontier_colonist
 	cost = PAYCHECK_COMMAND * 6.5
 

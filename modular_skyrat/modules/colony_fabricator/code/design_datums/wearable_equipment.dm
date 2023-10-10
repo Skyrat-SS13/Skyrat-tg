@@ -59,6 +59,10 @@
 
 /datum/design/frontier_hazard_suit
 	name = "Frontier Hazard Protective MOD Control Unit"
+	desc = "The pinnacle of frontier cheap technology. Suits such as these are made specifically for the rare emergency that creates a hazard \
+		environment that other equipment just can't quite handle. Often, these suits are able to protect their users \
+		from not only electricity, but also radiation, biological hazards, other people, so on. This suit will not, \
+		however, protect you from yourself."
 	id = "frontier_hazard_suit"
 	build_type = COLONY_FABRICATOR
 	// This materials list is a slightly cheaper compilation of this modsuit's constituent parts
