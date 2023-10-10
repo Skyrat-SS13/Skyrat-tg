@@ -64,6 +64,10 @@
 	It has a strange structure, with many internal clasps, velcro straps, and attachment points. It looks like you could put some other article of clothing into it..."
 	/// The path of the article of clothing we have absorbed and are emulating the effects of. Nullable.
 	var/obj/item/clothing/suit/absorbed_clothing_path
+	/// Any subtype of a typepath entered here will be insertable into the jacket.
+	var/static/list/obj/item/clothing/suit/clothing_we_can_absorb = list(
+		/obj/item/clothing/suit/toggle/labcoat,
+	)
 
 /obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/Destroy()
 	absorbed_clothing_path = null
@@ -93,10 +97,6 @@
 		var/mob/living/carbon/carbon_user = user
 		if (carbon_user.combat_mode)
 			return ..()
-
-	var/static/list/clothing_we_can_absorb = list(
-		/obj/item/clothing/suit/toggle/labcoat,
-	)
 
 	for (var/obj/item/clothing/suit/absorbable_type as anything in clothing_we_can_absorb)
 		if (!istype(attacking_item, absorbable_type))
