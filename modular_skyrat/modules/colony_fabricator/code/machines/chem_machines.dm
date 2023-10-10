@@ -70,7 +70,7 @@
 		/datum/reagent/consumable/nutraslop,
 	)
 	/// Since we don't have a board to take from, we use this to give the dispenser a cell on spawning
-	var/cell_we_spawn_with = /obj/item/stock_parts/cell/crap
+	var/cell_we_spawn_with = /obj/item/stock_parts/cell/crap/empty
 
 /obj/machinery/chem_dispenser/frontier_appliance/Initialize(mapload)
 	. = ..()
@@ -90,4 +90,4 @@
 	return
 
 /obj/machinery/chem_dispenser/frontier_appliance/pre_charged
-	cell_we_spawn_with = /obj/item/stock_parts/cell/crap/empty
+	cell_we_spawn_with = /obj/item/stock_parts/cell/crap
