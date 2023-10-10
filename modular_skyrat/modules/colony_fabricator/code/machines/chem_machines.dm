@@ -7,6 +7,7 @@
 		but good old electricity."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "water_synth"
+	anchored = FALSE
 	dispensable_reagents = list(
 		/datum/reagent/water,
 	)
