@@ -54,6 +54,13 @@
 	var/reviving = FALSE
 	COOLDOWN_DECLARE(reviver_cooldown)
 
+<<<<<<< HEAD
+=======
+/obj/item/organ/internal/cyberimp/chest/reviver/on_death(seconds_per_tick, times_fired)
+	if(isnull(owner)) // owner can be null, on_death() gets called by /obj/item/organ/internal/process() for decay
+		return
+	try_heal() // Allows implant to work even on dead people
+>>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 
 /obj/item/organ/internal/cyberimp/chest/reviver/on_life(seconds_per_tick, times_fired)
 	if(reviving)
@@ -77,6 +84,21 @@
 
 
 /obj/item/organ/internal/cyberimp/chest/reviver/proc/heal()
+<<<<<<< HEAD
+=======
+	if(can_defib_owner == DEFIB_POSSIBLE)
+		revive_dead()
+		can_defib_owner = null
+		revive_cost += 10 MINUTES // Additional 10 minutes cooldown after revival.
+	// this check goes after revive_dead() to delay revival a bit
+	if(owner.stat == DEAD)
+		can_defib_owner = owner.can_defib()
+		if(can_defib_owner == DEFIB_POSSIBLE)
+			owner.notify_ghost_cloning("You are being revived by [src]!")
+			owner.grab_ghost()
+	/// boolean that stands for if PHYSICAL damage being patched
+	var/body_damage_patched = FALSE
+>>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 	var/need_mob_update = FALSE
 	if(owner.getOxyLoss())
 		need_mob_update += owner.adjustOxyLoss(-5, updating_health = FALSE)
@@ -93,6 +115,26 @@
 	if(need_mob_update)
 		owner.updatehealth()
 
+<<<<<<< HEAD
+=======
+	if(body_damage_patched && prob(35)) // healing is called every few seconds, not every tick
+		owner.visible_message(span_warning("[owner]'s body twitches a bit."), span_notice("You feel like something is patching your injured body."))
+
+
+/obj/item/organ/internal/cyberimp/chest/reviver/proc/revive_dead()
+	owner.grab_ghost()
+
+	owner.visible_message(span_warning("[owner]'s body convulses a bit."))
+	playsound(owner, SFX_BODYFALL, 50, TRUE)
+	playsound(owner, 'sound/machines/defib_zap.ogg', 75, TRUE, -1)
+	owner.revive()
+	owner.emote("gasp")
+	owner.set_jitter_if_lower(200 SECONDS)
+	SEND_SIGNAL(owner, COMSIG_LIVING_MINOR_SHOCK)
+	log_game("[owner] been revived by [src]")
+
+
+>>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 /obj/item/organ/internal/cyberimp/chest/reviver/emp_act(severity)
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
