@@ -16,8 +16,8 @@
 	resistance_flags = FIRE_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
-	complexity_max = DEFAULT_MAX_COMPLEXITY
-	charge_drain = DEFAULT_CHARGE_DRAIN
+	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
+	charge_drain = DEFAULT_CHARGE_DRAIN * 2
 	slowdown_inactive = 0.5
 	slowdown_active = 0 // This suit has an irremovable compressed plates upgrade, which means you can't have storage modules. This seems fair to me.
 	inbuilt_modules = list(
@@ -72,7 +72,7 @@
 
 /obj/item/mod/control/pre_equipped/frontier_colonist
 	theme = /datum/mod_theme/frontier_colonist
-	applied_cell = /obj/item/stock_parts/cell/super
+	applied_cell = /obj/item/stock_parts/cell/high
 	applied_modules = list(
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/magboot,
