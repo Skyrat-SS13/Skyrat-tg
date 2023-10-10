@@ -1,4 +1,4 @@
-/obj/item/stack/sticky_tape/one
+/obj/item/stack/sticky_tape/surgical/one
 	amount = 1
 
 /obj/item/stack/medical/gauze/one
