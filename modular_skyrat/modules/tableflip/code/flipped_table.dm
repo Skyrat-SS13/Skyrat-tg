@@ -95,7 +95,7 @@
 	qdel(src)
 
 	var/turf/throw_target = get_step(flipped_table, flipped_table.dir)
-	if (!isnull(throw_target))
+	if (!isnull(throw_target) && !HAS_TRAIT(user, TRAIT_PACIFISM))
 		for (var/atom/movable/movable_entity in flipped_table.loc)
 			if (movable_entity == flipped_table)
 				continue
