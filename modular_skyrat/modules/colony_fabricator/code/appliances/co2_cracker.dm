@@ -68,7 +68,10 @@
 	if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
 		air_mixture.temperature = max(air_mixture.temperature * old_heat_capacity / new_heat_capacity, TCMB)
 
-// Cracker type that spawns with a cell pre-installed
+// Deployable item for cargo for the co2 cracker
 
-/obj/machinery/electrolyzer/co2_cracker/spawns_with_cell
-	cell = /obj/item/stock_parts/cell/super
+/obj/item/flatpacked_machine/co2_cracker
+	name = "portable carbon dioxide cracker parts kit"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/co2_cracker.dmi'
+	icon_state = "cracker_parts"
+	type_to_deploy = /obj/machinery/electrolyzer/co2_cracker
