@@ -118,7 +118,7 @@
 		return FALSE
 	if (iscarbon(loc))
 		var/mob/living/carbon/carbon_loc = loc
-		if (carbon_loc.get_item_by_slot(slot))
+		if (src in carbon_loc.get_all_worn_items())
 			balloon_alert(user, "take it off first!")
 			return FALSE
 	if (!isnull(clothing_to_absorb.atom_storage) && length(clothing_to_absorb.contents))
@@ -137,7 +137,7 @@
 	if (!isnull(clothing_to_absorb.atom_storage))
 		clone_storage(clothing_to_absorb.atom_storage)
 
-	clothing_to_absorb.forceMove(src)
+	clothing_to_absorb.forceMove(null)
 	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
 
 
