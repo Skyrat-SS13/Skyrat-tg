@@ -160,7 +160,7 @@
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
 	)
-	build_path = /obj/machinery/biogenerator/organic_printer
+	build_path = /obj/item/gps/computer/beacon
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,
