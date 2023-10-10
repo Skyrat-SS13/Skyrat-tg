@@ -137,7 +137,7 @@
 	if (!isnull(clothing_to_absorb.atom_storage))
 		clone_storage(clothing_to_absorb.atom_storage)
 
-	clothing_to_absorb.forceMove(null)
+	clothing_to_absorb.forceMove(src)
 	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
 
 
