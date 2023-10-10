@@ -53,6 +53,17 @@
 		RND_CATEGORY_AKHTER_SEEDS,
 	)
 
+/datum/design/organic_oat_seed
+	name = "Pack of Oat Seeds"
+	id = "oganic_oat_seed"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 25)
+	build_path = /obj/item/seeds/wheat/oat
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_AKHTER_SEEDS,
+	)
+
 /datum/design/organic_herb_seed
 	name = "Pack of Herb Seeds"
 	id = "oganic_herb_seed"

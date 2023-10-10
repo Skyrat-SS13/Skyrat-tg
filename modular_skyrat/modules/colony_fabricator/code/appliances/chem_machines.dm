@@ -63,12 +63,12 @@
 		/datum/reagent/consumable/vanilla,
 		/datum/reagent/consumable/sugar,
 		/datum/reagent/consumable/caramel,
-		/datum/reagent/consumable/honey,
 		/datum/reagent/consumable/korta_nectar,
 		/datum/reagent/consumable/korta_milk,
 		/datum/reagent/consumable/astrotame,
 		/datum/reagent/consumable/salt,
 		/datum/reagent/consumable/nutraslop,
+		/datum/reagent/consumable/enzyme,
 	)
 	/// Since we don't have a board to take from, we use this to give the dispenser a cell on spawning
 	var/cell_we_spawn_with = /obj/item/stock_parts/cell/crap/empty
