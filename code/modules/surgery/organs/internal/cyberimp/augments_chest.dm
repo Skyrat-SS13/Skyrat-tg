@@ -52,40 +52,38 @@
 	slot = ORGAN_SLOT_HEART_AID
 	var/revive_cost = 0
 	var/reviving = FALSE
+	/// revival/defibrillation possibility flag that gathered from owner's .can_defib() proc
+	var/can_defib_owner
 	COOLDOWN_DECLARE(reviver_cooldown)
 
-<<<<<<< HEAD
-=======
 /obj/item/organ/internal/cyberimp/chest/reviver/on_death(seconds_per_tick, times_fired)
 	if(isnull(owner)) // owner can be null, on_death() gets called by /obj/item/organ/internal/process() for decay
 		return
 	try_heal() // Allows implant to work even on dead people
->>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 
 /obj/item/organ/internal/cyberimp/chest/reviver/on_life(seconds_per_tick, times_fired)
+	try_heal()
+
+/obj/item/organ/internal/cyberimp/chest/reviver/proc/try_heal()
 	if(reviving)
-		switch(owner.stat)
-			if(UNCONSCIOUS, HARD_CRIT, SOFT_CRIT)
-				addtimer(CALLBACK(src, PROC_REF(heal)), 3 SECONDS)
-			else
-				COOLDOWN_START(src, reviver_cooldown, revive_cost)
-				reviving = FALSE
-				to_chat(owner, span_notice("Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)]."))
+		if(owner.stat == CONSCIOUS)
+			COOLDOWN_START(src, reviver_cooldown, revive_cost)
+			reviving = FALSE
+			to_chat(owner, span_notice("Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)]."))
+		else
+			addtimer(CALLBACK(src, PROC_REF(heal)), 3 SECONDS)
 		return
 
 	if(!COOLDOWN_FINISHED(src, reviver_cooldown) || HAS_TRAIT(owner, TRAIT_SUICIDED))
 		return
 
-	switch(owner.stat)
-		if(UNCONSCIOUS, HARD_CRIT)
-			revive_cost = 0
-			reviving = TRUE
-			to_chat(owner, span_notice("You feel a faint buzzing as your reviver implant starts patching your wounds..."))
+	if(owner.stat != CONSCIOUS)
+		revive_cost = 0
+		reviving = TRUE
+		to_chat(owner, span_notice("You feel a faint buzzing as your reviver implant starts patching your wounds..."))
 
 
 /obj/item/organ/internal/cyberimp/chest/reviver/proc/heal()
-<<<<<<< HEAD
-=======
 	if(can_defib_owner == DEFIB_POSSIBLE)
 		revive_dead()
 		can_defib_owner = null
@@ -98,7 +96,6 @@
 			owner.grab_ghost()
 	/// boolean that stands for if PHYSICAL damage being patched
 	var/body_damage_patched = FALSE
->>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 	var/need_mob_update = FALSE
 	if(owner.getOxyLoss())
 		need_mob_update += owner.adjustOxyLoss(-5, updating_health = FALSE)
@@ -106,17 +103,17 @@
 	if(owner.getBruteLoss())
 		need_mob_update += owner.adjustBruteLoss(-2, updating_health = FALSE)
 		revive_cost += 40
+		body_damage_patched = TRUE
 	if(owner.getFireLoss())
 		need_mob_update += owner.adjustFireLoss(-2, updating_health = FALSE)
 		revive_cost += 40
+		body_damage_patched = TRUE
 	if(owner.getToxLoss())
 		need_mob_update += owner.adjustToxLoss(-1, updating_health = FALSE)
 		revive_cost += 40
 	if(need_mob_update)
 		owner.updatehealth()
 
-<<<<<<< HEAD
-=======
 	if(body_damage_patched && prob(35)) // healing is called every few seconds, not every tick
 		owner.visible_message(span_warning("[owner]'s body twitches a bit."), span_notice("You feel like something is patching your injured body."))
 
@@ -134,7 +131,6 @@
 	log_game("[owner] been revived by [src]")
 
 
->>>>>>> d7e8928f0d9 (Fixes a runtime in obj/item/organ/on_death() (#78882))
 /obj/item/organ/internal/cyberimp/chest/reviver/emp_act(severity)
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
