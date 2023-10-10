@@ -260,8 +260,6 @@
 	else if(on_fire && !isnull(last_icon_state))
 		return last_icon_state
 	return null
-<<<<<<< HEAD
-=======
 
 /mob/living/basic/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, ignore_animation = TRUE)
 	. = ..()
