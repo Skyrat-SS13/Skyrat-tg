@@ -578,7 +578,7 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
-	var/target_synthetic = (user.mob_biotypes & MOB_ROBOTIC) // SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+	var/target_synthetic = (H.mob_biotypes & MOB_ROBOTIC) // SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
 	if (target_synthetic)
 		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrillator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
 		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
