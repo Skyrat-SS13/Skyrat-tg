@@ -893,7 +893,7 @@ export const dc_max_degradation: Feature<number> = {
 };
 
 export const dc_permakill_at_max: Feature<boolean> = {
-  name: 'DC Permakill at max deg.',
+  name: 'DC Permakill at max degradation',
   description:
     'If enabled, you will be DNRed and ghosted when you reach max degradation.',
   component: CheckboxInput,
@@ -919,7 +919,7 @@ export const dc_dead_degradation_per_second: Feature<number> = {
 };
 
 export const dc_degradation_on_death: Feature<number> = {
-  name: 'DC Deg. on death',
+  name: 'DC Degradation on death',
   description: 'Title.',
   component: FeatureNumberInput,
 };
@@ -939,21 +939,21 @@ export const dc_stasis_dead_degradation_mult: Feature<number> = {
 };
 
 export const dc_rezadone_living_degradation_reduction: Feature<number> = {
-  name: 'DC Rezadone deg. loss per second',
+  name: 'DC Pure Rezadone deg. loss per second while alive',
   description:
     'When alive, you will lose this much degradation every second when you metabolize max purity rezadone.',
   component: FeatureNumberInput,
 };
 
 export const dc_strange_reagent_degradation_reduction: Feature<number> = {
-  name: 'DC Strange Reagent deg. loss per second',
+  name: 'DC Strange Reagent deg. loss per second while alive',
   description:
     'When alive, you will lose this much degradation every second when you have strange reagent in you.',
   component: FeatureNumberInput,
 };
 
 export const dc_sansufentanyl_living_degradation_reduction: Feature<number> = {
-  name: 'DC Sansufentanyl deg. loss per second',
+  name: 'DC Sansufentanyl deg. loss per second while alive',
   description:
     'When alive, you will lose this much degradation every second when you metabolize Sansufentanyl.',
   component: FeatureNumberInput,
@@ -967,41 +967,41 @@ export const dc_eigenstasium_degradation_reduction: Feature<number> = {
 };
 
 export const dc_crit_threshold_reduction_min_percent_of_max: Feature<number> = {
-  name: 'DC Crit Threshold min deg. %',
+  name: 'DC Crit Threshold reduction starting deg. %',
   description:
     'The % degradation to max wherein crit threshold will start being reduced.',
   component: FeatureNumberInput,
 };
 
 export const dc_crit_threshold_reduction_percent_of_max: Feature<number> = {
-  name: 'DC Crit Threshold max deg. %',
+  name: 'DC Crit Threshold reduction ending deg. %',
   description:
     'The % degradation to max wherein crit threshold reduction will stop increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_max_crit_threshold_reduction: Feature<number> = {
-  name: 'DC Crit Threshold max reduction',
+  name: 'DC Crit Threshold reduction at ending deg. %',
   description: 'The crit threshold reduction applied when at max deg. %',
   component: FeatureNumberInput,
 };
 
 export const dc_stamina_damage_min_percent_of_max: Feature<number> = {
-  name: 'DC Stamina damage min deg.',
+  name: 'DC Stamina damage staring deg. %',
   description:
     'The % degradation to max wherein minimum stamina damage will start increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_stamina_damage_percent_of_max: Feature<number> = {
-  name: 'DC Stamina damage max deg.',
+  name: 'DC Stamina damage ending deg. %',
   description:
     'The % degradation to max wherein minimum stamina damage will stop increasing.',
   component: FeatureNumberInput,
 };
 
 export const dc_max_stamina_damage: Feature<number> = {
-  name: 'DC Stamina damage max',
+  name: 'DC Stamina damage at ending deg. %',
   description: 'The minimum stamina damage when at max deg. %',
   component: FeatureNumberInput,
 };
