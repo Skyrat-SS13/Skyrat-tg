@@ -108,7 +108,7 @@
  * Arguments:
  * * user: The mob we are starting zooming on.
 */
-/datum/component/scope/proc/start_zooming(mob/user)
+/datum/component/scope/proc/start_zooming(mob/living/user)
 	if(!user.client)
 		return
 	zooming = TRUE
@@ -119,8 +119,8 @@
 	tracker.assign_to_mob(user, range_modifier)
 	RegisterSignal(user, COMSIG_MOB_SWAP_HANDS, PROC_REF(stop_zooming))
 	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(stop_zooming))
-	RegisterSignal(user.current, COMSIG_MIND_TRANSFERRED, PROC_REF(stop_zooming))
-	//RegisterSignal(user, COMSIG_MOB_GHOSTIZED)
+	RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(stop_zooming))
+	RegisterSignal(user, COMSIG_MOB_GHOSTIZED)
 	START_PROCESSING(SSprojectiles, src)
 
 /**
@@ -129,7 +129,7 @@
  * Arguments:
  * * user: The mob we are canceling zooming on.
 */
-/datum/component/scope/proc/stop_zooming(mob/user)
+/datum/component/scope/proc/stop_zooming(mob/living/user)
 	SIGNAL_HANDLER
 
 	if(!zooming)
@@ -138,8 +138,8 @@
 	STOP_PROCESSING(SSprojectiles, src)
 	UnregisterSignal(user, COMSIG_MOB_SWAP_HANDS)
 	UnregisterSignal(user, COMSIG_QDELETING)
-	//UnregisterSignal(user, COMSIG_MOB_GHOSTIZED)
-	UnregisterSignal(user.current, COMSIG_MIND_TRANSFERRED)
+	UnregisterSignal(user, COMSIG_MOB_GHOSTIZED)
+	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
 
 	zooming = FALSE
 
