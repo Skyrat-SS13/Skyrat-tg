@@ -1,8 +1,9 @@
 /obj/machinery/washing_machine
 	can_buckle = TRUE
-
-#define WASHING_MACHINE_VAGINA_AROUSAL 2
-#define WASHING_MACHINE_PENIS_AROUSAL 0.5
+	/// If we are active, all mobs buckled to us with a penis will have arousal raised by this per second.
+	var/buckled_arousal_penis = 0.5
+	/// If we are active, all mobs buckled to us with a vagina will have arousal raised by this per second.
+	var/buckled_arousal_vagina = 2
 
 /obj/machinery/washing_machine/process(seconds_per_tick)
 	. = ..()
@@ -35,13 +36,10 @@
 
 			var/do_message = FALSE
 			if (!isnull(found_vagina))
-				buckled_human.adjust_arousal(WASHING_MACHINE_VAGINA_AROUSAL * seconds_per_tick)
+				buckled_human.adjust_arousal(buckled_arousal_vagina * seconds_per_tick)
 				do_message = TRUE
 			if (!isnull(found_penis))
-				buckled_human.adjust_arousal(WASHING_MACHINE_PENIS_AROUSAL * seconds_per_tick)
+				buckled_human.adjust_arousal(buckled_arousal_penis * seconds_per_tick)
 				do_message = TRUE
 			if (do_message && SPT_PROB(20, seconds_per_tick))
 				to_chat(buckled_human, span_userlove("[src] vibrates into your groin, and you feel a warm fuzzy feeling..."))
-
-#undef WASHING_MACHINE_VAGINA_AROUSAL
-#undef WASHING_MACHINE_PENIS_AROUSAL
