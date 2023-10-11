@@ -120,7 +120,7 @@
 	RegisterSignal(user, COMSIG_MOB_SWAP_HANDS, PROC_REF(stop_zooming))
 	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(stop_zooming))
 	RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(stop_zooming))
-	RegisterSignal(user, COMSIG_MOB_GHOSTIZED)
+	RegisterSignal(user, COMSIG_MOB_GHOSTIZED, PROC_REF(stop_zooming))
 	START_PROCESSING(SSprojectiles, src)
 
 /**
