@@ -103,15 +103,26 @@
 	return target_turf
 
 /**
- * We start zooming by hiding the mouse pointer, adding our tracker overlay and starting our processing.
+ * Wrapper for zoom(), so in case we runtime we do not get stuck in a bad state
  *
  * Arguments:
  * * user: The mob we are starting zooming on.
 */
 /datum/component/scope/proc/start_zooming(mob/living/user)
+	if(zoom(user))
+		zooming = TRUE
+
+/**
+ * We start zooming by hiding the mouse pointer, adding our tracker overlay and starting our processing.
+ *
+ * Arguments:
+ * * user: The mob we are starting zooming on.
+*/
+/datum/component/scope/proc/zoom(mob/living/user)
 	if(!user.client)
 		return
-	zooming = TRUE
+	if(zooming)
+		return
 	user.client.mouse_override_icon = 'icons/effects/mouse_pointers/scope_hide.dmi'
 	user.update_mouse_pointer()
 	user.playsound_local(parent, 'sound/weapons/scope.ogg', 75, TRUE)
@@ -119,9 +130,8 @@
 	tracker.assign_to_mob(user, range_modifier)
 	RegisterSignal(user, COMSIG_MOB_SWAP_HANDS, PROC_REF(stop_zooming))
 	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(stop_zooming))
-	RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(stop_zooming))
-	RegisterSignal(user, COMSIG_MOB_GHOSTIZED, PROC_REF(stop_zooming))
 	START_PROCESSING(SSprojectiles, src)
+	return TRUE
 
 /**
  * We stop zooming, canceling processing, resetting stuff back to normal and deleting our tracker.
@@ -138,11 +148,8 @@
 	STOP_PROCESSING(SSprojectiles, src)
 	UnregisterSignal(user, COMSIG_MOB_SWAP_HANDS)
 	UnregisterSignal(user, COMSIG_QDELETING)
-	UnregisterSignal(user, COMSIG_MOB_GHOSTIZED)
-	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
 
 	zooming = FALSE
-
 	if(user.client)
 		animate(user.client, 0.2 SECONDS, pixel_x = 0, pixel_y = 0)
 		user.client.mouse_override_icon = null
