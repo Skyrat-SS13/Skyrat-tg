@@ -14,14 +14,10 @@
 /// The max amount of dirtiness a microwave can be
 #define MAX_MICROWAVE_DIRTINESS 100
 
-<<<<<<< HEAD
-/obj/machinery/microwave//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 /// For the wireless version, and display fluff
 #define TIER_1_CELL_CHARGE_RATE 250
 
 /obj/machinery/microwave
->>>>>>> c2fb08407a0 (Microwave upgrades: Microwave PDA charging, power cells (#78717))
 	name = "microwave oven"
 	desc = "Cooks and boils stuff."
 	icon = 'icons/obj/machines/microwave.dmi'
@@ -217,22 +213,6 @@
 #define MICROWAVE_INGREDIENT_OVERLAY_SIZE 24
 
 /obj/machinery/microwave/update_overlays()
-<<<<<<< HEAD
-	// When this is the nth ingredient, whats its pixel_x?
-	var/static/list/ingredient_shifts = list(
-		// SKYRAT EDIT CHANGE START - All values offset by -3 from original
-		-3,
-		0,
-		-6,
-		1,
-		-7,
-		-1,
-		-5,
-		// SKYRAT EDIT CHANGE END
-	)
-
-=======
->>>>>>> c2fb08407a0 (Microwave upgrades: Microwave PDA charging, power cells (#78717))
 	. = ..()
 
 	// All of these will use a full icon state instead
