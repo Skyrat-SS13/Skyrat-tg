@@ -3,6 +3,8 @@
 	var/range_modifier = 1
 	/// Fullscreen object we use for tracking the shots.
 	var/atom/movable/screen/fullscreen/cursor_catcher/scope/tracker
+	/// Are we zooming currently?
+	var/zooming
 
 /datum/component/scope/Initialize(range_modifier)
 	if(!isgun(parent))
@@ -109,12 +111,16 @@
 /datum/component/scope/proc/start_zooming(mob/user)
 	if(!user.client)
 		return
+	zooming = TRUE
 	user.client.mouse_override_icon = 'icons/effects/mouse_pointers/scope_hide.dmi'
 	user.update_mouse_pointer()
 	user.playsound_local(parent, 'sound/weapons/scope.ogg', 75, TRUE)
 	tracker = user.overlay_fullscreen("scope", /atom/movable/screen/fullscreen/cursor_catcher/scope, 0)
 	tracker.assign_to_mob(user, range_modifier)
 	RegisterSignal(user, COMSIG_MOB_SWAP_HANDS, PROC_REF(stop_zooming))
+	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(stop_zooming))
+	RegisterSignal(user.current, COMSIG_MIND_TRANSFERRED, PROC_REF(stop_zooming))
+	//RegisterSignal(user, COMSIG_MOB_GHOSTIZED)
 	START_PROCESSING(SSprojectiles, src)
 
 /**
@@ -126,8 +132,17 @@
 /datum/component/scope/proc/stop_zooming(mob/user)
 	SIGNAL_HANDLER
 
+	if(!zooming)
+		return
+
 	STOP_PROCESSING(SSprojectiles, src)
 	UnregisterSignal(user, COMSIG_MOB_SWAP_HANDS)
+	UnregisterSignal(user, COMSIG_QDELETING)
+	//UnregisterSignal(user, COMSIG_MOB_GHOSTIZED)
+	UnregisterSignal(user.current, COMSIG_MIND_TRANSFERRED)
+
+	zooming = FALSE
+
 	if(user.client)
 		animate(user.client, 0.2 SECONDS, pixel_x = 0, pixel_y = 0)
 		user.client.mouse_override_icon = null
