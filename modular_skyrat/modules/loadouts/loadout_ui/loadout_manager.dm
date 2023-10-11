@@ -208,6 +208,7 @@
 /// Set [item]'s name to input provided.
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
 	var/current_name = ""
+	var/current_desc = ""
 	if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 		current_name = owner.prefs.loadout_list[item.item_path][INFO_NAMED]
 	if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])

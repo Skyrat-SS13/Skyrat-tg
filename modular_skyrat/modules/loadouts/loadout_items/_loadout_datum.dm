@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 			else
 				stack_trace("[type] on_equip_item(): Could not locate backpack item (path: [item_path]) in [equipper]'s contents to set greyscaling!")
 
-	if(can_be_named && !visuals_only && ((INFO_NAMED in our_loadout[item_path]) || INFO_DESCRIBED in our_loadout[item_path]))
+	if(can_be_named && !visuals_only)
 		var/obj/item/equipped_item = locate(item_path) in equipper.get_all_gear()
 		if(equipped_item)
 			if(INFO_NAMED in our_loadout[item_path])
@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 			if(INFO_DESCRIBED in our_loadout[item_path])
 				equipped_item.desc = our_loadout[item_path][INFO_DESCRIBED]
 		else
-			stack_trace("[type] on_equip_item(): Could not locate item (path: [item_path]) in [equipper]'s contents to set name!")
+			stack_trace("[type] on_equip_item(): Could not locate item (path: [item_path]) in [equipper]'s contents to set name/desc!")
 
 /*
  * Called after the item is equipped on [equipper], at the end of character setup.
