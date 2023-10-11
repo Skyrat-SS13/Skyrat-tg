@@ -50,13 +50,13 @@
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
-	user.balloon_alert_to_viewers("righting table...")
+	user.balloon_alert_to_viewers("flipping table upright...")
 	if(do_after(user, max_integrity * 0.25))
 		var/obj/structure/table/new_table = new table_type(src.loc)
 		new_table.update_integrity(src.get_integrity())
 		if(custom_materials)
 			new_table.set_custom_materials(custom_materials)
-		user.balloon_alert_to_viewers("table righted")
+		user.balloon_alert_to_viewers("table flipped upright")
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
