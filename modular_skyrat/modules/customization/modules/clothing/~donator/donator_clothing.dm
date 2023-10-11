@@ -1659,7 +1659,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	inhand_icon_state = "archerboots"
 
 // Donation reward for nikotheguydude
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "vickyred"
 	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material. \
 	The fabric is quite thin, and provides negligable protection or insulation, but is pleasant on the skin.\
@@ -1672,6 +1675,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	It has a strange structure, with many internal clasps, velcro straps, and attachment points. It looks like you could put some other article of clothing into it..."
 	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
 	body_parts_covered = CHEST|ARMS // not really a buff, it has 0 armor inherently so this just ends up getting it shredded
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	/// The article of clothing we have absorbed and are emulating the effects of. Nullable.
 	var/obj/item/clothing/suit/absorbed_clothing
 	/// Any subtype of a typepath entered here will be insertable into the jacket.
@@ -1679,20 +1683,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		/obj/item/clothing/suit/toggle/labcoat,
 	)
 
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/Destroy()
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/Destroy()
 	drop_clothing()
 
 	return ..()
 
 
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/examine(mob/user)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/examine(mob/user)
 	. = ..()
 
 	if (!isnull(absorbed_clothing))
 		. += "It seems to have [absorbed_clothing] inside of it... you could try [span_boldnotice("using it")] to remove the clothing!"
 
 
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/attack_self(mob/user, modifiers)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/attack_self(mob/user, modifiers)
 	if (isnull(absorbed_clothing) || !isliving(user))
 		return ..()
 
@@ -1705,7 +1709,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	drop_clothing(user)
 
 
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/attackby(obj/item/attacking_item, mob/user, params)
 	if (iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		if (carbon_user.combat_mode)
@@ -1720,8 +1724,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	return ..()
 
 
-/// Deletes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
+/// Consumes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
 	if (!isnull(absorbed_clothing))
 		balloon_alert(user, "already fitted!")
 		return FALSE
@@ -1755,7 +1759,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 
 /// Spawns a new instance of the clothing we absorbed earlier, and resets out armor, storage, and suit storage to the initial values.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/drop_clothing(mob/target)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/drop_clothing(mob/target)
 	if (isnull(absorbed_clothing))
 		return FALSE
 
@@ -1773,7 +1777,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 
 /// Returns our absorbable variables to their initial states.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/reset_variables()
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/reset_variables()
 	set_armor(initial(armor))
 	allowed = initial(allowed)
 	if (!isnull(atom_storage))
@@ -1783,7 +1787,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 
 /// Signal handler proc that clears our ref to absorbed_clothing if it qdels.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/proc/absorbed_clothing_deleted(datum/signal_source)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/absorbed_clothing_deleted(datum/signal_source)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(absorbed_clothing, COMSIG_QDELETING)
@@ -1794,7 +1798,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 #define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
 
 // this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat/donator/machine_wash(obj/machinery/washing_machine/washer)
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
 
 	var/total_credits = 0
 	var/list/obj/item/money_to_delete = list()
