@@ -1665,14 +1665,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon_state = "vickyred"
 	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material. \
-	The fabric is quite thin, and provides negligable protection or insulation, but is pleasant on the skin.\
-	\n\
-	While extremely well made, it seems quite fragile, and rather <i>expensive</i>. You get the feeling it might not <b>survive a washing machine</b> without specialized treatment."
-	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgable in Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
-	a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\
-	\n\
-	\n\
-	It has a strange structure, with many internal clasps, velcro straps, and attachment points. It looks like you could put some other article of clothing into it..."
+		The fabric is quite thin, and provides negligable protection or insulation, \
+		but is pleasant on the skin.\n While extremely well made, it seems quite \
+		fragile, and rather <i>expensive</i>. You get the feeling it might not \
+		<b>survive a washing machine</b> without specialized treatment."
+	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgeable in \
+		Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
+		a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\n\n\
+		It has a strange structure, with many internal clasps, velcro straps, and attachment points. \
+		It looks like you could put some other article of clothing into it..."
 	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
 	body_parts_covered = CHEST|ARMS // not really a buff, it has 0 armor inherently so this just ends up getting it shredded
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
