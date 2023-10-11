@@ -463,3 +463,71 @@
       glance.
   softcerv:
   - spellcheck: renames the purpura NIFSofts to libidine
+2023-10-11:
+  GoldenAlpharex:
+  - bugfix: Frogs no longer make obnoxious sounds anymore (again).
+  Melbert:
+  - bugfix: Miner's Salve, Sterilizine, and Space Cleaner now all properly affect
+      burn wounds
+  Paxilmaniac:
+  - bugfix: The quartermaster's Rengo rifle will no longer have floating bayonets
+  SkyratBot:
+  - bugfix: moved a garbage spawner on Tramstation that was causing random runtimes
+      due to sometimes spawning in space depending on which module got loaded
+  - bugfix: fixes a runtime in organ on_death()
+  - bugfix: fixed some faulty research connections in between heretic's blade and
+      rust paths.
+  - bugfix: Heretic mobs will not be summoned with AI enabled, and won't turn into
+      small animals instead of summoning a flesh stalker.
+  - bugfix: Fixed some issues in the security camera UI - pressing next or back will
+      now loop through the cameras
+  - bugfix: Fixed some style issues in the camera console where selected cams weren't
+      showing as selected
+  - bugfix: Camera console search works again
+  - bugfix: you can no longer polymorph belt into a holoparasite
+  - refactor: Revenants, the mob that's split between planes of Life and Death, have
+      been refactored into a basic mob. While this alone shouldn't touch behavior,
+      a lot of the backend code has been gutted and refactored to try and furnish
+      a better antagonist experience. This might mean that some weird stuff can come
+      up and around, report something if it's utterly broken.
+  - code_imp: In order to better facilitate some code, you do not ghost outside of
+      a revenant on death, you simply get transferred into the ectoplasm. You should
+      still be able to speak with your ghost friends on how hard you got wrecked or
+      if you'll be able to resurrect though.
+  - code_imp: The timing on revenant stuff such as being revealed, stunned, and inhibited
+      (by holy weapons) should be tweaked a bit to allow better management. This should
+      mean that getting unstunned and such should be a bit more precise now.
+  - qol: Revenant instructions are now relayed in a neat little examine block.
+  - bugfix: Wound promotion and demotion no longer removes gauze from the limb
+  - balance: The Changeling Space Suit has been replaced by a new ability which makes
+      you passively spaceproof without replacing your clothing.
+  - admin: Editing the atmos sensitivity variables on a basic mob during the game
+      will now actually do something.
+  - qol: Adds a base physical description proc to gameplay species, displays it on
+      magic mirrors. It will give a description of not the lore of the species but
+      in what way they differ from base species.
+  - bugfix: Fixes a bad subtype on magical mirrors.
+  - bugfix: Magical mirrors now give the user ADVANCEDTOOLUSER and LITERACY if they
+      lack either of them, so monkey wizards aren't softlocked.
+  - bugfix: Borg modules can no longer be sold by pirates.
+  - balance: Unholy water acts as a coagulant for cultists.
+  - bugfix: bitrunners will no longer be lumped in with assistants on the crew monitor
+      console's display
+  - bugfix: count station food verb now counts food only onstation
+  - bugfix: Antiglow now probably has negative glow power.
+  - refactor: Harvester constructs have been updated to the basic mob framework. This
+      should have very little impact on their behavior, but please report any issues.
+  - bugfix: Fixes a few runtimes with TTS and skips some code if TTS isn't enabled.
+  - sound: Add burning sound loop to bonfires and fireplaces
+  - code_imp: Improved fireplaces to only process when lit
+  - bugfix: using a magic mirror to change gender or skintone will now update your
+      icon properly to match your selection
+  - rscadd: Adds practice carbines to all firing ranges. They don't deal damage.
+  - balance: Reviver Implant now able to revive dead people.
+  nikothedude:
+  - bugfix: Chest/Heads can now be augmented in the augment menu
+  - bugfix: Augments menu color wheels now properly recognize existing color
+  - rscadd: Science can now print advanced tools
+  - rscadd: Robotics can now print advanced medical tools and health analyzers
+  - rscadd: Roboticists can now randomly get advanced engi/medical tools in the mail
+  - rscadd: Table flipping now throws everything on the table
