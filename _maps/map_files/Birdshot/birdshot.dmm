@@ -3177,6 +3177,24 @@
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron,
 /area/station/commons)
+"bnl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/right/directional/east{
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy")
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutters"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/station/medical/pharmacy)
 "bno" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7272,6 +7290,12 @@
 /obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/smooth_large,
 /area/station/service/bar)
+"cOL" = (
+/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron,
+/area/station/maintenance/department/engine/atmos)
 "cOQ" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -20089,11 +20113,6 @@
 /obj/structure/broken_flooring/singular/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
-"hln" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/yellow/opposingcorners,
-/turf/open/floor/iron,
-/area/station/maintenance/department/engine/atmos)
 "hlo" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/camera/autoname/directional/north,
@@ -21160,12 +21179,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"hDn" = (
-/obj/effect/turf_decal/tile/yellow/opposingcorners,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/iron,
-/area/station/maintenance/department/engine/atmos)
 "hDt" = (
 /obj/structure/toilet{
 	pixel_y = 8
@@ -42298,6 +42311,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/science/cytology)
+"pdW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/turf/open/floor/iron,
+/area/station/maintenance/department/engine/atmos)
 "pdY" = (
 /obj/machinery/portable_atmospherics/canister/bz,
 /turf/open/floor/iron/diagonal,
@@ -53075,25 +53093,6 @@
 	dir = 8
 	},
 /area/station/commons/dorms)
-"svU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/yellow/full,
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/window/right/directional/east{
-	dir = 8;
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutters"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/station/medical/pharmacy)
 "svZ" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
@@ -84213,7 +84212,7 @@ yjE
 fPv
 dja
 bNq
-hln
+pdW
 dIm
 dQY
 ecq
@@ -84470,7 +84469,7 @@ yjE
 uYG
 djC
 bNq
-hDn
+cOL
 dIe
 dRE
 ecF
@@ -104613,7 +104612,7 @@ wfr
 nPd
 wfr
 nPd
-svU
+bnl
 uxJ
 wfr
 wfr
