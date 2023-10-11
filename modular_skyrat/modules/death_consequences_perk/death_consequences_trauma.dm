@@ -9,10 +9,10 @@
 	desc = DEATH_CONSEQUENCES_QUIRK_DESC
 	scan_desc = "resonance degradation"
 	gain_text = span_warning("For a brief moment, you completely disassociate.")
-	lose_text = span_notice("You feel like you have a firm grasp on your conciousness again!")
+	lose_text = span_notice("You feel like you have a firm grasp on your consciousness again!")
 	random_gain = FALSE
 
-	/// The current degradation we are currently at. Genreally speaking, things get worse the higher this is. Can never go below 0.
+	/// The current degradation we are currently at. Generally speaking, things get worse the higher this is. Can never go below 0.
 	var/current_degradation = 0
 	/// The absolute maximum degradation we can receive. Will cause permadeath if [permakill_if_at_max_degradation] is TRUE.
 	var/max_degradation = DEATH_CONSEQUENCES_DEFAULT_MAX_DEGRADATION // arbitrary
@@ -81,7 +81,7 @@
 	/// The current level of degradation. Used mostly for reminder messages.
 	var/current_degradation_level = DEGRADATION_LEVEL_NONE
 
-	// Will be iterated through sequentially, so the higher a path is, the quicker itll be searched
+	// Will be iterated through sequentially, so the higher a path is, the quicker it'll be searched
 	// Make sure to put the larger bonuses and more specific types higher than the generic ones
 	/// A assoc list of (atom/movable typepath -> mult), where mult is used as a multiplier against passive living degradation reduction.
 	var/static/list/buckled_to_recovery_mult_table = list(
@@ -97,7 +97,7 @@
 	/// Only used if the thing we are buckled to is not in [buckled_to_recovery_mult_table].
 	var/static/buckled_to_default_mult = 1.15
 
-	/// Messages that will be sent to our victim a. randombly, b. if their degradation moves to a new threshold.
+	/// The random messages that will be sent to our victim if their degradation moves to a new threshold.
 	var/static/list/degradation_messages = list(
 		DEGRADATION_LEVEL_LOW = list(
 			span_warning("Your body aches a little.") = 10,
@@ -112,7 +112,7 @@
 		DEGRADATION_LEVEL_HIGH = list(
 			span_bolddanger("Your entire body throbs!") = 10,
 			span_bolddanger("You feel like you're losing your grip on yourself!") = 10,
-			span_bolddanger("Your conciousness feels as fragile as a sheet of glass!") = 10,
+			span_bolddanger("Your consciousness feels as fragile as a sheet of glass!") = 10,
 			span_bolddanger("You feel exhausted in every single possible way!") = 10,
 		),
 		DEGRADATION_LEVEL_CRITICAL = list(
@@ -187,7 +187,7 @@
 
 	adjust_degradation(degradation_increase - degradation_reduction)
 
-	// Ensure our victims stamina is at or above our minimum stamina damage
+	// Ensure our victim's stamina is at or above our minimum stamina damage
 	if (!is_dead)
 		damage_stamina(seconds_per_tick)
 
@@ -324,17 +324,18 @@
 	var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
 	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
 	var/minimum_stamina_damage = max_stamina_damage * percent_to_max
-	// need to use a buffer because of some imprecision i noticed
+	// need to use a buffer because of some imprecision I noticed
 
+	var/owner_staminaloss = owner.getStaminaLoss()
 	if (minimum_stamina_damage <= 0)
 		return
-	if (owner.staminaloss > (minimum_stamina_damage + 1))
+	if (owner_staminaloss > (minimum_stamina_damage + 1))
 		return
-	else if ((owner.staminaloss >= (minimum_stamina_damage - 1)) && (owner.staminaloss <= (minimum_stamina_damage + 1)))
+	else if ((owner_staminaloss >= (minimum_stamina_damage - 1)) && (owner_staminaloss <= (minimum_stamina_damage + 1)))
 		owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
 		return
 
-	var/final_adjustment = (minimum_stamina_damage - owner.staminaloss)
+	var/final_adjustment = (minimum_stamina_damage - owner_staminaloss)
 	owner.adjustStaminaLoss(final_adjustment) // we adjust instead of set for things like stamina regen timer
 
 /datum/brain_trauma/severe/death_consequences/proc/send_reminder(update_cooldown = TRUE)
@@ -351,7 +352,7 @@
 /// The proc we call when we permanently kill our victim due to being at maximum degradation. DNRs them, ghosts/kills them, and prints a series of highly dramatic messages,
 /// befitting for a death such as this.
 /datum/brain_trauma/severe/death_consequences/proc/and_so_your_story_ends()
-	ADD_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT) // youre gone bro
+	ADD_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT) // you're gone bro
 	final_death_delivered = TRUE
 
 	// this is a sufficiently dramatic event for some dramatic to_chats
@@ -395,7 +396,7 @@
 /datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_link_text(mob/user)
 	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
 	if (final_death_delivered)
-		message += span_purple("<i>\nNeural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
+		message += span_purple("<i>\nNeural patterns are equivalent to the consciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
 	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
@@ -429,7 +430,7 @@
 /datum/brain_trauma/severe/death_consequences/proc/get_specific_data()
 	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
 	if (final_death_delivered)
-		message += span_purple("<i>\nNeural patterns are equivilant to the conciousness zero-point. Subject has likely succumbed.</i>")
+		message += span_purple("<i>\nNeural patterns are equivalent to the consciousness zero-point. Subject has likely succumbed.</i>")
 		return message
 
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
@@ -441,7 +442,7 @@
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
 			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]")]</b>x.")
 		if (on_stasis_death_degradation_mult < 1)
-			message += span_danger(" Stasis may be effective in slowing, or even stopping, degradation.")
+			message += span_danger(" Stasis may be effective in slowing (or even stopping) degradation.")
 	if (base_degradation_on_death)
 		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
 	if (owner_organic && rezadone_degradation_decrease)
@@ -451,7 +452,7 @@
 	if (owner_organic && sansufentanyl_degradation_decrease)
 		message += span_danger("\nSansufentanyl will reduce degradation by [span_blue("[sansufentanyl_degradation_decrease]")] per second when metabolized.")
 	if (eigenstasium_degradation_decrease)
-		message += span_danger("\nEigenstasium will reduce degradation by [span_blue("[eigenstasium_degradation_decrease]")] per second.")
+		message += span_danger("\nEigenstasium will reduce degradation by [span_blue("[eigenstasium_degradation_decrease]")] per second when present.")
 
 	message += span_danger("\nAll degradation reduction can be [span_blue("expedited")] by [span_blue("resting, sleeping, or being buckled to something comfortable")].")
 
@@ -482,14 +483,14 @@
 		final_death_delivered = FALSE
 		REMOVE_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT)
 
-/// Resets all our variables to our victim's preferences, if they have any. Used for the initial setup, then any time our victim manually refreshses variables.
+/// Resets all our variables to our victim's preferences, if they have any. Used for the initial setup, then any time our victim manually refreshes variables.
 /datum/brain_trauma/severe/death_consequences/proc/update_variables()
 	var/datum/preferences/victim_prefs = owner.client?.prefs
 	if (!victim_prefs)
 		return
 
 	max_degradation = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/max_degradation)
-	current_degradation = clamp(victim_prefs.read_preference(/datum/preference/numeric/death_consequences/starting_degradation), 0, max_degradation - 1) // lets not let people instantly fucking die
+	current_degradation = clamp(victim_prefs.read_preference(/datum/preference/numeric/death_consequences/starting_degradation), 0, max_degradation - 1) // let's not let people instantly fucking die
 
 	base_degradation_reduction_per_second_while_alive = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/living_degradation_recovery_per_second)
 	base_degradation_per_second_while_dead = victim_prefs.read_preference(/datum/preference/numeric/death_consequences/dead_degradation_per_second)

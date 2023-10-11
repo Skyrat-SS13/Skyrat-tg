@@ -1,7 +1,7 @@
 /datum/quirk/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
-	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired. This quirk is highly customizable - see your bottom right \
-	preferences section after selecting it."
+	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired. This quirk is highly customizable - See 'DC Config' \
+	in bottom-right Character preferences section after selecting it."
 	medical_record_text = DEATH_CONSEQUENCES_QUIRK_DESC
 	icon = FA_ICON_DNA
 	value = 0 // due to its high customization, you can make it realllly good or reallllly bad
@@ -38,7 +38,7 @@
 		return
 
 	if (!isnum(increment))
-		to_chat(usr, span_warning("You can artificially change the degradation of your resonance degradation with this verb. \
+		to_chat(usr, span_warning("You can artificially change the current level of your resonance degradation with this verb. \
 		You can use this to cause degradation in ways the customization cannot. <b>You need to enter a number to use this verb.</b>"))
 		return
 

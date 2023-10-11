@@ -875,7 +875,7 @@ export const pod_hair_emissive: Feature<boolean> = {
 // SKYRAT EDIT ADDITION BEGIN - DEATH CONSEQUENCES QUIRK
 // all will be prefixed with DC to keep them all in one place
 export const dc_expand_options: Feature<boolean> = {
-  name: 'DC Options',
+  name: 'DC Config',
   description: 'Expand all options for the death consequences quirk.',
   component: CheckboxInput,
 };
@@ -925,7 +925,7 @@ export const dc_degradation_on_death: Feature<number> = {
 };
 
 export const dc_formeldahyde_dead_degradation_mult: Feature<number> = {
-  name: 'DC Passive death deg. formadahyde mult',
+  name: 'DC Passive death deg. formaldehyde mult',
   description:
     'When dead, passive degradation will be reduced by this if you are formaldehyded.',
   component: FeatureNumberInput,
