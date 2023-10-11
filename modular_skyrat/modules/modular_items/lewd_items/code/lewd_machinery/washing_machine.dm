@@ -22,8 +22,7 @@
 			var/covered = FALSE
 			for (var/obj/item/clothing/iter_clothing in buckled_human.get_all_worn_items())
 				if (!(iter_clothing.body_parts_covered & GROIN))
-					covered = TRUE
-					break
+					continue
 				if (iter_clothing.clothing_flags & THICKMATERIAL)
 					covered = TRUE
 					break
