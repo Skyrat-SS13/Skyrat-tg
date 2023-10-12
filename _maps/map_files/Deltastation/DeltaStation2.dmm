@@ -17333,12 +17333,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
-"enj" = (
-/obj/structure/table/reinforced,
-/obj/machinery/microwave,
-/obj/structure/sign/poster/random/directional/west,
-/turf/open/floor/wood,
-/area/station/engineering/break_room)
 "enq" = (
 /obj/item/folder/yellow,
 /obj/item/multitool,
@@ -22604,6 +22598,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
+"fCm" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "chemisttop";
+	name = "Pharmacy Shutters"
+	},
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "fCn" = (
 /obj/machinery/door/airlock/medical{
 	name = "Medical Break Room"
@@ -24965,16 +24969,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
-"gfK" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
-	id = "chemisttop";
-	name = "Pharmacy Shutters"
-	},
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "gfR" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -25160,6 +25154,39 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"giO" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/desk_bell{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/folder/yellow{
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/obj/item/pen{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "chemisttop";
+	name = "Pharmacy Shutters"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/window/left/directional/west{
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy");
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/medical/pharmacy)
 "giY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/contraband/random/directional/north,
@@ -51844,39 +51871,6 @@
 /obj/effect/turf_decal/tile/neutral/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/interrogation)
-"mUh" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/structure/desk_bell{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/item/folder/yellow{
-	pixel_x = -3;
-	pixel_y = -6
-	},
-/obj/item/pen{
-	pixel_x = -3;
-	pixel_y = -2
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
-	id = "chemisttop";
-	name = "Pharmacy Shutters"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/door/window/left/directional/west{
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy");
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/medical/pharmacy)
 "mUt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -72845,6 +72839,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/port)
+"sjJ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/structure/sign/poster/random/directional/west,
+/turf/open/floor/wood,
+/area/station/engineering/break_room)
 "ske" = (
 /obj/effect/spawner/random/entertainment/arcade,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -119146,7 +119146,7 @@ uiP
 vkg
 wlS
 vQj
-enj
+sjJ
 cJX
 fhr
 kTd
@@ -136923,8 +136923,8 @@ uNY
 squ
 pEU
 cwh
-gfK
-mUh
+fCm
+giO
 cwh
 cwh
 udd

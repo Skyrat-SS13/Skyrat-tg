@@ -261,6 +261,16 @@
 	name = "Holodeck Projector Floor"
 	},
 /area/station/holodeck/rec_center)
+"afF" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/checker,
+/area/station/engineering/storage_shared)
 "afZ" = (
 /obj/machinery/vending/coffee,
 /obj/structure/disposalpipe/segment,
@@ -6253,6 +6263,30 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
+"cph" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/machinery/door/firedoor,
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/item/pen,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "pharmacy_shutters_2";
+	name = "Pharmacy Shutters"
+	},
+/obj/machinery/door/window/right/directional/east{
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy")
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "cpi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit/green{
@@ -15542,6 +15576,15 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"fLn" = (
+/obj/effect/spawner/random/decoration/microwave{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/carpet,
+/area/station/command/corporate_showroom)
 "fLp" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -18538,32 +18581,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
-"gSG" = (
-/obj/structure/table/reinforced,
-/obj/item/folder/white{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/machinery/door/firedoor,
-/obj/item/folder/white{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutters"
-	},
-/obj/structure/desk_bell{
-	pixel_x = -8
-	},
-/obj/machinery/door/window/left/directional/north{
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "gSH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/machinery/rnd/server/master,
@@ -26983,15 +27000,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
-"jJu" = (
-/obj/structure/showcase/machinery/microwave{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/table/wood,
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/carpet,
-/area/station/command/corporate_showroom)
 "jJC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/lattice/catwalk,
@@ -29646,17 +29654,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
-"kGg" = (
-/obj/structure/table/reinforced,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/tile/neutral/opposingcorners{
-	dir = 1
-	},
-/obj/machinery/digital_clock/directional/south,
-/turf/open/floor/iron/dark,
-/area/station/medical/break_room)
 "kGq" = (
 /obj/machinery/light/directional/south,
 /obj/structure/disposalpipe/segment{
@@ -40420,30 +40417,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
-"oxH" = (
-/obj/structure/table/reinforced,
-/obj/item/folder/white{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/machinery/door/firedoor,
-/obj/item/folder/white{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/item/pen,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
-	id = "pharmacy_shutters_2";
-	name = "Pharmacy Shutters"
-	},
-/obj/machinery/door/window/right/directional/east{
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "oxR" = (
 /obj/structure/table,
 /obj/item/pipe_dispenser{
@@ -41529,6 +41502,32 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"oTp" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/machinery/door/firedoor,
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutters"
+	},
+/obj/structure/desk_bell{
+	pixel_x = -8
+	},
+/obj/machinery/door/window/left/directional/north{
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy")
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "oTD" = (
 /obj/structure/frame/computer,
 /turf/open/floor/plating/airless,
@@ -62570,18 +62569,6 @@
 /obj/effect/landmark/start/hangover/closet,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
-"wiK" = (
-/obj/structure/table/reinforced,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/stripes/corner,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/iron/checker,
-/area/station/engineering/storage_shared)
 "wiS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -66861,6 +66848,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
+"xMk" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/effect/turf_decal/tile/neutral/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/digital_clock/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/medical/break_room)
 "xMl" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=15-Court";
@@ -89300,7 +89296,7 @@ nGr
 aST
 tBs
 vRN
-kGg
+xMk
 rOF
 ryf
 vnV
@@ -94671,7 +94667,7 @@ bKB
 eAL
 xQY
 kcF
-gSG
+oTp
 oar
 keK
 lXA
@@ -94935,7 +94931,7 @@ hYA
 jsh
 rvE
 tZJ
-oxH
+cph
 tZJ
 eIO
 wKC
@@ -95174,7 +95170,7 @@ jzN
 sUy
 dkL
 uOd
-jJu
+fLn
 jzN
 qyI
 qaP
@@ -110056,7 +110052,7 @@ qjl
 wlx
 qPT
 jRb
-wiK
+afF
 qsv
 sKD
 lUz

@@ -3664,16 +3664,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
-"avM" = (
-/obj/structure/table/reinforced,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/tile/neutral/opposingcorners{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/station/medical/break_room)
 "avP" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
@@ -10454,15 +10444,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
-"cze" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters_2";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/medical/pharmacy)
 "czg" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -13785,24 +13766,6 @@
 	},
 /turf/open/openspace,
 /area/station/hallway/primary/tram/left)
-"dII" = (
-/obj/structure/table/reinforced,
-/obj/structure/desk_bell{
-	pixel_x = -7
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters_2";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/window/left/directional/south{
-	dir = 4;
-	name = "Chemistry Desk";
-	req_access = list("pharmacy")
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "dIK" = (
 /turf/closed/wall/r_wall,
 /area/station/science/ordnance/freezerchamber)
@@ -26814,6 +26777,15 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+"iHQ" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters_2";
+	name = "Pharmacy Shutters"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "iHT" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner,
 /obj/structure/disposalpipe/segment,
@@ -35162,15 +35134,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"lxJ" = (
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters_2";
-	name = "Pharmacy Shutters"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "lxW" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/firealarm/directional/south,
@@ -42300,17 +42263,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
-"nYJ" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 9
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/table/glass,
-/obj/machinery/microwave,
-/obj/structure/cable,
-/obj/machinery/light/warm/directional/west,
-/turf/open/floor/iron,
-/area/station/engineering/break_room)
 "nYL" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple/layer2{
 	dir = 8
@@ -42349,6 +42301,21 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningdock)
+"nZy" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/west,
+/obj/structure/table/glass,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/item/storage/box/donkpockets/donkpocketberry{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/turf/open/floor/iron,
+/area/station/engineering/break_room)
 "nZL" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
@@ -43375,17 +43342,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/lower)
-"otF" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/machinery/firealarm/directional/west,
-/obj/structure/table/glass,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/iron,
-/area/station/engineering/break_room)
 "otP" = (
 /obj/structure/railing/corner{
 	dir = 8
@@ -45402,6 +45358,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/primary/tram/left)
+"plq" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters_2";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/station/medical/pharmacy)
 "plr" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm3";
@@ -45531,6 +45497,24 @@
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
+"pmZ" = (
+/obj/structure/table/reinforced,
+/obj/structure/desk_bell{
+	pixel_x = -7
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters_2";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/left/directional/south{
+	dir = 4;
+	name = "Chemistry Desk";
+	req_access = list("pharmacy")
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "pne" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
@@ -48834,6 +48818,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet)
+"qul" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 9
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/table/glass,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/structure/cable,
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/iron,
+/area/station/engineering/break_room)
 "qup" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -59248,6 +59243,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
+"udE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters_2";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/medical/pharmacy)
 "udO" = (
 /obj/structure/chair/stool/bar/directional/south,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -60444,16 +60448,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/drone_bay)
-"uwS" = (
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters_2";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plating,
-/area/station/medical/pharmacy)
 "uxj" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -67189,6 +67183,14 @@
 "wQm" = (
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"wQq" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/effect/turf_decal/tile/neutral/opposingcorners{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/medical/break_room)
 "wQr" = (
 /obj/effect/turf_decal/weather/snow,
 /obj/machinery/vending/wardrobe/chef_wardrobe,
@@ -102074,8 +102076,8 @@ akI
 cJM
 ulV
 bbj
-nYJ
-otF
+qul
+nZy
 ryJ
 gzZ
 cFP
@@ -165294,7 +165296,7 @@ dVj
 wrT
 xqO
 suG
-lxJ
+iHQ
 ryy
 aKM
 jaQ
@@ -166315,9 +166317,9 @@ cYi
 uQT
 sBr
 jyH
-uwS
-dII
-cze
+plq
+pmZ
+udE
 jyH
 jyH
 jyH
@@ -170198,7 +170200,7 @@ gVO
 vXT
 cyL
 nen
-avM
+wQq
 adM
 oGJ
 qaO

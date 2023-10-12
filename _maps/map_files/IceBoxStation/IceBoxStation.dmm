@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaf" = (
+/obj/structure/table/glass,
+/obj/machinery/microwave/engineering/cell_included,
+/obj/effect/turf_decal/tile/brown/anticorner/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/break_room)
 "aak" = (
 /obj/structure/stairs/south,
 /obj/structure/railing{
@@ -1045,6 +1053,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"arO" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/light/directional/south,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "arT" = (
 /obj/machinery/computer/security/labor{
 	dir = 4
@@ -3211,28 +3225,6 @@
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
-"aZO" = (
-/obj/machinery/camera{
-	c_tag = "Medbay Pharmacy";
-	dir = 9;
-	network = list("ss13","medbay")
-	},
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 1
-	},
-/obj/machinery/shower/directional/south,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/fluff{
-	desc = "What, you think the water just magically soaks into the metallic flooring?";
-	icon = 'icons/obj/mining_zones/survival_pod.dmi';
-	icon_state = "fan_tiny";
-	name = "shower drain"
-	},
-/obj/effect/turf_decal/stripes/white/end,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "aZV" = (
 /obj/effect/landmark/start/atmospheric_technician,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10722,6 +10714,30 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/station/science/xenobiology)
+"dff" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/right/directional/east{
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy")
+	},
+/obj/item/folder/white{
+	pixel_x = -5
+	},
+/obj/item/pen{
+	pixel_x = -5
+	},
+/obj/structure/desk_bell{
+	pixel_x = 7
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/medical/pharmacy)
 "dfq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/closed/wall/r_wall,
@@ -11978,24 +11994,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"dyR" = (
-/obj/structure/table/glass,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/screwdriver{
-	pixel_x = 2;
-	pixel_y = 11
-	},
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/item/grenade/chem_grenade,
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 1
-	},
-/obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "dyW" = (
 /obj/structure/sign/poster/official/random/directional/south,
 /obj/structure/table/optable{
@@ -16959,6 +16957,24 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/chapel)
+"fdO" = (
+/obj/structure/table/glass,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/screwdriver{
+	pixel_x = 2;
+	pixel_y = 11
+	},
+/obj/item/grenade/chem_grenade,
+/obj/item/grenade/chem_grenade,
+/obj/item/grenade/chem_grenade,
+/obj/item/grenade/chem_grenade,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "fdP" = (
 /obj/structure/bonfire,
 /obj/item/melee/roastingstick,
@@ -17157,6 +17173,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
+"fib" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters2";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "fij" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -17735,30 +17761,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore/lesser)
-"frp" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/window/right/directional/east{
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
-/obj/item/folder/white{
-	pixel_x = -5
-	},
-/obj/item/pen{
-	pixel_x = -5
-	},
-/obj/structure/desk_bell{
-	pixel_x = 7
-	},
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/medical/pharmacy)
 "frq" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -17895,6 +17897,28 @@
 /obj/item/storage/box/prisoner,
 /turf/open/floor/iron/showroomfloor,
 /area/station/security/processing)
+"ftB" = (
+/obj/machinery/camera{
+	c_tag = "Medbay Pharmacy";
+	dir = 9;
+	network = list("ss13","medbay")
+	},
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/shower/directional/south,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/fluff{
+	desc = "What, you think the water just magically soaks into the metallic flooring?";
+	icon = 'icons/obj/mining_zones/survival_pod.dmi';
+	icon_state = "fan_tiny";
+	name = "shower drain"
+	},
+/obj/effect/turf_decal/stripes/white/end,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "ftJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -22230,6 +22254,25 @@
 /obj/item/reagent_containers/dropper,
 /turf/open/floor/iron/cafeteria,
 /area/station/science/lab)
+"gNA" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/white,
+/obj/item/pen,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/right/directional/east{
+	base_state = "left";
+	icon_state = "left";
+	name = "Pharmacy Desk";
+	req_access = list("pharmacy")
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters2";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/medical/pharmacy)
 "gNH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -33557,6 +33600,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/maint)
+"kpb" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "kpf" = (
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/machinery/oven/range,
@@ -35227,6 +35279,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/medical/cryo)
+"kNg" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "kNi" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -42524,16 +42586,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/evidence)
-"ncY" = (
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "ndb" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/computer/atmos_control/ordnancemix{
@@ -42997,6 +43049,14 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/morgue)
+"njP" = (
+/obj/machinery/chem_mass_spec,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
+	dir = 8
+	},
+/obj/structure/sign/warning/no_smoking/directional/west,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "njT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -44945,15 +45005,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
-"nKs" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/medical/pharmacy)
 "nKG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -45957,15 +46008,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
-"ocF" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/north,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "ocY" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/spawner/random/engineering/tracking_beacon,
@@ -52565,16 +52607,6 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plating,
 /area/station/commons/storage/mining)
-"qan" = (
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters2";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "qau" = (
 /obj/structure/fence{
 	dir = 4
@@ -55795,6 +55827,14 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/station/service/bar)
+"qYp" = (
+/obj/machinery/chem_dispenser,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/pharmacy)
 "qYw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -58890,25 +58930,6 @@
 /obj/structure/cable,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
-"rXq" = (
-/obj/structure/table/reinforced,
-/obj/item/folder/white,
-/obj/item/pen,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/window/right/directional/east{
-	base_state = "left";
-	icon_state = "left";
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
-/obj/effect/turf_decal/tile/yellow/fourcorners,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "pharmacy_shutters2";
-	name = "Pharmacy Shutters";
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/medical/pharmacy)
 "rXr" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -62124,14 +62145,6 @@
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet/locker)
-"sVt" = (
-/obj/machinery/chem_dispenser,
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/tile/yellow/full,
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron/white/smooth_large,
-/area/station/medical/pharmacy)
 "sVL" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
@@ -68236,12 +68249,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
-"uXn" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/machinery/light/directional/south,
-/obj/structure/extinguisher_cabinet/directional/south,
-/turf/open/floor/iron,
-/area/station/hallway/primary/starboard)
 "uXu" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -74095,14 +74102,6 @@
 "wNO" = (
 /turf/open/genturf,
 /area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
-"wNP" = (
-/obj/structure/table/glass,
-/obj/machinery/microwave,
-/obj/effect/turf_decal/tile/brown/anticorner/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/break_room)
 "wNQ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -74761,6 +74760,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"wWn" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/medical/pharmacy)
 "wWJ" = (
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
@@ -77197,14 +77205,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
-"xGo" = (
-/obj/machinery/chem_mass_spec,
-/obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
-	dir = 8
-	},
-/obj/structure/sign/warning/no_smoking/directional/west,
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
 "xGp" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/left/directional/north{
@@ -243858,7 +243858,7 @@ bai
 azw
 jqE
 kZb
-xGo
+njP
 azw
 fMg
 fqW
@@ -244627,7 +244627,7 @@ lso
 dEV
 bai
 azw
-dyR
+fdO
 fTC
 xSu
 azw
@@ -244882,9 +244882,9 @@ exw
 exw
 cwh
 dEV
-uXn
+arO
 azw
-aZO
+ftB
 eyc
 qPt
 uTc
@@ -245402,8 +245402,8 @@ cJw
 dip
 bHO
 azw
-rXq
-qan
+gNA
+fib
 azw
 eiY
 tZm
@@ -245655,7 +245655,7 @@ vwO
 hHg
 bai
 azw
-ocF
+kpb
 uTk
 sJA
 sHc
@@ -245912,7 +245912,7 @@ lso
 aAa
 bai
 azw
-sVt
+qYp
 vYH
 nah
 azw
@@ -246426,9 +246426,9 @@ mqq
 kjK
 bai
 azw
-nKs
-frp
-ncY
+wWn
+dff
+kNg
 azw
 gIY
 iBj
@@ -251337,7 +251337,7 @@ xMM
 nqd
 ttO
 mFE
-wNP
+aaf
 pWY
 rQI
 phj
