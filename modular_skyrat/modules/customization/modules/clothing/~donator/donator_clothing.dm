@@ -1659,147 +1659,34 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	inhand_icon_state = "archerboots"
 
 // Donation reward for nikotheguydude
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "vickyred"
 	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material. \
 		The fabric is quite thin, and provides negligable protection or insulation, \
-		but is pleasant on the skin.\n While extremely well made, it seems quite \
+		but is pleasant on the skin.\nWhile extremely well made, it seems quite \
 		fragile, and rather <i>expensive</i>. You get the feeling it might not \
 		<b>survive a washing machine</b> without specialized treatment."
 	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgeable in \
 		Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
 		a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\n\n\
-		It has a strange structure, with many internal clasps, velcro straps, and attachment points. \
-		It looks like you could put some other article of clothing into it..."
+		On a closer inspection, it would appear the interior is modified with protective material and mounting points \
+		most often found on medical labcoats."
 	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
-	body_parts_covered = CHEST|ARMS // not really a buff, it has 0 armor inherently so this just ends up getting it shredded
+	body_parts_covered = CHEST|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	/// The article of clothing we have absorbed and are emulating the effects of. Nullable.
-	var/obj/item/clothing/suit/absorbed_clothing
-	/// Any subtype of a typepath entered here will be insertable into the jacket.
-	var/static/list/obj/item/clothing/suit/clothing_we_can_absorb = list(
-		/obj/item/clothing/suit/toggle/labcoat,
-	)
 
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/Destroy()
-	drop_clothing()
-
-	return ..()
-
-
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/examine(mob/user)
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
 	. = ..()
 
-	if (!isnull(absorbed_clothing))
-		. += "It seems to have [absorbed_clothing] inside of it... you could try [span_boldnotice("using it")] to remove the clothing!"
-
-
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/attack_self(mob/user, modifiers)
-	if (isnull(absorbed_clothing) || !isliving(user))
-		return ..()
-
-	var/mob/living/living_user = user
-
-	user.balloon_alert_to_viewers("removing fitted clothing...")
-	if (!do_after(living_user, 3 SECONDS, src))
-		return
-	user.balloon_alert_to_viewers("clothing removed")
-	drop_clothing(user)
-
-
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/attackby(obj/item/attacking_item, mob/user, params)
-	if (iscarbon(user))
-		var/mob/living/carbon/carbon_user = user
-		if (carbon_user.combat_mode)
-			return ..()
-
-	for (var/obj/item/clothing/suit/absorbable_type as anything in clothing_we_can_absorb)
-		if (!istype(attacking_item, absorbable_type))
-			continue
-		absorb_clothing(attacking_item, user)
-		return FALSE
-
-	return ..()
-
-
-/// Consumes the article of clothing we are about to emulate, and applies its armor, storage, and suit storage variables to us.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/absorb_clothing(obj/item/clothing/suit/clothing_to_absorb, mob/living/user)
-	if (!isnull(absorbed_clothing))
-		balloon_alert(user, "already fitted!")
-		return FALSE
-	if (iscarbon(loc))
-		var/mob/living/carbon/carbon_loc = loc
-		if (src in carbon_loc.get_all_worn_items())
-			balloon_alert(user, "take it off first!")
-			return FALSE
-	if (!isnull(clothing_to_absorb.atom_storage))
-		var/atom/resolve_location = clothing_to_absorb.atom_storage.real_location?.resolve()
-		if (length(resolve_location?.contents))
-			clothing_to_absorb.balloon_alert(user, "take things out first!") // put it on the insertee so we go "oh THIS has stuff in it"
-			return FALSE
-
-	user.balloon_alert_to_viewers("inserting clothing...")
-	if (!do_after(user, 3 SECONDS, src))
-		return FALSE
-	user.balloon_alert_to_viewers("clothing inserted")
-	playsound(user, clothing_to_absorb.drop_sound, DROP_SOUND_VOLUME, FALSE)
-
-	absorbed_clothing = clothing_to_absorb
-	set_armor(clothing_to_absorb.get_armor())
-	allowed = clothing_to_absorb.allowed
-	if (!isnull(clothing_to_absorb.atom_storage))
-		clone_storage(clothing_to_absorb.atom_storage)
-		atom_storage.set_real_location(clothing_to_absorb) // prevents the inserted item from showing up in storage
-
-	clothing_to_absorb.forceMove(src)
-	RegisterSignal(absorbed_clothing, COMSIG_QDELETING, PROC_REF(absorbed_clothing_deleted))
-	name += " ([absorbed_clothing.name])"
-
-
-/// Spawns a new instance of the clothing we absorbed earlier, and resets out armor, storage, and suit storage to the initial values.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/drop_clothing(mob/target)
-	if (isnull(absorbed_clothing))
-		return FALSE
-
-	if (iscarbon(target))
-		var/mob/living/carbon/carbon_target = target
-		INVOKE_ASYNC(carbon_target, TYPE_PROC_REF(/mob/living/carbon, put_in_hands), absorbed_clothing)
-	else
-		absorbed_clothing.forceMove(get_turf(src)) // put it on the ground
-	playsound(loc, absorbed_clothing.drop_sound, DROP_SOUND_VOLUME, FALSE)
-
-	UnregisterSignal(absorbed_clothing, COMSIG_QDELETING)
-	absorbed_clothing = null
-
-	reset_variables()
-
-
-/// Returns our absorbable variables to their initial states.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/reset_variables()
-	set_armor(initial(armor))
-	allowed = initial(allowed)
-	if (!isnull(atom_storage))
-		INVOKE_ASYNC(atom_storage, TYPE_PROC_REF(/datum/storage, dump_content_at), get_turf(src))
-	QDEL_NULL(atom_storage)
-	name = initial(name)
-
-
-/// Signal handler proc that clears our ref to absorbed_clothing if it qdels.
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/proc/absorbed_clothing_deleted(datum/signal_source)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(absorbed_clothing, COMSIG_QDELETING)
-	reset_variables()
-	absorbed_clothing = null
-
+	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
 
 #define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
 
 // this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
-/obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
 
 	var/total_credits = 0
 	var/list/obj/item/money_to_delete = list()
@@ -1825,7 +1712,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		for (var/obj/item/entry_to_delete as anything in money_to_delete)
 			qdel(entry_to_delete)
 	else // IT COSTS ME A THOUSAND CREDITS TO WASH THIS!! HALF MY BUDGET IS DRY CLEANING
-		message = span_warning("[src]'s delicate fabric is shredded by [washer]! How horrible!")
+		message = span_warning("[src]'s delicate fabric is shredded by [washer]! How terrible!")
 		sound_effect_path = 'sound/effects/cloth_rip.ogg'
 		sound_effect_volume = 30
 		for (var/zone as anything in cover_flags2body_zones(body_parts_covered))

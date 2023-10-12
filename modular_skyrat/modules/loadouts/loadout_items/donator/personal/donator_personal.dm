@@ -722,5 +722,5 @@
 
 /datum/loadout_item/suit/nobility_dresscoat
 	name = "Nobility Dresscoat"
-	item_path = /obj/item/clothing/suit/costume/skyrat/vic_dresscoat_donator
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	ckeywhitelist = list("nikotheguydude")
