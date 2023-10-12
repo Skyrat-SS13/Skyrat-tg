@@ -214,8 +214,8 @@
 	if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
 		current_desc = owner.prefs.loadout_list[item.item_path][INFO_DESCRIBED]
 
-	var/input_name = stripped_input(owner, "What name do you want to give [item.name]? Leave blank to clear.", "[item.name] name", current_name, MAX_NAME_LEN)
-	var/input_desc = stripped_input(owner, "What description do you want to give [item.name]? [MAX_MESSAGE_LEN] character max, leave blank to clear.", "[item.name] description", current_desc, MAX_MESSAGE_LEN)
+	var/input_name = tgui_input_text(owner, "What name do you want to give [item.name]? Leave blank to clear.", "[item.name] name", current_name, MAX_NAME_LEN)
+	var/input_desc = tgui_input_text(owner, "What description do you want to give [item.name]? 256 character max, leave blank to clear.", "[item.name] description", current_desc, 256, multiline = TRUE)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(owner.prefs))
 		return
 
