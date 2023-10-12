@@ -49,7 +49,7 @@
 	/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2, \
 )
 
-// for .35 Sol Ripper. one day, anon. one day
+// for .35 Sol Ripper
 #define AMMO_MATS_RIPPER list( \
 	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
 	/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4, \
@@ -303,6 +303,8 @@
 // GUBMAN3 - FULL BULLET RENAME
 // i loathe the above
 
+// overrides for 10mm ammo in modular_skyrat\modules\sec_haul\code\guns\bullets.dm
+
 // overrides for .310 Strilka-derived ammo, e.g. lionhunter ammo, because you don't want to give security the ability to print infinite wallhack ammo, right?
 /obj/item/ammo_casing/strilka310/lionhunter
 	name = "hunter's rifle round"
@@ -329,22 +331,47 @@
 
 // overrides for tgcode .50cal, used in their sniper/anti-materiel rifles
 /obj/item/ammo_casing/p50
-	name = ".416 Stabilis polymer casing"
+	name = ".416 Stabilis casing"
 	desc = "A .416 bullet casing."
 	advanced_print_req = TRUE // you are NOT printing more ammo for this without effort.
 	// then again the offstations with ammo printers and sniper rifles come with an ammo disk anyway, so
 
+/obj/item/ammo_casing/p50/surplus
+	name = ".416 Stabilis surplus casing"
+	desc = "A .416 bullet casing. Intentionally underloaded, but still quite painful to be shot with.\
+	<br><br>\
+	<i>SURPLUS/UNDERLOAD: Lacks armor penetration capabilities, contact-stun, or innate dismemberment ability. Still incredibly painful to be hit by.</i>"
+	projectile_type = /obj/projectile/bullet/p50/surplus
+
 /obj/item/ammo_casing/p50/disruptor
 	name = ".416 Stabilis disruptor casing"
-	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
+	desc = "A .416 bullet casing. Specializes in sending the target to sleep rather than hell, unless they're synthetic. Then they probably go to hell anyway.\
 	<br><br>\
 	<i>DISRUPTOR: Forces humanoid targets to sleep, does heavy damage against cyborgs, EMPs struck targets.</i>"
 
-/obj/item/ammo_casing/p50/penetrator
-	name = ".416 Stabilis APFSDS ++P bullet casing"
-	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI.\
+/obj/item/ammo_casing/p50/incendiary
+	name = ".416 Stabilis precision incendiary casing"
+	desc = "A .416 bullet casing. Made with an agitated-plasma tip, for making people regret being alive.\
 	<br><br>\
-	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
+	<i>PRECISION INCENDIARY: Lacks innate dismemberment ability and contact-stun, suffers against mechanized armor. Sets people on fire.</i>"
+	projectile_type = /obj/projectile/bullet/p50/incendiary
+
+/obj/item/ammo_casing/p50/penetrator
+	name = ".416 Stabilis penetrator sabot casing"
+	desc = "A .416 bullet casing. Loaded with a hardened sabot and packed with extra propellant. \
+	Designed to go through basically everything. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 85000 PSI.\
+	<br><br>\
+	<i>PENETRATOR: Goes through basically everything. Lacks innate dismemberment ability and contact-stun capabilities.</i>"
+
+/obj/item/ammo_casing/p50/marksman
+	name = ".416 Stabilis marksman hyperkinetic casing"
+	desc = "A .416 bullet casing. Loaded with a hyperkinetic bullet that ignores mundane things like \"travel time\" \
+	and a concerning amount of experimental propellant. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 95000 PSI.\
+	<br><br>\
+	<i>MARKSMAN: Bullets have <b>no</b> travel time, and can ricochet once. Does slightly less damage, lacks innate dismemberment and contact-stun capabilities.</i>"
+	projectile_type = /obj/projectile/bullet/p50/marksman
 
 // overrides for tgcode 4.6x30mm, used in the WT-550
 /obj/item/ammo_casing/c46x30mm
