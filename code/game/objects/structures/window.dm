@@ -652,13 +652,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 /* Full Tile Windows (more atom_integrity) */
 
 /obj/structure/window/fulltile
-<<<<<<< HEAD
-	icon = 'icons/obj/smooth_structures/window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	name = "full tile window"
 	desc = "A full tile window."
-	icon = 'icons/obj/smooth_structures/window.dmi'
->>>>>>> 66f726dfe31 (General code maintenance for rcd devices and their DEFINE file (#78443))
+	icon = 'icons/obj/smooth_structures/window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "window-0"
 	base_icon_state = "window"
 	max_integrity = 100
