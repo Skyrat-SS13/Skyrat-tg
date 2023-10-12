@@ -1665,7 +1665,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon_state = "vickyred"
 	name = "nobility dresscoat"
 	desc = "An elaborate coat composed of a silky yet firm material. \
-		The fabric is quite thin, and provides negligable protection or insulation, \
+		The fabric is quite thin, and provides negligible protection or insulation, \
 		but is pleasant on the skin.\nWhile extremely well made, it seems quite \
 		fragile, and rather <i>expensive</i>. You get the feeling it might not \
 		<b>survive a washing machine</b> without specialized treatment."
