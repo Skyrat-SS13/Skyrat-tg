@@ -709,13 +709,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 	state = WINDOW_OUT_OF_FRAME
 
 /obj/structure/window/reinforced/fulltile
-<<<<<<< HEAD
-	icon = 'icons/obj/smooth_structures/reinforced_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	name = "full tile reinforced window"
 	desc = "A full tile reinforced window"
-	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
->>>>>>> 66f726dfe31 (General code maintenance for rcd devices and their DEFINE file (#78443))
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "reinforced_window-0"
 	base_icon_state = "reinforced_window"
 	max_integrity = 150
