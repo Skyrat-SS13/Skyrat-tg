@@ -229,7 +229,7 @@
 		if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 			owner.prefs.loadout_list[item.item_path] -= INFO_NAMED
 	if(input_desc)
-		owner.prefs.loadout_list[item.item_path][INFO_DESCRIBED] = input_name
+		owner.prefs.loadout_list[item.item_path][INFO_DESCRIBED] = input_desc
 	else
 		if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
 			owner.prefs.loadout_list[item.item_path] -= INFO_DESCRIBED
