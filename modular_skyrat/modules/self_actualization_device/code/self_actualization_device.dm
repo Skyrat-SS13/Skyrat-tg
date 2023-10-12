@@ -124,7 +124,7 @@
 
 	use_power(500)
 
-/// Ejects the occupant as either their preference character, or as a monke based on emag status.
+/// Ejects the occupant after asking them if they want to accept the rejuvenation. If yes, they exit as their preferences character.
 /obj/machinery/self_actualization_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
@@ -132,21 +132,36 @@
 
 	if(!ishuman(occupant))
 		return FALSE
+	var/mob/living/carbon/human/human_occupant = occupant
 
-	var/mob/living/carbon/human/patient = occupant
-	var/original_name = patient.dna.real_name
+	var/failure = FALSE
+	var/failure_text
 
-	patient.client?.prefs?.safe_transfer_prefs_to_with_damage(patient)
-	patient.dna.update_dna_identity()
-	log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+	if (!isnull(human_occupant.ckey) && isnull(human_occupant.client)) // player mob, currently disconnected
+		failure = TRUE
+		failure_text = "ERROR: Treatment elicited no response from occupant genes. Subject may be suffering from Sudden Sleep Disorder."
+	else if (tgui_alert(occupant, "The SAD you are within is about to rejuvenate you, resetting your body to its default state (in character preferences). Do you consent?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) != "Yes")
+		failure = TRUE // defaults to rejecting it unless specified otherwise
+		failure_text = "ERROR: Occupant genes have willfully rejected the procedure. You may try again if you think this was an error."
 
-	if(patient.dna.real_name != original_name)
-		message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
-		Original Name: [original_name], New Name: [patient.dna.real_name]. \
-		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+	if (failure)
+		say(failure_text)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+	else
+		var/mob/living/carbon/human/patient = occupant
+		var/original_name = patient.dna.real_name
+
+		patient.client?.prefs?.safe_transfer_prefs_to_with_damage(patient)
+		patient.dna.update_dna_identity()
+		log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+
+		if(patient.dna.real_name != original_name)
+			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
+			Original Name: [original_name], New Name: [patient.dna.real_name]. \
+			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 	open_machine()
-	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 /obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/used_item)
 	. = TRUE
