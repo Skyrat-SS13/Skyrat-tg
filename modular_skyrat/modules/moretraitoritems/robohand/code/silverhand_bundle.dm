@@ -5,7 +5,7 @@
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/storage/belt/military(src)
-	new /obj/item/clothing/under/pants/black/robohand(src)
+	new /obj/item/clothing/under/pants/track/robohand(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
@@ -18,12 +18,12 @@
 /obj/item/autosurgeon/syndicate/esword_arm
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/esword
 
-/obj/item/clothing/under/pants/black/robohand
+/obj/item/clothing/under/pants/track/robohand
 	name = "badass pants"
 	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
-	armor_type = /datum/armor/clothing_under/black_robohand
+	armor_type = /datum/armor/clothing_under/robohand
 
-/datum/armor/clothing_under/black_robohand
+/datum/armor/clothing_under/robohand
 	melee = 20
 	bullet = 20
 	laser = 20

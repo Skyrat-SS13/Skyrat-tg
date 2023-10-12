@@ -1,30 +1,3 @@
-
-/obj/item/storage/box/syndie_kit/spaceassassin/PopulateContents()
-	new /obj/item/knife/combat(src)
-	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
-		if("green")
-			new /obj/item/clothing/head/helmet/space/syndicate/green(src)
-			new /obj/item/clothing/suit/space/syndicate/green(src)
-		if("dgreen")
-			new /obj/item/clothing/head/helmet/space/syndicate/green/dark(src)
-			new /obj/item/clothing/suit/space/syndicate/green/dark(src)
-		if("blue")
-			new /obj/item/clothing/head/helmet/space/syndicate/blue(src)
-			new /obj/item/clothing/suit/space/syndicate/blue(src)
-		if("red")
-			new /obj/item/clothing/head/helmet/space/syndicate(src)
-			new /obj/item/clothing/suit/space/syndicate(src)
-		if("orange")
-			new /obj/item/clothing/head/helmet/space/syndicate/orange(src)
-			new /obj/item/clothing/suit/space/syndicate/orange(src)
-		if("black")
-			new /obj/item/clothing/head/helmet/space/syndicate/black(src)
-			new /obj/item/clothing/suit/space/syndicate/black(src)
-
-/obj/item/storage/box/syndie_kit/loadout
-
-/obj/item/storage/backpack/duffelbag/syndie/loadout
-
 /obj/item/storage/backpack/duffelbag/syndie/loadout/recon/PopulateContents()
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/knife/combat/survival(src)

@@ -9,18 +9,18 @@
 	name = "Malorian Arms 3516"
 	desc = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip. A custom Dyna-porting and \
 	direct integral cyber-interlink means only someone with a cyberarm and smartgun link can take full advantage of the pistol's features."
-	icon = 'modular_skyrat/modules/robohand/icons/3516.dmi'
+	icon = 'modular_skyrat/modules/moretraitoritems/robohand/icons/3516.dmi'
 	icon_state = "3516"
 	w_class = WEIGHT_CLASS_NORMAL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m14mm
 	can_suppress = FALSE
-	fire_sound = 'modular_skyrat/modules/robohand/sound/fire2.ogg'
-	load_sound = 'modular_skyrat/modules/robohand/sound/reload.ogg'
-	load_empty_sound = 'modular_skyrat/modules/robohand/sound/reload.ogg'
-	eject_sound = 'modular_skyrat/modules/robohand/sound/release.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/robohand/sound/release.ogg'
+	fire_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/fire2.ogg'
+	load_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/reload.ogg'
+	load_empty_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/reload.ogg'
+	eject_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/release.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/release.ogg'
 	vary_fire_sound = FALSE
-	rack_sound = 'modular_skyrat/modules/robohand/sound/slide.ogg'
+	rack_sound = 'modular_skyrat/modules/moretraitoritems/robohand/sound/slide.ogg'
 	fire_sound_volume = 100
 	bolt_wording = "fuckin' slide"
 	reload_time = 0 //FAST AS FUCK BOIS!
@@ -94,7 +94,7 @@
 
 /obj/item/ammo_box/magazine/m14mm
 	name = "pistol magazine (14mm)"
-	icon = 'modular_skyrat/modules/robohand/icons/3516_mag.dmi'
+	icon = 'modular_skyrat/modules/moretraitoritems/robohand/icons/3516_mag.dmi'
 	icon_state = "14mm"
 	base_icon_state = "14mm"
 	ammo_type = /obj/item/ammo_casing/c14mm
