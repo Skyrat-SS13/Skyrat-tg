@@ -28,7 +28,7 @@
 
 /obj/item/storage/belt/military/nri/soldier/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/akm = 4,
+		/obj/item/ammo_box/magazine/lanca = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
