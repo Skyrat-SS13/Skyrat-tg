@@ -7,6 +7,9 @@
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
 
+/// CIN pistol caliber
+#define CALIBER_CESARZOWA ".27-54 Cesarzowa"
+
 /// Standard Sol rifle caliber
 #define CALIBER_SOL40LONG ".40 Sol Long"
 /// Standard Sol pistol caliber
