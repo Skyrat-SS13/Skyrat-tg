@@ -37,13 +37,13 @@
 	fire_delay = 0.6 SECONDS
 	actions_types = list()
 
+	recoil = 0.25
 	spread = 2.5
 	projectile_wound_bonus = -10
 	projectile_damage_multiplier = 0.85
 
 /obj/item/gun/ballistic/automatic/lanca/Initialize(mapload)
 	. = ..()
-
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/gun/ballistic/automatic/lanca/give_manufacturer_examine()
@@ -67,3 +67,92 @@
 
 /obj/item/gun/ballistic/automatic/lanca/no_mag
 	spawnwithmagazine = FALSE
+
+// The AMR
+// This sounds a lot scarier than it actually is, you'll just have to trust me here
+
+/obj/item/gun/ballistic/automatic/wylom
+	name = "\improper Szot 'Wyłom' AMR"
+	desc = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, the massively overperforming penetration of which being the reason this weapon was discontinued."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_64.dmi'
+	base_pixel_x = -16 // This baby is 64 pixels wide
+	pixel_x = -16
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/inhands_64_left.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/inhands_64_right.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/guns_worn.dmi'
+	icon_state = "wylom"
+	inhand_icon_state = "wylom"
+	worn_icon_state = "wylom"
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = ITEM_SLOT_BACK
+
+	accepted_magazine_type = /obj/item/ammo_box/magazine/wylom
+	can_suppress = FALSE
+	can_bayonet = FALSE
+
+	fire_sound = 'modular_skyrat/modules/novaya_ert/sound/amr_fire.ogg'
+	fire_sound_volume = 100 // BOOM BABY
+
+	recoil = 4
+
+	weapon_weight = WEAPON_HEAVY
+	burst_size = 1
+	fire_delay = 2 SECONDS
+	actions_types = list()
+
+	force = 15 // I mean if you're gonna beat someone with the thing you might as well get damage appropriate for how big the fukken thing is
+
+/obj/item/gun/ballistic/automatic/wylom/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
+
+/obj/item/gun/ballistic/automatic/wylom/examine_more(mob/user)
+	. = ..()
+
+	. += "The 'Wyłom' AMR was a weapon not originally made for unaided human hands. \
+		The original rifle had mounting points for a specialized suit attachment system, \
+		not too much unlike heavy smartguns that can be seen across the galaxy. CIN military \
+		command, however, deemed that expensive exoskeletons and rigs for carrying an organic \
+		anti material system were simply not needed, and that soldiers should simply 'deal with it'. \
+		Unsurprisingly, soldiers assigned this weapon tend to not be a massive fan of that fact, \
+		and smekalka within CIN ranks is common with troops finding novel ways to carry and use \
+		their large rifles with as little effort as possible. Most of these novel methods, of course, \
+		tend to shatter when the rifle is actually fired."
+
+	return .
+
+// Scoped Sakhno in a snazzy green
+
+/obj/item/gun/ballistic/rifle/boltaction/luk
+	name = "\improper Szot 'Łuk' Marksman Rifle"
+	desc = "An upgrade and modernisation of the original Sakhno rifle, made with such wonders as \
+		modern materials, a scope, and other impressive technological advancements that, to be honest, \
+		were already around when the original weapon was designed. Surprisingly for a rifle of this type, \
+		the scope actually has magnification, rather than being decorative."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_48.dmi'
+	icon_state = "luk"
+	inhand_icon_state = "sakhno"
+	worn_icon_state = "sakhno"
+	can_be_sawn_off = FALSE
+
+/obj/item/gun/ballistic/rifle/boltaction/luk/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 3)
+
+/obj/item/gun/ballistic/rifle/boltaction/luk/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
+
+/obj/item/gun/ballistic/rifle/boltaction/luk/examine_more(mob/user)
+	. = ..()
+
+	. += "The 'Łuk' rifle may seem familiar to many of those aware of old firearms. \
+		It bears high similarity with the Sakhno rifle, which is an astute observation. \
+		Translated to 'Longbow', the rifle was the CIN's primary marksman rifle for many \
+		long years. Similar to the Sakhno-Zhihao rifles that can be found from Jupiter today, \
+		the Longbow is a modernized version of the old Sakhno, including many of the common \
+		mechanical tweaks found over the years since the original rifle's first production. \
+		Due to the internal workings of this modernized rifle, sawing any of it off would likely \
+		result in massive mechanical failure and thus, you don't think you'll even try it."
+
+	return .

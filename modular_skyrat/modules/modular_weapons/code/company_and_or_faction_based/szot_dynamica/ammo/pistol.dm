@@ -24,7 +24,7 @@
 	bare_wound_bonus = -10
 
 /obj/item/ammo_box/c27_54cesarzowa
-	name = "ammo box (.27-54 Cesarzowa piercing lethal)"
+	name = "ammo box (.27-54 Cesarzowa piercing)"
 	desc = "A box of .27-54 Cesarzowa piercing pistol rounds, holds eighteen cartridges."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/ammo.dmi'

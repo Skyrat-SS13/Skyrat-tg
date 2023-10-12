@@ -37,3 +37,40 @@
 
 /obj/item/ammo_box/magazine/miecz/spawns_empty
 	start_empty = TRUE
+
+// Plasma thrower 'magazine'
+
+/obj/item/ammo_box/magazine/recharge/plasma_battery
+	name = "plasma power pack"
+	desc = "A rechargeable, detachable battery that serves as a power source for plasma projectors."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/ammo.dmi'
+	base_icon_state = "plasma_battery"
+	icon_state = "plasma_battery"
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
+	caliber = CALIBER_LASER
+
+/obj/item/ammo_box/magazine/recharge/plasma_battery/update_icon_state() // FUCK YOU /OBJ/ITEM/AMMO_BOX/MAGAZINE/RECHARGE
+	. = ..()
+	icon_state = base_icon_state
+
+// Shotgun revolver's cylinder
+
+/obj/item/ammo_box/magazine/internal/cylinder/rev12ga
+	name = "\improper 12 GA revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/shotgun
+	caliber = CALIBER_SHOTGUN
+	max_ammo = 4
+	multiload = FALSE
+
+// AMR magazine
+
+/obj/item/ammo_box/magazine/wylom
+	name = "anti-materiel magazine (.60 Strela)"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/ammo.dmi'
+	icon_state = "wylom_mag"
+	base_icon_state = "wylom_mag"
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	ammo_type = /obj/item/ammo_casing/p60strela
+	max_ammo = 3
+	caliber = CALIBER_60STRELA
