@@ -9,7 +9,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/operative/PopulateContents()
 	new /obj/item/clothing/under/syndicate(src)
 	new /obj/item/clothing/under/syndicate/skirt(src)
-	new /obj/item/storage/box/syndie_kit/space_suit(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/tackler/combat(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
@@ -17,6 +16,7 @@
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/storage/box/syndie_kit/space_suit(src)
 
 /datum/opposing_force_equipment/clothing_syndicate/engineer
 	name = "Syndicate Engineer"
@@ -25,7 +25,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/engineer/PopulateContents()
 	new /obj/item/clothing/under/syndicate/skyrat/overalls(src)
 	new /obj/item/clothing/under/syndicate/skyrat/overalls/skirt(src)
-	new /obj/item/storage/box/syndie_kit/space_suit(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
@@ -33,6 +32,7 @@
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/glasses/night(src)
+	new /obj/item/storage/box/syndie_kit/space_suit(src)
 
 /datum/opposing_force_equipment/clothing_syndicate/spy
 	name = "Syndicate Spy" //a red spy is in the base
@@ -41,7 +41,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/spy/PopulateContents()
 	new /obj/item/clothing/under/suit/black/armoured(src)
 	new /obj/item/clothing/suit/jacket/det_suit/noir/armoured(src)
-	new /obj/item/storage/box/syndie_kit/space_suit(src)
 	new /obj/item/storage/belt/holster/detective/dark(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
@@ -59,7 +58,6 @@
 	new /obj/item/clothing/under/syndicate/combat(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/box/syndie_kit/space_suit(src)
 	new /obj/item/clothing/mask/gas/sechailer/syndicate(src)
 	new /obj/item/clothing/glasses/meson/night(src)
 	new /obj/item/storage/belt/military/assault(src)
@@ -74,14 +72,31 @@
 	new /obj/item/clothing/under/syndicate/ninja(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/box/syndie_kit/space_suit(src)
 	new /obj/item/clothing/mask/gas/ninja(src)
 	new /obj/item/clothing/glasses/hud/health/night/meson(src)
 	new /obj/item/storage/belt/military/assault(src)
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 
-//
+// Sus
+/datum/opposing_force_equipment/clothing_syndicate/impostor
+	name = "CentCom Impostor"
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/impostor
+
+/obj/item/storage/backpack/duffelbag/syndie/impostor/PopulateContents()
+	new /obj/item/clothing/under/rank/centcom/officer(src)
+	new /obj/item/clothing/under/rank/centcom/officer_skirt(src)
+	new /obj/item/clothing/head/hats/centcom_cap(src)
+	new /obj/item/clothing/suit/armor/centcom_formal(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/radio/headset/headset_cent/impostorsr(src)
+	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/storage/backpack/satchel(src)
+	new /obj/item/modular_computer/pda/heads(src)
+	new /obj/item/clipboard(src)
+	new /obj/item/card/id/advanced/chameleon/impostorsr(src)
+	new /obj/item/stamp/centcom(src)
+	new /obj/item/clothing/gloves/combat(src)
 
 /datum/opposing_force_equipment/clothing_nri
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_NRI
