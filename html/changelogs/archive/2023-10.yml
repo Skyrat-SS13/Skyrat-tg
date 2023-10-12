@@ -531,3 +531,85 @@
   - rscadd: Robotics can now print advanced medical tools and health analyzers
   - rscadd: Roboticists can now randomly get advanced engi/medical tools in the mail
   - rscadd: Table flipping now throws everything on the table
+2023-10-12:
+  GoldenAlpharex:
+  - bugfix: Bitrunners and Coroners now have Akula outfits.
+  - bugfix: Shaft Miners now have the Cargo Akula outfit, rather than the default
+      one.
+  Hatterhat:
+  - balance: Blueshield's armor is now on par with a regular security vest's, with
+      comparatively improved fire/acid and barely improved bomb armor. (None of their
+      equipment covers their legs.)
+  - image: Blueshield's vest is now reskinnable, with three variants; the old slim
+      variant, a sec-vest variant, and a marine variant.
+  - image: Blueshield's earpiece is no longer a bright blue tumor on the side of their
+      head.
+  LT3:
+  - bugfix: After the untimely loss of too many novice HoPs, the Icebox "New IDs and
+      You" instructions have been moved from the icemoon wastes to the HoP's office,
+      ending this rite of passage
+  - bugfix: Added some missing firelocks in the pharmacy area. Icebox pharmacy now
+      has a shower
+  OrionTheFox:
+  - image: returns Lopland Security's blue ID trims, and updated a few modular ID
+      trims for DS2/NRI
+  SkyratBot:
+  - code_imp: removed round robin method of transferring reagents which would result
+      in some missing reagents after transferring.
+  - code_imp: added some more rounding for reagent operations.
+  - code_imp: cleaned up some plumbing & reaction chamber code
+  - code_imp: improves the performance of `update_total()` , `clear_reagents()` &
+      `del_reagent()` procs
+  - bugfix: plumbing setups will no longer output 0 or more than maximum available
+      volume of reagents.
+  - bugfix: removing, copying, transfering reagents is now done proportionally and
+      not equally again.
+  - refactor: examining individual reagents up close will display their volumes up
+      to 4 decimal places for accuracy.
+  - qol: droppers & beakers round the amount of reagents transferred before displaying
+      them to chat for easy readibility
+  - sound: the blood cult's rise to power is now accompanied by several new sound
+      effects
+  - rscadd: Adds a new lavaland ruin where you can find a unique egg.
+  - image: you can now change the style of lipstick to be higher or lower on the face
+      by alt-clicking the lipstick tube
+  - balance: Flesh Spiders heal automatically over time if they go a short time without
+      taking damage, instead of healing large chunks by clicking themselves and waiting
+      two seconds.
+  - qol: Spider egg clusters which only hatch into one kind of spider don't ask you
+      to select that one type from a radial menu with one option on it.
+  - qol: As a Flesh Spider, the game now tells you how you can heal yourself.
+  - bugfix: You cannot order with cargo budget if you don't have cargo access in the
+      Galactic Market
+  - bugfix: Private & Cargo orders no longer get mixed together in the same crate
+      if you order them interchangeably so no more embezzlement in the Galactic Market
+  - bugfix: Orders made with cargo budget come in a regular cargo crate thus allowing
+      you to open them without QM cargo budget card in the Galactic Market
+  - qol: Orders made in the Galactic Market will deduct money from your account/cargo
+      budget only after the order has been confirmed in the cargo request console
+      & after the shuttle arrives with your order. This way you drain the budget only
+      after your orders were successfully delivered and not before hand itself
+  - qol: You can now see what drones and gorillas are holding by examining them.
+  - admin: It's now easier to give handless mobs hands by applying the "dextrous"
+      element.
+  - balance: Spiders and Bears can now climb railings (you know if... they'd rather
+      do that than destroy them).
+  - refactor: venus human traps are basicmobs now
+  - balance: venus human traps have 100 health
+  - balance: venus human traps take damage out of range of kudzu, heal near kudzu,
+      are slightly slower, attack slower, and their damage output is slightly more
+      random
+  - balance: also venus human trap tangle ability now needs you to actually move backwards
+      to pull victims
+  - admin: Gondola supplypods are functional again.
+  - bugfix: Examining twice experiment handlers with an active fish-related experiment
+      now gives a comprehensible, correctly spaced list of scanned species rather
+      than something like "pufferfishguppyslimefishchasmchrab".
+  - bugfix: No more "line snapped" balloon messages everytime the fishing minigame
+      is over
+  - bugfix: Getting to the Master level of the fishing skill now correctly gives you
+      that slight helping hand to identify yet-to-be-caught fishes.
+  nikothedude:
+  - qol: Table flipping feedback is now in the form of balloon alerts
+  - rscadd: Robo can now print standard and alien surgical tools
+  - bugfix: Defibs now dont screw over organics if the user was robotic
