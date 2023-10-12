@@ -13,7 +13,12 @@
 
 	mail_goodies += list(
 		/obj/item/healthanalyzer/advanced = 15,
-		// if we decide later to let sci have access to the hand drill, let robos get it from here
+		/obj/item/screwdriver/power/science = 6,
+		/obj/item/crowbar/power/science = 6,
+		/obj/item/weldingtool/experimental = 2, // a lot rarer since its relatively powerful
+		/obj/item/scalpel/advanced = 6,
+		/obj/item/retractor/advanced = 6,
+		/obj/item/cautery/advanced = 6,
 		/obj/item/storage/pill_bottle/liquid_solder = 6,
 		/obj/item/storage/pill_bottle/system_cleaner = 6,
 		/obj/item/storage/pill_bottle/nanite_slurry = 6,
