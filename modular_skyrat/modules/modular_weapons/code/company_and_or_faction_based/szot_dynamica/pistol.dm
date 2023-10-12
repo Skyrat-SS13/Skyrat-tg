@@ -26,8 +26,7 @@
 	AddComponent(/datum/component/automatic_fire, autofire_shot_delay = fire_delay)
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/give_manufacturer_examine()
-
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SZOT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
 	. = ..()
@@ -71,8 +70,7 @@
 	projectile_wound_bonus = 10 // +55 of the base projectile, burn baby burn
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/give_manufacturer_examine()
-
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_SZOT)
+	AddElement(/datum/element/manufacturer_examine, COMPANY_SZOT)
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine_more(mob/user)
 	. = ..()
