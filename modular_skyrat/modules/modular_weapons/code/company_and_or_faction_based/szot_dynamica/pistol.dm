@@ -51,7 +51,7 @@
 	name = "\improper Szot 'Gwiazda' plasma sharpshooter"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Fires relatively accurate globs of searing plasma."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
-	icon_state = "slonce"
+	icon_state = "gwiazda"
 
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/burn.ogg'
 	fire_sound_volume = 40 // This thing is comically loud otherwise
