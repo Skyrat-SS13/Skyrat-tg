@@ -176,7 +176,7 @@
 	name = "Repair robotic limbs (Exp.)"
 	desc = "A surgical procedure that quickly provides highly effective repairs and maintenance to robotic limbs. Is moderately more efficient when the patient is severely damaged."
 	healing_step_type = /datum/surgery_step/robot_heal/experimental
-	replaced_by = /datum/surgery/robot_healing/experimental
+	replaced_by = null
 	requires_tech = TRUE
 
 /***************************STEPS***************************/
