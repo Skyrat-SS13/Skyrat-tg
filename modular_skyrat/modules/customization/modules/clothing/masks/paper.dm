@@ -1,3 +1,17 @@
+/datum/action/item_action/adjust/papermask
+	name = "Adjust paper mask"
+	desc = "LMB: Change mask face. RMB: Adjust mask."
+
+/datum/action/item_action/adjust/papermask/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+	var/obj/item/clothing/mask/paper/paper_mask = target
+	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
+		paper_mask.adjust_mask(usr)
+	else
+		paper_mask.reskin_obj(usr)
+
 /obj/item/clothing/mask/paper
 	name = "paper mask"
 	desc = "It's true. Once you wear a mask for so long, you forget about who you are. Wonder if that happens with shitty paper ones."
@@ -7,7 +21,7 @@
 	clothing_flags = MASKINTERNALS
 	flags_inv = HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
-	actions_types = list(/datum/action/item_action/adjust)
+	actions_types = list(/datum/action/item_action/adjust/papermask)
 	unique_reskin = list(
 			"Blank" = "mask_paper",
 			"Neutral" = "mask_neutral",
@@ -36,36 +50,46 @@
 			"Sad" = "mask_sad",
 	)
 
-	/// Whether or not the mask is currently being layered over (or under!) hair.
-	var/wear_over_hair = TRUE
+	/// Whether or not the mask is currently being layered over (or under!) hair. FALSE/null means the mask is layered over the hair (this is how it starts off).
+	var/wear_hair_over
 
 /obj/item/clothing/mask/paper/Initialize(mapload)
 	. = ..()
 	register_context()
-	if(wear_over_hair)
+	if(wear_hair_over)
 		alternate_worn_layer = BACK_LAYER
+
+/obj/item/clothing/mask/paper/alt_click_secondary(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(user.can_perform_action(src, NEED_DEXTERITY))
+		adjust_mask(user)
 
 /obj/item/clothing/mask/paper/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	context[SCREENTIP_CONTEXT_ALT_LMB] = "Change Mask Face"
+	context[SCREENTIP_CONTEXT_ALT_RMB] = "Adjust Mask"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/clothing/mask/paper/reskin_obj(mob/user)
 	. = ..()
-	user.update_worn_mask()
-	current_skin = null //so we can infinitely reskin
 
-/obj/item/clothing/mask/paper/ui_action_click(mob/user, action)
-	if(istype(action, /datum/action/item_action/adjust))
-		adjust_mask(user)
+	var/mob/living/carbon/carbon_user
+	if(iscarbon(user))
+		carbon_user = user
+	if(carbon_user.wear_mask == src)
+		carbon_user.update_worn_mask()
+
+	current_skin = null //so we can infinitely reskin
 
 /obj/item/clothing/mask/paper/proc/adjust_mask(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	if(!user.incapacitated())
-		wear_over_hair = !wear_over_hair
+		wear_hair_over = !wear_hair_over
 		var/is_worn = user.wear_mask == src
-		if(wear_over_hair)
+		if(wear_hair_over)
 			alternate_worn_layer = BACK_LAYER
 			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair over the mask.")
 		else
@@ -81,9 +105,3 @@
 	var/prev_alternate_worn_layer = alternate_worn_layer
 	. = ..()
 	alternate_worn_layer = prev_alternate_worn_layer
-
-/obj/item/clothing/mask/paper/verb/toggle()
-		set category = "Object"
-		set name = "Adjust Mask"
-		set src in usr
-		adjust_mask(usr)
