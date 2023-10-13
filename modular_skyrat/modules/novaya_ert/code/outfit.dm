@@ -94,7 +94,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
-	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
+	r_hand = /obj/item/gun/ballistic/automatic/miecz
 
 	id_trim = /datum/id_trim/nri/engineer
 
