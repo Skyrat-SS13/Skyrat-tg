@@ -12,16 +12,16 @@
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/emergency,
-							/obj/item/ammo_box/magazine/m9mm_aps,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
 							/obj/item/advanced_choice_beacon/nri/heavy,
 							/obj/item/beamout_tool,
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol/nri
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
+	l_hand = /obj/item/gun/ballistic/automatic/lanca
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
@@ -46,7 +46,7 @@
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
+	l_hand = /obj/item/gun/ballistic/automatic/lanca
 
 	id_trim = /datum/id_trim/nri/commander
 
@@ -72,7 +72,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
-	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
+	r_hand = /obj/item/gun/ballistic/automatic/miecz
 
 	id_trim = /datum/id_trim/nri/medic
 
@@ -157,7 +157,7 @@
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/gun/ballistic/automatic/pistol/nri,
+							/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/storage/medkit/expeditionary,

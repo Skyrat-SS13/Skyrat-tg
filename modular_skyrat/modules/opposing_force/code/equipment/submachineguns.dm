@@ -27,8 +27,7 @@
 	admin_note = "WARNING: This weapon is decently powerful, firing a 2 round burst of 30 damage bullets."
 
 /datum/opposing_force_equipment/submachine_gun/nri_smg
-	item_type = /obj/item/gun/ballistic/automatic/nri_smg
-	admin_note = "Capable of high rate of fire bursts of 20 damage bullets."
+	item_type = /obj/item/gun/ballistic/automatic/miecz
 
 /datum/opposing_force_equipment/submachine_gun/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted

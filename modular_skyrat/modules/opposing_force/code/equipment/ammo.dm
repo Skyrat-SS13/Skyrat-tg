@@ -9,11 +9,17 @@
 	item_type = /obj/item/ammo_box/magazine/m16
 	description = "A thirty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
 
-/datum/opposing_force_equipment/ammo/akm
-	item_type = /obj/item/ammo_box/magazine/akm
+/datum/opposing_force_equipment/ammo/lanca
+	item_type = /obj/item/ammo_box/magazine/lanca
 
-/datum/opposing_force_equipment/ammo/akmbanan
-	item_type = /obj/item/ammo_box/magazine/akm/banana
+/datum/opposing_force_equipment/ammo/miecz
+	item_type = /obj/item/ammo_box/magazine/miecz
+
+/datum/opposing_force_equipment/ammo/strilka_clip
+	item_type = /obj/item/ammo_box/strilka310
+
+/datum/opposing_force_equipment/ammo/plasma_pack
+	item_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
 
 /datum/opposing_force_equipment/ammo/mp40
 	item_type = /obj/item/ammo_box/magazine/mp40

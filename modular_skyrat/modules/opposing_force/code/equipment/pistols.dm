@@ -16,9 +16,11 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
 	admin_note = "WARNING: Roughly on-par with the .357, can use AP rounds."
 
-/datum/opposing_force_equipment/pistol/nri_pistol
-	item_type = /obj/item/gun/ballistic/automatic/pistol/nri
-	admin_note = "WARNING: Roughly on-par with the .357, can use AP rounds. Essentially a reflavored APS."
+/datum/opposing_force_equipment/pistol/plasma_thrower
+	item_type = /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
+
+/datum/opposing_force_equipment/pistol/plasma_sharpshooter
+	item_type = /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
 
 /datum/opposing_force_equipment/pistol/g357
 	item_type = /obj/item/gun/ballistic/revolver
