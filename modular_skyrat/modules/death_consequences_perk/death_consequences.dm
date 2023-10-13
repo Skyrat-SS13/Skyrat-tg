@@ -13,11 +13,11 @@
 	add_verb(human_holder, TYPE_VERB_REF(/mob, adjust_degradation))
 	add_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
-	to_chat(human_holder, span_danger("You suffer from [DEATH_CONSEQUENCES_QUIRK_NAME]. By default, you will \
-	degrade every time you die, and recover very slowly while alive. This may be expedited by resting, sleeping, being buckled \
-	to something cozy, or using rezadone. \n\
-	As your degradation rises, so too will negative effects, such as stamina damage or a worsened crit threshold. \n\
-	You can alter your degradation on the fly via the Adjust resonance degradation verb, and change your settings via the Refresh death consequence variables verb."))
+	to_chat(human_holder, span_danger("You suffer from [src]. By default, you will \
+		degrade every time you die, and recover very slowly while alive. This may be expedited by resting, sleeping, being buckled \
+		to something cozy, or using rezadone.\n\
+		As your degradation rises, so too will negative effects, such as stamina damage or a worsened crit threshold.\n\
+		You can alter your degradation on the fly via the Adjust resonance degradation verb, and change your settings via the Refresh death consequence variables verb."))
 
 /datum/quirk/death_consequences/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
