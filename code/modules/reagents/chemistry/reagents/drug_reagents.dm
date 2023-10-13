@@ -225,7 +225,7 @@
 		var/mob/living/carbon/carbon_mob = affected_mob
 		rage = new()
 		carbon_mob.gain_trauma(rage, TRAUMA_RESILIENCE_ABSOLUTE)
-	if(affected_mob.hud_used!=null)
+	if(affected_mob.hud_used!=null) //skyrat edits down below
 		var/atom/movable/plane_master_controller/game_plane_master_controller = affected_mob.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
 	affected_mob.overlay_fullscreen("pcp_rage", /atom/movable/screen/fullscreen/color_vision/rage_color)
@@ -235,7 +235,7 @@
 	affected_mob.remove_traits(list(TRAIT_STUNIMMUNE, TRAIT_SLEEPIMMUNE), type)
 	if(rage)
 		QDEL_NULL(rage)
-	if(iscarbon(affected_mob))
+	if(iscarbon(affected_mob)) //skyrat edits
 		var/mob/living/carbon/M = affected_mob
 		if(M.hud_used!=null)
 			var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
