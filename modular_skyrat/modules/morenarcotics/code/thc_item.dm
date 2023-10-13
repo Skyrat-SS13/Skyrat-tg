@@ -6,6 +6,8 @@
 	volume = 20
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 15, /datum/reagent/toxin/lipolicide = 5)
+	grind_results = list(/datum/reagent/drug/thc = 15, /datum/reagent/toxin/lipolicide = 5)
+
 
 /obj/item/reagent_containers/hash/dabs
 	name = "dab"
@@ -15,6 +17,8 @@
 	volume = 40
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 40) //horrendously powerful
+	grind_results = list(/datum/reagent/drug/thc = 40, /datum/reagent/toxin/lipolicide = 40)
+
 
 /obj/item/reagent_containers/hashbrick
 	name = "hash brick"
@@ -24,6 +28,8 @@
 	volume = 80
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 60, /datum/reagent/toxin/lipolicide = 20)
+	grind_results = list(/datum/reagent/drug/thc = 60, /datum/reagent/toxin/lipolicide = 20)
+
 
 
 /obj/item/reagent_containers/hashbrick/attack_self(mob/user)

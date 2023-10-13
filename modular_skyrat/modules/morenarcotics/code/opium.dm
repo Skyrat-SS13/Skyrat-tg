@@ -30,6 +30,7 @@
 	volume = 4
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 4)
+	grind_results = list(/datum/reagent/drug/opium/heroin = 4)
 
 /obj/item/reagent_containers/heroin/proc/snort(mob/living/user)
 	if(!iscarbon(user))
@@ -75,6 +76,7 @@
 	volume = 20
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/heroin = 20)
+	grind_results = list(/datum/reagent/drug/opium/heroin = 20)
 
 
 /obj/item/reagent_containers/heroinbrick/attack_self(mob/user)
@@ -125,11 +127,17 @@
 /datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
 	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	ADD_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.throw_alert("numbed", /atom/movable/screen/alert/numbed)
+
+
 
 /datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
 	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 	metabolizer.clear_fullscreen("heroin_euphoria")
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.clear_alert("numbed")
 
 /datum/reagent/drug/opium/heroin
 	name = "heroin"
@@ -141,6 +149,8 @@
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
+	addiction_types = list(/datum/addiction/opioids = 25)
+
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -152,13 +162,24 @@
 
 /datum/reagent/drug/opium/blacktar
 	name = "black tar heroin"
-	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
+	description = "An impure, freebase form of heroin. The good news is, you won't feel a thing. The bad news is, you won't feel a thing."
 	reagent_state = LIQUID
 	color = "#242423"
 	overdose_threshold = 10 //more easy to overdose on
 	ph = 8
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	addiction_types = list(/datum/addiction/opioids = 40)
+
+/datum/reagent/drug/opium/blacktar/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	affected_mob.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+
+/datum/reagent/drug/opium/blacktar/on_mob_end_metabolize(mob/living/metabolizer)
+	. = ..()
+	affected_mob.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")

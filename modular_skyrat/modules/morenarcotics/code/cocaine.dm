@@ -53,6 +53,15 @@
 	M.AdjustImmobilized(-15 * REM * seconds_per_tick)
 	M.AdjustParalyzed(-15 * REM * seconds_per_tick)
 	M.adjustStaminaLoss(-2 * REM * seconds_per_tick, 0)
+	need_mob_update += M.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(1, 4) * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)
+	if(SPT_PROB(30, seconds_per_tick))
+		M.losebreath++
+		need_mob_update += M.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
+		need_mob_update += M.adjust_disgust(10)
+		var/uh_oh = pick("You feel queasy.", "Your gut hurts.", "You can't get enough air into your lungs.")
+		to_chat(M, span_danger("[uh_oh]"))
+
+
 	if(SPT_PROB(2.5, seconds_per_tick))
 		M.emote("shiver")
 	..()

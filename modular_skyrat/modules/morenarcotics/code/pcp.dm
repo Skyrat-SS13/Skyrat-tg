@@ -27,6 +27,7 @@
 	color = "#ffea2e"
 	overdose_threshold = 10 //really low overdose to keep people from abusing it too much
 	ph = 8
+	addiction_types = list(/datum/addiction/stimulants = 40)  //you're fucking doomed
 	taste_description = "rage"
 	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/pcp_rage
 	var/datum/brain_trauma/special/tenacity/pcp_tenacity
@@ -40,6 +41,7 @@
 		pcp_tenacity = new()
 		C.gain_trauma(pcp_rage, TRAUMA_RESILIENCE_ABSOLUTE)
 		C.gain_trauma(pcp_tenacity, TRAUMA_RESILIENCE_ABSOLUTE)
+		C.sound_environment_override = SOUND_ENVIRONMENT_HANGAR
 
 /datum/reagent/drug/pcp/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel like KILLING!", "Someone's about to fucking die!", "Rip and tear!")
@@ -53,10 +55,16 @@
 	M.adjustStaminaLoss(-10 * REM * seconds_per_tick, 0)
 	M.AdjustStun(-10 * REM * seconds_per_tick) //this is absolutely rediculous
 	M.overlay_fullscreen("pcp_rage", /atom/movable/screen/fullscreen/color_vision/rage_color)
+	M.adjust_hallucinations(10 SECONDS * REM * seconds_per_tick)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	if(SPT_PROB(3.5, seconds_per_tick))
 		M.emote(pick("scream","twitch"))
 	pcp_lifetime+= 3 * REM * seconds_per_tick
+	for(var/stackies in M.reagents.reagent_list)
+		if(istype(stackies, /datum/reagent/medicine/))
+			M.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE) //Trying to chemstack? Go directly to hell. Do not pass go.
+			break
+
 	..()
 
 /datum/reagent/drug/pcp/on_mob_end_metabolize(mob/living/L)
@@ -74,6 +82,7 @@
 	L.visible_message(span_danger("[L] collapses onto the floor!")) //you pretty much pass out
 	L.Paralyze(pcp_lifetime,TRUE)
 	L.drop_all_held_items()
+	L.sound_environment_override = NONE
 	..()
 
 /datum/reagent/drug/pcp/overdose_process(mob/living/M, seconds_per_tick, times_fired)

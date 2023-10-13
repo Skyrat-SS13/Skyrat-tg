@@ -6,6 +6,7 @@
 	volume = 10
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 10)
+	grind_results = list(/datum/reagent/cocaine/freebase_cocaine = 10)
 
 /obj/item/reagent_containers/crackbrick
 	name = "crack brick"
@@ -15,6 +16,7 @@
 	volume = 40
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 40)
+	grind_results = list(/datum/reagent/cocaine/freebase_cocaine = 40)
 
 /obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
@@ -40,6 +42,7 @@
 	volume = 5
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine = 5)
+	grind_results = list(/datum/reagent/cocaine = 5)
 
 /obj/item/reagent_containers/cocaine/proc/snort(mob/living/user)
 	if(!iscarbon(user))
@@ -85,6 +88,8 @@
 	volume = 25
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/cocaine = 25)
+	grind_results = list(/datum/reagent/cocaine = 25)
+
 
 
 /obj/item/reagent_containers/cocainebrick/attack_self(mob/user)

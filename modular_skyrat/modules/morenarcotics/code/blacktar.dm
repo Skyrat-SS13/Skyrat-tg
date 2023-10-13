@@ -6,3 +6,4 @@
 	volume = 5
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
+	grind_results = list(/datum/reagent/drug/opium/blacktar = 5)
