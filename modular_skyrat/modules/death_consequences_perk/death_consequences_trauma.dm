@@ -4,6 +4,11 @@
 #define DEGRADATION_LEVEL_HIGH "dc_level_high"
 #define DEGRADATION_LEVEL_CRITICAL "dc_level_critical"
 
+#define DEGRADATION_LEVEL_NONE_THRESHOLD 0.2
+#define DEGRADATION_LEVEL_LOW_THRESHOLD 0.4
+#define DEGRADATION_LEVEL_MEDIUM_THRESHOLD 0.6
+#define DEGRADATION_LEVEL_HIGH_THRESHOLD 0.8
+
 /datum/brain_trauma/severe/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
 	desc = DEATH_CONSEQUENCES_QUIRK_DESC
@@ -45,7 +50,7 @@
 	var/sansufentanyl_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_SANSUFENTANYL_DEGRADATION_REDUCTION
 
 	/// If our victim is dead, their passive degradation will be multiplied against this if they are in stasis.
-	var/on_stasis_death_degradation_mult = 0
+	var/on_stasis_passive_degradation_mult = 0
 
 	/// If true, when [current_degradation] reaches [max_degradation], we will DNR and ghost our victim.
 	var/permakill_if_at_max_degradation = FALSE
@@ -98,6 +103,7 @@
 	var/static/buckled_to_default_mult = 1.15
 
 	/// The random messages that will be sent to our victim if their degradation moves to a new threshold.
+	/// Contains nested assoc lists of (DEGRADATION_LEVEL_DEFINE -> list((message -> weight), ...)) where ... is a indefinite number of message -> weight pairs.
 	var/static/list/degradation_messages = list(
 		DEGRADATION_LEVEL_LOW = list(
 			span_warning("Your body aches a little.") = 10,
@@ -194,6 +200,7 @@
 	if ((world.time - time_between_reminders) > time_of_last_message_sent)
 		send_reminder()
 
+/// Returns the amount, every second, degradation should INCREASE by.
 /datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_increase(is_dead)
 	var/increase = 0
 
@@ -209,10 +216,11 @@
 			increase -= base_degradation_reduction_per_second_while_alive
 
 	if (IS_IN_STASIS(owner))
-		increase *= on_stasis_death_degradation_mult
+		increase *= on_stasis_passive_degradation_mult
 
 	return increase
 
+/// Returns the amount, every second, degradation should DECREASE by.
 /datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease(is_dead)
 	var/decrease = 0
 
@@ -238,13 +246,13 @@
 		if (reagent_process_flags_valid(owner, reagent_instance))
 			decrease += strange_reagent_degradation_decrease
 
-	return (decrease * get_passive_degradation_decrease_mult())
+	return (decrease * get_passive_degradation_decrease_resting_mult())
 
 #define DEGRADATION_REDUCTION_SLEEPING_MULT 3
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
 
-/// A global proc used for all scenarios we would decrease passive degradation.
-/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_mult()
+/// Returns a multiplier that should be used whenever degradation is passively decreased. Is determined by resting, sleeping, and buckled status.
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_resting_mult()
 	var/decrease_mult = 1
 
 	if (owner.IsSleeping())
@@ -275,16 +283,22 @@
 		update_degradation_level()
 		update_effects()
 
+/**
+ * Updates [current_degradation_level] by comparing current degradation to max.
+ *
+ * Args:
+ * * send_reminder_if_changed = TRUE: If TRUE, will call [send_reminder()] if [current_degradation_level] is changed.
+ */
 /datum/brain_trauma/severe/death_consequences/proc/update_degradation_level(send_reminder_if_changed = TRUE)
 	var/old_level = current_degradation_level
 	switch (current_degradation / max_degradation)
-		if (0 to 0.2)
+		if (0 to DEGRADATION_LEVEL_NONE_THRESHOLD)
 			current_degradation_level = DEGRADATION_LEVEL_NONE
-		if (0.2 to 0.4)
+		if (DEGRADATION_LEVEL_NONE_THRESHOLD to DEGRADATION_LEVEL_LOW_THRESHOLD)
 			current_degradation_level = DEGRADATION_LEVEL_LOW
-		if (0.4 to 0.6)
+		if (DEGRADATION_LEVEL_LOW_THRESHOLD to DEGRADATION_LEVEL_MEDIUM_THRESHOLD)
 			current_degradation_level = DEGRADATION_LEVEL_MEDIUM
-		if (0.6 to 0.8)
+		if (DEGRADATION_LEVEL_MEDIUM_THRESHOLD to DEGRADATION_LEVEL_HIGH_THRESHOLD)
 			current_degradation_level = DEGRADATION_LEVEL_HIGH
 		else
 			current_degradation_level = DEGRADATION_LEVEL_CRITICAL
@@ -325,8 +339,9 @@
 	var/clamped_degradation = clamp((current_degradation - stamina_damage_minimum_degradation), 0, stamina_damage_max_degradation)
 	var/percent_to_max = min((clamped_degradation / stamina_damage_max_degradation), 1)
 	var/minimum_stamina_damage = max_stamina_damage * percent_to_max
-	// need to use a buffer because of some imprecision I noticed
 
+	// The constantly decreasing degradation will constantly lower the minimum stamina damage, and thus, if we DONT check a range of staminaloss,
+	// we will always consider it "above" our minimum, and thus never delay stamina regen.
 	var/owner_staminaloss = owner.getStaminaLoss()
 	if (minimum_stamina_damage <= 0)
 		return
@@ -339,8 +354,17 @@
 	var/final_adjustment = (minimum_stamina_damage - owner_staminaloss)
 	owner.adjustStaminaLoss(final_adjustment) // we adjust instead of set for things like stamina regen timer
 
+/**
+ * Sends a flavorful to_chat to the target, picking from degradation_messages[current_degradation_level]. Can fail to send one if no message is found.
+ *
+ * Args:
+ * * update_cooldown = TRUE: If true, updates [time_of_last_message_sent] to be world.time.
+ */
 /datum/brain_trauma/severe/death_consequences/proc/send_reminder(update_cooldown = TRUE)
-	var/message = pick_weight(degradation_messages[current_degradation_level])
+	var/list/message_list = degradation_messages[current_degradation_level] // can return null
+	if (!length(message_list)) // sanity
+		return
+	var/message = pick_weight(message_list)
 
 	if (!message)
 		return
@@ -442,7 +466,7 @@
 		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second")].")
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
 			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]")]</b>x.")
-		if (on_stasis_death_degradation_mult < 1)
+		if (on_stasis_passive_degradation_mult < 1)
 			message += span_danger(" Stasis may be effective in slowing (or even stopping) degradation.")
 	if (base_degradation_on_death)
 		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
@@ -524,3 +548,8 @@
 #undef DEGRADATION_LEVEL_MEDIUM
 #undef DEGRADATION_LEVEL_HIGH
 #undef DEGRADATION_LEVEL_CRITICAL
+
+#undef DEGRADATION_LEVEL_NONE_THRESHOLD
+#undef DEGRADATION_LEVEL_LOW_THRESHOLD
+#undef DEGRADATION_LEVEL_MEDIUM_THRESHOLD
+#undef DEGRADATION_LEVEL_HIGH_THRESHOLD

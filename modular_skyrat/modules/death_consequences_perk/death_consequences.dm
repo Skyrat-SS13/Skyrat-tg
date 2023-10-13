@@ -4,7 +4,7 @@
 	in bottom-right Character preferences section after selecting it."
 	medical_record_text = DEATH_CONSEQUENCES_QUIRK_DESC
 	icon = FA_ICON_DNA
-	value = 0 // due to its high customization, you can make it realllly good or reallllly bad
+	value = 0 // due to its high customization, you can make it really inconsequential
 
 /datum/quirk/death_consequences/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -26,6 +26,7 @@
 	remove_verb(human_holder, TYPE_VERB_REF(/mob, adjust_degradation))
 	remove_verb(human_holder, TYPE_VERB_REF(/mob, refresh_death_consequences))
 
+/// Adjusts the mob's linked death consequences trauma (see get_death_consequences_trauma())'s degradation by increment.
 /mob/verb/adjust_degradation(increment as num)
 	set name = "Adjust resonance degradation"
 	set category = "IC"
@@ -49,6 +50,7 @@
 	linked_trauma.adjust_degradation(increment)
 	to_chat(usr, span_notice("Degradation successfully adjusted!"))
 
+/// Calls update_variables() on this mob's linked death consequences trauma. See that proc for further info.
 /mob/verb/refresh_death_consequences()
 	set name = "Refresh death consequence variables"
 	set category = "IC"
@@ -63,6 +65,7 @@
 	linked_trauma.update_variables()
 	to_chat(usr, span_notice("Variables successfully updated!"))
 
+/// Searches mind.current for a death_consequences trauma. Allows this proc to be used on both ghosts and living beings to find their linked trauma.
 /mob/proc/get_death_consequences_trauma()
 	RETURN_TYPE(/datum/brain_trauma/severe/death_consequences)
 	if (iscarbon(mind.current))
