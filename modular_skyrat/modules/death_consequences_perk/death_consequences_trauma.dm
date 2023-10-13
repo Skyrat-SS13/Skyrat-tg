@@ -116,12 +116,12 @@
 			span_bolddanger("You feel exhausted in every single possible way!") = 10,
 		),
 		DEGRADATION_LEVEL_CRITICAL = list(
-			span_revenwarning("<b>Everything hurts... it hurts so bad...</b>") = 10,
-			span_revenwarning("<b>It's so hard to think... it's so hard... so hard...</b>") = 10,
+			span_revenwarning("<b>Everything hurts... It hurts so bad...</b>") = 10,
+			span_revenwarning("<b>It's so hard to think... It's so hard... So hard...</b>") = 10,
 			span_revenwarning("<b>Your body feels alien, like you don't belong in it...</b>") = 10,
-			span_revenwarning("<b>...who am I?</b>") = 1,
-			span_revenwarning("<b>...where am I?</b>") = 1,
-			span_revenwarning("<b>...what am I?</b>") = 1,
+			span_revenwarning("<b>... Who am I?</b>") = 1,
+			span_revenwarning("<b>... Where am I?</b>") = 1,
+			span_revenwarning("<b>... What am I?</b>") = 1,
 		)
 	)
 
@@ -162,7 +162,7 @@
 	. = ..()
 
 	if (base_degradation_on_death != 0)
-		if ((world.time - time_required_between_deaths_to_degrade) <= last_time_degraded_on_death)
+		if (!last_time_degraded_on_death || world.time - time_required_between_deaths_to_degrade <= last_time_degraded_on_death)
 			return
 
 		adjust_degradation(base_degradation_on_death)
@@ -242,6 +242,7 @@
 
 #define DEGRADATION_REDUCTION_SLEEPING_MULT 3
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
+
 /// A global proc used for all scenarios we would decrease passive degradation.
 /datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_mult()
 	var/decrease_mult = 1
