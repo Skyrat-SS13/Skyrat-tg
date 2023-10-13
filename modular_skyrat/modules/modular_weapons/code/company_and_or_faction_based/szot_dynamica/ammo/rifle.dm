@@ -58,6 +58,7 @@
 	armour_penetration = 50
 	wound_bonus = 20
 	bare_wound_bonus = 30
+	demolition_mod = 1.8
 	/// How much damage we add to things that are weak to this bullet
 	var/anti_materiel_damage_addition = 30
 
@@ -65,8 +66,3 @@
 	. = ..()
 	// We do 80 total damage to anything robotic, namely borgs
 	AddElement(/datum/element/bane, target_type = /mob, mob_biotypes = MOB_ROBOTIC, damage_multiplier = 0, added_damage = anti_materiel_damage_addition)
-
-/obj/projectile/bullet/p60strela/on_hit(atom/target, blocked)
-	if(istype(target, /obj/structure) || istype(target, /obj/machinery) || istype(target, /obj/vehicle/sealed/mecha))
-		damage = damage + anti_materiel_damage_addition
-	return ..()
