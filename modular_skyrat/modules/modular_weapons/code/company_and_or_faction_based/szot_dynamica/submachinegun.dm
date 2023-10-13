@@ -9,12 +9,7 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_48.dmi'
 	icon_state = "miecz"
 
-	worn_icon = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/guns_worn.dmi'
-	worn_icon_state = "miecz"
-
-	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/szot_dynamica/guns_righthand.dmi'
-	inhand_icon_state = "miecz"
+	inhand_icon_state = "c20r"
 
 	SET_BASE_PIXEL(-8, 0)
 
