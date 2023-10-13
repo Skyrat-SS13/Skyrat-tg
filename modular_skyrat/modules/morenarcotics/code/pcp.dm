@@ -41,11 +41,6 @@
 	if(SPT_PROB(3.5, seconds_per_tick))
 		M.emote(pick("scream","twitch"))
 	pcp_lifetime+= 3 * REM * seconds_per_tick
-	for(var/stackies in M.reagents.reagent_list)
-		if(istype(stackies, /datum/reagent/medicine/))
-			M.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE) //Trying to chemstack? Go directly to hell. Do not pass go.
-			break
-
 	..()
 
 /datum/reagent/drug/pcp/on_mob_end_metabolize(mob/living/L)
