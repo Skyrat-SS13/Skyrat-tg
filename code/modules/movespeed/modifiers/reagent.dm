@@ -42,3 +42,6 @@
 
 /datum/movespeed_modifier/reagent/nooartrium
 	multiplicative_slowdown = 2
+
+/datum/movespeed_modifier/reagent/cocaine //skyrat edit
+	multiplicative_slowdown = -0.25

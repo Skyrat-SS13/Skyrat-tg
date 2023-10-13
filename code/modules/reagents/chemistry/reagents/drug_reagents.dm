@@ -225,12 +225,23 @@
 		var/mob/living/carbon/carbon_mob = affected_mob
 		rage = new()
 		carbon_mob.gain_trauma(rage, TRAUMA_RESILIENCE_ABSOLUTE)
+	if(affected_mob.hud_used!=null)
+		var/atom/movable/plane_master_controller/game_plane_master_controller = affected_mob.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+		game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
+	affected_mob.overlay_fullscreen("pcp_rage", /atom/movable/screen/fullscreen/color_vision/rage_color)
 
 /datum/reagent/drug/bath_salts/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.remove_traits(list(TRAIT_STUNIMMUNE, TRAIT_SLEEPIMMUNE), type)
 	if(rage)
 		QDEL_NULL(rage)
+	if(iscarbon(affected_mob))
+		var/mob/living/carbon/M = affected_mob
+		if(M.hud_used!=null)
+			var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+			game_plane_master_controller.remove_filter("pcp_blur")
+		M.clear_fullscreen("pcp_rage")
+		M.sound_environment_override = SOUND_ENVIRONMENT_NONE
 
 /datum/reagent/drug/bath_salts/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -238,6 +249,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice("[high_message]"))
 	affected_mob.add_mood_event("salted", /datum/mood_event/stimulant_heavy, name)
+	affected_mob.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	var/need_mob_update
 	need_mob_update = affected_mob.adjustStaminaLoss(-5 * REM * seconds_per_tick, updating_stamina = FALSE, required_biotype = affected_biotype)
 	need_mob_update += affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 4 * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)

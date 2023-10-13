@@ -34,11 +34,11 @@
 
 /datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/containing_mob)
 	..()
-	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/cocaine)
 	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
-	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/cocaine)
 	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 	..()
 
@@ -53,17 +53,17 @@
 	M.AdjustImmobilized(-15 * REM * seconds_per_tick)
 	M.AdjustParalyzed(-15 * REM * seconds_per_tick)
 	M.adjustStaminaLoss(-2 * REM * seconds_per_tick, 0)
-	need_mob_update += M.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(1, 4) * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)
-	if(SPT_PROB(30, seconds_per_tick))
+	M.adjustToxLoss(1 * REM * seconds_per_tick, 0)
+	if(SPT_PROB(10, seconds_per_tick))
 		M.losebreath++
-		need_mob_update += M.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
-		need_mob_update += M.adjust_disgust(10)
-		var/uh_oh = pick("You feel queasy.", "Your gut hurts.", "You can't get enough air into your lungs.")
-		to_chat(M, span_danger("[uh_oh]"))
+		M.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1 * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)
 
 
 	if(SPT_PROB(2.5, seconds_per_tick))
 		M.emote("shiver")
+		var/uh_oh = pick("You feel queasy.", "Your gut hurts.", "You can't get enough air into your lungs.")
+		to_chat(M, span_danger("[uh_oh]"))
 	..()
 	. = TRUE
 

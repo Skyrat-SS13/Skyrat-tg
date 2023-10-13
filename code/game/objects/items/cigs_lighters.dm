@@ -551,7 +551,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	starts_lit = TRUE
 
 /obj/item/clothing/mask/cigarette/rollie/cannabis
-	list_reagents = list(/datum/reagent/drug/cannabis = 15)
+	list_reagents = list(/datum/reagent/drug/thc = 15) //skyrat edit: original used drug/reagent/cannabis
 
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)

@@ -116,8 +116,8 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	response_too_late = "Too late to beg for mercy!"
 	response_not_enough = "Trying to cheat us? You'll regret this!"
 
-///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning
-/datum/pirate_gang/interdyne
+///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning //skyrat edit, disabled due to being overpowered or something
+/*/datum/pirate_gang/interdyne
 	name = "Restless Ex-Pharmacists"
 
 	is_heavy_threat = TRUE
@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 
 	response_received = "Thank you for your generosity. Your money will not be wasted."
 	response_too_late = "We hope you like skin cancer!"
-	response_not_enough = "This is not nearly enough for our operations. I'm afraid we'll have to borrow some."
+	response_not_enough = "This is not nearly enough for our operations. I'm afraid we'll have to borrow some."*/
 
 ///Previous Nanotrasen Assitant workers fired for many reasons now looking for revenge and your bank account.
 /datum/pirate_gang/grey

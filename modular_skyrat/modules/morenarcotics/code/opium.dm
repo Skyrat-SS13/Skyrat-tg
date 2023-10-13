@@ -173,12 +173,12 @@
 
 /datum/reagent/drug/opium/blacktar/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
-	affected_mob.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	metabolizer.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 
 /datum/reagent/drug/opium/blacktar/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
-	affected_mob.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	metabolizer.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)

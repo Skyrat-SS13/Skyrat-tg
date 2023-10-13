@@ -2,7 +2,6 @@
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_DRIED))
 		grind_results = list(/datum/reagent/drug/thc/hash = 0.15*src.seed.potency)
-		reagents.clear_reagents() //prevents anything else from coming out
 
 /datum/chemical_reaction/hash
 	required_reagents = list(/datum/reagent/drug/thc/hash = 10)
@@ -16,6 +15,7 @@
 
 /datum/chemical_reaction/dabs
 	required_reagents = list(/datum/reagent/drug/thc = 20)
+	required_catalysts = list(/datum/reagent/carbon = 5) //so that you don't accidentally make dabs every time you try to smoke weed
 	required_temp = 420 //haha very funny
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
