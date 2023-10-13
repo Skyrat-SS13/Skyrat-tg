@@ -1,6 +1,3 @@
-/// The caliber used by the AK-25
-#define CALIBER_732x29 "a732x29"
-
 /// The caliber used by the Oldarms 'Mk.11.4 rifle', designed to be worse .223.
 #define CALIBER_223S ".223 Stinger"
 
