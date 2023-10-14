@@ -13,37 +13,6 @@ GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_dea
 
 	return pref_list
 
-/// Dummy preference that allows our config link to appear in char creation FUCKING SHIT I HATE THIS
-/datum/preference/dc_dummy_pref
-	savefile_key = "dc_config"
-	savefile_identifier = PREFERENCE_CHARACTER
-
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
-	can_randomize = FALSE
-
-/datum/preference/dc_dummy_pref/is_accessible(datum/preferences/preferences)
-	. = ..()
-
-	if (!.)
-		return FALSE
-
-	return (DEATH_CONSEQUENCES_QUIRK_NAME in preferences.all_quirks)
-
-/datum/preference/dc_dummy_pref/apply_to_human(mob/living/carbon/human/target, value)
-	return
-
-/datum/preference/dc_dummy_pref/serialize(input, datum/preferences/preferences)
-	return
-
-/datum/preference/dc_dummy_pref/deserialize(input, datum/preferences/preferences)
-	return
-
-/datum/preference/dc_dummy_pref/create_default_value(datum/preferences/preferences)
-	return null
-
-/datum/preference/dc_dummy_pref/is_valid(value)
-	return TRUE
-
 // god i fucking hate this but the only other option is making a ton of TSX types, a global list, or typechecking constantly and slapping var/name on EVERY DC pref
 /datum/preference
 	/// The name to be displayed in config windows. ONLY USED IN DEATH CONSEQUENCES RIGHT NOW

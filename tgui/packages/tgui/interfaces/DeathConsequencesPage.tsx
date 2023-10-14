@@ -1,26 +1,21 @@
 import { useBackend } from '../backend';
 import { Button, NumberInput, Section, Stack } from '../components';
 import { PreferencesMenuData } from './PreferencesMenu/data';
-import { Window } from '../layouts';
 
-export const DeathConsequencesWindow = (props, context) => {
+export const DeathConsequencesPage = (props, context) => {
   const { data } = useBackend<DeathConsequenceData>(context);
   return (
-    <Window title="Death consequences config" width={900} height={650}>
-      <Window.Content>
-        <Stack>
-          <Stack.Item maxWidth="99%">
-            <Section title="Death consequences config">
-              <Stack vertical pt="20px" wrap="wrap">
-                {data.dc_preferences.map((val) => (
-                  <ConfigEntry key={val.typepath} preference={val} />
-                ))}
-              </Stack>
-            </Section>
-          </Stack.Item>
-        </Stack>
-      </Window.Content>
-    </Window>
+    <Stack>
+      <Stack.Item maxWidth="99%">
+        <Section title="Death consequences config">
+          <Stack vertical pt="20px" wrap="wrap">
+            {data.dc_preferences.map((val) => (
+              <ConfigEntry key={val.typepath} preference={val} />
+            ))}
+          </Stack>
+        </Section>
+      </Stack.Item>
+    </Stack>
   );
 };
 

@@ -12,6 +12,7 @@ import { QuirksPage } from './QuirksPage';
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
+import { DeathConsequencesPage } from '../DeathConsequencesPage';
 // SKYRAT EDIT END
 enum Page {
   Antags,
@@ -20,6 +21,7 @@ enum Page {
   // SKYRAT EDIT
   Limbs,
   Languages,
+  DC_Config,
   // SKYRAT EDIT END
   Species,
   Quirks,
@@ -76,6 +78,9 @@ export const CharacterPreferenceWindow = (props, context) => {
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
+      break;
+    case Page.DC_Config:
+      pageContents = <DeathConsequencesPage />;
       break;
     // SKYRAT EDIT END
     case Page.Main:
@@ -165,6 +170,19 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Languages
                 </PageButton>
               </Stack.Item>
+
+              {data.selected_quirks.includes(
+                'ResonanceDegradationDisorder'
+              ) && (
+                <Stack.Item grow>
+                  <PageButton
+                    currentPage={currentPage}
+                    page={Page.DC_Config}
+                    setPage={setCurrentPage}>
+                    DC Config
+                  </PageButton>
+                </Stack.Item>
+              )}
               {
                 // SKYRAT EDIT END
               }
