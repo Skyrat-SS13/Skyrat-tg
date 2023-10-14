@@ -14,9 +14,6 @@
 	var/value = params["new_value"]
 	if (isnull(value))
 		return FALSE
-	var/interface_type = params["interface_type"]
-	if (isnull(interface_type))
-		return FALSE
 
 	var/stringified_typepath = params["typepath"]
 	if (isnull(stringified_typepath))
