@@ -331,6 +331,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				var/datum/loadout_manager/tgui = new(usr)
 				tgui.ui_interact(usr)
 			return TRUE
+
+		if ("open_death_consequences_config")
+			if (parent.open_dc_config)
+				parent.open_dc_config.ui_interact(usr)
+			else
+				var/datum/death_consequences_config/tgui = new(usr)
+				tgui.ui_interact(usr)
+
 		if ("set_tricolor_preference")
 			var/requested_preference_key = params["preference"]
 			var/index_key = params["value"]
