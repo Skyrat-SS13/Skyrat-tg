@@ -52,12 +52,19 @@
 
 	/// Whether or not the mask is currently being layered over (or under!) hair. FALSE/null means the mask is layered over the hair (this is how it starts off).
 	var/wear_hair_over
+	/// Whether or not the strap is currently hidden or visible
+	var/strap_hidden
 
 /obj/item/clothing/mask/paper/Initialize(mapload)
 	. = ..()
 	register_context()
 	if(wear_hair_over)
 		alternate_worn_layer = BACK_LAYER
+
+/obj/item/clothing/mask/paper/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!strap_hidden)
+		. = mutable_appearance(icon, "mask_paper_strap")
 
 /obj/item/clothing/mask/paper/alt_click_secondary(mob/user)
 	. = ..()
@@ -66,13 +73,25 @@
 	if(user.can_perform_action(src, NEED_DEXTERITY))
 		adjust_mask(user)
 
+/obj/item/clothing/mask/paper/CtrlClick(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(user.can_perform_action(src, NEED_DEXTERITY))
+		adjust_strap(user)
+
 /obj/item/clothing/mask/paper/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	context[SCREENTIP_CONTEXT_ALT_LMB] = "Change Mask Face"
 	context[SCREENTIP_CONTEXT_ALT_RMB] = "Adjust Mask"
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Hide/Show Strap"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/clothing/mask/paper/reskin_obj(mob/user)
+	if(!user.is_holding_item_of_type(/obj/item/pen))
+		balloon_alert(user, "must be holding a pen!")
+		return
+
 	. = ..()
 
 	var/mob/living/carbon/carbon_user
@@ -95,6 +114,17 @@
 		else
 			alternate_worn_layer = initial(alternate_worn_layer)
 			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair under the mask.")
+
+		user.update_body_parts()
+		user.update_inv_ears(0)
+		user.update_worn_mask()
+
+/obj/item/clothing/mask/paper/proc/adjust_strap(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	if(!user.incapacitated())
+		strap_hidden = !strap_hidden
+		to_chat(user, "You [is_worn ? "" : "will "][strap_hidden ? "hide" : "show"] the mask strap.")
 
 		user.update_body_parts()
 		user.update_inv_ears(0)
