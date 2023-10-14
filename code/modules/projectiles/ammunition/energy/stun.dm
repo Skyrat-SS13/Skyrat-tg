@@ -31,13 +31,4 @@
 
 /obj/item/ammo_casing/energy/disabler/smoothbore/prime
 	projectile_type = /obj/projectile/beam/disabler/smoothbore/prime
-<<<<<<< HEAD
-	e_cost = 500
-
-// SKYRAT ADDITION START
-/obj/item/ammo_casing/energy/disabler/skyrat
-	e_cost = 1000
-// SKYRAT ADDITION END
-=======
 	e_cost = LASER_SHOTS(2, STANDARD_CELL_CHARGE)
->>>>>>> b764f0e8c30 (Improves code for power usage of energy weapons (#78677))
