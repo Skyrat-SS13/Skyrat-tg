@@ -6,7 +6,7 @@
 	projectile_type = /obj/projectile/energy/medical/oxygen
 	select_name = "oxygen"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	e_cost = 120
+	e_cost = LASER_SHOTS(8, STANDARD_CELL_CHARGE)
 	delay = 8
 	harmful = FALSE
 	select_color = "#00d9ffff"

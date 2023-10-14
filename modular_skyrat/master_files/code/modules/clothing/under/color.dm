@@ -1,6 +1,9 @@
 /obj/item/clothing/under/color
 	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit/worn/monkey
 
+/obj/item/clothing/under/color/rainbow
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
+
 /**
  * Random jumpsuit is the preferred style of the wearer if loaded as an outfit.
  * This is cleaner than creating a ../skirt variant as skirts are precached into SSwardrobe

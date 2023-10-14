@@ -507,6 +507,7 @@
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
+	new /obj/item/disk/nifsoft_uploader/dorms/hypnosis(src)
 	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
 
 /obj/item/storage/box/nif_ghost_box/ghost_role/PopulateContents()

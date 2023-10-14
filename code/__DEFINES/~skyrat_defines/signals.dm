@@ -43,20 +43,6 @@
 // Health signals
 /// /mob/living/proc/updatehealth()
 #define COMSIG_MOB_RUN_ARMOR "mob_run_armor"
-/// /mob/living/proc/adjustBruteLoss (amount)
-#define COMSIG_MOB_LOSS_BRUTE "mob_loss_brute"
-/// /mob/living/proc/adjustBurnLoss (amount)
-#define COMSIG_MOB_LOSS_FIRE "mob_loss_fire"
-/// /mob/living/proc/adjustCloneLoss (amount)
-#define COMSIG_MOB_LOSS_CLONE "mob_loss_clone"
-/// /mob/living/proc/adjustToxLoss (amount)
-#define COMSIG_MOB_LOSS_TOX "mob_loss_tox"
-////mob/living/proc/adjustOyxLoss (amount)
-#define COMSIG_MOB_LOSS_OXY "mob_loss_oxy"
-////mob/living/proc/adjustStaminaLoss (amount)
-#define COMSIG_MOB_LOSS_STAMINA "mob_loss_stamina"
-/// /mob/living/proc/adjustOrganLoss (slot, amount)
-#define COMSIG_MOB_LOSS_ORGAN "mob_loss_organ"
 ///from base of /turf/handle_fall(): (mob/faller)
 #define COMSIG_TURF_MOB_FALL "turf_mob_fall"
 ///from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)
