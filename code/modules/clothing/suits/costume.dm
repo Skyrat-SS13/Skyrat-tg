@@ -533,6 +533,9 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/costume/ghost_sheet
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/costume/soviet
 	name = "soviet armored coat"
 	desc = "Conscript reporting! Sponsored by DonkSoft Co. for historical reenactment of the Third World War!"
