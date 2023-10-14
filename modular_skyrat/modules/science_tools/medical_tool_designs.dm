@@ -72,6 +72,15 @@
 
 	return ..()
 
+/datum/design/health_hud
+	construction_time = 5 SECONDS
+
+/datum/design/health_hud/New()
+	build_type |= MECHFAB
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+
+	return ..()
+
 // Advanced tool overrides
 /datum/design/laserscalpel
 	construction_time = 1 SECONDS
@@ -104,6 +113,15 @@
 	construction_time = 5 SECONDS
 
 /datum/design/healthanalyzer_advanced/New()
+	build_type |= MECHFAB
+	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
+
+	return ..()
+
+/datum/design/health_hud_night
+	construction_time = 5 SECONDS
+
+/datum/design/health_hud_night/New()
 	build_type |= MECHFAB
 	category += list(RND_CATEGORY_MECHFAB_EQUIPMENT + RND_SUBCATEGORY_MECHFAB_EQUIPMENT_MEDICAL)
 

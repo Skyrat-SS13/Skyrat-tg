@@ -55,6 +55,7 @@
 
 /obj/machinery/vending/wardrobe/robo_wardrobe
 	skyrat_products = list(
+		/obj/item/clothing/glasses/hud/health = 2,
 		/obj/item/clothing/head/beret/science/fancy/robo = 2,
 		/obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek = 2,
 		/obj/item/tank/internals/anesthetic = 2,
