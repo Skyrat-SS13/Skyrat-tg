@@ -64,7 +64,7 @@
 /obj/item/clothing/mask/paper/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!strap_hidden)
-		. = mutable_appearance(icon, "mask_paper_strap")
+		. += mutable_appearance(icon_file, "mask_paper_strap")
 
 /obj/item/clothing/mask/paper/alt_click_secondary(mob/user)
 	. = ..()
@@ -106,8 +106,8 @@
 	if(!istype(user))
 		return
 	if(!user.incapacitated())
-		wear_hair_over = !wear_hair_over
 		var/is_worn = user.wear_mask == src
+		wear_hair_over = !wear_hair_over
 		if(wear_hair_over)
 			alternate_worn_layer = BACK_LAYER
 			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair over the mask.")
@@ -115,19 +115,16 @@
 			alternate_worn_layer = initial(alternate_worn_layer)
 			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair under the mask.")
 
-		user.update_body_parts()
-		user.update_inv_ears(0)
 		user.update_worn_mask()
 
 /obj/item/clothing/mask/paper/proc/adjust_strap(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	if(!user.incapacitated())
+		var/is_worn = user.wear_mask == src
 		strap_hidden = !strap_hidden
 		to_chat(user, "You [is_worn ? "" : "will "][strap_hidden ? "hide" : "show"] the mask strap.")
 
-		user.update_body_parts()
-		user.update_inv_ears(0)
 		user.update_worn_mask()
 
 // Because alternate_worn_layer can potentially get reset on unequipping the mask (ex: for 'Top' snouts), let's make sure we don't lose it our settings
