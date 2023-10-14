@@ -148,6 +148,7 @@
 /mob/living/basic/death(gibbed)
 	. = ..()
 	if(basic_mob_flags & DEL_ON_DEATH)
+		ghostize(can_reenter_corpse = FALSE)
 		qdel(src)
 	else
 		health = 0
@@ -291,6 +292,7 @@
 		update_held_items()
 
 /mob/living/basic/update_held_items()
+	. = ..()
 	if(isnull(client) || isnull(hud_used) || hud_used.hud_version == HUD_STYLE_NOHUD)
 		return
 	var/turf/our_turf = get_turf(src)
