@@ -160,30 +160,6 @@ GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_dea
 /datum/preference/numeric/death_consequences/rezadone_living_degradation_reduction/create_default_value()
 	return DEATH_CONSEQUENCES_DEFAULT_REZADONE_DEGRADATION_REDUCTION
 
-/datum/preference/numeric/death_consequences/strange_reagent_degradation_reduction
-	savefile_key = "dc_strange_reagent_degradation_reduction"
-
-	minimum = 0
-	maximum = 500
-
-	config_name = "Strange reagent degradation reduction"
-	config_desc = "If you are organic, alive, and metabolizing strange reagent, you will passively recover from degradation at this rate per second."
-
-/datum/preference/numeric/death_consequences/strange_reagent_degradation_reduction/create_default_value()
-	return DEATH_CONSEQUENCES_DEFAULT_STRANGE_REAGENT_DEGRADATION_REDUCTION
-
-/datum/preference/numeric/death_consequences/sansufentanyl_living_degradation_reduction
-	savefile_key = "dc_sansufentanyl_living_degradation_reduction"
-
-	minimum = 0
-	maximum = 500
-
-	config_name = "Sansufentanyl degradation reduction"
-	config_desc = "If you are organic, alive, and metabolizing sansufentanyl, you will passively recover from degradation at this rate per second."
-
-/datum/preference/numeric/death_consequences/sansufentanyl_living_degradation_reduction/create_default_value()
-	return DEATH_CONSEQUENCES_DEFAULT_SANSUFENTANYL_DEGRADATION_REDUCTION
-
 /datum/preference/numeric/death_consequences/eigenstasium_degradation_reduction
 	savefile_key = "dc_eigenstasium_degradation_reduction"
 
