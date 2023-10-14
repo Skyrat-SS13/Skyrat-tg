@@ -56,8 +56,10 @@
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
 					/obj/item/clothing/head/costume/ushanka/sec = 10,
+					/obj/item/clothing/head/helmet/sec/sol = 5,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol = 5,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic = 5,
+					/obj/item/clothing/head/hats/sec/cap/peacekeeper/sol/dark = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,

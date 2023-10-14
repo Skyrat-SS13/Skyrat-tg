@@ -25,9 +25,6 @@
 /obj/item/gun/ballistic/automatic/pistol/deagle/ctf/give_gun_safeties()
 	return
 
-/obj/item/gun/ballistic/automatic/pistol/g17/mesa/give_gun_safeties()
-	return
-
 /obj/item/gun/ballistic/revolver/grenadelauncher/give_gun_safeties()
 	return
 

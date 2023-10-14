@@ -53,10 +53,10 @@
 	new /obj/item/clothing/gloves/tackler/combat(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/clothing/mask/gas/sechailer/swat(src)
+	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/storage/belt/military(src)
 	new /obj/item/card/id/advanced/chameleon(src)
-	new /obj/item/mod/control/pre_equipped/nuclear(src)
+	new /obj/item/mod/control/pre_equipped/nuclear/unrestricted(src)
 
 /obj/item/guardiancreator/tech/choose/traitor/opfor
 	allowling = TRUE
