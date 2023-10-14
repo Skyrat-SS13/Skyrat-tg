@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_dea
 	return null
 
 /datum/preference/dc_dummy_pref/is_valid(value)
-	return FALSE
+	return TRUE
 
 // god i fucking hate this but the only other option is making a ton of TSX types, a global list, or typechecking constantly and slapping var/name on EVERY DC pref
 /datum/preference
