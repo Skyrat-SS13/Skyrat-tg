@@ -207,7 +207,7 @@
 	yolk.underwear = "Nude"
 	yolk.equipOutfit(/datum/outfit/ashwalker)//this is an authentic mess we're making
 	yolk.update_body()
-	yolk.gib()
+	yolk.gib(DROP_ALL_REMAINS)
 	QDEL_NULL(egg)
 	return ..()
 
@@ -236,7 +236,7 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/allow_spawn(mob/user, silent = FALSE)
-	if(!(user.key in team.players_spawned))//one per person unless you get a bonus spawn
+	if(!(user.ckey in team.players_spawned))//one per person unless you get a bonus spawn
 		return TRUE
 	if(!silent)
 		to_chat(user, span_warning("You have exhausted your usefulness to the Necropolis."))
@@ -254,7 +254,7 @@
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
 
 	spawned_human.remove_language(/datum/language/common)
-	team.players_spawned += (spawned_human.key)
+	team.players_spawned += (spawned_human.ckey)
 	eggshell.egg = null
 	QDEL_NULL(eggshell)
 
@@ -316,7 +316,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	shoes = /obj/item/clothing/shoes/combat
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_hand = /obj/item/gun/ballistic/rifle/sniper_rifle
+	r_hand = /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano/evil // SKYRAT EDIT - Original: /obj/item/gun/ballistic/rifle/sniper_rifle
 
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT

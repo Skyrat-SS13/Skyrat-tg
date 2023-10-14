@@ -323,7 +323,7 @@
 		return FALSE
 	var/brute_damage = brute_heal > burn_heal //changes repair text based on how much brute/burn was supplied
 	if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
-		if(affecting.heal_damage(brute_heal, burn_heal, BODYTYPE_ROBOTIC))
+		if(affecting.heal_damage(brute_heal, burn_heal, required_bodytype = BODYTYPE_ROBOTIC))
 			human.update_damage_overlays()
 		user.visible_message(span_notice("[user] fixes some of the [brute_damage ? "dents on" : "burnt wires in"] [human]'s [affecting.name]."), \
 			span_notice("You fix some of the [brute_damage ? "dents on" : "burnt wires in"] [human == user ? "your" : "[human]'s"] [affecting.name]."))
@@ -539,3 +539,33 @@
 		"[key_name(src)] manually changed selected zone",
 		data,
 	)
+
+/**
+ * Returns an associative list of the logs of a certain amount of lines spoken recently by this mob
+ * copy_amount - number of lines to return
+ * line_chance - chance to return a line, if you don't want just the most recent x lines
+ */
+/mob/proc/copy_recent_speech(copy_amount = LING_ABSORB_RECENT_SPEECH, line_chance = 100)
+	var/list/recent_speech = list()
+	var/list/say_log = list()
+	var/log_source = logging
+	for(var/log_type in log_source)
+		var/nlog_type = text2num(log_type)
+		if(nlog_type & LOG_SAY)
+			var/list/reversed = log_source[log_type]
+			if(islist(reversed))
+				say_log = reverse_range(reversed.Copy())
+				break
+
+	for(var/spoken_memory in say_log)
+		if(recent_speech.len >= copy_amount)
+			break
+		if(!prob(line_chance))
+			continue
+		recent_speech[spoken_memory] = splittext(say_log[spoken_memory], "\"", 1, 0, TRUE)[3]
+
+	var/list/raw_lines = list()
+	for (var/key as anything in recent_speech)
+		raw_lines += recent_speech[key]
+
+	return raw_lines

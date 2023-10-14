@@ -206,12 +206,14 @@
 	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
+		"mini_soulcatcher",
 	)
 
 /datum/techweb_node/neural_programming/New()
 	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
+		"rsd_interface",
 	)
 
 /datum/techweb_node/cyborg_upg_util/New()

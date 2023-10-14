@@ -733,7 +733,7 @@
 	if(heal_flags & HEAL_NEGATIVE_MUTATIONS)
 		for(var/datum/mutation/human/existing_mutation in dna.mutations)
 			if(existing_mutation.quality != POSITIVE)
-				dna.remove_mutation(existing_mutation.name)
+				dna.remove_mutation(existing_mutation)
 
 	if(heal_flags & HEAL_TEMP)
 		set_coretemperature(get_body_temp_normal(apply_change = FALSE))
@@ -786,6 +786,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_MOD_QUIRKS, "Add/Remove Quirks")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
 	VV_DROPDOWN_OPTION(VV_HK_PURRBATION, "Toggle Purrbation")
+	VV_DROPDOWN_OPTION(VV_HK_APPLY_DNA_INFUSION, "Apply DNA Infusion")
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -871,6 +872,19 @@
 			var/msg = span_notice("[key_name_admin(usr)] has removed [key_name(src)] from purrbation.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
+	if(href_list[VV_HK_APPLY_DNA_INFUSION])
+		if(!check_rights(R_SPAWN))
+			return
+		if(!ishuman(src))
+			to_chat(usr, "This can only be done to human species.")
+			return
+		var/result = usr.client.grant_dna_infusion(src)
+		if(result)
+			to_chat(usr, "Successfully applied DNA Infusion [result] to [src].")
+			log_admin("[key_name(usr)] has applied DNA Infusion [result] to [key_name(src)].")
+		else
+			to_chat(usr, "Failed to apply DNA Infusion to [src].")
+			log_admin("[key_name(usr)] failed to apply a DNA Infusion to [key_name(src)].")
 
 /mob/living/carbon/human/limb_attack_self()
 	var/obj/item/bodypart/arm = hand_bodyparts[active_hand_index]

@@ -148,7 +148,7 @@
 /obj/item/organ/internal/tongue/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag)
 	. = ..()
 	if(!owner)
-		return
+		return FALSE
 	apply_tongue_effects()
 
 /// Applies effects to our owner based on how damaged our tongue is
@@ -554,6 +554,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 /obj/item/organ/internal/tongue/robot
 	name = "robotic voicebox"
 	desc = "A voice synthesizer that can interface with organic lifeforms."
+	failing_desc = "seems to be broken."
 	organ_flags = ORGAN_ROBOTIC
 	icon_state = "tonguerobot"
 	say_mod = "states"
