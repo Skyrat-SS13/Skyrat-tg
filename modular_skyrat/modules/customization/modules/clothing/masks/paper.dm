@@ -97,7 +97,7 @@
 	var/mob/living/carbon/carbon_user
 	if(iscarbon(user))
 		carbon_user = user
-	if(carbon_user.wear_mask == src)
+	if(carbon_user && carbon_user.wear_mask == src)
 		carbon_user.update_worn_mask()
 
 	current_skin = null //so we can infinitely reskin
