@@ -24,7 +24,7 @@
 	var/swiping = FALSE
 
 /obj/item/scythe/pre_attack(atom/A, mob/living/user, params)
-	if(!istype(A, /obj/structure/spacevine) && !istype(A, /mob/living/simple_animal/hostile/venus_human_trap))
+	if(!istype(A, /obj/structure/spacevine) && !istype(A, /mob/living/basic/venus_human_trap))
 		return ..()
 	if(swiping)
 		return ..()

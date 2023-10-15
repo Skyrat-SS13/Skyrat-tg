@@ -64,6 +64,15 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/head_helmet
 
+/obj/item/clothing/head/hats/sec/cap/peacekeeper/sol/dark
+	name = "police patrol cap"
+	desc = "A dark colored hat with a silver badge, for the officer interested in style."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "policeofficerpatrolcap"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/head_helmet
+
 /obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
 	name = "sol police chief cap"
 	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
@@ -78,6 +87,16 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "policetrafficcap"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor_type = /datum/armor/head_helmet
+/obj/item/clothing/head/helmet/sec/sol
+	name = "sol police helmet"
+	desc = "A helmet to protect any officer from bludgeoning attacks, or the occasional bullet."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
+	icon_state = "security_helmet_novisor"
+	base_icon_state = "security_helmet_novisor"
+	actions_types = NONE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/head_helmet
 
@@ -129,7 +148,7 @@
 	desc = "A tar black naval cap with a silver disk in the center."
 	icon_state = "imphos"
 	armor_type = /datum/armor/hats_hos
-	
+
 /obj/item/clothing/head/hats/imperial/cmo
 	name = "chief medical officer's naval cap"
 	desc = "A teal naval cap with a silver disk in the center."
