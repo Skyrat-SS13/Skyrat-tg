@@ -85,7 +85,10 @@ export const CharacterPreferenceWindow = (props, context) => {
     // SKYRAT EDIT END
     case Page.Main:
       pageContents = (
-        <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
+        <MainPage // SKYRAT EDIT START - DEATH CONSEQUENCES QUIRK
+          openSpecies={() => setCurrentPage(Page.Species)}
+          openDCConfig={() => setCurrentPage(Page.DC_Config)}
+        /> // SKYRAT EDIT END
       );
 
       break;
@@ -170,19 +173,6 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Languages
                 </PageButton>
               </Stack.Item>
-
-              {data.selected_quirks.includes(
-                'ResonanceDegradationDisorder'
-              ) && (
-                <Stack.Item grow>
-                  <PageButton
-                    currentPage={currentPage}
-                    page={Page.DC_Config}
-                    setPage={setCurrentPage}>
-                    DC Config
-                  </PageButton>
-                </Stack.Item>
-              )}
               {
                 // SKYRAT EDIT END
               }

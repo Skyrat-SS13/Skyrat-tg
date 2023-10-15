@@ -23,6 +23,8 @@ const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
   handleLoadout: () => void; // SKYRAT EDIT ADDITION
+  handleDCConfig: () => void; // SKYRAT EDIT ADDITION
+  has_death_consequences: boolean;
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -69,6 +71,19 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      {
+        props.has_death_consequences && ( // SKYRAT EDIT ADDITION - DEATH CONSEQUENCES QUIRK
+          <Stack.Item>
+            <Button
+              onClick={props.handleDCConfig}
+              fontSize="22px"
+              icon="dna"
+              tooltip="Open DC config"
+              tooltipPosition="top"
+            />
+          </Stack.Item>
+        ) // SKYRAT EDIT ADDITION END
+      }
     </Stack>
   );
 };
@@ -423,6 +438,7 @@ const PreferenceList = (props: {
 export const MainPage = (
   props: {
     openSpecies: () => void;
+    openDCConfig: () => void;
   },
   context
 ) => {
@@ -547,7 +563,11 @@ export const MainPage = (
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
-                      }
+                      } // SKYRAT EDIT ADDITION BEGIN - DEATH CONSEQUENCES QUIRK
+                      handleDCConfig={props.openDCConfig}
+                      has_death_consequences={data.selected_quirks.includes(
+                        'ResonanceDegradationDisorder'
+                      )} // SKYRAT EDIT END
                     />
                   </Stack.Item>
 
