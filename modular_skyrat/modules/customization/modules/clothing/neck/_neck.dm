@@ -86,3 +86,30 @@
 	greyscale_config_worn_better_vox = /datum/greyscale_config/mantle/worn/newvox
 	greyscale_config_worn_vox = /datum/greyscale_config/mantle/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/neck/maid_collar
+	name = "Custom maid neck cover"
+	desc = "A neckpiece for a maid costume, it smells faintly of disappointment."
+	icon_state = "gags_maid_collar"
+	greyscale_config = /datum/greyscale_config/maid_costume/maid_collar
+	greyscale_config_worn = /datum/greyscale_config/maid_costume/maid_collar/worn
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/maid_costume.dmi'
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#8c8c8c"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/neck/face_scarf
+	name = "Face scarf"
+	desc = "A warm looking scarf that you can easily put around your face, with a compact breath mask installed."
+	icon_state = "gags_face_scarf"
+	greyscale_config = /datum/greyscale_config/face_scarf
+	greyscale_config_worn = /datum/greyscale_config/face_scarf/worn
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	greyscale_colors = "#ffffff"
+	clothing_flags = MASKINTERNALS
+	flags_inv = HIDEFACIALHAIR
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/head/small_bow/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_clothes, "gags_face_scarf_t")
+

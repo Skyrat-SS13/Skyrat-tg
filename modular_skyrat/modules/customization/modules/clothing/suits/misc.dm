@@ -245,9 +245,6 @@
 	icon_state = "kuban_cossak"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/costume/ghost_sheet
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -306,6 +303,28 @@
 	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/suit/warm_sweater
+	name = "Warm sweater"
+	desc = "A pretty sweater, it looks quite comfortable and warm."
+	icon_state = "gags_warm_sweater"
+	greyscale_config = /datum/greyscale_config/warm_sweater
+	greyscale_config_worn = /datum/greyscale_config/warm_sweater/worn
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#8c8c8c"
+	body_parts_covered = CHEST
+	flags_1 = IS_PLAYER_COLORABLE_1
+	heat_protection = CHEST
+
+/obj/item/clothing/suit/heart_sweater
+	name = "Heart sweater"
+	desc = "A pretty sweater, it looks quite comfortable and warm. It also has a heart pattern, how cute."
+	icon_state = "gags_heart_sweater"
+	greyscale_config = /datum/greyscale_config/heart_sweater
+	greyscale_config_worn = /datum/greyscale_config/heart_sweater/worn
+	greyscale_colors = "#8c8c8c#8c8c8c"
+	body_parts_covered = CHEST
+	flags_1 = IS_PLAYER_COLORABLE_1
+	heat_protection = CHEST
+
 /obj/item/clothing/suit/apron/overalls
 	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
 	greyscale_config_worn_better_vox = /datum/greyscale_config/overalls/worn/better_vox
@@ -330,3 +349,4 @@
 		/obj/item/storage/bag/construction,
 		/obj/item/t_scanner,
 	)
+

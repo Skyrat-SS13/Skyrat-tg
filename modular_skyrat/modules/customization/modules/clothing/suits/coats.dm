@@ -206,3 +206,14 @@
 	greyscale_config = /datum/greyscale_config/tailored_short_jacket
 	greyscale_config_worn = /datum/greyscale_config/tailored_short_jacket/worn
 	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c#8c8c8c#bf9f78#8c8c8c"
+
+/obj/item/clothing/suit/warm_coat
+	name = "Warm coat"
+	desc = "A long insulated coat with fur, it looks quite comfortable."
+	icon_state = "gags_warm_coat"
+	greyscale_config = /datum/greyscale_config/warm_coat
+	greyscale_config_worn = /datum/greyscale_config/warm_coat/worn
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#8c8c8c"
+	body_parts_covered = CHEST|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
+	heat_protection = CHEST
