@@ -140,3 +140,9 @@
 
 /// The key used for sprite accessories that should never actually be applied to the player.
 #define SPRITE_ACCESSORY_NONE "None"
+
+// Antag opt in levels
+#define YES_TEMP 1
+#define YES_KILL 2
+#define YES_ROUND_REMOVE 3
+#define NOT_TARGET 0

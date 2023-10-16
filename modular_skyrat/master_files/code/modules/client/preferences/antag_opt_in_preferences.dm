@@ -22,7 +22,8 @@
 	. = ..()
 
 /datum/preference/toggle/antag_opt_in
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	//category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_PLAYER
 	savefile_key = "antag_opt_in_pref"
 	default_value = FALSE
@@ -50,11 +51,13 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "antag_opt_in_status_pref"
 
+//defining these as numbers so I need 'No" to be somemthing so the define doesnt make every instance of the word 'No' = 0
+//kinda wordy but elaborates that the player is declining to be a target, not getting out of interacting with antagonists alltogether
 /datum/preference/choiced/antag_opt_in_status/init_possible_values()
-	return list("No", "Yes - Kidnap / Inconvenience", "Yes - Kill", "Yes - Round Remove")
+	return list(YES_TEMP, YES_KILL, YES_ROUND_REMOVE, NOT_TARGET)
 
 /datum/preference/choiced/antag_opt_in_status/create_default_value()
-	return "No"
+	return YES_KILL
 
 /datum/preference/choiced/antag_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -67,9 +70,9 @@
 
 /datum/preference/choiced/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return "No"
+		return YES_KILL
 	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
-		return "No"
+		return YES_KILL
 	. = ..()
 
 /datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)

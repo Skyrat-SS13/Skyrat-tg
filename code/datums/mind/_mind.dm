@@ -587,3 +587,7 @@
 
 /mob/dead/observer/sync_mind()
 	return
+
+//golden gave me this, I think it goes here.
+/client/proc/can_be_antag_target()
+    return prefs.read_preference(/datum/preference/choiced/antag_opt_in_status)
