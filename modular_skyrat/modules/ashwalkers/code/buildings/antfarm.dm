@@ -26,6 +26,9 @@
 
 /obj/structure/antfarm/Initialize(mapload)
 	. = ..()
+	if(!istype(get_turf(src), /turf/open/misc/asteroid/basalt))
+		qdel(src)
+		return
 	START_PROCESSING(SSobj, src)
 	COOLDOWN_START(src, ant_timer, 30 SECONDS)
 
