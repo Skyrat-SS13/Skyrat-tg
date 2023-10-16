@@ -271,7 +271,6 @@
 			), AUGMENTATION_TRAIT)
 	else
 		owner.remove_traits(list(
-```suggestion
 			/* SKYRAT EDIT REMOVAL BEGIN - Synths are not immune to temperature
 			TRAIT_RESISTCOLD,
 			TRAIT_RESISTHEAT,
