@@ -64,5 +64,5 @@
 
 /obj/projectile/bullet/p60strela/Initialize(mapload)
 	. = ..()
-	// We do 80 total damage to anything robotic, namely borgs
-	AddElement(/datum/element/bane, target_type = /mob, mob_biotypes = MOB_ROBOTIC, damage_multiplier = 0, added_damage = anti_materiel_damage_addition)
+	// We do 80 total damage to anything robotic, namely borgs, and robotic simplemobs
+	AddElement(/datum/element/bane, target_type = /mob/living, mob_biotypes = MOB_ROBOTIC, damage_multiplier = 0, added_damage = anti_materiel_damage_addition)

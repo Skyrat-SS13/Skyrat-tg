@@ -10,14 +10,17 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/soldier
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/storage/medkit/emergency,
-							/obj/item/ammo_box/magazine/recharge/plasma_battery,
-							/obj/item/advanced_choice_beacon/nri/heavy,
-							/obj/item/beamout_tool,
-							/obj/item/crucifix,
-							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack,
+		/obj/item/storage/medkit/emergency,
+		/obj/item/advanced_choice_beacon/nri/heavy,
+		/obj/item/beamout_tool,
+		/obj/item/crucifix,
+		/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
+	)
+	l_pocket = /obj/item/knife/combat/survival
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
