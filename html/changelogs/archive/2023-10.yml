@@ -613,3 +613,159 @@
   - qol: Table flipping feedback is now in the form of balloon alerts
   - rscadd: Robo can now print standard and alien surgical tools
   - bugfix: Defibs now dont screw over organics if the user was robotic
+2023-10-13:
+  Hatterhat:
+  - bugfix: The CIN replicator medipen pouch and pocket first-aid kit no longer have
+      bag-like functionality (scooping/the action button), which they didn't need
+      to fit in your pockets anyway.
+  - balance: First-aid pouches (the ones through Cargo for 300 cr) now have five slots;
+      one up from four.
+  - rscadd: Ammo pouches can now be reskinned into casing pouches, which let them
+      hold ten individual shell casings in your pocket. Yes, this includes shotgun
+      shells. This is also primarily intended for shotgun users.
+  - spellcheck: .50 BMG surplus, incendiary, and marksman have now been given more
+      SR-lore-accurate names.
+  - bugfix: 10mm Reaper can't be printed in ammo benches like it was intended. If
+      you don't know what this means, don't worry about it.
+  LT3:
+  - rscadd: Introducing Nanotrasen Wave! A Nanotrasen exclusive, Waveallows your PDA
+      to be charged wirelessly through microwave frequencies. You can Wave-charge
+      your device by placing it inside a compatible microwave and selecting the charge
+      mode.
+  - rscadd: Microwaves can be upgraded to add wireless charging
+  - rscadd: Cell-swappable microwave for the engineer on-the-go
+  - rscadd: Microwave now has a wire to swap charge/cook modes
+  - rscadd: Furnishings RCD upgrade now includes wireless microwave
+  - rscadd: Tramstation and Birdshot engineering break rooms now have microwave and
+      donk pockets. Some microwaves come pre-equipped with wireless charging and an
+      upgraded cell.
+  - bugfix: The microwave in the snowdin ruin is now real, not a fluff prop
+  - qol: Canisters can now be built in one step, no upgrading required
+  Paxilmaniac:
+  - image: The sprites for forge structures have been vastly improved
+  SkyratBot:
+  - bugfix: The Holy Hand Grenade's effect on revealing a revenant had its duration
+      accidentally nerfed, it is now back to 10 seconds.
+  - bugfix: Revenant midrounds should now properly run.
+  - bugfix: Revenant harvesting should now let you actually pass the final do_after
+      so you can harvest that sweet essence.
+  - refactor: Gorillas now use the basic mob framework. Please report any unusual
+      side effects.
+  - bugfix: Fixed the errant bluescreen in the camera console.
+  - code_imp: basicmobs that delete on death, ghost before dying
+  - qol: The rollerdome is now better - the dance floor works now, and the bar is
+      groovier.
+  - bugfix: Dullahans can read, strip people, and utilise tools.
+  - bugfix: Dullahan brains and eyes will not decay while inside their living severed
+      head.
+  - image: Inhands for the Sakhno and related rifles will no longer be way too high
+      or big
+  burgerenergy:
+  - qol: Both versions of Interdyne received some map touch ups. Standouts include;
+      a fax machine, dorm locks, a make shift brig area, a revamped bathroom, botany,
+      and kitchen, as well as backporting Icemoon improvements to the Lavaland version.
+  nikothedude:
+  - rscadd: Sec/Medhuds can now see a small ! if a person has the DNR quick, as well
+      as see a blurb in examine about it
+  - rscadd: You can now buckle yourself to washing machines! This serves no practical
+      purpose except for FUN TIMES.
+2023-10-14:
+  LT3:
+  - image: Nitrogen canisters are now yellow, antinob are grey/yellow, empty are grey,
+      hydrogen are red/white
+  Melbert:
+  - bugfix: Fixes Mauna Loa, Monover, Silibinin, Granibitaluri not exiting your system
+      on metabolism
+  - bugfix: Fixes holy water exiting your system at double the rate on metabolism
+  - bugfix: Holy Water no longer spams cultists with big text every time, it's much
+      more tame now
+  Rhials:
+  - rscadd: Two new psyker-oriented virtual domains -- Crate Chaos and Infected Domain.
+  - rscadd: Map helper for cyber-police corpse spawn.
+  - rscadd: Map helper for swapping the encrypted crate in an area with a random crate
+      from that same area.
+  - qol: You can now return to your old body after being summoned by a manifest rune.
+  - qol: You can now return to your old body after dying in CTF.
+  - qol: You can now return to your old body after dying in the Medisim Shuttle battle
+      area.
+  - qol: You can no longer suicide in CTF areas, for integrity purposes.
+  SkyratBot:
+  - bugfix: Space Dragons can now, once again, tear down walls and eat corpses. They
+      also have regained their special damage modifier when attacking mechs.
+  - bugfix: Pete's anger management training has worn off, and he will once again
+      sometimes pick a fight with you for absolutely no reason.
+  - qol: Attacking a goat will not spam messages so frequently.
+  - admin: VV can now display the contents of special byond lists like filters, or
+      client.images
+  - admin: VV on images now displays the image in the header
+  - admin: VV can now display filters and includes their type
+  - qol: apples can now be sliced
+  - bugfix: sqdl2 query readout displays location of turfs properly
+  - sound: laser2.ogg sound has been changed. Now laser carbine uses it.
+  - image: Laser carbine and orange laser sprite have been improved.
+  - bugfix: '"Mirror Walk" is once more the domain of the Maid in the Mirror rather
+      than "every heretic summon"'
+  - bugfix: Heretic mobs can once again survive space
+  - rscadd: targetting someone's arm with *slap now has a unique message
+  - bugfix: The crew is instructed to place fax machines properly in the center of
+      a table without hanging.
+  - bugfix: Modsuits can no longer be deepfried
+  - bugfix: Space Dragon can break walls, eat corpses and destroy mechs more efficiently
+      again
+  - bugfix: Player-controlled lavaland elites can once again return to their tumor
+      after winning their fight
+  TheSS13Melon:
+  - rscadd: Adds the Security Patrol Cap and Sol Police Helmet to the security vendor
+  - rscadd: Adds the Sol Police Helmet to /datum/supply_pack/security/helmets_skyrat
+  - rscdel: Removes redsec helmets from /datum/supply_pack/security/helmets_skyrat
+  nikothedude:
+  - bugfix: Experimental robotic tend wounds now actually shows up
+2023-10-15:
+  LT3:
+  - bugfix: Fixed moldies event default weight overriding the configured event weight
+  Melbert:
+  - qol: Leaning now has a small animation associated.
+  - qol: Cyborgs can now lean against walls.
+  - bugfix: Fixed some runtimes associated with leaning.
+  - bugfix: Fixed being able to lean while dead or in otherwise invalid states.
+  SkyratBot:
+  - bugfix: Fixes Monkey's Delight recipe
+  - refactor: Space Dragons are now basic mobs, please report any unexpected behaviour.
+  - balance: You can now see that a space dragon is destroying a wall with a visual
+      indicator of the wall being damaged.
+  - balance: Space Dragons can pry open airlocks.
+  - bugfix: makes the riot helmet hide hair like other sec helmets
+  - rscadd: Vent Pumps can now be overclocked, do some light reading in the air alarm
+      to figure out what this means.
+  - balance: Vent Pumps now have fan integrity, the damaging of which reduces their
+      ability to move air.
+  - sound: Overclocking sounds, including spool, stop, and loop
+  - balance: Allows spacemen to use age-appropriate drugs by making it so you can
+      now huff N2O to get high.
+  honkpocket:
+  - bugfix: fixed ghost bedsheet wearable being an error sprite on digitigrade legged
+      characters
+  vinylspiders:
+  - bugfix: fixed an issue that could cause the hair the layering option to reset
+      itself upon unequipping a paper mask
+  - qol: paper masks have an action button for adjusting the mask drawing + hair layering,
+      as well as the ability to hide the strap with ctrl click. changing the drawings
+      on the mask now require a pen.
+2023-10-16:
+  SkyratBot:
+  - bugfix: plumbing setups should(hopefully) no longer grind to a halt nor will overflow
+      with excess volume of reagents.
+  - code_imp: created defines for min & max ph. Improved some reaction_reagent code.
+      Made synthesizer dispensable reagent list values static to save memory.
+  - refactor: ph balancing mechanism for reaction chamber is significantly improved.
+      Optimized it's code overall
+  - refactor: examining each individual reagent will display their results back to
+      2 decimal places again and not 4 for easy readability.
+  - qol: Bladists can now use silver *or* titanium while creating their blades
+  - spellcheck: Broken canisters now have a description
+  - rscadd: Added Afro (Huge) hairstyle
+  Wallem:
+  - bugfix: The active sonar module won't attempt to create 6000000 new pings per
+      process cycle anymore
+  nikothedude:
+  - rscadd: The nobility dresscoat, donator reward for NikoTheGuyDude
