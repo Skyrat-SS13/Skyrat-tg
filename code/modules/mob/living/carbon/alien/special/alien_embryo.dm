@@ -126,8 +126,8 @@
 
 	if(gib_on_success)
 		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
-		// owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS) SKYRAT EDIT REMOVAL - ALIEN QOL - don't ever gib host.
-		// owner.gib(TRUE) SKYRAT EDIT REMOVAL - ALIEN QOL - don't ever gib host.
+		//owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS) // SKYRAT EDIT REMOVAL - ALIEN QOL - don't ever gib host.
+		//owner.gib(DROP_ORGANS|DROP_BODYPARTS)
 		// SKYRAT EDIT ADDITION BEGIN - ALIEN QOL - You aren't getting gibbed but you aren't going to be having fun
 		owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY)
 		owner.spawn_gibs()

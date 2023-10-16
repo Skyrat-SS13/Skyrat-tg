@@ -578,6 +578,12 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
+	var/target_synthetic = (H.mob_biotypes & MOB_ROBOTIC) // SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+	if (target_synthetic)
+		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrillator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
+		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
+		balloon_alert(user, "target is synthetic!") // immediately grabs their attention even if they dont see chat
+	// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
 	user.visible_message(span_warning("[user] begins to place [src] on [H]'s chest."), span_warning("You begin to place [src] on [H]'s chest..."))
 	busy = TRUE
 	update_appearance()
@@ -636,17 +642,19 @@
 					var/total_brute = H.getBruteLoss()
 					var/total_burn = H.getFireLoss()
 
+					var/need_mob_update = FALSE
 					//If the body has been fixed so that they would not be in crit when defibbed, give them oxyloss to put them back into crit
 					if (H.health > HALFWAYCRITDEATH)
-						H.adjustOxyLoss(H.health - HALFWAYCRITDEATH, 0)
+						need_mob_update += H.adjustOxyLoss(H.health - HALFWAYCRITDEATH, updating_health = FALSE)
 					else
 						var/overall_damage = total_brute + total_burn + H.getToxLoss() + H.getOxyLoss()
 						var/mobhealth = H.health
-						H.adjustOxyLoss((mobhealth - HALFWAYCRITDEATH) * (H.getOxyLoss() / overall_damage), 0)
-						H.adjustToxLoss((mobhealth - HALFWAYCRITDEATH) * (H.getToxLoss() / overall_damage), 0, TRUE) // force tox heal for toxin lovers too
-						H.adjustFireLoss((mobhealth - HALFWAYCRITDEATH) * (total_burn / overall_damage), 0)
-						H.adjustBruteLoss((mobhealth - HALFWAYCRITDEATH) * (total_brute / overall_damage), 0)
-					H.updatehealth() // Previous "adjust" procs don't update health, so we do it manually.
+						need_mob_update += H.adjustOxyLoss((mobhealth - HALFWAYCRITDEATH) * (H.getOxyLoss() / overall_damage), updating_health = FALSE)
+						need_mob_update += H.adjustToxLoss((mobhealth - HALFWAYCRITDEATH) * (H.getToxLoss() / overall_damage), updating_health = FALSE, forced = TRUE) // force tox heal for toxin lovers too
+						need_mob_update += H.adjustFireLoss((mobhealth - HALFWAYCRITDEATH) * (total_burn / overall_damage), updating_health = FALSE)
+						need_mob_update += H.adjustBruteLoss((mobhealth - HALFWAYCRITDEATH) * (total_brute / overall_damage), updating_health = FALSE)
+					if(need_mob_update)
+						H.updatehealth() // Previous "adjust" procs don't update health, so we do it manually.
 					user.visible_message(span_notice("[req_defib ? "[defib]" : "[src]"] pings: Resuscitation successful."))
 					playsound(src, 'sound/machines/defib_success.ogg', 50, FALSE)
 					H.set_heartattack(FALSE)
@@ -662,6 +670,23 @@
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
 					log_combat(user, H, "revived", defib)
+					// SKYRAT EDIT ADDITION BEGIN - SYNTH REVIVAL
+					if (target_synthetic)
+						user.visible_message(span_boldwarning("[src] fire a powerful jolt of electricity into [H]'s vulnerable circuitry!"))
+						to_chat(H, span_userdanger("[user]'s defibrillator fires a powerful jolt of electricity into your vulnerable circuitry, overloading it!"))
+						// You may ask, why not just call H.emp_act()?
+						// well my dear reader, that EMPs contents. I only want to EMP bodyparts and organs specifically
+						for (var/obj/item/bodypart/iterated_part as anything in H.bodyparts)
+							iterated_part.emp_act(EMP_LIGHT)
+						for (var/obj/item/organ/iterated_organ as anything in H.organs)
+							iterated_organ.emp_act(EMP_LIGHT)
+						var/obj/item/organ/internal/brain/brain_organ = H.get_organ_slot(ORGAN_SLOT_BRAIN)
+						if (istype(brain_organ))
+							var/datum/brain_trauma/trauma = brain_organ.gain_trauma_type(SYNTH_DEFIBBED_TRAUMA_SEVERITY, TRAUMA_LIMIT_BASIC)
+							if (!QDELETED(trauma))
+								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_defib_trauma), brain_organ, trauma), SYNTH_DEFIBBED_TRAUMA_DURATION)
+					// SKYRAT EDIT ADDITION END - SYNTH REVIVAL
+
 				do_success()
 				return
 			else if (!H.get_organ_by_type(/obj/item/organ/internal/heart))
