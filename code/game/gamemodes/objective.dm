@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	if (new_target == "Free objective")
 		target = null
 	else if (new_target == "Random")
-		find_target()
+		find_target(blacklist = minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
 	else
 		target = new_target.mind
 
@@ -1019,3 +1019,16 @@ GLOBAL_LIST_EMPTY(possible_items)
 	var/area/target_area = get_area(target)
 
 	return (istype(user_area, dropoff) && istype(target_area, dropoff))
+
+
+//antag opt-in mind list
+/proc/minimum_opt_in_level(level = NOT_TARGET)
+	var/list/all_crew = get_crewmember_minds()
+	var/list/eligible_crew
+	LAZYINITLIST(eligible_crew)
+	for(var/datum/mind/mind as anything in all_crew)
+		var/preference = mind.current?.client?.prefs?.read_preference(/datum/preference/choiced/antag_opt_in_status)
+		if(preference >= level)
+			LAZYADD(eligible_crew, mind)
+
+	return eligible_crew
