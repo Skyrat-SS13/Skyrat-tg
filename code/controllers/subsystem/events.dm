@@ -73,17 +73,12 @@ SUBSYSTEM_DEF(events)
 	for(var/datum/round_event_control/event_to_check in control)
 		if(!event_to_check.can_spawn_event(players_amt))
 			continue
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(threat_override && !E.alert_observers)
 			continue
 		//SKYRAT EDIT END
-		if(E.weight < 0) //for round-start events etc.
-			var/res = TriggerEvent(E)
-=======
 		if(event_to_check.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(event_to_check)
->>>>>>> 2cd02f187c3 (Reduces the average delay between random events, cleans up event subsystem code (#78798))
 			if(res == EVENT_INTERRUPTED)
 				continue //like it never happened
 			if(res == EVENT_CANT_RUN)
