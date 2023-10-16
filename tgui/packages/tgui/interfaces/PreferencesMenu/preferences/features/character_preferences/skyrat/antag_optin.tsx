@@ -1,6 +1,11 @@
-import { CheckboxInput, FeatureToggle } from '../../base';
+import { FeatureChoiced, FeatureDropdownInput } from '../../base';
 
-export const antag_opt_in_status_pref: FeatureToggle = {
+export const antag_opt_in_status_pref: FeatureChoiced = {
   name: 'Be Antagonist Target',
-  component: CheckboxInput,
+  component: FeatureDropdownInput,
+};
+
+export const antag_opt_in_status_pref_interaction: FeatureChoiced = {
+  name: 'Antagonist Interaction Preference',
+  component: FeatureDropdownInput,
 };

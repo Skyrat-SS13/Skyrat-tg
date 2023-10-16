@@ -1,4 +1,3 @@
-//hacked together antag opt-in code from the ERP preferences. i legitimately just copy-pasted erp_preferences.dm and am working backwards
 /datum/config_entry/flag/disable_antag_opt_in_preferences
 	default = FALSE
 
@@ -44,12 +43,28 @@
 		return FALSE
 	. = ..()
 
-/datum/preference/toggle/antag_opt_in_status
+/datum/preference/toggle/antag_opt_in/apply_to_client_updated(client/client, value)
+	. = ..()
+	var/mob/living/carbon/human/target = client?.mob
+	if(!value && istype(target))
+		target.arousal = 0
+		target.pain = 0
+		target.pleasure = 0
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+/datum/preference/choiced/antag_opt_in_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "antag_opt_in_status_pref"
 
-/datum/preference/toggle/antag_opt_in_status/is_accessible(datum/preferences/preferences)
+/datum/preference/choiced/antag_opt_in_status/init_possible_values()
+	return list("No", "Yes")
+
+/datum/preference/choiced/antag_opt_in_status/create_default_value()
+	return "No"
+
+/datum/preference/choiced/antag_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE
 
@@ -58,13 +73,43 @@
 
 	return preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences)
 
-//i dont know what this does but im afraid removing it will break something. I think its if the config has antag preferences off then it auto-sets all this whatever setting
-/datum/preference/toggle/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
+/datum/preference/choiced/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return TRUE //idk how toggles work but i assume 'TRUE' means checked, and if we have antag opt in off that means anyone could be a target, thus we set the default to 'true'
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
-		return TRUE
+		return "No"
 	. = ..()
 
-/datum/preference/toggle/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+
+/datum/preference/choiced/antag_opt_in_status_interaction
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "antag_opt_in_status_pref_interaction"
+
+/datum/preference/choiced/antag_opt_in_status_interaction/init_possible_values()
+	return list("No", "Yes")
+
+/datum/preference/choiced/antag_opt_in_status_interaction/create_default_value()
+	return "No"
+
+/datum/preference/choiced/antag_opt_in_status_interaction/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		return FALSE
+
+	return preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences)
+
+/datum/preference/choiced/antag_opt_in_status_interaction/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		return "None"
+	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
+		return "None"
+	. = ..()
+
+/datum/preference/choiced/antag_opt_in_status_interaction/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
