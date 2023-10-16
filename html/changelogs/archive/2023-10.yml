@@ -751,3 +751,21 @@
   - qol: paper masks have an action button for adjusting the mask drawing + hair layering,
       as well as the ability to hide the strap with ctrl click. changing the drawings
       on the mask now require a pen.
+2023-10-16:
+  SkyratBot:
+  - bugfix: plumbing setups should(hopefully) no longer grind to a halt nor will overflow
+      with excess volume of reagents.
+  - code_imp: created defines for min & max ph. Improved some reaction_reagent code.
+      Made synthesizer dispensable reagent list values static to save memory.
+  - refactor: ph balancing mechanism for reaction chamber is significantly improved.
+      Optimized it's code overall
+  - refactor: examining each individual reagent will display their results back to
+      2 decimal places again and not 4 for easy readability.
+  - qol: Bladists can now use silver *or* titanium while creating their blades
+  - spellcheck: Broken canisters now have a description
+  - rscadd: Added Afro (Huge) hairstyle
+  Wallem:
+  - bugfix: The active sonar module won't attempt to create 6000000 new pings per
+      process cycle anymore
+  nikothedude:
+  - rscadd: The nobility dresscoat, donator reward for NikoTheGuyDude
