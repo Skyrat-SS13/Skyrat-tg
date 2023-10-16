@@ -75,6 +75,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 	new/datum/stack_recipe("wooden cutting board", /obj/item/cutting_board, 5, time = 2 SECONDS, check_density = FALSE, category = CAT_TOOLS),
 	new/datum/stack_recipe("wooden shelf", /obj/structure/rack/wooden, 2, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = FALSE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("storage barrel", /obj/structure/closet/crate/wooden/storage_barrel, 4, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = FALSE, category = CAT_STRUCTURE),
+	new/datum/stack_recipe("worm barrel", /obj/structure/wormfarm, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
 ))
 
 /obj/item/stack/sheet/mineral/wood/get_main_recipes()
@@ -131,3 +132,13 @@ GLOBAL_LIST_INIT(skyrat_snow_recipes, list(
 /obj/item/stack/sheet/mineral/snow/get_main_recipes()
 	. = ..()
 	. += GLOB.skyrat_snow_recipes
+
+// Sand
+
+GLOBAL_LIST_INIT(skyrat_sand_recipes, list(
+	new/datum/stack_recipe("ant farm", /obj/structure/antfarm, 20, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
+))
+
+/obj/item/stack/ore/glass/get_main_recipes()
+	. = ..()
+	. += GLOB.skyrat_sand_recipes

@@ -479,8 +479,7 @@
 	var/immediately_stun = should_stun && !(flags & SHOCK_DELAY_STUN)
 	if (immediately_stun)
 		if (paralyze)
-			//Paralyze(40) - SKYRAT EDIT REMOVAL
-			StaminaKnockdown(10, TRUE) // SKYRAT EDIT ADDITION
+			StaminaKnockdown(stun_duration / 4) // SKYRAT EDIT CHANGE - ORIGINAL: Paralyze(40)
 		else
 			Knockdown(stun_duration)
 	//Jitter and other fluff.
@@ -494,8 +493,7 @@
 ///Called slightly after electrocute act to apply a secondary stun.
 /mob/living/carbon/proc/secondary_shock(paralyze, stun_duration)
 	if (paralyze)
-		//Paralyze(60) - SKYRAT EDIT REMOVAL
-		StaminaKnockdown(10, TRUE) //SKYRAT EDIT ADDITION
+		StaminaKnockdown(stun_duration / 6) // SKYRAT EDIT CHANGE - ORIGINAL: Paralyze(60)
 	else
 		Knockdown(stun_duration)
 
@@ -768,7 +766,7 @@
 		amount = min(amount, 0) //Prevents oxy damage but not healing
 
 	. = ..()
-	check_passout(.)
+	check_passout()
 
 /mob/living/carbon/proc/get_interaction_efficiency(zone)
 	var/obj/item/bodypart/limb = get_bodypart(zone)
@@ -777,12 +775,12 @@
 
 /mob/living/carbon/setOxyLoss(amount, updating_health = TRUE, forced, required_biotype, required_respiration_type)
 	. = ..()
-	check_passout(.)
+	check_passout()
 
 /**
 * Check to see if we should be passed out from oyxloss
 */
-/mob/living/carbon/proc/check_passout(oxyloss)
+/mob/living/carbon/proc/check_passout()
 	if(!isnum(oxyloss))
 		return
 	if(oxyloss <= 50)

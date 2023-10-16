@@ -667,7 +667,7 @@
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
-	ckeywhitelist = list("masvedish")
+	ckeywhitelist = list("masvedish", "lutowski", "lawful", "anyacers", "apolloafk", "avianaviator", "notdhu")
 
 /datum/loadout_item/suit/lt3_armor
 	name = "Silver Jacket Mk II"
@@ -719,3 +719,8 @@
 	name = "Noble Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/noble
 	ckeywhitelist = list("grasshand")
+
+/datum/loadout_item/suit/nobility_dresscoat
+	name = "Nobility Dresscoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+	ckeywhitelist = list("nikotheguydude")

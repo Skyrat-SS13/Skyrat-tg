@@ -15,6 +15,7 @@
 	icon = 'modular_skyrat/modules/mold/icons/blob_mobs.dmi'
 	gold_core_spawnable = NO_SPAWN
 	faction = list(FACTION_MOLD)
+	basic_mob_flags = DEL_ON_DEATH
 
 /**
  * OIL SHAMBLERS
@@ -69,6 +70,17 @@
 	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, layer, plane, dir, alpha)
 	SSvis_overlays.add_vis_overlay(src, icon, OIL_SHAMBLER_OVERLAY, OIL_SHAMBLER_OVERLAY_LAYER, EMISSIVE_PLANE, dir, alpha)
 
+/mob/living/basic/mold/oil_shambler/melee_attack(atom/target, list/modifiers, ignore_cooldown)
+	. = ..()
+	if(!isliving(target))
+		return
+
+	var/mob/living/ignite_target = target
+	if(prob(ignite_chance))
+		ignite_target.adjust_fire_stacks(additional_fire_stacks)
+
+	ignite_target.ignite_mob()
+
 /datum/ai_controller/basic_controller/oil_shambler
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
@@ -79,7 +91,7 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/oil_shambler,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/random_speech/oil_shambler,
 	)
 
@@ -88,23 +100,6 @@
 	emote_hear = list("bubbles.", "crackles.", "groans.")
 	emote_see = list("bubbles.")
 
-/datum/ai_planning_subtree/basic_melee_attack_subtree/oil_shambler
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/oil_shambler
-
-/datum/ai_behavior/basic_melee_attack/oil_shambler/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
-	. = ..()
-	var/atom/target = controller.blackboard[target_key]
-	var/mob/living/basic/mold/oil_shambler/oil_shambler = controller.pawn
-
-	if(!isliving(target))
-		return
-
-	var/mob/living/ignite_target = target
-	if(prob(oil_shambler.ignite_chance))
-		ignite_target.adjust_fire_stacks(oil_shambler.additional_fire_stacks)
-
-	if(ignite_target.fire_stacks)
-		ignite_target.ignite_mob()
 
 /**
  * DISEASE MOLD
@@ -139,6 +134,17 @@
 	/// The disease given on melee attacks
 	var/datum/disease/given_disease = /datum/disease/cryptococcus
 
+/mob/living/basic/mold/diseased_rat/melee_attack(atom/target, list/modifiers, ignore_cooldown)
+	. = ..()
+
+	if(!isliving(target))
+		return
+
+	var/mob/living/carbon/disease_target = target
+	if(can_inject(disease_target))
+		to_chat(disease_target, span_danger("[src] manages to penetrate your clothing with its teeth!"))
+		disease_target.ForceContractDisease(new given_disease(), FALSE, TRUE)
+
 /datum/ai_controller/basic_controller/diseased_rat
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
@@ -149,7 +155,7 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/diseased_rat,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/random_speech/diseased_rat,
 	)
 
@@ -158,21 +164,6 @@
 	emote_hear = list("squeaks.", "gnashes.", "hisses.")
 	emote_see = list("drools.")
 
-/datum/ai_planning_subtree/basic_melee_attack_subtree/diseased_rat
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/diseased_rat
-
-/datum/ai_behavior/basic_melee_attack/diseased_rat/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
-	. = ..()
-	var/atom/target = controller.blackboard[target_key]
-	var/mob/living/basic/mold/diseased_rat/diseased_rat = controller.pawn
-
-	if(!isliving(target))
-		return
-
-	var/mob/living/carbon/disease_target = target
-	if(diseased_rat.can_inject(disease_target))
-		to_chat(disease_target, span_danger("[diseased_rat] manages to penetrate your clothing with its teeth!"))
-		disease_target.ForceContractDisease(new diseased_rat.given_disease(), FALSE, TRUE)
 
 /**
  * ELECTRIC MOLD
@@ -202,6 +193,15 @@
 
 	pass_flags = PASSTABLE
 
+	/// What the mob injects per bite
+	var/inject_reagent = /datum/reagent/teslium
+	/// How many units to inject per bite
+	var/inject_amount = 2
+
+/mob/living/basic/mold/electric_mosquito/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/venomous, inject_reagent, inject_amount)
+
 /datum/ai_controller/basic_controller/electric_mosquito
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
@@ -212,7 +212,7 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/electric_mosquito,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/random_speech/electric_mosquito,
 	)
 
@@ -221,24 +221,11 @@
 	emote_hear = list("zaps.", "buzzes.", "crackles.")
 	emote_see = list("arcs.")
 
-/datum/ai_planning_subtree/basic_melee_attack_subtree/electric_mosquito
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/electric_mosquito
-
-/datum/ai_behavior/basic_melee_attack/electric_mosquito/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
-	. = ..()
-	var/atom/target = controller.blackboard[target_key]
-
-	if(!iscarbon(target))
-		return
-
-	var/mob/living/carbon/shock_target = target
-	shock_target.reagents.add_reagent(/datum/reagent/teslium, 2)
-
 /**
  * RADIATION MOLD
  *
  * Weird centipede things that spawn with a rad mold
- * They have a chance to irradiate their target on hit, as well as splashing mutagen on death
+ * They have a chance to irradiate their target on hit
  */
 /mob/living/basic/mold/centaur
 	name = "centaur"
@@ -271,21 +258,21 @@
 
 	/// The chance to irradiate on hit
 	var/irradiate_chance = 20
-	/// The chem to splash on death
-	var/death_chem = /datum/reagent/toxin/mutagen
 
 /mob/living/basic/mold/centaur/Initialize(mapload)
 	. = ..()
 	update_overlays()
 
-/mob/living/basic/mold/centaur/death(gibbed)
-	visible_message(span_warning("[src] ruptures!"))
-	var/datum/reagents/reagent_spawn = new /datum/reagents(300)
-	reagent_spawn.my_atom = src
-	reagent_spawn.add_reagent(death_chem, 20)
-	chem_splash(loc, null, CENTAUR_DEATH_SPLASH_RANGE, list(reagent_spawn))
-	playsound(src, 'sound/effects/splat.ogg', CENTAUR_DEATH_SPLAT_VOLUME, TRUE)
-	return ..()
+/mob/living/basic/mold/centaur/melee_attack(atom/target, list/modifiers, ignore_cooldown)
+	. = ..()
+
+	if(!isliving(target))
+		return
+
+	var/mob/living/radiation_target = target
+	if(prob(irradiate_chance))
+		radiation_pulse(radiation_target, CENTAUR_RAD_PULSE_RANGE, CENTAUR_RAD_PULSE_THRESHOLD, FALSE, TRUE)
+		playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', CENTAUR_ATTACK_SCREAM_VOLUME, TRUE)
 
 /datum/ai_controller/basic_controller/centaur
 	blackboard = list(
@@ -297,7 +284,7 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/attack_obstacle_in_path,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/centaur,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/random_speech/centaur,
 	)
 
@@ -306,21 +293,6 @@
 	emote_hear = list("chitters.", "groans.", "wails.")
 	emote_see = list("writhes.")
 
-/datum/ai_planning_subtree/basic_melee_attack_subtree/centaur
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/centaur
-
-/datum/ai_behavior/basic_melee_attack/centaur/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
-	. = ..()
-	var/atom/target = controller.blackboard[target_key]
-	var/mob/living/basic/mold/centaur/centaur = controller.pawn
-
-	if(!isliving(target))
-		return
-
-	var/mob/living/radiation_target = target
-	if(prob(centaur.irradiate_chance))
-		radiation_pulse(radiation_target, CENTAUR_RAD_PULSE_RANGE, CENTAUR_RAD_PULSE_THRESHOLD, FALSE, TRUE)
-		playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', CENTAUR_ATTACK_SCREAM_VOLUME, TRUE)
 
 
 #undef OIL_SHAMBLER_OVERLAY
