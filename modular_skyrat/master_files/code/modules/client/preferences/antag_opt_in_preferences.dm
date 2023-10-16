@@ -43,15 +43,7 @@
 		return FALSE
 	. = ..()
 
-/datum/preference/toggle/antag_opt_in/apply_to_client_updated(client/client, value)
-	. = ..()
-	var/mob/living/carbon/human/target = client?.mob
-	if(!value && istype(target))
-		target.arousal = 0
-		target.pain = 0
-		target.pleasure = 0
-	client.mob.hud_used.hidden_inventory_update(client.mob)
-	client.mob.hud_used.persistent_inventory_update(client.mob)
+
 
 /datum/preference/choiced/antag_opt_in_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
