@@ -27,13 +27,20 @@
 /obj/structure/antfarm/Initialize(mapload)
 	. = ..()
 	if(!istype(get_turf(src), /turf/open/misc/asteroid/basalt))
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
+
+	for(var/obj/structure/antfarm/found_farm in range(2, get_turf(src)))
+		if(found_farm == src)
+			continue
+
+		return INITIALIZE_HINT_QDEL
+
 	START_PROCESSING(SSobj, src)
 	COOLDOWN_START(src, ant_timer, 30 SECONDS)
 
 /obj/structure/antfarm/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	new /obj/item/stack/ore/glass/ten(get_turf(src))
 	return ..()
 
 /obj/structure/antfarm/process(seconds_per_tick)
@@ -65,3 +72,6 @@
 		return
 
 	return ..()
+
+/obj/item/stack/ore/glass/ten
+	amount = 10
