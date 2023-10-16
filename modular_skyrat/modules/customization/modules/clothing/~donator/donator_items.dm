@@ -233,10 +233,10 @@
 	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD | ITEM_SLOT_NECK
 	instrument_range = 1
 	greyscale_colors = "#FFFFFF#FFFFFF"
-	greyscale_config = /datum/greyscale_config/head/catear_headphone
-	greyscale_config_worn = /datum/greyscale_config/head/catear_headphone/worn
-	greyscale_config_inhand_left = /datum/greyscale_config/head/catear_headphone_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/head/catear_headphone_inhand_right
+	greyscale_config = /datum/greyscale_config/catear_headphone
+	greyscale_config_worn = /datum/greyscale_config/catear_headphone/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/catear_headphone_inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/catear_headphone_inhand_right
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 
