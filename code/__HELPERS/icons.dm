@@ -1257,14 +1257,8 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
-<<<<<<< HEAD
-
-/proc/icon2base64html(thing)
-	if (!thing)
-=======
 /proc/icon2base64html(target)
 	if (!target)
->>>>>>> 1cf4aa84bc0 (Gets rid of a couple of single-letter variables (#78956))
 		return
 	var/static/list/bicon_cache = list()
 	if (isicon(target))
