@@ -1,16 +1,3 @@
-
-//PEACEKEEPER HELMET
-/obj/item/clothing/head/helmet/sec/peacekeeper
-	name = "peacekeeper helmet"
-	desc = "A standard issue combat helmet for peacekeeper operators. Has decent tensile strength and armor. Keep your head down."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
-	icon_state = "peacekeeper_helmet"
-	base_icon_state = "peacekeeper_helmet"
-	can_toggle = FALSE
-	actions_types = null
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -28,15 +15,6 @@
 	icon_state = "beret"
 	greyscale_colors = "#EAEAEA"
 
-/obj/item/clothing/head/hats/sec/peacekeeper/sergeant
-	name = "peacekeeper sergeant hat"
-	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_sergeant_cap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/hats_warden
-
 /obj/item/clothing/head/hats/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
@@ -48,7 +26,7 @@
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
-	greyscale_colors = "#3F3C40#FF0000#00AEEF"
+	greyscale_colors = "#3f6e9e#FF0000#00AEEF"
 	icon_state = "beret_badge_fancy_twist"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	armor_type = /datum/armor/hats_warden
@@ -69,16 +47,6 @@
 	can_adjust = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-
-/obj/item/clothing/under/rank/security/peacekeeper/tactical
-	name = "tactical peacekeeper uniform"
-	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
-	icon_state = "peacekeeper_tac"
-
-/obj/item/clothing/under/rank/security/peacekeeper/sergeant
-	name = "peacekeeper sergeant uniform"
-	desc = "A sleek peackeeper uniform, signifying the rank of Sergeant."
-	icon_state = "peacekeeper_sergeant"
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
@@ -121,14 +89,6 @@
 /obj/item/clothing/suit/armor/vest/peacekeeper/brit/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "zipper")
-
-/obj/item/clothing/suit/armor/vest/warden/peacekeeper
-	name = "warden's peacekeeper jacket"
-	desc = "A deep blue jacket with some simple body armor strapped over the top."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "peacekeeper_trench_warden"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat
 	name = "peacekeeper sleek coat"
