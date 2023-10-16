@@ -51,7 +51,7 @@
 	savefile_key = "antag_opt_in_status_pref"
 
 /datum/preference/choiced/antag_opt_in_status/init_possible_values()
-	return list("No", "Yes")
+	return list("No", "Yes - Kidnap / Inconvenience", "Yes - Kill", "Yes - Round Remove")
 
 /datum/preference/choiced/antag_opt_in_status/create_default_value()
 	return "No"
@@ -73,35 +73,5 @@
 	. = ..()
 
 /datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return FALSE
-
-/datum/preference/choiced/antag_opt_in_status_interaction
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "antag_opt_in_status_pref_interaction"
-
-/datum/preference/choiced/antag_opt_in_status_interaction/init_possible_values()
-	return list("No", "Yes")
-
-/datum/preference/choiced/antag_opt_in_status_interaction/create_default_value()
-	return "No"
-
-/datum/preference/choiced/antag_opt_in_status_interaction/is_accessible(datum/preferences/preferences)
-	if (!..(preferences))
-		return FALSE
-
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return FALSE
-
-	return preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences)
-
-/datum/preference/choiced/antag_opt_in_status_interaction/deserialize(input, datum/preferences/preferences)
-	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return "None"
-	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
-		return "None"
-	. = ..()
-
-/datum/preference/choiced/antag_opt_in_status_interaction/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
