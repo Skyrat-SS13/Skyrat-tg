@@ -73,11 +73,7 @@
 	if(..())
 		return
 	owner.alpha = 255
-<<<<<<< HEAD
-	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_HUMAN_EARLY_UNARMED_ATTACK))
+	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_UNARMED_ATTACK))
 	/// SKYRAT EDIT BEGIN
 	REMOVE_TRAIT(owner, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
 	/// SKYRAT EDIT END
-=======
-	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_UNARMED_ATTACK))
->>>>>>> 9664d24c133 (Refactors `UnarmedAttack` so we don't have like 4 Unarmed Attack signals, kills two more snowflake species procs (#78991))
