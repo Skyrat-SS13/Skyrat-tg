@@ -26,13 +26,16 @@
 
 /obj/structure/antfarm/Initialize(mapload)
 	. = ..()
+	var/turf/src_turf = get_turf(src)
 	if(!istype(get_turf(src), /turf/open/misc/asteroid/basalt))
+		src_turf.balloon_alert_to_viewers("must be on basalt")
 		return INITIALIZE_HINT_QDEL
 
 	for(var/obj/structure/antfarm/found_farm in range(2, get_turf(src)))
 		if(found_farm == src)
 			continue
 
+		src_turf.balloon_alert_to_viewers("too close to another farm")
 		return INITIALIZE_HINT_QDEL
 
 	START_PROCESSING(SSobj, src)
