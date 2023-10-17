@@ -112,7 +112,7 @@
 
 /obj/structure/closet/crate/freezer/sansufentanyl
 	name = "sansufentanyl crate"
-	desc = "A freezer. Contains refridgerated Sansufentanyl, for managing Hereditary Manifold Sickness. A product of Interdyne Pharmaceuticals."
+	desc = "A freezer. Contains refrigerated Sansufentanyl, for managing Hereditary Manifold Sickness. A product of Interdyne Pharmaceuticals."
 
 /obj/structure/closet/crate/freezer/sansufentanyl/PopulateContents()
 	. = ..()
