@@ -91,3 +91,5 @@
 		return
 	if(dir == EAST)
 		layer = ABOVE_MOB_LAYER
+	else
+		layer = initial(layer)
