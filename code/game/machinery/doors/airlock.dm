@@ -1325,9 +1325,6 @@
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-		if(multi_tile)
-			filler.density = TRUE
 		air_update_turf(TRUE, TRUE)
 	sleep(0.1 SECONDS)
 	if(!air_tight)
@@ -1335,10 +1332,6 @@
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-		if(multi_tile)
-			filler.density = TRUE
-		//SKYRAT EDIT END
 		air_update_turf(TRUE, TRUE)
 	sleep(0.4 SECONDS)
 	if(dangerous_close)
