@@ -39,6 +39,7 @@
 
 	RegisterSignal(new_soulcatcher, COMSIG_QDELETING, PROC_REF(no_soulcatcher_component))
 	linked_soulcatcher = WEAKREF(new_soulcatcher)
+	update_theme() // because we have to do this after the soulcatcher is linked
 
 /datum/nifsoft/soulcatcher/activate()
 	. = ..()
