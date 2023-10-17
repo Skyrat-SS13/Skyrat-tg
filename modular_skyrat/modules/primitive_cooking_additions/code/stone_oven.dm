@@ -30,7 +30,7 @@
 /obj/machinery/oven/stone/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>prying tool</b> of some kind.")
+	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
 
 /obj/machinery/oven/stone/add_tray_to_oven(obj/item/plate/oven_tray, mob/baker)
 	used_tray = oven_tray
