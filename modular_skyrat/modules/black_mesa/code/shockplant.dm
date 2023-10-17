@@ -11,7 +11,7 @@
 	light_power = 0.5
 	light_color = "#53fafa"
 	/// Our faction
-	var/faction = FACTION_XEN
+	faction = list(FACTION_XEN)
 	/// Our range to shock folks in.
 	var/shock_range = 6
 	/// Our cooldown on the shocking.
@@ -34,7 +34,7 @@
 
 	if(isliving(entered_atom))
 		var/mob/living/entering_mob = entered_atom
-		if(faction in entering_mob.faction)
+		if(faction_check_atom(entering_mob))
 			return
 		tesla_zap(src, shock_range, shock_power, shocked_targets = list(entering_mob))
 		playsound(src, 'sound/magic/lightningbolt.ogg', 100, TRUE)
