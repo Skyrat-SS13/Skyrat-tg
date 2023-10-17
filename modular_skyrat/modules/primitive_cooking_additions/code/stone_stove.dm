@@ -29,7 +29,7 @@
 /obj/machinery/primitive_stove/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>prying tool</b> of some kind.")
+	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
 
 /obj/machinery/primitive_stove/crowbar_act(mob/living/user, obj/item/tool)
 	user.balloon_alert_to_viewers("disassembling...")
