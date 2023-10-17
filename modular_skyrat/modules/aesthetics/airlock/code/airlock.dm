@@ -364,7 +364,6 @@
 /obj/machinery/door/airlock/multi_tile
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
-	bound_width = 64
 
 /obj/machinery/door/airlock/multi_tile/glass
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
@@ -378,7 +377,7 @@
 	name = "tram door"
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram_overlays.dmi'
-	has_environment_lights = TRUE
+	has_environment_lights = FALSE
 
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public
