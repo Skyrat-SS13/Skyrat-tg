@@ -4,7 +4,7 @@ import { BlockQuote, Button, Divider, Box, Flex, Collapsible, LabeledList, Secti
 
 export const SoulcatcherUser = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_room, user_data, souls = [] } = data;
+  const { current_room, user_data, communicate_as_parent, souls = [] } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -41,6 +41,18 @@ export const SoulcatcherUser = (props, context) => {
             ) : (
               <> </>
             )}
+            {communicate_as_parent ? (
+              <Button
+                color={user_data.communicating_externally ? 'green' : 'red'}
+                icon={
+                  user_data.communicating_externally ? 'bullhorn' : 'microphone'
+                }
+                tooltip="Toggle sending messages as part of the soulcatcher."
+                onClick={() => act('toggle_external_communication', {})}
+              />
+            ) : (
+              <> </>
+            )}
           </Box>
           <Divider />
           <Collapsible title="Flavor Text">
@@ -69,6 +81,22 @@ export const SoulcatcherUser = (props, context) => {
               <LabeledList.Item label="Ability to emote">
                 {user_data.able_to_emote ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
+              {communicate_as_parent ? (
+                <>
+                  <LabeledList.Item label="Ability to speak as container">
+                    {user_data.able_to_speak_as_container
+                      ? 'Enabled'
+                      : 'Disabled'}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Ability to emote as container">
+                    {user_data.able_to_emote_as_container
+                      ? 'Enabled'
+                      : 'Disabled'}
+                  </LabeledList.Item>
+                </>
+              ) : (
+                <> </>
+              )}
               <LabeledList.Item label="Ability to change name">
                 {user_data.able_to_rename && !user_data.scan_needed
                   ? 'Enabled'

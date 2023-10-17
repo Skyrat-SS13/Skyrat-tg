@@ -48,6 +48,9 @@
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_RADIOACTIVE_NEBULA))
 		new /obj/item/storage/pill_bottle/potassiodide(src)
+	
+	if(SSmapping.is_planetary() && LAZYLEN(SSmapping.multiz_levels))
+		new /obj/item/climbing_hook/emergency(src)
 
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 

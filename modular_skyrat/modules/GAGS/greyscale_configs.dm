@@ -740,6 +740,19 @@
 	name = "Jean Shorts (Worn, Digi)"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+/datum/greyscale_config/shortershorts
+	name = "Shorter Shorts"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shortershorts.json'
+
+/datum/greyscale_config/shortershorts/worn
+	name = "Shorter Shorts (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/shortershorts/worn/digi
+	name = "Ripped Shorts (Worn, Digi)"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
@@ -1043,17 +1056,40 @@ digi
 
 // WRAPS
 
-/datum/greyscale_config/wraps
+/datum/greyscale_config/clothwraps
 	name = "Cloth Wraps"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps.json'
 
-/datum/greyscale_config/wraps/worn
+/datum/greyscale_config/clothwraps/worn
 	name = "Cloth Wraps (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps_worn.json'
 
-/datum/greyscale_config/wraps/worn/digi
+/datum/greyscale_config/clothwraps/worn/digi
 	name = "Cloth Wraps (Worn, Digi)"
+
+/datum/greyscale_config/legwraps
+	name = "Leg Wraps"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/legwraps.json'
+
+/datum/greyscale_config/legwraps/worn
+	name = "Leg Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/legwraps_worn.json'
+
+/datum/greyscale_config/legwraps/worn/digi
+	name = "Leg Wraps (Worn, Digi)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/legwraps_worn_digi.json'
+
+/datum/greyscale_config/armwraps
+	name = "Cloth Arm Wraps"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/arm_wraps/arm_wraps.json'
+
+/datum/greyscale_config/armwraps/worn
+	name = "Cloth Arm Wraps (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/arm_wraps/arm_wraps_worn.json'
 
 // MISC SHOES
 

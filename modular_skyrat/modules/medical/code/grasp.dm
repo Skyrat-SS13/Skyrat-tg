@@ -1,5 +1,5 @@
 /mob/living/carbon/proc/self_grasp_bleeding_limb(obj/item/bodypart/grasped_part, supress_message = FALSE)
-	if(!grasped_part?.get_modified_bleed_rate())
+	if(!grasped_part?.can_be_grasped())
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)

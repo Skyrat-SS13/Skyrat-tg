@@ -29,7 +29,7 @@
 	/obj/item/gun/energy/e_gun/hos, \
 	/obj/item/pinpointer/nuke, \
 	/obj/item/gun/energy/e_gun, \
-	/obj/item/storage/box/gunset/pdh, \
+	/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild, \
 	/obj/item/storage/belt/sabre, \
 	/obj/item/mod/control/pre_equipped/magnate, \
 	/obj/item/clothing/suit/armor/vest/warden, \
@@ -51,7 +51,6 @@
 	/obj/item/card/id/departmental_budget/car, \
 	/obj/item/clothing/suit/armor/reactive/teleport, \
 	/obj/item/mod/control/pre_equipped/research, \
-	/obj/item/gun/ballistic/automatic/pistol/g18/nomag, \
 )
 
 

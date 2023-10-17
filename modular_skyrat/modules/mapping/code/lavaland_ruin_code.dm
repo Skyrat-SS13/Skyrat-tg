@@ -23,6 +23,7 @@
 /datum/outfit/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
+	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
@@ -107,3 +108,15 @@
 /obj/item/radio/headset/interdyne/comms
 	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
 	keyslot2 = new /obj/item/encryptionkey/syndicate
+	
+//MOBS
+
+// hivelords that stand guard where they spawn
+/mob/living/basic/mining/hivelord/no_wander
+	ai_controller = /datum/ai_controller/basic_controller/hivelord/no_wander
+
+//MOB AI
+
+// same as a regular hivelord minus the idle walking
+/datum/ai_controller/basic_controller/hivelord/no_wander
+	idle_behavior = null

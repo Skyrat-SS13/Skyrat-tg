@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 	new/datum/stack_recipe("sauna oven", /obj/structure/sauna_oven, 30, time = 1.5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_ENTERTAINMENT),
 	new/datum/stack_recipe("large wooden mortar", /obj/structure/large_mortar, 10, time = 3 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
 	new/datum/stack_recipe("wooden cutting board", /obj/item/cutting_board, 5, time = 2 SECONDS, check_density = FALSE, category = CAT_TOOLS),
+	new/datum/stack_recipe("worm barrel", /obj/structure/wormfarm, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
 ))
 
 /obj/item/stack/sheet/mineral/wood/get_main_recipes()
@@ -102,6 +103,7 @@ GLOBAL_LIST_INIT(skyrat_leather_belt_recipes, list(
 	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("medical bandolier", /obj/item/storage/belt/medbandolier, 5, check_density = FALSE, category = CAT_CONTAINERS),
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6, check_density = FALSE, category = CAT_CLOTHING),
+	new/datum/stack_recipe("ammo pouch", /obj/item/storage/pouch/ammo, 4, check_density = FALSE, category = CAT_CONTAINERS),
 ))
 
 /obj/item/stack/sheet/leather/get_main_recipes()
@@ -128,3 +130,13 @@ GLOBAL_LIST_INIT(skyrat_snow_recipes, list(
 /obj/item/stack/sheet/mineral/snow/get_main_recipes()
 	. = ..()
 	. += GLOB.skyrat_snow_recipes
+
+// Sand
+
+GLOBAL_LIST_INIT(skyrat_sand_recipes, list(
+	new/datum/stack_recipe("ant farm", /obj/structure/antfarm, 20, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
+))
+
+/obj/item/stack/ore/glass/get_main_recipes()
+	. = ..()
+	. += GLOB.skyrat_sand_recipes

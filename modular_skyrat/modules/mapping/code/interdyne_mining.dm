@@ -1,6 +1,6 @@
 /obj/item/circuitboard/computer/order_console/mining/interdyne
 	name = "Interdyne Mining Equipment Vendor Console"
-	build_path = /obj/machinery/computer/order_console/mining/golem
+	build_path = /obj/machinery/computer/order_console/mining/interdyne
 
 // Interdyne/DS-2 mining equipment vendor that doesn't need a cargo shuttle to work
 
