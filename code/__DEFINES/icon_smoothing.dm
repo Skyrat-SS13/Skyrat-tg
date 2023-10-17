@@ -207,14 +207,11 @@ DEFINE_BITFIELD(smoothing_junction, list(
 
 #define SMOOTH_GROUP_GAS_TANK S_OBJ(72)
 
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 #define SMOOTH_GROUP_SHUTTERS S_OBJ(73)
 
 #define SMOOTH_GROUP_WATER S_OBJ(74) ///obj/effect/abstract/liquid_turf
 //SKYRAT EDIT END
-=======
->>>>>>> 7626c3bd6ca (Tram v6/Transport Subsystem (#78230))
 
 /// Performs the work to set smoothing_groups and canSmoothWith.
 /// An inlined function used in both turf/Initialize and atom/Initialize.
