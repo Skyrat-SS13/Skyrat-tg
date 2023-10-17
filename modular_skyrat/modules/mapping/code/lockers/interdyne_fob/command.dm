@@ -25,7 +25,7 @@
 
 	new /obj/item/ammo_box/magazine/m9mm_aps(src)
 	new /obj/item/storage/bag/garment/station_admiral(src)
-	new /obj/item/radio/headset/interdyne/command(src)
+	new /obj/item/radio/headset/cybersun(src)
 
 /obj/structure/closet/secure_closet/interdynefob/maa_locker
 	icon_door = "warden"
@@ -101,4 +101,4 @@
 	new /obj/item/encryptionkey/headset_syndicate/interdyne(src)
 	new /obj/item/language_manual/codespeak_manual/unlimited(src)
 	new /obj/item/storage/bag/garment/corprate_liaison(src)
-	new /obj/item/radio/headset/interdyne/command(src)
+	new /obj/item/radio/headset/cybersun(src)
