@@ -1,4 +1,3 @@
-/* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR modular_skyrat\modules\alerts\code\priority_announce.dm
 /**
  * Make a big red text announcement to
  *
@@ -74,13 +73,24 @@
 
 	if(!players)
 		players = GLOB.player_list
+	// SKYRAT EDIT CHANGE BEGIN - ANNOUNCEMENTS
+	/* Original
+			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+				SEND_SOUND(target, sound_to_play)
+	*/
+	if(!sound)
+		sound = SSstation.announcer.get_rand_alert_sound()
+	else if(SSstation.announcer.event_sounds[sound])
+		var/list/announcer_key = SSstation.announcer.event_sounds[sound]
+		sound = pick(announcer_key)
 
 	var/sound_to_play = sound(sound)
 	for(var/mob/target in players)
 		if(!isnewplayer(target) && target.can_hear())
 			to_chat(target, announcement)
-			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-				SEND_SOUND(target, sound_to_play)
+
+	alert_sound_to_playing(sound_to_play, players = players)
+	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
@@ -127,7 +137,18 @@
 
 		to_chat(target, "<br>[span_minorannounce(title)]<br>")
 		to_chat(target, "[span_minoralert(message)]<br><br><br>")
+	// SKYRAT EDIT CHANGE START - ANNOUNCEMENTS
+	/* Original
 		if(should_play_sound && target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
-*/ // SKYRAT EDIT REMOVAL END
+	*/
+	if(sound_override)
+		if(SSstation.announcer.event_sounds[sound_override])
+			var/list/announcement_key = SSstation.announcer.event_sounds[sound_override]
+			sound_override = pick(announcement_key)
+
+	var/sound_to_play = sound_override || (alert ? 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/misc/notice2.ogg')
+	alert_sound_to_playing(sound_to_play, players = players)
+	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
+
