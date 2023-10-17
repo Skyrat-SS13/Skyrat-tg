@@ -715,6 +715,13 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/interdyne, 32)
 
+/obj/machinery/computer/cryopod/cybersun
+	radio = /obj/item/radio/headset/cybersun
+	announcement_channel = RADIO_CHANNEL_CYBERSUN
+	req_one_access = list("syndicate_leader")
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/cybersun, 32)
+
 /obj/machinery/computer/cryopod/tarkon
 	radio = /obj/item/radio/headset/tarkon
 	announcement_channel = RADIO_CHANNEL_TARKON
