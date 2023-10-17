@@ -54,7 +54,8 @@
 // "Would this be better with a global var"
 
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
-
+// SKYRAT EDIT REMOVAL START - moved to code/__DEFINES/~skyrat_defines/airlock.dm
+/*
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
@@ -80,6 +81,8 @@
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
+*/
+// SKYRAT EDIT REMOVAL END - moved to code/__DEFINES/~skyrat_defines/airlock.dm
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -2486,7 +2489,8 @@
 	set_density(TRUE)
 	operating = FALSE
 	return TRUE
-
+// SKYRAT EDIT REMOVAL START - moved to code/__DEFINES/~skyrat_defines/airlock.dm
+/*
 #undef AIRLOCK_SECURITY_NONE
 #undef AIRLOCK_SECURITY_IRON
 #undef AIRLOCK_SECURITY_PLASTEEL_I_S
@@ -2511,3 +2515,5 @@
 #undef AIRLOCK_FRAME_CLOSING
 #undef AIRLOCK_FRAME_OPEN
 #undef AIRLOCK_FRAME_OPENING
+*/
+// SKYRAT EDIT REMOVAL END - moved to code/__DEFINES/~skyrat_defines/airlock.dm
