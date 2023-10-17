@@ -373,10 +373,14 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal_overlays.dmi'
 
+//TRAM
+
 /obj/machinery/door/airlock/tram
 	name = "tram door"
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram_overlays.dmi'
+	doorOpen = 'sound/machines/tramopen.ogg'
+	doorClose = 'sound/machines/tramclose.ogg'
 	has_environment_lights = FALSE
 
 //ASSEMBLYS
