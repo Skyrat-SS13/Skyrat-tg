@@ -312,7 +312,8 @@
 	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#8c8c8c"
 	body_parts_covered = CHEST|GROIN|ARMS
 	flags_1 = IS_PLAYER_COLORABLE_1
-	heat_protection = CHEST
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/heart_sweater
 	name = "Heart sweater"
