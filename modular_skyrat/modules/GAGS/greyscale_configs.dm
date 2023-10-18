@@ -180,7 +180,7 @@
 
 /datum/greyscale_config/back_bow
 	icon_file = 'modular_skyrat/modules/GAGS/icons/bows.dmi'
-	name = "Back bow"
+	name = "Back Bow"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/bows/back_bow.json'
 
 /datum/greyscale_config/back_bow/worn
