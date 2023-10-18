@@ -15099,6 +15099,8 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/science/research)
 "fkf" = (
@@ -27815,12 +27817,6 @@
 /obj/item/storage/belt/utility,
 /obj/item/reagent_containers/cup/beaker/large,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/requests_console{
-	department = "Robotics Lab";
-	name = "Robotics RC";
-	pixel_y = 30;
-	receive_ore_updates = 1
-	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
 "jtj" = (
@@ -39372,11 +39368,11 @@
 /area/station/commons/lounge)
 "npx" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase,
 /obj/machinery/newscaster{
 	pixel_x = -28;
 	pixel_y = 1
 	},
+/obj/machinery/computer/records/medical/laptop,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/hos)
 "npB" = (
@@ -43806,6 +43802,12 @@
 	pixel_x = 8
 	},
 /obj/item/flashlight/seclite,
+/obj/machinery/requests_console/directional/west{
+	department = "Security";
+	name = "Security Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "oSQ" = (
@@ -56846,7 +56848,6 @@
 /area/station/commons/dorms)
 "tcJ" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/records/medical/laptop,
 /obj/machinery/requests_console{
 	department = "Head of Security's Desk";
 	name = "Head of Security RC";
@@ -56858,6 +56859,7 @@
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/announcement,
+/obj/item/storage/secure/briefcase,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/hos)
 "tcP" = (
