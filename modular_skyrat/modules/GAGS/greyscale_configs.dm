@@ -379,7 +379,7 @@
 
 /datum/greyscale_config/maid_costume/maid_collar
 	icon_file = 'modular_skyrat/modules/GAGS/icons/maid_costume.dmi'
-	name = "Maid collar"
+	name = "Maid Collar"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_collar.json'
 
 /datum/greyscale_config/maid_costume/maid_collar/worn
