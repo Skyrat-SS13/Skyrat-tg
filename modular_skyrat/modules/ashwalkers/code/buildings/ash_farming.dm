@@ -80,8 +80,6 @@
 	var/obj/item/seeds/planted_seed
 	///the max amount harvested from the plants
 	var/max_harvest = 3
-	///the amount of harvests from using a regen core
-	var/regen_harvest_num = 4
 	///the cooldown amount between each harvest
 	var/harvest_cooldown = 1 MINUTES
 	//the cooldown between each harvest
@@ -112,7 +110,7 @@
 	. += span_notice("<br>[src] will be ready for harvest in [DisplayTimeText(COOLDOWN_TIMELEFT(src, harvest_timer))]")
 	. += span_notice("<br>You can use sinew to lower the time between each harvest!")
 	. += span_notice("You can use goliath hides to increase the amount dropped per harvest!")
-	. += span_notice("You can use a regenerative core to force the plant to drop four harvests!")
+	. += span_notice("You can use a regenerative core or worm fertilizer to force the plant to drop a harvest!")
 
 /obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
@@ -186,11 +184,10 @@
 		balloon_alert_to_viewers("the plant drops more!")
 		return
 
-	//if its a regen core, then create four harvests
-	else if(istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core))
+	//if its a regen core or worm fertilizer, then create four harvests
+	else if(istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core) || istype(attacking_item, /obj/item/worm_fertilizer))
 		qdel(attacking_item)
-		for(var/i in 1 to regen_harvest_num)
-			create_harvest()
+		create_harvest()
 		return
 
 	return ..()

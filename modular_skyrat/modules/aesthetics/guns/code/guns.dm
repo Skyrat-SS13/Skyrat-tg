@@ -49,7 +49,7 @@
 	/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2, \
 )
 
-// for .35 Sol Ripper. one day, anon. one day
+// for .35 Sol Ripper
 #define AMMO_MATS_RIPPER list( \
 	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
 	/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4, \
@@ -74,33 +74,6 @@
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
-/obj/item/gun/ballistic/shotgun/riot
-	name = "\improper Peacekeeper shotgun"
-	desc = "A Nanotrasen-made riot control shotgun fitted with an extended tube and a fixed tactical stock."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	inhand_icon_state = "riot_shotgun"
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
-	can_suppress = TRUE
-	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
-	suppressed_volume = 100
-	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate
-	name = "\improper Peacebreaker shotgun"
-	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
-	icon_state = "riotshotgun_syndie"
-	inhand_icon_state = "riot_shotgun_syndie"
-	can_be_sawn_off = FALSE
-	can_suppress = FALSE
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -327,30 +300,10 @@
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
-/obj/item/gun/ballistic/automatic/ar/modular/model75
-	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT chambered for .310 Strilka. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
-	icon_state = "arg75"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
-	fire_delay = 5
-	fire_sound_volume = 90
-	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-
-/obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	name = "\improper ARG-75 magazine"
-	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .310 Strilka."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/strilka310
-	caliber = CALIBER_STRILKA310
-	max_ammo = 20
-
 // GUBMAN3 - FULL BULLET RENAME
 // i loathe the above
+
+// overrides for 10mm ammo in modular_skyrat\modules\sec_haul\code\guns\bullets.dm
 
 // overrides for .310 Strilka-derived ammo, e.g. lionhunter ammo, because you don't want to give security the ability to print infinite wallhack ammo, right?
 /obj/item/ammo_casing/strilka310/lionhunter
@@ -378,23 +331,47 @@
 
 // overrides for tgcode .50cal, used in their sniper/anti-materiel rifles
 /obj/item/ammo_casing/p50
-	name = ".416 Stabilis polymer casing"
+	name = ".416 Stabilis casing"
 	desc = "A .416 bullet casing."
 	advanced_print_req = TRUE // you are NOT printing more ammo for this without effort.
 	// then again the offstations with ammo printers and sniper rifles come with an ammo disk anyway, so
 
-/obj/item/ammo_casing/p50/soporific
-	name = ".416 Stabilis tranquilizer casing"
-	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
+/obj/item/ammo_casing/p50/surplus
+	name = ".416 Stabilis surplus casing"
+	desc = "A .416 bullet casing. Intentionally underloaded, but still quite painful to be shot with.\
 	<br><br>\
-	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
-	projectile_type = /obj/projectile/bullet/p50/soporific
+	<i>SURPLUS/UNDERLOAD: Lacks armor penetration capabilities, contact-stun, or innate dismemberment ability. Still incredibly painful to be hit by.</i>"
+	projectile_type = /obj/projectile/bullet/p50/surplus
+
+/obj/item/ammo_casing/p50/disruptor
+	name = ".416 Stabilis disruptor casing"
+	desc = "A .416 bullet casing. Specializes in sending the target to sleep rather than hell, unless they're synthetic. Then they probably go to hell anyway.\
+	<br><br>\
+	<i>DISRUPTOR: Forces humanoid targets to sleep, does heavy damage against cyborgs, EMPs struck targets.</i>"
+
+/obj/item/ammo_casing/p50/incendiary
+	name = ".416 Stabilis precision incendiary casing"
+	desc = "A .416 bullet casing. Made with an agitated-plasma tip, for making people regret being alive.\
+	<br><br>\
+	<i>PRECISION INCENDIARY: Lacks innate dismemberment ability and contact-stun, suffers against mechanized armor. Sets people on fire.</i>"
+	projectile_type = /obj/projectile/bullet/p50/incendiary
 
 /obj/item/ammo_casing/p50/penetrator
-	name = ".416 Stabilis APFSDS ++P bullet casing"
-	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI.\
+	name = ".416 Stabilis penetrator sabot casing"
+	desc = "A .416 bullet casing. Loaded with a hardened sabot and packed with extra propellant. \
+	Designed to go through basically everything. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 85000 PSI.\
 	<br><br>\
-	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
+	<i>PENETRATOR: Goes through basically everything. Lacks innate dismemberment ability and contact-stun capabilities.</i>"
+
+/obj/item/ammo_casing/p50/marksman
+	name = ".416 Stabilis marksman hyperkinetic casing"
+	desc = "A .416 bullet casing. Loaded with a hyperkinetic bullet that ignores mundane things like \"travel time\" \
+	and a concerning amount of experimental propellant. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 95000 PSI.\
+	<br><br>\
+	<i>MARKSMAN: Bullets have <b>no</b> travel time, and can ricochet once. Does slightly less damage, lacks innate dismemberment and contact-stun capabilities.</i>"
+	projectile_type = /obj/projectile/bullet/p50/marksman
 
 // overrides for tgcode 4.6x30mm, used in the WT-550
 /obj/item/ammo_casing/c46x30mm
@@ -528,8 +505,11 @@
 /obj/projectile/bullet/incendiary/c46x30mm
 	name = "8mm incendiary bullet"
 
-/obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
-	name = ".416 tranquilizer"
+/obj/projectile/bullet/p50
+	name = ".416 Stabilis bullet"
+
+/obj/projectile/bullet/p50/disruptor
+	name = ".416 disruptor bullet"
 
 /obj/projectile/bullet/p50/penetrator
 	name = ".416 penetrator bullet"

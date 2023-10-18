@@ -3,7 +3,6 @@
 	name = "chemical press"
 	desc = "A press that makes pills, patches and bottles."
 	icon_state = "pill_press"
-	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
 
 	///maximum size of a pill
@@ -12,8 +11,6 @@
 	var/max_patch_volume = 40
 	///maximum size of a bottle
 	var/max_bottle_volume = 50
-	//SKYRAT EDIT HYPOVIALS maximum size of a vial
-	var/max_vial_volume = 60
 	///current operating product (pills or patches)
 	var/product = "pill"
 	///the minimum size a pill or patch can be
@@ -72,13 +69,13 @@
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] bottle")
 			stored_products += P
-		//SKYRAT EDIT HYPOVIALS
+		//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
 		else if (product == "vial")
 			var/obj/item/reagent_containers/cup/vial/small/P = new(src)
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] vial")
 			stored_products += P
-		//SKYRAT EDIT HYPOVIALS END
+		//SKYRAT EDIT ADDITION END - HYPOVIALS
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
@@ -159,10 +156,10 @@
 				max_volume = max_patch_volume
 			else if (product == "bottle")
 				max_volume = max_bottle_volume
-			//SKYRAT EDIT HYPOVIALS
+			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
 			else if (product == "vial")
-				max_volume = max_vial_volume
-			//SKYRAT EDIT HPYOVIALS END
+				max_volume = max_bottle_volume
+			//SKYRAT EDIT ADDITION END - HYPOVIALS
 			current_volume = clamp(current_volume, min_volume, max_volume)
 		if("change_patch_style")
 			patch_style = params["patch_style"]

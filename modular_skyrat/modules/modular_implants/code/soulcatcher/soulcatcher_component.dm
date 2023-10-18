@@ -18,11 +18,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/soulcatcher_rooms = list()
 	/// What soulcatcher room are verbs sending messages to?
 	var/datum/soulcatcher_room/targeted_soulcatcher_room
+	/// What theme are we using for our soulcatcher UI?
+	var/ui_theme = "default"
 
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
 	var/require_approval = TRUE
+	/// What is the max number of people we can keep in this soulcatcher? If this is set to `FALSE` we don't have a limit
+	var/max_souls = FALSE
+	/// Are are the souls inside able to emote/speak as the parent?
+	var/communicate_as_parent = FALSE
+	/// Is the soulcatcher removable from the parent object?
+	var/removable = FALSE
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -135,6 +143,32 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		parent_device.visible_message(span_notice("[parent_device] beeps: [parent_body] is now scanned."))
 
 	return TRUE
+
+/// Returns a list containing all of the souls currently present within a soulcatcher.
+/datum/component/soulcatcher/proc/get_current_souls()
+	var/list/current_souls = list()
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		for(var/mob/living/soulcatcher_soul as anything in room.current_souls)
+			current_souls += soulcatcher_soul
+
+	return current_souls
+
+/// Checks the total number of souls present and compares it with `max_souls` returns `TRUE` if there is room (or no limit), otherwise returns `FALSE`
+/datum/component/soulcatcher/proc/check_for_vacancy()
+	if(!max_souls)
+		return TRUE
+
+	if(length(get_current_souls()) >= max_souls)
+		return FALSE
+
+	return TRUE
+
+/// Attempts to remove the soulcatcher from the attached object
+/datum/component/soulcatcher/proc/remove_self()
+	if(!removable)
+		return FALSE
+
+	qdel(src)
 
 /**
  * Soulcatcher Room
@@ -266,16 +300,39 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
-	var/sender_name = ""
-	if(message_sender)
-		sender_name = "[message_sender] "
-
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/tag = sheet.icon_tag("nif-soulcatcher")
 	var/soulcatcher_icon = ""
 
 	if(tag)
 		soulcatcher_icon = tag
+
+	var/mob/living/soulcatcher_soul/soul_sender = message_sender
+	if(istype(soul_sender) && soul_sender.communicating_externally)
+		var/master_resolved = master_soulcatcher.resolve()
+		if(!master_resolved)
+			return FALSE
+		var/datum/component/soulcatcher/parent_soulcatcher = master_resolved
+		var/obj/item/parent_object = parent_soulcatcher.parent
+		if(!istype(parent_object))
+			return FALSE
+
+		var/temp_name = parent_object.name
+		parent_object.name = "[parent_object.name] [soulcatcher_icon]"
+
+		if(emote)
+			parent_object.manual_emote(html_decode(message_to_send))
+			log_emote("[soul_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+		else
+			parent_object.say(html_decode(message_to_send))
+			log_say("[soul_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
+
+		parent_object.name = temp_name
+		return TRUE
+
+	var/sender_name = ""
+	if(message_sender)
+		sender_name = "[message_sender] "
 
 	var/first_room_name_word = splittext(name, " ")
 	var/message = ""
@@ -334,7 +391,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/list/joinable_soulcatchers = list()
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
-		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent))
+		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
 			continue
 
 		var/obj/item/soulcatcher_parent = soulcatcher.parent
@@ -360,6 +417,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/datum/soulcatcher_room/room_to_join
 	if(length(rooms_to_join) < 1)
+		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE
 
 	if(length(rooms_to_join) == 1)
@@ -396,7 +454,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /mob/dead/observer/Login()
 	. = ..()
-	var/soulcatcher_action_given = client.prefs.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+	var/datum/preferences/preferences = client?.prefs
+	var/soulcatcher_action_given
+
+	if(preferences)
+		soulcatcher_action_given = preferences.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+
 	if(!soulcatcher_action_given)
 		return
 

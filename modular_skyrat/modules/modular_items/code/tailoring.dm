@@ -6,6 +6,14 @@
 	reqs = list(/obj/item/clothing/glasses/blindfold = 1)
 	category = CAT_CLOTHING
 
+/datum/crafting_recipe/paper_mask
+	name = "Paper Mask"
+	result = /obj/item/clothing/mask/paper
+	time = 30
+	tool_behaviors = list(TOOL_WIRECUTTER)
+	reqs = list(/obj/item/paper = 5)
+	category = CAT_CLOTHING
+
 /datum/crafting_recipe/crusader_belt
 	name = "Crusader Belt and Sheath"
 	result = /obj/item/storage/belt/crusader
@@ -13,7 +21,7 @@
 	tool_behaviors = list(TOOL_WIRECUTTER, TOOL_SCREWDRIVER, TOOL_WELDER)	//To cut the leather and fasten/weld the sheath detailing
 	time = 30
 	category = CAT_CLOTHING
-	
+
 /datum/crafting_recipe/crusader_belt/on_craft_completion(mob/user, atom/result)
 	var/obj/item/storage/belt/crusader/crusader_belt = result
 	crusader_belt.PopulateContents()
@@ -54,7 +62,7 @@
 	reqs = list(/obj/item/clothing/glasses/hud/eyepatch/med = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	category = CAT_CLOTHING
-	
+
 /datum/crafting_recipe/mesonpatch
 	name = "Meson Eyepatch HUD"
 	result = /obj/item/clothing/glasses/hud/eyepatch/meson
