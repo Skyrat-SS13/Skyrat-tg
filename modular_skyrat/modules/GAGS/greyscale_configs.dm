@@ -198,7 +198,7 @@
 
 /datum/greyscale_config/small_bow
 	icon_file = 'modular_skyrat/modules/GAGS/icons/bows.dmi'
-	name = "Small bow"
+	name = "Small Bow"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/bows/small_bow.json'
 
 /datum/greyscale_config/small_bow/worn
