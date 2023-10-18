@@ -11092,13 +11092,6 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/nt_rep)
 "dUJ" = (
-/obj/machinery/requests_console{
-	department = "Security";
-	name = "Medbay RC";
-	pixel_y = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
-	},
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
@@ -11107,6 +11100,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
+/obj/machinery/requests_console/directional/north,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/medical)
 "dUL" = (
@@ -16900,16 +16894,16 @@
 /obj/machinery/requests_console{
 	department = "Bridge";
 	name = "Bridge RC";
-	pixel_x = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	pixel_x = 30
 	},
 /obj/machinery/camera{
 	c_tag = "Bridge - Command Chair";
 	dir = 6;
 	name = "command camera"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "fLF" = (
@@ -17496,14 +17490,6 @@
 /area/station/maintenance/abandon_arcade)
 "fVT" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/requests_console{
-	department = "Bridge";
-	name = "Bridge RC";
-	pixel_y = -30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
-	},
 /turf/open/floor/wood,
 /area/station/command/meeting_room/council)
 "fWv" = (
@@ -20506,7 +20492,9 @@
 /turf/open/floor/iron,
 /area/station/cargo/warehouse/upper)
 "gSe" = (
-/obj/machinery/requests_console/directional/west,
+/obj/machinery/requests_console/directional/west{
+	department = "Captain's Office"
+	},
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/announcement,
 /obj/effect/mapping_helpers/requests_console/information,
@@ -26439,10 +26427,7 @@
 /obj/machinery/requests_console{
 	department = "Head of Personnel's Desk";
 	name = "Head of Personnel RC";
-	pixel_y = -30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	pixel_y = -30
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -34998,14 +34983,6 @@
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "lOy" = (
-/obj/machinery/requests_console{
-	department = "Chief Medical Officer's Desk";
-	name = "Chief Medical Officer's RC";
-	pixel_x = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
-	},
 /obj/machinery/keycard_auth{
 	pixel_x = 26;
 	pixel_y = 24
@@ -35017,6 +34994,10 @@
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/announcement,
 /obj/effect/mapping_helpers/requests_console/information,
+/obj/machinery/requests_console/directional/east{
+	name = "CMO_RQ";
+	department = "Chief Medical Officer's Desk"
+	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/cmo)
 "lOA" = (
@@ -43461,12 +43442,12 @@
 /area/station/hallway/primary/port)
 "oMd" = (
 /obj/structure/sign/directions/medical{
-	dir = 1;
+	dir = 4;
 	pixel_y = 10
 	},
 /obj/structure/sign/directions/evac{
-	dir = 8;
-	pixel_y = 4
+	pixel_y = 4;
+	dir = 1
 	},
 /obj/structure/sign/directions/security{
 	dir = 4;
@@ -49958,7 +49939,7 @@
 /area/station/hallway/secondary/entry)
 "qQv" = (
 /obj/structure/sign/directions/evac{
-	dir = 8;
+	dir = 1;
 	pixel_y = 4
 	},
 /obj/structure/sign/directions/medical{
@@ -56848,18 +56829,11 @@
 /area/station/commons/dorms)
 "tcJ" = (
 /obj/structure/table/wood,
-/obj/machinery/requests_console{
-	department = "Head of Security's Desk";
-	name = "Head of Security RC";
-	pixel_x = -30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
-	},
 /obj/effect/mapping_helpers/requests_console/information,
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/announcement,
 /obj/item/storage/secure/briefcase,
+/obj/machinery/requests_console/directional/west,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/hos)
 "tcP" = (
