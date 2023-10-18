@@ -363,7 +363,7 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/robes.json'
 
 /datum/greyscale_config/cloak/robes/worn
-	name = "Robes (Worn)"
+	name = "Robe Cape (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/robes_worn.json'
 
 /datum/greyscale_config/cloak/cape
