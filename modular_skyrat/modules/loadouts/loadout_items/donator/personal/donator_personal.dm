@@ -725,8 +725,6 @@
 	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	ckeywhitelist = list("nikotheguydude")
 
-
-//	If you intend to make the item "catear_headphone" public or use any of its sprites publicly, discuss it with me (discord: dtfe)
 /datum/loadout_item/head/catear_headphone
 	name = "Cat-Ear Headphones"
 	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
