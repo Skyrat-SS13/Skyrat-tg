@@ -310,7 +310,7 @@
 	greyscale_config = /datum/greyscale_config/warm_sweater
 	greyscale_config_worn = /datum/greyscale_config/warm_sweater/worn
 	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#8c8c8c"
-	body_parts_covered = CHEST
+	body_parts_covered = CHEST|GROIN|ARMS
 	flags_1 = IS_PLAYER_COLORABLE_1
 	heat_protection = CHEST
 
