@@ -20504,15 +20504,12 @@
 /turf/open/floor/iron,
 /area/station/cargo/warehouse/upper)
 "gSe" = (
-/obj/machinery/requests_console{
-	department = "Quartermaster's Desk";
-	name = "Quartermaster RC";
-	pixel_x = 30;
-	pixel_y = -30
-	},
-/obj/effect/landmark/start/quartermaster,
-/turf/open/floor/carpet/orange,
-/area/station/command/heads_quarters/qm)
+/obj/machinery/requests_console/directional/west,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/turf/open/floor/carpet/royalblue,
+/area/station/command/heads_quarters/captain)
 "gSs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -27918,20 +27915,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/main)
-"jwC" = (
-/obj/machinery/requests_console{
-	department = "Captain's Desk";
-	name = "Captain RC";
-	pixel_x = 32;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
-	},
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/effect/mapping_helpers/requests_console/announcement,
-/obj/effect/mapping_helpers/requests_console/information,
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/captain)
 "jwE" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark,
@@ -33598,9 +33581,8 @@
 /turf/open/floor/carpet,
 /area/station/commons/lounge)
 "lrw" = (
-/obj/machinery/netpod,
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/closed/wall/r_wall,
 /area/station/bitrunning/den)
 "lry" = (
 /obj/machinery/door/firedoor,
@@ -47805,6 +47787,7 @@
 	id = "qm_warehouse_inside";
 	name = "Shutter Controls"
 	},
+/obj/machinery/computer/order_console/bitrunning,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "qil" = (
@@ -51653,14 +51636,6 @@
 "rrL" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/yellow,
-/obj/machinery/requests_console{
-	department = "Telecomms Admin";
-	name = "Telecomms RC";
-	pixel_y = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "rrM" = (
@@ -55876,7 +55851,7 @@
 	},
 /obj/item/paper{
 	pixel_x = -10;
-	name = "Eviction Notice";
+	name = "Eviction Notice"
 	},
 /turf/open/floor/iron/vaporwave,
 /area/station/maintenance/abandon_arcade)
@@ -59582,14 +59557,12 @@
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/monastery)
 "tWB" = (
-/obj/structure/lattice,
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_lavaland3";
-	name = "lavaland"
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/bitrunning/den)
 "tWP" = (
 /obj/machinery/light_switch{
 	pixel_y = -24
@@ -66413,6 +66386,11 @@
 /obj/item/coin/gold,
 /obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/mapping_helpers/requests_console/announcement,
+/obj/machinery/requests_console{
+	department = "Quartermaster's Desk";
+	name = "Quartermaster RC";
+	pixel_x = 30
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "wdy" = (
@@ -97451,12 +97429,12 @@ nqi
 nqi
 awl
 nqi
-qyo
-fxb
+lrw
+tWB
 xWz
 mIE
 nXa
-lrw
+jFd
 oDB
 vLM
 nnx
@@ -99511,7 +99489,7 @@ gWd
 fdd
 cll
 fDD
-gSe
+msG
 wdo
 gWd
 csJ
@@ -118202,7 +118180,7 @@ iDU
 tXG
 ivi
 dVN
-etL
+gSe
 kRI
 tar
 tqT
@@ -120001,7 +119979,7 @@ hKJ
 ibk
 baY
 gBa
-jwC
+wHQ
 kfR
 tar
 wAB
@@ -126773,7 +126751,7 @@ csJ
 csJ
 sCD
 vLM
-tWB
+nrV
 vLM
 wMM
 csJ
