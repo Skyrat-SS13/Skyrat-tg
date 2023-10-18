@@ -304,7 +304,7 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/warm_sweater
-	name = "Warm sweater"
+	name = "warm sweater"
 	desc = "A pretty sweater, it looks quite comfortable and warm."
 	icon_state = "gags_warm_sweater"
 	greyscale_config = /datum/greyscale_config/warm_sweater
