@@ -383,7 +383,7 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_collar.json'
 
 /datum/greyscale_config/maid_costume/maid_collar/worn
-	name = "Maid collar (Worn)"
+	name = "Maid Collar (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_collar_worn.json'
 
 // Mantle
