@@ -359,7 +359,7 @@
 
 /datum/greyscale_config/cloak/robes
 	icon_file = 'modular_skyrat/modules/GAGS/icons/cloak.dmi'
-	name = "Robes"
+	name = "Robe Cape"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/robes.json'
 
 /datum/greyscale_config/cloak/robes/worn
