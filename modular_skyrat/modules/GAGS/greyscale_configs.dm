@@ -293,7 +293,7 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/face_scarf/face_scarf.json'
 
 /datum/greyscale_config/face_scarf/worn
-	name = "Face scarf (Worn)"
+	name = "Face Scarf (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/face_scarf/face_scarf_worn.json'
 
 /*
