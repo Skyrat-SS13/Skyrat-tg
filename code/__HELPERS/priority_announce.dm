@@ -1,4 +1,3 @@
-/* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR modular_skyrat\modules\alerts\code\priority_announce.dm
 /**
  * Make a big red text announcement to
  *
@@ -38,23 +37,25 @@
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
 
+	announcement += "<br><br>"
+
 	if(type == "Priority")
-		announcement += "<h1 class='alert'>Priority Announcement</h1>"
+		announcement += "[span_priorityannounce("<u>Priority Announcement</u>")]"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[title]</h2>"
+			announcement += "[span_prioritytitle("<br>[title]")]"
 	else if(type == "Captain")
-		announcement += "<h1 class='alert'>Captain Announces</h1>"
+		announcement += "[span_priorityannounce("<u>Captain Announces</u>")]"
 		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
 	else if(type == "Syndicate Captain")
-		announcement += "<h1 class='alert'>Syndicate Captain Announces</h1>"
+		announcement += "[span_priorityannounce("<u>Syndicate Captain Announces</u>")]"
 
 	else
 		if(!sender_override)
-			announcement += "<h1 class='alert'>[command_name()] Update</h1>"
+			announcement += "[span_priorityannounce("<u>[command_name()] Update</u>")]"
 		else
-			announcement += "<h1 class='alert'>[sender_override]</h1>"
+			announcement += "[span_priorityannounce("<u>[sender_override]</u>")]"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[title]</h2>"
+			announcement += "[span_prioritytitle("<br>[title]")]"
 
 		if(!sender_override)
 			if(title == "")
@@ -64,20 +65,32 @@
 
 	///If the announcer overrides alert messages, use that message.
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
-		announcement += SSstation.announcer.custom_alert_message
+		announcement += "[span_priorityalert("<br>[SSstation.announcer.custom_alert_message]<br>")]"
 	else
-		announcement += "<br>[span_alert(text)]<br>"
-	announcement += "<br>"
+		announcement += "[span_priorityalert("<br>[text]<br>")]"
+
+	announcement += "<br><br>"
 
 	if(!players)
 		players = GLOB.player_list
+	// SKYRAT EDIT CHANGE BEGIN - ANNOUNCEMENTS
+	/* Original
+			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+				SEND_SOUND(target, sound_to_play)
+	*/
+	if(!sound)
+		sound = SSstation.announcer.get_rand_alert_sound()
+	else if(SSstation.announcer.event_sounds[sound])
+		var/list/announcer_key = SSstation.announcer.event_sounds[sound]
+		sound = pick(announcer_key)
 
 	var/sound_to_play = sound(sound)
 	for(var/mob/target in players)
 		if(!isnewplayer(target) && target.can_hear())
 			to_chat(target, announcement)
-			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-				SEND_SOUND(target, sound_to_play)
+
+	alert_sound_to_playing(sound_to_play, players = players)
+	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
@@ -86,11 +99,11 @@
 	if(announce)
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", SSstation.announcer.get_rand_report_sound(), has_important_message = TRUE)
 
-	var/datum/comm_message/M = new
-	M.title = title
-	M.content = text
+	var/datum/comm_message/message = new
+	message.title = title
+	message.content = text
 
-	SScommunications.send_message(M)
+	SScommunications.send_message(message)
 
 /**
  * Sends a minor annoucement to players.
@@ -122,8 +135,20 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
+		to_chat(target, "<br>[span_minorannounce(title)]<br>")
+		to_chat(target, "[span_minoralert(message)]<br><br><br>")
+	// SKYRAT EDIT CHANGE START - ANNOUNCEMENTS
+	/* Original
 		if(should_play_sound && target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
-*/ // SKYRAT EDIT REMOVAL END
+	*/
+	if(sound_override)
+		if(SSstation.announcer.event_sounds[sound_override])
+			var/list/announcement_key = SSstation.announcer.event_sounds[sound_override]
+			sound_override = pick(announcement_key)
+
+	var/sound_to_play = sound_override || (alert ? 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/misc/notice2.ogg')
+	alert_sound_to_playing(sound_to_play, players = players)
+	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
+

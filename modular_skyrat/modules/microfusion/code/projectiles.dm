@@ -5,7 +5,7 @@
 /obj/item/ammo_casing/energy/laser/microfusion
 	name = "microfusion energy lens"
 	projectile_type = /obj/projectile/beam/laser/microfusion
-	e_cost = 100 // 12 shots with a normal cell.
+	e_cost = LASER_SHOTS(10, STANDARD_CELL_CHARGE) // 10 shots with a normal cell.
 	select_name = "laser"
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
 	fire_sound_volume = 100
