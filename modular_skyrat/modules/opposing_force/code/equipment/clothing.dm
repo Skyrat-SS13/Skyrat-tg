@@ -8,6 +8,7 @@
 /obj/item/storage/backpack/duffelbag/syndie/operative/PopulateContents() //basically old insurgent bundle -nukie mod
 	new /obj/item/clothing/under/syndicate(src)
 	new /obj/item/clothing/under/syndicate/skirt(src)
+	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/tackler/combat(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
@@ -24,6 +25,7 @@
 /obj/item/storage/backpack/duffelbag/syndie/engineer/PopulateContents()
 	new /obj/item/clothing/under/syndicate/skyrat/overalls(src)
 	new /obj/item/clothing/under/syndicate/skyrat/overalls/skirt(src)
+	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
@@ -49,6 +51,19 @@
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/hhmirror/syndie(src)
+	new /obj/item/storage/box/syndie_kit/space_suit(src)
+
+/datum/opposing_force_equipment/clothing_syndicate/maid
+	name = "Syndicate Maid"
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/maid
+
+/obj/item/storage/backpack/duffelbag/syndie/maid/PopulateContents() //by far the weakest bundle
+	new /obj/item/clothing/under/syndicate/skyrat/maid(src)
+	new /obj/item/clothing/gloves/combat/maid(src)
+	new /obj/item/clothing/head/costume/maidheadband/syndicate(src)
+	new /obj/item/clothing/shoes/laceup(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 /datum/opposing_force_equipment/clothing_syndicate/cybersun_operative
 	name = "Cybersun Operative"
@@ -56,6 +71,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/cybersun_operative/PopulateContents() //drip maxxed
 	new /obj/item/clothing/under/syndicate/combat(src)
+	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/mask/gas/sechailer/syndicate(src)
@@ -64,11 +80,11 @@
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 
-/datum/opposing_force_equipment/clothing_syndicate/cybersun_tactician
-	name = "Cybersun Tactician"
-	item_type = /obj/item/storage/backpack/duffelbag/syndie/cybersun_tactician
+/datum/opposing_force_equipment/clothing_syndicate/cybersun_hacker
+	name = "Cybersun Hacker"
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/cybersun_hacker
 
-/obj/item/storage/backpack/duffelbag/syndie/cybersun_tactician/PopulateContents()
+/obj/item/storage/backpack/duffelbag/syndie/cybersun_hacker/PopulateContents()
 	new /obj/item/clothing/under/syndicate/ninja(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
@@ -78,8 +94,54 @@
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 
+/datum/opposing_force_equipment/clothing_syndicate/lone_gunman
+	name = "Lone Gunman"
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/lone_gunman
+
+/obj/item/storage/backpack/duffelbag/syndie/lone_gunman/PopulateContents()
+	new /obj/item/clothing/under/pants/track/robohand(src)
+	new /obj/item/clothing/glasses/sunglasses/robohand(src)
+	new /obj/item/clothing/suit/jacket/trenchcoat/gunman(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+
 /datum/opposing_force_equipment/clothing_sol
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_SOL
+
+/datum/opposing_force_equipment/clothing_sol/sol_militant
+	name = "Sol Militant"
+	admin_note = "Uniquely strong HEV armour."
+	item_type = /obj/item/storage/backpack/ert/odst/hecu/sol_militant
+
+/obj/item/storage/backpack/ert/odst/hecu/sol_militant/PopulateContents()
+	new /obj/item/clothing/under/rank/security/officer/hecu(src)
+	new /obj/item/clothing/suit/space/hev_suit/pcv(src)
+	new /obj/item/clothing/head/helmet/space/hev_suit/pcv(src)
+	new /obj/item/storage/belt/military/assault/hecu(src)
+	new /obj/item/clothing/mask/gas/hecu2(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/glasses/night(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+/datum/opposing_force_equipment/clothing_sol/dogginos
+	name = "Dogginos Courier"
+	item_type = /obj/item/storage/backpack/satchel/leather/dogginos
+
+/obj/item/storage/backpack/satchel/leather/dogginos/PopulateContents()
+	new /obj/item/clothing/under/pizza(src)
+	new /obj/item/clothing/suit/pizzaleader(src)
+	new /obj/item/clothing/suit/toggle/jacket/hoodie/pizza(src)
+	new /obj/item/clothing/head/pizza(src)
+	new /obj/item/clothing/head/soft/red(src)
+	new /obj/item/clothing/glasses/betterunshit(src)
+	new /obj/item/clothing/mask/fakemoustache/italian(src)
+	new /obj/item/clothing/shoes/sneakers/red(src)
+	new /obj/item/radio/headset/headset_cent/impostorsr(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 /datum/opposing_force_equipment/clothing_sol/impostor
 	name = "CentCom Impostor"
@@ -93,15 +155,28 @@
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/radio/headset/headset_cent/impostorsr(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/storage/backpack/satchel(src)
-	new /obj/item/modular_computer/pda/heads(src)
 	new /obj/item/clipboard(src)
-	new /obj/item/card/id/advanced/chameleon/impostorsr(src) //this thing has bridge access, no one knows about it
+	new /obj/item/card/id/advanced/chameleon/impostorsr(src) //this thing has bridge access, and no one knows about that
 	new /obj/item/stamp/centcom(src)
 	new /obj/item/clothing/gloves/combat(src)
 
+
 /datum/opposing_force_equipment/clothing_pirate
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_PIRATE
+
+/datum/opposing_force_equipment/clothing_pirate/space_pirate
+	name = "Space Pirate"
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/space_pirate
+
+/obj/item/storage/backpack/duffelbag/syndie/space_pirate/PopulateContents()
+	new /obj/item/clothing/under/costume/pirate(src)
+	new /obj/item/clothing/suit/space/pirate(src)
+	new /obj/item/clothing/head/helmet/space/pirate(src)
+	new /obj/item/clothing/head/costume/pirate/armored(src)
+	new /obj/item/clothing/shoes/pirate/armored(src)
+	new /obj/item/clothing/glasses/eyepatch(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 /datum/opposing_force_equipment/clothing_pirate/akula
 	name = "Azulean Boarder"
@@ -112,7 +187,8 @@
 	new /obj/item/clothing/under/skinsuit(src)
 	new /obj/item/clothing/suit/armor/riot/skinsuit_armor(src)
 	new /obj/item/clothing/head/helmet/space/skinsuit_helmet(src)
-	new /obj/item/clothing/gloves/tackler/combat(src)
+	new /obj/item/clothing/gloves/tackler/combat(src) //tackles in space
+	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/storage/belt/military(src)
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
@@ -139,7 +215,7 @@
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/heister
 
 /obj/item/storage/backpack/duffelbag/syndie/heister/PopulateContents()
-	var/obj/item/clothing/new_mask = new /obj/item/clothing/mask/gas/clown_hat(src) // -animal mask +clow mask
+	var/obj/item/clothing/new_mask = new /obj/item/clothing/mask/gas/clown_hat(src) //-animal mask +clow mask
 	new_mask.set_armor(new_mask.get_armor().generate_new_with_specific(list(
 		MELEE = 30,
 		BULLET = 25,
@@ -163,5 +239,8 @@
 	new /obj/item/restraints/handcuffs/cable/zipties(src)
 	new /obj/item/restraints/handcuffs/cable/zipties(src)
 
+
 /datum/opposing_force_equipment/clothing_magic
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_MAGIC
+
+

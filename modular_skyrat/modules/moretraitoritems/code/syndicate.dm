@@ -63,7 +63,7 @@
 	name = "gunman clothing bundle"
 	desc = "A box filled with armored and stylish clothing for the aspiring gunmans."
 
-/obj/item/clothing/suit/armor/vest/leather/gunman
+/obj/item/clothing/suit/jacket/trenchcoat/gunman
 	name = "leather overcoat"
 	desc = "An armored leather overcoat, intended as the go-to wear for any aspiring gunman."
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -82,7 +82,7 @@
 /obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
 	new /obj/item/clothing/under/pants/track/robohand(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
-	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
+	new /obj/item/clothing/suit/jacket/trenchcoat/gunman(src)
 	new /obj/item/clothing/shoes/combat(src)
 
 //
