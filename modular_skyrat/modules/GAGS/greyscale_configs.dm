@@ -202,7 +202,7 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/bows/small_bow.json'
 
 /datum/greyscale_config/small_bow/worn
-	name = "Small bow (Worn)"
+	name = "Small Bow (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/bows/small_bow_worn.json'
 
 /datum/greyscale_config/sweet_bow
