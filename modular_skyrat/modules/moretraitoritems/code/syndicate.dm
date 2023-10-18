@@ -51,6 +51,9 @@
 /obj/item/clothing/under/suit/black/armoured
 	armor_type = /datum/armor/clothing_under/syndicate
 
+/obj/item/clothing/under/suit/black/skirt/armoured
+	armor_type = /datum/armor/clothing_under/syndicate
+
 /obj/item/storage/belt/holster/detective/dark
 	name = "dark leather holster"
 	icon_state = "syndicate_holster"
