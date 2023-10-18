@@ -1827,8 +1827,7 @@
 /obj/machinery/requests_console{
 	department = "Chapel";
 	name = "Chapel RC";
-	pixel_x = -30;
-	supplies_requestable = 1
+	pixel_x = -30
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -12504,7 +12503,6 @@
 	department = "Atmospherics";
 	name = "Atmos RC";
 	pixel_x = -30;
-	assistance_requestable = 1;
 	supplies_requestable = 1
 	},
 /obj/effect/turf_decal/tile/yellow{
@@ -13665,9 +13663,7 @@
 	},
 /obj/machinery/requests_console/directional/west{
 	department = "Ordnance Test Range";
-	name = "Test Range Requests Console";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	name = "Test Range Requests Console"
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
@@ -15086,9 +15082,7 @@
 /obj/machinery/requests_console{
 	department = "Security";
 	name = "Science Checkpoint RC";
-	pixel_x = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	pixel_x = 30
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -15533,7 +15527,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/iron/dark,
-/area/station/maintenance/port/central)
+/area/station/medical/morgue)
 "fqE" = (
 /obj/effect/turf_decal/trimline/blue/corner{
 	dir = 8
@@ -26913,10 +26907,7 @@
 	department = "Research Director's Desk";
 	name = "Research Director's RC";
 	pixel_x = 30;
-	receive_ore_updates = 1;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1;
-	can_send_announcements = 1
+	receive_ore_updates = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/requests_console/assistance,
@@ -28309,17 +28300,15 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
+/obj/machinery/requests_console{
+	department = "Medbay";
+	name = "Medbay RC";
+	pixel_x = 32
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "jDF" = (
-/obj/docking_port/stationary{
-	dwidth = 3;
-	height = 6;
-	id = "laborcamp_home";
-	name = "Brig bay";
-	roundstart_template = /datum/map_template/shuttle/labour/fland;
-	width = 12
-	},
+/obj/docking_port/stationary/laborcamp_home,
 /turf/open/space/basic,
 /area/space/nearstation)
 "jDH" = (
@@ -28867,8 +28856,7 @@
 "jPk" = (
 /obj/machinery/requests_console{
 	department = "Lawyer's Office";
-	pixel_x = 30;
-	anon_tips_receiver = 1
+	pixel_x = 30
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -35246,7 +35234,7 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/landmark/start/coroner,
 /turf/open/floor/iron/dark,
-/area/station/maintenance/port/central)
+/area/station/medical/morgue)
 "lTP" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/misc/asteroid,
@@ -38225,11 +38213,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "mVB" = (
-/obj/machinery/requests_console{
-	department = "Virology";
-	name = "Virology Requests Console";
-	pixel_x = 30
-	},
 /obj/machinery/camera/directional/east{
 	c_tag = "Virology - Virology Breakroom";
 	name = "virology camera";
@@ -39508,10 +39491,10 @@
 "nsk" = (
 /obj/docking_port/stationary{
 	dir = 8;
-	dwidth = 6;
-	height = 19;
-	id = "emergency_home";
-	name = "Fland Station emergency evac bay";
+	dwidth = 9;
+	height = 25;
+	name = "FlandStation emergency evac bay";
+	shuttle_id = "emergency_home";
 	width = 29
 	},
 /turf/open/space/basic,
@@ -45798,11 +45781,11 @@
 "pBZ" = (
 /obj/docking_port/stationary{
 	dir = 8;
-	dwidth = 10;
-	height = 11;
-	id = "whiteship_home";
-	name = "Auxiliary Dock";
-	width = 18
+	dwidth = 11;
+	height = 24;
+	name = "SS13: Auxiliary Dock, Station-Port";
+	shuttle_id = "whiteship_home";
+	width = 35
 	},
 /turf/open/space/basic,
 /area/space)
@@ -46376,7 +46359,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/vending/wardrobe/coroner_wardrobe,
 /turf/open/floor/iron/dark,
-/area/station/maintenance/port/central)
+/area/station/medical/morgue)
 "pLX" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -48477,13 +48460,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/mechbay)
 "qsB" = (
-/obj/machinery/requests_console{
-	department = "Security";
-	name = "Security RC";
-	pixel_y = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
-	},
 /obj/effect/turf_decal/trimline/red/corner{
 	dir = 8
 	},
@@ -59257,8 +59233,7 @@
 /obj/machinery/requests_console{
 	department = "Medbay";
 	name = "Medbay RC";
-	pixel_x = 32;
-	assistance_requestable = 1
+	pixel_x = 32
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
@@ -69263,7 +69238,7 @@
 /obj/structure/table/optable,
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark,
-/area/station/maintenance/port/central)
+/area/station/medical/morgue)
 "xal" = (
 /obj/machinery/light/small/directional/west{
 	dir = 4
@@ -69901,9 +69876,7 @@
 	department = "Chief Engineer's Desk";
 	name = "Chief Engineer RC";
 	pixel_y = 30;
-	assistance_requestable = 1;
-	supplies_requestable = 1;
-	can_send_announcements = 1
+	supplies_requestable = 1
 	},
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -98588,11 +98561,11 @@ kHH
 jID
 rLo
 qPk
-jID
-jID
-jID
-jID
-jID
+oXE
+oXE
+oXE
+oXE
+oXE
 weA
 amc
 xIj
@@ -98845,7 +98818,7 @@ jID
 jID
 rLo
 qPk
-jID
+oXE
 pLU
 fqD
 lTM
