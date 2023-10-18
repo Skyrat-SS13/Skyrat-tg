@@ -169,7 +169,7 @@
 
 /datum/greyscale_config/maid_headgear
 	icon_file = 'modular_skyrat/modules/GAGS/icons/maid_costume.dmi'
-	name = "Maid headgear"
+	name = "Maid Headgear"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_headgear.json'
 
 /datum/greyscale_config/maid_headgear/worn
