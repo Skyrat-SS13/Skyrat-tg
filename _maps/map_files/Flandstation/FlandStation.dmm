@@ -56833,7 +56833,9 @@
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/effect/mapping_helpers/requests_console/announcement,
 /obj/item/storage/secure/briefcase,
-/obj/machinery/requests_console/directional/west,
+/obj/machinery/requests_console/directional/west{
+	department = "HoS Office"
+	},
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/hos)
 "tcP" = (
@@ -64927,9 +64929,7 @@
 /obj/machinery/requests_console{
 	department = "Security";
 	name = "Wardner RC";
-	pixel_y = 30;
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
+	pixel_y = 30
 	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
