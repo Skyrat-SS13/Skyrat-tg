@@ -1021,7 +1021,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 	return (istype(user_area, dropoff) && istype(target_area, dropoff))
 
 
-//antag opt-in mind list
+// SKYRAT EDIT ADDITION BEGIN - ANTAG OPT IN (Mind list for opt in blacklist)
 /proc/minimum_opt_in_level(level = NOT_TARGET)
 	var/list/all_crew = get_crewmember_minds()
 	var/list/eligible_crew
@@ -1030,5 +1030,8 @@ GLOBAL_LIST_EMPTY(possible_items)
 		var/preference = mind.current?.client?.prefs?.read_preference(/datum/preference/choiced/antag_opt_in_status)
 		if(preference >= level)
 			LAZYADD(eligible_crew, mind)
-
+		//uhhhh not really sure how to do this i wish there was documentation test later
+		if(mind.current.job == JOB_CAPTAIN)
+			LAZYADD(eligible_crew, mind)
 	return eligible_crew
+// SKYRAT EDIT ADDITION END

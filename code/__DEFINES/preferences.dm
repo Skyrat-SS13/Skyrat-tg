@@ -141,8 +141,9 @@
 /// The key used for sprite accessories that should never actually be applied to the player.
 #define SPRITE_ACCESSORY_NONE "None"
 
-// Antag opt in levels
+// SKYRAT EDIT ADDITION BEGIN - Antag Opt In
 #define YES_TEMP 1
 #define YES_KILL 2
 #define YES_ROUND_REMOVE 3
 #define NOT_TARGET 0
+// SKYRAT EDIT ADDITION END
