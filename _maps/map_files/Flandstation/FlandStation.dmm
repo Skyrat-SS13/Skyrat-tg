@@ -5468,8 +5468,7 @@
 /obj/machinery/requests_console{
 	department = "Hydroponics";
 	name = "Hydroponics RC";
-	pixel_x = 30;
-	supplies_requestable = 1
+	pixel_x = 30
 	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera/directional/east{
@@ -7680,15 +7679,10 @@
 	pixel_y = 24
 	},
 /obj/machinery/chem_dispenser/drinks,
-/obj/machinery/requests_console{
-	department = "Bar";
-	name = "Bar RC";
-	pixel_x = 30;
-	receive_ore_updates = 1
-	},
 /obj/effect/turf_decal/tile/bar/opposingcorners{
 	dir = 1
 	},
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "cIH" = (
@@ -25967,9 +25961,9 @@
 	dheight = 4;
 	dwidth = 4;
 	height = 9;
-	id = "aux_base_zone";
-	name = "aux base zone";
+	name = "Aux Base Zone";
 	roundstart_template = /datum/map_template/shuttle/aux_base/default;
+	shuttle_id = "aux_base_zone";
 	width = 9
 	},
 /turf/open/floor/plating,
@@ -34659,8 +34653,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
-"lKB" = (
-/turf/closed/wall)
 "lKG" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -38622,7 +38614,8 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/side)
+/turf/open/floor/iron/dark/side,
+/area/station/hallway/primary/port)
 "ndx" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/iron/dark/textured_large,
@@ -92629,7 +92622,7 @@ ciU
 cHK
 dwi
 eEV
-lKB
+djz
 saf
 tjI
 jYg
