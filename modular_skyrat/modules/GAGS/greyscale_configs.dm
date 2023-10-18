@@ -289,7 +289,7 @@
 
 /datum/greyscale_config/face_scarf
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
-	name = "Face scarf"
+	name = "Face Scarf"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/face_scarf/face_scarf.json'
 
 /datum/greyscale_config/face_scarf/worn
