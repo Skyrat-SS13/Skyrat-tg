@@ -173,7 +173,7 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_headgear.json'
 
 /datum/greyscale_config/maid_headgear/worn
-	name = "Maid headgear (Worn)"
+	name = "Maid Headgear (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/maid_costume/maid_headgear_worn.json'
 
 // BOWS
