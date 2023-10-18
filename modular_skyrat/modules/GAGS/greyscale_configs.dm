@@ -354,7 +354,7 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/cloak.dmi'
 
 /datum/greyscale_config/cloak/wide_cape/worn
-	name = "Wide cape (Worn)"
+	name = "Wide Cape (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/wide_cape_worn.json'
 
 /datum/greyscale_config/cloak/robes
