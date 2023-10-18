@@ -48,6 +48,9 @@
 /obj/item/clothing/suit/jacket/det_suit/noir/armoured
 	armor_type = /datum/armor/heister
 
+/obj/item/clothing/head/frenchberet/armoured
+	armor_type = /datum/armor/cosmetic_sec
+
 /obj/item/clothing/under/suit/black/armoured
 	armor_type = /datum/armor/clothing_under/syndicate
 

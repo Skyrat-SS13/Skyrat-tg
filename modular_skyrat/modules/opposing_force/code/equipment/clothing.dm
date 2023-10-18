@@ -3,6 +3,7 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/operative
 	name = "Syndicate Operative"
+	description = "A tried classic outfit, sporting versatile defensive gear, tactical webbing, a comfortable turtleneck, and even an emergency space-suit box."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/operative
 
 /obj/item/storage/backpack/duffelbag/syndie/operative/PopulateContents() //basically old insurgent bundle -nukie mod
@@ -20,6 +21,7 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/engineer
 	name = "Syndicate Engineer"
+	description = "A spin on the classic outfit, for those whose hands are never clean. Trades defensive choices for utility. Comes with an emergency space-suit box."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/engineer
 
 /obj/item/storage/backpack/duffelbag/syndie/engineer/PopulateContents()
@@ -37,6 +39,7 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/spy
 	name = "Syndicate Spy"
+	description = "They don't have to know who you are, and they won't. Comes with emergency space-suit box."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/spy
 
 /obj/item/storage/backpack/duffelbag/syndie/spy/PopulateContents()
@@ -44,6 +47,7 @@
 	new /obj/item/clothing/under/suit/black/skirt/armoured(src)
 	new /obj/item/clothing/suit/jacket/det_suit/noir/armoured(src)
 	new /obj/item/storage/belt/holster/detective/dark(src)
+	new /obj/item/clothing/head/frenchberet/armoured(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/neck/tie/red/hitman(src)
 	new /obj/item/clothing/mask/gas/syndicate/ds(src) //a red spy is in the base
@@ -55,6 +59,7 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/maid
 	name = "Syndicate Maid"
+	description = "..."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/maid
 
 /obj/item/storage/backpack/duffelbag/syndie/maid/PopulateContents() //by far the weakest bundle
@@ -67,6 +72,7 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/cybersun_operative
 	name = "Cybersun Operative"
+	description = "For the most covert of ops. Comes with emergency space-suit box."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/cybersun_operative
 
 /obj/item/storage/backpack/duffelbag/syndie/cybersun_operative/PopulateContents() //drip maxxed
@@ -79,9 +85,11 @@
 	new /obj/item/storage/belt/military/assault(src)
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/storage/box/syndie_kit/space_suit(src)
 
 /datum/opposing_force_equipment/clothing_syndicate/cybersun_hacker
 	name = "Cybersun Hacker"
+	description = "Some space-farers believe the infamous Space Ninja is no longer around, and they are wrong."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/cybersun_hacker
 
 /obj/item/storage/backpack/duffelbag/syndie/cybersun_hacker/PopulateContents()
@@ -96,6 +104,8 @@
 
 /datum/opposing_force_equipment/clothing_syndicate/lone_gunman
 	name = "Lone Gunman"
+	description = "My name is not important."
+	admin_note = "Looks unarmoured, yet is very armoured"
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/lone_gunman
 
 /obj/item/storage/backpack/duffelbag/syndie/lone_gunman/PopulateContents()
@@ -112,6 +122,7 @@
 
 /datum/opposing_force_equipment/clothing_sol/sol_militant
 	name = "Sol Militant"
+	description = "There is a war being fought, and its taking place right here."
 	admin_note = "Uniquely strong HEV armour."
 	item_type = /obj/item/storage/backpack/ert/odst/hecu/sol_militant
 
@@ -129,6 +140,7 @@
 
 /datum/opposing_force_equipment/clothing_sol/dogginos
 	name = "Dogginos Courier"
+	description = "You're just doing your job."
 	item_type = /obj/item/storage/backpack/satchel/leather/dogginos
 
 /obj/item/storage/backpack/satchel/leather/dogginos/PopulateContents()
@@ -145,6 +157,7 @@
 
 /datum/opposing_force_equipment/clothing_sol/impostor
 	name = "CentCom Impostor"
+	description = "Don't ask us how we got this. Comes with special agent ID pre-equipped with COMMAND access."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/impostor
 
 /obj/item/storage/backpack/duffelbag/syndie/impostor/PopulateContents()
@@ -166,6 +179,7 @@
 
 /datum/opposing_force_equipment/clothing_pirate/space_pirate
 	name = "Space Pirate"
+	description = "Did you fall overboard?"
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/space_pirate
 
 /obj/item/storage/backpack/duffelbag/syndie/space_pirate/PopulateContents()
@@ -180,6 +194,7 @@
 
 /datum/opposing_force_equipment/clothing_pirate/akula
 	name = "Azulean Boarder"
+	description = "Advanced Azulean pirate gear, akin to riot-armour yet space-proofed. Never take on an Azulean boarder in zero-gravity."
 	admin_note = "Uniquely spaceproofed."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/akula
 
@@ -195,6 +210,7 @@
 
 /datum/opposing_force_equipment/clothing_pirate/nri_soldier
 	name = "NRI Soldier"
+	description = "The station failed the inspection, now they have to deal with you."
 	item_type = /obj/item/storage/backpack/industrial/cin_surplus/forest/nri_soldier
 
 /obj/item/storage/backpack/industrial/cin_surplus/forest/nri_soldier/PopulateContents()
@@ -211,6 +227,7 @@
 
 /datum/opposing_force_equipment/clothing_pirate/heister
 	name = "Professional"
+	description = "It's payday."
 	admin_note = "Has uniquely strong armour."
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/heister
 
@@ -242,5 +259,81 @@
 
 /datum/opposing_force_equipment/clothing_magic
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_MAGIC
+
+/datum/opposing_force_equipment/clothing_magic/wizard
+	name = "Wizard"
+	description = "Basic colored wizard attire."
+	item_type = /obj/item/storage/backpack/satchel/leather/wizard
+
+/obj/item/storage/backpack/satchel/leather/wizard/PopulateContents()
+	switch(pick(list("yellow", "blue", "red", "black")))
+		if("yellow")
+			new /obj/item/clothing/head/wizard/yellow(src)
+			new /obj/item/clothing/suit/wizrobe/yellow(src)
+		if("blue")
+			new /obj/item/clothing/head/wizard(src)
+			new /obj/item/clothing/suit/wizrobe(src)
+		if("red")
+			new /obj/item/clothing/head/wizard/red(src)
+			new /obj/item/clothing/suit/wizrobe/red(src)
+		if("black")
+			new /obj/item/clothing/head/wizard/black(src)
+			new /obj/item/clothing/suit/wizrobe/black(src)
+	new /obj/item/staff(src)
+	new /obj/item/clothing/shoes/sandal/magic(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+/datum/opposing_force_equipment/clothing_magic/wizard_broom
+	name = "Broom Wizard"
+	description = "A wizard with a broom, technically a witch."
+	item_type = /obj/item/storage/backpack/satchel/leather/wizard_broom
+
+/obj/item/storage/backpack/satchel/leather/wizard_broom/PopulateContents()
+	new /obj/item/clothing/suit/wizrobe/marisa(src)
+	new /obj/item/clothing/head/wizard/marisa(src)
+	new /obj/item/staff/broom(src)
+	new /obj/item/clothing/shoes/sneakers/marisa(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+/datum/opposing_force_equipment/clothing_magic/wizard_tape
+	name = "Tape Wizard"
+	description = "A wizard outfit, but hand-crafted. Very nice."
+	item_type = /obj/item/storage/backpack/satchel/leather/wizard_tape
+
+/obj/item/storage/backpack/satchel/leather/wizard_tape/PopulateContents()
+	new /obj/item/clothing/suit/wizrobe/tape(src)
+	new /obj/item/clothing/head/wizard/tape(src)
+	new /obj/item/staff/tape(src)
+	new /obj/item/clothing/shoes/sandal/magic(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+/datum/opposing_force_equipment/clothing_magic/zealot
+	name = "Zealot"
+	description = "Spell-casting is outlawed, not like that'll stop you though."
+	item_type = /obj/item/storage/backpack/satchel/leather/zealot
+
+/obj/item/storage/backpack/satchel/leather/zealot/PopulateContents()
+	new /obj/item/clothing/suit/hooded/cultrobes/eldritch(src)
+	new /obj/item/clothing/glasses/hud/health/night/cultblind_unrestricted(src)
+	new /obj/item/clothing/shoes/cult(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+
+/datum/opposing_force_equipment/clothing_magic/narsian
+	name = "Nar'Sien Prophet"
+	description = "An overshadowed cult following, whom incidentally thrive best in the dark."
+	item_type = /obj/item/storage/backpack/satchel/leather/narsian
+
+/obj/item/storage/backpack/satchel/leather/narsian/PopulateContents()
+	new /obj/item/clothing/suit/hooded/cultrobes/hardened(src)
+	new /obj/item/clothing/head/hooded/cult_hoodie/hardened(src)
+	new /obj/item/clothing/glasses/hud/health/night/cultblind_unrestricted/narsie(src)
+	new /obj/item/clothing/shoes/cult/alt(src)
+	new /obj/item/bedsheet/cult(src)
+	new /obj/item/radio/headset/syndicate/alt(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 
