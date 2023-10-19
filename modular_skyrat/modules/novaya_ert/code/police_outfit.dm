@@ -23,9 +23,9 @@
 /obj/item/clothing/mask/gas/nri_police
 	name = "imperial police mask"
 	desc = "A close-fitting tactical mask."
-	icon = 'modular_skyrat/modules/new_russian_empire/icons/mask.dmi'
-	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/wornmask.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/new_russian_empire/icons/wornmask_digi.dmi'
+	icon = 'modular_skyrat/modules/novaya_ert/icons/mask.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/wornmask.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/novaya_ert/icons/wornmask_digi.dmi'
 	icon_state = "nri_police"
 	inhand_icon_state = "swat"
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
@@ -37,12 +37,12 @@
 	name = "imperial police helmet"
 	desc = "Thick-looking tactical helmet made out of shaped Plasteel. Colored dark blue, similar to one imperial police is commonly using."
 	icon_state = "police_helmet"
-	icon = 'modular_skyrat/modules/new_russian_empire/icons/armor.dmi'
-	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/wornarmor.dmi'
+	icon = 'modular_skyrat/modules/novaya_ert/icons/armor.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/wornarmor.dmi'
 
 /obj/item/clothing/suit/armor/vest/nri_police
 	name = "imperial police plate carrier"
 	desc = "A reasonably heavy, yet comfortable armor vest comprised of a bunch of dense plates. Colored dark blue and bears a reflective stripe on the front and back."
 	icon_state = "police_vest"
-	icon = 'modular_skyrat/modules/new_russian_empire/icons/armor.dmi'
-	worn_icon = 'modular_skyrat/modules/new_russian_empire/icons/wornarmor.dmi'
+	icon = 'modular_skyrat/modules/novaya_ert/icons/armor.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/wornarmor.dmi'
