@@ -7,6 +7,10 @@
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
 
+//Unrestricted MODs
+/obj/item/mod/control/pre_equipped/elite/unrestricted
+	req_access = null
+
 //Back-up space suit
 /obj/item/storage/box/syndie_kit/space_suit
 	name = "boxed space suit and helmet"
