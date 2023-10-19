@@ -20,7 +20,7 @@
 
 // Water that can be fished out of
 
-/turf/open/water/icebox_fishable
+/turf/open/water/hotspring
 	desc = "Water kept warm through some unknown heat source, possibly a geothermal heat source far underground. \
 		Whatever it is, it feels pretty damn nice to swim in given the rest of the environment around here, and you \
 		can even catch a glimpse of the odd fish darting through the water."
