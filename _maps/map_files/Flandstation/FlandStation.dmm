@@ -5491,6 +5491,11 @@
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"bSD" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/engineering/main)
 "bSH" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
@@ -7496,10 +7501,8 @@
 /turf/open/floor/iron,
 /area/station/maintenance/disposal)
 "cET" = (
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "cFn" = (
@@ -13992,7 +13995,7 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
-/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "eRX" = (
@@ -14333,6 +14336,15 @@
 /obj/effect/spawner/random/aimodule/neutral,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
+"eXv" = (
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/main)
 "eXy" = (
 /obj/machinery/mass_driver{
 	dir = 1;
@@ -18098,13 +18110,17 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "geJ" = (
+/obj/machinery/newscaster{
+	pixel_x = -28;
+	pixel_y = 1
+	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
 	},
-/obj/machinery/computer/station_alert{
-	dir = 4
+/obj/machinery/power/terminal{
+	dir = 1
 	},
-/obj/machinery/firealarm/directional/west,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "geN" = (
@@ -23510,12 +23526,13 @@
 	},
 /area/station/ai_monitored/command/storage/eva)
 "hWC" = (
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
+/obj/machinery/light/directional/east,
+/obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/machinery/computer/monitor{
-	dir = 8;
-	name = "Engineering Power Monitoring Console"
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
@@ -25409,13 +25426,10 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
 "iCs" = (
-/obj/machinery/power/smes/engineering,
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/stripes/line,
-/obj/item/radio/intercom{
-	pixel_y = -28
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "iCy" = (
@@ -38361,8 +38375,6 @@
 /obj/structure/sign/warning/electric_shock/directional/east,
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/sepia,
 /area/station/engineering/main)
 "mYU" = (
@@ -41336,8 +41348,13 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "nYc" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/computer/station_alert{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "nYl" = (
@@ -42813,8 +42830,6 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/sepia,
 /area/station/engineering/main)
 "ozC" = (
@@ -44213,14 +44228,16 @@
 /turf/open/floor/iron,
 /area/station/science/research)
 "pbn" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
+/obj/machinery/computer/monitor{
+	dir = 8;
+	name = "Engineering Power Monitoring Console"
 	},
-/obj/machinery/light_switch{
-	pixel_y = -24
+/obj/item/radio/intercom{
+	pixel_y = -28
+	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
@@ -55553,17 +55570,17 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "sFR" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/camera{
-	c_tag = "Engineering - Power Monitoring";
-	dir = 5;
-	name = "engineering camera"
+/obj/machinery/computer/atmos_alert{
+	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
+/obj/machinery/light_switch{
+	pixel_y = -24
 	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "sFZ" = (
@@ -55592,8 +55609,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/sepia,
 /area/station/engineering/main)
 "sGU" = (
@@ -56025,12 +56040,13 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/maintenance/port/central)
 "sQb" = (
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
-	dir = 8
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "sQn" = (
@@ -56272,11 +56288,14 @@
 	},
 /area/station/cargo/warehouse/upper)
 "sTM" = (
-/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/machinery/door/airlock/engineering{
+	name = "Engine Antichamber"
+	},
+/obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/sepia,
+/turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "sTY" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
@@ -57066,8 +57085,6 @@
 	},
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/sepia,
 /area/station/engineering/main)
 "thX" = (
@@ -65371,9 +65388,10 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "vNT" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "vOe" = (
@@ -70337,6 +70355,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
+"xoZ" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/engineering/main)
 "xpb" = (
 /obj/effect/turf_decal/tile/brown/opposingcorners{
 	dir = 1
@@ -72253,9 +72279,6 @@
 	name = "Engineering Storage"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "xMS" = (
@@ -72895,14 +72918,16 @@
 /turf/open/floor/iron/checker,
 /area/station/commons/dorms/laundry)
 "xXs" = (
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 1
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/camera{
+	c_tag = "Engineering - Power Monitoring";
+	dir = 1;
+	name = "engineering camera"
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/obj/machinery/computer/atmos_alert{
-	dir = 4
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
@@ -119970,11 +119995,11 @@ bsD
 bHB
 jIE
 xvz
-sTM
+xvz
 mYS
 sGH
 thW
-sTM
+xvz
 ozA
 dNs
 bWR
@@ -120224,7 +120249,7 @@ yhB
 sIe
 hFU
 uaB
-eqA
+bSD
 eqA
 eqA
 xMQ
@@ -120738,14 +120763,14 @@ yhB
 sIe
 hFU
 uaB
-uFv
-uFv
-uFv
 vNT
-nYc
+xoZ
+cET
+uFv
+uFv
 iCs
-eqA
-iXu
+sTM
+rdJ
 rdJ
 kBi
 sYE
@@ -120995,11 +121020,11 @@ rvS
 sIe
 hFU
 uaB
-rqx
+eXv
 hWC
 quA
-cET
-nYc
+rqx
+quA
 pbn
 eqA
 pcI
