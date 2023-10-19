@@ -187,16 +187,17 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	current_body_size = features["body_size"]
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
-	if(QDELETED(src))
-		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
+	var/datum/species/new_race
+	if(ispath(mrace))
+		new_race = new mrace
+	else if(istype(mrace))
+		if(QDELING(mrace))
+			CRASH("someone is calling set_species() and is passing it a qdeling species datum, this is VERY bad, stop it")
+		new_race = mrace
+	else
+		CRASH("set_species called with an invalid mrace [mrace]")
+
+	if(has_dna())
 		death_sound = new_race.death_sound
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
