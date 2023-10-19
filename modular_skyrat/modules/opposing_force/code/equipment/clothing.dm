@@ -123,7 +123,7 @@
 /datum/opposing_force_equipment/clothing_sol/sol_militant
 	name = "Sol Militant"
 	description = "There is a war being fought, and its taking place right here."
-	admin_note = "Uniquely strong HEV armour."
+	admin_note = "Uniquely strong power armour."
 	item_type = /obj/item/storage/backpack/ert/odst/hecu/sol_militant
 
 /obj/item/storage/backpack/ert/odst/hecu/sol_militant/PopulateContents()
