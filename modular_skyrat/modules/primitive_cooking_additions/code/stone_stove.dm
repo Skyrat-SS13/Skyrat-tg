@@ -12,19 +12,10 @@
 	resistance_flags = FIRE_PROOF
 	flags_1 = NODECONSTRUCT_1
 
-	/// A list of the different soup pots we can spawn with
-	var/static/list/random_soup_pot_types = list(
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_copper,
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_brass,
-		/obj/item/reagent_containers/cup/soup_pot/material/fake_tin,
-	)
-
 /obj/machinery/primitive_stove/Initialize(mapload)
 	. = ..()
 
-	var/random_chosen_soup_pot_type = pick(random_soup_pot_types)
-
-	AddComponent(/datum/component/stove/primitive, container_x = -7, container_y = 7, spawn_container = new random_chosen_soup_pot_type)
+	AddComponent(/datum/component/stove/primitive, container_x = -7, container_y = 7, spawn_container = new /obj/item/reagent_containers/cup/soup_pot)
 
 /obj/machinery/primitive_stove/examine(mob/user)
 	. = ..()
