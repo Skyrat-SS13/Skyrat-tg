@@ -1726,7 +1726,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 /obj/item/clothing/under/costume/dragon_maid
 	name = "dragon maid uniform"
-	desc = "A uniform for a Kitchen Maid, stylized to have draconic detailing."
+	desc = "A uniform for a kitchen maid, stylized to have draconic detailing."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "dragon_maid"
