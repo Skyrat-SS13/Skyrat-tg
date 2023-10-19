@@ -44,6 +44,13 @@
 	if(toggle_context)
 		RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/flashlight_eyes)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
+
 /obj/item/flashlight/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	// single use lights can be toggled on once
 	if(isnull(held_item) && (toggle_context || !on))
@@ -71,8 +78,8 @@
 
 /obj/item/flashlight/proc/toggle_light(mob/user)
 	var/disrupted = FALSE
-	//playsound(src, on ? sound_on : sound_off, 40, TRUE) SKYRAT EDIT REMOVAL - SOUND HANDLED IN MODULAR FLASHLIGHT.DM
 	on = !on
+	playsound(src, on ? sound_on : sound_off, 40, TRUE)
 	if(!COOLDOWN_FINISHED(src, disabled_time))
 		if(user)
 			balloon_alert(user, "disrupted!")
@@ -271,7 +278,7 @@
 	if(on)
 		toggle_light()
 	COOLDOWN_START(src, disabled_time, disrupt_duration)
-	return TRUE
+	return COMSIG_SABOTEUR_SUCCESS
 
 /obj/item/flashlight/pen
 	name = "penlight"
