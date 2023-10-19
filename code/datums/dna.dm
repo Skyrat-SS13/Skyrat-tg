@@ -534,10 +534,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			return
 		death_sound = new_race.death_sound
 
-<<<<<<< HEAD
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
-=======
 	var/datum/species/new_race
 	if(ispath(mrace))
 		new_race = new mrace
@@ -547,7 +543,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		new_race = mrace
 	else
 		CRASH("set_species called with an invalid mrace [mrace]")
->>>>>>> 8ac1cab916b (Fixes magic mirrors not being able to change your race (?) (#79075))
 
 		if (old_species.properly_gained)
 			old_species.on_species_loss(src, new_race, pref_load)
