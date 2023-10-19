@@ -726,6 +726,6 @@
 	ckeywhitelist = list("nikotheguydude")
 
 /datum/loadout_item/under/formal/dragon_maid
-	name = "Dragon Maid Outfit"
+	name = "Dragon Maid Uniform"
 	item_path = /obj/item/clothing/under/costume/dragon_maid
 	ckeywhitelist = list("sigmaralkahest")
