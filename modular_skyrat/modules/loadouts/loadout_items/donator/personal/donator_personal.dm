@@ -724,3 +724,8 @@
 	name = "Nobility Dresscoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	ckeywhitelist = list("nikotheguydude")
+
+/datum/loadout_item/under/formal/dragon_maid
+	name = "Dragon Maid Outfit"
+	item_path = /obj/item/clothing/under/costume/maid/dragon
+	ckeywhitelist = list("sigmaralkahest")
