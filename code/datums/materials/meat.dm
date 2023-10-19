@@ -38,8 +38,6 @@
 		eat_time = 3 SECONDS, \
 		tastes = list("Meaty"))
 
-<<<<<<< HEAD
-=======
 
 	source.AddComponent(
 		/datum/component/bloody_spreader,\
@@ -59,7 +57,6 @@
 		max_blood = (nutriment_count + oil_count) * 0.3,\
 	)
 
->>>>>>> cd030b06907 (Adds 'Bloody Spreader' component that bloodies everything it touches (#78743))
 /datum/material/meat/mob_meat
 	init_flags = MATERIAL_INIT_BESPOKE
 	var/subjectname = ""
