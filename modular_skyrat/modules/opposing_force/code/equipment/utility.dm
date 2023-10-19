@@ -13,7 +13,7 @@
 
 /datum/opposing_force_equipment/gear/tram_remote
 	name = "Tram Remote Control"
-	item_type = /obj/item/tram_remote
+	item_type = /obj/item/assembly/control/transport/remote
 	description = "When linked to a tram's on board computer systems, this device allows the user to manipulate the controls remotely. \
 		Includes direction toggle and a rapid mode to bypass door safety checks and crossing signals. \
 		Perfect for running someone over in the name of a tram malfunction!"

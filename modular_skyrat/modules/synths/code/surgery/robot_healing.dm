@@ -122,6 +122,9 @@
 		other_message += " as best as they can while [target] has clothing on"
 
 	target.heal_bodypart_damage(healed_brute, healed_burn, 0, BODYTYPE_ROBOTIC)
+
+	self_message += get_progress(user, target, healed_brute, healed_burn)
+
 	display_results(user, target, span_notice("[self_message]."), "[other_message].", "[other_message].")
 
 	if(istype(surgery, /datum/surgery/robot_healing))
@@ -157,19 +160,89 @@
 
 /***************************TYPES***************************/
 /datum/surgery/robot_healing/basic
-	name = "Repair robotic limbs (basic)"
-	healing_step_type = /datum/surgery_step/robot_heal/basic
+	name = "Repair robotic limbs (Basic)"
 	desc = "A surgical procedure that provides repairs and maintenance to robotic limbs. Is slightly more efficient when the patient is severely damaged."
+	healing_step_type = /datum/surgery_step/robot_heal/basic
+	replaced_by = /datum/surgery/robot_healing/upgraded
+
+/datum/surgery/robot_healing/upgraded
+	name = "Repair robotic limbs (Adv.)"
+	desc = "A surgical procedure that provides highly effective repairs and maintenance to robotic limbs. Is somewhat more efficient when the patient is severely damaged."
+	healing_step_type = /datum/surgery_step/robot_heal/upgraded
+	replaced_by = /datum/surgery/robot_healing/experimental
+	requires_tech = TRUE
+
+/datum/surgery/robot_healing/experimental
+	name = "Repair robotic limbs (Exp.)"
+	desc = "A surgical procedure that quickly provides highly effective repairs and maintenance to robotic limbs. Is moderately more efficient when the patient is severely damaged."
+	healing_step_type = /datum/surgery_step/robot_heal/experimental
 	replaced_by = null
+	requires_tech = TRUE
 
 /***************************STEPS***************************/
 
 /datum/surgery_step/robot_heal/basic
-	name = "repair damage"
 	brute_heal_amount = 10
 	burn_heal_amount = 10
 	missing_health_bonus = 15
-	time = 10
+	time = 2.5 SECONDS
+
+/datum/surgery_step/robot_heal/upgraded
+	brute_heal_amount = 12
+	burn_heal_amount = 12
+	missing_health_bonus = 11
+	time = 2.3 SECONDS
+
+/datum/surgery_step/robot_heal/experimental
+	brute_heal_amount = 14
+	burn_heal_amount = 14
+	missing_health_bonus = 8
+	time = 2 SECONDS
+
+// Mostly a copypaste of standard tend wounds get_progress(). In order to abstract this, I'd have to rework the hierarchy of surgery upstream, so I'll just do this. Pain.
+/**
+ * Args:
+ * * mob/user: The user performing this surgery.
+ * * mob/living/carbon/target: The target of the surgery.
+ * * brute_healed: The amount of brute we just healed.
+ * * burn_healed: The amount of burn we just healed.
+ *
+ * Returns:
+ * * A string containing either an estimation of how much longer the surgery will take, or exact numbers of the remaining damages, depending on if a health analyzer
+ * is held or not.
+ */
+/datum/surgery_step/robot_heal/proc/get_progress(mob/user, mob/living/carbon/target, brute_healed, burn_healed)
+	var/estimated_remaining_steps = 0
+	if(brute_healed > 0)
+		estimated_remaining_steps = max(0, (target.getBruteLoss() / brute_healed))
+	if(burn_healed > 0)
+		estimated_remaining_steps = max(estimated_remaining_steps, (target.getFireLoss() / burn_healed)) // whichever is higher between brute or burn steps
+
+	var/progress_text
+
+	if(locate(/obj/item/healthanalyzer) in user.held_items)
+		if(target.getBruteLoss())
+			progress_text = ". Remaining brute: <font color='#ff3333'>[target.getBruteLoss()]</font>"
+		if(target.getFireLoss())
+			progress_text += ". Remaining burn: <font color='#ff9933'>[target.getFireLoss()]</font>"
+	else
+		switch(estimated_remaining_steps)
+			if(-INFINITY to 1)
+				return
+			if(1 to 3)
+				progress_text = ", finishing up the last few signs of damage"
+			if(3 to 6)
+				progress_text = ", counting down the last few patches of trauma"
+			if(6 to 9)
+				progress_text = ", continuing to plug away at [target.p_their()] extensive damages"
+			if(9 to 12)
+				progress_text = ", steadying yourself for the long surgery ahead"
+			if(12 to 15)
+				progress_text = ", though [target.p_they()] still look[target.p_s()] heavily battered"
+			if(15 to INFINITY)
+				progress_text = ", though you feel like you're barely making a dent in treating [target.p_their()] broken body"
+
+	return progress_text
 
 #undef DAMAGE_ROUNDING
 #undef FAIL_DAMAGE_MULTIPLIER

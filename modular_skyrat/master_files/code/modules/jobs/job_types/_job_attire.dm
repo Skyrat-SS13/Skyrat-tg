@@ -8,6 +8,9 @@
 /datum/job/bartender
 	akula_outfit = /datum/outfit/akula
 
+/datum/job/bitrunner
+	akula_outfit = /datum/outfit/akula/cargo_technician
+
 /datum/job/botanist
 	akula_outfit = /datum/outfit/akula
 
@@ -84,7 +87,7 @@
 	akula_outfit = /datum/outfit/akula/security_officer
 
 /datum/job/shaft_miner
-	akula_outfit = /datum/outfit/akula
+	akula_outfit = /datum/outfit/akula/cargo_technician
 
 /datum/job/station_engineer
 	akula_outfit = /datum/outfit/akula/station_engineer
@@ -138,6 +141,9 @@
 
 /datum/job/barber
 	akula_outfit = /datum/outfit/akula
+
+/datum/job/coroner
+	akula_outfit = /datum/outfit/akula/doctor
 
 /datum/job/corrections_officer
 	akula_outfit = /datum/outfit/akula/security_officer
