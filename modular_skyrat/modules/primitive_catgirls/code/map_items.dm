@@ -20,7 +20,7 @@
 
 // Water that can be fished out of
 
-/turf/open/water/hotspring
+/turf/open/water/hot_spring
 	desc = "Water kept warm through some unknown heat source, possibly a geothermal heat source far underground. \
 		Whatever it is, it feels pretty damn nice to swim in given the rest of the environment around here, and you \
 		can even catch a glimpse of the odd fish darting through the water."
@@ -29,32 +29,32 @@
 	/// Holder for the steam particles that show up sometimes
 	var/obj/effect/abstract/particle_holder/particle_effect
 
-/turf/open/water/icebox_fishable/Initialize(mapload)
+/turf/open/water/hot_spring/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/lazy_fishing_spot, /datum/fish_source/icecat_hot_spring)
 	if(prob(60))
 		particle_effect = new(src, /particles/hotspring_steam)
 
-/turf/open/water/icebox_fishable/Destroy()
+/turf/open/water/hot_spring/Destroy()
 	QDEL_NULL(particle_effect)
 	return ..()
 
-/turf/open/water/icebox_fishable/Entered(atom/movable/arrived)
+/turf/open/water/hot_spring/Entered(atom/movable/arrived)
 	..()
 	wash_atom(arrived)
 	wash_atom(loc)
 
 /// Cleans the given atom of whatever dirties it
-/turf/open/water/icebox_fishable/proc/wash_atom(atom/nasty)
+/turf/open/water/hot_spring/proc/wash_atom(atom/nasty)
 	nasty.wash(CLEAN_WASH)
 
-/turf/open/water/icebox_fishable/Entered(atom/movable/arrived)
+/turf/open/water/hot_spring/Entered(atom/movable/arrived)
 	..()
 	if(istype(arrived, /mob/living))
 		hotspring_mood(arrived)
 
 /// Applies the hot water mood buff on the passed mob
-/turf/open/water/icebox_fishable/proc/hotspring_mood(mob/living/swimmer)
+/turf/open/water/hot_spring/proc/hotspring_mood(mob/living/swimmer)
 	swimmer.add_mood_event("hotspring", /datum/mood_event/hotspring/nerfed)
 
 /datum/mood_event/hotspring/nerfed
