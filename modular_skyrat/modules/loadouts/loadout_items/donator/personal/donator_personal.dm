@@ -729,6 +729,7 @@
 	name = "Anubite headpiece"
 	item_path = /obj/item/clothing/head/anubite
 	ckeywhitelist = list("vexcint")
+
 /datum/loadout_item/head/catear_headphone
 	name = "Cat-Ear Headphones"
 	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
