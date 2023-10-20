@@ -121,7 +121,8 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/clockwork_marauder()
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/clockwork_marauder(),
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -137,10 +138,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_behavior/basic_melee_attack/clockwork_marauder
 	action_cooldown = 1.2 SECONDS
-
-
-/datum/targetting_datum/basic/clockwork_marauder
-	stat_attack = HARD_CRIT
 
 
 /obj/item/nullrod/Initialize(mapload)
