@@ -6,5 +6,5 @@
 
 //used by chem masters and pill presses
 // The categories of reagent packaging
-#define CAT_HYPOS "hypos" // SKYRAT EDIT ADDITION
-#define CAT_DARTS "darts" // SKYRAT EDIT ADDITION
+#define CAT_HYPOS "hypos"
+#define CAT_DARTS "darts"
