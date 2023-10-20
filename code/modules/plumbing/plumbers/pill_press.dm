@@ -37,7 +37,7 @@
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
 			"Bottles" = list(/obj/item/reagent_containers/cup/bottle),
-			CAT_HYPO = GLOB.reagent_containers[CAT_HYPO], // SKYRAT EDIT ADDITION - Hypovials
+			CAT_HYPOS = GLOB.reagent_containers[CAT_HYPOS], // SKYRAT EDIT ADDITION - Hypovials
 
 		)
 
@@ -71,9 +71,9 @@
 		packaging_category = CAT_PATCHES
 	else if(ispath(container, /obj/item/reagent_containers/pill))
 		packaging_category = CAT_PILLS
-	// SKYRAT EDIT ADDITION START - Hypovials
+	// SKYRAT EDIT ADDITION START - HYPOVIALS
 	else if(ispath(container, /obj/item/reagent_containers/cup/vial))
-		packaging_category = CAT_HYPO
+		packaging_category = CAT_HYPOS
 	// SKYRAT EDIT ADDITION END
 	else
 		packaging_category = "Bottles"
@@ -94,7 +94,7 @@
 			if(CAT_PATCHES)
 				suffix = "Patch"
 			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
-			if (CAT_HYPO)
+			if (CAT_HYPOS)
 				suffix = "Vial"
 			//SKYRAT EDIT ADDITION END - HYPOVIALS
 			else
