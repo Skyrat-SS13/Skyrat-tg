@@ -2,6 +2,7 @@
 #define TRANSFER_MODE_MOVE 1
 #define TARGET_BEAKER "beaker"
 #define TARGET_BUFFER "buffer"
+<<<<<<< HEAD
 #define CAT_CONDIMENTS "condiments"
 #define CAT_TUBES "tubes"
 #define CAT_PILLS "pills"
@@ -55,6 +56,8 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 	))
 	// SKYRAT EDIT ADDITION END
 ))
+=======
+>>>>>>> df508a51b27 (More Plumbing Fixes & Pill Press UI Changes (#79059))
 
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
@@ -70,7 +73,7 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 	/// Icons for different percentages of buffer reagents
 	var/fill_icon = 'icons/obj/medical/reagent_fillings.dmi'
 	var/fill_icon_state = "chemmaster"
-	var/list/fill_icon_thresholds = list(10,20,30,40,50,60,70,80,90,100)
+	var/static/list/fill_icon_thresholds = list(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
 	/// Inserted reagent container
 	var/obj/item/reagent_containers/beaker
 	/// Whether separated reagents should be moved back to container or destroyed.
@@ -225,11 +228,17 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 
 /obj/machinery/chem_master/proc/load_printable_containers()
 	printable_containers = list(
+<<<<<<< HEAD
 		CAT_TUBES = GLOB.chem_master_containers[CAT_TUBES],
 		CAT_PILLS = GLOB.chem_master_containers[CAT_PILLS],
 		CAT_PATCHES = GLOB.chem_master_containers[CAT_PATCHES],
 		CAT_HYPOS = GLOB.chem_master_containers[CAT_HYPOS], // SKYRAT EDIT ADDITION
 		CAT_DARTS = GLOB.chem_master_containers[CAT_DARTS], // SKYRAT EDIT ADDITION
+=======
+		CAT_TUBES = GLOB.reagent_containers[CAT_TUBES],
+		CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
+		CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
+>>>>>>> df508a51b27 (More Plumbing Fixes & Pill Press UI Changes (#79059))
 	)
 
 /obj/machinery/chem_master/ui_assets(mob/user)
@@ -503,16 +512,19 @@ GLOBAL_LIST_INIT(chem_master_containers, list(
 
 /obj/machinery/chem_master/condimaster/load_printable_containers()
 	printable_containers = list(
-		CAT_CONDIMENTS = GLOB.chem_master_containers[CAT_CONDIMENTS],
+		CAT_CONDIMENTS = GLOB.reagent_containers[CAT_CONDIMENTS],
 	)
 
 #undef TRANSFER_MODE_DESTROY
 #undef TRANSFER_MODE_MOVE
 #undef TARGET_BEAKER
 #undef TARGET_BUFFER
+<<<<<<< HEAD
 #undef CAT_CONDIMENTS
 #undef CAT_TUBES
 #undef CAT_PILLS
 #undef CAT_PATCHES
 #undef CAT_HYPOS // SKYRAT EDIT ADDITION
 #undef CAT_DARTS // SKYRAT EDIT ADDITION
+=======
+>>>>>>> df508a51b27 (More Plumbing Fixes & Pill Press UI Changes (#79059))
