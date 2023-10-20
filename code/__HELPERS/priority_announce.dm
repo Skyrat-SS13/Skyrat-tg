@@ -74,28 +74,6 @@
 
 	var/finalized_announcement = CHAT_ALERT_DEFAULT_SPAN(jointext(announcement_strings, "<br>"))
 
-<<<<<<< HEAD
-	if(!players)
-		players = GLOB.player_list
-	// SKYRAT EDIT CHANGE BEGIN - ANNOUNCEMENTS
-	/* Original
-			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-				SEND_SOUND(target, sound_to_play)
-	*/
-	if(!sound)
-		sound = SSstation.announcer.get_rand_alert_sound()
-	else if(SSstation.announcer.event_sounds[sound])
-		var/list/announcer_key = SSstation.announcer.event_sounds[sound]
-		sound = pick(announcer_key)
-
-	var/sound_to_play = sound(sound)
-	for(var/mob/target in players)
-		if(!isnewplayer(target) && target.can_hear())
-			to_chat(target, announcement)
-
-	alert_sound_to_playing(sound_to_play, players = players)
-	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
-=======
 	dispatch_announcement_to_players(finalized_announcement, players, sound)
 
 	if(isnull(sender_override))
@@ -103,7 +81,6 @@
 			GLOB.news_network.submit_article(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
 		else
 			GLOB.news_network.submit_article(text, "Central Command Update", "Station Announcements", null)
->>>>>>> 30bac3a3010 (Adds Custom Announcement Dividers (#79071))
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
@@ -145,7 +122,7 @@
 
 	var/finalized_announcement = CHAT_ALERT_DEFAULT_SPAN(jointext(minor_announcement_strings, "<br>"))
 
-	var/custom_sound = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
+	var/custom_sound = sound_override || (alert ? 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/misc/notice2.ogg') // SKYRAT EDIT CHANGE - CUSTOM ANNOUNCEMENTS - Original: 'sound/misc/notice1.ogg'
 	dispatch_announcement_to_players(finalized_announcement, players, custom_sound, should_play_sound)
 
 /// Sends an announcement about the level changing to players. Uses the passed in datum and the subsystem's previous security level to generate the message.
@@ -192,37 +169,40 @@
 	if(!players)
 		players = GLOB.player_list
 
+	// SKYRAT EDIT CHANGE BEGIN - CUSTOM ANNOUNCEMENTS
+	/* Original:
+
 	var/sound_to_play = !isnull(sound_override) ? sound_override : 'sound/misc/notice2.ogg'
 
 	for(var/mob/target in players)
 		if(isnewplayer(target) || !target.can_hear())
 			continue
 
-<<<<<<< HEAD
-		to_chat(target, "<br>[span_minorannounce(title)]<br>")
-		to_chat(target, "[span_minoralert(message)]<br><br><br>")
-	// SKYRAT EDIT CHANGE START - ANNOUNCEMENTS
-	/* Original
-		if(should_play_sound && target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
-			SEND_SOUND(target, sound(sound_to_play))
-	*/
-	if(sound_override)
-		if(SSstation.announcer.event_sounds[sound_override])
-			var/list/announcement_key = SSstation.announcer.event_sounds[sound_override]
-			sound_override = pick(announcement_key)
-
-	var/sound_to_play = sound_override || (alert ? 'modular_skyrat/modules/alerts/sound/alerts/alert1.ogg' : 'sound/misc/notice2.ogg')
-	alert_sound_to_playing(sound_to_play, players = players)
-	// SKYRAT EDIT CHANGE END - ANNOUNCEMENTS
-
-=======
 		to_chat(target, announcement)
 		if(!should_play_sound)
 			continue
 
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			SEND_SOUND(target, sound(sound_to_play))
+	*/
+	if(!sound_override)
+		sound_override = SSstation.announcer.get_rand_alert_sound()
+	else if(SSstation.announcer.event_sounds[sound_override])
+		var/list/announcer_key = SSstation.announcer.event_sounds[sound_override]
+		sound_override = pick(announcer_key)
+
+	if(!isnull(sound_override))
+		sound_override = sound(sound_override)
+
+	var/sound_to_play = !isnull(sound_override) ? sound_override : 'sound/misc/notice2.ogg'
+	alert_sound_to_playing(sound_to_play, players = players)
+
+	for(var/mob/target in players)
+		if(isnewplayer(target) || !target.can_hear())
+			continue
+
+		to_chat(target, announcement)
+	// SKYRAT EDIT CHANGE END - CUSTOM ANNOUNCEMENTS
 
 #undef MAJOR_ANNOUNCEMENT_TITLE
 #undef MAJOR_ANNOUNCEMENT_TEXT
@@ -230,4 +210,3 @@
 #undef MINOR_ANNOUNCEMENT_TEXT
 #undef CHAT_ALERT_DEFAULT_SPAN
 #undef CHAT_ALERT_COLORED_SPAN
->>>>>>> 30bac3a3010 (Adds Custom Announcement Dividers (#79071))
