@@ -34,7 +34,16 @@ GLOBAL_LIST_INIT(reagent_containers, list(
 	)),
 	CAT_PATCHES = typecacheof(list(
 		/obj/item/reagent_containers/pill/patch/style
-	))
+	)),
+	// SKYRAT EDIT ADDITION START
+	CAT_HYPOS = list(
+		/obj/item/reagent_containers/cup/vial/small,
+		/obj/item/reagent_containers/cup/vial/large,
+	),
+	CAT_DARTS = typecacheof(list(
+		/obj/item/reagent_containers/syringe/smartdart
+	)),
+	// SKYRAT EDIT ADDITION END
 ))
 
 /// list of all /datum/chemical_reaction datums indexed by their typepath. Use this for general lookup stuff

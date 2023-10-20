@@ -37,6 +37,8 @@
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
 			"Bottles" = list(/obj/item/reagent_containers/cup/bottle),
+			"Vials" = list (/obj/item/reagent_containers/cup/vial/small),
+
 		)
 
 		packaging_types = list()
@@ -87,35 +89,11 @@
 				suffix = "Pill"
 			if(CAT_PATCHES)
 				suffix = "Patch"
+			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
+			if ("Vials")
+				suffix = "vial"
+			//SKYRAT EDIT ADDITION END - HYPOVIALS
 			else
-<<<<<<< HEAD
-				P.icon_state = "pill[pill_number]"
-			if(P.icon_state == "pill4") //mirrored from chem masters
-				P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
-		else if (product == "patch")
-			var/obj/item/reagent_containers/pill/patch/P = new(src)
-			reagents.trans_to(P, current_volume)
-			P.name = trim("[product_name] patch")
-			P.icon_state = patch_style
-			stored_products += P
-		else if (product == "bottle")
-			var/obj/item/reagent_containers/cup/bottle/P = new(src)
-			reagents.trans_to(P, current_volume)
-			P.name = trim("[product_name] bottle")
-			stored_products += P
-		//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
-		else if (product == "vial")
-			var/obj/item/reagent_containers/cup/vial/small/P = new(src)
-			reagents.trans_to(P, current_volume)
-			P.name = trim("[product_name] vial")
-			stored_products += P
-		//SKYRAT EDIT ADDITION END - HYPOVIALS
-	if(stored_products.len)
-		var/pill_amount = 0
-		for(var/thing in loc)
-			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill) && !istype(thing, /obj/item/reagent_containers/cup/vial/small)) //SKYRAT EDIT  - Hypovials from chem presses
-				continue
-=======
 				suffix = "Bottle"
 		container.name = "[product_name] [suffix]"
 		reagents.trans_to(container, current_volume)
@@ -125,7 +103,6 @@
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/obj/item/reagent_containers/thing in loc)
->>>>>>> df508a51b27 (More Plumbing Fixes & Pill Press UI Changes (#79059))
 			pill_amount++
 			if(pill_amount >= MAX_FLOOR_PRODUCTS) //too much so just stop
 				break
@@ -176,24 +153,6 @@
 		if("change_current_volume")
 			current_volume = round(clamp(text2num(params["volume"]), MIN_VOLUME, MAX_VOLUME))
 		if("change_product_name")
-<<<<<<< HEAD
-			product_name = html_encode(params["name"])
-		if("change_product")
-			product = params["product"]
-			if (product == "pill")
-				max_volume = max_pill_volume
-			else if (product == "patch")
-				max_volume = max_patch_volume
-			else if (product == "bottle")
-				max_volume = max_bottle_volume
-			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
-			else if (product == "vial")
-				max_volume = max_bottle_volume
-			//SKYRAT EDIT ADDITION END - HYPOVIALS
-			current_volume = clamp(current_volume, min_volume, max_volume)
-		if("change_patch_style")
-			patch_style = params["patch_style"]
-=======
 			var/formatted_name = html_encode(params["name"])
 			if (length(formatted_name) > MAX_NAME_LEN)
 				product_name = copytext(formatted_name, 1, MAX_NAME_LEN + 1)
@@ -207,4 +166,3 @@
 #undef MIN_VOLUME
 #undef MAX_VOLUME
 #undef MAX_FLOOR_PRODUCTS
->>>>>>> df508a51b27 (More Plumbing Fixes & Pill Press UI Changes (#79059))
