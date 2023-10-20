@@ -58,7 +58,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE // His ass does NOT pass through glass!
 	weak_against_armour = TRUE
 
-/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked)
+/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked = 0, pierce_hit)
 	if(istype(target, /obj/structure/blob) || HAS_TRAIT(target, TRAIT_BLOB_ALLY))
 		damage = damage * 0.75
 	return ..()
