@@ -53,6 +53,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	communicate.Grant(src)
 
 	GLOB.clockwork_marauders += src
+	RegisterSignal(src, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(block_bullets))
 
 
 /mob/living/basic/clockwork_marauder/Destroy()
@@ -80,13 +81,14 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	return ..()
 
 
-/mob/living/basic/clockwork_marauder/bullet_act(obj/projectile/proj)
-	//Block Ranged Attacks
+/mob/living/basic/clockwork_marauder/proc/block_bullets(datum/source, obj/projectile/hitting_projectile)
+	SIGNAL_HANDLER
+
 	if(shield_health)
 		damage_shield()
-		to_chat(src, span_warning("Your shield blocks the attack."))
-		return BULLET_ACT_BLOCK
-	return ..()
+		visible_message(span_warning("[src]'s shield blocks the attack!"))
+		return COMPONENT_BULLET_BLOCKED
+	return NONE
 
 
 /// Damage the marauder's shield by one tick
