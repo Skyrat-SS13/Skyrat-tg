@@ -129,7 +129,7 @@
 	projectile_piercing = PASSMOB
 
 
-/obj/projectile/bullet/c40sol/pierce/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/c40sol/pierce/on_hit(atom/target, blocked = 0, pierce_hit)
 	if(isliving(target))
 		var/mob/living/poor_sap = target
 
@@ -177,7 +177,7 @@
 	var/firestacks_to_give = 1
 
 
-/obj/projectile/bullet/c40sol/incendiary/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/c40sol/incendiary/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 
 	if(iscarbon(target))

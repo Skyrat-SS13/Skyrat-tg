@@ -292,7 +292,7 @@
 	weak_against_armour = TRUE
 	var/temperature = 30
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/UnluckyBastard = target

@@ -667,7 +667,7 @@
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
-	ckeywhitelist = list("masvedish", "lutowski", "lawful", "anyacers", "apolloafk", "avianaviator", "notdhu")
+	ckeywhitelist = list("masvedish", "lutowski", "lawful", "anyacers", "apolloafk", "avianaviator", "notdhu", "plejek")
 
 /datum/loadout_item/suit/lt3_armor
 	name = "Silver Jacket Mk II"
@@ -729,3 +729,7 @@
 	name = "Anubite headpiece"
 	item_path = /obj/item/clothing/head/anubite
 	ckeywhitelist = list("vexcint")
+/datum/loadout_item/head/catear_headphone
+	name = "Cat-Ear Headphones"
+	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
+	ckeywhitelist = list("dtfe")
