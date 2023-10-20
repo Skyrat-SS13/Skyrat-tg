@@ -38,9 +38,13 @@ SUBSYSTEM_DEF(communications)
 	else
 		var/list/message_data = user.treat_message(input)
 		if(syndicate)
-			priority_announce(html_decode(message_data["message"]), null, 'sound/misc/announce_syndi.ogg', "Syndicate Captain", has_important_message = TRUE, players = players)
+			priority_announce(html_decode(message_data["message"]), null, 'sound/misc/announce_syndi.ogg', ANNOUNCEMENT_TYPE_SYNDICATE, has_important_message = TRUE, players = players)
 		else
+<<<<<<< HEAD
 			priority_announce(html_decode(message_data["message"]), null, ANNOUNCER_CAPTAIN, "Captain", has_important_message = TRUE, players = players) // SKYRAT EDIT CHANGE - Announcer Sounds
+=======
+			priority_announce(html_decode(message_data["message"]), null, 'sound/misc/announce.ogg', ANNOUNCEMENT_TYPE_CAPTAIN, has_important_message = TRUE, players = players)
+>>>>>>> 30bac3a3010 (Adds Custom Announcement Dividers (#79071))
 		COOLDOWN_START(src, nonsilicon_message_cooldown, COMMUNICATION_COOLDOWN)
 	user.log_talk(input, LOG_SAY, tag="priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has made a priority announcement.")
