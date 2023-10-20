@@ -71,8 +71,10 @@
 		packaging_category = CAT_PATCHES
 	else if(ispath(container, /obj/item/reagent_containers/pill))
 		packaging_category = CAT_PILLS
-	else if(ispath(container, /obj/item/reagent_containers/cup/vial/small))
-		packaging_category = "Vials"
+	// SKYRAT EDIT ADDITION START - Hypovials
+	else if(ispath(container, /obj/item/reagent_containers/cup/vial))
+		packaging_category = CAT_HYPO
+	// SKYRAT EDIT ADDITION END
 	else
 		packaging_category = "Bottles"
 	return container
@@ -92,8 +94,8 @@
 			if(CAT_PATCHES)
 				suffix = "Patch"
 			//SKYRAT EDIT ADDITION BEGIN - HYPOVIALS
-			if ("Vials")
-				suffix = "vial"
+			if (CAT_HYPO)
+				suffix = "Vial"
 			//SKYRAT EDIT ADDITION END - HYPOVIALS
 			else
 				suffix = "Bottle"
