@@ -191,13 +191,8 @@
 			sleep_quality += 0.1
 
 		// sleeping in silence is always better
-<<<<<<< HEAD
-		if(HAS_TRAIT(src, TRAIT_DEAF))
-			healing += 0.1
-=======
 		if(HAS_TRAIT(owner, TRAIT_DEAF))
 			sleep_quality += 0.1
->>>>>>> af43f39737d (Add new fitness skill and mechanics (#78922))
 
 		// check for beds
 		if((locate(/obj/structure/bed) in owner.loc))
