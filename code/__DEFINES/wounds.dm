@@ -229,7 +229,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED,
 	),
-)))
+))
 
 /// Used in get_corresponding_wound_type(): Will pick the highest severity wound out of severity_min and severity_max
 #define WOUND_PICK_HIGHEST_SEVERITY 1
