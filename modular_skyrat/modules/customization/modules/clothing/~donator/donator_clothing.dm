@@ -1732,5 +1732,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "anubite_headpiece"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon_state = "anubite_headpiece"
 	worn_y_offset = 4
