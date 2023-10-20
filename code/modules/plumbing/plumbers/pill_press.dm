@@ -37,7 +37,7 @@
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
 			"Bottles" = list(/obj/item/reagent_containers/cup/bottle),
-			"Vials" = list (/obj/item/reagent_containers/cup/vial/small),
+			CAT_HYPO = GLOB.reagent_containers[CAT_HYPO], // SKYRAT EDIT ADDITION - Hypovials
 
 		)
 
