@@ -43,7 +43,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	/// How many hits the shield can take before it breaks.
 	var/shield_health = MARAUDER_SHIELD_MAX
 
-
 /mob/living/basic/clockwork_marauder/Initialize(mapload)
 	. = ..()
 	if(length(loot))
@@ -79,7 +78,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 		return
 
 	return ..()
-
 
 /mob/living/basic/clockwork_marauder/proc/block_bullets(datum/source, obj/projectile/hitting_projectile)
 	SIGNAL_HANDLER
@@ -121,7 +119,8 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/clockwork_marauder()
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -137,11 +136,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_behavior/basic_melee_attack/clockwork_marauder
 	action_cooldown = 1.2 SECONDS
-
-
-/datum/targetting_datum/basic/clockwork_marauder
-	stat_attack = HARD_CRIT
-
 
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
