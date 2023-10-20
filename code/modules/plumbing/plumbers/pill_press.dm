@@ -71,6 +71,8 @@
 		packaging_category = CAT_PATCHES
 	else if(ispath(container, /obj/item/reagent_containers/pill))
 		packaging_category = CAT_PILLS
+	else if(ispath(container, /obj/item/reagent_containers/cup/vial/small))
+		packaging_category = "Vials"
 	else
 		packaging_category = "Bottles"
 	return container
