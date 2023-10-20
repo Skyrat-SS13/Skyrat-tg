@@ -1,5 +1,0 @@
-/datum/opposing_force_equipment/implants
-	category = OPFOR_EQUIPMENT_CATEGORY_IMPLANTS
-
-/datum/opposing_force_equipment/implants_illegal
-	category = OPFOR_EQUIPMENT_CATEGORY_IMPLANTS_ILLEGAL

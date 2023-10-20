@@ -86,19 +86,33 @@
 	acid = 50
 	wound = 10
 
-/obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
-	new /obj/item/clothing/under/pants/track/robohand(src)
-	new /obj/item/clothing/glasses/sunglasses/robohand(src)
-	new /obj/item/clothing/suit/jacket/trenchcoat/gunman(src)
-	new /obj/item/clothing/shoes/combat(src)
+/obj/item/clothing/under/pants/track/robohand
+	name = "badass pants"
+	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
+	armor_type = /datum/armor/clothing_under/robohand
 
-//
-/obj/item/reagent_containers/cup/rag/large
-	volume = 30
-	amount_per_transfer_from_this = 30
-	desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
+/datum/armor/clothing_under/robohand
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 20
 
+/obj/item/clothing/glasses/sunglasses/robohand
+	name = "badass sunglasses"
+	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes. These ones seem to be bulletproof?"
+	body_parts_covered = HEAD //What do you mean glasses don't protect your head? Of course they do. Cyberpunk has flying cars(mostly intentional)!
+	armor_type = /datum/armor/sunglasses_robohand
 
+/datum/armor/sunglasses_robohand
+	melee = 20
+	bullet = 60
+	laser = 20
+	energy = 20
+	bomb = 20
+	wound = 5
+
+//More items
 /obj/item/guardiancreator/tech/choose/traitor/opfor
 	allowling = TRUE
 
@@ -213,4 +227,3 @@
 
 	var/obj/item/clockwork/clockwork_slab/slab = new
 	user.put_in_hands(slab, FALSE)
-

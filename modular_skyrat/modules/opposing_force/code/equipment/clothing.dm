@@ -116,7 +116,6 @@
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 
-
 /datum/opposing_force_equipment/clothing_sol
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_SOL
 

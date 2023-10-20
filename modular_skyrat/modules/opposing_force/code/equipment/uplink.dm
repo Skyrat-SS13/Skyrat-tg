@@ -13,6 +13,26 @@
 	name = "Implanted Syndicate Uplink"
 	admin_note = "Traitor uplink without telecrystals."
 
+/datum/opposing_force_equipment/uplink/tc1
+	item_type = /obj/item/stack/telecrystal
+	name = "1 Raw Telecrystal"
+	description = "A telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+
+/datum/opposing_force_equipment/uplink/tc5
+	item_type = /obj/item/stack/telecrystal/five
+	name = "5 Raw Telecrystals"
+	description = "A bunch of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+
+/datum/opposing_force_equipment/uplink/tc10
+	item_type = /obj/item/stack/telecrystal/twenty
+	name = "20 Raw Telecrystals"
+	description = "A bundle of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+
+/datum/opposing_force_equipment/uplink/c10k
+	name = "10000 Space Cash Bill"
+	item_type = /obj/item/stack/spacecash/c10000
+	description = "Cold hard cash."
+
 //Tot powers
 /datum/opposing_force_equipment/uplink/changeling
 	item_type = /obj/item/antag_granter/changeling
