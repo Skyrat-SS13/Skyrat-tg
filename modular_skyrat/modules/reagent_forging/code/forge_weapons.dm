@@ -257,9 +257,11 @@
 	if(!stack_item.use(1))
 		return
 
-	new spawned_item(get_turf(src))
+	var/obj/item/ammo_casing/arrow/converted_arrow = new spawned_item(get_turf(src))
+	transfer_fingerprints_to(converted_arrow)
+	remove_item_from_storage(user)
+	user.put_in_hands(converted_arrow)
 	qdel(src)
-	return
 
 #define INCREASE_BLOCK_CHANGE 2
 
