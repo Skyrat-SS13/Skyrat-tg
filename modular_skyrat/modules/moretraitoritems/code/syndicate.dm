@@ -11,6 +11,16 @@
 /obj/item/mod/control/pre_equipped/elite/unrestricted
 	req_access = null
 
+//Syndie wep charger kit
+/obj/item/storage/box/syndie_kit/recharger
+	name = "boxed recharger kit"
+	desc = "A sleek, sturdy box used to hold all parts to build a weapons recharger."
+	icon_state = "syndiebox"
+
+/obj/item/storage/box/syndie_kit/charger/PopulateContents()
+	new /obj/item/circuitboard/machine/recharger(src)
+	new /obj/item/stock_parts/capacitor/quadratic(src)
+
 //Back-up space suit
 /obj/item/storage/box/syndie_kit/space_suit
 	name = "boxed space suit and helmet"

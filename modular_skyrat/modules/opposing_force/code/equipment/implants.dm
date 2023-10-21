@@ -34,31 +34,31 @@
 	item_type = /obj/item/autosurgeon/syndicate/reviver
 	description = "This implant will attempt to revive and heal you if you lose consciousness. For the faint of heart!"
 
-/datum/opposing_force_equipment/implants_illegal/sad_trombone
+/datum/opposing_force_equipment/implants/sad_trombone
 	name = "Sad Trombone Implant"
 	item_type = /obj/item/implanter/sad_trombone
 
-/datum/opposing_force_equipment/implants_illegal/toolarm
+/datum/opposing_force_equipment/implants/toolarm
 	name = "Tool Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/toolset
 
-/datum/opposing_force_equipment/implants_illegal/surgery
+/datum/opposing_force_equipment/implants/surgery
 	name = "Surgery Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/surgery
 
-/datum/opposing_force_equipment/implants_illegal/botany
+/datum/opposing_force_equipment/implants/botany
 	name = "Botany Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/botany
 
-/datum/opposing_force_equipment/implants_illegal/janitor
+/datum/opposing_force_equipment/implants/janitor
 	name = "Janitor Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/janitor
 
-/datum/opposing_force_equipment/implants_illegal/armblade
+/datum/opposing_force_equipment/implants/armblade
 	name = "Blade Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/armblade
 
-/datum/opposing_force_equipment/implants_illegal/muscle
+/datum/opposing_force_equipment/implants/muscle
 	name = "Muscle Arm Implant"
 	item_type = /obj/item/organ/internal/cyberimp/arm/muscle
 

@@ -36,3 +36,34 @@
 /obj/item/autosurgeon/bodypart/r_arm_robotic/Initialize(mapload)
 	. = ..()
 	storedbodypart.icon = 'modular_skyrat/master_files/icons/mob/augmentation/hi2ipc.dmi'
+
+//xeno-organs
+/obj/item/autosurgeon/xeno
+	name = "strange autosurgeon"
+//	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
+//	icon_state = "autosurgeon_xeno"
+	surgery_speed = 2
+	organ_whitelist = list(/obj/item/organ/internal/alien)
+//	loaded_overlay = "autosurgeon_xeno_loaded_overlay"
+
+/obj/item/organ/internal/alien/plasmavessel/opfor
+	stored_plasma = 500
+	max_plasma = 500
+	plasma_rate = 10
+
+/obj/item/storage/organbox/strange
+	name = "strange organ transport box"
+//	desc = ""
+//	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
+
+/obj/item/storage/organbox/strange/PopulateContents()
+	new /obj/item/autosurgeon/xeno(src)
+	new /obj/item/organ/internal/alien/plasmavessel/opfor(src)
+	new /obj/item/organ/internal/alien/resinspinner(src)
+	new /obj/item/organ/internal/alien/acid(src)
+	new /obj/item/organ/internal/alien/neurotoxin(src)
+	new /obj/item/organ/internal/alien/hivenode(src)
+
+/obj/item/storage/organbox/strange/eggsac/PopulateContents()
+	. = ..()
+	new /obj/item/organ/internal/alien/eggsac(src)

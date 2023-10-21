@@ -54,26 +54,24 @@
 #define OPFOR_EQUIPMENT_CATEGORY_IMPLANTS "8. Implants"
 #define OPFOR_EQUIPMENT_CATEGORY_IMPLANTS_ILLEGAL "9. Illegal Implants"
 // Guns
-#define OPFOR_EQUIPMENT_CATEGORY_BALLISTICS "10. Ballistic Weapons"
-#define OPFOR_EQUIPMENT_CATEGORY_LASERS "11. Laser Weapons"
-#define OPFOR_EQUIPMENT_CATEGORY_BALLISTICS_STEALTH "12. Stealthy Ballistic Weapons"
-#define OPFOR_EQUIPMENT_CATEGORY_LASERS_STEALTH "13. Stealthy Laser Weapons"
+#define OPFOR_EQUIPMENT_CATEGORY_RANGED "10. Ranged Weapons"
+#define OPFOR_EQUIPMENT_CATEGORY_RANGED_STEALTH "11. Stealth Ranged Weapons"
 // Ammo
-#define OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC "14. Exotic Ammunition"
+#define OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC "12. Exotic Ammunition"
 // Melee
-#define OPFOR_EQUIPMENT_CATEGORY_MELEE "15. Melee Weapons"
-#define OPFOR_EQUIPMENT_CATEGORY_MELEE_STEALTH "16. Stealthy Melee Weapons"
+#define OPFOR_EQUIPMENT_CATEGORY_MELEE "13. Melee Weapons"
+#define OPFOR_EQUIPMENT_CATEGORY_MELEE_STEALTH "14. Stealthy Melee Weapons"
 // Gadgets
-#define OPFOR_EQUIPMENT_CATEGORY_GADGET "17. Gadgets"
-#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "18. Stealth Gadgets"
+#define OPFOR_EQUIPMENT_CATEGORY_GADGET "15. Gadgets"
+#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "16. Stealth Gadgets"
 // Bombs
-#define OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM "19. Chemical Grenades"
-#define OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD "20. Dirty Bombs"
+#define OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM "17. Chemical Grenades"
+#define OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD "18. Dirty Bombs"
 // Spells and scrolls (martial arts)
-#define OPFOR_EQUIPMENT_CATEGORY_SPELLS "21. Spells"
-#define OPFOR_EQUIPMENT_CATEGORY_SCROLLS "22. Martial Art Scrolls"
+#define OPFOR_EQUIPMENT_CATEGORY_SPELLS "19. Spells"
+#define OPFOR_EQUIPMENT_CATEGORY_SCROLLS "20. Martial Art Scrolls"
 // Language and biology
-#define OPFOR_EQUIPMENT_CATEGORY_LANGUAGE "23. Language"
-#define OPFOR_EQUIPMENT_CATEGORY_BIO "24. Biology"
+#define OPFOR_EQUIPMENT_CATEGORY_LANGUAGE "21. Language"
+#define OPFOR_EQUIPMENT_CATEGORY_BIO "22. Biology"
 // Category for uncategorized items
 #define OPFOR_EQUIPMENT_CATEGORY_OTHER "Other"

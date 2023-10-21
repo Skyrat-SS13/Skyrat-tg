@@ -81,6 +81,11 @@
 	name = "Soap cluster-Grenade"
 	item_type = /obj/item/grenade/clusterbuster/soap
 
+/datum/opposing_force_equipment/bomb_chemical/moustache
+	name = "Tearstache Grenade"
+	item_type = /obj/item/grenade/chem_grenade/teargas/moustache
+	admin_note = "Puts mustaches on their victims that last for ten minutes."
+
 /datum/opposing_force_equipment/bomb_chemical/carp
 	name = "Carp Grenade"
 	item_type = /obj/item/grenade/spawnergrenade/spesscarp

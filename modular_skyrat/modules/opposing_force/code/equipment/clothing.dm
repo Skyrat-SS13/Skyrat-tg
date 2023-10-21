@@ -7,8 +7,8 @@
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/operative
 
 /obj/item/storage/backpack/duffelbag/syndie/operative/PopulateContents() //basically old insurgent bundle -nukie mod
-	new /obj/item/clothing/under/syndicate(src)
-	new /obj/item/clothing/under/syndicate/skirt(src)
+	new /obj/item/clothing/under/syndicate/skyrat/tactical(src)
+	new /obj/item/clothing/under/syndicate/skyrat/tactical/skirt(src)
 	new /obj/item/clothing/suit/armor/bulletproof(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/gloves/tackler/combat(src)
@@ -115,6 +115,7 @@
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
+
 
 /datum/opposing_force_equipment/clothing_sol
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING_SOL

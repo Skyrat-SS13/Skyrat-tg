@@ -87,6 +87,9 @@
 /datum/opposing_force_equipment/modsuit_modules/noslip
 	item_type = /obj/item/mod/module/noslip
 
+/datum/opposing_force_equipment/modsuit_modules/cloak_mod
+	item_type = /obj/item/mod/module/stealth/ninja
+
 /datum/opposing_force_equipment/modsuit_modules/armor_booster
 	item_type = /obj/item/mod/module/armor_booster
 
@@ -131,6 +134,9 @@
 
 /datum/opposing_force_equipment/modsuit_modules/scorpion_hook
 	item_type = /obj/item/mod/module/scorpion_hook
+
+/datum/opposing_force_equipment/modsuit_modules/flamethrower_mod
+	item_type = /obj/item/mod/module/flamethrower
 
 /datum/opposing_force_equipment/modsuit_modules/jump_jet
 	item_type = /obj/item/mod/module/jump_jet

@@ -103,8 +103,6 @@
 //The gun cannot shoot if you do not have a cyborg arm.
 /obj/item/gun/ballistic/automatic/pistol/robohand/afterattack(atom/target, mob/living/user, flag, params)
 	//This is where we are checking if the user has a cybernetic arm to USE the gun. ROBOHAND HAS A ROBO HAND
-	if(ishuman(user))
-		return ..()
 	if(!unrestricted)
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/bodypart/selected_hand = human_user.get_active_hand()
