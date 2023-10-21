@@ -55,7 +55,7 @@
 #define OPFOR_EQUIPMENT_CATEGORY_IMPLANTS_ILLEGAL "9. Illegal Implants"
 // Guns
 #define OPFOR_EQUIPMENT_CATEGORY_RANGED "10. Ranged Weapons"
-#define OPFOR_EQUIPMENT_CATEGORY_RANGED_STEALTH "11. Stealth Ranged Weapons"
+#define OPFOR_EQUIPMENT_CATEGORY_RANGED_STEALTH "11. Stealthy Ranged Weapons"
 // Ammo
 #define OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC "12. Exotic Ammunition"
 // Melee
@@ -63,7 +63,7 @@
 #define OPFOR_EQUIPMENT_CATEGORY_MELEE_STEALTH "14. Stealthy Melee Weapons"
 // Gadgets
 #define OPFOR_EQUIPMENT_CATEGORY_GADGET "15. Gadgets"
-#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "16. Stealth Gadgets"
+#define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "16. Stealthy Gadgets"
 // Bombs
 #define OPFOR_EQUIPMENT_CATEGORY_BOMB_CHEM "17. Chemical Grenades"
 #define OPFOR_EQUIPMENT_CATEGORY_BOMB_PAYLOAD "18. Dirty Bombs"
