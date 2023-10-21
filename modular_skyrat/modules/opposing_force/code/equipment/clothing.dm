@@ -34,7 +34,7 @@
 	new /obj/item/storage/belt/utility/syndicate(src)
 	new /obj/item/radio/headset/syndicate/alt(src)
 	new /obj/item/card/id/advanced/chameleon(src)
-	new /obj/item/clothing/glasses/night(src)
+	new /obj/item/clothing/glasses/meson/night(src)
 	new /obj/item/storage/box/syndie_kit/space_suit(src)
 
 /datum/opposing_force_equipment/clothing_syndicate/spy

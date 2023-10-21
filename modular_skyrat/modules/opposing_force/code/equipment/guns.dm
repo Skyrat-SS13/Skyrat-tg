@@ -34,9 +34,9 @@
 /datum/opposing_force_equipment/ranged/kiboko
 	name = "Kiboko Grenade Launcher"
 	description = "A unique grenade launcher firing .980 grenades. A laser sight system allows its user to specify a range for the grenades it fires to detonate at"
-	item_type = /obj/structure/closet/crate/large/opfor/kiboko
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/kiboko
 
-/obj/structure/closet/crate/large/opfor/kiboko/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/opfor/kiboko/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/sol_grenade_launcher/evil(src)
 	new /obj/item/ammo_box/magazine/c980_grenade/drum(src)
 	new /obj/item/ammo_box/magazine/c980_grenade/drum(src)
@@ -44,9 +44,9 @@
 /datum/opposing_force_equipment/ranged/amr
 	name = "Tkach-Tsuneyo AMR"
 	description = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, the massively overperforming penetration of which being the reason this weapon was discontinued."
-	item_type = /obj/structure/closet/crate/large/opfor/amr
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/amr
 
-/obj/structure/closet/crate/large/opfor/amr/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/opfor/amr/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/cin_amr(src)
 	new /obj/item/ammo_box/magazine/cin_amr(src)
 	new /obj/item/ammo_box/magazine/cin_amr(src)
@@ -54,9 +54,9 @@
 /datum/opposing_force_equipment/ranged/lmg
 	name = "L6 SAW LMG"
 	description = "A heavily modified 7mm light machine gun, designated 'L6 SAW'. Has 'Aussec Armoury - 2531' engraved on the receiver below the designation."
-	item_type = /obj/structure/closet/crate/large/opfor/lmg
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/lmg
 
-/obj/structure/closet/crate/large/opfor/lmg/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/opfor/lmg/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted (src)
 	new /obj/item/ammo_box/magazine/m7mm(src)
 	new /obj/item/ammo_box/magazine/m7mm(src)
@@ -93,9 +93,9 @@
 /datum/opposing_force_equipment/ranged/foamforce_lmg
 	name = "Foamforce LMG"
 	description = "A heavily modified toy light machine gun, designated 'L6 SAW'. Ages 8 and up."
-	item_type = /obj/structure/closet/crate/large/opfor/foamforce_lmg
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/foamforce_lmg
 
-/obj/structure/closet/crate/large/opfor/foamforce_lmg/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/opfor/foamforce_lmg/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted/riot(src)
 	new /obj/item/ammo_box/magazine/toy/m762/riot(src)
 	new /obj/item/ammo_box/magazine/toy/m762/riot(src)

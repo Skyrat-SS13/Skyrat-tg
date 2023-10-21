@@ -6,6 +6,16 @@
 	description = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
 	item_type = /obj/item/storage/belt/sabre
 
+/datum/opposing_force_equipment/melee/katana
+	item_type = /obj/item/katana
+	description = "An extremely sharp and robust sword folded over nine thousand times until perfection. Highly lethal and illegal."
+	admin_note = "WARNING: 40 force, 50% blockchance, very powerful."
+
+/datum/opposing_force_equipment/melee/ekatana
+	item_type = /obj/item/energy_katana
+	description = "An energy katana seized from a dead Spider Clan ninja. As well as being highly robust, it allows the \
+		user to teleport short distances using right-click."
+
 /datum/opposing_force_equipment/melee/esword
 	item_type = /obj/item/melee/energy/sword
 	description = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be	pocketed when inactive. Activating it produces a loud, distinctive noise."
@@ -30,6 +40,14 @@
 	item_type = /obj/item/melee/baseball_bat/ablative
 	description = "A highly reflective baseball bat for when you need to crack skulls and run away from security in the same night. Can reflect lasers."
 	admin_note = "WARNING: Notably strong on sec not using ballistics."
+
+/datum/opposing_force_equipment/melee/powerfist
+	item_type = /obj/item/melee/powerfist
+	name = "Power Fist"
+	description = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply.\
+		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
+		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
+		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 
 /datum/opposing_force_equipment/melee/cultblade
 	item_type = /obj/item/melee/cultblade

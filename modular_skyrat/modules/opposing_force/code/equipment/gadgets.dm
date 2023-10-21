@@ -13,6 +13,14 @@
 	protection, voice amplification, memory-foam, HD Sound Quality, and extra-wide spectrum dial. Usually reserved \
 	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
 
+/datum/opposing_force_equipment/gadget/sm_scalpel
+	name = "Hypernoblium infused scalpel"
+	item_type = /obj/item/scalpel/supermatter
+
+/datum/opposing_force_equipment/gadget/nuke_screwdriver
+	name = "Specialized Nuclear-Payload screwdriver"
+	item_type = /obj/item/screwdriver/nuke
+
 /datum/opposing_force_equipment/gadget/holoparasite
 	item_type = /obj/item/guardiancreator/tech/choose/traitor
 	admin_note = "Lets a ghost take control of a guardian spirit bound to the user. RRs both the ghost and user on death."
