@@ -57,7 +57,7 @@
 	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/lmg
 
 /obj/item/storage/toolbox/guncase/skyrat/opfor/lmg/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted (src)
+	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
 	new /obj/item/ammo_box/magazine/m7mm(src)
 	new /obj/item/ammo_box/magazine/m7mm(src)
 
@@ -190,7 +190,7 @@
 
 /datum/opposing_force_equipment/ranged_stealth/ocelot
 	name = "Colt Peacemaker revolver"
-	admin_note = "Uniquely strong."
+	admin_note = "Is packed with peacemaker .357, which deals significantly less damage but has a cool ricochet!"
 	description = "A modified Peacemaker revolver that chambers .357 ammo. Less powerful than the regular .357, but ricochets a lot more."
 	item_type = /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/ocelot
 
