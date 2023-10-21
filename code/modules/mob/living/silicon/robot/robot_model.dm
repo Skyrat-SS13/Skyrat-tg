@@ -809,7 +809,6 @@
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		//Skyrat Edit Start: Borg Buff
 		//obj/item/reagent_containers/condiment/enzyme, //edit
-		/obj/item/reagent_containers/condiment/enzyme,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
@@ -820,15 +819,10 @@
 		/obj/item/razor,
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
-		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
 		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
-		/obj/item/reagent_containers/dropper,
-		/obj/item/lighter,
-		/obj/item/storage/bag/tray,
-		//obj/item/reagent_containers/borghypo/borgshaker, //edit
 		/obj/item/reagent_containers/syringe, //edit
 		/obj/item/cooking/cyborg/power, //edit
 		/obj/item/lighter,
