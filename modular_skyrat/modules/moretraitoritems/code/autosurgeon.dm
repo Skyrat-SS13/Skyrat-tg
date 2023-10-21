@@ -7,6 +7,9 @@
 /obj/item/autosurgeon/botany
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/botany
 
+/obj/item/autosurgeon/janitor
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/janitor
+
 /obj/item/autosurgeon/armblade
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/armblade
 

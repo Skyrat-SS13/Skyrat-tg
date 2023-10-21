@@ -40,27 +40,27 @@
 
 /datum/opposing_force_equipment/implants/toolarm
 	name = "Tool Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/toolset
+	item_type = /obj/item/autosurgeon/toolset
 
 /datum/opposing_force_equipment/implants/surgery
 	name = "Surgery Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/surgery
+	item_type = /obj/item/autosurgeon/surgery
 
 /datum/opposing_force_equipment/implants/botany
 	name = "Botany Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/botany
+	item_type = /obj/item/autosurgeon/botany
 
 /datum/opposing_force_equipment/implants/janitor
 	name = "Janitor Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/janitor
+	item_type = /obj/item/autosurgeon/janitor
 
 /datum/opposing_force_equipment/implants/armblade
 	name = "Blade Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/armblade
+	item_type = /obj/item/autosurgeon/armblade
 
 /datum/opposing_force_equipment/implants/muscle
 	name = "Muscle Arm Implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/muscle
+	item_type = /obj/item/autosurgeon/muscle
 
 /datum/opposing_force_equipment/implants_illegal
 	category = OPFOR_EQUIPMENT_CATEGORY_IMPLANTS_ILLEGAL
