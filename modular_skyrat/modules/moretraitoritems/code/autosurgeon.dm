@@ -40,11 +40,9 @@
 //xeno-organs
 /obj/item/autosurgeon/xeno
 	name = "strange autosurgeon"
-//	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
-//	icon_state = "autosurgeon_xeno"
+	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
 	surgery_speed = 2
 	organ_whitelist = list(/obj/item/organ/internal/alien)
-//	loaded_overlay = "autosurgeon_xeno_loaded_overlay"
 
 /obj/item/organ/internal/alien/plasmavessel/opfor
 	stored_plasma = 500
@@ -53,8 +51,7 @@
 
 /obj/item/storage/organbox/strange
 	name = "strange organ transport box"
-//	desc = ""
-//	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
+	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
 
 /obj/item/storage/organbox/strange/PopulateContents()
 	new /obj/item/autosurgeon/xeno(src)
