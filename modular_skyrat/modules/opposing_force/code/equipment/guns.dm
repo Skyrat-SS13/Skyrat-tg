@@ -188,19 +188,6 @@
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
 
-/datum/opposing_force_equipment/ranged_stealth/robohand
-	name = "Malorian Arms Heavy Pistol"
-	admin_note = "Uniquely strong, part of the old Robohand bundle."
-	description = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip. A custom Dyna-porting and \
-	direct integral cyber-interlink means only someone with a cyberarm and smartgun link can take full advantage of the pistol's features."
-	item_type = /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/robohand
-
-/obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/robohand/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/robohand(src)
-	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
-	new /obj/item/ammo_box/magazine/m14mm(src)
-	new /obj/item/ammo_box/magazine/m14mm(src)
-
 /datum/opposing_force_equipment/ranged_stealth/ocelot
 	name = "Colt Peacemaker revolver"
 	admin_note = "Uniquely strong."

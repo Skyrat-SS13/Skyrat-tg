@@ -50,7 +50,7 @@
 	item_type = /obj/item/mod/control/pre_equipped/infiltrator
 
 /datum/opposing_force_equipment/modsuit/interdyne
-	name = "Interdyne's Repsonse"
+	name = "Interdyne's Response"
 	description = "While Scarborough and Azik Interstellar provide the means, Donk Co., Tiger Cooperative, Animal Rights Consortium and Gorlex Marauders willing or easily bribable brawn, S.E.L.F. and MI13 information, the clear syndicate tech providers would be Interdyne and Cybersun, their combined knowledge in technologies rivaled by only the most enigmatic of aliens, and certainly not by any Nanotrasen scientist."
 	admin_note = "Gives a significant speedboost."
 	item_type = /obj/item/mod/control/pre_equipped/interdyne
@@ -59,12 +59,6 @@
 	name = "Honk Ltd's Cosmohonk"
 	description = "The Cosmohonk MODsuit was originally designed for interstellar comedy in low-humor environments.	It utilizes tungsten electro-ceramic casing and chromium bipolars, coated in zirconium-boron paint underneath a dermatiraelian subspace alloy. Despite the glaringly obvious optronic vacuum drive pedals, this particular model does not employ manganese bipolar capacitor cleaners, thank the Honkmother."
 	item_type = /obj/item/mod/control/pre_equipped/cosmohonk
-
-/datum/opposing_force_equipment/modsuit/chrono
-	name = "Mysteriously Empowered Chrono"
-	description = "A suit whose tech goes beyond this era's understanding. The internal mechanisms are all but completely alien, but the purpose is quite simple."
-	admin_note = "Its the chrono fit, be aware."
-	item_type = /obj/item/mod/control/pre_equipped/chrono
 
 /datum/opposing_force_equipment/modsuit/wizard
 	name = "Mysteriously Empowered MOD"

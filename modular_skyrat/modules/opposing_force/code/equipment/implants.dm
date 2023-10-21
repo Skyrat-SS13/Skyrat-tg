@@ -17,11 +17,13 @@
 /datum/opposing_force_equipment/implants/nodrop
 	item_type = /obj/item/autosurgeon/syndicate/nodrop
 	name = "Anti Drop Implant"
+	admin_note = "Allows the user to tighten their grip, their held items unable to be dropped by any cause. Hardstuns user for a longtime if hit with EMP."
 	description = "An implant that prevents you from dropping items in your hand involuntarily. Comes loaded in a syndicate autosurgeon."
 
 /datum/opposing_force_equipment/implants/hackerman
 	item_type = /obj/item/autosurgeon/syndicate/hackerman
 	name = "Hacking Arm Implant"
+	admin_note = "A simple tool arm, except it identifies all wire functions when hacking."
 	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
 
 /datum/opposing_force_equipment/implants/cns
@@ -40,14 +42,17 @@
 
 /datum/opposing_force_equipment/implants/toolarm
 	name = "Tool Arm Implant"
+	admin_note = "Force 20 implanted combat knife on emag."
 	item_type = /obj/item/autosurgeon/toolset
 
 /datum/opposing_force_equipment/implants/surgery
 	name = "Surgery Arm Implant"
+	admin_note = "Force 20 implanted combat knife on emag."
 	item_type = /obj/item/autosurgeon/surgery
 
 /datum/opposing_force_equipment/implants/botany
 	name = "Botany Arm Implant"
+	admin_note = "Chainsaw arm on emag."
 	item_type = /obj/item/autosurgeon/botany
 
 /datum/opposing_force_equipment/implants/janitor
@@ -56,6 +61,7 @@
 
 /datum/opposing_force_equipment/implants/armblade
 	name = "Blade Arm Implant"
+	admin_note = "Force 30 IF emagged."
 	item_type = /obj/item/autosurgeon/armblade
 
 /datum/opposing_force_equipment/implants/muscle
@@ -68,6 +74,7 @@
 /datum/opposing_force_equipment/implants_illegal/stealth
 	name = "Stealth Implant"
 	item_type = /obj/item/implanter/stealth
+	admin_note = "Allows the user to become completely invisible as long as they remain inside a cardboard box."
 	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with a tape recorder playing Snake Eater."
 
 /datum/opposing_force_equipment/implants_illegal/radio
@@ -78,27 +85,25 @@
 /datum/opposing_force_equipment/implants_illegal/storage
 	name = "Storage Implant"
 	item_type = /obj/item/implanter/storage
+	admin_note = "Allows user to stow items without any sign of having a storage item."
 	description = "An implanter that grants you access to a small pocket of bluespace, capable of storing a few items."
 
 /datum/opposing_force_equipment/implants_illegal/freedom
 	name = "Freedom Implant"
 	item_type = /obj/item/implanter/freedom
+	admin_note = "Allows the user to break handcuffs or e-snares four times, after it will run out and become useless."
 	description = "An implanter that grants you the ability to break out of handcuffs a certain number of times."
 
 /datum/opposing_force_equipment/implants_illegal/micro
 	name = "Microbomb Implant"
+	admin_note = "RRs the user."
 	item_type = /obj/item/implanter/explosive
 	description = "An implanter that will make you explode on death in a decent-sized explosion."
-
-/datum/opposing_force_equipment/implants_illegal/macro
-	name = "Macrobomb Implant"
-	item_type = /obj/item/implanter/explosive_macro
-	description = "An implanter that will make you explode on death in a massive explosion, fun!"
-	admin_note = "Warning: Equivalent to 10 microbombs. Use your very best judgement when approving."
 
 /datum/opposing_force_equipment/implants_illegal/emp
 	name = "EMP Implant"
 	item_type = /obj/item/implanter/emp
+	admin_note = "Gives the user a big EMP on an action button. Has three uses after which it becomes useless."
 	description = "An implanter that grants you the ability to create several EMP pulses, centered on you."
 
 /datum/opposing_force_equipment/implants_illegal/xray
@@ -114,11 +119,13 @@
 /datum/opposing_force_equipment/implants_illegal/armlaser
 	name = "Arm-mounted Laser Implant"
 	item_type = /obj/item/autosurgeon/syndicate/laser_arm
+	admin_note = "A basic laser gun, but no-drop."
 	description = "A variant of the arm cannon implant that fires lethal laser beams. The cannon emerges from the subject's arm and remains inside when not in use."
 
 /datum/opposing_force_equipment/implants_illegal/eswordarm
 	name = "Energy Sword Arm Implant"
 	item_type = /obj/item/autosurgeon/syndicate/esword_arm
+	admin_note = "Force 30 no-drop, extremely robust."
 	description = "It's an energy sword, in your arm. Pretty decent for getting past stop-searches and assassinating people. Comes loaded in a Syndicate brand autosurgeon to boot!"
 
 /datum/opposing_force_equipment/implants_illegal/baton

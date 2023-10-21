@@ -75,7 +75,24 @@
 	name = "dark leather holster"
 	icon_state = "syndicate_holster"
 
-//Gunman
+//Robohand
+/obj/item/storage/backpack/duffelbag/syndie/robohand/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/robohand(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/storage/belt/military(src)
+	new /obj/item/clothing/under/pants/track/robohand(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/clothing/glasses/sunglasses/robohand(src)
+	new /obj/item/clothing/suit/jacket/trenchcoat/gunman(src)
+	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
+	new /obj/item/autosurgeon/syndicate/esword_arm(src)
+	new /obj/item/autosurgeon/syndicate/nodrop(src)
+
+
 /obj/item/storage/box/syndie_kit/gunman_outfit
 	name = "gunman clothing bundle"
 	desc = "A box filled with armored and stylish clothing for the aspiring gunmans."
