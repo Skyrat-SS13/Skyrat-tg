@@ -53,6 +53,10 @@
 	name = "strange organ transport box"
 	icon = 'modular_skyrat/modules/moretraitoritems/icons/alien.dmi'
 
+/obj/item/storage/organbox/strange/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent_list(list(/datum/reagent/cryostylane = 60))
+
 /obj/item/storage/organbox/strange/PopulateContents()
 	new /obj/item/autosurgeon/xeno(src)
 	new /obj/item/organ/internal/alien/plasmavessel/opfor(src)

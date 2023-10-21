@@ -72,6 +72,6 @@
 #define OPFOR_EQUIPMENT_CATEGORY_SCROLLS "20. Martial Art Scrolls"
 // Language and biology
 #define OPFOR_EQUIPMENT_CATEGORY_LANGUAGE "21. Language"
-#define OPFOR_EQUIPMENT_CATEGORY_BIO "22. Biology"
+#define OPFOR_EQUIPMENT_CATEGORY_ORGANS "22. Organs"
 // Category for uncategorized items
 #define OPFOR_EQUIPMENT_CATEGORY_OTHER "Other"
