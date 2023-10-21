@@ -726,7 +726,7 @@
 	ckeywhitelist = list("nikotheguydude")
 
 /datum/loadout_item/suit/anubite_headpiece
-	name = "Anubite headpiece"
+	name = "Anubite Headpiece"
 	item_path = /obj/item/clothing/head/anubite
 	ckeywhitelist = list("vexcint")
 
