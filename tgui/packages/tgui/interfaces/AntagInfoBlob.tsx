@@ -201,18 +201,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- You are not allowed to spawn within a screen-length of Atmos, an Engine, the Icebox AI area, Grav Gen, Toxins nor Dormitories.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You may not, as a Networked Fiber Blob, immediately rush any of the areas mentioned prior, or the Nuke.'
-        }
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'You are the most well-known Antagonist in the game. You have no metaprotections. People can know as much about you as they wish to know, even down to your individual strains.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Blob!_PERMANENT_MECHANICAL_STATE">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

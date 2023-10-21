@@ -79,29 +79,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- If your Spider-Clan issued C4 is for use in Engineering, use it as far away from the Supermatter as you can.'
-        }
-      </Stack.Item>
-      <Stack.Item>{'- Try not to hit the Atmos reservoirs either.'}</Stack.Item>
-      <Stack.Item>
-        {
-          '- It is standard procedure to incarcerate and more likely kill a Ninja as soon as their presence is made known.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You are the only antagonist that prefers death before dishonor by nature. Your equipment is too valuable to fall into the crew’s hands. If you still have your Spider-clan issued C4, you’ll more than likely kill everyone within 6 tiles of you when you explode upon your death.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          "- Ninjas should not vent the entire station without an OPFOR that tells them they should. They should be mindful of where they doorjack and should avoid venting the majority of the station, even 'accidentally'. It can be considered griefing."
-        }
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'Security has full knowledge of your equipment, including the standard issue suicide-grade explosives. Engineers, the CE, Roboticists, and the RD can tell when you’ve tampered with an APC. If you’re going stealthy about it, this can frame the AI as potentially Malf, or be dismissed as traitor activity, which it is. You’re to be considered a threat, even if you do say you’re here to protect someone.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Space_Ninja">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

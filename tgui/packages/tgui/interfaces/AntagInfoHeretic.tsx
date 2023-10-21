@@ -354,27 +354,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- Heretics capable of teleporting (Void/Fire) are beholden to the same uncontainable rules as everyone else.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {'- Confirmed Ascended Heretics are in a permanent mechanical state.'}
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- The Mask of Madness places you in a permanent mechanical state while worn.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- All Sickles are Confiscatable by security. They are literally weapons, regardless of their magic.'
-        }
-      </Stack.Item>
-      <Stack.Item>{'- You have to ahelp before ascending.'}</Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'Heretics are very esoteric things. While magic is something that’s left to the individual to believe in, men in ominous robes wearing visibly pulsating, glowing amulets are probably something worth being suspicious of. Obvious weapons can be confiscated, of course, such as Sickles, Carving Knives, etc. What Heretics are fully capable of is only known to Chaplains, and Curators. Everyone who isn’t a Heretic, Chaplain, or Curator, does not know what Heretic equipment does, aside from what it’s visibly doing. Such as being a sickle. You can claim it’s magical, but, as to its purpose, not much more than that. Giant green runes and a room splattered in viscera and organs, glass shards, etc, should probably be reported to security. As should automatons made of flesh, spewing rust or literal hellfire. In the event you’re short a chaplain or curator, CC is a single message away.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Heretic!">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

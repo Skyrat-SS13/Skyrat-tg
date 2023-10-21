@@ -257,43 +257,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- Your “SSD” cyborg shells are open season. They aren’t protected by normal SSD rules.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You cannot activate Combat Indicator, barring being in a shell. Escalate accordingly.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {'- Anyone touching your AI satellite is fair game.'}
-      </Stack.Item>
-      <Stack.Item>{'- Cyborgs on the Interlink do not exist.'}</Stack.Item>
-      <Stack.Item>
-        {
-          '- During the Doomsday countdown, you, as well as every cyborg on the station, are in a PMS. There is fundamentally no time to discern between the good and bad in the moment, and the clock is ticking.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- Cyborgs cannot and should not ahelp if they are abruptly flashed/destroyed/locked during Doomsday, due to the aforementioned rule. This PMS ends with the Delta alert.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- A Cyborg Factory is a guaranteed outing of a Malf AI if the CE, RD, Engineers, or Roboticists find it.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You are allowed to blow your own borgs if they came out of a factory.'
-        }
-      </Stack.Item>
-      <Stack.Item>{'- YOU NEED AN ACCEPTED OPFOR TO DOOMSDAY.'}</Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'The Chief Engineer, Engineers, Research Director, and Roboticist, all know that blue APC’s are a bad thing. A very bad thing. It doesn’t necessarily mean that the AI is malf. But it is readily evident that it has been tampered with. It’s enough to cast suspicion at the AI, and lead to scrutiny. The RD and the Roboticists both know that Law 0 can exist, and should probably notice if new borgs are popping up out of nowhere. The RD and the CE are both allowed to be the ones that make the call that the AI is Malf. The RD is the go-to person that should scrutinize the AI. If a Roboticist, RD, CE, or Engineer happens to find a Cyborg Factory, the cat is out of the bag if they can report it. Equipment that has no business exploding, like scrubbers, holopads, or the booze-o-mat is a tell-tell sign that the AI is malfunctioning. If every RCD explodes, the AI is definitely Malf.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Malf_AI!">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

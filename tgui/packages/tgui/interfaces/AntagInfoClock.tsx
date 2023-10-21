@@ -61,23 +61,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- Do not be surprised if you get arrested for doing clockwork-related activities. '
-        }
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          '- The Chaplain and Curator know everything, including that Ratvar himself is out-of-action for the foreseeable future.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          "- Elsewise, your characters can have a baseline knowledge of the cult, that they're as a baseline usually not immediately-aggressive, and that they're more reactive then proactive."
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          "- Objects used by the cult (cogs, the jud-visor) are all up to common sense; what it looks like it's doing, it's probably doing."
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Clockcult_(OPFOR)">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

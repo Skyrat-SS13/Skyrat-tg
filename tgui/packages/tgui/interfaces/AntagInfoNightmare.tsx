@@ -86,28 +86,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- Breaking APC’s is fine, but don’t Destroy them completely until after hostilities have begun.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- Being able to easily jaunt and escape means you can easily be placed in a Permanent Mechanical State.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You are literally a horror from another plane that is naturally malevolent towards light and those that use it.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- People who insist on shining light on you while emoting for 30 seconds can’t complain if you stab them for it.'
-        }
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'The Chaplain and Curator have full knowledge of you, your abilities, and what you are. They aren’t your friends. Medical and Science also know your organs are quite valuable. Engineering knows what your kind does to stations, and they naturally hate your guts for it. Security could care less what you are, and only care if you get violent. Which you likely will.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Nightmare!_Station_Threat">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

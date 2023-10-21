@@ -249,33 +249,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- You are not in a permanently mechanical state until your presence has been announced, specifically.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- Your goal is the theft of heads of staff. Under no circumstances should you just hang around to gun people down.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- You should only use the big fancy laser once. Doing so is considered a victory.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- SSD Heads of staff suck, but leave them alone. You are allowed to ahelp and ask if any are SSD.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- If a Head of Staff goes SSD/disconnects after being abducted, you may extract them and leave them somewhere.'
-        }
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'There are no metaprotections for the Golden Eye Operatives, outside of determining whether they’re Nukies or GEO’s. Heads of staff are expected to guard themselves closely after determining that they’re GEO’s, however.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Assault_Ops!">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

@@ -273,21 +273,9 @@ const Rules = (props, context) => {
       <Stack.Item bold>Special Rules:</Stack.Item>
       <Stack.Item>
         {
-          '- If people can prove you’re a changeling, you are immediately sentenced to being placed in Perma, or the most convenient containment. Afterwards, if you prove uncontainable, or particularly violent, you’re valid for round removal.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {
-          '- Undeniable Proof of Changeling includes: Arm Blade, Tentacle Arm, Chitinous Armor, Ling Space Suit, Ling Shield, Horror Form, Digital Camo, Cryo Sting, Self-Revival, Regeneration, Unexplainable Fast Healing.'
-        }
-      </Stack.Item>
-      <Stack.Item>
-        {'- Horror Forms are in a Permanently Mechanical state.'}
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
-      <Stack.Item>
-        {
-          'Everyone knows that changelings are real. Some people can deny this if they want. Crew that can produce arm blades, or organic armor or weapons, or shapeshift into other people, should be reported to security with all haste. Security, Science, and Medical are all aware that Changelings can be suppressed with BZ gas. Everyone is aware of the abilities listed prior as Undeniable Proof of Changelings. Anything not listed is unknown to the entire crew.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Changeling!_Station_Threat">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>

@@ -183,15 +183,11 @@ const Rules = (props, context) => {
   return (
     <Stack vertical>
       <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>{'- Do not use the Ghost Ritual.'}</Stack.Item>
-      <Stack.Item>{'- Do not stay on the Wizard Shuttle.'}</Stack.Item>
-      <Stack.Item>
-        {'- Do not use the Wizard Events without Admin permission.'}
-      </Stack.Item>
-      <Stack.Item bold>Metaprotections:</Stack.Item>
       <Stack.Item>
         {
-          'The chaplain knows that he’s immune to you. Botanists know that Holy Melons protect people from magic.'
+          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Wizard!">
+            Special Rules and Metaprotections!
+          </a>
         }
       </Stack.Item>
     </Stack>
