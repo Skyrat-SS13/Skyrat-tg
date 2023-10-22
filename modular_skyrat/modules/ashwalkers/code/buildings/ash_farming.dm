@@ -206,7 +206,7 @@
 	harvest_cooldown -= 10 SECONDS
 
 	if(!silent)
-		balloon_alert_to_viewers("plant grows faster")
+		balloon_alert_to_viewers("plant will grow faster")
 
 	return TRUE
 
