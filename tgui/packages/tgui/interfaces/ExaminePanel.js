@@ -4,6 +4,7 @@ import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
 
 const formatURLs = (text) => {
+  if (!text) return;
   const parts = [];
   let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
   let lastIndex = 0;
