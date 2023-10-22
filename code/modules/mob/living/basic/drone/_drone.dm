@@ -258,13 +258,8 @@
 /mob/living/basic/drone/gib()
 	dust()
 
-<<<<<<< HEAD:code/modules/mob/living/simple_animal/friendly/drone/_drone.dm
 /mob/living/simple_animal/drone/examine(mob/user)
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
-=======
-/mob/living/basic/drone/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!")
->>>>>>> 1b8bcd0365a (Basic drones (#79109)):code/modules/mob/living/basic/drone/_drone.dm
 
 	//Hands
 	for(var/obj/item/held_thing in held_items)
