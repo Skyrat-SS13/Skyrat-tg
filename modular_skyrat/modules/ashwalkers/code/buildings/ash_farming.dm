@@ -182,7 +182,7 @@
 /obj/structure/simple_farm/proc/increase_yield(mob/user, var/silent = FALSE)
 	if(max_harvest >= 6)
 		if(!silent)
-			balloon_alert(user, "plant at maximum amount upgrade")
+			balloon_alert(user, "plant is at maximum yield")
 
 		return FALSE
 
