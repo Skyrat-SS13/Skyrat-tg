@@ -3,6 +3,7 @@
 	desc = "A cell charging rack for multiple batteries."
 	icon = 'modular_skyrat/modules/aesthetics/cells/cell.dmi'
 	icon_state = "cchargermulti"
+	base_icon_state = "cchargermulti"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 60
@@ -24,8 +25,8 @@
 	for(var/i = charging_batteries.len, i >= 1, i--)
 		var/obj/item/stock_parts/cell/charging = charging_batteries[i]
 		var/newlevel = round(charging.percent() * 4 / 100)
-		var/mutable_appearance/charge_overlay = mutable_appearance(icon, "cchargermulti-o[newlevel]")
-		var/mutable_appearance/cell_overlay = mutable_appearance(icon, "cchargermulti-cell")
+		var/mutable_appearance/charge_overlay = mutable_appearance(icon, "[base_icon_state]-o[newlevel]")
+		var/mutable_appearance/cell_overlay = mutable_appearance(icon, "[base_icon_state]-cell")
 		charge_overlay.pixel_x = 5 * (i - 1)
 		cell_overlay.pixel_x = 5 * (i - 1)
 		. += new /mutable_appearance(charge_overlay)
