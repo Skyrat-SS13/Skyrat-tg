@@ -258,7 +258,7 @@
 /mob/living/basic/drone/gib()
 	dust()
 
-/mob/living/simple_animal/drone/examine(mob/user)
+/mob/living/basic/drone/examine(mob/user)
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 
 	//Hands
