@@ -166,7 +166,7 @@
 	else if(istype(attacking_item, /obj/item/worm_fertilizer))
 		qdel(attacking_item)
 
-		if(!decrease_cooldown(user, TRUE) && !increase_yield(user, TRUE))
+		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
 			balloon_alert(user, "plant is already fully upgraded")
 
 		else
