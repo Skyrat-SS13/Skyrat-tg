@@ -139,6 +139,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/effect/gateway_portal_bumper/Bumped(atom/movable/AM)
 	//SKYRAT EDIT ADDITION
+	/*
 	var/list/type_blacklist = list(
 		/obj/item/mmi,
 		/mob/living/silicon,
@@ -150,6 +151,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 			continue
 		to_chat(AM, span_warning("[content_item] seems to be blocking you from entering the gateway!"))
 		return
+	*/
 	//SKYRAT EDIT END
 	if(get_dir(src,AM) == SOUTH)
 		gateway.Transfer(AM)
