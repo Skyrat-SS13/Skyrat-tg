@@ -194,7 +194,7 @@
 	return TRUE
 
 /**
- * a proc that will decreased the amount of time it takes to be ready for harvest (at a maximum of 30 seconds, from a base of 1 minute)
+ * a proc that will decrease the amount of time it takes to be ready for harvest (at a maximum of 30 seconds, from a base of 1 minute)
  */
 /obj/structure/simple_farm/proc/decrease_cooldown(mob/user, var/silent = FALSE)
 	if(harvest_cooldown <= 30 SECONDS)
