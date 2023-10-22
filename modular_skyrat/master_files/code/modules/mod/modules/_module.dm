@@ -41,8 +41,7 @@
  */
 /obj/item/mod/module/proc/handle_module_icon(mutable_appearance/standing, module_icon_state)
 	. = list()
-	var/is_new_vox = FALSE
-	var/is_old_vox = FALSE
+	var/is_vox = FALSE
 	if(mod.wearer)
 		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
 			return
@@ -52,16 +51,13 @@
 
 		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.bodytype & BODYTYPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
-		is_new_vox = isvoxprimalis(mod.wearer)
-		is_old_vox = isvox(mod.wearer)
+		is_vox = isvox(mod.wearer)
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
-	if(is_new_vox || is_old_vox)
-		if(is_new_vox)
-			icon_to_use = worn_icon_better_vox
-		if(is_old_vox)
-			icon_to_use = worn_icon_vox
+
+	if(is_vox)
+		icon_to_use = worn_icon_vox
 
 	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
@@ -83,10 +79,6 @@
 
 		if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_state_to_use = "[icon_state_to_use]_muzzled"
-
-		if(is_new_vox)
-			icon_to_use = 'modular_skyrat/modules/better_vox/icons/clothing/mod_modules.dmi'
-			icon_state_to_use = module_icon_state
 
 		var/mutable_appearance/additional_module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1)
 		additional_module_icon.appearance_flags |= RESET_COLOR

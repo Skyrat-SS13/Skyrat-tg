@@ -850,15 +850,6 @@ export const heterochromia_emissive: Feature<boolean[]> = {
   component: FeatureTriBoolInput,
 };
 
-export const vox_bodycolor: Feature<string> = {
-  name: 'Vox Bodycolor',
-  component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
-  ) => {
-    return <FeatureDropdownInput buttons {...props} />;
-  },
-};
-
 export const pod_hair_color: Feature<string[]> = {
   name: 'Floral Hair Color',
   description:
