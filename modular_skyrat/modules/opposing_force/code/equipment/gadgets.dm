@@ -13,13 +13,13 @@
 	protection, voice amplification, memory-foam, HD Sound Quality, and extra-wide spectrum dial. Usually reserved \
 	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
 
-/datum/opposing_force_equipment/gadget/sm_scalpel
-	name = "Hypernoblium infused scalpel"
-	item_type = /obj/item/scalpel/supermatter
+/datum/opposing_force_equipment/gadget/smtheft_kit
+	admin_note = "A kit liberated from Progression Traitor, allows someone to cut off a piece of the SM. Mishandling of the sliver can result in user being dusted. Upon successful extraction the SM will gain a quirk that turns its delamination countdown from its usual 15 seconds (at 0 Integrity) to 5 seconds; it will also slowly gather up 800 energy, potentially setting it on course for delamination."
+	item_type = /obj/item/storage/box/syndie_kit/supermatter
 
-/datum/opposing_force_equipment/gadget/nuke_screwdriver
-	name = "Specialized Nuclear-Payload screwdriver"
-	item_type = /obj/item/screwdriver/nuke
+/datum/opposing_force_equipment/gadget/nuketheft_kit
+	admin_note = "A kit liberated from Progression Traitor, allows someone to screw open and secure the nuclear payload within the vault. Once secured it is mechanically irretrievable."
+	item_type = /obj/item/storage/box/syndie_kit/nuke
 
 /datum/opposing_force_equipment/gadget/holoparasite
 	item_type = /obj/item/guardiancreator/tech/choose/traitor
