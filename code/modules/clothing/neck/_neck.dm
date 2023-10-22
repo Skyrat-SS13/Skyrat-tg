@@ -4,6 +4,7 @@
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	strip_delay = 40
+	w_class = WEIGHT_CLASS_SMALL // SKRAT EDIT - ADDITION
 	equip_delay_other = 40
 
 /obj/item/clothing/neck/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
