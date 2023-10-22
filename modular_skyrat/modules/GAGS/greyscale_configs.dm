@@ -220,14 +220,6 @@
 	name = "Colourable Respirator (Worn) (Snouted)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_snout.dmi'
 
-/datum/greyscale_config/respirator/worn/better_vox
-	name = "Colourable Respirator (Worn) (Vox Primalis)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox_better.dmi'
-
-/datum/greyscale_config/respirator/worn/vox
-	name = "Colourable Respirator (Worn) (Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox.dmi'
-
 /datum/greyscale_config/respirator/worn/teshari
 	name = "Colourable Respirator (Worn) (Teshari)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_teshari.dmi'
@@ -245,14 +237,6 @@
 /datum/greyscale_config/sterile_mask/worn/snouted
 	name = "Colourable Sterile Mask (Worn) (Snouted)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_snout.dmi'
-
-/datum/greyscale_config/sterile_mask/worn/better_vox
-	name = "Colourable Sterile Mask (Worn) (Vox Primalis)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox_better.dmi'
-
-/datum/greyscale_config/sterile_mask/worn/vox
-	name = "Colourable Sterile Mask (Worn) (Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox.dmi'
 
 /datum/greyscale_config/sterile_mask/worn/teshari
 	name = "Colourable Sterile Mask (Worn) (Teshari)"
@@ -479,12 +463,6 @@
 /datum/greyscale_config/bathrobe/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
 
-/datum/greyscale_config/bathrobe/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_newvox.dmi'
-
-/datum/greyscale_config/bathrobe/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
-
 // FANCY SUITS
 /datum/greyscale_config/fancy_suit
 	name = "Fancy Suit"
@@ -578,14 +556,6 @@
 /datum/greyscale_config/overalls/worn/digi
 	name = "Overalls (Worn, Digi)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
-
-/datum/greyscale_config/overalls/worn/vox
-	name = "Overalls (Worn, Vox)"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/suit.dmi'
-
-/datum/greyscale_config/overalls/worn/better_vox
-	name = "Overalls (Worn, Better Vox)"
-	icon_file = 'modular_skyrat/modules/better_vox/icons/clothing/suit.dmi'
 
 // URBAN COAT
 
@@ -709,22 +679,6 @@
 	name = "Prison Jumpsuit (Worn) - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
-
-/datum/greyscale_config/jumpsuit/worn/vox
-	name = "Jumpsuit (Worn, Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
-
-/datum/greyscale_config/jumpsuit/prison/worn/vox
-	name = "Prison Jumpsuit (Worn, Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
-
-/datum/greyscale_config/jumpsuit/worn/better_vox
-	name = "Jumpsuit (Worn, Better Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
-
-/datum/greyscale_config/jumpsuit/prison/worn/better_vox
-	name = "Prison Jumpsuit (Worn, Better Vox)"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
 
 /datum/greyscale_config/jumpsuit/worn/taur_snake
 	name = "Jumpsuit (Worn) - Naga"
@@ -1069,12 +1023,6 @@ digi
 
 /datum/greyscale_config/sandals/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_teshari.dmi'
-
-/datum/greyscale_config/sandals/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_newvox.dmi'
-
-/datum/greyscale_config/sandals/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
 
 // WRAPS
 

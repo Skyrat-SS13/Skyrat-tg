@@ -62,12 +62,9 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 
 ### Master file additions
 
-.\modular_skyrat\master_files\icons\mob\clothing\eyes_vox.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\feet_digi.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\head_muzzled.dmi
-.\modular_skyrat\master_files\icons\mob\clothing\head_vox.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\mask_muzzled.dmi
-.\modular_skyrat\master_files\icons\mob\clothing\mask_vox.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\suit_digi.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\suit_taur_hoof.dmi
 .\modular_skyrat\master_files\icons\mob\clothing\suit_taur_paw.dmi

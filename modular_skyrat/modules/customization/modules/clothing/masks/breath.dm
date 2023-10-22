@@ -91,6 +91,4 @@
 	greyscale_config = /datum/greyscale_config/sterile_mask
 	greyscale_config_worn = /datum/greyscale_config/sterile_mask/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/sterile_mask/worn/snouted
-	greyscale_config_worn_better_vox = /datum/greyscale_config/sterile_mask/worn/better_vox
-	greyscale_config_worn_vox = /datum/greyscale_config/sterile_mask/worn/vox
 	greyscale_config_worn_teshari = /datum/greyscale_config/sterile_mask/worn/teshari

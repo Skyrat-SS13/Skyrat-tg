@@ -2,7 +2,7 @@
 
 // HEAD
 /obj/item/clothing/head/utility/hardhat/welding/atmos
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/head/costume/sombrero
 	flags_inv = HIDEHAIR | SHOWSPRITEEARS
@@ -15,10 +15,10 @@
 
 // MASK
 /obj/item/clothing/mask/gas/atmos
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/mask/gas/atmos/captain
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/mask/luchador	// No longer has HIDESNOUT, has SHOWSPRITEEARS
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|SHOWSPRITEEARS

@@ -299,14 +299,10 @@
 	greyscale_config = /datum/greyscale_config/apron
 	greyscale_config_worn = /datum/greyscale_config/apron/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/apron/worn/teshari
-	greyscale_config_worn_better_vox = /datum/greyscale_config/apron/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/apron/overalls
 	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
-	greyscale_config_worn_better_vox = /datum/greyscale_config/overalls/worn/better_vox
-	greyscale_config_worn_vox = /datum/greyscale_config/overalls/worn/vox
 
 /obj/item/clothing/suit/apron/overalls/Initialize(mapload)
 	. = ..()

@@ -32,8 +32,6 @@
 	var/list/worn_icon_monkey_list = list()
 	/// Profile source vox icons - Skyrats addition
 	var/list/worn_icon_teshari_list = list()
-	/// The bra worn by the profile source - Skyrats addition
-	var/list/worn_icon_vox_list = list()
 	/// Support variation flags used by the profile source - Skyrats addition
 	var/list/supports_variations_flags_list = list()
 	/// The profile source scream type - Skyrats addition

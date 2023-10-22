@@ -88,10 +88,7 @@
 	greyscale_colors = "#2E3333"
 	greyscale_config = /datum/greyscale_config/respirator
 	greyscale_config_worn = /datum/greyscale_config/respirator/worn
-	//NIGHTMARE NIGHTMARE NIGHTMARE
 	greyscale_config_worn_digi = /datum/greyscale_config/respirator/worn/snouted
-	greyscale_config_worn_better_vox = /datum/greyscale_config/respirator/worn/better_vox
-	greyscale_config_worn_vox = /datum/greyscale_config/respirator/worn/vox
 	greyscale_config_worn_teshari = /datum/greyscale_config/respirator/worn/teshari
 
 /obj/item/clothing/mask/gas/respirator/examine(mob/user)
@@ -111,8 +108,6 @@
 	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/clown_hat/vox/Initialize(mapload)
@@ -153,8 +148,6 @@
 	desc = "The traditional mime's mask. It has an eerie facial posture. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/mime/vox/Initialize(mapload)
@@ -203,16 +196,12 @@
 	desc = "Improved gas mask utilized by atmospheric technicians. It's flameproof! This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/sechailer/vox
 	desc = "A standard issue Security gas mask with integrated 'Compli-o-nator 3000' device. Plays over a dozen pre-recorded compliance phrases designed to get scumbags to stand still whilst you tase them. Do not tamper with the device. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
-	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
 	starting_filter_type = /obj/item/gas_filter/vox

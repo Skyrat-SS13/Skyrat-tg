@@ -83,6 +83,4 @@
 	greyscale_config = /datum/greyscale_config/mantle
 	greyscale_config_worn = /datum/greyscale_config/mantle/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/mantle/worn/teshari
-	greyscale_config_worn_better_vox = /datum/greyscale_config/mantle/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/mantle/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1

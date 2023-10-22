@@ -609,7 +609,6 @@
 		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
 		new_profile.worn_icon_monkey_list[slot] = clothing_item.worn_icon_monkey
 		new_profile.worn_icon_teshari_list[slot] = clothing_item.worn_icon_teshari
-		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
 		new_profile.supports_variations_flags_list[slot] = clothing_item.supports_variations_flags
 		// SKYRAT EDIT END
 	new_profile.voice = target.voice
@@ -915,7 +914,6 @@
 		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
 		new_flesh_item.worn_icon_monkey = chosen_profile.worn_icon_monkey_list[slot]
 		new_flesh_item.worn_icon_teshari = chosen_profile.worn_icon_teshari_list[slot]
-		new_flesh_item.worn_icon_vox = chosen_profile.worn_icon_vox_list[slot]
 		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
 		// SKYRAT EDIT END
 
@@ -1037,7 +1035,6 @@
 	new_profile.worn_icon_digi_list = worn_icon_digi_list.Copy()
 	new_profile.worn_icon_monkey_list = worn_icon_monkey_list.Copy()
 	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
-	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
 	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
 	new_profile.scream_type = scream_type
 	new_profile.laugh_type = laugh_type

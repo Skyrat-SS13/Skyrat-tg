@@ -41,7 +41,7 @@
  */
 /obj/item/mod/module/proc/handle_module_icon(mutable_appearance/standing, module_icon_state)
 	. = list()
-	var/is_vox = FALSE
+
 	if(mod.wearer)
 		if(is_module_hidden()) // retracted modules can hide parts that aren't usable when inactive
 			return
@@ -51,13 +51,9 @@
 
 		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.bodytype & BODYTYPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
-		is_vox = isvox(mod.wearer)
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
-
-	if(is_vox)
-		icon_to_use = worn_icon_vox
 
 	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'

@@ -40,8 +40,6 @@
 	greyscale_config = /datum/greyscale_config/bathrobe
 	greyscale_config_worn = /datum/greyscale_config/bathrobe/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/bathrobe/worn/teshari
-	greyscale_config_worn_better_vox = /datum/greyscale_config/bathrobe/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/bathrobe/worn/oldvox
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
 	flags_1 = IS_PLAYER_COLORABLE_1
