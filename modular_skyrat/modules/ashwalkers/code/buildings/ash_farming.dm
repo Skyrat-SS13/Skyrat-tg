@@ -199,7 +199,7 @@
 /obj/structure/simple_farm/proc/decrease_cooldown(mob/user, var/silent = FALSE)
 	if(harvest_cooldown <= 30 SECONDS)
 		if(!silent)
-			balloon_alert(user, "plant at maximum time upgrade")
+			balloon_alert(user, "already at maximum growth speed!")
 
 		return FALSE
 
