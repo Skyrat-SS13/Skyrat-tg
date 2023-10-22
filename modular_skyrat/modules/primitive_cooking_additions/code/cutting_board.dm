@@ -10,6 +10,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	pass_flags = PASSTABLE
 	layer = BELOW_OBJ_LAYER //So newly spawned food appears on top of the board rather than under it
+	resistance_flags = FLAMMABLE
 	///List containg list of possible inputs and resulting recipe items, taken from processor.dm and processor_recipes.dm
 	var/static/list/processor_inputs
 
