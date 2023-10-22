@@ -1,6 +1,5 @@
 /obj/machinery/airalarm
-	icon = 'modular_skyrat/modules/aesthetics/airalarm/icons/airalarm.dmi'
-	var/light_mask = "alarm-light-mask"
+	icon = 'icons/obj/machines/wallmounts.dmi'
 
 /obj/machinery/airalarm/update_appearance(updates)
 	. = ..()

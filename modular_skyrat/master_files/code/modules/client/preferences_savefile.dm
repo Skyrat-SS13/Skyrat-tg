@@ -213,7 +213,6 @@
 		var/static/list/undershirt_to_bra = list(
 			"Bra, Sports" = "Bra, Sports",
 			"Sports Bra (Alt)" = "Sports Bra (Alt)",
-			"LIZARED Top" = "LIZARED Top",
 			"Bra" = "Bra",
 			"Bra - Alt" = "Bra - Alt",
 			"Bra - Thin" = "Bra - Thin",

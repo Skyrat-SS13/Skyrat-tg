@@ -2,7 +2,7 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 	gender = MALE
 	pressure_resistance = 15
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,GLAND_HUD)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,GLAND_HUD, DNR_HUD) // SKYRAT EDIT ADDITION - DNR ICON
 	has_limbs = TRUE
 	held_items = list(null, null)
 	num_legs = 0 //Populated on init through list/bodyparts
@@ -47,7 +47,7 @@
 	///only used by humans.
 	var/obj/item/clothing/ears = null
 
-	/// Carbon
+	/// Carbon, you should really only be accessing this through has_dna() but it's your life
 	var/datum/dna/dna = null
 	///last mind to control this mob, for blood-based cloning
 	var/datum/mind/last_mind = null
@@ -121,8 +121,6 @@
 
 	/// A bitfield of "bodytypes", updated by /obj/item/bodypart/proc/synchronize_bodytypes()
 	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
-
-	var/is_leaning = FALSE
 
 	COOLDOWN_DECLARE(bleeding_message_cd)
 

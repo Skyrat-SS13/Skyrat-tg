@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/soulcatcher_rooms = list()
 	/// What soulcatcher room are verbs sending messages to?
 	var/datum/soulcatcher_room/targeted_soulcatcher_room
+	/// What theme are we using for our soulcatcher UI?
+	var/ui_theme = "default"
 
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
@@ -452,7 +454,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /mob/dead/observer/Login()
 	. = ..()
-	var/soulcatcher_action_given = client.prefs.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+	var/datum/preferences/preferences = client?.prefs
+	var/soulcatcher_action_given
+
+	if(preferences)
+		soulcatcher_action_given = preferences.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+
 	if(!soulcatcher_action_given)
 		return
 
