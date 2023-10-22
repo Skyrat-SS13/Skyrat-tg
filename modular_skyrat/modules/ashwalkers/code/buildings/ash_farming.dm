@@ -189,7 +189,7 @@
 	max_harvest++
 
 	if(!silent)
-		balloon_alert_to_viewers("plant drops more")
+		balloon_alert_to_viewers("plant will have increased yield")
 
 	return TRUE
 
