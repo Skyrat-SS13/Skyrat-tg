@@ -177,7 +177,7 @@
 	new /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild(src)
 	new /obj/item/storage/fancy/cigarettes/cigars/havana(src)
 
-/obj/item/storage/box/ntc
+/obj/item/storage/box/ntc/revolver
 	name = "Takbok Set."
 	desc = "Contains your .585 revolver and a cigar case."
 
