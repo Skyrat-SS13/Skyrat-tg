@@ -52,7 +52,7 @@
 	sharpness = NONE
 
 
-/obj/projectile/bullet/c980grenade/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/c980grenade/on_hit(atom/target, blocked = 0, pierce_hit)
 	..()
 	fuse_activation(target)
 	return BULLET_ACT_HIT
