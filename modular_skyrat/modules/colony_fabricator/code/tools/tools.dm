@@ -26,7 +26,7 @@
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
 	w_class = WEIGHT_CLASS_SMALL
-	toolspeed = 1.2
+	toolspeed = 1
 	random_color = FALSE
 	greyscale_config = null
 	greyscale_config_belt = null
