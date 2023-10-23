@@ -64,10 +64,6 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
-/datum/design/rcd_ammo/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/light_replacer/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
