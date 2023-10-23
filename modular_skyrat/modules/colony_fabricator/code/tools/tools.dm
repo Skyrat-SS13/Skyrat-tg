@@ -26,7 +26,7 @@
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
 	w_class = WEIGHT_CLASS_SMALL
-	toolspeed = 1
+	toolspeed = 1.2
 	random_color = FALSE
 	greyscale_config = null
 	greyscale_config_belt = null
@@ -95,7 +95,7 @@
 		survive <b>forcing doors open</b>."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tools.dmi'
 	icon_state = "prybar"
-	toolspeed = 1
+	toolspeed = 1.3
 	force_opens = TRUE
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.75,
