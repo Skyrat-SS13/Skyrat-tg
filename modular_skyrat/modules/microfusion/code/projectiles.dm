@@ -40,7 +40,7 @@
 	color = LIGHT_COLOR_FIRE
 	light_color = LIGHT_COLOR_FIRE
 
-/obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked)
+/obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/living = target

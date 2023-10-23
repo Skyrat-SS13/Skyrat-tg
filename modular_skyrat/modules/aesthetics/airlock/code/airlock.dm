@@ -1,27 +1,3 @@
-//SKYRAT ADDITION BEGIN - AESTHETICS
-#define AIRLOCK_LIGHT_POWER 0.5
-#define AIRLOCK_LIGHT_RANGE 2
-#define AIRLOCK_LIGHT_ENGINEERING "engineering"
-#define AIRLOCK_POWERON_LIGHT_COLOR "#3aa7c2"
-#define AIRLOCK_BOLTS_LIGHT_COLOR "#c22323"
-#define AIRLOCK_ACCESS_LIGHT_COLOR "#57e69c"
-#define AIRLOCK_EMERGENCY_LIGHT_COLOR "#d1d11d"
-#define AIRLOCK_ENGINEERING_LIGHT_COLOR "#fd8719"
-#define AIRLOCK_DENY_LIGHT_COLOR "#c22323"
-//SKYRAT ADDITION END
-
-#define AIRLOCK_CLOSED	1
-#define AIRLOCK_CLOSING	2
-#define AIRLOCK_OPEN	3
-#define AIRLOCK_OPENING	4
-#define AIRLOCK_DENY	5
-#define AIRLOCK_EMAG	6
-
-#define AIRLOCK_FRAME_CLOSED "closed"
-#define AIRLOCK_FRAME_CLOSING "closing"
-#define AIRLOCK_FRAME_OPEN "open"
-#define AIRLOCK_FRAME_OPENING "opening"
-
 /obj/machinery/door/airlock
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
@@ -388,7 +364,6 @@
 /obj/machinery/door/airlock/multi_tile
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass_overlays.dmi'
-	bound_width = 64
 
 /obj/machinery/door/airlock/multi_tile/glass
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/glass.dmi'
@@ -397,6 +372,16 @@
 /obj/machinery/door/airlock/multi_tile/metal
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/metal_overlays.dmi'
+
+//TRAM
+
+/obj/machinery/door/airlock/tram
+	name = "tram door"
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/tram/tram_overlays.dmi'
+	doorOpen = 'sound/machines/tramopen.ogg'
+	doorClose = 'sound/machines/tramclose.ogg'
+	has_environment_lights = FALSE
 
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public
@@ -571,27 +556,3 @@
 /obj/structure/door_assembly/
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
-
-//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#undef AIRLOCK_LIGHT_POWER
-#undef AIRLOCK_LIGHT_RANGE
-#undef AIRLOCK_LIGHT_ENGINEERING
-#undef AIRLOCK_ENGINEERING_LIGHT_COLOR
-#undef AIRLOCK_POWERON_LIGHT_COLOR
-#undef AIRLOCK_BOLTS_LIGHT_COLOR
-#undef AIRLOCK_ACCESS_LIGHT_COLOR
-#undef AIRLOCK_EMERGENCY_LIGHT_COLOR
-#undef AIRLOCK_DENY_LIGHT_COLOR
-//SKYRAT EDIT END
-
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
-#undef AIRLOCK_FRAME_CLOSED
-#undef AIRLOCK_FRAME_CLOSING
-#undef AIRLOCK_FRAME_OPEN
-#undef AIRLOCK_FRAME_OPENING

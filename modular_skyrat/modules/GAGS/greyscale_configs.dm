@@ -165,6 +165,28 @@
 /datum/greyscale_config/standalone_hood/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_oldvox.dmi'
 
+// CATEAR HEADPHONES
+
+/datum/greyscale_config/catear_headphone
+	name = "Cat-ear Headphones"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/catear_headphone/catear_headphone.json'
+
+/datum/greyscale_config/catear_headphone/worn
+	name = "Cat-ear Headphones (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/catear_headphone/catear_headphone_worn.json'
+
+/datum/greyscale_config/catear_headphone_inhand_left
+	name = "Cat-ear Headphones (Inhand Left)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/catear_headphone/catear_headphone_worn_inhand_left.json'
+
+/datum/greyscale_config/catear_headphone_inhand_right
+	name = "Cat-ear Headphones (Inhand Right)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/catear_headphone/catear_headphone_worn_inhand_right.json'
+
 /*
 *	MASKS
 */
