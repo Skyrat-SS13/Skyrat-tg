@@ -7,10 +7,14 @@
 #define MUTE_ADMINHELP (1<<3)
 #define MUTE_DEADCHAT (1<<4)
 #define MUTE_INTERNET_REQUEST (1<<5)
+<<<<<<< HEAD
 // Skyrat Edit Addition - Mute LOOC
 #define MUTE_LOOC (1<<6)
 // Skyrat Edit End
 #define MUTE_ALL (~0)
+=======
+#define MUTE_ALL ALL
+>>>>>>> 44558f27fe6 (Moves bitflag invokes of `(~0)` to the `ALL` macro (#79162))
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA 1
@@ -137,7 +141,7 @@
 #define BROWSE_ROOT_CURRENT_LOGS 2
 
 // allowed ghost roles this round, starts as everything allowed
-GLOBAL_VAR_INIT(ghost_role_flags, (~0))
+GLOBAL_VAR_INIT(ghost_role_flags, ALL)
 
 //Flags that control what ways ghosts can get back into the round
 //ie fugitives, space dragon, etc. also includes dynamic midrounds as it's the same deal
