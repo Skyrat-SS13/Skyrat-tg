@@ -4,8 +4,12 @@
 
 /obj/item/tank/internals/nitrogen
 	name = "nitrogen tank"
+	icon = 'modular_skyrat/master_files/icons/obj/tank.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	desc = "A tank of nitrogen. Designed specifically for Vox"
-	icon_state = "oxygen_fr"
+	icon_state = "nitrogen_big"
+	inhand_icon_state = "nitrogen"
 	force = 10
 	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
 
@@ -18,11 +22,7 @@
 	air_contents.gases[/datum/gas/nitrogen][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 
 /obj/item/tank/internals/nitrogen/belt
-	icon = 'modular_skyrat/master_files/icons/obj/tank.dmi'
-	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
-	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5
 	volume = 24
