@@ -251,6 +251,7 @@
 	. = ..()
 	buyer_account = _buyer_account
 	ADD_TRAIT(src, TRAIT_NO_MISSING_ITEM_ERROR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NO_MANIFEST_CONTENTS_ERROR, TRAIT_GENERIC)
 
 	//SKYRAT EDIT START
 	if(istype(buyer_account, /datum/bank_account/department))

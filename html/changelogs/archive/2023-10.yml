@@ -977,3 +977,182 @@
       from 20u to 10u
   dtfe3:
   - rscadd: donator item for dtfe
+2023-10-21:
+  LT3:
+  - image: Player dragon maid uniform
+  LT3, san7890:
+  - rscadd: Announcements have gotten a fresh coat of paint! They should be popping
+      with splendid new colors and should have a lot less ugly linebreaks, while still
+      managing to keep your attention at the screen.
+  Melbert:
+  - bugfix: Silicons don't spark when shot by disablers
+  - bugfix: Changelings who fail to catch something with a tencacle will have throw
+      mode disabled automatically
+  - bugfix: Fixes occasions where you can reflect with Sleeping Carp when you shouldn't
+      be able to
+  - bugfix: Fixes some projectiles causing like 20x less eye blur than they should
+      be
+  - refactor: Refactored bullet-mob interactions
+  - refactor: Nightmare "shadow dodge" projectile ability is now sourced from their
+      brain
+  SkyratBot:
+  - bugfix: Scream for me, the spell, now works
+  - bugfix: Non-random puncture wounds can now be applied
+  - rscadd: Add new fitness skill and mechanics for weight machines and punching bags.  Working
+      out with a proper diet and good sleep will result in massive fitness gains.  As
+      your fitness increases, so does your mass.
+  - rscadd: added a new syndicate item - the bee smoker
+  - code_imp: Bitrunner domains can now have spells or items from disks disabled if
+      the domain maker wants such a thing
+  - bugfix: '[Tramstation] fixed an unlinked Disposals Bin in the Pod Bay'
+  - bugfix: plumbing pill press & bottler won't stop when processing 50 unit bottles
+  - code_imp: 'made a lot of variables defines and lists static to save memory for
+      plumbing pill press. Moved global lists to it''s rightful
+
+      place'
+  - code_imp: copied over chem master pill & patch designs over to plumbing pill press
+      and removed the old designs. resized UI
+  - bugfix: making assembly activated bombs works again
+  - bugfix: Fixed tesla coil zaps cutting off too early.
+  - refactor: Artificer constructs have been converted to the basic mob framework.
+      This should change very little about them, but please report any bugs. NPC artificers
+      are now smarter, and will focus on healing nearby wounded constructs - if you
+      see them, take them out first!
+  - refactor: Holodeck monkeys have been moved to the same system as old monkeys,
+      and should retain the similar "ephermeal" behavior, while being a whole lot
+      smarter by leveraging new AI. Please report anything that is completely wack
+      about this.
+  - balance: Slimes can't eat holodeck monkeys anymore, because apparently they could
+      and that is wack.
+  - bugfix: Blobbernauts will once again take damage when not on blob tiles.
+  - qol: Nonhuman autopsy, Tier Two Lasers, and several other experiments can now
+      be completed earlier.
+  - balance: Advanced robotics techweb node no longer requires neural programming
+      node.
+  - bugfix: RCD & RTD ui updates when switching between root categories
+  - admin: Added SS13.get_runner_ckey() and SS13.get_runner_client() which stores
+      the ckey and returns the client of the user who ran the lua script. Can be unreliable
+      if accessed after sleeping.
+  - admin: Added timer loop helpers to the SS13.lua module, check the docs
+  - admin: The SS13.lua module can now be made local without causing any errors.
+  - bugfix: Fix husks fire decay rate to be slower. Pyre chaplains can now use husked
+      bodies (only caused by burns) to complete their burning sacrifice rite.
+  - bugfix: connected Meta's Cytology equipment properly
+  jjpark-kb:
+  - bugfix: ant farms produce the unprocessed ore now instead of the smelted/completed
+      ore
+  - rscadd: added stone to the ore list of ant farms
+  - rscadd: you can change arrows into different types by hitting them with the conversion
+      item (bronze tile for bronze, bone for bone, and sinew for ash)
+  - rscdel: removes the forged arrow subtype
+  - bugfix: fixes arrow icons being different again
+  nikothedude:
+  - bugfix: Unlinked RCDs now function on T3 synth blunt wounds
+  - qol: Synthetic blunt wounds now show their current step along with instructions
+      on wound scans
+  - qol: Synthetic blunt wounds now warn you if crowbarring open the limb can shock
+      you
+  ninjanomnom:
+  - balance: It damages your eyes to look at the supermatter singularity
+2023-10-22:
+  JohnFulpWillard, sprites by CoiledLamb:
+  - rscadd: You can now play Mafia on your PDA.
+  - balance: Mafia changelings can now only talk to eachother during the night.
+  - bugfix: Mafia abilities can't be repeatedly used on people.
+  LT3:
+  - image: Added Halloween themed floor/tram tiles
+  - spellcheck: Centcom message headers are no longer hot pink
+  - bugfix: Fixed tram cabinet LMB/RMB actions being reversed
+  - bugfix: Tram cabinet can now read IDs inside PDAs and wallets
+  - bugfix: Crossing signals now correctly indicate broken/no power
+  - bugfix: Trying to repair tram (weld) without welding fuel fails
+  - bugfix: You can actually unbolt the tram controller from the wall
+  - qol: Tram spoilers now have visual and examine hints about being malfunctioning/emagged
+  - qol: Improved some tram error messages
+  Melbert:
+  - rscadd: Adds Food Allergies as a -2 quirk. You can select which food you're allergic
+      to or rock a random option.
+  Nerev4r:
+  - bugfix: Demonic Watchers now drop the proper trophy.
+  SkyratBot:
+  - bugfix: You should be revived properly when entering the mansus realm following
+      a heretic sacrifice
+  - bugfix: The buff which is supposed to heal you in the mansus realm will now do
+      that instead of unavoidably damaging you
+  - balance: The mansus realm's healing buff heals for 25% as much as it did before
+      it was broken
+  - bugfix: Fix holodeck items from being eaten, crafted, recycled, juiced, or grinded.
+  - rscadd: Adds a subtle ghost poll. This pings in dead chat and gives a screen alert,
+      but no TGUI popup. Orbit the point of interest to be selected for the role.
+  - refactor: A number of ghost spawns now feature this alert. Write an issue report
+      if anything breaks.
+  - balance: Export scanner no longer shows value of shipping manifests, now you actually
+      have to read them.
+  - balance: Shipping manifest penalty is now only half crate cost as well as capped
+      to 500 credits.
+  - balance: Shipping manifests for private orders or locked crates can no longer
+      have the incorrect contents error. Shipping manifests for departmental orders
+      can n longer have any error.
+  - qol: changed wording of a popup in the admin dressing menu
+  - bugfix: fixes not being able to walk over or pull mook corpses
+  - rscadd: Most pies can now be sliced rather than being consumed whole.
+  - rscadd: Rootdough can be crafted using soy milk in place of eggs.
+  - rscadd: Two new lizard-safe rootbread sandwiches can be crafted.
+  - bugfix: admin triggering the Revenant event now works again
+  - rscadd: Demonic-Frost Miner's ruin gets an aesthetic refresh
+  - qol: signalers now tell you their cooldown and also use balloon alerts
+  - bugfix: Meatwheat Clumps, Bungo Pits, and Eggplant Eggs should once again inherit
+      reagent purity from the grown item which produces them.
+  - bugfix: Kisses and emitters no longer make the SM crystal scream so much.
+  - rscadd: Gygax type mechs now have an option to disable overclock when overheated.
+  - bugfix: Fixed overclocking having no effect on Ripley.
+  - bugfix: cryo and stuff that transfers reagents with a multiplier should transfer
+      correct volumes as expected.
+  - bugfix: Fix cqc kicks to only cause staminaloss when target is on the floor
+  - rscadd: New dream that plays sound at you
+  - rscadd: Starlight should be a bit more intense, and flow better onto non space
+      tiles
+  - bugfix: Cooked meat no longer spreads blood around as if it weren't cooked.
+  Treach:
+  - bugfix: Skeleton Keys now fit in the Explorer's Webbing.
+2023-10-23:
+  Paxilmaniac:
+  - rscadd: The icewalker camp has been completely remade to be less of a single house
+      in the middle of hell, to a location befitting our viking felines. As a side
+      effect, the spawn of the camp is now static and in the corner of the map, because
+      the ruin loader really did not enjoy the size of the templates.
+  - image: Sprites for all of the forging related structures have been redone because
+      I REALLY hated what I did with them before
+  - image: Several new sprites for things like wooden shelves, barrels, and so on,
+      all made by yours truly
+  - rscadd: Nakamura engineering tools in company imports has been reworked into a
+      new company offering new specialized engineering equipment that the station
+      can't normally make, rather than just tools everyone could make if they felt
+      like it.
+  SkyratBot:
+  - rscadd: Just in time for Halloween- ghost notifications have been upgraded to
+      their own announcements. Boo!
+  - bugfix: items that require reagent containers & the reagents inside it for crafting(e.g.
+      molotov) now crafts properly.
+  - bugfix: most crafting recipes should work now
+  - refactor: Maintenance Drones now use the basic mob framework. This shouldn't come
+      with any noticeable gameplay changes, but please report any bugs.
+  - bugfix: Drones can now interact normally with electrified doors.
+  - bugfix: Drones' built-in tools can no longer be placed in storage objects and/or
+      thrown on the floor.
+  - bugfix: Drones can now perform right-click interactions correctly, such as deconstructing
+      reinforced windows.
+  - bugfix: Drones can now reboot or cannibalize other drones without being in combat
+      mode.
+  - qol: Adminwho messages are now in an examine block for heightened clarity.
+  Vishenka0704:
+  - qol: In OOC Notes/Flavor Text/Species lore url now are clickable
+  jjpark-kb:
+  - rscadd: worm barrels will queue food now and create fertilizer on a cycle
+  - rscadd: fertilizer will now upgrade crops instead of producing crops
+  - qol: 'increased clarity on examine text for ash crops: it will no longer display
+      the message to upgrade if it is fully upgraded'
+  - rscdel: removed regen cores from being usable on ash farms
+  - balance: it is faster to insert food into the worm barrel
+  - code_imp: removed a meaningless var from ash farming components
+  - code_imp: moved some code to become procs for easier use for ash farming
