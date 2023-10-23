@@ -1115,3 +1115,44 @@
   - bugfix: Cooked meat no longer spreads blood around as if it weren't cooked.
   Treach:
   - bugfix: Skeleton Keys now fit in the Explorer's Webbing.
+2023-10-23:
+  Paxilmaniac:
+  - rscadd: The icewalker camp has been completely remade to be less of a single house
+      in the middle of hell, to a location befitting our viking felines. As a side
+      effect, the spawn of the camp is now static and in the corner of the map, because
+      the ruin loader really did not enjoy the size of the templates.
+  - image: Sprites for all of the forging related structures have been redone because
+      I REALLY hated what I did with them before
+  - image: Several new sprites for things like wooden shelves, barrels, and so on,
+      all made by yours truly
+  - rscadd: Nakamura engineering tools in company imports has been reworked into a
+      new company offering new specialized engineering equipment that the station
+      can't normally make, rather than just tools everyone could make if they felt
+      like it.
+  SkyratBot:
+  - rscadd: Just in time for Halloween- ghost notifications have been upgraded to
+      their own announcements. Boo!
+  - bugfix: items that require reagent containers & the reagents inside it for crafting(e.g.
+      molotov) now crafts properly.
+  - bugfix: most crafting recipes should work now
+  - refactor: Maintenance Drones now use the basic mob framework. This shouldn't come
+      with any noticeable gameplay changes, but please report any bugs.
+  - bugfix: Drones can now interact normally with electrified doors.
+  - bugfix: Drones' built-in tools can no longer be placed in storage objects and/or
+      thrown on the floor.
+  - bugfix: Drones can now perform right-click interactions correctly, such as deconstructing
+      reinforced windows.
+  - bugfix: Drones can now reboot or cannibalize other drones without being in combat
+      mode.
+  - qol: Adminwho messages are now in an examine block for heightened clarity.
+  Vishenka0704:
+  - qol: In OOC Notes/Flavor Text/Species lore url now are clickable
+  jjpark-kb:
+  - rscadd: worm barrels will queue food now and create fertilizer on a cycle
+  - rscadd: fertilizer will now upgrade crops instead of producing crops
+  - qol: 'increased clarity on examine text for ash crops: it will no longer display
+      the message to upgrade if it is fully upgraded'
+  - rscdel: removed regen cores from being usable on ash farms
+  - balance: it is faster to insert food into the worm barrel
+  - code_imp: removed a meaningless var from ash farming components
+  - code_imp: moved some code to become procs for easier use for ash farming
