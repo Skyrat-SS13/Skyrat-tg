@@ -2,7 +2,6 @@
 /obj/item/clothing/neck
 	w_class = WEIGHT_CLASS_SMALL
 
-
 //ASHWALKER TRANSLATOR NECKLACE//
 #define LANGUAGE_TRANSLATOR "translator"
 /obj/item/clothing/neck/necklace/ashwalker
