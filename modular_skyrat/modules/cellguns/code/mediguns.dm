@@ -312,3 +312,9 @@
 	desc = "An inactive body teleporter medicell, use this on a bluespace slime extract to make this into a usable cell."
 	from_obj = /obj/item/slime_extract/bluespace
 	to_obj = /obj/item/weaponcell/medical/utility/body_teleporter
+
+/obj/item/device/custom_kit/empty_cell/relocator
+	name = "empty oppressive force relocator medicell"
+	desc = "An inactive oppressive force relocator medicell, use this on a bluespace slime extract to make this into a usable cell."
+	from_obj = /obj/item/slime_extract/bluespace
+	to_obj = /obj/item/weaponcell/medical/utility/relocation
