@@ -1030,8 +1030,12 @@ GLOBAL_LIST_EMPTY(possible_items)
 		var/preference = mind.current?.client?.prefs?.read_preference(/datum/preference/choiced/antag_opt_in_status)
 		if(preference >= level)
 			LAZYADD(eligible_crew, mind)
-		//uhhhh not really sure how to do this i wish there was documentation test later
-		if(mind.current.job == JOB_CAPTAIN)
+		//if you're command or security you will always be a valid target
+		if(mind.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+			LAZYADD(eligible_crew, mind)
+		if(mind.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
+			LAZYADD(eligible_crew, mind)
+		if(mind.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND)
 			LAZYADD(eligible_crew, mind)
 	return eligible_crew
 // SKYRAT EDIT ADDITION END
