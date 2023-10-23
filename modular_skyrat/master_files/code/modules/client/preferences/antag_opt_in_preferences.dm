@@ -22,11 +22,10 @@
 	. = ..()
 
 /datum/preference/toggle/antag_opt_in
-	//category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_PLAYER
 	savefile_key = "antag_opt_in_pref"
-	default_value = FALSE
+	default_value = TRUE
 
 /datum/preference/toggle/antag_opt_in/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -51,8 +50,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "antag_opt_in_status_pref"
 
-//defining these as numbers so I need 'No" to be somemthing so the define doesnt make every instance of the word 'No' = 0
-//kinda wordy but elaborates that the player is declining to be a target, not getting out of interacting with antagonists alltogether
+
 /datum/preference/choiced/antag_opt_in_status/init_possible_values()
 	return list(YES_TEMP, YES_KILL, YES_ROUND_REMOVE, NOT_TARGET)
 
