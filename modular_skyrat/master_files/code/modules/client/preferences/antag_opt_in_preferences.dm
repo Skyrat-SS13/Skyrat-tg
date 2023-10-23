@@ -76,3 +76,16 @@
 /datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
+/datum/preference/choiced/antag_opt_in_status/compile_constant_data()
+	var/list/data = ..()
+
+	// An assoc list of values to display names so we don't show players numbers in their settings
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
+		"0" = "No",
+		"1" = "Yes - Temporary/Inconvienence",
+		"2" = "Yes - Kill",
+		"3" = "Yes - Round Remove",
+	)
+
+	return data
+
