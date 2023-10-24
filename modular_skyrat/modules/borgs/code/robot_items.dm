@@ -1,43 +1,9 @@
-/obj/item/dogborg_tongue
-	name = "synthetic tongue"
-	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
-	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
-	icon_state = "synthtongue"
-	hitsound = 'sound/effects/attackblob.ogg'
-	desc = "For giving affectionate kisses."
-	item_flags = NOBLUDGEON
+/// Use this file to add STANDARD ITEMS to borgs, the upgrade items will go in the modular robot_upgrade.dm
 
-/obj/item/dogborg_tongue/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity || !isliving(target))
-		return
-	var/mob/living/silicon/robot/borg = user
-	var/mob/living/mob = target
+/*
+*	CARGO BORGS
+*/
 
-	if(check_zone(borg.zone_selected) == "head")
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
-		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
-	else
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
-		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
-
-/obj/item/dogborg_nose
-	name = "boop module"
-	desc = "The BOOP module"
-	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
-	icon_state = "nose"
-	flags_1 = CONDUCT_1
-	item_flags = NOBLUDGEON
-	force = 0
-
-/obj/item/dogborg_nose/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	do_attack_animation(target, null, src)
-	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
-
-/// CARGO BORGS ///
 #define CYBORG_FONT "Consolas"
 #define MAX_PAPER_INTEGRATED_CLIPBOARD 10
 
@@ -106,7 +72,7 @@
 	labels_left = 9000 // I don't want to bother forcing them to recharge, honestly, that's a lot of code for a very niche functionality
 
 
-/// The clamps
+/// THE CLAMPS!!
 /obj/item/borg/hydraulic_clamp
 	name = "integrated hydraulic clamp"
 	desc = "A neat way to lift and move around few small packages for quick and painless deliveries!"
@@ -317,81 +283,6 @@
 		log_silicon("[user] loaded [lifting_up] (Contains mobs: [contains_mobs]) into [src] at ([AREACOORD(lifting_up_from)]).")
 		visible_message(span_notice("[src.loc] loads [lifting_up] into [src]'s cargo hold."))
 		in_use = FALSE
-
-
-/obj/item/borg/hydraulic_clamp/better
-	name = "improved integrated hydraulic clamp"
-	desc = "A neat way to lift and move around wrapped crates for quick and painless deliveries!"
-	storage_capacity = 2
-	whitelisted_item_types = list(/obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
-	whitelisted_item_description = "wrapped packages"
-	item_weight_limit = NONE
-	clamp_sound_volume = 50
-
-/obj/item/borg/hydraulic_clamp/better/examine(mob/user)
-	. = ..()
-	var/crate_count = contents.len
-	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
-
-/obj/item/borg/hydraulic_clamp/mail
-	name = "integrated rapid mail delivery device"
-	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
-	icon = 'icons/obj/service/library.dmi'
-	icon_state = "bookbag"
-	storage_capacity = 100
-	loading_time = 0.25 SECONDS
-	unloading_time = 0.25 SECONDS
-	cooldown_duration = 0.25 SECONDS
-	whitelisted_item_types = list(/obj/item/mail)
-	whitelisted_item_description = "enveloppes"
-	item_weight_limit = WEIGHT_CLASS_NORMAL
-	clamp_sound_volume = 25
-	clamp_sound = 'sound/items/pshoom.ogg'
-
-
-
-/datum/design/borg_upgrade_clamp
-	name = "Improved Integrated Hydraulic Clamp Module"
-	id = "borg_upgrade_clamp"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/better_clamp
-	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2, /datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 5)
-	construction_time = 12 SECONDS
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO)
-
-
-/obj/item/borg/upgrade/better_clamp
-	name = "improved integrated hydraulic clamp"
-	desc = "An improved hydraulic clamp that trades its storage quantity to allow for bigger packages to be picked up instead!"
-	icon_state = "cyborg_upgrade3"
-	require_model = TRUE
-	model_type = list(/obj/item/robot_model/cargo)
-	model_flags = BORG_MODEL_CARGO
-
-
-/obj/item/borg/upgrade/better_clamp/action(mob/living/silicon/robot/cyborg, user = usr)
-	. = ..()
-	if(!.)
-		return
-	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.model.modules
-	if(big_clamp)
-		to_chat(user, span_warning("This cyborg is already equipped with an improved integrated hydraulic clamp!"))
-		return FALSE
-
-	big_clamp = new(cyborg.model)
-	cyborg.model.basic_modules += big_clamp
-	cyborg.model.add_module(big_clamp, FALSE, TRUE)
-
-
-/obj/item/borg/upgrade/better_clamp/deactivate(mob/living/silicon/robot/cyborg, user = usr)
-	. = ..()
-	if(!.)
-		return
-	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.model.modules
-	if(big_clamp)
-		cyborg.model.remove_module(big_clamp, TRUE)
-
-
 
 /// The fabled paper plane crossbow and its hardlight paper planes.
 /obj/item/paperplane/syndicate/hardlight

@@ -60,8 +60,8 @@
 		/obj/item/mop/cyborg, // Soap's good and all, but a mop is good, too
 		/obj/item/lightreplacer,
 		/obj/item/borg/cyborghug,
-		/obj/item/dogborg_nose,
-		/obj/item/dogborg_tongue,
+		/obj/item/quadborg_nose,
+		/obj/item/quadborg_tongue,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/borg_shapeshifter/stable)
 	hat_offset = -3
