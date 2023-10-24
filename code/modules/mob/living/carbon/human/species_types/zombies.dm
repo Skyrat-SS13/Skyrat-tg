@@ -132,9 +132,6 @@
 
 /datum/species/zombie/infectious/on_species_gain(mob/living/carbon/human/new_zombie, datum/species/old_species)
 	. = ..()
-<<<<<<< HEAD
-	new_zombie.AddComponent(/datum/component/mutant_hands, mutant_hand_path = /obj/item/mutant_hand/zombie)
-=======
 	new_zombie.set_combat_mode(TRUE)
 
 	// Deal with the source of this zombie corruption
