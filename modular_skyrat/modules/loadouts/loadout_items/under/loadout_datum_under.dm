@@ -851,6 +851,18 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
 
+/datum/loadout_item/under/formal/medium_skirt
+	name = "Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/medium_skirt
+
+/datum/loadout_item/under/formal/long_skirt
+	name = "Long Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/long_skirt
+
+/datum/loadout_item/under/formal/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
+
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
 	name = "OSI Uniform"
