@@ -239,7 +239,7 @@
 	clamp_sound = 'sound/items/pshoom.ogg'
 
 /datum/design/borg_upgrade_clamp
-	name = "Improved Integrated Hydraulic Clamp Module"
+	name = "improved Integrated Hydraulic Clamp Module"
 	id = "borg_upgrade_clamp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/better_clamp
@@ -403,7 +403,7 @@
 		borg.hasShrunk = TRUE
 		ADD_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
 		var/prev_lockcharge = borg.lockcharge
-		borg.SetLockdown(1)
+		borg.SetLockdown(TRUE)
 		borg.set_anchored(TRUE)
 		var/datum/effect_system/fluid_spread/smoke/smoke = new
 		smoke.set_up(1, location = get_turf(borg))
@@ -413,7 +413,7 @@
 			playsound(borg, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
 			sleep(1.2 SECONDS)
 		if(!prev_lockcharge)
-			borg.SetLockdown(0)
+			borg.SetLockdown(FALSE)
 		borg.set_anchored(FALSE)
 		REMOVE_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
 		borg.update_transform(0.75)

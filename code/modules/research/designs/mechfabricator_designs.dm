@@ -1,6 +1,6 @@
 //Cyborg
 
-/* //SKYRAT REMOVAL START - Costs lowered and time reduced -
+/* //SKYRAT EDIT REMOVAL BEGIN - Costs lowered and time reduced -
 /datum/design/borg_suit
 	name = "Cyborg Endoskeleton"
 	id = "borg_suit"
@@ -77,7 +77,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
-*///SKYRAT REMOVAL END
+*///SKYRAT EDIT REMOVAL END
 
 //Ripley
 /datum/design/ripley_chassis
