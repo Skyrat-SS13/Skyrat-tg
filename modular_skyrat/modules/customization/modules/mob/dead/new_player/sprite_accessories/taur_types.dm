@@ -77,6 +77,10 @@
 	name = "Drake (Old)"
 	icon_state = "drake_old"
 
+/datum/sprite_accessory/taur/tarantula
+	name = "Tarantula"
+	icon_state = "tarantula"
+
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
