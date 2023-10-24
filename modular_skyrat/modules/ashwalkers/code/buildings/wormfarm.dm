@@ -116,6 +116,7 @@
 		balloon_alert(user, "feeding the worms")
 		for(var/obj/item/food/selected_food in attacking_item.contents)
 			if(!do_after(user, 1 SECONDS, src))
+				in_use = FALSE
 				return
 
 			qdel(selected_food)
