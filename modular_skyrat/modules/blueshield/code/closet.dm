@@ -14,3 +14,4 @@
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/skyrat/blueshield(src)
 	new /obj/item/storage/medkit/tactical/blueshield(src)
+	new /obj/item/mod/control/pre_equipped/praetorian(src)

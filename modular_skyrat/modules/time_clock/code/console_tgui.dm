@@ -32,6 +32,7 @@
 	/obj/item/storage/box/gunset/pdh, \
 	/obj/item/storage/belt/sabre, \
 	/obj/item/mod/control/pre_equipped/magnate, \
+	/obj/item/mod/control/pre_equipped/praetorian, \
 	/obj/item/clothing/suit/armor/vest/warden, \
 	/obj/item/clothing/glasses/hud/security/sunglasses, \
 	/obj/item/clothing/gloves/krav_maga/sec, \
