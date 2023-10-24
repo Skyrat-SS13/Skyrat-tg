@@ -69,7 +69,7 @@
 	build_path = /obj/item/borg/upgrade/welder
 	materials = list(
 		/datum/material/iron=SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/plasma=SHEET_MATERIAL_AMOUNT,
+		/datum/material/plasma=SHEET_MATERIAL_AMOUNT * 1,
 	)
 	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MINING)
 
