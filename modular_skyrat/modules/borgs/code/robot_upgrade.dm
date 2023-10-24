@@ -319,12 +319,12 @@
 		to_chat(usr, span_warning("This unit's chassis does not support this module."))
 		return FALSE
 
-	var/obj/item/quadborg_tongue/dogtongue = new /obj/item/quadborg_tongue(borg.model)
-	borg.model.basic_modules += dogtongue
-	borg.model.add_module(dogtongue, FALSE, TRUE)
-	var/obj/item/quadborg_nose/dognose = new /obj/item/quadborg_nose(borg.model)
-	borg.model.basic_modules += dognose
-	borg.model.add_module(dognose, FALSE, TRUE)
+	var/obj/item/quadborg_tongue/quadtongue = new /obj/item/quadborg_tongue(borg.model)
+	borg.model.basic_modules += quadtongue
+	borg.model.add_module(quadtongue, FALSE, TRUE)
+	var/obj/item/quadborg_nose/quadnose = new /obj/item/quadborg_nose(borg.model)
+	borg.model.basic_modules += quadnose
+	borg.model.add_module(quadnose, FALSE, TRUE)
 	borg.hasAffection = TRUE
 
 /obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
@@ -332,10 +332,10 @@
 	if(.)
 		return
 	borg.hasAffection = FALSE
-	for(var/obj/item/quadborg_tongue/dogtongue in borg.model.modules)
-		borg.model.remove_module(dogtongue, TRUE)
-	for(var/obj/item/quadborg_nose/dognose in borg.model.modules)
-		borg.model.remove_module(dognose, TRUE)
+	for(var/obj/item/quadborg_tongue/quadtongue in borg.model.modules)
+		borg.model.remove_module(quadtongue, TRUE)
+	for(var/obj/item/quadborg_nose/quadnose in borg.model.modules)
+		borg.model.remove_module(quadnose, TRUE)
 
 // Quadruped tongue - lick lick
 /obj/item/quadborg_tongue
