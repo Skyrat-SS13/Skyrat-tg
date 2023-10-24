@@ -7,14 +7,10 @@
 #define MUTE_ADMINHELP (1<<3)
 #define MUTE_DEADCHAT (1<<4)
 #define MUTE_INTERNET_REQUEST (1<<5)
-<<<<<<< HEAD
+#define MUTE_ALL ALL
 // Skyrat Edit Addition - Mute LOOC
 #define MUTE_LOOC (1<<6)
 // Skyrat Edit End
-#define MUTE_ALL (~0)
-=======
-#define MUTE_ALL ALL
->>>>>>> 44558f27fe6 (Moves bitflag invokes of `(~0)` to the `ALL` macro (#79162))
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA 1
