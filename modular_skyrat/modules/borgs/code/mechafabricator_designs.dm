@@ -61,3 +61,15 @@
 	construction_time = 120
 	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
 
+/datum/design/borg_upgrade_welding
+	name = "Welding Module"
+	id = "borg_upgrade_welding"
+	construction_time = 60
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/welder
+	materials = list(
+		/datum/material/iron=SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/plasma=SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MINING)
+

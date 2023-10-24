@@ -805,12 +805,14 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/borghypo/borgshaker,
-		/obj/item/borg/apparatus/beaker/service,
+		obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		//Skyrat Edit Start: Borg Buff
-		//obj/item/reagent_containers/condiment/enzyme, //edit
+		//obj/item/reagent_containers/condiment/enzyme, //edit - Borg shaker has it
+		obj/item/borg/apparatus/beaker, // SR Edit: allows the pickup of different beakers for easier drink mixing
 		/obj/item/reagent_containers/dropper,
 		/obj/item/rsf,
+		/obj/item/storage/bag/tray,
 		/obj/item/storage/bag/tray,
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,

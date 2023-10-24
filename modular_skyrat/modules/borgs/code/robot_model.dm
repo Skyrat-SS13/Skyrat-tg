@@ -183,7 +183,7 @@
 		"Pup Dozer" = list(SKIN_ICON_STATE = "pupdozer", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Vale" = list(SKIN_ICON_STATE = "valeeng", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Hound" = list(SKIN_ICON_STATE = "engihound", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Darkhound" = list(SKIN_ICON_STATE = "engihounddark", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Darkhound" = list(SKIN_ICON_STATE = "engihounddark", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_UNIQUEPANEL)),
 		"Drake" = list(SKIN_ICON_STATE = "drakeeng", SKIN_ICON = CYBORG_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		/// 32x64 Skins
 		"Meka" = list(SKIN_ICON_STATE = "mekaengi", SKIN_ICON = CYBORG_ICON_ENG_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
@@ -332,6 +332,7 @@
 		/obj/item/stamp/denied,
 		/obj/item/pen/cyborg,
 		/obj/item/clipboard/cyborg,
+		/obj/item/boxcutter,
 		/obj/item/stack/package_wrap/cyborg,
 		/obj/item/stack/wrapping_paper/xmas/cyborg,
 		/obj/item/assembly/flash/cyborg,

@@ -257,3 +257,50 @@
 *	ADVANCED MINING CYBORG UPGRADES
 */
 
+/// Welder
+/obj/item/borg/upgrade/welder
+	name = "mining cyborg welder upgrade"
+	desc = "A normal welder with a larger tank for cyborgs."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/miner)
+	model_flags = BORG_MODEL_MINER
+
+/obj/item/borg/upgrade/welder/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		for(var/obj/item/weldingtool/mini/W in R.model)
+			R.model.remove_module(W, TRUE)
+
+		var/obj/item/weldingtool/largetank/cyborg/WW = new /obj/item/weldingtool/largetank/cyborg(R.model)
+		R.model.basic_modules += WW
+		R.model.add_module(WW, FALSE, TRUE)
+
+/obj/item/borg/upgrade/welder/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		for(var/obj/item/weldingtool/largetank/cyborg/WW in R.model)
+			R.model.remove_module(WW, TRUE)
+
+		var/obj/item/weldingtool/mini/W = new (R.model)
+		R.model.basic_modules += W
+		R.model.add_module(W, FALSE, TRUE)
+
+/// ShapeShifter
+/obj/item/borg/upgrade/borg_shapeshifter
+	name = "Cyborg Shapeshifter Module"
+	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
+	icon_state = "cyborg_upgrade3"
+
+/obj/item/borg/upgrade/borg_shapeshifter/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		var/obj/item/borg_shapeshifter/BS = new /obj/item/borg_shapeshifter(R.model)
+		R.model.basic_modules += BS
+		R.model.add_module(BS, FALSE, TRUE)
+
+/obj/item/borg/upgrade/borg_shapeshifter/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		for(var/obj/item/borg_shapeshifter/BS in R.model)
+			R.model.remove_module(BS, TRUE)

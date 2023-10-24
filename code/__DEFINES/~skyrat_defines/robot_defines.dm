@@ -17,6 +17,8 @@
 #define R_TRAIT_TALL		"tall_borg"
 /// Any model small enough to reject the shrinker upgrade.
 #define R_TRAIT_SMALL		"small_chassis"
+/// Any model that has a custom front panel
+#define R_TRAIT_UNIQUEPANEL "unique_openpanel"
 
 // Icon file locations for modular borg icons
 #define CYBORG_ICON_STANDARD 'modular_skyrat/modules/borgs/icons/robots.dmi'
