@@ -805,7 +805,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/borghypo/borgshaker,
-		obj/item/borg/apparatus/beaker/service,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		//Skyrat Edit Start: Borg Buff
 		//obj/item/reagent_containers/condiment/enzyme, //edit - Borg shaker has it
