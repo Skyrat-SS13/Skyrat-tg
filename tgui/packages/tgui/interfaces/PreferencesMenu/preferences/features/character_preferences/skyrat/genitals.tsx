@@ -188,8 +188,8 @@ export const erp_status_pref_nc: FeatureChoiced = {
   component: FeatureDropdownInput,
 };
 
-export const erp_status_pref_v: FeatureChoiced = {
-  name: 'ERP Vore Status',
+export const erp_status_pref_hypno: FeatureChoiced = {
+  name: 'ERP Hypnotization Status',
   component: FeatureDropdownInput,
 };
 

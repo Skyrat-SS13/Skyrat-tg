@@ -182,18 +182,18 @@
 /datum/preference/choiced/erp_status_nc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/choiced/erp_status_v
+/datum/preference/choiced/erp_status_hypno
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "erp_status_pref_v"
+	savefile_key = "erp_status_pref_hypno"
 
-/datum/preference/choiced/erp_status_v/init_possible_values()
-	return list("Yes - Switch", "Yes - Prey", "Yes - Pred", "Check OOC", "Ask", "No", "Yes")
+/datum/preference/choiced/erp_status_hypno/init_possible_values()
+	return list("Always","ERP Only","Gameplay Only", "Never")
 
-/datum/preference/choiced/erp_status_v/create_default_value()
-	return "Ask"
+/datum/preference/choiced/erp_status_hypno/create_default_value()
+	return "Gameplay Only"
 
-/datum/preference/choiced/erp_status_v/is_accessible(datum/preferences/preferences)
+/datum/preference/choiced/erp_status_hypno/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE
 
@@ -201,15 +201,15 @@
 		return FALSE
 
 	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
-
-/datum/preference/choiced/erp_status_v/deserialize(input, datum/preferences/preferences)
+erp_status_hypno
+/datum/preference/choiced/erp_status_hypno/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "No"
+		return "Gameplay Only"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "No"
+		return "Gameplay Only"
 	. = ..()
 
-/datum/preference/choiced/erp_status_v/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/choiced/erp_status_hypno/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
 /datum/preference/choiced/erp_status_mechanics
