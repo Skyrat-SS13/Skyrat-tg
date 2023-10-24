@@ -402,10 +402,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Long Colourable Skirt"
 	item_path = /obj/item/clothing/under/skyrat/long_skirt
 
-/datum/loadout_item/under/formal/maid_costume
-	name = "Colourable Maid Uniform"
-	item_path = /obj/item/clothing/under/maid_costume
-
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/jean
@@ -477,6 +473,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/maidcostume
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
+
+/datum/loadout_item/under/miscellaneous/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
 
 /datum/loadout_item/under/miscellaneous/yukata
 	name = "Recolorable Yukata"
