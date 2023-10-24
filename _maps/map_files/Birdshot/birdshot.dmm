@@ -6627,18 +6627,6 @@
 /obj/effect/landmark/start/head_of_security,
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
-"cDg" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id = "rdordnance";
-	name = "Ordnance Lab Shutters"
-	},
-/turf/open/floor/plating,
-/area/station/science/ordnance)
 "cDh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -18883,6 +18871,17 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
+"gRN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/screwdriver{
+	pixel_y = 5
+	},
+/obj/machinery/camera/autoname/directional/east,
+/obj/item/wrench,
+/obj/item/paper/fluff/jobs/engineering/frequencies,
+/turf/open/floor/circuit,
+/area/station/tcommsat/server)
 "gRO" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/chair/stool/directional/east,
@@ -21793,16 +21792,6 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/engine,
 /area/station/engineering/gravity_generator)
-"hPR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/item/screwdriver{
-	pixel_y = 5
-	},
-/obj/machinery/camera/autoname/directional/east,
-/obj/item/wrench,
-/turf/open/floor/circuit,
-/area/station/tcommsat/server)
 "hPW" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/external{
@@ -27325,24 +27314,6 @@
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/misc/sandy_dirt,
 /area/station/hallway/primary/central/fore)
-"jNZ" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = 8
-	},
-/obj/machinery/requests_console/directional/west{
-	department = "Ordnance Test Range";
-	name = "Test Range Requests Console"
-	},
-/obj/effect/mapping_helpers/requests_console/information,
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/turf/open/floor/iron,
-/area/station/science/ordnance/testlab)
 "jOb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -34588,6 +34559,25 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
+"mmf" = (
+/obj/structure/table,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/item/assembly/timer{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/assembly/timer{
+	pixel_y = 7
+	},
+/obj/machinery/light_switch/directional/south,
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/item/holosign_creator/atmos,
+/obj/item/holosign_creator/atmos{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron,
+/area/station/science/ordnance/testlab)
 "mmi" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -34874,25 +34864,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
-"mtk" = (
-/obj/structure/table,
-/obj/effect/mapping_helpers/broken_floor,
-/obj/item/assembly/timer{
-	pixel_x = -3;
-	pixel_y = 9
-	},
-/obj/item/assembly/timer{
-	pixel_y = 7
-	},
-/obj/machinery/light_switch/directional/south,
-/obj/structure/extinguisher_cabinet/directional/west,
-/obj/item/holosign_creator/atmos,
-/obj/item/holosign_creator/atmos{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/turf/open/floor/iron,
-/area/station/science/ordnance/testlab)
 "mtu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -37046,6 +37017,15 @@
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/science/xenobiology)
+"nhD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/radio/intercom/command,
+/obj/item/paper/fluff/jobs/engineering/frequencies,
+/turf/open/floor/carpet/executive,
+/area/station/command/meeting_room)
 "nhP" = (
 /obj/item/storage/backpack/duffelbag/sec{
 	pixel_x = -15;
@@ -37234,14 +37214,6 @@
 "nla" = (
 /turf/closed/wall,
 /area/station/commons/storage/art)
-"nlb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/table/glass,
-/obj/item/radio/intercom/command,
-/turf/open/floor/carpet/executive,
-/area/station/command/meeting_room)
 "nle" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/broken_floor,
@@ -45962,6 +45934,34 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+"qiH" = (
+/obj/structure/table,
+/obj/machinery/airalarm/directional/west,
+/obj/item/pipe_dispenser{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/assembly/timer{
+	pixel_x = -3;
+	pixel_y = 13
+	},
+/obj/item/transfer_valve{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/obj/item/transfer_valve{
+	pixel_x = 7;
+	pixel_y = 19
+	},
+/obj/item/transfer_valve{
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/pipe_dispenser{
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/station/science/ordnance/testlab)
 "qiM" = (
 /obj/structure/table,
 /turf/open/floor/iron/cafeteria,
@@ -55524,6 +55524,24 @@
 "tnb" = (
 /turf/open/floor/plating,
 /area/station/maintenance/central/lesser)
+"tno" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/machinery/requests_console/directional/west{
+	department = "Ordnance Test Range";
+	name = "Test Range Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/floor/iron,
+/area/station/science/ordnance/testlab)
 "tns" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/effect/decal/cleanable/dirt,
@@ -56563,6 +56581,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
+"tDM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "rdordnance";
+	name = "Ordnance Lab Shutters"
+	},
+/turf/open/floor/plating,
+/area/station/science/ordnance)
 "tDP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -62064,34 +62094,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"vrW" = (
-/obj/structure/table,
-/obj/machinery/airalarm/directional/west,
-/obj/item/pipe_dispenser{
-	pixel_x = 3;
-	pixel_y = -1
-	},
-/obj/item/assembly/timer{
-	pixel_x = -3;
-	pixel_y = 13
-	},
-/obj/item/transfer_valve{
-	pixel_x = 10;
-	pixel_y = 21
-	},
-/obj/item/transfer_valve{
-	pixel_x = 7;
-	pixel_y = 19
-	},
-/obj/item/transfer_valve{
-	pixel_x = 4;
-	pixel_y = 17
-	},
-/obj/item/pipe_dispenser{
-	pixel_y = 4
-	},
-/turf/open/floor/iron,
-/area/station/science/ordnance/testlab)
 "vrY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -93493,7 +93495,7 @@ dDB
 sUy
 uOP
 gIG
-nlb
+nhD
 gTi
 pUy
 sUy
@@ -119787,7 +119789,7 @@ eXo
 eXo
 eXo
 xhM
-hPR
+gRN
 nVF
 msJ
 xQj
@@ -121306,7 +121308,7 @@ qJr
 qJr
 fky
 lkV
-cDg
+tDM
 okW
 kQt
 fUo
@@ -123613,9 +123615,9 @@ rle
 wTJ
 wrv
 ejx
-jNZ
-vrW
-mtk
+tno
+qiH
+mmf
 qei
 xwQ
 wCH
