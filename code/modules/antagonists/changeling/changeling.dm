@@ -11,6 +11,9 @@
 	hijack_speed = 0.5
 	ui_name = "AntagInfoChangeling"
 	suicide_cry = "FOR THE HIVE!!"
+	can_assign_self_objectives = TRUE
+	default_custom_objective = "Consume the station's most valuable genomes."
+	hardcore_random_bonus = TRUE
 	/// Whether to give this changeling objectives or not
 	var/give_objectives = TRUE
 	/// Weather we assign objectives which compete with other lings
@@ -175,11 +178,16 @@
 	else
 		RegisterSignal(living_mob, COMSIG_MOB_HUD_CREATED, PROC_REF(on_hud_created))
 
+	make_brain_decoy(living_mob)
+
+/datum/antagonist/changeling/proc/make_brain_decoy(mob/living/ling)
+	var/obj/item/organ/internal/brain/our_ling_brain = ling.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if(isnull(our_ling_brain) || our_ling_brain.decoy_override)
+		return
+
 	// Brains are optional for lings.
-	var/obj/item/organ/internal/brain/our_ling_brain = living_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(our_ling_brain)
-		our_ling_brain.organ_flags &= ~ORGAN_VITAL
-		our_ling_brain.decoy_override = TRUE
+	// This is automatically cleared if the ling is.
+	our_ling_brain.AddComponent(/datum/component/ling_decoy_brain, src)
 
 /datum/antagonist/changeling/proc/generate_name()
 	var/honorific
@@ -223,15 +231,10 @@
 		QDEL_NULL(lingchemdisplay)
 		QDEL_NULL(lingstingdisplay)
 
+	// The old body's brain still remains a decoy, I guess?
+
 /datum/antagonist/changeling/on_removal()
 	remove_changeling_powers(include_innate = TRUE)
-	if(!iscarbon(owner.current))
-		return
-	var/mob/living/carbon/carbon_owner = owner.current
-	var/obj/item/organ/internal/brain/not_ling_brain = carbon_owner.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(not_ling_brain && (not_ling_brain.decoy_override != initial(not_ling_brain.decoy_override)))
-		not_ling_brain.organ_flags |= ORGAN_VITAL
-		not_ling_brain.decoy_override = FALSE
 	return ..()
 
 /datum/antagonist/changeling/farewell()
@@ -280,22 +283,28 @@
 /datum/antagonist/changeling/proc/on_life(datum/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
 
+	var/delta_time = DELTA_WORLD_TIME(SSmobs)
+
 	// If dead, we only regenerate up to half chem storage.
 	if(owner.current.stat == DEAD)
-		adjust_chemicals((chem_recharge_rate - chem_recharge_slowdown) * seconds_per_tick, total_chem_storage * 0.5)
+		adjust_chemicals((chem_recharge_rate - chem_recharge_slowdown) * delta_time, total_chem_storage * 0.5)
 
 	// If we're not dead - we go up to the full chem cap.
 	else
-		adjust_chemicals((chem_recharge_rate - chem_recharge_slowdown) * seconds_per_tick)
+		adjust_chemicals((chem_recharge_rate - chem_recharge_slowdown) * delta_time)
 
 /**
- * Signal proc for [COMSIG_LIVING_POST_FULLY_HEAL], getting admin-healed restores our chemicals.
+ * Signal proc for [COMSIG_LIVING_POST_FULLY_HEAL]
  */
-/datum/antagonist/changeling/proc/on_fullhealed(datum/source, heal_flags)
+/datum/antagonist/changeling/proc/on_fullhealed(mob/living/source, heal_flags)
 	SIGNAL_HANDLER
 
+	// Aheal restores all chemicals
 	if(heal_flags & HEAL_ADMIN)
 		adjust_chemicals(INFINITY)
+
+	// Makes sure the brain, if recreated, is a decoy as expected
+	make_brain_decoy(source)
 
 /**
  * Signal proc for [COMSIG_MOB_MIDDLECLICKON] and [COMSIG_MOB_ALTCLICKON].
@@ -363,12 +372,11 @@
 /datum/antagonist/changeling/proc/regain_powers()
 	emporium_action.Grant(owner.current)
 	for(var/datum/action/changeling/power as anything in innate_powers)
-		if(power.needs_button)
-			power.Grant(owner.current)
+		power.Grant(owner.current)
 
 	for(var/power_path in purchased_powers)
 		var/datum/action/changeling/power = purchased_powers[power_path]
-		if(istype(power) && power.needs_button)
+		if(istype(power))
 			power.Grant(owner.current)
 
 /*
@@ -543,9 +551,12 @@
 	new_profile.socks = target.socks
 
 	// SKYRAT EDIT START
+	new_profile.bra = target.bra
+
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
 	new_profile.socks_color = target.socks_color
+	new_profile.bra_color = target.bra_color
 	new_profile.eye_color_left = target.eye_color_left
 	new_profile.eye_color_right = target.eye_color_right
 	new_profile.emissive_eyes = target.emissive_eyes
@@ -678,10 +689,6 @@
 	add_new_profile(owner.current)
 
 /datum/antagonist/changeling/forge_objectives()
-	//OBJECTIVES - random traitor objectives. Unique objectives "steal brain" and "identity theft".
-	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
-	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
-
 	var/escape_objective_possible = TRUE
 
 	switch(competitive_objectives ? rand(1,3) : 1)
@@ -789,9 +796,12 @@
 	user.socks = chosen_profile.socks
 
 	// SKYRAT EDIT START
+	user.bra = chosen_profile.bra
+
 	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt_color = chosen_profile.undershirt_color
 	user.socks_color = chosen_profile.socks_color
+	user.bra_color = chosen_profile.bra_color
 	user.emissive_eyes = chosen_profile.emissive_eyes
 	user.dna.mutant_bodyparts = chosen_dna.mutant_bodyparts.Copy()
 	user.dna.body_markings = chosen_dna.body_markings.Copy()
@@ -973,27 +983,6 @@
 	/// ID HUD icon associated with the profile
 	var/id_icon
 
-	/// SKYRAT EDIT START
-	var/underwear_color
-	var/undershirt_color
-	var/socks_color
-	var/eye_color_left
-	var/eye_color_right
-	var/emissive_eyes
-	var/list/grad_style = list("None", "None")
-	var/list/grad_color = list(null, null)
-
-	var/physique
-	var/list/worn_icon_digi_list = list()
-	var/list/worn_icon_monkey_list = list()
-	var/list/worn_icon_teshari_list = list()
-	var/list/worn_icon_vox_list = list()
-	var/list/supports_variations_flags_list = list()
-	var/scream_type
-	var/laugh_type
-	var/age
-	var/list/quirks = list()
-	/// SKYRAT EDIT END
 
 	/// The TTS voice of the profile source
 	var/voice
@@ -1036,6 +1025,8 @@
 	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
+	new_profile.bra = bra
+	new_profile.bra_color = bra_color
 	new_profile.eye_color_left = eye_color_left
 	new_profile.eye_color_right = eye_color_right
 	new_profile.emissive_eyes = emissive_eyes
@@ -1076,11 +1067,9 @@
 		for(var/datum/objective/objective in objectives)
 			// SKYRAT EDIT START - No greentext
 			/*
-			if(objective.check_completion())
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_greentext("Success!</b>")]"
-			else
-				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
+			if(!objective.check_completion())
 				changeling_win = FALSE
+			parts += "<b>Objective #[count]</b>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
 			*/
 			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
 			// SKYRAT EDIT END - No greentext
@@ -1161,9 +1150,6 @@
 
 /datum/outfit/changeling_space
 	name = "Changeling (Space)"
-
-	head = /obj/item/clothing/head/helmet/space/changeling
-	suit = /obj/item/clothing/suit/space/changeling
 	l_hand = /obj/item/melee/arm_blade
 
 #undef FORMAT_CHEM_CHARGES_TEXT

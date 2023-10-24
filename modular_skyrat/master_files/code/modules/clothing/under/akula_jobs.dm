@@ -87,6 +87,7 @@
 
 	if(tail_overlay)
 		user.add_overlay(tail_overlay)
+		icon_state = "[icon_state]_tail"
 
 	/// Suit armor
 /datum/armor/clothing_under/wetsuit
@@ -199,7 +200,7 @@
 		These helms are normally attached to Shoredresses or Stardresses, but comes with a fitted neoprene collar to allow wear on essentially anything."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
-	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | PLASMAMAN_HELMET_EXEMPT | HEADINTERNALS
+	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | STACKABLE_HELMET_EXEMPT | HEADINTERNALS
 	icon_state = "helmet"
 	inhand_icon_state = "helmet"
 	strip_delay = 6 SECONDS
@@ -245,7 +246,7 @@
 	if(!istype(hitting_item, /obj/item/clothing/head))
 		return
 	var/obj/item/clothing/hitting_hat = hitting_item
-	if(hitting_hat.clothing_flags & PLASMAMAN_HELMET_EXEMPT)
+	if(hitting_hat.clothing_flags & STACKABLE_HELMET_EXEMPT)
 		balloon_alert(user, "doesn't fit!")
 		return
 	if(attached_hat)

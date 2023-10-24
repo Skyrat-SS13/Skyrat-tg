@@ -172,7 +172,7 @@
 //turfs
 /turf/closed/mineral/strange_rock
 	mineralAmt = 1
-	icon = MAP_SWITCH('modular_skyrat/modules/xenoarch/icons/mining.dmi', 'icons/turf/mining.dmi')
+	icon = MAP_SWITCH('modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi', 'modular_skyrat/modules/xenoarch/icons/mining.dmi')
 	scan_state = "rock_Strange"
 	mineralType = /obj/item/xenoarch/strange_rock
 
@@ -204,7 +204,7 @@
 		)
 
 /turf/closed/mineral/strange_rock/ice
-	icon = MAP_SWITCH('modular_skyrat/modules/xenoarch/icons/mining.dmi', 'icons/turf/mining.dmi')
+	icon = MAP_SWITCH('icons/turf/walls/icerock_wall.dmi', 'modular_skyrat/modules/xenoarch/icons/mining.dmi')
 	icon_state = "icerock_strange"
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER

@@ -14,6 +14,8 @@
 	var/max_combined_w_class = 15
 	/// Max amount of items in the storage.
 	var/max_items = 7
+	/// Is nesting same-size storage items allowed?
+	var/big_nesting = FALSE
 
 /obj/item/mod/module/storage/Initialize(mapload)
 	. = ..()
@@ -24,6 +26,7 @@
 /obj/item/mod/module/storage/on_install()
 	var/datum/storage/modstorage = mod.create_storage(max_specific_storage = max_w_class, max_total_storage = max_combined_w_class, max_slots = max_items)
 	modstorage.set_real_location(src)
+	modstorage.allow_big_nesting = big_nesting
 	atom_storage.locked = STORAGE_NOT_LOCKED
 	RegisterSignal(mod.chestplate, COMSIG_ITEM_PRE_UNEQUIP, PROC_REF(on_chestplate_unequip))
 
@@ -83,6 +86,7 @@
 	max_w_class = WEIGHT_CLASS_GIGANTIC
 	max_combined_w_class = 60
 	max_items = 21
+	big_nesting = TRUE
 
 ///Ion Jetpack - Lets the user fly freely through space using battery charge.
 /obj/item/mod/module/jetpack
@@ -101,7 +105,9 @@
 	overlay_state_active = "module_jetpack_on"
 	/// Do we give the wearer a speed buff.
 	var/full_speed = FALSE
+	/// Do we have stabilizers? If yes the user won't move from inertia.
 	var/stabilize = TRUE
+	/// Callback to see if we can thrust the user.
 	var/thrust_callback
 
 /obj/item/mod/module/jetpack/Initialize(mapload)
@@ -163,11 +169,52 @@
 /obj/item/mod/module/jetpack/advanced
 	name = "MOD advanced ion jetpack module"
 	desc = "An improvement on the previous model of electric thrusters. This one achieves higher speeds through \
-		mounting of more jets and a red paint applied on it."
+		mounting of more jets and application of red paint."
 	icon_state = "jetpack_advanced"
 	overlay_state_inactive = "module_jetpackadv"
 	overlay_state_active = "module_jetpackadv_on"
 	full_speed = TRUE
+
+/// Cooldown to use if we didn't actually launch a jump jet
+#define FAILED_ACTIVATION_COOLDOWN 3 SECONDS
+
+///Jump Jet - Briefly removes the effect of gravity and pushes you up one z-level if possible.
+/obj/item/mod/module/jump_jet
+	name = "MOD ionic jump jet module"
+	desc = "A specialised ionic thruster which provides a short but powerful boost capable of pushing against gravity, \
+		after which time it needs to recharge."
+	icon_state = "jump_jet"
+	module_type = MODULE_USABLE
+	complexity = 3
+	cooldown_time = 30 SECONDS
+	use_power_cost = DEFAULT_CHARGE_DRAIN * 5
+	incompatible_modules = list(/obj/item/mod/module/jump_jet)
+
+/obj/item/mod/module/jump_jet/on_use()
+	. = ..()
+	if (!.)
+		return FALSE
+	if (DOING_INTERACTION(mod.wearer, mod.wearer))
+		balloon_alert(mod.wearer, "busy!")
+		return
+	balloon_alert(mod.wearer, "launching...")
+	mod.wearer.Shake(duration = 1 SECONDS)
+	if (!do_after(mod.wearer, 1 SECONDS, target = mod.wearer))
+		start_cooldown(FAILED_ACTIVATION_COOLDOWN) // Don't go on full cooldown if we failed to launch
+		return FALSE
+	playsound(mod.wearer, 'sound/vehicles/rocketlaunch.ogg', 100, TRUE)
+	mod.wearer.apply_status_effect(/datum/status_effect/jump_jet)
+	var/turf/launch_from = get_turf(mod.wearer)
+	if (mod.wearer.zMove(UP, z_move_flags = ZMOVE_CHECK_PULLS))
+		launch_from.visible_message(span_warning("[mod.wearer] rockets into the air!"))
+	new /obj/effect/temp_visual/jet_plume(launch_from)
+
+	var/obj/item/mod/module/jetpack/linked_jetpack = locate() in mod.modules
+	if (!isnull(linked_jetpack) && !linked_jetpack.active)
+		linked_jetpack.on_activation()
+	return TRUE
+
+#undef FAILED_ACTIVATION_COOLDOWN
 
 ///Status Readout - Puts a lot of information including health, nutrition, fingerprints, temperature to the suit TGUI.
 /obj/item/mod/module/status_readout
@@ -581,7 +628,7 @@
 	incompatible_modules = list(/obj/item/mod/module/hat_stabilizer)
 	/*Intentionally left inheriting 0 complexity and removable = TRUE;
 	even though it comes inbuilt into the Magnate/Corporate MODS and spawns in maints, I like the idea of stealing them*/
-	/// Currently "stored" hat. No armor or function will be inherited, ONLY the icon.
+	/// Currently "stored" hat. No armor or function will be inherited, only the icon and cover flags.
 	var/obj/item/clothing/head/attached_hat
 	/// Original cover flags for the MOD helmet, before a hat is placed
 	var/former_flags
@@ -612,14 +659,18 @@
 	SIGNAL_HANDLER
 	if(!istype(hitting_item, /obj/item/clothing/head))
 		return
+	var/obj/item/clothing/hat = hitting_item
 	if(!mod.active)
 		balloon_alert(user, "suit must be active!")
 		return
 	if(attached_hat)
 		balloon_alert(user, "hat already attached!")
 		return
+	if(hat.clothing_flags & STACKABLE_HELMET_EXEMPT)
+		balloon_alert(user, "invalid hat!")
+		return
 	if(mod.wearer.transferItemToLoc(hitting_item, src, force = FALSE, silent = TRUE))
-		attached_hat = hitting_item
+		attached_hat = hat
 		former_flags = mod.helmet.flags_cover
 		former_visor_flags = mod.helmet.visor_flags_cover
 		mod.helmet.flags_cover |= attached_hat.flags_cover
@@ -752,7 +803,7 @@
 		accepted_mats, 50 * SHEET_MATERIAL_AMOUNT, \
 		MATCONTAINER_EXAMINE|MATCONTAINER_NO_INSERT, \
 		container_signals = list( \
-			COMSIG_MATCONTAINER_SHEETS_RETRIVED = TYPE_PROC_REF(/obj/item/mod/module/recycler, InsertSheets) \
+			COMSIG_MATCONTAINER_SHEETS_RETRIEVED = TYPE_PROC_REF(/obj/item/mod/module/recycler, InsertSheets) \
 		) \
 	)
 
@@ -825,7 +876,7 @@
 	balloon_alert(mod.wearer, "not enough material")
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 
-/obj/item/mod/module/recycler/proc/InsertSheets(obj/item/recycler, obj/item/stack/sheets)
+/obj/item/mod/module/recycler/proc/InsertSheets(obj/item/recycler, obj/item/stack/sheets, atom/context)
 	SIGNAL_HANDLER
 
 	attempt_insert_storage(sheets)

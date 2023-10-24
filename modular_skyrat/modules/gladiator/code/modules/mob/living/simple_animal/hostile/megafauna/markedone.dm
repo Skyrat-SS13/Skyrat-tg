@@ -8,6 +8,8 @@
 #define SEVENTY_FIVE_PERCENT 75
 #define FIFTY_PERCENT 50
 #define SHOWDOWN_PERCENT 25
+#define CHARGE_MODIFIER 0.4
+#define TELE_QUIP_CHANCE 20
 
 /**
  * A mean-ass single-combat sword-wielding nigh-demigod that is nothing but a walking, talking, breathing Berserk reference. He do kill shit doe!
@@ -61,8 +63,6 @@
 	var/chargerange = 21
 	/// We get stunned whenever we ram into a closed turf
 	var/stunned = FALSE
-	/// Move_to_delay but only while we are charging
-	var/move_to_delay_charge = 0.6
 	/// Chance to block damage entirely on phases 1 and 4
 	var/block_chance = 50
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
@@ -291,6 +291,8 @@
 		if(0 to SHOWDOWN_PERCENT)
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
+				INVOKE_ASYNC(src, PROC_REF(swordslam))
+				INVOKE_ASYNC(src, PROC_REF(stomp))
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 8 SECONDS
 				icon_state = "marked3"
@@ -298,8 +300,6 @@
 				melee_damage_upper = 50
 				melee_damage_lower = 50
 				move_to_delay = 1.2
-	if(charging)
-		move_to_delay = move_to_delay_charge
 
 /// Proc name speaks for itself. Vinesauce Joel
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack()
@@ -352,7 +352,7 @@
 	sleep(1)
 	spinning = FALSE
 
-/// The Marked One's charge is extremely quick, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it stuns if it lands
+/// The Marked One's charge is extremely quick, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
 	var/static/list/charge_messages = list(
@@ -370,6 +370,7 @@
 	face_atom(target)
 	minimum_distance = 0
 	charging = TRUE
+	move_to_delay -= CHARGE_MODIFIER
 	update_phase()
 
 /// Discharge stuns the marked one momentarily after landing a charge into a wall or a person
@@ -380,6 +381,7 @@
 	chargetiles = 0
 	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 	animate(src, color = initial(color), 0.5 SECONDS)
+	move_to_delay += CHARGE_MODIFIER
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE
@@ -402,6 +404,18 @@
 			targeted = pick(possible_locs)
 			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 			forceMove(targeted)
+			var/static/list/tele_messages = list(
+				"Hi.",
+				"Hello there.",
+				"Hello.",
+				"Hey.",
+				"Yo.",
+				"Boo.",
+				"Sup.",
+			)
+
+			if(prob(TELE_QUIP_CHANCE))
+				say(message = pick(tele_messages))
 
 /// Bone Knife Throw makes him throw bone knives. woah.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target)
@@ -471,7 +485,7 @@
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
 				else
-					INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
+					INVOKE_ASYNC(src, PROC_REF(teleport), target)
 					ranged_cooldown += 5 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
@@ -483,7 +497,8 @@
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
 						ranged_cooldown += 3 SECONDS
 					else
-						INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
+						INVOKE_ASYNC(src, PROC_REF(teleport), target)
+						INVOKE_ASYNC(src, PROC_REF(stomp))
 						ranged_cooldown += 4 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
@@ -499,19 +514,19 @@
 						INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 						INVOKE_ASYNC(src, PROC_REF(teleport), target)
 						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 2 SECONDS
+						ranged_cooldown += 1 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 2 SECONDS
+						ranged_cooldown += 1 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
 					INVOKE_ASYNC(src, PROC_REF(stomp))
 					ranged_cooldown += 0.5 SECONDS
 			else
-				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
+				INVOKE_ASYNC(src, PROC_REF(teleport), target)
 				INVOKE_ASYNC(src, PROC_REF(stomp))
-				ranged_cooldown += 2.5 SECONDS
+				ranged_cooldown += 1 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
@@ -523,3 +538,5 @@
 #undef SEVENTY_FIVE_PERCENT
 #undef FIFTY_PERCENT
 #undef SHOWDOWN_PERCENT
+#undef CHARGE_MODIFIER
+#undef TELE_QUIP_CHANCE

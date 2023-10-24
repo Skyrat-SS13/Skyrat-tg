@@ -51,6 +51,13 @@
 
 	ass_image = 'icons/ass/assplasma.png'
 
+	outfit_override_registry = list(
+		/datum/outfit/syndicate = /datum/outfit/syndicate/plasmaman,
+		/datum/outfit/syndicate/full = /datum/outfit/syndicate/full/plasmaman,
+		/datum/outfit/syndicate/leader = /datum/outfit/syndicate/leader/plasmaman,
+		/datum/outfit/syndicate/reinforcement = /datum/outfit/syndicate/reinforcement/plasmaman,
+	)
+
 	/// If the bones themselves are burning clothes won't help you much
 	var/internal_fire = FALSE
 
@@ -109,7 +116,7 @@
 
 	H.update_fire()
 
-/datum/species/plasmaman/handle_fire(mob/living/carbon/human/H, seconds_per_tick, times_fired, no_protection = FALSE)
+/datum/species/plasmaman/handle_fire(mob/living/carbon/human/H, seconds_per_tick, no_protection = FALSE)
 	if(internal_fire)
 		no_protection = TRUE
 	. = ..()
@@ -137,6 +144,10 @@
 		'sound/voice/plasmaman/plasmeme_scream_2.ogg',
 		'sound/voice/plasmaman/plasmeme_scream_3.ogg',
 	)
+
+/datum/species/plasmaman/get_physical_attributes()
+	return "Plasmamen literally breathe and live plasma. They spontaneously combust on contact with oxygen, and besides all the quirks that go with that, \
+		they're very vulnerable to all kinds of physical damage due to their brittle structure."
 
 /datum/species/plasmaman/get_species_description()
 	return "Found on the Icemoon of Freyja, plasmamen consist of colonial \

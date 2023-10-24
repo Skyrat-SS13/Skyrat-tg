@@ -87,7 +87,7 @@
 	var/obj/item/tool = user.get_active_held_item()
 	if(step.try_op(user, target, user.zone_selected, tool, src, try_to_fail))
 		return TRUE
-	if(tool && tool.item_flags) //Mechanic organ manipulation isn't done with just surgery tools
+	if(tool && tool.tool_behaviour) //Mechanic organ manipulation isn't done with just surgery tools
 		to_chat(user, span_warning("This step requires a different tool!"))
 		return TRUE
 
@@ -293,7 +293,7 @@
 
 ///only operate on internal organs
 /datum/surgery_step/manipulate_organs/internal/can_use_organ(mob/user, obj/item/organ/organ)
-	return isinternalorgan(organ)
+	return isinternalorgan(organ) && !(organ.organ_flags & ORGAN_UNREMOVABLE) // SKYRAT EDIT - Don't show unremovable organs - ORIGINAL: return isinternalorgan(organ)
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/internal/mechanic
@@ -307,7 +307,7 @@
 
 ///Only operate on external organs
 /datum/surgery_step/manipulate_organs/external/can_use_organ(mob/user, obj/item/organ/organ)
-	return isexternalorgan(organ)
+	return isexternalorgan(organ) && !(organ.organ_flags & ORGAN_UNREMOVABLE) // SKYRAT EDIT - Don't show unremovable organs - ORIGINAL: return isexternalorgan(organ)
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/external/mechanic

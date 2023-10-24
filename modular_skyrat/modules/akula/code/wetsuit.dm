@@ -35,7 +35,7 @@
 	alert_type = null
 	tick_interval = 10 SECONDS
 
-/datum/status_effect/grouped/wetsuit/tick()
+/datum/status_effect/grouped/wetsuit/tick(seconds_between_ticks)
 	owner.set_wet_stacks(STATUS_EFFECT_STACKS)
 
 #undef STATUS_EFFECT_STACKS

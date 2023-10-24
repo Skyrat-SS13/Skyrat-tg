@@ -60,24 +60,28 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	SUITS / SUIT JACKETS
 */
 
+/datum/loadout_item/suit/recolorable
+	name = "Recolorable Formal Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/greyscale
+
 /datum/loadout_item/suit/black_suit_jacket
-	name = "Black Suit Jacket"
+	name = "Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black
 
 /datum/loadout_item/suit/blue_suit_jacket
-	name = "Blue Suit Jacket"
+	name = "Blue Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer
 
 /datum/loadout_item/suit/purple_suit_jacket
-	name = "Purple Suit Jacket"
+	name = "Purple Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
 /datum/loadout_item/suit/white_suit_jacket
-	name = "White Suit Jacket"
+	name = "White Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/white
 
 /datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
+	name = "Light Black Formal Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
 
 /datum/loadout_item/suit/suitwhite
@@ -279,29 +283,53 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	MISC
 */
 
-/datum/loadout_item/suit/purple_apron
-	name = "Purple Apron"
-	item_path = /obj/item/clothing/suit/apron/purple_bartender
-
 /datum/loadout_item/suit/recolorable_apron
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
 
 /datum/loadout_item/suit/recolorable_overalls
 	name = "Recolorable Overalls"
-	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
-
-/datum/loadout_item/suit/denim_overalls
-	name = "Denim Overalls"
 	item_path = /obj/item/clothing/suit/apron/overalls
 
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	item_path = /obj/item/clothing/suit/hooded/cloak/david
 
+/datum/loadout_item/suit/wellwornshirt
+	name = "Well-worn Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt
+
+/datum/loadout_item/suit/wellworn_graphicshirt
+	name = "Well-worn Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic
+
 /datum/loadout_item/suit/ianshirt
-	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/costume/ianshirt
+	name = "Well-worn Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/graphic/ian
+
+/datum/loadout_item/suit/wornoutshirt
+	name = "Worn-out Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout
+
+/datum/loadout_item/suit/wornout_graphicshirt
+	name = "Worn-out graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic
+
+/datum/loadout_item/suit/wornout_ianshirt
+	name = "Worn-out Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/wornout/graphic/ian
+
+/datum/loadout_item/suit/messyshirt
+	name = "Messy Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy
+
+/datum/loadout_item/suit/messy_graphicshirt
+	name = "Messy Graphic Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic
+
+/datum/loadout_item/suit/messy_ianshirt
+	name = "Messy Ian Shirt"
+	item_path = /obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/ian
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
@@ -612,10 +640,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
-/datum/loadout_item/suit/supply_gorka_jacket
-	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka/supply
+/datum/loadout_item/suit/cargo_gorka_jacket
+	name = "Cargo Gorka Jacket"
+	item_path = /obj/item/clothing/suit/toggle/cargo_tech
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+
+/datum/loadout_item/suit/qm_jacket
+	name = "Quartermaster's Overcoat"
+	item_path = /obj/item/clothing/suit/jacket/quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER)
 
 // LABCOATS
 /datum/loadout_item/suit/labcoat_highvis

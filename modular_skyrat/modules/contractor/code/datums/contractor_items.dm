@@ -177,7 +177,7 @@
 	item = /obj/item/mod/module/baton_holster
 	item_icon = "wrench" //I cannot find anything better, replace if you find something more fitting
 	limited = 1
-	cost = 1
+	cost = 2
 
 /datum/contractor_item/baton_upgrade_cuff
 	name = "Baton Cuff Upgrade"

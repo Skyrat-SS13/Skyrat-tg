@@ -119,7 +119,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	radio.talk_into(src, "[inserted_id.registered_name], [current_assignment] has gone off-duty.", announcement_channel)
 	update_static_data_for_all_viewers()
 
-	SSid_access.apply_trim_to_card(inserted_id, target_trim, FALSE)
+	SSid_access.apply_trim_to_card(inserted_id, target_trim, TRUE)
 	inserted_id.assignment = "Off-Duty " + current_assignment
 	inserted_id.update_label()
 

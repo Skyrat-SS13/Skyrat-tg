@@ -84,7 +84,8 @@
 // Hair Definitions //
 //////////////////////
 /datum/sprite_accessory/hair
-	icon = 'icons/mob/species/human/human_face.dmi'   // default icon for all hairs
+	icon = 'icons/mob/human/human_face.dmi'   // default icon for all hairs
+	var/y_offset = 0 // Y offset to apply so we can have hair that reaches above the player sprite's visual bounding box
 
 	// please make sure they're sorted alphabetically and, where needed, categorized
 	// try to capitalize the names please~
@@ -102,6 +103,11 @@
 /datum/sprite_accessory/hair/afro_large
 	name = "Afro (Large)"
 	icon_state = "hair_bigafro"
+
+/datum/sprite_accessory/hair/afro_huge
+	name = "Afro (Huge)"
+	icon_state = "hair_hugeafro"
+	y_offset = 6
 
 /datum/sprite_accessory/hair/allthefuzz
 	name = "All The Fuzz"
@@ -832,13 +838,17 @@
 */
 
 /datum/sprite_accessory/gradient
-	icon = 'icons/mob/species/hair_gradients.dmi'
+	icon = 'icons/mob/human/species/hair_gradients.dmi'
 	///whether this gradient applies to hair and/or beards. Some gradients do not work well on beards.
 	var/gradient_category = GRADIENT_APPLIES_TO_HAIR|GRADIENT_APPLIES_TO_FACIAL_HAIR
 
 /datum/sprite_accessory/gradient/none
 	name = "None"
 	icon_state = "none"
+
+/datum/sprite_accessory/gradient/full
+	name = "Full"
+	icon_state = "full"
 
 /datum/sprite_accessory/gradient/fadeup
 	name = "Fade Up"
@@ -923,7 +933,7 @@
 /////////////////////////////
 
 /datum/sprite_accessory/facial_hair
-	icon = 'icons/mob/species/human/human_face.dmi'
+	icon = 'icons/mob/human/human_face.dmi'
 	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
 	em_block = TRUE
 
@@ -1158,6 +1168,8 @@
 	use_static = TRUE
 
 
+
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 //FEMALE UNDERWEAR
 /datum/sprite_accessory/underwear/female_bikini
 	name = "Bikini"
@@ -1259,6 +1271,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
+*/ // SKYRAT EDIT END
 
 ////////////////////////////
 // Undershirt Definitions //
@@ -1454,7 +1467,7 @@
 	name = "Short-sleeved Shirt (White)"
 	icon_state = "whiteshortsleeve"
 	gender = NEUTER
-
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Sports Bra"
 	icon_state = "sports_bra"
@@ -1464,7 +1477,7 @@
 	name = "Sports Bra (Alt)"
 	icon_state = "sports_bra_alt"
 	gender = NEUTER
-
+*/ // SKYRAT EDIT END
 /datum/sprite_accessory/undershirt/blueshirtsport
 	name = "Sports Shirt (Blue)"
 	icon_state = "blueshirtsport"
@@ -1720,7 +1733,7 @@
 /////////////////////////////
 
 /datum/sprite_accessory/body_markings
-	icon = 'icons/mob/species/lizard/lizard_misc.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
 
 /datum/sprite_accessory/body_markings/none
 	name = "None"
@@ -1745,7 +1758,7 @@
 	em_block = TRUE
 
 /datum/sprite_accessory/tails/lizard
-	icon = 'icons/mob/species/lizard/lizard_tails.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_tails.dmi'
 
 /datum/sprite_accessory/tails/lizard/smooth
 	name = "Smooth"
@@ -1765,18 +1778,18 @@
 
 /datum/sprite_accessory/tails/human/cat
 	name = "Cat"
-	icon = 'icons/mob/species/human/cat_features.dmi'
+	icon = 'icons/mob/human/cat_features.dmi'
 	icon_state = "default"
 	color_src = HAIR_COLOR
 
 /datum/sprite_accessory/tails/monkey
 	name = "Monkey"
-	icon = 'icons/mob/species/monkey/monkey_tail.dmi'
+	icon = 'icons/mob/human/species/monkey/monkey_tail.dmi'
 	icon_state = "monkey"
 	color_src = FALSE
 
 /datum/sprite_accessory/pod_hair
-	icon = 'icons/mob/species/podperson_hair.dmi'
+	icon = 'icons/mob/human/species/podperson_hair.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/pod_hair/ivy
@@ -1820,7 +1833,7 @@
 	icon_state = "hibiscus"
 
 /datum/sprite_accessory/snouts
-	icon = 'icons/mob/species/lizard/lizard_misc.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/snouts/sharp
@@ -1840,7 +1853,7 @@
 	icon_state = "roundlight"
 
 /datum/sprite_accessory/horns
-	icon = 'icons/mob/species/lizard/lizard_misc.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/horns/none
@@ -1880,7 +1893,7 @@
 	icon_state = "lbroken"
 
 /datum/sprite_accessory/ears
-	icon = 'icons/mob/species/human/cat_features.dmi'
+	icon = 'icons/mob/human/cat_features.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/ears/none
@@ -1894,7 +1907,7 @@
 	color_src = HAIR_COLOR
 
 /datum/sprite_accessory/ears/fox
-	icon = 'icons/mob/species/human/fox_features.dmi'
+	icon = 'icons/mob/human/fox_features.dmi'
 	name = "Fox"
 	icon_state = "fox"
 	hasinner = TRUE
@@ -1906,11 +1919,11 @@
 	icon_state = "none"
 
 /datum/sprite_accessory/wings
-	icon = 'icons/mob/species/wings.dmi'
+	icon = 'icons/mob/human/species/wings.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/wings_open
-	icon = 'icons/mob/species/wings.dmi'
+	icon = 'icons/mob/human/species/wings.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/wings/angel
@@ -2031,7 +2044,7 @@
 	dimension_y = 32
 
 /datum/sprite_accessory/frills
-	icon = 'icons/mob/species/lizard/lizard_misc.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
 
 /datum/sprite_accessory/frills/none
 	name = "None"
@@ -2050,11 +2063,11 @@
 	icon_state = "aqua"
 
 /datum/sprite_accessory/spines
-	icon = 'icons/mob/species/lizard/lizard_spines.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/spines_animated
-	icon = 'icons/mob/species/lizard/lizard_spines.dmi'
+	icon = 'icons/mob/human/species/lizard/lizard_spines.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/spines/none
@@ -2116,7 +2129,7 @@
 	name = DIGITIGRADE_LEGS
 
 /datum/sprite_accessory/caps
-	icon = 'icons/mob/species/mush_cap.dmi'
+	icon = 'icons/mob/human/species/mush_cap.dmi'
 	color_src = HAIR_COLOR
 	em_block = TRUE
 
@@ -2132,7 +2145,7 @@
 
 
 /datum/sprite_accessory/moth_wings
-	icon = 'icons/mob/species/moth/moth_wings.dmi'
+	icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	color_src = null
 	em_block = TRUE
 
@@ -2234,7 +2247,7 @@
 	icon_state = "moffra"
 
 /datum/sprite_accessory/moth_antennae //Finally splitting the sprite
-	icon = 'icons/mob/species/moth/moth_antennae.dmi'
+	icon = 'icons/mob/human/species/moth/moth_antennae.dmi'
 	color_src = null
 
 /datum/sprite_accessory/moth_antennae/plain
@@ -2321,7 +2334,7 @@
 	icon_state = "moffra"
 
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
-	icon = 'icons/mob/species/moth/moth_markings.dmi'
+	icon = 'icons/mob/human/species/moth/moth_markings.dmi'
 	color_src = null
 
 /datum/sprite_accessory/moth_markings/none

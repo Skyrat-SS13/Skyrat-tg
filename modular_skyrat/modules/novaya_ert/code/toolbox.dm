@@ -18,8 +18,8 @@
 			new ammo_type(src)
 
 /obj/item/storage/toolbox/ammobox/full/mosin
-	name = "ammo box (Sportiv)"
-	ammo_type = /obj/item/ammo_box/a762
+	name = "ammo box (Sakhno)"
+	ammo_type = /obj/item/ammo_box/strilka310
 	amount = 7
 
 /obj/item/storage/toolbox/ammobox/full/krinkov
@@ -48,27 +48,15 @@
 	desc = "It contains a few magazines."
 	ammo_type = /obj/item/ammo_box/magazine/akm/ap
 
-/obj/item/storage/toolbox/ammobox/full/bison
-	name = "ammo box (PP-95)"
-	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
-	amount = 4
-
 /obj/item/storage/toolbox/ammobox/full/nri_smg
 	name = "ammo box (QLP/04)"
-	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	ammo_type = /obj/item/ammo_box/magazine/uzim9mm
 	amount = 7
 
 /obj/item/storage/toolbox/ammobox/full/l6_saw
 	name = "ammo box (L6 SAW)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/mm712x82
-	amount = 7
-
-/obj/item/storage/toolbox/ammobox/full/makarov
-	name = "ammo box (R-C Makarov)"
-	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/multi_sprite/makarov
+	ammo_type = /obj/item/ammo_box/magazine/m7mm
 	amount = 7
 
 /obj/item/storage/toolbox/ammobox/full/aps

@@ -84,3 +84,12 @@
 
 /// Trait that is applied whenever someone or something is glassblowing
 #define TRAIT_CURRENTLY_GLASSBLOWING "currently_glassblowing"
+
+/// Trait that was granted by a NIFSoft
+#define NIFSOFT_TRAIT "nifsoft"
+
+/// Trait given to a piece of eyewear that allows the user to use NIFSoft HUDs
+#define TRAIT_NIFSOFT_HUD_GRANTER "nifsoft_hud_granter"
+
+/// Trait given to a brain that is able to accept souls from a RSD
+#define TRAIT_RSD_COMPATIBLE "rsd_compatible"

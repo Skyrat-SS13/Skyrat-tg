@@ -63,7 +63,7 @@
 		return
 
 	var/message = ""
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna spank.
@@ -82,4 +82,4 @@
 			if(prob(10) && (target.stat != DEAD))
 				target.apply_status_effect(/datum/status_effect/subspace)
 			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
+			play_lewd_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)

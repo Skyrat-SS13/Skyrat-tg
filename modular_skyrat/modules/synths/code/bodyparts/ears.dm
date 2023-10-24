@@ -1,16 +1,12 @@
-#define SYNTH_BAD_EFFECT_DURATION 30 SECONDS
-#define SYNTH_DEAF_STACKS 30
-#define SYNTH_KNOCKDOWN_POWER 40
-#define SYNTH_HEAVY_EMP_MULTIPLIER 2
-
 /obj/item/organ/internal/ears/synth
 	name = "auditory sensors"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
-	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
+	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
+	maxHealth = 1 * STANDARD_ORGAN_THRESHOLD
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
 /obj/item/organ/internal/ears/synth/emp_act(severity)
@@ -19,21 +15,34 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 
+	if(!COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
+		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
+
 	switch(severity)
 		if(EMP_HEAVY)
 			owner.set_jitter_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
 			owner.set_dizzy_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
-			owner.Knockdown(SYNTH_KNOCKDOWN_POWER * SYNTH_HEAVY_EMP_MULTIPLIER)
 			adjustEarDamage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, SYNTH_DEAF_STACKS)
-			to_chat(owner, span_warning("Your system reports a complete lack of input from your auditory sensors."))
+			to_chat(owner, span_warning("Alert: Null feedback from auditory sensors detected, seek maintenance immediately. Error Code: AS-105"))
 
 		if(EMP_LIGHT)
 			owner.set_jitter_if_lower(SYNTH_BAD_EFFECT_DURATION)
 			owner.set_dizzy_if_lower(SYNTH_BAD_EFFECT_DURATION)
-			owner.Knockdown(SYNTH_KNOCKDOWN_POWER)
-			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
+			adjustEarDamage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, SYNTH_DEAF_STACKS)
+			to_chat(owner, span_warning("Alert: Anomalous feedback from auditory sensors detected. Error Code: AS-50"))
 
-#undef SYNTH_BAD_EFFECT_DURATION
-#undef SYNTH_DEAF_STACKS
-#undef SYNTH_KNOCKDOWN_POWER
-#undef SYNTH_HEAVY_EMP_MULTIPLIER
+/datum/design/synth_ears
+	name = "Auditory Sensors"
+	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
+	id = "synth_ears"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 4 SECONDS
+	materials = list(
+		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5,
+	)
+	build_path = /obj/item/organ/internal/ears/synth
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE

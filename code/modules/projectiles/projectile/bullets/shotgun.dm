@@ -24,6 +24,14 @@
 	sharpness = NONE
 	embedding = null
 
+/obj/projectile/bullet/shotgun_beanbag/a40mm
+	name = "rubber slug"
+	icon_state = "cannonball"
+	damage = 20
+	stamina = 160 //BONK
+	wound_bonus = 30
+	weak_against_armour = TRUE
+
 /obj/projectile/bullet/incendiary/shotgun
 	name = "incendiary slug"
 	icon_state = "pellet"
@@ -55,7 +63,7 @@
 	damage = 15
 	paralyze = 10
 
-/obj/projectile/bullet/shotgun_frag12/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/shotgun_frag12/on_hit(atom/target, blocked = 0, pierce_hit)
 	..()
 	explosion(target, devastation_range = -1, light_impact_range = 1, explosion_cause = src)
 	return BULLET_ACT_HIT
@@ -110,14 +118,13 @@
 	embedding = null
 
 /obj/projectile/bullet/pellet/shotgun_improvised
-	tile_dropoff = 0.35 //Come on it does 6 damage don't be like that.
-	damage = 6
-	wound_bonus = 0
-	bare_wound_bonus = 7.5
+	damage = 5
+	wound_bonus = -5
+	demolition_mod = 3 //Very good at acts of vandalism
 
 /obj/projectile/bullet/pellet/shotgun_improvised/Initialize(mapload)
 	. = ..()
-	range = rand(1, 8)
+	range = rand(3, 8)
 
 /obj/projectile/bullet/pellet/shotgun_improvised/on_range()
 	do_sparks(1, TRUE, src)

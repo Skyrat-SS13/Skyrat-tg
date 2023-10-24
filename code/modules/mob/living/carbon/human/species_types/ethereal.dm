@@ -68,6 +68,7 @@
 	RegisterSignal(ethereal, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
 	RegisterSignal(ethereal, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
 	RegisterSignal(ethereal, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(ethereal, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	ethereal_light = ethereal.mob_light(light_type = /obj/effect/dummy/lighting_obj/moblight/species)
 	spec_updatehealth(ethereal)
 	new_ethereal.set_safe_hunger_level()
@@ -84,6 +85,7 @@
 	UnregisterSignal(former_ethereal, COMSIG_ATOM_EMAG_ACT)
 	UnregisterSignal(former_ethereal, COMSIG_ATOM_EMP_ACT)
 	UnregisterSignal(former_ethereal, COMSIG_LIGHT_EATER_ACT)
+	UnregisterSignal(former_ethereal, COMSIG_HIT_BY_SABOTEUR)
 	QDEL_NULL(ethereal_light)
 	return ..()
 
@@ -147,6 +149,16 @@
 		if(EMP_HEAVY)
 			addtimer(CALLBACK(src, PROC_REF(stop_emp), H), 20 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) //We're out for 20 seconds
 
+/datum/species/ethereal/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/our_target = source
+	EMPeffect = TRUE
+	spec_updatehealth(our_target)
+	to_chat(our_target, span_warning("Something inside of you crackles in a bad way."))
+	our_target.take_bodypart_damage(burn = 3, wound_bonus = CANT_WOUND)
+	addtimer(CALLBACK(src, PROC_REF(stop_emp), our_target), disrupt_duration, TIMER_UNIQUE|TIMER_OVERRIDE)
+	return COMSIG_SABOTEUR_SUCCESS
+
 /datum/species/ethereal/proc/on_emag_act(mob/living/carbon/human/H, mob/user)
 	SIGNAL_HANDLER
 	if(emageffect)
@@ -196,6 +208,11 @@
 		'sound/voice/ethereal/ethereal_scream_2.ogg',
 		'sound/voice/ethereal/ethereal_scream_3.ogg',
 	)
+
+/datum/species/ethereal/get_physical_attributes()
+	return "Ethereals process electricity as their power supply, not food, and are somewhat resistant to it.\
+		They do so via their crystal core, their equivalent of a human heart, which will also encase them in a reviving crystal if they die.\
+		However, their skin is very thin and easy to pierce with brute weaponry."
 
 /datum/species/ethereal/get_species_description()
 	return "Coming from the planet of Sprout, the theocratic ethereals are \
@@ -260,7 +277,7 @@
 		TRAIT_FIXED_MUTANT_COLORS,
 		TRAIT_FIXED_HAIRCOLOR,
 		TRAIT_AGENDER,
-		TRAIT_TENACIOUS,
+		TRAIT_TENACIOUS, // this doesn't work. tenacity is an element
 		TRAIT_NOBREATH,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,
@@ -274,6 +291,10 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ethereal,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/ethereal,
 	)
+
+/datum/species/ethereal/lustrous/get_physical_attributes()
+	return "Lustrous are what remains of an Ethereal after freebasing esoteric drugs. \
+		They are pressure immune, virus immune, can see bluespace tears in reality, and have a really weird scream. They remain vulnerable to physical damage."
 
 /datum/species/ethereal/lustrous/get_scream_sound(mob/living/carbon/human/ethereal)
 	return pick(

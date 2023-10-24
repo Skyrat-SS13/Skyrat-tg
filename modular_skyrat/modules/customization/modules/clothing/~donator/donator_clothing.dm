@@ -264,13 +264,14 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FIRE_PROOF
 
+/******CALIGRA DONATIONS******/
 // Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
-	name = "FIR-36 Rebreather"
+	name = "\improper FIR-36 half-face rebreather"
 	desc = "A close-fitting respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-36 Rebreather is commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
-	icon_state = "far14c"
+	icon_state = "fir36"
 	actions_types = list(/datum/action/item_action/adjust)
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACE | HIDESNOUT
@@ -293,6 +294,52 @@
 	. += span_notice("Alt-click [src] to adjust it.")
 
 /obj/item/clothing/mask/gas/nightlight/alldono //different itempath so regular donators can have it, too
+
+// Donation reward for Farsighted Nightlight
+/obj/item/clothing/mask/gas/nightlight/fir22
+	name = "\improper FIR-22 full-face rebreather"
+	desc = "A full-face respirator designed by Forestfel Intersystem Industries and originally meant for Ixian Tajarans, the FIR-22 Rebreather is a snout-covering variant often seen used by Tajaran Military Personnel. It reeks of militarism."
+	icon_state = "fir22"
+
+// Donation reward for Raxraus
+/obj/item/clothing/head/caligram_cap_tan
+	name = "\improper Caligram tan softcap"
+	desc = "A Caligram's Fleet-branded hat in a '/surprisingly/' tasteful shade of brown."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "caligram_cap_tan"
+
+// Donation reward for Raxraus
+/obj/item/clothing/under/jumpsuit/caligram_fatigues_tan
+	name = "\improper Caligram tan fatigues"
+	desc = "A set of tan and brown work fatigues bearing a Caligram's Fleet insigna on an armband. Lacks the typical Tajaran extravagance."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon_state = "caligram_fatigues_tan"
+	worn_icon_state = "caligram_fatigues_tan"
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/jacket/caligram_parka_tan
+	name = "\improper Caligram tan parka"
+	desc = "A tan parka with a fancy black belt and '/Caligram's Fleet/' stitched onto its armband."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "caligram_parka_tan"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS|HANDS
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/armor/vest/caligram_parka_vest_tan
+	name = "\improper Caligram armored tan parka"
+	desc = "A tan parka with a fancy black belt, a lightly armored vest and '/Caligram's Fleet/' stitched onto its armband."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "caligram_parka_vest_tan"
+	inhand_icon_state = "armor"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS|HANDS
+
 
 // Donation reward for ChillyLobster
 /obj/item/clothing/suit/jacket/brasspriest
@@ -791,16 +838,6 @@
 	icon_state = "plasmaman_jax"
 
 // Donation reward for Raxraus
-/obj/item/clothing/under/rax_turtleneck
-	icon = 'icons/obj/clothing/under/security.dmi'
-	worn_icon = 'icons/mob/clothing/under/security.dmi'
-	name = "black turtleneck"
-	desc = "A stylish black turtleneck."
-	icon_state = "hosalt"
-	inhand_icon_state = "bl_suit"
-	alt_covers_chest = TRUE
-
-// Donation reward for Raxraus
 /obj/item/clothing/shoes/combat/rax
 	name = "tactical boots"
 	desc = "Tactical and sleek. This model seems to resemble Armadyne's."
@@ -824,24 +861,6 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-// Donation reward for Raxraus
-/obj/item/clothing/under/rax_turtleneck_gray
-	name = "gray turtleneck"
-	desc = "A stylish gray turtleneck."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/command.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/command_digi.dmi'
-	icon_state = "bs_turtleneck"
-	can_adjust = FALSE
-
-// Donation reward for Raxraus
-/obj/item/clothing/suit/jacket/rax
-	name = "navy aerostatic jacket"
-	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "blueshield"
 
 // Donation reward for DeltaTri
 /obj/item/clothing/suit/jacket/delta
@@ -917,7 +936,8 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
-		..()
+		return ..()
+
 	if(welding_upgraded)
 		to_chat(user, span_warning("\The [src] was already upgraded to have welding protection!"))
 		return
@@ -1627,3 +1647,92 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 		)
 	)
 
+// Donation reward for grasshand
+/obj/item/clothing/under/rank/civilian/chaplain/divine_archer/noble
+	name = "noble gambeson"
+	desc = "These clothes make you feel a little closer to space."
+
+/obj/item/clothing/shoes/jackboots/noble
+	name = "noble boots"
+	desc = "These boots make you feel like you can walk on space."
+	icon_state = "archerboots"
+	inhand_icon_state = "archerboots"
+
+// Donation reward for nikotheguydude
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "vickyred"
+	name = "nobility dresscoat"
+	desc = "An elaborate coat composed of a silky yet firm material. \
+		The fabric is quite thin, and provides negligible protection or insulation, \
+		but is pleasant on the skin.\nWhile extremely well made, it seems quite \
+		fragile, and rather <i>expensive</i>. You get the feeling it might not \
+		<b>survive a washing machine</b> without specialized treatment."
+	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgeable in \
+		Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
+		a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\n\n\
+		On a closer inspection, it would appear the interior is modified with protective material and mounting points \
+		most often found on medical labcoats."
+	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
+	body_parts_covered = CHEST|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
+	. = ..()
+
+	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
+
+#define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
+
+// this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+
+	var/total_credits = 0
+	var/list/obj/item/money_to_delete = list()
+	for (var/obj/item/holochip/chip in washer)
+		total_credits += chip.get_item_credit_value()
+		money_to_delete += chip
+		if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+			break
+	if (total_credits < NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+		for (var/obj/item/stack/spacecash/cash in washer)
+			total_credits += cash.get_item_credit_value()
+			money_to_delete += cash
+			if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+				break
+
+	var/message
+	var/sound_effect_path
+	var/sound_effect_volume
+	if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED) // all is well
+		message = span_notice("[src] seems to absorb the raw capital from its surroundings, and is successfully washed!")
+		sound_effect_path = 'sound/effects/whirthunk.ogg'
+		sound_effect_volume = 40
+		for (var/obj/item/entry_to_delete as anything in money_to_delete)
+			qdel(entry_to_delete)
+	else // IT COSTS ME A THOUSAND CREDITS TO WASH THIS!! HALF MY BUDGET IS DRY CLEANING
+		message = span_warning("[src]'s delicate fabric is shredded by [washer]! How terrible!")
+		sound_effect_path = 'sound/effects/cloth_rip.ogg'
+		sound_effect_volume = 30
+		for (var/zone as anything in cover_flags2body_zones(body_parts_covered))
+			take_damage_zone(zone, limb_integrity * 1.1, BRUTE) // fucking shreds it
+
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message(message)
+	playsound(src, sound_effect_path, sound_effect_volume, FALSE)
+
+	return ..()
+
+/obj/item/clothing/under/costume/dragon_maid
+	name = "dragon maid uniform"
+	desc = "A uniform for a kitchen maid, stylized to have draconic detailing."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "dragon_maid"
+	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	can_adjust = FALSE
+
+#undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED

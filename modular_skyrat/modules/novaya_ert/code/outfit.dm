@@ -17,7 +17,7 @@
 							/obj/item/beamout_tool,
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
@@ -25,26 +25,6 @@
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
-
-/datum/outfit/centcom/ert/nri/heavy
-	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
-	head = /obj/item/clothing/head/helmet/nri_heavy
-	suit = /obj/item/clothing/suit/armor/heavy/nri
-	glasses = /obj/item/clothing/glasses/hud/security/night
-	mask = /obj/item/clothing/mask/gas/hecu2
-	belt = /obj/item/storage/belt/military/nri/heavy
-	suit_store = null
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/storage/medkit/emergency,
-							/obj/item/advanced_choice_beacon/nri/heavy,
-							/obj/item/beamout_tool,
-							/obj/item/crucifix)
-	l_pocket = /obj/item/wrench/combat
-
-	l_hand = /obj/item/gun/ballistic/automatic/pistol/aps
-
-	id_trim = /datum/id_trim/nri/heavy
 
 /datum/outfit/centcom/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
@@ -177,7 +157,7 @@
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/gun/ballistic/automatic/pistol/ladon/nri,
+							/obj/item/gun/ballistic/automatic/pistol/nri,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/storage/medkit/expeditionary,

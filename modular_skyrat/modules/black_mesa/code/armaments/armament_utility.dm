@@ -10,12 +10,12 @@
 	cost = 3
 
 /datum/armament_entry/hecu/utility/pouch
-	item_type = /obj/item/storage/bag/ammo
+	item_type = /obj/item/storage/pouch/ammo
 	max_purchase = 8
 	cost = 1
 
 /datum/armament_entry/hecu/utility/pouch_knives
-	item_type = /obj/item/storage/bag/ammo/marksman
+	item_type = /obj/item/storage/pouch/ammo/marksman
 	max_purchase = 4
 	cost = 3
 

@@ -59,19 +59,6 @@
 	name = "NRI Commander Beret"
 	description = "An armored beret worn by high-ranking NRI officers"
 
-/datum/opposing_force_equipment/clothing/reduthelm
-	item_type = /obj/item/clothing/head/helmet/nri_heavy/old
-	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
-				or murder with a frying pan."
-	admin_note = "WARNING: This helmet is very well armored, equal to an elite nukie suits helmets with the armor deployed."
-
-/datum/opposing_force_equipment/clothing/nrivest
-	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
-
-/datum/opposing_force_equipment/clothing/redut
-	item_type = /obj/item/clothing/suit/armor/heavy/nri/old
-	admin_note = "WARNING: This is an extremely strong armor, with a decent slowdown, comparable to an elite nukie hardsuit with the armor deployed."
-
 /datum/opposing_force_equipment/clothing/nrijumpsuit
 	item_type = /obj/item/clothing/under/costume/nri
 
@@ -99,7 +86,7 @@
 
 /datum/opposing_force_equipment/clothing/nukiemod
 	name = "Blood-Red MODsuit"
-	item_type = /obj/item/mod/control/pre_equipped/nuclear
+	item_type = /obj/item/mod/control/pre_equipped/nuclear/unrestricted
 	description = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Spinward Stellar."
 
 /datum/opposing_force_equipment/clothing/elitemod

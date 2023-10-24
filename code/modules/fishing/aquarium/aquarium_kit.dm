@@ -45,7 +45,7 @@
 	var/fluid_type
 
 /obj/item/storage/fish_case/random/get_fish_type()
-	return random_fish_type(required_fluid = fluid_type)
+	return random_fish_type(fluid_type)
 
 /obj/item/storage/fish_case/random/freshwater
 	fluid_type = AQUARIUM_FLUID_FRESHWATER
@@ -96,9 +96,9 @@
 	icon_state = "construction_kit"
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/aquarium_kit/attack_self(mob/user)
+/obj/item/aquarium_kit/Initialize(mapload)
 	. = ..()
-	to_chat(user,span_notice("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))
+	AddComponent(/datum/component/slapcrafting, /datum/crafting_recipe/aquarium)
 
 /obj/item/aquarium_prop
 	name = "generic aquarium prop"

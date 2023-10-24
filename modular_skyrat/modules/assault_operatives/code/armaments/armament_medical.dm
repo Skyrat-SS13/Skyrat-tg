@@ -45,7 +45,7 @@
 	cost = 3
 
 /datum/armament_entry/assault_operatives/medical/injector/bag
-	item_type = /obj/item/storage/bag/medpens
+	item_type = /obj/item/storage/pouch/medpens
 	cost = 5
 
 /datum/armament_entry/assault_operatives/medical/injector/box

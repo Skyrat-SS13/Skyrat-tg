@@ -60,18 +60,15 @@ jobs:
           bash tools/ci/check_grep.sh
           bash skyrat/tools/skyrat_check_grep.sh # SKYRAT EDIT ADDITION - checking modular_skyrat code
           bash tools/ci/check_misc.sh
-          tools/bootstrap/python tools/validate_dme.py <tgstation.dme
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/tgstation_dme.json
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/unit_tests.json
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/modular_skyrat.json # SKYRAT EDIT ADDITION - modular tick enforcement
           tools/bootstrap/python -m tools.maplint.source --github
           tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m define_sanity.check
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
-          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
-      - name: Annotate Lints
-        uses: yogstation13/DreamAnnotate@v2
-        if: always()
-        with:
-          outputFile: output-annotations.txt
+          ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
 
   compile_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"

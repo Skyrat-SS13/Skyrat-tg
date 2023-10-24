@@ -4,6 +4,10 @@
 /datum/outfit/player_loadout
 	name = "Player Loadout"
 
+/datum/outfit/player_loadout/equip(mob/living/carbon/human/user, visualsOnly)
+	. = ..()
+	user.equip_outfit_and_loadout(new /datum/outfit(), user.client.prefs)
+
 /*
  * Actually equip our mob with our job outfit and our loadout items.
  * Loadout items override the pre-existing item in the corresponding slot of the job outfit.

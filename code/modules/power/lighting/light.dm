@@ -114,7 +114,9 @@
 	// Light projects out backwards from the dir of the light
 	set_light(l_dir = REVERSE_DIR(dir))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	AddElement(/datum/element/atmos_sensitive, mapload)
+	find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/light/LateInitialize()
@@ -153,20 +155,10 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			var/area/local_area = get_area(src)
-			//SKYRAT EDIT BEGIN - Original
-			/*
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
-			*/
-			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
-			else if(major_emergency || (local_area?.fire))
-				icon_state = "[base_state]_emergency"
-			else
-				icon_state = "[base_state]"
-			// SKYRAT EDIT END
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -180,12 +172,11 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	/* SKYRAT EDIT START - ORIGINAL:
-	var/area/local_area = get_area(src)
-	if(emergency_mode || (local_area?.fire))
-	*/
-	var/area/local_area = get_area(src)
-	if(low_power_mode || major_emergency || (local_area?.fire)) // SKYRAT EDIT END
+	. += emissive_appearance(overlay_icon, "[base_state]", src, alpha = src.alpha)
+
+	var/area/local_area = get_room_area(src)
+
+	if(low_power_mode || major_emergency || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
@@ -717,6 +708,11 @@
 	tube?.burn()
 	return
 
+/obj/machinery/light/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	break_light_tube()
+	return COMSIG_SABOTEUR_SUCCESS
+
 /obj/machinery/light/proc/grey_tide(datum/source, list/grey_tide_areas)
 	SIGNAL_HANDLER
 
@@ -724,6 +720,20 @@
 		if(!istype(get_area(src), area_type))
 			continue
 		INVOKE_ASYNC(src, PROC_REF(flicker))
+
+/**
+ * All the effects that occur when a light falls off a wall that it was hung onto.
+ */
+/obj/machinery/light/proc/knock_down()
+	new /obj/item/wallframe/light_fixture(drop_location())
+	new /obj/item/stack/cable_coil(drop_location(), 1, "red")
+	if(status != LIGHT_BROKEN)
+		break_light_tube(FALSE)
+	if(status != LIGHT_EMPTY)
+		drop_light_tube()
+	if(cell)
+		cell.forceMove(drop_location())
+	qdel(src)
 
 /obj/machinery/light/floor
 	name = "floor light"

@@ -1,6 +1,6 @@
 //Custom Holoimages//
 /datum/preset_holoimage/spider
-	nonhuman_mobtype = /mob/living/basic/giant_spider
+	nonhuman_mobtype = /mob/living/basic/spider/giant/
 
 //Custom Holodisks//
 /obj/item/disk/holodisk/woospider //No special markings on this disk, should be a fun maint loot surprise.

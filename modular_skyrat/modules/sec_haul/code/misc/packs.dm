@@ -1,4 +1,4 @@
-/datum/supply_pack/vending/sectech
+/datum/supply_pack/vending/sectech_skyrat
 	name = "Peacekeeper Equipment Supply Crate"
 	desc = "Armadyne branded Peacekeeper supply crate, filled with things you need to restock the equipment vendor."
 	cost = CARGO_CRATE_VALUE * 3
@@ -7,7 +7,7 @@
 	crate_name = "Peacekeeper equipment supply crate"
 	crate_type = /obj/structure/closet/crate/secure/gear
 
-/datum/supply_pack/vending/wardrobes/security
+/datum/supply_pack/vending/wardrobes/security_skyrat
 	name = "Peacekeeper Wardrobe Supply Crate"
 	desc = "This crate contains refills for the Peacekeeper Outfitting Station and LawDrobe."
 	cost = CARGO_CRATE_VALUE * 3

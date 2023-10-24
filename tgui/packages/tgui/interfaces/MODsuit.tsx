@@ -33,8 +33,11 @@ type SuitStatus = {
   complexity: number;
   selected_module: string;
   ai_name: string;
-  pAI: string; // SKYRAT EDIT ADDITION - pAIs in MODsuits
-  ispAI: BooleanLike; // SKYRAT EDIT ADDITION - pAIs in MODsuits
+  has_pai: boolean;
+  is_ai: boolean;
+  link_id: string;
+  link_freq: string;
+  link_call: string;
 };
 
 type UserStatus = {
@@ -315,8 +318,11 @@ const SuitStatusSection = (props, context) => {
     malfunctioning,
     locked,
     ai_name,
-    pAI,
-    ispAI,
+    has_pai,
+    is_ai,
+    link_id,
+    link_freq,
+    link_call,
   } = data.suit_status;
   const { display_time, shift_time, shift_id } = data.module_custom_status;
   const status = malfunctioning
@@ -377,6 +383,22 @@ const SuitStatusSection = (props, context) => {
             onClick={() => act('lock')}
           />
         </LabeledList.Item>
+        <LabeledList.Item label="MODLink">
+          <Button
+            icon={'wifi'}
+            color={link_call ? 'good' : 'default'}
+            disabled={!link_freq}
+            tooltip={link_freq ? '' : 'Set a frequency with a multitool!'}
+            content={
+              link_freq
+                ? link_call
+                  ? 'Calling (' + link_call + ')'
+                  : 'Call (' + link_id + ')'
+                : 'Frequency Unset'
+            }
+            onClick={() => act('call')}
+          />
+        </LabeledList.Item>
         {!!open && (
           <LabeledList.Item label="Cover">
             <Box color="red">Open</Box>
@@ -388,20 +410,17 @@ const SuitStatusSection = (props, context) => {
           </LabeledList.Item>
         )}
         {!!ai_name && (
-          <LabeledList.Item label="AI Core">{ai_name}</LabeledList.Item>
+          <LabeledList.Item label="pAI Control">
+            {has_pai && (
+              <Button
+                icon="eject"
+                content="Eject pAI"
+                disabled={is_ai}
+                onClick={() => act('eject_pai')}
+              />
+            )}
+          </LabeledList.Item>
         )}
-        {/* SKYRAT EDIT START - pAIs in MODsuits*/}
-        <LabeledList.Item label="Onboard pAI">
-          {pAI || 'None'} &nbsp;
-          {!!pAI && !ispAI && (
-            <Button
-              icon="eject"
-              content="Eject pAI"
-              onClick={() => act('remove_pai')}
-            />
-          )}
-        </LabeledList.Item>
-        {/* SKYRAT EDIT END */}
       </LabeledList>
       {!!display_time && (
         <Section title="Operation" mt={2}>
@@ -420,12 +439,12 @@ const SuitStatusSection = (props, context) => {
 const HardwareSection = (props, context) => {
   const { act, data } = useBackend<MODsuitData>(context);
   const { control, helmet, chestplate, gauntlets, boots } = data;
-  const { pAI, core_name } = data.suit_status; /* SKYRAT EDIT CHANGE - pAI */
+  const { ai_name, core_name } = data.suit_status;
   return (
     <Section title="Hardware" style={{ 'text-transform': 'capitalize' }}>
       <LabeledList>
-        <LabeledList.Item label="pAI Card" /* SKYRAT EDIT CHANGE - pAI */>
-          {pAI || 'No pAI Card Detected' /* SKYRAT EDIT CHANGE - pAI */}
+        <LabeledList.Item label="AI Assistant">
+          {ai_name || 'No AI Detected'}
         </LabeledList.Item>
         <LabeledList.Item label="Core">
           {core_name || 'No Core Detected'}

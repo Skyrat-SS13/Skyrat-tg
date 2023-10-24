@@ -130,6 +130,10 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Joy Mask"
 	item_path = /obj/item/clothing/mask/joy
 
+/datum/loadout_item/mask/paper
+	name = "Paper Mask"
+	item_path = /obj/item/clothing/mask/paper
+
 /datum/loadout_item/mask/lollipop
 	name = "Lollipop"
 	item_path = /obj/item/food/lollipop

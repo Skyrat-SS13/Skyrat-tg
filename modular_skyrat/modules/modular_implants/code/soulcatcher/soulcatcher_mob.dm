@@ -23,6 +23,12 @@
 	var/able_to_speak = TRUE
 	/// Is the soul able to change their own name?
 	var/able_to_rename = TRUE
+	/// Is the soul able to speak as the object it is inside?
+	var/able_to_speak_as_container = TRUE
+	/// Is the soul able to emote as the object it is inside?
+	var/able_to_emote_as_container = TRUE
+	/// Are emote's and Say's done through the container the mob is in?
+	var/communicating_externally = FALSE
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
@@ -97,10 +103,12 @@
 	if(tgui_alert(src, "Are you really sure about this?", "Soulcatcher", list("Yes", "No")) != "Yes")
 		return FALSE
 
+	return_to_body()
 	qdel(src)
 
 /mob/living/soulcatcher_soul/ghost()
 	. = ..()
+	return_to_body()
 	qdel(src)
 
 /mob/living/soulcatcher_soul/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof, message_range, datum/saymode/saymode)
@@ -108,7 +116,7 @@
 	if(!message || message == "")
 		return
 
-	if(!able_to_speak)
+	if((!able_to_speak && !communicating_externally) || (!able_to_speak_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to speak!"))
 		return FALSE
 
@@ -124,7 +132,7 @@
 	if(!message)
 		return FALSE
 
-	if(!able_to_emote)
+	if((!able_to_emote && !communicating_externally) || (!able_to_emote_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to emote!"))
 		return FALSE
 
@@ -155,6 +163,21 @@
 	set hidden = TRUE
 	return FALSE
 
+/// Assuming we have a previous body a present mind on our soul, we are going to transfer the mind back to the old body.
+/mob/living/soulcatcher_soul/proc/return_to_body()
+	if(!previous_body || !mind)
+		return FALSE
+
+	var/mob/target_body = previous_body.resolve()
+	if(!target_body)
+		return FALSE
+
+	mind.transfer_to(target_body)
+	SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
+
+	if(target_body.stat != DEAD)
+		target_body.grab_ghost(TRUE)
+
 /mob/living/soulcatcher_soul/Destroy()
 	log_message("[key_name(src)] has exited a soulcatcher.", LOG_GAME)
 	if(current_room)
@@ -163,17 +186,6 @@
 			room.current_souls -= src
 
 		current_room = null
-
-	if(previous_body && mind)
-		var/mob/target_body = previous_body.resolve()
-		if(!target_body)
-			return FALSE
-
-		mind.transfer_to(target_body)
-		SEND_SIGNAL(target_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
-
-		if(target_body.stat != DEAD)
-			target_body.grab_ghost(TRUE)
 
 	return ..()
 

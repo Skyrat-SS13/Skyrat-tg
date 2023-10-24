@@ -47,37 +47,63 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "backpack_security_black"
+	inhand_icon_state = "backpack_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_black",
-			RESKIN_WORN_ICON_STATE = "backpack_security_black"
+			RESKIN_WORN_ICON_STATE = "backpack_security_black",
+			RESKIN_INHAND_STATE = "backpack_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "backpack_security_white",
-			RESKIN_WORN_ICON_STATE = "backpack_security_white"
+			RESKIN_WORN_ICON_STATE = "backpack_security_white",
+			RESKIN_INHAND_STATE = "backpack_security_white"
 		),
 	)
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "satchel_security"
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
+	icon_state = "satchel_security_black"
+	inhand_icon_state = "satchel_security_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "satchel_security_black",
+			RESKIN_WORN_ICON_STATE = "satchel_security_black",
+			RESKIN_INHAND_STATE = "satchel_security_black"
+		),
+		"White Variant" = list(
+			RESKIN_ICON_STATE = "satchel_security_white",
+			RESKIN_WORN_ICON_STATE = "satchel_security_white",
+			RESKIN_INHAND_STATE = "satchel_security_white"
+		),
+	)
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/clothing/backpack_righthand.dmi'
 	icon_state = "duffel_security_black"
+	inhand_icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_black",
-			RESKIN_WORN_ICON_STATE = "duffel_security_black"
+			RESKIN_WORN_ICON_STATE = "duffel_security_black",
+			RESKIN_INHAND_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "duffel_security_white",
-			RESKIN_WORN_ICON_STATE = "duffel_security_white"
+			RESKIN_WORN_ICON_STATE = "duffel_security_white",
+			RESKIN_INHAND_STATE = "duffel_security_white"
 		),
 	)
 
@@ -435,10 +461,6 @@
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
-		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_white",
-			RESKIN_WORN_ICON_STATE = "peacekeeper_white"
-		)
 	)
 
 /obj/item/clothing/suit/armor/hos
@@ -471,10 +493,6 @@
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
 	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
-	icon_state = "vest_bulletproof"
-	body_parts_covered = CHEST|GROIN|ARMS //Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
@@ -728,7 +746,7 @@
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box/c38, // Revolver speedloaders.
 		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a762,
+		/obj/item/ammo_box/strilka310,
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
@@ -736,6 +754,8 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
 /obj/item/storage/belt/holster/detective
@@ -751,7 +771,7 @@
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box/c38, // Revolver speedloaders.
 		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a762,
+		/obj/item/ammo_box/strilka310,
 		/obj/item/gun/energy/e_gun/mini,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/ballistic/revolver,
@@ -759,6 +779,8 @@
 		/obj/item/gun/energy/dueling,
 		/obj/item/gun/energy/laser/thermal,
 		/obj/item/gun/ballistic/rifle/boltaction, //fits if you make it an obrez
+		/obj/item/gun/energy/laser/captain,
+		/obj/item/gun/energy/e_gun/hos,
 		))
 
 /*

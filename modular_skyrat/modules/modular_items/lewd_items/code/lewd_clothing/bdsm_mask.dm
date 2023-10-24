@@ -27,11 +27,14 @@
 	actions_types = list(
 		/datum/action/item_action/toggle_breathcontrol,
 		/datum/action/item_action/mask_inhale,
+		/datum/action/item_action/toggle_gag,
 	)
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
+	/// Does the gasmask impede the user's ability to talk?
+	var/speech_disabled
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -53,11 +56,14 @@
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
+	if(speech_disabled)
+		return
+
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
-	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
+	play_lewd_sound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1, ignore_walls = FALSE)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
 
 // Create radial menu
 /obj/item/clothing/mask/gas/bdsm_mask/proc/populate_mask_designs()
@@ -164,23 +170,40 @@
 	if(istype(mask))
 		mask.check()
 
+/datum/action/item_action/toggle_gag
+	name = "Toggle gag"
+	desc = "Toggles whether or not the wearer is able to speak."
+
+/datum/action/item_action/toggle_gag/Trigger(trigger_flags)
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(istype(mask))
+		mask.check_gag()
+
 /datum/action/item_action/mask_inhale
 	name = "Inhale oxygen"
 	desc = "You must inhale oxygen!"
 
 // Open the valve when press the button
 /datum/action/item_action/mask_inhale/Trigger(trigger_flags)
-	if(istype(target, /obj/item/clothing/mask/gas/bdsm_mask))
-		var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
-		if(mask.breath_status == FALSE)
-			mask.time_to_choke_left = mask.time_to_choke
-			mask.breath_status = TRUE
-			var/mob/living/carbon/affected_mob = usr
-			affected_mob.try_lewd_autoemote("inhale")
-			var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
-			filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
-		return
-	return ..()
+	var/obj/item/clothing/mask/gas/bdsm_mask/mask = target
+	if(!istype(mask))
+		return ..()
+
+	if(mask.breath_status)
+		return FALSE
+
+	mask.time_to_choke_left = mask.time_to_choke
+	mask.breath_status = TRUE
+
+	var/mob/living/carbon/affected_mob = usr
+	if(!istype(affected_mob))
+		return FALSE
+
+	affected_mob.try_lewd_autoemote("inhale")
+	var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
+	filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
+
+	return TRUE
 
 // Adding breath_manually on equip
 /obj/item/clothing/mask/gas/bdsm_mask/equipped(/mob/user, slot)
@@ -216,7 +239,7 @@
 /obj/item/clothing/mask/gas/bdsm_mask/proc/toggle(user)
 	mask_on = !mask_on
 	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
-	playsound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_mob_action_buttonss()
 	update_icon()
@@ -228,10 +251,25 @@
 	else
 		STOP_PROCESSING(SSobj, src)
 
+/obj/item/clothing/mask/gas/bdsm_mask/proc/check_gag(user)
+	var/mob/living/carbon/affected_carbon = user
+	if(src == affected_carbon.wear_mask)
+		to_chat(user, span_notice("You can't reach the gag switch!"))
+	else
+		toggle_gag(affected_carbon)
+
+/obj/item/clothing/mask/gas/bdsm_mask/proc/toggle_gag(user)
+	speech_disabled = !speech_disabled
+	to_chat(user, span_notice("You [speech_disabled ? "disable" : "enable"] the gag on the mask."))
+	update_mob_action_buttonss()
+	update_icon()
+
 // Mask choke processor
 /obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
 	var/mob/living/affected_mob = loc
 	var/mob/living/carbon/affected_carbon = affected_mob
+	if(!istype(affected_carbon))
+		return FALSE
 
 	if(time_to_choke_left < time_to_choke/2 && breath_status == TRUE)
 		if(temp_check == FALSE && affected_mob.stat == CONSCIOUS) // If user passed out while wearing this we should continue when he wakes up
@@ -239,15 +277,14 @@
 			time_to_choke_left = time_to_choke
 			temp_check = TRUE
 
-		if(ispath(affected_carbon))
-			if(affected_mob.stat == CONSCIOUS)
-				affected_carbon.try_lewd_autoemote("exhale")
-				breath_status = FALSE
-				if(rand(0, 3) == 0)
-					affected_carbon.try_lewd_autoemote("moan")
-			else
-				breath_status = TRUE
-				temp_check = FALSE
+		if(affected_mob.stat == CONSCIOUS)
+			affected_carbon.try_lewd_autoemote("exhale")
+			breath_status = FALSE
+			if(rand(0, 3) == 0)
+				affected_carbon.try_lewd_autoemote("moan")
+		else
+			breath_status = TRUE
+			temp_check = FALSE
 
 	if(time_to_choke_left <= 0)
 		if(tt <= 0)

@@ -88,7 +88,7 @@
 	if(!facial_hair_hidden && lip_style && (head_flags & HEAD_LIPS))
 		//not a sprite accessory, don't ask
 		//Overlay
-		var/image/lip_overlay = image('icons/mob/species/human/human_face.dmi', "lips_[lip_style]", -BODY_LAYER, image_dir)
+		var/image/lip_overlay = image('icons/mob/human/human_face.dmi', "lips_[lip_style]", -BODY_LAYER, image_dir)
 		lip_overlay.color = lip_color
 		//Emissive blocker
 		if(blocks_emissive != EMISSIVE_BLOCK_NONE)
@@ -119,11 +119,12 @@
 
 	var/image/hair_overlay
 	if(!(show_debrained && (head_flags & HEAD_DEBRAIN)) && !hair_hidden && hairstyle && (head_flags & HEAD_HAIR))
-		sprite_accessory = GLOB.hairstyles_list[hairstyle]
-		if(sprite_accessory)
+		var/datum/sprite_accessory/hair/hair_sprite_accessory = GLOB.hairstyles_list[hairstyle]
+		if(hair_sprite_accessory)
 			//Overlay
-			hair_overlay = image(sprite_accessory.icon, sprite_accessory.icon_state, -HAIR_LAYER, image_dir)
+			hair_overlay = image(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, image_dir)
 			hair_overlay.alpha = hair_alpha
+			hair_overlay.pixel_y = hair_sprite_accessory.y_offset
 			//Emissive blocker
 			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
 				hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, location, alpha = hair_alpha)
@@ -139,12 +140,13 @@
 			var/hair_gradient_style = LAZYACCESS(gradient_styles, GRADIENT_HAIR_KEY)
 			if(hair_gradient_style)
 				var/hair_gradient_color = LAZYACCESS(gradient_colors, GRADIENT_HAIR_KEY)
-				var/image/hair_gradient_overlay = get_gradient_overlay(sprite_accessory.icon, sprite_accessory.icon_state, -HAIR_LAYER, GLOB.hair_gradients_list[hair_gradient_style], hair_gradient_color)
+				var/image/hair_gradient_overlay = get_gradient_overlay(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, GLOB.hair_gradients_list[hair_gradient_style], hair_gradient_color)
 				// SKYRAT ADD - Hair offset
 				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
 					hair_gradient_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
 					hair_gradient_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
 				// SKYRAT ADD END
+
 				. += hair_gradient_overlay
 
 	if(show_debrained && (head_flags & HEAD_DEBRAIN))
@@ -172,16 +174,16 @@
 /// Returns an appropriate debrained overlay
 /obj/item/bodypart/head/proc/get_debrain_overlay(can_rotate = TRUE)
 	RETURN_TYPE(/image)
-	var/debrain_icon = 'icons/mob/species/human/human_face.dmi'
+	var/debrain_icon = 'icons/mob/human/human_face.dmi'
 	var/debrain_icon_state = "debrained"
 	if(bodytype & BODYTYPE_ALIEN)
-		debrain_icon = 'icons/mob/species/alien/bodyparts.dmi'
+		debrain_icon = 'icons/mob/human/species/alien/bodyparts.dmi'
 		debrain_icon_state = "debrained_alien"
 	else if(bodytype & BODYTYPE_LARVA_PLACEHOLDER)
-		debrain_icon = 'icons/mob/species/alien/bodyparts.dmi'
+		debrain_icon = 'icons/mob/human/species/alien/bodyparts.dmi'
 		debrain_icon_state = "debrained_larva"
 	else if(bodytype & BODYTYPE_GOLEM)
-		debrain_icon = 'icons/mob/species/golems.dmi'
+		debrain_icon = 'icons/mob/human/species/golems.dmi'
 		debrain_icon_state = "debrained"
 
 	var/image/debrain_overlay
@@ -195,7 +197,7 @@
 /// Returns an appropriate missing eyes overlay
 /obj/item/bodypart/head/proc/get_eyeless_overlay(can_rotate = TRUE)
 	RETURN_TYPE(/image)
-	var/eyeless_icon = 'icons/mob/species/human/human_face.dmi'
+	var/eyeless_icon = 'icons/mob/human/human_face.dmi'
 	var/eyeless_icon_state = "eyes_missing"
 
 	var/image/eyeless_overlay
@@ -299,6 +301,10 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_style(new_style, update = TRUE)
+	if(new_style == "None")
+		new_style = null
+	if(LAZYACCESS(grad_style, GRADIENT_HAIR_KEY) == new_style)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)
@@ -320,6 +326,8 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_color(new_color, update = TRUE)
+	if(LAZYACCESS(grad_color, GRADIENT_HAIR_KEY) == new_color)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 
@@ -379,6 +387,10 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_style(new_style, update = TRUE)
+	if(new_style == "None")
+		new_style = null
+	if(LAZYACCESS(grad_style, GRADIENT_FACIAL_HAIR_KEY) == new_style)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)
@@ -400,6 +412,8 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_color(new_color, update = TRUE)
+	if(LAZYACCESS(grad_color, GRADIENT_FACIAL_HAIR_KEY) == new_color)
+		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
 	LAZYSETLEN(grad_style, GRADIENTS_LEN)
