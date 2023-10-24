@@ -1724,4 +1724,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 	return ..()
 
+/obj/item/clothing/under/costume/dragon_maid
+	name = "dragon maid uniform"
+	desc = "A uniform for a kitchen maid, stylized to have draconic detailing."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "dragon_maid"
+	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	can_adjust = FALSE
+
 #undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED

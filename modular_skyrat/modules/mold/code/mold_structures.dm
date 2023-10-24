@@ -272,11 +272,11 @@
 	discharge()
 	. = ..()
 
-/obj/structure/mold/structure/bulb/bullet_act(obj/projectile/hit_projectile)
-	if(istype(hit_projectile, /obj/projectile/energy/nuclear_particle))
-		return ..()
-	discharge()
+/obj/structure/mold/structure/bulb/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	. = ..()
+	if(istype(hitting_projectile, /obj/projectile/energy/nuclear_particle) || . != BULLET_ACT_HIT)
+		return
+	discharge()
 
 /obj/structure/mold/structure/bulb/Destroy()
 	if(mold_controller)
