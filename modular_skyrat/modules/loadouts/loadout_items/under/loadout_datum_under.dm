@@ -394,6 +394,18 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 
+/datum/loadout_item/under/miscellaneous/medium_skirt
+	name = "Medium Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/medium_skirt
+
+/datum/loadout_item/under/miscellaneous/long_skirt
+	name = "Long Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/long_skirt
+
+/datum/loadout_item/under/formal/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
+
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/jean
@@ -850,18 +862,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/the_q
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
-
-/datum/loadout_item/under/formal/medium_skirt
-	name = "Colourable Skirt"
-	item_path = /obj/item/clothing/under/skyrat/medium_skirt
-
-/datum/loadout_item/under/formal/long_skirt
-	name = "Long Colourable Skirt"
-	item_path = /obj/item/clothing/under/skyrat/long_skirt
-
-/datum/loadout_item/under/formal/maid_costume
-	name = "Colourable Maid Uniform"
-	item_path = /obj/item/clothing/under/maid_costume
 
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi

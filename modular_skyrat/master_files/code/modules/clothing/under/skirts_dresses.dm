@@ -92,7 +92,6 @@
 	greyscale_config = /datum/greyscale_config/medium_skirt
 	greyscale_config_worn = /datum/greyscale_config/medium_skirt/worn
 	greyscale_colors = "#3a3c45"
-	flags_inv = HIDESHOES
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/skyrat/long_skirt

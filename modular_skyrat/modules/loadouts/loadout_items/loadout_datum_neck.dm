@@ -213,7 +213,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/wide_cape
 
 /datum/loadout_item/neck/robe_cape
-	name = "Colourable Robes"
+	name = "Robed Colourable Cape"
 	item_path = /obj/item/clothing/neck/robe_cape
 
 /datum/loadout_item/neck/maid_neck_cover
