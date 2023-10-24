@@ -813,7 +813,7 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
-		/obj/item/storage/bag/tray,
+		/obj/item/storage/bag/tray, // SKYRAT EDIT: Moves the second tray up to be near the default one
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,

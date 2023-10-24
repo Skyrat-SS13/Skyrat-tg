@@ -233,7 +233,7 @@
 	unloading_time = 0.25 SECONDS
 	cooldown_duration = 0.25 SECONDS
 	whitelisted_item_types = list(/obj/item/mail)
-	whitelisted_item_description = "enveloppes"
+	whitelisted_item_description = "envelopes"
 	item_weight_limit = WEIGHT_CLASS_NORMAL
 	clamp_sound_volume = 25
 	clamp_sound = 'sound/items/pshoom.ogg'
