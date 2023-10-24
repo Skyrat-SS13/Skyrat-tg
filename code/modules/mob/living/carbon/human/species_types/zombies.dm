@@ -155,7 +155,6 @@
 		oxy_per_second = 0.25, \
 		heals_wounds = TRUE, \
 	)
->>>>>>> 9420370cd1a (Zombies use the regenerator component (#79208))
 
 /datum/species/zombie/infectious/on_species_loss(mob/living/carbon/human/was_zombie, datum/species/new_species, pref_load)
 	. = ..()
