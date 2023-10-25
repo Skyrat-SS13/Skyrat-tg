@@ -108,7 +108,7 @@
 	make_the_actual_order(object_we_attack, user)
 
 /// Takes the list of things to deliver and puts it into a cargo order
-/obj/item/paper/paperslip/ration_ticket/proc/make_the_actual_order(obj/machinery/computer/cargo/object_we_attack, user)
+/obj/item/paper/paperslip/ration_ticket/proc/make_the_actual_order(obj/machinery/computer/cargo/object_we_attack, mob/user)
 	var/datum/supply_pack/custom/ration_pack = new(
 		purchaser = user, \
 		cost = 0, \
