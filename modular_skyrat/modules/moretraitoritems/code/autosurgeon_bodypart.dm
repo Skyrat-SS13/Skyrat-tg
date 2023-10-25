@@ -84,10 +84,3 @@
 		if(!uses)
 			desc = "[initial(desc)] Looks like it's been used up."
 	return TRUE
-
-/obj/item/autosurgeon/bodypart/r_arm_robotic
-	starting_bodypart = /obj/item/bodypart/arm/right/robot
-
-/obj/item/autosurgeon/bodypart/r_arm_robotic/Initialize(mapload)
-	. = ..()
-	storedbodypart.icon = 'modular_skyrat/master_files/icons/mob/augmentation/hi2ipc.dmi'

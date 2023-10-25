@@ -358,6 +358,7 @@ GLOBAL_VAR(first_officer)
 	),src)
 
 /obj/item/storage/box/nri_survival_pack/raider
+	w_class = WEIGHT_CLASS_SMALL
 	desc = "A box filled with useful emergency items, supplied by the NRI. It feels particularily light."
 
 /obj/item/storage/box/nri_survival_pack/raider/PopulateContents()

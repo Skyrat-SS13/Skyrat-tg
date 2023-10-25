@@ -1,25 +1,103 @@
-//Use this to add item variations
-
-/obj/item/uplink/opfor
+/obj/item/uplink/old_radio
 	name = "old radio"
 	desc = "A dusty and old looking radio."
 
-/obj/item/uplink/opfor/Initialize(mapload, owner, tc_amount = 0)
+/obj/item/uplink/old_radio/Initialize(mapload, owner, tc_amount = 0)
 	. = ..()
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
 
-/obj/item/reagent_containers/cup/rag/large
-	volume = 30
-	amount_per_transfer_from_this = 30
-	desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
+//Unrestricted MODs
+/obj/item/mod/control/pre_equipped/elite/unrestricted
+	req_access = null
+
+//Syndie wep charger kit
+/obj/item/storage/box/syndie_kit/recharger
+	name = "boxed recharger kit"
+	desc = "A sleek, sturdy box used to hold all parts to build a weapons recharger."
+	icon_state = "syndiebox"
+
+/obj/item/storage/box/syndie_kit/charger/PopulateContents()
+	new /obj/item/circuitboard/machine/recharger(src)
+	new /obj/item/stock_parts/capacitor/quadratic(src)
+
+//Back-up space suit
+/obj/item/storage/box/syndie_kit/space_suit
+	name = "boxed space suit and helmet"
+	desc = "A sleek, sturdy box used to hold an emergency spacesuit."
+	icon_state = "syndiebox"
+	illustration = "syndiesuit"
+
+/obj/item/storage/box/syndie_kit/space_suit/Initialize(mapload)
+	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
+	atom_storage.max_slots = 2
+	atom_storage.set_holdable(list(
+		/obj/item/clothing/head/helmet/space/syndicate,
+		/obj/item/clothing/suit/space/syndicate,
+		))
+
+/obj/item/storage/box/syndie_kit/space_suit/PopulateContents()
+	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
+		if("green")
+			new /obj/item/clothing/head/helmet/space/syndicate/green(src)
+			new /obj/item/clothing/suit/space/syndicate/green(src)
+		if("dgreen")
+			new /obj/item/clothing/head/helmet/space/syndicate/green/dark(src)
+			new /obj/item/clothing/suit/space/syndicate/green/dark(src)
+		if("blue")
+			new /obj/item/clothing/head/helmet/space/syndicate/blue(src)
+			new /obj/item/clothing/suit/space/syndicate/blue(src)
+		if("red")
+			new /obj/item/clothing/head/helmet/space/syndicate(src)
+			new /obj/item/clothing/suit/space/syndicate(src)
+		if("orange")
+			new /obj/item/clothing/head/helmet/space/syndicate/orange(src)
+			new /obj/item/clothing/suit/space/syndicate/orange(src)
+		if("black")
+			new /obj/item/clothing/head/helmet/space/syndicate/black(src)
+			new /obj/item/clothing/suit/space/syndicate/black(src)
+
+//Spy
+/obj/item/clothing/suit/jacket/det_suit/noir/armoured
+	armor_type = /datum/armor/heister
+
+/obj/item/clothing/head/frenchberet/armoured
+	armor_type = /datum/armor/cosmetic_sec
+
+/obj/item/clothing/under/suit/black/armoured
+	armor_type = /datum/armor/clothing_under/syndicate
+
+/obj/item/clothing/under/suit/black/skirt/armoured
+	armor_type = /datum/armor/clothing_under/syndicate
+
+/obj/item/storage/belt/holster/detective/dark
+	name = "dark leather holster"
+	icon_state = "syndicate_holster"
+
+//Robohand
+/obj/item/storage/backpack/duffelbag/syndie/robohand/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/robohand(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/ammo_box/magazine/m14mm(src)
+	new /obj/item/storage/belt/military(src)
+	new /obj/item/clothing/under/pants/track/robohand(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/clothing/glasses/sunglasses/robohand(src)
+	new /obj/item/clothing/suit/jacket/trenchcoat/gunman(src)
+	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
+	new /obj/item/autosurgeon/syndicate/esword_arm(src)
+	new /obj/item/autosurgeon/syndicate/nodrop(src)
 
 
 /obj/item/storage/box/syndie_kit/gunman_outfit
 	name = "gunman clothing bundle"
 	desc = "A box filled with armored and stylish clothing for the aspiring gunmans."
 
-/obj/item/clothing/suit/armor/vest/leather/gunman
+/obj/item/clothing/suit/jacket/trenchcoat/gunman
 	name = "leather overcoat"
 	desc = "An armored leather overcoat, intended as the go-to wear for any aspiring gunman."
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -35,99 +113,35 @@
 	acid = 50
 	wound = 10
 
-/obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
-	new /obj/item/clothing/under/pants/black/robohand(src)
-	new /obj/item/clothing/glasses/sunglasses/robohand(src)
-	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
-	new /obj/item/clothing/shoes/combat(src)
+/obj/item/clothing/under/pants/track/robohand
+	name = "badass pants"
+	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
+	armor_type = /datum/armor/clothing_under/robohand
 
-/obj/item/autosurgeon/syndicate/hackerman
-	starting_organ = /obj/item/organ/internal/cyberimp/arm/hacker
+/datum/armor/clothing_under/robohand
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 20
 
-/obj/item/storage/box/syndie_kit/insurgent
-	name = "syndicate insurgent bundle"
-	desc = "A box containing everything you need to LARP as your favorite syndicate operative!"
+/obj/item/clothing/glasses/sunglasses/robohand
+	name = "badass sunglasses"
+	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes. These ones seem to be bulletproof?"
+	body_parts_covered = HEAD //What do you mean glasses don't protect your head? Of course they do. Cyberpunk has flying cars(mostly intentional)!
+	armor_type = /datum/armor/sunglasses_robohand
 
-/obj/item/storage/box/syndie_kit/insurgent/PopulateContents()
-	new /obj/item/clothing/under/syndicate(src)
-	new /obj/item/clothing/gloves/tackler/combat(src)
-	new /obj/item/clothing/shoes/combat(src)
-	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/clothing/mask/gas/syndicate(src)
-	new /obj/item/storage/belt/military(src)
-	new /obj/item/card/id/advanced/chameleon(src)
-	new /obj/item/mod/control/pre_equipped/nuclear/unrestricted(src)
+/datum/armor/sunglasses_robohand
+	melee = 20
+	bullet = 60
+	laser = 20
+	energy = 20
+	bomb = 20
+	wound = 5
 
+//More items
 /obj/item/guardiancreator/tech/choose/traitor/opfor
 	allowling = TRUE
-
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister
-	name = "armored suit jacket"
-	desc = "A professional suit jacket, it feels much heavier than a regular jacket. A label on the inside reads \"Nanite-based Self-repairing Kevlar weave\"."
-	armor_type = /datum/armor/better_heister
-	/// How many hits we can take before the armor breaks, PAYDAY style
-	var/armor_stacks = 2
-
-/datum/armor/better_heister
-	melee = 35
-	bullet = 30
-	laser = 30
-	energy = 40
-	bomb = 25
-	fire = 50
-	acid = 50
-	wound = 10
-
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/shielded/suit, max_charges = armor_stacks, recharge_start_delay = 8 SECONDS, charge_increment_delay = 1 SECONDS, \
-	charge_recovery = armor_stacks, lose_multiple_charges = FALSE, starting_charges = armor_stacks, shield_icon_file = null, shield_icon = null)
-
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/equipped(mob/living/user, slot)
-	. = ..()
-	if(!(slot & ITEM_SLOT_OCLOTHING))
-		return
-	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(armor_reaction))
-
-/obj/item/clothing/suit/toggle/lawyer/black/better/heister/proc/armor_reaction(mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, owner, hitby, attack_text, 0, damage, attack_type) & COMPONENT_HIT_REACTION_BLOCK)
-		return SHIELD_BLOCK
-	return NONE
-
-/obj/item/clothing/gloves/latex/nitrile/heister
-	desc = "Pricy sterile gloves that are thicker than latex. Perfect for hiding fingerprints."
-	clothing_traits = null
-	siemens_coefficient = 0
-
-/obj/item/storage/backpack/duffelbag/heister
-	name = "lightweight duffel"
-	desc = "A large duffel bag for holding extra things. This one seems to be stitched with extra-light fabric, enabling easier movement."
-	slowdown = 0
-	resistance_flags = FIRE_PROOF
-
-/obj/item/storage/backpack/duffelbag/heister/PopulateContents()
-	var/list/non_cursed_masks = subtypesof(/obj/item/clothing/mask/animal) - /obj/item/clothing/mask/animal/small //abstract
-	non_cursed_masks.Remove(GLOB.cursed_animal_masks)
-	var/obj/picked_mask = pick(non_cursed_masks)
-	var/obj/item/clothing/mask/animal/new_mask = new picked_mask(src)
-	new_mask.clothing_flags = VOICEBOX_DISABLED
-	new_mask.set_armor(new_mask.get_armor().generate_new_with_specific(list(
-		MELEE = 30,
-		BULLET = 25,
-		LASER = 25,
-		ENERGY = 25,
-		BOMB = 0,
-		BIO = 0,
-		FIRE = 100,
-		ACID = 100,
-	)))
-	new /obj/item/clothing/gloves/latex/nitrile/heister(src)
-	new /obj/item/clothing/under/suit/black(src)
-	new /obj/item/clothing/shoes/laceup(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black/better/heister(src)
-	new /obj/item/restraints/handcuffs/cable/zipties(src)
-	new /obj/item/restraints/handcuffs/cable/zipties(src)
-
 
 /obj/item/codeword_granter
 	name = "codeword manual"
