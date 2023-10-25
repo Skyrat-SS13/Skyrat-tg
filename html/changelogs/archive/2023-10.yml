@@ -1188,3 +1188,64 @@
   nikothedude:
   - bugfix: Synth puncture wounds now properly appear when manually generated (IV
       drips)
+2023-10-25:
+  GoldenAlpharex:
+  - bugfix: Pollution (smoke et al.) will no longer be added to turfs when the subsystem
+      is offline. Basically, you can now turn off pollution properly.
+  - qol: Only player-made bonfires will produce smoke.
+  Melbert:
+  - refactor: Refactored zombies to use the regenerator component. Now they'll have
+      a slight glow/animation when the regeneration actually kicks in.
+  - qol: Monkey cubes have a slight animation associated now.
+  - bugfix: Cooking Deserts 101 grants all intended recipes
+  RatFromTheJungle:
+  - balance: made the colony fabricator's tools actually slower, removed the RCD per
+      request
+  SkyratBot:
+  - rscadd: Anomaly-locked MODsuit modules can now be varedited to have unremovable
+      cores, or can be spawned with this functionality by using the /prebuilt/locked
+      subtype.
+  - bugfix: The Infected Domain should no longer fill up with smelly, poisonous gas
+      over time.
+  - bugfix: plastic sheet produces 4 tiles via the tiles option without using the
+      crafting menu
+  - image: resprites air alarms
+  - bugfix: The nanites inside of thermal pistols are once again angry, and aggressively
+      want to burn/puncture people.
+  - image: Muzzle flashes got a new sprite, each direction included!
+  - image: Temperature Gun "BAKE" beams are now lava colored
+  - qol: improves blackout drunk character gameplay
+  - bugfix: fixed improper prob() placement that caused blackout character to be forced
+      sleep
+  - sound: added hiccup sound
+  - refactor: Hostile skeleton NPCs now use the basic mob framework. They're a little
+      smarter, and they also have a slightly improved set of attack effects and sounds.
+      They love to drink milk, but will be harmed greatly if any heartless spaceman
+      tricks them into drinking soymilk instead. Please report any bugs.
+  - refactor: Juggernaut constructs now use the basic mob framework. Please report
+      any bugs.
+  - qol: Universal scanners are now capable of recognizing the account owners and
+      assigned profit splits on barcodes. Cargo technicians are asked to do their
+      due diligence when matters call for it.
+  - bugfix: Ghost alerts have been tuned down a bit.
+  - qol: Railings now have Examine hints for how to deconstruct them
+  - bugfix: hallucination announcements use new announcement style
+  - bugfix: surgical trays no longer animate when opened
+  - rscadd: New automatic weapon for the crew - Disabler SMG. Capable of rapidly firing
+      weak disabler beams.
+  - bugfix: '[Tramstation] fixed a missing Scrubber in the Civilian Radiation Shelter'
+  - bugfix: You will no longer be asked to construct meteor shields on stations which
+      cannot be hit by meteors.
+  - bugfix: you may not enter knock path caretakers last refuge with the nuke disk
+  - bugfix: you can no longer cuff knock heretics in refuge
+  SpringSkipper:
+  - qol: clocked-out crew now has assistant access to maints
+  honkpocket:
+  - balance: Reverts the dual e-sword's block_chance from 45% back to 75%
+  jjpark-kb:
+  - qol: you can now directly feed worm/ant farms from plant bags
+  - qol: you can now directly harvest ash farms with plant bags
+  - bugfix: worm farms can reproduce with 2 now (instead of the 3 due to a logic error)
+  - bugfix: fixed fertilizer being deleted even if it didn't upgrade an ash farm
+  wiverns:
+  - rscadd: drake to service borgs
