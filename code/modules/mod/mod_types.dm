@@ -206,10 +206,10 @@
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/projectile_dampener,
 		/obj/item/mod/module/quick_carry,
-    )
+	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack,
-    )
+	)
 
 /obj/item/mod/control/pre_equipped/cosmohonk
 	theme = /datum/mod_theme/cosmohonk
