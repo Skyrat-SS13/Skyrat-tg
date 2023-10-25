@@ -125,15 +125,15 @@
 			hair_overlay = image(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, image_dir)
 			hair_overlay.alpha = hair_alpha
 			hair_overlay.pixel_y = hair_sprite_accessory.y_offset
+			// SKYRAT ADD - Species hair offset
+			if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
+				hair_overlay.pixel_x += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+				hair_overlay.pixel_y += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+			// SKYRAT ADD END
 			//Emissive blocker
 			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
 				hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, location, alpha = hair_alpha)
 			//Offsets
-			// SKYRAT ADD - Hair offset
-			if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
-				hair_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
-				hair_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
-			// SKYRAT ADD END
 			worn_face_offset?.apply_offset(hair_overlay)
 			. += hair_overlay
 			//Gradients
@@ -141,12 +141,12 @@
 			if(hair_gradient_style)
 				var/hair_gradient_color = LAZYACCESS(gradient_colors, GRADIENT_HAIR_KEY)
 				var/image/hair_gradient_overlay = get_gradient_overlay(hair_sprite_accessory.icon, hair_sprite_accessory.icon_state, -HAIR_LAYER, GLOB.hair_gradients_list[hair_gradient_style], hair_gradient_color)
-				// SKYRAT ADD - Hair offset
+				hair_gradient_overlay.pixel_y = hair_sprite_accessory.y_offset
+				// SKYRAT ADD - Species hair offset
 				if(LAZYFIND(owner?.dna?.species?.offset_features, OFFSET_HAIR))
-					hair_gradient_overlay.pixel_x = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
-					hair_gradient_overlay.pixel_y = owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
+					hair_gradient_overlay.pixel_x += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_X]
+					hair_gradient_overlay.pixel_y += owner.dna.species.offset_features[OFFSET_HAIR][INDEX_Y]
 				// SKYRAT ADD END
-
 				. += hair_gradient_overlay
 
 	if(show_debrained && (head_flags & HEAD_DEBRAIN))
