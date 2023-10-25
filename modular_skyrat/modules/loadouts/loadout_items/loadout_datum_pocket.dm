@@ -172,7 +172,74 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"
 	item_path = /obj/item/crucifix
-	restricted_roles = list(JOB_CHAPLAIN)
+
+/*
+*	UTILITY
+*/
+
+/datum/loadout_item/pocket_items/moth_mre
+	name = "Mothic Rations Pack"
+	item_path = /obj/item/storage/box/mothic_rations
+
+/datum/loadout_item/pocket_items/cloth_ten
+	name = "Ten Cloth Sheets"
+	item_path = /obj/item/stack/sheet/cloth/ten
+
+/datum/loadout_item/pocket_items/random_pizza
+	name = "Random Pizza Box"
+	item_path = /obj/item/pizzabox/random
+
+/datum/loadout_item/pocket_items/medkit
+	name = "First-Aid Kit"
+	item_path = /obj/item/storage/medkit/regular
+
+/datum/loadout_item/pocket_items/ingredients
+	name = "Wildcard Ingredient Box"
+	item_path = /obj/item/storage/box/ingredients/wildcard
+
+/datum/loadout_item/pocket_items/six_beer
+	name = "Beer Six-Pack"
+	item_path = /obj/item/storage/cans/sixbeer
+
+/datum/loadout_item/pocket_items/six_soda
+	name = "Soda Six-Pack"
+	item_path = /obj/item/storage/cans/sixsoda
+
+/datum/loadout_item/pocket_items/power_cell
+	name = "Standard Power Cell"
+	item_path = /obj/item/stock_parts/cell
+
+/datum/loadout_item/pocket_items/soap
+	name = "Bar of Soap"
+	item_path = /obj/item/soap
+
+/datum/loadout_item/pocket_items/mini_extinguisher
+	name = "Mini Fire Extinguisher"
+	item_path = /obj/item/extinguisher/mini
+
+/datum/loadout_item/pocket_items/binoculars
+	name = "Pair of Binoculars"
+	item_path = /obj/item/binoculars
+
+/datum/loadout_item/pocket_items/drugs_happy
+	name = "Happy Pills"
+	item_path = /obj/item/storage/pill_bottle/happy
+
+/datum/loadout_item/pocket_items/drugs_lsd
+	name = "Mindbreaker Pills"
+	item_path = /obj/item/storage/pill_bottle/lsd
+
+/datum/loadout_item/pocket_items/drugs_weed
+	name = "Cannabis Seeds"
+	item_path = /obj/item/seeds/cannabis
+
+/datum/loadout_item/pocket_items/drugs_reishi
+	name = "Reishi Seeds"
+	item_path = /obj/item/seeds/reishi
+
+/datum/loadout_item/pocket_items/drugs_liberty
+	name = "Liberty Cap Seeds"
+	item_path = /obj/item/seeds/liberty
 
 /*
 *	FRAGRANCES
