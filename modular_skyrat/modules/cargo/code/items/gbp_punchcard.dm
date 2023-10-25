@@ -9,6 +9,10 @@
 	var/max_punches = 6
 	var/punches = 0
 
+/obj/item/gbp_punchcard/starting
+	icon_state = "punchcard_3"
+	punches = 3 // 150 credits by default
+
 /obj/item/gbp_punchcard/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if(istype(attacking_item, /obj/item/gbp_puncher))
@@ -130,10 +134,10 @@
 	)
 
 /datum/job/assistant
-	paycheck = 0
+	paycheck = PAYCHECK_ASSISTANT
 
 /datum/outfit/job/assistant
-	backpack_contents = list(/obj/item/gbp_punchcard)
+	backpack_contents = list(/obj/item/gbp_punchcard/starting)
 
 /datum/design/board/gbp_machine
 	name = "Good Assistant Points Redemption Machine Board"
