@@ -2,7 +2,7 @@
 	name = "Mantis Blade Implant"
 	desc = "A long, sharp, mantis-like blade installed within the forearm, acting as a deadly self defense weapon."
 	id = "ci-mantis"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	build_type = MECHFAB
 	materials = list (/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 	construction_time = 200
 	build_path = /obj/item/organ/internal/cyberimp/arm/armblade
