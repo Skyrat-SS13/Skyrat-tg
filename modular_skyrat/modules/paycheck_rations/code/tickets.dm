@@ -144,3 +144,102 @@
 	crate_name = "[purchaser]'s ration delivery crate"
 	src.cost = cost
 	src.contains = contains
+
+// Ticket for some luxury items, which you get every second paycheck
+
+/obj/item/paper/paperslip/ration_ticket/luxury
+	name = "ration ticket - luxury"
+	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted ration of luxury goods on the next cargo shuttle to the station."
+	icon_state = "ticket_luxury"
+
+/// Attempts to fill out the order list with items of the user's choosing, will stop in its tracks if it fails
+/obj/item/paper/paperslip/ration_ticket/luxury/try_to_make_ration_order_list(obj/machinery/computer/cargo/object_we_attack, mob/living/user)
+	forceMove(object_we_attack)
+
+	// List of meat options we get
+	var/list/radial_meat_options = list(
+		"Standard Meats" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "meats"),
+		"Seafood Meats" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "meats_fish"),
+		"Tizirian Meats" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "meats_lizard"),
+	)
+
+	var/meats_choice = show_radial_menu(user, object_we_attack, radial_meat_options, require_near = TRUE)
+
+	if(!meats_choice)
+		object_we_attack.balloon_alert(user, "no selection made")
+		forceMove(drop_location(object_we_attack))
+		return
+
+	switch(meats_choice)
+		if("Standard Meats")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/meats
+		if("Seafood Meats")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/meats/fish
+		if("Tizirian Meats")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/meats/lizard
+
+	// List of produce options we get
+	var/list/radial_produce_options = list(
+		"Standard Produce" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "plants"),
+		"Alternative Produce" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "plants_alt"),
+		"Mothic Produce" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "plants_moth"),
+		"Tizirian Produce" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "plants_lizard"),
+	)
+
+	var/produce_choice = show_radial_menu(user, object_we_attack, radial_produce_options, require_near = TRUE)
+
+	if(!produce_choice)
+		object_we_attack.balloon_alert(user, "no selection made")
+		// Reset the list if we fail
+		items_we_deliver = list()
+		forceMove(drop_location(object_we_attack))
+
+	switch(produce_choice)
+		if("Standard Produce")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/plants
+		if("Alternative Produce")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/plants/alternate
+		if("Mothic Produce")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/plants/mothic
+		if("Tizirian Produce")
+			items_we_deliver += /obj/item/storage/box/spaceman_ration/plants/lizard
+
+	items_we_deliver += /obj/item/storage/box/papersack/ration_bread_slice
+
+	// List of flour options we get
+	var/list/radial_flour_options = list(
+		"Standard Flour" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "flour"),
+		"Korta Flour" = image(icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi', icon_state = "flour_korta"),
+	)
+
+	var/flour_choice = show_radial_menu(user, object_we_attack, radial_flour_options, require_near = TRUE)
+
+	if(!flour_choice)
+		object_we_attack.balloon_alert(user, "no selection made")
+		// Reset the list if we fail
+		items_we_deliver = list()
+		forceMove(drop_location(object_we_attack))
+
+	switch(flour_choice)
+		if("Standard Flour")
+			items_we_deliver += /obj/item/reagent_containers/condiment/flour/small_ration
+		if("Korta Flour")
+			items_we_deliver += /obj/item/reagent_containers/condiment/small_ration_korta_flour
+			items_we_deliver += /obj/item/reagent_containers/condiment/soymilk/small_ration
+
+	items_we_deliver += /obj/item/reagent_containers/condiment/rice/small_ration
+	items_we_deliver += /obj/item/reagent_containers/condiment/sugar/small_ration
+	items_we_deliver += /obj/item/reagent_containers/cup/glass/bottle/small/tiny/lime_juice
+	items_we_deliver += /obj/item/reagent_containers/cup/glass/bottle/small/tiny/vinegar
+
+	items_we_deliver += /obj/item/reagent_containers/cup/glass/waterbottle
+
+	var/random_drink = pick( \
+		/obj/item/reagent_containers/cup/glass/waterbottle/tea, \
+		/obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom, \
+		/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra, \
+		/obj/item/reagent_containers/cup/glass/coffee, \
+	)
+	items_we_deliver += random_drink
+
+	make_the_actual_order(object_we_attack, user)
