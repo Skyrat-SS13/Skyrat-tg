@@ -95,6 +95,7 @@
 // Paper sack that spawns a random two slices of bread
 
 /obj/item/storage/box/papersack/ration_bread_slice
+	name = "bread ration bag"
 	desc = "A dusty old paper sack that should ideally contain your ration of bread. Can't eat bread? Damn shame."
 
 /obj/item/storage/box/papersack/ration_bread_slice/Initialize(mapload)
