@@ -139,7 +139,7 @@
 	name = "Good Assistant Points Redemption Machine Board"
 	desc = "The circuit board for a Good Assistant Points Redemption Machine."
 	id = "gbp_machine"
-	build_path = /obj/item/circuitboard/machine/gbp_machine
+	build_path = /obj/item/circuitboard/machine/gbp_redemption
 	category = list(
 		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_CARGO
 	)
