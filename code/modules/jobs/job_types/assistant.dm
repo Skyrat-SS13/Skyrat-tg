@@ -13,7 +13,7 @@ Assistant
 	exp_granted_type = EXP_TYPE_CREW
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
-	paycheck = PAYCHECK_LOWER // Get a job. Job reassignment changes your paycheck now. Get over it.
+	paycheck = 0 // Get a job. Job reassignment changes your paycheck now. Get over it. // SKYRAT EDIT - Punchcards, original is PAYCHECK_LOWER
 
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_ASSISTANT
@@ -45,6 +45,9 @@ Assistant
 	id_trim = /datum/id_trim/job/assistant
 	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
 	belt = /obj/item/modular_computer/pda/assistant
+	// SKYRAT EDIT
+	backpack_contents = list(/obj/item/gbp_punchcard)
+	// SKYRAT EDIT END
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

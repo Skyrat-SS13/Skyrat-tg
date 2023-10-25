@@ -60,6 +60,7 @@
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/gbp_puncher = 1, // SKYRAT EDIT ADDITION
 		)
 	belt = /obj/item/modular_computer/pda/heads/cmo
 	ears = /obj/item/radio/headset/heads/cmo

@@ -66,6 +66,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/station_charter = 1,
+		/obj/item/gbp_puncher = 1, // SKYRAT EDIT ADDITION
 		)
 	belt = /obj/item/modular_computer/pda/heads/captain
 	ears = /obj/item/radio/headset/heads/captain/alt
