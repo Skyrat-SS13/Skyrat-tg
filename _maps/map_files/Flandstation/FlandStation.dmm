@@ -2209,7 +2209,7 @@
 /obj/structure/cable,
 /obj/machinery/button/door/directional/north{
 	id = "surgshut";
-	name = "Surgery Shutters
+	name = "Surgery Shutters"
 	},
 /turf/open/floor/iron,
 /area/station/medical/surgery)
@@ -4010,7 +4010,8 @@
 /area/station/maintenance/port/fore)
 "bnd" = (
 /obj/machinery/firealarm/directional/north,
-/turf/open/floor/iron/dark,
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "bng" = (
 /obj/structure/closet/emcloset,
@@ -6195,6 +6196,12 @@
 "cer" = (
 /turf/open/floor/plating/foam,
 /area/space/nearstation)
+"cew" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/structure/table,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
 "cez" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
@@ -8181,6 +8188,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "cPY" = (
@@ -8669,6 +8679,15 @@
 /obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/station/science/ordnance/burnchamber)
+"cYG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "cYI" = (
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -11367,6 +11386,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "dXD" = (
@@ -11485,6 +11507,12 @@
 /obj/effect/spawner/random/trash/cigbutt,
 /turf/open/floor/carpet/red,
 /area/station/maintenance/abandon_office)
+"eaw" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/bin,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/command)
 "eaK" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
@@ -11980,11 +12008,11 @@
 /area/station/maintenance/department/engine)
 "elk" = (
 /obj/machinery/light/directional/north,
-/obj/structure/reagent_dispensers/water_cooler,
 /obj/machinery/newscaster{
 	pixel_y = 31
 	},
 /obj/effect/turf_decal/siding/wood,
+/obj/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/station/command/meeting_room/council)
 "elm" = (
@@ -13527,6 +13555,7 @@
 /obj/effect/turf_decal/siding/wideplating/dark/end{
 	dir = 1
 	},
+/obj/structure/table/wood,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room/council)
 "eJt" = (
@@ -13724,8 +13753,8 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "eMt" = (
-/obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/delivery,
+/obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room/council)
 "eMx" = (
@@ -14017,6 +14046,11 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/station/service/library)
+"eRD" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/spawner/random/trash/grime,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "eRR" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/keycard_auth{
@@ -14932,6 +14966,13 @@
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/monastery)
+"fgt" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "fgD" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 4
@@ -15903,7 +15944,7 @@
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/delivery,
-/obj/machinery/vending/boozeomat,
+/obj/machinery/vending/cigarette,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room/council)
 "fvb" = (
@@ -16589,6 +16630,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "fGn" = (
@@ -17015,6 +17059,11 @@
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
+/area/station/maintenance/port/central)
+"fLU" = (
+/obj/effect/spawner/random/trash/graffiti,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/iron/checker,
 /area/station/maintenance/port/central)
 "fMh" = (
 /obj/item/storage/secure/safe{
@@ -20343,7 +20392,10 @@
 /turf/closed/wall,
 /area/station/cargo/lobby)
 "gNG" = (
-/obj/effect/spawner/random/maintenance/two,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron/checker,
 /area/station/maintenance/port/central)
 "gNK" = (
@@ -22235,6 +22287,20 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"hyT" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/glass/colocup{
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/cup/glass/colocup{
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/colocup{
+	pixel_y = -2;
+	pixel_x = 10
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "hyZ" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -22751,6 +22817,10 @@
 /obj/effect/landmark/start/lawyer,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
+"hHH" = (
+/obj/structure/table,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/maintenance/starboard/fore)
 "hHP" = (
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 4
@@ -30585,6 +30655,25 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet/restrooms)
+"ksW" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance/two{
+	pixel_x = -7
+	},
+/obj/item/food/grown/apple{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/obj/item/pen{
+	pixel_x = 10;
+	pixel_y = 9
+	},
+/obj/item/pen/red{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "ktc" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -30720,6 +30809,10 @@
 	dir = 4
 	},
 /area/station/commons)
+"kvR" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "kvV" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/beanbag,
@@ -31644,6 +31737,13 @@
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"kLD" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "kLJ" = (
 /turf/open/floor/engine,
 /area/station/science/explab)
@@ -33512,6 +33612,7 @@
 	name = "Bridge Access Blast Door"
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "lqn" = (
@@ -37860,6 +37961,18 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/central)
+"mNP" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/table,
+/obj/machinery/computer/arcade/orion_trail{
+	desc = "For gamers only. Casuals need not apply.";
+	icon_screen = "library";
+	icon_state = "oldcomp";
+	name = "Gamer Computer";
+	dir = 8
+	},
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "mNR" = (
 /obj/machinery/meter{
 	desc = "It measures something, There's a reason why it was placed here, right?"
@@ -38378,8 +38491,8 @@
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
-/obj/machinery/vending/coffee,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/vending/boozeomat,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room/council)
 "mXD" = (
@@ -42850,6 +42963,11 @@
 	},
 /turf/open/floor/iron/checker,
 /area/station/security/range)
+"oyi" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "oyj" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet2a";
@@ -43111,6 +43229,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/courtroom)
+"oCY" = (
+/obj/machinery/computer/arcade/orion_trail{
+	desc = "For gamers only. Casuals need not apply.";
+	icon_screen = "library";
+	icon_state = "oldcomp";
+	name = "Gamer Computer";
+	dir = 8
+	},
+/obj/structure/table,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "oDd" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -43563,6 +43692,7 @@
 /area/station/commons/storage/primary)
 "oMg" = (
 /obj/effect/turf_decal/delivery,
+/obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron/dark,
 /area/station/command/meeting_room/council)
 "oMl" = (
@@ -45308,6 +45438,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/medical/surgery)
+"prT" = (
+/obj/item/kirbyplants/organic/plant7,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "psj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/yellow/visible{
 	dir = 8
@@ -48388,6 +48522,15 @@
 /obj/structure/sign/poster/contraband/bountyhunters/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
+"qpU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/command)
 "qpX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
@@ -49665,7 +49808,7 @@
 /area/station/hallway/secondary/entry)
 "qJL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "qJX" = (
 /obj/machinery/door/firedoor,
@@ -52382,6 +52525,18 @@
 "rDo" = (
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
+"rDq" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/machinery/computer/arcade/orion_trail{
+	desc = "For gamers only. Casuals need not apply.";
+	icon_screen = "library";
+	icon_state = "oldcomp";
+	name = "Gamer Computer";
+	dir = 8
+	},
+/obj/structure/table,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "rDs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -52660,6 +52815,12 @@
 /obj/effect/spawner/random/engineering/tool,
 /turf/open/floor/iron/checker,
 /area/station/maintenance/aft)
+"rHT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "rHU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -52785,6 +52946,10 @@
 /obj/structure/closet/secure_closet/security/engine,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
+"rJG" = (
+/obj/structure/disposalpipe/junction/flip,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "rJX" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/brown{
@@ -54861,6 +55026,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/machinery/disposal/delivery_chute,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "ssN" = (
@@ -55767,6 +55933,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/port)
+"sHZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "sIe" = (
 /turf/closed/wall,
 /area/station/maintenance/starboard/aft)
@@ -58895,6 +59067,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hop)
+"tJW" = (
+/obj/structure/table,
+/obj/machinery/computer/arcade/orion_trail{
+	desc = "For gamers only. Casuals need not apply.";
+	icon_screen = "library";
+	icon_state = "oldcomp";
+	name = "Gamer Computer"
+	},
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "tKb" = (
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
@@ -61169,6 +61351,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
+"uxa" = (
+/obj/effect/spawner/random/trash/food_packaging,
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "uxb" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -69419,7 +69605,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/mapping_helpers/burnt_floor,
-/obj/item/sord,
+/obj/item/melee/moonlight_greatsword,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "xaL" = (
@@ -70234,6 +70420,9 @@
 /obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/port)
+"xlY" = (
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "xml" = (
 /obj/structure/table/reinforced/rglass,
 /obj/structure/mirror/directional/north,
@@ -70988,6 +71177,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/construction)
+"xvS" = (
+/obj/structure/table,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
 "xvW" = (
 /turf/open/floor/iron,
 /area/station/maintenance/disposal)
@@ -71437,6 +71630,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/science/lobby)
+"xBu" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron/checker,
+/area/station/maintenance/port/central)
 "xBx" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
@@ -111327,9 +111526,9 @@ agn
 hqb
 agn
 jID
-eey
-eGo
-eey
+prT
+uxa
+tJW
 gNG
 jID
 aIJ
@@ -111584,10 +111783,10 @@ jID
 aww
 jID
 jID
+kvR
 eey
-eGo
-eey
-eGo
+ksW
+fLU
 jID
 aIJ
 iPP
@@ -111841,10 +112040,10 @@ jID
 qFK
 qFK
 jID
-eey
-eGo
-fsV
-eGo
+kvR
+eRD
+oyi
+hqb
 jID
 gnj
 bsZ
@@ -112098,10 +112297,10 @@ jID
 bvF
 fsM
 jID
-hqb
-eGo
-eGo
-eGo
+fgt
+eey
+xBu
+kLD
 jID
 aIJ
 bsZ
@@ -112355,10 +112554,10 @@ jID
 qFK
 xDU
 clM
-hqb
-hqb
-eey
-eey
+mNP
+rDq
+oCY
+oCY
 jID
 aIJ
 bsZ
@@ -117491,7 +117690,7 @@ qrh
 fLE
 nUV
 yhE
-cRR
+rJG
 nhc
 ufw
 cRR
@@ -117748,7 +117947,7 @@ gOm
 gOm
 eCc
 fGm
-bee
+rHT
 bee
 kWW
 nwC
@@ -118004,7 +118203,7 @@ nnx
 eCQ
 azh
 eal
-fGm
+cYG
 bee
 sws
 gOm
@@ -118261,7 +118460,7 @@ nnx
 eCQ
 gLG
 gpF
-fGm
+cYG
 raR
 wQk
 vJk
@@ -118518,7 +118717,7 @@ nnx
 gOm
 poD
 ktM
-fGm
+cYG
 cIg
 rYQ
 hvB
@@ -118775,7 +118974,7 @@ nnx
 eCQ
 mIw
 dMN
-fGm
+cYG
 bee
 tPT
 oMF
@@ -119032,7 +119231,7 @@ nnx
 eCQ
 ncV
 bee
-fGm
+cYG
 hOh
 gER
 hgY
@@ -119801,9 +120000,9 @@ nnx
 csJ
 nnx
 qby
-tpZ
-tpZ
-eJx
+eaw
+sHZ
+qpU
 enn
 kRy
 aeV
@@ -120058,7 +120257,7 @@ nnx
 csJ
 nnx
 qby
-tpZ
+hyT
 qJL
 eJx
 eUJ
@@ -120316,7 +120515,7 @@ csJ
 nnx
 cyb
 bnd
-tpZ
+xlY
 eJx
 fxI
 bNT
@@ -127039,9 +127238,9 @@ neG
 ptn
 ioR
 joS
-kGA
-stC
-neG
+xvS
+cew
+hHH
 wiE
 jYM
 rGo
