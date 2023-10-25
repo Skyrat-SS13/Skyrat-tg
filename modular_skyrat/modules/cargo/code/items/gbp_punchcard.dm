@@ -1,3 +1,5 @@
+#define GBP_PUNCH_REWARD 100
+
 /obj/item/gbp_punchcard
 	name = "Good Assistant Points punchcard"
 	desc = "The Good Assistant Points program is designed to supplement the income of otherwise unemployed or unpaid individuals on board Nanotrasen vessels and colonies.<br>\
@@ -11,7 +13,7 @@
 
 /obj/item/gbp_punchcard/starting
 	icon_state = "punchcard_1"
-	punches = 1 // 50 credits by default
+	punches = 1 // GBP_PUNCH_REWARD credits by default
 
 /obj/item/gbp_punchcard/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
@@ -58,7 +60,7 @@
 
 	if(istype(attacking_item, /obj/item/gbp_punchcard))
 		var/obj/item/gbp_punchcard/punchcard = attacking_item
-		var/amount_to_reward = punchcard.punches * 50
+		var/amount_to_reward = punchcard.punches * GBP_PUNCH_REWARD
 		if(!punchcard.punches)
 			playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 			say("You can't redeem an unpunched card!")
