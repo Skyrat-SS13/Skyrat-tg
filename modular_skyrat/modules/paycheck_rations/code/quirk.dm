@@ -27,7 +27,10 @@
 	var/last_ticket_luxury = FALSE
 
 /datum/bank_account/payday(amount_of_paychecks, free = FALSE)
-	if(!(..() && gets_ration_tickets))
+	. = ..()
+	if(!.)
+		return
+	if(!gets_ration_tickets)
 		return
 	make_ration_ticket()
 
