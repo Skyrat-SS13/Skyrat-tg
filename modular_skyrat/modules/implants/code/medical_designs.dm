@@ -93,42 +93,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/design/cyberimp_antidrop
-	name = "Anti-Drop Implant"
-	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping. Twitch ear to toggle."
-	id = "ci-antidrop"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 60
-	materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT*6,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT*6,
-		/datum/material/silver = SMALL_MATERIAL_AMOUNT*4,
-		/datum/material/gold = SMALL_MATERIAL_AMOUNT*4,
-	)
-	build_path = /obj/item/organ/internal/cyberimp/brain/anti_drop
-	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
-
-/datum/design/cyberimp_antistun
-	name = "CNS Rebooter Implant"
-	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
-	id = "ci-antistun"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	construction_time = 60
-	materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT*6,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT*6,
-		/datum/material/silver =SMALL_MATERIAL_AMOUNT*5,
-		/datum/material/gold =HALF_SHEET_MATERIAL_AMOUNT,
-	)
-	build_path = /obj/item/organ/internal/cyberimp/brain/anti_stun
-	category = list(
-		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
-
 /datum/design/cyberimp_scanner
 	name = "Internal Medical Analyzer"
 	desc = "This implant interfaces with a host's body, sending detailed readouts of the vessel's condition on command via the mind."
