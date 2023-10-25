@@ -50,3 +50,24 @@
 	name = "tiny vinegar bottle"
 	desc = "A maritime ration sized bottle of lime juice, containing enough to... Well, we're not entirely sure, but law mandates you're given this, so..."
 	list_reagents = list(/datum/reagent/consumable/vinegar = 10)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/tiny/coffee
+	name = "tiny coffee powder bottle"
+	desc = "A maritime ration sized bottle of coffee powder, containing enough to make a morning's brew."
+	list_reagents = list(/datum/reagent/toxin/coffeepowder = 10)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/tiny/tea
+	name = "tiny tea powder bottle"
+	desc = "A maritime ration sized bottle of tea powder, containing enough to make a morning's tea."
+	list_reagents = list(/datum/reagent/toxin/teapowder = 10)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/tiny/honey
+	name = "tiny honey bottle"
+	desc = "A maritime ration sized bottle of honey, a miniscule amount for a miniscule sweetening to your day."
+	list_reagents = list(/datum/reagent/consumable/honey = 5)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/tiny/caramel
+	name = "tiny caramel bottle"
+	desc = "A maritime ration sized bottle of caramel, in the past these used to be something called 'treacle', which was \
+		the tar left over from refining sugar. Nowadays, governments are rich enough to just send caramel instead."
+	list_reagents = list(/datum/reagent/consumable/caramel = 10)

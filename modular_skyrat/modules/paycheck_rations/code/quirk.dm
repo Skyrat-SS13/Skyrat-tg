@@ -23,6 +23,8 @@
 /datum/bank_account
 	/// Variable that tracks if this account should get ration tickets each payday
 	var/gets_ration_tickets = FALSE
+	/// Tracks if the last ticket we got was for luxury items
+	var/last_ticket_luxury = FALSE
 
 /datum/bank_account/payday(amount_of_paychecks, free = FALSE)
 	if(!(..() && gets_ration_tickets))
@@ -41,7 +43,12 @@
 		var/mob/card_holder = recursive_loc_check(card, /mob)
 		if(!card_holder)
 			continue
-		created_ticket = new /obj/item/paper/paperslip/ration_ticket(card_holder.drop_location())
+		if(last_ticket_luxury)
+			created_ticket = new /obj/item/paper/paperslip/ration_ticket(card_holder.drop_location())
+			last_ticket_luxury = TRUE
+		else
+			created_ticket = new /obj/item/paper/paperslip/ration_ticket/luxury(card_holder.drop_location())
+			last_ticket_luxury = FALSE
 		if(ishuman(card_holder)) //If on a mob
 			var/mob/living/carbon/human/human_card_holder = card_holder
 			human_card_holder.put_in_hands(created_ticket)
