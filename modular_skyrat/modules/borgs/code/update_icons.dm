@@ -1,6 +1,14 @@
 /mob/living/silicon/robot/update_icons()
 	icon = (model.cyborg_icon_override ? model.cyborg_icon_override : initial(icon))
 	. = ..()
+	/// Let's give custom borgs the ability to have flavor panels for their model
+	if(opened && (R_TRAIT_UNIQUEPANEL in model.model_features))
+		if(wiresexposed)
+			add_overlay("[model.cyborg_base_icon]_w")
+		else if(cell)
+			add_overlay("[model.cyborg_base_icon]_c")
+		else
+			add_overlay("[model.cyborg_base_icon]_cl")
 	update_altborg_icons()
 
 /mob/living/silicon/robot/proc/update_altborg_icons()
@@ -52,5 +60,6 @@
 
 	if(stat == DEAD && (R_TRAIT_UNIQUEWRECK in model.model_features))
 		icon_state = "[model.cyborg_base_icon]-wreck"
+
 
 	update_fire()
