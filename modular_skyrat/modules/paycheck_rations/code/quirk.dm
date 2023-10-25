@@ -41,7 +41,7 @@
 		var/mob/card_holder = recursive_loc_check(card, /mob)
 		if(!card_holder)
 			continue
-		created_ticket = new /obj/item/paper/paperslip/ration_ticket(drop_location(card_holder))
+		created_ticket = new /obj/item/paper/paperslip/ration_ticket(card_holder.drop_location())
 		if(ishuman(card_holder)) //If on a mob
 			var/mob/living/carbon/human/human_card_holder = card_holder
 			human_card_holder.put_in_hands(created_ticket)
