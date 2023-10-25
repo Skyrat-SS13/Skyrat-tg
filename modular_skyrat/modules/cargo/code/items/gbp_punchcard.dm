@@ -83,3 +83,64 @@
 	build_path = /obj/machinery/gbp_redemption
 	req_components = list(
 		/datum/stock_part/servo = 1)
+
+
+/datum/outfit/job/rd
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/gbp_puncher = 1
+	)
+
+/datum/outfit/job/hos
+	backpack_contents = list(
+		/obj/item/evidencebag = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/outfit/job/hop
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/outfit/job/ce
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/construction/rcd/ce = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/outfit/job/cmo
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/outfit/job/captain
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/station_charter = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/outfit/job/quartermaster
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/gbp_puncher = 1,
+	)
+
+/datum/job/assistant
+	paycheck = 0
+
+/datum/outfit/job/assistant
+	backpack_contents = list(/obj/item/gbp_punchcard)
+
+/datum/design/board/gbp_machine
+	name = "Good Assistant Points Redemption Machine Board"
+	desc = "The circuit board for a Good Assistant Points Redemption Machine."
+	id = "gbp_machine"
+	build_path = /obj/item/circuitboard/machine/gbp_machine
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_CARGO
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO
