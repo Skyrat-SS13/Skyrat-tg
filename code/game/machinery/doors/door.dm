@@ -512,16 +512,10 @@
 			else if(ishuman(future_pancake)) //For humans
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 				future_pancake.emote("scream")
-<<<<<<< HEAD
-				// future_pancake.Paralyze(100) // ORIGINAL
-				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS
+				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS - ORIGINAL: future_pancake.Paralyze(100)
 			else if(ismonkey(future_pancake)) //For monkeys
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
-				// future_pancake.Paralyze(100) // ORIGINAL
-				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS
-=======
-				future_pancake.Paralyze(100)
->>>>>>> 071f6063e69 (Adds charges to omens and omen smiting. Reduces omen bad luck if nobody's nearby. (#78899))
+				future_pancake.StaminaKnockdown(20, TRUE, TRUE) // SKYRAT EDIT CHANGE - AIRLOCKS - ORIGINAL: future_pancake.Paralyze(100)
 			else //for simple_animals & borgs
 				future_pancake.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 				var/turf/location = get_turf(src)
