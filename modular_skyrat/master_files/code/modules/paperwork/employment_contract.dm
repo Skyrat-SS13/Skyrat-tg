@@ -47,8 +47,8 @@
 	<br><br>Signed, \
 	<br><span style=\"color:black;font-family:'Segoe Script';\"><p><b>[employee_name]</b></p></span>\
 	<br><br>\
-	<hr>-----------------------------------<br>\
-	<font size=3>❘❙❚❘❙❚|<span style=\"color:black;font-family:'Sitka Small Semibold';\">GLORY TO NANOTRASEN</span>™|❚❙❘❚❙❘</hr>\
+	<hr><center>-----------------------------------<br>\
+	<font size=3>❘❙❚❘❙❚|<span style=\"color:black;font-family:'Sitka Small Semibold';\">GLORY TO NANOTRASEN</span>™|❚❙❘❚❙❘</center></hr>\
 	<br><br>\
 	<font size=1>Under Corporate Law section 201 subsection B.3. Defacement, publication, or theft of this document is punishable by demerit or immediate contractual termination. \
 	Central Command Representives are not responsible for possible loss of life, extermination, or bluespace occurances related to any sort of actions ordered to commit to."
