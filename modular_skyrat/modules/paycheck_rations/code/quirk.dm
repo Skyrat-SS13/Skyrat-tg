@@ -6,7 +6,6 @@
 	icon = FA_ICON_DONATE
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
 	value = 0
-	medical_record_text = "Alas, the patient struggled to scrape together enough money to pay the checkup bill."
 	hardcore_value = 0
 
 /datum/quirk/ration_system/add_unique(client/client_source)
@@ -16,7 +15,7 @@
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[human_holder.account_id]"]
 	account.payday_modifier = 0.5
 	account.gets_ration_tickets = TRUE
-	to_chat(client_source.mob, span_warning("You remember, you can turn in the ration tickets your paychecks give you to a cargo console for things! Neat!"))
+	to_chat(client_source.mob, span_notice("You remember, you can turn in the ration tickets your paychecks give you to a cargo console for things! Neat!"))
 
 // Edits to bank accounts to make the above possible
 
