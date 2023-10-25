@@ -10,8 +10,8 @@
 	var/punches = 0
 
 /obj/item/gbp_punchcard/starting
-	icon_state = "punchcard_3"
-	punches = 3 // 150 credits by default
+	icon_state = "punchcard_1"
+	punches = 1 // 50 credits by default
 
 /obj/item/gbp_punchcard/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
@@ -132,9 +132,6 @@
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/gbp_puncher = 1,
 	)
-
-/datum/job/assistant
-	paycheck = PAYCHECK_ASSISTANT
 
 /datum/outfit/job/assistant
 	backpack_contents = list(/obj/item/gbp_punchcard/starting)
