@@ -428,3 +428,9 @@
 	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
 	flags_for_organ = NONE
+
+/datum/sprite_accessory/snouts/acrador
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador (Short)"
+	icon_state = "acrador_short"

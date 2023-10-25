@@ -12,12 +12,12 @@
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_LAVA
+	faction = list(NEST_FACTION)
 	var/spawn_delay = 0
 	/// What mob to spawn
 	var/list/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
-	var/list/faction = list(NEST_FACTION)
 	var/spawned_mobs = 0
 	/// How long it takes for a new mob to emerge after being triggered.
 	var/spawn_cooldown = 30 SECONDS
@@ -200,7 +200,7 @@
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/retaliate/snake)
+	monster_types = list(/mob/living/basic/snake)
 	max_mobs = 8
 	spawn_cooldown = 5 SECONDS
 

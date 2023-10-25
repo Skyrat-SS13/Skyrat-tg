@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 		INFINITY, \
 		container_signals = list( \
 			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/ore_silo, log_item_consumed), \
-			COMSIG_MATCONTAINER_SHEETS_RETRIVED = TYPE_PROC_REF(/obj/machinery/ore_silo, log_sheets_ejected), \
+			COMSIG_MATCONTAINER_SHEETS_RETRIEVED = TYPE_PROC_REF(/obj/machinery/ore_silo, log_sheets_ejected), \
 		), \
 		allowed_items = /obj/item/stack \
 	)
@@ -165,8 +165,8 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 /obj/machinery/ore_silo/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if (istype(I))
-		to_chat(user, span_notice("You log [src] in the multitool's buffer."))
 		I.set_buffer(src)
+		balloon_alert(user, "saved to multitool buffer")
 		return TRUE
 
 /**

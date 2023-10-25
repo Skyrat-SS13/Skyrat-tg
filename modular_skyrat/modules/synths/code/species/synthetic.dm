@@ -34,7 +34,7 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
+	payday_modifier = 1.0 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/internal/brain/synth
@@ -187,7 +187,7 @@
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Benefits",
 		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with a vacuum! Additionally, your chassis is built with such strength as to \
-		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry. On top of this, synthetics are unable to be wounded!"
+		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry."
 	))
 
 	perk_descriptions += list(list(
@@ -203,7 +203,7 @@
 		SPECIES_PERK_NAME = "Synthetic Oddities",
 		SPECIES_PERK_DESC = "[plural_form] are unable to gain nutrition from traditional foods. Instead, you must either consume welding fuel or extend a \
 		wire from your arm to draw power from an APC. In addition to this, welders and wires are your sutures and mesh and only specific chemicals even metabolize inside \
-		of you. This ranges from whiskey, to synthanol, to various obscure medicines."
+		of you. This ranges from whiskey, to synthanol, to various obscure medicines. Finally, you suffer from a set of wounds exclusive to synthetics."
 	))
 
 	return perk_descriptions

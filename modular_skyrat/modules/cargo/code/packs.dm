@@ -147,9 +147,9 @@
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
 
-/datum/supply_pack/security/armor
+/datum/supply_pack/security/armor_skyrat
 	name = "Armor Crate"
-	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
+	desc = "Three vests of well-rounded, decently-protective armor."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(
@@ -159,15 +159,11 @@
 	)
 	crate_name = "armor crate"
 
-/datum/supply_pack/security/helmets
+/datum/supply_pack/security/helmets_skyrat
 	name = "Helmets Crate"
-	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
+	desc = "Contains three standard-issue brain buckets."
 	cost = CARGO_CRATE_VALUE * 2
-	contains = list(
-		/obj/item/clothing/head/helmet/sec/redsec,
-		/obj/item/clothing/head/helmet/sec/redsec,
-		/obj/item/clothing/head/helmet/sec/redsec,
-	)
+	contains = list(/obj/item/clothing/head/helmet/sec/sol = 3)
 	crate_name = "helmet crate"
 
 /datum/supply_pack/security/deployablebarricades
@@ -189,9 +185,9 @@
 	desc = "Contains three material pouches."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
-		/obj/item/storage/bag/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
+		/obj/item/storage/pouch/material,
 	)
 	cost = CARGO_CRATE_VALUE * 15
 	crate_name = "material pouches crate"
@@ -442,8 +438,8 @@
 	desc = "Chef slop boring? Have high-maintenance crewmembers that with wings? Maybe you just want to revel in the sinful delight that are Cheese Curds? The Finest of our trade union has made the pack for you, containing a mix of fine oils, vinegar, and exceptionally rare ingredients."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
 		/obj/item/reagent_containers/condiment/vinegar,
 		/obj/item/reagent_containers/condiment/vinegar,
 		/obj/item/food/canned/tomatoes,
@@ -463,16 +459,16 @@
 	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
 	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
 	)
 	crate_name = "bulk quality oil pack"
 	crate_type = /obj/structure/closet/crate/freezer
@@ -714,7 +710,7 @@
 	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/storage/box/nri_rations = 1,
+		/obj/item/storage/box/colonial_rations = 1,
 		/obj/item/storage/toolbox/ammobox/strilka310 = 1,
 		/obj/item/storage/toolbox/ammobox/strilka310/surplus = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,

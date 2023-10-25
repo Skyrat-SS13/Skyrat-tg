@@ -1,5 +1,3 @@
-#define VERY_LATE_ARRIVAL_TOAST_PROB 20
-
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -24,6 +22,9 @@ SUBSYSTEM_DEF(job)
 
 	var/list/unassigned = list() //Players who need jobs
 	var/initial_players_to_assign = 0 //used for checking against population caps
+	// Whether to run DivideOccupations pure so that there are no side-effects from calling it other than
+	// a player's assigned_role being set to some value.
+	var/run_divide_occupation_pure = FALSE
 
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()
@@ -302,6 +303,10 @@ SUBSYSTEM_DEF(job)
 		player.mind.special_role = null
 	SetupOccupations()
 	unassigned = list()
+	if(CONFIG_GET(flag/load_jobs_from_txt))
+		// Any errors with the configs has already been said, we don't need to repeat them here.
+		load_jobs_from_config(silent = TRUE)
+	set_overflow_role(overflow_role)
 	return
 
 
@@ -369,11 +374,11 @@ SUBSYSTEM_DEF(job)
  *  fills var "assigned_role" for all ready players.
  *  This proc must not have any side effect besides of modifying "assigned_role".
  **/
-/datum/controller/subsystem/job/proc/DivideOccupations()
+/datum/controller/subsystem/job/proc/DivideOccupations(pure = FALSE, allow_all = FALSE)
 	//Setup new player list and get the jobs list
-	JobDebug("Running DO")
-
-	SEND_SIGNAL(src, COMSIG_OCCUPATIONS_DIVIDED)
+	JobDebug("Running DO, allow_all = [allow_all], pure = [pure]")
+	run_divide_occupation_pure = pure
+	SEND_SIGNAL(src, COMSIG_OCCUPATIONS_DIVIDED, pure, allow_all)
 
 	//Get the players who are ready
 	for(var/i in GLOB.new_player_list)
@@ -441,8 +446,9 @@ SUBSYSTEM_DEF(job)
 
 		// Loop through all unassigned players
 		for(var/mob/dead/new_player/player in unassigned)
-			if(PopcapReached())
-				RejectPlayer(player)
+			if(!allow_all)
+				if(PopcapReached())
+					RejectPlayer(player)
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
@@ -480,7 +486,7 @@ SUBSYSTEM_DEF(job)
 	// Hand out random jobs to the people who didn't get any in the last check
 	// Also makes sure that they got their preference correct
 	for(var/mob/dead/new_player/player in unassigned)
-		HandleUnassigned(player)
+		HandleUnassigned(player, allow_all)
 	JobDebug("DO, Ending handle unassigned.")
 
 	JobDebug("DO, Handle unrejectable unassigned")
@@ -490,21 +496,23 @@ SUBSYSTEM_DEF(job)
 			if(!AssignRole(player, GetJobType(overflow_role))) //If everything is already filled, make them an assistant
 				JobDebug("DO, Forced antagonist could not be assigned any random job or the overflow role. DivideOccupations failed.")
 				JobDebug("---------------------------------------------------")
+				run_divide_occupation_pure = FALSE
 				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
 	JobDebug("DO, Ending handle unrejectable unassigned")
 
 	JobDebug("All divide occupations tasks completed.")
 	JobDebug("---------------------------------------------------")
-
+	run_divide_occupation_pure = FALSE
 	return TRUE
 
 //We couldn't find a job from prefs for this guy.
-/datum/controller/subsystem/job/proc/HandleUnassigned(mob/dead/new_player/player)
+/datum/controller/subsystem/job/proc/HandleUnassigned(mob/dead/new_player/player, allow_all = FALSE)
 	var/jobless_role = player.client.prefs.read_preference(/datum/preference/choiced/jobless_role)
 
-	if(PopcapReached())
-		RejectPlayer(player)
-		return
+	if(!allow_all)
+		if(PopcapReached())
+			RejectPlayer(player)
+			return
 
 	switch (jobless_role)
 		if (BEOVERFLOW)
@@ -536,21 +544,16 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
-	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
-	var/default_title = job.title
-	// SKYRAT EDIT ADDITION END - job.title
+	var/alt_title = player_client?.prefs.alt_job_titles[job.title]
+	// SKYRAT EDIT ADDITION END
 
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
-	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
-	if(player_client)
-		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
-
-	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
-
-	job.announce_job(equipping, chosen_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: job.announce_job(equipping)
+	equipping.mind?.set_assigned_role_with_greeting(job, player_client, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.mind?.set_assigned_role_with_greeting(job, player_client)
+	equipping.on_job_equipping(job, player_client?.prefs, player_client) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: equipping.on_job_equipping(job)
+	job.announce_job(equipping, alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: job.announce_job(equipping)
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
@@ -558,46 +561,7 @@ SUBSYSTEM_DEF(job)
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
 
-
-	if(player_client)
-		to_chat(player_client, span_infoplain("As the [chosen_title == job.title ? chosen_title : "[chosen_title] ([job.title])"] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this."))
-
-	job.radio_help_message(equipping)
-
-	if(player_client)
-		if(job.req_admin_notify)
-			to_chat(player_client, span_infoplain("<b>You are playing a job that is important for Game Progression. \
-				If you have to disconnect, please notify the admins via adminhelp.</b>"))
-		if(CONFIG_GET(number/minimal_access_threshold))
-			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
-				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-				have been added to your ID card."))
-		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
-		if(chosen_title != default_title)
-			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
-			to_chat(player_client, span_infoplain(span_doyourjobidiot("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
-		//SKYRAT EDIT END
-		var/related_policy = get_policy(job.title)
-		if(related_policy)
-			to_chat(player_client, related_policy)
-			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
-				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-				have been added to your ID card."))
-
-	if(ishuman(equipping))
-		var/mob/living/carbon/human/wageslave = equipping
-		wageslave.add_mob_memory(/datum/memory/key/account, remembered_id = wageslave.account_id)
-
-		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
-
-		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
-			// SKYRAT EDIT CHANGE START - Lizards
-			if(islizard(equipping))
-				equipping.equip_to_slot_or_del(new /obj/item/food/breadslice/root(equipping), ITEM_SLOT_MASK)
-			else
-				equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
-			// SKYRAT EDIT CHANGE END - Lizards
-
+	setup_alt_job_items(equipping, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 	job.after_spawn(equipping, player_client)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
@@ -698,10 +662,11 @@ SUBSYSTEM_DEF(job)
 	if(PopcapReached())
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 	unassigned -= player
-	player.ready = PLAYER_NOT_READY
-	player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
+	if(!run_divide_occupation_pure)
+		to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
+		player.ready = PLAYER_NOT_READY
+		player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
 
 
 /datum/controller/subsystem/job/Recover()
@@ -940,7 +905,7 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_AGE
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(possible_job.veteran_only && !is_veteran_player(player.client))
+	if(possible_job.veteran_only && !SSplayer_ranks.is_veteran(player.client))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_NOT_VETERAN
 
@@ -961,6 +926,10 @@ SUBSYSTEM_DEF(job)
 			JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 			return JOB_UNAVAILABLE_FLAVOUR
 
+	if(possible_job.has_banned_augment(player.client.prefs))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AUGMENT)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_AUGMENT
+
 
 	//SKYRAT EDIT END
 
@@ -973,4 +942,25 @@ SUBSYSTEM_DEF(job)
 
 	return JOB_AVAILABLE
 
-#undef VERY_LATE_ARRIVAL_TOAST_PROB
+/**
+ * Check if the station manifest has at least a certain amount of this staff type.
+ * If a matching head of staff is on the manifest, automatically passes (returns TRUE)
+ *
+ * Arguments:
+ * * crew_threshold - amount of crew to meet the requirement
+ * * jobs - a list of jobs that qualify the requirement
+ * * head_jobs - a list of head jobs that qualify the requirement
+ *
+*/
+/datum/controller/subsystem/job/proc/has_minimum_jobs(crew_threshold, list/jobs = list(), list/head_jobs = list())
+	var/employees = 0
+	for(var/datum/record/crew/target in GLOB.manifest.general)
+		if(target.trim in head_jobs)
+			return TRUE
+		if(target.trim in jobs)
+			employees++
+
+	if(employees > crew_threshold)
+		return TRUE
+
+	return FALSE

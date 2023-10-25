@@ -25,11 +25,6 @@ PLAYER_SOFT_CAP 0
 ## The non-IC name we send to OOC and adminsay.
 #CROSS_SERVER_NAME
 
-## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt.
-## You need to set up your database to use the SQL based system.
-## This flag is automatically enabled if SQL_ENABLED isn't
-## But currently the SQL system is not implemented and it'll read from mentors.txt nonetheless
-MENTOR_LEGACY_SYSTEM
 
 ALERT_AMBER_UPTO A major security emergency has developed. Security staff may have weapons unholstered at all times. Random searches are allowed and advised.
 ALERT_AMBER_DOWNTO A major security emergency is still underway. Non-security personnel are required to obey all relevant instructions from security staff.
@@ -141,3 +136,13 @@ SIZE_COLLAR_MINIMUM 15
 ## Don't ever set this to 0, just disable MIN_FLAVOR_TEXT
 #FLAVOR_TEXT_CHARACTER_REQUIREMENT 150
 
+## Comment these out if you want to use the SQL-based player rank system, the
+## legacy system uses the .txt files in the data folder instead.
+## You need to set up your database to use the SQL-based system.
+## These flags are automatically enabled if SQL_ENABLED isn't.
+DONATOR_LEGACY_SYSTEM
+MENTOR_LEGACY_SYSTEM
+VETERAN_LEGACY_SYSTEM
+
+## How much time arrivals shuttle should stay at station after its engines recharged before returning to interlink. In deciseconds. 150 - 15 seconds. 0 - disables autoreturn.
+ARRIVALS_WAIT 150

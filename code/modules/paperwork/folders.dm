@@ -1,4 +1,4 @@
-/obj/item/folder//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/folder
 	name = "folder"
 	desc = "A folder."
 	icon = 'icons/obj/service/bureaucracy.dmi'

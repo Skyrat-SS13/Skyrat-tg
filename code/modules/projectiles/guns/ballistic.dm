@@ -275,7 +275,7 @@
 		return
 	if (magazine.ammo_count())
 		chambered = magazine.get_round((bolt_type == BOLT_TYPE_OPEN && !bolt_locked) || bolt_type == BOLT_TYPE_NO_BOLT)
-		if (bolt_type != BOLT_TYPE_OPEN)
+		if (bolt_type != BOLT_TYPE_OPEN && !(internal_magazine && bolt_type == BOLT_TYPE_NO_BOLT))
 			chambered.forceMove(src)
 		else
 			RegisterSignal(chambered, COMSIG_MOVABLE_MOVED, PROC_REF(clear_chambered))
@@ -441,9 +441,6 @@
 	if (sawn_off)
 		bonus_spread += SAWN_OFF_ACC_PENALTY
 
-	if(magazine && !chambered.is_cased_ammo)
-		magazine.stored_ammo -= chambered
-
 	return ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
@@ -515,7 +512,6 @@
 			eject_magazine(user)
 			return
 	if(bolt_type == BOLT_TYPE_NO_BOLT)
-		chambered = null
 		var/num_unloaded = 0
 		for(var/obj/item/ammo_casing/CB as anything in get_ammo_list(FALSE))
 			CB.forceMove(drop_location())
@@ -727,7 +723,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 
 /obj/item/suppressor
 	name = "suppressor"
-	desc = "A Scarborough Arms small-arms suppressor for maximum espionage." //SKYRAT EDIT - ORIGINAL: desc = "A syndicate small-arms suppressor for maximum espionage."
+	desc = "A small-arms suppressor for maximum espionage." //SKYRAT EDIT - ORIGINAL: desc = "A syndicate small-arms suppressor for maximum espionage."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "suppressor"
 	w_class = WEIGHT_CLASS_TINY

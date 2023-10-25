@@ -40,7 +40,9 @@
 	var/eye_color_left = "" //set to a hex code to override a mob's left eye color
 	var/eye_color_right = "" //set to a hex code to override a mob's right eye color
 	var/eye_icon_state = "eyes"
+	/// The color of the previous left eye before this one was inserted
 	var/old_eye_color_left = "fff"
+	/// The color of the previous right eye before this one was inserted
 	var/old_eye_color_right = "fff"
 
 	/// Glasses cannot be worn over these eyes. Currently unused
@@ -51,16 +53,24 @@
 	var/native_fov = FOV_180_DEGREES //SKYRAT EDIT CHANGE
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_recipient, special = FALSE, drop_if_replaced = FALSE)
+	// If we don't do this before everything else, heterochromia will be reset leading to eye_color_right no longer being accurate
+	if(ishuman(eye_recipient))
+		var/mob/living/carbon/human/human_recipient = eye_recipient
+		old_eye_color_left = human_recipient.eye_color_left
+		old_eye_color_right = human_recipient.eye_color_right
+
 	. = ..()
+
 	if(!.)
 		return
+
 	eye_recipient.cure_blind(NO_EYES)
 	apply_damaged_eye_effects()
-	refresh(eye_recipient, inserting = TRUE, call_update = TRUE)
+	refresh(eye_recipient, call_update = TRUE)
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call update_body
-/obj/item/organ/internal/eyes/proc/refresh(mob/living/carbon/eye_owner = owner, inserting = FALSE, call_update = TRUE)
+/obj/item/organ/internal/eyes/proc/refresh(mob/living/carbon/eye_owner = owner, call_update = TRUE)
 	owner.update_sight()
 	owner.update_tint()
 
@@ -68,9 +78,6 @@
 		return
 
 	var/mob/living/carbon/human/affected_human = eye_owner
-	if(inserting) // we only want to be setting old_eye_color the one time
-		old_eye_color_left = affected_human.eye_color_left
-		old_eye_color_right = affected_human.eye_color_right
 	if(initial(eye_color_left))
 		affected_human.eye_color_left = eye_color_left
 	else
@@ -133,12 +140,12 @@
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
-	var/list/eye_overlays = list(eye_left, eye_right) //SKYRAT EDIT ADDITION - Add all the overlays to this list instead of adding emissive blockers/eye emissives to the eye overlays' overlays
+	var/list/overlays = list(eye_left, eye_right)
 
 	var/obscured = parent.check_obscured_slots(TRUE)
 	if(overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-		eye_overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, alpha = eye_left.alpha) //SKYRAT EDIT CHANGE - TODO fix upstream
-		eye_overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, alpha = eye_right.alpha) //SKYRAT EDIT CHANGE - TODO fix upstream
+		overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -eyes_layer, alpha = eye_left.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
+		overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -eyes_layer, alpha = eye_right.alpha) // SKYRAT EDIT CHANGE - ORIGINAL: overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, alpha = eye_left.alpha)
 	var/obj/item/bodypart/head/my_head = parent.get_bodypart(BODY_ZONE_HEAD)
 	if(my_head)
 		if(my_head.head_flags & HEAD_EYECOLOR)
@@ -161,12 +168,12 @@
 			my_head.worn_face_offset.apply_offset(emissive_right)
 			my_head.worn_face_offset.apply_offset(emissive_left)
 
-		eye_overlays += emissive_left
-		eye_overlays += emissive_right
+		overlays += emissive_left
+		overlays += emissive_right
 
 	// SKYRAT EDIT END
 
-	return eye_overlays // SKYRAT EDIT CHANGE - return all the overlays together in a list so height gets applied correctly
+	return overlays
 
 #undef OFFSET_X
 #undef OFFSET_Y
@@ -180,7 +187,7 @@
 /obj/item/organ/internal/eyes/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag)
 	. = ..()
 	if(!owner)
-		return
+		return FALSE
 	apply_damaged_eye_effects()
 
 /// Applies effects to our owner based on how damaged our eyes are
@@ -311,6 +318,7 @@
 	icon_state = "cybernetic_eyeballs"
 	desc = "Your vision is augmented."
 	organ_flags = ORGAN_ROBOTIC
+	failing_desc = "seems to be broken."
 
 /obj/item/organ/internal/eyes/robotic/emp_act(severity)
 	. = ..()
@@ -442,9 +450,10 @@
 		return
 	deactivate(close_ui = TRUE)
 
-/// We have to do this here because on_insert gets called before refresh(), which we need to have been called for old_eye_color vars to be set
+/// Set the initial color of the eyes on insert to be the mob's previous eye color.
 /obj/item/organ/internal/eyes/robotic/glow/Insert(mob/living/carbon/eye_recipient, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
+	current_color_string = old_eye_color_left
 	current_left_color_string = old_eye_color_left
 	current_right_color_string = old_eye_color_right
 
@@ -648,7 +657,7 @@
 
 	if(QDELETED(eye_owner) || !ishuman(eye_owner)) //Other carbon mobs don't have eye color.
 		return
-	
+
 	if(!eye.on)
 		eye_icon_state = initial(eye_icon_state)
 		overlay_ignore_lighting = FALSE

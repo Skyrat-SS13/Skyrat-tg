@@ -81,7 +81,6 @@
 /datum/preference/toggle/mutant_toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-
 /datum/preference/choiced/mutant_choice/body_markings
 	savefile_key = "feature_body_markings"
 	relevant_mutant_bodypart = "body_markings"
@@ -94,7 +93,6 @@
 
 /datum/preference/choiced/mutant_choice/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
-
 
 /datum/preference/tri_color/body_markings
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -123,7 +121,6 @@
 
 /datum/preference/tri_bool/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
-
 
 /// Tails
 

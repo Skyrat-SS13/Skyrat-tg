@@ -189,46 +189,54 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
-		death_sound = new_race.death_sound
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
+	if(isnull(mrace))
+		CRASH("set_species called without a species to set to")
+	if(!has_dna())
+		return
 
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
+	var/datum/species/new_race
+	if(ispath(mrace))
+		new_race = new mrace
+	else if(istype(mrace))
+		if(QDELING(mrace))
+			CRASH("someone is calling set_species() and is passing it a qdeling species datum, this is VERY bad, stop it")
+		new_race = mrace
+	else
+		CRASH("set_species called with an invalid mrace [mrace]")
 
-		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
+	death_sound = new_race.death_sound
 
-		if(override_mutantparts && override_mutantparts.len)
-			for(var/feature in dna.mutant_bodyparts)
-				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-			dna.mutant_bodyparts = override_mutantparts
+	var/datum/species/old_species = dna.species
+	dna.species = new_race
 
-		if(override_markings && override_markings.len)
-			for(var/feature in dna.body_markings)
-				override_markings[feature] = dna.body_markings[feature]
-			dna.body_markings = override_markings
+	if (old_species.properly_gained)
+		old_species.on_species_loss(src, new_race, pref_load)
 
-		if(override_features && override_features.len)
-			for(var/feature in dna.features)
-				override_features[feature] = dna.features[feature]
-			dna.features = override_features
-		//END OF BODYPARTS AND FEATURES
+	//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
 
-		apply_customizable_dna_features_to_species()
-		dna.unique_features = dna.generate_unique_features()
+	if(override_mutantparts && override_mutantparts.len)
+		for(var/feature in dna.mutant_bodyparts)
+			override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+		dna.mutant_bodyparts = override_mutantparts
 
-		dna.update_body_size()
+	if(override_markings && override_markings.len)
+		for(var/feature in dna.body_markings)
+			override_markings[feature] = dna.body_markings[feature]
+		dna.body_markings = override_markings
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
+	if(override_features && override_features.len)
+		for(var/feature in dna.features)
+			override_features[feature] = dna.features[feature]
+		dna.features = override_features
+	//END OF BODYPARTS AND FEATURES
+
+	apply_customizable_dna_features_to_species()
+	dna.unique_features = dna.generate_unique_features()
+
+	dna.update_body_size()
+
+	dna.species.on_species_gain(src, old_species, pref_load)
+	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 
 /mob/living/carbon/proc/apply_customizable_dna_features_to_species()
@@ -276,15 +284,15 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 
 	var/features = dna.unique_features
 	if(dna.features["mcolor"])
-		dna.features["mcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_BLOCK))
+		dna.features["mcolor"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_BLOCK))
 	if(dna.features["mcolor2"])
-		dna.features["mcolor2"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_2_BLOCK))
+		dna.features["mcolor2"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_2_BLOCK))
 	if(dna.features["mcolor3"])
-		dna.features["mcolor3"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_3_BLOCK))
+		dna.features["mcolor3"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MUTANT_COLOR_3_BLOCK))
 	if(dna.features["ethcolor"])
-		dna.features["ethcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_ETHEREAL_COLOR_BLOCK))
+		dna.features["ethcolor"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_ETHEREAL_COLOR_BLOCK))
 	if(dna.features["skin_color"])
-		dna.features["skin_color"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_SKIN_COLOR_BLOCK))
+		dna.features["skin_color"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_SKIN_COLOR_BLOCK))
 
 	if(icon_update)
 		if(mutcolor_update)

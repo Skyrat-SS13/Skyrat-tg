@@ -1011,9 +1011,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/under/misc/syndicate_souvenir{
 	has_sensor = 0;
 	pixel_y = -4
@@ -1132,8 +1130,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/structure/table,
-/obj/item/stack/sheet/mineral/plastitanium,
-/obj/item/stack/sheet/plastitaniumglass,
+/obj/item/stack/sheet/plasteel/twenty{
+	pixel_x = -2
+	},
+/obj/item/stack/sheet/mineral/titanium/fifty{
+	amount = 20;
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eO" = (
@@ -1887,6 +1891,8 @@
 /obj/effect/turf_decal/trimline/dark_blue/filled/line,
 /obj/effect/turf_decal/siding/dark,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/table/glass,
+/obj/item/storage/backpack/duffelbag/synth_treatment_kit/trauma/advanced/unzipped,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "hZ" = (
@@ -1994,7 +2000,7 @@
 	pixel_x = 10;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/condiment/quality_oil{
+/obj/item/reagent_containers/condiment/olive_oil{
 	pixel_x = 3;
 	pixel_y = -2
 	},
@@ -3386,7 +3392,7 @@
 	faction = list("Syndicate","neutral")
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+/area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "oK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -3770,9 +3776,7 @@
 	has_sensor = 0;
 	random_sensor = 0
 	},
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "qt" = (
@@ -4563,14 +4567,15 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/light/cold/directional/west,
 /obj/item/seeds/tobacco,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/obj/item/seeds/korta_nut,
 /obj/item/reagent_containers/cup/watering_can,
 /obj/item/cultivator,
 /obj/item/plant_analyzer,
 /obj/item/secateurs,
 /obj/item/shovel/spade,
-/obj/effect/turf_decal/siding/dark/corner{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "tT" = (
@@ -5160,8 +5165,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "xk" = (
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
-	dir = 8;
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/table/wood,
 /turf/open/floor/wood/tile,
@@ -5814,9 +5818,7 @@
 	dir = 4
 	},
 /obj/item/clothing/under/syndicate/skyrat/baseball,
-/obj/structure/closet/secure_closet/personal{
-	icon_state = "cabinet"
-	},
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "AC" = (
@@ -6601,7 +6603,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EC" = (
-/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/item/grenade/barrier{
 	pixel_y = 10
 	},
@@ -7185,13 +7186,14 @@
 	},
 /obj/machinery/light/cold/directional/west,
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/shotgun/riot/syndicate,
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -10
+/obj/item/gun/ballistic/automatic/sol_smg/evil{
+	pixel_x = -8
 	},
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -5;
-	pixel_y = -3
+/obj/item/gun/ballistic/shotgun/riot/sol/evil{
+	pixel_x = 0
+	},
+/obj/item/gun/ballistic/automatic/sol_rifle/evil{
+	pixel_x = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -9302,7 +9304,7 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/west,
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Ra" = (
@@ -9621,14 +9623,13 @@
 	},
 /obj/machinery/firealarm/directional/west,
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -4;
-	pixel_y = 4
+/obj/item/gun/ballistic/automatic/pistol/sol/evil{
+	pixel_x = -5
 	},
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -8
+/obj/item/gun/ballistic/automatic/pistol/sol/evil,
+/obj/item/gun/ballistic/automatic/pistol/sol/evil{
+	pixel_x = 5
 	},
-/obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Sq" = (
@@ -10353,7 +10354,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/violet/hidden{
 	dir = 9
 	},
-/obj/structure/canister_frame/machine/unfinished_canister_frame,
+/obj/structure/fluff/broken_canister_frame,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Vw" = (
@@ -10598,7 +10599,9 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Wt" = (
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /obj/item/bedsheet/medical,
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -11172,6 +11175,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
+"YU" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/armory_kiboko_but_evil,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Zd" = (
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/siding/thinplating/end{
@@ -11224,7 +11235,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Zs" = (
 /obj/item/bedsheet/medical,
-/obj/structure/bed,
+/obj/structure/bed/medical{
+	dir = 4
+	},
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Zt" = (
@@ -11862,10 +11875,10 @@ PX
 PX
 PX
 PX
+PX
 Vk
 Oi
 VP
-wg
 wg
 wg
 wg
@@ -11915,12 +11928,12 @@ Lv
 bS
 Hc
 Sp
+YU
 EC
 PX
 Vk
 Oi
 ZY
-wg
 wg
 wg
 wg
@@ -11970,9 +11983,9 @@ mA
 uo
 uo
 uo
+uo
 LY
 oG
-PX
 PX
 NB
 NB

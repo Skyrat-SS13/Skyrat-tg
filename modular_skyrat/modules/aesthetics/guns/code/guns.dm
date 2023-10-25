@@ -10,27 +10,50 @@
  * these updated, more consistent defines make it so that a single round's total materials should total 20% of a sheet, or 2 SMALL_MATERIAL_AMOUNT
 */
 
-#define AMMO_MATS_BASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2)
+#define AMMO_MATS_BASIC list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2, \
+)
 
-#define AMMO_MATS_AP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4)
+#define AMMO_MATS_AP list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.4, \
+)
 
-#define AMMO_MATS_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4)
+#define AMMO_MATS_TEMP list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.4, \
+)
 
-#define AMMO_MATS_EMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4)
+#define AMMO_MATS_EMP list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 0.4, \
+)
 
-#define AMMO_MATS_PHASIC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4)
+#define AMMO_MATS_PHASIC list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.4, \
+)
 
-#define AMMO_MATS_TRAC list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2,\
-							/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2)
+#define AMMO_MATS_TRAC list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2, \
+	/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2, \
+)
 
-// for .35 Sol Ripper. one day, anon. one day
-#define AMMO_MATS_RIPPER list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6,\
-							/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4)
+#define AMMO_MATS_HOMING list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1, \
+	/datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.2, \
+	/datum/material/gold = SMALL_MATERIAL_AMOUNT * 0.2, \
+	/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.2, \
+	/datum/material/diamond = SMALL_MATERIAL_AMOUNT * 0.2, \
+	/datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 0.2, \
+)
+
+// for .35 Sol Ripper
+#define AMMO_MATS_RIPPER list( \
+	/datum/material/iron = SMALL_MATERIAL_AMOUNT * 1.6, \
+	/datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.4, \
+)
 
 /obj/item/ammo_casing
 	custom_materials = AMMO_MATS_BASIC
@@ -40,87 +63,17 @@
 	/// Maybe don't enable this for shotgun ammo boxes.
 	var/multitype = TRUE
 
-/obj/item/gun/energy/e_gun
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "energy"
-	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/advtaser
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/cfa_phalanx
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/mini
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/stun
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/old
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/hos
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/e_gun/dragnet
-	worn_icon = null
-	worn_icon_state = "gun"
-
-/obj/item/gun/energy/laser/musket //We need to have this because we overwrote the icon file for laser guns.
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
+///GUN SPRITE OVERWRITES
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/energy/laser
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-
-/obj/item/gun/energy/e_gun/stun
-	charge_sections = 5
-	ammo_x_offset = 2
-
-/obj/item/gun/ballistic/shotgun/riot
-	name = "\improper Peacekeeper shotgun"
-	desc = "A Nanotrasen-made riot control shotgun fitted with an extended tube and a fixed tactical stock."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	inhand_icon_state = "riot_shotgun"
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
-	can_suppress = TRUE
-	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
-	suppressed_volume = 100
-	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate
-	name = "\improper Peacebreaker shotgun"
-	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
-	icon_state = "riotshotgun_syndie"
-	inhand_icon_state = "riot_shotgun_syndie"
-	can_be_sawn_off = FALSE
-	can_suppress = FALSE
-
-/obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_SCARBOROUGH)
+/obj/item/gun/energy/ionrifle/carbine
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -132,6 +85,15 @@
 	inhand_icon_state = "shotgun_combat"
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
+
+// de-overrides this particular gun, it uses the tg file
+/obj/item/gun/ballistic/shotgun/automatic/combat/compact
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/64x_guns_right.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	worn_icon = null
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
@@ -168,20 +130,6 @@
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	worn_icon_state = "gun"
 	worn_icon = null
-
-/obj/item/gun/energy/laser/thermal
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
-/obj/item/gun/energy/lasercannon
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	fire_sound_volume = 100
-	ammo_x_offset = 2
-	charge_sections = 5
-	inhand_icon_state = ""
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow
 	name = "fantastic energy gun"
@@ -227,11 +175,6 @@
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
-
-// We don't customize CTF
-/obj/item/gun/energy/laser/instakill/ctf
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
@@ -352,46 +295,31 @@
 	inhand_icon_state = "arg"
 	can_suppress = FALSE
 
-//SOLFED PILOT RIFLE GONE, TO BE ADDED TO ERT FACTIONS FOLDER
-
-/obj/item/gun/energy/kinetic_accelerator
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
-/obj/item/gun/ballistic/automatic/ar/modular/model75
-	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT chambered for .310 Strilka. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
-	icon_state = "arg75"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
-	fire_delay = 5
-	fire_sound_volume = 90
-	accepted_magazine_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-
-/obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_NANOTRASEN)
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	name = "\improper ARG-75 magazine"
-	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .310 Strilka."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/strilka310
-	caliber = CALIBER_STRILKA310
-	max_ammo = 20
-
 // GUBMAN3 - FULL BULLET RENAME
+// i loathe the above
 
-/obj/item/ammo_casing/a277
+// overrides for 10mm ammo in modular_skyrat\modules\sec_haul\code\guns\bullets.dm
+
+// overrides for .310 Strilka-derived ammo, e.g. lionhunter ammo, because you don't want to give security the ability to print infinite wallhack ammo, right?
+/obj/item/ammo_casing/strilka310/lionhunter
+	name = "hunter's rifle round"
+	can_be_printed = FALSE // trust me bro you dont wanna give security homing wallhack Better Rubbers
+
+/obj/item/ammo_casing/strilka310/enchanted
+	name = "enchanted rifle round"
+	can_be_printed = FALSE // these are Really Really Better Rubbers
+
+// overrides for tgcode's .223 (formerly 5.56), used in the M90-gl - renamed to .277 Aestus
+/obj/item/ammo_casing/a223
 	name = ".277 Aestus casing"
 	desc = "A .277 bullet casing."
-	caliber = CALIBER_A277
 
-/obj/item/ammo_casing/a277/phasic
+/obj/item/ammo_casing/a223/phasic
 	name = ".277 Aestus phasic casing"
 	desc = "A .277 Aestus bullet casing.\
 	<br><br>\
@@ -401,28 +329,51 @@
 
 // shotgun ammo overrides moved to modular_skyrat\modules\shotgunrebalance\code\shotgun.dm
 
-// i'd've put more can_be_printed overrides for the cargo shells but, like... some of them actually do have defined materials so you can't just shit them out with metal?
-// kinda weird that none of these others do but, whatever??
-
+// overrides for tgcode .50cal, used in their sniper/anti-materiel rifles
 /obj/item/ammo_casing/p50
-	name = ".416 Stabilis polymer casing"
+	name = ".416 Stabilis casing"
 	desc = "A .416 bullet casing."
 	advanced_print_req = TRUE // you are NOT printing more ammo for this without effort.
 	// then again the offstations with ammo printers and sniper rifles come with an ammo disk anyway, so
 
-/obj/item/ammo_casing/p50/soporific
-	name = ".416 Stabilis tranquilizer casing"
-	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
+/obj/item/ammo_casing/p50/surplus
+	name = ".416 Stabilis surplus casing"
+	desc = "A .416 bullet casing. Intentionally underloaded, but still quite painful to be shot with.\
 	<br><br>\
-	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
-	projectile_type = /obj/projectile/bullet/p50/soporific
+	<i>SURPLUS/UNDERLOAD: Lacks armor penetration capabilities, contact-stun, or innate dismemberment ability. Still incredibly painful to be hit by.</i>"
+	projectile_type = /obj/projectile/bullet/p50/surplus
+
+/obj/item/ammo_casing/p50/disruptor
+	name = ".416 Stabilis disruptor casing"
+	desc = "A .416 bullet casing. Specializes in sending the target to sleep rather than hell, unless they're synthetic. Then they probably go to hell anyway.\
+	<br><br>\
+	<i>DISRUPTOR: Forces humanoid targets to sleep, does heavy damage against cyborgs, EMPs struck targets.</i>"
+
+/obj/item/ammo_casing/p50/incendiary
+	name = ".416 Stabilis precision incendiary casing"
+	desc = "A .416 bullet casing. Made with an agitated-plasma tip, for making people regret being alive.\
+	<br><br>\
+	<i>PRECISION INCENDIARY: Lacks innate dismemberment ability and contact-stun, suffers against mechanized armor. Sets people on fire.</i>"
+	projectile_type = /obj/projectile/bullet/p50/incendiary
 
 /obj/item/ammo_casing/p50/penetrator
-	name = ".416 Stabilis APFSDS ++P bullet casing"
-	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI.\
+	name = ".416 Stabilis penetrator sabot casing"
+	desc = "A .416 bullet casing. Loaded with a hardened sabot and packed with extra propellant. \
+	Designed to go through basically everything. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 85000 PSI.\
 	<br><br>\
-	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
+	<i>PENETRATOR: Goes through basically everything. Lacks innate dismemberment ability and contact-stun capabilities.</i>"
 
+/obj/item/ammo_casing/p50/marksman
+	name = ".416 Stabilis marksman hyperkinetic casing"
+	desc = "A .416 bullet casing. Loaded with a hyperkinetic bullet that ignores mundane things like \"travel time\" \
+	and a concerning amount of experimental propellant. A label warns of overpressure risk, and to not use the round if \
+	a given weapon cannot handle pressures greater than 95000 PSI.\
+	<br><br>\
+	<i>MARKSMAN: Bullets have <b>no</b> travel time, and can ricochet once. Does slightly less damage, lacks innate dismemberment and contact-stun capabilities.</i>"
+	projectile_type = /obj/projectile/bullet/p50/marksman
+
+// overrides for tgcode 4.6x30mm, used in the WT-550
 /obj/item/ammo_casing/c46x30mm
 	name = "8mm Usurpator bullet casing"
 	desc = "An 8mm bullet casing."
@@ -443,6 +394,7 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+// overrides for tgcode .45, used in the M1911 and C20-r
 /obj/item/ammo_casing/c45
 	name = ".460 Ceres bullet casing"
 	desc = "A .460 bullet casing."
@@ -463,12 +415,14 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+// overrides for .50AE, used in the deagle
 /obj/item/ammo_casing/a50ae
 	name = ".454 Trucidator bullet casing"
 	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
 	<br><br>\
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
 
+// overrides for .357, used in the .357 revolver
 /obj/item/ammo_casing/a357    //We can keep the Magnum classic.
 	name = ".357 bullet casing"
 	desc = "A .357 bullet casing.\
@@ -476,11 +430,25 @@
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
 
 /obj/item/ammo_casing/a357/match
-	name = ".357 match bullet casing"
 	desc = "A .357 bullet casing, manufactured to exceedingly high standards.\
 	<br><br>\
 	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
 
+/obj/item/ammo_casing/a357/phasic
+	desc = "A .357 phasic bullet casing.\
+	<br><br>\
+	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_PHASIC
+
+/obj/item/ammo_casing/a357/heartseeker
+	desc = "A .357 heartseeker bullet casing.\
+	<br><br>\
+	<i>HEARTSEEKER: Has homing capabilities, methodology unknown.</i>"
+	advanced_print_req = TRUE
+	custom_materials = AMMO_MATS_HOMING // meme ammo. meme print cost
+
+// overrides for .38 Special, used in the .38 revolvers, including the det's
 /obj/item/ammo_box/c38
 	caliber = CALIBER_38
 
@@ -501,11 +469,11 @@
 
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 
-/obj/projectile/bullet/a277
+/obj/projectile/bullet/a223
 	name = ".277 Aestus bullet"
 
-/obj/projectile/bullet/a277/phasic
-	name = ".277 PHASE bullet"
+/obj/projectile/bullet/a223/phasic
+	name = ".277 phasic bullet"
 
 /obj/projectile/bullet/c9mm
 	name = "9x25mm bullet"
@@ -537,8 +505,11 @@
 /obj/projectile/bullet/incendiary/c46x30mm
 	name = "8mm incendiary bullet"
 
-/obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
-	name = ".416 tranquilizer"
+/obj/projectile/bullet/p50
+	name = ".416 Stabilis bullet"
+
+/obj/projectile/bullet/p50/disruptor
+	name = ".416 disruptor bullet"
 
 /obj/projectile/bullet/p50/penetrator
 	name = ".416 penetrator bullet"

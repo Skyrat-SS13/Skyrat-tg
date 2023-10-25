@@ -45,7 +45,7 @@
 /obj/item/ammo_casing/energy/laser/plasma_glob
 	projectile_type = /obj/projectile/beam/laser/plasma_glob
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
-	e_cost = 50
+	e_cost = LASER_SHOTS(20, STANDARD_CELL_CHARGE)
 
 /obj/projectile/beam/laser/plasma_glob
 	name = "plasma globule"
@@ -58,8 +58,8 @@
 	pass_flags = PASSTABLE | PASSGRILLE // His ass does NOT pass through glass!
 	weak_against_armour = TRUE
 
-/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked)
-	if(istype(target, /obj/structure/blob) || istype(target, /mob/living/simple_animal/hostile/blob))
+/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked = 0, pierce_hit)
+	if(istype(target, /obj/structure/blob) || HAS_TRAIT(target, TRAIT_BLOB_ALLY))
 		damage = damage * 0.75
 	return ..()
 

@@ -16,7 +16,7 @@
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	eyes_icon = 'modular_skyrat/modules/organs/icons/skrell_eyes.dmi'

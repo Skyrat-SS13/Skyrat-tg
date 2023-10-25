@@ -513,7 +513,7 @@
 	base_build_path = /obj/machinery/smartfridge/drinks
 
 /obj/machinery/smartfridge/drinks/accept_check(obj/item/O)
-	if(!is_reagent_container(O) || (O.item_flags & ABSTRACT) || !O.reagents || !O.reagents.reagent_list.len)
+	if(!is_reagent_container(O) || (O.item_flags & ABSTRACT) || istype(O,/obj/item/reagent_containers/cup/bowl) || !O.reagents || !O.reagents.reagent_list.len)
 		return FALSE
 	if(istype(O, /obj/item/reagent_containers/cup) || istype(O, /obj/item/reagent_containers/cup/glass) || istype(O, /obj/item/reagent_containers/condiment))
 		return TRUE
@@ -526,7 +526,7 @@
 	base_build_path = /obj/machinery/smartfridge/food
 
 /obj/machinery/smartfridge/food/accept_check(obj/item/O)
-	if(IS_EDIBLE(O))
+	if(IS_EDIBLE(O) || (istype(O,/obj/item/reagent_containers/cup/bowl) && O.reagents && O.reagents.reagent_list.len))
 		return TRUE
 	return FALSE
 
@@ -630,7 +630,7 @@
 					/obj/item/reagent_containers/cup/beaker,
 					/obj/item/reagent_containers/spray,
 					/obj/item/reagent_containers/medigel,
-					/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT HYPOSPRAYS
+					/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT ADDITION - HYPOSPRAYS
 					/obj/item/reagent_containers/chem_pack
 	))
 

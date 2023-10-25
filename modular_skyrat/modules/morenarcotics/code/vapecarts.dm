@@ -17,7 +17,7 @@
 	if(istype(target, /obj/item/clothing/mask/vape))
 		var/obj/item/clothing/mask/vape/target_vape = target
 		if(target_vape.screw == TRUE && !target_vape.reagents.total_volume)
-			src.reagents.trans_to(target_vape, src.volume, transfered_by = user)
+			src.reagents.trans_to(target_vape, src.volume, transferred_by = user)
 			qdel(src)
 			to_chat(user, span_notice("You plug the [src.name] into the vape."))
 		else if(!target_vape.screw)

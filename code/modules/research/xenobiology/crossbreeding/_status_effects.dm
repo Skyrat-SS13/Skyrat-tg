@@ -173,10 +173,13 @@
 	alert_type = /atom/movable/screen/alert/status_effect/clone_decay
 
 /datum/status_effect/slime_clone_decay/tick(seconds_between_ticks)
-	owner.adjustToxLoss(1, 0)
-	owner.adjustOxyLoss(1, 0)
-	owner.adjustBruteLoss(1, 0)
-	owner.adjustFireLoss(1, 0)
+	var/need_mob_update
+	need_mob_update = owner.adjustToxLoss(1, updating_health = FALSE)
+	need_mob_update += owner.adjustOxyLoss(1, updating_health = FALSE)
+	need_mob_update += owner.adjustBruteLoss(1, updating_health = FALSE)
+	need_mob_update += owner.adjustFireLoss(1, updating_health = FALSE)
+	if(need_mob_update)
+		owner.updatehealth()
 	owner.color = "#007BA7"
 
 /atom/movable/screen/alert/status_effect/bloodchill
@@ -505,19 +508,23 @@
 
 /datum/status_effect/stabilized/purple/tick(seconds_between_ticks)
 	healed_last_tick = FALSE
+	var/need_mob_update = FALSE
 
 	if(owner.getBruteLoss() > 0)
-		owner.adjustBruteLoss(-0.2)
+		need_mob_update += owner.adjustBruteLoss(-0.2, updating_health = FALSE)
 		healed_last_tick = TRUE
 
 	if(owner.getFireLoss() > 0)
-		owner.adjustFireLoss(-0.2)
+		need_mob_update += owner.adjustFireLoss(-0.2, updating_health = FALSE)
 		healed_last_tick = TRUE
 
 	if(owner.getToxLoss() > 0)
 		// Forced, so slimepeople are healed as well.
-		owner.adjustToxLoss(-0.2, forced = TRUE)
+		need_mob_update += owner.adjustToxLoss(-0.2, updating_health = FALSE, forced = TRUE)
 		healed_last_tick = TRUE
+
+	if(need_mob_update)
+		owner.updatehealth()
 
 	// Technically, "healed this tick" by now.
 	if(healed_last_tick)
@@ -586,7 +593,6 @@
 	if(batteries.len)
 		var/obj/item/stock_parts/cell/ToCharge = pick(batteries)
 		ToCharge.charge += min(ToCharge.maxcharge - ToCharge.charge, ToCharge.maxcharge/10) //10% of the cell, or to maximum.
-		to_chat(owner, span_notice("[linked_extract] discharges some energy into a device you have."))
 	return ..()
 
 /obj/item/hothands
@@ -992,7 +998,7 @@
 		owner.apply_damage_type(-heal_amount, damagetype = pick(healing_types))
 
 	owner.adjust_nutrition(3)
-	drained.adjustCloneLoss(heal_amount * DRAIN_DAMAGE_MULTIPLIER)
+	drained.apply_damage(heal_amount * DRAIN_DAMAGE_MULTIPLIER, damagetype = BRUTE, spread_damage = TRUE)
 	return ..()
 
 #undef DRAIN_DAMAGE_MULTIPLIER

@@ -162,8 +162,6 @@
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
 
-// SKYRAT EDIT REMOVAL BEGIN - GUN CARGO
-/*
 /datum/supply_pack/service/survivalknives
 	name = "Survival Knives Crate"
 	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly \
@@ -171,8 +169,6 @@
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/knife/combat/survival = 3)
 	crate_name = "survival knife crate"
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"
@@ -274,3 +270,17 @@
 	contains = list(/obj/machinery/coffeemaker/impressa)
 	crate_name = "coffeemaker crate"
 	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/service/aquarium_kit
+	name = "Aquarium Kit"
+	desc = "Everything you need to start your own aquarium. Contains aquarium construction kit, \
+		fish catalog, fish food and three freshwater fish from our collection."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/book/manual/fish_catalog,
+					/obj/item/storage/fish_case/random/freshwater = 3,
+					/obj/item/fish_feed,
+					/obj/item/storage/box/aquarium_props,
+					/obj/item/aquarium_kit,
+				)
+	crate_name = "aquarium kit crate"
+	crate_type = /obj/structure/closet/crate/wooden
