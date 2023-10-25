@@ -9,7 +9,7 @@
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
 	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/cyberimp_claws
 	name = "Razor Claws Implant"
