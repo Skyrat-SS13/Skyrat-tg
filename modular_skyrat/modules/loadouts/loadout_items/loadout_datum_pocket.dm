@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/storage/pill_bottle/lsd
 
 /datum/loadout_item/pocket_items/drugs_weed
-	name = "Weed Seeds"
+	name = "Cannabis Seeds"
 	item_path = /obj/item/seeds/cannabis
 
 /datum/loadout_item/pocket_items/drugs_reishi
