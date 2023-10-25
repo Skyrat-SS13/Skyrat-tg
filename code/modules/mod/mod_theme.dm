@@ -936,8 +936,8 @@
 
 /datum/armor/mod_theme_praetorian
 	melee = 40
-	bullet = 40
-	laser = 40
+	bullet = 30
+	laser = 30
 	energy = 40
 	bomb = 50
 	bio = 100
