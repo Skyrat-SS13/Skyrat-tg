@@ -100,7 +100,7 @@
 		card_used.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
 		log_econ("[amount_to_reward] credits were rewarded to [card_used.registered_account.account_holder]'s account for redeeming a GAP card.")
 		say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
-		COOLDOWN_START(card_used, gbp_redeem_cooldown, 10 MINUTES)
+		COOLDOWN_START(card_used, gbp_redeem_cooldown, 12 MINUTES)
 		user.temporarilyRemoveItemFromInventory(punchcard)
 		qdel(punchcard)
 		var/obj/item/storage/fancy/nugget_box/nuggies = new(get_turf(src))
