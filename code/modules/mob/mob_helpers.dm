@@ -268,7 +268,7 @@
 	flashwindow = TRUE,
 	ignore_mapload = TRUE,
 	ignore_key,
-	header,
+	header = "",
 	notify_suiciders = TRUE,
 	notify_volume = 100
 )
