@@ -154,10 +154,10 @@
 	acid = 100
 	wound = 20
 
-/datum/mod_theme/praetorian // Blueshield
-	armor_type = /datum/armor/mod_theme_praetorian
+/datum/mod_theme/blueshield // Blueshield
+	armor_type = /datum/armor/mod_theme_blueshield
 
-/datum/armor/mod_theme_praetorian
+/datum/armor/mod_theme_blueshield
 	melee = 40
 	bullet = 30
 	laser = 30
