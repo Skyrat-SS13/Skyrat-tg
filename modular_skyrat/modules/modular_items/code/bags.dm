@@ -133,7 +133,6 @@
 	*/
 	atom_storage.max_slots = 5
 	atom_storage.max_total_storage = 10
-	atom_storage.numerical_stacking = TRUE
 
 /obj/item/storage/pouch/medical/firstaid/loaded/Initialize(mapload)
 	. = ..()
