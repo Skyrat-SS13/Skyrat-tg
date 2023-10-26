@@ -95,14 +95,16 @@
 // Paper sack that spawns a random two slices of bread
 
 /obj/item/storage/box/papersack/ration_bread_slice
-	name = "bread ration bag"
-	desc = "A dusty old paper sack that should ideally contain your ration of bread. Can't eat bread? Damn shame."
+	name = "bread and cheese ration bag"
+	desc = "A dusty old paper sack that should ideally contain your ration of bread and cheese."
 
 /obj/item/storage/box/papersack/ration_bread_slice/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
 
 /obj/item/storage/box/papersack/ration_bread_slice/PopulateContents()
-	for(var/i in 1 to 3)
-		var/bread_slice = pick(/obj/item/food/breadslice/plain, /obj/item/food/breadslice/reispan, /obj/item/food/breadslice/root)
-		new bread_slice(src)
+	var/bread_slice = pick(/obj/item/food/breadslice/plain, /obj/item/food/breadslice/reispan, /obj/item/food/breadslice/root)
+	new bread_slice(src)
+	new bread_slice(src)
+	var/cheese_slice = pick(/obj/item/food/cheese/wedge, /obj/item/food/cheese/firm_cheese_slice, /obj/item/food/cheese/cheese_curds, /obj/item/food/cheese/mozzarella)
+	new cheese_slice(src)
