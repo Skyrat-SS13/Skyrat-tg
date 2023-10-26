@@ -52,8 +52,11 @@
 	for(var/obj/card in bank_cards)
 		// We want to only make one ticket pr account per payday
 		if(created_ticket)
-			continue
-		created_ticket = new (last_ticket_luxury ? /obj/item/paper/paperslip/ration_ticket : /obj/item/paper/paperslip/ration_ticket/luxury)
+		if(!last_ticket_luxury)
+			ticket_to_make = /obj/item/paper/paperslip/ration_ticket/luxury
+		else
+			ticket_to_make = /obj/item/paper/paperslip/ration_ticket
+		created_ticket = new ticket_to_make(card)
 		last_ticket_luxury = !last_ticket_luxury
 		if(!tracked_ticket_book.atom_storage.can_insert(created_ticket, messages = FALSE))
 			qdel(created_ticket)
