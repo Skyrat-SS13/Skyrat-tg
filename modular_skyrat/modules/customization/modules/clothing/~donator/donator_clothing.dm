@@ -1738,7 +1738,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 #undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
 
 /obj/item/clothing/head/anubite
-	name = "Anubite Headpiece"
+	name = "\improper Anubite headpiece"
 	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
 	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "anubite_headpiece"
