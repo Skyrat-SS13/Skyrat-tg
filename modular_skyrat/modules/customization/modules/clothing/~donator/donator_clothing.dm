@@ -1737,6 +1737,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 #undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
 
+//  Donation reward for vexcint
 /obj/item/clothing/head/anubite
 	name = "\improper Anubite headpiece"
 	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
