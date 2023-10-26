@@ -28,7 +28,7 @@
 		if(punches < max_punches)
 			punches++
 			icon_state = "punchcard_[punches]"
-			COOLDOWN_START(src, gbp_punch_cooldown, 3 MINUTES)
+			COOLDOWN_START(src, gbp_punch_cooldown, 90 SECONDS)
 			log_econ("[user] punched a GAP card that is now at [punches]/[max_punches] punches.")
 			playsound(attacking_item, 'sound/items/boxcutter_activate.ogg', 100)
 			if(punches == max_punches)
@@ -100,7 +100,7 @@
 		card_used.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
 		log_econ("[amount_to_reward] credits were rewarded to [card_used.registered_account.account_holder]'s account for redeeming a GAP card.")
 		say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
-		COOLDOWN_START(card_used, gbp_redeem_cooldown, 15 MINUTES)
+		COOLDOWN_START(card_used, gbp_redeem_cooldown, 10 MINUTES)
 		user.temporarilyRemoveItemFromInventory(punchcard)
 		qdel(punchcard)
 		var/obj/item/storage/fancy/nugget_box/nuggies = new(get_turf(src))
