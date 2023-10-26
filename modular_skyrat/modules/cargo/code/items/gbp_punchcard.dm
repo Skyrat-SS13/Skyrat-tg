@@ -81,7 +81,6 @@
 			var/obj/item/gbp_punchcard/replacement_card = new(get_turf(src))
 			user.put_in_hands(nuggies)
 			user.put_in_hands(replacement_card)
-
 			return
 		else
 			playsound(src, 'sound/machines/scanbuzz.ogg', 100)
