@@ -66,4 +66,4 @@
 			// We can stop here, its joever for trying to place tickets in the book this payday. You snooze you lose!
 			return
 		created_ticket.forceMove(tracked_ticket_book)
-		bank_card_talk("[last_ticket_luxury ? "Luxury item" : "Standard"] ration ticket placed in ticket book.")
+		bank_card_talk("A new [last_ticket_luxury ? "luxury item" : "standard"] ration ticket has been placed in your ticket book.")
