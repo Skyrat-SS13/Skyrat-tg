@@ -75,9 +75,13 @@
 			card_used?.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
 			log_econ("[amount_to_reward] credits were rewarded to [card_used?.registered_account.account_holder]'s account for redeeming a GAP card.")
 			say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
-			new /obj/item/storage/fancy/nugget_box(get_turf(src))
-			new /obj/item/gbp_punchcard(get_turf(src))
+			user.temporarilyRemoveItemFromInventory(attacking_item)
 			qdel(attacking_item)
+			var/obj/item/storage/fancy/nugget_box/nuggies = new(get_turf(src))
+			var/obj/item/gbp_punchcard/replacement_card = new(get_turf(src))
+			user.put_in_hands(nuggies)
+			user.put_in_hands(replacement_card)
+
 			return
 		else
 			playsound(src, 'sound/machines/scanbuzz.ogg', 100)
