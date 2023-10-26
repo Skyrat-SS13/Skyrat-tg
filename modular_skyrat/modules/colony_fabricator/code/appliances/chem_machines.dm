@@ -8,12 +8,14 @@
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "water_synth"
 	anchored = FALSE
-	dispensable_reagents = list(
+	/// Reagents that this can dispense, overrides the default list on init
+	var/static/list/synthesizable_reagents = list(
 		/datum/reagent/water,
 	)
 
-/obj/machinery/plumbing/synthesizer/water_synth/Initialize(mapload)
+/obj/machinery/plumbing/synthesizer/water_synth/Initialize(mapload, bolt, layer)
 	. = ..()
+	dispensable_reagents = synthesizable_reagents
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 
 // Deployable item for cargo for the water synth
