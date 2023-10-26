@@ -3,7 +3,7 @@
 /obj/item/gbp_punchcard
 	name = "Good Assistant Points punchcard"
 	desc = "The Good Assistant Points program is designed to supplement the income of otherwise unemployed or unpaid individuals on board Nanotrasen vessels and colonies.<br>\
-	Simply get your punchcard stamped by a Head of Staff to earn 50 credits per punch upon turn-in at a Good Assistant Point machine!<br>\
+	Simply get your punchcard stamped by a Head of Staff to earn [GBP_PUNCH_REWARD] credits per punch upon turn-in at a Good Assistant Point machine!<br>\
 	Maximum of six punches per any given card. Card replaced upon redemption of existing card. Do not lose your punchcard."
 	icon = 'modular_skyrat/modules/cargo/icons/punchcard.dmi'
 	icon_state = "punchcard_0"
