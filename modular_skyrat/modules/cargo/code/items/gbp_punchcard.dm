@@ -21,6 +21,7 @@
 		if(punches < max_punches)
 			punches++
 			icon_state = "punchcard_[punches]"
+			log_econ("[user] punched a GAP card that is now at [punches]/[max_punches] punches.")
 			playsound(attacking_item, 'sound/items/boxcutter_activate.ogg', 100)
 			if(punches == max_punches)
 				playsound(src, 'sound/items/party_horn.ogg', 100)
@@ -72,6 +73,7 @@
 		if(card_used?.registered_account)
 			playsound(src, 'sound/machines/printer.ogg', 100)
 			card_used?.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
+			log_econ("[amount_to_reward] credits were rewarded to [card_used?.registered_account.account_holder]'s account for redeeming a GAP card.")
 			say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
 			new /obj/item/storage/fancy/nugget_box(get_turf(src))
 			new /obj/item/gbp_punchcard(get_turf(src))
@@ -91,52 +93,51 @@
 		/datum/stock_part/servo = 1)
 
 
-/datum/outfit/job/rd
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+/datum/outfit/job/rd/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1
 	)
 
-/datum/outfit/job/hos
-	backpack_contents = list(
-		/obj/item/evidencebag = 1,
+/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/hop
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+/datum/outfit/job/hop/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/ce
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/construction/rcd/ce = 1,
+/datum/outfit/job/ce/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/cmo
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+/datum/outfit/job/cmo/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/captain
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/station_charter = 1,
+/datum/outfit/job/captain/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/quartermaster
-	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+/datum/outfit/job/quartermaster/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(
 		/obj/item/gbp_puncher = 1,
 	)
 
-/datum/outfit/job/assistant
-	backpack_contents = list(/obj/item/gbp_punchcard/starting)
+/datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/human, visualsOnly)
+	. = ..()
+	backpack_contents += list(/obj/item/gbp_punchcard/starting)
 
 /datum/design/board/gbp_machine
 	name = "Good Assistant Points Redemption Machine Board"
