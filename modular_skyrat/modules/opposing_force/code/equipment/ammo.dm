@@ -1,6 +1,10 @@
 /datum/opposing_force_equipment/ammo_exotic
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC
 
+/datum/opposing_force_equipment/ammo_exotic/rubber27_54
+	description = "A box of .27-54 Cesarzowa Rubber rounds, useful for incapacitating targets without causing too much extra harm."
+	item_type = /obj/item/ammo_box/c27_54cesarzowa/rubber
+
 /datum/opposing_force_equipment/ammo_exotic/ripper35
 	description = "A box of .35 Sol rounds, hollow-tipped for maximum damage against NON-ARMOURED combatants."
 	item_type = /obj/item/ammo_box/c35sol/ripper
@@ -12,23 +16,22 @@
 /datum/opposing_force_equipment/ammo_exotic/fire40
 	description = "A box of .40 Sol Incendiary rounds, bullet impacts light the victims aflame."
 	item_type = /obj/item/ammo_box/c40sol/incendiary
-/datum/opposing_force_equipment/ammo/lanca
-	item_type = /obj/item/ammo_box/magazine/lanca
 
 /datum/opposing_force_equipment/ammo_exotic/frag40
 	description = "A box of .40 Sol Fragmentation rounds, useful for incapacitating your victim ASAP, no matter if they live or die."
 	item_type = /obj/item/ammo_box/c40sol/fragmentation
-/datum/opposing_force_equipment/ammo/miecz
-	item_type = /obj/item/ammo_box/magazine/miecz
+
+/datum/opposing_force_equipment/ammo_exotic/rubber310
+	description = "A box of .310 Strilka Rubber rounds, useful for incapacitating targets without causing too much extra harm."
+	item_type = /obj/item/ammo_box/c310_cargo_box/rubber
+
+/datum/opposing_force_equipment/ammo_exotic/pierce310
+	description = "A box of .310 Strilka Piercing rounds, useful against armored combatants."
+	item_type = /obj/item/ammo_box/c310_cargo_box/piercing
 
 /datum/opposing_force_equipment/ammo_exotic/magnum
 	description = "A box of magnum flechette shotgun shells, the first choice munition of many shotgun fanatics."
 	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
-/datum/opposing_force_equipment/ammo/strilka_clip
-	item_type = /obj/item/ammo_box/strilka310
-
-/datum/opposing_force_equipment/ammo/plasma_pack
-	item_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
 
 /datum/opposing_force_equipment/ammo_exotic/express
 	description = "A box of express buckshot shotgun shells, for when the regular shells can't keep up with you."
