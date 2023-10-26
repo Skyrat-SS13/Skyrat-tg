@@ -52,6 +52,7 @@
 	for(var/obj/card in bank_cards)
 		// We want to only make one ticket pr account per payday
 		if(created_ticket)
+			continue
 		var/ticket_to_make
 		if(!last_ticket_luxury)
 			ticket_to_make = /obj/item/paper/paperslip/ration_ticket/luxury
