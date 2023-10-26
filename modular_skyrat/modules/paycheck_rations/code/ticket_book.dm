@@ -4,7 +4,6 @@
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/tickets.dmi'
 	icon_state = "ticket_book"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_ID
 
 /obj/item/storage/ration_ticket_book/Initialize(mapload)
 	. = ..()
