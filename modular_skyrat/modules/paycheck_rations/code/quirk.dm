@@ -54,7 +54,7 @@
 		if(created_ticket)
 			continue
 		created_ticket = new (last_ticket_luxury ? /obj/item/paper/paperslip/ration_ticket : /obj/item/paper/paperslip/ration_ticket/luxury)
-		last_ticket_luxury != last_ticket_luxury
+		last_ticket_luxury = !last_ticket_luxury
 		if(!tracked_ticket_book.atom_storage.can_insert(created_ticket, messages = FALSE))
 			qdel(created_ticket)
 			bank_card_talk("ERROR: Failed to place ration ticket in ticket book, ensure book is not full.")
