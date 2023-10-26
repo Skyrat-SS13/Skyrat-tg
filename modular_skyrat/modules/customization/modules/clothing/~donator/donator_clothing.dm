@@ -1736,3 +1736,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	can_adjust = FALSE
 
 #undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
+
+//  Donation reward for vexcint
+/obj/item/clothing/head/anubite
+	name = "\improper Anubite headpiece"
+	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
+	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anubite_headpiece"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_y_offset = 4
