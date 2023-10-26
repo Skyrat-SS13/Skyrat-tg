@@ -7,6 +7,14 @@
 	if(.)
 		return
 	return promptAndCheckIn(user, user)
+// borgos need love too
+/obj/item/hilbertshotel/ghostdojo/attack_robot(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if(!src.Adjacent(user))
+		return
+	return promptAndCheckIn(user, user)
 
 /datum/map_template/ghost_cafe_rooms
 	name = "Apartment"
