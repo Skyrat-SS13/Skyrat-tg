@@ -40,6 +40,7 @@
 	override_state = null,
 	override_file = null,
 	use_height_offset = TRUE,
+	mutant_styles = NONE, // SKYRAT EDIT ADD - Further outfit modification for outfits (added `mutant_styles` argument)
 )
 	return ..(default_layer, default_icon_file, isinhands, female_uniform, override_state, override_file, use_height_offset = FALSE)
 

@@ -819,13 +819,9 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	female_uniform = NO_FEMALE_UNIFORM,
 	override_state = null,
 	override_file = null,
-<<<<<<< HEAD
-	mutant_styles = NONE,
-) // SKYRAT EDIT - Further outfit modification for outfits (added `mutant_styles` argument)
-=======
 	use_height_offset = TRUE,
+	mutant_styles = NONE, // SKYRAT EDIT ADD - Further outfit modification for outfits (added `mutant_styles` argument)
 )
->>>>>>> 6f128a0e9fe (Fix wigs being offset too far by mob height (#79262))
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
