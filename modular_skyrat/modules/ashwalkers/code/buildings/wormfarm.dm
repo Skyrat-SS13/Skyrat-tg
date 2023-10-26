@@ -32,7 +32,7 @@
 
 	COOLDOWN_START(src, worm_timer, 1 MINUTES)
 
-	if(current_worm > 2 && current_worm < max_worm)
+	if(current_worm >= 2 && current_worm < max_worm)
 		current_worm++
 
 	if(current_food > 0 && current_worm > 1)
@@ -103,6 +103,24 @@
 		balloon_alert(user, "feeding complete, check back later")
 
 		current_food++
+
+		in_use = FALSE
+		return
+
+	if(istype(attacking_item, /obj/item/storage/bag/plants))
+		if(in_use)
+			balloon_alert(user, "currently in use")
+			return
+		in_use = TRUE
+
+		balloon_alert(user, "feeding the worms")
+		for(var/obj/item/food/selected_food in attacking_item.contents)
+			if(!do_after(user, 1 SECONDS, src))
+				in_use = FALSE
+				return
+
+			qdel(selected_food)
+			current_food++
 
 		in_use = FALSE
 		return

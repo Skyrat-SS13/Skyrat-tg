@@ -1,9 +1,5 @@
 // Various designs that get added to the colony fab
 
-/datum/design/rcd_loaded/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
 /datum/design/holosignatmos/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
@@ -65,10 +61,6 @@
 	build_type |= COLONY_FABRICATOR
 
 /datum/design/rtd_loaded/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
-
-/datum/design/rcd_ammo/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 

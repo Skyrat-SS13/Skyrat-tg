@@ -14,7 +14,7 @@
 	reqs = list(/obj/item/grown/log = 5)
 	parts = list(/obj/item/grown/log = 5)
 	blacklist = list(/obj/item/grown/log/steel)
-	result = /obj/structure/bonfire
+	result = /obj/structure/bonfire/player_made // SKYRAT EDIT - Pollution - ORIGINAL: result = /obj/structure/bonfire
 	category = CAT_TOOLS
 
 /datum/crafting_recipe/boneshovel

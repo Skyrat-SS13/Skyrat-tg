@@ -96,6 +96,7 @@
 
 		if("display_restrictions")
 			display_job_restrictions(interacted_item)
+			display_job_blacklists(interacted_item)
 			display_species_restrictions(interacted_item)
 
 		// Clears the loadout list entirely.
@@ -234,12 +235,23 @@
 		if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
 			owner.prefs.loadout_list[item.item_path] -= INFO_DESCRIBED
 
+/// If only certain jobs are allowed to equip this loadout item, display which
 /datum/loadout_manager/proc/display_job_restrictions(datum/loadout_item/item)
 	if(!length(item.restricted_roles))
 		return
-	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following roles: <br>")
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is whitelisted to the following roles: <br>")
 	for(var/job_type in item.restricted_roles)
 		composed_message += span_green("[job_type] <br>")
+
+	to_chat(owner, examine_block(composed_message))
+
+/// If certain jobs aren't allowed to equip this loadout item, display which
+/datum/loadout_manager/proc/display_job_blacklists(datum/loadout_item/item)
+	if(!length(item.blacklisted_roles))
+		return
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is blacklisted from the following roles: <br>")
+	for(var/job_type in item.blacklisted_roles)
+		composed_message += span_red("[job_type] <br>")
 
 	to_chat(owner, examine_block(composed_message))
 
@@ -249,7 +261,7 @@
 		return
 	var/composed_message = span_boldnotice("\The [initial(item.item_path.name)] is restricted to the following species: <br>")
 	for(var/species_type in item.restricted_species)
-		composed_message += span_green("[species_type] <br>")
+		composed_message += span_grey("[species_type] <br>")
 
 	to_chat(owner, examine_block(composed_message))
 
@@ -351,6 +363,7 @@
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
 		formatted_item["is_renamable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
+		formatted_item["is_job_blacklisted"] = !isnull(item.blacklisted_roles)
 		formatted_item["is_species_restricted"] = !isnull(item.restricted_species)
 		formatted_item["is_donator_only"] = !isnull(item.donator_only)
 		formatted_item["is_ckey_whitelisted"] = !isnull(item.ckeywhitelist)
