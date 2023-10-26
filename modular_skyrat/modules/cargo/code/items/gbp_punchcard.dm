@@ -1,5 +1,8 @@
 #define GBP_PUNCH_REWARD 100
 
+/obj/item/card/id
+	COOLDOWN_DECLARE(gbp_redeem_cooldown)
+
 /obj/item/gbp_punchcard
 	name = "Good Assistant Points punchcard"
 	desc = "The Good Assistant Points program is designed to supplement the income of otherwise unemployed or unpaid individuals on board Nanotrasen vessels and colonies.<br>\
@@ -10,6 +13,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/max_punches = 6
 	var/punches = 0
+	COOLDOWN_DECLARE(gbp_punch_cooldown)
 
 /obj/item/gbp_punchcard/starting
 	icon_state = "punchcard_1"
@@ -18,9 +22,13 @@
 /obj/item/gbp_punchcard/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if(istype(attacking_item, /obj/item/gbp_puncher))
+		if(!COOLDOWN_FINISHED(src, gbp_punch_cooldown))
+			balloon_alert(user, "cooldown! [DisplayTimeText(COOLDOWN_TIMELEFT(src, gbp_punch_cooldown))]")
+			return
 		if(punches < max_punches)
 			punches++
 			icon_state = "punchcard_[punches]"
+			COOLDOWN_START(src, gbp_punch_cooldown, 90 SECONDS)
 			log_econ("[user] punched a GAP card that is now at [punches]/[max_punches] punches.")
 			playsound(attacking_item, 'sound/items/boxcutter_activate.ogg', 100)
 			if(punches == max_punches)
@@ -66,26 +74,41 @@
 			playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 			say("You can't redeem an unpunched card!")
 			return
+
 		var/obj/item/card/id/card_used
 		if(isliving(user))
 			var/mob/living/living_user = user
 			card_used = living_user.get_idcard(TRUE)
-		if(card_used?.registered_account)
-			playsound(src, 'sound/machines/printer.ogg', 100)
-			card_used?.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
-			log_econ("[amount_to_reward] credits were rewarded to [card_used?.registered_account.account_holder]'s account for redeeming a GAP card.")
-			say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
-			user.temporarilyRemoveItemFromInventory(attacking_item)
-			qdel(attacking_item)
-			var/obj/item/storage/fancy/nugget_box/nuggies = new(get_turf(src))
-			var/obj/item/gbp_punchcard/replacement_card = new(get_turf(src))
-			user.put_in_hands(nuggies)
-			user.put_in_hands(replacement_card)
+
+		if(isnull(card_used))
 			return
-		else
+
+		if(!COOLDOWN_FINISHED(card_used, gbp_redeem_cooldown))
+			balloon_alert(user, "cooldown! [DisplayTimeText(COOLDOWN_TIMELEFT(card_used, gbp_redeem_cooldown))]")
+			return
+
+		if(!card_used.registered_account || !istype(card_used.registered_account.account_job, /datum/job/assistant))
 			playsound(src, 'sound/machines/scanbuzz.ogg', 100)
-			say("You cannot redeem a punchcard without an ID card with a valid account!")
+			say("You cannot redeem a punchcard without a valid assistant bank account!")
 			return
+
+		if(punchcard.punches < punchcard.max_punches)
+			if(tgui_alert(user, "You haven't finished the punchcard! Are you sure you want to redeem, starting the 15 minute timer?", "A real goof effort right here", list("No", "Yes")) != "Yes")
+				return
+
+		playsound(src, 'sound/machines/printer.ogg', 100)
+		card_used.registered_account.adjust_money(amount_to_reward, "GAP: [punchcard.punches] punches")
+		log_econ("[amount_to_reward] credits were rewarded to [card_used.registered_account.account_holder]'s account for redeeming a GAP card.")
+		say("Rewarded [amount_to_reward] to your account, and dispensed a ration pack! Thank you for being a Good Assistant! Please take your new punchcard.")
+		COOLDOWN_START(card_used, gbp_redeem_cooldown, 12 MINUTES)
+		user.temporarilyRemoveItemFromInventory(punchcard)
+		qdel(punchcard)
+		var/obj/item/storage/fancy/nugget_box/nuggies = new(get_turf(src))
+		var/obj/item/gbp_punchcard/replacement_card = new(get_turf(src))
+		user.put_in_hands(nuggies)
+		user.put_in_hands(replacement_card)
+		return
+
 	return ..()
 
 /obj/item/circuitboard/machine/gbp_redemption
