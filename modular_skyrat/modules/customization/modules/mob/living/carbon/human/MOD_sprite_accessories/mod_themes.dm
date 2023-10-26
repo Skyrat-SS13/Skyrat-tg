@@ -21,7 +21,7 @@
 /datum/mod_theme/magnate
 	hardlight_theme = ROYAL_PURPLE
 
-/datum/mod_theme/praetorian
+/datum/mod_theme/blueshield
 	hardlight_theme = COSMIC_BLUE
 
 /datum/mod_theme/research
