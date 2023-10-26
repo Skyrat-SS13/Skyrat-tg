@@ -204,6 +204,26 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Colourable Mantle"
 	item_path = /obj/item/clothing/neck/mantle/recolorable
 
+/datum/loadout_item/neck/long_cape
+	name = "Long Colourable Cape"
+	item_path = /obj/item/clothing/neck/long_cape
+
+/datum/loadout_item/neck/wide_cape
+	name = "Wide Colourable Cape"
+	item_path = /obj/item/clothing/neck/wide_cape
+
+/datum/loadout_item/neck/robe_cape
+	name = "Robed Colourable Cape"
+	item_path = /obj/item/clothing/neck/robe_cape
+
+/datum/loadout_item/neck/maid_neck_cover
+	name = "Colourable Maid Neck Cover"
+	item_path = /obj/item/clothing/neck/maid_neck_cover
+
+/datum/loadout_item/neck/face_scarf
+	name = "Colourable Face Scarf"
+	item_path = /obj/item/clothing/neck/face_scarf
+
 /*
 *	MANTLES
 */

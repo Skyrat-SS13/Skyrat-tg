@@ -222,8 +222,8 @@
 	name = "beehive pellet"
 	damage = 4
 	stamina = 10
-	tile_dropoff = 0.1
-	tile_dropoff_s = 0.1
+	damage_falloff_tile = 0.1
+	stamina_falloff_tile = 0.1
 	wound_bonus = -5
 	bare_wound_bonus = 5
 	wound_falloff_tile = 0
@@ -253,8 +253,8 @@
 	name = "electrode"
 	damage = 4
 	stamina = 6
-	tile_dropoff = 0.2
-	tile_dropoff_s = 0.3
+	damage_falloff_tile = 0.2
+	stamina_falloff_tile = 0.3
 	wound_bonus = 0
 	bare_wound_bonus = 0
 	stutter = 3 SECONDS
@@ -287,7 +287,7 @@
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox //see /obj/projectile/temp for the original code
 	name = "iceblox pellet"
-	tile_dropoff = 0.35
+	damage_falloff_tile = 0.35
 	damage = 5
 	weak_against_armour = TRUE
 	var/temperature = 30
@@ -338,7 +338,7 @@
 	name = "confetti"
 	damage = 0
 	stamina = 1
-	tile_dropoff_s = 0
+	stamina_falloff_tile = 0
 	wound_bonus = 0
 	bare_wound_bonus = 0
 	jitter = 1 SECONDS

@@ -29,6 +29,7 @@
 /datum/armament_entry/company_import/akh_frontier/deployables_fab/rapid_construction_fabricator
 	item_type = /obj/item/flatpacked_machine
 	cost = CARGO_CRATE_VALUE * 6
+	restricted = TRUE
 
 // Various smaller appliances than the deployable machines below
 
@@ -80,3 +81,4 @@
 
 /datum/armament_entry/company_import/akh_frontier/deployables/rtg
 	item_type = /obj/item/flatpacked_machine/rtg
+	restricted = TRUE

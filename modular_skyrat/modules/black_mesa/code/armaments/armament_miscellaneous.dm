@@ -22,6 +22,11 @@
 	max_purchase = 6
 	cost = 1
 
+/datum/armament_entry/hecu/misc/pizza
+	item_type = /obj/item/pizzabox/random
+	max_purchase = 3
+	cost = 2
+
 /datum/armament_entry/hecu/misc/guitar
 	item_type = /obj/item/instrument/guitar
 	max_purchase = 1
