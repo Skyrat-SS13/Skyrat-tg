@@ -144,6 +144,8 @@
 
 /// Start the cooldown to regenerate - 5 seconds after taking damage
 /datum/species/mutant/infectious/proc/queue_regeneration()
+	SIGNAL_HANDLER
+
 	if(COOLDOWN_FINISHED(src, regen_cooldown))
 		COOLDOWN_START(src, regen_cooldown, REGENERATION_DELAY)
 
