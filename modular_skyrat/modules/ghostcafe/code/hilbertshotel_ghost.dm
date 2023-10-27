@@ -7,6 +7,7 @@
 	if(.)
 		return
 	return promptAndCheckIn(user, user)
+
 // borgos need love too
 /obj/item/hilbertshotel/ghostdojo/attack_robot(mob/living/user)
 	. = ..()
