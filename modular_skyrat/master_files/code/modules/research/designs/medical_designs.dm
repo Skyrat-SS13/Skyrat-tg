@@ -12,7 +12,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_tongue/lizard
-	name = "Cybernetic Lizard Tongue"
-	desc = "A cybernetic forked tongue."
+	name = "Forked Cybernetic Tongue"
+	desc = "A forked cybernetic tongue."
 	id = "cybernetic_tongue_lizard"
 	build_path = /obj/item/organ/internal/tongue/lizard/cybernetic

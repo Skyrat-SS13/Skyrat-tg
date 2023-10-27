@@ -106,7 +106,7 @@
 	path = /obj/item/organ/internal/tongue/cybernetic
 
 /datum/augment_item/organ/tongue/cybernetic/forked
-	name = "Cybernetic forked tongue"
+	name = "Forked cybernetic tongue"
 	path = /obj/item/organ/internal/tongue/lizard/cybernetic
 
 /datum/augment_item/organ/tongue/forked

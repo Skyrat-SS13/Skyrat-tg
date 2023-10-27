@@ -34,7 +34,7 @@
 
 /obj/item/organ/internal/tongue/lizard/robot
 	name = "robotic lizard voicebox"
-	desc = "A lizard voice synthesizer that can interface with organic lifeforms."
+	desc = "A lizard-like voice synthesizer that can interface with organic lifeforms."
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	icon_state = "tonguerobot"
 	say_mod = "hizzes"
@@ -52,10 +52,10 @@
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
 /obj/item/organ/internal/tongue/lizard/cybernetic
-	name = "cybernetic lizard tongue"
+	name = "forked cybernetic tongue"
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue-lizard"
-	desc =  "A fully-functional synthetic lizard tongue, encased in soft silicone. Features include lizard-like high-resolution vocals and taste receptors."
+	desc =  "A fully-functional forked synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	// Not as good as organic tongues, not as bad as the robotic voicebox.
 	taste_sensitivity = 20
