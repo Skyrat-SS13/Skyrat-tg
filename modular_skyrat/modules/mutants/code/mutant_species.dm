@@ -74,9 +74,14 @@
 	/// The cooldown before the mutant can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
 
-/datum/species/mutant/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/mutant/infectious/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
 	. = ..()
-	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
+	human_who_gained_species.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
+	RegisterSignal(human_who_gained_species, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(queue_regeneration))
+
+/datum/species/mutant/infectious/on_species_loss(mob/living/carbon/human/human_who_lost_species, datum/species/new_species, pref_load)
+	. = ..()
+	UnregisterSignal(human_who_lost_species, COMSIG_MOB_AFTER_APPLY_DAMAGE)
 
 /obj/item/bodypart/leg/left/mutant_zombie/infectious
 	speed_modifier = 0.5
@@ -137,9 +142,11 @@
 /datum/species/mutant/infectious/spec_stun(mob/living/carbon/human/H,amount)
 	. = min(20, amount)
 
-/datum/species/mutant/infectious/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, attacking_item)
-	. = ..()
-	if(.)
+/// Start the cooldown to regenerate - 5 seconds after taking damage
+/datum/species/mutant/infectious/proc/queue_regeneration()
+	SIGNAL_HANDLER
+
+	if(COOLDOWN_FINISHED(src, regen_cooldown))
 		COOLDOWN_START(src, regen_cooldown, REGENERATION_DELAY)
 
 /datum/species/mutant/infectious/spec_life(mob/living/carbon/carbon_mob, seconds_per_tick, times_fired)
