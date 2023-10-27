@@ -93,6 +93,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/medical(src)
 	new /obj/item/storage/photo_album/cmo(src)
 	new /obj/item/storage/lockbox/medal/med(src)
+	new /obj/item/card/id/departmental_budget/med(src) // SKYRAT EDIT -- DEPARTMENTAL BUDGET CARD
 
 /obj/structure/closet/secure_closet/chief_medical/populate_contents_immediate()
 	. = ..()
@@ -100,7 +101,6 @@
 	// Traitor steal objective
 	//new /obj/item/reagent_containers/hypospray/cmo(src) - ORIGINAL
 	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT EDIT ADDITION - New Hyposprays
-
 /obj/structure/closet/secure_closet/animal
 	name = "animal control"
 	req_access = list(ACCESS_SURGERY)

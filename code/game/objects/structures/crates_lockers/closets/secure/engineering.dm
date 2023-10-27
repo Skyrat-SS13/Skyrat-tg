@@ -13,7 +13,6 @@
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/door_remote/chief_engineer(src)
-
 	new /obj/item/circuitboard/machine/techfab/department/engineering(src)
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
@@ -21,6 +20,7 @@
 	new /obj/item/storage/box/gas_miner_beacons(src) // SKYRAT EDIT ADDITION
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
+	new /obj/item/card/id/departmental_budget/eng(src) // SKYRAT EDIT -- DEPARTMENTAL BUDGET CARD
 
 /obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
 	. = ..()
