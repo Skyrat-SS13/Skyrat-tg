@@ -1,6 +1,7 @@
 /obj/item/hilbertshotel/ghostdojo
 	name = "infinite dormitories"
 	anchored = TRUE
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
 
 /obj/item/hilbertshotel/ghostdojo/attack_hand(mob/user, list/modifiers)
 	. = ..()
