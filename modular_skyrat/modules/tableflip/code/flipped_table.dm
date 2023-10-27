@@ -18,9 +18,8 @@
 
 	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
-	var/attempted_dir = get_dir(loc, target)
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
 		if(istype(mover) && (mover.pass_flags & PASSGLASS))
 			return TRUE
@@ -30,12 +29,11 @@
 		if(projectile.trajectory && angle2dir_cardinal(projectile.trajectory.angle) == dir)
 			return TRUE
 		return FALSE
-	if(attempted_dir == dir)
+	if(border_dir == dir)
 		return FALSE
-	else if(attempted_dir != dir)
-		return TRUE
+	return TRUE
 
-/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
@@ -45,20 +43,20 @@
 	if(istype(leaving, /obj/projectile))
 		return
 
-	if(get_dir(leaving.loc, new_location) == dir)
+	if(direction == dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user)) //skyrat edit: no borer flipping
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
-	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
+	user.balloon_alert_to_viewers("flipping table upright...")
 	if(do_after(user, max_integrity * 0.25))
 		var/obj/structure/table/new_table = new table_type(src.loc)
 		new_table.update_integrity(src.get_integrity())
 		if(custom_materials)
 			new_table.set_custom_materials(custom_materials)
-		user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
+		user.balloon_alert_to_viewers("table flipped upright")
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
@@ -70,7 +68,7 @@
 		return
 	if(!can_flip)
 		return
-	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
+	user.balloon_alert_to_viewers("flipping table...")
 	if(!do_after(user, max_integrity * 0.25))
 		return
 
@@ -90,9 +88,32 @@
 	//Finally, add the custom materials, so the flags still apply to it
 	flipped_table.set_custom_materials(custom_materials)
 
-	user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
-	playsound(src, 'sound/items/trayhit2.ogg', 100)
+	var/sound_volume = 100
+	var/balloon_message = "table flipped"
+	var/user_pacifist = HAS_TRAIT(user, TRAIT_PACIFISM)
+
+	if (user_pacifist)
+		balloon_message = "table gently flipped"
+		sound_volume = 40
+
+	user.balloon_alert_to_viewers(balloon_message)
+	playsound(src, 'sound/items/trayhit2.ogg', sound_volume)
 	qdel(src)
+
+	var/turf/throw_target = get_step(flipped_table, flipped_table.dir)
+	if (!isnull(throw_target) && !user_pacifist)
+		for (var/atom/movable/movable_entity in flipped_table.loc)
+			if (movable_entity == flipped_table)
+				continue
+			if (movable_entity.anchored)
+				continue
+			if (movable_entity.invisibility > SEE_INVISIBLE_LIVING)
+				continue
+			if(!ismob(movable_entity) && !isobj(movable_entity))
+				continue
+			if(movable_entity.throwing || (movable_entity.movement_type & (FLOATING|FLYING)))
+				continue
+			movable_entity.safe_throw_at(throw_target, range = 1, speed = 1, force = MOVE_FORCE_NORMAL, gentle = TRUE)
 
 /obj/structure/table
 	var/flipped_table_type = /obj/structure/flippedtable

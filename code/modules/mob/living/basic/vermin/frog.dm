@@ -17,6 +17,7 @@
 	obj_damage = 10
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
+	melee_attack_cooldown = 2.5 SECONDS
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "pokes"
@@ -25,7 +26,7 @@
 	response_harm_simple = "splat"
 	density = FALSE
 	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
-	attack_sound = 'sound/effects/reee.ogg'
+	attack_sound = null // SKYRAT EDIT - No more frog ear-rape - ORIGINAL: attack_sound = 'sound/effects/reee.ogg'
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
@@ -39,7 +40,7 @@
 
 	ai_controller = /datum/ai_controller/basic_controller/frog
 
-	var/stepped_sound = 'sound/effects/huuu.ogg'
+	var/stepped_sound = null // SKYRAT EDIT - No more frog ear-rape - ORIGINA: var/stepped_sound = 'sound/effects/huuu.ogg'
 	///How much of a reagent the mob injects on attack
 	var/poison_per_bite = 3
 	///What reagent the mob injects targets with
@@ -77,7 +78,7 @@
 /datum/ai_controller/basic_controller/frog
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
-		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/not_friends(),
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/basic/not_friends
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -85,19 +86,13 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/random_speech/frog,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/frog,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)
-
-/datum/ai_planning_subtree/basic_melee_attack_subtree/frog
-	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/frog
-
-/datum/ai_behavior/basic_melee_attack/frog
-	action_cooldown = 2.5 SECONDS
 
 /datum/ai_controller/basic_controller/frog/trash
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/random_speech/frog,
 		/datum/ai_planning_subtree/simple_find_target,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/frog,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)

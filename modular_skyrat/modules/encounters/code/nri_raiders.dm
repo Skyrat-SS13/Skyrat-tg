@@ -59,6 +59,7 @@ GLOBAL_VAR(first_officer)
 	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
 	response_too_late = "Your response was very delayed. We have been instructed to send in the patrol ship for second attempt negotiations, stand by."
 	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
+	announcement_color = "purple"
 
 /datum/pirate_gang/nri_raiders/generate_message(payoff)
 	var/number = rand(1,99)
@@ -128,7 +129,7 @@ GLOBAL_VAR(first_officer)
 
 	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/folder/blue/nri_cop
 	r_pocket = /obj/item/storage/pouch/ammo
 
@@ -343,40 +344,6 @@ GLOBAL_VAR(first_officer)
 	command_name = "NRI Enforcer-Class Starship Telegram"
 	report_sound = ANNOUNCER_NRI_RAIDERS
 
-/obj/item/gun/ballistic/automatic/pistol/automag
-	name = "\improper Automag"
-	desc = "A .44 AMP handgun with a sleek metallic finish."
-	icon_state = "automag"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
-	w_class = WEIGHT_CLASS_NORMAL
-	accepted_magazine_type = /obj/item/ammo_box/magazine/automag
-	can_suppress = FALSE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/automag.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
-	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
-	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-
-/obj/item/ammo_box/magazine/automag
-	name = "handgun magazine (.44 AMP)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "automag"
-	base_icon_state = "automag"
-	ammo_type = /obj/item/ammo_casing/c44
-	caliber = CALIBER_44
-	max_ammo = 7
-	multiple_sprites = AMMO_BOX_PER_BULLET
-
-/obj/item/ammo_casing/c44
-	name = ".44 AMP bullet casing"
-	desc = "A .44 AMP bullet casing."
-	caliber = CALIBER_44
-	projectile_type = /obj/projectile/bullet/c44
-
-/obj/projectile/bullet/c44
-	name = ".44 AMP bullet"
-	damage = 40
-	wound_bonus = 30
-
 /obj/item/storage/belt/military/nri/captain/pirate_officer/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
@@ -392,6 +359,7 @@ GLOBAL_VAR(first_officer)
 	),src)
 
 /obj/item/storage/box/nri_survival_pack/raider
+	w_class = WEIGHT_CLASS_SMALL
 	desc = "A box filled with useful emergency items, supplied by the NRI. It feels particularily light."
 
 /obj/item/storage/box/nri_survival_pack/raider/PopulateContents()
@@ -553,9 +521,9 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri/send_notification()
 	if(active)
-		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority", color_override = "purple")
 	else
-		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority", color_override = "purple")
 
 /datum/antagonist/cop
 	name = "\improper NRI Police Officer"

@@ -468,7 +468,7 @@
 	name = "Cybernetic Implants Bundle"
 	desc = "A box containing x-ray eyes, a CNS Rebooter and Reviver implant. Comes with an autosurgeon for each."
 	item = /obj/item/storage/box/cyber_implants
-	cost = 25 //worth around 32 TC
+	cost = 20 //worth 24 TC
 	purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/bundles_tc/medical
@@ -496,6 +496,16 @@
 		*NOT* for usage with Reinforcements, and does not brainwash the target!"
 	item = /obj/item/storage/box/syndie_kit/induction_kit
 	cost = 10
+	purchasable_from = UPLINK_NUKE_OPS
+
+/datum/uplink_item/bundles_tc/cowboy
+	name = "Syndicate Outlaw Kit"
+	desc = "There've been high tales of an outlaw 'round these parts. A fella so ruthless and efficient no ranger could ever capture 'em. \
+	Now you can be just like 'em! \
+	This kit contains armor-lined cowboy equipment, a custom revolver and holster, and a horse with a complimentary apple to tame. \
+	A lighter is also included, though you must supply your own smokes."
+	item = /obj/item/storage/box/syndie_kit/cowboy
+	cost = 18
 	purchasable_from = UPLINK_NUKE_OPS
 
 // Mech related gear
@@ -597,6 +607,14 @@
 	cost = 2
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 
+/datum/uplink_item/device_tools/medgun_mod
+	name = "Medbeam Gun Module"
+	desc = "A wonder of Syndicate engineering, the Medbeam gun module, or Medi-Gun enables a medic to keep his fellow \
+		operatives in the fight, even while under fire. Don't cross the streams!"
+	item = /obj/item/mod/module/medbeam
+	cost = 15
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
+
 /datum/uplink_item/suits/syndi_intellicard
 	name = "Pre-Loaded Syndicate Intellicard"
 	desc = "A syndicate intellicard that can be activated to download a captured Nanotrasen AI, modified with the standard syndicate lawset. You can slot it into your modsuit for a conversational partner! It can additionally control the MODsuit's modules at will, and move your body around even if you're in critical condition or dead. \
@@ -632,14 +650,6 @@
 		In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
 	item = /obj/item/crowbar/power/syndicate
 	cost = 4
-	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
-
-/datum/uplink_item/device_tools/medgun
-	name = "Medbeam Gun"
-	desc = "A wonder of Syndicate engineering, the Medbeam gun, or Medi-Gun enables a medic to keep his fellow \
-		operatives in the fight, even while under fire. Don't cross the streams!"
-	item = /obj/item/gun/medbeam
-	cost = 15
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 
 /datum/uplink_item/device_tools/medkit
@@ -730,13 +740,6 @@
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
 	item = /obj/item/autosurgeon/syndicate/anti_stun
-	cost = 8
-
-/datum/uplink_item/implants/nuclear/antidrop
-	name = "Anti-Drop Implant"
-	desc = "This implant will keep you from dropping things from your hands. Be sure to hold onto the item before activating, and \
-		activate it again to turn it off. Comes with an autosurgeon."
-	item = /obj/item/autosurgeon/syndicate/anti_drop
 	cost = 8
 
 // Badass (meme items)

@@ -7,7 +7,6 @@
 	name = "Moldies"
 	description = "A mold outbreak on the station. The mold will spread across the station if not contained."
 	typepath = /datum/round_event/mold
-	weight = 5
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	min_players = EVENT_LOWPOP_THRESHOLD
@@ -50,6 +49,9 @@
 			continue
 
 		for(var/turf/open/floor in checked_area.get_contained_turfs())
+			if(isopenspaceturf(floor))
+				continue
+
 			if(!floor.Enter(test_resin))
 				continue
 

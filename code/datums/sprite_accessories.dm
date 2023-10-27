@@ -85,6 +85,7 @@
 //////////////////////
 /datum/sprite_accessory/hair
 	icon = 'icons/mob/human/human_face.dmi'   // default icon for all hairs
+	var/y_offset = 0 // Y offset to apply so we can have hair that reaches above the player sprite's visual bounding box
 
 	// please make sure they're sorted alphabetically and, where needed, categorized
 	// try to capitalize the names please~
@@ -102,6 +103,11 @@
 /datum/sprite_accessory/hair/afro_large
 	name = "Afro (Large)"
 	icon_state = "hair_bigafro"
+
+/datum/sprite_accessory/hair/afro_huge
+	name = "Afro (Huge)"
+	icon_state = "hair_hugeafro"
+	y_offset = 6
 
 /datum/sprite_accessory/hair/allthefuzz
 	name = "All The Fuzz"
@@ -1162,6 +1168,8 @@
 	use_static = TRUE
 
 
+
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 //FEMALE UNDERWEAR
 /datum/sprite_accessory/underwear/female_bikini
 	name = "Bikini"
@@ -1263,6 +1271,7 @@
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
+*/ // SKYRAT EDIT END
 
 ////////////////////////////
 // Undershirt Definitions //
@@ -1458,7 +1467,7 @@
 	name = "Short-sleeved Shirt (White)"
 	icon_state = "whiteshortsleeve"
 	gender = NEUTER
-
+/* SKYRAT EDIT REMOVAL START - Underwear and bra split
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Sports Bra"
 	icon_state = "sports_bra"
@@ -1468,7 +1477,7 @@
 	name = "Sports Bra (Alt)"
 	icon_state = "sports_bra_alt"
 	gender = NEUTER
-
+*/ // SKYRAT EDIT END
 /datum/sprite_accessory/undershirt/blueshirtsport
 	name = "Sports Shirt (Blue)"
 	icon_state = "blueshirtsport"

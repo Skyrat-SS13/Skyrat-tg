@@ -27,7 +27,6 @@
 	tastes = list("minty bread" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
-	burns_on_grill = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_loaf/make_processable()
@@ -70,7 +69,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("minty flatbread" = 1)
 	foodtypes = VEGETABLES
-	burns_on_grill = TRUE
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/piru_pasta
@@ -93,7 +91,6 @@
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/kiri_jelly = 6
 	)
-	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy sweetness" = 1, "caramelized jelly" = 1)
 	foodtypes = FRUIT | SUGAR
@@ -109,7 +106,6 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/muli_juice = 4
 	)
-	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("zesty mintyness" = 1)
 	foodtypes = VEGETABLES

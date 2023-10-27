@@ -18,6 +18,8 @@
 	var/buying_category = NIFSOFT_CATEGORY_GENERAL
 	///What font awesome icon is shown next to the name of the nifsoft?
 	var/ui_icon = "floppy-disk"
+	///What UI theme do we want to display to users if this NIFSoft has TGUI?
+	var/ui_theme = "default"
 
 	///Can the program be installed with other instances of itself?
 	var/single_install = TRUE
@@ -47,6 +49,10 @@
 	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
+	/// Is the NIFSoft something that we want to allow the user to keep?
+	var/able_to_keep = FALSE
+	/// Are we keeping the NIFSoft installed between rounds? This is decided by the user
+	var/keep_installed = FALSE
 	///Is it a lewd item?
 	var/lewd_nifsoft = FALSE
 
@@ -63,6 +69,7 @@
 		qdel(src)
 
 	load_persistence_data()
+	update_theme()
 
 /datum/nifsoft/Destroy()
 	if(active)
@@ -143,6 +150,15 @@
 
 /datum/nifsoft/ui_state(mob/user)
 	return GLOB.conscious_state
+
+/// Updates the theme of the NIFSoft to match the parent NIF
+/datum/nifsoft/proc/update_theme()
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent_nif.resolve()
+	if(!target_nif)
+		return FALSE
+
+	ui_theme = target_nif.current_theme
+	return TRUE
 
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader

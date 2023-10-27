@@ -14,6 +14,15 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 
+/datum/techweb_node/borg_shapeshifter
+	id = "borg_shapeshifter"
+	display_name = "Illegal Cyborg Addition"
+	description = "Some sort of experimental tool that was once used by an rival company."
+	prereq_ids = list("syndicate_basic")
+	design_ids = list("borg_shapeshifter_module")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
+
 // MODULAR ADDITIONS AND REMOVALS
 
 //Base Nodes
@@ -112,6 +121,7 @@
 		"nifsoft_money_sense",
 		"nifsoft_hud_kit",
 		"nifsoft_hud_science",
+		"nifsoft_hud_meson",
 		"nifsoft_hud_medical",
 		"nifsoft_hud_security",
 		"nifsoft_hud_diagnostic",
@@ -205,12 +215,14 @@
 	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
+		"mini_soulcatcher",
 	)
 
 /datum/techweb_node/neural_programming/New()
 	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
+		"rsd_interface",
 	)
 
 /datum/techweb_node/cyborg_upg_util/New()
@@ -235,4 +247,10 @@
 
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
+	)
+
+/datum/techweb_node/basic_mining/New()
+	. = ..()
+	design_ids += list(
+		"borg_upgrade_welding",
 	)

@@ -44,6 +44,13 @@
 			cmd_mentor_dementor()
 
 
-/client/proc/is_mentor() // admins are mentors too.
-	if(mentor_datum || check_rights_for(src, R_ADMIN))
+/**
+ * Returns whether or not the user is qualified as a mentor.
+ *
+ * Arguments:
+ * * admin_bypass - Whether or not admins can succeed this check, even if they
+ * do not actually possess the role. Defaults to `TRUE`.
+ */
+/client/proc/is_mentor(admin_bypass = TRUE)
+	if(mentor_datum || (admin_bypass && check_rights_for(src, R_ADMIN)))
 		return TRUE

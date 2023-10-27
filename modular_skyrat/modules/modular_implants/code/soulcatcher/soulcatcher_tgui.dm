@@ -13,6 +13,11 @@
 
 	data["ghost_joinable"] = ghost_joinable
 	data["require_approval"] = require_approval
+	data["theme"] = ui_theme
+	data["communicate_as_parent"] = communicate_as_parent
+	data["current_soul_count"] = length(get_current_souls())
+	data["max_souls"] = max_souls
+	data["removable"] = removable
 
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
@@ -41,6 +46,8 @@
 				"able_to_rename" = soul.able_to_rename,
 				"ooc_notes" = soul.ooc_notes,
 				"scan_needed" = soul.body_scan_needed,
+				"able_to_speak_as_container" = soul.able_to_speak_as_container,
+				"able_to_emote_as_container" = soul.able_to_emote_as_container,
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -147,7 +154,7 @@
 						continue
 
 					var/datum/component/soulcatcher/soulcatcher_component = held_item.GetComponent(/datum/component/soulcatcher)
-					if(!soulcatcher_component)
+					if(!soulcatcher_component || !soulcatcher_component.check_for_vacancy())
 						continue
 
 					for(var/datum/soulcatcher_room/room in soulcatcher_component.soulcatcher_rooms)
@@ -191,6 +198,14 @@
 
 			return TRUE
 
+		if("toggle_soul_external_communication")
+			if(params["communication_type"] == "emote")
+				target_soul.able_to_emote_as_container = !target_soul.able_to_emote_as_container
+			else
+				target_soul.able_to_speak_as_container = !target_soul.able_to_speak_as_container
+
+			return TRUE
+
 		if("toggle_soul_renaming")
 			target_soul.able_to_rename = !target_soul.able_to_rename
 			return TRUE
@@ -222,6 +237,13 @@
 				return FALSE
 
 			target_room.send_message(message_to_send, message_sender, emote)
+			return TRUE
+
+		if("delete_self")
+			if(tgui_alert(usr, "Are you sure you want to detach the soulcatcher?", parent, list("Yes", "No")) != "Yes")
+				return FALSE
+
+			remove_self()
 			return TRUE
 
 /datum/component/soulcatcher_user/New()
@@ -259,6 +281,9 @@
 		"able_to_emote" = user_soul.able_to_emote,
 		"able_to_speak" = user_soul.able_to_speak,
 		"able_to_rename" = user_soul.able_to_rename,
+		"able_to_speak_as_container" = user_soul.able_to_speak_as_container,
+		"able_to_emote_as_container" = user_soul.able_to_emote_as_container,
+		"communicating_externally" = user_soul.communicating_externally,
 		"ooc_notes" = user_soul.ooc_notes,
 		"scan_needed" = user_soul.body_scan_needed,
 	)
@@ -271,6 +296,9 @@
 		"color" = current_room.room_color,
 		"owner" = current_room.outside_voice,
 		)
+
+	var/datum/component/soulcatcher/master_soulcatcher = current_room.master_soulcatcher.resolve()
+	data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
 	for(var/mob/living/soulcatcher_soul/soul in current_room.current_souls)
 		if(soul == user_soul)
@@ -310,3 +338,6 @@
 
 			user_soul.reset_name()
 
+		if("toggle_external_communication")
+			user_soul.communicating_externally = !user_soul.communicating_externally
+			return TRUE

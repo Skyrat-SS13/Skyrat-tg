@@ -1,8 +1,14 @@
+///The default amount a program should take in cell use.
+#define PROGRAM_BASIC_CELL_USE 15
+
 // /program/ files are executable programs that do things.
 /datum/computer_file/program
 	filetype = "PRG"
 	/// File name. FILE NAME MUST BE UNIQUE IF YOU WANT THE PROGRAM TO BE DOWNLOADABLE FROM NTNET!
 	filename = "UnknownProgram"
+
+	///How much power running this program costs.
+	var/power_cell_use = PROGRAM_BASIC_CELL_USE
 	/// List of required accesses to *run* the program. Any match will do.
 	var/list/required_access = list()
 	/// List of required access to download or file host the program. Any match will do.
@@ -120,13 +126,13 @@
  *access can contain a list of access numbers to check against. If access is not empty, it will be used istead of checking any inserted ID.
 */
 /datum/computer_file/program/proc/can_run(mob/user, loud = FALSE, access_to_check, transfer = FALSE, list/access)
-	if(issilicon(user))
+	if(issilicon(user) && !ispAI(user))
 		return TRUE
 
 	if(isAdminGhostAI(user))
 		return TRUE
 
-	if(!transfer && computer && (computer.obj_flags & EMAGGED)) //emags can bypass the execution locks but not the download ones.
+	if(computer && (computer.obj_flags & EMAGGED) && (available_on_syndinet || !transfer)) //emagged can run anything on syndinet, and can bypass execution locks, but not download.
 		return TRUE
 
 	// Defaults to required_access
@@ -211,3 +217,5 @@
 	computer.update_tablet_open_uis(usr)
 	computer.update_appearance(UPDATE_ICON)
 	return TRUE
+
+#undef PROGRAM_BASIC_CELL_USE

@@ -5,6 +5,9 @@ GLOBAL_LIST_EMPTY(dynamic_human_appearances)
 /proc/get_dynamic_human_appearance(outfit_path, species_path = /datum/species/human, mob_spawn_path, r_hand, l_hand, bloody_slots = NONE, animated = TRUE)
 	if(!species_path)
 		return FALSE
+	if(!ispath(species_path))
+		stack_trace("Attempted to call get_dynamic_human_appearance() with an instantiated species_path. Pass the species datum typepath instead.")
+		return FALSE
 	var/arg_string = "[outfit_path]_[species_path]_[mob_spawn_path]_[l_hand]_[r_hand]_[bloody_slots]"
 	if(GLOB.dynamic_human_appearances[arg_string]) //if already exists in our cache, just return that
 		return GLOB.dynamic_human_appearances[arg_string]
@@ -14,6 +17,7 @@ GLOBAL_LIST_EMPTY(dynamic_human_appearances)
 	dummy.underwear = "Nude"
 	dummy.undershirt = "Nude"
 	dummy.socks = "Nude"
+	dummy.bra = "Nude" // SKYRAT EDIT ADDITION - Underwear and bra split
 	if(outfit_path)
 		var/datum/outfit/outfit = new outfit_path()
 		if(r_hand != NO_REPLACE) //we can still override to be null, no replace means just use outfit's

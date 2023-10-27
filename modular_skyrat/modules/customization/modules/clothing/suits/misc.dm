@@ -327,3 +327,21 @@
 		/obj/item/storage/bag/construction,
 		/obj/item/t_scanner,
 	)
+
+/obj/item/clothing/suit/warm_sweater
+	name = "warm sweater"
+	desc = "A comfortable warm-looking sweater."
+	icon_state = "warm_sweater"
+	greyscale_config = /datum/greyscale_config/warm_sweater
+	greyscale_config_worn = /datum/greyscale_config/warm_sweater/worn
+	greyscale_colors = "#867361"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/heart_sweater
+	name = "heart sweater"
+	desc = "A comfortable warm-looking sweater. It even has a heart pattern on it, how cute."
+	icon_state = "heart_sweater"
+	greyscale_config = /datum/greyscale_config/heart_sweater
+	greyscale_config_worn = /datum/greyscale_config/heart_sweater/worn
+	greyscale_colors = "#867361#8f3a3a"
+	flags_1 = IS_PLAYER_COLORABLE_1

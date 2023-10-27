@@ -114,19 +114,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
-/datum/loadout_item/under/jumpsuit/solwarden
-	name = "Sol Warden Uniform"
-	item_path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
-	restricted_roles = list(JOB_WARDEN)
-
 /datum/loadout_item/under/jumpsuit/security_trousers
 	name = "Security Trousers"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
-/datum/loadout_item/under/jumpsuit/solofficer
-	name = "Sol Officer Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
+/datum/loadout_item/under/jumpsuit/security_peacekeeper
+	name = "Security Peacekeeper Uniform"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/under/jumpsuit/disco
@@ -301,6 +296,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Ripped Jean Shorts"
 	item_path = /obj/item/clothing/under/shorts/skyrat/shorts_ripped
 
+/datum/loadout_item/under/miscellaneous/shortershorts
+	name = "Recolorable Shorter Shorts"
+	item_path = /obj/item/clothing/under/shorts/skyrat/shortershorts
+
 /datum/loadout_item/under/miscellaneous/shorts
 	name = "Recolorable Shorts"
 	item_path = /obj/item/clothing/under/shorts
@@ -395,6 +394,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 
+/datum/loadout_item/under/miscellaneous/medium_skirt
+	name = "Medium Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/medium_skirt
+
+/datum/loadout_item/under/miscellaneous/long_skirt
+	name = "Long Colourable Skirt"
+	item_path = /obj/item/clothing/under/skyrat/long_skirt
+
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/jean
@@ -466,6 +473,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/maidcostume
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
+
+/datum/loadout_item/under/miscellaneous/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
 
 /datum/loadout_item/under/miscellaneous/yukata
 	name = "Recolorable Yukata"
@@ -637,6 +648,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Ethereal Tunic"
 	item_path = /obj/item/clothing/under/ethereal_tunic
 
+/datum/loadout_item/under/miscellaneous/mech_suit
+	name = "Mech Suit"
+	item_path = /obj/item/clothing/under/costume/mech_suit
+	restricted_roles = list(JOB_ROBOTICIST)
 
 /*
 *	FORMAL UNDERSUITS
@@ -671,10 +686,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/black_suitskirt
 	name = "Black Suitskirt"
 	item_path = /obj/item/clothing/under/suit/black/skirt
-
-/datum/loadout_item/under/formal/black_twopiece
-	name = "Black Two-Piece Suit"
-	item_path = /obj/item/clothing/under/suit/blacktwopiece
 
 /datum/loadout_item/under/formal/black_lawyer_suit
 	name = "Black Lawyer Suit"
