@@ -62,6 +62,7 @@
 				damage_dealt = actual_hit.get_damage() - delta // Unfortunately bodypart receive_damage doesn't return damage dealt so we do it manually
 			else
 				damage_dealt = adjustBruteLoss(damage_amount, forced = forced)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(BURN)
 			if(isbodypart(def_zone))
 				var/obj/item/bodypart/actual_hit = def_zone
@@ -80,6 +81,7 @@
 				damage_dealt = delta - actual_hit.get_damage() // See above
 			else
 				damage_dealt = adjustFireLoss(damage_amount, forced = forced)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, adjust_pain), damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(TOX)
 			damage_dealt = adjustToxLoss(damage_amount, forced = forced)
 		if(OXY)
