@@ -61,9 +61,6 @@
 	taste_sensitivity = 20
 	modifies_speech = TRUE
 
-/obj/item/organ/internal/tongue/lizard/cybernetic/can_speak_language(language)
-	return TRUE // THE MAGIC OF ELECTRONICS
-
 /obj/item/organ/internal/tongue/cybernetic
 	name = "cybernetic tongue"
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
