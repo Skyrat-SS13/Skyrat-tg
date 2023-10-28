@@ -140,6 +140,7 @@
 	. = ..()
 	design_ids += list(
 		"cybernetic_tongue",
+		"cybernetic_tongue_lizard",
 	)
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
