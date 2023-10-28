@@ -524,25 +524,31 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
-		death_sound = new_race.death_sound
+	if(isnull(mrace))
+		CRASH("set_species called without a species to set to")
+	if(!has_dna())
+		return
 
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
+	var/datum/species/new_race
+	if(ispath(mrace))
+		new_race = new mrace
+	else if(istype(mrace))
+		if(QDELING(mrace))
+			CRASH("someone is calling set_species() and is passing it a qdeling species datum, this is VERY bad, stop it")
+		new_race = mrace
+	else
+		CRASH("set_species called with an invalid mrace [mrace]")
 
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
+	death_sound = new_race.death_sound
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
+	var/datum/species/old_species = dna.species
+	dna.species = new_race
 
+	if (old_species.properly_gained)
+		old_species.on_species_loss(src, new_race, pref_load)
+
+	dna.species.on_species_gain(src, old_species, pref_load)
+	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 */
 //SKYRAT EDIT REMOVAL END
 
@@ -836,6 +842,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /proc/scramble_dna(mob/living/carbon/M, ui=FALSE, se=FALSE, uf=FALSE, probability)
 	if(!M.has_dna())
 		CRASH("[M] does not have DNA")
+	if(HAS_TRAIT(M, TRAIT_NO_DNA_SCRAMBLE))
+		return
 	if(se)
 		for(var/i=1, i <= DNA_MUTATION_BLOCKS, i++)
 			if(prob(probability))

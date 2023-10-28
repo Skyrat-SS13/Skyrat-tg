@@ -153,7 +153,7 @@
 	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
 	holds_charge = TRUE
 	unique_frequency = TRUE
-	max_mod_capacity = 80
+	max_mod_capacity = 100 // SKYRAT EDIT CHANGE FROM 80 - Balance due to fauna changes and no level perks applying
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/minebot
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
@@ -209,7 +209,7 @@
 	strike_thing()
 	..()
 
-/obj/projectile/kinetic/on_hit(atom/target)
+/obj/projectile/kinetic/on_hit(atom/target, blocked = 0, pierce_hit)
 	strike_thing(target)
 	. = ..()
 
@@ -616,4 +616,3 @@
 
 	var/new_color = input(user,"","Choose Color",bolt_color) as color|null
 	bolt_color = new_color || bolt_color
-

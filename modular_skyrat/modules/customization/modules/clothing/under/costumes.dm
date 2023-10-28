@@ -14,3 +14,12 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	icon_state = "cyberpunksleek_long"
 //End Cyberpunk PI port
+
+/obj/item/clothing/under/maid_costume
+	name = "maid costume"
+	desc = "Maid in China."
+	icon_state = "maid_costume"
+	greyscale_config = /datum/greyscale_config/maid_costume
+	greyscale_config_worn = /datum/greyscale_config/maid_costume/worn
+	greyscale_colors = "#7b9ab5#edf9ff"
+	flags_1 = IS_PLAYER_COLORABLE_1

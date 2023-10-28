@@ -131,7 +131,7 @@
 	var/heavy_emp_radius = -1
 	var/light_emp_radius = 0
 
-/obj/projectile/bullet/a762x39/emp/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/bullet/a762x39/emp/on_hit(atom/target, blocked = 0, pierce_hit)
 	..()
 	empulse(target, heavy_emp_radius, light_emp_radius)
 	return BULLET_ACT_HIT

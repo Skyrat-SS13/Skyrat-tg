@@ -454,7 +454,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /mob/dead/observer/Login()
 	. = ..()
-	var/soulcatcher_action_given = client.prefs.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+	var/datum/preferences/preferences = client?.prefs
+	var/soulcatcher_action_given
+
+	if(preferences)
+		soulcatcher_action_given = preferences.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+
 	if(!soulcatcher_action_given)
 		return
 

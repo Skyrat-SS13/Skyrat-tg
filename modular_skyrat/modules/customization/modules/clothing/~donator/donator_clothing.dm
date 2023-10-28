@@ -1657,3 +1657,91 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	desc = "These boots make you feel like you can walk on space."
 	icon_state = "archerboots"
 	inhand_icon_state = "archerboots"
+
+// Donation reward for nikotheguydude
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "vickyred"
+	name = "nobility dresscoat"
+	desc = "An elaborate coat composed of a silky yet firm material. \
+		The fabric is quite thin, and provides negligible protection or insulation, \
+		but is pleasant on the skin.\nWhile extremely well made, it seems quite \
+		fragile, and rather <i>expensive</i>. You get the feeling it might not \
+		<b>survive a washing machine</b> without specialized treatment."
+	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgeable in \
+		Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
+		a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\n\n\
+		On a closer inspection, it would appear the interior is modified with protective material and mounting points \
+		most often found on medical labcoats."
+	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
+	body_parts_covered = CHEST|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
+	. = ..()
+
+	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
+
+#define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
+
+// this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+
+	var/total_credits = 0
+	var/list/obj/item/money_to_delete = list()
+	for (var/obj/item/holochip/chip in washer)
+		total_credits += chip.get_item_credit_value()
+		money_to_delete += chip
+		if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+			break
+	if (total_credits < NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+		for (var/obj/item/stack/spacecash/cash in washer)
+			total_credits += cash.get_item_credit_value()
+			money_to_delete += cash
+			if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+				break
+
+	var/message
+	var/sound_effect_path
+	var/sound_effect_volume
+	if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED) // all is well
+		message = span_notice("[src] seems to absorb the raw capital from its surroundings, and is successfully washed!")
+		sound_effect_path = 'sound/effects/whirthunk.ogg'
+		sound_effect_volume = 40
+		for (var/obj/item/entry_to_delete as anything in money_to_delete)
+			qdel(entry_to_delete)
+	else // IT COSTS ME A THOUSAND CREDITS TO WASH THIS!! HALF MY BUDGET IS DRY CLEANING
+		message = span_warning("[src]'s delicate fabric is shredded by [washer]! How terrible!")
+		sound_effect_path = 'sound/effects/cloth_rip.ogg'
+		sound_effect_volume = 30
+		for (var/zone as anything in cover_flags2body_zones(body_parts_covered))
+			take_damage_zone(zone, limb_integrity * 1.1, BRUTE) // fucking shreds it
+
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message(message)
+	playsound(src, sound_effect_path, sound_effect_volume, FALSE)
+
+	return ..()
+
+/obj/item/clothing/under/costume/dragon_maid
+	name = "dragon maid uniform"
+	desc = "A uniform for a kitchen maid, stylized to have draconic detailing."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "dragon_maid"
+	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	can_adjust = FALSE
+
+#undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
+
+//  Donation reward for vexcint
+/obj/item/clothing/head/anubite
+	name = "\improper Anubite headpiece"
+	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
+	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anubite_headpiece"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_y_offset = 4

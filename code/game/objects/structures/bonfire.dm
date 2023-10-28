@@ -160,11 +160,6 @@
 	if(!check_oxygen())
 		extinguish()
 		return
-	//SKYRAT EDIT ADDITION
-	var/turf/open/my_turf = get_turf(src)
-	if(istype(my_turf) && !my_turf.planetary_atmos && !is_centcom_level(my_turf.z)) //Pollute, but only when we're not on planetary atmos or on CentCom
-		my_turf.pollute_turf_list(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP)
-	//SKYRAT EDIT END
 	bonfire_burn(seconds_per_tick)
 
 /obj/structure/bonfire/extinguish()
@@ -191,6 +186,11 @@
 	density = TRUE
 
 /obj/structure/bonfire/prelit/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+// Late init so that we can wait for air to exist in lazyloaded templates
+/obj/structure/bonfire/prelit/LateInitialize()
 	. = ..()
 	start_burning()
 
