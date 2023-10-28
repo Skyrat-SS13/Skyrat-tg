@@ -60,7 +60,6 @@
 	name = "prototype energy gun"
 	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
 	icon_state = "protolaser"
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
@@ -92,7 +91,6 @@
 	inhand_icon_state = "dragnet"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_type = list(/obj/item/ammo_casing/energy/net, /obj/item/ammo_casing/energy/trap)
 	modifystate = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
@@ -112,7 +110,6 @@
 	icon_state = "turretlaser"
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	w_class = WEIGHT_CLASS_HUGE
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser)
 	weapon_weight = WEAPON_HEAVY
@@ -127,7 +124,6 @@
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	charge_delay = 10
 	can_charge = FALSE
 	ammo_x_offset = 1
