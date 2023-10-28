@@ -725,6 +725,11 @@
 	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	ckeywhitelist = list("nikotheguydude")
 
+/datum/loadout_item/suit/anubite_headpiece
+	name = "Anubite Headpiece"
+	item_path = /obj/item/clothing/head/anubite
+	ckeywhitelist = list("vexcint")
+
 /datum/loadout_item/under/formal/dragon_maid
 	name = "Dragon Maid Uniform"
 	item_path = /obj/item/clothing/under/costume/dragon_maid

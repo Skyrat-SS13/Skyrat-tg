@@ -127,6 +127,7 @@
 		"universal_scanner",
 		"voice_analyzer",
 		"watering_can",
+		"gbp_machine", // SKYRAT EDIT ADDITION
 	)
 	experiments_to_unlock = list(
 		/datum/experiment/autopsy/nonhuman,

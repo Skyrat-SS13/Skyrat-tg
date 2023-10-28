@@ -18,7 +18,6 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_TINY
 	atom_storage.max_total_storage = 4
 	atom_storage.max_slots = 4
-	atom_storage.numerical_stacking = FALSE
 	atom_storage.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray/medipen, /obj/item/pen, /obj/item/flashlight/pen))
 
 /obj/item/storage/pouch/cin_medkit
@@ -30,7 +29,6 @@
 
 /obj/item/storage/pouch/cin_medkit/Initialize(mapload)
 	. = ..()
-	atom_storage.numerical_stacking = TRUE
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.max_total_storage = 4
 	atom_storage.max_slots = 4
