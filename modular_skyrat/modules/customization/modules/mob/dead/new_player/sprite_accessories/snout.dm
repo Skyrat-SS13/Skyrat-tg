@@ -433,3 +433,27 @@
 	color_src = USE_MATRIXED_COLORS
 	name = "Acrador (Short)"
 	icon_state = "acrador_short"
+
+/datum/sprite_accessory/snouts/acrador_1
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 1 (Normal)"
+	icon_state = "acrador_1"
+
+/datum/sprite_accessory/snouts/acrador_2
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 2 (Normal)"
+	icon_state = "acrador_2"
+
+/datum/sprite_accessory/snouts/acrador_3
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 3 (Normal)"
+	icon_state = "acrador_3"
+
+/datum/sprite_accessory/snouts/acrador_4
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
+	color_src = USE_MATRIXED_COLORS
+	name = "Acrador 4 (Normal)"
+	icon_state = "acrador_4"
