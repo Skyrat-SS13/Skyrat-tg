@@ -22,6 +22,59 @@
 	to_chat(quirk_holder, span_warning("The nerve staple suddenly falls off your face and melts[istype(quirk_holder.loc, /turf/open/floor) ? " on the floor" : ""]!"))
 	qdel(staple)
 
+/datum/quirk/item_quirk/diabetic
+	name = "Diabetic"
+	desc = "You have a condition which prevents you from metabolizing sugar correctly! Better bring some cookies and insulin!"
+	icon = FA_ICON_COOKIE_BITE
+	medical_record_text = "Patient has diabetes, and is at-risk of hypoglycemic shock when their blood sugar level is too high."
+	value = -6
+	gain_text = span_danger("You feel a dizzying craving for sugar.")
+	lose_text = span_notice("Your craving for sugar subsides.")
+	hardcore_value = 3
+	quirk_flags = QUIRK_HUMAN_ONLY | QUIRK_PROCESSES
+	//mail_goodies = list(/obj/item/storage/pill_bottle/insulin)
+	var/hypoglycemia_time = 5 MINUTES
+	// TODO: Dont forget insulin in mail goodies.
+
+/datum/quirk/item_quirk/diabetic/add_unique(client/client_source)
+	// TODO: Give them insulin, a syringe, and a cookie or random candy.
+
+/datum/quirk/item_quirk/diabetic/process(seconds_per_tick)
+	if(!iscarbon(quirk_holder))
+		return
+
+	if(IS_IN_STASIS(quirk_holder))
+		return
+
+	if(quirk_holder.stat == DEAD)
+		return
+
+	var/mob/living/carbon/carbon_holder = quirk_holder
+	var/datum/reagent/sugar = carbon_holder.reagents.has_reagent(/datum/reagent/consumable/sugar)
+	if(sugar == FALSE)
+		if(hypoglycemia_time)
+			to_chat(quirk_holder, span_warning(pick("You feel lightheaded.", "You feel lethargic.")))
+			hypoglycemia_time -= seconds_per_tick
+		else
+			if(SPT_PROB(2.5, seconds_per_tick))
+			affected_mob.set_dizzy_if_lower(20 SECONDS)
+			to_chat(quirk_holder, span_warning(pick("You feel pain shoot down your legs!", "You feel like you are going to pass out at any moment.", "You feel really dizzy.")))
+		return
+
+	hypoglycemia_time = 5 MINUTES
+	// Diabetics metabolize sugar 5x slower than normal.
+	sugar.metabolization_rate = REAGENTS_METABOLISM
+
+	// Unsure if this is useful?
+	/*
+	if(sugar.volume <= 50)
+		// Sugar will stop metabolizing once it decreases to 50 volume.
+		sugar.reagent_removal_skip_list |= DIABETIC_REMOVAL_SKIP
+	else
+		// Resume metabolizing sugar above 50 volume.
+		sugar.reagent_removal_skip_list -= DIABETIC_REMOVAL_SKIP
+	*/
+
 // Re-labels TG brainproblems to be more generic. There never was a tumor anyways!
 /datum/quirk/item_quirk/brainproblems
 	name = "Brain Degeneration"
