@@ -32,11 +32,26 @@
 	lose_text = span_notice("Your craving for sugar subsides.")
 	hardcore_value = 3
 	quirk_flags = QUIRK_HUMAN_ONLY | QUIRK_PROCESSES
-	//mail_goodies = list(/obj/item/storage/pill_bottle/insulin)
-	// TODO: Dont forget insulin in mail goodies.
+	mail_goodies = list(/obj/item/storage/pill_bottle/insulin/diabetic)
 
 /datum/quirk/item_quirk/diabetic/add_unique(client/client_source)
-	// TODO: Give them insulin, a syringe, and a cookie or random candy.
+	give_item_to_holder(
+		/obj/item/storage/pill_bottle/insulin/diabetic,
+		list(
+			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
+			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
+			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+			LOCATION_HANDS = ITEM_SLOT_HANDS,
+		),
+		flavour_text = "These will keep you alive until you can secure a supply of medication. Don't rely on them too much!",
+	)
+	give_item_to_holder(/obj/item/healthanalyzer/simple/disease, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK))
+	give_item_to_holder(/obj/item/food/cookie/sugar, list(
+			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
+			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
+			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+			LOCATION_HANDS = ITEM_SLOT_HANDS,
+		))
 
 /datum/quirk/item_quirk/diabetic/process(seconds_per_tick)
 	if(!iscarbon(quirk_holder))
@@ -51,16 +66,17 @@
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	var/datum/reagent/sugar = carbon_holder.reagents.has_reagent(/datum/reagent/consumable/sugar)
 
-	if(sugar == FALSE)
-		// No sugar, start to experience minor hypoglycemia.
-		if(carbon_holder.HasDisease(/datum/disease/hypoglycemia))
-			return
-		var/datum/disease/hypoglycemic_shock = new /datum/disease/hypoglycemia()
-		carbon_holder.ForceContractDisease(hypoglycemic_shock, FALSE, TRUE)
+	if(sugar != FALSE)
+		// Diabetics metabolize sugar 5x slower than normal.
+		sugar.metabolization_rate = 0.05
+		return
+	
+	// No sugar, get hypoglycemia.
+	if(carbon_holder.HasDisease(/datum/disease/hypoglycemia))
 		return
 
-	// Diabetics metabolize sugar 5x slower than normal.
-	sugar.metabolization_rate = REAGENTS_METABOLISM
+	var/datum/disease/hypoglycemic_shock = new /datum/disease/hypoglycemia()
+	carbon_holder.ForceContractDisease(hypoglycemic_shock, FALSE, TRUE)
 
 // Re-labels TG brainproblems to be more generic. There never was a tumor anyways!
 /datum/quirk/item_quirk/brainproblems
