@@ -29,6 +29,6 @@
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/storage/medkit/tactical/blueshield(src)
-	new /obj/item/storage/toolbox/guncase/skyrat/carwo_large_case/sindano(src)
+	new /obj/item/storage/toolbox/guncase/skyrat/xhihao_large_case/bogseo(src)
 	new /obj/item/storage/bag/garment/blueshield(src)
 	new /obj/item/mod/control/pre_equipped/blueshield(src)

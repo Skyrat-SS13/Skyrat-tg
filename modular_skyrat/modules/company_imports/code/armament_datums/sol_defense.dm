@@ -65,6 +65,11 @@
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
 	cost = PAYCHECK_COMMAND * 12
 
+/datum/armament_entry/company_import/sol_defense/longarm/bogseo
+	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
+	cost = PAYCHECK_COMMAND * 10
+	contraband = TRUE
+
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle
 	cost = PAYCHECK_COMMAND * 14
