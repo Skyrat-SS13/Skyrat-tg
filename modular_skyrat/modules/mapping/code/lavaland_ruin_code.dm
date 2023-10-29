@@ -25,7 +25,7 @@
 	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
 	suit = /obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/white
 	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
-	ears = /obj/item/radio/headset/interdyne
+	ears = /obj/item/radio/headset/interdyne/green
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
 	syndicate.faction |= ROLE_SYNDICATE
@@ -42,7 +42,7 @@
 /datum/outfit/lavaland_syndicate/ice
 	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
 	suit = /obj/item/clothing/suit/hooded/wintercoat/medical/viro
-	ears = /obj/item/radio/headset/interdyne
+	ears = /obj/item/radio/headset/interdyne/green
 	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
@@ -114,6 +114,13 @@
 /obj/item/radio/headset/interdyne/comms
 	keyslot = /obj/item/encryptionkey/headset_syndicate/interdyne
 	keyslot2 = /obj/item/encryptionkey/syndicate
+
+/obj/item/radio/headset/interdyne/green
+	name = "interdyne branded headset"
+	desc = "A bowman headset in interdyne green, has a small 'IP' written on the earpiece. Protects the ears from flashbangs."
+	icon_state = "headset_ip"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
 
 /obj/structure/closet/crate/freezer/sansufentanyl
 	name = "sansufentanyl crate"
