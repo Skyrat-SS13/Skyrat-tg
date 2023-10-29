@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-//returns TRUE if this mob has sufficient access to use this object
-=======
 
 //
 /**
@@ -8,7 +5,6 @@
  *
  * * accessor - mob trying to access this object, !!CAN BE NULL!! because of telekiesis because we're in hell
  */
->>>>>>> a98f5e87ac4 (Fix telekinesis being unable to open doors (#79319))
 /obj/proc/allowed(mob/accessor)
 	var/result_bitflags = SEND_SIGNAL(src, COMSIG_OBJ_ALLOWED, accessor)
 	if(result_bitflags & COMPONENT_OBJ_ALLOW)
