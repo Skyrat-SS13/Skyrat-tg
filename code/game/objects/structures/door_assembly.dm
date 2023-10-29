@@ -34,8 +34,16 @@
 	var/material_amt = 4
 
 /obj/structure/door_assembly/multi_tile
+	name = "large airlock assembly"
+	icon = 'icons/obj/doors/airlocks/multi_tile/public/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
+	base_name = "large airlock"
+	glass_type = /obj/machinery/door/airlock/multi_tile/public/glass
+	airlock_type = /obj/machinery/door/airlock/multi_tile/public/glass
 	dir = EAST
 	multi_tile = TRUE
+	glass = TRUE
+	nomineral = TRUE
 
 /obj/structure/door_assembly/Initialize(mapload)
 	. = ..()
@@ -285,7 +293,6 @@
 		door = new airlock_type( loc )
 	door.setDir(dir)
 	door.unres_sides = electronics.unres_sides
-	//door.req_access = req_access
 	door.electronics = electronics
 	door.heat_proof = heat_proof_finished
 	door.security_level = 0
@@ -313,9 +320,11 @@
 		door.unres_sensor = TRUE
 	door.previous_airlock = previous_assembly
 	electronics.forceMove(door)
+	door.autoclose = TRUE
+	door.close()
 	door.update_appearance()
+
 	qdel(src)
-	return door
 
 /obj/structure/door_assembly/update_overlays()
 	. = ..()
@@ -375,28 +384,11 @@
 
 /obj/structure/door_assembly/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_DECONSTRUCT)
-		return list("mode" = RCD_DECONSTRUCT, "delay" = 50, "cost" = 16)
+		return list("delay" = 5 SECONDS, "cost" = 16)
 	return FALSE
 
-/obj/structure/door_assembly/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("You deconstruct [src]."))
-			qdel(src)
-			return TRUE
+/obj/structure/door_assembly/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	if(rcd_data["[RCD_DESIGN_MODE]"] == RCD_DECONSTRUCT)
+		qdel(src)
+		return TRUE
 	return FALSE
-
-/**
- * Updates the bounds of the airlock assembly
- * Sets the bounds of the airlock assembly according to the direction.
- * This ensures that the bounds are always correct, even if the airlock is rotated.
- */
-/obj/structure/door_assembly/multi_tile/proc/set_bounds()
-	var/size = get_size_in_tiles(src)
-
-	if(dir in list(NORTH, SOUTH))
-		bound_width = size * world.icon_size
-		bound_height = world.icon_size
-	else
-		bound_width = world.icon_size
-		bound_height = size * world.icon_size

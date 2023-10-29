@@ -42,7 +42,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtypes = GORE | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/consumable/liquidgibs = 5)
-	juice_results = list(/datum/reagent/consumable/banana = 10)
+	juice_typepath = /datum/reagent/consumable/banana
 
 
 /obj/item/food/deadbanana_spider/Initialize(mapload)

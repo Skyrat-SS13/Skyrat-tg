@@ -54,14 +54,8 @@
 // "Would this be better with a global var"
 
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
-
-#define AIRLOCK_CLOSED 1
-#define AIRLOCK_CLOSING 2
-#define AIRLOCK_OPEN 3
-#define AIRLOCK_OPENING 4
-#define AIRLOCK_DENY 5
-#define AIRLOCK_EMAG 6
-
+// SKYRAT EDIT REMOVAL START - moved to code/__DEFINES/~skyrat_defines/airlock.dm
+/*
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
@@ -87,6 +81,8 @@
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
+*/
+// SKYRAT EDIT REMOVAL END - moved to code/__DEFINES/~skyrat_defines/airlock.dm
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -191,12 +187,23 @@
 
 	diag_hud_set_electrified()
 
-	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, PROC_REF(on_break))
-
 	// Click on the floor to close airlocks
 	AddComponent(/datum/component/redirect_attack_hand_from_turf)
 
-	return INITIALIZE_HINT_LATELOAD
+	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, PROC_REF(on_break))
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE, PROC_REF(grey_tide))
+
+/obj/machinery/door/airlock/proc/grey_tide(datum/source, list/grey_tide_areas)
+	SIGNAL_HANDLER
+
+	if(!is_station_level(z) || critical_machine)
+		return //Skip doors in critical positions, such as the SM chamber.
+
+	for(var/area_type in grey_tide_areas)
+		if(!istype(get_area(src), area_type))
+			continue
+		INVOKE_ASYNC(src, PROC_REF(prison_open)) //Sleep gets called further down in open(), so we have to invoke async
 
 /obj/machinery/door/airlock/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(id_tag)
@@ -310,11 +317,12 @@
 		diag_hud.remove_atom_from_hud(src)
 	return ..()
 
-/obj/machinery/door/airlock/handle_atom_del(atom/A)
-	if(A == note)
+/obj/machinery/door/airlock/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == note)
 		note = null
 		update_appearance()
-	if(A == seal)
+	if(gone == seal)
 		seal = null
 		update_appearance()
 
@@ -1317,9 +1325,6 @@
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-		if(multi_tile)
-			filler.density = TRUE
 		air_update_turf(TRUE, TRUE)
 	sleep(0.1 SECONDS)
 	if(!air_tight)
@@ -1327,10 +1332,6 @@
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
-		if(multi_tile)
-			filler.density = TRUE
-		//SKYRAT EDIT END
 		air_update_turf(TRUE, TRUE)
 	sleep(0.4 SECONDS)
 	if(dangerous_close)
@@ -1395,14 +1396,19 @@
 
 	// applies the user-chosen airlock's icon, overlays and assemblytype to the src airlock
 	painter.use_paint(user)
-	icon = initial(airlock.icon)
+	if(initial(airlock.greyscale_config))
+		greyscale_config = initial(airlock.greyscale_config)
+		greyscale_colors = initial(airlock.greyscale_colors)
+		update_greyscale()
+	else
+		icon = initial(airlock.icon)
 	overlays_file = initial(airlock.overlays_file)
 	assemblytype = initial(airlock.assemblytype)
 	update_appearance()
 
-/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
+/obj/machinery/door/airlock/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
 	//Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
-	return !density || (check_access(ID) && !locked && hasPower() && !no_id)
+	return !density || (check_access_list(pass_info.access) && !locked && hasPower() && !pass_info.no_id)
 
 /obj/machinery/door/airlock/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED))
@@ -1566,13 +1572,12 @@
 			if(security_level != AIRLOCK_SECURITY_NONE)
 				to_chat(user, span_notice("[src]'s reinforcement needs to be removed first."))
 				return FALSE
-			return list("mode" = RCD_DECONSTRUCT, "delay" = 50, "cost" = 32)
+			return list("delay" = 5 SECONDS, "cost" = 32)
 	return FALSE
 
-/obj/machinery/door/airlock/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
+/obj/machinery/door/airlock/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	switch(rcd_data["[RCD_DESIGN_MODE]"])
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("You deconstruct the airlock."))
 			qdel(src)
 			return TRUE
 	return FALSE
@@ -1806,29 +1811,32 @@
 /obj/structure/fluff/airlock_filler/singularity_pull(S, current_size)
 	return
 
-/*
-	Station Airlocks Regular
-*/
+// Station Airlocks Regular
 
 /obj/machinery/door/airlock/command
+	name = "command airlock"
 	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
 	normal_integrity = 450
 
 /obj/machinery/door/airlock/security
+	name = "security airlock"
 	icon = 'icons/obj/doors/airlocks/station/security.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec
 	normal_integrity = 450
 
 /obj/machinery/door/airlock/engineering
+	name = "engineering airlock"
 	icon = 'icons/obj/doors/airlocks/station/engineering.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_eng
 
 /obj/machinery/door/airlock/medical
+	name = "medical airlock"
 	icon = 'icons/obj/doors/airlocks/station/medical.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_med
 
 /obj/machinery/door/airlock/hydroponics	//Hydroponics front doors!
+	name = "hydroponics airlock"
 	icon = 'icons/obj/doors/airlocks/station/hydroponics.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_hydro
 
@@ -1854,6 +1862,7 @@
 	assemblytype = /obj/structure/door_assembly/door_assembly_atmo
 
 /obj/machinery/door/airlock/research
+	name = "research airlock"
 	icon = 'icons/obj/doors/airlocks/station/research.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_research
 
@@ -1863,19 +1872,19 @@
 	assemblytype = /obj/structure/door_assembly/door_assembly_fre
 
 /obj/machinery/door/airlock/science
+	name = "science airlock"
 	icon = 'icons/obj/doors/airlocks/station/science.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_science
 
 /obj/machinery/door/airlock/virology
+	name = "virology airlock"
 	icon = 'icons/obj/doors/airlocks/station/virology.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_viro
 
-//////////////////////////////////
-/*
-	Station Airlocks Glass
-*/
+// Station Airlocks Glass
 
 /obj/machinery/door/airlock/glass
+	name = "glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
@@ -1893,11 +1902,13 @@
 	id_tag = INCINERATOR_SYNDICATELAVA_AIRLOCK_EXTERIOR
 
 /obj/machinery/door/airlock/command/glass
+	name = "command glass airlock"
 	opacity = FALSE
 	glass = TRUE
 	normal_integrity = 400
 
 /obj/machinery/door/airlock/engineering/glass
+	name = "engineering glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
@@ -1905,19 +1916,23 @@
 	critical_machine = TRUE //stops greytide virus from opening & bolting doors in critical positions, such as the SM chamber.
 
 /obj/machinery/door/airlock/security/glass
+	name = "security glass airlock"
 	opacity = FALSE
 	glass = TRUE
 	normal_integrity = 400
 
 /obj/machinery/door/airlock/medical/glass
+	name = "medical glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/hydroponics/glass //Uses same icon as medical/glass, maybe update it with its own unique icon one day?
+	name = "hydroponics glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/research/glass
+	name = "research glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
@@ -1934,10 +1949,12 @@
 	id_tag = INCINERATOR_ORDMIX_AIRLOCK_EXTERIOR
 
 /obj/machinery/door/airlock/mining/glass
+	name = "mining glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/atmos/glass
+	name = "atmospheric glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
@@ -1945,26 +1962,27 @@
 	critical_machine = TRUE //stops greytide virus from opening & bolting doors in critical positions, such as the SM chamber.
 
 /obj/machinery/door/airlock/science/glass
+	name = "science glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/virology/glass
+	name = "virology glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/maintenance/glass
+	name = "maintainence glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
 /obj/machinery/door/airlock/maintenance/external/glass
+	name = "maintainence external glass airlock"
 	opacity = FALSE
 	glass = TRUE
 	normal_integrity = 200
 
-//////////////////////////////////
-/*
-	Station Airlocks Mineral
-*/
+// Station Airlocks Mineral
 
 /obj/machinery/door/airlock/gold
 	name = "gold airlock"
@@ -2114,17 +2132,18 @@
 	assemblytype = /obj/structure/door_assembly/door_assembly_bronze/seethru
 	opacity = FALSE
 	glass = TRUE
-//////////////////////////////////
-/*
-	Station2 Airlocks
-*/
+
+
+// Public Airlocks
 
 /obj/machinery/door/airlock/public
-	icon = 'icons/obj/doors/airlocks/station2/glass.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/station2/overlays.dmi'
+	name = "public airlock"
+	icon = 'icons/obj/doors/airlocks/public/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/public/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_public
 
 /obj/machinery/door/airlock/public/glass
+	name = "public glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
@@ -2140,10 +2159,7 @@
 	name = "Turbine Exterior Airlock"
 	id_tag = INCINERATOR_ATMOS_AIRLOCK_EXTERIOR
 
-//////////////////////////////////
-/*
-	External Airlocks
-*/
+// External Airlocks
 
 /obj/machinery/door/airlock/external
 	name = "external airlock"
@@ -2194,20 +2210,17 @@
 
 	return ..()
 
-/// Access free external airlock
+// Access free external airlocks
 /obj/machinery/door/airlock/external/ruin
 
 /obj/machinery/door/airlock/external/glass
+	name = "external glass airlock"
 	opacity = FALSE
 	glass = TRUE
 
-/// Access free external glass airlock
 /obj/machinery/door/airlock/external/glass/ruin
 
-//////////////////////////////////
-/*
-	CentCom Airlocks
-*/
+// CentCom Airlocks
 
 /obj/machinery/door/airlock/centcom //Use grunge as a station side version, as these have special effects related to them via phobias and such.
 	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
@@ -2222,10 +2235,8 @@
 	overlays_file = 'icons/obj/doors/airlocks/centcom/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_grunge
 
-//////////////////////////////////
-/*
-	Vault Airlocks
-*/
+
+// Vault Airlocks
 
 /obj/machinery/door/airlock/vault
 	name = "vault door"
@@ -2236,10 +2247,8 @@
 	normal_integrity = 400 // reverse engieneerd: 400 * 1.5 (sec lvl 6) = 600 = original
 	security_level = 6
 
-//////////////////////////////////
-/*
-	Hatch Airlocks
-*/
+
+// Hatch Airlocks
 
 /obj/machinery/door/airlock/hatch
 	name = "airtight hatch"
@@ -2255,10 +2264,7 @@
 	note_overlay_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_mhatch
 
-//////////////////////////////////
-/*
-	High Security Airlocks
-*/
+// High Security Airlocks
 
 /obj/machinery/door/airlock/highsecurity
 	name = "high tech security airlock"
@@ -2270,10 +2276,7 @@
 	security_level = 1
 	damage_deflection = 30
 
-//////////////////////////////////
-/*
-	Shuttle Airlocks
-*/
+// Shuttle Airlocks
 
 /obj/machinery/door/airlock/shuttle
 	name = "shuttle airlock"
@@ -2299,10 +2302,7 @@
 	normal_integrity = 700
 	security_level = 1
 
-//////////////////////////////////
-/*
-	Cult Airlocks
-*/
+// Cult Airlocks
 
 /obj/machinery/door/airlock/cult
 	name = "cult airlock"
@@ -2406,11 +2406,8 @@
 	damage_deflection = 5
 	armor_type = /datum/armor/none
 
+// Material Airlocks
 
-//////////////////////////////////
-/*
-	Material Airlocks
-*/
 /obj/machinery/door/airlock/material
 	name = "Airlock"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
@@ -2434,20 +2431,15 @@
 	opacity = FALSE
 	glass = TRUE
 
-//////////////////////////////////
-/*
-	Misc Airlocks
-*/
+// Multi-tile (Large) Airlocks
 
-/obj/machinery/door/airlock/multi_tile/glass
+/obj/machinery/door/airlock/multi_tile
+	icon = 'icons/obj/doors/airlocks/multi_tile/public/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
+	assemblytype = /obj/structure/door_assembly/multi_tile/door_assembly_public
 	multi_tile = TRUE
-	name = "large glass airlock"
-	icon = 'icons/obj/doors/airlocks/glass_large/glass_large.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/glass_large/overlays.dmi'
 	opacity = FALSE
-	assemblytype = /obj/structure/door_assembly/multi_tile/glass
 	glass = TRUE
-	bound_width = 64 // 2x1
 
 /obj/structure/fluff/airlock_filler
 	name = "airlock fluff"
@@ -2462,10 +2454,17 @@
 	/// The door/airlock this fluff panel is attached to
 	var/obj/machinery/door/filled_airlock
 
+/obj/machinery/door/airlock/multi_tile/public/glass
+
 /obj/machinery/door/airlock/multi_tile/narsie_act()
 	return
 
-/// Subtype used in unit tests to ensure instant airlock opening/closing. Pretty much just excises everything that would delay the process or is un-needed for the sake of the test (sleeps, icon animations).
+/*
+ * Subtype used in unit tests to ensure instant airlock opening/closing.
+ *
+ * Pretty much just excises everything that would delay the process or is un-needed
+ * for the sake of the test (sleeps, icon animations).
+*/
 /obj/machinery/door/airlock/instant
 
 // set_density on both open and close procs has a check and return builtin.
@@ -2483,15 +2482,8 @@
 	set_density(TRUE)
 	operating = FALSE
 	return TRUE
-
-
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
+// SKYRAT EDIT REMOVAL START - moved to code/__DEFINES/~skyrat_defines/airlock.dm
+/*
 #undef AIRLOCK_SECURITY_NONE
 #undef AIRLOCK_SECURITY_IRON
 #undef AIRLOCK_SECURITY_PLASTEEL_I_S
@@ -2516,3 +2508,5 @@
 #undef AIRLOCK_FRAME_CLOSING
 #undef AIRLOCK_FRAME_OPEN
 #undef AIRLOCK_FRAME_OPENING
+*/
+// SKYRAT EDIT REMOVAL END - moved to code/__DEFINES/~skyrat_defines/airlock.dm

@@ -86,14 +86,14 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/mulebot)
 	diag_hud_set_mulebotcell()
 
-/mob/living/simple_animal/bot/mulebot/handle_atom_del(atom/A)
-	if(A == load)
+/mob/living/simple_animal/bot/mulebot/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == load)
 		unload(0)
-	if(A == cell)
+	if(gone == cell)
 		turn_off()
 		cell = null
 		diag_hud_set_mulebotcell()
-	return ..()
 
 /mob/living/simple_animal/bot/mulebot/examine(mob/user)
 	. = ..()
@@ -588,7 +588,7 @@
 // calculates a path to the current destination
 // given an optional turf to avoid
 /mob/living/simple_animal/bot/mulebot/calc_path(turf/avoid = null)
-	path = get_path_to(src, target, max_distance=250, id=access_card, exclude=avoid)
+	path = get_path_to(src, target, max_distance=250, access=access_card.GetAccess(), exclude=avoid, diagonal_handling=DIAGONAL_REMOVE_ALL)
 
 // sets the current destination
 // signals all beacons matching the delivery code

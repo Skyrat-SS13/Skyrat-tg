@@ -201,6 +201,8 @@
 		/obj/item/grenade/mirage = 5,
 	)
 
+// SKYRAT EDIT REMOVAL BEGIN - REPLACED BY LORE BEFITTING CRATE AT: modular_skyrat/modules/cargo/code/packs.dm
+/*
 /datum/supply_pack/imports/russian
 	name = "Russian Surplus Military Gear Crate"
 	desc = "Hello <;~insert appropriate greeting here: 'Comrade'|'Imperalist Scum'|'Quartermaster of Reputable Station'~;>, \
@@ -231,6 +233,8 @@
 	for(var/items in 1 to 10)
 		var/item = pick(contains)
 		new item(our_crate)
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/imports/moistnuggets
 	name = "Refurbished Sakhno Precision Rifle Crate"
@@ -299,3 +303,17 @@
 	contraband = TRUE
 	contains = list(/obj/item/weaponcrafting/giant_wrench)
 	crate_name = "unknown parts crate"
+
+/datum/supply_pack/imports/materials_market
+	name = "Galactic Materials Market Crate"
+	desc = "A circuit board to build your own materials market for use by certified market traders. Warning: Losses are not covered by insurance."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(
+		/obj/item/circuitboard/machine/materials_market = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil/five = 2,
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/card_reader = 1
+	)
+	crate_name = "materials market crate"
+	crate_type = /obj/structure/closet/crate

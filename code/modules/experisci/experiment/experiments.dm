@@ -44,7 +44,7 @@
 		/mob/living/basic/chicken,
 		/mob/living/basic/cow,
 		/mob/living/basic/pet/dog/corgi,
-		/mob/living/simple_animal/hostile/retaliate/snake,
+		/mob/living/basic/snake,
 		/mob/living/simple_animal/pet/cat,
 	)
 
@@ -142,15 +142,10 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/halon
 
-// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
-// ORIGINAL: /datum/experiment/scanning/random/material/meat
-/datum/experiment/scanning/random/material/silver
+/datum/experiment/scanning/random/material/meat
 	name = "Biological Material Scanning Experiment"
-// ORIGINAL: description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	description = "Supposedly silver has an inert anti-microbial effect; scan a few samples to test this."
-// ORIGINAL: possible_material_types = list(/datum/material/meat)
-	possible_material_types = list(/datum/material/silver)
-// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
+	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
+	possible_material_types = list(/datum/material/meat)
 
 /datum/experiment/scanning/random/material/easy
 	name = "Low Grade Material Scanning Experiment"
@@ -189,7 +184,7 @@
 
 /datum/experiment/scanning/random/plants/wild
 	name = "Wild Biomatter Mutation Sample"
-	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate with little reason. Scan one of these samples for us."
+	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate upon harvest. Scan one of these samples for us."
 	performance_hint = "\"Wild\" mutations have been recorded to occur above 30 points of instability, while species mutations occur above 60 points of instability."
 	total_requirement = 1
 
@@ -239,7 +234,7 @@
 		/obj/machinery/biogenerator = 3,
 		/obj/machinery/gibber = 3,
 		/obj/machinery/chem_master = 3,
-		/obj/machinery/atmospherics/components/unary/cryo_cell = 3,
+		/obj/machinery/cryo_cell = 3,
 		/obj/machinery/harvester = 5,
 		/obj/machinery/quantumpad = 5
 	)
@@ -296,7 +291,6 @@
 		/obj/machinery/rnd/experimentor = 1,
 		/obj/machinery/medical_kiosk = 2,
 		/obj/machinery/piratepad/civilian = 2,
-		/obj/machinery/rnd/bepis = 3
 	)
 	required_stock_part = /obj/item/stock_parts/scanning_module/adv
 
@@ -337,7 +331,7 @@
 	///Damage percent that each mech needs to be at for a scan to work.
 	var/damage_percent
 
-/datum/experiment/scanning/random/mecha_damage_scan/New()
+/datum/experiment/scanning/random/mecha_damage_scan/New(datum/techweb/techweb)
 	. = ..()
 	damage_percent = rand(15, 95)
 	//updating the description with the damage_percent var set

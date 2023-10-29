@@ -103,7 +103,7 @@
 /obj/item/clothing/under/rank/cargo/qm/skyrat/formal/skirt
 	name = "quartermaster's formal jumpskirt"
 	desc = "A western-like alternate uniform for the old fashioned QM. Skirt included!"
-	icon_state = "supply_chief"
+	icon_state = "supply_chief_skirt"
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT

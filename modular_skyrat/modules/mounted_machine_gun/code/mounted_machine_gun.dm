@@ -467,4 +467,4 @@
 
 /obj/item/mounted_machine_gun_folded/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
+	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy)

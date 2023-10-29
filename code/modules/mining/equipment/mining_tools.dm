@@ -217,6 +217,9 @@
 	attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
 	wound_bonus = 10
 
+/obj/item/trench_tool/get_all_tool_behaviours()
+	return list(TOOL_MINING, TOOL_SHOVEL, TOOL_WRENCH)
+
 /obj/item/trench_tool/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -311,6 +314,7 @@
 	pickup_sound = 'sound/items/handling/crowbar_pickup.ogg'
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
 	block_sound = 'sound/weapons/sonic_jackhammer.ogg'
+	obj_flags = IMMUTABLE_SLOW
 	item_flags = SLOWS_WHILE_IN_HAND
 	slowdown = 3
 	attack_speed = 1.2 SECONDS
@@ -318,6 +322,9 @@
 	var/recoil_factor = 3
 	/// Wether we knock down and launch away out enemies when we attack.
 	var/do_launch = TRUE
+
+/obj/item/shovel/giant_wrench/get_all_tool_behaviours()
+	return list(TOOL_SHOVEL, TOOL_WRENCH)
 
 /datum/armor/giant_wrench
 	acid = 30

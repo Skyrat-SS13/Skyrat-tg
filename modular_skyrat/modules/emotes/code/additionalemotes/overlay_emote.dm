@@ -75,34 +75,3 @@
 		overlay.pixel_y = 10
 		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
-
-
-/datum/emote/living/glasses
-	key = "glasses"
-	key_third_person = "glasses"
-	message = "pushes up their glasses."
-
-/datum/emote/living/glasses/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	var/obj/O = user.get_item_by_slot(ITEM_SLOT_EYES)
-	if((istype(O, /obj/item/clothing/glasses)) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "glasses", ABOVE_MOB_LAYER)
-		if(isteshari(user))
-			overlay.pixel_y = -5
-		user.flick_overlay_static(overlay, 10)
-	else
-		return FALSE
-
-//	These emotes hook into existing ones
-/datum/emote/living/sigh
-	key = "sigh"
-	key_third_person = "sighs"
-
-/datum/emote/living/sigh/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	if(iscarbon(user) && get_toggle(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sigh", ABOVE_MOB_LAYER)
-		if(isteshari(user))
-			overlay.pixel_y = -4
-
-		user.flick_overlay_static(overlay, 50)

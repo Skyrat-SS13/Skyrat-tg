@@ -26,7 +26,7 @@
 	source.face_atom(target)
 	source.visible_message(span_danger("[source.name] aims at [target.name] with the [aimed_gun.name]!"))
 
-	was_running = (source.m_intent == MOVE_INTENT_RUN)
+	was_running = (source.move_intent == MOVE_INTENT_RUN)
 	if(was_running)
 		source.toggle_move_intent()
 	ADD_TRAIT(source, TRAIT_NORUNNING, "gunpoint")
@@ -76,7 +76,7 @@
 
 /datum/gunpoint/Destroy()
 	UnregisterSignal(aimed_gun, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED))
-	UnregisterSignal(target, list(COMSIG_QDELETING, COMSIG_MOB_ITEM_AFTERATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_FIRED_GUN, COMSIG_MOVABLE_MOVED))
+	UnregisterSignal(target, list(COMSIG_QDELETING, COMSIG_MOB_ITEM_AFTERATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_LIVING_UNARMED_ATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_FIRED_GUN, COMSIG_MOVABLE_MOVED))
 	UnregisterSignal(source, list(COMSIG_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_STATUS_STUN, COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_LIVING_STATUS_PARALYZE, COMSIG_LIVING_UPDATED_RESTING))
 
 	REMOVE_TRAIT(source, TRAIT_NORUNNING, "gunpoint")

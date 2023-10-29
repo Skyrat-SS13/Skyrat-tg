@@ -4,6 +4,10 @@
 /datum/outfit/player_loadout
 	name = "Player Loadout"
 
+/datum/outfit/player_loadout/equip(mob/living/carbon/human/user, visualsOnly)
+	. = ..()
+	user.equip_outfit_and_loadout(new /datum/outfit(), user.client.prefs)
+
 /*
  * Actually equip our mob with our job outfit and our loadout items.
  * Loadout items override the pre-existing item in the corresponding slot of the job outfit.
@@ -44,6 +48,11 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				continue
+
 			if(item.restricted_species && !(dna.species.id in item.restricted_species))
 				if(client)
 					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
@@ -59,6 +68,11 @@
 			if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
 				if(client)
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+				continue
+
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
 				continue
 
 			if(item.restricted_species && !(dna.species.id in item.restricted_species))

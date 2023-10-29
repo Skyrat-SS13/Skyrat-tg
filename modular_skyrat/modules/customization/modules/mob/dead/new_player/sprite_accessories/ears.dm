@@ -391,3 +391,15 @@
 /datum/sprite_accessory/ears/mutant/big/fourears3
 	name = "Four Ears 3"
 	icon_state = "four_ears_3"
+
+/datum/sprite_accessory/ears/acrador
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/ears/acrador/long
+	icon_state = "acrador_long"
+	name = "Acrador (Long)"
+
+/datum/sprite_accessory/ears/acrador/short
+	icon_state = "acrador_short"
+	name = "Acrador (Short)"

@@ -13,7 +13,7 @@ export const OpposingForcePanel = (props, context) => {
       width={585}
       height={840}
       theme={owner_antag ? 'syndicate' : 'admin'}>
-      <Window.Content>
+      <Window.Content scrollable>
         <Stack vertical grow mb={1}>
           <Stack.Item>
             <Tabs fill>

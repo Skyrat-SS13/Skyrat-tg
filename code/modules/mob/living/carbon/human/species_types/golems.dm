@@ -7,7 +7,6 @@
 		TRAIT_GENELESS,
 		TRAIT_LAVA_IMMUNE,
 		TRAIT_NOBREATH,
-		TRAIT_NODISMEMBER,
 		TRAIT_NOBLOOD,
 		TRAIT_NOFIRE,
 		TRAIT_PIERCEIMMUNE,
@@ -15,6 +14,8 @@
 		TRAIT_NO_DNA_COPY,
 		TRAIT_NO_TRANSFORMATION_STING,
 		TRAIT_NO_AUGMENTS,
+		TRAIT_NODISMEMBER,
+		TRAIT_NEVER_WOUNDED
 	)
 	mutantheart = null
 	mutantlungs = null
@@ -56,6 +57,10 @@
 	if (prob(human_surname_chance))
 		name += " [pick(GLOB.last_names)]"
 	return name
+
+/datum/species/golem/get_physical_attributes()
+	return "Golems are hardy creatures made out of stone, which are thus naturally resistant to many dangers, including asphyxiation, fire, radiation, electricity, and viruses.\
+		They gain special abilities depending on the type of material consumed, but they need to consume material to keep their body animated."
 
 /datum/species/golem/create_pref_unique_perks()
 	var/list/to_add = list()

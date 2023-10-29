@@ -22,8 +22,7 @@
 	)
 
 	implants = list(
-		/obj/item/implant/uplink/precharged/bonus,
-		/obj/item/implant/explosive,
+		/obj/item/implant/uplink,
 	)
 
 	id_trim = /datum/id_trim/chameleon/contractor

@@ -31,7 +31,9 @@
 		"stomach" = "Stomach",
 		"eyes" = "Eyes",
 		"tongue" = "Tongue",
-		"Mouth implant" = "Mouth implant"
+		"Mouth implant" = "Mouth implant",
+		"Left Arm implant" = "Left Arm implant",
+		"Right Arm implant" = "Right Arm implant",
 	)
 
 	var/list/aug_support = list(
@@ -39,8 +41,8 @@
 		"r_arm" = TRUE,
 		"l_leg" = TRUE,
 		"r_leg" = TRUE,
-		"chest" = FALSE, // TODO: figure out why head/chest augs dont render, needed for IPC head on non IPC body
-		"head" = FALSE,
+		"chest" = TRUE,
+		"head" = TRUE,
 		"l_hand" = FALSE,
 		"r_hand" = FALSE,
 	)
@@ -71,9 +73,7 @@
 	if(!visuals_only)
 		return
 
-	// If you ever add chest and head augments, please add the body zones to this list.
-	// Removing them for now for optimization purposes.
-	for(var/body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+	for(var/body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_CHEST, BODY_ZONE_HEAD))
 		if(body_zone in visited_body_zones)
 			continue
 
@@ -162,7 +162,7 @@
 		usr,
 		"Select new color",
 		null,
-		preferences.body_markings[limb_slot][marking_entry_name],
+		preferences.body_markings[limb_slot][marking_entry_name][1],
 	) as color | null
 	if(!new_color)
 		return TRUE

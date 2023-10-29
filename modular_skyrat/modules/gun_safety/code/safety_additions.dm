@@ -25,9 +25,6 @@
 /obj/item/gun/ballistic/automatic/pistol/deagle/ctf/give_gun_safeties()
 	return
 
-/obj/item/gun/ballistic/automatic/pistol/g17/mesa/give_gun_safeties()
-	return
-
 /obj/item/gun/ballistic/revolver/grenadelauncher/give_gun_safeties()
 	return
 
@@ -39,7 +36,7 @@
 /obj/item/gun/energy/plasmacutter/give_gun_safeties()
 	return
 
-/obj/item/gun/energy/kinetic_accelerator/give_gun_safeties()
+/obj/item/gun/energy/recharge/kinetic_accelerator/give_gun_safeties()
 	return
 
 // Syringe Guns

@@ -28,8 +28,8 @@
 	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16e"
-	ammo_type = /obj/item/ammo_casing/a277
-	caliber = CALIBER_A277
+	ammo_type = /obj/item/ammo_casing/a223
+	caliber = CALIBER_A223
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -38,8 +38,6 @@
 	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a277
-	caliber = CALIBER_A277
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -73,7 +71,5 @@
 	desc = "A double-stack solid polymer drum made for use with the Amans Patriae rifle. Holds 50 rounds of .277 ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a277
-	caliber = CALIBER_A277
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY

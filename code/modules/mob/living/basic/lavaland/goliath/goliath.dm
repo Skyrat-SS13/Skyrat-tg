@@ -11,7 +11,6 @@
 	gender = MALE // Female ones are the bipedal elites
 	speed = 30
 	basic_mob_flags = IMMUNE_TO_FISTS
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	maxHealth = 300
 	health = 300
 	friendly_verb_continuous = "wails at"
@@ -44,17 +43,26 @@
 	/// Slight cooldown to prevent double-dipping if we use both abilities at once
 	COOLDOWN_DECLARE(ability_animation_cooldown)
 	/// Our base tentacles ability
-	var/datum/action/cooldown/goliath_tentacles/tentacles
+	var/datum/action/cooldown/mob_cooldown/goliath_tentacles/tentacles
+	/// Our long-ranged tentacles ability
+	var/datum/action/cooldown/mob_cooldown/tentacle_grasp/tentacle_line
 	/// Things we want to eat off the floor (or a plate, we're not picky)
 	var/static/list/goliath_foods = list(/obj/item/food/grown/ash_flora, /obj/item/food/bait/worm)
 
 /mob/living/basic/mining/goliath/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NO_GLIDE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_TENTACLE_IMMUNE, INNATE_TRAIT)
 	AddElement(/datum/element/ai_retaliate)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HEAVY)
 	AddElement(/datum/element/basic_eating, heal_amt = 10, food_types = goliath_foods)
+	AddElement(\
+		/datum/element/change_force_on_death,\
+		move_force = MOVE_FORCE_DEFAULT,\
+		move_resist = MOVE_RESIST_DEFAULT,\
+		pull_force = PULL_FORCE_DEFAULT,\
+	)
+
+	AddComponent(/datum/component/ai_target_timer)
 	AddComponent(/datum/component/basic_mob_attack_telegraph)
 	AddComponentFrom(INNATE_TRAIT, /datum/component/shovel_hands)
 	if (tameable)
@@ -68,12 +76,12 @@
 
 	tentacles = new (src)
 	tentacles.Grant(src)
-	var/datum/action/cooldown/tentacle_burst/melee_tentacles = new (src)
+	var/datum/action/cooldown/mob_cooldown/tentacle_burst/melee_tentacles = new (src)
 	melee_tentacles.Grant(src)
 	AddComponent(/datum/component/revenge_ability, melee_tentacles, targetting = ai_controller.blackboard[BB_TARGETTING_DATUM], max_range = 1, target_self = TRUE)
-	var/datum/action/cooldown/tentacle_grasp/ranged_tentacles = new (src)
-	ranged_tentacles.Grant(src)
-	AddComponent(/datum/component/revenge_ability, ranged_tentacles, targetting = ai_controller.blackboard[BB_TARGETTING_DATUM], min_range = 2, max_range = 9)
+	tentacle_line = new (src)
+	tentacle_line.Grant(src)
+	AddComponent(/datum/component/revenge_ability, tentacle_line, targetting = ai_controller.blackboard[BB_TARGETTING_DATUM], min_range = 2, max_range = 9)
 
 	tentacles_ready()
 	RegisterSignal(src, COMSIG_MOB_ABILITY_FINISHED, PROC_REF(used_ability))
@@ -83,6 +91,7 @@
 
 /mob/living/basic/mining/goliath/Destroy()
 	QDEL_NULL(tentacles)
+	QDEL_NULL(tentacle_line)
 	return ..()
 
 /mob/living/basic/mining/goliath/examine(mob/user)
@@ -90,26 +99,10 @@
 	if (saddled)
 		. += span_info("Someone appears to have attached a saddle to this one.")
 
-/mob/living/basic/mining/goliath/revive(full_heal_flags, excess_healing, force_grab_ghost)
-	. = ..()
-	if (!.)
-		return
-	move_force = initial(move_force)
-	move_resist = initial(move_resist)
-	pull_force = initial(pull_force)
-
-/mob/living/basic/mining/goliath/death(gibbed)
-	move_force = MOVE_FORCE_DEFAULT
-	move_resist = MOVE_RESIST_DEFAULT
-	pull_force = PULL_FORCE_DEFAULT
-	return ..()
-
 // Goliaths can summon tentacles more frequently as they take damage, scary.
 /mob/living/basic/mining/goliath/apply_damage(damage, damagetype, def_zone, blocked, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction, attacking_item)
 	. = ..()
-	if (!.)
-		return
-	if (damage <= 0)
+	if (. <= 0)
 		return
 	if (tentacles.cooldown_time > 1 SECONDS)
 		tentacles.cooldown_time -= 1 SECONDS
@@ -141,7 +134,7 @@
 	SIGNAL_HANDLER
 	if (stat == DEAD || ability.IsAvailable())
 		return // We died or the action failed for some reason like being out of range
-	if (istype(ability, /datum/action/cooldown/goliath_tentacles))
+	if (istype(ability, /datum/action/cooldown/mob_cooldown/goliath_tentacles))
 		if (ability.cooldown_time <= 2 SECONDS)
 			return
 		icon_state = icon_living
@@ -168,15 +161,11 @@
 	. = ..()
 	faction = new_friend.faction.Copy()
 
-/// Goliath which sometimes replaces itself with a rare variant
-/mob/living/basic/mining/goliath/random
+/mob/living/basic/mining/goliath/RangedAttack(atom/atom_target, modifiers)
+	tentacles?.Trigger(target = atom_target)
 
-/mob/living/basic/mining/goliath/random/Initialize(mapload)
-	. = ..()
-	if(!prob(1))
-		return
-	new /mob/living/basic/mining/goliath/ancient/immortal(loc)
-	return INITIALIZE_HINT_QDEL
+/mob/living/basic/mining/goliath/ranged_secondary_attack(atom/atom_target, modifiers)
+	tentacle_line?.Trigger(target = atom_target)
 
 /// Legacy Goliath mob with different sprites, largely the same behaviour
 /mob/living/basic/mining/goliath/ancient

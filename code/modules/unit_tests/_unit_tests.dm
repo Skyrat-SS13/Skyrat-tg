@@ -85,10 +85,6 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // BEGIN_INCLUDE
-// SKYRAT EDIT START
-#include "~skyrat/opposing_force.dm"
-#include "~skyrat/automapper.dm"
-//SKYRAT EDIT END
 #include "abductor_baton_spell.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
@@ -104,6 +100,7 @@
 #include "baseturfs.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
+#include "bitrunning.dm"
 #include "blindness.dm"
 #include "bloody_footprints.dm"
 #include "breath.dm"
@@ -127,6 +124,7 @@
 #include "dcs_check_list_arguments.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
+#include "dismemberment.dm"
 #include "door_access.dm"
 #include "dragon_expiration.dm"
 #include "drink_icons.dm"
@@ -150,6 +148,7 @@
 #include "heretic_rituals.dm"
 #include "high_five.dm"
 #include "holidays.dm"
+#include "hulk.dm"
 #include "human_through_recycler.dm"
 #include "hunger_curse.dm"
 #include "hydroponics_extractor_storage.dm"
@@ -164,6 +163,7 @@
 #include "leash.dm"
 #include "lesserform.dm"
 #include "limbsanity.dm"
+#include "ling_decap.dm"
 #include "liver.dm"
 #include "load_map_security.dm"
 #include "lungs.dm"
@@ -177,8 +177,11 @@
 #include "metabolizing.dm"
 #include "mindbound_actions.dm"
 #include "missing_icons.dm"
+#include "mob_chains.dm"
+#include "mob_damage.dm"
 #include "mob_faction.dm"
 #include "mob_spawn.dm"
+#include "modify_fantasy_variable.dm"
 #include "modsuit.dm"
 #include "modular_map_loader.dm"
 #include "monkey_business.dm"
@@ -190,9 +193,10 @@
 #include "objectives.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
-#include "organs.dm"
 #include "organ_set_bonus.dm"
+#include "organs.dm"
 #include "outfit_sanity.dm"
+#include "oxyloss_suffocation.dm"
 #include "paintings.dm"
 #include "pills.dm"
 #include "plane_double_transform.dm"
@@ -220,8 +224,8 @@
 #include "screenshot_humanoids.dm"
 #include "screenshot_husk.dm"
 #include "screenshot_saturnx.dm"
-#include "security_officer_distribution.dm"
 #include "security_levels.dm"
+#include "security_officer_distribution.dm"
 #include "serving_tray.dm"
 #include "simple_animal_freeze.dm"
 #include "siunit.dm"
@@ -262,8 +266,14 @@
 #include "unit_test.dm"
 #include "verify_config_tags.dm"
 #include "verify_emoji_names.dm"
+#include "weird_food.dm"
 #include "wizard_loadout.dm"
 #include "worn_icons.dm"
+// SKYRAT EDIT START
+#include "~skyrat\automapper.dm"
+#include "~skyrat\opposing_force.dm"
+// SKYRAT EDIT END
+// END_INCLUDE
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif

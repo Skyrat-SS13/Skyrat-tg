@@ -142,7 +142,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			poll_question = "The station has ordered $35,000 in pizza. Will you deliver?"
 			cell_phone_number = "Dogginos"
 			list_to_use = "dogginos"
-	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE)
+	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE, color_override = "yellow")
 	var/list/candidates = poll_ghost_candidates(poll_question, "deathsquad")
 
 	if(candidates.len)
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	belt = /obj/item/storage/belt/medical/paramedic
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
-		/obj/item/roller = 1,
+		/obj/item/emergency_bed = 1,
 		/obj/item/storage/medkit/surgery = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
@@ -565,7 +565,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 				station_balance?.adjust_money(SOLFED_FINE_AMOUNT) // paying for the gas to drive all the fuckin' way out to the frontier
 
-			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE)
+			priority_announce(announcement_message, announcement_source, 'sound/effects/families_police.ogg', has_important_message = TRUE, color_override = "yellow")
 			var/list/candidates = poll_ghost_candidates(ghost_poll_msg, jobban_to_check)
 
 			if(candidates.len)

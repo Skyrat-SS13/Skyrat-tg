@@ -65,22 +65,11 @@
 	reqs = list(
 		/obj/item/stack/sheet/iron = 2,
 		/obj/item/stack/cable_coil = 1,
+		/obj/item/shard = 1,
 		/datum/reagent/fuel = 10,
 	)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 1.2 SECONDS
-	category = CAT_WEAPON_AMMO
-
-/datum/crafting_recipe/laserslug
-	name = "Scatter Laser Shell"
-	result = /obj/item/ammo_casing/shotgun/laserslug
-	reqs = list(
-		/obj/item/ammo_casing/shotgun/techshell = 1,
-		/obj/item/stock_parts/capacitor/adv = 1,
-		/obj/item/stock_parts/micro_laser/high = 1,
-	)
-	tool_behaviors = list(TOOL_SCREWDRIVER)
-	time = 0.5 SECONDS
 	category = CAT_WEAPON_AMMO
 
 /datum/crafting_recipe/trashball

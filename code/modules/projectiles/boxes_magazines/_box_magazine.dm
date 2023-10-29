@@ -19,6 +19,8 @@
 	var/list/stored_ammo = list()
 	///type that the magazine will be searching for, rejects if not a subtype of
 	var/ammo_type = /obj/item/ammo_casing
+	/// wording used for individual units of ammo, e.g. cartridges (regular ammo), shells (shotgun shells)
+	var/casing_phrasing = "cartridge"
 	///maximum amount of ammo in the magazine
 	var/max_ammo = 7
 	///Controls how sprites are updated for the ammo box; see defines in combat.dm: AMMO_BOX_ONE_SPRITE; AMMO_BOX_PER_BULLET; AMMO_BOX_FULL_EMPTY
@@ -50,6 +52,15 @@
 	QDEL_LIST(stored_ammo)
 	return ..()
 
+/obj/item/ammo_box/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone in stored_ammo)
+		remove_from_stored_ammo(gone)
+
+/obj/item/ammo_box/proc/remove_from_stored_ammo(atom/movable/gone)
+	stored_ammo -= gone
+	update_appearance()
+
 /obj/item/ammo_box/add_weapon_description()
 	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_box))
 
@@ -57,7 +68,7 @@
 	var/list/readout = list()
 
 	if(caliber && max_ammo) // Text references a 'magazine' as only magazines generally have the caliber variable initialized
-		readout += "Up to [span_warning("[max_ammo] [caliber] rounds")] can be found within this magazine. \
+		readout += "Up to [span_warning("[max_ammo] [caliber] [casing_phrasing]s")] can be found within this magazine. \
 		\nAccidentally discharging any of these projectiles may void your insurance contract."
 
 	var/obj/item/ammo_casing/mag_ammo = get_round(TRUE)
@@ -84,19 +95,19 @@
 		return
 
 	for(var/i in max(1, stored_ammo.len) to max_ammo)
-		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		stored_ammo += new round_check(src)
 	update_appearance()
 
-///gets a round from the magazine, if keep is TRUE the round will stay in the gun
+///gets a round from the magazine, if keep is TRUE the round will be moved to the bottom of the list.
 /obj/item/ammo_box/proc/get_round(keep = FALSE)
-	if (!stored_ammo.len)
+	var/ammo_len = length(stored_ammo)
+	if (!ammo_len)
 		return null
-	else
-		var/b = stored_ammo[stored_ammo.len]
-		stored_ammo -= b
-		if (keep)
-			stored_ammo.Insert(1,b)
-		return b
+	var/casing = stored_ammo[ammo_len]
+	if (keep)
+		stored_ammo -= casing
+		stored_ammo.Insert(1,casing)
+	return casing
 
 ///puts a round into the magazine
 /obj/item/ammo_box/proc/give_round(obj/item/ammo_casing/R, replace_spent = 0)
@@ -106,7 +117,7 @@
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		R.forceMove(src)
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -117,7 +128,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+				R.forceMove(src)
 				return TRUE
 	return FALSE
 
@@ -149,7 +160,7 @@
 
 	if(num_loaded)
 		if(!silent)
-			to_chat(user, span_notice("You load [num_loaded] shell\s into \the [src]!"))
+			to_chat(user, span_notice("You load [num_loaded > 1 ? "[num_loaded] [casing_phrasing]s" : "a [casing_phrasing]"] into \the [src]!"))
 			playsound(src, 'sound/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
 		update_appearance()
 
@@ -164,13 +175,23 @@
 	if(!user.is_holding(src) || !user.put_in_hands(A)) //incase they're using TK
 		A.bounce_away(FALSE, NONE)
 	playsound(src, 'sound/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
-	to_chat(user, span_notice("You remove a round from [src]!"))
+	to_chat(user, span_notice("You remove a [casing_phrasing] from [src]!"))
 	update_appearance()
+
+/obj/item/ammo_box/examine(mob/user)
+	. = ..()
+	var/top_round = get_round()
+	if(!top_round)
+		return
+	// this is kind of awkward phrasing, but it's the top/ready ammo in the box
+	// intended for people who have like three mislabeled magazines
+	. += span_notice("The [top_round] is ready in [src].")
+
 
 /obj/item/ammo_box/update_desc(updates)
 	. = ..()
 	var/shells_left = LAZYLEN(stored_ammo)
-	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
+	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] [casing_phrasing]\s left!"
 
 /obj/item/ammo_box/update_icon_state()
 	var/shells_left = LAZYLEN(stored_ammo)
@@ -204,11 +225,8 @@
 	return boolets
 
 ///list of every bullet in the magazine
-/obj/item/ammo_box/magazine/proc/ammo_list(drop_list = FALSE)
-	var/list/L = stored_ammo.Copy()
-	if(drop_list)
-		stored_ammo.Cut()
-	return L
+/obj/item/ammo_box/magazine/proc/ammo_list()
+	return stored_ammo.Copy()
 
 ///drops the entire contents of the magazine on the floor
 /obj/item/ammo_box/magazine/proc/empty_magazine()
@@ -216,14 +234,3 @@
 	for(var/obj/item/ammo in stored_ammo)
 		ammo.forceMove(turf_mag)
 		stored_ammo -= ammo
-
-/obj/item/ammo_box/magazine/handle_atom_del(atom/A)
-	stored_ammo -= A
-	update_appearance()
-
-//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
-/obj/item/ammo_box/Destroy()
-	. = ..()
-	for(var/i in stored_ammo)
-		qdel(i)
-//SKYRAT EDIT END

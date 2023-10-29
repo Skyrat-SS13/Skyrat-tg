@@ -12,8 +12,7 @@
 	id = "mothership_main"
 	},
 /obj/machinery/recycler{
-	dir = 1;
-	eat_dir = 4
+	dir = 8
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ruin/cyborg_mothership)
@@ -216,6 +215,17 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/shuttle/ruin/cyborg_mothership)
+"mG" = (
+/obj/structure/table,
+/obj/item/surgery_tray/full,
+/obj/effect/turf_decal/bot,
+/obj/structure/sink/directional/east,
+/obj/item/toy/figure/borg{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ruin/cyborg_mothership)
 "mN" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -359,6 +369,15 @@
 	},
 /turf/open/floor/circuit/airless,
 /area/shuttle/ruin/cyborg_mothership)
+"rJ" = (
+/mob/living/basic/hivebot,
+/obj/structure/spacevine,
+/obj/machinery/conveyor{
+	id = "mothership_main"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/ruin/cyborg_mothership)
 "so" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -387,15 +406,6 @@
 /turf/template_noop,
 /area/shuttle/ruin/cyborg_mothership)
 "tW" = (
-/obj/machinery/conveyor{
-	id = "mothership_main"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/shuttle/ruin/cyborg_mothership)
-"uF" = (
-/mob/living/basic/hivebot,
-/obj/structure/spacevine,
 /obj/machinery/conveyor{
 	id = "mothership_main"
 	},
@@ -480,6 +490,10 @@
 /obj/machinery/status_display/ai,
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ruin/cyborg_mothership)
+"yG" = (
+/mob/living/basic/hivebot/range,
+/turf/open/floor/circuit/airless,
+/area/shuttle/ruin/cyborg_mothership)
 "yQ" = (
 /obj/item/organ/internal/brain,
 /obj/structure/cable,
@@ -488,11 +502,6 @@
 "zn" = (
 /obj/machinery/power/shuttle_engine/propulsion,
 /obj/structure/spacevine,
-/turf/template_noop,
-/area/shuttle/ruin/cyborg_mothership)
-"zy" = (
-/obj/structure/lattice,
-/mob/living/basic/hivebot/mechanic,
 /turf/template_noop,
 /area/shuttle/ruin/cyborg_mothership)
 "zF" = (
@@ -542,11 +551,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ruin/cyborg_mothership)
-"Dm" = (
-/obj/structure/lattice,
-/mob/living/basic/hivebot/range,
-/turf/template_noop,
-/area/shuttle/ruin/cyborg_mothership)
 "Dv" = (
 /obj/structure/cable,
 /obj/structure/table_frame,
@@ -585,9 +589,10 @@
 /obj/machinery/camera/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/ruin/cyborg_mothership)
-"FJ" = (
+"FQ" = (
+/obj/structure/lattice,
 /mob/living/basic/hivebot/range,
-/turf/open/floor/circuit/airless,
+/turf/template_noop,
 /area/shuttle/ruin/cyborg_mothership)
 "Ge" = (
 /obj/structure/spacevine,
@@ -614,6 +619,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/shuttle/ruin/cyborg_mothership)
+"HK" = (
+/mob/living/basic/hivebot,
+/obj/item/circuitboard/aicore,
+/obj/structure/cable,
+/turf/open/floor/circuit/green/airless,
+/area/shuttle/ruin/cyborg_mothership)
 "HM" = (
 /obj/machinery/space_heater{
 	anchored = 1
@@ -637,6 +648,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
+/area/shuttle/ruin/cyborg_mothership)
+"JJ" = (
+/obj/structure/lattice,
+/mob/living/basic/hivebot/mechanic,
+/turf/template_noop,
 /area/shuttle/ruin/cyborg_mothership)
 "Ks" = (
 /obj/structure/cable,
@@ -705,17 +721,6 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/circuit/airless,
-/area/shuttle/ruin/cyborg_mothership)
-"Oq" = (
-/obj/structure/table,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/obj/effect/turf_decal/bot,
-/obj/structure/sink/directional/east,
-/obj/item/toy/figure/borg{
-	pixel_x = 7;
-	pixel_y = 12
-	},
-/turf/open/floor/iron/dark,
 /area/shuttle/ruin/cyborg_mothership)
 "Ou" = (
 /obj/machinery/camera/directional/west,
@@ -883,12 +888,6 @@
 /obj/machinery/power/tracker,
 /obj/structure/cable,
 /turf/template_noop,
-/area/shuttle/ruin/cyborg_mothership)
-"Yb" = (
-/mob/living/basic/hivebot,
-/obj/item/circuitboard/aicore,
-/obj/structure/cable,
-/turf/open/floor/circuit/green/airless,
 /area/shuttle/ruin/cyborg_mothership)
 "Yl" = (
 /obj/machinery/conveyor/inverted{
@@ -1115,7 +1114,7 @@ oR
 eO
 hR
 so
-zy
+JJ
 so
 kz
 mp
@@ -1162,7 +1161,7 @@ zZ
 zZ
 mN
 iN
-Oq
+mG
 zZ
 kz
 kz
@@ -1192,7 +1191,7 @@ yF
 HM
 yF
 yg
-Yb
+HK
 vy
 Dv
 Ln
@@ -1245,7 +1244,7 @@ dA
 Ng
 MB
 ey
-FJ
+yG
 Uq
 yF
 so
@@ -1338,7 +1337,7 @@ hR
 hR
 oe
 qV
-Dm
+FQ
 so
 so
 hR
@@ -1418,7 +1417,7 @@ oe
 RV
 tW
 tW
-uF
+rJ
 Jj
 tW
 Sc
