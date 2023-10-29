@@ -41,7 +41,7 @@
 
 /datum/outfit/lavaland_syndicate/ice
 	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
-	suit = /obj/item/clothing/suit/hooded/wintercoat/medical/viro
+	suit = /obj/item/clothing/suit/hooded/wintercoat/medical/viro/interdyne
 	ears = /obj/item/radio/headset/interdyne/green
 	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
 

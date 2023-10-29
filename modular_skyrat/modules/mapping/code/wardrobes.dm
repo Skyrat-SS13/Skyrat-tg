@@ -120,7 +120,7 @@
 		/obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck = 5,
 		/obj/item/clothing/shoes/combat = 5,
 		/obj/item/clothing/mask/gas = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/medical/viro/interdyne = 5,
 		/obj/item/storage/backpack/messenger/vir = 5,
 		/obj/item/storage/backpack/satchel/vir = 5,
 		/obj/item/storage/backpack/duffelbag/virology = 5,

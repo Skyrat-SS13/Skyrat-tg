@@ -302,4 +302,8 @@
 	icon_state = "ip_officerlabcoat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/hooded/wintercoat/medical/viro/interdyne
+	name = "interdyne winter coat"
+	desc = "A fuzzy winter coat bearing interdyne colors, complete with armored fibers."
+	armor_type = /datum/armor/wintercoat_syndicate
 //Interdyne Clothing End
