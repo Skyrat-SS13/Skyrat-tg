@@ -119,6 +119,7 @@
 	name = "interdyne branded headset"
 	desc = "A bowman headset in interdyne green, has a small 'IP' written on the earpiece. Protects the ears from flashbangs."
 	icon_state = "headset_ip"
+	worn_icon_state = "headset_ip"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
 
