@@ -22,8 +22,9 @@
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
-	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
-	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
+	suit = /obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/white
+	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
@@ -39,9 +40,10 @@
 	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
-	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
-	suit = /obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
+	suit = /obj/item/clothing/suit/hooded/wintercoat/medical/viro
 	ears = /obj/item/radio/headset/interdyne
+	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
 	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate
@@ -52,8 +54,9 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Interdyne Shaft Miner"
-	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
-	suit = null //Subtype moment
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_miner
+	suit = /obj/item/clothing/suit/syndicate/interdyne_jacket
+	head = null //funny subtypes
 	r_pocket = /obj/item/storage/bag/ore
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne
 	backpack_contents = list(
@@ -67,8 +70,9 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Interdyne Deck Officer"
-	uniform = /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
-	neck = /obj/item/clothing/neck/cloak/qm/syndie
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_deckofficer
+	head = /obj/item/clothing/head/hats/syndicate/interdyne_deckofficer_black
+	suit = /obj/item/clothing/suit/armor/hos/deckofficer
 	ears = /obj/item/radio/headset/interdyne/command
 	id = /obj/item/card/id/advanced/silver/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
@@ -84,8 +88,9 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/ice
 	name = "Icemoon Interdyne Shaft Miner"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
-	suit = /obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_miner
+	head = /obj/item/clothing/ears/headphones
+	suit = /obj/item/clothing/suit/syndicate/interdyne_jacket
 
 //ITEMS
 

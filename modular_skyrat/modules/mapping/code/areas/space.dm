@@ -106,13 +106,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/research
 	name = "DS-2 Research"
 
-//Medbay
-/area/ruin/space/has_grav/skyrat/interdynefob/medbay
-	name = "DS-2 Medical Bay"
-
-/area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem
-	name = "DS-2 Chemistry"
-
+/area/ruin/space/has_grav/skyrat/interdynefob/research/robotics
+	name = "DS-2 Robotics Bay"
 /area/ruin/space/has_grav/shuttle8532engineering
 	name = "Shuttle 8532 Engine Room"
 

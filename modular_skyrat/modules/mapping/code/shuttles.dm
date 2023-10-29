@@ -40,6 +40,24 @@
 	build_path = /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 /*----- End of Black Market Shuttle Code -----*/
 
+/*Interdyne Cargo Shuttle*/
+/datum/map_template/shuttle/ruin/interdyne_cargo
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "interdyne_cargo"
+	name = "Interdyne Cargo Shuttle"
+
+/obj/machinery/computer/shuttle/interdyne_cargo
+	name = "Interdyne Cargo Shuttle Console"
+	desc = "Used to control the Interdyne cargo shuttle."
+	circuit = /obj/item/circuitboard/computer/interdyne_cargo
+	shuttleId = "interdyne_cargo"
+	possible_destinations = "interdyne_cargo_home;interdyne_cargo_away"
+
+/obj/item/circuitboard/computer/interdyne_cargo
+	name = "Interdyne Shuttle Control (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/interdyne_cargo
+/*Interdyne Cargo Shuttle End*/
+
 /datum/map_template/shuttle/prison_transport
 	prefix = "_maps/shuttles/skyrat/"
 	port_id = "prison_transport"

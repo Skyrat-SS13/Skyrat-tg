@@ -98,3 +98,54 @@
 			)
 
 			return
+
+
+//Interdyne Wardrobe
+/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne
+	name = "\improper InterDrobe"
+	desc = "A vending machine for Interdyne Pharmaceutics employees."
+	icon = 'modular_skyrat/modules/mapping/icons/obj/vending.dmi'
+	icon_state = "ipdrobe"
+	product_ads = "Producing bioweapons with style!;What's the point in violating the hippocractic oath if you don't look good doing it?"
+	vend_reply = "Thank you for using the InterDrobe!"
+	light_mask = ""
+	products = list(
+		/obj/item/clothing/head/bio_hood/skyrat/interdyne = 3,
+		/obj/item/clothing/suit/bio_suit/interdyne = 3,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/black = 5,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/white = 5,
+		/obj/item/clothing/suit/syndicate/interdyne_jacket = 5,
+		/obj/item/clothing/head/beret/medical/skyrat/interdyne = 5,
+		/obj/item/clothing/under/syndicate/skyrat/interdyne_miner = 5,
+		/obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck = 5,
+		/obj/item/clothing/shoes/combat = 5,
+		/obj/item/clothing/mask/gas = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 5,
+		/obj/item/storage/backpack/messenger/vir = 5,
+		/obj/item/storage/backpack/satchel/vir = 5,
+		/obj/item/storage/backpack/duffelbag/virology = 5,
+		/obj/item/storage/backpack/virology = 5,
+
+	)
+	contraband = list(
+		/obj/item/knife/combat = 1,
+		/obj/item/gun/syringe = 1,
+
+	)
+	premium = list(
+		/obj/item/knife/combat/survival = 3,
+		/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 5,
+		/obj/item/clothing/gloves/combat = 3,
+		/obj/item/clothing/gloves/latex/nitrile = 3,
+	)
+
+	refill_canister = /obj/item/vending_refill/wardrobe/syndie_wardrobe
+	light_color = COLOR_GREEN
+
+/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne/ghost_cafe
+	excluded_products = list(
+		/obj/item/storage/box/nif_ghost_box/ghost_role,
+	)
+
+/obj/item/vending_refill/wardrobe/syndie_wardrobe/interdyne
+	machine_name = "InterDrobe"
