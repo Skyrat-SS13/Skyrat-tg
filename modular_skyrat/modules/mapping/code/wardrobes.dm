@@ -51,6 +51,13 @@
 /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	machine_name = "SynDrobe"
 
+/obj/item/circuitboard/machine/vending/syndie_wardrobe
+	name = "SynDrobe Vendor"
+	build_path = /obj/machinery/vending/wardrobe/syndie_wardrobe
+	req_components = list(
+		/obj/item/stack/sheet/glass = 1,
+		/obj/item/vending_refill/wardrobe/syndie_wardrobe = 1)
+
 /// This is essentially just a copy paste of the holy beacon, but with all options unlocked regardless of the global religion
 /obj/item/choice_beacon/unholy
 	name = "armaments beacon"
