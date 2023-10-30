@@ -71,11 +71,14 @@
 	disliked_foodtypes = CLOTH | GRAIN | FRIED
 	toxic_foodtypes = DAIRY
 
-/obj/item/organ/internal/tongue/xeno // like lizard tongue but without taste sensitivity modifiers
-	name = "xenomorph tongue"
-	desc = "A fleshy muscle mostly used for hissing."
+/obj/item/organ/internal/tongue/xeno_hybrid
+	name = "alien tongue"
+	desc = "According to leading xenobiologists the evolutionary benefit of having a second mouth in your mouth is \"that it looks badass\"."
+	icon_state = "tonguexeno"
 	say_mod = "hisses"
+	taste_sensitivity = 10
 	liked_foodtypes = MEAT
+	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.8,aresample=%SAMPLE_RATE%,atempo=1/0.8,aformat=channel_layouts=mono [p0]; [out2] asetrate=%SAMPLE_RATE%*1.2,aresample=%SAMPLE_RATE%,atempo=1/1.2,aformat=channel_layouts=mono[p2]; [p0][0][p2] amix=inputs=3"}
 
 /obj/item/organ/internal/tongue/skrell
 	name = "skrell tongue"
