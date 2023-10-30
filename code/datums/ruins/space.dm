@@ -389,6 +389,12 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "The Faceoff"
 	description = "What do you get when a meeting of the enemy corporations get crashed?"
 
+/datum/map_template/ruin/space/meatstation
+	id = "meatderelict"
+	suffix = "meatderelict.dmm"
+	name = "Bioresearch Outpost"
+	description = "A bioresearch experiment gone wrong."
+
 /datum/map_template/ruin/space/ghost_restaurant
 	id = "space_ghost_restaurant.dmm"
 	suffix = "space_ghost_restaurant.dmm"
