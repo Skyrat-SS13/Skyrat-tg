@@ -745,6 +745,7 @@
 /obj/effect/turf_decal/siding/dark_green{
 	dir = 4
 	},
+/obj/structure/sink/kitchen/directional/west,
 /turf/open/floor/iron/dark/small,
 /area/ruin/syndicate_lava_base/lounge)
 "hL" = (
@@ -1449,6 +1450,7 @@
 /obj/item/pickaxe,
 /obj/item/storage/bag/ore,
 /obj/item/pickaxe,
+/obj/item/storage/part_replacer/bluespace,
 /turf/open/floor/iron/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "of" = (
@@ -2391,6 +2393,10 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
+"xB" = (
+/obj/effect/turf_decal/siding/thinplating,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/syndicate_lava_base/lounge)
 "xC" = (
 /obj/effect/turf_decal/tile/dark_green,
 /obj/machinery/suit_storage_unit/mining,
@@ -2692,7 +2698,6 @@
 "Ao" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sink/kitchen/directional/east,
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
 "Ap" = (
@@ -2721,6 +2726,10 @@
 /obj/structure/rack,
 /obj/effect/turf_decal/siding/dark_green{
 	dir = 8
+	},
+/obj/item/geneshears,
+/obj/item/gun/energy/floragun{
+	pixel_y = 7
 	},
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
@@ -3900,6 +3909,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
+"KL" = (
+/obj/machinery/vending/boozeomat/syndicate_access{
+	onstation = 0
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/syndicate_lava_base/lounge)
 "KN" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -4728,8 +4743,9 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/lounge)
 "RX" = (
-/obj/machinery/vending/boozeomat/syndicate_access{
-	onstation = 0
+/obj/machinery/smartfridge/food,
+/obj/effect/turf_decal/siding/dark_green{
+	dir = 1
 	},
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
@@ -5488,6 +5504,7 @@
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 9
 	},
+/obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -7052,7 +7069,7 @@ BQ
 RX
 GZ
 En
-EH
+KL
 EH
 EZ
 fm
@@ -7211,7 +7228,7 @@ RH
 cR
 pq
 TA
-EH
+xB
 pa
 xY
 Tq

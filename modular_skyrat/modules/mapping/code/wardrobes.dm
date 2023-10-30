@@ -132,6 +132,7 @@
 		/obj/item/storage/backpack/satchel/vir = 5,
 		/obj/item/storage/backpack/duffelbag/virology = 5,
 		/obj/item/storage/backpack/virology = 5,
+		/obj/item/storage/box/nif_ghost_box/ghost_role = 5,
 
 	)
 	contraband = list(
