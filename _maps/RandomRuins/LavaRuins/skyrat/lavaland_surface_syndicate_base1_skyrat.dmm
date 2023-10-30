@@ -1319,7 +1319,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "mW" = (
@@ -1850,9 +1850,7 @@
 /area/ruin/syndicate_lava_base/cargo)
 "tl" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
-/obj/machinery/vending/boozeomat/syndicate_access{
-	onstation = 0
-	},
+/obj/machinery/grill,
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/cargo)
 "tt" = (
@@ -2267,6 +2265,13 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/engineering)
+"xg" = (
+/obj/structure/table/reinforced,
+/obj/machinery/vending/boozeomat/syndicate_access{
+	onstation = 0
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/cargo)
 "xq" = (
 /obj/structure/table/wood,
 /obj/item/pai_card{
@@ -2595,13 +2600,13 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "AD" = (
-/obj/structure/table/reinforced,
 /obj/item/plant_analyzer,
 /obj/item/hatchet,
 /obj/item/secateurs,
 /obj/item/shovel/spade,
 /obj/item/cultivator,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/rack,
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/cargo)
 "AI" = (
@@ -2777,7 +2782,6 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/effect/spawner/random/entertainment/lighter,
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/cargo)
 "Cn" = (
@@ -2805,18 +2809,12 @@
 /area/ruin/syndicate_lava_base/main)
 "CF" = (
 /obj/structure/table,
-/obj/item/radio{
-	desc = "An old handheld radio. You could use it, if you really wanted to.";
-	icon_state = "radio";
-	name = "old radio";
-	pixel_y = 7
-	},
 /obj/item/flashlight,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/item/crowbar,
-/obj/item/crowbar,
+/obj/item/flashlight,
 /obj/item/crowbar,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -2887,7 +2885,13 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne,
+/obj/structure/table,
+/obj/item/radio{
+	desc = "An old handheld radio. You could use it, if you really wanted to.";
+	icon_state = "radio";
+	name = "old radio";
+	pixel_y = 7
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "Dl" = (
@@ -3190,13 +3194,8 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/item/reagent_containers/cup/glass/waterbottle{
-	pixel_y = 11
-	},
-/obj/item/reagent_containers/cup/glass/waterbottle{
-	pixel_x = 7;
-	pixel_y = 3
+/obj/machinery/vending/barbervend{
+	onstation = 0
 	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
@@ -4569,12 +4568,10 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/arrivals)
 "RX" = (
-/obj/effect/turf_decal/siding/dark_green{
-	dir = 1
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/wood/tile,
-/area/ruin/syndicate_lava_base/cargo)
+/obj/structure/lattice/catwalk,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "RY" = (
 /obj/structure/closet/crate/internals,
 /obj/item/tank/internals/oxygen/yellow,
@@ -6893,12 +6890,12 @@ RY
 WR
 Rp
 BQ
-KD
+xg
 GZ
 En
 Ih
 Ih
-fm
+RX
 fm
 fm
 fm
@@ -6934,7 +6931,7 @@ On
 DZ
 XG
 ta
-RX
+KD
 Dy
 EK
 Ao
