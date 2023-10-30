@@ -92,6 +92,7 @@
 	greyscale_config = /datum/greyscale_config/medium_skirt
 	greyscale_config_worn = /datum/greyscale_config/medium_skirt/worn
 	greyscale_colors = "#3a3c45"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/skyrat/long_skirt
@@ -101,6 +102,7 @@
 	greyscale_config = /datum/greyscale_config/long_skirt
 	greyscale_config_worn = /datum/greyscale_config/long_skirt/worn
 	greyscale_colors = "#3a3c45"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
 	alternate_worn_layer = ABOVE_SHOES_LAYER
 	flags_1 = IS_PLAYER_COLORABLE_1
 
