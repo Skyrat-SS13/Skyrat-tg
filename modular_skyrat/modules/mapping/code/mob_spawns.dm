@@ -252,6 +252,10 @@
 	back = /obj/item/storage/backpack/security/redsec
 	head = /obj/item/clothing/head/helmet/swat/ds
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	backpack_contents = list(
+		/obj/item/gun/ballistic/automatic/pistol/sol/evil = 1,
+		/obj/item/ammo_box/magazine/c35sol_pistol = 1,
+		)
 	r_pocket = /obj/item/flashlight/seclite
 	mask = /obj/item/clothing/mask/gas/syndicate
 	ears = /obj/item/radio/headset/interdyne
