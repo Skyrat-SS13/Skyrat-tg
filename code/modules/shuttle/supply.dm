@@ -160,11 +160,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/price
 	var/pack_cost
 	var/list/goodies_by_buyer = list() // if someone orders more than GOODY_FREE_SHIPPING_MAX goodies, we upcharge to a normal crate so they can't carry around 20 combat shotties
-<<<<<<< HEAD
-	var/list/forced_briefcases = list() //SKYRAT EDIT
-=======
 	var/list/rejected_orders = list() //list of all orders that exceeded the available budget and are uncancelable
->>>>>>> e39276b869f (GMM UI & Cargo budget handling tweaks (#79145))
+	var/list/forced_briefcases = list() // SKYRAT EDIT ADDITION
 
 	for(var/datum/supply_order/spawning_order in SSshuttle.shopping_list)
 		if(!empty_turfs.len)
@@ -172,13 +169,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		price = spawning_order.get_final_cost()
 
 		//department orders EARN money for cargo, not the other way around
-<<<<<<< HEAD
-		//Skyrat Edit Add
-=======
 		var/datum/bank_account/paying_for_this
->>>>>>> e39276b869f (GMM UI & Cargo budget handling tweaks (#79145))
 		if(!spawning_order.department_destination && spawning_order.charge_on_purchase)
-		//Skyrat Edit End
 			if(spawning_order.paying_account) //Someone paid out of pocket
 				paying_for_this = spawning_order.paying_account
 				// note this is before we increment, so this is the GOODY_FREE_SHIPPING_MAX + 1th goody to ship. also note we only increment off this step if they successfully pay the fee, so there's no way around it
@@ -197,15 +189,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					if(!spawning_order.can_be_cancelled) //only if it absolutly cannot be canceled by the player do we cancel it for them
 						rejected_orders += spawning_order
 					continue
-<<<<<<< HEAD
-		//Skyrat Edit Add
-		if(spawning_order.paying_account && spawning_order.charge_on_purchase)
-		//Skyrat Edit End
-=======
 
 		pack_cost = spawning_order.pack.get_cost()
-		if(spawning_order.paying_account)
->>>>>>> e39276b869f (GMM UI & Cargo budget handling tweaks (#79145))
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase) // SKYRAT EDIT CHANGE - ORIGINAL: if(spawning_order.paying_account)
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
@@ -221,7 +207,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		SSshuttle.order_history += spawning_order
 		QDEL_NULL(spawning_order.applied_coupon)
 
-		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) //we handle goody crates below //SKYRAT EDIT
+		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) // SKYRAT EDIT CHANGE - ORIGINAL : if(!spawning_order.pack.goody)
 			var/obj/structure/closet/crate = spawning_order.generate(pick_n_take(empty_turfs))
 			crate.name += " - #[spawning_order.id]"
 

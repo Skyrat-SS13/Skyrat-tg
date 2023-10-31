@@ -259,9 +259,6 @@
 				applied_coupon = coupon_check
 				break
 
-<<<<<<< HEAD
-		var/datum/supply_order/order = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon, charge_on_purchase = TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: var/datum/supply_order/order = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon)
-=======
 		var/datum/supply_order/order = new(
 			pack = pack ,
 			orderer = name,
@@ -269,9 +266,9 @@
 			orderer_ckey = ckey,
 			reason = reason,
 			paying_account = account,
-			coupon = applied_coupon
+			coupon = applied_coupon,
+			charge_on_purchase = TRUE, // SKYRAT EDIT ADDITION
 		)
->>>>>>> e39276b869f (GMM UI & Cargo budget handling tweaks (#79145))
 		working_list += order
 
 	if(self_paid)
