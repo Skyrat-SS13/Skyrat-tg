@@ -78,7 +78,11 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10
 	liked_foodtypes = MEAT
-	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.8,aresample=%SAMPLE_RATE%,atempo=1/0.8,aformat=channel_layouts=mono [p0]; [out2] asetrate=%SAMPLE_RATE%*1.2,aresample=%SAMPLE_RATE%,atempo=1/1.2,aformat=channel_layouts=mono[p2]; [p0][0][p2] amix=inputs=3"}
+
+/obj/item/organ/internal/tongue/xeno_hybrid/Initialize(mapload)
+	. = ..()
+	var/obj/item/organ/internal/tongue/alien/alien_tongue_type = /obj/item/organ/internal/tongue/alien
+	voice_filter = initial(alien_tongue_type.voice_filter)
 
 /obj/item/organ/internal/tongue/skrell
 	name = "skrell tongue"
