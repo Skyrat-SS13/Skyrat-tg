@@ -206,7 +206,7 @@
 /area/ruin/syndicate_lava_base/medbay)
 "bT" = (
 /obj/machinery/door/airlock/virology/glass{
-	name = "Operations Director's Quarters"
+	name = "Deck Officer's Quarters"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1049,7 +1049,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external/glass{
-	name = "External Access"
+	name = "Hangar Access"
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/arrivals)
@@ -1665,6 +1665,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/arrivals)
+"pT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/engineering)
 "pZ" = (
 /obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
@@ -1832,7 +1837,8 @@
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/vault{
-	id_tag = "syndie_lavaland_vault"
+	id_tag = "syndie_lavaland_vault";
+	name = "Interdyne Vault"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
@@ -2260,7 +2266,8 @@
 "wr" = (
 /obj/structure/bed/dogbed,
 /mob/living/basic/pet/chinchilla/white{
-	dir = 4
+	dir = 4;
+	name = "Gizmo"
 	},
 /obj/machinery/camera/autoname/directional/east{
 	network = list("intd13")
@@ -4496,7 +4503,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external/glass{
-	name = "External Access"
+	name = "Hangar Access"
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -4619,11 +4626,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/dormitories)
-"Rl" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/engineering)
 "Rp" = (
 /obj/effect/turf_decal/siding/thinplating,
 /turf/open/floor/iron/white,
@@ -7314,10 +7316,10 @@ wu
 wu
 Ra
 kX
-Rl
+pT
 Wk
-Rl
-Rl
+pT
+pT
 oW
 nY
 Ai
