@@ -62,20 +62,10 @@
 /turf/open/floor/plating,
 /area/shuttle/interdyne_cargo)
 "v" = (
-/obj/machinery/turretid{
-	ailock = 1;
-	control_area = "/area/shuttle/interdyne_cargo";
-	dir = 1;
-	icon_state = "control_kill";
-	lethal = 1;
-	name = "Shuttle turret controls";
-	pixel_y = 30;
-	req_access = list("syndicate")
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4
 	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured_large,
+/turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/interdyne_cargo)
 "w" = (
 /obj/machinery/power/shuttle_engine/heater{
@@ -181,10 +171,20 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/interdyne_cargo)
 "R" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	dir = 4
+/obj/machinery/turretid{
+	ailock = 1;
+	control_area = "/area/shuttle/interdyne_cargo";
+	dir = 1;
+	icon_state = "control_kill";
+	lethal = 1;
+	name = "Shuttle turret controls";
+	pixel_y = 30;
+	req_access = list("syndicate")
 	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
 "V" = (
 /obj/effect/spawner/structure/window/survival_pod,
@@ -261,7 +261,7 @@ y
 (5,1,1) = {"
 d
 Z
-v
+R
 Y
 Y
 z
@@ -274,7 +274,7 @@ N
 G
 g
 g
-R
+v
 g
 g
 G
