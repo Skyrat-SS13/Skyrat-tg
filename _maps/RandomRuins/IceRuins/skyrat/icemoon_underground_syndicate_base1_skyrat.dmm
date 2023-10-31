@@ -47,7 +47,9 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
-/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne,
+/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne{
+	onstation = 0
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "ao" = (
@@ -3829,21 +3831,7 @@
 /area/ruin/syndicate_lava_base/engineering)
 "Ij" = (
 /obj/machinery/light/directional/west,
-/obj/structure/closet/secure_closet{
-	icon_state = "qm";
-	name = "deck offficer's locker";
-	req_access = list("syndicate_leader")
-	},
-/obj/item/clothing/neck/cloak/qm/syndie,
-/obj/item/clothing/under/rank/cargo/qm/skyrat/syndie,
-/obj/item/circuitboard/computer/advanced_camera,
-/obj/item/megaphone/cargo,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/item/gun/ballistic/automatic/pistol,
+/obj/structure/closet/secure_closet/interdynefob/deckofficer_locker,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "Im" = (
@@ -4912,7 +4900,9 @@
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 2
 	},
-/obj/machinery/vending/assist,
+/obj/machinery/vending/assist{
+	onstation = 0
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "SG" = (
