@@ -259,7 +259,19 @@
 				applied_coupon = coupon_check
 				break
 
+<<<<<<< HEAD
 		var/datum/supply_order/order = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon, charge_on_purchase = TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: var/datum/supply_order/order = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon)
+=======
+		var/datum/supply_order/order = new(
+			pack = pack ,
+			orderer = name,
+			orderer_rank = rank,
+			orderer_ckey = ckey,
+			reason = reason,
+			paying_account = account,
+			coupon = applied_coupon
+		)
+>>>>>>> e39276b869f (GMM UI & Cargo budget handling tweaks (#79145))
 		working_list += order
 
 	if(self_paid)
@@ -280,13 +292,14 @@
 			continue
 		if(order.department_destination)
 			say("Only the department that ordered this item may cancel it.")
-			return
+			return FALSE
 		if(order.applied_coupon)
 			say("Coupon refunded.")
 			order.applied_coupon.forceMove(get_turf(src))
 		SSshuttle.shopping_list -= order
-		. = TRUE
-		break
+		qdel(order)
+		return TRUE
+	return FALSE
 /**
  * maps the ordename displayed on the ui to its supply pack id
  * * order_name - the name of the order
