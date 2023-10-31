@@ -731,15 +731,21 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "hs" = (
-/obj/machinery/xenoarch/scanner,
-/obj/effect/turf_decal/tile/dark_green/half{
-	dir = 8
-	},
-/obj/structure/table/reinforced/rglass,
 /obj/machinery/camera/autoname/directional/west{
 	network = list("intd13")
 	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/structure/bedsheetbin,
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/tile/dark_green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_green{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/testlab)
 "hy" = (
 /obj/machinery/computer/security/hos{
@@ -880,13 +886,20 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "iq" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
-/obj/machinery/xenoarch/digger,
-/obj/effect/turf_decal/tile/dark_green/half{
+/obj/machinery/light_switch/directional/west,
+/obj/machinery/vending/barbervend{
+	onstation = 0
+	},
+/obj/effect/turf_decal/tile/dark_green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_green{
 	dir = 8
 	},
-/obj/structure/table/reinforced/rglass,
-/obj/machinery/light_switch/directional/west,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/testlab)
 "is" = (
 /obj/effect/turf_decal/tile/dark_green/diagonal_centre,
@@ -1384,7 +1397,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne,
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "mW" = (
@@ -2681,13 +2694,18 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/arrivals)
 "Aj" = (
-/obj/machinery/xenoarch/researcher,
-/obj/effect/turf_decal/tile/dark_green/half{
+/obj/machinery/light/cold/directional/west,
+/obj/machinery/washing_machine,
+/obj/effect/turf_decal/tile/dark_green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_green{
 	dir = 8
 	},
-/obj/structure/table/reinforced/rglass,
-/obj/machinery/light/cold/directional/west,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 5
+	},
+/turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/testlab)
 "Am" = (
 /obj/structure/frame/machine{
@@ -2954,6 +2972,12 @@
 /obj/item/crowbar,
 /obj/item/flashlight,
 /obj/item/crowbar,
+/obj/item/radio{
+	desc = "An old handheld radio. You could use it, if you really wanted to.";
+	icon_state = "radio";
+	name = "old radio";
+	pixel_y = 7
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/dormitories)
 "CG" = (
@@ -3023,13 +3047,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/structure/table,
-/obj/item/radio{
-	desc = "An old handheld radio. You could use it, if you really wanted to.";
-	icon_state = "radio";
-	name = "old radio";
-	pixel_y = 7
-	},
+/obj/machinery/vending/wardrobe/syndie_wardrobe/interdyne,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "Dl" = (
@@ -3319,15 +3337,6 @@
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
 	},
-/area/ruin/syndicate_lava_base/main)
-"FH" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 8
-	},
-/obj/machinery/vending/barbervend{
-	onstation = 0
-	},
-/turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "FK" = (
 /obj/effect/turf_decal/trimline/dark_green/warning{
@@ -4118,13 +4127,23 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "MM" = (
-/obj/machinery/xenoarch/recoverer,
-/obj/effect/turf_decal/tile/dark_green/half{
+/obj/machinery/firealarm/directional/west,
+/obj/structure/table/reinforced/rglass,
+/obj/item/hairbrush/tactical,
+/obj/item/fur_dyer,
+/obj/item/tattoo_kit{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/dark_green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_green{
 	dir = 8
 	},
-/obj/structure/table/reinforced/rglass,
-/obj/machinery/firealarm/directional/west,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/testlab)
 "MP" = (
 /obj/structure/chair/office/light{
@@ -4830,12 +4849,6 @@
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/main)
-"Sy" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/vending/dorms,
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/lounge)
 "SA" = (
 /obj/machinery/chem_dispenser/fullupgrade,
 /obj/effect/turf_decal/tile/dark_green,
@@ -5999,7 +6012,7 @@ sM
 SF
 zV
 xR
-FH
+xR
 mV
 sM
 hR
@@ -7324,7 +7337,7 @@ qB
 Pu
 rh
 eP
-Sy
+id
 id
 IU
 EH
