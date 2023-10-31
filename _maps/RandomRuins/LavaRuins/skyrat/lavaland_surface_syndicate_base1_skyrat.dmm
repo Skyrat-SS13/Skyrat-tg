@@ -616,6 +616,9 @@
 /obj/structure/chair/stool/bar,
 /obj/effect/turf_decal/siding/thinplating,
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "gr" = (
@@ -1335,11 +1338,11 @@
 /obj/effect/turf_decal/siding/thinplating/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/thinplating,
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "mK" = (
@@ -1519,9 +1522,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "oJ" = (
@@ -1543,13 +1543,13 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "pb" = (
@@ -2081,13 +2081,6 @@
 	},
 /turf/open/floor/iron/white/small,
 /area/ruin/syndicate_lava_base/cargo)
-"ur" = (
-/obj/effect/turf_decal/siding/thinplating,
-/obj/machinery/camera/autoname/directional/east{
-	network = list("intd13")
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/cargo)
 "us" = (
 /obj/structure/table/optable,
 /turf/open/floor/iron/dark/textured_large,
@@ -2395,7 +2388,12 @@
 /area/ruin/syndicate_lava_base/testlab)
 "xB" = (
 /obj/effect/turf_decal/siding/thinplating,
-/turf/closed/wall/mineral/titanium/nodiagonal,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/camera/autoname/directional/east{
+	network = list("intd13")
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/lounge)
 "xC" = (
 /obj/effect/turf_decal/tile/dark_green,
@@ -2453,9 +2451,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/railing{
 	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 5
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/stairs,
@@ -3909,12 +3904,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
-"KL" = (
-/obj/machinery/vending/boozeomat/syndicate_access{
-	onstation = 0
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/ruin/syndicate_lava_base/lounge)
 "KN" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -4606,9 +4595,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4699,9 +4685,6 @@
 "Rz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4743,9 +4726,11 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/lounge)
 "RX" = (
-/obj/machinery/smartfridge/food,
 /obj/effect/turf_decal/siding/dark_green{
 	dir = 1
+	},
+/obj/machinery/vending/boozeomat/syndicate_access{
+	onstation = 0
 	},
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
@@ -5569,9 +5554,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable,
 /turf/open/floor/iron/kitchen{
 	dir = 4
@@ -5638,13 +5620,10 @@
 /area/ruin/syndicate_lava_base/cargo)
 "Zd" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
-/obj/machinery/disposal/bin,
 /obj/effect/turf_decal/siding/dark_green{
 	dir = 8
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
+/obj/machinery/smartfridge/food,
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "Ze" = (
@@ -7069,7 +7048,7 @@ BQ
 RX
 GZ
 En
-KL
+EH
 EH
 EZ
 fm
@@ -7187,7 +7166,7 @@ zB
 cR
 wT
 TA
-ur
+IA
 mD
 Cd
 uN
