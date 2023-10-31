@@ -32,6 +32,16 @@
 /area/ruin/syndicate_lava_base/virology)
 "aE" = (
 /obj/structure/table/survival_pod,
+/obj/machinery/turretid{
+	ailock = 1;
+	control_area = "/area/ruin/syndicate_lava_base/main";
+	dir = 1;
+	icon_state = "control_kill";
+	lethal = 1;
+	name = "Base turret controls";
+	pixel_y = 30;
+	req_access = list("syndicate")
+	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/medbay)
 "aG" = (
@@ -838,6 +848,10 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /turf/open/floor/iron/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
+"ib" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "id" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2263,6 +2277,12 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/lounge)
+"wm" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "wr" = (
 /obj/structure/bed/dogbed,
 /mob/living/basic/pet/chinchilla/white{
@@ -5048,6 +5068,12 @@
 /obj/structure/frame/machine/secured,
 /turf/open/floor/iron/dark/small,
 /area/ruin/syndicate_lava_base/medbay)
+"UR" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "UU" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
@@ -6864,7 +6890,7 @@ ja
 fm
 fm
 fm
-Ih
+UR
 Ih
 Ih
 Ih
@@ -6884,7 +6910,7 @@ Ih
 Ih
 Ih
 Ih
-Ih
+ib
 fm
 fm
 fm
@@ -6987,7 +7013,7 @@ fm
 fm
 fm
 fm
-Ih
+UR
 Ih
 Ih
 Ih
@@ -7007,7 +7033,7 @@ EH
 EH
 EH
 EH
-EH
+ib
 fm
 fm
 fm
@@ -7694,7 +7720,7 @@ fm
 fm
 fm
 fm
-Bf
+wm
 fm
 fm
 fm

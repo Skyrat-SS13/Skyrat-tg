@@ -22,6 +22,10 @@
 /obj/item/assembly/igniter,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/red/directional/west,
+/obj/machinery/button/door/directional/west{
+	req_access = list("syndicate");
+	id = "interdyneshuttle"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
 "g" = (
@@ -33,8 +37,14 @@
 /area/shuttle/interdyne_cargo)
 "i" = (
 /obj/machinery/light/small/red/directional/south,
-/obj/structure/closet/crate/medical,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
+	},
+/obj/item/circuitboard/machine/ore_silo,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
 "k" = (
 /obj/structure/fans/tiny/forcefield{
@@ -46,11 +56,24 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "interdyneshuttle"
+	},
 /turf/open/floor/plating,
 /area/shuttle/interdyne_cargo)
 "v" = (
+/obj/machinery/turretid{
+	ailock = 1;
+	control_area = "/area/shuttle/interdyne_cargo";
+	dir = 1;
+	icon_state = "control_kill";
+	lethal = 1;
+	name = "Shuttle turret controls";
+	pixel_y = 30;
+	req_access = list("syndicate")
+	},
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
@@ -110,7 +133,8 @@
 /area/shuttle/interdyne_cargo)
 "H" = (
 /obj/structure/closet/crate/eva,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
 "L" = (
 /obj/effect/turf_decal/stripes/line{
@@ -137,16 +161,19 @@
 /area/shuttle/interdyne_cargo)
 "M" = (
 /obj/machinery/light/small/red/directional/north,
-/obj/machinery/computer/crew,
+/obj/machinery/computer/shuttle/interdyne_cargo{
+	icon_screen = "syndishuttle";
+	icon_keyboard = "syndie_key";
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
 "N" = (
 /turf/template_noop,
 /area/template_noop)
 "O" = (
-/obj/machinery/computer/shuttle/interdyne_cargo{
-	icon_screen = "syndishuttle";
-	icon_keyboard = "syndie_key"
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/interdyne_cargo)
@@ -154,14 +181,10 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/interdyne_cargo)
 "R" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4
 	},
-/obj/item/circuitboard/machine/ore_silo,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron/dark/textured_large,
+/turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/interdyne_cargo)
 "V" = (
 /obj/effect/spawner/structure/window/survival_pod,
@@ -216,7 +239,7 @@ Q
 (3,1,1) = {"
 y
 O
-v
+h
 z
 z
 z
@@ -227,7 +250,7 @@ y
 (4,1,1) = {"
 y
 M
-v
+h
 z
 z
 z
@@ -238,11 +261,11 @@ y
 (5,1,1) = {"
 d
 Z
-h
-h
-R
+v
 Y
 Y
+z
+z
 a
 d
 "}
@@ -251,7 +274,7 @@ N
 G
 g
 g
-g
+R
 g
 g
 G
