@@ -26,15 +26,8 @@
 	///Are our wings open or closed?
 	var/wings_open = FALSE
 
-<<<<<<< HEAD
-// SKYRAT EDIT START - No free fall softening for everyone
-/obj/item/organ/external/wings/functional/can_soften_fall()
-	return TRUE
-// SKYRAT EDIT END
-=======
 	// grind_results = list(/datum/reagent/flightpotion = 5)
 	food_reagents = list(/datum/reagent/flightpotion = 5)
->>>>>>> 5d3fe6e0cb1 (Moves Flightpotion wings from species datum to chest bodypart, other flightpotion tweaks (#79360))
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
