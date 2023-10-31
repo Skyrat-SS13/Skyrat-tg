@@ -294,6 +294,7 @@
 	icon_state = "ip_armorlabcoat"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/labcoat.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat.dmi'
+	armor_type = /datum/armor/wintercoat_syndicate
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/deckofficer
