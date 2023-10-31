@@ -46,8 +46,12 @@
 	var/list/current_souls = get_current_souls()
 
 	if(current_souls) // If we have souls inside of here, they should be transferred to the new object
-		for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
-			var/datum/soulcatcher_room/current_room = soul.current_room.resolve()
+		for(var/mob/living/soul as anything in current_souls)
+			var/datum/component/soulcatcher_user/user_component = soul.GetComponent(/datum/component/soulcatcher_user)
+			if(!user_component)
+				continue
+
+			var/datum/soulcatcher_room/current_room = user_component.current_room.resolve()
 			if(istype(current_room))
 				current_room.transfer_soul(soul, target_room)
 
@@ -101,8 +105,12 @@
 	var/datum/soulcatcher_room/target_room = new_soulcatcher.soulcatcher_rooms[1]
 	var/list/current_souls = linked_soulcatcher.get_current_souls()
 	if(current_souls)
-		for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
-			var/datum/soulcatcher_room/current_room = soul.current_room.resolve()
+		for(var/mob/living/soul as anything in current_souls)
+			var/datum/component/soulcatcher_user/user_component = soul.GetComponent(/datum/component/soulcatcher_user)
+			if(!user_component)
+				continue
+
+			var/datum/soulcatcher_room/current_room = user_component.current_room.resolve()
 			if(istype(current_room))
 				current_room.transfer_soul(soul, target_room)
 			current_room.transfer_soul(soul, target_room)

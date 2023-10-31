@@ -308,7 +308,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * message_sender - The person that is sending the message. This is not required.
  * * emote - Is the message sent an emote or not?
  */
-/datum/soulcatcher_room/proc/send_message(message_to_send, message_sender, emote = FALSE)
+/datum/soulcatcher_room/proc/send_message(message_to_send, mob/living/message_sender, emote = FALSE)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
@@ -319,8 +319,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(tag)
 		soulcatcher_icon = tag
 
-	var/mob/living/soulcatcher_soul/soul_sender = message_sender
-	if(istype(soul_sender) && soul_sender.communicating_externally)
+	var/datum/component/soulcatcher_user/user_component
+	if(istype(message_sender))
+		user_component = message_sender.GetComponent(/datum/component/soulcatcher_user)
+
+	if(istype(user_component) && user_component.communicating_externally)
 		var/master_resolved = master_soulcatcher.resolve()
 		if(!master_resolved)
 			return FALSE
@@ -334,10 +337,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		if(emote)
 			parent_object.manual_emote(html_decode(message_to_send))
-			log_emote("[soul_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+			log_emote("[message_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
 		else
 			parent_object.say(html_decode(message_to_send))
-			log_say("[soul_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
+			log_say("[message_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
 
 		parent_object.name = temp_name
 		return TRUE

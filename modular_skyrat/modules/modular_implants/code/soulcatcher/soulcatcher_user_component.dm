@@ -24,6 +24,12 @@
 	var/able_to_speak = TRUE
 	/// Is the soul able to change their own name?
 	var/able_to_rename = TRUE
+	/// Is the soul able to speak as the object it is inside?
+	var/able_to_speak_as_container = TRUE
+	/// Is the soul able to emote as the object it is inside?
+	var/able_to_emote_as_container = TRUE
+	/// Are emote's and Say's done through the container the mob is in?
+	var/communicating_externally = FALSE
 
 	/// Is the action to control the HUD given to the mob?
 	var/hud_action_given = TRUE

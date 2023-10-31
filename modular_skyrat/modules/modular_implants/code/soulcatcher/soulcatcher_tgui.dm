@@ -210,9 +210,9 @@
 
 		if("toggle_soul_external_communication")
 			if(params["communication_type"] == "emote")
-				target_soul.able_to_emote_as_container = !target_soul.able_to_emote_as_container
+				user_component.able_to_emote_as_container = !user_component.able_to_emote_as_container
 			else
-				target_soul.able_to_speak_as_container = !target_soul.able_to_speak_as_container
+				user_component.able_to_speak_as_container = !user_component.able_to_speak_as_container
 
 			return TRUE
 
@@ -301,6 +301,9 @@
 	)
 
 	var/datum/soulcatcher_room/current_soulcatcher_room = current_room.resolve()
+	if(!current_soulcatcher_room)
+		return FALSE
+
 	data["current_room"] = list(
 		"name" = html_decode(current_soulcatcher_room.name),
 		"description" = html_decode(current_soulcatcher_room.room_description),
@@ -309,10 +312,10 @@
 		"owner" = current_soulcatcher_room.outside_voice,
 		)
 
-	var/datum/component/soulcatcher/master_soulcatcher = current_room.master_soulcatcher.resolve()
+	var/datum/component/soulcatcher/master_soulcatcher = current_soulcatcher_room.master_soulcatcher.resolve()
 	data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
-	for(var/mob/living/soulcatcher_soul/soul in current_room.current_souls)
+	for(var/mob/living/soulcatcher_soul/soul in current_soulcatcher_room.current_souls)
 		if(soul == user_soul)
 			continue
 
@@ -352,5 +355,5 @@
 			return TRUE
 
 		if("toggle_external_communication")
-			user_soul.communicating_externally = !user_soul.communicating_externally
+			communicating_externally = !communicating_externally
 			return TRUE
