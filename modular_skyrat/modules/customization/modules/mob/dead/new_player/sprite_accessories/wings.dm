@@ -213,6 +213,11 @@
 	name = "Harpy (Top - Bat)"
 	icon_state = "harpybat_top"
 
+/datum/sprite_accessory/wings/mammal/pterodactyl
+	name = "Pterodactyl"
+	icon_state = "pterodactyl"
+	color_src = USE_MATRIXED_COLORS
+
 /datum/sprite_accessory/wings/mammal/insect
 	name = "Insectoid"
 	icon_state = "insect"
