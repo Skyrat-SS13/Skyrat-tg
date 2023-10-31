@@ -5,11 +5,7 @@
 	sexes = FALSE
 	meat = /obj/item/food/meat/slab/human/mutant/skeleton
 	inherent_traits = list(
-<<<<<<< HEAD
 		TRAIT_NO_UNDERWEAR,
-		TRAIT_CAN_USE_FLIGHT_POTION,
-=======
->>>>>>> 5d3fe6e0cb1 (Moves Flightpotion wings from species datum to chest bodypart, other flightpotion tweaks (#79360))
 		TRAIT_EASYDISMEMBER,
 		TRAIT_FAKEDEATH,
 		TRAIT_GENELESS,
