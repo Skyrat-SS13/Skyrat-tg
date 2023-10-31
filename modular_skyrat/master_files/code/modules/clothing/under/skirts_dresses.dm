@@ -95,20 +95,22 @@
 	greyscale_colors = "#5f534a"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/skyrat/medium_skirt
+/obj/item/clothing/under/dress/skirt/skyrat/medium
 	name = "medium skirt"
-	desc = "Appealing medium-length skirt."
+	desc = "An appealing medium-length skirt. Top not included."
 	icon_state = "medium_skirt"
+	body_parts_covered = GROIN
 	greyscale_config = /datum/greyscale_config/medium_skirt
 	greyscale_config_worn = /datum/greyscale_config/medium_skirt/worn
 	greyscale_colors = "#3a3c45"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/skyrat/long_skirt
+/obj/item/clothing/under/dress/skirt/skyrat/long
 	name = "long skirt"
-	desc = "Appealing long skirt."
+	desc = "An appealing long skirt. At this point does it qualify as a dress?"
 	icon_state = "long_skirt"
+	body_parts_covered = GROIN|LEGS
 	greyscale_config = /datum/greyscale_config/long_skirt
 	greyscale_config_worn = /datum/greyscale_config/long_skirt/worn
 	greyscale_colors = "#3a3c45"
