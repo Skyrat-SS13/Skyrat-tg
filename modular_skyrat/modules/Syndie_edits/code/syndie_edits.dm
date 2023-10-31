@@ -264,7 +264,7 @@
 	icon_state = "ip_biosuit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	slowdown = 0.2
+	slowdown = 0.3
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/hos/deckofficer
