@@ -100,7 +100,7 @@
 	var/list/current_souls = linked_soulcatcher.get_current_souls()
 	if(current_souls)
 		for(var/mob/living/soul as anything in current_souls)
-			transfer_soul(soul, target_room)
+			linked_soulcatcher.transfer_soul(soul, target_room)
 
 	if(destroy_on_use)
 		qdel(src)
