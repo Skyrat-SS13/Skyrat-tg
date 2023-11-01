@@ -10,19 +10,20 @@ Adds the Diabetes quirk and accompanying Hypoglycemia disease.
 
 ### TG Proc Changes:
 
-- N/A
+- None
 
 ### Defines:
 
-- N/A
+- `HYPOGLYCEMIA_STAGE_DELAY` The number of seconds to wait between stages. Default is 360 seconds (6 minutes).
 
 ### Master file additions
 
-- N/A
+- None
 
 ### Included files that are not contained in this module:
 
-- N/A
+- `modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\reagent_containers\pill.dm`
+- `modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\reagent_containers\pill_bottles.dm`
 
 ### Credits:
 
