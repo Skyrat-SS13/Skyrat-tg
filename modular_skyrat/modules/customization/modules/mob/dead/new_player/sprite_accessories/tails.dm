@@ -262,6 +262,10 @@
 	name = "Plug"
 	icon_state = "plugtail"
 
+/datum/sprite_accessory/tails/mammal/wagging/plug/scorpion
+	name = "Scorpion Plug"
+	icon_state = "scorptail"
+
 /datum/sprite_accessory/tails/mammal/wagging/rabbit
 	name = "Rabbit"
 	icon_state = "rabbit"
