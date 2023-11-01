@@ -15,6 +15,7 @@
 	limb_id = SPECIES_MOTH
 	is_dimorphic = TRUE
 	should_draw_greyscale = FALSE
+	wing_types = list(/obj/item/organ/external/wings/functional/moth/megamoth, /obj/item/organ/external/wings/functional/moth/mothra)
 
 /obj/item/bodypart/arm/left/moth
 	icon = 'icons/mob/human/species/moth/bodyparts.dmi'
