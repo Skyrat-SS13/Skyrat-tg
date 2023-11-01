@@ -1,0 +1,114 @@
+2023-11-01:
+  Data_:
+  - bugfix: The detective's curtains can be closed again in Birdshot.
+  LT3:
+  - code_imp: Changing security levels will only trigger the nightshift subsystem
+      if lighting changes are required
+  Melbert:
+  - qol: Clicking on an adjacent dense object (or mob) with Spray Cleaner will now
+      spritz it rather than doing nothing. This means you can use Spray Cleaner to
+      clean bloodied windows, as the janitor gods intended. It also means you can
+      fill a spray bottle with Napalm, I guess.
+  - refactor: Any cleaning object can now clean a microwave.
+  NotDhu:
+  - bugfix: Blueshift's white ship docking port should now work correctly.
+  OrionTheFox:
+  - bugfix: fixed the Medium/Long Skirts incorrectly being Toggleable, and falsely
+      covering the Chest
+  SkyratBot:
+  - bugfix: Obsessed's moodlets (Both positive and negative) go away when the trauma
+      is cured or the antag status is removed.
+  - bugfix: The Syndicate Revolver now has a Syndicate Firing Pin on the Nuke Ops
+      uplink.
+  - bugfix: Bluespace launchpads no longer work on shuttles
+  - rscadd: Added Abnormal Eggs
+  - rscadd: Added Two new spiders
+  - rscdel: Some Tarantula abilities
+  - balance: Spiders speed are now connected to health
+  - balance: Spiders now take more brute damage
+  - balance: All egg laying now has a cooldown
+  - rscdel: Removed extra consoles from birdshot's bitrunners
+  - bugfix: Fixes tesla zaps being weird.
+  - admin: Logs explosions from explosive zaps.
+  - rscadd: The Ethereal Vintner's Union has been "convinced" to trade their signature
+      Lanternfruit with Nanotrasen!
+  - image: Sprites for the aforementioned fruit.
+  - bugfix: Cargo will remove/cancel orders from its cart if that order exceeds the
+      available budget (both private or cargo) and the player cannot cancel this order
+      manually. All order costs are rounded up to integer values
+  - bugfix: Galactic material market will deny appending stacks to your existing order
+      if it exceeds the available (private or cargo depending on the mode of ordering)
+      budget & if it exceeds the available materials on the market. Galactic material
+      market UI is overall improved.
+  - rscdel: Remove duplicate light in battlecruiser starfury
+  - refactor: Pirate NPCs now use the basic mob framework. They'll be a little smarter
+      in combat, and if you're wearing your ID they'll siphon your bank account with
+      every melee attack! Beware! Please report any bugs.
+  - balance: Operatives can once again read about the basics of CQC at a reasonable
+      price of 14 TC.
+  - qol: All Syndicate MODsuits come with the potent ability to wear hats on their
+      helmets FOR FREE. No longer does any operative need be shamed by their bald
+      helmet's unhatted state when they spot the captain, in their MODsuit, wearing
+      a hat on their helmet. The embarrassment has resulted in more than a few operatives
+      prematurely detonating their implants! BUT NO LONGER! FASHION IS YOURS!
+  - qol: There is now a Core Gear Box, containing a few essential pieces of gear for
+      success as an operative. This is right at the top of the uplink, you can't miss
+      it! Great for those operatives just starting out, or operatives who need all
+      their baseline equipment NOW.
+  - refactor: Traders are basic mobs now. Please alert us of any strange behaviours!
+  - code_imp: If there is only one option, radial lists will autopick it. This behaviour
+      can be turned off via a new argument.
+  - bugfix: The fire visual on mobs should no longer persist after the fire has been
+      extinguished.
+  - bugfix: Plumbing IV Drip has full control over its injection/draining rate. No
+      longer displays the message controlled by plumbing system
+  - bugfix: Plumbing IV Drip can be plunged by plunger again
+  - bugfix: chameleon projector now can copy icon for storage items(backpacks, box,
+      holsters etc) using right-click on it.
+  - qol: To avoid poor magazine discipline, most combat-ready personnel have instructed
+      _not_ to put magazines into the gun loops on their armor vests.
+  - rscadd: ctrlclicking the knock path eldritch id card will toggle whether it creates
+      inverted portals or not
+  - balance: Malf Ability "Robotics Factory" can now be purchased multiple times.
+  - code_imp: mod reskins now properly shows their icon when skins loaded from different
+      .dmi
+  - rscdel: Remove duplicate pipe on pirate ship
+  - rscadd: living floor, living flesh, and other stuff for the bioresearch outpost
+      ruin
+  - rscadd: bioresearch outpost ruin
+  - bugfix: you may not defeat indestructible grilles and windows with mere tools
+  - refactor: Wraith constructs have been converted to the basic mob framework. NPC
+      wraiths are now extra cruel and will attack the lowest-health mob they can see
+      at any given time. Make sure this isn't you! Please report any bugs.
+  - bugfix: Artificers and juggernauts no longer attack significantly more slowly
+      than intended.
+  - rscadd: Added a new ruin to Ice Box Station, Lizard Gas Station
+  - rscdel: Remove duplicate power computer on oldstation ruin
+  - bugfix: Paraplegics can now enter netpods.
+  - bugfix: Fixes an exploit caused by teleporting out of a netpod.
+  - bugfix: Outfit selection at netpods shouldn't give armor bonuses any longer.
+  - refactor: The wings you get from a flight potion (if any) are now determined by
+      your chest bodypart, not your species.
+  - qol: Functional wings can now be ground up to get the flight potion back, if you
+      want to get a different wing variant.
+  - rscdel: Remove duplicate space heater from snowcabin ruin
+  - bugfix: Bitrunners can no longer get mass-mindswapped out of their avatar when
+      the wizard does the event. Something about machinery and magic not going well
+      together.
+  - bugfix: signals in circuits now actually function
+  - bugfix: Lethal ballistic pellet-based shotgun shells no longer instantly delete.
+  - bugfix: Practice laser carbines can no longer be used to rapidly fire regular
+      laser guns.
+  - bugfix: Modular shield generator modules no longer lose linkage when riding a
+      shuttle
+  - bugfix: Modular shield generators now gracefully turn off when being moved by
+      a shuttle rather than leaving their projections behind, the generator's description
+      was updated to advertise this behavior.
+  honkpocket:
+  - code_imp: Changes the syndicate neck gaiter to not have sec-hailer sfx and TTS
+      filtering
+  - code_imp: The xeno hybrid tongue now actually looks and sounds like the alien
+      tongue
+  - bugfix: Removes the dixel from the new medium and long skirts
+  sqnztb:
+  - bugfix: ships can now properly dock at Meta's whiteship dock again.
