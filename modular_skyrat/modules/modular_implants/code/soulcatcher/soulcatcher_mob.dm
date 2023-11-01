@@ -130,20 +130,3 @@
 		return FALSE
 
 	parent_soul.leave_soulcatcher()
-
-/datum/action/innate/soulcatcher_user
-	name = "Soulcatcher"
-	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	button_icon_state = "soulcatcher"
-	/// What soulcatcher user component are we bringing up the menu for?
-	var/datum/weakref/soulcatcher_user_component
-
-/datum/action/innate/soulcatcher_user/Activate()
-	. = ..()
-	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
-	if(!user_component)
-		return FALSE
-
-	user_component.ui_interact(owner)
