@@ -106,6 +106,17 @@
 
 	return TRUE
 
+/// Is the soulcatcher soul able to communicate? Returns `TRUE` if they can, otherwise returns `FALSE`
+/datum/component/soulcatcher_user/proc/can_communicate(emote = FALSE)
+	if(communicating_externally)
+		if((emote && !able_to_emote_as_container) || (!emote && !able_to_speak_as_container))
+			return FALSE
+
+	if((emote && !able_to_emote) || (!emote && able_to_speak))
+		return FALSE
+
+	return TRUE
+
 /datum/component/soulcatcher_user/Destroy(force, silent)
 	if(!outside_hearing)
 		toggle_external_hearing()

@@ -37,7 +37,7 @@
 	if(!message || message == "")
 		return
 
-	if((!able_to_speak && !communicating_externally) || (!able_to_speak_as_container && communicating_externally))
+	if((!able_to_communicate())
 		to_chat(src, span_warning("You are unable to speak!"))
 		return FALSE
 
@@ -53,7 +53,7 @@
 	if(!message)
 		return FALSE
 
-	if((!able_to_emote && !communicating_externally) || (!able_to_emote_as_container && communicating_externally))
+	if((!able_to_communicate(TRUE))
 		to_chat(src, span_warning("You are unable to emote!"))
 		return FALSE
 
