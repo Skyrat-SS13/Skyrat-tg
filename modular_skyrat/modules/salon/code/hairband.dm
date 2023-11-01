@@ -18,7 +18,7 @@
 	. = ..()
 	if(picked_hairstyle)
 		. += span_notice("Wearing it will change your hairstyle to '[picked_hairstyle]'.")
-	. += span_notice("Use in-hand to select an alternative hairstyle.")
+	. += span_notice("Click [src] to pick a new hairstyle.")
 	. += span_notice("Alt-click [src] to fling it.")
 
 /obj/item/clothing/head/hairband/attack_self(mob/user)
@@ -35,8 +35,8 @@
 	if(!picked_hairstyle || (user.hairstyle == "Bald"))
 		return
 	user.visible_message(
-			span_notice(""),
-			span_notice(""),
+			span_notice("[user.name] ties up [user.p_their()] hair."),
+			span_notice("You tie up your hair!"),
 		)
 	actual_hairstyle = user.hairstyle
 	user.set_hairstyle(picked_hairstyle, update = TRUE)
@@ -48,8 +48,8 @@
 	if(!picked_hairstyle || !actual_hairstyle)
 		return
 	user.visible_message(
-			span_notice(""),
-			span_notice(""),
+			span_notice("[user.name] takes [src] out of [user.p_their()] hair."),
+			span_notice("You let down your hair!"),
 		)
 	user.set_hairstyle(actual_hairstyle, update = TRUE)
 	actual_hairstyle = null
@@ -58,10 +58,10 @@
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 		return
 	playsound(src, 'sound/weapons/gun/bow/bow_draw.ogg', 25, TRUE)
-	if(do_after(user, 1 SECONDS, src))
+	if(do_after(user, 1.5 SECONDS, src))
 		user.visible_message(
-			span_danger(""),
-			span_nicegreen(""),
+			span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),
+			span_notice("You try to flick [src]!"),
 		)
 		var/obj/projectile/hairband = new /obj/projectile/bullet/hairband(drop_location())
 		hairband.firer = user
@@ -79,11 +79,12 @@
 	icon_state = "hairband"
 	hitsound = 'sound/weapons/genhit.ogg'
 	damage = 5
-	sharpness = NONE
+	sharpness = NONE //no embedding pls
 	impact_effect_type = null
 	ricochet_chance = 0
 	range = 7
 	knockdown = 1 SECONDS
+	weak_against_armour = TRUE
 	var/drop_type = /obj/item/clothing/head/hairband
 
 /obj/projectile/bullet/hairband/Initialize(mapload)
