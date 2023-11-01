@@ -170,6 +170,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	qdel(src)
 
+/// Returns a list of all of the rooms that a soul can join/transfer into. `ghost_join` checks if the room is accessible to ghosts.
+/datum/component/soulcatcher/proc/get_open_rooms(ghost_join = FALSE)
+	var/list/datum/soulcatcher_room/room_list = list()
+	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
+		if((ghost_join && room.joinable) || !check_for_vacancy())
+			continue
+
+		room_list += room
+
+	return room_list
+
 /// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
 /datum/component/soulcatcher/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
 	if(!(target_soul in get_current_souls()) || !target_room)
@@ -412,8 +423,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	set category = "Ghost"
 
 	var/list/joinable_soulcatchers = list()
+	var/list/rooms_to_join = list()
+
 	for(var/datum/component/soulcatcher/soulcatcher in GLOB.soulcatchers)
 		if(!soulcatcher.ghost_joinable || !isobj(soulcatcher.parent) || !soulcatcher.check_for_vacancy())
+			continue
+
+		var/list/soulcatcher_rooms = soulcatcher.get_open_rooms(TRUE)
+		if(!length(soulcatcher_rooms))
 			continue
 
 		var/obj/item/soulcatcher_parent = soulcatcher.parent
@@ -421,8 +438,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 			soulcatcher.name = soulcatcher_parent.name
 
 		joinable_soulcatchers += soulcatcher
+		rooms_to_join += soulcatcher_rooms
 
-	if(!length(joinable_soulcatchers))
+	if(!length(joinable_soulcatchers) || !length(rooms_to_join))
 		to_chat(src, span_warning("No soulcatchers are joinable."))
 		return FALSE
 
@@ -430,24 +448,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
-	var/list/rooms_to_join = list()
-	for(var/datum/soulcatcher_room/room in soulcatcher_to_join.soulcatcher_rooms)
-		if(!room.joinable)
-			continue
-
-		rooms_to_join += room
-
-	var/datum/soulcatcher_room/room_to_join
-	if(length(rooms_to_join) < 1)
-		to_chat(src, span_warning("There no rooms that you can join."))
-		return FALSE
-
-	if(length(rooms_to_join) == 1)
-		room_to_join = rooms_to_join[1]
-
-	else
-		room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
-
+	var/datum/soulcatcher_room/room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
 	if(!room_to_join)
 		to_chat(src, span_warning("There no rooms that you can join."))
 		return FALSE

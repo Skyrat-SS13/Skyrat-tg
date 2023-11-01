@@ -157,18 +157,17 @@
 				if(soulcatcher_nifsoft && (parent != soulcatcher_nifsoft.parent_nif.resolve()))
 					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
-						available_rooms.Add(nifsoft_soulcatcher.soulcatcher_rooms)
+						available_rooms += nifsoft_soulcatcher.get_open_rooms()
 
-				for(var/obj/item/held_item in human_user.held_items)
+				for(var/obj/item/held_item in human_user.get_all_gear())
 					if(parent == held_item)
 						continue
 
 					var/datum/component/soulcatcher/soulcatcher_component = held_item.GetComponent(/datum/component/soulcatcher)
-					if(!soulcatcher_component || !soulcatcher_component.check_for_vacancy())
+					if(!soulcatcher_component)
 						continue
 
-					for(var/datum/soulcatcher_room/room in soulcatcher_component.soulcatcher_rooms)
-						available_rooms += room
+					available_rooms += soulcatcher_component.get_open_rooms()
 
 			var/datum/soulcatcher_room/transfer_room = tgui_input_list(usr, "Choose a room to transfer to", name, available_rooms)
 			if(!(transfer_room in available_rooms))
