@@ -170,6 +170,31 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	qdel(src)
 
+/// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
+/datum/component/soulcatcher/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
+	if(!(target_soul in get_current_souls()) || !target_room)
+		return FALSE
+
+	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
+	if(!soul_component)
+		return FALSE
+
+	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
+	if(target_master_soulcatcher != src)
+		target_soul.forceMove(target_master_soulcatcher.parent)
+
+	var/datum/soulcatcher_room/original_room = soul_component?.current_room.resolve()
+	if(original_room)
+		original_room.current_souls -= target_soul
+
+	soul_component.current_room = WEAKREF(target_room)
+	target_room.current_souls += target_soul
+
+	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
+	to_chat(target_soul, span_notice(target_room.room_description))
+
+	return TRUE
+
 /**
  * Soulcatcher Room
  *
@@ -275,28 +300,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	soul_to_remove.return_to_body()
 	qdel(soul_to_remove)
-
-	return TRUE
-
-/// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
-/datum/soulcatcher_room/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
-	if(!(target_soul in current_souls) || !target_room)
-		return FALSE
-
-	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
-	if(!soul_component)
-		return FALSE
-
-	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
-	if(target_master_soulcatcher != master_soulcatcher.resolve())
-		target_soul.forceMove(target_master_soulcatcher.parent)
-
-	soul_component.current_room = WEAKREF(target_room)
-	current_souls -= target_soul
-	target_room.current_souls += target_soul
-
-	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
-	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE
 

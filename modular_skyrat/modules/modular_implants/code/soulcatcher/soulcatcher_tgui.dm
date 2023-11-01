@@ -174,7 +174,7 @@
 			if(!(transfer_room in available_rooms))
 				return FALSE
 
-			target_room.transfer_soul(target_soul, transfer_room)
+			transfer_soul(target_soul, transfer_room)
 			return TRUE
 
 		if("change_room_color")
