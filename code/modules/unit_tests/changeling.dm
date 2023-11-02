@@ -6,7 +6,6 @@
 	var/icon/final_icon
 
 /datum/unit_test/transformation_sting/Run()
-	//return // SKYRAT EDIT ADDITION - Transformation sting is disabled, and so is this unit test.
 	var/mob/living/carbon/human/ling = setup_ling()
 	var/mob/living/carbon/human/victim = setup_victim()
 	var/datum/antagonist/changeling/ling_datum = ling.mind.has_antag_datum(/datum/antagonist/changeling)
