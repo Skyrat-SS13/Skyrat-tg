@@ -58,7 +58,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/tea
 	name = "tiny tea powder bottle"
-	desc = "A maritime ration sized bottle of tea powder, containing enough to make a morning's tea."
+	desc = "A maritime ration-sized bottle of tea powder, containing enough to make a morning's tea."
 	list_reagents = list(/datum/reagent/toxin/teapowder = 10)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/honey
