@@ -18,7 +18,7 @@
 
 /obj/item/storage/box/spaceman_ration/plants
 	name = "produce ration container"
-	desc = "Contains your alotted ration of produce, which in this case should be peas and a potato."
+	desc = "Contains your allotted ration of produce, which in this case should be peas and a potato."
 	box_storage_slots = 2
 
 /obj/item/storage/box/spaceman_ration/plants/PopulateContents()
@@ -28,7 +28,7 @@
 // Alternate diet, themed around martian food a bit more
 
 /obj/item/storage/box/spaceman_ration/plants/alternate
-	desc = "Contains your alotted ration of produce, which in this case should be cabbage and an onion."
+	desc = "Contains your allotted ration of produce, which in this case should be cabbage and an onion."
 	icon_state = "plants_alt"
 
 /obj/item/storage/box/spaceman_ration/plants/alternate/PopulateContents()
@@ -38,7 +38,7 @@
 // For the moths amogus
 
 /obj/item/storage/box/spaceman_ration/plants/mothic
-	desc = "Contains your alotted ration of produce, which in this case should be chili and a potato."
+	desc = "Contains your allotted ration of produce, which in this case should be chili and a potato."
 	icon_state = "plants_moth"
 
 /obj/item/storage/box/spaceman_ration/plants/mothic/PopulateContents()
@@ -48,7 +48,7 @@
 // For the lizards amongus
 
 /obj/item/storage/box/spaceman_ration/plants/lizard
-	desc = "Contains your alotted ration of produce, which in this case should be two korta nuts and two potatoes."
+	desc = "Contains your allotted ration of produce, which in this case should be two korta nuts and two potatoes."
 	icon_state = "plants_lizard"
 	box_storage_slots = 4
 
@@ -58,11 +58,11 @@
 	new /obj/item/food/grown/potato(src)
 	new /obj/item/food/grown/potato(src)
 
-// Contains your alotted meats, tasty!
+// Contains your allotted meats, tasty!
 
 /obj/item/storage/box/spaceman_ration/meats
 	name = "meat ration container"
-	desc = "Contains your alotted ration of meat, which in this case should be preserved pork and a random side option."
+	desc = "Contains your allotted ration of meat, which in this case should be preserved pork and a random side option."
 	icon_state = "meats"
 
 /obj/item/storage/box/spaceman_ration/meats/PopulateContents()
@@ -73,7 +73,7 @@
 // Seafood variant
 
 /obj/item/storage/box/spaceman_ration/meats/fish
-	desc = "Contains your alotted ration of meat, which in this case should be preserved pork and a random seafood side option."
+	desc = "Contains your allotted ration of meat, which in this case should be preserved pork and a random seafood side option."
 	icon_state = "meats_fish"
 
 /obj/item/storage/box/spaceman_ration/meats/fish/PopulateContents()
@@ -84,7 +84,7 @@
 // For the lizards amongus
 
 /obj/item/storage/box/spaceman_ration/meats/lizard
-	desc = "Contains your alotted ration of meat, which in this case should be preserved pork and a random seafood side option."
+	desc = "Contains your allotted ration of meat, which in this case should be preserved pork and a random seafood side option."
 	icon_state = "meats_lizard"
 
 /obj/item/storage/box/spaceman_ration/meats/lizard/PopulateContents()
