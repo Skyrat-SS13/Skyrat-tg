@@ -48,7 +48,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/vinegar
 	name = "tiny vinegar bottle"
-	desc = "A maritime ration sized bottle of lime juice, containing enough to... Well, we're not entirely sure, but law mandates you're given this, so..."
+	desc = "A maritime ration-sized bottle of lime juice, containing enough to... Well, we're not entirely sure, but law mandates you're given this, so..."
 	list_reagents = list(/datum/reagent/consumable/vinegar = 10)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/coffee
