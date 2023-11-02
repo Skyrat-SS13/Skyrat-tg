@@ -66,7 +66,7 @@
 			ticket_to_make = /obj/item/paper/paperslip/ration_ticket
 		created_ticket = new ticket_to_make(card)
 		last_ticket_luxury = !last_ticket_luxury
-		if(!tracked_ticket_book.atom_storage.can_insert(created_ticket, messages = FALSE))
+		if(!ticket_book.atom_storage.can_insert(created_ticket, messages = FALSE))
 			qdel(created_ticket)
 			bank_card_talk("ERROR: Failed to place ration ticket in ticket book, ensure book is not full.")
 			// We can stop here, its joever for trying to place tickets in the book this payday. You snooze you lose!
