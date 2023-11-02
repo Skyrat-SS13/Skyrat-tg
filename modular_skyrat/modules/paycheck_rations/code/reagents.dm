@@ -68,6 +68,6 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/caramel
 	name = "tiny caramel bottle"
-	desc = "A maritime ration sized bottle of caramel, in the past these used to be something called 'treacle', which was \
+	desc = "A maritime ration-sized bottle of caramel, in the past these used to be something called 'treacle', which was \
 		the tar left over from refining sugar. Nowadays, governments are rich enough to just send caramel instead."
 	list_reagents = list(/datum/reagent/consumable/caramel = 10)
