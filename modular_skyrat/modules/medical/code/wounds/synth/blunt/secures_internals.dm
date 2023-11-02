@@ -160,7 +160,9 @@
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
-	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item]...")
+	var/limb_can_shock_pre_sleep = (victim.stat != DEAD && limb.biological_state & BIO_WIRED)
+	var/shock_or_not = (limb_can_shock_pre_sleep ? ", risking electrocution" : "")
+	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item][shock_or_not]...")
 
 	user?.visible_message(span_bolddanger("[user] starts prying open [their_or_other] [limb.plaintext_zone] with [crowbarring_item]!"), self_message, ignored_mobs = list(victim))
 
@@ -175,7 +177,7 @@
 	if (!crowbarring_item.use_tool(target = victim, user = user, delay = (7 SECONDS * delay_mult), volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
-	var/limb_can_shock = (victim.stat != DEAD && limb.biological_state & BIO_WIRED)
+	var/limb_can_shock = (victim.stat != DEAD && limb.biological_state & BIO_WIRED) // re-define the previous shock variable because we slept
 	var/stunned = FALSE
 
 	var/message
@@ -386,3 +388,29 @@
 		span_notice("You finish re-soldering [your_or_other] [limb.plaintext_zone]!"))
 	remove_wound()
 	return TRUE
+
+/// Returns a string with our current treatment step for use in health analyzers.
+/datum/wound/blunt/robotic/secures_internals/proc/get_wound_step_info()
+	var/string
+
+	if (ready_to_resolder)
+		string = "Apply a welder/cautery to the limb to finalize repairs."
+	else if (ready_to_secure_internals)
+		string = "Use a screwdriver/wrench to secure the internals of the limb. This step is best performed by a qualified technician. \
+		In absence of one, bone gel or a crowbar may be used."
+
+	return string
+
+/datum/wound/blunt/robotic/secures_internals/get_scanner_description(mob/user)
+	. = ..()
+
+	var/wound_step = get_wound_step_info()
+	if (wound_step)
+		. += "\n\n<b>Current step</b>: [span_notice(wound_step)]"
+
+/datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
+	. = ..()
+
+	var/wound_step = get_wound_step_info()
+	if (wound_step)
+		. += "\n\n<b>Current step</b>: [span_notice(wound_step)]"

@@ -69,6 +69,11 @@
 	custom_materials = AMMO_MATS_TEMP
 	advanced_print_req = TRUE
 
+/obj/item/ammo_casing/c10mm/reaper
+	can_be_printed = FALSE
+	// it's a hitscan 50 damage 40 AP bullet designed to be fired out of a gun with a 2rnd burst and 1.25x damage multiplier
+	// Let's Not
+
 /obj/item/ammo_casing/c10mm/rubber
 	name = "10mm rubber bullet casing"
 	desc = "A 10mm rubber bullet casing."

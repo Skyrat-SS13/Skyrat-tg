@@ -46,10 +46,10 @@
 
 /datum/wound/muscle/set_victim(new_victim)
 	if (victim)
-		UnregisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
+		UnregisterSignal(victim, COMSIG_LIVING_EARLY_UNARMED_ATTACK)
 
 	if (new_victim)
-		RegisterSignal(new_victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
+		RegisterSignal(new_victim, COMSIG_LIVING_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
 
 	return ..()
 

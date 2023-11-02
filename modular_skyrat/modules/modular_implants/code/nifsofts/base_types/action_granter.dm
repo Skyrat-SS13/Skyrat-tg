@@ -1,4 +1,4 @@
-/// This type of NIFSoft grans the user an action when active.
+/// This type of NIFSoft grants the user an action when active.
 /datum/nifsoft/action_granter
 	active_mode = TRUE
 	activation_cost = 10

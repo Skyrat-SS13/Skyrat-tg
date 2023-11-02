@@ -21,7 +21,7 @@
 
 /obj/item/ammo_casing/arrow/update_icon_state()
 	. = ..()
-	icon_state = "[base_icon_state]"
+	icon_state = "[initial(icon_state)]" //SKYRAT EDIT: Original: icon_state = "[base_icon_state]"
 
 ///base arrow projectile
 /obj/projectile/bullet/arrow
@@ -73,7 +73,7 @@
 /obj/projectile/bullet/arrow/holy/Initialize(mapload)
 	. = ..()
 	//50 damage to revenants
-	AddElement(/datum/element/bane, target_type = /mob/living/simple_animal/revenant, damage_multiplier = 0, added_damage = 30)
+	AddElement(/datum/element/bane, target_type = /mob/living/basic/revenant, damage_multiplier = 0, added_damage = 30)
 
 /// special pyre sect arrow
 /// in the future, this needs a special sprite, but bows don't support non-hardcoded arrow sprites

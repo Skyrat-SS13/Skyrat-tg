@@ -7,7 +7,9 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns32x.dmi'
 	icon_state = "sindano"
 
-	inhand_icon_state = "c20r"
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/company_and_or_faction_based/carwo_defense_systems/guns_righthand.dmi'
+	inhand_icon_state = "sindano"
 
 	special_mags = TRUE
 
@@ -57,6 +59,7 @@
 	desc = "A small submachinegun, this one is painted in tacticool black. Accepts any standard Sol pistol magazine."
 
 	icon_state = "sindano_evil"
+	inhand_icon_state = "sindano_evil"
 
 /obj/item/gun/ballistic/automatic/sol_smg/evil/no_mag
 	spawnwithmagazine = FALSE

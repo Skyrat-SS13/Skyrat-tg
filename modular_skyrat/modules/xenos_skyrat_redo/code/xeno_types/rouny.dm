@@ -82,12 +82,12 @@
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/datum, remove_filter), RUNNER_BLUR_EFFECT), 0.5 SECONDS)
 	return BULLET_ACT_FORCE_PIERCE
 
-/mob/living/carbon/alien/adult/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
+/mob/living/carbon/alien/adult/skyrat/runner/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	if(evade_ability)
 		var/evade_result = evade_ability.on_projectile_hit()
 		if(!(evade_result == BULLET_ACT_HIT))
 			return evade_result
-	. = ..()
+	return ..()
 
 #undef EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE
 #undef RUNNER_BLUR_EFFECT

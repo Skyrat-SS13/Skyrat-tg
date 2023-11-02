@@ -610,7 +610,16 @@
 	new /obj/item/storage/belt/grenade/full(src)
 	if(prob(1))
 		new /obj/item/clothing/head/hats/hos/shako(src)
-		new /obj/item/mod/module/hat_stabilizer(src)
+
+/obj/item/storage/box/syndie_kit/core_gear
+	name = "core equipment box"
+	desc = "Contains all the necessary gear for success for any nuclear operative unsure of what is needed for success in the field. Everything here WILL help you."
+
+/obj/item/storage/box/syndie_kit/core_gear/PopulateContents()
+	new /obj/item/implanter/freedom (src)
+	new /obj/item/card/emag/doorjack (src)
+	new /obj/item/reagent_containers/hypospray/medipen/stimulants (src)
+	new /obj/item/grenade/c4 (src)
 
 /// Surplus Ammo Box
 
@@ -788,6 +797,21 @@
 /obj/item/storage/box/syndie_kit/poster_box/PopulateContents()
 	for(var/i in 1 to poster_count)
 		new /obj/item/poster/traitor(src)
+
+/obj/item/storage/box/syndie_kit/cowboy
+	name = "western outlaw pack"
+	desc = "Contains everything you'll need to be the rootin' tootin' cowboy you always wanted. Either play the Lone Ranger or go in with your posse of outlaws."
+
+/obj/item/storage/box/syndie_kit/cowboy/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/clothing/shoes/cowboy/black/syndicate= 1,
+		/obj/item/clothing/head/cowboy/black/syndicate = 1,
+		/obj/item/storage/belt/holster/nukie/cowboy/full = 1,
+		/obj/item/clothing/under/costume/dutch/syndicate = 1,
+		/obj/item/lighter/skull = 1,
+		/obj/item/sbeacondrop/horse = 1,
+		/obj/item/food/grown/apple = 1,
+	), src)
 
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI

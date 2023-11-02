@@ -95,7 +95,10 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/ethereal
 	name = "Ethereal Scream"
-	male_screamsounds = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
+	male_screamsounds = list(
+		'sound/voice/ethereal/ethereal_scream_1.ogg',
+		'sound/voice/ethereal/ethereal_scream_2.ogg',
+		'sound/voice/ethereal/ethereal_scream_3.ogg')
 	female_screamsounds = null
 
 //DONATOR SCREAMS
@@ -117,4 +120,12 @@ GLOBAL_LIST_EMPTY(scream_types)
 /datum/scream_type/skeleton
 	name = "Skeleton Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/plasmaman
+	name = "Plasmaman Scream"
+	male_screamsounds = list(
+		'sound/voice/plasmaman/plasmeme_scream_1.ogg',
+		'sound/voice/plasmaman/plasmeme_scream_2.ogg',
+		'sound/voice/plasmaman/plasmeme_scream_3.ogg')
 	female_screamsounds = null

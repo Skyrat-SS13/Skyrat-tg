@@ -13,7 +13,6 @@
 	)
 	*/ // SKYRAT EDIT REMOVAL END
 	inherent_traits = list(
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_HATED_BY_DOGS,
 		TRAIT_USES_SKINTONES,
 	)
@@ -147,6 +146,10 @@
 	regenerate_organs(human_for_preview, src, visual_only = TRUE)
 	human_for_preview.update_body(TRUE)
 	// SKYRAT EDIT END
+
+/datum/species/human/felinid/get_physical_attributes()
+	return "Felinids are very similar to humans in almost all respects, with their biggest differences being the ability to lick their wounds, \
+		and an increased sensitivity to noise, which is often detrimental. They are also rather fond of eating oranges."
 
 /datum/species/human/felinid/get_species_description()
 	return "Felinids are one of the many types of bespoke genetic \
