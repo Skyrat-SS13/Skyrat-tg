@@ -71,5 +71,5 @@
 			bank_card_talk("ERROR: Failed to place ration ticket in ticket book, ensure book is not full.")
 			// We can stop here, its joever for trying to place tickets in the book this payday. You snooze you lose!
 			return
-		created_ticket.forceMove(tracked_ticket_book)
+		created_ticket.forceMove(ticket_book)
 		bank_card_talk("A new [last_ticket_luxury ? "luxury item" : "standard"] ration ticket has been placed in your ticket book.")
