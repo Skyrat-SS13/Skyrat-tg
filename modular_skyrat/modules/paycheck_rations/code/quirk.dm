@@ -46,8 +46,14 @@
 
 /// Attempts to create a ration ticket book in the card holder's hand, and failing that, the drop location of the card
 /datum/bank_account/proc/make_ration_ticket()
-	if(!bank_cards.len || !tracked_ticket_book)
+	if(!bank_cards.len)
 		return
+
+	var/obj/item/storage/ration_ticket_book/ticket_book = tracked_ticket_book.resolve()
+	if(!ticket_book)
+		tracked_ticket_book = null
+		return
+
 	var/obj/item/created_ticket
 	for(var/obj/card in bank_cards)
 		// We want to only make one ticket pr account per payday
