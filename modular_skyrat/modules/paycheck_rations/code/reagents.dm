@@ -29,7 +29,7 @@
 
 /obj/item/reagent_containers/condiment/soymilk/small_ration
 	name = "small soy milk"
-	desc = "It's soy milk. White and nutritious goodness! This one is significantly smaller than normal cartons, just enough to make some rootdough with."
+	desc = "It's soy milk. White and nutritious goodness! This one is significantly smaller than normal cartons; just enough to make some rootdough with."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	list_reagents = list(/datum/reagent/consumable/soymilk = 15)
 
