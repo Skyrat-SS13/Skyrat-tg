@@ -40,7 +40,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(!tracked_ticket_book)
+	if(isnull(tracked_ticket_book))
 		return
 	make_ration_ticket()
 
