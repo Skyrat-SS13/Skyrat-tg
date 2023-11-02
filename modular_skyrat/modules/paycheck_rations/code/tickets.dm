@@ -61,6 +61,7 @@
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
 		playsound(object_we_attack, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+		return
 
 	switch(produce_choice)
 		if("Standard Produce")
@@ -88,6 +89,7 @@
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
 		playsound(object_we_attack, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+		return
 
 	switch(flour_choice)
 		if("Standard Flour")
@@ -135,6 +137,7 @@
 	)
 	object_we_attack.say("Ration order placed! It will arrive on the next cargo shuttle!")
 	SSshuttle.shopping_list += new_order
+	qdel(src)
 
 /datum/supply_pack/custom/ration_pack
 	name = "rations order"
@@ -200,6 +203,7 @@
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
+		return
 
 	switch(consumables_choice)
 		if("Cigarettes")
