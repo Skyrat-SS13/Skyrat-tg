@@ -32,7 +32,7 @@
 
 /datum/bank_account
 	/// Tracks a linked ration ticket book. If we have one of these, then we'll put tickets in it every payday.
-	var/obj/item/storage/ration_ticket_book/tracked_ticket_book
+	var/datum/weakref/tracked_ticket_book
 	/// Tracks if the last ticket we got was for luxury items, if this is true we get a normal food ticket
 	var/last_ticket_luxury = TRUE
 
