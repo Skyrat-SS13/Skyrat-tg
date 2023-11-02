@@ -33,13 +33,14 @@
 	Overwriting of base procs
 */
 /datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
-	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
-		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
-		if(istype(I, /obj/item/offhand))
-			I = victim.get_inactive_held_item()
+	var/obj/item/held_item = victim.get_item_for_held_index(limb.held_index || 0)
+	if(held_item && (disabling || prob(30 * severity)))
+		if(istype(held_item, /obj/item/offhand))
+			held_item = victim.get_inactive_held_item()
 
-		if(I && victim.dropItemToGround(I))
-			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+		if(held_item && victim.dropItemToGround(held_item))
+			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), \
+			span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	return ..()
 
@@ -173,3 +174,9 @@
 	id = "torn muscle"
 /datum/status_effect/wound/muscle/severe
 	id = "ruptured tendon"
+
+/datum/status_effect/wound/muscle/robotic/moderate
+	id = "worn servo"
+
+/datum/status_effect/wound/muscle/robotic/severe
+	id = "severed hydraulic"

@@ -1,9 +1,8 @@
 /datum/opposing_force_equipment/shotgun
 	category = OPFOR_EQUIPMENT_CATEGORY_SHOTGUNS
 
-/datum/opposing_force_equipment/shotgun/m23
-	item_type = /obj/item/gun/ballistic/shotgun/m23
-	description = "An eight-round pump-action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 gauge load."
+/datum/opposing_force_equipment/shotgun/renoster
+	item_type = /obj/item/gun/ballistic/shotgun/riot/sol/evil
 
 /datum/opposing_force_equipment/shotgun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2

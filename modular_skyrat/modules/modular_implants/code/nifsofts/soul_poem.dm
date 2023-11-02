@@ -166,6 +166,7 @@
 	var/list/data = list()
 	data["messages"] = message_list
 
+	data["theme"] = ui_theme
 	data["receiving_data"] = receiving_data
 	data["transmitting_data"] = transmitting_data
 

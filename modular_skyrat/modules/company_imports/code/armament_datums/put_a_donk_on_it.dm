@@ -99,6 +99,18 @@
 	item_type = /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted
 	cost = PAYCHECK_COMMAND * 5
 
+/datum/armament_entry/company_import/donk/mod_modules
+	subcategory = "Donk Co. MOD modules"
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/donk/mod_modules/dart_collector_safe
+	item_type = /obj/item/mod/module/recycler/donk/safe
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/donk/mod_modules/dart_collector
+	item_type = /obj/item/mod/module/recycler/donk
+	cost = PAYCHECK_COMMAND * 4
+
 /datum/armament_entry/company_import/donk/foamforce_ammo
 	subcategory = "Foam Force (TM) Dart Accessories"
 	cost = PAYCHECK_CREW
@@ -111,14 +123,14 @@
 	item_type = /obj/item/ammo_box/foambox/riot
 	cost = PAYCHECK_COMMAND * 1.5
 
-/datum/armament_entry/company_import/donk/foamforce_ammo
+/datum/armament_entry/company_import/donk/foamforce_ammo/pistol_mag
 	item_type = /obj/item/ammo_box/magazine/toy/pistol
 
-/datum/armament_entry/company_import/donk/foamforce_ammo
+/datum/armament_entry/company_import/donk/foamforce_ammo/smg_mag
 	item_type = /obj/item/ammo_box/magazine/toy/smg
 
-/datum/armament_entry/company_import/donk/foamforce_ammo
+/datum/armament_entry/company_import/donk/foamforce_ammo/smgm45_mag
 	item_type = /obj/item/ammo_box/magazine/toy/smgm45
 
-/datum/armament_entry/company_import/donk/foamforce_ammo
+/datum/armament_entry/company_import/donk/foamforce_ammo/m762_mag
 	item_type = /obj/item/ammo_box/magazine/toy/m762

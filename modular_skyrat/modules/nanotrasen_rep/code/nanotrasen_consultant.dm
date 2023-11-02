@@ -54,7 +54,7 @@
 	head = /obj/item/clothing/head/nanotrasen_consultant
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/nanotrasen_consultant = 1,
+		/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild = 1,
 		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -110,21 +110,6 @@
 	inserted_disk = /obj/item/computer_disk/command/captain
 	inserted_item = /obj/item/pen/fountain/captain
 	greyscale_colors = "#017941#0060b8"
-
-/obj/item/storage/box/gunset/nanotrasen_consultant
-	name = "M45A5 gunset"
-	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/nanotrasen_consultant/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
 
 /obj/item/storage/bag/garment/nanotrasen_consultant
 	name = "Nanotrasen consultant's garment bag"

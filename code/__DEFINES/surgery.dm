@@ -24,9 +24,11 @@
 #define ORGAN_UNREMOVABLE (1<<8)
 /// Can't be seen by scanners, doesn't anger body purists
 #define ORGAN_HIDDEN (1<<9)
+/// Has the organ already been inserted inside someone
+#define ORGAN_VIRGIN (1<<10)
 // SKYRAT EDIT START - Customization
 /// Synthetic organ granted by a species (for use for organ replacements between species)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<10)
+#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<11)
 // SKYRAT EDIT END
 
 /// Helper to figure out if a limb is organic

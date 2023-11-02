@@ -121,6 +121,8 @@
 				return FALSE
 
 			current_theme = target_theme
+			for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
+				installed_nifsoft.update_theme()
 
 		if("activate_nifsoft")
 			var/datum/nifsoft/activated_nifsoft = locate(params["activated_nifsoft"]) in loaded_nifsofts

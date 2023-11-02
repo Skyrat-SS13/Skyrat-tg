@@ -45,32 +45,32 @@
 //Fit in all hypos
 /obj/item/reagent_containers/cup/vial/small
 	name = "hypovial"
-	desc = "A small, 60u capacity vial compatible with most hyposprays."
-	volume = 60
-	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,60)
+	desc = "A small, 50u capacity vial compatible with most hyposprays."
+	volume = 50
+	possible_transfer_amounts = list(1,2,5,10,15,25,50)
 
 //Fit in CMO hypo only
 /obj/item/reagent_containers/cup/vial/large
 	name = "large hypovial"
 	icon_state = "hypoviallarge"
-	desc = "A large, 120u capacity vial that fits only in the most deluxe hyposprays."
-	volume = 120
+	desc = "A large, 100u capacity vial that fits only in the most deluxe hyposprays."
+	volume = 100
 	type_suffix = "-l"
-	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100,120)
+	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100)
 
 //Hypos that are in the CMO's kit round start
 /obj/item/reagent_containers/cup/vial/large/deluxe
 	name = "deluxe hypovial"
-	list_reagents = list(/datum/reagent/medicine/omnizine = 20, /datum/reagent/medicine/leporazine = 20, /datum/reagent/medicine/atropine = 20)
+	list_reagents = list(/datum/reagent/medicine/omnizine = 15, /datum/reagent/medicine/leporazine = 15, /datum/reagent/medicine/atropine = 15)
 
 /obj/item/reagent_containers/cup/vial/large/salglu
 	name = "large green hypovial (salglu)"
-	list_reagents = list(/datum/reagent/medicine/salglu_solution = 60)
+	list_reagents = list(/datum/reagent/medicine/salglu_solution = 50)
 
 /obj/item/reagent_containers/cup/vial/large/synthflesh
 	name = "large orange hypovial (synthflesh)"
-	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
 
 /obj/item/reagent_containers/cup/vial/large/multiver
 	name = "large black hypovial (multiver)"
-	list_reagents = list(/datum/reagent/medicine/c2/multiver = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/multiver = 50)

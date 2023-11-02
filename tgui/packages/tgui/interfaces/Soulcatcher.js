@@ -12,10 +12,11 @@ export const Soulcatcher = (props, context) => {
     max_souls,
     removable,
     communicate_as_parent,
+    theme,
   } = data;
 
   return (
-    <Window width={520} height={400} resizable>
+    <Window width={520} height={400} theme={theme} resizable>
       <Window.Content scrollable>
         {current_rooms.map((room) => (
           <Section

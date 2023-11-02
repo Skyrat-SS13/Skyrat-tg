@@ -13,6 +13,7 @@
 
 	data["ghost_joinable"] = ghost_joinable
 	data["require_approval"] = require_approval
+	data["theme"] = ui_theme
 	data["communicate_as_parent"] = communicate_as_parent
 	data["current_soul_count"] = length(get_current_souls())
 	data["max_souls"] = max_souls

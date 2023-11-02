@@ -134,3 +134,177 @@
   vinylspiders:
   - bugfix: the pollution system will no longer try (and fail) to pollute a turf from
       nullspace
+2023-10-04:
+  Coded by Jacquerel, Sprited by Dalmationer:
+  - rscadd: Added tongs to the kitchen, which you can use to manipulate food from
+      further away
+  Fazzie:
+  - rscadd: Added a budget solar crate to the derelict teleporter room
+  - rscadd: Added a solar panel control to the north derelict solar
+  - qol: The derelict's AI coridoor is now shorter and prettier
+  - rscadd: A lot of new content has been added to the beach away mission
+  - qol: It also looks substantially better, too!
+  Motho:
+  - bugfix: An anonymous visitor to the NSV Void Raptor has turned in security's biosuit
+      to the lost and found. Security officers everywhere rejoice.
+  Paxilmaniac:
+  - rscadd: A significantly smaller selection of new SolFed weapons has taken the
+      place of the now missing Armadyne selection.
+  - rscdel: So basically, all of Armadyne is gone.
+  - qol: A large number of weapons now use singular interchangeable magazine types,
+      rather than having seven different 9mm magazines to do the same thing
+  - balance: Any weapon that was replaced is going to have different stats from what
+      they used to be, numbers subject to change
+  - sound: Several new firing sounds from TGMC for the new weapons
+  - image: Whole collection of new ammo, gun, case, and so on sprites by myself
+  - image: Gun case worn on the back sprites done by Zydras
+  - code_imp: Where applicable, containers spawning gun stuff use generate_items_inside,
+      which is much neater than spamming new x(src)
+  SkyratBot:
+  - bugfix: The Syndicate have fired their previous construction company after poor
+      results in recent outposts.
+  - qol: Departmental order consoles now alert their department via radio when their
+      cooldown expires
+  - bugfix: Fix butchered monkeys to transfer reagents and diseases to meat
+  - bugfix: Fix organs having no DNA and become bloody when violently removed.
+  - refactor: Raw Prophets now use the basic mob framework. Please report any unusual
+      behaviour.
+  - bugfix: Cutting open a hand-pressed paper bundle no longer deletes all of the
+      paper.
+  - balance: Kudzu will now be destroyed by adverse weather.
+  - balance: Kudzu will no longer spread over holes.
+  - refactor: fixed many instances of updatehealth() either being called needlessly
+      or not at all within on_mob_life() and in various other parts of the code
+  - refactor: damage procs now return useful information--the actual net change in
+      damage on the mob. added a unit test for this
+  - bugfix: Some icons for selecting character preferences are no longer scaled incorrectly.
+  ninjanomnom:
+  - admin: Appearance vars in VV now display instead of being left blank
+2023-10-05:
+  FIoppie:
+  - sound: '*flap now makes a fluttering noise for moth wings'
+  - sound: Moths now have a death sound
+  - qol: '*tremble emote now is just "trembles!" instead of "trembles in fear!"'
+  LT3:
+  - image: Added colourable arm and leg wraps
+  Melbert:
+  - qol: Moved a lot of maintenance spawnpoints out of non-maintenance rooms. Some
+      antags (paradox clone, fugitives, nightmares, spiders) are now less likely to
+      spawn in obvious places like the morgue, tech storage, or dorms rooms.
+  Motho:
+  - image: Sector 13's station air alarms and fire alarms have been updated to be
+      more in line with other frontier station models.
+  SkyratBot:
+  - admin: Admins can turn off dynamic rulesets (or force them on despite not meeting
+      the qualification criteria) on a per-round basis.
+  - rscadd: The funds the syndicate have been saving by restricting galley access
+      has been suddenly funneled into a singular mosaic pattern in the experiments
+      wing.
+  - balance: CQC legsweeps now cause knockdown instead of paralysis.
+  - balance: CQC kicks now knockout a target on the floor for ten seconds if they
+      reach stam crit. Helmet protection shortens the knockout length.
+  - bugfix: Your heart will no longer be deleted if an admin heals you while you have
+      corazargh in your system.
+  - refactor: The cursed heart has been streamlined a bit, and now gives you a visual
+      cooldown for when you can beat your heart again.
+  Wallem:
+  - rscadd: Adds The Hand of Midas, an ancient Egyptian matchlock pistol.
+  honkpocket:
+  - bugfix: Extra magazines for all the Foam Force guns are now purchasable from cargo
+      imports
+  - rscadd: The Foam Force dart collector MOD modules are now purchasable from cargo
+      imports
+  - sound: added a unique racking sfx for the sol 'Renoster' shotgun
+  softcerv:
+  - qol: NIFSofts now use the same TGUI as their parent NIF.
+  tf-4:
+  - bugfix: Fixed some weirdness with mould mob attacks.
+  - qol: Mold mobs delete themselves on death.
+2023-10-06:
+  LT3:
+  - image: Job icon for departmental guards, DS2 and other SR specific jobs are properly
+      aligned
+  Majkl-J:
+  - bugfix: Table to the cafe food processor
+  RatFromTheJungle:
+  - balance: Interdyne now spawns with Sidano SMG's, instead of .50 snipers
+  - bugfix: you can now actually wear the 'LIZARED' top, yippie!
+  SkyratBot:
+  - bugfix: The Galactic Materials Market now offers things for sale as it should.
+  - rscadd: Added blackout, happens when you drink...ALOT
+  - bugfix: plumbing reaction chamber now balances the ph of it's solution correctly
+      to the best of it's ability so no guarantees
+  - code_imp: converted plumbing reaction chamber & mixing chamber UI files to Typescript
+  - refactor: plumbing mixing chamber now also accepts an TGUI input list to input
+      it's chemicals
+  - image: We have received a new shipment of IDs, as the old ones were found out
+      to be haunted.
+  - image: Laser tag red team ID has received a massive nerf
+  - image: Station budget cards have gotten a facelift
+  - image: Emags and Doorjacks
+  - bugfix: Numbered prisoner IDs will now be legible
+  Wallem:
+  - rscadd: Buffs the Active Sonar module with a radial scan, and makes the power
+      costs more in-line with other modules.
+  softcerv:
+  - bugfix: the ghost role NIF boxes now contain the Purpura Eye NIFSoft
+  vinylspiders:
+  - bugfix: fixes gender shaping and height offsets on underwear
+  - bugfix: female gender shaping now works with digi jumpsuits
+  - bugfix: fixed rainbow jumpsuit digi sprite
+2023-10-07:
+  GoldenAlpharex:
+  - bugfix: The round end report will no longer expose people's ckeys for the achievements
+      they obtained through the round, nor when they're contractor support agents.
+  LT3:
+  - bugfix: Adjusted Void Raptor shutters and firelocks in the pharmacy, hallway and
+      HoP line
+  - balance: Hypovial capacity now matches bottle capacity
+  - bugfix: Broken and placeholder hypovials can no longer be printed in the ChemMaster
+  Melbert:
+  - qol: AI, cyborg, and PAI camera (photo taking) behavior now uses balloon alerts
+      and has sound effects associated
+  - refactor: Refactored AI, cyborg, and PAI camera (photo taking) code
+  - bugfix: fixed being unable to print photos as a cyborg when below 50% toner, even
+      though photos only take 5%
+  SkyratBot:
+  - bugfix: Engineering borgs can no longer grab and drop their own iron/glass sheet
+      module.
+  - bugfix: It is no longer possible to chasm yourself on the geode. Again.
+  - rscadd: Fish analyzers can now be used to perform fish scanning experiments.
+  - balance: They can now be singularly bought as a goodie pack for 125 cr each, instead
+      of a crate of three for 500 cr.
+  - bugfix: Borgs will no longer become permanently upside-down if tipped over by
+      multiple people at the same time.
+  - balance: Despite earlier reports suggesting that the famous lethality of the Regal
+      Condor was largely a myth, there has been rumors that the gun has once again
+      started to display its true killing potential on any station that it 'manifests'.
+  - bugfix: The AI can no longer turn you off if you shapeshift into a robot.
+  - bugfix: Blood once again appears as small drops instead of splatters during minor
+      bleeding.
+  - bugfix: you are now made a ghost faster if you get gibbed
+  - bugfix: fixed bad food not having bad food reagents
+  - rscadd: The laser carbine, a weak but fully automatic sidegrade to the normal
+      laser gun, can now be ordered from cargo.
+  - bugfix: Adminheal will now properly clear negative mutations as intended.
+  - bugfix: Ice whelps can now use spells given to them by admins, and people who
+      have polymorphed into ice whelps can now polymorph back to normal.
+  - bugfix: Fixed silent catwalks.
+  - rscadd: Fake moustaches are now poorly slapped on top of what you're wearing
+  jjpark-kb:
+  - rscadd: ashwalker nest is now in the NE corner of lavaland
+  neocloudy:
+  - bugfix: MetaStation disposal pipes from Cargo to Disposals/the rest of the station
+      are working again.
+  nikothedude:
+  - rscadd: Synthetic wounds! Blunt, Pierce, Slash, Burn, Muscle. See PR 23733 for
+      more information
+  - rscadd: Robodrobe now has 2 chilled hercuri sprays for treating synthetic burn
+      wounds
+  - rscadd: Robodrobe now has 2 pairs of black gloves to let robotics painlessly meld
+      T3 synthetic blunt wounds
+  - balance: 'Synthetic damage multiplier: 1.3 -> 1.0'
+  - rscadd: '3 new cargo packs to science: 2 chilled hercuri, a synth trauma kit,
+      and synth medicine'
+  - balance: Quadruple amputee can now be picked with frail
+  - rscadd: Interdyne/DS2 now have advanced synthetic trauma kits in their medbays

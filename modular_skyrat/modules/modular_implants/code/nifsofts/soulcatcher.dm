@@ -94,6 +94,17 @@
 	persistence.nif_soulcatcher_rooms = list2params(room_list)
 	return TRUE
 
+/datum/nifsoft/soulcatcher/update_theme()
+	. = ..()
+	if(!.)
+		return FALSE // uhoh
+
+	var/datum/component/soulcatcher/current_soulcatcher = linked_soulcatcher.resolve()
+	if(!istype(current_soulcatcher))
+		stack_trace("[src] ([REF(src)]) tried to update its theme when it was missing a linked_soulcatcher component!")
+		return FALSE
+	current_soulcatcher.ui_theme = ui_theme
+
 /datum/modular_persistence
 	///A param string containing soulcatcher rooms
 	var/nif_soulcatcher_rooms = ""

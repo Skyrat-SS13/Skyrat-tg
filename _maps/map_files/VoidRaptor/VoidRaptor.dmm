@@ -1873,7 +1873,6 @@
 "aAN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
@@ -3484,9 +3483,9 @@
 	pixel_y = 16
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
-	dir = 4;
 	id = "paramed_dispatch_desk";
-	name = "Desk Shutters"
+	name = "Desk Shutters";
+	dir = 8
 	},
 /obj/item/paper_bin{
 	pixel_y = 4
@@ -11920,7 +11919,6 @@
 "dAP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
 	},
@@ -13944,7 +13942,6 @@
 /obj/item/reagent_containers/syringe/epinephrine,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
@@ -15971,10 +15968,10 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/secondary/service)
 "eEi" = (
-/obj/structure/closet/secure_closet/smartgun,
 /obj/effect/turf_decal/tile/dark_red/anticorner,
 /obj/structure/sign/poster/official/twelve_gauge/directional/east,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/armory_kiboko,
 /turf/open/floor/engine,
 /area/station/ai_monitored/security/armory)
 "eEp" = (
@@ -18259,9 +18256,9 @@
 	req_access = list("medical")
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
-	dir = 4;
 	id = "paramed_dispatch_desk";
-	name = "Desk Shutters"
+	name = "Desk Shutters";
+	dir = 8
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/lobby)
@@ -22823,12 +22820,12 @@
 /area/station/ai_monitored/turret_protected/ai_upload)
 "gEO" = (
 /obj/structure/rack/gunrack,
-/obj/effect/spawner/armory_spawn/cmg,
 /obj/effect/turf_decal/tile/dark_red/anticorner{
 	dir = 4
 	},
 /obj/structure/sign/poster/official/ion_rifle/directional/east,
 /obj/effect/turf_decal/delivery,
+/obj/effect/spawner/armory_spawn/smg,
 /turf/open/floor/engine,
 /area/station/ai_monitored/security/armory)
 "gEV" = (
@@ -24383,7 +24380,6 @@
 /area/station/engineering/atmos)
 "haE" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
 	id = "hop";
 	name = "Privacy Shutters"
 	},
@@ -29278,7 +29274,8 @@
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/poddoor/shutters{
 	id = "mechbay";
-	name = "Mech Bay Shutters"
+	name = "Mech Bay Shutters";
+	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -31418,7 +31415,6 @@
 	pixel_x = -4;
 	pixel_y = 10
 	},
-/obj/item/storage/box/gunset,
 /obj/item/storage/medkit/tactical/blueshield,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -36934,7 +36930,6 @@
 	req_access = list("pharmacy")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
@@ -39447,7 +39442,6 @@
 /area/station/hallway/primary/fore)
 "lfY" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
 	id = "hopqueue";
 	name = "HoP Queue Shutters"
 	},
@@ -40601,7 +40595,6 @@
 	pixel_y = 9
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
 	},
@@ -44466,9 +44459,9 @@
 /obj/item/stack/medical/mesh,
 /obj/item/stack/medical/suture,
 /obj/machinery/door/poddoor/shutters/window/preopen{
-	dir = 4;
 	id = "paramed_dispatch_desk";
-	name = "Desk Shutters"
+	name = "Desk Shutters";
+	dir = 8
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/lobby)
@@ -50366,6 +50359,11 @@
 "ogb" = (
 /obj/machinery/smartfridge,
 /obj/effect/turf_decal/bot,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "kitchen_service";
+	name = "Service Shutter"
+	},
 /turf/open/floor/iron/large,
 /area/station/service/kitchen)
 "ogc" = (
@@ -50698,7 +50696,8 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "roboticsprivacy";
-	name = "Robotics Shutters"
+	name = "Robotics Shutters";
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/science/robotics/lab)
@@ -55226,9 +55225,9 @@
 	req_access = list("medical")
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
-	dir = 4;
 	id = "paramed_dispatch_desk";
-	name = "Desk Shutters"
+	name = "Desk Shutters";
+	dir = 8
 	},
 /obj/item/storage/box/bandages{
 	pixel_y = 15
@@ -58110,7 +58109,6 @@
 	req_access = list("hop")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
 	id = "hop";
 	name = "Privacy Shutters"
 	},
@@ -58319,7 +58317,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
 	id = "rndlab1";
 	name = "Research and Development Shutter"
 	},
@@ -58651,10 +58648,6 @@
 /obj/machinery/recharger{
 	pixel_x = 5;
 	pixel_y = 2
-	},
-/obj/item/stock_parts/cell/blueshield{
-	pixel_x = -5;
-	pixel_y = 10
 	},
 /obj/machinery/newscaster/directional/north,
 /obj/machinery/light_switch/directional/north{
@@ -59613,7 +59606,6 @@
 "qDW" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 4;
 	id = "rndlab1";
 	name = "Research and Development Shutter"
 	},
@@ -61143,6 +61135,11 @@
 /area/station/maintenance/aft/upper)
 "qZl" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "chemistry_shutters";
+	name = "Pharmacy Shutters"
+	},
 /turf/open/floor/iron/freezer,
 /area/station/medical/pharmacy)
 "qZz" = (
@@ -64229,7 +64226,6 @@
 /area/station/service/cafeteria)
 "rUf" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
@@ -66449,7 +66445,6 @@
 	req_access = list("pharmacy")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
@@ -69163,7 +69158,8 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "roboticsprivacy";
-	name = "Robotics Shutters"
+	name = "Robotics Shutters";
+	dir = 8
 	},
 /turf/open/floor/plating/airless,
 /area/station/science/robotics/lab)
@@ -76773,7 +76769,8 @@
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/machinery/door/poddoor/shutters{
 	id = "mechbay";
-	name = "Mech Bay Shutters"
+	name = "Mech Bay Shutters";
+	dir = 4
 	},
 /obj/machinery/button/door/directional/north{
 	id = "mechbay";
@@ -83931,6 +83928,11 @@
 /area/station/security/checkpoint/engineering)
 "xnP" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "chemistry_shutters";
+	name = "Pharmacy Shutters"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "xnR" = (
@@ -87209,13 +87211,13 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
 "ykT" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/smartfridge/chemistry/preloaded,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
 	id = "chemistry_shutters";
 	name = "Pharmacy Shutters"
 	},
-/turf/open/floor/plating/airless,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "ylg" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -119297,7 +119299,7 @@ rFl
 xgy
 uQf
 jLi
-ykT
+aAN
 gut
 uMt
 sLk
@@ -119554,7 +119556,7 @@ gLN
 dRX
 jQm
 tJU
-xnP
+ykT
 vVO
 twU
 wwr
