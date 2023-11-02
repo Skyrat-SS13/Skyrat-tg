@@ -130,13 +130,8 @@
 	if(isnull(old_body) || damage_type == STAMINA || damage_type == OXYLOSS)
 		return
 
-<<<<<<< HEAD
 	if(damage >= (old_body.health + (ishuman(old_body) ? HUMAN_MAXHEALTH : MAX_LIVING_HEALTH))) // SKYRAT EDIT CHANGE - ORIGINAL: if(damage >= (old_body.health + MAX_LIVING_HEALTH))
-		full_avatar_disconnect(forced = TRUE)
-=======
-	if(damage >= (old_body.health + MAX_LIVING_HEALTH))
 		full_avatar_disconnect(cause_damage = TRUE)
->>>>>>> 550ec9b1d94 (Cleans up signal use in bitrunning [NO GBP] (#79426))
 		return
 
 	if(damage > 30 && prob(30))
