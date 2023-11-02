@@ -4,18 +4,55 @@
 /obj/item/keycard/blue,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"ax" = (
+/obj/structure/flora/tree/stump,
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "aI" = (
 /obj/machinery/light/floor,
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
 "aN" = (
-/obj/structure/inflatable{
-	color = "#556B2F";
-	opacity = 1
+/obj/effect/spawner/random/sakhno/ammo,
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
+"aO" = (
+/obj/structure/table,
+/obj/item/folder/blue,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"aP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/open/misc/grass,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/pouch/medical/firstaid/stabilizer,
+/obj/item/storage/pouch/ammo,
+/obj/item/clothing/head/helmet/hecu,
+/obj/item/clothing/suit/armor/vest/hecu,
+/obj/item/storage/box/survival/syndie,
+/obj/item/gun/ballistic/automatic/sol_smg,
+/obj/item/knife/combat,
+/obj/item/gun/ballistic/automatic/pistol/sol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/storage/belt/military/assault/hecu,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/clothing/glasses/hud/health/sunglasses,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"aS" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
 "aZ" = (
 /obj/structure/table,
@@ -23,7 +60,11 @@
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
 "bl" = (
-/obj/structure/table,
+/obj/structure/flippedtable{
+	dir = 8
+	},
+/obj/structure/flippedtable,
+/obj/structure/barricade/sandbags,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
 "bs" = (
@@ -31,28 +72,58 @@
 /obj/item/storage/box/utensils,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"bC" = (
+/obj/structure/closet/crate/trashcart/filled,
+/obj/item/ammo_box/c35sol,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "bD" = (
 /obj/item/inflatable/torn,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
 "bF" = (
 /obj/structure/railing/corner/end/flip,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"bU" = (
+/obj/structure/flippedtable,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/smooth,
+/area/virtual_domain/powered)
 "bV" = (
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"bW" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/structure/sign/flag/nri/directional/east,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "bX" = (
 /obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"bZ" = (
+/turf/open/floor/plating,
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
+"cg" = (
+/obj/item/deployable_turret_folded,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
+"cr" = (
+/obj/structure/table,
+/obj/item/storage/medkit/tactical/premium,
+/turf/open/floor/iron/white,
+/area/virtual_domain/powered)
 "cy" = (
 /obj/structure/fence/door{
 	dir = 4
 	},
-/turf/open/misc/dirt,
-/area/virtual_domain)
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "cz" = (
 /obj/structure/closet/crate/secure,
 /obj/item/keycard/blue,
@@ -79,11 +150,22 @@
 	dir = 4;
 	density = 0
 	},
-/turf/open/misc/dirt,
-/area/virtual_domain)
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "dj" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
+/area/virtual_domain/powered)
+"dr" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"dw" = (
+/obj/structure/sign/flag/terragov/directional/south,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
 "dz" = (
 /obj/structure/inflatable,
@@ -95,7 +177,15 @@
 /area/virtual_domain/powered)
 "ed" = (
 /obj/machinery/light/small/dim/directional/south,
-/turf/open/misc/dirt,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"eo" = (
+/obj/structure/flippedtable{
+	dir = 4
+	},
+/obj/structure/flippedtable,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
 "ep" = (
 /obj/structure/decorative/shelf/soda_multipacks{
@@ -103,13 +193,33 @@
 	},
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"eA" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small/red/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"eQ" = (
+/obj/effect/spawner/random/trash/mopbucket,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "eT" = (
 /turf/open/water/jungle,
-/area/virtual_domain)
+/area/virtual_domain/powered)
 "eX" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/smooth_corner,
 /area/virtual_domain/powered)
+"fj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/bitrunning_transport,
+/area/virtual_domain/safehouse)
 "ft" = (
 /obj/effect/spawner/random/trash/mopbucket,
 /turf/open/floor/iron,
@@ -120,35 +230,49 @@
 /area/virtual_domain/powered)
 "fH" = (
 /obj/structure/fluff/fokoff_sign,
-/turf/open/misc/grass,
-/area/virtual_domain)
-"fJ" = (
-/turf/closed/indestructible/rock,
-/area/virtual_domain)
-"fN" = (
-/obj/structure/inflatable{
-	color = "#556B2F";
-	opacity = 1
-	},
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/open/floor/iron/dark,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
+"fJ" = (
+/turf/closed/mineral/ash_rock,
+/area/virtual_domain/powered)
+"fN" = (
+/obj/effect/landmark/bitrunning/safehouse_spawn,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "gd" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"gu" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"gG" = (
+/obj/machinery/door/puzzle/keycard/yellow_required,
+/turf/open/floor/iron/smooth_large,
+/area/virtual_domain/powered)
 "gR" = (
 /obj/structure/table/wood,
 /obj/structure/bedsheetbin,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "ho" = (
-/obj/effect/landmark/bitrunning/crate_replacer,
+/obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"hz" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "hH" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8
@@ -160,18 +284,41 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "hS" = (
 /obj/structure/chair{
 	dir = 4
 	},
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"ig" = (
+/obj/effect/turf_decal/stripes/end,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/pouch/medical/firstaid/stabilizer,
+/obj/item/storage/pouch/ammo,
+/obj/item/clothing/head/helmet/hecu,
+/obj/item/clothing/suit/armor/vest/hecu,
+/obj/item/storage/box/survival/syndie,
+/obj/item/gun/ballistic/automatic/sol_smg,
+/obj/item/knife/combat,
+/obj/item/gun/ballistic/automatic/pistol/sol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/storage/belt/military/assault/hecu,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/clothing/glasses/hud/health/sunglasses,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "ip" = (
 /obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "iB" = (
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
@@ -180,11 +327,20 @@
 /turf/open/floor/iron/smooth_half,
 /area/virtual_domain/powered)
 "iU" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/structure/table,
+/obj/item/folder/documents,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
+"iX" = (
+/obj/structure/filingcabinet/chestdrawer/wheeled,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"jK" = (
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "jL" = (
-/obj/effect/landmark/bitrunning/crate_replacer,
+/obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "jN" = (
@@ -192,8 +348,8 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "kh" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
@@ -207,10 +363,20 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"kp" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
 "kJ" = (
 /obj/item/storage/box/utensils,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"kK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "ln" = (
 /obj/structure/decorative/shelf/alcohol_assortment{
 	density = 1
@@ -218,10 +384,15 @@
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "lo" = (
-/obj/structure/table/wood/fancy,
+/obj/structure/table,
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup,
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
+"lB" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "lG" = (
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
@@ -234,17 +405,28 @@
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
+"lP" = (
+/obj/item/chair,
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "lU" = (
 /obj/structure/decorative/shelf/soda{
 	density = 1
 	},
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"lV" = (
+/obj/structure/table/wood,
+/obj/item/storage/toolbox/guncase/soviet/sakhno,
+/obj/item/crafting_conversion_kit/mosin_pro,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "mc" = (
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "mn" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
 "mq" = (
@@ -253,8 +435,22 @@
 /area/virtual_domain/powered)
 "mt" = (
 /obj/item/stack/rods,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"mA" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer{
+	dir = 2;
+	name = "hovercraft console";
+	icon_screen = "shuttle";
+	desc = "An armored hovercraft control computer. Doesn't work anymore... who would've thought."
+	},
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "mZ" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 8
@@ -263,6 +459,7 @@
 /area/virtual_domain/powered)
 "nh" = (
 /obj/effect/spawner/random/vending/colavend,
+/obj/structure/sign/poster/random/directional/west,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "nm" = (
@@ -279,31 +476,33 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "nO" = (
 /obj/structure/railing,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "nP" = (
 /obj/structure/flora/bush/ferny/style_random,
 /obj/structure/railing,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "nS" = (
 /obj/effect/mine/explosive/light,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "nU" = (
 /obj/structure/flora/tree/stump,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "oM" = (
 /obj/structure/sign/departments/medbay/directional/west,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
 "oU" = (
 /obj/structure/closet/crate/trashcart/filled,
+/obj/item/ammo_box/c35sol,
+/obj/item/ammo_box/c35sol,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "oW" = (
@@ -313,15 +512,39 @@
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "pe" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
+"po" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "pz" = (
 /obj/structure/inflatable{
 	color = "#556B2F";
 	opacity = 1
 	},
 /turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"pN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"pU" = (
+/obj/structure/sign/flag/nri/directional/east,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "qq" = (
 /obj/machinery/biogenerator/food_replicator{
@@ -330,12 +553,17 @@
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "qx" = (
-/turf/open/misc/dirt,
-/area/virtual_domain)
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "qF" = (
 /turf/open/floor/iron/smooth_half{
 	dir = 1
 	},
+/area/virtual_domain/powered)
+"qK" = (
+/obj/effect/light_emitter,
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
 "qQ" = (
 /obj/machinery/door/poddoor/preopen,
@@ -345,15 +573,16 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "ru" = (
 /obj/structure/fence,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "rC" = (
 /obj/effect/spawner/random/trash/bin,
 /obj/machinery/light/directional/north,
+/obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "rJ" = (
@@ -388,33 +617,55 @@
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"sE" = (
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "sM" = (
 /obj/structure/table,
 /obj/item/storage/box/utensils,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"sO" = (
+/obj/effect/light_emitter,
+/turf/open/water/jungle,
+/area/virtual_domain/powered)
 "ts" = (
 /turf/open/floor/iron/smooth_corner,
 /area/virtual_domain/powered)
 "tE" = (
-/obj/effect/landmark/bitrunning/safehouse_spawn,
-/turf/template_noop,
-/area/virtual_domain)
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "tH" = (
 /obj/structure/guncase/wt550,
+/obj/item/ammo_box/magazine/c40sol_rifle/drum,
+/obj/item/ammo_box/magazine/c40sol_rifle/drum,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
 "tW" = (
 /obj/machinery/camera/directional/north{
 	status = 0
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "ud" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/virtual_domain/powered)
+"uf" = (
+/obj/item/ammo_box/c40sol,
+/turf/open/floor/plating,
 /area/virtual_domain/powered)
 "ug" = (
 /obj/machinery/vending/wardrobe/bar_wardrobe,
@@ -427,6 +678,18 @@
 	},
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
+"uD" = (
+/obj/item/stack/rods,
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"vh" = (
+/obj/machinery/light/floor,
+/obj/structure/table,
+/obj/item/ammo_box/c40sol/pierce,
+/obj/item/ammo_box/c40sol/pierce,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
 "vl" = (
 /obj/item/surgery_tray/full/deployed,
 /turf/open/floor/iron/white,
@@ -435,27 +698,54 @@
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "vD" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/wall/r_wall,
+/obj/structure/closet/crate/trashcart/filled,
+/obj/item/ammo_box/c40sol,
+/obj/item/ammo_box/c35sol,
+/turf/open/floor/plating,
 /area/virtual_domain/powered)
 "vF" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/machinery/light/small/broken/directional/north,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
+"vM" = (
+/obj/effect/spawner/random/trash/bin,
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "we" = (
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
 "wg" = (
-/obj/machinery/vending/engineering,
+/obj/structure/rack/shelf,
+/obj/item/stack/sheet/iron/fifty,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
+"ws" = (
+/obj/effect/spawner/random/trash/janitor_supplies,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"wR" = (
+/obj/structure/toilet,
+/obj/machinery/light/small/dim/directional/north,
+/obj/effect/mob_spawn/ghost_role/human/ancient_milsim,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "xa" = (
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"xi" = (
+/obj/effect/random_mob_placer/cin,
+/obj/structure/chair/stool/directional/south,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"xl" = (
+/obj/item/keycard/yellow,
+/turf/open/floor/iron/smooth,
+/area/virtual_domain/powered)
 "xx" = (
 /obj/structure/chair/comfy/shuttle,
 /obj/machinery/computer{
@@ -474,32 +764,51 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "xF" = (
 /obj/effect/gibspawner/human,
-/turf/open/misc/dirt,
+/turf/open/misc/dirt/planet,
 /area/virtual_domain/powered)
 "xX" = (
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "xZ" = (
 /obj/effect/baseturf_helper/virtual_domain,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"yd" = (
+/obj/structure/guncase/wt550,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
 "yg" = (
 /obj/effect/spawner/random/trash/bin,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"yj" = (
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "yl" = (
-/turf/open/misc/dirt,
+/obj/effect/light_emitter,
+/turf/open/misc/dirt/planet,
 /area/virtual_domain/powered)
 "ym" = (
-/obj/structure/falsewall/reinforced,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
+"yy" = (
+/obj/effect/spawner/random/sakhno,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "yE" = (
@@ -509,14 +818,18 @@
 /area/virtual_domain/powered)
 "yH" = (
 /obj/structure/chair/office,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
+"yI" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "yJ" = (
-/turf/closed/indestructible/reinforced,
-/area/virtual_domain/powered)
-"zl" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/indestructible/reinforced,
+/turf/closed/wall/r_wall,
+/turf/open/floor/plating,
 /area/virtual_domain/powered)
 "zz" = (
 /obj/effect/spawner/structure/window/survival_pod,
@@ -524,13 +837,30 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/open/floor/iron/dark/smooth_large,
 /area/virtual_domain/powered)
+"zQ" = (
+/obj/machinery/vending/wardrobe/jani_wardrobe,
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
+"zY" = (
+/obj/item/stack/sheet/mineral/sandbags/fifty,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "Ak" = (
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"An" = (
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/bitrunning_transport,
+/area/virtual_domain/safehouse)
 "AH" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/smooth,
+/area/virtual_domain/powered)
+"AI" = (
+/obj/item/storage/medkit/expeditionary,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "AK" = (
 /obj/machinery/door/airlock/multi_tile/glass,
@@ -539,18 +869,44 @@
 "Bo" = (
 /obj/item/grown/log,
 /obj/item/grown/log,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "BK" = (
 /obj/structure/inflatable,
-/turf/open/misc/grass,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"Cj" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/smooth_half,
 /area/virtual_domain/powered)
 "Cn" = (
 /turf/open/floor/iron/smooth_half,
 /area/virtual_domain/powered)
+"CA" = (
+/obj/item/keycard/yellow,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"Dm" = (
+/obj/effect/spawner/random/trash/mess,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"Dr" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "Du" = (
 /obj/structure/toilet,
 /obj/machinery/light/small/dim/directional/north,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
+"Dz" = (
+/obj/item/storage/toolbox/guncase/soviet/plastikov{
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/cases.dmi';
+	desc = "A weapon's case. This one is green and looks pretty old, but is otherwise in decent condition."
+	},
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "DD" = (
@@ -558,11 +914,17 @@
 	color = "#556B2F";
 	opacity = 1
 	},
-/turf/open/misc/grass,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
 "DH" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/smooth,
+/area/virtual_domain/powered)
+"DN" = (
+/obj/machinery/light/floor,
+/obj/structure/table,
+/obj/item/megaphone,
+/turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
 "DX" = (
 /obj/machinery/light/small/dim/directional/west,
@@ -580,16 +942,26 @@
 /area/virtual_domain/powered)
 "EN" = (
 /obj/structure/railing/corner,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Ff" = (
 /turf/open/floor/iron/smooth_corner{
 	dir = 1
 	},
 /area/virtual_domain/powered)
+"Fk" = (
+/obj/item/storage/box/utensils,
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "Fm" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/smooth_corner,
+/area/virtual_domain/powered)
+"Fs" = (
+/obj/effect/spawner/random/trash/bin,
+/obj/structure/sign/poster/random/directional/west,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "FH" = (
 /obj/structure/chair/comfy/shuttle{
@@ -602,6 +974,10 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark,
 /area/virtual_domain/powered)
+"FZ" = (
+/obj/structure/sign/poster/random/directional/west,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
 "Gm" = (
 /obj/structure/table,
 /turf/open/floor/iron/white,
@@ -610,38 +986,92 @@
 /obj/item/grown/log,
 /obj/item/grown/log,
 /obj/item/grown/log,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "GJ" = (
 /obj/effect/spawner/random/vending/snackvend,
+/obj/structure/sign/poster/random/directional/west,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "GW" = (
 /obj/effect/spawner/random/trash/box,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"GZ" = (
+/obj/machinery/power/shuttle_engine/heater,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "Hq" = (
 /turf/closed/indestructible/binary,
 /area/virtual_domain)
+"Hr" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"HE" = (
+/obj/effect/spawner/random/trash/food_packaging,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "Ia" = (
 /obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
+"Id" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light/small/red/directional/east,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "Ih" = (
 /obj/machinery/vending/medical,
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
 "Iv" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
-/turf/open/misc/dirt,
-/area/virtual_domain)
+/obj/effect/random_mob_placer/cin,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "IF" = (
 /obj/effect/spawner/random/vending/snackvend,
 /obj/machinery/light/directional/west,
+/obj/structure/sign/poster/random/directional/west,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"IG" = (
+/obj/machinery/power/shuttle_engine/huge,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"Jc" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand/volcanic,
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/pouch/medical/firstaid/loaded,
+/obj/item/storage/pouch/medical/loaded,
+/obj/item/clothing/head/helmet/hecu,
+/obj/item/clothing/suit/armor/vest/hecu,
+/obj/item/storage/box/survival/syndie,
+/obj/item/gun/ballistic/automatic/sol_smg,
+/obj/item/knife/combat,
+/obj/item/gun/ballistic/automatic/pistol/sol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/ammo_box/magazine/c35sol_pistol,
+/obj/item/storage/belt/military/assault/hecu,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/ammo_box/magazine/c35sol_pistol/stendo,
+/obj/item/clothing/glasses/hud/health/sunglasses,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "Jl" = (
 /obj/structure/table/wood,
 /turf/open/floor/iron,
@@ -651,12 +1081,12 @@
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "Jz" = (
-/obj/structure/table/wood/fancy,
+/obj/structure/table,
 /obj/item/food/cake/birthday,
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
 "JJ" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/smooth_corner{
 	dir = 8
 	},
@@ -671,16 +1101,29 @@
 	dir = 8
 	},
 /area/virtual_domain/powered)
+"Km" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"Kx" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "KD" = (
-/obj/machinery/vending/engivend,
+/obj/structure/rack/shelf,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "KG" = (
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "KJ" = (
 /obj/structure/table,
 /turf/open/floor/plating,
@@ -689,18 +1132,26 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "KV" = (
 /turf/open/floor/iron/white,
 /area/virtual_domain/powered)
 "Lj" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/template_noop,
-/area/virtual_domain)
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
+"LC" = (
+/obj/structure/trash_pile,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "LD" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating,
+/area/virtual_domain/powered)
+"LX" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
 "Mc" = (
 /obj/structure/curtain/cloth{
@@ -713,7 +1164,7 @@
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "MR" = (
-/obj/structure/table/wood/fancy,
+/obj/structure/table,
 /obj/item/reagent_containers/cup/glass/bottle/champagne,
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
@@ -721,18 +1172,43 @@
 /obj/structure/shipping_container/kosmologistika,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"Nn" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
+"Nz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand/volcanic,
+/turf/open/floor/iron/white,
+/area/virtual_domain/safehouse)
 "NC" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "sol_invasion"
 	},
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"Ov" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "OI" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "ON" = (
 /obj/machinery/conveyor/auto{
 	dir = 4;
@@ -744,6 +1220,11 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"Pb" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/virtual_domain/safehouse)
 "Pd" = (
 /obj/structure/sink/directional/north,
 /obj/structure/mirror/directional/south,
@@ -754,46 +1235,55 @@
 	dir = 4
 	},
 /area/virtual_domain/powered)
+"QZ" = (
+/obj/effect/spawner/random/trash/hobo_squat,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
 "RL" = (
 /obj/machinery/light/small/dim/directional/north,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "Sm" = (
 /obj/structure/flora/bush/ferny/style_random,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Sq" = (
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Sr" = (
 /obj/machinery/light/directional/south,
+/obj/structure/barricade/sandbags,
 /turf/open/floor/iron/smooth_corner{
 	dir = 4
 	},
 /area/virtual_domain/powered)
 "Su" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "Sv" = (
 /turf/closed/wall/r_wall,
+/area/virtual_domain/powered)
+"Sy" = (
+/obj/structure/chair/stool/bar/directional/south,
+/obj/effect/mob_spawn/ghost_role/human/ancient_milsim,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "SF" = (
 /obj/structure/flora/bush/ferny/style_random,
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
-"SY" = (
-/obj/structure/table/wood,
-/obj/structure/decorative/fluff/ai_node,
-/turf/open/floor/iron,
+/turf/open/misc/grass/planet,
 /area/virtual_domain/powered)
+"SY" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "Ta" = (
 /obj/structure/flora/tree/jungle/style_random,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Tt" = (
 /obj/effect/spawner/random/trash/bin,
 /turf/open/floor/iron,
@@ -804,19 +1294,47 @@
 /area/virtual_domain/powered)
 "TJ" = (
 /obj/machinery/light/directional/south,
+/obj/structure/barricade/sandbags,
 /turf/open/floor/iron/smooth_corner{
 	dir = 1
 	},
 /area/virtual_domain/powered)
 "TN" = (
 /obj/item/grown/log,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"TT" = (
+/obj/structure/sign/departments/science/alt/directional/north,
+/obj/structure/sign/flag/nri/directional/north,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"TZ" = (
+/obj/effect/mob_spawn/corpse/human/cin_soldier,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"Ua" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Ub" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/railing,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"Uo" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/mob_spawn/ghost_role/human/ancient_milsim,
+/turf/open/floor/iron,
+/area/virtual_domain/powered)
+"Uu" = (
+/obj/item/ammo_box/c35sol,
+/turf/open/floor/iron/smooth,
+/area/virtual_domain/powered)
 "UP" = (
 /obj/structure/decorative/shelf/soda_milk{
 	density = 1
@@ -827,12 +1345,20 @@
 /obj/structure/chair/stool/bar/directional/south,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
+"Vk" = (
+/obj/item/ammo_box/c35sol,
+/turf/open/floor/plating,
+/area/virtual_domain/powered)
 "Vl" = (
 /obj/machinery/light/small/broken/directional/west,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"VA" = (
+/obj/item/storage/backpack/duffelbag/syndie/c4,
+/turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
 "VC" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /turf/open/floor/iron/smooth,
 /area/virtual_domain/powered)
 "VN" = (
@@ -844,12 +1370,13 @@
 "Wm" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/machinery/light/directional/west,
+/obj/structure/sign/poster/random/directional/west,
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "Ws" = (
 /obj/structure/flora/tree/jungle/small/style_random,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "WF" = (
 /obj/structure/urinal{
 	pixel_x = 32
@@ -860,15 +1387,22 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/misc/grass,
-/area/virtual_domain)
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Xp" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
 "Xw" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/wall/mineral/titanium/survival,
+/obj/effect/random_mob_placer/cin,
+/obj/effect/light_emitter,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"Yg" = (
+/obj/structure/table/wood,
+/obj/structure/sign/poster/random/directional/west,
+/obj/item/storage/toolbox/maint_kit,
+/turf/open/floor/iron,
 /area/virtual_domain/powered)
 "Yq" = (
 /obj/structure/chair{
@@ -878,8 +1412,11 @@
 /turf/open/floor/iron,
 /area/virtual_domain/powered)
 "Yr" = (
-/turf/template_noop,
-/area/virtual_domain)
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/virtual_domain/safehouse)
 "Yy" = (
 /obj/machinery/door/morgue,
 /turf/open/floor/iron,
@@ -888,10 +1425,27 @@
 /obj/structure/table_frame,
 /turf/open/floor/plating,
 /area/virtual_domain/powered)
+"YZ" = (
+/obj/effect/spawner/random/trash/caution_sign,
+/turf/open/misc/dirt/planet,
+/area/virtual_domain/powered)
+"Zq" = (
+/obj/structure/sign/departments/science/directional/north,
+/obj/structure/sign/flag/nri/directional/north,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 "Zv" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
+/obj/effect/random_mob_placer/cin,
 /obj/structure/chair/stool/directional/east,
 /turf/open/floor/iron/dark,
+/area/virtual_domain/powered)
+"Zw" = (
+/obj/item/storage/toolbox/guncase/skyrat/opfor/amr,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
+"Zx" = (
+/obj/item/keycard/yellow,
+/turf/open/floor/plating,
 /area/virtual_domain/powered)
 "ZB" = (
 /obj/structure/chair/sofa/corp/left{
@@ -908,9 +1462,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain/powered)
 "ZZ" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg,
-/turf/open/misc/grass,
-/area/virtual_domain)
+/obj/effect/random_mob_placer/cin,
+/turf/open/misc/grass/planet,
+/area/virtual_domain/powered)
 
 (1,1,1) = {"
 Hq
@@ -1147,32 +1701,32 @@ Hq
 (5,1,1) = {"
 Hq
 eT
-eT
+sO
 Sq
 Ta
 nO
 qx
-qx
+yl
 eT
 qx
 qx
 qx
-mt
+uD
 Sq
 Sq
 Sq
 Ta
-Sq
+jK
 Sq
 Sq
 Ws
 Sq
-Sq
+jK
 Sm
 Sq
 Sq
 Sq
-Sq
+jK
 Sq
 Sv
 vp
@@ -1420,8 +1974,8 @@ vp
 mc
 jL
 Sv
-yl
-yl
+qx
+qx
 fJ
 fJ
 fJ
@@ -1437,22 +1991,22 @@ Hq
 (10,1,1) = {"
 Hq
 Sm
-Sq
+jK
 Sq
 Sm
 nO
 qx
+yl
 qx
 qx
 qx
 qx
-qx
-qx
+yl
 Sq
 lI
 FH
-yl
-yl
+qx
+qx
 sh
 vF
 xx
@@ -1462,7 +2016,7 @@ Sq
 Sq
 Sq
 Sq
-Sq
+jK
 Sq
 qQ
 mc
@@ -1475,11 +2029,11 @@ mc
 mc
 mc
 vp
-yl
-ym
+qx
+bZ
 mc
 mc
-yl
+qx
 fJ
 fJ
 fJ
@@ -1509,12 +2063,12 @@ qx
 qx
 sh
 sh
-yl
+qx
 xF
-yl
-yl
+qx
+qx
 sh
-Xw
+sh
 Sq
 Sq
 qx
@@ -1534,10 +2088,10 @@ mc
 mc
 vp
 dj
-ym
+Sv
 mc
-yl
-yl
+qx
+qx
 fJ
 fJ
 fJ
@@ -1595,15 +2149,15 @@ MU
 Sv
 RL
 mc
-yl
+qx
 Sv
 Sv
 Sv
 Sv
 Sv
-yl
-yl
-yl
+qx
+qx
+qx
 Sv
 fJ
 Hq
@@ -1653,7 +2207,7 @@ vp
 Sv
 mc
 mc
-yl
+qx
 DX
 mc
 mc
@@ -1661,7 +2215,7 @@ mc
 mc
 mc
 mc
-yl
+qx
 Sv
 fJ
 Hq
@@ -1700,7 +2254,7 @@ Sv
 KD
 wg
 JP
-vp
+sE
 vp
 vp
 vp
@@ -1727,32 +2281,32 @@ Hq
 (15,1,1) = {"
 Hq
 EN
-qX
+Ua
 qx
 qx
 qx
 qx
-qx
+yl
 qx
 qx
 WM
 xX
+jK
 Sq
 Sq
 Sq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
-Sq
-Sq
+jK
 ip
 Sv
 Sv
@@ -1772,8 +2326,8 @@ Sv
 Sv
 Sv
 Sv
-ym
-ym
+bZ
+bZ
 Sv
 Sv
 mc
@@ -1816,11 +2370,11 @@ sB
 vp
 nh
 IF
-Tt
+Fs
 vp
 vp
-vp
-Tt
+cg
+Fs
 GJ
 Wm
 ZB
@@ -1831,10 +2385,10 @@ vp
 vp
 vp
 mc
-yl
+qx
 vp
 Sv
-yl
+qx
 ed
 Sv
 fJ
@@ -1876,7 +2430,7 @@ vp
 vp
 vp
 vp
-vp
+zY
 vp
 vp
 vp
@@ -1890,10 +2444,10 @@ vp
 Ak
 vp
 YF
-kJ
+Fk
 Sv
-yl
-yl
+qx
+qx
 Sv
 fJ
 Hq
@@ -1931,7 +2485,7 @@ ip
 sB
 vp
 vp
-vp
+Dz
 vp
 vp
 vp
@@ -1950,8 +2504,8 @@ vp
 Ak
 dj
 Sv
-yl
-yl
+qx
+qx
 Sv
 fJ
 Hq
@@ -2000,62 +2554,62 @@ Sv
 Sv
 Sv
 Sv
-MA
-vp
+lP
+zY
 kJ
 vp
 vp
 vp
-vp
+yj
 Sv
 mc
 mc
-yl
+qx
 fJ
 Hq
 "}
 (20,1,1) = {"
 Hq
 qx
-qx
+yl
 qx
 qx
 qx
 WM
-xX
+gu
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
-fH
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
+jK
 Sq
 fH
 Sq
 Sq
+jK
 Sq
+Sq
+Sq
+Sq
+jK
+Sq
+fH
+Sq
+Sq
+jK
 Sq
 Sv
-Du
+wR
 Yy
 vp
 vp
 nm
 Sv
-vp
+ho
 vp
 UV
-Jl
-vp
+Yg
+FZ
 nA
 Sv
 qq
@@ -2116,13 +2670,13 @@ bs
 vp
 OT
 Sv
-Tt
+vM
 MA
 vp
 sM
-rM
+Uo
 sM
-rM
+Dr
 Sv
 mc
 mc
@@ -2142,9 +2696,9 @@ nS
 Sq
 nS
 Ta
-nS
 Sq
-nS
+Sq
+Sq
 Sq
 nS
 Ws
@@ -2169,14 +2723,14 @@ yg
 Sv
 Yq
 vp
-UV
+Sy
 bs
 vp
 ug
 Sv
 rC
 vp
-vp
+AI
 vp
 vp
 vp
@@ -2203,7 +2757,7 @@ Sq
 Sq
 Sq
 Sq
-Ta
+Ws
 Sq
 Sq
 Sq
@@ -2228,7 +2782,7 @@ Sv
 hS
 vp
 UV
-Jl
+lV
 vp
 Tt
 Sv
@@ -2238,10 +2792,10 @@ vp
 Ak
 rM
 Ak
-rM
+Dr
 Sv
 mc
-yl
+qx
 Sv
 fJ
 Hq
@@ -2251,29 +2805,29 @@ Hq
 qx
 jN
 xX
-nS
+Sq
+Sq
+Sq
 Sq
 nS
 Sq
-nS
 Sq
-nS
 Sq
-nS
+Sq
 Sm
-nS
+Sq
 Sq
 nS
 Sq
-nS
 Sq
-nS
 Sq
-nS
 Sq
-nS
 Sq
-nS
+Sq
+Sq
+Sq
+Sq
+Sq
 Sq
 Sq
 Sv
@@ -2284,11 +2838,11 @@ WF
 nm
 Sv
 Jl
-rM
+bW
 vp
 vp
-vp
-SY
+pU
+Jl
 Sv
 ho
 vp
@@ -2307,32 +2861,32 @@ Hq
 (25,1,1) = {"
 Hq
 WM
-xX
+gu
 Sq
 Sq
 Sq
 Sq
-Sq
+qK
 Sq
 Sq
 Ta
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+jK
 Ta
 Sq
 Sq
 Sm
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+jK
 Sm
 Sv
 Sv
@@ -2416,7 +2970,7 @@ mc
 mc
 mc
 mc
-yl
+qx
 fJ
 Hq
 "}
@@ -2429,7 +2983,7 @@ Sq
 ip
 Sq
 Sq
-Sq
+Ws
 Sq
 Sq
 Sq
@@ -2474,7 +3028,7 @@ mc
 mc
 mc
 mc
-yl
+qx
 fJ
 Hq
 "}
@@ -2530,9 +3084,9 @@ Sv
 Sv
 Sv
 Sv
-yl
-yl
-yl
+qx
+qx
+qx
 fJ
 Hq
 "}
@@ -2540,7 +3094,7 @@ Hq
 Hq
 ip
 Sq
-Sq
+ZZ
 Sq
 Sq
 Sq
@@ -2597,21 +3151,21 @@ Hq
 (30,1,1) = {"
 Hq
 Sq
-Sq
+jK
 Sq
 Sm
 Sq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-ZZ
-Sq
+Xw
 Sq
 Sq
 Sq
+Sq
 fJ
 fJ
 fJ
@@ -2638,10 +3192,10 @@ fJ
 fJ
 fJ
 fJ
-yJ
-yJ
-ZU
-yJ
+Sv
+Sv
+gG
+Sv
 fJ
 fJ
 fJ
@@ -2696,10 +3250,10 @@ fJ
 fJ
 fJ
 fJ
-yJ
+Sv
 MR
 we
-yJ
+Sv
 fJ
 fJ
 fJ
@@ -2754,10 +3308,10 @@ fJ
 fJ
 fJ
 fJ
-yJ
+Sv
 lo
 we
-yJ
+Sv
 fJ
 fJ
 fJ
@@ -2812,10 +3366,10 @@ fJ
 fJ
 fJ
 fJ
-yJ
+Sv
 Jz
 we
-yJ
+Sv
 fJ
 fJ
 fJ
@@ -2870,10 +3424,10 @@ fJ
 fJ
 fJ
 fJ
-yJ
-yJ
+Sv
+Sv
 ZU
-zl
+Sv
 fJ
 fJ
 fJ
@@ -2887,17 +3441,17 @@ Hq
 (35,1,1) = {"
 Hq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+jK
 qx
 qx
 Sq
-Sq
-Sq
+ZZ
+jK
 Sq
 Sq
 Sq
@@ -2907,14 +3461,14 @@ mc
 Xp
 mc
 mc
-mc
-mc
-mc
+aN
+aN
+aN
 Xp
 Sv
 ON
 LD
-mc
+Nn
 KJ
 Sv
 fJ
@@ -2932,12 +3486,12 @@ Sq
 Sq
 Sq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+jK
 Sq
 Sq
 Hq
@@ -2969,10 +3523,10 @@ Sv
 ln
 mc
 mc
-ym
+yJ
 ON
 mc
-mc
+Zx
 KJ
 Sv
 fJ
@@ -2997,7 +3551,7 @@ Sq
 Sq
 Sq
 Sq
-Sq
+qx
 Hq
 "}
 (37,1,1) = {"
@@ -3013,7 +3567,7 @@ qx
 qx
 Sq
 pz
-tH
+yd
 tH
 pz
 Sq
@@ -3027,11 +3581,11 @@ Sv
 oW
 mc
 Su
-ym
+yJ
 sg
 NC
 mc
-mc
+zQ
 Sv
 Sv
 Sv
@@ -3053,9 +3607,9 @@ Sq
 Sq
 Sq
 Sq
-Sq
-Sq
-Sq
+qx
+qx
+qx
 Hq
 "}
 (38,1,1) = {"
@@ -3078,17 +3632,17 @@ Sq
 Sv
 dC
 KV
-Gm
+cr
 Ia
 KV
 Sv
 ep
-mc
-mc
+uf
+yy
 Sv
 ON
 mc
-mc
+Vk
 Sv
 Sv
 eX
@@ -3109,11 +3663,11 @@ Sq
 Sq
 Sq
 Sq
-OI
-OI
-OI
-OI
-OI
+Sq
+Sq
+Sq
+qx
+qx
 Hq
 "}
 (39,1,1) = {"
@@ -3141,7 +3695,7 @@ Gm
 aZ
 Sv
 lU
-mc
+uf
 mc
 Sv
 oU
@@ -3161,48 +3715,48 @@ Sq
 Sq
 Sq
 Sq
-Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+dw
+tE
 Yr
 tE
+tE
+Yr
+tE
+fN
+qx
+qx
+qx
 Hq
 "}
 (40,1,1) = {"
 Hq
 Sq
-Sq
-Sq
+jK
+pz
 DD
 DD
 BK
-Sq
+dz
 Sq
 qx
 qx
 pz
 Mc
 Mc
-fN
+pz
 Sq
 Sv
 Eh
+mn
 KV
 KV
-KV
-KV
+mn
 Sv
 UP
 mc
-mc
+uf
 Sv
-oU
+vD
 kk
 mc
 kh
@@ -3214,41 +3768,41 @@ we
 JY
 Sr
 Sv
+TT
 Sq
 Sq
+jK
 Sq
 Sq
-Sq
-Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+tE
+Jc
+aP
+ig
+An
+GZ
+Kx
+yl
+qx
+qx
 Hq
 "}
 (41,1,1) = {"
 Hq
 Sq
-Sq
+pz
 DD
 iB
 iB
 iB
 BK
-Sq
+dz
 qx
 qx
 Sq
 qx
 qx
 Sq
-Sq
+ZZ
 Sv
 vl
 KV
@@ -3257,20 +3811,20 @@ KV
 KV
 Sv
 ep
-mc
+Su
 Xp
 Sv
 Sv
 Sv
-Sv
+ym
 Sv
 Cn
 we
 lG
-bl
+LX
 bl
 we
-Cn
+Cj
 da
 Sq
 Sq
@@ -3278,32 +3832,32 @@ Sq
 Sq
 Sq
 Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+tE
+eA
+Lj
+hz
+fj
+GZ
+qx
+qx
+IG
+qx
 Hq
 "}
 (42,1,1) = {"
 Hq
-Sq
+pz
 DD
+iX
 iB
-iB
-bV
+vh
 iB
 iB
 DD
 qx
 qx
 Sq
-qx
+Iv
 qx
 Sq
 Sq
@@ -3318,7 +3872,7 @@ ln
 mc
 mc
 mc
-mc
+Su
 mc
 mc
 Sv
@@ -3326,7 +3880,7 @@ Cn
 we
 lG
 yH
-bl
+bU
 we
 Cn
 cR
@@ -3336,25 +3890,25 @@ Sq
 Sq
 Sq
 Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+Nz
+kK
+Lj
+Pb
+po
+GZ
+qx
+qx
+qx
+qx
 Hq
 "}
 (43,1,1) = {"
 Hq
 DD
-iB
-iB
-iB
-iB
+iX
+VA
+xi
+aO
 iB
 iB
 Mc
@@ -3383,10 +3937,10 @@ Sv
 Cn
 we
 lG
-lG
-bl
+xl
+bU
 we
-Cn
+Cj
 we
 Sq
 Sq
@@ -3394,23 +3948,23 @@ Sq
 Sq
 Sq
 Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+kp
+Ov
+lB
+Pb
+Km
+GZ
+qx
+qx
+qx
+qx
 Hq
 "}
 (44,1,1) = {"
 Hq
 DD
-iB
-iB
+iX
+CA
 iB
 iU
 iB
@@ -3441,10 +3995,10 @@ AK
 Cn
 we
 lG
-bl
-bl
+LX
+eo
 we
-Cn
+Cj
 da
 Sq
 Sq
@@ -3452,32 +4006,32 @@ Sq
 Sq
 Sq
 Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
+kp
+mA
+Id
+dr
+pN
+GZ
+Kx
+qx
+qx
+qx
 Hq
 "}
 (45,1,1) = {"
 Hq
-Sq
+pz
 DD
+iX
+iB
+DN
 iB
 iB
-bV
-iB
-iB
-aN
+pz
 Sq
 Sq
 Sq
-qx
+yl
 qx
 qx
 qx
@@ -3490,7 +4044,7 @@ lG
 lG
 lG
 VC
-lG
+LX
 lG
 lG
 lG
@@ -3504,34 +4058,34 @@ we
 ts
 TJ
 Sv
+Zq
 Sq
 Sq
+jK
 Sq
-Sq
-Sq
-Sq
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Yr
-Lj
+dw
+tE
+yI
+tE
+tE
+yI
+tE
+SY
+yl
+qx
+qx
 Hq
 "}
 (46,1,1) = {"
 Hq
-Sq
-Sq
+Zw
+pz
 DD
 iB
 iB
 iB
 BK
-Sq
+dz
 Sq
 Sq
 Sq
@@ -3541,14 +4095,14 @@ Sq
 Sq
 da
 lG
+Uu
 lG
 lG
-lG
-lG
+VC
 AH
 lG
 lG
-lG
+LX
 lG
 lG
 lG
@@ -3562,7 +4116,7 @@ Fm
 Ff
 Sv
 Sv
-vD
+Sv
 Sq
 Sq
 Sq
@@ -3573,24 +4127,24 @@ Sq
 Sq
 Sq
 Sq
-xD
-xD
-xD
-xD
-xD
+Sq
+Sq
+qx
+qx
+qx
 Hq
 "}
 (47,1,1) = {"
 Hq
 Sq
-Sq
-Sq
+TZ
+pz
 DD
 DD
 BK
+dz
 Sq
-Sq
-Sq
+ZZ
 pz
 dz
 dz
@@ -3634,8 +4188,8 @@ Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+qx
+qx
 Hq
 "}
 (48,1,1) = {"
@@ -3657,43 +4211,43 @@ pz
 Sq
 nB
 Sq
+eQ
+qx
+ws
+bC
+bC
+fJ
+fJ
+fJ
+fJ
+fJ
+fJ
+fJ
+fJ
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+fJ
+fJ
+fJ
+fJ
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
+Sq
 qx
 qx
 qx
-Sq
-Sq
-fJ
-fJ
-fJ
-fJ
-fJ
-fJ
-fJ
-fJ
-Sv
-Sv
-Sv
-Sv
-Sv
-Sv
-fJ
-fJ
-fJ
-fJ
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
-Sq
 Hq
 "}
 (49,1,1) = {"
@@ -3714,13 +4268,13 @@ iB
 bD
 qx
 dd
+YZ
+Hr
 qx
 qx
 qx
-qx
-qx
-qx
-Sq
+QZ
+LC
 fJ
 fJ
 fJ
@@ -3757,28 +4311,28 @@ Hq
 (50,1,1) = {"
 Hq
 Sq
-nU
+ax
 Sq
 ZZ
 Sq
 nU
+jK
 Sq
 Sq
-Sq
 pz
 pz
 pz
 pz
-fN
+pz
 Sq
 nB
-Sq
+jK
 qx
+Iv
+Dm
 qx
-qx
-qx
-qx
-Sq
+yl
+LC
 fJ
 fJ
 fJ
@@ -3797,17 +4351,17 @@ fJ
 fJ
 fJ
 fJ
-Sq
+jK
 Sq
 Sq
 Sq
 Sq
+jK
 Sq
 Sq
 Sq
 Sq
-Sq
-Sq
+jK
 Sq
 Sq
 Hq
@@ -3830,11 +4384,11 @@ Sq
 Sq
 Sq
 nB
-Sq
+aS
+HE
 qx
-qx
-qx
-Sq
+Hr
+LC
 fJ
 fJ
 fJ
