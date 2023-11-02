@@ -447,7 +447,8 @@
 /obj/machinery/button/door/directional/west{
 	id = "InterdyneCabin1";
 	name = "Door Bolt";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/structure/closet/secure_closet/personal{
 	icon_state = "cabinet"
@@ -1780,7 +1781,8 @@
 /obj/machinery/button/door/directional/east{
 	id = "InterdyneCabin3";
 	name = "Door Bolt";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/closet/secure_closet/personal{
@@ -1893,8 +1895,8 @@
 	name = "Interdyne Vault"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "su" = (
@@ -1948,7 +1950,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = 8;
 	pixel_y = 24;
-	req_access = list("syndicate_leader");
+	req_access = list("syndicate");
 	specialfunctions = 4
 	},
 /turf/open/floor/iron/dark,
@@ -2743,7 +2745,9 @@
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
 "Ap" = (
-/obj/structure/closet/secure_closet/medical2,
+/obj/structure/closet/secure_closet/medical2{
+	req_access = list("syndicate")
+	},
 /obj/effect/turf_decal/tile/dark_green/half{
 	dir = 4
 	},
@@ -2866,7 +2870,8 @@
 /obj/machinery/button/door/directional/west{
 	id = "InterdyneCabin2";
 	name = "Door Bolt";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/closet/secure_closet/personal{
