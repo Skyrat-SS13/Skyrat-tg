@@ -66,8 +66,6 @@
 		to_chat(target, span_warning("You feel a tiny prick."))
 	return 1
 
-//SKYRAT EDIT REMOVAL BEGIN - CHANGELING_TRANSFORMATION_REMOVAL
-/*
 /datum/action/changeling/sting/transformation
 	name = "Transformation Sting"
 	desc = "We silently sting an organism, injecting a retrovirus that forces them to transform."
@@ -138,8 +136,6 @@
 		to_chat(user, final_message)
 		return TRUE
 	return FALSE
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/action/changeling/sting/false_armblade
 	name = "False Armblade Sting"
