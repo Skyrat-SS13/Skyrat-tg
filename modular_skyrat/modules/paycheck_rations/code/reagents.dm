@@ -63,7 +63,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/honey
 	name = "tiny honey bottle"
-	desc = "A maritime ration sized bottle of honey, a miniscule amount for a miniscule sweetening to your day."
+	desc = "A maritime ration-sized bottle of honey, a minuscule amount for a minuscule sweetening to your day."
 	list_reagents = list(/datum/reagent/consumable/honey = 5)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/tiny/caramel
