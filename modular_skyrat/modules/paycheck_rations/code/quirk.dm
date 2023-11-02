@@ -54,6 +54,9 @@
 		tracked_ticket_book = null
 		return
 
+	if(!(SSeconomy.times_fired % 3 == 0))
+		return
+
 	var/obj/item/created_ticket
 	for(var/obj/card in bank_cards)
 		// We want to only make one ticket pr account per payday
