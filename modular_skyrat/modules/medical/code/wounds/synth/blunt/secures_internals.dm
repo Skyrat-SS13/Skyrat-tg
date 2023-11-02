@@ -20,7 +20,7 @@
 /datum/wound/blunt/robotic/secures_internals/handle_process(seconds_per_tick, times_fired)
 	. = ..()
 
-	if (!victim || IS_IN_STASIS(victim))
+	if (!victim || HAS_TRAIT(victim, TRAIT_STASIS))
 		return
 
 	if (gelled)
