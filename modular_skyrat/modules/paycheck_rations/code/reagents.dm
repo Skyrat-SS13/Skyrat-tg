@@ -6,7 +6,7 @@
 
 /obj/item/reagent_containers/condiment/rice/small_ration
 	name = "small rice sack"
-	desc = "A maritime ration sized portion of rice, containing just enough to make the universe's saddest rice dish."
+	desc = "A maritime ration-sized portion of rice, containing just enough to make the universe's saddest rice dish."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	list_reagents = list(/datum/reagent/consumable/rice = 10)
 
