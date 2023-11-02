@@ -3,7 +3,7 @@
 	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted food ration on the next shuttle to the station."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/tickets.dmi'
 	icon_state = "ticket_food"
-	default_raw_text = "Redeem this ticket in the nearest supply console to recieve benefits."
+	default_raw_text = "Redeem this ticket in the nearest supply console to receive benefits."
 	color = COLOR_OFF_WHITE
 	show_written_words = FALSE
 	/// The finalized list of items we send once the ticket is used, don't define here, the procs will do it
