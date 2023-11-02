@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/condiment/small_ration_korta_flour
 	name = "small korta flour sack"
-	desc = "A maritime ration sized portion of korta flour, containing just enough to make a single good loaf of bread to fuel the day."
+	desc = "A maritime ration-sized portion of korta flour, containing just enough to make a single good loaf of bread to fuel the day."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	icon_state = "flour_korta"
 	inhand_icon_state = "carton"
