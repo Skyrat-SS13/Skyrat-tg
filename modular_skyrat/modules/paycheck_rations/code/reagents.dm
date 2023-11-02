@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/condiment/flour/small_ration
 	name = "small flour sack"
-	desc = "A maritime ration sized portion of flour, containing just enough to make a single good loaf of bread to fuel the day."
+	desc = "A maritime ration-sized portion of flour, containing just enough to make a single good loaf of bread to fuel the day."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/food_containers.dmi'
 	list_reagents = list(/datum/reagent/consumable/flour = 15)
 
