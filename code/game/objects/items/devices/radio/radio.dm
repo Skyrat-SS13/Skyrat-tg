@@ -531,7 +531,11 @@
 	subspace_transmission = TRUE
 	subspace_switchable = TRUE
 	dog_fashion = null
+<<<<<<< HEAD
 	canhear_range = 0 // Skyrat Edit - Stops borgs being a loudspeaker and contains it to the tile they're on
+=======
+	canhear_range = 0
+>>>>>>> 8f0d82d136c (Fixes eavesdropping on sillycons (#79453))
 
 /obj/item/radio/borg/resetChannels()
 	. = ..()
