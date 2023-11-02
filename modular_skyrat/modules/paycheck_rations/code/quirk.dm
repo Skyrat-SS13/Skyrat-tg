@@ -24,7 +24,7 @@
 			LOCATION_HANDS = ITEM_SLOT_HANDS,
 		),
 	)
-	account.tracked_ticket_book = new_ticket_book
+	account.tracked_ticket_book = WEAKREF(new_ticket_book)
 	account.payday_modifier = 0.5
 	to_chat(client_source.mob, span_notice("You remember to keep close hold of your ticket book, it can't be replaced if lost and all of your ration tickets are placed there!"))
 
