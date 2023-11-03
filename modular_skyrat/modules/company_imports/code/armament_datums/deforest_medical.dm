@@ -5,7 +5,7 @@
 // Precompiled first aid kits, ready to go if you don't want to bother getting individual items
 
 /datum/armament_entry/company_import/deforest/first_aid_kit
-	subcategory = "First-Aid Consumables"
+	subcategory = "First-Aid Kits"
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/civil_defense
 	item_type = /obj/item/storage/medkit/civil_defense
