@@ -2,42 +2,53 @@
 	category = DEFOREST_MEDICAL_NAME
 	company_bitflag = CARGO_COMPANY_DEFOREST
 
+// Precompiled first aid kits, ready to go if you don't want to bother getting individual items
+
+/datum/armament_entry/company_import/deforest/first_aid_kit
+	subcategory = "First-Aid Consumables"
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/civil_defense
+	item_type = /obj/item/storage/medkit/civil_defense
+	cost = PAYCHECK_COMMAND * 3.5
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/frontier
+	item_type = /obj/item/storage/medkit/frontier
+	cost = PAYCHECK_COMMAND * 5
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/combat_surgeon
+	item_type = /obj/item/storage/medkit/combat_surgeon
+	cost = PAYCHECK_COMMAND * 6
+
 // Basic first aid supplies like gauze, sutures, mesh, so on
 
 /datum/armament_entry/company_import/deforest/first_aid
 	subcategory = "First-Aid Consumables"
 
-/datum/armament_entry/company_import/deforest/first_aid/gauze
-	item_type = /obj/item/stack/medical/gauze/twelve
+/datum/armament_entry/company_import/deforest/first_aid/coagulant
+	item_type = /obj/item/stack/medical/suture/coagulant
 	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/bruise_pack
-	item_type = /obj/item/stack/medical/bruise_pack
+/datum/armament_entry/company_import/deforest/first_aid/red_sun
+	item_type = /obj/item/stack/medical/ointment/red_sun
 	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/ointment
-	item_type = /obj/item/stack/medical/ointment
+/datum/armament_entry/company_import/deforest/first_aid/sterile_gauze
+	item_type = /obj/item/stack/medical/gauze/sterilized
 	cost = PAYCHECK_LOWER
 
-/datum/armament_entry/company_import/deforest/first_aid/suture
-	item_type = /obj/item/stack/medical/suture
-	cost = PAYCHECK_LOWER
-
-/datum/armament_entry/company_import/deforest/first_aid/mesh
-	item_type = /obj/item/stack/medical/mesh
-	cost = PAYCHECK_LOWER
-
-/datum/armament_entry/company_import/deforest/first_aid/bone_gel
-	item_type = /obj/item/stack/medical/bone_gel
+/datum/armament_entry/company_import/deforest/first_aid/amollin
+	item_type = /obj/item/storage/pill_bottle/painkiller
 	cost = PAYCHECK_CREW
 
-/datum/armament_entry/company_import/deforest/first_aid/medicated_sutures
-	item_type = /obj/item/stack/medical/suture/medicated
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/first_aid/subdermal_splint
+	item_type = /obj/item/stack/medical/wound_recovery
+	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/deforest/first_aid/advanced_mesh
-	item_type = /obj/item/stack/medical/mesh/advanced
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/first_aid/rapid_coagulant
+	item_type = /obj/item/stack/medical/wound_recovery/rapid_coagulant
+	cost = PAYCHECK_COMMAND * 2
+
+// Autoinjectors for healing
 
 /datum/armament_entry/company_import/deforest/medpens
 	subcategory = "Medical Autoinjectors"
@@ -74,6 +85,8 @@
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
 	contraband = TRUE
 
+// Autoinjectors for fighting
+
 /datum/armament_entry/company_import/deforest/medpens_stim
 	subcategory = "Stimulant Autoinjectors"
 	cost = PAYCHECK_COMMAND * 2
@@ -107,7 +120,6 @@
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/demoneye
 	cost = PAYCHECK_COMMAND * 3
 	contraband = TRUE
-
 
 // Equipment, from defibs to scanners to surgical tools
 
@@ -179,52 +191,3 @@
 /datum/armament_entry/company_import/deforest/medical_modules/surgical_processor
 	name = "MOD surgical processor module"
 	item_type = /obj/item/mod/module/surgical_processor
-
-// Various advanced cybernetic organs, organ replacements for the rich
-
-/datum/armament_entry/company_import/deforest/cyber_organs
-	subcategory = "Premium Cybernetic Organs"
-	cost = PAYCHECK_CREW * 3
-
-/datum/armament_entry/company_import/deforest/cyber_organs/eyes
-	name = "shielded cybernetic eyes"
-	item_type = /obj/item/storage/organbox/advanced_cyber_eyes
-
-/datum/armament_entry/company_import/deforest/cyber_organs/ears
-	name = "upgraded cybernetic ears"
-	item_type = /obj/item/storage/organbox/advanced_cyber_ears
-
-/datum/armament_entry/company_import/deforest/cyber_organs/heart
-	name = "upgraded cybernetic heart"
-	item_type = /obj/item/storage/organbox/advanced_cyber_heart
-
-/datum/armament_entry/company_import/deforest/cyber_organs/liver
-	name = "upgraded cybernetic liver"
-	item_type = /obj/item/storage/organbox/advanced_cyber_liver
-
-/datum/armament_entry/company_import/deforest/cyber_organs/lungs
-	name = "upgraded cybernetic lungs"
-	item_type = /obj/item/storage/organbox/advanced_cyber_lungs
-
-/datum/armament_entry/company_import/deforest/cyber_organs/stomach
-	name = "upgraded cybernetic stomach"
-	item_type = /obj/item/storage/organbox/advanced_cyber_stomach
-
-/datum/armament_entry/company_import/deforest/cyber_organs/augments
-	cost = PAYCHECK_COMMAND * 2
-
-/datum/armament_entry/company_import/deforest/cyber_organs/augments/nutriment
-	name = "Nutriment pump implant"
-	item_type = /obj/item/organ/internal/cyberimp/chest/nutriment
-
-/datum/armament_entry/company_import/deforest/cyber_organs/augments/reviver
-	name = "Reviver implant"
-	item_type = /obj/item/organ/internal/cyberimp/chest/reviver
-
-/datum/armament_entry/company_import/deforest/cyber_organs/augments/surgery_implant
-	name = "surgical toolset implant"
-	item_type = /obj/item/organ/internal/cyberimp/arm/surgery
-
-/datum/armament_entry/company_import/deforest/cyber_organs/augments/breathing_tube
-	name = "breathing tube implant"
-	item_type = /obj/item/organ/internal/cyberimp/mouth/breathing_tube
