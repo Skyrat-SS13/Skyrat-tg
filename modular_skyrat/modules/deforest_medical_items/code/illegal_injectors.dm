@@ -9,7 +9,8 @@
 	list_reagents = list(
 		/datum/reagent/drug/twitch = 10,
 		/datum/reagent/drug/maint/tar = 5,
-		/datum/reagent/medicine/synaphydramine = 5,
+		/datum/reagent/medicine/silibinin = 5,
+		/datum/reagent/toxin/leadacetate = 5,
 	)
 
 // Demoneye, for when you feel the need to become "fucking invincible"
@@ -23,6 +24,7 @@
 	list_reagents = list(
 		/datum/reagent/drug/demoneye = 10,
 		/datum/reagent/drug/maint/sludge = 10,
+		/datum/reagent/toxin/leadacetate = 5,
 	)
 
 // Mix of many of the stamina damage regenerating drugs to provide a cocktail no baton could hope to beat
@@ -38,6 +40,7 @@
 		/datum/reagent/drug/kronkaine = 5,
 		/datum/reagent/drug/pumpup = 5,
 		/datum/reagent/medicine/diphenhydramine = 5,
+		/datum/reagent/impurity = 5,
 	)
 
 // Earthsblood alongside a few additives, there's nothing inherently illegal but its a weird one so...
@@ -53,6 +56,7 @@
 		/datum/reagent/medicine/polypyr = 5,
 		/datum/reagent/medicine/silibinin = 5,
 		/datum/reagent/medicine/earthsblood = 5,
+		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
 // Combat stimulant that makes you immune to slowdowns for a bit
@@ -67,4 +71,5 @@
 		/datum/reagent/medicine/mine_salve = 5,
 		/datum/reagent/medicine/synaptizine = 10,
 		/datum/reagent/medicine/muscle_stimulant = 5,
+		/datum/reagent/impurity = 5,
 	)

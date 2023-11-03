@@ -70,7 +70,7 @@
 /datum/armament_entry/company_import/deforest/medpens/halobinin
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 
-/datum/armament_entry/company_import/deforest/medpens_stim/pentibinin
+/datum/armament_entry/company_import/deforest/medpens/pentibinin
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
 	contraband = TRUE
 

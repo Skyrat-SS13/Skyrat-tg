@@ -5,7 +5,7 @@
 	desc = "A Deforest branded autoinjector, though this one seems to be both empty and non-functional."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/injectors.dmi'
 	icon_state = "default"
-	volume = 20
+	volume = 25
 	list_reagents = list()
 	/// If this pen has a timer for injecting others with, just for safety with some of the drugs in these
 	var/inject_others_time = 1.5 SECONDS
@@ -65,6 +65,7 @@
 		/datum/reagent/medicine/oculine = 7,
 		/datum/reagent/impurity/inacusiate = 3,
 		/datum/reagent/inverse/oculine = 3,
+		/datum/reagent/toxin/lipolicide = 5,
 	)
 
 // Adrenaline, fills you with determination (and also stimulants)
@@ -75,9 +76,10 @@
 	base_icon_state = "adrenaline"
 	icon_state = "adrenaline"
 	list_reagents = list(
-		/datum/reagent/medicine/stimulants= 5,
+		/datum/reagent/medicine/synaptizine = 5,
 		/datum/reagent/medicine/inaprovaline = 5,
 		/datum/reagent/determination = 10,
+		/datum/reagent/toxin/histamine = 5,
 	)
 
 // Morpital, heals a small amount of damage and kills pain for a bit
@@ -90,6 +92,7 @@
 	list_reagents = list(
 		/datum/reagent/medicine/morphine = 5,
 		/datum/reagent/impurity/healing/medicine_failure = 15,
+		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
 // Lipital, heals more damage than morpital but doesnt work much at higher damages
@@ -103,6 +106,7 @@
 	list_reagents = list(
 		/datum/reagent/medicine/lidocaine = 5,
 		/datum/reagent/medicine/granibitaluri = 15,
+		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
 // Anti-poisoning injector, with a little bit of radiation healing as a treat
@@ -115,6 +119,7 @@
 	list_reagents = list(
 		/datum/reagent/medicine/ammoniated_mercury = 10,
 		/datum/reagent/medicine/potass_iodide = 10,
+		/datum/reagent/nitrous_oxide = 5,
 	)
 
 // Epinephrine and helps a little bit against stuns and stamina damage
@@ -128,6 +133,7 @@
 		/datum/reagent/medicine/epinephrine = 10,
 		/datum/reagent/medicine/synaptizine = 5,
 		/datum/reagent/medicine/synaphydramine = 5,
+		/datum/reagent/nitrous_oxide = 5,
 	)
 
 // Critical condition stabilizer
@@ -141,6 +147,7 @@
 		/datum/reagent/medicine/atropine = 10,
 		/datum/reagent/medicine/calomel = 5,
 		/datum/reagent/medicine/salbutamol = 5,
+		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
 // Coagulant, really not a whole lot more
@@ -154,6 +161,7 @@
 		/datum/reagent/medicine/coagulant = 10,
 		/datum/reagent/medicine/coagulant/seraka_extract = 5,
 		/datum/reagent/medicine/salglu_solution = 5,
+		/datum/reagent/impurity = 5,
 	)
 
 // Stimulant centered around ondansetron
@@ -167,6 +175,7 @@
 		/datum/reagent/medicine/ondansetron = 5,
 		/datum/reagent/drug/kronkaine = 5,
 		/datum/reagent/medicine/omnizine/protozine = 10,
+		/datum/reagent/impurity = 5,
 	)
 
 // You ever needed to juice on stims to exercise harder? No? Do you want to?
@@ -179,7 +188,7 @@
 	list_reagents = list(
 		/datum/reagent/drug/pumpup = 5,
 		/datum/reagent/toxin/leadacetate = 5,
-		/datum/reagent/consumable/nutriment/vitamin = 10,
+		/datum/reagent/consumable/nutriment/vitamin = 15,
 	)
 
 // Stuff really good at healing burn stuff and stabilizing temps
@@ -193,6 +202,7 @@
 		/datum/reagent/medicine/mine_salve = 5,
 		/datum/reagent/medicine/leporazine = 5,
 		/datum/reagent/medicine/c2/lenturi = 10,
+		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
 // Stabilizes a lot of stats like drowsiness, sanity, dizziness, so on
@@ -205,6 +215,7 @@
 	list_reagents = list(
 		/datum/reagent/medicine/modafinil = 10,
 		/datum/reagent/medicine/psicodine = 10,
+		/datum/reagent/medicine/leporazine = 5,
 	)
 
 // Helps with liver failure and some drugs, also alcohol
@@ -219,4 +230,5 @@
 		/datum/reagent/medicine/antihol = 5,
 		/datum/reagent/medicine/higadrite = 5,
 		/datum/reagent/medicine/silibinin = 5,
+		/datum/reagent/impurity = 5,
 	)
