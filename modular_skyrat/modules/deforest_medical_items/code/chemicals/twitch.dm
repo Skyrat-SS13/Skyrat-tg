@@ -1,4 +1,5 @@
 #define TWITCH_BLUR_EFFECT "twitch_dodge_blur"
+#define TWITCH_OVERDOSE_BLUR_EFFECT "twitch_overdose_blur"
 
 // Reaction to make twitch, makes 10 from 17u input reagents
 
@@ -163,8 +164,8 @@
 		our_guy.emote("cough")
 
 	if(SPT_PROB(10, seconds_per_tick))
-		our_guy.add_filter("overdose_phase", 2, phase_filter(8))
-		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
+		our_guy.add_filter(TWITCH_OVERDOSE_BLUR_EFFECT, 2, phase_filter(8))
+		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/datum, remove_filter), TWITCH_OVERDOSE_BLUR_EFFECT), 0.5 SECONDS)
 
 
 /// Changes heard message spans into that defined on the drug earlier
