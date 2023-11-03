@@ -55,7 +55,7 @@
 	if(!aura_active)
 		return
 	aura_active = FALSE
-	qdel(aura_healing_component)
+	QDEL_NULL(aura_healing_component)
 	owner.balloon_alert(owner, "healing aura ended")
 
 
