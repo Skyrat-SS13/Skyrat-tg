@@ -61,6 +61,7 @@
 		if (isnull(creature.client)) // Are they connected?
 			trimmed_list.Remove(creature)
 			continue
+<<<<<<< HEAD
 		if (isnull(creature.mind))
 			trimmed_list.Remove(creature)
 			continue
@@ -72,6 +73,8 @@
 			trimmed_list.Remove(creature)
 			continue
 		//SKYRAT EDIT END
+=======
+>>>>>>> 8f1e330d2ea (Fixes observer mind selection [NO GBP] (#79471))
 		if(creature.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(creature)
 			continue
@@ -81,6 +84,10 @@
 		if (is_banned_from(creature.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			trimmed_list.Remove(creature)
 			continue
+
+		if (isnull(creature.mind))
+			continue
+
 		if (restrict_ghost_roles && (creature.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
 			trimmed_list.Remove(creature)
 			continue
