@@ -233,12 +233,6 @@
 	/// User overlay
 	var/mutable_appearance/lightning
 
-/obj/item/mod/module/hydraulic/on_suit_activation()
-	ADD_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
-
-/obj/item/mod/module/hydraulic/on_suit_deactivation(deleting = FALSE) //SKYRAT EDIT
-	REMOVE_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
-
 /obj/item/mod/module/hydraulic/on_select_use(atom/target)
 	. = ..()
 	if(!.)
