@@ -70,6 +70,9 @@
 /// Determines if something can receive healing from a xeno
 #define TRAIT_XENO_HEAL_AURA "trait_xeno_heal_aura"
 
+/// Trait source for anything granted by narcotics
+#define TRAIT_NARCOTICS "narcotics_given"
+
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
 
