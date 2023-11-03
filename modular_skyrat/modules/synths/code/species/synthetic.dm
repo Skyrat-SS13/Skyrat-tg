@@ -96,7 +96,7 @@
 		if(eyes)
 			eyes.eye_icon_state = "None"
 
-		screen = new
+		screen = new(transformer)
 		screen.Grant(transformer)
 
 		return
