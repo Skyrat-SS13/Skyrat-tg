@@ -9,7 +9,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	glasses = null
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/headset_faction/bowman
 	id = /obj/item/card/id/advanced/solfed
 	r_hand = null
 	l_hand = null
@@ -31,7 +31,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
-	ears = /obj/item/radio/headset/syndicate/alt
+	ears = /obj/item/radio/headset/cybersun
 	mask = /obj/item/clothing/mask/balaclavaadjust
 	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/forest
 	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
@@ -45,14 +45,15 @@
 	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
-	ears = /obj/item/radio/headset/syndicate
+	ears = /obj/item/radio/headset/cybersun
 	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/forest
 	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/gun/ballistic/automatic/pistol/clandestine,
-							/obj/item/ammo_box/magazine/m10mm = 2,
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack,
+		/obj/item/gun/ballistic/automatic/pistol/clandestine,
+		/obj/item/ammo_box/magazine/m10mm = 2,
 	)
 	r_hand = null
 	l_hand = null
