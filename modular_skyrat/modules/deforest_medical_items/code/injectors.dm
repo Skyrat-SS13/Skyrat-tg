@@ -58,6 +58,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
 	name = "occuisate sensory restoration injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to restore your vision and hearing to operation."
+	base_icon_state = "occuisate"
 	icon_state = "occuisate"
 	list_reagents = list(
 		/datum/reagent/medicine/inacusiate = 7,
@@ -71,6 +72,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/adrenaline
 	name = "adrenaline injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to intentionally give yourself fight or flight on demand."
+	base_icon_state = "adrenaline"
 	icon_state = "adrenaline"
 	list_reagents = list(
 		/datum/reagent/medicine/stimulants= 5,
@@ -83,6 +85,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/morpital
 	name = "morpital regenerative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage."
+	base_icon_state = "morpital"
 	icon_state = "morpital"
 	list_reagents = list(
 		/datum/reagent/medicine/morphine = 5,
@@ -95,6 +98,7 @@
 	name = "lipital regenerative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage. \
 		Works most effectively against lower amounts of physical damage."
+	base_icon_state = "lipital"
 	icon_state = "lipital"
 	list_reagents = list(
 		/datum/reagent/medicine/lidocaine = 5,
@@ -106,6 +110,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 	name = "meridine antidote injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to serve as antidote to most galactic toxins."
+	base_icon_state = "meridine"
 	icon_state = "meridine"
 	list_reagents = list(
 		/datum/reagent/medicine/ammoniated_mercury = 10,
@@ -117,6 +122,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/synephrine
 	name = "synephrine emergency stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to stabilize critical condition and recover from stamina deficits."
+	base_icon_state = "synephrine"
 	icon_state = "synephrine"
 	list_reagents = list(
 		/datum/reagent/medicine/epinephrine = 10,
@@ -129,6 +135,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
 	name = "calopine emergency stabilizant injector"
 	desc = "A Deforest branded autoinjector, loaded with a stabilizing mix of reagents to repair critical conditions."
+	base_icon_state = "calopine"
 	icon_state = "calopine"
 	list_reagents = list(
 		/datum/reagent/medicine/atropine = 10,
@@ -141,6 +148,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/coagulants
 	name = "coagulant-S injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of coagulants to prevent and stop bleeding."
+	base_icon_state = "coagulant"
 	icon_state = "coagulant"
 	list_reagents = list(
 		/datum/reagent/medicine/coagulant = 10,
@@ -153,6 +161,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
 	name = "krotozine manipulative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of stimulants of weak healing agents."
+	base_icon_state = "krotozine"
 	icon_state = "krotozine"
 	list_reagents = list(
 		/datum/reagent/medicine/ondansetron = 5,
@@ -165,6 +174,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/vitatate
 	name = "vitatate supplement injector"
 	desc = "A Deforest branded autoinjector, loaded with an unusual mix of reagents that many claim increase exercise and physical performance in general."
+	base_icon_state = "vitatate"
 	icon_state = "vitatate"
 	list_reagents = list(
 		/datum/reagent/drug/pumpup = 5,
@@ -177,6 +187,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
 	name = "lepoturi burn treatment injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to rapidly treat burns."
+	base_icon_state = "lepoturi"
 	icon_state = "lepoturi"
 	list_reagents = list(
 		/datum/reagent/medicine/mine_salve = 5,
@@ -189,6 +200,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/psifinil
 	name = "psifinil personal recovery injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy many common ailments, such as drowsiness, pain, instability, the like."
+	base_icon_state = "psifinil"
 	icon_state = "psifinil"
 	list_reagents = list(
 		/datum/reagent/medicine/modafinil = 10,
@@ -200,6 +212,7 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 	name = "halobinin soberant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy the effects of liver failure and common drugs."
+	base_icon_state = "halobinin"
 	icon_state = "halobinin"
 	list_reagents = list(
 		/datum/reagent/medicine/haloperidol = 5,

@@ -4,6 +4,7 @@
 	name = "TWitch sensory stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with 'TWitch' among other reagents. This drug is known to make \
 		those who take it 'see faster', whatever that means."
+	base_icon_state = "twitch"
 	icon_state = "twitch"
 	list_reagents = list(
 		/datum/reagent/drug/twitch = 10,
@@ -17,6 +18,7 @@
 	name = "DemonEye steroid injector"
 	desc = "A Deforest branded autoinjector, loaded with 'DemonEye' among other reagents. This drug is known to make \
 		those who take it numb to all pains and extremely difficult to kill as a result."
+	base_icon_state = "demoneye"
 	icon_state = "demoneye"
 	list_reagents = list(
 		/datum/reagent/drug/demoneye = 10,
@@ -29,6 +31,7 @@
 	name = "aranepaine combat stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it nearly \
 		immune to exhaustion while its in their system."
+	base_icon_state = "aranepaine"
 	icon_state = "aranepaine"
 	list_reagents = list(
 		/datum/reagent/drug/aranesp = 5,
@@ -43,6 +46,7 @@
 	name = "pentibinin normalizant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it \
 		recover from many different types of damages, with many unusual or undocumented side-effects."
+	base_icon_state = "pentibinin"
 	icon_state = "pentibinin"
 	list_reagents = list(
 		/datum/reagent/medicine/c2/penthrite = 5,
@@ -57,6 +61,7 @@
 	name = "synalvipitol muscle stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it \
 		nearly immune to the slowing effects of silly things like 'being tired' or 'facing muscle failure'."
+	base_icon_state = "synalvipitol"
 	icon_state = "synalvipitol"
 	list_reagents = list(
 		/datum/reagent/medicine/mine_salve = 5,
