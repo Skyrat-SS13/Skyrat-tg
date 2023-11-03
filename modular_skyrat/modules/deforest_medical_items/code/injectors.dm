@@ -7,10 +7,51 @@
 	icon_state = "default"
 	volume = 20
 	list_reagents = list()
+	/// If this pen has a timer for injecting others with, just for safety with some of the drugs in these
+	var/inject_others_time = 1.5 SECONDS
 
 /obj/item/reagent_containers/hypospray/medipen/deforest/Initialize(mapload)
 	. = ..()
 	amount_per_transfer_from_this = volume
+
+/obj/item/reagent_containers/hypospray/medipen/deforest/inject(mob/living/affected_mob, mob/user)
+	if(!reagents.total_volume)
+		to_chat(user, span_warning("[src] is empty!"))
+		return FALSE
+	if(!iscarbon(affected_mob))
+		return FALSE
+
+	if((affected_mob != user) && inject_others_time)
+		affected_mob.visible_message(span_danger("[user] is trying to inject [affected_mob]!"), \
+				span_userdanger("[user] is trying to inject something into you!"))
+		if(!do_after(user, CHEM_INTERACT_DELAY(inject_others_time, user), target))
+			return FALSE
+
+	//Always log attemped injects for admins
+	var/list/injected = list()
+	for(var/datum/reagent/injected_reagent in reagents.reagent_list)
+		injected += injected_reagent.name
+	var/contained = english_list(injected)
+	log_combat(user, affected_mob, "attempted to inject", src, "([contained])")
+
+	if(reagents.total_volume && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
+		to_chat(affected_mob, span_warning("You feel a tiny prick!"))
+		to_chat(user, span_notice("You inject [affected_mob] with [src]."))
+		if(!stealthy)
+			playsound(affected_mob, 'sound/items/hypospray.ogg', 50, TRUE)
+		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
+
+		if(affected_mob.reagents)
+			var/trans = 0
+			if(!infinite)
+				trans = reagents.trans_to(affected_mob, amount_per_transfer_from_this, transferred_by = user, methods = INJECT)
+			else
+				reagents.expose(affected_mob, INJECT, fraction)
+				trans = reagents.copy_to(affected_mob, amount_per_transfer_from_this)
+			to_chat(user, span_notice("[trans] unit\s injected. [reagents.total_volume] unit\s remaining in [src]."))
+			log_combat(user, affected_mob, "injected", src, "([contained])")
+		return TRUE
+	return FALSE
 
 // Sensory restoration, heals eyes and ears with a bit of impurity
 
