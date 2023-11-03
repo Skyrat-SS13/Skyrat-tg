@@ -10,6 +10,7 @@
 /datum/armament_entry/company_import/deforest/first_aid/gauze
 	item_type = /obj/item/stack/medical/gauze/twelve
 	cost = PAYCHECK_LOWER
+
 /datum/armament_entry/company_import/deforest/first_aid/bruise_pack
 	item_type = /obj/item/stack/medical/bruise_pack
 	cost = PAYCHECK_LOWER
@@ -39,73 +40,74 @@
 	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/deforest/medpens
-	subcategory = "Autoinjectors"
+	subcategory = "Medical Autoinjectors"
 	cost = PAYCHECK_COMMAND * 1.5
 
-/datum/armament_entry/company_import/deforest/medpens/epipen
-	item_type = /obj/item/reagent_containers/hypospray/medipen
+/datum/armament_entry/company_import/deforest/medpens/occuisate
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
 
-/datum/armament_entry/company_import/deforest/medpens/emergency_pen
-	item_type = /obj/item/reagent_containers/hypospray/medipen/ekit
+/datum/armament_entry/company_import/deforest/medpens/morpital
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/morpital
 
-/datum/armament_entry/company_import/deforest/medpens/blood_loss
-	item_type = /obj/item/reagent_containers/hypospray/medipen/blood_loss
+/datum/armament_entry/company_import/deforest/medpens/lipital
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
 
-/datum/armament_entry/company_import/deforest/medpens/atropine
-	item_type = /obj/item/reagent_containers/hypospray/medipen/atropine
+/datum/armament_entry/company_import/deforest/medpens/meridine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 
-/datum/armament_entry/company_import/deforest/medpens/oxandrolone
-	item_type = /obj/item/reagent_containers/hypospray/medipen/oxandrolone
+/datum/armament_entry/company_import/deforest/medpens/calopine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
 
-/datum/armament_entry/company_import/deforest/medpens/salacid
-	item_type = /obj/item/reagent_containers/hypospray/medipen/salacid
+/datum/armament_entry/company_import/deforest/medpens/coagulants
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/coagulants
 
-/datum/armament_entry/company_import/deforest/medpens/penacid
-	item_type = /obj/item/reagent_containers/hypospray/medipen/penacid
+/datum/armament_entry/company_import/deforest/medpens/lepoturi
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
 
-/datum/armament_entry/company_import/deforest/medpens/salbutamol
-	item_type = /obj/item/reagent_containers/hypospray/medipen/salbutamol
+/datum/armament_entry/company_import/deforest/medpens/psifinil
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/psifinil
 
-// Various chemicals, with a box of syringes to come with
+/datum/armament_entry/company_import/deforest/medpens/halobinin
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 
-/datum/armament_entry/company_import/deforest/medical_chems
-	subcategory = "Chemical Supplies"
+/datum/armament_entry/company_import/deforest/medpens_stim/pentibinin
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
+	contraband = TRUE
 
-/datum/armament_entry/company_import/deforest/medical_chems/syringes
-	item_type = /obj/item/storage/box/syringes
-	cost = PAYCHECK_LOWER
+/datum/armament_entry/company_import/deforest/medpens_stim
+	subcategory = "Stimulant Autoinjectors"
+	cost = PAYCHECK_COMMAND * 2
 
-/datum/armament_entry/company_import/deforest/medical_chems/epinephrine
-	item_type = /obj/item/reagent_containers/cup/bottle/epinephrine
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/adrenaline
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/adrenaline
 
-/datum/armament_entry/company_import/deforest/medical_chems/mannitol
-	item_type = /obj/item/reagent_containers/cup/bottle/mannitol
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/synephrine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/synephrine
 
-/datum/armament_entry/company_import/deforest/medical_chems/morphine
-	item_type = /obj/item/reagent_containers/cup/bottle/morphine
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/krotozine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
 
-/datum/armament_entry/company_import/deforest/medical_chems/multiver
-	item_type = /obj/item/reagent_containers/cup/bottle/multiver
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/vitatate
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/vitatate
 
-/datum/armament_entry/company_import/deforest/medical_chems/formadehyde
-	item_type = /obj/item/reagent_containers/cup/bottle/formaldehyde
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/aranepaine
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/aranepaine
+	contraband = TRUE
 
-/datum/armament_entry/company_import/deforest/medical_chems/potassium_iodide
-	item_type = /obj/item/reagent_containers/cup/bottle/potass_iodide
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/synalvipitol
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/synalvipitol
+	contraband = TRUE
 
-/datum/armament_entry/company_import/deforest/medical_chems/atropine
-	item_type = /obj/item/reagent_containers/cup/bottle/atropine
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/twitch
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/twitch
+	cost = PAYCHECK_COMMAND * 3
+	contraband = TRUE
 
-/datum/armament_entry/company_import/deforest/medical_chems/syriniver
-	item_type = /obj/item/reagent_containers/cup/bottle/syriniver
-	cost = PAYCHECK_CREW
+/datum/armament_entry/company_import/deforest/medpens_stim/demoneye
+	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/demoneye
+	cost = PAYCHECK_COMMAND * 3
+	contraband = TRUE
+
 
 // Equipment, from defibs to scanners to surgical tools
 
