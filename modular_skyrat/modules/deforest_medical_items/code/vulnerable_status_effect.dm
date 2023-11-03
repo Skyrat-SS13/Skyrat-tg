@@ -23,6 +23,6 @@
 /datum/status_effect/vulnerable_to_damage/on_remove()
 	to_chat(owner, span_notice("You seem to have recovered from your unnatural fragility!"))
 	var/mob/living/carbon/human/carbon_recoverer = owner
-	carbon_owner.physiology.damage_resistance += damage_resistance_subtraction
-	carbon_owner.physiology.bleed_mod -= bleed_modifier_addition
+	carbon_recoverer.physiology.damage_resistance += damage_resistance_subtraction
+	carbon_recoverer.physiology.bleed_mod -= bleed_modifier_addition
 	return ..()

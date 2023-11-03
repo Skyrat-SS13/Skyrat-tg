@@ -66,7 +66,7 @@
 		return
 
 	user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] to [patient]'s [limb.plaintext_zone].</span></span>", "<span class='infoplain'><span class='green'>You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone].</span></span>")
-	playsound(affected_mob, treatment_sound, 50, TRUE)
+	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
 
 // Helps recover bleeding
