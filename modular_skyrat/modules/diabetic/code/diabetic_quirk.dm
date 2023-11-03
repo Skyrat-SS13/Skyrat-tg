@@ -1,3 +1,8 @@
+/obj/item/clothing/accessory/dogtag/diabetic
+	name = "diabetes dogtag"
+	desc = "Indicates that the wearer is diabetic."
+	display = "The dogtag states that the wearer has diabetes."
+
 /datum/quirk/item_quirk/diabetic
 	name = "Diabetic"
 	desc = "You have a condition which prevents you from metabolizing sugar correctly! Better bring some cookies and insulin!"
@@ -12,22 +17,41 @@
 
 /datum/quirk/item_quirk/diabetic/add_unique(client/client_source)
 	give_item_to_holder(
+		/obj/item/clothing/accessory/dogtag/diabetic,
+		list(
+			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
+			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
+			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+			LOCATION_HANDS = ITEM_SLOT_HANDS,
+		)
+	)
+	give_item_to_holder(
+		/obj/item/healthanalyzer/simple/sugar,
+		list(
+			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
+			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
+			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+			LOCATION_HANDS = ITEM_SLOT_HANDS,
+		)
+	)
+	give_item_to_holder(
 		/obj/item/storage/pill_bottle/insulin/diabetic,
 		list(
 			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
 			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
 			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
 			LOCATION_HANDS = ITEM_SLOT_HANDS,
-		),
-		flavour_text = "These will keep you alive until you can secure a supply of medication. Don't rely on them too much!",
+		)
 	)
-	give_item_to_holder(/obj/item/healthanalyzer/simple/disease, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK))
-	give_item_to_holder(/obj/item/food/cookie/sugar, list(
+	give_item_to_holder(
+		/obj/item/storage/pill_bottle/sugar,
+		list(
 			LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
 			LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
 			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
 			LOCATION_HANDS = ITEM_SLOT_HANDS,
-		))
+		)
+	)
 
 /datum/quirk/item_quirk/diabetic/process(seconds_per_tick)
 	if(!iscarbon(quirk_holder))
@@ -49,7 +73,7 @@
 			return
 
 	// No sugar, get hypoglycemia.
-	if(carbon_holder.HasDisease(/datum/disease/hypoglycemia))
+	if(is_type_in_list(/datum/disease/hypoglycemia, carbon_holder.diseases))
 		return
 
 	var/datum/disease/hypoglycemic_shock = new /datum/disease/hypoglycemia()
