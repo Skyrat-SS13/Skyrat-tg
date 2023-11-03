@@ -31,6 +31,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/communicate_as_parent = FALSE
 	/// Is the soulcatcher removable from the parent object?
 	var/removable = FALSE
+	/// What is the path of user component do we want to give to our mob? This needs to be `/datum/component/soulcatcher_user` or a subtype.
+	var/component_to_give = /datum/component/soulcatcher_user
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -206,6 +208,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
+/// Adds `mob_to_add` into the parent soulcatcher, giving them the soulcatcher component and moving their mob into the room. Returns the component added, if successful
+/datum/component/soulcatcher/proc/add_mob(mob/living/mob_to_add, datum/soulcatcher_room/target_room)
+	if(!istype(!mob_to_add))
+		return FALSE
+
+	var/datum/component/soulcatcher_user/soul_component = mob_to_add.AddComponent(component_to_give)
+	if(!soul_component)
+		return FALSE
+
+	if(!istype(target_room))
+		target_room = soulcatcher_rooms[1] // Put them in the first room we can find if none is provided.
+
+	soul_component.current_room = target_room
+	return soul_component
+
 /**
  * Soulcatcher Room
  *
@@ -255,20 +272,19 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
-	var/datum/component/soulcatcher_user/soul_component = new_soul.AddComponent(/datum/component/soulcatcher_user)
-
-	if(!soul_component)
-		return FALSE
-
-	soul_component.name = mind_to_add.name
 	if(mind_to_add.current)
 		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
 		body_component.soulcatcher_soul = WEAKREF(new_soul)
 
 		new_soul.round_participant = TRUE
 		new_soul.body_scan_needed = TRUE
-
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
+
+	var/datum/component/soulcatcher_user/soul_component = parent_soulcatcher.add_mob(new_soul, src)
+	if(!soul_component)
+		return FALSE
+
+	if(new_soul.round_participant)
 		soul_component.name = pick(GLOB.last_names) //Until the body is discovered, the soul is a new person.
 		soul_component.desc = "[new_soul] lacks a discernible form."
 

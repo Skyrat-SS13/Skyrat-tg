@@ -42,26 +42,42 @@
 
 /datum/component/soulcatcher_user/New()
 	. = ..()
-	var/mob/living/soulcatcher_soul/parent_soul = parent
-	if(!istype(parent_soul))
+	var/mob/living/parent_mob = parent
+	if(!istype(parent_mob))
 		return COMPONENT_INCOMPATIBLE
 
 	if(hud_action_given)
 		soulcatcher_action = new
-		soulcatcher_action.Grant(parent_soul)
+		soulcatcher_action.Grant(parent_mob)
 		soulcatcher_action.soulcatcher_user_component = WEAKREF(src)
 
 	if(leave_action_given)
 		leave_action = new
-		leave_action.Grant(parent_soul)
+		leave_action.Grant(parent_mob)
 
 	if(!outside_sight)
-		parent_soul.become_blind(NO_EYES)
+		parent_mob.become_blind(NO_EYES)
 
 	if(!outside_hearing)
-		ADD_TRAIT(parent_soul, TRAIT_DEAF, INNATE_TRAIT)
+		ADD_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+
+	set_up()
 
 	return TRUE
+
+/// Configures the settings of the soulcatcher user to be in accordance with the parent mob
+/datum/component/soulcatcher_user/proc/set_up()
+	var/mob/living/parent_mob = parent
+	if(!parent_mob?.mind || !istype(parent_mob.mind))
+		return FALSE
+
+	var/datum/preferences/preferences = parent_mob.client?.prefs
+	if(!preferences)
+		return FALSE
+
+	name = parent_mob.mind.name
+	ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
+	desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 /// Toggles whether or not the mob inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /datum/component/soulcatcher_user/proc/toggle_external_sight()
@@ -88,7 +104,7 @@
 /// Changes the name show on the component based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
 /datum/component/soulcatcher_user/proc/change_name(new_name)
 	var/mob/living/parent_mob = parent
-	if(!new_name || !istype(parent_mob))
+	if(!new_name || !istype(parent_mob) || !able_to_rename)
 		return FALSE
 
 	var/mob/living/soulcatcher_soul/parent_soul = parent
