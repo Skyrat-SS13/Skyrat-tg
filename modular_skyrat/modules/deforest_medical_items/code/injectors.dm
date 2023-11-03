@@ -24,7 +24,7 @@
 	if((affected_mob != user) && inject_others_time)
 		affected_mob.visible_message(span_danger("[user] is trying to inject [affected_mob]!"), \
 				span_userdanger("[user] is trying to inject something into you!"))
-		if(!do_after(user, CHEM_INTERACT_DELAY(inject_others_time, user), target))
+		if(!do_after(user, CHEM_INTERACT_DELAY(inject_others_time, user), affected_mob))
 			return FALSE
 
 	//Always log attemped injects for admins
