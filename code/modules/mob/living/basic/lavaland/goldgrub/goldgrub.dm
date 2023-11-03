@@ -47,7 +47,7 @@
 	else
 		can_lay_eggs = FALSE
 
-var/static/list/innate_actions = list(
+	var/static/list/innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/spit_ore = BB_SPIT_ABILITY,
 		/datum/action/cooldown/mob_cooldown/burrow = BB_BURROW_ABILITY,
 	)

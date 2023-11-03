@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	reagent_holder = new /obj/item/reagent_containers/borer(src)
 
 	for(var/action_type in known_abilities)
-		var/datum/action/attack_action = new action_type()
+		var/datum/action/attack_action = new action_type(src)
 		attack_action.Grant(src)
 
 	if(mind)
