@@ -21,7 +21,7 @@
 
 /datum/nifsoft/soulcatcher/New()
 	. = ..()
-	soulcatcher_action = new
+	soulcatcher_action = new(linked_mob)
 	soulcatcher_action.Grant(linked_mob)
 	soulcatcher_action.parent_nifsoft = WEAKREF(src)
 
