@@ -287,24 +287,14 @@
 	obj_damage = 15
 	death_message = "deflates and spills its vital juices!"
 	edible_food_types = MEAT | VEGETABLES
-
-<<<<<<< HEAD
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION - These guys can be helpful... maybe players will be helpful.
 
-/mob/living/simple_animal/hostile/ooze/grapes/Initialize(mapload)
-	. = ..()
-	var/datum/action/cooldown/globules/glob_shooter = new(src)
-	glob_shooter.Grant(src)
-	var/datum/action/cooldown/gel_cocoon/gel_cocoon = new(src)
-	gel_cocoon.Grant(src)
-=======
 /mob/living/simple_animal/hostile/ooze/grapes/get_innate_actions()
 	var/static/list/innate_actions = list(
 		/datum/action/cooldown/globules,
 		/datum/action/cooldown/gel_cocoon,
 	)
 	return innate_actions
->>>>>>> e03822fe1de (Standardizes Adding Datum Actions into a proc/define (Bonus AI Support) (Bonus Useless Code Cleanup) (#79389))
 
 /mob/living/simple_animal/hostile/ooze/grapes/add_cell_sample()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_GRAPE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
