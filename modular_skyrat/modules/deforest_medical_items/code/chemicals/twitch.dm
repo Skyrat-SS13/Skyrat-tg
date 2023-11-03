@@ -46,7 +46,7 @@
 
 	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	RegisterSignal(our_guy, COMSIG_MOVABLE_HEAR, PROC_REF(distort_hearing))
-	RegisterSignal(owner, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
+	RegisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
 
 	if(!our_guy.hud_used)
 		return
@@ -76,7 +76,7 @@
 
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_HEAR)
-	UnregisterSignal(owner, COMSIG_ATOM_PRE_BULLET_ACT)
+	UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
 
 	if(constant_dose_time < 100) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(

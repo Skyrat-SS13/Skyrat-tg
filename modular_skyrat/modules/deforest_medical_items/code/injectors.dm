@@ -203,7 +203,7 @@
 	icon_state = "halobinin"
 	list_reagents = list(
 		/datum/reagent/medicine/haloperidol = 5,
-		/datum/reagent/medicine/antihol = 5
+		/datum/reagent/medicine/antihol = 5,
 		/datum/reagent/medicine/higadrite = 5,
 		/datum/reagent/medicine/silibinin = 5,
 	)
