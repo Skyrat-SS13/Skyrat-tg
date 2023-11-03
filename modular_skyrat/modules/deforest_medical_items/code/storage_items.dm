@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "painkiller_bottle"
 
-/obj/item/storage/pill_bottle/multiver/PopulateContents()
+/obj/item/storage/pill_bottle/painkiller/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/pill/amollin(src)
 
