@@ -131,6 +131,8 @@
 
 	constant_dose_time += seconds_per_tick
 
+	our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 0.1 * REM * seconds_per_tick)
+
 	if(locate(/datum/reagent/drug/kronkaine) in our_guy.reagents.reagent_list) // Kronkaine, another heart-straining drug, could cause problems if mixed with this
 		our_guy.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE)
 
