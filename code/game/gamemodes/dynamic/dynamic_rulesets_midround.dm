@@ -61,10 +61,6 @@
 		if (isnull(creature.client)) // Are they connected?
 			trimmed_list.Remove(creature)
 			continue
-<<<<<<< HEAD
-		if (isnull(creature.mind))
-			trimmed_list.Remove(creature)
-			continue
 		//SKYRAT EDIT ADDITION
 		if(is_banned_from(creature.client.ckey, BAN_ANTAGONIST))
 			trimmed_list.Remove(creature)
@@ -73,8 +69,6 @@
 			trimmed_list.Remove(creature)
 			continue
 		//SKYRAT EDIT END
-=======
->>>>>>> 8f1e330d2ea (Fixes observer mind selection [NO GBP] (#79471))
 		if(creature.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(creature)
 			continue
