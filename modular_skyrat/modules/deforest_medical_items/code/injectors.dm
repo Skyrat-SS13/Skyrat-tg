@@ -113,12 +113,13 @@
 
 /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 	name = "meridine antidote injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to serve as antidote to most galactic toxins."
+	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to serve as antidote to most galactic toxins. \
+		A warning sticker notes it should not be used if the patient is physically damaged, as it may cause complications."
 	base_icon_state = "meridine"
 	icon_state = "meridine"
 	list_reagents = list(
-		/datum/reagent/medicine/ammoniated_mercury = 10,
-		/datum/reagent/medicine/potass_iodide = 10,
+		/datum/reagent/medicine/ammoniated_mercury = 5,
+		/datum/reagent/medicine/potass_iodide = 15,
 		/datum/reagent/nitrous_oxide = 5,
 	)
 
@@ -175,7 +176,7 @@
 		/datum/reagent/medicine/ondansetron = 5,
 		/datum/reagent/drug/kronkaine = 5,
 		/datum/reagent/medicine/omnizine/protozine = 10,
-		/datum/reagent/impurity = 5,
+		/datum/reagent/drug/maint/tar = 5,
 	)
 
 // Stuff really good at healing burn stuff and stabilizing temps
@@ -217,5 +218,5 @@
 		/datum/reagent/medicine/antihol = 5,
 		/datum/reagent/medicine/higadrite = 5,
 		/datum/reagent/medicine/silibinin = 5,
-		/datum/reagent/impurity = 5,
+		/datum/reagent/nitrous_oxide = 5,
 	)

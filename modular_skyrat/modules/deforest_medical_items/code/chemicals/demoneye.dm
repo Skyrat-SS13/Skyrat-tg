@@ -95,6 +95,9 @@
 
 		new /obj/effect/temp_visual/cleave(our_guy.drop_location())
 
+		if(overdosed && !our_guy.has_status_effect(/datum/status_effect/vulnerable_to_damage))
+			our_guy.apply_status_effect(/datum/status_effect/vulnerable_to_damage)
+
 	if(!our_guy.hud_used)
 		return
 

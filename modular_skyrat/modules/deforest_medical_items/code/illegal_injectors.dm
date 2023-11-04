@@ -56,7 +56,7 @@
 		/datum/reagent/medicine/polypyr = 5,
 		/datum/reagent/medicine/silibinin = 5,
 		/datum/reagent/medicine/earthsblood = 5,
-		/datum/reagent/toxin/staminatoxin = 5,
+		/datum/reagent/inverse/healing/tirimol = 5,
 	)
 
 // Combat stimulant that makes you immune to slowdowns for a bit

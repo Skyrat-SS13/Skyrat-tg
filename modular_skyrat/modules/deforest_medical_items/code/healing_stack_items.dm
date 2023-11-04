@@ -68,6 +68,7 @@
 	user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] to [patient]'s [limb.plaintext_zone].</span></span>", "<span class='infoplain'><span class='green'>You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone].</span></span>")
 	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
+	patient.apply_status_effect(/datum/status_effect/vulnerable_to_damage)
 
 // Helps recover bleeding
 
@@ -105,8 +106,8 @@
 	inhand_icon_state = "bandage"
 	gender = PLURAL
 	novariants = TRUE
-	amount = 6
-	max_amount = 6
+	amount = 4
+	max_amount = 4
 	self_delay = 4 SECONDS
 	other_delay = 2 SECONDS
 	heal_burn = 5
