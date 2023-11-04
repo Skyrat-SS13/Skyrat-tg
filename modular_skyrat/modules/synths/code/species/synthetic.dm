@@ -144,7 +144,7 @@
 	if(screen)
 		screen.Remove(human)
 
-	UnregisterSignal(transformer, COMSIG_LIVING_DEATH)
+	UnregisterSignal(human, COMSIG_LIVING_DEATH)
 
 /**
  * Makes the IPC screen switch to BSOD followed by a blank screen
