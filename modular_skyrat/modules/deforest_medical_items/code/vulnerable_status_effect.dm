@@ -5,7 +5,7 @@
 
 /datum/status_effect/vulnerable_to_damage
 	id = "vulnerable_to_damage"
-	duration = 1 MINUTES
+	duration = 5 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/vulnerable_to_damage
 	remove_on_fullheal = TRUE
 	/// The percentage damage modifier we give the mob we're applied to

@@ -8,16 +8,24 @@
 	subcategory = "First-Aid Kits"
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/civil_defense
-	item_type = /obj/item/storage/medkit/civil_defense
-	cost = PAYCHECK_COMMAND * 3.5
+	item_type = /obj/item/storage/medkit/civil_defense/stocked
+	cost = PAYCHECK_COMMAND * 4
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/frontier
-	item_type = /obj/item/storage/medkit/frontier
+	item_type = /obj/item/storage/medkit/frontier/stocked
 	cost = PAYCHECK_COMMAND * 5
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/combat_surgeon
-	item_type = /obj/item/storage/medkit/combat_surgeon
+	item_type = /obj/item/storage/medkit/combat_surgeon/stocked
 	cost = PAYCHECK_COMMAND * 6
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/first_responder
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical
+	cost = PAYCHECK_COMMAND * 10
+
+/datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
+	cost = PAYCHECK_COMMAND * 15
 
 // Basic first aid supplies like gauze, sutures, mesh, so on
 

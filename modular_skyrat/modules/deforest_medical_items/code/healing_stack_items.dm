@@ -4,7 +4,7 @@
 		On application to a body part with a damaged bone structure, nanomachines stored within those \
 		injectors will surround the wound and form a subdermal, self healing splint. While convenient \
 		for keeping appearances and rapid healing, the nanomachines tend to leave their host particularly \
-		vulnerable to new damage for a minute after application."
+		vulnerable to new damage for several minutes after application."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "subsplint"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
