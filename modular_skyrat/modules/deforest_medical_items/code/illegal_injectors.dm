@@ -55,7 +55,7 @@
 		/datum/reagent/medicine/c2/penthrite = 5,
 		/datum/reagent/medicine/polypyr = 5,
 		/datum/reagent/medicine/silibinin = 5,
-		/datum/reagent/medicine/earthsblood = 5,
+		/datum/reagent/medicine/omnizine = 5,
 		/datum/reagent/inverse/healing/tirimol = 5,
 	)
 
