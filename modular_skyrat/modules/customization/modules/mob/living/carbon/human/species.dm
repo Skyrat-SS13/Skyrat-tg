@@ -183,9 +183,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	handle_mutant_bodyparts(species_human)
 
 //I wag in death
-/datum/species/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
+/datum/species/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
+	. = ..()
+	RegisterSignal(human_who_gained_species, COMSIG_LIVING_DEATH, PROC_REF(stop_wagging_tail))
+
+/datum/species/on_species_loss(mob/living/carbon/human/human_who_lost_species, datum/species/new_species, pref_load)
+	. = ..()
+	RegisterSignal(human_who_lost_species, COMSIG_LIVING_DEATH, PROC_REF(stop_wagging_tail))
 
 /datum/species/spec_stun(mob/living/carbon/human/H,amount)
 	if(H)
