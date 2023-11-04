@@ -1,3 +1,6 @@
+#define FIRE_SPEED_REGULAR 2.5 SECONDS
+#define FIRE_SPEED_SYNDIE 1 SECONDS
+
 /obj/item/clothing/head/hair_tie
 	name = "hair tie"
 	desc = "An elastic hair tie, made to hold your hair up!"
@@ -26,6 +29,11 @@
 	icon_state = "scissors"
 	custom_materials = (list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT*5))
 
+/obj/item/clothing/head/hair_tie/syndicate
+	name = "\improper Syndicate hair tie"
+	desc = "An elastic hair tie, brandishing the logo of the Syndicate."
+	icon_state = "razor"
+
 /obj/item/clothing/head/hair_tie/examine(mob/user)
 	. = ..()
 	if(picked_hairstyle)
@@ -33,9 +41,8 @@
 	. += span_notice("Click [src] to pick a new hairstyle.")
 	. += span_notice("Alt-click [src] to fling it.")
 
-/obj/item/clothing/head/hair_tie/mob_can_equip(mob/living/carbon/human/user, slot)
-	if(user.hairstyle == "Bald")
-		to_chat(user, span_warning("[src] doesn't fit, because you're bald!"))
+/obj/item/clothing/head/hair_tie/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	if(user.hairstyle == "Bald") //could create a list of the bald hairstyles to check
 		return FALSE
 	return ..()
 
@@ -61,7 +68,7 @@
 	user.set_hairstyle(picked_hairstyle, update = TRUE)
 
 /obj/item/clothing/head/hair_tie/dropped(mob/living/carbon/human/user)
-	. =..()
+	. = ..()
 	if(!ishuman(user))
 		return
 	if(!picked_hairstyle || !actual_hairstyle)
@@ -74,44 +81,51 @@
 	actual_hairstyle = null
 
 /obj/item/clothing/head/hair_tie/AltClick(mob/living/user)
-	if(!user.get_item_by_slot(ITEM_SLOT_HANDS) == src)
+	. = ..()
+	if(!(user.get_slot_by_item(src) == ITEM_SLOT_HANDS))
 		return
+	user.visible_message(
+	span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),
+	span_notice("You try to flick [src]!"),
+	)
 	flick_hair_tie(user)
 
 /obj/item/clothing/head/hair_tie/proc/flick_hair_tie(mob/living/user)
-	playsound(src, 'sound/weapons/gun/bow/bow_draw.ogg', 25, TRUE)
-	user.visible_message(
-		span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),
-		span_notice("You try to flick [src]!"),
-	)
-	if(!do_after(user, 1.5 SECONDS, src))
+	//find out if this is the syndie hair tie
+	var/syndie = istype(src, /obj/item/clothing/head/hair_tie/syndicate)
+	if(!do_after(user, syndie ? FIRE_SPEED_SYNDIE : FIRE_SPEED_REGULAR, src))
 		return
-
-	var/obj/projectile/bullet/hair_tie/projectile = new /obj/projectile/bullet/hair_tie(drop_location())
+	//pick and build the right projectile
+	var/obj/projectile/proj_to_fire = syndie ? /obj/projectile/bullet/hair_tie/syndicate : /obj/projectile/bullet/hair_tie
+	var/obj/projectile/bullet/hair_tie/proj = new proj_to_fire (drop_location())
 	//clone some vars
-	projectile.name = name
-	projectile.icon_state = icon_state
+	proj.name = name
+	proj.icon_state = icon_state
 	//add projectile_drop
-	projectile.AddElement(/datum/element/projectile_drop, type)
+	proj.AddElement(/datum/element/projectile_drop, type)
 	//fire the projectile
-	projectile.firer = user
-	projectile.fired_from = user
-	projectile.fire(dir2angle(user.dir) + rand(-30, 30))
-	playsound(src, 'sound/weapons/gun/bow/bow_fire.ogg', 25, TRUE)
+	proj.firer = user
+	proj.fired_from = user
+	proj.fire(dir2angle(user.dir) + (syndie ? 0 : rand(-30, 30)))
+	playsound(src, 'sound/weapons/effects/batreflect.ogg', 25, TRUE)
 	//get rid of what we just launched to let projectile_drop spawn a new one
 	qdel(src)
 
 /obj/projectile/bullet/hair_tie
-	name = "hair tie"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	hitsound = 'sound/weapons/genhit.ogg'
-	damage = 5
-	sharpness = NONE //no embedding pls
+	damage = 0 //its just about the knockdown
+	sharpness = NONE
+	shrapnel_type = NONE //no embedding pls
 	impact_effect_type = null
 	ricochet_chance = 0
 	range = 7
 	knockdown = 1 SECONDS
-	weak_against_armour = TRUE
+
+/obj/projectile/bullet/hair_tie/syndicate
+	damage = 10 //getting hit with this one fucking sucks
+	eyeblur = 1 SECONDS
+	jitter = 2 SECONDS
 
 /datum/design/plastic_hair_tie
 	name = "Plastic Hair Tie"
@@ -124,3 +138,6 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SERVICE,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
+
+#undef FIRE_SPEED_REGULAR
+#undef FIRE_SPEED_SYNDIE
