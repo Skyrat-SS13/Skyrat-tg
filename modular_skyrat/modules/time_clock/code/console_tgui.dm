@@ -32,6 +32,7 @@
 	/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild, \
 	/obj/item/storage/belt/sabre, \
 	/obj/item/mod/control/pre_equipped/magnate, \
+	/obj/item/mod/control/pre_equipped/blueshield, \
 	/obj/item/clothing/suit/armor/vest/warden, \
 	/obj/item/clothing/glasses/hud/security/sunglasses, \
 	/obj/item/clothing/gloves/krav_maga/sec, \

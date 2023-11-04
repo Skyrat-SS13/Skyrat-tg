@@ -1,124 +1,83 @@
-/datum/opposing_force_equipment/ammo
-	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
+/datum/opposing_force_equipment/ammo_exotic
+	category = OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC
 
-/datum/opposing_force_equipment/ammo/m45
-	item_type = /obj/item/ammo_box/magazine/m45
-	description = "An eight-round magazine for the M1911 pistol. Uses .45 caliber ammunition."
+/datum/opposing_force_equipment/ammo_exotic/ripper35
+	description = "A box of .35 Sol rounds, hollow-tipped for maximum damage against NON-ARMOURED combatants."
+	item_type = /obj/item/ammo_box/c35sol/ripper
 
-/datum/opposing_force_equipment/ammo/m16
-	item_type = /obj/item/ammo_box/magazine/m16
-	description = "A thirty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
+/datum/opposing_force_equipment/ammo_exotic/pierce40
+	description = "A box of .40 Sol Match rounds, works best against armoured combatants; the box has a warning about being careful for collateral damage."
+	item_type = /obj/item/ammo_box/c40sol/pierce
 
-/datum/opposing_force_equipment/ammo/akm
-	item_type = /obj/item/ammo_box/magazine/akm
+/datum/opposing_force_equipment/ammo_exotic/fire40
+	description = "A box of .40 Sol Incendiary rounds, bullet impacts light the victims aflame."
+	item_type = /obj/item/ammo_box/c40sol/incendiary
 
-/datum/opposing_force_equipment/ammo/akmbanan
-	item_type = /obj/item/ammo_box/magazine/akm/banana
+/datum/opposing_force_equipment/ammo_exotic/frag40
+	description = "A box of .40 Sol Fragmentation rounds, useful for incapacitating your victim ASAP, no matter if they live or die."
+	item_type = /obj/item/ammo_box/c40sol/fragmentation
 
-/datum/opposing_force_equipment/ammo/mp40
-	item_type = /obj/item/ammo_box/magazine/mp40
-	description = "A thirty-two round magazine for the MP-40. Uses 9x19mm ammunition."
+/datum/opposing_force_equipment/ammo_exotic/magnum
+	description = "A box of magnum flechette shotgun shells, the first choice munition of many shotgun fanatics."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
 
-/datum/opposing_force_equipment/ammo/pps
-	item_type = /obj/item/ammo_box/magazine/pps
+/datum/opposing_force_equipment/ammo_exotic/express
+	description = "A box of express buckshot shotgun shells, for when the regular shells can't keep up with you."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/express
 
-/datum/opposing_force_equipment/ammo/ppsh
-	item_type = /obj/item/ammo_box/magazine/ppsh
+/datum/opposing_force_equipment/ammo_exotic/flechette
+	description = "A box of flechette shotgun shells, tighter spread than buckshot plus more armour damage."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/flechette
 
-/datum/opposing_force_equipment/ammo/fg42
-	item_type = /obj/item/ammo_box/magazine/fg42
-	description = "A twenty round magazine for the FG-42. Uses 7.92x57mm ammunition."
+/datum/opposing_force_equipment/ammo_exotic/incendiary
+	description = "A box of dargonsbreath shotgun shells, highly underrated in the hands of someone who knows not to step forward after firing."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/incendiary
 
-/datum/opposing_force_equipment/ammo/m9mm
-	item_type = /obj/item/ammo_box/magazine/uzim9mm
-	description = "A thirty-two round magazine for the mini uzi. Uses 9x19mm ammunition."
+/datum/opposing_force_equipment/ammo_exotic/slug
+	description = "A box of slug shotgun shells, fires only one big fuck-off bullet that wounds extra hard."
+	item_type = /obj/item/ammo_box/advanced/s12gauge
 
-/datum/opposing_force_equipment/ammo/sol40standard
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/standard
-	description = "A thirty round magazine for any SolFed rifle."
+/datum/opposing_force_equipment/ammo_exotic/hp_slug
+	description = "A box of hollow point slug shotgun shells, annihilates unarmoured combatants."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/hp
 
-/datum/opposing_force_equipment/ammo/sol40drum
-	item_type = /obj/item/ammo_box/magazine/c40sol_rifle/drum
-	description = "A sixty round drum for any SolFed rifle."
+/datum/opposing_force_equipment/ammo_exotic/ap_slug
+	description = "A box of armour piercing slug shotgun shells, are armoured targets your number one concern? With these shells you'll hardly remember they're wearing any."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/pt20
 
-/datum/opposing_force_equipment/ammo/makarov
-	item_type = /obj/item/ammo_box/magazine/m9mm
-	description = "A magazine of ammo for the Makarov."
+/datum/opposing_force_equipment/ammo_exotic/a357phasic
+	description = "A speedloader of .357 that ignores structure collision at the cost of some damage."
+	admin_note = "Bullets ignore walls, has a damage penalty."
+	item_type = /obj/item/ammo_box/a357/phasic
 
-/datum/opposing_force_equipment/ammo/makarov_fire
-	item_type = /obj/item/ammo_box/magazine/m9mm/fire
-	description = "A magazine of incendiary ammunition for the Makarov."
+/datum/opposing_force_equipment/ammo_exotic/a357heartseeker
+	description = "A speedloader of .357 with homing capabilities."
+	item_type = /obj/item/ammo_box/a357/heartseeker
 
-/datum/opposing_force_equipment/ammo/makarov_ap
-	item_type = /obj/item/ammo_box/magazine/m9mm/ap
-	description = "A magazine of armor-piercing ammunition for the Makarov."
+/datum/opposing_force_equipment/ammo_exotic/a357peacemaker
+	description = "A speedloader of .357 that have their impact lessened to highten the odds for ricochet shots."
+	item_type = /obj/item/ammo_box/a357/peacemaker
 
-/datum/opposing_force_equipment/ammo/makarov_hp
-	item_type = /obj/item/ammo_box/magazine/m9mm/hp
-	description = "A magazine of hollow-point ammunition for the Makarov."
-
-/datum/opposing_force_equipment/ammo/aps
-	item_type = /obj/item/ammo_box/magazine/m9mm_aps
-	description = "A magazine of ammunition for the Stechkin APS."
-
-/datum/opposing_force_equipment/ammo/aps_fire
-	item_type = /obj/item/ammo_box/magazine/m9mm_aps/fire
-	description = "A magazine of incendiary ammunition for the Stechkin APS."
-
-/datum/opposing_force_equipment/ammo/aps_ap
-	item_type = /obj/item/ammo_box/magazine/m9mm_aps/ap
-	description = "A magazine of armor-piercing ammunition for the Stechkin APS."
-
-/datum/opposing_force_equipment/ammo/aps_hp
-	item_type = /obj/item/ammo_box/magazine/m9mm_aps/hp
-	description = "A magazine of hollow-point ammunition for the Stechkin APS."
-
-/datum/opposing_force_equipment/ammo/a357
-	item_type = /obj/item/ammo_box/a357
-	description = "A seven-round .357 magnum speedloader for a revolver."
-
-/datum/opposing_force_equipment/ammo/a357match
-	item_type = /obj/item/ammo_box/a357/match
-	description = "A seven-round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off walls several times."
-
-/datum/opposing_force_equipment/ammo/sol35_standard
-	item_type = /obj/item/ammo_box/magazine/c35sol_pistol
-
-/datum/opposing_force_equipment/ammo/sol35_extended
-	item_type = /obj/item/ammo_box/magazine/c35sol_pistol/stendo
-
-/datum/opposing_force_equipment/ammo/trappiste585_standard
-	item_type = /obj/item/ammo_box/magazine/c585trappiste_pistol
-
-/datum/opposing_force_equipment/ammo/bulldog
-	name = "Bulldog Magazine"
-	item_type = /obj/item/ammo_box/magazine/m12g
-
-/datum/opposing_force_equipment/ammo/bulldogslug
-	name = "Bulldog Magazine (Slug)"
-	item_type = /obj/item/ammo_box/magazine/m12g/slug
-
-/datum/opposing_force_equipment/ammo/bulldogstun
-	name = "Bulldog Magazine (Stun)"
-	item_type = /obj/item/ammo_box/magazine/m12g/stun
-	admin_note = "WARNING: These are essentially the same shots the AI taser-turrets shoot."
-
-/datum/opposing_force_equipment/ammo/bulldogfire
-	name = "Bulldog Magazine (Incendiary)"
-	item_type = /obj/item/ammo_box/magazine/m12g/dragon
-
-/datum/opposing_force_equipment/ammo/bulldogmeteor
-	name = "Bulldog Magazine (Meteor)"
-	item_type = /obj/item/ammo_box/magazine/m12g/meteor
-
-/datum/opposing_force_equipment/ammo/c20r
-	name = "C-20r Magazine"
-	item_type = /obj/item/ammo_box/magazine/smgm45
-
-/datum/opposing_force_equipment/ammo/c20rap
-	name = "C-20r Magazine (AP)"
+/datum/opposing_force_equipment/ammo_exotic/ap45
+	description = "An smg magazine of armour piercing .45, used by the c20-r."
 	item_type = /obj/item/ammo_box/magazine/smgm45/ap
 
-/datum/opposing_force_equipment/ammo/c20rfire
-	name = "C-20r Magazine (Incendiary)"
+/datum/opposing_force_equipment/ammo_exotic/hp45
+	description = "An smg magazine of hollow point .45, used by the c20-r."
+	item_type = /obj/item/ammo_box/magazine/smgm45/hp
+
+/datum/opposing_force_equipment/ammo_exotic/incen45
+	description = "An smg magazine of incendiary .45, used by the c20-r."
 	item_type = /obj/item/ammo_box/magazine/smgm45/incen
+
+/datum/opposing_force_equipment/ammo_exotic/ap9mm
+	description = "An smg magazine of armour piercing 9mm, used by the makarov."
+	item_type = /obj/item/ammo_box/magazine/m9mm/ap
+
+/datum/opposing_force_equipment/ammo_exotic/hp9mm
+	description = "An smg magazine of hollow point 9mm, used by the makarov."
+	item_type = /obj/item/ammo_box/magazine/m9mm/hp
+
+/datum/opposing_force_equipment/ammo_exotic/incen9mm
+	description = "An smg magazine of incendiary 9mm, used by the makarov."
+	item_type = /obj/item/ammo_box/magazine/m9mm/fire
