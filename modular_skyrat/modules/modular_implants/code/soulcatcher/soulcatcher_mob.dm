@@ -31,40 +31,27 @@
 	return_to_body()
 	qdel(src)
 
-/*
 /mob/living/soulcatcher_soul/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof, message_range, datum/saymode/saymode)
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
-	if(!message || message == "")
-		return
-
-	if((!able_to_communicate())
-		to_chat(src, span_warning("You are unable to speak!"))
+	if(!message)
 		return FALSE
 
-	var/datum/soulcatcher_room/room = current_room.resolve()
-	if(!room)
+	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	if(!soul_component)
 		return FALSE
 
-	room.send_message(message, src, FALSE)
-	return TRUE
+	return soul_component.say(message)
 
 /mob/living/soulcatcher_soul/me_verb(message as text)
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(!message)
 		return FALSE
 
-	if((!able_to_communicate(TRUE))
-		to_chat(src, span_warning("You are unable to emote!"))
+	var/datum/component/soulcatcher_user/soul_component = GetComponent(/datum/component/soulcatcher_user)
+	if(!soul_component)
 		return FALSE
 
-	var/datum/soulcatcher_room/room = current_room.resolve()
-	if(!room)
-		return FALSE
-
-	room.send_message(message, src, TRUE)
-	return TRUE
-
-*/
+	return soul_component.me_verb(message)
 
 /mob/living/soulcatcher_soul/subtle()
 	set hidden = TRUE

@@ -79,6 +79,46 @@
 	ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
 	desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
+/// What do we want to do when a mob tries to say something into the soulcatcher?
+/datum/component/soulcatcher_user/proc/say(message_to_say)
+	var/mob/living/parent_mob = parent
+	if(!istype(parent_mob))
+		return FALSE
+
+	if(!can_communicate())
+		to_chat(parent, span_warning("You are unable to speak!"))
+		return FALSE
+
+	if(!message_to_say)
+		return FALSE
+
+	var/datum/soulcatcher_room/room = current_room.resolve()
+	if(!room) // uhoh.
+		return FALSE
+
+	room.send_message(message_to_say, parent_mob, FALSE)
+	return TRUE
+
+/// What do we want to do when a mob tries to do a `me` emote?
+/datum/component/soulcatcher_user/proc/me_verb(message_to_say)
+	var/mob/living/parent_mob = parent
+	if(!istype(parent_mob))
+		return FALSE
+
+	if(!can_communicate(TRUE))
+		to_chat(parent, span_warning("You are unable to speak!"))
+		return FALSE
+
+	if(!message_to_say)
+		return FALSE
+
+	var/datum/soulcatcher_room/room = current_room.resolve()
+	if(!room) // uhoh.
+		return FALSE
+
+	room.send_message(message_to_say, parent_mob, TRUE)
+	return TRUE
+
 /// Toggles whether or not the mob inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /datum/component/soulcatcher_user/proc/toggle_external_sight()
 	var/mob/living/parent_mob = parent
