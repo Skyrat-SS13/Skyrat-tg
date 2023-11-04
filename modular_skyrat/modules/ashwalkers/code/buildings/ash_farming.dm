@@ -163,14 +163,19 @@
 		increase_yield(user)
 		return
 
-	else if(istype(attacking_item, /obj/item/worm_fertilizer))
+	else if(istype(attacking_item, /obj/item/stack/worm_fertilizer))
+
+		var/obj/item/stack/attacking_stack = attacking_item
+
+		if(!attacking_stack.use(1))
+			balloon_alert(user, "unable to use [attacking_item]")
+			return
 
 		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
 			balloon_alert(user, "plant is already fully upgraded")
 
 		else
 			balloon_alert(user, "plant was upgraded")
-			qdel(attacking_item)
 
 		return
 
