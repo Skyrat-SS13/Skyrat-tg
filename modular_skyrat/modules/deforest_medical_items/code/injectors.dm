@@ -178,19 +178,6 @@
 		/datum/reagent/impurity = 5,
 	)
 
-// You ever needed to juice on stims to exercise harder? No? Do you want to?
-
-/obj/item/reagent_containers/hypospray/medipen/deforest/vitatate
-	name = "vitatate supplement injector"
-	desc = "A Deforest branded autoinjector, loaded with an unusual mix of reagents that many claim increase exercise and physical performance in general."
-	base_icon_state = "vitatate"
-	icon_state = "vitatate"
-	list_reagents = list(
-		/datum/reagent/drug/pumpup = 5,
-		/datum/reagent/toxin/leadacetate = 5,
-		/datum/reagent/consumable/nutriment/vitamin = 15,
-	)
-
 // Stuff really good at healing burn stuff and stabilizing temps
 
 /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi

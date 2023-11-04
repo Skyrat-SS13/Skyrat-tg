@@ -108,9 +108,6 @@
 /datum/armament_entry/company_import/deforest/medpens_stim/krotozine
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
 
-/datum/armament_entry/company_import/deforest/medpens_stim/vitatate
-	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/vitatate
-
 /datum/armament_entry/company_import/deforest/medpens_stim/aranepaine
 	item_type = /obj/item/reagent_containers/hypospray/medipen/deforest/aranepaine
 	contraband = TRUE
