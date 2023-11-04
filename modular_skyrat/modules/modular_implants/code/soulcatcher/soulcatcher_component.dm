@@ -33,6 +33,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/removable = FALSE
 	/// What is the path of user component do we want to give to our mob? This needs to be `/datum/component/soulcatcher_user` or a subtype.
 	var/component_to_give = /datum/component/soulcatcher_user
+	/// What 16x16 chat icon do we want our soulcatcher to display in chat messages?
+	var/chat_icon = "nif-soulcatcher"
 
 /datum/component/soulcatcher/New()
 	. = ..()
@@ -342,8 +344,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
+	var/sender_name = message_sender
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
-	var/tag = sheet.icon_tag("nif-soulcatcher")
+	var/master_resolved = master_soulcatcher.resolve()
+	if(!master_resolved)
+		return FALSE
+
+	var/datum/component/soulcatcher/parent_soulcatcher = master_resolved
+	var/tag = sheet.icon_tag(parent_soulcatcher.chat_icon)
 	var/soulcatcher_icon = ""
 
 	if(tag)
@@ -352,12 +360,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/component/soulcatcher_user/user_component
 	if(istype(message_sender))
 		user_component = message_sender.GetComponent(/datum/component/soulcatcher_user)
+		if(!istype(user_component))
+			return FALSE
+
+		sender_name = user_component.name
 
 	if(istype(user_component) && user_component.communicating_externally)
-		var/master_resolved = master_soulcatcher.resolve()
-		if(!master_resolved)
-			return FALSE
-		var/datum/component/soulcatcher/parent_soulcatcher = master_resolved
 		var/obj/item/parent_object = parent_soulcatcher.parent
 		if(!istype(parent_object))
 			return FALSE
@@ -375,19 +383,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		parent_object.name = temp_name
 		return TRUE
 
-	var/sender_name = ""
-	if(message_sender)
-		sender_name = "[message_sender] "
-
 	var/first_room_name_word = splittext(name, " ")
 	var/message = ""
 	var/owner_message = ""
 	if(!emote)
-		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
+		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
 		log_say("[sender_name] in [name] soulcatcher room said: [message_to_send]")
 	else
-		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
+		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
 		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
