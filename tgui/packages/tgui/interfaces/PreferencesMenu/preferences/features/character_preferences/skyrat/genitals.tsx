@@ -26,6 +26,7 @@ export const penis_color: Feature<string[]> = {
 
 export const penis_emissive: Feature<boolean[]> = {
   name: 'Penis Emissives',
+  description: 'Emissive parts/layers glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -50,6 +51,9 @@ export const penis_girth: FeatureNumeric = {
 
 export const penis_taur_mode_toggle: FeatureToggle = {
   name: 'Penis Taur Mode',
+  description:
+    'If the chosen taur body has a penis sprite, it will be used \
+    instead of the usual.',
   component: CheckboxInput,
 };
 
@@ -79,6 +83,7 @@ export const testicles_color: Feature<string[]> = {
 
 export const testicles_emissive: Feature<boolean[]> = {
   name: 'Testicles Emissives',
+  description: 'Emissive parts/layers glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -113,6 +118,7 @@ export const vagina_color: Feature<string[]> = {
 
 export const vagina_emissive: Feature<boolean[]> = {
   name: 'Vagina Emissives',
+  description: 'Emissive parts/layers glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -151,6 +157,7 @@ export const breasts_color: Feature<string[]> = {
 
 export const breasts_emissive: Feature<boolean[]> = {
   name: 'Breast Emissives',
+  description: 'Emissive parts/layers glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -180,6 +187,10 @@ export const body_size: FeatureNumeric = {
 
 export const erp_status_pref: FeatureChoiced = {
   name: 'ERP Status',
+  description:
+    'All ERP status preferences are merely markers to other players of \
+  your preference towards various broad categories of ERP. Selecting no will virtually isolate you from \
+  all directed ERP.',
   component: FeatureDropdownInput,
 };
 
