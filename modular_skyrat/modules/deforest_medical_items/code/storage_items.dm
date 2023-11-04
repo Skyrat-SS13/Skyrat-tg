@@ -40,8 +40,6 @@
 /obj/item/storage/medkit/civil_defense/stocked
 
 /obj/item/storage/medkit/civil_defense/stocked/PopulateContents()
-	if(empty)
-		return
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/halobinin = 1,
@@ -62,8 +60,6 @@
 /obj/item/storage/medkit/frontier/stocked
 
 /obj/item/storage/medkit/frontier/stocked/PopulateContents()
-	if(empty)
-		return
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi = 1,
@@ -91,8 +87,6 @@
 /obj/item/storage/medkit/combat_surgeon/stocked
 
 /obj/item/storage/medkit/combat_surgeon/stocked/PopulateContents()
-	if(empty)
-		return
 	var/static/items_inside = list(
 		/obj/item/bonesetter = 1,
 		/obj/item/hemostat = 1,
@@ -119,8 +113,6 @@
 /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
 
 /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked/PopulateContents()
-	if(empty)
-		return
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 2,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
@@ -201,8 +193,6 @@
 /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
 
 /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked/PopulateContents()
-	if(empty)
-		return
 	var/static/items_inside = list(
 		/obj/item/scalpel = 1,
 		/obj/item/hemostat = 1,
