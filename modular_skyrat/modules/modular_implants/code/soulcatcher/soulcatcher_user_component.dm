@@ -168,7 +168,7 @@
 		if((emote && !able_to_emote_as_container) || (!emote && !able_to_speak_as_container))
 			return FALSE
 
-	if((emote && !able_to_emote) || (!emote && able_to_speak))
+	if((emote && !able_to_emote) || (!emote && !able_to_speak))
 		return FALSE
 
 	return TRUE

@@ -176,7 +176,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/component/soulcatcher/proc/get_open_rooms(ghost_join = FALSE)
 	var/list/datum/soulcatcher_room/room_list = list()
 	for(var/datum/soulcatcher_room/room as anything in soulcatcher_rooms)
-		if((ghost_join && room.joinable) || !check_for_vacancy())
+		if((ghost_join && !room.joinable) || !check_for_vacancy())
 			continue
 
 		room_list += room
@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /// Adds `mob_to_add` into the parent soulcatcher, giving them the soulcatcher component and moving their mob into the room. Returns the component added, if successful
 /datum/component/soulcatcher/proc/add_mob(mob/living/mob_to_add, datum/soulcatcher_room/target_room)
-	if(!istype(!mob_to_add))
+	if(!istype(mob_to_add))
 		return FALSE
 
 	var/datum/component/soulcatcher_user/soul_component = mob_to_add.AddComponent(component_to_give)
