@@ -93,9 +93,9 @@
 		screen = new(transformer)
 		screen.Grant(transformer)
 
-		return
+		RegisterSignal(transformer, COMSIG_LIVING_DEATH, PROC_REF(bsod_death)) // screen displays bsod on death, if they have one
 
-	RegisterSignal(transformer, COMSIG_LIVING_DEATH, PROC_REF(bsod_death)) // screen displays bsod on death
+		return
 
 	if(eyes)
 		eyes.eye_icon_state = initial(eyes.eye_icon_state)
