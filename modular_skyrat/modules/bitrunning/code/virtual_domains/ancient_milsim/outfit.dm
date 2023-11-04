@@ -51,7 +51,7 @@
 	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/forest
 	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
 	backpack_contents = list(
-		/obj/item/storage/box/nri_survival_pack,
+		/obj/item/storage/box/nri_survival_pack/raider,
 		/obj/item/gun/ballistic/automatic/pistol/clandestine,
 		/obj/item/ammo_box/magazine/m10mm = 2,
 	)

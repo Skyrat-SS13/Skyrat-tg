@@ -6,7 +6,8 @@
 	outfit = /datum/outfit/cin_soldier_player
 	you_are_text = "You are a smart NPC guarding the exit of a simulated combat domain."
 	flavour_text = "You are a smart NPC loaded into the domain as a means of slowing down the bitrunning contestants' progression one way or another, be it combat or drawn out dialogues."
-	important_text = "Generally speaking, 'play fair'."
+	important_text = "Generally speaking, 'play fair'. Only allowed species is humans."
+	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
 
