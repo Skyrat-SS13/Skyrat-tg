@@ -17,7 +17,7 @@
 	novariants = TRUE
 	max_amount = 1
 	amount = 1
-	merge_type = null
+	merge_type = /obj/item/stack/medical/wound_recovery
 	/// The types of wounds that we work on, in list format
 	var/list/applicable_wounds = list(
 		/datum/wound/blunt/bone,
@@ -85,6 +85,7 @@
 		/datum/wound/pierce/bleed,
 	)
 	treatment_sound = 'sound/items/duct_tape_rip.ogg'
+	merge_type = /obj/item/stack/medical/wound_recovery/rapid_coagulant
 
 /obj/item/stack/medical/wound_recovery/rapid_coagulant/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -113,7 +114,7 @@
 	flesh_regeneration = 5
 	sanitization = 3
 	grind_results = list(/datum/reagent/medicine/oxandrolone = 3)
-	merge_type = null
+	merge_type = /obj/item/stack/medical/ointment/red_sun
 
 /obj/item/stack/medical/ointment/red_sun/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -129,7 +130,7 @@
 		bone wound wrapping."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "burndaid"
-	inhand_icon_state = "gauze"
+	inhand_icon_state = null
 	novariants = TRUE
 	max_amount = 3
 	amount = 3
@@ -137,7 +138,7 @@
 	absorption_capacity = 4
 	splint_factor = 1.2
 	burn_cleanliness_bonus = 0.1
-	merge_type = null
+	merge_type = /obj/item/stack/medical/gauze/sterilized
 
 /obj/item/stack/medical/gauze/sterilized/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
@@ -154,11 +155,11 @@
 		The downsides? It repairs less of the actual damage that's there."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "clotter_slow"
-	inhand_icon_state = "suture"
+	inhand_icon_state = null
 	novariants = TRUE
 	amount = 3
 	max_amount = 3
 	repeating = FALSE
 	heal_brute = 0
 	stop_bleeding = 2
-	merge_type = null
+	merge_type = /obj/item/stack/medical/suture/coagulant
