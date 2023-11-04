@@ -64,7 +64,7 @@
 	var/datum/bodypart_overlay/mutant/tail/accessory = bodypart_overlay
 	wag_flags |= WAG_WAGGING
 	accessory.wagging = TRUE
-	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(stop_wagging_tail)) // SKYRAT EDIT ADDITION - Stop wagging tail in death
+	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(stop_wag)) // SKYRAT EDIT ADDITION - Stop wagging tail in death
 
 ///We need some special behaviour for accessories, wrapped here so we can easily add more interactions later
 /obj/item/organ/external/tail/proc/stop_wag()
