@@ -3,6 +3,7 @@
 /obj/structure/toilet{
 	pixel_y = 8
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/ruin/syndicate_lava_base/lounge)
 "aq" = (
@@ -1136,6 +1137,13 @@
 	},
 /obj/item/gun/syringe/syndicate,
 /turf/open/floor/iron/dark/small,
+/area/ruin/syndicate_lava_base/medbay)
+"jZ" = (
+/obj/effect/turf_decal/trimline/dark_green/warning{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "kd" = (
 /obj/structure/bed/double{
@@ -2893,21 +2901,6 @@
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/syndicate_lava_base/main)
-"Bp" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/railing,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate");
-	dir = 8;
-	pixel_x = -4
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/cargo)
 "By" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -3267,7 +3260,6 @@
 "Ek" = (
 /obj/structure/sink/directional/west,
 /obj/structure/mirror/directional/east,
-/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/ruin/syndicate_lava_base/lounge)
 "En" = (
@@ -3895,13 +3887,6 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
-"JC" = (
-/obj/effect/turf_decal/trimline/dark_green/warning{
-	dir = 1
-	},
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "JD" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
@@ -6966,7 +6951,7 @@ aE
 ky
 sk
 Ua
-JC
+jZ
 da
 Ed
 WB
@@ -7293,7 +7278,7 @@ Ih
 Mc
 XL
 tz
-Bp
+wE
 VX
 Xj
 Gk
