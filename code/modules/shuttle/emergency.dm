@@ -358,7 +358,7 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
- 	// SKYRAT EDIT ADDITION START
+	// SKYRAT EDIT ADDITION START
 	if(silent)
 		return
 	// SKYRAT EDIT ADDITION END
