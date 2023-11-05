@@ -842,7 +842,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return ..()
 	if(lit)
 		set_lit(FALSE)
-		playsound(src, 'sound/items/zippo_close.ogg', 50, TRUE)
+		playsound(src, 'sound/items/zippo_close.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
 		if(fancy)
 			user.visible_message(
 				span_notice("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow."),
@@ -856,7 +856,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 
 	set_lit(TRUE)
-	playsound(src, 'sound/items/zippo_open.ogg', 50, TRUE)
+	playsound(src, 'sound/items/zippo_open.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
 	if(fancy)
 		user.visible_message(
 			span_notice("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."),
