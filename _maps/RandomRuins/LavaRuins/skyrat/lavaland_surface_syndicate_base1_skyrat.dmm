@@ -521,7 +521,6 @@
 	dir = 8
 	},
 /obj/structure/tank_holder/extinguisher,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/small,
 /area/ruin/syndicate_lava_base/testlab)
 "eN" = (
@@ -1567,7 +1566,6 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/testlab)
@@ -1861,7 +1859,6 @@
 /obj/machinery/light/cold/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/poster/contraband/moffuchis_pizza/directional/south,
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
 "rh" = (
@@ -2172,13 +2169,6 @@
 /obj/structure/table/optable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
-"uy" = (
-/obj/effect/turf_decal/tile/dark_green{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark/smooth_edge,
-/area/ruin/syndicate_lava_base/main)
 "uE" = (
 /obj/structure/bed/medical,
 /turf/open/floor/iron/dark,
@@ -2567,7 +2557,6 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/testlab)
 "ym" = (
@@ -2781,6 +2770,7 @@
 "Ao" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/poster/contraband/moffuchis_pizza/directional/south,
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/lounge)
 "Ap" = (
@@ -3672,13 +3662,12 @@
 	},
 /area/ruin/syndicate_lava_base/lounge)
 "HL" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4;
+	name = "killroom vent"
+	},
 /turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "HN" = (
@@ -3856,14 +3845,12 @@
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "JD" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0;
-	dir = 8
-	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8;
+	name = "killroom vent"
+	},
 /turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "JP" = (
@@ -4965,7 +4952,6 @@
 /area/ruin/syndicate_lava_base/engineering)
 "Te" = (
 /obj/machinery/processor/slime,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/testlab)
 "Tl" = (
@@ -6687,7 +6673,7 @@ fA
 bZ
 xI
 dB
-uy
+XI
 eL
 Te
 yj
