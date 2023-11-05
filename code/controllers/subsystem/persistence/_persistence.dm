@@ -37,6 +37,7 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
+	load_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -51,11 +52,13 @@ SUBSYSTEM_DEF(persistence)
 	save_randomized_recipes()
 	save_scars()
 	save_custom_outfits()
+	save_modular_persistence() // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 	save_delamination_counter()
 	if(SStransport.can_fire)
 		for(var/datum/transport_controller/linear/tram/transport as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 			save_tram_history(transport.specific_transport_id)
 		save_tram_counter()
+	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
