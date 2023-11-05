@@ -33,13 +33,13 @@ export const silicon_flavor_text: Feature<string> = {
 
 export const ooc_notes: Feature<string> = {
   name: 'OOC Notes',
-  description:
-    'Primarily for things like ERP, general, antag/whatever preferences.',
   component: FeatureTextInput,
 };
 
 export const custom_species: Feature<string> = {
   name: 'Custom Species Name',
+  description:
+    'Appears on examine. If left blank, you will use your default species name (E.g. Human, Lizardperson).',
   component: FeatureShortTextInput,
 };
 
@@ -50,17 +50,25 @@ export const custom_species_lore: Feature<string> = {
 };
 export const general_record: Feature<string> = {
   name: 'Records - General',
-  description: 'Viewable by anyone with any records access.',
+  description:
+    'Viewable with any records access. \
+    For general viewing-things like employment, qualifications, etc.',
   component: FeatureTextInput,
 };
 
 export const security_record: Feature<string> = {
   name: 'Records - Security',
+  description:
+    'Viewable with security access. \
+  For criminal records, arrest history, things like that.',
   component: FeatureTextInput,
 };
 
 export const medical_record: Feature<string> = {
   name: 'Records - Medical',
+  description:
+    'Viewable with medical access. \
+  For things like medical history, prescriptions, DNR orders, etc.',
   component: FeatureTextInput,
 };
 
