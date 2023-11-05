@@ -1,8 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/ruin/syndicate_lava_base/medbay)
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "aq" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 4
@@ -104,6 +106,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
 	},
@@ -469,6 +472,7 @@
 "dV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/duct,
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "dX" = (
@@ -654,6 +658,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "gr" = (
@@ -1156,6 +1161,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "km" = (
@@ -1163,6 +1169,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/white/textured_half{
 	dir = 1
 	},
@@ -1215,6 +1222,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "kX" = (
@@ -1397,6 +1405,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "mK" = (
@@ -1575,6 +1584,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/duct,
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "oJ" = (
@@ -1603,6 +1613,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "pb" = (
@@ -2009,6 +2020,7 @@
 /obj/structure/chair/stool/bar,
 /obj/effect/turf_decal/siding/thinplating,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "tl" = (
@@ -2529,6 +2541,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/stairs,
 /area/ruin/syndicate_lava_base/lounge)
 "yd" = (
@@ -2538,6 +2551,13 @@
 	dir = 4
 	},
 /area/ruin/syndicate_lava_base/dormitories)
+"yf" = (
+/obj/machinery/door/airlock{
+	name = "Unisex Restroom";
+	id_tag = "IDyneWC"
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "yj" = (
 /obj/structure/table/glass,
 /obj/item/storage/bag/xeno{
@@ -2590,6 +2610,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "yI" = (
@@ -2609,6 +2630,7 @@
 /area/ruin/syndicate_lava_base/testlab)
 "yO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/duct,
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "yU" = (
@@ -3079,6 +3101,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/white/textured_half{
 	dir = 1
 	},
@@ -3110,14 +3133,15 @@
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
 "Dl" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/camera/directional/east{
-	network = list("intd13");
-	name = "South Entrance Camera";
-	c_tag = "South Interdyne Entrance"
+/obj/machinery/light/small/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "IDyneWC";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	name = "Door Lock"
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/ruin/syndicate_lava_base/cargo)
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "Dn" = (
 /obj/effect/turf_decal/tile/dark_green,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -3212,6 +3236,7 @@
 /obj/structure/disposalpipe/junction/flip{
 	dir = 1
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "Ec" = (
@@ -3227,6 +3252,11 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/iron/dark/small,
 /area/ruin/syndicate_lava_base/medbay)
+"Ek" = (
+/obj/structure/sink/directional/west,
+/obj/structure/mirror/directional/east,
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "En" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
@@ -3497,6 +3527,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "Gy" = (
@@ -3574,6 +3605,11 @@
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
+/area/ruin/syndicate_lava_base/lounge)
+"GU" = (
+/obj/structure/closet/crate/bin,
+/obj/item/soap/syndie,
+/turf/open/floor/iron/freezer,
 /area/ruin/syndicate_lava_base/lounge)
 "GZ" = (
 /obj/structure/table/reinforced,
@@ -4187,6 +4223,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
+"MJ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/main)
 "MM" = (
 /obj/machinery/firealarm/directional/west,
 /obj/structure/table/reinforced/rglass,
@@ -4358,6 +4404,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "NU" = (
@@ -4633,6 +4680,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "PW" = (
@@ -4699,6 +4747,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/duct,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4778,6 +4827,7 @@
 "Rz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/duct,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4906,6 +4956,7 @@
 /obj/machinery/camera/autoname/directional/east{
 	network = list("intd13")
 	},
+/obj/machinery/duct,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/main)
 "SA" = (
@@ -4987,6 +5038,16 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
+"Tv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/main)
 "TA" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/ore_box,
@@ -5057,6 +5118,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "Uj" = (
@@ -5085,6 +5147,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
 "Us" = (
@@ -5385,6 +5448,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/diagonal,
 /area/ruin/syndicate_lava_base/engineering)
+"Wy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
+/obj/machinery/duct,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/main)
 "WB" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
 /obj/item/paper_bin{
@@ -5470,6 +5543,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "WT" = (
@@ -5587,6 +5661,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/cargo)
 "XH" = (
@@ -5636,6 +5711,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -5696,13 +5772,11 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Zc" = (
-/obj/machinery/button/door/directional/east{
-	id = "interdynedoors";
-	req_access = list("syndicate");
-	name = "External Blast Door Control"
+/obj/machinery/dryer{
+	pixel_x = 25
 	},
-/turf/open/floor/iron/white/small,
-/area/ruin/syndicate_lava_base/cargo)
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "Zd" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/effect/turf_decal/siding/dark_green{
@@ -5712,12 +5786,10 @@
 /turf/open/floor/iron/dark/herringbone,
 /area/ruin/syndicate_lava_base/lounge)
 "Ze" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/door/poddoor{
-	id = "interdynedoors"
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/cargo)
+/obj/structure/curtain,
+/obj/machinery/shower/directional/north,
+/turf/open/floor/iron/freezer,
+/area/ruin/syndicate_lava_base/lounge)
 "Zy" = (
 /obj/effect/turf_decal/tile/dark_green,
 /obj/structure/disposalpipe/segment{
@@ -6567,7 +6639,7 @@ ja
 ja
 ja
 ja
-ja
+lU
 lU
 "}
 (20,1,1) = {"
@@ -6688,8 +6760,8 @@ fm
 ja
 ja
 ja
-ja
-ja
+lU
+lU
 lU
 lU
 "}
@@ -6713,7 +6785,7 @@ Ui
 km
 CU
 aY
-Kv
+Wy
 XI
 iT
 CP
@@ -6728,10 +6800,10 @@ fm
 fm
 ja
 ja
-ja
-ja
-ja
-ja
+lU
+lU
+lU
+lU
 lU
 "}
 (24,1,1) = {"
@@ -6754,7 +6826,7 @@ HN
 Us
 LW
 xI
-dB
+MJ
 XI
 Hi
 YF
@@ -6769,10 +6841,10 @@ fm
 fm
 ja
 ja
-ja
-ja
-ja
-ja
+lU
+lU
+lU
+lU
 lU
 "}
 (25,1,1) = {"
@@ -6795,7 +6867,7 @@ hd
 Hj
 UA
 Dn
-dB
+MJ
 tx
 Vj
 kv
@@ -6810,10 +6882,10 @@ fm
 fm
 ja
 ja
-ja
-ja
-ja
-ja
+lU
+lU
+lU
+lU
 lU
 "}
 (26,1,1) = {"
@@ -6836,7 +6908,7 @@ hd
 TX
 jh
 xI
-lS
+Tv
 bJ
 yJ
 ys
@@ -6852,14 +6924,14 @@ fm
 ja
 ja
 ja
-ja
-ja
-ja
+lU
+lU
+lU
 lU
 "}
 (27,1,1) = {"
-ja
-ja
+lU
+lU
 ja
 ja
 ja
@@ -6894,12 +6966,12 @@ fm
 ja
 ja
 ja
-ja
-ja
-ja
+lU
+lU
+lU
 "}
 (28,1,1) = {"
-ja
+lU
 ja
 ja
 ja
@@ -6936,8 +7008,8 @@ ja
 ja
 ja
 ja
-ja
-ja
+lU
+lU
 "}
 (29,1,1) = {"
 ja
@@ -6965,20 +7037,20 @@ co
 AY
 gr
 Ih
-Ih
-Ih
-Ih
-Ih
-aa
+EH
+EH
+EH
+EH
+EH
 fm
 fm
 fm
 fm
 ja
-YN
 ja
 ja
-ja
+lU
+lU
 "}
 (30,1,1) = {"
 ja
@@ -7006,20 +7078,20 @@ pw
 pw
 pw
 Px
-TI
-CG
-TI
+EH
+aa
+Dl
 Ze
-XC
-Md
+EH
 fm
 fm
-Lz
-Lz
-Lz
-Lz
+fm
+fm
 ja
 ja
+ja
+ja
+lU
 "}
 (31,1,1) = {"
 ja
@@ -7047,18 +7119,18 @@ Gq
 NT
 kl
 wa
-Wb
+yf
 Zc
-tN
-Ze
-Dl
-iX
+Ek
+GU
+EH
 fm
 fm
-Lz
-Lz
-Lz
-Lz
+fm
+fm
+ja
+ja
+ja
 ja
 ja
 "}
@@ -7092,13 +7164,13 @@ EH
 EH
 EH
 EH
-aa
+EH
 fm
 fm
 fm
 fm
 fm
-YN
+ja
 ja
 ja
 ja
