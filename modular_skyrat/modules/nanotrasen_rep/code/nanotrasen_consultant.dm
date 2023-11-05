@@ -155,6 +155,7 @@
 
 //Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
 
+
 /obj/item/choice_beacon/ntc //I promise you, this will solve everything
 	name = "gunset beacon" //Haven't you done this before?
 	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office" // Done what?
@@ -162,25 +163,7 @@
 	company_message = span_bold("Supply Pod incoming please standby") //Did I?
 
 /obj/item/choice_beacon/ntc/generate_display_names() //You have
-	var/static/list/ntc_item_list //What's wrong with it? if I did.
+	var/static/list/selectable_gun_types //What's wrong with it? if I did.
 	if(!ntc_item_list) //Well I think it was a tad overpowered?
-		ntc_item_list = list() //But shouldn't the HoS be armed with the best gear at all time
-		for(var/obj/item/storage/box/ntc/box as anything in typesof(/obj/item/storage/box/ntc)) //Does he really need 3 Primary weapon though?
-			ntc_item_list[initial(box.name)] = box //I'd say he does
+		ntc_item_list = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
 	return ntc_item_list //You're a mad man
-
-/obj/item/storage/box/ntc //I think it's silly that you expect us to deal with it like this where we're expected to always tae in people alive even though they clearly want to kill us
-	name = "Skild Set." //You're too reliant on having guns and you clearly forgot what it takes to live without it
-	desc = "Contains your .585 handgun and a cigar case." //We can't solve every problem with diplomacy you know? If you let people live they'll keep throwing themself over and over at something
-
-/obj/item/storage/box/ntc/PopulateContents()
-	new /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild(src)
-	new /obj/item/storage/fancy/cigarettes/cigars/havana(src)
-
-/obj/item/storage/box/ntc/revolver
-	name = "Takbok Set."
-	desc = "Contains your .585 revolver and a cigar case."
-
-/obj/item/storage/box/ntc/revolver/PopulateContents()
-	new /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok(src)
-	new /obj/item/storage/fancy/cigarettes/cigars/havana(src)
