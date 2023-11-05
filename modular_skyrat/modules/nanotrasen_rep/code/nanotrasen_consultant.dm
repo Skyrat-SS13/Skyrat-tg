@@ -160,7 +160,7 @@
 	name = "gunset beacon" //Haven't you done this before?
 	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
 	company_source = "Trappiste Fabriek Company"
-	company_message = span_bold("Supply Pod incoming please standby")
+	company_message = span_bold("Supply Pod incoming please stand by")
 
 /obj/item/choice_beacon/ntc/generate_display_names()
 	var/static/list/selectable_gun_types //What's wrong with it? if I did.
