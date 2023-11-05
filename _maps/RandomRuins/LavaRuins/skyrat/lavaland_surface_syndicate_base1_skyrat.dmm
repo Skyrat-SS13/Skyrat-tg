@@ -6,24 +6,10 @@
 /turf/open/floor/iron/freezer,
 /area/ruin/syndicate_lava_base/lounge)
 "aq" = (
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/dark_green/filled/mid_joiner{
 	dir = 4
 	},
 /obj/structure/table/reinforced/rglass,
-/obj/item/emergency_bed{
-	pixel_x = 1
-	},
-/obj/item/emergency_bed{
-	pixel_y = 9;
-	pixel_x = 3
-	},
-/obj/item/emergency_bed{
-	pixel_y = 6;
-	pixel_x = -2
-	},
 /obj/machinery/light/small/directional/west,
 /obj/item/stack/medical/bone_gel{
 	pixel_x = -6;
@@ -32,7 +18,13 @@
 /obj/item/stack/sticky_tape/surgical{
 	pixel_x = 6
 	},
-/turf/open/floor/iron/dark/small,
+/obj/effect/turf_decal/tile/dark_green/half{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "aA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -517,6 +509,9 @@
 /area/ruin/syndicate_lava_base/testlab)
 "eH" = (
 /obj/machinery/computer/operating,
+/obj/effect/turf_decal/tile/dark_green/half{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "eL" = (
@@ -1073,6 +1068,13 @@
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/arrivals)
+"jw" = (
+/obj/effect/turf_decal/trimline/dark_green/warning{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "jx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/meter,
@@ -1948,7 +1950,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/machinery/light/small/directional/east,
 /obj/machinery/light_switch/directional/east,
-/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "sG" = (
@@ -2179,6 +2180,9 @@
 /area/ruin/syndicate_lava_base/cargo)
 "us" = (
 /obj/structure/table/optable,
+/obj/machinery/defibrillator_mount/directional{
+	pixel_y = 26
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "uE" = (
@@ -2238,9 +2242,6 @@
 /obj/effect/turf_decal/stripes/blue/line{
 	dir = 8
 	},
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/effect/mapping_helpers/apc/syndicate_access,
-/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "uX" = (
@@ -2398,12 +2399,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/surgery{
 	pixel_y = 4
 	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/mid_joiner{
-	dir = 4
-	},
 /obj/structure/table/reinforced/rglass,
 /obj/machinery/vending/wallmed/directional/west,
 /obj/item/clothing/suit/apron/surgical{
@@ -2414,7 +2409,10 @@
 	pixel_x = 7;
 	pixel_y = -6
 	},
-/turf/open/floor/iron/dark/small,
+/obj/effect/turf_decal/tile/dark_green/half{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "wT" = (
 /obj/machinery/button/door{
@@ -2441,6 +2439,21 @@
 /obj/effect/turf_decal/trimline/dark_green/warning,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
+"wZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/railing,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/window/survival_pod{
+	req_access = list("syndicate");
+	dir = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/cargo)
 "xe" = (
 /obj/structure/cable,
 /obj/machinery/door/window/survival_pod{
@@ -2603,6 +2616,7 @@
 /obj/machinery/computer/operating{
 	dir = 1
 	},
+/obj/machinery/defibrillator_mount/directional/west,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "yG" = (
@@ -2893,11 +2907,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/structure/sign/warning/no_smoking/circle/directional/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/light/cold/directional/north,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "By" = (
@@ -2982,6 +2997,7 @@
 /area/ruin/syndicate_lava_base/virology)
 "BQ" = (
 /obj/effect/turf_decal/siding/thinplating,
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/lounge)
 "BZ" = (
@@ -3433,9 +3449,6 @@
 /obj/effect/turf_decal/trimline/dark_green/warning{
 	dir = 1
 	},
-/obj/effect/turf_decal/trimline/dark_green/mid_joiner{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "FL" = (
@@ -3782,10 +3795,13 @@
 /area/ruin/syndicate_lava_base/cargo)
 "IB" = (
 /obj/structure/tank_holder/anesthetic,
-/obj/effect/turf_decal/trimline/dark_green/warning{
+/obj/effect/turf_decal/trimline/dark_green/mid_joiner{
 	dir = 1
 	},
-/obj/effect/turf_decal/trimline/dark_green/mid_joiner{
+/obj/effect/turf_decal/tile/dark_green/half{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_green/warning{
 	dir = 1
 	},
 /turf/open/floor/iron/dark/textured_large,
@@ -3796,6 +3812,8 @@
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/white/corner,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "IH" = (
@@ -4525,12 +4543,6 @@
 /obj/item/storage/pill_bottle/mannitol,
 /obj/item/reagent_containers/dropper,
 /obj/structure/table,
-/obj/machinery/defibrillator_mount/directional{
-	pixel_y = 26
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/mid_joiner{
-	dir = 8
-	},
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
@@ -4783,8 +4795,6 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
@@ -5244,6 +5254,10 @@
 	pixel_y = -6;
 	pixel_x = -2
 	},
+/obj/item/nif_repair_kit{
+	pixel_x = -4;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/syndicate_lava_base/medbay)
 "Vf" = (
@@ -5479,19 +5493,22 @@
 /area/ruin/syndicate_lava_base/medbay)
 "WC" = (
 /obj/structure/table/reinforced/rglass,
-/obj/item/nif_repair_kit{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/nif_repair_kit{
-	pixel_x = 4;
-	pixel_y = 5
-	},
 /obj/effect/turf_decal/tile/dark_green/half{
 	dir = 8
 	},
 /obj/effect/turf_decal/trimline/dark_green/warning{
 	dir = 1
+	},
+/obj/item/emergency_bed{
+	pixel_y = 9;
+	pixel_x = 3
+	},
+/obj/item/emergency_bed{
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/obj/item/emergency_bed{
+	pixel_x = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
@@ -6949,7 +6966,7 @@ aE
 ky
 sk
 Ua
-bo
+jw
 da
 Ed
 WB
@@ -7212,7 +7229,7 @@ GZ
 En
 EH
 EH
-EZ
+fm
 fm
 fm
 fm
@@ -7276,7 +7293,7 @@ Ih
 Mc
 XL
 tz
-wE
+wZ
 VX
 Xj
 Gk
