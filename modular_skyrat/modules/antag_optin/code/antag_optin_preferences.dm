@@ -41,7 +41,7 @@
 		return FALSE
 	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
 		return FALSE
-	. = ..()
+	return ..()
 
 
 
