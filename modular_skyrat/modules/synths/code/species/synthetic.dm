@@ -79,12 +79,6 @@
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
-/datum/species/synthetic/spec_death(gibbed, mob/living/carbon/human/transformer)
-	. = ..()
-	saved_screen = screen
-	switch_to_screen(transformer, "BSOD")
-	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
-
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 
@@ -98,6 +92,8 @@
 
 		screen = new(transformer)
 		screen.Grant(transformer)
+
+		RegisterSignal(transformer, COMSIG_LIVING_DEATH, PROC_REF(bsod_death)) // screen displays bsod on death, if they have one
 
 		return
 
@@ -148,6 +144,19 @@
 
 	if(screen)
 		screen.Remove(human)
+		UnregisterSignal(human, COMSIG_LIVING_DEATH)
+
+/**
+ * Makes the IPC screen switch to BSOD followed by a blank screen
+ *
+ * Arguments:
+ * * transformer - The human that will be affected by the screen change (read: IPC).
+ * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to. Defaults to BSOD.
+ */
+/datum/species/synthetic/proc/bsod_death(mob/living/carbon/human/transformer, screen_name = "BSOD")
+	saved_screen = screen // remember the old screen in case of revival
+	switch_to_screen(transformer, screen_name)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
 
 /**
  * Simple proc to switch the screen of a monitor-enabled synth, while updating their appearance.

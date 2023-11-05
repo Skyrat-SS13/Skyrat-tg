@@ -182,11 +182,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	species_human.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(species_human)
 
-//I wag in death
-/datum/species/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
-
 /datum/species/spec_stun(mob/living/carbon/human/H,amount)
 	if(H)
 		stop_wagging_tail(H)
