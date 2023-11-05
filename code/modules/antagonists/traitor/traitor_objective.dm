@@ -251,7 +251,6 @@
 /datum/traitor_objective/proc/generate_ui_buttons(mob/user)
 	return
 
-
 /datum/traitor_objective/proc/add_ui_button(name, tooltip, icon, action)
 	return list(list(
 		"name" = name,
