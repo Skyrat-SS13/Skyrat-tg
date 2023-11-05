@@ -158,12 +158,13 @@
 
 /obj/item/choice_beacon/ntc //I promise you, this will solve everything
 	name = "gunset beacon" //Haven't you done this before?
-	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office" // Done what?
-	company_source = "Trappiste Fabriek Company" // You know, tried adding gun beacon prior
-	company_message = span_bold("Supply Pod incoming please standby") //Did I?
+	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
+	company_source = "Trappiste Fabriek Company"
+	company_message = span_bold("Supply Pod incoming please standby")
 
-/obj/item/choice_beacon/ntc/generate_display_names() //You have
+/obj/item/choice_beacon/ntc/generate_display_names()
 	var/static/list/selectable_gun_types //What's wrong with it? if I did.
 	if(!selectable_gun_types) //Well I think it was a tad overpowered?
-		selectable_gun_types = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
+		selectable_gun_types = list("Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, "Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
+
 	return selectable_gun_types //You're a mad man
