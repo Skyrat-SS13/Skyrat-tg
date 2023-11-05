@@ -164,6 +164,6 @@
 
 /obj/item/choice_beacon/ntc/generate_display_names() //You have
 	var/static/list/selectable_gun_types //What's wrong with it? if I did.
-	if(!ntc_item_list) //Well I think it was a tad overpowered?
-		ntc_item_list = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
-	return ntc_item_list //You're a mad man
+	if(!selectable_gun_types) //Well I think it was a tad overpowered?
+		selectable_gun_types = list(/obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
+	return selectable_gun_types //You're a mad man
