@@ -48,7 +48,7 @@
 	var/contained_reagent = /datum/reagent/consumable/condensedcapsaicin
 	var/reagent_volume = 5
 
-/obj/projectile/bullet/pepperball/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/bullet/pepperball/on_hit(atom/target, blocked = 0, pierce_hit)
 	if(isliving(target))
 		var/mob/living/M = target
 		if(M.can_inject())

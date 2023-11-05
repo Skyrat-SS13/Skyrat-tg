@@ -12,6 +12,7 @@
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/red.ogg'
 
 /datum/security_level/delta
+	announcement_color = "pink"
 	lowering_to_configuration_key = /datum/config_entry/string/alert_delta_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_delta_upto
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/delta.ogg'
@@ -26,6 +27,7 @@
  */
 /datum/security_level/violet
 	name = "violet"
+	announcement_color = "purple"
 	number_level = SEC_LEVEL_VIOLET
 	lowering_to_configuration_key = /datum/config_entry/string/alert_violet_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_violet_upto
@@ -39,6 +41,7 @@
  */
 /datum/security_level/orange
 	name = "orange"
+	announcement_color = "orange"
 	number_level = SEC_LEVEL_ORANGE
 	lowering_to_configuration_key = /datum/config_entry/string/alert_orange_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_orange_upto
@@ -53,6 +56,7 @@
 
 /datum/security_level/amber
 	name = "amber"
+	announcement_color = "yellow"
 	number_level = SEC_LEVEL_AMBER
 	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_amber_upto
@@ -67,6 +71,7 @@
  */
 /datum/security_level/gamma
 	name = "gamma"
+	announcement_color = "pink"
 	number_level = SEC_LEVEL_GAMMA
 	elevating_to_configuration_key = /datum/config_entry/string/alert_gamma
 	shuttle_call_time_mod = 0.25

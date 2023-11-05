@@ -106,13 +106,6 @@ would only be recognisable with someone that had the syndicate trait.
 			//If they are a syndicate contractor or a syndicate
 			if(EXAMINE_CHECK_CONTRACTOR)
 				var/mob/living/carbon/human/human_user = user
-				if(!user?.mind.opposing_force)
-					return
-				for(var/datum/opposing_force_equipment/antagonist_powers/contractor/contractor_kit in user.mind.opposing_force.selected_equipment)
-					composed_message = "You note the following because of your [span_red("<b>Contractor Status</b>")]: <br>"
-					composed_message += special_desc
-					. += composed_message
-					return
 				if(human_user.mind.special_role == ROLE_DRIFTING_CONTRACTOR)
 					composed_message = "You note the following because of your [span_red("<b>Contractor Status</b>")]: <br>"
 					composed_message += special_desc

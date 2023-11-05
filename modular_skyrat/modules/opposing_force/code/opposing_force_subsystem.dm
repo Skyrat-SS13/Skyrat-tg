@@ -48,6 +48,7 @@ SUBSYSTEM_DEF(opposing_force)
 				equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 			// We don't have home :( add us to the other category.
 			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
+	equipment_list = sort_list(equipment_list, GLOBAL_PROC_REF(cmp_num_string_asc))
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()

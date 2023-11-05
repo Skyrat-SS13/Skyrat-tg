@@ -12,14 +12,15 @@
 	/// the list of ore-y stuff that ants can drag up from deep within their nest
 	var/list/ore_list = list(
 		/obj/item/stack/ore/iron = 20,
-		/obj/item/stack/ore/glass = 20,
-		/obj/item/stack/sheet/mineral/plasma = 14,
-		/obj/item/stack/sheet/mineral/silver = 8,
+		/obj/item/stack/ore/glass/basalt = 20,
+		/obj/item/stack/ore/plasma = 14,
+		/obj/item/stack/ore/silver = 8,
 		/obj/item/xenoarch/strange_rock = 8,
+		/obj/item/stack/stone = 8,
 		/obj/item/stack/sheet/mineral/coal = 8,
-		/obj/item/stack/sheet/mineral/titanium = 8,
-		/obj/item/stack/sheet/mineral/uranium = 3,
-		/obj/item/stack/sheet/mineral/gold = 3,
+		/obj/item/stack/ore/titanium = 8,
+		/obj/item/stack/ore/uranium = 3,
+		/obj/item/stack/ore/gold = 3,
 	)
 	// The cooldown between each worm "breeding"
 	COOLDOWN_DECLARE(ant_timer)
@@ -72,6 +73,17 @@
 		qdel(attacking_item)
 		balloon_alert(user, "food has been placed")
 		ant_chance++
+		return
+
+	if(istype(attacking_item, /obj/item/storage/bag/plants))
+		balloon_alert(user, "feeding the ants")
+		for(var/obj/item/food/selected_food in attacking_item.contents)
+			if(!do_after(user, 1 SECONDS, src))
+				return
+
+			qdel(selected_food)
+			ant_chance++
+
 		return
 
 	return ..()
