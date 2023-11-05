@@ -135,3 +135,5 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "fertilizer"
 	grind_results = list(/datum/reagent/plantnutriment/eznutriment = 3, /datum/reagent/plantnutriment/left4zednutriment = 3, /datum/reagent/plantnutriment/robustharvestnutriment = 3)
+	singular_name = "fertilizer"
+	merge_type = /obj/item/stack/worm_fertilizer
