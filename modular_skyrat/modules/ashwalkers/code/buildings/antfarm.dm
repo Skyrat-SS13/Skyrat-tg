@@ -75,6 +75,17 @@
 		ant_chance++
 		return
 
+	if(istype(attacking_item, /obj/item/storage/bag/plants))
+		balloon_alert(user, "feeding the ants")
+		for(var/obj/item/food/selected_food in attacking_item.contents)
+			if(!do_after(user, 1 SECONDS, src))
+				return
+
+			qdel(selected_food)
+			ant_chance++
+
+		return
+
 	return ..()
 
 /obj/item/stack/ore/glass/ten

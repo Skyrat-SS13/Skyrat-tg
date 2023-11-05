@@ -61,9 +61,6 @@
 		if (isnull(creature.client)) // Are they connected?
 			trimmed_list.Remove(creature)
 			continue
-		if (isnull(creature.mind))
-			trimmed_list.Remove(creature)
-			continue
 		//SKYRAT EDIT ADDITION
 		if(is_banned_from(creature.client.ckey, BAN_ANTAGONIST))
 			trimmed_list.Remove(creature)
@@ -81,6 +78,10 @@
 		if (is_banned_from(creature.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			trimmed_list.Remove(creature)
 			continue
+
+		if (isnull(creature.mind))
+			continue
+
 		if (restrict_ghost_roles && (creature.mind.assigned_role.title in GLOB.exp_specialmap[EXP_TYPE_SPECIAL])) // Are they playing a ghost role?
 			trimmed_list.Remove(creature)
 			continue

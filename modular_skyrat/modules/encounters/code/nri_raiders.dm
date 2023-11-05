@@ -59,6 +59,7 @@ GLOBAL_VAR(first_officer)
 	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
 	response_too_late = "Your response was very delayed. We have been instructed to send in the patrol ship for second attempt negotiations, stand by."
 	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
+	announcement_color = "purple"
 
 /datum/pirate_gang/nri_raiders/generate_message(payoff)
 	var/number = rand(1,99)
@@ -358,6 +359,7 @@ GLOBAL_VAR(first_officer)
 	),src)
 
 /obj/item/storage/box/nri_survival_pack/raider
+	w_class = WEIGHT_CLASS_SMALL
 	desc = "A box filled with useful emergency items, supplied by the NRI. It feels particularily light."
 
 /obj/item/storage/box/nri_survival_pack/raider/PopulateContents()
@@ -519,9 +521,9 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri/send_notification()
 	if(active)
-		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority", color_override = "purple")
 	else
-		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
+		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority", color_override = "purple")
 
 /datum/antagonist/cop
 	name = "\improper NRI Police Officer"

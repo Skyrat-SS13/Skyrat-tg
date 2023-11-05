@@ -374,32 +374,26 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for TheOOZ
-/obj/item/clothing/mask/animal/kindle
+/obj/item/clothing/mask/animal/wolf
 	name = "wolf mask"
-	desc = "A dark mask in the shape of a wolf's head.<br>The material feels like it's made entirely out of inexpensive plastic."
+	desc = "A dark mask in the shape of a wolf's head."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	inhand_icon_state = "gasmask_captain"
 	animal_type = "wolf"
-	animal_sounds = list("Awoo!", "Woof.", "Arf!")
-	animal_sounds_alt_probability = 15
-	animal_sounds_alt = list("Join us!", "Wear the mask.")
-	curse_spawn_sound = 'modular_skyrat/master_files/sound/effects/wolfhead_curse.ogg'
-	cursed = FALSE
-
-	supports_variations_flags = NONE
-	clothing_flags = MASKINTERNALS | VOICEBOX_DISABLED | VOICEBOX_TOGGLABLE
-	flags_inv = HIDEFACIALHAIR | HIDESNOUT
+	unique_death = 'modular_skyrat/master_files/sound/effects/wolfhead_curse.ogg'
 	visor_flags_inv = HIDEFACIALHAIR | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	clothing_flags = VOICEBOX_DISABLED | MASKINTERNALS | BLOCK_GAS_SMOKE_EFFECT | GAS_FILTERING
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
-	w_class = WEIGHT_CLASS_SMALL
+	use_radio_beeps_tts = TRUE
 
-/obj/item/clothing/mask/animal/kindle/make_cursed()
+/obj/item/clothing/mask/animal/wolf/Initialize(mapload)
 	. = ..()
-	clothing_flags = initial(clothing_flags)
-	name = "\proper the accursed wolf mask"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her alleged cult.<br>It looks like a [animal_type] mask, but closer inspection reveals it's melded onto this person's face!"
+	var/obj/item/clothing/mask/gas/sechailer/sechailer_type = /obj/item/clothing/mask/gas/sechailer
+	voice_filter = initial(sechailer_type.voice_filter)
 
 // Donation reward for Random516
 /obj/item/clothing/head/drake_skull
@@ -1736,3 +1730,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	can_adjust = FALSE
 
 #undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
+
+//  Donation reward for vexcint
+/obj/item/clothing/head/anubite
+	name = "\improper Anubite headpiece"
+	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
+	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anubite_headpiece"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_y_offset = 4

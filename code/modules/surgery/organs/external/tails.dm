@@ -57,19 +57,29 @@
 			addtimer(CALLBACK(src, PROC_REF(wag), FALSE), stop_after, TIMER_STOPPABLE|TIMER_DELETE_ME)
 	else
 		stop_wag()
-	owner.update_body() // SKYRAT EDIT - Golden update this in your upcoming tail refactor please :) - Original: owner.update_body_parts()
+	owner.update_body_parts()
 
 ///We need some special behaviour for accessories, wrapped here so we can easily add more interactions later
 /obj/item/organ/external/tail/proc/start_wag()
 	var/datum/bodypart_overlay/mutant/tail/accessory = bodypart_overlay
 	wag_flags |= WAG_WAGGING
 	accessory.wagging = TRUE
+	// SKYRAT EDIT ADDITION START - SOON TO BE UPSTREAM
+	if(owner)
+		owner.update_body_parts()
+		RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(stop_wag))
+	// SKYRAT EDIT ADDITION END
 
 ///We need some special behaviour for accessories, wrapped here so we can easily add more interactions later
 /obj/item/organ/external/tail/proc/stop_wag()
 	var/datum/bodypart_overlay/mutant/tail/accessory = bodypart_overlay
 	wag_flags &= ~WAG_WAGGING
 	accessory.wagging = FALSE
+	// SKYRAT EDIT ADDITION START - SOON TO BE UPSTREAM
+	if(owner)
+		owner.update_body_parts()
+		UnregisterSignal(owner, COMSIG_LIVING_DEATH)
+	// SKYRAT EDIT ADDITION END
 
 ///Tail parent type (which is MONKEEEEEEEEEEE by default), with wagging functionality
 /datum/bodypart_overlay/mutant/tail

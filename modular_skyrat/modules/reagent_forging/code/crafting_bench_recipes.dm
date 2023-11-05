@@ -120,7 +120,7 @@
 	recipe_name = "seed mesh"
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 1,
-		/obj/item/forging/complete/chain = 4,
+		/obj/item/forging/complete/chain = 2,
 	)
 	resulting_item = /obj/item/seed_mesh
 	required_good_hits = 10
