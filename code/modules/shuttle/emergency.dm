@@ -337,7 +337,7 @@
 
 	. = ..()
 
-/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) //SKYRAT EDIT CHANGE - AUTOTRANSFER
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) // SKYRAT EDIT CHANGE - AUTOTRANSFER - adds silent arg
 	if(!isnum(set_coefficient))
 		set_coefficient = SSsecurity_level.current_security_level.shuttle_call_time_mod
 	alert_coeff = set_coefficient
@@ -358,10 +358,10 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-<<<<<<< HEAD
-	if(!silent) // SKYRAT EDIT ADDITION
-		priority_announce("The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, ANNOUNCEMENT_TYPE_PRIORITY, color_override = "orange")
-=======
+ 	// SKYRAT EDIT ADDITION START
+	if(silent)
+		return
+	// SKYRAT EDIT ADDITION END
 	priority_announce(
 		text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [(timeLeft(60 SECONDS))] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
 		title = "Emergency Shuttle Dispatched",
@@ -369,7 +369,6 @@
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "orange",
 		)
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)

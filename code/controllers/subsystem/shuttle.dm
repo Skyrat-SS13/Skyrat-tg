@@ -279,17 +279,13 @@ SUBSYSTEM_DEF(shuttle)
 	if(isnull(lockout_timer))
 		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
-<<<<<<< HEAD
-		priority_announce("Error!", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
-=======
 		priority_announce(
 			text = "Emergency shuttle uplink interference detected, shuttle call disabled while the system reinitializes. Estimated restore in [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Interference",
-			sound = 'sound/misc/announce_dig.ogg',
+			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
 		)
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
 		addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
 		return
 	emergency_no_recall = TRUE
@@ -297,17 +293,13 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	if(admin_emergency_no_recall)
-<<<<<<< HEAD
-		priority_announce("Error!", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
-=======
 		priority_announce(
 			text= "Emergency shuttle uplink services are now back online.",
 			title = "Uplink Restored",
-			sound = 'sound/misc/announce_dig.ogg',
+			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "green",
 		)
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
 		return
 	emergency_no_recall = FALSE
 

@@ -224,17 +224,13 @@
 	SSshuttle.admin_emergency_no_recall = TRUE
 	SSshuttle.emergency.setTimer(0)
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
-<<<<<<< HEAD
-	priority_announce("Warning: Emergency Shuttle uplink failure, shuttle disabled until further notice.", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
-=======
 	priority_announce(
 		text = "Emergency Shuttle uplink failure, shuttle disabled until further notice.",
 		title = "Uplink Failure",
-		sound = 'sound/misc/announce_dig.ogg',
+		sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "grey",
 	)
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
 
 /client/proc/admin_enable_shuttle()
 	set category = "Admin.Events"
@@ -260,17 +256,13 @@
 	if(SSshuttle.last_call_time < 10 SECONDS && SSshuttle.last_mode != SHUTTLE_IDLE)
 		SSshuttle.last_call_time = 10 SECONDS //Make sure no insta departures.
 	SSshuttle.emergency.setTimer(SSshuttle.last_call_time)
-<<<<<<< HEAD
-	priority_announce("Warning: Emergency Shuttle uplink reestablished, shuttle enabled.", "Emergency Shuttle Uplink Alert", ANNOUNCER_SHUTTLE) // SKYRAT EDIT CHANGE - Announcer Sounds
-=======
 	priority_announce(
 		text = "Emergency Shuttle uplink reestablished, shuttle enabled.",
 		title = "Uplink Restored",
-		sound = 'sound/misc/announce_dig.ogg',
+		sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/misc/announce_dig.ogg',
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "green",
 	)
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
 
 /client/proc/admin_hostile_environment()
 	set category = "Admin.Events"

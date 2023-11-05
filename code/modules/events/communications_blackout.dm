@@ -23,11 +23,7 @@
 		to_chat(A, "<br>[span_warning("<b>[alert]</b>")]<br>")
 
 	if(prob(30) || fake) //most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.
-<<<<<<< HEAD
-		priority_announce(alert, null, ANNOUNCER_COMMSBLACKOUT) //SKYRAT EDIT CHANGE
-=======
-		priority_announce(alert, "Anomaly Alert")
->>>>>>> 312cd8880d9 (Station announcements cleanup (#79315))
+		priority_announce(alert, "Anomaly Alert", sound = ANNOUNCER_COMMSBLACKOUT) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce(alert, "Anomaly Alert")
 
 
 /datum/round_event/communications_blackout/start()
