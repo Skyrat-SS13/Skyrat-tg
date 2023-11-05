@@ -26,7 +26,7 @@ export const penis_color: Feature<string[]> = {
 
 export const penis_emissive: Feature<boolean[]> = {
   name: 'Penis Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -83,7 +83,7 @@ export const testicles_color: Feature<string[]> = {
 
 export const testicles_emissive: Feature<boolean[]> = {
   name: 'Testicles Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -118,7 +118,7 @@ export const vagina_color: Feature<string[]> = {
 
 export const vagina_emissive: Feature<boolean[]> = {
   name: 'Vagina Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -157,7 +157,7 @@ export const breasts_color: Feature<string[]> = {
 
 export const breasts_emissive: Feature<boolean[]> = {
   name: 'Breast Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 

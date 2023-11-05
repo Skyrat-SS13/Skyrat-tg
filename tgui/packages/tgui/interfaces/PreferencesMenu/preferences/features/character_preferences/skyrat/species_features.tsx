@@ -69,7 +69,7 @@ export const exploitable_info: Feature<string> = {
   description:
     'Can be IC or OOC. Viewable by certain antagonists/OPFOR users, as well as ghosts. Generally contains \
   things like weaknesses, strengths, important background, trigger words, etc. It ALSO may contain things like \
-  antagonist preferences, e.g. if you want to be antagonized, by whom, with what, etc. DO NOT PUT SEXUAL THINGS IN HERE! THAT IS FOR OOC NOTES!',
+  antagonist preferences, e.g. if you want to be antagonized, by whom, with what, etc.',
   component: FeatureTextInput,
 };
 
@@ -101,13 +101,13 @@ export const allow_genitals_toggle: FeatureToggle = {
 
 export const allow_emissives_toggle: FeatureToggle = {
   name: 'Allow Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: CheckboxInput,
 };
 
 export const eye_emissives: FeatureToggle = {
   name: 'Eye Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: CheckboxInput,
 };
 
@@ -161,7 +161,7 @@ export const tail_color: Feature<string[]> = {
 
 export const tail_emissive: Feature<boolean[]> = {
   name: 'Tail Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -186,7 +186,7 @@ export const snout_color: Feature<string[]> = {
 
 export const snout_emissive: Feature<boolean[]> = {
   name: 'Snout Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -211,7 +211,7 @@ export const horns_color: Feature<string[]> = {
 
 export const horns_emissive: Feature<boolean[]> = {
   name: 'Horns Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -236,7 +236,7 @@ export const ears_color: Feature<string[]> = {
 
 export const ears_emissive: Feature<boolean[]> = {
   name: 'Ears Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -261,7 +261,7 @@ export const wings_color: Feature<string[]> = {
 
 export const wings_emissive: Feature<boolean[]> = {
   name: 'Wings Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -286,7 +286,7 @@ export const frills_color: Feature<string[]> = {
 
 export const frills_emissive: Feature<boolean[]> = {
   name: 'Frills Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -311,7 +311,7 @@ export const spines_color: Feature<string[]> = {
 
 export const spines_emissive: Feature<boolean[]> = {
   name: 'Spines Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -345,7 +345,7 @@ export const caps_color: Feature<string[]> = {
 
 export const caps_emissive: Feature<boolean[]> = {
   name: 'Caps Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -370,7 +370,7 @@ export const moth_antennae_color: Feature<string[]> = {
 
 export const moth_antennae_emissive: Feature<boolean[]> = {
   name: 'Moth Antenna Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -395,7 +395,7 @@ export const moth_markings_color: Feature<string[]> = {
 
 export const moth_markings_emissive: Feature<boolean[]> = {
   name: 'Moth Markings Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -420,7 +420,7 @@ export const fluff_color: Feature<string[]> = {
 
 export const fluff_emissive: Feature<boolean[]> = {
   name: 'Fluff Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -445,7 +445,7 @@ export const head_acc_color: Feature<string[]> = {
 
 export const head_acc_emissive: Feature<boolean[]> = {
   name: 'Head Accessories Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -466,7 +466,7 @@ export const ipc_screen_color: Feature<string> = {
 
 export const ipc_screen_emissive: Feature<boolean> = {
   name: 'IPC Screen Emissive',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: CheckboxInput,
 };
 
@@ -491,7 +491,7 @@ export const ipc_antenna_color: Feature<string[]> = {
 
 export const ipc_antenna_emissive: Feature<boolean[]> = {
   name: 'Synth Antenna Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -582,7 +582,7 @@ export const skrell_hair_color: Feature<string[]> = {
 
 export const skrell_hair_emissive: Feature<boolean[]> = {
   name: 'Skrell Hair Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -607,7 +607,7 @@ export const taur_color: Feature<string[]> = {
 
 export const taur_emissive: Feature<boolean[]> = {
   name: 'Taur Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -632,7 +632,7 @@ export const xenodorsal_color: Feature<string[]> = {
 
 export const xenodorsal_emissive: Feature<boolean[]> = {
   name: 'Xenodorsal Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -657,7 +657,7 @@ export const xenohead_color: Feature<string[]> = {
 
 export const xenohead_emissive: Feature<boolean[]> = {
   name: 'Xeno Head Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -692,7 +692,7 @@ export const heterochromia_color: Feature<string[]> = {
 
 export const heterochromia_emissive: Feature<boolean[]> = {
   name: 'Heterochromia Emissives',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
 };
 
@@ -712,6 +712,6 @@ export const pod_hair_color: Feature<string[]> = {
 
 export const pod_hair_emissive: Feature<boolean> = {
   name: 'Floral Hair Emissive',
-  description: 'Emissive parts/layers glow in the dark.',
+  description: 'Emissive parts glow in the dark.',
   component: CheckboxInput,
 };
