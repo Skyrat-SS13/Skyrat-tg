@@ -93,6 +93,11 @@
 	description = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
 	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
 
+/datum/opposing_force_equipment/gadget_stealth/hair_tie
+	name = "Syndicate Hair Tie"
+	description = "An inconspicuous hair tie, able to be slung accurately. Useful to get yourself out of a sticky situation."
+	item_type = /obj/item/clothing/head/hair_tie/syndicate
+
 /datum/opposing_force_equipment/gadget_stealth/jammer
 	name = "Radio Jammer"
 	item_type = /obj/item/jammer

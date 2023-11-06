@@ -1,11 +1,11 @@
-#define FIRE_SPEED_REGULAR 2.5 SECONDS
-#define FIRE_SPEED_SYNDIE 1 SECONDS
+#define FIRE_SPEED_REGULAR 3 SECONDS
+#define FIRE_SPEED_SYNDIE 1.5 SECONDS
 
 /obj/item/clothing/head/hair_tie
 	name = "hair tie"
 	desc = "An elastic hair tie, made to hold your hair up!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
-	icon_state = "blackcomb"
+	icon_state = "hairtie"
 	worn_icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	worn_icon_state = "none"
 	lefthand_file = 'modular_skyrat/modules/salon/icons/items.dmi'
@@ -21,18 +21,18 @@
 /obj/item/clothing/head/hair_tie/scrunchie
 	name = "scrunchie"
 	desc = "An elastic hair tie, its fabric is velvet soft."
-	icon_state = "razor"
+	icon_state = "hairtie_scrunchie"
 
 /obj/item/clothing/head/hair_tie/plastic_beads
 	name = "colorful hair tie"
 	desc = "An elastic hair tie, adornished with colorful plastic beads."
-	icon_state = "scissors"
+	icon_state = "hairtie_beads"
 	custom_materials = (list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT*5))
 
 /obj/item/clothing/head/hair_tie/syndicate
 	name = "\improper Syndicate hair tie"
-	desc = "An elastic hair tie, brandishing the logo of the Syndicate."
-	icon_state = "razor"
+	desc = "An elastic hair tie with a metal clip, brandishing the logo of the Syndicate."
+	icon_state = "hairtie_syndie"
 
 /obj/item/clothing/head/hair_tie/examine(mob/user)
 	. = ..()
@@ -124,8 +124,9 @@
 
 /obj/projectile/bullet/hair_tie/syndicate
 	damage = 10 //getting hit with this one fucking sucks
-	eyeblur = 1 SECONDS
-	jitter = 2 SECONDS
+	stamina = 30
+	eyeblur = 2 SECONDS
+	jitter = 8 SECONDS
 
 /datum/design/plastic_hair_tie
 	name = "Plastic Hair Tie"
