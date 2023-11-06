@@ -267,10 +267,7 @@
 			reason = reason,
 			paying_account = account,
 			coupon = applied_coupon,
-<<<<<<< HEAD
 			charge_on_purchase = TRUE, // SKYRAT EDIT ADDITION
-=======
->>>>>>> 23f0284cabb (Adds some trailing commas to lists, fixes typo (#79422))
 		)
 		working_list += order
 
