@@ -518,14 +518,6 @@
 	set_vehicle_dir_layer(EAST, OBJ_LAYER)
 	set_vehicle_dir_layer(WEST, OBJ_LAYER)
 
-<<<<<<< HEAD
-//SKYRAT EDIT START: Human Riding Defines
-#undef OVERSIZED_OFFSET
-#undef OVERSIZED_SIDE_OFFSET
-#undef REGULAR_OFFSET
-#undef REGULAR_SIDE_OFFSET
-//SKYRAT EDIT END
-=======
 /datum/component/riding/creature/leaper
 	can_force_unbuckle = FALSE
 	can_use_abilities = TRUE
@@ -557,4 +549,10 @@
 /datum/component/riding/leaper/handle_unbuckle(mob/living/rider)
 	. = ..()
 	UnregisterSignal(rider,  COMSIG_MOB_POINTED)
->>>>>>> 42c8e1adf9c (new wizard ability and basic leaper refactor (#79237))
+
+//SKYRAT EDIT START: Human Riding Defines
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END
