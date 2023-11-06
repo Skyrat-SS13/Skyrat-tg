@@ -66,17 +66,9 @@
 	var/datum/bodypart_overlay/mutant/tail/accessory = bodypart_overlay
 	wag_flags |= WAG_WAGGING
 	accessory.wagging = TRUE
-<<<<<<< HEAD
-	// SKYRAT EDIT ADDITION START - SOON TO BE UPSTREAM
-	if(owner)
-		owner.update_body_parts()
-		RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(stop_wag))
-	// SKYRAT EDIT ADDITION END
-=======
 	organ_owner.update_body_parts()
 	RegisterSignal(organ_owner, COMSIG_LIVING_DEATH, PROC_REF(stop_wag))
 	return TRUE
->>>>>>> f158947a177 (Makes tails stop wagging in death (#79511))
 
 ///We need some special behaviour for accessories, wrapped here so we can easily add more interactions later
 /obj/item/organ/external/tail/proc/stop_wag(mob/living/carbon/organ_owner)
@@ -85,19 +77,11 @@
 	var/datum/bodypart_overlay/mutant/tail/accessory = bodypart_overlay
 	wag_flags &= ~WAG_WAGGING
 	accessory.wagging = FALSE
-<<<<<<< HEAD
-	// SKYRAT EDIT ADDITION START - SOON TO BE UPSTREAM
-	if(owner)
-		owner.update_body_parts()
-		UnregisterSignal(owner, COMSIG_LIVING_DEATH)
-	// SKYRAT EDIT ADDITION END
-=======
 	if(isnull(organ_owner))
 		return
 
 	organ_owner.update_body_parts()
 	UnregisterSignal(organ_owner, COMSIG_LIVING_DEATH)
->>>>>>> f158947a177 (Makes tails stop wagging in death (#79511))
 
 ///Tail parent type (which is MONKEEEEEEEEEEE by default), with wagging functionality
 /datum/bodypart_overlay/mutant/tail
