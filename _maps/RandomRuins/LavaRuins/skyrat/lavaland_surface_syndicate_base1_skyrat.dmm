@@ -38,16 +38,6 @@
 /area/ruin/syndicate_lava_base/virology)
 "aE" = (
 /obj/structure/table/survival_pod,
-/obj/machinery/turretid{
-	ailock = 1;
-	control_area = "/area/ruin/syndicate_lava_base/medbay";
-	dir = 1;
-	icon_state = "control_kill";
-	lethal = 1;
-	name = "Base turret controls";
-	pixel_y = 30;
-	req_access = list("syndicate")
-	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/medbay)
 "aG" = (
@@ -2630,6 +2620,20 @@
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/testlab)
+"yL" = (
+/obj/machinery/turretid{
+	ailock = 1;
+	control_area = "/area/ruin/syndicate_lava_base/medbay";
+	dir = 1;
+	icon_state = "control_kill";
+	lethal = 1;
+	name = "Base turret controls";
+	pixel_y = 34;
+	req_access = list("syndicate");
+	desc = "Used to control a the Interdyne Base's automated defenses."
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/medbay)
 "yO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/duct,
@@ -6948,7 +6952,7 @@ fm
 fm
 Pn
 aE
-ky
+yL
 sk
 Ua
 jZ
