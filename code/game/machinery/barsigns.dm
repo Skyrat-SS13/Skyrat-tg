@@ -1,10 +1,7 @@
 /obj/machinery/barsign // All Signs are 64 by 32 pixels, they take two tiles
 	name = "bar sign"
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
-	//SKYRAT EDIT CHANGE BEGIN - BARSIGNS
-	//icon = 'icons/obj/machines/barsigns.dmi'
-	icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi'
-	//SKYRAT EDIT CHANGE END
+	icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/machines/barsigns.dmi'
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
 	max_integrity = 500
@@ -67,7 +64,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 		return
 
 	if(chosen_sign && chosen_sign.light_mask)
-		. += emissive_appearance(icon, "[chosen_sign.icon]-light-mask", src)
+		. += emissive_appearance('icons/obj/machines/barsigns.dm', "[chosen_sign.icon]-light-mask", src) // SKYRAT EDIT CHANGE - the light masks are in the tg file - ORIGINAL: . += emissive_appearance(icon, "[chosen_sign.icon]-light-mask", src)
 
 /obj/machinery/barsign/update_appearance(updates=ALL)
 	. = ..()
