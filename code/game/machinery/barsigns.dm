@@ -64,7 +64,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 		return
 
 	if(chosen_sign && chosen_sign.light_mask)
-		. += emissive_appearance('icons/obj/machines/barsigns.dm', "[chosen_sign.icon]-light-mask", src) // SKYRAT EDIT CHANGE - the light masks are in the tg file - ORIGINAL: . += emissive_appearance(icon, "[chosen_sign.icon]-light-mask", src)
+		. += emissive_appearance('icons/obj/machines/barsigns.dmi', "[chosen_sign.icon]-light-mask", src) // SKYRAT EDIT CHANGE - the light masks are in the tg file - ORIGINAL: . += emissive_appearance(icon, "[chosen_sign.icon]-light-mask", src)
 
 /obj/machinery/barsign/update_appearance(updates=ALL)
 	. = ..()
