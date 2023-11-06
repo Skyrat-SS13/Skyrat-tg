@@ -152,7 +152,7 @@
 			"cost" = pack.get_cost(),
 			"orderer" = order.orderer,
 			"reason" = order.reason,
-			"id" = order.id
+			"id" = order.id,
 		))
 	data["amount_by_name"] = amount_by_name
 
@@ -177,7 +177,7 @@
 			"id" = pack,
 			"desc" = P.desc || P.name, // If there is a description, use it. Otherwise use the pack's name.
 			"goody" = P.goody,
-			"access" = P.access
+			"access" = P.access,
 		))
 	return data
 
@@ -267,7 +267,10 @@
 			reason = reason,
 			paying_account = account,
 			coupon = applied_coupon,
+<<<<<<< HEAD
 			charge_on_purchase = TRUE, // SKYRAT EDIT ADDITION
+=======
+>>>>>>> 23f0284cabb (Adds some trailing commas to lists, fixes typo (#79422))
 		)
 		working_list += order
 
