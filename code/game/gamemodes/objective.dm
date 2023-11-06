@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 
 //dupe_search_range is a list of antag datums / minds / teams
 //optinlevel is our list of people who have opted in, if you're not on that you're not a valid target
-/datum/objective/proc/find_target(dupe_search_range, list/blacklist, minimum_opt_in_level) //SKYRAT EDIT ADDITION - opt in
+/datum/objective/proc/find_target(dupe_search_range, list/blacklist, minimum_opt_in_level) //SKYRAT EDIT ADDITION - ANTAG_OPTIN
 	var/list/datum/mind/owners = get_owners()
 	if(!dupe_search_range)
 		dupe_search_range = get_owners()
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		if(!count_space_areas)
 			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
 				continue
-		if(possible_target in !minimum_opt_in_level)
+		if (!(possible_target in minimum_opt_in_level))
 			continue
 		// SKYRAT EDIT END
 		possible_targets += possible_target
