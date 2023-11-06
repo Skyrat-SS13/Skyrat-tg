@@ -95,10 +95,10 @@
 	},
 /area/ruin/syndicate_lava_base/main)
 "bb" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice/catwalk,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/syndicate_lava_base/engineering)
 "bf" = (
@@ -449,7 +449,10 @@
 "dU" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/syndicate_access,
-/obj/machinery/space_heater,
+/obj/structure/closet/secure_closet/ds2atmos{
+	anchorable = 0;
+	anchored = 1
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "dV" = (
@@ -856,6 +859,13 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /turf/open/floor/iron/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
+"ib" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/lava/smooth/lava_land_surface,
+/area/ruin/syndicate_lava_base/engineering)
 "id" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2317,6 +2327,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "wa" = (
@@ -3502,13 +3515,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/main)
-"Gf" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 5
-	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/ruin/syndicate_lava_base/engineering)
 "Gi" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
 /obj/machinery/door/window/survival_pod{
@@ -4738,14 +4744,7 @@
 /turf/open/floor/iron/diagonal,
 /area/ruin/syndicate_lava_base/engineering)
 "Qw" = (
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/closet/secure_closet/ds2atmos{
-	anchorable = 0;
-	anchored = 1
-	},
+/obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "QR" = (
@@ -7294,7 +7293,7 @@ kk
 oW
 bu
 js
-Qw
+cD
 Ih
 Mc
 XL
@@ -7616,10 +7615,10 @@ ja
 (43,1,1) = {"
 ja
 fm
-Gf
-bb
+Gj
+Tc
 oW
-oW
+Qw
 bf
 dU
 oW
@@ -7657,9 +7656,9 @@ ja
 (44,1,1) = {"
 ja
 fm
-fm
-fm
-OH
+ib
+bb
+oW
 oW
 oW
 oW
@@ -7697,7 +7696,7 @@ ja
 "}
 (45,1,1) = {"
 ja
-ja
+fm
 fm
 fm
 OH
@@ -7737,8 +7736,8 @@ fm
 ja
 "}
 (46,1,1) = {"
-lU
 ja
+fm
 fm
 fm
 OH
@@ -7778,7 +7777,7 @@ fm
 ja
 "}
 (47,1,1) = {"
-lU
+ja
 ja
 fm
 fm
@@ -7820,7 +7819,7 @@ ja
 "}
 (48,1,1) = {"
 lU
-lU
+ja
 ja
 ja
 fm
