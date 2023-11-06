@@ -113,6 +113,7 @@
 
 /obj/projectile/bullet/hair_tie
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
+	icon_state = "hairtie"
 	hitsound = 'sound/weapons/genhit.ogg'
 	damage = 0 //its just about the knockdown
 	sharpness = NONE
