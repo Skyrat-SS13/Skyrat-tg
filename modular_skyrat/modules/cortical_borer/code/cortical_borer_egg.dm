@@ -44,9 +44,8 @@
 		notify_ghosts("A cortical borer egg has been laid in \the [src_area.name].",
 			source = src,
 			action = NOTIFY_PLAY,
-			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH & ~GHOST_NOTIFY_NOTIFY_SUICIDERS,
 			ignore_key = POLL_IGNORE_DRONE,
-			notify_suiciders = FALSE,
 		)
 
 /obj/item/borer_egg
