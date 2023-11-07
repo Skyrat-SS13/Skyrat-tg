@@ -1,5 +1,5 @@
 // Modularly set the correct icon file
-/obj/machinery/barsign/proc/set_sign(datum/barsign/sign)
+/obj/machinery/barsign/set_sign(datum/barsign/sign)
 	// uses tg icon file
 	if(!istype(sign, /datum/barsign/skyrat))
 		return ..()
