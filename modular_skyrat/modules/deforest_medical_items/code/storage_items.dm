@@ -137,7 +137,11 @@
 	max_specific_storage = WEIGHT_CLASS_SMALL
 	max_total_storage = 42 // 21 * 2 for small items
 	max_slots = 21
-	can_hold = list(
+
+/datum/storage/duffel/deforest_medkit/New()
+	. = ..()
+
+	can_hold = typecacheof(list(
 		/obj/item/bonesetter,
 		/obj/item/cautery,
 		/obj/item/clothing/neck/stethoscope,
@@ -176,7 +180,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,
 		/obj/item/tank/internals/emergency_oxygen,
-	)
+	))
 
 // Big surgical kit that can be worn like a bag, holds 14 normal items (more than what a backpack can do!) but works like a duffelbag
 
@@ -212,7 +216,11 @@
 /datum/storage/duffel/deforest_big_surgery
 	max_total_storage = 42 // 14 * 3 for normal items
 	max_slots = 14
-	can_hold = list(
+
+/datum/storage/duffel/deforest_big_surgery/New()
+	. = ..()
+
+	can_hold = typecacheof(list(
 		/obj/item/blood_filter,
 		/obj/item/bonesetter,
 		/obj/item/cautery,
@@ -268,4 +276,4 @@
 		/obj/item/weaponcell/medical,
 		/obj/item/handheld_soulcatcher,
 		/obj/item/wrench/medical,
-	)
+	))
