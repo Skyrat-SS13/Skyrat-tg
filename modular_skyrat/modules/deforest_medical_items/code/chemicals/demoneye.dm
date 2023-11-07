@@ -115,7 +115,7 @@
 
 	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy, name)
 
-	our_guy.adjustStaminaLoss(-3 * REM * seconds_per_tick)
+	our_guy.adjustStaminaLoss(-10 * REM * seconds_per_tick)
 	our_guy.AdjustSleeping(-20 * REM * seconds_per_tick)
 	our_guy.adjust_drowsiness(-5 * REM * seconds_per_tick)
 

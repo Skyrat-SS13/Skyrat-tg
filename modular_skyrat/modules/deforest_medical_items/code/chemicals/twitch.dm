@@ -4,8 +4,7 @@
 #define TWITCH_BLUR_EFFECT "twitch_dodge_blur"
 #define TWITCH_OVERDOSE_BLUR_EFFECT "twitch_overdose_blur"
 
-// Reaction to make twitch, makes 10 from 17u input reagents
-
+// Reaction to make twitch, makes 10u from 17u input reagents
 /datum/chemical_reaction/twitch
 	results = list(
 		/datum/reagent/drug/twitch = 10,
@@ -191,7 +190,6 @@
 
 
 // Temp visual that changes color for that bootleg sandevistan effect
-
 /obj/effect/temp_visual/decoy/twitch_afterimage
 	/// The color matrix it should be at spawn
 	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
@@ -205,7 +203,6 @@
 	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
 
 // Movespeed modifier used by twitch when someone has it in their system
-
 /datum/movespeed_modifier/reagent/twitch
 	multiplicative_slowdown = -0.4
 
