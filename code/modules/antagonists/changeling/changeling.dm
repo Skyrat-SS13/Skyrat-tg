@@ -709,25 +709,25 @@
 	if(prob(60))
 		var/datum/objective/steal/steal_objective = new
 		steal_objective.owner = owner
-		steal_objective.find_target()
+		steal_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
 		objectives += steal_objective
 
 	var/list/active_ais = active_ais()
 	if(active_ais.len && prob(100/GLOB.joined_player_list.len))
 		var/datum/objective/destroy/destroy_objective = new
 		destroy_objective.owner = owner
-		destroy_objective.find_target()
+		destroy_objective.find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
 		objectives += destroy_objective
 	else
 		if(prob(70))
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
-			kill_objective.find_target()
+			kill_objective.find_target( minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += kill_objective
 		else
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = owner
-			maroon_objective.find_target()
+			maroon_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += maroon_objective
 
 			if (!(locate(/datum/objective/escape) in objectives) && escape_objective_possible)
@@ -746,7 +746,7 @@
 		else
 			var/datum/objective/escape/escape_with_identity/identity_theft = new
 			identity_theft.owner = owner
-			identity_theft.find_target()
+			identity_theft.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += identity_theft
 		escape_objective_possible = FALSE
 

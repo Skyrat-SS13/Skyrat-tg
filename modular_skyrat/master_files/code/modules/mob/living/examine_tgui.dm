@@ -62,6 +62,8 @@
 		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
 		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
 		var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
+		var/antag_prefs =  preferences.read_preference(/datum/preference/choiced/antag_opt_in_status)
+		ooc_notes += "Antag Target: [GLOB.opt_in_antagonist_strings[num2text(antag_prefs)]]\n"
 		ooc_notes += "ERP: [e_prefs]\n"
 		ooc_notes += "Non-Con: [e_prefs_nc]\n"
 		ooc_notes += "Vore: [e_prefs_v]\n"

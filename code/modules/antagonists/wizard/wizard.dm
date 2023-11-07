@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		if(1 to 30)
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
-			kill_objective.find_target()
+			kill_objective.find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += kill_objective
 
 			if (!(locate(/datum/objective/escape) in objectives))
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		if(31 to 60)
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
-			steal_objective.find_target()
+			steal_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += steal_objective
 
 			if (!(locate(/datum/objective/escape) in objectives))
@@ -158,12 +158,12 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		if(61 to 85)
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
-			kill_objective.find_target()
+			kill_objective.find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += kill_objective
 
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = owner
-			steal_objective.find_target()
+			steal_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
 			objectives += steal_objective
 
 			if (!(locate(/datum/objective/survive) in objectives))
