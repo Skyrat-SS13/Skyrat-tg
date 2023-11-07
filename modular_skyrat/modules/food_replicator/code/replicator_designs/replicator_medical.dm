@@ -3,7 +3,7 @@
 	id = "slavic_cfap"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
-	build_path = /obj/item/storage/bag/pocket_medkit
+	build_path = /obj/item/storage/pouch/cin_medkit
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_NRI_MEDICAL,
@@ -14,7 +14,7 @@
 	id = "slavic_medipouch"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 250)
-	build_path = /obj/item/storage/bag/medipen
+	build_path = /obj/item/storage/pouch/cin_medipens
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_NRI_MEDICAL,

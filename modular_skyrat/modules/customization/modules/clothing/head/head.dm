@@ -55,32 +55,6 @@
 	acid = 50
 	wound = 6
 
-/obj/item/clothing/head/hats/sec/peacekeeper/sol
-	name = "sol police cap"
-	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policeofficercap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/head_helmet
-
-/obj/item/clothing/head/hats/hos/cap/peacekeeper/sol
-	name = "sol police chief cap"
-	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policechiefcap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic
-	name = "sol traffic cop cap"
-	desc = "You think that's Shitcurrity? That's just Civil Shitsputes, I'll show you REAL Shitcurrity."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policetrafficcap"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/head_helmet
-
 /obj/item/clothing/head/colourable_flatcap
 	name = "colourable flat cap"
 	desc = "You in the computers son? You work the computers?"
@@ -129,7 +103,7 @@
 	desc = "A tar black naval cap with a silver disk in the center."
 	icon_state = "imphos"
 	armor_type = /datum/armor/hats_hos
-	
+
 /obj/item/clothing/head/hats/imperial/cmo
 	name = "chief medical officer's naval cap"
 	desc = "A teal naval cap with a silver disk in the center."
@@ -231,3 +205,44 @@
 	icon_state = "cowboyhat_black"
 	inhand_icon_state = "cowboy_hat_black"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+//BOWS
+/obj/item/clothing/head/small_bow
+	name = "small bow"
+	desc = "A small compact bow that you can place on the side of your hair."
+	icon_state = "small_bow"
+	greyscale_config = /datum/greyscale_config/small_bow
+	greyscale_config_worn = /datum/greyscale_config/small_bow/worn
+	greyscale_colors = "#7b9ab5"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/head/small_bow/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_clothes, "small_bow_t")
+
+/obj/item/clothing/head/large_bow
+	name = "large bow"
+	desc = "A large bow that you can place on top of your head."
+	icon_state = "large_bow"
+	greyscale_config = /datum/greyscale_config/large_bow
+	greyscale_config_worn = /datum/greyscale_config/large_bow/worn
+	greyscale_colors = "#7b9ab5"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/head/back_bow
+	name = "back bow"
+	desc = "A large bow that you can place on the back of your head."
+	icon_state = "back_bow"
+	greyscale_config = /datum/greyscale_config/back_bow
+	greyscale_config_worn = /datum/greyscale_config/back_bow/worn
+	greyscale_colors = "#7b9ab5"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/head/sweet_bow
+	name = "sweet bow"
+	desc = "A sweet bow that you can place on the back of your head."
+	icon_state = "sweet_bow"
+	greyscale_config = /datum/greyscale_config/sweet_bow
+	greyscale_config_worn = /datum/greyscale_config/sweet_bow/worn
+	greyscale_colors = "#7b9ab5"
+	flags_1 = IS_PLAYER_COLORABLE_1

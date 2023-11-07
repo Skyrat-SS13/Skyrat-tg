@@ -3,7 +3,7 @@
 	desc = "An incredibly mediocre 'firearm' designed to fire soft pepper balls meant to easily subdue targets."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/pepperball/pepperball.dmi'
 	icon_state = "peppergun"
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/pepperball
 	can_suppress = FALSE
 	fire_sound = 'sound/effects/pop_expl.ogg'
@@ -48,7 +48,7 @@
 	var/contained_reagent = /datum/reagent/consumable/condensedcapsaicin
 	var/reagent_volume = 5
 
-/obj/projectile/bullet/pepperball/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/bullet/pepperball/on_hit(atom/target, blocked = 0, pierce_hit)
 	if(isliving(target))
 		var/mob/living/M = target
 		if(M.can_inject())

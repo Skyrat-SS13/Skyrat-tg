@@ -135,7 +135,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 /proc/toggle_eng_override()
 	if(!GLOB.force_eng_override)
 		GLOB.force_eng_override = TRUE
-		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
+		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency", sound_override = 'sound/misc/notice1.ogg')
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, TRUE)
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "enabled"))
 	else

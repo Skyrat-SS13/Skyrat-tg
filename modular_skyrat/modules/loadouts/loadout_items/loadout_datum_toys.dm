@@ -2,7 +2,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 
 /datum/loadout_item/toys
 	category = LOADOUT_ITEM_TOYS
-	can_be_named = TRUE
 
 /*
 *	PLUSHIES
@@ -392,6 +391,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/crayons
 	name = "Box of Crayons"
 	item_path = /obj/item/storage/crayons
+
+/datum/loadout_item/toys/spray_can
+	name = "Spray Can"
+	item_path = /obj/item/toy/crayon/spraycan
 
 /datum/loadout_item/toys/eightball
 	name = "Magic Eightball"

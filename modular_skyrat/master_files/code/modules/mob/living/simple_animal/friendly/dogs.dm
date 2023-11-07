@@ -157,18 +157,21 @@
 
 	harass_target(thrown_by)
 
-/mob/living/basic/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
+/mob/living/basic/pet/dog/corgi/borgi/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	. = ..()
 
-	if(!istype(proj, /obj/projectile/beam) && !istype(proj, /obj/projectile/bullet))
+	if(. != BULLET_ACT_HIT)
 		return
 
-	var/mob/living/carbon/human/target = proj.firer
-	if(proj.damage >= 10)
-		if(proj.damage_type != BRUTE && proj.damage_type != BURN)
+	if(!istype(hitting_projectile, /obj/projectile/beam) && !istype(hitting_projectile, /obj/projectile/bullet))
+		return
+
+	var/mob/living/carbon/human/target = hitting_projectile.firer
+	if(hitting_projectile.damage >= 10)
+		if(hitting_projectile.damage_type != BRUTE && hitting_projectile.damage_type != BURN)
 			return
 
-		adjustBruteLoss(proj.damage)
+		adjustBruteLoss(hitting_projectile.damage)
 		if(!isliving(target) || health <= 0)
 			return
 
@@ -239,7 +242,12 @@
 	investigate_log("has been gibbed due to being emagged by [user].", INVESTIGATE_DEATHS)
 	visible_message(span_boldwarning("[user] swipes a card through [target]!"), span_notice("You overload [target]s internal reactor..."))
 
-	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
+	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!",
+		source = target,
+		action = NOTIFY_ORBIT,
+		notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		header = "Borgi Emagged",
+	)
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
 
 	return TRUE

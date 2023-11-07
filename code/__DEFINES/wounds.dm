@@ -124,10 +124,15 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 /// Generic loss wounds. See loss.dm
 #define WOUND_SERIES_LOSS_BASIC "wound_series_loss_basic"
 
-// SKYRAT EDIT ADDITION BEGIN - MUSCLE WOUNDS
+// SKYRAT EDIT ADDITION BEGIN - MUSCLE AND SYNTH WOUNDS
 // Have to put it here so I can use it in the global list of wound series
-/// See muscle.dm
-#define WOUND_SERIES_MUSCLE_DAMAGE "skyrat_wound_series_muscle_damage" // We use a super high number as realistically speaking TG will never increment to this amount of wound series
+/// See muscle.dm and robotic_blunt.dm
+#define WOUND_SERIES_MUSCLE_DAMAGE "skyrat_wound_series_muscle_damage"
+
+#define WOUND_SERIES_METAL_BLUNT_BASIC "wound_series_metal_blunt_basic"
+#define WOUND_SERIES_METAL_BURN_OVERHEAT "wound_series_metal_burn_basic"
+#define WOUND_SERIES_WIRE_SLASH_ELECTRICAL_DAMAGE "wound_series_metal_slash_electrical_damage_basic"
+#define WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE "wound_series_metal_pierce_electrical_damage_basic"
 // SKYRAT EDIT ADDITION END
 
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.
@@ -203,17 +208,23 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_BLUNT = list(
 		WOUND_SERIES_BONE_BLUNT_BASIC,
 		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT -- MUSCLE WOUNDS
+		WOUND_SERIES_METAL_BLUNT_BASIC, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
+
 	),
 	WOUND_SLASH = list(
 		WOUND_SERIES_FLESH_SLASH_BLEED,
-		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT -- MUSCLE WOUNDS
+		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT ADDITION - MUSCLE WOUNDS
+		WOUND_SERIES_WIRE_SLASH_ELECTRICAL_DAMAGE, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
+
 	),
 	WOUND_BURN = list(
 		WOUND_SERIES_FLESH_BURN_BASIC,
+		WOUND_SERIES_METAL_BURN_OVERHEAT, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
 	),
-	WOUND_PUNCTURE = list(
+	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED,
-		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT -- MUSCLE WOUNDS
+		WOUND_SERIES_MUSCLE_DAMAGE, // SKYRAT EDIT ADDITION - MUSCLE WOUNDS
+		WOUND_SERIES_WIRE_PIERCE_ELECTRICAL_DAMAGE, // SKYRAT EDIT ADDITION - SYNTH WOUNDS
 	),
 ))
 
@@ -264,7 +275,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 		var/picked_severity
 		for (var/severity_text as anything in shuffle(GLOB.wound_severities_chronological))
 			var/severity = text2num(severity_text)
-			if (severity > severity_min || severity < severity_max)
+			if (!ISINRANGE(severity, severity_min, severity_max))
 				continue
 
 			if (isnull(picked_severity) || ((severity_pick_mode == WOUND_PICK_HIGHEST_SEVERITY && severity > picked_severity) || (severity_pick_mode == WOUND_PICK_LOWEST_SEVERITY && severity < picked_severity)))
@@ -284,7 +295,8 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 /// Assoc list of biotype -> ideal scar file to be used and grab stuff from.
 GLOBAL_LIST_INIT(biotypes_to_scar_file, list(
 	"[BIO_FLESH]" = FLESH_SCAR_FILE,
-	"[BIO_BONE]" = BONE_SCAR_FILE
+	"[BIO_BONE]" = BONE_SCAR_FILE,
+	"[BIO_METAL]" = METAL_SCAR_FILE // SKYRAT EDIT ADDITION - METAL SCARS (see robotic_blunt.dm)
 ))
 
 // ~burn wound infection defines

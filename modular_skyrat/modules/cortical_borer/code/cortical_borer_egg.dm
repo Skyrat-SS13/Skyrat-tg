@@ -41,7 +41,12 @@
 	forceMove(host_egg)
 	var/area/src_area = get_area(src)
 	if(src_area)
-		notify_ghosts("A cortical borer egg has been laid in \the [src_area.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_DRONE, notify_suiciders = FALSE)
+		notify_ghosts("A cortical borer egg has been laid in \the [src_area.name].",
+			source = src,
+			action = NOTIFY_PLAY,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH & ~GHOST_NOTIFY_NOTIFY_SUICIDERS,
+			ignore_key = POLL_IGNORE_DRONE,
+		)
 
 /obj/item/borer_egg
 	name = "borer egg"

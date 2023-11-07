@@ -24,7 +24,7 @@
 		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
 	if(ismonkey(user))
 		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
-	if(istype(user, /mob/living/simple_animal/hostile/gorilla))
+	if(istype(user, /mob/living/basic/gorilla))
 		return 'sound/creatures/gorilla.ogg'
 	if(isalien(user))
 		return 'sound/voice/hiss6.ogg'

@@ -13,17 +13,17 @@
 	AddComponent(/datum/component/sliding_under)
 
 //This is so we log all machinery interactions for drones
-/obj/machinery/attack_drone(mob/living/simple_animal/drone/user, list/modifiers)
+/obj/machinery/attack_drone(mob/living/basic/drone/user, list/modifiers)
 	. = ..()
 	user.log_message("[key_name(user)] interacted with [src] at [AREACOORD(src)]", LOG_GAME)
 
-/mob/living/simple_animal/drone
+/mob/living/basic/drone
 	//So that drones can do things without worrying about stuff
 	shy = FALSE
 	//So drones aren't forced to carry around a nodrop toolbox essentially
 	default_storage = /obj/item/storage/backpack/drone_bag
 
-/mob/living/simple_animal/drone/Initialize(mapload)
+/mob/living/basic/drone/Initialize(mapload)
 	. = ..()
 	name = "[initial(name)] [rand(0,9)]-[rand(100,999)]" //So that we can identify drones from each other
 
