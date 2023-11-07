@@ -109,6 +109,8 @@
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
 	storage_type = /datum/storage/duffel/deforest_medkit
+	zip_slowdown = 0.25 // Most won't notice normally but it'll hurt you if you're a paramedic or in combat
+	unzip_duration = 1.2 SECONDS
 
 /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked
 
