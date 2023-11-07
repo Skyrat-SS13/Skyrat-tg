@@ -3,16 +3,16 @@
 	desc = "A special button that, when pushed, deletes itself. Hopefully prevents unintended or malicious softlocks; and equalises the encounter hidden behind the fog."
 	id = "engagement_control"
 
-/obj/machinery/button/door/ancient_milsim/screwdriver_act()
+/obj/machinery/button/door/indestructible/ancient_milsim/screwdriver_act()
 	return
 
-/obj/machinery/button/door/ancient_milsim/attackby()
+/obj/machinery/button/door/indestructible/ancient_milsim/attackby()
 	return
 
-/obj/machinery/button/door/ancient_milsim/emag_act()
+/obj/machinery/button/door/indestructible/ancient_milsim/emag_act()
 	return
 
-/obj/machinery/button/door/ancient_milsim/attack_hand()
+/obj/machinery/button/door/indestructible/ancient_milsim/attack_hand()
 	. = ..()
 	if(.)
 		return

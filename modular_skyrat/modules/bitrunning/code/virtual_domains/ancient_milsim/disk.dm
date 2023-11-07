@@ -1,5 +1,6 @@
 /obj/item/bitrunning_disk/item/ancient_milsim
-	name = "bitrunning gear: ancient milsim"
+	name = "compiled bitrunning gear: ancient milsim"
+	desc = "A disk containing early access downloadable content. It can be used to preload items into the virtual domain."
 	selectable_items = list(
 		/obj/item/storage/box/armor_set/ancient_milsim,
 		/obj/item/gun/ballistic/automatic/sol_rifle/machinegun,
