@@ -250,23 +250,23 @@
 		if(active_ais.len && prob(DESTROY_AI_PROB(GLOB.joined_player_list.len)))
 			var/datum/objective/destroy/destroy_objective = new()
 			destroy_objective.owner = owner
-			destroy_objective.find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
+			destroy_objective.find_target()
 			return destroy_objective
 
 		if(prob(MAROON_PROB))
 			var/datum/objective/maroon/maroon_objective = new()
 			maroon_objective.owner = owner
-			maroon_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
+			maroon_objective.find_target()
 			return maroon_objective
 
 		var/datum/objective/assassinate/kill_objective = new()
 		kill_objective.owner = owner
-		kill_objective.find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
+		kill_objective.find_target()
 		return kill_objective
 
 	var/datum/objective/steal/steal_objective = new()
 	steal_objective.owner = owner
-	steal_objective.find_target(minimum_opt_in_level(level = YES_TEMP)) //SKYRAT EDIT - ANTAG OPT IN
+	steal_objective.find_target()
 	return steal_objective
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)

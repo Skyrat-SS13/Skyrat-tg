@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	if (new_target == "Free objective")
 		target = null
 	else if (new_target == "Random")
-		find_target(minimum_opt_in_level(level = YES_KILL)) //SKYRAT EDIT - ANTAG OPT IN
+		find_target()
 	else
 		target = new_target.mind
 
@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 
 //dupe_search_range is a list of antag datums / minds / teams
 //optinlevel is our list of people who have opted in, if you're not on that you're not a valid target
-/datum/objective/proc/find_target(dupe_search_range, list/blacklist, minimum_opt_in_level) //SKYRAT EDIT ADDITION - ANTAG_OPTIN
+/datum/objective/proc/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
 	if(!dupe_search_range)
 		dupe_search_range = get_owners()
@@ -137,6 +137,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		var/datum/mind/O = I
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
+
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		var/target_area = get_area(possible_target.current)
 		if(possible_target in owners)
@@ -157,7 +158,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		if(!count_space_areas)
 			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
 				continue
-		if (!(possible_target in minimum_opt_in_level))
+		if (!opt_in_valid(possible_target))
 			continue
 		// SKYRAT EDIT END
 		possible_targets += possible_target

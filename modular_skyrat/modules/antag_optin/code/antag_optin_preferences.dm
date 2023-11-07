@@ -44,7 +44,6 @@
 	return ..()
 
 
-
 /datum/preference/choiced/antag_opt_in_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -52,10 +51,10 @@
 
 
 /datum/preference/choiced/antag_opt_in_status/init_possible_values()
-	return list(YES_TEMP, YES_KILL, YES_ROUND_REMOVE, NOT_TARGET)
+	return list(OPT_IN_YES_TEMP, OPT_IN_YES_KILL, OPT_IN_YES_ROUND_REMOVE, OPT_IN_NOT_TARGET)
 
 /datum/preference/choiced/antag_opt_in_status/create_default_value()
-	return YES_KILL
+	return OPT_IN_YES_KILL
 
 /datum/preference/choiced/antag_opt_in_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
@@ -68,13 +67,13 @@
 
 /datum/preference/choiced/antag_opt_in_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		return YES_KILL
+		return OPT_IN_YES_KILL
 	if(!preferences.read_preference(/datum/preference/toggle/master_antag_opt_in_preferences))
-		return YES_KILL
+		return OPT_IN_YES_KILL
 	. = ..()
 
 /datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return FALSE
+	target.mind.ideal_opt_in_level = value
 
 /datum/preference/choiced/antag_opt_in_status/compile_constant_data()
 	var/list/data = ..()
