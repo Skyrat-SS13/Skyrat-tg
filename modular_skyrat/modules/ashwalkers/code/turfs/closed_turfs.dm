@@ -6,15 +6,15 @@
 
 // Try to place a torch on the wall such that we can only see it from one side
 /turf/closed/proc/place_torch(obj/item/flashlight/flare/torch/torch_to_place, mob/user, params)
-	if(user.dropItemToGround(torch_to_place, silent = FALSE))
+	if(user.transferItemToLoc(torch_to_place, user.drop_location(), silent = FALSE))
 		var/found_adjacent_turf = get_open_turf_in_dir(src, get_dir(src, user.loc))
 		var/list/modifiers = params2list(params)
 
 		// Center the icon where the user clicked.
 		if(LAZYACCESS(modifiers, ICON_X) && LAZYACCESS(modifiers, ICON_Y))
 			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the wall turf)
-			torch_to_place.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/4), world.icon_size/4)
-			torch_to_place.pixel_y = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(world.icon_size/4), world.icon_size/4)
+			torch_to_place.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/3), world.icon_size/3)
+			torch_to_place.pixel_y = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(world.icon_size/3), world.icon_size/3)
 
 		// Try to put the torch in the adjacent turf relative to the user. This way it's not visible from the other side of the wall
 		if(found_adjacent_turf)
