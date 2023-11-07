@@ -21,9 +21,10 @@
 	/// The types of wounds that we work on, in list format
 	var/list/applicable_wounds = list(
 		/datum/wound/blunt/bone,
+		/datum/wound/muscle,
 	)
 	/// The sound we play upon successfully treating the wound
-	var/treatment_sound = 'sound/effects/wounds/crack1.ogg'
+	var/treatment_sound = 'sound/items/healthanalyzer.ogg'
 
 // This is only relevant for bone wounds, we can't work if there are none
 /obj/item/stack/medical/wound_recovery/try_heal(mob/living/patient, mob/user, silent)
@@ -39,7 +40,7 @@
 		patient.balloon_alert(user, "missing limb!")
 		return
 	if(!LAZYLEN(limb.wounds))
-		patient.balloon_alert(user, "no wounds!") // good problem to have imo
+		patient.balloon_alert(user, "no wounds!")
 		return
 
 	var/splintable_wound = FALSE
