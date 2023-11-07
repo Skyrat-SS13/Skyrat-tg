@@ -32,8 +32,6 @@
 	burst_size = 1
 	fire_delay = 0.15 SECONDS
 
-	// Makes the bullets do 40 damage
-	projectile_damage_multiplier = 0.9
 	// Because we're firing a lot of these really fast, we want a lot less wound chance
 	projectile_wound_bonus = -20
 	spread = 7.5
