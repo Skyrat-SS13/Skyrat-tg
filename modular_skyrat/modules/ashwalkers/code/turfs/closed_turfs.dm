@@ -46,5 +46,3 @@
 				torch_to_place.pixel_y -= world.icon_size
 				torch_to_place.pixel_x -= world.icon_size
 		return TRUE
-
-	return ..()
