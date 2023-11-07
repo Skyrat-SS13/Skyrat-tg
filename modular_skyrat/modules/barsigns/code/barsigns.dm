@@ -6,7 +6,7 @@
 
 	// uses modular icon file
 	if(istype(sign, /datum/barsign/skyrat/large))
-		icon = 'modular_skyrat/modules/barsigns/icons/barsigns96.dmi'
+		icon = 'modular_skyrat/modules/barsigns/icons/barsigns96x96.dmi'
 	else
 		icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi'
 
