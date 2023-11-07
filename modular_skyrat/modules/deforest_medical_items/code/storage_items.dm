@@ -102,12 +102,13 @@
 
 /obj/item/storage/backpack/duffelbag/deforest_medkit
 	name = "satchel medical kit"
-	desc = "A large orange satchel able to hold just about any piece of small medical equipment you could think of, you can even wear it!"
+	desc = "A large orange satchel able to hold just about any piece of small medical equipment you could think of, you can even wear it on your back or belt!"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "satchel"
 	inhand_icon_state = "duffel-eng"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	storage_type = /datum/storage/duffel/deforest_medkit
 	zip_slowdown = 0.25 // Most won't notice normally but it'll hurt you if you're a paramedic or in combat
 	unzip_duration = 1.2 SECONDS
@@ -194,7 +195,10 @@
 	inhand_icon_state = "duffel"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	storage_type = /datum/storage/duffel/deforest_big_surgery
+	zip_slowdown = 0.5 // Its a bulkier bag and thus slows you down a little more when unzipped
+	unzip_duration = 1.2 SECONDS
 
 /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
 
