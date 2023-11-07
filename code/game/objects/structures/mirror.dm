@@ -79,7 +79,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
 	. = ..()
 
-	if(. || !ishuman(user) || broken || !magical_mirror) // SKYRAT EDIT CHANGE - MUNDANE MIRRORS DON'T LET YOU CHANGE - ORIGINAL: if(. || !ishuman(user) || broken)
+	if(. || !ishuman(user) || broken || !istype(src, /obj/structure/mirror/magic)) // SKYRAT EDIT CHANGE - MUNDANE MIRRORS DON'T LET YOU CHANGE - ORIGINAL: if(. || !ishuman(user) || broken)
 		return TRUE
 
 	if(!istype(src, /obj/structure/mirror/magic) && !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
