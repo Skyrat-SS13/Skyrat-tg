@@ -291,5 +291,5 @@
 
 /datum/barsign/skyrat/large/cyberslyph
 	name = "Cyberslyph"
-	icon = "cyberslyph"
+	icon_state = "cyberslyph"
 	neon_color = "#00FFFF"
