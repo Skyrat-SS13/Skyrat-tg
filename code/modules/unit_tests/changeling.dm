@@ -11,7 +11,7 @@
 	var/datum/antagonist/changeling/ling_datum = ling.mind.has_antag_datum(/datum/antagonist/changeling)
 
 	// Get the ability we're testing
-	ling_datum.purchase_power(/datum/action/changeling/sting/transformation)
+	ling_datum.give_power(/datum/action/changeling/sting/transformation) // SKYRAT EDIT CHANGE - Transformation sting not purchasable here - ORIGINAL : ling_datum.purchase_power(/datum/action/changeling/sting/transformation)
 	var/datum/action/changeling/sting/transformation/sting_action = locate() in ling.actions
 	sting_action.selected_dna = ling_datum.current_profile
 	sting_action.sting_duration = 0.5 SECONDS // just makes sure everything settles.
