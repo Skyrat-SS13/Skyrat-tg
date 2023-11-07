@@ -23,6 +23,7 @@
 	reagent_state = LIQUID
 	color = "#af00be"
 	taste_description = "industrial shuttle fuel"
+	metabolization_rate = 0.65 * REAGENTS_METABOLISM
 	ph = 7
 	overdose_threshold = 15
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -77,7 +78,7 @@
 
 	our_guy.sound_environment_override = NONE
 
-	if(constant_dose_time < 100 || !our_guy.blood_volume)
+	if(constant_dose_time < 60 || !our_guy.blood_volume)
 		our_guy.visible_message(
 				span_danger("[our_guy]'s eyes fade from their evil looking red back to normal..."),
 				span_danger("Your vision slowly returns to normal as you lose your unnatural strength...")

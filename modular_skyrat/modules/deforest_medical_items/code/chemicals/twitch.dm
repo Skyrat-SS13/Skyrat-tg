@@ -1,3 +1,6 @@
+#define TWITCH_SCREEN_FILTER "twitch_screen_filter"
+#define TWITCH_SCREEN_BLUR "twitch_screen_blur"
+
 #define TWITCH_BLUR_EFFECT "twitch_dodge_blur"
 #define TWITCH_OVERDOSE_BLUR_EFFECT "twitch_overdose_blur"
 
@@ -25,6 +28,7 @@
 	reagent_state = LIQUID
 	color = "#c22a44"
 	taste_description = "television static"
+	metabolization_rate = 0.65 * REAGENTS_METABOLISM
 	ph = 3
 	overdose_threshold = 15
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -47,7 +51,6 @@
 
 	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	RegisterSignal(our_guy, COMSIG_MOVABLE_HEAR, PROC_REF(distort_hearing))
-	RegisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
 
 	if(!our_guy.hud_used)
 		return
@@ -56,9 +59,9 @@
 
 	var/list/col_filter_green = list(0.5,0,0,0, 0,1,0,0, 0,0,0.5,0, 0,0,0,1)
 
-	game_plane_master_controller.add_filter("twitch_filter", 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
+	game_plane_master_controller.add_filter(TWITCH_SCREEN_FILTER, 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
 
-	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0.1))
+	game_plane_master_controller.add_filter(TWITCH_SCREEN_BLUR, 1, list("type" = "radial_blur", "size" = 0.1))
 
 	for(var/filter in game_plane_master_controller.get_filters("twitch_blur"))
 		animate(filter, loop = -1, size = 0.2, time = 2 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
@@ -77,9 +80,12 @@
 
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_HEAR)
-	UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
+	if(overdosed)
+		UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
 
-	if(constant_dose_time < 100) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
+	message_admins("twitch lasted [constant_dose_time] in [our_guy]")
+
+	if(constant_dose_time < 60) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
 			span_danger("[our_guy] suddenly slows from their inhuman speeds, coming back with a wicked nosebleed!"),
 			span_danger("You suddenly slow back to normal, a stream of blood gushing from your nose!")
@@ -100,8 +106,8 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	game_plane_master_controller.remove_filter("twitch_filter")
-	game_plane_master_controller.remove_filter("twitch_blur")
+	game_plane_master_controller.remove_filter(TWITCH_SCREEN_FILTER)
+	game_plane_master_controller.remove_filter(TWITCH_SCREEN_BLUR)
 
 
 /// Leaves an afterimage behind the mob when they move
@@ -140,6 +146,8 @@
 /datum/reagent/drug/twitch/overdose_start(mob/living/our_guy)
 	. = ..()
 
+	RegisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
+
 	our_guy.next_move_modifier -= 0.2 // Overdosing makes you a liiitle faster but you know has some really bad consequences
 
 	if(!our_guy.hud_used)
@@ -149,8 +157,8 @@
 
 	var/list/col_filter_ourple = list(1,0,0,0, 0,0.5,0,0, 0,0,1,0, 0,0,0,1)
 
-	for(var/filter in game_plane_master_controller.get_filters("twitch_filter"))
-		animate(filter, color = col_filter_ourple, time = 4 SECONDS, easing = EASE_OUT)
+	for(var/filter in game_plane_master_controller.get_filters(TWITCH_SCREEN_FILTER))
+		animate(filter, loop = -1, color = col_filter_ourple, time = 4 SECONDS, easing = BOUNCE_EASING)
 
 
 /datum/reagent/drug/twitch/overdose_process(mob/living/carbon/our_guy, seconds_per_tick, times_fired)
@@ -202,3 +210,9 @@
 
 /datum/movespeed_modifier/reagent/twitch
 	multiplicative_slowdown = -0.4
+
+#undef TWITCH_SCREEN_FILTER
+#undef TWITCH_SCREEN_BLUR
+
+#undef TWITCH_BLUR_EFFECT
+#undef TWITCH_OVERDOSE_BLUR_EFFECT

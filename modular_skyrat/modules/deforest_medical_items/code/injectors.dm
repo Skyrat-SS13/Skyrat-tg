@@ -91,7 +91,7 @@
 	icon_state = "morpital"
 	list_reagents = list(
 		/datum/reagent/medicine/morphine = 5,
-		/datum/reagent/impurity/healing/medicine_failure = 15,
+		/datum/reagent/medicine/omnizine/protozine = 15,
 		/datum/reagent/toxin/staminatoxin = 5,
 	)
 
@@ -100,13 +100,13 @@
 /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
 	name = "lipital regenerative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage. \
-		Works most effectively against lower amounts of physical damage."
+		Works most effectively against damaged caused by brute attacks."
 	base_icon_state = "lipital"
 	icon_state = "lipital"
 	list_reagents = list(
 		/datum/reagent/medicine/lidocaine = 5,
-		/datum/reagent/medicine/granibitaluri = 15,
-		/datum/reagent/toxin/staminatoxin = 5,
+		/datum/reagent/medicine/omnizine = 5,
+		/datum/reagent/medicine/c2/probital = 10,
 	)
 
 // Anti-poisoning injector, with a little bit of radiation healing as a treat
@@ -159,9 +159,8 @@
 	base_icon_state = "coagulant"
 	icon_state = "coagulant"
 	list_reagents = list(
-		/datum/reagent/medicine/coagulant = 10,
-		/datum/reagent/medicine/coagulant/seraka_extract = 5,
-		/datum/reagent/medicine/salglu_solution = 5,
+		/datum/reagent/medicine/coagulant = 5,
+		/datum/reagent/medicine/salglu_solution = 15,
 		/datum/reagent/impurity = 5,
 	)
 
