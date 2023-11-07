@@ -13,6 +13,11 @@
 
 	return ..()
 
+/obj/machinery/barsign/update_icon_state()
+	. = ..()
+	if(icon_state == "empty")
+		icon = initial(icon) // so we don't need a duplicated 'empty' sprite in the modular files
+
 /datum/barsign/skyrat/topmen
 	name = "Top Men"
 	icon_state = "topmen"
