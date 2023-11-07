@@ -105,7 +105,9 @@
 	desc = "A large orange satchel able to hold just about any piece of small medical equipment you could think of, you can even wear it on your back or belt!"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "satchel"
-	inhand_icon_state = "duffel-eng"
+	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
+	inhand_icon_state = "satchel"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
@@ -193,7 +195,9 @@
 	desc = "A large bag able to hold all the surgical tools and first response healing equipment you can think of, you can even wear it!"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "super_surgery"
-	inhand_icon_state = "duffel"
+	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
+	inhand_icon_state = "super_surgery"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
