@@ -2,6 +2,7 @@
 /obj/machinery/barsign/set_sign(datum/barsign/sign)
 	// uses tg icon file
 	if(!istype(sign, /datum/barsign/skyrat))
+		icon = initial(icon)
 		return ..()
 
 	// uses modular icon file
