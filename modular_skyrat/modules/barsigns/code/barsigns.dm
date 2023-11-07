@@ -7,9 +7,9 @@
 
 	// uses modular icon file
 	if(istype(sign, /datum/barsign/skyrat/large))
-		icon = 'modular_skyrat/modules/barsigns/icons/barsigns96x96.dmi'
+		icon = SKYRAT_LARGE_BARSIGN_FILE
 	else
-		icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi'
+		icon = SKYRAT_BARSIGN_FILE
 
 	return ..()
 
@@ -145,9 +145,9 @@
 	icon_state = "tenforward"
 	neon_color = "#E5AF1C"
 
-/datum/barsign/skyrat/thepranicngpony
+/datum/barsign/skyrat/theprancingpony
 	name = "The Prancing Pony"
-	icon_state = "theprancinggpony"
+	icon_state = "theprancingpony"
 	desc = "Ok, we don't take to kindly to you short folk pokin' round looking for some ranger scum."
 	neon_color = "#FF9100"
 
