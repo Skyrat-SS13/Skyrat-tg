@@ -494,6 +494,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	body_markings = species.get_random_body_markings(features)
 
 	if(randomize_features)
+		/* SKYRAT EDIT REMOVAL
 		var/static/list/all_species_protoypes
 		if(isnull(all_species_protoypes))
 			all_species_protoypes = list()
@@ -502,6 +503,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 		for(var/datum/species/random_species as anything in all_species_protoypes)
 			features |= random_species.randomize_features()
+		SKYRAT EDIT REMOVAL END */
 
 		features["mcolor"] = "#[random_color()]"
 
