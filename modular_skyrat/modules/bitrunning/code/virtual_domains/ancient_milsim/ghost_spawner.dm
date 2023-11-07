@@ -10,7 +10,6 @@
 	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
-
 /obj/effect/mob_spawn/ghost_role/human/ancient_milsim/proc/apply_codename(mob/living/carbon/human/spawned_human)
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.phonetic_alphabet_numbers)

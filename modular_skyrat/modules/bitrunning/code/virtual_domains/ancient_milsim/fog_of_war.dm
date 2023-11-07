@@ -1,8 +1,7 @@
-/obj/machinery/button/door/ancient_milsim
+/obj/machinery/button/door/indestructible/ancient_milsim
 	name = "SNPC Zone Entry Control"
 	desc = "A special button that, when pushed, deletes itself. Hopefully prevents unintended or malicious softlocks; and equalises the encounter hidden behind the fog."
 	id = "engagement_control"
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/button/door/ancient_milsim/screwdriver_act()
 	return
@@ -15,10 +14,9 @@
 
 /obj/machinery/button/door/ancient_milsim/attack_hand()
 	. = ..()
+	if(.)
+		return
 	qdel(src)
-	qdel(device)
-	qdel(board)
-	return ..()
 
 /obj/machinery/door/poddoor/ancient_milsim
 	name = "fog of war"
@@ -28,8 +26,8 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/door/poddoor/ancient_milsim/Initialize(mapload)
-	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
+	AddElement(/datum/element/update_icon_blocker)
 
 /obj/machinery/door/poddoor/ancient_milsim/screwdriver_act()
 	return

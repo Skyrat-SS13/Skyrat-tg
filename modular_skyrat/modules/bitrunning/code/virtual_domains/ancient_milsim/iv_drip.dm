@@ -21,7 +21,7 @@
 	internal_volume_maximum = 1000
 
 /obj/machinery/iv_drip/health_station/Initialize(mapload)
-	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
+	AddElement(/datum/element/update_icon_blocker)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/iv_drip/health_station, 32)
