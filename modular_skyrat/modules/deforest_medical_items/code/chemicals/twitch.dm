@@ -83,8 +83,6 @@
 	if(overdosed)
 		UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
 
-	message_admins("twitch lasted [constant_dose_time] in [our_guy]")
-
 	if(constant_dose_time < 60) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
 			span_danger("[our_guy] suddenly slows from their inhuman speeds, coming back with a wicked nosebleed!"),
