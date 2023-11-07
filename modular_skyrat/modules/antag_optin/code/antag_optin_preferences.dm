@@ -73,7 +73,7 @@
 	. = ..()
 
 /datum/preference/choiced/antag_opt_in_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.mind.ideal_opt_in_level = value
+	return FALSE
 
 /datum/preference/choiced/antag_opt_in_status/compile_constant_data()
 	var/list/data = ..()
