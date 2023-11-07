@@ -163,8 +163,9 @@
 	company_message = span_bold("Supply Pod incoming please stand by")
 
 /obj/item/choice_beacon/ntc/generate_display_names()
-	var/static/list/selectable_gun_types //What's wrong with it? if I did.
-	if(!selectable_gun_types) //Well I think it was a tad overpowered?
-		selectable_gun_types = list("Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, "Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
+	var/static/list/selectable_gun_types = list(
+		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
+		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
+	)
 
 	return selectable_gun_types //You're a mad man
