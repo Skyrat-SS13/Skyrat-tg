@@ -58,7 +58,7 @@
 	bare_wound_bonus = -10
 
 /obj/item/ammo_box/c27_54cesarzowa/rubber
-	name = "ammo box (.27-54 Cesarzowa rubber lethal)"
+	name = "ammo box (.27-54 Cesarzowa rubber)"
 	desc = "A box of .27-54 Cesarzowa rubber pistol rounds, holds eighteen cartridges."
 
 	icon_state = "27-54cesarzowa_box_rubber"

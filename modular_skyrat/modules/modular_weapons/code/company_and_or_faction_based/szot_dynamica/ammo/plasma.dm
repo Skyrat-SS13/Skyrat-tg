@@ -1,8 +1,13 @@
 // Casing and projectile for the plasma thrower
 
-/obj/item/ammo_casing/caseless/laser/plasma_glob
+/obj/item/ammo_casing/energy/laser/plasma_glob
 	projectile_type = /obj/projectile/beam/laser/plasma_glob
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
+
+/obj/item/ammo_casing/energy/laser/plasma_glob/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/caseless)
 
 /obj/projectile/beam/laser/plasma_glob
 	name = "plasma globule"

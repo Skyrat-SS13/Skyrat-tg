@@ -47,9 +47,9 @@
 	base_icon_state = "plasma_battery"
 	icon_state = "plasma_battery"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
+	ammo_type = /obj/item/ammo_casing/energy/laser/plasma_glob
 	caliber = CALIBER_LASER
-	max_ammo = 10
+	max_ammo = 15
 
 /obj/item/ammo_box/magazine/recharge/plasma_battery/update_icon_state() // FUCK YOU /OBJ/ITEM/AMMO_BOX/MAGAZINE/RECHARGE
 	. = ..()
