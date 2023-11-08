@@ -81,12 +81,6 @@
 /datum/armament_entry/company_import/nri_surplus/firearm/miecz
 	item_type = /obj/item/gun/ballistic/automatic/miecz
 	cost = PAYCHECK_COMMAND * 10
-	restricted = FALSE
-
-/datum/armament_entry/company_import/nri_surplus/firearm/sakhno_rifle
-	item_type = /obj/item/gun/ballistic/rifle/boltaction/luk
-	cost = PAYCHECK_COMMAND * 10
-	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/firearm/lanca
 	item_type = /obj/item/gun/ballistic/automatic/lanca
@@ -106,9 +100,6 @@
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/plasma_battery
 	item_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
-
-/datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno_stripper
-	item_type = /obj/item/ammo_box/strilka310
 
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/miecz
 	item_type = /obj/item/ammo_box/magazine/miecz/spawns_empty
