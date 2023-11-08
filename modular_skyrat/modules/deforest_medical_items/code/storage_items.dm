@@ -31,6 +31,8 @@
 	inhand_icon_state = "poisoning_kit"
 	desc = "A small medical kit that can only fit autoinjectors in it, these typically come with supplies to treat low level harm."
 	w_class = WEIGHT_CLASS_SMALL
+	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
+	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
 
 /obj/item/storage/medkit/civil_defense/Initialize(mapload)
 	. = ..()
@@ -54,19 +56,21 @@
 
 /obj/item/storage/medkit/frontier
 	name = "frontier medical kit"
+	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "frontier"
 	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
 	inhand_icon_state = "frontier"
-	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal."
+	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 
 /obj/item/storage/medkit/frontier/stocked
 
 /obj/item/storage/medkit/frontier/stocked/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
-		/obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi = 1,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 1,
 		/obj/item/stack/medical/wound_recovery/rapid_coagulant = 1,
 		/obj/item/stack/medical/suture/coagulant = 1,
@@ -79,12 +83,14 @@
 
 /obj/item/storage/medkit/combat_surgeon
 	name = "combat surgeon medical kit"
+	desc = "A folding kit that is ideally filled with surgical tools and specialized treatment options for many harder-to-treat wounds."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "surgeon"
 	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
 	inhand_icon_state = "surgeon"
-	desc = "A folding kit that is ideally filled with surgical tools and specialized treatment options for many harder-to-treat wounds."
+	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 
 /obj/item/storage/medkit/combat_surgeon/Initialize(mapload)
 	. = ..()
@@ -116,6 +122,9 @@
 	inhand_icon_state = "satchel"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
+	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	storage_type = /datum/storage/duffel/deforest_medkit
 	zip_slowdown = 0.25 // Most won't notice normally but it'll hurt you if you're a paramedic or in combat
@@ -125,8 +134,8 @@
 
 /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 1,
-		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 2,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 2,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/calopine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/coagulants = 1,
@@ -206,6 +215,9 @@
 	inhand_icon_state = "super_surgery"
 	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
+	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	storage_type = /datum/storage/duffel/deforest_big_surgery
 	zip_slowdown = 0.5 // Its a bulkier bag and thus slows you down a little more when unzipped

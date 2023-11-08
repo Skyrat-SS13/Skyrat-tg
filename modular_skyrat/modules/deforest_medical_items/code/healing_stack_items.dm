@@ -24,7 +24,7 @@
 		/datum/wound/muscle,
 	)
 	/// The sound we play upon successfully treating the wound
-	var/treatment_sound = 'sound/items/healthanalyzer.ogg'
+	var/treatment_sound = 'sound/items/duct_tape_rip.ogg'
 
 // This is only relevant for bone wounds, we can't work if there are none
 /obj/item/stack/medical/wound_recovery/try_heal(mob/living/patient, mob/user, silent)
@@ -86,7 +86,6 @@
 		/datum/wound/slash/flesh,
 		/datum/wound/pierce/bleed,
 	)
-	treatment_sound = 'sound/items/duct_tape_rip.ogg'
 	merge_type = /obj/item/stack/medical/wound_recovery/rapid_coagulant
 
 /obj/item/stack/medical/wound_recovery/rapid_coagulant/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)

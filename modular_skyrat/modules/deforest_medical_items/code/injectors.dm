@@ -146,7 +146,7 @@
 	icon_state = "calopine"
 	list_reagents = list(
 		/datum/reagent/medicine/atropine = 10,
-		/datum/reagent/medicine/calomel = 5,
+		/datum/reagent/medicine/coagulant/fabricated = 5,
 		/datum/reagent/medicine/salbutamol = 5,
 		/datum/reagent/toxin/staminatoxin = 5,
 	)
