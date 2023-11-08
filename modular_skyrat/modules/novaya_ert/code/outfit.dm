@@ -21,7 +21,7 @@
 		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
 	)
 	l_pocket = /obj/item/knife/combat/survival
-	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
+	r_pocket = /obj/item/ammo_box/magazine/recharge/plasma_battery
 	shoes = /obj/item/clothing/shoes/combat
 
 	l_hand = /obj/item/gun/ballistic/automatic/lanca
@@ -44,7 +44,8 @@
 							/obj/item/megaphone,
 							/obj/item/binoculars,
 							/obj/item/clothing/head/beret/sec/nri,
-							/obj/item/ammo_box/magazine/m9mm_aps,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
+							/obj/item/gun/ballistic/automatic/pistol/plasma_thrower,
 							/obj/item/beamout_tool,
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
@@ -111,11 +112,10 @@
 	suit = /obj/item/clothing/suit/jacket/officer/tan
 	suit_store = null
 	gloves = /obj/item/clothing/gloves/combat
-	belt = /obj/item/gun/ballistic/revolver/nagant
+	belt = /obj/item/gun/ballistic/revolver/shotgun_revolver
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
-							/obj/item/ammo_box/n762,
-							/obj/item/ammo_box/n762,
+							/obj/item/ammo_box/advanced/s12gauge/express,
 							/obj/item/suppressor,
 							/obj/item/knife/combat,
 							/obj/item/beamout_tool)
@@ -161,8 +161,8 @@
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
-							/obj/item/ammo_box/magazine/m9mm_aps,
-							/obj/item/ammo_box/magazine/m9mm_aps,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
+							/obj/item/ammo_box/magazine/recharge/plasma_battery,
 							/obj/item/storage/medkit/expeditionary,
 							/obj/item/melee/baton/telescopic,
 							/obj/item/beamout_tool)

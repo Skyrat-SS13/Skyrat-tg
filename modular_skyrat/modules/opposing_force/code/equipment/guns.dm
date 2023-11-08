@@ -21,17 +21,15 @@
 	new /obj/item/ammo_box/magazine/c40sol_rifle/standard(src)
 	new /obj/item/ammo_box/magazine/c40sol_rifle/standard(src)
 
-/datum/opposing_force_equipment/ranged/luk
-	name = "'Łuk' Marksman Rifle"
-	description = "An upgrade and modernisation of the original Sakhno rifle, made with such wonders as \
-		modern materials, a scope, and other impressive technological advancements that, to be honest, \
-		were already around when the original weapon was designed."
-	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/luk
+/datum/opposing_force_equipment/ranged/miecz
+	name = "'Miecz' Submachinegun"
+	description = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber cartridges."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/miecz
 
-/obj/item/storage/toolbox/guncase/skyrat/opfor/luk/PopulateContents()
-	new /obj/item/gun/ballistic/rifle/boltaction/luk(src)
-	new /obj/item/ammo_box/strilka310(src)
-	new /obj/item/ammo_box/strilka310(src)
+/obj/item/storage/toolbox/guncase/skyrat/opfor/miecz/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/miecz(src)
+	new /obj/item/ammo_box/magazine/miecz(src)
+	new /obj/item/ammo_box/magazine/miecz(src)
 
 /datum/opposing_force_equipment/ranged/kiboko
 	name = "Kiboko Grenade Launcher"
@@ -138,16 +136,6 @@
 	new /obj/item/gun/ballistic/automatic/sol_smg/evil(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/stendo(src)
-
-/datum/opposing_force_equipment/ranged/miecz
-	name = "'Miecz' Submachinegun"
-	description = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber cartridges."
-	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/miecz
-
-/obj/item/storage/toolbox/guncase/skyrat/opfor/miecz/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/miecz(src)
-	new /obj/item/ammo_box/magazine/miecz(src)
-	new /obj/item/ammo_box/magazine/miecz(src)
 
 /datum/opposing_force_equipment/ranged_stealth/wespe
 	name = "Wespe Pistol"

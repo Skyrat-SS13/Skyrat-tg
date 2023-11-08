@@ -18,7 +18,7 @@
 	bolt_type = BOLT_TYPE_STANDARD
 
 	w_class = WEIGHT_CLASS_BULKY
-	weapon_weight = WEAPON_HEAVY
+	weapon_weight = WEAPON_MEDIUM
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 
 	accepted_magazine_type = /obj/item/ammo_box/magazine/miecz
