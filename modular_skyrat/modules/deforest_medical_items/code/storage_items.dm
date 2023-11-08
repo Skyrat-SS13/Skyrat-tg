@@ -26,7 +26,9 @@
 	name = "civil defense medical kit"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "poisoning_kit"
-	inhand_icon_state = "medkit-ointment"
+	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
+	inhand_icon_state = "poisoning_kit"
 	desc = "A small medical kit that can only fit autoinjectors in it, these typically come with supplies to treat low level harm."
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -54,7 +56,9 @@
 	name = "frontier medical kit"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "frontier"
-	inhand_icon_state = "medkit-tactical"
+	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
+	inhand_icon_state = "frontier"
 	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal."
 
 /obj/item/storage/medkit/frontier/stocked
@@ -77,7 +81,9 @@
 	name = "combat surgeon medical kit"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "surgeon"
-	inhand_icon_state = "medkit-tactical"
+	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
+	inhand_icon_state = "surgeon"
 	desc = "A folding kit that is ideally filled with surgical tools and specialized treatment options for many harder-to-treat wounds."
 
 /obj/item/storage/medkit/combat_surgeon/Initialize(mapload)
