@@ -69,7 +69,18 @@
 	user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] to [patient]'s [limb.plaintext_zone].</span></span>", "<span class='infoplain'><span class='green'>You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone].</span></span>")
 	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
+	if(!HAS_TRAIT(patient, TRAIT_NUMBED))
+		patient.emote("scream")
+		to_chat(patient, span_userdanger("Your [limb] burns like hell as the wounds on it are rapidly healed, fuck!"))
+		patient.add_mood_event("severe_surgery", /datum/mood_event/rapid_wound_healing)
+	limb.receive_damage(25, wound_bonus = CANT_WOUND)
+	patient.adjustStaminaLoss(80)
 	patient.apply_status_effect(/datum/status_effect/vulnerable_to_damage)
+
+/datum/mood_event/rapid_wound_healing
+	description = "That may have healed my wound fast, but if that wasn't one of the worst experiences!\n"
+	mood_change = -3
+	timeout = 5 MINUTES
 
 // Helps recover bleeding
 
