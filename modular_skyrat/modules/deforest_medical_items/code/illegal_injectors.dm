@@ -40,7 +40,7 @@
 		/datum/reagent/impurity = 5,
 	)
 
-// Earthsblood alongside a few additives, there's nothing inherently illegal but its a weird one so...
+// Nothing inherently illegal, just a potentially very dangerous mix of chems to be able to inject into people
 /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
 	name = "pentibinin normalizant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it \

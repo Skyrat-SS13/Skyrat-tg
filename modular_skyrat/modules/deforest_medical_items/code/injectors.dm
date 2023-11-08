@@ -20,18 +20,18 @@
 	if(!iscarbon(affected_mob))
 		return FALSE
 
-	if((affected_mob != user) && inject_others_time)
-		affected_mob.visible_message(span_danger("[user] is trying to inject [affected_mob]!"), \
-				span_userdanger("[user] is trying to inject something into you!"))
-		if(!do_after(user, CHEM_INTERACT_DELAY(inject_others_time, user), affected_mob))
-			return FALSE
-
 	//Always log attemped injects for admins
 	var/list/injected = list()
 	for(var/datum/reagent/injected_reagent in reagents.reagent_list)
 		injected += injected_reagent.name
 	var/contained = english_list(injected)
 	log_combat(user, affected_mob, "attempted to inject", src, "([contained])")
+
+	if((affected_mob != user) && inject_others_time)
+		affected_mob.visible_message(span_danger("[user] is trying to inject [affected_mob]!"), \
+				span_userdanger("[user] is trying to inject something into you!"))
+		if(!do_after(user, CHEM_INTERACT_DELAY(inject_others_time, user), affected_mob))
+			return FALSE
 
 	if(reagents.total_volume && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
 		to_chat(affected_mob, span_warning("You feel a tiny prick!"))
@@ -127,7 +127,6 @@
 		/datum/reagent/medicine/epinephrine = 10,
 		/datum/reagent/medicine/synaptizine = 5,
 		/datum/reagent/medicine/synaphydramine = 5,
-		/datum/reagent/nitrous_oxide = 5,
 	)
 
 // Critical condition stabilizer
@@ -204,5 +203,4 @@
 		/datum/reagent/medicine/antihol = 5,
 		/datum/reagent/medicine/higadrite = 5,
 		/datum/reagent/medicine/silibinin = 5,
-		/datum/reagent/nitrous_oxide = 5,
 	)
