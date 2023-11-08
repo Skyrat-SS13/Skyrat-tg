@@ -1,3 +1,5 @@
+#define CONSTANT_DOSE_SAFE_LIMIT 60
+
 // Chemical reaction, turns 25 input reagents into 25 output reagents, 10 of those being demoneye
 /datum/chemical_reaction/demoneye
 	results = list(
@@ -77,7 +79,7 @@
 
 	our_guy.sound_environment_override = NONE
 
-	if(constant_dose_time < 60 || !our_guy.blood_volume)
+	if(constant_dose_time < CONSTANT_DOSE_SAFE_LIMIT || !our_guy.blood_volume)
 		our_guy.visible_message(
 				span_danger("[our_guy]'s eyes fade from their evil looking red back to normal..."),
 				span_danger("Your vision slowly returns to normal as you lose your unnatural strength...")
@@ -91,7 +93,7 @@
 		var/obj/item/bodypart/bodypart = pick(our_guy.bodyparts)
 		var/datum/wound/slash/flesh/critical/crit_wound = new()
 		crit_wound.apply_wound(bodypart)
-		our_guy.apply_damage(20, BRUTE)
+		bodypart.receive_damage(20, wound_bonus = CANT_WOUND)
 
 		new /obj/effect/temp_visual/cleave(our_guy.drop_location())
 
@@ -112,7 +114,7 @@
 
 	constant_dose_time += seconds_per_tick
 
-	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy, name)
+	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy/sundowner, name)
 
 	our_guy.adjustStaminaLoss(-10 * REM * seconds_per_tick)
 	our_guy.AdjustSleeping(-20 * REM * seconds_per_tick)
@@ -150,3 +152,5 @@
 // Mood event used by demoneye, because the normal one I just didn't vibe with
 /datum/mood_event/stimulant_heavy/sundowner
 	description = "I'M FUCKING INVINCIBLE!!!!"
+
+#undef CONSTANT_DOSE_SAFE_LIMIT
