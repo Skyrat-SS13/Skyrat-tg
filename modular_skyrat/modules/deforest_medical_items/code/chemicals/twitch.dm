@@ -81,6 +81,7 @@
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_HEAR)
 	if(overdosed)
 		UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
+		/datum/disease/anaphylaxis
 
 	if(constant_dose_time < 60) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
@@ -164,6 +165,7 @@
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * seconds_per_tick)
 
 	our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 1 * REM * seconds_per_tick)
+	our_guy.adjustToxLoss(3, forced = TRUE)
 
 	if(SPT_PROB(5, seconds_per_tick))
 		to_chat(our_guy, span_danger("You cough up a splatter of blood!"))
