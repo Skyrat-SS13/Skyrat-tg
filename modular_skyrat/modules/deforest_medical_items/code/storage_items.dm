@@ -43,7 +43,7 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/halobinin = 1,
-		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 1,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/calopine = 1,
 	)
 	generate_items_inside(items_inside,src)

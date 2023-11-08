@@ -25,10 +25,6 @@
 	item_type = /obj/item/guardiancreator/tech/choose/traitor
 	admin_note = "Lets a ghost take control of a guardian spirit bound to the user. RRs both the ghost and user on death."
 
-/datum/opposing_force_equipment/gadget/stimpack
-	name = "Stimulant Medipen"
-	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
-
 /datum/opposing_force_equipment/gadget/gorilla_cubes
 	name = "Box of Gorilla Cubes"
 	item_type = /obj/item/storage/box/gorillacubes
@@ -40,21 +36,6 @@
 	item_type = /obj/item/storage/toolbox/emergency/turret
 	description = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
 	admin_note = "Needs a combat-wrench to be used."
-
-/datum/opposing_force_equipment/gadget/combatmedkit
-	name = "Syndicate Combat Medic Kit"
-	item_type = /obj/item/storage/medkit/tactical
-	description = "This first aid kit is a suspicious black and red. Included is a number of atropine medipens \
-			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
-			for faster healing on the field. Also comes with basic medical tools and sterlizer."
-
-/datum/opposing_force_equipment/gadget/combatmedkit_premium
-	name = "Syndicate Combat Medical Suite"
-	item_type = /obj/item/storage/medkit/tactical/premium
-	description = "This first aid kit is a suspicious black and red. Included is an unloaded combat chemical injector \
-			for suit-penetrative chem delivery, a medical science night vision HUD for quick identification of injured personnel and chemical supplies, \
-			improved medical supplies, including Interdyne-approved pharmaceuticals, a hacked cybernetic surgery toolset arm implant, \
-			and some helpful MODsuit modules for for field medical use and operative physiopharmaceutical augmentation."
 
 /datum/opposing_force_equipment/gadget/hypnoflash
 	name = "Hypnotic Flash"
