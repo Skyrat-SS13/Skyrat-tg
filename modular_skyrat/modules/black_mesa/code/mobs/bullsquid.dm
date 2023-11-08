@@ -45,6 +45,6 @@
 	hitsound = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'
 	hitsound_wall = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'
 
-/obj/projectile/bullsquid/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/bullsquid/on_hit(atom/target, blocked = 0, pierce_hit)
 	new /obj/effect/decal/cleanable/greenglow(target.loc)
 	return ..()

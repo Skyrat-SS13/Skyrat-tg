@@ -1,6 +1,6 @@
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD, DNR_HUD) // SKYRAT EDIT ADDITION - DNR_HUD
 	pressure_resistance = 10
 
 	hud_type = /datum/hud/living
@@ -225,6 +225,3 @@
 
 	/// What our current gravity state is. Used to avoid duplicate animates and such
 	var/gravity_state = null
-
-	/// Whether this mob can be mutated into a cybercop via quantum server get_valid_domain_targets(). Specifically dodges megafauna
-	var/can_be_cybercop = TRUE

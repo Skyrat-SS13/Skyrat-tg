@@ -53,7 +53,12 @@
 		if(stored_cyborgs > max_stored_cyborgs)
 			return
 		stored_cyborgs++
-		notify_ghosts("A new cyborg shell has been created at the [src]", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "New malfunctioning cyborg created!")
+		notify_ghosts("A new cyborg shell has been created at the [src]",
+			source = src,
+			action = NOTIFY_ORBIT,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			header = "New malfunctioning cyborg created!",
+		)
 
 /obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
 	if(machine_stat & (BROKEN|NOPOWER))

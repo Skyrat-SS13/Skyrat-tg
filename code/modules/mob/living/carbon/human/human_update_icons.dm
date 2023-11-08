@@ -656,12 +656,7 @@ There are several things that need to be remembered:
 		apply_overlay(LEGCUFF_LAYER)
 		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = src.legcuffed)
 
-/mob/living/carbon/human/update_held_items()
-	remove_overlay(HANDS_LAYER)
-	if (handcuffed)
-		drop_all_held_items()
-		return
-
+/mob/living/carbon/human/get_held_overlays()
 	var/list/hands = list()
 	for(var/obj/item/worn_item in held_items)
 		var/held_index = get_held_index_of_item(worn_item)
@@ -690,8 +685,7 @@ There are several things that need to be remembered:
 		held_in_hand?.held_hand_offset?.apply_offset(hand_overlay)
 
 		hands += hand_overlay
-	overlays_standing[HANDS_LAYER] = hands
-	apply_overlay(HANDS_LAYER)
+	return hands
 
 /proc/wear_female_version(t_color, icon, layer, type, greyscale_colors, mutant_styles) // SKYRAT EDIT CHANGE - Digi female gender shaping - ORIGINAL: /proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
 	var/index = "[t_color]-[greyscale_colors][(mutant_styles & STYLE_DIGI) ? "-d" : ""]" // SKYRAT EDIT CHANGE - Digi female gender shaping - Original: var/index = "[t_color]-[greyscale_colors]]"
@@ -825,8 +819,9 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	female_uniform = NO_FEMALE_UNIFORM,
 	override_state = null,
 	override_file = null,
-	mutant_styles = NONE,
-) // SKYRAT EDIT - Further outfit modification for outfits (added `mutant_styles` argument)
+	use_height_offset = TRUE,
+	mutant_styles = NONE, // SKYRAT EDIT ADD - Further outfit modification for outfits (added `mutant_styles` argument)
+)
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
@@ -858,7 +853,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // SKYRAT E
 	//eg: ammo counters, primed grenade flashes, etc.
 	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles) // SKYRAT EDIT CHANGE - ORIGINAL: var/list/worn_overlays = worn_overlays(standing, isinhands)
 	if(worn_overlays?.len)
-		if(!isinhands && default_layer && ishuman(loc))
+		if(!isinhands && default_layer && ishuman(loc) && use_height_offset)
 			var/mob/living/carbon/human/human_loc = loc
 			if(human_loc.get_mob_height() != HUMAN_HEIGHT_MEDIUM)
 				var/string_form_layer = num2text(default_layer)

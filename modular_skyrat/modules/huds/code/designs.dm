@@ -62,7 +62,7 @@
 	name = "Prescription Engineering Scanner Goggles"
 	desc = "Goggles used by engineers. The Meson Scanner mode lets you see basic structural and terrain layouts through walls, regardless of lighting condition. The T-ray Scanner mode lets you see underfloor objects such as cables and pipes. Prescription lens has been added into this design."
 	id = "engine_goggles_prescription"
-	build_type = PROTOLATHE | AWAY_LATHE
+	build_type = PROTOLATHE | AWAY_LATHE | COLONY_FABRICATOR
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/plasma = SMALL_MATERIAL_AMOUNT, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 4)
 	build_path = /obj/item/clothing/glasses/meson/engine/prescription
 	category = list(

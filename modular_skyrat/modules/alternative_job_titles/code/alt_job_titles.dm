@@ -12,48 +12,60 @@
 /datum/job/ai
 	alt_titles = list(
 		"AI",
+		"Automated Overseer",
 		"Station Intelligence",
-		"Automated Overseer"
 	)
 
 /datum/job/assistant
 	alt_titles = list(
 		"Assistant",
-		"Civilian",
-		"Tourist",
+		"Artist",
 		"Businessman",
 		"Businesswoman",
-		"Trader",
+		"Civilian",
 		"Entertainer",
 		"Freelancer",
-		"Artist",
-		"Off-Duty Staff",
+		"Tourist",
+		"Trader",
 		"Off-Duty Crew",
+		"Off-Duty Staff",
 	)
 
 /datum/job/atmospheric_technician
 	alt_titles = list(
 		"Atmospheric Technician",
-		"Life Support Technician",
 		"Emergency Fire Technician",
 		"Firefighter",
+		"Life Support Technician",
 	)
 
 /datum/job/barber
 	alt_titles = list(
 		"Barber",
+		"Aethestician",
+		"Colorist",
 		"Salon Manager",
 		"Salon Technician",
 		"Stylist",
-		"Colorist",
 	)
 
 /datum/job/bartender
 	alt_titles = list(
 		"Bartender",
-		"Mixologist",
-		"Barkeeper",
 		"Barista",
+		"Barkeeper",
+		"Mixologist",
+	)
+
+/datum/job/bitrunner
+	alt_titles = list(
+		"Bitrunner",
+		"Bitdomain Technician",
+		"Data Retrieval Specialist",
+		"Netdiver",
+		"Pod Jockey",
+		"Union Bitrunner",
+		"Junior Runner",
 	)
 
 /datum/job/blueshield
@@ -66,11 +78,13 @@
 /datum/job/botanist
 	alt_titles = list(
 		"Botanist",
-		"Hydroponicist",
-		"Gardener",
 		"Botanical Researcher",
-		"Herbalist",
 		"Florist",
+		"Gardener",
+		"Herbalist",
+		"Hydroponicist",
+		"Mycologist",
+		"Junior Botanist",
 	)
 
 /datum/job/bouncer
@@ -89,33 +103,35 @@
 /datum/job/captain
 	alt_titles = list(
 		"Captain",
-		"Station Commander",
 		"Commanding Officer",
 		"Site Manager",
+		"Station Commander",
 	)
 
 /datum/job/cargo_technician
 	alt_titles = list(
 		"Warehouse Technician",
+		"Commodities Trader",
 		"Deck Worker",
-		"Mailman",
-		"Union Associate",
 		"Inventory Associate",
+		"Mailman",
+		"Receiving Clerk",
+		"Union Associate",
 	)
 
 /datum/job/chaplain
 	alt_titles = list(
 		"Chaplain",
-		"Priest",
-		"Preacher",
-		"Reverend",
-		"Oracle",
-		"Pontifex",
-		"Magister",
 		"High Priest",
 		"Imam",
-		"Rabbi",
+		"Magister",
 		"Monk",
+		"Oracle",
+		"Preacher",
+		"Priest",
+		"Pontifex",
+		"Rabbi",
+		"Reverend",
 	)
 
 /datum/job/chemist
@@ -136,25 +152,25 @@
 /datum/job/chief_medical_officer
 	alt_titles = list(
 		"Chief Medical Officer",
-		"Medical Director",
-		"Head of Medical",
 		"Chief Physician",
+		"Head of Medical",
 		"Head Physician",
+		"Medical Director",
 	)
 
 /datum/job/clown
 	alt_titles = list(
 		"Clown",
+		"Comedian",
 		"Jester",
 		"Joker",
-		"Comedian",
 	)
 
 /datum/job/cook
 	alt_titles = list(
 		"Cook",
-		"Chef",
 		"Butcher",
+		"Chef",
 		"Culinary Artist",
 		"Sous-Chef",
 	)
@@ -162,16 +178,19 @@
 /datum/job/coroner
 	alt_titles = list(
 		"Coroner",
-		"Mortician",
+		"Forensic Pathologist",
 		"Funeral Director",
+		"Medical Examiner",
+		"Mortician",
 	)
 
 /datum/job/curator
 	alt_titles = list(
 		"Curator",
-		"Librarian",
-		"Journalist",
 		"Archivist",
+		"Conservator",
+		"Journalist",
+		"Librarian",
 	)
 
 /datum/job/customs_agent
@@ -183,26 +202,27 @@
 /datum/job/cyborg
 	alt_titles = list(
 		"Cyborg",
-		"Robot",
 		"Android",
+		"Robot",
 	)
 
 /datum/job/detective
 	alt_titles = list(
 		"Detective",
+		"Forensic Scientist",
 		"Forensic Technician",
 		"Private Investigator",
-		"Forensic Scientist",
 	)
 
 /datum/job/doctor
 	alt_titles = list(
 		"Medical Doctor",
-		"Surgeon",
-		"Nurse",
 		"General Practitioner",
 		"Medical Resident",
+		"Nurse",
 		"Physician",
+		"Surgeon",
+		"Medical Student",
 	)
 
 /datum/job/engineering_guard //see orderly
@@ -210,58 +230,61 @@
 /datum/job/geneticist
 	alt_titles = list(
 		"Geneticist",
+		"Gene Tailor",
 		"Mutation Researcher",
 	)
 
 /datum/job/head_of_personnel
 	alt_titles = list(
 		"Head of Personnel",
-		"Executive Officer",
-		"Employment Officer",
 		"Crew Supervisor",
+		"Employment Officer",
+		"Executive Officer",
 	)
 
 /datum/job/head_of_security
 	alt_titles = list(
 		"Head of Security",
-		"Security Commander",
 		"Chief Constable",
 		"Chief of Security",
+		"Security Commander",
 		"Sheriff",
 	)
 
 /datum/job/janitor
 	alt_titles = list(
 		"Janitor",
-		"Custodian",
-		"Custodial Technician",
-		"Sanitation Technician",
-		"Maintenance Technician",
 		"Concierge",
+		"Custodial Technician",
+		"Custodian",
 		"Maid",
+		"Maintenance Technician",
+		"Sanitation Technician",
 	)
 
 /datum/job/lawyer
 	alt_titles = list(
 		"Lawyer",
-		"Internal Affairs Agent",
-		"Human Resources Agent",
-		"Defence Attorney",
-		"Public Defender",
 		"Barrister",
-		"Prosecutor",
+		"Defense Attorney",
+		"Human Resources Agent",
+		"Internal Affairs Agent",
 		"Legal Clerk",
+		"Prosecutor",
+		"Public Defender",
 	)
 
 /datum/job/mime
 	alt_titles = list(
 		"Mime",
+		"Mummer",
 		"Pantomimist",
 	)
 
 /datum/job/nanotrasen_consultant
 	alt_titles = list(
 		"Nanotrasen Consultant",
+		"Nanotrasen Advisor",
 		"Nanotrasen Diplomat",
 	)
 
@@ -285,44 +308,42 @@
 		"Maximum Security Prisoner",
 		"SuperMax Security Prisoner",
 		"Protective Custody Prisoner",
-		"Convict",
-		"Felon",
-		"Inmate",
 	)
 
 /datum/job/psychologist
 	alt_titles = list(
 		"Psychologist",
+		"Counsellor",
 		"Psychiatrist",
 		"Therapist",
-		"Counsellor",
 	)
 
 /datum/job/quartermaster
 	alt_titles = list(
 		"Quartermaster",
-		"Union Requisitions Officer",
 		"Deck Chief",
-		"Warehouse Supervisor",
-		"Supply Foreman",
 		"Head of Supply",
 		"Logistics Coordinator",
+		"Supply Foreman",
+		"Union Requisitions Officer",
+		"Warehouse Supervisor",
 	)
 
 /datum/job/research_director
 	alt_titles = list(
 		"Research Director",
-		"Silicon Administrator",
-		"Lead Researcher",
 		"Biorobotics Director",
-		"Research Supervisor",
 		"Chief Science Officer",
+		"Lead Researcher",
+		"Research Supervisor",
+		"Silicon Administrator",
 	)
 
 /datum/job/roboticist
 	alt_titles = list(
 		"Roboticist",
 		"Biomechanical Engineer",
+		"Machinist",
 		"Mechatronic Engineer",
 		"Apprentice Roboticist",
 	)
@@ -332,24 +353,24 @@
 /datum/job/scientist
 	alt_titles = list(
 		"Scientist",
-		"Circuitry Designer",
-		"Xenobiologist",
-		"Cytologist",
-		"Plasma Researcher",
 		"Anomalist",
-		"Lab Technician",
-		"Theoretical Physicist",
-		"Ordnance Technician",
-		"Xenoarchaeologist",
-		"Research Assistant",
+		"Circuitry Designer",
+		"Cytologist",
 		"Graduate Student",
+		"Lab Technician",
+		"Ordnance Technician",
+		"Plasma Researcher",
+		"Theoretical Physicist",
+		"Xenoarchaeologist",
+		"Xenobiologist",
+		"Research Assistant",
 	)
 
 /datum/job/security_officer
 	alt_titles = list(
 		"Security Officer",
-		"Security Operative",
 		"Peacekeeper",
+		"Security Operative",
 		"Security Cadet",
 	)
 
@@ -357,26 +378,27 @@
 	alt_titles = list(
 		"Union Miner",
 		"Excavator",
-		"Spelunker",
 		"Drill Technician",
 		"Prospector",
+		"Spelunker",
+		"Apprentice Miner",
 	)
 
 /datum/job/station_engineer
 	alt_titles = list(
 		"Station Engineer",
-		"Emergency Damage Control Technician",
 		"Electrician",
+		"Emergency Damage Control Technician",
 		"Engine Technician",
 		"EVA Technician",
 		"Mechanic",
 		"Apprentice Engineer",
-		"Engineering Trainee",
 	)
 
 /datum/job/virologist
 	alt_titles = list(
 		"Virologist",
+		"Epidemiologist",
 		"Pathologist",
 		"Junior Pathologist",
 	)
@@ -385,7 +407,7 @@
 	alt_titles = list(
 		"Warden",
 		"Brig Sergeant",
-		"Dispatch Officer",
 		"Brig Governor",
+		"Dispatch Officer",
 		"Jailer",
 	)
