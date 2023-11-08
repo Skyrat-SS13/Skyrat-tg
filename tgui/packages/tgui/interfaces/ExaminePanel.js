@@ -9,25 +9,21 @@ const formatURLs = (text) => {
   let regex = /https?:\/\/[^\s/$.?#].[^\s]*/gi;
   let lastIndex = 0;
 
-  try {
-    text.replace(regex, (url, index) => {
-      parts.push(text.substring(lastIndex, index));
-      parts.push(
-        <a
-          style={{
-            'color': '#0591e3',
-            'text-decoration': 'none',
-          }}
-          href={url}>
-          {url}
-        </a>
-      );
-      lastIndex = index + url.length;
-      return url;
-    });
-  } catch (error) {
-    return text;
-  }
+  text.replace(regex, (url, index) => {
+    parts.push(text.substring(lastIndex, index));
+    parts.push(
+      <a
+        style={{
+          'color': '#0591e3',
+          'text-decoration': 'none',
+        }}
+        href={url}>
+        {url}
+      </a>
+    );
+    lastIndex = index + url.length;
+    return url;
+  });
 
   parts.push(text.substring(lastIndex));
 
