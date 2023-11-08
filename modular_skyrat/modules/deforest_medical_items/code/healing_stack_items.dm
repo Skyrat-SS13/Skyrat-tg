@@ -143,8 +143,6 @@
 	novariants = TRUE
 	max_amount = 3
 	amount = 3
-	absorption_rate = 0.2
-	absorption_capacity = 4
 	splint_factor = 1.2
 	burn_cleanliness_bonus = 0.1
 	merge_type = /obj/item/stack/medical/gauze/sterilized
