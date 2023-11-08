@@ -20,7 +20,7 @@
 	cost = PAYCHECK_COMMAND * 6
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/first_responder
-	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical
+	item_type = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
 	cost = PAYCHECK_COMMAND * 10
 
 /datum/armament_entry/company_import/deforest/first_aid_kit/orange_satchel
