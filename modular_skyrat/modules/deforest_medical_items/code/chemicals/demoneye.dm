@@ -141,7 +141,7 @@
 
 
 /// Hurts a random organ, if its 'really_bad' we'll vomit blood too
-/datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad)
+/datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad = FALSE)
 	if(really_bad)
 		our_guy.vomit(0, TRUE, FALSE, 1)
 	our_guy.adjustOrganLoss(
