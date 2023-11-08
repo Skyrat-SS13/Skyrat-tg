@@ -1,3 +1,5 @@
+#define CONSTANT_DOSE_SAFE_LIMIT 60
+
 #define TWITCH_SCREEN_FILTER "twitch_screen_filter"
 #define TWITCH_SCREEN_BLUR "twitch_screen_blur"
 
@@ -81,7 +83,7 @@
 	if(overdosed)
 		UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
 
-	if(constant_dose_time < 60) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
+	if(constant_dose_time < CONSTANT_DOSE_SAFE_LIMIT) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
 			span_danger("[our_guy] suddenly slows from their inhuman speeds, coming back with a wicked nosebleed!"),
 			span_danger("You suddenly slow back to normal, a stream of blood gushing from your nose!")

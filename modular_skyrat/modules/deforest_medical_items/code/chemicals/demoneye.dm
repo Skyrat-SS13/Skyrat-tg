@@ -1,4 +1,5 @@
 #define CONSTANT_DOSE_SAFE_LIMIT 60
+#define METABOLISM_END_LIMB_DAMAGE 20
 
 // Chemical reaction, turns 25 input reagents into 25 output reagents, 10 of those being demoneye
 /datum/chemical_reaction/demoneye
@@ -102,7 +103,7 @@
 		var/obj/item/bodypart/bodypart = pick(our_guy.bodyparts)
 		var/datum/wound/slash/flesh/critical/crit_wound = new()
 		crit_wound.apply_wound(bodypart)
-		bodypart.receive_damage(20, wound_bonus = CANT_WOUND)
+		bodypart.receive_damage(brute = METABOLISM_END_LIMB_DAMAGE, wound_bonus = CANT_WOUND)
 
 		new /obj/effect/temp_visual/cleave(our_guy.drop_location())
 
@@ -163,3 +164,4 @@
 	description = "I'M FUCKING INVINCIBLE!!!!"
 
 #undef CONSTANT_DOSE_SAFE_LIMIT
+#undef METABOLISM_END_LIMB_DAMAGE

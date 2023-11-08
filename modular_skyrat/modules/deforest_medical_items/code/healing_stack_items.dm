@@ -1,3 +1,6 @@
+#define INSTANT_WOUND_HEAL_STAMINA_DAMAGE 80
+#define INSTANT_WOUND_HEAL_LIMB_DAMAGE 25
+
 /obj/item/stack/medical/wound_recovery
 	name = "subdermal splint applicator"
 	desc = "A roll flexible material dotted with millions of micro-scale injectors on one side. \
@@ -66,15 +69,15 @@
 	if(!do_after(user, treatment_delay, target = patient))
 		return
 
-	user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] to [patient]'s [limb.plaintext_zone].</span></span>", "<span class='infoplain'><span class='green'>You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone].</span></span>")
+	user.visible_message(span_green("[user] applies [src] to [patient]'s [limb.plaintext_zone]."), span_green("You bandage the wounds on [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."))
 	playsound(patient, treatment_sound, 50, TRUE)
 	woundies.remove_wound()
 	if(!HAS_TRAIT(patient, TRAIT_NUMBED))
 		patient.emote("scream")
-		to_chat(patient, span_userdanger("Your [limb] burns like hell as the wounds on it are rapidly healed, fuck!"))
+		to_chat(patient, span_userdanger("Your [limb.plaintext_zone] burns like hell as the wounds on it are rapidly healed, fuck!"))
 		patient.add_mood_event("severe_surgery", /datum/mood_event/rapid_wound_healing)
-	limb.receive_damage(25, wound_bonus = CANT_WOUND)
-	patient.adjustStaminaLoss(80)
+	limb.receive_damage(brute = INSTANT_WOUND_HEAL_LIMB_DAMAGE, wound_bonus = CANT_WOUND)
+	patient.adjustStaminaLoss(INSTANT_WOUND_HEAL_STAMINA_DAMAGE)
 	patient.apply_status_effect(/datum/status_effect/vulnerable_to_damage)
 
 /datum/mood_event/rapid_wound_healing
@@ -169,3 +172,6 @@
 	heal_brute = 0
 	stop_bleeding = 2
 	merge_type = /obj/item/stack/medical/suture/coagulant
+
+#undef INSTANT_WOUND_HEAL_STAMINA_DAMAGE
+#undef INSTANT_WOUND_HEAL_LIMB_DAMAGE
