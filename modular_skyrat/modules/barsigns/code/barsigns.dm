@@ -1,22 +1,14 @@
 // Modularly set the correct icon file
-/obj/machinery/barsign/set_sign(datum/barsign/sign)
+/obj/machinery/barsign/update_icon_state()
+	. = ..()
 	// uses tg icon file
-	if(!istype(sign, /datum/barsign/skyrat))
+	if(!istype(chosen_sign, /datum/barsign/skyrat) || icon_state == "empty")
 		icon = initial(icon)
-		return ..()
-
 	// uses modular icon file
-	if(istype(sign, /datum/barsign/skyrat/large))
+	else if(istype(chosen_sign, /datum/barsign/skyrat/large))
 		icon = SKYRAT_LARGE_BARSIGN_FILE
 	else
 		icon = SKYRAT_BARSIGN_FILE
-
-	return ..()
-
-/obj/machinery/barsign/update_icon_state()
-	. = ..()
-	if(icon_state == "empty")
-		icon = initial(icon) // so we don't need a duplicated 'empty' sprite in the modular files
 
 /datum/barsign/skyrat/topmen
 	name = "Top Men"
