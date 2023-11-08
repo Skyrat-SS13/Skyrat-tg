@@ -34,7 +34,7 @@
 
 	// Because we're firing a lot of these really fast, we want a lot less wound chance
 	projectile_wound_bonus = -20
-	spread = 7.5
+	spread = 12.5
 	// Hope you didn't need to see anytime soon
 	recoil = 2
 
