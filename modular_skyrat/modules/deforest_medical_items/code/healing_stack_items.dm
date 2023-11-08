@@ -26,7 +26,7 @@
 	/// The sound we play upon successfully treating the wound
 	var/treatment_sound = 'sound/items/duct_tape_rip.ogg'
 
-// This is only relevant for bone wounds, we can't work if there are none
+// This is only relevant for the types of wounds defined, we can't work if there are none
 /obj/item/stack/medical/wound_recovery/try_heal(mob/living/patient, mob/user, silent)
 
 	if(patient.has_status_effect(/datum/status_effect/vulnerable_to_damage))
@@ -83,7 +83,6 @@
 	timeout = 5 MINUTES
 
 // Helps recover bleeding
-
 /obj/item/stack/medical/wound_recovery/rapid_coagulant
 	name = "rapid coagulant applicator"
 	singular_name = "rapid coagulant applicator"
@@ -104,7 +103,6 @@
 	healed_mob.reagents.add_reagent(/datum/reagent/medicine/coagulant/fabricated, 5)
 
 // Helps recover burn wounds much faster, while not healing much damage directly
-
 /obj/item/stack/medical/ointment/red_sun
 	name = "red sun balm"
 	singular_name = "red sun balm"
@@ -133,7 +131,6 @@
 	healed_mob.reagents.add_reagent(/datum/reagent/medicine/lidocaine, 2)
 
 // Gauze that are especially good at treating burns, but are terrible splints
-
 /obj/item/stack/medical/gauze/sterilized
 	name = "sealed aseptic gauze"
 	singular_name = "sealed aseptic gauze"
@@ -158,7 +155,6 @@
 	healed_mob.reagents.expose(user, TOUCH, 1)
 
 // Works great at sealing bleed wounds, but does little to actually heal them
-
 /obj/item/stack/medical/suture/coagulant
 	name = "coagulant-F packet"
 	singular_name = "coagulant-F packet"

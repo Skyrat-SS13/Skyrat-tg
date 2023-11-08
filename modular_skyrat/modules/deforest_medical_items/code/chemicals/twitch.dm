@@ -18,7 +18,6 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
 // Twitch drug, makes the takers of it faster and able to dodge bullets while in their system, to potentially bad side effects
-
 /datum/reagent/drug/twitch
 	name = "TWitch"
 	description = "A drug originally developed by and for plutonians to assist them during raids. \
@@ -81,7 +80,6 @@
 	UnregisterSignal(our_guy, COMSIG_MOVABLE_HEAR)
 	if(overdosed)
 		UnregisterSignal(our_guy, COMSIG_ATOM_PRE_BULLET_ACT)
-		/datum/disease/anaphylaxis
 
 	if(constant_dose_time < 60) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(

@@ -1,5 +1,4 @@
 // Twitch, because having sandevistans be implants is for losers, just inject it!
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/twitch
 	name = "TWitch sensory stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with 'TWitch' among other reagents. This drug is known to make \
@@ -14,7 +13,6 @@
 	)
 
 // Demoneye, for when you feel the need to become "fucking invincible"
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/demoneye
 	name = "DemonEye steroid injector"
 	desc = "A Deforest branded autoinjector, loaded with 'DemonEye' among other reagents. This drug is known to make \
@@ -28,7 +26,6 @@
 	)
 
 // Mix of many of the stamina damage regenerating drugs to provide a cocktail no baton could hope to beat
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/aranepaine
 	name = "aranepaine combat stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it nearly \
@@ -44,7 +41,6 @@
 	)
 
 // Earthsblood alongside a few additives, there's nothing inherently illegal but its a weird one so...
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/pentibinin
 	name = "pentibinin normalizant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it \
@@ -60,7 +56,6 @@
 	)
 
 // Combat stimulant that makes you immune to slowdowns for a bit
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/synalvipitol
 	name = "synalvipitol muscle stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a cocktail of drugs to make any who take it \

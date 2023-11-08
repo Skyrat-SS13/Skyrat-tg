@@ -1,5 +1,4 @@
 // Pen basetype where the icon is gotten from
-
 /obj/item/reagent_containers/hypospray/medipen/deforest
 	name = "non-functional Deforest autoinjector"
 	desc = "A Deforest branded autoinjector, though this one seems to be both empty and non-functional."
@@ -54,7 +53,6 @@
 	return FALSE
 
 // Sensory restoration, heals eyes and ears with a bit of impurity
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
 	name = "occuisate sensory restoration injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to restore your vision and hearing to operation."
@@ -69,7 +67,6 @@
 	)
 
 // Adrenaline, fills you with determination (and also stimulants)
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/adrenaline
 	name = "adrenaline injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to intentionally give yourself fight or flight on demand."
@@ -83,7 +80,6 @@
 	)
 
 // Morpital, heals a small amount of damage and kills pain for a bit
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/morpital
 	name = "morpital regenerative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage."
@@ -96,7 +92,6 @@
 	)
 
 // Lipital, heals more damage than morpital but doesnt work much at higher damages
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
 	name = "lipital regenerative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage. \
@@ -110,7 +105,6 @@
 	)
 
 // Anti-poisoning injector, with a little bit of radiation healing as a treat
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 	name = "meridine antidote injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to serve as antidote to most galactic toxins. \
@@ -124,7 +118,6 @@
 	)
 
 // Epinephrine and helps a little bit against stuns and stamina damage
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/synephrine
 	name = "synephrine emergency stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to stabilize critical condition and recover from stamina deficits."
@@ -138,7 +131,6 @@
 	)
 
 // Critical condition stabilizer
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
 	name = "calopine emergency stabilizant injector"
 	desc = "A Deforest branded autoinjector, loaded with a stabilizing mix of reagents to repair critical conditions."
@@ -152,7 +144,6 @@
 	)
 
 // Coagulant, really not a whole lot more
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/coagulants
 	name = "coagulant-S injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of coagulants to prevent and stop bleeding."
@@ -165,7 +156,6 @@
 	)
 
 // Stimulant centered around ondansetron
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
 	name = "krotozine manipulative stimulant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of stimulants of weak healing agents."
@@ -179,7 +169,6 @@
 	)
 
 // Stuff really good at healing burn stuff and stabilizing temps
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
 	name = "lepoturi burn treatment injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to rapidly treat burns."
@@ -193,7 +182,6 @@
 	)
 
 // Stabilizes a lot of stats like drowsiness, sanity, dizziness, so on
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/psifinil
 	name = "psifinil personal recovery injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy many common ailments, such as drowsiness, pain, instability, the like."
@@ -206,7 +194,6 @@
 	)
 
 // Helps with liver failure and some drugs, also alcohol
-
 /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 	name = "halobinin soberant injector"
 	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy the effects of liver failure and common drugs."

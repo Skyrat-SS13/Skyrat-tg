@@ -1,5 +1,4 @@
 // Chemical reaction, turns 25 input reagents into 25 output reagents, 10 of those being demoneye
-
 /datum/chemical_reaction/demoneye
 	results = list(
 		/datum/reagent/drug/demoneye = 10,
@@ -14,8 +13,7 @@
 	mob_react = FALSE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
-// Demoneye, a drug that makes you
-
+// Demoneye, a drug that makes you temporarily immune to fear and crit, in exchange for damaging all of your organs and making your veins explode
 /datum/reagent/drug/demoneye
 	name = "DemonEye"
 	description = "A performance enhancing drug originally developed on mars. \
@@ -36,8 +34,9 @@
 	. = ..()
 
 	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
-	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS) // IM FUCKIN INVINCIBLE
-	ADD_TRAIT(our_guy, TRAIT_NOHARDCRIT, TRAIT_NARCOTICS) // IM FUCKIN INVINCIBLE
+	// IM FUCKIN INVINCIBLE
+	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
+	ADD_TRAIT(our_guy, TRAIT_NOHARDCRIT, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_NUMBED, TRAIT_NARCOTICS)
 

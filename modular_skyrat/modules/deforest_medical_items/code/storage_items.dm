@@ -1,5 +1,4 @@
 // Bottle of painkiller pills
-
 /obj/item/storage/pill_bottle/painkiller
 	name = "amollin pill bottle"
 	desc = "It's an airtight container for storing medication. This one is all-white and has labels for containing amollin, a common painkiller."
@@ -21,7 +20,6 @@
 	)
 
 // Pre-packed civil defense medkit, with items to heal low damages inside, and painkillers as a treat
-
 /obj/item/storage/medkit/civil_defense
 	name = "civil defense medical kit"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
@@ -53,7 +51,6 @@
 	generate_items_inside(items_inside,src)
 
 // Pre-packed frontier medkit, with supplies to repair most common frontier health issues
-
 /obj/item/storage/medkit/frontier
 	name = "frontier medical kit"
 	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal."
@@ -80,7 +77,6 @@
 	generate_items_inside(items_inside,src)
 
 // Pre-packed combat surgeon medkit, with items for fixing more specific injuries and wounds
-
 /obj/item/storage/medkit/combat_surgeon
 	name = "combat surgeon medical kit"
 	desc = "A folding kit that is ideally filled with surgical tools and specialized treatment options for many harder-to-treat wounds."
@@ -111,7 +107,6 @@
 	generate_items_inside(items_inside,src)
 
 // Big medical kit that can be worn like a bag, holds a LOT of medical items but works like a duffelbag
-
 /obj/item/storage/backpack/duffelbag/deforest_medkit
 	name = "satchel medical kit"
 	desc = "A large orange satchel able to hold just about any piece of small medical equipment you could think of, you can even wear it on your back or belt!"
@@ -204,7 +199,6 @@
 	))
 
 // Big surgical kit that can be worn like a bag, holds 14 normal items (more than what a backpack can do!) but works like a duffelbag
-
 /obj/item/storage/backpack/duffelbag/deforest_surgical
 	name = "first responder surgical kit"
 	desc = "A large bag able to hold all the surgical tools and first response healing equipment you can think of, you can even wear it!"
