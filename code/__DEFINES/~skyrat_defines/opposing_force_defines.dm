@@ -63,6 +63,7 @@
 #define OPFOR_EQUIPMENT_CATEGORY_MELEE_STEALTH "14. Stealthy Melee Weapons"
 // Medical items
 #define OPFOR_EQUIPMENT_CATEGORY_MEDICAL "15. Medical Items"
+// Gadgets
 #define OPFOR_EQUIPMENT_CATEGORY_GADGET "16. Gadgets"
 #define OPFOR_EQUIPMENT_CATEGORY_GADGET_STEALTH "17. Stealthy Gadgets"
 // Bombs
