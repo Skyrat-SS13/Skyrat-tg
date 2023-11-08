@@ -53,14 +53,18 @@
 // Pre-packed frontier medkit, with supplies to repair most common frontier health issues
 /obj/item/storage/medkit/frontier
 	name = "frontier medical kit"
-	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal."
+	desc = "A handy roll-top waterproof medkit often seen alongside those on the frontier, where medical support is less than optimal. \
+		It has a clip for hooking onto your belt, handy!"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "frontier"
 	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
 	inhand_icon_state = "frontier"
+	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
+	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/storage/medkit/frontier/stocked
 
