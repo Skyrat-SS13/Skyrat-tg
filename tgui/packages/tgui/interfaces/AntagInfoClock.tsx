@@ -1,6 +1,9 @@
 import { useBackend } from '../backend';
 import { Icon, Section, Stack } from '../components';
 import { Window } from '../layouts';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 type Info = {
   antag_name: string;
@@ -53,20 +56,3 @@ const ObjectivePrintout = (props, context) => {
     </Stack>
   );
 };
-
-// SKYRAT EDIT ADDITION START
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Clockcult_(OPFOR)">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

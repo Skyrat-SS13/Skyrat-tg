@@ -1,5 +1,8 @@
 import { BlockQuote, LabeledList, Section, Stack } from '../components';
 import { Window } from '../layouts';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const tipstyle = {
   color: 'white',
@@ -78,20 +81,3 @@ export const AntagInfoNightmare = (props, context) => {
     </Window>
   );
 };
-
-// SKYRAT EDIT ADDITION START
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Nightmare!_Station_Threat">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

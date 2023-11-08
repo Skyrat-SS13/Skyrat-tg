@@ -1,6 +1,9 @@
 import { useBackend } from '../backend';
 import { Box, Collapsible, Divider, LabeledList, Section, Stack } from '../components';
 import { Objective } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 import { Window } from '../layouts';
 
@@ -193,20 +196,3 @@ const ObjectiveDisplay = (props, context) => {
     </Collapsible>
   );
 };
-
-// SKYRAT EDIT ADDITION BEGIN
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Blob!_PERMANENT_MECHANICAL_STATE">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

@@ -3,6 +3,9 @@ import { Section, Stack, Box, Tabs, Button, BlockQuote } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike } from 'common/react';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const hereticRed = {
   color: '#e03c3c',
@@ -346,20 +349,3 @@ export const AntagInfoHeretic = (props, context) => {
     </Window>
   );
 };
-
-// SKYRAT EDIT ADDITION START
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Heretic!">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

@@ -5,6 +5,9 @@ import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -249,20 +252,3 @@ export const AntagInfoMalf = (props, context) => {
     </Window>
   );
 };
-
-// SKYRAT EDIT ADDITION START
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Malf_AI!">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

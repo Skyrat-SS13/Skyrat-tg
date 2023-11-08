@@ -2,6 +2,9 @@ import { useBackend, useLocalState } from '../backend';
 import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 type Objectives = {
   count: number;
@@ -241,20 +244,3 @@ const KeyPrintout = (props, context) => {
     </Section>
   );
 };
-
-// SKYRAT EDIT ADDITION BEGIN
-const Rules = (props, context) => {
-  return (
-    <Stack vertical>
-      <Stack.Item bold>Special Rules:</Stack.Item>
-      <Stack.Item>
-        {
-          <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Assault_Ops!">
-            Special Rules and Metaprotections!
-          </a>
-        }
-      </Stack.Item>
-    </Stack>
-  );
-};
-// SKYRAT EDIT ADDITION END

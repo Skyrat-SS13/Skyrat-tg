@@ -4,6 +4,9 @@ import { BlockQuote, Button, Dimmer, Section, Stack } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -50,16 +53,10 @@ const IntroductionSection = (props, context) => {
         </Stack.Item>
         {/* SKYRAT EDIT ADDITION START */}
         <Stack.Item grow>
-          <Stack vertical>
-            <Stack.Item bold>Special Rules:</Stack.Item>
-            <Stack.Item>
-              {
-                <a href="https://wiki.skyrat13.space/index.php/Antagonist_Policy#Traitor!">
-                  Special Rules and Metaprotections!
-                </a>
-              }
-            </Stack.Item>
-          </Stack>
+          {/* SKYRAT EDIT ADDITION START */}
+          <Stack.Item>
+            <Rules />
+          </Stack.Item>
         </Stack.Item>
         {/* SKYRAT EDIT ADDITION END */}
       </Stack>
