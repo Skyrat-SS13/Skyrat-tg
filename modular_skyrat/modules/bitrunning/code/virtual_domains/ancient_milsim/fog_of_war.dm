@@ -26,8 +26,8 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/door/poddoor/ancient_milsim/Initialize(mapload)
-	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
+	return ..()
 
 /obj/machinery/door/poddoor/ancient_milsim/screwdriver_act()
 	return

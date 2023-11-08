@@ -22,6 +22,6 @@
 
 /obj/machinery/iv_drip/health_station/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)
-	. = ..()
+	return ..()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/iv_drip/health_station, 32)
