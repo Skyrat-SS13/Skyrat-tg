@@ -4,8 +4,10 @@
 	// uses tg icon file
 	if(!istype(chosen_sign, /datum/barsign/skyrat) || icon_state == "empty")
 		icon = initial(icon)
+		return
+
 	// uses modular icon file
-	else if(istype(chosen_sign, /datum/barsign/skyrat/large))
+	if(istype(chosen_sign, /datum/barsign/skyrat/large))
 		icon = SKYRAT_LARGE_BARSIGN_FILE
 	else
 		icon = SKYRAT_BARSIGN_FILE
