@@ -30,6 +30,15 @@
 	addiction_types = list(/datum/addiction/stimulants = 15)
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
+	/// List of organs we can randomly damage
+	var/static/list/organs_we_damage = list(
+		ORGAN_SLOT_BRAIN,
+		ORGAN_SLOT_APPENDIX,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_STOMACH,
+	)
 
 
 /datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/human/our_guy)
@@ -145,7 +154,7 @@
 	if(really_bad)
 		our_guy.vomit(0, TRUE, FALSE, 1)
 	our_guy.adjustOrganLoss(
-		pick(ORGAN_SLOT_BRAIN, ORGAN_SLOT_APPENDIX, ORGAN_SLOT_LUNGS, ORGAN_SLOT_HEART, ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH),
+		pick(organs_we_damage),
 		damage,
 	)
 
