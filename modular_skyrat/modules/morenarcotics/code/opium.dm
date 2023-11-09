@@ -162,7 +162,7 @@
 
 /datum/reagent/drug/opium/blacktar
 	name = "black tar heroin"
-	description = "An impure, freebase form of heroin. The good news is, you won't feel a thing. The bad news is, you won't feel a thing."
+	description = "An impure, freebase form of heroin. Probably not a good idea to take this."
 	reagent_state = LIQUID
 	color = "#242423"
 	overdose_threshold = 10 //more easy to overdose on
@@ -170,15 +170,6 @@
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/opioids = 40)
-
-/datum/reagent/drug/opium/blacktar/on_mob_metabolize(mob/living/metabolizer)
-	. = ..()
-	metabolizer.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-
-
-/datum/reagent/drug/opium/blacktar/on_mob_end_metabolize(mob/living/metabolizer)
-	. = ..()
-	metabolizer.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
