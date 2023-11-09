@@ -232,6 +232,7 @@
 			Good luck!
 			</body>
 			</html>"}
+<<<<<<< HEAD
 
 // Wiki books that are linked to the configured wiki link.
 
@@ -457,3 +458,5 @@
 	starting_author = "Nanotrasen Edu-tainment Division"
 	starting_title = "Tactical Game Cards - Player's Handbook"
 	page_link = "Tactical_Game_Cards"
+=======
+>>>>>>> f6a31d92b64 (Fixes Wiki Book Manuals not working (#79589))
