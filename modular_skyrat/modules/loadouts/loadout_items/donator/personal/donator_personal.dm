@@ -178,9 +178,9 @@
 	item_path = /obj/item/clothing/under/wetsuit_norm
 	ckeywhitelist = list("ChillyLobster")
 
-/datum/loadout_item/mask/kindle_mask
-	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/animal/kindle
+/datum/loadout_item/mask/wolf_mask
+	name = "Wolf mask"
+	item_path = /obj/item/clothing/mask/animal/wolf
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
@@ -724,6 +724,11 @@
 	name = "Nobility Dresscoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
 	ckeywhitelist = list("nikotheguydude")
+
+/datum/loadout_item/suit/anubite_headpiece
+	name = "Anubite Headpiece"
+	item_path = /obj/item/clothing/head/anubite
+	ckeywhitelist = list("vexcint")
 
 /datum/loadout_item/under/formal/dragon_maid
 	name = "Dragon Maid Uniform"

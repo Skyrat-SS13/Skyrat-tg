@@ -160,11 +160,12 @@
 	name = "gunset beacon"
 	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
 	company_source = "Trappiste Fabriek Company"
-	company_message = span_bold("Supply Pod incoming please standby")
+	company_message = span_bold("Supply Pod incoming please stand by")
 
 /obj/item/choice_beacon/ntc/generate_display_names()
-	var/static/list/selectable_gun_types
-	if(!selectable_gun_types)
-		selectable_gun_types = list("Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, "Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild)
+	var/static/list/selectable_gun_types = list(
+		"Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok,
+		"Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild,
+	)
 
 	return selectable_gun_types

@@ -136,7 +136,7 @@
 
 	var/cleaning_themselves = target_mob == user
 
-	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you"] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
 		to_chat(user, span_notice("You start drying [target_mob] up with [src]."))
