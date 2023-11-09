@@ -110,13 +110,13 @@
 		/datum/reagent/ash
 	)
 
-	var/static/list/default_upgrade_reagents2 = list(
+	var/static/list/default_upgrade2_reagents = list(
 		/datum/reagent/acetone,
 		/datum/reagent/phenol,
 		/datum/reagent/diethylamine
 	)
 
-	var/static/list/default_upgrade_reagents3 = list(
+	var/static/list/default_upgrade3_reagents = list(
 		/datum/reagent/medicine/mine_salve,
 		/datum/reagent/toxin
 	)
@@ -153,14 +153,14 @@
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION BEGIN
-	if(upgrade_reagents2 != null && !upgrade2_reagents.len)
-		upgrade_reagents2 = default_upgrade_reagents2
-	if(upgrade_reagents2)
-		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
-	if(upgrade_reagents3 != null && !upgrade_reagents3.len)
-		upgrade_reagents3 = default_upgrade_reagents3
-	if(upgrade_reagents3)
-		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade2_reagents != null && !upgrade2_reagents.len)
+		upgrade2_reagents = default_upgrade2_reagents
+	if(upgrade2_reagents)
+		upgrade2_reagents = sort_list(upgrade2_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade3_reagents != null && !upgrade3_reagents.len)
+		upgrade3_reagents = default_upgrade3_reagents
+	if(upgrade3_reagents)
+		upgrade3_reagents = sort_list(upgrade3_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION END
 
 	if(emagged_reagents != null && !emagged_reagents.len)
@@ -625,12 +625,12 @@
 		/datum/reagent/consumable/pumpkinjuice,
 		/datum/reagent/consumable/vanilla
 	)
-	var/static/list/drink_upgrade_reagents2 = list(
+	var/static/list/drink_upgrade2_reagents = list(
 		/datum/reagent/consumable/banana,
 		/datum/reagent/consumable/berryjuice,
 		/datum/reagent/consumable/blumpkinjuice
 	)
-	var/static/list/drink_upgrade_reagents3 = list(
+	var/static/list/drink_upgrade3_reagents = list(
 		/datum/reagent/consumable/watermelonjuice,
 		/datum/reagent/consumable/peachjuice,
 		/datum/reagent/consumable/sol_dry
@@ -655,15 +655,15 @@
 	if(upgrade_reagents != null && !upgrade_reagents.len)
 		upgrade_reagents = drink_upgrade_reagents
 	if(upgrade_reagents)
-		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
-	if(upgrade_reagents2 != null && !upgrade2_reagents.len)
-		upgrade_reagents2 = drink_upgrade_reagents2
-	if(upgrade_reagents2)
-		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
-	if(upgrade_reagents3 != null && !upgrade_reagents3.len)
-		upgrade_reagents3 = drink_upgrade_reagents3
-	if(upgrade_reagents3)
-		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
+		upgrade_reagents = sort_list(upgrade2_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade2_reagents != null && !upgrade2_reagents.len)
+		upgrade2_reagents = drink_upgrade2_reagents
+	if(upgrade2_reagents)
+		upgrade2_reagents = sort_list(upgrade2_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade3_reagents != null && !upgrade3_reagents.len)
+		upgrade3_reagents = drink_upgrade3_reagents
+	if(upgrade3_reagents)
+		upgrade3_reagents = sort_list(upgrade3_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION END
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
