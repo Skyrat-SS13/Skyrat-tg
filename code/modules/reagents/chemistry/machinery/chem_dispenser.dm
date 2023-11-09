@@ -426,17 +426,18 @@
 		if("cancel_recording")
 			if(is_operational)
 				recording_recipe = null
-				//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
-				if("custom_amount")
-					if(!beaker)
-						to_chat(usr, span_warning("Insert a container first!"))
-						return
-					if(customTransferAmount)
-						transferAmounts -= customTransferAmount
-					customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
-					transferAmounts += customTransferAmount
-				//SKYRAT EDIT ADDITION END
 				return TRUE
+		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
+		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, span_warning("Insert a container first!"))
+				return
+			if(customTransferAmount)
+				transferAmounts -= customTransferAmount
+			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transferAmounts += customTransferAmount
+			return TRUE
+		//SKYRAT EDIT ADDITION END
 
 		if("reaction_lookup")
 			if(beaker)
