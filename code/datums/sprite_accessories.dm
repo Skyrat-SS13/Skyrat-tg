@@ -829,6 +829,10 @@
 	name = "Ziegler"
 	icon_state = "hair_ziegler"
 
+/datum/sprite_accessory/hair/royalcurls
+    name = "Royal Curls"
+	icon_state = "hair_royalcurls"
+
 /*
 /////////////////////////////////////
 /  =---------------------------=    /
