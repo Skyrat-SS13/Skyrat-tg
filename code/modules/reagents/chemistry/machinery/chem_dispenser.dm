@@ -75,15 +75,11 @@
 		/datum/reagent/water,
 		/datum/reagent/fuel,
 	)
-<<<<<<< HEAD
-	//these become available once the manipulator has been upgraded to tier 4 (femto)
+
 	//SKYRAT EDIT REMOVAL BEGIN - Skyrat-SS13/Skyrat-tg#1931
 	/*
-	var/list/upgrade_reagents = list(
-=======
 	/// The default list of reagents upgrade_reagents
 	var/static/list/default_upgrade_reagents = list(
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 		/datum/reagent/acetone,
 		/datum/reagent/ammonia,
 		/datum/reagent/ash,
@@ -99,28 +95,27 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT REMOVAL END
-	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
-	var/list/upgrade_reagents = list(
+	//SKYRAT EDIT ADDITION BEGIN
+	var/static/list/default_upgrade_reagents = list(
 		/datum/reagent/fuel/oil,
 		/datum/reagent/ammonia,
 		/datum/reagent/ash
 	)
 
-	var/list/upgrade_reagents2 = list(
+	var/static/list/default_upgrade_reagents2 = list(
 		/datum/reagent/acetone,
 		/datum/reagent/phenol,
 		/datum/reagent/diethylamine
 	)
 
-	var/list/upgrade_reagents3 = list(
+	var/static/list/default_upgrade_reagents3 = list(
 		/datum/reagent/medicine/mine_salve,
 		/datum/reagent/toxin
 	)
 
-	var/list/emagged_reagents = list(
+	var/static/list/default_emagged_reagents = list(
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin/plasma,
 		/datum/reagent/consumable/frostoil,
@@ -153,21 +148,22 @@
 		upgrade_reagents = default_upgrade_reagents
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
+	//SKYRAT EDIT ADDITION BEGIN
+	if(upgrade_reagents2 != null && !upgrade2_reagents.len)
+		upgrade_reagents2 = default_upgrade_reagents2
 	if(upgrade_reagents2)
 		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents3 != null && !upgrade_reagents3.len)
+		upgrade_reagents3 = default_upgrade_reagents3
 	if(upgrade_reagents3)
 		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION END
-=======
 
 	if(emagged_reagents != null && !emagged_reagents.len)
 		emagged_reagents = default_emagged_reagents
 	if(emagged_reagents)
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 	if(is_operational)
 		begin_processing()
 	update_appearance()
@@ -424,27 +420,20 @@
 				return TRUE
 
 		if("cancel_recording")
-<<<<<<< HEAD
-			if(!is_operational)
-				return
-			recording_recipe = null
-			. = TRUE
-		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
-		if("custom_amount")
-			if(!beaker)
-				to_chat(usr, span_warning("Insert a container first!"))
-				return
-			if(customTransferAmount)
-				transferAmounts -= customTransferAmount
-			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
-			transferAmounts += customTransferAmount
-		//SKYRAT EDIT ADDITION END
-=======
 			if(is_operational)
 				recording_recipe = null
+				//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
+				if("custom_amount")
+					if(!beaker)
+						to_chat(usr, span_warning("Insert a container first!"))
+						return
+					if(customTransferAmount)
+						transferAmounts -= customTransferAmount
+					customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+					transferAmounts += customTransferAmount
+				//SKYRAT EDIT ADDITION END
 				return TRUE
 
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(ui.user)
@@ -626,30 +615,26 @@
 		/datum/reagent/consumable/tonic,
 		/datum/reagent/water,
 	)
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#2429
-	upgrade_reagents = list(
+	//SKYRAT EDIT ADDITION BEGIN
+	var/static/list/drink_upgrade_reagents = list(
 		/datum/reagent/consumable/applejuice,
 		/datum/reagent/consumable/pumpkinjuice,
 		/datum/reagent/consumable/vanilla
 	)
-	upgrade_reagents2 = list(
+	var/static/list/drink_upgrade_reagents2 = list(
 		/datum/reagent/consumable/banana,
 		/datum/reagent/consumable/berryjuice,
 		/datum/reagent/consumable/blumpkinjuice
 	)
-	upgrade_reagents3 = list(
+	var/static/list/drink_upgrade_reagents3 = list(
 		/datum/reagent/consumable/watermelonjuice,
 		/datum/reagent/consumable/peachjuice,
 		/datum/reagent/consumable/sol_dry
 	)
 	//SKYRAT EDIT ADDITION END
-	emagged_reagents = list(
-=======
 	upgrade_reagents = null
 	/// The default list of emagged reagents dispensable by the soda dispenser
 	var/static/list/drink_emagged_reagents = list(
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
 		/datum/reagent/toxin/mindbreaker,
@@ -662,6 +647,20 @@
 		dispensable_reagents = drinks_dispensable_reagents
 	if(emagged_reagents != null && !emagged_reagents.len)
 		emagged_reagents = drink_emagged_reagents
+	//SKYRAT EDIT ADDITION BEGIN
+	if(upgrade_reagents != null && !upgrade_reagents.len)
+		upgrade_reagents = drink_upgrade_reagents2
+	if(upgrade_reagents)
+		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents2 != null && !upgrade2_reagents.len)
+		upgrade_reagents2 = drink_upgrade_reagents2
+	if(upgrade_reagents2)
+		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents3 != null && !upgrade_reagents3.len)
+		upgrade_reagents3 = drink_upgrade_reagents3
+	if(upgrade_reagents3)
+		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
+	//SKYRAT EDIT ADDITION END
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
@@ -736,14 +735,10 @@
 		/datum/reagent/consumable/ethanol/yuyake,
 	)
 	upgrade_reagents = null
-<<<<<<< HEAD
 	upgrade_reagents2 = null //SKYRAT EDIT
 	upgrade_reagents3 = null //SKYRAT EDIT
-	emagged_reagents = list(
-=======
 	/// The default list of emagged reagents dispensable by the beer dispenser
 	var/static/list/beer_emagged_reagents = list(
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
 		/datum/reagent/consumable/mintextract,
