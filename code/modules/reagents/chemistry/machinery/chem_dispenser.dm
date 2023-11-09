@@ -156,7 +156,7 @@
 	if(upgrade2_reagents != null && !upgrade2_reagents.len)
 		upgrade2_reagents = default_upgrade2_reagents
 	if(upgrade2_reagents)
-		upgrade2_reagents = sort_list(upgrade2_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+		upgrade2_reagents = sort_list(upgrade2_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade3_reagents != null && !upgrade3_reagents.len)
 		upgrade3_reagents = default_upgrade3_reagents
 	if(upgrade3_reagents)
@@ -528,14 +528,14 @@
 			dispensable_reagents -= upgrade_reagents
 
 		if (servo.tier > 2)
-			dispensable_reagents |= upgrade_reagents2
+			dispensable_reagents |= upgrade2_reagents
 		else
-			dispensable_reagents -= upgrade_reagents2
+			dispensable_reagents -= upgrade2_reagents
 
 		if (servo.tier > 3)
-			dispensable_reagents |= upgrade_reagents3
+			dispensable_reagents |= upgrade3_reagents
 		else
-			dispensable_reagents -= upgrade_reagents3
+			dispensable_reagents -= upgrade3_reagents
 		//SKYRAT EDIT END
 		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
@@ -739,8 +739,8 @@
 		/datum/reagent/consumable/ethanol/yuyake,
 	)
 	upgrade_reagents = null
-	upgrade_reagents2 = null //SKYRAT EDIT
-	upgrade_reagents3 = null //SKYRAT EDIT
+	upgrade2_reagents = null //SKYRAT EDIT
+	upgrade3_reagents = null //SKYRAT EDIT
 	/// The default list of emagged reagents dispensable by the beer dispenser
 	var/static/list/beer_emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
