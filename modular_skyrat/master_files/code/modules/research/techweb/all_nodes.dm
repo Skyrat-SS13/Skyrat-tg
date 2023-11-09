@@ -27,28 +27,27 @@
 
 //Base Nodes
 /datum/techweb_node/base/New()
-	. = ..()
 	design_ids += list(
 		"polarizer",
 		"vox_gas_filter",
 	)
+	return ..()
 
 /datum/techweb_node/cyborg/New()
-	. = ..()
 	design_ids += list(
 		"affection_module",
 	)
+	return ..()
 
 /datum/techweb_node/basic_tools/New()
-	. = ..()
 	design_ids += list(
 		"bowl",
 		"drinking_glass",
 		"shot_glass",
 	)
+	return ..()
 
 /datum/techweb_node/basic_medical/New()
-	. = ..()
 	design_ids += list(
 		"hospital_gown",
 		"synth_eyes",
@@ -59,11 +58,11 @@
 		"synth_ears",
 		"synth_heart",
 	)
+	return ..()
 
 /////////////////////////Biotech/////////////////////////
 
 /datum/techweb_node/adv_biotech/New()
-	. = ..()
 	design_ids += list(
 		"monkey_helmet",
 		"brute2medicell",
@@ -75,33 +74,33 @@
 		"bodymedicell",
 		"clotmedicell",
 	)
+	return ..()
 
 /datum/techweb_node/biotech/New()
-	. = ..()
 	design_ids += list(
 		"anesthetic_machine",
 		"smartdartgun",
 	)
+	return ..()
 
 /////////////////////////EMP tech/////////////////////////
 
 /datum/techweb_node/emp_basic/New()
-	. = ..()
 	design_ids += list(
 		"gownmedicell",
 		"bedmedicell",
 	)
+	return ..()
 
 ////////////////////////Computer tech////////////////////////
 
 /datum/techweb_node/comptech/New()
-	. = ..()
 	design_ids += list(
 		"time_clock_frame",
 	)
+	return ..()
 
 /datum/techweb_node/integrated_hud/New()
-	. = ..()
 	design_ids += list(
 		"health_hud_prescription",
 		"security_hud_prescription",
@@ -127,20 +126,21 @@
 		"nifsoft_hud_diagnostic",
 		"nifsoft_hud_cargo",
 	)
+	return ..()
 
 ////////////////////////Medical////////////////////////
 
 /datum/techweb_node/genetics/New()
-	. = ..()
 	design_ids += list(
 		"self_actualization_device",
 	)
+	return ..()
 
 /datum/techweb_node/cyber_organs/New()
-	. = ..()
 	design_ids += list(
 		"cybernetic_tongue",
 	)
+	return ..()
 
 // Modularly removes x-ray and thermals from here, it's in adv_vision instead
 /datum/techweb_node/combat_cyber_implants/New()
@@ -155,52 +155,52 @@
 ////////////////////////Tools////////////////////////
 
 /datum/techweb_node/botany/New()
-	. = ..()
 	design_ids += list(
 		"salvemedicell",
 	)
+	return ..()
 
 /datum/techweb_node/sec_basic/New()
 	. = ..()
 	design_ids += list(
 		"nifsoft_remover",
 	)
+	return ..()
 
 /////////////////////////weaponry tech/////////////////////////
 
 /datum/techweb_node/weaponry/New()
-	. = ..()
 	design_ids += list(
 		"ammoworkbench_disk_lethal",
 	)
+	return ..()
 
 /datum/techweb_node/adv_weaponry/New()
-	. = ..()
 	design_ids += list(
 		"ammo_workbench",
 	)
+	return ..()
 
 /datum/techweb_node/electric_weapons/New()
-	. = ..()
 	design_ids += list(
 		"medigun_speed",
 	)
+	return ..()
 
 ////////////////////////Alien technology////////////////////////
 
 /datum/techweb_node/alien_bio/New()
-	. = ..()
 	design_ids += list(
 		"brute3medicell",
 		"burn3medicell",
 		"oxy3medicell",
 		"toxin3medicell",
 	)
+	return ..()
 
 /////////////////////////engineering tech/////////////////////////
 
 /datum/techweb_node/adv_engi/New()
-	. = ..()
 	design_ids += list(
 		"engine_goggles_prescription",
 		"mesons_prescription",
@@ -208,39 +208,39 @@
 		"tray_goggles_prescription",
 		"plumbing_eng",
 	)
+	return ..()
 
 /////////////////////////robotics tech/////////////////////////
 
 /datum/techweb_node/robotics/New()
-	. = ..()
 	design_ids += list(
 		"borg_upgrade_snacks",
 		"mini_soulcatcher",
 	)
+	return ..()
 
 /datum/techweb_node/neural_programming/New()
-	. = ..()
 	design_ids += list(
 		"soulcatcher_device",
 		"rsd_interface",
 	)
+	return ..()
 
 /datum/techweb_node/cyborg_upg_util/New()
-	. = ..()
 	design_ids += list(
 		"borg_upgrade_clamp",
 		"borg_upgrade_brush",
 	)
+	return ..()
 
 /datum/techweb_node/cyborg_upg_engiminer/New()
-	. = ..()
 	design_ids += list(
 		"advanced_materials",
 		"inducer_module",
 	)
+	return ..()
 
 /datum/techweb_node/cyborg_upg_med/New()
-	. = ..()
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
 	)
@@ -248,9 +248,10 @@
 	design_ids -= list(
 		"borg_upgrade_pinpointer",
 	)
+	return ..()
 
 /datum/techweb_node/basic_mining/New()
-	. = ..()
 	design_ids += list(
 		"borg_upgrade_welding",
 	)
+	return ..()
