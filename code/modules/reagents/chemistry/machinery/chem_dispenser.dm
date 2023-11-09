@@ -52,6 +52,12 @@
 	var/list/recording_recipe
 	/// Saves all the recipes recorded by the machine
 	var/list/saved_recipes = list()
+	// SKYRAT EDIT ADDITION BEGIN
+	/// Used for custom transfer amounts
+	var/list/transferAmounts = list()
+	/// The custom transfer amount
+	var/customTransferAmount
+	// SKYRAT EDIT ADDITION END
 
 	/// The default list of dispensable_reagents
 	var/static/list/default_dispensable_reagents = list(
@@ -82,7 +88,7 @@
 		/datum/reagent/fuel,
 	)
 
-	//SKYRAT EDIT REMOVAL BEGIN - Skyrat-SS13/Skyrat-tg#1931
+	//SKYRAT EDIT CHANGE BEGIN - ORIGINAL
 	/*
 	/// The default list of reagents upgrade_reagents
 	var/static/list/default_upgrade_reagents = list(
@@ -102,8 +108,6 @@
 		/datum/reagent/toxin
 	)
 	*/
-	//SKYRAT EDIT REMOVAL END
-	//SKYRAT EDIT ADDITION BEGIN
 	var/static/list/default_upgrade_reagents = list(
 		/datum/reagent/fuel/oil,
 		/datum/reagent/ammonia,
@@ -129,17 +133,7 @@
 		/datum/reagent/toxin/histamine,
 		/datum/reagent/medicine/morphine
 	)
-	//SKYRAT EDIT ADDITION END
-	/// Starting purity of the created reagents
-	var/base_reagent_purity = 1
-
-	var/list/recording_recipe
-
-	var/list/saved_recipes = list()
-	//SKYRAT EDIT BEGIN - CHEMISTRY QOL
-	var/list/transferAmounts = list()
-	var/customTransferAmount
-	//SKYRAT EDIT END
+	//SKYRAT EDIT CHANGE END
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
