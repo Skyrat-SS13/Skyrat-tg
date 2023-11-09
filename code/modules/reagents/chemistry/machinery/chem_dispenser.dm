@@ -649,7 +649,7 @@
 		emagged_reagents = drink_emagged_reagents
 	//SKYRAT EDIT ADDITION BEGIN
 	if(upgrade_reagents != null && !upgrade_reagents.len)
-		upgrade_reagents = drink_upgrade_reagents2
+		upgrade_reagents = drink_upgrade_reagents
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents2 != null && !upgrade2_reagents.len)
