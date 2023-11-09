@@ -156,15 +156,15 @@
 //Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
 
 
-/obj/item/choice_beacon/ntc //I promise you, this will solve everything
-	name = "gunset beacon" //Haven't you done this before?
+/obj/item/choice_beacon/ntc
+	name = "gunset beacon"
 	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
 	company_source = "Trappiste Fabriek Company"
 	company_message = span_bold("Supply Pod incoming please standby")
 
 /obj/item/choice_beacon/ntc/generate_display_names()
-	var/static/list/selectable_gun_types //What's wrong with it? if I did.
-	if(!selectable_gun_types) //Well I think it was a tad overpowered?
-		selectable_gun_types = list("Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, "Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild) //But shouldn't the HoS be armed with the best gear at all time
+	var/static/list/selectable_gun_types
+	if(!selectable_gun_types)
+		selectable_gun_types = list("Takbok" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/takbok, "Skild" = /obj/item/storage/toolbox/guncase/skyrat/pistol/trappiste_small_case/skild)
 
-	return selectable_gun_types //You're a mad man
+	return selectable_gun_types
