@@ -268,7 +268,7 @@
 		BB_DOG_HARASS_HARM = TRUE,
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_DOG_IS_SLOW = TRUE,
-		BB_PET_TARGETING_STRATEGY = new /datum/targetting_strategy/basic(),
+		BB_PET_TARGETING_STRATEGY = new /datum/targeting_strategy/basic(),
 	)
 
 	planning_subtrees = list(

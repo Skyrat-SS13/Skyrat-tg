@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_STRATEGY = new /datum/targetting_strategy/basic,
+		BB_TARGETING_STRATEGY = new /datum/targeting_strategy/basic,
 		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 
