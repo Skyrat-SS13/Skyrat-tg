@@ -58,20 +58,6 @@ GLOBAL_LIST_INIT(clay_recipes, list ( \
 	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, one_per_turf = FALSE, on_solid_ground = TRUE, category = CAT_MISC) \
 	))
 
-/obj/item/stack/sheet/mineral/clay
-	name = "clay brick"
-	desc = "A heavy clay brick."
-	singular_name = "clay brick"
-	icon_state = "sheet-clay"
-	inhand_icon_state = null
-	throw_speed = 3
-	throw_range = 5
-	merge_type = /obj/item/stack/sheet/mineral/clay
-
-/obj/item/stack/sheet/mineral/clay/get_main_recipes()
-	. = ..()
-	. += GLOB.clay_recipes
-
 /*
  * Sandbags
  */
