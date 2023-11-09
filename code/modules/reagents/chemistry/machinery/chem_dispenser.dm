@@ -135,8 +135,6 @@
 	var/customTransferAmount
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 4f23fa137fd (Reagent machinery code maintainence (#79395))
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
 	if(dispensable_reagents != null && !dispensable_reagents.len)
