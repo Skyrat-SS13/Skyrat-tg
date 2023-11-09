@@ -655,7 +655,7 @@
 	if(upgrade_reagents != null && !upgrade_reagents.len)
 		upgrade_reagents = drink_upgrade_reagents
 	if(upgrade_reagents)
-		upgrade_reagents = sort_list(upgrade2_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade2_reagents != null && !upgrade2_reagents.len)
 		upgrade2_reagents = drink_upgrade2_reagents
 	if(upgrade2_reagents)
