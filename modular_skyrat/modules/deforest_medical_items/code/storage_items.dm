@@ -242,7 +242,7 @@
 	generate_items_inside(items_inside,src)
 
 /datum/storage/duffel/deforest_big_surgery
-	max_total_storage = 42 // 14 * 3 for normal items
+	max_total_storage = 14 * WEIGHT_CLASS_NORMAL
 	max_slots = 14
 
 /datum/storage/duffel/deforest_big_surgery/New()
