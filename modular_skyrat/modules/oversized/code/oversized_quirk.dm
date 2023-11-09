@@ -39,7 +39,7 @@
 		return
 	old_stomach.Remove(human_holder, special = TRUE)
 	qdel(old_stomach)
-	if(is_species(human_holder, /datum/species/synthetic))
+	if(issynthetic(human_holder))
 		var/obj/item/organ/internal/stomach/synth/oversized/new_synth_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE reactor! RIP AND TEAR YOUR HUGE reactor!
 		new_synth_stomach.Insert(human_holder, special = TRUE)
 		to_chat(human_holder, span_warning("You feel your massive engine rumble!"))
