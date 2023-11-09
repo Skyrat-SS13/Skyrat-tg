@@ -155,7 +155,7 @@
 
 /datum/storage/duffel/deforest_medkit
 	max_specific_storage = WEIGHT_CLASS_SMALL
-	max_total_storage = 42 // 21 * 2 for small items
+	max_total_storage = 21 * WEIGHT_CLASS_SMALL
 	max_slots = 21
 
 /datum/storage/duffel/deforest_medkit/New()
