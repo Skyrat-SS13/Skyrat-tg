@@ -40,9 +40,9 @@
 	var/list/upgrade_reagents = list()
 	// SKYRAT EDIT ADDITION BEGIN
 	/// These become available once the manipulator has been upgraded to tier 3 (pico)
-	var/list/upgrade_reagents2 = list()
+	var/list/upgrade2_reagents = list()
 	/// These become available once the manipulator has been upgraded to tier 4 (femto)
-	var/list/upgrade_reagents3 = list()
+	var/list/upgrade3_reagents = list()
 	// SKYRAT EDIT ADDITION END
 	/// These become available once the machine has been emaged
 	var/list/emagged_reagents = list()
