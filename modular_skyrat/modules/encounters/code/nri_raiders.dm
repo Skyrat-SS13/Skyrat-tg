@@ -173,6 +173,9 @@ GLOBAL_VAR(first_officer)
 	sechud_icon_state = "hud_nri_police"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
+/obj/item/gun/energy/e_gun/advtaser/normal
+	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/effect/mob_spawn/ghost_role/human/nri_raider
 	name = "NRI Raider sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
