@@ -14,17 +14,11 @@
 	harmful = TRUE
 	mech_flags = EXOSUIT_MODULE_RIPLEY
 	///Bool for whether we beat the hell out of things we punch (and tear off their arms)
-	//var/killer_clamp = FALSE -------SKYRAT EDIT - A clamp is a clamp, just like it was on the oldbase.
 	var/killer_clamp = TRUE
 	///How much base damage this clamp does
-<<<<<<< HEAD
-	var/clamp_damage = 30	//SKYRAT EDIT - We've removed instant arm delimbs, so this is a buff to make up for it.
-//	var/clamp_damage = 20 SKYRAT EDIT - Original line
+	var/clamp_damage = 20
 	///Var for the chassis we are attached to, needed to access ripley contents and such
 	var/obj/vehicle/sealed/mecha/ripley/cargo_holder
-=======
-	var/clamp_damage = 20
->>>>>>> 91af16bcbfd (Adds Paddy, the Security Mech (#79376))
 	///Audio for using the hydraulic clamp
 	var/clampsound = 'sound/mecha/hydraulic.ogg'
 	///Chassis but typed for the cargo_hold var
