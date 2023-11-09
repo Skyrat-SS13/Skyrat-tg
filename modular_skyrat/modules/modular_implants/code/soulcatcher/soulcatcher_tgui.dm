@@ -126,7 +126,7 @@
 			return TRUE
 
 		if("modify_name")
-			var/new_name = tgui_input_text(usr,"Choose a new name to send messages as", name, target_room.room_description, multiline = TRUE)
+			var/new_name = tgui_input_text(usr,"Choose a new name to send messages as", name, target_room.outside_voice, multiline = TRUE)
 			if(!new_name)
 				return FALSE
 
