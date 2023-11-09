@@ -140,15 +140,12 @@
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
 	if(to_be_juiced.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to grind [to_be_juiced], but it fades away!"))
+		to_chat(user, span_notice("You try to juice [to_be_juiced], but it fades away!"))
 		qdel(to_be_juiced)
 		return
 
 	if(!to_be_juiced.juice(src.reagents, user))
-		if(isstack(to_be_juiced))
-			to_chat(usr, span_notice("[src] attempts to grind as many pieces of [to_be_juiced] as possible."))
-		else
-			to_chat(user, span_danger("You fail to grind [to_be_juiced]."))
+		to_chat(user, span_danger("You fail to juice [to_be_juiced]."))
 
 	to_chat(user, span_notice("You juice [to_be_juiced] into a liquid."))
 	QDEL_NULL(to_be_juiced)
