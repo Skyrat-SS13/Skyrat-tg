@@ -160,7 +160,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/price
 	var/pack_cost
 	var/list/goodies_by_buyer = list() // if someone orders more than GOODY_FREE_SHIPPING_MAX goodies, we upcharge to a normal crate so they can't carry around 20 combat shotties
-	var/list/rejected_orders = list() //list of all orders that exceeded the available budget and are uncancelable
 	var/list/clean_up_orders = list() // orders to remove since we are done with them
 	var/list/forced_briefcases = list() // SKYRAT EDIT ADDITION
 
