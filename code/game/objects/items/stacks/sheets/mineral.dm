@@ -50,15 +50,6 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	amount = 30
 
 /*
- * Clay Bricks
- */
-
-GLOBAL_LIST_INIT(clay_recipes, list ( \
-	new/datum/stack_recipe("clay stove", /obj/machinery/primitive_stove, 10, time = 5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_MISC), \
-	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, one_per_turf = FALSE, on_solid_ground = TRUE, category = CAT_MISC) \
-	))
-
-/*
  * Sandbags
  */
 
