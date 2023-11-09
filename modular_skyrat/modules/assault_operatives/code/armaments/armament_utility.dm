@@ -3,7 +3,7 @@
 	category_item_limit = 8
 
 /datum/armament_entry/assault_operatives/utility/suppressor
-	item_type = /obj/item/suppressor
+	item_type = /obj/item/suppressor/standard
 	cost = 1
 
 /datum/armament_entry/assault_operatives/utility/thermals
