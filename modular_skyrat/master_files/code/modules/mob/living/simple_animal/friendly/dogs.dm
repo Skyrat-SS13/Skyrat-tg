@@ -127,7 +127,7 @@
 
 	borgi.set_movement_target(target)
 	borgi.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
-	borgi.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETTING_DATUM)
+	borgi.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETING_STRATEGY)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
 	SIGNAL_HANDLER
@@ -268,7 +268,7 @@
 		BB_DOG_HARASS_HARM = TRUE,
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_DOG_IS_SLOW = TRUE,
-		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_PET_TARGETING_STRATEGY = new /datum/targetting_datum/basic(),
 	)
 
 	planning_subtrees = list(
@@ -298,7 +298,7 @@
 		if(!SPT_PROB(chance, seconds_per_tick))
 			return
 
-		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETING_STRATEGY, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 		return
 
 	// Attack.
