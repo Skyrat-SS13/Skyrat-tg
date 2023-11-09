@@ -163,8 +163,13 @@
 		increase_yield(user)
 		return
 
-	else if(istype(attacking_item, /obj/item/worm_fertilizer))
-		qdel(attacking_item)
+	else if(istype(attacking_item, /obj/item/stack/worm_fertilizer))
+
+		var/obj/item/stack/attacking_stack = attacking_item
+
+		if(!attacking_stack.use(1))
+			balloon_alert(user, "unable to use [attacking_item]")
+			return
 
 		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
 			balloon_alert(user, "plant is already fully upgraded")
@@ -172,6 +177,15 @@
 		else
 			balloon_alert(user, "plant was upgraded")
 
+		return
+
+	else if(istype(attacking_item, /obj/item/storage/bag/plants))
+		if(!COOLDOWN_FINISHED(src, harvest_timer))
+			return
+
+		COOLDOWN_START(src, harvest_timer, harvest_cooldown)
+		create_harvest(attacking_item, user)
+		update_appearance()
 		return
 
 	return ..()
@@ -227,7 +241,7 @@
 /**
  * will create a harvest of the seeds product, with a chance to create a mutated version
  */
-/obj/structure/simple_farm/proc/create_harvest()
+/obj/structure/simple_farm/proc/create_harvest(var/obj/item/storage/bag/plants/plant_bag, var/mob/user)
 	if(!planted_seed)
 		return
 
@@ -241,7 +255,10 @@
 			if(!creating_obj)
 				creating_obj = choose_seed
 
-			new creating_obj(get_turf(src))
+			var/created_special = new creating_obj(get_turf(src))
+
+			plant_bag?.atom_storage?.attempt_insert(created_special, user, TRUE)
+
 			balloon_alert_to_viewers("something special drops!")
 			continue
 
@@ -250,7 +267,9 @@
 		if(!creating_obj)
 			creating_obj = planted_seed.type
 
-		new creating_obj(get_turf(src))
+		var/created_harvest = new creating_obj(get_turf(src))
+
+		plant_bag?.atom_storage?.attempt_insert(created_harvest, user, TRUE)
 
 /turf/open/misc/asteroid/basalt/Initialize(mapload)
 	. = ..()

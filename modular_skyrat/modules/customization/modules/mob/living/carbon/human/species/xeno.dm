@@ -6,12 +6,11 @@
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutanttongue = /obj/item/organ/internal/tongue/xeno
+	mutanttongue = /obj/item/organ/internal/tongue/xeno_hybrid
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Xenomorph Tail",

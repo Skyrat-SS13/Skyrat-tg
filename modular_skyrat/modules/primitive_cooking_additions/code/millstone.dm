@@ -35,7 +35,7 @@
 	else
 		. += span_notice("It can hold [maximum_contained_items] items, and there is nothing in it presently.")
 
-	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click/b>.")
+	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click</b>.")
 	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
 
 /obj/structure/millstone/Destroy()
