@@ -1157,12 +1157,7 @@
 
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
-<<<<<<< HEAD
-	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST) //SKYRAT EDIT CHANGE: if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
-=======
-	//If we're in an aggressive grab or higher, we're lying down, we're vulnerable to grabs, or we've been shoved and we have some amount of stamina loss, we must resist
-	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || has_movespeed_modifier(/datum/movespeed_modifier/shove) && getStaminaLoss() >= 30)
->>>>>>> 1a9043d7973 (The Brawlening: Unarmed fighting interactions for shoving, grabbing and nonlethal takedowns (not martial arts) (#79362))
+		if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || has_movespeed_modifier(/datum/movespeed_modifier/shove) && getStaminaLoss() > STAMINA_THRESHOLD_HARD_RESIST) //SKYRAT EDIT CHANGE - ORIGINAL : if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || has_movespeed_modifier(/datum/movespeed_modifier/shove) && getStaminaLoss() >= 30)
 		var/altered_grab_state = pulledby.grab_state
 		if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If prone, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++

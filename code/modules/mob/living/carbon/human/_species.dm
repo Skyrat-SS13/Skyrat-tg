@@ -1199,11 +1199,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if((target.body_position == LYING_DOWN) || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || off_balance) //kicks and attacks against off-balance targets never miss (provided your species deals more than 0 damage)
 				miss_chance = 0
 			else
-<<<<<<< HEAD
-				miss_chance = min((attacking_bodypart.unarmed_damage_high/attacking_bodypart.unarmed_damage_low) + (user.getStaminaLoss() * 0.2) + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob() //SKYRAT EDIT CHANGE - ORIGINAL: miss_chance = min((attacking_bodypart.unarmed_damage_high/attacking_bodypart.unarmed_damage_low) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100)
-=======
 				miss_chance = clamp(UNARMED_MISS_CHANCE_BASE - limb_accuracy + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 0, UNARMED_MISS_CHANCE_MAX) //Limb miss chance + various damage. capped at 75 so there is at least a chance to land a hit.
->>>>>>> 1a9043d7973 (The Brawlening: Unarmed fighting interactions for shoving, grabbing and nonlethal takedowns (not martial arts) (#79362))
 
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
@@ -1229,28 +1225,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		var/attack_direction = get_dir(user, target)
 		var/attack_type = attacking_bodypart.attack_type
-<<<<<<< HEAD
-		var/unarmed_sharpness = attacking_bodypart.unarmed_sharpness //SKYRAT EDIT - If unarmed damage sharpness needs to be taken into account.
-		if(atk_effect == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
-			if(damage >= 9)
-				target.force_say()
-			log_combat(user, target, "kicked")
-			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
-			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
-		else//other attacks deal full raw damage + 1.5x in stamina damage
-			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT - Applies sharpness if it does - ORIGINAL: target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
-=======
+		var/unarmed_sharpness = attacking_bodypart.unarmed_sharpness //SKYRAT EDIT ADDITION - If unarmed damage sharpness needs to be taken into account.
 		if(atk_effect == ATTACK_EFFECT_KICK || grappled) //kicks and punches when grappling bypass armor slightly.
 			if(damage >= 9)
 				target.force_say()
 			log_combat(user, target, grappled ? "grapple punched" : "kicked")
-			target.apply_damage(damage, attack_type, affecting, armor_block - limb_accuracy, attack_direction = attack_direction)
+			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, attack_type, affecting, armor_block - limb_accuracy, attack_direction = attack_direction) // SKYRAT EDIT CHANGE - ORIGINAL : target.apply_damage(damage, attack_type, affecting, armor_block - limb_accuracy, attack_direction = attack_direction)
 			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block - limb_accuracy)
 		else // Normal attacks do not gain the benefit of armor penetration.
-			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
->>>>>>> 1a9043d7973 (The Brawlening: Unarmed fighting interactions for shoving, grabbing and nonlethal takedowns (not martial arts) (#79362))
+			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT - Applies sharpness if it does - ORIGINAL: target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
+			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			if(damage >= 9)
 				target.force_say()
 			log_combat(user, target, "punched")
@@ -1260,12 +1244,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			target.visible_message(span_danger("[user] knocks [target] down!"), \
 							span_userdanger("You're knocked down by [user]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("You knock [target] down!"))
-<<<<<<< HEAD
 			/* SKYRAT EDIT REMOVAL - Less combat lethality and hard stungs
-			var/knockdown_duration = 40 + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
-=======
 			var/knockdown_duration = 4 SECONDS + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 4 second base stun + 4 second stun modifier = 8 second knockdown duration
->>>>>>> 1a9043d7973 (The Brawlening: Unarmed fighting interactions for shoving, grabbing and nonlethal takedowns (not martial arts) (#79362))
 			target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block)
 			*/ // SKYRAT REMOVAL END
 			target.StaminaKnockdown(20) //SKYRAT EDIT ADDITION
