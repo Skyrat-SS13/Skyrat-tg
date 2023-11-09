@@ -157,9 +157,6 @@
 		qdel(to_be_ground)
 		return
 
-	if(!item.grind(reagents, user))
-		if(isstack(item))
-
 	if(!to_be_ground.grind(src.reagents, user))
 		if(isstack(to_be_ground))
 			to_chat(usr, span_notice("[src] attempts to grind as many pieces of [to_be_ground] as possible."))
