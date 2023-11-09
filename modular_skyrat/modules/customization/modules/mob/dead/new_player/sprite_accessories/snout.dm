@@ -176,7 +176,6 @@
 /datum/sprite_accessory/snouts/mammal/tajaran/normal
 	name = "Tajaran, normal"
 	icon_state = "ntajaran"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"

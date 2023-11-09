@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 
 /datum/scripture/slab/New()
 	. = ..()
-	pointed_spell = new
+	pointed_spell = new(src)
 	pointed_spell.name = src.name
 	pointed_spell.deactive_msg = ""
 	pointed_spell.parent_scripture = src
