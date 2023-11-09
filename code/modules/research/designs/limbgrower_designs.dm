@@ -8,7 +8,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
 	build_path = /obj/item/bodypart/arm/left
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL)
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, SPECIES_SNAIL)
 
 /datum/design/rightarm
 	name = "Right Arm"
@@ -16,7 +16,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
 	build_path = /obj/item/bodypart/arm/right
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL)
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, SPECIES_SNAIL)
 
 /datum/design/leftleg
 	name = "Left Leg"
@@ -24,7 +24,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
 	build_path = /obj/item/bodypart/leg/left
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE)
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE, SPECIES_SNAIL) //SKYRAT EDIT - Adds Snail Limbs
 
 /datum/design/rightleg
 	name = "Right Leg"
@@ -32,7 +32,7 @@
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 25)
 	build_path = /obj/item/bodypart/leg/right
-	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE)
+	category = list(RND_CATEGORY_INITIAL, SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_DIGITIGRADE, SPECIES_SNAIL) //SKYRAT EDIT - Adds Snail Limbs
 
 //Non-limb limb designs
 
@@ -99,6 +99,14 @@
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10)
 	build_path = /obj/item/organ/internal/tongue
 	category = list(SPECIES_HUMAN, RND_CATEGORY_INITIAL)
+
+//SKYRAT EDIT BEGIN - Adds Snail Tongue
+/datum/design/tongue/snail
+	name = "Snail Tongue"
+	id = "snailtongue"
+	build_path = /obj/item/organ/internal/tongue/snail
+	category = list(SPECIES_SNAIL, RND_CATEGORY_INITIAL)
+//SKYRAT EDIT END
 
 // Grows a fake lizard tail - not usable in lizard wine and other similar recipes.
 /datum/design/lizard_tail
