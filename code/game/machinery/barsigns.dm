@@ -394,8 +394,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	desc = "Mothroaches politely greet you into the bar, or are they greeting eachother?"
 	neon_color = "#649e8a"
 
-<<<<<<< HEAD
-=======
 /datum/barsign/rock_bottom
 	name = "Rock Bottom"
 	icon_state = "rock-bottom"
@@ -408,7 +406,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	desc = "For those who wish to be optimally tactful to the non-alcoholic population."
 	neon_color = COLOR_ORANGE
 
->>>>>>> 660ed96f406 (Rock Bottom bar sign (#79600))
 // Hidden signs list below this point
 
 /datum/barsign/hiddensigns
