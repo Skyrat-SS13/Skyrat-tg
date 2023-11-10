@@ -2,7 +2,8 @@
 #define HEMOPHAGE_DRAIN_AMOUNT 50
 /// The multiplier for blood received by Hemophages out of humans with ckeys.
 #define BLOOD_DRAIN_MULTIPLIER_CKEY 1.5
-
+/// The amount of blood you get in your stomach from pulling off a drain.
+#define BLOOD_STOMACH_AMOUNT 10
 
 /datum/component/organ_corruption/tongue
 	corruptable_organ_type = /obj/item/organ/internal/tongue
@@ -124,6 +125,9 @@
 	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
 	to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
+
+	var/stomach_reference = hemophage.get_organ_slot(ORGAN_SLOT_STOMACH)
+	victim.transfer_blood_to(stomach_reference, BLOOD_STOMACH_AMOUNT)
 
 	playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
 

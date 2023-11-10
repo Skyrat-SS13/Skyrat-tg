@@ -1,11 +1,11 @@
 /// How much brute damage their body regenerates per second while using blood regeneration.
-#define BLOOD_REGEN_BRUTE_AMOUNT 0.75
+#define BLOOD_REGEN_BRUTE_AMOUNT 2
 /// How much burn damage their body regenerates per second while using blood regeneration.
-#define BLOOD_REGEN_BURN_AMOUNT 0.75
+#define BLOOD_REGEN_BURN_AMOUNT 2
 /// How much toxin damage their body regenerates per second while using blood regeneration.
-#define BLOOD_REGEN_TOXIN_AMOUNT 0.5
+#define BLOOD_REGEN_TOXIN_AMOUNT 1.75
 /// How much cellular damage their body regenerates per second while using blood regeneration.
-#define BLOOD_REGEN_CELLULAR_AMOUNT 0.25
+#define BLOOD_REGEN_CELLULAR_AMOUNT 1.50
 
 /datum/status_effect/blood_thirst_satiated
 	id = "blood_thirst_satiated"
