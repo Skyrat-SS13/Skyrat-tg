@@ -66,16 +66,16 @@
 		return FALSE
 	visible_message(span_notice("[user] retracts [attached_mask] back into [src]."))
 
-/obj/machinery/anesthetic_machine/attacked_by(obj/item/used_item, mob/living/user)
-	if(!istype(used_item, /obj/item/tank))
+/obj/machinery/anesthetic_machine/attackby(obj/item/attacking_item, mob/user, params)
+	if(!istype(attacking_item, /obj/item/tank))
 		return ..()
 
 	if(attached_tank) // If there is an attached tank, remove it and drop it on the floor
 		attached_tank.forceMove(loc)
 
-	used_item.forceMove(src) // Put new tank in, set it as attached tank
-	visible_message(span_notice("[user] inserts [used_item] into [src]."))
-	attached_tank = used_item
+	attacking_item_item.forceMove(src) // Put new tank in, set it as attached tank
+	visible_message(span_notice("[user] inserts [attacking_item] into [src]."))
+	attached_tank = attacking_item_item
 	update_icon()
 
 /obj/machinery/anesthetic_machine/AltClick(mob/user)
@@ -172,11 +172,16 @@
 
 /obj/item/clothing/mask/breath/anesthetic/Initialize(mapload)
 	. = ..()
-	attached_machine = WEAKREF(loc) // loc should be the machine at this point
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 
-	// Make sure we are not spawning without a machine
-	var/obj/machinery/anesthetic_machine/our_machine = attached_machine.resolve()
+	// Make sure we are not spawning outside of a machine
+	if(istype(loc, /obj/machinery/anesthetic_machine))
+		attached_machine = WEAKREF(loc)
+
+	var/obj/machinery/anesthetic_machine/our_machine
+	if(attached_machine)
+		our_machine = attached_machine.resolve()
+
 	if(!our_machine)
 		attached_machine = null
 		if(mapload)
@@ -190,6 +195,9 @@
 
 /obj/item/clothing/mask/breath/anesthetic/dropped(mob/user)
 	. = ..()
+
+	if(isnull(attached_machine))
+		return
 
 	var/obj/machinery/anesthetic_machine/our_machine = attached_machine.resolve()
 	// no machine, then delete it
