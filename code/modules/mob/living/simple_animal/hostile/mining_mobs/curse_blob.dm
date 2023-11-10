@@ -131,3 +131,5 @@ IGNORE_PROC_IF_NOT_TARGET(attack_slime)
 	if(L != set_target)
 		return
 	return ..()
+
+#undef IGNORE_PROC_IF_NOT_TARGET
