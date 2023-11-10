@@ -1,6 +1,5 @@
 ///SNAIL
 /obj/item/bodypart/head/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
@@ -8,7 +7,6 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/chest/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
@@ -16,50 +14,34 @@
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	unarmed_damage_high = 0.5 //snails are soft and squishy
 	burn_modifier = 2
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/arm/right/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	unarmed_damage_high = 0.5
 	burn_modifier = 2
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	unarmed_damage_high = 0.5
 	burn_modifier = 2
-<<<<<<< HEAD
-	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT - Moved the movespeed to the shell.
-=======
-	speed_modifier = 3 //disgustingly slow
+	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT REMOVAL - Moved the movespeed to the shell.
 	biological_state = (BIO_FLESH|BIO_BLOODED)
->>>>>>> b71bf5dd4b1 (The unbonening (Removes BIO_JOINTED and BIO_BONE from snail and slime bodyparts) (#79622))
 
 /obj/item/bodypart/leg/right/snail
-	biological_state = (BIO_BLOODED|BIO_FLESH) //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
-	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. - ORIGINAL: unarmed_damage_high = 0.5 //snails are soft and squishy
+	unarmed_damage_high = 0.5
 	burn_modifier = 2
-<<<<<<< HEAD
-	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT - Moved the movespeed to the shell.
-=======
-	speed_modifier = 3 //disgustingly slow
+	// speed_modifier = 3 //disgustingly slow // SKYRAT EDIT REMOVAL - Moved the movespeed to the shell.
 	biological_state = (BIO_FLESH|BIO_BLOODED)
->>>>>>> b71bf5dd4b1 (The unbonening (Removes BIO_JOINTED and BIO_BONE from snail and slime bodyparts) (#79622))
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
