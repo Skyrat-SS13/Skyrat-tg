@@ -210,6 +210,11 @@
 /datum/loadout_manager/proc/set_item_name(datum/loadout_item/item)
 	var/current_name = ""
 	var/current_desc = ""
+
+	if(!(item.item_path in owner.prefs.loadout_list))
+		to_chat(owner, span_warning("Select the item before attempting to name it!"))
+		return
+
 	if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 		current_name = owner.prefs.loadout_list[item.item_path][INFO_NAMED]
 	if(INFO_DESCRIBED in owner.prefs.loadout_list[item.item_path])
@@ -218,10 +223,6 @@
 	var/input_name = tgui_input_text(owner, "What name do you want to give [item.name]? Leave blank to clear.", "[item.name] name", current_name, MAX_NAME_LEN)
 	var/input_desc = tgui_input_text(owner, "What description do you want to give [item.name]? 256 character max, leave blank to clear.", "[item.name] description", current_desc, 256, multiline = TRUE)
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(owner.prefs))
-		return
-
-	if(!(item.item_path in owner.prefs.loadout_list))
-		to_chat(owner, span_warning("Select the item before attempting to name to it!"))
 		return
 
 	if(input_name)
