@@ -1,19 +1,21 @@
 /datum/job
 	/// If null, will defer to the mind's opt in level.
 	var/minimum_opt_in_level
+	/// Can this job be targetted as a heretic sacrifice target?
 	var/heretic_sac_target
 	/// Is this job targettable by contractors?
 	var/contractable
 
-/datum/job/New()
-	. = ..()
+/datum/job/proc/update_opt_in_vars()
+	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		if (isnull(minimum_opt_in_level))
+			minimum_opt_in_level = get_initial_opt_in_level()
+		if (isnull(heretic_sac_target))
+			heretic_sac_target = initialize_heretic_target_status()
+		if (isnull(contractable))
+			contractable = initialize_contractable_status()
 
-	if (isnull(minimum_opt_in_level))
-		minimum_opt_in_level = get_initial_opt_in_level()
-	if (isnull(heretic_sac_target))
-		heretic_sac_target = initialize_heretic_target_status()
-	if (isnull(contractable))
-		contractable = initialize_contractable_status()
+		update_opt_in_desc_suffix()
 
 /datum/job/proc/get_initial_opt_in_level()
 	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY))
@@ -34,3 +36,28 @@
 	if (departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND))
 		return TRUE
 	return FALSE
+
+/datum/job/proc/update_opt_in_desc_suffix()
+	var/suffix = ""
+
+	if (minimum_opt_in_level)
+		suffix += " Forces a minimum of [GLOB.antag_opt_in_strings["[minimum_opt_in_level]"]] antag opt-in."
+	if (contractable)
+		suffix += " Targettable by contractors."
+	if (heretic_sac_target)
+		suffix += " Targettable by heretics."
+	if (suffix)
+		set_opt_in_desc_suffix(suffix)
+
+/datum/controller/subsystem/job/SetupOccupations()
+	. = ..()
+
+	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		for (var/datum/job/job as anything in all_occupations)
+			job.update_opt_in_vars()
+
+/datum/job/proc/set_opt_in_desc_suffix(new_suffix)
+	description = initial(description)
+
+	if (new_suffix)
+		description += new_suffix

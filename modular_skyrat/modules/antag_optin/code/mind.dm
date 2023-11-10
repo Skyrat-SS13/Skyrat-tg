@@ -7,6 +7,9 @@
 /datum/mind/transfer_to(mob/new_character, force_key_move)
 	. = ..()
 
+	update_opt_in()
+
+/datum/mind/proc/update_opt_in()
 	var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
 	ideal_opt_in_level = preference_instance.read_preference(/datum/preference/choiced/antag_opt_in_status)
 

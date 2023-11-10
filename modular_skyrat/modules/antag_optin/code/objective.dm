@@ -5,7 +5,7 @@
 	return default_opt_in_level
 
 /datum/objective/proc/opt_in_valid(datum/mind/target_mind)
-	return (get_opt_in_level() >= target_mind.get_effective_opt_in_level())
+	return (get_opt_in_level() <= target_mind.get_effective_opt_in_level())
 
 /datum/objective/capture
 	default_opt_in_level = OPT_IN_YES_ROUND_REMOVE
@@ -50,6 +50,9 @@
 	default_opt_in_level = OPT_IN_YES_TEMP
 
 /datum/objective/contract
+	default_opt_in_level = OPT_IN_YES_TEMP
+
+/datum/objective/jailbreak
 	default_opt_in_level = OPT_IN_YES_TEMP
 
 /datum/objective/contract/opt_in_valid(datum/mind/target_mind)

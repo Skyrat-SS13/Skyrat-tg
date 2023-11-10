@@ -138,6 +138,8 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
 
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)// SKYRAT EDIT ADDITION - ANTAG OPT-IN
+
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		var/target_area = get_area(possible_target.current)
 		if(possible_target in owners)
@@ -158,7 +160,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		if(!count_space_areas)
 			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
 				continue
-		if (!opt_in_valid(possible_target))
+		if (!opt_in_disabled && !opt_in_valid(possible_target))
 			continue
 		// SKYRAT EDIT END
 		possible_targets += possible_target

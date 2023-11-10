@@ -308,6 +308,16 @@
 		info += span_boldnotice("As this station was initially staffed with a \
 			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 			have been added to your ID card.")
+	//SKYRAT EDIT ADDITION BEGIN - ANTAG OPT IN
+	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		if (isnum(minimum_opt_in_level) && minimum_opt_in_level > OPT_IN_NOT_TARGET)
+			info += span_bolddanger("This job forces a minimum opt-in setting of [GLOB.antag_opt_in_strings["[minimum_opt_in_level]"]].")
+		if (heretic_sac_target)
+			info += span_bolddanger("This job can be sacrificed by heretics.")
+		if (contractable)
+			info += span_bolddanger("This job can be targetted by contractors.")
+	//SKYRAT EDIT ADDITION END
+
 	//SKYRAT EDIT ADDITION START - ALTERNATIVE_JOB_TITLES
 	if(alt_title != title)
 		info += span_warning("Remember that alternate titles are purely for flavor and roleplay.")

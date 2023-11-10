@@ -1,3 +1,10 @@
+GLOBAL_LIST_INIT(antag_opt_in_strings, list(
+	"0" = "No",
+	"1" = "Yes - Temporary/Inconvienence",
+	"2" = "Yes - Kill",
+	"3" = "Yes - Round Remove",
+))
+
 //defines for antag opt in objective checking
 //objectives check for all players with a value equal or greater than the 'threat' level of an objective then pick from that list
 //command + sec roles are always opted in regardless of opt in status
