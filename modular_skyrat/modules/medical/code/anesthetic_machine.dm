@@ -73,9 +73,9 @@
 	if(attached_tank) // If there is an attached tank, remove it and drop it on the floor
 		attached_tank.forceMove(loc)
 
-	attacking_item_item.forceMove(src) // Put new tank in, set it as attached tank
+	attacking_item.forceMove(src) // Put new tank in, set it as attached tank
 	visible_message(span_notice("[user] inserts [attacking_item] into [src]."))
-	attached_tank = attacking_item_item
+	attached_tank = attacking_item
 	update_icon()
 
 /obj/machinery/anesthetic_machine/AltClick(mob/user)
