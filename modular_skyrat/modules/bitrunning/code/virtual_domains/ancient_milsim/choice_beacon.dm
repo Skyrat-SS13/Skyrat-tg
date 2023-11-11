@@ -72,7 +72,7 @@
 
 /obj/structure/closet/crate/secure/weapon/milsim/trapper/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/shotgun/automatic/combat/compact(src)
+	new /obj/item/gun/ballistic/shotgun/automatic/combat(src)
 	new /obj/item/storage/box/ammo_box/shotgun_12g(src)
 	new /obj/item/storage/box/ammo_box/shotgun_12g(src)
 	new /obj/item/gun/ballistic/automatic/pistol(src)
