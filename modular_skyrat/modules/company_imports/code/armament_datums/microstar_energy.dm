@@ -11,9 +11,9 @@
 	item_type = /obj/item/gun/energy/disabler
 	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/disabler_smg
+/datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler_smg
 	item_type = /obj/item/gun/energy/disabler/smg
-	cost = PAYCHECK_CREW * 5
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/mini_egun
 	item_type = /obj/item/gun/energy/e_gun/mini
@@ -32,7 +32,7 @@
 
 /datum/armament_entry/company_import/microstar/basic_energy_long_weapons/laser_carbine
 	item_type = /obj/item/gun/energy/laser/carbine
-	cost = PAYCHECK_CREW * 5
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
 
 /datum/armament_entry/company_import/microstar/basic_energy_long_weapons/egun
 	item_type = /obj/item/gun/energy/e_gun
