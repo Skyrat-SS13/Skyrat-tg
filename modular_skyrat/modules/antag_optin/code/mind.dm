@@ -9,8 +9,9 @@
 
 /// Refreshes our ideal opt in level by accessing preferences.
 /datum/mind/proc/update_opt_in()
-	var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
-	ideal_opt_in_level = preference_instance.read_preference(/datum/preference/choiced/antag_opt_in_status)
+    var/datum/preferences/preference_instance = GLOB.preferences_datums[lowertext(key)]
+    if (!isnull(preference_instance))
+        ideal_opt_in_level = preference_instance.read_preference(/datum/preference/choiced/antag_opt_in_status)
 
 /// Gets the actual opt-in level used for determining targets.
 /datum/mind/proc/get_effective_opt_in_level()
