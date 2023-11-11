@@ -81,7 +81,6 @@
 	new /obj/item/gun/ballistic/rifle/rebarxbow/syndie(src)
 	new /obj/item/book/granter/crafting_recipe/dusting/rebarxbowsyndie_ammo(src)
 
-
 //laser
 /datum/opposing_force_equipment/ranged/ion
 	name = "ion carbine"
@@ -238,8 +237,8 @@
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/foamforce_smg_basic/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/toy/unrestricted(src)
-	new /obj/item/ammo_box/magazine/toy/smg(src)
-	new /obj/item/ammo_box/magazine/toy/smg(src)
+	new /obj/item/ammo_box/magazine/toy/smg/riot(src)
+	new /obj/item/ammo_box/magazine/toy/smg/riot(src)
 
 //laser
 /datum/opposing_force_equipment/ranged_stealth/egun_mini
