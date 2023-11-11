@@ -1,7 +1,7 @@
 /obj/machinery/barsign // All Signs are 64 by 32 pixels, they take two tiles
 	name = "bar sign"
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
-	icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/machines/barsigns.dmi'
+	icon = 'icons/obj/machines/barsigns.dmi'
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
 	max_integrity = 500
@@ -393,6 +393,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	icon_state = "maltroach"
 	desc = "Mothroaches politely greet you into the bar, or are they greeting eachother?"
 	neon_color = "#649e8a"
+
+/datum/barsign/rock_bottom
+	name = "Rock Bottom"
+	icon_state = "rock-bottom"
+	desc = "When it feels like you're stuck in a pit, might as well have a drink."
+	neon_color = "#aa2811"
+
+/datum/barsign/orangejuice
+	name = "Oranges' Juicery"
+	icon_state = "orangejuice"
+	desc = "For those who wish to be optimally tactful to the non-alcoholic population."
+	neon_color = COLOR_ORANGE
 
 // Hidden signs list below this point
 
