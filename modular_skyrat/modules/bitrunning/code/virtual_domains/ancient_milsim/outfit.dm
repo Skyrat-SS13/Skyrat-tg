@@ -33,7 +33,7 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	ears = /obj/item/radio/headset/cybersun
 	mask = /obj/item/clothing/mask/balaclavaadjust
-	head = /obj/item/storage/belt/military/cin_surplus/random_color
+	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
 	back = /obj/item/storage/backpack/industrial/cin_surplus/random_color
 	belt = /obj/item/storage/belt/military/cin_surplus/random_color
 	id = /obj/item/card/id/advanced
@@ -48,7 +48,7 @@
 	ears = /obj/item/radio/headset/cybersun
 	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
-	head = /obj/item/storage/belt/military/cin_surplus/random_color
+	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
 	back = /obj/item/storage/backpack/industrial/cin_surplus/random_color
 	backpack_contents = list(
 		/obj/item/storage/box/nri_survival_pack/raider,
@@ -57,7 +57,7 @@
 	)
 	r_hand = null
 	l_hand = null
-	belt = /obj/item/storage/belt/military/cin_surplus/forest
+	belt = /obj/item/storage/belt/military/cin_surplus/random_color
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/cin
 
