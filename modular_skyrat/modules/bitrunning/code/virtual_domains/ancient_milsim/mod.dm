@@ -44,7 +44,6 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/status_readout/operational,
-		/obj/item/mod/module/stealth,
 		/obj/item/mod/module/dispenser/smoke,
 	)
 	default_pins = list(
