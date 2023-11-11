@@ -32,14 +32,16 @@ E.g:
 
 ### Defines:
 
-- antag_opt_in - lives in ~skyrat_defines located in __DEFINES folder. Defines named YES_KILL, YES_TEMP, YES_ROUND_REMOVE, and NOT_TARGET - used for managing opt in stuff. 
+- antag_opt_in - lives in ~skyrat_defines located in __DEFINES folder. Defines named OPT_IN_YES_KILL, OPT_IN_YES_TEMP, OPT_IN_YES_ROUND_REMOVE, and OPT_IN_OPT_IN_NOT_TARGET - used for managing opt in stuff. 
 <!-- If you needed to add any defines, mention the files you added those defines in, along with the name of the defines. -->
 
 ### Included files that are not contained in this module:
 
-- N/A
+- tgui\packages\tgui\interfaces\PreferencesMenu\preferences\features\character_preferences\skyrat\antag_optin.tsx
 <!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here. Good examples are icons or sounds that are used between multiple modules, or other such edge-cases. -->
 
 ### Credits:
 
 A large amount of the code here is graciously borrowed from the Effigy server's antag opt-in code, found at: effigy-se/effigy-se#427 Many thanks to them.
+- niko for doing stuff
+- plum - the author

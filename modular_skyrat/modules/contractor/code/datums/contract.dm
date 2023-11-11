@@ -28,7 +28,7 @@
 
 /// Generation of the contract, called on New()
 /datum/syndicate_contract/proc/generate(blacklist)
-	contract.find_target(null, blacklist, minimum_opt_in_level(NOT_TARGET, FALSE))
+	contract.find_target(null, blacklist)
 
 	var/datum/record/crew/record
 	if (contract.target)
