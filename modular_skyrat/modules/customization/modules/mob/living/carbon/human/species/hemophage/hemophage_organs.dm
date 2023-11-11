@@ -28,10 +28,10 @@
 	if(istype(chem, /datum/reagent/blood))
 		var/to_chatted = FALSE
 		for(var/datum/wound/iter_wound as anything in affected_mob.all_wounds)
-			if(SPT_PROB(20, seconds_per_tick))
+			if(SPT_PROB(5, seconds_per_tick))
 				var/helped = iter_wound.blood_life_process()
 				if(!to_chatted && helped)
-					to_chat(affected_mob, span_notice("A euphoric feeling hits you as blood washes down your throat. Your body feels more alive, your wounds healthier."))
+					to_chat(affected_mob, span_notice("A euphoric feeling hits you as blood's warmth washes through your insides. Your body feels more alive, your wounds healthier."))
 				to_chatted = TRUE
 		return // Do normal metabolism
 
@@ -53,7 +53,8 @@
 // Brought over from tea as well.
 /datum/wound/burn/flesh/blood_life_process()
 	// Sanitizes and heals, but with a limit
-	flesh_healing = (flesh_healing > 0.1) ? flesh_healing : flesh_healing + 0.02
+	if(flesh_healing <= 0.1)
+		flesh_healing += 0.02
 	infestation_rate = max(infestation_rate - 0.005, 0)
 	return TRUE
 
