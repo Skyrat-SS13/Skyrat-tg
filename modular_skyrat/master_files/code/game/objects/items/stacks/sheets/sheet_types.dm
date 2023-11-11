@@ -1,7 +1,7 @@
 // Add modular crafting recipes here, NOT IN BASE /tg/ CRAFTING LISTS
 
 /**
- * Add a list of receipes to an existing recipe sublist.
+ * Add a list of recipes to an existing recipe sublist.
  *
  * Arguments:
  * * stack_recipes - the existing list of stack recipes.
