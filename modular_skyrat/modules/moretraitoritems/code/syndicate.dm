@@ -140,8 +140,8 @@
 	wound = 5
 
 //More items
-/obj/item/guardiancreator/tech/choose/traitor/opfor
-	allowling = TRUE
+/obj/item/guardian_creator/tech/choose/traitor/opfor
+	allow_changeling = TRUE
 
 /obj/item/codeword_granter
 	name = "codeword manual"
