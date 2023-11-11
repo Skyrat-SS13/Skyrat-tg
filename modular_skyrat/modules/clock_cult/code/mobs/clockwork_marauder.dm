@@ -43,16 +43,16 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	/// How many hits the shield can take before it breaks.
 	var/shield_health = MARAUDER_SHIELD_MAX
 
-
 /mob/living/basic/clockwork_marauder/Initialize(mapload)
 	. = ..()
 	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 
-	var/datum/action/innate/clockcult/comm/communicate = new
+	var/datum/action/innate/clockcult/comm/communicate = new(src)
 	communicate.Grant(src)
 
 	GLOB.clockwork_marauders += src
+	RegisterSignal(src, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(block_bullets))
 
 
 /mob/living/basic/clockwork_marauder/Destroy()
@@ -79,14 +79,14 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 	return ..()
 
+/mob/living/basic/clockwork_marauder/proc/block_bullets(datum/source, obj/projectile/hitting_projectile)
+	SIGNAL_HANDLER
 
-/mob/living/basic/clockwork_marauder/bullet_act(obj/projectile/proj)
-	//Block Ranged Attacks
 	if(shield_health)
 		damage_shield()
-		to_chat(src, span_warning("Your shield blocks the attack."))
-		return BULLET_ACT_BLOCK
-	return ..()
+		visible_message(span_warning("[src]'s shield blocks the attack!"))
+		return COMPONENT_BULLET_BLOCKED
+	return NONE
 
 
 /// Damage the marauder's shield by one tick
@@ -119,7 +119,8 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/clockwork_marauder()
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -135,11 +136,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_behavior/basic_melee_attack/clockwork_marauder
 	action_cooldown = 1.2 SECONDS
-
-
-/datum/targetting_datum/basic/clockwork_marauder
-	stat_attack = HARD_CRIT
-
 
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()

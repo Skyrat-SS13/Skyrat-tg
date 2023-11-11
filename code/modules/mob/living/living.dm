@@ -567,6 +567,15 @@
 		if(held_item)
 			. = held_item.GetID()
 
+/**
+ * Returns the access list for this mob
+ */
+/mob/living/proc/get_access()
+	var/obj/item/card/id/id = get_idcard()
+	if(isnull(id))
+		return list()
+	return id.GetAccess()
+
 /mob/living/proc/get_id_in_hand()
 	var/obj/item/held_item = get_active_held_item()
 	if(!held_item)
@@ -872,7 +881,7 @@
 	// If they happen to be dead too, try to revive them - if possible.
 	if(stat == DEAD && can_be_revived())
 		// If the revive is successful, show our revival message (if present).
-		if(revive(FALSE, FALSE, 10) && revive_message)
+		if(revive(excess_healing = 10) && revive_message)
 			visible_message(revive_message)
 
 	// Finally update health again after we're all done
@@ -1308,7 +1317,7 @@
 	return
 
 /mob/living/can_hold_items(obj/item/I)
-	return usable_hands && ..()
+	return ..() && HAS_TRAIT(src, TRAIT_CAN_HOLD_ITEMS) && usable_hands
 
 /mob/living/can_perform_action(atom/movable/target, action_bitflags)
 	if(!istype(target))
@@ -1399,7 +1408,7 @@
 	add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NO_TRANSFORM), MAGIC_TRAIT)
 	icon = null
 	cut_overlays()
-	invisibility = INVISIBILITY_ABSTRACT
+	SetInvisibility(INVISIBILITY_ABSTRACT)
 
 	var/list/item_contents = list()
 
@@ -1438,7 +1447,7 @@
 		if(WABBAJACK_ROBOT)
 			var/static/list/robot_options = list(
 				/mob/living/silicon/robot = 200,
-				/mob/living/simple_animal/drone/polymorphed = 200,
+				/mob/living/basic/drone/polymorphed = 200,
 				/mob/living/silicon/robot/model/syndicate = 1,
 				/mob/living/silicon/robot/model/syndicate/medical = 1,
 				/mob/living/silicon/robot/model/syndicate/saboteur = 1,
@@ -1449,7 +1458,7 @@
 			if(issilicon(new_mob))
 				var/mob/living/silicon/robot/created_robot = new_mob
 				new_mob.gender = gender
-				new_mob.invisibility = 0
+				new_mob.SetInvisibility(INVISIBILITY_NONE)
 				new_mob.job = JOB_CYBORG
 				created_robot.lawupdate = FALSE
 				created_robot.connected_ai = null
@@ -1488,6 +1497,8 @@
 				/mob/living/basic/chicken,
 				/mob/living/basic/cow,
 				/mob/living/basic/crab,
+				/mob/living/basic/goat,
+				/mob/living/basic/gorilla,
 				/mob/living/basic/headslug,
 				/mob/living/basic/killer_tomato,
 				/mob/living/basic/lizard,
@@ -1505,9 +1516,7 @@
 				/mob/living/basic/statue,
 				/mob/living/basic/stickman,
 				/mob/living/basic/stickman/dog,
-				/mob/living/simple_animal/hostile/gorilla,
 				/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
-				/mob/living/simple_animal/hostile/retaliate/goat,
 				/mob/living/simple_animal/parrot,
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/simple_animal/pet/cat/cak,
@@ -1602,9 +1611,9 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	return fire_status.ignite(silent)
 
 /mob/living/proc/update_fire()
-	var/datum/status_effect/fire_handler/fire_handler = has_status_effect(/datum/status_effect/fire_handler)
-	if(fire_handler)
-		fire_handler.update_overlay()
+	var/datum/status_effect/fire_handler/fire_stacks/fire_stacks = has_status_effect(/datum/status_effect/fire_handler/fire_stacks)
+	if(fire_stacks)
+		fire_stacks.update_overlay()
 
 /**
  * Extinguish all fire on the mob
@@ -1811,10 +1820,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			return M.mob_try_pickup(U) //SKYRAT EDIT CHANGE //blame kevinz dont open the mobs inventory if you are picking them up
 	. = ..()
 
-/mob/living/proc/mob_pickup(mob/living/L)
+/mob/living/proc/mob_pickup(mob/living/user)
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, held_state, head_icon, held_lh, held_rh, worn_slot_flags)
-	L.visible_message(span_warning("[L] scoops up [src]!"))
-	L.put_in_hands(holder)
+	user.visible_message(span_warning("[user] scoops up [src]!"))
+	user.put_in_hands(holder)
 
 /mob/living/proc/set_name()
 	numba = rand(1, 1000)
@@ -2567,7 +2576,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		lazarus_policy = get_policy(ROLE_LAZARUS_BAD) || "You have been revived by a malfunctioning lazarus injector! You are now enslaved by whoever revived you."
 	to_chat(src, span_boldnotice(lazarus_policy))
 
-/// Proc for giving a mob a new 'friend', generally used for AI control and targetting. Returns false if already friends.
+/// Proc for giving a mob a new 'friend', generally used for AI control and targeting. Returns false if already friends.
 /mob/living/proc/befriend(mob/living/new_friend)
 	SHOULD_CALL_PARENT(TRUE)
 	var/friend_ref = REF(new_friend)

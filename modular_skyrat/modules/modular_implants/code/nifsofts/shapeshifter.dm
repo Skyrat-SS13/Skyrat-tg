@@ -1,6 +1,6 @@
 /obj/item/disk/nifsoft_uploader/shapeshifter
 	name = "Polymorph"
-	loaded_nifsoft = /datum/nifsoft/action_granter
+	loaded_nifsoft = /datum/nifsoft/action_granter/shapeshifter
 
 /datum/nifsoft/action_granter/shapeshifter
 	name = "Polymorph"

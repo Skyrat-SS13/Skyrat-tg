@@ -15,6 +15,7 @@
 	inhand_icon_state = "enchanted_rifle"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
+	knife_x_offset = 35
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/Initialize(mapload)
 	. = ..()

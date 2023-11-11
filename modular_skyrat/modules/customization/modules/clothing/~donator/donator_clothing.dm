@@ -374,32 +374,26 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for TheOOZ
-/obj/item/clothing/mask/animal/kindle
+/obj/item/clothing/mask/animal/wolf
 	name = "wolf mask"
-	desc = "A dark mask in the shape of a wolf's head.<br>The material feels like it's made entirely out of inexpensive plastic."
+	desc = "A dark mask in the shape of a wolf's head."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	inhand_icon_state = "gasmask_captain"
 	animal_type = "wolf"
-	animal_sounds = list("Awoo!", "Woof.", "Arf!")
-	animal_sounds_alt_probability = 15
-	animal_sounds_alt = list("Join us!", "Wear the mask.")
-	curse_spawn_sound = 'modular_skyrat/master_files/sound/effects/wolfhead_curse.ogg'
-	cursed = FALSE
-
-	supports_variations_flags = NONE
-	clothing_flags = MASKINTERNALS | VOICEBOX_DISABLED | VOICEBOX_TOGGLABLE
-	flags_inv = HIDEFACIALHAIR | HIDESNOUT
+	unique_death = 'modular_skyrat/master_files/sound/effects/wolfhead_curse.ogg'
 	visor_flags_inv = HIDEFACIALHAIR | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	clothing_flags = VOICEBOX_DISABLED | MASKINTERNALS | BLOCK_GAS_SMOKE_EFFECT | GAS_FILTERING
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
-	w_class = WEIGHT_CLASS_SMALL
+	use_radio_beeps_tts = TRUE
 
-/obj/item/clothing/mask/animal/kindle/make_cursed()
+/obj/item/clothing/mask/animal/wolf/Initialize(mapload)
 	. = ..()
-	clothing_flags = initial(clothing_flags)
-	name = "\proper the accursed wolf mask"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her alleged cult.<br>It looks like a [animal_type] mask, but closer inspection reveals it's melded onto this person's face!"
+	var/obj/item/clothing/mask/gas/sechailer/sechailer_type = /obj/item/clothing/mask/gas/sechailer
+	voice_filter = initial(sechailer_type.voice_filter)
 
 // Donation reward for Random516
 /obj/item/clothing/head/drake_skull
@@ -1492,7 +1486,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 // Donation reward for MaSvedish
 /obj/item/clothing/mask/holocigarette/masvedishcigar
 	name = "holocigar"
-	desc = "A soft buzzing device that, using holodeck technology, replicates a slow burn cigar. Now with less-shock technology."
+	desc = "A soft buzzing device that, using holodeck technology, replicates a slow burn cigar. Now with less-shock technology. It has a small inscription of 'MG' on the golden label."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
@@ -1657,3 +1651,91 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	desc = "These boots make you feel like you can walk on space."
 	icon_state = "archerboots"
 	inhand_icon_state = "archerboots"
+
+// Donation reward for nikotheguydude
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "vickyred"
+	name = "nobility dresscoat"
+	desc = "An elaborate coat composed of a silky yet firm material. \
+		The fabric is quite thin, and provides negligible protection or insulation, \
+		but is pleasant on the skin.\nWhile extremely well made, it seems quite \
+		fragile, and rather <i>expensive</i>. You get the feeling it might not \
+		<b>survive a washing machine</b> without specialized treatment."
+	special_desc = "It's buttons are pressed with some kind of sigil - which, to those knowledgeable in \
+		Tiziran politics or nobility, would be recognizable as the <b>Kor'Yesh emblem</b>, \
+		a relatively <i>minor house of nobility</i> within <i>Tizira</i>.\n\n\
+		On a closer inspection, it would appear the interior is modified with protective material and mounting points \
+		most often found on medical labcoats."
+	limb_integrity = 100 // note that this is usually disabled by having it set to 0, so this is just strictly worse
+	body_parts_covered = CHEST|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/Initialize(mapload)
+	. = ..()
+
+	qdel(GetComponent(/datum/component/toggle_icon)) // we dont have a toggle icon
+
+#define NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED 2500
+
+// this is based on an in-joke with the character whom inspires this donator item, where they need a fuckton of money to wash their coat. this takes it literally
+/obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator/machine_wash(obj/machinery/washing_machine/washer)
+
+	var/total_credits = 0
+	var/list/obj/item/money_to_delete = list()
+	for (var/obj/item/holochip/chip in washer)
+		total_credits += chip.get_item_credit_value()
+		money_to_delete += chip
+		if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+			break
+	if (total_credits < NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+		for (var/obj/item/stack/spacecash/cash in washer)
+			total_credits += cash.get_item_credit_value()
+			money_to_delete += cash
+			if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED)
+				break
+
+	var/message
+	var/sound_effect_path
+	var/sound_effect_volume
+	if (total_credits >= NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED) // all is well
+		message = span_notice("[src] seems to absorb the raw capital from its surroundings, and is successfully washed!")
+		sound_effect_path = 'sound/effects/whirthunk.ogg'
+		sound_effect_volume = 40
+		for (var/obj/item/entry_to_delete as anything in money_to_delete)
+			qdel(entry_to_delete)
+	else // IT COSTS ME A THOUSAND CREDITS TO WASH THIS!! HALF MY BUDGET IS DRY CLEANING
+		message = span_warning("[src]'s delicate fabric is shredded by [washer]! How terrible!")
+		sound_effect_path = 'sound/effects/cloth_rip.ogg'
+		sound_effect_volume = 30
+		for (var/zone as anything in cover_flags2body_zones(body_parts_covered))
+			take_damage_zone(zone, limb_integrity * 1.1, BRUTE) // fucking shreds it
+
+	var/turf/our_turf = get_turf(src)
+	our_turf.visible_message(message)
+	playsound(src, sound_effect_path, sound_effect_volume, FALSE)
+
+	return ..()
+
+/obj/item/clothing/under/costume/dragon_maid
+	name = "dragon maid uniform"
+	desc = "A uniform for a kitchen maid, stylized to have draconic detailing."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "dragon_maid"
+	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	can_adjust = FALSE
+
+#undef NOBILITY_DRESSCOAT_WASHING_CREDITS_NEEDED
+
+//  Donation reward for vexcint
+/obj/item/clothing/head/anubite
+	name = "\improper Anubite headpiece"
+	desc = "A dark coloured headpiece with golden accents. Its features seem reminiscent of the god Anubis."
+	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "anubite_headpiece"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_y_offset = 4

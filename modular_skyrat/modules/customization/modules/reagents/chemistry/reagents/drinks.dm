@@ -51,9 +51,13 @@
 		return TRUE
 	. = ..()
 
-/obj/item/reagent_containers/cup/soda_cans/skyrat/bullet_act(obj/projectile/P)
+/obj/item/reagent_containers/cup/soda_cans/skyrat/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	. = ..()
-	if(P.damage > 0 && P.damage_type == BRUTE && !QDELETED(src))
+
+	if(. != BULLET_ACT_HIT)
+		return
+
+	if(hitting_projectile.damage > 0 && hitting_projectile.damage_type == BRUTE && !QDELETED(src))
 		var/obj/item/trash/can/skyrat/crushed_can = new /obj/item/trash/can/skyrat(src.loc)
 		crushed_can.icon_state = icon_state
 		var/atom/throw_target = get_edge_target_turf(crushed_can, pick(GLOB.alldirs))

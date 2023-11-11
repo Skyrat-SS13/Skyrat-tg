@@ -14,6 +14,7 @@
 	req_stat = UNCONSCIOUS
 
 /datum/action/changeling/horror_form/sting_action(mob/living/carbon/human/user)
+	..()
 	if(!user || HAS_TRAIT(user, TRAIT_NO_TRANSFORM))
 		return 0
 	user.visible_message(span_warning("[user] writhes and contorts, their body expanding to inhuman proportions!"), \

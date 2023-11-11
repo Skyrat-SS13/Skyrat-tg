@@ -1,14 +1,15 @@
+#define SYNTH_REVIVE_WELD_INTERNALS_DAMAGE 30
+
+// Should be a very quick surgery, it's meant to replace defibs (mostly!)
 /datum/surgery/positronic_restoration
 	name = "Posibrain Reboot (Revival)"
 	steps = list(
 		/datum/surgery_step/mechanic_unwrench,
 		/datum/surgery_step/pry_off_plating/fullbody,
-		/datum/surgery_step/cut_wires/fullbody,
-		/datum/surgery_step/replace_wires/fullbody,
-		/datum/surgery_step/prepare_electronics,
-		/datum/surgery_step/add_plating/fullbody,
 		/datum/surgery_step/weld_plating/fullbody,
+		/datum/surgery_step/prepare_electronics,
 		/datum/surgery_step/finalize_positronic_restoration,
+		/datum/surgery_step/add_plating/fullbody,
 		/datum/surgery_step/mechanic_close,
 	)
 
@@ -24,52 +25,34 @@
 	return TRUE
 
 /datum/surgery_step/pry_off_plating/fullbody
-	time = 12 SECONDS
+	time = 1.4 SECONDS
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
 		target,
-		span_notice("You begin to pry open compromised panels on [target]'s braincase..."),
-		span_notice("[user] begins to pry open compromised panels on [target]'s braincase."),
-	)
-
-/datum/surgery_step/cut_wires/fullbody
-	time = 12 SECONDS
-
-/datum/surgery_step/cut_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(
-		user,
-		target,
-		span_notice("You begin to trim [target]'s nonfunctional wires..."),
-		span_notice("[user] begins to cut [target]'s loose wires."),
+		span_notice("You begin to pry open the outer protective panels on [target]'s braincase..."),
+		span_notice("[user] begins to pry open the outer protective panels on [target]'s braincase."),
 	)
 
 /datum/surgery_step/weld_plating/fullbody
-	time = 12 SECONDS
+	time = 2 SECONDS
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
 		target,
-		span_notice("You begin to slice compromised panels from [target]'s braincase..."),
-		span_notice("[user] begins to slice compromised panels from [target]'s braincase."),
+		span_notice("You begin to slice the inner protective panels from [target]'s braincase..."),
+		span_notice("[user] begins to slice the inner protective panels from [target]'s braincase."),
 	)
 
-/datum/surgery_step/replace_wires/fullbody
-	time = 7 SECONDS
-	cableamount = 15
+/datum/surgery_step/weld_plating/fullbody/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
+	. = ..()
 
-/datum/surgery_step/replace_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(
-		user,
-		target,
-		span_notice("You begin to replace [target]'s wiring..."),
-		span_notice("[user] begins to replace [target]'s wiring."),
-	)
+	target.apply_damage(SYNTH_REVIVE_WELD_INTERNALS_DAMAGE, BRUTE, "[target_zone]", wound_bonus = CANT_WOUND)
 
 /datum/surgery_step/add_plating/fullbody
-	time = 12 SECONDS
+	time = 3 SECONDS
 	ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -80,13 +63,21 @@
 		span_notice("[user] begins to add new panels to [target]'s braincase."),
 	)
 
+/datum/surgery_step/add_plating/fullbody/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	. = ..()
+
+	target.heal_bodypart_damage(brute = SYNTH_REVIVE_WELD_INTERNALS_DAMAGE, target_zone = "[target_zone]")
+
 /datum/surgery_step/finalize_positronic_restoration
-	name = "finalize positronic restoration (multitool)"
+	name = "finalize positronic restoration (multitool/shocking implement)"
 	implements = list(
 		TOOL_MULTITOOL = 100,
+		/obj/item/shockpaddles = 70,
+		/obj/item/melee/touch_attack/shock = 70,
+		/obj/item/melee/baton/security = 35,
+		/obj/item/gun/energy = 10
 	)
-	repeatable = TRUE
-	time = 12 SECONDS
+	time = 5 SECONDS
 
 /datum/surgery_step/finalize_positronic_restoration/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -99,10 +90,13 @@
 	target.notify_ghost_cloning("Someone is trying to reboot your posibrain.", source = target)
 
 /datum/surgery_step/finalize_positronic_restoration/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	if (target.stat < DEAD)
+		target.visible_message(span_notice("...[target] is completely unaffected! Seems like they're already active!"))
+		return FALSE
+
 	target.cure_husk()
 	target.grab_ghost()
 	target.updatehealth()
-	target.setOrganLoss(ORGAN_SLOT_BRAIN, NONE)
 
 	if(target.revive())
 		target.emote("chime")
@@ -114,3 +108,9 @@
 		target.visible_message(span_warning("...[target.p_they()] convulses, then goes offline."))
 		return TRUE
 
+/datum/surgery_step/finalize_positronic_restoration/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, fail_prob)
+	. = ..()
+
+	target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 130)
+
+#undef SYNTH_REVIVE_WELD_INTERNALS_DAMAGE

@@ -7,29 +7,20 @@
 	maxHealth = 500
 	health = 500
 	icon_state = "alienqueen"
-	/// Holds the less lethal tail sweep ability to be granted to the queen later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing/tail_sweep
-	/// Holds the queen screech ability to be granted to her later
-	var/datum/action/cooldown/alien/skyrat/queen_screech/screech
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
 /mob/living/carbon/alien/adult/skyrat/queen/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing()
-	tail_sweep.Grant(src)
-
-	screech = new /datum/action/cooldown/alien/skyrat/queen_screech()
-	screech.Grant(src)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing,
+		/datum/action/cooldown/alien/skyrat/queen_screech,
+	)
+	grant_actions_by_list(innate_actions)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
-
-/mob/living/carbon/alien/adult/skyrat/queen/Destroy()
-	QDEL_NULL(tail_sweep)
-	QDEL_NULL(screech)
-	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/queen/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
