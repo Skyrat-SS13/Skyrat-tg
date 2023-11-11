@@ -33,9 +33,9 @@
 /datum/round_event_control/cme/unknown
 	name = "Coronal Mass Ejection: Unknown"
 	typepath = /datum/round_event/cme/unknown
-	weight = 15
+	weight = 0
 	min_players = 75
-	max_occurrences = 1
+	max_occurrences = 0
 	description = "Spawns a CME event of a unknown severity"
 
 /datum/round_event/cme/unknown

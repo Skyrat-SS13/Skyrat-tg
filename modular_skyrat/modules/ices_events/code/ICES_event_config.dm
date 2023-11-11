@@ -181,27 +181,27 @@
 /**
  * CME (Coronal Mass Ejection)
  *
- * Combined weight: 40
+ * turned off until reworked
  */
 /datum/round_event_control/cme/minimal
 	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/moderate
-	max_occurrences = 1
+	max_occurrences = 0
 	min_players = 45
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /datum/round_event_control/cme/extreme
-	max_occurrences = 1
+	max_occurrences = 0
 	min_players = 45
 	weight = LOW_EVENT_FREQ
 	earliest_start = 105 MINUTES
 	intensity_restriction = TRUE
 
 /datum/round_event_control/cme/unknown
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
