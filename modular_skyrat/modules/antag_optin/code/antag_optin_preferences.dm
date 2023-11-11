@@ -52,7 +52,7 @@
 /datum/preference/choiced/antag_opt_in_status/compile_constant_data()
 	var/list/data = ..()
 
-	// An assoc list of values to display names so we don't show players numbers in their settings
+	// An assoc list of values to display names so we don't show players numbers in their settings!
 	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = GLOB.antag_opt_in_strings
 
 	return data
