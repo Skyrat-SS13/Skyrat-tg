@@ -10,7 +10,7 @@
 	key = "ancient_milsim"
 	map_dir = "_maps/skyrat/virtual_domains"
 	map_name = "ancient_milsim"
-	reward_points = BITRUNNER_REWARD_EXTREME
+	reward_points = BITRUNNER_REWARD_HIGH
 	safehouse_path = /datum/map_template/safehouse_skyrat/ancient_milsim
 
 /datum/map_template/safehouse_skyrat/ancient_milsim
