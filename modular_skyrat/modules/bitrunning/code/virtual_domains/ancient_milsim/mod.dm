@@ -3,7 +3,6 @@
 	starting_frequency = MODLINK_FREQ_NANOTRASEN
 	req_access = null
 	applied_modules = list(
-		/obj/item/mod/module/armor_booster,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack,
