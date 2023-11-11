@@ -164,11 +164,6 @@
 		Includes direction toggle and a rapid mode to bypass door safety checks and crossing signals. \
 		Perfect for running someone over in the name of a tram malfunction!"
 
-/datum/opposing_force_equipment/gadget_stealth/brainwash_disk
-	name = "Brainwashing Surgery Disk"
-	item_type = /obj/item/disk/surgery/brainwashing
-	description = "The disk provides instructions on how to impress an order on a brain, making it the primary objective of the patient."
-
 /datum/opposing_force_equipment/gadget_stealth/cloakerbelt
 	item_type = /obj/item/shadowcloak
 	description = "A belt that allows its wearer to temporarily turn invisible. Only recharges in dark areas. Use wisely."
