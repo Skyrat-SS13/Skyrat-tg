@@ -198,7 +198,7 @@
 /datum/ash_ritual/summon_icemoon_creature/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
 	var/mob_type = pick(
-		/mob/living/simple_animal/hostile/asteroid/ice_demon,
+		/mob/living/basic/mining/ice_demon,
 		/mob/living/basic/mining/ice_whelp,
 		/mob/living/basic/mining/lobstrosity,
 		/mob/living/simple_animal/hostile/asteroid/polarbear,

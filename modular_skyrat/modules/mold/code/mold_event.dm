@@ -7,7 +7,6 @@
 	name = "Moldies"
 	description = "A mold outbreak on the station. The mold will spread across the station if not contained."
 	typepath = /datum/round_event/mold
-	weight = 5
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	min_players = EVENT_LOWPOP_THRESHOLD

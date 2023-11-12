@@ -5,6 +5,9 @@ import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -55,6 +58,7 @@ const IntroductionSection = (props, context) => {
               />
             }
           />
+          <Rules /* SKYRAT EDIT ADDITION */ />
         </Stack.Item>
       </Stack>
     </Section>

@@ -147,7 +147,8 @@
 	if(!on_fire)
 		return TRUE
 
-	adjust_stacks(owner.fire_stack_decay_rate * seconds_between_ticks)
+	var/decay_multiplier = HAS_TRAIT(owner, TRAIT_HUSK) ? 2 : 1 // husks decay twice as fast
+	adjust_stacks(owner.fire_stack_decay_rate * decay_multiplier * seconds_between_ticks)
 
 	if(stacks <= 0)
 		qdel(src)
@@ -232,10 +233,10 @@
 			qdel(moblight)
 		moblight = new moblight_type(owner)
 
-	SEND_SIGNAL(owner, COMSIG_LIVING_IGNITED, owner)
 	cache_stacks()
 	update_overlay()
 	update_particles()
+	SEND_SIGNAL(owner, COMSIG_LIVING_IGNITED, owner)
 	return TRUE
 
 /**

@@ -1,6 +1,4 @@
 /datum/component/simple_farm
-	///whether you can actually farm it at the moment
-	var/allow_plant = FALSE
 	///whether we limit the amount of plants you can have per turf
 	var/one_per_turf = TRUE
 	///the reference to the movable parent the component is attached to
@@ -14,7 +12,6 @@
 		return COMPONENT_INCOMPATIBLE
 	atom_parent = parent
 	//important to allow people to just straight up set allowing to plant
-	allow_plant = set_plant
 	one_per_turf = set_turf_limit
 	pixel_shift = set_shift
 	//now lets register the signals
@@ -32,11 +29,6 @@
  */
 /datum/component/simple_farm/proc/check_attack(datum/source, obj/item/attacking_item, mob/user)
 	SIGNAL_HANDLER
-	//if it behaves like a shovel
-	if(attacking_item.tool_behaviour == TOOL_SHOVEL)
-		//flip the allow plant-- we either cover or uncover the plantable bit
-		allow_plant = !allow_plant
-		atom_parent.balloon_alert_to_viewers("[allow_plant ? "uncovered" : "covered"] the growing place!")
 
 	//if its a seed, lets try to plant
 	if(istype(attacking_item, /obj/item/seeds))
@@ -61,11 +53,7 @@
  * check_examine is meant to listen for the COMSIG_ATOM_EXAMINE signal, where it will put additional information in the examine
  */
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
-	if(allow_plant)
-		examine_list += span_notice("You are able to plant seeds here!")
-
-	else
-		examine_list += span_warning("You need to use a shovel before you can plant seeds here!")
+	examine_list += span_notice("You are able to plant seeds here!")
 
 /obj/structure/simple_farm
 	name = "simple farm"
@@ -80,8 +68,6 @@
 	var/obj/item/seeds/planted_seed
 	///the max amount harvested from the plants
 	var/max_harvest = 3
-	///the amount of harvests from using a regen core
-	var/regen_harvest_num = 4
 	///the cooldown amount between each harvest
 	var/harvest_cooldown = 1 MINUTES
 	//the cooldown between each harvest
@@ -110,9 +96,10 @@
 /obj/structure/simple_farm/examine(mob/user)
 	. = ..()
 	. += span_notice("<br>[src] will be ready for harvest in [DisplayTimeText(COOLDOWN_TIMELEFT(src, harvest_timer))]")
-	. += span_notice("<br>You can use sinew to lower the time between each harvest!")
-	. += span_notice("You can use goliath hides to increase the amount dropped per harvest!")
-	. += span_notice("You can use a regenerative core to force the plant to drop four harvests!")
+	if(max_harvest < 6)
+		. += span_notice("<br>You can use sinew or worm fertilizer to lower the time between each harvest!")
+	if(harvest_cooldown > 30 SECONDS)
+		. += span_notice("You can use goliath hides or worm fertilizer to increase the amount dropped per harvest!")
 
 /obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
@@ -158,42 +145,84 @@
 
 	//if its sinew, lower the cooldown
 	else if(istype(attacking_item, /obj/item/stack/sheet/sinew))
-		if(harvest_cooldown <= 30 SECONDS)
-			balloon_alert(user, "the plant already grows fast!")
-			return
-
 		var/obj/item/stack/sheet/sinew/use_item = attacking_item
 
 		if(!use_item.use(1))
 			return
 
-		harvest_cooldown -= 15 SECONDS
-		balloon_alert_to_viewers("the plant grows faster!")
+		decrease_cooldown(user)
 		return
 
 	//if its goliath hide, increase the amount dropped
 	else if(istype(attacking_item, /obj/item/stack/sheet/animalhide/goliath_hide))
-		if(max_harvest >= 6)
-			balloon_alert(user, "the plant already drops a lot!")
-			return
-
 		var/obj/item/stack/sheet/animalhide/goliath_hide/use_item = attacking_item
 
 		if(!use_item.use(1))
 			return
 
-		max_harvest++
-		balloon_alert_to_viewers("the plant drops more!")
+		increase_yield(user)
 		return
 
-	//if its a regen core, then create four harvests
-	else if(istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core))
-		qdel(attacking_item)
-		for(var/i in 1 to regen_harvest_num)
-			create_harvest()
+	else if(istype(attacking_item, /obj/item/stack/worm_fertilizer))
+
+		var/obj/item/stack/attacking_stack = attacking_item
+
+		if(!attacking_stack.use(1))
+			balloon_alert(user, "unable to use [attacking_item]")
+			return
+
+		if(!decrease_cooldown(user, silent = TRUE) && !increase_yield(user, silent = TRUE))
+			balloon_alert(user, "plant is already fully upgraded")
+
+		else
+			balloon_alert(user, "plant was upgraded")
+
+		return
+
+	else if(istype(attacking_item, /obj/item/storage/bag/plants))
+		if(!COOLDOWN_FINISHED(src, harvest_timer))
+			return
+
+		COOLDOWN_START(src, harvest_timer, harvest_cooldown)
+		create_harvest(attacking_item, user)
+		update_appearance()
 		return
 
 	return ..()
+
+/**
+ * a proc that will increase the amount of items the crop could produce (at a maximum of 6, from base of 3)
+ */
+/obj/structure/simple_farm/proc/increase_yield(mob/user, var/silent = FALSE)
+	if(max_harvest >= 6)
+		if(!silent)
+			balloon_alert(user, "plant is at maximum yield")
+
+		return FALSE
+
+	max_harvest++
+
+	if(!silent)
+		balloon_alert_to_viewers("plant will have increased yield")
+
+	return TRUE
+
+/**
+ * a proc that will decrease the amount of time it takes to be ready for harvest (at a maximum of 30 seconds, from a base of 1 minute)
+ */
+/obj/structure/simple_farm/proc/decrease_cooldown(mob/user, var/silent = FALSE)
+	if(harvest_cooldown <= 30 SECONDS)
+		if(!silent)
+			balloon_alert(user, "already at maximum growth speed!")
+
+		return FALSE
+
+	harvest_cooldown -= 10 SECONDS
+
+	if(!silent)
+		balloon_alert_to_viewers("plant will grow faster")
+
+	return TRUE
 
 /**
  * used during the component so that it can move when its attached atom moves
@@ -212,7 +241,7 @@
 /**
  * will create a harvest of the seeds product, with a chance to create a mutated version
  */
-/obj/structure/simple_farm/proc/create_harvest()
+/obj/structure/simple_farm/proc/create_harvest(var/obj/item/storage/bag/plants/plant_bag, var/mob/user)
 	if(!planted_seed)
 		return
 
@@ -226,7 +255,10 @@
 			if(!creating_obj)
 				creating_obj = choose_seed
 
-			new creating_obj(get_turf(src))
+			var/created_special = new creating_obj(get_turf(src))
+
+			plant_bag?.atom_storage?.attempt_insert(created_special, user, TRUE)
+
 			balloon_alert_to_viewers("something special drops!")
 			continue
 
@@ -235,8 +267,22 @@
 		if(!creating_obj)
 			creating_obj = planted_seed.type
 
-		new creating_obj(get_turf(src))
+		var/created_harvest = new creating_obj(get_turf(src))
 
-/turf/open/misc/asteroid/basalt/Initialize(mapload)
+		plant_bag?.atom_storage?.attempt_insert(created_harvest, user, TRUE)
+
+/turf/open/misc/asteroid/basalt/getDug()
 	. = ..()
 	AddComponent(/datum/component/simple_farm)
+
+/turf/open/misc/asteroid/basalt/refill_dug()
+	. = ..()
+	qdel(GetComponent(/datum/component/simple_farm))
+
+/turf/open/misc/asteroid/snow/getDug()
+	. = ..()
+	AddComponent(/datum/component/simple_farm)
+
+/turf/open/misc/asteroid/snow/refill_dug()
+	. = ..()
+	qdel(GetComponent(/datum/component/simple_farm))

@@ -4,6 +4,7 @@
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	obj_flags = UNIQUE_RENAME
 	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
@@ -239,22 +240,29 @@
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
-/obj/item/ammo_casing/arrow/forged
-	desc = "An arrow made of wood, typically fired from a bow. It can be reinforced with sinew."
-	projectile_type = /obj/projectile/bullet/arrow/forged
-
-/obj/item/ammo_casing/arrow/forged/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/ammo_casing/arrow/attackby(obj/item/attacking_item, mob/user, params)
+	var/spawned_item
 	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
-		var/obj/item/stack/stack_item = attacking_item
-		if(!stack_item.use(1))
-			return
-		new /obj/item/ammo_casing/arrow/ash(get_turf(src))
-		qdel(src)
-		return
-	return ..()
+		spawned_item = /obj/item/ammo_casing/arrow/ash
 
-/obj/projectile/bullet/arrow/forged
-	projectile_type = /obj/item/ammo_casing/arrow/forged
+	if(istype(attacking_item, /obj/item/stack/sheet/bone))
+		spawned_item = /obj/item/ammo_casing/arrow/bone
+
+	if(istype(attacking_item, /obj/item/stack/tile/bronze))
+		spawned_item = /obj/item/ammo_casing/arrow/bronze
+
+	if(!spawned_item)
+		return ..()
+
+	var/obj/item/stack/stack_item = attacking_item
+	if(!stack_item.use(1))
+		return
+
+	var/obj/item/ammo_casing/arrow/converted_arrow = new spawned_item(get_turf(src))
+	transfer_fingerprints_to(converted_arrow)
+	remove_item_from_storage(user)
+	user.put_in_hands(converted_arrow)
+	qdel(src)
 
 #define INCREASE_BLOCK_CHANGE 2
 

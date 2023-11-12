@@ -121,8 +121,15 @@
 	attack_verb_continuous = "attacks"
 	attack_verb_simple = "attack"
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/bullet)
-	apply_damage(bullet.damage, bullet.damage_type) // no damage reduction
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
+	. = ..()
+	if(. != BULLET_ACT_HIT)
+		return
+
+	if(!hitting_projectile.is_hostile_projectile())
+		return
+
+	apply_damage(hitting_projectile.damage, hitting_projectile.damage_type) // no damage reduction
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
