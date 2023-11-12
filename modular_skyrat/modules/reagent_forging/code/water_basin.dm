@@ -103,6 +103,4 @@
 		/obj/item/fish/gunner_jellyfish = 15,
 		/obj/item/fish/needlefish = 10,
 		/obj/item/fish/armorfish = 10,
-		/obj/effect/spawner/random/maintenance = 10,
-		/obj/effect/spawner/random/trash/garbage = 15,
 	)

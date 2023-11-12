@@ -257,7 +257,7 @@
 		send_alert("miss!")
 		start_baiting_phase()
 	else if(phase == BITING_PHASE)
-		start_minigame_phase()
+		complete(TRUE) //SKYRAT EDIT: Remove Fishing Minigame ORIGINAL: start_minigame_phase()
 	return COMSIG_MOB_CANCEL_CLICKON
 
 /// Challenge interrupted by something external
