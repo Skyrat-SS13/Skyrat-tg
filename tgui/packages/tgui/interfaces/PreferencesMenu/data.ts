@@ -89,7 +89,12 @@ export type Quirk = {
   icon: string;
   name: string;
   value: number;
+<<<<<<< HEAD
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
+=======
+  customizable: boolean;
+  customization_options?: string[];
+>>>>>>> 49414f78210 (Adds a little button to quirks that allows for relatively easy customization (#79251))
 };
 
 // SKYRAT EDIT START
@@ -186,6 +191,7 @@ export type PreferencesMenuData = {
     };
     secondary_features: Record<string, unknown>;
     supplemental_features: Record<string, unknown>;
+    manually_rendered_features: Record<string, string>;
 
     names: Record<string, string>;
 

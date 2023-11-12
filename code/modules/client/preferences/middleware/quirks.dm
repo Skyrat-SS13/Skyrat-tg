@@ -33,12 +33,20 @@
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = quirks[quirk_name]
+		var/datum/quirk_constant_data/constant_data = GLOB.all_quirk_constant_data[quirk]
+		var/list/datum/preference/customization_options = constant_data?.get_customization_data()
+
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
 			"description" = initial(quirk.desc),
 			"icon" = initial(quirk.icon),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),
+<<<<<<< HEAD
 			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
+=======
+			"customizable" = constant_data?.is_customizable(),
+			"customization_options" = customization_options,
+>>>>>>> 49414f78210 (Adds a little button to quirks that allows for relatively easy customization (#79251))
 		)
 
 	return list(
