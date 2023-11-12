@@ -8,10 +8,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/meson,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/meson,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	insignia_type = /obj/item/mod/module/insignia/engineer
 	additional_module = /obj/item/mod/module/dispenser/barrinade
@@ -26,10 +28,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/active_sonar,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/active_sonar,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	insignia_type = /obj/item/mod/module/insignia/commander
 	additional_module = /obj/item/mod/module/dispenser/landmine
@@ -44,10 +48,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/night,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/night,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	insignia_type = /obj/item/mod/module/insignia/security
 	additional_module = /obj/item/mod/module/dispenser/smoke
@@ -62,10 +68,12 @@
 		/obj/item/mod/module/status_readout/operational,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/medhud,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/visor/medhud,
+		/obj/item/mod/module/armor_booster/retractplates,
 	)
 	insignia_type = /obj/item/mod/module/insignia/medic
 	additional_module = /obj/item/mod/module/dispenser/legion_core
