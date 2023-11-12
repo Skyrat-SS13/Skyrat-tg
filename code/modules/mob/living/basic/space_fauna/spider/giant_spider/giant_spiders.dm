@@ -107,6 +107,12 @@
 
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/fast_web)
 
+
+/mob/living/basic/spider/giant/hunter/mold //skyrat edit: exists to make molds not spam the world with simple mobs
+	basic_mob_flags = DEL_ON_DEATH
+
+
+
 /**
  * ### Scout Spider
  * A subtype of the giant spider which is faster, has thermal vision, but less health and damage.
