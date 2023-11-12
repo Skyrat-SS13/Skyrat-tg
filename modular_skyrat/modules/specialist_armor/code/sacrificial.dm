@@ -21,7 +21,7 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_sf_sacrificial
-	atom_integrity = 250
+	max_integrity = 250
 	limb_integrity = 250 // Can take 200 points of damage before it falls to nothing
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 
@@ -47,7 +47,7 @@
 	worn_icon = 'modular_skyrat/modules/specialist_armor/icons/armor_worn.dmi'
 	inhand_icon_state = "helmet"
 	armor_type = /datum/armor/armor_sf_sacrificial
-	atom_integrity = 250
+	max_integrity = 250
 	limb_integrity = 250 // Can take 200 points of damage before it falls to nothing
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	dog_fashion = null
