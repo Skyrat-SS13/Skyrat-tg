@@ -5,11 +5,7 @@
 	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 10 // 2000
 	contains = list(
-		/obj/item/storage/medkit/civil_defense/stocked,
-		/obj/item/storage/medkit/civil_defense/stocked,
-		/obj/item/storage/medkit/civil_defense/stocked,
-		/obj/item/storage/medkit/civil_defense/stocked,
-		/obj/item/storage/medkit/civil_defense/stocked,
+		/obj/item/storage/medkit/civil_defense/stocked = 5,
 	)
 
 /datum/supply_pack/medical/frontier_first_aid
@@ -19,10 +15,8 @@
 	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 10
 	contains = list(
-		/obj/item/storage/medkit/frontier/stocked,
-		/obj/item/storage/medkit/frontier/stocked,
-		/obj/item/storage/medkit/combat_surgeon/stocked,
-		/obj/item/storage/medkit/combat_surgeon/stocked,
+		/obj/item/storage/medkit/frontier/stocked = 2,
+		/obj/item/storage/medkit/combat_surgeon/stocked = 2,
 	)
 
 /datum/supply_pack/medical/heavy_duty_medical
