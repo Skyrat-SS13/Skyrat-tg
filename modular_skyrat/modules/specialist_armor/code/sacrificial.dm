@@ -22,7 +22,7 @@
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_sf_sacrificial
 	max_integrity = 250
-	limb_integrity = 250 // Can take 200 points of damage before it falls to nothing
+	limb_integrity = 250
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 
 /obj/item/clothing/suit/armor/sf_sacrificial/examine_more(mob/user)
@@ -36,6 +36,20 @@
 
 	return .
 
+// Overrides the take_damage_zone of clothes to ignore the check for multiple body part coverage, we don't cover multiple body parts here
+/obj/item/clothing/suit/armor/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
+	if(!def_zone || !limb_integrity)
+		return
+	var/list/covered_limbs = cover_flags2body_zones(body_parts_covered)
+	if(!(def_zone in covered_limbs))
+		return
+
+	var/damage_dealt = take_damage(damage_amount, damage_type, armour_penetration, FALSE)
+	LAZYINITLIST(damage_by_parts)
+	damage_by_parts[def_zone] += damage_dealt
+	if(damage_by_parts[def_zone] > limb_integrity)
+		disable_zone(def_zone, damage_type)
+
 /obj/item/clothing/head/helmet/sf_sacrificial
 	name = "'Val' sacrificial ballistic helmet"
 	desc = "A large, almost always ill-fitting helmet painted in a tacticool black. \
@@ -48,10 +62,24 @@
 	inhand_icon_state = "helmet"
 	armor_type = /datum/armor/armor_sf_sacrificial
 	max_integrity = 250
-	limb_integrity = 250 // Can take 200 points of damage before it falls to nothing
+	limb_integrity = 250
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	dog_fashion = null
 	flags_inv = null
+
+// Overrides the take_damage_zone of clothes to ignore the check for multiple body part coverage, we don't cover multiple body parts here
+/obj/item/clothing/head/helmet/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
+	if(!def_zone || !limb_integrity)
+		return
+	var/list/covered_limbs = cover_flags2body_zones(body_parts_covered)
+	if(!(def_zone in covered_limbs))
+		return
+
+	var/damage_dealt = take_damage(damage_amount, damage_type, armour_penetration, FALSE)
+	LAZYINITLIST(damage_by_parts)
+	damage_by_parts[def_zone] += damage_dealt
+	if(damage_by_parts[def_zone] > limb_integrity)
+		disable_zone(def_zone, damage_type)
 
 /obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
 	. = ..()
