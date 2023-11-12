@@ -94,20 +94,7 @@
 					L.add_mood_event("oogabooga", /datum/mood_event/sacrifice_bad)
 			ashies.sacrifices_made++
 
-<<<<<<< HEAD
-//PLEASE VIEW SKYRAT ASHWALKER MODULE FOR REPLACEMENT
-/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname)
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
-	M.set_species(/datum/species/lizard/ashwalker)
-	M.real_name = oldname
-	M.underwear = "Nude"
-	M.update_body()
-	M.remove_language(/datum/language/common)
-	oldmind.transfer_to(M)
-	M.mind.grab_ghost()
-	to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
-	playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE)
-=======
+// SKYRAT EDIT ADDITION - PLEASE VIEW SKYRAT ASHWALKER MODULE FOR REPLACEMENT
 /obj/structure/lavaland/ash_walker/proc/remake_walker(mob/living/carbon/oldmob)
 	var/mob/living/carbon/human/newwalker = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
 	newwalker.set_species(/datum/species/lizard/ashwalker)
@@ -121,7 +108,6 @@
 	to_chat(newwalker, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
 	playsound(get_turf(newwalker),'sound/magic/exit_blood.ogg', 100, TRUE)
 	qdel(oldmob)
->>>>>>> d7fb20cfaf7 (Fixes Ashwalker Tendril Revives (#79637))
 
 /obj/structure/lavaland/ash_walker/proc/spawn_mob()
 	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
