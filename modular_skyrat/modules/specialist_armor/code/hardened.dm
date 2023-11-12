@@ -1,13 +1,13 @@
 // Hardened vests negate any and all projectile armor penetration, in exchange for having mid af bullet armor and basically no laser armor
 /datum/armor/armor_sf_hardened
 	melee = 30
-	bullet = 40
+	bullet = 50
 	laser = 10
 	energy = 10
 	bomb = 30
 	fire = 50
 	acid = 30
-	wound = 20
+	wound = 15
 
 /obj/item/clothing/suit/armor/sf_hardened
 	name = "'Muur' hardened armor vest"
