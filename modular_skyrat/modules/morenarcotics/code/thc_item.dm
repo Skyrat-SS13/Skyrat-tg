@@ -8,7 +8,6 @@
 	list_reagents = list(/datum/reagent/drug/thc = 15, /datum/reagent/toxin/lipolicide = 5)
 	grind_results = list(/datum/reagent/drug/thc = 15, /datum/reagent/toxin/lipolicide = 5)
 
-
 /obj/item/reagent_containers/hash/dabs
 	name = "dab"
 	desc = "Oil extract from cannabis plants. Just delivers a different type of hit."
@@ -19,7 +18,6 @@
 	list_reagents = list(/datum/reagent/drug/thc = 40) //horrendously powerful
 	grind_results = list(/datum/reagent/drug/thc = 40, /datum/reagent/toxin/lipolicide = 40)
 
-
 /obj/item/reagent_containers/hashbrick
 	name = "hash brick"
 	desc = "A brick of hash. Good for transport!"
@@ -29,7 +27,6 @@
 	has_variable_transfer_amount = FALSE
 	list_reagents = list(/datum/reagent/drug/thc = 60, /datum/reagent/toxin/lipolicide = 20)
 	grind_results = list(/datum/reagent/drug/thc = 60, /datum/reagent/toxin/lipolicide = 20)
-
 
 
 /obj/item/reagent_containers/hashbrick/attack_self(mob/user)

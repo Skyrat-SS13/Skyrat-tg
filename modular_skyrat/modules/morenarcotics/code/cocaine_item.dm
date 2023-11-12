@@ -91,7 +91,6 @@
 	grind_results = list(/datum/reagent/drug/cocaine = 25)
 
 
-
 /obj/item/reagent_containers/cocainebrick/attack_self(mob/user)
 	user.visible_message(span_notice("[user] starts breaking up the [src]."))
 	if(do_after(user,10))

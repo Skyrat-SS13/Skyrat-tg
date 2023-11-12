@@ -59,7 +59,6 @@
 		M.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1 * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)
 
-
 	if(SPT_PROB(2.5, seconds_per_tick))
 		M.emote("shiver")
 		var/uh_oh = pick("You feel queasy.", "Your gut hurts.", "You can't get enough air into your lungs.")
