@@ -28,7 +28,7 @@
 /obj/item/clothing/suit/armor/sf_sacrificial/Initialize(mapload)
 	. = ..()
 
-	ADD_TRAIT(target, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
 
 /obj/item/clothing/suit/armor/sf_sacrificial/examine_more(mob/user)
 	. = ..()
@@ -75,7 +75,7 @@
 /obj/item/clothing/head/helmet/sf_sacrificial/Initialize(mapload)
 	. = ..()
 
-	ADD_TRAIT(target, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
 
 /obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
 	. = ..()
