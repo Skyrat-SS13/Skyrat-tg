@@ -93,3 +93,6 @@
 
 /// Trait given to a brain that is able to accept souls from a RSD
 #define TRAIT_RSD_COMPATIBLE "rsd_compatible"
+
+/// If clothing can also be damaged by piercing wound checks, instead of JUST slashes and burns
+#define TRAIT_CLOTHES_DAMAGED_BY_PIERCING "clothing_damaged_by_piercing"

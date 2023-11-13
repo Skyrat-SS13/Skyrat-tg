@@ -246,7 +246,7 @@
 		for(var/obj/item/clothing/clothes as anything in clothing)
 			// unlike normal armor checks, we tabluate these piece-by-piece manually so we can also pass on appropriate damage the clothing's limbs if necessary
 			armor_ablation += clothes.get_armor_rating(WOUND)
-			if(wounding_type == WOUND_SLASH)
+			if((wounding_type == WOUND_SLASH) || ((wounding_type == WOUND_PIERCE) && HAS_TRAIT(clothes, TRAIT_CLOTHES_DAMAGED_BY_PIERCING))) // SKYRAT EDIT CHANGE: ORIGINAL: if(wounding_type == WOUND_SLASH)
 				clothes.take_damage_zone(body_zone, damage, BRUTE)
 			else if(wounding_type == WOUND_BURN && damage >= 10) // lazy way to block freezing from shredding clothes without adding another var onto apply_damage()
 				clothes.take_damage_zone(body_zone, damage, BURN)

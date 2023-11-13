@@ -25,6 +25,11 @@
 	limb_integrity = 250
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 
+/obj/item/clothing/suit/armor/sf_sacrificial/Initialize(mapload)
+	. = ..()
+
+	ADD_TRAIT(target, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+
 /obj/item/clothing/suit/armor/sf_sacrificial/examine_more(mob/user)
 	. = ..()
 
@@ -67,6 +72,22 @@
 	dog_fashion = null
 	flags_inv = null
 
+/obj/item/clothing/head/helmet/sf_sacrificial/Initialize(mapload)
+	. = ..()
+
+	ADD_TRAIT(target, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+
+/obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
+	. = ..()
+
+	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech \
+		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be \
+		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, \
+		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. \
+		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
+
+	return .
+
 // Overrides the take_damage_zone of clothes to ignore the check for multiple body part coverage, we don't cover multiple body parts here
 /obj/item/clothing/head/helmet/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
 	if(!def_zone || !limb_integrity)
@@ -80,14 +101,3 @@
 	damage_by_parts[def_zone] += damage_dealt
 	if(damage_by_parts[def_zone] > limb_integrity)
 		disable_zone(def_zone, damage_type)
-
-/obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
-	. = ..()
-
-	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech \
-		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be \
-		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, \
-		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. \
-		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
-
-	return .

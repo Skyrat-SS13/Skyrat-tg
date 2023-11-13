@@ -47,9 +47,7 @@
 	name = "'Archangel' hardened armor vest"
 	desc = "A large white breastplate with a lone red stripe, and a semi-flexible mail of dense panels that cover the torso. \
 		While not so incredible at directly stopping bullets, the vest is uniquely suited to cause bullets \
-		to lose much of their armor penetrating energy before any damage can be done. Vests like these are common to see on galactic medical \
-		services that expect their technicians to walk into an active gunfight. As ill planned as that may seem, it is a \
-		necessary and surprisingly common service everywhere in the galaxy."
+		to lose much of their armor penetrating energy before any damage can be done."
 	icon_state = "hardened_emt"
 
 /obj/item/clothing/head/helmet/toggleable/sf_hardened
