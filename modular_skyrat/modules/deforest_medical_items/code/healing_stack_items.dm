@@ -153,7 +153,7 @@
 /obj/item/stack/medical/gauze/sterilized/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
 	. = ..()
 	healed_mob.reagents.add_reagent(/datum/reagent/space_cleaner/sterilizine, 5)
-	healed_mob.reagents.expose(user, TOUCH, 1)
+	healed_mob.reagents.expose(healed_mob, TOUCH, 1)
 
 // Works great at sealing bleed wounds, but does little to actually heal them
 /obj/item/stack/medical/suture/coagulant
