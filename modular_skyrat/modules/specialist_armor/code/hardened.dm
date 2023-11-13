@@ -27,7 +27,7 @@
 	if(istype(hitby, /obj/projectile))
 		var/obj/projectile/incoming_projectile = hitby
 		incoming_projectile.armour_penetration = 0
-		playsound(src, SFX_RICOCHET, BLOCK_SOUND_VOLUME, vary = TRUE)
+		playsound(owner, SFX_RICOCHET, BLOCK_SOUND_VOLUME, vary = TRUE)
 
 /obj/item/clothing/suit/armor/sf_hardened/examine_more(mob/user)
 	. = ..()
