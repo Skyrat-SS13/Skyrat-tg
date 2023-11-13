@@ -1,7 +1,7 @@
 // Sacrificial armor has massive bullet protection, but gets damaged by being shot, thus, is sacrificing itself to protect the wearer
 /datum/armor/armor_sf_sacrificial
 	melee = 30
-	bullet = 80 // When the level IV plates stop the bullet but not the energy transfer
+	bullet = 90 // When the level IV plates stop the bullet but not the energy transfer
 	laser = 10
 	energy = 10
 	bomb = 50
@@ -21,8 +21,8 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_sf_sacrificial
-	max_integrity = 250
-	limb_integrity = 250
+	max_integrity = 150
+	limb_integrity = 150
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 
 /obj/item/clothing/suit/armor/sf_sacrificial/Initialize(mapload)
@@ -66,8 +66,8 @@
 	worn_icon = 'modular_skyrat/modules/specialist_armor/icons/armor_worn.dmi'
 	inhand_icon_state = "helmet"
 	armor_type = /datum/armor/armor_sf_sacrificial
-	max_integrity = 250
-	limb_integrity = 250
+	max_integrity = 200
+	limb_integrity = 200
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	dog_fashion = null
 	flags_inv = null
