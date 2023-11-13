@@ -52,11 +52,9 @@
 		/datum/action/cooldown/mob_cooldown/burrow = BB_BURROW_ABILITY,
 	)
 	grant_actions_by_list(innate_actions)
-<<<<<<< HEAD
-=======
+
 	AddElement(/datum/element/ore_collecting)
 	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
->>>>>>> 7a44f10993c (basic gutlunchers and ashwalker ranching (#79508))
 	AddComponent(/datum/component/ai_listen_to_weather)
 	AddComponent(\
 		/datum/component/appearance_on_aggro,\
