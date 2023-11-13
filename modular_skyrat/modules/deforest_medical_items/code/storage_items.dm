@@ -19,7 +19,7 @@
 		/datum/reagent/consumable/sugar = 5,
 	)
 
-// Pre-packed civil defense medkit, with items to heal low damages inside, and painkillers as a treat
+// Pre-packed civil defense medkit, with items to heal low damages inside
 /obj/item/storage/medkit/civil_defense
 	name = "civil defense medical kit"
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
