@@ -87,3 +87,21 @@
 
 /// Whenever we need to get the soul of the mob inside of the soulcatcher.
 #define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"
+
+/// Whenever we need to change the current room of a soulcatcher soul.
+#define COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM "soulcatcher_soul_change_room"
+
+/// Whenever we need to toggle the senses of a soulcatcher soul.
+#define COMSIG_SOULCATCHER_TOGGLE_SENSE "soulcatcher_soul_toggle_sense"
+
+/// Whenever we need to rename a soulcatcher soul.
+#define COMSIG_SOULCATCHER_SOUL_RENAME "soulcatcher_soul_rename"
+
+/// Whenever we need to reset the name of a soulcatcher soul.
+#define COMSIG_SOULCATCHER_SOUL_RESET_NAME "soulcatcher_soul_reset_name"
+
+/// Whenever we need to check if our soulcatcher soul is able to internally hear/see?
+#define COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES "soulcatcher_check_internal_senses"
+
+/// Whenever we need the soulcatcher soul to communicate something.
+#define COMSIG_SOULCATCHER_SOUL_SAY "soulcatcher_soul_communicate"

@@ -136,7 +136,7 @@
 			return TRUE
 
 		if("modify_name")
-			var/new_name = tgui_input_text(usr,"Choose a new name to send messages as", name, target_room.room_description, multiline = TRUE)
+			var/new_name = tgui_input_text(usr,"Choose a new name to send messages as", name, target_room.outside_voice)
 			if(!new_name)
 				return FALSE
 
@@ -183,40 +183,12 @@
 
 			target_room.room_color = new_room_color
 
-		if("toggle_soul_outside_sense")
-			if(params["sense_to_change"] == "hearing")
-				user_component.toggle_external_hearing()
-			else
-				user_component.toggle_external_sight()
-
-			return TRUE
-
 		if("toggle_soul_sense")
-			if(params["sense_to_change"] == "hearing")
-				user_component.internal_hearing = !user_component.internal_hearing
-			else
-				user_component.internal_sight = !user_component.internal_sight
+			var/sense_to_change = params["sesnse_to_change"]
+			if(!sense_to_change)
+				return FALSE
 
-			return TRUE
-
-		if("toggle_soul_communication")
-			if(params["communication_type"] == "emote")
-				user_component.able_to_emote = !user_component.able_to_emote
-			else
-				user_component.able_to_speak = !user_component.able_to_speak
-
-			return TRUE
-
-		if("toggle_soul_external_communication")
-			if(params["communication_type"] == "emote")
-				user_component.able_to_emote_as_container = !user_component.able_to_emote_as_container
-			else
-				user_component.able_to_speak_as_container = !user_component.able_to_speak_as_container
-
-			return TRUE
-
-		if("toggle_soul_renaming")
-			user_component.able_to_rename = !user_component.able_to_rename
+			SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_TOGGLE_SENSE, sense_to_change)
 			return TRUE
 
 		if("change_name")
@@ -224,14 +196,13 @@
 			if(!new_name)
 				return FALSE
 
-			user_component.change_name(new_name)
-			return TRUE
+			return SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_RENAME, new_name)
 
 		if("reset_name")
 			if(tgui_alert(usr, "Do you wish to reset [target_soul]'s name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
-			user_component.reset_name()
+			return SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_RESET_NAME)
 
 		if("send_message")
 			var/message_to_send = ""
@@ -343,7 +314,7 @@
 			if(!new_name)
 				return FALSE
 
-			change_name(new_name)
+			change_name(new_name = new_name)
 			return TRUE
 
 		if("reset_name")

@@ -63,6 +63,12 @@
 
 	set_up()
 
+	RegisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE, PROC_REF(toggle_sense))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME, PROC_REF(change_name))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME, PROC_REF(reset_name))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, PROC_REF(set_room))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
+
 	return TRUE
 
 /// Configures the settings of the soulcatcher user to be in accordance with the parent mob
@@ -119,30 +125,66 @@
 	room.send_message(message_to_say, parent_mob, TRUE)
 	return TRUE
 
-/// Toggles whether or not the mob inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
-/datum/component/soulcatcher_user/proc/toggle_external_sight()
+/// Modifies the sense of the parent mob based on the variable `sense_to_toggle`. Returns the state of the modified variable
+/datum/component/soulcatcher_user/proc/toggle_sense(datum/source, sense_to_toggle)
+	SIGNAL_HANDLER
+	var/status = FALSE
 	var/mob/living/parent_mob = parent
-	outside_sight = !outside_sight
-	if(outside_sight)
-		parent_mob.cure_blind(NO_EYES)
-	else
-		parent_mob.become_blind(NO_EYES)
+	if(!istype(parent_mob))
+		return FALSE
 
-	return outside_sight
+	switch(sense_to_toggle)
+		if("external_hearing")
+			outside_hearing = !outside_hearing
+			if(outside_hearing)
+				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+			else
+				ADD_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
 
-/// Toggles whether or not the mob inside the soulcatcher can see the outside world. Returns the state of the `outside_hearing` variable.
-/datum/component/soulcatcher_user/proc/toggle_external_hearing()
-	var/mob/living/parent_mob = parent
-	outside_hearing = !outside_hearing
-	if(outside_hearing)
-		REMOVE_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
-	else
-		ADD_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+			status = outside_hearing
 
-	return outside_hearing
+		if("external_sight")
+			outside_sight = !outside_sight
+			if(outside_sight)
+				parent_mob.cure_blind(NO_EYES)
+			else
+				parent_mob.become_blind(NO_EYES)
+
+			status = outside_sight
+
+		if("internal_hearing")
+			internal_hearing = !internal_hearing
+			status = internal_hearing
+
+		if("internal_sight")
+			internal_sight = !internal_sight
+			status = internal_sight
+
+		if("able_to_emote")
+			able_to_emote = !able_to_emote
+			status = able_to_emote
+
+		if("able_to_speak")
+			able_to_speak = !able_to_speak
+			status = able_to_speak
+
+		if("able_to_rename")
+			able_to_rename = !able_to_rename
+			status = able_to_rename
+
+		if("able_to_emote_as_container")
+			able_to_emote_as_container = !able_to_emote_as_container
+			status = able_to_emote_as_container
+
+		if("able_to_speak_as_container")
+			able_to_speak_as_container = !able_to_speak_as_container
+			status = able_to_speak_as_container
+
+	return status
 
 /// Changes the name show on the component based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
-/datum/component/soulcatcher_user/proc/change_name(new_name)
+/datum/component/soulcatcher_user/proc/change_name(datum/source, new_name)
+	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
 	if(!new_name || !istype(parent_mob) || !able_to_rename)
 		return FALSE
@@ -155,7 +197,8 @@
 	return TRUE
 
 /// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
-/datum/component/soulcatcher_user/proc/reset_name()
+/datum/component/soulcatcher_user/proc/reset_name(datum/source)
+	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
 	if(!parent_mob?.mind?.name || !change_name(parent_mob.mind.name))
 		return FALSE
@@ -173,18 +216,40 @@
 
 	return TRUE
 
+//// Is the soulcatcher soul able to see a message? `Emote` determines if the message is an emote or not.
+/datum/component/soulcatcher_user/proc/check_internal_senses(datum/source, emote = FALSE)
+	SIGNAL_HANDLER
+	if(emote)
+		return internal_sight
+
+	return internal_hearing
+
+/// Sets the current room of the soulcatcher component based off of `room_to_set`
+/datum/component/soulcatcher_user/proc/set_room(datum/source, datum/soulcatcher_room/room_to_set)
+	SIGNAL_HANDLER
+	if(!istype(room_to_set))
+		return FALSE
+
+	current_room = room_to_set
+
 /datum/component/soulcatcher_user/Destroy(force, silent)
 	if(!outside_hearing)
-		toggle_external_hearing()
+		toggle_sense("external_hearing")
 
 	if(!outside_sight)
-		toggle_external_sight()
+		toggle_sense("external_sight")
 
 	if(soulcatcher_action)
 		qdel(soulcatcher_action)
 
 	if(leave_action)
 		qdel(leave_action)
+
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES)
 
 	return ..()
 
