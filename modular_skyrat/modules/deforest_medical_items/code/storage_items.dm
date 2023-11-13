@@ -233,8 +233,9 @@
 		/obj/item/cautery = 1,
 		/obj/item/surgical_drapes = 1,
 		/obj/item/blood_filter = 1,
+		/obj/item/emergency_bed = 1,
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/gauze/sterilized = 2,
+		/obj/item/stack/medical/gauze/sterilized = 1,
 		/obj/item/stack/medical/wound_recovery = 1,
 		/obj/item/storage/pill_bottle/painkiller = 1,
 		/obj/item/healthanalyzer = 1,
@@ -304,4 +305,5 @@
 		/obj/item/weaponcell/medical,
 		/obj/item/handheld_soulcatcher,
 		/obj/item/wrench/medical,
+		/obj/item/emergency_bed,
 	))
