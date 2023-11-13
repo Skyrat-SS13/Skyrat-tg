@@ -295,9 +295,6 @@
 	base_icon_state = "white_herringbone"
 	floor_tile = /obj/item/stack/tile/iron/white/herringbone
 
-/turf/open/floor/iron/white/textured_large/airless //SR Edit - Airless Version
-	initial_gas_mix = AIRLESS_ATMOS
-
 /turf/open/floor/iron/white/airless
 	initial_gas_mix = AIRLESS_ATMOS
 
