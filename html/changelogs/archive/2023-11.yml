@@ -441,3 +441,94 @@
   Zergspower:
   - bugfix: Interdyne Medbay no longer has to worry about a mask that wont go away
       if you touch it
+2023-11-12:
+  Melbert:
+  - bugfix: Split persons can talk to their host once again
+  - rscdel: The Stethoscope no longer tells you if the target is missing a heart or
+      lungs. Now, it will simply say the target is lacking a pulse or not breathing.
+  - bugfix: AI controlled mobs which are immobilized are now properly immobilized
+  - bugfix: People with copied memories can modify their bank account ID as normal.
+  Motho:
+  - bugfix: NanoTrasen remembered to equip the NSV Blueshift with an APLU Paddy.
+  SkyratBot:
+  - spellcheck: Fixed typos in the examine text for the lead pipe & lead-acid battery.
+  - rscdel: Remove duplicate windows from birdshot, delta, and anomaly research ruin.
+  - refactor: Guardians/Powerminers/Holoparasites now use the basic mob framework.
+      Please report any unexpected changes or behaviour.
+  - qol: The verbs used to communicate with, recall, or banish your Guardian are now
+      action buttons.
+  - balance: If (as a Guardian) your host moves slightly out of range you will now
+      be dragged back into range if possible, rather than being instantly teleported
+      to them.
+  - balance: Protectors now have a shorter leash range rather than a longer one, in
+      order to more easily take advantage of their ability to drag their charge out
+      of danger.
+  - balance: Ranged Guardians can now hold down the mouse button to fire automatically.
+  - balance: People riding vehicles or other mobs now inherit all of their movement
+      traits, so riding a flying mob (or vehicle, if we have any of those) will allow
+      you to cross chasms and lava safely.
+  - rscadd: 4 new space ruins
+  jjpark-kb:
+  - rscadd: you can farm plants and ants on dug snow
+  - balance: you must now dig the basalt to farm plants and ants
+2023-11-13:
+  DATA_:
+  - spellcheck: The examine message for a carbon with an empty golem stomach now properly
+      matches said carbon's gender.
+  Iajret:
+  - bugfix: fixed delta's ntrep office flying light and disposals
+  Melbert:
+  - bugfix: Fix being unable to resist out of ice cubes
+  Plum-but-gayer:
+  - rscadd: Bureaucrats rejoice! Clipboards and folders are now available in the loadout
+      menu, under the 'Other' tab.
+  SSensum:
+  - admin: Admin opfor panel now requires a R_ADMIN flag instead of R_AUTOADMIN flag.
+  SkyratBot:
+  - bugfix: Ashwalker Tendril Revives no longer ghost the player being revived.
+  - bugfix: Replaces the jetpack in Interdyne pirates' suit storage with air tanks.
+      They need to breath, and already got the suit for speed.
+  - bugfix: '[Mafia] Obsessed now knows who their target is in their role description,
+      and people playing on PDA are told in their chat.'
+  - rscadd: With the flood of Chi within the Spinward Sector receding, various masters
+      of The Tunnel Arts, colloquially known as 'Maint-fu Masters', have started to
+      refine the basics of their martial techniques. New forms have started to develop
+      within Spacestation 13's hidden maintenance dojos.
+  - rscadd: Someone shoved off-balance makes them vulnerable to more guaranteed unarmed
+      strikes, knockdowns from a successful punch, and more difficult to escape grabs.
+  - rscadd: Grabbing someone (as well as kicking them while they're on the floor)
+      makes them more vulnerable to taking unarmed attack damage, even if they have
+      armor.
+  - balance: Unarmed strikes made with human-equivalent limbs have higher damage floors,
+      meaning you overall do more damage on average while not increasing the overall
+      damage potential. It's more consistent!
+  - refactor: Significantly changed how punching accuracy and knockdowns are calculated.
+  - balance: Golem and mushroom limbs are a lot more effective at punching as a result
+      of these various changes. As they should be.
+  - bugfix: emped bar signs will now display the correct sprite
+  - image: added a more detailed lightmask for the emp bar sign sprite
+  - bugfix: Goats will now calm down after getting grumpy without causing a runtime
+      error.
+  - bugfix: fixes holodeck missing medical tools
+  - spellcheck: Made the remembrance day greeting message more tasteful.
+  - bugfix: The Dread Disciples of Maint Khan, notorious Tunnel Arts practitioner
+      and maintenance warlord, have been driven from Nanotrasen stations within the
+      Spinward Sector. The average punch accuracy has been increased as a direct result,
+      with the most exhausted puncher now having a  max potential inaccuracy of 80%,
+      rather than the absurd 20% of the Disciples.
+  chemistrymain2:
+  - qol: Mold mobs now delete on death.
+  - bugfix: Toxic molds now correctly use a toxic spider instead of a guard spider
+      as their mob
+  delingar:
+  - balance: cortical borer's sprite is much smaller
+  - balance: cortical borers are squashable now
+  - bugfix: fixed cortical borer's chemicals from blood objective
+  honkpocket:
+  - rscadd: Adds the Syndicate Rebar Crossbow to the OPFOR loadout.
+  - rscadd: Adds the Sawn-off Hook Shotgun to the OPFOR loadout.
+  - bugfix: The recharger kit supplied along with various laser-guns in the OPFOR
+      menu now actually contains items.
+  - rscdel: Removes unusable Cultist melee weapons from the OPFOR loadout.
+  vinylspiders:
+  - bugfix: legally purchased suppressors no longer give illegal tech when deconstructed
