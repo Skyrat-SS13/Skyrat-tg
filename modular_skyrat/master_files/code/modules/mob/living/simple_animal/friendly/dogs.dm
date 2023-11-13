@@ -23,13 +23,12 @@
 /mob/living/basic/pet/dog/markus/Initialize(mapload)
 	. = ..()
 	if(!can_breed)
-			return
-		AddComponent(\
-			/datum/component/breed,\
-			can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
-			baby_path = /mob/living/basic/pet/dog/corgi/puppy,\ // no mixed breed puppies sadly
-		)
-
+		return
+	AddComponent(\
+		/datum/component/breed,\
+		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
+		baby_path = /mob/living/basic/pet/dog/corgi/puppy,\ // no mixed breed puppies sadly
+	)
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
 	if(client)
