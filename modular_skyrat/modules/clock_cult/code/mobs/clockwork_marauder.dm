@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 
-	var/datum/action/innate/clockcult/comm/communicate = new
+	var/datum/action/innate/clockcult/comm/communicate = new(src)
 	communicate.Grant(src)
 
 	GLOB.clockwork_marauders += src
