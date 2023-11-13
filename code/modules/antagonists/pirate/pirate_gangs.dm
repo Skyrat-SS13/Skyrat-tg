@@ -118,7 +118,8 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	response_too_late = "Too late to beg for mercy!"
 	response_not_enough = "Trying to cheat us? You'll regret this!"
 
-///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning //skyrat edit, disabled due to being overpowered or something
+///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning 
+// SKYRAT EDIT REMOVAL START - disabled due to being overpowered or something
 /*/datum/pirate_gang/interdyne
 	name = "Restless Ex-Pharmacists"
 
