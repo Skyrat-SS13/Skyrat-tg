@@ -55,8 +55,7 @@
 /obj/item/clothing/head/helmet/toggleable/sf_hardened
 	name = "'Muur' enclosed helmet"
 	desc = "A thick-fronted helmet with extendable visor for whole face protection. The materials and geometry of the helmet \
-		combine in such a way that bullets lose much of their armor penetrating energy before any damage can be done, rather than penetrate into it. \
-		On one hand, you just avoided a bullet to a braincase, on the other hand, that's going to be a killer headache later."
+		combine in such a way that bullets lose much of their armor penetrating energy before any damage can be done, rather than penetrate into it."
 	icon = 'modular_skyrat/modules/specialist_armor/icons/armor.dmi'
 	icon_state = "enclosed_standard"
 	worn_icon = 'modular_skyrat/modules/specialist_armor/icons/armor_worn.dmi'
@@ -96,6 +95,5 @@
 	name = "'Archangel' enclosed helmet"
 	desc = "A thick-fronted helmet with extendable visor for whole face protection. The materials and geometry of the helmet \
 		combine in such a way that bullets lose much of their armor penetrating energy before any damage can be done, rather than penetrate into it. \
-		On one hand, you just avoided a bullet to a braincase, on the other hand, that's going to be a killer headache later. \
-		This one has a red stripe down the front, indicating its for those paramedics foolish enough to run into the line of fire."
+		This one has a red stripe down the front."
 	icon_state = "enclosed_emt"
