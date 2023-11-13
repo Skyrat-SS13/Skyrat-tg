@@ -41,12 +41,9 @@
 			"icon" = initial(quirk.icon),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),
-<<<<<<< HEAD
-			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
-=======
 			"customizable" = constant_data?.is_customizable(),
 			"customization_options" = customization_options,
->>>>>>> 49414f78210 (Adds a little button to quirks that allows for relatively easy customization (#79251))
+			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
 		)
 
 	return list(

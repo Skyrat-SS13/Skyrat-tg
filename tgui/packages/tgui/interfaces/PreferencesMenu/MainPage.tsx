@@ -1,12 +1,7 @@
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-<<<<<<< HEAD
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE
-import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
-=======
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../components';
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE - Adds Dropdown
 import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from './data';
->>>>>>> 49414f78210 (Adds a little button to quirks that allows for relatively easy customization (#79251))
 import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
