@@ -11,7 +11,7 @@
 	return ..()
 
 /obj/effect/countdown/ci_timeout_period/start()
-	var/duration = CONFIG_GET(number/combat_indicator_timeout_period)
+	var/duration = CONFIG_GET(number/combat_indicator_timeout_period) SECONDS
 	time_end = world.time + duration
 
 	displayed_text = duration
