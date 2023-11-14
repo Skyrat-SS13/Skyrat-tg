@@ -99,6 +99,8 @@
 		return FALSE
 	// Generates the mining_stat to use for overlays and checks
 	update_mining_stat()
+	// Updates the overlays
+	update_appearance()
 	// Check if it is nonzero
 	if(mining_stat)
 		return FALSE
