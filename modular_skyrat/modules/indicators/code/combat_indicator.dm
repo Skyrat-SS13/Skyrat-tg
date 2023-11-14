@@ -12,6 +12,13 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	/// When is the next time this mob will be able to use flick_emote and put the fluff text in chat?
 	var/nextcombatpopup = 0
 
+	var/obj/effect/countdown/ci_timeout_period/timeout_countdown
+
+/mob/living/Destroy()
+	. = ..()
+
+	stop_ci_countdown()
+
 /**
  * Called whenever a mob inside a vehicle/sealed/ toggles CI status.
  *
@@ -107,12 +114,33 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		apply_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, PROC_REF(combat_indicator_unconscious_signal)) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
+		begin_ci_countdown()
 	else
 		combat_indicator = FALSE
 		remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS) //combat_indicator_unconcious_signal will no longer be fired if this mob is unconcious.
+		stop_ci_countdown()
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
+
+/mob/living/proc/begin_ci_countdown()
+	if (!isnull(timeout_countdown))
+		return
+
+	timeout_countdown = new /obj/effect/countdown/ci_timeout_period(src)
+	timeout_countdown.start()
+	RegisterSignal(timeout_countdown, COMSIG_QDELETING, PROC_REF(ci_countdown_deleting))
+
+/mob/living/proc/stop_ci_countdown()
+	if (timeout_countdown)
+		UnregisterSignal(timeout_countdown, COMSIG_QDELETING)
+		if (!QDELETED(timeout_countdown))
+			QDEL_NULL(timeout_countdown)
+
+/mob/living/proc/ci_countdown_deleting()
+	SIGNAL_HANDLER
+
+	stop_ci_countdown()
 
 /**
  * Called whenever the user hits their combat indicator keybind, defaulted to C.
