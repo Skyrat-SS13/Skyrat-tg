@@ -4,6 +4,13 @@
 	/// The world.time in which we expire. Set on start.
 	var/time_end
 
+/obj/effect/countdown/ci_timeout_period/attach(atom/target)
+	if (!isliving(target))
+		stack_trace("a ci timeout period was inappropiately applied to a non-living target!")
+		qdel(src)
+		return FALSE
+	return ..()
+
 /obj/effect/countdown/ci_timeout_period/start()
 	var/duration = CONFIG_GET(number/combat_indicator_timeout_period) SECONDS
 	time_end = world.time + duration
