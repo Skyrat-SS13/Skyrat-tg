@@ -154,11 +154,7 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-<<<<<<< HEAD
-			var/area/local_area = get_area(src)
-=======
 			var/area/local_area = get_room_area()
->>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
@@ -479,26 +475,17 @@
 // returns if the light has power /but/ is manually turned off
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
-<<<<<<< HEAD
-	var/area/local_area = get_room_area(src)
-	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE
-=======
 	var/area/local_area = get_room_area()
-	return !local_area.lightswitch && local_area.power_light || flickering
->>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
+	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE - ORIGINAL : return !local_area.lightswitch && local_area.power_light || flickering
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-<<<<<<< HEAD
-	var/area/local_area =get_room_area(src)
+	var/area/local_area = get_room_area()
 	//SKYRAT EDIT ADDITION BEGIN
 	if(isnull(local_area))
 		return FALSE
 	//SKYRAT EDIT END
-=======
-	var/area/local_area = get_room_area()
->>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
