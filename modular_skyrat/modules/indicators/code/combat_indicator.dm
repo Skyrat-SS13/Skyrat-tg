@@ -12,6 +12,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	/// When is the next time this mob will be able to use flick_emote and put the fluff text in chat?
 	var/nextcombatpopup = 0
 
+	/// The countdown representing the amount of time the user must wait til they can engage in mechanics if the other party does nothing.
 	var/obj/effect/countdown/ci_timeout_period/timeout_countdown
 
 /mob/living/Destroy()
@@ -123,6 +124,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		stop_ci_countdown()
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
+/// Creates a new ci timeout period countdown if we dont have one, and starts it.
 /mob/living/proc/begin_ci_countdown()
 	if (!isnull(timeout_countdown))
 		return
@@ -131,12 +133,14 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	timeout_countdown.start()
 	RegisterSignal(timeout_countdown, COMSIG_QDELETING, PROC_REF(ci_countdown_deleting))
 
+/// Deletes our existing ci timeout period countdown if we have one.
 /mob/living/proc/stop_ci_countdown()
 	if (timeout_countdown)
 		UnregisterSignal(timeout_countdown, COMSIG_QDELETING)
 		if (!QDELETED(timeout_countdown))
 			QDEL_NULL(timeout_countdown)
 
+/// Signal proc that clears our refs to our countdown if it deletes.
 /mob/living/proc/ci_countdown_deleting()
 	SIGNAL_HANDLER
 
@@ -216,6 +220,10 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	L.user_toggle_combat_indicator()
 
 /datum/config_entry/flag/combat_indicator
+
+/datum/config_entry/number/combat_indicator_timeout_period
+	default = 5
+	integer = FALSE
 
 // Surrender shit
 /atom/movable/screen/alert/status_effect/surrender/

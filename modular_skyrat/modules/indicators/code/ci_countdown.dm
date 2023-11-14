@@ -1,11 +1,10 @@
-/mob/living
+GLOBAL_VAR_INIT(combat_indicator_timeout_period, CONFIG_GET(flag/combat_indicator_timeout_period))
 
 /obj/effect/countdown/ci_timeout_period
 	invisibility = INVISIBILITY_NONE
 
+	/// The world.time in which we expire. Set on start.
 	var/time_end
-
-	var/duration = 5 SECONDS
 
 /obj/effect/countdown/ci_timeout_period/Destroy()
 	var/mob/living/attached = attached_to
@@ -14,6 +13,7 @@
 	return ..()
 
 /obj/effect/countdown/ci_timeout_period/start()
+	var/duration = GLOB.combat_indicator_timeout_period
 	time_end = world.time + duration
 
 	displayed_text = duration
