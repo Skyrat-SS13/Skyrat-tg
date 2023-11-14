@@ -185,17 +185,10 @@
 	return jointext(returnable_strings, "")
 
 /// Proc that just dispatches the announcement to our applicable audience. Only the announcement is a mandatory arg.
-<<<<<<< HEAD
-/proc/dispatch_announcement_to_players(announcement, list/players, sound_override = null, should_play_sound = TRUE)
-	if(!players)
-		players = GLOB.player_list
-
+/proc/dispatch_announcement_to_players(announcement, list/players = GLOB.player_list, sound_override = null, should_play_sound = TRUE)
 	// SKYRAT EDIT CHANGE BEGIN - CUSTOM ANNOUNCEMENTS
 	/* Original:
 
-=======
-/proc/dispatch_announcement_to_players(announcement, list/players = GLOB.player_list, sound_override = null, should_play_sound = TRUE)
->>>>>>> 4566c29c073 (Hallucinations don't print to newscasters (#79711))
 	var/sound_to_play = !isnull(sound_override) ? sound_override : 'sound/misc/notice2.ogg'
 
 	for(var/mob/target in players)
