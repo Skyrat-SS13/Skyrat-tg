@@ -103,6 +103,7 @@
 	update_appearance()
 	// Check if it is nonzero
 	if(mining_stat)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		return FALSE
 	// mining_stat = 0, we are ready to go
 	return TRUE
@@ -135,7 +136,6 @@
 
 /obj/machinery/bluespace_miner/process()
 	if(!check_factors())
-		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		return
 	// Generate all the waste gas
 	var/datum/gas_mixture/merger = new
