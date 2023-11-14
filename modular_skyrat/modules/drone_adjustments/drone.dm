@@ -11,6 +11,7 @@
 /obj/machinery/door/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/sliding_under)
+	AddComponent(/datum/component/personal_crafting)
 
 //This is so we log all machinery interactions for drones
 /obj/machinery/attack_drone(mob/living/basic/drone/user, list/modifiers)
@@ -38,4 +39,7 @@
 	new /obj/item/weldingtool(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
+	new /obj/item/pipe_dispenser(src)
+	new /obj/item/t_scanner(src)
+	new	/obj/item/analyzer(src)
 	new /obj/item/stack/cable_coil(src)
