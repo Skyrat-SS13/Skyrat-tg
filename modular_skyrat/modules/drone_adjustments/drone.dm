@@ -41,5 +41,5 @@
 	new /obj/item/multitool(src)
 	new /obj/item/pipe_dispenser(src)
 	new /obj/item/t_scanner(src)
-	new	/obj/item/analyzer(src)
+	new /obj/item/analyzer(src)
 	new /obj/item/stack/cable_coil(src)
