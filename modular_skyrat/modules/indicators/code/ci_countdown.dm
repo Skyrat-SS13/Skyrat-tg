@@ -1,5 +1,3 @@
-GLOBAL_VAR_INIT(combat_indicator_timeout_period, CONFIG_GET(flag/combat_indicator_timeout_period))
-
 /obj/effect/countdown/ci_timeout_period
 	invisibility = INVISIBILITY_NONE
 
@@ -13,7 +11,7 @@ GLOBAL_VAR_INIT(combat_indicator_timeout_period, CONFIG_GET(flag/combat_indicato
 	return ..()
 
 /obj/effect/countdown/ci_timeout_period/start()
-	var/duration = GLOB.combat_indicator_timeout_period
+	var/duration = CONFIG_GET(number/combat_indicator_timeout_period)
 	time_end = world.time + duration
 
 	displayed_text = duration
