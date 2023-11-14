@@ -11,7 +11,6 @@
 /obj/machinery/door/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/sliding_under)
-	AddComponent(/datum/component/personal_crafting)
 
 //This is so we log all machinery interactions for drones
 /obj/machinery/attack_drone(mob/living/basic/drone/user, list/modifiers)
@@ -27,6 +26,7 @@
 /mob/living/basic/drone/Initialize(mapload)
 	. = ..()
 	name = "[initial(name)] [rand(0,9)]-[rand(100,999)]" //So that we can identify drones from each other
+	AddComponent(/datum/component/personal_crafting)
 
 /obj/item/storage/backpack/drone_bag
 	name = "drone backpack"
