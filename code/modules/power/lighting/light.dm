@@ -101,7 +101,7 @@
 			qdel(on_turf)
 
 	if(!mapload) //sync up nightshift lighting for player made lights
-		var/area/our_area = get_room_area(src)
+		var/area/our_area = get_room_area()
 		var/obj/machinery/power/apc/temp_apc = our_area.apc
 		nightshift_enabled = temp_apc?.nightshift_lights
 
@@ -131,7 +131,7 @@
 	update(trigger = FALSE)
 
 /obj/machinery/light/Destroy()
-	var/area/local_area = get_room_area(src)
+	var/area/local_area = get_room_area()
 	if(local_area)
 		on = FALSE
 	QDEL_NULL(cell)
@@ -154,7 +154,11 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
+<<<<<<< HEAD
 			var/area/local_area = get_area(src)
+=======
+			var/area/local_area = get_room_area()
+>>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
@@ -174,7 +178,7 @@
 
 	. += emissive_appearance(overlay_icon, "[base_state]", src, alpha = src.alpha)
 
-	var/area/local_area = get_room_area(src)
+	var/area/local_area = get_room_area()
 
 	if(low_power_mode || major_emergency || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
@@ -196,7 +200,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/area/our_area = get_room_area(src)
+	var/area/our_area = get_room_area()
 	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(handle_fire))
 
 /obj/machinery/light/on_enter_area(datum/source, area/area_to_register)
@@ -227,7 +231,7 @@
 			color_set = color
 		if(reagents)
 			START_PROCESSING(SSmachines, src)
-		var/area/local_area =get_room_area(src)
+		var/area/local_area = get_room_area()
 		if (local_area?.fire)
 			color_set = fire_colour
 			brightness_set = fire_brightness
@@ -286,7 +290,7 @@
 		static_power_used = 0
 	else if(on) //Light is on, just recalculate usage
 		var/static_power_used_new = 0
-		var/area/local_area = get_room_area(src)
+		var/area/local_area = get_room_area()
 		if (nightshift_enabled && !local_area?.fire)
 			static_power_used_new = nightshift_brightness * nightshift_light_power * power_consumption_rate
 		else
@@ -475,17 +479,26 @@
 // returns if the light has power /but/ is manually turned off
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
+<<<<<<< HEAD
 	var/area/local_area = get_room_area(src)
 	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE
+=======
+	var/area/local_area = get_room_area()
+	return !local_area.lightswitch && local_area.power_light || flickering
+>>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
+<<<<<<< HEAD
 	var/area/local_area =get_room_area(src)
 	//SKYRAT EDIT ADDITION BEGIN
 	if(isnull(local_area))
 		return FALSE
 	//SKYRAT EDIT END
+=======
+	var/area/local_area = get_room_area()
+>>>>>>> f1863d9ae00 (Removes weird arg in machinery `get_room_area` (#79645))
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
@@ -687,7 +700,7 @@
 // called when area power state changes
 /obj/machinery/light/power_change()
 	SHOULD_CALL_PARENT(FALSE)
-	var/area/local_area =get_room_area(src)
+	var/area/local_area = get_room_area()
 	set_on(local_area.lightswitch && local_area.power_light)
 
 // called when heated
