@@ -25,7 +25,6 @@
 		attached_to.balloon_alert_to_viewers("ci timeout expired!")
 		var/mob/living/living_attached = attached_to
 		living_attached.log_message("ci timeout expired", LOG_ATTACK, color="red")
--
 		qdel(src)
 
 /obj/effect/countdown/ci_timeout_period/get_value()
