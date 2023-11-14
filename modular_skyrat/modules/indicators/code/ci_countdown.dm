@@ -3,10 +3,20 @@
 
 	/// The world.time in which we expire. Set on start.
 	var/time_end
+	var/mob/living/holder
+
+/obj/effect/countdown/ci_timeout_period/Initialize(mapload)
+	if (!isliving(loc))
+		stack_trace("a ci timeout countdown was incorrectly applied!")
+		qdel(src)
+		return
+
+	holder = loc
+	return ..()
 
 /obj/effect/countdown/ci_timeout_period/Destroy()
-	var/mob/living/attached = attached_to
-	attached?.timeout_countdown = null
+	holder.timeout_countdown = null
+	holder = null
 
 	return ..()
 
