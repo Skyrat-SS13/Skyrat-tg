@@ -50,16 +50,15 @@ GLOBAL_VAR(first_officer)
 	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a police patrol dispatch \
 	for second attempt negotiations, sector police presence reinforcement and close-up inspections. Novaya Rossiyskaya Imperiya collegial secretary out."
 	arrival_announcement = "Regulation-identified vessel approaching. Vessel ID tag is %NUMBER1-%NUMBER2-%NUMBER3. \
-	Vessel Model: Potato Beetle, Flight ETA: three minutes minimal. Vessel is authorised by the international regulations to perform its duties. \
-	We're clear for close orbit. Friendly reminder not to measure the distance between the vessel and the destination location, nor install any tracking devices anywhere on board of the vessel or in its close vicinity, \
-	unless given permission to; not to approach it, unless given permission to; not to perform any aggressive actions, nor any preparations to do so, to the vessel or the commissioned crew, \
-	as all of this is grounds for preemptive self-defense procedures initiation, and might result in moral or structural damage, arrests, injury or possibly death. In case of any complaints, they are to be sent directly to your employers."
+	Vessel is authorised by the galactic regulations to perform its duties and... We'll assume you know the rest. \
+	Stay safe, NRI collegial secretary out."
 	possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate police dispatch.")
 
-	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
-	response_too_late = "Your response was very delayed. We have been instructed to send in the patrol ship for second attempt negotiations, stand by."
-	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
-	announcement_color = "purple"
+	response_received = "It's quite saddening to see the arrived transaction, but the Regulation is the Regulation. NRI collegial secretary out."
+	response_rejected = "It seems that you're... requesting an inspection? They'll be there shortly, stand by."
+	response_too_late = "Are you doing alright? There's been no response for a good while, so the systems have automatically sent a ship to you."
+	response_not_enough = "Your station balance does not hold enough funds at the moment. We are sending a patrol ship for the inspection, stand by."
+	announcement_color = "yellow"
 
 /datum/pirate_gang/nri_raiders/generate_message(payoff)
 	var/number = rand(1,99)
