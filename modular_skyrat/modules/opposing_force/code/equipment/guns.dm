@@ -241,7 +241,7 @@
 	new /obj/item/ammo_box/magazine/toy/smg/riot(src)
 
 //laser
-/datum/opposing_force_equipment/ranged_stealth/egun_mini
+/datum/opposing_force_equipment/ranged_stealth/fisher
 	item_type = /obj/item/gun/energy/recharge/fisher
 
 /datum/opposing_force_equipment/ranged_stealth/ebow
