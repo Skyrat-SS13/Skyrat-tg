@@ -125,7 +125,7 @@
 	// if its lesser than(or equal to) normal pressure, don't work. Same goes for over(or equal to) 150% pressure
 	if(environment.return_pressure() <= ONE_ATMOSPHERE)
 		mining_stat = mining_stat | BLUESPACE_MINER_LOW_PRESSURE
-	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 1.5))
+	else if(environment.return_pressure() >= (ONE_ATMOSPHERE * 1.5))
 		mining_stat = mining_stat | BLUESPACE_MINER_HIGH_PRESSURE
 
 //if check_factors is good, then we spawn materials
