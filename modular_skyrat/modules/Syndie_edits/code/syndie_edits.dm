@@ -209,15 +209,16 @@
 	acid = 45
 
 //Interdyne Clothing
-/obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
+/obj/item/clothing/under/syndicate/skyrat/interdyne
 	name = "interdyne turtleneck"
 	desc = "A sleek white turtleneck with a hint of interdyne-green, appropriately paired with some charcoal-black cargo pants."
 	armor_type = /datum/armor/clothing_under/syndicate
 	icon_state = "ip_turtleneck"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
-/obj/item/clothing/under/syndicate/skyrat/interdyne_miner
+/obj/item/clothing/under/syndicate/skyrat/interdyne/miner
 	name = "interdyne jumpsuit"
 	desc = "A black and green Interdyne Pharmaceutics jumpsuit with reinforced fibers."
 	armor_type = /datum/armor/clothing_under/cargo_miner
@@ -225,7 +226,7 @@
 	can_adjust = TRUE
 	alt_covers_chest = FALSE
 
-/obj/item/clothing/under/syndicate/skyrat/interdyne_deckofficer
+/obj/item/clothing/under/syndicate/skyrat/interdyne/deckofficer
 	name = "deck officer's jumpsuit"
 	desc = "A black and green Interdyne Pharmaceutics uniform complete with a golden belt buckle."
 	armor_type = /datum/armor/clothing_under/syndicate
@@ -276,18 +277,21 @@
 	icon_state = "ip_officercloak"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	current_skin = "ip_officercloak" //prevents reskinning
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/black
 	name = "interdyne black labcoat"
 	desc = "A black labcoat accented with interdyne-green colors."
 	icon_state = "ip_labcoatblack"
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/white
 	name = "interdyne white labcoat"
 	desc = "A white labcoat accented with interdyne-green colors."
 	icon_state = "ip_labcoatwhite"
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 
@@ -304,6 +308,7 @@
 	name = "deck officer's labcoat"
 	desc = "A white labcoat with interdyne-green accents and a particularly fancy collar."
 	icon_state = "ip_officerlabcoat"
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/wintercoat/medical/viro/interdyne

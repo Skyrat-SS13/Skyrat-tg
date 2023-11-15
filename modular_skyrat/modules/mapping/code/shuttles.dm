@@ -55,17 +55,6 @@
 	icon_keyboard = "syndie_key"
 	possible_destinations = "interdyne_cargo_home;interdyne_cargo_away;interdyne_cargo_custom;whiteship_home"
 
-/obj/machinery/computer/camera_advanced/shuttle_docker/interdyne
-	name = "Interdyne Navigation Computer"
-	desc = "Used to designate a precise transit location for the Interdyne Cargo Shuttle."
-	shuttleId = "interdyne_cargo"
-	lock_override = NONE
-	shuttlePortId = "interdyne_cargo_custom"
-	jump_to_ports = list("interdyne_cargo_home" = 1, "whiteship_home" = 1)
-	view_range = 10
-	x_offset = 2
-	y_offset = 0
-
 /obj/item/circuitboard/computer/interdyne_cargo
 	name = "Interdyne Shuttle Control (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/interdyne_cargo

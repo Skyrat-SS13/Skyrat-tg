@@ -22,7 +22,7 @@
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne
 	suit = /obj/item/clothing/suit/toggle/labcoat/skyrat/interdyne_labcoat/white
 	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
 	ears = /obj/item/radio/headset/interdyne/green
@@ -40,7 +40,7 @@
 	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
-	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_turtleneck
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne
 	suit = /obj/item/clothing/suit/hooded/wintercoat/medical/viro/interdyne
 	ears = /obj/item/radio/headset/interdyne/green
 	head = /obj/item/clothing/head/beret/medical/skyrat/interdyne
@@ -54,7 +54,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Interdyne Shaft Miner"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_miner
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne/miner
 	suit = /obj/item/clothing/suit/syndicate/interdyne_jacket
 	head = null //funny subtypes
 	r_pocket = /obj/item/storage/bag/ore
@@ -70,7 +70,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Interdyne Deck Officer"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_deckofficer
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne/deckofficer
 	head = /obj/item/clothing/head/hats/syndicate/interdyne_deckofficer_black
 	suit = /obj/item/clothing/suit/armor/hos/deckofficer
 	ears = /obj/item/radio/headset/interdyne/command
@@ -88,7 +88,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/ice
 	name = "Icemoon Interdyne Shaft Miner"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne_miner
+	uniform = /obj/item/clothing/under/syndicate/skyrat/interdyne/miner
 	head = /obj/item/clothing/ears/headphones
 	suit = /obj/item/clothing/suit/syndicate/interdyne_jacket
 
