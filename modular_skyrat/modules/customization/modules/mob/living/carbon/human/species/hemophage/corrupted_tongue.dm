@@ -118,14 +118,18 @@
 	// if you drained from a human with a client, congrats
 	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER_CKEY : 1)
 
+	var/obj/item/organ/internal/stomach/hemophage/stomach_reference = hemophage.get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(isnull(stomach_reference))
+		victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+
+	else
+		if(!victim.transfer_blood_to(stomach_reference, drained_blood, forced = TRUE))
+			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * drained_multiplier), 0, BLOOD_VOLUME_MAXIMUM)
 
 	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
 	to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
-
-	var/obj/item/organ/internal/stomach/hemophage/stomach_reference = hemophage.get_organ_slot(ORGAN_SLOT_STOMACH)
-	victim.transfer_blood_to(stomach_reference, drained_blood, forced = TRUE)
 
 	playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
 
