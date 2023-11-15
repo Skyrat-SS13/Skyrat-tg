@@ -21,19 +21,27 @@
 
 /obj/item/organ/internal/liver/hemophage/handle_chemical(mob/living/carbon/affected_mob, datum/reagent/chem, seconds_per_tick, times_fired)
 	. = ..()
-// parent returned COMSIG_MOB_STOP_REAGENT_CHECK or we are failing
+
+	// parent returned COMSIG_MOB_STOP_REAGENT_CHECK or we are failing
 	if((. & COMSIG_MOB_STOP_REAGENT_CHECK) || (organ_flags & ORGAN_FAILING))
 		return
-// hemophages drink blood so blood must be pretty good for them
-	if(istype(chem, /datum/reagent/blood))
-		var/to_chatted = FALSE
-		for(var/datum/wound/iter_wound as anything in affected_mob.all_wounds)
-			if(SPT_PROB(5, seconds_per_tick))
-				var/helped = iter_wound.blood_life_process()
-				if(!to_chatted && helped)
-					to_chat(affected_mob, span_notice("A euphoric feeling hits you as blood's warmth washes through your insides. Your body feels more alive, your wounds healthier."))
-				to_chatted = TRUE
-		return // Do normal metabolism
+
+	// hemophages drink blood so blood must be pretty good for them
+	if(!istype(chem, /datum/reagent/blood))
+		return
+
+	var/feedback_delivered = FALSE
+	for(var/datum/wound/iter_wound as anything in affected_mob.all_wounds)
+		if(!SPT_PROB(5, seconds_per_tick))
+			continue
+
+		var/helped = iter_wound.blood_life_process()
+		if(feedback_delivered || !helped)
+			continue
+
+		to_chat(affected_mob, span_notice("A euphoric feeling hits you as blood's warmth washes through your insides. Your body feels more alive, your wounds healthier."))
+		feedback_delivered = TRUE
+
 
 // Different handling, different name.
 // Returns FALSE by default so broken bones and 'loss' wounds don't give a false message
@@ -79,6 +87,7 @@
 		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
 
 	return ..()
+
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "tongue" // Name change is handled by /datum/component/organ_corruption/corrupt_organ()

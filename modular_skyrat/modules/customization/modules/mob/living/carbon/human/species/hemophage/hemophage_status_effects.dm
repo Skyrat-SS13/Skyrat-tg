@@ -3,7 +3,7 @@
 /// How much burn damage their body regenerates per second while using blood regeneration.
 #define BLOOD_REGEN_BURN_AMOUNT 2
 /// How much toxin damage their body regenerates per second while using blood regeneration.
-#define BLOOD_REGEN_TOXIN_AMOUNT 1.75
+#define BLOOD_REGEN_TOXIN_AMOUNT 1.5
 /// How much cellular damage their body regenerates per second while using blood regeneration.
 #define BLOOD_REGEN_CELLULAR_AMOUNT 1.50
 

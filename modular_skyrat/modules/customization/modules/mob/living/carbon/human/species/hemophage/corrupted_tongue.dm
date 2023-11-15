@@ -3,6 +3,7 @@
 /// The multiplier for blood received by Hemophages out of humans with ckeys.
 #define BLOOD_DRAIN_MULTIPLIER_CKEY 1.5
 
+
 /datum/component/organ_corruption/tongue
 	corruptable_organ_type = /obj/item/organ/internal/tongue
 	corrupted_icon_state = "tongue"
