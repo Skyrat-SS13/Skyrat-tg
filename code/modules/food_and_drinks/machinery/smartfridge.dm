@@ -343,13 +343,8 @@
 			return FALSE
 		return TRUE
 	else
-<<<<<<< HEAD
-		if(O.loc.atom_storage)
-			return O.loc.atom_storage.attempt_remove(O, src)
-=======
 		if(weapon.loc.atom_storage)
 			return weapon.loc.atom_storage.attempt_remove(weapon, src, silent = TRUE)
->>>>>>> 81214b2d035 (General code maintenance for smart fridge (#79623))
 		else
 			weapon.forceMove(src)
 			return TRUE
