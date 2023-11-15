@@ -471,3 +471,178 @@
   jjpark-kb:
   - rscadd: you can farm plants and ants on dug snow
   - balance: you must now dig the basalt to farm plants and ants
+2023-11-13:
+  DATA_:
+  - spellcheck: The examine message for a carbon with an empty golem stomach now properly
+      matches said carbon's gender.
+  Iajret:
+  - bugfix: fixed delta's ntrep office flying light and disposals
+  Melbert:
+  - bugfix: Fix being unable to resist out of ice cubes
+  Plum-but-gayer:
+  - rscadd: Bureaucrats rejoice! Clipboards and folders are now available in the loadout
+      menu, under the 'Other' tab.
+  SSensum:
+  - admin: Admin opfor panel now requires a R_ADMIN flag instead of R_AUTOADMIN flag.
+  SkyratBot:
+  - bugfix: Ashwalker Tendril Revives no longer ghost the player being revived.
+  - bugfix: Replaces the jetpack in Interdyne pirates' suit storage with air tanks.
+      They need to breath, and already got the suit for speed.
+  - bugfix: '[Mafia] Obsessed now knows who their target is in their role description,
+      and people playing on PDA are told in their chat.'
+  - rscadd: With the flood of Chi within the Spinward Sector receding, various masters
+      of The Tunnel Arts, colloquially known as 'Maint-fu Masters', have started to
+      refine the basics of their martial techniques. New forms have started to develop
+      within Spacestation 13's hidden maintenance dojos.
+  - rscadd: Someone shoved off-balance makes them vulnerable to more guaranteed unarmed
+      strikes, knockdowns from a successful punch, and more difficult to escape grabs.
+  - rscadd: Grabbing someone (as well as kicking them while they're on the floor)
+      makes them more vulnerable to taking unarmed attack damage, even if they have
+      armor.
+  - balance: Unarmed strikes made with human-equivalent limbs have higher damage floors,
+      meaning you overall do more damage on average while not increasing the overall
+      damage potential. It's more consistent!
+  - refactor: Significantly changed how punching accuracy and knockdowns are calculated.
+  - balance: Golem and mushroom limbs are a lot more effective at punching as a result
+      of these various changes. As they should be.
+  - bugfix: emped bar signs will now display the correct sprite
+  - image: added a more detailed lightmask for the emp bar sign sprite
+  - bugfix: Goats will now calm down after getting grumpy without causing a runtime
+      error.
+  - bugfix: fixes holodeck missing medical tools
+  - spellcheck: Made the remembrance day greeting message more tasteful.
+  - bugfix: The Dread Disciples of Maint Khan, notorious Tunnel Arts practitioner
+      and maintenance warlord, have been driven from Nanotrasen stations within the
+      Spinward Sector. The average punch accuracy has been increased as a direct result,
+      with the most exhausted puncher now having a  max potential inaccuracy of 80%,
+      rather than the absurd 20% of the Disciples.
+  chemistrymain2:
+  - qol: Mold mobs now delete on death.
+  - bugfix: Toxic molds now correctly use a toxic spider instead of a guard spider
+      as their mob
+  delingar:
+  - balance: cortical borer's sprite is much smaller
+  - balance: cortical borers are squashable now
+  - bugfix: fixed cortical borer's chemicals from blood objective
+  honkpocket:
+  - rscadd: Adds the Syndicate Rebar Crossbow to the OPFOR loadout.
+  - rscadd: Adds the Sawn-off Hook Shotgun to the OPFOR loadout.
+  - bugfix: The recharger kit supplied along with various laser-guns in the OPFOR
+      menu now actually contains items.
+  - rscdel: Removes unusable Cultist melee weapons from the OPFOR loadout.
+  vinylspiders:
+  - bugfix: legally purchased suppressors no longer give illegal tech when deconstructed
+2023-11-14:
+  Danny Boy:
+  - bugfix: Fixed Signer eyebrow raising/lowering indicators and emotes
+  - bugfix: Fixed Signer RuneChat punctuation
+  - bugfix: Signers no longer sign with their species' tongue
+  Melbert:
+  - balance: Body temperature from being lit on fire will soft cap at 1,200 K. It
+      will still increase beyond this, but with diminishing returns. For example,
+      at 5,000 K, fire will heat 67x weaker.
+  - bugfix: Fixes some potential exploits and issues involving shielded equipment.
+  Rhials:
+  - bugfix: The full mining lockers in the Lavaland Mafia map have been replaced with
+      (empty) mining carts.
+  SkyratBot:
+  - bugfix: tramstation cargo disposals outlet has been repositioned to not softlock
+      whoever cannot lay down
+  - bugfix: fixes half-covering glassware protecting eyes from chemicals
+  - bugfix: suite storage units can be locked again. Remember to install a card reader
+      or set the access levels in the airlock electronics inside its stock parts &
+      finally swipe your ID to properly enforce access control.
+  - bugfix: You can now eject blank IDs from modular computers
+  - refactor: gutlunches have been refactored into basic mobs. please report any bugs
+  - rscadd: ashwalkers have a small ranch they can manage
+  - bugfix: wall tearer compnent wont runtime when interacting with mineral walls
+  - qol: Fixed/improved feedback when failing to apply a direct law change to a cyborg.
+  - bugfix: Borgs who are unsynced from a malf AI now lose the zeroth law as intended.
+  - code_imp: Atoms no longer break again after they are hit when broken, making them
+      hopefully more stable in the future.
+  - bugfix: The Sleeping Carp scroll no longer says deflect using throw mode.
+  - bugfix: Fixed tcomms relays being weird, they should be sabotagable again
+  - qol: 'Gunpoint: Examining the target will show who is holding them at gunpoint'
+  - qol: 'Gunpoint: Examining the shooter will show who they are holding at gunpoint'
+  - balance: 'Gunpoint: If the target tries to grab, they will trigger the shot'
+  - balance: 'Gunpoint: If the target or the shooter are shoved, it will cancel the
+      gunpoint'
+  - balance: 'Gunpoint: If the target is pulled, it will cancel the gunpoint'
+  - balance: Both the target and the shooter can't be bumped anymore to avoid cheesing
+      charged shot or removing the gunpoint by just moving around
+  - bugfix: Clicking the alert button of the shooter will now correctly remove gunpoint
+  - bugfix: fixed pipe painter not applying pipe color properly
+  - qol: made spraycans work also as pipe painters
+  - qol: spraycans now have basic color presets for quick selection
+  - rscadd: Add bamboo seeds to ash walker den. This lets them craft blowguns, crude
+      syringes, bamboo spears, punji stick traps, and more!
+  - code_imp: Quirks are now customizable on the quirks page instead of on the character
+      prefs page
+  - bugfix: Kronkaine's action speed buff now stops when metabolized out.
+  - bugfix: Drug-related moodlets should now time out properly. They still linger
+      after metabolization ends, but they no longer last forever.
+  - bugfix: The PDA painter and the emergency shield generator can now be destroyed.
+  - rscadd: Green Beer has an overdose effect now. It will permeate your skin.
+  - balance: Mech overclock coefficient is down to 1.25 from the default 1.5 for Ripley
+      and Clarke.
+  - balance: Mech overclock heating now scales with movespeed, higher speed - faster
+      overheat.
+  - bugfix: Removes some roundstart active turfs.
+  - image: Resprites the Reactive Anomaly Armor
+  - bugfix: Gorillas and Regal Rats will no longer show up in the ghost-control menu
+      if they died without anyone ever taking control of them.
+  Vishenka0704:
+  - bugfix: Now you can refuse the pirates request.
+  honkpocket:
+  - bugfix: The SC/FISHER side-arm is now available in the OPFOR loadout.
+2023-11-15:
+  LT3:
+  - bugfix: Bad luck omen again raises your chance of getting shocked by the tram
+      plate
+  - bugfix: Tram plate checks and energizes when the tram is moving
+  - code_imp: Omen component now applies the cursed trait
+  Melbert:
+  - bugfix: Fixes hallucination and encrypted announcements printing to the Newscaster.
+  Nerev4r:
+  - bugfix: Kicks are no longer supercharged by the dark energies of the Satsui no
+      Hado, making them no longer do a billion damage.
+  Shroopy:
+  - bugfix: Molotovs now light their splashed contents on fire.
+  SkyratBot:
+  - bugfix: PDAs now log that they've been emagged, but will no longer log any further
+      programs they open beyond that. This means Nukies don't sell themselves out
+      by opening their disk tracking app.
+  - qol: looms will now attempt to loop through stackable items (cotton as an example)
+  - qol: You will no longer be added to the list for ghost-orbit role polls if you
+      have opted out of getting antag ghost roles in your preferences.
+  - qol: You will get a tgui_alert to accept the ghost role if you were selected via
+      the orbit poll, instead of it just throwing you intot he role.
+  - refactor: Destructive Analyzers now have a TGUI menu.
+  - bugfix: Safeties in the code have been added to prevent things in disposals going
+      into nullspace whenever they get ejected from a pipe - you will just magically
+      spawn at the turf that you were meant to be flung towards.
+  - balance: Sapient brimdemons can't hurt themselves with their own beams
+  - bugfix: bileworms will now attack
+  - bugfix: The plaguebearer can no longer depower virology on Tramstation
+  - spellcheck: hopefully changed all instances of the word 'mjolnir' to 'mjollnir'
+  StrangeWeirdKitten:
+  - rscdel: Removes the omni-lathe from blueshift secure tech storage. Replaces it
+      with some law modules.
+  TwistedSilicon:
+  - bugfix: invisimin verb now makes you invisible to all HUDs too! No more floating
+      healthbars or job identifiers giving you away while you sneak around.
+  san7890, Ghommie:
+  - bugfix: The Blessing of Insanity now grants no damage slowdown and free hyperspace
+      movement correctly.
+  vinylspiders:
+  - bugfix: Adds a bitrunning version of the double esword that has a 75% block rate
+  - bugfix: fixed a bug where loadout plushes would sometimes have their custom descriptions
+      reset under certain conditions
+  - refactor: fixed hard dels associated with anesthetic machine, & the mask item
+      will now cause ci to fail when placed via mapping
+  - bugfix: you no longer have to violently beat the anesthetic machine to death with
+      the anesthetic tank to load it
+  - bugfix: fixed a bug that would cause the anesthetic machine to become unusable
+      when a mask gets destroyed (e.g., in a fire or explosion)
+  - bugfix: fixes some of the runtimes in the loadout system caused by job/species
+      restricted items

@@ -113,7 +113,7 @@
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/ammo_box/n762,
 							/obj/item/ammo_box/n762,
-							/obj/item/suppressor,
+							/obj/item/suppressor/standard,
 							/obj/item/knife/combat,
 							/obj/item/beamout_tool)
 	l_pocket = null

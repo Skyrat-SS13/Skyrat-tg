@@ -803,10 +803,16 @@
 			if(istype(contained_reagent, accelerant_type))
 				firestarter = 1
 				break
+	// SKYRAT EDIT CHANGE START - ORIGINAL : 
+	//if(firestarter && active)
+//		target.fire_act()
+//		new /obj/effect/hotspot(get_turf(target))
+//	..()
+	..()
 	if(firestarter && active)
 		target.fire_act()
 		new /obj/effect/hotspot(get_turf(target))
-	..()
+	// SKYRAT EDIT END
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, params)
 	if(I.get_temperature() && !active)
