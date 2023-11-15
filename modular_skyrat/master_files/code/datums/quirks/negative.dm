@@ -86,3 +86,14 @@
 	var/datum/quirk/blooddeficiency/synth/bd_synth = new
 	qdel(src)
 	return bd_synth.add_to_holder(new_holder, quirk_transfer)
+
+/datum/quirk/gifted
+	name = "Gifted"
+	desc = "You were born a bit lucky, intelligent, or something in between. You're able to do a little more."
+	icon = FA_ICON_DOVE
+	value = -6
+	mob_trait = TRAIT_GIFTED
+	gain_text = span_danger("You feel like you're just a little bit more flexible.")
+	lose_text = span_notice("You feel a little less flexible.")
+	medical_record_text = "Patient has a history of uncanny fortune."
+	hardcore_value = 0
