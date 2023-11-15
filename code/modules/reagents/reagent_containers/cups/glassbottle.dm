@@ -803,22 +803,10 @@
 			if(istype(contained_reagent, accelerant_type))
 				firestarter = 1
 				break
-<<<<<<< HEAD
-	// SKYRAT EDIT CHANGE START - ORIGINAL : 
-	//if(firestarter && active)
-//		target.fire_act()
-//		new /obj/effect/hotspot(get_turf(target))
-//	..()
-=======
->>>>>>> f36d082b3c0 (Fixes molotovs not lighting their splashed contents (#79727))
 	..()
 	if(firestarter && active)
 		target.fire_act()
 		new /obj/effect/hotspot(get_turf(target))
-<<<<<<< HEAD
-	// SKYRAT EDIT END
-=======
->>>>>>> f36d082b3c0 (Fixes molotovs not lighting their splashed contents (#79727))
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attackby(obj/item/I, mob/user, params)
 	if(I.get_temperature() && !active)
