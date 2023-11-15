@@ -595,3 +595,54 @@
   - bugfix: Now you can refuse the pirates request.
   honkpocket:
   - bugfix: The SC/FISHER side-arm is now available in the OPFOR loadout.
+2023-11-15:
+  LT3:
+  - bugfix: Bad luck omen again raises your chance of getting shocked by the tram
+      plate
+  - bugfix: Tram plate checks and energizes when the tram is moving
+  - code_imp: Omen component now applies the cursed trait
+  Melbert:
+  - bugfix: Fixes hallucination and encrypted announcements printing to the Newscaster.
+  Nerev4r:
+  - bugfix: Kicks are no longer supercharged by the dark energies of the Satsui no
+      Hado, making them no longer do a billion damage.
+  Shroopy:
+  - bugfix: Molotovs now light their splashed contents on fire.
+  SkyratBot:
+  - bugfix: PDAs now log that they've been emagged, but will no longer log any further
+      programs they open beyond that. This means Nukies don't sell themselves out
+      by opening their disk tracking app.
+  - qol: looms will now attempt to loop through stackable items (cotton as an example)
+  - qol: You will no longer be added to the list for ghost-orbit role polls if you
+      have opted out of getting antag ghost roles in your preferences.
+  - qol: You will get a tgui_alert to accept the ghost role if you were selected via
+      the orbit poll, instead of it just throwing you intot he role.
+  - refactor: Destructive Analyzers now have a TGUI menu.
+  - bugfix: Safeties in the code have been added to prevent things in disposals going
+      into nullspace whenever they get ejected from a pipe - you will just magically
+      spawn at the turf that you were meant to be flung towards.
+  - balance: Sapient brimdemons can't hurt themselves with their own beams
+  - bugfix: bileworms will now attack
+  - bugfix: The plaguebearer can no longer depower virology on Tramstation
+  - spellcheck: hopefully changed all instances of the word 'mjolnir' to 'mjollnir'
+  StrangeWeirdKitten:
+  - rscdel: Removes the omni-lathe from blueshift secure tech storage. Replaces it
+      with some law modules.
+  TwistedSilicon:
+  - bugfix: invisimin verb now makes you invisible to all HUDs too! No more floating
+      healthbars or job identifiers giving you away while you sneak around.
+  san7890, Ghommie:
+  - bugfix: The Blessing of Insanity now grants no damage slowdown and free hyperspace
+      movement correctly.
+  vinylspiders:
+  - bugfix: Adds a bitrunning version of the double esword that has a 75% block rate
+  - bugfix: fixed a bug where loadout plushes would sometimes have their custom descriptions
+      reset under certain conditions
+  - refactor: fixed hard dels associated with anesthetic machine, & the mask item
+      will now cause ci to fail when placed via mapping
+  - bugfix: you no longer have to violently beat the anesthetic machine to death with
+      the anesthetic tank to load it
+  - bugfix: fixed a bug that would cause the anesthetic machine to become unusable
+      when a mask gets destroyed (e.g., in a fire or explosion)
+  - bugfix: fixes some of the runtimes in the loadout system caused by job/species
+      restricted items

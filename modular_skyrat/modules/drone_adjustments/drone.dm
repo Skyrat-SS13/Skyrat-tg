@@ -26,6 +26,7 @@
 /mob/living/basic/drone/Initialize(mapload)
 	. = ..()
 	name = "[initial(name)] [rand(0,9)]-[rand(100,999)]" //So that we can identify drones from each other
+	AddComponent(/datum/component/personal_crafting)
 
 /obj/item/storage/backpack/drone_bag
 	name = "drone backpack"
@@ -38,4 +39,7 @@
 	new /obj/item/weldingtool(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
+	new /obj/item/pipe_dispenser(src)
+	new /obj/item/t_scanner(src)
+	new /obj/item/analyzer(src)
 	new /obj/item/stack/cable_coil(src)
