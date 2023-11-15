@@ -50,13 +50,13 @@
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user))
 		return FALSE
-	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
+	user.balloon_alert_to_viewers("flipping table upright...")
 	if(do_after(user, max_integrity * 0.25))
 		var/obj/structure/table/new_table = new table_type(src.loc)
 		new_table.update_integrity(src.get_integrity())
 		if(custom_materials)
 			new_table.set_custom_materials(custom_materials)
-		user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
+		user.balloon_alert_to_viewers("table flipped upright")
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
@@ -68,7 +68,7 @@
 		return
 	if(!can_flip)
 		return
-	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
+	user.balloon_alert_to_viewers("flipping table...")
 	if(!do_after(user, max_integrity * 0.25))
 		return
 
@@ -89,16 +89,14 @@
 	flipped_table.set_custom_materials(custom_materials)
 
 	var/sound_volume = 100
-	var/visible_message = "[user] flips over the [src]!"
-	var/self_message = "You flip over the [src]!"
+	var/balloon_message = "table flipped"
 	var/user_pacifist = HAS_TRAIT(user, TRAIT_PACIFISM)
 
 	if (user_pacifist)
-		visible_message = "[user] gently flips over the [src]."
-		self_message = "You gently flip over the [src]."
+		balloon_message = "table gently flipped"
 		sound_volume = 40
 
-	user.visible_message(span_danger(visible_message), span_notice(self_message))
+	user.balloon_alert_to_viewers(balloon_message)
 	playsound(src, 'sound/items/trayhit2.ogg', sound_volume)
 	qdel(src)
 

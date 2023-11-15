@@ -1,48 +1,48 @@
 // Syndicate
 
-/mob/living/basic/syndicate/melee/anthro
+/mob/living/basic/trooper/syndicate/melee/anthro
 	name = "Syndicate Shanker"
 	desc = "An anthromorphic red panda member of the Syndicate, wielding a knife."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndiredpan"
 	icon_living = "syndiredpan"
 
-/mob/living/basic/syndicate/melee/sword/anthro
+/mob/living/basic/trooper/syndicate/melee/sword/anthro
 	name = "Syndicate Sword Beast"
 	desc = "An anthromorphic fennec member of the Syndicate, wielding an energy sword and shield."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndifennec"
 	icon_living = "syndifennec"
 
-/mob/living/basic/syndicate/ranged/anthro
+/mob/living/basic/trooper/syndicate/ranged/anthro
 	name = "Syndicate Pistoleer"
 	desc = "An anthromorphic member of the Syndicate, wielding a pistol."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndisquirrel"
 	icon_living = "syndisquirrel"
 
-/mob/living/basic/syndicate/ranged/smg/anthro
+/mob/living/basic/trooper/syndicate/ranged/smg/anthro
 	name = "Syndicate Rapid Gunnder"
 	desc = "A moth-person member of the Syndicate, wielding an SMG."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndimoth"
 	icon_living = "syndimoth"
 
-/mob/living/basic/syndicate/melee/space/anthro/lizard
+/mob/living/basic/trooper/syndicate/melee/space/anthro/lizard
 	name = "Syndicate Commando Lizard"
 	desc = "A reptilian member of the Syndicate!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndilizard"
 	icon_living = "syndilizard"
 
-/mob/living/basic/syndicate/ranged/space/anthro/cat
+/mob/living/basic/trooper/syndicate/ranged/space/anthro/cat
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndicat"
 	icon_living = "syndicat"
 	name = "Syndicate Commando Feline"
 	desc = "An anthromorphic feline member of the Syndicate."
 
-/mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
+/mob/living/basic/trooper/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndifox"
 	icon_living = "syndifox"

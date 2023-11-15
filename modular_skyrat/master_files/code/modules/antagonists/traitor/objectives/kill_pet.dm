@@ -11,7 +11,7 @@
 		JOB_QUARTERMASTER = list(
 			/mob/living/basic/sloth/citrus,
 			/mob/living/basic/sloth/paperwork,
-			/mob/living/simple_animal/hostile/gorilla/cargo_domestic,
+			/mob/living/basic/gorilla/cargorilla,
 		),
 		// Non-heads like the warden, these are automatically medium-risk at minimum
 		// They are also the only two modular additions so far

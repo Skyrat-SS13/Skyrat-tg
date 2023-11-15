@@ -3,6 +3,9 @@ import { Section, Stack, Box, Tabs, Button, BlockQuote } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike } from 'common/react';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const hereticRed = {
   color: '#e03c3c',
@@ -63,6 +66,12 @@ const IntroductionSection = (props, context) => {
         <Section title="You are the Heretic!" fill fontSize="14px">
           <Stack vertical>
             <FlavorSection />
+            <Stack.Divider />
+            {/* SKYRAT EDIT ADDITION START */}
+            <Stack.Item>
+              <Rules />
+            </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Divider />
             <GuideSection />
             <Stack.Divider />

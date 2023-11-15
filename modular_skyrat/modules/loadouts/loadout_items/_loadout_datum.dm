@@ -38,8 +38,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 /datum/loadout_item
 	/// Displayed name of the loadout item.
 	var/name
-	/// Whether this item can be renamed.
-	var/can_be_named = FALSE
+	/// Whether this item can be renamed and described.
+	var/can_be_named = TRUE
 	/// The category of the loadout item.
 	var/category
 	/// The actual item path of the loadout item.
@@ -50,6 +50,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/ckeywhitelist
 	/// If set, is a list of job names of which can get the loadout item
 	var/list/restricted_roles
+	/// If set, is a list of job names of which can't get the loadout item
+	var/list/blacklisted_roles
 	/// If set, is a list of species which can get the loadout item
 	var/list/restricted_species
 	/// Whether the item is restricted to supporters
@@ -114,12 +116,17 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 			else
 				stack_trace("[type] on_equip_item(): Could not locate backpack item (path: [item_path]) in [equipper]'s contents to set greyscaling!")
 
-	if(can_be_named && !visuals_only && (INFO_NAMED in our_loadout[item_path]))
+	if(can_be_named && !visuals_only)
 		var/obj/item/equipped_item = locate(item_path) in equipper.get_all_gear()
 		if(equipped_item)
-			equipped_item.name = our_loadout[item_path][INFO_NAMED]
+			if(INFO_NAMED in our_loadout[item_path])
+				equipped_item.name = our_loadout[item_path][INFO_NAMED]
+				equipped_item.on_loadout_custom_named()
+			if(INFO_DESCRIBED in our_loadout[item_path])
+				equipped_item.desc = our_loadout[item_path][INFO_DESCRIBED]
+				equipped_item.on_loadout_custom_described()
 		else
-			stack_trace("[type] on_equip_item(): Could not locate item (path: [item_path]) in [equipper]'s contents to set name!")
+			stack_trace("[type] on_equip_item(): Could not locate item (path: [item_path]) in [equipper]'s contents to set name/desc!")
 
 /*
  * Called after the item is equipped on [equipper], at the end of character setup.

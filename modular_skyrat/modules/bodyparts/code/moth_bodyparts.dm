@@ -12,6 +12,7 @@
 	icon_state = "moth_chest_m"
 	limb_id = SPECIES_MOTH
 	is_dimorphic = TRUE
+	wing_types = list(/obj/item/organ/external/wings/functional/moth/megamoth, /obj/item/organ/external/wings/functional/moth/mothra)
 
 /obj/item/bodypart/arm/left/moth
 	icon = BODYPART_ICON_MOTH

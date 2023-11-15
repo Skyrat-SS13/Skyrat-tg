@@ -123,7 +123,7 @@
 	var/list/data = list()
 
 	var/client/owner_client = GLOB.directory[ckey]
-	data["admin_mode"] = check_rights_for(user.client, R_DEFAULT) && user.client != owner_client
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
 
 	data["creator_ckey"] = ckey
 
@@ -449,18 +449,13 @@
 	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/mob/living/target = mind_reference.current
-	var/obj/item/storage/box/spawned_box = new(get_turf(target))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
 			if(!(iterating_equipment.opposing_force_equipment.item_type == /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
-				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+				new iterating_equipment.opposing_force_equipment.item_type(get_turf(target))
 			iterating_equipment.opposing_force_equipment.on_issue(target)
-
-	if(ishuman(target))
-		var/mob/living/carbon/human/human = target
-		human.put_in_hands(spawned_box)
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")

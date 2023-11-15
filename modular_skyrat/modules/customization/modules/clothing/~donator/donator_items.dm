@@ -221,3 +221,47 @@
 	. = ..()
 	. += span_notice("<i>Etched underneath the handle is the following message:</i>\n")
 	. += span_smallnoticeital("\"I told you I would find a way to make it all easier.\" - A.H.")
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone
+	name = "Cat-Ear Headphones"
+	desc = "Merch of their Electric Guitarist Demi Galgan from the Singularity Shredders. It's heavily customizable and even comes with a holographic tail!"
+	icon_state = "catear_headphone"
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi'
+	lefthand_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	righthand_file = 'modular_skyrat/modules/GAGS/icons/head/catear_headphone_inhand.dmi'
+	inhand_icon_state = "catear_headphone"
+	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD | ITEM_SLOT_NECK
+	var/catTailToggled = FALSE
+	instrument_range = 1
+	greyscale_colors = "#FFFFFF#FFFFFF"
+	greyscale_config = /datum/greyscale_config/catear_headphone
+	greyscale_config_worn = /datum/greyscale_config/catear_headphone/worn
+	greyscale_config_inhand_left = /datum/greyscale_config/catear_headphone_inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/catear_headphone_inhand_right
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/gags_recolorable)
+	update_icon(UPDATE_OVERLAYS)
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_[song?.playing ? "on" : "off"]_emissive", src, alpha = src.alpha)
+		if(catTailToggled)
+			. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_tail_on_emissive", src, alpha = src.alpha)
+			icon_state = "catear_headphone_tail[song?.playing ? "_on" : null]"
+		else
+			icon_state = "catear_headphone[song?.playing ? "_on" : null]"
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/AltClick(mob/user)
+	. = ..()
+	catTailToggled = !catTailToggled
+	user.update_worn_head()
+	update_icon(UPDATE_OVERLAYS)
+
+/obj/item/instrument/piano_synth/headphones/catear_headphone/update_overlays()
+	. = ..()
+	. += emissive_appearance('modular_skyrat/modules/GAGS/icons/head/catear_headphone.dmi', "catearphones_obj_lights_emissive", src, alpha = src.alpha)

@@ -14,12 +14,7 @@
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
-	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation \
-	has teamed up with Nanotrasen Human Resources (and elsewise)  to bring you the Self-Actualization Device! \
-	Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
-	Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
-	via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
-	ready to continue on with their day lawsuit-free!"
+	desc = "A state of the art medical device that can restore someone's phyiscal appearence to the last known database backup."
 	icon = 'modular_skyrat/modules/self_actualization_device/icons/self_actualization_device.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/self_actualization_device
@@ -41,6 +36,20 @@
 	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
 	"Have more questions about the Self-Actualization Device? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" \
 	)
+
+
+/obj/machinery/self_actualization_device/examine_more(mob/user)
+	. = ..()
+
+	. += "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation \
+		has teamed up with Nanotrasen Human Resources (and elsewise)  to bring you the Self-Actualization Device! \
+		Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
+		Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
+		via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
+		ready to continue on with their day lawsuit-free!"
+
+	return .
+
 
 /obj/machinery/self_actualization_device/update_appearance(updates)
 	. = ..()

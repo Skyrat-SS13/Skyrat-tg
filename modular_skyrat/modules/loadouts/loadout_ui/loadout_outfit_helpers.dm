@@ -48,6 +48,11 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				continue
+
 			if(item.restricted_species && !(dna.species.id in item.restricted_species))
 				if(client)
 					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
@@ -65,6 +70,11 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
+			if(item.blacklisted_roles && equipping_job && (equipping_job.title in item.blacklisted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				continue
+
 			if(item.restricted_species && !(dna.species.id in item.restricted_species))
 				if(client)
 					to_chat(src, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
@@ -79,6 +89,8 @@
 		equipOutfit(equipped_outfit, visuals_only)
 
 	for(var/datum/loadout_item/item as anything in loadout_datums)
+		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
+			continue
 		item.on_equip_item(preference_source, src, visuals_only)
 
 	if(preference_source?.read_preference(/datum/preference/toggle/green_pin))

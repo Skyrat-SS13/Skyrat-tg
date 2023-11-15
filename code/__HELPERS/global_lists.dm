@@ -56,9 +56,9 @@
 
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
-	for(var/spath in subtypesof(/datum/species))
-		var/datum/species/S = new spath()
-		GLOB.species_list[S.id] = spath
+	for(var/species_path in subtypesof(/datum/species))
+		var/datum/species/species = new species_path()
+		GLOB.species_list[species.id] = species_path
 	sort_list(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 /// Inits GLOB.surgeries
@@ -119,7 +119,7 @@
 		/obj/item/stack/sheet/sinew = GLOB.sinew_recipes,
 		/obj/item/stack/sheet/animalhide/carp = GLOB.carp_recipes,
 		/obj/item/stack/sheet/mineral/sandstone = GLOB.sandstone_recipes,
-		/obj/item/stack/sheet/mineral/clay = GLOB.clay_recipes,
+		/obj/item/stack/sheet/mineral/clay = GLOB.clay_recipes, // SKYRAT EDIT ADDITION
 		/obj/item/stack/sheet/mineral/sandbags = GLOB.sandbag_recipes,
 		/obj/item/stack/sheet/mineral/diamond = GLOB.diamond_recipes,
 		/obj/item/stack/sheet/mineral/uranium = GLOB.uranium_recipes,
