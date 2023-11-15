@@ -95,10 +95,12 @@
 	// cant be unanchored or open panel
 	if(!anchored || panel_open)
 		return FALSE
+	var/previous_mining_stat = mining_stat
 	// Generates the mining_stat to use for overlays and checks
 	update_mining_stat()
-	// Updates the overlays
-	update_appearance()
+	// Updates the overlays, if it is needed
+	if(mining_stat != previous_mining_stat)
+		update_appearance()
 	// Check if it is nonzero
 	if(mining_stat)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
