@@ -61,8 +61,7 @@
 			add_overlay("miner_hot")
 		if(mining_stat & BLUESPACE_MINER_LOW_PRESSURE)
 			add_overlay("miner_plow")
-			return // No way it can be both. And if you fuckers somehow find a way to make it so, I will actually eat my shoes
-		if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
+		else if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
 			add_overlay("miner_phigh")
 	else
 		add_overlay("miner_on")
