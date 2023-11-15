@@ -80,8 +80,7 @@
 			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("TEMPERATURE TOO HIGH!"))
 		if(mining_stat & BLUESPACE_MINER_LOW_PRESSURE)
 			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO LOW!"))
-			return . // It can't be both.
-		if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
+		else if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
 			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO HIGH!"))
 
 
