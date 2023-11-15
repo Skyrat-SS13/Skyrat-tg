@@ -64,9 +64,8 @@
 			return // No way it can be both. And if you fuckers somehow find a way to make it so, I will actually eat my shoes
 		if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
 			add_overlay("miner_phigh")
-		return
-
-	add_overlay("miner_on")
+	else
+		add_overlay("miner_on")
 
 /obj/machinery/bluespace_miner/examine(mob/user)
 	. = ..()
