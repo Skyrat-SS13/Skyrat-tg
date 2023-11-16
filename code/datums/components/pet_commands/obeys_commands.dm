@@ -59,7 +59,6 @@
 		return
 	if (!(user in source.ai_controller?.blackboard[BB_FRIENDS_LIST]))
 		return
-
 	examine_list += span_notice("[source.p_They()] seem[source.p_s()] happy to see you!")
 
 /// Displays a radial menu of commands

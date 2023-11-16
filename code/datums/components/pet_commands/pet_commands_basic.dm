@@ -234,7 +234,7 @@
 	var/mob/living/victim = controller.blackboard[BB_CURRENT_PET_TARGET]
 	if(QDELETED(victim))
 		return
-	if(victim.stat > controller.blackboard[BB_TARGET_MINIMUM_STAT] || victim == controller.pawn) //SKYRAT EDIT: icemoon_additions
+	if(victim.stat > controller.blackboard[BB_TARGET_MINIMUM_STAT])
 		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 		return
 	controller.queue_behavior(protect_behavior, BB_CURRENT_PET_TARGET, BB_PET_TARGETING_STRATEGY)
