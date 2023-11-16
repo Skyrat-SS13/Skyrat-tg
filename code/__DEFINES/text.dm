@@ -102,3 +102,10 @@
 #define HALLUCINATION_FILE "hallucination.json"
 /// File location for ninja lines
 #define NINJA_FILE "ninja.json"
+<<<<<<< HEAD
+=======
+/// File loation for title splashes
+#define SPLASH_FILE "splashes.json"
+///File location for mother hallucination lines
+#define MOTHER_FILE "mother.json"
+>>>>>>> 18e5ee52fc6 (The mother hallucination has more possible one-liners now. (#79724))
