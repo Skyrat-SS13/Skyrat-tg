@@ -13,7 +13,7 @@
 /atom/proc/examine(mob/user)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
-		. = list("[examine_string].")
+		. = list("[examine_string].", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE
 	else
 		. = list()
 
@@ -22,11 +22,19 @@
 		. += desc
 
 	if(custom_materials)
+		// SKYRAT EDIT ADDITION BEGIN - HR sections
+		if(length(custom_materials) > 1)
+			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
+		//SKYRAT EDIT ADDITION END
 		var/list/materials_list = list()
 		for(var/custom_material in custom_materials)
 			var/datum/material/current_material = GET_MATERIAL_REF(custom_material)
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
+		// SKYRAT EDIT ADDITION BEGIN - HR sections
+		if(length(custom_materials) > 1)
+			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
+		//SKYRAT EDIT ADDITION END
 
 	if(reagents)
 		var/user_sees_reagents = user.can_see_reagents()

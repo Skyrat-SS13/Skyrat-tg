@@ -843,6 +843,11 @@
 	var/mob/user = client?.mob
 	if (isnull(user))
 		return
+	///SKYRAT EDIT ADDITION BEGIN
+	// Face directions on combat mode. No procs, no typechecks, just a var for speed
+	if(user.face_mouse)
+		user.face_atom(src)
+	///SKYRAT EDIT ADDITION END
 
 	// Screentips
 	var/datum/hud/active_hud = user.hud_used
