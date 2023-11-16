@@ -38,10 +38,9 @@
 #define POLL_IGNORE_SYNDICATE "syndicate"
 #define POLL_IGNORE_VENUSHUMANTRAP "venus_human_trap"
 
-//Skyrat Edit Start: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
-	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
+	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer", // SKYRAT EDIT ADDITION
 	POLL_IGNORE_ALIEN_LARVA = "Xenomorph larva",
 	POLL_IGNORE_ASH_SPIRIT = "Ash Spirit",
 	POLL_IGNORE_ASHWALKER = "Ashwalker eggs",
@@ -78,7 +77,6 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SYNDICATE = "Syndicate",
 	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
 ))
-//Skyrat Edit Stop: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 
 
