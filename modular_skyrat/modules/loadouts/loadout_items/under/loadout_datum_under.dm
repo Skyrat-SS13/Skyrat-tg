@@ -124,6 +124,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
 
+/datum/loadout_item/under/jumpsuit/imperial_police_uniform
+	name = "Imperial Police Uniform"
+	item_path = /obj/item/clothing/under/colonial/nri_police
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE)
+
 /datum/loadout_item/under/jumpsuit/disco
 	name = "Superstar Cop Uniform"
 	item_path = /obj/item/clothing/under/rank/security/detective/disco
@@ -396,11 +401,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/medium_skirt
 	name = "Medium Colourable Skirt"
-	item_path = /obj/item/clothing/under/skyrat/medium_skirt
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/medium
 
 /datum/loadout_item/under/miscellaneous/long_skirt
 	name = "Long Colourable Skirt"
-	item_path = /obj/item/clothing/under/skyrat/long_skirt
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/long
 
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"

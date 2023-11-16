@@ -67,6 +67,9 @@
 	icon_state = "half_mask"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	unique_death = 'modular_skyrat/master_files/sound/effects/hacked.ogg'
+	voice_filter = null
+	use_radio_beeps_tts = FALSE
 
 /obj/item/clothing/shoes/combat //TO-DO: Move these overrides out of a syndicate file!
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'

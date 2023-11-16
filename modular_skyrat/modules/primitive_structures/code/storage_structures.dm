@@ -26,7 +26,7 @@
 
 /obj/structure/rack/wooden/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
-	. = ..()
+	return ..()
 
 // Barrel but it works like a crate
 
@@ -49,4 +49,4 @@
 
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
-	. = ..()
+	return ..()
