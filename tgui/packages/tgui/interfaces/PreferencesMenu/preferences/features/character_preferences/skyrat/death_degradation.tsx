@@ -82,7 +82,7 @@ export const dc_max_stamina_damage: Feature<number> = {
     name: 'Stamina damage: Maximum',
     component: FeatureNumberInput,
     description: 'When at the ending degradation percent, your stamina damage will always be at LEAST this, \
-    with lower percentages causing equally displaced minimums, such as having 50% degradation with 80 max stamina damage causing a minimum of 40 damage.'
+        with lower percentages causing equally displaced minimums, such as having 50% degradation with 80 max stamina damage causing a minimum of 40 damage.'
 };
 
 export const dc_permakill_at_max: Feature<boolean> = {
