@@ -69,7 +69,7 @@ export const dc_max_crit_threshold_reduction: Feature<number> = {
 export const dc_stamina_damage_min_percent_of_max: Feature<number> = {
     name: 'Stamina damage: Beginning degradation percent',
     component: FeatureNumberInput,
-    description: 'Minimum stamina damage will start increasing once degradation reaches this percent of maximum.'
+    description: 'Minimum stamina damage will start increasing once degradation reaches this percent of maximum degradation.'
 };
 
 export const dc_stamina_damage_percent_of_max: Feature<number> = {
