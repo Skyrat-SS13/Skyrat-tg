@@ -6,7 +6,7 @@
 	. = ..()
 	UnregisterSignal(parent, COMSIG_ATOM_EXAMINE_MORE)
 
-/datum/component/obeys_commands/proc/on_examine(mob/living/source, mob/user, list/examine_list)
+/datum/component/obeys_commands/on_examine(mob/living/source, mob/user, list/examine_list)
 	. = ..()
 	. += span_italics("You can alt+click [source.p_them()] when adjacent to see available commands.")
 	. += span_italics("You can also examine [source.p_them()] closely to check on [source.p_their()] wounds. Many companions can be healed with sutures or creams!")
