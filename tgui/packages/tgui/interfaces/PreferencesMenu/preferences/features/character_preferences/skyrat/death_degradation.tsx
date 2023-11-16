@@ -18,18 +18,6 @@ export const dc_living_degradation_recovery_per_second: Feature<number> = {
     description: 'While alive, your degradation will be reduced by this much per second. If negative, this will cause you to slowly die.'
 };
 
-export const dc_living_degradation_recovery_per_second: Feature<number> = {
-    name: 'Recovery per second while alive',
-    component: FeatureNumberInput,
-    description: 'While alive, your degradation will be reduced by this much per second. If negative, this will cause you to slowly die.'
-};
-
-export const dc_living_degradation_recovery_per_second: Feature<number> = {
-    name: 'Recovery per second while alive',
-    component: FeatureNumberInput,
-    description: 'While alive, your degradation will be reduced by this much per second. If negative, this will cause you to slowly die.'
-};
-
 export const dc_dead_degradation_per_second: Feature<number> = {
     name: 'Degradation per second while dead',
     component: FeatureNumberInput,

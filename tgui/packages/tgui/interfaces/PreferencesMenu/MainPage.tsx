@@ -23,7 +23,6 @@ const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
   handleLoadout: () => void; // SKYRAT EDIT ADDITION
-  has_death_consequences: boolean;
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
