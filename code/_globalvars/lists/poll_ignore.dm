@@ -38,10 +38,7 @@
 #define POLL_IGNORE_SYNDICATE "syndicate"
 #define POLL_IGNORE_VENUSHUMANTRAP "venus_human_trap"
 
-<<<<<<< HEAD
 //Skyrat Edit Start: Cortical Borer
-=======
->>>>>>> ba5ae73dacd (Adds more bitrunning antagonists + fixes (READY) (#79522))
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
