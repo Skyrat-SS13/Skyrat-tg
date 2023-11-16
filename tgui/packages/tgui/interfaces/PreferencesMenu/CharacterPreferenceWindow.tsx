@@ -12,7 +12,6 @@ import { QuirksPage } from './QuirksPage';
 // SKYRAT EDIT
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
-import { DeathConsequencesPage } from '../DeathConsequencesPage';
 // SKYRAT EDIT END
 enum Page {
   Antags,
@@ -21,7 +20,6 @@ enum Page {
   // SKYRAT EDIT
   Limbs,
   Languages,
-  DC_Config,
   // SKYRAT EDIT END
   Species,
   Quirks,
@@ -79,16 +77,12 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Languages:
       pageContents = <LanguagesPage />;
       break;
-    case Page.DC_Config:
-      pageContents = <DeathConsequencesPage />;
-      break;
     // SKYRAT EDIT END
     case Page.Main:
       pageContents = (
-        <MainPage // SKYRAT EDIT START - DEATH CONSEQUENCES QUIRK
+        <MainPage
           openSpecies={() => setCurrentPage(Page.Species)}
-          openDCConfig={() => setCurrentPage(Page.DC_Config)}
-        /> // SKYRAT EDIT END
+        />
       );
 
       break;

@@ -6,6 +6,19 @@
 	icon = FA_ICON_DNA
 	value = 0 // due to its high customization, you can make it really inconsequential
 
+/datum/quirk_constant_data/death_consequences
+	associated_typepath = /datum/quirk/death_consequences
+
+/datum/quirk_constant_data/death_consequences/New()
+	customization_options = list()
+
+	for (var/datum/preference/numeric_pref as anything in subtypesof(/datum/preference/numeric/death_consequences))
+		customization_options += numeric_pref
+	for (var/datum/preference/toggle_pref as anything in subtypesof(/datum/preference/toggle/death_consequences))
+		customization_options += toggle_pref
+
+	return ..()
+
 /datum/quirk/death_consequences/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.gain_trauma(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
