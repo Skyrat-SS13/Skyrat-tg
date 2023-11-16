@@ -29,7 +29,7 @@
 	///possible colors we can have
 	var/list/possible_colors = list(COLOR_WHITE)
 	///can we breed?
-	var/can_breed = TRUE
+	var/can_breed = FALSE //SKYRAT EDIT: Temporory Disable Breeding
 
 /mob/living/basic/mining/gutlunch/Initialize(mapload)
 	. = ..()
