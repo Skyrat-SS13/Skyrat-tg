@@ -89,6 +89,9 @@
 	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
 	inhand_icon_state = "surgeon"
+	worn_icon = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/deforest_medical_items/icons/worn/worn_teshari.dmi'
+	worn_icon_state = "frontier"
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 
