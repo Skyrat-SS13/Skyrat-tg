@@ -1,35 +1,21 @@
-/datum/job/cyber_police
-	title = ROLE_CYBER_POLICE
-
-/datum/antagonist/cyber_police
+/datum/antagonist/bitrunning_glitch/cyber_police
 	name = ROLE_CYBER_POLICE
-	antagpanel_category = ANTAG_GROUP_CYBERAUTH
-	job_rank = ROLE_CYBER_POLICE
-	preview_outfit = /datum/outfit/cyber_police
-	show_name_in_check_antagonists = TRUE
-	show_to_ghosts = TRUE
-	suicide_cry = "ALT F4!"
-	ui_name = "AntagInfoCyberAuth"
+	show_in_antagpanel = TRUE
 
-/datum/antagonist/cyber_police/greet()
+/datum/antagonist/bitrunning_glitch/cyber_police/on_gain()
 	. = ..()
-	owner.announce_objectives()
 
-/datum/antagonist/cyber_police/on_gain()
 	if(!ishuman(owner.current))
 		stack_trace("humans only for this position")
 		return
 
-	forge_objectives()
-
-	var/mob/living/carbon/human/player = owner.current
-
-	player.equipOutfit(/datum/outfit/cyber_police)
-	player.fully_replace_character_name(player.name, pick(GLOB.cyberauth_names))
+	var/mob/living/player = owner.current
+	convert_agent(player)
 
 	var/datum/martial_art/the_sleeping_carp/carp = new()
 	carp.teach(player)
 
+<<<<<<< HEAD
 	player.add_traits(list(
 		TRAIT_NO_AUGMENTS,
 		TRAIT_NO_DNA_COPY,
@@ -90,3 +76,7 @@
 		return FALSE
 
 	return TRUE
+=======
+/datum/outfit/cyber_police
+	name = ROLE_CYBER_POLICE
+>>>>>>> ba5ae73dacd (Adds more bitrunning antagonists + fixes (READY) (#79522))
