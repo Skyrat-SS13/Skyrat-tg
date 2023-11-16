@@ -27,7 +27,7 @@
 	name = "glass of synthanol"
 	desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
 
-/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/affected_mob)
+/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(!(affected_mob.mob_biotypes & MOB_ROBOTIC))
 		affected_mob.reagents.remove_reagent(type, 3.6 * REM * seconds_per_tick) //gets removed from organics very fast
 		if(prob(25))
@@ -162,7 +162,7 @@
 	name = "glass of hellfire"
 	desc = "An amber colored drink that isn't quite as hot as it looks."
 
-/datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/affected_mob)
+/datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	affected_mob.adjust_bodytemperature(30 * TEMPERATURE_DAMAGE_COEFFICIENT * REM * seconds_per_tick, 0, BODYTEMP_NORMAL + 30)
 
@@ -322,7 +322,7 @@
 	name = "glass of mercuryblast"
 	desc = "No thermometers were harmed in the creation of this drink"
 
-/datum/reagent/consumable/ethanol/mercuryblast/on_mob_life(mob/living/carbon/affected_mob)
+/datum/reagent/consumable/ethanol/mercuryblast/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	affected_mob.adjust_bodytemperature(-30 * TEMPERATURE_DAMAGE_COEFFICIENT * REM * seconds_per_tick, T0C)
 
@@ -541,7 +541,7 @@
 	name = "glass of jell wyrm"
 	desc = "A bubbly drink that is rather inviting to those that don't know who it's meant for."
 
-/datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/affected_mob)
+/datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	if(prob(20))
 		if(affected_mob.adjustToxLoss(0.5 * REM * seconds_per_tick, updating_health = FALSE))
