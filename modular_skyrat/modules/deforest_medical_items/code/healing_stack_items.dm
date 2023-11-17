@@ -18,8 +18,8 @@
 	self_delay = 10 SECONDS
 	other_delay = 5 SECONDS
 	novariants = TRUE
-	max_amount = 1
-	amount = 1
+	max_amount = 3
+	amount = 3
 	merge_type = /obj/item/stack/medical/wound_recovery
 	/// The types of wounds that we work on, in list format
 	var/list/applicable_wounds = list(
@@ -79,6 +79,7 @@
 	limb.receive_damage(brute = INSTANT_WOUND_HEAL_LIMB_DAMAGE, wound_bonus = CANT_WOUND)
 	patient.adjustStaminaLoss(INSTANT_WOUND_HEAL_STAMINA_DAMAGE)
 	patient.apply_status_effect(/datum/status_effect/vulnerable_to_damage)
+	use(1)
 
 /datum/mood_event/rapid_wound_healing
 	description = "That may have healed my wound fast, but if that wasn't one of the worst experiences!\n"
@@ -118,8 +119,8 @@
 	inhand_icon_state = "bandage"
 	gender = PLURAL
 	novariants = TRUE
-	amount = 4
-	max_amount = 4
+	amount = 12
+	max_amount = 12
 	self_delay = 4 SECONDS
 	other_delay = 2 SECONDS
 	heal_burn = 5
@@ -144,8 +145,8 @@
 	icon_state = "burndaid"
 	inhand_icon_state = null
 	novariants = TRUE
-	max_amount = 3
-	amount = 3
+	max_amount = 6
+	amount = 6
 	splint_factor = 1.2
 	burn_cleanliness_bonus = 0.1
 	merge_type = /obj/item/stack/medical/gauze/sterilized
@@ -166,8 +167,8 @@
 	icon_state = "clotter_slow"
 	inhand_icon_state = null
 	novariants = TRUE
-	amount = 3
-	max_amount = 3
+	amount = 12
+	max_amount = 12
 	repeating = FALSE
 	heal_brute = 0
 	stop_bleeding = 2

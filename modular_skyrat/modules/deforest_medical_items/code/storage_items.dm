@@ -71,9 +71,9 @@
 /obj/item/storage/medkit/frontier/stocked/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
-		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 1,
-		/obj/item/stack/medical/wound_recovery/rapid_coagulant = 1,
+		/obj/item/stack/medical/ointment = 1,
+		/obj/item/stack/medical/suture = 1,
 		/obj/item/stack/medical/suture/coagulant = 1,
 		/obj/item/stack/medical/gauze/sterilized = 1,
 		/obj/item/storage/pill_bottle/painkiller = 1,
@@ -107,7 +107,7 @@
 		/obj/item/hemostat = 1,
 		/obj/item/cautery = 1,
 		/obj/item/stack/medical/wound_recovery = 1,
-		/obj/item/stack/medical/suture/coagulant = 1,
+		/obj/item/stack/medical/wound_recovery/rapid_coagulant = 1,
 		/obj/item/stack/medical/gauze/sterilized = 1,
 		/obj/item/healthanalyzer/simple = 1,
 	)
@@ -136,7 +136,8 @@
 
 /obj/item/storage/backpack/duffelbag/deforest_medkit/stocked/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 2,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 1,
+		/obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 1,
 		/obj/item/reagent_containers/hypospray/medipen/deforest/calopine = 1,
@@ -144,11 +145,12 @@
 		/obj/item/bonesetter = 1,
 		/obj/item/hemostat = 1,
 		/obj/item/cautery = 1,
-		/obj/item/stack/medical/wound_recovery = 2,
-		/obj/item/stack/medical/wound_recovery/rapid_coagulant = 2,
+		/obj/item/stack/medical/wound_recovery = 1,
+		/obj/item/stack/medical/wound_recovery/rapid_coagulant = 1,
 		/obj/item/stack/medical/suture/coagulant = 1,
-		/obj/item/stack/medical/suture/emergency = 1,
-		/obj/item/stack/medical/gauze/sterilized = 2,
+		/obj/item/stack/medical/suture/bloody = 2,
+		/obj/item/stack/medical/mesh = 2,
+		/obj/item/stack/medical/gauze/sterilized = 1,
 		/obj/item/stack/medical/gauze = 1,
 		/obj/item/stack/medical/ointment/red_sun = 1,
 		/obj/item/storage/pill_bottle/painkiller = 1,
