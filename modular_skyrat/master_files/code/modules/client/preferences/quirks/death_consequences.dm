@@ -1,18 +1,3 @@
-/// List of all death consequence preference typepaths.
-GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_death_consequences_prefs_list())
-
-/proc/generate_death_consequences_prefs_list()
-	RETURN_TYPE(/list/datum/preference)
-
-	var/list/datum/preference/pref_list = list()
-
-	for (var/datum/preference/possible_dc_pref_type as anything in (subtypesof(/datum/preference/numeric/death_consequences) + subtypesof(/datum/preference/toggle/death_consequences)))
-		if (initial(possible_dc_pref_type.abstract_type) == possible_dc_pref_type)
-			continue
-		pref_list += possible_dc_pref_type
-
-	return pref_list
-
 /datum/preference/numeric/death_consequences
 	abstract_type = /datum/preference/numeric/death_consequences
 	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED

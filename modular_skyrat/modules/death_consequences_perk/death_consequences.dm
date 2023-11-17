@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(death_consequences_verbs, list(
 	associated_typepath = /datum/quirk/death_consequences
 
 /datum/quirk_constant_data/death_consequences/New()
-	customization_options = GLOB.death_consequences_prefs.Copy()
+	customization_options = (subtypesof(/datum/preference/numeric/death_consequences) + subtypesof(/datum/preference/toggle/death_consequences))
 
 	return ..()
 
