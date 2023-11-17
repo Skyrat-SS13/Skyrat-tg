@@ -15,7 +15,7 @@
 /datum/brain_trauma/severe/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
 	desc = DEATH_CONSEQUENCES_QUIRK_DESC
-	scan_desc = "resonance degradation"
+	scan_desc = "death degradation"
 	gain_text = span_warning("For a brief moment, you completely disassociate.")
 	lose_text = span_notice("You feel like you have a firm grasp on your consciousness again!")
 	random_gain = FALSE
@@ -394,7 +394,7 @@
 	var/mob/self_message_target = (owner_ghost ? owner_ghost : owner) // if youre ghosted, you still get the message
 
 	visible_message += span_revenwarning(" <b>You sense something terrible has happened.</b>") // append crucial info and context clues
-	self_message += span_danger(" You have been killed by your resonance degradation, which prevents you from returning to your body or even being revived. \
+	self_message += span_danger(" You have been killed by your death degradation, which prevents you from returning to your body or even being revived. \
 	You may roleplay this however you wish - this death may be temporary, permanent - you may or may not appear in soulcatchers - it's all up to you.")
 
 	owner.investigate_log(log_message)
@@ -404,7 +404,7 @@
 
 /// Returns a short-ish string containing an href to [get_specific_data].
 /datum/brain_trauma/severe/death_consequences/proc/get_health_analyzer_link_text(mob/user)
-	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
+	var/message = span_bolddanger("\nSubject suffers from death degradation disorder.")
 	if (final_death_delivered)
 		message += span_purple("<i>\nNeural patterns are equivalent to the consciousness zero-point. Subject has likely succumbed.</i>")
 		return message
@@ -438,7 +438,7 @@
 
 /// Returns a large string intended to show specifics of how this degradation work.
 /datum/brain_trauma/severe/death_consequences/proc/get_specific_data()
-	var/message = span_bolddanger("\nSubject suffers from resonance instability.")
+	var/message = span_bolddanger("Subject suffers from death degradation disorder.")
 	if (final_death_delivered)
 		message += span_purple("<i>\nNeural patterns are equivalent to the consciousness zero-point. Subject has likely succumbed.</i>")
 		return message
@@ -446,7 +446,7 @@
 	var/owner_organic = (owner.dna.species.reagent_flags & PROCESS_ORGANIC)
 	message += span_danger("\nCurrent degradation/max: [span_blue("<b>[current_degradation]</b>")]/<b>[max_degradation]</b>.")
 	if (base_degradation_reduction_per_second_while_alive)
-		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_green("[base_degradation_reduction_per_second_while_alive] per second")].")
+		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_blue("[base_degradation_reduction_per_second_while_alive] per second")].")
 	if (base_degradation_per_second_while_dead)
 		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second")].")
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
@@ -490,8 +490,17 @@
 		REMOVE_TRAIT(owner, TRAIT_DNR, TRAUMA_TRAIT)
 
 /// Resets all our variables to our victim's preferences, if they have any. Used for the initial setup, then any time our victim manually refreshes variables.
-/datum/brain_trauma/severe/death_consequences/proc/update_variables()
-	var/datum/preferences/victim_prefs = owner.client?.prefs
+/datum/brain_trauma/severe/death_consequences/proc/update_variables(client/source = owner.client)
+	// source is necessary since, in testing, i found the verb didnt work if you aghosted as owner.client was null, so we have to specify
+	// "hey dude this is still our mind" via the arg
+
+	// theoretically speaking theres should be no circumstances where mind.current is shared with another mind, so this should be intrinsically
+	// safe, since only the true owner of the mob can actually use the verb to refresh the variables
+	var/ckey = lowertext(owner.mind.key)
+	if (ckey != source.ckey)
+		return // sanity
+
+	var/datum/preferences/victim_prefs = source.prefs
 	if (!victim_prefs)
 		return
 

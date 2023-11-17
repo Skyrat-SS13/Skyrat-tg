@@ -155,7 +155,7 @@ const QuirkList = (props: {
                                     onClick={(e) => {
                                       e.stopPropagation();
                                     }}
-                                    maxWidth="300px"
+                                    maxWidth="400px" // SKYRAT EDIT - maxWidth to 600px from 300px
                                     backgroundColor="black"
                                     px="5px"
                                     py="3px">

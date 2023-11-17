@@ -20,9 +20,6 @@ GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_dea
 
 	step = 0.01
 
-/datum/preference/numeric/death_consequences/should_show_on_page(preferences_page)
-	return FALSE
-
 /datum/preference/numeric/death_consequences/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
@@ -167,9 +164,6 @@ GLOBAL_LIST_INIT_TYPED(death_consequences_prefs, /datum/preference, generate_dea
 	abstract_type = /datum/preference/toggle/death_consequences
 	category = PREFERENCE_CATEGORY_MANUALLY_RENDERED
 	savefile_identifier = PREFERENCE_CHARACTER
-
-/datum/preference/toggle/death_consequences/should_show_on_page(preferences_page)
-	return FALSE
 
 /datum/preference/toggle/death_consequences/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
