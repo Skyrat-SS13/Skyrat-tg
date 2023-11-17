@@ -290,12 +290,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/moonoutpost19/research)
-"ca" = (
-/mob/living/basic/construct/proteon/hostile,
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/mines)
 "cb" = (
 /obj/machinery/light/broken/directional/east,
 /obj/machinery/airalarm/directional/east,
@@ -399,6 +393,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/research)
+"cS" = (
+/mob/living/basic/construct/proteon/hostile,
+/obj/structure/flora/lunar_plant,
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/mines)
 "cT" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/xenoblood,
@@ -432,6 +433,12 @@
 	temperature = 251
 	},
 /area/awaymission/moonoutpost19/syndicate)
+"dr" = (
+/mob/living/basic/construct/proteon/hostile,
+/turf/open/misc/asteroid/moon{
+	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
+	},
+/area/awaymission/moonoutpost19/mines)
 "ds" = (
 /obj/item/pizzabox{
 	pixel_x = 20;
@@ -2768,6 +2775,16 @@
 	dir = 1
 	},
 /area/awaymission/moonoutpost19/research)
+"rF" = (
+/obj/structure/secure_safe/directional/east,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/pen,
+/obj/item/paper/crumpled/awaymissions/moonoutpost19/hastey_note,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/moonoutpost19/research)
 "rH" = (
 /obj/structure/closet/crate/bin,
 /obj/effect/turf_decal/siding/purple{
@@ -3348,17 +3365,6 @@
 	},
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating,
-/area/awaymission/moonoutpost19/research)
-"vu" = (
-/obj/structure/table,
-/obj/item/storage/secure/briefcase,
-/obj/item/taperecorder{
-	pixel_x = -3
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/iron/dark,
 /area/awaymission/moonoutpost19/research)
 "vx" = (
 /obj/structure/table/reinforced,
@@ -4975,13 +4981,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/moonoutpost19/arrivals)
-"GQ" = (
-/mob/living/basic/construct/proteon/hostile,
-/obj/structure/flora/lunar_plant,
-/turf/open/misc/asteroid/moon{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251"
-	},
-/area/awaymission/moonoutpost19/mines)
 "GR" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plating,
@@ -5048,6 +5047,17 @@
 /obj/effect/mapping_helpers/airalarm/unlocked,
 /turf/open/floor/plating,
 /area/awaymission/moonoutpost19/syndicate)
+"Hr" = (
+/obj/structure/table,
+/obj/item/storage/briefcase/secure,
+/obj/item/taperecorder{
+	pixel_x = -3
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/moonoutpost19/research)
 "Hs" = (
 /obj/effect/turf_decal/stripes{
 	dir = 4
@@ -6842,16 +6852,6 @@
 /turf/open/floor/iron/cafeteria{
 	dir = 5
 	},
-/area/awaymission/moonoutpost19/research)
-"Tx" = (
-/obj/item/storage/secure/safe/directional/east,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/pen,
-/obj/item/paper/crumpled/awaymissions/moonoutpost19/hastey_note,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
 /area/awaymission/moonoutpost19/research)
 "Tz" = (
 /obj/machinery/power/shuttle_engine/propulsion/burst/left{
@@ -15631,7 +15631,7 @@ tb
 tb
 tb
 tb
-ca
+dr
 mo
 mo
 FB
@@ -16408,7 +16408,7 @@ eA
 tb
 tb
 tb
-GQ
+cS
 mo
 mo
 mo
@@ -16419,7 +16419,7 @@ mo
 mo
 mo
 PP
-ca
+dr
 tb
 tb
 sn
@@ -18718,7 +18718,7 @@ tb
 tb
 vE
 mo
-ca
+dr
 Qe
 Qe
 tb
@@ -18987,13 +18987,13 @@ tb
 mo
 Np
 Zs
-ca
+dr
 mo
 rd
 tb
 tb
 sn
-ca
+dr
 tb
 tb
 tb
@@ -19989,7 +19989,7 @@ tb
 mo
 mo
 mo
-ca
+dr
 tb
 tb
 tb
@@ -20515,7 +20515,7 @@ tb
 tb
 Qe
 tb
-ca
+dr
 mo
 mo
 mo
@@ -20529,7 +20529,7 @@ eA
 sn
 tb
 tb
-ca
+dr
 eA
 tb
 tb
@@ -21784,7 +21784,7 @@ FB
 tb
 tb
 eA
-ca
+dr
 tb
 tb
 tb
@@ -22077,7 +22077,7 @@ tb
 tb
 tb
 mo
-ca
+dr
 tb
 tb
 tb
@@ -23321,7 +23321,7 @@ tb
 tb
 tb
 tb
-ca
+dr
 mo
 tb
 tb
@@ -23577,7 +23577,7 @@ zk
 tb
 tb
 tb
-ca
+dr
 mo
 tb
 tb
@@ -35484,8 +35484,8 @@ ik
 OC
 aJ
 Um
-Tx
-vu
+rF
+Hr
 ea
 of
 TS
