@@ -17,6 +17,9 @@
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 
+/// adds -6 quirk to negative quirks for free points.
+#define TRAIT_GIFTED "gifted"
+
 //AdditionalEmotes *turf traits
 #define TRAIT_WATER_ASPECT "water_aspect"
 #define TRAIT_WEBBING_ASPECT "webbing_aspect"
