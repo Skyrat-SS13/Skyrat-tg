@@ -45,7 +45,7 @@
 	var/eigenstasium_degradation_decrease = DEATH_CONSEQUENCES_DEFAULT_EIGENSTASIUM_DEGRADATION_REDUCTION
 
 	/// If our victim is dead, their passive degradation will be multiplied against this if they are in stasis.
-	var/on_stasis_passive_degradation_mult = 0
+	var/stasis_passive_degradation_multiplier = 0
 
 	/// If true, when [current_degradation] reaches [max_degradation], we will DNR and ghost our victim.
 	var/permakill_if_at_max_degradation = FALSE
@@ -237,7 +237,7 @@
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
 
 /// Returns a multiplier that should be used whenever degradation is passively decreased. Is determined by resting, sleeping, and buckled status.
-/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_resting_mult()
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_resting_multiplier()
 	var/decrease_mult = 1
 
 	if (owner.IsSleeping())
