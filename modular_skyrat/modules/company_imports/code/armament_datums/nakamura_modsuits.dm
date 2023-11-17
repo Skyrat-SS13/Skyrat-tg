@@ -202,7 +202,7 @@
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/antigrav
 	item_type = /obj/item/mod/module/anomaly_locked/antigrav
-	cost = PAYCHECK_COMMAND * 15
+	cost = PAYCHECK_COMMAND * 2
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/teleporter
 	item_type = /obj/item/mod/module/anomaly_locked/teleporter/prebuilt/locked
