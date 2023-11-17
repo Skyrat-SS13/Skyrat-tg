@@ -9,22 +9,6 @@
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
-"aW" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/flashes{
-	pixel_x = -2
-	},
-/obj/item/storage/box/zipties{
-	pixel_x = 2
-	},
-/obj/item/gun/energy/e_gun/advtaser,
-/obj/item/gun/energy/e_gun/advtaser,
-/obj/item/gun/energy/e_gun/advtaser,
-/obj/item/melee/baton,
-/obj/item/melee/baton,
-/obj/item/melee/baton,
-/turf/open/floor/pod,
-/area/shuttle/pirate/nri)
 "be" = (
 /obj/structure/table/reinforced,
 /obj/item/modular_computer/laptop/preset/civilian,
@@ -157,8 +141,17 @@
 /obj/structure/rack/shelf,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/small/red/directional/north,
-/obj/item/storage/toolbox/ammobox/full/nri_smg,
-/obj/item/storage/toolbox/ammobox/full/nri_smg,
+/obj/item/ammo_box/c27_54cesarzowa,
+/obj/item/ammo_box/c27_54cesarzowa,
+/obj/item/ammo_box/c27_54cesarzowa/rubber{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/c27_54cesarzowa/rubber{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/miecz,
+/obj/item/ammo_box/magazine/miecz,
+/obj/item/ammo_box/magazine/miecz,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "fJ" = (
@@ -233,7 +226,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/docking_port/mobile/pirate/nri_raider{
-	dir = 1;
 	launch_status = 0
 	},
 /turf/open/floor/plating,
@@ -256,7 +248,6 @@
 	},
 /obj/machinery/computer/shuttle/pirate/nri{
 	dir = 8;
-	name = "police shuttle console";
 	req_access = list("syndicate")
 	},
 /turf/open/floor/carpet/green,
@@ -274,6 +265,17 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
+"kq" = (
+/obj/structure/rack/gunrack,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = -4
+	},
+/obj/item/gun/ballistic/automatic/miecz,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "kQ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -374,7 +376,7 @@
 /obj/structure/cable,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
-"pt" = (
+"pg" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -383,14 +385,12 @@
 	desc = "A secure crate to keep all your personal belongings in.";
 	anchored = 1
 	},
-/obj/item/clothing/under/costume/nri/engineer,
 /obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
 /obj/item/clothing/glasses/meson/engine,
 /obj/item/storage/belt/military/cin_surplus/marine,
-/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
-/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
 /obj/item/encryptionkey/heads/ce,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
@@ -464,15 +464,6 @@
 /obj/machinery/recharger,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
-"rk" = (
-/obj/structure/rack/gunrack,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/item/gun/ballistic/automatic/miecz,
-/turf/open/floor/pod,
-/area/shuttle/pirate/nri)
 "rp" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/cable,
@@ -513,6 +504,22 @@
 /obj/machinery/power/terminal,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
+"ts" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/flashes{
+	pixel_x = -2
+	},
+/obj/item/storage/box/zipties{
+	pixel_x = 2
+	},
+/obj/item/melee/baton,
+/obj/item/melee/baton,
+/obj/item/melee/baton,
+/obj/item/gun/energy/e_gun/advtaser/normal,
+/obj/item/gun/energy/e_gun/advtaser/normal,
+/obj/item/gun/energy/e_gun/advtaser/normal,
+/turf/open/floor/pod,
+/area/shuttle/pirate/nri)
 "ty" = (
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -525,7 +532,7 @@
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
-"tN" = (
+"uh" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/ballistic/automatic/lanca,
 /obj/effect/turf_decal/stripes/line{
@@ -806,27 +813,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
-"CC" = (
-/obj/machinery/light/small/red/directional/south,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/closet/crate/secure/weapon{
-	name = "footlocker";
-	desc = "A secure crate to keep all your personal belongings in.";
-	anchored = 1
-	},
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/under/costume/nri/medic,
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
-/obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
-/obj/item/storage/belt/military/cin_surplus/marine,
-/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
-/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
-/obj/item/encryptionkey/heads/cmo,
-/turf/open/floor/pod/light,
-/area/shuttle/pirate/nri)
 "CP" = (
 /obj/machinery/base_alarm/nri_raider{
 	pixel_x = -32
@@ -854,6 +840,23 @@
 	},
 /obj/machinery/light/floor,
 /turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
+"DL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclavaadjust,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
+/obj/item/encryptionkey/heads/hos,
+/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "Eh" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
@@ -908,6 +911,32 @@
 "GO" = (
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
+"Hh" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/ammo_box/c310_cargo_box/piercing{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/ammo_box/c310_cargo_box/piercing{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/ammo_box/c310_cargo_box/rubber{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/ammo_box/c310_cargo_box/rubber{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/ammo_box/c310_cargo_box,
+/obj/item/ammo_box/c310_cargo_box,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/obj/item/ammo_box/magazine/lanca,
+/turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
 "Hl" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -933,25 +962,6 @@
 /area/shuttle/pirate/nri)
 "Hz" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/shuttle/pirate/nri)
-"HD" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/closet/crate/secure/weapon{
-	name = "footlocker";
-	desc = "A secure crate to keep all your personal belongings in.";
-	anchored = 1
-	},
-/obj/item/clothing/under/costume/nri/captain,
-/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
-/obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/under/syndicate/rus_army/cin_surplus/marine,
-/obj/item/storage/belt/military/cin_surplus/marine,
-/obj/item/clothing/suit/armor/vest/cin_surplus_vest,
-/obj/item/clothing/head/helmet/cin_surplus_helmet/marine,
-/obj/item/encryptionkey/heads/hos,
-/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "HO" = (
 /obj/machinery/door/airlock/survival_pod/glass{
@@ -1005,9 +1015,42 @@
 "IY" = (
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
+"JB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure/weapon{
+	anchored = 1
+	},
+/obj/machinery/light/small/red/directional/south,
+/obj/item/ammo_box/advanced/s12gauge/bean,
+/obj/item/ammo_box/advanced/s12gauge/bean,
+/obj/item/ammo_box/advanced/s12gauge/magnum,
+/obj/item/ammo_box/advanced/s12gauge/express,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate/nri)
 "JS" = (
 /obj/structure/cable,
 /turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
+"Kb" = (
+/obj/machinery/light/small/red/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "footlocker";
+	desc = "A secure crate to keep all your personal belongings in.";
+	anchored = 1
+	},
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
+/obj/item/clothing/mask/balaclavaadjust,
+/obj/item/storage/belt/military/cin_surplus/marine,
+/obj/item/clothing/head/helmet/nri_police,
+/obj/item/clothing/suit/armor/vest/nri_police,
+/obj/item/encryptionkey/heads/cmo,
+/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "Kc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1035,32 +1078,6 @@
 /obj/item/mod/module/holster,
 /obj/item/mod/module/holster,
 /turf/open/floor/pod/dark,
-/area/shuttle/pirate/nri)
-"Lx" = (
-/obj/structure/rack/shelf,
-/obj/effect/turf_decal/stripes/line,
-/obj/item/ammo_box/c310_cargo_box/piercing{
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/item/ammo_box/c310_cargo_box/piercing{
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/item/ammo_box/c310_cargo_box/rubber{
-	pixel_x = -1;
-	pixel_y = -1
-	},
-/obj/item/ammo_box/c310_cargo_box/rubber{
-	pixel_x = -1;
-	pixel_y = -1
-	},
-/obj/item/ammo_box/c310_cargo_box,
-/obj/item/ammo_box/c310_cargo_box,
-/obj/item/ammo_box/magazine/lanca,
-/obj/item/ammo_box/magazine/lanca,
-/obj/item/ammo_box/magazine/lanca,
-/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "LA" = (
 /obj/structure/table/reinforced,
@@ -1116,20 +1133,6 @@
 /obj/item/stack/sticky_tape/surgical,
 /obj/item/stack/sticky_tape/surgical,
 /turf/open/floor/pod,
-/area/shuttle/pirate/nri)
-"NT" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/closet/crate/secure/weapon{
-	anchored = 1
-	},
-/obj/machinery/light/small/red/directional/south,
-/obj/item/ammo_box/c27_54cesarzowa,
-/obj/item/ammo_box/c27_54cesarzowa,
-/obj/item/ammo_box/c27_54cesarzowa/rubber,
-/obj/item/ammo_box/c27_54cesarzowa/rubber,
-/turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "NW" = (
 /obj/machinery/power/shuttle_engine/propulsion/burst{
@@ -1606,8 +1609,8 @@ yE
 (11,1,1) = {"
 Hz
 Pi
-rk
-tN
+kq
+uh
 Hz
 Iv
 Iv
@@ -1641,7 +1644,7 @@ Hz
 Hz
 fB
 wb
-NT
+JB
 Hz
 rd
 pe
@@ -1651,12 +1654,12 @@ be
 Hz
 Bw
 wb
-HD
+DL
 Hz
 "}
 (14,1,1) = {"
 Hz
-Lx
+Hh
 wb
 Ci
 Hz
@@ -1668,14 +1671,14 @@ tk
 Hz
 bE
 wb
-pt
+pg
 Hz
 "}
 (15,1,1) = {"
 Hz
 rg
 qp
-aW
+ts
 Hz
 pQ
 tl
@@ -1685,7 +1688,7 @@ hl
 Hz
 TF
 qp
-CC
+Kb
 Hz
 "}
 (16,1,1) = {"

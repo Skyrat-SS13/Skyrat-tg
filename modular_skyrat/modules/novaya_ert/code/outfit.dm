@@ -116,7 +116,7 @@
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/ammo_box/advanced/s12gauge/express,
-							/obj/item/suppressor,
+							/obj/item/suppressor/standard,
 							/obj/item/knife/combat,
 							/obj/item/beamout_tool)
 	l_pocket = null

@@ -25,7 +25,7 @@
 	subcategory = "Weapon Accessories"
 
 /datum/armament_entry/company_import/vitezstvi/accessory/suppressor
-	item_type = /obj/item/suppressor
+	item_type = /obj/item/suppressor/standard
 	cost = PAYCHECK_COMMAND
 
 /datum/armament_entry/company_import/vitezstvi/accessory/small_case

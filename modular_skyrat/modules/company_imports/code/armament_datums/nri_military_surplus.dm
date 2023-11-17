@@ -31,6 +31,36 @@
 	item_type = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	cost = PAYCHECK_COMMAND
 
+/datum/armament_entry/company_import/nri_surplus/clothing/police_uniform
+	item_type = /obj/item/clothing/under/colonial/nri_police
+	cost = PAYCHECK_CREW
+	restricted = TRUE
+
+/datum/armament_entry/company_import/nri_surplus/clothing/police_cloak
+	item_type = /obj/item/clothing/neck/cloak/colonial/nri_police
+	cost = PAYCHECK_CREW
+	restricted = TRUE
+
+/datum/armament_entry/company_import/nri_surplus/clothing/police_cap
+	item_type = /obj/item/clothing/head/hats/colonial/nri_police
+	cost = PAYCHECK_CREW
+	restricted = TRUE
+
+/datum/armament_entry/company_import/nri_surplus/clothing/police_mask
+	item_type = /obj/item/clothing/mask/gas/nri_police
+	cost = PAYCHECK_CREW*2
+	restricted = TRUE
+
+/datum/armament_entry/company_import/nri_surplus/clothing/police_vest
+	item_type = /obj/item/clothing/head/helmet/nri_police
+	cost = PAYCHECK_COMMAND
+	restricted = TRUE
+
+/datum/armament_entry/company_import/nri_surplus/clothing/police_helmet
+	item_type = /obj/item/clothing/suit/armor/vest/nri_police
+	cost = PAYCHECK_COMMAND
+	restricted = TRUE
+
 // Random surplus store tier stuff, flags, old rations, multitools you'll never use, so on
 
 /datum/armament_entry/company_import/nri_surplus/misc

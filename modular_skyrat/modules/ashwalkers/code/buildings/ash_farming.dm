@@ -271,6 +271,18 @@
 
 		plant_bag?.atom_storage?.attempt_insert(created_harvest, user, TRUE)
 
-/turf/open/misc/asteroid/basalt/Initialize(mapload)
+/turf/open/misc/asteroid/basalt/getDug()
 	. = ..()
 	AddComponent(/datum/component/simple_farm)
+
+/turf/open/misc/asteroid/basalt/refill_dug()
+	. = ..()
+	qdel(GetComponent(/datum/component/simple_farm))
+
+/turf/open/misc/asteroid/snow/getDug()
+	. = ..()
+	AddComponent(/datum/component/simple_farm)
+
+/turf/open/misc/asteroid/snow/refill_dug()
+	. = ..()
+	qdel(GetComponent(/datum/component/simple_farm))

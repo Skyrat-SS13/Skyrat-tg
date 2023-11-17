@@ -108,6 +108,9 @@
 	. = ..()
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/fast_web)
 
+/mob/living/basic/spider/giant/hunter/mold //skyrat edit: exists to make molds not spam the world with simple mobs
+	basic_mob_flags = DEL_ON_DEATH
+
 /**
  * ### Scout Spider
  * A subtype of the giant spider which is faster, has thermal vision, but less health and damage.
@@ -225,7 +228,7 @@
 		heal_brute = 15,\
 		heal_burn = 15,\
 		heal_time = 3 SECONDS,\
-		self_targetting = HEALING_TOUCH_SELF_ONLY,\
+		self_targeting = HEALING_TOUCH_SELF_ONLY,\
 		interaction_key = DOAFTER_SOURCE_SPIDER,\
 		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tangle, /mob/living/basic/spider/giant/tangle)),\
 		extra_checks = CALLBACK(src, PROC_REF(can_mend)),\
@@ -275,7 +278,7 @@
 		heal_brute = 50,\
 		heal_burn = 50,\
 		heal_time = 5 SECONDS,\
-		self_targetting = HEALING_TOUCH_SELF_ONLY,\
+		self_targeting = HEALING_TOUCH_SELF_ONLY,\
 		interaction_key = DOAFTER_SOURCE_SPIDER,\
 		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tank, /mob/living/basic/spider/giant/tank)),\
 		extra_checks = CALLBACK(src, PROC_REF(can_mend)),\
