@@ -29,6 +29,8 @@
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	inhand_icon_state = "sec-case"
 	icon_state = "briefcase_secure_black"
+	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 
 /obj/item/storage/secure/briefcase/attack_self(mob/user)
 	. = ..()
