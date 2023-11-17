@@ -211,7 +211,7 @@
 			increase -= base_degradation_reduction_per_second_while_alive
 
 	if (IS_IN_STASIS(owner))
-		increase *= on_stasis_passive_degradation_mult
+		increase *= stasis_passive_degradation_multiplier
 
 	return increase
 
@@ -231,13 +231,13 @@
 	if (owner.has_reagent(/datum/reagent/eigenstate))
 		decrease += eigenstasium_degradation_decrease
 
-	return (decrease * get_passive_degradation_decrease_resting_mult())
+	return (decrease * get_passive_degradation_decrease_mult())
 
 #define DEGRADATION_REDUCTION_SLEEPING_MULT 3
 #define DEGRADATION_REDUCTION_RESTING_MULT 1.5
 
 /// Returns a multiplier that should be used whenever degradation is passively decreased. Is determined by resting, sleeping, and buckled status.
-/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_resting_multiplier()
+/datum/brain_trauma/severe/death_consequences/proc/get_passive_degradation_decrease_mult()
 	var/decrease_mult = 1
 
 	if (owner.IsSleeping())
@@ -451,7 +451,7 @@
 		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second")].")
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
 			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]")]</b>x.")
-		if (on_stasis_passive_degradation_mult < 1)
+		if (stasis_passive_degradation_multiplier < 1)
 			message += span_danger(" Stasis may be effective in slowing (or even stopping) degradation.")
 	if (base_degradation_on_death)
 		message += span_danger("\nDeath will incur a <b>[base_degradation_on_death]</b> degradation penalty.")
