@@ -112,6 +112,10 @@
 	item_type = /obj/item/gun/ballistic/automatic/miecz
 	cost = PAYCHECK_COMMAND * 10
 
+/datum/armament_entry/company_import/nri_surplus/firearm/sakhno_rifle
+	item_type = /obj/item/gun/ballistic/rifle/boltaction
+	cost = PAYCHECK_COMMAND * 12
+
 /datum/armament_entry/company_import/nri_surplus/firearm/lanca
 	item_type = /obj/item/gun/ballistic/automatic/lanca
 	contraband = TRUE
