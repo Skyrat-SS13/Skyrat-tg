@@ -496,8 +496,8 @@
 
 	// theoretically speaking theres should be no circumstances where mind.current is shared with another mind, so this should be intrinsically
 	// safe, since only the true owner of the mob can actually use the verb to refresh the variables
-	var/ckey = lowertext(owner.mind.key)
-	if (ckey != source.ckey)
+	var/ckey = lowertext(owner.mind?.key)
+	if (isnull(ckey) || ckey != source.ckey)
 		return // sanity
 
 	var/datum/preferences/victim_prefs = source.prefs
