@@ -1,22 +1,23 @@
-#define FIRE_SPEED_REGULAR 3 SECONDS
-#define FIRE_SPEED_SYNDIE 1.5 SECONDS
-
 /obj/item/clothing/head/hair_tie
 	name = "hair tie"
 	desc = "An elastic hair tie, made to hold your hair up!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "hairtie"
 	worn_icon = 'modular_skyrat/modules/salon/icons/items.dmi'
-	worn_icon_state = "none"
+	worn_icon_state = "hair_tie_worn_no_icon"
 	lefthand_file = 'modular_skyrat/modules/salon/icons/items.dmi'
 	righthand_file = 'modular_skyrat/modules/salon/icons/items.dmi'
-	inhand_icon_state = "none"
+	inhand_icon_state = "hair_tie_worn_no_icon"
 	w_class = WEIGHT_CLASS_TINY
 	custom_price = PAYCHECK_CREW * 0.2
-	//string which set_hairstyle() will read
+	///string which set_hairstyle() will read
 	var/picked_hairstyle
-	//storage for the original hairstyle string
+	///storage for the original hairstyle string
 	var/actual_hairstyle
+	///how long the do_after takes to flick the hair tie
+	var/fire_speed = 3 SECONDS
+	///which projectil object to use as flicked hair tie
+	var/projectile_to_fire = /obj/projectile/bullet/hair_tie
 
 /obj/item/clothing/head/hair_tie/scrunchie
 	name = "scrunchie"
@@ -33,13 +34,15 @@
 	name = "\improper Syndicate hair tie"
 	desc = "An elastic hair tie with a metal clip, brandishing the logo of the Syndicate."
 	icon_state = "hairtie_syndie"
+	fire_speed = 1.5 SECONDS
+	projectile_to_fire = /obj/projectile/bullet/hair_tie/syndicate
 
 /obj/item/clothing/head/hair_tie/examine(mob/user)
 	. = ..()
 	if(picked_hairstyle)
 		. += span_notice("Wearing it will change your hairstyle to '[picked_hairstyle]'.")
-	. += span_notice("Click [src] to pick a new hairstyle.")
-	. += span_notice("Alt-click [src] to fling it.")
+	. += span_notice("<b>Use in hand</b> to pick a new hairstyle.")
+	. += span_notice("<b>Alt-click</b> [src] to fling it.")
 
 /obj/item/clothing/head/hair_tie/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
 	if(user.hairstyle == "Bald") //could create a list of the bald hairstyles to check
@@ -61,9 +64,9 @@
 	if(!picked_hairstyle)
 		return
 	user.visible_message(
-			span_notice("[user.name] ties up [user.p_their()] hair."),
-			span_notice("You tie up your hair!"),
-		)
+		span_notice("[user.name] ties up [user.p_their()] hair."),
+		span_notice("You tie up your hair!"),
+	)
 	actual_hairstyle = user.hairstyle
 	user.set_hairstyle(picked_hairstyle, update = TRUE)
 
@@ -74,39 +77,43 @@
 	if(!picked_hairstyle || !actual_hairstyle)
 		return
 	user.visible_message(
-			span_notice("[user.name] takes [src] out of [user.p_their()] hair."),
-			span_notice("You let down your hair!"),
-		)
+		span_notice("[user.name] takes [src] out of [user.p_their()] hair."),
+		span_notice("You let down your hair!"),
+	)
 	user.set_hairstyle(actual_hairstyle, update = TRUE)
 	actual_hairstyle = null
 
 /obj/item/clothing/head/hair_tie/AltClick(mob/living/user)
 	. = ..()
 	if(!(user.get_slot_by_item(src) == ITEM_SLOT_HANDS))
+		balloon_alert(user, "hold in-hand!")
 		return
 	user.visible_message(
-	span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),
-	span_notice("You try to flick [src]!"),
+		span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),
+		span_notice("You try to flick [src]!"),
 	)
 	flick_hair_tie(user)
 
+///This proc flicks the hair tie out of the player's hand, tripping the target hit for 1 second
 /obj/item/clothing/head/hair_tie/proc/flick_hair_tie(mob/living/user)
-	//find out if this is the syndie hair tie
-	var/syndie = istype(src, /obj/item/clothing/head/hair_tie/syndicate)
-	if(!do_after(user, syndie ? FIRE_SPEED_SYNDIE : FIRE_SPEED_REGULAR, src))
+	if(!do_after(user, fire_speed, src))
 		return
-	//pick and build the right projectile
-	var/obj/projectile/proj_to_fire = syndie ? /obj/projectile/bullet/hair_tie/syndicate : /obj/projectile/bullet/hair_tie
-	var/obj/projectile/bullet/hair_tie/proj = new proj_to_fire (drop_location())
+	//build the projectile
+	var/obj/projectile/bullet/hair_tie/proj = new projectile_to_fire (drop_location())
 	//clone some vars
 	proj.name = name
 	proj.icon_state = icon_state
 	//add projectile_drop
 	proj.AddElement(/datum/element/projectile_drop, type)
-	//fire the projectile
+	//aim
 	proj.firer = user
 	proj.fired_from = user
-	proj.fire(dir2angle(user.dir) + (syndie ? 0 : rand(-30, 30)))
+	//calculate precision
+	var/fire_angle = dir2angle(user.dir)
+	if(!istype(src, /obj/item/clothing/head/hair_tie/syndicate))
+		fire_angle += rand(-30, 30)
+	//fire
+	proj.fire(fire_angle)
 	playsound(src, 'sound/weapons/effects/batreflect.ogg', 25, TRUE)
 	//get rid of what we just launched to let projectile_drop spawn a new one
 	qdel(src)
@@ -140,6 +147,3 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SERVICE,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
-
-#undef FIRE_SPEED_REGULAR
-#undef FIRE_SPEED_SYNDIE
