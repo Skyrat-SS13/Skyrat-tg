@@ -80,9 +80,7 @@ export const CharacterPreferenceWindow = (props, context) => {
     // SKYRAT EDIT END
     case Page.Main:
       pageContents = (
-        <MainPage
-          openSpecies={() => setCurrentPage(Page.Species)}
-        />
+        <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
       );
 
       break;
