@@ -25,30 +25,28 @@
 	name = "engineering briefcase"
 	icon_state = "briefcase_eng"
 
-/obj/item/storage/secure/briefcase
+/obj/item/storage/briefcase/secure
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	inhand_icon_state = "sec-case"
 	icon_state = "briefcase_secure_black"
-	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 
-/obj/item/storage/secure/briefcase/attack_self(mob/user)
+/obj/item/storage/briefcase/secure/attack_self(mob/user)
 	. = ..()
 	update_appearance()
 
-/obj/item/storage/secure/briefcase/update_overlays()
+/obj/item/storage/briefcase/secure/update_overlays()
 	. = ..()
 	if(atom_storage?.locked)
 		. += "briefcase_locked"
 	else
 		. += "briefcase_open"
 
-/obj/item/storage/secure/briefcase/update_icon_state()
+/obj/item/storage/briefcase/secure/update_icon_state()
 	. = ..()
 	// Remove icon state functionality in favor of the overlays above.
 	icon_state = "[initial(icon_state)]"
 
-/obj/item/storage/secure/briefcase/white
+/obj/item/storage/briefcase/secure/white
 	name = "white secure briefcase"
 	icon_state = "briefcase_secure_white"
 	inhand_icon_state = "lockbox"
