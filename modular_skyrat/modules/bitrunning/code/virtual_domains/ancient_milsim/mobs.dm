@@ -46,10 +46,10 @@
 		burst_shots = burst_shots,\
 	)
 
-/obj/effect/random_mob_placer/cin
-	possible_mobs = list(
-		/mob/living/basic/trooper/cin_soldier/melee,
+/datum/modular_mob_segment/cin_mobs
+	mobs = list(
 		/mob/living/basic/trooper/cin_soldier/ranged,
+		/mob/living/basic/trooper/cin_soldier/melee,
 	)
 
 /obj/effect/mob_spawn/corpse/human/cin_soldier

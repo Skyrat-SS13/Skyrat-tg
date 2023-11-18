@@ -10,6 +10,7 @@
 	key = "ancient_milsim"
 	map_dir = "_maps/skyrat/virtual_domains"
 	map_name = "ancient_milsim"
+	mob_modules = list(/datum/modular_mob_segment/cin_mobs)
 	reward_points = BITRUNNER_REWARD_HIGH
 	safehouse_path = /datum/map_template/safehouse_skyrat/ancient_milsim
 
