@@ -44,6 +44,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "aG" = (
@@ -1113,6 +1115,7 @@
 	req_access = list("syndicate");
 	specialfunctions = 4
 	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "jx" = (
@@ -1197,15 +1200,6 @@
 /obj/item/gun/syringe/syndicate,
 /turf/open/floor/iron/dark/small,
 /area/ruin/syndicate_lava_base/medbay)
-"jZ" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/machinery/door/poddoor/preopen{
-	id = "interdynesurgery";
-	name = "Surgery Shutter"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "kd" = (
 /obj/structure/bed/double{
 	dir = 1
@@ -1268,6 +1262,7 @@
 	name = "Surgery Shutter Control"
 	},
 /obj/machinery/iv_drip,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "kG" = (
@@ -1293,6 +1288,9 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "kV" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/iron/dark/small,
@@ -1790,6 +1788,8 @@
 /obj/machinery/duct,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "pn" = (
@@ -2121,6 +2121,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "su" = (
@@ -2868,6 +2870,8 @@
 "yV" = (
 /obj/machinery/duct,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "yY" = (
@@ -3115,6 +3119,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/engine/bz,
 /area/ruin/syndicate_lava_base/testlab)
+"AN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/medbay)
 "AU" = (
 /obj/effect/turf_decal/tile/dark_green/half{
 	dir = 8
@@ -3738,13 +3749,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/syndicate_lava_base/engineering)
-"Fs" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "interdynebayaccess"
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/arrivals)
 "Fv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
@@ -4131,6 +4135,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "IH" = (
@@ -5023,9 +5029,6 @@
 	name = "Hangar Access"
 	},
 /obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "interdynebayaccess"
-	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/arrivals)
 "PC" = (
@@ -5035,6 +5038,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "PH" = (
@@ -5194,12 +5200,6 @@
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /obj/structure/disposalpipe/trunk,
-/obj/machinery/button/door{
-	id = "interdynebayaccess";
-	name = "Shuttle Access Control";
-	pixel_x = 24;
-	req_access = list("syndicate")
-	},
 /obj/machinery/light/cold/directional/east,
 /turf/open/floor/iron/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
@@ -7433,9 +7433,9 @@ fm
 Pn
 us
 FK
-sk
+AN
 kV
-jZ
+bo
 da
 Ed
 WB
@@ -8013,7 +8013,7 @@ oW
 Xv
 pq
 Py
-Fs
+Lo
 pq
 RH
 cR
