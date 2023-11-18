@@ -277,6 +277,7 @@
 	new /obj/item/implanter/freedom(src) // 5 tc
 	new /obj/item/stack/telecrystal(src) //The failsafe/self destruct isn't an item we can physically include in the kit, but 1 TC is technically enough to buy the equivalent.
 
+<<<<<<< HEAD
 /obj/item/storage/box/syndicate/contract_kit //SKYRAT EDIT - CHANGED IN MODULAR FOLDER
 	name = "Contract Kit"
 	desc = "Supplied to Syndicate contractors."
@@ -334,6 +335,8 @@
 			<p>Good luck agent. You can burn this document with the supplied lighter.</p>"}
 	return ..()
 
+=======
+>>>>>>> 6bb2175fa55 ([BOUNTY] Re-adds Contractors (#79737))
 /obj/item/storage/box/syndie_kit
 	name = "box"
 	desc = "A sleek, sturdy box."
@@ -820,6 +823,61 @@
 		/obj/item/sbeacondrop/horse = 1,
 		/obj/item/food/grown/apple = 1,
 	), src)
+
+/obj/item/storage/box/syndicate/contract_kit
+	name = "Contract Kit"
+	desc = "Supplied to Syndicate contractors."
+	icon_state = "syndiebox"
+	illustration = "writing_syndie"
+
+/obj/item/storage/box/syndicate/contract_kit/PopulateContents()
+	new /obj/item/modular_computer/pda/syndicate_contract_uplink(src)
+	new /obj/item/storage/box/syndicate/contractor_loadout(src)
+	new /obj/item/melee/baton/telescopic/contractor_baton(src)
+
+	// All about 4 TC or less - some nukeops only items, but fit nicely to the theme.
+	var/static/list/item_list = list(
+		/obj/item/storage/backpack/duffelbag/syndie/x4,
+		/obj/item/storage/box/syndie_kit/throwing_weapons,
+		/obj/item/gun/syringe/syndicate,
+		/obj/item/pen/edagger,
+		/obj/item/pen/sleepy,
+		/obj/item/flashlight/emp,
+		/obj/item/reagent_containers/syringe/mulligan,
+		/obj/item/clothing/shoes/chameleon/noslip,
+		/obj/item/storage/medkit/tactical,
+		/obj/item/encryptionkey/syndicate,
+		/obj/item/clothing/glasses/thermal/syndi,
+		/obj/item/slimepotion/slime/sentience/nuclear,
+		/obj/item/storage/box/syndie_kit/imp_radio,
+		/obj/item/storage/box/syndie_kit/imp_uplink,
+		/obj/item/clothing/gloves/krav_maga/combatglovesplus,
+		/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot,
+		/obj/item/reagent_containers/hypospray/medipen/stimulants,
+		/obj/item/storage/box/syndie_kit/imp_freedom,
+		/obj/item/toy/eightball/haunted,
+	)
+	for(var/i in 1 to 3)
+		var/selected_item = pick_n_take(item_list)
+		new selected_item(src)
+
+	// Paper guide is always last.
+	new /obj/item/paper/contractor_guide(src)
+
+/obj/item/storage/box/syndicate/contractor_loadout
+	name = "Standard Loadout"
+	desc = "Supplied to Syndicate contractors, providing their specialised space suit and chameleon uniform."
+	icon_state = "syndiebox"
+	illustration = "writing_syndie"
+
+/obj/item/storage/box/syndicate/contractor_loadout/PopulateContents()
+	new /obj/item/clothing/head/helmet/space/syndicate/contract(src)
+	new /obj/item/clothing/suit/space/syndicate/contract(src)
+	new /obj/item/clothing/under/chameleon(src)
+	new /obj/item/clothing/mask/chameleon(src)
+	new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/lighter(src)
 
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI
