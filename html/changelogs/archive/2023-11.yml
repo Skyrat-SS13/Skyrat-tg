@@ -772,3 +772,15 @@
   mogeoko:
   - bugfix: Turbine parts will now use an amount of materials no greater than needed
       for the upgrade
+2023-11-18:
+  SkyratBot:
+  - refactor: Secure briefcases are now actual briefcases.
+  - refactor: Wall safes are now structures, rather than items that can't be picked
+      up.
+  - refactor: Lockable items (Wall safes & Secure Briefcases) now use TGUI.
+  - bugfix: gutlunches will stop having too many children
+  - balance: gutlunches are no longer in the mining faction
+  - bugfix: After correcting a slight miscalculation, Bit Avatars now have hands again.
+  - rscadd: Chat Reliability Layer
+  - code_imp: TGUI chat messages now track their sequence and will be resent if the
+      client notices a discrepenency
