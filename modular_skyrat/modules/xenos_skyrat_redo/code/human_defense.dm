@@ -11,7 +11,7 @@
 
 		if(mob_held_item)
 
-			if(check_shields(user, 0, "[user.name]"))
+			if(check_block(user, charge_damage = 0, name = "[user.name]"))
 				playsound(loc, 'sound/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
 				apply_damage(disarm_damage / 2, STAMINA)
 				visible_message(span_danger("[user] attempts to touch [src]!"), \

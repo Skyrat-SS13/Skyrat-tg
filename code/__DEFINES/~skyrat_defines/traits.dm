@@ -51,6 +51,12 @@
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
 
+// canine traits
+#define TRAIT_CANINE "canine_aspect"
+
+// avian traits
+#define TRAIT_AVIAN "avian_aspect"
+
 // chameleon mutation
 #define TRAIT_CHAMELEON_SKIN "chameleon_skin"
 
@@ -59,9 +65,6 @@
 
 /// The trait that determines if someone has the oversized quirk.
 #define TRAIT_OVERSIZED "trait_oversized"
-
-/// Caninid trait
-#define TRAIT_CANINE "trait_canine"
 
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
