@@ -79,7 +79,7 @@
 	var/subtler_message
 	var/subtler_emote = params
 	var/target
-	var/subtler_range = 1
+	var/subtler_range = SUBTLE_DEFAULT_DISTANCE
 
 	var/datum/dna/dna = user.has_dna()
 	if(dna && dna?.check_mutation(/datum/mutation/human/telekinesis))
