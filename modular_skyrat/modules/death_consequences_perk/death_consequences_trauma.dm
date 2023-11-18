@@ -425,7 +425,7 @@
 	SIGNAL_HANDLER
 
 	time_til_scan_expires -= signal_source
-	UnregisterSignal(time_til_scan_expires, COMSIG_QDELETING)
+	UnregisterSignal(signal_source, COMSIG_QDELETING)
 
 /datum/brain_trauma/severe/death_consequences/Topic(href, list/href_list)
 	. = ..()
@@ -496,6 +496,10 @@
 
 	// theoretically speaking theres should be no circumstances where mind.current is shared with another mind, so this should be intrinsically
 	// safe, since only the true owner of the mob can actually use the verb to refresh the variables
+
+	if (isnull(source))
+		return // sanity
+
 	var/ckey = lowertext(owner.mind?.key)
 	if (isnull(ckey) || ckey != source.ckey)
 		return // sanity

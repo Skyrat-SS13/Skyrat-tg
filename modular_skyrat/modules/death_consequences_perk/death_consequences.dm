@@ -1,8 +1,3 @@
-GLOBAL_LIST_INIT(death_consequences_verbs, list(
-	TYPE_PROC_REF(/client, adjust_degradation),
-	TYPE_PROC_REF(/client, refresh_death_consequences),
-))
-
 /datum/quirk/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
 	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired."
@@ -32,25 +27,19 @@ GLOBAL_LIST_INIT(death_consequences_verbs, list(
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.cure_trauma_type(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/client/New(TopicData)
-	. = ..()
-
-	if (fully_created) // if client fails to be made lets not add the verbs
-		add_verb(src, GLOB.death_consequences_verbs)
-
 /// Adjusts the mob's linked death consequences trauma (see get_death_consequences_trauma())'s degradation by increment.
-/client/proc/adjust_degradation(increment as num)
+/mob/verb/adjust_degradation(increment as num)
 	set name = "Adjust death degradation"
 	set category = "IC"
 	set instant = TRUE
 
-	if (isnull(mob))
-		to_chat(usr, span_warning("You have no mob!"))
+	if (isnull(mind))
+		to_chat(usr, span_warning("You have no mind!"))
 		return
 
 	var/datum/brain_trauma/severe/death_consequences/linked_trauma = get_death_consequences_trauma()
 	var/mob/living/carbon/trauma_holder = linked_trauma?.owner
-	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mob.mind.current) // sanity
+	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mind.current) // sanity
 		to_chat(usr, span_warning("You don't have a body with death consequences!"))
 		return
 
@@ -67,18 +56,18 @@ GLOBAL_LIST_INIT(death_consequences_verbs, list(
 	to_chat(usr, span_notice("Degradation successfully adjusted!"))
 
 /// Calls update_variables() on this mob's linked death consequences trauma. See that proc for further info.
-/client/proc/refresh_death_consequences()
+/mob/verb/refresh_death_consequences()
 	set name = "Refresh death consequence variables"
 	set category = "IC"
 	set instant = TRUE
 
-	if (isnull(mob))
-		to_chat(usr, span_warning("You have no mob!"))
+	if (isnull(mind))
+		to_chat(usr, span_warning("You have no mind!"))
 		return
 
 	var/datum/brain_trauma/severe/death_consequences/linked_trauma = get_death_consequences_trauma()
 	var/mob/living/carbon/trauma_holder = linked_trauma?.owner
-	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mob.mind.current) // sanity
+	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mind.current) // sanity
 		to_chat(usr, span_warning("You don't have a body with death consequences!"))
 		return
 
@@ -86,16 +75,14 @@ GLOBAL_LIST_INIT(death_consequences_verbs, list(
 	to_chat(usr, span_notice("Variables successfully updated!"))
 
 /// Searches mind.current for a death_consequences trauma. Allows this proc to be used on both ghosts and living beings to find their linked trauma.
-/client/proc/get_death_consequences_trauma()
+/mob/proc/get_death_consequences_trauma()
 	RETURN_TYPE(/datum/brain_trauma/severe/death_consequences)
 
-	if (isnull(mob))
-		return
-	if (isnull(mob.mind))
+	if (isnull(mind))
 		return
 
-	if (iscarbon(mob.mind.current))
-		var/mob/living/carbon/carbon_body = mob.mind.current
+	if (iscarbon(mind.current))
+		var/mob/living/carbon/carbon_body = mind.current
 		for (var/datum/brain_trauma/trauma as anything in carbon_body.get_traumas())
 			if (istype(trauma, /datum/brain_trauma/severe/death_consequences))
 				return trauma
