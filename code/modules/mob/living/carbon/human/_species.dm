@@ -1138,11 +1138,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	user.do_cpr(target)
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s grab!"), \
-						span_userdanger("You block [user]'s grab!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("Your grab at [target] was blocked!"))
-		return FALSE
 	if(attacker_style?.grab_act(user, target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 	target.grabbedby(user)
@@ -1152,11 +1147,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM) && !attacker_style?.pacifist_style)
 		to_chat(user, span_warning("You don't want to harm [target]!"))
-		return FALSE
-	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
-						span_userdanger("You block [user]'s attack!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("Your attack at [target] was blocked!"))
 		return FALSE
 	if(attacker_style?.harm_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
@@ -1252,11 +1242,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			log_combat(user, target, "got a stun punch with their previous punch")
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	if(target.check_block())
-		target.visible_message(span_warning("[user]'s shove is blocked by [target]!"), \
-						span_danger("You block [user]'s shove!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("Your shove at [target] was blocked!"))
-		return FALSE
 	if(attacker_style?.disarm_act(user,target) == MARTIAL_ATTACK_SUCCESS)
 		return TRUE
 	if(user.body_position != STANDING_UP)
@@ -1277,7 +1262,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return
 	if(owner.mind)
 		attacker_style = owner.mind.martial_art
-	if((owner != target) && target.check_shields(owner, 0, owner.name, attack_type = UNARMED_ATTACK))
+	if((owner != target) && target.check_block(owner, 0, owner.name, attack_type = UNARMED_ATTACK))
 		log_combat(owner, target, "attempted to touch")
 		target.visible_message(span_warning("[owner] attempts to touch [target]!"), \
 						span_danger("[owner] attempts to touch you!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, owner)
@@ -1294,6 +1279,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		help(owner, target, attacker_style)
 
+<<<<<<< HEAD
 /datum/species/proc/spec_attacked_by(obj/item/weapon, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/human)
 	// Allows you to put in item-specific reactions based on species
 	if(user != human)
@@ -1403,6 +1389,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	return TRUE
 
+=======
+>>>>>>> 365e50bbce6 (Mob `attackedby` / `check_block` refactor, plus some minor cleanup of `attack_x` procs (#79563))
 //////////////////////////
 // ENVIRONMENT HANDLERS //
 //////////////////////////
