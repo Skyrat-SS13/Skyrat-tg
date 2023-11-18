@@ -381,7 +381,7 @@
 
 				// rev deconversion through blunt trauma.
 				// this can be signalized to the rev datum
-				if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
+				if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((maxHealth - health) * 0.5))) // SKYRAT EDIT CHANGE - ORIGINAL : if(mind && stat == CONSCIOUS && src != attacker && prob(damage_done + ((100 - health) * 0.5)))
 					var/datum/antagonist/rev/rev = mind.has_antag_datum(/datum/antagonist/rev)
 					rev?.remove_revolutionary(attacker)
 
