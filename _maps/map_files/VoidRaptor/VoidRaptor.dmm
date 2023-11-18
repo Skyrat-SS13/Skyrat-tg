@@ -2144,10 +2144,6 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
-/obj/machinery/button/door/directional/south{
-	id = "genetics_shutters";
-	name = "Genetics Shutters"
-	},
 /obj/item/storage/box/monkeycubes{
 	pixel_x = 6;
 	pixel_y = 9
@@ -7164,7 +7160,7 @@
 /turf/closed/wall,
 /area/station/maintenance/port/greater)
 "chg" = (
-/obj/item/storage/secure/safe/caps_spare{
+/obj/structure/secure_safe/caps_spare{
 	pixel_x = -24
 	},
 /obj/structure/table/reinforced/rglass,
@@ -8361,7 +8357,7 @@
 "cAH" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/centcom/double,
-/obj/item/storage/secure/safe/directional/east,
+/obj/structure/secure_safe/directional/east,
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/carpet/green,
 /area/station/command/heads_quarters/nt_rep)
@@ -13312,7 +13308,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/explab)
 "dTw" = (
-/obj/item/storage/secure/safe/directional/north,
+/obj/structure/secure_safe/directional/north,
 /obj/structure/table/wood/fancy/purple,
 /obj/item/folder/syndicate{
 	desc = "A folder stamped \"Top Secret - Property of Nanotrasen.\"";
@@ -16605,7 +16601,6 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
-/obj/machinery/firealarm/directional/east,
 /obj/structure/bed/dogbed{
 	anchored = 1;
 	name = "Markus's bed"
@@ -17126,7 +17121,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/effect/turf_decal/trimline/neutral/filled/line,
-/obj/item/storage/secure/safe/directional/south,
+/obj/structure/secure_safe/directional/south,
 /obj/structure/extinguisher_cabinet/directional/south{
 	pixel_x = 16
 	},
@@ -22712,7 +22707,7 @@
 /area/station/security/detectives_office)
 "gDz" = (
 /obj/structure/table/reinforced/rglass,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/radio/headset/headset_com{
 	pixel_x = -16
 	},
@@ -24341,6 +24336,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/air_sensor/engine_chamber,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "haq" = (
@@ -25797,7 +25793,7 @@
 "hwG" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/cmo/double,
-/obj/item/storage/secure/safe/directional/north,
+/obj/structure/secure_safe/directional/north,
 /turf/open/floor/carpet/blue,
 /area/station/command/heads_quarters/cmo)
 "hwL" = (
@@ -27228,7 +27224,7 @@
 	},
 /area/station/hallway/primary/aft)
 "hRn" = (
-/obj/item/storage/secure/safe/directional/west,
+/obj/structure/secure_safe/directional/west,
 /obj/structure/dresser,
 /obj/item/toy/figure/ce{
 	pixel_y = 14
@@ -29483,7 +29479,7 @@
 	pixel_x = -5
 	},
 /obj/structure/table/wood,
-/obj/item/storage/secure/safe/directional/east,
+/obj/structure/secure_safe/directional/east,
 /obj/item/lighter{
 	color = "#d4af37";
 	desc = "Cap's Lucky Lighter. Given to him by NT staff for being the most capable person to secure the disk.";
@@ -31278,7 +31274,7 @@
 /obj/effect/turf_decal/tile/dark_red/half{
 	dir = 4
 	},
-/obj/item/storage/secure/safe/directional/east,
+/obj/structure/secure_safe/directional/east,
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random/armory/bulletproof_armor,
 /turf/open/floor/engine,
@@ -33525,6 +33521,10 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/airalarm/mixingchamber_access,
+/obj/effect/mapping_helpers/airalarm/link{
+	chamber_id = "ordnanceburn"
+	},
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "jCA" = (
@@ -34478,10 +34478,14 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airalarm/link{
+	chamber_id = "ordnancefreezer"
+	},
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
-/area/station/science/ordnance/freezerchamber)
+/area/station/science/ordnance)
 "jOG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -41624,7 +41628,7 @@
 /area/station/commons/storage/primary)
 "lKw" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_y = 4
 	},
 /obj/item/taperecorder{
@@ -47444,7 +47448,7 @@
 /obj/item/megaphone{
 	name = "The Judge's Megaphone"
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/wood/large,
 /area/station/security/courtroom)
@@ -47554,7 +47558,7 @@
 	c_tag = "Bridge - Head of Personnel's Office";
 	name = "command camera"
 	},
-/obj/item/storage/secure/safe/directional/east,
+/obj/structure/secure_safe/directional/east,
 /obj/effect/landmark/start/head_of_personnel,
 /obj/machinery/button/door/directional/east{
 	id = "hopdoor";
@@ -51429,7 +51433,7 @@
 "ovo" = (
 /obj/structure/closet/secure_closet/nanotrasen_consultant/station,
 /obj/item/clothing/accessory/medal/gold/ordom,
-/obj/item/storage/secure/briefcase/white,
+/obj/item/storage/briefcase/secure/white,
 /obj/item/clothing/gloves/combat/naval,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line{
@@ -53420,7 +53424,7 @@
 /turf/closed/wall,
 /area/station/cargo/miningdock)
 "oXL" = (
-/obj/item/storage/secure/safe/directional/east,
+/obj/structure/secure_safe/directional/east,
 /obj/structure/dresser,
 /obj/item/toy/figure/captain{
 	pixel_y = 12
@@ -62875,7 +62879,7 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -68743,7 +68747,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/item/storage/secure/safe/hos{
+/obj/structure/secure_safe/hos{
 	pixel_x = 32
 	},
 /obj/effect/landmark/start/head_of_security,
@@ -78680,7 +78684,7 @@
 "vOd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/grenade/smokebomb,
 /obj/effect/turf_decal/siding/wood/end{
 	dir = 8
@@ -79758,7 +79762,7 @@
 /turf/closed/wall,
 /area/station/commons/fitness/recreation/entertainment)
 "wcq" = (
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -80157,6 +80161,10 @@
 	},
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/airalarm/engine_access,
+/obj/effect/mapping_helpers/airalarm/link{
+	chamber_id = "engine"
+	},
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "wjk" = (
@@ -82830,7 +82838,7 @@
 	dir = 10
 	},
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 5;
 	pixel_y = 5
 	},

@@ -124,8 +124,10 @@
 		return FALSE
 
 /obj/structure/chair/shibari_stand/deconstruct(disassembled)
+	if(flags_1 & NODECONSTRUCT_1)
+		return
+
 	qdel(src)
-	return TRUE
 
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
