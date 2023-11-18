@@ -50,3 +50,77 @@
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
 	return ..()
+
+/obj/machinery/smartfridge/producebin
+	name = "Produce Bin"
+	desc = "A wooden hamper, used to hold plant products and try keep them safe from pests."
+	icon_state = "producebin"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	visible_contents = FALSE
+	base_build_path = /obj/machinery/smartfridge/producebin
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = FALSE
+
+/obj/machinery/smartfridge/producebin/accept_check(obj/item/weapon)
+	return (istype(weapon, /obj/item/food/grown))
+
+/obj/machinery/smartfridge/producebin/structure_examine()
+	. = ""
+	if(anchored)
+		. += span_info("It's currently anchored to the floor. It can be [EXAMINE_HINT("wrenched")] loose.")
+	else
+		. += span_info("It's not anchored to the floor. It can be [EXAMINE_HINT("wrenched")] down.")
+	. += span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+/obj/machinery/smartfridge/producebin/welder_act(mob/living/user, obj/item/tool)
+/obj/machinery/smartfridge/producebin/welder_act_secondary(mob/living/user, obj/item/tool)
+/obj/machinery/smartfridge/producebin/default_deconstruction_screwdriver()
+/obj/machinery/smartfridge/producebin/exchange_parts()
+/obj/machinery/smartfridge/producebin/on_deconstruction()
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+/obj/machinery/smartfridge/producebin/crowbar_act(mob/living/user, obj/item/tool)
+	. = TOOL_ACT_TOOLTYPE_SUCCESS
+
+	default_deconstruction_crowbar(tool, ignore_panel = TRUE)
+
+/obj/machinery/smartfridge/seedshelf
+	name = "Seedshelf"
+	desc = "A wooden shelf, used to hold seeds preventing them from germinating early."
+	icon_state = "seedshelf"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	visible_contents = FALSE
+	base_build_path = /obj/machinery/smartfridge/seedshelf
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = FALSE
+
+/obj/machinery/smartfridge/seedshelf/accept_check(obj/item/weapon)
+	return istype(weapon, /obj/item/seeds)
+
+/obj/machinery/smartfridge/seedshelf/structure_examine()
+	. = ""
+	if(anchored)
+		. += span_info("It's currently anchored to the floor. It can be [EXAMINE_HINT("wrenched")] loose.")
+	else
+		. += span_info("It's not anchored to the floor. It can be [EXAMINE_HINT("wrenched")] down.")
+	. += span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+/obj/machinery/smartfridge/seedshelf/welder_act(mob/living/user, obj/item/tool)
+/obj/machinery/smartfridge/seedshelf/welder_act_secondary(mob/living/user, obj/item/tool)
+/obj/machinery/smartfridge/seedshelf/default_deconstruction_screwdriver()
+/obj/machinery/smartfridge/seedshelf/exchange_parts()
+/obj/machinery/smartfridge/seedshelf/on_deconstruction()
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+/obj/machinery/smartfridge/seedshelf/crowbar_act(mob/living/user, obj/item/tool)
+	. = TOOL_ACT_TOOLTYPE_SUCCESS
+
+	default_deconstruction_crowbar(tool, ignore_panel = TRUE)
