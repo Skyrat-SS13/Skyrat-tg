@@ -1,5 +1,6 @@
 #define SUBTLE_DEFAULT_DISTANCE 1
 #define SUBTLE_SAME_TILE_DISTANCE 0
+#define SUBTLER_TELEKINESIS_DISTANCE 7
 
 #define SUBTLE_ONE_TILE_TEXT "1-Tile Range"
 #define SUBTLE_SAME_TILE_TEXT "Same Tile"
@@ -78,6 +79,12 @@
 	var/subtler_message
 	var/subtler_emote = params
 	var/target
+	var/subtler_range = 1
+
+	var/datum/dna/dna = user.has_dna()
+	if(dna && dna?.check_mutation(/datum/mutation/human/telekinesis))
+		subtler_range = SUBTLER_TELEKINESIS_DISTANCE
+
 	if(SSdbcore.IsConnected() && is_banned_from(user, "emote"))
 		to_chat(user, span_warning("You cannot send subtle emotes (banned)."))
 		return FALSE
@@ -89,7 +96,7 @@
 		if(!subtler_emote)
 			return FALSE
 
-		var/list/in_view = get_hearers_in_view(1, user)
+		var/list/in_view = get_hearers_in_view(subtler_range, user)
 
 		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 		if(hologram)
@@ -132,7 +139,7 @@
 		var/mob/target_mob = target
 		user.show_message(subtler_message, alt_msg = subtler_message)
 		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
-		if((get_dist(user.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE) || (hologram && get_dist(hologram.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE))
+		if((get_dist(user.loc, target_mob.loc) <= subtler_range) || (hologram && get_dist(hologram.loc, target_mob.loc) <= subtler_range))
 			target_mob.show_message(subtler_message, alt_msg = subtler_message)
 		else
 			to_chat(user, span_warning("Your emote was unable to be sent to your target: Too far away."))
@@ -188,6 +195,7 @@
 
 #undef SUBTLE_DEFAULT_DISTANCE
 #undef SUBTLE_SAME_TILE_DISTANCE
+#undef SUBTLER_TELEKINESIS_DISTANCE
 
 #undef SUBTLE_ONE_TILE_TEXT
 #undef SUBTLE_SAME_TILE_TEXT
