@@ -110,7 +110,7 @@
 	. = ..()
 
 	// 2) BODYPARTS
-	UnregisterSignal(COMSIG_ITEM_ATTACK)
+	UnregisterSignal(src, COMSIG_ITEM_ATTACK)
 	former_ghoul.part_default_head = /obj/item/bodypart/head
 	former_ghoul.part_default_chest = /obj/item/bodypart/chest
 	former_ghoul.part_default_l_arm = /obj/item/bodypart/arm/left
