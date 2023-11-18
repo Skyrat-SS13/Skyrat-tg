@@ -241,9 +241,9 @@
 		/obj/item/emergency_bed = 1,
 		/obj/item/stack/medical/gauze = 1,
 		/obj/item/stack/medical/gauze/sterilized = 1,
-		/obj/item/stack/medical/wound_recovery = 1,
-		/obj/item/storage/pill_bottle/painkiller = 1,
-		/obj/item/healthanalyzer = 1,
+		/obj/item/reagent_containers/medigel/sterilizine = 1,
+		/obj/item/stack/sticky_tape/surgical = 1,
+		/obj/item/stack/medical/bone_gel = 1,
 	)
 	generate_items_inside(items_inside,src)
 
