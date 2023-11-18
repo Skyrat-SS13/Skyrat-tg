@@ -17,8 +17,6 @@
 	grill_loop = new(src, FALSE)
 	if(isnum(variant))
 		variant = 1
-	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
-	RegisterSignal(src, COMSIG_STORAGE_DUMP_CONTENT, PROC_REF(on_storage_dump))
 
 /obj/machinery/griddle/stone/examine(mob/user)
 	. = ..()
