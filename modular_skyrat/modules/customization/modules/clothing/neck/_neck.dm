@@ -93,6 +93,7 @@
 	icon_state = "face_scarf"
 	greyscale_config = /datum/greyscale_config/face_scarf
 	greyscale_config_worn = /datum/greyscale_config/face_scarf/worn
+	greyscale_config_worn_muzzled = /datum/greyscale_config/face_scarf/worn/muzzled
 	greyscale_colors = "#a52424"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	flags_inv = HIDEFACIALHAIR

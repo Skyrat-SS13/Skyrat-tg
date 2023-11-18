@@ -494,6 +494,10 @@
 	name = "Face Scarf (Worn)"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/face_scarf_worn.dmi'
 
+/datum/greyscale_config/face_scarf/worn/muzzled
+	name = "Face Scarf (Worn, Muzzled)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/face_scarf_worn_muzzled.dmi'
+
 /*
 *	SUITS
 */
