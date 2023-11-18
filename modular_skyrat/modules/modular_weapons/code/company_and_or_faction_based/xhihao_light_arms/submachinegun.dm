@@ -31,6 +31,7 @@
 
 	burst_size = 1
 	fire_delay = 0.15 SECONDS
+	actions_types = list()
 
 	// Because we're firing a lot of these really fast, we want a lot less wound chance
 	projectile_wound_bonus = -20
