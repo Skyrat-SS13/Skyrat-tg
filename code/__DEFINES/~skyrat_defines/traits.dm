@@ -66,9 +66,6 @@
 /// The trait that determines if someone has the oversized quirk.
 #define TRAIT_OVERSIZED "trait_oversized"
 
-/// Caninid trait
-#define TRAIT_CANINE "trait_canine"
-
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
 
