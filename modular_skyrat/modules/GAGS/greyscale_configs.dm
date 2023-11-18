@@ -239,8 +239,8 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/clown_mask/clown_mask_worn.json'
 
 // VAPE
-/datum/greyscale_config/vape/worn/digi
-	name = "Vape (Worn, Digi) "
+/datum/greyscale_config/vape/worn/muzzled
+	name = "Vape (Worn, Muzzled)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
 // RESPIRATOR
