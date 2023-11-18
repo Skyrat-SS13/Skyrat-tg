@@ -41,6 +41,7 @@
 	if(!istype(hearthkin))
 		return
 	hearthkin.dna.add_mutation(/datum/mutation/human/olfaction, MUT_NORMAL)
+	hearthkin.dna.activate_mutation(/datum/mutation/human/olfaction)
     	// >mfw I take mutadone and my nose clogs
 	var/datum/mutation/human/olfaction/mutation = locate() in hearthkin.dna.mutations
 	mutation.mutadone_proof = TRUE
