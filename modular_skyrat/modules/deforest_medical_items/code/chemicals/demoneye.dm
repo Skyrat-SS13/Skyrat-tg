@@ -11,7 +11,7 @@
 	required_reagents = list(
 		/datum/reagent/medicine/ephedrine = 5,
 		/datum/reagent/blood = 15,
-		/datum/reagent/toxin/plasma = 5,
+		/datum/reagent/stable_plasma = 5,
 	)
 	mob_react = FALSE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
