@@ -44,8 +44,9 @@
 	hearthkin.dna.activate_mutation(/datum/mutation/human/olfaction)
     	// >mfw I take mutadone and my nose clogs
 	var/datum/mutation/human/olfaction/mutation = locate() in hearthkin.dna.mutations
-	mutation.mutadone_proof = TRUE
-	mutation.instability = 0
+	// testing CI to see if these are causing the hard dels
+	//mutation.mutadone_proof = TRUE
+	//mutation.instability = 0
 
 /datum/species/human/felinid/primitive/on_species_loss(mob/living/carbon/former_primitive, datum/species/new_species, pref_load)
 	. = ..()
