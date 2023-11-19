@@ -71,22 +71,16 @@
 	return (istype(weapon, /obj/item/food/grown))
 
 /obj/machinery/smartfridge/producebin/structure_examine()
-	. = ""
-	if(anchored)
-		. += span_info("It's currently anchored to the floor. It can be [EXAMINE_HINT("wrenched")] loose.")
-	else
-		. += span_info("It's not anchored to the floor. It can be [EXAMINE_HINT("wrenched")] down.")
-	. += span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
-/obj/machinery/smartfridge/producebin/welder_act(mob/living/user, obj/item/tool)
-/obj/machinery/smartfridge/producebin/welder_act_secondary(mob/living/user, obj/item/tool)
-/obj/machinery/smartfridge/producebin/default_deconstruction_screwdriver()
-/obj/machinery/smartfridge/producebin/exchange_parts()
-/obj/machinery/smartfridge/producebin/on_deconstruction()
-	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
-/obj/machinery/smartfridge/producebin/crowbar_act(mob/living/user, obj/item/tool)
-	. = TOOL_ACT_TOOLTYPE_SUCCESS
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
 
-	default_deconstruction_crowbar(tool, ignore_panel = TRUE)
+
+/obj/machinery/smartfridge/producebin/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/smartfridge/seedshelf
 	name = "Seedshelf"
@@ -108,19 +102,12 @@
 	return istype(weapon, /obj/item/seeds)
 
 /obj/machinery/smartfridge/seedshelf/structure_examine()
-	. = ""
-	if(anchored)
-		. += span_info("It's currently anchored to the floor. It can be [EXAMINE_HINT("wrenched")] loose.")
-	else
-		. += span_info("It's not anchored to the floor. It can be [EXAMINE_HINT("wrenched")] down.")
-	. += span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
-/obj/machinery/smartfridge/seedshelf/welder_act(mob/living/user, obj/item/tool)
-/obj/machinery/smartfridge/seedshelf/welder_act_secondary(mob/living/user, obj/item/tool)
-/obj/machinery/smartfridge/seedshelf/default_deconstruction_screwdriver()
-/obj/machinery/smartfridge/seedshelf/exchange_parts()
-/obj/machinery/smartfridge/seedshelf/on_deconstruction()
-	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
-/obj/machinery/smartfridge/seedshelf/crowbar_act(mob/living/user, obj/item/tool)
-	. = TOOL_ACT_TOOLTYPE_SUCCESS
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
 
-	default_deconstruction_crowbar(tool, ignore_panel = TRUE)
+/obj/machinery/smartfridge/seedshelf/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
