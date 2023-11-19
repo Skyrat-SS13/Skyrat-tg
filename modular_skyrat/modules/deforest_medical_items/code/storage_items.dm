@@ -1,7 +1,7 @@
 // Bottle of painkiller pills
 /obj/item/storage/pill_bottle/painkiller
 	name = "amollin pill bottle"
-	desc = "It's an airtight container for storing medication. This one is all-white and has labels for containing amollin, a common painkiller."
+	desc = "It's an airtight container for storing medication. This one is all-white and has labels for containing amollin, a blend of Miner's Salve and Lidocaine."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "painkiller_bottle"
 
