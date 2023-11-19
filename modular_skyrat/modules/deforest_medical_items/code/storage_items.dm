@@ -11,7 +11,7 @@
 
 /obj/item/reagent_containers/pill/amollin
 	name = "amollin pill"
-	desc = "Neutralizes many common pains and ailments."
+	desc = "Neutralizes many common pains and ailments. A blend of Miner's Salve and Lidocaine."
 	icon_state = "pill9"
 	list_reagents = list(
 		/datum/reagent/medicine/mine_salve = 10,
