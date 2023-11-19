@@ -34,8 +34,13 @@
 	else
 		return FALSE
 
+/mob/living/basic/parrot/proc/toggle_perched(perched)
+	. = ..()
+	if(!perched)
+		buckled_to_human = FALSE
+
 /mob/living/basic/parrot/poly/proc/command_perch(mob/living/carbon/human/human_target)
-	if (!buckled)
+	if(!buckled)
 		buckled_to_human = FALSE
 	if(LAZYLEN(human_target.buckled_mobs) >= human_target.max_buckled_mobs)
 		return
@@ -50,14 +55,16 @@
 		buckled_to_human = TRUE
 
 /mob/living/basic/parrot/poly/proc/command_hop_off(mob/living/carbon/human/human_target)
-	if (!buckled)
+	if(!buckled)
 		buckled_to_human = FALSE
 	if(!buckled_to_human || !buckled)
 		manual_emote("gives [human_target] a confused look, squawking softly.")
 		return
 
-	toggle_perched(perched = FALSE)
-	buckled_to_human = FALSE
+	if(buckled)
+		to_chat(src, span_notice("You are no longer sitting on [human_target]."))
+		buckled.unbuckle_mob(src, TRUE)
+		manual_emote("squawks and hops off of [human_target], flying away.")
 
 #undef PARROT_PERCH
 #undef PARROT_SWOOP
