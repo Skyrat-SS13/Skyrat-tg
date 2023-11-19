@@ -1,7 +1,3 @@
-#define PARROT_PERCH (1<<0) //Sitting/sleeping, not moving
-#define PARROT_SWOOP (1<<1) //Moving towards or away from a target
-#define PARROT_WANDER (1<<2) //Moving without a specific target in mind
-
 /*
 * Parrot commands: Made modular
 */
@@ -66,6 +62,3 @@
 		buckled.unbuckle_mob(src, TRUE)
 		manual_emote("squawks and hops off of [human_target], flying away.")
 
-#undef PARROT_PERCH
-#undef PARROT_SWOOP
-#undef PARROT_WANDER
