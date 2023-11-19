@@ -247,7 +247,10 @@
 
 	var/buckled_to_mult
 	if (owner.buckled)
-		buckled_to_mult = buckled_to_recovery_mult_table[owner.buckled.type]
+		for (var/atom/atom_typepath as anything in buckled_to_recovery_mult_table)
+			if (istype(owner.buckled, atom_typepath))
+				buckled_to_mult = buckled_to_recovery_mult_table[atom_typepath]
+				break
 		if (isnull(buckled_to_mult))
 			buckled_to_mult = buckled_to_default_mult
 	else
@@ -448,7 +451,7 @@
 	if (base_degradation_reduction_per_second_while_alive)
 		message += span_danger("\nWhile alive, subject will recover from degradation at a rate of [span_blue("[base_degradation_reduction_per_second_while_alive] per second")].")
 	if (base_degradation_per_second_while_dead)
-		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_reduction_per_second_while_alive] per second")].")
+		message += span_danger("\nWhile dead, subject will suffer degradation at a rate of [span_bolddanger("[base_degradation_per_second_while_dead] per second")].")
 		if (owner_organic && formaldehyde_death_degradation_mult != 1)
 			message += span_danger(" In such an event, formaldehyde will alter the degradation by <b>[span_blue("[formaldehyde_death_degradation_mult]")]</b>x.")
 		if (stasis_passive_degradation_multiplier < 1)
