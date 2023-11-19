@@ -96,11 +96,19 @@
 	greyscale_config_worn_muzzled = /datum/greyscale_config/face_scarf/worn/muzzled
 	greyscale_colors = "#a52424"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	flags_inv = HIDEFACIALHAIR
+	flags_inv = HIDEFACIALHAIR | HIDESNOUT
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 /obj/item/clothing/neck/face_scarf/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/toggle_clothes, "face_scarf_t")
+	AddComponent(/datum/component/toggle_icon, toggle_noun = "scarf")
+
+/obj/item/clothing/neck/face_scarf/AltClick(mob/user) //Make sure that toggling actually hides the snout so that it doesn't clip
+	. = ..()
+	if(icon_state != "face_scarf_t")
+		flags_inv = HIDEFACIALHAIR
+	else
+		flags_inv = HIDEFACIALHAIR | HIDESNOUT
 
 /obj/item/clothing/neck/maid_neck_cover
 	name = "maid neck cover"
