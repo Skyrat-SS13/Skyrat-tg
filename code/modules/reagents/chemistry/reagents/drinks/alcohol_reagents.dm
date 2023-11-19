@@ -653,9 +653,14 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/consumable/ethanol/bloody_mary/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
+	. = ..()
 	if(drinker.blood_volume < BLOOD_VOLUME_NORMAL)
+<<<<<<< HEAD
 		drinker.blood_volume = min(drinker.blood_volume + (1 * REM * seconds_per_tick), BLOOD_VOLUME_NORMAL) //Bloody Mary quickly restores blood loss. // SKYRAT EDIT - Bloodshot is now the go-to drink for bloodloss, not Bloody Mary - ORIGINAL: drinker.blood_volume = min(drinker.blood_volume + (3 * REM * delta_time), BLOOD_VOLUME_NORMAL)
 	..()
+=======
+		drinker.blood_volume = min(drinker.blood_volume + (3 * REM * seconds_per_tick), BLOOD_VOLUME_NORMAL) //Bloody Mary quickly restores blood loss.
+>>>>>>> 9f2eb13d5bd (Splits reagent metabolization from reagent effects. (#79314))
 
 /datum/reagent/consumable/ethanol/brave_bull
 	name = "Brave Bull"
@@ -1751,6 +1756,7 @@
 /datum/reagent/consumable/ethanol/alexander/on_mob_life(mob/living/drinker, seconds_per_tick, times_fired)
 	if(mighty_shield && !(mighty_shield in drinker.contents)) //If you had a shield and lose it, you lose the reagent as well. Otherwise this is just a normal drink.
 		holder.remove_reagent(type, volume)
+		return
 	return ..()
 
 /datum/reagent/consumable/ethanol/alexander/on_mob_end_metabolize(mob/living/drinker)
