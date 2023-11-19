@@ -34,7 +34,7 @@
 	else
 		return FALSE
 
-/mob/living/basic/parrot/proc/toggle_perched(perched)
+/mob/living/basic/parrot/toggle_perched(perched)
 	. = ..()
 	if(!perched)
 		buckled_to_human = FALSE
