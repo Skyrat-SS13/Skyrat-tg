@@ -71,7 +71,7 @@
 		to_chat(usr, span_warning("You don't have a body with death consequences!"))
 		return
 
-	linked_trauma.update_variables(src)
+	linked_trauma.update_variables(client)
 	to_chat(usr, span_notice("Variables successfully updated!"))
 
 /// Searches mind.current for a death_consequences trauma. Allows this proc to be used on both ghosts and living beings to find their linked trauma.
