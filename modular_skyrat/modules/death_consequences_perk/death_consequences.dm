@@ -16,6 +16,9 @@
 /datum/quirk/death_consequences/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.gain_trauma(/datum/brain_trauma/severe/death_consequences, TRAUMA_RESILIENCE_ABSOLUTE)
+	var/datum/brain_trauma/severe/death_consequences/added_trauma = human_holder.get_death_consequences_trauma()
+	if (!isnull(added_trauma))
+		added_trauma.update_variables(client_source)
 
 	to_chat(human_holder, span_danger("You suffer from [src]. By default, you will \
 		degrade every time you die, and recover very slowly while alive. This may be expedited by resting, sleeping, being buckled \
