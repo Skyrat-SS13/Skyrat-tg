@@ -49,6 +49,11 @@
 
 	if(over_radio && prob(RADIO_IGNORE_CHANCE))
 		return
+	//SKYRAT EDIT ADDITION START - parrot commands
+	var/mob/living/basic/parrot/maybe_parrot = parent
+	if(!over_radio && istype(maybe_parrot))
+		maybe_parrot.check_command(message, speaker)
+	// SKYRAT EDIT ADDITION END
 
 	var/number_of_excess_strings = LAZYLEN(speech_buffer) - MAX_SPEECH_BUFFER_SIZE
 	if(number_of_excess_strings > 0) // only remove if we're overfull
