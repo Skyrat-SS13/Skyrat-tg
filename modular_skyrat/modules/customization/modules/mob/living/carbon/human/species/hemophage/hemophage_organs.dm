@@ -82,7 +82,7 @@
 
 // I didn't feel like moving this behavior onto the component, it was just too annoying to do.
 /obj/item/organ/internal/stomach/hemophage/on_life(seconds_per_tick, times_fired)
-	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+	var/datum/reagent/blood/blood = reagents.has_reagent(/datum/reagent/blood)
 	if(blood)
 		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
 
