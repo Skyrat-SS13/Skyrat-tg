@@ -374,6 +374,8 @@
 	// SKYRAT EDIT ADD START
 	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
+	if(greyscale_config_worn_muzzled)
+		worn_icon_muzzled = SSgreyscale.GetColoredIconByType(greyscale_config_worn_muzzled, greyscale_colors)
 	if(greyscale_config_worn_monkey)
 		worn_icon_monkey = SSgreyscale.GetColoredIconByType(greyscale_config_worn_monkey, greyscale_colors)
 	if(greyscale_config_worn_vox)
