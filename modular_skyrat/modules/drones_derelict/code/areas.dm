@@ -1,6 +1,6 @@
 /area/ruin/space/bb13
 	name = "\improper Babylon Station 13"
-	icon = 'modular_skyrat/modules/derelictdrone/icons/areas.dmi'
+	icon = 'modular_skyrat/modules/drones_derelict/icons/areas.dmi'
 	icon_state = "bb13"
 
 /area/ruin/space/bb13/hallway/central
