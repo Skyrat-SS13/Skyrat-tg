@@ -499,15 +499,15 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "cP" = (
-/obj/machinery/reagentgrinder{
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/dark/full,
-/obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/griddle{
+	color = "#9d9ddd";
+	name = "Interdyne griddle";
+	light_color = "#9d9ddd"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "cQ" = (
@@ -748,16 +748,15 @@
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/syndicate_lava_base/cargo)
 "dR" = (
-/obj/machinery/light/directional/north{
-	bulb_colour = "#AC3CFF";
-	color = "#A700FF";
-	light_color = "#A700FF"
-	},
-/obj/effect/turf_decal/siding/wood{
+/obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
-/turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/bar)
+/obj/structure/flora/tree/jungle/small/style_random,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/marker_beacon/teal,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/ruin/syndicate_lava_base/main)
 "dS" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/structure/flora/tree/pine/style_random,
@@ -1122,14 +1121,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/bar)
-"gq" = (
-/obj/effect/turf_decal/tile/dark/full,
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/storage/box/drinkingglasses{
-	pixel_y = 10
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/bar)
 "gs" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -1310,14 +1301,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "hu" = (
-/obj/effect/turf_decal/tile/dark/full,
-/obj/machinery/griddle{
-	color = "#9d9ddd";
-	name = "Interdyne griddle";
-	light_color = "#9d9ddd"
-	},
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/iron/dark/textured_large,
+/obj/machinery/photocopier,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/bar)
 "hz" = (
 /obj/structure/table/reinforced/plastitaniumglass,
@@ -1700,7 +1685,22 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/dark/full,
-/obj/item/storage/box/beakers/bluespace,
+/obj/item/reagent_containers/condiment/enzyme{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/machinery/reagentgrinder{
+	pixel_x = 8;
+	pixel_y = 18
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "kp" = (
@@ -1794,11 +1794,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "kZ" = (
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 1
-	},
-/obj/structure/chair/sofa/corp/left,
-/turf/open/floor/wood/large,
+/obj/structure/table/wood/fancy/black,
+/obj/machinery/chem_dispenser/drinks/fullupgrade,
+/turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/bar)
 "lb" = (
 /obj/item/binoculars,
@@ -2347,12 +2345,12 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/main)
 "oG" = (
-/obj/effect/turf_decal/tile/dark/full,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/structure/hedge,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/main)
 "oN" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 10
@@ -2389,11 +2387,14 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/testlab)
 "oS" = (
-/obj/structure/dresser{
+/obj/structure/closet/cabinet{
+	name = "Dark wood Interdyne closet";
 	color = "#8d8d8d";
-	name = "Dark wood Interdyne dresser"
+	light_color = "#8d8d8d"
 	},
-/obj/effect/turf_decal/tile/dark/full,
+/obj/effect/turf_decal/trimline/dark/filled/end{
+	dir = 8
+	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
@@ -2713,21 +2714,17 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "qU" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 8
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
 	},
-/obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/portables_connector,
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/main)
+/obj/structure/chair/sofa/corp/left,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/bar)
 "qY" = (
-/obj/effect/turf_decal/trimline/dark/filled/end{
-	dir = 8
-	},
+/obj/structure/table/wood/fancy/black,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
 /turf/open/floor/iron/dark/textured,
-/area/ruin/syndicate_lava_base/dormitories)
+/area/ruin/syndicate_lava_base/bar)
 "rf" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 8
@@ -2892,6 +2889,13 @@
 /obj/item/gun/syringe/rapidsyringe,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/testlab)
+"sr" = (
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/syndicate_lava_base/bar)
 "ss" = (
 /obj/machinery/vending/hydronutrients{
 	onstation = 0
@@ -3238,12 +3242,12 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/medbay)
 "up" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 9
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 1
 	},
-/obj/structure/hedge,
-/turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/main)
+/turf/open/floor/iron/dark/textured,
+/area/ruin/syndicate_lava_base/bar)
 "us" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3296,6 +3300,13 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/main)
+"uN" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/hedge,
+/turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/main)
 "uQ" = (
 /obj/structure/flora/tree/dead/style_random,
@@ -3363,12 +3374,13 @@
 /turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/main)
 "vt" = (
-/obj/structure/hedge,
-/obj/effect/turf_decal/siding/wood{
-	dir = 5
+/obj/effect/turf_decal/tile/dark/full,
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/item/storage/box/drinkingglasses{
+	pixel_y = 10
 	},
-/turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/main)
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/bar)
 "vv" = (
 /obj/effect/turf_decal/trimline/dark/filled/corner{
 	dir = 1
@@ -3544,9 +3556,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "wo" = (
-/obj/effect/turf_decal/trimline/dark/filled/line,
-/obj/effect/turf_decal/trimline/dark/filled/corner{
-	dir = 1
+/obj/structure/marker_beacon/bronze,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 9
 	},
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/bar)
@@ -3611,18 +3623,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "wG" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark/filled/line,
-/obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark/filled/mid_joiner,
-/obj/structure/chair/sofa/corp,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/machinery/bookbinder,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/bar)
 "wN" = (
 /obj/effect/turf_decal/caution/red,
 /obj/effect/turf_decal/stripes/red/line{
@@ -3777,18 +3780,10 @@
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/reagent_containers/condiment/enzyme{
-	pixel_y = 14;
-	pixel_x = -7
-	},
-/obj/item/reagent_containers/condiment/peppermill{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 6
+/obj/machinery/oven/range{
+	color = "#9d9ddd";
+	name = "Interdyne range";
+	light_color = "#9d9ddd"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -3987,11 +3982,12 @@
 /turf/open/floor/grass,
 /area/ruin/syndicate_lava_base/main)
 "yP" = (
-/obj/machinery/vending/dorms{
-	onstation = 0
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
 	},
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/main)
+/obj/structure/chair/sofa/corp/right,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/bar)
 "yQ" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/medbay)
@@ -4139,12 +4135,16 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "AF" = (
-/obj/structure/flora/tree/jungle/small/style_random,
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/structure/flora/bush/flowers_pp/style_random,
-/obj/structure/marker_beacon/purple,
-/turf/open/floor/grass,
-/area/ruin/syndicate_lava_base/main)
+/obj/machinery/light/directional/north{
+	bulb_colour = "#AC3CFF";
+	color = "#A700FF";
+	light_color = "#A700FF"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/bar)
 "AR" = (
 /obj/effect/decal/remains/human,
 /obj/structure/flora/tree/pine/style_random,
@@ -4241,11 +4241,6 @@
 /obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
 	dir = 4
 	},
-/obj/machinery/oven/range{
-	color = "#9d9ddd";
-	name = "Interdyne range";
-	light_color = "#9d9ddd"
-	},
 /obj/structure/marker_beacon/bronze,
 /obj/machinery/camera/xray/directional/north{
 	color = "#adadcd";
@@ -4253,13 +4248,22 @@
 	network = list("Interdyne");
 	pixel_x = 10
 	},
+/obj/machinery/deepfryer{
+	color = "#adadcd";
+	name = "Interdyne deep fryer";
+	light_color = "#adadcd"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "BO" = (
-/obj/structure/table/wood/fancy/black,
-/obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
-/turf/open/floor/iron/dark/textured,
-/area/ruin/syndicate_lava_base/bar)
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/syndicate_lava_base/main)
 "BR" = (
 /obj/effect/turf_decal/stripes/red/corner{
 	dir = 4
@@ -4412,19 +4416,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "CC" = (
-/obj/machinery/airalarm/directional/north{
-	req_access = list("syndicate");
-	pixel_y = 42
+/obj/machinery/vending/dorms{
+	onstation = 0
 	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/effect/mapping_helpers/apc/syndicate_access,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/structure/chair/sofa/corp/left,
-/turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/bar)
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/main)
 "CE" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
@@ -4638,11 +4634,7 @@
 "DI" = (
 /obj/effect/turf_decal/tile/dark/full,
 /obj/structure/marker_beacon/burgundy,
-/obj/machinery/chem_master/condimaster{
-	name = "Interdyne BrewMaster";
-	color = "#adadcd";
-	light_color = "#adadcd"
-	},
+/obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "DL" = (
@@ -4665,12 +4657,12 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "DT" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/hedge,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
 /turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/bar)
+/area/ruin/syndicate_lava_base/main)
 "DX" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 1
@@ -4684,7 +4676,7 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/effect/turf_decal/tile/dark/full,
 /obj/item/paper/fluff/ruins/interdyne/note_1{
-	default_raw_text = "Welcome to laboratory Developed by Wavefield Science and designed by Astra Farera E'luna Awiarera. This base was dropped like a meteorite from space and deployed at crater created by landing impact. An advanced laboratory has deployed departments, defence perimeter turrets and even external bridge. Complex also fitted with a forcefield generator, which with a tiny bit of care allows to sustain harsh environmental conditions and most of invasions. Have a nice day full of new discoveries.";
+	default_raw_text = "Welcome to Interdyne laboratory Developed by Wavefield Science and designed by Astra Farera E'luna Awiarera. This base was dropped like a meteorite from space and deployed at crater created by landing impact. An advanced laboratory has deployed departments, defence perimeter turrets and even external bridge. Complex also fitted with a forcefield generator, which with a tiny bit of care allows to sustain harsh environmental conditions and most of invasions. Have a nice day full of new discoveries.";
 	name = "Frozen Moonlight Interdyne";
 	color = "#7D7D7D";
 	pixel_x = 5;
@@ -4820,15 +4812,15 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "EQ" = (
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 1
+/obj/effect/turf_decal/tile/dark/full,
+/obj/structure/marker_beacon/burgundy,
+/obj/machinery/chem_master/condimaster{
+	name = "Interdyne BrewMaster";
+	color = "#adadcd";
+	light_color = "#adadcd"
 	},
-/obj/structure/flora/tree/jungle/small/style_random,
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/structure/marker_beacon/teal,
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/floor/grass,
-/area/ruin/syndicate_lava_base/main)
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/bar)
 "ES" = (
 /obj/machinery/vending/dinnerware{
 	onstation = 0
@@ -4891,13 +4883,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "Fn" = (
-/obj/machinery/deepfryer{
-	color = "#adadcd";
-	name = "Interdyne deep fryer";
-	light_color = "#adadcd"
-	},
 /obj/effect/turf_decal/tile/dark/full,
 /obj/structure/marker_beacon/bronze,
+/obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "Fo" = (
@@ -5147,11 +5135,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "Gs" = (
-/obj/effect/turf_decal/trimline/dark/filled/line,
-/obj/effect/turf_decal/trimline/dark/filled/line{
+/obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/textured,
+/obj/structure/hedge,
+/turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/bar)
 "Gv" = (
 /obj/effect/turf_decal/trimline/dark/filled/corner,
@@ -5569,15 +5557,6 @@
 /obj/effect/turf_decal/caution/stand_clear/red,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
-"JO" = (
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/ruin/syndicate_lava_base/main)
 "JP" = (
 /obj/item/stack/sheet/plasteel/fifty,
 /obj/item/stack/sheet/glass/fifty,
@@ -5771,12 +5750,12 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "Le" = (
-/obj/structure/marker_beacon/bronze,
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 9
-	},
-/turf/open/floor/iron/dark/textured,
-/area/ruin/syndicate_lava_base/bar)
+/obj/effect/turf_decal/tile/dark/full,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/testlab)
 "Lf" = (
 /obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
 	dir = 4
@@ -6027,19 +6006,35 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "Mu" = (
-/obj/structure/flora/grass/brown/style_random,
-/obj/structure/flora/tree/pine/style_random,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
-"My" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 8
+	dir = 1
 	},
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark/filled/mid_joiner,
+/obj/structure/chair/sofa/corp,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/testlab)
+"Mw" = (
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/syndicate_lava_base/bar)
+"My" = (
 /obj/effect/turf_decal/trimline/dark/filled/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/marker_beacon/indigo,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 10
+	},
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "MD" = (
@@ -6145,7 +6140,7 @@
 /obj/effect/turf_decal/trimline/dark/filled/mid_joiner,
 /obj/structure/marker_beacon/purple,
 /obj/effect/turf_decal/trimline/dark/filled/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -6193,7 +6188,6 @@
 	dir = 4
 	},
 /obj/structure/drain,
-/obj/structure/marker_beacon/bronze,
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/bar)
 "Oe" = (
@@ -6388,11 +6382,13 @@
 /turf/open/floor/plating/reinforced,
 /area/ruin/syndicate_lava_base/main)
 "Pt" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 10
+/obj/structure/dresser{
+	color = "#8d8d8d";
+	name = "Dark wood Interdyne dresser";
+	light_color = "#8d8d8d"
 	},
-/obj/structure/marker_beacon/indigo,
-/turf/open/floor/iron/dark/textured,
+/obj/effect/turf_decal/tile/dark/full,
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/dormitories)
 "Pv" = (
 /obj/machinery/porta_turret/syndicate{
@@ -6446,11 +6442,18 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/arrivals)
 "PI" = (
-/obj/effect/turf_decal/trimline/dark/filled/line,
-/obj/effect/turf_decal/trimline/dark/filled/corner{
-	dir = 4
+/obj/machinery/airalarm/directional/north{
+	req_access = list("syndicate");
+	pixel_y = 42
 	},
-/turf/open/floor/iron/dark/textured,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/chair/sofa/corp/left,
+/turf/open/floor/wood/large,
 /area/ruin/syndicate_lava_base/bar)
 "PK" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
@@ -6521,14 +6524,13 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "QU" = (
-/obj/machinery/coffeemaker{
-	pixel_y = 36
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/trimline/dark/filled/mid_joiner,
+/obj/structure/marker_beacon/purple,
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 4
 	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/structure/chair/sofa/corp/right,
-/turf/open/floor/wood/large,
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "Rd" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
@@ -6883,15 +6885,18 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "TH" = (
-/obj/effect/turf_decal/tile/dark/full,
-/obj/structure/dresser{
-	color = "#8d8d8d";
-	name = "Dark wood Interdyne dresser"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/structure/closet/cabinet{
+	name = "Dark wood Interdyne closet";
+	color = "#8d8d8d";
+	light_color = "#8d8d8d"
+	},
+/obj/effect/turf_decal/trimline/dark/filled/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "TI" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
@@ -6932,6 +6937,16 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
+"TZ" = (
+/obj/machinery/coffeemaker{
+	pixel_y = 36
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/sofa/corp/right,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/bar)
 "Ua" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 1
@@ -7093,13 +7108,6 @@
 /obj/structure/marker_beacon/teal,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/arrivals)
-"Vl" = (
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 4
-	},
-/obj/structure/chair/sofa/corp/right,
-/turf/open/floor/wood/large,
-/area/ruin/syndicate_lava_base/bar)
 "Vn" = (
 /obj/structure/tank_dispenser,
 /obj/effect/turf_decal/tile/dark/full,
@@ -7137,13 +7145,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "Vt" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 6
-	},
-/obj/effect/turf_decal/trimline/dark/filled/corner{
-	dir = 1
-	},
-/obj/structure/marker_beacon/indigo,
+/obj/effect/turf_decal/trimline/dark/filled/end,
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "Vu" = (
@@ -7408,15 +7410,16 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/testlab)
 "WE" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark/full,
 /obj/structure/bed/double{
 	name = "Softest Interdyne bed";
 	light_color = "#4d4d4d";
 	color = "#5d5d5d"
 	},
 /obj/item/bedsheet/cosmos/double,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/dormitories)
 "WF" = (
@@ -7451,18 +7454,16 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "WS" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 6
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
-/obj/item/bedsheet/cosmos/double,
+/obj/effect/turf_decal/tile/dark/full,
 /obj/structure/bed/double{
 	name = "Softest Interdyne bed";
 	light_color = "#4d4d4d";
 	color = "#5d5d5d"
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
+/obj/item/bedsheet/cosmos/double,
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "WX" = (
@@ -7562,10 +7563,14 @@
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/marker_beacon/indigo,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "XD" = (
@@ -7573,6 +7578,7 @@
 /obj/effect/turf_decal/tile/dark/full,
 /obj/structure/marker_beacon/burgundy,
 /obj/item/kitchen/rollingpin,
+/obj/item/storage/box/beakers/bluespace,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
 "XH" = (
@@ -7638,11 +7644,14 @@
 /turf/open/floor/plating/reinforced,
 /area/ruin/syndicate_lava_base/medbay)
 "Yc" = (
-/obj/structure/hedge,
-/obj/effect/turf_decal/siding/wood{
-	dir = 9
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 8
 	},
-/turf/open/floor/wood/large,
+/obj/effect/turf_decal/trimline/dark/filled/mid_joiner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/main)
 "Yf" = (
 /obj/effect/turf_decal/siding/wood{
@@ -7685,14 +7694,12 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/testlab)
 "Yv" = (
-/obj/effect/turf_decal/trimline/dark/filled/line,
-/obj/effect/turf_decal/trimline/dark/filled/mid_joiner,
+/obj/structure/flora/tree/jungle/small/style_random,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/marker_beacon/purple,
-/obj/effect/turf_decal/trimline/dark/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/syndicate_lava_base/bar)
+/turf/open/floor/grass,
+/area/ruin/syndicate_lava_base/main)
 "YA" = (
 /obj/effect/turf_decal/trimline/dark/filled/corner{
 	dir = 1
@@ -7701,9 +7708,6 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/main)
 "YB" = (
-/obj/effect/turf_decal/trimline/dark/filled/line{
-	dir = 5
-	},
 /obj/machinery/button/door/directional/north{
 	name = "Dorm Bolt Control";
 	id = "Dynbin2";
@@ -7712,6 +7716,10 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark/filled/line,
 /turf/open/floor/iron/dark/textured,
 /area/ruin/syndicate_lava_base/dormitories)
 "YC" = (
@@ -7883,10 +7891,10 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/testlab)
 "Zx" = (
-/obj/structure/table/wood/fancy/black,
-/obj/machinery/chem_dispenser/drinks/fullupgrade,
-/turf/open/floor/iron/dark/textured,
-/area/ruin/syndicate_lava_base/bar)
+/obj/structure/flora/grass/brown/style_random,
+/obj/structure/flora/tree/pine/style_random,
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
 "ZA" = (
 /obj/structure/rack,
 /obj/item/knife/combat/survival,
@@ -8946,7 +8954,7 @@ al
 eu
 Zp
 cP
-hu
+DI
 ry
 wX
 gm
@@ -8980,10 +8988,10 @@ ab
 ab
 sv
 fB
-wG
+Mu
 Ym
 uw
-oG
+Le
 gj
 XP
 wu
@@ -9051,7 +9059,7 @@ nC
 El
 Pc
 Ih
-up
+uN
 FK
 bF
 aA
@@ -9199,7 +9207,7 @@ ac
 "}
 (22,1,1) = {"
 ac
-Mu
+Zx
 Iy
 uQ
 SH
@@ -9299,7 +9307,7 @@ kc
 Uf
 Lg
 ZU
-vt
+oG
 fq
 ge
 hL
@@ -9358,13 +9366,13 @@ sF
 Kn
 eL
 ZU
-EQ
-DT
+dR
+Gs
 XT
 cu
 iX
 FO
-NJ
+QU
 vL
 NS
 ab
@@ -9418,12 +9426,12 @@ tM
 vf
 ZU
 td
-QU
+TZ
 XT
 zl
 Lp
-Zx
-Gs
+kZ
+up
 vB
 NS
 SH
@@ -9477,12 +9485,12 @@ dz
 Vp
 ZU
 Ny
-kZ
+qU
 XT
 zl
 ih
-Le
 wo
+Mw
 vB
 NS
 Iy
@@ -9535,14 +9543,14 @@ xo
 sm
 MT
 ZU
-dR
+AF
 OV
 XT
 zl
 cZ
 xf
 Iv
-DI
+EQ
 NS
 SH
 ab
@@ -9595,13 +9603,13 @@ VC
 VE
 ZU
 gp
-Vl
+yP
 XT
 zl
 bd
 ks
-PI
-gq
+sr
+vt
 NS
 Se
 ab
@@ -9654,12 +9662,12 @@ Na
 sZ
 ZU
 td
-CC
+PI
 oV
 Li
 bu
-BO
-Gs
+qY
+up
 eX
 NS
 Se
@@ -9707,18 +9715,18 @@ oj
 UT
 Zh
 ie
-qU
+Yc
 vz
 YA
 oE
 ZU
-AF
-DT
+Yv
+Gs
 XT
 GD
 EA
 Wz
-Yv
+NJ
 IP
 NS
 ab
@@ -9771,7 +9779,7 @@ Ve
 jf
 ZL
 ZU
-Yc
+DT
 jg
 ge
 hL
@@ -9829,7 +9837,7 @@ eZ
 ZU
 ZU
 ZU
-JO
+BO
 jg
 us
 us
@@ -9892,7 +9900,7 @@ jg
 If
 us
 Zl
-td
+wG
 GB
 tS
 jy
@@ -9951,7 +9959,7 @@ us
 sc
 Zl
 td
-Jq
+hu
 yJ
 Xh
 td
@@ -10007,7 +10015,7 @@ nc
 nc
 Ol
 vq
-yP
+CC
 td
 Xw
 EJ
@@ -10122,7 +10130,7 @@ EU
 ft
 zF
 oS
-qY
+Pt
 zF
 wU
 gL
