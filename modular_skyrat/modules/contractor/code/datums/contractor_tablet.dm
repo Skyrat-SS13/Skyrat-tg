@@ -1,23 +1,7 @@
 /datum/computer_file/program/contract_uplink
-	filename = "contractor uplink"
-	filedesc = "Syndicate Contractor Uplink"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "assign"
-	extended_desc = "A standard, Syndicate issued system for handling important contracts while on the field."
-	size = 10
-	requires_ntnet = FALSE
-	available_on_ntnet = FALSE
-	undeletable = TRUE
 	tgui_id = "SyndContractor"
-	program_icon = "tasks"
-	/// Error message if there is one
-	var/error = ""
-	/// If the info screen is displayed or not
-	var/info_screen = TRUE
-	/// If the contract uplink's been assigned to a person yet
-	var/assigned = FALSE
-	/// If this is the first opening of the tablet
-	var/first_load = TRUE
 
 /datum/computer_file/program/contract_uplink/on_start(mob/living/user)
 	. = ..(user)
