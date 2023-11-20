@@ -26,7 +26,7 @@
 		being_used = FALSE
 		return
 
-	target_mob.visible_message(span_notice("[user] leans down and smears twinned streaks of glistening bloodresin upon [M], then straightens up with ritual purpose..."))
+	target_mob.visible_message(span_notice("[user] leans down and smears twinned streaks of glistening bloodresin upon [target_mob], then straightens up with ritual purpose..."))
 	user.say("Let the ice know you forevermore as +[new_name]+.")
 
 	user.log_message("used [src] on [target_mob], renaming it to [new_name].", LOG_GAME)
