@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	"Mouse (white)" = /mob/living/basic/mouse/white,
 	"Mouse (gray)" = /mob/living/basic/mouse/gray,
 	"Mouse (brown)" = /mob/living/basic/mouse/brown,
-	"Parrot" = /mob/living/simple_animal/parrot/natural,
+	"Parrot" = /mob/living/basic/parrot,
 	"Penguin" = /mob/living/basic/pet/penguin/emperor/neuter,
 	"Pig" = /mob/living/basic/pig,
 	"Pug" = /mob/living/basic/pet/dog/pug,
