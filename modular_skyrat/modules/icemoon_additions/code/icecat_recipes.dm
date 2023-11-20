@@ -18,13 +18,19 @@
 		to_chat(user, span_warning("You would never shame a creature so intelligent by not allowing it to choose its own name."))
 		return
 
+	if(try_anoint(target_mob, user))
+		qdel(src)
+	else
+		being_used = FALSE
+
+/obj/item/anointing_oil/proc/try_anoint(mob/living/target_mob, mob/living/user)
 	being_used = TRUE
 
 	var/new_name = sanitize_name(tgui_input_text(user, "Speak forth this beast's new name for all the Kin to hear.", "Input a name", target_mob.name, MAX_NAME_LEN))
 
 	if(!new_name || QDELETED(src) || QDELETED(target_mob) || new_name == target_mob.name || !target_mob.Adjacent(user))
 		being_used = FALSE
-		return
+		return FALSE
 
 	target_mob.visible_message(span_notice("[user] leans down and smears twinned streaks of glistening bloodresin upon [target_mob], then straightens up with ritual purpose..."))
 	user.say("Let the ice know you forevermore as +[new_name]+.")
@@ -38,7 +44,7 @@
 		target_mob.emote("awoo")
 		target_mob.emote("spin")
 
-	qdel(src)
+	return TRUE
 
 /obj/item/anointing_oil/examine(mob/user)
 	. = ..()
