@@ -17,7 +17,7 @@ defines_file = "code/__DEFINES/traits/declarations.dm"
 skyrat_defines_file = "code/__DEFINES/~skyrat_defines/traits/declarations.dm" # SKYRAT EDIT ADDITION
 globalvars_file = "code/_globalvars/traits/_traits.dm"
 
-how_to_fix_message = "Please ensure that all traits in the {defines_file} file are added in the {globalvars_file} file."
+how_to_fix_message = f"Please ensure that all traits in the {defines_file} file are added in the {globalvars_file} file."
 
 def post_error(define_name):
 	if on_github:
@@ -101,7 +101,7 @@ if number_of_defines == 0:
 	sys.exit(1)
 
 if number_of_defines <= 450:
-	print(red(f"Only found {number_of_defines} defines! Something has likely gone wrong as the number of local defines should not be this low."))
+	print(red(f"Only found {number_of_defines} defines! Something has likely gone wrong as the number of global traits should not be this low."))
 	sys.exit(1)
 
 with open(globalvars_file, "r") as file:
