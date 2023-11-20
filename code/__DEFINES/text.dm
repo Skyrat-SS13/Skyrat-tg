@@ -104,3 +104,5 @@
 #define NINJA_FILE "ninja.json"
 /// File loation for title splashes
 #define SPLASH_FILE "splashes.json"
+///File location for mother hallucination lines
+#define MOTHER_FILE "mother.json"
