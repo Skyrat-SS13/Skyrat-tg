@@ -3,11 +3,7 @@
 	name = BODY_ZONE_CHEST
 	desc = "It's impolite to stare at a person's chest."
 	icon_state = "default_human_chest"
-<<<<<<< HEAD
-	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
-=======
 	max_damage = LIMB_MAX_HP_CORE
->>>>>>> 84cb29b23e4 ([READY] The Cyberbrawlening: Augment your Unarmed Strikes for Maximum Damage (#79705))
 	body_zone = BODY_ZONE_CHEST
 	body_part = CHEST
 	plaintext_zone = "chest"
