@@ -27,6 +27,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
+#define TRAIT_HYDRA_HEADS "hydrahead"
 
 /// adds -6 quirk to negative quirks for free points.
 #define TRAIT_GIFTED "gifted"
