@@ -203,7 +203,7 @@
 		increase += base_degradation_per_second_while_dead
 
 		if (owner.has_reagent(/datum/reagent/toxin/formaldehyde, needs_metabolizing = FALSE))
-			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/toxin/formaldehyde)
+			var/datum/reagent/reagent_instance = owner.reagents.has_reagent(/datum/reagent/toxin/formaldehyde)
 			if (reagent_process_flags_valid(owner, reagent_instance))
 				increase *= formaldehyde_death_degradation_mult
 	else
@@ -223,9 +223,9 @@
 		if (base_degradation_reduction_per_second_while_alive > 0)
 			decrease += base_degradation_reduction_per_second_while_alive
 
-		if (owner.has_reagent(/datum/reagent/medicine/rezadone, needs_metabolizing = TRUE))
-			var/datum/reagent/reagent_instance = owner.reagents.get_reagent(/datum/reagent/medicine/rezadone)
-			if ((reagent_instance.purity >= DEATH_CONSEQUENCES_REZADONE_MINIMUM_PURITY) && reagent_process_flags_valid(owner, reagent_instance))
+		var/datum/reagent/rezadone_instance = owner.reagents.has_reagent(/datum/reagent/medicine/rezadone, needs_metabolizing = TRUE)
+		if (rezadone_instance)
+			if ((rezadone_instance.purity >= DEATH_CONSEQUENCES_REZADONE_MINIMUM_PURITY) && reagent_process_flags_valid(owner, rezadone_instance))
 				decrease += rezadone_degradation_decrease
 
 	if (owner.has_reagent(/datum/reagent/eigenstate))
