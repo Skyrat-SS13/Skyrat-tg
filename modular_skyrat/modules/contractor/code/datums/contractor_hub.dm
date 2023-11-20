@@ -9,18 +9,6 @@
 	var/list/purchased_items = list()
 	/// Static of contractor_item subtypes
 	var/static/list/contractor_items = typecacheof(/datum/contractor_item, ignore_root_path = TRUE)
-	/// Reference to the current contract datum
-	var/datum/syndicate_contract/current_contract
-	/// List of all contract datums the contractor has available
-	var/list/datum/syndicate_contract/assigned_contracts = list()
-	/// used as a blacklist to make sure we're not assigning targets already assigned
-	var/list/assigned_targets = list()
-	/// NUmber of how many contracts you've done
-	var/contracts_completed = 0
-	/// How many TC you've paid out in contracts
-	var/contract_paid_out = 0
-	/// Amount of TC that has yet to be redeemed
-	var/contract_TC_to_redeem = 0
 	/// Current index number for contract IDs
 	var/start_index = 1
 

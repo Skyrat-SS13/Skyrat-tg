@@ -2,92 +2,12 @@
 #define RANSOM_UPPER 150
 #define CONTRACTOR_RANSOM_CUT 0.35
 
-/datum/syndicate_contract
-	/// Unique ID tied to the contract
-	var/id = 0
-	/// If the contract is the contractor's current one
-	var/status = CONTRACT_STATUS_INACTIVE
-	/// Reference to the objective datum
-	var/datum/objective/contract/contract = new()
-	/// Target's job
-	var/target_rank
-	/// A number in multiples of 100, anywhere from 7500 credits to 15000, station cost when someone is kidnapped
-	var/ransom = 0
-	/// TC payout size, will be small, medium, or large.
-	var/payout_type
-	/// Mad-libs style wanted message, just flavor.
-	var/wanted_message
-	/// List of the items the victim had on them prior to kidnapping.
-	var/list/victim_belongings = list()
-
-/datum/syndicate_contract/New(contract_owner, blacklist, type = CONTRACT_PAYOUT_SMALL)
-	contract.owner = contract_owner
-	payout_type = type
-
-	generate(blacklist)
-
 /// Generation of the contract, called on New()
 /datum/syndicate_contract/proc/generate(blacklist)
-	contract.find_target(null, blacklist)
-
-	var/datum/record/crew/record
-	if (contract.target)
-		record = find_record(contract.target.name)
-
-	if (record)
-		target_rank = record.rank
-	else
-		target_rank = "Unknown"
-
-	if (payout_type == CONTRACT_PAYOUT_LARGE)
-		contract.payout_bonus = rand(9,13)
-	else if (payout_type == CONTRACT_PAYOUT_MEDIUM)
-		contract.payout_bonus = rand(6,8)
-	else
-		contract.payout_bonus = rand(2,4)
-
-	contract.payout = rand(1, 2)
-	contract.generate_dropoff()
-
+	. = ..()
 	ransom = 100 * rand(RANSOM_LOWER, RANSOM_UPPER)
 
-	var/base = pick_list(WANTED_FILE, "basemessage")
-	var/verb_string = pick_list(WANTED_FILE, "verb")
-	var/noun = pick_list_weighted(WANTED_FILE, "noun")
-	var/location = pick_list_weighted(WANTED_FILE, "location")
-	wanted_message = "[base] [verb_string] [noun] [location]."
-
-/// Handler to find a valid turn and launch victim collector
-/datum/syndicate_contract/proc/handle_extraction(mob/living/user)
-	if(!(contract.target && contract.dropoff_check(user, contract.target.current)))
-		return FALSE
-
-	var/turf/free_location = find_obstruction_free_location(3, user, contract.dropoff)
-
-	if(!free_location)
-		return FALSE
-
-	launch_extraction_pod(free_location)
-	return TRUE
-
-
-/// Launch the pod to collect our victim.
-/datum/syndicate_contract/proc/launch_extraction_pod(turf/empty_pod_turf)
-	var/obj/structure/closet/supplypod/extractionpod/empty_pod = new()
-	empty_pod.contract_hub = contract.owner?.opposing_force?.contractor_hub
-	empty_pod.tied_contract = src
-	empty_pod.recieving = TRUE
-
-	RegisterSignal(empty_pod, COMSIG_ATOM_ENTERED, PROC_REF(enter_check))
-
-	empty_pod.stay_after_drop = TRUE
-	empty_pod.reversing = TRUE
-	empty_pod.explosionSize = list(0,0,0,1)
-	empty_pod.leavingSound = 'sound/effects/podwoosh.ogg'
-
-	new /obj/effect/pod_landingzone(empty_pod_turf, empty_pod)
-
-/datum/syndicate_contract/proc/enter_check(datum/source, mob/living/sent_mob)
+/datum/syndicate_contract/enter_check(datum/source, mob/living/sent_mob)
 	SIGNAL_HANDLER
 	if(!istype(source, /obj/structure/closet/supplypod/extractionpod))
 		return
@@ -159,7 +79,7 @@
 	addtimer(CALLBACK(src, PROC_REF(finish_enter)), 3 SECONDS)
 
 /// Called when person is finished shoving in, awards ransome money
-/datum/syndicate_contract/proc/finish_enter()
+/datum/syndicate_contract/finish_enter()
 	// Pay contractor their portion of ransom
 	if(status != CONTRACT_STATUS_COMPLETE)
 		return
@@ -178,7 +98,7 @@
 			new /obj/item/stack/spacecash/c1000(case)
 
 /// They're off to holding - handle the return timer and give some text about what's going on.
-/datum/syndicate_contract/proc/handle_victim_experience(mob/living/target)
+/datum/syndicate_contract/handle_victim_experience(mob/living/target)
 	// Ship 'em back - dead or alive, 4 minutes wait.
 	// Even if they weren't the target, we're still treating them the same.
 	addtimer(CALLBACK(src, PROC_REF(return_victim), target), 4 MINUTES)
@@ -263,7 +183,7 @@
 	target.adjust_confusion(20 SECONDS)
 
 /// We're returning the victim
-/datum/syndicate_contract/proc/return_victim(mob/living/target)
+/datum/syndicate_contract/return_victim(mob/living/target)
 	var/list/possible_drop_loc = list()
 
 	for(var/turf/possible_drop in contract.dropoff.contents)

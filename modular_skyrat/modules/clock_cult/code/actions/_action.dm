@@ -20,7 +20,7 @@
 	return ..()
 
 
-/datum/action/innate/clockcult/quick_bind/Grant(mob/living/recieving_mob)
+/datum/action/innate/clockcult/quick_bind/Grant(mob/living/receiving_mob)
 	name = scripture.name
 	desc = scripture.tip
 	button_icon_state = scripture.button_icon_state
@@ -28,7 +28,7 @@
 	if(scripture.power_cost)
 		desc += "<br>Draws <b>[scripture.power_cost]W</b> from the ark per use."
 
-	return ..(recieving_mob)
+	return ..(receiving_mob)
 
 /datum/action/innate/clockcult/quick_bind/Remove(mob/losing_mob)
 	var/obj/item/clockwork/clockwork_slab/activation_slab = slab_weakref.resolve()

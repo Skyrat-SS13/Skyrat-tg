@@ -25,22 +25,12 @@
 	new /obj/item/uplink/old_radio(src)
 	new /obj/item/jammer(src)
 
-/obj/item/storage/box/contractor/fulton_extraction
-	name = "fulton extraction kit"
-	icon_state = "syndiebox"
-	illustration = "writing_syndie"
-
 /obj/item/storage/box/contractor/fulton_extraction/PopulateContents()
 	new /obj/item/extraction_pack/contractor(src)
 	new /obj/item/fulton_core(src)
 
-/obj/item/storage/box/syndicate/contract_kit/midround
-	name = "contract kit"
-	special_desc = "Supplied to Syndicate contractors."
-	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
-	icon_state = "syndiebox"
-	illustration = "writing_syndie"
-	item_list = list(
+/obj/item/storage/box/syndicate/contract_kit/midround/PopulateContents()
+	var/static/list/item_list = list(
 		/obj/item/storage/backpack/duffelbag/syndie/x4,
 		/obj/item/storage/box/syndie_kit/throwing_weapons,
 		/obj/item/gun/syringe/syndicate,
@@ -59,10 +49,8 @@
 		/obj/item/clothing/gloves/tackler/combat/insulated,
 		/obj/item/storage/box/syndie_kit/emp,
 		/obj/item/shield/energy,
-		/obj/item/healthanalyzer/rad_laser
+		/obj/item/healthanalyzer/rad_laser,
 	)
-
-/obj/item/storage/box/syndicate/contract_kit/midround/PopulateContents()
 	// All about 4 TC or less - some nukeops only items, but fit nicely to the theme.
 	for(var/iteration in 1 to SMALL_ITEM_AMOUNT)
 		var/obj/item/small_item = pick_n_take(item_list)
