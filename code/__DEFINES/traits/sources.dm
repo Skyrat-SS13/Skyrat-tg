@@ -105,7 +105,7 @@
 #define HYPNOCHAIR_TRAIT "hypnochair"
 #define FLASHLIGHT_EYES "flashlight_eyes"
 #define IMPURE_OCULINE "impure_oculine"
-#define HAUNTIUM_REAGENT_TRAIT "hauntium_reagent_trait"
+#define HAUNTIUM_TRAIT_REAGENT "hauntium_TRAIT_REAGENT"
 #define TRAIT_SANTA "santa"
 #define SCRYING_ORB "scrying-orb"
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"

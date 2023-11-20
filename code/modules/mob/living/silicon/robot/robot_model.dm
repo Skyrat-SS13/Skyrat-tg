@@ -248,7 +248,7 @@
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 			//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
 			if (!isnull(details[SKIN_FEATURES]))
-				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
+				if (TRAIT_R_WIDE in details[SKIN_FEATURES])
 					var/image/reskin = reskin_icons[skin]
 					reskin.pixel_x -= 16
 			//SKYRAT EDIT END
@@ -257,7 +257,7 @@
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
 		//SKYRAT EDIT START
-		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
+		if(cyborg.hasExpanded && (((TRAIT_R_WIDE in details[SKIN_FEATURES]) && (TRAIT_R_WIDE in model_features)) || ((TRAIT_R_TALL in details[SKIN_FEATURES]) && (TRAIT_R_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
 		//SKYRAT EDIT END
