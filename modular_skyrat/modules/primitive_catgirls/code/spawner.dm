@@ -35,7 +35,7 @@
 	team = null
 	return ..()
 
-/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine()
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine(mob/user)
 	. = ..()
 
 	if(uses)
@@ -43,7 +43,33 @@
 	else
 		. += span_notice("It looks pretty empty.")
 
+	. += span_notice("<br>You are able to return to [src] by CTRL + CLICK.")
+
+	if(isobserver(user))
+		if(user.key in team.players_spawned)
+			. += span_warning("<br>You are not allowed to use this spawner again!")
+
+		else
+			. += span_notice("<br>You are allowed to use this spawner.")
+
 	return .
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/CtrlClick(mob/user)
+	if(!ishuman(user))
+		to_chat(user, span_warning("You must be a LIVING member of this tribe to return to [src]!"))
+		return
+
+	if(!(user.key in team.players_spawned))
+		to_chat(user, span_warning("You must be a member of this tribe to return to [src]!"))
+		return
+
+	var/question = tgui_input_list(user, "Would you like to return to [src]? You will not be able to respawn afterwards.", "Round Removal", list("Yes", "No"))
+	if(question != "Yes")
+		return
+
+	user.ghostize(FALSE)
+	QDEL_NULL(user)
+	uses++
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/allow_spawn(mob/user, silent = FALSE)
 	if(!(user.key in team.players_spawned)) // One spawn per person
