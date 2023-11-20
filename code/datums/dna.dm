@@ -494,7 +494,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		blood_type = newblood_type
 	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
-	mutant_bodyparts = species.get_random_mutant_bodyparts(features) // SKYRAT EDIT ADDITION - This needs to run regardless of whether or not randomize_features = true or things break. Confusing? yes. TODO: Fix that.
 	if(randomize_features)
 		/* SKYRAT EDIT REMOVAL - This breaks things for some god forsaken reason
 		var/static/list/all_species_protoypes
@@ -506,6 +505,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		for(var/datum/species/random_species as anything in all_species_protoypes)
 			features |= random_species.randomize_features()
 		SKYRAT EDIT REMOVAL END */
+		mutant_bodyparts = species.get_random_mutant_bodyparts(features) // SKYRAT EDIT ADDITION - This needs to run regardless of whether or not randomize_features = true or things break. Confusing? yes. TODO: Fix that.
 		body_markings = species.get_random_body_markings(features) // SKYRAT EDIT ADDITION
 
 		features["mcolor"] = "#[random_color()]"

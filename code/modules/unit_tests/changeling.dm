@@ -86,7 +86,7 @@
 	ling.eye_color_right = "#FFFFFF"
 	ling.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
 	ling.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
-	ling.set_species(/datum/species/lizard, TRUE, FALSE, ling.dna.features.Copy(), ling.dna.mutant_bodyparts.Copy(), ling.dna.body_markings.Copy()) // SKYRAT EDIT CHANGE - ORIGINAL : ling.set_species(/datum/species/lizard)
+	ling.set_species(/datum/species/lizard)
 
 	ling.real_name = ling_name
 	ling.dna.real_name = ling_name
