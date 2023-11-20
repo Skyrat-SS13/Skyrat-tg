@@ -371,7 +371,7 @@
 		return FALSE
 
 	var/obj/item/clothing/sextoy/condom/condom = penis
-	return condom.condom_state == TRAIT_CONDOM
+	return condom.condom_state == TRAIT_CONDOM_BROKEN
 
 // For handling things that don't already have handcuff handlers.
 /mob/living/carbon/human/set_handcuffed(new_value)

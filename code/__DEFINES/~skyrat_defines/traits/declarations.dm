@@ -142,6 +142,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_STRAPON "strapon"
 
-#define TRAIT_CONDOM "broken"
+#define TRAIT_CONDOM_BROKEN "broken"
 
 // END TRAIT DEFINES

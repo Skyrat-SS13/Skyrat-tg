@@ -76,7 +76,7 @@
 			condom_state = "dirty"
 			if(prob(10)) //chance of condom to break on first time.
 				name = "broken condom"
-				condom_state = TRAIT_CONDOM
+				condom_state = TRAIT_CONDOM_BROKEN
 			update_icon_state()
 			update_icon()
 
