@@ -136,12 +136,17 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	destination.dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	destination.dna.body_markings = body_markings.Copy()
+	destination.dna.update_body_size()
+	//SKYRAT EDIT ADDITION END
 	if(transfer_SE)
 		destination.dna.mutation_index = mutation_index
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
 		//destination.set_species(species.type, icon_update=0) - ORIGINAL
-		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		destination.set_species(species.type, icon_update = TRUE, pref_load = FALSE, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -538,7 +543,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // SKYRAT EDIT CHANGE - ORIGINAL: /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings) // SKYRAT EDIT CHANGE - ORIGINAL: /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(isnull(mrace))
