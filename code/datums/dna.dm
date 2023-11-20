@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
 		//destination.set_species(species.type, icon_update=0) - ORIGINAL
-		destination.set_species(species.type, icon_update = TRUE, pref_load = FALSE, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		destination.set_species(species.type, TRUE, FALSE, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
