@@ -27,29 +27,29 @@
 
 /datum/outfit/cin_soldier_corpse
 	name = "Coalition Operative Corpse"
-	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color
+	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/forest
 	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
 	ears = /obj/item/radio/headset/cybersun
 	mask = /obj/item/clothing/mask/balaclavaadjust
-	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
-	back = /obj/item/storage/backpack/industrial/cin_surplus/random_color
-	belt = /obj/item/storage/belt/military/cin_surplus/random_color
+	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/forest
+	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
+	belt = /obj/item/storage/belt/military/cin_surplus/forest
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/cin
 
 /datum/outfit/cin_soldier_player
 	name = "Coalition Operative SNPC"
-	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color
+	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/forest
 	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
 	ears = /obj/item/radio/headset/cybersun
 	glasses = /obj/item/clothing/glasses/hud/health
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
-	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
-	back = /obj/item/storage/backpack/industrial/cin_surplus/random_color
+	head = /obj/item/clothing/head/helmet/cin_surplus_helmet/forest
+	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
 	backpack_contents = list(
 		/obj/item/storage/box/nri_survival_pack/raider,
 		/obj/item/gun/ballistic/automatic/pistol/clandestine,
@@ -57,7 +57,7 @@
 	)
 	r_hand = null
 	l_hand = null
-	belt = /obj/item/storage/belt/military/cin_surplus/random_color
+	belt = /obj/item/storage/belt/military/cin_surplus/forest
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/cin
 
