@@ -67,6 +67,7 @@
 	if(question != "Yes")
 		return
 
+	GLOB.joined_player_list -= user.ckey
 	user.ghostize(FALSE)
 	QDEL_NULL(user)
 	uses++
