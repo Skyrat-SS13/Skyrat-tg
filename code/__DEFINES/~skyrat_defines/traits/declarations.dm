@@ -107,22 +107,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait given to a brain that is able to accept souls from a RSD
 #define TRAIT_RSD_COMPATIBLE "rsd_compatible"
 
-// METABOLISMS
-// Various jobs on the station have historically had better reactions
-// to various drinks and foodstuffs. Security liking donuts is a classic
-// example. Through years of training/abuse, their livers have taken
-// a liking to those substances. Steal a sec officer's liver, eat donuts good.
+// Defines for some extra inherent traits
+#define TRAIT_REVIVES_BY_HEALING "trait_revives_by_healing"
+#define TRAIT_ROBOTIC_DNA_ORGANS "trait_robotic_dna_organs"
+//Also.. yes for some reason specie traits and accessory defines are together
 
-
-
-//LUNG TRAITS
-
-
-//SKILLS
-
-
-///Movement type traits for movables. See elements/movetype_handler.dm
-
+// Defines for some extra inherent traits
+#define TRAIT_REVIVES_BY_HEALING "trait_revives_by_healing"
+#define TRAIT_ROBOTIC_DNA_ORGANS "trait_robotic_dna_organs"
 
 //Defines for model features, set in the model_features list of a robot model datum. Are they a dogborg? Is the model small? etc.
 /// Cyborgs with unique sprites for when they get totally broken down.
@@ -138,44 +130,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Any model that has a custom front panel
 #define TRAIT_R_UNIQUEPANEL "unique_openpanel"
 
-/// Weather immunities, also protect mobs inside them.
-
-
-//non-mob traits
-
-
-// cargo traits
-
-
-// item traits
-
-
-//quirk traits
-
-
-// Debug traits
-
-
-///Trait for dryable items
-
-
-///fish traits
-
-
-
-
-///generic atom traits
-
-
-///Traits given by station traits
-
-
-// Radiation defines
-
-
-
-// Traits to heal for
-
 // Lewd traits
 #define TRAIT_MASOCHISM "masochism"
 #define TRAIT_SADISM "sadism"
@@ -184,7 +138,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RIGGER "rigger"
 #define TRAIT_ROPEBUNNY "rope bunny"
 ///traits gained by brain traumas, can be removed if the brain trauma is gone
-#define APHRO_TRAIT "aphro"
+#define TRAIT_APHRO "aphro"
 ///traits gained by quirks, cannot be removed unless the quirk itself is gone
 #define TRAIT_LEWDQUIRK "lewdquirks"
 ///traits gained by chemicals, you get the idea
