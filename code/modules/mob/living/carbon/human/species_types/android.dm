@@ -25,6 +25,7 @@
 
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
+	mutantbrain = /obj/item/organ/internal/brain/cybernetic
 	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutantstomach = null
 	mutantappendix = null
