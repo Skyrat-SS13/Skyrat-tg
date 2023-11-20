@@ -75,6 +75,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GUN_NATURAL "gunnatural"
 /// Causes death-like unconsciousness
 #define TRAIT_DEATHCOMA "deathcoma"
+/// The mob has the stasis effect.
+/// Does nothing on its own, applied via status effect.
+#define TRAIT_STASIS "in_stasis"
 /// Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_FAKEDEATH "fakedeath"
 #define TRAIT_DISFIGURED "disfigured"
@@ -83,6 +86,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_TRANSFORM "block_transformations"
 /// Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_XENO_HOST "xeno_host"
+/// This parrot is currently perched
+#define TRAIT_PARROT_PERCHED "parrot_perched"
 /// This mob is immune to stun causing status effects and stamcrit.
 /// Prefer to use [/mob/living/proc/check_stun_immunity] over checking for this trait exactly.
 #define TRAIT_STUNIMMUNE "stun_immunity"
@@ -161,8 +166,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_LIVERLESS_METABOLISM "liverless_metabolism"
 /// Humans with this trait cannot be turned into zombies
 #define TRAIT_NO_ZOMBIFY "no_zombify"
-/// Humans with this trait cannot be affected by changeling transformation stings
-#define TRAIT_NO_TRANSFORMATION_STING "no_transformation_sting"
 /// Carbons with this trait can't have their DNA copied by diseases nor changelings
 #define TRAIT_NO_DNA_COPY "no_dna_copy"
 /// Carbons with this trait cant have their dna scrambled by genetics or a disease retrovirus.
