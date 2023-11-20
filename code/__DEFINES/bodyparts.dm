@@ -6,9 +6,9 @@
 /// The max damage a limb can take before it stops taking damage.
 /// Used by the max_damage var.
 #define LIMB_MAX_HP_PROSTHESIS 20 //Used by surplus prosthesis limbs.
-#define LIMB_MAX_HP_DEFAULT 50 //Used by most all limbs by default.
+#define LIMB_MAX_HP_DEFAULT 60 //Used by most all limbs by default. // SKYRAT EDIT CHANGE - ORIGINAL : #define LIMB_MAX_HP_DEFAULT 50
 #define LIMB_MAX_HP_ADVANCED 75 //Used by advanced robotic limbs.
-#define LIMB_MAX_HP_CORE 200 //Only use this for heads and torsos.
+#define LIMB_MAX_HP_CORE 250 //Only use this for heads and torsos. // SKYRAT EDIT CHANGE - ORIGINAL : #define LIMB_MAX_HP_CORE 200
 
 /// Xenomorph Limbs
 #define LIMB_MAX_HP_ALIEN_LARVA 50 //Used by the weird larva chest and head. Did you know they have those?
