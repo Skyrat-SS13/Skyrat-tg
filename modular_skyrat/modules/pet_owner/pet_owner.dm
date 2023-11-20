@@ -26,14 +26,13 @@
 	if(pet_type == NONE) // Pet not set, we're picking one for them.
 		pet_type = pick(flatten_list(GLOB.possible_player_pet))
 
-	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier/pet_owner
+	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier(get_turf(quirk_holder))
 	var/mob/living/simple_animal/pet/pet = new pet_type(carrier)
 	carrier.add_occupant(pet)
 	give_item_to_holder(
 		carrier,
 		list(
-			LOCATION_HANDS = ITEM_SLOT_HANDS,
-			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+			LOCATION_HANDS = ITEM_SLOT_HANDS
 		),
 		flavour_text = "Looks tightly packed - you might not be able to put the pet back in once they're out.",
 	)
@@ -45,46 +44,46 @@
 	can_randomize = FALSE
 
 GLOBAL_LIST_INIT(possible_player_pet, list(
-	"Cat" = /mob/living/simple_animal/pet/cat,
-	"Space cat" = /mob/living/simple_animal/pet/cat/space,
-	"Bread cat" = /mob/living/simple_animal/pet/cat/breadcat,
-	"Kitten" = /mob/living/simple_animal/pet/cat/kitten,
-	"Cake cat" = /mob/living/simple_animal/pet/cat/cak,
-	"Parrot" = /mob/living/simple_animal/parrot/natural,
-	"Corgi puppy" = /mob/living/basic/pet/dog/corgi/puppy,
-	"Void puppy" = /mob/living/basic/pet/dog/corgi/puppy/void,
-	"Corgi" = /mob/living/basic/pet/dog/corgi,
-	"Pug" = /mob/living/basic/pet/dog/pug,
-	"Bull terrier" = /mob/living/basic/pet/dog/bullterrier,
-	"Dobermann" = /mob/living/basic/pet/dog/dobermann,
-	"Fox" = /mob/living/basic/pet/fox/docile,
-	"Penguin" = /mob/living/basic/pet/penguin/emperor/neuter,
+	"Axolotl" = /mob/living/basic/axolotl,
 	"Baby Penguin" = /mob/living/basic/pet/penguin/baby/permanent,
-	"White chinchilla" = /mob/living/basic/pet/chinchilla/white,
-	"Dark chinchilla" = /mob/living/basic/pet/chinchilla/black,
-	"Deer" = /mob/living/basic/deer,
-	"Pig" = /mob/living/basic/pig,
-	"Rabbit" = /mob/living/basic/rabbit,
+	"Bat" = /mob/living/basic/bat,
+	"Bread cat" = /mob/living/simple_animal/pet/cat/breadcat,
+	"Bull terrier" = /mob/living/basic/pet/dog/bullterrier,
+	"Butterfly" = /mob/living/basic/butterfly,
+	"Cake cat" = /mob/living/simple_animal/pet/cat/cak,
+	"Cat" = /mob/living/simple_animal/pet/cat,
 	"Chick" = /mob/living/basic/chick/permanent,
 	"Chicken" = /mob/living/basic/chicken,
-	"Sloth" = /mob/living/basic/sloth,
-	"Giant ant" = /mob/living/basic/ant,
-	"Space carp" = /mob/living/basic/carp/pet,
-	"Snake" = /mob/living/basic/snake,
-	"Spider" = /mob/living/basic/spider/maintenance,
-	"Axolotl" = /mob/living/basic/axolotl,
-	"Butterfly" = /mob/living/basic/butterfly,
+	"Chinchilla (dark)" = /mob/living/basic/pet/chinchilla/black,
+	"Chinchilla (white)" = /mob/living/basic/pet/chinchilla/white,
+	"Corgi" = /mob/living/basic/pet/dog/corgi,
+	"Corgi puppy" = /mob/living/basic/pet/dog/corgi/puppy,
 	"Cockroach" = /mob/living/basic/cockroach,
 	"Crab" = /mob/living/basic/crab,
+	"Deer" = /mob/living/basic/deer,
+	"Dobermann" = /mob/living/basic/pet/dog/dobermann,
+	"Fox" = /mob/living/basic/pet/fox/docile,
 	"Frog" = /mob/living/basic/frog,
-	"Space lizard" = /mob/living/basic/lizard/space,
-	"Tegu" = /mob/living/basic/lizard/tegu,
-	"Mothroach" = /mob/living/basic/mothroach,
-	"White mouse" = /mob/living/basic/mouse/white,
-	"Gray mouse" = /mob/living/basic/mouse/gray,
-	"Brown mouse" = /mob/living/basic/mouse/brown,
-	"Bat" = /mob/living/basic/bat,
+	"Giant ant" = /mob/living/basic/ant,
+	"Kitten" = /mob/living/simple_animal/pet/cat/kitten,
 	"Kiwi" = /mob/living/basic/kiwi,
+	"Mothroach" = /mob/living/basic/mothroach,
+	"Mouse (white)" = /mob/living/basic/mouse/white,
+	"Mouse (gray)" = /mob/living/basic/mouse/gray,
+	"Mouse (brown)" = /mob/living/basic/mouse/brown,
+	"Parrot" = /mob/living/simple_animal/parrot/natural,
+	"Penguin" = /mob/living/basic/pet/penguin/emperor/neuter,
+	"Pig" = /mob/living/basic/pig,
+	"Pug" = /mob/living/basic/pet/dog/pug,
+	"Rabbit" = /mob/living/basic/rabbit,
+	"Sloth" = /mob/living/basic/sloth,
+	"Snake" = /mob/living/basic/snake,
+	"Space carp" = /mob/living/basic/carp/pet,
+	"Space cat" = /mob/living/simple_animal/pet/cat/space,
+	"Space lizard" = /mob/living/basic/lizard/space,
+	"Spider" = /mob/living/basic/spider/maintenance,
+	"Tegu" = /mob/living/basic/lizard/tegu,
+	"Void puppy" = /mob/living/basic/pet/dog/corgi/puppy/void,
 )) //some of these are too big to be put back into the pet carrier once taken out, so I put a warning on the carrier.
 
 /datum/preference/choiced/pet_owner/init_possible_values()
@@ -101,9 +100,3 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 
 /datum/preference/choiced/pet_owner/apply_to_human(mob/living/carbon/human/target, value)
 	return
-
-/obj/item/pet_carrier/pet_owner
-	name = "miniature pet carrier"
-	desc = "A small white-and-blue pet carrier, made for transporting pets on shuttles."
-	w_class = WEIGHT_CLASS_NORMAL
-	max_occupants = 1 //Quirk pet carriers only get one pet.
