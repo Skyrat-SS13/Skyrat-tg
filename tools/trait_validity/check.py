@@ -14,7 +14,7 @@ def red(text):
 on_github = os.getenv("GITHUB_ACTIONS") == "true"
 
 defines_file = "code/__DEFINES/traits/declarations.dm"
-skyrat_defines_file = "code/__DEFINES/traits/declarations.dm" # SKYRAT EDIT ADDITION
+skyrat_defines_file = "code/__DEFINES/~skyrat_defines/traits/declarations.dm" # SKYRAT EDIT ADDITION
 globalvars_file = "code/_globalvars/traits/_traits.dm"
 
 how_to_fix_message = "Please ensure that all traits in the {defines_file} file are added in the {globalvars_file} file."
@@ -70,7 +70,6 @@ for potential_define in scannable_lines:
 	defines_to_search_for.append(match.group(2))
 
 # SKYRAT EDIT ADDITION START
-
 with open(skyrat_defines_file, 'r') as file:
 	reading = False
 
@@ -94,7 +93,6 @@ for potential_define in scannable_lines:
 
 	number_of_defines += 1
 	defines_to_search_for.append(match.group(2))
-
 # SKYRAT EDIT ADDITION END
 
 if number_of_defines == 0:
