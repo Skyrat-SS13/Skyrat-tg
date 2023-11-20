@@ -99,3 +99,6 @@
 
 /// Trait given to a brain that is able to accept souls from a RSD
 #define TRAIT_RSD_COMPATIBLE "rsd_compatible"
+
+/// Trait to spawn with a pet in a pet carrier (veteran only)
+#define TRAIT_PET_OWNER "pet_owner"
