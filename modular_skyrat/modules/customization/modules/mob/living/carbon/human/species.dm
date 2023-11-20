@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/features = ..()
 	return features
 
-/datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
+/datum/species/proc/get_random_mutant_bodyparts(list/features, allow_random = TRUE) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
 	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
 	if(CONFIG_GET(flag/disable_erp_preferences))
@@ -87,7 +87,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
 		if(bodyparts_to_add[key] == ACC_RANDOM)
-			SP = random_accessory_of_key_for_species(key, src)
+			if(allow_random)
+				SP = random_accessory_of_key_for_species(key, src)
+			else
+				SP = GLOB.sprite_accessories[key]["None"]
 		else
 			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key]]
 			if(!SP)

@@ -494,6 +494,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		blood_type = newblood_type
 	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
+	mutant_bodyparts = species.get_random_mutant_bodyparts(features, allow_random = randomize_features) // SKYRAT EDIT ADDITION
 	if(randomize_features)
 		/* SKYRAT EDIT REMOVAL - We don't really want this, do we? We get the same effect from get_random_mutant_bodyparts() on our end, but without mixing up weird species features.
 		var/static/list/all_species_protoypes
@@ -505,7 +506,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		for(var/datum/species/random_species as anything in all_species_protoypes)
 			features |= random_species.randomize_features()
 		SKYRAT EDIT REMOVAL END */
-		mutant_bodyparts = species.get_random_mutant_bodyparts(features) // SKYRAT EDIT ADDITION
 		body_markings = species.get_random_body_markings(features) // SKYRAT EDIT ADDITION
 
 		features["mcolor"] = "#[random_color()]"
