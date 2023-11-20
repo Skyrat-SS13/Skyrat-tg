@@ -21,8 +21,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
-#define TRAIT_GLOVES "TRAIT_GLOVES" //Traits associated with wearing gloves
-#define QUIRK_LINGUIST "Linguist" // Extra language point.
+#define TRAIT_GLOVES "gloves_trait" //Traits associated with wearing gloves
+#define TRAIT_LINGUIST "Linguist" // Extra language point.
 #define TRAIT_GLUED_ITEM "glued-item" // This is for glued items, undroppable. Syndie glue applies this.
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
