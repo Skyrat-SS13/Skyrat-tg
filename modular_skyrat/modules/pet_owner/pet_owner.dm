@@ -26,12 +26,15 @@
 	if(pet_type == NONE) // Pet not set, we're picking one for them.
 		pet_type = pick(flatten_list(GLOB.possible_player_pet))
 
-	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier
+	var/obj/item/pet_carrier/carrier = new /obj/item/pet_carrier/pet_owner
 	var/mob/living/simple_animal/pet/pet = new pet_type(carrier)
 	carrier.add_occupant(pet)
 	give_item_to_holder(
 		carrier,
-		list(LOCATION_HANDS = ITEM_SLOT_HANDS),
+		list(
+			LOCATION_HANDS = ITEM_SLOT_HANDS,
+			LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
+		),
 		flavour_text = "Looks tightly packed - you might not be able to put the pet back in once they're out.",
 	)
 
@@ -61,12 +64,9 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 	"Dark chinchilla" = /mob/living/basic/pet/chinchilla/black,
 	"Deer" = /mob/living/basic/deer,
 	"Pig" = /mob/living/basic/pig,
-	"Pony" = /mob/living/basic/pony,
 	"Rabbit" = /mob/living/basic/rabbit,
 	"Chick" = /mob/living/basic/chick/permanent,
 	"Chicken" = /mob/living/basic/chicken,
-	"Cow" = /mob/living/basic/cow,
-	"Goat" = /mob/living/basic/goat,
 	"Sloth" = /mob/living/basic/sloth,
 	"Giant ant" = /mob/living/basic/ant,
 	"Space carp" = /mob/living/basic/carp/pet,
@@ -101,3 +101,9 @@ GLOBAL_LIST_INIT(possible_player_pet, list(
 
 /datum/preference/choiced/pet_owner/apply_to_human(mob/living/carbon/human/target, value)
 	return
+
+/obj/item/pet_carrier/pet_owner
+	name = "miniature pet carrier"
+	desc = "A small white-and-blue pet carrier, made for transporting pets on shuttles."
+	w_class = WEIGHT_CLASS_NORMAL
+	max_occupants = 1 //Quirk pet carriers only get one pet.
