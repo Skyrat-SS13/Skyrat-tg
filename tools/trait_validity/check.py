@@ -70,6 +70,7 @@ for potential_define in scannable_lines:
 	defines_to_search_for.append(match.group(2))
 
 # SKYRAT EDIT ADDITION START
+scannable_lines = []
 with open(skyrat_defines_file, 'r') as file:
 	reading = False
 
