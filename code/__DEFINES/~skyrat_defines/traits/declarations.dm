@@ -110,11 +110,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Defines for some extra inherent traits
 #define TRAIT_REVIVES_BY_HEALING "trait_revives_by_healing"
 #define TRAIT_ROBOTIC_DNA_ORGANS "trait_robotic_dna_organs"
-//Also.. yes for some reason specie traits and accessory defines are together
-
-// Defines for some extra inherent traits
-#define TRAIT_REVIVES_BY_HEALING "trait_revives_by_healing"
-#define TRAIT_ROBOTIC_DNA_ORGANS "trait_robotic_dna_organs"
 
 //Defines for model features, set in the model_features list of a robot model datum. Are they a dogborg? Is the model small? etc.
 /// Cyborgs with unique sprites for when they get totally broken down.
