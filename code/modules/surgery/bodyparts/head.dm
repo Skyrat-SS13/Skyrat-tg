@@ -3,11 +3,7 @@
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
 	icon = 'icons/mob/human/bodyparts.dmi'
 	icon_state = "default_human_head"
-<<<<<<< HEAD
-	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
-=======
 	max_damage = LIMB_MAX_HP_CORE
->>>>>>> 84cb29b23e4 ([READY] The Cyberbrawlening: Augment your Unarmed Strikes for Maximum Damage (#79705))
 	body_zone = BODY_ZONE_HEAD
 	body_part = HEAD
 	plaintext_zone = "head"
