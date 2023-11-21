@@ -739,3 +739,8 @@
 	name = "Cat-Ear Headphones"
 	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
 	ckeywhitelist = list("dtfe")
+
+/datum/loadout_item/under/miscellaneous/custom_trackpants
+	name = "Tarin's Custom Trackpants"
+	item_path = /obj/item/clothing/under/pants/custom_trackpants
+	ckeywhitelist = list("Zcrow")
