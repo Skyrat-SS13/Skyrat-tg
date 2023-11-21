@@ -1744,7 +1744,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 /obj/item/clothing/under/pants/custom_trackpants
 	name = "Tarin's custom sweatpants"
 	desc = "A tailored pair of sweatpants (??). Featuring an eye-catching colored stripe and a little more comfort."
-	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "zcrow_trackpants"
-	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS
