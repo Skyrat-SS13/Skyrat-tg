@@ -182,6 +182,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /obj/machinery/cryopod/LateInitialize()
 	update_icon()
 	find_control_computer()
+	AddComponent(/datum/component/handle_objectives)
 
 // This is not a good situation
 /obj/machinery/cryopod/Destroy()
@@ -258,63 +259,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 		despawn_occupant()
 
-/obj/machinery/cryopod/proc/handle_objectives()
-	var/mob/living/mob_occupant = occupant
-	// Update any existing objectives involving this mob.
-	for(var/datum/objective/objective in GLOB.objectives)
-		// We don't want revs to get objectives that aren't for heads of staff. Letting
-		// them win or lose based on cryo is silly so we remove the objective.
-		if(istype(objective,/datum/objective/mutiny) && objective.target == mob_occupant.mind)
-			objective.team.objectives -= objective
-			qdel(objective)
-			for(var/datum/mind/mind in objective.team.members)
-				to_chat(mind.current, "<BR>[span_userdanger("Your target is no longer within reach. Objective removed!")]")
-				mind.announce_objectives()
-		else if(istype(objective.target) && objective.target == mob_occupant.mind)
-			if(!istype(objective, /datum/objective/contract))
-				return
-			var/datum/opposing_force/affected_contractor = objective.owner.opposing_force
-			var/datum/contractor_hub/affected_contractor_hub = affected_contractor.contractor_hub
-			for(var/datum/syndicate_contract/affected_contract as anything in affected_contractor_hub.assigned_contracts)
-				if(!(affected_contract.contract == objective))
-					continue
-				var/contract_id = affected_contract.id
-				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
-				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
-				if (affected_contractor_hub.current_contract == objective)
-					affected_contractor_hub.current_contract = null
-				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
-				break
-		else if(istype(objective.target) && objective.target == mob_occupant.mind)
-			var/old_target = objective.target
-			objective.target = null
-			if(!objective)
-				return
-			objective.find_target()
-			if(!objective.target && objective.owner)
-				to_chat(objective.owner.current, "<BR>[span_userdanger("Your target is no longer within reach. Objective removed!")]")
-				for(var/datum/antagonist/antag in objective.owner.antag_datums)
-					antag.objectives -= objective
-			if (!objective.team)
-				objective.update_explanation_text()
-				objective.owner.announce_objectives()
-				to_chat(objective.owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
-			else
-				var/list/objectivestoupdate
-				for(var/datum/mind/objective_owner in objective.get_owners())
-					to_chat(objective_owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
-					for(var/datum/objective/update_target_objective in objective_owner.get_all_objectives())
-						LAZYADD(objectivestoupdate, update_target_objective)
-				objectivestoupdate += objective.team.objectives
-				for(var/datum/objective/update_objective in objectivestoupdate)
-					if(update_objective.target != old_target || !istype(update_objective,objective.type))
-						continue
-					update_objective.target = objective.target
-					update_objective.update_explanation_text()
-					to_chat(objective.owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
-					update_objective.owner.announce_objectives()
-			qdel(objective)
-
 /// This function can not be undone; do not call this unless you are sure.
 /// Handles despawning the player.
 /obj/machinery/cryopod/proc/despawn_occupant()
@@ -387,7 +331,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	GLOB.joined_player_list -= stored_ckey
 
-	handle_objectives()
+	SEND_SIGNAL(src, COMSIG_HANDLE_OBJECTIVES(mob_occupant))
 	mob_occupant.ghostize()
 	QDEL_NULL(occupant)
 	open_machine()

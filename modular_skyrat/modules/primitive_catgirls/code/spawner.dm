@@ -30,6 +30,7 @@
 	team = new /datum/team/primitive_catgirls()
 
 	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\">here</a>."
+	AddComponent(/datum/component/handle_objectives)
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
@@ -68,6 +69,7 @@
 		return
 
 	GLOB.joined_player_list -= user.ckey
+	SEND_SIGNAL(src, COMSIG_HANDLE_OBJECTIVES(user))
 	user.ghostize(FALSE)
 	QDEL_NULL(user)
 	uses++

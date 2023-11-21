@@ -87,3 +87,6 @@
 
 /// Whenever we need to get the soul of the mob inside of the soulcatcher.
 #define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"
+
+/// Whenever we want to remove objectives about someone
+#define COMSIG_HANDLE_OBJECTIVES
