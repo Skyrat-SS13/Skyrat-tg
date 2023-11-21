@@ -11,13 +11,6 @@
 
 /datum/species/pod/get_default_mutant_bodyparts()
 	return list(
-		"pod_hair" = list("Ivy", TRUE),
-		"legs" = list("Normal Legs", FALSE),
-	)
-	payday_modifier = 1.0
-
-/datum/species/pod/get_default_mutant_bodyparts()
-	return list(
 		"pod_hair" = list(MUTANT_INDEX_NAME = "Ivy", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
 		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
 	)
