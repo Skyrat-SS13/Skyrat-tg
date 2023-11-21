@@ -76,7 +76,7 @@
 
 	// Damage variables
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
-	var/body_damage_coeff = 1
+	var/body_damage_coeff = LIMB_BODY_DAMAGE_COEFFICIENT_TOTAL
 	///The current amount of brute damage the limb has
 	var/brute_dam = 0
 	///The current amount of burn damage the limb has
@@ -175,8 +175,8 @@
 	var/unarmed_damage_low = 1
 	///Highest possible punch damage this bodypart can ive.
 	var/unarmed_damage_high = 1
-	///Damage at which attacks from this bodypart will stun
-	var/unarmed_stun_threshold = 2
+	///Determines the accuracy bonus, armor penetration and knockdown probability.
+	var/unarmed_effectiveness = 10
 	/// How many pixels this bodypart will offset the top half of the mob, used for abnormally sized torsos and legs
 	var/top_offset = 0
 
@@ -457,7 +457,7 @@
 /obj/item/bodypart/proc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/hit_percent = (100-blocked)/100
+	var/hit_percent = forced ? 1 : (100-blocked)/100
 	if((!brute && !burn) || hit_percent <= 0)
 		return FALSE
 	if (!forced)
@@ -969,8 +969,8 @@
 		icon_state = initial(icon_state)//no overlays found, we default back to initial icon.
 		return
 	for(var/image/img as anything in standing)
-		img.pixel_x = px_x
-		img.pixel_y = px_y
+		img.pixel_x += px_x
+		img.pixel_y += px_y
 	add_overlay(standing)
 
 ///Generates an /image for the limb to be used as an overlay
@@ -1267,12 +1267,12 @@
 		if(BLEED_OVERLAY_LOW to BLEED_OVERLAY_MED)
 			new_bleed_icon = "[body_zone]_1"
 		if(BLEED_OVERLAY_MED to BLEED_OVERLAY_GUSH)
-			if(owner.body_position == LYING_DOWN || IS_IN_STASIS(owner) || owner.stat == DEAD)
+			if(owner.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_STASIS) || owner.stat == DEAD)
 				new_bleed_icon = "[body_zone]_2s"
 			else
 				new_bleed_icon = "[body_zone]_2"
 		if(BLEED_OVERLAY_GUSH to INFINITY)
-			if(IS_IN_STASIS(owner) || owner.stat == DEAD)
+			if(HAS_TRAIT(owner, TRAIT_STASIS) || owner.stat == DEAD)
 				new_bleed_icon = "[body_zone]_2s"
 			else
 				new_bleed_icon = "[body_zone]_3"
@@ -1376,9 +1376,10 @@
 	else
 		update_icon_dropped()
 
+// Note: Does NOT return EMP protection value from parent call or pass it on to subtypes
 /obj/item/bodypart/emp_act(severity)
-	. = ..()
-	if(. & EMP_PROTECT_WIRES || !IS_ROBOTIC_LIMB(src))
+	var/protection = ..()
+	if((protection & EMP_PROTECT_WIRES) || !IS_ROBOTIC_LIMB(src))
 		return FALSE
 
 	// with defines at the time of writing, this is 2 brute and 1.5 burn
@@ -1395,16 +1396,14 @@
 		burn_damage *= 1.3 // SKYRAT EDIT : Balance - Lowers total damage from ~104 Burn to ~24
 
 	receive_damage(brute_damage, burn_damage)
-	do_sparks(number = 1, cardinal_only = FALSE, source = owner)
-	var/damage_percent_to_max = (get_damage() / max_damage)
-	if (time_needed && (damage_percent_to_max >= robotic_emp_paralyze_damage_percent_threshold))
-		owner.visible_message(span_danger("[owner]'s [src] seems to malfunction!"))
-		ADD_TRAIT(src, TRAIT_PARALYSIS, EMP_TRAIT)
-		addtimer(CALLBACK(src, PROC_REF(un_paralyze)), time_needed)
-	return TRUE
+	do_sparks(number = 1, cardinal_only = FALSE, source = owner || src)
 
-/obj/item/bodypart/proc/un_paralyze()
-	REMOVE_TRAITS_IN(src, EMP_TRAIT)
+	if(can_be_disabled && (get_damage() / max_damage) >= robotic_emp_paralyze_damage_percent_threshold)
+		ADD_TRAIT(src, TRAIT_PARALYSIS, EMP_TRAIT)
+		addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_PARALYSIS, EMP_TRAIT), time_needed)
+		owner?.visible_message(span_danger("[owner]'s [plaintext_zone] seems to malfunction!"))
+
+	return TRUE
 
 /// Returns the generic description of our BIO_EXTERNAL feature(s), prioritizing certain ones over others. Returns error on failure.
 /obj/item/bodypart/proc/get_external_description()

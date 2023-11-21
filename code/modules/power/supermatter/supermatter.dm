@@ -203,7 +203,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	RegisterSignal(src, COMSIG_ATOM_BSA_BEAM, PROC_REF(force_delam))
 	RegisterSignal(src, COMSIG_ATOM_TIMESTOP_FREEZE, PROC_REF(time_frozen))
 	RegisterSignal(src, COMSIG_ATOM_TIMESTOP_UNFREEZE, PROC_REF(time_unfrozen))
-
+	RegisterSignal(src, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(eat_bullets))
 	var/static/list/loc_connections = list(
 		COMSIG_TURF_INDUSTRIAL_LIFT_ENTER = PROC_REF(tram_contents_consume),
 	)
@@ -535,7 +535,11 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	final_countdown = TRUE
 
 	SEND_GLOBAL_SIGNAL(COMSIG_MAIN_SM_DELAMINATING, final_countdown) // SKYRAT EDIT ADDITION - DELAM_SCRAM
-	notify_ghosts("[src] has begun the delamination process!", source = src, header = "Meltdown Incoming")
+	notify_ghosts(
+		"[src] has begun the delamination process!",
+		source = src,
+		header = "Meltdown Incoming",
+	)
 
 	var/datum/sm_delam/last_delamination_strategy = delamination_strategy
 	var/list/count_down_messages = delamination_strategy.count_down_messages()

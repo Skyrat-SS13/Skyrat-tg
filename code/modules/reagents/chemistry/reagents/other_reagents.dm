@@ -321,6 +321,8 @@
 
 /datum/reagent/water/salt/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	. = ..()
+	if(!iscarbon(exposed_mob))
+		return
 	var/mob/living/carbon/carbies = exposed_mob
 	if(!(methods & (PATCH|TOUCH|VAPOR)))
 		return
@@ -353,7 +355,7 @@
 	color = "#E0E8EF" // rgb: 224, 232, 239
 	self_consuming = TRUE //divine intervention won't be limited by the lack of a liver
 	ph = 7.5 //God is alkaline
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS|REAGENT_UNAFFECTED_BY_METABOLISM // Operates at fixed metabolism for balancing memes.
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/holywater
 
 /datum/glass_style/drinking_glass/holywater
@@ -361,6 +363,15 @@
 	name = "glass of holy water"
 	desc = "A glass of holy water."
 	icon_state = "glass_clear"
+
+/datum/reagent/water/holywater/on_new(list/data)
+	// Tracks the total amount of deciseconds that the reagent has been metab'd for, for the purpose of deconversion
+	if(isnull(data))
+		data = list("deciseconds_metabolized" = 0)
+	else if(isnull(data["deciseconds_metabolized"]))
+		data["deciseconds_metabolized"] = 0
+
+	return ..()
 
 // Holy water. Unlike water, which is nuked, stays in and heals the plant a little with the power of the spirits. Also ALSO increases instability.
 /datum/reagent/water/holywater/on_hydroponics_apply(obj/machinery/hydroponics/mytray, mob/user)
@@ -372,53 +383,50 @@
 	. = ..()
 	ADD_TRAIT(affected_mob, TRAIT_HOLY, type)
 
-/datum/reagent/water/holywater/on_mob_add(mob/living/affected_mob, amount)
-	. = ..()
-	if(data)
-		data["misc"] = 0
-
 /datum/reagent/water/holywater/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	REMOVE_TRAIT(affected_mob, TRAIT_HOLY, type)
 
-/datum/reagent/water/holywater/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
+/datum/reagent/water/holywater/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
-	if(IS_CULTIST(exposed_mob))
-		to_chat(exposed_mob, span_userdanger("A vile holiness begins to spread its shining tendrils through your mind, purging the Geometer of Blood's influence!"))
+	if(IS_CULTIST(affected_mob))
+		to_chat(affected_mob, span_userdanger("A vile holiness begins to spread its shining tendrils through your mind, purging the Geometer of Blood's influence!"))
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	if(!data)
-		data = list("misc" = 0)
+	. = ..()
 
-	data["misc"] += seconds_per_tick SECONDS * REM
-	affected_mob.adjust_jitter_up_to(4 SECONDS * seconds_per_tick, 20 SECONDS)
+	data["deciseconds_metabolized"] += (seconds_per_tick * 1 SECONDS * REM)
+
+	affected_mob.adjust_jitter_up_to(4 SECONDS * REM * seconds_per_tick, 20 SECONDS)
+
 	if(IS_CULTIST(affected_mob))
 		for(var/datum/action/innate/cult/blood_magic/BM in affected_mob.actions)
-			to_chat(affected_mob, span_cultlarge("Your blood rites falter as holy water scours your body!"))
+			var/removed_any = FALSE
 			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
+				removed_any = TRUE
 				qdel(BS)
-	if(data["misc"] >= (25 SECONDS)) // 10 units
-		affected_mob.adjust_stutter_up_to(4 SECONDS * seconds_per_tick, 20 SECONDS)
+			if(removed_any)
+				to_chat(affected_mob, span_cultlarge("Your blood rites falter as holy water scours your body!"))
+
+	if(data["deciseconds_metabolized"] >= (25 SECONDS)) // 10 units
+		affected_mob.adjust_stutter_up_to(4 SECONDS * REM * seconds_per_tick, 20 SECONDS)
 		affected_mob.set_dizzy_if_lower(10 SECONDS)
 		if(IS_CULTIST(affected_mob) && SPT_PROB(10, seconds_per_tick))
 			affected_mob.say(pick("Av'te Nar'Sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"), forced = "holy water")
 			if(prob(10))
 				affected_mob.visible_message(span_danger("[affected_mob] starts having a seizure!"), span_userdanger("You have a seizure!"))
 				affected_mob.Unconscious(12 SECONDS)
-				to_chat(affected_mob, "<span class='cultlarge'>[pick("Your blood is your bond - you are nothing without it", "Do not forget your place", \
-				"All that power, and you still fail?", "If you cannot scour this poison, I shall scour your meager life!")].</span>")
-	if(data["misc"] >= (1 MINUTES)) // 24 units
+				to_chat(affected_mob, span_cultlarge("[pick("Your blood is your bond - you are nothing without it", "Do not forget your place", \
+					"All that power, and you still fail?", "If you cannot scour this poison, I shall scour your meager life!")]."))
+
+	if(data["deciseconds_metabolized"] >= (1 MINUTES)) // 24 units
 		if(IS_CULTIST(affected_mob))
 			affected_mob.mind.remove_antag_datum(/datum/antagonist/cult)
-			affected_mob.Unconscious(100)
+			affected_mob.Unconscious(10 SECONDS)
 		affected_mob.remove_status_effect(/datum/status_effect/jitter)
 		affected_mob.remove_status_effect(/datum/status_effect/speech/stutter)
-		if(holder)
-			holder.remove_reagent(type, volume) // maybe this is a little too perfect and a max() cap on the statuses would be better??
-		return
-	if(holder)
-		holder.remove_reagent(type, 1 * REAGENTS_METABOLISM * seconds_per_tick) //fixed consumption to prevent balancing going out of whack
+		holder?.remove_reagent(type, volume) // maybe this is a little too perfect and a max() cap on the statuses would be better??
 
 /datum/reagent/water/holywater/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
@@ -484,7 +492,13 @@
 	ph = 6.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
+/datum/reagent/fuel/unholywater/on_mob_metabolize(mob/living/affected_mob)
+	. = ..()
+	if(IS_CULTIST(affected_mob))
+		ADD_TRAIT(affected_mob, TRAIT_COAGULATING, type)
+
 /datum/reagent/fuel/unholywater/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	. = ..()
 	var/need_mob_update = FALSE
 	if(IS_CULTIST(affected_mob))
@@ -498,6 +512,16 @@
 		need_mob_update = TRUE
 		if(ishuman(affected_mob) && affected_mob.blood_volume < BLOOD_VOLUME_NORMAL)
 			affected_mob.blood_volume += 3 * REM * seconds_per_tick
+
+			var/datum/wound/bloodiest_wound
+
+			for(var/datum/wound/iter_wound as anything in affected_mob.all_wounds)
+				if(iter_wound.blood_flow && iter_wound.blood_flow > bloodiest_wound?.blood_flow)
+					bloodiest_wound = iter_wound
+
+			if(bloodiest_wound)
+				bloodiest_wound.adjust_blood_flow(-2 * REM * seconds_per_tick)
+
 	else  // Will deal about 90 damage when 50 units are thrown
 		need_mob_update += affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3 * REM * seconds_per_tick, 150)
 		need_mob_update += affected_mob.adjustToxLoss(1 * REM * seconds_per_tick, updating_health = FALSE)
@@ -506,6 +530,10 @@
 		need_mob_update += affected_mob.adjustBruteLoss(1 * REM * seconds_per_tick, updating_health = FALSE)
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
+
+/datum/reagent/fuel/unholywater/on_mob_end_metabolize(mob/living/affected_mob)
+	. = ..()
+	REMOVE_TRAIT(affected_mob, TRAIT_COAGULATING, type) //We don't cult check here because potentially our imbiber may no longer be a cultist for whatever reason! It doesn't purge holy water, after all!
 
 /datum/reagent/hellwater //if someone has this in their system they've really pissed off an eldrich god
 	name = "Hell Water"
@@ -523,7 +551,7 @@
 	need_mob_update += affected_mob.adjustFireLoss(0.5*seconds_per_tick, updating_health = FALSE) //Hence the other damages... ain't I a bastard?
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2.5*seconds_per_tick, 150)
 	if(holder)
-		holder.remove_reagent(type, 0.5*seconds_per_tick)
+		holder.remove_reagent(type, 0.5 * seconds_per_tick)
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -718,8 +746,6 @@
 		holder.del_reagent(type)
 		to_chat(affected_mob, span_warning("You've become \a [lowertext(initial(species_type.name))]!"))
 		return
-
-	return ..()
 
 /datum/reagent/mutationtoxin/classic //The one from plasma on green slimes
 	name = "Mutation Toxin"
@@ -918,9 +944,8 @@
 
 /datum/reagent/serotrotium/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	if(ishuman(affected_mob))
-		if(SPT_PROB(3.5, seconds_per_tick))
-			affected_mob.emote(pick("twitch","drool","moan","gasp"))
+	if(SPT_PROB(3.5, seconds_per_tick))
+		affected_mob.emote(pick("twitch","drool","moan","gasp"))
 
 /datum/reagent/oxygen
 	name = "Oxygen"
@@ -995,7 +1020,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/mercury/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	. =	..()
+	. = ..()
 	if(!HAS_TRAIT(src, TRAIT_IMMOBILIZED) && !isspaceturf(affected_mob.loc))
 		step(affected_mob, pick(GLOB.cardinals))
 	if(SPT_PROB(3.5, seconds_per_tick))
@@ -1048,9 +1073,9 @@
 
 
 /datum/reagent/chlorine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	affected_mob.take_bodypart_damage(0.5*REM*seconds_per_tick, 0)
-	. = TRUE
-	..()
+	. = ..()
+	if(affected_mob.take_bodypart_damage(0.5*REM*seconds_per_tick, 0))
+		return UPDATE_MOB_HEALTH
 
 /datum/reagent/fluorine
 	name = "Fluorine"
@@ -1071,7 +1096,7 @@
 /datum/reagent/fluorine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	if(affected_mob.adjustToxLoss(0.5*REM*seconds_per_tick, updating_health = FALSE))
-		. = TRUE
+		return UPDATE_MOB_HEALTH
 
 /datum/reagent/sodium
 	name = "Sodium"
@@ -1402,7 +1427,6 @@
 /datum/reagent/impedrezene/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	affected_mob.adjust_jitter(-5 SECONDS * seconds_per_tick)
-	. = FALSE
 	if(SPT_PROB(55, seconds_per_tick))
 		affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2)
 		. = TRUE
@@ -1569,6 +1593,7 @@
 	REMOVE_TRAIT(affected_mob, TRAIT_BLOODY_MESS, type)
 
 /datum/reagent/nitrous_oxide/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	affected_mob.adjust_drowsiness(4 SECONDS * REM * seconds_per_tick)
 
 	if(!HAS_TRAIT(affected_mob, TRAIT_BLOODY_MESS) && !HAS_TRAIT(affected_mob, TRAIT_COAGULATING)) //So long as they do not have a coagulant, if they did not have the bloody mess trait, they do now
@@ -1580,7 +1605,6 @@
 	if(SPT_PROB(10, seconds_per_tick))
 		affected_mob.losebreath += 2
 		affected_mob.adjust_confusion_up_to(2 SECONDS, 5 SECONDS)
-	..()
 
 /////////////////////////Colorful Powder////////////////////////////
 //For colouring in /proc/mix_color_from_reagents
@@ -1825,8 +1849,8 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/stable_plasma/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	affected_mob.adjustPlasma(10 * REM * seconds_per_tick)
-	..()
 
 /datum/reagent/iodine
 	name = "Iodine"
@@ -1848,7 +1872,7 @@
 
 /datum/reagent/carpet/expose_turf(turf/exposed_turf, reac_volume)
 	if(isopenturf(exposed_turf) && exposed_turf.turf_flags & IS_SOLID && !istype(exposed_turf, /turf/open/floor/carpet))
-		exposed_turf.PlaceOnTop(carpet_type, flags = CHANGETURF_INHERIT_AIR)
+		exposed_turf.place_on_top(carpet_type, flags = CHANGETURF_INHERIT_AIR)
 	..()
 
 /datum/reagent/carpet/black
@@ -2153,9 +2177,9 @@
 	color = pick(random_color_list)
 
 /datum/reagent/colorful_reagent/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	if(can_colour_mobs)
 		affected_mob.add_atom_colour(pick(random_color_list), WASHABLE_COLOUR_PRIORITY)
-	return ..()
 
 /// Colors anything it touches a random color.
 /datum/reagent/colorful_reagent/expose_atom(atom/exposed_atom, reac_volume)
@@ -2201,15 +2225,17 @@
 
 /datum/reagent/barbers_aid/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message=TRUE, touch_protection=FALSE)
 	. = ..()
-	if(!(methods & (TOUCH|VAPOR)) || !ishuman(exposed_mob) || HAS_TRAIT(exposed_mob, TRAIT_BALD) || HAS_TRAIT(exposed_mob, TRAIT_SHAVED))
+	if(!(methods & (TOUCH|VAPOR)) || !ishuman(exposed_mob) || (HAS_TRAIT(exposed_mob, TRAIT_BALD) && HAS_TRAIT(exposed_mob, TRAIT_SHAVED)))
 		return
 
 	var/mob/living/carbon/human/exposed_human = exposed_mob
-	var/datum/sprite_accessory/hair/picked_hair = pick(GLOB.hairstyles_list)
-	var/datum/sprite_accessory/facial_hair/picked_beard = pick(GLOB.facial_hairstyles_list)
-	to_chat(exposed_human, span_notice("Hair starts sprouting from your scalp."))
-	exposed_human.set_facial_hairstyle(picked_beard, update = FALSE)
-	exposed_human.set_hairstyle(picked_hair, update = TRUE)
+	if(!HAS_TRAIT(exposed_human, TRAIT_SHAVED))
+		var/datum/sprite_accessory/facial_hair/picked_beard = pick(GLOB.facial_hairstyles_list)
+		exposed_human.set_facial_hairstyle(picked_beard, update = FALSE)
+	if(!HAS_TRAIT(exposed_human, TRAIT_BALD))
+		var/datum/sprite_accessory/hair/picked_hair = pick(GLOB.hairstyles_list)
+		exposed_human.set_hairstyle(picked_hair, update = TRUE)
+	to_chat(exposed_human, span_notice("Hair starts sprouting from your [HAS_TRAIT(exposed_human, TRAIT_BALD) ? "face" : "scalp"]."))
 
 /datum/reagent/concentrated_barbers_aid
 	name = "Concentrated Barber's Aid"
@@ -2222,13 +2248,15 @@
 
 /datum/reagent/concentrated_barbers_aid/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message=TRUE, touch_protection=FALSE)
 	. = ..()
-	if(!(methods & (TOUCH|VAPOR)) || !ishuman(exposed_mob) || HAS_TRAIT(exposed_mob, TRAIT_BALD) || HAS_TRAIT(exposed_mob, TRAIT_SHAVED))
+	if(!(methods & (TOUCH|VAPOR)) || !ishuman(exposed_mob) || (HAS_TRAIT(exposed_mob, TRAIT_BALD) && HAS_TRAIT(exposed_mob, TRAIT_SHAVED)))
 		return
 
 	var/mob/living/carbon/human/exposed_human = exposed_mob
-	to_chat(exposed_human, span_notice("Your hair starts growing at an incredible speed!"))
-	exposed_human.set_facial_hairstyle("Beard (Very Long)", update = FALSE)
-	exposed_human.set_hairstyle("Very Long Hair", update = TRUE)
+	if(!HAS_TRAIT(exposed_human, TRAIT_SHAVED))
+		exposed_human.set_facial_hairstyle("Beard (Very Long)", update = FALSE)
+	if(!HAS_TRAIT(exposed_human, TRAIT_BALD))
+		exposed_human.set_hairstyle("Very Long Hair", update = TRUE)
+	to_chat(exposed_human, span_notice("Your[HAS_TRAIT(exposed_human, TRAIT_BALD) ? " facial" : ""] hair starts growing at an incredible speed!"))
 
 /datum/reagent/concentrated_barbers_aid/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -2526,11 +2554,11 @@
 
 /datum/reagent/bz_metabolites/on_mob_metabolize(mob/living/ling)
 	. = ..()
-	ADD_TRAIT(ling, CHANGELING_HIVEMIND_MUTE, type)
+	ADD_TRAIT(ling, TRAIT_CHANGELING_HIVEMIND_MUTE, type)
 
 /datum/reagent/bz_metabolites/on_mob_end_metabolize(mob/living/ling)
 	. = ..()
-	REMOVE_TRAIT(ling, CHANGELING_HIVEMIND_MUTE, type)
+	REMOVE_TRAIT(ling, TRAIT_CHANGELING_HIVEMIND_MUTE, type)
 
 /datum/reagent/bz_metabolites/on_mob_life(mob/living/carbon/target, seconds_per_tick, times_fired)
 	. = ..()
@@ -2553,12 +2581,12 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
 /datum/reagent/peaceborg/confuse/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	affected_mob.adjust_confusion_up_to(3 SECONDS * REM * seconds_per_tick, 5 SECONDS)
 	affected_mob.adjust_dizzy_up_to(6 SECONDS * REM * seconds_per_tick, 12 SECONDS)
 
 	if(SPT_PROB(10, seconds_per_tick))
 		to_chat(affected_mob, "You feel confused and disoriented.")
-	..()
 
 /datum/reagent/peaceborg/tire
 	name = "Tiring Solution"
@@ -2583,11 +2611,12 @@
 	color = "#9A6750" //RGB: 154, 103, 80
 	taste_description = "inner peace"
 	penetrates_skin = NONE
+	var/datum/disease/transformation/gondola_disease = /datum/disease/transformation/gondola
 
 /datum/reagent/gondola_mutation_toxin/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
 	. = ..()
 	if((methods & (PATCH|INGEST|INJECT)) || ((methods & VAPOR) && prob(min(reac_volume,100)*(1 - touch_protection))))
-		exposed_mob.ForceContractDisease(new /datum/disease/transformation/gondola(), FALSE, TRUE)
+		exposed_mob.ForceContractDisease(new gondola_disease, FALSE, TRUE)
 
 
 /datum/reagent/spider_extract
@@ -3043,7 +3072,6 @@
 
 /datum/reagent/hauntium/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-
 	if(affected_mob.mob_biotypes & MOB_UNDEAD || HAS_MIND_TRAIT(affected_mob, TRAIT_MORBID)) //if morbid or undead,acts like an addiction-less drug
 		affected_mob.remove_status_effect(/datum/status_effect/jitter)
 		affected_mob.AdjustStun(-50 * REM * seconds_per_tick)

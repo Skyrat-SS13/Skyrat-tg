@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/mute, /datum/quirk/softspoken),
 	list(/datum/quirk/poor_aim, /datum/quirk/bighands),
 	list(/datum/quirk/bilingual, /datum/quirk/foreigner),
-	list(/datum/quirk/spacer_born, /datum/quirk/paraplegic, /datum/quirk/item_quirk/settler),
+	list(/datum/quirk/spacer_born, /datum/quirk/item_quirk/settler),
 	list(/datum/quirk/photophobia, /datum/quirk/nyctophobia),
 	list(/datum/quirk/item_quirk/settler, /datum/quirk/freerunning),
 	list(/datum/quirk/numb, /datum/quirk/selfaware),
@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/no_guns, /datum/quirk/bighands, /datum/quirk/poor_aim),
 	list(/datum/quirk/no_guns, /datum/quirk/nonviolent),
 	list(/datum/quirk/spacer_born, /datum/quirk/oversized),
+	list(/datum/quirk/feline_aspect, /datum/quirk/item_quirk/canine, /datum/quirk/item_quirk/avian),
 	//SKYRAT EDIT ADDITION END
 ))
 

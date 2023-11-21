@@ -7,11 +7,11 @@
 		),
 		JOB_CAPTAIN = /mob/living/basic/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
-		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
+		JOB_CHIEF_ENGINEER = /mob/living/basic/parrot/poly,
 		JOB_QUARTERMASTER = list(
-			/mob/living/simple_animal/sloth/citrus,
-			/mob/living/simple_animal/sloth/paperwork,
-			/mob/living/simple_animal/hostile/gorilla/cargo_domestic,
+			/mob/living/basic/sloth/citrus,
+			/mob/living/basic/sloth/paperwork,
+			/mob/living/basic/gorilla/cargorilla,
 		),
 		// Non-heads like the warden, these are automatically medium-risk at minimum
 		// They are also the only two modular additions so far

@@ -185,7 +185,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/process(seconds_per_tick)
 	. = ..()
 
-	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))
+	if(!linked_mob || broken || HAS_TRAIT(linked_mob, TRAIT_STASIS))
 		return FALSE
 
 	if(calibrating)
@@ -505,10 +505,10 @@
 	new /obj/item/autosurgeon/organ/nif/ghost_role(src)
 	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
-	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
 	new /obj/item/disk/nifsoft_uploader/dorms/hypnosis(src)
 	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
+	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 
 /obj/item/storage/box/nif_ghost_box/ghost_role/PopulateContents()
 	. = ..()

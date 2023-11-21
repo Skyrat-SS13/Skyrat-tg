@@ -16,11 +16,6 @@
 
 #define WOUND_CRITICAL_BLUNT_DISMEMBER_BONUS 15
 
-// Applied into wounds when they're scanned with the wound analyzer, halves time to treat them manually.
-#define TRAIT_WOUND_SCANNED "wound_scanned"
-// I dunno lol
-#define ANALYZER_TRAIT "analyzer_trait"
-
 /datum/wound
 	/// What it's named
 	var/name = "Wound"
@@ -185,7 +180,7 @@
  * * attack_direction: For bloodsplatters, if relevant
  * * wound_source: The source of the wound, such as a weapon.
  */
-/datum/wound/proc/apply_wound(obj/item/bodypart/L, silent = FALSE, datum/wound/old_wound = null, smited = FALSE, attack_direction = null, wound_source = "Unknown")
+/datum/wound/proc/apply_wound(obj/item/bodypart/L, silent = FALSE, datum/wound/old_wound = null, smited = FALSE, attack_direction = null, wound_source = "Unknown", replacing = FALSE)
 
 	if (!can_be_applied_to(L, old_wound))
 		qdel(src)
@@ -198,7 +193,7 @@
 		src.wound_source = wound_source
 
 	set_victim(L.owner)
-	set_limb(L)
+	set_limb(L, replacing)
 	LAZYADD(victim.all_wounds, src)
 	LAZYADD(limb.wounds, src)
 	update_descriptions()
@@ -371,7 +366,7 @@
 	already_scarred = TRUE
 	var/obj/item/bodypart/cached_limb = limb // remove_wound() nulls limb so we have to track it locally
 	remove_wound(replaced=TRUE)
-	new_wound.apply_wound(cached_limb, old_wound = src, smited = smited, attack_direction = attack_direction, wound_source = wound_source)
+	new_wound.apply_wound(cached_limb, old_wound = src, smited = smited, attack_direction = attack_direction, wound_source = wound_source, replacing = TRUE)
 	. = new_wound
 	qdel(src)
 

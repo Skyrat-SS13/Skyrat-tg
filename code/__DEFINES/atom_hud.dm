@@ -46,11 +46,14 @@
 /// Mech camera HUD
 #define DIAG_CAMERA_HUD "22"
 
-// SKYRAT EDIT ADDITION BEGIN - gun permits
+// SKYRAT EDIT ADDITION BEGIN - gun permits and DNR
 /// ammo of guns
 #define AMMO_HUD "25"
 /// if they have a gun permit
 #define PERMIT_HUD "26"
+
+/// If they have the DNR trait
+#define DNR_HUD "27"
 // SKYRAT EDIT ADDITION END
 
 //by default everything in the hud_list of an atom is an image
@@ -70,15 +73,10 @@
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
 #define DATA_HUD_PERMIT 11 //SKYRAT EDIT
-
-// Notification action types
-#define NOTIFY_JUMP "jump"
-#define NOTIFY_ATTACK "attack"
-#define NOTIFY_ORBIT "orbit"
+#define DATA_HUD_DNR 12 // SKYRAT EDIT
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
-
 
 // Security HUD icon_state defines
 

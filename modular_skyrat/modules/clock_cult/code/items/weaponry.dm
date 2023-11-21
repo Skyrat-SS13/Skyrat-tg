@@ -291,6 +291,7 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/ammo.dmi'
 	icon_state = "762_brass"
 	ammo_type = /obj/item/ammo_casing/strilka310/lionhunter/clock
+	unique_reskin = NONE
 	max_ammo = 3
 	multiple_sprites = AMMO_BOX_PER_BULLET
 

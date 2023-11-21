@@ -163,7 +163,7 @@
 	name = "Helmets Crate"
 	desc = "Contains three standard-issue brain buckets."
 	cost = CARGO_CRATE_VALUE * 2
-	contains = list(/obj/item/clothing/head/helmet/sec/redsec = 3)
+	contains = list(/obj/item/clothing/head/helmet/sec/sol = 3)
 	crate_name = "helmet crate"
 
 /datum/supply_pack/security/deployablebarricades
@@ -358,6 +358,13 @@
 	for(var/i in 1 to num_contained)
 		var/item = pick_n_take(contain_copy)
 		new item(filled_crate)
+
+/datum/supply_pack/misc/gravity_harness
+	name = "Gravity Suspension Harness"
+	desc = "A back-mounted suspensor harness powered by cells, designed by Deep Spacer tribes to either nullify or amplify gravity. \
+		While it's a pretty cheap bootleg of the personal gravitic engines used by the Skrell, this one's been fitted with straps and a basic storage module."
+	cost = CARGO_CRATE_VALUE * 6 // 1200 credits
+	contains = list(/obj/item/gravity_harness)
 
 /*
 *	FOOD

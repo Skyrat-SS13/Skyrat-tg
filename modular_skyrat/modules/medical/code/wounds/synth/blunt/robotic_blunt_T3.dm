@@ -242,7 +242,8 @@
 	var/has_enough_matter = (treating_rcd.get_matter(user) > ROBOTIC_T3_BLUNT_WOUND_RCD_COST)
 	var/silo_has_enough_materials = (treating_rcd.get_silo_iron() > ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST)
 
-	if (!silo_has_enough_materials && has_enough_matter)
+	if (!silo_has_enough_materials && !has_enough_matter) // neither the silo, nor the rcd, has enough
+		user?.balloon_alert(user, "not enough matter!")
 		return TRUE
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
@@ -291,7 +292,8 @@
 	set_superstructure_status(TRUE)
 
 	var/use_amount = (silo_has_enough_materials ? ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST : ROBOTIC_T3_BLUNT_WOUND_RCD_COST)
-	treating_rcd.useResource(use_amount, user)
+	if (!treating_rcd.useResource(use_amount, user))
+		return TRUE
 
 	if (user)
 		var/misused_text = (misused ? ", though it replaced a bit more than it should've..." : "!")
@@ -383,3 +385,14 @@
 /datum/wound/blunt/robotic/secures_internals/critical/proc/set_superstructure_status(remedied)
 	superstructure_remedied = remedied
 	ready_to_secure_internals = remedied
+
+/datum/wound/blunt/robotic/secures_internals/critical/get_wound_step_info()
+	. = ..()
+
+	if (!superstructure_remedied)
+		. = "The superstructure must be reformed."
+		if (!limb_malleable())
+			. += " The limb must be heated to thermal overload, then manually molded with a firm grasp"
+		else
+			. += " The limb has been sufficiently heated, and can be manually molded with a firm grasp/repeated application of a low-force object"
+		. += " - OR an RCD may be used with little risk."

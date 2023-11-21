@@ -19,16 +19,18 @@
 	/// affects mood, typically higher for mixed drinks with more complex recipes'
 	var/quality = 0
 
+/datum/reagent/consumable/New()
+	. = ..()
+	// All food reagents function at a fixed rate
+	chemical_flags |= REAGENT_UNAFFECTED_BY_METABOLISM
+
 /datum/reagent/consumable/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	current_cycle++
-	if(ishuman(affected_mob))
-		var/mob/living/carbon/human/affected_human = affected_mob
-		if(!HAS_TRAIT(affected_human, TRAIT_NOHUNGER))
-			affected_human.adjust_nutrition(get_nutriment_factor() * REM * seconds_per_tick)
-	if(length(reagent_removal_skip_list))
+	. = ..()
+	if(!ishuman(affected_mob) || HAS_TRAIT(affected_mob, TRAIT_NOHUNGER))
 		return
-	if(holder)
-		holder.remove_reagent(type, metabolization_rate * seconds_per_tick)
+
+	var/mob/living/carbon/human/affected_human = affected_mob
+	affected_human.adjust_nutrition(get_nutriment_factor(affected_mob) * REM * seconds_per_tick)
 
 /datum/reagent/consumable/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
@@ -57,8 +59,9 @@
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/race_drink)
 		// SKYRAT ADDITION END
 
-/datum/reagent/consumable/proc/get_nutriment_factor()
-	return nutriment_factor * REAGENTS_METABOLISM * (purity * 2)
+/// Gets just how much nutrition this reagent is worth for the passed mob
+/datum/reagent/consumable/proc/get_nutriment_factor(mob/living/carbon/eater)
+	return nutriment_factor * REAGENTS_METABOLISM * purity * 2
 
 /datum/reagent/consumable/nutriment
 	name = "Nutriment"
@@ -66,7 +69,7 @@
 	reagent_state = SOLID
 	nutriment_factor = 15
 	color = "#664330" // rgb: 102, 67, 48
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_DEAD_PROCESS
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 	var/brute_heal = 1
 	var/burn_heal = 0
@@ -223,6 +226,13 @@
 	nutriment_factor = 10
 	default_container = /obj/item/reagent_containers/condiment/olive_oil
 
+/datum/reagent/consumable/nutriment/fat/oil/corn
+	name = "Corn Oil"
+	description = "An oil derived from various types of corn."
+	color = "#302000" // rgb: 48, 32, 0
+	taste_description = "slime"
+	nutriment_factor = 5 //it's a very cheap oil
+
 /datum/reagent/consumable/nutriment/organ_tissue
 	name = "Organ Tissue"
 	description = "Natural tissues that make up the bulk of organs, providing many vitamins and minerals."
@@ -261,15 +271,12 @@
 	brute_heal = 0
 	burn_heal = 0
 
-/datum/reagent/consumable/nutriment/mineral/on_mob_life(mob/living/carbon/eater, seconds_per_tick, times_fired)
-	if(HAS_TRAIT(eater, TRAIT_ROCK_EATER)) // allow mobs who can eat rocks to do so
+/datum/reagent/consumable/nutriment/mineral/get_nutriment_factor(mob/living/carbon/eater)
+	if(HAS_TRAIT(eater, TRAIT_ROCK_EATER))
 		return ..()
-	else // otherwise just let them pass through the system
-		current_cycle++
-		if(length(reagent_removal_skip_list))
-			return
-		if(holder)
-			holder.remove_reagent(type, metabolization_rate * seconds_per_tick)
+
+	// You cannot eat rocks, it gives no nutrition
+	return 0
 
 /datum/reagent/consumable/sugar
 	name = "Sugar"
@@ -338,6 +345,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/consumable/capsaicin/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	var/heating = 0
 	switch(current_cycle)
 		if(1 to 15)
@@ -359,7 +367,6 @@
 			if(isslime(affected_mob))
 				heating = rand(20, 25)
 	affected_mob.adjust_bodytemperature(heating * TEMPERATURE_DAMAGE_COEFFICIENT * REM * seconds_per_tick)
-	return ..()
 
 /datum/reagent/consumable/frostoil
 	name = "Frost Oil"
@@ -373,6 +380,7 @@
 	default_container = /obj/item/reagent_containers/cup/bottle/frostoil
 
 /datum/reagent/consumable/frostoil/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	var/cooling = 0
 	switch(current_cycle)
 		if(1 to 15)
@@ -398,7 +406,6 @@
 			if(isslime(affected_mob))
 				cooling = -rand(20, 25)
 	affected_mob.adjust_bodytemperature(cooling * TEMPERATURE_DAMAGE_COEFFICIENT * REM * seconds_per_tick, 50)
-	return ..()
 
 /datum/reagent/consumable/frostoil/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
@@ -457,10 +464,10 @@
 	return ..()
 
 /datum/reagent/consumable/condensedcapsaicin/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	if(!holder.has_reagent(/datum/reagent/consumable/milk))
 		if(SPT_PROB(5, seconds_per_tick))
 			affected_mob.visible_message(span_warning("[affected_mob] [pick("dry heaves!","coughs!","splutters!")]"))
-	return ..()
 
 /datum/reagent/consumable/salt
 	name = "Table Salt"
@@ -480,6 +487,8 @@
 
 /datum/reagent/consumable/salt/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	. = ..()
+	if(!iscarbon(exposed_mob))
+		return
 	var/mob/living/carbon/carbies = exposed_mob
 	if(!(methods & (PATCH|TOUCH|VAPOR)))
 		return
@@ -654,6 +663,8 @@
 
 /datum/reagent/consumable/flour/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	. = ..()
+	if(!iscarbon(exposed_mob))
+		return
 	var/mob/living/carbon/carbies = exposed_mob
 	if(!(methods & (PATCH|TOUCH|VAPOR)))
 		return
@@ -758,6 +769,8 @@
 // Starch has similar absorbing properties to flour (Stronger here because it's rarer)
 /datum/reagent/consumable/corn_starch/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	. = ..()
+	if(!iscarbon(exposed_mob))
+		return
 	var/mob/living/carbon/carbies = exposed_mob
 	if(!(methods & (PATCH|TOUCH|VAPOR)))
 		return
@@ -794,8 +807,8 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/consumable/corn_syrup/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	holder.add_reagent(/datum/reagent/consumable/sugar, 3 * REM * seconds_per_tick)
-	return ..()
 
 /datum/reagent/consumable/honey
 	name = "Honey"
@@ -817,8 +830,8 @@
 	mytray.adjust_pestlevel(rand(1, 2))
 
 /datum/reagent/consumable/honey/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	holder.add_reagent(/datum/reagent/consumable/sugar, 3 * REM * seconds_per_tick)
 	. = ..()
+	holder.add_reagent(/datum/reagent/consumable/sugar, 3 * REM * seconds_per_tick)
 	var/need_mob_update
 	if(SPT_PROB(33, seconds_per_tick))
 		need_mob_update = affected_mob.adjustBruteLoss(-1, updating_health = FALSE, required_bodytype = affected_bodytype)
@@ -870,7 +883,7 @@
 /datum/reagent/consumable/nutriment/stabilized/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	if(affected_mob.nutrition > NUTRITION_LEVEL_FULL - 25)
-		affected_mob.adjust_nutrition(-3 * REM * get_nutriment_factor() * seconds_per_tick)
+		affected_mob.adjust_nutrition(-3 * REM * get_nutriment_factor(affected_mob) * seconds_per_tick)
 
 ////Lavaland Flora Reagents////
 

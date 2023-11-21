@@ -153,7 +153,7 @@
 	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
 	holds_charge = TRUE
 	unique_frequency = TRUE
-	max_mod_capacity = 80
+	max_mod_capacity = 100 // SKYRAT EDIT CHANGE FROM 80 - Balance due to fauna changes and no level perks applying
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/minebot
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
@@ -165,7 +165,7 @@
 /obj/item/ammo_casing/energy/kinetic
 	projectile_type = /obj/projectile/kinetic
 	select_name = "kinetic"
-	e_cost = 500
+	e_cost = LASER_SHOTS(1, STANDARD_CELL_CHARGE * 0.5)
 	fire_sound = 'sound/weapons/kenetic_accel.ogg' // fine spelling there chap
 
 /obj/item/ammo_casing/energy/kinetic/ready_proj(atom/target, mob/living/user, quiet, zone_override = "")
@@ -209,7 +209,7 @@
 	strike_thing()
 	..()
 
-/obj/projectile/kinetic/on_hit(atom/target)
+/obj/projectile/kinetic/on_hit(atom/target, blocked = 0, pierce_hit)
 	strike_thing(target)
 	. = ..()
 
@@ -363,7 +363,7 @@
 	name = "minebot cooldown decrease"
 	desc = "Decreases the cooldown of a kinetic accelerator. Only rated for minebot use."
 	icon_state = "door_electronics"
-	icon = 'icons/obj/assemblies/module.dmi'
+	icon = 'icons/obj/assemblies/circuitry_n_data.dmi'
 	denied_type = /obj/item/borg/upgrade/modkit/cooldown/minebot
 	modifier = 10
 	cost = 0
@@ -616,4 +616,3 @@
 
 	var/new_color = input(user,"","Choose Color",bolt_color) as color|null
 	bolt_color = new_color || bolt_color
-

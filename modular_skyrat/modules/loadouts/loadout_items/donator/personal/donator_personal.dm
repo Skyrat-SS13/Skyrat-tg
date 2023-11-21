@@ -178,9 +178,9 @@
 	item_path = /obj/item/clothing/under/wetsuit_norm
 	ckeywhitelist = list("ChillyLobster")
 
-/datum/loadout_item/mask/kindle_mask
-	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/animal/kindle
+/datum/loadout_item/mask/wolf_mask
+	name = "Wolf mask"
+	item_path = /obj/item/clothing/mask/animal/wolf
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
@@ -667,7 +667,7 @@
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
-	ckeywhitelist = list("masvedish", "lutowski", "lawful", "anyacers", "apolloafk", "avianaviator", "notdhu")
+	// Asked it to be public, and as such has no whitelist.
 
 /datum/loadout_item/suit/lt3_armor
 	name = "Silver Jacket Mk II"
@@ -719,3 +719,23 @@
 	name = "Noble Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/noble
 	ckeywhitelist = list("grasshand")
+
+/datum/loadout_item/suit/nobility_dresscoat
+	name = "Nobility Dresscoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical/vic_dresscoat_donator
+	ckeywhitelist = list("nikotheguydude")
+
+/datum/loadout_item/suit/anubite_headpiece
+	name = "Anubite Headpiece"
+	item_path = /obj/item/clothing/head/anubite
+	ckeywhitelist = list("vexcint")
+
+/datum/loadout_item/under/formal/dragon_maid
+	name = "Dragon Maid Uniform"
+	item_path = /obj/item/clothing/under/costume/dragon_maid
+	ckeywhitelist = list("sigmaralkahest")
+
+/datum/loadout_item/head/catear_headphone
+	name = "Cat-Ear Headphones"
+	item_path = /obj/item/instrument/piano_synth/headphones/catear_headphone
+	ckeywhitelist = list("dtfe")

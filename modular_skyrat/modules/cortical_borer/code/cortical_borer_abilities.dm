@@ -1,7 +1,7 @@
 #define CHEMICALS_PER_UNIT 2
 #define CHEMICAL_SECOND_DIVISOR (5 SECONDS)
 #define OUT_OF_HOST_EGG_COST 50
-#define BLOOD_CHEM_OBJECTIVE 5
+#define BLOOD_CHEM_OBJECTIVE 3
 
 // Parent of all borer actions
 /datum/action/cooldown/borer
@@ -50,7 +50,7 @@
 	name = "Open Chemical Injector"
 	button_icon_state = "chemical"
 
-/datum/action/cooldown/borer/inject_chemical/Trigger(trigger_flags)
+/datum/action/cooldown/borer/inject_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -141,7 +141,7 @@
 	name = "Open Evolution Tree"
 	button_icon_state = "newability"
 
-/datum/action/cooldown/borer/evolution_tree/Trigger(trigger_flags)
+/datum/action/cooldown/borer/evolution_tree/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -230,7 +230,7 @@
 	name = "Learn Focus"
 	button_icon_state = "getfocus"
 
-/datum/action/cooldown/borer/learn_focus/Trigger(trigger_flags)
+/datum/action/cooldown/borer/learn_focus/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -268,7 +268,7 @@
 	button_icon_state = "bloodchem"
 	chemical_evo_points = 5
 
-/datum/action/cooldown/borer/learn_bloodchemical/Trigger(trigger_flags)
+/datum/action/cooldown/borer/learn_bloodchemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -314,7 +314,7 @@
 	button_icon_state = "bloodlevel"
 	chemical_evo_points = 1
 
-/datum/action/cooldown/borer/upgrade_chemical/Trigger(trigger_flags)
+/datum/action/cooldown/borer/upgrade_chemical/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -349,7 +349,7 @@
 	button_icon_state = "level"
 	stat_evo_points = 1
 
-/datum/action/cooldown/borer/upgrade_stat/Trigger(trigger_flags)
+/datum/action/cooldown/borer/upgrade_stat/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -379,7 +379,7 @@
 	name = "Toggle Hiding"
 	button_icon_state = "hide"
 
-/datum/action/cooldown/borer/toggle_hiding/Trigger(trigger_flags)
+/datum/action/cooldown/borer/toggle_hiding/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -401,7 +401,7 @@
 	cooldown_time = 12 SECONDS
 	button_icon_state = "fear"
 
-/datum/action/cooldown/borer/fear_human/Trigger(trigger_flags)
+/datum/action/cooldown/borer/fear_human/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -464,7 +464,7 @@
 	cooldown_time = 5 SECONDS
 	button_icon_state = "blood"
 
-/datum/action/cooldown/borer/check_blood/Trigger(trigger_flags)
+/datum/action/cooldown/borer/check_blood/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -485,7 +485,7 @@
 	cooldown_time = 10 SECONDS
 	button_icon_state = "host"
 
-/datum/action/cooldown/borer/choosing_host/Trigger(trigger_flags)
+/datum/action/cooldown/borer/choosing_host/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -593,7 +593,7 @@
 	cooldown_time = 30 SECONDS
 	button_icon_state = "speak"
 
-/datum/action/cooldown/borer/force_speak/Trigger(trigger_flags)
+/datum/action/cooldown/borer/force_speak/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -628,7 +628,7 @@
 	button_icon_state = "reproduce"
 	chemical_cost = 100
 
-/datum/action/cooldown/borer/produce_offspring/Trigger(trigger_flags)
+/datum/action/cooldown/borer/produce_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -692,7 +692,7 @@
 	button_icon_state = "revive"
 	chemical_cost = 200
 
-/datum/action/cooldown/borer/revive_host/Trigger(trigger_flags)
+/datum/action/cooldown/borer/revive_host/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -732,7 +732,7 @@
 	button_icon_state = "willing"
 	chemical_cost = 150
 
-/datum/action/cooldown/borer/willing_host/Trigger(trigger_flags)
+/datum/action/cooldown/borer/willing_host/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -765,7 +765,7 @@
 	button_icon_state = "hiding"
 	chemical_cost = 100
 
-/datum/action/cooldown/borer/stealth_mode/Trigger(trigger_flags)
+/datum/action/cooldown/borer/stealth_mode/Trigger(trigger_flags, atom/target)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	var/in_stealth = (cortical_owner.upgrade_flags & BORER_STEALTH_MODE)
 	if(in_stealth)
@@ -794,7 +794,7 @@
 	button_icon_state = "reproduce"
 	chemical_cost = 150
 
-/datum/action/cooldown/borer/empowered_offspring/Trigger(trigger_flags)
+/datum/action/cooldown/borer/empowered_offspring/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!.)
 		return FALSE

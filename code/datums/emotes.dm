@@ -14,6 +14,8 @@
 	var/key = ""
 	/// This will also call the emote.
 	var/key_third_person = ""
+	/// Needed for more user-friendly emote names, so emotes with keys like "aflap" will show as "flap angry". Defaulted to key.
+	var/name = ""
 	/// Message displayed when emote is used.
 	var/message = ""
 	/// Message displayed if the user is a mime.
@@ -77,6 +79,9 @@
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
 	mob_type_ignore_stat_typecache = typecacheof(mob_type_ignore_stat_typecache)
 
+	if(!name)
+		name = key
+
 /**
  * Handles the modifications and execution of emotes.
  *
@@ -110,7 +115,7 @@
 	// SKYRAT EDIT END
 
 	var/tmp_sound = get_sound(user)
-	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
@@ -125,9 +130,9 @@
 			if(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
-		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
+		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b>[space][msg]</span>", audible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+		user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE, separation = space) // SKYRAT EDIT - Better emotes - ORIGINAL: user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(viewer.is_blind() && !viewer.can_hear())

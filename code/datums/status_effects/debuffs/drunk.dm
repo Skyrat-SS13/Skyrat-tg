@@ -65,7 +65,7 @@
 
 /datum/status_effect/inebriated/tick(seconds_between_ticks)
 	// Drunk value does not decrease while dead or in stasis
-	if(owner.stat == DEAD || IS_IN_STASIS(owner))
+	if(owner.stat == DEAD || HAS_TRAIT(owner, TRAIT_STASIS))
 		return
 
 	// Every tick, the drunk value decrases by
@@ -223,13 +223,15 @@
 /datum/status_effect/inebriated/drunk/proc/attempt_to_blackout()
 	/* SKYRAT EDIT REMOVAL - Blackout drunk begone
 	var/mob/living/carbon/drunkard = owner
-	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
-		drunk_value -= 50 //So that the drunk personality can spice things up without being killed by liver failure
+	if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout))// prevent ping spamming
+		if(prob(10))
+			to_chat(owner, span_warning("You stumbled and fall over!"))
+			owner.slip(1 SECONDS)
 		return
-	else if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout) && prob(10))
-		to_chat(owner, span_warning("You stumbled and fall over!"))
-		owner.slip(1 SECONDS)
-	*/ // SKYRAT EDIT REMOVAL END (also removed the else on the line after)
+	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
+		drunk_value -= 70 //So that the drunk personality can spice things up without being killed by liver failure
+		return
+	*/ // SKYRAT EDIT REMOVAL END
 	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
 		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
 	else

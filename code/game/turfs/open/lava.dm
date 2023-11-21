@@ -154,17 +154,14 @@
 		STOP_PROCESSING(SSobj, src)
 
 /turf/open/lava/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_FLOORWALL)
-			return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 3)
+	if(the_rcd.mode == RCD_TURF && the_rcd.rcd_design_path == /turf/open/floor/plating/rcd)
+		return list("delay" = 0, "cost" = 3)
 	return FALSE
 
-/turf/open/lava/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_FLOORWALL)
-			to_chat(user, span_notice("You build a floor."))
-			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			return TRUE
+/turf/open/lava/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	if(rcd_data["[RCD_DESIGN_MODE]"] == RCD_TURF && rcd_data["[RCD_DESIGN_PATH]"] == /turf/open/floor/plating/rcd)
+		place_on_top(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+		return TRUE
 	return FALSE
 
 /turf/open/lava/rust_heretic_act()
@@ -249,7 +246,7 @@
 		. = TRUE
 
 /turf/open/lava/proc/can_burn_stuff(atom/movable/burn_target)
-	if(burn_target.movement_type & (FLYING|FLOATING)) //you're flying over it.
+	if(burn_target.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) //you're flying over it.
 		return LAVA_BE_IGNORING
 
 	if(isobj(burn_target))
@@ -268,7 +265,7 @@
 	var/mob/living/burn_living = burn_target
 	var/atom/movable/burn_buckled = burn_living.buckled
 	if(burn_buckled)
-		if(burn_buckled.movement_type & (FLYING|FLOATING))
+		if(burn_buckled.movement_type & MOVETYPES_NOT_TOUCHING_GROUND)
 			return LAVA_BE_PROCESSING
 		if(isobj(burn_buckled))
 			var/obj/burn_buckled_obj = burn_buckled
@@ -317,6 +314,9 @@
 	if(!QDELETED(burn_living)) //mobs turning into object corpses could get deleted here.
 		burn_living.adjust_fire_stacks(lava_firestacks * seconds_per_tick)
 		burn_living.ignite_mob()
+
+/turf/open/lava/can_cross_safely(atom/movable/crossing)
+	return HAS_TRAIT(src, TRAIT_LAVA_STOPPED) || HAS_TRAIT(crossing, immunity_trait ) || HAS_TRAIT(crossing, TRAIT_MOVE_FLYING)
 
 /turf/open/lava/smooth
 	name = "lava"

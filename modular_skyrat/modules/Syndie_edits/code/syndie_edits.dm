@@ -56,7 +56,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
-	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
+	flags_inv = HIDEFACE | HIDEEARS | HIDEFACIALHAIR
 	alternate_worn_layer = LOW_FACEMASK_LAYER //This lets it layer below glasses and headsets; yes, that's below hair, but it already has HIDEHAIR
 
 /obj/item/clothing/mask/gas/sechailer/syndicate
@@ -67,6 +67,9 @@
 	icon_state = "half_mask"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	unique_death = 'modular_skyrat/master_files/sound/effects/hacked.ogg'
+	voice_filter = null
+	use_radio_beeps_tts = FALSE
 
 /obj/item/clothing/shoes/combat //TO-DO: Move these overrides out of a syndicate file!
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
