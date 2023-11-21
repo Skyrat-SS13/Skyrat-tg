@@ -16,7 +16,6 @@
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
 	payday_modifier = 1.0
-	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	eyes_icon = 'modular_skyrat/modules/organs/icons/skrell_eyes.dmi'
 	mutantbrain = /obj/item/organ/internal/brain/skrell
@@ -32,6 +31,11 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/skrell,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/skrell,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/skrell,
+	)
+
+/datum/species/skrell/get_default_mutant_bodyparts()
+	return list(
+		"skrell_hair" = list(MUTANT_INDEX_NAME = "Male", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
 	)
 
 /datum/species/skrell/get_species_description()

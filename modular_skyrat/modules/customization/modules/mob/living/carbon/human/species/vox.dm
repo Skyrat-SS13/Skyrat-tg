@@ -16,12 +16,6 @@
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "Vox Tail",
-		"legs" = DIGITIGRADE_LEGS,
-		"snout" = "Vox Snout",
-		"spines" = ACC_RANDOM
-	)
 	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
@@ -49,6 +43,14 @@
 		LOADOUT_ITEM_BELT = VOX_BELT_ICON,
 		LOADOUT_ITEM_MISC = VOX_BACK_ICON,
 		LOADOUT_ITEM_EARS = VOX_EARS_ICON
+	)
+
+/datum/species/vox/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Vox Tail", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"snout" = list(MUTANT_INDEX_NAME = "Vox Snout", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"spines" = list(MUTANT_INDEX_NAME = "Vox Bands", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
 	)
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)

@@ -11,12 +11,6 @@
 	mutanttongue = /obj/item/organ/internal/tongue/cat/tajaran
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
 	payday_modifier = 1.0
 	species_language_holder = /datum/language_holder/tajaran
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -30,6 +24,13 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
+/datum/species/tajaran/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Cat (Big)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"snout" = list(MUTANT_INDEX_NAME = "Cat, normal", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"ears" = list(MUTANT_INDEX_NAME = "Cat, normal", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
 
 /obj/item/organ/internal/tongue/cat/tajaran
 	liked_foodtypes = GRAIN | MEAT

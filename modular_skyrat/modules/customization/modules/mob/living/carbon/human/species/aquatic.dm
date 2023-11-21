@@ -11,14 +11,6 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/aquatic
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"horns" = "None",
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs",
-		"wings" = "None"
-	)
 	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_AKULA
@@ -29,6 +21,16 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/aquatic,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/aquatic,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/aquatic,
+	)
+
+/datum/species/aquatic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"snout" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"ears" = list(MUTANT_INDEX_NAME = "Hammerhead", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
 	)
 
 /obj/item/organ/internal/tongue/aquatic
