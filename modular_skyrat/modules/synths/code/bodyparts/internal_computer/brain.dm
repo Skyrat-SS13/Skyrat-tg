@@ -14,8 +14,8 @@
 		internal_computer.physical = src
 
 /datum/action/item_action/synth/open_internal_computer
-	name = "Open virtual machine"
-	desc = "Open the built in NTOS emulation"
+	name = "Open persocom emulation"
+	desc = "Accesses your built-in virtual machine."
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/item_action/synth/open_internal_computer/Trigger(trigger_flags)
