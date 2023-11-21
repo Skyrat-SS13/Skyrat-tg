@@ -13,7 +13,7 @@
 		damageoverlaytemp = 0
 		update_damage_hud()
 
-	if(IS_IN_STASIS(src))
+	if(HAS_TRAIT(src, TRAIT_STASIS))
 		. = ..()
 		reagents.handle_stasis_chems(src, seconds_per_tick, times_fired)
 	else
@@ -803,12 +803,19 @@
  */
 /mob/living/carbon/proc/undergoing_cardiac_arrest()
 	var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
-	if(istype(heart) && heart.beating)
+	if(istype(heart) && heart.is_beating())
 		return FALSE
 	else if(!needs_heart())
 		return FALSE
 	return TRUE
 
+/**
+ * Causes the mob to either start or stop having a heart attack.
+ *
+ * status - Pass TRUE to start a heart attack, or FALSE to stop one.
+ *
+ * Returns TRUE if heart status was changed (heart attack -> no heart attack, or visa versa)
+ */
 /mob/living/carbon/proc/set_heartattack(status)
 	if(!can_heartattack())
 		return FALSE
@@ -817,5 +824,7 @@
 	if(!istype(heart))
 		return FALSE
 
-	heart.beating = !status
-	return TRUE
+	if(status)
+		return heart.Stop()
+
+	return heart.Restart()
