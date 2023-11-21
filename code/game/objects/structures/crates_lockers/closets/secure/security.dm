@@ -298,7 +298,12 @@
 
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
+<<<<<<< HEAD
 	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+=======
+	icon_state = "tac"
+	icon_door = "armory_shotgun"
+>>>>>>> 64d90c159de (New closets (#79774))
 	req_access = list(ACCESS_ARMORY)
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
@@ -311,7 +316,12 @@
 
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
+<<<<<<< HEAD
 	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+=======
+	icon_state = "tac"
+	icon_door = "armory_energy"
+>>>>>>> 64d90c159de (New closets (#79774))
 	req_access = list(ACCESS_ARMORY)
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
