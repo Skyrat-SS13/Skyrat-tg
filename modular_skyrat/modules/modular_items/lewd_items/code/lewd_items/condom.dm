@@ -82,7 +82,7 @@
 
 		if("dirty")
 			name = "broken condom"
-			condom_state = TRAIT_CONDOM
+			condom_state = TRAIT_CONDOM_BROKEN
 			update_icon_state()
 			update_icon()
 
