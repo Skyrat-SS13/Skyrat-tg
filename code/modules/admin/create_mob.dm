@@ -32,6 +32,6 @@
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()
 	human.dna.species.body_markings = human.dna.body_markings.Copy()
 	// SKYRAT EDIT ADDITION END
-	// Snowflake stuff (ethereals)
-	human.dna.species.spec_updatehealth(human)
+	// Snowflake for Ethereals
+	human.updatehealth()
 	human.updateappearance(mutcolor_update = TRUE)
