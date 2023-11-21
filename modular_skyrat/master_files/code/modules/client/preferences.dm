@@ -123,17 +123,17 @@
 			mutant_bodyparts -= key
 			continue
 		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
-			mutant_bodyparts[key][MUTANT_INDEX_NAME] = GLOB.default_mutant_bodyparts[pref_species.name[key][MUTANT_INDEX_NAME]]
+			mutant_bodyparts[key][MUTANT_INDEX_NAME] = GLOB.default_mutant_bodyparts[pref_species.name[key][MUTANTPART_NAME]]
 		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
 	// Add any missing accessories
 	for(var/key in target_bodyparts)
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA
-			if(target_bodyparts[key][PART_CAN_BE_RANDOM])
+			if(target_bodyparts[key][MUTANTPART_CAN_RANDOMIZE])
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key][PART_NAME]]
+				SA = GLOB.sprite_accessories[key][target_bodyparts[key][MUTANTPART_NAME]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
