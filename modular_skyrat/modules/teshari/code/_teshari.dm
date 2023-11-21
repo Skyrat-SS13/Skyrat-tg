@@ -14,11 +14,6 @@
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_HAS_MARKINGS,
 	)
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
 	digitigrade_customization = DIGITIGRADE_NEVER
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 1.0
@@ -51,6 +46,13 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/teshari,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/teshari,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/teshari,
+	)
+
+/datum/species/teshari/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"ears" = list(MUTANT_INDEX_NAME = "Teshari Regular", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
 	)
 
 
