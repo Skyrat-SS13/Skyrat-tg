@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		for(var/genital in GLOB.possible_genitals)
 			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
-		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key][MUTANT_INDEX_NAME])
+		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
 			continue
 		var/datum/sprite_accessory/SP
 		if(default_bodypart_data[key][MUTANT_INDEX_CAN_RANDOMIZE])
