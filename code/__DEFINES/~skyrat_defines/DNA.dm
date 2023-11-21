@@ -30,6 +30,7 @@
 
 // Defines for mutant bodyparts indexes
 #define MUTANT_INDEX_NAME			"name"
+#define MUTANT_INDEX_CAN_RANDOMIZE   "can_randomize"
 #define MUTANT_INDEX_COLOR_LIST		"color"
 #define MUTANT_INDEX_EMISSIVE_LIST	"emissive"
 
