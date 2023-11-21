@@ -210,7 +210,7 @@
 		if (base_degradation_reduction_per_second_while_alive < 0) // if you wanna die slowly while alive, go ahead bud
 			increase -= base_degradation_reduction_per_second_while_alive
 
-	if (HAS_TRAIT(owner, "in_stasis"))
+	if (HAS_TRAIT(owner, TRAIT_STASIS))
 		increase *= stasis_passive_degradation_multiplier
 
 	return increase
