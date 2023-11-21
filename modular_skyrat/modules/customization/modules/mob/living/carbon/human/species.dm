@@ -103,13 +103,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		for(var/genital in GLOB.possible_genitals)
 			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
-		//if(LAZYLEN(existing_mutant_bodyparts) && mutantpart_list[key][MUTANT_INDEX_NAME])
-		//	continue
+		if(LAZYLEN(existing_mutant_bodyparts) && mutantpart_list[key][MUTANT_INDEX_NAME])
+			continue
 		var/datum/sprite_accessory/SP
 		if(default_bodypart_data[key][MUTANT_INDEX_CAN_RANDOMIZE])
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][default_bodypart_data[key][MUTANT_INDEX_NAME]]
+			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
 			if(!SP)
 				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)
