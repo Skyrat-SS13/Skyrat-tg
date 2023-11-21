@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human/felinid
 	mutant_bodyparts = list()
 
-/datum/species/felinid/get_default_mutant_bodyparts()
+/datum/species/human/felinid/get_default_mutant_bodyparts()
 	return list(
 		"tail" = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
 		"ears" = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
