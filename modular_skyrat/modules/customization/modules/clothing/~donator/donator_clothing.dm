@@ -1739,3 +1739,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon_state = "anubite_headpiece"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_y_offset = 4
+
+// Donation Reward for zcrow
+/obj/item/clothing/under/pants/custom_trackpants
+	name = "Tarin's custom sweatpants"
+	desc = "A tailored pair of sweatpants (??). Featuring an eye-catching colored stripe and a little more comfort."
+	icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon_state = "zcrow_sweatpants"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
