@@ -217,6 +217,6 @@
 	return perk_descriptions
 
 /datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
-	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list("Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
+	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
 	regenerate_organs(beepboop, src, visual_only = TRUE)
 	beepboop.update_body(TRUE)
