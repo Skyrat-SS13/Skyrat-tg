@@ -1221,7 +1221,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				target.force_say()
 			log_combat(user, target, grappled ? "grapple punched" : "kicked")
 			target.apply_damage(damage, attack_type, affecting, armor_block - limb_accuracy, attack_direction = attack_direction)
-			target.apply_damage(damage * 1.5, STAMINA, affecting, armor_block - limb_accuracy)
+			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block - limb_accuracy)
 		else // Normal attacks do not gain the benefit of armor penetration.
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction, sharpness = unarmed_sharpness) //SKYRAT EDIT - Applies sharpness if it does - ORIGINAL: target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
 			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
