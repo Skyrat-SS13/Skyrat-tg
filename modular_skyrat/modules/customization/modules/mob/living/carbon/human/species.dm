@@ -52,7 +52,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human
 	mutant_bodyparts = list()
 
-
 /datum/species/human/get_default_mutant_bodyparts()
 	return list(
 		"ears" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
