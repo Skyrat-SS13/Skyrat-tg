@@ -1,10 +1,5 @@
 /datum/species/moth
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"fluff" = "None",
-		"wings" = ACC_RANDOM,
-		"moth_antennae" = ACC_RANDOM,
-	)
 	inherent_traits = list(
 		TRAIT_HAS_MARKINGS,
 		TRAIT_TACKLING_WINGED_ATTACKER,
@@ -12,8 +7,17 @@
 		TRAIT_MUTANT_COLORS,
 	)
 
-/datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["mcolor"] = "#E5CD99"
+/datum/species/moth/get_default_mutant_bodyparts()
+	return list(
+		"fluff" = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"moth_antennae" = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+	)
+
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["mcolor"] = "#E5CD99"
+	return features
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

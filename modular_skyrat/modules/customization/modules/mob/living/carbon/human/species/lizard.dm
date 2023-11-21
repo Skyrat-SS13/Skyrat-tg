@@ -1,20 +1,23 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
 	external_organs = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"spines" = ACC_RANDOM,
-		"frills" = ACC_RANDOM,
-		"horns" = ACC_RANDOM,
-		"body_markings" = ACC_RANDOM,
-		"legs" = DIGITIGRADE_LEGS,
-		"taur" = "None",
-		"wings" = "None",
-	)
 	payday_modifier = 1.0
 
-/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/lizard/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Smooth", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"snout" = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"spines" = list(MUTANT_INDEX_NAME = "Long + Membrane", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"frills" = list(MUTANT_INDEX_NAME = "Short", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"horns" = list(MUTANT_INDEX_NAME = "Curled", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"body_markings" = list(MUTANT_INDEX_NAME = "Light Belly", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
+
+/datum/species/lizard/randomize_features()
+	var/list/features = ..()
 	var/main_color = "#[random_color()]"
 	var/second_color
 	var/third_color
@@ -29,9 +32,10 @@
 		if(3) //Third case, more randomisation
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = third_color
+	return features
 
 /datum/species/lizard/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#009999")
 	lizard.dna.features["mcolor"] = lizard_color
