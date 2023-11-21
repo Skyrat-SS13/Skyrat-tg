@@ -12,8 +12,17 @@
 		TRAIT_MUTANT_COLORS,
 	)
 
-/datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["mcolor"] = "#E5CD99"
+/datum/species/moth/get_default_mutant_bodyparts()
+	return list(
+		"fluff" = list("Plain", FALSE),
+		"wings" = list("Moth (Plain)", TRUE),
+		"moth_antennae" = list("Plain", TRUE),
+	)
+
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["mcolor"] = "#E5CD99"
+	return features
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

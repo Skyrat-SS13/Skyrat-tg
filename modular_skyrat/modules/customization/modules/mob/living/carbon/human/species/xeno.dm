@@ -34,6 +34,15 @@
 	meat = /obj/item/food/meat/slab/xeno
 	skinned_type = /obj/item/stack/sheet/animalhide/xeno
 
+/datum/species/xeno/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Xenomorph Tail", FALSE),
+		"xenodorsal" = list("Standard", TRUE),
+		"xenohead" = list("Standard", TRUE),
+		"legs" = list(DIGITIGRADE_LEGS,FALSE),
+		"taur" = list("None", FALSE),
+	)
+
 /datum/species/xeno/get_species_description()
 	return placeholder_description
 

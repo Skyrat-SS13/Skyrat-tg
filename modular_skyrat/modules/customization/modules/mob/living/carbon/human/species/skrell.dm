@@ -34,6 +34,11 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/skrell,
 	)
 
+/datum/species/skrell/get_default_mutant_bodyparts()
+	return list(
+		"skrell_hair" = list("Male", TRUE),
+	)
+
 /datum/species/skrell/get_species_description()
 	return placeholder_description
 

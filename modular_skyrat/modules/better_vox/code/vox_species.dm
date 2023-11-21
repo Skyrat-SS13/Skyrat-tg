@@ -50,6 +50,10 @@
 		LOADOUT_ITEM_EARS = VOX_PRIMALIS_EARS_ICON,
 	)
 
+/datum/species/vox_primalis/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Vox Primalis Tail", FALSE),
+	)
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()

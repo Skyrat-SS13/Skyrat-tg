@@ -48,11 +48,22 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/human/felinid
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
+
+/datum/species/human/felinid/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Cat", FALSE),
+		"ears" = list("Cat", FALSE),
+	)
 
 /datum/species/human
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
+
+/datum/species/human/get_default_mutant_bodyparts()
+	return list(
+		"ears" = list("None", FALSE),
+		"tail" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+	)
 
 /datum/species/mush
 	mutant_bodyparts = list()
@@ -85,10 +96,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
-		if(bodyparts_to_add[key] == ACC_RANDOM)
+		if(default_bodypart_data[key][2])
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key]]
+			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][1]]
 			if(!SP)
 				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)

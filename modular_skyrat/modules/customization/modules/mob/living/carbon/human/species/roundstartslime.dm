@@ -15,6 +15,19 @@
 	hair_alpha = 160 //a notch brighter so it blends better.
 	facial_hair_alpha = 160
 
+/datum/species/jelly/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"snout" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"horns" = list("None", FALSE),
+		"spines" = list("None", FALSE),
+		"frills" = list("None", FALSE),
+	)
+
 /datum/species/jelly/get_species_description()
 	return placeholder_description
 

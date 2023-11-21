@@ -14,7 +14,21 @@
 	)
 	payday_modifier = 1.0
 
-/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/lizard/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Smooth", TRUE),
+		"snout" = list("Sharp + Light", TRUE),
+		"spines" = list("Long + Membrane", TRUE),
+		"frills" = list("Short", TRUE),
+		"horns" = list("Curled", TRUE),
+		"body_markings" = list("Light Belly", TRUE),
+		"legs" = list(DIGITIGRADE_LEGS,FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+	)
+
+/datum/species/lizard/randomize_features()
+	var/list/features = ..()
 	var/main_color = "#[random_color()]"
 	var/second_color
 	var/third_color

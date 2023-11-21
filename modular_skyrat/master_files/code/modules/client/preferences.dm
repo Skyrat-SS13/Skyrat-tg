@@ -129,10 +129,10 @@
 	for(var/key in target_bodyparts)
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA
-			if(target_bodyparts[key] == ACC_RANDOM)
+			if(target_bodyparts[key][2])
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][target_bodyparts[key]]
+				SA = GLOB.sprite_accessories[key][target_bodyparts[key][1]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)

@@ -31,6 +31,10 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	veteran_only = TRUE
 
+/datum/species/hemophage/get_default_mutant_bodyparts()
+	return list(
+		"legs" = list("Normal Legs", FALSE),
+	)
 
 /datum/species/hemophage/check_roundstart_eligible()
 	if(check_holidays(HALLOWEEN))

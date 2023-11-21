@@ -31,6 +31,16 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/aquatic,
 	)
 
+/datum/species/aquatic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Shark", TRUE),
+		"snout" = list("Shark", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Hammerhead", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+		"wings" = list("None", FALSE),
+	)
+
 /obj/item/organ/internal/tongue/aquatic
 	liked_foodtypes = SEAFOOD | MEAT | FRUIT | GORE
 	disliked_foodtypes = CLOTH | GROSS

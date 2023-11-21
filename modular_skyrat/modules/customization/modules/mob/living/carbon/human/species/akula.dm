@@ -47,6 +47,12 @@
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 
+/datum/species/akula/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Akula", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
 /datum/species/akula/get_species_description()
 	return placeholder_description
 

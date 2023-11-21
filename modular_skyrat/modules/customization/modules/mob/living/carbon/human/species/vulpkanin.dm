@@ -29,6 +29,13 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
+/datum/species/vulpkanin/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Fox", TRUE),
+		"snout" = list("Mammal, Long", TRUE),
+		"ears" = list("Fox", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
 
 /obj/item/organ/internal/tongue/vulpkanin
 	liked_foodtypes = RAW | MEAT
