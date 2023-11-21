@@ -1,15 +1,4 @@
 /datum/species/jelly
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"ears" = "None",
-		"taur" = "None",
-		"wings" = "None",
-		"legs" = "Normal Legs",
-		"horns" = "None",
-		"spines" = "None",
-		"frills" = "None",
-	)
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.

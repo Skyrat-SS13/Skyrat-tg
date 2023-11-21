@@ -16,12 +16,6 @@
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "Vox Tail",
-		"legs" = DIGITIGRADE_LEGS,
-		"snout" = "Vox Snout",
-		"spines" = ACC_RANDOM
-	)
 	payday_modifier = 1.0
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
@@ -77,10 +71,12 @@
 
 	return randname
 
-/datum/species/vox/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
-	human_mob.dna.features["mcolor2"] = pick("#EEDD88", "#EECC88")
-	human_mob.dna.features["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
+/datum/species/vox/randomize_features()
+	var/list/features = ..()
+	features["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
+	features["mcolor2"] = pick("#EEDD88", "#EECC88")
+	features["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
+	return features
 
 /datum/species/vox/get_random_body_markings(list/passed_features)
 	var/name = pick(list("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger"))

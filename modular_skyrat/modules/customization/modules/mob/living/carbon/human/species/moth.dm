@@ -1,10 +1,5 @@
 /datum/species/moth
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"fluff" = "None",
-		"wings" = ACC_RANDOM,
-		"moth_antennae" = ACC_RANDOM,
-	)
 	inherent_traits = list(
 		TRAIT_HAS_MARKINGS,
 		TRAIT_TACKLING_WINGED_ATTACKER,

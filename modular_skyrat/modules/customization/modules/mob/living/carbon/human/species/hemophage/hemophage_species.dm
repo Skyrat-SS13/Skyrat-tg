@@ -17,9 +17,6 @@
 		TRAIT_USES_SKINTONES,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
-	default_mutant_bodyparts = list(
-		"legs" = "Normal Legs"
-	)
 	exotic_bloodtype = "U"
 	mutantheart = /obj/item/organ/internal/heart/hemophage
 	mutantliver = /obj/item/organ/internal/liver/hemophage
@@ -41,7 +38,6 @@
 		return TRUE
 
 	return ..()
-
 
 /datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species, pref_load)
 	. = ..()

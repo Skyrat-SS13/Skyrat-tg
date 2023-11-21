@@ -10,18 +10,6 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/mammal
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"horns" = "None",
-		"ears" = ACC_RANDOM,
-		"legs" = ACC_RANDOM,
-		"taur" = "None",
-		"fluff" = "None",
-		"wings" = "None",
-		"head_acc" = "None",
-		"neck_acc" = "None"
-	)
 	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
@@ -53,7 +41,8 @@
 	toxic_foodtypes = TOXIC
 
 
-/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/mammal/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/third_color
@@ -87,9 +76,10 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = third_color
+	return features
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"

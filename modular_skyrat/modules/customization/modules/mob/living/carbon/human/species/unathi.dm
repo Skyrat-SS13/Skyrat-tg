@@ -10,15 +10,6 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/unathi
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"spines" = "None",
-		"frills" = "None",
-		"horns" = ACC_RANDOM,
-		"body_markings" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
 	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_LIZARD
@@ -50,7 +41,8 @@
 	toxic_foodtypes = TOXIC
 
 
-/datum/species/unathi/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/unathi/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -71,9 +63,10 @@
 		if(5)
 			main_color = "#33BB11"
 			second_color = "#339911"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/unathi/get_species_description()
 	return placeholder_description

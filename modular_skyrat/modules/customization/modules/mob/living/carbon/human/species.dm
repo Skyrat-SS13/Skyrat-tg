@@ -27,21 +27,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
-	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
-	var/list/default_mutant_bodyparts = list()
-	/// A static list of all genital slot possibilities.
-	var/static/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 	/// Are we lore protected? This prevents people from changing the species lore or species name.
 	var/lore_protected = FALSE
 
+/// Returns a list of the default mutant bodyparts, and whether or not they can be randomized or not
+/datum/species/proc/get_default_mutant_bodyparts()
+	return list()
+
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/owner, forced_colour, force_update = FALSE)
 	return
-
-/datum/species/New()
-	. = ..()
-	if(can_have_genitals)
-		for(var/genital in genitals_list)
-			default_mutant_bodyparts[genital] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()
@@ -86,15 +80,30 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	always_customizable = TRUE
 
 /datum/species/randomize_features(mob/living/carbon/human/human_mob)
-	return
+	var/list/features = ..()
+	return features
 
-/datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
+/**
+ * Returns a list of mutant_bodyparts
+ *
+ * Gets the default species mutant_bodyparts list for the given species datum and sets up its sprite accessories.
+ *
+ * Arguments:
+ * * features - Features are needed for the part color
+ * * existing_mutant_bodyparts - When passed a list of existing mutant bodyparts, the existing ones will not get overwritten
+ */
+/datum/species/proc/get_mutant_bodyparts(list/features, list/existing_mutant_bodyparts) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
-	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
+	if(LAZYLEN(existing_mutant_bodyparts))
+		mutantpart_list = existing_mutant_bodyparts.Copy()
+	var/list/default_bodypart_data = GLOB.default_mutant_bodyparts[name]
+	var/list/bodyparts_to_add = default_bodypart_data.Copy()
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		for(var/genital in genitals_list)
+		for(var/genital in GLOB.possible_genitals)
 			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
+		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
+			continue
 		var/datum/sprite_accessory/SP
 		if(default_bodypart_data[key][2])
 			SP = random_accessory_of_key_for_species(key, src)
