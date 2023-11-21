@@ -14,7 +14,7 @@
 	size = 0
 	undeletable = TRUE // It comes by default in tablets, can't be downloaded, takes no space and should obviously not be able to be deleted.
 	header_program = TRUE
-	available_on_ntnet = FALSE
+	available_on_ntnet = TRUE //SKYRAT EDIT - Actually, it can.
 	usage_flags = PROGRAM_TABLET
 	ui_header = "ntnrc_idle.gif"
 	tgui_id = "NtosMessenger"
