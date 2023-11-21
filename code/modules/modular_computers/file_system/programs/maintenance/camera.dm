@@ -8,6 +8,8 @@
 	usage_flags = PROGRAM_TABLET
 	tgui_id = "NtosCamera"
 	program_icon = "camera"
+	available_on_ntnet = TRUE //SKYRAT EDIT BEGIN
+	unique_copy = FALSE //SKYRAT EDIT END - Crew Availability
 
 	/// Camera built-into the tablet.
 	var/obj/item/camera/internal_camera
