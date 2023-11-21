@@ -105,10 +105,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
 			continue
 		var/datum/sprite_accessory/SP
-		if(default_bodypart_data[key][2])
+		if(default_bodypart_data[key][PART_CAN_BE_RANDOM])
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][1]]
+			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][PART_NAME]]
 			if(!SP)
 				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)
