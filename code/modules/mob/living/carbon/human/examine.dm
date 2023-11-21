@@ -464,7 +464,12 @@
 			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1;examine_time=[world.time]'>\[View general records\]</a>"
 		//SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
+<<<<<<< HEAD
 		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
+=======
+		. += span_info("<b>Quirks:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
+	. += "</span>"
+>>>>>>> 9cc133745a1 (Examining a human mob as an observer displays "Quirks", not "Traits" (#79853))
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
