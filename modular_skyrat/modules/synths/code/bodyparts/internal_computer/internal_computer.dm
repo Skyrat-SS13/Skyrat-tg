@@ -36,7 +36,7 @@
 	var/turf/current_turf = get_turf(physical)
 	if(is_station_level(current_turf.z))
 		return NTNET_GOOD_SIGNAL
-	else if(long_ranged)
+	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
 		return NTNET_LOW_SIGNAL
 	return NTNET_NO_SIGNAL
 
