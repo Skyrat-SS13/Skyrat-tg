@@ -19,7 +19,7 @@
 	partner.ckey = key
 
 	/// We give a reference to the mind that'll be the support unit
-	var/datum/antagonist/traitor/contractor_support/new_datum = partner.mind.add_antag_datum(/datum/antagonist/traitor/contractor_support)
+	var/datum/antagonist/traitor/contractor_support/new_datum = partner.mind.make_contractor_support() // SKYRAT EDIT - ORIGINAL: partner.mind.add_antag_datum(/datum/antagonist/traitor/contractor_support)
 
 	to_chat(partner, "\n[span_alertwarning("[user.real_name] is your superior. Follow any, and all orders given by them. You're here to support their mission only.")]")
 	to_chat(partner, "[span_alertwarning("Should they perish, or be otherwise unavailable, you're to assist other active agents in this mission area to the best of your ability.")]")
