@@ -1,5 +1,5 @@
 /// Custom computer for synth brains
-/obj/item/modular_computer/synth
+/obj/item/modular_computer/pda/synth
 	name = "virtual persocom"
 
 	base_active_power_usage = 0
@@ -7,14 +7,13 @@
 
 	long_ranged = TRUE //Synths have good antenae
 
-	hardware_flag = PROGRAM_LAPTOP
 	max_idle_programs = 3
 
 	max_capacity = 32
 
 	var/obj/item/organ/internal/brain/synth/owner_brain
 
-/obj/item/modular_computer/synth/RemoveID(mob/user)
+/obj/item/modular_computer/pda/synth/RemoveID(mob/user)
 	if(!computer_id_slot)
 		return ..()
 
@@ -30,7 +29,7 @@
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	balloon_alert(user, "removed ID")
 
-/obj/item/modular_computer/synth/get_ntnet_status()
+/obj/item/modular_computer/pda/synth/get_ntnet_status()
 	// NTNet is down and we are not connected via wired connection. The synth is no more
 	if(!find_functional_ntnet_relay() || !owner_brain.owner)
 		return NTNET_NO_SIGNAL
@@ -41,7 +40,7 @@
 		return NTNET_LOW_SIGNAL
 	return NTNET_NO_SIGNAL
 
-/obj/item/modular_computer/synth/Destroy()
+/obj/item/modular_computer/pda/synth/Destroy()
 	physical = null
 	owner_brain = null
 	return ..()
@@ -52,8 +51,8 @@ Snowflake codes the interaction check because the default tgui one does not work
 */
 /mob/living/carbon/human/can_interact_with(atom/machine, treat_mob_as_adjacent)
 	. = ..()
-	if(istype(machine, /obj/item/modular_computer/synth))
-		var/obj/item/modular_computer/synth/robotbrain = machine
+	if(istype(machine, /obj/item/modular_computer/pda/synth))
+		var/obj/item/modular_computer/pda/synth/robotbrain = machine
 		if(Adjacent(robotbrain.physical))
 			. = TRUE
 	return

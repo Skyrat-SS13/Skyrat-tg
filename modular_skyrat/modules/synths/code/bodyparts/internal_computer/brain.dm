@@ -1,5 +1,5 @@
 /obj/item/organ/internal/brain/synth
-	var/obj/item/modular_computer/synth/internal_computer = new /obj/item/modular_computer/synth
+	var/obj/item/modular_computer/pda/synth/internal_computer = new /obj/item/modular_computer/pda/synth
 	actions_types = list(/datum/action/item_action/synth/open_internal_computer)
 
 /obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special, drop_if_replaced, no_id_transfer)
