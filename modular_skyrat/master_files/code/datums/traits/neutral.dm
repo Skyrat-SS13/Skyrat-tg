@@ -1,5 +1,3 @@
-#define TRAIT_HYDRA_HEADS "hydrahead" // We still dont have a centralised trait file
-
 GLOBAL_VAR_INIT(DNR_trait_overlay, generate_DNR_trait_overlay())
 
 /// Instantiates GLOB.DNR_trait_overlay by creating a new mutable_appearance instance of the overlay.
