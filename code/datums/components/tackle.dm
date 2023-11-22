@@ -152,8 +152,6 @@
 		return
 
 	var/mob/living/carbon/target = hit
-	var/mob/living/carbon/human/T = target
-	var/mob/living/carbon/human/S = user
 	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // SKYRAT EDIT - FELINE TRAITS - ORIGINAL : var/tackle_word = isfelinid(user) ? "pounce" : "tackle" 
 
 	if(target.check_block(user, 0, user.name, attack_type = LEAP_ATTACK))
