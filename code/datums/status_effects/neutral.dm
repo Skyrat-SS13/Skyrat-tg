@@ -149,8 +149,15 @@
 
 /atom/movable/screen/alert/status_effect/holdup
 	name = "Holding Up"
-	desc = "You're currently pointing a gun at someone."
+	desc = "You're currently pointing a gun at someone. Click to cancel."
 	icon_state = "aimed"
+
+/atom/movable/screen/alert/status_effect/holdup/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+	var/datum/component/gunpoint/gunpoint = owner.GetComponent(/datum/component/gunpoint)
+	gunpoint?.cancel()
 
 // this status effect is used to negotiate the high-fiving capabilities of all concerned parties
 /datum/status_effect/offering
@@ -519,7 +526,7 @@
 				monkey_tail.Insert(human_mob, drop_if_replaced = FALSE)
 			var/datum/species/human_species = human_mob.dna?.species
 			if(human_species)
-				human_species.randomize_features(human_mob)
+				human_species.randomize_active_features(human_mob)
 				human_species.randomize_active_underwear(human_mob)
 
 			owner.remove_status_effect(/datum/status_effect/eigenstasium)

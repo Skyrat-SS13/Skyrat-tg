@@ -14,9 +14,21 @@
 	gender = MALE
 	can_be_held = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
+	///can this mob breed?
+	var/can_breed = TRUE
 
 	/// List of possible dialogue options. This is both used by the AI and as an override when a sentient Markus speaks.
 	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
+
+/mob/living/basic/pet/dog/markus/Initialize(mapload)
+	. = ..()
+	if(!can_breed)
+		return
+	AddComponent(\
+		/datum/component/breed,\
+		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
+		baby_path = /mob/living/basic/pet/dog/corgi/puppy,\
+	) // no mixed breed puppies sadly
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
 	if(client)
@@ -71,6 +83,7 @@
 	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0
+	can_breed = FALSE
 
 	// These lights enable when E-N is emagged
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
@@ -244,7 +257,6 @@
 
 	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!",
 		source = target,
-		action = NOTIFY_ORBIT,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		header = "Borgi Emagged",
 	)

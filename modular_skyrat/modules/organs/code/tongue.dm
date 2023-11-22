@@ -27,6 +27,28 @@
 	speaker.verb_sing = initial(verb_sing)
 	speaker.verb_yell = initial(verb_yell)
 
+/obj/item/organ/internal/tongue/avian
+	name = "avian tongue"
+	desc = "A short and stubby tongue that craves seeds."
+	say_mod = "chirps"
+	icon_state = "tongue"
+	modifies_speech = TRUE
+
+/obj/item/organ/internal/tongue/avian/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	signer.verb_ask = "peeps"
+	signer.verb_exclaim = "squawks"
+	signer.verb_whisper = "murmurs"
+	signer.verb_yell = "shrieks"
+
+/obj/item/organ/internal/tongue/avian/Remove(mob/living/carbon/speaker, special = FALSE)
+	. = ..()
+	speaker.verb_ask = initial(verb_ask)
+	speaker.verb_exclaim = initial(verb_exclaim)
+	speaker.verb_whisper = initial(verb_whisper)
+	speaker.verb_sing = initial(verb_sing)
+	speaker.verb_yell = initial(verb_yell)
+
 /// This "human" tongue is only used in Character Preferences / Augmentation menu.
 /// The base tongue class lacked a say_mod. With say_mod included it makes a non-Human user sound like a Human.
 /obj/item/organ/internal/tongue/human
