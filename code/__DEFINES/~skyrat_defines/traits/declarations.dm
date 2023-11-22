@@ -116,7 +116,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Cyborgs with unique sprites for when they get totally broken down.
 #define TRAIT_R_UNIQUEWRECK "unique_wreck"
 /// Or when tipped over.
-#define TRAIT_R_UNIQUETIP	"unique_tip"
+#define TRAIT_R_UNIQUETIP "unique_tip"
 /// 64x32 skins
 #define TRAIT_R_WIDE "wide_borg"
 /// 32x64 skins
