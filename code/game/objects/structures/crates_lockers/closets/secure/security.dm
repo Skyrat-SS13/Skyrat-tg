@@ -20,6 +20,7 @@
 	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
+	new /obj/item/card/id/departmental_budget(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
@@ -44,6 +45,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
+	new /obj/item/card/id/departmental_budget/srv(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's locker"
@@ -65,6 +67,7 @@
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
+	new /obj/item/card/id/departmental_budget/sec(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/populate_contents_immediate()
 	. = ..()
@@ -106,6 +109,7 @@
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/clothing/gloves/tackler(src)
 
 /obj/structure/closet/secure_closet/security/sec
 

@@ -163,17 +163,17 @@
 		timer_id = null
 	. = ..()
 
-/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/O, mob/living/user)
+/obj/machinery/rnd/rna_recombinator/attackby(obj/item/weapon, mob/living/user, params)
 	if(user.combat_mode)
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(!istype(O, /obj/item/rna_vial))
+	if(!istype(weapon, /obj/item/rna_vial))
 		return FALSE
-	if(!user.transferItemToLoc(O, src))
+	if(!user.transferItemToLoc(weapon, src))
 		return FALSE
-	loaded_item = O
-	to_chat(user, span_notice("You insert [O] to into [src] reciprocal."))
+	loaded_item = weapon
+	to_chat(user, span_notice("You insert [weapon] to into [src] reciprocal."))
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)

@@ -22,7 +22,7 @@
 	item_type = /obj/item/storage/box/syndie_kit/nuke
 
 /datum/opposing_force_equipment/gadget/holoparasite
-	item_type = /obj/item/guardiancreator/tech/choose/traitor
+	item_type = /obj/item/guardian_creator/tech/choose/traitor
 	admin_note = "Lets a ghost take control of a guardian spirit bound to the user. RRs both the ghost and user on death."
 
 /datum/opposing_force_equipment/gadget/gorilla_cubes

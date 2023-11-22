@@ -4,7 +4,7 @@
 /obj/item/borg/upgrade
 	name = "borg upgrade module."
 	desc = "Protected by FRM."
-	icon = 'icons/obj/assemblies/module.dmi'
+	icon = 'icons/obj/assemblies/circuitry_n_data.dmi'
 	icon_state = "cyborg_upgrade"
 	w_class = WEIGHT_CLASS_SMALL
 	var/locked = FALSE
@@ -268,7 +268,7 @@
 /obj/item/borg/upgrade/lavaproof
 	name = "mining cyborg lavaproof chassis"
 	desc = "An upgrade kit to apply specialized coolant systems and insulation layers to a mining cyborg's chassis, enabling them to withstand exposure to molten rock and liquid plasma."
-	icon_state = "ash_plating"
+	icon_state = "cyborg_ash_tracks"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -555,7 +555,7 @@
 	if(robot.model.model_select_icon == "nomod")
 		to_chat(usr, span_warning("Default models cannot take expand or shrink upgrades."))
 		return FALSE
-	if((R_TRAIT_WIDE in robot.model.model_features) || (R_TRAIT_TALL in robot.model.model_features))
+	if((TRAIT_R_WIDE in robot.model.model_features) || (TRAIT_R_TALL in robot.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 		return FALSE
 	// SKYRAT EDIT END
@@ -932,7 +932,7 @@
 	name = "cyborg emergency reboot module"
 	desc = "A reusable firmware reset tool that can force a reboot of a disabled-but-repaired cyborg, bringing it back online."
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/assemblies/module.dmi'
+	icon = 'icons/obj/assemblies/circuitry_n_data.dmi'
 	icon_state = "cyborg_upgrade1"
 
 /obj/item/borg_restart_board/pre_attack(mob/living/silicon/robot/borgo, mob/living/user, params)

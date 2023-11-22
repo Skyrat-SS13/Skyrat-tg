@@ -315,7 +315,7 @@
 	if(borg.hasAffection)
 		to_chat(usr, span_warning("This unit already has a affection module installed!"))
 		return FALSE
-	if(!(R_TRAIT_WIDE in borg.model.model_features))
+	if(!(TRAIT_R_WIDE in borg.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis does not support this module."))
 		return FALSE
 
@@ -396,7 +396,7 @@
 		if(borg.hasShrunk)
 			to_chat(usr, span_warning("This unit already has a shrink module installed!"))
 			return FALSE
-		if(R_TRAIT_SMALL in borg.model.model_features)
+		if(TRAIT_R_SMALL in borg.model.model_features)
 			to_chat(usr, span_warning("This unit's chassis cannot be shrunk any further."))
 			return FALSE
 
