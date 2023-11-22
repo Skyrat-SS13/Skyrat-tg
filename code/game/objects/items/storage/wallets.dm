@@ -19,19 +19,13 @@
 		/obj/item/holochip,
 		/obj/item/card,
 		/obj/item/clothing/mask/cigarette,
-<<<<<<< HEAD
-		// SKYRAT EDIT BEGIN
-		/obj/item/condom_pack,
-		// SKYRAT EDIT END
 		/obj/item/coupon,
 		/obj/item/flashlight/pen,
 		/obj/item/folder/biscuit,
 		/obj/item/seeds,
 		/obj/item/stack/medical,
 		/obj/item/toy/crayon,
-=======
 		/obj/item/clothing/accessory/dogtag,
->>>>>>> 286ba48c2c4 ([NO GBP] ACTUALLY Allows dogtags to fit into wallets (#79879))
 		/obj/item/coin,
 		/obj/item/coupon,
 		/obj/item/dice,
@@ -56,6 +50,9 @@
 		/obj/item/stack/medical,
 		/obj/item/stamp,
 		/obj/item/toy/crayon),
+		// SKYRAT EDIT BEGIN
+		/obj/item/condom_pack,
+		// SKYRAT EDIT END
 		list(/obj/item/screwdriver/power))
 
 /obj/item/storage/wallet/Exited(atom/movable/gone, direction)
