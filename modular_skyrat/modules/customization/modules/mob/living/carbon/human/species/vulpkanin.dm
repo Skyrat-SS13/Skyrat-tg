@@ -25,10 +25,10 @@
 
 /datum/species/vulpkanin/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Fox", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"ears" = list(MUTANT_INDEX_NAME = "Fox", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Fox", TRUE),
+		"snout" = list("Mammal, Long", TRUE),
+		"ears" = list("Fox", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 /obj/item/organ/internal/tongue/vulpkanin

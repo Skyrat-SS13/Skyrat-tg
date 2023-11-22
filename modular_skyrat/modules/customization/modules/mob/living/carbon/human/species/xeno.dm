@@ -29,11 +29,11 @@
 
 /datum/species/xeno/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Xenomorph Tail", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"xenodorsal" = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"xenohead" = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Xenomorph Tail", FALSE),
+		"xenodorsal" = list("Standard", TRUE),
+		"xenohead" = list("Standard", TRUE),
+		"legs" = list(DIGITIGRADE_LEGS,FALSE),
+		"taur" = list("None", FALSE),
 	)
 
 /datum/species/xeno/get_species_description()

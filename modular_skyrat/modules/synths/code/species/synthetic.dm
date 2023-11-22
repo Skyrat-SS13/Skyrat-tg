@@ -54,14 +54,14 @@
 
 /datum/species/synthetic/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"ears" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"snout" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		MUTANT_SYNTH_ANTENNA = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		MUTANT_SYNTH_SCREEN = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		MUTANT_SYNTH_CHASSIS = list(MUTANT_INDEX_NAME = "Default Chassis", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		MUTANT_SYNTH_HEAD = list(MUTANT_INDEX_NAME = "Default Head", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"snout" = list("None", FALSE),
+		MUTANT_SYNTH_ANTENNA = list("None", FALSE),
+		MUTANT_SYNTH_SCREEN = list("None", FALSE),
+		MUTANT_SYNTH_CHASSIS = list("Default Chassis", FALSE),
+		MUTANT_SYNTH_HEAD = list("Default Head", FALSE),
 	)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)

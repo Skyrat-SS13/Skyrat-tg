@@ -30,7 +30,7 @@
 
 /datum/species/hemophage/get_default_mutant_bodyparts()
 	return list(
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 /datum/species/hemophage/check_roundstart_eligible()
