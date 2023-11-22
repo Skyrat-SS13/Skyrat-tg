@@ -19,10 +19,10 @@
 		/obj/item/holochip,
 		/obj/item/card,
 		/obj/item/clothing/mask/cigarette,
-		/obj/item/coupon,
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
 		// SKYRAT EDIT END
+		/obj/item/coupon,
 		/obj/item/flashlight/pen,
 		/obj/item/folder/biscuit,
 		/obj/item/seeds,
