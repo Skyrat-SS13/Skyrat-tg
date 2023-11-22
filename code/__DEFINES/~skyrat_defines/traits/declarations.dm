@@ -87,6 +87,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait that was granted by a reagent.
 #define TRAIT_REAGENT "reagent"
 
+/// Trait source for anything granted by narcotics
+#define TRAIT_NARCOTICS "narcotics_given"
+
 /// trait that lets you do flips with a style meter
 #define TRAIT_STYLISH "stylish"
 
