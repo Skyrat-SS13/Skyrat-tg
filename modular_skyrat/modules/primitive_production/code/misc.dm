@@ -6,7 +6,7 @@
 		user.balloon_alert(user, "[src] shatters!")
 		playsound(src, SFX_SHATTER, 30, TRUE)
 		qdel(src)
-		return
+		return TRUE
 
 	return ..()
 
