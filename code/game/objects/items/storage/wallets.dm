@@ -49,7 +49,7 @@
 		/obj/item/spess_knife,
 		/obj/item/stack/medical,
 		/obj/item/stamp,
-		/obj/item/toy/crayon),
+		/obj/item/toy/crayon,
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
 		// SKYRAT EDIT END
