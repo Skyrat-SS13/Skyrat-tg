@@ -847,6 +847,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				span_notice("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow."),
 				span_notice("You quietly shut off [src] without even looking at what you're doing. Wow.")
 			)
+			playsound(src, 'modular_skyrat/master_files/sound/items/zippo_close.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
 		else
 			user.visible_message(
 				span_notice("[user] quietly shuts off [src]."),
@@ -860,6 +861,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			span_notice("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."),
 			span_notice("Without even breaking stride, you flip open and light [src] in one smooth movement.")
 		)
+		playsound(src, 'modular_skyrat/master_files/sound/items/zippo_open.ogg', 50, TRUE) // SKYRAT EDIT ADDITION
 		return
 
 	var/hand_protected = FALSE
@@ -1056,7 +1058,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	worn_icon_state = "vape_worn"
 	greyscale_config = /datum/greyscale_config/vape
 	greyscale_config_worn = /datum/greyscale_config/vape/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/vape/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale (Digi? On a vape? What? How did we do this)
+	greyscale_config_worn_muzzled = /datum/greyscale_config/vape/worn/muzzled //SKYRAT EDIT ADDITION
 	greyscale_colors = "#2e2e2e"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
