@@ -20,6 +20,9 @@
 		/obj/item/card,
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/coupon,
+		// SKYRAT EDIT BEGIN
+		/obj/item/condom_pack,
+		// SKYRAT EDIT END
 		/obj/item/flashlight/pen,
 		/obj/item/folder/biscuit,
 		/obj/item/seeds,
@@ -49,10 +52,7 @@
 		/obj/item/spess_knife,
 		/obj/item/stack/medical,
 		/obj/item/stamp,
-		/obj/item/toy/crayon,
-		// SKYRAT EDIT BEGIN
-		/obj/item/condom_pack,
-		// SKYRAT EDIT END
+		/obj/item/toy/crayon),
 		list(/obj/item/screwdriver/power))
 
 /obj/item/storage/wallet/Exited(atom/movable/gone, direction)
