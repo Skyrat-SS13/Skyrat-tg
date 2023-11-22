@@ -1742,7 +1742,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 
 // Donation Reward for zcrow
 /obj/item/clothing/under/pants/custom_trackpants
-	name = "Tarin's custom sweatpants"
+	name = "tarin's custom sweatpants"
 	desc = "A tailored pair of sweatpants (??). Featuring an eye-catching colored stripe and a little more comfort."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "zcrow_trackpants"
