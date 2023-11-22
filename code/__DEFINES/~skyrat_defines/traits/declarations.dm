@@ -11,9 +11,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 // Defines for some extra traits
 #define TRAIT_NO_HUSK "no_husk"
-#define TRAIT_NORUNNING "norunning"		// You walk!
-#define TRAIT_EXCITABLE	"wagwag" //Will wag when patted!
-#define TRAIT_OXYIMMUNE	"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_NORUNNING "norunning" // You walk!
+#define TRAIT_EXCITABLE "wagwag" //Will wag when patted!
+#define TRAIT_OXYIMMUNE	"oxyimmune" // Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
@@ -114,15 +114,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 //Defines for model features, set in the model_features list of a robot model datum. Are they a dogborg? Is the model small? etc.
 /// Cyborgs with unique sprites for when they get totally broken down.
-#define TRAIT_R_UNIQUEWRECK	"unique_wreck"
+#define TRAIT_R_UNIQUEWRECK "unique_wreck"
 /// Or when tipped over.
 #define TRAIT_R_UNIQUETIP	"unique_tip"
 /// 64x32 skins
-#define TRAIT_R_WIDE		"wide_borg"
+#define TRAIT_R_WIDE "wide_borg"
 /// 32x64 skins
-#define TRAIT_R_TALL		"tall_borg"
+#define TRAIT_R_TALL "tall_borg"
 /// Any model small enough to reject the shrinker upgrade.
-#define TRAIT_R_SMALL		"small_chassis"
+#define TRAIT_R_SMALL "small_chassis"
 /// Any model that has a custom front panel
 #define TRAIT_R_UNIQUEPANEL "unique_openpanel"
 
