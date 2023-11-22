@@ -50,9 +50,9 @@
 
 /datum/species/teshari/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"ears" = list(MUTANT_INDEX_NAME = "Teshari Regular", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Teshari (Default)", TRUE),
+		"ears" = list("Teshari Regular", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 

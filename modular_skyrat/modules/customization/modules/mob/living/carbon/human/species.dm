@@ -45,8 +45,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/human/felinid/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"ears" = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Cat", FALSE),
+		"ears" = list("Cat", FALSE),
 	)
 
 /datum/species/human
@@ -54,9 +54,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/human/get_default_mutant_bodyparts()
 	return list(
-		"ears" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"tail" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"ears" = list("None", FALSE),
+		"tail" = list("None", FALSE),
+		"wings" = list("None", FALSE),
 	)
 
 /datum/species/mush
@@ -105,10 +105,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(LAZYLEN(existing_mutant_bodyparts) && existing_mutant_bodyparts[key])
 			continue
 		var/datum/sprite_accessory/SP
-		if(default_bodypart_data[key][MUTANT_INDEX_CAN_RANDOMIZE])
+		if(default_bodypart_data[key][MUTANTPART_CAN_RANDOMIZE])
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
+			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANTPART_NAME]]
 			if(!SP)
 				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)

@@ -26,10 +26,10 @@
 
 /datum/species/tajaran/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Cat (Big)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Cat, normal", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"ears" = list(MUTANT_INDEX_NAME = "Cat, normal", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Cat (Big)", TRUE),
+		"snout" = list("Cat, normal", TRUE),
+		"ears" = list("Cat, normal", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 /obj/item/organ/internal/tongue/cat/tajaran

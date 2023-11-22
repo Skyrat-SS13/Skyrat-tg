@@ -49,7 +49,7 @@
 
 /datum/species/vox_primalis/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Vox Primalis Tail", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Vox Primalis Tail", FALSE),
 	)
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)

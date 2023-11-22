@@ -555,7 +555,7 @@
 	if(robot.model.model_select_icon == "nomod")
 		to_chat(usr, span_warning("Default models cannot take expand or shrink upgrades."))
 		return FALSE
-	if((R_TRAIT_WIDE in robot.model.model_features) || (R_TRAIT_TALL in robot.model.model_features))
+	if((TRAIT_R_WIDE in robot.model.model_features) || (TRAIT_R_TALL in robot.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 		return FALSE
 	// SKYRAT EDIT END
