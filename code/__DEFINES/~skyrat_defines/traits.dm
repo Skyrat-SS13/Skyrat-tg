@@ -3,6 +3,7 @@
 #define TRAIT_NORUNNING "norunning"		// You walk!
 #define TRAIT_EXCITABLE	"wagwag" //Will wag when patted!
 #define TRAIT_OXYIMMUNE	"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_AFFECTION_AVERSION "affection_aversion" // No more dogborg licking. "Dogborg bad" is no longer a personality
 #define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
