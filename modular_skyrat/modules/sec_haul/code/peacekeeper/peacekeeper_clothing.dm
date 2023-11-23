@@ -57,7 +57,6 @@
 		"Cadet" = "policecadetcap",
 	)
 
-
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	name = "peacekeeper hud glasses"
 	icon_state = "peacekeeperglasses"
