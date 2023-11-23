@@ -50,3 +50,64 @@
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
 	return ..()
+
+/obj/machinery/smartfridge/producebin
+	name = "Produce Bin"
+	desc = "A wooden hamper, used to hold plant products and try keep them safe from pests."
+	icon_state = "producebin"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	base_build_path = /obj/machinery/smartfridge/producebin
+	contents_icon_state = "produce"
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = TRUE
+
+/obj/machinery/smartfridge/producebin/accept_check(obj/item/weapon)
+	return (istype(weapon, /obj/item/food/grown))
+
+/obj/machinery/smartfridge/producebin/structure_examine()
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+
+
+/obj/machinery/smartfridge/producebin/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
+/obj/machinery/smartfridge/seedshelf
+	name = "Seedshelf"
+	desc = "A wooden shelf, used to hold seeds preventing them from germinating early."
+	icon_state = "seedshelf"
+	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
+	resistance_flags = FLAMMABLE
+	base_build_path = /obj/machinery/smartfridge/seedshelf
+	contents_icon_state = "seed"
+	use_power = NO_POWER_USE
+	light_power = 0
+	idle_power_usage = 0
+	circuit = null
+	has_emissive = FALSE
+	can_atmos_pass = ATMOS_PASS_YES
+	visible_contents = TRUE
+
+/obj/machinery/smartfridge/seedshelf/accept_check(obj/item/weapon)
+	return istype(weapon, /obj/item/seeds)
+
+/obj/machinery/smartfridge/seedshelf/structure_examine()
+	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+
+/obj/machinery/smartfridge/seedshelf/crowbar_act(mob/living/user, obj/item/tool)
+	user.balloon_alert_to_viewers("disassembling...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
+		return
+	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	deconstruct(TRUE)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
