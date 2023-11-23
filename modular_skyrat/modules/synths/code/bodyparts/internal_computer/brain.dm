@@ -1,17 +1,8 @@
 /obj/item/organ/internal/brain/synth
-	var/obj/item/modular_computer/pda/synth/internal_computer = new /obj/item/modular_computer/pda/synth
+	var/obj/item/modular_computer/pda/synth/internal_computer = new /obj/item/modular_computer/pda/synth(src)
 	actions_types = list(/datum/action/item_action/synth/open_internal_computer)
 
-/obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special, drop_if_replaced, no_id_transfer)
-	. = ..()
-	if(internal_computer)
-		internal_computer.owner_brain = src
-		internal_computer.physical = owner
 
-/obj/item/organ/internal/brain/synth/Remove(mob/living/carbon/target, special, no_id_transfer)
-	. = ..()
-	if(internal_computer)
-		internal_computer.physical = src
 
 /datum/action/item_action/synth/open_internal_computer
 	name = "Open persocom emulation"

@@ -10,20 +10,29 @@
 	max_idle_programs = 3
 
 	max_capacity = 32
-	/// The brain belonging to the synth which the computer is within.
-	var/obj/item/organ/internal/brain/synth/owner_brain
+
+/obj/item/modular_computer/pda/synth/Initialize(mapload)
+	. = ..()
+	
+	// prevent these from being created outside of synth brains
+	if(!istype(loc, /obj/item/organ/internal/brain/synth))
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	if(!istype(brain_loc))
+		return ..()
+
 	if(!computer_id_slot)
 		return ..()
 
 	if(crew_manifest_update)
 		GLOB.manifest.modify(computer_id_slot.registered_name, computer_id_slot.assignment, computer_id_slot.get_trim_assignment())
 
-	if(user && !issilicon(user) && in_range(physical, user))
+	if(user && !issilicon(user) && in_range(brain_loc.owner || brain_loc, user))
 		user.put_in_hands(computer_id_slot)
 	else
-		computer_id_slot.forceMove(physical.loc) //We actually update the physical on brain removal/insert
+		computer_id_slot.forceMove(brain_loc.owner ? brain_loc.owner.drop_location() : brain_loc.drop_location()) //We actually update the physical on brain removal/insert
 
 	computer_id_slot = null
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
@@ -31,19 +40,19 @@
 
 /obj/item/modular_computer/pda/synth/get_ntnet_status()
 	// NTNet is down and we are not connected via wired connection. The synth is no more
-	if(!find_functional_ntnet_relay() || !owner_brain.owner)
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	if(!istype(brain_loc))
 		return NTNET_NO_SIGNAL
-	var/turf/current_turf = get_turf(physical)
+
+	if(!find_functional_ntnet_relay() || isnull(brain_loc.owner))
+		return NTNET_NO_SIGNAL
+	var/turf/current_turf = get_turf(brain_loc.owner || brain_loc)
 	if(is_station_level(current_turf.z))
 		return NTNET_GOOD_SIGNAL
 	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
 		return NTNET_LOW_SIGNAL
 	return NTNET_NO_SIGNAL
 
-/obj/item/modular_computer/pda/synth/Destroy()
-	physical = null
-	owner_brain = null
-	return ..()
 
 /*
 I give up, this is how borgs have their own menu coded in.
@@ -51,10 +60,16 @@ Snowflake codes the interaction check because the default tgui one does not work
 */
 /mob/living/carbon/human/can_interact_with(atom/machine, treat_mob_as_adjacent)
 	. = ..()
-	if(istype(machine, /obj/item/modular_computer/pda/synth))
-		var/obj/item/modular_computer/pda/synth/robotbrain = machine
-		if(Adjacent(robotbrain.physical))
-			. = TRUE
+	var/obj/item/modular_computer/pda/synth/robotbrain = machine
+	if(!istype(robotbrain))
+		return
+	
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	if(!istype(brain_loc))
+		return
+
+	if(Adjacent(robotbrain.brain_loc.owner))
+		. = TRUE
 	return
 
 /*
