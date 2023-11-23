@@ -110,10 +110,11 @@
 	proj.fired_from = user
 	//calculate precision
 	var/fire_angle = dir2angle(user.dir)
+	var/offset = rand(-0, 0)
 	if(!istype(src, /obj/item/clothing/head/hair_tie/syndicate))
-		fire_angle += rand(-30, 30)
+		offset = rand(-30, 30)
 	//fire
-	proj.fire(fire_angle)
+	proj.fire(fire_angle + offset)
 	playsound(src, 'sound/weapons/effects/batreflect.ogg', 25, TRUE)
 	//get rid of what we just launched to let projectile_drop spawn a new one
 	qdel(src)
