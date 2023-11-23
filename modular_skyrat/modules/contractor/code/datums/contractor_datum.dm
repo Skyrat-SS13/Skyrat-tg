@@ -26,7 +26,7 @@
 					[span_greentext("[tc_total] TC")]!<br>"
 
 	if(contractor_support_unit)
-		partner = contractor_support_unit.owner
-		sent_data += "<b>[partner.key]</b> played <b>[partner.current.name]</b>, [parter_mob.current.p_their()] contractor support unit.<br>"
+		var/datum/mind/partner = contractor_support_unit.owner
+		result += "<b>[partner.key]</b> played <b>[partner.current.name]</b>, [partner.current.p_their()] contractor support unit.<br>"
 
 	return result
