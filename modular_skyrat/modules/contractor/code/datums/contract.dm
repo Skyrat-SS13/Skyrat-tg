@@ -39,7 +39,7 @@
 			victim_belongings.Add(sent_mob_item)
 
 	var/obj/structure/closet/supplypod/extractionpod/pod = source
-	pod.recieving = FALSE
+	pod.receiving = FALSE
 
 	// Handle the pod returning
 	pod.startExitSequence(pod)
