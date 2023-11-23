@@ -1,6 +1,6 @@
-/obj/structure/ore_container/gutlunch_trough/attackby(/obj/item/storage/bag/ore/ore_bag, mob/living/carbon/human/user, list/modifiers)
-	if(!istype(ore_bag))
+/obj/structure/ore_container/gutlunch_trough/attackby(obj/item/attacking_item, mob/living/carbon/human/user, list/modifiers)
+	if(!istype(attacking_item, /obj/item/storage/bag/ore))
 		return ..()
-		
-	for(var/obj/item/stack/ore/stored_ore in ore_bag.contents)
-		ore_bag.atom_storage?.attempt_remove(stored_ore, src)
+
+	for(var/obj/item/stack/ore/stored_ore in attacking_item.contents)
+		attacking_item.atom_storage?.attempt_remove(stored_ore, src)
