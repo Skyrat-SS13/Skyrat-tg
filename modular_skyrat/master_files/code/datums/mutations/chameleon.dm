@@ -1,3 +1,7 @@
+// toggleable chameleon skin
+/datum/mutation/human/chameleon
+	power_path = /datum/action/cooldown/spell/chameleon_skin_activate
+
 /datum/action/cooldown/spell/chameleon_skin_activate
 	name = "Activate Chameleon Skin"
 	desc = "The chromatophores in your skin adjust to your surroundings, as long as you stay still."

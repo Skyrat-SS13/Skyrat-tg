@@ -8,7 +8,6 @@
 	text_lose_indication = "<span class='notice'>You feel oddly exposed.</span>"
 	instability = 25
 	power_coeff = 1
-	power_path = /datum/action/cooldown/spell/chameleon_skin_activate //SKYRAT EDIT
 
 /datum/mutation/human/chameleon/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
