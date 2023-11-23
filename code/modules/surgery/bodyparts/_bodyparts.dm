@@ -901,7 +901,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(IS_ORGANIC_LIMB(src))
-		if(owner && HAS_TRAIT(owner, TRAIT_HUSK))
+		if(!(bodypart_flags & BODYPART_UNHUSKABLE) && owner && HAS_TRAIT(owner, TRAIT_HUSK))
 			dmg_overlay_type = "" //no damage overlay shown when husked
 			is_husked = TRUE
 		else if(owner && HAS_TRAIT(owner, TRAIT_INVISIBLE_MAN))
@@ -1267,12 +1267,12 @@
 		if(BLEED_OVERLAY_LOW to BLEED_OVERLAY_MED)
 			new_bleed_icon = "[body_zone]_1"
 		if(BLEED_OVERLAY_MED to BLEED_OVERLAY_GUSH)
-			if(owner.body_position == LYING_DOWN || IS_IN_STASIS(owner) || owner.stat == DEAD)
+			if(owner.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_STASIS) || owner.stat == DEAD)
 				new_bleed_icon = "[body_zone]_2s"
 			else
 				new_bleed_icon = "[body_zone]_2"
 		if(BLEED_OVERLAY_GUSH to INFINITY)
-			if(IS_IN_STASIS(owner) || owner.stat == DEAD)
+			if(HAS_TRAIT(owner, TRAIT_STASIS) || owner.stat == DEAD)
 				new_bleed_icon = "[body_zone]_2s"
 			else
 				new_bleed_icon = "[body_zone]_3"

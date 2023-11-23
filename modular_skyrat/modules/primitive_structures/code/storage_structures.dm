@@ -57,15 +57,15 @@
 	icon_state = "producebin"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	visible_contents = FALSE
 	base_build_path = /obj/machinery/smartfridge/producebin
+	contents_icon_state = "produce"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
 	circuit = null
 	has_emissive = FALSE
 	can_atmos_pass = ATMOS_PASS_YES
-	visible_contents = FALSE
+	visible_contents = TRUE
 
 /obj/machinery/smartfridge/producebin/accept_check(obj/item/weapon)
 	return (istype(weapon, /obj/item/food/grown))
@@ -88,15 +88,15 @@
 	icon_state = "seedshelf"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	visible_contents = FALSE
 	base_build_path = /obj/machinery/smartfridge/seedshelf
+	contents_icon_state = "seed"
 	use_power = NO_POWER_USE
 	light_power = 0
 	idle_power_usage = 0
 	circuit = null
 	has_emissive = FALSE
 	can_atmos_pass = ATMOS_PASS_YES
-	visible_contents = FALSE
+	visible_contents = TRUE
 
 /obj/machinery/smartfridge/seedshelf/accept_check(obj/item/weapon)
 	return istype(weapon, /obj/item/seeds)
