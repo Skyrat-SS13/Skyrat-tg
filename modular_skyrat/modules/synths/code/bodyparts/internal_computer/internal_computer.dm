@@ -66,19 +66,19 @@
 	balloon_alert(user, "removed ID")
 
 /obj/item/modular_computer/pda/synth/get_ntnet_status()
+	. = NTNET_NO_SIGNAL
 	// NTNet is down and we are not connected via wired connection. The synth is no more
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
 	if(!istype(brain_loc))
-		return NTNET_NO_SIGNAL
-
+		return
 	if(!find_functional_ntnet_relay() || isnull(brain_loc.owner))
-		return NTNET_NO_SIGNAL
+		return
+
 	var/turf/current_turf = get_turf(brain_loc.owner || brain_loc)
 	if(is_station_level(current_turf.z))
 		return NTNET_GOOD_SIGNAL
 	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
 		return NTNET_LOW_SIGNAL
-	return NTNET_NO_SIGNAL
 
 /*
 So, I am not snowflaking more code.. except this
@@ -89,6 +89,7 @@ Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 	var/mob/living/carbon/human/targetmachine = target_mob
 	if(!istype(targetmachine))
 		return ..()
+
 	var/obj/item/organ/internal/brain/synth/robotbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(robotbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
@@ -104,6 +105,7 @@ Attacking a synth with an id loads it into its slot.. pain and probably shitcode
 	var/mob/living/carbon/human/targetmachine = target_mob
 	if(!istype(targetmachine))
 		return ..()
+
 	var/obj/item/organ/internal/brain/synth/robotbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(robotbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
