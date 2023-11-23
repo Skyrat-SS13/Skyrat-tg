@@ -1747,4 +1747,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "zcrow_trackpants"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
-	body_parts_covered = CHEST|GROIN|LEGS
+	body_parts_covered = GROIN|LEGS
