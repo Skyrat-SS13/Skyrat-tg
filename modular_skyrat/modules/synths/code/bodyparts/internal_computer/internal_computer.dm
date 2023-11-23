@@ -73,7 +73,6 @@
 		return
 	if(!find_functional_ntnet_relay() || isnull(brain_loc.owner))
 		return
-
 	var/turf/current_turf = get_turf(brain_loc.owner || brain_loc)
 	if(is_station_level(current_turf.z))
 		return NTNET_GOOD_SIGNAL
