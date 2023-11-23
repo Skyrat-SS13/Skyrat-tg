@@ -63,12 +63,8 @@ Snowflake codes the interaction check because the default tgui one does not work
 	var/obj/item/modular_computer/pda/synth/robotbrain = machine
 	if(!istype(robotbrain))
 		return
-	
-	var/obj/item/organ/internal/brain/synth/brain_loc = loc
-	if(!istype(brain_loc))
-		return
 
-	if(Adjacent(robotbrain.brain_loc.owner))
+	if(Adjacent(robotbrain.owner))
 		. = TRUE
 	return
 
