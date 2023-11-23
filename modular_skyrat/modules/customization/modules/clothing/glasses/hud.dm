@@ -21,7 +21,7 @@
 	name = "security eyepatch HUD"
 	desc = "Lost your eye beating an innocent clown? Thankfully your corporate overlords have made something to make up for this. May not do well against flashes."
 	hud_type = DATA_HUD_SECURITY_ADVANCED
-	clothing_traits = TRAIT_SECURITY_HUD
+	clothing_traits = list(TRAIT_SECURITY_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 
 	unique_reskin = list(
@@ -40,7 +40,7 @@
 	icon_state = "medpatch"
 	base_icon_state = "medpatch"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
-	clothing_traits = TRAIT_MEDICAL_HUD
+	clothing_traits = list(TRAIT_MEDICAL_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
 	unique_reskin = list(
@@ -82,7 +82,7 @@
 	icon_state = "robopatch"
 	base_icon_state = "robopatch"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
-	clothing_traits = TRAIT_DIAGNOSTIC_HUD
+	clothing_traits = list(TRAIT_DIAGNOSTIC_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
 	unique_reskin = list(
