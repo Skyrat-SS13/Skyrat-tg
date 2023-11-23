@@ -13,10 +13,37 @@
 
 /obj/item/modular_computer/pda/synth/Initialize(mapload)
 	. = ..()
-	
+
 	// prevent these from being created outside of synth brains
 	if(!istype(loc, /obj/item/organ/internal/brain/synth))
 		return INITIALIZE_HINT_QDEL
+
+/datum/action/item_action/synth/open_internal_computer
+	name = "Open persocom emulation"
+	desc = "Accesses your built-in virtual machine."
+	check_flags = AB_CHECK_CONSCIOUS
+
+/datum/action/item_action/synth/open_internal_computer/Trigger(trigger_flags)
+	. = ..()
+	var/obj/item/organ/internal/brain/synth/targetmachine = target
+	targetmachine.internal_computer.interact(owner)
+
+/obj/item/modular_computer/pda/synth/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/item/modular_computer/pda/synth/ui_status(mob/user)
+	var/obj/item/organ/internal/brain/synth/brain_loc = loc
+	if(!istype(brain_loc))
+		return UI_CLOSE
+
+	if(!QDELETED(brain_loc.owner))
+		if(brain_loc.owner == user)
+			return min(
+				ui_status_user_is_abled(user, src),
+				ui_status_only_living(user),
+			)
+		else return UI_CLOSE
+	return ..()
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
@@ -52,25 +79,6 @@
 	else if(long_ranged && !is_centcom_level(current_turf.z)) // Centcom is excluded because cafe
 		return NTNET_LOW_SIGNAL
 	return NTNET_NO_SIGNAL
-
-
-/*
-I give up, this is how borgs have their own menu coded in.
-Snowflake codes the interaction check because the default tgui one does not work as I want it.
-*/
-/mob/living/carbon/human/can_interact_with(atom/machine, treat_mob_as_adjacent)
-	. = ..()
-	var/obj/item/modular_computer/pda/synth/internal_computer = machine
-	if(!istype(internal_computer))
-		return
-
-	var/obj/item/organ/internal/brain/synth/robot_brain = internal_computer.loc
-	if(!istype(robot_brain))
-		return
-
-	if(Adjacent(robot_brain.owner))
-		. = TRUE
-	return
 
 /*
 So, I am not snowflaking more code.. except this
