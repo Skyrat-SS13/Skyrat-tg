@@ -44,7 +44,7 @@ export const BorerChem = (props, context) => {
                 disabled={data.onCooldown || data.notEnoughChemicals}
                 onClick={() =>
                   act('inject', {
-                    reagent: chemical.id,
+                    reagent: chemical.title,
                   })
                 }
               />
