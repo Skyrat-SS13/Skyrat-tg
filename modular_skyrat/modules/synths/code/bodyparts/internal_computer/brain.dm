@@ -4,7 +4,7 @@
 
 /obj/item/organ/internal/brain/synth/Initialize(mapload)
 	. = ..()
-	internal_computer = new internal_computer(src)
+	internal_computer = new(src)
 
 /datum/action/item_action/synth/open_internal_computer
 	name = "Open persocom emulation"
