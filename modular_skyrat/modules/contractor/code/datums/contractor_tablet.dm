@@ -86,7 +86,7 @@
 					else
 						to_chat(user, span_notice("Your payment materializes onto the floor."))
 
-				uplink_computer.opfor_data.contractor_hub.contract_paid_out += uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem
+				uplink_computer.opfor_data.contractor_hub.contract_TC_payed_out += uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem
 				uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem = 0
 				return TRUE
 			else
@@ -137,7 +137,7 @@
 		data["logged_in"] = TRUE
 		data["station_name"] = GLOB.station_name
 		data["redeemable_tc"] = opfor_data.contractor_hub.contract_TC_to_redeem
-		data["earned_tc"] = opfor_data.contractor_hub.contract_paid_out
+		data["earned_tc"] = opfor_data.contractor_hub.contract_TC_payed_out
 		data["contracts_completed"] = opfor_data.contractor_hub.contracts_completed
 		data["contract_rep"] = opfor_data.contractor_hub.contract_rep
 
