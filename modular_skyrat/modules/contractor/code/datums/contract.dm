@@ -1,12 +1,3 @@
-#define RANSOM_LOWER 75
-#define RANSOM_UPPER 150
-#define CONTRACTOR_RANSOM_CUT 0.35
-
-/// Generation of the contract, called on New()
-/datum/syndicate_contract/proc/generate(blacklist)
-	. = ..()
-	ransom = 100 * rand(RANSOM_LOWER, RANSOM_UPPER)
-
 /datum/syndicate_contract/enter_check(datum/source, mob/living/sent_mob)
 	SIGNAL_HANDLER
 	if(!istype(source, /obj/structure/closet/supplypod/extractionpod))
@@ -77,25 +68,6 @@
 					As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
 
 	addtimer(CALLBACK(src, PROC_REF(finish_enter)), 3 SECONDS)
-
-/// Called when person is finished shoving in, awards ransome money
-/datum/syndicate_contract/finish_enter()
-	// Pay contractor their portion of ransom
-	if(status != CONTRACT_STATUS_COMPLETE)
-		return
-
-	var/obj/item/card/id/owner_id = contract.owner.current?.get_idcard(TRUE)
-
-	if(owner_id?.registered_account.account_id) // why do we check for account id? because apparently unset agent IDs have existing bank accounts that can't be accessed. this is suboptimal
-		owner_id.registered_account.adjust_money(ransom * CONTRACTOR_RANSOM_CUT)
-
-		owner_id.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
-		[owner_id.registered_account.account_balance] credits.", TRUE)
-	else
-		to_chat(contract.owner.current, span_notice("A briefcase appears at your feet!"))
-		var/obj/item/storage/briefcase/secure/case = new(get_turf(contract.owner.current))
-		for(var/i in 1 to (round((ransom * CONTRACTOR_RANSOM_CUT) / 1000))) // Gets slightly less/more but whatever
-			new /obj/item/stack/spacecash/c1000(case)
 
 /// They're off to holding - handle the return timer and give some text about what's going on.
 /datum/syndicate_contract/handle_victim_experience(mob/living/target)
@@ -232,7 +204,3 @@
 		var/mob/living/unlucky_fellow = target
 		unlucky_fellow.investigate_log("was returned without a valid drop location by the contractor [contract.owner?.current].", INVESTIGATE_DEATHS)
 		unlucky_fellow.death()
-
-#undef RANSOM_LOWER
-#undef RANSOM_UPPER
-#undef CONTRACTOR_RANSOM_CUT

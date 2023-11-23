@@ -1,3 +1,9 @@
+// SKYRAT EDIT - DEFINES
+#define RANSOM_LOWER 75 // TG: 18
+#define RANSOM_UPPER 150 //TG: 45
+#define CONTRACTOR_RANSOM_CUT 0.35
+// SKYRAT EDIT END
+
 /datum/syndicate_contract
 	///The 'id' of this particular contract. Used to keep track of statuses from TGUI.
 	var/id
@@ -45,7 +51,7 @@
 	contract.payout = rand(0, 2)
 	contract.generate_dropoff()
 
-	ransom = 100 * rand(18, 45)
+	ransom = 100 * rand(RANSOM_LOWER, RANSOM_UPPER) //SKYRAT EDIT - ORIGINAL: ransom = 100 * rand(18, 45)
 
 	var/base = pick_list(WANTED_FILE, "basemessage")
 	var/verb_string = pick_list(WANTED_FILE, "verb")
@@ -145,8 +151,19 @@
 	if(status != CONTRACT_STATUS_COMPLETE)
 		return
 	var/obj/item/card/id/contractor_id = contract.owner.current?.get_idcard(TRUE)
+	/*SKYRAT EDIT - START
+	ORIGINAL:
 	if(!contractor_id || !contractor_id.registered_account)
 		return
+	*/
+	if(!contractor_id?.registered_account.account_id)
+		to_chat(contract.owner.current, span_notice("A briefcase appears at your feet!"))
+		var/obj/item/storage/briefcase/secure/case = new(get_turf(contract.owner.current))
+		for(var/i in 1 to (round((ransom * CONTRACTOR_RANSOM_CUT) / 1000))) // Gets slightly less/more but whatever
+			new /obj/item/stack/spacecash/c1000(case)
+
+		return
+	//SKYRAT EDIT - END
 	contractor_id.registered_account.adjust_money(ransom * 0.35)
 	contractor_id.registered_account.bank_card_talk("We've processed the ransom, agent. \
 		Here's your cut - your balance is now [contractor_id.registered_account.account_balance] cr.", TRUE)
@@ -269,3 +286,9 @@
 	victim.adjust_confusion(2 SECONDS)
 
 	new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
+
+// SKYRAT EDIT - DEFINES
+#undef RANSOM_LOWER
+#undef RANSOM_UPPER
+#undef CONTRACTOR_RANSOM_CUT
+// SKYRAT EDIT END
