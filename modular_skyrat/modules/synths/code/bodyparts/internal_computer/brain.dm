@@ -20,8 +20,8 @@
 
 /datum/action/item_action/synth/open_internal_computer/Trigger(trigger_flags)
 	. = ..()
-	var/obj/item/organ/internal/brain/synth/I = target
-	I.internal_computer.interact(owner)
+	var/obj/item/organ/internal/brain/synth/targetmachine = target
+	targetmachine.internal_computer.interact(owner)
 
 /obj/item/organ/internal/brain/synth/Destroy()
 	QDEL_NULL(internal_computer)

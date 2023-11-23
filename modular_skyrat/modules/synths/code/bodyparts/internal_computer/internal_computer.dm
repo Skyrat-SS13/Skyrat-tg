@@ -10,7 +10,7 @@
 	max_idle_programs = 3
 
 	max_capacity = 32
-
+	/// The brain belonging to the synth which the computer is within.
 	var/obj/item/organ/internal/brain/synth/owner_brain
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
