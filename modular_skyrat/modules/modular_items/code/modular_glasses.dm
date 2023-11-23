@@ -110,7 +110,6 @@
 	color_cutoffs = initial(glasses_type.color_cutoffs)
 	vision_flags = initial(glasses_type.vision_flags)
 	hud_type = initial(glasses_type.hud_type)
-	clothing_traits = initial(glasses_type.clothing_traits)
 	//initial does not currently work on lists so we must do this
 	var/obj/item/clothing/glasses/hud/ar/glasses_object = new glasses_type // make a temporary glasses obj
 	clothing_traits = glasses_object.clothing_traits // pull the list from the created obj
