@@ -121,7 +121,6 @@
 	color_cutoffs = null // Resets lighting_alpha to user's default one
 	clothing_traits = null /// also disables the options for Science functionality
 	hud_type = null
-	clothing_traits = null
 
 /// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
 /// this practically freezes the animation :)
@@ -200,7 +199,7 @@
 	icon_state = "aviator_diagnostic"
 	flash_protect = FLASH_PROTECTION_NONE
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
-	clothing_traits = (TRAIT_DIAGNOSTIC_HUD)
+	clothing_traits = list(TRAIT_DIAGNOSTIC_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
 // Science Aviators
