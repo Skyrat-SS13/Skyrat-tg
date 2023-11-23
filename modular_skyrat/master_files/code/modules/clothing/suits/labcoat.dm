@@ -40,14 +40,15 @@
 	equip_delay_other = 8
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist //Overwrite the TG Roboticist labcoat to Black and Red (not the Interdyne labcoat though)
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/labcoat.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat.dmi'
-	icon_state = "labcoat_robo_sr"
+	greyscale_colors = "#2D2D33#4A77A1#4A77A1#7095C2"
 
 /obj/item/clothing/suit/toggle/labcoat/medical //Renamed version of the Genetics labcoat for more generic medical purposes; just a subtype of /labcoat/ for the TG files
 	name = "medical labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
-	icon_state = "labcoat_gen"
+	icon_state = "labcoat_job"
+	greyscale_config = /datum/greyscale_config/labcoat
+	greyscale_config_worn = /datum/greyscale_config/labcoat/worn
+	greyscale_colors = "#EEEEEE#4A77A1#4A77A1#7095C2"
 
 /obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
 	. = ..()
