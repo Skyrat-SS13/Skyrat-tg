@@ -155,19 +155,19 @@
 
 /datum/brain_trauma/very_special/bimbo/on_gain()
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
-	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
-		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
+		ADD_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
-		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, TRAIT_APHRO))
+		ADD_TRAIT(owner, TRAIT_MASOCHISM, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/bimbo/on_lose()
 	owner.clear_mood_event("bimbo")
-	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
-		REMOVE_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM))
+		REMOVE_TRAIT(owner, TRAIT_BIMBO, TRAIT_LEWDCHEM)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
-	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
-		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, TRAIT_APHRO))
+		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, TRAIT_APHRO)
 
 //Mood boost
 /datum/mood_event/bimbo
@@ -195,13 +195,13 @@
 /datum/quirk/masochism/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	ADD_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_human, TRAIT_MASOCHISM, TRAIT_LEWDQUIRK)
 	affected_human.pain_limit = 60
 
 /datum/quirk/masochism/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, TRAIT_LEWDQUIRK)
 	affected_human.pain_limit = 0
 
 /*
@@ -219,11 +219,11 @@
 
 /datum/brain_trauma/very_special/neverboner/on_gain()
 	var/mob/living/carbon/human/affected_human = owner
-	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
+	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
 /datum/brain_trauma/very_special/neverboner/on_lose()
 	var/mob/living/carbon/human/affected_human = owner
-	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
+	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, TRAIT_APHRO)
 
 /*
 *	SADISM
@@ -297,12 +297,12 @@
 /datum/quirk/ropebunny/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	ADD_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_mob, TRAIT_ROPEBUNNY, TRAIT_LEWDQUIRK)
 
 /datum/quirk/ropebunny/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	REMOVE_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_mob, TRAIT_ROPEBUNNY, TRAIT_LEWDQUIRK)
 
 //Rigger code
 /datum/quirk/rigger
@@ -318,12 +318,12 @@
 /datum/quirk/rigger/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	ADD_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	ADD_TRAIT(affected_mob, TRAIT_RIGGER, TRAIT_LEWDQUIRK)
 
 /datum/quirk/rigger/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = quirk_holder
-	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, TRAIT_LEWDQUIRK)
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
 
