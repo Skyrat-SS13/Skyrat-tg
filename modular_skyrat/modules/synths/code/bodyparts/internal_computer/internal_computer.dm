@@ -60,11 +60,15 @@ Snowflake codes the interaction check because the default tgui one does not work
 */
 /mob/living/carbon/human/can_interact_with(atom/machine, treat_mob_as_adjacent)
 	. = ..()
-	var/obj/item/modular_computer/pda/synth/robotbrain = machine
-	if(!istype(robotbrain))
+	var/obj/item/modular_computer/pda/synth/internal_computer = machine
+	if(!istype(internal_computer))
 		return
 
-	if(Adjacent(robotbrain.owner))
+	var/obj/item/organ/internal/brain/synth/robot_brain = internal_computer.brain_loc
+	if(!istype(robot_brain))
+		return
+
+	if(Adjacent(robot_brain.owner))
 		. = TRUE
 	return
 
