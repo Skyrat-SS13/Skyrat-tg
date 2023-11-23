@@ -57,6 +57,29 @@
 	if(!owner)
 		owner = reagent.holder.my_atom
 
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		//Check if this mob's species is set and can process this type of reagent
+		var/can_process = FALSE
+		//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+		if(H.dna && H.dna.species.reagent_flags)
+			var/owner_flags = H.dna.species.reagent_flags
+			if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+				can_process = TRUE
+			if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+				can_process = TRUE
+
+		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+		if(!can_process)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+	else
+		if(reagent.process_flags == REAGENT_SYNTHETIC)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+	//SKYRAT EDIT ADDITION END
 	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
 		if(owner.reagent_check(reagent, seconds_per_tick, times_fired))
 			return
