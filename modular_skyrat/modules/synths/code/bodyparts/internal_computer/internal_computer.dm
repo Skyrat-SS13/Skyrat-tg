@@ -5,7 +5,7 @@
 	base_active_power_usage = 0
 	base_idle_power_usage = 0
 
-	long_ranged = TRUE //Synths have good antenae
+	long_ranged = TRUE //Synths have good antennae
 
 	max_idle_programs = 3
 
