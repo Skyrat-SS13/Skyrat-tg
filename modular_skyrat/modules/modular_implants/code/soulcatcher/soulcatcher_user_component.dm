@@ -141,18 +141,18 @@
 		if("external_hearing")
 			outside_hearing = !outside_hearing
 			if(outside_hearing)
-				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, SOULCATCHER_TRAIT)
+				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_SOULCATCHER)
 			else
-				ADD_TRAIT(parent_mob, TRAIT_DEAF, SOULCATCHER_TRAIT)
+				ADD_TRAIT(parent_mob, TRAIT_DEAF, TRAIT_SOULCATCHER)
 
 			status = outside_hearing
 
 		if("external_sight")
 			outside_sight = !outside_sight
 			if(outside_sight)
-				parent_mob.cure_blind(SOULCATCHER_TRAIT)
+				parent_mob.cure_blind(TRAIT_SOULCATCHER)
 			else
-				parent_mob.become_blind(SOULCATCHER_TRAIT)
+				parent_mob.become_blind(TRAIT_SOULCATCHER)
 
 			status = outside_sight
 
