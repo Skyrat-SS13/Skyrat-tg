@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/datum/component/soulcatcher_user/user_component
 	if(istype(sender_mob))
-		user_component = sender_name.GetComponent(/datum/component/soulcatcher_user)
+		user_component = sender_mob.GetComponent(/datum/component/soulcatcher_user)
 		if(!istype(user_component))
 			return FALSE
 
@@ -402,8 +402,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_souls)
-		var/message_eligable = SEND_SIGNAL(soul, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, emote)
-		if(!message_eligable)
+		var/message_eligible = SEND_SIGNAL(soul, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, emote)
+		if(!message_eligible)
 			continue
 
 		to_chat(soul, message)
