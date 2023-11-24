@@ -36,7 +36,7 @@
 	id_trim = /datum/id_trim/job/barber
 
 /obj/structure/closet/secure_closet/barber
-	name = "Barber's locker"
+	name = "barber's locker"
 	icon_state = "barber"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	req_access = list(ACCESS_BARBER)
