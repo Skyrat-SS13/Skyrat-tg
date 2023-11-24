@@ -34,18 +34,10 @@
 	if(!target_soul || !target_soul.body_scan_needed)
 		return FALSE
 
-	var/datum/component/soulcatcher_user/user_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
-	if(!user_component)
-		return FALSE
-
 	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
-	user_component.name = source_mob.real_name
 	target_soul.body_scan_needed = FALSE
 
-	var/datum/preferences/preferences = target_soul.client?.prefs
-	if(preferences)
-		user_component.desc = preferences.read_preference(/datum/preference/text/flavor_text)
-
+	SEND_SIGNAL(soulcatcher_soul, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE)
 	return TRUE
 
 /// Attempts to destroy the component. If `restore_mind` is true, it will attempt to place the mind back inside of the body and delete the soulcatcher soul.

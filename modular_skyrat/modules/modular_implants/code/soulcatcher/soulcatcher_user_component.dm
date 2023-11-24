@@ -63,18 +63,20 @@
 		outside_hearing = TRUE
 		toggle_sense(sense_to_toggle = "outside_hearing")
 
-	set_up()
+	refresh_soul_apperance()
 
 	RegisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE, PROC_REF(toggle_sense))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME, PROC_REF(change_name))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME, PROC_REF(reset_name))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, PROC_REF(set_room))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE, PROC_REF(refresh_soul_apperance))
 
 	return TRUE
 
 /// Configures the settings of the soulcatcher user to be in accordance with the parent mob
-/datum/component/soulcatcher_user/proc/set_up()
+/datum/component/soulcatcher_user/proc/refresh_soul_apperance(datum/source)
+	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
 	if(!parent_mob?.mind || !istype(parent_mob.mind))
 		return FALSE
@@ -252,6 +254,7 @@
 	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME)
 	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM)
 	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES)
+	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE)
 
 	return ..()
 

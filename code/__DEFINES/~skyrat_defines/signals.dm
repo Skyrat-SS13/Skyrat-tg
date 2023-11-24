@@ -103,5 +103,8 @@
 /// Whenever we need to check if our soulcatcher soul is able to internally hear/see?
 #define COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES "soulcatcher_check_internal_senses"
 
+/// WHenever we need to refresh the internal apperance of a soulcatcher soul.area
+#define COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE "soulcatcher_soul_refresh_apperance"
+
 /// Whenever we need the soulcatcher soul to communicate something.
 #define COMSIG_SOULCATCHER_SOUL_SAY "soulcatcher_soul_communicate"
