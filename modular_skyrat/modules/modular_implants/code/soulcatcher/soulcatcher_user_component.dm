@@ -56,10 +56,12 @@
 		leave_action.Grant(parent_mob)
 
 	if(!outside_sight)
-		parent_mob.become_blind(NO_EYES)
+		outside_sight = TRUE
+		toggle_sense(sense_to_toggle = "outside_sight")
 
 	if(!outside_hearing)
-		ADD_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+		outside_hearing = TRUE
+		toggle_sense(sense_to_toggle = "outside_hearing")
 
 	set_up()
 
@@ -137,18 +139,18 @@
 		if("external_hearing")
 			outside_hearing = !outside_hearing
 			if(outside_hearing)
-				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+				REMOVE_TRAIT(parent_mob, TRAIT_DEAF, SOULCATCHER_TRAIT)
 			else
-				ADD_TRAIT(parent_mob, TRAIT_DEAF, INNATE_TRAIT)
+				ADD_TRAIT(parent_mob, TRAIT_DEAF, SOULCATCHER_TRAIT)
 
 			status = outside_hearing
 
 		if("external_sight")
 			outside_sight = !outside_sight
 			if(outside_sight)
-				parent_mob.cure_blind(NO_EYES)
+				parent_mob.cure_blind(SOULCATCHER_TRAIT)
 			else
-				parent_mob.become_blind(NO_EYES)
+				parent_mob.become_blind(SOULCATCHER_TRAIT)
 
 			status = outside_sight
 
@@ -200,7 +202,7 @@
 /datum/component/soulcatcher_user/proc/reset_name(datum/source)
 	SIGNAL_HANDLER
 	var/mob/living/parent_mob = parent
-	if(!parent_mob?.mind?.name || !change_name(parent_mob.mind.name))
+	if(!parent_mob?.mind?.name || !change_name(new_name = parent_mob.mind.name))
 		return FALSE
 
 	return TRUE
@@ -216,7 +218,7 @@
 
 	return TRUE
 
-//// Is the soulcatcher soul able to see a message? `Emote` determines if the message is an emote or not.
+//// Is the soulcatcher soul able to witness a message? `Emote` determines if the message is an emote or not.
 /datum/component/soulcatcher_user/proc/check_internal_senses(datum/source, emote = FALSE)
 	SIGNAL_HANDLER
 	if(emote)

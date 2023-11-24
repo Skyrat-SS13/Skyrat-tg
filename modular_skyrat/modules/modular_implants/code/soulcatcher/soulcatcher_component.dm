@@ -190,19 +190,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!(target_soul in get_current_souls()) || !target_room)
 		return FALSE
 
-	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
-	if(!soul_component)
-		return FALSE
-
 	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
 	if(target_master_soulcatcher != src)
 		target_soul.forceMove(target_master_soulcatcher.parent)
 
+	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
 	var/datum/soulcatcher_room/original_room = soul_component?.current_room.resolve()
 	if(original_room)
 		original_room.current_souls -= target_soul
 
-	soul_component.current_room = WEAKREF(target_room)
+	var/datum/weakref/room_ref = WEAKREF(target_room)
+	SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, room_ref)
 	target_room.current_souls += target_soul
 
 	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
@@ -315,20 +313,30 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return TRUE
 
-/// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `soul_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
-/datum/soulcatcher_room/proc/remove_soul(mob/living/soulcatcher_soul/soul_to_remove)
-	if(!soul_to_remove || !(soul_to_remove in current_souls))
+/// Removes a soul from a soulcatcher room, leaving it as a ghost. Returns `FALSE` if the `mob_to_remove` cannot be found, otherwise returns `TRUE` after a successful deletion.
+/datum/soulcatcher_room/proc/remove_soul(mob/living/mob_to_remove)
+	if(!mob_to_remove || !(mob_to_remove in current_souls))
 		return FALSE
 
-	var/datum/component/soulcatcher_user/soul_component = soul_to_remove.GetComponent(/datum/component/soulcatcher_user)
-	if(!soul_component)
+	var/datum/component/soulcatcher_user/soul_component = mob_to_remove.GetComponent(/datum/component/soulcatcher_user)
+	if(soul_component)
+		qdel(soul_component)
+
+	current_souls -= mob_to_remove
+
+	var/mob/living/soulcatcher_soul/soul_to_remove = mob_to_remove
+	if(istype(soul_to_remove))
+		soul_to_remove.return_to_body()
+		qdel(soul_to_remove)
+
+		return TRUE
+
+	var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
+	if(!parent_soulcatcher || !parent_soulcatcher.parent)
 		return FALSE
 
-	current_souls -= soul_to_remove
-	soul_component.current_room = null
-
-	soul_to_remove.return_to_body()
-	qdel(soul_to_remove)
+	var/turf/current_tile = get_turf(parent_soulcatcher.parent)
+	mob_to_remove.forceMove(current_tile)
 
 	return TRUE
 
@@ -396,11 +404,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_souls)
-		var/datum/component/soulcatcher_user/soul_component = soul.GetComponent(/datum/component/soulcatcher_user)
-		if(!soul_component)
-			continue
-
-		if((emote && !soul_component.internal_sight) || (!emote && !soul_component.internal_hearing))
+		var/message_eligable = SEND_SIGNAL(soul, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, emote)
+		if(!message_eligable)
 			continue
 
 		to_chat(soul, message)

@@ -79,14 +79,9 @@
 			return FALSE
 
 	var/mob/living/soulcatcher_soul/target_soul
-	var/datum/component/soulcatcher_user/user_component
 	if(params["target_soul"])
 		target_soul = locate(params["target_soul"]) in target_room.current_souls
 		if(!target_soul)
-			return FALSE
-
-		user_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
-		if(!user_component)
 			return FALSE
 
 	switch(action)
