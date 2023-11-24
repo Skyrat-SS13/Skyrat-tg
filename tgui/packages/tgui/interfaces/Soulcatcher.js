@@ -203,9 +203,9 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to hear the outside world?"
                               onClick={() =>
-                                act('toggle_soul_outside_sense', {
+                                act('toggle_soul_sense', {
                                   target_soul: soul.reference,
-                                  sense_to_change: 'hearing',
+                                  sense_to_change: 'external_hearing',
                                   room_ref: room.reference,
                                 })
                               }>
@@ -218,9 +218,9 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to see the outside world?"
                               onClick={() =>
-                                act('toggle_soul_outside_sense', {
+                                act('toggle_soul_sense', {
                                   target_soul: soul.reference,
-                                  sense_to_change: 'sight',
+                                  sense_to_change: 'external_sight',
                                   room_ref: room.reference,
                                 })
                               }>
@@ -263,9 +263,9 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to speak?"
                               onClick={() =>
-                                act('toggle_soul_communication', {
+                                act('toggle_soul_sense', {
                                   target_soul: soul.reference,
-                                  communication_type: 'speech',
+                                  sense_to_change: 'able_to_speak',
                                   room_ref: room.reference,
                                 })
                               }>
@@ -278,9 +278,9 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to emote?"
                               onClick={() =>
-                                act('toggle_soul_communication', {
+                                act('toggle_soul_sense', {
                                   target_soul: soul.reference,
-                                  communication_type: 'emote',
+                                  sense_to_change: 'able_to_emote',
                                   room_ref: room.reference,
                                 })
                               }>
@@ -299,9 +299,10 @@ export const Soulcatcher = (props, context) => {
                                   fluid
                                   tooltip="Is the soul able to speak the container?"
                                   onClick={() =>
-                                    act('toggle_soul_external_communication', {
+                                    act('toggle_soul_sense', {
                                       target_soul: soul.reference,
-                                      communication_type: 'speech',
+                                      sense_to_change:
+                                        'able_to_speak_as_container',
                                       room_ref: room.reference,
                                     })
                                   }>
@@ -320,9 +321,10 @@ export const Soulcatcher = (props, context) => {
                                   fluid
                                   tooltip="Is the soul able to emote as the container?"
                                   onClick={() =>
-                                    act('toggle_soul_external_communication', {
+                                    act('toggle_soul_sense', {
                                       target_soul: soul.reference,
-                                      communication_type: 'emote',
+                                      sense_to_change:
+                                        'able_to_emote_as_container',
                                       room_ref: room.reference,
                                     })
                                   }>
@@ -341,8 +343,9 @@ export const Soulcatcher = (props, context) => {
                               fluid
                               tooltip="Is the soul able to rename themselves?"
                               onClick={() =>
-                                act('toggle_soul_renaming', {
+                                act('toggle_soul_sense', {
                                   target_soul: soul.reference,
+                                  sense_to_change: 'able_to_rename',
                                   room_ref: room.reference,
                                 })
                               }>

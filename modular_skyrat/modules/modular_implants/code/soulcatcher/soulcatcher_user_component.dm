@@ -152,11 +152,11 @@
 
 			status = outside_sight
 
-		if("internal_hearing")
+		if("hearing")
 			internal_hearing = !internal_hearing
 			status = internal_hearing
 
-		if("internal_sight")
+		if("sight")
 			internal_sight = !internal_sight
 			status = internal_sight
 
