@@ -315,7 +315,7 @@
 	if(borg.hasAffection)
 		to_chat(usr, span_warning("This unit already has a affection module installed!"))
 		return FALSE
-	if(!(R_TRAIT_WIDE in borg.model.model_features))
+	if(!(TRAIT_R_WIDE in borg.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis does not support this module."))
 		return FALSE
 
@@ -354,12 +354,15 @@
 	var/mob/living/silicon/robot/borg = user
 	var/mob/living/mob = target
 
-	if(check_zone(borg.zone_selected) == "head")
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
-		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		if(check_zone(borg.zone_selected) == "head")
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+		else
+			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
+			playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 	else
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
-		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
+		to_chat(user, span_warning("ERROR: [target] is on the Do Not Lick registry!"))
 
 // Quadruped nose - Boop
 /obj/item/quadborg_nose
@@ -375,8 +378,12 @@
 	. = ..()
 	if(!proximity)
 		return
-	do_attack_animation(target, null, src)
-	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
+
+	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
+		do_attack_animation(target, null, src)
+		user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
+	else
+		to_chat(user, span_warning("ERROR: [target] is on the No Nosing registry!"))
 
 /// The Shrinkening
 /mob/living/silicon/robot
@@ -396,7 +403,7 @@
 		if(borg.hasShrunk)
 			to_chat(usr, span_warning("This unit already has a shrink module installed!"))
 			return FALSE
-		if(R_TRAIT_SMALL in borg.model.model_features)
+		if(TRAIT_R_SMALL in borg.model.model_features)
 			to_chat(usr, span_warning("This unit's chassis cannot be shrunk any further."))
 			return FALSE
 
