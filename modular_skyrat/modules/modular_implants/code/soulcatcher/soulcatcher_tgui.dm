@@ -211,7 +211,7 @@
 			if(!message_to_send)
 				return FALSE
 
-			target_room.send_message(message_to_send, message_sender, emote)
+			target_room.send_message(message_to_send, message_sender, usr, emote)
 			return TRUE
 
 

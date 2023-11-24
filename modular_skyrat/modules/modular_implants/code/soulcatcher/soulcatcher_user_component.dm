@@ -104,7 +104,7 @@
 	if(!room) // uhoh.
 		return FALSE
 
-	room.send_message(message_to_say, parent_mob, FALSE)
+	room.send_message(message_to_say, name, parent_mob, FALSE)
 	return TRUE
 
 /// What do we want to do when a mob tries to do a `me` emote?
@@ -124,7 +124,7 @@
 	if(!room) // uhoh.
 		return FALSE
 
-	room.send_message(message_to_say, parent_mob, TRUE)
+	room.send_message(message_to_say, name, parent_mob, TRUE)
 	return TRUE
 
 /// Modifies the sense of the parent mob based on the variable `sense_to_toggle`. Returns the state of the modified variable

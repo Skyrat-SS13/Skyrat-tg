@@ -345,14 +345,14 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  *
  * Arguments
  * * message_to_send - The message we want to send to the occupants of the room
- * * message_sender - The person that is sending the message. This is not required.
+ * * sender_name - The person that is sending the message. This is not required.
+ * * sender_mob - The person that is sending the message. This is not required.
  * * emote - Is the message sent an emote or not?
  */
-/datum/soulcatcher_room/proc/send_message(message_to_send, mob/living/message_sender, emote = FALSE)
+/datum/soulcatcher_room/proc/send_message(message_to_send, sender_name, mob/living/sender_mob, emote = FALSE)
 	if(!message_to_send) //Why say nothing?
 		return FALSE
 
-	var/sender_name = message_sender
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/master_resolved = master_soulcatcher.resolve()
 	if(!master_resolved)
@@ -366,12 +366,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		soulcatcher_icon = tag
 
 	var/datum/component/soulcatcher_user/user_component
-	if(istype(message_sender))
-		user_component = message_sender.GetComponent(/datum/component/soulcatcher_user)
+	if(istype(sender_mob))
+		user_component = sender_name.GetComponent(/datum/component/soulcatcher_user)
 		if(!istype(user_component))
 			return FALSE
-
-		sender_name = user_component.name
 
 	if(istype(user_component) && user_component.communicating_externally)
 		var/obj/item/parent_object = parent_soulcatcher.parent
@@ -383,10 +381,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		if(emote)
 			parent_object.manual_emote(html_decode(message_to_send))
-			log_emote("[message_sender] in [name] soulcatcher room emoted: [message_to_send], as an external object")
+			log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send], as an external object")
 		else
 			parent_object.say(html_decode(message_to_send))
-			log_say("[message_sender] in [name] soulcatcher room said: [message_to_send], as an external object")
+			log_say("[sender_mob] in [name] soulcatcher room said: [message_to_send], as an external object")
 
 		parent_object.name = temp_name
 		return TRUE
@@ -397,11 +395,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!emote)
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>says, \"[message_to_send]\"</font>"
-		log_say("[sender_name] in [name] soulcatcher room said: [message_to_send]")
+		log_say("[sender_mob] in [name] soulcatcher room said: [message_to_send]")
 	else
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"
 		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>[message_to_send]</font>"
-		log_emote("[sender_name] in [name] soulcatcher room emoted: [message_to_send]")
+		log_emote("[sender_mob] in [name] soulcatcher room emoted: [message_to_send]")
 
 	for(var/mob/living/soul as anything in current_souls)
 		var/message_eligable = SEND_SIGNAL(soul, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, emote)
