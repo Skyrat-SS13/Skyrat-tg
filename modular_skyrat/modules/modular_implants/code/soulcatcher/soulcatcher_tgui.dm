@@ -243,14 +243,14 @@
 	var/list/data = list()
 
 	var/mob/living/parent_mob = parent
-	var/mob/living/soulcatcher_soul/user_soul = parent_mob
-	if(!istype(user_soul))
+	if(!istype(parent_mob))
 		return FALSE //uhoh
 
+	var/mob/living/soulcatcher_soul/user_soul = parent_mob
 	data["user_data"] = list(
 		"name" = name,
 		"description" = desc,
-		"reference" = REF(user_soul),
+		"reference" = REF(parent_mob),
 		"internal_hearing" = internal_hearing,
 		"internal_sight" = internal_sight,
 		"outside_hearing" = outside_hearing,
@@ -280,7 +280,7 @@
 	var/datum/component/soulcatcher/master_soulcatcher = current_soulcatcher_room.master_soulcatcher.resolve()
 	data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
 
-	for(var/mob/living/soulcatcher_soul/soul in current_soulcatcher_room.current_souls)
+	for(var/mob/living/soul in current_soulcatcher_room.current_souls)
 		if(soul == user_soul)
 			continue
 

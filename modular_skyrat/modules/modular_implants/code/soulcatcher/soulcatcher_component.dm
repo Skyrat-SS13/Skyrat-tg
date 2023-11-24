@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return room_list
 
 /// Transfers a soul from a soulcatcher room to another soulcatcher room. Returns `FALSE` if the target room or target soul cannot be found.
-/datum/component/soulcatcher/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
+/datum/component/soulcatcher/proc/transfer_soul(mob/living/target_soul, datum/soulcatcher_room/target_room)
 	if(!(target_soul in get_current_souls()) || !target_room)
 		return FALSE
 
@@ -291,12 +291,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
 	soul_component.current_room = WEAKREF(src)
-
-	var/datum/preferences/preferences = new_soul.client?.prefs
-	if(preferences)
-		soul_component.ooc_notes = preferences.read_preference(/datum/preference/text/ooc_notes)
-		if(!new_soul.body_scan_needed)
-			soul_component.desc = preferences.read_preference(/datum/preference/text/flavor_text)
 
 	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
 	to_chat(new_soul, span_notice(room_description))
@@ -421,7 +415,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return TRUE
 
 /datum/soulcatcher_room/Destroy(force, ...)
-	for(var/mob/living/soulcatcher_soul/soul as anything in current_souls)
+	for(var/mob/living/soul as anything in current_souls)
 		remove_soul(soul)
 
 	return ..()

@@ -131,7 +131,7 @@
 	var/list/soul_list = list()
 	for(var/datum/soulcatcher_room/room as anything in linked_soulcatcher.soulcatcher_rooms)
 		for(var/mob/living/soulcatcher_soul/soul as anything in room.current_souls)
-			if(!soul.round_participant || soul.body_scan_needed)
+			if(!istype(soul) || !soul.round_participant || soul.body_scan_needed)
 				continue
 
 			soul_list += soul
