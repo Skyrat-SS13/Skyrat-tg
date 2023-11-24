@@ -134,7 +134,7 @@
 	new /obj/item/clothing/head/hats/intern(src)
 
 /obj/structure/closet/secure_closet/nanotrasen_consultant
-	name = "\proper nanotrasen consultant's locker"
+	name = "nanotrasen consultant's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
@@ -152,9 +152,7 @@
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/storage/bag/garment/nanotrasen_consultant(src)
 
-//Choice Beacon, I hope in the future they're going to be given proper unique gun but this will do.
-
-
+//Choice Beacon, I hope in the future they're going to be given a proper unique gun but this will do.
 /obj/item/choice_beacon/ntc
 	name = "gunset beacon"
 	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
