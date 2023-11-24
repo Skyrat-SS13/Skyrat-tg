@@ -104,7 +104,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NIFSOFT "nifsoft"
 
 /// Trait that was granted by a soulcatcher
-#define SOULCATCHER_TRAIT "soulcatcher"
+#define TRAIT_SOULCATCHER "soulcatcher"
 
 /// Trait given to a piece of eyewear that allows the user to use NIFSoft HUDs
 #define TRAIT_NIFSOFT_HUD_GRANTER "nifsoft_hud_granter"
