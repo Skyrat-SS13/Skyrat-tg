@@ -47,7 +47,12 @@
 		addtimer(CALLBACK(src, PROC_REF(finish_setup), cogger_apc), SET_UP_TIME)
 
 		send_clock_message(null, span_brass(span_bold("[user] has installed an integration cog into [cogger_apc].")), msg_ghosts = FALSE)
-		notify_ghosts("[user] has installed an integration cog into [cogger_apc]", source = user, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Integration cog")
+		notify_ghosts("[user] has installed an integration cog into [cogger_apc]",
+			source = user,
+			action = NOTIFY_ORBIT,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			header = "Integration cog",
+		)
 
 
 /// Finish setting up the cog 5 minutes after insertion
