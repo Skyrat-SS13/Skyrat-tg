@@ -37,12 +37,11 @@
 		return UI_CLOSE
 
 	if(!QDELETED(brain_loc.owner))
-		if(brain_loc.owner == user)
-			return min(
-				ui_status_user_is_abled(user, src),
-				ui_status_only_living(user),
-			)
-		else return UI_CLOSE
+		return min(
+			ui_status_user_is_abled(user, src),
+			ui_status_only_living(user),
+			ui_status_user_is_adjacent(user, brain_loc.owner),
+		)
 	return ..()
 
 /obj/item/modular_computer/pda/synth/RemoveID(mob/user)
