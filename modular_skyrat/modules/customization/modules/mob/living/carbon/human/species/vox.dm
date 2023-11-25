@@ -47,10 +47,10 @@
 
 /datum/species/vox/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Vox Tail", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"snout" = list(MUTANT_INDEX_NAME = "Vox Snout", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"spines" = list(MUTANT_INDEX_NAME = "Vox Bands", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"tail" = list("Vox Tail", FALSE),
+		"legs" = list(DIGITIGRADE_LEGS,FALSE),
+		"snout" = list("Vox Snout", FALSE),
+		"spines" = list("Vox Bands", TRUE),
 	)
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)

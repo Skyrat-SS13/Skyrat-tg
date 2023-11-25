@@ -45,8 +45,8 @@
 
 /datum/species/akula/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Akula", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 /datum/species/akula/get_species_description()

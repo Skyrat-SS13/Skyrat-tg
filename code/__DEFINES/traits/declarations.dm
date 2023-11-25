@@ -124,6 +124,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NUKEIMMUNE "nuke_immunity"
 /// Can't be given viruses
 #define TRAIT_VIRUSIMMUNE "virus_immunity"
+/// Won't become a husk under any circumstances
+#define TRAIT_UNHUSKABLE "trait_unhuskable"
 /// Reduces the chance viruses will spread to this mob, and if the mob has a virus, slows its advancement
 #define TRAIT_VIRUS_RESISTANCE "virus_resistance"
 #define TRAIT_GENELESS "geneless"
@@ -162,6 +164,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOBLOOD "noblood"
 /// This just means that the carbon will always have functional liverless metabolism
 #define TRAIT_LIVERLESS_METABOLISM "liverless_metabolism"
+/// This carbon can't be overdosed by chems
+#define TRAIT_OVERDOSEIMMUNE "overdose_immune"
 /// Humans with this trait cannot be turned into zombies
 #define TRAIT_NO_ZOMBIFY "no_zombify"
 /// Carbons with this trait can't have their DNA copied by diseases nor changelings
@@ -209,6 +213,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOCRITDAMAGE "no_crit"
 ///Added to mob or mind, changes the icons of the fish shown in the minigame UI depending on the possible reward.
 #define TRAIT_REVEAL_FISH "reveal_fish"
+
+/// Added to a mob, allows that mob to experience flavour-based moodlets when examining food
+#define TRAIT_REMOTE_TASTING "remote_tasting"
 
 /// Stops the mob from slipping on water, or banana peels, or pretty much anything that doesn't have [GALOSHES_DONT_HELP] set
 #define TRAIT_NO_SLIP_WATER "noslip_water"
@@ -535,6 +542,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MOVE_UPSIDE_DOWN "move_upside_down"
 /// Disables the floating animation. See above.
 #define TRAIT_NO_FLOATING_ANIM "no-floating-animation"
+
+/// Cannot be turned into a funny skeleton by the plasma river
+#define TRAIT_NO_PLASMA_TRANSFORM "no_plasma_transform"
 
 /// Weather immunities, also protect mobs inside them.
 #define TRAIT_LAVA_IMMUNE "lava_immune" //Used by lava turfs and The Floor Is Lava.
@@ -973,4 +983,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait given to mobs that we do not want to mindswap
 #define TRAIT_NO_MINDSWAP "no_mindswap"
 
+/// Trait given to foam darts that have an insert in them
+#define TRAIT_DART_HAS_INSERT "dart_has_insert"
 // END TRAIT DEFINES

@@ -5,15 +5,15 @@
 
 /datum/species/lizard/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Smooth", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"spines" = list(MUTANT_INDEX_NAME = "Long + Membrane", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"frills" = list(MUTANT_INDEX_NAME = "Short", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"horns" = list(MUTANT_INDEX_NAME = "Curled", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"body_markings" = list(MUTANT_INDEX_NAME = "Light Belly", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Smooth", TRUE),
+		"snout" = list("Sharp + Light", TRUE),
+		"spines" = list("Long + Membrane", TRUE),
+		"frills" = list("Short", TRUE),
+		"horns" = list("Curled", TRUE),
+		"body_markings" = list("Light Belly", TRUE),
+		"legs" = list(DIGITIGRADE_LEGS,FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
 	)
 
 /datum/species/lizard/randomize_features()
