@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(antag_opt_in_strings, list(
 /// Prefers not to be a target. Will still be a potential target if playing sec or command.
 #define OPT_IN_NOT_TARGET 0
 
-/// The minimum optin level for people playing sec.
+/// The minimum opt-in level for people playing sec.
 #define SECURITY_OPT_IN_LEVEL OPT_IN_YES_KILL
-/// The minimum optin level for people playing command.
+/// The minimum opt-in level for people playing command.
 #define COMMAND_OPT_IN_LEVEL OPT_IN_YES_KILL

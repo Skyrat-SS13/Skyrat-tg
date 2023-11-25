@@ -113,7 +113,7 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
-		// SKYRAT EDIT ADDITION BEGIN - Antag optin (Only security and command can be targetted)
+		// SKYRAT EDIT ADDITION BEGIN - Antag opt-in (Only security and command can be targetted)
 		if (!possible_target.assigned_role?.heretic_sac_target)
 			continue
 		// SKYRAT EDIT ADDITION END

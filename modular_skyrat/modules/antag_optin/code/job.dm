@@ -8,15 +8,17 @@
 
 /// Updates [minimum_opt_in_level] [heretic_sac_target] and [contractable].
 /datum/job/proc/update_opt_in_vars()
-	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		if (isnull(minimum_opt_in_level))
-			minimum_opt_in_level = get_initial_opt_in_level()
-		if (isnull(heretic_sac_target))
-			heretic_sac_target = initialize_heretic_target_status()
-		if (isnull(contractable))
-			contractable = initialize_contractable_status()
+	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		return
 
-		update_opt_in_desc_suffix()
+	if(isnull(minimum_opt_in_level))
+		minimum_opt_in_level = get_initial_opt_in_level()
+	if(isnull(heretic_sac_target))
+		heretic_sac_target = initialize_heretic_target_status()
+	if(isnull(contractable))
+		contractable = initialize_contractable_status()
+
+	update_opt_in_desc_suffix()
 
 /// Returns this job's initial opt in level, taking into account departmental bitflags.
 /datum/job/proc/get_initial_opt_in_level()
@@ -33,7 +35,7 @@
 		return TRUE
 	return FALSE
 
-/// Determines if this job should be targettable by contractors.
+/// Determines if this job should be targetable by contractors.
 /datum/job/proc/initialize_contractable_status()
 	if (departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY))
 		return TRUE
@@ -64,6 +66,8 @@
 /datum/controller/subsystem/job/SetupOccupations()
 	. = ..()
 
-	if (!CONFIG_GET(flag/disable_antag_opt_in_preferences))
-		for (var/datum/job/job as anything in all_occupations)
-			job.update_opt_in_vars()
+	if(CONFIG_GET(flag/disable_antag_opt_in_preferences))
+		return
+
+	for(var/datum/job/job as anything in all_occupations)
+		job.update_opt_in_vars()

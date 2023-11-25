@@ -15,7 +15,7 @@
 
 /// Gets the actual opt-in level used for determining targets.
 /datum/mind/proc/get_effective_opt_in_level()
-	return (max(ideal_opt_in_level, get_job_opt_in_level()))
+	return max(ideal_opt_in_level, get_job_opt_in_level())
 
 /// Returns the opt in level of our job, deferring to our ideal if there is no level.
 /datum/mind/proc/get_job_opt_in_level()

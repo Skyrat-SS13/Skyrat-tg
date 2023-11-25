@@ -315,7 +315,7 @@
 		if (heretic_sac_target)
 			info += span_bolddanger("This job can be sacrificed by heretics.")
 		if (contractable)
-			info += span_bolddanger("This job can be targetted by contractors.")
+			info += span_bolddanger("This job can be targeted by contractors.")
 	//SKYRAT EDIT ADDITION END
 
 	//SKYRAT EDIT ADDITION START - ALTERNATIVE_JOB_TITLES

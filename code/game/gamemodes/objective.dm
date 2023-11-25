@@ -126,7 +126,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	return target
 
 //dupe_search_range is a list of antag datums / minds / teams
-//optinlevel is our list of people who have opted in, if you're not on that you're not a valid target
 /datum/objective/proc/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
 	if(!dupe_search_range)
@@ -138,7 +137,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
 
-	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences)// SKYRAT EDIT ADDITION - ANTAG OPT-IN
+	var/opt_in_disabled = CONFIG_GET(flag/disable_antag_opt_in_preferences) // SKYRAT EDIT ADDITION - ANTAG OPT-IN
 
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		var/target_area = get_area(possible_target.current)
@@ -1025,4 +1024,3 @@ GLOBAL_LIST_EMPTY(possible_items)
 	var/area/target_area = get_area(target)
 
 	return (istype(user_area, dropoff) && istype(target_area, dropoff))
-
