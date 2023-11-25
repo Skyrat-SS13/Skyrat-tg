@@ -115,9 +115,9 @@
 /datum/mod_theme/security // Security Officer
 	default_skin = "security"
 	armor_type = /datum/armor/mod_theme_security
-		skins = list(
+	skins = list(
 		"security" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod_clothing.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = null,
@@ -145,7 +145,7 @@
 			),
 		),
 		"redsec" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod_clothing.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = null,
@@ -190,7 +190,7 @@
 	default_skin = "safeguard"
 	skins = list(
 		"safeguard" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod_clothing.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = null,
@@ -216,7 +216,7 @@
 			),
 		),
 		"redsafe" = list(
-			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod.dmi',
+			MOD_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/obj/clothing/modsuit/mod_clothing.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = null,

@@ -58,6 +58,7 @@
 	name = "MOD pepper shoulders module"
 	desc = "A module that attaches two pepper sprayers on shoulders of a MODsuit, reacting to touch with a spray around the user."
 	icon_state = "pepper_shoulder"
+	overlay_icon_file = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_modules.dmi' // SKYRAT ADDITION
 	module_type = MODULE_USABLE
 	complexity = 1
 	use_power_cost = DEFAULT_CHARGE_DRAIN
@@ -83,6 +84,19 @@
 	smoke.set_up(1, holder = src, location = get_turf(src), carry = capsaicin_holder)
 	smoke.start(log = TRUE)
 	QDEL_NULL(capsaicin_holder) // Reagents have a ref to their holder which has a ref to them. No leaks please.
+
+// SKYRAT ADDITION BEGIN -- BLUESEC MODS
+// i don't know how and i don't know why but if you try and modularize these lines of code it won't work as intended
+// and i don't feel like looking into the parent procs and shit to figure out why exactly
+/obj/item/mod/module/pepper_shoulders/generate_worn_overlay(mutable_appearance/standing)
+	if(mod.skin == "security"||"redsec")
+		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]"
+		overlay_state_use = "[initial(overlay_state_use)]-[mod.skin]"
+	else
+		overlay_state_inactive = "[initial(overlay_state_inactive)]"
+		overlay_state_use = "[initial(overlay_state_use)]"
+	return ..()
+// SKYRAT ADDITION END -- BLUESEC MODS
 
 /obj/item/mod/module/pepper_shoulders/proc/on_check_block()
 	SIGNAL_HANDLER
@@ -268,6 +282,7 @@
 	name = "MOD mirage grenade dispenser module"
 	desc = "This module can create mirage grenades at the user's liking. These grenades create holographic copies of the user."
 	icon_state = "mirage_grenade"
+	overlay_icon_file = 'modular_skyrat/master_files/icons/mob/clothing/modsuit/mod_modules.dmi' // SKYRAT ADDITION
 	cooldown_time = 20 SECONDS
 	overlay_state_inactive = "module_mirage_grenade"
 	dispense_type = /obj/item/grenade/mirage
@@ -278,6 +293,17 @@
 		return
 	var/obj/item/grenade/mirage/grenade = .
 	grenade.arm_grenade(mod.wearer)
+
+// SKYRAT ADDITION BEGIN -- BLUESEC MODS
+// i don't know how and i don't know why but if you try and modularize these lines of code it won't work as intended
+// and i don't feel like looking into the parent procs and shit to figure out why exactly
+/obj/item/mod/module/dispenser/mirage/generate_worn_overlay(mutable_appearance/standing)
+	if(mod.skin == "security"||"redsec")
+		overlay_state_inactive = "[initial(overlay_state_inactive)]-[mod.skin]"
+	else
+		overlay_state_inactive = "[initial(overlay_state_inactive)]"
+	return ..()
+// SKYRAT ADDITION END -- BLUESEC MODS
 
 /obj/item/grenade/mirage
 	name = "mirage grenade"
@@ -424,7 +450,7 @@
 
 		if(oldgroup == newgroup)
 			return
-			
+
 		sorted_creatures[oldgroup] -= creature
 
 	sorted_creatures[newgroup] += creature
