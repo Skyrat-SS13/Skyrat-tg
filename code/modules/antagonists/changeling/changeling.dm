@@ -934,11 +934,13 @@
 			attempted_fake_scar.fake = TRUE
 
 	user.regenerate_icons()
-
+	user.name = user.get_visible_name()
+	current_profile = chosen_profile
 	// SKYRAT EDIT START
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
 	user.regenerate_icons()
+	user.name = user.get_visible_name()
 	current_profile = chosen_profile
 	// SKYRAT EDIT END
 
