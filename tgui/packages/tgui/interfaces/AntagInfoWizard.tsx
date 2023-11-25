@@ -3,6 +3,9 @@ import { useBackend } from '../backend';
 import { Box, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const teleportstyle = {
   color: 'yellow',
@@ -48,12 +51,13 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
+// SKYRAT CHANGE height from 630 to 700
 export const AntagInfoWizard = (props, context) => {
   const { data, act } = useBackend<Info>(context);
   const { ritual, objectives, can_change_objective } = data;
 
   return (
-    <Window width={620} height={630} theme="wizard">
+    <Window width={620} height={700} theme="wizard">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -78,6 +82,11 @@ export const AntagInfoWizard = (props, context) => {
                 <Stack.Item>
                   <RitualPrintout ritual={ritual} />
                 </Stack.Item>
+                {/* SKYRAT EDIT ADDITION START */}
+                <Stack.Item>
+                  <Rules />
+                </Stack.Item>
+                {/* SKYRAT EDIT ADDITION END */}
               </Stack>
             </Section>
           </Stack.Item>

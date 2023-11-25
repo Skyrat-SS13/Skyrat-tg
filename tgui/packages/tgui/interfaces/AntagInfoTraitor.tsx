@@ -4,6 +4,9 @@ import { BlockQuote, Button, Dimmer, Section, Stack } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -48,6 +51,14 @@ const IntroductionSection = (props, context) => {
         <Stack.Item grow>
           <ObjectivePrintout objectives={objectives} />
         </Stack.Item>
+        {/* SKYRAT EDIT ADDITION START */}
+        <Stack.Item grow>
+          {/* SKYRAT EDIT ADDITION START */}
+          <Stack.Item>
+            <Rules />
+          </Stack.Item>
+        </Stack.Item>
+        {/* SKYRAT EDIT ADDITION END */}
       </Stack>
     </Section>
   );
@@ -218,11 +229,12 @@ const CodewordsSection = (props, context) => {
   );
 };
 
+// SKYRAT EDIT: change height from 580 to 650
 export const AntagInfoTraitor = (props, context) => {
   const { data } = useBackend<Info>(context);
   const { theme } = data;
   return (
-    <Window width={620} height={580} theme={theme}>
+    <Window width={620} height={650} theme={theme}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>

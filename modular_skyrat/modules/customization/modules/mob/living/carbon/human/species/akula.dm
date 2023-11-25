@@ -22,7 +22,6 @@
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING,
 		TRAIT_SLICK_SKIN,
@@ -30,10 +29,6 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
 	outfit_important_for_life = /datum/outfit/akula
 	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -48,6 +43,12 @@
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 
+/datum/species/akula/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Akula", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
 /datum/species/akula/get_species_description()
 	return placeholder_description
 
@@ -61,7 +62,8 @@
 	"Yet, despite their differences, all Agurkrral citizens swim freely in their kingdom's waters. Even the most controlling border princes, even those in the Old Principalities working the slave trade, know better than to openly erode a citizen's right to life, property, and speech. Any alien species can become an Agurkrral citizen, and even non-citizens enjoy the right to life, with executions outright banned. The aristocracy remains well-educated, even the edgerunner warlords of the New Principalities, and the Kingdom as a whole enjoys its status as a nation that's now a true rival to Sol. Larger, more populated, and better developed; though, having to 'integrate' Solarian technologies, goods, and peoples to fully succeed. The Azuleans are even known as an environmentally-focused people; although they hold no care for lands they cannot make use of, modern nobles are still in charge of maintaining the biosphere of lands they control, to allow their strangely engineered flora and fauna to thrive, and for the people to have healthy and clean waters to live in.",
 	)
 
-/datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/akula/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/secondary_color
 	var/tertiary_color
@@ -83,9 +85,10 @@
 			main_color = "#DB35DE"
 			secondary_color = "#BE3AFE"
 			tertiary_color = "#F5E2EE"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = secondary_color
-	human_mob.dna.features["mcolor3"] = tertiary_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = secondary_color
+	features["mcolor3"] = tertiary_color
+	return features
 
 /datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/akula)
 	var/main_color = "#1CD3E5"

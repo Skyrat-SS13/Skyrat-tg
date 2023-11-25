@@ -681,7 +681,7 @@
 		var/list/details = disguise_model.borg_skins[skin]
 		var/image/reskin = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 		if (!isnull(details[SKIN_FEATURES]))
-			if (R_TRAIT_WIDE in details[SKIN_FEATURES])
+			if (TRAIT_R_WIDE in details[SKIN_FEATURES])
 				reskin.pixel_x -= 16
 		reskin_icons[skin] = reskin
 	var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), cyborg), radius = 38, require_near = TRUE)
