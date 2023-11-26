@@ -4,8 +4,10 @@
 /datum/augment_item/organ/apply(mob/living/carbon/human/human_holder, character_setup = FALSE, datum/preferences/prefs)
 	if(character_setup)
 		return
+
+	var/obj/item/organ/organ_path = path // cast this to an organ so we can get the slot from it using initial()
 	var/obj/item/organ/new_organ = new path()
-	new_organ.copy_traits_from(human_holder.get_organ_slot(ORGAN_SLOT_TONGUE))
+	new_organ.copy_traits_from(human_holder.get_organ_slot(initial(organ_path.slot)))
 	new_organ.Insert(human_holder, special = TRUE, drop_if_replaced = FALSE)
 
 //HEARTS

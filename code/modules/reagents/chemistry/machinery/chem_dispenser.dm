@@ -136,7 +136,6 @@
 	//SKYRAT EDIT CHANGE END
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
-	. = ..()
 	if(dispensable_reagents != null && !dispensable_reagents.len)
 		dispensable_reagents = default_dispensable_reagents
 	if(dispensable_reagents)
@@ -161,6 +160,8 @@
 		emagged_reagents = default_emagged_reagents
 	if(emagged_reagents)
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+
+	. = ..() // So that we call RefreshParts() after adjusting the lists
 
 	if(is_operational)
 		begin_processing()
@@ -304,7 +305,7 @@
 		beaker_data["pH"] = round(beaker.reagents.ph, 0.01)
 		beaker_data["currentVolume"] = round(beaker.reagents.total_volume, 0.01)
 		var/list/beakerContents = list()
-		if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+		if(length(beaker.reagents.reagent_list))
 			for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
 				beakerContents += list(list("name" = reagent.name, "volume" = round(reagent.volume, 0.01))) // list in a list because Byond merges the first list...
 		beaker_data["contents"] = beakerContents
@@ -436,6 +437,15 @@
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(ui.user)
+
+	var/result = handle_ui_act(action, params, ui, state)
+	if(isnull(result))
+		result = FALSE
+	return result
+
+/// Same as ui_act() but to be used by subtypes exclusively
+/obj/machinery/chem_dispenser/proc/handle_ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+	return null
 
 /obj/machinery/chem_dispenser/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
