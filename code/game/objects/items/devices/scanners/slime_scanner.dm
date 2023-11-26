@@ -14,7 +14,7 @@
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.30, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 0.20)
 
 /obj/item/slime_scanner/attack(mob/living/living_mob, mob/living/user)
-	if(user.stat || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
+	if(user.stat || !user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL : if(user.stat || !user.can_read(src) || user.is_blind())
 		return
 	if (!isslime(living_mob))
 		to_chat(user, span_warning("This device can only scan slimes!"))
