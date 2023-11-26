@@ -55,16 +55,6 @@
 	. = ..()
 	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
 
-///Adds signal handlers on the synth for charging in borg chargers
-/obj/item/organ/internal/stomach/synth/proc/add_synth_signals(mob/living/carbon/stomach_owner)
-	SIGNAL_HANDLER
-	RegisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(on_borg_charge))
-
-///Removes signal handlers on the synth for charging in borg chargers
-/obj/item/organ/internal/stomach/synth/proc/remove_synth_signals(mob/living/carbon/stomach_owner)
-	SIGNAL_HANDLER
-	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
-
 ///Handles charging the synth from borg chargers
 /obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
 	SIGNAL_HANDLER
