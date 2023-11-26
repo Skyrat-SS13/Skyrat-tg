@@ -150,7 +150,7 @@
 	name = "\improper X-ray laser gun"
 	desc = "A high-power laser gun capable of expelling concentrated X-ray blasts that pass through multiple soft targets and heavier materials."
 	icon_state = "xray"
-	//SKYRAT EDIT - ORIGINAL: WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL //SKYRAT EDIT - ORIGINAL: WEIGHT_CLASS_BULKY
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/xray)
 	ammo_x_offset = 3
