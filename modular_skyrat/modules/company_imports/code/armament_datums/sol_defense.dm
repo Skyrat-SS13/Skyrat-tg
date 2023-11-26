@@ -20,6 +20,14 @@
 /datum/armament_entry/company_import/sol_defense/armor/sf_soft_vest
 	item_type = /obj/item/clothing/suit/armor/sf_peacekeeper
 
+/datum/armament_entry/company_import/sol_defense/armor/normal_vest
+	name = "type I vest - normal"
+	item_type = /obj/item/clothing/suit/armor/vest/alt
+
+/datum/armament_entry/company_import/sol_defense/armor/slim_vest
+	name = "type I vest - slim"
+	item_type = /obj/item/clothing/suit/armor/vest
+
 /datum/armament_entry/company_import/sol_defense/armor_hardened
 	subcategory = "Hardened Armor"
 	cost = PAYCHECK_CREW * 3
@@ -94,6 +102,11 @@
 /datum/armament_entry/company_import/sol_defense/longarm/elite
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle/marksman
 	cost = PAYCHECK_COMMAND * 12
+
+/datum/armament_entry/company_import/sol_defense/longarm/bogseo
+	item_type = /obj/item/gun/ballistic/automatic/xhihao_smg
+	cost = PAYCHECK_COMMAND * 10
+	contraband = TRUE
 
 /datum/armament_entry/company_import/sol_defense/longarm/infanterie
 	item_type = /obj/item/gun/ballistic/automatic/sol_rifle

@@ -6,20 +6,6 @@
 
 #define SKIN_FEATURES "skin_features" //for the new system of borg making
 
-//Defines for model features, set in the model_features list of a robot model datum. Are they a dogborg? Is the model small? etc.
-/// Cyborgs with unique sprites for when they get totally broken down.
-#define R_TRAIT_UNIQUEWRECK	"unique_wreck"
-/// Or when tipped over.
-#define R_TRAIT_UNIQUETIP	"unique_tip"
-/// 64x32 skins
-#define R_TRAIT_WIDE		"wide_borg"
-/// 32x64 skins
-#define R_TRAIT_TALL		"tall_borg"
-/// Any model small enough to reject the shrinker upgrade.
-#define R_TRAIT_SMALL		"small_chassis"
-/// Any model that has a custom front panel
-#define R_TRAIT_UNIQUEPANEL "unique_openpanel"
-
 // Icon file locations for modular borg icons
 #define CYBORG_ICON_STANDARD 'modular_skyrat/modules/borgs/icons/robots.dmi'
 
