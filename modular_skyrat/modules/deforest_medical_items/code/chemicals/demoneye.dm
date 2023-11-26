@@ -31,6 +31,10 @@
 	addiction_types = list(/datum/addiction/stimulants = 15)
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
+	/// What the original color of the user's left eye is
+	var/user_left_eye_color
+	/// What the original color of the user's right eye is
+	var/user_right_eye_color
 
 /datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/human/our_guy)
 	. = ..()
@@ -41,6 +45,9 @@
 	ADD_TRAIT(our_guy, TRAIT_NOHARDCRIT, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_NUMBED, TRAIT_NARCOTICS)
+
+	user_left_eye_color = our_guy.eye_color_left
+	user_right_eye_color = our_guy.eye_color_right
 
 	our_guy.eye_color_left = BLOODCULT_EYE
 	our_guy.eye_color_right = BLOODCULT_EYE
@@ -73,8 +80,8 @@
 	REMOVE_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
 	REMOVE_TRAIT(our_guy, TRAIT_NUMBED, TRAIT_NARCOTICS)
 
-	our_guy.eye_color_left = initial(our_guy.eye_color_left)
-	our_guy.eye_color_right = initial(our_guy.eye_color_right)
+	our_guy.eye_color_left = user_left_eye_color
+	our_guy.eye_color_right = user_right_eye_color
 	our_guy.update_body()
 
 	our_guy.sound_environment_override = NONE

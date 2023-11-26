@@ -193,6 +193,7 @@
 
 // Temp visual that changes color for that bootleg sandevistan effect
 /obj/effect/temp_visual/decoy/twitch_afterimage
+	duration = 0.75 SECONDS
 	/// The color matrix it should be at spawn
 	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
 	/// The color matrix it should be by the time it despawns
