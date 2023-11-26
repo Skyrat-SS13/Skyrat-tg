@@ -170,10 +170,10 @@
 	armor_type = /datum/armor/mod_theme_syndicate
 
 /datum/armor/mod_theme_syndicate
-	melee = 20
-	bullet = 25
-	laser = 15
-	energy = 20
+	melee = 30
+	bullet = 35
+	laser = 25
+	energy = 30
 	bomb = 40
 	bio = 100
 	fire = 50
@@ -185,19 +185,19 @@
 	armor_mod = /datum/armor/mod_module_armor_boost_override
 
 /datum/armor/mod_module_armor_boost_override
-	melee = 20
-	bullet = 25
-	laser = 15
-	energy = 20
+	melee = 10
+	bullet = 15
+	laser = 5
+	energy = 10
 
 /datum/mod_theme/elite // Elite Syndiate
 	armor_type = /datum/armor/mod_theme_elite
 
 /datum/armor/mod_theme_elite
-	melee = 30
-	bullet = 30
-	laser = 25
-	energy = 30
+	melee = 40
+	bullet = 40
+	laser = 40
+	energy = 40
 	bomb = 60
 	bio = 100
 	fire = 100
@@ -209,10 +209,10 @@
 	armor_mod = /datum/armor/mod_module_armor_boost_elite
 
 /datum/armor/mod_module_armor_boost_elite
-	melee = 30
-	bullet = 30
-	laser = 25
-	energy = 30
+	melee = 20
+	bullet = 20
+	laser = 10
+	energy = 20
 
 /datum/mod_theme/prototype // Charlie Station
 	armor_type = /datum/armor/mod_theme_prototype
