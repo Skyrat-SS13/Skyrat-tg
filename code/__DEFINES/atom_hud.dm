@@ -75,14 +75,8 @@
 #define DATA_HUD_PERMIT 11 //SKYRAT EDIT
 #define DATA_HUD_DNR 12 // SKYRAT EDIT
 
-// Notification action types
-#define NOTIFY_JUMP "jump"
-#define NOTIFY_PLAY "play"
-#define NOTIFY_ORBIT "orbit"
-
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
-
 
 // Security HUD icon_state defines
 

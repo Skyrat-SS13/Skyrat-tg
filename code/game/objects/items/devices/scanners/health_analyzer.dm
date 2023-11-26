@@ -178,6 +178,7 @@
 	if (!target.get_organ_slot(ORGAN_SLOT_BRAIN)) // kept exclusively for soul purposes
 		render_list += "<span class='alert ml-1'>Subject lacks a brain.</span>\n"
 
+	var/death_consequences_status_text // SKYRAT EDIT ADDITION: Death consequences quirk
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
 		if(LAZYLEN(carbontarget.get_traumas()))
@@ -199,6 +200,11 @@
 						trauma_desc += "permanent "
 				trauma_desc += trauma.scan_desc
 				trauma_text += trauma_desc
+				// SKYRAT EDIT ADDITION START: Death Consequences Quirk
+				if (istype(trauma, /datum/brain_trauma/severe/death_consequences))
+					var/datum/brain_trauma/severe/death_consequences/consequences_trauma = trauma
+					death_consequences_status_text = consequences_trauma.get_health_analyzer_link_text(user)
+				// SKYRAT EDIT ADDITION END: Death Consequences Quirk
 			render_list += "<span class='alert ml-1'>Cerebral traumas detected: subject appears to be suffering from [english_list(trauma_text)].</span>\n"
 		if(carbontarget.quirks.len)
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span>\n"
@@ -399,6 +405,11 @@
 	// SKYRAT EDIT ADDITION - Mutant stuff
 	if(target.GetComponent(/datum/component/mutant_infection))
 		render_list += span_userdanger("UNKNOWN PROTO-VIRAL INFECTION DETECTED. ISOLATE IMMEDIATELY.")
+	// SKYRAT EDIT END
+
+	// SKYRAT EDIT ADDITION - DEATH CONSEQUENCES QUIRK
+	if(death_consequences_status_text)
+		render_list += death_consequences_status_text
 	// SKYRAT EDIT END
 
 	if(tochat)
