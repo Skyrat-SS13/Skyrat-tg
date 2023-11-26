@@ -11,7 +11,7 @@
 	death()
 
 	// Remove the brain from the body
-	var/obj/item/organ/internal/brain/B = get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/internal/brain/synth_brain = get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(B)
 		B.Remove(src)
 		QDEL_NULL(B)
