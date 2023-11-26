@@ -46,3 +46,32 @@
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
+
+/obj/item/organ/internal/stomach/synth/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
+	. = ..()
+	add_synth_signals(receiver)
+
+/obj/item/organ/internal/stomach/synth/Remove(mob/living/carbon/stomach_owner, special)
+	. = ..()
+	remove_synth_signals(stomach_owner)
+
+///Adds signal handlers on the synth for charging in borg chargers
+/obj/item/organ/internal/stomach/synth/proc/add_synth_signals(mob/living/carbon/stomach_owner)
+	SIGNAL_HANDLER
+	RegisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(on_borg_charge))
+
+///Removes signal handlers on the synth for charging in borg chargers
+/obj/item/organ/internal/stomach/synth/proc/remove_synth_signals(mob/living/carbon/stomach_owner)
+	SIGNAL_HANDLER
+	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
+
+///Handles charging the synth from borg chargers
+/obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
+	SIGNAL_HANDLER
+
+	amount /= 200 // Lowers the charging amount so it isn't instant
+	if(owner.nutrition < NUTRITION_LEVEL_WELL_FED)
+		owner.nutrition += amount
+		// Makes sure we don't make the synth too full, which would apply the overweight slowdown
+		if(owner.nutrition > NUTRITION_LEVEL_FULL)
+			owner.nutrition = NUTRITION_LEVEL_ALMOST_FULL
