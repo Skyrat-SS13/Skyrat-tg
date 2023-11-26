@@ -13,13 +13,8 @@
 	throw_range = 7
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.30, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 0.20)
 
-<<<<<<< HEAD
-/obj/item/slime_scanner/attack(mob/living/M, mob/living/user)
-	if(user.stat || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-=======
 /obj/item/slime_scanner/attack(mob/living/living_mob, mob/living/user)
-	if(user.stat || !user.can_read(src) || user.is_blind())
->>>>>>> 4b4ada03392 (Slime type datum, and cleans up slime related code (#79852))
+	if(user.stat || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 	if (!isslime(living_mob))
 		to_chat(user, span_warning("This device can only scan slimes!"))
