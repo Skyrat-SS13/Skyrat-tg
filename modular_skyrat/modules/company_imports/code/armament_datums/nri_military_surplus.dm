@@ -138,6 +138,9 @@
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/miecz
 	item_type = /obj/item/ammo_box/magazine/miecz/spawns_empty
 
+/datum/armament_entry/company_import/nri_surplus/firearm_ammo/sakhno
+	item_type = /obj/item/ammo_box/strilka310
+
 /datum/armament_entry/company_import/nri_surplus/firearm_ammo/lanca
 	item_type = /obj/item/ammo_box/magazine/lanca/spawns_empty
 	contraband = TRUE

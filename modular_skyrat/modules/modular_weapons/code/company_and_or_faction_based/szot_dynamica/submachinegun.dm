@@ -10,6 +10,7 @@
 	icon_state = "miecz"
 
 	inhand_icon_state = "c20r"
+	worn_icon_state = "gun"
 
 	SET_BASE_PIXEL(-8, 0)
 
