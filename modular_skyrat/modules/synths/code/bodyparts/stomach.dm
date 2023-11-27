@@ -59,9 +59,8 @@
 /obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
 	SIGNAL_HANDLER
 
+	if(owner.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
+		return
+
 	amount /= 50 // Lowers the charging amount so it isn't instant
-	if(owner.nutrition < NUTRITION_LEVEL_WELL_FED)
-		owner.nutrition += amount
-		// Makes sure we don't make the synth too full, which would apply the overweight slowdown
-		if(owner.nutrition > NUTRITION_LEVEL_FULL)
-			owner.nutrition = NUTRITION_LEVEL_ALMOST_FULL
+	owner.nutrition = min((owner.nutrition + amount), NUTRITION_LEVEL_ALMOST_FULL) // Makes sure we don't make the synth too full, which would apply the overweight slowdown
