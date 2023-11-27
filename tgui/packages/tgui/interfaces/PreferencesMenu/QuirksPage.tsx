@@ -155,7 +155,7 @@ const QuirkList = (props: {
                                     onClick={(e) => {
                                       e.stopPropagation();
                                     }}
-                                    maxWidth="300px"
+                                    maxWidth="400px" // SKYRAT EDIT - maxWidth to 600px from 300px
                                     backgroundColor="black"
                                     px="5px"
                                     py="3px">
@@ -210,7 +210,11 @@ const QuirkList = (props: {
         );
 
         if (quirk.failTooltip) {
-          return <Tooltip content={quirk.failTooltip}>{child}</Tooltip>;
+          return (
+            <Tooltip key={quirkKey} content={quirk.failTooltip}>
+              {child}
+            </Tooltip>
+          );
         } else {
           return child;
         }
