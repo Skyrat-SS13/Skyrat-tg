@@ -458,9 +458,9 @@
 	var/list/shielding = list()
 
 /datum/station_trait/nebula/hostile/process(seconds_per_tick)
-	calculate_nebula_strength()
+	//calculate_nebula_strength() // SKYRAT EDIT REMOVAL - No more radiation storms
 
-	apply_nebula_effect(nebula_intensity - get_shielding_level())
+	//apply_nebula_effect(nebula_intensity - get_shielding_level()) // SKYRAT EDIT REMOVAL - No more radiation storms
 
 /datum/station_trait/nebula/hostile/on_round_start()
 	. = ..()
@@ -593,9 +593,6 @@
 	// The component handles its own removal
 
 /datum/station_trait/nebula/hostile/radiation/apply_nebula_effect(effect_strength = 0)
-	// SKYRAT EDIT ADDITION START - No more radiation storms during the radioactive nebula
-	effect_strength = 0
-	// SKYRAT EDIT END
 	//big bombad now
 	if(effect_strength > 0)
 		if(!SSweather.get_weather_by_type(/datum/weather/rad_storm/nebula))
@@ -636,6 +633,7 @@
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down
 	var/max_shielders = ((maximum_nebula_intensity / intensity_increment_time)) / initial(shielder.shielding_strength)
 
+	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
 		Standard spacesuits will not protect against the nebula and using them is strongly discouraged. \n\n\
 
@@ -645,6 +643,12 @@
 		You have [deadline] before the nebula enters the station. \
 		Every shielding unit will provide an additional [shielder_time] of protection, fully protecting the station with [max_shielders] shielding units.
 	"}
+	SKYRAT EDIT REMOVAL END */
+	// SKYRAT EDIT CHANGE START - ORIGINAL: See above
+	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
+		Standard spacesuits will not protect against the nebula and using them is strongly discouraged.
+	"}
+	// SKYRAT EDIT CHANGE END
 
 	priority_announce(announcement, sound = 'sound/misc/notice1.ogg')
 
