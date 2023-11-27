@@ -514,7 +514,7 @@
 	name = "Radioactive Nebula"
 	trait_type = STATION_TRAIT_NEGATIVE
 	trait_flags = STATION_TRAIT_SPACE_BOUND //maybe when we can LOOK UP
-	weight = 0 // SKYRAT EDIT - No thank you - ORIGINAL: weight = 1
+	weight = 1
 	show_in_report = TRUE
 	report_message = "This station is located inside a radioactive nebula. Setting up nebula shielding is top-priority."
 	trait_to_give = STATION_TRAIT_RADIOACTIVE_NEBULA
@@ -593,6 +593,9 @@
 	// The component handles its own removal
 
 /datum/station_trait/nebula/hostile/radiation/apply_nebula_effect(effect_strength = 0)
+	// SKYRAT EDIT ADDITION START - No more radiation storms during the radioactive nebula
+	effect_strength = 0
+	// SKYRAT EDIT END
 	//big bombad now
 	if(effect_strength > 0)
 		if(!SSweather.get_weather_by_type(/datum/weather/rad_storm/nebula))
