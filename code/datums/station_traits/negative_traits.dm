@@ -638,9 +638,7 @@
 	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] minute\s"
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down
 	var/max_shielders = ((maximum_nebula_intensity / intensity_increment_time)) / initial(shielder.shielding_strength)
-	SKYRAT EDIT REMOVAL END */
 
-	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
 		Standard spacesuits will not protect against the nebula and using them is strongly discouraged. \n\n\
 
