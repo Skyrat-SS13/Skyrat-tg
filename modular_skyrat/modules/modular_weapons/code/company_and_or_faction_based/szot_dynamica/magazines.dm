@@ -9,8 +9,6 @@
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-	w_class = WEIGHT_CLASS_NORMAL
-
 	ammo_type = /obj/item/ammo_casing/strilka310
 	caliber = CALIBER_STRILKA310
 	max_ammo = 5
@@ -28,8 +26,6 @@
 	icon_state = "miecz_mag"
 
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-
-	w_class = WEIGHT_CLASS_NORMAL
 
 	ammo_type = /obj/item/ammo_casing/c27_54cesarzowa
 	caliber = CALIBER_CESARZOWA
