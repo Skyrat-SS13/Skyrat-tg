@@ -107,6 +107,7 @@ GLOBAL_VAR(first_officer)
 	var/obj/item/card/id/id_card = equipped.wear_id
 	if(istype(id_card))
 		id_card.registered_name = equipped.real_name
+		id_card.update_icon()
 		id_card.update_label()
 
 	handlebank(equipped)
@@ -114,13 +115,13 @@ GLOBAL_VAR(first_officer)
 /datum/outfit/pirate/nri/officer
 	name = "NRI Field Officer"
 
-	head = /obj/item/clothing/head/beret/sec/nri
+	head = /obj/item/clothing/head/hats/colonial/nri_police
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
-	neck = /obj/item/clothing/neck/security_cape/armplate
+	neck = /obj/item/clothing/neck/cloak/colonial/nri_police
 
-	uniform = /obj/item/clothing/under/costume/nri/captain
+	uniform = /obj/item/clothing/under/colonial/nri_police
 	suit = null
 
 	gloves = /obj/item/clothing/gloves/combat
@@ -129,48 +130,51 @@ GLOBAL_VAR(first_officer)
 
 	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack/raider = 1,
+		/obj/item/ammo_box/magazine/m9mm_aps = 3,
+		/obj/item/gun/ballistic/automatic/pistol/nri = 1,
+		/obj/item/crucifix = 1,
+		/obj/item/clothing/mask/gas/nri_police = 1,
+		/obj/item/modular_computer/pda/nri_police = 1,
+	)
 	l_pocket = /obj/item/folder/blue/nri_cop
 	r_pocket = /obj/item/storage/pouch/ammo
 
-	id = /obj/item/card/id/advanced
-	id_trim = /datum/id_trim/nri_raider/officer
+	id = /obj/item/card/id/advanced/nri_police
+	id_trim = /datum/id_trim/nri_police
 
-/datum/id_trim/nri_raider/officer
+/obj/item/modular_computer/pda/nri_police
+	name = "\improper NRI police PDA"
+	device_theme = PDA_THEME_TERMINAL
+	greyscale_colors = "#363655#7878f7"
+	comp_light_luminosity = 6.3 //Matching a flashlight
+	comp_light_color = "#5c20aa" //Simulated ultraviolet light for finding blood and :flushed:
+	starting_programs = list(
+		/datum/computer_file/program/records/security,
+		/datum/computer_file/program/crew_manifest,
+		/datum/computer_file/program/robocontrol,
+	)
+	inserted_item = /obj/item/pen/fourcolor
+
+/obj/item/card/id/advanced/nri_police
+	name = "\improper NRI police identification card"
+	desc = "A retro-looking card model modified to work with the modern identification systems."
+	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	icon_state = "card_nri_police"
+	assigned_icon_state = "assigned_nri_police"
+
+/datum/id_trim/nri_police
 	assignment = "NRI Field Officer"
-
-/datum/outfit/pirate/nri/marine
-	name = "NRI Marine"
-
-	head = null
-	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/radio/headset/guild
-	mask = null
-
-	uniform = /obj/item/clothing/under/costume/nri
-	suit = null
-
-	gloves = /obj/item/clothing/gloves/combat
-
-	shoes = /obj/item/clothing/shoes/combat
-
-	belt = /obj/item/storage/belt/security/nri
-	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/storage/pouch/ammo
-
-	id = /obj/item/card/id/advanced
-	id_trim = /datum/id_trim/nri_raider
-
-/datum/id_trim/nri_raider
-	assignment = "NRI Marine"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_nri"
-	department_color = COLOR_RED_LIGHT
-	subdepartment_color = COLOR_COMMAND_BLUE
-	sechud_icon_state = "hud_nri"
+	trim_state = "trim_nri_police"
+	department_color = COLOR_NRI_POLICE_BLUE
+	subdepartment_color = COLOR_NRI_POLICE_SILVER
+	sechud_icon_state = "hud_nri_police"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
+
+/obj/item/gun/energy/e_gun/advtaser/normal
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider
 	name = "NRI Raider sleeper"
@@ -183,7 +187,7 @@ GLOBAL_VAR(first_officer)
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
-	outfit = /datum/outfit/pirate/nri/marine
+	outfit = /datum/outfit/pirate/nri
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
@@ -255,8 +259,10 @@ GLOBAL_VAR(first_officer)
 	var/obj/item/card/id/advanced/card = spawned_human.get_idcard()
 	if(GLOB.first_officer == spawned_human)
 		card.assignment = pick(NRI_LEADER_JOB_LIST)
+		card.trim.sechud_icon_state = "hud_nri_police_lead"
 	else
 		card.assignment = pick(NRI_JOB_LIST)
+		card.trim.sechud_icon_state = "hud_nri_police"
 
 	card.update_label()
 
@@ -343,13 +349,6 @@ GLOBAL_VAR(first_officer)
 	circuit = null
 	command_name = "NRI Enforcer-Class Starship Telegram"
 	report_sound = ANNOUNCER_NRI_RAIDERS
-
-/obj/item/storage/belt/military/nri/captain/pirate_officer/PopulateContents()
-	generate_items_inside(list(
-		/obj/item/knife/combat = 1,
-		/obj/item/grenade/smokebomb = 1,
-		/obj/item/grenade/flashbang = 1,
-	),src)
 
 /obj/item/storage/belt/security/nri/PopulateContents()
 	generate_items_inside(list(
