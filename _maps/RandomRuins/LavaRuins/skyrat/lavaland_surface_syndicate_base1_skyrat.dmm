@@ -1106,16 +1106,13 @@
 	},
 /area/ruin/syndicate_lava_base/arrivals)
 "jw" = (
-/obj/machinery/button/door{
-	id = "syndie_lavaland_vault";
-	name = "Vault Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = 8;
-	pixel_y = 24;
-	req_access = list("syndicate");
-	specialfunctions = 4
-	},
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/machinery/button/door/directional/north{
+	id = "syndie_lavaland_vault";
+	specialfunctions = 4;
+	req_access = list("syndicate");
+	name = "Interdyne Vault Bolt Control"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "jx" = (
@@ -2603,15 +2600,14 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "wT" = (
-/obj/machinery/button/door{
-	id = "interdynecargo";
-	name = "Cargo Blastdoor Control";
-	pixel_x = 24;
-	req_access = list("syndicate")
-	},
 /obj/machinery/light/cold/directional/east,
 /obj/structure/ore_box,
 /obj/effect/turf_decal/bot_white,
+/obj/machinery/button/door/directional/east{
+	id = "interdynecargo";
+	req_access = list("syndicate");
+	name = "Cargo Blast Door Control"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/cargo)
 "wU" = (
@@ -3784,16 +3780,13 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "FL" = (
-/obj/machinery/button/door{
-	id = "syndie_lavaland_construction";
-	name = "Construction Area Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = 8;
-	pixel_y = 24;
-	req_access = list("syndicate");
-	specialfunctions = 4
-	},
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/machinery/button/door/directional/north{
+	id = "syndie_lavaland_construction";
+	specialfunctions = 4;
+	req_access = list("syndicate");
+	name = "Construction Area Bolt Control"
+	},
 /turf/open/floor/iron/diagonal,
 /area/ruin/syndicate_lava_base/engineering)
 "FR" = (
