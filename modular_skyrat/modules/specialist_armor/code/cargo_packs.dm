@@ -2,7 +2,6 @@
 	name = "Soft Armor Kit Crate"
 	crate_name = "soft armor kit crate"
 	desc = "Contains three sets of SolFed-made soft body armor and matching helmets."
-	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/clothing/head/helmet/sf_peacekeeper/debranded = 3,
@@ -13,7 +12,6 @@
 	name = "Hardened Armor Kit Crate"
 	crate_name = "hardened armor kit crate"
 	desc = "Contains three sets of SolFed-made hardened body armor and matching helmets."
-	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/clothing/head/helmet/toggleable/sf_hardened = 3,
@@ -24,7 +22,6 @@
 	name = "Sacrificial Armor Kit Crate"
 	crate_name = "sacrificial armor kit crate"
 	desc = "Contains three sets of SolFed-made sacrificial body armor and matching helmets."
-	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/clothing/head/helmet/sf_sacrificial = 3,

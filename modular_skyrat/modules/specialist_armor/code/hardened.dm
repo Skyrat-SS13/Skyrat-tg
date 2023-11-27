@@ -7,7 +7,7 @@
 	bomb = 30
 	fire = 50
 	acid = 30
-	wound = 15
+	wound = 10
 
 /obj/item/clothing/suit/armor/sf_hardened
 	name = "'Muur' hardened armor vest"
