@@ -631,12 +631,14 @@
 /datum/station_trait/nebula/hostile/radiation/send_instructions()
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
+	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	//How long do we have untill the first shielding unit needs to be up?
 	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] minute\s"
 	//For how long each shielding unit will protect for
 	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] minute\s"
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down
 	var/max_shielders = ((maximum_nebula_intensity / intensity_increment_time)) / initial(shielder.shielding_strength)
+	SKYRAT EDIT REMOVAL END */
 
 	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
