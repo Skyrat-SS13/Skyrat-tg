@@ -41,6 +41,10 @@
 /obj/item/clothing/accessory/armband/deputy/lopland
 	desc = "A Peacekeeper-blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
 
+/obj/item/clothing/accessory/armband/deputy/lopland/nonsec
+	name = "blue armband"
+	desc = "An armband, worn to signify proficiency in a skill or association with a department. This one is blue."
+
 /*
 * BACKPACKS
 */
