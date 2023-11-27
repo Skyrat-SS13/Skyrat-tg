@@ -458,9 +458,13 @@
 	var/list/shielding = list()
 
 /datum/station_trait/nebula/hostile/process(seconds_per_tick)
-	//calculate_nebula_strength() // SKYRAT EDIT REMOVAL - No more radiation storms
+	// SKYRAT EDIT ADDITION START
+	if(!storms_enabled)
+		return
+	// SKYRAT EDIT ADDITION END
+	calculate_nebula_strength()
 
-	//apply_nebula_effect(nebula_intensity - get_shielding_level()) // SKYRAT EDIT REMOVAL - No more radiation storms
+	apply_nebula_effect(nebula_intensity - get_shielding_level())
 
 /datum/station_trait/nebula/hostile/on_round_start()
 	. = ..()
