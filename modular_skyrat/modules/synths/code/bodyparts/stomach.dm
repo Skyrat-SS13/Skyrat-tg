@@ -53,7 +53,7 @@
 
 /obj/item/organ/internal/stomach/synth/Remove(mob/living/carbon/stomach_owner, special)
 	. = ..()
-	UnregisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
+	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
 
 ///Handles charging the synth from borg chargers
 /obj/item/organ/internal/stomach/synth/proc/on_borg_charge(datum/source, amount)
