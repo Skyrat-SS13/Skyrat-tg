@@ -89,6 +89,11 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
+"as" = (
+/obj/effect/turf_decal/stripes/red/line,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "at" = (
 /obj/effect/turf_decal/siding/dark/end,
 /obj/machinery/light/cold/directional/south,
@@ -525,7 +530,9 @@
 /obj/effect/turf_decal/siding/wideplating/dark{
 	dir = 4
 	},
-/obj/structure/disposalpipe/trunk,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "ct" = (
@@ -1933,9 +1940,6 @@
 "hU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 7
 	},
@@ -4577,12 +4581,6 @@
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"vi" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "vk" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
@@ -6003,7 +6001,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Cv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
@@ -9904,6 +9901,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "SI" = (
@@ -10872,6 +10870,9 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "WW" = (
@@ -11436,6 +11437,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
+"ZD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "ZF" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
@@ -12133,8 +12143,8 @@ Va
 Xh
 oQ
 KL
-rr
-Fh
+ZD
+as
 SH
 WS
 rl
@@ -12188,11 +12198,11 @@ wN
 Xh
 kS
 fJ
-rr
+Yc
 Xh
 Rf
 cr
-vi
+rl
 Cv
 hz
 xw
@@ -12243,7 +12253,7 @@ or
 Xh
 IY
 Sa
-rr
+Yc
 Rf
 hS
 rl
@@ -12298,7 +12308,7 @@ Fk
 Xh
 Xh
 Xh
-rr
+Yc
 Xh
 kX
 rl
