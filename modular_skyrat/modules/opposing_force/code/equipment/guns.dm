@@ -61,6 +61,26 @@
 	new /obj/item/ammo_box/magazine/m7mm(src)
 	new /obj/item/ammo_box/magazine/m7mm(src)
 
+/datum/opposing_force_equipment/ranged/hook_shotgun
+	name = "Hook Modified Sawn-off Shotgun"
+	description = "Range isn't an issue when you can bring your victim to you."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/hook_shotgun
+
+/obj/item/storage/toolbox/guncase/skyrat/opfor/hook_shotgun/PopulateContents()
+	new /obj/item/gun/ballistic/shotgun/hook(src)
+	new /obj/item/ammo_box/advanced/s12gauge/buckshot(src)
+	new /obj/item/ammo_box/advanced/s12gauge/buckshot(src)
+
+/datum/opposing_force_equipment/ranged/rebar_crossbow
+	name = "Syndicate Rebar Crossbow"
+	description = "The syndicate liked the bootleg rebar crossbow NT engineers made, so they showed what it could be if properly developed. \
+			Holds three shots without a chance of exploding, and features a built in scope. Normally uses special syndicate jagged iron bars, but can be wrenched to shoot inferior normal ones."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/rebar_crossbow
+
+/obj/item/storage/toolbox/guncase/skyrat/opfor/rebar_crossbow/PopulateContents()
+	new /obj/item/gun/ballistic/rifle/rebarxbow/syndie(src)
+	new /obj/item/book/granter/crafting_recipe/dusting/rebarxbowsyndie_ammo(src)
+
 //laser
 /datum/opposing_force_equipment/ranged/ion
 	name = "ion carbine"
@@ -217,11 +237,11 @@
 
 /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/foamforce_smg_basic/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/toy/unrestricted(src)
-	new /obj/item/ammo_box/magazine/toy/smg(src)
-	new /obj/item/ammo_box/magazine/toy/smg(src)
+	new /obj/item/ammo_box/magazine/toy/smg/riot(src)
+	new /obj/item/ammo_box/magazine/toy/smg/riot(src)
 
 //laser
-/datum/opposing_force_equipment/ranged_stealth/egun_mini
+/datum/opposing_force_equipment/ranged_stealth/fisher
 	item_type = /obj/item/gun/energy/recharge/fisher
 
 /datum/opposing_force_equipment/ranged_stealth/ebow
