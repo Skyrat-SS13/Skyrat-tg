@@ -59,6 +59,7 @@
 
 /// Call by name proc reference, checks if the proc is an existing global proc
 #define GLOBAL_PROC_REF(X) (/proc/##X)
+<<<<<<< HEAD
 
 #endif
 
@@ -73,3 +74,5 @@
 #define fcopy(Src, Dst) world.__fcopy(Src, Dst) 
 
 #endif
+=======
+>>>>>>> b111abe7df2 (Remove old 515 fcopy hack (#79952))
