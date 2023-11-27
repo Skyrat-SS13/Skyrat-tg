@@ -49,7 +49,7 @@
 
 /obj/item/organ/internal/stomach/synth/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
-	RegisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(on_borg_charge))
+	RegisterSignal(receiver, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(on_borg_charge))
 
 /obj/item/organ/internal/stomach/synth/Remove(mob/living/carbon/stomach_owner, special)
 	. = ..()
