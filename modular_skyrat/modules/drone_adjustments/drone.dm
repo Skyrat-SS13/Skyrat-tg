@@ -26,7 +26,6 @@
 /mob/living/basic/drone/Initialize(mapload)
 	. = ..()
 	name = "[initial(name)] [rand(0,9)]-[rand(100,999)]" //So that we can identify drones from each other
-	AddComponent(/datum/component/personal_crafting)
 
 /obj/item/storage/backpack/drone_bag
 	name = "drone backpack"
