@@ -25,5 +25,6 @@
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/clothing/head/helmet/sf_sacrificial = 3,
+		/obj/item/sacrificial_face_shield = 3,
 		/obj/item/clothing/suit/armor/sf_sacrificial = 3,
 	)

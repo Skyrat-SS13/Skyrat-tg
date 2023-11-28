@@ -59,11 +59,67 @@
 	dog_fashion = null
 	flags_inv = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	/// Holds the faceshield for quick reference
+	var/obj/item/sacrificial_face_shield/face_shield
 
 /obj/item/clothing/head/helmet/sf_sacrificial/Initialize(mapload)
 	. = ..()
 
 	AddComponent(/datum/component/clothing_damaged_by_bullets)
+
+/obj/item/clothing/head/helmet/sf_sacrificial/attackby(obj/item/attacking_item, mob/user, params)
+	. = ..()
+
+	if(!(istype(attacking_item, /obj/item/sacrificial_face_shield)))
+		return
+
+	add_face_shield(user, attacking_item)
+
+/obj/item/clothing/head/helmet/sf_sacrificial/AltClick(mob/user)
+	remove_face_shield(user)
+
+/obj/item/clothing/head/helmet/sf_sacrificial/proc/add_face_shield(mob/living/carbon/human/user, obj/shield_in_question)
+	if(face_shield)
+		return
+	if(!user.transferItemToLoc(shield_in_question, src))
+		return
+
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+
+	playsound(src, 'sound/items/modsuit/magnetic_harness.ogg', 50, TRUE)
+	face_shield = shield_in_question
+
+	icon_state = "bulletproof_glass"
+	worn_icon_state = icon_state
+	update_appearance()
+
+/obj/item/clothing/head/helmet/sf_sacrificial/proc/remove_face_shield(mob/living/carbon/human/user, break_it)
+	if(!face_shield)
+		return
+
+	flags_inv = initial(flags_inv)
+	flags_cover = initial(flags_cover)
+
+	if(break_it)
+		playsound(src, SFX_SHATTER, 70, TRUE)
+		new /obj/effect/decal/cleanable/glass(drop_location(src))
+		qdel(face_shield)
+		face_shield = null // just to be safe
+	else
+		user.put_in_hands(face_shield)
+		playsound(src, 'sound/items/modsuit/magnetic_harness.ogg', 50, TRUE)
+		face_shield = null
+
+	icon_state = initial(icon_state)
+	worn_icon_state = icon_state // Against just to be safe
+	update_appearance()
+
+/obj/item/clothing/head/helmet/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
+	. = ..()
+
+	if((damage_amount > 20) && face_shield)
+		remove_face_shield(break_it = TRUE)
 
 /obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
 	. = ..()
@@ -75,3 +131,11 @@
 		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
 
 	return .
+
+/obj/item/sacrificial_face_shield
+	name = "'Val' ballistic add-on face plate"
+	desc = "A thick piece of glass with mounting points for slotting onto a 'Val' sacrificial ballistic helmet. \
+		While it does not make the helmet any stronger, it does protect your face much like a riot helmet would."
+	icon = 'modular_skyrat/modules/specialist_armor/icons/armor.dmi'
+	icon_state = "face_shield"
+	w_class = WEIGHT_CLASS_NORMAL
