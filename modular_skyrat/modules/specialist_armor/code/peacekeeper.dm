@@ -19,6 +19,7 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_sf_peacekeeper
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/sf_peacekeeper/examine_more(mob/user)
 	. = ..()
@@ -50,6 +51,7 @@
 	armor_type = /datum/armor/armor_sf_peacekeeper
 	dog_fashion = null
 	flags_inv = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/sf_peacekeeper/examine_more(mob/user)
 	. = ..()

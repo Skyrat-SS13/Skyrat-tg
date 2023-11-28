@@ -24,6 +24,7 @@
 	max_integrity = 150
 	limb_integrity = 150
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/sf_sacrificial/Initialize(mapload)
 	. = ..()
@@ -71,6 +72,7 @@
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	dog_fashion = null
 	flags_inv = null
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/sf_sacrificial/Initialize(mapload)
 	. = ..()
