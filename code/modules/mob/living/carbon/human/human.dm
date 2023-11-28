@@ -824,15 +824,10 @@
 			var/datum/quirk/quirk_type = type
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
-<<<<<<< HEAD
-
 			// SKYRAT EDIT ADDITION START
 			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
 				continue
 			// SKYRAT EDIT ADDITION END
-
-=======
->>>>>>> d17e0754cb7 (Standardizes formatting in vv_do_topic() (#79914))
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in sort_list(options)
