@@ -1141,3 +1141,63 @@
   - bugfix: bitrunners can now drop off their caches properly on blueshift
   vinylspiders:
   - bugfix: Fixed a minor runtime when hallucinations are ending.
+2023-11-27:
+  Paxilmaniac:
+  - rscadd: A whole host of new and unique items has been added to deforest medical
+      in cargo to spice up their admittedly quite lame selection! Have a look when
+      you get the chance why don't you?
+  - image: So, so many sprites for new stuff made by me.
+  SkyratBot:
+  - refactor: Slimes's colour, core type and mutation list is now held in a slime
+      type datum
+  - code_imp: Slime's variables have been documented, and renamed a bit to add clarity.
+      Please report bugs that might stem from renaming.
+  - bugfix: Slimes are not longer prevented from attacking pacifist humans.
+  - qol: Slime scans now display the actual amount of genetic instability, instead
+      of hiding it if a slime doesn't mutate further, or tweaking it if it might mutate
+      back into itself. This will make it easier to parse which slime to breed further
+      to get a rainbow slime.
+  - bugfix: You can once again repaint robotic limbs to use alternate skins
+  - bugfix: Poly should now remember phrases between shifts.
+  - code_imp: removes unused proc `generate_possible_reactions()` from reagent holder
+  - bugfix: the dismemberment moodlet will now properly clear for ethereals who regrew
+      a limb in their resurrection crystals
+  - qol: Oculine now tastes bitter, and not like toxin.
+  Stalkeros:
+  - rscadd: '"Ancient Milsim" bitrunning domain that lets you shoot guns at CIN people
+      as SolFed people.'
+  - code_imp: Added a way to add Skyrat-exclusive virual domain safehouses.
+  jjpark-kb:
+  - rscadd: added a new derelict station (for drones)-- Babylon Station 13
+  nikothedude:
+  - rscdel: Removes a irrelevant quirk restriction of a nonexistant quirk
+  - rscadd: Resonance degradation disorder, a highly customizable quirk that acts
+      as a far more in-depth version of DNR
+2023-11-28:
+  GoldenAlpharex:
+  - rscdel: The Radioactive Nebula station trait will no longer cause radiation storms,
+      but all of its other effects remain.
+  Rhials:
+  - qol: Bar signs can now be purchased from cargo. Neat!
+  - qol: Bar signs can now be deconstructed with a screwdriver and wrench.
+  - qol: Bar signs can now be smashed to pieces, rather than just disabled.
+  SkyratBot:
+  - code_imp: Removed currency value for free products
+  - bugfix: Ranged Guardians (Holoparasites/Power Miners/etc.) can no longer use ranged
+      attacks in scouting (incorporeal) mode.
+  - bugfix: fixes an overlay lighting hard del
+  - bugfix: flashlights placed inside of backpacks and other storage items that were
+      on the floor will no longer allow light to shine through
+  - bugfix: fixed a null client runtime in advanced camera console
+  - bugfix: People exposed to romerol while alive will once again revive as zombies
+      on death.
+  - bugfix: fixed a runtime in handle_dead_metabolism()
+  Smol42:
+  - rscadd: Added custom donator item.
+  Thlumyn:
+  - rscadd: Added pet owner quirk to spawn with a pet in a pet carrier.
+  nikothedude:
+  - spellcheck: The vox N2 tank no longer directly references vox
+  sqnztb:
+  - bugfix: bitrunners can now drop off their caches properly on void raptor under
+      certain roundstart access conditions.
