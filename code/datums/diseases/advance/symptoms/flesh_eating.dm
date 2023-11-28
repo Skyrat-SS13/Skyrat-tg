@@ -127,9 +127,4 @@ Bonus
 	M.take_overall_damage(brute = get_damage, required_bodytype = BODYTYPE_ORGANIC)
 	if(chems)
 		M.reagents.add_reagent_list(list(/datum/reagent/toxin/heparin = 2, /datum/reagent/toxin/lipolicide = 2))
-<<<<<<< HEAD
-	if(zombie)
-		M.reagents.add_reagent(/datum/reagent/hnz, 1)
-=======
->>>>>>> 26c9d370046 (ARDS and AN code cleanup (#79957))
 	return 1
