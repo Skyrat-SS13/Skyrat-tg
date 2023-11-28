@@ -42,6 +42,9 @@
 		locate_farm.pixel_x = pixel_shift[1]
 		locate_farm.pixel_y = pixel_shift[2]
 		locate_farm.layer = atom_parent.layer + 0.1
+		if(ismovable(atom_parent))
+			var/atom/movable/movable_parent = atom_parent
+			locate_farm.set_glide_size(movable_parent.glide_size)
 		attacking_item.forceMove(locate_farm)
 		locate_farm.planted_seed = attacking_item
 		locate_farm.attached_atom = atom_parent
