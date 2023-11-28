@@ -335,7 +335,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 	else if(!parent_soulcatcher.parent)
 		return FALSE
-		return FALSE
 
 	var/turf/current_tile = get_turf(parent_soulcatcher.parent)
 	mob_to_remove.forceMove(current_tile)
