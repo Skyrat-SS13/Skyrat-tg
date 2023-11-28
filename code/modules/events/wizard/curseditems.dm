@@ -24,18 +24,14 @@
 //item you want to equip to the hand, and set its slots_flags = null. Only items equiped to hands need do this.
 
 /datum/round_event/wizard/cursed_items/start()
-<<<<<<< HEAD
-	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators") 		//SKYRAT EDIT - WIZARD CHANGES - ORIGINAL - var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015")
-=======
 	var/item_set = pick(
 		BIG_FAT_DOOBIE,
 		BOXING,
-		CATGIRLS_2015,
+//		CATGIRLS_2015, // SKYRAT EDIT REMOVAL
 		CURSED_SWORDS,
 		VOICE_MODULATORS,
 		WIZARD_MIMICRY,
 	)
->>>>>>> 516e02d01ad (Improves Cursed Items Wizard Event (#79941))
 	var/list/loadout[SLOTS_AMT]
 	var/ruins_spaceworthiness = FALSE
 	var/ruins_wizard_loadout = FALSE
