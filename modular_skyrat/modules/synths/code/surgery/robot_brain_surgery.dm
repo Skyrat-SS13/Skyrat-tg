@@ -10,7 +10,7 @@
 	)
 
 	target_mobtypes = list(/mob/living/carbon/human)
-	possible_locs = list(BODY_ZONE_HEAD)
+	possible_locs = list(BODY_ZONE_CHEST) // The brains are in the chest
 	requires_bodypart_type = BODYTYPE_ROBOTIC
 	desc = "A surgical procedure that restores the default behavior logic and personality matrix of an IPC posibrain."
 
@@ -26,7 +26,10 @@
 
 /datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
 	var/obj/item/organ/internal/brain/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
-	return !!brain
+	if(!brain && !issynthetic(target))
+		return FALSE
+	else
+		return TRUE
 
 /datum/surgery_step/fix_robot_brain/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
