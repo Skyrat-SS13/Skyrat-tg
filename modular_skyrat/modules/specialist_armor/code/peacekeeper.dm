@@ -1,13 +1,13 @@
 // The peacekeeper armors and helmets will be less effective at stopping bullet damage than bulletproof vests, but stronger against wounds especially, and some other damage types
 /datum/armor/armor_sf_peacekeeper
-	melee = 20
-	bullet = 50
-	laser = 10
-	energy = 10
-	bomb = 30
-	fire = 50
-	acid = 30
-	wound = 30
+	melee = ARMOR_LEVEL_WEAK
+	bullet = ARMOR_LEVEL_MID
+	laser = ARMOR_LEVEL_TINY
+	energy = ARMOR_LEVEL_TINY
+	bomb = ARMOR_LEVEL_WEAK
+	fire = ARMOR_LEVEL_MID
+	acid = ARMOR_LEVEL_WEAK
+	wound = WOUND_ARMOR_HIGH
 
 /obj/item/clothing/suit/armor/sf_peacekeeper
 	name = "'Touvou' peacekeeper armor vest"
