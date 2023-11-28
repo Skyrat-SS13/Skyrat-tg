@@ -37,7 +37,7 @@
 	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
 	target_soul.body_scan_needed = FALSE
 
-	SEND_SIGNAL(soulcatcher_soul, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE)
+	SEND_SIGNAL(soulcatcher_soul, COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE)
 	return TRUE
 
 /// Attempts to destroy the component. If `restore_mind` is true, it will attempt to place the mind back inside of the body and delete the soulcatcher soul.

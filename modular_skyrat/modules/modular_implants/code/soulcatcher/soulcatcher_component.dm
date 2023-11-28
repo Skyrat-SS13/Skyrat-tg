@@ -191,13 +191,17 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
-	if(target_master_soulcatcher != src)
+	if(!target_master_soulcatcher)
+		target_room.master_soulcatcher = null
+	else if(target_master_soulcatcher != src)
 		target_soul.forceMove(target_master_soulcatcher.parent)
 
 	var/datum/component/soulcatcher_user/soul_component = target_soul.GetComponent(/datum/component/soulcatcher_user)
 	var/datum/soulcatcher_room/original_room = soul_component?.current_room.resolve()
 	if(original_room)
 		original_room.current_souls -= target_soul
+	else
+		soul_component?.current_room = null
 
 	var/datum/weakref/room_ref = WEAKREF(target_room)
 	SEND_SIGNAL(target_soul, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, room_ref)
@@ -326,7 +330,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return TRUE
 
 	var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
-	if(!parent_soulcatcher || !parent_soulcatcher.parent)
+	if(!parent_soulcatcher)
+		master_soulcatcher = null
+		return FALSE
+	else if(!parent_soulcatcher.parent)
+		return FALSE
 		return FALSE
 
 	var/turf/current_tile = get_turf(parent_soulcatcher.parent)
@@ -350,6 +358,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/master_resolved = master_soulcatcher.resolve()
 	if(!master_resolved)
+		master_soulcatcher = null
 		return FALSE
 
 	var/datum/component/soulcatcher/parent_soulcatcher = master_resolved

@@ -153,6 +153,8 @@
 					var/datum/component/soulcatcher/nifsoft_soulcatcher = soulcatcher_nifsoft.linked_soulcatcher.resolve()
 					if(istype(nifsoft_soulcatcher))
 						available_rooms += nifsoft_soulcatcher.get_open_rooms()
+					else
+						linked_soulcatcher = null
 
 				for(var/obj/item/held_item in human_user.get_all_gear())
 					if(parent == held_item)
@@ -267,6 +269,7 @@
 
 	var/datum/soulcatcher_room/current_soulcatcher_room = current_room.resolve()
 	if(!current_soulcatcher_room)
+		current_room = null
 		return FALSE
 
 	data["current_room"] = list(
@@ -278,7 +281,9 @@
 		)
 
 	var/datum/component/soulcatcher/master_soulcatcher = current_soulcatcher_room.master_soulcatcher.resolve()
-	data["communicate_as_parent"] = master_soulcatcher.communicate_as_parent
+	if(!master_soulcatcher)
+		current_soulcatcher_room.master_soulcatcher = null
+	data["communicate_as_parent"] = master_soulcatcher?.communicate_as_parent
 
 	for(var/mob/living/soul in current_soulcatcher_room.current_souls)
 		if(soul == user_soul)

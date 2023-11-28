@@ -63,20 +63,22 @@
 		outside_hearing = TRUE
 		toggle_sense(sense_to_toggle = "outside_hearing")
 
-	refresh_soul_apperance()
+	refresh_soul_appearance()
 
+	return TRUE
+	
+/datum/component/soulcatcher_user/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE, PROC_REF(toggle_sense))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME, PROC_REF(change_name))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME, PROC_REF(reset_name))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM, PROC_REF(set_room))
 	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES, PROC_REF(check_internal_senses))
-	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE, PROC_REF(refresh_soul_apperance))
-
-	return TRUE
+	RegisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE, PROC_REF(refresh_soul_appearance))
 
 /// Configures the settings of the soulcatcher user to be in accordance with the parent mob
-/datum/component/soulcatcher_user/proc/refresh_soul_apperance(datum/source)
+/datum/component/soulcatcher_user/proc/refresh_soul_appearance(datum/source)
 	SIGNAL_HANDLER
+
 	var/mob/living/parent_mob = parent
 	if(!parent_mob?.mind || !istype(parent_mob.mind))
 		return FALSE
@@ -104,6 +106,7 @@
 
 	var/datum/soulcatcher_room/room = current_room.resolve()
 	if(!room) // uhoh.
+		current_room = null
 		return FALSE
 
 	room.send_message(message_to_say, name, parent_mob, FALSE)
@@ -124,6 +127,7 @@
 
 	var/datum/soulcatcher_room/room = current_room.resolve()
 	if(!room) // uhoh.
+		current_room = null
 		return FALSE
 
 	room.send_message(message_to_say, name, parent_mob, TRUE)
@@ -249,14 +253,17 @@
 	if(leave_action)
 		qdel(leave_action)
 
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_TOGGLE_SENSE)
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RENAME)
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_RESET_NAME)
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM)
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES)
-	UnregisterSignal(parent, COMSIG_SOULCATCHER_SOUL_REFRESH_APPERANCE)
-
 	return ..()
+	
+/datum/component/soulcatcher_user/UnregisterFromParent()
+	UnregisterSignal(parent, list(
+		COMSIG_SOULCATCHER_TOGGLE_SENSE,
+		COMSIG_SOULCATCHER_SOUL_RENAME,
+		COMSIG_SOULCATCHER_SOUL_RESET_NAME,
+		COMSIG_SOULCATCHER_SOUL_CHANGE_ROOM,
+		COMSIG_SOULCATCHER_SOUL_CHECK_INTERNAL_SENSES,
+		COMSIG_SOULCATCHER_SOUL_REFRESH_APPEARANCE,
+	))
 
 /datum/action/innate/soulcatcher_user
 	name = "Soulcatcher"
@@ -271,6 +278,7 @@
 	. = ..()
 	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
 	if(!user_component)
+		soulcatcher_user_component = null
 		return FALSE
 
 	user_component.ui_interact(owner)
