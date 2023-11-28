@@ -129,7 +129,11 @@
 /obj/structure/barricade/sandbags/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/climbable)
+<<<<<<< HEAD
 	AddElement(/datum/element/liquids_height, 20) //SKYRAT EDIT ADDITION
+=======
+	AddElement(/datum/element/elevation, pixel_shift = 12)
+>>>>>>> 837ddf7d00e (Standing on structures such as crates, tables and bed will now look like it. (#79797))
 
 /obj/structure/barricade/security
 	name = "security barrier"
