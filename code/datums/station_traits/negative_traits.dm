@@ -458,6 +458,11 @@
 	var/list/shielding = list()
 
 /datum/station_trait/nebula/hostile/process(seconds_per_tick)
+	// SKYRAT EDIT ADDITION START
+	if(!storms_enabled)
+		get_shielding_level() // So shields still produce tritium
+		return
+	// SKYRAT EDIT ADDITION END
 	calculate_nebula_strength()
 
 	apply_nebula_effect(nebula_intensity - get_shielding_level())
@@ -624,6 +629,7 @@
 	new /obj/effect/pod_landingzone (get_safe_random_station_turf(), new /obj/structure/closet/supplypod/centcompod (), new /obj/machinery/nebula_shielding/emergency/radiation ())
 
 /datum/station_trait/nebula/hostile/radiation/send_instructions()
+	/* SKYRAT EDIT REMOVAL START - No more radiation storms on station
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
 	//How long do we have untill the first shielding unit needs to be up?
@@ -642,6 +648,12 @@
 		You have [deadline] before the nebula enters the station. \
 		Every shielding unit will provide an additional [shielder_time] of protection, fully protecting the station with [max_shielders] shielding units.
 	"}
+	SKYRAT EDIT REMOVAL END */
+	// SKYRAT EDIT CHANGE START - ORIGINAL: See above
+	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
+		Standard spacesuits will not protect against the nebula and using them is strongly discouraged.
+	"}
+	// SKYRAT EDIT CHANGE END
 
 	priority_announce(announcement, sound = 'sound/misc/notice1.ogg')
 
