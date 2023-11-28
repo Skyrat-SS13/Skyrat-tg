@@ -186,8 +186,6 @@
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
-
-
 	if(istype(target, /obj/item/reagent_containers/cup/vial))
 		insert_vial(target, user, vial)
 		return TRUE
