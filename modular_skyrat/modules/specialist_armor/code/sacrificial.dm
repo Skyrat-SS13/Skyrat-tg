@@ -29,7 +29,7 @@
 /obj/item/clothing/suit/armor/sf_sacrificial/Initialize(mapload)
 	. = ..()
 
-	ADD_TRAIT(src, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+	AddComponent(/datum/component/clothing_damaged_by_bullets)
 
 /obj/item/clothing/suit/armor/sf_sacrificial/examine_more(mob/user)
 	. = ..()
@@ -41,20 +41,6 @@
 		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
 
 	return .
-
-// Overrides the take_damage_zone of clothes to ignore the check for multiple body part coverage, we don't cover multiple body parts here
-/obj/item/clothing/suit/armor/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
-	if(!def_zone || !limb_integrity)
-		return
-	var/list/covered_limbs = cover_flags2body_zones(body_parts_covered)
-	if(!(def_zone in covered_limbs))
-		return
-
-	var/damage_dealt = take_damage(damage_amount, damage_type, armour_penetration, FALSE)
-	LAZYINITLIST(damage_by_parts)
-	damage_by_parts[def_zone] += damage_dealt
-	if(damage_by_parts[def_zone] > limb_integrity)
-		disable_zone(def_zone, damage_type)
 
 /obj/item/clothing/head/helmet/sf_sacrificial
 	name = "'Val' sacrificial ballistic helmet"
@@ -77,7 +63,7 @@
 /obj/item/clothing/head/helmet/sf_sacrificial/Initialize(mapload)
 	. = ..()
 
-	ADD_TRAIT(src, TRAIT_CLOTHES_DAMAGED_BY_PIERCING, INNATE_TRAIT)
+	AddComponent(/datum/component/clothing_damaged_by_bullets)
 
 /obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
 	. = ..()
@@ -89,17 +75,3 @@
 		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
 
 	return .
-
-// Overrides the take_damage_zone of clothes to ignore the check for multiple body part coverage, we don't cover multiple body parts here
-/obj/item/clothing/head/helmet/sf_sacrificial/take_damage_zone(def_zone, damage_amount, damage_type, armour_penetration)
-	if(!def_zone || !limb_integrity)
-		return
-	var/list/covered_limbs = cover_flags2body_zones(body_parts_covered)
-	if(!(def_zone in covered_limbs))
-		return
-
-	var/damage_dealt = take_damage(damage_amount, damage_type, armour_penetration, FALSE)
-	LAZYINITLIST(damage_by_parts)
-	damage_by_parts[def_zone] += damage_dealt
-	if(damage_by_parts[def_zone] > limb_integrity)
-		disable_zone(def_zone, damage_type)
