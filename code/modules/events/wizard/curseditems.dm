@@ -58,16 +58,10 @@
 			loadout[ITEM_SLOT_HEAD] = /obj/item/clothing/head/wizard
 			ruins_spaceworthiness = TRUE
 
-<<<<<<< HEAD
-
-	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(ruins_spaceworthiness && !is_station_level(H.z) || isspaceturf(H.loc) || isplasmaman(H))
-=======
 	var/list/mob/living/carbon/human/victims = list()
 
 	for(var/mob/living/carbon/human/target in GLOB.alive_mob_list)
 		if(isspaceturf(target.loc) || !isnull(target.dna.species.outfit_important_for_life) || (ruins_spaceworthiness && !is_station_level(target.z)))
->>>>>>> 516e02d01ad (Improves Cursed Items Wizard Event (#79941))
 			continue //#savetheminers
 		if(ruins_wizard_loadout && IS_WIZARD(target))
 			continue
