@@ -14,6 +14,13 @@
 	requires_bodypart_type = BODYTYPE_ROBOTIC
 	desc = "A surgical procedure that restores the default behavior logic and personality matrix of an IPC posibrain."
 
+/datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
+	var/obj/item/organ/internal/brain/synth/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if(!istype(brain) && !issynthetic(target))
+		return FALSE
+	else
+		return TRUE
+
 /datum/surgery_step/fix_robot_brain
 	name = "fix posibrain"
 	implements = list(
@@ -23,13 +30,6 @@
 	)
 	repeatable = TRUE
 	time = 12 SECONDS //long and complicated
-
-/datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
-	var/obj/item/organ/internal/brain/synth/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(!istype(brain) && !issynthetic(target))
-		return FALSE
-	else
-		return TRUE
 
 /datum/surgery_step/fix_robot_brain/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
