@@ -69,7 +69,7 @@
 
 	/// This seems complex but the actual math is simple, the damage of the projectile * vest damage multiplier, divided by two if the projectile is weak to armour, then modified by wound bonus
 	var/total_damage = ((hitting_projectile.damage * projectile_damage_multiplier) * (hitting_projectile.weak_against_armour ? 0.5 : 1) * (1 + (hitting_projectile.wound_bonus / 10)))
-	var/damage_dealt = clothing_parent.take_damage(total_damage, BRUTE, armour_penetration = hitting_projectile.armour_penetration)
+	var/damage_dealt = clothing_parent.take_damage(total_damage, BRUTE, hitting_projectile.armour_penetration, FALSE)
 
 	if(clothing_parent.limb_integrity)
 		clothing_parent.take_damage_zone(def_zone, damage_dealt, BRUTE)
