@@ -65,7 +65,7 @@
 /obj/item/clothing/accessory/badge/holo
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
-	icon_state = "holobadge"
+	icon_state = "holobadge_lopland"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
 
