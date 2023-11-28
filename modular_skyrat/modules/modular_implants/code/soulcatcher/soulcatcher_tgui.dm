@@ -154,7 +154,7 @@
 					if(istype(nifsoft_soulcatcher))
 						available_rooms += nifsoft_soulcatcher.get_open_rooms()
 					else
-						linked_soulcatcher = null
+						soulcatcher_nifsoft.linked_soulcatcher = null
 
 				for(var/obj/item/held_item in human_user.get_all_gear())
 					if(parent == held_item)
