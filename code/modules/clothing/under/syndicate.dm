@@ -50,6 +50,7 @@
 	icon_state = "bloodred_pajamas"
 	inhand_icon_state = "bl_suit"
 	armor_type = /datum/armor/clothing_under/bloodred_sleepytime
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /datum/armor/clothing_under/bloodred_sleepytime
 	fire = 50
