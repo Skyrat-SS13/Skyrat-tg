@@ -84,7 +84,7 @@
 	if(!user.transferItemToLoc(shield_in_question, src))
 		return
 
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 
 	playsound(src, 'sound/items/modsuit/magnetic_harness.ogg', 50, TRUE)
