@@ -104,4 +104,5 @@
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "closet_wall"
+	icon_door = null
 	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS

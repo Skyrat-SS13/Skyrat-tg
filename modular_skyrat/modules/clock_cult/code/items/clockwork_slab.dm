@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		qdel(quick_bound_scriptures[position])
 
 	//Put the quickbound action onto the slab, the slab should grant when picked up
-	var/datum/action/innate/clockcult/quick_bind/quickbound = new
+	var/datum/action/innate/clockcult/quick_bind/quickbound = new(src)
 	quickbound.scripture = spell
 	quickbound.slab_weakref = WEAKREF(src)
 	quick_bound_scriptures[position] = quickbound

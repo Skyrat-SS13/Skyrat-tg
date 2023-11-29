@@ -82,8 +82,8 @@
 				/obj/item/clothing/under/suit/skyrat/inferno/skirt = 3,
 				/obj/item/clothing/under/suit/skyrat/helltaker = 3,
 				/obj/item/clothing/under/suit/skyrat/helltaker/skirt = 3,
-				/obj/item/clothing/under/skyrat/medium_skirt = 5,
-				/obj/item/clothing/under/skyrat/long_skirt = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/medium = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/long = 5,
 			),
 		),
 

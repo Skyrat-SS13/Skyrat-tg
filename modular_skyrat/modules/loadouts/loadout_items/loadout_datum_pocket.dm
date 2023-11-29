@@ -173,6 +173,14 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Ornate Cross"
 	item_path = /obj/item/crucifix
 
+/datum/loadout_item/pocket_items/clipboard
+	name = "Clipboard"
+	item_path = /obj/item/clipboard
+
+/datum/loadout_item/pocket_items/folder
+	name = "Folder"
+	item_path = /obj/item/folder
+
 /*
 *	UTILITY
 */

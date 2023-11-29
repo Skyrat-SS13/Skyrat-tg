@@ -37,15 +37,29 @@
 	icon_state = "skirt_swept"
 	body_parts_covered = GROIN
 
-/obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
-	name = "skirt"
-	desc = "Just a skirt! Hope you have a tanktop to wear with this."
-	icon_state = "lone_skirt"
-	body_parts_covered = GROIN
-	greyscale_config = /datum/greyscale_config/lone_skirt
-	greyscale_config_worn = /datum/greyscale_config/lone_skirt/worn
-	greyscale_colors = "#5f534a"
-	flags_1 = IS_PLAYER_COLORABLE_1
+/obj/item/clothing/under/dress/skirt/skyrat/striped_skirt
+	name = "Striped Skirt"
+	desc = "A red side-slit skirt with stripes! Comes with a matching two-tone bra."
+	icon_state = "striped_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/skyrat/red_skirt
+	name = "Red Skirt"
+	desc = "An eye-catching knee-length red skirt, with a golden-yellow trim. Comes with a matching two-tone bra."
+	icon_state = "red_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/skyrat/black_skirt
+	name = "Black Skirt"
+	desc = "A black side-slit skirt with a golden-yellow trim. Screams 'affluent goth'. Comes with a funky-looking matching bra."
+	icon_state = "black_skirt"
+	body_parts_covered = CHEST|GROIN|LEGS
+	can_adjust = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit //Essentially the same as the Turtleneck Skirt but with a different texture
 	name = "cableknit skirt"
@@ -71,6 +85,43 @@
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
+	name = "skirt"
+	desc = "Just a skirt! Hope you have a tanktop to wear with this."
+	icon_state = "lone_skirt"
+	body_parts_covered = GROIN
+	greyscale_config = /datum/greyscale_config/lone_skirt
+	greyscale_config_worn = /datum/greyscale_config/lone_skirt/worn
+	greyscale_colors = "#5f534a"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/dress/skirt/skyrat/medium
+	name = "medium skirt"
+	desc = "An appealing medium-length skirt. Top not included."
+	icon_state = "medium_skirt"
+	body_parts_covered = GROIN
+	greyscale_config = /datum/greyscale_config/medium_skirt
+	greyscale_config_worn = /datum/greyscale_config/medium_skirt/worn
+	greyscale_colors = "#3a3c45"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/dress/skirt/skyrat/long
+	name = "long skirt"
+	desc = "An appealing long skirt. At this point does it qualify as a dress?"
+	icon_state = "long_skirt"
+	body_parts_covered = GROIN|LEGS
+	greyscale_config = /datum/greyscale_config/long_skirt
+	greyscale_config_worn = /datum/greyscale_config/long_skirt/worn
+	greyscale_colors = "#3a3c45"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
+	alternate_worn_layer = ABOVE_SHOES_LAYER
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/*
+*	Dresses
+*/
+
 /obj/item/clothing/under/dress/skyrat/short_dress
 	name = "short dress"
 	desc = "An extremely short dress with a lovely sash and flower - only for those with good self-confidence."
@@ -84,29 +135,6 @@
 	name = "pink tutu"
 	desc = "A fluffy pink tutu."
 	icon_state = "pinktutu"
-
-/obj/item/clothing/under/skyrat/medium_skirt
-	name = "medium skirt"
-	desc = "Appealing medium-length skirt."
-	icon_state = "medium_skirt"
-	greyscale_config = /datum/greyscale_config/medium_skirt
-	greyscale_config_worn = /datum/greyscale_config/medium_skirt/worn
-	greyscale_colors = "#3a3c45"
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/obj/item/clothing/under/skyrat/long_skirt
-	name = "long skirt"
-	desc = "Appealing long skirt."
-	icon_state = "long_skirt"
-	greyscale_config = /datum/greyscale_config/long_skirt
-	greyscale_config_worn = /datum/greyscale_config/long_skirt/worn
-	greyscale_colors = "#3a3c45"
-	alternate_worn_layer = ABOVE_SHOES_LAYER
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/*
-*	Dresses
-*/
 
 /obj/item/clothing/under/dress/skyrat/flower
 	name = "flower dress"
@@ -152,30 +180,6 @@
 	name = "Jacarta Dress"
 	desc = "A thick dress with a strong rough exterior layer; lined with a soft breathable thin layer. It's loose-fitting, and has a tag inside that says 'Made in Jacarta'."
 	icon_state = "jute"
-	body_parts_covered = CHEST|GROIN|LEGS
-	can_adjust = TRUE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-/obj/item/clothing/under/dress/skirt/skyrat/striped_skirt
-	name = "Striped Skirt"
-	desc = "A red side-slit skirt with stripes! Comes with a matching two-tone bra."
-	icon_state = "striped_skirt"
-	body_parts_covered = CHEST|GROIN|LEGS
-	can_adjust = TRUE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-/obj/item/clothing/under/dress/skirt/skyrat/red_skirt
-	name = "Red Skirt"
-	desc = "An eye-catching knee-length red skirt, with a golden-yellow trim, comes with a two-tone bra."
-	icon_state = "red_skirt"
-	body_parts_covered = CHEST|GROIN|LEGS
-	can_adjust = TRUE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-/obj/item/clothing/under/dress/skirt/skyrat/black_skirt
-	name = "Black Skirt"
-	desc = "A black side-slit skirt with a golden-yellow trim. Screams 'affluent goth'. Comes with a funky-looking matching bra."
-	icon_state = "black_skirt"
 	body_parts_covered = CHEST|GROIN|LEGS
 	can_adjust = TRUE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

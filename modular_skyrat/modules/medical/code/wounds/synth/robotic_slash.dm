@@ -194,7 +194,7 @@
 	var/base_mult = 1
 
 	if (victim)
-		if (IS_IN_STASIS(victim))
+		if (HAS_TRAIT(victim, TRAIT_STASIS))
 			base_mult *= ELECTRICAL_DAMAGE_ON_STASIS_MULT
 		if (victim.body_position == LYING_DOWN)
 			base_mult *= ELECTRICAL_DAMAGE_LYING_DOWN_MULT
@@ -578,7 +578,7 @@
 		If the fault has become uncontrollable, extreme heat therapy is recommended."
 
 	severity = WOUND_SEVERITY_CRITICAL
-	wound_flags = (ACCEPTS_GAUZE|MANGLES_INTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
+	wound_flags = (ACCEPTS_GAUZE|MANGLES_EXTERIOR|CAN_BE_GRASPED|SPLINT_OVERLAY)
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T3.ogg'
 

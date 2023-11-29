@@ -7,22 +7,22 @@
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
 	inherent_traits = list(
 		// SHARED WITH ALL ZOMBIES
-		TRAIT_NO_ZOMBIFY,
 		TRAIT_EASILY_WOUNDED,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_FAKEDEATH,
 		TRAIT_LIMBATTACHMENT,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_NOBREATH,
 		TRAIT_NOCLONELOSS,
 		TRAIT_NODEATH,
 		TRAIT_NOHUNGER,
-		TRAIT_LIVERLESS_METABOLISM,
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_ZOMBIFY,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,
 		TRAIT_TOXIMMUNE,
-		TRAIT_NO_TRANSFORMATION_STING,
 		// HIGH FUNCTIONING UNIQUE
 		TRAIT_NOBLOOD,
 		TRAIT_SUCCUMB_OVERRIDE,
@@ -105,11 +105,12 @@
 		TRAIT_EASYDISMEMBER,
 		TRAIT_FAKEDEATH,
 		TRAIT_LIMBATTACHMENT,
+		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_NOBREATH,
 		TRAIT_NOCLONELOSS,
 		TRAIT_NODEATH,
 		TRAIT_NOHUNGER,
-		TRAIT_LIVERLESS_METABOLISM,
+		TRAIT_NO_DNA_COPY,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHIGHPRESSURE,
@@ -173,26 +174,6 @@
 
 	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && SPT_PROB(2, seconds_per_tick))
 		playsound(carbon_mob, pick(spooks), 50, TRUE, 10)
-
-//Congrats you somehow died so hard you stopped being a zombie
-/datum/species/zombie/infectious/spec_death(gibbed, mob/living/carbon/C)
-	. = ..()
-	var/obj/item/organ/internal/zombie_infection/infection
-	infection = C.get_organ_slot(ORGAN_SLOT_ZOMBIE)
-	if(infection)
-		qdel(infection)
-
-/datum/species/zombie/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-
-	// Deal with the source of this zombie corruption
-	// Infection organ needs to be handled separately from mutant_organs
-	// because it persists through species transitions
-	var/obj/item/organ/internal/zombie_infection/infection
-	infection = C.get_organ_slot(ORGAN_SLOT_ZOMBIE)
-	if(!infection)
-		infection = new()
-		infection.Insert(C)
 
 // Your skin falls off
 /datum/species/human/krokodil_addict
