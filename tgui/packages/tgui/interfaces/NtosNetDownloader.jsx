@@ -5,8 +5,39 @@ import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
 import { NtosWindow } from '../layouts';
 
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/NtosNetDownloader.jsx
 export const NtosNetDownloader = (props, context) => {
   const { act, data } = useBackend(context);
+=======
+type Data = {
+  disk_size: number;
+  disk_used: number;
+  downloadcompletion: number;
+  downloading: BooleanLike;
+  downloadname: string;
+  downloadsize: number;
+  error: string;
+  emagged: BooleanLike;
+  categories: string[];
+  programs: ProgramData[];
+};
+
+type ProgramData = {
+  icon: string;
+  filename: string;
+  filedesc: string;
+  fileinfo: string;
+  category: string;
+  installed: BooleanLike;
+  compatible: BooleanLike;
+  size: number;
+  access: BooleanLike;
+  verifiedsource: BooleanLike;
+};
+
+export const NtosNetDownloader = (props) => {
+  const { act, data } = useBackend<Data>();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/NtosNetDownloader.tsx
   const {
     PC_device_theme,
     disk_size,
@@ -25,9 +56,17 @@ export const NtosNetDownloader = (props, context) => {
     scale(downloadcompletion, 0, downloadsize) * 100
   );
   const [selectedCategory, setSelectedCategory] = useLocalState(
-    context,
     'category',
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/NtosNetDownloader.jsx
     all_categories[0]
+=======
+    categories[0]
+  );
+  const [searchItem, setSearchItem] = useLocalState('searchItem', '');
+  const search = createSearch<ProgramData>(
+    searchItem,
+    (program) => program.filedesc
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/NtosNetDownloader.tsx
   );
   const items = flow([
     // This filters the list to only contain programs with category
@@ -115,9 +154,13 @@ export const NtosNetDownloader = (props, context) => {
   );
 };
 
-const Program = (props, context) => {
+const Program = (props) => {
   const { program } = props;
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/NtosNetDownloader.jsx
   const { act, data } = useBackend(context);
+=======
+  const { act, data } = useBackend<Data>();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/NtosNetDownloader.tsx
   const {
     PC_device_theme,
     disk_size,

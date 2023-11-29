@@ -10,6 +10,7 @@ const CONTRACT_STATUS_EXTRACTING = 4;
 const CONTRACT_STATUS_COMPLETE = 5;
 const CONTRACT_STATUS_ABORTED = 6;
 
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 export class FakeTerminal extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +61,9 @@ export class FakeTerminal extends Component {
 }
 
 export const SyndContractor = (props, context) => {
+=======
+export const SyndicateContractor = (props) => {
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
   return (
     <NtosWindow width={500} height={600} theme="syndicate">
       <NtosWindow.Content scrollable>
@@ -69,8 +73,41 @@ export const SyndContractor = (props, context) => {
   );
 };
 
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 export const SyndContractorContent = (props, context) => {
   const { data, act } = useBackend(context);
+=======
+type Data = {
+  error: string;
+  logged_in: BooleanLike;
+  first_load: BooleanLike;
+  info_screen: BooleanLike;
+  redeemable_tc: Number;
+  earned_tc: Number;
+  contracts_completed: Number;
+  contracts: ContractData[];
+  ongoing_contract: BooleanLike;
+  extraction_enroute: BooleanLike;
+  dropoff_direction: string;
+};
+
+type ContractData = {
+  id: Number;
+  status: Number;
+  target: string;
+  target_rank: string;
+  extraction_enroute: BooleanLike;
+  message: string;
+  contract: string;
+  dropoff: string;
+  payout: Number;
+  payout_bonus: Number;
+};
+
+export const SyndicateContractorContent = (props) => {
+  const { data, act } = useBackend<Data>();
+  const { error, logged_in, first_load, info_screen } = data;
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
 
   const terminalMessages = [
     'Recording biometric data...',
@@ -193,8 +230,14 @@ export const SyndContractorContent = (props, context) => {
   );
 };
 
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 export const StatusPane = (props, context) => {
   const { act, data } = useBackend(context);
+=======
+export const StatusPane = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { redeemable_tc, earned_tc, contracts_completed } = data;
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
 
   return (
     <Section
@@ -247,6 +290,7 @@ export const StatusPane = (props, context) => {
   );
 };
 
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 export const SyndPane = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   return (
@@ -265,6 +309,12 @@ export const SyndPane = (props, context) => {
     </>
   );
 };
+=======
+const ContractsTab = (props) => {
+  const { act, data } = useBackend<Data>();
+  const { contracts, ongoing_contract, extraction_enroute, dropoff_direction } =
+    data;
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
 
 const ContractsTab = (props, context) => {
   const { act, data } = useBackend(context);

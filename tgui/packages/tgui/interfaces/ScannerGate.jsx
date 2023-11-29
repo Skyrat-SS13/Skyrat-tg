@@ -128,8 +128,8 @@ const TARGET_NUTRITION_LIST = [
   },
 ];
 
-export const ScannerGate = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ScannerGate = (props) => {
+  const { act, data } = useBackend();
   return (
     <Window width={400} height={300}>
       <Window.Content scrollable>
@@ -179,8 +179,8 @@ const SCANNER_GATE_ROUTES = {
   //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 };
 
-const ScannerGateControl = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateControl = (props) => {
+  const { act, data } = useBackend();
   const { scan_mode } = data;
   const route = SCANNER_GATE_ROUTES[scan_mode] || SCANNER_GATE_ROUTES.off;
   const Component = route.component();
@@ -201,8 +201,8 @@ const ScannerGateControl = (props, context) => {
   );
 };
 
-const ScannerGateOff = (props, context) => {
-  const { act } = useBackend(context);
+const ScannerGateOff = (props) => {
+  const { act } = useBackend();
   return (
     <>
       <Box mb={2}>Select a scanning mode below.</Box>
@@ -240,8 +240,8 @@ const ScannerGateOff = (props, context) => {
   );
 };
 
-const ScannerGateWanted = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateWanted = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -254,8 +254,8 @@ const ScannerGateWanted = (props, context) => {
   );
 };
 
-const ScannerGateGuns = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateGuns = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -268,8 +268,8 @@ const ScannerGateGuns = (props, context) => {
   );
 };
 
-const ScannerGateMindshield = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateMindshield = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -282,8 +282,8 @@ const ScannerGateMindshield = (props, context) => {
   );
 };
 
-const ScannerGateDisease = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateDisease = (props) => {
+  const { act, data } = useBackend();
   const { reverse, disease_threshold } = data;
   return (
     <>
@@ -310,8 +310,8 @@ const ScannerGateDisease = (props, context) => {
   );
 };
 
-const ScannerGateSpecies = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateSpecies = (props) => {
+  const { act, data } = useBackend();
   const { reverse, target_species } = data;
   const species = TARGET_SPECIES_LIST.find((species) => {
     return species.value === target_species;
@@ -343,8 +343,8 @@ const ScannerGateSpecies = (props, context) => {
   );
 };
 
-const ScannerGateNutrition = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateNutrition = (props) => {
+  const { act, data } = useBackend();
   const { reverse, target_nutrition } = data;
   const nutrition = TARGET_NUTRITION_LIST.find((nutrition) => {
     return nutrition.value === target_nutrition;
@@ -374,6 +374,7 @@ const ScannerGateNutrition = (props, context) => {
   );
 };
 
+<<<<<<< HEAD
 //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
 const ScannerGateGender = (props, context) => {
   const { act, data } = useBackend(context);
@@ -408,6 +409,10 @@ const ScannerGateGender = (props, context) => {
 
 const ScannerGateMode = (props, context) => {
   const { act, data } = useBackend(context);
+=======
+const ScannerGateMode = (props) => {
+  const { act, data } = useBackend();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { reverse } = data;
   return (
     <LabeledList>

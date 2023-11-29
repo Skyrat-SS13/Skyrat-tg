@@ -11,9 +11,14 @@ type Info = {
   objectives: Objective[];
 };
 
+<<<<<<< HEAD
 // SKYRAT EDIT increase height from 250 to 500
 export const AntagInfoGeneric = (props, context) => {
   const { data } = useBackend<Info>(context);
+=======
+export const AntagInfoGeneric = (props) => {
+  const { data } = useBackend<Info>();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { antag_name, objectives } = data;
   return (
     <Window width={620} height={500}>

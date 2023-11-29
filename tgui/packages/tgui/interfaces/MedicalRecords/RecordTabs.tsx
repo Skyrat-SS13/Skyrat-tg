@@ -7,15 +7,21 @@ import { isRecordMatch } from '../SecurityRecords/helpers';
 import { MedicalRecord, MedicalRecordData } from './types';
 
 /** Displays all found records. */
+<<<<<<< HEAD
 export const MedicalRecordTabs = (props, context) => {
   const { act, data } = useBackend<MedicalRecordData>(context);
   const { records = [] } = data;
+=======
+export const MedicalRecordTabs = (props) => {
+  const { act, data } = useBackend<MedicalRecordData>();
+  const { records = [], station_z } = data;
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
 
   const errorMessage = !records.length
     ? 'No records found.'
     : 'No match. Refine your search.';
 
-  const [search, setSearch] = useLocalState(context, 'search', '');
+  const [search, setSearch] = useLocalState('search', '');
 
   const sorted: MedicalRecord[] = flow([
     filter((record: MedicalRecord) => isRecordMatch(record, search)),
@@ -69,12 +75,12 @@ export const MedicalRecordTabs = (props, context) => {
 };
 
 /** Individual crew tab */
-const CrewTab = (props: { record: MedicalRecord }, context) => {
+const CrewTab = (props: { record: MedicalRecord }) => {
   const [selectedRecord, setSelectedRecord] = useLocalState<
     MedicalRecord | undefined
-  >(context, 'medicalRecord', undefined);
+  >('medicalRecord', undefined);
 
-  const { act, data } = useBackend<MedicalRecordData>(context);
+  const { act, data } = useBackend<MedicalRecordData>();
   const { assigned_view } = data;
   const { record } = props;
   const { crew_ref, name, rank } = record;

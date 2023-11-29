@@ -41,8 +41,8 @@ type Info = {
   objectives: Objective[];
 };
 
-const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const IntroductionSection = (props) => {
+  const { act, data } = useBackend<Info>();
   const { intro, objectives } = data;
   return (
     <Section fill title="Intro" scrollable>
@@ -64,8 +64,8 @@ const IntroductionSection = (props, context) => {
   );
 };
 
-const EmployerSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const EmployerSection = (props) => {
+  const { data } = useBackend<Info>();
   const { allies, goal } = data;
   return (
     <Section
@@ -108,8 +108,8 @@ const EmployerSection = (props, context) => {
   );
 };
 
-const UplinkSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const UplinkSection = (props) => {
+  const { data } = useBackend<Info>();
   const {
     has_uplink,
     uplink_intro,
@@ -183,8 +183,8 @@ const UplinkSection = (props, context) => {
   );
 };
 
-const CodewordsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const CodewordsSection = (props) => {
+  const { data } = useBackend<Info>();
   const { has_codewords, phrases, responses } = data;
   return (
     <Section title="Codewords" mb={!has_codewords && -1}>
@@ -229,9 +229,14 @@ const CodewordsSection = (props, context) => {
   );
 };
 
+<<<<<<< HEAD
 // SKYRAT EDIT: change height from 580 to 650
 export const AntagInfoTraitor = (props, context) => {
   const { data } = useBackend<Info>(context);
+=======
+export const AntagInfoTraitor = (props) => {
+  const { data } = useBackend<Info>();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { theme } = data;
   return (
     <Window width={620} height={650} theme={theme}>

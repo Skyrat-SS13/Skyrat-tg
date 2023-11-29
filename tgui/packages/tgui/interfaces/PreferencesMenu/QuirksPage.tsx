@@ -43,20 +43,15 @@ const QuirkList = (props: {
   selected: boolean;
   serverData: ServerData;
   randomBodyEnabled: boolean;
-  context;
 }) => {
-  const { act, data } = useBackend<PreferencesMenuData>(props.context);
+  const { act, data } = useBackend<PreferencesMenuData>();
 
   return (
     // Stack is not used here for a variety of IE flex bugs
     <Box className="PreferencesMenu__Quirks__QuirkList">
       {props.quirks.map(([quirkKey, quirk]) => {
         const [customizationExpanded, setCustomizationExpanded] =
-          useLocalState<boolean>(
-            props.context,
-            quirk.name + ' customization',
-            false
-          );
+          useLocalState<boolean>(quirk.name + ' customization', false);
 
         const className = 'PreferencesMenu__Quirks__QuirkList__quirk';
 
@@ -174,8 +169,7 @@ const QuirkList = (props: {
                                               .manually_rendered_features
                                           ),
                                           props.serverData,
-                                          props.randomBodyEnabled,
-                                          props.context
+                                          props.randomBodyEnabled
                                         )}
                                         maxHeight="100px"
                                       />
@@ -238,17 +232,16 @@ export const StatDisplay: StatelessComponent<{}> = (props) => {
   );
 };
 
-export const QuirksPage = (props, context) => {
-  const { act, data } = useBackend<PreferencesMenuData>(context);
+export const QuirksPage = (props) => {
+  const { act, data } = useBackend<PreferencesMenuData>();
 
   // this is mainly just here to copy from MainPage.tsx
-  const [randomToggleEnabled] = useRandomToggleState(context);
+  const [randomToggleEnabled] = useRandomToggleState();
   const randomBodyEnabled =
     data.character_preferences.non_contextual.random_body !==
       RandomSetting.Disabled || randomToggleEnabled;
 
   const [selectedQuirks, setSelectedQuirks] = useLocalState(
-    context,
     `selectedQuirks_${data.active_slot}`,
     data.selected_quirks
   );
@@ -378,7 +371,6 @@ export const QuirksPage = (props, context) => {
                       })}
                     serverData={quirks_data} // SKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
-                    context={context}
                   />
                 </Stack.Item>
               </Stack>
@@ -435,7 +427,6 @@ export const QuirksPage = (props, context) => {
                       })}
                     serverData={quirks_data} // sKYRAT EDIT CHANGE
                     randomBodyEnabled={randomBodyEnabled}
-                    context={context}
                   />
                 </Stack.Item>
               </Stack>

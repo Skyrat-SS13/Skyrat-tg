@@ -3,6 +3,7 @@ import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
+<<<<<<< HEAD
 // SKYRAT EDIT BEGIN - ALTERNATIVE_JOB_TITLES
 //
 // width={500} - Original: width={400}
@@ -11,6 +12,10 @@ import { NtosWindow } from '../layouts';
 //  - Original: entry.rank
 export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend(context);
+=======
+export const NtosCrewManifest = (props) => {
+  const { act, data } = useBackend();
+>>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { manifest = {} } = data;
   return (
     <NtosWindow width={500} height={480}>
