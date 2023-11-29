@@ -69,7 +69,6 @@
 	admin_note = "Ask players to put the message inside the 'Reason' box, the item adminlogs but won't give a chance to preview. Can be VV'd to give more 'uses'."
 	description = "A one-use device that lets you make an announcement tailored to your choice."
 
-
 /datum/opposing_force_equipment/uplink/power_outage
 	name = "Power Outage"
 	description = "A virus will be uploaded to the engineering processing servers to force a routine power grid check, forcing all APCs on the station to be temporarily disabled."
