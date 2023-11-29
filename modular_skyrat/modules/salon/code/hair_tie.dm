@@ -14,10 +14,12 @@
 	var/picked_hairstyle
 	///storage for the original hairstyle string
 	var/actual_hairstyle
+	///which projectile object to use as flicked hair tie
+	var/projectile_to_fire = /obj/projectile/bullet/hair_tie
 	///how long the do_after takes to flick the hair tie
 	var/fire_speed = 3 SECONDS
-	///which projectil object to use as flicked hair tie
-	var/projectile_to_fire = /obj/projectile/bullet/hair_tie
+	///how big is the randomized aim radius when flicked
+	var/projectile_aim_radius = 30
 
 /obj/item/clothing/head/hair_tie/scrunchie
 	name = "scrunchie"
@@ -36,6 +38,7 @@
 	icon_state = "hairtie_syndie"
 	fire_speed = 1.5 SECONDS
 	projectile_to_fire = /obj/projectile/bullet/hair_tie/syndicate
+	projectile_aim_radius = 0 //accurate aim
 
 /obj/item/clothing/head/hair_tie/examine(mob/user)
 	. = ..()
@@ -105,16 +108,10 @@
 	proj.icon_state = icon_state
 	//add projectile_drop
 	proj.AddElement(/datum/element/projectile_drop, type)
-	//aim
+	//aim and fire
 	proj.firer = user
 	proj.fired_from = user
-	//calculate precision
-	var/fire_angle = dir2angle(user.dir)
-	var/offset = rand(-0, 0)
-	if(!istype(src, /obj/item/clothing/head/hair_tie/syndicate))
-		offset = rand(-30, 30)
-	//fire
-	proj.fire(fire_angle + offset)
+	proj.fire((dir2angle(user.dir) + rand(-projectile_aim_radius, projectile_aim_radius)))
 	playsound(src, 'sound/weapons/effects/batreflect.ogg', 25, TRUE)
 	//get rid of what we just launched to let projectile_drop spawn a new one
 	qdel(src)
