@@ -1,23 +1,27 @@
 /obj/structure/plant_tank
 	name = "plant tank"
-	desc = "A tank with the sole purpose of water and gas production."
+	desc = "A small little glass tank that is used to grow plants; this tank promotes the nitrogen and oxygen cycle."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/structures.dmi'
 	icon_state = "plant_tank_e"
-	anchored = TRUE
+	anchored = FALSE
 	density = TRUE
 	///the amount of times the tank can produce-- can be increased through feeding the tank
 	var/operation_number = 0
 
 /obj/structure/plant_tank/Initialize(mapload)
 	. = ..()
-	create_reagents(100, DRAINABLE)
-	AddComponent(/datum/component/plumbing/simple_supply)
-	AddComponent(/datum/component/simple_rotation)
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/plant_tank/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/structure/plant_tank/examine(mob/user)
+	. = ..()
+	. += span_notice("<br>Use food or worm fertilizer to allow nitrogen production and carbon dioxide processing!")
+	var/datum/component/simple_farm/find_farm = GetComponent(/datum/component/simple_farm)
+	if(!find_farm)
+		. += span_notice("<br>Use five sand to allow planting!")
 
 /obj/structure/plant_tank/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/food) || istype(attacking_item, /obj/item/stack/worm_fertilizer))
@@ -49,7 +53,7 @@
 
 		var/obj/item/stack/attacking_stack = attacking_item
 		if(!attacking_stack.use(5))
-			balloon_alert(user, "farms require five [attacking_item]")
+			balloon_alert(user, "farms require five sand")
 			return
 
 		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 12))
@@ -66,8 +70,6 @@
 		return
 
 	operation_number--
-
-	reagents.add_reagent(/datum/reagent/water, 5) //since we have a plant and "fuel," we can now extract some water
 
 	var/turf/open/src_turf = get_turf(src)
 	if(!isopenturf(src_turf) || isspaceturf(src_turf) || src_turf.planetary_atmos) //must be open turf, can't be space turf, and can't be a turf that regenerates its atmos
@@ -86,15 +88,17 @@
 	src_mixture.gases[/datum/gas/nitrogen][MOLES] += (MOLES_CELLSTANDARD * INVERSE(5)) //the nitrogen cycle-- plants (and bacteria) participate in the nitrogen cycle
 
 /obj/structure/plant_tank/wrench_act(mob/living/user, obj/item/tool)
+	balloon_alert(user, "[anchored ? "un" : ""]bolting")
 	tool.play_tool_sound(src, 50)
 	if(!tool.use_tool(src, user, 2 SECONDS))
 		return TRUE
 
 	anchored = !anchored
-	balloon_alert(user, "[anchored ? "" : "un"]secured")
+	balloon_alert(user, "[anchored ? "" : "un"]bolted")
 	return TRUE
 
 /obj/structure/plant_tank/screwdriver_act(mob/living/user, obj/item/tool)
+	balloon_alert(user, "deconstructing")
 	tool.play_tool_sound(src, 50)
 	if(!tool.use_tool(src, user, 2 SECONDS))
 		return TRUE

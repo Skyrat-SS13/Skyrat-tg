@@ -17,10 +17,11 @@
 	//now lets register the signals
 	RegisterSignal(atom_parent, COMSIG_ATOM_ATTACKBY, PROC_REF(check_attack))
 	RegisterSignal(atom_parent, COMSIG_ATOM_EXAMINE, PROC_REF(check_examine))
+	RegisterSignal(atom_parent, COMSIG_QDELETING, PROC_REF(delete_farm))
 
 /datum/component/simple_farm/Destroy(force, silent)
 	//lets not hard del
-	UnregisterSignal(atom_parent, list(COMSIG_ATOM_ATTACKBY, COMSIG_ATOM_EXAMINE))
+	UnregisterSignal(atom_parent, list(COMSIG_ATOM_ATTACKBY, COMSIG_ATOM_EXAMINE, COMSIG_QDELETING))
 	atom_parent = null
 	return ..()
 
@@ -44,7 +45,7 @@
 		locate_farm.layer = atom_parent.layer + 0.1
 		if(ismovable(atom_parent))
 			var/atom/movable/movable_parent = atom_parent
-			locate_farm.set_glide_size(movable_parent.glide_size)
+			locate_farm.glide_size = movable_parent.glide_size
 		attacking_item.forceMove(locate_farm)
 		locate_farm.planted_seed = attacking_item
 		locate_farm.attached_atom = atom_parent
@@ -56,7 +57,14 @@
  * check_examine is meant to listen for the COMSIG_ATOM_EXAMINE signal, where it will put additional information in the examine
  */
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
-	examine_list += span_notice("You are able to plant seeds here!")
+	examine_list += span_notice("<br>You are able to plant seeds here!")
+
+/datum/component/simple_farm/proc/delete_farm()
+	SIGNAL_HANDLER
+
+	var/obj/structure/simple_farm/locate_farm = locate() in get_turf(atom_parent)
+	if(locate_farm)
+		qdel(locate_farm)
 
 /obj/structure/simple_farm
 	name = "simple farm"
