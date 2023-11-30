@@ -99,7 +99,6 @@
 
 /obj/effect/spawner/random/deep_maintenance_single_item/loose_food
 	name = "deepmaint loose food spawner"
-	spawn_loot_count = 2
 	loot = list(
 		// Food items
 		/obj/item/food/bluefeather_crisp = 3,
@@ -107,7 +106,7 @@
 		/obj/item/food/branrequests = 3,
 		/obj/item/food/breadslice/corn = 2,
 		/obj/item/food/breadslice/reispan = 2,
-		/obj/item/food/breadslice = 2,
+		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/breadslice/root = 2,
 		/obj/item/food/butter = 3,
 		/obj/item/food/candy = 3,

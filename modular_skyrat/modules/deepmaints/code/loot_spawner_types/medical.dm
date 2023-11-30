@@ -199,7 +199,6 @@
 
 /obj/effect/spawner/random/deep_maintenance_single_item/loose_medical
 	name = "deepmaint loose medical item spawner"
-	spawn_loot_count = 2
 	loot = list(
 		// Medical stack items
 		// Sutures

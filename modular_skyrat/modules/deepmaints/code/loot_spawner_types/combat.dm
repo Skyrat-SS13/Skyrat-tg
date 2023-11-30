@@ -38,7 +38,7 @@
 
 /obj/effect/spawner/random/deep_maintenance/weapons_small
 	name = "deepmaint small arms spawner"
-	spawn_loot_count = 3
+	spawn_loot_count = 1
 	replacement_closet = /obj/structure/closet/crate/secure/weapon
 	loot = list(
 		/obj/item/gun/ballistic/automatic/pistol/sol = 2,
@@ -56,7 +56,7 @@
 
 /obj/effect/spawner/random/deep_maintenance/weapons_serious
 	name = "deepmaint serious arms spawner"
-	spawn_loot_count = 3
+	spawn_loot_count = 1
 	replacement_closet = /obj/structure/closet/secure_closet/tac_but_empty_and_no_access
 	loot = list(
 		/obj/item/gun/ballistic/automatic/sol_rifle/marksman = 2,
@@ -81,6 +81,7 @@
 
 /obj/effect/spawner/random/deep_maintenance/weapons_grenade
 	name = "deepmaint grenade box spawner"
+	spawn_loot_count = 1
 	replacement_closet = /obj/structure/closet/crate/secure/weapon
 	loot = list(
 		/obj/item/grenade/antigravity = 1,

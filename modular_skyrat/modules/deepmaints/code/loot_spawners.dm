@@ -3,8 +3,9 @@
 	desc = "Come on Lady Luck, spawn me a pair of shotguns."
 	icon_state = "loot"
 	spawn_random_offset = TRUE
-	spawn_loot_count = 5
+	spawn_loot_count = 2
 	anchored = TRUE
+	invisibility = 100
 	/// What type of closet type should we spawn to fill the place of a missing one?
 	var/obj/replacement_closet = /obj/structure/closet
 	/// Do we randomize the loot count a bit?
@@ -34,6 +35,8 @@
 		container_present = TRUE
 
 	for(var/obj/structure/filingcabinet/cabinet in get_turf(src))
+		if(length(cabinet.contents) > 5)
+			continue
 		for(var/obj/item/loose_item in get_turf(src))
 			if(loose_item.anchored)
 				continue

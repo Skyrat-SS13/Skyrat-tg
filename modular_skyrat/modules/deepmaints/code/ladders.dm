@@ -10,6 +10,8 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 	icon_state = "hatch"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
+	/// How long should it take to travel through this?
+	var/travel_time = 10 SECONDS
 
 /obj/structure/deepmaints_entrance/Initialize(mapload)
 	. = ..()
@@ -64,6 +66,8 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 
 /// Actually moves the entree passed to it to a random exit
 /obj/structure/deepmaints_entrance/proc/send_him_to_detroit(mob/user)
+	if(!do_after(user, travel_time, target = src))
+		return
 	var/obj/destination = pick(GLOB.deepmaints_exits)
 	if(!destination)
 		balloon_alert(user, "hatch seems broken...")
@@ -75,20 +79,14 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 /// Checks every trash pile in maintenance and converts 3-5 of them into deepmaints hatches
 /datum/controller/subsystem/minor_mapping/proc/spawn_deepmaint_entrances()
 
-	log_world("started the deepmaint entrances proc")
-
 #ifndef LOWMEMORYMODE
-
-	log_world("deepmaint level loading wasn't stopped by lowmem mode")
 
 	var/list/all_deepmaint_layouts = generate_map_list_from_directory("_maps/skyrat/deepmaint/map_layouts/")
 	var/deepmaints_template_to_use = pick(all_deepmaint_layouts)
 
-	log_world("deepmaints template chosen was [deepmaints_template_to_use]")
-
 	var/loaded = load_new_z_level(deepmaints_template_to_use, "Deep maintenance", TRUE)
+
 	if(!loaded)
-		log_world("the level failed to load somehow")
 		message_admins("Deep maintenance template [deepmaints_template_to_use] loading failed due to errors.")
 		log_admin("Deep maintenance template [deepmaints_template_to_use] loading failed due to errors.")
 		return
@@ -97,16 +95,11 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 
 	// If we already have entrances then don't worry about the rest of this
 	if(length(GLOB.deepmaints_entrances) > 3)
-		log_world("we had too many deepmaints entrances, stopped")
 		return
 
 	var/number_of_entrances = rand(3, 5)
 
-	log_world("number of entrances chosen was [number_of_entrances]")
-
 	var/list/potential_entrance_spots = find_trash_piles()
-
-	log_world("the list of potential entrance spots has [length(potential_entrance_spots)] items, [english_list(potential_entrance_spots)]")
 
 	if(!length(potential_entrance_spots))
 		var/msg = "HEY! LISTEN! There were no trash piles that the minor mapping subysystem could use to spawn entrances to deepmaints!."
@@ -117,7 +110,6 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 	for(var/entrance_spawn_iteration in 1 to number_of_entrances)
 		var/obj/structure/trash_pile/trash_pile_in_question = pick_n_take(potential_entrance_spots)
 		new /obj/structure/deepmaints_entrance(trash_pile_in_question.drop_location())
-		log_world("a deepmaints entrance was created")
 		qdel(trash_pile_in_question)
 
 /datum/controller/subsystem/minor_mapping/proc/find_trash_piles()
@@ -141,6 +133,7 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 	desc = "A ladder that leads back to 'civilization' above, though its mighty dark up there... \
 		Chances are you might not end up where you entered."
 	icon_state = "exit_ladder"
+	travel_time = 20 SECONDS
 
 /obj/structure/deepmaints_entrance/exit/log_to_global_list()
 	GLOB.deepmaints_exits += src
@@ -157,6 +150,8 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 	INVOKE_ASYNC(src, PROC_REF(send_him_to_detroit), user)
 
 /obj/structure/deepmaints_entrance/exit/send_him_to_detroit(mob/user)
+	if(!do_after(user, travel_time, target = src))
+		return
 	var/obj/destination = pick(GLOB.deepmaints_entrances)
 	if(!destination)
 		balloon_alert(user, "hatch above seems stuck...")

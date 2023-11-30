@@ -92,7 +92,6 @@
 
 /obj/effect/spawner/random/deep_maintenance_single_item/loose_office
 	name = "deepmaint loose office item spawner"
-	spawn_loot_count = 2
 	loot = list(
 		/obj/item/folder/white = 2,
 		/obj/item/folder/blue = 2,
