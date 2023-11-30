@@ -93,10 +93,8 @@
 		/obj/item/reagent_containers/hypospray/medipen/stimulants,
 		/obj/item/storage/box/syndie_kit/imp_freedom,
 		/obj/item/crowbar/power/syndicate,
-		/obj/item/chameleon,
 		/obj/item/storage/box/syndie_kit/emp,
 		/obj/item/shield/energy,
-		/obj/item/card/emag,
 		/obj/item/card/emag/doorjack,
 	)
 

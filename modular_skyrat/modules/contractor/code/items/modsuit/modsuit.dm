@@ -25,7 +25,7 @@
 		/obj/item/mod/module/baton_holster/preloaded,
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/emp_shield,
-		/obj/item/mod/module/jetpack,
+		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/storage/syndicate,
 	)
