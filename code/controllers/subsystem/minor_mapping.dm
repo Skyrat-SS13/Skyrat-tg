@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(minor_mapping)
 	#else
 	trigger_migration(CONFIG_GET(number/mice_roundstart))
 	place_satchels(satchel_amount = 10) //SKYRAT EDIT CHANGE - ORIGINAL : place_satchels(satchel_amount = 2)
+	log_world("tried calling the proc for deepmaint entrances")
 	spawn_deepmaint_entrances() // SKYRAT EDIT ADDITION
 	return SS_INIT_SUCCESS
 	#endif // the mice are easily the bigger problem, but let's just avoid anything that could cause some bullshit.
