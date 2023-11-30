@@ -6,3 +6,6 @@
 	has_gravity = STANDARD_GRAVITY
 	requires_power = FALSE
 	power_equip = FALSE
+
+/obj/modular_map_root/deepmaints
+	config_file = "strings/modular_maps/skyrat/deepmaints.toml"
