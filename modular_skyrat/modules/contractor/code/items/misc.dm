@@ -109,3 +109,65 @@
 			<p>Good luck agent. You can burn this document with the supplied lighter.</p>"}
 
 	return ..()
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/contractor/wespe/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor(src)
+	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
+	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
+	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
+	new /obj/item/ammo_box/c35sol(src)
+	new /obj/item/ammo_box/c35sol/ripper(src)
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor
+	name = "\improper Vesper 'Guêpe' Pistol"
+	desc = "An aftermarket variant of the Trappiste 'Wespe', with an integrated suppressor. \
+	Comes with an underbarrel kinetic light disruptor and tacticool black color scheme."
+	icon_state = "wespe_contractor"
+	suppressed = TRUE
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator
+	pin = /obj/item/firing_pin/implant/pindicate
+	var/obj/item/gun/energy/recharge/fisher/underbarrel
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/give_manufacturer_examine()
+	AddElement(/datum/element/manufacturer_examine, COMPANY_VESPER)
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/Initialize(mapload)
+	. = ..()
+	underbarrel = new /obj/item/gun/energy/recharge/fisher/unsafe(src)
+	update_appearance()
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
+	underbarrel.afterattack(target, user, proximity_flag, click_parameters)
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+// go stealth mode idiot
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/add_seclight_point()
+	return
+
+/obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/examine_more(mob/user)
+	. = ..()
+
+	. += "\nThe Guêpe is simply a modified Trappiste 'Wespe'. Its main difference, often \
+	claimed to not be enough to warrant its advertisement as an overhaul, is a stubby \
+	integral suppressor and a modified housing with side-button trigger for a \
+	chopped-down SC/FISHER for disrupting electrical sources of light."
+
+	return .
+
+/obj/item/autosurgeon/syndicate/laser_arm/selfdes
+
+/obj/item/autosurgeon/syndicate/laser_arm/selfdes/use_autosurgeon(mob/living/target, mob/living/user, implant_time)
+	. = ..()
+	if(!uses)
+		to_chat(user, span_alert("[src] shatters into unusable dust, scattering to the wind with a convenient gust."))
+		qdel(src)
+
+/obj/item/mod/module/demoralizer/removable
+	removable = TRUE
+
+/obj/item/mod/module/power_kick/removable
+	removable = TRUE

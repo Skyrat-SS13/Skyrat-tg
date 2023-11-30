@@ -18,6 +18,9 @@
 /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty
 	start_empty = TRUE
 
+/obj/item/ammo_box/magazine/c35sol_pistol/incapacitator
+	ammo_type = /obj/item/ammo_casing/c35sol/incapacitator
+
 /obj/item/ammo_box/magazine/c35sol_pistol/stendo
 	name = "\improper Sol extended pistol magazine"
 	desc = "An extended magazine for SolFed pistols, holds twenty-four rounds."
