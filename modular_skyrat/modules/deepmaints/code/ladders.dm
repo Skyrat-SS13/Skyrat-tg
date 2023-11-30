@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 
 	log_world("deepmaint level loading wasn't stopped by lowmem mode")
 
-	var/list/all_deepmaint_layouts = generate_map_list_from_directory("_maps/skyrat/deepmaint/map_layouts")
+	var/list/all_deepmaint_layouts = generate_map_list_from_directory("_maps/skyrat/deepmaint/map_layouts/")
 	var/deepmaints_template_to_use = pick(all_deepmaint_layouts)
 
 	log_world("deepmaints template chosen was [deepmaints_template_to_use]")
