@@ -4,10 +4,14 @@
 	icon_state = "loot"
 	spawn_random_offset = TRUE
 	spawn_loot_count = 5
+	anchored = TRUE
 	/// What type of closet type should we spawn to fill the place of a missing one?
 	var/obj/replacement_closet = /obj/structure/closet
 	/// Do we randomize the loot count a bit?
 	var/random_loot_count = TRUE
+
+/obj/effect/spawner/random/deep_maintenance/Initialize(mapload)
+	spawn_loot()
 
 /obj/effect/spawner/random/deep_maintenance/spawn_loot(lootcount_override)
 	if(random_loot_count)
@@ -57,6 +61,9 @@
 	icon_state = "loot"
 	spawn_random_offset = TRUE
 	spawn_loot_count = 1
+
+/obj/effect/spawner/random/deep_maintenance_single_item/Initialize(mapload)
+	spawn_loot()
 
 /obj/effect/spawner/random/deep_maintenance_single_item/spawn_loot(lootcount_override)
 	// If one of the things we can spawn is on the tile, fuggetabout it
