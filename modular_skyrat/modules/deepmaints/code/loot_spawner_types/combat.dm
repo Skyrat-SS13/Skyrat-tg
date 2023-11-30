@@ -57,7 +57,7 @@
 /obj/effect/spawner/random/deep_maintenance/weapons_serious
 	name = "deepmaint serious arms spawner"
 	spawn_loot_count = 3
-	replacement_closet = /obj/structure/closet/secure_closet/tac
+	replacement_closet = /obj/structure/closet/secure_closet/tac_but_empty_and_no_access
 	loot = list(
 		/obj/item/gun/ballistic/automatic/sol_rifle/marksman = 2,
 		/obj/item/gun/ballistic/automatic/sol_rifle = 1,
@@ -74,6 +74,10 @@
 		/obj/item/gun/energy/tesla_cannon = 1,
 		/obj/item/gun/energy/e_gun = 1,
 	)
+
+/obj/structure/closet/secure_closet/tac_but_empty_and_no_access
+	name = "armory locker"
+	icon_state = "tac"
 
 /obj/effect/spawner/random/deep_maintenance/weapons_grenade
 	name = "deepmaint grenade box spawner"

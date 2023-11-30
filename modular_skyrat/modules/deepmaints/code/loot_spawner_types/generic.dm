@@ -1,6 +1,6 @@
 /obj/effect/spawner/random/deep_maintenance/chest_drawer
 	name = "deepmaint chest drawer spawner"
-	replacement_closet = /obj/structure/closet/secure_closet/medical3
+	replacement_closet = /obj/structure/filingcabinet/chestdrawer
 	loot = list(
 		/obj/item/folder/white = 2,
 		/obj/item/folder/blue = 2,

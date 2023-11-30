@@ -36,7 +36,7 @@
 		/obj/item/storage/box/mothic_rations = 1,
 	)
 
-/obj/effect/spawner/random/deep_maintenance/mothic_ration_crate
+/obj/effect/spawner/random/deep_maintenance/ration_crate
 	name = "deepmaint food spawner"
 	replacement_closet = /obj/structure/closet/crate/freezer/food
 	loot = list(
@@ -46,7 +46,7 @@
 		/obj/item/food/branrequests = 3,
 		/obj/item/food/breadslice/corn = 2,
 		/obj/item/food/breadslice/reispan = 2,
-		/obj/item/food/breadslice = 2,
+		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/breadslice/root = 2,
 		/obj/item/food/butter = 3,
 		/obj/item/food/candy = 3,

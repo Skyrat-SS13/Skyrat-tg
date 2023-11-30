@@ -63,7 +63,7 @@
 
 /obj/effect/spawner/random/deep_maintenance/medical_closet
 	name = "deepmaint medical closet spawner"
-	replacement_closet = /obj/structure/closet/secure_closet/medical3
+	replacement_closet = /obj/structure/closet/secure_closet/deepmaints_medical_locker
 	loot = list(
 		// Wound recovery
 		/obj/item/stack/medical/wound_recovery = 1,
@@ -109,6 +109,10 @@
 		// Various chemical bottles
 		/obj/effect/spawner/random/deep_maintenance/random_chem_bottle = 4,
 	)
+
+/obj/structure/closet/secure_closet/deepmaints_medical_locker
+	name = "medical locker"
+	icon_state = "med"
 
 /obj/effect/spawner/random/deep_maintenance/medical_freezer
 	name = "deepmaint medical freezer spawner"
