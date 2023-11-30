@@ -74,6 +74,25 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 
 /// Checks every trash pile in maintenance and converts 3-5 of them into deepmaints hatches
 /datum/controller/subsystem/minor_mapping/proc/spawn_deepmaint_entrances()
+
+#ifndef LOWMEMORYMODE
+
+	var/deepmaints_template_to_use = pick(
+		'_maps/skyrat/deepmaint/factory.dmm',
+	)
+
+	var/loaded = load_new_z_level(deepmaints_template_to_use, "Deep maintenance", TRUE)
+	if(!loaded)
+		message_admins("Deep maintenance template [deepmaints_template_to_use] loading failed due to errors.")
+		log_admin("Deep maintenance template [deepmaints_template_to_use] loading failed due to errors.")
+		return
+
+#endif
+
+	// If we already have entrances then don't worry about the rest of this
+	if(length(GLOB.deepmaints_entrances) > 0)
+		return
+
 	var/number_of_entrances = rand(3, 5)
 
 	var/list/potential_entrance_spots = find_trash_piles()
