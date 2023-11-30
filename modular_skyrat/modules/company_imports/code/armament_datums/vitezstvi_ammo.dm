@@ -128,31 +128,36 @@
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/slugs
 	item_type = /obj/item/ammo_box/advanced/s12gauge
-	description = "A box of 15 slug shells, large singular shots that pack a punch."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/buckshot
-	description = "A box of 15 buckshot shells, a modest spread of weaker projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/beanbag_slugs
 	item_type = /obj/item/ammo_box/advanced/s12gauge/bean
-	description = "A box of 15 beanbag slug shells, large singular beanbags that pack a less-lethal punch."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/rubbershot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/rubber
-	description = "A box of 15 rubbershot shells, a modest spread of weaker less-lethal projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/magnum_buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
-	description = "A box of 15 magnum buckshot shells, a wider spread of larger projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/express_buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/express
-	description = "A box of 15 express buckshot shells, a tighter spread of smaller projectiles."
+
+/datum/armament_entry/company_import/vitezstvi/shot_shells/hunter_slug
+	item_type = /obj/item/ammo_box/advanced/s12gauge/hunter
+
+/datum/armament_entry/company_import/vitezstvi/shot_shells/flechettes
+	item_type = /obj/item/ammo_box/advanced/s12gauge/flechette
+
+/datum/armament_entry/company_import/vitezstvi/shot_shells/hornet_nest
+	item_type = /obj/item/ammo_box/advanced/s12gauge/beehive
+
+/datum/armament_entry/company_import/vitezstvi/shot_shells/stardust
+	item_type = /obj/item/ammo_box/advanced/s12gauge/antitide
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/confetti
 	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
-	description = "A box of 35 confetti shells, firing a spread of harmless confetti everywhere, yippie!"
 
 // Boxes of kiboko launcher ammo
 

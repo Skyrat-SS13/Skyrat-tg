@@ -1,12 +1,5 @@
 #define AMMO_MATS_SHOTGUN list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 4) // not quite as thick as a half-sheet
 
-#define AMMO_MATS_SHOTGUN_PT20 list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 0.5,\
-									/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 0.5) // plastitanium slug
-
-#define AMMO_MATS_SHOTGUN_RIP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3,\
-									/datum/material/bronze = SMALL_MATERIAL_AMOUNT * 1) // the bronze is because real RIP shells are made with copper, apparently
-
 #define AMMO_MATS_SHOTGUN_FLECH list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
 									/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
 
@@ -15,11 +8,11 @@
 									/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1)
 
 #define AMMO_MATS_SHOTGUN_TIDE list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/gold = SMALL_MATERIAL_AMOUNT * 1,\
-									/datum/material/uranium = SMALL_MATERIAL_AMOUNT * 1) // i mean. i - i guess?
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 1,\
+									/datum/material/gold = SMALL_MATERIAL_AMOUNT * 1)
 
-#define AMMO_MATS_SHOTGUN_TEMP list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
-									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2) // covers both iceblox and incendiary
+#define AMMO_MATS_SHOTGUN_PLASMA list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,\
+									/datum/material/plasma = SMALL_MATERIAL_AMOUNT * 2)
 
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
@@ -43,7 +36,7 @@
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	advanced_print_req = TRUE
-	custom_materials = AMMO_MATS_SHOTGUN_TEMP
+	custom_materials = AMMO_MATS_SHOTGUN_PLASMA
 
 /obj/item/ammo_casing/shotgun/techshell
 	can_be_printed = FALSE // techshell... casing! so not really usable on its own but if you're gonna make these go raid a seclathe.
