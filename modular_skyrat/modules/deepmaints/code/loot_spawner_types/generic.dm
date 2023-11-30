@@ -89,3 +89,39 @@
 		/obj/item/paper/paperslip/ration_ticket = 1,
 		/obj/item/paper/paperslip/ration_ticket/luxury = 1,
 	)
+
+/obj/effect/spawner/random/deep_maintenance_single_item/loose_office
+	name = "deepmaint loose office item spawner"
+	spawn_loot_count = 2
+	loot = list(
+		/obj/item/folder/white = 2,
+		/obj/item/folder/blue = 2,
+		/obj/item/folder/ancient_paperwork = 3,
+		/obj/item/flashlight/pen/paramedic = 1,
+		/obj/item/flashlight = 2,
+		/obj/item/stack/spacecash/c10 = 3,
+		/obj/item/stack/spacecash/c20 = 2,
+		/obj/item/stack/spacecash/c50 = 1,
+		/obj/item/computer_disk/maintenance = 2,
+		/obj/item/computer_disk/syndicate/camera_app = 1,
+		/obj/item/disk/design_disk/bepis = 2,
+		/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1,
+		/obj/item/storage/fancy/cigarettes/cigpack_robust = 3,
+		/obj/item/storage/fancy/cigarettes/cigpack_uplift = 2,
+		/obj/item/storage/fancy/cigarettes/cigpack_carp = 2,
+		/obj/item/storage/fancy/cigarettes/cigpack_midori = 2,
+		/obj/item/stack/sticky_tape = 2,
+		/obj/item/stack/sticky_tape/super = 1,
+		/obj/item/storage/box/matches = 2,
+		/obj/item/lighter/greyscale = 2,
+		/obj/item/stock_parts/cell/crap = 2,
+		/obj/item/lighter = 1,
+		/obj/item/analyzer = 1,
+		/obj/item/coin/gold = 1,
+		// Generic maint loot
+		/obj/effect/spawner/random/maintenance/three = 2,
+		/obj/effect/spawner/random/maintenance/two = 3,
+		// We can slip some ration tickets in here too because why not?
+		/obj/item/paper/paperslip/ration_ticket = 1,
+		/obj/item/paper/paperslip/ration_ticket/luxury = 1,
+	)
