@@ -10,7 +10,12 @@
 	lose_text = span_danger("You feel homesick.")
 	icon = FA_ICON_USER_ASTRONAUT
 	value = 7
+<<<<<<< HEAD
 	quirk_flags = QUIRK_CHANGES_APPEARANCE //SKYRAT EDIT CHANGE - ORIGINAL: quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+=======
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
+	medical_record_text = "Patient is well-adapted to non-terrestrial environments."
+>>>>>>> fe6add052a5 (Adds medical record descriptions for quirks without any (#79997))
 	mail_goodies = list(
 		/obj/item/storage/pill_bottle/ondansetron,
 		/obj/item/reagent_containers/pill/gravitum,
