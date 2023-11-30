@@ -132,7 +132,9 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 		var/trash_pile_to_find = locate(/obj/structure/trash_pile) in checking_turf
 		trash_piles += trash_pile_to_find
 
-	return shuffle(trash_piles)
+	list_clear_nulls(trash_piles) // This is just to be safe because it was filled with a LOT of nulls
+
+	return trash_piles
 
 /obj/structure/deepmaints_entrance/exit
 	name = "exit ladder"
