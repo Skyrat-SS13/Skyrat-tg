@@ -69,7 +69,7 @@
 		/obj/item/gun/ballistic/shotgun/riot/sol = 2,
 		/obj/item/gun/ballistic/shotgun/riot/sol/evil = 1,
 		/obj/item/gun/ballistic/rifle/boltaction/prime = 1,
-		/obj/item/gun/energy/laser = 1
+		/obj/item/gun/energy/laser = 1,
 		/obj/item/gun/energy/laser/hellgun = 1,
 		/obj/item/gun/energy/tesla_cannon = 1,
 		/obj/item/gun/energy/e_gun = 1,
