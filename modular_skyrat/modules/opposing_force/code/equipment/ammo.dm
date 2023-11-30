@@ -37,13 +37,13 @@
 	description = "A box of slug shotgun shells, fires only one big fuck-off bullet that wounds extra hard."
 	item_type = /obj/item/ammo_box/advanced/s12gauge
 
-/datum/opposing_force_equipment/ammo_exotic/hp_slug
-	description = "A box of hollow point slug shotgun shells, annihilates unarmoured combatants."
-	item_type = /obj/item/ammo_box/advanced/s12gauge/hp
+/datum/opposing_force_equipment/ammo_exotic/hornet
+	description = "A box of hornet's nest shotgun shells, a less-lethal pellet spread that bounces towards targets off of walls."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/beehive
 
-/datum/opposing_force_equipment/ammo_exotic/ap_slug
-	description = "A box of armour piercing slug shotgun shells, are armoured targets your number one concern? With these shells you'll hardly remember they're wearing any."
-	item_type = /obj/item/ammo_box/advanced/s12gauge/pt20
+/datum/opposing_force_equipment/ammo_exotic/stardust
+	description = "A box of stardust shotgun shells, a less-lethal spread of embedding electrodes that tire targets that move."
+	item_type = /obj/item/ammo_box/advanced/s12gauge/antitide
 
 /datum/opposing_force_equipment/ammo_exotic/a357phasic
 	description = "A speedloader of .357 that ignores structure collision at the cost of some damage."

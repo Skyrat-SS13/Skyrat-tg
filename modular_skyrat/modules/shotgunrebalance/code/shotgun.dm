@@ -243,7 +243,7 @@
 	name = "hunter slug shell"
 	desc = "A 12 gauge slug shell that fires specially designed slugs that deal extra damage to the local planetary fauna"
 	icon_state = "huntershell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
+	projectile_type = /obj/projectile/bullet/shotgun_slug/hunter
 
 /obj/projectile/bullet/shotgun_slug/hunter
 	name = "12g hunter slug"
