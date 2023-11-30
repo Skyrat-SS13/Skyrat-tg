@@ -113,10 +113,10 @@
 /obj/item/storage/toolbox/guncase/skyrat/pistol/contractor/wespe/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
+	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
 	new /obj/item/ammo_box/c35sol(src)
-	new /obj/item/ammo_box/c35sol/ripper(src)
 
 /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor
 	name = "\improper Vesper 'Guêpe' Pistol"

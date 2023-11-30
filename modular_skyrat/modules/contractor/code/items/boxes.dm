@@ -120,12 +120,12 @@
 	illustration = "flashbang"
 	/// A weighted list of random grenades. Think "mostly less lethal". ...Mostly. At time of writing, weights total to 30.
 	var/list/weighted_nades_list = list(
-		/obj/item/grenade/smokebomb = 6,
-		/obj/item/grenade/chem_grenade/teargas = 6,
+		/obj/item/grenade/smokebomb = 10,
+		/obj/item/grenade/chem_grenade/teargas = 5,
 		/obj/item/grenade/mirage = 5,
-		/obj/item/grenade/primer/stingbang = 4,
-		/obj/item/grenade/antigravity = 4,
-		/obj/item/grenade/frag = 2,
+		/obj/item/grenade/primer/stingbang = 3,
+		/obj/item/grenade/antigravity = 3,
+		/obj/item/grenade/frag = 1,
 		/obj/item/grenade/gluon = 1,
 		/obj/item/grenade/chem_grenade/ez_clean = 1,
 		/obj/item/grenade/clusterbuster/soap = 1,
