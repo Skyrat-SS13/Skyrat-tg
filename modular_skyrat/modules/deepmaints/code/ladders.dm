@@ -72,6 +72,37 @@ GLOBAL_LIST_EMPTY(deepmaints_exits)
 	playsound(src, 'sound/machines/tramopen.ogg', 60, TRUE, frequency = 65000)
 	playsound(destination, 'sound/machines/tramclose.ogg', 60, TRUE, frequency = 65000)
 
+/// Checks every trash pile in maintenance and converts 3-5 of them into deepmaints hatches
+/datum/controller/subsystem/minor_mapping/proc/spawn_deepmaint_entrances()
+	var/number_of_entrances = rand(3, 5)
+
+	var/list/potential_entrance_spots = find_trash_piles()
+
+	if(!length(potential_entrance_spots))
+		var/msg = "HEY! LISTEN! There were no trash piles that the minor mapping subysystem could use to spawn entrances to deepmaints!."
+		to_chat(world, span_boldannounce("[msg]"))
+		warning(msg)
+		return
+
+	for(var/entrance_spawn_iteration in range(1, number_of_entrances))
+		var/obj/structure/trash_pile/trash_pile_in_question = pick_n_take(potential_entrance_spots)
+		new /obj/structure/deepmaints_entrance(get_turf(trash_pile_in_question))
+		qdel(trash_pile_in_question)
+
+/datum/controller/subsystem/minor_mapping/proc/find_trash_piles()
+	var/list/trash_piles = list()
+
+	var/list/all_turfs
+	for(var/z_level in SSmapping.levels_by_trait(ZTRAIT_STATION))
+		all_turfs += Z_TURFS(z_level)
+	for(var/turf/open/checking_turf in all_turfs)
+		if(!istype(get_area(checking_turf), /area/station/maintenance))
+			continue
+		var/obj/structure/trash_pile/trash_pile_to_find = locate(/obj/structure/trash_pile) in checking_turf
+		trash_piles += trash_pile_to_find
+
+	return shuffle(trash_piles)
+
 /obj/structure/deepmaints_entrance/exit
 	name = "exit ladder"
 	desc = "A ladder that leads back to 'civilization' above, though its mighty dark up there... \
