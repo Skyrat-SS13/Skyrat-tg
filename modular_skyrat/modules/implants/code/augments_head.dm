@@ -62,7 +62,7 @@
 	return ..()
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer/Destroy()
-	else if(ownerlimb)
+	if(ownerlimb)
 		remove_from_limb()
 	return ..()
 
