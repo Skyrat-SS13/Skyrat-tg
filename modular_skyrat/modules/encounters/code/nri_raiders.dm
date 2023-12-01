@@ -132,8 +132,8 @@ GLOBAL_VAR(first_officer)
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(
 		/obj/item/storage/box/nri_survival_pack/raider = 1,
-		/obj/item/ammo_box/magazine/m9mm_aps = 3,
-		/obj/item/gun/ballistic/automatic/pistol/nri = 1,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery = 3,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman = 1,
 		/obj/item/crucifix = 1,
 		/obj/item/clothing/mask/gas/nri_police = 1,
 		/obj/item/modular_computer/pda/nri_police = 1,
