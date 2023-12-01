@@ -141,7 +141,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		return FALSE
 	if(!count_space_areas)
 		if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
-		return FALSE
+			return FALSE
 	// SKYRAT EDIT END
 
 	return TRUE
