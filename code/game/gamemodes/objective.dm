@@ -156,7 +156,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			continue
 		if(possible_target in blacklist)
 			continue
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION
 		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
 			continue
@@ -164,10 +163,8 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
 				continue
 		// SKYRAT EDIT END
-=======
 		if(!is_valid_target(possible_target))
 			continue
->>>>>>> 5322066d799 (Lings no longer get impossible identity theft objectives (#80012))
 		possible_targets += possible_target
 	if(try_target_late_joiners)
 		var/list/all_possible_targets = possible_targets.Copy()
