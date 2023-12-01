@@ -309,10 +309,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"kJ" = (
-/obj/effect/landmark/bitrunning/safehouse_spawn,
-/turf/template_noop,
-/area/virtual_domain/safehouse)
 "li" = (
 /obj/structure/transit_tube/station/dispenser/reverse{
 	dir = 4
@@ -368,14 +364,6 @@
 "nG" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"nO" = (
-/obj/machinery/mineral/ore_redemption{
-	name = "Syndicate ore redemption machine";
-	ore_multiplier = 4;
-	req_access = list("syndicate")
-	},
-/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "nU" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol,
@@ -534,6 +522,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"tR" = (
+/obj/modular_map_root/safehouse{
+	key = "shuttle_space"
+	},
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "uP" = (
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
@@ -960,10 +954,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Nv" = (
-/obj/effect/landmark/bitrunning/mob_segment,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Of" = (
 /obj/structure/closet/crate/secure/gear{
 	req_access = list("syndicate")
@@ -1026,6 +1016,10 @@
 /obj/structure/tank_dispenser/oxygen,
 /turf/closed/mineral/random,
 /area/space)
+"QX" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Ra" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
 /obj/machinery/light/small/directional/north,
@@ -2019,7 +2013,7 @@ ru
 Io
 uP
 uP
-Nv
+QX
 lN
 uP
 uP
@@ -2028,7 +2022,7 @@ uP
 uP
 lN
 uP
-Nv
+QX
 uP
 Io
 hA
@@ -2318,7 +2312,7 @@ pM
 vK
 uP
 uP
-Nv
+QX
 sL
 Im
 ru
@@ -2523,7 +2517,7 @@ sM
 sM
 sM
 sM
-kJ
+tR
 qx
 Hq
 "}
@@ -2738,7 +2732,7 @@ nB
 ru
 eB
 uP
-nO
+uP
 uP
 ru
 nB

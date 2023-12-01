@@ -146,10 +146,6 @@
 	},
 /turf/open/floor/plating,
 /area/virtual_domain)
-"ev" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/template_noop,
-/area/virtual_domain)
 "eJ" = (
 /obj/structure/disposalpipe/sorting{
 	dir = 2
@@ -220,7 +216,6 @@
 /area/virtual_domain)
 "gc" = (
 /obj/structure/disposalpipe/broken,
-/obj/effect/landmark/bitrunning/mob_segment,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "gj" = (
@@ -363,6 +358,10 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating,
 /area/virtual_domain)
+"lt" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
 "lx" = (
 /obj/machinery/door/poddoor/shutters/indestructible{
 	dir = 4;
@@ -427,6 +426,12 @@
 /obj/structure/sign/poster/official/safety_internals/directional/south,
 /turf/open/floor/iron,
 /area/virtual_domain)
+"nx" = (
+/obj/modular_map_root/safehouse{
+	key = "shuttle_space"
+	},
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "nz" = (
 /obj/structure/broken_flooring/side/directional/north,
 /obj/structure/disposalpipe/segment{
@@ -458,6 +463,10 @@
 /obj/structure/sign/warning/doors/directional/north,
 /turf/open/floor/iron,
 /area/virtual_domain)
+"oK" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "oN" = (
 /obj/machinery/conveyor/auto,
 /obj/structure/window/reinforced/spawner/directional/west,
@@ -473,6 +482,12 @@
 	dir = 1
 	},
 /turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"pb" = (
+/obj/structure/broken_flooring/corner{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/virtual_domain)
 "pf" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -625,6 +640,13 @@
 /area/virtual_domain)
 "tr" = (
 /obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"tE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "ud" = (
@@ -878,9 +900,18 @@
 /obj/machinery/light/broken,
 /turf/open/floor/iron,
 /area/virtual_domain)
+"Aq" = (
+/turf/template_noop,
+/area/virtual_domain/safehouse)
 "Av" = (
 /obj/item/stack/rods/two,
 /turf/open/space/basic,
+/area/virtual_domain)
+"Aw" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/turf/open/chasm,
 /area/virtual_domain)
 "AJ" = (
 /obj/effect/decal/cleanable/generic,
@@ -1038,10 +1069,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/virtual_domain)
-"EK" = (
-/obj/structure/disposalpipe/broken,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "Fa" = (
@@ -1213,9 +1240,6 @@
 /obj/structure/sign/warning/chem_diamond/directional/west,
 /turf/open/floor/plating,
 /area/virtual_domain)
-"JR" = (
-/turf/template_noop,
-/area/virtual_domain)
 "JT" = (
 /obj/structure/lattice/catwalk{
 	name = "industrial lift"
@@ -1238,11 +1262,23 @@
 /obj/machinery/light/small/red/dim,
 /turf/open/floor/plating,
 /area/virtual_domain)
-"KX" = (
-/obj/structure/lattice/catwalk{
-	name = "industrial lift"
+"KP" = (
+/mob/living/simple_animal/pet/cat/space,
+/obj/structure/bed/dogbed{
+	name = "cat bed"
 	},
-/turf/open/chasm,
+/obj/item/toy/plush/moth{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/machinery/light/small/dim/directional/south,
+/obj/structure/sign/poster/official/moth_hardhat/directional/west,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"KX" = (
+/obj/structure/disposalpipe/broken,
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating,
 /area/virtual_domain)
 "Ln" = (
 /obj/structure/disposalpipe/broken{
@@ -1363,10 +1399,6 @@
 	},
 /turf/open/floor/plating,
 /area/virtual_domain)
-"Ou" = (
-/obj/effect/landmark/bitrunning/mob_segment,
-/turf/open/floor/plating,
-/area/virtual_domain)
 "OJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/stripes{
@@ -1441,10 +1473,6 @@
 	},
 /turf/open/floor/plating,
 /area/virtual_domain)
-"Qo" = (
-/obj/effect/landmark/bitrunning/safehouse_spawn,
-/turf/template_noop,
-/area/virtual_domain)
 "Qr" = (
 /turf/closed/indestructible/fakedoor/maintenance{
 	name = "maintenance access"
@@ -1496,13 +1524,6 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating,
-/area/virtual_domain)
-"Rs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/effect/landmark/bitrunning/mob_segment,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "Ru" = (
@@ -1581,12 +1602,6 @@
 	},
 /obj/effect/mob_spawn/corpse/human/factory/qm,
 /turf/open/floor/iron,
-/area/virtual_domain)
-"Tn" = (
-/obj/structure/broken_flooring/corner{
-	dir = 4
-	},
-/turf/open/floor/plating,
 /area/virtual_domain)
 "Tp" = (
 /obj/machinery/door/poddoor/shutters/indestructible{
@@ -1816,19 +1831,6 @@
 /area/virtual_domain)
 "Yl" = (
 /obj/structure/broken_flooring/corner/directional/west,
-/turf/open/floor/plating,
-/area/virtual_domain)
-"Ym" = (
-/mob/living/simple_animal/pet/cat/space,
-/obj/structure/bed/dogbed{
-	name = "cat bed"
-	},
-/obj/item/toy/plush/moth{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/machinery/light/small/dim/directional/south,
-/obj/structure/sign/poster/official/moth_hardhat/directional/west,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "Yt" = (
@@ -2161,7 +2163,7 @@ vA
 Dr
 bw
 Jq
-EK
+gc
 eg
 RJ
 eg
@@ -2259,8 +2261,8 @@ RJ
 eg
 uU
 gj
-Ou
-Tn
+lt
+pb
 OR
 eg
 RJ
@@ -2427,12 +2429,12 @@ eY
 aK
 aK
 aK
-JR
-JR
-JR
-JR
-JR
-Qo
+Aq
+Aq
+Aq
+Aq
+Aq
+nx
 aK
 RJ
 "}
@@ -2477,12 +2479,12 @@ eY
 eY
 aK
 aK
-JR
-JR
-JR
-JR
-JR
-JR
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 aK
 RJ
 "}
@@ -2506,7 +2508,7 @@ kU
 pv
 AP
 IZ
-KX
+Aw
 Wd
 uv
 DE
@@ -2527,12 +2529,12 @@ XL
 eg
 tr
 eY
-JR
-JR
-JR
-JR
-JR
-JR
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 aK
 RJ
 "}
@@ -2555,14 +2557,14 @@ mu
 uF
 xl
 AP
-KX
+Aw
 JT
 bG
-Rs
+tE
 DA
 DA
 zE
-gc
+KX
 mu
 Yz
 lW
@@ -2577,12 +2579,12 @@ Wp
 Ru
 hi
 gs
-JR
-JR
-JR
-JR
-JR
-JR
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 aK
 RJ
 "}
@@ -2605,8 +2607,8 @@ iz
 jS
 gj
 rJ
-KX
-KX
+Aw
+Aw
 Wd
 Ff
 lN
@@ -2627,12 +2629,12 @@ cw
 eY
 tr
 eY
-JR
-JR
-JR
-JR
-JR
-JR
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 aK
 RJ
 "}
@@ -2677,12 +2679,12 @@ eY
 eY
 aK
 aK
-JR
-JR
-JR
-JR
-JR
-JR
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 aK
 RJ
 "}
@@ -2727,12 +2729,12 @@ eY
 aK
 aK
 aK
-JR
-JR
-JR
-JR
-JR
-ev
+Aq
+Aq
+Aq
+Aq
+Aq
+oK
 aK
 RJ
 "}
@@ -2756,7 +2758,7 @@ Tp
 Tp
 Tp
 eg
-Ym
+KP
 eg
 eg
 xa
@@ -2857,9 +2859,9 @@ Yl
 pJ
 eg
 kn
-Tn
+pb
 kU
-Ou
+lt
 kU
 Fa
 kU
@@ -2909,7 +2911,7 @@ eg
 rc
 mu
 rM
-EK
+gc
 vQ
 vQ
 mu
