@@ -43,8 +43,6 @@
 
 	if(ownerlimb)
 		remove_from_limb()
-		if(!moving && use_mob_sprite_as_obj_sprite)
-			update_appearance(UPDATE_OVERLAYS)
 
 	if(organ_owner)
 		organ_owner.update_body_parts()
@@ -81,7 +79,7 @@
 	text_cooldown = TRUE
 	click_to_activate = TRUE
 
-/datum/action/cooldown/sensory_enhancer/Trigger(trigger_flags)
+/datum/action/cooldown/sensory_enhancer/Trigger(trigger_flags, atom/target)
 	. = ..()
 	var/obj/item/organ/our_implant = target
 	if(our_implant.organ_flags & ORGAN_FAILING)
@@ -116,6 +114,8 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /datum/action/cooldown/spell/pointed/hackerman_deck
+	name = "Activate Ranged Hacking"
+	desc = "Click on any machine, excepting cyborgs, to hack them. Has a short range, only two tiles."
 	active_msg = "You warm up your Binyat deck, there's an idle buzzing at the back of your mind as it awaits a target."
 	deactive_msg = "Your hacking deck makes an almost disappointed sounding buzz at the back of your mind as it powers down."
 	cast_range = 2
@@ -123,22 +123,7 @@
 	spell_max_level = 1 // God I hate actions
 	cooldown_time = 5 MINUTES
 	sparks_amt = 2
-	/// What we change the icon of the mouse pointer to when we activate
-	var/ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
-
-/datum/action/cooldown/spell/pointed/hackerman_deck/on_activation(mob/on_who)
-	if(ranged_mousepointer)
-		on_who.client?.mouse_override_icon = ranged_mousepointer
-		on_who.update_mouse_pointer()
-
-	. = ..()
-
-/datum/action/cooldown/spell/pointed/hackerman_deck/on_deactivation(mob/on_who, refund_cooldown = TRUE)
-	if(ranged_mousepointer)
-		on_who.client?.mouse_override_icon = initial(owner.client?.mouse_pointer_icon)
-		on_who.update_mouse_pointer()
-
-	. = ..()
+	ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/is_valid_target(atom/cast_on)
 	. = ..()
