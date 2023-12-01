@@ -140,14 +140,13 @@
 
 	return TRUE
 
-/datum/action/cooldown/spell/pointed/before_cast(atom/cast_on)
-	. = ..()
-	if(!cast_on.emag_act(owner))
-		owner.balloon_alert("can't hack this")
-		return . | SPELL_CANCEL_CAST
-
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
+
+	if(!cast_on.emag_act(owner))
+		owner.balloon_alert("can't hack this!")
+		next_use_time = 1 SECONDS
+		return
 
 	playsound(cast_on, 'sound/machines/terminal_processing.ogg', 15, TRUE)
 
