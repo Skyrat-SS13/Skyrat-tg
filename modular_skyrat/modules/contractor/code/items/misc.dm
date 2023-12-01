@@ -110,7 +110,7 @@
 
 	return ..()
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/contractor/wespe/PopulateContents()
+/obj/item/storage/toolbox/guncase/skyrat/pistol/contractor/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
@@ -119,7 +119,7 @@
 	new /obj/item/ammo_box/c35sol(src)
 
 /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor
-	name = "\improper Vesper 'Guêpe' Pistol"
+	name = "\improper Vesper 'Horzel' Pistol"
 	desc = "An aftermarket variant of the Trappiste 'Wespe', with an integrated suppressor. \
 	Comes with an underbarrel kinetic light disruptor and tacticool black color scheme."
 	icon_state = "wespe_contractor"
@@ -151,7 +151,7 @@
 /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/examine_more(mob/user)
 	. = ..()
 
-	. += "\nThe Guêpe is simply a modified Trappiste 'Wespe'. Its main difference, often \
+	. += "\nThe Horzel is, in essence, a modified Trappiste 'Wespe'. Its main difference, often \
 	claimed to not be enough to warrant its advertisement as an overhaul, is a stubby \
 	integral suppressor and a modified housing with side-button trigger for a \
 	chopped-down SC/FISHER for disrupting electrical sources of light."
