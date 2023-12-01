@@ -98,6 +98,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /atom/proc/log_message(message, message_type, color = null, log_globally = TRUE)
 	if(!log_globally)
 		return
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
@@ -117,6 +118,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	#endif
 	//SKYRAT EDIT ADDITION END
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
+=======
+
+	var/log_text = "[key_name_and_tag(src)] [message] [loc_name(src)]"
+>>>>>>> 25229440c60 (Adds Mob Tag data to log messages + player panel (#79994))
 	switch(message_type)
 		/// ship both attack logs and victim logs to the end of round attack.log just to ensure we don't lose information
 		if(LOG_ATTACK, LOG_VICTIM)
@@ -265,6 +270,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /proc/key_name_admin(whom, include_name = TRUE)
 	return key_name(whom, TRUE, include_name)
+
+/proc/key_name_and_tag(whom, include_link = null, include_name = TRUE)
+	var/tag = "!tagless!" // whom can be null in key_name() so lets set this as a safety
+	if(isatom(whom))
+		var/atom/subject = whom
+		tag = subject.tag
+	return "[key_name(whom, include_link, include_name)] ([tag])"
 
 /proc/loc_name(atom/A)
 	if(!istype(A))
