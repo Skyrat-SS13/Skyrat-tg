@@ -126,7 +126,7 @@
 	if(face_shield)
 		. += span_notice("The <b>face shield</b> can be removed with <b>Right-Click</b>.")
 	else
-		. += span_notice("A <b>face shield</b> can be attached to it, if you had one.")
+		. += span_notice("A <b>face shield</b> can be attached to it.")
 
 	return .
 
