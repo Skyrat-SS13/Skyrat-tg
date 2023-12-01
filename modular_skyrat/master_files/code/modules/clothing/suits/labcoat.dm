@@ -1,3 +1,6 @@
+/obj/item/clothing/suit/toggle/labcoat
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/toggle/labcoat/skyrat
 	name = "SR LABCOAT SUIT DEBUG"
 	desc = "REPORT THIS IF FOUND"
@@ -23,7 +26,6 @@
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
 	icon_state = "labcoat_highvis"
 	blood_overlay_type = "armor"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
