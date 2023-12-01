@@ -81,13 +81,19 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 5 MINUTES
 	text_cooldown = TRUE
-
-/datum/action/cooldown/sensory_enhancer/Activate(atom/target)
-	. = ..()
+	/// Keeps track of how much twitch we inject into people on activation
 	var/injection_amount = 10
+
+/datum/action/cooldown/sensory_enhancer/Trigger(trigger_flags, atom/target)
+	. = ..()
+
+	injection_amount = 10
 
 	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
 		injection_amount = 20
+
+/datum/action/cooldown/sensory_enhancer/Activate(atom/target)
+	. = ..()
 
 	var/mob/living/carbon/human/human_owner = owner
 
@@ -131,8 +137,6 @@
 
 	if(ismob(cast_on))
 		return FALSE
-
-
 
 	return TRUE
 
