@@ -190,7 +190,7 @@
 	item_type = /obj/item/organ/internal/cyberimp/sensory_enhancer
 	cost = PAYCHECK_COMMAND * 5
 
-/datum/armament_entry/company_import/deforest/cyber_implants/sandy
+/datum/armament_entry/company_import/deforest/cyber_implants/hackerman
 	name = "Binyat Wireless Hacking System Implant"
 	item_type = /obj/item/organ/internal/cyberimp/hackerman_deck
 	cost = PAYCHECK_COMMAND * 10
