@@ -219,6 +219,73 @@
 	obj_flags |= EMAGGED
 	return TRUE
 
+// Razorwire implant, long reach whip made of extremely thin wire, ouch!
+
+/obj/item/melee/razorwire
+	name = "implanted razorwire"
+	desc = "A long length of cutting wire so impossibly thin that it causes grevious wounds in anything you slash with it. \
+		Its long enough that you'd probably be able to hit someone with it from a little further away than normal."
+	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
+	icon_state = "razorwire_weapon"
+	righthand_file = 'modular_skyrat/modules/implants/icons/inhands/lefthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/implants/icons/inhands/righthand.dmi'
+	inhand_icon_state = "razorwire"
+	w_class = WEIGHT_CLASS_BULKY
+	sharpness = SHARP_EDGED
+	force = 20
+	demolition_mod = 0.25 // This thing sucks at destroying stuff
+	wound_bonus = 10
+	bare_wound_bonus = 20
+	weak_against_armour = TRUE
+	reach = 2
+	hitsound = 'sound/weapons/whip.ogg'
+	attack_verb_continuous = list("slashes", "whips", "lashes")
+	attack_verb_simple = list("slash", "whip", "lash")
+
+/obj/item/organ/internal/cyberimp/arm/razorwire
+	name = "razorwire spool implant"
+	desc = "An integrated spool of razorwire, capable of being used as a weapon when whipped at your foes."
+	items_to_create = list(/obj/item/melee/razorwire)
+	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
+	icon_state = "razorwire"
+
+// Shell launch system, an arm mounted single-shot shotgun/.980 grenade launcher that comes out of your arm
+
+/obj/item/gun/ballistic/shotgun/shell_launcher
+	name = "shell launch system"
+	desc = "An arm mounted cannon for firing shotgun shells or Tydhouer grenades. You can use a <b>wrench</b> to adjust it for a different ammo type."
+	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
+	icon_state = "shell_cannon_weapon"
+	righthand_file = 'modular_skyrat/modules/implants/icons/inhands/lefthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/implants/icons/inhands/righthand.dmi'
+	inhand_icon_state = "shell_cannon"
+	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_LIGHT
+	force = 10
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/shell_cannon
+	obj_flags = UNIQUE_RENAME
+	rack_sound = 'modular_skyrat/modules/modular_weapons/sounds/shotgun_rack.ogg'
+	semi_auto = TRUE
+	bolt_type = BOLT_TYPE_NO_BOLT
+	can_be_sawn_off = FALSE
+	pb_knockback = 2
+	initial_caliber = CALIBER_SHOTGUN
+	alternative_caliber = CALIBER_980TYDHOUER
+
+/obj/item/ammo_box/magazine/internal/shot/shell_cannon
+	name = "shell launch system internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	caliber = CALIBER_SHOTGUN
+	max_ammo = 1
+	multiload = FALSE
+
+/obj/item/organ/internal/cyberimp/arm/shell_launcher
+	name = "shell launch system implant"
+	desc = "A complex housing for implanting a shell launch system into an arm. Holds a single shot barrel that can hold either twelve gauge or .980 Tydhouer shells."
+	items_to_create = list(/obj/item/gun/ballistic/shotgun/shell_launcher)
+	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
+	icon_state = "shell_cannon"
+
 #undef KNIFE_HITSOUND
 #undef KNIFE_USESOUND
 #undef KNIFE_ATTACK_VERB_CONTINUOUS

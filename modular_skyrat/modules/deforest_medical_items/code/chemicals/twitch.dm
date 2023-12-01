@@ -97,7 +97,8 @@
 		our_guy.spray_blood(our_guy.dir, 2) // The before mentioned coughing up blood
 		our_guy.emote("cough")
 		our_guy.adjustStaminaLoss(constant_dose_time)
-		our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 0.3 * constant_dose_time) // Basically you might die
+		if(!HAS_TRAIT(our_guy, TRAIT_TWITCH_ADAPTED))
+			our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 0.3 * constant_dose_time) // Basically you might die
 
 	if(!our_guy.hud_used)
 		return

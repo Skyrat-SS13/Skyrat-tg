@@ -114,6 +114,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait given to a brain that is able to accept souls from a RSD
 #define TRAIT_RSD_COMPATIBLE "rsd_compatible"
 
+/// Trait that changes the ending effects of twitch leaving your system
+#define TRAIT_TWITCH_ADAPTED "twitch_adapted"
+
 // Defines for some extra inherent traits
 #define TRAIT_REVIVES_BY_HEALING "trait_revives_by_healing"
 #define TRAIT_ROBOTIC_DNA_ORGANS "trait_robotic_dna_organs"

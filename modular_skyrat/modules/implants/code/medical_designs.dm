@@ -11,6 +11,84 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
+/datum/design/cyberimp_razorwire
+	name = "Razorwire Spool Implant"
+	desc = "A long length of cutting wire so impossibly thin that it causes grevious wounds in anything you slash with it. \
+		Its long enough that you'd probably be able to hit someone with it from a little further away than normal."
+	id = "combat_implant_razorwire"
+	build_type = MECHFAB
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 3,
+	)
+	construction_time = 30 SECONDS
+	build_path = /obj/item/organ/internal/cyberimp/arm/razorwire
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_shell_launcher
+	name = "Shell Launch System Implant"
+	desc = "A complex housing for implanting a shell launch system into an arm. Holds a single shot barrel that can hold either twelve gauge or .980 Tydhouer shells."
+	id = "combat_implant_shell_launcher"
+	build_type = MECHFAB
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 3,
+	)
+	construction_time = 30 SECONDS
+	build_path = /obj/item/organ/internal/cyberimp/arm/shell_launcher
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_sandy
+	name = "Qani-Laaca Sensory Computer Implant"
+	desc = "An experimental implant replacing the spine of organics. When activated, it can give a temporary boost to mental processing speed, \
+		Which many users percieve as a slowing of time and quickening of their ability to act. Due to its nature, it is incompatible with \
+		system that heavily influence the user's nervous system, like the central nervous system rebooter. \
+		As a bonus effect, you are immune to the burst of heart damage that comes at the end of twitch usage, as the computer is able to regulate \
+		your heart's rythm back to normal after its use."
+	id = "combat_implant_sandy"
+	build_type = MECHFAB
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 2,
+	)
+	construction_time = 30 SECONDS
+	build_path = /obj/item/organ/internal/cyberimp/sensory_enhancer
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/cyberimp_hackerman
+	name = "Binyat Wireless Hacking System Implant"
+	desc = "A rare-to-find neural chip that allows its user to interface with nearby machinery \
+		and effect it in (usually) beneficial ways. Due to the rudimentary connection, fine manipulation \
+		isn't possible, however the deck will drop a payload into the target's systems that will attempt \
+		hacking for you. Due to their complexity, the system does not appear to work on cyborgs."
+	id = "combat_implant_hackerman"
+	build_type = MECHFAB
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 2,
+	)
+	construction_time = 30 SECONDS
+	build_path = /obj/item/organ/internal/cyberimp/hackerman_deck
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
 /datum/design/cyberimp_claws
 	name = "Razor Claws Implant"
 	desc = "Long, sharp, double-edged razors installed within the fingers, functional for cutting. All kinds of cutting."
