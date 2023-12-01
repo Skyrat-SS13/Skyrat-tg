@@ -136,6 +136,14 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
 		return FALSE
 
+	// SKYRAT EDIT ADDITION
+	if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
+		return FALSE
+	if(!count_space_areas)
+		if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
+		return FALSE
+	// SKYRAT EDIT END
+
 	return TRUE
 
 //dupe_search_range is a list of antag datums / minds / teams
@@ -156,13 +164,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			continue
 		if(possible_target in blacklist)
 			continue
-		// SKYRAT EDIT ADDITION
-		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
-			continue
-		if(!count_space_areas)
-			if(istype(target_area, /area/space) || istype(target_area, /area/ruin) || istype(target_area, /area/icemoon) || istype(target_area, /area/lavaland))
-				continue
-		// SKYRAT EDIT END
 		if(!is_valid_target(possible_target))
 			continue
 		possible_targets += possible_target
