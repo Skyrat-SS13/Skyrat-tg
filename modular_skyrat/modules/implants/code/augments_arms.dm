@@ -232,7 +232,7 @@
 	inhand_icon_state = "razorwire"
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = SHARP_EDGED
-	force = 20
+	force = 18
 	demolition_mod = 0.25 // This thing sucks at destroying stuff
 	wound_bonus = 10
 	bare_wound_bonus = 20
@@ -271,6 +271,9 @@
 	pb_knockback = 2
 	initial_caliber = CALIBER_SHOTGUN
 	alternative_caliber = CALIBER_980TYDHOUER
+	recoil = 4
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
 
 /obj/item/ammo_box/magazine/internal/shot/shell_cannon
 	name = "shell launch system internal magazine"

@@ -18,7 +18,7 @@
 	actions_types = list(/datum/action/cooldown/sensory_enhancer)
 	w_class = WEIGHT_CLASS_SMALL
 	/// The bodypart overlay datum we should apply to whatever mob we are put into
-	var/bodypart_overlay = /datum/bodypart_overlay/simple/sensory_enhancer
+	var/datum/bodypart_overlay/simple/sensory_enhancer/bodypart_overlay
 	/// What limb we are inside of, used for tracking when and how to remove our overlays and all that
 	var/obj/item/bodypart/ownerlimb
 
@@ -50,12 +50,14 @@
 	REMOVE_TRAIT(organ_owner, TRAIT_TWITCH_ADAPTED, TRAIT_NARCOTICS)
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer/add_to_limb(obj/item/bodypart/bodypart)
+	bodypart_overlay = new()
 	ownerlimb = bodypart
 	ownerlimb.add_bodypart_overlay(bodypart_overlay)
 	return ..()
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer/remove_from_limb()
 	ownerlimb.remove_bodypart_overlay(bodypart_overlay)
+	QDEL_NULL(bodypart_overlay)
 	ownerlimb = null
 	return ..()
 
@@ -81,11 +83,6 @@
 
 /datum/action/cooldown/sensory_enhancer/Trigger(trigger_flags, atom/target)
 	. = ..()
-	var/obj/item/organ/our_implant = target
-	if(our_implant.organ_flags & ORGAN_FAILING)
-		to_chat(owner, span_warning("Your Qani-Laaca does nothing except spit back errors at you!"))
-		return
-
 	var/injection_amount = 10
 
 	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
@@ -118,6 +115,9 @@
 	desc = "Click on any machine, excepting cyborgs, to hack them. Has a short range, only two tiles."
 	active_msg = "You warm up your Binyat deck, there's an idle buzzing at the back of your mind as it awaits a target."
 	deactive_msg = "Your hacking deck makes an almost disappointed sounding buzz at the back of your mind as it powers down."
+	button_icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
+	button_icon_state = "hackerman"
+	spell_requirements = SPELL_REQUIRES_MIND
 	cast_range = 2
 	aim_assist = FALSE
 	spell_max_level = 1 // God I hate actions
