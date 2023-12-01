@@ -53,12 +53,14 @@
 	bodypart_overlay = new()
 	ownerlimb = bodypart
 	ownerlimb.add_bodypart_overlay(bodypart_overlay)
+	owner.update_body_parts()
 	return ..()
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer/remove_from_limb()
 	ownerlimb.remove_bodypart_overlay(bodypart_overlay)
 	QDEL_NULL(bodypart_overlay)
 	ownerlimb = null
+	owner.update_body_parts()
 	return ..()
 
 /obj/item/organ/internal/cyberimp/sensory_enhancer/Destroy()
@@ -79,9 +81,8 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 5 MINUTES
 	text_cooldown = TRUE
-	click_to_activate = TRUE
 
-/datum/action/cooldown/sensory_enhancer/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/sensory_enhancer/Activate(atom/target)
 	. = ..()
 	var/injection_amount = 10
 
@@ -131,10 +132,15 @@
 	if(ismob(cast_on))
 		return FALSE
 
-	if(!cast_on.emag_act(owner))
-		return FALSE
+
 
 	return TRUE
+
+/datum/action/cooldown/spell/pointed/before_cast(atom/cast_on)
+	. = ..()
+	if(!cast_on.emag_act(owner))
+		owner.balloon_alert("can't hack this")
+		return . | SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
