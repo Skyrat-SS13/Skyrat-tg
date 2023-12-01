@@ -140,6 +140,12 @@
 
 	return TRUE
 
+/datum/action/cooldown/spell/pointed/hackerman_deck/before_cast(atom/cast_on)
+	. = ..()
+
+	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
+		return . | SPELL_CANCEL_CAST
+
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
 
