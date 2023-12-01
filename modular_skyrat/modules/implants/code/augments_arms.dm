@@ -275,6 +275,9 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 
+/obj/item/gun/ballistic/shotgun/shell_launcher/give_gun_safeties()
+	return
+
 /obj/item/ammo_box/magazine/internal/shot/shell_cannon
 	name = "shell launch system internal magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
