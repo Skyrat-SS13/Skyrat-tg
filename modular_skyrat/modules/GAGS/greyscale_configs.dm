@@ -1384,7 +1384,7 @@ digi
 /datum/greyscale_config/cin_surplus_vest
 	name = "CIN Surplus Vest"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/helmet.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/vest.json'
 
 /datum/greyscale_config/cin_surplus_vest/object
 	name = "CIN Surplus Vest (OBJ)"
