@@ -75,9 +75,14 @@
 
 	add_face_shield(user, attacking_item)
 
+/obj/item/clothing/head/helmet/sf_sacrificial/Destroy()
+	QDEL_NULL(face_shield)
+	return ..()
+
 /obj/item/clothing/head/helmet/sf_sacrificial/AltClick(mob/user)
 	remove_face_shield(user)
 
+/// Attached the passed face shield to the helmet.
 /obj/item/clothing/head/helmet/sf_sacrificial/proc/add_face_shield(mob/living/carbon/human/user, obj/shield_in_question)
 	if(face_shield)
 		return
@@ -94,6 +99,7 @@
 	worn_icon_state = icon_state
 	update_appearance()
 
+/// Removes the face shield from the helmet, breaking it into a glass shard decal if that's wanted, too.
 /obj/item/clothing/head/helmet/sf_sacrificial/proc/remove_face_shield(mob/living/carbon/human/user, break_it)
 	if(!face_shield)
 		return
