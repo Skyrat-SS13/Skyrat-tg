@@ -159,7 +159,7 @@
 	visible_contents = TRUE
 
 /obj/machinery/smartfridge/producedisplay/accept_check(obj/item/weapon)
-	return istype(weapon, /obj/item/grown)
+	return (istype(weapon, /obj/item/grown) || istype(weapon, /obj/item/bouquet) || istype(weapon, /obj/item/clothing/head/costume/garland))
 
 /obj/machinery/smartfridge/producedisplay/structure_examine()
 	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
