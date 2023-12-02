@@ -172,6 +172,7 @@ GLOBAL_VAR(first_officer)
 	subdepartment_color = COLOR_NRI_POLICE_SILVER
 	sechud_icon_state = "hud_nri_police"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
+	threat_modifier = 2 // Not as treatening as syndicate, but still potentially harmful to the station
 
 /obj/item/gun/energy/e_gun/advtaser/normal
 	w_class = WEIGHT_CLASS_NORMAL
