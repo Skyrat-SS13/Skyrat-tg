@@ -19,7 +19,7 @@
 	/// The extra range that this turret gives regarding viewrange.
 	var/view_range = 2.5
 	/// Sound to play when overheated
-	var/overheatsound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg'
+	var/overheatsound = 'sound/effects/wounds/sizzle2.ogg'
 	/// Sound to play when firing
 	var/firesound = 'modular_skyrat/modules/mounted_machine_gun/sound/50cal_box_01.ogg'
 	/// How long it takes for a wrench user to undeploy the object
