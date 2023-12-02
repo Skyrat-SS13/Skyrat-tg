@@ -19,6 +19,7 @@
 /obj/structure/plant_tank/examine(mob/user)
 	. = ..()
 	. += span_notice("<br>Use food or worm fertilizer to allow nitrogen production and carbon dioxide processing!")
+	. += span_notice("There are [operation_number] cycles left!")
 	var/datum/component/simple_farm/find_farm = GetComponent(/datum/component/simple_farm)
 	if(!find_farm)
 		. += span_notice("<br>Use five sand to allow planting!")
@@ -107,9 +108,11 @@
 	return TRUE
 
 /obj/structure/plant_tank/deconstruct(disassembled)
-	new /obj/item/stack/sheet/glass(get_turf(src))
-	new /obj/item/forging/complete/plate(get_turf(src))
-	new /obj/item/stack/rods(get_turf(src))
+	var/target_turf = get_turf(src)
+	for(var/loop in 1 to 4)
+		new /obj/item/stack/sheet/glass(target_turf)
+		new /obj/item/stack/rods(target_turf)
+	new /obj/item/forging/complete/plate(target_turf)
 	return ..()
 
 /datum/crafting_recipe/plant_tank

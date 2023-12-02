@@ -59,6 +59,10 @@
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
 	examine_list += span_notice("<br>You are able to plant seeds here!")
 
+/**
+ * delete_farm is meant to be called when the parent of this component has been deleted-- thus deleting the ability to grow the simple farm
+ * it will delete the farm that can be found on the turf of the parent of this component
+ */
 /datum/component/simple_farm/proc/delete_farm()
 	SIGNAL_HANDLER
 
