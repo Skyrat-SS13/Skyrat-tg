@@ -1380,6 +1380,16 @@ digi
 	name = "CIN Surplus Helmet (OBJ)"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 
+// Vest
+/datum/greyscale_config/cin_surplus_vest
+	name = "CIN Surplus Vest"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/helmet.json'
+
+/datum/greyscale_config/cin_surplus_vest/object
+	name = "CIN Surplus Vest (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
 // Undersuit
 /datum/greyscale_config/cin_surplus_undersuit
 	name = "CIN Surplus Undersuit"
@@ -1411,6 +1421,16 @@ digi
 
 /datum/greyscale_config/cin_surplus_chestrig/object
 	name = "CIN Surplus Chestrig (OBJ)"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+
+// Bigrig
+/datum/greyscale_config/cin_surplus_bigrig
+	name = "CIN Large Surplus Chestrig"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/bigrig.json'
+
+/datum/greyscale_config/cin_surplus_bigrig/object
+	name = "CIN Large Surplus Chestrig (OBJ)"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 
 /*

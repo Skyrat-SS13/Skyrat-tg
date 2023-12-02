@@ -23,6 +23,7 @@
 	armor_type = /datum/armor/armor_sf_sacrificial
 	max_integrity = 200
 	limb_integrity = 200
+	resistance_flags = FIRE_PROOF
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -58,6 +59,7 @@
 	repairable_by = null // No being cheeky and keeping a pile of repair materials in your bag to fix it either
 	dog_fashion = null
 	flags_inv = null
+	resistance_flags = FIRE_PROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	/// Holds the faceshield for quick reference
 	var/obj/item/sacrificial_face_shield/face_shield

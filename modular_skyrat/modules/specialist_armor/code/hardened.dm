@@ -21,6 +21,7 @@
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_sf_hardened
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/armor/sf_hardened/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type, damage_type)
 	. = ..()
@@ -68,6 +69,7 @@
 	visor_flags_cover = HEADCOVERSEYES
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/head/helmet/toggleable/sf_hardened/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type, damage_type)
 	. = ..()

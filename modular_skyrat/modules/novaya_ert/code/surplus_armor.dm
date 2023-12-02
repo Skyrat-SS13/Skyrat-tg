@@ -19,23 +19,27 @@
 #define HELMET_BOTH_OF_THE_ABOVE "both"
 
 // Shared Armor Datum
-// CIN armor is decently tough against bullets and wounding, but flounders when lasers enter the play, because it wasn't designed to protect against those much
+// CIN armor does decently against both bullets and lasers, however can break when shot enough
 
 /datum/armor/cin_surplus_armor
-	melee = 30
-	bullet = 40
-	laser = 10
-	energy = 10
-	bomb = 40
-	fire = 50
-	acid = 50
-	wound = 20
+	melee = ARMOR_LEVEL_WEAK
+	bullet = ARMOR_LEVEL_MID
+	laser = ARMOR_LEVEL_MID
+	energy = ARMOR_LEVEL_WEAK
+	bomb = ARMOR_LEVEL_WEAK
+	fire = ARMOR_LEVEL_MID
+	acid = ARMOR_LEVEL_MID
+	wound = WOUND_ARMOR_STANDARD
 
 // Hats
 
 /obj/item/clothing/head/helmet/cin_surplus_helmet
-	name = "\improper GZ-03 combat helmet"
-	desc = "An outdated service helmet previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
+	name = "'Klamra' combat helmet"
+	desc = "An outdated helmet used by CIN military forces. \
+		The design dates back to the years leading up to CIN - SolFed border war, and can still be seen today \
+		in some parts of CIN territories where its not so important for equipment to be the best of the best. \
+		While the armor will wear down over time, it covers both your arms and torso, and provides exceptional \
+		projectile and laser protection."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "helmet_plain"
@@ -43,6 +47,9 @@
 	greyscale_config_worn = /datum/greyscale_config/cin_surplus_helmet
 	greyscale_colors = CIN_WINTER_COLORS
 	armor_type = /datum/armor/cin_surplus_armor
+	max_integrity = 150
+	limb_integrity = 150
+	resistance_flags = FIRE_PROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 	/// Controls what helmet accessories will be present in a weighted format
@@ -55,7 +62,7 @@
 
 /obj/item/clothing/head/helmet/cin_surplus_helmet/Initialize(mapload)
 	. = ..()
-
+	AddComponent(/datum/component/clothing_damaged_by_bullets, 0.75)
 	generate_random_accessories()
 
 /// Takes accessories_weighted_list and picks what icon_state suffix to use
@@ -74,7 +81,7 @@
 /obj/item/clothing/head/helmet/cin_surplus_helmet/examine_more(mob/user)
 	. = ..()
 
-	. += "The GZ-03 series of coalition armor was a collaborative project between the NRI and TransOrbital \
+	. += "The 'Klamra' series of coalition armor was a collaborative project between the NRI and TransOrbital \
 		to develop a frontline soldier's armor set that could withstand attacks from the Solar Federation's \
 		then relatively new pulse ballistics. The design itself is based upon a far older pattern \
 		of armor originally developed by SolFed themselves, which was the standard pattern of armor design \
@@ -138,6 +145,7 @@
 		CIN_MOUNTAIN_DESERT_COLORS,
 		CIN_FOREST_COLORS,
 		CIN_MARINE_COLORS,
+		CIN_EVIL_COLORS,
 	)
 
 /obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color/Initialize(mapload)
@@ -148,34 +156,32 @@
 // Vests
 
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest
-	name = "\improper GZ-03 armor vest"
-	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
+	name = "\improper 'Klamra' armor vest"
+	desc = "An outdated armor vest used by CIN military forces. \
+		The design dates back to the years leading up to CIN - SolFed border war, and can still be seen today \
+		in some parts of CIN territories where its not so important for equipment to be the best of the best. \
+		While the armor will wear down over time, it covers both your arms and torso, and provides exceptional \
+		projectile and laser protection."
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "vest_basic"
+	greyscale_config = /datum/greyscale_config/cin_surplus_vest/object
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_vest
+	greyscale_colors = CIN_WINTER_COLORS
+	resistance_flags = FIRE_PROOF
+	max_integrity = 300
+	limb_integrity = 150
 	armor_type = /datum/armor/cin_surplus_armor
 	supports_variations_flags = CLOTHING_NO_VARIATION
 
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest/Initialize(mapload)
 	. = ..()
-
-	generate_random_accessories()
-
-/// Decides if the armor vest should have its extra plates or not
-/obj/item/clothing/suit/armor/vest/cin_surplus_vest/proc/generate_random_accessories()
-	if(prob(30))
-		icon_state = "vest_extra"
-		body_parts_covered = CHEST|GROIN // In reality this does like nothing at all but flavor you know
-	else
-		icon_state = "vest_basic"
-		body_parts_covered = CHEST
-
-	update_appearance()
+	AddComponent(/datum/component/clothing_damaged_by_bullets, 0.75)
 
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest/examine_more(mob/user)
 	. = ..()
 
-	. += "The GZ-03 series of coalition armor was a collaborative project between the NRI and TransOrbital \
+	. += "The 'Klamra' series of coalition armor was a collaborative project between the NRI and TransOrbital \
 		to develop a frontline soldier's armor set that could withstand attacks from the Solar Federation's \
 		then relatively new pulse ballistics. The design itself is based upon a far older pattern \
 		of armor originally developed by SolFed themselves, which was the standard pattern of armor design \
@@ -187,10 +193,35 @@
 
 	return .
 
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest/desert
+	greyscale_colors = CIN_MOUNTAIN_DESERT_COLORS
+
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest/forest
+	greyscale_colors = CIN_FOREST_COLORS
+
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest/marine
+	greyscale_colors = CIN_MARINE_COLORS
+
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest/random_color
+	/// The different colors this can choose from when initializing
+	var/static/list/possible_spawning_colors = list(
+		CIN_WINTER_COLORS,
+		CIN_MOUNTAIN_DESERT_COLORS,
+		CIN_FOREST_COLORS,
+		CIN_MARINE_COLORS,
+		CIN_EVIL_COLORS,
+	)
+
+/obj/item/clothing/suit/armor/vest/cin_surplus_vest/random_color/Initialize(mapload)
+	greyscale_colors = pick(possible_spawning_colors)
+
+	. = ..()
+
 // Chest Rig
 
 /obj/item/storage/belt/military/cin_surplus
-	desc = "A tactical webbing often used by the CIN's military forces."
+	name = "'Mały' chest rig"
+	desc = "The smaller of the two common CIN chest rigs, able to hold small items."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "chestrig"
@@ -219,6 +250,46 @@
 	)
 
 /obj/item/storage/belt/military/cin_surplus/random_color/Initialize(mapload)
+	greyscale_colors = pick(possible_spawning_colors)
+
+	. = ..()
+
+/obj/item/storage/belt/military/big_cin_surplus
+	name = "'Ciężki' large chest rig"
+	desc = "The larger of the two common CIN chest rigs, able to hold four normal sized items."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
+	icon_state = "bigrig"
+	worn_icon_state = "bigrig"
+	greyscale_config = /datum/greyscale_config/cin_surplus_bigrig/object
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_bigrig
+	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/big_cin_surplus/Initialize(mapload)
+	. = ..()
+	atom_storage.max_slots = 4
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/belt/military/big_cin_surplus/desert
+	greyscale_colors = CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/big_cin_surplus/forest
+	greyscale_colors = CIN_FOREST_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/big_cin_surplus/marine
+	greyscale_colors = CIN_MARINE_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/big_cin_surplus/random_color
+	/// The different colors this can choose from when initializing
+	var/static/list/possible_spawning_colors = list(
+		CIN_WINTER_COLORS_COMPLIMENT,
+		CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT,
+		CIN_FOREST_COLORS_COMPLIMENT,
+		CIN_MARINE_COLORS_COMPLIMENT,
+		CIN_EVIL_COLORS_COMPLIMENT,
+	)
+
+/obj/item/storage/belt/military/big_cin_surplus/random_color/Initialize(mapload)
 	greyscale_colors = pick(possible_spawning_colors)
 
 	. = ..()
