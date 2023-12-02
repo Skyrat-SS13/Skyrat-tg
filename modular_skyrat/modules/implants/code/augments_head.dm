@@ -134,11 +134,19 @@
 	cooldown_time = 5 MINUTES
 	sparks_amt = 2
 	ranged_mousepointer = 'icons/effects/mouse_pointers/override_machine_target.dmi'
+	/// What we don't work on, will always not work on mobs because I know what you are
+	var/static/list/emag_blacklist = list(
+		/obj/machinery/shieldgen,
+		/obj/machinery/computer/communications,
+		/obj/machinery/computer/arcade,
+		/obj/machinery/computer/holodeck,
+	)
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/is_valid_target(atom/cast_on)
 	. = ..()
 
-	if(ismob(cast_on))
+	if(ismob(cast_on) || is_type_in_list(cast_on, emag_blacklist))
+		owner.balloon_alert("security too strong")
 		return FALSE
 
 	return TRUE
