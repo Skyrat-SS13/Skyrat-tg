@@ -64,7 +64,7 @@
 	return ..()
 
 /obj/structure/plant_tank/process(seconds_per_tick)
-	if(operation_number == 0) //we require "fuel" to actually produce stuff
+	if(operation_number <= 0) //we require "fuel" to actually produce stuff
 		return
 
 	if(!locate(/obj/structure/simple_farm) in get_turf(src)) //we require a plant to process the "fuel"
