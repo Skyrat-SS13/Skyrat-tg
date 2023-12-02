@@ -8,7 +8,7 @@
 		Which many users percieve as a slowing of time and quickening of their ability to act. Due to its nature, it is incompatible with \
 		system that heavily influence the user's nervous system, like the central nervous system rebooter. \
 		As a bonus effect, you are immune to the burst of heart damage that comes at the end of twitch usage, as the computer is able to regulate \
-		your heart's rythm back to normal after its use."
+		your heart's rhythm back to normal after its use."
 	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	icon_state = "sandy"
 	slot = ORGAN_SLOT_BRAIN_ANTISTUN
@@ -99,8 +99,8 @@
 
 	human_owner.reagents.add_reagent(/datum/reagent/drug/twitch, injection_amount)
 
-	owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are ejected from the implant on their spine."), \
-			span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward."))
+	owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are fired from ports in the implant on their spine, shattering as they land."), \
+			span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward, shattering as they land."))
 	playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
 
 // Hackerman deck, lets you emag or doorjack things (NO CYBORGS) within a short range of yourself

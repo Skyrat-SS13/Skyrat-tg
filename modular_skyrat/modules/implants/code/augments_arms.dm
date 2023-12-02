@@ -223,8 +223,9 @@
 
 /obj/item/melee/razorwire
 	name = "implanted razorwire"
-	desc = "A long length of cutting wire so impossibly thin that it causes grevious wounds in anything you slash with it. \
-		Its long enough that you'd probably be able to hit someone with it from a little further away than normal."
+	desc = "A long length of monomolecular filament, built into the back of your hand. \
+		Impossibly thin and flawlessly sharp, it should slice through organic materials with no trouble; \
+		even from a few steps away. However, results against anything more durable will heavily vary."
 	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	icon_state = "razorwire_weapon"
 	righthand_file = 'modular_skyrat/modules/implants/icons/inhands/lefthand.dmi'
@@ -239,12 +240,13 @@
 	weak_against_armour = TRUE
 	reach = 2
 	hitsound = 'sound/weapons/whip.ogg'
-	attack_verb_continuous = list("slashes", "whips", "lashes")
-	attack_verb_simple = list("slash", "whip", "lash")
+	attack_verb_continuous = list("slashes", "whips", "lashes", "lacerates")
+	attack_verb_simple = list("slash", "whip", "lash", "lacerate")
 
 /obj/item/organ/internal/cyberimp/arm/razorwire
 	name = "razorwire spool implant"
-	desc = "An integrated spool of razorwire, capable of being used as a weapon when whipped at your foes."
+	desc = "An integrated spool of razorwire, capable of being used as a weapon when whipped at your foes. \
+		Built into the back of your hand, try your best to not get it tangled."
 	items_to_create = list(/obj/item/melee/razorwire)
 	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	icon_state = "razorwire"
@@ -253,7 +255,9 @@
 
 /obj/item/gun/ballistic/shotgun/shell_launcher
 	name = "shell launch system"
-	desc = "An arm mounted cannon for firing shotgun shells or Tydhouer grenades. You can use a <b>wrench</b> to adjust it for a different ammo type."
+	desc = "A mounted cannon seated comfortably in a forearm compartment. This humanitarian device is capable in normal \
+		mode of firing essentially any shotgun shell, and can be wrenched to a .980 Tydhouer grenade mode, \
+		shells famously seen in the 'Kiboko' launcher."
 	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	icon_state = "shell_cannon_weapon"
 	righthand_file = 'modular_skyrat/modules/implants/icons/inhands/lefthand.dmi'
@@ -289,7 +293,7 @@
 
 /obj/item/organ/internal/cyberimp/arm/shell_launcher
 	name = "shell launch system implant"
-	desc = "A complex housing for implanting a shell launch system into an arm. Holds a single shot barrel that can hold either twelve gauge or .980 Tydhouer shells."
+	desc = "A mounted, single-shot housing for a shell launch cannon; capable of firing either twelve gauge shotgun shells, or .980 Tydhouer grenades."
 	items_to_create = list(/obj/item/gun/ballistic/shotgun/shell_launcher)
 	icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	icon_state = "shell_cannon"
