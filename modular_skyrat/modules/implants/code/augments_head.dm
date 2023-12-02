@@ -1,4 +1,4 @@
-#define HACKERMAN_DECK_TEMPERATURE_INCREASE 200
+#define HACKERMAN_DECK_TEMPERATURE_INCREASE 450
 
 // An implant that injects you with twitch on demand, acting like a bootleg sandevistan
 
