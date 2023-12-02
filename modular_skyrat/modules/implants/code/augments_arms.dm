@@ -259,6 +259,7 @@
 	righthand_file = 'modular_skyrat/modules/implants/icons/inhands/lefthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/implants/icons/inhands/righthand.dmi'
 	inhand_icon_state = "shell_cannon"
+	worn_icon = 'icons/mob/clothing/belt.dmi'
 	worn_icon_state = "gun"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_LIGHT
