@@ -114,7 +114,7 @@
 	new /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
-	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
+	new /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator(src)
 	new /obj/item/ammo_box/magazine/c35sol_pistol/starts_empty(src)
 	new /obj/item/ammo_box/c35sol(src)
 
@@ -125,7 +125,6 @@
 	icon_state = "wespe_contractor"
 	suppressed = TRUE
 	spawn_magazine_type = /obj/item/ammo_box/magazine/c35sol_pistol/incapacitator
-	pin = /obj/item/firing_pin/implant/pindicate
 	var/obj/item/gun/energy/recharge/fisher/underbarrel
 
 /obj/item/gun/ballistic/automatic/pistol/sol/evil/contractor/give_manufacturer_examine()
@@ -157,17 +156,6 @@
 	chopped-down SC/FISHER for disrupting electrical sources of light."
 
 	return .
-
-/obj/item/autosurgeon/syndicate/laser_arm/selfdes
-
-/obj/item/autosurgeon/syndicate/laser_arm/selfdes/use_autosurgeon(mob/living/target, mob/living/user, implant_time)
-	. = ..()
-	if(!uses)
-		to_chat(user, span_alert("[src] shatters into unusable dust, scattering to the wind with a convenient gust."))
-		qdel(src)
-
-/obj/item/mod/module/demoralizer/removable
-	removable = TRUE
 
 /obj/item/mod/module/power_kick/removable
 	removable = TRUE

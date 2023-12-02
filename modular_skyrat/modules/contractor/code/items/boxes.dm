@@ -80,14 +80,12 @@
 	item_list = list(
 		/obj/item/storage/backpack/duffelbag/syndie/x4,
 		/obj/item/storage/box/syndie_kit/throwing_weapons,
-		/obj/item/autosurgeon/syndicate/laser_arm/selfdes,
 		/obj/item/pen/sleepy,
 		/obj/item/flashlight/emp,
 		/obj/item/storage/medkit/tactical,
 		/obj/item/storage/box/random_nades,
 		/obj/item/clothing/glasses/hud/health/night/meson,
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/demoralizer/removable,
 		/obj/item/mod/module/power_kick/removable,
 		/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot,
 		/obj/item/reagent_containers/hypospray/medipen/stimulants,
@@ -116,17 +114,11 @@
 	desc = "Contains a random assortment of grenades. Caveat emptor."
 	icon_state = "syndiebox"
 	illustration = "flashbang"
-	/// A weighted list of random grenades. Think "mostly less lethal". ...Mostly. At time of writing, weights total to 30.
+	/// A weighted list of random, probably less-lethal, grenades. At time of writing, weights total to 20.
 	var/list/weighted_nades_list = list(
-		/obj/item/grenade/smokebomb = 9,
+		/obj/item/grenade/smokebomb = 10,
 		/obj/item/grenade/mirage = 6,
-		/obj/item/grenade/chem_grenade/teargas = 5,
-		/obj/item/grenade/primer/stingbang = 3,
-		/obj/item/grenade/antigravity = 3,
-		/obj/item/grenade/frag = 1,
-		/obj/item/grenade/gluon = 1,
-		/obj/item/grenade/chem_grenade/ez_clean = 1,
-		/obj/item/grenade/clusterbuster/soap = 1,
+		/obj/item/grenade/chem_grenade/teargas = 4,
 	)
 
 /obj/item/storage/box/random_nades/PopulateContents()
