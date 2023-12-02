@@ -2,6 +2,44 @@
 	category = NRI_SURPLUS_COMPANY_NAME
 	company_bitflag = CARGO_COMPANY_NRI_SURPLUS
 
+// Armor and whatnot
+
+/datum/armament_entry/company_import/nri_surplus/armor
+	subcategory = "Surplus Armor"
+	cost = PAYCHECK_CREW * 3
+
+/datum/armament_entry/company_import/nri_surplus/armor/helmet
+	item_type = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
+
+/datum/armament_entry/company_import/nri_surplus/armor/vest
+	item_type = /obj/item/clothing/suit/armor/vest/cin_surplus_vest/random_color
+
+/datum/armament_entry/company_import/nri_surplus/armor/police_vest
+	item_type = /obj/item/clothing/suit/armor/vest/nri_police
+	cost = PAYCHECK_COMMAND
+
+/datum/armament_entry/company_import/nri_surplus/armor/police_helmet
+	item_type = /obj/item/clothing/head/helmet/nri_police
+	cost = PAYCHECK_COMMAND
+
+// Belts, bags, masks, so on
+
+/datum/armament_entry/company_import/nri_surplus/equipment
+	subcategory = "Surplus Equipment"
+	cost = PAYCHECK_CREW
+
+/datum/armament_entry/company_import/nri_surplus/equipment/belt
+	item_type = /obj/item/storage/belt/military/cin_surplus/random_color
+
+/datum/armament_entry/company_import/nri_surplus/equipment/big_belt
+	item_type = /obj/item/storage/belt/military/big_cin_surplus/random_color
+
+/datum/armament_entry/company_import/nri_surplus/equipment/backpack
+	item_type = /obj/item/storage/backpack/industrial/cin_surplus/random_color
+
+/datum/armament_entry/company_import/nri_surplus/equipment/police_mask
+	item_type = /obj/item/clothing/mask/gas/nri_police
+
 // Various NRI clothing items
 
 /datum/armament_entry/company_import/nri_surplus/clothing
@@ -11,55 +49,17 @@
 	item_type = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color
 	cost = PAYCHECK_CREW
 
-/datum/armament_entry/company_import/nri_surplus/clothing/belt
-	item_type = /obj/item/storage/belt/military/cin_surplus/random_color
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/nri_surplus/clothing/backpack
-	item_type = /obj/item/storage/backpack/industrial/cin_surplus/random_color
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/nri_surplus/clothing/gas_mask
-	item_type = /obj/item/clothing/mask/gas/hecu2
-	cost = PAYCHECK_CREW
-
-/datum/armament_entry/company_import/nri_surplus/clothing/helmet
-	item_type = /obj/item/clothing/head/helmet/cin_surplus_helmet/random_color
-	cost = PAYCHECK_COMMAND
-
-/datum/armament_entry/company_import/nri_surplus/clothing/vest
-	item_type = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
-	cost = PAYCHECK_COMMAND
-
 /datum/armament_entry/company_import/nri_surplus/clothing/police_uniform
 	item_type = /obj/item/clothing/under/colonial/nri_police
 	cost = PAYCHECK_CREW
-	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/clothing/police_cloak
 	item_type = /obj/item/clothing/neck/cloak/colonial/nri_police
 	cost = PAYCHECK_CREW
-	restricted = TRUE
 
 /datum/armament_entry/company_import/nri_surplus/clothing/police_cap
 	item_type = /obj/item/clothing/head/hats/colonial/nri_police
 	cost = PAYCHECK_CREW
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/clothing/police_mask
-	item_type = /obj/item/clothing/mask/gas/nri_police
-	cost = PAYCHECK_CREW*2
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/clothing/police_vest
-	item_type = /obj/item/clothing/head/helmet/nri_police
-	cost = PAYCHECK_COMMAND
-	restricted = TRUE
-
-/datum/armament_entry/company_import/nri_surplus/clothing/police_helmet
-	item_type = /obj/item/clothing/suit/armor/vest/nri_police
-	cost = PAYCHECK_COMMAND
-	restricted = TRUE
 
 // Random surplus store tier stuff, flags, old rations, multitools you'll never use, so on
 

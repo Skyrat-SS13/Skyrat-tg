@@ -723,14 +723,14 @@
 		/obj/item/storage/toolbox/maint_kit = 1,
 		/obj/item/storage/toolbox/guncase/soviet/sakhno = 2,
 		/obj/item/ammo_box/strilka310 = 1,
-		/obj/item/clothing/suit/armor/vest/cin_surplus_vest = 1,
+		/obj/item/clothing/suit/armor/vest/cin_surplus_vest/random_color = 1,
 		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color = 1,
 		/obj/item/storage/backpack/industrial/cin_surplus/random_color = 1,
 		/obj/item/storage/belt/military/cin_surplus/random_color = 1,
+		/obj/item/storage/belt/military/big_cin_surplus/random_color = 1,
 		/obj/item/clothing/gloves/tackler/combat = 1,
 		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color = 1,
 		/obj/item/clothing/shoes/jackboots = 1,
-		/obj/item/clothing/mask/gas/hecu2 = 1,
 		/obj/item/clothing/mask/balaclavaadjust = 1,
 	)
 

@@ -28,7 +28,7 @@
 /datum/outfit/cin_soldier_corpse
 	name = "Coalition Operative Corpse"
 	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/forest
-	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
+	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest/forest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
 	ears = /obj/item/radio/headset/cybersun
@@ -42,7 +42,7 @@
 /datum/outfit/cin_soldier_player
 	name = "Coalition Operative SNPC"
 	uniform = /obj/item/clothing/under/syndicate/rus_army/cin_surplus/forest
-	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
+	suit = /obj/item/clothing/suit/armor/vest/cin_surplus_vest/forest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/fingerless
 	ears = /obj/item/radio/headset/cybersun
