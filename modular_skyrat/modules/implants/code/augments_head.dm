@@ -98,6 +98,9 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	human_owner.reagents.add_reagent(/datum/reagent/drug/twitch, injection_amount)
+
+	owner.visible_message(span_danger("[owner.name] jolts suddenly as two small glass vials are ejected from the implant on their spine."), \
+			span_userdanger("You jolt suddenly as your Qani-Laaca system ejects two empty glass vials rearward."))
 	playsound(human_owner, 'sound/items/hypospray.ogg', 50, TRUE)
 
 // Hackerman deck, lets you emag or doorjack things (NO CYBORGS) within a short range of yourself
@@ -142,6 +145,9 @@
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/before_cast(atom/cast_on)
 	. = ..()
+
+	owner.visible_message(span_danger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
+			span_userdanger("The air between you and [cast_on] begins to crackle audibly as the Binyat gets to work."))
 
 	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
 		return . | SPELL_CANCEL_CAST
