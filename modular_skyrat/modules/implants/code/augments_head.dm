@@ -140,6 +140,7 @@
 		/obj/machinery/computer/communications,
 		/obj/machinery/computer/arcade,
 		/obj/machinery/computer/holodeck,
+		/obj/machinery/computer/emergency_shuttle,
 	)
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/is_valid_target(atom/cast_on)
