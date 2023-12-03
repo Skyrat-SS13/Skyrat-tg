@@ -52,20 +52,6 @@
 
 	return ..()
 
-<<<<<<< HEAD
-/mob/living/proc/ZImpactDamage(turf/T, levels)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
-		return
-	//SKYRAT EDIT ADDITION
-	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
-		Knockdown(20)
-		return
-	//SKYRAT EDIT END
-	visible_message(span_danger("[src] crashes into [T] with a sickening noise!"), \
-					span_userdanger("You crash into [T] with a sickening noise!"))
-	adjustBruteLoss((levels * 5) ** 1.5)
-	Knockdown(levels * 50)
-=======
 /**
  * Called when this mob is receiving damage from falling
  *
@@ -77,6 +63,11 @@
 	if(. & ZIMPACT_CANCEL_DAMAGE)
 		return .
 
+	//SKYRAT EDIT ADDITION START - Landing in liquids
+	if(impacted_turf.liquids && impacted_turf.liquids.liquid_state >= LIQUID_STATE_WAIST)
+		Knockdown(2 SECONDS)
+		return
+	//SKYRAT EDIT ADDITION END
 	// If you are incapped, you probably can't brace yourself
 	var/can_help_themselves = !incapacitated(IGNORE_RESTRAINTS)
 	if(levels <= 1 && can_help_themselves)
