@@ -19904,7 +19904,7 @@
 "dLv" = (
 /obj/structure/bed/dogbed/runtime,
 /obj/item/toy/cattoy,
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/basic/pet/cat/runtime,
 /obj/machinery/requests_console/directional/east{
 	department = "Chief Medical Officer's Desk";
 	name = "Chief Medical Officer's Requests Console"
@@ -29839,7 +29839,7 @@
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "dirt-flat-1"
 	},
-/mob/living/simple_animal/pet/cat,
+/mob/living/basic/pet/cat,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -32286,7 +32286,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail{
 	name = "Detective Junction";
-	renamedByPlayer = 30
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
@@ -36193,6 +36192,7 @@
 	fax_name = "Cargo Office";
 	name = "Cargo Office Fax Machine"
 	},
+/obj/machinery/camera/autoname/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
 "gSE" = (
@@ -39945,6 +39945,7 @@
 	pixel_y = 6
 	},
 /obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningoffice)
 "hGx" = (
@@ -41967,7 +41968,7 @@
 /obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/bot/medbot{
+/mob/living/basic/bot/medbot{
 	name = "Doctor Heals-The-Idiot"
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -42180,6 +42181,7 @@
 "ica" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/iron/smooth_edge,
 /area/station/cargo/miningdock)
 "icj" = (
@@ -46328,6 +46330,7 @@
 /area/station/maintenance/fore/upper)
 "iTs" = (
 /obj/machinery/light/directional/south,
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/iron/smooth_edge,
 /area/station/cargo/miningdock)
 "iTC" = (
@@ -48884,14 +48887,11 @@
 "jrw" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/airalarm/directional/west,
-/obj/machinery/camera/directional/east{
-	c_tag = "Security Post - Cargo";
-	dir = 8
-	},
 /obj/structure/closet/secure_closet/security/cargo,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/camera/autoname/directional/west,
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -60153,7 +60153,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/bot/medbot{
+/mob/living/basic/bot/medbot{
 	name = "Healy Stabby"
 	},
 /turf/open/floor/iron,
@@ -71347,7 +71347,6 @@
 "nGH" = (
 /obj/structure/disposalpipe/sorting/mail{
 	name = "Robotics Junction";
-	renamedByPlayer = 14
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -75896,9 +75895,6 @@
 	dir = 10
 	},
 /obj/structure/chair/sofa/corp/corner,
-/obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/gamer{
-	pixel_x = -4
-	},
 /obj/machinery/light/small/blacklight/directional/east,
 /obj/effect/landmark/start/bitrunner,
 /obj/machinery/airalarm/directional/north,
@@ -80962,16 +80958,13 @@
 /obj/effect/turf_decal/stripes{
 	dir = 4
 	},
-/obj/machinery/camera/directional/south{
-	c_tag = "Cargo - Lower foyer";
-	dir = 8
-	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
 	},
 /obj/structure/rack,
 /obj/structure/sign/poster/random/directional/west,
 /obj/machinery/airalarm/directional/south,
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/cargo/lobby)
 "pwH" = (
@@ -84727,6 +84720,7 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/bitrunning/den)
 "qiq" = (
@@ -85355,7 +85349,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "qoz" = (
-/mob/living/simple_animal/pet/cat/space{
+/mob/living/basic/pet/cat/space{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt{
@@ -86158,7 +86152,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/mob/living/simple_animal/bot/medbot/autopatrol,
+/mob/living/basic/bot/medbot/autopatrol,
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "quF" = (
