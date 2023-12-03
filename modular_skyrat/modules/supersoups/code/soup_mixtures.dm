@@ -1,5 +1,7 @@
 /datum/chemical_reaction/food/soup/clean_up(datum/reagents/holder, datum/equilibrium/reaction, react_vol)
     . = ..()
+    if(!length(results))
+        return
     var/souptype = results[1]
     var/list/cached_reagents = holder.reagent_list
     for(var/datum/reagent/whatever as anything in cached_reagents)
