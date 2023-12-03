@@ -21,6 +21,10 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	else
 		outfit.gloves = item_path
 
+/datum/loadout_item/gloves/shield_bracers
+	name = "Milano Shielded Bracers"
+	item_path = /obj/item/clothing/gloves/shield_bracers
+
 /datum/loadout_item/gloves/fingerless
 	name = "Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/fingerless

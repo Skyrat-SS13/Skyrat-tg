@@ -2,6 +2,18 @@
 	category = MICROSTAR_ENERGY_NAME
 	company_bitflag = CARGO_COMPANY_MICROSTAR
 
+// Shield generators, for protektion
+
+/datum/armament_entry/company_import/microstar/shield_generators
+	subcategory = "Personal Shield Generators"
+	cost = PAYCHECK_CREW * 3
+
+/datum/armament_entry/company_import/microstar/shield_generators/belt
+	item_type = /obj/item/shield_generator_belt
+
+/datum/armament_entry/company_import/microstar/shield_generators/bracers
+	item_type = /obj/item/clothing/gloves/shield_bracers
+
 // Basic lethal/disabler beam weapons, includes the base mcr
 
 /datum/armament_entry/company_import/microstar/basic_energy_weapons
