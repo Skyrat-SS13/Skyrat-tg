@@ -120,6 +120,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	QDEL_NULL(species)
 
+	remove_all_mutations()
 	mutations.Cut() //This only references mutations, just dereference.
 	temporary_mutations.Cut() //^
 	previous.Cut() //^
