@@ -119,7 +119,6 @@
 /datum/movespeed_modifier/landed_on_feet
 	movetypes = GROUND|UPSIDE_DOWN
 	multiplicative_slowdown = CRAWLING_ADD_SLOWDOWN / 2
->>>>>>> 14d1482fc76 (Falling down a z-level while standing up can (occasionally) break your legs. Felinids will now always land on their feet (for better or for worse).  (#80054))
 
 //Generic Bump(). Override MobBump() and ObjBump() instead of this.
 /mob/living/Bump(atom/A)
