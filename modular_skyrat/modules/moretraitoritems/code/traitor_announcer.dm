@@ -55,7 +55,7 @@
 	if(uses != INFINITE_CHARGES)
 		uses--
 	deadchat_broadcast(" made a fake priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-	user.log_talk("\[Message title] [title]\], \[Message:] [input]\], \[Audio key:] [audio_key]\]", LOG_SAY, tag = "priority announcement")
+	user.log_talk("\[Message title\]: [title], \[Message\]: [input], \[Audio key\]: [audio_key]", LOG_SAY, tag = "priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has used [src] to make a fake announcement of [input].")
 
 // Adminbus
