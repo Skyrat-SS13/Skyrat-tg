@@ -111,3 +111,39 @@
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "locker_wall"
+
+//These procs create empty subtypes, for when it's placed by a user rather than mapped in...
+//Secure/personal don't get these since they're made with airlock electronics
+/obj/structure/closet/generic/wall/empty/PopulateContents()
+	return
+
+/obj/structure/closet/emcloset/wall/empty/PopulateContents()
+	return
+
+/obj/structure/closet/firecloset/wall/empty/PopulateContents()
+	return
+
+//Wallmounts, for rebuilding the wall lockers above
+/obj/item/wallframe/closet
+	name = "wall mounted closet"
+	desc = "It's a wall mounted storage unit for... well, whatever you put in this one. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_mount"
+	result_path = /obj/structure/closet/generic/wall/empty
+	pixel_shift = 32
+
+/obj/item/wallframe/emcloset
+	name = "wall mounted emergency closet"
+	desc = "It's a wall mounted storage unit for emergency breath masks and O2 tanks. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "emergency_mount"
+	result_path = /obj/structure/closet/emcloset/wall/empty
+	pixel_shift = 32
+
+/obj/item/wallframe/firecloset
+	name = "wall mounted fire-safety closet"
+	desc = "It's a wall mounted storage unit for fire-fighting supplies. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "fire_mount"
+	result_path = /obj/structure/closet/firecloset/wall/empty
+	pixel_shift = 32
