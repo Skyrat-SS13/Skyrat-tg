@@ -82,11 +82,11 @@
 
 	var/proportion = src_mixture.gases[/datum/gas/carbon_dioxide][MOLES]
 	if(proportion) //if there is carbon dioxide in the air, lets turn it into oxygen
-		proportion = min(src_mixture.gases[/datum/gas/carbon_dioxide][MOLES], MOLES_CELLSTANDARD * INVERSE(5))
+		proportion = min(src_mixture.gases[/datum/gas/carbon_dioxide][MOLES], MOLES_CELLSTANDARD)
 		src_mixture.gases[/datum/gas/carbon_dioxide][MOLES] -= proportion
 		src_mixture.gases[/datum/gas/oxygen][MOLES] += proportion
 
-	src_mixture.gases[/datum/gas/nitrogen][MOLES] += (MOLES_CELLSTANDARD * INVERSE(5)) //the nitrogen cycle-- plants (and bacteria) participate in the nitrogen cycle
+	src_mixture.gases[/datum/gas/nitrogen][MOLES] += MOLES_CELLSTANDARD //the nitrogen cycle-- plants (and bacteria) participate in the nitrogen cycle
 
 /obj/structure/plant_tank/wrench_act(mob/living/user, obj/item/tool)
 	balloon_alert(user, "[anchored ? "un" : ""]bolting")
