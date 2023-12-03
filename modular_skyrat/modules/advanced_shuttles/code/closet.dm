@@ -16,7 +16,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "wallcloset"
 	icon_door = "wallcloset_mesh"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	door_anim_time = 0 //Somebody needs to remove the hard-sprited shuttles, or at least their lockers. These are a sin.
 
 /obj/structure/closet/shuttle/white
 	icon_state = "wallcloset_white"

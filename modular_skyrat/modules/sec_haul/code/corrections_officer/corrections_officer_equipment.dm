@@ -51,7 +51,7 @@
 	name = "corrections officer riot gear"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "riot"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	door_anim_time = 0 //Somebody resprite or remove this 'riot' locker. It's evil.
 
 /obj/structure/closet/secure_closet/corrections_officer/PopulateContents()
 	..()
