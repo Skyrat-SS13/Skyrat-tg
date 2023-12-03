@@ -287,6 +287,12 @@
 		return
 	if(!iscarbon(target))
 		return
+	// SKYRAT EDIT ADDITION START - Skip trying to heal synths
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		if(human_target.mob_biotypes & MOB_ROBOTIC)
+			return
+	// SKYRAT EDIT ADDITION END
 	INVOKE_ASYNC(src, PROC_REF(medicate_patient), target)
 	return COMPONENT_HOSTILE_NO_ATTACK
 
@@ -295,7 +301,7 @@
 		return
 
 	update_bot_mode(new_mode = BOT_HEALING, update_hud = FALSE)
-	if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
+	if(!do_after(src, delay = 2.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION)) //SKYRAT EDIT CHANGE : Increased time as tradeoff for automated healing. ORIGINAL: if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
 	if(bot_access_flags & BOT_COVER_EMAGGED)
