@@ -565,15 +565,10 @@ SUBSYSTEM_DEF(dynamic)
 
 	if (!CONFIG_GET(flag/no_intercept_report))
 		addtimer(CALLBACK(src, PROC_REF(send_intercept)), rand(waittime_l, waittime_h))
-
-<<<<<<< HEAD:code/game/gamemodes/dynamic/dynamic.dm
 	//SKYRAT EDIT START - DIVERGENCY/GOALS REPORT
 	else
 		addtimer(CALLBACK(src, PROC_REF(send_trait_report)), rand(waittime_l, waittime_h))
 	//SKYRAT EDIT END
-
-	..()
-=======
 		addtimer(CALLBACK(src, PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	if(CONFIG_GET(flag/reopen_roundstart_suicide_roles))
@@ -649,7 +644,6 @@ SUBSYSTEM_DEF(dynamic)
 	log_admin(concatenated_message)
 	to_chat(GLOB.admins, concatenated_message)
 
->>>>>>> 714ff3ec545 (Remove /datum/game_mode, we SSdynamic now [again] (#79965)):code/controllers/subsystem/dynamic/dynamic.dm
 
 /// Initializes the internal ruleset variables
 /datum/controller/subsystem/dynamic/proc/setup_rulesets()

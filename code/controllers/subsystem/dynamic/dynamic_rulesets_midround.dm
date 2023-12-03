@@ -138,16 +138,10 @@
 /datum/dynamic_ruleset/midround/from_ghosts/proc/send_applications(list/possible_volunteers = list())
 	if (possible_volunteers.len <= 0) // This shouldn't happen, as ready() should return FALSE if there is not a single valid candidate
 		message_admins("Possible volunteers was 0. This shouldn't appear, because of ready(), unless you forced it!")
-<<<<<<< HEAD:code/game/gamemodes/dynamic/dynamic_rulesets_midround.dm
-	mode.log_dynamic_and_announce("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
-
-	candidates = poll_ghost_candidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag_override, antag_flag || antag_flag_override, poll_time = 300)
-=======
 		return
 
 	SSdynamic.log_dynamic_and_announce("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 	candidates = poll_ghost_candidates("Looking for volunteers to become [antag_flag] for [name]", antag_flag_override, antag_flag || antag_flag_override, poll_time = 300)
->>>>>>> 714ff3ec545 (Remove /datum/game_mode, we SSdynamic now [again] (#79965)):code/controllers/subsystem/dynamic/dynamic_rulesets_midround.dm
 
 	if(!candidates || candidates.len <= 0)
 		SSdynamic.log_dynamic_and_announce("The ruleset [name] received no applications.")
@@ -219,12 +213,7 @@
 	if (!SSdynamic.picking_specific_rule(sleeper_agent))
 		return
 
-<<<<<<< HEAD:code/game/gamemodes/dynamic/dynamic_rulesets_midround.dm
-	mode.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
-	return
-=======
 	SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
->>>>>>> 714ff3ec545 (Remove /datum/game_mode, we SSdynamic now [again] (#79965)):code/controllers/subsystem/dynamic/dynamic_rulesets_midround.dm
 
 ///subtype to handle checking players
 /datum/dynamic_ruleset/midround/from_living
