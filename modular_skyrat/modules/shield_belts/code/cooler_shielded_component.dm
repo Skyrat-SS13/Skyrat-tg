@@ -43,7 +43,7 @@
 	/// The icon state for the shield overlay when we flick it later
 	var/shield_overlay_icon_state = "shield"
 	if(new_current_charges <= 0)
-		wearer.visible_message(span_danger("The shield around [wearer] shatters!"))
+		wearer.visible_message(span_bolddanger("The shield around [wearer] shatters!"))
 		shield_overlay_icon_state = "break"
 		playsound(wearer, SFX_SHATTER, BLOCK_SOUND_VOLUME, TRUE)
 	else
