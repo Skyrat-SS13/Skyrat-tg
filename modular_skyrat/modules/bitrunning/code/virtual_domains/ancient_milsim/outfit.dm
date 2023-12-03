@@ -52,8 +52,8 @@
 	back = /obj/item/storage/backpack/industrial/cin_surplus/forest
 	backpack_contents = list(
 		/obj/item/storage/box/nri_survival_pack/raider,
-		/obj/item/gun/ballistic/automatic/pistol/clandestine,
-		/obj/item/ammo_box/magazine/m10mm = 2,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery = 2,
 	)
 	r_hand = null
 	l_hand = null

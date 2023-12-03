@@ -1,11 +1,11 @@
-/// The caliber used by the AK-25
-#define CALIBER_732x29 "a732x29"
-
 /// The caliber used by the Oldarms 'Mk.11.4 rifle', designed to be worse .223.
 #define CALIBER_223S ".223 Stinger"
 
 /// Caliber used by the giant anti materiel rifle in guncargo
 #define CALIBER_60STRELA ".60 Strela"
+
+/// CIN pistol caliber
+#define CALIBER_CESARZOWA ".27-54 Cesarzowa"
 
 /// Standard Sol rifle caliber
 #define CALIBER_SOL40LONG ".40 Sol Long"

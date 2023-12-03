@@ -29,6 +29,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 #define TRAIT_HYDRA_HEADS "hydrahead"
+/// Trait to spawn with a pet in a pet carrier (veteran only)
+#define TRAIT_PET_OWNER "pet_owner"
 
 /// adds -6 quirk to negative quirks for free points.
 #define TRAIT_GIFTED "gifted"
@@ -147,5 +149,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_STRAPON "strapon"
 
 #define TRAIT_CONDOM_BROKEN "broken"
+
+/// If clothing can also be damaged by piercing wound checks, instead of JUST slashes and burns
+#define TRAIT_CLOTHES_DAMAGED_BY_PIERCING "clothing_damaged_by_piercing"
 
 // END TRAIT DEFINES
