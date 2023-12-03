@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /atom/proc/log_message(message, message_type, color = null, log_globally = TRUE)
 	if(!log_globally)
 		return
-<<<<<<< HEAD
+
 	//SKYRAT EDIT ADDITION BEGIN
 	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
@@ -117,11 +117,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			return
 	#endif
 	//SKYRAT EDIT ADDITION END
-	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
-=======
-
 	var/log_text = "[key_name_and_tag(src)] [message] [loc_name(src)]"
->>>>>>> 25229440c60 (Adds Mob Tag data to log messages + player panel (#79994))
 	switch(message_type)
 		/// ship both attack logs and victim logs to the end of round attack.log just to ensure we don't lose information
 		if(LOG_ATTACK, LOG_VICTIM)
