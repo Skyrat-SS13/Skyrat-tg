@@ -440,6 +440,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait used by fugu glands to avoid double buffing
 #define TRAIT_FUGU_GLANDED "fugu_glanded"
 
+/// Trait that tracks if something has been renamed. Typically holds a REF() to the object itself (AKA src) for wide addition/removal.
+#define TRAIT_WAS_RENAMED "was_renamed"
+
 /// When someone with this trait fires a ranged weapon, their fire delays and click cooldowns are halved
 #define TRAIT_DOUBLE_TAP "double_tap"
 
@@ -987,6 +990,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MOB_BREEDER "mob_breeder"
 /// Trait given to mobs that we do not want to mindswap
 #define TRAIT_NO_MINDSWAP "no_mindswap"
+///trait given to food that can be baked by /datum/component/bakeable
+#define TRAIT_BAKEABLE "bakeable"
 
 /// Trait given to foam darts that have an insert in them
 #define TRAIT_DART_HAS_INSERT "dart_has_insert"
