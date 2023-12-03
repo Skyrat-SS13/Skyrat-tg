@@ -17,26 +17,24 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 
 /// Is this object currently processing in the atmos object list?
 #define ATMOS_IS_PROCESSING_1 (1<<0)
-/// conducts electricity (metal etc.)
-#define CONDUCT_1 (1<<1)
 /// For machines and structures that should not break into parts, eg, holodeck stuff
-#define NODECONSTRUCT_1 (1<<2)
+#define NODECONSTRUCT_1 (1<<1)
 /// item has priority to check when entering or leaving
-#define ON_BORDER_1 (1<<3)
+#define ON_BORDER_1 (1<<2)
 ///Whether or not this atom shows screentips when hovered over
-#define NO_SCREENTIPS_1 (1<<4)
+#define NO_SCREENTIPS_1 (1<<3)
 /// Prevent clicking things below it on the same turf eg. doors/ fulltile windows
-#define PREVENT_CLICK_UNDER_1 (1<<5)
+#define PREVENT_CLICK_UNDER_1 (1<<4)
 ///specifies that this atom is a hologram that isnt real
-#define HOLOGRAM_1 (1<<6)
+#define HOLOGRAM_1 (1<<5)
 ///Whether /atom/Initialize() has already run for the object
-#define INITIALIZED_1 (1<<7)
+#define INITIALIZED_1 (1<<6)
 /// was this spawned by an admin? used for stat tracking stuff.
-#define ADMIN_SPAWNED_1 (1<<8)
+#define ADMIN_SPAWNED_1 (1<<7)
 /// should not get harmed if this gets caught by an explosion?
-#define PREVENT_CONTENTS_EXPLOSION_1 (1<<9)
+#define PREVENT_CONTENTS_EXPLOSION_1 (1<<8)
 /// Should this object be paintable with very dark colors?
-#define ALLOW_DARK_PAINTS_1 (1<<10)
+#define ALLOW_DARK_PAINTS_1 (1<<9)
 /// Should this object be unpaintable?
 #define UNPAINTABLE_1 (1<<10)
 /// Is this atom on top of another atom, and as such has click priority?
