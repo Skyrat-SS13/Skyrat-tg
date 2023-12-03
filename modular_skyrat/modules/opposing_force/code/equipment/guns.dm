@@ -21,15 +21,15 @@
 	new /obj/item/ammo_box/magazine/c40sol_rifle/standard(src)
 	new /obj/item/ammo_box/magazine/c40sol_rifle/standard(src)
 
-/datum/opposing_force_equipment/ranged/sakhno
-	name = "Sakhno Precision Rifle"
-	description = "A Sakhno Precision Rifle, a bolt action weapon that was (and certainly still is) popular with frontiersmen, cargo runners, private security forces, explorers, and other unsavoury types. This particular pattern of the rifle dates back all the way to 2440."
-	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/sakhno
+/datum/opposing_force_equipment/ranged/miecz
+	name = "'Miecz' Submachinegun"
+	description = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber cartridges."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/miecz
 
-/obj/item/storage/toolbox/guncase/skyrat/opfor/sakhno/PopulateContents()
-	new /obj/item/gun/ballistic/rifle/boltaction(src)
-	new /obj/item/ammo_box/strilka310(src)
-	new /obj/item/ammo_box/strilka310(src)
+/obj/item/storage/toolbox/guncase/skyrat/opfor/miecz/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/miecz(src)
+	new /obj/item/ammo_box/magazine/miecz(src)
+	new /obj/item/ammo_box/magazine/miecz(src)
 
 /datum/opposing_force_equipment/ranged/kiboko
 	name = "Kiboko Grenade Launcher"
@@ -42,14 +42,14 @@
 	new /obj/item/ammo_box/magazine/c980_grenade/drum(src)
 
 /datum/opposing_force_equipment/ranged/amr
-	name = "Tkach-Tsuneyo AMR"
+	name = "'Wyłom' AMR"
 	description = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, the massively overperforming penetration of which being the reason this weapon was discontinued."
 	item_type = /obj/item/storage/toolbox/guncase/skyrat/opfor/amr
 
 /obj/item/storage/toolbox/guncase/skyrat/opfor/amr/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/cin_amr(src)
-	new /obj/item/ammo_box/magazine/cin_amr(src)
-	new /obj/item/ammo_box/magazine/cin_amr(src)
+	new /obj/item/gun/ballistic/automatic/wylom(src)
+	new /obj/item/ammo_box/magazine/wylom(src)
+	new /obj/item/ammo_box/magazine/wylom(src)
 
 /datum/opposing_force_equipment/ranged/lmg
 	name = "L6 SAW LMG"
@@ -188,15 +188,25 @@
 	new /obj/item/ammo_box/magazine/m45(src)
 	new /obj/item/ammo_box/magazine/m45(src)
 
-/datum/opposing_force_equipment/ranged_stealth/nri_pistol
-	name = "Szabo-Ivanek Pistol"
-	description = "A mass produced NRI-made modified reproduction of the Wespe line of handguns rechambered in 9×25mm.'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
-	item_type = /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/nri_pistol
+/datum/opposing_force_equipment/ranged_stealth/plasma_pistol
+	name = "'Słońce' Plasma Projector"
+	description = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/plasma_pistol
 
-/obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/nri_pistol/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/nri(src)
-	new /obj/item/ammo_box/magazine/m9mm_aps(src)
-	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+/obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/plasma_pistol/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/plasma_thrower(src)
+	new /obj/item/ammo_box/magazine/recharge/plasma_battery(src)
+	new /obj/item/ammo_box/magazine/recharge/plasma_battery(src)
+
+/datum/opposing_force_equipment/ranged_stealth/plasma_marksman
+	name = "'Gwiazda' Plasma Sharpshooter"
+	description = "An outdated sidearm rarely seen in use by some members of the CIN. Fires relatively accurate globs of searing plasma."
+	item_type = /obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/plasma_marksman
+
+/obj/item/storage/toolbox/guncase/skyrat/pistol/opfor/plasma_marksman/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/plasma_marksman(src)
+	new /obj/item/ammo_box/magazine/recharge/plasma_battery(src)
+	new /obj/item/ammo_box/magazine/recharge/plasma_battery(src)
 
 /datum/opposing_force_equipment/ranged_stealth/syndie_revolver
 	name = "Syndicate Revolver"

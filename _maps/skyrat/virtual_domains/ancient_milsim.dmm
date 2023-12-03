@@ -15,7 +15,15 @@
 /turf/open/floor/plating,
 /area/virtual_domain)
 "aK" = (
-/obj/item/gun/energy/laser/plasma_thrower,
+/obj/item/gun/ballistic/automatic/pistol/plasma_thrower,
+/obj/item/ammo_box/magazine/recharge/plasma_battery{
+	pixel_y = -12;
+	pixel_x = -9
+	},
+/obj/item/ammo_box/magazine/recharge/plasma_battery{
+	pixel_y = -14;
+	pixel_x = -2
+	},
 /turf/open/floor/iron/dark,
 /area/virtual_domain)
 "aP" = (
@@ -221,7 +229,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer{
-	dir = 2;
 	name = "hovercraft console";
 	icon_screen = "shuttle";
 	desc = "An armored hovercraft control computer. Doesn't work anymore... who would've thought."
@@ -366,8 +373,30 @@
 /turf/open/misc/dirt/planet,
 /area/virtual_domain)
 "kF" = (
-/obj/item/ammo_box/c980grenade/shrapnel,
-/turf/open/misc/grass/planet/ancient_milsim,
+/obj/structure/rack/shelf,
+/obj/item/ammo_box/advanced/s12gauge/pt20{
+	pixel_y = -7;
+	pixel_x = -5
+	},
+/obj/item/ammo_box/advanced/s12gauge/pt20{
+	pixel_y = -7;
+	pixel_x = -5
+	},
+/obj/item/ammo_box/advanced/s12gauge{
+	pixel_x = 3
+	},
+/obj/item/ammo_box/advanced/s12gauge{
+	pixel_x = 3
+	},
+/obj/item/ammo_box/advanced/s12gauge/flechette{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/ammo_box/advanced/s12gauge/flechette{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/turf/open/floor/iron,
 /area/virtual_domain)
 "kJ" = (
 /obj/structure/chair/stool/directional/west,
@@ -454,8 +483,8 @@
 /turf/open/floor/iron,
 /area/virtual_domain/safehouse)
 "mV" = (
-/obj/item/ammo_box/c980grenade/shrapnel/phosphor,
-/turf/open/misc/grass/planet/ancient_milsim,
+/obj/item/ammo_box/c310_cargo_box/piercing,
+/turf/open/floor/plating,
 /area/virtual_domain)
 "mZ" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -635,7 +664,17 @@
 /area/virtual_domain)
 "td" = (
 /obj/structure/table/wood,
-/obj/item/storage/box/utensils,
+/obj/item/ammo_box/c310_cargo_box/piercing{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/ammo_box/c27_54cesarzowa/rubber{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/item/storage/box/utensils{
+	pixel_x = -12
+	},
 /turf/open/floor/iron,
 /area/virtual_domain)
 "te" = (
@@ -783,7 +822,26 @@
 /turf/open/floor/plating,
 /area/virtual_domain)
 "wr" = (
-/obj/item/deployable_turret_folded,
+/obj/structure/rack/shelf,
+/obj/item/ammo_box/magazine/wylom{
+	pixel_y = 10;
+	pixel_x = 4
+	},
+/obj/item/ammo_box/magazine/wylom{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/obj/item/ammo_box/magazine/miecz{
+	pixel_y = -3;
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/miecz{
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/miecz{
+	pixel_y = -3;
+	pixel_x = 5
+	},
 /turf/open/floor/iron,
 /area/virtual_domain)
 "wv" = (
@@ -902,11 +960,6 @@
 /obj/item/folder/documents,
 /turf/open/floor/iron/dark,
 /area/virtual_domain)
-"Aw" = (
-/obj/item/ammo_box/advanced/s12gauge,
-/obj/item/ammo_box/advanced/s12gauge,
-/turf/open/floor/iron,
-/area/virtual_domain)
 "AB" = (
 /obj/structure/chair{
 	dir = 8
@@ -966,8 +1019,10 @@
 /turf/open/floor/iron/white,
 /area/virtual_domain)
 "Co" = (
-/obj/item/ammo_box/advanced/s12gauge/pt20,
-/obj/item/ammo_box/advanced/s12gauge/pt20,
+/obj/structure/sign/poster/random/directional/west,
+/obj/item/gun/ballistic/automatic/wylom,
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/automatic/miecz,
 /turf/open/floor/iron,
 /area/virtual_domain)
 "Cr" = (
@@ -981,10 +1036,6 @@
 	dir = 9
 	},
 /turf/open/misc/grass/planet/ancient_milsim,
-/area/virtual_domain)
-"Cz" = (
-/obj/item/storage/toolbox/ammobox/full/mosin,
-/turf/open/floor/iron,
 /area/virtual_domain)
 "CH" = (
 /obj/structure/flippedtable,
@@ -1032,7 +1083,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/virtual_domain)
 "Dt" = (
-/obj/item/gun/ballistic/automatic/sol_grenade_launcher/evil/no_mag,
+/obj/item/gun/ballistic/automatic/wylom,
 /turf/open/misc/grass/planet/ancient_milsim,
 /area/virtual_domain)
 "Dy" = (
@@ -1199,8 +1250,16 @@
 /turf/open/floor/iron/white,
 /area/virtual_domain)
 "HL" = (
-/obj/item/ammo_box/c980grenade/smoke,
-/turf/open/misc/grass/planet/ancient_milsim,
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/lanca{
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/obj/item/ammo_box/magazine/lanca{
+	pixel_y = 1;
+	pixel_x = -4
+	},
+/turf/open/floor/iron,
 /area/virtual_domain)
 "HM" = (
 /obj/machinery/vending/wardrobe/bar_wardrobe,
@@ -1361,7 +1420,14 @@
 /area/virtual_domain)
 "MW" = (
 /obj/structure/table/wood,
-/obj/item/gun/ballistic/rifle/boltaction/sporterized,
+/obj/item/ammo_box/magazine/lanca{
+	pixel_y = -1;
+	pixel_x = -4
+	},
+/obj/item/ammo_box/magazine/lanca{
+	pixel_y = 2;
+	pixel_x = 4
+	},
 /turf/open/floor/iron,
 /area/virtual_domain)
 "MY" = (
@@ -1450,7 +1516,7 @@
 /turf/open/misc/grass/planet/ancient_milsim,
 /area/virtual_domain)
 "QF" = (
-/obj/item/ammo_box/c40sol,
+/obj/item/ammo_box/magazine/lanca,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "QV" = (
@@ -1536,12 +1602,8 @@
 /turf/open/floor/iron/dark,
 /area/virtual_domain)
 "SJ" = (
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
-/turf/open/floor/iron,
-/area/virtual_domain)
-"SV" = (
-/obj/item/ammo_box/advanced/s12gauge/flechette,
-/obj/item/ammo_box/advanced/s12gauge/flechette,
+/obj/structure/rack/shelf,
+/obj/item/gun/ballistic/revolver/shotgun_revolver,
 /turf/open/floor/iron,
 /area/virtual_domain)
 "Td" = (
@@ -1638,7 +1700,7 @@
 /turf/open/floor/plating,
 /area/virtual_domain)
 "Vr" = (
-/obj/item/ammo_box/magazine/c980_grenade/starts_empty,
+/obj/item/ammo_box/magazine/wylom,
 /turf/open/misc/grass/planet/ancient_milsim,
 /area/virtual_domain)
 "VA" = (
@@ -1690,7 +1752,7 @@
 /turf/open/floor/iron/smooth,
 /area/virtual_domain)
 "WY" = (
-/obj/item/gun/ballistic/rifle/boltaction/sporterized,
+/obj/item/gun/ballistic/automatic/lanca,
 /turf/open/floor/plating,
 /area/virtual_domain)
 "Xh" = (
@@ -2659,14 +2721,14 @@ Cd
 Wr
 hj
 rB
-YY
+SJ
 UQ
 Pw
 De
 YY
 DW
 wr
-De
+Co
 ob
 uZ
 jS
@@ -2717,9 +2779,9 @@ Cd
 hj
 hj
 rB
-Co
-Aw
-SV
+YY
+YY
+YY
 YY
 YY
 YY
@@ -2775,8 +2837,8 @@ Hq
 hj
 hj
 rB
+kF
 YY
-SJ
 tg
 YY
 YY
@@ -3016,7 +3078,7 @@ dd
 AB
 DW
 et
-td
+HL
 YY
 HM
 dd
@@ -3131,8 +3193,8 @@ iI
 dd
 mu
 te
-Cz
-Cz
+YY
+YY
 ZQ
 mu
 dd
@@ -3814,7 +3876,7 @@ dd
 dd
 yl
 Is
-kX
+mV
 dd
 OV
 kX
@@ -4370,7 +4432,7 @@ Uz
 "}
 (46,1,1) = {"
 Uz
-mV
+Cd
 bB
 bB
 ki
@@ -4488,7 +4550,7 @@ Uz
 Uz
 Dt
 Vr
-kF
+Cd
 Cd
 Cd
 Cd
@@ -4544,7 +4606,7 @@ Uz
 "}
 (49,1,1) = {"
 Uz
-HL
+Cd
 Vr
 Cd
 Cd
