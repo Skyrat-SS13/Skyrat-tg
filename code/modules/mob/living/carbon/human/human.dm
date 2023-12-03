@@ -67,19 +67,6 @@
 
 	return ..()
 
-/* SKYRAT REMOVAL START - MOVED TO MODULAR - modular_skyrat\master_files\code\modules\mob\living\carbon\human.dm
-/mob/living/carbon/human/ZImpactDamage(turf/T, levels)
-	if(stat != CONSCIOUS || levels > 1) // you're not The One
-		return ..()
-	var/obj/item/organ/external/wings/gliders = get_organ_by_type(/obj/item/organ/external/wings)
-	if(HAS_TRAIT(src, TRAIT_FREERUNNING) || gliders?.can_soften_fall()) // the power of parkour or wings allows falling short distances unscathed
-		visible_message(span_danger("[src] makes a hard landing on [T] but remains unharmed from the fall."), \
-						span_userdanger("You brace for the fall. You make a hard landing on [T] but remain unharmed."))
-		Knockdown(levels * 40)
-		return
-	return ..()
-*/ // SKYRAT REMOVAL END
-
 /mob/living/carbon/human/prepare_data_huds()
 	//Update med hud images...
 	..()
