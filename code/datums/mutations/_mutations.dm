@@ -86,6 +86,12 @@
 		copy_mutation(copymut)
 	update_valid_chromosome_list()
 
+/datum/mutation/human/Destroy()
+	power_path = null
+	dna = null
+	owner = null
+	return ..()
+
 /datum/mutation/human/proc/on_acquiring(mob/living/carbon/human/acquirer)
 	if(!acquirer || !istype(acquirer) || acquirer.stat == DEAD || (src in acquirer.dna.mutations))
 		return TRUE
