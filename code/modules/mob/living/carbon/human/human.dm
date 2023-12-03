@@ -67,6 +67,7 @@
 
 	return ..()
 
+<<<<<<< HEAD
 /* SKYRAT REMOVAL START - MOVED TO MODULAR - modular_skyrat\master_files\code\modules\mob\living\carbon\human.dm
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
 	if(stat != CONSCIOUS || levels > 1) // you're not The One
@@ -80,6 +81,8 @@
 	return ..()
 */ // SKYRAT REMOVAL END
 
+=======
+>>>>>>> 14d1482fc76 (Falling down a z-level while standing up can (occasionally) break your legs. Felinids will now always land on their feet (for better or for worse).  (#80054))
 /mob/living/carbon/human/prepare_data_huds()
 	//Update med hud images...
 	..()
