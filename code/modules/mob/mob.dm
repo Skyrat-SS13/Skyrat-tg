@@ -745,6 +745,8 @@
 /mob/proc/can_resist()
 	return FALSE //overridden in living.dm
 
+#define SPIN_PROC_TRAIT "trait_from_spin()"
+
 ///Spin this mob around it's central axis
 /mob/proc/spin(spintime, speed)
 	set waitfor = 0
@@ -752,7 +754,7 @@
 	if((spintime < 1) || (speed < 1) || !spintime || !speed)
 		return
 
-	flags_1 |= IS_SPINNING_1
+	ADD_TRAIT(src, TRAIT_SPINNING, SPIN_PROC_TRAIT)
 	while(spintime >= speed)
 		sleep(speed)
 		switch(D)
@@ -766,7 +768,9 @@
 				D = NORTH
 		setDir(D)
 		spintime -= speed
-	flags_1 &= ~IS_SPINNING_1
+	REMOVE_TRAIT(src, TRAIT_SPINNING, SPIN_PROC_TRAIT)
+
+#undef SPIN_PROC_TRAIT
 
 ///Update the pulling hud icon
 /mob/proc/update_pull_hud_icon()
