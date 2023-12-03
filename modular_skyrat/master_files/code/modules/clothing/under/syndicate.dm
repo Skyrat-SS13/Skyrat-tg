@@ -62,6 +62,7 @@
 /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors //Halloween-only
 	has_sensor = HAS_SENSORS
 	armor_type = /datum/armor/clothing_under/none
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/syndicate/skyrat/baseball
 	name = "syndicate baseball tee"
