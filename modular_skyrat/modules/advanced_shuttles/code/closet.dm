@@ -69,40 +69,45 @@
 	icon_state = "vent"
 	icon_door = "vent"
 
-//Wall closets
-/obj/structure/closet/firecloset/wall
+//Generic Wall Closets - mount onto a wall, will end up storing anything that's on the tile it was placed from and 'occupies'.
+//Mob Size is small so that it doesn't end up storing players standing on those tiles.
+/obj/structure/closet/generic/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "fire_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
 
 /obj/structure/closet/emcloset/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "emergency_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
+/obj/structure/closet/firecloset/wall
+	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "fire_wall"
+
+//These two are pre-locked versions of closet/generic/wall, for mapping only
 /obj/structure/closet/secure_closet/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "closet_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
 
 /obj/structure/closet/secure_closet/personal/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "closet_wall"
-	icon_door = null
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
