@@ -22,7 +22,7 @@
 	lefthand_file = 'modular_skyrat/modules/implants/icons/implanted_blade_lefthand.dmi'
 	icon_state = "mantis_blade"
 	w_class = WEIGHT_CLASS_BULKY
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	sharpness = SHARP_EDGED
 	force = 25
 	armour_penetration = 20
