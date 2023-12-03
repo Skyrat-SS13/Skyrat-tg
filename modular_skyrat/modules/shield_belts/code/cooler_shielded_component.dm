@@ -49,10 +49,15 @@
 	else
 		playsound(wearer, 'sound/weapons/parry.ogg', BLOCK_SOUND_VOLUME, TRUE)
 
-	var/mutable_appearance/overlay = mutable_appearance(shield_icon_file, shield_overlay_icon_state, ABOVE_MOB_LAYER)
-	overlay.alpha = shield_overlay_alpha
-	overlay.color = shield_overlay_color
-	/// How long the shield effect will last
-	var/effect_duration = 0.5 SECONDS
-	animate(overlay, effect_duration, easing = EASE_OUT, alpha = 0)
-	wearer.flick_overlay(overlay, duration = effect_duration, layer = ABOVE_MOB_LAYER)
+	var/obj/effect/temp_visual/shield_pulse_effect = new /obj/effect/temp_visual/shield_pulse(get_turf(wearer))
+	shield_pulse_effect.icon = shield_icon_file
+	shield_pulse_effect.icon_state = shield_overlay_icon_state
+	shield_pulse_effect.color = shield_overlay_color
+	shield_pulse_effect.alpha = shield_overlay_alpha
+
+/obj/effect/temp_visual/shield_pulse
+	duration = 0.5 SECONDS
+
+/obj/effect/temp_visual/decoy/twitch_afterimage/Initialize(mapload)
+	. = ..()
+	animate(src, duration, easing = EASE_OUT, alpha = 0)

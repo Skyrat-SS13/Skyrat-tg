@@ -15,7 +15,7 @@
 	. = ..()
 	AddComponent( \
 		/datum/component/shielded/shield_belt, \
-		max_charges = 1, \
+		max_charges = 2, \
 		recharge_start_delay = 15 SECONDS, \
 		charge_increment_delay = 5 SECONDS, \
 		charge_recovery = 1, \
@@ -24,32 +24,4 @@
 		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
 		shield_icon = "shield", \
 		shield_inhand = FALSE, \
-	)
-
-// Shield belt, has more charges but starts recharging slower than the bracers do
-
-/obj/item/clothing/shield_generator_belt
-	name = "Milano belt shield generator"
-	desc = "A belt mounted shield generator, common sight across the galaxy where armor might be impractical, \
-		but protection is still required. The impact shield has three charges, and has a slow recharge rate."
-	icon = 'modular_skyrat/modules/shield_belts/icons/shield_objects.dmi'
-	icon_state = "belt"
-	worn_icon = 'modular_skyrat/modules/shield_belts/icons/worn.dmi'
-	slot_flags = ITEM_SLOT_BELT
-	item_flags = NOBLUDGEON
-	resistance_flags = FIRE_PROOF
-	can_be_bloody = FALSE
-
-/obj/item/shield_generator_belt/Initialize(mapload)
-	. = ..()
-	AddComponent( \
-		/datum/component/shielded/shield_belt, \
-		max_charges = 3, \
-		recharge_start_delay = 45 SECONDS, \
-		charge_increment_delay = 10 SECONDS, \
-		charge_recovery = 1, \
-		lose_multiple_charges = FALSE, \
-		show_charge_as_alpha = FALSE, \
-		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
-		shield_icon = "shield", \
 	)

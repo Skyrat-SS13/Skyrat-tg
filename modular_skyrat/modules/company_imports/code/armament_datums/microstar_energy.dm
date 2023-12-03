@@ -8,9 +8,6 @@
 	subcategory = "Personal Shield Generators"
 	cost = PAYCHECK_CREW * 3
 
-/datum/armament_entry/company_import/microstar/shield_generators/belt
-	item_type = /obj/item/clothing/shield_generator_belt
-
 /datum/armament_entry/company_import/microstar/shield_generators/bracers
 	item_type = /obj/item/clothing/gloves/shield_bracers
 
