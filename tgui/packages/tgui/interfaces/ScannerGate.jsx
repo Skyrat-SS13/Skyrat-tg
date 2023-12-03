@@ -374,10 +374,9 @@ const ScannerGateNutrition = (props) => {
   );
 };
 
-<<<<<<< HEAD
 //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
-const ScannerGateGender = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateGender = (props) => {
+  const { act, data } = useBackend();
   const { reverse, target_gender } = data;
   const gender = TARGET_GENDER_LIST.find((gender) => {
     return gender.value === target_gender;
@@ -407,12 +406,8 @@ const ScannerGateGender = (props, context) => {
 };
 //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
-const ScannerGateMode = (props, context) => {
-  const { act, data } = useBackend(context);
-=======
 const ScannerGateMode = (props) => {
   const { act, data } = useBackend();
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { reverse } = data;
   return (
     <LabeledList>

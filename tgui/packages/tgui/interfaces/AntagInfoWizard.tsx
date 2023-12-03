@@ -51,14 +51,9 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-<<<<<<< HEAD
 // SKYRAT CHANGE height from 630 to 700
-export const AntagInfoWizard = (props, context) => {
-  const { data, act } = useBackend<Info>(context);
-=======
 export const AntagInfoWizard = (props) => {
   const { data, act } = useBackend<Info>();
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { ritual, objectives, can_change_objective } = data;
 
   return (

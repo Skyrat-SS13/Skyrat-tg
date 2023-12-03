@@ -7,15 +7,9 @@ import { isRecordMatch } from '../SecurityRecords/helpers';
 import { MedicalRecord, MedicalRecordData } from './types';
 
 /** Displays all found records. */
-<<<<<<< HEAD
-export const MedicalRecordTabs = (props, context) => {
-  const { act, data } = useBackend<MedicalRecordData>(context);
-  const { records = [] } = data;
-=======
 export const MedicalRecordTabs = (props) => {
   const { act, data } = useBackend<MedicalRecordData>();
-  const { records = [], station_z } = data;
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
+  const { records = [] } = data;
 
   const errorMessage = !records.length
     ? 'No records found.'

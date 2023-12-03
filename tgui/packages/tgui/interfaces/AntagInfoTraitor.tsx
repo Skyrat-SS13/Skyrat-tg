@@ -229,15 +229,9 @@ const CodewordsSection = (props) => {
   );
 };
 
-<<<<<<< HEAD
 // SKYRAT EDIT: change height from 580 to 650
-export const AntagInfoTraitor = (props, context) => {
-  const { data } = useBackend<Info>(context);
-=======
 export const AntagInfoTraitor = (props) => {
   const { data } = useBackend<Info>();
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
-  const { theme } = data;
   return (
     <Window width={620} height={650} theme={theme}>
       <Window.Content>

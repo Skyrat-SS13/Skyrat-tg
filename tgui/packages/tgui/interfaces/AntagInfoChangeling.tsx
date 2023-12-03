@@ -57,12 +57,8 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-<<<<<<< HEAD
 // SKYRAT EDIT change height from 750 to 900
-export const AntagInfoChangeling = (props, context) => {
-=======
 export const AntagInfoChangeling = (props) => {
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   return (
     <Window width={720} height={900}>
       <Window.Content

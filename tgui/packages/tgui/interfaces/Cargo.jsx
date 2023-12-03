@@ -15,17 +15,11 @@ export const Cargo = (props) => {
   );
 };
 
-<<<<<<< HEAD
-export const CargoContent = (props, context) => {
-  /* SKYRAT EDIT BELOW - ADDS act */
-  const { act, data } = useBackend(context);
-  /* SKYRAT EDIT END */
-  const [tab, setTab] = useSharedState(context, 'tab', 'catalog');
-=======
 export const CargoContent = (props) => {
-  const { data } = useBackend();
+  /* SKYRAT EDIT BELOW - ADDS act */
+  const { act, data } = useBackend();
+  /* SKYRAT EDIT END */
   const [tab, setTab] = useSharedState('tab', 'catalog');
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
   const { cart = [], requests = [], requestonly } = data;
   const cart_length = cart.reduce((total, entry) => total + entry.amount, 0);
   return (

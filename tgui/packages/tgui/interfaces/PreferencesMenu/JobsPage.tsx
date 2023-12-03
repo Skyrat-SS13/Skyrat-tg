@@ -174,14 +174,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const isOverflow = data.overflow_role === name;
   const priority = data.job_preferences[name];
 
-<<<<<<< HEAD
-  const createSetPriority = createCreateSetPriorityFromName(context, name);
-  // SKYRAT EDIT
-  const { act } = useBackend<PreferencesMenuData>(context);
-  // SKYRAT EDIT END
-=======
   const createSetPriority = createCreateSetPriorityFromName(name);
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
+   // SKYRAT EDIT
+  const { act } = useBackend<PreferencesMenuData>();
+   // SKYRAT EDIT END
 
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];

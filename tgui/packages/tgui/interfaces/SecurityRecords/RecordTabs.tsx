@@ -8,15 +8,9 @@ import { isRecordMatch } from './helpers';
 import { SecurityRecordsData, SecurityRecord } from './types';
 
 /** Tabs on left, with search bar */
-<<<<<<< HEAD
-export const SecurityRecordTabs = (props, context) => {
-  const { act, data } = useBackend<SecurityRecordsData>(context);
-  const { higher_access, records = [] } = data;
-=======
 export const SecurityRecordTabs = (props) => {
   const { act, data } = useBackend<SecurityRecordsData>();
-  const { higher_access, records = [], station_z } = data;
->>>>>>> f2409db8ba4 (Removes context from tgui (#80003))
+  const { higher_access, records = [] } = data;
 
   const errorMessage = !records.length
     ? 'No records found.'
