@@ -175,9 +175,9 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const priority = data.job_preferences[name];
 
   const createSetPriority = createCreateSetPriorityFromName(name);
-   // SKYRAT EDIT
+  // SKYRAT EDIT
   const { act } = useBackend<PreferencesMenuData>();
-   // SKYRAT EDIT END
+  // SKYRAT EDIT END
 
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
