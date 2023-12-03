@@ -67,7 +67,6 @@
 		ADD_TRAIT(firer, TRAIT_IMMOBILIZED, REF(src))
 		addtimer(TRAIT_CALLBACK_REMOVE(firer, TRAIT_IMMOBILIZED, REF(src)), IMMOBILIZATION_TIMER) // safety if we miss, if we get a hit we stay immobilized
 	return ..()
->>>>>>> 39d9c45b4a7 (Meat Hook Rework (Accidental Features) (#80002))
 
 /obj/projectile/hook/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
