@@ -710,7 +710,7 @@
 
 /datum/chemical_reaction/food/soup/bloodsoup
 	required_reagents = list(
-		/datum/reagent/water = 10,
+		/datum/reagent/water/salt = 10, // SKYRAT EDIT
 		/datum/reagent/blood = 10,
 	)
 	required_ingredients = list(
