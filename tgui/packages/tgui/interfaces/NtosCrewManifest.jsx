@@ -3,13 +3,13 @@ import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
-export const NtosCrewManifest = (props) => {
-  // SKYRAT EDIT BEGIN - ALTERNATIVE_JOB_TITLES
-  //
-  // width={500} - Original: width={400}
-  //
-  // {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
-  //  - Original: entry.rank
+// SKYRAT EDIT BEGIN - ALTERNATIVE_JOB_TITLES
+//
+// width={500} - Original: width={400}
+//
+// {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
+//  - Original: entry.rank
+export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
