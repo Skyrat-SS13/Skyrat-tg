@@ -1,6 +1,10 @@
 /datum/chemical_reaction/food/soup/clean_up(datum/reagents/holder, datum/equilibrium/reaction, react_vol)
     . = ..()
-    if(!length(results))
+	if(!length(results))
+		return
+	var/obj/item/reagent_containers/cup/soup_pot/our_pot = holder.my_atom
+	if(!istype(our_pot) || !our_pot.emulsify_reagents)
+		return
         return
     var/souptype = results[1]
     var/list/cached_reagents = holder.reagent_list
