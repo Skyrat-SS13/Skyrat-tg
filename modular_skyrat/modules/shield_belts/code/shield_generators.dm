@@ -13,14 +13,14 @@
 
 /obj/item/clothing/gloves/shield_bracers/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/shielded/shield_belt, \
+	AddComponent( \
+		/datum/component/shielded/shield_belt, \
 		max_charges = 1, \
 		recharge_start_delay = 15 SECONDS, \
 		charge_increment_delay = 5 SECONDS, \
 		charge_recovery = 1, \
 		lose_multiple_charges = FALSE, \
 		show_charge_as_alpha = FALSE, \
-		starting_charges = 0, \
 		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
 		shield_icon = "shield", \
 		shield_inhand = FALSE, \
@@ -42,14 +42,14 @@
 
 /obj/item/shield_generator_belt/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/shielded/shield_belt, \
+	AddComponent( \
+		/datum/component/shielded/shield_belt, \
 		max_charges = 3, \
 		recharge_start_delay = 45 SECONDS, \
 		charge_increment_delay = 10 SECONDS, \
 		charge_recovery = 1, \
 		lose_multiple_charges = FALSE, \
 		show_charge_as_alpha = FALSE, \
-		starting_charges = 0, \
 		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
 		shield_icon = "shield", \
 		shield_inhand = FALSE, \

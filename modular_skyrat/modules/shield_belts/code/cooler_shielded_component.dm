@@ -54,4 +54,3 @@
 	var/effect_duration = 0.5 SECONDS
 
 	wearer.flick_overlay_static(overlay, effect_duration)
-	animate(overlay, alpha = 0, time = effect_duration, easing = EASE_OUT)
