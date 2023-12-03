@@ -11758,7 +11758,7 @@
 /area/station/ai_monitored/turret_protected/ai_upload)
 "dzp" = (
 /obj/structure/window/spawner/directional/south,
-/mob/living/simple_animal/pet/cat/cak,
+/mob/living/basic/pet/cat/cak,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/greater)
 "dzq" = (
@@ -12452,7 +12452,7 @@
 	anchored = 1;
 	name = "Jerry's bed"
 	},
-/mob/living/simple_animal/pet/cat/jerry,
+/mob/living/basic/pet/cat/jerry,
 /turf/open/floor/wood,
 /area/station/security/prison/garden)
 "dIf" = (
@@ -25003,10 +25003,8 @@
 /obj/structure/table,
 /obj/item/plate,
 /obj/effect/spawner/random/trash/food_packaging,
-/obj/machinery/camera/directional/north{
-	c_tag = "Mining Dock"
-	},
 /obj/structure/cable,
+/obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron/smooth_edge,
 /area/station/cargo/bitrunning/den)
 "hji" = (
@@ -56550,14 +56548,13 @@
 /obj/machinery/door/airlock/mining/glass{
 	name = "Delivery Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/obj/effect/mapping_helpers/airlock/access/any/supply/shipping,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/sorting)
 "pOW" = (
@@ -62069,11 +62066,8 @@
 	dir = 6
 	},
 /obj/structure/trash_pile,
-/obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/structure/sign/poster/contraband/random/directional/east,
+/obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/station/cargo/bitrunning/den)
 "rne" = (
@@ -71269,7 +71263,7 @@
 /area/station/engineering/atmos)
 "tLD" = (
 /obj/structure/bed/dogbed/runtime,
-/mob/living/simple_animal/pet/cat/runtime{
+/mob/living/basic/pet/cat/runtime{
 	icon_dead = "original_dead";
 	icon_living = "original";
 	icon_state = "original"
