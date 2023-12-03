@@ -24,13 +24,11 @@
 		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
 		shield_icon = "shield", \
 		shield_inhand = FALSE, \
-		shield_overlay_alpha = 200, \
-		shield_overlay_color = "#77bd5d", \
 	)
 
 // Shield belt, has more charges but starts recharging slower than the bracers do
 
-/obj/item/shield_generator_belt
+/obj/item/clothing/shield_generator_belt
 	name = "Milano belt shield generator"
 	desc = "A belt mounted shield generator, common sight across the galaxy where armor might be impractical, \
 		but protection is still required. The impact shield has three charges, and has a slow recharge rate."
@@ -39,6 +37,8 @@
 	worn_icon = 'modular_skyrat/modules/shield_belts/icons/worn.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NOBLUDGEON
+	resistance_flags = FIRE_PROOF
+	can_be_bloody = FALSE
 
 /obj/item/shield_generator_belt/Initialize(mapload)
 	. = ..()
@@ -52,7 +52,4 @@
 		show_charge_as_alpha = FALSE, \
 		shield_icon_file = 'modular_skyrat/modules/shield_belts/icons/shield_overlay.dmi', \
 		shield_icon = "shield", \
-		shield_inhand = FALSE, \
-		shield_overlay_alpha = 200, \
-		shield_overlay_color = "#77bd5d", \
 	)

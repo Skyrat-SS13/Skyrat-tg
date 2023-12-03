@@ -17,7 +17,7 @@
 		shield_icon,
 		shield_inhand,
 		run_hit_callback,
-		shield_overlay_alpha = 200,
+		shield_overlay_alpha = 150,
 		shield_overlay_color = "#77bd5d",
 	)
 
@@ -50,7 +50,9 @@
 		playsound(wearer, 'sound/weapons/parry.ogg', BLOCK_SOUND_VOLUME, TRUE)
 
 	var/mutable_appearance/overlay = mutable_appearance(shield_icon_file, shield_overlay_icon_state, ABOVE_MOB_LAYER)
+	overlay.alpha = shield_overlay_alpha
+	overlay.color = shield_overlay_color
 	/// How long the shield effect will last
 	var/effect_duration = 0.5 SECONDS
-
-	wearer.flick_overlay_static(overlay, effect_duration)
+	animate(overlay, effect_duration, easing = EASE_OUT, alpha = 0)
+	wearer.flick_overlay(overlay, duration = effect_duration, layer = ABOVE_MOB_LAYER)

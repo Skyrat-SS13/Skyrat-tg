@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(loadout_belts, generate_loadout_items(/datum/loadout_item/belts
 
 /datum/loadout_item/belts/shield_generator_belt
 	name = "Milano Belt Shield Generator"
-	item_path = /obj/item/shield_generator_belt
+	item_path = /obj/item/clothing/shield_generator_belt
 
 /datum/loadout_item/belts/fanny_pack_black
 	name = "Black Fannypack"
