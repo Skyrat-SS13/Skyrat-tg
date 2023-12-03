@@ -74,24 +74,30 @@
 /obj/structure/closet/generic/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE //Prevents it being unwrenched and dragged around. Gotta unweld it!
+	paint_jobs = FALSE //Prevents it being repainted into other non-wall lockers.
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "locker_wall"
 
 /obj/structure/closet/emcloset/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "emergency_wall"
 
 /obj/structure/closet/firecloset/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "fire_wall"
 
@@ -99,16 +105,20 @@
 /obj/structure/closet/secure_closet/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "locker_wall"
 
 /obj/structure/closet/secure_closet/personal/wall
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "locker_wall"
 
