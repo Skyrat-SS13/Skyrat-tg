@@ -48,11 +48,7 @@
 	button_icon_state = "spell_default"
 	overlay_icon_state = "bg_spell_border"
 	active_overlay_icon_state = "bg_spell_border_active_red"
-<<<<<<< HEAD
-	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
-=======
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_PHASED
->>>>>>> df2c5a86782 (Fixes a major heretic exploit. (#80082))
 	panel = "Spells"
 	melee_cooldown_time = 0 SECONDS
 
