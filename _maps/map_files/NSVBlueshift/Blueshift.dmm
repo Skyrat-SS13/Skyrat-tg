@@ -6234,6 +6234,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/machinery/status_display/door_timer{
+	id = "IsolationCell_2";
+	name = "Isolation Cell 2";
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison/safe)
 "blS" = (
@@ -14881,6 +14886,9 @@
 "cMP" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/table/glass,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/signlang_radio,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron,
 /area/station/medical/storage)
 "cMX" = (
@@ -18158,7 +18166,7 @@
 /obj/structure/railing,
 /obj/machinery/elevator_control_panel/directional/south{
 	linked_elevator_id = "publicElevator";
-	preset_destination_names = list("2"="Lower Deck","3"="Upper Deck")
+	preset_destination_names = list("2"="Lower  Deck","3"="Upper  Deck")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/primary/central)
@@ -43271,7 +43279,7 @@
 "imR" = (
 /obj/structure/bed/maint,
 /obj/machinery/flasher{
-	id = "IsolationFlash2";
+	id = "IsolationCell_1";
 	pixel_x = -22;
 	pixel_y = 28
 	},
@@ -50510,7 +50518,8 @@
 /area/station/maintenance/fore/upper)
 "jHd" = (
 /obj/machinery/door/airlock/security{
-	name = "Isolation Cell 1"
+	name = "Isolation Cell 1";
+	id_tag = "IsolationCell_1"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
@@ -89821,7 +89830,13 @@
 /area/station/command/bridge)
 "reA" = (
 /obj/structure/table/reinforced,
-/obj/item/taperecorder,
+/obj/item/taperecorder{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "reB" = (
@@ -92722,7 +92737,7 @@
 /obj/structure/bed/maint,
 /obj/item/toy/plush/rouny,
 /obj/machinery/flasher{
-	id = "IsolationFlash";
+	id = "IsolationCell_2";
 	pixel_x = 22;
 	pixel_y = 28
 	},
@@ -95212,10 +95227,10 @@
 /area/station/commons/dorms)
 "sgW" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_y = 3
-	},
 /obj/effect/turf_decal/tile/red/anticorner/contrasted,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/signlang_radio,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "sgZ" = (
@@ -95409,8 +95424,9 @@
 /area/station/security/range)
 "sjf" = (
 /obj/structure/table/reinforced,
-/obj/effect/spawner/random/engineering/material_cheap,
-/obj/item/clothing/gloves/color/yellow,
+/obj/item/mod/module/plasma_stabilizer,
+/obj/item/mod/module/signlang_radio,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage_shared)
 "sjh" = (
@@ -95812,6 +95828,11 @@
 "snh" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
+	},
+/obj/machinery/status_display/door_timer{
+	id = "IsolationCell_1";
+	name = "Isolation Cell 1";
+	pixel_y = -32
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison/safe)
@@ -101641,16 +101662,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "trz" = (
-/obj/machinery/button/flasher{
-	id = "IsolationFlash2";
-	pixel_x = 10;
-	pixel_y = -24
-	},
-/obj/machinery/button/flasher{
-	id = "IsolationFlash";
-	pixel_x = -10;
-	pixel_y = -24
-	},
 /obj/structure/closet/crate/bin,
 /obj/effect/spawner/random/trash/garbage,
 /obj/effect/spawner/random/trash/garbage,
@@ -117671,7 +117682,8 @@
 /area/station/command/heads_quarters/captain)
 "wru" = (
 /obj/machinery/door/airlock/security{
-	name = "Isolation Cell 2"
+	name = "Isolation Cell 2";
+	id_tag = "IsolationCell_2"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
