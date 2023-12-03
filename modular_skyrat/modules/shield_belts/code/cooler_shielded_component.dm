@@ -58,6 +58,6 @@
 /obj/effect/temp_visual/shield_pulse
 	duration = 0.5 SECONDS
 
-/obj/effect/temp_visual/decoy/twitch_afterimage/Initialize(mapload)
+/obj/effect/temp_visual/shield_pulse/twitch_afterimage/Initialize(mapload)
 	. = ..()
 	animate(src, duration, easing = EASE_OUT, alpha = 0)
