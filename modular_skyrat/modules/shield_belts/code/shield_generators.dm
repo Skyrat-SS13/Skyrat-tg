@@ -9,6 +9,7 @@
 	resistance_flags = FIRE_PROOF
 	siemens_coefficient = 0.5
 	clothing_flags = THICKMATERIAL
+	clothing_traits = list(TRAIT_CHUNKYFINGERS)
 
 /obj/item/clothing/gloves/shield_bracers/Initialize(mapload)
 	. = ..()
