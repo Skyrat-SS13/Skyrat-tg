@@ -2,7 +2,7 @@
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
 	id = SPECIES_XENO
-	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno)
+	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/clothing/mask/facehugger/toy)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -11,6 +11,9 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/xeno_hybrid
+	mutant_organs = list(/obj/item/organ/internal/alien/plasmavessel/roundstart, /obj/item/organ/internal/alien/resinspinner, /obj/item/organ/internal/alien/hivenode)
+	coldmod = 0.8
+	heatmod = 2.5
 	mutant_bodyparts = list()
 	external_organs = list()
 	payday_modifier = 1.0
@@ -52,3 +55,8 @@
 	xeno.dna.mutant_bodyparts["xenohead"] = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_COLOR_LIST = list(xeno_color, xeno_color, xeno_color))
 	regenerate_organs(xeno, src, visual_only = TRUE)
 	xeno.update_body(TRUE)
+
+/obj/item/organ/internal/alien/plasmavessel/roundstart
+	stored_plasma = 55
+	max_plasma = 55
+	plasma_rate = 2
