@@ -62,3 +62,99 @@
   - bugfix: crafting food or any other items that require reagents will not leave
       behind blank reagents. That and properly updates the holder those reagents are
       stored in
+2023-12-04:
+  Cursor, Delbert Grady:
+  - rscadd: The Overlook- Err 'Twin'- Whatever the Space Hotel is called has had some
+      minor additions.
+  HoodMilk:
+  - rscdel: Removed the holiday restriction on red-colored Christmas clothing.
+  Melbert:
+  - rscadd: Falling down a z-level while standing now damages your legs rather than
+      your entire body. This also means falling down multiple z-s may rarely break
+      your legs.
+  - rscadd: Felinids now land on their feet if they fall down a z-level while standing.
+      This replaces the knockdown with a short slowdown, and also has the trade-off
+      of causing more leg damage.
+  - rscadd: Cats can now fall z-levels without sustaining damage.
+  MrDerpi:
+  - bugfix: "synth livers not emp-able\n/\U0001F191\n<!-- Both :cl:'s are required\
+      \ for the changelog to work! You can put your name to the right of the first\
+      \ :cl: if you want to overwrite your GitHub username as author ingame. -->\n\
+      <!-- You can use multiple of the same prefix (they're only used for the icon\
+      \ ingame) and delete the unneeded ones. Despite some of the tags, changelogs\
+      \ should generally represent how a player might be affected by the changes rather\
+      \ than a summary of the PR's contents. -->"
+  MrMelbert:
+  - bugfix: smartfridges no longer show false overlays
+  Nerev4r:
+  - bugfix: Lopland Security has finally negotiated an order of blue tackle gloves
+      with the FTU, abandoning the red NanoTrasen models.
+  Rhials:
+  - qol: Bar signs ordered from cargo will no longer be access-restricted.
+  - spellcheck: Fixes a typo in the Factory Quartermaster outfit name.
+  SkyratBot:
+  - bugfix: SecTech restocking units are now actually named SecTech restocking units,
+      and not Generic restocking units.
+  - admin: Removed the "Turn Target into MMI" right click context menu verb entirely,
+      and instead added the same command as a VV dropdown on human mobs.
+  - rscadd: Added the daily (roundstart) message server key to the Chief Engineer's
+      memories.
+  - rscadd: Added new roast dinners, able to be cut into smaller portions hopefully
+      in time for the Christmas season.
+  - rscadd: Instead of teaming up random people together, blood brothers will now
+      start out with one player and let them convert a single other person over to
+      blood brother using a flash.
+  - rscadd: 'Festival Sect has 3 new rites: Cogitandi Fidis, Portable Song Tuning,
+      and Illuminating Solo.'
+  - balance: lowers threshold for triggering a final effect. Consult your Cogitandi
+      Fidis for more information
+  - bugfix: Some mapped-in gifts that were supposed to guarantee a certain gift weren't
+      spawning that exact gift type, this has been patched to reflect the mapper's
+      intent.
+  - admin: The Player Panel should now contain the unique mob tag associated to a
+      certain mob that a player might inhabit at one time, which is stored on their
+      player details datum on their client (which is guaranteed to always exist).
+  - admin: The "Old Names" details of a player is now visible in their own personal
+      per-player player panel.
+  - server: Minimum compile version has been bumped to 515. clients still support
+      514 but we're gonna start using 515 restricted features for serverside now.
+  - bugfix: Fixed some oopsie whoopsie with elevation, trams and beds causing people
+      to visually ascend or descend to heaven or hell.
+  - bugfix: Blocking a tackler no longer causes things to go haywire and stun the
+      tackler/the tackle victim.
+  - bugfix: soups and other reactions where large quantities of reagents are required/present
+      should not have a random chance of reacting forever.
+  - bugfix: reactions which are overheated should diminish all the way to 0
+  - code_imp: cleaned up code in `datam/equilibrium` in general. Slightly optimized
+      soup reaction code
+  - refactor: medbots are now basic bots. please report any bugs
+  - rscadd: medbots can wear hats!
+  - balance: Clone damage dealt by the cosmic blade has been replaced with organ damage
+      and increased burn damage. Clone damage dealt by the cosmic beam has been removed.
+      The star gazer now deals burn damage instead of clone damage.
+  - bugfix: The health of mobs combo'd by a cosmic blade will now update correctly.
+  - rscadd: Added sprites for bone spears to match the other bone items.
+  - rscdel: Removes the slime's reagent holder. This will make them not slow down
+      from somehow imbibing morphine or frostoil.
+  - spellcheck: Occurrences of "recieve" has been changed to "receive".
+  - bugfix: Heretics can no longer cast all of their spells while in jaunt
+  - sound: Added human laughter to felinids
+  - balance: The Meat Hook will now "ground" you whenever you fire it out at someone.
+      You get a very small immobilization every time you fire, which "upgrades" to
+      a full immobilization whenever you actually hit an atom and start to drag it
+      in.
+  - bugfix: A chain should now show up as you drag in something with the meat hooks.
+  - bugfix: Meat hooks should no longer play the "magical gun" suicide if you were
+      to use it, but instead do their own unique thing.
+  - bugfix: Digi legs work with the QM's jumpskirt
+  - refactor: cats are now basic pets. please report any bugs.
+  - rscadd: the cake cat and bread cat can now help the chef around in the kitchen
+  Vekter:
+  - rscadd: Added a new hostile variant of cats, "feral cats".
+  - rscadd: Added a new traitor item, "feral cat grenades". For 5 TC, you too can
+      throw a grenade at someone and make five cats maul them to death.
+  - bugfix: Fixed damage ranging on feral cats
+  - bugfix: Fixes hole in Birdshot hallway
+  honkpocket:
+  - rscadd: The 'fake announcement device' from the OPFOR selection has received a
+      fully customizable upgrade.
