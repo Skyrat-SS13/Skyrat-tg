@@ -45,6 +45,25 @@
 /datum/species/xeno/get_species_lore()
 	return list(placeholder_lore)
 
+/datum/species/xeno/create_pref_unique_perks()
+	var/list/to_add = list()
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+		SPECIES_PERK_ICON = "biohazard",
+		SPECIES_PERK_NAME = "Xenomorphic Biology",
+		SPECIES_PERK_DESC = "Xeno-hybrids inherit organs from their primal ascendants."
+	))
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+		SPECIES_PERK_ICON = "fire",
+		SPECIES_PERK_NAME = "High Temperature Weakness",
+		SPECIES_PERK_DESC = "A partial silicone structure and acid blood make the xeno-hybrid species extremely weak to heat."
+	))
+
+	return to_add
+
 /datum/species/xeno/prepare_human_for_preview(mob/living/carbon/human/xeno)
 	var/xeno_color = "#525288"
 	xeno.dna.features["mcolor"] = xeno_color
