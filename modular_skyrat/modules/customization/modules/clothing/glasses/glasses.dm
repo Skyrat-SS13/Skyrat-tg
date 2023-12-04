@@ -34,7 +34,7 @@
 	base_icon_state = "eyepatch_white"
 
 ///GLASSSES
-/obj/item/clothing/glasses/thin
+/obj/item/clothing/glasses/thin  //TG added their own thin ones, scrap these?
 	name = "thin glasses"
 	desc = "Often seen staring down at someone taking a book."
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
@@ -43,7 +43,7 @@
 	inhand_icon_state = "glasses"
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
-/obj/item/clothing/glasses/betterunshit
+/obj/item/clothing/glasses/regular/betterunshit
 	name = "modern glasses"
 	desc = "After Nerd. Co went bankrupt for tax evasion and invasion, they were bought out by Dork.Co, who revamped their classic design."
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
@@ -52,7 +52,7 @@
 	inhand_icon_state = "glasses"
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
-/obj/item/clothing/glasses/kim
+/obj/item/clothing/glasses/kim //Ditto
 	name = "binoclard lenses"
 	desc = "Stylish round lenses subtly shaded for your protection and criminal discomfort."
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
