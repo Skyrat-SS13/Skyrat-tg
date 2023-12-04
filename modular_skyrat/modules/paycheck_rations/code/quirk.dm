@@ -5,6 +5,7 @@
 		redeemed at a cargo console for food and other items."
 	icon = FA_ICON_DONATE
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
+	medical_record_text = "Has enrolled in the ration ticket program."
 	value = 0
 	hardcore_value = 0
 
