@@ -7,8 +7,8 @@ type Info = {
   objectives: Objective[];
 };
 
-export const Rules = (props, context) => {
-  const { data } = useBackend<Info>(context);
+export const Rules = (props) => {
+  const { data } = useBackend<Info>();
   const { antag_name } = data;
   switch (antag_name) {
     case 'Abductor Agent' || 'Abductor Scientist' || 'Abductor Solo':

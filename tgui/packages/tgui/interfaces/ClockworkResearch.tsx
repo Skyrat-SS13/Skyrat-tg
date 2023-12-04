@@ -47,8 +47,8 @@ const MainData = () => {
   );
 };
 
-const SelectedSection = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const SelectedSection = (props) => {
+  const { act, data } = useBackend<Data>();
   return (
     <Box>
       <div style={{ 'text-align': 'center' }}>
@@ -96,14 +96,14 @@ const SelectedSection = (props, context) => {
   );
 };
 
-const ResearchSection = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const ResearchSection = (props) => {
+  const { act, data } = useBackend<Data>());
   return (
     <Stack vertical>
       <Stack.Item fill>
         <Section fill title="Basic Research">
           <div style={{ 'text-align': 'center' }}>
-            {ResearchNode(data.starting_research, act, context)}
+            {ResearchNode(data.starting_research, act)}
           </div>
         </Section>
       </Stack.Item>
@@ -115,7 +115,7 @@ const ResearchSection = (props, context) => {
               <Stack.Item key={single_research.name}>
                 <Section fill>
                   <div style={{ 'text-align': 'center' }}>
-                    {ResearchNode(single_research, act, context)}
+                    {ResearchNode(single_research, act)}
                   </div>
                 </Section>
               </Stack.Item>
@@ -127,7 +127,7 @@ const ResearchSection = (props, context) => {
   );
 };
 
-const ResearchNode = (research: Research, act: any, context: any) => {
+const ResearchNode = (research: Research, act: any) => {
   return (
     <Box>
       <Stack.Item bold fontSize="15px">
@@ -175,7 +175,7 @@ const ResearchNode = (research: Research, act: any, context: any) => {
   );
 };
 
-export const ClockworkResearch = (props, context) => {
+export const ClockworkResearch = (props) => {
   return (
     <Window theme="clockwork" width={400} height={750}>
       <Window.Content>{MainData()}</Window.Content>

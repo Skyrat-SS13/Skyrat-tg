@@ -2,8 +2,8 @@ import { Stack, Section, Button, Box } from '../../components';
 import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
 
-export const KnownLanguage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const KnownLanguage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Stack.Item>
       <Section title={props.language.name}>
@@ -21,8 +21,8 @@ export const KnownLanguage = (props, context) => {
   );
 };
 
-export const UnknownLanguage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const UnknownLanguage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Stack.Item>
       <Section title={props.language.name}>
@@ -40,8 +40,8 @@ export const UnknownLanguage = (props, context) => {
   );
 };
 
-export const LanguagesPage = (props, context) => {
-  const { data } = useBackend<PreferencesMenuData>(context);
+export const LanguagesPage = (props) => {
+  const { data } = useBackend<PreferencesMenuData>();
   return (
     <Stack>
       <Stack.Item minWidth="33%">
