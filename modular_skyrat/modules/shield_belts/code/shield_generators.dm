@@ -2,7 +2,7 @@
 	name = "Milano shielded bracers"
 	desc = "A common pair of shield bracers, able to provide the user with a weak personal \
 		shield. The shield will break after a single impact of any sort, and will take about a \
-		minute to recharge fully.
+		minute to recharge fully."
 	icon = 'modular_skyrat/modules/shield_belts/icons/shield_objects.dmi'
 	icon_state = "bracers"
 	worn_icon = 'modular_skyrat/modules/shield_belts/icons/worn.dmi'
