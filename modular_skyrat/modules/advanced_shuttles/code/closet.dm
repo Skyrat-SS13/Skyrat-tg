@@ -72,6 +72,9 @@
 //Generic Wall Closets - mount onto a wall, will end up storing anything that's on the tile it was placed from and 'occupies'.
 //Mob Size is small so that it doesn't end up storing players standing on those tiles.
 /obj/structure/closet/generic/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	density = TRUE
@@ -82,6 +85,9 @@
 	icon_state = "locker_wall"
 
 /obj/structure/closet/emcloset/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	density = TRUE
@@ -92,6 +98,9 @@
 	icon_state = "emergency_wall"
 
 /obj/structure/closet/firecloset/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	density = TRUE
@@ -103,6 +112,9 @@
 
 //These two are pre-locked versions of closet/generic/wall, for mapping only
 /obj/structure/closet/secure_closet/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	density = TRUE
@@ -113,6 +125,9 @@
 	icon_state = "locker_wall"
 
 /obj/structure/closet/secure_closet/personal/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
 	density = TRUE
