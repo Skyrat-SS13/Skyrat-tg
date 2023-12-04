@@ -9,11 +9,7 @@
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-<<<<<<< HEAD
-	flags_1 = CAN_BE_DIRTY_1 | NO_SCREENTIPS_1
-=======
 	flags_1 = NO_SCREENTIPS_1 | CAN_BE_DIRTY_1
->>>>>>> 3583387cf52 (Fixes misapplication of `CAN_BE_DIRTY_1` (floors should now spawn dirty) (#80078))
 	turf_flags = IS_SOLID
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR
 	canSmoothWith = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR
