@@ -197,9 +197,17 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Random Pizza Box"
 	item_path = /obj/item/pizzabox/random
 
+/datum/loadout_item/pocket_items/medkit_civil_defense
+	name = "Civil Defense Medical Kit"
+	item_path = /obj/item/storage/medkit/civil_defense/stocked
+
 /datum/loadout_item/pocket_items/medkit
 	name = "First-Aid Kit"
 	item_path = /obj/item/storage/medkit/regular
+
+/datum/loadout_item/pocket_items/medkit_frontier
+	name = "Frontier First Aid Kit"
+	item_path = /obj/item/storage/medkit/frontier/stocked
 
 /datum/loadout_item/pocket_items/ingredients
 	name = "Wildcard Ingredient Box"
