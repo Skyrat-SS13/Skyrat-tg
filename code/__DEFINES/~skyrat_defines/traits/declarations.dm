@@ -14,6 +14,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NORUNNING "norunning" // You walk!
 #define TRAIT_EXCITABLE "wagwag" //Will wag when patted!
 #define TRAIT_OXYIMMUNE	"oxyimmune" // Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_AFFECTION_AVERSION "affection_aversion" // No more dogborg licking. "Dogborg bad" is no longer a personality
 #define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
@@ -28,6 +29,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 #define TRAIT_HYDRA_HEADS "hydrahead"
+/// Trait to spawn with a pet in a pet carrier (veteran only)
+#define TRAIT_PET_OWNER "pet_owner"
 
 /// adds -6 quirk to negative quirks for free points.
 #define TRAIT_GIFTED "gifted"
@@ -87,6 +90,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait that was granted by a reagent.
 #define TRAIT_REAGENT "reagent"
 
+/// Trait source for anything granted by narcotics
+#define TRAIT_NARCOTICS "narcotics_given"
+
 /// trait that lets you do flips with a style meter
 #define TRAIT_STYLISH "stylish"
 
@@ -143,5 +149,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_STRAPON "strapon"
 
 #define TRAIT_CONDOM_BROKEN "broken"
+
+/// If clothing can also be damaged by piercing wound checks, instead of JUST slashes and burns
+#define TRAIT_CLOTHES_DAMAGED_BY_PIERCING "clothing_damaged_by_piercing"
 
 // END TRAIT DEFINES

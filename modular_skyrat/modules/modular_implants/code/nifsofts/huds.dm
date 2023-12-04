@@ -9,8 +9,8 @@
 	var/eyewear_check = TRUE
 	/// What kind of HUD are we adding when the NIFSoft is activated?
 	var/hud_type
-	/// What is the HUD trait we are adding when the NIFSoft is activated?
-	var/hud_trait
+	/// What are the HUD traits we are adding when the NIFSoft is activated?
+	var/list/hud_traits
 	/// A list of traits that we want to add while the NIFSoft is active. This is here to emulate things like sci-goggles
 	var/list/added_eyewear_traits = list()
 
@@ -20,8 +20,8 @@
 		var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
 		our_hud.show_to(linked_mob)
 
-	if(hud_trait)
-		ADD_TRAIT(linked_mob, hud_trait, GLASSES_TRAIT)
+	for(var/trait in hud_traits)
+		ADD_TRAIT(linked_mob, trait, GLASSES_TRAIT)
 
 	for(var/trait as anything in added_eyewear_traits)
 		ADD_TRAIT(linked_mob, trait, TRAIT_NIFSOFT)
@@ -34,8 +34,8 @@
 		var/datum/atom_hud/hud = GLOB.huds[hud_type]
 		hud.hide_from(linked_mob)
 
-	if(hud_trait)
-		REMOVE_TRAIT(linked_mob, hud_trait, TRAIT_NIFSOFT)
+	for(var/trait in hud_traits)
+		REMOVE_TRAIT(linked_mob, trait, TRAIT_NIFSOFT)
 
 	for(var/trait in added_eyewear_traits)
 		REMOVE_TRAIT(linked_mob, trait, TRAIT_NIFSOFT)
@@ -100,19 +100,19 @@
 	name = "Medical Scrying Lens"
 	ui_icon = "staff-snake"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
-	hud_trait = TRAIT_MEDICAL_HUD
+	hud_traits = list(TRAIT_MEDICAL_HUD)
 
 /datum/nifsoft/hud/job/diagnostic
 	name = "Diagnostic Scrying Lens"
 	ui_icon = "robot"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
-	hud_trait = TRAIT_DIAGNOSTIC_HUD
+	hud_traits = list(TRAIT_DIAGNOSTIC_HUD)
 
 /datum/nifsoft/hud/job/security
 	name = "Security Scrying Lens"
 	ui_icon = "shield"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
-	hud_trait = TRAIT_SECURITY_HUD
+	hud_traits = list(TRAIT_SECURITY_HUD)
 
 /datum/nifsoft/hud/job/cargo_tech
 	name = "Permit Scrying Lens"

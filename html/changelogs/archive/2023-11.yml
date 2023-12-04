@@ -1003,3 +1003,257 @@
   - balance: Golems and plasmamen cannot become husked.
   - image: Robotic and Skeletal parts will remain distinct while the rest of the body
       is husked.
+2023-11-23:
+  Nerev4r:
+  - rscadd: NanoTrasen, after extensive testing in a variety of stars' light wavelengths,
+      have deemed their PDAs ready enough to actually use the onboard cameras they
+      already had.
+  SkyratBot:
+  - rscadd: Certain types of pens now function like you expect they would when inserted
+      into a foam dart
+  - qol: Examining a foam dart closely will show you how to modify it, or what it
+      is modified with
+  - bugfix: Skillsoft's skillchip stations are now ADA-compliant (Astronauts with
+      Disabilities Act). Paraplegic characters can now implant themselves with skillchips,
+      the same as anyone else.
+  - qol: adds pixel perfect 4x, 4.5x, and 5x
+  - bugfix: autolathe does not diminish materials from custom material items like
+      toolboxes when printing them in bulk. Also does not gray out that item in the
+      UI
+  - bugfix: autloathe correctly updates UI after inserting items into it
+  - bugfix: fullupgrade chem dispensers will now spawn with all their chems
+  - balance: Judo Joe, archnemesis of Maint Khan, has begun re-airing his midnight
+      infomercials shilling his extremely expensive Tackle Supreme Judo Karate Training
+      video tapes. Unable to pass up a 'bargain', Nanotrasen has purchased these tapes
+      en masse. Tackling techniques have started to improve, as well as Nanotrasen's
+      tackling instructional algorithms within tackle gloves.
+  - balance: The outcomes for tackling are more equalized. It isn't as feast or famine,
+      and should be somewhat more controllable without becoming too severe.
+  - rscadd: Blocking successfully against a tackle will force the tackle to be a neutral
+      outcome.
+  - rscadd: Unarmed effectiveness from arms now contributes to attacking with and
+      defending from tackles.
+  - rscadd: Those who refuse to use firearms (like Sleeping Carp users and insane
+      unholy berzerkers) are better at tackling others.
+  - rscadd: Riot specialized armor, and not just riot armor, now contributes meaningfully
+      to tackling effectiveness.
+  - balance: MK.1 Swat Suits, the ones that come in SWAT crates, now functions similarly
+      to riot armor.
+  - rscadd: Settlers from the outer rims have noticed they aren't very good at protecting
+      themselves against Judo Joe's clearly discriminatory tackling techniques.
+  - rscadd: Security lockers come with gripper gloves, security vendors now sell them
+      as standard items, and the HoS' garment bag now has a pair of gorilla gloves.
+      Gripper gloves have a positive skill bonus to tackling.
+  - rscadd: Being insane also makes you INSANELY good at tackling but also INSANELY
+      likely to eat shit on a whiff. DO OR DIE, BITCH.
+  - refactor: Shoving slowdown and all its implementations now use a status effect,
+      Staggered.
+  - bugfix: Fix refresh button in log viewer
+  - qol: Allergy Dogtags (and any other dogtags, really) are now actually whitelisted
+      to fit into wallets.
+  vinylspiders:
+  - code_imp: 'The currently operating rust-g version on a live server is posted to
+      places like the runtime.log, in the same place where the revision information
+      and any applicable test merges already were. /:cl:'
+2023-11-24:
+  Danny Boy:
+  - rscadd: Added Affection Aversion quirk which stops affection modules
+  Iajret:
+  - bugfix: borers can once again fill their hosts with various wonders of chemistry
+  Majkl-J:
+  - bugfix: Projector hud traits now get applied correctly
+  - refactor: hud_trait gets deprecated, using clothing_traits instead
+  Nerev4r:
+  - bugfix: Chameleon mutation is toggleable again.
+  - rscadd: Certain firmware updates rolled out, finally, in Sector 13 have allowed
+      machines to emulate personal computers within their brains.
+  RatFromTheJungle:
+  - bugfix: fixes punches doing like triple stamina damage, by removing a 2.6x multiplier.
+  SkyratBot:
+  - rscadd: Cyborg inducer for engineering borgs
+  - balance: The borg RPED can hold as many part as the BSRPED now
+  - balance: Cyborg chargers now draw from the power net as cell chargers do
+  - bugfix: RCD can build directional windows on top of existing grills & without
+      them.
+  - bugfix: gutlunches now produce miner salve instead of milk, as well as the other
+      reagents if fed the correct ore
+  - rscadd: A new skill chip can be found in maintenance or purchased from the vendor,
+      allowing you to experience food in new and exciting ways.
+  - rscadd: Abductors also have access to this incredible power, simply using their
+      genius level brains.
+  - code_imp: removes & merges `expose_multiple()` proc into `expose()` proc inside
+      reagent holder
+  - code_imp: removes `conditonal_update()` proc & `on_update()` proc inside reagent
+      holder and reagent
+  - refactor: Reagent code has been trimmed and split into multiple files. report
+      bugs on github
+  - qol: Mafia panel no longer shows vote buttons if you're on stand, shows the roles
+      of revealed players, and list out who is on the stand, if any.
+  - qol: gives roundstart prisoners a key memory of what their crime is
+  - admin: Remove "Make AI" from VV dropdown
+  Smol42:
+  - rscadd: Added four acrador snouts.
+  The Sharkening:
+  - refactor: Removes unused Kilostation Automapper templates
+  TwistedSilicon:
+  - bugfix: Window damage overlays have been fixed.
+  jjpark-kb:
+  - rscadd: you can craft the gutlunch trough
+  - qol: you can fill the gutlunch trough with a mining bag
+  - rscadd: you can hammer glass shards to get back sand
+2023-11-25:
+  SkyratBot:
+  - rscadd: Adds an arctangent2 component to circuitry!
+  - image: SM shard sprite updated
+  - bugfix: Emag overlay on lockers fixed
+  - image: New locker sprites
+  - image: Added new lockers
+  vinylspiders:
+  - server: Added a preventative measure to prevent calling both TGSHardRestart and
+      TGSReboot, as well as potentially invoking sensitive procs that are only meant
+      to be called once.
+  - bugfix: Fixes a bug where the computer ui wouldn't open up when using a pda on
+      a synth's eyes
+2023-11-26:
+  Rhials:
+  - qol: The area preceding Metastation Cargo's front door is now denoted as being
+      the "cargo lobby".
+  - qol: Gives Cargo areas its own wire layout, instead of having it use the same
+      wires as Service areas.
+  - code_imp: Bitrunning/Bitrunning Den areas are now cargo area subtypes, rather
+      than station area subtypes.
+  SkyratBot:
+  - bugfix: Rebar crossbow bolts are now reuseable again, without risking crashing
+      clients when fired at point-blank range.
+  - bugfix: Fixes cyborged heretics seeing influences.
+  - bugfix: fixes a runtime in footstep code that would prevent the fov effect from
+      playing to nearby mobs
+  - code_imp: HUDs no longer use their own trait variable
+  - bugfix: MOD quick carry modules now give the correct carry speed bonus
+  - qol: Bitrunning glitches will not show up in the roundend report unless they escape
+      the virtual domain.
+  - bugfix: Fixes nebula killing everyone when forced by an admin on icebox
+  - qol: Mothuchi's pizzeria has been improved slightly! Order yourself a fresh mothic
+      pizza today!
+  nikothedude:
+  - bugfix: Radios can be used in mechs
+  sqnztb:
+  - bugfix: bitrunners can now drop off their caches properly on blueshift
+  vinylspiders:
+  - bugfix: Fixed a minor runtime when hallucinations are ending.
+2023-11-27:
+  Paxilmaniac:
+  - rscadd: A whole host of new and unique items has been added to deforest medical
+      in cargo to spice up their admittedly quite lame selection! Have a look when
+      you get the chance why don't you?
+  - image: So, so many sprites for new stuff made by me.
+  SkyratBot:
+  - refactor: Slimes's colour, core type and mutation list is now held in a slime
+      type datum
+  - code_imp: Slime's variables have been documented, and renamed a bit to add clarity.
+      Please report bugs that might stem from renaming.
+  - bugfix: Slimes are not longer prevented from attacking pacifist humans.
+  - qol: Slime scans now display the actual amount of genetic instability, instead
+      of hiding it if a slime doesn't mutate further, or tweaking it if it might mutate
+      back into itself. This will make it easier to parse which slime to breed further
+      to get a rainbow slime.
+  - bugfix: You can once again repaint robotic limbs to use alternate skins
+  - bugfix: Poly should now remember phrases between shifts.
+  - code_imp: removes unused proc `generate_possible_reactions()` from reagent holder
+  - bugfix: the dismemberment moodlet will now properly clear for ethereals who regrew
+      a limb in their resurrection crystals
+  - qol: Oculine now tastes bitter, and not like toxin.
+  Stalkeros:
+  - rscadd: '"Ancient Milsim" bitrunning domain that lets you shoot guns at CIN people
+      as SolFed people.'
+  - code_imp: Added a way to add Skyrat-exclusive virual domain safehouses.
+  jjpark-kb:
+  - rscadd: added a new derelict station (for drones)-- Babylon Station 13
+  nikothedude:
+  - rscdel: Removes a irrelevant quirk restriction of a nonexistant quirk
+  - rscadd: Resonance degradation disorder, a highly customizable quirk that acts
+      as a far more in-depth version of DNR
+2023-11-28:
+  GoldenAlpharex:
+  - rscdel: The Radioactive Nebula station trait will no longer cause radiation storms,
+      but all of its other effects remain.
+  Rhials:
+  - qol: Bar signs can now be purchased from cargo. Neat!
+  - qol: Bar signs can now be deconstructed with a screwdriver and wrench.
+  - qol: Bar signs can now be smashed to pieces, rather than just disabled.
+  SkyratBot:
+  - code_imp: Removed currency value for free products
+  - bugfix: Ranged Guardians (Holoparasites/Power Miners/etc.) can no longer use ranged
+      attacks in scouting (incorporeal) mode.
+  - bugfix: fixes an overlay lighting hard del
+  - bugfix: flashlights placed inside of backpacks and other storage items that were
+      on the floor will no longer allow light to shine through
+  - bugfix: fixed a null client runtime in advanced camera console
+  - bugfix: People exposed to romerol while alive will once again revive as zombies
+      on death.
+  - bugfix: fixed a runtime in handle_dead_metabolism()
+  Smol42:
+  - rscadd: Added custom donator item.
+  Thlumyn:
+  - rscadd: Added pet owner quirk to spawn with a pet in a pet carrier.
+  nikothedude:
+  - spellcheck: The vox N2 tank no longer directly references vox
+  sqnztb:
+  - bugfix: bitrunners can now drop off their caches properly on void raptor under
+      certain roundstart access conditions.
+2023-11-29:
+  Ghasterino:
+  - bugfix: Made the hypospray actually use the "WAIT_" values for the respective
+      mode it's using.
+  - bugfix: Made the CMO hypospray actually instant, instead of seeming instant in
+      code but not actually instant in game.
+  LT3:
+  - bugfix: 'Disease outbreak: classic spawned from the admin secrets panel no longer
+      fails to start'
+  - bugfix: Disease outbreak provides a message about why it fails to start
+  - bugfix: Getting beheaded by the tram increments the scoreboard
+  MGO:
+  - rscadd: Introduces new inverse reagents for Salicylic Acid, Oxandrolone, Salbutamol,
+      Pentetic Acid, Atropine, Ammoniated Mercury and Rezadone!
+  Majkl-J:
+  - qol: Synths can now recharge in borg chargers
+  - qol: Synth brain surgery now actually targets the synth brain location
+  Rhials:
+  - bugfix: Renames a bar door from "Kitchen" to "Bar" on Metastation.
+  SkyratBot:
+  - code_imp: verb callbacks will no longer execute if the original client disconnected
+  - bugfix: fixed chemical closet door not rendering when open
+  - bugfix: During the "Cursed Items" wizard event, you should only have smoke spawn
+      on you if you actually had a cursed item equipped to you.
+  - bugfix: fixed remaining footstep runtimes
+  - code_imp: Made ARDS death check respect maxHealth.
+  - bugfix: The quick carry module should now correctly apply the appropriate traits
+  - image: Premade cleanbots are now always blue.
+  - bugfix: you no longer get an empty crate when ordering bluespace crystals from
+      the galactic material market.
+  - bugfix: All drones now can craft again
+  - rscadd: Non-Shy drones can now strip people of their things
+  - bugfix: Centered the "pull" button properly over the drop button
+  - bugfix: You can now destructively analyze syndicate and abductor items. It works
+      this time, I promise!
+  itseasytosee:
+  - bugfix: staggered targets now have the correct chance for escaping grapples.
+  - spellcheck: changed attack verb for punching a grappled target
+  rarytech:
+  - bugfix: fixed the displaying of tacticool clothing for digi legs
+2023-11-30:
+  GoldenAlpharex:
+  - bugfix: The Radioactive Nebula station trait will now respect its upper intensity
+      cap set at one hour and forty minutes, no longer scaling past that, as was initially
+      intended.
+  Majkl-J:
+  - bugfix: Synth eyes now inhabit the correct body zone slot
+  SkyratBot:
+  - rscadd: Standing on structures such as crates, tables and bed will now look like
+      it.
+  - bugfix: bitrunning den shows up on the camera console now.
+  - bugfix: Fix bitrunning triggering claustrophobia
+  Smol42:
+  - bugfix: Fixed warm coat, sweaters for digi sprites.
+  capsaicinz:
+  - spellcheck: your fiscal image is no longer actualized.
