@@ -70,8 +70,8 @@ const PastEvolutions = (props) => {
   );
 };
 
-const EvolutionList = (props, context) => {
-  const { data, act } = useBackend<EvolutionInfo>(context);
+const EvolutionList = (props) => {
+  const { data, act } = useBackend<EvolutionInfo>();
   const { learnableEvolution } = data;
 
   return (
@@ -112,8 +112,8 @@ const EvolutionList = (props, context) => {
   );
 };
 
-const EvoInfo = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const EvoInfo = (props) => {
+  const { data } = useBackend<Info>();
   const { evolution_points } = data;
 
   return (

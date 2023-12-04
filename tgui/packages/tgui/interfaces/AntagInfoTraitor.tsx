@@ -232,6 +232,7 @@ const CodewordsSection = (props) => {
 // SKYRAT EDIT: change height from 580 to 650
 export const AntagInfoTraitor = (props) => {
   const { data } = useBackend<Info>();
+  const { theme } = data;
   return (
     <Window width={620} height={650} theme={theme}>
       <Window.Content>
