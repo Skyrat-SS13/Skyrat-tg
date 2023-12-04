@@ -176,6 +176,7 @@
 	cost = PAYCHECK_COMMAND * 5
 
 /datum/armament_entry/company_import/deforest/equipment/deforest_vendor_refill
+	name = "DeForest Med-Vend resupply canister"
 	item_type = /obj/item/vending_refill/medical_deforest
 	cost = PAYCHECK_COMMAND * 7
 
