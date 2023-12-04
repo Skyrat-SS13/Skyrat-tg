@@ -590,12 +590,12 @@
 
 	for(var/datum/reagent/weapon_reagent as anything in attacking_weapon.reagents.reagent_list)
 		if(weapon_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
+			attacking_weapon.reagents.remove_reagent(weapon_reagent.type)
 			continue
 
 		if(is_type_in_typecache(weapon_reagent, disallowed_reagents))
 			balloon_alert(user, "cannot imbue with [weapon_reagent.name]")
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
+			attacking_weapon.reagents.remove_reagent(weapon_reagent.type, include_subtypes = TRUE)
 			continue
 
 		weapon_component.imbued_reagent += weapon_reagent.type
@@ -640,12 +640,12 @@
 
 	for(var/datum/reagent/clothing_reagent as anything in attacking_clothing.reagents.reagent_list)
 		if(clothing_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
+			attacking_clothing.reagents.remove_reagent(clothing_reagent.type, include_subtypes = TRUE)
 			continue
 
 		if(is_type_in_typecache(clothing_reagent, disallowed_reagents))
 			balloon_alert(user, "cannot imbue with [clothing_reagent.name]")
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
+			attacking_clothing.reagents.remove_reagent(clothing_reagent.type, include_subtypes = TRUE)
 			continue
 
 		clothing_component.imbued_reagent += clothing_reagent.type

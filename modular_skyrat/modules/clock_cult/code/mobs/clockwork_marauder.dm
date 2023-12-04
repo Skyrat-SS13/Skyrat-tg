@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 
-	var/datum/action/innate/clockcult/comm/communicate = new
+	var/datum/action/innate/clockcult/comm/communicate = new(src)
 	communicate.Grant(src)
 
 	GLOB.clockwork_marauders += src
@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /datum/ai_controller/basic_controller/clockwork_marauder
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
 	)
 

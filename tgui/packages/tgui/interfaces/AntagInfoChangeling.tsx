@@ -4,6 +4,9 @@ import { useBackend, useSharedState } from '../backend';
 import { Button, Dimmer, Dropdown, Section, Stack, NoticeBox } from '../components';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const hivestyle = {
   fontWeight: 'bold',
@@ -54,9 +57,10 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-export const AntagInfoChangeling = (props, context) => {
+// SKYRAT EDIT change height from 750 to 900
+export const AntagInfoChangeling = (props) => {
   return (
-    <Window width={720} height={750}>
+    <Window width={720} height={900}>
       <Window.Content
         style={{
           'backgroundImage': 'none',
@@ -65,6 +69,11 @@ export const AntagInfoChangeling = (props, context) => {
           <Stack.Item maxHeight={16}>
             <IntroductionSection />
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
+          <Stack.Item>
+            <Rules />
+          </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
           <Stack.Item grow={4}>
             <AbilitiesSection />
           </Stack.Item>
@@ -87,8 +96,8 @@ export const AntagInfoChangeling = (props, context) => {
   );
 };
 
-const HivemindSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const HivemindSection = (props) => {
+  const { act, data } = useBackend<Info>();
   const { true_name } = data;
   return (
     <Section fill title="Hivemind">
@@ -115,8 +124,8 @@ const HivemindSection = (props, context) => {
   );
 };
 
-const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const IntroductionSection = (props) => {
+  const { act, data } = useBackend<Info>();
   const { true_name, hive_name, objectives, can_change_objective } = data;
   return (
     <Section
@@ -145,8 +154,8 @@ const IntroductionSection = (props, context) => {
   );
 };
 
-const AbilitiesSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const AbilitiesSection = (props) => {
+  const { data } = useBackend<Info>();
   return (
     <Section fill title="Abilities">
       <Stack fill>
@@ -195,11 +204,10 @@ const AbilitiesSection = (props, context) => {
   );
 };
 
-const MemoriesSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const MemoriesSection = (props) => {
+  const { data } = useBackend<Info>();
   const { memories } = data;
   const [selectedMemory, setSelectedMemory] = useSharedState(
-    context,
     'memory',
     (!!memories && memories[0]) || null
   );
@@ -245,8 +253,8 @@ const MemoriesSection = (props, context) => {
   );
 };
 
-const VictimPatternsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const VictimPatternsSection = (props) => {
+  const { data } = useBackend<Info>();
   const { stolen_antag_info } = data;
   return (
     <Section

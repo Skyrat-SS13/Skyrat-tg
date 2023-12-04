@@ -26,7 +26,7 @@
 	user.balloon_alert_to_viewers("disassembling...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
-	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
+	new /obj/item/stack/sheet/mineral/stone(drop_location(), 5)
 	deconstruct(TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 

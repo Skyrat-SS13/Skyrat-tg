@@ -146,7 +146,6 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	var/datum/team/brother_team/team
 	if(antagtype == ROLE_BROTHER)
 		team = new
-		team.pick_meeting_area()
 		team.forge_brother_objectives()
 	var/list/restricted_jobs = antag_get_protected_roles(antagtype)
 	var/list/mob/living/carbon/human/candidates = list()

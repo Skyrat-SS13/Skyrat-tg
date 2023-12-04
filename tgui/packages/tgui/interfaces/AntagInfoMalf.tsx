@@ -5,6 +5,9 @@ import { BlockQuote, Button, Section, Stack, Tabs } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const allystyle = {
   fontWeight: 'bold',
@@ -35,8 +38,8 @@ type Info = {
   can_change_objective: BooleanLike;
 };
 
-const IntroductionSection = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const IntroductionSection = (props) => {
+  const { act, data } = useBackend<Info>();
   const { intro, objectives, can_change_objective } = data;
   return (
     <Section fill title="Intro" scrollable>
@@ -55,14 +58,15 @@ const IntroductionSection = (props, context) => {
               />
             }
           />
+          <Rules /* SKYRAT EDIT ADDITION */ />
         </Stack.Item>
       </Stack>
     </Section>
   );
 };
 
-const FlavorSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const FlavorSection = (props) => {
+  const { data } = useBackend<Info>();
   const { allies, goal } = data;
   return (
     <Section
@@ -121,8 +125,8 @@ const FlavorSection = (props, context) => {
   );
 };
 
-const CodewordsSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const CodewordsSection = (props) => {
+  const { data } = useBackend<Info>();
   const { has_codewords, phrases, responses } = data;
   return (
     <Section title="Codewords" mb={!has_codewords && -1}>
@@ -167,14 +171,10 @@ const CodewordsSection = (props, context) => {
   );
 };
 
-export const AntagInfoMalf = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+export const AntagInfoMalf = (props) => {
+  const { act, data } = useBackend<Info>();
   const { processingTime, categories } = data;
-  const [antagInfoTab, setAntagInfoTab] = useLocalState(
-    context,
-    'antagInfoTab',
-    0
-  );
+  const [antagInfoTab, setAntagInfoTab] = useLocalState('antagInfoTab', 0);
   const categoriesList: string[] = [];
   const items: Item[] = [];
   for (let i = 0; i < categories.length; i++) {

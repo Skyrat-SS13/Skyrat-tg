@@ -2,6 +2,9 @@ import { useBackend, useLocalState } from '../backend';
 import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 type Objectives = {
   count: number;
@@ -39,9 +42,9 @@ type Info = {
   goldeneye_keys: GoldeneyeKeys[];
 };
 
-export const AntagInfoAssaultops = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const { data } = useBackend<Info>(context);
+export const AntagInfoAssaultops = (props) => {
+  const [tab, setTab] = useLocalState('tab', 1);
+  const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (
     <Window theme="hackerman" width={650} height={650}>
@@ -117,14 +120,19 @@ export const AntagInfoAssaultops = (props, context) => {
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
           </Stack.Item>
+          {/* SKYRAT EDIT ADDITION START */}
+          <Stack.Item>
+            <Rules />
+          </Stack.Item>
+          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-const TargetPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const TargetPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { available_targets, extracted_targets } = data;
   return (
     <Section grow>
@@ -176,8 +184,8 @@ const TargetPrintout = (props, context) => {
 // Utils have goldeneye key list, current heads of staff, extracted heads
 // Common target button, track key button
 
-const KeyPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const KeyPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { goldeneye_keys } = data;
   return (
     <Section grow>

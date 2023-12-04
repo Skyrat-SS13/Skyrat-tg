@@ -9,6 +9,8 @@
 	var/max_worm = 10
 	/// How many worms the barrel is currently holding
 	var/current_worm = 0
+	/// How much food was inserted into the barrel that needs to be composted
+	var/current_food = 0
 	/// If the barrel is currently being used by someone
 	var/in_use = FALSE
 	// The cooldown between each worm "breeding"
@@ -17,7 +19,7 @@
 /obj/structure/wormfarm/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	COOLDOWN_START(src, worm_timer, 1 MINUTES)
+	COOLDOWN_START(src, worm_timer, 30 SECONDS)
 
 /obj/structure/wormfarm/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -28,12 +30,14 @@
 	if(!COOLDOWN_FINISHED(src, worm_timer))
 		return
 
-	COOLDOWN_START(src, worm_timer, 1 MINUTES)
+	COOLDOWN_START(src, worm_timer, 30 SECONDS)
 
-	if(current_worm < 2 || current_worm >= max_worm)
-		return
+	if(current_worm >= 2 && current_worm < max_worm)
+		current_worm++
 
-	current_worm++
+	if(current_food > 0 && current_worm > 1)
+		current_food--
+		new /obj/item/stack/worm_fertilizer(get_turf(src))
 
 /obj/structure/wormfarm/examine(mob/user)
 	. = ..()
@@ -49,7 +53,7 @@
 		return ..()
 
 	balloon_alert(user, "digging up worms")
-	if(!do_after(user, 5 SECONDS, src))
+	if(!do_after(user, 2 SECONDS, src))
 		balloon_alert(user, "stopped digging")
 		in_use = FALSE
 		return ..()
@@ -85,7 +89,7 @@
 		in_use = TRUE
 
 		balloon_alert(user, "feeding the worms")
-		if(!do_after(user, 5 SECONDS, src))
+		if(!do_after(user, 1 SECONDS, src))
 			balloon_alert(user, "stopped feeding the worms")
 			in_use = FALSE
 			return
@@ -96,10 +100,27 @@
 			return
 
 		qdel(attacking_item)
-		balloon_alert(user, "feeding complete")
+		balloon_alert(user, "feeding complete, check back later")
 
-		if(current_worm > 0)
-			new /obj/item/worm_fertilizer(get_turf(src))
+		current_food++
+
+		in_use = FALSE
+		return
+
+	if(istype(attacking_item, /obj/item/storage/bag/plants))
+		if(in_use)
+			balloon_alert(user, "currently in use")
+			return
+		in_use = TRUE
+
+		balloon_alert(user, "feeding the worms")
+		for(var/obj/item/food/selected_food in attacking_item.contents)
+			if(!do_after(user, 1 SECONDS, src))
+				in_use = FALSE
+				return
+
+			qdel(selected_food)
+			current_food++
 
 		in_use = FALSE
 		return
@@ -108,9 +129,11 @@
 	return ..()
 
 //produced by feeding worms food and can be ground up for plant nutriment or used directly on ash farming
-/obj/item/worm_fertilizer
+/obj/item/stack/worm_fertilizer
 	name = "worm fertilizer"
 	desc = "When you fed your worms, you should have expected this."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "fertilizer"
 	grind_results = list(/datum/reagent/plantnutriment/eznutriment = 3, /datum/reagent/plantnutriment/left4zednutriment = 3, /datum/reagent/plantnutriment/robustharvestnutriment = 3)
+	singular_name = "fertilizer"
+	merge_type = /obj/item/stack/worm_fertilizer

@@ -364,3 +364,13 @@ SKYRAT EDIT REMOVAL END */
 /turf/closed/indestructible/grille/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance('icons/turf/floors.dmi', "plating")
+
+/turf/closed/indestructible/meat
+	name = "dense meat wall"
+	desc = "A huge chunk of dense, packed meat. Effectively impervious to conventional methods of destruction."
+	icon = 'icons/turf/walls/meat.dmi'
+	icon_state = "meatwall-0"
+	base_icon_state = "meatwall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_WALLS
+	canSmoothWith = SMOOTH_GROUP_WALLS

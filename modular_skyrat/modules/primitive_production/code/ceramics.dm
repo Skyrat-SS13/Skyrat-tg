@@ -1,5 +1,29 @@
 #define DEFAULT_SPIN (4 SECONDS)
 
+/*
+ * Clay Bricks
+ */
+
+/obj/item/stack/sheet/mineral/clay
+	name = "clay brick"
+	desc = "A heavy clay brick."
+	singular_name = "clay brick"
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon_state = "sheet-clay"
+	inhand_icon_state = null
+	throw_speed = 3
+	throw_range = 5
+	merge_type = /obj/item/stack/sheet/mineral/clay
+
+GLOBAL_LIST_INIT(clay_recipes, list ( \
+	new/datum/stack_recipe("clay range", /obj/machinery/primitive_stove, 10, time = 5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_MISC), \
+	new/datum/stack_recipe("clay oven", /obj/machinery/oven/stone, 10, time = 5 SECONDS, one_per_turf = FALSE, on_solid_ground = TRUE, category = CAT_MISC) \
+	))
+
+/obj/item/stack/sheet/mineral/clay/get_main_recipes()
+	. = ..()
+	. += GLOB.clay_recipes
+
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/glass_item = O
@@ -131,7 +155,7 @@
 	name = "ceramic brick"
 	desc = "A dense block of clay, ready to be fired into a brick!"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_brick"
+	icon_state = "sheet-clay"
 	forge_item = /obj/item/stack/sheet/mineral/clay
 
 /obj/structure/throwing_wheel

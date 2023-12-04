@@ -10,8 +10,8 @@
 
 /datum/quirk/hydra/add(client/client_source)
 	var/mob/living/carbon/human/hydra = quirk_holder
-	var/datum/action/innate/hydra/spell = new
-	var/datum/action/innate/hydrareset/resetspell = new
+	var/datum/action/innate/hydra/spell = new(hydra)
+	var/datum/action/innate/hydrareset/resetspell = new(hydra)
 	spell.Grant(hydra)
 	spell.owner = hydra
 	resetspell.Grant(hydra)

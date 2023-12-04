@@ -7,11 +7,13 @@
 		TRAIT_LITERATE,
 	)
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"pod_hair" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
 	payday_modifier = 1.0
+
+/datum/species/pod/get_default_mutant_bodyparts()
+	return list(
+		"pod_hair" = list("Ivy", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
 
 /datum/species/pod/podweak
 	name = "Podperson"

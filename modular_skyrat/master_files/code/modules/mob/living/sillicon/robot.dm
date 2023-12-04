@@ -85,7 +85,7 @@
 
 // Another smoke effect
 /obj/effect/temp_visual/mook_dust/robot
-	icon = 'modular_skyrat/modules/altborgs/icons/tallborg/misc/tallrobot_effects.dmi'
+	icon = 'modular_skyrat/modules/borgs/icons/misc/tallrobot_effects.dmi'
 	icon_state = "impact_cloud"
 	color = "#a9a9a93c"
 

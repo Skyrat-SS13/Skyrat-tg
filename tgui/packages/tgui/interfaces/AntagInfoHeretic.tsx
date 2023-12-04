@@ -3,6 +3,9 @@ import { Section, Stack, Box, Tabs, Button, BlockQuote } from '../components';
 import { Window } from '../layouts';
 import { BooleanLike } from 'common/react';
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 const hereticRed = {
   color: '#e03c3c',
@@ -46,15 +49,14 @@ type KnowledgeInfo = {
 
 type Info = {
   charges: number;
-  side_charges: number;
   total_sacrifices: number;
   ascended: BooleanLike;
   objectives: Objective[];
   can_change_objective: BooleanLike;
 };
 
-const IntroductionSection = (props, context) => {
-  const { data, act } = useBackend<Info>(context);
+const IntroductionSection = (props) => {
+  const { data, act } = useBackend<Info>();
   const { objectives, ascended, can_change_objective } = data;
 
   return (
@@ -63,6 +65,12 @@ const IntroductionSection = (props, context) => {
         <Section title="You are the Heretic!" fill fontSize="14px">
           <Stack vertical>
             <FlavorSection />
+            <Stack.Divider />
+            {/* SKYRAT EDIT ADDITION START */}
+            <Stack.Item>
+              <Rules />
+            </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Divider />
             <GuideSection />
             <Stack.Divider />
@@ -178,9 +186,9 @@ const GuideSection = () => {
   );
 };
 
-const InformationSection = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { charges, side_charges, total_sacrifices, ascended } = data;
+const InformationSection = (props) => {
+  const { data } = useBackend<Info>();
+  const { charges, total_sacrifices, ascended } = data;
   return (
     <Stack.Item>
       <Stack vertical fill>
@@ -202,13 +210,6 @@ const InformationSection = (props, context) => {
           <span style={hereticBlue}>
             knowledge point{charges !== 1 ? 's' : ''}
           </span>
-          {!!side_charges && (
-            <span>
-              {' '}
-              and <b>{side_charges}</b> side point
-              {side_charges !== 1 ? 's' : ''}
-            </span>
-          )}{' '}
           .
         </Stack.Item>
         <Stack.Item>
@@ -221,8 +222,8 @@ const InformationSection = (props, context) => {
   );
 };
 
-const ResearchedKnowledge = (props, context) => {
-  const { data } = useBackend<KnowledgeInfo>(context);
+const ResearchedKnowledge = (props) => {
+  const { data } = useBackend<KnowledgeInfo>();
   const { learnedKnowledge } = data;
 
   return (
@@ -246,8 +247,8 @@ const ResearchedKnowledge = (props, context) => {
   );
 };
 
-const KnowledgeShop = (props, context) => {
-  const { data, act } = useBackend<KnowledgeInfo>(context);
+const KnowledgeShop = (props) => {
+  const { data, act } = useBackend<KnowledgeInfo>();
   const { learnableKnowledge } = data;
 
   return (
@@ -281,9 +282,9 @@ const KnowledgeShop = (props, context) => {
   );
 };
 
-const ResearchInfo = (props, context) => {
-  const { data } = useBackend<Info>(context);
-  const { charges, side_charges } = data;
+const ResearchInfo = (props) => {
+  const { data } = useBackend<Info>();
+  const { charges } = data;
 
   return (
     <Stack justify="space-evenly" height="100%" width="100%">
@@ -293,14 +294,7 @@ const ResearchInfo = (props, context) => {
             You have <b>{charges || 0}</b>&nbsp;
             <span style={hereticBlue}>
               knowledge point{charges !== 1 ? 's' : ''}
-            </span>
-            {!!side_charges && (
-              <span>
-                {' '}
-                and <b>{side_charges}</b> side point
-                {side_charges !== 1 ? 's' : ''}
-              </span>
-            )}{' '}
+            </span>{' '}
             to spend.
           </Stack.Item>
           <Stack.Item grow>
@@ -315,11 +309,11 @@ const ResearchInfo = (props, context) => {
   );
 };
 
-export const AntagInfoHeretic = (props, context) => {
-  const { data } = useBackend<Info>(context);
+export const AntagInfoHeretic = (props) => {
+  const { data } = useBackend<Info>();
   const { ascended } = data;
 
-  const [currentTab, setTab] = useLocalState(context, 'currentTab', 0);
+  const [currentTab, setTab] = useLocalState('currentTab', 0);
 
   return (
     <Window width={675} height={635}>

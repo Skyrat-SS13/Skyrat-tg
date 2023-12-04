@@ -241,6 +241,26 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Pink Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/pink_tiger
 
+/datum/loadout_item/head/large_bow
+	name = "Colourable Large Bow"
+	item_path = /obj/item/clothing/head/large_bow
+
+/datum/loadout_item/head/back_bow
+	name = "Colourable Back Bow"
+	item_path = /obj/item/clothing/head/back_bow
+
+/datum/loadout_item/head/small_bow
+	name = "Colourable Small Bow"
+	item_path = /obj/item/clothing/head/small_bow
+
+/datum/loadout_item/head/sweet_bow
+	name = "Colourable Sweet bow"
+	item_path = /obj/item/clothing/head/sweet_bow
+
+/datum/loadout_item/head/maid_headband
+	name = "Colourable Maid Headband"
+	item_path = /obj/item/clothing/head/maid_headband
+
 /*
 *	CHRISTMAS
 */
@@ -248,17 +268,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/santa
 	name = "Santa Hat"
 	item_path = /obj/item/clothing/head/costume/santa
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas
 	name = "Red Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas/green
-	required_season = CHRISTMAS
 
 /*
 *	HALLOWEEN

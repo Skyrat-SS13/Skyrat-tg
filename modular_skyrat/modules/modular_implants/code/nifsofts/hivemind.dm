@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		linker_action_path = /datum/action/innate/hivemind_config, \
 	)
 
-	keyboard_action = new
+	keyboard_action = new(linked_mob)
 	keyboard_action.Grant(linked_mob)
 
 	active_network = user_network

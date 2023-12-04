@@ -11,7 +11,7 @@
 /datum/nifsoft/action_granter/activate()
 	. = ..()
 	if(active)
-		granted_action = new action_to_grant
+		granted_action = new action_to_grant(linked_mob)
 		granted_action.Grant(linked_mob)
 		return
 

@@ -11,6 +11,10 @@
 	item_type = /obj/item/gun/energy/disabler
 	cost = PAYCHECK_CREW * 5
 
+/datum/armament_entry/company_import/microstar/basic_energy_weapons/disabler_smg
+	item_type = /obj/item/gun/energy/disabler/smg
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
+
 /datum/armament_entry/company_import/microstar/basic_energy_weapons/mini_egun
 	item_type = /obj/item/gun/energy/e_gun/mini
 	cost = PAYCHECK_CREW * 5
@@ -22,11 +26,15 @@
 /datum/armament_entry/company_import/microstar/basic_energy_long_weapons
 	subcategory = "Basic Energy Longarms"
 
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/sc1
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/laser
 	item_type = /obj/item/gun/energy/laser
 	cost = PAYCHECK_CREW * 5
 
-/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/sc2
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/laser_carbine
+	item_type = /obj/item/gun/energy/laser/carbine
+	cost = PAYCHECK_CREW * 7 // slightly more expensive due to ease of use/full auto
+
+/datum/armament_entry/company_import/microstar/basic_energy_long_weapons/egun
 	item_type = /obj/item/gun/energy/e_gun
 	cost = PAYCHECK_COMMAND * 4
 
@@ -60,23 +68,23 @@
 
 /datum/armament_entry/company_import/microstar/mcr_attachments/hellfire
 	name = "microfusion hellfire kit"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_loadout/hellfire
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_loadout/hellfire
 
 /datum/armament_entry/company_import/microstar/mcr_attachments/scatter
 	name = "microfusion scatter kit"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_loadout/scatter
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_loadout/scatter
 
 /datum/armament_entry/company_import/microstar/mcr_attachments/lance
 	name = "microfusion lance kit"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_loadout/lance
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_loadout/lance
 
 /datum/armament_entry/company_import/microstar/mcr_attachments/repeater
 	name = "microfusion repeater kit"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_loadout/repeater
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_loadout/repeater
 
 /datum/armament_entry/company_import/microstar/mcr_attachments/tacticool
 	name = "microfusion suppressor kit"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_loadout/tacticool
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_loadout/tacticool
 
 // Improved phase emitters, cells, and cell attachments
 
@@ -89,7 +97,7 @@
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/enhanced_part_kit
 	name = "microfusion enhanced parts"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/enhanced
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_parts/enhanced
 	cost = PAYCHECK_COMMAND * 2
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/capacity_booster
@@ -98,7 +106,7 @@
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/advanced_part_kit
 	name = "microfusion advanced parts"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/advanced
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_parts/advanced
 	cost = PAYCHECK_COMMAND * 2
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/selfcharge
@@ -107,5 +115,5 @@
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/bluespace_part_kit
 	name = "microfusion bluespace parts"
-	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/bluespace
+	item_type = /obj/item/storage/briefcase/secure/white/mcr_parts/bluespace
 	cost = PAYCHECK_COMMAND * 6

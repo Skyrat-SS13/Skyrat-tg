@@ -304,7 +304,13 @@ Works together with spawning an observer, noted above.
 	ghost.client?.init_verbs()
 	if(!can_reenter_corpse)// Disassociates observer mind from the body mind
 		ghost.mind = null
-	ghost.client?.player_details.time_of_death = ghost.mind?.current ? mind.current.timeofdeath : world.time
+
+	var/recordable_time = world.time
+	var/mob/living/former_mob = ghost.mind?.current
+	if(isliving(former_mob))
+		recordable_time = former_mob.timeofdeath
+
+	ghost.client?.player_details.time_of_death = recordable_time
 	SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZED)
 	return ghost
 
@@ -742,6 +748,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(istype(target) && (target != src))
 				ManualFollow(target)
 				return
+
 		if(href_list["x"] && href_list["y"] && href_list["z"])
 			var/tx = text2num(href_list["x"])
 			var/ty = text2num(href_list["y"])
@@ -750,9 +757,38 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(istype(target))
 				abstract_move(target)
 				return
+
 		if(href_list["reenter"])
 			reenter_corpse()
 			return
+
+		if(href_list["view"])
+			var/atom/target = locate(href_list["view"])
+			observer_view(target)
+			return
+
+		if(href_list["play"])
+			var/atom/movable/target = locate(href_list["play"])
+			jump_to_interact(target)
+
+/// We orbit and interact with the target
+/mob/dead/observer/proc/jump_to_interact(atom/target)
+	if(isnull(target) || target == src)
+		return
+
+	ManualFollow(target)
+	target.attack_ghost(usr)
+
+/// We orbit the target or jump if its a turf
+/mob/dead/observer/proc/observer_view(atom/target)
+	if(isnull(target) || target == src)
+		return
+
+	if(isturf(target))
+		abstract_move(target)
+		return
+
+	ManualFollow(target)
 
 //We don't want to update the current var
 //But we will still carry a mind.

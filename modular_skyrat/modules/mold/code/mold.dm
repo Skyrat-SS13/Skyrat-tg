@@ -270,7 +270,7 @@
 	mold_color = "#cb37f5"
 	structure_light_color = LIGHT_COLOR_LAVENDER
 	examine_text = "It feels damp and smells of rat poison."
-	mob_types = list(/mob/living/basic/spider/giant/)
+	mob_types = list(/mob/living/basic/spider/giant/hunter)
 	preferred_atmos_conditions = "miasma=50;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
 

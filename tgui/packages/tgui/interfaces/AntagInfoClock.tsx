@@ -1,16 +1,20 @@
 import { useBackend } from '../backend';
 import { Icon, Section, Stack } from '../components';
 import { Window } from '../layouts';
+// SKYRAT EDIT BEGIN
+import { Rules } from './AntagInfoRules';
+// SKYRAT EDIT END
 
 type Info = {
   antag_name: string;
 };
 
-export const AntagInfoClock = (props, context) => {
-  const { data } = useBackend<Info>(context);
+// SKYRAT EDIT change height from 250 to 350
+export const AntagInfoClock = (props) => {
+  const { data } = useBackend<Info>();
   const { antag_name } = data;
   return (
-    <Window width={620} height={250} theme="clockwork">
+    <Window width={620} height={350} theme="clockwork">
       <Window.Content>
         <Section scrollable fill>
           <Stack vertical>
@@ -19,6 +23,11 @@ export const AntagInfoClock = (props, context) => {
               {' You are the ' + antag_name + '! '}
               <Icon name={'cog'} rotation={35} spin />
             </Stack.Item>
+            {/* SKYRAT EDIT ADDITION START */}
+            <Stack.Item>
+              <Rules />
+            </Stack.Item>
+            {/* SKYRAT EDIT ADDITION END */}
             <Stack.Item>
               <ObjectivePrintout />
             </Stack.Item>
@@ -29,8 +38,8 @@ export const AntagInfoClock = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const ObjectivePrintout = (props) => {
+  const { data } = useBackend<Info>();
   return (
     <Stack vertical>
       <Stack.Item bold>Your goals:</Stack.Item>

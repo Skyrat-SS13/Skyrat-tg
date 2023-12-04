@@ -7,20 +7,13 @@
 	maxHealth = 200
 	health = 200
 	icon_state = "aliendrone"
-	/// Holds the healing aura ability the drone will be granted
-	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	next_evolution = /mob/living/carbon/alien/adult/skyrat/praetorian
 
 /mob/living/carbon/alien/adult/skyrat/drone/Initialize(mapload)
 	. = ..()
-	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura()
-	heal_aura_ability.Grant(src)
-
-/mob/living/carbon/alien/adult/skyrat/drone/Destroy()
-	QDEL_NULL(heal_aura_ability)
-	return ..()
+	GRANT_ACTION(/datum/action/cooldown/alien/skyrat/heal_aura)
 
 /mob/living/carbon/alien/adult/skyrat/drone/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel
@@ -59,6 +52,8 @@
 	return TRUE
 
 /datum/action/cooldown/alien/skyrat/heal_aura/proc/aura_deactivate()
+	if(!aura_active)
+		return
 	aura_active = FALSE
 	QDEL_NULL(aura_healing_component)
 	owner.balloon_alert(owner, "healing aura ended")

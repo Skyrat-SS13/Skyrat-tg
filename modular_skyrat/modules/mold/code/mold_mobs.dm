@@ -83,7 +83,7 @@
 
 /datum/ai_controller/basic_controller/oil_shambler
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -126,6 +126,7 @@
 	attack_verb_simple = "bite"
 
 	pass_flags = PASSTABLE
+	basic_mob_flags = DEL_ON_DEATH
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -147,7 +148,7 @@
 
 /datum/ai_controller/basic_controller/diseased_rat
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -188,6 +189,7 @@
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 	attack_sound = 'sound/effects/attackblob.ogg'
+	basic_mob_flags = DEL_ON_DEATH
 
 	ai_controller = /datum/ai_controller/basic_controller/electric_mosquito
 
@@ -204,7 +206,7 @@
 
 /datum/ai_controller/basic_controller/electric_mosquito
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -245,6 +247,7 @@
 
 	melee_damage_lower = 10
 	melee_damage_upper = 15
+	basic_mob_flags = DEL_ON_DEATH
 	wound_bonus = 15
 	obj_damage = 40
 	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
@@ -276,7 +279,7 @@
 
 /datum/ai_controller/basic_controller/centaur
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
