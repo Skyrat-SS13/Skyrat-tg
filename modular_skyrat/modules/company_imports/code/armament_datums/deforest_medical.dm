@@ -175,6 +175,10 @@
 	item_type = /obj/item/gun/medbeam/afad
 	cost = PAYCHECK_COMMAND * 5
 
+/datum/armament_entry/company_import/deforest/equipment/deforest_vendor_refill
+	item_type = /obj/item/vending_refill/medical_deforest
+	cost = PAYCHECK_COMMAND * 7
+
 // Modsuit Modules from the medical category, here instead of in Nakamura because nobody buys from this company
 
 /datum/armament_entry/company_import/deforest/medical_modules

@@ -4,6 +4,7 @@
 	desc = "It's an airtight container for storing medication. This one is all-white and has labels for containing amollin, a blend of Miner's Salve and Lidocaine."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	icon_state = "painkiller_bottle"
+	custom_price = PAYCHECK_CREW * 1.5
 
 /obj/item/storage/pill_bottle/painkiller/PopulateContents()
 	for(var/i in 1 to 7)
@@ -31,6 +32,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
+	custom_price = PAYCHECK_COMMAND * 3
 
 /obj/item/storage/medkit/civil_defense/Initialize(mapload)
 	. = ..()
