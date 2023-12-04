@@ -2132,18 +2132,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
-"aJC" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	id = "chemistry_lower_shutters";
-	name = "Chemistry Exterior Shutters"
-	},
-/obj/structure/cable,
-/obj/effect/spawner/structure/window/hollow/reinforced/middle{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/medical/chemistry)
 "aJG" = (
 /obj/machinery/light/directional/west,
 /obj/structure/cable,
@@ -14173,6 +14161,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"ekm" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "chemistry_lower_shutters";
+	name = "Chemistry Exterior Shutters"
+	},
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/hollow/reinforced/middle{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/medical/chemistry)
 "ekn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -25847,13 +25847,6 @@
 /obj/machinery/teleport/hub,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
-"hWI" = (
-/obj/effect/turf_decal/box,
-/obj/structure/closet/crate/maint,
-/obj/effect/spawner/random/maintenance/six,
-/obj/structure/sign/poster/official/wtf_is_co2/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/starboard/aft)
 "hWP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -38473,6 +38466,11 @@
 "lLm" = (
 /turf/open/floor/iron/cafeteria,
 /area/station/maintenance/port/aft)
+"lLE" = (
+/obj/machinery/netpod,
+/obj/machinery/camera/autoname/directional/south,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/cargo/bitrunning/den)
 "lLN" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
@@ -59514,13 +59512,6 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
-"sfM" = (
-/obj/structure/bed/dogbed/runtime,
-/obj/item/toy/cattoy,
-/obj/machinery/newscaster/directional/north,
-/mob/living/basic/pet/cat/runtime,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/cmo)
 "sfY" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -59637,11 +59628,6 @@
 	dir = 8
 	},
 /area/station/hallway/secondary/entry)
-"shW" = (
-/obj/machinery/netpod,
-/obj/machinery/camera/autoname/directional/south,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/cargo/bitrunning/den)
 "sib" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -60397,6 +60383,13 @@
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
 /area/station/engineering/storage/tech)
+"sst" = (
+/obj/effect/turf_decal/box,
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/six,
+/obj/structure/sign/poster/official/wtf_is_co2/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/starboard/aft)
 "ssv" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/siding/thinplating_new/corner,
@@ -73218,6 +73211,13 @@
 "wvV" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/pumproom)
+"wvW" = (
+/obj/structure/bed/dogbed/runtime,
+/obj/item/toy/cattoy,
+/obj/machinery/newscaster/directional/north,
+/mob/living/basic/pet/cat/runtime,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/cmo)
 "wwn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/left/directional/north{
@@ -177710,12 +177710,12 @@ iDt
 iDt
 eXH
 eXH
-aJC
-aJC
-aJC
-aJC
-aJC
-aJC
+ekm
+ekm
+ekm
+ekm
+ekm
+ekm
 eXH
 hjM
 hjM
@@ -231688,7 +231688,7 @@ eMa
 nRt
 lPK
 jFJ
-shW
+lLE
 pBE
 qjQ
 rVe
@@ -251203,7 +251203,7 @@ qEM
 lso
 bGT
 vBG
-sfM
+wvW
 moG
 vBG
 ayR
@@ -256895,7 +256895,7 @@ fOl
 cyL
 jAI
 bgx
-hWI
+sst
 xxv
 dOK
 vzD
