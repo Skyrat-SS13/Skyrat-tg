@@ -37,7 +37,6 @@
 				/obj/item/reagent_containers/hypospray/medipen/deforest/morpital = 6,
 				/obj/item/reagent_containers/hypospray/medipen/deforest/lipital = 6,
 				/obj/item/reagent_containers/hypospray/medipen/deforest/meridine = 6,
-				/obj/item/reagent_containers/hypospray/medipen/deforest/synephrine = 6,
 				/obj/item/reagent_containers/hypospray/medipen/deforest/calopine = 6,
 				/obj/item/reagent_containers/hypospray/medipen/deforest/coagulants = 6,
 				/obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi = 6,
@@ -61,6 +60,7 @@
 	default_price = PAYCHECK_CREW
 	extra_price = PAYCHECK_COMMAND
 	payment_department = ACCOUNT_MED
+	onstation_override = 1 // No freebies if this spawns on the interlink
 
 /obj/item/vending_refill/medical_deforest
 	machine_name = "DeForest Med-Vend"

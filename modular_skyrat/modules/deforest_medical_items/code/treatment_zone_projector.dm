@@ -8,6 +8,7 @@
 	layer = BELOW_MOB_LAYER
 	pixel_x = -32
 	pixel_y = -32
+	use_vis_overlay = FALSE
 
 // Projector for the above mentioned treatment zone signs
 
