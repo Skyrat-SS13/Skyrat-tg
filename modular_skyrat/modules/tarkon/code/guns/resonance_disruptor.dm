@@ -2,7 +2,7 @@
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/resonant_system
 	name = "Advanced Resonance Control System"
-	desc = "The \"Advanced Resonance Control System\" or \"A.R.C.S\" is an advanced, ranged version of a mining resonator. Capable of supporting some modkits "
+	desc = "The \"Advanced Resonance Control System\" or \"A.R.C.S\" is an advanced, ranged version of a mining resonator."
 	icon_state = "kineticgun"
 	base_icon_state = "kineticgun"
 	inhand_icon_state = "kineticgun"
