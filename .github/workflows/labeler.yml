@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Apply labels based on changed files
         if: github.event_name != 'push'
-        uses: actions/labeler@v5
+        uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           sync-labels: true
