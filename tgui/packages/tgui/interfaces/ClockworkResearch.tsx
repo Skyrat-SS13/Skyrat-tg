@@ -97,7 +97,7 @@ const SelectedSection = (props) => {
 };
 
 const ResearchSection = (props) => {
-  const { act, data } = useBackend<Data>());
+  const { act, data } = useBackend<Data>();
   return (
     <Stack vertical>
       <Stack.Item fill>
