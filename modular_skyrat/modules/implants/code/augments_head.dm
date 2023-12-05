@@ -161,6 +161,9 @@
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
 
+	playsound(owner, 'sound/effects/light_flicker.ogg', 50, TRUE)
+	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
+
 	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
 		qdel(beam)
 		StartCooldown(1 SECONDS) // Resets the spell to working after a second, just so its not spammed
@@ -173,9 +176,6 @@
 
 	owner.visible_message(span_bolddanger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
 			span_bolddanger("The air between you and [cast_on] begins to crackle audibly as the Binyat gets to work."))
-
-	playsound(owner, 'sound/effects/light_flicker.ogg', 50, TRUE)
-	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
 
 	playsound(cast_on, 'sound/machines/terminal_processing.ogg', 15, TRUE)
 
