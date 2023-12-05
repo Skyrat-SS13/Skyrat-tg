@@ -16,7 +16,6 @@ INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 28);
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-
 Version 5.28, 03 December 2023, by distributivgesetz
 Set the default value of cloneloss to 0, as it's obsolete and it won't be set by blackbox anymore.
 ```sql
@@ -24,7 +23,6 @@ ALTER TABLE `death` MODIFY COLUMN `cloneloss` SMALLINT(5) UNSIGNED DEFAULT '0';
 ```
 
 -----------------------------------------------------
-
 Version 5.27, 27 September 2023, by Jimmyl
 Removes the text_adventures table because it is no longer used
 ```sql
