@@ -42,7 +42,7 @@
 	worn_icon_state = "harness"
 	inhand_icon_state = null
 
-/obj/item/storage/belt/frontier_colonist/Initialize(mapload)
+/obj/item/storage/belt/utility/frontier_colonist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
 	atom_storage.max_slots = 7

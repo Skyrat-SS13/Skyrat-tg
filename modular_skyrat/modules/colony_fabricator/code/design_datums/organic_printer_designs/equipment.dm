@@ -5,7 +5,7 @@
 	id = "frontier_chest_rig"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 150)
-	build_path = /obj/item/storage/belt/frontier_colonist
+	build_path = /obj/item/storage/belt/utility/frontier_colonist
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_AKHTER_EQUIPMENT,
