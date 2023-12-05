@@ -93,7 +93,7 @@
 		user.nutrition += power_use / SYNTH_CHARGE_PER_NUTRITION
 		do_sparks(1, FALSE, target_apc)
 
-	if(target_apc.main_status == APC_HAS_POWER)
+	if(target_apc.main_status <= APC_HAS_POWER)
 		target_apc.charging = APC_CHARGING
 		target_apc.update_appearance()
 	else
