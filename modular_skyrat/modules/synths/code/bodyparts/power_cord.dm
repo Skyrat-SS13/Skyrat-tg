@@ -95,6 +95,7 @@
 
 	if(target_apc.main_status == APC_HAS_POWER)
 		target_apc.charging = APC_CHARGING
+		target_apc.update_appearance()
 	else
 		return
 	user.visible_message(span_notice("[user] unplugs from the [target_apc]."), span_notice("You unplug from the [target_apc]."))
