@@ -128,7 +128,7 @@
 	button_icon = 'modular_skyrat/modules/implants/icons/implants.dmi'
 	button_icon_state = "hackerman"
 	spell_requirements = SPELL_REQUIRES_MIND
-	cast_range = 2
+	cast_range = INFINITY // The range code doesn't work here, so we use our own, don't worry about it
 	aim_assist = FALSE
 	spell_max_level = 1 // God I hate actions
 	cooldown_time = 5 MINUTES
@@ -142,6 +142,8 @@
 		/obj/machinery/computer/holodeck,
 		/obj/machinery/computer/emergency_shuttle,
 	)
+	/// How far away we can hack things
+	var/hack_range = 2
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/is_valid_target(atom/cast_on)
 	. = ..()
@@ -152,28 +154,31 @@
 
 	return TRUE
 
-/datum/action/cooldown/spell/pointed/hackerman_deck/before_cast(atom/cast_on)
-	. = ..()
-
-	owner.visible_message(span_danger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
-			span_userdanger("The air between you and [cast_on] begins to crackle audibly as the Binyat gets to work."))
-
-	playsound(owner, 'sound/effects/light_flicker.ogg', 50, TRUE)
-	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
-
-	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
-		qdel(beam)
-		return . | SPELL_CANCEL_CAST
-
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
+
+	if(get_dist(owner, cast_on) > hack_range)
+		owner.balloon_alert("too far away")
+		next_use_time = 1 SECONDS
+		return
 
 	if(!cast_on.emag_act(owner))
 		owner.balloon_alert("can't hack this!")
 		next_use_time = 1 SECONDS
 		return
 
+	owner.visible_message(span_bolddanger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
+			span_bolddanger("The air between you and [cast_on] begins to crackle audibly as the Binyat gets to work."))
+
+	playsound(owner, 'sound/effects/light_flicker.ogg', 50, TRUE)
+	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
+
 	playsound(cast_on, 'sound/machines/terminal_processing.ogg', 15, TRUE)
+
+	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
+		qdel(beam)
+		next_use_time = 1 SECONDS
+		return
 
 	var/mob/living/carbon/human/human_owner = owner
 
