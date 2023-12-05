@@ -164,7 +164,7 @@
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * seconds_per_tick)
 
 	our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 1 * REM * seconds_per_tick, required_organ_flag = affected_organ_flags)
-	our_guy.adjustToxLoss(0.25 * REM * seconds_per_tick, updating_health = FALSE, forced = TRUE, required_biotype = affected_biotype)
+	our_guy.adjustToxLoss(1 * REM * seconds_per_tick, updating_health = FALSE, forced = TRUE, required_biotype = affected_biotype)
 
 	if(SPT_PROB(5, seconds_per_tick))
 		to_chat(our_guy, span_danger("You cough up a splatter of blood!"))
