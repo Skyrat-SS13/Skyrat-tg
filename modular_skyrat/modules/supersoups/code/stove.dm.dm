@@ -3,7 +3,7 @@
 	/// Whether or not the pot is set to clean other reagents from soups
 	var/emulsify_reagents
 
-/obj/item/reagent_containers/cup/soup_pot/Examine(mob/user)
+/obj/item/reagent_containers/cup/soup_pot/examine(mob/user)
 	. = ..()
 	. += "You can enable/disable soup cleaning by alt-right-clicking [src]."
 
