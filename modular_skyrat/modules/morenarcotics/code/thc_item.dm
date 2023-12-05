@@ -34,6 +34,7 @@
 			new /obj/item/reagent_containers/hash(user.loc)
 		qdel(src)
 
+/** SKYRAT REMOVAL - Temporary Disable
 /datum/crafting_recipe/hashbrick
 	name = "Hash brick"
 	result = /obj/item/reagent_containers/hashbrick
@@ -41,6 +42,7 @@
 	parts = list(/obj/item/reagent_containers/hash = 4)
 	time = 20
 	category = CAT_CHEMISTRY
+ */
 
 //export values
 /datum/export/hash
