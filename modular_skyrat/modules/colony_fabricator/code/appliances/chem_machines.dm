@@ -30,13 +30,16 @@
 
 // Machine that makes botany nutrients for hydroponics farming
 
-/obj/machinery/plumbing/synthesizer/water_synth/hydroponics
+/obj/machinery/plumbing/synthesizer/colony_hydroponics
 	name = "hydroponics chemical synthesizer"
 	desc = "An infinitely useful device for those finding themselves in a frontier without a stable source of nutrients for crops. \
 		Using a simplified version of the chemistry dispenser's synthesizer process, it can create hydroponics nutrients out of nothing \
 		but good old electricity."
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "hydro_synth"
-	dispensable_reagents = list(
+	anchored = FALSE
+	/// Reagents that this can dispense, overrides the default list on init
+	var/static/list/synthesizable_reagents = list(
 		/datum/reagent/plantnutriment/eznutriment,
 		/datum/reagent/plantnutriment/left4zednutriment,
 		/datum/reagent/plantnutriment/robustharvestnutriment,
@@ -46,6 +49,11 @@
 		/datum/reagent/toxin/pestkiller,
 	)
 
+/obj/machinery/plumbing/synthesizer/colony_hydroponics/Initialize(mapload, bolt, layer)
+	. = ..()
+	dispensable_reagents = synthesizable_reagents
+	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
+
 // Deployable item for cargo for the hydro synth
 
 /obj/item/flatpacked_machine/hydro_synth
@@ -53,7 +61,7 @@
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "hydro_synth_parts"
 	w_class = WEIGHT_CLASS_NORMAL
-	type_to_deploy = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
+	type_to_deploy = /obj/machinery/plumbing/synthesizer/colony_hydroponics
 	deploy_time = 2 SECONDS
 
 // Chem dispenser with a limited range of thematic reagents to dispense
