@@ -215,7 +215,7 @@ export const LimbsPage = (props) => {
   return (
     <Stack minHeight="100%">
       <Stack.Item minWidth="33%" minHeight="100%">
-        <Section fill scrollable title="Markings" height="237%">
+        <Section fill scrollable title="Markings" height="197%">
           <div>
             <Dropdown
               grow
@@ -233,7 +233,7 @@ export const LimbsPage = (props) => {
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Character Preview" fill align="center" height="237%">
+        <Section title="Character Preview" fill align="center" height="197%">
           <CharacterPreview
             id={data.character_preview_view}
             height="25%"
@@ -269,7 +269,7 @@ export const LimbsPage = (props) => {
             ))}
           </Stack>
         </Section>
-        <Section fill scrollable title="Augmentations" height="148%">
+        <Section fill scrollable title="Augmentations" height="107%">
           {data.limbs_data.map((val) => (
             <AugmentationPage key={val.slot} limb={val} data={data} />
           ))}
