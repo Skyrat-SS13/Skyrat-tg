@@ -16,8 +16,8 @@ type Data = {
   status: string;
 };
 
-export const BluespaceArtillerySkyrat = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const BluespaceArtillerySkyrat = (props) => {
+  const { act, data } = useBackend<Data>();
   const {
     notice,
     connected,
