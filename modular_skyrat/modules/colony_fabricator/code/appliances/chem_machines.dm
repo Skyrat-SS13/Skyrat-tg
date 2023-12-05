@@ -91,7 +91,6 @@
 		/datum/reagent/consumable/powdered_coffee,
 		/datum/reagent/consumable/powdered_tea,
 		/datum/reagent/consumable/vanilla,
-		/datum/reagent/consumable/sugar,
 		/datum/reagent/consumable/caramel,
 		/datum/reagent/consumable/korta_nectar,
 		/datum/reagent/consumable/korta_milk,
