@@ -39,14 +39,6 @@
 	if(type_damage >=  50 && type_damage < 100)
 		target.adjust_disgust(1.5)
 
-/// Applies clone damage by thresholds
-/obj/projectile/energy/medical/proc/DamageClone(mob/living/target, type_damage, amount_healed, max_clone)
-	if(type_damage >= 50 && type_damage < 100 )
-		target.adjustCloneLoss((amount_healed * (max_clone * 0.5)))
-
-	if(type_damage >= 100)
-		target.adjustCloneLoss((amount_healed * max_clone))
-
 /// Checks to see if the patient is living.
 /obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
 	if(!istype(target, /mob/living/carbon/human))
@@ -75,7 +67,6 @@
 
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(base_disgust)
-	DamageClone(target, target.getBruteLoss(), amount_healed, max_clone)
 	target.adjustBruteLoss(-amount_healed)
 
 /// Heals Burn swithout safety
@@ -85,7 +76,6 @@
 
 	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(base_disgust)
-	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
 	target.adjustFireLoss(-amount_healed)
 
 /// Heals Brute with safety

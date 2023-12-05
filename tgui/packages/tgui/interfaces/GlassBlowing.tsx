@@ -31,8 +31,8 @@ type RemainingSteps = {
   jacks: number;
 };
 
-export const GlassBlowing = (props, context) => {
-  const { act, data } = useBackend<GlassData>(context);
+export const GlassBlowing = (props) => {
+  const { act, data } = useBackend<GlassData>();
   const { glass, inUse } = data;
 
   return (
