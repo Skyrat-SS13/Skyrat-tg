@@ -68,6 +68,10 @@
 	. = ..()
 	build_type |= COLONY_FABRICATOR
 
+/datum/design/mauna_mug/New()
+	. = ..()
+	build_type |= COLONY_FABRICATOR
+
 // Stock parts are going here too because there's not many of them
 
 /datum/design/water_recycler/New()

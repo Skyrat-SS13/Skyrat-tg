@@ -21,6 +21,28 @@
 /datum/armament_entry/company_import/akh_frontier/basic/compact_drill
 	item_type = /obj/item/pickaxe/drill/compact
 
+// Wearable stuff, not inclusive of all clothing because you're supposed to print those
+
+/datum/armament_entry/company_import/akh_frontier/wearables
+	subcategory = "Wearable Equipment"
+
+/datum/armament_entry/company_import/akh_frontier/wearables/hazard_mod
+	name = "Frontier Hazard Protective MOD Control Unit"
+	description = "The pinnacle of frontier cheap technology. Suits such as these are made specifically for the rare emergency that creates a hazard \
+		environment that other equipment just can't quite handle. Often, these suits are able to protect their users \
+		from not only electricity, but also radiation, biological hazards, other people, so on. This suit will not, \
+		however, protect you from yourself."
+	item_type = /obj/item/mod/control/pre_equipped/frontier_colonist
+	cost = PAYCHECK_COMMAND * 6.5
+
+/datum/armament_entry/company_import/akh_frontier/wearables/headset
+	item_type = /obj/item/radio/headset/headset_frontier_colonist
+	cost = PAYCHECK_CREW * 3
+
+/datum/armament_entry/company_import/akh_frontier/wearables/maska
+	item_type = /obj/item/clothing/mask/gas/atmos/frontier_colonist
+	cost = PAYCHECK_COMMAND
+
 // Flatpacked fabricator and related upgrades
 
 /datum/armament_entry/company_import/akh_frontier/deployables_fab
@@ -43,6 +65,16 @@
 
 /datum/armament_entry/company_import/akh_frontier/appliances/water_synth
 	item_type = /obj/item/flatpacked_machine/water_synth
+
+/datum/armament_entry/company_import/akh_frontier/appliances/hydro_synth
+	item_type = /obj/item/flatpacked_machine/hydro_synth
+
+/datum/armament_entry/company_import/akh_frontier/appliances/sustenance_dispenser
+	item_type = /obj/item/flatpacked_machine/sustenance_machine
+
+/datum/armament_entry/company_import/akh_frontier/appliances/organics_printer
+	item_type = /obj/item/flatpacked_machine/organics_printer
+	cost = PAYCHECK_COMMAND * 4.5
 
 // Flatpacked, ready to deploy machines
 

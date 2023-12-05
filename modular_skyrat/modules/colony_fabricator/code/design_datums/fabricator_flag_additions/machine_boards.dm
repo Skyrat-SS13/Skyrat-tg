@@ -33,7 +33,3 @@
 /datum/design/board/reagentgrinder/New()
 	. = ..()
 	build_type |= COLONY_FABRICATOR
-
-/datum/design/board/biogenerator/New()
-	. = ..()
-	build_type |= COLONY_FABRICATOR
