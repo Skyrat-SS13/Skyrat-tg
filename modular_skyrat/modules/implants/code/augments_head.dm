@@ -158,7 +158,11 @@
 	owner.visible_message(span_danger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
 			span_userdanger("The air between you and [cast_on] begins to crackle audibly as the Binyat gets to work."))
 
+	playsound(owner, 'sound/effects/light_flicker.ogg', 50, TRUE)
+	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
+
 	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
+		qdel(beam)
 		return . | SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
