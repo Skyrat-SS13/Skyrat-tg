@@ -19,7 +19,7 @@
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	charge_drain = DEFAULT_CHARGE_DRAIN * 2
 	slowdown_inactive = 0.5
-	slowdown_active = 0 // This suit has an irremovable compressed plates upgrade, which means you can't have storage modules. This seems fair to me.
+	slowdown_active = 0.25 // This suit has an irremovable compressed plates upgrade, which means you can't have storage modules. This seems fair to me.
 	inbuilt_modules = list(
 		/obj/item/mod/module/springlock/contractor/no_complexity,
 		/obj/item/mod/module/plate_compression/permanent,
@@ -40,6 +40,7 @@
 		/obj/item/resonator,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
+		/obj/item/storage/medkit,
 	)
 	skins = list(
 		"colonist" = list(

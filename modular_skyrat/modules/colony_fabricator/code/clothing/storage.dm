@@ -45,8 +45,8 @@
 /obj/item/storage/belt/frontier_colonist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
-	// Two more slots than a regular toolbelt
-	atom_storage.max_slots = 9
+	atom_storage.max_slots = 7
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	// Can hold whatever a toolbelt can + some mining equipment for convenience
 	atom_storage.set_holdable(list(
 		/obj/item/airlock_painter,
@@ -86,21 +86,3 @@
 		/obj/item/wormhole_jaunter,
 		/obj/item/resonator,
 	))
-
-/obj/item/storage/belt/medical/frontier_colonist
-	name = "frontier medical belt bag"
-	desc = "A bulky medical bag often seen worn by early frontier doctors without a place to work, \
-		military medics, and other undesireable individuals."
-	icon = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing.dmi'
-	icon_state = "IM_DYING_I_NEED_A"
-	worn_icon = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	worn_icon_teshari = 'modular_skyrat/modules/colony_fabricator/icons/clothes/clothing_worn_teshari.dmi'
-	worn_icon_state = "IM_DYING_I_NEED_A"
-	inhand_icon_state = null
-
-/obj/item/storage/belt/medical/frontier_colonist/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/manufacturer_examine, COMPANY_FRONTIER)
-	atom_storage.max_slots = 14 // Sometimes you gotta carry the whole medbay on your belt
-	atom_storage.max_total_storage = 35 // 7 normal items + 7 small items, limited to whatever a med belt can hold

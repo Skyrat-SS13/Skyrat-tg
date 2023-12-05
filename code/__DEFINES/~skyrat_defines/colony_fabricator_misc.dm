@@ -4,6 +4,8 @@
 #define RND_CATEGORY_AKHTER_EQUIPMENT "Equipment"
 /// Category for medical items in the organics printer
 #define RND_CATEGORY_AKHTER_MEDICAL "Emergency Medical"
+/// Category for autoinjectors in the organics printer
+#define RND_CATEGORY_AKHTER_MEDICAL_INJECTORS "Emergency Injectors"
 /// Category for resources made by the organics printer
 #define RND_CATEGORY_AKHTER_RESOURCES "Resources"
 /// Category for the seeds the organics printer can make
@@ -26,4 +28,5 @@ GLOBAL_LIST_INIT(colonist_suit_allowed, list(
 	/obj/item/resonator,
 	/obj/item/t_scanner,
 	/obj/item/analyzer,
+	/obj/item/storage/medkit,
 ))
