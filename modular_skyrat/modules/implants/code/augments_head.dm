@@ -161,6 +161,11 @@
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
 
+	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
+		qdel(beam)
+		StartCooldown(1 SECONDS) // Resets the spell to working after a second, just so its not spammed
+		return
+
 	if(!cast_on.emag_act(owner))
 		owner.balloon_alert(owner, "can't hack this!")
 		StartCooldown(1 SECONDS) // Resets the spell to working after a second, just so its not spammed
@@ -173,11 +178,6 @@
 	var/beam = owner.Beam(cast_on, icon_state = "light_beam", time = 5 SECONDS)
 
 	playsound(cast_on, 'sound/machines/terminal_processing.ogg', 15, TRUE)
-
-	if(!do_after(owner, 5 SECONDS, cast_on, IGNORE_SLOWDOWNS))
-		qdel(beam)
-		next_use_time = 1 SECONDS
-		return
 
 	var/mob/living/carbon/human/human_owner = owner
 
