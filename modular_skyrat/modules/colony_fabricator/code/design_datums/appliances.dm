@@ -105,7 +105,7 @@
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 	)
-	build_path = /obj/machinery/plumbing/synthesizer/water_synth/hydroponics
+	build_path = /obj/machinery/plumbing/synthesizer/colony_hydroponics
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_FLUIDS,
