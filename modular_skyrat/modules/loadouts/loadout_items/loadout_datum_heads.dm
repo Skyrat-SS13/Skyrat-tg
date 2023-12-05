@@ -268,17 +268,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/santa
 	name = "Santa Hat"
 	item_path = /obj/item/clothing/head/costume/santa
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas
 	name = "Red Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas Hat"
 	item_path = /obj/item/clothing/head/costume/skyrat/christmas/green
-	required_season = CHRISTMAS
 
 /*
 *	HALLOWEEN
