@@ -149,7 +149,11 @@
 	. = ..()
 
 	if(ismob(cast_on) || is_type_in_list(cast_on, emag_blacklist))
-		owner.balloon_alert("security too strong")
+		owner.balloon_alert(owner, "security too strong")
+		return FALSE
+
+	if(get_dist(owner, cast_on) > hack_range)
+		owner.balloon_alert(owner, "too far away")
 		return FALSE
 
 	return TRUE
@@ -157,14 +161,9 @@
 /datum/action/cooldown/spell/pointed/hackerman_deck/cast(atom/cast_on)
 	. = ..()
 
-	if(get_dist(owner, cast_on) > hack_range)
-		owner.balloon_alert("too far away")
-		next_use_time = 1 SECONDS
-		return
-
 	if(!cast_on.emag_act(owner))
-		owner.balloon_alert("can't hack this!")
-		next_use_time = 1 SECONDS
+		owner.balloon_alert(owner, "can't hack this!")
+		StartCooldown(1 SECONDS) // Resets the spell to working after a second, just so its not spammed
 		return
 
 	owner.visible_message(span_bolddanger("[owner.name] makes an unusual buzzing sound as the air between them and [cast_on] crackles."), \
