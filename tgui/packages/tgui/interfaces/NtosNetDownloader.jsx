@@ -5,8 +5,8 @@ import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
 import { NtosWindow } from '../layouts';
 
-export const NtosNetDownloader = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NtosNetDownloader = (props) => {
+  const { act, data } = useBackend();
   const {
     PC_device_theme,
     disk_size,
@@ -25,7 +25,6 @@ export const NtosNetDownloader = (props, context) => {
     scale(downloadcompletion, 0, downloadsize) * 100
   );
   const [selectedCategory, setSelectedCategory] = useLocalState(
-    context,
     'category',
     all_categories[0]
   );
@@ -115,9 +114,9 @@ export const NtosNetDownloader = (props, context) => {
   );
 };
 
-const Program = (props, context) => {
+const Program = (props) => {
   const { program } = props;
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend();
   const {
     PC_device_theme,
     disk_size,
