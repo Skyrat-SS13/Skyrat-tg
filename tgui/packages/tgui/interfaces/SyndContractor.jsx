@@ -59,7 +59,7 @@ export class FakeTerminal extends Component {
   }
 }
 
-export const SyndContractor = (props, context) => {
+export const SyndContractor = (props) => {
   return (
     <NtosWindow width={500} height={600} theme="syndicate">
       <NtosWindow.Content scrollable>
@@ -69,8 +69,8 @@ export const SyndContractor = (props, context) => {
   );
 };
 
-export const SyndContractorContent = (props, context) => {
-  const { data, act } = useBackend(context);
+export const SyndContractorContent = (props) => {
+  const { data, act } = useBackend();
 
   const terminalMessages = [
     'Recording biometric data...',
@@ -109,7 +109,7 @@ export const SyndContractorContent = (props, context) => {
     'a specialised extraction unit to put the body into.',
     '',
     'We want targets alive - but we will sometimes pay slight',
-    "amounts if they're not, you just won't recieve the shown",
+    "amounts if they're not, you just won't receive the shown",
     'bonus. You can redeem your payment through this uplink in',
     'the form of raw telecrystals, which can be put into your',
     'regular Syndicate uplink to purchase whatever you may need.',
@@ -193,8 +193,8 @@ export const SyndContractorContent = (props, context) => {
   );
 };
 
-export const StatusPane = (props, context) => {
-  const { act, data } = useBackend(context);
+export const StatusPane = (props) => {
+  const { act, data } = useBackend();
 
   return (
     <Section
@@ -247,8 +247,8 @@ export const StatusPane = (props, context) => {
   );
 };
 
-export const SyndPane = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
+export const SyndPane = (props) => {
+  const [tab, setTab] = useLocalState('tab', 1);
   return (
     <>
       <StatusPane state={props.state} />
@@ -266,8 +266,8 @@ export const SyndPane = (props, context) => {
   );
 };
 
-const ContractsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+const ContractsTab = (props) => {
+  const { act, data } = useBackend();
   const contracts = data.contracts || [];
   return (
     <>
@@ -340,8 +340,8 @@ const ContractsTab = (props, context) => {
   );
 };
 
-const HubTab = (props, context) => {
-  const { act, data } = useBackend(context);
+const HubTab = (props) => {
+  const { act, data } = useBackend();
   const contractor_hub_items = data.contractor_hub_items || [];
   return (
     <Section>

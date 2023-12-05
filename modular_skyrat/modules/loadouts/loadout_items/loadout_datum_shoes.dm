@@ -222,7 +222,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/christmas
 	name = "Red Christmas Boots"
 	item_path = /obj/item/clothing/shoes/winterboots/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/shoes/christmas/green
 	name = "Green Christmas Boots"
