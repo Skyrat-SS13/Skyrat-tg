@@ -3,9 +3,9 @@
 	id = SPECIES_SNAIL
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT - Snails deserve to wear underwear
+		// TRAIT_NO_UNDERWEAR, //SKYRAT EDIT - Roundstart Snails - Snails deserve to wear underwear
 		TRAIT_NO_SLIP_ALL,
-		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
+		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails - Sea snails exist, and land snails can weather being underwater for almost a day.
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
@@ -13,11 +13,12 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
 
-	eyes_icon = 'modular_skyrat/modules/organs/icons/snail_eyes.dmi' // SKYRAT EDIT - Roundstart Snails
+	eyes_icon = 'modular_skyrat/modules/organs/icons/snail_eyes.dmi' // SKYRAT EDIT - Roundstart Snails - This is to consolidate our icons and prevent future calamity.
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
-	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails
-	// exotic_blood = /datum/reagent/lube // SKYRAT EDIT REMOVAL: Roundstart Snails - No more lube
+	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails - This is just a better liver to deal with toxins, it's a thematic thing.
+	mutantheart = /obj/item/organ/internal/heart/snail //SKYRAT EDIT - Roundstart Snails - This gives them the shell buff where they take less damage from behind, and their heart's more durable.
+	// exotic_blood = /datum/reagent/lube // SKYRAT EDIT REMOVAL: Roundstart Snails - They'll have regular blood, not literal cherry-flavored lubricant.
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
@@ -50,9 +51,9 @@
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
-	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails
+	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails - This is to help with shell reskins.
 	//if(ishuman(new_snailperson)) //SKYRAT EDIT: Snails don't have exotic blood here!
-	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END
+	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END - Roundstart Snails - They don't need special mail goodies because of the above.
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -63,7 +64,7 @@
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
 
-/*/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list()) //SKYRAT EDIT: Snails don't have exotic blood here!
+/*/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list()) //SKYRAT EDIT - Roundstart Snails - They don't have exotic blood here!
 	if(istype(quirk, /datum/quirk/blooddeficiency))
 		mail_goodies += list(
 			/obj/item/reagent_containers/blood/snail
@@ -82,6 +83,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	//SKYRAT EDIT BEGIN - Roundstart Snails
 	slowdown = 6 // The snail's shell is what's making them slow.
+	obj_flags = IMMUTABLE_SLOW //As above, this should hopefully solve other issues.
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -154,7 +156,7 @@
 	)
 	//SKYRAT EDIT END - Roundstart Snails
 
-/datum/armor/backpack_snail
+/datum/armor/backpack_snail //SKYRAT COMMENT CLARIFICATION - Roundstart Snails - These armor values don't actually do any protection of the wearer, this is for checking direct damage to the backpack. Damage resistance stuff is in their heart file.
 	melee = 40
 	bullet = 30
 	laser = 30

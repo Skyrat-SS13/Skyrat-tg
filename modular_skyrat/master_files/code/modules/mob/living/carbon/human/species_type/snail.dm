@@ -52,13 +52,19 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "home",
 			SPECIES_PERK_NAME = "Shellback",
-			SPECIES_PERK_DESC = "Snails have a shell fused to their back. While it doesn't offer any protection, it offers great storage. Alt click to change the sprite!",
+			SPECIES_PERK_DESC = "Snails have a shell fused to their back. It offers great storage and most importantly gives them 50% brute damage reduction from behind, or while resting. Alt click to change the sprite!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "wine-glass",
 			SPECIES_PERK_NAME = "Poison Resistance",
 			SPECIES_PERK_DESC = "Snails have a higher tolerance for poison owing to their robust livers.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "heart",
+			SPECIES_PERK_NAME = "Double Hearts",
+			SPECIES_PERK_DESC = "Snails have two hearts, meaning it'll take more to break theirs.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
@@ -70,13 +76,13 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bone",
 			SPECIES_PERK_NAME = "Boneless",
-			SPECIES_PERK_DESC = "Snails are invertebrates.",
+			SPECIES_PERK_DESC = "Snails are invertebrates, meaning they don't take bone wounds, but are easier to delimb.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "crutch",
 			SPECIES_PERK_NAME = "Sheer Mollusk Speed",
-			SPECIES_PERK_DESC = "Snails move incredibly slow while standing. They move much faster while crawling.",
+			SPECIES_PERK_DESC = "Snails move incredibly slow while standing. They move much faster while crawling, and can stick to the floors when the gravity is out.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
