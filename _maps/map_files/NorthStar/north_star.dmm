@@ -2560,11 +2560,6 @@
 /obj/item/stack/medical/bone_gel,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/treatment_center)
-"aHM" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port)
 "aHP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -20706,7 +20701,7 @@
 	codes_txt = "patrol;next_patrol=2-0";
 	location = "2-19"
 	},
-/mob/living/simple_animal/bot/medbot/autopatrol,
+/mob/living/basic/bot/medbot/autopatrol,
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor2/aft)
 "fwV" = (
@@ -26254,6 +26249,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/science/server)
+"gVe" = (
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port/fore)
 "gVm" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -27584,6 +27585,14 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
+"hnb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/machinery/camera/autoname/directional/west,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/station/cargo/bitrunning/den)
 "hng" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Bulkhead"
@@ -30829,14 +30838,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/commons/locker)
-"ifx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/maint,
-/obj/effect/spawner/random/maintenance/two,
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port/fore)
 "ifA" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
@@ -36254,12 +36255,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/secondary/entry)
-"jAO" = (
-/obj/structure/closet/crate/maint,
-/obj/effect/spawner/random/maintenance/three,
-/obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/pod/light,
-/area/station/maintenance/floor1/port/fore)
 "jAR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -63398,6 +63393,11 @@
 	},
 /turf/open/floor/iron/dark/small,
 /area/station/science/xenobiology)
+"qAc" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/structure/closet_empty/crate,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port)
 "qAd" = (
 /obj/structure/railing{
 	dir = 4
@@ -66239,7 +66239,7 @@
 	codes_txt = "patrol;next_patrol=4-1";
 	location = "4-0"
 	},
-/mob/living/simple_animal/bot/medbot/autopatrol,
+/mob/living/basic/bot/medbot/autopatrol,
 /turf/open/floor/iron/dark/side{
 	dir = 9
 	},
@@ -71702,6 +71702,14 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
+"sMM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/pod/light,
+/area/station/maintenance/floor1/port/fore)
 "sMS" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -71820,7 +71828,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/basic/pet/cat/runtime,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "sPk" = (
@@ -81391,14 +81399,6 @@
 /obj/effect/turf_decal/siding/white,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/paramedic)
-"voF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/extinguisher_cabinet/directional/west,
-/obj/machinery/camera/autoname/directional/west,
-/turf/open/floor/iron/stairs{
-	dir = 1
-	},
-/area/station/cargo/bitrunning/den)
 "voG" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 1
@@ -114023,7 +114023,7 @@ hJy
 rXp
 oZW
 xMd
-ifx
+sMM
 hJy
 htg
 hJy
@@ -114036,7 +114036,7 @@ hJy
 xtY
 fDq
 foK
-jAO
+gVe
 hJy
 hJy
 owI
@@ -116042,7 +116042,7 @@ tXe
 tXe
 iCP
 nnu
-voF
+hnb
 jdQ
 jyn
 tXe
@@ -127124,7 +127124,7 @@ wVn
 xgH
 fkE
 oHy
-aHM
+qAc
 kzE
 qWe
 jom
