@@ -1552,7 +1552,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/contraband/korpstech, 32)
 	flags_inv = HIDEHAIR
 
 /obj/item/clothing/suit/toggle/digicoat
-	toggle_noun = "holo-dislpay"
+	toggle_noun = "holo-display"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
