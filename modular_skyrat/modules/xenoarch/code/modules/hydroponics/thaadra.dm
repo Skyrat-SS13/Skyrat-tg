@@ -13,7 +13,7 @@
 	icon_grow = "thaadra-stage"
 	growthstages = 4
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/preserved)
-	reagents_add = list(/datum/reagent/silver = 0.1, /datum/reagent/inverse/healing/tirimol = 0.1, /datum/reagent/medicine/cordiolis_hepatico = 0.1)
+	reagents_add = list(/datum/reagent/silver = 0.1, /datum/reagent/medicine/sansufentanyl = 0.1, /datum/reagent/medicine/cordiolis_hepatico = 0.1)
 
 /obj/item/food/grown/thaadra
 	seed = /obj/item/seeds/thaadra
