@@ -21,6 +21,9 @@
 // Iron
 
 GLOBAL_LIST_INIT(skyrat_metal_recipes, list(
+	new/datum/stack_recipe("wall mounted fire-safety closet", /obj/item/wallframe/firecloset, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
+	new/datum/stack_recipe("wall mounted emergency closet", /obj/item/wallframe/emcloset, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
+	new/datum/stack_recipe("wall mounted closet", /obj/item/wallframe/closet, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
 	new/datum/stack_recipe("pool floor tile", /obj/item/stack/tile/iron/pool, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
 	new/datum/stack_recipe("lowered floor tile", /obj/item/stack/tile/iron/lowered, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
 	new/datum/stack_recipe("elevated floor tile", /obj/item/stack/tile/iron/elevated, 1, 4, 20, check_density = FALSE, category = CAT_TILES),

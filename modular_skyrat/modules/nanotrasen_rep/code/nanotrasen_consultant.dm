@@ -112,7 +112,7 @@
 	greyscale_colors = "#017941#0060b8"
 
 /obj/item/storage/bag/garment/nanotrasen_consultant
-	name = "Nanotrasen consultant's garment bag"
+	name = "nanotrasen consultant's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the Nanotrasen consultant."
 
 /obj/item/storage/bag/garment/nanotrasen_consultant/PopulateContents()
@@ -133,14 +133,13 @@
 	new /obj/item/clothing/under/rank/centcom/intern(src)
 	new /obj/item/clothing/head/hats/intern(src)
 
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station
-	name = "\proper nanotrasen consultant's locker"
+/obj/structure/closet/secure_closet/nanotrasen_consultant
+	name = "nanotrasen consultant's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station/PopulateContents()
+/obj/structure/closet/secure_closet/nanotrasen_consultant/PopulateContents()
 	..()
 	new /obj/item/storage/backpack/satchel/leather(src)
 	new /obj/item/clothing/neck/petcollar(src)
