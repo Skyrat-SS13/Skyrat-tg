@@ -13,7 +13,7 @@
 	icon_grow = "jurlmah-stage"
 	growthstages = 5
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/blue)
-	reagents_add = list(/datum/reagent/medicine/cryoxadone = 0.1, /datum/reagent/toxin/fakebeer = 0.1, /datum/reagent/consumable/frostoil = 0.1)
+	reagents_add = list(/datum/reagent/medicine/cryoxadone = 0.1, /datum/reagent/inverse/healing/tirimol  = 0.1, /datum/reagent/consumable/frostoil = 0.1)
 
 /obj/item/food/grown/jurlmah
 	seed = /obj/item/seeds/jurlmah
