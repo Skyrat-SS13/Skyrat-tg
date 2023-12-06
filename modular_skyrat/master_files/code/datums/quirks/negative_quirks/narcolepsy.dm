@@ -1,7 +1,7 @@
 /datum/quirk/narcolepsy
 	name = "Narcolepsy"
 	desc = "You may fall asleep at any moment and feel tired often."
-	icon = FA_ICON_MOON
+	icon = FA_ICON_CLOUD_MOON_RAIN
 	value = -9
 	hardcore_value = 9
 	medical_record_text = "Patient may involuntarily fall asleep during normal activities."
