@@ -9562,6 +9562,15 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/skyrat/interdynefob)
+"Ra" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/button/door/directional/south{
+	id = "ds2engineering";
+	name = "Engineering Shutters";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/dark/diagonal,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Rb" = (
 /obj/machinery/chem_master/condimaster{
 	name = "BrewMaster 3000"
@@ -11070,6 +11079,14 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
+"XB" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "ds2engineering"
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "XE" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
@@ -12758,7 +12775,7 @@ iH
 zM
 PO
 ai
-vG
+Ra
 Tt
 Tt
 Tt
@@ -12814,9 +12831,9 @@ CX
 Ce
 un
 HU
-iH
+XB
 Ab
-iH
+XB
 gu
 lZ
 eT
@@ -12924,9 +12941,9 @@ LV
 XA
 jx
 zj
-iH
+XB
 nt
-iH
+XB
 mR
 nK
 Ud
