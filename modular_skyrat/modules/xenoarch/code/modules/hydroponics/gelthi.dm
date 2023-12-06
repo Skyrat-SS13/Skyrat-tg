@@ -13,7 +13,7 @@
 	icon_grow = "gelthi-stage"
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/squash)
-	reagents_add = list(/datum/reagent/consumable/sprinkles = 0.1, /datum/reagent/consumable/astrotame = 0.1, /datum/reagent/consumable/honey = 0.1)
+	reagents_add = list(/datum/reagent/consumable/sprinkles = 0.1, /datum/reagent/consumable/astrotame = 0.1, /datum/reagent/consumable/honey = 0.2)
 
 /obj/item/food/grown/gelthi
 	seed = /obj/item/seeds/gelthi
