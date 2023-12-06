@@ -1,7 +1,6 @@
 /datum/supply_pack/vending/sectech
 	name = "Peacekeeper Equipment Supply Crate"
 	desc = "Armadyne branded Peacekeeper supply crate, filled with things you need to restock the equipment vendor."
-	access = ACCESS_SECURITY
 	crate_name = "Peacekeeper equipment supply crate"
 
 /datum/supply_pack/vending/wardrobes/security
