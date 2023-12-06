@@ -320,17 +320,13 @@
 			return
 
 	update_bot_mode(new_mode = BOT_HEALING, update_hud = FALSE)
-<<<<<<< HEAD
-	if(!do_after(src, delay = 2.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION)) //SKYRAT EDIT CHANGE : Increased time as tradeoff for automated healing. ORIGINAL: if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
-=======
 	patient.visible_message("[src] is trying to tend the wounds of [patient]", span_userdanger("[src] is trying to tend your wounds!"))
-	if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
->>>>>>> ab6713b015d (Fix medibots (#80136))
+	if(!do_after(src, delay = 2.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION)) //SKYRAT EDIT CHANGE : Increased time as tradeoff for automated healing. ORIGINAL: if(!do_after(src, delay = 0.5 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
 	var/modified_heal_amount = heal_amount
 	var/done_healing = FALSE
-	if(damage_type_healer == BRUTE && medkit_type == /obj/item/storage/medkit/brute) 
+	if(damage_type_healer == BRUTE && medkit_type == /obj/item/storage/medkit/brute)
 		modified_heal_amount *= 1.1
 	if(bot_access_flags & BOT_COVER_EMAGGED)
 		patient.reagents?.add_reagent(/datum/reagent/toxin/chloralhydrate, 5)
