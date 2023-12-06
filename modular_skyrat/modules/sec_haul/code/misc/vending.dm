@@ -27,6 +27,7 @@
 		/obj/item/grenade/stingbang = 5,
 		/obj/item/watertank/pepperspray = 2,
 		/obj/item/storage/belt/holster/energy = 4,
+		/obj/item/storage/box/holobadge = 1,
 	)
 
 /obj/item/vending_refill/security
