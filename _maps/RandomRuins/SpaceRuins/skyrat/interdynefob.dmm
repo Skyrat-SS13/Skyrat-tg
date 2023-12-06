@@ -3392,12 +3392,17 @@
 	dir = 1
 	},
 /obj/item/storage/box/firingpins/syndicate{
-	pixel_x = -2;
+	pixel_x = 8;
 	pixel_y = 6
 	},
 /obj/item/storage/box/firingpins/syndicate{
-	pixel_x = 2
+	pixel_x = 10
 	},
+/obj/item/storage/box/pinpointer_pairs{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/storage/box/pinpointer_pairs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "pM" = (
@@ -3449,21 +3454,7 @@
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
-/obj/structure/table/reinforced,
-/obj/item/grenade/barrier{
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/grenade/barrier{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/grenade/barrier{
-	pixel_y = 10
-	},
-/obj/item/grenade/barrier{
-	pixel_y = 2
-	},
+/obj/structure/closet/secure_closet/armory_kiboko_but_evil,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "pW" = (
@@ -4308,12 +4299,21 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/structure/rack/shelf,
 /obj/machinery/button/door/directional/north{
 	id = "ds2armory";
 	name = "Armory Access";
 	req_access = list("syndicate_leader")
 	},
+/obj/item/ammo_box/advanced/s12gauge/buckshot{
+	pixel_x = -9
+	},
+/obj/item/ammo_box/advanced/s12gauge/buckshot{
+	pixel_x = -9
+	},
+/obj/item/ammo_box/advanced/s12gauge/buckshot{
+	pixel_x = +9
+	},
+/obj/structure/rack/shelf,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "tf" = (
@@ -5824,8 +5824,17 @@
 	dir = 5
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/box/pinpointer_pairs,
-/obj/item/storage/box/pinpointer_pairs{
+/obj/item/grenade/barrier{
+	pixel_y = 2
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/grenade/barrier{
+	pixel_y = 10
+	},
+/obj/item/grenade/barrier{
 	pixel_x = -4;
 	pixel_y = 6
 	},
