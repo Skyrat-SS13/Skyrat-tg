@@ -19,8 +19,8 @@ class LewdSlot {
   name;
 }
 
-export const InteractionMenu = (props, context) => {
-  const { act, data } = useBackend<Interaction>(context);
+export const InteractionMenu = (props) => {
+  const { act, data } = useBackend<Interaction>();
   const {
     categories = [],
     interactions,

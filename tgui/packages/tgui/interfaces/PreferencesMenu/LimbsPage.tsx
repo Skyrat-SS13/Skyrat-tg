@@ -3,8 +3,8 @@ import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
 
-export const RotateCharacterButtons = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const RotateCharacterButtons = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Box mt={1}>
       <Button
@@ -25,8 +25,8 @@ export const RotateCharacterButtons = (props, context) => {
   );
 };
 
-export const Markings = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const Markings = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <Stack fill vertical>
       <Stack.Item>Markings:</Stack.Item>
@@ -102,8 +102,8 @@ export const Markings = (props, context) => {
   );
 };
 
-export const LimbPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const LimbPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
   return (
     <div>
       <Section fill title={props.limb.name}>
@@ -117,9 +117,9 @@ export const LimbPage = (props, context) => {
   );
 };
 
-export const AugmentationPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
-  const { data } = useBackend<PreferencesMenuData>(context);
+export const AugmentationPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
+  const { data } = useBackend<PreferencesMenuData>();
   let balance = -data.quirks_balance;
   if (props.limb.can_augment) {
     return (
@@ -177,9 +177,9 @@ export const AugmentationPage = (props, context) => {
   return null;
 };
 
-export const OrganPage = (props, context) => {
-  const { act } = useBackend<PreferencesMenuData>(context);
-  const { data } = useBackend<PreferencesMenuData>(context);
+export const OrganPage = (props) => {
+  const { act } = useBackend<PreferencesMenuData>();
+  const { data } = useBackend<PreferencesMenuData>();
   let balance = -data.quirks_balance;
   return (
     <Stack.Item>
@@ -207,15 +207,15 @@ export const OrganPage = (props, context) => {
   );
 };
 
-export const LimbsPage = (props, context) => {
-  const { data } = useBackend<PreferencesMenuData>(context);
-  const { act } = useBackend<PreferencesMenuData>(context);
+export const LimbsPage = (props) => {
+  const { data } = useBackend<PreferencesMenuData>();
+  const { act } = useBackend<PreferencesMenuData>();
   const markings = data.marking_presets ? data.marking_presets : [];
   let balance = -data.quirks_balance;
   return (
     <Stack minHeight="100%">
       <Stack.Item minWidth="33%" minHeight="100%">
-        <Section fill scrollable title="Markings" height="237%">
+        <Section fill scrollable title="Markings" height="197%">
           <div>
             <Dropdown
               grow
@@ -233,7 +233,7 @@ export const LimbsPage = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Character Preview" fill align="center" height="237%">
+        <Section title="Character Preview" fill align="center" height="197%">
           <CharacterPreview
             id={data.character_preview_view}
             height="25%"
@@ -269,7 +269,7 @@ export const LimbsPage = (props, context) => {
             ))}
           </Stack>
         </Section>
-        <Section fill scrollable title="Augmentations" height="148%">
+        <Section fill scrollable title="Augmentations" height="107%">
           {data.limbs_data.map((val) => (
             <AugmentationPage key={val.slot} limb={val} data={data} />
           ))}

@@ -10,10 +10,13 @@ jobs:
   Label:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Apply labels based on changed files
         if: github.event_name != 'push'
-        uses: actions/labeler@main
+        uses: actions/labeler@v5
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           sync-labels: true
           configuration-path: .github/labeler.yml
+          dot: false
