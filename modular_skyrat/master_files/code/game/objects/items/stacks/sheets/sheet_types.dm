@@ -21,6 +21,9 @@
 // Iron
 
 GLOBAL_LIST_INIT(skyrat_metal_recipes, list(
+	new/datum/stack_recipe("wall mounted fire-safety closet", /obj/item/wallframe/firecloset, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
+	new/datum/stack_recipe("wall mounted emergency closet", /obj/item/wallframe/emcloset, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
+	new/datum/stack_recipe("wall mounted closet", /obj/item/wallframe/closet, 2, time = 1.5 SECONDS, check_density = FALSE, category = CAT_FURNITURE),
 	new/datum/stack_recipe("pool floor tile", /obj/item/stack/tile/iron/pool, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
 	new/datum/stack_recipe("lowered floor tile", /obj/item/stack/tile/iron/lowered, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
 	new/datum/stack_recipe("elevated floor tile", /obj/item/stack/tile/iron/elevated, 1, 4, 20, check_density = FALSE, category = CAT_TILES),
@@ -80,6 +83,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 	new/datum/stack_recipe("ration shelf", /obj/machinery/smartfridge/rationshelf, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("storage barrel", /obj/structure/closet/crate/wooden/storage_barrel, 4, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = FALSE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("worm barrel", /obj/structure/wormfarm, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
+	new/datum/stack_recipe("gutlunch trough", /obj/structure/ore_container/gutlunch_trough, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_STRUCTURE),
 	new/datum/stack_recipe("sturdy wooden fence", /obj/structure/railing/wooden_fencing, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
 	new/datum/stack_recipe("sturdy wooden fence gate", /obj/structure/railing/wooden_fencing/gate, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE, category = CAT_TOOLS),
 	new/datum/stack_recipe("wooden bowl", /obj/item/reagent_containers/cup/bowl/wood_bowl, 3, time = 2 SECONDS, check_density = FALSE, category = CAT_TOOLS),
