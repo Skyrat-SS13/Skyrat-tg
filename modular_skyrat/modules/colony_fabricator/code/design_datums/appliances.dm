@@ -141,7 +141,7 @@
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
 		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
 	)
-	build_path = /obj/item/gps/computer/beacon
+	build_path = /obj/item/flatpacked_machine/gps_beacon
 	category = list(
 		RND_CATEGORY_INITIAL,
 		FABRICATOR_CATEGORY_APPLIANCES + FABRICATOR_SUBCATEGORY_POWER,

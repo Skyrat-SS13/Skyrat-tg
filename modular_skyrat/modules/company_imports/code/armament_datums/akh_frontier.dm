@@ -63,6 +63,10 @@
 	item_type = /obj/item/wallframe/cell_charger_multi
 	cost = PAYCHECK_CREW
 
+/datum/armament_entry/company_import/akh_frontier/appliances/gps_beacon
+	item_type = /obj/item/flatpacked_machine/gps_beacon
+	cost = PAYCHECK_CREW
+
 /datum/armament_entry/company_import/akh_frontier/appliances/water_synth
 	item_type = /obj/item/flatpacked_machine/water_synth
 

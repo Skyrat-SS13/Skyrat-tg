@@ -2,6 +2,11 @@
 	name = "GPS beacon"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
 	icon_state = "gps_beacon"
-	anchored = FALSE
 	pixel_y = 0
-	drag_slowdown = 2 // Its a beacon don't just bring it with you!
+
+/obj/item/flatpacked_machine/gps_beacon
+	name = "packed GPS beacon"
+	icon = 'modular_skyrat/modules/colony_fabricator/icons/machines.dmi'
+	icon_state = "beacon_folded"
+	w_class = WEIGHT_CLASS_NORMAL
+	type_to_deploy = /obj/item/gps/computer/beacon

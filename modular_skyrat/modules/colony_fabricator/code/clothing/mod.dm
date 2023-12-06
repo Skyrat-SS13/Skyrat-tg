@@ -19,7 +19,7 @@
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	charge_drain = DEFAULT_CHARGE_DRAIN * 2
 	slowdown_inactive = 0.5
-	slowdown_active = 0.25 // This suit has an irremovable compressed plates upgrade, which means you can't have storage modules. This seems fair to me.
+	slowdown_active = 0 // This suit has an irremovable compressed plates, 2x energy consumption, and NO complexity space, this seems fair I think
 	inbuilt_modules = list(
 		/obj/item/mod/module/springlock/contractor/no_complexity,
 		/obj/item/mod/module/plate_compression/permanent,
@@ -82,6 +82,7 @@
 		/obj/item/mod/module/visor/meson,
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/thermal_regulator,
+		/obj/item/mod/module/rad_protection,
 	)
 	default_pins = list(
 		/obj/item/mod/module/magboot,
