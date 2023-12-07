@@ -46257,7 +46257,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/chem_heater/withbuffer,
+/obj/machinery/chem_dispenser{
+	layer = 2.7
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "mZe" = (
@@ -48593,8 +48595,11 @@
 	pixel_x = 3;
 	pixel_y = -32
 	},
-/obj/machinery/chem_master,
 /obj/effect/turf_decal/bot_red,
+/obj/structure/table/reinforced/rglass,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/reagent_containers/dropper,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "nIK" = (
@@ -55625,10 +55630,7 @@
 	dir = 9;
 	layer = 3.1
 	},
-/obj/structure/table/reinforced/rglass,
-/obj/item/reagent_containers/cup/beaker/large,
-/obj/item/reagent_containers/cup/beaker/large,
-/obj/item/reagent_containers/dropper,
+/obj/machinery/chem_master,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "pAZ" = (
@@ -83953,9 +83955,7 @@
 	name = "Pharmacy Requests Console"
 	},
 /obj/effect/mapping_helpers/requests_console/ore_update,
-/obj/machinery/chem_dispenser{
-	layer = 2.7
-	},
+/obj/machinery/chem_heater/withbuffer,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/medical/pharmacy)
 "xnR" = (
