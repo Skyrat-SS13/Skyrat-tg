@@ -20,7 +20,7 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 	material_flags = MATERIAL_EFFECTS
 	/// The icon this falsewall is faking being. we'll switch out our icon with this when we're in fake mode
-	VAR/fake_icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: var/fake_icon = 'icons/turf/walls/wall.dmi'
+	var/fake_icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: var/fake_icon = 'icons/turf/walls/wall.dmi'
 	var/mineral = /obj/item/stack/sheet/iron
 	var/mineral_amount = 2
 	var/walltype = /turf/closed/wall
