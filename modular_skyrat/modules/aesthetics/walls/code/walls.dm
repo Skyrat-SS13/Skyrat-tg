@@ -17,8 +17,9 @@
 
 /obj/structure/falsewall/material
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
-	icon_state = "wall-0"
+	icon_state = "wall-open"
 	base_icon_state = "wall"
+	fake_icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
 
 /turf/closed/wall/material
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
