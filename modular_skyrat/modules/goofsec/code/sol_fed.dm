@@ -402,7 +402,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	uniform = /obj/item/clothing/under/sol_emt
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_med
-	mask = /obj/item/clothing/mask/gas
+	mask = /obj/item/clothing/mask/gas/alt
 	head = /obj/item/clothing/head/helmet/toggleable/sf_hardened/emt
 	id = /obj/item/card/id/advanced/solfed
 	suit = /obj/item/clothing/suit/armor/sf_hardened/emt
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	uniform = /obj/item/clothing/under/sol_peacekeeper
 	head = /obj/item/clothing/head/helmet/sf_sacrificial
-	mask = /obj/item/clothing/mask/gas
+	mask = /obj/item/clothing/mask/gas/alt
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/armor/sf_sacrificial
 	shoes = /obj/item/clothing/shoes/jackboots
