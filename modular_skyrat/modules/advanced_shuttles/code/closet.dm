@@ -16,7 +16,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "wallcloset"
 	icon_door = "wallcloset_mesh"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	door_anim_time = 0 //Somebody needs to remove the hard-sprited shuttles, or at least their lockers. These are a sin.
 
 /obj/structure/closet/shuttle/white
 	icon_state = "wallcloset_white"
@@ -69,40 +69,106 @@
 	icon_state = "vent"
 	icon_door = "vent"
 
-//Wall closets
-/obj/structure/closet/firecloset/wall
+//Generic Wall Closets - mount onto a wall, will end up storing anything that's on the tile it was placed from and 'occupies'.
+//Mob Size is small so that it doesn't end up storing players standing on those tiles.
+/obj/structure/closet/generic/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "fire_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	anchored = TRUE
+	anchorable = FALSE //Prevents it being unwrenched and dragged around. Gotta unweld it!
+	paint_jobs = FALSE //Prevents it being repainted into other non-wall lockers.
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
 
 /obj/structure/closet/emcloset/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
 	icon_state = "emergency_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
-/obj/structure/closet/secure_closet/wall
+/obj/structure/closet/firecloset/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "closet_wall"
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "fire_wall"
+
+//These two are pre-locked versions of closet/generic/wall, for mapping only
+/obj/structure/closet/secure_closet/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
+	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
+	density = TRUE
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
 
 /obj/structure/closet/secure_closet/personal/wall
+	door_anim_squish = 0.3
+	door_anim_angle = 115
+	door_hinge_x = -8.5
 	wall_mounted = TRUE
 	max_mob_size = MOB_SIZE_SMALL
-	anchored = TRUE
 	density = TRUE
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	icon_state = "closet_wall"
-	icon_door = null
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	anchored = TRUE
+	anchorable = FALSE
+	paint_jobs = FALSE
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_wall"
+
+//These procs create empty subtypes, for when it's placed by a user rather than mapped in...
+//Secure/personal don't get these since they're made with airlock electronics
+/obj/structure/closet/generic/wall/empty/PopulateContents()
+	return
+
+/obj/structure/closet/emcloset/wall/empty/PopulateContents()
+	return
+
+/obj/structure/closet/firecloset/wall/empty/PopulateContents()
+	return
+
+//Wallmounts, for rebuilding the wall lockers above
+/obj/item/wallframe/closet
+	name = "wall mounted closet"
+	desc = "It's a wall mounted storage unit for... well, whatever you put in this one. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "locker_mount"
+	result_path = /obj/structure/closet/generic/wall/empty
+	pixel_shift = 32
+
+/obj/item/wallframe/emcloset
+	name = "wall mounted emergency closet"
+	desc = "It's a wall mounted storage unit for emergency breath masks and O2 tanks. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "emergency_mount"
+	result_path = /obj/structure/closet/emcloset/wall/empty
+	pixel_shift = 32
+
+/obj/item/wallframe/firecloset
+	name = "wall mounted fire-safety closet"
+	desc = "It's a wall mounted storage unit for fire-fighting supplies. Apply to wall to use."
+	icon = 'modular_skyrat/master_files/icons/obj/closet_wall.dmi'
+	icon_state = "fire_mount"
+	result_path = /obj/structure/closet/firecloset/wall/empty
+	pixel_shift = 32
