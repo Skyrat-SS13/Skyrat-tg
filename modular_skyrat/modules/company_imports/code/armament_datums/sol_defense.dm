@@ -9,10 +9,10 @@
 	cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/sol_defense/clothing/peacekeeper
-	item_type = /obj/item/clothing/head/helmet/sf_peacekeeper/debranded
+	item_type = /obj/item/clothing/under/sol_peacekeeper
 
 /datum/armament_entry/company_import/sol_defense/clothing/emt
-	item_type = /obj/item/clothing/head/helmet/sf_peacekeeper
+	item_type = /obj/item/clothing/under/sol_emt
 
 // Armor vests for protecting against bullets
 
