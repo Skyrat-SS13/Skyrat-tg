@@ -273,7 +273,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/winter_coat/christmas
 	name = "Christmas Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
-	required_season = CHRISTMAS
 
 /datum/loadout_item/suit/winter_coat/christmas/green
 	name = "Green Christmas Coat"
