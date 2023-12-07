@@ -17,6 +17,11 @@
 		/obj/item/ammo_box/c980grenade/shrapnel/phosphor = 1,
 		/obj/item/ammo_box/strilka310 = 2,
 		/obj/item/ammo_box/strilka310/surplus = 3,
+		/obj/item/ammo_box/c27_54cesarzowa = 2,
+		/obj/item/ammo_box/c27_54cesarzowa/rubber = 2,
+		/obj/item/ammo_box/c310_cargo_box = 2,
+		/obj/item/ammo_box/c310_cargo_box/rubber = 2,
+		/obj/item/ammo_box/c310_cargo_box/piercing = 2,
 		// Magazines
 		/obj/item/ammo_box/magazine/c35sol_pistol = 2,
 		/obj/item/ammo_box/magazine/c35sol_pistol/stendo = 1,
@@ -26,6 +31,10 @@
 		/obj/item/ammo_box/magazine/c585trappiste_pistol = 2,
 		/obj/item/ammo_box/magazine/c980_grenade = 2,
 		/obj/item/ammo_box/magazine/c980_grenade/drum = 1,
+		/obj/item/ammo_box/magazine/lanca = 2,
+		/obj/item/ammo_box/magazine/miecz = 2,
+		/obj/item/ammo_box/magazine/recharge/plasma_battery = 2,
+		/obj/item/ammo_box/magazine/wylom = 1,
 		// Shotgun shells
 		/obj/item/ammo_box/advanced/s12gauge/beehive = 1,
 		/obj/item/ammo_box/advanced/s12gauge/buckshot = 2,
@@ -52,6 +61,10 @@
 		/obj/item/gun/ballistic/automatic/xhihao_smg = 1,
 		/obj/item/gun/ballistic/automatic/m6pdw = 1,
 		/obj/item/gun/energy/e_gun/mini = 2,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_thrower = 2,
+		/obj/item/gun/ballistic/automatic/pistol/plasma_marksman = 2,
+		/obj/item/gun/ballistic/revolver/shotgun_revolver = 2,
+		/obj/item/gun/ballistic/automatic/miecz = 1,
 	)
 
 /obj/effect/spawner/random/deep_maintenance/weapons_serious
@@ -69,10 +82,12 @@
 		/obj/item/gun/ballistic/shotgun/riot/sol = 2,
 		/obj/item/gun/ballistic/shotgun/riot/sol/evil = 1,
 		/obj/item/gun/ballistic/rifle/boltaction/prime = 1,
-		/obj/item/gun/energy/laser = 1,
+		/obj/item/gun/energy/laser = 2,
 		/obj/item/gun/energy/laser/hellgun = 1,
 		/obj/item/gun/energy/tesla_cannon = 1,
 		/obj/item/gun/energy/e_gun = 1,
+		/obj/item/gun/ballistic/automatic/lanca = 1,
+		/obj/item/gun/ballistic/automatic/wylom = 1,
 	)
 
 /obj/structure/closet/secure_closet/tac_but_empty_and_no_access
