@@ -35,7 +35,7 @@
 
 /datum/species/skrell/get_default_mutant_bodyparts()
 	return list(
-		"skrell_hair" = list(MUTANT_INDEX_NAME = "Male", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"skrell_hair" = list("Male", TRUE),
 	)
 
 /datum/species/skrell/get_species_description()

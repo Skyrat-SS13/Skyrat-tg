@@ -26,13 +26,13 @@
 
 /datum/species/unathi/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Smooth", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"spines" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"frills" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"horns" = list(MUTANT_INDEX_NAME = "Curled", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"body_markings" = list(MUTANT_INDEX_NAME = "Smooth Belly", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Smooth", TRUE),
+		"snout" = list("Sharp + Light", TRUE),
+		"spines" = list("None", FALSE),
+		"frills" = list("None", FALSE),
+		"horns" = list("Curled", TRUE),
+		"body_markings" = list("Smooth Belly", TRUE),
+		"legs" = list("Normal Legs", FALSE),
 	)
 
 /obj/item/organ/internal/tongue/unathi

@@ -9,9 +9,9 @@
 
 /datum/species/moth/get_default_mutant_bodyparts()
 	return list(
-		"fluff" = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"wings" = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"moth_antennae" = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"fluff" = list("Plain", FALSE),
+		"wings" = list("Moth (Plain)", TRUE),
+		"moth_antennae" = list("Plain", TRUE),
 	)
 
 /datum/species/moth/randomize_features()

@@ -25,12 +25,12 @@
 
 /datum/species/aquatic/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"ears" = list(MUTANT_INDEX_NAME = "Hammerhead", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Shark", TRUE),
+		"snout" = list("Shark", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Hammerhead", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+		"wings" = list("None", FALSE),
 	)
 
 /obj/item/organ/internal/tongue/aquatic

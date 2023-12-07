@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 
 /datum/loadout_item/glasses/prescription_glasses/better
 	name = "Modern Glasses"
-	item_path = /obj/item/clothing/glasses/betterunshit
+	item_path = /obj/item/clothing/glasses/regular/betterunshit
 
 /*
 *	COSMETIC GLASSES

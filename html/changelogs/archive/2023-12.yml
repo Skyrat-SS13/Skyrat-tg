@@ -1,0 +1,253 @@
+2023-12-01:
+  SkyratBot:
+  - rscadd: turns triple ai mode into a station trait
+2023-12-02:
+  MidoriWroth:
+  - bugfix: Icebox chemistry lab shutters are controlled by the button in the chemistry
+      lab and not in the pharmacy again.
+  Paxilmaniac:
+  - rscadd: All AK-whatever guns, the NRI pistol, and the nri smg, have been replaced
+      with a new selection of weapons now also for sale in the nearest cargo console.
+  - rscadd: The CIN clothing in company imports will now spawn with random colors,
+      rather than always being grey.
+  - sound: New Lanca firing sound from TGMC
+  - image: Resprites and sprites for the new weapons by me, Paxilmaniac
+  SkyratBot:
+  - rscadd: Instead of punished sect healing people like the normal bibble- you take
+      their burdens on instead!
+  - bugfix: Cyber cops are now equipped with the correct outfit.
+  - bugfix: Changelings will no longer get an objective to impersonate crew without
+      absorbable DNA.
+  - bugfix: Changelings will no longer start without an escape objective.
+  - bugfix: fix parrots not appearing dead sometimes
+  - spellcheck: fixed typo in one of spacer's moodlets
+  - bugfix: shield wall gens actually use power now
+  - qol: shield wall gens may now be rebuilt and use some balloon alerts, and have
+      wiring
+  - code_imp: The singularity processing is a bit more important than the other subsystems.
+  - admin: A new debug verb to turn yourself into an MMI(almost the funniest thing)
+  - bugfix: MMI's inside mechs can now properly open doors like there posibrain counterparts
+  Vekter:
+  - rscdel: Replaced the "monkey cube" in Birdshot's tool storage with a different
+      "monkey cube".
+  - rscadd: Added a fun surprise item to Birdshot's tool storage to compensate for
+      the above change.
+2023-12-03:
+  Hatterhat:
+  - bugfix: The toxin damage from overdosing on TWitch now respects server tickrate/REM.
+  Paxilmaniac:
+  - rscadd: A whole host of new armors for protecting yourself from being turned into
+      red mist by a psycho with a rifle are for sale at relatively low cost from Sol
+      Defense in cargo!
+  - image: Sprites for every piece of new armor done by yours truly.
+  SkyratBot:
+  - qol: psyker echolocation cooldown time has been reduced from 2 to 1.8 seconds
+  - bugfix: psyker heads no longer render an overlay of not having eyes
+  - bugfix: Sign Language action properly toggles between an active/inactive background
+      again.
+  - rscadd: Agent IDs once more trick Beepsky into treating you more leniently.
+  - rscadd: Prisoner IDs make Beepsky treat you somewhat more suspiciously, as do
+      Syndicate IDs. Wearing a Centcomm ID means that Beepsky is aware that you are
+      above the law.
+  - rscadd: Player-controlled security bots can view someone's assessed threat level
+      by examining them.
+  - balance: Honorbound no longer cares about innocence when it comes to lesser creatures.
+      They can still be considered unready in some cases.
+  - balance: Attacking a cultist with a halo or a nuclear operative first instantly
+      makes THEM guilty, allowing further attacks.
+  - balance: More favor for converting someone to the honorbound rules
+  - bugfix: Mod links are now disabled in the virtual realm.
+  - bugfix: Fixed an issue with the offsets of ridden vehicles on tables, and another
+      when buckled to a bed.
+  - bugfix: crafting food or any other items that require reagents will not leave
+      behind blank reagents. That and properly updates the holder those reagents are
+      stored in
+2023-12-04:
+  Cursor, Delbert Grady:
+  - rscadd: The Overlook- Err 'Twin'- Whatever the Space Hotel is called has had some
+      minor additions.
+  HoodMilk:
+  - rscdel: Removed the holiday restriction on red-colored Christmas clothing.
+  Melbert:
+  - rscadd: Falling down a z-level while standing now damages your legs rather than
+      your entire body. This also means falling down multiple z-s may rarely break
+      your legs.
+  - rscadd: Felinids now land on their feet if they fall down a z-level while standing.
+      This replaces the knockdown with a short slowdown, and also has the trade-off
+      of causing more leg damage.
+  - rscadd: Cats can now fall z-levels without sustaining damage.
+  MrDerpi:
+  - bugfix: "synth livers not emp-able\n/\U0001F191\n<!-- Both :cl:'s are required\
+      \ for the changelog to work! You can put your name to the right of the first\
+      \ :cl: if you want to overwrite your GitHub username as author ingame. -->\n\
+      <!-- You can use multiple of the same prefix (they're only used for the icon\
+      \ ingame) and delete the unneeded ones. Despite some of the tags, changelogs\
+      \ should generally represent how a player might be affected by the changes rather\
+      \ than a summary of the PR's contents. -->"
+  MrMelbert:
+  - bugfix: smartfridges no longer show false overlays
+  Nerev4r:
+  - bugfix: Lopland Security has finally negotiated an order of blue tackle gloves
+      with the FTU, abandoning the red NanoTrasen models.
+  Rhials:
+  - qol: Bar signs ordered from cargo will no longer be access-restricted.
+  - spellcheck: Fixes a typo in the Factory Quartermaster outfit name.
+  SkyratBot:
+  - bugfix: SecTech restocking units are now actually named SecTech restocking units,
+      and not Generic restocking units.
+  - admin: Removed the "Turn Target into MMI" right click context menu verb entirely,
+      and instead added the same command as a VV dropdown on human mobs.
+  - rscadd: Added the daily (roundstart) message server key to the Chief Engineer's
+      memories.
+  - rscadd: Added new roast dinners, able to be cut into smaller portions hopefully
+      in time for the Christmas season.
+  - rscadd: Instead of teaming up random people together, blood brothers will now
+      start out with one player and let them convert a single other person over to
+      blood brother using a flash.
+  - rscadd: 'Festival Sect has 3 new rites: Cogitandi Fidis, Portable Song Tuning,
+      and Illuminating Solo.'
+  - balance: lowers threshold for triggering a final effect. Consult your Cogitandi
+      Fidis for more information
+  - bugfix: Some mapped-in gifts that were supposed to guarantee a certain gift weren't
+      spawning that exact gift type, this has been patched to reflect the mapper's
+      intent.
+  - admin: The Player Panel should now contain the unique mob tag associated to a
+      certain mob that a player might inhabit at one time, which is stored on their
+      player details datum on their client (which is guaranteed to always exist).
+  - admin: The "Old Names" details of a player is now visible in their own personal
+      per-player player panel.
+  - server: Minimum compile version has been bumped to 515. clients still support
+      514 but we're gonna start using 515 restricted features for serverside now.
+  - bugfix: Fixed some oopsie whoopsie with elevation, trams and beds causing people
+      to visually ascend or descend to heaven or hell.
+  - bugfix: Blocking a tackler no longer causes things to go haywire and stun the
+      tackler/the tackle victim.
+  - bugfix: soups and other reactions where large quantities of reagents are required/present
+      should not have a random chance of reacting forever.
+  - bugfix: reactions which are overheated should diminish all the way to 0
+  - code_imp: cleaned up code in `datam/equilibrium` in general. Slightly optimized
+      soup reaction code
+  - refactor: medbots are now basic bots. please report any bugs
+  - rscadd: medbots can wear hats!
+  - balance: Clone damage dealt by the cosmic blade has been replaced with organ damage
+      and increased burn damage. Clone damage dealt by the cosmic beam has been removed.
+      The star gazer now deals burn damage instead of clone damage.
+  - bugfix: The health of mobs combo'd by a cosmic blade will now update correctly.
+  - rscadd: Added sprites for bone spears to match the other bone items.
+  - rscdel: Removes the slime's reagent holder. This will make them not slow down
+      from somehow imbibing morphine or frostoil.
+  - spellcheck: Occurrences of "recieve" has been changed to "receive".
+  - bugfix: Heretics can no longer cast all of their spells while in jaunt
+  - sound: Added human laughter to felinids
+  - balance: The Meat Hook will now "ground" you whenever you fire it out at someone.
+      You get a very small immobilization every time you fire, which "upgrades" to
+      a full immobilization whenever you actually hit an atom and start to drag it
+      in.
+  - bugfix: A chain should now show up as you drag in something with the meat hooks.
+  - bugfix: Meat hooks should no longer play the "magical gun" suicide if you were
+      to use it, but instead do their own unique thing.
+  - bugfix: Digi legs work with the QM's jumpskirt
+  - refactor: cats are now basic pets. please report any bugs.
+  - rscadd: the cake cat and bread cat can now help the chef around in the kitchen
+  Vekter:
+  - rscadd: Added a new hostile variant of cats, "feral cats".
+  - rscadd: Added a new traitor item, "feral cat grenades". For 5 TC, you too can
+      throw a grenade at someone and make five cats maul them to death.
+  - bugfix: Fixed damage ranging on feral cats
+  - bugfix: Fixes hole in Birdshot hallway
+  honkpocket:
+  - rscadd: The 'fake announcement device' from the OPFOR selection has received a
+      fully customizable upgrade.
+2023-12-05:
+  SkyratBot:
+  - bugfix: 'Janitors rejoice (or lament): Floors should now be dirty shift-start.
+
+      / \:cl:'
+  - rscadd: Heterochromatic, Signer, Spacer, and Voracious quirks are now properly
+      accounted for in medical records.
+  - bugfix: Rebirthing from headslug properly reapplys void adaptation
+2023-12-06:
+  Cursor on behalf of Jock. Co:
+  - bugfix: Modern Glasses can be stomped on.
+  LT3:
+  - bugfix: The character prefs tab bar will no longer disappear when you try to select
+      augments
+  - bugfix: GAP machine will check for duplicate payout of partially filled cards
+  SkyratBot:
+  - balance: Deleting and reprogramming pipes/devices with RPD is now INSTANT!
+  - rscadd: The NTSS Independence (Cruise Evac Shuttle) has received a makeover! Engineering
+      crews are still working on it, but it is operable and available for those who
+      have the money to rent it.
+  - qol: Converting someone will now give a chat message.
+  - bugfix: Blood brothers can no longer get other antagonists, I hope.
+  - rscadd: adds propeller hats, rainbow bowties, and swirl lollipops
+  - rscdel: Removed clone damage.
+  - rscdel: Removed the decloner gun.
+  - rscdel: "Removed clonexadone.\n/\U0001F191\n<!-- Both :cl:'s are required for\
+      \ the changelog to work! You can put your name to the right of the first :cl:\
+      \ if you want to overwrite your GitHub username as author ingame. -->\n<!--\
+      \ You can use multiple of the same prefix (they're only used for the icon ingame)\
+      \ and delete the unneeded ones. Despite some of the tags, changelogs should\
+      \ generally represent how a player might be affected by the changes rather than\
+      \ a summary of the PR's contents. -->"
+  vorpal-void:
+  - bugfix: yeah here we go, APC recharging, mission accomplished.
+  - code_imp: power_cord.dm, whooping 4 lines of code.
+2023-12-07:
+  Chimpston, atlasle and aBlimpfox:
+  - image: "added Cult Cove, Neon Flamingo and Slowdive bar signs\n/\U0001F191"
+  Cursor.:
+  - rscadd: Old Sol Police hat sprites are usable via Police Cap reskinning.
+  Hatterhat:
+  - bugfix: The Peacekeeper Equipment Vendor has been restored to upstream standard
+      contents with adjustments where needed, meaning that energy holsters are available
+      as a premium option.
+  - bugfix: 'Code-side thing: the reskinned SecTech and reskinned SecDrobe are just
+      renamed, now, and not using entirely redundant resupply packages.'
+  HoodMilk:
+  - rscadd: Changes the chemicals and traits found on xenobotany plants, to be more
+      interesting.
+  KannaLisvern:
+  - bugfix: '*gaspshock being only limited to humans'
+  - rscdel: removes a detective cabinet from blueshift
+  - qol: puts an extra set of gear into the det locker on all maps
+  LT3:
+  - code_imp: Lighting brightness lowered and range increased reflecting new fixture
+      positions
+  Lutowski:
+  - rscadd: You can now craft metal shelves with iron sheets.
+  OrionTheFox:
+  - qol: Wall Lockers can now be rebuilt! The wall mounts can be crafted the same
+      as a default closet, with 2 iron in-hand.
+  - image: resprites (almost) all Skyrat lockers, including wall-mounted ones! They
+      should be much more in line with TG's sprites now.
+  - bugfix: fixed several bugs with wall-mounted lockers, and formatting inconsistencies
+      of modular lockers
+  Plum-but-gayer:
+  - rscadd: Overbearing authority figures rejoice! Holobadges are now available in
+      the neck loadout slot and the Armadyne peacekeeper vendor, now in a pleasant
+      Lopland blue.
+  - bugfix: Detectives can now actually swipe their ID on their holobadges.
+  SkyratBot:
+  - rscdel: Stagger animation no longer fires longer than it should on dead bodies
+      or on dead bodies period.
+  - admin: Spawning in Nar'Sie will no longer automatically trigger the round-ender,
+      you need to specifically start this chain of events through the new VV Dropdown
+      Option "Begin Nar'Sie Roundender".
+  - rscadd: Added a new modular bitrunning domain - Starfront Saloon.
+  - balance: Psyker shuffle domain was made slightly easier and has been given more
+      rewards.
+  - bugfix: Medibots made from advanced medkits works again
+  - bugfix: Medibots made from brute medkits have their bonus healing again
+  - bugfix: Medibots can use robotic emotes again
+  Tattle:
+  - balance: you can no longer teleport into chasms
+  rarytech:
+  - rscadd: Added digi variations for tactical Hawaiian outfits
+  - bugfix: fixed digi blood-red pajamas
+  theselfish:
+  - spellcheck: You can now holo-display your coat. No idea what a Dislpay is.
+  xXPawnStarrXx:
+  - rscadd: Added new storages for tribals/greytiders.
+  - rscadd: Added wooden bowls.
+  - qol: made soups clean, for chefs.

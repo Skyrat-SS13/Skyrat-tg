@@ -13,7 +13,7 @@
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
 	density = FALSE // We lose density and stop bumping passable dense things.
 
-	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+	if(model && model.model_features && (TRAIT_R_TALL in model.model_features))
 		maptext_height = 32 //Offset base chat-height value
 
 		// Resting effects
@@ -44,7 +44,7 @@
 	if(layer == LYING_MOB_LAYER)
 		layer = initial(layer)
 	density = initial(density) // We were prone before, so we become dense and things can bump into us again.
-	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+	if(model && model.model_features && (TRAIT_R_TALL in model.model_features))
 		maptext_height = 48 //Offset value of tallborgs
 
 /mob/living/silicon/robot/proc/rest_style()
@@ -103,7 +103,7 @@
  * model_features is defined in modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm.
  */
 /mob/living/silicon/robot/proc/can_rest()
-	if(model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)))
+	if(model && model.model_features && ((TRAIT_R_WIDE in model.model_features) || (TRAIT_R_TALL in model.model_features)))
 		if(TRAIT_IMMOBILIZED in _status_traits)
 			return FALSE
 		return TRUE

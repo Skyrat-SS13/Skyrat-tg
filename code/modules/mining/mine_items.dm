@@ -30,7 +30,7 @@
 
 /obj/structure/closet/wardrobe/miner
 	name = "mining wardrobe"
-	icon_door = "mixed"
+	icon_door = "mining_wardrobe"
 
 /obj/structure/closet/wardrobe/miner/PopulateContents()
 	new /obj/item/storage/backpack/duffelbag/explorer(src)
@@ -51,7 +51,7 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/miner(src)
 
 /obj/structure/closet/secure_closet/miner
-	name = "miner's equipment"
+	name = "miner's equipment locker"
 	icon_state = "mining"
 	req_access = list(ACCESS_MINING)
 

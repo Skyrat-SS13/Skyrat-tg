@@ -550,7 +550,6 @@ Diagnostic HUDs!
 		holder.icon_state = "hudbatt[RoundDiagBar(chargelvl)]"
 	else
 		holder.icon_state = "hudnobatt"
-
 /*~~~~~~~~~~~~
 	Airlocks!
 ~~~~~~~~~~~~~*/

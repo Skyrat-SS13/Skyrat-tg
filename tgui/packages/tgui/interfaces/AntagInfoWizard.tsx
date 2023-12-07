@@ -52,8 +52,8 @@ type Info = {
 };
 
 // SKYRAT CHANGE height from 630 to 700
-export const AntagInfoWizard = (props, context) => {
-  const { data, act } = useBackend<Info>(context);
+export const AntagInfoWizard = (props) => {
+  const { data, act } = useBackend<Info>();
   const { ritual, objectives, can_change_objective } = data;
 
   return (
@@ -161,7 +161,7 @@ export const AntagInfoWizard = (props, context) => {
   );
 };
 
-const RitualPrintout = (props: { ritual: GrandRitual }, context) => {
+const RitualPrintout = (props: { ritual: GrandRitual }) => {
   const { ritual } = props;
   if (!ritual.next_area) {
     return null;

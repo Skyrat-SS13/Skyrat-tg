@@ -23,16 +23,16 @@
 
 /datum/species/mammal/get_default_mutant_bodyparts()
 	return list(
-		"tail" = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"snout" = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"ears" = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
-		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"fluff" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"head_acc" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
-		"neck_acc" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"tail" = list("Husky", TRUE),
+		"snout" = list("Husky", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Husky", TRUE),
+		"legs" = list("Normal Legs", TRUE),
+		"taur" = list("None", FALSE),
+		"fluff" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"head_acc" = list("None", FALSE),
+		"neck_acc" = list("None", FALSE),
 	)
 
 /obj/item/organ/internal/tongue/mammal
