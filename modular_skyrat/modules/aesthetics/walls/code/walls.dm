@@ -25,3 +25,44 @@
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
+
+// TG false walls, because we override the base falsewall with our aesthetic icon. New ones from TG will have to be added here.
+// Yes, this is dumb
+/obj/structure/falsewall/uranium
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/gold
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/silver
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/diamond
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/plasma
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/bananium
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/sandstone
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/wood
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/bamboo
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/iron
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/abductor
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/titanium
+	icon = 'icons/turf/walls/false_walls.dmi'
+
+/obj/structure/falsewall/plastitanium
+	icon = 'icons/turf/walls/false_walls.dmi'
