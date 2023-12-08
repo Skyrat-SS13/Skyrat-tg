@@ -42,9 +42,9 @@ type Info = {
   goldeneye_keys: GoldeneyeKeys[];
 };
 
-export const AntagInfoAssaultops = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const { data } = useBackend<Info>(context);
+export const AntagInfoAssaultops = (props) => {
+  const [tab, setTab] = useLocalState('tab', 1);
+  const { data } = useBackend<Info>();
   const { required_keys, uploaded_keys, objectives } = data;
   return (
     <Window theme="hackerman" width={650} height={650}>
@@ -131,8 +131,8 @@ export const AntagInfoAssaultops = (props, context) => {
   );
 };
 
-const TargetPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const TargetPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { available_targets, extracted_targets } = data;
   return (
     <Section grow>
@@ -184,8 +184,8 @@ const TargetPrintout = (props, context) => {
 // Utils have goldeneye key list, current heads of staff, extracted heads
 // Common target button, track key button
 
-const KeyPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+const KeyPrintout = (props) => {
+  const { act, data } = useBackend<Info>();
   const { goldeneye_keys } = data;
   return (
     <Section grow>

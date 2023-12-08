@@ -17,13 +17,13 @@ type Story = {
   day: string;
 };
 
-export const StoryManager = (props, context) => {
-  const { data, act } = useBackend<StoryManagerData>(context);
+export const StoryManager = (props) => {
+  const { data, act } = useBackend<StoryManagerData>();
   const { current_stories, archived_stories, current_date } = data;
 
-  const [title, setTitle] = useLocalState(context, 'title', '');
-  const [text, setText] = useLocalState(context, 'text', '');
-  const [id, setID] = useLocalState(context, 'id', '');
+  const [title, setTitle] = useLocalState('title', '');
+  const [text, setText] = useLocalState('text', '');
+  const [id, setID] = useLocalState('id', '');
 
   return (
     <Window width={600} height={800} title="Lorecaster Manager">

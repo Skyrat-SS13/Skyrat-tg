@@ -17,7 +17,6 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NOBREATH,
-		TRAIT_NOCLONELOSS,
 		TRAIT_NO_ZOMBIFY,
 	)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
@@ -266,10 +265,11 @@
 		target.investigate_log("has been feasted upon by the mutant [user].", INVESTIGATE_DEATHS)
 		target.gib()
 		// zero as argument for no instant health update
-		user.adjustBruteLoss(-hp_gained, 0)
-		user.adjustToxLoss(-hp_gained, 0)
-		user.adjustFireLoss(-hp_gained, 0)
-		user.adjustCloneLoss(-hp_gained, 0)
-		user.updatehealth()
+		var/need_health_update
+		need_health_update += user.adjustBruteLoss(-hp_gained, updating_health = FALSE)
+		need_health_update += user.adjustToxLoss(-hp_gained, updating_health = FALSE)
+		need_health_update += user.adjustFireLoss(-hp_gained, updating_health = FALSE)
+		if(need_health_update)
+			user.updatehealth()
 		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, -hp_gained) // Zom Bee gibbers "BRAAAAISNSs!1!"
 		user.set_nutrition(min(user.nutrition + hp_gained, NUTRITION_LEVEL_FULL))

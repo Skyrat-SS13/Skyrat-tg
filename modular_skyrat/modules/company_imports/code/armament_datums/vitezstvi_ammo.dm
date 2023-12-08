@@ -60,20 +60,20 @@
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/auto10mm_rubber
 	item_type = /obj/item/ammo_box/c10mm/rubber
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_lethal
-	item_type = /obj/item/ammo_box/c56mm
-	cost = PAYCHECK_COMMAND
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/strilka_lethal
+	item_type = /obj/item/ammo_box/c310_cargo_box
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_rubber
-	item_type = /obj/item/ammo_box/c56mm/rubber
-	cost = PAYCHECK_COMMAND
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/strilka_rubber
+	item_type = /obj/item/ammo_box/c310_cargo_box/rubber
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_hunting
-	item_type = /obj/item/ammo_box/c56mm/hunting
-	cost = PAYCHECK_COMMAND
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/strilka_ap
+	item_type = /obj/item/ammo_box/c310_cargo_box/piercing
 
-/datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_blank
-	item_type = /obj/item/ammo_box/c56mm/blank
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/cesarzowa_lethal
+	item_type = /obj/item/ammo_box/c27_54cesarzowa
+
+/datum/armament_entry/company_import/vitezstvi/ammo_boxes/cesarzowa_rubber
+	item_type = /obj/item/ammo_box/c27_54cesarzowa/rubber
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sol35
 	item_type = /obj/item/ammo_box/c35sol

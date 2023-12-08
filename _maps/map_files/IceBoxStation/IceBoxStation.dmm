@@ -14164,8 +14164,8 @@
 "ekm" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
-	id = "pharmacy_shutters3";
-	name = "Pharmacy Shutters"
+	id = "chemistry_lower_shutters";
+	name = "Chemistry Exterior Shutters"
 	},
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/hollow/reinforced/middle{
@@ -25847,13 +25847,6 @@
 /obj/machinery/teleport/hub,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
-"hWI" = (
-/obj/effect/turf_decal/box,
-/obj/structure/closet/crate/maint,
-/obj/effect/spawner/random/maintenance/six,
-/obj/structure/sign/poster/official/wtf_is_co2/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/starboard/aft)
 "hWP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -38475,7 +38468,7 @@
 /area/station/maintenance/port/aft)
 "lLE" = (
 /obj/machinery/netpod,
-/obj/machinery/camera/directional/south,
+/obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/cargo/bitrunning/den)
 "lLN" = (
@@ -60390,6 +60383,13 @@
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
 /area/station/engineering/storage/tech)
+"sst" = (
+/obj/effect/turf_decal/box,
+/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/effect/spawner/random/maintenance/six,
+/obj/structure/sign/poster/official/wtf_is_co2/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/starboard/aft)
 "ssv" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/siding/thinplating_new/corner,
@@ -73215,7 +73215,7 @@
 /obj/structure/bed/dogbed/runtime,
 /obj/item/toy/cattoy,
 /obj/machinery/newscaster/directional/north,
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/basic/pet/cat/runtime,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "wwn" = (
@@ -256895,7 +256895,7 @@ fOl
 cyL
 jAI
 bgx
-hWI
+sst
 xxv
 dOK
 vzD

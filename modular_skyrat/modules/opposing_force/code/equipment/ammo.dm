@@ -1,6 +1,10 @@
 /datum/opposing_force_equipment/ammo_exotic
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMO_EXOTIC
 
+/datum/opposing_force_equipment/ammo_exotic/rubber27_54
+	description = "A box of .27-54 Cesarzowa Rubber rounds, useful for incapacitating targets without causing too much extra harm."
+	item_type = /obj/item/ammo_box/c27_54cesarzowa/rubber
+
 /datum/opposing_force_equipment/ammo_exotic/ripper35
 	description = "A box of .35 Sol rounds, hollow-tipped for maximum damage against NON-ARMOURED combatants."
 	item_type = /obj/item/ammo_box/c35sol/ripper
@@ -16,6 +20,14 @@
 /datum/opposing_force_equipment/ammo_exotic/frag40
 	description = "A box of .40 Sol Fragmentation rounds, useful for incapacitating your victim ASAP, no matter if they live or die."
 	item_type = /obj/item/ammo_box/c40sol/fragmentation
+
+/datum/opposing_force_equipment/ammo_exotic/rubber310
+	description = "A box of .310 Strilka Rubber rounds, useful for incapacitating targets without causing too much extra harm."
+	item_type = /obj/item/ammo_box/c310_cargo_box/rubber
+
+/datum/opposing_force_equipment/ammo_exotic/pierce310
+	description = "A box of .310 Strilka Piercing rounds, useful against armored combatants."
+	item_type = /obj/item/ammo_box/c310_cargo_box/piercing
 
 /datum/opposing_force_equipment/ammo_exotic/magnum
 	description = "A box of magnum flechette shotgun shells, the first choice munition of many shotgun fanatics."
