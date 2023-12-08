@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Icon, Box, Button, Section, Table, Divider, Grid, ProgressBar, Collapsible } from '../components';
@@ -22,7 +23,6 @@ const convertPower = (power_in) => {
 
 export const ClockworkSlab = (props) => {
   const [selectedTab, setSelectedTab] = useLocalState(
-    context,
     'selectedTab',
     'Servitude'
   );

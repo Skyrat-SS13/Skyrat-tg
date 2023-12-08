@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Icon, Section, Table, Tooltip, Button } from '../components';

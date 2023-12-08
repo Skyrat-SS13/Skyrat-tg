@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Divider, Button } from '../components';
 import { Window } from '../layouts';

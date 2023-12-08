@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
 import { Box, Button, Section, Table, Icon } from '../components';

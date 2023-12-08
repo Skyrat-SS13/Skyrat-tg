@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useSharedState } from '../backend';
 import { NtosWindow } from '../layouts';
 import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, LabeledList, Box, Icon } from '../components';

@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { round } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box, Collapsible, NumberInput } from '../components';
