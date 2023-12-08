@@ -46,6 +46,10 @@
 	ph = 6
 	taste_description = "skunk"
 
+/datum/reagent/drug/thc/concentrated
+	name = "Concentrated THC"
+	description = "TCH in pure concentrated form"
+
 /datum/reagent/drug/thc/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel relaxed.", "You feel fucked up.", "You feel totally wrecked...")
 	if(M.hud_used!=null)
