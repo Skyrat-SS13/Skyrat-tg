@@ -15,10 +15,6 @@
 	anomaly_path = /obj/effect/anomaly/hallucination
 
 /datum/round_event/anomaly/anomaly_hallucination/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Hallucinatory event detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE
-=======
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("Hallucinatory event detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 937a6a79834 (Fixed false anomaly announcements. (#80137))
+	priority_announce("Hallucinatory event detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce("Hallucinatory event detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")

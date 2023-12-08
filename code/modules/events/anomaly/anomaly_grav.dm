@@ -27,10 +27,6 @@
 	anomaly_path = /obj/effect/anomaly/grav/high
 
 /datum/round_event/anomaly/anomaly_grav/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Gravitational anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert" , ANNOUNCER_GRAVANOMALIES) //SKYRAT EDIT CHANGE
-=======
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("Gravitational anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert" , ANNOUNCER_GRANOMALIES)
->>>>>>> 937a6a79834 (Fixed false anomaly announcements. (#80137))
+	priority_announce("Gravitational anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert" , ANNOUNCER_GRAVANOMALIES) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce("Gravitational anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert" , ANNOUNCER_GRANOMALIES)

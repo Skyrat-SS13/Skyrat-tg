@@ -14,10 +14,6 @@
 	anomaly_path = /obj/effect/anomaly/pyro
 
 /datum/round_event/anomaly/anomaly_pyro/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_PYROANOMALIES) //SKYRAT EDIT CHANGE
-=======
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 937a6a79834 (Fixed false anomaly announcements. (#80137))
+	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_PYROANOMALIES) //SKYRAT EDIT CHANGE - ORIGINAL: priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
