@@ -63,6 +63,12 @@
 	target.mind.has_exploitables_override = TRUE
 	target.mind.handle_exploitables()
 
+/datum/opposing_force_equipment/uplink/custom_announcement
+	name = "Custom Announcement"
+	item_type = /obj/item/device/traitor_announcer
+	admin_note = "Ask players to put the message inside the 'Reason' box, the item adminlogs but won't give a chance to preview. Can be VV'd to give more 'uses'."
+	description = "A one-use device that lets you make an announcement tailored to your choice."
+
 /datum/opposing_force_equipment/uplink/power_outage
 	name = "Power Outage"
 	description = "A virus will be uploaded to the engineering processing servers to force a routine power grid check, forcing all APCs on the station to be temporarily disabled."
@@ -95,8 +101,3 @@
 /datum/opposing_force_equipment/uplink/market_crash/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/market_crash) in SSevents.control
 	event.run_event()
-
-/datum/opposing_force_equipment/uplink/fake_announcer
-	name = "Fake Announcement"
-	item_type = /obj/item/device/traitor_announcer
-	description = "A one-use device that lets you make an announcement of your choice, sending it to the station under the guise of the captain's authority."
