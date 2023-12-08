@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Icon, Box, Button, Section, Table, Divider, Grid, ProgressBar, Collapsible } from '../components';
@@ -20,9 +21,8 @@ const convertPower = (power_in) => {
   return Math.round((value + Number.EPSILON) * 100) / 100 + units[power];
 };
 
-export const ClockworkSlab = (props, context) => {
+export const ClockworkSlab = (props) => {
   const [selectedTab, setSelectedTab] = useLocalState(
-    context,
     'selectedTab',
     'Servitude'
   );
@@ -64,7 +64,7 @@ export const ClockworkSlab = (props, context) => {
   );
 };
 
-const ClockworkHelp = (props, context) => {
+const ClockworkHelp = (props) => {
   return (
     <Fragment>
       <Collapsible title="Where To Start" color="average" open={1}>
@@ -199,8 +199,8 @@ const ClockworkHelp = (props, context) => {
   );
 };
 
-const ClockworkSpellList = (props, context) => {
-  const { act, data } = useBackend(context);
+const ClockworkSpellList = (props) => {
+  const { act, data } = useBackend();
   const { selectedTab } = props;
   const { scriptures = [] } = data;
   return (
@@ -260,8 +260,8 @@ const ClockworkSpellList = (props, context) => {
   );
 };
 
-const ClockworkOverview = (props, context) => {
-  const { data } = useBackend(context);
+const ClockworkOverview = (props) => {
+  const { data } = useBackend();
   const { power, cogs, vitality, max_power, max_vitality } = data;
   return (
     <Box>
@@ -294,7 +294,7 @@ const ClockworkOverview = (props, context) => {
   );
 };
 
-const ClockworkOverviewStat = (props, context) => {
+const ClockworkOverviewStat = (props) => {
   const { title, iconName, amount, maxAmount, unit, overrideText } = props;
   return (
     <Box height="22px" fontSize="16px">
@@ -321,12 +321,8 @@ const ClockworkOverviewStat = (props, context) => {
   );
 };
 
-const ClockworkButtonSelection = (props, context) => {
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'selectedTab',
-    {}
-  );
+const ClockworkButtonSelection = (props) => {
+  const [selectedTab, setSelectedTab] = useLocalState('selectedTab', {});
   const tabs = ['Servitude', 'Preservation', 'Structures'];
   return (
     <Table>

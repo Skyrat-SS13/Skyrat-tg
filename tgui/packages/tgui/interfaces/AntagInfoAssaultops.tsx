@@ -1,10 +1,9 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
 import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
-// SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
-// SKYRAT EDIT END
 
 type Objectives = {
   count: number;
@@ -120,11 +119,9 @@ export const AntagInfoAssaultops = (props) => {
             {tab === 1 && <TargetPrintout />}
             {tab === 2 && <KeyPrintout />}
           </Stack.Item>
-          {/* SKYRAT EDIT ADDITION START */}
           <Stack.Item>
             <Rules />
           </Stack.Item>
-          {/* SKYRAT EDIT ADDITION END */}
         </Stack>
       </Window.Content>
     </Window>
