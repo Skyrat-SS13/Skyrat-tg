@@ -5,7 +5,7 @@
 	name = "wall"
 	desc = "A huge chunk of metal used to separate rooms."
 	anchored = TRUE
-	icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: icon = 'icons/turf/walls/false_walls.dmi'
+	icon = 'icons/turf/walls/false_walls.dmi'
 	icon_state = "wall-open"
 	base_icon_state = "wall"
 	layer = LOW_OBJ_LAYER
@@ -20,7 +20,7 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 	material_flags = MATERIAL_EFFECTS
 	/// The icon this falsewall is faking being. we'll switch out our icon with this when we're in fake mode
-	var/fake_icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: var/fake_icon = 'icons/turf/walls/wall.dmi'
+	var/fake_icon = 'icons/turf/walls/wall.dmi'
 	var/mineral = /obj/item/stack/sheet/iron
 	var/mineral_amount = 2
 	var/walltype = /turf/closed/wall
@@ -156,7 +156,7 @@
 /obj/structure/falsewall/reinforced
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
-	fake_icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: fake_icon = 'icons/turf/walls/reinforced_wall.dmi'
+	fake_icon = 'icons/turf/walls/reinforced_wall.dmi'
 	icon_state = "reinforced_wall-open"
 	base_icon_state = "reinforced_wall"
 	walltype = /turf/closed/wall/r_wall
