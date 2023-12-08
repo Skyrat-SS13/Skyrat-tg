@@ -26,7 +26,13 @@
 		impact_area = placer.findValidArea()
 
 /datum/round_event/anomaly/announce(fake)
+<<<<<<< HEAD
 	priority_announce("Energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE
+=======
+	if(isnull(impact_area))
+		impact_area = placer.findValidArea()
+	priority_announce("Energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Anomaly Alert")
+>>>>>>> 937a6a79834 (Fixed false anomaly announcements. (#80137))
 
 /datum/round_event/anomaly/start()
 	var/turf/anomaly_turf

@@ -15,4 +15,10 @@
 	anomaly_path = /obj/effect/anomaly/bhole
 
 /datum/round_event/anomaly/anomaly_vortex/announce(fake)
+<<<<<<< HEAD
 	priority_announce("Localized high-intensity vortex anomaly detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name]", "Anomaly Alert", ANNOUNCER_VORTEXANOMALIES) //SKYRAT EDIT CHANGE
+=======
+	if(isnull(impact_area))
+		impact_area = placer.findValidArea()
+	priority_announce("Localized high-intensity vortex anomaly detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name]", "Anomaly Alert")
+>>>>>>> 937a6a79834 (Fixed false anomaly announcements. (#80137))
