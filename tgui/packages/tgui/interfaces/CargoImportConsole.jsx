@@ -2,10 +2,10 @@ import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Divider, Button } from '../components';
 import { Window } from '../layouts';
 
-export const CargoImportConsole = (props, context) => {
-  const [category, setCategory] = useLocalState(context, 'category', '');
-  const [weapon, setArmament] = useLocalState(context, 'weapon');
-  const { act, data } = useBackend(context);
+export const CargoImportConsole = (props) => {
+  const [category, setCategory] = useLocalState('category', '');
+  const [weapon, setArmament] = useLocalState('weapon');
+  const { act, data } = useBackend();
   const {
     armaments_list = [],
     budget_points,

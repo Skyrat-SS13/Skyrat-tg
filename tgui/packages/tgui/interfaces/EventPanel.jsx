@@ -3,8 +3,8 @@ import { Section, Button, NoticeBox, LabeledList, Stack } from '../components';
 import { toFixed } from 'common/math';
 import { Window } from '../layouts';
 
-export const EventPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const EventPanel = (props) => {
+  const { act, data } = useBackend();
   const {
     event_list = [],
     end_time,

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Section, Divider, Flex, Box, BlockQuote, Input, LabeledList, Button } from '../components';
 
-export const NifSoulPoem = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NifSoulPoem = (props) => {
+  const { act, data } = useBackend();
   const {
     name_to_send,
     text_to_send,

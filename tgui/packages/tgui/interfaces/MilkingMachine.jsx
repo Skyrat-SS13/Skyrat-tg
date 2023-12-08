@@ -4,8 +4,8 @@ import { Window } from '../layouts';
 
 let palette;
 
-export const MilkingMachine = (props, context) => {
-  const { data } = useBackend(context);
+export const MilkingMachine = (props) => {
+  const { data } = useBackend();
   const { machine_color } = data;
 
   colorChange(machine_color);
@@ -21,8 +21,8 @@ export const MilkingMachine = (props, context) => {
   );
 };
 
-const MilkingMachineContent = (props, context) => {
-  const { act, data } = useBackend(context);
+const MilkingMachineContent = (props) => {
+  const { act, data } = useBackend();
   const {
     mobName,
     mobCanLactate,
@@ -101,7 +101,7 @@ const MilkingMachineContent = (props, context) => {
                   <Stack.Item grow={1}>
                     <Stack vertical>
                       <Stack.Item>
-                        {modeButtonStates('Off', data, palette, context)}
+                        {modeButtonStates('Off', data, palette)}
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -119,13 +119,13 @@ const MilkingMachineContent = (props, context) => {
                 </Stack>
                 <Stack>
                   <Stack.Item grow>
-                    {modeButtonStates('Low', data, palette, context)}
+                    {modeButtonStates('Low', data, palette)}
                   </Stack.Item>
                   <Stack.Item grow>
-                    {modeButtonStates('Medium', data, palette, context)}
+                    {modeButtonStates('Medium', data, palette)}
                   </Stack.Item>
                   <Stack.Item grow>
-                    {modeButtonStates('Hard', data, palette, context)}
+                    {modeButtonStates('Hard', data, palette)}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -542,8 +542,8 @@ const MilkingMachineContent = (props, context) => {
   );
 };
 
-const modeButtonStates = (Name, data, palette, context) => {
-  const { act } = useBackend(context);
+const modeButtonStates = (Name, data, palette) => {
+  const { act } = useBackend();
   let ModeNameCapital = capitalize(data.mode);
   let action = 'set' + Name + 'Mode';
 
@@ -615,8 +615,8 @@ const modeButtonStates = (Name, data, palette, context) => {
   }
 };
 
-const organButtonStates = (Name, data, palette, context) => {
-  const { act } = useBackend(context);
+const organButtonStates = (Name, data, palette) => {
+  const { act } = useBackend();
   let OrganNameCapital;
   if (data.current_selected_organ_name !== null) {
     OrganNameCapital = capitalize(data.current_selected_organ_name);

@@ -30,8 +30,8 @@ const formatURLs = (text) => {
   return <div>{parts}</div>;
 };
 
-export const ExaminePanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ExaminePanel = (props) => {
+  const { act, data } = useBackend();
   const {
     character_name,
     obscured,

@@ -3,8 +3,8 @@ import { useBackend } from '../backend';
 import { NoticeBox, Section, Stack, Button, LabeledList, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
-export const MicrofusionGunControl = (props, context) => {
-  const { act, data } = useBackend(context);
+export const MicrofusionGunControl = (props) => {
+  const { act, data } = useBackend();
   const { cell_data } = data;
   const { phase_emitter_data } = data;
   const {
