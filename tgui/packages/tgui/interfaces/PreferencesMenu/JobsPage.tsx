@@ -3,8 +3,13 @@ import { classes } from 'common/react';
 import { PropsWithChildren, ReactNode } from 'react';
 import { useBackend } from '../../backend';
 import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
-import { logger } from '../../logging';
-import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
+import {
+  createSetPreference,
+  Job,
+  JoblessRole,
+  JobPriority,
+  PreferencesMenuData,
+} from './data';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
@@ -114,7 +119,8 @@ const PriorityButtons = (props: {
         paddingLeft: '0.3em',
         paddingTop: '0.12em', // SKYRAT EDIT ADDITION - Add some vertical padding
         paddingBottom: '0.12em', // SKYRAT EDIT ADDITION - To make this look nicer
-      }}>
+      }}
+    >
       {isOverflow ? (
         <>
           <PriorityButton
@@ -255,10 +261,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
             width="50%"
             style={{
               paddingLeft: '0.3em',
-            }}>
-            {' '}
+            }}
+          >
             {
-              // SKYRAT EDIT
+              // SKYRAT EDIT CHANGE START - ORIGINAL: {name}
               !job.alt_titles ? (
                 name
               ) : (
@@ -271,7 +277,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                   }
                 />
               )
-              // SKYRAT EDIT END
+              // SKYRAT EDIT CHANGE END
             }
           </Stack.Item>
         </Tooltip>

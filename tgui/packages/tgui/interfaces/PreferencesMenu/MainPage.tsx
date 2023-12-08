@@ -1,14 +1,32 @@
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE - Adds Dropdown
-import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from './data';
+import {
+  Autofocus,
+  Box,
+  Button,
+  Flex,
+  LabeledList,
+  Popper,
+  Stack,
+  TrackOutsideClicks,
+  Dropdown, // SKYRAT EDIT ADDITION
+} from '../../components';
+import {
+  createSetPreference,
+  PreferencesMenuData,
+  RandomSetting,
+  ServerData,
+} from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { MultiNameInput, NameInput } from './names';
 import { Gender, GENDERS } from './preferences/gender';
 import features from './preferences/features';
-import { FeatureChoicedServerData, FeatureValueInput } from './preferences/features/base';
+import {
+  FeatureChoicedServerData,
+  FeatureValueInput,
+} from './preferences/features/base';
 import { filterMap, sortBy } from 'common/collections';
 import { useRandomToggleState } from './useRandomToggleState';
 
@@ -100,7 +118,8 @@ const ChoicedSelection = (props: {
           CLOTHING_SELECTION_CELL_SIZE * CLOTHING_SELECTION_MULTIPLIER
         }px`,
         width: `${CLOTHING_SELECTION_CELL_SIZE * CLOTHING_SELECTION_WIDTH}px`,
-      }}>
+      }}
+    >
       <Stack vertical fill>
         <Stack.Item>
           <Stack fill>
@@ -123,7 +142,8 @@ const ChoicedSelection = (props: {
                   fontWeight: 'bold',
                   fontSize: '14px',
                   textAlign: 'center',
-                }}>
+                }}
+              >
                 Select {props.name.toLowerCase()}
               </Box>
             </Stack.Item>
@@ -146,7 +166,8 @@ const ChoicedSelection = (props: {
                     basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
                     style={{
                       padding: '5px',
-                    }}>
+                    }}
+                  >
                     <Button
                       onClick={() => {
                         props.onSelect(name);
@@ -157,7 +178,8 @@ const ChoicedSelection = (props: {
                       style={{
                         height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
                         width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
-                      }}>
+                      }}
+                    >
                       <Box
                         className={classes([
                           'preferences32x32',
@@ -217,7 +239,8 @@ const GenderButton = (props: {
         ) : (
           <> </>
         )
-      }>
+      }
+    >
       <Button
         onClick={() => {
           setGenderMenuOpen(!genderMenuOpen);
@@ -285,7 +308,8 @@ const MainFeature = (props: {
         ) : (
           <> </>
         )
-      }>
+      }
+    >
       <Button
         onClick={() => {
           if (isOpen) {
@@ -300,7 +324,8 @@ const MainFeature = (props: {
         }}
         position="relative"
         tooltip={catalog.name}
-        tooltipPosition="right">
+        tooltipPosition="right"
+      >
         <Box
           className={classes([
             'preferences32x32',
@@ -368,7 +393,8 @@ export const PreferenceList = (props: {
       }}
       overflowX="hidden"
       overflowY="auto"
-      maxHeight={props.maxHeight}>
+      maxHeight={props.maxHeight}
+    >
       <LabeledList>
         {sortPreferences(Object.entries(props.preferences)).map(
           ([featureId, value]) => {
@@ -388,7 +414,8 @@ export const PreferenceList = (props: {
                 key={featureId}
                 label={feature.name}
                 tooltip={feature.description}
-                verticalAlign="middle">
+                verticalAlign="middle"
+              >
                 <Stack fill>
                   {randomSetting && (
                     <Stack.Item>
@@ -555,7 +582,8 @@ export const MainPage = (props: { openSpecies: () => void }) => {
 
                   <Stack.Item
                     // SKYRAT EDIT ADDITION
-                    position="relative">
+                    position="relative"
+                  >
                     <Dropdown
                       width="100%"
                       selected={data.preview_selection}

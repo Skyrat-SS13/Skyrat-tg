@@ -3,9 +3,16 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createElement, ReactNode } from 'react';
 
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-// SKYRAT EDIT - adds TextArea to imports
-import { Box, Button, Dropdown, Input, NumberInput, Slider, Stack, TextArea } from '../../../../components';
-// SKYRAT EDIT END
+import {
+  Box,
+  Button,
+  Dropdown,
+  Input,
+  NumberInput,
+  Slider,
+  Stack,
+  TextArea, // SKYRAT EDIT ADDITION
+} from '../../../../components';
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -54,7 +61,8 @@ export const FeatureColorInput = (props: FeatureValueProps<string>) => {
         props.act('set_color_preference', {
           preference: props.featureId,
         });
-      }}>
+      }}
+    >
       <Stack align="center" fill>
         <Stack.Item>
           <Box
@@ -68,8 +76,8 @@ export const FeatureColorInput = (props: FeatureValueProps<string>) => {
               width: '11px',
               ...(props.shrink
                 ? {
-                  margin: '1px',
-                }
+                    margin: '1px',
+                  }
                 : {}),
             }}
           />
@@ -144,10 +152,7 @@ export type FeatureChoicedServerData = {
 export type FeatureChoiced = Feature<string, string, FeatureChoicedServerData>;
 
 const capitalizeFirstLetter = (text: string) =>
-  text
-    .toString()
-    .charAt(0)
-    .toUpperCase() + text.toString().slice(1);
+  text.toString().charAt(0).toUpperCase() + text.toString().slice(1);
 
 export const StandardizedDropdown = (props: {
   choices: string[];
@@ -414,7 +419,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
               preference: props.featureId,
               value: index + 1,
             });
-          }}>
+          }}
+        >
           <Stack align="center" fill>
             <Stack.Item>
               <Box
@@ -428,8 +434,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   width: '11px',
                   ...(props.shrink
                     ? {
-                      'margin': '1px',
-                    }
+                        margin: '1px',
+                      }
                     : {}),
                 }}
               />
