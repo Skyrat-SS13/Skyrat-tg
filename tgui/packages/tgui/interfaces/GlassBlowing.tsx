@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Box, Button, Flex, Stack, Section, ProgressBar, AnimatedNumber, Table } from '../components';
 import { toFixed } from 'common/math';
 import { BooleanLike } from 'common/react';

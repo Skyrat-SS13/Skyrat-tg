@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, Section } from '../components';
