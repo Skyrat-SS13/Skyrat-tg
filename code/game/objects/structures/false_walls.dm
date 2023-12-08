@@ -72,9 +72,21 @@
 
 /obj/structure/falsewall/update_icon_state()
 	if(opening)
+<<<<<<< HEAD
 		icon_state = "fwall_[density ? "opening" : "closing"]"
 		return ..()
 	icon_state = density ? "[base_icon_state]-[smoothing_junction]" : "fwall_open"
+=======
+		icon = initial(icon)
+		icon_state = "[base_icon_state]-[density ? "opening" : "closing"]"
+		return ..()
+	if(density)
+		icon = fake_icon
+		icon_state = "[base_icon_state]-[smoothing_junction]"
+	else
+		icon = initial(icon)
+		icon_state = "[base_icon_state]-open"
+>>>>>>> 4dce402e72d (Fixes false walls icons using the wrong icon files (#80175))
 	return ..()
 
 /obj/structure/falsewall/proc/ChangeToWall(delete = 1)
