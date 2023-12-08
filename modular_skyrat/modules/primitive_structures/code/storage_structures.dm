@@ -5,7 +5,7 @@
 	icon_state = "shelf_wood"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/rack/wooden/MouseDrop_T(obj/object, mob/user, params)
 	. = ..()
@@ -37,7 +37,7 @@
 	base_icon_state = "barrel"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	resistance_flags = FLAMMABLE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/structure/closet/crate/wooden/storage_barrel/crowbar_act(mob/living/user, obj/item/tool)
 	user.balloon_alert_to_viewers("disassembling...")
