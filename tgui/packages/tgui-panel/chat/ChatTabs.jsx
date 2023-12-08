@@ -13,6 +13,7 @@ import { openChatSettings } from '../settings/actions';
 const UnreadCountWidget = ({ value }) => (
   <Box
     style={{
+<<<<<<< HEAD
       'font-size': '0.7em',
       'border-radius': '0.25em',
       'width': '1.7em',
@@ -20,6 +21,16 @@ const UnreadCountWidget = ({ value }) => (
       'background-color': 'crimson',
       'color': '#fff',
     }}>
+=======
+      fontSize: '0.7em',
+      borderRadius: '0.25em',
+      width: '1.7em',
+      lineHeight: '1.55em',
+      backgroundColor: 'crimson',
+      color: '#fff',
+    }}
+  >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
     {Math.min(value, 99)}
   </Box>
 );
@@ -45,9 +56,10 @@ export const ChatTabs = (props, context) => {
                 dispatch(
                   changeChatPage({
                     pageId: page.id,
-                  })
+                  }),
                 )
-              }>
+              }
+            >
               {page.name}
             </Tabs.Tab>
           ))}

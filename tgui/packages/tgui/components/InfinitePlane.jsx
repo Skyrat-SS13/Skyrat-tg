@@ -139,7 +139,8 @@ export class InfinitePlane extends Component {
             overflow: 'hidden',
             position: 'relative',
           },
-        })}>
+        })}
+      >
         <div
           onMouseDown={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
@@ -157,12 +158,22 @@ export class InfinitePlane extends Component {
           onMouseDown={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
           style={{
+<<<<<<< HEAD
             'position': 'fixed',
             'transform': `translate(${finalLeft}px, ${finalTop}px) scale(${zoom})`,
             'transform-origin': 'top left',
             'height': '100%',
             'width': '100%',
           }}>
+=======
+            position: 'fixed',
+            transform: `translate(${finalLeft}px, ${finalTop}px) scale(${zoom})`,
+            transformOrigin: 'top left',
+            height: '100%',
+            width: '100%',
+          }}
+        >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           {children}
         </div>
 
@@ -174,7 +185,8 @@ export class InfinitePlane extends Component {
             <ProgressBar
               minValue={ZOOM_MIN_VAL}
               value={zoom}
-              maxValue={ZOOM_MAX_VAL}>
+              maxValue={ZOOM_MAX_VAL}
+            >
               {zoom}x
             </ProgressBar>
           </Stack.Item>

@@ -1,6 +1,23 @@
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
 import { Component, Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from '../components';
+=======
+import { BooleanLike } from 'common/react';
+import { FakeTerminal } from '../components/FakeTerminal';
+import { useBackend } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Icon,
+  LabeledList,
+  Modal,
+  NoticeBox,
+  Section,
+} from '../components';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
 import { NtosWindow } from '../layouts';
 
 const CONTRACT_STATUS_INACTIVE = 1;
@@ -210,11 +227,15 @@ export const StatusPane = (props) => {
           />
         </>
       }
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
       buttons={
         <Box bold mr={1}>
           {data.contract_rep} Rep
         </Box>
       }>
+=======
+    >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
       <Grid>
         <Grid.Column size={0.85}>
           <LabeledList>
@@ -226,8 +247,14 @@ export const StatusPane = (props) => {
                   disabled={data.redeemable_tc <= 0}
                   onClick={() => act('PRG_redeem_TC')}
                 />
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
               }>
               {data.redeemable_tc}
+=======
+              }
+            >
+              {String(redeemable_tc)}
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
               {data.earned_tc}
@@ -279,7 +306,8 @@ const ContractsTab = (props) => {
             disabled={!data.ongoing_contract || data.extraction_enroute}
             onClick={() => act('PRG_call_extraction')}
           />
-        }>
+        }
+      >
         {contracts.map((contract) => {
           if (
             data.ongoing_contract &&
@@ -316,7 +344,8 @@ const ContractsTab = (props) => {
                     }
                   />
                 </>
-              }>
+              }
+            >
               <Grid>
                 <Grid.Column>{contract.message}</Grid.Column>
                 <Grid.Column size={0.5}>
@@ -333,8 +362,14 @@ const ContractsTab = (props) => {
       <Section
         title="Dropoff Locator"
         textAlign="center"
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
         opacity={data.ongoing_contract ? 100 : 0}>
         <Box bold>{data.dropoff_direction}</Box>
+=======
+        opacity={ongoing_contract ? 100 : 0}
+      >
+        <Box bold>{dropoff_direction}</Box>
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
       </Section>
     </>
   );

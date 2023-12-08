@@ -27,10 +27,18 @@ export const OutfitEditor = (props) => {
               <Stack.Item
                 grow={1}
                 style={{
+<<<<<<< HEAD
                   'overflow': 'hidden',
                   'white-space': 'nowrap',
                   'text-overflow': 'ellipsis',
                 }}>
+=======
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                 <Button
                   ml={0.5}
                   color="transparent"
@@ -66,7 +74,8 @@ export const OutfitEditor = (props) => {
                 />
               </Stack.Item>
             </Stack>
-          }>
+          }
+        >
           <Box textAlign="center">
             <Stack mb={2}>
               <OutfitSlot name="Headgear" icon="hard-hat" slot="head" />
@@ -130,7 +139,8 @@ const OutfitSlot = (props) => {
         height={2}
         bold
         // todo: intuitive way to clear items
-        onClick={(e) => act(e.ctrlKey ? 'ctrlClick' : 'click', { slot })}>
+        onClick={(e) => act(e.ctrlKey ? 'ctrlClick' : 'click', { slot })}
+      >
         <Icon name={icon} rotation={iconRot} />
         {name}
       </Button>
@@ -158,11 +168,18 @@ const OutfitSlot = (props) => {
       <Box
         color="label"
         style={{
+<<<<<<< HEAD
           'overflow': 'hidden',
           'white-space': 'nowrap',
           'text-overflow': 'ellipsis',
+=======
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
         }}
-        title={currItem?.path}>
+        title={currItem?.path}
+      >
         {currItem?.name || 'Empty'}
       </Box>
     </Stack.Item>

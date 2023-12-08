@@ -258,6 +258,7 @@ export const Box: SFC<BoxProps> = (props: BoxProps) => {
   if (typeof children === 'function') {
     return children(computeBoxProps(props));
   }
+<<<<<<< HEAD
   const computedClassName =
     typeof className === 'string'
       ? className + ' ' + computeBoxClassName(rest)
@@ -272,6 +273,17 @@ export const Box: SFC<BoxProps> = (props: BoxProps) => {
     ChildFlags.UnknownChildren,
     computedProps,
     undefined
+=======
+
+  // Render the component
+  return createElement(
+    typeof as === 'string' ? as : 'div',
+    {
+      ...computedProps,
+      className: computedClassName,
+    },
+    children,
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
   );
 };
 

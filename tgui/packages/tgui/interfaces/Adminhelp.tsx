@@ -20,11 +20,11 @@ export const Adminhelp = (props) => {
   } = data;
   const [requestForAdmin, setRequestForAdmin] = useLocalState(
     'request_for_admin',
-    false
+    false,
   );
   const [currentlyInputting, setCurrentlyInputting] = useLocalState(
     'confirm_request',
-    false
+    false,
   );
   const [ahelpMessage, setAhelpMessage] = useLocalState('ahelp_message', '');
 
@@ -33,8 +33,14 @@ export const Adminhelp = (props) => {
     <Window title="Create Adminhelp" theme="admin" height={300} width={500}>
       <Window.Content
         style={{
+<<<<<<< HEAD
           'background-image': 'none',
         }}>
+=======
+          backgroundImage: 'none',
+        }}
+      >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
         <Stack vertical fill>
           <Stack.Item grow>
             <TextArea
@@ -56,8 +62,14 @@ export const Adminhelp = (props) => {
                     fontFamily="arial"
                     backgroundColor="grey"
                     style={{
+<<<<<<< HEAD
                       'font-style': 'normal',
                     }}>
+=======
+                      fontStyle: 'normal',
+                    }}
+                  >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                     Input &apos;{confirmationText}&apos; to proceed.
                     <Input
                       placeholder="Confirmation Prompt"

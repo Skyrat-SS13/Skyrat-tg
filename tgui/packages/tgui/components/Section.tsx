@@ -50,6 +50,7 @@ export class Section extends Component<SectionProps> {
     }
   }
 
+<<<<<<< HEAD
   componentWillUnmount() {
     if (this.scrollable || this.scrollableHorizontal) {
       removeScrollableNode(this.scrollableRef.current as HTMLElement);
@@ -96,6 +97,30 @@ export class Section extends Component<SectionProps> {
             className="Section__content">
             {children}
           </div>
+=======
+  return (
+    <div
+      className={classes([
+        'Section',
+        fill && 'Section--fill',
+        fitted && 'Section--fitted',
+        scrollable && 'Section--scrollable',
+        scrollableHorizontal && 'Section--scrollableHorizontal',
+        className,
+        computeBoxClassName(rest),
+      ])}
+      {...computeBoxProps(rest)}
+    >
+      {hasTitle && (
+        <div className="Section__title">
+          <span className="Section__titleText">{title}</span>
+          <div className="Section__buttons">{buttons}</div>
+        </div>
+      )}
+      <div className="Section__rest">
+        <div onScroll={onScroll as any} className="Section__content">
+          {children}
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
         </div>
       </div>
     );

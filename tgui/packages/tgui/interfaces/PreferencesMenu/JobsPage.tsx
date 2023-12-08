@@ -3,14 +3,24 @@ import { classes } from 'common/react';
 import { InfernoNode, SFC } from 'inferno';
 import { useBackend } from '../../backend';
 import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
+<<<<<<< HEAD
 import { logger } from '../../logging';
 import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
+=======
+import {
+  createSetPreference,
+  Job,
+  JoblessRole,
+  JobPriority,
+  PreferencesMenuData,
+} from './data';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
   sortBy<[string, Job]>(
     ([key, _]) => (key === head ? -1 : 1),
-    ([key, _]) => key
+    ([key, _]) => key,
   )(entries);
 
 const PRIORITY_BUTTON_SIZE = '18px';
@@ -48,7 +58,7 @@ type CreateSetPriority = (priority: JobPriority | null) => () => void;
 const createSetPriorityCache: Record<string, CreateSetPriority> = {};
 
 const createCreateSetPriorityFromName = (
-  jobName: string
+  jobName: string,
 ): CreateSetPriority => {
   if (createSetPriorityCache[jobName] !== undefined) {
     return createSetPriorityCache[jobName];
@@ -109,11 +119,20 @@ const PriorityButtons = (props: {
     <Box
       inline // SKYRAT EDIT
       style={{
+<<<<<<< HEAD
         'align-items': 'center',
         'height': '100%',
         'textAlign': 'end', // SKYRAT EDIT
         'padding': '0.3em', // SKYRAT EDIT
       }}>
+=======
+        alignItems: 'center',
+        height: '100%',
+        justifyContent: 'flex-end',
+        paddingLeft: '0.3em',
+      }}
+    >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
       {isOverflow ? (
         <>
           <PriorityButton
@@ -264,6 +283,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
             className="job-name"
             width="50%"
             style={{
+<<<<<<< HEAD
               'padding-left': '0.3em',
             }}>
             {' '}
@@ -283,6 +303,12 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
               )
               // SKYRAT EDIT END
             }
+=======
+              paddingLeft: '0.3em',
+            }}
+          >
+            {name}
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           </Stack.Item>
         </Tooltip>
 
@@ -319,7 +345,7 @@ const Department: SFC<{ department: string }> = (props) => {
 
         const jobsForDepartment = sortJobs(
           Object.entries(jobs).filter(([_, job]) => job.department === name),
-          department.head
+          department.head,
         );
 
         logger.log(className);

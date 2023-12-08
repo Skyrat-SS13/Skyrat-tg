@@ -33,7 +33,8 @@ export const OutfitManager = (props) => {
                 onClick={() => act('new')}
               />
             </>
-          }>
+          }
+        >
           <Stack vertical>
             {outfits?.map((outfit) => (
               <Stack.Item key={outfit.ref}>
@@ -42,6 +43,7 @@ export const OutfitManager = (props) => {
                     grow={1}
                     shrink={1}
                     style={{
+<<<<<<< HEAD
                       'overflow': 'hidden',
                       'white-space': 'nowrap',
                       'text-overflow': 'ellipsis',
@@ -52,6 +54,19 @@ export const OutfitManager = (props) => {
                         'overflow': 'hidden',
                         'white-space': 'nowrap',
                         'text-overflow': 'ellipsis',
+=======
+                      overflow: 'hidden',
+                      whiteSpace: 'nowrap',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    <Button
+                      fluid
+                      style={{
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                       }}
                       content={outfit.name}
                       onClick={() => act('edit', { outfit: outfit.ref })}

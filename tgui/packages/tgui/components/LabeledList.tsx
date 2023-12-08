@@ -63,8 +63,14 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         <Box
           as="span"
           style={{
+<<<<<<< HEAD
             'border-bottom': '2px dotted rgba(255, 255, 255, 0.8)',
           }}>
+=======
+            borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
+          }}
+        >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           {innerLabel}
         </Box>
       </Tooltip>
@@ -80,7 +86,8 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         // Kinda flipped because we want nowrap as default. Cleaner CSS this way though.
         !labelWrap && 'LabeledList__label--nowrap',
       ])}
-      verticalAlign={verticalAlign}>
+      verticalAlign={verticalAlign}
+    >
       {innerLabel}
     </Box>
   );
@@ -94,7 +101,8 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         textAlign={textAlign}
         className={classes(['LabeledList__cell', 'LabeledList__content'])}
         colSpan={buttons ? undefined : 2}
-        verticalAlign={verticalAlign}>
+        verticalAlign={verticalAlign}
+      >
         {content}
         {children}
       </Box>
@@ -118,9 +126,16 @@ const LabeledListDivider = (props: LabeledListDividerProps) => {
       <td
         colSpan={3}
         style={{
+<<<<<<< HEAD
           'padding-top': padding,
           'padding-bottom': padding,
         }}>
+=======
+          paddingTop: padding,
+          paddingBottom: padding,
+        }}
+      >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
         <Divider />
       </td>
     </tr>

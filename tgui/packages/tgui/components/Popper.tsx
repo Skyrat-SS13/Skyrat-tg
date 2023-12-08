@@ -1,6 +1,18 @@
 import { createPopper } from '@popperjs/core';
 import { ArgumentsOf } from 'common/types';
+<<<<<<< HEAD
 import { Component, findDOMfromVNode, InfernoNode, render } from 'inferno';
+=======
+import {
+  Component,
+  CSSProperties,
+  JSXElementConstructor,
+  PropsWithChildren,
+  ReactElement,
+  RefObject,
+} from 'react';
+import { findDOMNode, render } from 'react-dom';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
 
 type PopperProps = {
   popperContent: InfernoNode;
@@ -51,7 +63,7 @@ export class Popper extends Component<PopperProps> {
       this.popperInstance = createPopper(
         domNode,
         this.renderedContent,
-        options
+        options,
       );
     });
   }

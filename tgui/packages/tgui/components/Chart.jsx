@@ -9,7 +9,34 @@ import { pureComponentHooks } from 'common/react';
 import { Component, createRef } from 'inferno';
 import { Box } from './Box';
 
+<<<<<<< HEAD:tgui/packages/tgui/components/Chart.jsx
 const normalizeData = (data, scale, rangeX, rangeY) => {
+=======
+type Props = {
+  data: number[][];
+} & Partial<{
+  fillColor: string;
+  rangeX: [number, number];
+  rangeY: [number, number];
+  strokeColor: string;
+  strokeWidth: number;
+}> &
+  BoxProps;
+
+type State = {
+  viewBox: [number, number];
+};
+
+type Point = number[];
+type Range = [number, number];
+
+const normalizeData = (
+  data: Point[],
+  scale: number[],
+  rangeX?: Range,
+  rangeY?: Range,
+) => {
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/components/Chart.tsx
   if (data.length === 0) {
     return [];
   }
@@ -89,6 +116,7 @@ class LineChart extends Component {
     const points = dataToPolylinePoints(normalized);
     return (
       <Box position="relative" {...rest}>
+<<<<<<< HEAD:tgui/packages/tgui/components/Chart.jsx
         {(props) => (
           <div ref={this.ref} {...props}>
             <svg
@@ -112,6 +140,30 @@ class LineChart extends Component {
             </svg>
           </div>
         )}
+=======
+        <Box {...divProps}>
+          <svg
+            viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}
+            preserveAspectRatio="none"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              overflow: 'hidden',
+            }}
+          >
+            <polyline
+              transform={`scale(1, -1) translate(0, -${viewBox[1]})`}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+              points={points}
+            />
+          </svg>
+        </Box>
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/components/Chart.tsx
       </Box>
     );
   }

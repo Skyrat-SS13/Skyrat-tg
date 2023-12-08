@@ -27,9 +27,16 @@ const CornerText = (props: {
       style={{
         position: 'relative',
         left: align === 'left' ? '2px' : '-2px',
+<<<<<<< HEAD
         'text-align': align,
         'text-shadow': '1px 1px 1px #555',
       }}>
+=======
+        textAlign: align,
+        textShadow: '1px 1px 1px #555',
+      }}
+    >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
       {children}
     </Box>
   );
@@ -359,13 +366,15 @@ export const StripMenu = (props) => {
                       style={{
                         width: BUTTON_DIMENSIONS,
                         height: BUTTON_DIMENSIONS,
-                      }}>
+                      }}
+                    >
                       <Box
                         style={{
                           position: 'relative',
                           width: '100%',
                           height: '100%',
-                        }}>
+                        }}
+                      >
                         <Button
                           onClick={() => {
                             act('use', {
@@ -382,7 +391,8 @@ export const StripMenu = (props) => {
                             width: '100%',
                             height: '100%',
                             padding: 0,
-                          }}>
+                          }}
+                        >
                           {slot.image && (
                             <Box
                               as="img"
@@ -410,8 +420,14 @@ export const StripMenu = (props) => {
                               position: 'absolute',
                               bottom: 0,
                               right: 0,
+<<<<<<< HEAD
                               'z-index': 2,
                             }}>
+=======
+                              zIndex: 2,
+                            }}
+                          >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                             <Icon name={alternateAction.icon} />
                           </Button>
                         )}

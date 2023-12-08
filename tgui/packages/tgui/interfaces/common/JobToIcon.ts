@@ -1,49 +1,55 @@
 export type AvailableJob = keyof typeof JOB2ICON;
 
 /** Icon map of jobs to their fontawesome5 (free) counterpart. */
+<<<<<<< HEAD
 // SKYRAT EDIT START - ORIGINAL: export const JOB2ICONs = {
 const BASEICONS = {
   // SKYRAT EDIT - END
   'AI': 'eye',
   'Assistant': 'toolbox',
+=======
+export const JOB2ICON = {
+  AI: 'eye',
+  Assistant: 'toolbox',
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
   'Atmospheric Technician': 'fan',
-  'Bartender': 'cocktail',
+  Bartender: 'cocktail',
   'Bit Avatar': 'code',
-  'Bitrunner': 'gamepad',
-  'Botanist': 'seedling',
-  'Captain': 'crown',
+  Bitrunner: 'gamepad',
+  Botanist: 'seedling',
+  Captain: 'crown',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
   'CentCom Head Intern': 'pen-fancy',
   'CentCom Intern': 'pen-alt',
   'CentCom Official': 'medal',
-  'Chaplain': 'cross',
-  'Chef': 'utensils',
-  'Chemist': 'prescription-bottle',
+  Chaplain: 'cross',
+  Chef: 'utensils',
+  Chemist: 'prescription-bottle',
   'Chief Engineer': 'user-astronaut',
   'Chief Medical Officer': 'user-md',
-  'Clown': 'face-grin-tears',
-  'Cook': 'utensils',
-  'Coroner': 'skull',
-  'Curator': 'book',
+  Clown: 'face-grin-tears',
+  Cook: 'utensils',
+  Coroner: 'skull',
+  Curator: 'book',
   'Cyber Police': 'qrcode',
-  'Cyborg': 'robot',
-  'Detective': 'user-secret',
-  'Geneticist': 'dna',
+  Cyborg: 'robot',
+  Detective: 'user-secret',
+  Geneticist: 'dna',
   'Head of Personnel': 'dog',
   'Head of Security': 'user-shield',
-  'Janitor': 'soap',
-  'Lawyer': 'gavel',
+  Janitor: 'soap',
+  Lawyer: 'gavel',
   'Medical Doctor': 'staff-snake',
-  'Mime': 'comment-slash',
-  'Paramedic': 'truck-medical',
+  Mime: 'comment-slash',
+  Paramedic: 'truck-medical',
   'Personal AI': 'mobile-alt',
-  'Prisoner': 'lock',
-  'Psychologist': 'brain',
-  'Quartermaster': 'sack-dollar',
+  Prisoner: 'lock',
+  Psychologist: 'brain',
+  Quartermaster: 'sack-dollar',
   'Research Director': 'user-graduate',
-  'Roboticist': 'battery-half',
-  'Scientist': 'flask',
+  Roboticist: 'battery-half',
+  Scientist: 'flask',
   'Security Officer (Cargo)': 'shield-halved',
   'Security Officer (Engineering)': 'shield-halved',
   'Security Officer (Medical)': 'shield-halved',
@@ -52,6 +58,7 @@ const BASEICONS = {
   'Shaft Miner': 'digging',
   'Station Engineer': 'gears',
   'Syndicate Operative': 'dragon',
+<<<<<<< HEAD
   'Virologist': 'virus',
   'Warden': 'handcuffs',
   // SKYRAT EDIT START - Skyrat-exclusive jobs have icons too
@@ -66,6 +73,10 @@ const BASEICONS = {
   'Science Guard': 'shield-heart',
   'Security Medic': 'heart-pulse',
   // SKYRAT EDIT END
+=======
+  Virologist: 'virus',
+  Warden: 'handcuffs',
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
 } as const;
 
 // SKYRAT EDIT START - ALT TITLES

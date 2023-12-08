@@ -13,7 +13,7 @@ type PreferenceChild = {
 };
 
 const binaryInsertPreference = binaryInsertWith<PreferenceChild>(
-  (child) => child.name
+  (child) => child.name,
 );
 
 const sortByName = sortBy<[string, PreferenceChild[]]>(([name]) => name);
@@ -24,7 +24,7 @@ export const GamePreferencesPage = (props) => {
   const gamePreferences: Record<string, PreferenceChild[]> = {};
 
   for (const [featureId, value] of Object.entries(
-    data.character_preferences.game_preferences
+    data.character_preferences.game_preferences,
   )) {
     const feature = features[featureId];
 
@@ -35,8 +35,14 @@ export const GamePreferencesPage = (props) => {
         <Box
           as="span"
           style={{
+<<<<<<< HEAD
             'border-bottom': '2px dotted rgba(255, 255, 255, 0.8)',
           }}>
+=======
+            borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
+          }}
+        >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           {nameInner}
         </Box>
       );
@@ -86,12 +92,17 @@ export const GamePreferencesPage = (props) => {
 
     gamePreferences[category] = binaryInsertPreference(
       gamePreferences[category] || [],
-      entry
+      entry,
     );
   }
 
+<<<<<<< HEAD
   const gamePreferenceEntries: [string, InfernoNode][] = sortByName(
     Object.entries(gamePreferences)
+=======
+  const gamePreferenceEntries: [string, ReactNode][] = sortByName(
+    Object.entries(gamePreferences),
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
   ).map(([category, preferences]) => {
     return [category, preferences.map((entry) => entry.children)];
   });

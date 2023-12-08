@@ -1,6 +1,22 @@
 import { scale, toFixed } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/NtosNetDownloader.jsx
 import { Box, Button, Stack, Icon, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from '../components';
+=======
+import { createSearch } from 'common/string';
+import {
+  Box,
+  Button,
+  Stack,
+  Icon,
+  Input,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Tabs,
+} from '../components';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/NtosNetDownloader.tsx
 import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
 import { NtosWindow } from '../layouts';
@@ -22,10 +38,11 @@ export const NtosNetDownloader = (props) => {
   } = data;
   const all_categories = ['All'].concat(categories);
   const downloadpercentage = toFixed(
-    scale(downloadcompletion, 0, downloadsize) * 100
+    scale(downloadcompletion, 0, downloadsize) * 100,
   );
   const [selectedCategory, setSelectedCategory] = useLocalState(
     'category',
+<<<<<<< HEAD:tgui/packages/tgui/interfaces/NtosNetDownloader.jsx
     all_categories[0]
   );
   const items = flow([
@@ -40,6 +57,25 @@ export const NtosNetDownloader = (props) => {
     sortBy(
       (program) => -program.compatible,
       (program) => program.filedesc
+=======
+    categories[0],
+  );
+  const [searchItem, setSearchItem] = useLocalState('searchItem', '');
+  const search = createSearch<ProgramData>(
+    searchItem,
+    (program) => program.filedesc,
+  );
+  const items = flow([
+    searchItem.length > 0
+      ? // If we have a query, search everything for it.
+        filter(search)
+      : // Otherwise, show respective programs for the category.
+        filter((program: ProgramData) => program.category === selectedCategory),
+    // This sorts all programs in the lists by name and compatibility
+    sortBy(
+      (program: ProgramData) => !program.compatible,
+      (program: ProgramData) => program.filedesc,
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189)):tgui/packages/tgui/interfaces/NtosNetDownloader.tsx
     ),
   ])(programs);
   const disk_free_space = downloading
@@ -78,11 +114,13 @@ export const NtosNetDownloader = (props) => {
                     tooltip={`${downloadname}.prg downloaded`}
                   />
                 ))
-              }>
+              }
+            >
               <ProgressBar
                 value={downloading ? disk_used + downloadcompletion : disk_used}
                 minValue={0}
-                maxValue={disk_size}>
+                maxValue={disk_size}
+              >
                 <Box textAlign="left">
                   {`${disk_free_space} GQ free of ${disk_size} GQ`}
                 </Box>
@@ -97,7 +135,8 @@ export const NtosNetDownloader = (props) => {
                 <Tabs.Tab
                   key={category}
                   selected={category === selectedCategory}
-                  onClick={() => setSelectedCategory(category)}>
+                  onClick={() => setSelectedCategory(category)}
+                >
                   {category}
                 </Tabs.Tab>
               ))}
@@ -138,7 +177,8 @@ const Program = (props) => {
           width="48px"
           textAlign="right"
           color="label"
-          nowrap>
+          nowrap
+        >
           {program.size} GQ
         </Stack.Item>
         <Stack.Item shrink={0} width="134px" textAlign="right">

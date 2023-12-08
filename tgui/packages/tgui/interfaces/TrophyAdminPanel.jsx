@@ -23,12 +23,19 @@ export const TrophyAdminPanel = (props) => {
               <Table.Row key={trophy.ref} className="candystripe">
                 <Table.Cell
                   style={{
+<<<<<<< HEAD
                     'word-break': 'break-all',
                     'word-wrap': 'break-word',
                     'color': !trophy.is_valid
+=======
+                    wordBreak: 'break-all',
+                    wordWrap: 'break-word',
+                    color: !trophy.is_valid
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                       ? 'rgba(255, 0, 0, 0.5)'
                       : 'inherit',
-                  }}>
+                  }}
+                >
                   {decodeHtmlEntities(trophy.path)}
                 </Table.Cell>
                 <Table.Cell>
@@ -41,9 +48,16 @@ export const TrophyAdminPanel = (props) => {
                 </Table.Cell>
                 <Table.Cell
                   style={{
+<<<<<<< HEAD
                     'word-break': 'break-all',
                     'word-wrap': 'break-word',
                   }}>
+=======
+                    wordBreak: 'break-all',
+                    wordWrap: 'break-word',
+                  }}
+                >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                   {decodeHtmlEntities(trophy.message)}
                 </Table.Cell>
                 <Table.Cell>
@@ -56,9 +70,16 @@ export const TrophyAdminPanel = (props) => {
                 </Table.Cell>
                 <Table.Cell
                   style={{
+<<<<<<< HEAD
                     'word-break': 'break-all',
                     'word-wrap': 'break-word',
                   }}>
+=======
+                    wordBreak: 'break-all',
+                    wordWrap: 'break-word',
+                  }}
+                >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                   {decodeHtmlEntities(trophy.placer_key)}
                 </Table.Cell>
                 <Table.Cell>

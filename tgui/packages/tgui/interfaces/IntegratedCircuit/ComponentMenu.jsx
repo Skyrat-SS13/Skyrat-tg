@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 import { Section, Button, Dropdown, Stack, Input, NoticeBox } from '../../components';
 import { Component } from 'inferno';
+=======
+import {
+  Section,
+  Button,
+  Dropdown,
+  Stack,
+  Input,
+  NoticeBox,
+} from '../../components';
+import { Component } from 'react';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
 import { shallowDiffers } from 'common/react';
 import { fetchRetry } from '../../http';
 import { resolveAsset } from '../../assets';
@@ -26,7 +38,7 @@ export class ComponentMenu extends Component {
   async populateServerData() {
     if (!fetchServerData) {
       fetchServerData = fetchRetry(
-        resolveAsset('circuit_components.json')
+        resolveAsset('circuit_components.json'),
       ).then((response) => response.json());
     }
 
@@ -34,7 +46,7 @@ export class ComponentMenu extends Component {
 
     this.setState({
       componentData: circuitData.sort(
-        (a, b) => a.name.toLowerCase() < b.name.toLowerCase()
+        (a, b) => a.name.toLowerCase() < b.name.toLowerCase(),
       ),
     });
   }
@@ -98,7 +110,8 @@ export class ComponentMenu extends Component {
         onMouseUp={(event) => {
           event.preventDefault();
         }}
-        scrollable>
+        scrollable
+      >
         <Stack vertical>
           <Stack.Item>
             <Dropdown
@@ -145,7 +158,8 @@ export class ComponentMenu extends Component {
                 <Stack.Item
                   key={val.type}
                   mt={1}
-                  onMouseDown={(e) => onMouseDownComponent(e, val)}>
+                  onMouseDown={(e) => onMouseDownComponent(e, val)}
+                >
                   <DisplayComponent component={val} fixedSize />
                 </Stack.Item>
               ))}

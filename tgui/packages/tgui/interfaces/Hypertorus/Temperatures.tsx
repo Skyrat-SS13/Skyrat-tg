@@ -137,7 +137,7 @@ export const HypertorusTemperatures = (props) => {
   const maxTemperature = Math.max(...temperatures);
   const minTemperature = Math.max(
     2.73,
-    Math.min(20, ...temperatures.filter((d) => d > 0))
+    Math.min(20, ...temperatures.filter((d) => d > 0)),
   );
 
   if (power_level === 6) {
@@ -168,8 +168,14 @@ export const HypertorusTemperatures = (props) => {
     return (
       (!!value || force) && (
         <Box
+<<<<<<< HEAD
           class="hypertorus-temperatures__y-axis-tick-anchor"
           top={`${height - y}px`}>
+=======
+          className="hypertorus-temperatures__y-axis-tick-anchor"
+          top={`${height - y}px`}
+        >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           <Box className="hypertorus-temperatures__y-axis-tick" />
           {tooltip ? <Tooltip content={tooltip}>{label}</Tooltip> : label}
         </Box>
@@ -236,7 +242,8 @@ export const HypertorusTemperatures = (props) => {
         <Flex
           overflowY="hidden"
           className="hypertorus-temperatures__chart"
-          justify="space-around">
+          justify="space-around"
+        >
           <TemperatureBar
             label="Fusion"
             value={internal_fusion_temperature}

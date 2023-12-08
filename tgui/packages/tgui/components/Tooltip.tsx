@@ -112,7 +112,7 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
           {
             ...DEFAULT_OPTIONS,
             placement: this.props.position || 'auto',
-          }
+          },
         );
 
         Tooltip.singletonPopper = singletonPopper;

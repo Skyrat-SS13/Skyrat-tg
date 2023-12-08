@@ -202,11 +202,20 @@ class PaintCanvas extends Component<PaintCanvasProps> {
         width={width}
         height={height}
         {...rest}
+<<<<<<< HEAD
         onMouseDown={this.handleStartDrawing}
         onMouseMove={this.handleDrawing}
         onMouseUp={this.handleEndDrawing}
         onMouseOut={this.handleEndDrawing}
         onContextMenu={this.handleDropper}>
+=======
+        onMouseDown={this.handleStartDrawing as any}
+        onMouseMove={this.handleDrawing as any}
+        onMouseUp={this.handleEndDrawing as any}
+        onMouseOut={this.handleEndDrawing as any}
+        onContextMenu={this.handleDropper as any}
+      >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
         Canvas failed to render.
       </canvas>
     );
@@ -256,7 +265,8 @@ export const Canvas = (props) => {
         75 +
         (data.show_plaque ? average_plaque_height : 0) +
         (data.editable && data.paint_tool_palette ? palette_height : 0)
-      }>
+      }
+    >
       <Window.Content>
         <Flex align="start" direction="row">
           {!!data.paint_tool_palette && (
@@ -274,7 +284,8 @@ export const Canvas = (props) => {
                   or input a new one with Right-Click.
                 `
                     : '')
-                }>
+                }
+              >
                 <Icon name="question-circle" color="blue" size={1.5} m={0.5} />
               </Tooltip>
             </Flex.Item>
@@ -358,7 +369,12 @@ export const Canvas = (props) => {
                 textColor="black"
                 textAlign="left"
                 backgroundColor="white"
+<<<<<<< HEAD
                 style={{ 'border-style': 'inset' }}>
+=======
+                style={{ borderStyle: 'inset' }}
+              >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
                 <Box mb={1} fontSize="18px" bold>
                   {decodeHtmlEntities(data.name)}
                 </Box>

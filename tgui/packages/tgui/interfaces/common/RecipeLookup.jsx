@@ -1,5 +1,13 @@
 import { useBackend } from '../../backend';
-import { Box, Button, Chart, Flex, Icon, LabeledList, Tooltip } from '../../components';
+import {
+  Box,
+  Button,
+  Chart,
+  Flex,
+  Icon,
+  LabeledList,
+  Tooltip,
+} from '../../components';
 
 export const RecipeLookup = (props) => {
   const { recipe, bookmarkedReactions } = props;
@@ -176,8 +184,14 @@ export const RecipeLookup = (props) => {
           height="50px"
           position="relative"
           style={{
+<<<<<<< HEAD
             'background-color': 'black',
           }}>
+=======
+            backgroundColor: 'black',
+          }}
+        >
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
           <Chart.Line
             fillPositionedParent
             data={recipe.thermodynamics}
@@ -204,10 +218,12 @@ export const RecipeLookup = (props) => {
               recipe.isColdRecipe
                 ? 'The temperature at which it is underheated, causing negative effects on the reaction.'
                 : 'The minimum temperature needed for this reaction to start. Heating it up past this point will increase the reaction rate.'
-            }>
+            }
+          >
             <Flex.Item
               position="relative"
-              textColor={recipe.isColdRecipe && 'red'}>
+              textColor={recipe.isColdRecipe && 'red'}
+            >
               {recipe.isColdRecipe
                 ? recipe.explodeTemp + 'K'
                 : recipe.tempMin + 'K'}
@@ -220,10 +236,12 @@ export const RecipeLookup = (props) => {
                 recipe.isColdRecipe
                   ? 'The minimum temperature needed for this reaction to start. Heating it up past this point will increase the reaction rate.'
                   : 'The temperature at which it is overheated, causing negative effects on the reaction.'
-              }>
+              }
+            >
               <Flex.Item
                 position="relative"
-                textColor={!recipe.isColdRecipe && 'red'}>
+                textColor={!recipe.isColdRecipe && 'red'}
+              >
                 {recipe.isColdRecipe
                   ? recipe.tempMin + 'K'
                   : recipe.explodeTemp + 'K'}

@@ -2,10 +2,18 @@ import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
 import { Box, Section, Stack } from '../components';
 import { Window } from '../layouts';
+<<<<<<< HEAD
 import { ObjectivePrintout, Objective, ReplaceObjectivesButton } from './common/Objectives';
 // SKYRAT EDIT BEGIN
 import { Rules } from './AntagInfoRules';
 // SKYRAT EDIT END
+=======
+import {
+  ObjectivePrintout,
+  Objective,
+  ReplaceObjectivesButton,
+} from './common/Objectives';
+>>>>>>> 2631b0b8ef1 (Replaces prettierx with the normal prettier (#80189))
 
 const teleportstyle = {
   color: 'yellow',
