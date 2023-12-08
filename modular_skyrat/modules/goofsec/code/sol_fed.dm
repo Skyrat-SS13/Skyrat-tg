@@ -337,7 +337,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1
+	)
 
 	id_trim = /datum/id_trim/solfed
 
@@ -368,7 +369,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/rwd/loaded = 1,
 		/obj/item/beamout_tool = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		)
+	)
 	id_trim = /datum/id_trim/solfed/atmos
 
 /obj/item/radio/headset/headset_solfed/atmos
@@ -398,7 +399,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911/emt
 	name = "911 Response: EMT"
-	back = /obj/item/storage/backpack/duffelbag/deforest_surgical/stocked
+	back = /obj/item/storage/backpack/medic
 	uniform = /obj/item/clothing/under/sol_emt
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_med
@@ -413,8 +414,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	l_pocket = /obj/item/storage/medkit/civil_defense
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
+		/obj/item/emergency_bed = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1,
+	)
 
 	id_trim = /datum/id_trim/solfed
 
@@ -460,7 +463,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/storage/box/lethalshot = 2,
 		/obj/item/solfed_reporter/treason_reporter = 1,
-		/obj/item/beamout_tool = 1)
+		/obj/item/beamout_tool = 1,
+	)
 
 	id_trim = /datum/id_trim/solfed
 
