@@ -229,8 +229,7 @@ export const GlassBlowing = (props) => {
                 black: [-Infinity, 0.05],
               }}
               style={{
-                'background-image':
-                  'linear-gradient(to right, blue, yellow, red)',
+                backgroundImage: 'linear-gradient(to right, blue, yellow, red)',
               }}>
               <AnimatedNumber
                 value={glass.timeLeft}
@@ -246,7 +245,7 @@ export const GlassBlowing = (props) => {
               value={0 / 0}
               ranges={{}}
               style={{
-                'background-image': 'grey',
+                backgroundImage: 'grey',
               }}>
               <AnimatedNumber value={0} />
             </ProgressBar>
