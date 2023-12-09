@@ -297,12 +297,12 @@ This also applies to files, do not comment out entire files, just delete them in
 
 **This does not apply to non-modular changes.**
 
-### Modular TGUI
+## Modular TGUI
 
 TGUI is another exceptional case, since it uses javascript and isn't able to be modular in the same way that DM code is.
 ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
 
-## Modifying upstream files
+### Modifying upstream files
 
 When modifying upstream TGUI files the same rules apply as modifying upstream DM code, however the grammar for comments may be slightly different.
 
