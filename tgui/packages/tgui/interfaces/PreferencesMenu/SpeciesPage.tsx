@@ -309,7 +309,7 @@ const SpeciesPageInner = (props: {
                         /* SKYRAT EDIT START - Scrollable description */
                         title="Description"
                         maxHeight="14vh"
-                        scrollable:true
+                        scrollable
                         /* SKYRAT EDIT END*/
                       >
                         {currentSpecies.desc}
