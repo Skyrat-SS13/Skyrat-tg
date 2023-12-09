@@ -1,7 +1,12 @@
 /obj/item/chameleon
+<<<<<<< HEAD
 	name = "clandestine device" //skyrat edit
 	desc = "A vaguely insidious device with a scanner and large projector." // SKYRAT EDIT
 	icon = 'icons/obj/device.dmi'
+=======
+	name = "chameleon projector"
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
+>>>>>>> 71a1fee2f13 (Explodes device.dmi (#80025))
 	icon_state = "shield0"
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
