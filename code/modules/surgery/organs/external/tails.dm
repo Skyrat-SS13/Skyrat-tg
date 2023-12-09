@@ -138,11 +138,7 @@
 	///A reference to the paired_spines, since for some fucking reason tail spines are tied to the spines themselves.
 	var/obj/item/organ/external/spines/paired_spines
 
-<<<<<<< HEAD
-/obj/item/organ/external/tail/lizard/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-=======
 /obj/item/organ/external/tail/lizard/Insert(mob/living/carbon/receiver, special, movement_flags)
->>>>>>> 54ab1e3936b (Organ movement refactor *Un-nullspaces your organs* (#79687))
 	. = ..()
 	if(.)
 		paired_spines = bodypart_owner.owner.get_organ_slot(ORGAN_SLOT_EXTERNAL_SPINES)

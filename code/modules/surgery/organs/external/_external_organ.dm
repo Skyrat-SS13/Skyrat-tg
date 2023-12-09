@@ -57,19 +57,7 @@
 	if(restyle_flags)
 		RegisterSignal(src, COMSIG_ATOM_RESTYLE, PROC_REF(on_attempt_feature_restyle))
 
-<<<<<<< HEAD
-/obj/item/organ/external/Destroy()
-	if(owner)
-		Remove(owner, special = TRUE)
-	else if(ownerlimb)
-		remove_from_limb()
-
-	return ..()
-
-/obj/item/organ/external/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
-=======
 /obj/item/organ/external/mob_insert(mob/living/carbon/receiver, special, movement_flags)
->>>>>>> 54ab1e3936b (Organ movement refactor *Un-nullspaces your organs* (#79687))
 	if(!should_external_organ_apply_to(type, receiver))
 		stack_trace("adding a [type] to a [receiver.type] when it shouldn't be!")
 
@@ -81,11 +69,8 @@
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
 		var/feature_name = receiver.dna.features[bodypart_overlay.feature_key]
 		if (isnull(feature_name))
-			bodypart_overlay.set_appearance_from_dna(receiver.dna) // SKYRAT EDIT CHANGE - ORIGINAL: feature_name = receiver.dna.species.external_organs[type]
-		// SKYRAT EDIT CHANGE START - Puts the following line in an else block
-		else
-			bodypart_overlay.set_appearance_from_name(feature_name)
-		// SKYRAT EDIT CHANGE END
+			feature_name = receiver.dna.species.external_organs[type]
+		bodypart_overlay.set_appearance_from_name(feature_name)
 		bodypart_overlay.imprint_on_next_insertion = FALSE
 
 	if(external_bodytypes)
