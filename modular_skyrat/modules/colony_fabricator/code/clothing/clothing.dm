@@ -153,6 +153,7 @@
 	inhand_icon_state = null
 	alternate_worn_layer = FACEMASK_LAYER + 0.5
 	subspace_transmission = FALSE
+	radiosound = 'modular_skyrat/modules/colony_fabricator/sound/morse_signal.wav'
 
 /obj/item/radio/headset/headset_frontier_colonist/Initialize(mapload)
 	. = ..()
