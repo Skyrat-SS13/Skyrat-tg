@@ -1,9 +1,10 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Button, NoticeBox, Input, Section, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 
-export const CommandReportConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const CommandReportConsole = (props) => {
+  const { act, data } = useBackend();
   const {
     command_report_content,
     command_report_title,

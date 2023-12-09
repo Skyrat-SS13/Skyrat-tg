@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Stack } from '../components';
 import { Objective } from './common/Objectives';

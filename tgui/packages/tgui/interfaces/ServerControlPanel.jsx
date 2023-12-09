@@ -1,9 +1,10 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { NoticeBox, Section, Button, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const MicrofusionGunControl = (props, context) => {
-  const { act, data } = useBackend(context);
+export const MicrofusionGunControl = (props) => {
+  const { act, data } = useBackend();
   const { current_players, servers = [] } = data;
   return (
     <Window title="Server Control Panel" width={500} height={700}>
