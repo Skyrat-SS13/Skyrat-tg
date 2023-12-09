@@ -30,13 +30,7 @@
 /atom/proc/blowrod_act_secondary(mob/living/user, obj/item/tool)
 	return
 
-/**
- *Tool behavior procedure. Redirects to tool-specific procs by default.
- *
- * You can override it to catch all tool interactions, for use in complex deconstruction procs.
- *
- * Must return  parent proc ..() in the end if overridden
- */
+
 /atom/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	var/act_result
 	var/signal_result
