@@ -313,7 +313,17 @@ In general try to keep your edit comments on the same line as the change. Prefer
 ```js
 <Button
 	onClick={() => act('spin', { high_quality: true })}
-	icon = "rat" // SKYRAT EDIT CHANGE
+	icon = "rat" // SKYRAT EDIT ADDITION
+</Button>
+```
+
+```js
+<Button
+	onClick={() => act('spin', { high_quality: true })}
+	// SKYRAT EDIT ADDITION START - another example, multiline changes
+	icon = "rat"
+	tooltip = "spin the rat."
+	// SKYRAT EDIT ADDITION END
 </Button>
 ```
 
