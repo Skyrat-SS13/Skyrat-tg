@@ -341,14 +341,8 @@
 	add_fingerprint(user)
 
 /obj/item/assembly/flash/hypnotic
-<<<<<<< HEAD
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance." //SKYRAT EDIT
-	flashing_overlay = "flash-hypno"
-=======
 	desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance."
 	flashing_overlay = "mindflash"
->>>>>>> 71a1fee2f13 (Explodes device.dmi (#80025))
 	light_color = LIGHT_COLOR_PINK
 	cooldown = 20
 
