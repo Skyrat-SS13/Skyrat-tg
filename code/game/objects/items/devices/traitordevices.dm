@@ -287,7 +287,6 @@ effective or pretty fucking useless.
 	desc = "Device used to disrupt nearby radio communication."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "jammer"
-	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12
 
