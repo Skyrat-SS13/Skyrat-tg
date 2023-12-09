@@ -82,7 +82,7 @@
 	/// If this job's mail goodies compete with generic goodies.
 	var/exclusive_mail_goodies = FALSE
 
-	/// Bitfield of departments this job belongs to. These get setup when adding the job into the department, on job datum creation.
+	/// Bitfield of departments this job belongs to. These get setup when adding the job into the department, on job datum creation. (BITFLAGS in code\__DEFINES\jobs.dm)
 	var/departments_bitflags = NONE
 
 	/// If specified, this department will be used for the preferences menu.
