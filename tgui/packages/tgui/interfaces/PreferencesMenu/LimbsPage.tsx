@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { Box, Stack, Section, Dropdown, Button, ColorBox } from '../../components';
 import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';

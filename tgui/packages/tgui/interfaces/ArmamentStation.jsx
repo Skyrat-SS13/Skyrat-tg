@@ -1,11 +1,12 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Divider, Button, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const ArmamentStation = (props, context) => {
-  const [category, setCategory] = useLocalState(context, 'category', '');
-  const [weapon, setArmament] = useLocalState(context, 'weapon');
-  const { act, data } = useBackend(context);
+export const ArmamentStation = (props) => {
+  const [category, setCategory] = useLocalState('category', '');
+  const [weapon, setArmament] = useLocalState('weapon');
+  const { act, data } = useBackend();
   const { armaments_list = [], card_inserted, card_points, card_name } = data;
   return (
     <Window theme="armament" title="Armament Station" width={1000} height={600}>

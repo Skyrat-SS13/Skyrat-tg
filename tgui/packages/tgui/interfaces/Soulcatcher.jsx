@@ -1,9 +1,10 @@
+// THIS IS A SKYRAT UI FILE
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList, ProgressBar } from '../components';
 
-export const Soulcatcher = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Soulcatcher = (props) => {
+  const { act, data } = useBackend();
   const {
     require_approval,
     current_rooms = [],
