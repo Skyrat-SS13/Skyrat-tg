@@ -5,7 +5,7 @@
 	category = PROGRAM_CATEGORY_SCI
 	program_icon_state = "robot"
 	extended_desc = "A remote controller used for giving basic commands to non-sentient robots."
-	requires_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 6
 	tgui_id = "NtosRoboControl"
 	program_icon = "robot"

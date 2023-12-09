@@ -4,7 +4,7 @@
 	category = PROGRAM_CATEGORY_SCI
 	program_icon_state = "research"
 	extended_desc = "Connect to the internal science server in order to assist in station research efforts."
-	requires_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 10
 	tgui_id = "NtosTechweb"
 	program_icon = "atom"

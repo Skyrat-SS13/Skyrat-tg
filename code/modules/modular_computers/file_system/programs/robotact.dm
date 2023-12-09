@@ -4,11 +4,18 @@
 	category = PROGRAM_CATEGORY_SCI
 	extended_desc = "A built-in app for cyborg self-management and diagnostics."
 	ui_header = "robotact.gif" //DEBUG -- new icon before PR
+<<<<<<< HEAD
 	program_icon_state = "command"
 	requires_ntnet = FALSE
 	available_on_ntnet = FALSE
 	undeletable = TRUE
 	usage_flags = PROGRAM_TABLET
+=======
+	program_open_overlay = "command"
+	program_flags = NONE
+	undeletable = TRUE
+	can_run_on_flags = PROGRAM_PDA
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	size = 5
 	tgui_id = "NtosRobotact"
 	program_icon = "terminal"

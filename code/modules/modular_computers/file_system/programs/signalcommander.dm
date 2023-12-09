@@ -7,7 +7,11 @@
 	size = 2
 	tgui_id = "NtosSignaler"
 	program_icon = "satellite-dish"
+<<<<<<< HEAD
 	usage_flags = PROGRAM_TABLET | PROGRAM_LAPTOP
+=======
+	can_run_on_flags = PROGRAM_PDA | PROGRAM_LAPTOP
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	///What is the saved signal frequency?
 	var/signal_frequency = FREQ_SIGNALER
 	/// What is the saved signal code?

@@ -4,8 +4,13 @@
 	category = PROGRAM_CATEGORY_SUPL
 	program_icon_state = "request"
 	extended_desc = "Nanotrasen Internal Requisition Network interface for supply purchasing using a department budget account."
+<<<<<<< HEAD
 	requires_ntnet = TRUE
 	usage_flags = PROGRAM_LAPTOP | PROGRAM_TABLET
+=======
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
+	can_run_on_flags = PROGRAM_LAPTOP | PROGRAM_PDA
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	size = 10
 	tgui_id = "NtosCargo"
 	///Are you actually placing orders with it?

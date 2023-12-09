@@ -2,15 +2,19 @@
 	filename = "statusdisplay"
 	filedesc = "Status Display"
 	program_icon = "signal"
+<<<<<<< HEAD
 	program_icon_state = "generic"
 	requires_ntnet = TRUE
+=======
+	program_open_overlay = "generic"
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	size = 1
 
 	extended_desc = "An app used to change the message on the station status displays."
 	tgui_id = "NtosStatus"
 
-	usage_flags = PROGRAM_ALL
-	available_on_ntnet = FALSE
+	can_run_on_flags = PROGRAM_ALL
+	program_flags = PROGRAM_REQUIRES_NTNET
 
 	var/upper_text = ""
 	var/lower_text = ""

@@ -3,7 +3,7 @@
 	filedesc = "NT Frontier"
 	category = PROGRAM_CATEGORY_SCI
 	extended_desc = "Scientific paper publication and navigation software."
-	requires_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 12
 	program_icon_state = "research"
 	tgui_id = "NtosScipaper"

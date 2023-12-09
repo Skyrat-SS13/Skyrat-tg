@@ -7,8 +7,13 @@
 	program_icon_state = "crew"
 	tgui_id = "NtosRecords"
 	size = 4
+<<<<<<< HEAD
 	usage_flags = PROGRAM_TABLET | PROGRAM_LAPTOP
 	available_on_ntnet = FALSE
+=======
+	can_run_on_flags = PROGRAM_PDA | PROGRAM_LAPTOP
+	program_flags = NONE
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	detomatix_resistance = DETOMATIX_RESIST_MINOR
 
 	var/mode
@@ -19,7 +24,7 @@
 	program_icon = "book-medical"
 	extended_desc = "Allows the user to view several basic medical records from the crew."
 	download_access = list(ACCESS_MEDICAL, ACCESS_FLAG_COMMAND)
-	available_on_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE
 	mode = "medical"
 
 /datum/computer_file/program/records/security
@@ -27,7 +32,7 @@
 	filename = "secrecords"
 	extended_desc = "Allows the user to view several basic security records from the crew."
 	download_access = list(ACCESS_SECURITY, ACCESS_FLAG_COMMAND)
-	available_on_ntnet = TRUE
+	program_flags = PROGRAM_ON_NTNET_STORE
 	mode = "security"
 
 /datum/computer_file/program/records/proc/GetRecordsReadable()

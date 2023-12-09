@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //NTNet stuff, for modular computers
 
 //Caps for NTNet logging. Less than 10 would make logging useless anyway, more than 500 may make the log browser too laggy. Defaults to 100 unless user changes it.
@@ -5,10 +6,43 @@
 #define MIN_NTNET_LOGS 10
 
 //Program bitflags
+=======
+/**
+ * can_run_on_flags bitflags
+ * Used by programs to tell what type of ModPC it can run on.
+ * Everything a program can run on needs valid icons for each individual one.
+ */
+///Runs on everything.
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 #define PROGRAM_ALL ALL
+///Can run on Modular PC Consoles
 #define PROGRAM_CONSOLE (1<<0)
+///Can run on Laptops.
 #define PROGRAM_LAPTOP (1<<1)
+<<<<<<< HEAD
 #define PROGRAM_TABLET (1<<2)
+=======
+///Can run on PDAs.
+#define PROGRAM_PDA (1<<2)
+
+/**
+ * program_flags
+ * Used by programs to tell the ModPC any special functions it has.
+ */
+///If the program requires NTNet to be online for it to work.
+#define PROGRAM_REQUIRES_NTNET (1<<0)
+///The program can be downloaded from the default NTNet downloader store.
+#define PROGRAM_ON_NTNET_STORE (1<<1)
+///The program can only be downloaded from the Syndinet store, usually nukie/emagged pda.
+#define PROGRAM_ON_SYNDINET_STORE (1<<2)
+///The program is unique and will delete itself upon being transferred to ensure only one copy exists.
+#define PROGRAM_UNIQUE_COPY (1<<3)
+///The program is a header and will show up at the top of the ModPC's UI.
+#define PROGRAM_HEADER (1<<4)
+///The program will run despite the ModPC not having any power in it.
+#define PROGRAM_RUNS_WITHOUT_POWER (1<<5)
+
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 //Program categories
 #define PROGRAM_CATEGORY_CREW "Crew"
 #define PROGRAM_CATEGORY_ENGI "Engineering"

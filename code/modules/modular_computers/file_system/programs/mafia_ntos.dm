@@ -3,7 +3,11 @@
 	filedesc = "Mafia"
 	program_icon_state = "mafia"
 	extended_desc = "A program that allows you to play the infamous Mafia game, straight from your Modular PC."
+<<<<<<< HEAD
 	requires_ntnet = FALSE
+=======
+	downloader_category = PROGRAM_CATEGORY_GAMES
+>>>>>>> edbc7c56226 (PDA update (Messenger works while dead, Microwave works, etc). (#80069))
 	size = 6
 	tgui_id = "NtosMafiaPanel"
 	program_icon = "user-secret"
