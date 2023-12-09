@@ -306,27 +306,31 @@ When modifying upstream TGUI files the same rules apply as modifying upstream DM
 You can do both `// SKYRAT EDIT` and `/* SKYRAT EDIT */`, though in some cases you may have to use one over the other.
 
 In general try to keep your edit comments on the same line as the change. Preferably inside the JSX tag. e.g:
-```
-<Button
-	onClick={() => act('spin', { high_quality: true })}
-	icon = "rat" // SKYRAT EDIT CHANGE
-</Button>
-```
+  ```js
+	<Button
+		onClick={() => act('spin', { high_quality: true })}
+		icon = "rat" // SKYRAT EDIT CHANGE
+	</Button>
+	```
 
 
-```
-<SomeThing /* it also works in self-closing tags */ />
-```
+	```js
+	<SomeThing /* it also works in self-closing tags */ />
+	```
 
 If that is not possible, you wrap your edit in curly brackets e.g. 
-```{/* SKYRAT EDIT ADDITION START */} 
-<SomeThing>
-...
-</SomeThing>
-{/* SKYRAT EDIT ADDITION END */}```
+  ```js
+	{/* SKYRAT EDIT ADDITION START */} 
+	<SomeThing>
+	...
+	</SomeThing>
+	{/* SKYRAT EDIT ADDITION END */}
+	```
 
 **When creating a new TGUI file from scratch, it is by definition already modular. Just make sure to put the following at the very top of the file (line 1):**
-`// THIS IS A SKYRAT UI FILE`
+	```js
+	// THIS IS A SKYRAT UI FILE
+	```
 
 This way they are easily identifiable as modular TGUI .tsx/.jsx files.
 
