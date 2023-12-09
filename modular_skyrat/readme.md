@@ -321,7 +321,7 @@ In general try to keep your edit comments on the same line as the change. Prefer
 <SomeThing /* it also works in self-closing tags */ />
 ```
 
-If that is not possible, you wrap your edit in curly brackets e.g. 
+If that is not possible, you can wrap your edit in curly brackets e.g. 
 
 ```js
 {/* SKYRAT EDIT ADDITION START */} 
