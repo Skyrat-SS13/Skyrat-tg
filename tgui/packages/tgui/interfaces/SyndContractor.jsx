@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'inferno';
+import { Component, Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Flex, Grid, Icon, LabeledList, Modal, NoticeBox, Section, Table, Tabs } from '../components';
 import { NtosWindow } from '../layouts';
@@ -227,28 +227,17 @@ export const StatusPane = (props) => {
                   onClick={() => act('PRG_redeem_TC')}
                 />
               }>
-<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
-              {data.redeemable_tc}
-            </LabeledList.Item>
-            <LabeledList.Item label="TC Earned">
-              {data.earned_tc}
-=======
               {String(redeemable_tc)}
             </LabeledList.Item>
             <LabeledList.Item label="TC Earned">
               {String(earned_tc)}
->>>>>>> 0454525d75c (Ports React [READY] (#80044)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
             </LabeledList.Item>
           </LabeledList>
         </Grid.Column>
         <Grid.Column>
           <LabeledList>
             <LabeledList.Item label="Contracts Completed">
-<<<<<<< HEAD:tgui/packages/tgui/interfaces/SyndContractor.jsx
-              {data.contracts_completed}
-=======
               {String(contracts_completed)}
->>>>>>> 0454525d75c (Ports React [READY] (#80044)):tgui/packages/tgui/interfaces/SyndicateContractor.tsx
             </LabeledList.Item>
             <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>

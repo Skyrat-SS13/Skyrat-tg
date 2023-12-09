@@ -107,19 +107,11 @@ const PriorityButtons = (props: {
 
   return (
     <Box
-      inline // SKYRAT EDIT
       style={{
-<<<<<<< HEAD
-        'align-items': 'center',
-        'height': '100%',
-        'textAlign': 'end', // SKYRAT EDIT
-        'padding': '0.3em', // SKYRAT EDIT
-=======
         alignItems: 'center',
         height: '100%',
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
       }}>
       {isOverflow ? (
         <>
@@ -175,32 +167,25 @@ const PriorityButtons = (props: {
 };
 
 const JobRow = (props: { className?: string; job: Job; name: string }) => {
-  const { data } = useBackend<PreferencesMenuData>();
+  const { data, act } = useBackend<PreferencesMenuData>(); // SKYRAT EDIT CHANGE - Adds act param
   const { className, job, name } = props;
 
   const isOverflow = data.overflow_role === name;
   const priority = data.job_preferences[name];
 
   const createSetPriority = createCreateSetPriorityFromName(name);
-  // SKYRAT EDIT
-  const { act } = useBackend<PreferencesMenuData>();
-  // SKYRAT EDIT END
 
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
-<<<<<<< HEAD
-  // SKYRAT EDIT
+  // SKYRAT EDIT ADDITION
   const alt_title_selected = data.job_alt_titles[name]
     ? data.job_alt_titles[name]
     : name;
   // SKYRAT EDIT END
 
-  let rightSide: InfernoNode;
-=======
   let rightSide: ReactNode;
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
 
   if (experienceNeeded) {
     const { experience_type, required_playtime } = experienceNeeded;
@@ -260,23 +245,9 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
     );
   }
   return (
-<<<<<<< HEAD
-    <Box
-      className={className}
-      style={{
-        // SKYRAT EDIT
-        'margin-top': 0,
-      }}>
-      <Stack align="center" /* SKYRAT EDIT */>
-        <Tooltip
-          content={job.description}
-          position="right" // SKYRAT EDIT bottom-start->right
-        >
-=======
     <Stack.Item className={className} height="100%" mt={0}>
       <Stack fill align="center">
         <Tooltip content={job.description} position="bottom-start">
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
           <Stack.Item
             className="job-name"
             width="50%"

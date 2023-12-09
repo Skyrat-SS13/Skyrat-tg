@@ -107,19 +107,7 @@ export const JobSelection = (props) => {
   return (
     <Window
       width={1012}
-<<<<<<< HEAD
-      height={
-        data.shuttle_status
-          ? 916
-          : 900 /* Hahahahahaha */ /* SKYRAT EDIT - Expand UI for available jobs - ORIGINAL: data.shuttle_status ? 690 : 666 */
-      }
-      onComponentDidMount={() => {
-        // Send a heartbeat back to DM to let it know the window is alive and well
-        act('ui_mounted_with_no_bluescreen');
-      }}>
-=======
-      height={data.shuttle_status ? 690 : 666 /* Hahahahahaha */}>
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
+      height={data.shuttle_status ? 916 : 900 /* Hahahahahaha */ /* SKYRAT EDIT CHANGE - Expand UI for available jobs */}>
       <Window.Content scrollable>
         <StyleableSection
           title={
@@ -127,7 +115,6 @@ export const JobSelection = (props) => {
               {data.shuttle_status && (
                 <NoticeBox info>{data.shuttle_status}</NoticeBox>
               )}
-<<<<<<< HEAD
               {
                 // SKYRAT EDIT ADDITION - Alert level on jobs menu
                 <NoticeBox color={data.alert_level.color}>
@@ -135,9 +122,7 @@ export const JobSelection = (props) => {
                 </NoticeBox>
               }
               <span style={{ 'color': 'grey' }}>
-=======
               <span style={{ color: 'grey' }}>
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
                 It is currently {data.round_duration} into the shift.
               </span>
               <Button

@@ -215,12 +215,7 @@ const QuirkList = (props: {
   );
 };
 
-<<<<<<< HEAD
-export const StatDisplay: StatelessComponent<{}> = (props) => {
-  // SKYRAT EDIT
-=======
 const StatDisplay = (props) => {
->>>>>>> 0454525d75c (Ports React [READY] (#80044))
   return (
     <Box
       backgroundColor="#eee"
