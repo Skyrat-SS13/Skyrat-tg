@@ -25,6 +25,9 @@
 			"products" = list(
 				/obj/item/toy/captainsaid = 1,
 				/obj/item/toy/intento = 3,
+				// SKYRAT EDIT CHANGE - Adds laser pointers to the Good Clean Fun vendor
+				/obj/item/laser_pointer = 3,
+				// SKYRAT EDIT END
 				/obj/item/storage/box/tail_pin = 1,
 			),
 		),
