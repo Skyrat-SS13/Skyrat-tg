@@ -22,7 +22,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/rack/wooden/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
@@ -45,7 +45,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/clay(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/closet/crate/wooden/storage_barrel/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 4)
@@ -80,7 +80,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/seedshelf
 	name = "Seedshelf"
@@ -110,7 +110,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/rationshelf
 	name = "Ration shelf"
@@ -140,7 +140,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/producedisplay
 	name = "Produce display"
@@ -170,4 +170,4 @@
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS

@@ -55,7 +55,7 @@
 /obj/machinery/gbp_redemption/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/gbp_redemption/attackby(obj/item/attacking_item, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "gbp_machine_open", "gbp_machine", attacking_item))
