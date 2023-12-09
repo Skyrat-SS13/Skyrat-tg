@@ -37,7 +37,7 @@
  *
  * Must return  parent proc ..() in the end if overridden
  */
-/atom/tool_act(mob/living/user, obj/item/tool, tool_type, is_right_clicking)
+/atom/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	var/act_result
 	var/signal_result
 
