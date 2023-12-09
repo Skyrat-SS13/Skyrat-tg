@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Icon, Section, Table, Tooltip, Button } from '../components';
@@ -11,11 +12,11 @@ const commandJobs = [
   'Chief Medical Officer',
 ];
 
-export const RecordManifest = (props, context) => {
+export const RecordManifest = (props) => {
   const {
     data: { manifest, positions },
-  } = useBackend(context);
-  const { act } = useBackend(context);
+  } = useBackend();
+  const { act } = useBackend();
 
   return (
     <Window title="All crew with information" width={450} height={500}>

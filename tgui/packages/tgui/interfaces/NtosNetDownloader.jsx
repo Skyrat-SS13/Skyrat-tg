@@ -1,3 +1,4 @@
+// THIS IS A SKYRAT UI FILE
 import { scale, toFixed } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Stack, Icon, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from '../components';

@@ -1,7 +1,8 @@
+// THIS IS A SKYRAT UI FILE
 import { Section, BlockQuote, Box, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const DelamProcedure = (context) => {
+export const DelamProcedure = () => {
   return (
     <Window
       title="Safety Moth - Delamination Emergency Procedure"
