@@ -70,8 +70,6 @@ effective or pretty fucking useless.
 */
 
 /obj/item/healthanalyzer/rad_laser
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	var/irradiate = TRUE
 	var/stealth = FALSE
 	var/used = FALSE // is it cooling down?
@@ -284,18 +282,10 @@ effective or pretty fucking useless.
 	return FALSE
 
 /obj/item/jammer
-<<<<<<< HEAD
-	name = "suspicious transmitter" //SKYRAT CHANGE
-	desc = "A suspicious device vaguely resembling a radio, but without a speaker or microphone." //SKYRAT CHANGE
-	icon = 'icons/obj/device.dmi'
-=======
 	name = "radio jammer"
 	desc = "Device used to disrupt nearby radio communication."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
->>>>>>> 71a1fee2f13 (Explodes device.dmi (#80025))
 	icon_state = "jammer"
-	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12

@@ -1,12 +1,6 @@
 /obj/item/chameleon
-<<<<<<< HEAD
-	name = "clandestine device" //skyrat edit
-	desc = "A vaguely insidious device with a scanner and large projector." // SKYRAT EDIT
-	icon = 'icons/obj/device.dmi'
-=======
 	name = "chameleon projector"
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
->>>>>>> 71a1fee2f13 (Explodes device.dmi (#80025))
 	icon_state = "shield0"
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
@@ -19,8 +13,6 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A hardlight projector used to seamlessly camouflage Syndicate infiltrators to appear as whatever the scanner touches." // Skyrat edit
 	var/can_use = 1
 	var/obj/effect/dummy/chameleon/active_dummy = null
 	var/saved_appearance = null
