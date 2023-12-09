@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/install_suppressor(obj/item/suppressor/added_suppressor)
-	suppressed = added_supppressor
+	suppressed = added_suppressor
 	update_appearance()
 
 /obj/item/gun/ballistic/clear_suppressor()
