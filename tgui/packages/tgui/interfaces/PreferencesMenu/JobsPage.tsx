@@ -112,8 +112,8 @@ const PriorityButtons = (props: {
         height: '100%',
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
-        paddingTop: '0.1em', // SKYRAT EDIT ADDITION - Add some vertical padding
-        paddingBottom: '0.1em', // SKYRAT EDIT ADDITION - To make this look nicer
+        paddingTop: '0.12em', // SKYRAT EDIT ADDITION - Add some vertical padding
+        paddingBottom: '0.12em', // SKYRAT EDIT ADDITION - To make this look nicer
       }}>
       {isOverflow ? (
         <>
