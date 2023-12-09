@@ -302,6 +302,8 @@ This also applies to files, do not comment out entire files, just delete them in
 TGUI is another exceptional case, since it uses javascript and isn't able to be modular in the same way that DM code is.
 ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
 
+## Modifying upstream files
+
 When modifying upstream TGUI files the same rules apply as modifying upstream DM code, however the grammar for comments may be slightly different.
 
 You can do both `// SKYRAT EDIT` and `/* SKYRAT EDIT */`, though in some cases you may have to use one over the other.
@@ -328,6 +330,8 @@ If that is not possible, you wrap your edit in curly brackets e.g.
 </SomeThing>
 {/* SKYRAT EDIT ADDITION END */}
 ```
+
+## Creating new TGUI files 
 
 **IMPORTANT! When creating a new TGUI file from scratch, please add the following at the very top of the file (line 1):**
 ```js
