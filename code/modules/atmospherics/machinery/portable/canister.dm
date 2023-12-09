@@ -335,7 +335,7 @@
 	take_damage(5, BURN, 0)
 
 /obj/machinery/portable_atmospherics/canister/deconstruct(disassembled = TRUE)
-	if((flags_1 & NODECONSTRUCT_1))
+	if((obj_flags & NO_DECONSTRUCTION))
 		qdel(src)
 		return
 	if(!(machine_stat & BROKEN))

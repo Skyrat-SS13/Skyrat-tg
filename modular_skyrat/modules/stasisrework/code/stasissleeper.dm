@@ -142,7 +142,7 @@
 /obj/machinery/stasissleeper/default_pry_open(obj/item/used_item)
 	if(occupant)
 		thaw_them(occupant)
-	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && used_item.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open || (obj_flags & NO_DECONSTRUCTION)) && used_item.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		used_item.play_tool_sound(src, 50)
 		visible_message(span_notice("[usr] pries open [src]."), span_notice("You pry open [src]."))

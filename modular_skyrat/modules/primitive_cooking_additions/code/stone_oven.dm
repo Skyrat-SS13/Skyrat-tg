@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/stone_kitchen_machines.dmi'
 	circuit = null
 	use_power = FALSE
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 	/// A list of the different oven trays we can spawn with
 	var/static/list/random_oven_tray_types = list(
