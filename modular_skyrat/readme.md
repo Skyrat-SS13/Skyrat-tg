@@ -297,40 +297,42 @@ This also applies to files, do not comment out entire files, just delete them in
 
 **This does not apply to non-modular changes.**
 
-### TGUI
+## Modular TGUI
 
+TGUI is another exceptional case, since it uses javascript and isn't able to be modular in the same way that DM code is.
 ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
 
-When modifying upstream TGUI files the same rules apply as modifying upstream DM code. Since TGUI uses javascript however the grammar for comments may be slightly different.
+When modifying upstream TGUI files the same rules apply as modifying upstream DM code, however the grammar for comments may be slightly different.
 
 You can do both `// SKYRAT EDIT` and `/* SKYRAT EDIT */`, though in some cases you may have to use one over the other.
 
 In general try to keep your edit comments on the same line as the change. Preferably inside the JSX tag. e.g:
-  ```js
-	<Button
-		onClick={() => act('spin', { high_quality: true })}
-		icon = "rat" // SKYRAT EDIT CHANGE
-	</Button>
-	```
 
+```js
+<Button
+	onClick={() => act('spin', { high_quality: true })}
+	icon = "rat" // SKYRAT EDIT CHANGE
+</Button>
+```
 
-	```js
-	<SomeThing /* it also works in self-closing tags */ />
-	```
+```js
+<SomeThing /* it also works in self-closing tags */ />
+```
 
 If that is not possible, you wrap your edit in curly brackets e.g. 
-  ```js
-	{/* SKYRAT EDIT ADDITION START */} 
-	<SomeThing>
-	...
-	</SomeThing>
-	{/* SKYRAT EDIT ADDITION END */}
-	```
 
-**When creating a new TGUI file from scratch, please add the following at the very top of the file (line 1):**
-	```js
-	// THIS IS A SKYRAT UI FILE
-	```
+```js
+{/* SKYRAT EDIT ADDITION START */} 
+<SomeThing>
+	...
+</SomeThing>
+{/* SKYRAT EDIT ADDITION END */}
+```
+
+**IMPORTANT! When creating a new TGUI file from scratch, please add the following at the very top of the file (line 1):**
+```js
+// THIS IS A SKYRAT UI FILE
+```
 
 This way they are easily identifiable as modular TGUI .tsx/.jsx files. You do not have to do anything further, and there will never be any need for a Skyrat edit comment in a modular TGUI file.
 
