@@ -327,12 +327,12 @@ If that is not possible, you wrap your edit in curly brackets e.g.
 	{/* SKYRAT EDIT ADDITION END */}
 	```
 
-**When creating a new TGUI file from scratch, it is by definition already modular. Just make sure to put the following at the very top of the file (line 1):**
+**When creating a new TGUI file from scratch, please add the following at the very top of the file (line 1):**
 	```js
 	// THIS IS A SKYRAT UI FILE
 	```
 
-This way they are easily identifiable as modular TGUI .tsx/.jsx files.
+This way they are easily identifiable as modular TGUI .tsx/.jsx files. You do not have to do anything further, and there will never be any need for a Skyrat edit comment in a modular TGUI file.
 
 ## Exemplary PR's
 
