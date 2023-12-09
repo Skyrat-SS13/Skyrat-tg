@@ -28,7 +28,7 @@
 /datum/reagent/drug/space_drugs/overdose_start(mob/living/affected_mob)
 	. = ..()
 	to_chat(affected_mob, span_userdanger("You start tripping hard!"))
-	affected_mob.add_mood_event("[type]_overdose", /datum/mood_event/overdose, name)
+	affected_mob.add_mood_event("[type]_overdose", /datum/mood_event/overdose)
 
 /datum/reagent/drug/space_drugs/overdose_process(mob/living/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
