@@ -47,7 +47,7 @@
 		var/list/processing_recipes = list() //List of recipes that can be mutated by sending the signal
 		signal_result = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT(tool_type), user, tool, processing_recipes)
 		if(signal_result & COMPONENT_BLOCK_TOOL_ATTACK) // The COMSIG_ATOM_TOOL_ACT signal is blocking the act
-			return TOOL_ACT_SIGNAL_BLOCKING
+			return ITEM_INTERACT_BLOCKING
 		if(processing_recipes.len)
 			process_recipes(user, tool, processing_recipes)
 		if(QDELETED(tool))
@@ -55,7 +55,7 @@
 	else
 		signal_result = SEND_SIGNAL(src, COMSIG_ATOM_SECONDARY_TOOL_ACT(tool_type), user, tool)
 		if(signal_result & COMPONENT_BLOCK_TOOL_ATTACK) // The COMSIG_ATOM_TOOL_ACT signal is blocking the act
-			return TOOL_ACT_SIGNAL_BLOCKING
+			return ITEM_INTERACT_BLOCKING
 
 	switch(tool_type)
 		if(TOOL_CROWBAR)
@@ -90,4 +90,4 @@
 	else
 		log_tool("[key_name(user)] used [tool] on [src] (right click) at [AREACOORD(src)]")
 		SEND_SIGNAL(tool,  COMSIG_TOOL_ATOM_ACTED_SECONDARY(tool_type), src)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
