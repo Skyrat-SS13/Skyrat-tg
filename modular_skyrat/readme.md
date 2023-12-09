@@ -297,6 +297,39 @@ This also applies to files, do not comment out entire files, just delete them in
 
 **This does not apply to non-modular changes.**
 
+## TGUI
+
+ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
+
+When modifying upstream TGUI files the same rules apply as modifying upstream DM code. Since TGUI uses javascript however the grammar for comments may be slightly different.
+
+You can do both `// SKYRAT EDIT` and `/* SKYRAT EDIT */`, though in some cases you may have to use one over the other.
+
+In general try to keep your edit comments on the same line as the change. Preferably inside the JSX tag. e.g:
+```
+<Button
+	onClick={() => act('spin', { high_quality: true })}
+	icon = "rat" // SKYRAT EDIT CHANGE
+</Button>
+```
+
+
+```
+<SomeThing /* it also works in self-closing tags */ />
+```
+
+If that is not possible, you wrap your edit in curly brackets e.g. 
+```{/* SKYRAT EDIT ADDITION START */} 
+<SomeThing>
+...
+</SomeThing>
+{/* SKYRAT EDIT ADDITION END */}```
+
+**When creating a new TGUI file from scratch, it is by definition already modular. Just make sure to put the following at the very top of the file (line 1):**
+`// THIS IS A SKYRAT UI FILE`
+
+This way they are easily identifiable as modular TGUI .tsx/.jsx files.
+
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
