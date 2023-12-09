@@ -297,7 +297,7 @@ This also applies to files, do not comment out entire files, just delete them in
 
 **This does not apply to non-modular changes.**
 
-## Modular TGUI
+### Modular TGUI
 
 TGUI is another exceptional case, since it uses javascript and isn't able to be modular in the same way that DM code is.
 ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
@@ -341,7 +341,7 @@ If that is not possible, you can wrap your edit in curly brackets e.g.
 {/* SKYRAT EDIT ADDITION END */}
 ```
 
-## Creating new TGUI files 
+### Creating new TGUI files 
 
 **IMPORTANT! When creating a new TGUI file from scratch, please add the following at the very top of the file (line 1):**
 ```js
