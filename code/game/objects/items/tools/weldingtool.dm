@@ -151,7 +151,7 @@
 	if(user == attacked_humanoid)
 		user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
 			span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-		if(!do_after(user, self-delay, attacked_humanoid)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!do_after(user, 5 SECONDS, attacked_humanoid))
+		if(!do_after(user, self_delay, attacked_humanoid)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!do_after(user, 5 SECONDS, attacked_humanoid))
 			return ITEM_INTERACT_BLOCKING
 	// SKYRAT EDIT ADDITION START
 	if(!do_after(user, other_delay, attacked_humanoid))
