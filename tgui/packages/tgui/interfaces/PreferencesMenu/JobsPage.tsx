@@ -274,11 +274,11 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           </Stack.Item>
         </Tooltip>
 
-        <Stack.Item width="50%" className="options" /* SKYRAT EDIT */>
+        <Stack.Item grow className="options">
           {rightSide}
         </Stack.Item>
       </Stack>
-    </Box> // SKYRAT EDIT
+    </Stack.Item>
   );
 };
 

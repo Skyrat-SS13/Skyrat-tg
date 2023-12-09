@@ -107,7 +107,11 @@ export const JobSelection = (props) => {
   return (
     <Window
       width={1012}
-      height={data.shuttle_status ? 916 : 900 /* Hahahahahaha */ /* SKYRAT EDIT CHANGE - Expand UI for available jobs */}>
+      height={
+        data.shuttle_status
+          ? 916
+          : 900 /* Hahahahahaha */ /* SKYRAT EDIT CHANGE - Expand UI for available jobs */
+      }>
       <Window.Content scrollable>
         <StyleableSection
           title={
@@ -121,7 +125,6 @@ export const JobSelection = (props) => {
                   The current alert level is: {data.alert_level.name}
                 </NoticeBox>
               }
-              <span style={{ 'color': 'grey' }}>
               <span style={{ color: 'grey' }}>
                 It is currently {data.round_duration} into the shift.
               </span>

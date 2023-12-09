@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Icon, Box, Button, Section, Table, Divider, Grid, ProgressBar, Collapsible } from '../components';
 import { Window } from '../layouts';
@@ -66,7 +66,7 @@ export const ClockworkSlab = (props, context) => {
 
 const ClockworkHelp = (props, context) => {
   return (
-    <Fragment>
+    <>
       <Collapsible title="Where To Start" color="average" open={1}>
         <Section>
           After a long and destructive war, Rat&#39;Var has been imprisoned
@@ -195,7 +195,7 @@ const ClockworkHelp = (props, context) => {
           <br />
         </Section>
       </Collapsible>
-    </Fragment>
+    </>
   );
 };
 
