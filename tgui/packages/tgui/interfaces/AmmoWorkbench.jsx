@@ -1,10 +1,11 @@
+// THIS IS A SKYRAT UI FILE
 import { toTitleCase } from 'common/string';
 import { useBackend, useSharedState, useLocalState } from '../backend';
 import { Box, Button, NumberInput, NoticeBox, ProgressBar, Section, Flex, Stack, RoundGauge, Tabs, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
-export const AmmoWorkbench = (props, context) => {
-  const [tab, setTab] = useSharedState(context, 'tab', 1);
+export const AmmoWorkbench = (props) => {
+  const [tab, setTab] = useSharedState('tab', 1);
   return (
     <Window
       width={600}
@@ -31,8 +32,8 @@ export const AmmoWorkbench = (props, context) => {
   );
 };
 
-export const AmmunitionsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const AmmunitionsTab = (props) => {
+  const { act, data } = useBackend();
   const {
     mag_loaded,
     system_busy,
@@ -141,8 +142,8 @@ export const AmmunitionsTab = (props, context) => {
   );
 };
 
-export const MaterialsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const MaterialsTab = (props) => {
+  const { act, data } = useBackend();
   const { materials = [] } = data;
   return (
     <Section title="Materials">
@@ -164,8 +165,8 @@ export const MaterialsTab = (props, context) => {
   );
 };
 
-export const DatadiskTab = (props, context) => {
-  const { act, data } = useBackend(context);
+export const DatadiskTab = (props) => {
+  const { act, data } = useBackend();
   const {
     loaded_datadisks = [],
     datadisk_loaded,
@@ -222,14 +223,10 @@ export const DatadiskTab = (props, context) => {
   );
 };
 
-const MaterialRow = (props, context) => {
+const MaterialRow = (props) => {
   const { material, onRelease } = props;
 
-  const [amount, setAmount] = useLocalState(
-    context,
-    'amount' + material.name,
-    1
-  );
+  const [amount, setAmount] = useLocalState('amount' + material.name, 1);
 
   const amountAvailable = Math.floor(material.amount);
   return (

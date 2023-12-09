@@ -9,7 +9,7 @@ import { NtosWindow } from '../layouts';
 //
 // {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
 //  - Original: entry.rank
-export const NtosCrewManifest = (props, context) => {
+export const NtosCrewManifest = (props) => {
   const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
