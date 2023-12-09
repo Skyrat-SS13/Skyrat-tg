@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		)
 		use(2)
 		user.put_in_inactive_hand(new_item)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/rods/welder_act_secondary(mob/living/user, obj/item/tool)
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
@@ -105,20 +105,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		)
 		use(1)
 		user.put_in_inactive_hand(new_item)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
-
-/obj/item/stack/rods/welder_act_secondary(mob/living/user, obj/item/tool)
-	if(tool.use_tool(src, user, delay = 0, volume = 40))
-		var/obj/item/stack/tile/iron/two/new_item = new(user.loc)
-		user.visible_message(
-			span_notice("[user.name] shaped [src] into floor tiles with [tool]."),
-			blind_message = span_hear("You hear welding."),
-			vision_distance = COMBAT_MESSAGE_RANGE,
-			ignored_mobs = user
-		)
-		use(1)
-		user.put_in_inactive_hand(new_item)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/rods/cyborg/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)

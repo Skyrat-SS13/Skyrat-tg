@@ -28,7 +28,7 @@
 		return
 	new /obj/item/stack/sheet/mineral/stone(drop_location(), 5)
 	deconstruct(TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /// Stove component subtype with changed visuals and not much else
 /datum/component/stove/primitive
