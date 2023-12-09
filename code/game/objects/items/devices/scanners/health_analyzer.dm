@@ -54,21 +54,15 @@
 		if(SCANMODE_WOUND)
 			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
 
-<<<<<<< HEAD
-/obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
-	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-		return
-=======
 /obj/item/healthanalyzer/interact_with_atom(atom/interacting_with, mob/living/user)
 	if(!isliving(interacting_with))
 		return NONE
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again- ORIGINAL: if(!user.can_read(src) || user.is_blind())
 		return ITEM_INTERACT_BLOCKING
 
 	var/mob/living/M = interacting_with
 
 	. = ITEM_INTERACT_SUCCESS
->>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
 
@@ -98,18 +92,11 @@
 
 	add_fingerprint(user)
 
-<<<<<<< HEAD
-/obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	//if(!user.can_read(src) || user.is_blind()) - ORIGINAL
-	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyse again
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-=======
 /obj/item/healthanalyzer/interact_with_atom_secondary(atom/interacting_with, mob/living/user)
 	if(!isliving(interacting_with))
 		return NONE
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyze again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
 		return ITEM_INTERACT_BLOCKING
->>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 
 	chemscan(user, interacting_with)
 	return ITEM_INTERACT_SUCCESS
@@ -601,21 +588,14 @@
 		user.dropItemToGround(src)
 		show_emotion(AID_EMOTION_HAPPY)
 
-<<<<<<< HEAD
-
-/obj/item/healthanalyzer/simple/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
-		return
-=======
 /obj/item/healthanalyzer/simple/proc/violence_damage(mob/living/user)
 	user.adjustBruteLoss(4)
 
 /obj/item/healthanalyzer/simple/interact_with_atom(atom/interacting_with, mob/living/user)
 	if(!isliving(interacting_with))
 		return NONE
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL: if(!user.can_read(src) || user.is_blind())
 		return ITEM_INTERACT_BLOCKING
->>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 
 	add_fingerprint(user)
 	user.visible_message(

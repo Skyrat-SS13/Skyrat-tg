@@ -13,19 +13,12 @@
 	throw_range = 7
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.30, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 0.20)
 
-<<<<<<< HEAD
-/obj/item/slime_scanner/attack(mob/living/living_mob, mob/living/user)
-	if(user.stat || !user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL : if(user.stat || !user.can_read(src) || user.is_blind())
-		return
-	if (!isslime(living_mob))
-=======
 /obj/item/slime_scanner/interact_with_atom(atom/interacting_with, mob/living/user)
 	if(!isliving(interacting_with))
 		return NONE
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL : if(!user.can_read(src) || user.is_blind())
 		return ITEM_INTERACT_BLOCKING
 	if (!isslime(interacting_with))
->>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 		to_chat(user, span_warning("This device can only scan slimes!"))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/simple_animal/slime/scanned_slime = interacting_with

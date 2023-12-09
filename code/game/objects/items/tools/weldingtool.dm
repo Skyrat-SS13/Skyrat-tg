@@ -145,36 +145,21 @@
 	if(isnull(affecting) || !IS_ROBOTIC_LIMB(affecting))
 		return ITEM_INTERACT_BLOCKING
 
-<<<<<<< HEAD
-	if(affecting && IS_ROBOTIC_LIMB(affecting) && !user.combat_mode)
-		if(src.use_tool(attacked_humanoid, user, 0, volume=50, amount=1))
-			if(user == attacked_humanoid)
-				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
-					span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-				/* SKYRAT EDIT START - ORIGINAL:
-				if(!do_after(user, 5 SECONDS, attacked_humanoid))
-					return
-				*/
-			// SKYRAT EDIT CHANGE START
-			if(!do_after(user, (user == attacked_humanoid ? self_delay : other_delay)))
-				return
-			// SKYRAT EDIT CHANGE END
-			item_heal_robotic(attacked_humanoid, user, 15, 0)
-	else
-		return ..()
-=======
 	if(!use_tool(attacked_humanoid, user, 0, volume=50, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
 	if(user == attacked_humanoid)
 		user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
 			span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-		if(!do_after(user, 5 SECONDS, attacked_humanoid))
+		if(!do_after(user, self-delay, attacked_humanoid)) // SKYRAT EDIT CHANGE - ORIGINAL: if(!do_after(user, 5 SECONDS, attacked_humanoid))
 			return ITEM_INTERACT_BLOCKING
+	// SKYRAT EDIT ADDITION START
+	if(!do_after(user, other_delay, attacked_humanoid))
+		return ITEM_INTERACT_BLOCKING
+	// SKYRAT EDIT ADDITION END
 
 	item_heal_robotic(attacked_humanoid, user, 15, 0)
 	return ITEM_INTERACT_SUCCESS
->>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 
 /obj/item/weldingtool/afterattack(atom/attacked_atom, mob/user, proximity)
 	. = ..()
