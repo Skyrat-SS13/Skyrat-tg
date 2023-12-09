@@ -297,7 +297,7 @@ This also applies to files, do not comment out entire files, just delete them in
 
 **This does not apply to non-modular changes.**
 
-## TGUI
+### TGUI
 
 ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Skyrat UIs.
 
