@@ -127,7 +127,7 @@ It also helps prevent modules needlessly overriding the same proc multiple times
 
 This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
 
-The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files.
+The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files. With some exceptions that will be mentioned shortly.
 
 In short, most of the modular code will be placed in the subfolders of your main module folder **`modular_skyrat/modules/yourmodule/code/`**, with similar rules as with the assets. Do not mirror core code folder structures inside your modular folder.
 
@@ -145,7 +145,19 @@ Such modules, unless _very_ simple, **need** to have a `readme.md` in their fold
 
 ## Modular Overrides (Important!!)
 
-Note, that it is possible to append code in front, or behind a core proc, in a modular fashion, without editing the original proc, through referring the parent proc, using `..()`, in one of the following forms.  And likewise, it is possible to add a new var to an existing datum or obj, without editing the core files.
+Note, that it is possible to append code in front, or behind a core proc, in a modular fashion, without editing the original proc, through referring the parent proc, using `. = ..()` or `..()`. And likewise, it is possible to add a new var to an existing datum or obj, without editing the core files.
+
+**Note about proc overrides: Just because you can, doesn't mean you should!!**
+
+In general they are a good idea and encouraged whenever it is possible to do so. However this is not a hard rule, and sometimes Skyrat edits are preferable. Just try to use your common sense about it.
+
+For example: please do not copy paste an entire TG proc into a modular override, make one small change, and then bill it as 'fully modular'. These procs are an absolute nightmare to maintain because once something changes upstream you have to update the overridden proc.
+
+Sometimes you aren't even aware the override exists if it compiles fine and doesn't cause any bugs. This often causes features that were added upstream to be missing here. So yeah. Avoid that. It's okay if something isn't fully modular. Sometimes it's the better choice.
+
+The best candidates for modular proc overrides are ones where you can just tack something on after calling the parent, or weave a parent call cleverly in the middle somewhere to achieve your desired effect.
+
+Performance should also be considered when you are overriding a hot proc (like Life() for example), as each additional call adds overhead. Skyrat edits are much more performant in those cases. For most procs this won't be something you have to think about, though.
 
 ### These modular overrides should be kept in `master_files`, and you should avoid putting them inside modules as much as possible.
 
