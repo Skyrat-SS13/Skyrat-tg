@@ -313,7 +313,7 @@ In general try to keep your edit comments on the same line as the change. Prefer
 ```js
 <Button
 	onClick={() => act('spin', { high_quality: true })}
-	icon = "rat" // SKYRAT EDIT ADDITION
+	icon="rat" // SKYRAT EDIT ADDITION
 </Button>
 ```
 
@@ -321,14 +321,14 @@ In general try to keep your edit comments on the same line as the change. Prefer
 <Button
 	onClick={() => act('spin', { high_quality: true })}
 	// SKYRAT EDIT ADDITION START - another example, multiline changes
-	icon = "rat"
-	tooltip = "spin the rat."
+	icon="rat"
+	tooltip="spin the rat."
 	// SKYRAT EDIT ADDITION END
 </Button>
 ```
 
 ```js
-<SomeThing /* it also works in self-closing tags */ />
+<SomeThing someProp="whatever" /* it also works in self-closing tags */ />
 ```
 
 If that is not possible, you can wrap your edit in curly brackets e.g. 
@@ -336,7 +336,7 @@ If that is not possible, you can wrap your edit in curly brackets e.g.
 ```js
 {/* SKYRAT EDIT ADDITION START */} 
 <SomeThing>
-	...
+	someProp="whatever"
 </SomeThing>
 {/* SKYRAT EDIT ADDITION END */}
 ```
