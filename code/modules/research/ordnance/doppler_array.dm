@@ -62,8 +62,13 @@
 
 /obj/machinery/doppler_array/wrench_act(mob/living/user, obj/item/tool)
 	default_unfasten_wrench(user, tool)
+<<<<<<< HEAD
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 	
+=======
+	return ITEM_INTERACT_SUCCESS
+
+>>>>>>> 1e76fd70b4f (Attack chain refactoring: Broadening `tool_act` into `item_interact`, moving some item interactions to... `atom/item_interact` / `item/interact_with_atom` (#79968))
 /obj/machinery/doppler_array/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!default_deconstruction_screwdriver(user, "[base_icon_state]", "[base_icon_state]", tool))
 		return FALSE
